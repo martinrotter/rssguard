@@ -162,14 +162,14 @@ set(APP_RESOURCES
 
 # Add translations.
 set(APP_TRANSLATIONS
-  # localization/rssguard_en.ts
-  # localization/rssguard_cs.ts
-  # localization/qt_cs.ts
+  localization/rssguard_en.ts
+  localization/rssguard_cs.ts
+  localization/qt_cs.ts
 )
 
 set(APP_TRANSLATIONS_WO_QT
-  # localization/rssguard_en.ts
-  # localization/rssguard_cs.ts
+  localization/rssguard_en.ts
+  localization/rssguard_cs.ts
 )
 
 # Add skins.
