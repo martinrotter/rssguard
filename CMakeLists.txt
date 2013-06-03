@@ -157,7 +157,7 @@ set(APP_FORMS
 
 # Add resources.
 set(APP_RESOURCES
-  # resources/rssguard.qrc
+ resources/rssguard_resources.qrc
 )
 
 # Add translations.
