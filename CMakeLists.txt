@@ -24,9 +24,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
-# Verbose compiling ouputs.
-set(CMAKE_VERBOSE_MAKEFILE ON)
-
 # Obtain revision number if available.
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
@@ -85,6 +82,9 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 elseif(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
   add_definitions(/W2)
 endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+
+# Verbose compiling ouputs.
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
 
