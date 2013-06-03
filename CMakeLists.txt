@@ -53,12 +53,12 @@ configure_file (
 )
 
 # Configure executable "properties" for Windows.
-# if(WIN32)
-  # configure_file (
-    # ${PROJECT_SOURCE_DIR}/resources/qonverter_win.rc.in
-    # ${CMAKE_CURRENT_BINARY_DIR}/resources/qonverter_win.rc
-  # )
-# endif(WIN32)
+if(WIN32)
+configure_file (
+ ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
+ ${CMAKE_CURRENT_BINARY_DIR}/resources/rssguard_win.rc
+)
+endif(WIN32)
 
 # Configure desktop entry for Linux.
 if(UNIX)
@@ -124,7 +124,7 @@ find_package(Qt5LinguistTools)
 if(MINGW AND WIN32)
   set(WINDRES windres.exe)
   message(STATUS "[rssguard] MinGW compilation is selected. Icon file binary will be builded.")
-  message(STATUS "[rssguard] Used windres tool is: " ${WINDRES})
+  message(STATUS "[rssguard] Used windres tool is: " ${WINDRES} ".")
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/qonverter.o
     COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
