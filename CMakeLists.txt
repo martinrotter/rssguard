@@ -25,10 +25,11 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
 # Obtain revision number if available.
+message(STATUS "[rssguard] Obtaining revision number.")
+
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
   if(GIT_FOUND)
-    message(STATUS "[rssguard] Git is installed. Obtaining revision number.")
     execute_process(
       COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
@@ -43,11 +44,13 @@ else(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   set(APP_REVISION STABLE)
 endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
+message(STATUS "[rssguard] Revision number obtained: " ${APP_REVISION} ".")
+
 # Configure internal C++ defines.
-# configure_file (
-  # ${PROJECT_SOURCE_DIR}/src/defs.h.in
-  # ${CMAKE_CURRENT_BINARY_DIR}/src/defs.h
-# )
+configure_file (
+  ${PROJECT_SOURCE_DIR}/src/defs.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/src/defs.h
+)
 
 # Configure executable "properties" for Windows.
 # if(WIN32)
