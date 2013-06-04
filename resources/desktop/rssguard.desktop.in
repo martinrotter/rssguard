@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Exec=rssguard
+Name=RSS Guard
+GenericName=Simple (yet powerful) calculator
+GenericName[cs]=Jednoduchá (a přesto mocná) kalkulačka
+Comment=Simple (yet powerful) calculator with some unusual functions
+Comment[cs]=Jednoduchá (a přesto mocná) kalkulačka s neobvyklými funkcemi
+Icon=rssguard
+Terminal=false
+Categories=Qt;Office;Network;Utility

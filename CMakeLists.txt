@@ -63,10 +63,10 @@ endif(WIN32)
 # Configure desktop entry for Linux.
 if(UNIX)
   message(STATUS "[rssguard] Generating desktop entry.")
-  # configure_file (
-    # ${PROJECT_SOURCE_DIR}/resources/desktop/qonverter.desktop.in
-    # ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/qonverter.desktop
-  # )
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
+    ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/rssguard.desktop
+  )
 endif(UNIX)
 
 # Define some useful DEBUG for, ehrm, debug build.
@@ -74,12 +74,13 @@ if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR
   message(STATUS "[rssguard] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")
   set(CMAKE_BUILD_TYPE MinSizeRel)
 else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
-  message(STATUS "[rssguard] A debug build is chosen. -DDEBUG is defined")
+  message(STATUS "[rssguard] A debug build is chosen. -DDEBUG is defined.")
   add_definitions(-DDEBUG)
   set(CMAKE_BUILD_TYPE Debug)
 
 # Enable compiler warnings.
 # See http://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake
+message(STATUS "[rssguard] Enabling verbose makefile and full warning reports.")
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   add_definitions(-pedantic -Wall -Wextra)
 elseif(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
@@ -157,7 +158,7 @@ set(APP_FORMS
 
 # Add resources.
 set(APP_RESOURCES
- resources/rssguard_resources.qrc
+  resources/rssguard_resources.qrc
 )
 
 # Add translations.
