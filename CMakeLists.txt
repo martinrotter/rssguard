@@ -33,15 +33,15 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
     execute_process(
       COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-      OUTPUT_VARIABLE _git_revision
+      OUTPUT_VARIABLE GIT_REVISION
     )
-    string(REGEX REPLACE "\n" "" _git_revision "${_git_revision}")
-    set(APP_REVISION ${_git_revision})
+    string(REGEX REPLACE "\n" "" GIT_REVISION "${GIT_REVISION}")
+    set(APP_REVISION ${GIT_REVISION})
   else(GIT_FOUND)
     set(APP_REVISION UNKNOWN-REVISION)
   endif(GIT_FOUND)
 else(EXISTS "${PROJECT_SOURCE_DIR}/.git")
-  set(APP_REVISION STABLE)
+  set(APP_REVISION SEPARATE-BUILD)
 endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
 message(STATUS "[rssguard] Revision number obtained: " ${APP_REVISION} ".")
@@ -56,7 +56,7 @@ configure_file (
 if(WIN32)
 configure_file (
  ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
- ${CMAKE_CURRENT_BINARY_DIR}/resources/rssguard_win.rc
+ ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
 )
 endif(WIN32)
 
@@ -127,17 +127,17 @@ if(MINGW AND WIN32)
   message(STATUS "[rssguard] MinGW compilation is selected. Icon file binary will be builded.")
   message(STATUS "[rssguard] Used windres tool is: " ${WINDRES} ".")
   add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/qonverter.o
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
     COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
-                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/qonverter_win.rc
-                        -o ${CMAKE_CURRENT_BINARY_DIR}/qonverter.o
+                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
+                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
     )
-    set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/qonverter.o)
+    set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
 
 # MSVC takes care of this automatically no need to use windres.exe
 # for MSVC compilers.
 elseif(WIN32)
-  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/qonverter_win.rc)
+  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
 
 # Add source files.
