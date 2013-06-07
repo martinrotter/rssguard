@@ -116,6 +116,8 @@ add_definitions(-DUNICODE -D_UNICODE)
 
 # Find all needed Qt modules.
 find_package(Qt5Sql)
+find_package(Qt5WebKit)
+find_package(Qt5WebKitWidgets)
 find_package(Qt5Widgets)
 find_package(Qt5Xml)
 find_package(Qt5Network)
@@ -218,6 +220,7 @@ include_directories (
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/src
   ${Qt5Xml_INCLUDE_DIRS}
+  ${Qt5Webkit_INCLUDE_DIRS}
 )
 
 if(WIN32)
