@@ -145,12 +145,23 @@ endif(MINGW AND WIN32)
 # Add source files.
 set(APP_SOURCES
   ${APP_SOURCES}
+
+  # QtSingleApplication suite sources.
+  src/qtsingleapplication/qtlocalpeer.cpp
+  src/qtsingleapplication/qtsingleapplication.cpp
+
+  # Basic application sources.
   src/main.cpp
 )
 
 # Add headers.
 set(APP_HEADERS
   ${APP_HEADERS}
+
+  # QtSingleApplication suite headers.
+  src/qtsingleapplication/qtlocalpeer.h
+  src/qtsingleapplication/qtlockedfile.h
+  src/qtsingleapplication/qtsingleapplication.h
 )
 
 # Add form files.

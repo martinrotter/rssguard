@@ -1,13 +1,6 @@
-#include <QApplication>
-#include <QTranslator>
-#include <QSystemTrayIcon>
-#include <QDir>
 #include <QMainWindow>
 
-// Needed for using of ini file format on Mac OS X.
-#ifdef Q_OS_MAC
-#include <QSettings>
-#endif
+#include "qtsingleapplication/qtsingleapplication.h"
 
 
 int main(int argc, char *argv[]) {
@@ -23,9 +16,13 @@ int main(int argc, char *argv[]) {
   //: Email of translator - optional.
   QObject::tr("LANG_EMAIL");
 
-  QApplication a(argc, argv);
+  // TODO: Finish implementation of QtSingleApplication into RSS Guard.
+  // This primarily concerns slot in FormMain which reacts when application is launched
+  // repeatedly. See 'trivial' example from QtSingleApplication source code for more
+  // information.
+  QtSingleApplication application(argc, argv);
   QMainWindow window;
   window.show();
 
-  return QApplication::exec();
+  return QtSingleApplication::exec();
 }
