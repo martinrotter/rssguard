@@ -22,6 +22,8 @@
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"
 #define APP_REVISION        "@APP_REVISION@"
 
+#define APP_IS_RUNNING      "app_is_running"
+
 // TODO: OS/2 support missing. No way to test this w/o OS/2 machine.
 #if defined(Q_OS_LINUX)
 #define APP_LANG_PATH APP_PREFIX + QString("/share/qonverter/l10n")

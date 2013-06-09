@@ -1,6 +1,9 @@
 #include <QMainWindow>
 
+#include "gui/formmain.h"
 #include "qtsingleapplication/qtsingleapplication.h"
+
+#include "defs.h"
 
 
 int main(int argc, char *argv[]) {
@@ -21,8 +24,18 @@ int main(int argc, char *argv[]) {
   // repeatedly. See 'trivial' example from QtSingleApplication source code for more
   // information.
   QtSingleApplication application(argc, argv);
-  QMainWindow window;
+
+  if (application.sendMessage(APP_IS_RUNNING)) {
+    return EXIT_SUCCESS;
+  }
+
+  FormMain window;
+
   window.show();
+  application.setActivationWindow(&window, true);
+
+  QObject::connect(&application, &QtSingleApplication::messageReceived,
+                   &window, &FormMain::processExecutionMessage);
 
   return QtSingleApplication::exec();
 }

@@ -8,8 +8,8 @@ set(APP_VERSION "2.0.0-prealpha-1")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
 
-message(STATUS "[rssguard] Welcome to RSS Guard compilation process.")
-message(STATUS "[rssguard] Compilation process begins right now.")
+message(STATUS "[${APP_LOW_NAME}] Welcome to RSS Guard compilation process.")
+message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
 # Setup name for executable file.
 if(APPLE)
@@ -25,7 +25,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
 # Obtain revision number if available.
-message(STATUS "[rssguard] Obtaining revision number.")
+message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
 
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
@@ -44,7 +44,7 @@ else(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   set(APP_REVISION SEPARATE-BUILD)
 endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
-message(STATUS "[rssguard] Revision number obtained: " ${APP_REVISION} ".")
+message(STATUS "[${APP_LOW_NAME}] Revision number obtained: " ${APP_REVISION} ".")
 
 # Configure internal C++ defines.
 configure_file (
@@ -62,7 +62,7 @@ endif(WIN32)
 
 # Configure desktop entry for Linux.
 if(UNIX)
-  message(STATUS "[rssguard] Generating desktop entry.")
+  message(STATUS "[${APP_LOW_NAME}] Generating desktop entry.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/rssguard.desktop
@@ -71,16 +71,16 @@ endif(UNIX)
 
 # Define some useful DEBUG for, ehrm, debug build.
 if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
-  message(STATUS "[rssguard] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")
+  message(STATUS "[${APP_LOW_NAME}] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")
   set(CMAKE_BUILD_TYPE MinSizeRel)
 else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
-  message(STATUS "[rssguard] A debug build is chosen. -DDEBUG is defined.")
+  message(STATUS "[${APP_LOW_NAME}] A debug build is chosen. -DDEBUG is defined.")
   add_definitions(-DDEBUG)
   set(CMAKE_BUILD_TYPE Debug)
 
 # Enable compiler warnings.
 # See http://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake
-message(STATUS "[rssguard] Enabling verbose makefile and full warning reports.")
+message(STATUS "[${APP_LOW_NAME}] Enabling verbose makefile and full warning reports.")
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   add_definitions(-pedantic -Wall -Wextra)
 elseif(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
@@ -100,7 +100,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
   )
 
   if(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-    message(FATAL_ERROR "[rssguard] Your C++ compiler does not support C++ 11.")
+    message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
   else(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
     add_definitions(-std=c++11)
   endif(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
@@ -108,7 +108,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
 elseif(${MSVC_VERSION} VERSION_LESS 1600)
-  message(FATAL_ERROR "[rssguard] Your C++ compiler does not support C++ 11.")
+  message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
 endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
 
 # Unicode settings.
@@ -126,8 +126,8 @@ find_package(Qt5LinguistTools)
 # Compile application icon if compiling with MinGW on WIN32.
 if(MINGW AND WIN32)
   set(WINDRES windres.exe)
-  message(STATUS "[rssguard] MinGW compilation is selected. Icon file binary will be builded.")
-  message(STATUS "[rssguard] Used windres tool is: " ${WINDRES} ".")
+  message(STATUS "[${APP_LOW_NAME}] MinGW compilation is selected. Icon file binary will be builded.")
+  message(STATUS "[${APP_LOW_NAME}] Used windres tool is: " ${WINDRES} ".")
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
     COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
@@ -150,6 +150,9 @@ set(APP_SOURCES
   src/qtsingleapplication/qtlocalpeer.cpp
   src/qtsingleapplication/qtsingleapplication.cpp
 
+  # GUI sources.
+  src/gui/formmain.cpp
+
   # Basic application sources.
   src/main.cpp
 )
@@ -162,11 +165,14 @@ set(APP_HEADERS
   src/qtsingleapplication/qtlocalpeer.h
   src/qtsingleapplication/qtlockedfile.h
   src/qtsingleapplication/qtsingleapplication.h
+
+  # GUI headers.
+  src/gui/formmain.h
 )
 
 # Add form files.
 set(APP_FORMS
-  # ui/formmain.ui
+  src/gui/formmain.ui
 )
 
 # Add resources.
@@ -218,10 +224,10 @@ qt5_wrap_ui(APP_UI ${APP_FORMS})
 qt5_add_resources(APP_RCC ${APP_RESOURCES})
 
 if(Qt5LinguistTools_FOUND)
-  message(STATUS "[rssguard] Qt Linguist Tools found. Translations will get refreshed.")
+  message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools found. Translations will get refreshed.")
   qt5_add_translation(APP_QM ${APP_TRANSLATIONS})
 else(Qt5LinguistTools_FOUND)
-  message(STATUS "[rssguard] Qt Linguist Tools NOT found. No refreshing for translations.")
+  message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools NOT found. No refreshing for translations.")
 endif(Qt5LinguistTools_FOUND)
 
 # Include additional directory paths.
@@ -282,7 +288,7 @@ qt5_use_modules(${EXE_NAME}
 #    add_custom_target(bundle ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/bundle.cmake)
 #elseif(WIN32)
 if(WIN32)
-  message(STATUS "[rssguard] You will probably install on Windows.")
+  message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows.")
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION ./)
   install(FILES ${APP_QM} DESTINATION ./l10n)
   install(FILES ${APP_SKIN_PLAIN} DESTINATION ./skins/base)
@@ -291,7 +297,7 @@ if(WIN32)
   install(FILES ${APP_SKIN_DARK_IMAGES} DESTINATION ./skins/fancy/images)
   install(FILES ${APP_MISC} DESTINATION ./)
 elseif(OS2)
-  message(STATUS "[rssguard] You will probably install on OS/2.")
+  message(STATUS "[${APP_LOW_NAME}] You will probably install on OS/2.")
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION ./)
   install(FILES ${APP_QM} DESTINATION ./l10n)
   install(FILES ${APP_SKIN_PLAIN} DESTINATION ./skins/base)
@@ -300,7 +306,7 @@ elseif(OS2)
   install(FILES ${APP_SKIN_DARK_IMAGES} DESTINATION ./skins/fancy/images)
   install(FILES ${APP_MISC} DESTINATION ./)
 elseif(UNIX)
-  message(STATUS "[rssguard] You will probably install on Linux.")
+  message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/qonverter.desktop DESTINATION share/applications)
   install(FILES resources/graphics/qonverter.png DESTINATION share/icons/hicolor/256x256/apps/)
@@ -328,7 +334,7 @@ add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 
 # make lupdate and make lrelease implementation.
 add_custom_target(lupdate
-  ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/qonverter.pro
-    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -no-obsolete -pro ${CMAKE_CURRENT_BINARY_DIR}/qonverter.pro
+  ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -no-obsolete -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
