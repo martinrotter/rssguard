@@ -48,8 +48,8 @@ message(STATUS "[${APP_LOW_NAME}] Revision number obtained: " ${APP_REVISION} ".
 
 # Configure internal C++ defines.
 configure_file (
-  ${PROJECT_SOURCE_DIR}/src/defs.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/src/defs.h
+  ${PROJECT_SOURCE_DIR}/src/core/defs.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/src/core/defs.h
 )
 
 # Configure executable "properties" for Windows.
@@ -152,6 +152,11 @@ set(APP_SOURCES
 
   # GUI sources.
   src/gui/formmain.cpp
+  src/gui/systemtrayicon.cpp
+
+  # CORE sources.
+  src/core/debugging.cpp
+  src/core/settings.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -168,6 +173,9 @@ set(APP_HEADERS
 
   # GUI headers.
   src/gui/formmain.h
+  src/gui/systemtrayicon.cpp
+
+  # CORE headers.
 )
 
 # Add form files.

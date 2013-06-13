@@ -14,9 +14,8 @@
 
 #define APP_CFG_PATH        "data/config/config.ini"
 #define APP_CFG_GUI         "gui"
-#define APP_CFG_GEN         "main"
-#define APP_CFG_CALC        "calculator"
-#define APP_CFG_LANG        "language"
+#define APP_CFG_GEN         "general"
+#define APP_CFG_LANG        "localization"
 
 #define APP_DB_PATH         "data/storage/database.db"
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"
@@ -29,15 +28,18 @@
 #define APP_LANG_PATH APP_PREFIX + QString("/share/qonverter/l10n")
 #define APP_SKIN_PATH APP_PREFIX + QString("/share/qonverter/skins")
 #define APP_INFO_PATH APP_PREFIX + QString("/share/qonverter/information")
+#define APP_THEME_PATH APP_PREFIX + QString("/share/qonverter/themes")
 #elif defined(Q_OS_MAC)
 #define APP_LANG_PATH QApplication::applicationDirPath() + "/../Resources/l10n"
 #define APP_SKIN_PATH QApplication::applicationDirPath() + "/../Resources/skins"
 #define APP_PLUGIN_PATH QApplication::applicationDirPath() + "/../Resources/plugins"
 #define APP_INFO_PATH QApplication::applicationDirPath() + "/../Resources/information"
+#define APP_THEME_PATH QApplication::applicationDirPath() + "/../Resources/themes"
 #elif defined(Q_OS_WIN) || defined(Q_OS_OS2)
 #define APP_LANG_PATH QApplication::applicationDirPath() + QString("/l10n")
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
+#define APP_THEME_PATH QApplication::applicationDirPath() + QString("/themes")
 #endif
 
 #endif // DEFS_H

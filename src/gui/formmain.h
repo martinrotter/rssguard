@@ -13,8 +13,14 @@ class FormMain : public QMainWindow {
     explicit FormMain(QWidget *parent = 0);
     ~FormMain();
 
+  protected:
+    void createConnections();
+
   public slots:
     void processExecutionMessage(const QString &message);
+
+  protected slots:
+    void cleanupResources();
     
   private:
     Ui::FormMain *m_ui;
