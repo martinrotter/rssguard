@@ -6,6 +6,7 @@
 #include "core/defs.h"
 #include "core/debugging.h"
 #include "core/settings.h"
+#include "gui/themefactory.h"
 #include "gui/formmain.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
@@ -50,6 +51,9 @@ int main(int argc, char *argv[]) {
 #if defined(Q_OS_MAC)
   QApplication::addLibraryPath(APP_PLUGIN_PATH);
 #endif
+
+  // Add an extra path for non-system icon themes.
+  ThemeFactory::setupSearchPaths();
 
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);

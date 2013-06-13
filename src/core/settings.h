@@ -6,8 +6,6 @@
 
 class Settings : public QSettings {
   private:
-    // We use QPointer instead of QScopedPointer
-    // because of late s_instance usage in QApplication::aboutToQuit() listeners.
     static QPointer<Settings> s_instance;
 
   public:
@@ -27,12 +25,12 @@ class Settings : public QSettings {
                   const QString &key,
                   const QVariant &value);
 
-    // Synchronises settings.
-    QSettings::Status checkSettings();
-
   protected:
     // Creates settings file in correct location.
     static QSettings::Status setupSettings();
+
+    // Synchronises settings.
+    QSettings::Status checkSettings();
 };
 
 #endif // SETTINGS_H

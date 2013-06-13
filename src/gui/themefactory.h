@@ -5,6 +5,9 @@
 class ThemeFactory {
   private:
     ThemeFactory();
+
+  public:
+    static void setupSearchPaths();
 };
 
 #endif // THEMEFACTORY_H

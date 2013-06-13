@@ -92,6 +92,9 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 
 endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
 
+# Force Qt to use string builders.
+add_definitions(-DQT_USE_QSTRINGBUILDER)
+
 # Check for C++ 11 features availability.
 # See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
@@ -153,6 +156,7 @@ set(APP_SOURCES
   # GUI sources.
   src/gui/formmain.cpp
   src/gui/systemtrayicon.cpp
+  src/gui/themefactory.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -173,8 +177,7 @@ set(APP_HEADERS
 
   # GUI headers.
   src/gui/formmain.h
-  src/gui/systemtrayicon.cpp
-  src/gui/themefactory.cpp
+  src/gui/systemtrayicon.h
 
   # CORE headers.
 )
