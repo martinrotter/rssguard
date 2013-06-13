@@ -18,6 +18,7 @@ class FormMain : public QMainWindow {
 
   public slots:
     void processExecutionMessage(const QString &message);
+    void quit();
 
   protected slots:
     void cleanupResources();

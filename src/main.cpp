@@ -63,9 +63,9 @@ int main(int argc, char *argv[]) {
 
   window.show();
 
-  if (Settings::value(APP_CFG_GEN, "first_start", true).toBool()) {
+  if (Settings::getInstance().value(APP_CFG_GEN, "first_start", true).toBool()) {
     // TODO: Open initial "Welcome" dialog here.
-    Settings::setValue(APP_CFG_GEN, "first_start", false);
+    Settings::getInstance().setValue(APP_CFG_GEN, "first_start", false);
   }
 
 

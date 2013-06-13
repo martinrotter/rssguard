@@ -14,17 +14,54 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QMenuBar" name="m_menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
+   <widget class="QMenu" name="m_menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="m_actionImport"/>
+    <addaction name="m_actionExport"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="m_menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+   </widget>
+   <addaction name="m_menuFile"/>
+   <addaction name="menu_View"/>
+   <addaction name="m_menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="m_actionImport">
+   <property name="text">
+    <string>&amp;Import</string>
+   </property>
+  </action>
+  <action name="m_actionExport">
+   <property name="text">
+    <string>E&amp;xport</string>
+   </property>
+  </action>
+  <action name="m_actionQuit">
+   <property name="text">
+    <string>&amp;Quit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

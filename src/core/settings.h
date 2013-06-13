@@ -4,27 +4,31 @@
 #include <QSettings>
 
 
-class Settings {
+class Settings : public QSettings {
   private:
     // We use QPointer instead of QScopedPointer
     // because of late s_instance usage in QApplication::aboutToQuit() listeners.
-    static QPointer<QSettings> s_instance;
+    static QPointer<Settings> s_instance;
 
   public:
+    // Singleton getter.
+    static Settings &getInstance();
+
+    // Constructor and destructor.
+    Settings(const QString & file_name, Format format, QObject * parent = 0);
+    ~Settings();
+
     // Getter/setter for settings values.
-    static QVariant value(const QString &section,
-                          const QString &key,
-                          const QVariant &default_value = QVariant());
+    QVariant value(const QString &section,
+                   const QString &key,
+                   const QVariant &default_value = QVariant());
 
-    static void setValue(const QString &section,
-                         const QString &key,
-                         const QVariant &value);
-
-    // It's better to cleanup settings manually via this function.
-    static void deleteSettings();
+    void setValue(const QString &section,
+                  const QString &key,
+                  const QVariant &value);
 
     // Synchronises settings.
-    static QSettings::Status checkSettings();
+    QSettings::Status checkSettings();
 
   protected:
     // Creates settings file in correct location.

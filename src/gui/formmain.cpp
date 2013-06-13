@@ -19,10 +19,19 @@ void FormMain::processExecutionMessage(const QString &message) {
          qPrintable(message));
 }
 
+void FormMain::quit() {
+  qDebug("Quitting the application.");
+  qApp->quit();
+}
+
 void FormMain::cleanupResources() {
-  Settings::deleteSettings();
+  qDebug("Cleaning up resources before the application exits.");
 }
 
 void FormMain::createConnections() {
+  // Menu "File" connections.
+  connect(m_ui->m_actionQuit, &QAction::triggered, this, &FormMain::quit);
+
+  // General connections.
   connect(qApp, &QCoreApplication::aboutToQuit, this, &FormMain::cleanupResources);
 }

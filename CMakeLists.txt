@@ -174,6 +174,7 @@ set(APP_HEADERS
   # GUI headers.
   src/gui/formmain.h
   src/gui/systemtrayicon.cpp
+  src/gui/themefactory.cpp
 
   # CORE headers.
 )

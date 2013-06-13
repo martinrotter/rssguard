@@ -26,7 +26,16 @@
 #include "core/defs.h"
 
 
-QPointer<QSettings> Settings::s_instance;
+QPointer<Settings> Settings::s_instance;
+
+Settings::Settings(const QString &file_name, Format format, QObject *parent)
+  : QSettings(file_name, format, parent) {
+}
+
+Settings::~Settings() {
+  checkSettings();
+  qDebug("Deleting Settings instance.");
+}
 
 QSettings::Status Settings::checkSettings() {
   qDebug("Syncing settings.");
@@ -35,28 +44,24 @@ QSettings::Status Settings::checkSettings() {
   return s_instance->status();
 }
 
-QVariant Settings::value(const QString &section,
-                         const QString &key,
-                         const QVariant &default_value) {
+Settings &Settings::getInstance() {
   if (s_instance.isNull()) {
     setupSettings();
   }
-  return s_instance->value(QString("%1/%2").arg(section, key), default_value);
+
+  return *s_instance;
+}
+
+QVariant Settings::value(const QString &section,
+                         const QString &key,
+                         const QVariant &default_value) {
+  return QSettings::value(QString("%1/%2").arg(section, key), default_value);
 }
 
 void Settings::setValue(const QString &section,
                         const QString &key,
                         const QVariant &value) {
-  if (s_instance.isNull()) {
-    setupSettings();
-  }
-  s_instance->setValue(QString("%1/%2").arg(section, key), value);
-}
-
-void Settings::deleteSettings() {
-  checkSettings();
-  qDebug("Deleting global settings.");
-  delete s_instance.data();
+  QSettings::setValue(QString("%1/%2").arg(section, key), value);
 }
 
 QSettings::Status Settings::setupSettings() {
@@ -70,15 +75,15 @@ QSettings::Status Settings::setupSettings() {
                      APP_CFG_PATH;
 
   if (QFile(app_path).exists()) {
-    s_instance = new QSettings(app_path, QSettings::IniFormat);
+    s_instance = new Settings(app_path, QSettings::IniFormat, qApp);
     qDebug("Initializing settings in %s.",
            qPrintable(QDir::toNativeSeparators(app_path)));
   }
   else {
-    s_instance = new QSettings(home_path, QSettings::IniFormat);
+    s_instance = new Settings(home_path, QSettings::IniFormat, qApp);
     qDebug("Initializing settings in %s.",
            qPrintable(QDir::toNativeSeparators(home_path)));
   }
 
-  return checkSettings();
+  return (*s_instance).checkSettings();
 }
