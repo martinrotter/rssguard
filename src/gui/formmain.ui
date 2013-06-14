@@ -27,7 +27,9 @@
      <string>...</string>
     </property>
     <property name="icon">
-     <iconset theme="application-exit"/>
+     <iconset theme="application-exit">
+      <normaloff/>
+     </iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -233,11 +235,18 @@
      <string>&amp;View</string>
     </property>
    </widget>
+   <widget class="QMenu" name="m_menuTools">
+    <property name="title">
+     <string>&amp;Tools</string>
+    </property>
+    <addaction name="m_actionSettings"/>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="menu_View"/>
+   <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="m_statusBar"/>
   <action name="m_actionImport">
    <property name="text">
     <string>&amp;Import</string>
@@ -251,6 +260,11 @@
   <action name="m_actionQuit">
    <property name="text">
     <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="m_actionSettings">
+   <property name="text">
+    <string>&amp;Settings</string>
    </property>
   </action>
  </widget>

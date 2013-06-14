@@ -23,7 +23,6 @@
 
 #define APP_IS_RUNNING      "app_is_running"
 
-// TODO: OS/2 support missing. No way to test this w/o OS/2 machine.
 #if defined(Q_OS_LINUX)
 #define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
 #define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")

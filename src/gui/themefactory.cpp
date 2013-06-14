@@ -19,13 +19,17 @@ void ThemeFactory::setupSearchPaths() {
 
 // TODO: Load currently selected "real" icon theme name instead of
 // Qt default "", which stands for currently active system icon theme name on
-// linux. On Windows, tiny "oxygen" version will be added.
+// linux. On Windows, tiny "oxygen" version will be used as default icon theme.
 QString ThemeFactory::getSystemIconTheme() {
 #if defined(Q_OS_LINUX)
   // Empty string forces Qt to use icon theme from operating system.
+  //
+  // WARNING: We should realize that any visible list of available
+  // icon themes should replace empty string with "system" keyword.
+  // This needs to be done in FormSettings.
   return QString();
 #else
-  // It is expected that mini-oxygen is provided as fall-back theme for
+  // NOTE: It is expected that mini-oxygen is provided as fall-back theme for
   // windows edition of RSS Guard.
   return "mini-oxygen";
 #endif
@@ -91,7 +95,3 @@ QStringList ThemeFactory::getInstalledIconThemes() {
   icon_theme_names.removeDuplicates();
   return icon_theme_names;
 }
-
-// zjištění názvů témat dle d:\Programovani\Materiály\Qt\qt5\qtbase\src\gui\image\qiconloader.cpp,
-// řádek 172, jak se prochází ty složky
-// http://doublecmd.svn.sourceforge.net/viewvc/doublecmd/trunk/src/platform/unix/uunixicontheme.pas

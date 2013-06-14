@@ -1,4 +1,5 @@
 #include "gui/formmain.h"
+#include "gui/formsettings.h"
 #include "core/settings.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
@@ -32,6 +33,14 @@ void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionQuit, &QAction::triggered, this, &FormMain::quit);
 
+  // Menu "Tools" connections.
+  connect(m_ui->m_actionSettings, &QAction::triggered, this, &FormMain::showSettings);
+
   // General connections.
   connect(qApp, &QCoreApplication::aboutToQuit, this, &FormMain::cleanupResources);
+}
+
+void FormMain::showSettings() {
+  FormSettings form_settings(this);
+  form_settings.exec();
 }

@@ -157,6 +157,7 @@ set(APP_SOURCES
   src/gui/formmain.cpp
   src/gui/systemtrayicon.cpp
   src/gui/themefactory.cpp
+  src/gui/formsettings.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -178,6 +179,7 @@ set(APP_HEADERS
   # GUI headers.
   src/gui/formmain.h
   src/gui/systemtrayicon.h
+  src/gui/formsettings.h
 
   # CORE headers.
 )
@@ -185,6 +187,7 @@ set(APP_HEADERS
 # Add form files.
 set(APP_FORMS
   src/gui/formmain.ui
+  src/gui/formsettings.ui
 )
 
 # Add resources.
