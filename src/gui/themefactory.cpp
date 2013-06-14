@@ -20,7 +20,13 @@ void ThemeFactory::setupSearchPaths() {
 // TODO: Load currently selected "real" icon theme name instead of
 // Qt default "", which stands for currently active system icon theme name.
 QString ThemeFactory::getSystemIconTheme() {
+#if defined(Q_OS_LINUX)
   return QString();
+#else
+  // It is expected that oxygen is provided as fall-back theme for
+  // windows edition of RSS Guard.
+  return "oxygen";
+#endif
 }
 
 QString ThemeFactory::getCurrentIconTheme() {
