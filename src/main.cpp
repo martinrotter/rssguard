@@ -55,6 +55,9 @@ int main(int argc, char *argv[]) {
   // Add an extra path for non-system icon themes.
   ThemeFactory::setupSearchPaths();
 
+  // Load icon theme from settings.
+  ThemeFactory::loadCurrentIconTheme();
+
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);
   QtSingleApplication::setApplicationVersion(APP_VERSION);

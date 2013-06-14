@@ -6,6 +6,9 @@
 FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain) {
   m_ui->setupUi(this);
 
+  // for testing purposes
+  m_ui->toolButton->setIcon(QIcon::fromTheme("application-exit"));
+
   createConnections();
 }
 
