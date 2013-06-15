@@ -81,8 +81,8 @@
     </property>
     <property name="iconSize">
      <size>
-      <width>16</width>
-      <height>16</height>
+      <width>20</width>
+      <height>20</height>
      </size>
     </property>
    </widget>
@@ -213,7 +213,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">

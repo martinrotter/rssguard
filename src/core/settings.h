@@ -25,12 +25,12 @@ class Settings : public QSettings {
                   const QString &key,
                   const QVariant &value);
 
+    // Synchronises settings.
+    QSettings::Status checkSettings();
+
   protected:
     // Creates settings file in correct location.
     static QSettings::Status setupSettings();
-
-    // Synchronises settings.
-    QSettings::Status checkSettings();
 };
 
 #endif // SETTINGS_H

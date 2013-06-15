@@ -9,6 +9,11 @@ class ThemeFactory {
     ThemeFactory();
 
   public:
+    enum Type {
+      SYSTEM,
+      USER
+    };
+
     // Adds custom application path to be search for icons.
     static void setupSearchPaths();
 
