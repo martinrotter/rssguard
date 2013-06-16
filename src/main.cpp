@@ -63,11 +63,11 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::setApplicationVersion(APP_VERSION);
   QtSingleApplication::setOrganizationName(APP_AUTHORS);
   QtSingleApplication::setOrganizationDomain(APP_URL);
-  QtSingleApplication::setWindowIcon(QIcon(":/graphics/qonverter.png"));
+  QtSingleApplication::setWindowIcon(QIcon(APP_INFO_PATH));
+  qDebug("%s", qPrintable(APP_ICON_PATH));
 
-  // Instantiate main application window.
+  // Instantiate main application window and show it.
   FormMain window;
-
   window.show();
 
   if (Settings::getInstance().value(APP_CFG_GEN, "first_start", true).toBool()) {

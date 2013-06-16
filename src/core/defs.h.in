@@ -1,6 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include <QtGlobal>
 
 #define CMAKE_VERSION       "@CMAKE_VERSION@"
 #define CMAKE_SYSTEM        "@CMAKE_SYSTEM@"

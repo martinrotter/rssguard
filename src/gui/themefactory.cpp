@@ -88,7 +88,7 @@ void ThemeFactory::loadCurrentIconTheme() {
     return;
   }
   else {
-    qDebug("Loading theme '%s'.", qPrintable(theme_name));
+    qDebug("Loading theme %s.", qPrintable(theme_name));
     QIcon::setThemeName(theme_name);
 
     // In Linux, we need to deliver custom event for all widgets
