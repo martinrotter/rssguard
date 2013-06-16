@@ -16,6 +16,13 @@ class FormMain : public QMainWindow {
   protected:
     void createConnections();
 
+#if defined(Q_OS_LINUX)
+    bool event(QEvent *event);
+
+    // Sets up proper icons for this widget.
+    void setupIcons();
+#endif
+
   public slots:
     void processExecutionMessage(const QString &message);
     void quit();

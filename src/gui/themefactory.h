@@ -2,6 +2,7 @@
 #define THEMEFACTORY_H
 
 #include <QString>
+#include <QEvent>
 
 
 class ThemeFactory {
@@ -34,6 +35,21 @@ class ThemeFactory {
 
     // Sets icon theme with given name as the active one.
     static void setCurrentIconTheme(const QString &theme_name);
+};
+
+class ThemeFactoryEvent : public QEvent {
+  public:
+    enum Type {
+      IconThemeChange = 2000
+    };
+
+    ThemeFactoryEvent();
+    virtual ~ThemeFactoryEvent();
+
+    static QEvent::Type type();
+
+  private:
+    static QEvent::Type m_typeOfEvent;
 };
 
 #endif // THEMEFACTORY_H

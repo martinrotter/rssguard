@@ -1,5 +1,9 @@
+// for testing
+#include <QMessageBox>
+
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
+#include "gui/themefactory.h"
 #include "core/settings.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
@@ -28,6 +32,22 @@ void FormMain::quit() {
 void FormMain::cleanupResources() {
   qDebug("Cleaning up resources before the application exits.");
 }
+
+#if defined(Q_OS_LINUX)
+bool FormMain::event(QEvent *event) {
+  if (event->type() == ThemeFactoryEvent::type()) {
+    // Handle the change of icon theme.
+    setupIcons();
+    return true;
+  }
+
+  return QMainWindow::event(event);
+}
+
+void FormMain::setupIcons() {
+  // NOTE: Call QIcon::fromTheme for all needed widgets here.
+}
+#endif
 
 void FormMain::createConnections() {
   // Menu "File" connections.

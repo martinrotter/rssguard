@@ -4,9 +4,35 @@
 #include <QApplication>
 
 #include "gui/themefactory.h"
+#include "qtsingleapplication/qtsingleapplication.h"
 #include "core/settings.h"
 #include "core/defs.h"
 
+
+QEvent::Type ThemeFactoryEvent::m_typeOfEvent = QEvent::None;
+
+//
+// ThemeFactoryEvent class
+//
+
+ThemeFactoryEvent::ThemeFactoryEvent() : QEvent(ThemeFactoryEvent::type()) {
+}
+
+ThemeFactoryEvent::~ThemeFactoryEvent() {
+}
+
+QEvent::Type ThemeFactoryEvent::type()  {
+  if (m_typeOfEvent == QEvent::None) {
+    m_typeOfEvent = static_cast<QEvent::Type>(QEvent::registerEventType(2000));
+  }
+
+  return m_typeOfEvent;
+}
+
+
+//
+// ThemeFactory class
+//
 
 ThemeFactory::ThemeFactory() {
 }
@@ -64,6 +90,15 @@ void ThemeFactory::loadCurrentIconTheme() {
   else {
     qDebug("Loading theme '%s'.", qPrintable(theme_name));
     QIcon::setThemeName(theme_name);
+
+    // In Linux, we need to deliver custom event for all widgets
+    // to make sure they get a chance to redraw their icons.
+#if defined(Q_OS_LINUX)
+    foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
+      QtSingleApplication::postEvent((QObject*) widget,
+                                     new ThemeFactoryEvent());
+    }
+#endif
   }
 }
 
