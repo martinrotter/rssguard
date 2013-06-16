@@ -161,6 +161,7 @@ set(APP_SOURCES
   src/gui/systemtrayicon.cpp
   src/gui/themefactory.cpp
   src/gui/formsettings.cpp
+  src/gui/formwelcome.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -183,6 +184,7 @@ set(APP_HEADERS
   src/gui/formmain.h
   src/gui/systemtrayicon.h
   src/gui/formsettings.h
+  src/gui/formwelcome.h
 
   # CORE headers.
 )
@@ -191,6 +193,7 @@ set(APP_HEADERS
 set(APP_FORMS
   src/gui/formmain.ui
   src/gui/formsettings.ui
+  src/gui/formwelcome.ui
 )
 
 # Add resources.
@@ -213,6 +216,10 @@ set(APP_TRANSLATIONS_WO_QT
 # Add skins.
 set(APP_SKIN_PLAIN
   # resources/skins/base/plain.qss
+)
+
+set(APP_MISC
+  # resources/text/changelog
 )
 
 # Wrap files, create moc files.
@@ -273,7 +280,7 @@ if(WIN32)
           DESTINATION ./)
   install(FILES ${APP_QM}
           DESTINATION ./l10n)
-  install(DIRECTORY resources/text
+  install(FILES ${APP_MISC}
           DESTINATION ./)
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
@@ -287,7 +294,7 @@ elseif(UNIX)
           DESTINATION share/icons/hicolor/256x256/apps/)
   install(FILES ${APP_QM}
           DESTINATION share/${APP_LOW_NAME}/l10n)
-  install(DIRECTORY resources/text
+  install(FILES ${APP_MISC}
           DESTINATION share/${APP_LOW_NAME}/information)
 endif(WIN32)
 

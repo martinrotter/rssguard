@@ -8,6 +8,7 @@
 #include "core/settings.h"
 #include "gui/themefactory.h"
 #include "gui/formmain.h"
+#include "gui/formwelcome.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 
@@ -66,15 +67,16 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::setWindowIcon(QIcon(APP_INFO_PATH));
   qDebug("%s", qPrintable(APP_ICON_PATH));
 
-  // Instantiate main application window and show it.
+  // Instantiate main application window.
   FormMain window;
-  window.show();
 
   if (Settings::getInstance().value(APP_CFG_GEN, "first_start", true).toBool()) {
-    // TODO: Open initial "Welcome" dialog here.
     Settings::getInstance().setValue(APP_CFG_GEN, "first_start", false);
+    FormWelcome(&window).exec();
   }
 
+  // Display main window.
+  window.show();
 
   // Setup single-instance behavior.
   application.setActivationWindow(&window, true);
