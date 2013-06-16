@@ -3,17 +3,18 @@ cmake_minimum_required(VERSION 2.8.11)
 # Setup basic variables.
 project(rssguard)
 set(APP_NAME "RSS Guard")
+set(APP_UP_NAME "RSSGuard")
 set(APP_LOW_NAME "rssguard")
 set(APP_VERSION "2.0.0-prealpha-1")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
 
-message(STATUS "[${APP_LOW_NAME}] Welcome to RSS Guard compilation process.")
+message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
 # Setup name for executable file.
 if(APPLE)
-  set(EXE_NAME "RSSGuard")
+  set(EXE_NAME ${APP_UP_NAME})
 else(APPLE)
   set(EXE_NAME ${APP_LOW_NAME})
 endif(APPLE)
@@ -54,10 +55,11 @@ configure_file (
 
 # Configure executable "properties" for Windows.
 if(WIN32)
-configure_file (
- ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
- ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
-)
+  message(STATUS "[${APP_LOW_NAME}] Generating executable file properties.")
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
+  )
 endif(WIN32)
 
 # Configure desktop entry for Linux.
@@ -73,6 +75,7 @@ endif(UNIX)
 if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
   message(STATUS "[${APP_LOW_NAME}] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")
   set(CMAKE_BUILD_TYPE MinSizeRel)
+  message(STATUS "[${APP_LOW_NAME}] Output executable file is optimized for minimum size.")
 else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
   message(STATUS "[${APP_LOW_NAME}] A debug build is chosen. -DDEBUG is defined.")
   add_definitions(-DDEBUG)
@@ -109,7 +112,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
   endif(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
 
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+  add_definitions(-std=c++11 -stdlib=libc++)
 elseif(${MSVC_VERSION} VERSION_LESS 1600)
   message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
 endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
@@ -212,27 +215,6 @@ set(APP_SKIN_PLAIN
   # resources/skins/base/plain.qss
 )
 
-set(APP_SKIN_DARK
-  # resources/skins/fancy/dark.qss
-)
-
-set(APP_SKIN_DARK_IMAGES
-  # resources/skins/fancy/images/down_arrow.png
-  # resources/skins/fancy/images/handle.png
-  # resources/skins/fancy/images/checkbox.png
-)
-
-# Add needed text files.
-set(APP_MISC
-  # resources/text/COPYING_GNU_GPL_HTML
-  # resources/text/AUTHORS
-  # resources/text/COPYING_GNU_GPL
-  # resources/text/COPYING_BSD
-  # resources/text/COPYING_FLAGS
-  # resources/text/COPYING_GNU_LGPL_HTML
-  # resources/text/CHANGELOG
-)
-
 # Wrap files, create moc files.
 qt5_wrap_cpp(APP_MOC ${APP_HEADERS})
 qt5_wrap_ui(APP_UI ${APP_FORMS})
@@ -250,8 +232,6 @@ include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/src
-  ${Qt5Xml_INCLUDE_DIRS}
-  ${Qt5Webkit_INCLUDE_DIRS}
 )
 
 if(WIN32)
@@ -278,30 +258,37 @@ qt5_use_modules(${EXE_NAME}
   Sql
   Network
   Xml
+  WebKit
+  WebKitWidgets
 )
 
 # Installation stage.
 if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows.")
-  install(TARGETS ${EXE_NAME} RUNTIME DESTINATION ./)
-  install(FILES resources/graphics/${APP_LOW_NAME}.png DESTINATION ./)
-  install(FILES ${APP_QM} DESTINATION ./l10n)
-  install(FILES ${APP_SKIN_PLAIN} DESTINATION ./skins/base)
-  install(FILES ${APP_SKIN_MODERN} DESTINATION ./skins/base)
-  install(FILES ${APP_SKIN_DARK} DESTINATION ./skins/fancy)
-  install(FILES ${APP_SKIN_DARK_IMAGES} DESTINATION ./skins/fancy/images)
-  install(FILES ${APP_MISC} DESTINATION ./)
+  install(TARGETS ${EXE_NAME}
+          RUNTIME DESTINATION ./)
+  install(DIRECTORY resources/graphics/themes/mini-oxygen
+          DESTINATION ./themes)
+  install(FILES resources/graphics/${APP_LOW_NAME}.png
+          DESTINATION ./)
+  install(FILES ${APP_QM}
+          DESTINATION ./l10n)
+  install(DIRECTORY resources/text
+          DESTINATION ./)
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
-  install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop DESTINATION share/applications)
-  install(FILES resources/graphics/${APP_LOW_NAME}.png DESTINATION share/icons/hicolor/256x256/apps/)
-  install(FILES ${APP_QM} DESTINATION share/${APP_LOW_NAME}/l10n)
-  install(FILES ${APP_SKIN_PLAIN} DESTINATION share/${APP_LOW_NAME}/skins/base)
-  install(FILES ${APP_SKIN_MODERN} DESTINATION share/${APP_LOW_NAME}/skins/base)
-  install(FILES ${APP_SKIN_DARK} DESTINATION share/${APP_LOW_NAME}/skins/fancy)
-  install(FILES ${APP_SKIN_DARK_IMAGES} DESTINATION share/${APP_LOW_NAME}/skins/fancy/images)
-  install(FILES ${APP_MISC} DESTINATION share/${APP_LOW_NAME}/information)
+  install(TARGETS ${EXE_NAME}
+          RUNTIME DESTINATION bin)
+  install(DIRECTORY resources/graphics/themes/mini-oxygen
+          DESTINATION share/${APP_LOW_NAME}/themes)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
+          DESTINATION share/applications)
+  install(FILES resources/graphics/${APP_LOW_NAME}.png
+          DESTINATION share/icons/hicolor/256x256/apps/)
+  install(FILES ${APP_QM}
+          DESTINATION share/${APP_LOW_NAME}/l10n)
+  install(DIRECTORY resources/text
+          DESTINATION share/${APP_LOW_NAME}/information)
 endif(WIN32)
 
 # Custom target for packaging.
@@ -309,7 +296,7 @@ set(CPACK_PACKAGE_NAME ${APP_LOW_NAME})
 set(CPACK_PACKAGE_VERSION ${APP_VERSION})
 set(CPACK_SOURCE_GENERATOR "TGZ")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-src")
-set(CPACK_IGNORE_FILES "/ideas/;/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
+set(CPACK_IGNORE_FILES "/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
 set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
 
 # Load packaging facilities.
