@@ -1,6 +1,8 @@
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
+#include "gui/systemtrayicon.h"
 #include "core/settings.h"
+#include "core/defs.h"
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -27,10 +29,27 @@ void FormSettings::saveSettings() {
   //saveLanguages();
 
   // Make sure that settings is synced.
-  Settings::getInstance().checkSettings();
+  Settings::getInstance()->checkSettings();
 }
 
 void FormSettings::loadInterface() {
+  // Load settings of tray icon.
+  if (SystemTrayIcon::isSystemTrayAvailable()) {
+    // načti
+    m_ui->m_radioTrayOff->setChecked(!Settings::getInstance()->value(APP_CFG_GUI,
+                                                                     "use_tray_icon",
+                                                                     true).toBool());
+    m_ui->m_cmbTrayClose->setCurrentIndex(Settings::getInstance()->value(APP_CFG_GUI,
+                                                                         "close_win_action",
+                                                                         0).toInt());
+  }
+  else {
+    m_ui->m_radioTrayOff->setText(tr("disable (Tray icon is not available.)"));
+    m_ui->m_radioTrayOff->setChecked(true);
+    m_ui->m_grpTray->setDisabled(true);
+  }
+
+  // Load settings of icon theme.
   QString current_theme = ThemeFactory::getCurrentIconTheme();
 #if defined(Q_OS_LINUX)
   QString system_theme = ThemeFactory::getSystemIconTheme();
@@ -64,6 +83,17 @@ void FormSettings::loadInterface() {
 }
 
 void FormSettings::saveInterface() {
+  // Save tray icon.
+  if (SystemTrayIcon::isSystemTrayAvailable()) {
+    Settings::getInstance()->setValue(APP_CFG_GUI, "use_tray_icon",
+                                      m_ui->m_radioTrayOn->isChecked());
+    Settings::getInstance()->setValue(APP_CFG_GUI, "close_win_action",
+                                      m_ui->m_cmbTrayClose->currentIndex());
+    // TODO: Switch tray icon here (destroy it/create it) and
+    // if icon is should be destroyed and no main window is visible,
+    // then show main window and then destroy tray icon.
+  }
+
   // Save selected icon theme.
   ThemeFactory::setCurrentIconTheme(m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString());
 }

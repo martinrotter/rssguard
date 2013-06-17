@@ -13,6 +13,8 @@ class FormMain : public QMainWindow {
     explicit FormMain(QWidget *parent = 0);
     ~FormMain();
 
+    static FormMain *getInstance();
+
   protected:
     void createConnections();
 
@@ -33,6 +35,8 @@ class FormMain : public QMainWindow {
     
   private:
     Ui::FormMain *m_ui;
+
+    static FormMain *m_this;
 };
 
 #endif // FORMMAIN_H

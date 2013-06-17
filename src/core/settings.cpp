@@ -44,12 +44,12 @@ QSettings::Status Settings::checkSettings() {
   return s_instance->status();
 }
 
-Settings &Settings::getInstance() {
+Settings *Settings::getInstance() {
   if (s_instance.isNull()) {
     setupSettings();
   }
 
-  return *s_instance;
+  return s_instance;
 }
 
 QVariant Settings::value(const QString &section,

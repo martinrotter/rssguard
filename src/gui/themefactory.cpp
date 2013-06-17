@@ -62,16 +62,16 @@ QString ThemeFactory::getSystemIconTheme() {
 }
 
 QString ThemeFactory::getCurrentIconTheme() {
-  QString current_theme_name = Settings::getInstance().value(APP_CFG_GUI,
-                                                             "icon_theme",
-                                                             getSystemIconTheme()).toString();
+  QString current_theme_name = Settings::getInstance()->value(APP_CFG_GUI,
+                                                              "icon_theme",
+                                                              getSystemIconTheme()).toString();
   return current_theme_name;
 }
 
 void ThemeFactory::setCurrentIconTheme(const QString &theme_name) {
-  Settings::getInstance().setValue(APP_CFG_GUI,
-                                   "icon_theme",
-                                   theme_name);
+  Settings::getInstance()->setValue(APP_CFG_GUI,
+                                    "icon_theme",
+                                    theme_name);
   loadCurrentIconTheme();
 }
 

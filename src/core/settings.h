@@ -10,7 +10,7 @@ class Settings : public QSettings {
 
   public:
     // Singleton getter.
-    static Settings &getInstance();
+    static Settings *getInstance();
 
     // Constructor and destructor.
     Settings(const QString & file_name, Format format, QObject * parent = 0);

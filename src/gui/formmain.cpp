@@ -1,21 +1,39 @@
 // for testing
 #include <QMessageBox>
+#include <QProcess>
 
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
+#include "gui/systemtrayicon.h"
 #include "core/settings.h"
+#include "core/defs.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
+
+FormMain *FormMain::m_this;
 
 FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain) {
   m_ui->setupUi(this);
 
+  // Initialize singleton.
+  m_this = this;
+
+  // Establish connections.
   createConnections();
+
+  // testing purposes
+  SystemTrayIcon *icon = SystemTrayIcon::getInstance();
+  icon->setIcon(QIcon(APP_ICON_PATH));
+  icon->show();
 }
 
 FormMain::~FormMain() {
   delete m_ui;
+}
+
+FormMain *FormMain::getInstance() {
+  return m_this;
 }
 
 void FormMain::processExecutionMessage(const QString &message) {

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>586</width>
-    <height>355</height>
+    <width>680</width>
+    <height>414</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       </size>
      </property>
      <property name="currentRow">
-      <number>0</number>
+      <number>-1</number>
      </property>
      <item>
       <property name="text">
@@ -33,6 +33,11 @@
      <item>
       <property name="text">
        <string>User interface</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Language</string>
       </property>
      </item>
     </widget>
@@ -45,23 +50,30 @@
      <widget class="QWidget" name="m_pageGeneral"/>
      <widget class="QWidget" name="m_pageUi">
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
-        <widget class="QScrollArea" name="m_scrollUi">
-         <property name="frameShape">
-          <enum>QFrame::NoFrame</enum>
+        <widget class="QTabWidget" name="m_tabUi">
+         <property name="tabPosition">
+          <enum>QTabWidget::North</enum>
          </property>
-         <property name="widgetResizable">
-          <bool>true</bool>
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <widget class="QWidget" name="m_scrollUiContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>394</width>
-            <height>290</height>
-           </rect>
-          </property>
+         <widget class="QWidget" name="m_tabIconSkin">
+          <attribute name="title">
+           <string>Icons &amp;&amp; skins</string>
+          </attribute>
           <layout class="QFormLayout" name="formLayout">
            <item row="0" column="0">
             <widget class="QLabel" name="m_lblIconTheme">
@@ -76,12 +88,82 @@
            <item row="0" column="1">
             <widget class="QComboBox" name="m_cmbIconTheme"/>
            </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="m_lblSkin">
+             <property name="text">
+              <string>Skin</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="m_cmbSkin"/>
+           </item>
           </layout>
+         </widget>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Notifications</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout_3">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="m_grpTray">
+             <property name="title">
+              <string>Tray icon</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_2">
+              <item row="0" column="0" colspan="2">
+               <widget class="QRadioButton" name="m_radioTrayOff">
+                <property name="text">
+                 <string>disable</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QRadioButton" name="m_radioTrayOn">
+                <property name="text">
+                 <string>enable</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="m_lblTrayClose">
+                <property name="text">
+                 <string>When main window is closed, then</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="m_cmbTrayClose">
+                <item>
+                 <property name="text">
+                  <string>minimize it.</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>quit the application.</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="m_tabFonts">
+          <attribute name="title">
+           <string>Fonts</string>
+          </attribute>
          </widget>
         </widget>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="m_pageLanguage"/>
     </widget>
    </item>
    <item row="1" column="0" colspan="2">
@@ -143,6 +225,70 @@
     <hint type="destinationlabel">
      <x>370</x>
      <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioTrayOff</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_lblTrayClose</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>370</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioTrayOff</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_cmbTrayClose</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>370</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>478</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioTrayOn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_lblTrayClose</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>370</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioTrayOn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_cmbTrayClose</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>370</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>478</x>
+     <y>135</y>
     </hint>
    </hints>
   </connection>

@@ -65,13 +65,12 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::setOrganizationName(APP_AUTHORS);
   QtSingleApplication::setOrganizationDomain(APP_URL);
   QtSingleApplication::setWindowIcon(QIcon(APP_INFO_PATH));
-  qDebug("%s", qPrintable(APP_ICON_PATH));
 
   // Instantiate main application window.
   FormMain window;
 
-  if (Settings::getInstance().value(APP_CFG_GEN, "first_start", true).toBool()) {
-    Settings::getInstance().setValue(APP_CFG_GEN, "first_start", false);
+  if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
+    Settings::getInstance()->setValue(APP_CFG_GEN, "first_start", false);
     FormWelcome(&window).exec();
   }
 
