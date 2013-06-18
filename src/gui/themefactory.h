@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QEvent>
+#include <QIcon>
 
 
 class ThemeFactory {
@@ -35,6 +36,11 @@ class ThemeFactory {
 
     // Sets icon theme with given name as the active one.
     static void setCurrentIconTheme(const QString &theme_name);
+
+    // Wrapper for QIcon::fromTheme.
+    // If icon is not found in user-defined icon theme,
+    // then it is searched in system-default theme (ThemeFactory::getSystemIconTheme()).
+    static QIcon fromTheme(const QString & name, const QIcon & fallback = QIcon());
 };
 
 class ThemeFactoryEvent : public QEvent {

@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
   // This is useful for styles, encoders, ...
   // This is probably not needed on Windows or Linux, not sure about Mac OS X.
 #if defined(Q_OS_MAC)
-  QApplication::addLibraryPath(APP_PLUGIN_PATH);
+  QtSingleApplication::addLibraryPath(APP_PLUGIN_PATH);
 #endif
 
   // Add an extra path for non-system icon themes.
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::setApplicationVersion(APP_VERSION);
   QtSingleApplication::setOrganizationName(APP_AUTHORS);
   QtSingleApplication::setOrganizationDomain(APP_URL);
-  QtSingleApplication::setWindowIcon(QIcon(APP_INFO_PATH));
+  QtSingleApplication::setWindowIcon(QIcon(APP_ICON_PATH));
 
   // Instantiate main application window.
   FormMain window;

@@ -24,7 +24,6 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
   // testing purposes
   SystemTrayIcon *icon = SystemTrayIcon::getInstance();
-  icon->setIcon(QIcon(APP_ICON_PATH));
   icon->show();
 }
 

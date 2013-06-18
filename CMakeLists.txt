@@ -276,8 +276,12 @@ if(WIN32)
           RUNTIME DESTINATION ./)
   install(DIRECTORY resources/graphics/themes/mini-oxygen
           DESTINATION ./themes)
-  install(FILES resources/graphics/${APP_LOW_NAME}.png
-          DESTINATION ./)
+  install(FILES resources/graphics/${APP_LOW_NAME}_128.png
+          DESTINATION ./
+          RENAME ${APP_LOW_NAME}.png)
+  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
+          DESTINATION ./
+          RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM}
           DESTINATION ./l10n)
   install(FILES ${APP_MISC}
@@ -290,8 +294,12 @@ elseif(UNIX)
           DESTINATION share/${APP_LOW_NAME}/themes)
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
           DESTINATION share/applications)
-  install(FILES resources/graphics/${APP_LOW_NAME}.png
-          DESTINATION share/icons/hicolor/256x256/apps/)
+  install(FILES resources/graphics/${APP_LOW_NAME}_128.png
+          DESTINATION share/icons/hicolor/128x128/apps/
+          RENAME ${APP_LOW_NAME}.png)
+  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
+          DESTINATION share/icons/hicolor/128x128/apps/
+          RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM}
           DESTINATION share/${APP_LOW_NAME}/l10n)
   install(FILES ${APP_MISC}

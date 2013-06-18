@@ -68,6 +68,10 @@ QString ThemeFactory::getCurrentIconTheme() {
   return current_theme_name;
 }
 
+QIcon ThemeFactory::fromTheme(const QString &name, const QIcon &fallback) {
+  return QIcon::fromTheme(name, fallback);
+}
+
 void ThemeFactory::setCurrentIconTheme(const QString &theme_name) {
   Settings::getInstance()->setValue(APP_CFG_GUI,
                                     "icon_theme",
