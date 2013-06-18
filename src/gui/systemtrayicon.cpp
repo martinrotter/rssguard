@@ -1,4 +1,5 @@
 #include <QPainter>
+#include <QTimer>
 
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
@@ -20,6 +21,7 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
 
 SystemTrayIcon::~SystemTrayIcon() {
   qDebug("Destroying SystemTrayIcon instance.");
+  hide();
 }
 
 bool SystemTrayIcon::isSystemTrayAvailable() {
@@ -40,6 +42,19 @@ SystemTrayIcon *SystemTrayIcon::getInstance() {
   }
 
   return m_trayIcon;
+}
+
+void SystemTrayIcon::show_private() {
+  QSystemTrayIcon::show();
+  qDebug("Tray icon displayed.");
+}
+
+void SystemTrayIcon::show() {
+  // Delay avoids race conditions and tray icon is properly displayed.
+  qDebug("Showing tray icon with 1000 ms delay.");
+  QTimer::singleShot(1000,
+                     Qt::CoarseTimer,
+                     this, SLOT(show_private()));
 }
 
 void SystemTrayIcon::setNumber(int number) {

@@ -32,6 +32,10 @@ class SystemTrayIcon : public QSystemTrayIcon {
   signals:
     
   public slots:
+    void show();
+
+  private slots:
+    void show_private();
 
   private:
     QString m_normalIcon;
