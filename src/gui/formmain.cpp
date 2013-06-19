@@ -46,6 +46,13 @@ void FormMain::quit() {
   qApp->quit();
 }
 
+void FormMain::display() {
+  setWindowState(windowState() & ~Qt::WindowMinimized);
+  raise();
+  activateWindow();
+  QtSingleApplication::alert(this);
+}
+
 void FormMain::cleanupResources() {
   qDebug("Cleaning up resources before the application exits.");
 }

@@ -5,12 +5,14 @@
 #include <QPointer>
 
 
+class FormMain;
+
 class SystemTrayIcon : public QSystemTrayIcon {
     Q_OBJECT
   public:
     explicit SystemTrayIcon(const QString &normal_icon,
                             const QString &plain_icon,
-                            QObject *parent = 0);
+                            FormMain *parent = 0);
     ~SystemTrayIcon();
 
     // Returns true if tray icon CAN be constructed on this machine.
@@ -29,6 +31,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
 
     // TODO: Implement method for manual clearing of the tray icon. Creating of tray icon
     // handled by getInstance().
+    static void deleteInstance();
   signals:
     
   public slots:
@@ -41,7 +44,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     QString m_normalIcon;
     QString m_plainIcon;
 
-    static QPointer<SystemTrayIcon> m_trayIcon;
+    static QPointer<SystemTrayIcon> s_trayIcon;
 };
 
 #endif // SYSTEMTRAYICON_H

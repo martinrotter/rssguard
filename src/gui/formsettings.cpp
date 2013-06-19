@@ -92,6 +92,12 @@ void FormSettings::saveInterface() {
     // TODO: Switch tray icon here (destroy it/create it) and
     // if icon is should be destroyed and no main window is visible,
     // then show main window and then destroy tray icon.
+    if (Settings::getInstance()->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
+      SystemTrayIcon::getInstance()->show();
+    }
+    else {
+      SystemTrayIcon::deleteInstance();
+    }
   }
 
   // Save selected icon theme.

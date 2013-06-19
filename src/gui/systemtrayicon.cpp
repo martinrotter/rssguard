@@ -7,11 +7,11 @@
 #include "core/defs.h"
 
 
-QPointer<SystemTrayIcon> SystemTrayIcon::m_trayIcon;
+QPointer<SystemTrayIcon> SystemTrayIcon::s_trayIcon;
 
 SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
                                const QString &plain_icon,
-                               QObject *parent)
+                               FormMain *parent)
   : QSystemTrayIcon(parent), m_normalIcon(normal_icon), m_plainIcon(plain_icon) {
   qDebug("Creating SystemTrayIcon instance.");
 
@@ -35,13 +35,21 @@ bool SystemTrayIcon::isSystemTrayActivated() {
 }
 
 SystemTrayIcon *SystemTrayIcon::getInstance() {
-  if (m_trayIcon.isNull()) {
-    m_trayIcon = new SystemTrayIcon(APP_ICON_PATH,
+  if (s_trayIcon.isNull()) {
+    s_trayIcon = new SystemTrayIcon(APP_ICON_PATH,
                                     APP_ICON_PLAIN_PATH,
                                     FormMain::getInstance());
   }
 
-  return m_trayIcon;
+  return s_trayIcon;
+}
+
+void SystemTrayIcon::deleteInstance() {
+  if (!s_trayIcon.isNull()) {
+    qDebug("Disabling tray icon and raising main application window.");
+    static_cast<FormMain*>((*s_trayIcon).parent())->display();
+    delete s_trayIcon.data();
+  }
 }
 
 void SystemTrayIcon::show_private() {
