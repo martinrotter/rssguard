@@ -1,6 +1,7 @@
 // for testing
 #include <QMessageBox>
 #include <QProcess>
+#include <QCloseEvent>
 
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
@@ -21,10 +22,6 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
   // Establish connections.
   createConnections();
-
-  // testing purposes
-  SystemTrayIcon *icon = SystemTrayIcon::getInstance();
-  icon->show();
 }
 
 FormMain::~FormMain() {
@@ -57,7 +54,7 @@ void FormMain::cleanupResources() {
   qDebug("Cleaning up resources before the application exits.");
 }
 
-#if defined(Q_OS_LINUX)
+#if !defined(Q_OS_WIN)
 bool FormMain::event(QEvent *event) {
   if (event->type() == ThemeFactoryEvent::type()) {
     // Handle the change of icon theme.
@@ -82,6 +79,24 @@ void FormMain::createConnections() {
 
   // General connections.
   connect(qApp, &QCoreApplication::aboutToQuit, this, &FormMain::cleanupResources);
+}
+
+void FormMain::closeEvent(QCloseEvent *event) {
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    if (Settings::getInstance()->value(APP_CFG_GUI,
+                                       "close_win_action",
+                                       0).toInt() == 0) {
+      // User selected to minimize the application if its main
+      // window gets closed and tray icon is activated.
+      hide();
+      event->ignore();
+    }
+    else {
+      // User selected to quit the application if its main
+      // window gets closed and tray icon is activated.
+      qApp->quit();
+    }
+  }
 }
 
 void FormMain::showSettings() {

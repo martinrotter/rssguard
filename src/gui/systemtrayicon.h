@@ -8,7 +8,8 @@
 class FormMain;
 
 class SystemTrayIcon : public QSystemTrayIcon {
-    Q_OBJECT
+    Q_OBJECT  
+
   public:
     explicit SystemTrayIcon(const QString &normal_icon,
                             const QString &plain_icon,

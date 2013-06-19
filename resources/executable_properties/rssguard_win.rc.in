@@ -12,7 +12,7 @@ BEGIN
         BEGIN
 	    VALUE "CompanyName",        "@APP_AUTHOR@"
 	    VALUE "FileDescription",    "@APP_NAME@"
-            VALUE "FileVersion",        "1.0.0.0"
+            VALUE "FileVersion",        "@APP_VERSION@"
 	    VALUE "InternalName",       "@APP_AUTHOR@"
             VALUE "LegalCopyright",     "Copyright © 2011-2013 Martin Rotter"
 	    VALUE "LegalTrademarks1",   "Some rights reserved"

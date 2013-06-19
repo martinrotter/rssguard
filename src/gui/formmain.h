@@ -17,8 +17,9 @@ class FormMain : public QMainWindow {
 
   protected:
     void createConnections();
+    void closeEvent(QCloseEvent *event);
 
-#if defined(Q_OS_LINUX)
+#if !defined(Q_OS_WIN)
     bool event(QEvent *event);
 
     // Sets up proper icons for this widget.

@@ -35,7 +35,6 @@ void FormSettings::saveSettings() {
 void FormSettings::loadInterface() {
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    // načti
     m_ui->m_radioTrayOff->setChecked(!Settings::getInstance()->value(APP_CFG_GUI,
                                                                      "use_tray_icon",
                                                                      true).toBool());
@@ -43,6 +42,7 @@ void FormSettings::loadInterface() {
                                                                          "close_win_action",
                                                                          0).toInt());
   }
+  // Tray icon is not supported on this machine.
   else {
     m_ui->m_radioTrayOff->setText(tr("disable (Tray icon is not available.)"));
     m_ui->m_radioTrayOff->setChecked(true);

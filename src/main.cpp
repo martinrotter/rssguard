@@ -9,6 +9,7 @@
 #include "gui/themefactory.h"
 #include "gui/formmain.h"
 #include "gui/formwelcome.h"
+#include "gui/systemtrayicon.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 
@@ -69,6 +70,7 @@ int main(int argc, char *argv[]) {
   // Instantiate main application window.
   FormMain window;
 
+  // Display welcome dialog if application is launched for the first time.
   if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
     Settings::getInstance()->setValue(APP_CFG_GEN, "first_start", false);
     FormWelcome(&window).exec();
@@ -76,6 +78,11 @@ int main(int argc, char *argv[]) {
 
   // Display main window.
   window.show();
+
+  // Display tray icon if it is enabled and available.
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    SystemTrayIcon::getInstance()->show();
+  }
 
   // Setup single-instance behavior.
   application.setActivationWindow(&window, true);
