@@ -45,8 +45,9 @@ void FormMain::quit() {
 
 void FormMain::display() {
   setWindowState(windowState() & ~Qt::WindowMinimized);
-  raise();
+  show();
   activateWindow();
+  raise();
   QtSingleApplication::alert(this);
 }
 
@@ -100,6 +101,5 @@ void FormMain::closeEvent(QCloseEvent *event) {
 }
 
 void FormMain::showSettings() {
-  FormSettings form_settings(this);
-  form_settings.exec();
+  FormSettings(this).exec();
 }

@@ -1,6 +1,7 @@
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
 #include "gui/systemtrayicon.h"
+#include "gui/formmain.h"
 #include "core/settings.h"
 #include "core/defs.h"
 
@@ -96,6 +97,7 @@ void FormSettings::saveInterface() {
       SystemTrayIcon::getInstance()->show();
     }
     else {
+      FormMain::getInstance()->display();
       SystemTrayIcon::deleteInstance();
     }
   }

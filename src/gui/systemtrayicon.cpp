@@ -3,6 +3,7 @@
 
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
+#include "gui/formsettings.h"
 #include "core/settings.h"
 #include "core/defs.h"
 

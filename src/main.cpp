@@ -77,6 +77,7 @@ int main(int argc, char *argv[]) {
   }
 
   // Display main window.
+  // TODO: Switchable "start minimized" function.
   window.show();
 
   // Display tray icon if it is enabled and available.
