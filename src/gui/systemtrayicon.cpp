@@ -111,9 +111,7 @@ void SystemTrayIcon::setNumber(int number) {
                            Qt::AlignVCenter | Qt::AlignCenter ,
                            QString::number(number));
     }
-
     trayPainter.end();
-
     QSystemTrayIcon::setIcon(QIcon(background));
   }
 }

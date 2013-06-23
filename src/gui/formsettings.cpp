@@ -42,6 +42,9 @@ void FormSettings::loadInterface() {
     m_ui->m_cmbTrayClose->setCurrentIndex(Settings::getInstance()->value(APP_CFG_GUI,
                                                                          "close_win_action",
                                                                          0).toInt());
+    m_ui->m_checkHidden->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
+                                                                   "start_hidden",
+                                                                   false).toBool());
   }
   // Tray icon is not supported on this machine.
   else {
@@ -90,9 +93,8 @@ void FormSettings::saveInterface() {
                                       m_ui->m_radioTrayOn->isChecked());
     Settings::getInstance()->setValue(APP_CFG_GUI, "close_win_action",
                                       m_ui->m_cmbTrayClose->currentIndex());
-    // TODO: Switch tray icon here (destroy it/create it) and
-    // if icon is should be destroyed and no main window is visible,
-    // then show main window and then destroy tray icon.
+    Settings::getInstance()->setValue(APP_CFG_GUI, "start_hidden",
+                                      m_ui->m_checkHidden->isChecked());
     if (Settings::getInstance()->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
       SystemTrayIcon::getInstance()->show();
     }

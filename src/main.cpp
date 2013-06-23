@@ -77,8 +77,14 @@ int main(int argc, char *argv[]) {
   }
 
   // Display main window.
-  // TODO: Switchable "start minimized" function.
-  window.show();
+  if (Settings::getInstance()->value(APP_CFG_GUI, "start_hidden",
+                                     false).toBool() &&
+      SystemTrayIcon::isSystemTrayActivated()) {
+    window.hide();
+  }
+  else {
+    window.show();
+  }
 
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {

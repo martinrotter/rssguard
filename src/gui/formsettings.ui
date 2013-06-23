@@ -23,7 +23,7 @@
       </size>
      </property>
      <property name="currentRow">
-      <number>-1</number>
+      <number>0</number>
      </property>
      <item>
       <property name="text">
@@ -100,7 +100,7 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_3">
+         <widget class="QWidget" name="m_tabNotifications">
           <attribute name="title">
            <string>Notifications</string>
           </attribute>
@@ -149,6 +149,13 @@
                 </item>
                </widget>
               </item>
+              <item row="3" column="0" colspan="2">
+               <widget class="QCheckBox" name="m_checkHidden">
+                <property name="text">
+                 <string>Start application hidden</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
@@ -158,6 +165,16 @@
           <attribute name="title">
            <string>Fonts</string>
           </attribute>
+         </widget>
+         <widget class="QWidget" name="m_tabMisc">
+          <attribute name="title">
+           <string>Miscellaneous</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout_4">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+          </layout>
          </widget>
         </widget>
        </item>
@@ -229,38 +246,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>m_radioTrayOff</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_lblTrayClose</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>370</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>292</x>
-     <y>135</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_radioTrayOff</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_cmbTrayClose</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>370</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>478</x>
-     <y>135</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>m_radioTrayOn</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_lblTrayClose</receiver>
@@ -289,6 +274,22 @@
     <hint type="destinationlabel">
      <x>478</x>
      <y>135</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioTrayOn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_checkHidden</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>
