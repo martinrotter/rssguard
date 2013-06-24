@@ -53,20 +53,16 @@ void FormSettings::loadGeneral() {
 }
 
 void FormSettings::saveGeneral() {
-  // Save auto-start on Windows.
-#if defined(Q_OS_WIN)
-  QSettings sett("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  if (m_ui->m_checkAutostart->isChecked()) {
-    sett.setValue(APP_LOW_NAME, QApplication::applicationFilePath().replace('/', '\\'));
+  // If auto-start feature is available and user wants
+  // to turn it on, then turn it on.
+  if (SystemFactory::getAutoStartStatus() != SystemFactory::Unavailable) {
+    if (m_ui->m_checkAutostart->isChecked()) {
+      SystemFactory::setAutoStartStatus(SystemFactory::Enabled);
+    }
+    else {
+      SystemFactory::setAutoStartStatus(SystemFactory::Disabled);
+    }
   }
-  else {
-    sett.remove(APP_LOW_NAME);
-  }
-
-  // Save auto-start on Linux.
-#elif defined(Q_OS_LINUX)
-
-#endif
 }
 
 void FormSettings::loadInterface() {

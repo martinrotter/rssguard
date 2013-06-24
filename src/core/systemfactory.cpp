@@ -1,6 +1,11 @@
 #include <QString>
 #include <QFile>
 
+#if defined(Q_OS_WIN)
+#include <QSettings>
+#include "qtsingleapplication/qtsingleapplication.h"
+#endif
+
 #include "core/systemfactory.h"
 #include "core/defs.h"
 
@@ -11,9 +16,12 @@ SystemFactory::SystemFactory() {
 SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
-  QSettings sett("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  bool autostart_enabled = sett.value(APP_LOW_NAME,
-                                      "").toString().replace('\\', '/') == QApplication::applicationFilePath();
+  QSettings registr_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                        QSettings::NativeFormat);
+  bool autostart_enabled = registr_key.value(APP_LOW_NAME,
+                                             "").toString().replace('\\',
+                                                                    '/') ==
+                           QtSingleApplication::applicationFilePath();
 
   if (autostart_enabled) {
     return SystemFactory::Enabled;
@@ -65,30 +73,36 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();
 
+  // Auto-start feature is not even available, exit.
   if (current_status == SystemFactory::Unavailable) {
     return false;
   }
 
+#if defined(Q_OS_WIN)
+  QSettings registy_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                        QSettings::NativeFormat);
   switch (new_status) {
     case SystemFactory::Enabled:
-#if defined(Q_OS_WIN)
-
+      registy_key.setValue(APP_LOW_NAME,
+                           QtSingleApplication::applicationFilePath().replace('/', '\\'));
+      return true;
+    case SystemFactory::Disabled:
+      registy_key.remove(APP_LOW_NAME);
+      return true;
+    default:
+      return false;
+  }
 #elif defined(Q_OS_LINUX)
+  switch (new_status) {
+    case SystemFactory::Enabled:
 
-#else
-
-#endif
       break;
     case SystemFactory::Disabled:
-#if defined(Q_OS_WIN)
-
-#elif defined(Q_OS_LINUX)
-
-#else
-
-#endif
       break;
     default:
       return false;
   }
+#else
+  return false;
+#endif
 }
