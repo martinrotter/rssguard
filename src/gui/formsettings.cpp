@@ -4,6 +4,7 @@
 #include "gui/formmain.h"
 #include "core/settings.h"
 #include "core/defs.h"
+#include "core/systemfactory.h"
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -16,6 +17,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(this, &FormSettings::accepted, this, &FormSettings::saveSettings);
 
   // Load all settings.
+  loadGeneral();
   loadInterface();
 }
 
@@ -24,13 +26,47 @@ FormSettings::~FormSettings() {
 }
 
 void FormSettings::saveSettings() {
-  // Save all categories.
-  //saveGeneral();
+  // Save all settings.
+  saveGeneral();
   saveInterface();
-  //saveLanguages();
 
   // Make sure that settings is synced.
   Settings::getInstance()->checkSettings();
+}
+
+void FormSettings::loadGeneral() {
+  // Load auto-start status.
+  SystemFactory::AutoStartStatus autostart_status = SystemFactory::getAutoStartStatus();
+  switch (autostart_status) {
+    case SystemFactory::Enabled:
+      m_ui->m_checkAutostart->setChecked(true);
+      break;
+    case SystemFactory::Disabled:
+      m_ui->m_checkAutostart->setChecked(false);
+      break;
+    default:
+      m_ui->m_checkAutostart->setEnabled(false);
+      m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
+                                      tr(" (not supported on this platform)"));
+      break;
+  }
+}
+
+void FormSettings::saveGeneral() {
+  // Save auto-start on Windows.
+#if defined(Q_OS_WIN)
+  QSettings sett("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+  if (m_ui->m_checkAutostart->isChecked()) {
+    sett.setValue(APP_LOW_NAME, QApplication::applicationFilePath().replace('/', '\\'));
+  }
+  else {
+    sett.remove(APP_LOW_NAME);
+  }
+
+  // Save auto-start on Linux.
+#elif defined(Q_OS_LINUX)
+
+#endif
 }
 
 void FormSettings::loadInterface() {

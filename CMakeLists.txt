@@ -166,6 +166,7 @@ set(APP_SOURCES
   # CORE sources.
   src/core/debugging.cpp
   src/core/settings.cpp
+  src/core/systemfactory.cpp
 
   # Basic application sources.
   src/main.cpp

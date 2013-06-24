@@ -80,9 +80,11 @@ int main(int argc, char *argv[]) {
   if (Settings::getInstance()->value(APP_CFG_GUI, "start_hidden",
                                      false).toBool() &&
       SystemTrayIcon::isSystemTrayActivated()) {
+    qDebug("Hiding the main window when the application is starting.");
     window.hide();
   }
   else {
+    qDebug("Showing the main window when the application is starting.");
     window.show();
   }
 
@@ -92,7 +94,6 @@ int main(int argc, char *argv[]) {
   }
 
   // Setup single-instance behavior.
-  application.setActivationWindow(&window, true);
   QObject::connect(&application, &QtSingleApplication::messageReceived,
                    &window, &FormMain::processExecutionMessage);
 

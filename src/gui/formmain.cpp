@@ -36,6 +36,7 @@ void FormMain::processExecutionMessage(const QString &message) {
   // TODO: Implement proper reaction when application is launched more than once.
   qDebug("Received '%s' execution message from another application instance.",
          qPrintable(message));
+  display();
 }
 
 void FormMain::quit() {
@@ -44,10 +45,15 @@ void FormMain::quit() {
 }
 
 void FormMain::display() {
+  // Make sure window is not minimized.
   setWindowState(windowState() & ~Qt::WindowMinimized);
+
+  // Display the window and make sure it is raised on top.
   show();
   activateWindow();
   raise();
+
+  // Raise alert event. Check the documentation for more info on this.
   QtSingleApplication::alert(this);
 }
 

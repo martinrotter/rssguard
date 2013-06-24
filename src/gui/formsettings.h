@@ -24,6 +24,9 @@ class FormSettings : public QDialog {
     // Load/save GUI settings.
     void loadInterface();
     void saveInterface();
+
+    void loadGeneral();
+    void saveGeneral();
     
   private:
     Ui::FormSettings *m_ui;
