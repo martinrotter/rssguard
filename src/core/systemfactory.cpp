@@ -33,26 +33,12 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // Use proper freedesktop.org way to auto-start the application on Linux.
   // INFO: http://standards.freedesktop.org/autostart-spec/latest/
 #elif defined(Q_OS_LINUX)
-  QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
-  QString desktop_file_location;
+  QString desktop_file_location = SystemFactory::getAutostartDesktopFileLocation();
 
-  if (!xdg_config_path.isEmpty()) {
-    // XDG_CONFIG_HOME variable is specified. Look for .desktop file
-    // in 'autostart' subdirectory.
-    desktop_file_location = xdg_config_path + "/autostart/rssguard.desktop";
-  }
-  else {
-    // Desired variable is not set, look for the default 'autostart' subdirectory.
-    QString home_directory(qgetenv("HOME"));
-    if (!home_directory.isEmpty()) {
-      // Home directory exists. Check if target .desktop file exists and
-      // return according status.
-      desktop_file_location = home_directory + "/.config/autostart/rssguard.desktop";
-    }
-    else {
-      qDebug("Searching for auto-start function status failed. HOME variable not found.");
-      return SystemFactory::Unavailable;
-    }
+  // No correct path was found.
+  if (desktop_file_location.isEmpty()) {
+    qDebug("Searching for auto-start function status failed. HOME variable not found.");
+    return SystemFactory::Unavailable;
   }
 
   // We found correct path, now check if file exists and return correct status.
@@ -67,6 +53,29 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
 #else
   return SystemFactory::Unavailable;
 #endif
+}
+
+QString SystemFactory::getAutostartDesktopFileLocation() {
+  QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
+  QString desktop_file_location;
+
+  if (!xdg_config_path.isEmpty()) {
+    // XDG_CONFIG_HOME variable is specified. Look for .desktop file
+    // in 'autostart' subdirectory.
+    desktop_file_location = xdg_config_path + "/autostart/" + APP_DESKTOP_ENTRY_FILE;
+  }
+  else {
+    // Desired variable is not set, look for the default 'autostart' subdirectory.
+    QString home_directory(qgetenv("HOME"));
+    if (!home_directory.isEmpty()) {
+      // Home directory exists. Check if target .desktop file exists and
+      // return according status.
+      desktop_file_location = home_directory + "/.config/autostart/" + APP_DESKTOP_ENTRY_FILE;
+    }
+  }
+
+  // No location found, return empty string.
+  return desktop_file_location;
 }
 
 // TODO: Finish implementation of SystemFactory auto-start methods.
@@ -93,12 +102,16 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
       return false;
   }
 #elif defined(Q_OS_LINUX)
+  // Note that we expect here that no other program uses
+  // "rssguard.desktop" desktop file.
   switch (new_status) {
     case SystemFactory::Enabled:
-
-      break;
+      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + "/" + APP_DESKTOP_ENTRY_FILE,
+                  getAutostartDesktopFileLocation());
+      return true;
     case SystemFactory::Disabled:
-      break;
+      QFile::remove(getAutostartDesktopFileLocation());
+      return true;
     default:
       return false;
   }

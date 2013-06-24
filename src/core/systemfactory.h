@@ -20,6 +20,10 @@ class SystemFactory {
     // Function returns false if setting of
     // new status failed.
     static bool setAutoStartStatus(const SystemFactory::AutoStartStatus &new_status);
+
+    // Returns standard location where auto-start .desktop files
+    // should be placed.
+    static QString getAutostartDesktopFileLocation();
 };
 
 #endif // SYSTEMFACTORY_H

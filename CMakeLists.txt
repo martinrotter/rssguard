@@ -47,12 +47,6 @@ endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
 message(STATUS "[${APP_LOW_NAME}] Revision number obtained: " ${APP_REVISION} ".")
 
-# Configure internal C++ defines.
-configure_file (
-  ${PROJECT_SOURCE_DIR}/src/core/defs.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/src/core/defs.h
-)
-
 # Configure executable "properties" for Windows.
 if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties.")
@@ -69,7 +63,14 @@ if(UNIX)
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/rssguard.desktop
   )
+  set(DESKTOP_ENTRY ${CMAKE_INSTALL_PREFIX}/share/applications)
 endif(UNIX)
+
+# Configure internal C++ defines.
+configure_file (
+  ${PROJECT_SOURCE_DIR}/src/core/defs.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/src/core/defs.h
+)
 
 # Define some useful DEBUG for, ehrm, debug build.
 if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")

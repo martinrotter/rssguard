@@ -25,6 +25,8 @@
 #define APP_IS_RUNNING      "app_is_running"
 
 #if defined(Q_OS_LINUX)
+#define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY@"
+#define APP_DESKTOP_ENTRY_FILE "@APP_LOW_NAME@.desktop"
 #define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
 #define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")
 #define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
