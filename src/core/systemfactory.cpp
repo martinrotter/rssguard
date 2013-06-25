@@ -88,15 +88,16 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   }
 
 #if defined(Q_OS_WIN)
-  QSettings registy_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
-                        QSettings::NativeFormat);
+  QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+                         QSettings::NativeFormat);
   switch (new_status) {
     case SystemFactory::Enabled:
-      registy_key.setValue(APP_LOW_NAME,
-                           QtSingleApplication::applicationFilePath().replace('/', '\\'));
+      registry_key.setValue(APP_LOW_NAME,
+                            QtSingleApplication::applicationFilePath().replace('/',
+                                                                               '\\'));
       return true;
     case SystemFactory::Disabled:
-      registy_key.remove(APP_LOW_NAME);
+      registry_key.remove(APP_LOW_NAME);
       return true;
     default:
       return false;

@@ -1,5 +1,6 @@
 #include <QPainter>
 #include <QTimer>
+#include <QMessageBox>
 
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
@@ -18,11 +19,26 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
 
   // Initialize icon.
   setNumber();
+  setContextMenu(parent->getTrayMenu());
+
+  // Create necessary connections.
+  connect(this, &SystemTrayIcon::activated, this, &SystemTrayIcon::onActivated);
 }
 
 SystemTrayIcon::~SystemTrayIcon() {
   qDebug("Destroying SystemTrayIcon instance.");
   hide();
+}
+
+void SystemTrayIcon::onActivated(const ActivationReason &reason) {
+  switch (reason) {
+    case SystemTrayIcon::Trigger:
+    case SystemTrayIcon::DoubleClick:
+    case SystemTrayIcon::MiddleClick:
+      static_cast<FormMain*>(parent())->switchVisibility();
+    default:
+      break;
+  }
 }
 
 bool SystemTrayIcon::isSystemTrayAvailable() {
@@ -53,7 +69,7 @@ void SystemTrayIcon::deleteInstance() {
   }
 }
 
-void SystemTrayIcon::show_private() {
+void SystemTrayIcon::showPrivate() {
   QSystemTrayIcon::show();
   qDebug("Tray icon displayed.");
 }
@@ -68,7 +84,7 @@ void SystemTrayIcon::show() {
   qDebug("Showing tray icon with 1000 ms delay.");
   QTimer::singleShot(1000,
                      Qt::CoarseTimer,
-                     this, SLOT(show_private()));
+                     this, SLOT(showPrivate()));
 #endif
 
 

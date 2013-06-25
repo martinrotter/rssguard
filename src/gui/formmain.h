@@ -13,9 +13,13 @@ class FormMain : public QMainWindow {
     explicit FormMain(QWidget *parent = 0);
     ~FormMain();
 
+    // Returns menu for the tray icon.
+    QMenu *getTrayMenu();
+
     static FormMain *getInstance();
 
   protected:
+    void prepareMenus();
     void createConnections();
     void closeEvent(QCloseEvent *event);
 
@@ -30,6 +34,7 @@ class FormMain : public QMainWindow {
     void processExecutionMessage(const QString &message);
     void quit();
     void display();
+    void switchVisibility();
 
   protected slots:
     void cleanupResources();
@@ -37,6 +42,7 @@ class FormMain : public QMainWindow {
     
   private:
     Ui::FormMain *m_ui;
+    QMenu *m_trayMenu;
 
     static FormMain *m_this;
 };

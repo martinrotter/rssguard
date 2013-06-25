@@ -22,6 +22,8 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
   // Establish connections.
   createConnections();
+
+  prepareMenus();
 }
 
 FormMain::~FormMain() {
@@ -30,6 +32,21 @@ FormMain::~FormMain() {
 
 FormMain *FormMain::getInstance() {
   return m_this;
+}
+
+QMenu *FormMain::getTrayMenu() {
+  return m_trayMenu;
+}
+
+void FormMain::prepareMenus() {
+  // Setup menu for tray icon.
+  if (SystemTrayIcon::isSystemTrayAvailable()) {
+    m_trayMenu = new QMenu(APP_NAME, this);
+
+    // Add needed items to the menu.
+    m_trayMenu->addAction(m_ui->m_actionSettings);
+    m_trayMenu->addAction(m_ui->m_actionQuit);
+  }
 }
 
 void FormMain::processExecutionMessage(const QString &message) {
@@ -42,6 +59,15 @@ void FormMain::processExecutionMessage(const QString &message) {
 void FormMain::quit() {
   qDebug("Quitting the application.");
   qApp->quit();
+}
+
+void FormMain::switchVisibility() {
+  if (isVisible()) {
+    hide();
+  }
+  else {
+    display();
+  }
 }
 
 void FormMain::display() {

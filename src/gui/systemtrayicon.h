@@ -30,16 +30,15 @@ class SystemTrayIcon : public QSystemTrayIcon {
     // Sets the number to be visible in the tray icon, -1 removes it.
     void setNumber(int number = -1);
 
-    // TODO: Implement method for manual clearing of the tray icon. Creating of tray icon
-    // handled by getInstance().
+    // Explicitle clears SystemTrayIcon instance from the memory.
     static void deleteInstance();
-  signals:
     
   public slots:
     void show();
 
   private slots:
-    void show_private();
+    void showPrivate();
+    void onActivated(const ActivationReason &reason);
 
   private:
     QString m_normalIcon;
