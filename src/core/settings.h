@@ -14,7 +14,7 @@ class Settings : public QSettings {
 
     // Constructor and destructor.
     Settings(const QString & file_name, Format format, QObject * parent = 0);
-    ~Settings();
+    virtual ~Settings();
 
     // Getter/setter for settings values.
     QVariant value(const QString &section,

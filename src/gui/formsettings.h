@@ -15,7 +15,7 @@ class FormSettings : public QDialog {
     
   public:
     explicit FormSettings(QWidget *parent = 0);
-    ~FormSettings();
+    virtual ~FormSettings();
 
   protected slots:
     // Saves settings into global configuration.

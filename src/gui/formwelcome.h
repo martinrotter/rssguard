@@ -16,7 +16,7 @@ class FormWelcome : public QDialog {
   public:
     // Constructors and destructors.
     explicit FormWelcome(QWidget *parent = 0);
-    ~FormWelcome();
+    virtual ~FormWelcome();
     
   private:
     Ui::FormWelcome *m_ui;

@@ -11,7 +11,7 @@ class FormMain : public QMainWindow {
     
   public:
     explicit FormMain(QWidget *parent = 0);
-    ~FormMain();
+    virtual ~FormMain();
 
     // Returns menu for the tray icon.
     QMenu *getTrayMenu();

@@ -14,7 +14,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     explicit SystemTrayIcon(const QString &normal_icon,
                             const QString &plain_icon,
                             FormMain *parent = 0);
-    ~SystemTrayIcon();
+    virtual ~SystemTrayIcon();
 
     // Returns true if tray icon CAN be constructed on this machine.
     static bool isSystemTrayAvailable();
