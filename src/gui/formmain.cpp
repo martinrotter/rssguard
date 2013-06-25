@@ -1,6 +1,3 @@
-// for testing
-#include <QMessageBox>
-#include <QProcess>
 #include <QCloseEvent>
 
 #include "gui/formmain.h"

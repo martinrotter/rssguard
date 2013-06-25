@@ -70,6 +70,9 @@ int main(int argc, char *argv[]) {
   // Instantiate main application window.
   FormMain window;
 
+  // Set correct information for main window.
+  window.setWindowTitle(QString(APP_NAME) + " " + APP_VERSION);
+
   // Display welcome dialog if application is launched for the first time.
   if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
     Settings::getInstance()->setValue(APP_CFG_GEN, "first_start", false);
