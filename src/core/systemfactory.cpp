@@ -55,6 +55,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
 #endif
 }
 
+#if defined(Q_OS_LINUX)
 QString SystemFactory::getAutostartDesktopFileLocation() {
   QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
   QString desktop_file_location;
@@ -77,6 +78,7 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
   // No location found, return empty string.
   return desktop_file_location;
 }
+#endif
 
 // TODO: Finish implementation of SystemFactory auto-start methods.
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {

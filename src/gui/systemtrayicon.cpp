@@ -66,10 +66,19 @@ void SystemTrayIcon::deleteInstance() {
     qDebug("Disabling tray icon and raising main application window.");
     static_cast<FormMain*>((*s_trayIcon).parent())->display();
     delete s_trayIcon.data();
+
+    // Make sure that application quits when last window is closed.
+    qApp->setQuitOnLastWindowClosed(true);
   }
 }
 
 void SystemTrayIcon::showPrivate() {
+  // Make sure that application does not exit some window (for example
+  // the settings window) gets closed. Behavior for main window
+  // is handled explicitly by FormMain::closeEvent() method.
+  qApp->setQuitOnLastWindowClosed(false);
+
+  // Display the tray icon.
   QSystemTrayIcon::show();
   qDebug("Tray icon displayed.");
 }
@@ -78,7 +87,7 @@ void SystemTrayIcon::show() {
 #if defined(Q_OS_WIN)
   // Show immediately.
   qDebug("Showing tray icon immediately.");
-  show_private();
+  showPrivate();
 #else
   // Delay avoids race conditions and tray icon is properly displayed.
   qDebug("Showing tray icon with 1000 ms delay.");
