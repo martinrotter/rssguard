@@ -95,8 +95,6 @@ void SystemTrayIcon::show() {
                      Qt::CoarseTimer,
                      this, SLOT(showPrivate()));
 #endif
-
-
 }
 
 void SystemTrayIcon::setNumber(int number) {
