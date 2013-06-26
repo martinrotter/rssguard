@@ -7,7 +7,28 @@
 #include "gui/formsettings.h"
 #include "core/settings.h"
 #include "core/defs.h"
+#include "qtsingleapplication/qtsingleapplication.h"
 
+
+#if defined(Q_OS_WIN)
+TrayIconMenu::TrayIconMenu(const QString &title, QWidget *parent)
+  : QMenu(title, parent) {
+}
+
+TrayIconMenu::~TrayIconMenu() {
+}
+
+bool TrayIconMenu::event(QEvent *event) {
+  if (QtSingleApplication::activeModalWidget() != nullptr &&
+      event->type() == QEvent::Show) {
+    QTimer::singleShot(0, this, SLOT(hide()));
+    SystemTrayIcon::getInstance()->showMessage(APP_LONG_NAME,
+                                               tr("Close opened modal dialogs first."),
+                                               QSystemTrayIcon::Warning);
+  }
+  return QMenu::event(event);
+}
+#endif
 
 QPointer<SystemTrayIcon> SystemTrayIcon::s_trayIcon;
 

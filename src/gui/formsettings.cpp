@@ -10,8 +10,9 @@
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
   m_ui->setupUi(this);
 
-  // Set flags.
+  // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+  setWindowIcon(ThemeFactory::fromTheme("preferences-system"));
 
   // Establish needed connections.
   connect(this, &FormSettings::accepted, this, &FormSettings::saveSettings);
@@ -110,7 +111,6 @@ void FormSettings::loadInterface() {
     }
     else {
 #endif
-      // TODO: Display correct theme on linux.
       m_ui->m_cmbIconTheme->setCurrentText(current_theme);
 #if defined(Q_OS_LINUX)
     }

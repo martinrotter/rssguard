@@ -1,4 +1,5 @@
 #include <QCloseEvent>
+#include <QMessageBox>
 
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
@@ -43,7 +44,11 @@ QMenu *FormMain::getTrayMenu() {
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
+#if defined(Q_OS_WIN)
+    m_trayMenu = new TrayIconMenu(APP_NAME, this);
+#else
     m_trayMenu = new QMenu(APP_NAME, this);
+#endif
 
     // Add needed items to the menu.
     m_trayMenu->addAction(m_ui->m_actionSettings);
@@ -91,7 +96,6 @@ void FormMain::cleanupResources() {
   qDebug("Cleaning up resources before the application exits.");
 }
 
-#if !defined(Q_OS_WIN)
 bool FormMain::event(QEvent *event) {
   if (event->type() == ThemeFactoryEvent::type()) {
     // Handle the change of icon theme.
@@ -104,8 +108,9 @@ bool FormMain::event(QEvent *event) {
 
 void FormMain::setupIcons() {
   // NOTE: Call QIcon::fromTheme for all needed widgets here.
+  m_ui->m_actionSettings->setIcon(ThemeFactory::fromTheme("preferences-system"));
+  m_ui->m_actionQuit->setIcon(ThemeFactory::fromTheme("application-exit"));
 }
-#endif
 
 void FormMain::createConnections() {
   // Menu "File" connections.
@@ -137,5 +142,6 @@ void FormMain::closeEvent(QCloseEvent *event) {
 }
 
 void FormMain::showSettings() {
-  FormSettings(this).exec();
+  QMessageBox::information(this, "tr", "Ptr");
+  //FormSettings(this).exec();
 }

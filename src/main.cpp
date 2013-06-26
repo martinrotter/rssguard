@@ -57,9 +57,6 @@ int main(int argc, char *argv[]) {
   // Add an extra path for non-system icon themes.
   ThemeFactory::setupSearchPaths();
 
-  // Load icon theme from settings.
-  ThemeFactory::loadCurrentIconTheme();
-
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);
   QtSingleApplication::setApplicationVersion(APP_VERSION);
@@ -71,7 +68,7 @@ int main(int argc, char *argv[]) {
   FormMain window;
 
   // Set correct information for main window.
-  window.setWindowTitle(QString(APP_NAME) + " " + APP_VERSION);
+  window.setWindowTitle(APP_LONG_NAME);
 
   // Display welcome dialog if application is launched for the first time.
   if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
@@ -95,6 +92,11 @@ int main(int argc, char *argv[]) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
     SystemTrayIcon::getInstance()->show();
   }
+
+  // Load icon theme from settings.
+  // NOTE: Make sure that this is done after main window and
+  // other startup widgets are created.
+  ThemeFactory::loadCurrentIconTheme();
 
   // Setup single-instance behavior.
   QObject::connect(&application, &QtSingleApplication::messageReceived,

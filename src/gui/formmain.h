@@ -2,6 +2,7 @@
 #define FORMMAIN_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 #include "ui_formmain.h"
 
@@ -23,12 +24,10 @@ class FormMain : public QMainWindow {
     void createConnections();
     void closeEvent(QCloseEvent *event);
 
-#if !defined(Q_OS_WIN)
     bool event(QEvent *event);
 
     // Sets up proper icons for this widget.
     void setupIcons();
-#endif
 
   public slots:
     void processExecutionMessage(const QString &message);

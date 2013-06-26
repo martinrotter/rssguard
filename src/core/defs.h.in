@@ -9,6 +9,7 @@
 #define APP_NAME            "@APP_NAME@"
 #define APP_LOW_NAME        "@APP_LOW_NAME@"
 #define APP_LOW_H_NAME      ".@APP_LOW_NAME@"
+#define APP_LONG_NAME       "@APP_NAME@ @APP_VERSION@"
 #define APP_AUTHORS         "@APP_AUTHOR@"
 #define APP_URL             "@APP_URL@"
 #define APP_VERSION         "@APP_VERSION@"

@@ -97,12 +97,11 @@ void ThemeFactory::loadCurrentIconTheme() {
 
     // In Linux, we need to deliver custom event for all widgets
     // to make sure they get a chance to redraw their icons.
-#if defined(Q_OS_LINUX)
+    // NOTE: This is NOT necessarily needed on Windows.
     foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
       QtSingleApplication::postEvent((QObject*) widget,
                                      new ThemeFactoryEvent());
     }
-#endif
   }
 }
 

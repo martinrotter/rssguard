@@ -213,7 +213,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -229,6 +229,7 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="m_actionAboutGuard"/>
    </widget>
    <widget class="QMenu" name="menu_View">
     <property name="title">
@@ -265,6 +266,11 @@
   <action name="m_actionSettings">
    <property name="text">
     <string>&amp;Settings</string>
+   </property>
+  </action>
+  <action name="m_actionAboutGuard">
+   <property name="text">
+    <string>&amp;About RSS Guard</string>
    </property>
   </action>
  </widget>

@@ -38,8 +38,9 @@ class ThemeFactory {
     static void setCurrentIconTheme(const QString &theme_name);
 
     // Wrapper for QIcon::fromTheme.
-    // If icon is not found in user-defined icon theme,
+    // TODO: If icon is not found in user-defined icon theme,
     // then it is searched in system-default theme (ThemeFactory::getSystemIconTheme()).
+    // BUG: I tried to do that, but QIcon is apparently bugged.
     static QIcon fromTheme(const QString & name, const QIcon & fallback = QIcon());
 };
 

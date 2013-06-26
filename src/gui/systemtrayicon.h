@@ -3,9 +3,22 @@
 
 #include <QSystemTrayIcon>
 #include <QPointer>
+#include <QMenu>
 
 
 class FormMain;
+class QEvent;
+
+#if defined(Q_OS_WIN)
+class TrayIconMenu : public QMenu {
+  public:
+    explicit TrayIconMenu(const QString &title, QWidget *parent);
+    virtual ~TrayIconMenu();
+
+  protected:
+    bool event(QEvent *event);
+};
+#endif
 
 class SystemTrayIcon : public QSystemTrayIcon {
     Q_OBJECT  
