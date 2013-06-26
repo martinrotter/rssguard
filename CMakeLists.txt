@@ -170,6 +170,7 @@ set(APP_SOURCES
   src/core/settings.cpp
   src/core/systemfactory.cpp
   src/core/datetime.cpp
+  src/core/localization.cpp
 
   # Basic application sources.
   src/main.cpp
