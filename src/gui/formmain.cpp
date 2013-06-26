@@ -2,6 +2,7 @@
 #include <QMessageBox>
 
 #include "gui/formmain.h"
+#include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
 #include "gui/systemtrayicon.h"
@@ -119,6 +120,9 @@ void FormMain::createConnections() {
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, &QAction::triggered, this, &FormMain::showSettings);
 
+  // Menu "Help" connections.
+  connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, &FormMain::showAbout);
+
   // General connections.
   connect(qApp, &QCoreApplication::aboutToQuit, this, &FormMain::cleanupResources);
 }
@@ -141,7 +145,10 @@ void FormMain::closeEvent(QCloseEvent *event) {
   }
 }
 
+void FormMain::showAbout() {
+  FormAbout(this).exec();
+}
+
 void FormMain::showSettings() {
-  QMessageBox::information(this, "tr", "Ptr");
-  //FormSettings(this).exec();
+  FormSettings(this).exec();
 }

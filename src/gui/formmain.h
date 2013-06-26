@@ -38,6 +38,7 @@ class FormMain : public QMainWindow {
   protected slots:
     void cleanupResources();
     void showSettings();
+    void showAbout();
     
   private:
     Ui::FormMain *m_ui;

@@ -163,11 +163,13 @@ set(APP_SOURCES
   src/gui/themefactory.cpp
   src/gui/formsettings.cpp
   src/gui/formwelcome.cpp
+  src/gui/formabout.cpp
 
   # CORE sources.
   src/core/debugging.cpp
   src/core/settings.cpp
   src/core/systemfactory.cpp
+  src/core/datetime.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -187,6 +189,7 @@ set(APP_HEADERS
   src/gui/systemtrayicon.h
   src/gui/formsettings.h
   src/gui/formwelcome.h
+  src/gui/formabout.h
 
   # CORE headers.
 )
@@ -196,6 +199,7 @@ set(APP_FORMS
   src/gui/formmain.ui
   src/gui/formsettings.ui
   src/gui/formwelcome.ui
+  src/gui/formabout.ui
 )
 
 # Add resources.
@@ -221,7 +225,10 @@ set(APP_SKIN_PLAIN
 )
 
 set(APP_MISC
-  # resources/text/changelog
+  resources/text/CHANGELOG
+  resources/text/COPYING_GNU_GPL
+  resources/text/COPYING_GNU_GPL_HTML
+  resources/text/COPYING_FLAGS
 )
 
 # Wrap files, create moc files.
