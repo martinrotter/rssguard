@@ -31,14 +31,7 @@ QList<Language> Localization::getInstalledLanguages() {
       languages << new_language;
     }
   }
-
   return languages;
-}
-
-void Localization::set(const QString &locale_name) {
-  Settings::getInstance()->setValue(APP_CFG_GEN,
-                                    "language",
-                                    locale_name);
 }
 
 void Localization::load() {

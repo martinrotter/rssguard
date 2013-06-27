@@ -21,8 +21,6 @@ class Localization {
     // Sets up localization strings and locale from application settings.
     static void load();
 
-    static void set(const QString &locale_name);
-
     // Returns list of installed application localizations.
     // This list is used ie. in settings dialog.
     static QList<Language> getInstalledLanguages();
