@@ -5,6 +5,7 @@
 
 #include "core/defs.h"
 #include "core/debugging.h"
+#include "core/localization.h"
 #include "core/settings.h"
 #include "gui/themefactory.h"
 #include "gui/formmain.h"
@@ -56,6 +57,9 @@ int main(int argc, char *argv[]) {
 
   // Add an extra path for non-system icon themes.
   ThemeFactory::setupSearchPaths();
+
+  // Load localization and setup locale.
+  Localization::load();
 
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);

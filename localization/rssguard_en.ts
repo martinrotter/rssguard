@@ -92,7 +92,7 @@
     <message>
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
-        <translation>martinrotter@users.sourceforge.net</translation>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
 </context>
 </TS>

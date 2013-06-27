@@ -27,6 +27,9 @@ class FormSettings : public QDialog {
 
     void loadGeneral();
     void saveGeneral();
+
+    void loadLanguage();
+    void saveLanguage();
     
   private:
     Ui::FormSettings *m_ui;

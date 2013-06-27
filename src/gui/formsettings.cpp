@@ -1,9 +1,13 @@
+#include <QMessageBox>
+#include <QProcess>
+
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
 #include "core/settings.h"
 #include "core/defs.h"
+#include "core/localization.h"
 #include "core/systemfactory.h"
 
 
@@ -14,12 +18,28 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(ThemeFactory::fromTheme("preferences-system"));
 
+  // Setup behavior.
+  m_ui->m_treeLanguages->setColumnCount(5);
+  m_ui->m_treeLanguages->setHeaderHidden(false);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->setHeaderLabels(QStringList()
+                                         << tr("Language")
+                                         << tr("Code")
+                                         << tr("Version")
+                                         << tr("Author")
+                                         << tr("Email"));
+
   // Establish needed connections.
   connect(this, &FormSettings::accepted, this, &FormSettings::saveSettings);
 
   // Load all settings.
   loadGeneral();
   loadInterface();
+  loadLanguage();
 }
 
 FormSettings::~FormSettings() {
@@ -30,9 +50,60 @@ void FormSettings::saveSettings() {
   // Save all settings.
   saveGeneral();
   saveInterface();
+  saveLanguage();
+}
 
-  // Make sure that settings is synced.
-  Settings::getInstance()->checkSettings();
+void FormSettings::loadLanguage() {
+  QList<Language> languages = Localization::getInstalledLanguages();
+
+  foreach (Language lang, languages) {
+    QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
+    item->setText(0, lang.m_name);
+    item->setText(1, lang.m_code);
+    item->setText(2, lang.m_version);
+    item->setText(3, lang.m_author);
+    item->setText(4, lang.m_email);
+    item->setIcon(0, QIcon(APP_FLAGS_PATH + "/" + lang.m_code + ".png"));
+  }
+
+  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::getInstance()->value(APP_CFG_GEN,
+                                                                                                           "language",
+                                                                                                           "en").toString(),
+                                                                            Qt::MatchExactly,
+                                                                            1);
+  if (!matching_items.isEmpty()) {
+    m_ui->m_treeLanguages->setCurrentItem(matching_items[0]);
+  }
+}
+
+void FormSettings::saveLanguage() {
+  QString actual_lang = Settings::getInstance()->value(APP_CFG_GEN,
+                                                       "language",
+                                                       "en").toString();
+  QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
+
+  if (new_lang != actual_lang) {
+    Settings::getInstance()->setValue(APP_CFG_GEN, "language", new_lang);
+
+    QMessageBox msg_question(this);
+    msg_question.setText(tr("Language of Qonverter was changed. Note that changes will take effect on next Qonverter start."));
+    msg_question.setInformativeText(tr("Do you want to restart now?"));
+    msg_question.setWindowTitle(tr("Language changed"));
+    msg_question.setIcon(QMessageBox::Question);
+    msg_question.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msg_question.setDefaultButton(QMessageBox::Yes);
+
+    if (msg_question.exec() == QMessageBox::Yes) {
+      if (!QProcess::startDetached(qApp->applicationFilePath())) {
+        QMessageBox::warning(this,
+                             tr("Problem with RSS Guard restart"),
+                             tr("Qonverter couldn't be restarted, please restart it manually for changes to take effect."));
+      }
+      else {
+        qApp->quit();
+      }
+    }
+  }
 }
 
 void FormSettings::loadGeneral() {
