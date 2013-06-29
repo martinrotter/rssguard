@@ -77,6 +77,11 @@ void FormSettings::loadLanguage() {
 }
 
 void FormSettings::saveLanguage() {
+  if (m_ui->m_treeLanguages->currentItem() == nullptr) {
+    qDebug("No localizations loaded in settings dialog, so no saving for them.");
+    return;
+  }
+
   QString actual_lang = Settings::getInstance()->value(APP_CFG_GEN,
                                                        "language",
                                                        "en").toString();

@@ -164,6 +164,7 @@ set(APP_SOURCES
   src/gui/formsettings.cpp
   src/gui/formwelcome.cpp
   src/gui/formabout.cpp
+  src/gui/shortcutcatcher.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -171,6 +172,7 @@ set(APP_SOURCES
   src/core/systemfactory.cpp
   src/core/datetime.cpp
   src/core/localization.cpp
+  src/gui/shortcutbutton.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -191,6 +193,8 @@ set(APP_HEADERS
   src/gui/formsettings.h
   src/gui/formwelcome.h
   src/gui/formabout.h
+  src/gui/shortcutcatcher.h
+  src/gui/shortcutbutton.h
 
   # CORE headers.
 )
@@ -247,6 +251,7 @@ endif(Qt5LinguistTools_FOUND)
 # Include additional directory paths.
 include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/gui
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )

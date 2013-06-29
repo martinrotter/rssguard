@@ -206,6 +206,16 @@
      </size>
     </property>
    </widget>
+   <widget class="ShortcutCatcher" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>90</y>
+      <width>211</width>
+      <height>80</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="m_menuBar">
    <property name="geometry">
@@ -213,7 +223,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -274,6 +284,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ShortcutCatcher</class>
+   <extends>QWidget</extends>
+   <header>shortcutcatcher.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
