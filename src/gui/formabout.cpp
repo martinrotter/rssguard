@@ -26,15 +26,6 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   }
   file.close();
 
-  file.setFileName(APP_INFO_PATH + "/COPYING_FLAGS");
-  if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtLicenseFlags->setText(str.readAll());
-  }
-  else {
-    m_ui->m_txtLicenseFlags->setText(tr("License not found."));
-  }
-  file.close();
-
   file.setFileName(APP_INFO_PATH + "/CHANGELOG");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtChangelog->setText(str.readAll());

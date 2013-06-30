@@ -24,7 +24,8 @@ class DynamicShortcutsWidget : public QWidget {
 
     // Populates this widget with shortcut widgets for given actions.
     // NOTE: This gets initial shortcut for each action from its properties, NOT from
-    // the application settings.
+    // the application settings, so shortcuts from settings need to be
+    // assigned to actions before calling this method.
     void populate(const QList<QAction*> actions);
 
   private:

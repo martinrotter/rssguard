@@ -40,16 +40,16 @@ ShortcutButton::~ShortcutButton() {
 }
 
 void ShortcutButton::keyPressEvent(QKeyEvent *event) {
-  int keyQt =  event->key();
+  int pressed_key =  event->key();
 
-  if (keyQt == -1) {
+  if (pressed_key == -1) {
     m_catcher->doneRecording();
   }
 
-  Qt::KeyboardModifiers newModifiers = event->modifiers() &
+  Qt::KeyboardModifiers new_modifiers = event->modifiers() &
                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  if (m_catcher->m_isRecording == false && (keyQt == Qt::Key_Return || keyQt == Qt::Key_Space)) {
+  if (m_catcher->m_isRecording == false && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
     return;
   }
 
@@ -58,9 +58,9 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
   }
 
   event->accept();
-  m_catcher->m_modifierKeys = newModifiers;
+  m_catcher->m_modifierKeys = new_modifiers;
 
-  switch(keyQt) {
+  switch(pressed_key) {
     case Qt::Key_AltGr:
       return;
     case Qt::Key_Shift:
@@ -75,19 +75,19 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
     }
 
       // We now have a valid key press.
-      if (keyQt) {
-        if ((keyQt == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
-          keyQt = Qt::Key_Tab | m_catcher->m_modifierKeys;
+      if (pressed_key) {
+        if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
+          pressed_key = Qt::Key_Tab | m_catcher->m_modifierKeys;
         }
         else {
-          keyQt |= m_catcher->m_modifierKeys;
+          pressed_key |= m_catcher->m_modifierKeys;
         }
 
         if (m_catcher->m_numKey == 0) {
-          m_catcher->m_currentSequence = QKeySequence(keyQt);
+          m_catcher->m_currentSequence = QKeySequence(pressed_key);
         }
 
-        m_catcher->m_numKey++; // increment nuber of pressed keys
+        m_catcher->m_numKey++;
 
         if (m_catcher->m_numKey >= 4) {
           m_catcher->doneRecording();
@@ -111,11 +111,11 @@ void ShortcutButton::keyReleaseEvent(QKeyEvent *event) {
 
   event->accept();
 
-  Qt::KeyboardModifiers newModifiers = event->modifiers() &
+  Qt::KeyboardModifiers new_modifiers = event->modifiers() &
                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  if ((newModifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
-    m_catcher->m_modifierKeys = newModifiers;
+  if ((new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
+    m_catcher->m_modifierKeys = new_modifiers;
     m_catcher->controlModifierlessTimout();
     m_catcher->updateDisplayShortcut();
   }

@@ -11,13 +11,13 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 
 
-FormMain *FormMain::m_this;
+FormMain *FormMain::s_instance;
 
 FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain) {
   m_ui->setupUi(this);
 
   // Initialize singleton.
-  m_this = this;
+  s_instance = this;
 
   // Establish connections.
   createConnections();
@@ -35,7 +35,7 @@ FormMain::~FormMain() {
 }
 
 FormMain *FormMain::getInstance() {
-  return m_this;
+  return s_instance;
 }
 
 QMenu *FormMain::getTrayMenu() {

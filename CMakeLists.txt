@@ -236,7 +236,6 @@ set(APP_MISC
   resources/text/CHANGELOG
   resources/text/COPYING_GNU_GPL
   resources/text/COPYING_GNU_GPL_HTML
-  resources/text/COPYING_FLAGS
 )
 
 # Wrap files, create moc files.

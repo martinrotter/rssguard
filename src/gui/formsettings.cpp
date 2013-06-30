@@ -54,6 +54,8 @@ void FormSettings::saveSettings() {
   saveShortcuts();
   saveInterface();
   saveLanguage();
+
+  Settings::getInstance()->checkSettings();
 }
 
 void FormSettings::loadLanguage() {

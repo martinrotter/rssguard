@@ -24,18 +24,29 @@ class FormMain : public QMainWindow {
     static FormMain *getInstance();
 
   protected:
+    // Creates all needed menus and sets them up.
     void prepareMenus();
-    void createConnections();
-    void closeEvent(QCloseEvent *event);
 
+    // Creates needed connections for this window.
+    void createConnections();
+
+    // Event handler reimplementations.
+    void closeEvent(QCloseEvent *event);
     bool event(QEvent *event);
 
     // Sets up proper icons for this widget.
+    // NOTE: All permanent widgets should implement this
+    // kind of method and catch ThemeFactoryEvent::type() in its event handler.
     void setupIcons();
 
   public slots:
+    // Processes incoming message from another RSS Guard instance.
     void processExecutionMessage(const QString &message);
+
+    // Quits the application.
     void quit();
+
+    // Displays window on top or switches its visibility.
     void display();
     void switchVisibility();
 
@@ -48,7 +59,7 @@ class FormMain : public QMainWindow {
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
 
-    static FormMain *m_this;
+    static FormMain *s_instance;
 };
 
 #endif // FORMMAIN_H
