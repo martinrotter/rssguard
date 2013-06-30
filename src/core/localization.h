@@ -13,7 +13,6 @@ struct Language {
 };
 
 class Localization {
-    // TODO: Finish implementation of this class.
   private:
     Localization();
 

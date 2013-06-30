@@ -17,6 +17,9 @@
 #endif
 
 
+Debugging::Debugging() {
+}
+
 void Debugging::debugHandler(QtMsgType type,
                              const QMessageLogContext &placement,
                              const QString &message) {

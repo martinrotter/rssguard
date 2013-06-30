@@ -7,12 +7,20 @@
 #include "core/debugging.h"
 #include "core/localization.h"
 #include "core/settings.h"
+#include "core/dynamicshortcuts.h"
 #include "gui/themefactory.h"
 #include "gui/formmain.h"
 #include "gui/formwelcome.h"
 #include "gui/systemtrayicon.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
+
+
+// TODO: Check if extra UNIX signalling is needed.
+// Use <csignal> header for it - signal function and catch SIGHUP
+// void my_terminate (int param) {
+//   qApp->quit();
+// }
 
 int main(int argc, char *argv[]) {
   //: Name of language, e.g. English.
@@ -58,7 +66,7 @@ int main(int argc, char *argv[]) {
   // Add an extra path for non-system icon themes.
   ThemeFactory::setupSearchPaths();
 
-  // Load localization and setup locale.
+  // Load localization and setup locale before any widget is constructed.
   Localization::load();
 
   // These settings needs to be set before any QSettings object.
@@ -73,6 +81,9 @@ int main(int argc, char *argv[]) {
 
   // Set correct information for main window.
   window.setWindowTitle(APP_LONG_NAME);
+
+  // Now is a good time to initialize dynamic keyboard shortcuts.
+  DynamicShortcuts::load(FormMain::getInstance()->getActions());
 
   // Display welcome dialog if application is launched for the first time.
   if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {

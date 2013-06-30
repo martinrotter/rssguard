@@ -42,6 +42,13 @@ QMenu *FormMain::getTrayMenu() {
   return m_trayMenu;
 }
 
+QList<QAction*> FormMain::getActions() {
+  QList<QAction*> actions;
+  actions << m_ui->m_actionImport << m_ui->m_actionExport <<
+             m_ui->m_actionSettings << m_ui->m_actionQuit;
+  return actions;
+}
+
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -101,6 +108,7 @@ bool FormMain::event(QEvent *event) {
   if (event->type() == ThemeFactoryEvent::type()) {
     // Handle the change of icon theme.
     setupIcons();
+    event->accept();
     return true;
   }
 

@@ -16,9 +16,9 @@ SystemFactory::SystemFactory() {
 SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
-  QSettings registr_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+  QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
                         QSettings::NativeFormat);
-  bool autostart_enabled = registr_key.value(APP_LOW_NAME,
+  bool autostart_enabled = registry_key.value(APP_LOW_NAME,
                                              "").toString().replace('\\',
                                                                     '/') ==
                            QtSingleApplication::applicationFilePath();

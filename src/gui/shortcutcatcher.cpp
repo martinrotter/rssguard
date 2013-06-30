@@ -34,9 +34,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "gui/themefactory.h"
 
 
-ShortcutCatcher::ShortcutCatcher(QWidget *parent) : QWidget(parent) {
+ShortcutCatcher::ShortcutCatcher(QWidget *parent)
+  : QWidget(parent) {
   // Setup layout of the control
   m_layout = new QHBoxLayout(this);
+  m_layout->setMargin(0);
   m_layout->setSpacing(1);
 
   // Create clear button.
@@ -83,6 +85,8 @@ void ShortcutCatcher::doneRecording() {
   m_sequenceButton->setDown(false);
 
   updateDisplayShortcut();
+
+  emit keySequenceChanged(m_currentSequence);
 }
 
 void ShortcutCatcher::controlModifierlessTimout() {

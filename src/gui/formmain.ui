@@ -206,16 +206,6 @@
      </size>
     </property>
    </widget>
-   <widget class="ShortcutCatcher" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>90</y>
-      <width>211</width>
-      <height>80</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="m_menuBar">
    <property name="geometry">
@@ -241,7 +231,7 @@
     </property>
     <addaction name="m_actionAboutGuard"/>
    </widget>
-   <widget class="QMenu" name="menu_View">
+   <widget class="QMenu" name="m_menuView">
     <property name="title">
      <string>&amp;View</string>
     </property>
@@ -253,7 +243,7 @@
     <addaction name="m_actionSettings"/>
    </widget>
    <addaction name="m_menuFile"/>
-   <addaction name="menu_View"/>
+   <addaction name="m_menuView"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
@@ -262,20 +252,32 @@
    <property name="text">
     <string>&amp;Import</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
+   </property>
   </action>
   <action name="m_actionExport">
    <property name="text">
     <string>E&amp;xport</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
    </property>
   </action>
   <action name="m_actionQuit">
    <property name="text">
     <string>&amp;Quit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Q</string>
+   </property>
   </action>
   <action name="m_actionSettings">
    <property name="text">
     <string>&amp;Settings</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="m_actionAboutGuard">
@@ -284,14 +286,6 @@
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>ShortcutCatcher</class>
-   <extends>QWidget</extends>
-   <header>shortcutcatcher.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

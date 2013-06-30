@@ -17,6 +17,10 @@ class FormMain : public QMainWindow {
     // Returns menu for the tray icon.
     QMenu *getTrayMenu();
 
+    // Returns list of all globally available actions.
+    // NOTE: This is used for setting dynamic shortcuts for given actions.
+    QList<QAction*> getActions();
+
     static FormMain *getInstance();
 
   protected:

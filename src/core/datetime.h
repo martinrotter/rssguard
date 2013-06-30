@@ -5,6 +5,9 @@
 
 
 class DateTime {
+  private:
+    DateTime();
+
   public:
     // Returns QDatetime instance from input QString.
     // If parsing fails, then invalid QDateTime is returned.

@@ -7,6 +7,7 @@ class SystemFactory {
     SystemFactory();
 
   public:
+    // Specifies possible states of auto-start functionality.
     enum AutoStartStatus {
       Enabled,
       Disabled,

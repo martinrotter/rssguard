@@ -5,6 +5,9 @@
 #include "core/datetime.h"
 
 
+DateTime::DateTime() {
+}
+
 QDateTime DateTime::fromString(const QString &date_time) {
   QString date = date_time.simplified();
   QDateTime dt;

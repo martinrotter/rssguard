@@ -30,6 +30,9 @@ class FormSettings : public QDialog {
 
     void loadLanguage();
     void saveLanguage();
+
+    void loadShortcuts();
+    void saveShortcuts();
     
   private:
     Ui::FormSettings *m_ui;

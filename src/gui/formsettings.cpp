@@ -9,6 +9,7 @@
 #include "core/defs.h"
 #include "core/localization.h"
 #include "core/systemfactory.h"
+#include "core/dynamicshortcuts.h"
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -38,6 +39,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Load all settings.
   loadGeneral();
+  loadShortcuts();
   loadInterface();
   loadLanguage();
 }
@@ -49,6 +51,7 @@ FormSettings::~FormSettings() {
 void FormSettings::saveSettings() {
   // Save all settings.
   saveGeneral();
+  saveShortcuts();
   saveInterface();
   saveLanguage();
 }
@@ -109,6 +112,18 @@ void FormSettings::saveLanguage() {
       }
     }
   }
+}
+
+void FormSettings::loadShortcuts() {
+  m_ui->m_shortcuts->populate(FormMain::getInstance()->getActions());
+}
+
+void FormSettings::saveShortcuts() {
+  // Update the actual shortcuts of some actions.
+  m_ui->m_shortcuts->updateShortcuts();
+
+  // Save new shortcuts to the settings.
+  DynamicShortcuts::save(FormMain::getInstance()->getActions());
 }
 
 void FormSettings::loadGeneral() {

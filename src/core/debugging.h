@@ -5,6 +5,9 @@
 
 
 class Debugging {
+  private:
+    Debugging();
+
   public:
     // Specifies format of output console messages.
     // Macros:

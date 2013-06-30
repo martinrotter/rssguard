@@ -165,6 +165,8 @@ set(APP_SOURCES
   src/gui/formwelcome.cpp
   src/gui/formabout.cpp
   src/gui/shortcutcatcher.cpp
+  src/gui/shortcutbutton.cpp
+  src/gui/dynamicshortcutswidget.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -172,7 +174,7 @@ set(APP_SOURCES
   src/core/systemfactory.cpp
   src/core/datetime.cpp
   src/core/localization.cpp
-  src/gui/shortcutbutton.cpp
+  src/core/dynamicshortcuts.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -195,6 +197,7 @@ set(APP_HEADERS
   src/gui/formabout.h
   src/gui/shortcutcatcher.h
   src/gui/shortcutbutton.h
+  src/gui/dynamicshortcutswidget.h
 
   # CORE headers.
 )

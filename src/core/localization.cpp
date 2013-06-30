@@ -41,12 +41,11 @@ void Localization::load() {
                                                        "en").toString();
   QTranslator qt_translator, app_translator;
 
-  // Load localizations and setup locales.
+  // Load localizations.
   if (app_translator.load(QString("rssguard_%1.qm").arg(locale_name),
                           APP_LANG_PATH)) {
     qDebug("Application localization %s loaded successfully. Setting up locale.",
            qPrintable(locale_name));
-    QLocale::setDefault(QLocale(locale_name));
   }
   else {
     qDebug("Application localization %s was not loaded.", qPrintable(locale_name));
@@ -56,9 +55,11 @@ void Localization::load() {
                          APP_LANG_PATH)) {
     qDebug("Qt localization %s loaded successfully. Setting up locale.",
            qPrintable(locale_name));
-    QLocale::setDefault(QLocale(locale_name));
   }
   else {
     qDebug("Qt localization %s was not loaded.", qPrintable(locale_name));
   }
+
+  // Setup locale.
+  QLocale::setDefault(QLocale(locale_name));
 }

@@ -43,9 +43,6 @@ void ThemeFactory::setupSearchPaths() {
          qPrintable(QIcon::themeSearchPaths().join(", ")));
 }
 
-// TODO: Load currently selected "real" icon theme name instead of
-// Qt default "", which stands for currently active system icon theme name on
-// linux. On Windows, tiny "oxygen" version will be used as default icon theme.
 QString ThemeFactory::getSystemIconTheme() {
 #if defined(Q_OS_LINUX)
   // Empty string forces Qt to use icon theme from operating system.
