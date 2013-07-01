@@ -26,6 +26,15 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   }
   file.close();
 
+  file.setFileName(APP_INFO_PATH + "/COPYING_BSD");
+  if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    m_ui->m_txtLicenseBsd->setText(str.readAll());
+  }
+  else {
+    m_ui->m_txtLicenseBsd->setText(tr("License not found."));
+  }
+  file.close();
+
   file.setFileName(APP_INFO_PATH + "/CHANGELOG");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtChangelog->setText(str.readAll());
@@ -53,8 +62,9 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   m_ui->m_txtThanks->setText(tr("<body>"
                                 "Authors and contributors:"
                                 "<ul>"
-                                "<li>Martin Rotter (<a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail.com</a>)</li>"
-                                "<li>KDE (author of Oxygen (GNU Lesser General Public License) icon theme)</li>"
+                                "<li>Martin Rotter (<a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail.com</a>) (author of RSS Guard)</li>"
+                                "<li>KDE (author of Oxygen icon theme)</li>"
+                                "<li>Digia Plc (author of QtSingleApplication component)</li>"
                                 "</ul>"
                                 "</body>"));
 

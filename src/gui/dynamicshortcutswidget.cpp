@@ -19,7 +19,7 @@ DynamicShortcutsWidget::~DynamicShortcutsWidget() {
 
 void DynamicShortcutsWidget::updateShortcuts() {
   foreach (ActionBinding binding, m_actionBindings) {
-    binding.first->setShortcut(binding.second->keySequence());
+    binding.first->setShortcut(binding.second->shortcut());
   }
 }
 
@@ -29,7 +29,7 @@ void DynamicShortcutsWidget::populate(const QList<QAction *> actions) {
   foreach (QAction *action, actions) {
     // Create shortcut catcher for this action and set default shortcut.
     ShortcutCatcher *catcher = new ShortcutCatcher(this);
-    catcher->setKeySequence(action->shortcut());
+    catcher->setShortcut(action->shortcut());
 
     // Store information for re-initialization of shortcuts
     // of actions when widget gets "confirmed".

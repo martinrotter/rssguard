@@ -55,7 +55,7 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
   m_layout->addWidget(m_clearButton);
 
   // Establish needed connections.
-  connect(m_clearButton, &QToolButton::clicked, this, &ShortcutCatcher::clearKeySequence);
+  connect(m_clearButton, &QToolButton::clicked, this, &ShortcutCatcher::clearShortcut);
   connect(m_sequenceButton, &ShortcutButton::clicked, this, &ShortcutCatcher::startRecording);
 
   // Prepare initial state of the control.
@@ -86,7 +86,7 @@ void ShortcutCatcher::doneRecording() {
 
   updateDisplayShortcut();
 
-  emit keySequenceChanged(m_currentSequence);
+  emit shortcutChanged(m_currentSequence);
 }
 
 void ShortcutCatcher::controlModifierlessTimout() {
@@ -123,15 +123,15 @@ void ShortcutCatcher::updateDisplayShortcut()
   m_sequenceButton->setText(str);
 }
 
-QKeySequence ShortcutCatcher::keySequence() const {
+QKeySequence ShortcutCatcher::shortcut() const {
   return m_currentSequence;
 }
 
-void ShortcutCatcher::setKeySequence(const QKeySequence &key) {
+void ShortcutCatcher::setShortcut(const QKeySequence &key) {
   m_currentSequence = m_defaultSequence = key;
   doneRecording();
 }
 
-void ShortcutCatcher::clearKeySequence() {
-  setKeySequence(m_defaultSequence);
+void ShortcutCatcher::clearShortcut() {
+  setShortcut(m_defaultSequence);
 }

@@ -38,9 +38,9 @@ class QToolButton;
 class ShortcutButton;
 
 class ShortcutCatcher : public QWidget {
+    Q_OBJECT
     friend class ShortcutButton;
 
-    Q_OBJECT
   public:
     explicit ShortcutCatcher(QWidget *parent = 0);
     virtual ~ShortcutCatcher();
@@ -48,17 +48,18 @@ class ShortcutCatcher : public QWidget {
     void controlModifierlessTimout();
     void updateDisplayShortcut();
 
+    QKeySequence shortcut() const;
+    void setShortcut(const QKeySequence& key);
+
   protected slots:
     void startRecording();
     void doneRecording();
 
   public slots:
-    QKeySequence keySequence() const;
-    void setKeySequence(const QKeySequence& key);
-    void clearKeySequence();
+    void clearShortcut();
 
   signals:
-    void keySequenceChanged(QKeySequence seguence);
+    void shortcutChanged(QKeySequence seguence);
 
   private:
     QToolButton *m_clearButton;
