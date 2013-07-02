@@ -1,5 +1,6 @@
 #include <QMessageBox>
 #include <QProcess>
+#include <QNetworkProxy>
 
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
@@ -36,11 +37,14 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Establish needed connections.
   connect(this, &FormSettings::accepted, this, &FormSettings::saveSettings);
+  connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int index)>(&QComboBox::currentIndexChanged),
+          this, &FormSettings::onProxyTypeChanged);
 
   // Load all settings.
   loadGeneral();
   loadShortcuts();
   loadInterface();
+  loadProxy();
   loadLanguage();
 }
 
@@ -53,9 +57,36 @@ void FormSettings::saveSettings() {
   saveGeneral();
   saveShortcuts();
   saveInterface();
+  saveProxy();
   saveLanguage();
 
   Settings::getInstance()->checkSettings();
+}
+
+void FormSettings::onProxyTypeChanged(int index) {
+  QNetworkProxy::ProxyType selected_type = static_cast<QNetworkProxy::ProxyType>(m_ui->m_cmbProxyType->itemData(index).toInt());
+  bool is_proxy_selected = selected_type != QNetworkProxy::NoProxy;
+
+  m_ui->m_txtProxyHost->setVisible(is_proxy_selected);
+  m_ui->m_txtProxyPassword->setVisible(is_proxy_selected);
+  m_ui->m_txtProxyUsername->setVisible(is_proxy_selected);
+  m_ui->m_spinProxyPort->setVisible(is_proxy_selected);
+  m_ui->m_lblProxyHost->setVisible(is_proxy_selected);
+  m_ui->m_lblProxyInfo->setVisible(is_proxy_selected);
+  m_ui->m_lblProxyPassword->setVisible(is_proxy_selected);
+  m_ui->m_lblProxyPort->setVisible(is_proxy_selected);
+  m_ui->m_lblProxyUsername->setVisible(is_proxy_selected);
+  m_ui->m_checkShowPassword->setVisible(is_proxy_selected);
+}
+
+void FormSettings::loadProxy() {
+  m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::NoProxy);
+  m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
+  m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
+}
+
+void FormSettings::saveProxy() {
+
 }
 
 void FormSettings::loadLanguage() {

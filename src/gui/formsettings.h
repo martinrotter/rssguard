@@ -33,6 +33,11 @@ class FormSettings : public QDialog {
 
     void loadShortcuts();
     void saveShortcuts();
+
+    void loadProxy();
+    void saveProxy();
+
+    void onProxyTypeChanged(int index);
     
   private:
     Ui::FormSettings *m_ui;
