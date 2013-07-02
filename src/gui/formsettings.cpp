@@ -181,13 +181,10 @@ void FormSettings::loadInterface() {
 
   // Load settings of icon theme.
   QString current_theme = ThemeFactory::getCurrentIconTheme();
-#if defined(Q_OS_LINUX)
-  QString system_theme = ThemeFactory::getSystemIconTheme();
-#endif
 
   foreach (QString icon_theme_name, ThemeFactory::getInstalledIconThemes()) {
 #if defined(Q_OS_LINUX)
-    if (icon_theme_name == system_theme) {
+    if (icon_theme_name == APP_THEME_SYSTEM) {
       m_ui->m_cmbIconTheme->addItem(tr("system icon theme (default)"),
                                     icon_theme_name);
     }
@@ -197,7 +194,7 @@ void FormSettings::loadInterface() {
                                     icon_theme_name);
 #if defined(Q_OS_LINUX)
     }
-    if (current_theme == system_theme) {
+    if (current_theme == APP_THEME_SYSTEM) {
       // Because system icon theme lies at the index 0.
       // See ThemeFactory::getInstalledIconThemes() for more info.
       m_ui->m_cmbIconTheme->setCurrentIndex(0);

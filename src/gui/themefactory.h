@@ -19,10 +19,6 @@ class ThemeFactory {
     // Adds custom application path to be search for icons.
     static void setupSearchPaths();
 
-    // Returns name of icon theme, which is selected as active for
-    // system.
-    static QString getSystemIconTheme();
-
     // Returns list of installed themes, this includes:
     //  a) system-wide themes,
     //  b) application-wide themes.

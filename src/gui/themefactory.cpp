@@ -43,25 +43,10 @@ void ThemeFactory::setupSearchPaths() {
          qPrintable(QIcon::themeSearchPaths().join(", ")));
 }
 
-QString ThemeFactory::getSystemIconTheme() {
-#if defined(Q_OS_LINUX)
-  // Empty string forces Qt to use icon theme from operating system.
-  //
-  // WARNING: We should realize that any visible list of available
-  // icon themes should replace empty string with "system" keyword.
-  // This needs to be done in FormSettings.
-  return QString();
-#else
-  // NOTE: It is expected that mini-oxygen is provided as fall-back theme for
-  // windows edition of RSS Guard.
-  return "mini-oxygen";
-#endif
-}
-
 QString ThemeFactory::getCurrentIconTheme() {
   QString current_theme_name = Settings::getInstance()->value(APP_CFG_GUI,
                                                               "icon_theme",
-                                                              getSystemIconTheme()).toString();
+                                                              "mini-kfaenza").toString();
   return current_theme_name;
 }
 
@@ -89,7 +74,7 @@ void ThemeFactory::loadCurrentIconTheme() {
     return;
   }
   else {
-    qDebug("Loading theme %s.", qPrintable(theme_name));
+    qDebug("Loading theme '%s'.", qPrintable(theme_name));
     QIcon::setThemeName(theme_name);
 
     // In Linux, we need to deliver custom event for all widgets
@@ -105,8 +90,10 @@ void ThemeFactory::loadCurrentIconTheme() {
 QStringList ThemeFactory::getInstalledIconThemes() {
   QStringList icon_theme_names;
 
-  // Add system theme.
-  icon_theme_names << getSystemIconTheme();
+#if defined(Q_OS_LINUX)
+  // Add system theme on Linux, it is denoted as empty string.
+  icon_theme_names << APP_THEME_SYSTEM;
+#endif
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();

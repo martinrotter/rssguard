@@ -292,7 +292,7 @@ if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
-  install(DIRECTORY resources/graphics/themes/mini-oxygen
+  install(DIRECTORY resources/graphics/themes/mini-kfaenza
           DESTINATION ./themes)
   install(DIRECTORY resources/graphics/flags
           DESTINATION ./)
@@ -310,7 +310,7 @@ elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION bin)
-  install(DIRECTORY resources/graphics/themes/mini-oxygen
+  install(DIRECTORY resources/graphics/themes/mini-kfaenza
           DESTINATION share/${APP_LOW_NAME}/themes)
   install(DIRECTORY resources/graphics/flags
           DESTINATION share/${APP_LOW_NAME}/)

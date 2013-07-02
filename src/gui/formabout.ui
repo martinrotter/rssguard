@@ -238,8 +238,16 @@ p, li { white-space: pre-wrap; }
           </layout>
          </widget>
          <widget class="QWidget" name="page_BSD">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>687</width>
+            <height>180</height>
+           </rect>
+          </property>
           <attribute name="label">
-           <string>BSD License (applies to QtSingleApplication component)</string>
+           <string>BSD License (applies to QtSingleApplication source code)</string>
           </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <property name="leftMargin">

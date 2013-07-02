@@ -1,0 +1,32 @@
+/* XPM */
+static char *lock[] = {
+/* columns rows colors chars-per-pixel */
+"22 22 4 1 ",
+"  c #000000",
+". c #040404",
+"X c #050505",
+"o c None",
+/* pixels */
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooo.    .oooooooo",
+"oooooooo oooo oooooooo",
+"oooooooo oooo oooooooo",
+"oooooooo oooo oooooooo",
+"oooooooo oooo oooooooo",
+"oooooo.        .oooooo",
+"oooooo          oooooo",
+"oooooo          oooooo",
+"oooooo          oooooo",
+"oooooo          oooooo",
+"oooooo          oooooo",
+"oooooo          oooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo",
+"oooooooooooooooooooooo"
+};

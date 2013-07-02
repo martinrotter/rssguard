@@ -63,7 +63,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                 "Authors and contributors:"
                                 "<ul>"
                                 "<li>Martin Rotter (<a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail.com</a>) (author of RSS Guard)</li>"
-                                "<li>KDE (author of Oxygen icon theme)</li>"
+                                "<li>snakebite & tiheum (authors of KFaenza/Faenza icon theme)</li>"
                                 "<li>Digia Plc (author of QtSingleApplication component)</li>"
                                 "</ul>"
                                 "</body>"));
