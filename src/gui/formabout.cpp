@@ -3,6 +3,7 @@
 
 #include "core/datetime.h"
 #include "gui/formabout.h"
+#include "gui/themefactory.h"
 
 
 FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout) {
@@ -10,6 +11,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+  setWindowIcon(ThemeFactory::fromTheme("help-about"));
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 
   // Load information from embedded text files.
@@ -74,7 +76,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                               "<ul><li><a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail</a>  ~email</li>"
                               "<li><a href=\"http://www.rssguard.sf.net\">www.rssguard.sf.net</a> ~website</li></ul>"
                               "You can obtain source code for Qonverter from its website."
-                              "<br><br><br>Copyright 2011-%1 Martin Rotter</body>").arg(QDateTime::currentDateTime().date().year()));
+                              "<br><br><br>Copyright © 2011-%1 Martin Rotter</body>").arg(QDateTime::currentDateTime().date().year()));
 }
 
 FormAbout::~FormAbout() {

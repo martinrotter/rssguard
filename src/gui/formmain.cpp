@@ -67,7 +67,6 @@ void FormMain::prepareMenus() {
 }
 
 void FormMain::processExecutionMessage(const QString &message) {
-  // TODO: Implement proper reaction when application is launched more than once.
   qDebug("Received '%s' execution message from another application instance.",
          qPrintable(message));
   display();
@@ -119,6 +118,9 @@ void FormMain::setupIcons() {
   // NOTE: Call QIcon::fromTheme for all needed widgets here.
   m_ui->m_actionSettings->setIcon(ThemeFactory::fromTheme("preferences-system"));
   m_ui->m_actionQuit->setIcon(ThemeFactory::fromTheme("application-exit"));
+  m_ui->m_actionAboutGuard->setIcon(ThemeFactory::fromTheme("help-about"));
+  m_ui->m_actionImport->setIcon(ThemeFactory::fromTheme("document-import"));
+  m_ui->m_actionExport->setIcon(ThemeFactory::fromTheme("document-export"));
 }
 
 void FormMain::createConnections() {

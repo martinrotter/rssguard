@@ -67,16 +67,11 @@ void FormSettings::onProxyTypeChanged(int index) {
   QNetworkProxy::ProxyType selected_type = static_cast<QNetworkProxy::ProxyType>(m_ui->m_cmbProxyType->itemData(index).toInt());
   bool is_proxy_selected = selected_type != QNetworkProxy::NoProxy;
 
-  m_ui->m_txtProxyHost->setVisible(is_proxy_selected);
-  m_ui->m_txtProxyPassword->setVisible(is_proxy_selected);
-  m_ui->m_txtProxyUsername->setVisible(is_proxy_selected);
-  m_ui->m_spinProxyPort->setVisible(is_proxy_selected);
-  m_ui->m_lblProxyHost->setVisible(is_proxy_selected);
-  m_ui->m_lblProxyInfo->setVisible(is_proxy_selected);
-  m_ui->m_lblProxyPassword->setVisible(is_proxy_selected);
-  m_ui->m_lblProxyPort->setVisible(is_proxy_selected);
-  m_ui->m_lblProxyUsername->setVisible(is_proxy_selected);
-  m_ui->m_checkShowPassword->setVisible(is_proxy_selected);
+  m_ui->m_txtProxyHost->setEnabled(is_proxy_selected);
+  m_ui->m_txtProxyPassword->setEnabled(is_proxy_selected);
+  m_ui->m_txtProxyUsername->setEnabled(is_proxy_selected);
+  m_ui->m_spinProxyPort->setEnabled(is_proxy_selected);
+  m_ui->m_checkShowPassword->setEnabled(is_proxy_selected);
 }
 
 void FormSettings::loadProxy() {

@@ -175,6 +175,7 @@ set(APP_SOURCES
   src/core/datetime.cpp
   src/core/localization.cpp
   src/core/dynamicshortcuts.cpp
+  src/core/basenetworkaccessmanager.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -200,6 +201,7 @@ set(APP_HEADERS
   src/gui/dynamicshortcutswidget.h
 
   # CORE headers.
+  src/core/basenetworkaccessmanager.h
 )
 
 # Add form files.

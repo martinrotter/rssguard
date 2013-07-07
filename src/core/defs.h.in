@@ -17,6 +17,7 @@
 #define APP_CFG_PATH        "data/config/config.ini"
 #define APP_CFG_GUI         "gui"
 #define APP_CFG_GEN         "main"
+#define APP_CFG_PROXY       "proxy"
 #define APP_CFG_CUTS        "keyboard"
 
 #define APP_DB_PATH         "data/storage/database.db"

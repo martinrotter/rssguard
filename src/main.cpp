@@ -43,10 +43,7 @@ int main(int argc, char *argv[]) {
   // Setup debug output system.
   qInstallMessageHandler(Debugging::debugHandler);
 
-  // TODO: Finish implementation of QtSingleApplication into RSS Guard.
-  // This primarily concerns slot in FormMain which reacts when application is launched
-  // repeatedly. See 'trivial' example from QtSingleApplication source code for more
-  // information.
+  // Instantiate base application object.
   QtSingleApplication application(argc, argv);
   qDebug("Instantiated QtSingleApplication class.");
 

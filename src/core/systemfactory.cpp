@@ -80,7 +80,6 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
 }
 #endif
 
-// TODO: Finish implementation of SystemFactory auto-start methods.
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();
 
