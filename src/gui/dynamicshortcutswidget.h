@@ -4,7 +4,7 @@
 #include <QWidget>
 
 
-class QFormLayout;
+class QGridLayout;
 class ShortcutCatcher;
 
 typedef QPair<QAction*, ShortcutCatcher*> ActionBinding;
@@ -29,7 +29,7 @@ class DynamicShortcutsWidget : public QWidget {
     void populate(const QList<QAction*> actions);
 
   private:
-    QFormLayout *m_layout;
+    QGridLayout *m_layout;
     QList<ActionBinding> m_actionBindings;
 };
 

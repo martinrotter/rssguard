@@ -167,6 +167,8 @@ set(APP_SOURCES
   src/gui/shortcutcatcher.cpp
   src/gui/shortcutbutton.cpp
   src/gui/dynamicshortcutswidget.cpp
+  src/gui/webbrowser.cpp
+  src/gui/basewebview.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -199,6 +201,8 @@ set(APP_HEADERS
   src/gui/shortcutcatcher.h
   src/gui/shortcutbutton.h
   src/gui/dynamicshortcutswidget.h
+  src/gui/webbrowser.h
+  src/gui/basewebview.h
 
   # CORE headers.
   src/core/basenetworkaccessmanager.h

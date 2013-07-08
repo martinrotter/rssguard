@@ -12,7 +12,7 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
   signals:
     
   public slots:
-    
+    void loadSettings();
 };
 
 #endif // BASENETWORKACCESSMANAGER_H
