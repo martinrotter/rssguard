@@ -8,11 +8,14 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     Q_OBJECT
   public:
     explicit BaseNetworkAccessManager(QObject *parent = 0);
-    
-  signals:
-    
+
   public slots:
     void loadSettings();
+
+  protected:
+    QNetworkReply *createRequest(Operation op,
+                                 const QNetworkRequest &request,
+                                 QIODevice *outgoingData);
 };
 
 #endif // BASENETWORKACCESSMANAGER_H

@@ -1,18 +1,25 @@
-#ifndef FORMBROWSER_H
-#define FORMBROWSER_H
+#ifndef WEBBROWSER_H
+#define WEBBROWSER_H
 
 #include <QWidget>
 
 
+class QVBoxLayout;
+class BaseNetworkAccessManager;
+
 class WebBrowser : public QWidget {
     Q_OBJECT
+    
   public:
     explicit WebBrowser(QWidget *parent = 0);
+    ~WebBrowser();
+
+    static BaseNetworkAccessManager *getNetworkManager();
     
-  signals:
-    
-  public slots:
-    
+  private:
+    QVBoxLayout *m_layout;
+
+    static QPointer<BaseNetworkAccessManager> m_networkManager;
 };
 
-#endif // FORMBROWSER_H
+#endif // WEBBROWSER_H
