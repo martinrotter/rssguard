@@ -4,6 +4,7 @@
 #include "gui/formmain.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
+#include "gui/webbrowser.h"
 #include "gui/themefactory.h"
 #include "gui/systemtrayicon.h"
 #include "core/settings.h"
@@ -115,12 +116,17 @@ bool FormMain::event(QEvent *event) {
 }
 
 void FormMain::setupIcons() {
-  // NOTE: Call QIcon::fromTheme for all needed widgets here.
+  // Setup icons of this main window.
   m_ui->m_actionSettings->setIcon(ThemeFactory::fromTheme("preferences-system"));
   m_ui->m_actionQuit->setIcon(ThemeFactory::fromTheme("application-exit"));
   m_ui->m_actionAboutGuard->setIcon(ThemeFactory::fromTheme("help-about"));
   m_ui->m_actionImport->setIcon(ThemeFactory::fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(ThemeFactory::fromTheme("document-export"));
+
+  // Setup icons for underlying components: opened web browsers...
+  foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
+    browser->setupIcons();
+  }
 }
 
 void FormMain::createConnections() {

@@ -4,5 +4,5 @@
 
 
 BaseWebPage::BaseWebPage(QObject *parent) : QWebPage(parent) {
-  setNetworkAccessManager(WebBrowser::getNetworkManager());
+  setNetworkAccessManager(WebBrowser::globalNetworkManager());
 }
