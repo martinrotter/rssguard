@@ -117,8 +117,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>506</width>
-            <height>368</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -423,7 +423,7 @@
           <bool>true</bool>
          </property>
          <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
+          <enum>QLineEdit::PasswordEchoOnEdit</enum>
          </property>
          <property name="placeholderText">
           <string>Your password for proxy server authentication</string>

@@ -170,6 +170,8 @@ set(APP_SOURCES
   src/gui/webbrowser.cpp
   src/gui/basewebview.cpp
   src/gui/basewebpage.cpp
+  src/gui/baselineedit.cpp
+  src/gui/locationlineedit.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -205,6 +207,8 @@ set(APP_HEADERS
   src/gui/webbrowser.h
   src/gui/basewebview.h
   src/gui/basewebpage.h
+  src/gui/baselineedit.h
+  src/gui/locationlineedit.h
 
   # CORE headers.
   src/core/basenetworkaccessmanager.h

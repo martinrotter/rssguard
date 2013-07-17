@@ -36,6 +36,7 @@ class FormSettings : public QDialog {
 
     void loadProxy();
     void saveProxy();
+    void displayProxyPassword(int state);
 
     void onProxyTypeChanged(int index);
     

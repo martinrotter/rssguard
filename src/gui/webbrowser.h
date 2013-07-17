@@ -6,6 +6,7 @@
 
 class QToolBar;
 class QVBoxLayout;
+class LocationLineEdit;
 class BaseWebView;
 class BaseNetworkAccessManager;
 
@@ -21,10 +22,18 @@ class WebBrowser : public QWidget {
     static BaseNetworkAccessManager *globalNetworkManager();
     static QList<WebBrowser*> runningWebBrowsers();
 
+  protected:
+    void createConnections();
+
+  protected slots:
+    void updateUrl(const QUrl &url);
+    void navigateToUrl(const QString &url);
+
   private:
-    QToolBar *m_toolBar;
     QVBoxLayout *m_layout;
+    QToolBar *m_toolBar;
     BaseWebView *m_webView;
+    LocationLineEdit *m_txtLocation;
 
     QAction *m_actionBack;
     QAction *m_actionForward;

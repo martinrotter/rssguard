@@ -39,6 +39,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(this, &FormSettings::accepted, this, &FormSettings::saveSettings);
   connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int index)>(&QComboBox::currentIndexChanged),
           this, &FormSettings::onProxyTypeChanged);
+  connect(m_ui->m_checkShowPassword, &QCheckBox::stateChanged,
+          this, &FormSettings::displayProxyPassword);
 
   // Load all settings.
   loadGeneral();
@@ -50,6 +52,15 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
 FormSettings::~FormSettings() {
   delete m_ui;
+}
+
+void FormSettings::displayProxyPassword(int state) {
+  if (state == Qt::Checked) {
+    m_ui->m_txtProxyPassword->setEchoMode(QLineEdit::Normal);
+  }
+  else {
+    m_ui->m_txtProxyPassword->setEchoMode(QLineEdit::PasswordEchoOnEdit);
+  }
 }
 
 void FormSettings::saveSettings() {
@@ -78,10 +89,33 @@ void FormSettings::loadProxy() {
   m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::NoProxy);
   m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
   m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
+
+  // Load the settings.
+  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::getInstance()->value(APP_CFG_PROXY,
+                                                                                                                      "proxy_type",
+                                                                                                                      QNetworkProxy::NoProxy).toInt());
+  m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
+  m_ui->m_txtProxyHost->setText(Settings::getInstance()->value(APP_CFG_PROXY,
+                                                               "host").toString());
+  m_ui->m_txtProxyUsername->setText(Settings::getInstance()->value(APP_CFG_PROXY,
+                                                                   "username").toString());
+  m_ui->m_txtProxyPassword->setText(Settings::getInstance()->value(APP_CFG_PROXY,
+                                                                   "password").toString());
+  m_ui->m_spinProxyPort->setValue(Settings::getInstance()->value(APP_CFG_PROXY,
+                                                                 "port", 80).toInt());
 }
 
 void FormSettings::saveProxy() {
-
+  Settings::getInstance()->setValue(APP_CFG_PROXY, "proxy_type",
+                                    m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
+  Settings::getInstance()->setValue(APP_CFG_PROXY, "host",
+                                    m_ui->m_txtProxyHost->text());
+  Settings::getInstance()->setValue(APP_CFG_PROXY, "username",
+                                    m_ui->m_txtProxyUsername->text());
+  Settings::getInstance()->setValue(APP_CFG_PROXY, "password",
+                                    m_ui->m_txtProxyPassword->text());
+  Settings::getInstance()->setValue(APP_CFG_PROXY, "port",
+                                    m_ui->m_spinProxyPort->value());
 }
 
 void FormSettings::loadLanguage() {

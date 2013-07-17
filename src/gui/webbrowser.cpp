@@ -2,11 +2,13 @@
 #include <QToolBar>
 #include <QAction>
 #include <QPointer>
-#include <QLineEdit>
+
+#include <QMessageBox>
 
 #include "core/basenetworkaccessmanager.h"
 #include "gui/basewebview.h"
 #include "gui/webbrowser.h"
+#include "gui/locationlineedit.h"
 #include "gui/themefactory.h"
 
 
@@ -17,6 +19,7 @@ WebBrowser::WebBrowser(QWidget *parent)
   : QWidget(parent), m_layout(new QVBoxLayout(this)),
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
+    m_txtLocation(new LocationLineEdit(this)),
     m_actionBack(m_webView->pageAction(QWebPage::Back)),
     m_actionForward(m_webView->pageAction(QWebPage::Forward)),
     m_actionReload(m_webView->pageAction(QWebPage::Reload)),
@@ -31,10 +34,20 @@ WebBrowser::WebBrowser(QWidget *parent)
   // and main window will be responsible for reloading
   // icons on all web browsers.
 
-  // Set toolbar properties.
+  // Set properties of some components.
   m_toolBar->layout()->setMargin(0);
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
+
+  // Modify action texts.
+  m_actionBack->setText(tr("Back"));
+  m_actionBack->setToolTip(tr("Go back"));
+  m_actionForward->setText(tr("Forward"));
+  m_actionForward->setToolTip(tr("Go forward"));
+  m_actionReload->setText(tr("Reload"));
+  m_actionReload->setToolTip(tr("Reload current web page"));
+  m_actionStop->setText(tr("Stop"));
+  m_actionStop->setToolTip(tr("Stop web page loading"));
 
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);
@@ -42,16 +55,39 @@ WebBrowser::WebBrowser(QWidget *parent)
   m_toolBar->addSeparator();
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
-
-  QLineEdit *ed = new QLineEdit(this);
-  m_toolBar->addWidget(ed);
+  m_toolBar->addWidget(m_txtLocation);
 
   // Setup layout.
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
   m_layout->setMargin(0);
 
-  m_webView->load(QUrl("http://www.seznam.cz"));
+  createConnections();
+}
+
+void WebBrowser::createConnections() {
+  // When user confirms new url, then redirect to it.
+  connect(m_txtLocation, &LocationLineEdit::submitted,
+          this, &WebBrowser::navigateToUrl);
+  // If new page loads, then update current url.
+  connect(m_webView, &BaseWebView::urlChanged,
+          this, &WebBrowser::updateUrl);
+
+  // Change location textbox status according to webpage status.
+  connect(m_webView, &BaseWebView::loadProgress,
+          m_txtLocation, &LocationLineEdit::setProgress);
+}
+
+void WebBrowser::updateUrl(const QUrl &url) {
+  m_txtLocation->setText(url.toString());
+}
+
+void WebBrowser::navigateToUrl(const QString &textual_url) {
+  QUrl extracted_url = QUrl::fromUserInput(textual_url);
+
+  if (extracted_url.isValid()) {
+    m_webView->setUrl(extracted_url);
+  }
 }
 
 WebBrowser::~WebBrowser() {
