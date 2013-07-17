@@ -7,6 +7,7 @@
 
 #include "core/basenetworkaccessmanager.h"
 #include "gui/basewebview.h"
+#include "gui/basewebpage.h"
 #include "gui/webbrowser.h"
 #include "gui/locationlineedit.h"
 #include "gui/themefactory.h"
@@ -74,7 +75,7 @@ void WebBrowser::createConnections() {
           this, &WebBrowser::updateUrl);
 
   // Change location textbox status according to webpage status.
-  connect(m_webView, &BaseWebView::loadProgress,
+  connect(m_webView->page(), &BaseWebPage::loadProgress,
           m_txtLocation, &LocationLineEdit::setProgress);
 }
 
