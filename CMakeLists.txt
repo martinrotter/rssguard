@@ -181,6 +181,7 @@ set(APP_SOURCES
   src/core/localization.cpp
   src/core/dynamicshortcuts.cpp
   src/core/basenetworkaccessmanager.cpp
+  src/core/webBrowsernetworkaccessmanager.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -212,6 +213,7 @@ set(APP_HEADERS
 
   # CORE headers.
   src/core/basenetworkaccessmanager.h
+  src/core/webBrowsernetworkaccessmanager.h
 )
 
 # Add form files.

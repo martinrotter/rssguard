@@ -1,4 +1,4 @@
-#include "core/basenetworkaccessmanager.h"
+#include "core/webbrowsernetworkaccessmanager.h"
 #include "gui/basewebpage.h"
 #include "gui/webbrowser.h"
 

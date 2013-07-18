@@ -2,10 +2,12 @@
 #include <QToolBar>
 #include <QAction>
 #include <QPointer>
+#include <QApplication>
 
 #include <QMessageBox>
 
 #include "core/basenetworkaccessmanager.h"
+#include "core/webbrowsernetworkaccessmanager.h"
 #include "gui/basewebview.h"
 #include "gui/basewebpage.h"
 #include "gui/webbrowser.h"
@@ -13,7 +15,7 @@
 #include "gui/themefactory.h"
 
 
-QPointer<BaseNetworkAccessManager> WebBrowser::m_networkManager;
+QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
 
 WebBrowser::WebBrowser(QWidget *parent)
@@ -112,9 +114,10 @@ QList<WebBrowser *> WebBrowser::runningWebBrowsers() {
   return m_runningWebBrowsers;
 }
 
-BaseNetworkAccessManager *WebBrowser::globalNetworkManager() {
+WebBrowserNetworkAccessManager *WebBrowser::globalNetworkManager() {
   if (m_networkManager.isNull()) {
-    m_networkManager = new BaseNetworkAccessManager();
+    // TODO: Not sure if qApp is needed here.
+    m_networkManager = new WebBrowserNetworkAccessManager(qApp);
   }
 
   return m_networkManager;

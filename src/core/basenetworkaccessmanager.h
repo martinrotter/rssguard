@@ -8,9 +8,10 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     Q_OBJECT
   public:
     explicit BaseNetworkAccessManager(QObject *parent = 0);
+    virtual ~BaseNetworkAccessManager();
 
   public slots:
-    void loadSettings();
+    virtual void loadSettings();
 
   protected:
     QNetworkReply *createRequest(Operation op,

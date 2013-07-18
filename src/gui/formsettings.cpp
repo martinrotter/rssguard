@@ -11,6 +11,7 @@
 #include "core/localization.h"
 #include "core/systemfactory.h"
 #include "core/dynamicshortcuts.h"
+#include "core/webbrowsernetworkaccessmanager.h"
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -116,6 +117,9 @@ void FormSettings::saveProxy() {
                                     m_ui->m_txtProxyPassword->text());
   Settings::getInstance()->setValue(APP_CFG_PROXY, "port",
                                     m_ui->m_spinProxyPort->value());
+
+  // Reload settings for all network access managers.
+  WebBrowser::globalNetworkManager()->loadSettings();
 }
 
 void FormSettings::loadLanguage() {

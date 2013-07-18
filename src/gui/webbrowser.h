@@ -8,7 +8,7 @@ class QToolBar;
 class QVBoxLayout;
 class LocationLineEdit;
 class BaseWebView;
-class BaseNetworkAccessManager;
+class WebBrowserNetworkAccessManager;
 
 class WebBrowser : public QWidget {
     Q_OBJECT
@@ -19,7 +19,7 @@ class WebBrowser : public QWidget {
 
     void setupIcons();
 
-    static BaseNetworkAccessManager *globalNetworkManager();
+    static WebBrowserNetworkAccessManager *globalNetworkManager();
     static QList<WebBrowser*> runningWebBrowsers();
 
   protected:
@@ -40,7 +40,7 @@ class WebBrowser : public QWidget {
     QAction *m_actionReload;
     QAction *m_actionStop;
 
-    static QPointer<BaseNetworkAccessManager> m_networkManager;
+    static QPointer<WebBrowserNetworkAccessManager> m_networkManager;
     static QList<WebBrowser*> m_runningWebBrowsers;
 };
 
