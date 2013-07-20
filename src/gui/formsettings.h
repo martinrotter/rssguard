@@ -10,6 +10,11 @@ namespace Ui {
   class FormSettings;
 }
 
+// Structure holding some initial values.
+struct TemporarySettings {
+    QColor m_webBrowserProgress;
+};
+
 class FormSettings : public QDialog {
     Q_OBJECT
     
@@ -21,9 +26,9 @@ class FormSettings : public QDialog {
     // Saves settings into global configuration.
     void saveSettings();
 
-    // Load/save GUI settings.
     void loadInterface();
     void saveInterface();
+    void changeBrowserProgressColor();
 
     void loadGeneral();
     void saveGeneral();
@@ -42,6 +47,7 @@ class FormSettings : public QDialog {
     
   private:
     Ui::FormSettings *m_ui;
+    TemporarySettings m_initialSettings;
 };
 
 #endif // FORMSETTINGS_H

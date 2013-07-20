@@ -65,7 +65,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>4</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -117,8 +117,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>506</width>
+            <height>367</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -163,7 +163,7 @@
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -256,10 +256,42 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="m_tabFonts">
+         <widget class="QWidget" name="m_tabWebBrowser">
           <attribute name="title">
-           <string>Fonts</string>
+           <string>Web browser</string>
           </attribute>
+          <layout class="QFormLayout" name="formLayout_7">
+           <item row="1" column="0">
+            <widget class="QLabel" name="m_lblBrowserProgressColor">
+             <property name="text">
+              <string>Color of website loading progress bar</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="indent">
+              <number>20</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="m_btnBrowserProgressColor">
+             <property name="text">
+              <string>&amp;Change...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_checkBrowserProgressColor">
+             <property name="text">
+              <string>Use custom color for web browser progress bar</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="m_tabMisc">
           <attribute name="title">
@@ -559,6 +591,38 @@
     <hint type="destinationlabel">
      <x>417</x>
      <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkBrowserProgressColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_btnBrowserProgressColor</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>416</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>519</x>
+     <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkBrowserProgressColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_lblBrowserProgressColor</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>416</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>275</x>
+     <y>73</y>
     </hint>
    </hints>
   </connection>

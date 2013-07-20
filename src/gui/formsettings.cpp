@@ -1,6 +1,7 @@
 #include <QMessageBox>
 #include <QProcess>
 #include <QNetworkProxy>
+#include <QColorDialog>
 
 #include "gui/formsettings.h"
 #include "gui/themefactory.h"
@@ -42,6 +43,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, &FormSettings::onProxyTypeChanged);
   connect(m_ui->m_checkShowPassword, &QCheckBox::stateChanged,
           this, &FormSettings::displayProxyPassword);
+  connect(m_ui->m_btnBrowserProgressColor, &QPushButton::clicked,
+          this, &FormSettings::changeBrowserProgressColor);
 
   // Load all settings.
   loadGeneral();
@@ -53,6 +56,15 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
 FormSettings::~FormSettings() {
   delete m_ui;
+}
+
+void FormSettings::changeBrowserProgressColor() {
+  QColorDialog color_dialog(m_initialSettings.m_webBrowserProgress, this);
+  color_dialog.setWindowTitle(tr("Select color for web browser progress bar"));
+  color_dialog.setOption(QColorDialog::ShowAlphaChannel);
+  color_dialog.exec();
+
+  m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
 }
 
 void FormSettings::displayProxyPassword(int state) {
@@ -243,6 +255,14 @@ void FormSettings::loadInterface() {
     m_ui->m_grpTray->setDisabled(true);
   }
 
+  // Load settings of web browser GUI.
+  m_initialSettings.m_webBrowserProgress = Settings::getInstance()->value(APP_CFG_GUI,
+                                                                          "browser_progress_color",
+                                                                          QColor(0, 255, 0, 100)).value<QColor>();
+  m_ui->m_checkBrowserProgressColor->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
+                                                                               "browser_colored_progress_enabled",
+                                                                               true).toBool());
+
   // Load settings of icon theme.
   QString current_theme = ThemeFactory::getCurrentIconTheme();
 
@@ -289,6 +309,14 @@ void FormSettings::saveInterface() {
       SystemTrayIcon::deleteInstance();
     }
   }
+
+  // Save settings of GUI of web browser.
+  Settings::getInstance()->setValue(APP_CFG_GUI,
+                                    "browser_progress_color",
+                                    m_initialSettings.m_webBrowserProgress);
+  Settings::getInstance()->setValue(APP_CFG_GUI,
+                                    "browser_colored_progress_enabled",
+                                    m_ui->m_checkBrowserProgressColor->isChecked());
 
   // Save selected icon theme.
   ThemeFactory::setCurrentIconTheme(m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString());
