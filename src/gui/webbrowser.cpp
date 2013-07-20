@@ -8,8 +8,8 @@
 
 #include "core/basenetworkaccessmanager.h"
 #include "core/webbrowsernetworkaccessmanager.h"
+#include "core/basewebpage.h"
 #include "gui/basewebview.h"
-#include "gui/basewebpage.h"
 #include "gui/webbrowser.h"
 #include "gui/locationlineedit.h"
 #include "gui/themefactory.h"
@@ -77,8 +77,10 @@ void WebBrowser::createConnections() {
           this, &WebBrowser::updateUrl);
 
   // Change location textbox status according to webpage status.
-  connect(m_webView->page(), &BaseWebPage::loadProgress,
+  connect(m_webView, &BaseWebView::loadProgress,
           m_txtLocation, &LocationLineEdit::setProgress);
+  connect(m_webView, &BaseWebView::loadFinished,
+          m_txtLocation, &LocationLineEdit::clearProgress);
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {

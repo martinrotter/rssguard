@@ -7,6 +7,7 @@
 class BaseLineEdit : public QLineEdit {
     Q_OBJECT
   public:
+    // Constructors and destructors.
     explicit BaseLineEdit(QWidget *parent = 0);
     virtual ~BaseLineEdit();
     
@@ -14,10 +15,8 @@ class BaseLineEdit : public QLineEdit {
     void keyPressEvent(QKeyEvent *event);
 
   signals:
+    // Emitted if user hits ENTER button.
     void submitted(const QString &text);
-    
-  public slots:
-    
 };
 
 #endif // BASELINEEDIT_H

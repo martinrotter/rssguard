@@ -15,6 +15,7 @@ class LocationLineEdit : public BaseLineEdit {
     // Sets percentual value of web page loading action.
     // NOTE: Number ranging from 0 to 100 is expected.
     void setProgress(int progress);
+    void clearProgress();
 
   protected:
     void focusOutEvent(QFocusEvent *event);
@@ -23,6 +24,7 @@ class LocationLineEdit : public BaseLineEdit {
 
   private:
     int m_progress;
+    QPalette m_defaultPalette;
     bool m_mouseSelectsAllText;
 };
 

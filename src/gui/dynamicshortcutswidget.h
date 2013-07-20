@@ -13,6 +13,7 @@ class DynamicShortcutsWidget : public QWidget {
     Q_OBJECT
     
   public:
+    // Constructors and destructors.
     explicit DynamicShortcutsWidget(QWidget *parent = 0);
     virtual ~DynamicShortcutsWidget();
 

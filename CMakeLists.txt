@@ -169,7 +169,6 @@ set(APP_SOURCES
   src/gui/dynamicshortcutswidget.cpp
   src/gui/webbrowser.cpp
   src/gui/basewebview.cpp
-  src/gui/basewebpage.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
 
@@ -181,6 +180,7 @@ set(APP_SOURCES
   src/core/localization.cpp
   src/core/dynamicshortcuts.cpp
   src/core/basenetworkaccessmanager.cpp
+  src/core/basewebpage.cpp
   src/core/webBrowsernetworkaccessmanager.cpp
 
   # Basic application sources.
@@ -207,13 +207,13 @@ set(APP_HEADERS
   src/gui/dynamicshortcutswidget.h
   src/gui/webbrowser.h
   src/gui/basewebview.h
-  src/gui/basewebpage.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
 
   # CORE headers.
   src/core/basenetworkaccessmanager.h
   src/core/webBrowsernetworkaccessmanager.h
+  src/core/basewebpage.h
 )
 
 # Add form files.

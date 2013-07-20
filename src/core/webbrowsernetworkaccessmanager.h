@@ -4,9 +4,12 @@
 #include "core/basenetworkaccessmanager.h"
 
 
+// This is custom network access manager for web browsers.
 class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     Q_OBJECT
+
   public:
+    // Constructors and destructors.
     explicit WebBrowserNetworkAccessManager(QObject *parent = 0);
     virtual ~WebBrowserNetworkAccessManager();
     
