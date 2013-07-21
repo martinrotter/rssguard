@@ -110,6 +110,7 @@ void WebBrowser::setupIcons() {
   m_actionForward->setIcon(ThemeFactory::fromTheme("go-next"));
   m_actionReload->setIcon(ThemeFactory::fromTheme("view-refresh"));
   m_actionStop->setIcon(ThemeFactory::fromTheme("process-stop"));
+  m_webView->setupIcons();
 }
 
 QList<WebBrowser *> WebBrowser::runningWebBrowsers() {

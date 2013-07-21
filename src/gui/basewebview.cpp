@@ -12,10 +12,12 @@
 BaseWebView::BaseWebView(QWidget *parent)
   : QWebView(parent), m_page(new BaseWebPage(this)) {
   setPage(m_page);
+  initializeActions();
   createConnections();
 }
 
 BaseWebView::~BaseWebView() {
+  qDebug("Destroying BaseWebView.");
 }
 
 void BaseWebView::onLoadFinished(bool ok) {
@@ -30,6 +32,38 @@ void BaseWebView::createConnections() {
           this, &BaseWebView::onLoadFinished);
 }
 
+void BaseWebView::setupIcons() {
+  m_actionReload->setIcon(ThemeFactory::fromTheme("view-refresh"));
+  m_actionCopyLink->setIcon(ThemeFactory::fromTheme("edit-copy"));
+  m_actionCopyImage->setIcon(ThemeFactory::fromTheme("insert-image"));
+  m_actionCopyImageUrl->setIcon(ThemeFactory::fromTheme("edit-copy"));
+}
+
+void BaseWebView::initializeActions() {
+  // Create needed actions.
+  m_actionReload = pageAction(QWebPage::Reload);
+  m_actionReload->setParent(this);
+  m_actionReload->setText(tr("Reload web page"));
+  m_actionReload->setToolTip(tr("Reload current web page"));
+
+  m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
+  m_actionCopyLink->setParent(this);
+  m_actionCopyLink->setText(tr("Copy link url"));
+  m_actionCopyLink->setToolTip(tr("Copy link url to clipboard"));
+
+
+  m_actionCopyImage = pageAction(QWebPage::CopyImageToClipboard);
+  m_actionCopyImage->setParent(this);
+  m_actionCopyImage->setText(tr("Copy image"));
+  m_actionCopyImage->setToolTip(tr("Copy image to clipboard"));
+
+
+  m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
+  m_actionCopyImageUrl->setParent(this);
+  m_actionCopyImageUrl->setText(tr("Copy image url"));
+  m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard"));
+}
+
 void BaseWebView::displayErrorPage() {
   // TODO: Add better custom error page.
   setHtml("error", url());
@@ -40,41 +74,28 @@ void BaseWebView::contextMenuEvent(QContextMenuEvent *event) {
   QMenu image_submenu(tr("Image"), &context_menu);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
 
-  // Obtain needed actions.
-  QAction *action_reload = pageAction(QWebPage::Reload);
-  action_reload->setText(tr("Reload web page"));
-  action_reload->setToolTip(tr("Reload current web page"));
-  context_menu.addAction(action_reload);
+  image_submenu.setIcon(ThemeFactory::fromTheme("image-x-generic"));
+
+  // Assemble the menu from actions.
+  context_menu.addAction(m_actionReload);
 
   if (hit_result.linkUrl().isValid()) {
-    QAction *action_copylink = pageAction(QWebPage::CopyLinkToClipboard);
-    action_copylink->setText(tr("Copy link url"));
-    action_copylink->setToolTip(tr("Copy link url to clipboard"));
-    action_copylink->setIcon(ThemeFactory::fromTheme("edit-copy"));
-    context_menu.addAction(action_copylink);
+    context_menu.addAction(m_actionCopyLink);
   }
 
   if (!hit_result.pixmap().isNull()) {
+    // Add 'Image' menu, because if user clicked image it needs to be visible.
     context_menu.addMenu(&image_submenu);
 
-    QAction *action_copyimage = pageAction(QWebPage::CopyImageToClipboard);
-    action_copyimage->setText(tr("Copy image"));
-    action_copyimage->setToolTip(tr("Copy image to clipboard"));
-    action_copyimage->setIcon(ThemeFactory::fromTheme("insert-image"));
-    image_submenu.addAction(action_copyimage);
+    image_submenu.addAction(m_actionCopyImage);
   }
 
   if (hit_result.imageUrl().isValid()) {
-    QAction *action_copyimageurl = pageAction(QWebPage::CopyImageUrlToClipboard);
-    action_copyimageurl->setText(tr("Copy image url"));
-    action_copyimageurl->setToolTip(tr("Copy image url to clipboard"));
-    action_copyimageurl->setIcon(ThemeFactory::fromTheme("edit-copy"));
-    image_submenu.addAction(action_copyimageurl);
+    image_submenu.addAction(m_actionCopyImageUrl);
   }
 
   // Display the menu.
   context_menu.exec(mapToGlobal(event->pos()));
-  context_menu.deleteLater();
 }
 
 void BaseWebView::paintEvent(QPaintEvent *event) {

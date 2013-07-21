@@ -67,15 +67,16 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                 "<li>Martin Rotter (<a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail.com</a>) (author of RSS Guard)</li>"
                                 "<li>snakebite & tiheum (authors of KFaenza/Faenza icon theme)</li>"
                                 "<li>Digia Plc (author of QtSingleApplication component)</li>"
+                                "<li>Artem Galichkin (<a href=\"mailto://doomer3d@gmail.com\">doomer3d@gmail.com</a>) (author of original QKeySequenceWidget component)</li>"
                                 "</ul>"
                                 "</body>"));
 
   m_ui->m_txtInfo->setText(tr("<body>RSS Guard is a (very) tiny feed reader."
-                              "<br><br>This software is distributed under the terms of GNU General Public License, version 3 or later."
+                              "<br><br>This software is distributed under the terms of GNU General Public License, version 3."
                               "<br><br>Contacts:"
                               "<ul><li><a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail</a>  ~email</li>"
                               "<li><a href=\"http://www.rssguard.sf.net\">www.rssguard.sf.net</a> ~website</li></ul>"
-                              "You can obtain source code for Qonverter from its website."
+                              "You can obtain source code for RSS Guard from its website."
                               "<br><br><br>Copyright © 2011-%1 Martin Rotter</body>").arg(QDateTime::currentDateTime().date().year()));
 }
 

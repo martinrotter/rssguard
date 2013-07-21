@@ -2,6 +2,7 @@
 #define BASEWEBVIEW_H
 
 #include <QWebView>
+#include <QAction>
 
 
 class QPaintEvent;
@@ -15,11 +16,15 @@ class BaseWebView : public QWebView {
     explicit BaseWebView(QWidget *parent = 0);
     virtual ~BaseWebView();
 
+    void setupIcons();
+
   protected slots:
     // Executes if loading of any page is done.
     void onLoadFinished(bool ok);
 
   protected:
+    void initializeActions();
+
     // Creates necessary connections.
     void createConnections();
 
@@ -34,6 +39,11 @@ class BaseWebView : public QWebView {
 
   private:
     BaseWebPage *m_page;
+
+    QAction *m_actionReload;
+    QAction *m_actionCopyLink;
+    QAction *m_actionCopyImage;
+    QAction *m_actionCopyImageUrl;
 };
 
 #endif // BASEWEBVIEW_H
