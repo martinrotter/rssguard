@@ -3,6 +3,8 @@
 #include <QSettings>
 #endif
 
+#include <QTranslator>
+
 #include "core/defs.h"
 #include "core/debugging.h"
 #include "core/localization.h"
@@ -64,7 +66,7 @@ int main(int argc, char *argv[]) {
   ThemeFactory::setupSearchPaths();
 
   // Load localization and setup locale before any widget is constructed.
-  Localization::load();
+  LoadLocalization();
 
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);

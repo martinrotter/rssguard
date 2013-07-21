@@ -359,6 +359,6 @@ add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 # make lupdate and make lrelease implementation.
 add_custom_target(lupdate
   ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -no-obsolete -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
