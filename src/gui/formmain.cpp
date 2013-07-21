@@ -78,6 +78,15 @@ void FormMain::quit() {
   qApp->quit();
 }
 
+void FormMain::switchFullscreenMode(bool turn_fullscreen_on) {
+  if (turn_fullscreen_on) {
+    showFullScreen();
+  } else {
+
+    showNormal();
+  }
+}
+
 void FormMain::switchVisibility() {
   if (isVisible()) {
     hide();
@@ -122,6 +131,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionAboutGuard->setIcon(ThemeFactory::fromTheme("help-about"));
   m_ui->m_actionImport->setIcon(ThemeFactory::fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(ThemeFactory::fromTheme("document-export"));
+  m_ui->m_actionFullscreen->setIcon(ThemeFactory::fromTheme("view-fullscreen"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
@@ -132,6 +142,9 @@ void FormMain::setupIcons() {
 void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionQuit, &QAction::triggered, this, &FormMain::quit);
+
+  // Menu "View" connections.
+  connect(m_ui->m_actionFullscreen, &QAction::triggered, this, &FormMain::switchFullscreenMode);
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, &QAction::triggered, this, &FormMain::showSettings);

@@ -75,7 +75,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -97,6 +97,7 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
+    <addaction name="m_actionFullscreen"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -145,6 +146,17 @@
   <action name="m_actionAboutGuard">
    <property name="text">
     <string>&amp;About RSS Guard</string>
+   </property>
+  </action>
+  <action name="m_actionFullscreen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Fullscreen mode</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F</string>
    </property>
   </action>
  </widget>

@@ -48,10 +48,17 @@ class FormMain : public QMainWindow {
 
     // Displays window on top or switches its visibility.
     void display();
+
+    // Switches visibility of main window.
     void switchVisibility();
+
+    // Turns on/off fullscreen mode
+    void switchFullscreenMode(bool turn_fullscreen_on);
 
   protected slots:
     void cleanupResources();
+
+    // Displays various dialogs.
     void showSettings();
     void showAbout();
     
