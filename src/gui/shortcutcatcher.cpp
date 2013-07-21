@@ -43,7 +43,7 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
 
   // Create clear button.
   m_clearButton = new QToolButton(this);
-  m_clearButton->setIcon(ThemeFactory::fromTheme("dialog-cancel"));
+  m_clearButton->setIcon(ThemeFactory::fromTheme("document-revert"));
   m_clearButton->setFocusPolicy(Qt::NoFocus);
 
   // Clear main shortcut catching button.

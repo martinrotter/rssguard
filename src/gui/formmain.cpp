@@ -46,7 +46,8 @@ QMenu *FormMain::getTrayMenu() {
 QList<QAction*> FormMain::getActions() {
   QList<QAction*> actions;
   actions << m_ui->m_actionImport << m_ui->m_actionExport <<
-             m_ui->m_actionSettings << m_ui->m_actionQuit;
+             m_ui->m_actionSettings << m_ui->m_actionQuit <<
+             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard;
   return actions;
 }
 
