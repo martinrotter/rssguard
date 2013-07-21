@@ -45,7 +45,13 @@ void BaseNetworkAccessManager::loadSettings() {
 QNetworkReply *BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op,
                                                        const QNetworkRequest &request,
                                                        QIODevice *outgoingData) {
-  return QNetworkAccessManager::createRequest(op,
-                                              request,
-                                              outgoingData);
+  QNetworkRequest new_request = request;
+
+  // This rapidly speeds up loading of web sites.
+  // NOTE: https://en.wikipedia.org/wiki/HTTP_pipelining
+  new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
+
+  // Setup custom user-agent.
+  new_request.setHeader(QNetworkRequest::UserAgentHeader, static_cast<QString>(APP_USERAGENT));
+  return QNetworkAccessManager::createRequest(op, new_request, outgoingData);
 }

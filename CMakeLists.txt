@@ -181,7 +181,7 @@ set(APP_SOURCES
   src/core/dynamicshortcuts.cpp
   src/core/basenetworkaccessmanager.cpp
   src/core/basewebpage.cpp
-  src/core/webBrowsernetworkaccessmanager.cpp
+  src/core/webbrowsernetworkaccessmanager.cpp
 
   # Basic application sources.
   src/main.cpp

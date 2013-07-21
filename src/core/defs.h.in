@@ -2,6 +2,7 @@
 #define DEFS_H
 
 #include <QtGlobal>
+#include <QtWebKitVersion>
 
 #define CMAKE_VERSION       "@CMAKE_VERSION@"
 #define CMAKE_SYSTEM        "@CMAKE_SYSTEM@"
@@ -13,6 +14,7 @@
 #define APP_AUTHORS         "@APP_AUTHOR@"
 #define APP_URL             "@APP_URL@"
 #define APP_VERSION         "@APP_VERSION@"
+#define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + QTWEBKIT_VERSION_STR
 
 #define APP_CFG_PATH        "data/config/config.ini"
 #define APP_CFG_GUI         "gui"
