@@ -29,6 +29,9 @@ class BaseWebView : public QWebView {
     // Does additional painting.
     void paintEvent(QPaintEvent *event);
 
+    // Provides custom context menu.
+    void contextMenuEvent(QContextMenuEvent *event);
+
   private:
     BaseWebPage *m_page;
 };

@@ -30,6 +30,9 @@ class WebBrowser : public QWidget {
     // Returns list of all running web browsers.
     static QList<WebBrowser*> runningWebBrowsers();
 
+  public slots:
+    void setNavigationBarVisible(bool visible);
+
   protected:
     // Creates necessary connections.
     void createConnections();

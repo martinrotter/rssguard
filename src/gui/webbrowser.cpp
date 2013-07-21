@@ -116,6 +116,10 @@ QList<WebBrowser *> WebBrowser::runningWebBrowsers() {
   return m_runningWebBrowsers;
 }
 
+void WebBrowser::setNavigationBarVisible(bool visible) {
+  m_toolBar->setVisible(visible);
+}
+
 WebBrowserNetworkAccessManager *WebBrowser::globalNetworkManager() {
   if (m_networkManager.isNull()) {
     // TODO: Not sure if qApp is needed here.
