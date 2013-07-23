@@ -28,8 +28,7 @@ void BaseWebView::onLoadFinished(bool ok) {
 }
 
 void BaseWebView::createConnections() {
-  connect(this, &BaseWebView::loadFinished,
-          this, &BaseWebView::onLoadFinished);
+  connect(this, &BaseWebView::loadFinished, this, &BaseWebView::onLoadFinished);
 }
 
 void BaseWebView::setupIcons() {
@@ -96,6 +95,30 @@ void BaseWebView::contextMenuEvent(QContextMenuEvent *event) {
 
   // Display the menu.
   context_menu.exec(mapToGlobal(event->pos()));
+}
+
+void BaseWebView::mousePressEvent(QMouseEvent *event) {
+  if (event->buttons() & Qt::MiddleButton) {
+    QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
+
+    // Check if user clicked with middle mouse button on some
+    // hyperlink.
+    if (hit_result.linkUrl().isValid()) {
+      emit linkMiddleClicked(hit_result.linkUrl());
+
+      // No more handling of event is now needed. Return.
+      return;
+    }
+  }
+
+
+
+  // TODO: Add mouse gestures (from quite-rss).
+  QWebView::mousePressEvent(event);
+}
+
+void BaseWebView::mouseReleaseEvent(QMouseEvent *event) {
+  QWebView::mousePressEvent(event);
 }
 
 void BaseWebView::paintEvent(QPaintEvent *event) {

@@ -96,6 +96,11 @@ void FormSettings::onProxyTypeChanged(int index) {
   m_ui->m_txtProxyUsername->setEnabled(is_proxy_selected);
   m_ui->m_spinProxyPort->setEnabled(is_proxy_selected);
   m_ui->m_checkShowPassword->setEnabled(is_proxy_selected);
+  m_ui->m_lblProxyHost->setEnabled(is_proxy_selected);
+  m_ui->m_lblProxyInfo->setEnabled(is_proxy_selected);
+  m_ui->m_lblProxyPassword->setEnabled(is_proxy_selected);
+  m_ui->m_lblProxyPort->setEnabled(is_proxy_selected);
+  m_ui->m_lblProxyUsername->setEnabled(is_proxy_selected);
 }
 
 void FormSettings::loadProxy() {

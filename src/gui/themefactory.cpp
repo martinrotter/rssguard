@@ -71,19 +71,20 @@ void ThemeFactory::loadCurrentIconTheme() {
   if (!installed_themes.contains(theme_name)) {
     qDebug("Icon theme '%s' cannot be loaded because it is not installed.",
            qPrintable(theme_name));
-    return;
   }
   else {
     qDebug("Loading theme '%s'.", qPrintable(theme_name));
     QIcon::setThemeName(theme_name);
+  }
 
-    // In Linux, we need to deliver custom event for all widgets
-    // to make sure they get a chance to redraw their icons.
-    // NOTE: This is NOT necessarily needed on Windows.
-    foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
-      QtSingleApplication::postEvent((QObject*) widget,
-                                     new ThemeFactoryEvent());
-    }
+  // We need to deliver custom event for all widgets
+  // to make sure they get a chance to setup their icons.
+  // NOTE: Event is delivered even if custom icon theme is not set
+  // as active, because all widgets need to do initial
+  // icons initialization based in the event receival.
+  foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
+    QtSingleApplication::postEvent((QObject*) widget,
+                                   new ThemeFactoryEvent());
   }
 }
 

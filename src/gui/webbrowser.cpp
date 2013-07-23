@@ -91,7 +91,7 @@ void WebBrowser::navigateToUrl(const QString &textual_url) {
   QUrl extracted_url = QUrl::fromUserInput(textual_url);
 
   if (extracted_url.isValid()) {
-    m_webView->setUrl(extracted_url);
+    m_webView->load(extracted_url);
   }
 }
 

@@ -18,6 +18,11 @@ class BaseWebView : public QWebView {
 
     void setupIcons();
 
+  signals:
+    // Is emitted if user wants to open some hyperlink in new
+    // web browser tab.
+    void linkMiddleClicked(const QUrl &link_url);
+
   protected slots:
     // Executes if loading of any page is done.
     void onLoadFinished(bool ok);
@@ -36,6 +41,10 @@ class BaseWebView : public QWebView {
 
     // Provides custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
+
+    // Provides custom mouse actions.
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
 
   private:
     BaseWebPage *m_page;
