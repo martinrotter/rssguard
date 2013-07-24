@@ -21,6 +21,7 @@
 #define APP_CFG_GEN         "main"
 #define APP_CFG_PROXY       "proxy"
 #define APP_CFG_CUTS        "keyboard"
+#define APP_CFG_BROWSER     "browser"
 
 #define APP_DB_PATH         "data/storage/database.db"
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"

@@ -50,11 +50,11 @@ void LocationLineEdit::mousePressEvent(QMouseEvent *event) {
 
 void LocationLineEdit::paintEvent(QPaintEvent *event) {
   // Draw "progress bar" if needed.
-  if (m_progress > 0 && Settings::getInstance()->value(APP_CFG_GUI,
+  if (m_progress > 0 && Settings::getInstance()->value(APP_CFG_BROWSER,
                                                        "browser_colored_progress_enabled",
                                                        true).toBool()) {
     QPalette current_palette = palette();
-    QColor loadingColor = Settings::getInstance()->value(APP_CFG_GUI,
+    QColor loadingColor = Settings::getInstance()->value(APP_CFG_BROWSER,
                                                          "browser_progress_color",
                                                          QColor(0, 255, 0, 100)).value<QColor>();
     QLinearGradient gradient(0, 0, width(), 0);

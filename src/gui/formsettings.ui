@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>506</width>
-            <height>367</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -314,7 +314,7 @@
            <item row="3" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
-              <string>Mouse gestures work with left mouse button. Possible gestures are:
+              <string>Mouse gestures work with right mouse button. Possible gestures are:
 &lt;ul&gt;
 &lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
 &lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
@@ -621,6 +621,38 @@
     <hint type="destinationlabel">
      <x>417</x>
      <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkBrowserProgressColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_lblBrowserProgressColor</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>300</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>275</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkBrowserProgressColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_btnBrowserProgressColor</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>300</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>74</y>
     </hint>
    </hints>
   </connection>

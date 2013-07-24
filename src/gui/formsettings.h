@@ -39,6 +39,9 @@ class FormSettings : public QDialog {
     void loadShortcuts();
     void saveShortcuts();
 
+    void loadBrowser();
+    void saveBrowser();
+
     void loadProxy();
     void saveProxy();
     void displayProxyPassword(int state);

@@ -4,6 +4,8 @@
 #include <QWebFrame>
 #include <QContextMenuEvent>
 
+#include "core/defs.h"
+#include "core/settings.h"
 #include "core/basewebpage.h"
 #include "gui/basewebview.h"
 #include "gui/themefactory.h"
@@ -12,6 +14,7 @@
 BaseWebView::BaseWebView(QWidget *parent)
   : QWebView(parent), m_page(new BaseWebPage(this)) {
   setPage(m_page);
+  setContextMenuPolicy(Qt::NoContextMenu);
   initializeActions();
   createConnections();
 }
@@ -28,7 +31,10 @@ void BaseWebView::onLoadFinished(bool ok) {
 }
 
 void BaseWebView::createConnections() {
-  connect(this, &BaseWebView::loadFinished, this, &BaseWebView::onLoadFinished);
+  connect(this, &BaseWebView::loadFinished,
+          this, &BaseWebView::onLoadFinished);
+  connect(this, &BaseWebView::customContextMenuRequested,
+          this, &BaseWebView::popupContextMenu);
 }
 
 void BaseWebView::setupIcons() {
@@ -68,10 +74,10 @@ void BaseWebView::displayErrorPage() {
   setHtml("error", url());
 }
 
-void BaseWebView::contextMenuEvent(QContextMenuEvent *event) {
+void BaseWebView::popupContextMenu(const QPoint &pos) {
   QMenu context_menu(tr("Web browser"), this);
   QMenu image_submenu(tr("Image"), &context_menu);
-  QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
+  QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
   image_submenu.setIcon(ThemeFactory::fromTheme("image-x-generic"));
 
@@ -94,11 +100,11 @@ void BaseWebView::contextMenuEvent(QContextMenuEvent *event) {
   }
 
   // Display the menu.
-  context_menu.exec(mapToGlobal(event->pos()));
+  context_menu.exec(mapToGlobal(pos));
 }
 
 void BaseWebView::mousePressEvent(QMouseEvent *event) {
-  if (event->buttons() & Qt::MiddleButton) {
+  if (event->button() & Qt::MiddleButton) {
     QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
 
     // Check if user clicked with middle mouse button on some
@@ -110,15 +116,51 @@ void BaseWebView::mousePressEvent(QMouseEvent *event) {
       return;
     }
   }
-
-
+  else if (event->button() & Qt::RightButton) {
+    m_gestureOrigin = event->pos();
+  }
 
   // TODO: Add mouse gestures (from quite-rss).
   QWebView::mousePressEvent(event);
 }
 
 void BaseWebView::mouseReleaseEvent(QMouseEvent *event) {
-  QWebView::mousePressEvent(event);
+  QWebView::mouseReleaseEvent(event);
+
+  if (event->button() & Qt::RightButton) {
+    bool are_gestures_enabled = Settings::getInstance()->value(APP_CFG_BROWSER,
+                                                               "gestures_enabled",
+                                                               true).toBool();
+    if (are_gestures_enabled) {
+      QPoint release_point = event->pos();
+      int left_move = m_gestureOrigin.x() - release_point.x();
+      int right_move = release_point.x() - m_gestureOrigin.x();
+      int top_move = m_gestureOrigin.y() - release_point.y();
+      int bottom_move = release_point.y() - m_gestureOrigin.y();
+      int total_max = qMax(qMax(qMax(left_move, right_move),
+                                qMax(top_move, bottom_move)),
+                           40);
+
+      if (total_max == left_move && are_gestures_enabled) {
+        back();
+      }
+      else if (total_max == right_move && are_gestures_enabled) {
+        forward();
+      }
+      else if (total_max == top_move && are_gestures_enabled) {
+        reload();
+      }
+      else if (total_max == bottom_move && are_gestures_enabled) {
+        emit newTabRequested();
+      }
+      else {
+        emit customContextMenuRequested(event->pos());
+      }
+    }
+    else {
+      emit customContextMenuRequested(event->pos());
+    }
+  }
 }
 
 void BaseWebView::paintEvent(QPaintEvent *event) {

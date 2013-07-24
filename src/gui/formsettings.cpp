@@ -51,6 +51,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   loadShortcuts();
   loadInterface();
   loadProxy();
+  loadBrowser();
   loadLanguage();
 }
 
@@ -82,6 +83,7 @@ void FormSettings::saveSettings() {
   saveShortcuts();
   saveInterface();
   saveProxy();
+  saveBrowser();
   saveLanguage();
 
   Settings::getInstance()->checkSettings();
@@ -101,6 +103,32 @@ void FormSettings::onProxyTypeChanged(int index) {
   m_ui->m_lblProxyPassword->setEnabled(is_proxy_selected);
   m_ui->m_lblProxyPort->setEnabled(is_proxy_selected);
   m_ui->m_lblProxyUsername->setEnabled(is_proxy_selected);
+}
+
+void FormSettings::loadBrowser() {
+  // Load settings of web browser GUI.
+  m_initialSettings.m_webBrowserProgress = Settings::getInstance()->value(APP_CFG_BROWSER,
+                                                                          "browser_progress_color",
+                                                                          QColor(0, 255, 0, 100)).value<QColor>();
+  m_ui->m_checkBrowserProgressColor->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
+                                                                               "browser_colored_progress_enabled",
+                                                                               true).toBool());
+  m_ui->m_checkMouseGestures->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
+                                                                        "gestures_enabled",
+                                                                        true).toBool());
+}
+
+void FormSettings::saveBrowser() {
+  // Save settings of GUI of web browser.
+  Settings::getInstance()->setValue(APP_CFG_BROWSER,
+                                    "browser_progress_color",
+                                    m_initialSettings.m_webBrowserProgress);
+  Settings::getInstance()->setValue(APP_CFG_BROWSER,
+                                    "browser_colored_progress_enabled",
+                                    m_ui->m_checkBrowserProgressColor->isChecked());
+  Settings::getInstance()->setValue(APP_CFG_BROWSER,
+                                    "gestures_enabled",
+                                    m_ui->m_checkMouseGestures->isChecked());
 }
 
 void FormSettings::loadProxy() {
@@ -260,14 +288,6 @@ void FormSettings::loadInterface() {
     m_ui->m_grpTray->setDisabled(true);
   }
 
-  // Load settings of web browser GUI.
-  m_initialSettings.m_webBrowserProgress = Settings::getInstance()->value(APP_CFG_GUI,
-                                                                          "browser_progress_color",
-                                                                          QColor(0, 255, 0, 100)).value<QColor>();
-  m_ui->m_checkBrowserProgressColor->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
-                                                                               "browser_colored_progress_enabled",
-                                                                               true).toBool());
-
   // Load settings of icon theme.
   QString current_theme = ThemeFactory::getCurrentIconTheme();
 
@@ -314,14 +334,6 @@ void FormSettings::saveInterface() {
       SystemTrayIcon::deleteInstance();
     }
   }
-
-  // Save settings of GUI of web browser.
-  Settings::getInstance()->setValue(APP_CFG_GUI,
-                                    "browser_progress_color",
-                                    m_initialSettings.m_webBrowserProgress);
-  Settings::getInstance()->setValue(APP_CFG_GUI,
-                                    "browser_colored_progress_enabled",
-                                    m_ui->m_checkBrowserProgressColor->isChecked());
 
   // Save selected icon theme.
   ThemeFactory::setCurrentIconTheme(m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString());
