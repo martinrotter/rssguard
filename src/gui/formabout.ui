@@ -107,7 +107,7 @@
       <locale language="English" country="UnitedStates"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabInfo">
       <attribute name="title">
@@ -169,8 +169,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>685</width>
-            <height>184</height>
+            <width>98</width>
+            <height>69</height>
            </rect>
           </property>
           <property name="autoFillBackground">
@@ -352,6 +352,13 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="openExternalLinks">
           <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="m_lblThanks">
+         <property name="text">
+          <string>Thanks to page is available only in English language.</string>
          </property>
         </widget>
        </item>

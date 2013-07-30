@@ -257,6 +257,7 @@ set(APP_MISC
   resources/text/COPYING_GNU_GPL
   resources/text/COPYING_GNU_GPL_HTML
   resources/text/COPYING_BSD
+  resources/text/AUTHORS
 )
 
 # Wrap files, create moc files.

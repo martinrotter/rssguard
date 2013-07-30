@@ -37,6 +37,15 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   }
   file.close();
 
+  file.setFileName(APP_INFO_PATH + "/AUTHORS");
+  if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+    m_ui->m_txtThanks->setText(str.readAll());
+  }
+  else {
+    m_ui->m_txtThanks->setText(tr("Authors information not found."));
+  }
+  file.close();
+
   file.setFileName(APP_INFO_PATH + "/CHANGELOG");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtChangelog->setText(str.readAll());
@@ -60,16 +69,6 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                              QT_VERSION_STR,
                                                                              qVersion(),
                                                                              APP_NAME));
-
-  m_ui->m_txtThanks->setText(tr("<body>"
-                                "Authors and contributors:"
-                                "<ul>"
-                                "<li>Martin Rotter (<a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail.com</a>) (author of RSS Guard)</li>"
-                                "<li>snakebite & tiheum (authors of KFaenza/Faenza icon theme)</li>"
-                                "<li>Digia Plc (author of QtSingleApplication component)</li>"
-                                "<li>Artem Galichkin (<a href=\"mailto://doomer3d@gmail.com\">doomer3d@gmail.com</a>) (author of original QKeySequenceWidget component)</li>"
-                                "</ul>"
-                                "</body>"));
 
   m_ui->m_txtInfo->setText(tr("<body>RSS Guard is a (very) tiny feed reader."
                               "<br><br>This software is distributed under the terms of GNU General Public License, version 3."

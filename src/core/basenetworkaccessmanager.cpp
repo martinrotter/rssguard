@@ -15,6 +15,8 @@ BaseNetworkAccessManager::~BaseNetworkAccessManager() {
 }
 
 void BaseNetworkAccessManager::loadSettings() {
+  qDebug("Settings of BaseNetworkAccessManager changed.");
+
   QNetworkProxy new_proxy;
 
   // Load proxy values from settings.
@@ -38,8 +40,6 @@ void BaseNetworkAccessManager::loadSettings() {
   new_proxy.setPassword(Settings::getInstance()->value(APP_CFG_PROXY,
                                                        "password").toString());
   setProxy(new_proxy);
-
-  qDebug("Settings of BaseNetworkAccessManager changed.");
 }
 
 QNetworkReply *BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op,
