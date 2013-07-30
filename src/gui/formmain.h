@@ -2,7 +2,7 @@
 #define FORMMAIN_H
 
 #include <QMainWindow>
-#include <QTimer>
+#include <QUrl>
 
 #include "ui_formmain.h"
 
@@ -11,6 +11,7 @@ class FormMain : public QMainWindow {
     Q_OBJECT
     
   public:
+    // Constructors and destructors.
     explicit FormMain(QWidget *parent = 0);
     virtual ~FormMain();
 
@@ -21,11 +22,15 @@ class FormMain : public QMainWindow {
     // NOTE: This is used for setting dynamic shortcuts for given actions.
     QList<QAction*> getActions();
 
+    // Singleton accessor.
     static FormMain *getInstance();
 
   protected:
     // Creates all needed menus and sets them up.
     void prepareMenus();
+
+    // Initializes "Feeds" tab and related stuff.
+    void prepareTabs();
 
     // Creates needed connections for this window.
     void createConnections();
@@ -56,11 +61,24 @@ class FormMain : public QMainWindow {
     void switchFullscreenMode(bool turn_fullscreen_on);
 
   protected slots:
+    // Used for last-minute cleanups.
     void cleanupResources();
 
     // Displays various dialogs.
     void showSettings();
     void showAbout();
+
+    // Adds new WebBrowser tab to global TabWidget.
+    void addEmptyBrowser();
+
+    // Adds new WebBrowser with link. This is used when user
+    // selects to "Open link in new tab.".
+    void addLinkedBrowser();
+
+    // General method for adding WebBrowsers.
+    void addBrowser(bool move_after_current,
+                    bool make_active,
+                    const QUrl &initial_url = QUrl());
     
   private:
     Ui::FormMain *m_ui;

@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string notr="true">MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="TabWidget" name="m_tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>-1</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -26,45 +26,6 @@
       <property name="movable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Tab 1</string>
-       </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="WebBrowser" name="widget" native="true"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
-       <widget class="QToolButton" name="toolButton">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>110</y>
-          <width>61</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>...</string>
-        </property>
-        <property name="icon">
-         <iconset theme="application-exit">
-          <normaloff/>
-         </iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>32</width>
-          <height>32</height>
-         </size>
-        </property>
-       </widget>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -116,7 +77,7 @@
     <string>&amp;Import</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+I</string>
+    <string notr="true">Ctrl+Shift+I</string>
    </property>
   </action>
   <action name="m_actionExport">
@@ -124,7 +85,7 @@
     <string>E&amp;xport</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+E</string>
+    <string notr="true">Ctrl+Shift+E</string>
    </property>
   </action>
   <action name="m_actionQuit">
@@ -132,7 +93,7 @@
     <string>&amp;Quit</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+Q</string>
+    <string notr="true">Ctrl+Shift+Q</string>
    </property>
   </action>
   <action name="m_actionSettings">
@@ -140,12 +101,15 @@
     <string>&amp;Settings</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+S</string>
+    <string notr="true">Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="m_actionAboutGuard">
    <property name="text">
     <string>&amp;About RSS Guard</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+A</string>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -156,15 +120,15 @@
     <string>&amp;Fullscreen mode</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+F</string>
+    <string notr="true">Ctrl+Shift+F</string>
    </property>
   </action>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>WebBrowser</class>
-   <extends>QWidget</extends>
-   <header>webbrowser.h</header>
+   <class>TabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>tabwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -7,6 +7,7 @@
 #include "gui/themefactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
+#include "gui/webbrowser.h"
 #include "core/settings.h"
 #include "core/defs.h"
 #include "core/localization.h"
@@ -205,7 +206,7 @@ void FormSettings::saveLanguage() {
     Settings::getInstance()->setValue(APP_CFG_GEN, "language", new_lang);
 
     QMessageBox msg_question(this);
-    msg_question.setText(tr("Language of Qonverter was changed. Note that changes will take effect on next Qonverter start."));
+    msg_question.setText(tr("Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start."));
     msg_question.setInformativeText(tr("Do you want to restart now?"));
     msg_question.setWindowTitle(tr("Language changed"));
     msg_question.setIcon(QMessageBox::Question);
@@ -216,7 +217,7 @@ void FormSettings::saveLanguage() {
       if (!QProcess::startDetached(qApp->applicationFilePath())) {
         QMessageBox::warning(this,
                              tr("Problem with RSS Guard restart"),
-                             tr("Qonverter couldn't be restarted, please restart it manually for changes to take effect."));
+                             tr("RSS Guard couldn't be restarted, please restart it manually for changes to take effect."));
       }
       else {
         qApp->quit();
@@ -283,7 +284,7 @@ void FormSettings::loadInterface() {
   }
   // Tray icon is not supported on this machine.
   else {
-    m_ui->m_radioTrayOff->setText(tr("disable (Tray icon is not available.)"));
+    m_ui->m_radioTrayOff->setText(tr("Disable (Tray icon is not available.)"));
     m_ui->m_radioTrayOff->setChecked(true);
     m_ui->m_grpTray->setDisabled(true);
   }
@@ -315,6 +316,17 @@ void FormSettings::loadInterface() {
     }
 #endif
   }
+
+  // Load tab settings.
+  m_ui->m_checkCloseTabsMiddleClick->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
+                                                                               "tab_close_mid_button",
+                                                                               true).toBool());
+  m_ui->m_checkCloseTabsDoubleClick->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
+                                                                               "tab_close_double_button",
+                                                                               true).toBool());
+  m_ui->m_checkNewTabDoubleClick->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
+                                                                            "tab_new_double_button",
+                                                                            true).toBool());
 }
 
 void FormSettings::saveInterface() {
@@ -336,5 +348,16 @@ void FormSettings::saveInterface() {
   }
 
   // Save selected icon theme.
-  ThemeFactory::setCurrentIconTheme(m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString());
+  QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
+  if (!selected_icon_theme.isEmpty()) {
+    ThemeFactory::setCurrentIconTheme(selected_icon_theme);
+  }
+
+  // Save tab settings.
+  Settings::getInstance()->setValue(APP_CFG_GUI, "tab_close_mid_button",
+                                    m_ui->m_checkCloseTabsMiddleClick->isChecked());
+  Settings::getInstance()->setValue(APP_CFG_GUI, "tab_close_double_button",
+                                    m_ui->m_checkCloseTabsDoubleClick->isChecked());
+  Settings::getInstance()->setValue(APP_CFG_GUI, "tab_new_double_button",
+                                    m_ui->m_checkNewTabDoubleClick->isChecked());
 }

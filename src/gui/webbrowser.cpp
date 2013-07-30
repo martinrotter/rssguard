@@ -19,7 +19,7 @@ QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
 
 WebBrowser::WebBrowser(QWidget *parent)
-  : QWidget(parent), m_layout(new QVBoxLayout(this)),
+  : TabContent(parent), m_layout(new QVBoxLayout(this)),
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
     m_txtLocation(new LocationLineEdit(this)),
@@ -31,11 +31,6 @@ WebBrowser::WebBrowser(QWidget *parent)
   // Add this new instance to the global list of web browsers.
   // NOTE: This is used primarily for dynamic icon theme switching.
   m_runningWebBrowsers.append(this);
-
-  // TODO: Make this better, add location box, search box, better icons for buttons,
-  // note that icons must be loaded via separate method,
-  // and main window will be responsible for reloading
-  // icons on all web browsers.
 
   // Set properties of some components.
   m_toolBar->layout()->setMargin(0);
@@ -64,17 +59,25 @@ WebBrowser::WebBrowser(QWidget *parent)
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
   m_layout->setMargin(0);
+  m_layout->setContentsMargins(0, -1, 0, 0);
 
   createConnections();
+  setupIcons();
 }
 
 void WebBrowser::createConnections() {
   // When user confirms new url, then redirect to it.
-  connect(m_txtLocation, &LocationLineEdit::submitted,
-          this, &WebBrowser::navigateToUrl);
+  connect(m_txtLocation,
+          &LocationLineEdit::submitted,
+          this,
+          static_cast<void (WebBrowser::*)(const QString &url)>(&WebBrowser::navigateToUrl));
   // If new page loads, then update current url.
   connect(m_webView, &BaseWebView::urlChanged,
           this, &WebBrowser::updateUrl);
+
+  // Signal forwarding.
+  connect(m_webView, &BaseWebView::newTabRequested,
+          this, &WebBrowser::newTabRequested);
 
   // Change location textbox status according to webpage status.
   connect(m_webView, &BaseWebView::loadProgress,
@@ -87,12 +90,14 @@ void WebBrowser::updateUrl(const QUrl &url) {
   m_txtLocation->setText(url.toString());
 }
 
-void WebBrowser::navigateToUrl(const QString &textual_url) {
-  QUrl extracted_url = QUrl::fromUserInput(textual_url);
-
-  if (extracted_url.isValid()) {
-    m_webView->load(extracted_url);
+void WebBrowser::navigateToUrl(const QUrl &url) {
+  if (url.isValid()) {
+    m_webView->load(url);
   }
+}
+
+void WebBrowser::navigateToUrl(const QString &textual_url) {
+  navigateToUrl(QUrl::fromUserInput(textual_url));
 }
 
 WebBrowser::~WebBrowser() {
@@ -103,6 +108,14 @@ WebBrowser::~WebBrowser() {
 
   // Delete members.
   delete m_layout;
+}
+
+WebBrowser *WebBrowser::webBrowser() {
+  return this;
+}
+
+QMenu *WebBrowser::globalMenu() {
+  return nullptr;
 }
 
 void WebBrowser::setupIcons() {
@@ -123,7 +136,6 @@ void WebBrowser::setNavigationBarVisible(bool visible) {
 
 WebBrowserNetworkAccessManager *WebBrowser::globalNetworkManager() {
   if (m_networkManager.isNull()) {
-    // TODO: Not sure if qApp is needed here.
     m_networkManager = new WebBrowserNetworkAccessManager(qApp);
   }
 

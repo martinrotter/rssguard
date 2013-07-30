@@ -11,11 +11,6 @@ class ThemeFactory {
     ThemeFactory();
 
   public:
-    enum Type {
-      SYSTEM,
-      USER
-    };
-
     // Adds custom application path to be search for icons.
     static void setupSearchPaths();
 
@@ -25,7 +20,9 @@ class ThemeFactory {
     static QStringList getInstalledIconThemes();
 
     // Loads name of selected icon theme for the application and activates it.
-    static void loadCurrentIconTheme();
+    // NOTE: All existing widgets get a chance to repaint its icons if
+    // notify_widgets is true.
+    static void loadCurrentIconTheme(bool notify_widgets);
 
     // Returns name of currently activated theme for the application.
     static QString getCurrentIconTheme();

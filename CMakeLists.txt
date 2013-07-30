@@ -171,6 +171,9 @@ set(APP_SOURCES
   src/gui/basewebview.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
+  src/gui/tabwidget.cpp
+  src/gui/tabbar.cpp
+  src/gui/tabcontent.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -209,6 +212,9 @@ set(APP_HEADERS
   src/gui/basewebview.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
+  src/gui/tabwidget.h
+  src/gui/tabbar.h
+  src/gui/tabcontent.h
 
   # CORE headers.
   src/core/basenetworkaccessmanager.h

@@ -96,27 +96,19 @@
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (build on %2 with CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (OS při sestavování %2 verze CMake %3)&lt;br&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)&lt;br&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;body&gt;Authors and contributors:&lt;ul&gt;&lt;li&gt;Martin Rotter (&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail.com&lt;/a&gt;) (author of RSS Guard)&lt;/li&gt;&lt;li&gt;snakebite &amp; tiheum (authors of KFaenza/Faenza icon theme)&lt;/li&gt;&lt;li&gt;Digia Plc (author of QtSingleApplication component)&lt;/li&gt;&lt;li&gt;Artem Galichkin (&lt;a href=&quot;mailto://doomer3d@gmail.com&quot;&gt;doomer3d@gmail.com&lt;/a&gt;) (author of original QKeySequenceWidget component)&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;Authors and contributors:&lt;ul&gt;&lt;li&gt;Martin Rotter (&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail.com&lt;/a&gt;) (author of RSS Guard)&lt;/li&gt;&lt;li&gt;snakebite &amp; tiheum (authors of KFaenza/Faenza icon theme)&lt;/li&gt;&lt;li&gt;Digia Plc (author of QtSingleApplication component)&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3 or later.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for Qonverter from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~webová stránka&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy aplikace RSS Guard lze získat na její webové stránce.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
     <name>FormMain</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>&amp;File</source>
         <translation>&amp;Soubor</translation>
@@ -150,30 +142,6 @@
         <translation>Na&amp;stavení</translation>
     </message>
     <message>
-        <source>Tab 1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tab 2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;About RSS Guard</source>
         <translation>&amp;O aplikaci RSS Guard</translation>
     </message>
@@ -182,183 +150,171 @@
         <translation>&amp;Režime celé obrazovky</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+F</source>
-        <translation type="unfinished"></translation>
+        <source>Feeds</source>
+        <translation type="unfinished">Kanály</translation>
+    </message>
+    <message>
+        <source>Browser your feeds and messages</source>
+        <translation type="unfinished">Procházej své kanály a zprávy</translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <translation>Webový prohlížeč</translation>
     </message>
 </context>
 <context>
     <name>FormSettings</name>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Obecné</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelské rozhraní</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Téma ikon</translation>
     </message>
     <message>
         <source>system icon theme (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>systémové téma ikon (výchozí)</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Klávesové zkratky</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacce</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Launch RSS Guard on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Spouštět RSS Guard při spuštěníí operačního systému</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikony &amp;&amp; skiny</translation>
     </message>
     <message>
         <source>Skin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>disable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Notifikační ikona</translation>
     </message>
     <message>
         <source>When main window is closed, then</source>
-        <translation type="unfinished"></translation>
+        <translation>Je-li hlavní okno aplikace zavřeno, pak</translation>
     </message>
     <message>
         <source>hide it.</source>
-        <translation type="unfinished"></translation>
+        <translation>jej pouze skrýt (aplikace běží na pozadí).</translation>
     </message>
     <message>
         <source>quit the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>aplikaci ukončit.</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Spouštět aplikaci skrytou</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Color of website loading progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Webový prohlížeč</translation>
     </message>
     <message>
         <source>&amp;Change...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Změnit...</translation>
     </message>
     <message>
         <source>Use custom color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít barevný průběhový pás při načítání stránky</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"></translation>
+        <translation>Server</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"></translation>
+        <translation>Webový název IP adresa proxy serveru</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaše uživatelské jméno pro autentifikaci</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Heslo</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaše heslo pro autentifikaci</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit heslo</translation>
     </message>
     <message>
         <source>Password is stored in plain string in RSS Guard configuration file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Heslo je uloženo v nezašifrované podobě jako prostý text v souboru s nastavením aplikace RSS Guard.</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Select color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit barvu pro průběhový pás při načítání stránky</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádné proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Language of Qonverter was changed. Note that changes will take effect on next Qonverter start.</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Jazyk</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
@@ -373,15 +329,69 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Qonverter couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>disable (Tray icon is not available.)</source>
+        <source>Tray area &amp;&amp; notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close tabs with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left mouse button double-click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Middle mouse button single-click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open new tabs with left mouse button double-click on tab bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable mouse gestures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with right mouse button. Possible gestures are:
+&lt;ul&gt;
+&lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
+&lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
+&lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
+&lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
+&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser &amp; proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSS Guard couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable (Tray icon is not available.)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

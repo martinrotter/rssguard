@@ -3,14 +3,17 @@
 
 #include <QWidget>
 
+#include "gui/tabcontent.h"
+
 
 class QToolBar;
 class QVBoxLayout;
 class LocationLineEdit;
 class BaseWebView;
 class WebBrowserNetworkAccessManager;
+class QMenu;
 
-class WebBrowser : public QWidget {
+class WebBrowser : public TabContent {
     Q_OBJECT
     
   public:
@@ -20,6 +23,13 @@ class WebBrowser : public QWidget {
 
     // Reloads icons for all buttons.
     void setupIcons();
+
+    // Returns this instance.
+    // NOTE: This is needed due to TabContent interface.
+    WebBrowser *webBrowser();
+
+    // Returns global menu for this web browser.
+    QMenu *globalMenu();
 
     // Returns pointer to global network access manager
     // for web browsers.
@@ -31,7 +41,12 @@ class WebBrowser : public QWidget {
     static QList<WebBrowser*> runningWebBrowsers();
 
   public slots:
+    // Switches visibility of navigation bar.
     void setNavigationBarVisible(bool visible);
+
+    // Loads new url into the web browser.
+    void navigateToUrl(const QString &url);
+    void navigateToUrl(const QUrl &url);
 
   protected:
     // Creates necessary connections.
@@ -41,8 +56,8 @@ class WebBrowser : public QWidget {
     // Updates url (for example on location text box).
     void updateUrl(const QUrl &url);
 
-    // Loads new url into the web browser.
-    void navigateToUrl(const QString &url);
+  signals:
+    void newTabRequested();
 
   private:
     QVBoxLayout *m_layout;

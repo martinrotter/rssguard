@@ -28,7 +28,6 @@ void DynamicShortcutsWidget::updateShortcuts() {
 void DynamicShortcutsWidget::populate(const QList<QAction *> actions) {
   m_actionBindings.clear();
 
-  // TODO: Make labels smaller correctly and review this method.
   int row_id = 0;
   bool second_column = false;
 

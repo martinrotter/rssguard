@@ -115,7 +115,7 @@
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -149,7 +149,7 @@
          </widget>
          <widget class="QWidget" name="m_tabNotifications">
           <attribute name="title">
-           <string>Notifications</string>
+           <string>Tray area &amp;&amp; notifications</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_3">
            <item row="0" column="0" colspan="2">
@@ -204,6 +204,46 @@
                </widget>
               </item>
              </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="m_tabTabs">
+          <attribute name="title">
+           <string>Tabs</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout_7">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="m_grbCloseTabs">
+             <property name="title">
+              <string>Close tabs with</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QCheckBox" name="m_checkCloseTabsDoubleClick">
+                <property name="text">
+                 <string>Left mouse button double-click</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="m_checkCloseTabsMiddleClick">
+                <property name="text">
+                 <string>Middle mouse button single-click</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_checkNewTabDoubleClick">
+             <property name="text">
+              <string>Open new tabs with left mouse button double-click on tab bar</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -265,15 +305,18 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QTabWidget" name="tabWidget">
+        <widget class="QTabWidget" name="m_tabBrowserProxy">
          <property name="currentIndex">
           <number>0</number>
          </property>
-         <widget class="QWidget" name="tab_3">
+         <widget class="QWidget" name="m_tabBrowser">
           <attribute name="title">
            <string>Web browser</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_4">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
            <item row="0" column="0">
             <widget class="QCheckBox" name="m_checkBrowserProgressColor">
              <property name="text">
@@ -281,26 +324,6 @@
              </property>
              <property name="checked">
               <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="m_lblBrowserProgressColor">
-             <property name="text">
-              <string>Color of website loading progress bar</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-             </property>
-             <property name="indent">
-              <number>20</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QPushButton" name="m_btnBrowserProgressColor">
-             <property name="text">
-              <string>&amp;Change...</string>
              </property>
             </widget>
            </item>
@@ -330,9 +353,22 @@
              </property>
             </widget>
            </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="m_btnBrowserProgressColor">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>&amp;Change...</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_4">
+         <widget class="QWidget" name="m_tabProxy">
           <attribute name="title">
            <string>Proxy</string>
           </attribute>
@@ -344,6 +380,9 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="buddy">
+              <cstring>m_cmbProxyType</cstring>
              </property>
             </widget>
            </item>
@@ -357,6 +396,9 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="buddy">
+              <cstring>m_txtProxyHost</cstring>
              </property>
             </widget>
            </item>
@@ -379,6 +421,9 @@
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="buddy">
+                <cstring>m_spinProxyPort</cstring>
                </property>
               </widget>
              </item>
@@ -405,6 +450,9 @@
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
+             <property name="buddy">
+              <cstring>m_txtProxyUsername</cstring>
+             </property>
             </widget>
            </item>
            <item row="2" column="1">
@@ -424,6 +472,9 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="buddy">
+              <cstring>m_txtProxyPassword</cstring>
              </property>
             </widget>
            </item>
@@ -535,8 +586,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -551,8 +602,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>325</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -583,12 +634,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>370</x>
-     <y>108</y>
+     <x>261</x>
+     <y>37</y>
     </hint>
     <hint type="destinationlabel">
-     <x>292</x>
-     <y>135</y>
+     <x>261</x>
+     <y>37</y>
     </hint>
    </hints>
   </connection>
@@ -599,12 +650,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>370</x>
-     <y>108</y>
+     <x>261</x>
+     <y>37</y>
     </hint>
     <hint type="destinationlabel">
-     <x>478</x>
-     <y>135</y>
+     <x>261</x>
+     <y>37</y>
     </hint>
    </hints>
   </connection>
@@ -615,28 +666,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>417</x>
-     <y>108</y>
+     <x>261</x>
+     <y>37</y>
     </hint>
     <hint type="destinationlabel">
-     <x>417</x>
-     <y>162</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_checkBrowserProgressColor</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_lblBrowserProgressColor</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>300</x>
-     <y>48</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>275</x>
-     <y>73</y>
+     <x>261</x>
+     <y>37</y>
     </hint>
    </hints>
   </connection>
@@ -651,8 +686,8 @@
      <y>48</y>
     </hint>
     <hint type="destinationlabel">
-     <x>544</x>
-     <y>74</y>
+     <x>667</x>
+     <y>54</y>
     </hint>
    </hints>
   </connection>

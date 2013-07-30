@@ -120,7 +120,6 @@ void BaseWebView::mousePressEvent(QMouseEvent *event) {
     m_gestureOrigin = event->pos();
   }
 
-  // TODO: Add mouse gestures (from quite-rss).
   QWebView::mousePressEvent(event);
 }
 

@@ -62,8 +62,9 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::addLibraryPath(APP_PLUGIN_PATH);
 #endif
 
-  // Add an extra path for non-system icon themes.
+  // Add an extra path for non-system icon themes and set current icon theme.
   ThemeFactory::setupSearchPaths();
+  ThemeFactory::loadCurrentIconTheme(false);
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();
@@ -110,7 +111,7 @@ int main(int argc, char *argv[]) {
   // Load icon theme from settings.
   // NOTE: Make sure that this is done after main window and
   // other startup widgets are created.
-  ThemeFactory::loadCurrentIconTheme();
+  //ThemeFactory::loadCurrentIconTheme();
 
   // Setup single-instance behavior.
   QObject::connect(&application, &QtSingleApplication::messageReceived,

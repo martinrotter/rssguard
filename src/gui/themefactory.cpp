@@ -58,10 +58,10 @@ void ThemeFactory::setCurrentIconTheme(const QString &theme_name) {
   Settings::getInstance()->setValue(APP_CFG_GUI,
                                     "icon_theme",
                                     theme_name);
-  loadCurrentIconTheme();
+  loadCurrentIconTheme(true);
 }
 
-void ThemeFactory::loadCurrentIconTheme() {
+void ThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   QString theme_name = getCurrentIconTheme();
   QStringList installed_themes = getInstalledIconThemes();
 
@@ -82,9 +82,11 @@ void ThemeFactory::loadCurrentIconTheme() {
   // NOTE: Event is delivered even if custom icon theme is not set
   // as active, because all widgets need to do initial
   // icons initialization based in the event receival.
-  foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
-    QtSingleApplication::postEvent((QObject*) widget,
-                                   new ThemeFactoryEvent());
+  if (notify_widgets) {
+    foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
+      QtSingleApplication::postEvent((QObject*) widget,
+                                     new ThemeFactoryEvent());
+    }
   }
 }
 
