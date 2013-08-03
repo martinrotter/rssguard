@@ -28,6 +28,7 @@ class TabWidget : public QTabWidget {
 
     // Returns tab bar.
     TabBar *tabBar();
+    TabContent *contentAt(int index);
 
     void initializeTabs();
     void setupIcons();
@@ -45,7 +46,7 @@ class TabWidget : public QTabWidget {
 
     // Adds new WebBrowser with link. This is used when user
     // selects to "Open link in new tab.".
-    void addLinkedBrowser();
+    void addLinkedBrowser(const QUrl &initial_url);
 
     // General method for adding WebBrowsers.
     void addBrowser(bool move_after_current,

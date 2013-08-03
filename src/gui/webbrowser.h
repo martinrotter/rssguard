@@ -12,17 +12,21 @@ class LocationLineEdit;
 class BaseWebView;
 class WebBrowserNetworkAccessManager;
 class QMenu;
+class TabWidget;
 
 class WebBrowser : public TabContent {
     Q_OBJECT
     
   public:
     // Constructors and destructors.
-    explicit WebBrowser(QWidget *parent = 0);
+    explicit WebBrowser(TabWidget *parent = 0);
     ~WebBrowser();
 
     // Reloads icons for all buttons.
     void setupIcons();
+
+    // Returns icon associated with currently loaded website.
+    QIcon icon();
 
     // Returns this instance.
     // NOTE: This is needed due to TabContent interface.
@@ -58,6 +62,8 @@ class WebBrowser : public TabContent {
 
   signals:
     void newTabRequested();
+    void linkMiddleClicked(const QUrl &link_url);
+    void iconChanged(int index, const QIcon &icon);
 
   private:
     QVBoxLayout *m_layout;

@@ -109,10 +109,17 @@ void BaseWebView::mousePressEvent(QMouseEvent *event) {
 
     // Check if user clicked with middle mouse button on some
     // hyperlink.
-    if (hit_result.linkUrl().isValid()) {
-      emit linkMiddleClicked(hit_result.linkUrl());
+    QUrl link_url = hit_result.linkUrl();
+    QUrl image_url = hit_result.imageUrl();
+
+    if (link_url.isValid()) {
+      emit linkMiddleClicked(link_url);
 
       // No more handling of event is now needed. Return.
+      return;
+    }
+    else if (image_url.isValid()) {
+      emit linkMiddleClicked(image_url);
       return;
     }
   }

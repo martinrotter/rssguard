@@ -13,12 +13,13 @@
 #include "gui/webbrowser.h"
 #include "gui/locationlineedit.h"
 #include "gui/themefactory.h"
+#include "gui/tabwidget.h"
 
 
 QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
 
-WebBrowser::WebBrowser(QWidget *parent)
+WebBrowser::WebBrowser(TabWidget *parent)
   : TabContent(parent), m_layout(new QVBoxLayout(this)),
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
@@ -61,6 +62,9 @@ WebBrowser::WebBrowser(QWidget *parent)
   m_layout->setMargin(0);
   m_layout->setContentsMargins(0, -1, 0, 0);
 
+  setTabOrder(m_txtLocation, m_toolBar);
+  setTabOrder(m_toolBar, m_webView);
+
   createConnections();
   setupIcons();
 }
@@ -75,9 +79,13 @@ void WebBrowser::createConnections() {
   connect(m_webView, &BaseWebView::urlChanged,
           this, &WebBrowser::updateUrl);
 
-  // Signal forwarding.
+  // Connect this WebBrowser to global TabWidget.
+  TabWidget *parent_widget = static_cast<TabWidget*>(parent());
   connect(m_webView, &BaseWebView::newTabRequested,
-          this, &WebBrowser::newTabRequested);
+          parent_widget, &TabWidget::addEmptyBrowser);
+  connect(m_webView, &BaseWebView::linkMiddleClicked,
+          parent_widget, &TabWidget::addLinkedBrowser);
+
 
   // Change location textbox status according to webpage status.
   connect(m_webView, &BaseWebView::loadProgress,
@@ -116,6 +124,10 @@ WebBrowser *WebBrowser::webBrowser() {
 
 QMenu *WebBrowser::globalMenu() {
   return nullptr;
+}
+
+QIcon WebBrowser::icon() {
+  return m_webView->icon();
 }
 
 void WebBrowser::setupIcons() {

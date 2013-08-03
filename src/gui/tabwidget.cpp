@@ -39,13 +39,27 @@ void TabWidget::initializeTabs() {
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 }
 
+TabContent *TabWidget::contentAt(int index) {
+  return static_cast<TabContent*>(widget(index));
+}
+
 void TabWidget::setupIcons() {
-  // Find tab, which contains "Feeds" page and reload its icon.
+  // Iterate through all tabs and update icons
+  // accordingly.
   for (int index = 0; index < count(); index++) {
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
       setTabIcon(index, ThemeFactory::getInstance()->fromTheme("application-rss+xml"));
     }
-    // TODO: Add changing of tab icons for webbrowser tabs.
+    else {
+      WebBrowser *active_browser = contentAt(index)->webBrowser();
+      if (active_browser != nullptr) {
+        // We found WebBrowser instance of this tab page.
+        if (active_browser->icon().isNull()) {
+          // WebBrowser has no suitable icon, load new from icon theme.
+          setTabIcon(index, ThemeFactory::getInstance()->fromTheme("text-html"));
+        }
+      }
+    }
   }
 }
 
@@ -93,8 +107,8 @@ void TabWidget::addEmptyBrowser() {
   addBrowser(false, true);
 }
 
-void TabWidget::addLinkedBrowser() {
-
+void TabWidget::addLinkedBrowser(const QUrl &initial_url) {
+  addBrowser(true, false, initial_url);
 }
 
 void TabWidget::addBrowser(bool move_after_current,
