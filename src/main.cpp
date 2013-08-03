@@ -63,8 +63,8 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Add an extra path for non-system icon themes and set current icon theme.
-  ThemeFactory::setupSearchPaths();
-  ThemeFactory::loadCurrentIconTheme(false);
+  ThemeFactory::getInstance()->setupSearchPaths();
+  ThemeFactory::getInstance()->loadCurrentIconTheme(false);
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();
@@ -107,11 +107,6 @@ int main(int argc, char *argv[]) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
     SystemTrayIcon::getInstance()->show();
   }
-
-  // Load icon theme from settings.
-  // NOTE: Make sure that this is done after main window and
-  // other startup widgets are created.
-  //ThemeFactory::loadCurrentIconTheme();
 
   // Setup single-instance behavior.
   QObject::connect(&application, &QtSingleApplication::messageReceived,

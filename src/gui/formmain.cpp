@@ -23,7 +23,8 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
   // Prepare main window.
   prepareMenus();
-  prepareTabs();
+
+  m_ui->m_tabWidget->initializeTabs();
 
   // Establish connections.
   createConnections();
@@ -57,13 +58,6 @@ QList<QAction*> FormMain::getActions() {
 }
 
 void FormMain::prepareTabs() {
-  // Create widget for "Feeds" page and add it.
-  WebBrowser *browser = new WebBrowser(m_ui->m_tabWidget);
-  int index_of_browser = m_ui->m_tabWidget->addTab(static_cast<TabContent*>(browser),
-                                                   QIcon(),
-                                                   tr("Feeds"),
-                                                   TabBar::FeedReader);
-  m_ui->m_tabWidget->setTabToolTip(index_of_browser, tr("Browser your feeds and messages"));
 }
 
 void FormMain::addEmptyBrowser() {
@@ -184,12 +178,12 @@ bool FormMain::event(QEvent *event) {
 
 void FormMain::setupIcons() {
   // Setup icons of this main window.
-  m_ui->m_actionSettings->setIcon(ThemeFactory::fromTheme("preferences-system"));
-  m_ui->m_actionQuit->setIcon(ThemeFactory::fromTheme("application-exit"));
-  m_ui->m_actionAboutGuard->setIcon(ThemeFactory::fromTheme("help-about"));
-  m_ui->m_actionImport->setIcon(ThemeFactory::fromTheme("document-import"));
-  m_ui->m_actionExport->setIcon(ThemeFactory::fromTheme("document-export"));
-  m_ui->m_actionFullscreen->setIcon(ThemeFactory::fromTheme("view-fullscreen"));
+  m_ui->m_actionSettings->setIcon(ThemeFactory::getInstance()->fromTheme("preferences-system"));
+  m_ui->m_actionQuit->setIcon(ThemeFactory::getInstance()->fromTheme("application-exit"));
+  m_ui->m_actionAboutGuard->setIcon(ThemeFactory::getInstance()->fromTheme("help-about"));
+  m_ui->m_actionImport->setIcon(ThemeFactory::getInstance()->fromTheme("document-import"));
+  m_ui->m_actionExport->setIcon(ThemeFactory::getInstance()->fromTheme("document-export"));
+  m_ui->m_actionFullscreen->setIcon(ThemeFactory::getInstance()->fromTheme("view-fullscreen"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

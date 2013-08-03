@@ -119,10 +119,10 @@ QMenu *WebBrowser::globalMenu() {
 }
 
 void WebBrowser::setupIcons() {
-  m_actionBack->setIcon(ThemeFactory::fromTheme("go-previous"));
-  m_actionForward->setIcon(ThemeFactory::fromTheme("go-next"));
-  m_actionReload->setIcon(ThemeFactory::fromTheme("view-refresh"));
-  m_actionStop->setIcon(ThemeFactory::fromTheme("process-stop"));
+  m_actionBack->setIcon(ThemeFactory::getInstance()->fromTheme("go-previous"));
+  m_actionForward->setIcon(ThemeFactory::getInstance()->fromTheme("go-next"));
+  m_actionReload->setIcon(ThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_actionStop->setIcon(ThemeFactory::getInstance()->fromTheme("process-stop"));
   m_webView->setupIcons();
 }
 

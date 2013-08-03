@@ -45,6 +45,7 @@
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/themes")
+#define APP_THEME_SYSTEM "-"
 #define APP_FLAGS_PATH QApplication::applicationDirPath() + QString("/flags")
 #define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@_plain.png")

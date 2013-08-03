@@ -21,7 +21,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(ThemeFactory::fromTheme("preferences-system"));
+  setWindowIcon(ThemeFactory::getInstance()->fromTheme("preferences-system"));
 
   // Setup behavior.
   m_ui->m_treeLanguages->setColumnCount(5);
@@ -290,31 +290,31 @@ void FormSettings::loadInterface() {
   }
 
   // Load settings of icon theme.
-  QString current_theme = ThemeFactory::getCurrentIconTheme();
+  QString current_theme = ThemeFactory::getInstance()->getCurrentIconTheme();
 
-  foreach (QString icon_theme_name, ThemeFactory::getInstalledIconThemes()) {
-#if defined(Q_OS_LINUX)
+  foreach (QString icon_theme_name, ThemeFactory::getInstance()->getInstalledIconThemes()) {
     if (icon_theme_name == APP_THEME_SYSTEM) {
+#if defined(Q_OS_LINUX)
       m_ui->m_cmbIconTheme->addItem(tr("system icon theme (default)"),
-                                    icon_theme_name);
+                                    APP_THEME_SYSTEM);
+#else
+      m_ui->m_cmbIconTheme->addItem(tr("no icon theme"),
+                                    APP_THEME_SYSTEM);
+#endif
     }
     else {
-#endif
       m_ui->m_cmbIconTheme->addItem(icon_theme_name,
                                     icon_theme_name);
-#if defined(Q_OS_LINUX)
     }
-    if (current_theme == APP_THEME_SYSTEM) {
-      // Because system icon theme lies at the index 0.
-      // See ThemeFactory::getInstalledIconThemes() for more info.
-      m_ui->m_cmbIconTheme->setCurrentIndex(0);
-    }
-    else {
-#endif
-      m_ui->m_cmbIconTheme->setCurrentText(current_theme);
-#if defined(Q_OS_LINUX)
-    }
-#endif
+  }
+
+  // Mark active theme.
+  if (current_theme == APP_THEME_SYSTEM) {
+    // Because system icon theme lies at the index 1.
+    m_ui->m_cmbIconTheme->setCurrentIndex(0);
+  }
+  else {
+    m_ui->m_cmbIconTheme->setCurrentText(current_theme);
   }
 
   // Load tab settings.
@@ -349,9 +349,7 @@ void FormSettings::saveInterface() {
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
-  if (!selected_icon_theme.isEmpty()) {
-    ThemeFactory::setCurrentIconTheme(selected_icon_theme);
-  }
+  ThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
 
   // Save tab settings.
   Settings::getInstance()->setValue(APP_CFG_GUI, "tab_close_mid_button",

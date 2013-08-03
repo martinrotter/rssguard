@@ -38,10 +38,10 @@ void BaseWebView::createConnections() {
 }
 
 void BaseWebView::setupIcons() {
-  m_actionReload->setIcon(ThemeFactory::fromTheme("view-refresh"));
-  m_actionCopyLink->setIcon(ThemeFactory::fromTheme("edit-copy"));
-  m_actionCopyImage->setIcon(ThemeFactory::fromTheme("insert-image"));
-  m_actionCopyImageUrl->setIcon(ThemeFactory::fromTheme("edit-copy"));
+  m_actionReload->setIcon(ThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_actionCopyLink->setIcon(ThemeFactory::getInstance()->fromTheme("edit-copy"));
+  m_actionCopyImage->setIcon(ThemeFactory::getInstance()->fromTheme("insert-image"));
+  m_actionCopyImageUrl->setIcon(ThemeFactory::getInstance()->fromTheme("edit-copy"));
 }
 
 void BaseWebView::initializeActions() {
@@ -79,7 +79,7 @@ void BaseWebView::popupContextMenu(const QPoint &pos) {
   QMenu image_submenu(tr("Image"), &context_menu);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
-  image_submenu.setIcon(ThemeFactory::fromTheme("image-x-generic"));
+  image_submenu.setIcon(ThemeFactory::getInstance()->fromTheme("image-x-generic"));
 
   // Assemble the menu from actions.
   context_menu.addAction(m_actionReload);

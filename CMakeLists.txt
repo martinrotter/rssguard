@@ -202,6 +202,7 @@ set(APP_HEADERS
   # GUI headers.
   src/gui/formmain.h
   src/gui/systemtrayicon.h
+  src/gui/themefactory.h
   src/gui/formsettings.h
   src/gui/formwelcome.h
   src/gui/formabout.h
@@ -217,6 +218,7 @@ set(APP_HEADERS
   src/gui/tabcontent.h
 
   # CORE headers.
+  src/core/settings.h
   src/core/basenetworkaccessmanager.h
   src/core/webBrowsernetworkaccessmanager.h
   src/core/basewebpage.h

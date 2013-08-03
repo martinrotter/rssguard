@@ -6,35 +6,49 @@
 #include <QIcon>
 
 
-class ThemeFactory {
-  private:
-    ThemeFactory();
+class ThemeFactory : public QObject {
+    Q_OBJECT
 
   public:
-    // Adds custom application path to be search for icons.
-    static void setupSearchPaths();
-
-    // Returns list of installed themes, this includes:
-    //  a) system-wide themes,
-    //  b) application-wide themes.
-    static QStringList getInstalledIconThemes();
-
-    // Loads name of selected icon theme for the application and activates it.
-    // NOTE: All existing widgets get a chance to repaint its icons if
-    // notify_widgets is true.
-    static void loadCurrentIconTheme(bool notify_widgets);
-
-    // Returns name of currently activated theme for the application.
-    static QString getCurrentIconTheme();
-
-    // Sets icon theme with given name as the active one.
-    static void setCurrentIconTheme(const QString &theme_name);
+    // Singleton getter.
+    static ThemeFactory *getInstance();
 
     // Wrapper for QIcon::fromTheme.
     // TODO: If icon is not found in user-defined icon theme,
     // then it is searched in system-default theme (ThemeFactory::getSystemIconTheme()).
     // BUG: I tried to do that, but QIcon is apparently bugged.
-    static QIcon fromTheme(const QString & name, const QIcon & fallback = QIcon());
+    QIcon fromTheme(const QString &name, const QIcon &fallback = QIcon());
+
+    // Adds custom application path to be search for icons.
+    void setupSearchPaths();
+
+    // Returns list of installed themes, including "default" theme.
+    // NOTE: "Default" theme is system theme on Linux and "no theme" on windows.
+    QStringList getInstalledIconThemes();
+
+    // Loads name of selected icon theme (from settings) for the application and
+    // activates it. If that particular theme is not installed, then
+    // "default" theme is loaded.
+    // NOTE: All existing widgets get a chance to repaint its icons if
+    // notify_widgets is true.
+    void loadCurrentIconTheme(bool notify_widgets);
+
+    // Returns name of currently activated theme for the application.
+    QString getCurrentIconTheme();
+
+    // Sets icon theme with given name as the active one and loads it.
+    void setCurrentIconTheme(const QString &theme_name);
+
+  private:
+    // Constructors and destructors
+    explicit ThemeFactory(QObject *parent = 0);
+    virtual ~ThemeFactory();
+
+    // Holds name of the current icon theme.
+    QString m_currentIconTheme;
+
+    // Singleton.
+    static QPointer<ThemeFactory> s_instance;
 };
 
 class ThemeFactoryEvent : public QEvent {
@@ -43,7 +57,8 @@ class ThemeFactoryEvent : public QEvent {
       IconThemeChange = 2000
     };
 
-    ThemeFactoryEvent();
+    // Constructors.
+    explicit ThemeFactoryEvent();
     virtual ~ThemeFactoryEvent();
 
     static QEvent::Type type();

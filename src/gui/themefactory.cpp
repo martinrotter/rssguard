@@ -1,6 +1,7 @@
 #include <QIcon>
 #include <QFile>
 #include <QDir>
+#include <QPointer>
 #include <QApplication>
 
 #include "gui/themefactory.h"
@@ -9,6 +10,7 @@
 #include "core/defs.h"
 
 
+QPointer<ThemeFactory> ThemeFactory::s_instance;
 QEvent::Type ThemeFactoryEvent::m_typeOfEvent = QEvent::None;
 
 //
@@ -34,20 +36,31 @@ QEvent::Type ThemeFactoryEvent::type()  {
 // ThemeFactory class
 //
 
-ThemeFactory::ThemeFactory() {
+ThemeFactory::ThemeFactory(QObject *parent)
+  : QObject(parent), m_currentIconTheme(APP_THEME_SYSTEM) {
+}
+
+ThemeFactory::~ThemeFactory() {
+  qDebug("Destroying ThemeFactory instance.");
+}
+
+ThemeFactory *ThemeFactory::getInstance() {
+  if (s_instance.isNull()) {
+    s_instance = new ThemeFactory(qApp);
+  }
+
+  return s_instance;
 }
 
 void ThemeFactory::setupSearchPaths() {
+  // Add custom icon theme path to existing ones.
   QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
          qPrintable(QIcon::themeSearchPaths().join(", ")));
 }
 
 QString ThemeFactory::getCurrentIconTheme() {
-  QString current_theme_name = Settings::getInstance()->value(APP_CFG_GUI,
-                                                              "icon_theme",
-                                                              "mini-kfaenza").toString();
-  return current_theme_name;
+  return m_currentIconTheme;
 }
 
 QIcon ThemeFactory::fromTheme(const QString &name, const QIcon &fallback) {
@@ -62,26 +75,30 @@ void ThemeFactory::setCurrentIconTheme(const QString &theme_name) {
 }
 
 void ThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
-  QString theme_name = getCurrentIconTheme();
   QStringList installed_themes = getInstalledIconThemes();
+  QString theme_name_from_settings = Settings::getInstance()->value(APP_CFG_GUI,
+                                                                    "icon_theme",
+                                                                    "mini-kfaenza").toString();
 
   qDebug("Installed icon themes are: %s.",
          qPrintable(installed_themes.join(", ")));
 
-  if (!installed_themes.contains(theme_name)) {
-    qDebug("Icon theme '%s' cannot be loaded because it is not installed.",
-           qPrintable(theme_name));
+  // User wants to load icon theme, but it's not installed.
+  if (!installed_themes.contains(theme_name_from_settings)) {
+    qDebug("Icon theme '%s' cannot be loaded because it is not installed. Loading 'default' theme.",
+           qPrintable(theme_name_from_settings));
+    QIcon::setThemeName(APP_THEME_SYSTEM);
+    m_currentIconTheme = APP_THEME_SYSTEM;
   }
+  // Icon theme is found so it can be installed.
   else {
-    qDebug("Loading theme '%s'.", qPrintable(theme_name));
-    QIcon::setThemeName(theme_name);
+    qDebug("Loading theme '%s'.", qPrintable(theme_name_from_settings));
+    QIcon::setThemeName(theme_name_from_settings);
+    m_currentIconTheme = theme_name_from_settings;
   }
 
   // We need to deliver custom event for all widgets
   // to make sure they get a chance to setup their icons.
-  // NOTE: Event is delivered even if custom icon theme is not set
-  // as active, because all widgets need to do initial
-  // icons initialization based in the event receival.
   if (notify_widgets) {
     foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
       QtSingleApplication::postEvent((QObject*) widget,
@@ -92,11 +109,7 @@ void ThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
 
 QStringList ThemeFactory::getInstalledIconThemes() {
   QStringList icon_theme_names;
-
-#if defined(Q_OS_LINUX)
-  // Add system theme on Linux, it is denoted as empty string.
   icon_theme_names << APP_THEME_SYSTEM;
-#endif
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();

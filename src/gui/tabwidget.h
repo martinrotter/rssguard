@@ -29,6 +29,8 @@ class TabWidget : public QTabWidget {
     // Returns tab bar.
     TabBar *tabBar();
 
+    void initializeTabs();
+
   protected:
     // Creates necesary connections.
     void createConnections();

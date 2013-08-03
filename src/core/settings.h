@@ -5,6 +5,8 @@
 
 
 class Settings : public QSettings {
+    Q_OBJECT
+
   private:
     static QPointer<Settings> s_instance;
 

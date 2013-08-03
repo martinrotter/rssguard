@@ -1,5 +1,6 @@
 #include "gui/tabwidget.h"
 #include "gui/tabbar.h"
+#include "gui/webbrowser.h"
 
 
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent) {
@@ -17,6 +18,16 @@ void TabWidget::createConnections() {
 
 TabBar *TabWidget::tabBar() {
   return static_cast<TabBar*>(QTabWidget::tabBar());
+}
+
+void TabWidget::initializeTabs() {
+  // Create widget for "Feeds" page and add it.
+  WebBrowser *browser = new WebBrowser(this);
+  int index_of_browser = addTab(static_cast<TabContent*>(browser),
+                                QIcon(),
+                                tr("Feeds"),
+                                TabBar::FeedReader);
+  setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 }
 
 void TabWidget::closeTab(int index) {
