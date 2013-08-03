@@ -1,5 +1,10 @@
+#include <QUrl>
+#include <QApplication>
+
+#include "core/defs.h"
 #include "gui/tabwidget.h"
 #include "gui/tabbar.h"
+#include "gui/themefactory.h"
 #include "gui/webbrowser.h"
 
 
@@ -14,6 +19,10 @@ TabWidget::~TabWidget() {
 
 void TabWidget::createConnections() {
   connect(tabBar(), &QTabBar::tabCloseRequested, this, &TabWidget::closeTab);
+
+  // Web browser stuff.
+  connect(tabBar(), &TabBar::emptySpaceDoubleClicked,
+          this, &TabWidget::addEmptyBrowser);
 }
 
 TabBar *TabWidget::tabBar() {
@@ -28,6 +37,16 @@ void TabWidget::initializeTabs() {
                                 tr("Feeds"),
                                 TabBar::FeedReader);
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
+}
+
+void TabWidget::setupIcons() {
+  // Find tab, which contains "Feeds" page and reload its icon.
+  for (int index = 0; index < count(); index++) {
+    if (tabBar()->tabType(index) == TabBar::FeedReader) {
+      setTabIcon(index, ThemeFactory::getInstance()->fromTheme("application-rss+xml"));
+    }
+    // TODO: Add changing of tab icons for webbrowser tabs.
+  }
 }
 
 void TabWidget::closeTab(int index) {
@@ -68,4 +87,45 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label,
   tabBar()->setTabType(tab_index, type);
 
   return tab_index;
+}
+
+void TabWidget::addEmptyBrowser() {
+  addBrowser(false, true);
+}
+
+void TabWidget::addLinkedBrowser() {
+
+}
+
+void TabWidget::addBrowser(bool move_after_current,
+                           bool make_active,
+                           const QUrl &initial_url) {
+  // Create new WebBrowser.
+  WebBrowser *browser = new WebBrowser(this);
+  int final_index;
+
+  if (move_after_current) {
+    // Insert web browser after current tab.
+    final_index = insertTab(currentIndex() + 1,
+                            browser,
+                            ThemeFactory::getInstance()->fromTheme("text-html"),
+                            tr("Web browser"),
+                            TabBar::Closable);
+  }
+  else {
+    // Add new browser as the last tab.
+    final_index = addTab(browser,
+                         ThemeFactory::getInstance()->fromTheme("text-html"),
+                         tr("Web browser"), TabBar::Closable);
+  }
+
+  // Load initial web page if desired.
+  if (initial_url.isValid()) {
+    browser->navigateToUrl(initial_url);
+  }
+
+  // Make new web browser active if desired.
+  if (make_active) {
+    setCurrentIndex(final_index);
+  }
 }

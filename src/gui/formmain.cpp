@@ -60,48 +60,6 @@ QList<QAction*> FormMain::getActions() {
 void FormMain::prepareTabs() {
 }
 
-void FormMain::addEmptyBrowser() {
-  addBrowser(false, true);
-}
-
-void FormMain::addLinkedBrowser() {
-
-}
-
-void FormMain::addBrowser(bool move_after_current,
-                          bool make_active,
-                          const QUrl &initial_url) {
-  // Create new WebBrowser.
-  WebBrowser *browser = new WebBrowser(m_ui->m_tabWidget);
-  int final_index;
-
-  if (move_after_current) {
-    // Insert web browser after current tab.
-    final_index = m_ui->m_tabWidget->insertTab(m_ui->m_tabWidget->currentIndex() + 1,
-                                               browser,
-                                               QIcon(),
-                                               tr("Web browser"),
-                                               TabBar::Closable);
-  }
-  else {
-    // Add new browser as the last tab.
-    final_index = m_ui->m_tabWidget->addTab(browser,
-                                            QIcon(),
-                                            tr("Web browser"),
-                                            TabBar::Closable);
-  }
-
-  // Load initial web page if desired.
-  if (initial_url.isValid()) {
-    browser->navigateToUrl(initial_url);
-  }
-
-  // Make new web browser active if desired.
-  if (make_active) {
-    m_ui->m_tabWidget->setCurrentIndex(final_index);
-  }
-}
-
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -190,13 +148,7 @@ void FormMain::setupIcons() {
     browser->setupIcons();
   }
 
-  // Find tab, which contains "Feeds" page and reload its icon.
-  for (int index = 0; index < m_ui->m_tabWidget->count(); index++) {
-    if (m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::FeedReader) {
-      m_ui->m_tabWidget->setTabIcon(index, QIcon(APP_ICON_PATH));
-      break;
-    }
-  }
+  m_ui->m_tabWidget->setupIcons();
 }
 
 void FormMain::createConnections() {
@@ -214,10 +166,6 @@ void FormMain::createConnections() {
 
   // General connections.
   connect(qApp, &QCoreApplication::aboutToQuit, this, &FormMain::cleanupResources);
-
-  // TabWidget connections.
-  connect(m_ui->m_tabWidget->tabBar(), &TabBar::emptySpaceDoubleClicked,
-          this, &FormMain::addEmptyBrowser);
 }
 
 void FormMain::closeEvent(QCloseEvent *event) {

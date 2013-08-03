@@ -30,6 +30,7 @@ class TabWidget : public QTabWidget {
     TabBar *tabBar();
 
     void initializeTabs();
+    void setupIcons();
 
   protected:
     // Creates necesary connections.
@@ -38,6 +39,18 @@ class TabWidget : public QTabWidget {
   public slots:
     // Closes tab with given index and deletes contained widget.
     void closeTab(int index);
+
+    // Adds new WebBrowser tab to global TabWidget.
+    void addEmptyBrowser();
+
+    // Adds new WebBrowser with link. This is used when user
+    // selects to "Open link in new tab.".
+    void addLinkedBrowser();
+
+    // General method for adding WebBrowsers.
+    void addBrowser(bool move_after_current,
+                    bool make_active,
+                    const QUrl &initial_url = QUrl());
 };
 
 #endif // TABWIDGET_H

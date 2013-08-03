@@ -67,18 +67,6 @@ class FormMain : public QMainWindow {
     // Displays various dialogs.
     void showSettings();
     void showAbout();
-
-    // Adds new WebBrowser tab to global TabWidget.
-    void addEmptyBrowser();
-
-    // Adds new WebBrowser with link. This is used when user
-    // selects to "Open link in new tab.".
-    void addLinkedBrowser();
-
-    // General method for adding WebBrowsers.
-    void addBrowser(bool move_after_current,
-                    bool make_active,
-                    const QUrl &initial_url = QUrl());
     
   private:
     Ui::FormMain *m_ui;
