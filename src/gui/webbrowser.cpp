@@ -80,6 +80,9 @@ void WebBrowser::createConnections() {
           this, &WebBrowser::updateUrl);
 
   // Connect this WebBrowser to global TabWidget.
+  // TODO: Přemýšlet nad tím, zda toto navázání spojení
+  // nepředělat například do TabWidget::AddBrowser a ty signály
+  // z m_webView tedy neforwardovat z WebBrowseru.
   TabWidget *parent_widget = static_cast<TabWidget*>(parent());
   connect(m_webView, &BaseWebView::newTabRequested,
           parent_widget, &TabWidget::addEmptyBrowser);
@@ -128,6 +131,10 @@ QMenu *WebBrowser::globalMenu() {
 
 QIcon WebBrowser::icon() {
   return m_webView->icon();
+}
+
+void WebBrowser::setFocus(Qt::FocusReason reason) {
+  m_txtLocation->setFocus(reason);
 }
 
 void WebBrowser::setupIcons() {

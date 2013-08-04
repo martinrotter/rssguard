@@ -28,9 +28,13 @@ class TabWidget : public QTabWidget {
 
     // Returns tab bar.
     TabBar *tabBar();
-    TabContent *contentAt(int index);
+    TabContent *widget(int index) const;
 
+    // Initializes TabWidget with tabs, this includes initialization
+    // of main "Feeds" widget.
     void initializeTabs();
+
+    // Sets up icons for this TabWidget.
     void setupIcons();
 
   protected:

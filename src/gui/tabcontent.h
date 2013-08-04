@@ -11,14 +11,18 @@ class TabContent : public QWidget {
     Q_OBJECT
 
   public:
-    TabContent(QWidget *parent = 0);
+    // Contructors.
+    explicit TabContent(QWidget *parent = 0);
     virtual ~TabContent();
 
+    // Gets/sets current index of this TabContent.
+    // NOTE: This is the index under which this object lies
+    // in some TabWidget instance.
     virtual int index() const;
     virtual void setIndex(int index);
 
     // Obtains instance contained in this TabContent or nullptr.
-    // This is used for obtaining the menu from the instance and so on.
+    // This can be used for obtaining the menu from the instance and so on.
     virtual WebBrowser *webBrowser() = 0;
 
   private:

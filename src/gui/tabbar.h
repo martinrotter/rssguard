@@ -14,6 +14,7 @@ class TabBar : public QTabBar {
       Closable      = 1002
     };
 
+    // Constructors.
     explicit TabBar(QWidget *parent = 0);
     virtual ~TabBar();
 
@@ -22,6 +23,7 @@ class TabBar : public QTabBar {
     TabBar::TabType tabType(int index);
     
   protected:
+    // Reimplementations.
     void mouseDoubleClickEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
 

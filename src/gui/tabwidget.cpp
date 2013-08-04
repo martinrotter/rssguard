@@ -19,8 +19,6 @@ TabWidget::~TabWidget() {
 
 void TabWidget::createConnections() {
   connect(tabBar(), &QTabBar::tabCloseRequested, this, &TabWidget::closeTab);
-
-  // Web browser stuff.
   connect(tabBar(), &TabBar::emptySpaceDoubleClicked,
           this, &TabWidget::addEmptyBrowser);
 }
@@ -39,25 +37,25 @@ void TabWidget::initializeTabs() {
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 }
 
-TabContent *TabWidget::contentAt(int index) {
-  return static_cast<TabContent*>(widget(index));
+TabContent *TabWidget::widget(int index) const {
+  return static_cast<TabContent*>(QTabWidget::widget(index));
 }
 
 void TabWidget::setupIcons() {
   // Iterate through all tabs and update icons
   // accordingly.
   for (int index = 0; index < count(); index++) {
+    // Index 0 usually contains widget which displays feeds & messages.
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
       setTabIcon(index, ThemeFactory::getInstance()->fromTheme("application-rss+xml"));
     }
+    // Other indexes probably contain WebBrowsers.
     else {
-      WebBrowser *active_browser = contentAt(index)->webBrowser();
-      if (active_browser != nullptr) {
-        // We found WebBrowser instance of this tab page.
-        if (active_browser->icon().isNull()) {
-          // WebBrowser has no suitable icon, load new from icon theme.
-          setTabIcon(index, ThemeFactory::getInstance()->fromTheme("text-html"));
-        }
+      WebBrowser *active_browser = widget(index)->webBrowser();
+      if (active_browser != nullptr && active_browser->icon().isNull()) {
+        // We found WebBrowser instance of this tab page, which
+        // has no suitable icon, load a new one from the icon theme.
+        setTabIcon(index, ThemeFactory::getInstance()->fromTheme("text-html"));
       }
     }
   }
@@ -104,10 +102,14 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label,
 }
 
 void TabWidget::addEmptyBrowser() {
+  // TODO: Add reading of move_after_current and make_active
+  // flags from settings.
   addBrowser(false, true);
 }
 
 void TabWidget::addLinkedBrowser(const QUrl &initial_url) {
+  // TODO: Add reading of move_after_current and make_active
+  // flags from settings.
   addBrowser(true, false, initial_url);
 }
 
@@ -130,7 +132,9 @@ void TabWidget::addBrowser(bool move_after_current,
     // Add new browser as the last tab.
     final_index = addTab(browser,
                          ThemeFactory::getInstance()->fromTheme("text-html"),
-                         tr("Web browser"), TabBar::Closable);
+                         tr("Web browser"),
+                         TabBar::Closable);
+    browser->setFocus(Qt::OtherFocusReason);
   }
 
   // Load initial web page if desired.

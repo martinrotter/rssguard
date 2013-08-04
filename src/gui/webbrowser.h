@@ -28,6 +28,9 @@ class WebBrowser : public TabContent {
     // Returns icon associated with currently loaded website.
     QIcon icon();
 
+    // Sets this WebBrowser instance as focused.
+    void setFocus(Qt::FocusReason reason);
+
     // Returns this instance.
     // NOTE: This is needed due to TabContent interface.
     WebBrowser *webBrowser();

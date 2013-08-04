@@ -80,21 +80,27 @@ void ThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
                                                                     "icon_theme",
                                                                     "mini-kfaenza").toString();
 
+  // Display list of installed themes.
   qDebug("Installed icon themes are: %s.",
          qPrintable(installed_themes.join(", ")));
 
-  // User wants to load icon theme, but it's not installed.
-  if (!installed_themes.contains(theme_name_from_settings)) {
+
+  if (installed_themes.contains(theme_name_from_settings)) {
+    // Desired icon theme is installed and can be loaded.
+    qDebug("Loading theme '%s'.", qPrintable(theme_name_from_settings));
+    QIcon::setThemeName(theme_name_from_settings);
+    m_currentIconTheme = theme_name_from_settings;
+  }
+  else {
+    // Desired icon theme is not currently available.
+    // Install "default" icon theme instead.
+    // NOTE: "Default" icon theme is:
+    //  a) system icon theme on Linux,
+    //  b) no icon theme on other platforms.
     qDebug("Icon theme '%s' cannot be loaded because it is not installed. Loading 'default' theme.",
            qPrintable(theme_name_from_settings));
     QIcon::setThemeName(APP_THEME_SYSTEM);
     m_currentIconTheme = APP_THEME_SYSTEM;
-  }
-  // Icon theme is found so it can be installed.
-  else {
-    qDebug("Loading theme '%s'.", qPrintable(theme_name_from_settings));
-    QIcon::setThemeName(theme_name_from_settings);
-    m_currentIconTheme = theme_name_from_settings;
   }
 
   // We need to deliver custom event for all widgets

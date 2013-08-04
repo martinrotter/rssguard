@@ -148,6 +148,7 @@ void FormMain::setupIcons() {
     browser->setupIcons();
   }
 
+  // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
 }
 
