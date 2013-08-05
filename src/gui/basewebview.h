@@ -56,6 +56,7 @@ class BaseWebView : public QWebView {
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;
     QAction *m_actionCopyImageUrl;
+    QAction *m_actionOpenLinkNewTab;
 
     QPoint m_gestureOrigin;
 };

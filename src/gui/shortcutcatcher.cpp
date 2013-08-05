@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "gui/shortcutcatcher.h"
 #include "gui/shortcutbutton.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 
 
 ShortcutCatcher::ShortcutCatcher(QWidget *parent)
@@ -43,7 +43,7 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
 
   // Create clear button.
   m_clearButton = new QToolButton(this);
-  m_clearButton->setIcon(ThemeFactory::getInstance()->fromTheme("document-revert"));
+  m_clearButton->setIcon(IconThemeFactory::getInstance()->fromTheme("document-revert"));
   m_clearButton->setFocusPolicy(Qt::NoFocus);
 
   // Clear main shortcut catching button.

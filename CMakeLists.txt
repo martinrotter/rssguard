@@ -160,7 +160,7 @@ set(APP_SOURCES
   # GUI sources.
   src/gui/formmain.cpp
   src/gui/systemtrayicon.cpp
-  src/gui/themefactory.cpp
+  src/gui/iconthemefactory.cpp
   src/gui/formsettings.cpp
   src/gui/formwelcome.cpp
   src/gui/formabout.cpp
@@ -202,7 +202,7 @@ set(APP_HEADERS
   # GUI headers.
   src/gui/formmain.h
   src/gui/systemtrayicon.h
-  src/gui/themefactory.h
+  src/gui/iconthemefactory.h
   src/gui/formsettings.h
   src/gui/formwelcome.h
   src/gui/formabout.h

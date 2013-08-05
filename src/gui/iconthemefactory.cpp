@@ -4,13 +4,13 @@
 #include <QPointer>
 #include <QApplication>
 
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 #include "core/settings.h"
 #include "core/defs.h"
 
 
-QPointer<ThemeFactory> ThemeFactory::s_instance;
+QPointer<IconThemeFactory> IconThemeFactory::s_instance;
 QEvent::Type ThemeFactoryEvent::m_typeOfEvent = QEvent::None;
 
 //
@@ -36,45 +36,45 @@ QEvent::Type ThemeFactoryEvent::type()  {
 // ThemeFactory class
 //
 
-ThemeFactory::ThemeFactory(QObject *parent)
+IconThemeFactory::IconThemeFactory(QObject *parent)
   : QObject(parent), m_currentIconTheme(APP_THEME_SYSTEM) {
 }
 
-ThemeFactory::~ThemeFactory() {
+IconThemeFactory::~IconThemeFactory() {
   qDebug("Destroying ThemeFactory instance.");
 }
 
-ThemeFactory *ThemeFactory::getInstance() {
+IconThemeFactory *IconThemeFactory::getInstance() {
   if (s_instance.isNull()) {
-    s_instance = new ThemeFactory(qApp);
+    s_instance = new IconThemeFactory(qApp);
   }
 
   return s_instance;
 }
 
-void ThemeFactory::setupSearchPaths() {
+void IconThemeFactory::setupSearchPaths() {
   // Add custom icon theme path to existing ones.
   QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
          qPrintable(QIcon::themeSearchPaths().join(", ")));
 }
 
-QString ThemeFactory::getCurrentIconTheme() {
+QString IconThemeFactory::getCurrentIconTheme() {
   return m_currentIconTheme;
 }
 
-QIcon ThemeFactory::fromTheme(const QString &name, const QIcon &fallback) {
+QIcon IconThemeFactory::fromTheme(const QString &name, const QIcon &fallback) {
   return QIcon::fromTheme(name, fallback);
 }
 
-void ThemeFactory::setCurrentIconTheme(const QString &theme_name) {
+void IconThemeFactory::setCurrentIconTheme(const QString &theme_name) {
   Settings::getInstance()->setValue(APP_CFG_GUI,
                                     "icon_theme",
                                     theme_name);
   loadCurrentIconTheme(true);
 }
 
-void ThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
+void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   QStringList installed_themes = getInstalledIconThemes();
   QString theme_name_from_settings = Settings::getInstance()->value(APP_CFG_GUI,
                                                                     "icon_theme",
@@ -113,7 +113,7 @@ void ThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   }
 }
 
-QStringList ThemeFactory::getInstalledIconThemes() {
+QStringList IconThemeFactory::getInstalledIconThemes() {
   QStringList icon_theme_names;
   icon_theme_names << APP_THEME_SYSTEM;
 

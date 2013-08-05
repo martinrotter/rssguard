@@ -10,7 +10,7 @@
 #include "core/localization.h"
 #include "core/settings.h"
 #include "core/dynamicshortcuts.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 #include "gui/formmain.h"
 #include "gui/formwelcome.h"
 #include "gui/systemtrayicon.h"
@@ -63,8 +63,8 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Add an extra path for non-system icon themes and set current icon theme.
-  ThemeFactory::getInstance()->setupSearchPaths();
-  ThemeFactory::getInstance()->loadCurrentIconTheme(false);
+  IconThemeFactory::getInstance()->setupSearchPaths();
+  IconThemeFactory::getInstance()->loadCurrentIconTheme(false);
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();

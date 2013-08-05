@@ -6,11 +6,16 @@
 #include "gui/webbrowser.h"
 
 
-BaseWebPage::BaseWebPage(QObject *parent) : QWebPage(parent) {
+BaseWebPage::BaseWebPage(QObject *parent)
+  : QWebPage(parent), m_openInNewTab(false) {
   // Setup global network access manager.
   // NOTE: This makes network settings easy for all web browsers.
   setNetworkAccessManager(WebBrowser::globalNetworkManager());
 }
 
 BaseWebPage::~BaseWebPage() {
+}
+
+QWebPage *BaseWebPage::createWindow(WebWindowType type) {
+  return QWebPage::createWindow(type);
 }

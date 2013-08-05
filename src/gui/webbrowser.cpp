@@ -12,7 +12,7 @@
 #include "gui/basewebview.h"
 #include "gui/webbrowser.h"
 #include "gui/locationlineedit.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 #include "gui/tabwidget.h"
 
 
@@ -80,15 +80,13 @@ void WebBrowser::createConnections() {
           this, &WebBrowser::updateUrl);
 
   // Connect this WebBrowser to global TabWidget.
-  // TODO: Přemýšlet nad tím, zda toto navázání spojení
-  // nepředělat například do TabWidget::AddBrowser a ty signály
-  // z m_webView tedy neforwardovat z WebBrowseru.
+  // TODO: Think over moving this connections from here to
+  // e.g. TabWidget::addBrowser.
   TabWidget *parent_widget = static_cast<TabWidget*>(parent());
   connect(m_webView, &BaseWebView::newTabRequested,
           parent_widget, &TabWidget::addEmptyBrowser);
   connect(m_webView, &BaseWebView::linkMiddleClicked,
           parent_widget, &TabWidget::addLinkedBrowser);
-
 
   // Change location textbox status according to webpage status.
   connect(m_webView, &BaseWebView::loadProgress,
@@ -138,10 +136,10 @@ void WebBrowser::setFocus(Qt::FocusReason reason) {
 }
 
 void WebBrowser::setupIcons() {
-  m_actionBack->setIcon(ThemeFactory::getInstance()->fromTheme("go-previous"));
-  m_actionForward->setIcon(ThemeFactory::getInstance()->fromTheme("go-next"));
-  m_actionReload->setIcon(ThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_actionStop->setIcon(ThemeFactory::getInstance()->fromTheme("process-stop"));
+  m_actionBack->setIcon(IconThemeFactory::getInstance()->fromTheme("go-previous"));
+  m_actionForward->setIcon(IconThemeFactory::getInstance()->fromTheme("go-next"));
+  m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_actionStop->setIcon(IconThemeFactory::getInstance()->fromTheme("process-stop"));
   m_webView->setupIcons();
 }
 

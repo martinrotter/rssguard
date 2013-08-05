@@ -4,7 +4,7 @@
 #include <QColorDialog>
 
 #include "gui/formsettings.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
 #include "gui/webbrowser.h"
@@ -21,7 +21,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(ThemeFactory::getInstance()->fromTheme("preferences-system"));
+  setWindowIcon(IconThemeFactory::getInstance()->fromTheme("preferences-system"));
 
   // Setup behavior.
   m_ui->m_treeLanguages->setColumnCount(5);
@@ -117,6 +117,9 @@ void FormSettings::loadBrowser() {
   m_ui->m_checkMouseGestures->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
                                                                         "gestures_enabled",
                                                                         true).toBool());
+  m_ui->m_checkQueueTabs->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
+                                                                    "queue_tabs",
+                                                                    true).toBool());
 }
 
 void FormSettings::saveBrowser() {
@@ -130,6 +133,9 @@ void FormSettings::saveBrowser() {
   Settings::getInstance()->setValue(APP_CFG_BROWSER,
                                     "gestures_enabled",
                                     m_ui->m_checkMouseGestures->isChecked());
+  Settings::getInstance()->setValue(APP_CFG_BROWSER,
+                                    "queue_tabs",
+                                    m_ui->m_checkQueueTabs->isChecked());
 }
 
 void FormSettings::loadProxy() {
@@ -290,9 +296,9 @@ void FormSettings::loadInterface() {
   }
 
   // Load settings of icon theme.
-  QString current_theme = ThemeFactory::getInstance()->getCurrentIconTheme();
+  QString current_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
 
-  foreach (QString icon_theme_name, ThemeFactory::getInstance()->getInstalledIconThemes()) {
+  foreach (QString icon_theme_name, IconThemeFactory::getInstance()->getInstalledIconThemes()) {
     if (icon_theme_name == APP_THEME_SYSTEM) {
 #if defined(Q_OS_LINUX)
       m_ui->m_cmbIconTheme->addItem(tr("system icon theme (default)"),
@@ -349,7 +355,7 @@ void FormSettings::saveInterface() {
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
-  ThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
+  IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
 
   // Save tab settings.
   Settings::getInstance()->setValue(APP_CFG_GUI, "tab_close_mid_button",

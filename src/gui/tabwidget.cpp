@@ -2,9 +2,10 @@
 #include <QApplication>
 
 #include "core/defs.h"
+#include "core/settings.h"
 #include "gui/tabwidget.h"
 #include "gui/tabbar.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 #include "gui/webbrowser.h"
 
 
@@ -47,7 +48,7 @@ void TabWidget::setupIcons() {
   for (int index = 0; index < count(); index++) {
     // Index 0 usually contains widget which displays feeds & messages.
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
-      setTabIcon(index, ThemeFactory::getInstance()->fromTheme("application-rss+xml"));
+      setTabIcon(index, IconThemeFactory::getInstance()->fromTheme("application-rss+xml"));
     }
     // Other indexes probably contain WebBrowsers.
     else {
@@ -55,7 +56,7 @@ void TabWidget::setupIcons() {
       if (active_browser != nullptr && active_browser->icon().isNull()) {
         // We found WebBrowser instance of this tab page, which
         // has no suitable icon, load a new one from the icon theme.
-        setTabIcon(index, ThemeFactory::getInstance()->fromTheme("text-html"));
+        setTabIcon(index, IconThemeFactory::getInstance()->fromTheme("text-html"));
       }
     }
   }
@@ -101,21 +102,25 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label,
   return tab_index;
 }
 
-void TabWidget::addEmptyBrowser() {
+int TabWidget::addEmptyBrowser() {
   // TODO: Add reading of move_after_current and make_active
   // flags from settings.
-  addBrowser(false, true);
+  return addBrowser(false, true);
 }
 
-void TabWidget::addLinkedBrowser(const QUrl &initial_url) {
+int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
   // TODO: Add reading of move_after_current and make_active
   // flags from settings.
-  addBrowser(true, false, initial_url);
+  return addBrowser(Settings::getInstance()->value(APP_CFG_BROWSER,
+                                                   "queue_tabs",
+                                                   true).toBool(),
+                    false,
+                    initial_url);
 }
 
-void TabWidget::addBrowser(bool move_after_current,
-                           bool make_active,
-                           const QUrl &initial_url) {
+int TabWidget::addBrowser(bool move_after_current,
+                          bool make_active,
+                          const QUrl &initial_url) {
   // Create new WebBrowser.
   WebBrowser *browser = new WebBrowser(this);
   int final_index;
@@ -124,17 +129,16 @@ void TabWidget::addBrowser(bool move_after_current,
     // Insert web browser after current tab.
     final_index = insertTab(currentIndex() + 1,
                             browser,
-                            ThemeFactory::getInstance()->fromTheme("text-html"),
+                            IconThemeFactory::getInstance()->fromTheme("text-html"),
                             tr("Web browser"),
                             TabBar::Closable);
   }
   else {
     // Add new browser as the last tab.
     final_index = addTab(browser,
-                         ThemeFactory::getInstance()->fromTheme("text-html"),
+                         IconThemeFactory::getInstance()->fromTheme("text-html"),
                          tr("Web browser"),
                          TabBar::Closable);
-    browser->setFocus(Qt::OtherFocusReason);
   }
 
   // Load initial web page if desired.
@@ -145,5 +149,8 @@ void TabWidget::addBrowser(bool move_after_current,
   // Make new web browser active if desired.
   if (make_active) {
     setCurrentIndex(final_index);
+    browser->setFocus(Qt::OtherFocusReason);
   }
+
+  return final_index;
 }

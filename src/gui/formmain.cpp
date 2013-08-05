@@ -5,7 +5,7 @@
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/webbrowser.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "core/settings.h"
@@ -47,6 +47,10 @@ FormMain *FormMain::getInstance() {
 
 QMenu *FormMain::getTrayMenu() {
   return m_trayMenu;
+}
+
+TabWidget *FormMain::getTabWidget() {
+  return m_ui->m_tabWidget;
 }
 
 QList<QAction*> FormMain::getActions() {
@@ -136,12 +140,12 @@ bool FormMain::event(QEvent *event) {
 
 void FormMain::setupIcons() {
   // Setup icons of this main window.
-  m_ui->m_actionSettings->setIcon(ThemeFactory::getInstance()->fromTheme("preferences-system"));
-  m_ui->m_actionQuit->setIcon(ThemeFactory::getInstance()->fromTheme("application-exit"));
-  m_ui->m_actionAboutGuard->setIcon(ThemeFactory::getInstance()->fromTheme("help-about"));
-  m_ui->m_actionImport->setIcon(ThemeFactory::getInstance()->fromTheme("document-import"));
-  m_ui->m_actionExport->setIcon(ThemeFactory::getInstance()->fromTheme("document-export"));
-  m_ui->m_actionFullscreen->setIcon(ThemeFactory::getInstance()->fromTheme("view-fullscreen"));
+  m_ui->m_actionSettings->setIcon(IconThemeFactory::getInstance()->fromTheme("preferences-system"));
+  m_ui->m_actionQuit->setIcon(IconThemeFactory::getInstance()->fromTheme("application-exit"));
+  m_ui->m_actionAboutGuard->setIcon(IconThemeFactory::getInstance()->fromTheme("help-about"));
+  m_ui->m_actionImport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-import"));
+  m_ui->m_actionExport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-export"));
+  m_ui->m_actionFullscreen->setIcon(IconThemeFactory::getInstance()->fromTheme("view-fullscreen"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

@@ -8,7 +8,7 @@
 #include "core/settings.h"
 #include "core/basewebpage.h"
 #include "gui/basewebview.h"
-#include "gui/themefactory.h"
+#include "gui/iconthemefactory.h"
 
 
 BaseWebView::BaseWebView(QWidget *parent)
@@ -38,10 +38,10 @@ void BaseWebView::createConnections() {
 }
 
 void BaseWebView::setupIcons() {
-  m_actionReload->setIcon(ThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_actionCopyLink->setIcon(ThemeFactory::getInstance()->fromTheme("edit-copy"));
-  m_actionCopyImage->setIcon(ThemeFactory::getInstance()->fromTheme("insert-image"));
-  m_actionCopyImageUrl->setIcon(ThemeFactory::getInstance()->fromTheme("edit-copy"));
+  m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_actionCopyLink->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
+  m_actionCopyImage->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
+  m_actionCopyImageUrl->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
 }
 
 void BaseWebView::initializeActions() {
@@ -56,17 +56,22 @@ void BaseWebView::initializeActions() {
   m_actionCopyLink->setText(tr("Copy link url"));
   m_actionCopyLink->setToolTip(tr("Copy link url to clipboard"));
 
-
   m_actionCopyImage = pageAction(QWebPage::CopyImageToClipboard);
   m_actionCopyImage->setParent(this);
   m_actionCopyImage->setText(tr("Copy image"));
   m_actionCopyImage->setToolTip(tr("Copy image to clipboard"));
 
-
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
   m_actionCopyImageUrl->setParent(this);
   m_actionCopyImageUrl->setText(tr("Copy image url"));
   m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard"));
+
+  // TODO: Finish implementation of "open link in new tab"
+  // viz WebPage::createWindow in browser example.
+  m_actionOpenLinkNewTab = pageAction(QWebPage::OpenLinkInNewWindow);
+  m_actionOpenLinkNewTab->setParent(this);
+  m_actionOpenLinkNewTab->setText(tr("Open link in new tab"));
+  m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab"));
 }
 
 void BaseWebView::displayErrorPage() {
@@ -79,7 +84,7 @@ void BaseWebView::popupContextMenu(const QPoint &pos) {
   QMenu image_submenu(tr("Image"), &context_menu);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
-  image_submenu.setIcon(ThemeFactory::getInstance()->fromTheme("image-x-generic"));
+  image_submenu.setIcon(IconThemeFactory::getInstance()->fromTheme("image-x-generic"));
 
   // Assemble the menu from actions.
   context_menu.addAction(m_actionReload);

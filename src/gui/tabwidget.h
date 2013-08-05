@@ -46,14 +46,14 @@ class TabWidget : public QTabWidget {
     void closeTab(int index);
 
     // Adds new WebBrowser tab to global TabWidget.
-    void addEmptyBrowser();
+    int addEmptyBrowser();
 
     // Adds new WebBrowser with link. This is used when user
     // selects to "Open link in new tab.".
-    void addLinkedBrowser(const QUrl &initial_url);
+    int addLinkedBrowser(const QUrl &initial_url);
 
     // General method for adding WebBrowsers.
-    void addBrowser(bool move_after_current,
+    int addBrowser(bool move_after_current,
                     bool make_active,
                     const QUrl &initial_url = QUrl());
 };

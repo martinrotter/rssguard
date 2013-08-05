@@ -6,12 +6,12 @@
 #include <QIcon>
 
 
-class ThemeFactory : public QObject {
+class IconThemeFactory : public QObject {
     Q_OBJECT
 
   public:
     // Singleton getter.
-    static ThemeFactory *getInstance();
+    static IconThemeFactory *getInstance();
 
     // Wrapper for QIcon::fromTheme.
     // TODO: If icon is not found in user-defined icon theme,
@@ -41,14 +41,14 @@ class ThemeFactory : public QObject {
 
   private:
     // Constructors and destructors
-    explicit ThemeFactory(QObject *parent = 0);
-    virtual ~ThemeFactory();
+    explicit IconThemeFactory(QObject *parent = 0);
+    virtual ~IconThemeFactory();
 
     // Holds name of the current icon theme.
     QString m_currentIconTheme;
 
     // Singleton.
-    static QPointer<ThemeFactory> s_instance;
+    static QPointer<IconThemeFactory> s_instance;
 };
 
 class ThemeFactoryEvent : public QEvent {
