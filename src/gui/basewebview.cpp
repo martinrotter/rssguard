@@ -14,7 +14,7 @@
 BaseWebView::BaseWebView(QWidget *parent)
   : QWebView(parent), m_page(new BaseWebPage(this)) {
   setPage(m_page);
-  setContextMenuPolicy(Qt::NoContextMenu);
+  setContextMenuPolicy(Qt::CustomContextMenu);
   initializeActions();
   createConnections();
 }
@@ -142,8 +142,7 @@ void BaseWebView::popupContextMenu(const QPoint &pos) {
 }
 
 void BaseWebView::mousePressEvent(QMouseEvent *event) {
-  if ((event->button() & Qt::MiddleButton) ||
-      (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier)) {
+  if (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) {
     QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
 
     // Check if user clicked with middle mouse button on some
@@ -161,50 +160,45 @@ void BaseWebView::mousePressEvent(QMouseEvent *event) {
       return;
     }
   }
-  else if (event->button() & Qt::RightButton) {
+  else if (event->button() & Qt::MiddleButton) {
     m_gestureOrigin = event->pos();
+    return;
   }
 
   QWebView::mousePressEvent(event);
 }
 
 void BaseWebView::mouseReleaseEvent(QMouseEvent *event) {
-  QWebView::mouseReleaseEvent(event);
-
-  if (event->button() & Qt::RightButton) {
+  if (event->button() & Qt::MiddleButton) {
     bool are_gestures_enabled = Settings::getInstance()->value(APP_CFG_BROWSER,
                                                                "gestures_enabled",
                                                                true).toBool();
     if (are_gestures_enabled) {
       QPoint release_point = event->pos();
       int left_move = m_gestureOrigin.x() - release_point.x();
-      int right_move = release_point.x() - m_gestureOrigin.x();
+      int right_move = -left_move;
       int top_move = m_gestureOrigin.y() - release_point.y();
-      int bottom_move = release_point.y() - m_gestureOrigin.y();
+      int bottom_move = -top_move;
       int total_max = qMax(qMax(qMax(left_move, right_move),
                                 qMax(top_move, bottom_move)),
                            40);
 
-      if (total_max == left_move && are_gestures_enabled) {
+      if (total_max == left_move) {
         back();
       }
-      else if (total_max == right_move && are_gestures_enabled) {
+      else if (total_max == right_move) {
         forward();
       }
-      else if (total_max == top_move && are_gestures_enabled) {
+      else if (total_max == top_move) {
         reload();
       }
-      else if (total_max == bottom_move && are_gestures_enabled) {
+      else if (total_max == bottom_move) {
         emit newTabRequested();
       }
-      else {
-        emit customContextMenuRequested(event->pos());
-      }
-    }
-    else {
-      emit customContextMenuRequested(event->pos());
     }
   }
+
+  QWebView::mouseReleaseEvent(event);
 }
 
 void BaseWebView::paintEvent(QPaintEvent *event) {

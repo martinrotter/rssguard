@@ -337,7 +337,7 @@
            <item row="3" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
-              <string>Mouse gestures work with right mouse button. Possible gestures are:
+              <string>Mouse gestures work with middle mouse button. Possible gestures are:
 &lt;ul&gt;
 &lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
 &lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
