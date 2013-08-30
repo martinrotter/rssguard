@@ -6,4 +6,5 @@ WebBrowserNetworkAccessManager::WebBrowserNetworkAccessManager(QObject *parent)
 }
 
 WebBrowserNetworkAccessManager::~WebBrowserNetworkAccessManager() {
+  qDebug("Destroying WebBrowserNetworkAccessManager instance.");
 }

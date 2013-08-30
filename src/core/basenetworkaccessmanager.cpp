@@ -1,4 +1,5 @@
 #include <QNetworkProxy>
+#include <QNetworkRequest>
 
 #include "core/settings.h"
 #include "core/defs.h"
@@ -28,17 +29,18 @@ void BaseNetworkAccessManager::loadSettings() {
     setProxy(QNetworkProxy::NoProxy);
     return;
   }
+  Settings *settings = Settings::getInstance();
 
   // Custom proxy is selected, set it up.
   new_proxy.setType(selected_proxy_type);
-  new_proxy.setHostName(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                       "host").toString());
-  new_proxy.setPort(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                   "port", 80).toInt());
-  new_proxy.setUser(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                   "username").toString());
-  new_proxy.setPassword(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                       "password").toString());
+  new_proxy.setHostName(settings->value(APP_CFG_PROXY,
+                                        "host").toString());
+  new_proxy.setPort(settings->value(APP_CFG_PROXY,
+                                    "port", 80).toInt());
+  new_proxy.setUser(settings->value(APP_CFG_PROXY,
+                                    "username").toString());
+  new_proxy.setPassword(settings->value(APP_CFG_PROXY,
+                                        "password").toString());
   setProxy(new_proxy);
 }
 
@@ -52,6 +54,7 @@ QNetworkReply *BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
   new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
 
   // Setup custom user-agent.
-  new_request.setHeader(QNetworkRequest::UserAgentHeader, static_cast<QString>(APP_USERAGENT));
+  new_request.setRawHeader("User-Agent", QString(APP_USERAGENT).toLocal8Bit());
+
   return QNetworkAccessManager::createRequest(op, new_request, outgoingData);
 }

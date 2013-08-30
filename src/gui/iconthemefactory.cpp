@@ -21,6 +21,7 @@ ThemeFactoryEvent::ThemeFactoryEvent() : QEvent(ThemeFactoryEvent::type()) {
 }
 
 ThemeFactoryEvent::~ThemeFactoryEvent() {
+  qDebug("Destroying IconThemeFactoryEvent.");
 }
 
 QEvent::Type ThemeFactoryEvent::type()  {

@@ -4,6 +4,7 @@
 #include <QString>
 #include <QEvent>
 #include <QIcon>
+#include <QPointer>
 
 
 class IconThemeFactory : public QObject {
@@ -12,6 +13,9 @@ class IconThemeFactory : public QObject {
   public:
     // Singleton getter.
     static IconThemeFactory *getInstance();
+
+    // Destructor.
+    virtual ~IconThemeFactory();
 
     // Wrapper for QIcon::fromTheme.
     // TODO: If icon is not found in user-defined icon theme,
@@ -40,9 +44,8 @@ class IconThemeFactory : public QObject {
     void setCurrentIconTheme(const QString &theme_name);
 
   private:
-    // Constructors and destructors
+    // Constructor.
     explicit IconThemeFactory(QObject *parent = 0);
-    virtual ~IconThemeFactory();
 
     // Holds name of the current icon theme.
     QString m_currentIconTheme;

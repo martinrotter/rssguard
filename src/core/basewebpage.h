@@ -14,11 +14,6 @@ class BaseWebPage : public QWebPage {
 
   protected:
     QWebPage *createWindow(WebWindowType type);
-
-  private:
-    friend class BaseWebView;
-
-    bool m_openInNewTab;
 };
 
 #endif // BASEWEBPAGE_H

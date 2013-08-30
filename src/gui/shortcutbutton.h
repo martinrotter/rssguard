@@ -36,7 +36,9 @@ class ShortcutCatcher;
 
 class ShortcutButton : public QPushButton {
     Q_OBJECT
+
   public:
+    // Constructors and destructors.
     explicit ShortcutButton(ShortcutCatcher *catcher, QWidget *parent = 0);
     virtual ~ShortcutButton();
 

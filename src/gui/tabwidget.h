@@ -2,6 +2,7 @@
 #define TABWIDGET_H
 
 #include <QTabWidget>
+#include <QUrl>
 
 #include "gui/tabbar.h"
 #include "gui/tabcontent.h"
@@ -50,12 +51,12 @@ class TabWidget : public QTabWidget {
 
     // Adds new WebBrowser with link. This is used when user
     // selects to "Open link in new tab.".
-    int addLinkedBrowser(const QUrl &initial_url);
+    int addLinkedBrowser(const QUrl &initial_url = QUrl());
 
     // General method for adding WebBrowsers.
     int addBrowser(bool move_after_current,
-                    bool make_active,
-                    const QUrl &initial_url = QUrl());
+                   bool make_active,
+                   const QUrl &initial_url = QUrl());
 };
 
 #endif // TABWIDGET_H

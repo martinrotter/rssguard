@@ -40,7 +40,7 @@ ShortcutButton::~ShortcutButton() {
 }
 
 void ShortcutButton::keyPressEvent(QKeyEvent *event) {
-  int pressed_key =  event->key();
+  int pressed_key = event->key();
 
   if (pressed_key == -1) {
     m_catcher->doneRecording();
@@ -49,11 +49,11 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
   Qt::KeyboardModifiers new_modifiers = event->modifiers() &
                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  if (m_catcher->m_isRecording == false && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
+  if (!m_catcher->m_isRecording && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
     return;
   }
 
-  if (m_catcher->m_isRecording == false) {
+  if (!m_catcher->m_isRecording) {
     return QPushButton::keyPressEvent(event);
   }
 

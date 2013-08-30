@@ -15,13 +15,13 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 
   // Load information from embedded text files.
-  QTextStream str;
+  QTextStream text_stream;
   QFile file;
-  str.setDevice(&file);
+  text_stream.setDevice(&file);
 
   file.setFileName(APP_INFO_PATH + "/COPYING_GNU_GPL_HTML");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtLicenseGnu->setText(str.readAll());
+    m_ui->m_txtLicenseGnu->setText(text_stream.readAll());
   }
   else {
     m_ui->m_txtLicenseGnu->setText(tr("License not found."));
@@ -30,7 +30,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   file.setFileName(APP_INFO_PATH + "/COPYING_BSD");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtLicenseBsd->setText(str.readAll());
+    m_ui->m_txtLicenseBsd->setText(text_stream.readAll());
   }
   else {
     m_ui->m_txtLicenseBsd->setText(tr("License not found."));
@@ -39,7 +39,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   file.setFileName(APP_INFO_PATH + "/AUTHORS");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtThanks->setText(str.readAll());
+    m_ui->m_txtThanks->setText(text_stream.readAll());
   }
   else {
     m_ui->m_txtThanks->setText(tr("Authors information not found."));
@@ -48,7 +48,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   file.setFileName(APP_INFO_PATH + "/CHANGELOG");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtChangelog->setText(str.readAll());
+    m_ui->m_txtChangelog->setText(text_stream.readAll());
   }
   else {
     m_ui->m_txtChangelog->setText(tr("Changelog not found."));

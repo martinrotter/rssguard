@@ -12,7 +12,6 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     // Constructors and destructors.
     explicit WebBrowserNetworkAccessManager(QObject *parent = 0);
     virtual ~WebBrowserNetworkAccessManager();
-    
 };
 
 #endif // WEBBROWSERNETWORKACCESSMANAGER_H

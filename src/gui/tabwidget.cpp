@@ -19,9 +19,9 @@ TabWidget::~TabWidget() {
 }
 
 void TabWidget::createConnections() {
-  connect(tabBar(), &QTabBar::tabCloseRequested, this, &TabWidget::closeTab);
-  connect(tabBar(), &TabBar::emptySpaceDoubleClicked,
-          this, &TabWidget::addEmptyBrowser);
+  connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
+  connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()),
+          this, SLOT(addEmptyBrowser()));
 }
 
 TabBar *TabWidget::tabBar() {
@@ -53,7 +53,7 @@ void TabWidget::setupIcons() {
     // Other indexes probably contain WebBrowsers.
     else {
       WebBrowser *active_browser = widget(index)->webBrowser();
-      if (active_browser != nullptr && active_browser->icon().isNull()) {
+      if (active_browser != NULL && active_browser->icon().isNull()) {
         // We found WebBrowser instance of this tab page, which
         // has no suitable icon, load a new one from the icon theme.
         setTabIcon(index, IconThemeFactory::getInstance()->fromTheme("text-html"));
@@ -103,14 +103,10 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label,
 }
 
 int TabWidget::addEmptyBrowser() {
-  // TODO: Add reading of move_after_current and make_active
-  // flags from settings.
   return addBrowser(false, true);
 }
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  // TODO: Add reading of move_after_current and make_active
-  // flags from settings.
   return addBrowser(Settings::getInstance()->value(APP_CFG_BROWSER,
                                                    "queue_tabs",
                                                    true).toBool(),

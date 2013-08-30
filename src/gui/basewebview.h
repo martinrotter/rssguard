@@ -2,9 +2,9 @@
 #define BASEWEBVIEW_H
 
 #include <QWebView>
-#include <QAction>
 
 
+class QAction;
 class QPaintEvent;
 class BaseWebPage;
 
@@ -29,6 +29,9 @@ class BaseWebView : public QWebView {
   protected slots:
     // Executes if loading of any page is done.
     void onLoadFinished(bool ok);
+
+    void openLinkInNewTab();
+    void openImageInNewTab();
 
     // Provides custom context menu.
     void popupContextMenu(const QPoint &pos);
@@ -56,9 +59,13 @@ class BaseWebView : public QWebView {
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;
     QAction *m_actionCopyImageUrl;
+    QAction *m_actionOpenLinkThisTab;
     QAction *m_actionOpenLinkNewTab;
+    QAction *m_actionOpenImageNewTab;
 
     QPoint m_gestureOrigin;
+    QUrl m_contextLinkUrl;
+    QUrl m_contextImageUrl;
 };
 
 #endif // BASEWEBVIEW_H

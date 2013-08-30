@@ -18,6 +18,9 @@ class FormWelcome : public QDialog {
     explicit FormWelcome(QWidget *parent = 0);
     virtual ~FormWelcome();
     
+  private slots:
+    void openLink(const QString &link);
+
   private:
     Ui::FormWelcome *m_ui;
 };

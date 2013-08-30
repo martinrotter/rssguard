@@ -43,7 +43,11 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Setup debug output system.
+#if QT_VERSION >= 0x050000
   qInstallMessageHandler(Debugging::debugHandler);
+#else
+  qInstallMsgHandler(Debugging::debugHandler);
+#endif
 
   // Instantiate base application object.
   QtSingleApplication application(argc, argv);
@@ -109,8 +113,8 @@ int main(int argc, char *argv[]) {
   }
 
   // Setup single-instance behavior.
-  QObject::connect(&application, &QtSingleApplication::messageReceived,
-                   &window, &FormMain::processExecutionMessage);
+  QObject::connect(&application, SIGNAL(messageReceived(const QString&)),
+                   &window, SLOT(processExecutionMessage(QString)));
 
   // Enter global event loop.
   return QtSingleApplication::exec();

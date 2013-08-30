@@ -37,7 +37,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
 
   // No correct path was found.
   if (desktop_file_location.isEmpty()) {
-    qDebug("Searching for auto-start function status failed. HOME variable not found.");
+    qWarning("Searching for auto-start function status failed. HOME variable not found.");
     return SystemFactory::Unavailable;
   }
 

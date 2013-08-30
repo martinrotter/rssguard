@@ -50,20 +50,21 @@ void LocationLineEdit::mousePressEvent(QMouseEvent *event) {
 
 void LocationLineEdit::paintEvent(QPaintEvent *event) {
   // Draw "progress bar" if needed.
-  if (m_progress > 0 && Settings::getInstance()->value(APP_CFG_BROWSER,
-                                                       "browser_colored_progress_enabled",
-                                                       true).toBool()) {
+  Settings *settings = Settings::getInstance();
+
+  if (m_progress > 0 && settings->value(APP_CFG_BROWSER,
+                                        "browser_colored_progress_enabled",
+                                        true).toBool()) {
     QPalette current_palette = palette();
-    QColor loadingColor = Settings::getInstance()->value(APP_CFG_BROWSER,
-                                                         "browser_progress_color",
-                                                         QColor(0, 255, 0, 100)).value<QColor>();
+    QColor loadingColor = settings->value(APP_CFG_BROWSER,
+                                          "browser_progress_color",
+                                          QColor(0, 255, 0, 100)).value<QColor>();
     QLinearGradient gradient(0, 0, width(), 0);
     qreal percentage_border = m_progress / 100.0;
 
     gradient.setColorAt(0, loadingColor);
     gradient.setColorAt(percentage_border - 0.01, loadingColor);
     gradient.setColorAt(percentage_border - 0.008, loadingColor.lighter(130));
-    //gradient.setColorAt(percentage_border - 0.002, loadingColor);
     gradient.setColorAt(percentage_border, QApplication::palette().color(QPalette::Base));
     current_palette.setBrush(QPalette::Base, gradient);
 

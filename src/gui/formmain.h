@@ -18,6 +18,7 @@ class FormMain : public QMainWindow {
     // Returns menu for the tray icon.
     QMenu *getTrayMenu();
 
+    // Returns global tab widget.
     TabWidget *getTabWidget();
 
     // Returns list of all globally available actions.
@@ -30,9 +31,6 @@ class FormMain : public QMainWindow {
   protected:
     // Creates all needed menus and sets them up.
     void prepareMenus();
-
-    // Initializes "Feeds" tab and related stuff.
-    void prepareTabs();
 
     // Creates needed connections for this window.
     void createConnections();

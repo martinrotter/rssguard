@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <QSettings>
+#include <QPointer>
 
 
 class Settings : public QSettings {

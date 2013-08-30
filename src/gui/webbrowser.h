@@ -2,6 +2,8 @@
 #define WEBBROWSER_H
 
 #include <QWidget>
+#include <QPointer>
+#include <QUrl>
 
 #include "gui/tabcontent.h"
 
@@ -19,7 +21,7 @@ class WebBrowser : public TabContent {
     
   public:
     // Constructors and destructors.
-    explicit WebBrowser(TabWidget *parent = 0);
+    explicit WebBrowser(QWidget *parent = 0);
     ~WebBrowser();
 
     // Reloads icons for all buttons.

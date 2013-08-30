@@ -11,19 +11,19 @@
   if (app_translator.load(QString("rssguard_%1.qm").arg(locale_name), \
   APP_LANG_PATH)) { \
   QApplication::installTranslator(&app_translator); \
-  qDebug("Application localization %s loaded successfully. Setting up locale.", \
+  qDebug("Application localization %s loaded successfully.", \
   qPrintable(locale_name)); \
   } \
   else { \
-  qDebug("Application localization %s was not loaded.", qPrintable(locale_name)); \
+  qWarning("Application localization %s was not loaded.", qPrintable(locale_name)); \
   } \
   if (qt_translator.load(QString("qt_%1.qm").arg(locale_name), \
   APP_LANG_PATH)) { \
-  qDebug("Qt localization %s loaded successfully. Setting up locale.", \
+  qDebug("Qt localization %s loaded successfully.", \
   qPrintable(locale_name));  \
   } \
   else { \
-  qDebug("Qt localization %s was not loaded.", qPrintable(locale_name)); \
+  qWarning("Qt localization %s was not loaded.", qPrintable(locale_name)); \
   } \
   QLocale::setDefault(QLocale(locale_name));
 
@@ -40,10 +40,9 @@ struct Language {
 
 class Localization {
   private:
-    Localization();
+    explicit Localization();
 
   public:
-
     // Returns list of installed application localizations.
     // This list is used ie. in settings dialog.
     static QList<Language> getInstalledLanguages();

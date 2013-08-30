@@ -3,11 +3,12 @@
 
 #include <QList>
 
+
 class QAction;
 
 class DynamicShortcuts {
   private:
-    DynamicShortcuts();
+    explicit DynamicShortcuts();
 
   public:
     // Checks the application settings and then initializes shortcut of

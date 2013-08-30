@@ -12,6 +12,7 @@ class QEvent;
 #if defined(Q_OS_WIN)
 class TrayIconMenu : public QMenu {
   public:
+    // Constructors and destructors.
     explicit TrayIconMenu(const QString &title, QWidget *parent);
     virtual ~TrayIconMenu();
 
@@ -24,6 +25,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     Q_OBJECT  
 
   public:
+    // Constructors and destructors.
     explicit SystemTrayIcon(const QString &normal_icon,
                             const QString &plain_icon,
                             FormMain *parent = 0);
@@ -51,7 +53,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
 
   private slots:
     void showPrivate();
-    void onActivated(const ActivationReason &reason);
+    void onActivated(const QSystemTrayIcon::ActivationReason &reason);
 
   private:
     QString m_normalIcon;

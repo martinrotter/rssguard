@@ -26,11 +26,21 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   // Setup behavior.
   m_ui->m_treeLanguages->setColumnCount(5);
   m_ui->m_treeLanguages->setHeaderHidden(false);
+
+#if QT_VERSION >= 0x050000
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
+#else
+  m_ui->m_treeLanguages->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setResizeMode(2, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setResizeMode(3, QHeaderView::ResizeToContents);
+  m_ui->m_treeLanguages->header()->setResizeMode(4, QHeaderView::ResizeToContents);
+#endif
+
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
                                          << tr("Language")
                                          << tr("Code")
@@ -39,13 +49,13 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                          << tr("Email"));
 
   // Establish needed connections.
-  connect(this, &FormSettings::accepted, this, &FormSettings::saveSettings);
-  connect(m_ui->m_cmbProxyType, static_cast<void (QComboBox::*)(int index)>(&QComboBox::currentIndexChanged),
-          this, &FormSettings::onProxyTypeChanged);
-  connect(m_ui->m_checkShowPassword, &QCheckBox::stateChanged,
-          this, &FormSettings::displayProxyPassword);
-  connect(m_ui->m_btnBrowserProgressColor, &QPushButton::clicked,
-          this, &FormSettings::changeBrowserProgressColor);
+  connect(this, SIGNAL(accepted()), this, SLOT(saveSettings()));
+  connect(m_ui->m_cmbProxyType, SIGNAL(currentIndexChanged(int)),
+          this, SLOT(onProxyTypeChanged(int)));
+  connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)),
+          this, SLOT(displayProxyPassword(int)));
+  connect(m_ui->m_btnBrowserProgressColor, SIGNAL(clicked()),
+          this, SLOT(changeBrowserProgressColor()));
 
   // Load all settings.
   loadGeneral();
@@ -107,35 +117,39 @@ void FormSettings::onProxyTypeChanged(int index) {
 }
 
 void FormSettings::loadBrowser() {
+  Settings *settings = Settings::getInstance();
+
   // Load settings of web browser GUI.
-  m_initialSettings.m_webBrowserProgress = Settings::getInstance()->value(APP_CFG_BROWSER,
-                                                                          "browser_progress_color",
-                                                                          QColor(0, 255, 0, 100)).value<QColor>();
-  m_ui->m_checkBrowserProgressColor->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
-                                                                               "browser_colored_progress_enabled",
-                                                                               true).toBool());
-  m_ui->m_checkMouseGestures->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
-                                                                        "gestures_enabled",
-                                                                        true).toBool());
-  m_ui->m_checkQueueTabs->setChecked(Settings::getInstance()->value(APP_CFG_BROWSER,
-                                                                    "queue_tabs",
-                                                                    true).toBool());
+  m_initialSettings.m_webBrowserProgress = settings->value(APP_CFG_BROWSER,
+                                                           "browser_progress_color",
+                                                           QColor(0, 255, 0, 100)).value<QColor>();
+  m_ui->m_checkBrowserProgressColor->setChecked(settings->value(APP_CFG_BROWSER,
+                                                                "browser_colored_progress_enabled",
+                                                                true).toBool());
+  m_ui->m_checkMouseGestures->setChecked(settings->value(APP_CFG_BROWSER,
+                                                         "gestures_enabled",
+                                                         true).toBool());
+  m_ui->m_checkQueueTabs->setChecked(settings->value(APP_CFG_BROWSER,
+                                                     "queue_tabs",
+                                                     true).toBool());
 }
 
 void FormSettings::saveBrowser() {
+  Settings *settings = Settings::getInstance();
+
   // Save settings of GUI of web browser.
-  Settings::getInstance()->setValue(APP_CFG_BROWSER,
-                                    "browser_progress_color",
-                                    m_initialSettings.m_webBrowserProgress);
-  Settings::getInstance()->setValue(APP_CFG_BROWSER,
-                                    "browser_colored_progress_enabled",
-                                    m_ui->m_checkBrowserProgressColor->isChecked());
-  Settings::getInstance()->setValue(APP_CFG_BROWSER,
-                                    "gestures_enabled",
-                                    m_ui->m_checkMouseGestures->isChecked());
-  Settings::getInstance()->setValue(APP_CFG_BROWSER,
-                                    "queue_tabs",
-                                    m_ui->m_checkQueueTabs->isChecked());
+  settings->setValue(APP_CFG_BROWSER,
+                     "browser_progress_color",
+                     m_initialSettings.m_webBrowserProgress);
+  settings->setValue(APP_CFG_BROWSER,
+                     "browser_colored_progress_enabled",
+                     m_ui->m_checkBrowserProgressColor->isChecked());
+  settings->setValue(APP_CFG_BROWSER,
+                     "gestures_enabled",
+                     m_ui->m_checkMouseGestures->isChecked());
+  settings->setValue(APP_CFG_BROWSER,
+                     "queue_tabs",
+                     m_ui->m_checkQueueTabs->isChecked());
 }
 
 void FormSettings::loadProxy() {
@@ -147,28 +161,32 @@ void FormSettings::loadProxy() {
   QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::getInstance()->value(APP_CFG_PROXY,
                                                                                                                       "proxy_type",
                                                                                                                       QNetworkProxy::NoProxy).toInt());
+  Settings *settings = Settings::getInstance();
+
   m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
-  m_ui->m_txtProxyHost->setText(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                               "host").toString());
-  m_ui->m_txtProxyUsername->setText(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                                   "username").toString());
-  m_ui->m_txtProxyPassword->setText(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                                   "password").toString());
-  m_ui->m_spinProxyPort->setValue(Settings::getInstance()->value(APP_CFG_PROXY,
-                                                                 "port", 80).toInt());
+  m_ui->m_txtProxyHost->setText(settings->value(APP_CFG_PROXY,
+                                                "host").toString());
+  m_ui->m_txtProxyUsername->setText(settings->value(APP_CFG_PROXY,
+                                                    "username").toString());
+  m_ui->m_txtProxyPassword->setText(settings->value(APP_CFG_PROXY,
+                                                    "password").toString());
+  m_ui->m_spinProxyPort->setValue(settings->value(APP_CFG_PROXY,
+                                                  "port", 80).toInt());
 }
 
 void FormSettings::saveProxy() {
-  Settings::getInstance()->setValue(APP_CFG_PROXY, "proxy_type",
-                                    m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
-  Settings::getInstance()->setValue(APP_CFG_PROXY, "host",
-                                    m_ui->m_txtProxyHost->text());
-  Settings::getInstance()->setValue(APP_CFG_PROXY, "username",
-                                    m_ui->m_txtProxyUsername->text());
-  Settings::getInstance()->setValue(APP_CFG_PROXY, "password",
-                                    m_ui->m_txtProxyPassword->text());
-  Settings::getInstance()->setValue(APP_CFG_PROXY, "port",
-                                    m_ui->m_spinProxyPort->value());
+  Settings *settings = Settings::getInstance();
+
+  settings->setValue(APP_CFG_PROXY, "proxy_type",
+                     m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
+  settings->setValue(APP_CFG_PROXY, "host",
+                     m_ui->m_txtProxyHost->text());
+  settings->setValue(APP_CFG_PROXY, "username",
+                     m_ui->m_txtProxyUsername->text());
+  settings->setValue(APP_CFG_PROXY, "password",
+                     m_ui->m_txtProxyPassword->text());
+  settings->setValue(APP_CFG_PROXY, "port",
+                     m_ui->m_spinProxyPort->value());
 
   // Reload settings for all network access managers.
   WebBrowser::globalNetworkManager()->loadSettings();
@@ -198,18 +216,19 @@ void FormSettings::loadLanguage() {
 }
 
 void FormSettings::saveLanguage() {
-  if (m_ui->m_treeLanguages->currentItem() == nullptr) {
+  if (m_ui->m_treeLanguages->currentItem() == NULL) {
     qDebug("No localizations loaded in settings dialog, so no saving for them.");
     return;
   }
 
-  QString actual_lang = Settings::getInstance()->value(APP_CFG_GEN,
-                                                       "language",
-                                                       "en").toString();
+  Settings *settings = Settings::getInstance();
+  QString actual_lang = settings->value(APP_CFG_GEN,
+                                        "language",
+                                        "en").toString();
   QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
 
   if (new_lang != actual_lang) {
-    Settings::getInstance()->setValue(APP_CFG_GEN, "language", new_lang);
+    settings->setValue(APP_CFG_GEN, "language", new_lang);
 
     QMessageBox msg_question(this);
     msg_question.setText(tr("Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start."));
@@ -276,17 +295,19 @@ void FormSettings::saveGeneral() {
 }
 
 void FormSettings::loadInterface() {
+  Settings *settings = Settings::getInstance();
+
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    m_ui->m_radioTrayOff->setChecked(!Settings::getInstance()->value(APP_CFG_GUI,
-                                                                     "use_tray_icon",
-                                                                     true).toBool());
-    m_ui->m_cmbTrayClose->setCurrentIndex(Settings::getInstance()->value(APP_CFG_GUI,
-                                                                         "close_win_action",
-                                                                         0).toInt());
-    m_ui->m_checkHidden->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
-                                                                   "start_hidden",
-                                                                   false).toBool());
+    m_ui->m_radioTrayOff->setChecked(!settings->value(APP_CFG_GUI,
+                                                      "use_tray_icon",
+                                                      true).toBool());
+    m_ui->m_cmbTrayClose->setCurrentIndex(settings->value(APP_CFG_GUI,
+                                                          "close_win_action",
+                                                          0).toInt());
+    m_ui->m_checkHidden->setChecked(settings->value(APP_CFG_GUI,
+                                                    "start_hidden",
+                                                    false).toBool());
   }
   // Tray icon is not supported on this machine.
   else {
@@ -316,35 +337,44 @@ void FormSettings::loadInterface() {
 
   // Mark active theme.
   if (current_theme == APP_THEME_SYSTEM) {
-    // Because system icon theme lies at the index 1.
+    // Because system icon theme lies at the index 0.
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }
   else {
+#if QT_VERSION >= 0x050000
     m_ui->m_cmbIconTheme->setCurrentText(current_theme);
+#else
+    int theme_index = m_ui->m_cmbIconTheme->findText(current_theme);
+    if (theme_index >= 0) {
+      m_ui->m_cmbIconTheme->setCurrentIndex(theme_index);
+    }
+#endif
   }
 
   // Load tab settings.
-  m_ui->m_checkCloseTabsMiddleClick->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
-                                                                               "tab_close_mid_button",
-                                                                               true).toBool());
-  m_ui->m_checkCloseTabsDoubleClick->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
-                                                                               "tab_close_double_button",
-                                                                               true).toBool());
-  m_ui->m_checkNewTabDoubleClick->setChecked(Settings::getInstance()->value(APP_CFG_GUI,
-                                                                            "tab_new_double_button",
-                                                                            true).toBool());
+  m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(APP_CFG_GUI,
+                                                                "tab_close_mid_button",
+                                                                true).toBool());
+  m_ui->m_checkCloseTabsDoubleClick->setChecked(settings->value(APP_CFG_GUI,
+                                                                "tab_close_double_button",
+                                                                true).toBool());
+  m_ui->m_checkNewTabDoubleClick->setChecked(settings->value(APP_CFG_GUI,
+                                                             "tab_new_double_button",
+                                                             true).toBool());
 }
 
 void FormSettings::saveInterface() {
+  Settings *settings = Settings::getInstance();
+
   // Save tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    Settings::getInstance()->setValue(APP_CFG_GUI, "use_tray_icon",
-                                      m_ui->m_radioTrayOn->isChecked());
-    Settings::getInstance()->setValue(APP_CFG_GUI, "close_win_action",
-                                      m_ui->m_cmbTrayClose->currentIndex());
-    Settings::getInstance()->setValue(APP_CFG_GUI, "start_hidden",
-                                      m_ui->m_checkHidden->isChecked());
-    if (Settings::getInstance()->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
+    settings->setValue(APP_CFG_GUI, "use_tray_icon",
+                       m_ui->m_radioTrayOn->isChecked());
+    settings->setValue(APP_CFG_GUI, "close_win_action",
+                       m_ui->m_cmbTrayClose->currentIndex());
+    settings->setValue(APP_CFG_GUI, "start_hidden",
+                       m_ui->m_checkHidden->isChecked());
+    if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
       SystemTrayIcon::getInstance()->show();
     }
     else {
@@ -358,10 +388,10 @@ void FormSettings::saveInterface() {
   IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
 
   // Save tab settings.
-  Settings::getInstance()->setValue(APP_CFG_GUI, "tab_close_mid_button",
-                                    m_ui->m_checkCloseTabsMiddleClick->isChecked());
-  Settings::getInstance()->setValue(APP_CFG_GUI, "tab_close_double_button",
-                                    m_ui->m_checkCloseTabsDoubleClick->isChecked());
-  Settings::getInstance()->setValue(APP_CFG_GUI, "tab_new_double_button",
-                                    m_ui->m_checkNewTabDoubleClick->isChecked());
+  settings->setValue(APP_CFG_GUI, "tab_close_mid_button",
+                     m_ui->m_checkCloseTabsMiddleClick->isChecked());
+  settings->setValue(APP_CFG_GUI, "tab_close_double_button",
+                     m_ui->m_checkCloseTabsDoubleClick->isChecked());
+  settings->setValue(APP_CFG_GUI, "tab_new_double_button",
+                     m_ui->m_checkNewTabDoubleClick->isChecked());
 }

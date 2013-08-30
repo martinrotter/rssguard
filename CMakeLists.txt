@@ -5,7 +5,7 @@ project(rssguard)
 set(APP_NAME "RSS Guard")
 set(APP_UP_NAME "RSSGuard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.0.0-prealpha-1")
+set(APP_VERSION "2.0.0-prealpha-2")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
 
@@ -22,11 +22,18 @@ endif(APPLE)
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-# Instruct CMake to run moc automatically when needed.
-set(CMAKE_AUTOMOC ON)
-
 # Obtain revision number if available.
 message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
+
+# Select which Qt version to use.
+if(${USE_QT_5})
+  message(STATUS "[${APP_LOW_NAME}] Using Qt 5 library for building.")
+  
+  # Instruct CMake to run moc automatically when needed.
+  set(CMAKE_AUTOMOC ON)
+else(${USE_QT_5})
+  message(STATUS "[${APP_LOW_NAME}] Using Qt 4 library for building.")
+endif(${USE_QT_5})
 
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
@@ -99,36 +106,43 @@ endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release"
 # Force Qt to use string builders.
 add_definitions(-DQT_USE_QSTRINGBUILDER)
 
-# Check for C++ 11 features availability.
-# See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
-  execute_process(
-    COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
-  )
-
-  if(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-    message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
-  else(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-    add_definitions(-std=c++11)
-  endif(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-
-elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-  add_definitions(-std=c++11 -stdlib=libc++)
-elseif(${MSVC_VERSION} VERSION_LESS 1600)
-  message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
-endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
-
 # Unicode settings.
 add_definitions(-DUNICODE -D_UNICODE)
 
-# Find all needed Qt modules.
-find_package(Qt5Sql)
-find_package(Qt5WebKit)
-find_package(Qt5WebKitWidgets)
-find_package(Qt5Widgets)
-find_package(Qt5Xml)
-find_package(Qt5Network)
-find_package(Qt5LinguistTools)
+if(${USE_QT_5})
+  # Check for C++ 11 features availability.
+  # See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
+  if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+    execute_process(
+      COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
+    )
+
+    if(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
+      message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
+    else(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
+      add_definitions(-std=c++11)
+    endif(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
+
+  elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+    add_definitions(-std=c++11 -stdlib=libc++)
+  elseif(${MSVC_VERSION} VERSION_LESS 1600)
+    message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
+  endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+endif(${USE_QT_5})
+
+# Setup libraries.
+if(${USE_QT_5})
+  find_package(Qt5Sql)
+  find_package(Qt5WebKit)
+  find_package(Qt5WebKitWidgets)
+  find_package(Qt5Widgets)
+  find_package(Qt5Xml)
+  find_package(Qt5Network)
+  find_package(Qt5LinguistTools)
+else(${USE_QT_5})
+  find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml)
+  include(${QT_USE_FILE})
+endif(${USE_QT_5})
 
 # Compile application icon if compiling with MinGW on WIN32.
 if(MINGW AND WIN32)
@@ -263,16 +277,26 @@ set(APP_MISC
 )
 
 # Wrap files, create moc files.
-qt5_wrap_cpp(APP_MOC ${APP_HEADERS})
-qt5_wrap_ui(APP_UI ${APP_FORMS})
-qt5_add_resources(APP_RCC ${APP_RESOURCES})
-
-if(Qt5LinguistTools_FOUND)
-  message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools found. Translations will get refreshed.")
-  qt5_add_translation(APP_QM ${APP_TRANSLATIONS})
-else(Qt5LinguistTools_FOUND)
-  message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools NOT found. No refreshing for translations.")
-endif(Qt5LinguistTools_FOUND)
+if(${USE_QT_5})
+  #qt5_wrap_cpp(APP_MOC ${APP_HEADERS})
+  qt5_wrap_ui(APP_UI ${APP_FORMS})
+  qt5_add_resources(APP_RCC ${APP_RESOURCES})
+  
+  # Load translations.
+  if(Qt5LinguistTools_FOUND)
+    message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools found. Translations will get refreshed.")
+    qt5_add_translation(APP_QM ${APP_TRANSLATIONS})
+  else(Qt5LinguistTools_FOUND)
+    message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools NOT found. No refreshing for translations.")
+  endif(Qt5LinguistTools_FOUND)
+else(${USE_QT_5})
+  qt4_wrap_cpp(APP_MOC ${APP_HEADERS})
+  qt4_wrap_ui(APP_UI ${APP_FORMS})
+  qt4_add_resources(APP_RCC ${APP_RESOURCES})
+  
+  # Load translations.
+  qt4_add_translation(APP_QM ${APP_TRANSLATIONS})
+endif(${USE_QT_5})
 
 # Include additional directory paths.
 include_directories (
@@ -282,33 +306,55 @@ include_directories (
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )
 
-if(WIN32)
+# Setup compilation.
+if(${USE_QT_5})
+  if(WIN32)
+    add_executable(${EXE_NAME} WIN32
+      ${APP_SOURCES}
+      ${APP_FORMS}
+      ${APP_RCC}
+      ${APP_QM}
+    )
+    target_link_libraries(${EXE_NAME} Qt5::WinMain)
+  else(WIN32)
+    add_executable(${EXE_NAME}
+      ${APP_SOURCES}
+      ${APP_FORMS}
+      ${APP_RCC}
+      ${APP_QM}
+    )
+  endif(WIN32)
+  
+  # Use modules from Qt.
+  qt5_use_modules(${EXE_NAME}
+    Core
+    Widgets
+    Sql
+    Network
+    Xml
+    WebKit
+    WebKitWidgets
+  )
+else(${USE_QT_5})
   add_executable(${EXE_NAME} WIN32
     ${APP_SOURCES}
     ${APP_FORMS}
+    ${APP_MOC}
     ${APP_RCC}
     ${APP_QM}
   )
-  target_link_libraries(${EXE_NAME} Qt5::WinMain)
-else(WIN32)
-  add_executable(${EXE_NAME}
-    ${APP_SOURCES}
-    ${APP_FORMS}
-    ${APP_RCC}
-    ${APP_QM}
-  )
-endif(WIN32)
 
-# Use modules from Qt.
-qt5_use_modules(${EXE_NAME}
-  Core
-  Widgets
-  Sql
-  Network
-  Xml
-  WebKit
-  WebKitWidgets
-)
+  # Link modules from Qt.
+  target_link_libraries( ${EXE_NAME}
+    ${QT_QTCORE_LIBRARY}
+    ${QT_QTGUI_LIBRARY}
+    ${QT_QTNETWORK_LIBRARY}
+    ${QT_QTSQL_LIBRARY}
+    ${QT_QTXML_LIBRARY}
+    ${QT_QTMAIN_LIBRARY}
+    ${QT_QTWEBKIT_LIBRARY}
+  )
+endif(${USE_QT_5})
 
 # Installation stage.
 if(WIN32)
@@ -366,8 +412,16 @@ include(CPack)
 add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 
 # make lupdate and make lrelease implementation.
-add_custom_target(lupdate
-  ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-    COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
+if(${USE_QT_5})
+  add_custom_target(lupdate
+    ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+      COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  )
+else(${USE_QT_5})
+  add_custom_target(lupdate
+    ${QT_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+      COMMAND ${QT_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+      WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  )
+endif(${USE_QT_5})

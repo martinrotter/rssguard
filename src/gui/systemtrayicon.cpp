@@ -19,7 +19,7 @@ TrayIconMenu::~TrayIconMenu() {
 }
 
 bool TrayIconMenu::event(QEvent *event) {
-  if (QtSingleApplication::activeModalWidget() != nullptr &&
+  if (QtSingleApplication::activeModalWidget() != NULL &&
       event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
     SystemTrayIcon::getInstance()->showMessage(APP_LONG_NAME,
@@ -43,7 +43,8 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
   setContextMenu(parent->getTrayMenu());
 
   // Create necessary connections.
-  connect(this, &SystemTrayIcon::activated, this, &SystemTrayIcon::onActivated);
+  connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+          this, SLOT(onActivated(QSystemTrayIcon::ActivationReason)));
 }
 
 SystemTrayIcon::~SystemTrayIcon() {
@@ -51,7 +52,7 @@ SystemTrayIcon::~SystemTrayIcon() {
   hide();
 }
 
-void SystemTrayIcon::onActivated(const ActivationReason &reason) {
+void SystemTrayIcon::onActivated(const QSystemTrayIcon::ActivationReason &reason) {
   switch (reason) {
     case SystemTrayIcon::Trigger:
     case SystemTrayIcon::DoubleClick:

@@ -21,9 +21,12 @@ FormWelcome::FormWelcome(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormWe
   move(screen.center() - rect().center());
 
   // Make sure that clicked hyperlinks are opened in defult web browser.
-  connect(m_ui->m_lblInfo, &QLabel::linkActivated, [=] (const QString &link) {
-    QDesktopServices::openUrl(QUrl(link));
-  });
+  connect(m_ui->m_lblInfo, SIGNAL(linkActivated(QString)),
+          this, SLOT(openLink(QString)));
+}
+
+void FormWelcome::openLink(const QString &link) {
+  QDesktopServices::openUrl(QUrl(link));
 }
 
 FormWelcome::~FormWelcome() {

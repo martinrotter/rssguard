@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define KEYSEQUENCECATCHER_H
 
 #include <QWidget>
-#include <QPushButton>
 
 
 class QHBoxLayout;
@@ -42,6 +41,7 @@ class ShortcutCatcher : public QWidget {
     friend class ShortcutButton;
 
   public:
+    // Constructors and destructors.
     explicit ShortcutCatcher(QWidget *parent = 0);
     virtual ~ShortcutCatcher();
 
@@ -49,7 +49,7 @@ class ShortcutCatcher : public QWidget {
     void updateDisplayShortcut();
 
     QKeySequence shortcut() const;
-    void setShortcut(const QKeySequence& key);
+    void setShortcut(const QKeySequence &key);
 
   protected slots:
     void startRecording();
@@ -59,7 +59,7 @@ class ShortcutCatcher : public QWidget {
     void clearShortcut();
 
   signals:
-    void shortcutChanged(QKeySequence seguence);
+    void shortcutChanged(const QKeySequence &seguence);
 
   private:
     QToolButton *m_clearButton;

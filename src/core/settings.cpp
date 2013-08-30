@@ -39,9 +39,8 @@ Settings::~Settings() {
 
 QSettings::Status Settings::checkSettings() {
   qDebug("Syncing settings.");
-  s_instance->sync();
-
-  return s_instance->status();
+  sync();
+  return status();
 }
 
 Settings *Settings::getInstance() {

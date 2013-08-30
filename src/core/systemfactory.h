@@ -4,7 +4,7 @@
 
 class SystemFactory {
   private:
-    SystemFactory();
+    explicit SystemFactory();
 
   public:
     // Specifies possible states of auto-start functionality.

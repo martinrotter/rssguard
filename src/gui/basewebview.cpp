@@ -30,11 +30,22 @@ void BaseWebView::onLoadFinished(bool ok) {
   }
 }
 
+void BaseWebView::openLinkInNewTab() {
+  emit linkMiddleClicked(m_contextLinkUrl);
+}
+
+void BaseWebView::openImageInNewTab() {
+  emit linkMiddleClicked(m_contextImageUrl);
+}
+
 void BaseWebView::createConnections() {
-  connect(this, &BaseWebView::loadFinished,
-          this, &BaseWebView::onLoadFinished);
-  connect(this, &BaseWebView::customContextMenuRequested,
-          this, &BaseWebView::popupContextMenu);
+  connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
+  connect(this, SIGNAL(customContextMenuRequested(QPoint)),
+          this, SLOT(popupContextMenu(QPoint)));
+
+  connect(m_actionOpenLinkNewTab,SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
+  connect(m_actionOpenImageNewTab, SIGNAL(triggered()),
+          this, SLOT(openImageInNewTab()));
 }
 
 void BaseWebView::setupIcons() {
@@ -42,6 +53,9 @@ void BaseWebView::setupIcons() {
   m_actionCopyLink->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
   m_actionCopyImage->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
   m_actionCopyImageUrl->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
+  m_actionOpenLinkThisTab->setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
+  m_actionOpenLinkNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
+  m_actionOpenImageNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
 }
 
 void BaseWebView::initializeActions() {
@@ -66,12 +80,20 @@ void BaseWebView::initializeActions() {
   m_actionCopyImageUrl->setText(tr("Copy image url"));
   m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard"));
 
-  // TODO: Finish implementation of "open link in new tab"
-  // viz WebPage::createWindow in browser example.
   m_actionOpenLinkNewTab = pageAction(QWebPage::OpenLinkInNewWindow);
   m_actionOpenLinkNewTab->setParent(this);
   m_actionOpenLinkNewTab->setText(tr("Open link in new tab"));
   m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab"));
+
+  m_actionOpenLinkThisTab = pageAction(QWebPage::OpenLink);
+  m_actionOpenLinkThisTab->setParent(this);
+  m_actionOpenLinkThisTab->setText(tr("Follow link"));
+  m_actionOpenLinkThisTab->setToolTip(tr("Open the hyperlink in this tab"));
+
+  m_actionOpenImageNewTab = pageAction(QWebPage::OpenImageInNewWindow);
+  m_actionOpenImageNewTab->setParent(this);
+  m_actionOpenImageNewTab->setText(tr("Open image in new tab"));
+  m_actionOpenImageNewTab->setToolTip(tr("Open this image in this tab"));
 }
 
 void BaseWebView::displayErrorPage() {
@@ -82,26 +104,37 @@ void BaseWebView::displayErrorPage() {
 void BaseWebView::popupContextMenu(const QPoint &pos) {
   QMenu context_menu(tr("Web browser"), this);
   QMenu image_submenu(tr("Image"), &context_menu);
+  QMenu link_submenu(tr("Hyperlink"), this);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
   image_submenu.setIcon(IconThemeFactory::getInstance()->fromTheme("image-x-generic"));
+  link_submenu.setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
 
   // Assemble the menu from actions.
   context_menu.addAction(m_actionReload);
 
-  if (hit_result.linkUrl().isValid()) {
-    context_menu.addAction(m_actionCopyLink);
+  QUrl hit_url = hit_result.linkUrl();
+  QUrl hit_image_url = hit_result.imageUrl();
+
+  if (hit_url.isValid()) {
+    m_contextLinkUrl = hit_url;
+
+    context_menu.addMenu(&link_submenu);
+    link_submenu.addAction(m_actionOpenLinkThisTab);
+    link_submenu.addAction(m_actionOpenLinkNewTab);
+    link_submenu.addAction(m_actionCopyLink);
   }
 
   if (!hit_result.pixmap().isNull()) {
     // Add 'Image' menu, because if user clicked image it needs to be visible.
     context_menu.addMenu(&image_submenu);
 
+    if (hit_image_url.isValid()) {
+      m_contextImageUrl = hit_image_url;
+      image_submenu.addAction(m_actionOpenImageNewTab);
+      image_submenu.addAction(m_actionCopyImageUrl);
+    }
     image_submenu.addAction(m_actionCopyImage);
-  }
-
-  if (hit_result.imageUrl().isValid()) {
-    image_submenu.addAction(m_actionCopyImageUrl);
   }
 
   // Display the menu.
@@ -109,7 +142,8 @@ void BaseWebView::popupContextMenu(const QPoint &pos) {
 }
 
 void BaseWebView::mousePressEvent(QMouseEvent *event) {
-  if (event->button() & Qt::MiddleButton) {
+  if ((event->button() & Qt::MiddleButton) ||
+      (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier)) {
     QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
 
     // Check if user clicked with middle mouse button on some
@@ -119,7 +153,6 @@ void BaseWebView::mousePressEvent(QMouseEvent *event) {
 
     if (link_url.isValid()) {
       emit linkMiddleClicked(link_url);
-
       // No more handling of event is now needed. Return.
       return;
     }

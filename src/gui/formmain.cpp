@@ -1,5 +1,4 @@
 #include <QCloseEvent>
-#include <QMessageBox>
 
 #include "gui/formmain.h"
 #include "gui/formabout.h"
@@ -21,9 +20,8 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
   // Initialize singleton.
   s_instance = this;
 
-  // Prepare main window.
+  // Prepare main window and tabs.
   prepareMenus();
-
   m_ui->m_tabWidget->initializeTabs();
 
   // Establish connections.
@@ -61,9 +59,6 @@ QList<QAction*> FormMain::getActions() {
   return actions;
 }
 
-void FormMain::prepareTabs() {
-}
-
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -96,7 +91,6 @@ void FormMain::switchFullscreenMode(bool turn_fullscreen_on) {
   if (turn_fullscreen_on) {
     showFullScreen();
   } else {
-
     showNormal();
   }
 }
@@ -158,19 +152,19 @@ void FormMain::setupIcons() {
 
 void FormMain::createConnections() {
   // Menu "File" connections.
-  connect(m_ui->m_actionQuit, &QAction::triggered, this, &FormMain::quit);
+  connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
 
   // Menu "View" connections.
-  connect(m_ui->m_actionFullscreen, &QAction::triggered, this, &FormMain::switchFullscreenMode);
+  connect(m_ui->m_actionFullscreen, SIGNAL(triggered(bool)), this, SLOT(switchFullscreenMode(bool)));
 
   // Menu "Tools" connections.
-  connect(m_ui->m_actionSettings, &QAction::triggered, this, &FormMain::showSettings);
+  connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
 
   // Menu "Help" connections.
-  connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, &FormMain::showAbout);
+  connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
 
   // General connections.
-  connect(qApp, &QCoreApplication::aboutToQuit, this, &FormMain::cleanupResources);
+  connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(cleanupResources()));
 }
 
 void FormMain::closeEvent(QCloseEvent *event) {

@@ -11,6 +11,7 @@
 #include "core/basewebpage.h"
 #include "gui/basewebview.h"
 #include "gui/webbrowser.h"
+#include "gui/formmain.h"
 #include "gui/locationlineedit.h"
 #include "gui/iconthemefactory.h"
 #include "gui/tabwidget.h"
@@ -19,7 +20,7 @@
 QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
 
-WebBrowser::WebBrowser(TabWidget *parent)
+WebBrowser::WebBrowser(QWidget *parent)
   : TabContent(parent), m_layout(new QVBoxLayout(this)),
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
@@ -71,28 +72,20 @@ WebBrowser::WebBrowser(TabWidget *parent)
 
 void WebBrowser::createConnections() {
   // When user confirms new url, then redirect to it.
-  connect(m_txtLocation,
-          &LocationLineEdit::submitted,
-          this,
-          static_cast<void (WebBrowser::*)(const QString &url)>(&WebBrowser::navigateToUrl));
+  connect(m_txtLocation,SIGNAL(submitted(QString)),
+          this, SLOT(navigateToUrl(QString)));
   // If new page loads, then update current url.
-  connect(m_webView, &BaseWebView::urlChanged,
-          this, &WebBrowser::updateUrl);
+  connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
 
   // Connect this WebBrowser to global TabWidget.
-  // TODO: Think over moving this connections from here to
-  // e.g. TabWidget::addBrowser.
-  TabWidget *parent_widget = static_cast<TabWidget*>(parent());
-  connect(m_webView, &BaseWebView::newTabRequested,
-          parent_widget, &TabWidget::addEmptyBrowser);
-  connect(m_webView, &BaseWebView::linkMiddleClicked,
-          parent_widget, &TabWidget::addLinkedBrowser);
+  TabWidget *tab_widget = FormMain::getInstance()->getTabWidget();
+  connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
+  connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)),
+          tab_widget, SLOT(addLinkedBrowser(QUrl)));
 
   // Change location textbox status according to webpage status.
-  connect(m_webView, &BaseWebView::loadProgress,
-          m_txtLocation, &LocationLineEdit::setProgress);
-  connect(m_webView, &BaseWebView::loadFinished,
-          m_txtLocation, &LocationLineEdit::clearProgress);
+  connect(m_webView, SIGNAL(loadProgress(int)), m_txtLocation, SLOT(setProgress(int)));
+  connect(m_webView, SIGNAL(loadFinished(bool)), m_txtLocation, SLOT(clearProgress()));
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {
@@ -106,7 +99,11 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
 }
 
 void WebBrowser::navigateToUrl(const QString &textual_url) {
-  navigateToUrl(QUrl::fromUserInput(textual_url));
+  // Prepare input url.
+  QString better_url = textual_url;
+  better_url = better_url.replace('\\', '/');
+
+  navigateToUrl(QUrl::fromUserInput(better_url));
 }
 
 WebBrowser::~WebBrowser() {
@@ -124,7 +121,7 @@ WebBrowser *WebBrowser::webBrowser() {
 }
 
 QMenu *WebBrowser::globalMenu() {
-  return nullptr;
+  return NULL;
 }
 
 QIcon WebBrowser::icon() {
