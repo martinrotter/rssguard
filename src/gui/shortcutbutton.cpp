@@ -114,7 +114,7 @@ void ShortcutButton::keyReleaseEvent(QKeyEvent *event) {
   Qt::KeyboardModifiers new_modifiers = event->modifiers() &
                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
-  if ((new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
+  if (((uint) new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
     m_catcher->m_modifierKeys = new_modifiers;
     m_catcher->controlModifierlessTimout();
     m_catcher->updateDisplayShortcut();

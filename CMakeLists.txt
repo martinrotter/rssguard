@@ -234,7 +234,7 @@ set(APP_HEADERS
   # CORE headers.
   src/core/settings.h
   src/core/basenetworkaccessmanager.h
-  src/core/webBrowsernetworkaccessmanager.h
+  src/core/webbrowsernetworkaccessmanager.h
   src/core/basewebpage.h
 )
 
