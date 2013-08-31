@@ -1,5 +1,6 @@
 #include <QUrl>
 #include <QApplication>
+#include <QPushButton>
 
 #include "core/defs.h"
 #include "core/settings.h"
@@ -7,10 +8,12 @@
 #include "gui/tabbar.h"
 #include "gui/iconthemefactory.h"
 #include "gui/webbrowser.h"
+#include "gui/cornerbutton.h"
 
 
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent) {
   setTabBar(new TabBar(this));
+  setupCornerButton();
   createConnections();
 }
 
@@ -18,7 +21,15 @@ TabWidget::~TabWidget() {
   qDebug("Destroying TabWidget instance.");
 }
 
+void TabWidget::setupCornerButton() {
+  m_cornerButton = new CornerButton(this);
+  m_cornerButton->setFlat(true);
+  m_cornerButton->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
+  setCornerWidget(m_cornerButton);
+}
+
 void TabWidget::createConnections() {
+  connect(m_cornerButton, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
   connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()),
           this, SLOT(addEmptyBrowser()));
@@ -60,6 +71,9 @@ void TabWidget::setupIcons() {
       }
     }
   }
+
+  // Setup corner button icon.
+  m_cornerButton->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
 }
 
 void TabWidget::closeTab(int index) {

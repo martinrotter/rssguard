@@ -43,6 +43,34 @@
         <source>Image</source>
         <translation>Obrázek</translation>
     </message>
+    <message>
+        <source>Open link in new tab</source>
+        <translation>Otevřít odkaz v novém panelu</translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab</source>
+        <translation>Otevřít tento odkaz v novém panelu</translation>
+    </message>
+    <message>
+        <source>Follow link</source>
+        <translation>Přejít</translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab</source>
+        <translation>Otevřít tento odkaz v tomto panelu</translation>
+    </message>
+    <message>
+        <source>Open image in new tab</source>
+        <translation>Otevřít obrázek v novém panelu</translation>
+    </message>
+    <message>
+        <source>Open this image in this tab</source>
+        <translation>Otevřít tento obrázek v novém panelu</translation>
+    </message>
+    <message>
+        <source>Hyperlink</source>
+        <translation>Hypertextový odkaz</translation>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -99,12 +127,16 @@
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (OS při sestavování %2 verze CMake %3)&lt;br&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <source>&lt;body&gt;Authors and contributors:&lt;ul&gt;&lt;li&gt;Martin Rotter (&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail.com&lt;/a&gt;) (author of RSS Guard)&lt;/li&gt;&lt;li&gt;snakebite &amp; tiheum (authors of KFaenza/Faenza icon theme)&lt;/li&gt;&lt;li&gt;Digia Plc (author of QtSingleApplication component)&lt;/li&gt;&lt;li&gt;Artem Galichkin (&lt;a href=&quot;mailto://doomer3d@gmail.com&quot;&gt;doomer3d@gmail.com&lt;/a&gt;) (author of original QKeySequenceWidget component)&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>Thanks to page is available only in English language.</source>
+        <translation>Poděkování je k dispozici pouze v anglickém jazyce.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~webová stránka&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy aplikace RSS Guard lze získat na její webové stránce.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</translation>
+        <source>Authors information not found.</source>
+        <translation>Informace o autorech nebyly nalezeny.</translation>
+    </message>
+    <message>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojový kód pro RSS Guard lze získat z jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -148,18 +180,6 @@
     <message>
         <source>&amp;Fullscreen mode</source>
         <translation>&amp;Režime celé obrazovky</translation>
-    </message>
-    <message>
-        <source>Feeds</source>
-        <translation type="unfinished">Kanály</translation>
-    </message>
-    <message>
-        <source>Browser your feeds and messages</source>
-        <translation type="unfinished">Procházej své kanály a zprávy</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webový prohlížeč</translation>
     </message>
 </context>
 <context>
@@ -313,101 +333,111 @@
         <translation></translation>
     </message>
     <message>
-        <source>Language of Qonverter was changed. Note that changes will take effect on next Qonverter start.</source>
-        <translation type="obsolete">Jazyk</translation>
-    </message>
-    <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete restartovat nyní?</translation>
     </message>
     <message>
         <source>Language changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyk změněn</translation>
     </message>
     <message>
         <source>Problem with RSS Guard restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Problém s restartem</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"></translation>
+        <translation> (na této platformě nepodporováno)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Notifikační oblast</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Panely</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavírat panely pomocí</translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Levého tlačítka myši</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Prostředního tlačítka myši</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevírat nové panely poklepáním na panelový pruh</translation>
     </message>
     <message>
         <source>Enable mouse gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit gesta myši</translation>
     </message>
     <message>
-        <source>Mouse gestures work with right mouse button. Possible gestures are:
+        <source>Web browser &amp; proxy</source>
+        <translation>Webový prohlížeč &amp; proxy</translation>
+    </message>
+    <message>
+        <source>Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start.</source>
+        <translation>Jazyk RSS Guardu byl změnen. Změn se projeví až po restartu aplikace.</translation>
+    </message>
+    <message>
+        <source>RSS Guard couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
+        <translation>RSS Guard nemohl být restartován, prosím restartuje jej ručně.</translation>
+    </message>
+    <message>
+        <source>Disable (Tray icon is not available.)</source>
+        <translation>Zakázat (Notifikační ikona není k dispozici.)</translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
 &lt;ul&gt;
 &lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
 &lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
 &lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
 &lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesta myši funguji s prostředním tlačítkem myši. Gesta jsou:
+&lt;ul&gt;
+&lt;li&gt;zpět (táhnout myší vlevo)&lt;/li&gt;
+&lt;li&gt;vpřed (táhnout myší vpravo)&lt;/li&gt;
+&lt;li&gt;obnovit (táhnout myší nahoru)&lt;/li&gt;
+&lt;li&gt;otevřít nový panel (táhnout myší dolů)&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
-        <source>Web browser &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <source>Queue new tabs (with hyperlinks) after the active tab</source>
+        <translation>Zařadit nově otevíraný panel za ten aktuální</translation>
     </message>
     <message>
-        <source>Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RSS Guard couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable (Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <source>no icon theme</source>
+        <translation>žádné téma ikon</translation>
     </message>
 </context>
 <context>
     <name>FormWelcome</name>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Vítejte</translation>
     </message>
     <message>
         <source>Welcome to RSS Guard</source>
-        <translation type="unfinished"></translation>
+        <translation>Vítá Vás RSS Guard</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů. Podporuje všechny rozšířené formáty, včetně RSS, ATOM a RDF.&lt;/p&gt;&lt;p&gt;Ujistěte se, že projdete všechny funkce této aplikace. Pokud chcete nahlásit chybu nebo chcete v programu mít novou vlastnost, pak vyplňte &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hlášení o chybě&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard může být přeložen do libovolného jazyka. Kontaktujte &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;autora&lt;/span&gt;&lt;/a&gt; v případě zájmu o překlad.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -439,21 +469,36 @@
     </message>
 </context>
 <context>
+    <name>TabWidget</name>
+    <message>
+        <source>Feeds</source>
+        <translation>Kanály</translation>
+    </message>
+    <message>
+        <source>Browse your feeds and messages</source>
+        <translation>Procházet kanály a zprávy</translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <translation>Webový prohlížeč</translation>
+    </message>
+</context>
+<context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nejdříve ukončete otevřené modální dialogy.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigační panel</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpět</translation>
     </message>
     <message>
         <source>Go back</source>
@@ -461,7 +506,7 @@
     </message>
     <message>
         <source>Forward</source>
-        <translation>Zpět</translation>
+        <translation>Vpřed</translation>
     </message>
     <message>
         <source>Go forward</source>
@@ -477,11 +522,11 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit</translation>
     </message>
     <message>
         <source>Stop web page loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit načítání aktuální webové stránky</translation>
     </message>
 </context>
 </TS>

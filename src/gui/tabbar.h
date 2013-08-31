@@ -29,8 +29,7 @@ class TabBar : public QTabBar {
 
   signals:
     // Emmited if empty space on tab bar is double clicked.
-    void emptySpaceDoubleClicked();
-    
+    void emptySpaceDoubleClicked(); 
 };
 
 #endif // TABBAR_H

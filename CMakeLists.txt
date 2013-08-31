@@ -188,6 +188,7 @@ set(APP_SOURCES
   src/gui/tabwidget.cpp
   src/gui/tabbar.cpp
   src/gui/tabcontent.cpp
+  src/gui/cornerbutton.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -230,6 +231,7 @@ set(APP_HEADERS
   src/gui/tabwidget.h
   src/gui/tabbar.h
   src/gui/tabcontent.h
+  src/gui/cornerbutton.h
 
   # CORE headers.
   src/core/settings.h
@@ -306,7 +308,7 @@ include_directories (
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )
 
-# Setup compilation.
+# Setup compilation for Qt 5.
 if(${USE_QT_5})
   if(WIN32)
     add_executable(${EXE_NAME} WIN32
@@ -335,6 +337,7 @@ if(${USE_QT_5})
     WebKit
     WebKitWidgets
   )
+# Setup compilation for Qt 4.
 else(${USE_QT_5})
   add_executable(${EXE_NAME} WIN32
     ${APP_SOURCES}
@@ -415,13 +418,13 @@ add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 if(${USE_QT_5})
   add_custom_target(lupdate
     ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-      COMMAND ${Qt5_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+      COMMAND ${Qt5_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
 else(${USE_QT_5})
   add_custom_target(lupdate
     ${QT_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-      COMMAND ${QT_LUPDATE_EXECUTABLE} -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+      COMMAND ${QT_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
 endif(${USE_QT_5})

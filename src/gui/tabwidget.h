@@ -8,6 +8,8 @@
 #include "gui/tabcontent.h"
 
 
+class CornerButton;
+
 class TabWidget : public QTabWidget {
     Q_OBJECT
 
@@ -41,6 +43,9 @@ class TabWidget : public QTabWidget {
   protected:
     // Creates necesary connections.
     void createConnections();
+
+    // Sets up properties of custom corner button.
+    void setupCornerButton();
     
   public slots:
     // Closes tab with given index and deletes contained widget.
@@ -57,6 +62,9 @@ class TabWidget : public QTabWidget {
     int addBrowser(bool move_after_current,
                    bool make_active,
                    const QUrl &initial_url = QUrl());
+
+  private:
+    CornerButton *m_cornerButton;
 };
 
 #endif // TABWIDGET_H

@@ -43,6 +43,34 @@
         <source>Image</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open link in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open image in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this image in this tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hyperlink</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -99,11 +127,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;Authors and contributors:&lt;ul&gt;&lt;li&gt;Martin Rotter (&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail.com&lt;/a&gt;) (author of RSS Guard)&lt;/li&gt;&lt;li&gt;snakebite &amp; tiheum (authors of KFaenza/Faenza icon theme)&lt;/li&gt;&lt;li&gt;Digia Plc (author of QtSingleApplication component)&lt;/li&gt;&lt;li&gt;Artem Galichkin (&lt;a href=&quot;mailto://doomer3d@gmail.com&quot;&gt;doomer3d@gmail.com&lt;/a&gt;) (author of original QKeySequenceWidget component)&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;</source>
+        <source>Thanks to page is available only in English language.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>Authors information not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -147,18 +179,6 @@
     </message>
     <message>
         <source>&amp;Fullscreen mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Browser your feeds and messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web browser</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -365,16 +385,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mouse gestures work with right mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Web browser &amp; proxy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -390,6 +400,24 @@
         <source>Disable (Tray icon is not available.)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+&lt;ul&gt;
+&lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
+&lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
+&lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
+&lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
+&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Queue new tabs (with hyperlinks) after the active tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no icon theme</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -402,7 +430,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -432,6 +460,21 @@
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
         <translation>rotter.martinos@gmail.com</translation>
+    </message>
+</context>
+<context>
+    <name>TabWidget</name>
+    <message>
+        <source>Feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Browse your feeds and messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
