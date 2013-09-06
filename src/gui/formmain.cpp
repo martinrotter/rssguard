@@ -122,7 +122,7 @@ void FormMain::cleanupResources() {
 }
 
 bool FormMain::event(QEvent *event) {
-  if (event->type() == ThemeFactoryEvent::type()) {
+  if (event->type() == IconThemeFactoryEvent::type()) {
     // Handle the change of icon theme.
     setupIcons();
     event->accept();

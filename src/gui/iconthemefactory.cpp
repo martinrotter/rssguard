@@ -11,20 +11,20 @@
 
 
 QPointer<IconThemeFactory> IconThemeFactory::s_instance;
-QEvent::Type ThemeFactoryEvent::m_typeOfEvent = QEvent::None;
+QEvent::Type IconThemeFactoryEvent::m_typeOfEvent = QEvent::None;
 
 //
 // ThemeFactoryEvent class
 //
 
-ThemeFactoryEvent::ThemeFactoryEvent() : QEvent(ThemeFactoryEvent::type()) {
+IconThemeFactoryEvent::IconThemeFactoryEvent() : QEvent(IconThemeFactoryEvent::type()) {
 }
 
-ThemeFactoryEvent::~ThemeFactoryEvent() {
+IconThemeFactoryEvent::~IconThemeFactoryEvent() {
   qDebug("Destroying IconThemeFactoryEvent.");
 }
 
-QEvent::Type ThemeFactoryEvent::type()  {
+QEvent::Type IconThemeFactoryEvent::type()  {
   if (m_typeOfEvent == QEvent::None) {
     m_typeOfEvent = static_cast<QEvent::Type>(QEvent::registerEventType(2000));
   }
@@ -109,7 +109,7 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   if (notify_widgets) {
     foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
       QtSingleApplication::postEvent((QObject*) widget,
-                                     new ThemeFactoryEvent());
+                                     new IconThemeFactoryEvent());
     }
   }
 }

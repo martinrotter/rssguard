@@ -137,10 +137,11 @@ if(${USE_QT_5})
   find_package(Qt5WebKitWidgets)
   find_package(Qt5Widgets)
   find_package(Qt5Xml)
+  find_package(Qt5XmlPatterns)
   find_package(Qt5Network)
   find_package(Qt5LinguistTools)
 else(${USE_QT_5})
-  find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml)
+  find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
   include(${QT_USE_FILE})
 endif(${USE_QT_5})
 
@@ -157,9 +158,9 @@ if(MINGW AND WIN32)
     )
     set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
 
-# MSVC takes care of this automatically no need to use windres.exe
+# MSVC takes care of this automatically - no need to use windres.exe
 # for MSVC compilers.
-elseif(WIN32)
+elseif(MINGW AND WIN32)
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
 
@@ -175,6 +176,7 @@ set(APP_SOURCES
   src/gui/formmain.cpp
   src/gui/systemtrayicon.cpp
   src/gui/iconthemefactory.cpp
+  src/gui/skinfactory.cpp
   src/gui/formsettings.cpp
   src/gui/formwelcome.cpp
   src/gui/formabout.cpp
@@ -218,6 +220,7 @@ set(APP_HEADERS
   src/gui/formmain.h
   src/gui/systemtrayicon.h
   src/gui/iconthemefactory.h
+  src/gui/skinfactory.h
   src/gui/formsettings.h
   src/gui/formwelcome.h
   src/gui/formabout.h
@@ -334,6 +337,7 @@ if(${USE_QT_5})
     Sql
     Network
     Xml
+    XmlPatterns
     WebKit
     WebKitWidgets
   )
@@ -354,6 +358,7 @@ else(${USE_QT_5})
     ${QT_QTNETWORK_LIBRARY}
     ${QT_QTSQL_LIBRARY}
     ${QT_QTXML_LIBRARY}
+    ${QT_QTXMLPATTERNS_LIBRARY}
     ${QT_QTMAIN_LIBRARY}
     ${QT_QTWEBKIT_LIBRARY}
   )

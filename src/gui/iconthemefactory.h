@@ -54,15 +54,15 @@ class IconThemeFactory : public QObject {
     static QPointer<IconThemeFactory> s_instance;
 };
 
-class ThemeFactoryEvent : public QEvent {
+class IconThemeFactoryEvent : public QEvent {
   public:
     enum Type {
       IconThemeChange = 2000
     };
 
     // Constructors.
-    explicit ThemeFactoryEvent();
-    virtual ~ThemeFactoryEvent();
+    explicit IconThemeFactoryEvent();
+    virtual ~IconThemeFactoryEvent();
 
     static QEvent::Type type();
 

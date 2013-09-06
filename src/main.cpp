@@ -11,6 +11,7 @@
 #include "core/settings.h"
 #include "core/dynamicshortcuts.h"
 #include "gui/iconthemefactory.h"
+#include "gui/skinfactory.h"
 #include "gui/formmain.h"
 #include "gui/formwelcome.h"
 #include "gui/systemtrayicon.h"
@@ -66,9 +67,11 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::addLibraryPath(APP_PLUGIN_PATH);
 #endif
 
-  // Add an extra path for non-system icon themes and set current icon theme.
+  // Add an extra path for non-system icon themes and set current icon theme
+  // and skin.
   IconThemeFactory::getInstance()->setupSearchPaths();
   IconThemeFactory::getInstance()->loadCurrentIconTheme(false);
+  SkinFactory::getInstance()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();
