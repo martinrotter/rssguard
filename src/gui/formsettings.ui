@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>680</width>
+    <width>829</width>
     <height>414</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>4</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>585</width>
+            <height>368</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -142,8 +142,29 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QComboBox" name="m_cmbSkin"/>
+           <item row="2" column="0" colspan="2">
+            <widget class="QTreeWidget" name="m_treeSkins">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="indentation">
+              <number>0</number>
+             </property>
+             <property name="itemsExpandable">
+              <bool>false</bool>
+             </property>
+             <property name="expandsOnDoubleClick">
+              <bool>false</bool>
+             </property>
+             <column>
+              <property name="text">
+               <string notr="true">1</string>
+              </property>
+             </column>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -528,9 +549,15 @@
    </item>
    <item row="0" column="0">
     <widget class="QListWidget" name="m_listSettings">
+     <property name="minimumSize">
+      <size>
+       <width>220</width>
+       <height>0</height>
+      </size>
+     </property>
      <property name="maximumSize">
       <size>
-       <width>150</width>
+       <width>220</width>
        <height>16777215</height>
       </size>
      </property>
@@ -586,22 +613,6 @@
  </customwidgets>
  <resources/>
  <connections>
-  <connection>
-   <sender>m_buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>FormSettings</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>257</x>
-     <y>404</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>m_buttonBox</sender>
    <signal>rejected()</signal>

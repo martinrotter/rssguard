@@ -73,6 +73,13 @@
     </message>
 </context>
 <context>
+    <name>CornerButton</name>
+    <message>
+        <source>Open new tab</source>
+        <translation>Otevřít nový panel</translation>
+    </message>
+</context>
+<context>
     <name>FormAbout</name>
     <message>
         <source>About RSS Guard</source>
@@ -210,7 +217,7 @@
     </message>
     <message>
         <source>Language</source>
-        <translation>Lokalizacce</translation>
+        <translation>Lokalizace</translation>
     </message>
     <message>
         <source>Proxy</source>
@@ -424,6 +431,15 @@
         <source>no icon theme</source>
         <translation>žádné téma ikon</translation>
     </message>
+    <message>
+        <source>Some keyboard shortcuts are not unique.
+</source>
+        <translation>Některé klávesové zkrátky jsou duplicitní.</translation>
+    </message>
+    <message>
+        <source>Cannot save settings</source>
+        <translation>Nastavení nelze uložit</translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -466,6 +482,13 @@
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
         <translation>rotter.martinos@gmail.com</translation>
+    </message>
+</context>
+<context>
+    <name>SkinFactory</name>
+    <message>
+        <source>default system skin</source>
+        <translation>výchozí systémový vzhled</translation>
     </message>
 </context>
 <context>

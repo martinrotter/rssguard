@@ -73,6 +73,13 @@
     </message>
 </context>
 <context>
+    <name>CornerButton</name>
+    <message>
+        <source>Open new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FormAbout</name>
     <message>
         <source>About RSS Guard</source>
@@ -418,6 +425,15 @@
         <source>no icon theme</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Some keyboard shortcuts are not unique.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot save settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -460,6 +476,13 @@
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
         <translation>rotter.martinos@gmail.com</translation>
+    </message>
+</context>
+<context>
+    <name>SkinFactory</name>
+    <message>
+        <source>default system skin</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

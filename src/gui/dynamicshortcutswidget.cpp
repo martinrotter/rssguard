@@ -19,6 +19,25 @@ DynamicShortcutsWidget::~DynamicShortcutsWidget() {
   delete m_layout;
 }
 
+bool DynamicShortcutsWidget::areShortcutsUnique() {
+  QList<QKeySequence> all_shortcuts;
+
+  // Obtain all shortcuts.
+  foreach (ActionBinding binding, m_actionBindings) {
+    QKeySequence new_shortcut = binding.second->shortcut();
+
+    if (all_shortcuts.contains(new_shortcut)) {
+      // Problem, two identical shortcuts found.
+      return false;
+    }
+    else {
+      all_shortcuts.append(binding.second->shortcut());
+    }
+  }
+
+  return true;
+}
+
 void DynamicShortcutsWidget::updateShortcuts() {
   foreach (ActionBinding binding, m_actionBindings) {
     binding.first->setShortcut(binding.second->shortcut());

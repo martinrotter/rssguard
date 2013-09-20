@@ -72,6 +72,7 @@ int main(int argc, char *argv[]) {
   IconThemeFactory::getInstance()->setupSearchPaths();
   IconThemeFactory::getInstance()->loadCurrentIconTheme(false);
   SkinFactory::getInstance()->loadCurrentSkin();
+  SkinFactory::getInstance()->getInstalledSkins();
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();

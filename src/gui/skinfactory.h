@@ -3,16 +3,21 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QStringList>
+#include <QMetaType>
 
 
 struct Skin {
     QString m_baseName;
-    QString m_stylesName;
+    QString m_visibleName;
+    QStringList m_stylesNames;
     QString m_author;
     QString m_email;
     QString m_version;
     QString m_rawData;
 };
+
+Q_DECLARE_METATYPE(Skin)
 
 class SkinFactory : public QObject {
     Q_OBJECT
@@ -20,6 +25,9 @@ class SkinFactory : public QObject {
   private:
     explicit SkinFactory(QObject *parent = 0);
 
+    // Loads the skin from give skin_data.
+    // NOTE: Extra relative path escaping is done for loading of
+    // external resources.
     bool loadSkinFromData(QString skin_data, const QString &skin_path);
 
   public:

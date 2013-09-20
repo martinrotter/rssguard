@@ -34,10 +34,15 @@ void SkinFactory::loadCurrentSkin() {
   bool loaded = false;
   Skin skin_data = getSkinInfo(skin_name_from_settings, &loaded);
 
-  if (loaded) {
+  if (skin_name_from_settings == APP_THEME_SYSTEM) {
+    qApp->setStyleSheet(QString());
+    qApp->setStyle(NULL);
+    qDebug("System default skin loaded.");
+  }
+  else if (loaded) {
     loadSkinFromData(skin_data.m_rawData, skin_name_from_settings);
 
-    foreach (QString style, skin_data.m_stylesName.split("\n")) {
+    foreach (QString style, skin_data.m_stylesNames) {
       if (qApp->setStyle(style) != 0) {
         qDebug("Style '%s' loaded.", qPrintable(style));
         break;
@@ -96,12 +101,17 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   QXmlQuery query;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
 
-  if (!skin_file.open(QIODevice::ReadOnly) ||!query.setFocus(&skin_file)) {
+  if (!skin_file.open(QIODevice::ReadOnly) || !query.setFocus(&skin_file)) {
     if (ok) {
       *ok = false;
     }
     return skin;
   }
+
+  // Obtain visible skin name.
+  query.setQuery("string(skin/name)");
+  query.evaluateTo(&skin.m_visibleName);
+  skin.m_visibleName = skin.m_visibleName.remove("\n");
 
   // Obtain skin raw data.
   query.setQuery("string(skin/data)");
@@ -109,8 +119,9 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
 
   // Obtain style name.
   query.setQuery("string(/skin/style)");
-  query.evaluateTo(&skin.m_stylesName);
-  skin.m_stylesName = skin.m_stylesName.remove("\n");
+  QString styles;
+  query.evaluateTo(&styles);
+  skin.m_stylesNames = styles.remove("\n").split(",");
 
   // Obtain author.
   query.setQuery("string(/skin/author/name)");
@@ -137,7 +148,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   if (ok) {
     *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
           !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
-          !skin.m_rawData.isEmpty() && !skin.m_stylesName.isEmpty();
+          !skin.m_rawData.isEmpty() && !skin.m_stylesNames.isEmpty();
   }
 
   return skin;
@@ -145,5 +156,36 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
 
 QList<Skin> SkinFactory::getInstalledSkins() {
   QList<Skin> skins;
+
+  Skin default_skin;
+  default_skin.m_author = "-";
+  default_skin.m_baseName = APP_THEME_SYSTEM;
+  default_skin.m_email = "-";
+  default_skin.m_version = "-";
+  default_skin.m_visibleName = tr("default system skin");
+  skins.append(default_skin);
+
+  bool skin_load_ok;
+  QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
+                                                               QDir::NoDotAndDotDot |
+                                                               QDir::NoSymLinks |
+                                                               QDir::Readable);
+
+  foreach (QString base_directory, skin_directories) {
+    // Check skins installed in this base directory.
+    QStringList skin_files = QDir(APP_SKIN_PATH + QDir::separator() + base_directory).entryList(QStringList() << "*.xml",
+                                                                                                QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
+
+    foreach (QString skin_file, skin_files) {
+      // Check if skin file is valid and add it if it is valid.
+      Skin skin_info = getSkinInfo(base_directory + QDir::separator() + skin_file,
+                                   &skin_load_ok);
+
+      if (skin_load_ok) {
+        skins.append(skin_info);
+      }
+    }
+  }
+
   return skins;
 }

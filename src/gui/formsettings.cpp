@@ -5,6 +5,7 @@
 
 #include "gui/formsettings.h"
 #include "gui/iconthemefactory.h"
+#include "gui/skinfactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
 #include "gui/webbrowser.h"
@@ -28,17 +29,31 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_treeLanguages->setHeaderHidden(false);
 
 #if QT_VERSION >= 0x050000
+  // Setup languages.
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
+
+  // Setup skins.
+  m_ui->m_treeSkins->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
 #else
+  // Setup languages.
   m_ui->m_treeLanguages->header()->setResizeMode(0, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setResizeMode(1, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setResizeMode(2, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setResizeMode(3, QHeaderView::ResizeToContents);
   m_ui->m_treeLanguages->header()->setResizeMode(4, QHeaderView::ResizeToContents);
+
+  // Setup skins.
+  m_ui->m_treeSkins->header()->setResizeMode(0, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setResizeMode(1, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setResizeMode(2, QHeaderView::ResizeToContents);
+  m_ui->m_treeSkins->header()->setResizeMode(3, QHeaderView::ResizeToContents);
 #endif
 
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
@@ -48,8 +63,15 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                          << tr("Author")
                                          << tr("Email"));
 
+  m_ui->m_treeSkins->setHeaderLabels(QStringList()
+                                     << tr("Name")
+                                     << tr("Version")
+                                     << tr("Author")
+                                     << tr("Email"));
+
   // Establish needed connections.
-  connect(this, SIGNAL(accepted()), this, SLOT(saveSettings()));
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
+          this, SLOT(saveSettings()));
   connect(m_ui->m_cmbProxyType, SIGNAL(currentIndexChanged(int)),
           this, SLOT(onProxyTypeChanged(int)));
   connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)),
@@ -88,7 +110,31 @@ void FormSettings::displayProxyPassword(int state) {
   }
 }
 
+bool FormSettings::doSaveCheck() {
+  bool everything_ok = true;
+  QString resulting_information;
+
+  everything_ok &= m_ui->m_shortcuts->areShortcutsUnique();
+
+  if (!m_ui->m_shortcuts->areShortcutsUnique()) {
+    resulting_information = resulting_information.append(tr("Some keyboard shortcuts are not unique.\n"));
+  }
+
+  if (!everything_ok) {
+    QMessageBox::warning(this,
+                         tr("Cannot save settings"),
+                         resulting_information);
+  }
+
+  return everything_ok;
+}
+
 void FormSettings::saveSettings() {
+  // Make sure everything is saveable.
+  if (!doSaveCheck()) {
+    return;
+  }
+
   // Save all settings.
   saveGeneral();
   saveShortcuts();
@@ -98,6 +144,8 @@ void FormSettings::saveSettings() {
   saveLanguage();
 
   Settings::getInstance()->checkSettings();
+
+  accept();
 }
 
 void FormSettings::onProxyTypeChanged(int index) {
@@ -349,6 +397,26 @@ void FormSettings::loadInterface() {
       m_ui->m_cmbIconTheme->setCurrentIndex(theme_index);
     }
 #endif
+
+    // Load skin.
+    QList<Skin> installed_skins = SkinFactory::getInstance()->getInstalledSkins();
+    QString active_skin = SkinFactory::getInstance()->getCurrentSkinName();
+
+    foreach (Skin skin, installed_skins) {
+      QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
+                                                     skin.m_visibleName <<
+                                                     skin.m_version <<
+                                                     skin.m_author <<
+                                                     skin.m_email);
+      new_item->setData(0, Qt::UserRole, QVariant::fromValue(skin));
+
+      // Add this skin and mark it as active if its active now.
+      m_ui->m_treeSkins->addTopLevelItem(new_item);
+
+      if (skin.m_baseName == active_skin) {
+        m_ui->m_treeSkins->setCurrentItem(new_item);
+      }
+    }
   }
 
   // Load tab settings.
@@ -386,6 +454,10 @@ void FormSettings::saveInterface() {
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
   IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
+
+  // Save and activate new skin.
+  Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
+  SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
 
   // Save tab settings.
   settings->setValue(APP_CFG_GUI, "tab_close_mid_button",
