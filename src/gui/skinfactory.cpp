@@ -28,16 +28,13 @@ SkinFactory *SkinFactory::getInstance() {
 }
 
 void SkinFactory::loadCurrentSkin() {
-  QString skin_name_from_settings = Settings::getInstance()->value(APP_CFG_GUI,
-                                                                   "skin",
-                                                                   "base/plain.xml").toString();
+  QString skin_name_from_settings = getSelectedSkinName();
   bool loaded = false;
   Skin skin_data = getSkinInfo(skin_name_from_settings, &loaded);
 
   if (skin_name_from_settings == APP_THEME_SYSTEM) {
-    qApp->setStyleSheet(QString());
-    qApp->setStyle(NULL);
-    qDebug("System default skin loaded.");
+    // NOTE: No need to call qApp->setStylesheet(QString()) here.
+    qDebug("'Default system skin' loaded.");
   }
   else if (loaded) {
     loadSkinFromData(skin_data.m_rawData, skin_name_from_settings);
@@ -54,7 +51,7 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
   }
   else {
-    qDebug("Skin '%s' not loaded because style name is not specified or skin raw data is missing.",
+    qDebug("Skin '%s' not loaded because style name is not specified or skin raw data is missing. Default skin loaded.",
            qPrintable(skin_name_from_settings));
   }
 }
@@ -89,7 +86,12 @@ bool SkinFactory::loadSkinFromData(QString skin_data, const QString &skin_path) 
 
 void SkinFactory::setCurrentSkinName(const QString &skin_name) {
   Settings::getInstance()->setValue(APP_CFG_GUI, "skin", skin_name);
-  loadCurrentSkin();
+}
+
+QString SkinFactory::getSelectedSkinName() {
+  return Settings::getInstance()->value(APP_CFG_GUI,
+                                        "skin",
+                                        APP_THEME_SYSTEM).toString();
 }
 
 QString SkinFactory::getCurrentSkinName() {
@@ -98,6 +100,21 @@ QString SkinFactory::getCurrentSkinName() {
 
 Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   Skin skin;
+
+  if (skin_name == APP_THEME_SYSTEM) {
+    skin.m_author = "-";
+    skin.m_baseName = APP_THEME_SYSTEM;
+    skin.m_email = "-";
+    skin.m_version = "-";
+    skin.m_visibleName = tr("default system skin");
+
+    if (ok != NULL) {
+      *ok = true;
+    }
+
+    return skin;
+  }
+
   QXmlQuery query;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
 
@@ -157,13 +174,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
 QList<Skin> SkinFactory::getInstalledSkins() {
   QList<Skin> skins;
 
-  Skin default_skin;
-  default_skin.m_author = "-";
-  default_skin.m_baseName = APP_THEME_SYSTEM;
-  default_skin.m_email = "-";
-  default_skin.m_version = "-";
-  default_skin.m_visibleName = tr("default system skin");
-  skins.append(default_skin);
+  skins.append(getSkinInfo(APP_THEME_SYSTEM));
 
   bool skin_load_ok;
   QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |

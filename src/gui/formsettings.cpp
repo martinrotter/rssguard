@@ -78,6 +78,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(displayProxyPassword(int)));
   connect(m_ui->m_btnBrowserProgressColor, SIGNAL(clicked()),
           this, SLOT(changeBrowserProgressColor()));
+  connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+          this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
 
   // Load all settings.
   loadGeneral();
@@ -90,6 +92,16 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
 FormSettings::~FormSettings() {
   delete m_ui;
+}
+
+void FormSettings::onSkinSelected(QTreeWidgetItem *current,
+                                  QTreeWidgetItem *previous) {
+  Q_UNUSED(previous);
+
+  if (current != NULL) {
+    Skin skin = current->data(0, Qt::UserRole).value<Skin>();
+    m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
+  }
 }
 
 void FormSettings::changeBrowserProgressColor() {
@@ -397,27 +409,35 @@ void FormSettings::loadInterface() {
       m_ui->m_cmbIconTheme->setCurrentIndex(theme_index);
     }
 #endif
+  }
 
-    // Load skin.
-    QList<Skin> installed_skins = SkinFactory::getInstance()->getInstalledSkins();
-    QString active_skin = SkinFactory::getInstance()->getCurrentSkinName();
+  // Load skin.
+  QList<Skin> installed_skins = SkinFactory::getInstance()->getInstalledSkins();
+  QString selected_skin = SkinFactory::getInstance()->getSelectedSkinName();
+  QString active_skin = SkinFactory::getInstance()->getCurrentSkinName();
 
-    foreach (Skin skin, installed_skins) {
-      QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
-                                                     skin.m_visibleName <<
-                                                     skin.m_version <<
-                                                     skin.m_author <<
-                                                     skin.m_email);
-      new_item->setData(0, Qt::UserRole, QVariant::fromValue(skin));
+  foreach (Skin skin, installed_skins) {
+    QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
+                                                    skin.m_visibleName <<
+                                                    skin.m_version <<
+                                                    skin.m_author <<
+                                                    skin.m_email);
+    new_item->setData(0, Qt::UserRole, QVariant::fromValue(skin));
 
-      // Add this skin and mark it as active if its active now.
-      m_ui->m_treeSkins->addTopLevelItem(new_item);
+    // Add this skin and mark it as active if its active now.
+    m_ui->m_treeSkins->addTopLevelItem(new_item);
 
-      if (skin.m_baseName == active_skin) {
-        m_ui->m_treeSkins->setCurrentItem(new_item);
-      }
+    if (skin.m_baseName == selected_skin) {
+      m_ui->m_treeSkins->setCurrentItem(new_item);
     }
   }
+
+  if (m_ui->m_treeSkins->currentItem() == NULL) {
+    // No skin is selected or currently selected skin is unavailable.
+    m_ui->m_treeSkins->setCurrentItem(m_ui->m_treeSkins->topLevelItem(0));
+  }
+
+  m_ui->m_lblActiveContents->setText(SkinFactory::getInstance()->getSkinInfo(active_skin).m_visibleName);
 
   // Load tab settings.
   m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(APP_CFG_GUI,

@@ -32,6 +32,7 @@ class FormSettings : public QDialog {
     void loadInterface();
     void saveInterface();
     void changeBrowserProgressColor();
+    void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
     void loadGeneral();
     void saveGeneral();

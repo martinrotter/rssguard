@@ -44,8 +44,15 @@ class SkinFactory : public QObject {
     // NOTE: Skin name is formatted as "<folder>/<skin>.xml".
     QString getCurrentSkinName();
 
+    // Returns the name of the skin, that should be activated
+    // after application restart.
+    QString getSelectedSkinName();
+
+    // Gets skin about a particular skin.
     Skin getSkinInfo(const QString &skin_name, bool *ok = NULL);
 
+    // Returns list of installed skins, including "default system skin".
+    // NOTE: Default skin always lies at position 0.
     QList<Skin> getInstalledSkins();
 
     // Sets the desired skin as the active one if it exists.
