@@ -31,8 +31,9 @@ void TabWidget::setupCornerButton() {
 void TabWidget::createConnections() {
   connect(m_cornerButton, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
-  connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()),
-          this, SLOT(addEmptyBrowser()));
+  connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()), this, SLOT(addEmptyBrowser()));
+  connect(tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(fixContentsAfterMove(int,int)));
+  connect(tabBar(), SIGNAL(currentChanged(int)), this, SLOT(fixContentAfterIndexChange(int)));
 }
 
 TabBar *TabWidget::tabBar() {
@@ -128,6 +129,14 @@ int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
                     initial_url);
 }
 
+void TabWidget::changeIcon(int column, const QIcon &new_icon) {
+  setTabIcon(column, new_icon);
+}
+
+void TabWidget::changeTitle(int column, const QString &new_title) {
+  setTabText(column, new_title);
+}
+
 int TabWidget::addBrowser(bool move_after_current,
                           bool make_active,
                           const QUrl &initial_url) {
@@ -151,6 +160,15 @@ int TabWidget::addBrowser(bool move_after_current,
                          TabBar::Closable);
   }
 
+  // Make connections.
+  connect(browser, SIGNAL(titleChanged(int,QString)),
+          this, SLOT(changeTitle(int,QString)));
+  connect(browser, SIGNAL(iconChanged(int,QIcon)),
+          this, SLOT(changeIcon(int,QIcon)));
+
+  // Setup the tab index.
+  browser->setTabIndex(final_index);
+
   // Load initial web page if desired.
   if (initial_url.isValid()) {
     browser->navigateToUrl(initial_url);
@@ -163,4 +181,19 @@ int TabWidget::addBrowser(bool move_after_current,
   }
 
   return final_index;
+}
+
+void TabWidget::fixContentAfterIndexChange(int from) {
+  fixContentsIndexes(from, count() - 1);
+}
+
+void TabWidget::fixContentsAfterMove(int from, int to) {
+  fixContentsIndexes(qMin(from, to), qMax(from, to));
+}
+
+void TabWidget::fixContentsIndexes(int starting_index, int ending_index) {
+  for ( ; starting_index <= ending_index; starting_index++) {
+    TabContent *content = static_cast<TabContent*>(widget(starting_index));
+    content->webBrowser()->setTabIndex(starting_index);
+  }
 }

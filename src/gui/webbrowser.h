@@ -49,6 +49,10 @@ class WebBrowser : public TabContent {
     // Returns list of all running web browsers.
     static QList<WebBrowser*> runningWebBrowsers();
 
+    // Tab index getter/setter.
+    int tabIndex() const;
+    void setTabIndex(int tab_index);
+
   public slots:
     // Switches visibility of navigation bar.
     void setNavigationBarVisible(bool visible);
@@ -65,16 +69,22 @@ class WebBrowser : public TabContent {
     // Updates url (for example on location text box).
     void updateUrl(const QUrl &url);
 
+    void onTitleChanged(const QString &new_title);
+    void onIconChanged();
+
   signals:
     void newTabRequested();
     void linkMiddleClicked(const QUrl &link_url);
+
     void iconChanged(int index, const QIcon &icon);
+    void titleChanged(int index, const QString &title);
 
   private:
     QVBoxLayout *m_layout;
     QToolBar *m_toolBar;
     BaseWebView *m_webView;
     LocationLineEdit *m_txtLocation;
+    int m_tabIndex;
 
     QAction *m_actionBack;
     QAction *m_actionForward;

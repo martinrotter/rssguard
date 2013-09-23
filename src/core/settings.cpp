@@ -21,6 +21,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QPointer>
+#include <QWebSettings>
 
 #include "core/settings.h"
 #include "core/defs.h"
@@ -68,20 +69,23 @@ QSettings::Status Settings::setupSettings() {
   // then use it (portable settings).
   // Otherwise use settings file stored in homePath();
   QString home_path = QDir::homePath() + QDir::separator() +
-                      APP_LOW_H_NAME + QDir::separator() +
-                      APP_CFG_PATH;
-  QString app_path = qApp->applicationDirPath() + QDir::separator() +
-                     APP_CFG_PATH;
+                      APP_LOW_H_NAME;
+  QString home_path_file = home_path + QDir::separator() +
+                           APP_CFG_PATH + QDir::separator() + APP_CFG_FILE;
+  QString app_path = qApp->applicationDirPath();
+  QString app_path_file = app_path + QDir::separator() + APP_CFG_FILE;
 
-  if (QFile(app_path).exists()) {
+  if (QFile(app_path_file).exists()) {
     s_instance = new Settings(app_path, QSettings::IniFormat, qApp);
+    QWebSettings::setIconDatabasePath(app_path + QDir::separator() + APP_CFG_WEB_PATH);
     qDebug("Initializing settings in %s.",
            qPrintable(QDir::toNativeSeparators(app_path)));
   }
   else {
-    s_instance = new Settings(home_path, QSettings::IniFormat, qApp);
+    s_instance = new Settings(home_path_file, QSettings::IniFormat, qApp);
+    QWebSettings::setIconDatabasePath(home_path + QDir::separator() + APP_CFG_WEB_PATH);
     qDebug("Initializing settings in %s.",
-           qPrintable(QDir::toNativeSeparators(home_path)));
+           qPrintable(QDir::toNativeSeparators(home_path_file)));
   }
 
   return (*s_instance).checkSettings();

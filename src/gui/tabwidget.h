@@ -48,6 +48,16 @@ class TabWidget : public QTabWidget {
     void setupCornerButton();
     
   public slots:
+    void fixContentAfterIndexChange(int from);
+    void fixContentsAfterMove(int from, int to);
+
+    // Fixes indexes of tab contents.
+    void fixContentsIndexes(int starting_index, int ending_index);
+
+    // Changes icon/text of the tab.
+    void changeTitle(int column, const QString &new_title);
+    void changeIcon(int column, const QIcon &new_icon);
+
     // Closes tab with given index and deletes contained widget.
     void closeTab(int index);
 

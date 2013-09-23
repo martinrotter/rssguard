@@ -25,6 +25,7 @@ WebBrowser::WebBrowser(QWidget *parent)
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
     m_txtLocation(new LocationLineEdit(this)),
+    m_tabIndex(-1),
     m_actionBack(m_webView->pageAction(QWebPage::Back)),
     m_actionForward(m_webView->pageAction(QWebPage::Forward)),
     m_actionReload(m_webView->pageAction(QWebPage::Reload)),
@@ -86,11 +87,39 @@ void WebBrowser::createConnections() {
   // Change location textbox status according to webpage status.
   connect(m_webView, SIGNAL(loadProgress(int)), m_txtLocation, SLOT(setProgress(int)));
   connect(m_webView, SIGNAL(loadFinished(bool)), m_txtLocation, SLOT(clearProgress()));
+
+  // Forward title/icon changes.
+  connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(m_webView, SIGNAL(iconChanged()), this, SLOT(onIconChanged()));
+}
+
+void WebBrowser::onIconChanged() {
+  emit iconChanged(m_tabIndex, m_webView->icon());
+}
+
+void WebBrowser::onTitleChanged(const QString &new_title) {
+  if (new_title.isEmpty()) {
+    emit titleChanged(m_tabIndex, tr("No title"));
+  }
+  else {
+    emit titleChanged(m_tabIndex, new_title);
+  }
+
+  emit iconChanged(m_tabIndex, QIcon());
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {
   m_txtLocation->setText(url.toString());
 }
+
+int WebBrowser::tabIndex() const {
+  return m_tabIndex;
+}
+
+void WebBrowser::setTabIndex(int tab_index) {
+  m_tabIndex = tab_index;
+}
+
 
 void WebBrowser::navigateToUrl(const QUrl &url) {
   if (url.isValid()) {

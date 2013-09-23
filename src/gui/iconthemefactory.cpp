@@ -42,7 +42,7 @@ IconThemeFactory::IconThemeFactory(QObject *parent)
 }
 
 IconThemeFactory::~IconThemeFactory() {
-  qDebug("Destroying ThemeFactory instance.");
+  qDebug("Destroying IconThemeFactory instance.");
 }
 
 IconThemeFactory *IconThemeFactory::getInstance() {
