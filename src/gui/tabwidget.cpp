@@ -4,6 +4,7 @@
 
 #include "core/defs.h"
 #include "core/settings.h"
+#include "core/textfactory.h"
 #include "gui/tabwidget.h"
 #include "gui/tabbar.h"
 #include "gui/iconthemefactory.h"
@@ -129,14 +130,6 @@ int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
                     initial_url);
 }
 
-void TabWidget::changeIcon(int column, const QIcon &new_icon) {
-  setTabIcon(column, new_icon);
-}
-
-void TabWidget::changeTitle(int column, const QString &new_title) {
-  setTabText(column, new_title);
-}
-
 int TabWidget::addBrowser(bool move_after_current,
                           bool make_active,
                           const QUrl &initial_url) {
@@ -181,6 +174,14 @@ int TabWidget::addBrowser(bool move_after_current,
   }
 
   return final_index;
+}
+
+void TabWidget::changeIcon(int column, const QIcon &new_icon) {
+  setTabIcon(column, new_icon);
+}
+
+void TabWidget::changeTitle(int column, const QString &new_title) {
+  setTabText(column, TextFactory::shorten(new_title));
 }
 
 void TabWidget::fixContentAfterIndexChange(int from) {

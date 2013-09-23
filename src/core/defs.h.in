@@ -26,6 +26,8 @@
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@;")
 #endif
 
+#define TEXT_TITLE_LIMIT    30
+
 #define APP_CFG_PATH        "data/config"
 #define APP_CFG_WEB_PATH    "data/web"
 #define APP_CFG_FILE        "config.ini"

@@ -202,6 +202,7 @@ set(APP_SOURCES
   src/core/basenetworkaccessmanager.cpp
   src/core/basewebpage.cpp
   src/core/webbrowsernetworkaccessmanager.cpp
+  src/core/textfactory.cpp
 
   # Basic application sources.
   src/main.cpp
