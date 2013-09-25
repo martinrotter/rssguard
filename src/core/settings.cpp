@@ -77,13 +77,21 @@ QSettings::Status Settings::setupSettings() {
 
   if (QFile(app_path_file).exists()) {
     s_instance = new Settings(app_path, QSettings::IniFormat, qApp);
-    QWebSettings::setIconDatabasePath(app_path + QDir::separator() + APP_CFG_WEB_PATH);
+
+    QString web_path = app_path + QDir::separator() + APP_CFG_WEB_PATH;
+    QDir(web_path).mkpath(web_path);
+    QWebSettings::setIconDatabasePath(web_path);
+
     qDebug("Initializing settings in %s.",
            qPrintable(QDir::toNativeSeparators(app_path)));
   }
   else {
     s_instance = new Settings(home_path_file, QSettings::IniFormat, qApp);
-    QWebSettings::setIconDatabasePath(home_path + QDir::separator() + APP_CFG_WEB_PATH);
+
+    QString web_path = home_path + QDir::separator() + APP_CFG_WEB_PATH;
+    QDir(web_path).mkpath(web_path);
+    QWebSettings::setIconDatabasePath(web_path);
+
     qDebug("Initializing settings in %s.",
            qPrintable(QDir::toNativeSeparators(home_path_file)));
   }

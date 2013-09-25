@@ -160,7 +160,7 @@ int TabWidget::addBrowser(bool move_after_current,
           this, SLOT(changeIcon(int,QIcon)));
 
   // Setup the tab index.
-  browser->setTabIndex(final_index);
+  browser->setIndex(final_index);
 
   // Load initial web page if desired.
   if (initial_url.isValid()) {
@@ -195,6 +195,6 @@ void TabWidget::fixContentsAfterMove(int from, int to) {
 void TabWidget::fixContentsIndexes(int starting_index, int ending_index) {
   for ( ; starting_index <= ending_index; starting_index++) {
     TabContent *content = static_cast<TabContent*>(widget(starting_index));
-    content->webBrowser()->setTabIndex(starting_index);
+    content->webBrowser()->setIndex(starting_index);
   }
 }

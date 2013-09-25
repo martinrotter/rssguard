@@ -22,10 +22,12 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
   // Prepare main window and tabs.
   prepareMenus();
-  m_ui->m_tabWidget->initializeTabs();
 
   // Establish connections.
   createConnections();
+
+  // Prepare tabs.
+  m_ui->m_tabWidget->initializeTabs();
 
   setupIcons();
 }
@@ -165,6 +167,19 @@ void FormMain::createConnections() {
 
   // General connections.
   connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(cleanupResources()));
+
+  // Menu "Web browser" connections.
+  connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)),
+          this, SLOT(loadWebBrowserMenu(int)));
+}
+
+void FormMain::loadWebBrowserMenu(int index) {
+  WebBrowser *active_browser = m_ui->m_tabWidget->widget(index)->webBrowser();
+
+  m_ui->m_menuWebBrowser->clear();
+  if (active_browser != NULL) {
+    m_ui->m_menuWebBrowser->addActions(active_browser->globalMenu());
+  }
 }
 
 void FormMain::closeEvent(QCloseEvent *event) {

@@ -25,11 +25,12 @@ WebBrowser::WebBrowser(QWidget *parent)
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
     m_txtLocation(new LocationLineEdit(this)),
-    m_tabIndex(-1),
     m_actionBack(m_webView->pageAction(QWebPage::Back)),
     m_actionForward(m_webView->pageAction(QWebPage::Forward)),
     m_actionReload(m_webView->pageAction(QWebPage::Reload)),
     m_actionStop(m_webView->pageAction(QWebPage::Stop)) {
+
+  m_index = -1;
 
   // Add this new instance to the global list of web browsers.
   // NOTE: This is used primarily for dynamic icon theme switching.
@@ -94,32 +95,23 @@ void WebBrowser::createConnections() {
 }
 
 void WebBrowser::onIconChanged() {
-  emit iconChanged(m_tabIndex, m_webView->icon());
+  emit iconChanged(m_index, m_webView->icon());
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {
   if (new_title.isEmpty()) {
-    emit titleChanged(m_tabIndex, tr("No title"));
+    emit titleChanged(m_index, tr("No title"));
   }
   else {
-    emit titleChanged(m_tabIndex, new_title);
+    emit titleChanged(m_index, new_title);
   }
 
-  emit iconChanged(m_tabIndex, QIcon());
+  emit iconChanged(m_index, QIcon());
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {
   m_txtLocation->setText(url.toString());
 }
-
-int WebBrowser::tabIndex() const {
-  return m_tabIndex;
-}
-
-void WebBrowser::setTabIndex(int tab_index) {
-  m_tabIndex = tab_index;
-}
-
 
 void WebBrowser::navigateToUrl(const QUrl &url) {
   if (url.isValid()) {
@@ -149,8 +141,12 @@ WebBrowser *WebBrowser::webBrowser() {
   return this;
 }
 
-QMenu *WebBrowser::globalMenu() {
-  return NULL;
+QList<QAction *> WebBrowser::globalMenu() {
+  QList<QAction*> browser_menu;
+
+  browser_menu.append(m_actionReload);
+
+  return browser_menu;
 }
 
 QIcon WebBrowser::icon() {

@@ -38,7 +38,7 @@ class WebBrowser : public TabContent {
     WebBrowser *webBrowser();
 
     // Returns global menu for this web browser.
-    QMenu *globalMenu();
+    QList<QAction*> globalMenu();
 
     // Returns pointer to global network access manager
     // for web browsers.
@@ -48,10 +48,6 @@ class WebBrowser : public TabContent {
 
     // Returns list of all running web browsers.
     static QList<WebBrowser*> runningWebBrowsers();
-
-    // Tab index getter/setter.
-    int tabIndex() const;
-    void setTabIndex(int tab_index);
 
   public slots:
     // Switches visibility of navigation bar.
@@ -84,7 +80,6 @@ class WebBrowser : public TabContent {
     QToolBar *m_toolBar;
     BaseWebView *m_webView;
     LocationLineEdit *m_txtLocation;
-    int m_tabIndex;
 
     QAction *m_actionBack;
     QAction *m_actionForward;

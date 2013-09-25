@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -66,8 +66,14 @@
     </property>
     <addaction name="m_actionSettings"/>
    </widget>
+   <widget class="QMenu" name="m_menuWebBrowser">
+    <property name="title">
+     <string>Web browser</string>
+    </property>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
+   <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>

@@ -25,7 +25,7 @@ class TabContent : public QWidget {
     // This can be used for obtaining the menu from the instance and so on.
     virtual WebBrowser *webBrowser() = 0;
 
-  private:
+  protected:
     int m_index;
 };
 

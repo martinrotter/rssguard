@@ -64,6 +64,8 @@ class FormMain : public QMainWindow {
     // Used for last-minute cleanups.
     void cleanupResources();
 
+    void loadWebBrowserMenu(int index);
+
     // Displays various dialogs.
     void showSettings();
     void showAbout();
