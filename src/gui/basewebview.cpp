@@ -219,3 +219,7 @@ void BaseWebView::paintEvent(QPaintEvent *event) {
 
   style()->drawControl(QStyle::CE_ShapedFrame, &style_option, &painter, this);
 }
+
+void BaseWebView::setWebPageZoom(int percentage) {
+  setZoomFactor(percentage / 100.0);
+}

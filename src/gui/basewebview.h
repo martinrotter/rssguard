@@ -26,6 +26,9 @@ class BaseWebView : public QWebView {
     // User wants to open new empty web browser tab.
     void newTabRequested();
 
+  public slots:
+    void setWebPageZoom(int percentage = 150);
+
   protected slots:
     // Executes if loading of any page is done.
     void onLoadFinished(bool ok);

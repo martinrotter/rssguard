@@ -176,12 +176,13 @@ int TabWidget::addBrowser(bool move_after_current,
   return final_index;
 }
 
-void TabWidget::changeIcon(int column, const QIcon &new_icon) {
-  setTabIcon(column, new_icon);
+void TabWidget::changeIcon(int index, const QIcon &new_icon) {
+  setTabIcon(index, new_icon);
 }
 
-void TabWidget::changeTitle(int column, const QString &new_title) {
-  setTabText(column, TextFactory::shorten(new_title));
+void TabWidget::changeTitle(int index, const QString &new_title) {
+  setTabText(index, TextFactory::shorten(new_title));
+  setTabToolTip(index, new_title);
 }
 
 void TabWidget::fixContentAfterIndexChange(int from) {

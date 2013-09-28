@@ -3,8 +3,13 @@
 #include <QAction>
 #include <QPointer>
 #include <QApplication>
+#include <QWebFrame>
+#include <QWidgetAction>
+#include <QSlider>
 
+#include <QLabel>
 #include <QMessageBox>
+#include <QToolButton>
 
 #include "core/basenetworkaccessmanager.h"
 #include "core/webbrowsernetworkaccessmanager.h"
@@ -21,7 +26,8 @@ QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
 
 WebBrowser::WebBrowser(QWidget *parent)
-  : TabContent(parent), m_layout(new QVBoxLayout(this)),
+  : TabContent(parent),
+    m_layout(new QVBoxLayout(this)),
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(new BaseWebView(this)),
     m_txtLocation(new LocationLineEdit(this)),
@@ -92,6 +98,8 @@ void WebBrowser::createConnections() {
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(m_webView, SIGNAL(iconChanged()), this, SLOT(onIconChanged()));
+
+  // Misc connections.
 }
 
 void WebBrowser::onIconChanged() {
@@ -144,7 +152,34 @@ WebBrowser *WebBrowser::webBrowser() {
 QList<QAction *> WebBrowser::globalMenu() {
   QList<QAction*> browser_menu;
 
+  // Add needed actions into the menu.
   browser_menu.append(m_actionReload);
+
+  QWidget *wid = new QWidget(this);
+  QHBoxLayout *lay = new QHBoxLayout(wid);
+  QToolButton *but1 = new QToolButton(wid);
+  but1->setText("-");
+  QToolButton *but2 = new QToolButton(wid);
+  but2->setText("100%");
+  QToolButton *but3 = new QToolButton(wid);
+  but3->setText("+");
+  lay->addWidget(new QLabel("Zoom  ", wid));
+  lay->addWidget(but1);
+  lay->addWidget(but2);
+  lay->addWidget(but3);
+  lay->setSpacing(2);
+  lay->setMargin(3);
+  wid->setLayout(lay);
+  // TODO: Make zooming better written, it looks good, impelement
+  // just webpage zoom (no text zoom for now), then move to implementing
+  // feed core.
+
+  connect(but3, SIGNAL(clicked()), m_webView, SLOT(setWebPageZoom()));
+
+  QWidgetAction *act = new QWidgetAction(this);
+  act->setDefaultWidget(wid);
+
+  browser_menu.append(act);
 
   return browser_menu;
 }
