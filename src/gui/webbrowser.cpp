@@ -75,7 +75,40 @@ WebBrowser::WebBrowser(QWidget *parent)
   setTabOrder(m_toolBar, m_webView);
 
   createConnections();
+  initializeZoomWidget();
   setupIcons();
+}
+
+void WebBrowser::initializeZoomWidget() {
+  // Initializations.
+  m_zoomButtons = new QWidget(this);
+  QLabel *zoom_label = new QLabel(tr("Zoom  "), m_zoomButtons);
+  QHBoxLayout *layout = new QHBoxLayout(m_zoomButtons);
+  QToolButton *button_decrease = new QToolButton(m_zoomButtons);
+  m_btnResetZoom = new QToolButton(m_zoomButtons);
+  QToolButton *button_increase = new QToolButton(m_zoomButtons);
+
+  // Set texts.
+  button_decrease->setText("-");
+  m_btnResetZoom->setText("100%");
+  button_increase->setText("+");
+
+  // Setup layout.
+  layout->addWidget(zoom_label);
+  layout->addWidget(button_decrease);
+  layout->addWidget(m_btnResetZoom);
+  layout->addWidget(button_increase);
+  layout->setSpacing(2);
+  layout->setMargin(3);
+  m_zoomButtons->setLayout(layout);
+
+  // Make connections..
+  connect(button_increase, SIGNAL(clicked()), this, SLOT(increaseZoom()));
+  connect(button_decrease, SIGNAL(clicked()), this, SLOT(decreaseZoom()));
+  connect(m_btnResetZoom, SIGNAL(clicked()), this, SLOT(resetZoom()));
+
+  m_actionZoom = new QWidgetAction(this);
+  m_actionZoom->setDefaultWidget(m_zoomButtons);
 }
 
 void WebBrowser::createConnections() {
@@ -127,6 +160,25 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
   }
 }
 
+void WebBrowser::increaseZoom() {
+  m_webView->increaseWebPageZoom();
+  m_btnResetZoom->setText(
+        QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0))
+        );
+}
+
+void WebBrowser::decreaseZoom() {
+  m_webView->decreaseWebPageZoom();
+  m_btnResetZoom->setText(
+        QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0))
+        );
+}
+
+void WebBrowser::resetZoom() {
+  m_webView->resetWebPageZoom();
+  m_btnResetZoom->setText("100%");
+}
+
 void WebBrowser::navigateToUrl(const QString &textual_url) {
   // Prepare input url.
   QString better_url = textual_url;
@@ -143,6 +195,8 @@ WebBrowser::~WebBrowser() {
 
   // Delete members.
   delete m_layout;
+  delete m_zoomButtons;
+  delete m_actionZoom;
 }
 
 WebBrowser *WebBrowser::webBrowser() {
@@ -153,33 +207,7 @@ QList<QAction *> WebBrowser::globalMenu() {
   QList<QAction*> browser_menu;
 
   // Add needed actions into the menu.
-  browser_menu.append(m_actionReload);
-
-  QWidget *wid = new QWidget(this);
-  QHBoxLayout *lay = new QHBoxLayout(wid);
-  QToolButton *but1 = new QToolButton(wid);
-  but1->setText("-");
-  QToolButton *but2 = new QToolButton(wid);
-  but2->setText("100%");
-  QToolButton *but3 = new QToolButton(wid);
-  but3->setText("+");
-  lay->addWidget(new QLabel("Zoom  ", wid));
-  lay->addWidget(but1);
-  lay->addWidget(but2);
-  lay->addWidget(but3);
-  lay->setSpacing(2);
-  lay->setMargin(3);
-  wid->setLayout(lay);
-  // TODO: Make zooming better written, it looks good, impelement
-  // just webpage zoom (no text zoom for now), then move to implementing
-  // feed core.
-
-  connect(but3, SIGNAL(clicked()), m_webView, SLOT(setWebPageZoom()));
-
-  QWidgetAction *act = new QWidgetAction(this);
-  act->setDefaultWidget(wid);
-
-  browser_menu.append(act);
+  browser_menu.append(m_actionZoom);
 
   return browser_menu;
 }
@@ -193,6 +221,7 @@ void WebBrowser::setFocus(Qt::FocusReason reason) {
 }
 
 void WebBrowser::setupIcons() {
+  m_actionZoom->setIcon(IconThemeFactory::getInstance()->fromTheme("zoom-fit-best"));
   m_actionBack->setIcon(IconThemeFactory::getInstance()->fromTheme("go-previous"));
   m_actionForward->setIcon(IconThemeFactory::getInstance()->fromTheme("go-next"));
   m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));

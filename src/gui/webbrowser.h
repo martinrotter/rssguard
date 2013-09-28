@@ -9,6 +9,8 @@
 
 
 class QToolBar;
+class QToolButton;
+class QWidgetAction;
 class QVBoxLayout;
 class LocationLineEdit;
 class BaseWebView;
@@ -57,9 +59,17 @@ class WebBrowser : public TabContent {
     void navigateToUrl(const QString &url);
     void navigateToUrl(const QUrl &url);
 
+    // Zoom manipulators.
+    void increaseZoom();
+    void decreaseZoom();
+    void resetZoom();
+
   protected:
     // Creates necessary connections.
     void createConnections();
+
+    // Initializes all buttons and widgets, which are needed for "Zoom" menu item.
+    void initializeZoomWidget();
 
   protected slots:
     // Updates url (for example on location text box).
@@ -80,7 +90,10 @@ class WebBrowser : public TabContent {
     QToolBar *m_toolBar;
     BaseWebView *m_webView;
     LocationLineEdit *m_txtLocation;
+    QWidget *m_zoomButtons;
+    QToolButton *m_btnResetZoom;
 
+    QWidgetAction *m_actionZoom;
     QAction *m_actionBack;
     QAction *m_actionForward;
     QAction *m_actionReload;

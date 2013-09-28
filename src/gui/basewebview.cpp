@@ -44,8 +44,7 @@ void BaseWebView::createConnections() {
           this, SLOT(popupContextMenu(QPoint)));
 
   connect(m_actionOpenLinkNewTab,SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
-  connect(m_actionOpenImageNewTab, SIGNAL(triggered()),
-          this, SLOT(openImageInNewTab()));
+  connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
 }
 
 void BaseWebView::setupIcons() {
@@ -220,6 +219,14 @@ void BaseWebView::paintEvent(QPaintEvent *event) {
   style()->drawControl(QStyle::CE_ShapedFrame, &style_option, &painter, this);
 }
 
-void BaseWebView::setWebPageZoom(int percentage) {
-  setZoomFactor(percentage / 100.0);
+void BaseWebView::increaseWebPageZoom() {
+  setZoomFactor(zoomFactor() + 0.1);
+}
+
+void BaseWebView::decreaseWebPageZoom() {
+  setZoomFactor(zoomFactor() - 0.1);
+}
+
+void BaseWebView::resetWebPageZoom() {
+  setZoomFactor(1.0);
 }
