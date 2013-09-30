@@ -1,6 +1,8 @@
 #include <QStyleOptionFrameV3>
 #include <QAction>
 #include <QMenu>
+#include <QDir>
+#include <QFile>
 #include <QWebFrame>
 #include <QContextMenuEvent>
 
@@ -8,6 +10,7 @@
 #include "core/settings.h"
 #include "core/basewebpage.h"
 #include "gui/basewebview.h"
+#include "gui/skinfactory.h"
 #include "gui/iconthemefactory.h"
 
 
@@ -96,10 +99,12 @@ void BaseWebView::initializeActions() {
 }
 
 void BaseWebView::displayErrorPage() {
-  // TODO: Add better custom error page. Custom htmls are now copied during
-  // "make install" to APP_HTML_PATH. It is needed to setup css absolute
-  // path by replacing "##" with APP_HTML_PATH/css in "compact_text.html".
-  setHtml("error", url());
+  // TODO: Add better custom error page.
+  setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(tr("Page not found"),
+                                                             "bbb",
+                                                             "ccc",
+                                                             "ddd",
+                                                             "eee"));
 }
 
 void BaseWebView::popupContextMenu(const QPoint &pos) {

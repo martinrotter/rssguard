@@ -15,6 +15,7 @@ struct Skin {
     QString m_email;
     QString m_version;
     QString m_rawData;
+    QString m_layoutMarkup;
 };
 
 Q_DECLARE_METATYPE(Skin)
@@ -30,6 +31,9 @@ class SkinFactory : public QObject {
     // external resources.
     bool loadSkinFromData(QString skin_data, const QString &skin_path);
 
+    // Generates "default" skin.
+    Skin generateDefaultSkin();
+
   public:
     // Singleton getter.
     static SkinFactory *getInstance();
@@ -40,9 +44,12 @@ class SkinFactory : public QObject {
     // Loads skin name from settings and sets it as active.
     void loadCurrentSkin();
 
-    // Return the name of the currently activated skin.
+    // Returns the name of the currently activated skin.
     // NOTE: Skin name is formatted as "<folder>/<skin>.xml".
     QString getCurrentSkinName();
+
+    // Returns contents of current layout markup.
+    QString getCurrentMarkup();
 
     // Returns the name of the skin, that should be activated
     // after application restart.
@@ -60,7 +67,7 @@ class SkinFactory : public QObject {
 
   private:
     // Holds name of the current skin.
-    QString m_currentSkin;
+    Skin m_currentSkin;
 
     // Singleton.
     static QPointer<SkinFactory> s_instance;

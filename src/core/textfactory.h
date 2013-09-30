@@ -10,7 +10,6 @@ class TextFactory {
     virtual ~TextFactory();
 
     static QString shorten(const QString &input);
-
 };
 
 #endif // TEXTFACTORY_H

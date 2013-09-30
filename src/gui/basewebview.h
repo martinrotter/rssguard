@@ -42,6 +42,7 @@ class BaseWebView : public QWebView {
     void popupContextMenu(const QPoint &pos);
 
   protected:
+    // Initializes all actions.
     void initializeActions();
 
     // Creates necessary connections.
