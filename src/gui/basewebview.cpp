@@ -96,7 +96,9 @@ void BaseWebView::initializeActions() {
 }
 
 void BaseWebView::displayErrorPage() {
-  // TODO: Add better custom error page.
+  // TODO: Add better custom error page. Custom htmls are now copied during
+  // "make install" to APP_HTML_PATH. It is needed to setup css absolute
+  // path by replacing "##" with APP_HTML_PATH/css in "compact_text.html".
   setHtml("error", url());
 }
 

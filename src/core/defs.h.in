@@ -50,6 +50,7 @@
 #define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")
 #define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
 #define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/themes")
+#define APP_HTML_PATH APP_PREFIX + QString("/share/rssguard/html")
 #define APP_THEME_SYSTEM QString()
 #define APP_FLAGS_PATH APP_PREFIX + QString("/share/rssguard/flags")
 #define APP_ICON_PATH APP_PREFIX + QString("/share/icons/hicolor/128x128/apps/@APP_LOW_NAME@.png")
@@ -59,6 +60,7 @@
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/themes")
+#define APP_HTML_PATH QApplication::applicationDirPath() + QString("/html")
 #define APP_THEME_SYSTEM "-"
 #define APP_FLAGS_PATH QApplication::applicationDirPath() + QString("/flags")
 #define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")

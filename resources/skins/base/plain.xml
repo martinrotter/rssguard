@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.11a">
+  <name>plain</name>
+  <author>
+    <name>Martin Rotter</name>
+    <email>rotter.martinos@gmail.com</email>
+  </author>
+  <style>fusion,plastique</style>
+  <data/>
+</skin>

@@ -269,11 +269,6 @@ set(APP_TRANSLATIONS_WO_QT
   localization/rssguard_cs.ts
 )
 
-# Add skins.
-set(APP_SKIN_PLAIN
-  # resources/skins/base/plain.qss
-)
-
 set(APP_MISC
   resources/text/CHANGELOG
   resources/text/COPYING_GNU_GPL
@@ -374,6 +369,10 @@ if(WIN32)
           DESTINATION ./themes)
   install(DIRECTORY resources/graphics/flags
           DESTINATION ./)
+  install(DIRECTORY resources/skins/base
+          DESTINATION ./skins)
+  install(DIRECTORY resources/html
+          DESTINATION ./)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
           DESTINATION ./
           RENAME ${APP_LOW_NAME}.png)
@@ -392,6 +391,10 @@ elseif(UNIX)
           DESTINATION share/${APP_LOW_NAME}/themes)
   install(DIRECTORY resources/graphics/flags
           DESTINATION share/${APP_LOW_NAME}/)
+  install(DIRECTORY resources/skins/base
+          DESTINATION share/${APP_LOW_NAME}/skins)
+  install(DIRECTORY resources/html
+          DESTINATION share/${APP_LOW_NAME})
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
           DESTINATION share/applications)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png

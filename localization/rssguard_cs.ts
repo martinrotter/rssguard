@@ -188,6 +188,10 @@
         <source>&amp;Fullscreen mode</source>
         <translation>&amp;Režime celé obrazovky</translation>
     </message>
+    <message>
+        <source>Web browser</source>
+        <translation type="unfinished">Webový prohlížeč</translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -440,6 +444,22 @@
         <source>Cannot save settings</source>
         <translation>Nastavení nelze uložit</translation>
     </message>
+    <message>
+        <source>Active skin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected skin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Newly selected skin is activated after the applicaton gets restarted!!!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -550,6 +570,14 @@
     <message>
         <source>Stop web page loading</source>
         <translation>Zastavit načítání aktuální webové stránky</translation>
+    </message>
+    <message>
+        <source>Zoom  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No title</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
