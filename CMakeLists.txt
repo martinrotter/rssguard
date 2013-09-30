@@ -371,8 +371,6 @@ if(WIN32)
           DESTINATION ./)
   install(DIRECTORY resources/skins/base
           DESTINATION ./skins)
-  install(DIRECTORY resources/html
-          DESTINATION ./)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
           DESTINATION ./
           RENAME ${APP_LOW_NAME}.png)
@@ -393,8 +391,6 @@ elseif(UNIX)
           DESTINATION share/${APP_LOW_NAME}/)
   install(DIRECTORY resources/skins/base
           DESTINATION share/${APP_LOW_NAME}/skins)
-  install(DIRECTORY resources/html
-          DESTINATION share/${APP_LOW_NAME})
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
           DESTINATION share/applications)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
