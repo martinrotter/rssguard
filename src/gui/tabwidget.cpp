@@ -9,6 +9,7 @@
 #include "gui/tabbar.h"
 #include "gui/iconthemefactory.h"
 #include "gui/webbrowser.h"
+#include "gui/feedmessageviewer.h"
 #include "gui/cornerbutton.h"
 
 
@@ -43,7 +44,7 @@ TabBar *TabWidget::tabBar() {
 
 void TabWidget::initializeTabs() {
   // Create widget for "Feeds" page and add it.
-  WebBrowser *browser = new WebBrowser(this);
+  FeedMessageViewer *browser = new FeedMessageViewer(this);
   int index_of_browser = addTab(static_cast<TabContent*>(browser),
                                 QIcon(),
                                 tr("Feeds"),
@@ -196,6 +197,6 @@ void TabWidget::fixContentsAfterMove(int from, int to) {
 void TabWidget::fixContentsIndexes(int starting_index, int ending_index) {
   for ( ; starting_index <= ending_index; starting_index++) {
     TabContent *content = static_cast<TabContent*>(widget(starting_index));
-    content->webBrowser()->setIndex(starting_index);
+    content->setIndex(starting_index);
   }
 }

@@ -81,6 +81,12 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
                                                                     "icon_theme",
                                                                     "mini-kfaenza").toString();
 
+  if (m_currentIconTheme == theme_name_from_settings) {
+    qDebug("Icon theme '%s' already loaded.",
+           qPrintable(theme_name_from_settings));
+    return;
+  }
+
   // Display list of installed themes.
   qDebug("Installed icon themes are: %s.",
          qPrintable(installed_themes.join(", ")));
@@ -88,7 +94,7 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
-    qDebug("Loading theme '%s'.", qPrintable(theme_name_from_settings));
+    qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
     QIcon::setThemeName(theme_name_from_settings);
     m_currentIconTheme = theme_name_from_settings;
   }
