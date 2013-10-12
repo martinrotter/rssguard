@@ -204,6 +204,7 @@ set(APP_SOURCES
   src/core/basewebpage.cpp
   src/core/webbrowsernetworkaccessmanager.cpp
   src/core/textfactory.cpp
+  src/core/databasefactory.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -244,6 +245,7 @@ set(APP_HEADERS
   src/core/basenetworkaccessmanager.h
   src/core/webbrowsernetworkaccessmanager.h
   src/core/basewebpage.h
+  src/core/databasefactory.h
 )
 
 # Add form files.

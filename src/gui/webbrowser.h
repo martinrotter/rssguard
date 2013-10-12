@@ -40,7 +40,7 @@ class WebBrowser : public TabContent {
     WebBrowser *webBrowser();
 
     // Returns global menu for this web browser.
-    QList<QAction*> globalMenu();
+    virtual QList<QAction*> globalMenu();
 
     // Returns pointer to global network access manager
     // for web browsers.

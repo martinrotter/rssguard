@@ -9,14 +9,20 @@ class Settings : public QSettings {
     Q_OBJECT
 
   private:
+    // Constructor.
+    Settings(const QString & file_name, Format format, QObject * parent = 0);
+
+    // Creates settings file in correct location.
+    static QSettings::Status setupSettings();
+
+    // Private singleton value.
     static QPointer<Settings> s_instance;
 
   public:
     // Singleton getter.
     static Settings *getInstance();
 
-    // Constructor and destructor.
-    Settings(const QString & file_name, Format format, QObject * parent = 0);
+    // Destructor.
     virtual ~Settings();
 
     // Getter/setter for settings values.
@@ -30,10 +36,6 @@ class Settings : public QSettings {
 
     // Synchronises settings.
     QSettings::Status checkSettings();
-
-  protected:
-    // Creates settings file in correct location.
-    static QSettings::Status setupSettings();
 };
 
 #endif // SETTINGS_H
