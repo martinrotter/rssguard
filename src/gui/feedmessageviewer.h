@@ -5,6 +5,8 @@
 
 
 class WebBrowser;
+class FeedsView;
+class MessagesView;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -13,12 +15,15 @@ class FeedMessageViewer : public TabContent {
     explicit FeedMessageViewer(QWidget *parent = 0);
     virtual ~FeedMessageViewer();
 
-     WebBrowser *webBrowser();
+    WebBrowser *webBrowser();
 
-  signals:
+  protected:
+    void initializeViews();
 
-  public slots:
-
+  private:
+    MessagesView *m_messagesView;
+    FeedsView *m_feedsView;
+    WebBrowser *m_messagesBrowser;
 };
 
 #endif // FEEDMESSAGEVIEWER_H

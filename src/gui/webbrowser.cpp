@@ -90,8 +90,11 @@ void WebBrowser::initializeZoomWidget() {
 
   // Set texts.
   button_decrease->setText("-");
+  button_decrease->setToolTip(tr("Decrease zoom."));
   m_btnResetZoom->setText("100%");
+  m_btnResetZoom->setToolTip(tr("Reset zoom to default."));
   button_increase->setText("+");
+  button_increase->setToolTip(tr("Increase zoom."));
 
   // Setup layout.
   layout->addWidget(zoom_label);
@@ -131,8 +134,6 @@ void WebBrowser::createConnections() {
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(m_webView, SIGNAL(iconChanged()), this, SLOT(onIconChanged()));
-
-  // Misc connections.
 }
 
 void WebBrowser::onIconChanged() {
@@ -162,16 +163,16 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
 
 void WebBrowser::increaseZoom() {
   m_webView->increaseWebPageZoom();
-  m_btnResetZoom->setText(
-        QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0))
-        );
+  m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100,
+                                                             'f',
+                                                             0)));
 }
 
 void WebBrowser::decreaseZoom() {
   m_webView->decreaseWebPageZoom();
-  m_btnResetZoom->setText(
-        QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0))
-        );
+  m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100,
+                                                             'f',
+                                                             0)));
 }
 
 void WebBrowser::resetZoom() {

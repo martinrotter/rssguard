@@ -12,7 +12,6 @@
 QPointer<SkinFactory> SkinFactory::s_instance;
 
 SkinFactory::SkinFactory(QObject *parent) : QObject(parent) {
-  m_currentSkin = generateDefaultSkin();
 }
 
 SkinFactory::~SkinFactory() {
@@ -31,6 +30,8 @@ void SkinFactory::loadCurrentSkin() {
   QString skin_name_from_settings = getSelectedSkinName();
 
   if (skin_name_from_settings == APP_THEME_SYSTEM) {
+    m_currentSkin = generateDefaultSkin();
+
     // User selected default skin for loading.
     // NOTE: No need to do anything here.
     qDebug("'Default system skin' loaded.");

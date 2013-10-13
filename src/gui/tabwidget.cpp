@@ -42,7 +42,7 @@ TabBar *TabWidget::tabBar() {
   return static_cast<TabBar*>(QTabWidget::tabBar());
 }
 
-void TabWidget::initializeTabs() {
+void TabWidget::initializeTabs() { 
   // Create widget for "Feeds" page and add it.
   FeedMessageViewer *browser = new FeedMessageViewer(this);
   int index_of_browser = addTab(static_cast<TabContent*>(browser),

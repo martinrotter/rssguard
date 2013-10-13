@@ -192,6 +192,8 @@ set(APP_SOURCES
   src/gui/tabcontent.cpp
   src/gui/cornerbutton.cpp
   src/gui/feedmessageviewer.cpp
+  src/gui/feedsview.cpp
+  src/gui/messagesview.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -239,6 +241,8 @@ set(APP_HEADERS
   src/gui/tabcontent.h
   src/gui/cornerbutton.h
   src/gui/feedmessageviewer.h
+  src/gui/feedsview.h
+  src/gui/messagesview.h
 
   # CORE headers.
   src/core/settings.h
