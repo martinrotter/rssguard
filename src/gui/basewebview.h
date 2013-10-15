@@ -27,9 +27,9 @@ class BaseWebView : public QWebView {
     void newTabRequested();
 
   public slots:
-    void increaseWebPageZoom();
-    void decreaseWebPageZoom();
-    void resetWebPageZoom();
+    bool increaseWebPageZoom();
+    bool decreaseWebPageZoom();
+    bool resetWebPageZoom();
 
   protected slots:
     // Executes if loading of any page is done.

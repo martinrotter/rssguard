@@ -27,9 +27,14 @@
 #endif
 
 #define TEXT_TITLE_LIMIT    30
+#define MAX_ZOOM_FACTOR     10.0
+#define DATABASE_DRIVER     "QSQLITE"
+
+#define APP_DB_PATH         "data/database/local"
+#define APP_DB_FILE         "database.db"
 
 #define APP_CFG_PATH        "data/config"
-#define APP_CFG_WEB_PATH    "data/web"
+#define APP_CFG_WEB_PATH    "data/database/web"
 #define APP_CFG_FILE        "config.ini"
 #define APP_CFG_GUI         "gui"
 #define APP_CFG_GEN         "main"
@@ -38,7 +43,6 @@
 #define APP_CFG_BROWSER     "browser"
 
 #define APP_HTML_MARKUP     "styled_pattern.html"
-#define APP_DB_PATH         "data/storage/database.db"
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"
 #define APP_REVISION        "@APP_REVISION@"
 

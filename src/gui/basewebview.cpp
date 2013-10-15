@@ -226,14 +226,38 @@ void BaseWebView::paintEvent(QPaintEvent *event) {
   style()->drawControl(QStyle::CE_ShapedFrame, &style_option, &painter, this);
 }
 
-void BaseWebView::increaseWebPageZoom() {
-  setZoomFactor(zoomFactor() + 0.1);
+bool BaseWebView::increaseWebPageZoom() {
+  qreal new_factor = zoomFactor() + 0.1;
+
+  if (new_factor >= 0.0 && new_factor <= MAX_ZOOM_FACTOR) {
+    setZoomFactor(new_factor);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
-void BaseWebView::decreaseWebPageZoom() {
-  setZoomFactor(zoomFactor() - 0.1);
+bool BaseWebView::decreaseWebPageZoom() {
+  qreal new_factor = zoomFactor() - 0.1;
+
+  if (new_factor >= 0.0 && new_factor <= MAX_ZOOM_FACTOR) {
+    setZoomFactor(new_factor);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
-void BaseWebView::resetWebPageZoom() {
-  setZoomFactor(1.0);
+bool BaseWebView::resetWebPageZoom() {
+  qreal new_factor = 1.0;
+
+  if (new_factor != zoomFactor()) {
+    setZoomFactor(new_factor);
+    return true;
+  }
+  else {
+    return false;
+  }
 }

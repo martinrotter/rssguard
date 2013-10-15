@@ -4,6 +4,7 @@
 #include <QSqlError>
 #include <QVariant>
 
+#include "core/defs.h"
 #include "core/databasefactory.h"
 
 
@@ -26,7 +27,20 @@ DatabaseFactory *DatabaseFactory::getInstance() {
 }
 
 void DatabaseFactory::assemblyDatabaseFilePath()  {
-  // TODO: Fill m_databasePath with correct path (portable or non-portable).
+  // Fill m_databasePath with correct path (portable or non-portable).
+  QString home_path = QDir::homePath() + QDir::separator() +
+                      APP_LOW_H_NAME;
+  QString home_path_file = home_path + QDir::separator() +
+                           APP_DB_PATH + QDir::separator() + APP_DB_FILE;
+  QString app_path = qApp->applicationDirPath();
+  QString app_path_file = app_path + QDir::separator() + APP_DB_FILE;
+
+  if (QFile(app_path_file).exists()) {
+    m_databasePath = app_path_file;
+  }
+  else {
+    m_databasePath = home_path_file;
+  }
 }
 
 QString DatabaseFactory::getDatabasePath() {
@@ -49,14 +63,15 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
   }
 
   // Folders are created. Create new QSQLDatabase object.
-  QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE", connection_name);
+  QSqlDatabase database = QSqlDatabase::addDatabase(DATABASE_DRIVER,
+                                                    connection_name);
 
   // Setup database file path.
   database.setDatabaseName(db_file.symLinkTarget());
 
   if (!database.open()) {
     qFatal("Database was NOT opened. Delivered error message: '%s'",
-           qPrintable(database.lastError().databaseText()));
+           qPrintable(database.lastError().text()));
   }
   else {
     database.exec("PRAGMA synchronous = OFF");
@@ -65,7 +80,8 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
     database.exec("PRAGMA temp_store = MEMORY");
     //database.exec("PRAGMA foreign_keys = ON");
 
-    QSqlQuery q = database.exec("SELECT value FROM rssg_information WHERE key = 'schema_version'");
+    // Sample query which checks for existence of tables.
+    QSqlQuery q = database.exec("SELECT value FROM Information WHERE key = 'schema_version'");
 
     if (q.lastError().isValid()) {
       qWarning("Error occurred. Database is not initialized. Initializing now.");
@@ -102,13 +118,13 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 }
 
 QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
-  QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", connection_name);
-
   if (!m_initialized) {
+    // Initialize database file and return connection if it is not
+    // initialized yet.
     return initialize(connection_name);
   }
   else {
-    return QSqlDatabase::addDatabase("QSQLITE", connection_name);
+    return QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
   }
 }
 
