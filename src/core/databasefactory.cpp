@@ -90,17 +90,21 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
       }
 
       database.exec("COMMIT");
-      qWarning("Database backend should be ready now.");
+      qDebug("Database backend should be ready now.");
     }
     else {
       q.next();
+
       qDebug("Database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
       qDebug("Database has version '%s'.", qPrintable(q.value(0).toString()));
     }
+
     q.finish();
   }
+
+  m_initialized = true;
 
   return database;
 }
