@@ -218,7 +218,6 @@ set(APP_HEADERS
 
   # QtSingleApplication suite headers.
   src/qtsingleapplication/qtlocalpeer.h
-  src/qtsingleapplication/qtlockedfile.h
   src/qtsingleapplication/qtsingleapplication.h
 
   # GUI headers.
@@ -277,7 +276,7 @@ set(APP_TRANSLATIONS_WO_QT
   localization/rssguard_cs.ts
 )
 
-set(APP_MISC
+set(APP_TEXT
   resources/text/CHANGELOG
   resources/text/COPYING_GNU_GPL
   resources/text/COPYING_GNU_GPL_HTML
@@ -379,6 +378,8 @@ if(WIN32)
           DESTINATION ./)
   install(DIRECTORY resources/skins/base
           DESTINATION ./skins)
+  install(DIRECTORY resources/misc
+          DESTINATION ./)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
           DESTINATION ./
           RENAME ${APP_LOW_NAME}.png)
@@ -387,7 +388,7 @@ if(WIN32)
           RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM}
           DESTINATION ./l10n)
-  install(FILES ${APP_MISC}
+  install(FILES ${APP_TEXT}
           DESTINATION ./)
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
@@ -399,6 +400,8 @@ elseif(UNIX)
           DESTINATION share/${APP_LOW_NAME}/)
   install(DIRECTORY resources/skins/base
           DESTINATION share/${APP_LOW_NAME}/skins)
+  install(DIRECTORY resources/misc
+          DESTINATION share/${APP_LOW_NAME}/)
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
           DESTINATION share/applications)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
@@ -409,7 +412,7 @@ elseif(UNIX)
           RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM}
           DESTINATION share/${APP_LOW_NAME}/l10n)
-  install(FILES ${APP_MISC}
+  install(FILES ${APP_TEXT}
           DESTINATION share/${APP_LOW_NAME}/information)
 endif(WIN32)
 

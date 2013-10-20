@@ -30,6 +30,8 @@
 #define MAX_ZOOM_FACTOR     10.0
 #define DATABASE_DRIVER     "QSQLITE"
 
+#define APP_DB_INIT_FILE    "db_init.sql"
+#define APP_DB_INIT_SPLIT   "-- !\n"
 #define APP_DB_PATH         "data/database/local"
 #define APP_DB_FILE         "database.db"
 
@@ -55,6 +57,7 @@
 #define APP_SKIN_PATH APP_PREFIX + QString("/share/rssguard/skins")
 #define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
 #define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/themes")
+#define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
 #define APP_HTML_PATH APP_PREFIX + QString("/share/rssguard/html")
 #define APP_THEME_SYSTEM QString()
 #define APP_FLAGS_PATH APP_PREFIX + QString("/share/rssguard/flags")
@@ -65,6 +68,7 @@
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/themes")
+#define APP_MISC_PATH QApplication::applicationDirPath() + QString("/misc")
 #define APP_HTML_PATH QApplication::applicationDirPath() + QString("/html")
 #define APP_THEME_SYSTEM "-"
 #define APP_FLAGS_PATH QApplication::applicationDirPath() + QString("/flags")

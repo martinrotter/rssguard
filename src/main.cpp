@@ -5,6 +5,7 @@
 
 #include <QTranslator>
 
+#include "core/databasefactory.h"
 #include "core/defs.h"
 #include "core/debugging.h"
 #include "core/localization.h"
@@ -72,6 +73,8 @@ int main(int argc, char *argv[]) {
   IconThemeFactory::getInstance()->setupSearchPaths();
   IconThemeFactory::getInstance()->loadCurrentIconTheme(false);
   SkinFactory::getInstance()->loadCurrentSkin();
+
+  DatabaseFactory::getInstance()->addConnection("abc");
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();

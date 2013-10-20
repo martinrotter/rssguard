@@ -27,20 +27,8 @@ DatabaseFactory *DatabaseFactory::getInstance() {
 }
 
 void DatabaseFactory::assemblyDatabaseFilePath()  {
-  // Fill m_databasePath with correct path (portable or non-portable).
-  QString home_path = QDir::homePath() + QDir::separator() +
-                      APP_LOW_H_NAME;
-  QString home_path_file = home_path + QDir::separator() +
-                           APP_DB_PATH + QDir::separator() + APP_DB_FILE;
-  QString app_path = qApp->applicationDirPath();
-  QString app_path_file = app_path + QDir::separator() + APP_DB_FILE;
-
-  if (QFile(app_path_file).exists()) {
-    m_databasePath = app_path_file;
-  }
-  else {
-    m_databasePath = home_path_file;
-  }
+  m_databasePath = QDir::homePath() + QDir::separator() + APP_LOW_H_NAME +
+                   QDir::separator() + APP_DB_PATH;
 }
 
 QString DatabaseFactory::getDatabasePath() {
@@ -50,7 +38,7 @@ QString DatabaseFactory::getDatabasePath() {
 QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
   // Prepare file paths.
   QDir db_path(getDatabasePath());
-  QFile db_file(db_path.absoluteFilePath("database.db"));
+  QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
 
   // Check if database directory exists.
   if (!db_path.exists()) {
@@ -67,18 +55,18 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
                                                     connection_name);
 
   // Setup database file path.
-  database.setDatabaseName(db_file.symLinkTarget());
+  database.setDatabaseName(db_file.fileName());
 
   if (!database.open()) {
     qFatal("Database was NOT opened. Delivered error message: '%s'",
            qPrintable(database.lastError().text()));
   }
   else {
+    database.exec("PRAGMA encoding = \"UTF-8\"");
     database.exec("PRAGMA synchronous = OFF");
     database.exec("PRAGMA journal_mode = MEMORY");
     database.exec("PRAGMA count_changes = OFF");
     database.exec("PRAGMA temp_store = MEMORY");
-    //database.exec("PRAGMA foreign_keys = ON");
 
     // Sample query which checks for existence of tables.
     QSqlQuery q = database.exec("SELECT value FROM Information WHERE key = 'schema_version'");
@@ -86,11 +74,11 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
     if (q.lastError().isValid()) {
       qWarning("Error occurred. Database is not initialized. Initializing now.");
 
-      QFile file_init(":/database/init.sql");
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_FILE);
       file_init.open(QIODevice::ReadOnly | QIODevice::Text);
 
-      QStringList statements = QString(file_init.readAll()).split("-- !\n");//--\n");
-      database.exec("begin transaction");
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT);
+      database.exec("BEGIN TRANSACTION");
 
       foreach(QString i, statements) {
         q = database.exec(i);
@@ -101,15 +89,15 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
         }
       }
 
-      database.exec("commit");
+      database.exec("COMMIT");
       qWarning("Database backend should be ready now.");
     }
     else {
       q.next();
-      qDebug("Database connection '%s' to file %s seems to be loaded.",
+      qDebug("Database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
-      qDebug("Database has version %s.", qPrintable(q.value(0).toString()));
+      qDebug("Database has version '%s'.", qPrintable(q.value(0).toString()));
     }
     q.finish();
   }
