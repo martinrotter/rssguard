@@ -7,6 +7,7 @@
 #include "gui/iconthemefactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
+#include "gui/statusbar.h"
 #include "core/settings.h"
 #include "core/defs.h"
 #include "qtsingleapplication/qtsingleapplication.h"
@@ -19,6 +20,8 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
   // Initialize singleton.
   s_instance = this;
+
+  setStatusBar(new StatusBar(this));
 
   // Prepare main window and tabs.
   prepareMenus();

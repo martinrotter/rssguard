@@ -43,7 +43,6 @@ WebBrowser::WebBrowser(QWidget *parent)
   m_runningWebBrowsers.append(this);
 
   // Set properties of some components.
-  m_toolBar->layout()->setMargin(0);
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
@@ -64,12 +63,12 @@ WebBrowser::WebBrowser(QWidget *parent)
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
   m_toolBar->addWidget(m_txtLocation);
-  //m_toolBar->setContentsMargins(0, 0, 0, -3);
 
   // Setup layout.
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
   m_layout->setMargin(0);
+  m_layout->setSpacing(0);
 
   setTabOrder(m_txtLocation, m_toolBar);
   setTabOrder(m_toolBar, m_webView);

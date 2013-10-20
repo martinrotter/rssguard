@@ -13,12 +13,18 @@ class FeedMessageViewer : public TabContent {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit FeedMessageViewer(QWidget *parent = 0);
     virtual ~FeedMessageViewer();
 
+    // WebBrowser getter from TabContent interface.
     WebBrowser *webBrowser();
 
   protected:
+    // Initializes some properties of the widget.
+    void initialize();
+
+    // Initializes both messages/feeds views.
     void initializeViews();
 
   private:

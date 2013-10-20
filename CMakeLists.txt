@@ -194,6 +194,7 @@ set(APP_SOURCES
   src/gui/feedmessageviewer.cpp
   src/gui/feedsview.cpp
   src/gui/messagesview.cpp
+  src/gui/statusbar.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -242,6 +243,7 @@ set(APP_HEADERS
   src/gui/feedmessageviewer.h
   src/gui/feedsview.h
   src/gui/messagesview.h
+  src/gui/statusbar.h
 
   # CORE headers.
   src/core/settings.h

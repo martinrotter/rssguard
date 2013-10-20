@@ -1,19 +1,16 @@
 #ifndef CORNERBUTTON_H
 #define CORNERBUTTON_H
 
-#include <QPushButton>
+#include <QToolButton>
 
 
-class CornerButton : public QPushButton {
+class CornerButton : public QToolButton {
     Q_OBJECT
 
   public:
+    // Contructors and destructors.
     explicit CornerButton(QWidget *parent = 0);
     virtual ~CornerButton();
-
-  signals:
-
-  public slots:
 };
 
 #endif // CORNERBUTTON_H

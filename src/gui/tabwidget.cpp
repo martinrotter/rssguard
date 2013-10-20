@@ -1,6 +1,5 @@
 #include <QUrl>
 #include <QApplication>
-#include <QPushButton>
 
 #include "core/defs.h"
 #include "core/settings.h"
@@ -25,8 +24,6 @@ TabWidget::~TabWidget() {
 
 void TabWidget::setupCornerButton() {
   m_cornerButton = new CornerButton(this);
-  m_cornerButton->setFlat(true);
-  m_cornerButton->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
   setCornerWidget(m_cornerButton);
 }
 
