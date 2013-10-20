@@ -211,6 +211,7 @@ void BaseWebView::paintEvent(QPaintEvent *event) {
   QWebView::paintEvent(event);
 
   // Draw additional frame.
+  /*
   QPainter painter(this);
   QStyleOptionFrameV3 style_option;
   int frame_shape = QFrame::Sunken & QFrame::Shape_Mask;
@@ -224,6 +225,7 @@ void BaseWebView::paintEvent(QPaintEvent *event) {
   style_option.midLineWidth = 0;
 
   style()->drawControl(QStyle::CE_ShapedFrame, &style_option, &painter, this);
+  */
 }
 
 bool BaseWebView::increaseWebPageZoom() {

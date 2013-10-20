@@ -1,7 +1,8 @@
 #include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QSplitter>
+#include <QToolBar>
 #include <QApplication>
+#include <QLineEdit>
 
 #include "gui/feedmessageviewer.h"
 #include "gui/webbrowser.h"
@@ -11,43 +12,50 @@
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   : TabContent(parent),
+    m_toolBar(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this))
 {
+  m_messagesBrowser->setNavigationBarVisible(false);
   initializeViews();
 }
 
 void FeedMessageViewer::initializeViews() {
   // Instantiate needed components.
-  QHBoxLayout *vertical_layout = new QHBoxLayout(this);
-  QSplitter *vertical_splitter = new QSplitter(Qt::Horizontal, this);
+  QVBoxLayout *central_layout = new QVBoxLayout(this);
+  QSplitter *feed_splitter = new QSplitter(Qt::Horizontal, this);
   QSplitter *message_splitter = new QSplitter(Qt::Vertical, this);
 
   // Set layout properties.
-  vertical_layout->setMargin(0);
-  vertical_layout->setSpacing(0);
+  central_layout->setMargin(0);
+  central_layout->setSpacing(0);
 
   // Set views.
   m_feedsView->setFrameStyle(QFrame::NoFrame);
   m_messagesView->setFrameStyle(QFrame::NoFrame);
 
-  // setup splitters.
+  // Setup splitters.
   message_splitter->setHandleWidth(1);
   message_splitter->setChildrenCollapsible(false);
   message_splitter->setStretchFactor(0, 1);
   message_splitter->addWidget(m_messagesView);
   message_splitter->addWidget(m_messagesBrowser);
 
-  vertical_splitter->setHandleWidth(1);
-  vertical_splitter->setChildrenCollapsible(false);
-  vertical_splitter->setStretchFactor(0, 1);
-  vertical_splitter->addWidget(m_feedsView);
-  vertical_splitter->addWidget(message_splitter);
-  vertical_layout->addWidget(vertical_splitter);
+  feed_splitter->setHandleWidth(1);
+  feed_splitter->setChildrenCollapsible(false);
+  feed_splitter->setStretchFactor(0, 1);
+  feed_splitter->addWidget(m_feedsView);
+  feed_splitter->addWidget(message_splitter);
+
+  m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
+
+  // Add toolbar and main feeds/messages widget to main layout.
+  central_layout->addWidget(m_toolBar);
+  central_layout->addWidget(feed_splitter);
 
   // Set layout as active.
-  setLayout(vertical_layout);
+  setLayout(central_layout);
 }
 
 FeedMessageViewer::~FeedMessageViewer() {

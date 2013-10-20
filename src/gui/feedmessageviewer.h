@@ -7,6 +7,7 @@
 class WebBrowser;
 class FeedsView;
 class MessagesView;
+class QToolBar;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -21,6 +22,7 @@ class FeedMessageViewer : public TabContent {
     void initializeViews();
 
   private:
+    QToolBar *m_toolBar;
     MessagesView *m_messagesView;
     FeedsView *m_feedsView;
     WebBrowser *m_messagesBrowser;

@@ -46,6 +46,7 @@ WebBrowser::WebBrowser(QWidget *parent)
   m_toolBar->layout()->setMargin(0);
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
+  m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
 
   // Modify action texts.
   m_actionBack->setText(tr("Back"));
@@ -60,16 +61,15 @@ WebBrowser::WebBrowser(QWidget *parent)
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);
   m_toolBar->addAction(m_actionForward);
-  m_toolBar->addSeparator();
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
   m_toolBar->addWidget(m_txtLocation);
+  //m_toolBar->setContentsMargins(0, 0, 0, -3);
 
   // Setup layout.
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
   m_layout->setMargin(0);
-  m_layout->setContentsMargins(0, -1, 0, 0);
 
   setTabOrder(m_txtLocation, m_toolBar);
   setTabOrder(m_toolBar, m_webView);
@@ -189,7 +189,7 @@ void WebBrowser::navigateToUrl(const QString &textual_url) {
 }
 
 WebBrowser::~WebBrowser() {
-  qDebug("Erasing WebBrowser instance.");
+  qDebug("Destroying WebBrowser instance.");
 
   // Remove this instance from the global list of web browsers.
   m_runningWebBrowsers.removeAll(this);
