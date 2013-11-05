@@ -133,6 +133,9 @@ void WebBrowser::createConnections() {
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(m_webView, SIGNAL(iconChanged()), this, SLOT(onIconChanged()));
+
+  // Misc connections.
+  connect(m_webView, SIGNAL(zoomFactorChanged()), this, SLOT(updateZoomGui()));
 }
 
 void WebBrowser::onIconChanged() {
@@ -160,23 +163,25 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
   }
 }
 
-void WebBrowser::increaseZoom() {
-  m_webView->increaseWebPageZoom();
+void WebBrowser::updateZoomGui() {
   m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100,
                                                              'f',
                                                              0)));
+}
+
+void WebBrowser::increaseZoom() {
+  m_webView->increaseWebPageZoom();
+  updateZoomGui();
 }
 
 void WebBrowser::decreaseZoom() {
   m_webView->decreaseWebPageZoom();
-  m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100,
-                                                             'f',
-                                                             0)));
+  updateZoomGui();
 }
 
 void WebBrowser::resetZoom() {
   m_webView->resetWebPageZoom();
-  m_btnResetZoom->setText("100%");
+  updateZoomGui();
 }
 
 void WebBrowser::navigateToUrl(const QString &textual_url) {

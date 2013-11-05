@@ -13,6 +13,7 @@ LocationLineEdit::LocationLineEdit(QWidget *parent)
     m_progress(0),
     m_defaultPalette(palette()),
     m_mouseSelectsAllText(true) {
+  setPlaceholderText(tr("Website address goes here"));
 }
 
 LocationLineEdit::~LocationLineEdit() {

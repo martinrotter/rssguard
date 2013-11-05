@@ -26,6 +26,9 @@ class BaseWebView : public QWebView {
     // User wants to open new empty web browser tab.
     void newTabRequested();
 
+    // Emitted if user changes zoom factor via CTRL + mouse wheel combo.
+    void zoomFactorChanged();
+
   public slots:
     bool increaseWebPageZoom();
     bool decreaseWebPageZoom();
@@ -50,6 +53,9 @@ class BaseWebView : public QWebView {
 
     // Displays custom error page.
     void displayErrorPage();
+
+    // Customize mouse wheeling.
+    void wheelEvent(QWheelEvent *event);
 
     // Does additional painting.
     void paintEvent(QPaintEvent *event);

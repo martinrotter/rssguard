@@ -65,6 +65,7 @@ class WebBrowser : public TabContent {
     void resetZoom();
 
   protected:
+
     // Creates necessary connections.
     void createConnections();
 
@@ -72,6 +73,9 @@ class WebBrowser : public TabContent {
     void initializeZoomWidget();
 
   protected slots:
+    // Updates zoom-related gui.
+    void updateZoomGui();
+
     // Updates url (for example on location text box).
     void updateUrl(const QUrl &url);
 

@@ -207,6 +207,23 @@ void BaseWebView::mouseReleaseEvent(QMouseEvent *event) {
   QWebView::mouseReleaseEvent(event);
 }
 
+void BaseWebView::wheelEvent(QWheelEvent *event) {
+  if (event->modifiers() & Qt::ControlModifier) {
+    if (event->delta() > 0) {
+      increaseWebPageZoom();
+      emit zoomFactorChanged();
+      return;
+    }
+    else if (event->delta() < 0) {
+      decreaseWebPageZoom();
+      emit zoomFactorChanged();
+      return;
+    }
+  }
+
+  QWebView::wheelEvent(event);
+}
+
 void BaseWebView::paintEvent(QPaintEvent *event) {
   QWebView::paintEvent(event);
 
