@@ -71,12 +71,23 @@
         <source>Hyperlink</source>
         <translation>Hypertextový odkaz</translation>
     </message>
+    <message>
+        <source>Page not found</source>
+        <translation>Stránka nenalezena</translation>
+    </message>
 </context>
 <context>
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
         <translation>Otevřít nový panel</translation>
+    </message>
+</context>
+<context>
+    <name>FeedMessageViewer</name>
+    <message>
+        <source>Toolbar for messages</source>
+        <translation>Panel zpráv</translation>
     </message>
 </context>
 <context>
@@ -190,7 +201,39 @@
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished">Webový prohlížeč</translation>
+        <translation>Webový prohlížeč</translation>
+    </message>
+    <message>
+        <source>&amp;Current tab</source>
+        <translation>&amp;Aktivní panel</translation>
+    </message>
+    <message>
+        <source>&amp;Add tab</source>
+        <translation>&amp;Přidat panel</translation>
+    </message>
+    <message>
+        <source>Add tab</source>
+        <translation>Přidat panel</translation>
+    </message>
+    <message>
+        <source>Close &amp;all tabs except current one</source>
+        <translation>Zavřít &amp;všechny panely kromě aktivního</translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one</source>
+        <translation>Zavřít všechny panely kromě aktivního</translation>
+    </message>
+    <message>
+        <source>Close current &amp;tab</source>
+        <translation>Zavřít aktivní &amp;panel</translation>
+    </message>
+    <message>
+        <source>&amp;No actions possible</source>
+        <translation>Žádné &amp;povolené akce</translation>
+    </message>
+    <message>
+        <source>No actions are possible at this point of time.</source>
+        <translation>Nejsou povoleny žádné akce.</translation>
     </message>
 </context>
 <context>
@@ -446,19 +489,19 @@
     </message>
     <message>
         <source>Active skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivní vzhled</translation>
     </message>
     <message>
         <source>Selected skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybraný vzhled</translation>
     </message>
     <message>
         <source>Newly selected skin is activated after the applicaton gets restarted!!!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nově zvolený vzhled bude aktivován po znovuspuštění aplikace!!!</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
 </context>
 <context>
@@ -474,6 +517,13 @@
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů. Podporuje všechny rozšířené formáty, včetně RSS, ATOM a RDF.&lt;/p&gt;&lt;p&gt;Ujistěte se, že projdete všechny funkce této aplikace. Pokud chcete nahlásit chybu nebo chcete v programu mít novou vlastnost, pak vyplňte &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hlášení o chybě&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard může být přeložen do libovolného jazyka. Kontaktujte &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;autora&lt;/span&gt;&lt;/a&gt; v případě zájmu o překlad.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>LocationLineEdit</name>
+    <message>
+        <source>Website address goes here</source>
+        <translation>Adresu webové stránky zadejte sem</translation>
     </message>
 </context>
 <context>
@@ -573,11 +623,23 @@
     </message>
     <message>
         <source>Zoom  </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>No title</source>
-        <translation type="unfinished"></translation>
+        <translation>Bez názvu</translation>
+    </message>
+    <message>
+        <source>Decrease zoom.</source>
+        <translation>Oddálit aktivní webovou stránku.</translation>
+    </message>
+    <message>
+        <source>Reset zoom to default.</source>
+        <translation>Obnovit zoom na 100%.</translation>
+    </message>
+    <message>
+        <source>Increase zoom.</source>
+        <translation>Přiblížit aktivní webovou stránku.</translation>
     </message>
 </context>
 </TS>

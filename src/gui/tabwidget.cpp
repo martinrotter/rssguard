@@ -77,7 +77,13 @@ void TabWidget::setupIcons() {
 }
 
 void TabWidget::closeTab(int index) {
-  removeTab(index);
+  if (tabBar()->tabType(index) == TabBar::Closable) {
+    removeTab(index);
+  }
+}
+
+void TabWidget::closeCurrentTab() {
+  closeTab(currentIndex());
 }
 
 void TabWidget::removeTab(int index) {

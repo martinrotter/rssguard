@@ -60,6 +60,7 @@ class TabWidget : public QTabWidget {
 
     // Closes tab with given index and deletes contained widget.
     void closeTab(int index);
+    void closeCurrentTab();
 
     // Adds new WebBrowser tab to global TabWidget.
     int addEmptyBrowser();

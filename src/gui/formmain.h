@@ -61,9 +61,10 @@ class FormMain : public QMainWindow {
     void switchFullscreenMode(bool turn_fullscreen_on);
 
   protected slots:
-    // Used for last-minute cleanups.
-    void cleanupResources();
+    // Used for last-minute actions.
+    void onAboutToQuit();
 
+    // Loads web browser menu if user selects to change tabs.
     void loadWebBrowserMenu(int index);
 
     // Displays various dialogs.

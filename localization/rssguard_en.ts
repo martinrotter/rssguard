@@ -71,11 +71,22 @@
         <source>Hyperlink</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Page not found</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FeedMessageViewer</name>
+    <message>
+        <source>Toolbar for messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -190,6 +201,38 @@
     </message>
     <message>
         <source>Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Current tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close &amp;all tabs except current one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close current &amp;tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;No actions possible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No actions are possible at this point of time.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -471,6 +514,13 @@
     </message>
 </context>
 <context>
+    <name>LocationLineEdit</name>
+    <message>
+        <source>Website address goes here</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>LANG_NAME</source>
@@ -571,6 +621,18 @@
     </message>
     <message>
         <source>No title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decrease zoom.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset zoom to default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Increase zoom.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -122,8 +122,8 @@ void FormMain::display() {
   QtSingleApplication::alert(this);
 }
 
-void FormMain::cleanupResources() {
-  qDebug("Cleaning up resources before the application exits.");
+void FormMain::onAboutToQuit() {
+  qDebug("Cleaning up resources and saving application state before it exits.");
 }
 
 bool FormMain::event(QEvent *event) {
@@ -169,11 +169,13 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
 
   // General connections.
-  connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(cleanupResources()));
+  connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
 
   // Menu "Web browser" connections.
   connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)),
           this, SLOT(loadWebBrowserMenu(int)));
+  connect(m_ui->m_actionCloseCurrentTab, SIGNAL(triggered()),
+          m_ui->m_tabWidget, SLOT(closeCurrentTab()));
 }
 
 void FormMain::loadWebBrowserMenu(int index) {
@@ -187,6 +189,8 @@ void FormMain::loadWebBrowserMenu(int index) {
       m_ui->m_menuCurrentTab->insertAction(NULL, m_ui->m_actionNoActions);
     }
   }
+
+  m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
 }
 
 void FormMain::closeEvent(QCloseEvent *event) {
