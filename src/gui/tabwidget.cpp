@@ -76,14 +76,50 @@ void TabWidget::setupIcons() {
   m_cornerButton->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
 }
 
-void TabWidget::closeTab(int index) {
+bool TabWidget::closeTab(int index) {
   if (tabBar()->tabType(index) == TabBar::Closable) {
     removeTab(index);
+    return true;
+  }
+  else {
+    return false;
   }
 }
 
-void TabWidget::closeCurrentTab() {
-  closeTab(currentIndex());
+bool TabWidget::closeCurrentTab() {
+  return closeTab(currentIndex());
+}
+
+void TabWidget::closeAllTabsExceptCurrent() {
+  // Close tabs after active tab.
+  int index_of_active = currentIndex();
+  int total_count = count();
+  int iterative_index = 0;
+
+  while (total_count-- > 0) {
+    if (iterative_index < index_of_active) {
+      // Deleting tab on the left from the active one.
+      if (closeTab(iterative_index)) {
+        // We successfully deleted that LEFT tab.
+        index_of_active--;
+      }
+      else {
+        // We reached "non-closable" tab, go forward.
+        iterative_index++;
+      }
+    }
+    else if (iterative_index > index_of_active) {
+      // Deleting tab on the right from the active one.
+      if (!closeTab(iterative_index)) {
+        // We reached "non-closable" tab, go forward.
+        iterative_index++;
+      }
+    }
+    else {
+      // We iterate through active tab now, no deleting;
+      iterative_index++;
+    }
+  }
 }
 
 void TabWidget::removeTab(int index) {

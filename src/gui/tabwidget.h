@@ -59,8 +59,11 @@ class TabWidget : public QTabWidget {
     void changeIcon(int index, const QIcon &new_icon);
 
     // Closes tab with given index and deletes contained widget.
-    void closeTab(int index);
-    void closeCurrentTab();
+    bool closeTab(int index);
+    bool closeCurrentTab();
+
+    // Closes all "closable" tabs except the active tab.
+    void closeAllTabsExceptCurrent();
 
     // Adds new WebBrowser tab to global TabWidget.
     int addEmptyBrowser();

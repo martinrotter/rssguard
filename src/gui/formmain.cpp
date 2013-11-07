@@ -176,6 +176,10 @@ void FormMain::createConnections() {
           this, SLOT(loadWebBrowserMenu(int)));
   connect(m_ui->m_actionCloseCurrentTab, SIGNAL(triggered()),
           m_ui->m_tabWidget, SLOT(closeCurrentTab()));
+  connect(m_ui->m_actionAddBrowser, SIGNAL(triggered()),
+          m_ui->m_tabWidget, SLOT(addEmptyBrowser()));
+  connect(m_ui->m_actionCloseAllTabs, SIGNAL(triggered()),
+          m_ui->m_tabWidget, SLOT(closeAllTabsExceptCurrent()));
 }
 
 void FormMain::loadWebBrowserMenu(int index) {
