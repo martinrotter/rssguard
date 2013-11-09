@@ -60,7 +60,10 @@ QList<QAction*> FormMain::getActions() {
   QList<QAction*> actions;
   actions << m_ui->m_actionImport << m_ui->m_actionExport <<
              m_ui->m_actionSettings << m_ui->m_actionQuit <<
-             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard;
+             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
+             m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
+             m_ui->m_actionCloseAllTabs;
+
   return actions;
 }
 
@@ -220,5 +223,8 @@ void FormMain::showAbout() {
 }
 
 void FormMain::showSettings() {
-  FormSettings(this).exec();
+  if (FormSettings(this).exec() == QDialog::Accepted) {
+    // User applied new settings, reload neede components.
+    m_ui->m_tabWidget->checkTabBarVisibility();
+  }
 }

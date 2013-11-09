@@ -47,15 +47,19 @@ class TabWidget : public QTabWidget {
     // Sets up properties of custom corner button.
     void setupCornerButton();
 
+    // Handlers of insertin/removing of tabs.
     void tabInserted(int index);
     void tabRemoved(int index);
     
   public slots:
+    // Fixes tabs indexes.
     void fixContentAfterIndexChange(int from);
     void fixContentsAfterMove(int from, int to);
 
     // Fixes indexes of tab contents.
     void fixContentsIndexes(int starting_index, int ending_index);
+
+    void checkTabBarVisibility();
 
     // Changes icon/text of the tab.
     void changeTitle(int index, const QString &new_title);

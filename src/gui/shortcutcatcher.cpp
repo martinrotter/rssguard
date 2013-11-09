@@ -45,10 +45,12 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
   m_clearButton = new QToolButton(this);
   m_clearButton->setIcon(IconThemeFactory::getInstance()->fromTheme("document-revert"));
   m_clearButton->setFocusPolicy(Qt::NoFocus);
+  m_clearButton->setToolTip(tr("Reset shortcut."));
 
   // Clear main shortcut catching button.
   m_sequenceButton = new ShortcutButton(this);
   m_sequenceButton->setFocusPolicy(Qt::StrongFocus);
+  m_sequenceButton->setToolTip(tr("Set shortcut."));
 
   // Add both buttons to the layout.
   m_layout->addWidget(m_sequenceButton);

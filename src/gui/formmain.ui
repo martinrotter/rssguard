@@ -48,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -158,6 +158,9 @@
    <property name="toolTip">
     <string>Add tab</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+T</string>
+   </property>
   </action>
   <action name="m_actionCloseAllTabs">
    <property name="text">
@@ -166,10 +169,16 @@
    <property name="toolTip">
     <string>Close all tabs except current one</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
   </action>
   <action name="m_actionCloseCurrentTab">
    <property name="text">
     <string>Close current &amp;tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="m_actionNoActions">
@@ -181,6 +190,9 @@
    </property>
    <property name="toolTip">
     <string>No actions are possible at this point of time.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>

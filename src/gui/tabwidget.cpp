@@ -27,17 +27,20 @@ void TabWidget::setupCornerButton() {
   setCornerWidget(m_cornerButton);
 }
 
-void TabWidget::tabInserted(int index) {
-  QTabWidget::tabInserted(index);
-
-  // TODO: Opravit tento řádek, aby se korektně tabbar skrýval a objevoval atp.
-  tabBar()->setVisible(count() > 1 && Settings::getInstance()->value(APP_CFG_GUI,
+void TabWidget::checkTabBarVisibility() {
+  tabBar()->setVisible(count() > 1 || !Settings::getInstance()->value(APP_CFG_GUI,
                                                                      "hide_tabbar_one_tab",
                                                                      true).toBool());
 }
 
+void TabWidget::tabInserted(int index) {
+  QTabWidget::tabInserted(index);
+  checkTabBarVisibility();
+}
+
 void TabWidget::tabRemoved(int index) {
   QTabWidget::tabRemoved(index);
+  checkTabBarVisibility();
 }
 
 void TabWidget::createConnections() {

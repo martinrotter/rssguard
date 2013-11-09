@@ -77,12 +77,18 @@ void DynamicShortcutsWidget::populate(const QList<QAction *> actions) {
       row_id++;
     }
     else {
+      QMargins catcher_margins = catcher->contentsMargins();
+      catcher_margins.setRight(10);
+
+      catcher->setContentsMargins(catcher_margins);
+
       m_layout->addWidget(label, row_id, 0);
       m_layout->addWidget(catcher, row_id, 1);
+
       second_column = true;
     }
   }
 
   // Make sure that "spacer" is added.
-  m_layout->setRowStretch(row_id, 1);
+  m_layout->setRowStretch(second_column ? ++row_id : row_id, 1);
 }
