@@ -210,6 +210,8 @@ set(APP_SOURCES
   src/core/webbrowsernetworkaccessmanager.cpp
   src/core/textfactory.cpp
   src/core/databasefactory.cpp
+  src/core/messagesmodel.cpp
+  src/core/messagesproxymodel.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -253,6 +255,8 @@ set(APP_HEADERS
   src/core/webbrowsernetworkaccessmanager.h
   src/core/basewebpage.h
   src/core/databasefactory.h
+  src/core/messagesmodel.h
+  src/core/messagesproxymodel.h
 )
 
 # Add form files.
