@@ -191,6 +191,8 @@ int TabWidget::addBrowser(bool move_after_current,
                           const QUrl &initial_url) {
   // Create new WebBrowser.
   WebBrowser *browser = new WebBrowser(this);
+  browser->setupIcons();
+
   int final_index;
 
   if (move_after_current) {

@@ -75,7 +75,9 @@ WebBrowser::WebBrowser(QWidget *parent)
 
   createConnections();
   initializeZoomWidget();
-  setupIcons();
+
+  // NOTE: Not needed here probably.
+  //setupIcons();
 }
 
 void WebBrowser::initializeZoomWidget() {
