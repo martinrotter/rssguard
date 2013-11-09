@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>585</width>
-            <height>368</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -115,7 +115,7 @@
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -189,6 +189,11 @@
                  <property name="expandsOnDoubleClick">
                   <bool>false</bool>
                  </property>
+                 <column>
+                  <property name="text">
+                   <string notr="true">1</string>
+                  </property>
+                 </column>
                 </widget>
                </item>
                <item row="3" column="0">
@@ -331,6 +336,13 @@
             <widget class="QCheckBox" name="m_checkNewTabDoubleClick">
              <property name="text">
               <string>Open new tabs with left mouse button double-click on tab bar</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_hideTabBarIfOneTabVisible">
+             <property name="text">
+              <string>Hide tab bar if just one tab is visible</string>
              </property>
             </widget>
            </item>

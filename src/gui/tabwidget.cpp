@@ -27,6 +27,19 @@ void TabWidget::setupCornerButton() {
   setCornerWidget(m_cornerButton);
 }
 
+void TabWidget::tabInserted(int index) {
+  QTabWidget::tabInserted(index);
+
+  // TODO: Opravit tento řádek, aby se korektně tabbar skrýval a objevoval atp.
+  tabBar()->setVisible(count() > 1 && Settings::getInstance()->value(APP_CFG_GUI,
+                                                                     "hide_tabbar_one_tab",
+                                                                     true).toBool());
+}
+
+void TabWidget::tabRemoved(int index) {
+  QTabWidget::tabRemoved(index);
+}
+
 void TabWidget::createConnections() {
   connect(m_cornerButton, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));

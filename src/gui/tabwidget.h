@@ -46,6 +46,9 @@ class TabWidget : public QTabWidget {
 
     // Sets up properties of custom corner button.
     void setupCornerButton();
+
+    void tabInserted(int index);
+    void tabRemoved(int index);
     
   public slots:
     void fixContentAfterIndexChange(int from);

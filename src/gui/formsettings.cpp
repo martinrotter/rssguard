@@ -452,6 +452,9 @@ void FormSettings::loadInterface() {
   m_ui->m_checkNewTabDoubleClick->setChecked(settings->value(APP_CFG_GUI,
                                                              "tab_new_double_button",
                                                              true).toBool());
+  m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings->value(APP_CFG_GUI,
+                                                                "hide_tabbar_one_tab",
+                                                                true).toBool());
 }
 
 void FormSettings::saveInterface() {
@@ -489,4 +492,6 @@ void FormSettings::saveInterface() {
                      m_ui->m_checkCloseTabsDoubleClick->isChecked());
   settings->setValue(APP_CFG_GUI, "tab_new_double_button",
                      m_ui->m_checkNewTabDoubleClick->isChecked());
+  settings->setValue(APP_CFG_GUI, "hide_tabbar_one_tab",
+                     m_ui->m_hideTabBarIfOneTabVisible->isChecked());
 }
