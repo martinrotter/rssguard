@@ -269,6 +269,7 @@ set(APP_FORMS
 
 # Add resources.
 set(APP_RESOURCES
+  resources/graphics/themes.qrc
   resources/rssguard_resources.qrc
 )
 

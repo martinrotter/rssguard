@@ -54,8 +54,7 @@ IconThemeFactory *IconThemeFactory::getInstance() {
 }
 
 void IconThemeFactory::setupSearchPaths() {
-  // Add custom icon theme path to existing ones.
-  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
+  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH_QRC << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
          qPrintable(QIcon::themeSearchPaths().join(", ")));
 }
