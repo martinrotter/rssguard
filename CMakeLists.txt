@@ -212,6 +212,8 @@ set(APP_SOURCES
   src/core/databasefactory.cpp
   src/core/messagesmodel.cpp
   src/core/messagesproxymodel.cpp
+  src/core/feedsmodel.cpp
+  src/core/feedsproxymodel.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -257,6 +259,8 @@ set(APP_HEADERS
   src/core/databasefactory.h
   src/core/messagesmodel.h
   src/core/messagesproxymodel.h
+  src/core/feedsmodel.h
+  src/core/feedsproxymodel.h
 )
 
 # Add form files.
