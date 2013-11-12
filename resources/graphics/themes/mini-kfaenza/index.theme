@@ -1,5 +1,5 @@
 [Icon Theme]
-Name=KFaenza
+Name=Mini-KFaenza
 
 Comment=Icon theme project with tilish style, by Tiheum, KDE port
 
@@ -17,7 +17,7 @@ ShareOverlay=share
 ZipOverlay=zip
 
 DesktopDefault=48
-DesktopSizes=16,22,32,48,64,128
+DesktopSizes=16,22,32,48,64
 ToolbarDefault=22
 ToolbarSizes=16,22,32,48
 MainToolbarDefault=22
@@ -25,11 +25,11 @@ MainToolbarSizes=16,22,32,48
 SmallDefault=16
 SmallSizes=16,22,32,48
 PanelDefault=32
-PanelSizes=16,22,32,48,64,128
+PanelSizes=16,22,32,48,64
 DialogDefault=32
-DialogSizes=16,22,32,48,64,128
+DialogSizes=16,22,32,48,64
 
-Directories=actions/16,animations/16,categories/16,devices/16,intl/16,mimetypes/16,places/16,status/16,actions/22,animations/22,categories/22,devices/22,intl/22,mimetypes/22,places/22,status/22,actions/32,animations/32,categories/32,devices/32,intl/32,mimetypes/32,places/32,status/32,actions/48,animations/48,categories/48,devices/48,intl/48,mimetypes/48,places/48,status/48,actions/64,animations/64,categories/64,devices/64,intl/64,mimetypes/64,places/64,status/64,actions/128,animations/128,categories/128,devices/128,intl/128,mimetypes/128,places/128
+Directories=actions/16,animations/16,categories/16,devices/16,intl/16,mimetypes/16,places/16,status/16,actions/22,animations/22,categories/22,devices/22,intl/22,mimetypes/22,places/22,status/22,actions/32,animations/32,categories/32,devices/32,intl/32,mimetypes/32,places/32,status/32,actions/48,animations/48,categories/48,devices/48,intl/48,mimetypes/48,places/48,status/48,actions/64,animations/64,categories/64,devices/64,intl/64,mimetypes/64,places/64,status/64
 
 [actions/16]
 Size=16
@@ -204,39 +204,4 @@ Type=Threshold
 [status/64]
 Size=64
 Context=Status
-Type=Threshold
-
-[actions/128]
-Size=128
-Context=Actions
-Type=Threshold
-
-[categories/128]
-Size=128
-Context=Categories
-Type=Threshold
-
-[devices/128]
-Size=128
-Context=Devices
-Type=Threshold
-
-[categories/128]
-Size=128
-Context=Categories
-Type=Threshold
-
-[intl/128]
-Size=128
-Context=International
-Type=Threshold
-
-[mimetypes/128]
-Size=128
-Context=MimeTypes
-Type=Threshold
-
-[places/128]
-Size=128
-Context=Places
 Type=Threshold
