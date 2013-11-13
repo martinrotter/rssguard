@@ -273,7 +273,7 @@ set(APP_FORMS
 
 # Add resources.
 set(APP_RESOURCES
-  resources/graphics/themes.qrc
+  #resources/graphics/themes.qrc
   resources/rssguard_resources.qrc
 )
 
@@ -385,8 +385,8 @@ if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
-  #install(DIRECTORY resources/graphics/themes/mini-kfaenza
-  #        DESTINATION ./themes)
+  install(DIRECTORY resources/graphics/themes/mini-kfaenza
+          DESTINATION ./themes)
   install(DIRECTORY resources/graphics/flags
           DESTINATION ./)
   install(DIRECTORY resources/skins/base
@@ -407,8 +407,8 @@ elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION bin)
-  #install(DIRECTORY resources/graphics/themes/mini-kfaenza
-  #        DESTINATION share/${APP_LOW_NAME}/themes)
+  install(DIRECTORY resources/graphics/themes/mini-kfaenza
+          DESTINATION share/${APP_LOW_NAME}/themes)
   install(DIRECTORY resources/graphics/flags
           DESTINATION share/${APP_LOW_NAME}/)
   install(DIRECTORY resources/skins/base
