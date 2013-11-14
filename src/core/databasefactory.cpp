@@ -6,6 +6,7 @@
 
 #include "core/defs.h"
 #include "core/databasefactory.h"
+#include "core/settings.h"
 
 
 QPointer<DatabaseFactory> DatabaseFactory::s_instance;
@@ -27,8 +28,13 @@ DatabaseFactory *DatabaseFactory::getInstance() {
 }
 
 void DatabaseFactory::assemblyDatabaseFilePath()  {
-  m_databasePath = QDir::homePath() + QDir::separator() + APP_LOW_H_NAME +
-                   QDir::separator() + APP_DB_PATH;
+  if (Settings::getInstance()->type() == Settings::Portable) {
+    m_databasePath = qApp->applicationDirPath() + QDir::separator() + APP_DB_PATH;
+  }
+  else {
+    m_databasePath = QDir::homePath() + QDir::separator() + APP_LOW_H_NAME +
+                     QDir::separator() + APP_DB_PATH;
+  }
 }
 
 QString DatabaseFactory::getDatabasePath() {

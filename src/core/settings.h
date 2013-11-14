@@ -8,22 +8,19 @@
 class Settings : public QSettings {
     Q_OBJECT
 
-  private:
-    // Constructor.
-    Settings(const QString & file_name, Format format, QObject * parent = 0);
-
-    // Creates settings file in correct location.
-    static QSettings::Status setupSettings();
-
-    // Private singleton value.
-    static QPointer<Settings> s_instance;
-
   public:
+    enum Type {
+      Portable,
+      NonPortable
+    };
+
     // Singleton getter.
     static Settings *getInstance();
 
     // Destructor.
     virtual ~Settings();
+
+    Type type() const;
 
     // Getter/setter for settings values.
     QVariant value(const QString &section,
@@ -36,6 +33,19 @@ class Settings : public QSettings {
 
     // Synchronises settings.
     QSettings::Status checkSettings();
+
+  private:
+    // Constructor.
+    Settings(const QString & file_name, Format format,
+             const Type &type, QObject * parent = 0);
+
+    Type m_initializationStatus;
+
+    // Creates settings file in correct location.
+    static QSettings::Status setupSettings();
+
+    // Private singleton value.
+    static QPointer<Settings> s_instance;
 };
 
 #endif // SETTINGS_H
