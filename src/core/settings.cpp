@@ -65,34 +65,42 @@ void Settings::setValue(const QString &section,
 }
 
 QSettings::Status Settings::setupSettings() {
-  // If settings file exists in executable file working directory,
-  // then use it (portable settings).
+  // If settings file exists in executable file working directory
+  // (in subdirectory APP_CFG_PATH), then use it (portable settings).
   // Otherwise use settings file stored in homePath();
-  QString home_path = QDir::homePath() + QDir::separator() +
-                      APP_LOW_H_NAME;
-  QString home_path_file = home_path + QDir::separator() +
-                           APP_CFG_PATH + QDir::separator() + APP_CFG_FILE;
+  QString relative_path = QDir::separator() + APP_CFG_PATH +
+                          QDir::separator() + APP_CFG_FILE;
+
   QString app_path = qApp->applicationDirPath();
-  QString app_path_file = app_path + QDir::separator() + APP_CFG_FILE;
+  QString app_path_file = app_path + relative_path;
 
+  // Check if portable settings are available.
   if (QFile(app_path_file).exists()) {
-    s_instance = new Settings(app_path, QSettings::IniFormat, qApp);
+    // Portable settings are available, use them.
+    s_instance = new Settings(app_path_file, QSettings::IniFormat, qApp);
 
+    // Construct icon cache in the same path.
     QString web_path = app_path + QDir::separator() + APP_CFG_WEB_PATH;
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
-    qDebug("Initializing settings in %s.",
+    qDebug("Initializing settings in %s (portable way).",
            qPrintable(QDir::toNativeSeparators(app_path)));
   }
   else {
+    // Portable settings are NOT available, store them in
+    // user's home directory.
+    QString home_path = QDir::homePath() + QDir::separator() +
+                        APP_LOW_H_NAME;
+    QString home_path_file = home_path + relative_path;
+
     s_instance = new Settings(home_path_file, QSettings::IniFormat, qApp);
 
     QString web_path = home_path + QDir::separator() + APP_CFG_WEB_PATH;
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
-    qDebug("Initializing settings in %s.",
+    qDebug("Initializing settings in %s (non-portable way).",
            qPrintable(QDir::toNativeSeparators(home_path_file)));
   }
 
