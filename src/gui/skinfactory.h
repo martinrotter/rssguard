@@ -31,9 +31,6 @@ class SkinFactory : public QObject {
     // external resources.
     bool loadSkinFromData(QString skin_data, const QString &skin_path);
 
-    // Generates "default" skin.
-    Skin generateDefaultSkin();
-
   public:
     // Singleton getter.
     static SkinFactory *getInstance();

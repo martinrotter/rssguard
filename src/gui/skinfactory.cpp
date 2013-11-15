@@ -14,6 +14,10 @@ QPointer<SkinFactory> SkinFactory::s_instance;
 SkinFactory::SkinFactory(QObject *parent) : QObject(parent) {
 }
 
+// TODO: Skin "base/vergilius.xml" is now NEEDED for rssguard
+// to run. IT IS DEFAULT skin. It sets no styles and stylesheet.
+// It just contains markup for webbrowser.
+
 SkinFactory::~SkinFactory() {
   qDebug("Destroying SkinFactory instance.");
 }
@@ -28,16 +32,6 @@ SkinFactory *SkinFactory::getInstance() {
 
 void SkinFactory::loadCurrentSkin() {
   QString skin_name_from_settings = getSelectedSkinName();
-
-  if (skin_name_from_settings == APP_THEME_SYSTEM) {
-    m_currentSkin = generateDefaultSkin();
-
-    // User selected default skin for loading.
-    // NOTE: No need to do anything here.
-    qDebug("'Default system skin' loaded.");
-    return;
-  }
-
   bool skin_parsed;
   Skin skin_data = getSkinInfo(skin_name_from_settings, &skin_parsed);
 
@@ -60,21 +54,6 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' not loaded because style name is not specified or skin raw data is missing. Default skin loaded.",
            qPrintable(skin_name_from_settings));
   }
-}
-
-Skin SkinFactory::generateDefaultSkin() {
-  Skin default_skin;
-
-  default_skin.m_author = "-";
-  default_skin.m_baseName = APP_THEME_SYSTEM;
-  default_skin.m_email = "-";
-  default_skin.m_version = "-";
-  default_skin.m_visibleName = tr("default system skin");
-
-  // NOTE: Used http://www.htmlcompressor.com/compressor/ for compression.
-  default_skin.m_layoutMarkup = "<html> <head> <style>pre{white-space:pre-wrap}.headertext{font-size:19px;margin-bottom:10px}.header{font-size:15px;-webkit-transition:background 1s ease-out;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#45484d),color-stop(100%,#000000));background:-webkit-linear-gradient(top,#45484d 0,#000000 100%);-webkit-border-radius:3px;text-shadow:0 0 1px #fff;filter:dropshadow(color=#ffffff,offx=0,offy=0);padding:8px;margin:5px auto 5px auto;color:white}.header a{color:white}.content{font-size:14px;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,rgba(238,238,238,0.66)),color-stop(100%,rgba(238,238,238,0.66)));background:-webkit-linear-gradient(top,rgba(238,238,238,0.66) 0,rgba(238,238,238,0.66) 100%);-webkit-border-radius:3px;margin:5px auto 5px auto;padding:8px}.footer{font-size:12px;text-align:center;vertical-align:middle;-webkit-transition:background 1s ease-out;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#45484d),color-stop(100%,#000000));background:-webkit-linear-gradient(top,#45484d 0,#000000 100%);-webkit-border-radius:3px;text-shadow:0 0 1px #fff;filter:dropshadow(color=#ffffff,offx=0,offy=0);padding:8px;margin:5px auto 5px auto;color:white}</style> <title>%1</title> </head> <body> <div class=\"header\"> <div class=\"headertext\">%1</div> %2<br> <a href=\"%3\">%3</a> </div> <div class=\"content\"> %4 </div> <div class=\"footer\"> %5 </div> </body> </html>";
-
-  return default_skin;
 }
 
 bool SkinFactory::loadSkinFromData(QString skin_data, const QString &skin_path) {
@@ -112,7 +91,7 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
 QString SkinFactory::getSelectedSkinName() {
   return Settings::getInstance()->value(APP_CFG_GUI,
                                         "skin",
-                                        APP_THEME_SYSTEM).toString();
+                                        "base/vergilius.xml").toString();
 }
 
 QString SkinFactory::getCurrentSkinName() {
@@ -123,26 +102,13 @@ QString SkinFactory::getCurrentMarkup() {
   return m_currentSkin.m_layoutMarkup;
 }
 
-Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {  
-  if (skin_name == APP_THEME_SYSTEM) {
-    if (ok != NULL) {
-      *ok = true;
-    }
-
-    if (m_currentSkin.m_baseName == APP_THEME_SYSTEM) {
-      return m_currentSkin;
-    }
-    else {
-      return generateDefaultSkin();
-    }
-  }
-
+Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   Skin skin;
   QXmlQuery query;
   QString styles;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
 
-  if (!skin_file.open(QIODevice::ReadOnly) || !query.setFocus(&skin_file)) {
+  if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !query.setFocus(&skin_file)) {
     if (ok) {
       *ok = false;
     }
@@ -157,6 +123,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   // Obtain skin raw data.
   query.setQuery("string(skin/data)");
   query.evaluateTo(&skin.m_rawData);
+  skin.m_rawData = QByteArray::fromBase64(skin.m_rawData.toLocal8Bit());
 
   // Obtain style name.
   query.setQuery("string(/skin/style)");
@@ -181,6 +148,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   // Obtain layout markup.
   query.setQuery("string(/skin/markup)");
   query.evaluateTo(&skin.m_layoutMarkup);
+  skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
 
   // Obtain other information.
   skin.m_baseName = skin_name;
@@ -192,7 +160,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   if (ok) {
     *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
           !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
-          !skin.m_rawData.isEmpty() && !skin.m_stylesNames.isEmpty();
+          !skin.m_layoutMarkup.isEmpty();
   }
 
   return skin;
@@ -200,9 +168,6 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
 
 QList<Skin> SkinFactory::getInstalledSkins() {
   QList<Skin> skins;
-
-  skins.append(generateDefaultSkin());
-
   bool skin_load_ok;
   QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
                                                                QDir::NoDotAndDotDot |
