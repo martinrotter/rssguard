@@ -20,4 +20,6 @@ void MessagesView::setupAppearance() {
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setExpandsOnDoubleClick(false);
   setRootIsDecorated(false);
+  setItemsExpandable(false);
+  setSortingEnabled(true);
 }

@@ -17,3 +17,7 @@ MessagesProxyModel::MessagesProxyModel(QObject *parent)
 MessagesProxyModel::~MessagesProxyModel() {
   qDebug("Destroying MessagesProxyModel instance.");
 }
+
+bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
+  return QSortFilterProxyModel::lessThan(left, right);
+}
