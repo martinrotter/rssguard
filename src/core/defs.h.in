@@ -51,6 +51,7 @@
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_THEME_PATH_QRC  ":/themes"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
+#define APP_THEME_DEFAULT   "mini-kfaenza"
 
 #if defined(Q_OS_LINUX)
 #define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY@"

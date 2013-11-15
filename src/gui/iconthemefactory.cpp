@@ -78,7 +78,7 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   QStringList installed_themes = getInstalledIconThemes();
   QString theme_name_from_settings = Settings::getInstance()->value(APP_CFG_GUI,
                                                                     "icon_theme",
-                                                                    "mini-kfaenza").toString();
+                                                                    APP_THEME_DEFAULT).toString();
 
   if (m_currentIconTheme == theme_name_from_settings) {
     qDebug("Icon theme '%s' already loaded.",
@@ -100,10 +100,7 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   else {
     // Desired icon theme is not currently available.
     // Install "default" icon theme instead.
-    // NOTE: "Default" icon theme is:
-    //  a) system icon theme on Linux,
-    //  b) no icon theme on other platforms.
-    qDebug("Icon theme '%s' cannot be loaded because it is not installed. Loading 'default' theme.",
+    qDebug("Icon theme '%s' cannot be loaded because it is not installed. Loading 'system default' theme.",
            qPrintable(theme_name_from_settings));
     QIcon::setThemeName(APP_THEME_SYSTEM);
     m_currentIconTheme = APP_THEME_SYSTEM;
