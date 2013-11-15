@@ -90,7 +90,6 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
   qDebug("Installed icon themes are: %s.",
          qPrintable(installed_themes.join(", ")));
 
-
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
     qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));

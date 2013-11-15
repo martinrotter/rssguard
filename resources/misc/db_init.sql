@@ -21,13 +21,13 @@ DROP TABLE IF EXISTS Feeds;
 -- !
 CREATE TABLE IF NOT EXISTS Feeds (
   id             INTEGER    PRIMARY KEY,
-  title          TEXT       NOT NULL UNIQUE CHECK (title != ''),
+  title          TEXT       NOT NULL CHECK (title != ''),
   description    TEXT,
   date_created   TEXT       NOT NULL CHECK (date_created != ''),
   icon           BLOB,
   category       INTEGER    NOT NULL CHECK (category >= -1),
   encoding       TEXT       NOT NULL CHECK (encoding != ''),
-  url            TEXT       NOT NULL CHECK (url != ''),
+  url            TEXT       NOT NULL UNIQUE CHECK (url != ''),
   type           INTEGER    NOT NULL
 );
 -- !
@@ -35,16 +35,16 @@ DROP TABLE IF EXISTS Messages;
 -- !
 CREATE TABLE IF NOT EXISTS Messages (
   id             INTEGER    PRIMARY KEY,
+  feed           INTEGER    NOT NULL,
   title          TEXT       NOT NULL CHECK (title != ''),
-  owner          INTEGER    NOT NULL,
   url            TEXT,
   author         TEXT,
   date_created   TEXT       NOT NULL CHECK (date_created != ''),
   date_updated   TEXT,
-  contents       TEXT,
   read           INTEGER(1) NOT NULL CHECK (read >= 0 AND read <= 1) DEFAULT (0),
   deleted        INTEGER(1) NOT NULL CHECK (deleted >= 0 AND deleted <= 1) DEFAULT (0),
   important      INTEGER(1) NOT NULL CHECK (important >= 0 AND important <= 1) DEFAULT (0),
+  contents       TEXT,
   
-  FOREIGN KEY (owner) REFERENCES Feeds (id)
+  FOREIGN KEY (feed) REFERENCES Feeds (id)
 );

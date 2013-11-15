@@ -34,9 +34,9 @@
 #define APP_DB_INIT_SPLIT   "-- !\n"
 #define APP_DB_PATH         "data/database/local"
 #define APP_DB_FILE         "database.db"
+#define APP_DB_WEB_PATH     "data/database/web"
 
 #define APP_CFG_PATH        "data/config"
-#define APP_CFG_WEB_PATH    "data/database/web"
 #define APP_CFG_FILE        "config.ini"
 #define APP_CFG_GUI         "gui"
 #define APP_CFG_GEN         "main"

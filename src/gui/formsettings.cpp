@@ -482,8 +482,10 @@ void FormSettings::saveInterface() {
   IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
 
   // Save and activate new skin.
-  Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
-  SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
+  if (m_ui->m_treeSkins->selectedItems().size() > 0) {
+    Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
+    SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
+  }
 
   // Save tab settings.
   settings->setValue(APP_CFG_GUI, "tab_close_mid_button",

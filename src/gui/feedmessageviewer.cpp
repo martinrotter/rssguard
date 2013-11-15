@@ -15,8 +15,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBar(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new WebBrowser(this))
-{
+    m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
 }
@@ -27,7 +26,7 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setMovable(false);
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
 
-    m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
+  m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

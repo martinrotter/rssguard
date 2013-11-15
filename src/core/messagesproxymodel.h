@@ -4,16 +4,18 @@
 #include <QSortFilterProxyModel>
 
 
+class MessagesModel;
+
 class MessagesProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit MessagesProxyModel(QObject *parent = 0);
+    virtual ~MessagesProxyModel();
 
-  signals:
-
-  public slots:
-
+  private:
+    MessagesModel *m_sourceModel;
 };
 
 #endif // MESSAGESPROXYMODEL_H

@@ -22,9 +22,6 @@ class DatabaseFactory : public QObject {
     // Path to database file.
     QString m_databasePath;
 
-    // True if database file is initialized, otherwise false.
-    bool m_initialized;
-
     // Private singleton value.
     static QPointer<DatabaseFactory> s_instance;
 

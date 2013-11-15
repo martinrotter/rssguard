@@ -110,20 +110,11 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
     q.finish();
   }
 
-  m_initialized = true;
-
   return database;
 }
 
 QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
-  if (!m_initialized) {
-    // Initialize database file and return connection if it is not
-    // initialized yet.
-    return initialize(connection_name);
-  }
-  else {
-    return QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
-  }
+  return initialize(connection_name);
 }
 
 QSqlDatabase DatabaseFactory::getConnection(const QString &connection_name) {

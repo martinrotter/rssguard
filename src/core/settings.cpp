@@ -69,7 +69,7 @@ QSettings::Status Settings::setupSettings() {
 
     // TODO: Separate web settings into another unit.
     // Construct icon cache in the same path.
-    QString web_path = app_path + QDir::separator() + APP_CFG_WEB_PATH;
+    QString web_path = app_path + QDir::separator() + APP_DB_WEB_PATH;
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
@@ -87,7 +87,7 @@ QSettings::Status Settings::setupSettings() {
                               Settings::NonPortable, qApp);
 
     // Construct icon cache in the same path.
-    QString web_path = home_path + QDir::separator() + APP_CFG_WEB_PATH;
+    QString web_path = home_path + QDir::separator() + APP_DB_WEB_PATH;
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 

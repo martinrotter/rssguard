@@ -4,16 +4,21 @@
 #include <QTreeView>
 
 
+class MessagesProxyModel;
+
 class MessagesView : public QTreeView {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
-    
-  signals:
-    
-  public slots:
+
+  protected:
+    void setupAppearance();
+
+  private:
+    MessagesProxyModel *m_proxyModel;
     
 };
 
