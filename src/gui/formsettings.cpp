@@ -417,7 +417,6 @@ void FormSettings::loadInterface() {
   // Load skin.
   QList<Skin> installed_skins = SkinFactory::getInstance()->getInstalledSkins();
   QString selected_skin = SkinFactory::getInstance()->getSelectedSkinName();
-  QString active_skin = SkinFactory::getInstance()->getCurrentSkinName();
 
   foreach (Skin skin, installed_skins) {
     QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
@@ -432,15 +431,16 @@ void FormSettings::loadInterface() {
 
     if (skin.m_baseName == selected_skin) {
       m_ui->m_treeSkins->setCurrentItem(new_item);
+      m_ui->m_lblActiveContents->setText(skin.m_visibleName);
     }
   }
 
-  if (m_ui->m_treeSkins->currentItem() == NULL) {
-    // No skin is selected or currently selected skin is unavailable.
+  if (m_ui->m_treeSkins->currentItem() == NULL &&
+      m_ui->m_treeSkins->topLevelItemCount() > 0) {
+    // Currently active skin is NOT available, select another one as selected
+    // if possible.
     m_ui->m_treeSkins->setCurrentItem(m_ui->m_treeSkins->topLevelItem(0));
   }
-
-  m_ui->m_lblActiveContents->setText(SkinFactory::getInstance()->getSkinInfo(active_skin).m_visibleName);
 
   // Load tab settings.
   m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(APP_CFG_GUI,

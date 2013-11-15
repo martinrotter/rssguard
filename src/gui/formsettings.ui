@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>666</width>
+            <height>399</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -115,7 +115,7 @@
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -147,91 +147,101 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>436</width>
-                <height>196</height>
+                <width>662</width>
+                <height>371</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
-               <item row="0" column="0">
-                <widget class="QLabel" name="m_lblIconTheme">
-                 <property name="text">
-                  <string>Icon theme</string>
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+               </property>
+               <item row="0" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox">
+                 <property name="title">
+                  <string>Icons</string>
                  </property>
-                 <property name="buddy">
-                  <cstring>m_cmbIconTheme</cstring>
-                 </property>
+                 <layout class="QFormLayout" name="formLayout_8">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="m_lblIconTheme">
+                    <property name="text">
+                     <string>Icon theme</string>
+                    </property>
+                    <property name="buddy">
+                     <cstring>m_cmbIconTheme</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QComboBox" name="m_cmbIconTheme"/>
+                  </item>
+                 </layout>
                 </widget>
                </item>
-               <item row="0" column="1">
-                <widget class="QComboBox" name="m_cmbIconTheme"/>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="m_lblSkin">
-                 <property name="text">
-                  <string>Skin</string>
+               <item row="1" column="0" colspan="2">
+                <widget class="QGroupBox" name="groupBox_2">
+                 <property name="title">
+                  <string>Skins</string>
                  </property>
-                </widget>
-               </item>
-               <item row="2" column="0" colspan="2">
-                <widget class="QTreeWidget" name="m_treeSkins">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="indentation">
-                  <number>0</number>
-                 </property>
-                 <property name="itemsExpandable">
-                  <bool>false</bool>
-                 </property>
-                 <property name="expandsOnDoubleClick">
-                  <bool>false</bool>
-                 </property>
-                 <column>
-                  <property name="text">
-                   <string notr="true">1</string>
-                  </property>
-                 </column>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="m_lblActiveCaption">
-                 <property name="text">
-                  <string>Active skin</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QLabel" name="m_lblActiveContents">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="m_lblSelectedCaption">
-                 <property name="text">
-                  <string>Selected skin</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QLabel" name="m_lblSelectedContents">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="0" colspan="2">
-                <widget class="QLabel" name="label">
-                 <property name="text">
-                  <string>Newly selected skin is activated after the applicaton gets restarted!!!</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
+                 <layout class="QFormLayout" name="formLayout_9">
+                  <item row="0" column="0" colspan="2">
+                   <widget class="QTreeWidget" name="m_treeSkins">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="alternatingRowColors">
+                     <bool>false</bool>
+                    </property>
+                    <property name="indentation">
+                     <number>0</number>
+                    </property>
+                    <property name="rootIsDecorated">
+                     <bool>false</bool>
+                    </property>
+                    <property name="itemsExpandable">
+                     <bool>false</bool>
+                    </property>
+                    <property name="expandsOnDoubleClick">
+                     <bool>false</bool>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string notr="true">1</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="m_lblActiveCaption">
+                    <property name="text">
+                     <string>Active skin:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="m_lblActiveContents">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="m_lblSelectedCaption">
+                    <property name="text">
+                     <string>Selected skin:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="m_lblSelectedContents">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </item>
               </layout>
@@ -640,8 +650,20 @@
        <height>16777215</height>
       </size>
      </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="selectionRectVisible">
+      <bool>false</bool>
+     </property>
      <property name="currentRow">
-      <number>-1</number>
+      <number>0</number>
      </property>
      <item>
       <property name="text">

@@ -7,6 +7,7 @@ MessagesModel::MessagesModel(QObject *parent) : QSqlTableModel(parent) {
 }
 
 void MessagesModel::setupHeaderData() {
+  // TODO: Enhance this.
   m_headerData << tr("aaa") <<
                   tr("bbb");
 }

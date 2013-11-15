@@ -14,10 +14,6 @@ QPointer<SkinFactory> SkinFactory::s_instance;
 SkinFactory::SkinFactory(QObject *parent) : QObject(parent) {
 }
 
-// TODO: Skin "base/vergilius.xml" is now NEEDED for rssguard
-// to run. IT IS DEFAULT skin. It sets no styles and stylesheet.
-// It just contains markup for webbrowser.
-
 SkinFactory::~SkinFactory() {
   qDebug("Destroying SkinFactory instance.");
 }
@@ -36,14 +32,7 @@ void SkinFactory::loadCurrentSkin() {
   Skin skin_data = getSkinInfo(skin_name_from_settings, &skin_parsed);
 
   if (skin_parsed) {
-    loadSkinFromData(skin_data.m_rawData, skin_name_from_settings);
-
-    foreach (QString style, skin_data.m_stylesNames) {
-      if (qApp->setStyle(style) != 0) {
-        qDebug("Style '%s' loaded.", qPrintable(style));
-        break;
-      }
-    }
+    loadSkinFromData(skin_data);
 
     // Set this 'Skin' object as active one.
     m_currentSkin = skin_data;
@@ -51,23 +40,23 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
   }
   else {
-    qDebug("Skin '%s' not loaded because style name is not specified or skin raw data is missing. Default skin loaded.",
+    qDebug("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
            qPrintable(skin_name_from_settings));
   }
 }
 
-bool SkinFactory::loadSkinFromData(QString skin_data, const QString &skin_path) {
-  QStringList skin_parts = skin_path.split('/', QString::SkipEmptyParts);
+bool SkinFactory::loadSkinFromData(const Skin &skin) {
+  QStringList skin_parts = skin.m_baseName.split('/', QString::SkipEmptyParts);
 
   // Skin does not contain leading folder name or the actual skin file name.
   if (skin_parts.size() != 2) {
-    qDebug("Loading of sking %s failed because skin name does not contain "
+    qDebug("Loading of sking '%s' failed because skin name does not contain "
            "base folder name or the actual skin name.",
-           qPrintable(skin_path));
+           qPrintable(skin.m_baseName));
     return false;
   }
   else {
-    qDebug("Loading skin '%s'.", qPrintable(skin_path));
+    qDebug("Loading skin '%s'.", qPrintable(skin.m_baseName));
   }
 
   // Create needed variables and create QFile object representing skin contents.
@@ -78,9 +67,23 @@ bool SkinFactory::loadSkinFromData(QString skin_data, const QString &skin_path) 
   //
   // "##" is placeholder for the actual path to skin file. This is needed for using
   // images within the QSS file.
-  QString parsed_data = skin_data.replace("##",
-                                          APP_SKIN_PATH + "/" + skin_folder + "/images");
-  qApp->setStyleSheet(parsed_data);
+  QString raw_data = skin.m_rawData;
+
+  if (!raw_data.isEmpty()) {
+    QString parsed_data = raw_data.replace("##",
+                                           APP_SKIN_PATH + "/" +
+                                           skin_folder + "/images");
+    qApp->setStyleSheet(parsed_data);
+  }
+
+  // Iterate supported styles and load one.
+  foreach (QString style, skin.m_stylesNames) {
+    if (qApp->setStyle(style) != 0) {
+      qDebug("Style '%s' loaded.", qPrintable(style));
+      break;
+    }
+  }
+
   return true;
 }
 
@@ -91,11 +94,7 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
 QString SkinFactory::getSelectedSkinName() {
   return Settings::getInstance()->value(APP_CFG_GUI,
                                         "skin",
-                                        "base/vergilius.xml").toString();
-}
-
-QString SkinFactory::getCurrentSkinName() {
-  return m_currentSkin.m_baseName;
+                                        APP_SKIN_DEFAULT).toString();
 }
 
 QString SkinFactory::getCurrentMarkup() {
@@ -112,6 +111,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
     if (ok) {
       *ok = false;
     }
+
     return skin;
   }
 
@@ -128,7 +128,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   // Obtain style name.
   query.setQuery("string(/skin/style)");
   query.evaluateTo(&styles);
-  skin.m_stylesNames = styles.remove("\n").split(",");
+  skin.m_stylesNames = styles.remove("\n").split(",", QString::SkipEmptyParts);
 
   // Obtain author.
   query.setQuery("string(/skin/author/name)");

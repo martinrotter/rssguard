@@ -20,6 +20,13 @@ struct Skin {
 
 Q_DECLARE_METATYPE(Skin)
 
+// TODO: Skin "base/vergilius.xml" is now NEEDED for rssguard
+// to run. IT IS DEFAULT skin. It sets no styles and stylesheet.
+// It just contains markup for webbrowser.
+// NOTE: Check skins "base/vergilius.xml" and "luxuous.xml"
+// for skin syntax reference. Note that <markup> and <data> tags
+// have contents encoded in Base64.
+
 class SkinFactory : public QObject {
     Q_OBJECT
 
@@ -29,7 +36,7 @@ class SkinFactory : public QObject {
     // Loads the skin from give skin_data.
     // NOTE: Extra relative path escaping is done for loading of
     // external resources.
-    bool loadSkinFromData(QString skin_data, const QString &skin_path);
+    bool loadSkinFromData(const Skin &skin);
 
   public:
     // Singleton getter.
@@ -40,10 +47,6 @@ class SkinFactory : public QObject {
 
     // Loads skin name from settings and sets it as active.
     void loadCurrentSkin();
-
-    // Returns the name of the currently activated skin.
-    // NOTE: Skin name is formatted as "<folder>/<skin>.xml".
-    QString getCurrentSkinName();
 
     // Returns contents of current layout markup.
     QString getCurrentMarkup();
