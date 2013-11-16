@@ -75,23 +75,28 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
     database.exec("PRAGMA temp_store = MEMORY");
 
     // Sample query which checks for existence of tables.
-    QSqlQuery q = database.exec("SELECT value FROM Information WHERE key = 'schema_version'");
+    QSqlQuery query = database.exec("SELECT value FROM Information WHERE key = 'schema_version'");
 
-    if (q.lastError().isValid()) {
+    if (query.lastError().isValid()) {
       qWarning("Error occurred. Database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_FILE);
-      file_init.open(QIODevice::ReadOnly | QIODevice::Text);
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT);
+      if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        // Database initialization file not opened. HUGE problem.
+        qFatal("Databaza initialization file '%s' was not found. Database is uninitialized.",
+               APP_DB_INIT_FILE);
+      }
+
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
+                                                                  QString::SkipEmptyParts);
       database.exec("BEGIN TRANSACTION");
 
       foreach(QString i, statements) {
-        q = database.exec(i);
-        if (q.lastError().isValid()) {
-          if (q.lastError().number() != -1) {
-            break;
-          }
+        query = database.exec(i);
+        if (query.lastError().isValid()) {
+          qFatal("Database initialization failed. Initialization script '%s' is not correct.",
+                 APP_DB_INIT_FILE);
         }
       }
 
@@ -99,15 +104,15 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
       qDebug("Database backend should be ready now.");
     }
     else {
-      q.next();
+      query.next();
 
       qDebug("Database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
-      qDebug("Database has version '%s'.", qPrintable(q.value(0).toString()));
+      qDebug("Database has version '%s'.", qPrintable(query.value(0).toString()));
     }
 
-    q.finish();
+    query.finish();
   }
 
   return database;
