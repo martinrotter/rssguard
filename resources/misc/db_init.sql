@@ -35,15 +35,15 @@ DROP TABLE IF EXISTS Messages;
 -- !
 CREATE TABLE IF NOT EXISTS Messages (
   id             INTEGER    PRIMARY KEY,
+  read           INTEGER(1) NOT NULL CHECK (read >= 0 AND read <= 1) DEFAULT (0),
+  deleted        INTEGER(1) NOT NULL CHECK (deleted >= 0 AND deleted <= 1) DEFAULT (0),
+  important      INTEGER(1) NOT NULL CHECK (important >= 0 AND important <= 1) DEFAULT (0),
   feed           INTEGER    NOT NULL,
   title          TEXT       NOT NULL CHECK (title != ''),
   url            TEXT,
   author         TEXT,
   date_created   TEXT       NOT NULL CHECK (date_created != ''),
   date_updated   TEXT,
-  read           INTEGER(1) NOT NULL CHECK (read >= 0 AND read <= 1) DEFAULT (0),
-  deleted        INTEGER(1) NOT NULL CHECK (deleted >= 0 AND deleted <= 1) DEFAULT (0),
-  important      INTEGER(1) NOT NULL CHECK (important >= 0 AND important <= 1) DEFAULT (0),
   contents       TEXT,
   
   FOREIGN KEY (feed) REFERENCES Feeds (id)

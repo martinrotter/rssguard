@@ -74,8 +74,6 @@ int main(int argc, char *argv[]) {
   IconThemeFactory::getInstance()->loadCurrentIconTheme(false);
   SkinFactory::getInstance()->loadCurrentSkin();
 
-  DatabaseFactory::getInstance()->addConnection("abc");
-
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();
 

@@ -3,6 +3,8 @@
 
 #include <QTreeView>
 
+#include "core/messagesmodel.h"
+
 
 class MessagesProxyModel;
 
@@ -17,8 +19,19 @@ class MessagesView : public QTreeView {
   protected:
     void setupAppearance();
 
+    void currentChanged(const QModelIndex &current,
+                        const QModelIndex &previous);
+
+    void selectionChanged(const QItemSelection &selected,
+                          const QItemSelection &deselected);
+
+  signals:
+    void currentMessageChanged(const Message &message);
+    void currentMessageRemoved();
+
   private:
     MessagesProxyModel *m_proxyModel;
+    MessagesModel *m_sourceModel;
     
 };
 

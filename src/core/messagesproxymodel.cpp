@@ -11,11 +11,17 @@ MessagesProxyModel::MessagesProxyModel(QObject *parent)
   setSortCaseSensitivity(Qt::CaseInsensitive);
   setFilterCaseSensitivity(Qt::CaseInsensitive);
   setFilterKeyColumn(-1);
+  setFilterRole(Qt::EditRole);
+  setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
 }
 
 MessagesProxyModel::~MessagesProxyModel() {
   qDebug("Destroying MessagesProxyModel instance.");
+}
+
+MessagesModel *MessagesProxyModel::sourceModel() {
+  return m_sourceModel;
 }
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
