@@ -5,6 +5,7 @@
 #include <QPointer>
 #include <QUrl>
 
+#include "core/messagesmodel.h"
 #include "gui/tabcontent.h"
 
 
@@ -59,13 +60,15 @@ class WebBrowser : public TabContent {
     void navigateToUrl(const QString &url);
     void navigateToUrl(const QUrl &url);
 
+    // Navigates to message.
+    void navigateToMessage(const Message &message);
+
     // Zoom manipulators.
     void increaseZoom();
     void decreaseZoom();
     void resetZoom();
 
   protected:
-
     // Creates necessary connections.
     void createConnections();
 

@@ -16,6 +16,9 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
+    MessagesProxyModel *model();
+    MessagesModel *sourceModel();
+
   protected:
     void setupAppearance();
 

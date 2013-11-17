@@ -18,6 +18,11 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
+
+  // TODO: oddělit do createConnections();
+  connect(m_messagesView, SIGNAL(currentMessageChanged(Message)),
+          m_messagesBrowser, SLOT(navigateToMessage(Message)));
+
 }
 
 void FeedMessageViewer::initialize() {

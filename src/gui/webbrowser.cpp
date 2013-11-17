@@ -11,9 +11,11 @@
 #include <QMessageBox>
 #include <QToolButton>
 
+#include "core/defs.h"
 #include "core/basenetworkaccessmanager.h"
 #include "core/webbrowsernetworkaccessmanager.h"
 #include "core/basewebpage.h"
+#include "gui/skinfactory.h"
 #include "gui/basewebview.h"
 #include "gui/webbrowser.h"
 #include "gui/formmain.h"
@@ -163,6 +165,22 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
   if (url.isValid()) {
     m_webView->load(url);
   }
+}
+
+void WebBrowser::navigateToMessage(const Message &message) {
+  // TODO: dodělat.
+  m_webView->setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_data.at(MSG_DB_TITLE_INDEX).toString(),
+                                                                        tr("Check your internet connection or website address"),
+                                                                        QString(),
+                                                                        tr("This failure can be caused by:<br><ul>"
+                                                                           "<li>non-functional internet connection,</li>"
+                                                                           "<li>incorrect website address,</li>"
+                                                                           "<li>bad proxy server settings,</li>"
+                                                                           "<li>target destination outage,</li>"
+                                                                           "<li>many other things.</li>"
+                                                                           "</ul>"),
+                                                                        "aa"));
+
 }
 
 void WebBrowser::updateZoomGui() {

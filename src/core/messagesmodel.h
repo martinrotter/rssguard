@@ -3,25 +3,16 @@
 
 #include <QAbstractItemModel>
 #include <QFont>
+#include <QIcon>
 
 
 // Representation of ONE message.
 class Message {
   private:
     QList<QVariant> m_data;
-/*
-    int m_id;
-    int m_read;
-    int m_deleted;
-    int m_important;
-    QString m_title;
-    QString m_url;
-    QString m_author;
-    QString m_dateCreated;
-    QString m_dateUpdate;
-    QString m_contents;
-*/
+
     friend class MessagesModel;
+    friend class WebBrowser;
 };
 
 class MessagesModel : public QAbstractItemModel {
@@ -37,6 +28,7 @@ class MessagesModel : public QAbstractItemModel {
     // Data accessors/manipulators.
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QVariant data(const QModelIndex &index, int role) const;
+    QVariant data(int row, int column, int role = Qt::EditRole) const;
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
     bool setData(int row, int column, const QVariant &value);
     Qt::ItemFlags flags(const QModelIndex &index) const;
@@ -48,6 +40,8 @@ class MessagesModel : public QAbstractItemModel {
     // Model navigation.
     QModelIndex parent(const QModelIndex &child) const;
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+
+    const Message &messageAt(int row_index) const;
 
   public slots:
     // Sets "read" status of message with given row index.
@@ -65,6 +59,9 @@ class MessagesModel : public QAbstractItemModel {
 
     QFont m_normalFont;
     QFont m_boldFont;
+    QIcon m_favoriteIcon;
+    QIcon m_readIcon;
+    QIcon m_unreadIcon;
     QList<QString> m_headerData;
 
 };

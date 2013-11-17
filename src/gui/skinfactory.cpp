@@ -40,7 +40,8 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
   }
   else {
-    qDebug("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
+    // TODO: změnit toto na qFatal v produkčním kodu.
+    qWarning("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
            qPrintable(skin_name_from_settings));
   }
 }
