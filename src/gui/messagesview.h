@@ -16,11 +16,14 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
+    // Model accessors.
     MessagesProxyModel *model();
     MessagesModel *sourceModel();
 
   protected:
     void setupAppearance();
+
+    void keyPressEvent(QKeyEvent *event);
 
     void currentChanged(const QModelIndex &current,
                         const QModelIndex &previous);
@@ -29,7 +32,8 @@ class MessagesView : public QTreeView {
                           const QItemSelection &deselected);
 
   signals:
-    void currentMessageChanged(const Message &message);
+    // TODO: dodělat signál.
+    void currentMessageChanged(/* const Message &message */);
     void currentMessageRemoved();
 
   private:

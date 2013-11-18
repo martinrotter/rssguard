@@ -1,21 +1,14 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include <QAbstractItemModel>
+#include <QSqlTableModel>
 #include <QFont>
 #include <QIcon>
 
+#include "core/defs.h"
 
-// Representation of ONE message.
-class Message {
-  private:
-    QList<QVariant> m_data;
 
-    friend class MessagesModel;
-    friend class WebBrowser;
-};
-
-class MessagesModel : public QAbstractItemModel {
+class MessagesModel : public QSqlTableModel {
     Q_OBJECT
 
   public:
@@ -24,46 +17,40 @@ class MessagesModel : public QAbstractItemModel {
     virtual ~MessagesModel();
 
     // Model implementation.
-
-    // Data accessors/manipulators.
+    bool setData(const QModelIndex &idx, const QVariant &value, int role = Qt::EditRole);
+    QVariant data(const QModelIndex &idx, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    QVariant data(const QModelIndex &index, int role) const;
-    QVariant data(int row, int column, int role = Qt::EditRole) const;
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
-    bool setData(int row, int column, const QVariant &value);
-    Qt::ItemFlags flags(const QModelIndex &index) const;
+    Qt::ItemFlags flags(const QModelIndex &idx) const;
 
-    // Model dimensions.
-    int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    int columnCount(const QModelIndex &parent = QModelIndex()) const;
-
-    // Model navigation.
-    QModelIndex parent(const QModelIndex &child) const;
-    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-
-    const Message &messageAt(int row_index) const;
+  public:
+    // Sets up all icons which are used directly by this model.
+    void setupIcons();
 
   public slots:
-    // Sets "read" status of message with given row index.
-    void setMessageRead(int row_index, int read);
+    // Fetches ALL available data to the model.
+    // NOTE: This is almost needed when sorting
+    // and makes the model more predictable.
+    void fetchAll();
+
+    // Loads messages of given feeds.
+    void loadMessages(const QList<int> feed_ids);
 
   private:
+    // Sets up header data.
     void setupHeaderData();
 
     // Creates "normal" and "bold" fonts.
     void setupFonts();
 
   private:
-    QHash<int, int> m_columnMappings;
-    QList<Message> m_messages;
+    QList<QString> m_headerData;
+    bool m_isInEditingMode;
 
     QFont m_normalFont;
     QFont m_boldFont;
     QIcon m_favoriteIcon;
     QIcon m_readIcon;
     QIcon m_unreadIcon;
-    QList<QString> m_headerData;
-
 };
 
 #endif // MESSAGESMODEL_H

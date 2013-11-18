@@ -167,8 +167,9 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
   }
 }
 
-void WebBrowser::navigateToMessage(const Message &message) {
+void WebBrowser::navigateToMessage() {
   // TODO: dodělat.
+  /*
   m_webView->setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_data.at(MSG_DB_TITLE_INDEX).toString(),
                                                                         tr("Check your internet connection or website address"),
                                                                         QString(),
@@ -180,7 +181,7 @@ void WebBrowser::navigateToMessage(const Message &message) {
                                                                            "<li>many other things.</li>"
                                                                            "</ul>"),
                                                                         "aa"));
-
+                                                                        */
 }
 
 void WebBrowser::updateZoomGui() {

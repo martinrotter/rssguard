@@ -1,4 +1,5 @@
 #include <QHeaderView>
+#include <QKeyEvent>
 
 #include "gui/messagesview.h"
 #include "core/messagesproxymodel.h"
@@ -10,6 +11,12 @@ MessagesView::MessagesView(QWidget *parent) : QTreeView(parent) {
   m_sourceModel = m_proxyModel->sourceModel();
 
   setModel(m_proxyModel);
+
+  hideColumn(0);
+  header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
+
+  // NOTE: It is recommended to call this after the model is set
+  // due to sorting performance.
   setupAppearance();
 }
 
@@ -28,13 +35,14 @@ MessagesProxyModel *MessagesView::model() {
 void MessagesView::setupAppearance() {
   header()->setStretchLastSection(true);
 
+  setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setExpandsOnDoubleClick(false);
   setRootIsDecorated(false);
   setItemsExpandable(false);
-  setSortingEnabled(false);
+  setSortingEnabled(true);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
@@ -42,6 +50,10 @@ void MessagesView::setupAppearance() {
 void MessagesView::selectionChanged(const QItemSelection &selected,
                                     const QItemSelection &deselected) {
   QTreeView::selectionChanged(selected, deselected);
+}
+
+void MessagesView::keyPressEvent(QKeyEvent *event) {
+  QTreeView::keyPressEvent(event);
 }
 
 void MessagesView::currentChanged(const QModelIndex &current,
@@ -53,9 +65,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
          current.row(), current.column(),
          ind.row(), ind.column());
 
-  m_sourceModel->setMessageRead(ind.row(), 1);
-
-  emit currentMessageChanged(m_sourceModel->messageAt(ind.row()));
+  m_sourceModel->setData(m_sourceModel->index(ind.row(), 1), 1, Qt::EditRole);
 
   QTreeView::currentChanged(current, previous);
 }
