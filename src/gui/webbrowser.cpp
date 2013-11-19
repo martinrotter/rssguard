@@ -167,21 +167,13 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
   }
 }
 
-void WebBrowser::navigateToMessage() {
+void WebBrowser::navigateToMessage(const Message &message) {
   // TODO: dodělat.
-  /*
-  m_webView->setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_data.at(MSG_DB_TITLE_INDEX).toString(),
-                                                                        tr("Check your internet connection or website address"),
-                                                                        QString(),
-                                                                        tr("This failure can be caused by:<br><ul>"
-                                                                           "<li>non-functional internet connection,</li>"
-                                                                           "<li>incorrect website address,</li>"
-                                                                           "<li>bad proxy server settings,</li>"
-                                                                           "<li>target destination outage,</li>"
-                                                                           "<li>many other things.</li>"
-                                                                           "</ul>"),
-                                                                        "aa"));
-                                                                        */
+  m_webView->setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_title,
+                                                                        tr("Written by ") + message.m_author,
+                                                                        message.m_url,
+                                                                        message.m_contents,
+                                                                        message.m_updated.toString(Qt::ISODate)));
 }
 
 void WebBrowser::updateZoomGui() {

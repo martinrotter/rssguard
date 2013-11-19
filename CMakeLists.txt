@@ -9,7 +9,7 @@ set(APP_VERSION "2.0.0-prealpha-2")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
 
-option(USE_QT_5 "Use Qt 5 for building" OFF)
+option(USE_QT_5 "Use Qt 5 for building" ON)
 
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")

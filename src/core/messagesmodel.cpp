@@ -5,6 +5,7 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include "core/defs.h"
+#include "core/datetime.h"
 #include "core/messagesmodel.h"
 #include "core/databasefactory.h"
 #include "gui/iconthemefactory.h"
@@ -43,13 +44,12 @@ void MessagesModel::fetchAll() {
 
 void MessagesModel::setupFonts() {
   m_normalFont = QtSingleApplication::font("MessagesView");
+
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
 }
 
 void MessagesModel::loadMessages(const QList<int> feed_ids) {
-  // TODO: Doplnit "AND deleted = 0"
-
   // Conversion of parameter.
   QStringList stringy_ids;
   stringy_ids.reserve(feed_ids.count());
@@ -59,9 +59,22 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
   }
 
   // TODO: časem povolit.
-  //setFilter(QString("feed IN (%1) ").arg(stringy_ids.join(',')));
+  //setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(',')));
   select();
   fetchAll();
+}
+
+Message MessagesModel::messageAt(int row_index) const {
+  QSqlRecord rec = record(row_index);
+  Message message;
+
+  message.m_author = rec.value(MSG_DB_AUTHOR_INDEX).toString();
+  message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
+  message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
+  message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
+  message.m_updated = DateTime::fromString(rec.value(MSG_DB_DUPDATED_INDEX).toString());
+
+  return message;
 }
 
 void MessagesModel::setupHeaderData() {
@@ -84,7 +97,19 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
 
 QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   switch (role) {
-    case Qt::DisplayRole:
+    //
+    case Qt::DisplayRole: {
+      int index_column = idx.column();
+      if (index_column != MSG_DB_IMPORTANT_INDEX &&
+          index_column != MSG_DB_READ_INDEX) {
+        return QSqlTableModel::data(idx, role);
+      }
+      else {
+        return QVariant();
+      }
+    }
+
+      // Return RAW data for EditRole.
     case Qt::EditRole:
       return QSqlTableModel::data(idx, role);
 
@@ -101,30 +126,19 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
               m_readIcon :
               m_unreadIcon;
       }
+      else if (index_column == MSG_DB_IMPORTANT_INDEX) {
+        return record(idx.row()).value(MSG_DB_IMPORTANT_INDEX).toInt() == 1 ?
+              m_favoriteIcon :
+              QVariant();
+      }
       else {
         return QVariant();
       }
     }
 
-
     default:
       return QVariant();
   }
-  /*
-  if (role == Qt::FontRole && idx.column() == 1) {
-    return record(idx.row()).value(1).toInt() == 1 ? m_normalFont : m_boldFont;
-  }
-  else if (role == Qt::DecorationRole && idx.column() == 3) {
-    if (record(idx.row()).value(1).toInt() == 1) {
-      return IconThemeFactory::getInstance()->fromTheme("mail-mark-read");
-    }
-    else {
-      return IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
-    }
-  }
-  else {
-    return QSqlTableModel::data(idx, role);
-  }*/
 }
 
 bool MessagesModel::setData(const QModelIndex &idx, const QVariant &value, int role) {

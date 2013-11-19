@@ -61,7 +61,7 @@ class WebBrowser : public TabContent {
     void navigateToUrl(const QUrl &url);
 
     // Navigates to message.
-    void navigateToMessage();
+    void navigateToMessage(const Message &message);
 
     // Zoom manipulators.
     void increaseZoom();

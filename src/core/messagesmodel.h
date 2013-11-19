@@ -4,8 +4,25 @@
 #include <QSqlTableModel>
 #include <QFont>
 #include <QIcon>
+#include <QDateTime>
 
 #include "core/defs.h"
+
+
+// Represents single message.
+// NOTE: This is primarily used for transfering data
+// to WebBrowser responsible for displaying of messages.
+class Message {
+  private:
+    QString m_title;
+    QString m_url;
+    QString m_author;
+    QString m_contents;
+    QDateTime m_updated;
+
+    friend class WebBrowser;
+    friend class MessagesModel;
+};
 
 
 class MessagesModel : public QSqlTableModel {
@@ -25,6 +42,9 @@ class MessagesModel : public QSqlTableModel {
   public:
     // Sets up all icons which are used directly by this model.
     void setupIcons();
+
+    // Returns const reference to message at given index.
+    Message messageAt(int row_index) const;
 
   public slots:
     // Fetches ALL available data to the model.
@@ -48,6 +68,7 @@ class MessagesModel : public QSqlTableModel {
 
     QFont m_normalFont;
     QFont m_boldFont;
+
     QIcon m_favoriteIcon;
     QIcon m_readIcon;
     QIcon m_unreadIcon;

@@ -16,6 +16,8 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
+    void setSortingEnabled(bool enable);
+
     // Model accessors.
     MessagesProxyModel *model();
     MessagesModel *sourceModel();
@@ -33,13 +35,12 @@ class MessagesView : public QTreeView {
 
   signals:
     // TODO: dodělat signál.
-    void currentMessageChanged(/* const Message &message */);
+    void currentMessageChanged(const Message &message);
     void currentMessageRemoved();
 
   private:
     MessagesProxyModel *m_proxyModel;
     MessagesModel *m_sourceModel;
-    
 };
 
 #endif // MESSAGESVIEW_H

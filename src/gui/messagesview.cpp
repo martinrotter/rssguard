@@ -12,8 +12,28 @@ MessagesView::MessagesView(QWidget *parent) : QTreeView(parent) {
 
   setModel(m_proxyModel);
 
-  hideColumn(0);
-  header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
+  // Setup column resize strategies.
+  header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
+  header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+
+  // Hide columns.
+  hideColumn(MSG_DB_ID_INDEX);
+  hideColumn(MSG_DB_DELETED_INDEX);
+  hideColumn(MSG_DB_FEED_INDEX);
+  hideColumn(MSG_DB_URL_INDEX);
+  hideColumn(MSG_DB_CONTENTS_INDEX);
+
+
+  //hideColumn(0);
 
   // NOTE: It is recommended to call this after the model is set
   // due to sorting performance.
@@ -32,9 +52,13 @@ MessagesProxyModel *MessagesView::model() {
   return m_proxyModel;
 }
 
-void MessagesView::setupAppearance() {
-  header()->setStretchLastSection(true);
+void MessagesView::setSortingEnabled(bool enable) {
+  QTreeView::setSortingEnabled(enable);
+  header()->setSortIndicatorShown(false);
+}
 
+void MessagesView::setupAppearance() {
+  header()->setStretchLastSection(false);
   setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
@@ -66,6 +90,8 @@ void MessagesView::currentChanged(const QModelIndex &current,
          ind.row(), ind.column());
 
   m_sourceModel->setData(m_sourceModel->index(ind.row(), 1), 1, Qt::EditRole);
+
+  emit currentMessageChanged(m_sourceModel->messageAt(ind.row()));
 
   QTreeView::currentChanged(current, previous);
 }
