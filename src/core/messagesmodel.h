@@ -35,7 +35,8 @@ class MessagesModel : public QSqlTableModel {
 
     // Model implementation.
     bool setData(const QModelIndex &idx, const QVariant &value, int role = Qt::EditRole);
-    QVariant data(const QModelIndex &idx, int role) const;
+    QVariant data(const QModelIndex &idx, int role = Qt::DisplayRole) const;
+    QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Qt::ItemFlags flags(const QModelIndex &idx) const;
 
@@ -43,12 +44,17 @@ class MessagesModel : public QSqlTableModel {
     // Sets up all icons which are used directly by this model.
     void setupIcons();
 
-    // Returns const reference to message at given index.
+    // Returns message at given index.
     Message messageAt(int row_index) const;
 
   public slots:
+    // Message manipulators.
+    bool switchMessageImportance(int row_index);
+    bool setMessageDeleted(int row_index, int deleted);
+    bool setMessageRead(int row_index, int read);
+
     // Fetches ALL available data to the model.
-    // NOTE: This is almost needed when sorting
+    // NOTE: This is almost always needed when sorting
     // and makes the model more predictable.
     void fetchAll();
 
@@ -63,6 +69,7 @@ class MessagesModel : public QSqlTableModel {
     void setupFonts();
 
   private:
+    QList<int> m_currentFeeds;
     QList<QString> m_headerData;
     bool m_isInEditingMode;
 

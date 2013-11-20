@@ -22,6 +22,14 @@ class MessagesView : public QTreeView {
     MessagesProxyModel *model();
     MessagesModel *sourceModel();
 
+  public slots:
+    // Message manipulators.
+    // TODO: sem pridat metody jako
+    // setSelectedMessagesRead....
+    // setSelectedMessagesUnread.....
+    // deleteSelectedMessages....
+    // ......
+
   protected:
     void setupAppearance();
 
@@ -34,7 +42,6 @@ class MessagesView : public QTreeView {
                           const QItemSelection &deselected);
 
   signals:
-    // TODO: dodělat signál.
     void currentMessageChanged(const Message &message);
     void currentMessageRemoved();
 

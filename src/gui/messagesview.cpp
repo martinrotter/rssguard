@@ -89,7 +89,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
          current.row(), current.column(),
          ind.row(), ind.column());
 
-  m_sourceModel->setData(m_sourceModel->index(ind.row(), 1), 1, Qt::EditRole);
+  m_sourceModel->setMessageRead(ind.row(), 1);
 
   emit currentMessageChanged(m_sourceModel->messageAt(ind.row()));
 

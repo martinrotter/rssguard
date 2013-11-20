@@ -3,11 +3,13 @@
 #include <QToolBar>
 #include <QApplication>
 #include <QLineEdit>
+#include <QAction>
 
 #include "gui/feedmessageviewer.h"
 #include "gui/webbrowser.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
+#include "core/messagesproxymodel.h"
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
@@ -31,7 +33,11 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setMovable(false);
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
 
+  // TODO: testovaci
   m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
+  QAction *ac = m_toolBar->actions().at(0);
+  connect(ac, SIGNAL(triggered()),
+          m_messagesView->model()->sourceModel(), SLOT(submitAll()));
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

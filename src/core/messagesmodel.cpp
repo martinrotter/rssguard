@@ -20,7 +20,7 @@ MessagesModel::MessagesModel(QObject *parent)
   setupHeaderData();
 
   // Set desired table and edit strategy.
-  setEditStrategy(QSqlTableModel::OnFieldChange);
+  setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable("Messages");
 
   loadMessages(QList<int>());
@@ -50,7 +50,11 @@ void MessagesModel::setupFonts() {
 }
 
 void MessagesModel::loadMessages(const QList<int> feed_ids) {
+  // Submit changes first.
+  submitAll();
+
   // Conversion of parameter.
+  m_currentFeeds = feed_ids;
   QStringList stringy_ids;
   stringy_ids.reserve(feed_ids.count());
 
@@ -68,6 +72,7 @@ Message MessagesModel::messageAt(int row_index) const {
   QSqlRecord rec = record(row_index);
   Message message;
 
+  // Fill Message object with details.
   message.m_author = rec.value(MSG_DB_AUTHOR_INDEX).toString();
   message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
@@ -93,6 +98,10 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
   else {
     return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
   }
+}
+
+QVariant MessagesModel::data(int row, int column, int role) const {
+  return data(index(row, column), role);
 }
 
 QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
@@ -142,15 +151,30 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
 }
 
 bool MessagesModel::setData(const QModelIndex &idx, const QVariant &value, int role) {
-  if (!idx.isValid()) {
-    return false;
-  }
-
   m_isInEditingMode = true;
   bool set_data_result = QSqlTableModel::setData(idx, value, role);
   m_isInEditingMode = false;
 
   return set_data_result;
+}
+
+bool MessagesModel::setMessageRead(int row_index, int read) {
+  return setData(index(row_index, MSG_DB_READ_INDEX),
+                 read);
+}
+
+bool MessagesModel::setMessageDeleted(int row_index, int deleted) {
+  return setData(index(row_index, MSG_DB_DELETED_INDEX),
+                 deleted);
+}
+
+bool MessagesModel::switchMessageImportance(int row_index) {
+  QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
+  int current_importance = data(target_index).toInt();
+
+  return current_importance == 1 ?
+        setData(target_index, 0) :
+        setData(target_index, 1);
 }
 
 QVariant MessagesModel::headerData(int section,
