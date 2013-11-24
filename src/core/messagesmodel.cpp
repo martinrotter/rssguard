@@ -12,7 +12,8 @@
 
 
 MessagesModel::MessagesModel(QObject *parent)
-  : QSqlTableModel(parent, DatabaseFactory::getInstance()->addConnection("MessagesModel")) {
+  : QSqlTableModel(parent,
+                   DatabaseFactory::getInstance()->addConnection("MessagesModel")) {
   setObjectName("MessagesModel");
 
   setupFonts();
@@ -66,6 +67,10 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
   //setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(',')));
   select();
   fetchAll();
+}
+
+int MessagesModel::messageId(int row_index) const {
+  return record(row_index).value(MSG_DB_ID_INDEX).toInt();
 }
 
 Message MessagesModel::messageAt(int row_index) const {
@@ -175,6 +180,54 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   return current_importance == 1 ?
         setData(target_index, 0) :
         setData(target_index, 1);
+}
+
+bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
+  // Submit changes first.
+  submitAll();
+
+  if (!database().transaction()) {
+    qWarning("Starting transaction for batch message importance switch failed.");
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  int message_id, importance;
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
+                               "WHERE id = :id")) {
+    qWarning("Query preparation failed for message importance switch.");
+    return false;
+  }
+
+  foreach (const QModelIndex &message, messages) {
+    message_id = messageId(message.row());
+    importance = record(message.row()).value(MSG_DB_IMPORTANT_INDEX).toInt();
+
+    query_delete_msg.bindValue(":id", message_id);
+    query_delete_msg.bindValue(":important",
+                               importance == 1 ? 0 : 1);
+    query_delete_msg.exec();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // FULLY reload the model if underlying data is changed.
+    select();
+    fetchAll();
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
+bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
+
+}
+
+bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
+
 }
 
 QVariant MessagesModel::headerData(int section,

@@ -119,7 +119,13 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 }
 
 QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
-  return initialize(connection_name);
+  if (!m_initialized) {
+    return initialize(connection_name);
+  }
+  else {
+    return QSqlDatabase::addDatabase(DATABASE_DRIVER,
+                                     connection_name);
+  }
 }
 
 QSqlDatabase DatabaseFactory::getConnection(const QString &connection_name) {

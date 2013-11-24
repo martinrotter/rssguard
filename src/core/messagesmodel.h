@@ -46,12 +46,23 @@ class MessagesModel : public QSqlTableModel {
 
     // Returns message at given index.
     Message messageAt(int row_index) const;
+    int messageId(int row_index) const;
 
   public slots:
-    // Message manipulators.
+    // CORE messages manipulators.
+    // NOTE: These are used to change properties of one message.
+    // NOTE: Model is NOT reset after these methods are applied.
     bool switchMessageImportance(int row_index);
     bool setMessageDeleted(int row_index, int deleted);
     bool setMessageRead(int row_index, int read);
+
+    // BATCH messages manipulators.
+    // NOTE: These methods are used for changing of attributes of
+    // many messages via DIRECT SQL calls.
+    // NOTE: Model is reset after these methods is applied.
+    bool switchBatchMessageImportance(const QModelIndexList &messages);
+    bool setBatchMessagesDeleted(const QModelIndexList &messages, int deleted);
+    bool setBatchMessagesRead(const QModelIndexList &messages, int read);
 
     // Fetches ALL available data to the model.
     // NOTE: This is almost always needed when sorting

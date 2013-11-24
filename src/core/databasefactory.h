@@ -16,11 +16,15 @@ class DatabaseFactory : public QObject {
     // Assemblies database file path.
     void assemblyDatabaseFilePath();
 
-    // Returns true if database was initialized, otherwise false.
+    // Creates new connection, initializes database and
+    // returns opened connection.
     QSqlDatabase initialize(const QString &connection_name);
 
     // Path to database file.
     QString m_databasePath;
+
+    // Is database file initialized?
+    bool m_initialized;
 
     // Private singleton value.
     static QPointer<DatabaseFactory> s_instance;
