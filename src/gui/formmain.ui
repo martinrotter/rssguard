@@ -80,7 +80,7 @@
    </widget>
    <widget class="QMenu" name="m_menuWebBrowser">
     <property name="title">
-     <string>Web browser</string>
+     <string>&amp;Web browser</string>
     </property>
     <widget class="QMenu" name="m_menuCurrentTab">
      <property name="title">
@@ -97,19 +97,26 @@
     <property name="title">
      <string>Fee&amp;ds</string>
     </property>
-    <addaction name="m_actionUpdateAll"/>
-    <addaction name="m_actionUpdateSelected"/>
+    <addaction name="m_actionUpdateAllFeeds"/>
+    <addaction name="m_actionUpdateSelectedFeeds"/>
     <addaction name="separator"/>
-    <addaction name="m_actionEditSelected"/>
-    <addaction name="m_actionDeleteSelected"/>
+    <addaction name="m_actionEditSelectedFeed"/>
+    <addaction name="m_actionDeleteSelectedFeeds"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionMarkFeedsAsRead"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
      <string>&amp;Messages</string>
     </property>
-    <addaction name="actionMark_selected_as_read"/>
-    <addaction name="actionMark_selected_as_unread"/>
-    <addaction name="actionSwitch_importance"/>
+    <addaction name="m_actionMarkSelectedMessagesAsRead"/>
+    <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
+    <addaction name="m_actionMarkAllMessagesAsRead"/>
+    <addaction name="m_actionMarkAllMessagesAsUnread"/>
+    <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionDeleteSelectedMessages"/>
+    <addaction name="m_actionDeleteAllMessages"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
@@ -215,7 +222,7 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionUpdateAll">
+  <action name="m_actionUpdateAllFeeds">
    <property name="text">
     <string>Update &amp;all</string>
    </property>
@@ -223,7 +230,7 @@
     <string>Update all feeds.</string>
    </property>
   </action>
-  <action name="m_actionUpdateSelected">
+  <action name="m_actionUpdateSelectedFeeds">
    <property name="text">
     <string>Update &amp;selected</string>
    </property>
@@ -231,7 +238,7 @@
     <string>Update selected feeds/categories.</string>
    </property>
   </action>
-  <action name="m_actionEditSelected">
+  <action name="m_actionEditSelectedFeed">
    <property name="text">
     <string>&amp;Edit selected</string>
    </property>
@@ -239,7 +246,7 @@
     <string>Edit selected feed/category.</string>
    </property>
   </action>
-  <action name="m_actionDeleteSelected">
+  <action name="m_actionDeleteSelectedFeeds">
    <property name="text">
     <string>&amp;Delete selected</string>
    </property>
@@ -247,28 +254,53 @@
     <string>Delete selected feeds/categories.</string>
    </property>
   </action>
-  <action name="actionMark_selected_as_read">
+  <action name="m_actionMarkSelectedMessagesAsRead">
    <property name="text">
-    <string>Mark as &amp;read</string>
+    <string>Mark selected messages &amp;read</string>
    </property>
    <property name="toolTip">
     <string>Mark selected messages as read.</string>
    </property>
   </action>
-  <action name="actionMark_selected_as_unread">
+  <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
-    <string>Mark as &amp;unread</string>
+    <string>Mark selected messages &amp;unread</string>
    </property>
    <property name="toolTip">
     <string>Mark selected messages as unread.</string>
    </property>
   </action>
-  <action name="actionSwitch_importance">
+  <action name="m_actionSwitchImportanceOfSelectedMessages">
    <property name="text">
-    <string>Switch importance</string>
+    <string>Switch &amp;importance of selected messages</string>
    </property>
    <property name="toolTip">
     <string>Switch importance of selected messages.</string>
+   </property>
+  </action>
+  <action name="m_actionMarkFeedsAsRead">
+   <property name="text">
+    <string>Mark selected as read</string>
+   </property>
+  </action>
+  <action name="m_actionMarkAllMessagesAsRead">
+   <property name="text">
+    <string>Mark &amp;all messages read</string>
+   </property>
+  </action>
+  <action name="m_actionMarkAllMessagesAsUnread">
+   <property name="text">
+    <string>Mark a&amp;ll messages unread</string>
+   </property>
+  </action>
+  <action name="m_actionDeleteSelectedMessages">
+   <property name="text">
+    <string>&amp;Delete selected messages</string>
+   </property>
+  </action>
+  <action name="m_actionDeleteAllMessages">
+   <property name="text">
+    <string>Dele&amp;te all messages</string>
    </property>
   </action>
  </widget>

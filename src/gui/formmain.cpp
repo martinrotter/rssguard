@@ -148,8 +148,20 @@ void FormMain::setupIcons() {
   m_ui->m_actionImport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-export"));
   m_ui->m_actionFullscreen->setIcon(IconThemeFactory::getInstance()->fromTheme("view-fullscreen"));
-  m_ui->m_actionUpdateAll->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionUpdateSelected->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionUpdateSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+
+  m_ui->m_actionDeleteAllMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionDeleteSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionEditSelectedFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionMarkAllMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionMarkAllMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

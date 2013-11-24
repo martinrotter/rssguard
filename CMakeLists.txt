@@ -1,3 +1,22 @@
+#################################################################
+# RSS Guard compilation script for CMake.
+#
+# Usage:
+#   a) DEBUG build for testing.
+#     cmake -DCMAKE_BUILD_TYPE=debug -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT_5=ON
+#
+#   b) RELEASE build for production use.
+#     cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT_5=ON
+#
+# Arguments:
+#   "-DCMAKE_INSTALL_PREFIX=/usr"
+#     Installation path, replace with something like "C:\rssguard" on Windows.
+#
+#   "-DUSE_QT_5=ON"
+#     Specifies which major Qt version to use. Qt 4 and Qt 5 are supported.
+#     If "OFF" is passed as an argument, then Qt 4 is used.
+#################################################################
+
 cmake_minimum_required(VERSION 2.8.11)
 
 # Setup basic variables.
@@ -24,9 +43,6 @@ endif(APPLE)
 # Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-# Obtain revision number if available.
-message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
-
 # Select which Qt version to use.
 if(${USE_QT_5})
   message(STATUS "[${APP_LOW_NAME}] Using Qt 5 library for building.")
@@ -36,6 +52,9 @@ if(${USE_QT_5})
 else(${USE_QT_5})
   message(STATUS "[${APP_LOW_NAME}] Using Qt 4 library for building.")
 endif(${USE_QT_5})
+
+# Obtain revision number if available.
+message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
 
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
