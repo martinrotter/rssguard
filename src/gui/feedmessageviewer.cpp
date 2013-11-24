@@ -4,6 +4,9 @@
 #include <QApplication>
 #include <QLineEdit>
 #include <QAction>
+#include <QToolButton>
+#include <QMenu>
+#include <QWidgetAction>
 
 #include "gui/feedmessageviewer.h"
 #include "gui/webbrowser.h"
@@ -34,10 +37,25 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
 
   // TODO: testovaci
+  QMenu *update_menu = new QMenu(m_toolBar);
+  QAction *testAction = new QAction("test menu item", this);
+  update_menu->addAction(testAction);
+
+  QToolButton* toolButton = new QToolButton();
+  toolButton->setMenu(update_menu);
+  toolButton->setIcon(QIcon::fromTheme("application-exit"));
+  toolButton->setText("aaa");
+  toolButton->setPopupMode(QToolButton::MenuButtonPopup);
+
+  QWidgetAction* toolButtonAction = new QWidgetAction(this);
+  toolButtonAction->setDefaultWidget(toolButton);
+
+  m_toolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+  m_toolBar->addAction(toolButtonAction);
   m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
   QAction *ac = m_toolBar->actions().at(0);
   connect(ac, SIGNAL(triggered()),
-          m_messagesView->model()->sourceModel(), SLOT(submitAll()));
+          m_messagesView, SLOT(setAllMessagesRead()));
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

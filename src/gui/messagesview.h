@@ -24,11 +24,10 @@ class MessagesView : public QTreeView {
 
   public slots:
     // Message manipulators.
-    // TODO: sem pridat metody jako
-    // setSelectedMessagesRead....
-    // setSelectedMessagesUnread.....
-    // deleteSelectedMessages....
-    // ......
+    void setSelectedMessagesReadStatus(int read);
+
+    void setAllMessagesRead();
+
 
   protected:
     void setupAppearance();

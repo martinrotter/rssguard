@@ -48,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -93,8 +93,28 @@
     <addaction name="separator"/>
     <addaction name="m_menuCurrentTab"/>
    </widget>
+   <widget class="QMenu" name="m_menuFeeds">
+    <property name="title">
+     <string>Fee&amp;ds</string>
+    </property>
+    <addaction name="m_actionUpdateAll"/>
+    <addaction name="m_actionUpdateSelected"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionEditSelected"/>
+    <addaction name="m_actionDeleteSelected"/>
+   </widget>
+   <widget class="QMenu" name="m_menuMessages">
+    <property name="title">
+     <string>&amp;Messages</string>
+    </property>
+    <addaction name="actionMark_selected_as_read"/>
+    <addaction name="actionMark_selected_as_unread"/>
+    <addaction name="actionSwitch_importance"/>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
+   <addaction name="m_menuFeeds"/>
+   <addaction name="m_menuMessages"/>
    <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
@@ -193,6 +213,62 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionUpdateAll">
+   <property name="text">
+    <string>Update &amp;all</string>
+   </property>
+   <property name="toolTip">
+    <string>Update all feeds.</string>
+   </property>
+  </action>
+  <action name="m_actionUpdateSelected">
+   <property name="text">
+    <string>Update &amp;selected</string>
+   </property>
+   <property name="toolTip">
+    <string>Update selected feeds/categories.</string>
+   </property>
+  </action>
+  <action name="m_actionEditSelected">
+   <property name="text">
+    <string>&amp;Edit selected</string>
+   </property>
+   <property name="toolTip">
+    <string>Edit selected feed/category.</string>
+   </property>
+  </action>
+  <action name="m_actionDeleteSelected">
+   <property name="text">
+    <string>&amp;Delete selected</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete selected feeds/categories.</string>
+   </property>
+  </action>
+  <action name="actionMark_selected_as_read">
+   <property name="text">
+    <string>Mark as &amp;read</string>
+   </property>
+   <property name="toolTip">
+    <string>Mark selected messages as read.</string>
+   </property>
+  </action>
+  <action name="actionMark_selected_as_unread">
+   <property name="text">
+    <string>Mark as &amp;unread</string>
+   </property>
+   <property name="toolTip">
+    <string>Mark selected messages as unread.</string>
+   </property>
+  </action>
+  <action name="actionSwitch_importance">
+   <property name="text">
+    <string>Switch importance</string>
+   </property>
+   <property name="toolTip">
+    <string>Switch importance of selected messages.</string>
    </property>
   </action>
  </widget>

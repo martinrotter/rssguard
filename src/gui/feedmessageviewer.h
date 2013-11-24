@@ -29,6 +29,7 @@ class FeedMessageViewer : public TabContent {
 
   private:
     QToolBar *m_toolBar;
+
     MessagesView *m_messagesView;
     FeedsView *m_feedsView;
     WebBrowser *m_messagesBrowser;

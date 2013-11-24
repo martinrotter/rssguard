@@ -82,16 +82,30 @@ void MessagesView::keyPressEvent(QKeyEvent *event) {
 
 void MessagesView::currentChanged(const QModelIndex &current,
                                   const QModelIndex &previous) {
-  QModelIndex ind = m_proxyModel->mapToSource(current);
+  QModelIndex mapped_current = m_proxyModel->mapToSource(current);
 
 
-  qDebug("CurrentChanged %d %d source %d %d",
+  qDebug("Current row changed, row [%d,%d] source %d %d",
          current.row(), current.column(),
-         ind.row(), ind.column());
+         mapped_current.row(), mapped_current.column());
 
-  m_sourceModel->setMessageRead(ind.row(), 1);
-
-  emit currentMessageChanged(m_sourceModel->messageAt(ind.row()));
+  m_sourceModel->setMessageRead(mapped_current.row(), 1);
+  emit currentMessageChanged(m_sourceModel->messageAt(mapped_current.row()));
 
   QTreeView::currentChanged(current, previous);
+}
+
+void MessagesView::setSelectedMessagesReadStatus(int read) {
+}
+
+void MessagesView::setAllMessagesRead() {
+  selectAll();
+  QModelIndexList selected_indexes = selectedIndexes();
+  QModelIndexList mapp;
+
+  foreach (const QModelIndex &index, selected_indexes) {
+    mapp << m_proxyModel->mapToSource(index);
+  }
+
+  m_sourceModel->switchBatchMessageImportance(mapp);
 }
