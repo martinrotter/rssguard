@@ -1,6 +1,8 @@
 #ifndef TEXTFACTORY_H
 #define TEXTFACTORY_H
 
+#include <QDateTime>
+
 #include "core/defs.h"
 
 

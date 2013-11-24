@@ -1,6 +1,5 @@
 #include <QString>
 #include <QStringList>
-#include <QDateTime>
 #include <QLocale>
 #include <QRegExp>
 
@@ -27,7 +26,7 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
                    "YYYY-MM-DDThh:mm:ssTZD";
 
   // Iterate over patterns and check if input date/time matches the pattern.
-  foreach (QString pattern, date_patterns) {
+  foreach (const QString &pattern, date_patterns) {
     temp = date.left(pattern.size());
     dt = locale.toDateTime(temp, pattern);
     if (dt.isValid()) {

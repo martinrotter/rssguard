@@ -1,7 +1,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include "core/datetime.h"
+#include "core/textfactory.h"
 #include "gui/formabout.h"
 #include "gui/iconthemefactory.h"
 
@@ -64,8 +64,8 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                              CMAKE_SYSTEM,
                                                                              CMAKE_VERSION,
                                                                              APP_REVISION,
-                                                                             DateTime::fromString(QString("%1 %2").arg(__DATE__,
-                                                                                                                       __TIME__)).toString(Qt::DefaultLocaleShortDate),
+                                                                             TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
+                                                                                                                             __TIME__)).toString(Qt::DefaultLocaleShortDate),
                                                                              QT_VERSION_STR,
                                                                              qVersion(),
                                                                              APP_NAME));

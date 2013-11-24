@@ -5,7 +5,7 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include "core/defs.h"
-#include "core/datetime.h"
+#include "core/textfactory.h"
 #include "core/messagesmodel.h"
 #include "core/databasefactory.h"
 #include "gui/iconthemefactory.h"
@@ -82,7 +82,7 @@ Message MessagesModel::messageAt(int row_index) const {
   message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
-  message.m_updated = DateTime::fromString(rec.value(MSG_DB_DUPDATED_INDEX).toString());
+  message.m_updated = TextFactory::parseDateTime(rec.value(MSG_DB_DUPDATED_INDEX).toString());
 
   return message;
 }

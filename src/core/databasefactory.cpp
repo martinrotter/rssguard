@@ -92,8 +92,8 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
                                                                   QString::SkipEmptyParts);
       database.exec("BEGIN TRANSACTION");
 
-      foreach(QString i, statements) {
-        query = database.exec(i);
+      foreach(const QString &statement, statements) {
+        query = database.exec(statement);
         if (query.lastError().isValid()) {
           qFatal("Database initialization failed. Initialization script '%s' is not correct.",
                  APP_DB_INIT_FILE);

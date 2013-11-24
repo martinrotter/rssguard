@@ -221,7 +221,6 @@ set(APP_SOURCES
   src/core/debugging.cpp
   src/core/settings.cpp
   src/core/systemfactory.cpp
-  src/core/datetime.cpp
   src/core/localization.cpp
   src/core/dynamicshortcuts.cpp
   src/core/basenetworkaccessmanager.cpp

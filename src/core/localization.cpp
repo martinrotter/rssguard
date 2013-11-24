@@ -19,7 +19,7 @@ QList<Language> Localization::getInstalledLanguages() {
                                                    QDir::Name);
   QTranslator translator;
 
-  foreach (QFileInfo file, file_list) {
+  foreach (const QFileInfo &file, file_list) {
     if (translator.load(file.absoluteFilePath())) {
       Language new_language;
       new_language.m_name = translator.translate("QObject", "LANG_NAME");
