@@ -47,9 +47,6 @@ MessagesView::MessagesView(QWidget *parent) : QTreeView(parent) {
   hideColumn(MSG_DB_URL_INDEX);
   hideColumn(MSG_DB_CONTENTS_INDEX);
 
-
-  //hideColumn(0);
-
   // NOTE: It is recommended to call this after the model is set
   // due to sorting performance.
   setupAppearance();

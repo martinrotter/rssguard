@@ -111,7 +111,7 @@ QVariant MessagesModel::data(int row, int column, int role) const {
 
 QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   switch (role) {
-    //
+      // Human readable data for viewing.
     case Qt::DisplayRole: {
       int index_column = idx.column();
       if (index_column != MSG_DB_IMPORTANT_INDEX &&
