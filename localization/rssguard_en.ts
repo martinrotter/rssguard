@@ -75,6 +75,14 @@
         <source>Page not found</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Check your internet connection or website address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CornerButton</name>
@@ -235,6 +243,82 @@
         <source>No actions are possible at this point of time.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Fee&amp;ds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+O</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update all feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update selected feeds/categories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit selected feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected feeds/categories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark as &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch importance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch importance of selected messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -276,10 +360,6 @@
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Skin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -482,19 +562,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Active skin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Selected skin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Newly selected skin is activated after the applicaton gets restarted!!!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Active skin:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected skin:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide tab bar if just one tab is visible</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -517,6 +605,53 @@
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessagesModel</name>
+    <message>
+        <source>Id</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Important</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Created on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updated on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contents</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -549,9 +684,13 @@
     </message>
 </context>
 <context>
-    <name>SkinFactory</name>
+    <name>ShortcutCatcher</name>
     <message>
-        <source>default system skin</source>
+        <source>Reset shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set shortcut.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -633,6 +772,10 @@
     </message>
     <message>
         <source>Increase zoom.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Written by </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

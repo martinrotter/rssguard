@@ -281,12 +281,14 @@ set(APP_RESOURCES
 set(APP_TRANSLATIONS
   localization/rssguard_en.ts
   localization/rssguard_cs.ts
+  localization/rssguard_nl.ts
   localization/qt_cs.ts
 )
 
 set(APP_TRANSLATIONS_WO_QT
   localization/rssguard_en.ts
   localization/rssguard_cs.ts
+  localization/rssguard_nl.ts
 )
 
 set(APP_TEXT
