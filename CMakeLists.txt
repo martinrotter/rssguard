@@ -385,8 +385,8 @@ else(${USE_QT_5})
 endif(${USE_QT_5})
 
 # Installation stage.
-if(WIN32)
-  message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows.")
+if(WIN32 OR OS2)
+  message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
   install(DIRECTORY resources/graphics/themes/mini-kfaenza
@@ -431,7 +431,7 @@ elseif(UNIX)
           DESTINATION share/${APP_LOW_NAME}/l10n)
   install(FILES ${APP_TEXT}
           DESTINATION share/${APP_LOW_NAME}/information)
-endif(WIN32)
+endif(WIN32 OR OS2)
 
 # Custom target for packaging.
 set(CPACK_PACKAGE_NAME ${APP_LOW_NAME})
