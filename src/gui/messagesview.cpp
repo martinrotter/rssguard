@@ -12,6 +12,11 @@ MessagesView::MessagesView(QWidget *parent) : QTreeView(parent) {
 
   setModel(m_proxyModel);
 
+  // FIXME: Sometimes ASSERT occurs if model provides less columns
+  // than we set resize mode for.
+  qDebug("Loading MessagesView with %d columns.",
+         header()->count());
+
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.
   header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
