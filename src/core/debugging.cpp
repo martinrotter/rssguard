@@ -20,7 +20,7 @@
   fprintf(stderr, "[%s] %s: %s\n", \
   APP_LOW_NAME, \
   type_string, \
-  qPrintable(message));
+  message);
 #endif
 #endif
 

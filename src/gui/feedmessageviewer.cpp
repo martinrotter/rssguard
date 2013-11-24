@@ -54,7 +54,7 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(toolButtonAction);
   m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
   QAction *ac = m_toolBar->actions().at(0);
-  connect(ac, SIGNAL(triggered()),
+  connect(testAction, SIGNAL(triggered()),
           m_messagesView, SLOT(setAllMessagesRead()));
 
   // Finish web/message browser setup.
