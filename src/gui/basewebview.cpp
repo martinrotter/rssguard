@@ -55,7 +55,11 @@ void BaseWebView::setupIcons() {
   m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
   m_actionCopyLink->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
   m_actionCopyImage->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
+
+#if QT_VERSION >= 0x040800
   m_actionCopyImageUrl->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
+#endif
+
   m_actionOpenLinkThisTab->setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
   m_actionOpenLinkNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
   m_actionOpenImageNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
@@ -78,10 +82,12 @@ void BaseWebView::initializeActions() {
   m_actionCopyImage->setText(tr("Copy image"));
   m_actionCopyImage->setToolTip(tr("Copy image to clipboard"));
 
+#if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
   m_actionCopyImageUrl->setParent(this);
   m_actionCopyImageUrl->setText(tr("Copy image url"));
   m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard"));
+#endif
 
   m_actionOpenLinkNewTab = pageAction(QWebPage::OpenLinkInNewWindow);
   m_actionOpenLinkNewTab->setParent(this);
@@ -144,7 +150,10 @@ void BaseWebView::popupContextMenu(const QPoint &pos) {
     if (hit_image_url.isValid()) {
       m_contextImageUrl = hit_image_url;
       image_submenu.addAction(m_actionOpenImageNewTab);
+
+#if QT_VERSION >= 0x040800
       image_submenu.addAction(m_actionCopyImageUrl);
+#endif
     }
     image_submenu.addAction(m_actionCopyImage);
   }

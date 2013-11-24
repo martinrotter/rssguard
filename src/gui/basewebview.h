@@ -70,7 +70,11 @@ class BaseWebView : public QWebView {
     QAction *m_actionReload;
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;
+
+#if QT_VERSION >= 0x040800
     QAction *m_actionCopyImageUrl;
+#endif
+
     QAction *m_actionOpenLinkThisTab;
     QAction *m_actionOpenLinkNewTab;
     QAction *m_actionOpenImageNewTab;
