@@ -55,8 +55,8 @@ QSettings::Status Settings::setupSettings() {
   // If settings file exists in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).
   // Otherwise use settings file stored in homePath();
-  QString relative_path = QDir::separator() + APP_CFG_PATH +
-                          QDir::separator() + APP_CFG_FILE;
+  QString relative_path = QDir::separator() + QString(APP_CFG_PATH) +
+                          QDir::separator() + QString(APP_CFG_FILE);
 
   QString app_path = qApp->applicationDirPath();
   QString app_path_file = app_path + relative_path;
@@ -69,7 +69,7 @@ QSettings::Status Settings::setupSettings() {
 
     // TODO: Separate web settings into another unit.
     // Construct icon cache in the same path.
-    QString web_path = app_path + QDir::separator() + APP_DB_WEB_PATH;
+    QString web_path = app_path + QDir::separator() + QString(APP_DB_WEB_PATH);
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
@@ -80,14 +80,14 @@ QSettings::Status Settings::setupSettings() {
     // Portable settings are NOT available, store them in
     // user's home directory.
     QString home_path = QDir::homePath() + QDir::separator() +
-                        APP_LOW_H_NAME;
+                        QString(APP_LOW_H_NAME);
     QString home_path_file = home_path + relative_path;
 
     s_instance = new Settings(home_path_file, QSettings::IniFormat,
                               Settings::NonPortable, qApp);
 
     // Construct icon cache in the same path.
-    QString web_path = home_path + QDir::separator() + APP_DB_WEB_PATH;
+    QString web_path = home_path + QDir::separator() + QString(APP_DB_WEB_PATH);
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
