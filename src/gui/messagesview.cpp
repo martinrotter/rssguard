@@ -12,6 +12,7 @@ MessagesView::MessagesView(QWidget *parent) : QTreeView(parent) {
 
   setModel(m_proxyModel);
 
+#if QT_VERSION >= 0x050000
   // Setup column resize strategies.
   header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
   header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
@@ -24,6 +25,20 @@ MessagesView::MessagesView(QWidget *parent) : QTreeView(parent) {
   header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
   header()->setSectionResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
   header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+#else
+  // Setup column resize strategies.
+  header()->setResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
+  header()->setResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
+  header()->setResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
+  header()->setResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+#endif
 
   // Hide columns.
   hideColumn(MSG_DB_ID_INDEX);

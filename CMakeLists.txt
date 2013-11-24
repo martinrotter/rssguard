@@ -14,10 +14,6 @@ option(USE_QT_5 "Use Qt 5 for building" ON)
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
-#if(USE_QT_5 EQUAL false)
-#  message(FATAL_ERROR "[${APP_LOW_NAME}] Only Qt 5 is supported now.")
-#endif(USE_QT_5 EQUAL false)
-
 # Setup name for executable file.
 if(APPLE)
   set(EXE_NAME ${APP_UP_NAME})
