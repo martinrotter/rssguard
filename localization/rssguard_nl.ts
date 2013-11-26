@@ -5,163 +5,163 @@
     <name>BaseWebView</name>
     <message>
         <source>Reload web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Herlaad webpagina</translation>
     </message>
     <message>
         <source>Reload current web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Herlaad huidige webpagina</translation>
     </message>
     <message>
         <source>Copy link url</source>
-        <translation type="unfinished"></translation>
+        <translation>URL kopiëren</translation>
     </message>
     <message>
         <source>Copy link url to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL kopiëren naar klembord</translation>
     </message>
     <message>
         <source>Copy image</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëer afbeelding</translation>
     </message>
     <message>
         <source>Copy image to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëer afbeelding naar klembord</translation>
     </message>
     <message>
         <source>Copy image url</source>
-        <translation type="unfinished"></translation>
+        <translation>URL afbeelding kopiëren</translation>
     </message>
     <message>
         <source>Copy image url to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL afbeelding naar klembord kopiëren</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbrowser</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeelding</translation>
     </message>
     <message>
         <source>Open link in new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Open link in nieuw tabblad</translation>
     </message>
     <message>
         <source>Open this hyperlink in new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Open deze koppeling in nieuw tabblad</translation>
     </message>
     <message>
         <source>Follow link</source>
-        <translation type="unfinished"></translation>
+        <translation>Volg koppeling</translation>
     </message>
     <message>
         <source>Open the hyperlink in this tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Open koppeling in dit tabblad</translation>
     </message>
     <message>
         <source>Open image in new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Open afbeelding in nieuw tabblad</translation>
     </message>
     <message>
         <source>Open this image in this tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Open deze afbeelding in dit tabblad</translation>
     </message>
     <message>
         <source>Hyperlink</source>
-        <translation type="unfinished"></translation>
+        <translation>Koppeling</translation>
     </message>
     <message>
         <source>Page not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina niet gevonden</translation>
     </message>
     <message>
         <source>Check your internet connection or website address</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer je internet verbinding of website adres</translation>
     </message>
     <message>
         <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze fout kan veroorzaakt worden door:&lt;br&gt;&lt;ul&gt;&lt;li&gt;niet werkende internet verbinding,&lt;/li&gt;&lt;li&gt;onjuiste website adres,&lt;/li&gt;&lt;li&gt;slechte proxy server instelling,&lt;/li&gt;&lt;li&gt;uitval van doellocatie,&lt;/li&gt;&lt;li&gt;of vele andere zaken.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
 </context>
 <context>
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Open nieuw tabblad</translation>
     </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk voor berichten</translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
     <message>
         <source>About RSS Guard</source>
-        <translation type="unfinished"></translation>
+        <translation>Over RSS Guard</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <source>Licenses</source>
-        <translation type="unfinished"></translation>
+        <translation>Licenties</translation>
     </message>
     <message>
         <source>GNU GPL License (applies to RSS Guard source code)</source>
-        <translation type="unfinished"></translation>
+        <translation>GNU GPL Licentie (Geldt voor RSS Guard bron code)</translation>
     </message>
     <message>
         <source>GNU GPL License</source>
-        <translation type="unfinished"></translation>
+        <translation>GNU GPL Licentie</translation>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation type="unfinished"></translation>
+        <translation>BSD licentie (Geldt voor QtSingleAplication bron code)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
-        <translation type="unfinished"></translation>
+        <translation>Licentie pagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>Thanks to</source>
-        <translation type="unfinished"></translation>
+        <translation>Dank aan</translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
-        <translation type="unfinished"></translation>
+        <translation>Changelog pagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>License not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Licentie niet gevonden.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Changelog niet gevonden.</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (build on %2 with CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (Bouwtijd %2 met Cmake %3)&lt;br&gt;&lt;b&gt; Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Bouwdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (Gecompileerd met %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>Thanks to page is available only in English language.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dank pagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
         <source>Authors information not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteurs informatie niet gevonden.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -169,154 +169,174 @@
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bestand</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Toon</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hulpmiddelen</translation>
     </message>
     <message>
         <source>&amp;Import</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Importeer</translation>
     </message>
     <message>
         <source>E&amp;xport</source>
-        <translation type="unfinished"></translation>
+        <translation>E&amp;xporteer</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sluit</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Instellingen</translation>
     </message>
     <message>
         <source>&amp;About RSS Guard</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Over RSS Guard</translation>
     </message>
     <message>
         <source>&amp;Fullscreen mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Beeldvullende modus</translation>
     </message>
     <message>
         <source>&amp;Current tab</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Huidig tabblad</translation>
     </message>
     <message>
         <source>&amp;Add tab</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tabblad toevoegen</translation>
     </message>
     <message>
         <source>Add tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabblad toevoegen</translation>
     </message>
     <message>
         <source>Close &amp;all tabs except current one</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit &amp;alle tabbladen behalve deze</translation>
     </message>
     <message>
         <source>Close all tabs except current one</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit alle tabbladen behalve deze</translation>
     </message>
     <message>
         <source>Close current &amp;tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit huidig &amp;tabblad</translation>
     </message>
     <message>
         <source>&amp;No actions possible</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Geen acties mogelijk</translation>
     </message>
     <message>
         <source>No actions are possible at this point of time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen acties mogelijk op dit moment.</translation>
     </message>
     <message>
         <source>Fee&amp;ds</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Berichten</translation>
     </message>
     <message>
         <source>Ctrl+Shift+T</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+Shift+O</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Update &amp;all</source>
-        <translation type="unfinished"></translation>
+        <translation>Update &amp;alles</translation>
     </message>
     <message>
         <source>Update all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Update alle feeds.</translation>
     </message>
     <message>
         <source>Update &amp;selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Update ge&amp;selekteerde</translation>
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
-        <translation type="unfinished"></translation>
+        <translation>Update geselekteerde feeds/categorieën.</translation>
     </message>
     <message>
         <source>&amp;Edit selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bew&amp;erk geselekteerde</translation>
     </message>
     <message>
         <source>Edit selected feed/category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk geselekteerde feeds/categorieën.</translation>
     </message>
     <message>
         <source>&amp;Delete selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwij&amp;der geselekteerde</translation>
     </message>
     <message>
         <source>Delete selected feeds/categories.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>verwijder geselekteerde feeds/categorieën.</translation>
     </message>
     <message>
         <source>Mark selected messages as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark as &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselekteerde bericht als gelezen.</translation>
     </message>
     <message>
         <source>Mark selected messages as unread.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch importance</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselekteerde bericht als ongelezen.</translation>
     </message>
     <message>
         <source>Switch importance of selected messages.</source>
+        <translation>Wissel de belangrijkheid van geselekteerde berichten.</translation>
+    </message>
+    <message>
+        <source>&amp;Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;importance of selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;all messages read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark a&amp;ll messages unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dele&amp;te all messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -324,215 +344,215 @@
     <name>FormSettings</name>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemeen</translation>
     </message>
     <message>
         <source>User interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikers interface</translation>
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram thema</translation>
     </message>
     <message>
         <source>system icon theme (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeem pictogram thema (standaard)</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Keyboard shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Sneltoetsen toetsenbord</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Launch RSS Guard on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad RSS Guard als systeem opstart</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogrammen &amp;&amp; skins</translation>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram in het systeemvak</translation>
     </message>
     <message>
         <source>When main window is closed, then</source>
-        <translation type="unfinished"></translation>
+        <translation>Als hoofvenster gesloten is, dan</translation>
     </message>
     <message>
         <source>hide it.</source>
-        <translation type="unfinished"></translation>
+        <translation>verberg het.</translation>
     </message>
     <message>
         <source>quit the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>sluit het programma.</translation>
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Start programma verborgen</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbrowser</translation>
     </message>
     <message>
         <source>&amp;Change...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verander...</translation>
     </message>
     <message>
         <source>Use custom color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik eigen kleur voor webbrowser voortgangsbalk</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Host</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam of ip van je proxy server</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Poort</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Your username for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Je gebruikersnaam voor proxy server verificatie</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>Your password for proxy server authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Je paswoord voor proxy server verificatie</translation>
     </message>
     <message>
         <source>Display password</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon paswoord</translation>
     </message>
     <message>
         <source>Password is stored in plain string in RSS Guard configuration file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord is opgeslagen in gewone tekst in RSS Guard configuratie bestand.</translation>
     </message>
     <message>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>versie</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Select color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer kleur voor webbrowser voortgangsbalk</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wil je nu herstarten?</translation>
     </message>
     <message>
         <source>Language changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal is veranderd</translation>
     </message>
     <message>
         <source>Problem with RSS Guard restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Problemen met RSS Guard herstart</translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
-        <translation type="unfinished"></translation>
+        <translation> (Platform wordt niet ondersteunt)</translation>
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Tray gebied &amp;&amp; meldingen</translation>
     </message>
     <message>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitzetten</translation>
     </message>
     <message>
         <source>Enable</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanzetten</translation>
     </message>
     <message>
         <source>Tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabbladen</translation>
     </message>
     <message>
         <source>Close tabs with</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit tabblad met</translation>
     </message>
     <message>
         <source>Left mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Linker muisknop dubbele-klik</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Middelste muisknop enkele-klik</translation>
     </message>
     <message>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Open nieuwe tabbladen met linker muisknop dubbel-klik op tabblad</translation>
     </message>
     <message>
         <source>Enable mouse gestures</source>
-        <translation type="unfinished"></translation>
+        <translation>Muisbewegingen aanzetten</translation>
     </message>
     <message>
         <source>Web browser &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start.</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal van RSS Guard is veranderd. Taal veranderd bij een herstart.</translation>
     </message>
     <message>
         <source>RSS Guard couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>RSS Guard kan niet worden geherstart, herstart het handmatig AUB.</translation>
     </message>
     <message>
         <source>Disable (Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitzetten (Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
     <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
@@ -542,117 +562,124 @@
 &lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
 &lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Muisbeweging werkt met middelste muisknop. Mogelijke muisbewegingen zijn:
+&lt;ul&gt;
+&lt;li&gt;vorige webpagina (sleep muis links)&lt;/li&gt;
+&lt;li&gt;volgende webpagina(sleep muis rechts)&lt;/li&gt;
+&lt;li&gt;herlaad huidige webpagina(sleep muis omhoog)&lt;/li&gt;
+&lt;li&gt;Open nieuw webbrowser pagina(sleep muis omlaag)&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Wachtrij nieuwe tabbladen (met koppelingen) na de actieve tabblad</translation>
     </message>
     <message>
         <source>no icon theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen pictogram thema</translation>
     </message>
     <message>
         <source>Some keyboard shortcuts are not unique.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige sneltoetsen voor toetsenbord zijn niet uniek.
+</translation>
     </message>
     <message>
         <source>Cannot save settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan instellingen niet opslaan</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogrammen</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Skins</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Actieve skin:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gekozen skin:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Verberg  tabblad als alleen een tabblad zichtbaar is</translation>
     </message>
 </context>
 <context>
     <name>FormWelcome</name>
     <message>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkom</translation>
     </message>
     <message>
         <source>Welcome to RSS Guard</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkom bij RSS Guard</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.Het ondersteunt alle grote feed formaten, zoals RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Zorg ervoor dat u alle beschikbare functies verkent. Als je een bug vindt of als je een nieuwe functie wilt zien, creëren dan nieuw &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span stijl=&quot;tekst-decoratie:onderstreep;kleur:#0000ff;&quot;&gt;probleem report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard kan vertaalt worden naar elke taal. Email naar &lt;a ref=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span stijl=&quot;tekst-decoratie:onderstreep;kleur:#0000ff;&quot;&gt;auteur&lt;/span&gt;&lt;/a&gt;in geval van interesse.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"></translation>
+        <translation>Website adress gaat hier</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"></translation>
+        <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"></translation>
+        <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Updated on</source>
-        <translation type="unfinished"></translation>
+        <translation>Updated op</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhoud</translation>
     </message>
 </context>
 <context>
@@ -660,12 +687,12 @@
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>English</translation>
+        <translation>Nederlands</translation>
     </message>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here!</extracomment>
-        <translation>en</translation>
+        <translation>nl</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
@@ -675,108 +702,108 @@
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation>Elbert Pol</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation>elbert.pol@gmail.com</translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset Sneltoets.</translation>
     </message>
     <message>
         <source>Set shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel sneltoets in.</translation>
     </message>
 </context>
 <context>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Blader door feeds en berichten</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit geopende modaal vensters eerst.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigatie venster</translation>
     </message>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Terug</translation>
     </message>
     <message>
         <source>Go back</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga terug</translation>
     </message>
     <message>
         <source>Forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Vooruit</translation>
     </message>
     <message>
         <source>Go forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga vooruit</translation>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Herlaad</translation>
     </message>
     <message>
         <source>Reload current web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Herlaad huidige webpagina</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Stop web page loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop laden van webpagina</translation>
     </message>
     <message>
         <source>Zoom  </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>No title</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen titel</translation>
     </message>
     <message>
         <source>Decrease zoom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom verlagen.</translation>
     </message>
     <message>
         <source>Reset zoom to default.</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset zoom naar standaard.</translation>
     </message>
     <message>
         <source>Increase zoom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom verhogen.</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"></translation>
+        <translation>Geschreven door </translation>
     </message>
 </context>
 </TS>

@@ -161,7 +161,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -205,10 +205,6 @@
     </message>
     <message>
         <source>&amp;Fullscreen mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -296,15 +292,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark as &amp;read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark selected messages as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark as &amp;unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -312,11 +300,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch importance</source>
+        <source>Switch importance of selected messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch importance of selected messages.</source>
+        <source>&amp;Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;importance of selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;all messages read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark a&amp;ll messages unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dele&amp;te all messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

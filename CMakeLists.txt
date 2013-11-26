@@ -291,7 +291,6 @@ set(APP_FORMS
 
 # Add resources.
 set(APP_RESOURCES
-  #resources/graphics/themes.qrc
   resources/rssguard_resources.qrc
 )
 
@@ -405,8 +404,8 @@ if(WIN32 OR OS2)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
-  install(DIRECTORY resources/graphics/themes/mini-kfaenza
-          DESTINATION ./themes)
+  install(DIRECTORY resources/graphics/icons/mini-kfaenza
+          DESTINATION ./icons)
   install(DIRECTORY resources/graphics/flags
           DESTINATION ./)
   install(DIRECTORY resources/skins/base
@@ -427,8 +426,8 @@ elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION bin)
-  install(DIRECTORY resources/graphics/themes/mini-kfaenza
-          DESTINATION share/${APP_LOW_NAME}/themes)
+  install(DIRECTORY resources/graphics/icons/mini-kfaenza
+          DESTINATION share/${APP_LOW_NAME}/icons)
   install(DIRECTORY resources/graphics/flags
           DESTINATION share/${APP_LOW_NAME}/)
   install(DIRECTORY resources/skins/base
@@ -450,11 +449,12 @@ elseif(UNIX)
 endif(WIN32 OR OS2)
 
 # Custom target for packaging.
+set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_NAME ${APP_LOW_NAME})
 set(CPACK_PACKAGE_VERSION ${APP_VERSION})
+set(CPACK_IGNORE_FILES "/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
 set(CPACK_SOURCE_GENERATOR "TGZ")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-src")
-set(CPACK_IGNORE_FILES "/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
 set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
 
 # Load packaging facilities.

@@ -19,10 +19,12 @@ class FormSettings : public QDialog {
     Q_OBJECT
     
   public:
+    // Constructors and destructors.
     explicit FormSettings(QWidget *parent = 0);
     virtual ~FormSettings();
 
   protected:
+    // Does check of controls before dialog can be submitted.
     bool doSaveCheck();
 
   protected slots:

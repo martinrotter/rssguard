@@ -182,6 +182,8 @@ QList<Skin> SkinFactory::getInstalledSkins() {
 
     foreach (QString skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.
+      // TODO: tady problem se separatorem, na windows v nastaveni
+      // pak spatne nacte skin
       Skin skin_info = getSkinInfo(base_directory + QDir::separator() + skin_file,
                                    &skin_load_ok);
 

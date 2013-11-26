@@ -77,11 +77,11 @@
     </message>
     <message>
         <source>Check your internet connection or website address</source>
-        <translation type="unfinished"></translation>
+        <translation>Zkontrolujte Vaše internetové připojení a adresu webové stránky</translation>
     </message>
     <message>
         <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuto chybu může způsobit:&lt;br&gt;&lt;ul&gt;&lt;li&gt;nefunkční internetové připojení,&lt;/li&gt;&lt;li&gt;&lt;/li&gt;nesprávně zadaná webová adresa,&lt;/li&gt;&lt;li&gt;špatně nastavená proxy,&lt;/li&gt;&lt;li&gt;výpadek cílového webu,&lt;/li&gt;&lt;li&gt;mnoho dalších věcí.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
 </context>
 <context>
@@ -161,8 +161,8 @@
         <translation>Informace o autorech nebyly nalezeny.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojový kód pro RSS Guard lze získat z jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</translation>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <translation>&lt;body&gt;RSS Guard je velmi jednoduchá čtečka kanálů&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy této aplikace lze získat z jejího webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -208,10 +208,6 @@
         <translation>&amp;Režime celé obrazovky</translation>
     </message>
     <message>
-        <source>Web browser</source>
-        <translation>Webový prohlížeč</translation>
-    </message>
-    <message>
         <source>&amp;Current tab</source>
         <translation>&amp;Aktivní panel</translation>
     </message>
@@ -245,11 +241,11 @@
     </message>
     <message>
         <source>Fee&amp;ds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kanály</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zprávy</translation>
     </message>
     <message>
         <source>Ctrl+Shift+T</source>
@@ -265,15 +261,15 @@
     </message>
     <message>
         <source>Update &amp;all</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat &amp;vše</translation>
     </message>
     <message>
         <source>Update all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat všechny kanály.</translation>
     </message>
     <message>
         <source>Update &amp;selected</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aktualizovat vybrané</translation>
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
@@ -296,15 +292,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark as &amp;read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark selected messages as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark as &amp;unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -312,11 +300,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch importance</source>
+        <source>Switch importance of selected messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch importance of selected messages.</source>
+        <source>&amp;Web browser</source>
+        <translation>&amp;Webovy prohlížeč</translation>
+    </message>
+    <message>
+        <source>Mark selected messages &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;importance of selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;all messages read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark a&amp;ll messages unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dele&amp;te all messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -573,23 +593,23 @@
     </message>
     <message>
         <source>Icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikony</translation>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"></translation>
+        <translation>Skiny</translation>
     </message>
     <message>
         <source>Active skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivní skin:</translation>
     </message>
     <message>
         <source>Selected skin:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybraný skin:</translation>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
     </message>
 </context>
 <context>
@@ -618,47 +638,47 @@
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
-        <translation type="unfinished"></translation>
+        <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Updated on</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizováno</translation>
     </message>
     <message>
         <source>Contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah</translation>
     </message>
 </context>
 <context>
@@ -693,11 +713,11 @@
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit zkratku.</translation>
     </message>
     <message>
         <source>Set shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavit zkratku.</translation>
     </message>
 </context>
 <context>
@@ -782,7 +802,7 @@
     </message>
     <message>
         <source>Written by </source>
-        <translation type="unfinished"></translation>
+        <translation>Napsal</translation>
     </message>
 </context>
 </TS>
