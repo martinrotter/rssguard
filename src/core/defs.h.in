@@ -44,7 +44,6 @@
 #define APP_CFG_CUTS        "keyboard"
 #define APP_CFG_BROWSER     "browser"
 
-#define APP_HTML_MARKUP     "styled_pattern.html"
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"
 #define APP_REVISION        "@APP_REVISION@"
 

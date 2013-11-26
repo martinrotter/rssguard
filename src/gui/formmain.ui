@@ -186,7 +186,7 @@
     <string>Add tab</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+T</string>
+    <string notr="true">Ctrl+Shift+T</string>
    </property>
   </action>
   <action name="m_actionCloseAllTabs">
@@ -197,7 +197,7 @@
     <string>Close all tabs except current one</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+O</string>
+    <string notr="true">Ctrl+Shift+O</string>
    </property>
   </action>
   <action name="m_actionCloseCurrentTab">
@@ -205,7 +205,7 @@
     <string>Close current &amp;tab</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+C</string>
+    <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="m_actionNoActions">
@@ -229,6 +229,9 @@
    <property name="toolTip">
     <string>Update all feeds.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionUpdateSelectedFeeds">
    <property name="text">
@@ -236,6 +239,9 @@
    </property>
    <property name="toolTip">
     <string>Update selected feeds/categories.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionEditSelectedFeed">
@@ -245,6 +251,9 @@
    <property name="toolTip">
     <string>Edit selected feed/category.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionDeleteSelectedFeeds">
    <property name="text">
@@ -252,6 +261,9 @@
    </property>
    <property name="toolTip">
     <string>Delete selected feeds/categories.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
@@ -261,6 +273,9 @@
    <property name="toolTip">
     <string>Mark selected messages as read.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
@@ -268,6 +283,9 @@
    </property>
    <property name="toolTip">
     <string>Mark selected messages as unread.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchImportanceOfSelectedMessages">
@@ -277,30 +295,48 @@
    <property name="toolTip">
     <string>Switch importance of selected messages.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionMarkFeedsAsRead">
    <property name="text">
     <string>Mark selected as read</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkAllMessagesAsRead">
    <property name="text">
     <string>Mark &amp;all messages read</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionMarkAllMessagesAsUnread">
    <property name="text">
     <string>Mark a&amp;ll messages unread</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
     <string>&amp;Delete selected messages</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionDeleteAllMessages">
    <property name="text">
     <string>Dele&amp;te all messages</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>

@@ -27,7 +27,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   // Setup behavior.
   m_ui->m_treeLanguages->setColumnCount(5);
   m_ui->m_treeLanguages->setHeaderHidden(false);
-
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
                                          << tr("Language")
                                          << tr("Code")
@@ -37,7 +36,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   m_ui->m_treeSkins->setColumnCount(4);
   m_ui->m_treeSkins->setHeaderHidden(false);
-
   m_ui->m_treeSkins->setHeaderLabels(QStringList()
                                      << tr("Name")
                                      << tr("Version")
