@@ -40,6 +40,7 @@ option(USE_QT_5 "Use Qt 5 for building" ON)
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
+# Enable color makefiles.
 set(CMAKE_COLOR_MAKEFILE ON)
 
 # Setup custom module path (not used so far).
@@ -174,8 +175,6 @@ if(${USE_QT_5})
   find_package(Qt5XmlPatterns)
   find_package(Qt5Network)
   find_package(Qt5LinguistTools)
-
-# message(STATUS "${Qt5Core_VERSION_STRING}")
 else(${USE_QT_5})
   set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
   find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
@@ -486,7 +485,7 @@ include(CPack)
 # make dist implementation.
 add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 
-# make lupdate and make lrelease implementation.
+# make lupdate implementation.
 if(${USE_QT_5})
   add_custom_target(lupdate
     ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
