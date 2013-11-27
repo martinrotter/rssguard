@@ -179,7 +179,7 @@ if(WIN32)
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
   )
-elseif(OS2 AND EXISTS $ENV{PATH}/windres.exe)
+elseif(OS2)
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
@@ -202,7 +202,7 @@ if(MINGW AND WIN32)
 
 # MSVC takes care of this automatically - no need to use windres.exe
 # for MSVC compilers.
-elseif(OS2 AND EXISTS $ENV{PATH}/windres.exe)
+elseif(OS2)
   #set(WINDRES $ENV{PATH}/windres.exe)
   set(WINDRES windres.exe)
   message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
