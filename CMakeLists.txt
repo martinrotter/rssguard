@@ -203,14 +203,13 @@ if(MINGW AND WIN32)
 # MSVC takes care of this automatically - no need to use windres.exe
 # for MSVC compilers.
 elseif(OS2)
-  #set(WINDRES $ENV{PATH}/windres.exe)
   set(WINDRES windres.exe)
   message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
   message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
-    COMMAND ${WINDRES}  -i ${CMAKE_CURRENT_BINARY_DIR}
-                        -r ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
+    COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
+                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
                         -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
   )
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o)
