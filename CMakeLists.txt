@@ -1,4 +1,5 @@
 #################################################################
+#
 # RSS Guard compilation script for CMake.
 #
 # Usage:
@@ -15,6 +16,11 @@
 #   "-DUSE_QT_5=ON"
 #     Specifies which major Qt version to use. Qt 4 and Qt 5 are supported.
 #     If "OFF" is passed as an argument, then Qt 4 is used.
+#
+# Other information:
+#   - Qt 4.7.3 and higher is required,
+#   - supports Windows, Linux, OS/2 (eComStation).
+#
 #################################################################
 
 cmake_minimum_required(VERSION 2.8.11)
@@ -24,14 +30,20 @@ project(rssguard)
 set(APP_NAME "RSS Guard")
 set(APP_UP_NAME "RSSGuard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.0.0-prealpha-2")
+set(APP_VERSION "2.0.0-prealpha-3")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
+set(MINIMUM_QT_VERSION 4.7.3)
 
 option(USE_QT_5 "Use Qt 5 for building" ON)
 
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
+
+set(CMAKE_COLOR_MAKEFILE ON)
+
+# Setup custom module path (not used so far).
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/resources/cmake ${CMAKE_MODULE_PATH})
 
 # Setup name for executable file.
 if(APPLE)
@@ -152,6 +164,7 @@ if(${USE_QT_5})
 endif(${USE_QT_5})
 
 # Setup libraries.
+
 if(${USE_QT_5})
   find_package(Qt5Sql)
   find_package(Qt5WebKit)
@@ -161,7 +174,10 @@ if(${USE_QT_5})
   find_package(Qt5XmlPatterns)
   find_package(Qt5Network)
   find_package(Qt5LinguistTools)
+
+# message(STATUS "${Qt5Core_VERSION_STRING}")
 else(${USE_QT_5})
+  set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
   find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
   include(${QT_USE_FILE})
 endif(${USE_QT_5})
@@ -422,6 +438,13 @@ if(WIN32 OR OS2)
           DESTINATION ./l10n)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
+
+  #if(NOT OS2 AND (CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE"))
+  # On Windows in release mode, deploy libraries.
+  #install(FILES resources/deployment/rssguard
+  #        DESTINATION ./)
+  #endif(NOT OS2 AND (CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE"))
+
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
