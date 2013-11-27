@@ -88,15 +88,6 @@ endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
 message(STATUS "[${APP_LOW_NAME}] Revision number obtained: " ${APP_REVISION} ".")
 
-# Configure executable "properties" for Windows.
-if(WIN32)
-  message(STATUS "[${APP_LOW_NAME}] Generating executable file properties.")
-  configure_file (
-    ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
-    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
-  )
-endif(WIN32)
-
 # Configure desktop entry for Linux.
 if(UNIX)
   message(STATUS "[${APP_LOW_NAME}] Generating desktop entry.")
@@ -181,22 +172,48 @@ else(${USE_QT_5})
   include(${QT_USE_FILE})
 endif(${USE_QT_5})
 
+# Configure executable "properties" for Windows.
+if(WIN32)
+  message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for Windows.")
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
+  )
+elseif(OS2 AND EXISTS $ENV{PATH}/windres.exe)
+  message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
+  )
+endif(WIN32)
+
 # Compile application icon if compiling with MinGW on WIN32.
 if(MINGW AND WIN32)
   set(WINDRES windres.exe)
-  message(STATUS "[${APP_LOW_NAME}] MinGW compilation is selected. Icon file binary will be builded.")
-  message(STATUS "[${APP_LOW_NAME}] Used windres tool is: " ${WINDRES} ".")
+  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
+  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
   add_custom_command(
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
     COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
                         -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
                         -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
     )
-    set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
+  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
 
 # MSVC takes care of this automatically - no need to use windres.exe
 # for MSVC compilers.
-elseif(MINGW AND WIN32)
+elseif(OS2 AND EXISTS $ENV{PATH}/windres.exe)
+  set(WINDRES $ENV{PATH}/windres.exe)
+  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
+  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
+  add_custom_command(
+    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
+    COMMAND ${WINDRES}  -i ${CMAKE_CURRENT_BINARY_DIR}
+                        -r ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
+                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
+  )
+  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o)
+elseif(WIN32 AND MSVC)
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
 
