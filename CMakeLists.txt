@@ -211,7 +211,7 @@ elseif(OS2)
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
     COMMAND ${WINDRES}  -i ${CMAKE_CURRENT_BINARY_DIR}
                         -r ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
-                        ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
+                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
   )
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o)
 elseif(WIN32 AND MSVC)
