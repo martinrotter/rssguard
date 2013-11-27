@@ -204,6 +204,7 @@ if(MINGW AND WIN32)
 # for MSVC compilers.
 elseif(OS2 AND EXISTS $ENV{PATH}/windres.exe)
   #set(WINDRES $ENV{PATH}/windres.exe)
+  set(WINDRES windres.exe)
   message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
   message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
   add_custom_command(
