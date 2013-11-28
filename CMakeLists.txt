@@ -179,12 +179,12 @@ if(WIN32)
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
   )
-#elseif(OS2)
-#  message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
-#  configure_file (
-#    ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
-#    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
-#  )
+elseif(OS2)
+  message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
+  configure_file (
+    ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
+    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
+  )
 endif(WIN32)
 
 # Compile application icon if compiling with MinGW on WIN32 or with OS2.
@@ -202,17 +202,22 @@ if(MINGW AND WIN32)
 
 # MSVC takes care of this automatically - no need to use windres.exe
 # for MSVC compilers.
-#elseif(OS2)
+elseif(OS2)
 #  set(WINDRES windres.exe)
-#  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
+  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
 #  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
 #  add_custom_command(
-#    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
-#    COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
-#                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
-#                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o
+#    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.res
+#    COMMAND "rc.exe" -r -n -x2 ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.res
 #  )
-#  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.o)
+#  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.res)
+
+  set(RES_FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
+  enable_language(RC)
+  set(CMAKE_RC_COMPILER_INIT rc)
+  set(CMAKE_RC_COMPILE_OBJECT
+      "<CMAKE_RC_COMPILER> -n -r <SOURCE> <OBJECT>")
+
 elseif(WIN32 AND MSVC)
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
@@ -454,13 +459,6 @@ if(WIN32 OR OS2)
           DESTINATION ./l10n)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
-
-  #if(NOT OS2 AND (CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE"))
-  # On Windows in release mode, deploy libraries.
-  #install(FILES resources/deployment/rssguard
-  #        DESTINATION ./)
-  #endif(NOT OS2 AND (CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE"))
-
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}

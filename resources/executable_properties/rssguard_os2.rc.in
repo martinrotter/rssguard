@@ -1,1 +1,1 @@
-ICON 1 DISCARDABLE "resources/graphics/rssguard.ico" 
+ICON 1 DISCARDABLE "@PROJECT_SOURCE_DIR@/resources/graphics/rssguard.ico" 
