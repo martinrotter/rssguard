@@ -219,6 +219,8 @@ elseif(OS2)
       "<CMAKE_RC_COMPILER> -n -r <SOURCE> <OBJECT>")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Zstack 0x2000 -Zlinker \"DISABLE 1121\" -s -Zlinker /PM:PM -Zno-fork -Zhigh-mem -Zmap")
 
+  set(APP_SOURCES ${RES_FILES})
+
 elseif(WIN32 AND MSVC)
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
