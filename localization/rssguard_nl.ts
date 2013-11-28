@@ -248,18 +248,6 @@
         <translation>&amp;Berichten</translation>
     </message>
     <message>
-        <source>Ctrl+Shift+T</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+O</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+C</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Update &amp;all</source>
         <translation>Update &amp;alles</translation>
     </message>

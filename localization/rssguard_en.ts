@@ -248,18 +248,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Update &amp;all</source>
         <translation type="unfinished"></translation>
     </message>

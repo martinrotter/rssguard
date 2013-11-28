@@ -19,6 +19,8 @@
 #
 # Other information:
 #   - Qt 4.7.3 and higher is required,
+#   - resource compiler (windres.exe) is needed on MinGW,
+#   - resource compiler (rc.exe) is needed on OS/2,
 #   - supports Windows, Linux, OS/2 (eComStation).
 #
 #################################################################
@@ -40,11 +42,10 @@ option(USE_QT_5 "Use Qt 5 for building" ON)
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
-# Enable color makefiles.
+# Setup misc options.
 set(CMAKE_COLOR_MAKEFILE ON)
-
-# Setup custom module path (not used so far).
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/resources/cmake ${CMAKE_MODULE_PATH})
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Setup name for executable file.
 if(APPLE)
@@ -52,9 +53,6 @@ if(APPLE)
 else(APPLE)
   set(EXE_NAME ${APP_LOW_NAME})
 endif(APPLE)
-
-# Find includes in corresponding build directories
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Select which Qt version to use.
 if(${USE_QT_5})
@@ -80,17 +78,17 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
     string(REGEX REPLACE "\n" "" GIT_REVISION "${GIT_REVISION}")
     set(APP_REVISION ${GIT_REVISION})
   else(GIT_FOUND)
-    set(APP_REVISION UNKNOWN-REVISION)
+    set(APP_REVISION -)
   endif(GIT_FOUND)
 else(EXISTS "${PROJECT_SOURCE_DIR}/.git")
-  set(APP_REVISION SEPARATE-BUILD)
+  set(APP_REVISION -)
 endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
 message(STATUS "[${APP_LOW_NAME}] Revision number obtained: " ${APP_REVISION} ".")
 
 # Configure desktop entry for Linux.
 if(UNIX)
-  message(STATUS "[${APP_LOW_NAME}] Generating desktop entry.")
+  message(STATUS "[${APP_LOW_NAME}] Generating desktop entry for Linux.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/rssguard.desktop
@@ -110,7 +108,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR
   set(CMAKE_BUILD_TYPE MinSizeRel)
   message(STATUS "[${APP_LOW_NAME}] Output executable file is optimized for minimum size.")
 else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
-  message(STATUS "[${APP_LOW_NAME}] A debug build is chosen. -DDEBUG is defined.")
+  message(STATUS "[${APP_LOW_NAME}] A debug build is chosen.")
   add_definitions(-DDEBUG)
   set(CMAKE_BUILD_TYPE Debug)
 
@@ -156,16 +154,16 @@ if(${USE_QT_5})
 endif(${USE_QT_5})
 
 # Setup libraries.
-
 if(${USE_QT_5})
-  find_package(Qt5Sql)
-  find_package(Qt5WebKit)
-  find_package(Qt5WebKitWidgets)
-  find_package(Qt5Widgets)
-  find_package(Qt5Xml)
-  find_package(Qt5XmlPatterns)
-  find_package(Qt5Network)
-  find_package(Qt5LinguistTools)
+  #find_package(Qt5Sql)
+  #find_package(Qt5WebKit)
+  #find_package(Qt5WebKitWidgets)
+  #find_package(Qt5Widgets)
+  #find_package(Qt5Xml)
+  #find_package(Qt5XmlPatterns)
+  #find_package(Qt5Network)
+  #find_package(Qt5LinguistTools)
+  find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools)
 else(${USE_QT_5})
   set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
   find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
@@ -189,17 +187,6 @@ endif(WIN32)
 
 # Compile application icon if compiling with MinGW on WIN32 or with OS2.
 if(MINGW AND WIN32)
-#  set(WINDRES windres.exe)
-#  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
-#  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
-#  add_custom_command(
-#    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
-#    COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
-#                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
-#                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
-#    )
-#  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
-
   enable_language(RC)
   set(CMAKE_RC_COMPILER_INIT windres)
   message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
@@ -343,6 +330,7 @@ set(APP_TRANSLATIONS
   localization/rssguard_cs.ts
   localization/rssguard_nl.ts
   localization/qt_cs.ts
+  localization/qt_nl.ts
 )
 
 set(APP_TRANSLATIONS_WO_QT
