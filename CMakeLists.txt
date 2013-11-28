@@ -189,39 +189,42 @@ endif(WIN32)
 
 # Compile application icon if compiling with MinGW on WIN32 or with OS2.
 if(MINGW AND WIN32)
-  set(WINDRES windres.exe)
-  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
-  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
-  add_custom_command(
-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
-    COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
-                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
-                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
-    )
-  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
-
-# MSVC takes care of this automatically - no need to use windres.exe
-# for MSVC compilers.
-elseif(OS2)
 #  set(WINDRES windres.exe)
-  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
+#  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
 #  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${WINDRES}")
 #  add_custom_command(
-#    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.res
-#    COMMAND "rc.exe" -r -n -x2 ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.res
-#  )
-#  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.res)
+#    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
+#    COMMAND ${WINDRES}  -I ${CMAKE_CURRENT_BINARY_DIR}
+#                        -i ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
+#                        -o ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o
+#    )
+#  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.o)
 
-  set(RES_FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
+  enable_language(RC)
+  set(CMAKE_RC_COMPILER_INIT windres)
+  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
+  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${CMAKE_RC_COMPILER}")
+  set(CMAKE_RC_COMPILE_OBJECT
+      "<CMAKE_RC_COMPILER> -i <SOURCE> -o <OBJECT>")
+
+  set(APP_SOURCES
+      ${APP_SOURCES}
+      ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
+elseif(OS2)
   enable_language(RC)
   set(CMAKE_RC_COMPILER_INIT rc)
+  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
+  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${CMAKE_RC_COMPILER}")
   set(CMAKE_RC_COMPILE_OBJECT
       "<CMAKE_RC_COMPILER> -n -r <SOURCE> <OBJECT>")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Zstack 0x2000 -Zlinker \"DISABLE 1121\" -s -Zlinker /PM:PM -Zno-fork -Zhigh-mem -Zmap")
 
-  set(APP_SOURCES ${RES_FILES})
-
+  set(APP_SOURCES
+      ${APP_SOURCES}
+      ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
 elseif(WIN32 AND MSVC)
+  # MSVC takes care of this automatically - no need to use windres.exe
+  # for MSVC compilers.
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
 
