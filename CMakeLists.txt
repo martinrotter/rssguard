@@ -23,6 +23,10 @@
 #   - resource compiler (rc.exe) is needed on OS/2,
 #   - supports Windows, Linux, OS/2 (eComStation).
 #
+# Authors and contributors:
+#   - Martin Rotter (project leader)
+#   - Elbert Pol (huge OS/2-related contributions)
+#
 #################################################################
 
 cmake_minimum_required(VERSION 2.8.11)
