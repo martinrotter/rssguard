@@ -111,7 +111,7 @@ QVariant MessagesModel::data(int row, int column, int role) const {
 
 QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   switch (role) {
-      // Human readable data for viewing.
+    // Human readable data for viewing.
     case Qt::DisplayRole: {
       int index_column = idx.column();
       if (index_column != MSG_DB_IMPORTANT_INDEX &&
@@ -195,7 +195,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   int message_id, importance;
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
-                               "WHERE id = :id")) {
+                                "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
     return false;
   }
@@ -228,6 +228,18 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
 
+}
+
+bool MessagesModel::switchAllMessageImportance() {
+  return false;
+}
+
+bool MessagesModel::setAllMessagesDeleted(int deleted) {
+  return false;
+}
+
+bool MessagesModel::setAllMessagesRead(int read) {
+  return false;
 }
 
 QVariant MessagesModel::headerData(int section,
