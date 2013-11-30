@@ -148,19 +148,27 @@ void FormMain::setupIcons() {
   m_ui->m_actionImport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-export"));
   m_ui->m_actionFullscreen->setIcon(IconThemeFactory::getInstance()->fromTheme("view-fullscreen"));
+
+  // Web browser.
+  m_ui->m_actionAddBrowser->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
+  m_ui->m_actionCloseCurrentTab->setIcon(IconThemeFactory::getInstance()->fromTheme("list-remove"));
+  m_ui->m_actionCloseAllTabs->setIcon(IconThemeFactory::getInstance()->fromTheme("list-remove"));
+  m_ui->m_menuCurrentTab->setIcon(IconThemeFactory::getInstance()->fromTheme("go-home"));
+
+  // Feeds/messages.
   m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
   m_ui->m_actionUpdateSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-
-  m_ui->m_actionDeleteAllMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionDeleteSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionEditSelectedFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionMarkAllMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionMarkAllMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
+  m_ui->m_actionDeleteAllMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
+  m_ui->m_actionDeleteSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
+  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
+  m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
+  m_ui->m_actionEditSelectedFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("document-properties"));
+  m_ui->m_actionMarkAllMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
+  m_ui->m_actionMarkAllMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-unread"));
+  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
+  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
+  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-unread"));
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
 
 
   // Setup icons for underlying components: opened web browsers...

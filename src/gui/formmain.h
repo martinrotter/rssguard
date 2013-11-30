@@ -9,7 +9,10 @@
 
 class FormMain : public QMainWindow {
     Q_OBJECT
-    
+
+    friend class TabWidget;
+    friend class FeedMessageViewer;
+
   public:
     // Constructors and destructors.
     explicit FormMain(QWidget *parent = 0);

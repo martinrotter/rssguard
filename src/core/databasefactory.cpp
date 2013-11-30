@@ -30,11 +30,14 @@ DatabaseFactory *DatabaseFactory::getInstance() {
 
 void DatabaseFactory::assemblyDatabaseFilePath()  {
   if (Settings::getInstance()->type() == Settings::Portable) {
-    m_databasePath = qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_PATH);
+    m_databasePath = qApp->applicationDirPath() +
+                     QDir::separator() +
+                     QString(APP_DB_PATH);
   }
   else {
-    m_databasePath = QDir::homePath() + QDir::separator() + QString(APP_LOW_H_NAME) +
-                     QDir::separator() + QString(APP_DB_PATH);
+    m_databasePath = QDir::homePath() + QDir::separator() +
+                     QString(APP_LOW_H_NAME) + QDir::separator() +
+                     QString(APP_DB_PATH);
   }
 }
 

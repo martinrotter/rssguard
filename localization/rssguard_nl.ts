@@ -161,7 +161,7 @@
         <translation>Auteurs informatie niet gevonden.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -216,10 +216,6 @@
         <translation>&amp;Tabblad toevoegen</translation>
     </message>
     <message>
-        <source>Add tab</source>
-        <translation>Tabblad toevoegen</translation>
-    </message>
-    <message>
         <source>Close &amp;all tabs except current one</source>
         <translation>Sluit &amp;alle tabbladen behalve deze</translation>
     </message>
@@ -248,32 +244,16 @@
         <translation>&amp;Berichten</translation>
     </message>
     <message>
-        <source>Update &amp;all</source>
-        <translation>Update &amp;alles</translation>
-    </message>
-    <message>
         <source>Update all feeds.</source>
         <translation>Update alle feeds.</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected</source>
-        <translation>Update ge&amp;selekteerde</translation>
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
         <translation>Update geselekteerde feeds/categorieën.</translation>
     </message>
     <message>
-        <source>&amp;Edit selected</source>
-        <translation>Bew&amp;erk geselekteerde</translation>
-    </message>
-    <message>
         <source>Edit selected feed/category.</source>
         <translation>Bewerk geselekteerde feeds/categorieën.</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected</source>
-        <translation>Verwij&amp;der geselekteerde</translation>
     </message>
     <message>
         <source>Delete selected feeds/categories.</source>
@@ -308,10 +288,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark selected as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark &amp;all messages read</source>
         <translation type="unfinished"></translation>
     </message>
@@ -325,6 +301,110 @@
     </message>
     <message>
         <source>Dele&amp;te all messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import stuff.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export stuff.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quit the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display settings of the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About RSS Guard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch fullscreen mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new web browser tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close current web browser tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed(s)/category(ies)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feed(s)/category(ies)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feed(s)/category(ies) as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feed(s)/category(ies) as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all messages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

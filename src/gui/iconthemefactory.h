@@ -54,6 +54,8 @@ class IconThemeFactory : public QObject {
     static QPointer<IconThemeFactory> s_instance;
 };
 
+// NOTE: Think about removing dynamic icon theme change,
+// because skins are not dynamic nor tranlations.
 class IconThemeFactoryEvent : public QEvent {
   public:
     enum Type {

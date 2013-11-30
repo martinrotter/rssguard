@@ -63,10 +63,17 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
     stringy_ids.append(QString::number(feed_id));
   }
 
-  // TODO: časem povolit.
+  // TODO: Enable when time is right.
   //setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(',')));
   select();
   fetchAll();
+}
+
+void MessagesModel::endInsertColumns() {
+
+  qDebug("end insert cols");
+
+  QSqlTableModel::endInsertColumns();
 }
 
 int MessagesModel::messageId(int row_index) const {

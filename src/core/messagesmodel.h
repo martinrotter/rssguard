@@ -48,6 +48,9 @@ class MessagesModel : public QSqlTableModel {
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
 
+  protected:
+    void endInsertColumns();
+
   public slots:
     // CORE messages manipulators.
     // NOTE: These are used to change properties of one message.
@@ -87,7 +90,6 @@ class MessagesModel : public QSqlTableModel {
     // Creates "normal" and "bold" fonts.
     void setupFonts();
 
-  private:
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
     bool m_isInEditingMode;

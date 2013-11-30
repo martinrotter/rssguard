@@ -22,8 +22,6 @@
 
 #if QT_VERSION >= 0x040600
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
-#else
-#define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@;")
 #endif
 
 #define TEXT_TITLE_LIMIT    30

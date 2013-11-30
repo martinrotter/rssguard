@@ -40,7 +40,7 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
   }
   else {
-    // TODO: změnit toto na qFatal v produkčním kodu.
+    // TODO: Change this to qFatal once code is stable.
     qWarning("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
            qPrintable(skin_name_from_settings));
   }
@@ -152,7 +152,8 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
 
   // Obtain other information.
-  skin.m_baseName = skin_name;
+  // NOTE: Probably fixed bug with "active skin" on Windows.
+  skin.m_baseName = QString(skin_name).replace(QDir::separator(), '/');
 
   // Free resources.
   skin_file.close();
@@ -182,8 +183,6 @@ QList<Skin> SkinFactory::getInstalledSkins() {
 
     foreach (QString skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.
-      // TODO: tady problem se separatorem, na windows v nastaveni
-      // pak spatne nacte skin
       Skin skin_info = getSkinInfo(base_directory + QDir::separator() + skin_file,
                                    &skin_load_ok);
 

@@ -10,6 +10,7 @@
 
 #include "gui/feedmessageviewer.h"
 #include "gui/webbrowser.h"
+#include "gui/formmain.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "core/messagesproxymodel.h"
@@ -24,10 +25,11 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   initialize();
   initializeViews();
 
-  // TODO: oddělit do createConnections();
+  // TODO: Separate into createConnections.
+  connect(m_messagesView, SIGNAL(currentMessageRemoved()),
+          m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessageChanged(Message)),
           m_messagesBrowser, SLOT(navigateToMessage(Message)));
-
 }
 
 void FeedMessageViewer::initialize() {
@@ -35,27 +37,14 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
-  // TODO: testovaci
-  QMenu *update_menu = new QMenu(m_toolBar);
-  QAction *testAction = new QAction("test menu item", this);
-  update_menu->addAction(testAction);
+  // TODO: For testing.
 
-  QToolButton* toolButton = new QToolButton();
-  toolButton->setMenu(update_menu);
-  toolButton->setIcon(QIcon::fromTheme("application-exit"));
-  toolButton->setText("aaa");
-  toolButton->setPopupMode(QToolButton::MenuButtonPopup);
-
-  QWidgetAction* toolButtonAction = new QWidgetAction(this);
-  toolButtonAction->setDefaultWidget(toolButton);
-
-  m_toolBar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-  m_toolBar->addAction(toolButtonAction);
-  m_toolBar->addAction(QIcon::fromTheme("application-exit"), "aaa");
-  QAction *ac = m_toolBar->actions().at(0);
-  connect(testAction, SIGNAL(triggered()),
-          m_messagesView, SLOT(setAllMessagesRead()));
+  // Add everything to toolbar.
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds);
+  m_toolBar->addSeparator();
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

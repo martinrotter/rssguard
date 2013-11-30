@@ -161,8 +161,8 @@
         <translation>Informace o autorech nebyly nalezeny.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard je velmi jednoduchá čtečka kanálů&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy této aplikace lze získat z jejího webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</translation>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <translation>&lt;body&gt;RSS Guard je (velmi) štíhlá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~web programu&lt;/li&gt;&lt;/ul&gt;Zdrojový kód tohoto programu je možné získat z jeho domovské stránky.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>&amp;Fullscreen mode</source>
-        <translation>&amp;Režime celé obrazovky</translation>
+        <translation>&amp;Režim celé obrazovky</translation>
     </message>
     <message>
         <source>&amp;Current tab</source>
@@ -214,10 +214,6 @@
     <message>
         <source>&amp;Add tab</source>
         <translation>&amp;Přidat panel</translation>
-    </message>
-    <message>
-        <source>Add tab</source>
-        <translation>Přidat panel</translation>
     </message>
     <message>
         <source>Close &amp;all tabs except current one</source>
@@ -248,31 +244,15 @@
         <translation>&amp;Zprávy</translation>
     </message>
     <message>
-        <source>Update &amp;all</source>
-        <translation>Aktualizovat &amp;vše</translation>
-    </message>
-    <message>
         <source>Update all feeds.</source>
         <translation>Aktualizovat všechny kanály.</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected</source>
-        <translation>&amp;Aktualizovat vybrané</translation>
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Edit selected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Edit selected feed/category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -308,10 +288,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark selected as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark &amp;all messages read</source>
         <translation type="unfinished"></translation>
     </message>
@@ -325,6 +301,110 @@
     </message>
     <message>
         <source>Dele&amp;te all messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import stuff.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export stuff.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quit the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display settings of the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About RSS Guard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch fullscreen mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new web browser tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+T</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close current web browser tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed(s)/category(ies)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feed(s)/category(ies)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feed(s)/category(ies) as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feed(s)/category(ies) as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all messages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

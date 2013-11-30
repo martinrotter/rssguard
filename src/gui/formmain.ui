@@ -48,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -100,6 +100,7 @@
     <addaction name="m_actionUpdateAllFeeds"/>
     <addaction name="m_actionUpdateSelectedFeeds"/>
     <addaction name="separator"/>
+    <addaction name="m_actionAddNewFeed"/>
     <addaction name="m_actionEditSelectedFeed"/>
     <addaction name="m_actionDeleteSelectedFeeds"/>
     <addaction name="separator"/>
@@ -131,40 +132,55 @@
    <property name="text">
     <string>&amp;Import</string>
    </property>
+   <property name="toolTip">
+    <string>Import stuff.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+I</string>
+    <string>Ctrl+Shift+I</string>
    </property>
   </action>
   <action name="m_actionExport">
    <property name="text">
     <string>E&amp;xport</string>
    </property>
+   <property name="toolTip">
+    <string>Export stuff.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+E</string>
+    <string>Ctrl+Shift+E</string>
    </property>
   </action>
   <action name="m_actionQuit">
    <property name="text">
     <string>&amp;Quit</string>
    </property>
+   <property name="toolTip">
+    <string>Quit the application.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+Q</string>
+    <string>Ctrl+Shift+Q</string>
    </property>
   </action>
   <action name="m_actionSettings">
    <property name="text">
     <string>&amp;Settings</string>
    </property>
+   <property name="toolTip">
+    <string>Display settings of the application.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+S</string>
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="m_actionAboutGuard">
    <property name="text">
     <string>&amp;About RSS Guard</string>
    </property>
+   <property name="toolTip">
+    <string>About RSS Guard.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+A</string>
+    <string>Ctrl+Shift+A</string>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -174,8 +190,11 @@
    <property name="text">
     <string>&amp;Fullscreen mode</string>
    </property>
+   <property name="toolTip">
+    <string>Switch fullscreen mode.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+F</string>
+    <string>Ctrl+Shift+F</string>
    </property>
   </action>
   <action name="m_actionAddBrowser">
@@ -183,10 +202,10 @@
     <string>&amp;Add tab</string>
    </property>
    <property name="toolTip">
-    <string>Add tab</string>
+    <string>Add new web browser tab.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+T</string>
+    <string>Ctrl+Shift+T</string>
    </property>
   </action>
   <action name="m_actionCloseAllTabs">
@@ -204,8 +223,11 @@
    <property name="text">
     <string>Close current &amp;tab</string>
    </property>
+   <property name="toolTip">
+    <string>Close current web browser tab.</string>
+   </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+C</string>
+    <string>Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="m_actionNoActions">
@@ -224,46 +246,34 @@
   </action>
   <action name="m_actionUpdateAllFeeds">
    <property name="text">
-    <string>Update &amp;all</string>
+    <string>Update &amp;all feeds</string>
    </property>
    <property name="toolTip">
     <string>Update all feeds.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
   <action name="m_actionUpdateSelectedFeeds">
    <property name="text">
-    <string>Update &amp;selected</string>
+    <string>Update &amp;selected feeds</string>
    </property>
    <property name="toolTip">
     <string>Update selected feeds/categories.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
   <action name="m_actionEditSelectedFeed">
    <property name="text">
-    <string>&amp;Edit selected</string>
+    <string>&amp;Edit selected feed(s)/category(ies)</string>
    </property>
    <property name="toolTip">
     <string>Edit selected feed/category.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
   <action name="m_actionDeleteSelectedFeeds">
    <property name="text">
-    <string>&amp;Delete selected</string>
+    <string>&amp;Delete selected feed(s)/category(ies)</string>
    </property>
    <property name="toolTip">
     <string>Delete selected feeds/categories.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
@@ -301,42 +311,50 @@
   </action>
   <action name="m_actionMarkFeedsAsRead">
    <property name="text">
-    <string>Mark selected as read</string>
+    <string>Mark selected feed(s)/category(ies) as read</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string>Mark selected feed(s)/category(ies) as read.</string>
    </property>
   </action>
   <action name="m_actionMarkAllMessagesAsRead">
    <property name="text">
     <string>Mark &amp;all messages read</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string>Mark all messages read.</string>
    </property>
   </action>
   <action name="m_actionMarkAllMessagesAsUnread">
    <property name="text">
     <string>Mark a&amp;ll messages unread</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string>Mark all messages unread.</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
     <string>&amp;Delete selected messages</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string>Delete selected messages.</string>
    </property>
   </action>
   <action name="m_actionDeleteAllMessages">
    <property name="text">
     <string>Dele&amp;te all messages</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string>Delete all messages.</string>
+   </property>
+  </action>
+  <action name="m_actionAddNewFeed">
+   <property name="text">
+    <string>Add new &amp;feed</string>
+   </property>
+   <property name="toolTip">
+    <string>Add new feed.</string>
    </property>
   </action>
  </widget>
