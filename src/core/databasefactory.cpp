@@ -11,7 +11,8 @@
 
 QPointer<DatabaseFactory> DatabaseFactory::s_instance;
 
-DatabaseFactory::DatabaseFactory(QObject *parent) : QObject(parent) {
+DatabaseFactory::DatabaseFactory(QObject *parent)
+  : QObject(parent), m_initialized(false) {
   assemblyDatabaseFilePath();
 }
 
