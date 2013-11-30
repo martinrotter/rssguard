@@ -12,7 +12,17 @@ namespace Ui {
 
 // Structure holding some initial values.
 struct TemporarySettings {
+
+  public:
+    TemporarySettings()
+      : m_webBrowserProgress(QColor()),
+        m_skin(QString()) {
+    }
+
     QColor m_webBrowserProgress;
+    QString m_skin;
+
+
 };
 
 class FormSettings : public QDialog {
@@ -28,6 +38,9 @@ class FormSettings : public QDialog {
     bool doSaveCheck();
 
   protected slots:
+    // Displays "restart" dialog if some critical settings changed.
+    void promptForRestart();
+
     // Saves settings into global configuration.
     void saveSettings();
 
@@ -57,6 +70,7 @@ class FormSettings : public QDialog {
   private:
     Ui::FormSettings *m_ui;
     TemporarySettings m_initialSettings;
+    QStringList m_changedDataTexts;
 };
 
 #endif // FORMSETTINGS_H

@@ -444,7 +444,7 @@
     </message>
     <message>
         <source>Launch RSS Guard on operating system startup</source>
-        <translation>Spouštět RSS Guard při spuštěníí operačního systému</translation>
+        <translation>Spouštět RSS Guard při spuštění operačního systému</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>

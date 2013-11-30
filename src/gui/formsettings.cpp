@@ -142,6 +142,31 @@ bool FormSettings::doSaveCheck() {
   return everything_ok;
 }
 
+void FormSettings::promptForRestart() {
+  if (m_changedDataTexts.count() > 0) {
+    QMessageBox msg_question(this);
+
+    msg_question.setText(tr("Some critical settings were changed and will be applied after the application gets restarted."));
+    msg_question.setInformativeText(tr("Do you want to restart now?"));
+    msg_question.setWindowTitle(tr("Critical settings were changed"));
+    msg_question.setDetailedText(tr("List of changes:\n %1.").arg(m_changedDataTexts.join(",\n")));
+    msg_question.setIcon(QMessageBox::Question);
+    msg_question.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msg_question.setDefaultButton(QMessageBox::Yes);
+
+    if (msg_question.exec() == QMessageBox::Yes) {
+      if (!QProcess::startDetached(qApp->applicationFilePath())) {
+        QMessageBox::warning(this,
+                             tr("Problem with application restart"),
+                             tr("Application couldn't be restarted. Please, restart it manually for changes to take effect."));
+      }
+      else {
+        qApp->quit();
+      }
+    }
+  }
+}
+
 void FormSettings::saveSettings() {
   // Make sure everything is saveable.
   if (!doSaveCheck()) {
@@ -157,6 +182,7 @@ void FormSettings::saveSettings() {
   saveLanguage();
 
   Settings::getInstance()->checkSettings();
+  promptForRestart();
 
   accept();
 }
@@ -289,26 +315,8 @@ void FormSettings::saveLanguage() {
   QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
 
   if (new_lang != actual_lang) {
+    m_changedDataTexts.append(tr("• language changed"));
     settings->setValue(APP_CFG_GEN, "language", new_lang);
-
-    QMessageBox msg_question(this);
-    msg_question.setText(tr("Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start."));
-    msg_question.setInformativeText(tr("Do you want to restart now?"));
-    msg_question.setWindowTitle(tr("Language changed"));
-    msg_question.setIcon(QMessageBox::Question);
-    msg_question.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    msg_question.setDefaultButton(QMessageBox::Yes);
-
-    if (msg_question.exec() == QMessageBox::Yes) {
-      if (!QProcess::startDetached(qApp->applicationFilePath())) {
-        QMessageBox::warning(this,
-                             tr("Problem with RSS Guard restart"),
-                             tr("RSS Guard couldn't be restarted, please restart it manually for changes to take effect."));
-      }
-      else {
-        qApp->quit();
-      }
-    }
   }
 }
 
@@ -428,6 +436,7 @@ void FormSettings::loadInterface() {
     m_ui->m_treeSkins->addTopLevelItem(new_item);
 
     if (skin.m_baseName == selected_skin) {
+      m_initialSettings.m_skin = selected_skin;
       m_ui->m_treeSkins->setCurrentItem(new_item);
       m_ui->m_lblActiveContents->setText(skin.m_visibleName);
     }
