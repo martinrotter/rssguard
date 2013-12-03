@@ -130,11 +130,11 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       }
     }
 
-    // Return RAW data for EditRole.
+      // Return RAW data for EditRole.
     case Qt::EditRole:
       return QSqlTableModel::data(idx, role);
 
-    // Return "red" color for just deleted messages.
+      // Return "red" color for just deleted messages.
     case Qt::BackgroundRole:
       return record(idx.row()).value(MSG_DB_DELETED_INDEX).toInt() == 1 ?
             QColor(255, 0, 0, 100) :
@@ -188,7 +188,7 @@ bool MessagesModel::setMessageDeleted(int row_index, int deleted) {
 
 bool MessagesModel::switchMessageImportance(int row_index) {
   QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
-  int current_importance = data(target_index).toInt();
+  int current_importance = data(target_index, Qt::EditRole).toInt();
 
   return current_importance == 1 ?
         setData(target_index, 0) :
@@ -215,7 +215,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 
   foreach (const QModelIndex &message, messages) {
     message_id = messageId(message.row());
-    importance = record(message.row()).value(MSG_DB_IMPORTANT_INDEX).toInt();
+    importance = data(message.row(), MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
 
     query_delete_msg.bindValue(":id", message_id);
     query_delete_msg.bindValue(":important",

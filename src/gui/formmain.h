@@ -64,6 +64,8 @@ class FormMain : public QMainWindow {
     void switchFullscreenMode(bool turn_fullscreen_on);
 
   protected slots:
+    void onCommitData(QSessionManager &manager);
+
     // Used for last-minute actions.
     void onAboutToQuit();
 

@@ -125,6 +125,10 @@ void FormMain::display() {
   QtSingleApplication::alert(this);
 }
 
+void FormMain::onCommitData(QSessionManager &manager) {
+  qDebug("OS asked application to commit its data.");
+}
+
 void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state before it exits.");
 }
@@ -174,6 +178,10 @@ void FormMain::setupIcons() {
 }
 
 void FormMain::createConnections() {
+  // Core connections.
+  connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)),
+          this, SLOT(onCommitData(QSessionManager&)));
+
   // Menu "File" connections.
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
 

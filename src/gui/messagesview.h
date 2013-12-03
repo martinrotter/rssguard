@@ -24,19 +24,15 @@ class MessagesView : public QTreeView {
 
   public slots:
     // Message manipulators.
-    void setSelectedMessagesReadStatus(int read);
-
+    void switchSelectedMessagesImportance();
     void setAllMessagesRead();
-
 
   protected:
     void setupAppearance();
-
+    void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
-
     void currentChanged(const QModelIndex &current,
                         const QModelIndex &previous);
-
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 

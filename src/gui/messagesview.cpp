@@ -97,6 +97,28 @@ void MessagesView::keyPressEvent(QKeyEvent *event) {
   QTreeView::keyPressEvent(event);
 }
 
+void MessagesView::mousePressEvent(QMouseEvent *event) {
+  QTreeView::mousePressEvent(event);
+
+  if (event->button() != Qt::LeftButton) {
+    // No need for extra actions on right/middle click.
+    return;
+  }
+
+  QModelIndex clicked_index = indexAt(event->pos());
+
+  if (!clicked_index.isValid()) {
+    qDebug("Clicked on invalid index in MessagesView.");
+    return;
+  }
+
+  QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
+
+  if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
+    m_sourceModel->switchMessageImportance(mapped_index.row());
+  }
+}
+
 void MessagesView::currentChanged(const QModelIndex &current,
                                   const QModelIndex &previous) {
   QModelIndex mapped_current = m_proxyModel->mapToSource(current);
@@ -112,7 +134,24 @@ void MessagesView::currentChanged(const QModelIndex &current,
   QTreeView::currentChanged(current, previous);
 }
 
-void MessagesView::setSelectedMessagesReadStatus(int read) {
+void MessagesView::switchSelectedMessagesImportance() {
+  /*
+  // toto muže obsahovat moc indexů -> z jednoho radku to muze
+  // obsahovat indexy ze vsech sloupcu, overit.
+  QItemSelection selected_indexes = selectionModel()->selection();
+  QItemSelection mapped_selection = m_proxyModel->mapSelectionToSource(selected_indexes);
+
+  m_sourceModel->switchBatchMessageImportance(mapped_selection.indexes());
+  */
+
+  QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  QModelIndexList mapped_indexes;
+
+  foreach (const QModelIndex &index, selected_indexes) {
+    mapped_indexes << m_proxyModel->mapToSource(index);
+  }
+
+  m_sourceModel->switchBatchMessageImportance(mapped_indexes);
 }
 
 void MessagesView::setAllMessagesRead() {
