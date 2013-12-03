@@ -282,14 +282,14 @@ void FormSettings::saveProxy() {
 void FormSettings::loadLanguage() {
   QList<Language> languages = Localization::getInstalledLanguages();
 
-  foreach (Language lang, languages) {
+  foreach (const Language &language, languages) {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
-    item->setText(0, lang.m_name);
-    item->setText(1, lang.m_code);
-    item->setText(2, lang.m_version);
-    item->setText(3, lang.m_author);
-    item->setText(4, lang.m_email);
-    item->setIcon(0, QIcon(APP_FLAGS_PATH + "/" + lang.m_code + ".png"));
+    item->setText(0, language.m_name);
+    item->setText(1, language.m_code);
+    item->setText(2, language.m_version);
+    item->setText(3, language.m_author);
+    item->setText(4, language.m_email);
+    item->setIcon(0, QIcon(APP_FLAGS_PATH + "/" + language.m_code + ".png"));
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::getInstance()->value(APP_CFG_GEN,
@@ -315,7 +315,11 @@ void FormSettings::saveLanguage() {
   QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
 
   if (new_lang != actual_lang) {
-    m_changedDataTexts.append(tr("• language changed"));
+#if QT_VERSION >= 0x050000
+    m_changedDataTexts.append(tr(" • language changed"));
+#else
+    m_changedDataTexts.append(trUtf8(" • language changed"));
+#endif
     settings->setValue(APP_CFG_GEN, "language", new_lang);
   }
 }
@@ -388,7 +392,7 @@ void FormSettings::loadInterface() {
   // Load settings of icon theme.
   QString current_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
 
-  foreach (QString icon_theme_name, IconThemeFactory::getInstance()->getInstalledIconThemes()) {
+  foreach (const QString &icon_theme_name, IconThemeFactory::getInstance()->getInstalledIconThemes()) {
     if (icon_theme_name == APP_THEME_SYSTEM) {
 #if defined(Q_OS_LINUX)
       m_ui->m_cmbIconTheme->addItem(tr("system icon theme (default)"),
@@ -424,7 +428,7 @@ void FormSettings::loadInterface() {
   QList<Skin> installed_skins = SkinFactory::getInstance()->getInstalledSkins();
   QString selected_skin = SkinFactory::getInstance()->getSelectedSkinName();
 
-  foreach (Skin skin, installed_skins) {
+  foreach (const Skin &skin, installed_skins) {
     QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
                                                     skin.m_visibleName <<
                                                     skin.m_version <<
@@ -491,7 +495,15 @@ void FormSettings::saveInterface() {
   // Save and activate new skin.
   if (m_ui->m_treeSkins->selectedItems().size() > 0) {
     Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
-    SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
+
+    if (SkinFactory::getInstance()->getSelectedSkinName() != active_skin.m_baseName) {
+      SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
+#if QT_VERSION >= 0x050000
+      m_changedDataTexts.append(tr(" • skin changed"));
+#else
+      m_changedDataTexts.append(trUtf8(" • skin changed"));
+#endif
+    }
   }
 
   // Save tab settings.

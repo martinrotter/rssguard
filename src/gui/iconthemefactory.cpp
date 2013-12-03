@@ -11,31 +11,6 @@
 
 
 QPointer<IconThemeFactory> IconThemeFactory::s_instance;
-QEvent::Type IconThemeFactoryEvent::m_typeOfEvent = QEvent::None;
-
-//
-// ThemeFactoryEvent class
-//
-
-IconThemeFactoryEvent::IconThemeFactoryEvent() : QEvent(IconThemeFactoryEvent::type()) {
-}
-
-IconThemeFactoryEvent::~IconThemeFactoryEvent() {
-  qDebug("Destroying IconThemeFactoryEvent.");
-}
-
-QEvent::Type IconThemeFactoryEvent::type()  {
-  if (m_typeOfEvent == QEvent::None) {
-    m_typeOfEvent = static_cast<QEvent::Type>(QEvent::registerEventType(2000));
-  }
-
-  return m_typeOfEvent;
-}
-
-
-//
-// ThemeFactory class
-//
 
 IconThemeFactory::IconThemeFactory(QObject *parent)
   : QObject(parent), m_currentIconTheme(APP_THEME_SYSTEM) {
@@ -71,10 +46,9 @@ void IconThemeFactory::setCurrentIconTheme(const QString &theme_name) {
   Settings::getInstance()->setValue(APP_CFG_GUI,
                                     "icon_theme",
                                     theme_name);
-  loadCurrentIconTheme(true);
 }
 
-void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
+void IconThemeFactory::loadCurrentIconTheme() {
   QStringList installed_themes = getInstalledIconThemes();
   QString theme_name_from_settings = Settings::getInstance()->value(APP_CFG_GUI,
                                                                     "icon_theme",
@@ -104,15 +78,6 @@ void IconThemeFactory::loadCurrentIconTheme(bool notify_widgets) {
     QIcon::setThemeName(APP_THEME_SYSTEM);
     m_currentIconTheme = APP_THEME_SYSTEM;
   }
-
-  // We need to deliver custom event for all widgets
-  // to make sure they get a chance to setup their icons.
-  if (notify_widgets) {
-    foreach (QWidget *widget, QtSingleApplication::allWidgets()) {
-      QtSingleApplication::postEvent((QObject*) widget,
-                                     new IconThemeFactoryEvent());
-    }
-  }
 }
 
 QStringList IconThemeFactory::getInstalledIconThemes() {
@@ -123,11 +88,11 @@ QStringList IconThemeFactory::getInstalledIconThemes() {
   QStringList icon_themes_paths = QIcon::themeSearchPaths();
   icon_themes_paths.removeDuplicates();
 
-  foreach (QString icon_path, icon_themes_paths) {
+  foreach (const QString &icon_path, icon_themes_paths) {
     QDir icon_dir(icon_path);
 
     // Iterate all icon themes in this directory.
-    foreach (QString icon_theme_path, icon_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot |
+    foreach (const QString &icon_theme_path, icon_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot |
                                                          QDir::Readable | QDir::CaseSensitive |
                                                          QDir::NoSymLinks,
                                                          QDir::Time)) {

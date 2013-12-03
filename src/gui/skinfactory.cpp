@@ -78,7 +78,7 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
   }
 
   // Iterate supported styles and load one.
-  foreach (QString style, skin.m_stylesNames) {
+  foreach (const QString &style, skin.m_stylesNames) {
     if (qApp->setStyle(style) != 0) {
       qDebug("Style '%s' loaded.", qPrintable(style));
       break;
@@ -176,12 +176,12 @@ QList<Skin> SkinFactory::getInstalledSkins() {
                                                                QDir::NoSymLinks |
                                                                QDir::Readable);
 
-  foreach (QString base_directory, skin_directories) {
+  foreach (const QString &base_directory, skin_directories) {
     // Check skins installed in this base directory.
     QStringList skin_files = QDir(APP_SKIN_PATH + QDir::separator() + base_directory).entryList(QStringList() << "*.xml",
-                                                                                                QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
+                                                                                               QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
 
-    foreach (QString skin_file, skin_files) {
+    foreach (const QString &skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.
       Skin skin_info = getSkinInfo(base_directory + QDir::separator() + skin_file,
                                    &skin_load_ok);

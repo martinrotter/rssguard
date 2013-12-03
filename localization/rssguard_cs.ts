@@ -161,8 +161,8 @@
         <translation>Informace o autorech nebyly nalezeny.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard je (velmi) štíhlá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~web programu&lt;/li&gt;&lt;/ul&gt;Zdrojový kód tohoto programu je možné získat z jeho domovské stránky.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</translation>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -407,6 +407,14 @@
         <source>Delete all messages.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add new &amp;feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -559,14 +567,6 @@
         <translation>Chcete restartovat nyní?</translation>
     </message>
     <message>
-        <source>Language changed</source>
-        <translation>Jazyk změněn</translation>
-    </message>
-    <message>
-        <source>Problem with RSS Guard restart</source>
-        <translation>Problém s restartem</translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation> (na této platformě nepodporováno)</translation>
     </message>
@@ -609,14 +609,6 @@
     <message>
         <source>Web browser &amp; proxy</source>
         <translation>Webový prohlížeč &amp; proxy</translation>
-    </message>
-    <message>
-        <source>Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start.</source>
-        <translation>Jazyk RSS Guardu byl změnen. Změn se projeví až po restartu aplikace.</translation>
-    </message>
-    <message>
-        <source>RSS Guard couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
-        <translation>RSS Guard nemohl být restartován, prosím restartuje jej ručně.</translation>
     </message>
     <message>
         <source>Disable (Tray icon is not available.)</source>
@@ -678,6 +670,31 @@
     <message>
         <source>Hide tab bar if just one tab is visible</source>
         <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Critical settings were changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of changes:
+ %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Problem with application restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>• language changed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

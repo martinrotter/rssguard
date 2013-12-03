@@ -23,7 +23,7 @@ bool DynamicShortcutsWidget::areShortcutsUnique() {
   QList<QKeySequence> all_shortcuts;
 
   // Obtain all shortcuts.
-  foreach (ActionBinding binding, m_actionBindings) {
+  foreach (const ActionBinding &binding, m_actionBindings) {
     QKeySequence new_shortcut = binding.second->shortcut();
 
     if (all_shortcuts.contains(new_shortcut)) {

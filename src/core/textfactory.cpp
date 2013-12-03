@@ -19,8 +19,9 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString temp;
   QLocale locale(QLocale::C);
   QStringList date_patterns;
+  // Dec 1 2013 07:56:46
   date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
-                   "MMM hd yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
+                   "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
                    "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
                    "YYYY" << "YYYY-MM" << "YYYY-MM-DD" << "YYYY-MM-DDThh:mmTZD" <<
                    "YYYY-MM-DDThh:mm:ssTZD";

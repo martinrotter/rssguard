@@ -39,12 +39,13 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
-  // TODO: For testing.
-
   // Add everything to toolbar.
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds);
   m_toolBar->addSeparator();
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsRead);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsUnread);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

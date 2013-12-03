@@ -353,7 +353,6 @@ set(APP_TEXT
 
 # Wrap files, create moc files.
 if(${USE_QT_5})
-  #qt5_wrap_cpp(APP_MOC ${APP_HEADERS})
   qt5_wrap_ui(APP_UI ${APP_FORMS})
   qt5_add_resources(APP_RCC ${APP_RESOURCES})
   
@@ -453,6 +452,8 @@ if(WIN32 OR OS2)
   install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
           DESTINATION ./
           RENAME ${APP_LOW_NAME}_plain.png)
+  install(FILES resources/graphics/${APP_LOW_NAME}.ico
+          DESTINATION ./)
   install(FILES ${APP_QM}
           DESTINATION ./l10n)
   install(FILES ${APP_TEXT}

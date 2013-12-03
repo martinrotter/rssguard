@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
   IconThemeFactory::getInstance()->setupSearchPaths();
-  IconThemeFactory::getInstance()->loadCurrentIconTheme(false);
+  IconThemeFactory::getInstance()->loadCurrentIconTheme();
   SkinFactory::getInstance()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.

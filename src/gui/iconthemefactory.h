@@ -35,7 +35,7 @@ class IconThemeFactory : public QObject {
     // "default" theme is loaded.
     // NOTE: All existing widgets get a chance to repaint its icons if
     // notify_widgets is true.
-    void loadCurrentIconTheme(bool notify_widgets);
+    void loadCurrentIconTheme();
 
     // Returns name of currently activated theme for the application.
     QString getCurrentIconTheme();
@@ -52,24 +52,6 @@ class IconThemeFactory : public QObject {
 
     // Singleton.
     static QPointer<IconThemeFactory> s_instance;
-};
-
-// NOTE: Think about removing dynamic icon theme change,
-// because skins are not dynamic nor tranlations.
-class IconThemeFactoryEvent : public QEvent {
-  public:
-    enum Type {
-      IconThemeChange = 2000
-    };
-
-    // Constructors.
-    explicit IconThemeFactoryEvent();
-    virtual ~IconThemeFactoryEvent();
-
-    static QEvent::Type type();
-
-  private:
-    static QEvent::Type m_typeOfEvent;
 };
 
 #endif // THEMEFACTORY_H

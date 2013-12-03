@@ -21,8 +21,6 @@ struct TemporarySettings {
 
     QColor m_webBrowserProgress;
     QString m_skin;
-
-
 };
 
 class FormSettings : public QDialog {

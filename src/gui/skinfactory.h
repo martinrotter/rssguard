@@ -20,7 +20,7 @@ struct Skin {
 
 Q_DECLARE_METATYPE(Skin)
 
-// TODO: Skin "base/vergilius.xml" is now NEEDED for rssguard
+// NOTE: Skin "base/vergilius.xml" is now NEEDED for rssguard
 // to run. IT IS DEFAULT skin. It sets no styles and stylesheet.
 // It just contains markup for webbrowser.
 // NOTE: Check skins "base/vergilius.xml" and "luxuous.xml"

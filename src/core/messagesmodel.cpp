@@ -130,9 +130,15 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       }
     }
 
-      // Return RAW data for EditRole.
+    // Return RAW data for EditRole.
     case Qt::EditRole:
       return QSqlTableModel::data(idx, role);
+
+    // Return "red" color for just deleted messages.
+    case Qt::BackgroundRole:
+      return record(idx.row()).value(MSG_DB_DELETED_INDEX).toInt() == 1 ?
+            QColor(255, 0, 0, 100) :
+            QVariant();
 
     case Qt::FontRole:
       return record(idx.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?

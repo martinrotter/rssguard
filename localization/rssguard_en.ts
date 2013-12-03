@@ -161,7 +161,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -407,6 +407,14 @@
         <source>Delete all messages.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add new &amp;feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -559,14 +567,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Language changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Problem with RSS Guard restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -608,14 +608,6 @@
     </message>
     <message>
         <source>Web browser &amp; proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Language of RSS Guard was changed. Note that changes will take effect on next Qonverter start.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RSS Guard couldn&apos;t be restarted, please restart it manually for changes to take effect.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -671,6 +663,31 @@
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Critical settings were changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of changes:
+ %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Problem with application restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>• language changed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
