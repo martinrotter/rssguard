@@ -27,6 +27,9 @@ class MessagesView : public QTreeView {
     void switchSelectedMessagesImportance();
     void setAllMessagesRead();
 
+  protected slots:
+    void reselectIndexes(const QModelIndexList &indexes);
+
   protected:
     void setupAppearance();
     void mousePressEvent(QMouseEvent *event);

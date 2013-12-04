@@ -27,3 +27,24 @@ MessagesModel *MessagesProxyModel::sourceModel() {
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   return QSortFilterProxyModel::lessThan(left, right);
 }
+
+QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &idxs) {
+  QModelIndexList mapped_idxs;
+
+  foreach (const QModelIndex &index, idxs) {
+    mapped_idxs << mapFromSource(index);
+  }
+
+  return mapped_idxs;
+}
+
+QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &idxs) {
+  QModelIndexList source_idxs;
+
+  foreach (const QModelIndex &index, idxs) {
+    source_idxs << mapToSource(index);
+  }
+
+  return source_idxs;
+}
+

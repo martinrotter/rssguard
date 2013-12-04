@@ -27,6 +27,9 @@ class FeedMessageViewer : public TabContent {
     // Initializes both messages/feeds views.
     void initializeViews();
 
+    // Sets up connections.
+    void setupConnections();
+
   private:
     QToolBar *m_toolBar;
 

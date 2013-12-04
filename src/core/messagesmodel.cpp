@@ -224,7 +224,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   }
 
   // Commit changes.
-  if (db_handle.commit()) {
+  if (db_handle.commit()) {   
     // FULLY reload the model if underlying data is changed.
     select();
     fetchAll();

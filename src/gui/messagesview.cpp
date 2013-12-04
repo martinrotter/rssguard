@@ -1,5 +1,6 @@
 #include <QHeaderView>
 #include <QKeyEvent>
+#include <QScrollBar>
 
 #include "gui/messagesview.h"
 #include "core/messagesproxymodel.h"
@@ -121,37 +122,57 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
 
 void MessagesView::currentChanged(const QModelIndex &current,
                                   const QModelIndex &previous) {
-  QModelIndex mapped_current = m_proxyModel->mapToSource(current);
+  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current);
 
 
   qDebug("Current row changed, row [%d,%d] source %d %d",
          current.row(), current.column(),
-         mapped_current.row(), mapped_current.column());
+         mapped_current_index.row(), mapped_current_index.column());
 
-  m_sourceModel->setMessageRead(mapped_current.row(), 1);
-  emit currentMessageChanged(m_sourceModel->messageAt(mapped_current.row()));
+  if (mapped_current_index.isValid()) {
+    m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
+    emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
+  }
+  else {
+    emit currentMessageRemoved();
+  }
 
   QTreeView::currentChanged(current, previous);
 }
 
 void MessagesView::switchSelectedMessagesImportance() {
-  /*
-  // toto muže obsahovat moc indexů -> z jednoho radku to muze
-  // obsahovat indexy ze vsech sloupcu, overit.
-  QItemSelection selected_indexes = selectionModel()->selection();
-  QItemSelection mapped_selection = m_proxyModel->mapSelectionToSource(selected_indexes);
+  QModelIndex current_idx = selectionModel()->currentIndex();
+  QModelIndex mapped_current_idx = m_proxyModel->mapToSource(current_idx);
+  QModelIndexList selected_idxs = selectionModel()->selectedRows();
+  QModelIndexList mapped_idxs = m_proxyModel->mapListToSource(selected_idxs);
 
-  m_sourceModel->switchBatchMessageImportance(mapped_selection.indexes());
-  */
+  m_sourceModel->switchBatchMessageImportance(mapped_idxs);
 
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes;
+  //selected_idxs.clear();
+  selected_idxs = m_proxyModel->mapListFromSource(mapped_idxs);
 
-  foreach (const QModelIndex &index, selected_indexes) {
-    mapped_indexes << m_proxyModel->mapToSource(index);
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+/*
+  foreach (const QModelIndex &index, mapped_idxs) {
+    selected_idxs << m_proxyModel->mapFromSource(m_sourceModel->index(index.row(),
+                                                                         index.column()));
   }
+*/
+  current_idx = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_idx.row(),
+                                                          mapped_current_idx.column()));
 
-  m_sourceModel->switchBatchMessageImportance(mapped_indexes);
+  setCurrentIndex(current_idx);
+  scrollTo(current_idx);
+  reselectIndexes(selected_idxs);
+}
+
+void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
+  selectionModel()->clearSelection();
+
+  foreach (const QModelIndex &idx, indexes) {
+    selectionModel()->select(idx,
+                             QItemSelectionModel::Select | QItemSelectionModel::Rows);
+  }
 }
 
 void MessagesView::setAllMessagesRead() {

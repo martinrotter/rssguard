@@ -24,16 +24,20 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
+  setupConnections();
+}
 
-  // TODO: Separate into createConnections.
+void FeedMessageViewer::setupConnections() {
+  // General connections.
   connect(m_messagesView, SIGNAL(currentMessageRemoved()),
           m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessageChanged(Message)),
           m_messagesBrowser, SLOT(navigateToMessage(Message)));
+
+  // Toolbar forwardings.
   connect(FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
-          SIGNAL(triggered()),
-          m_messagesView,
-          SLOT(switchSelectedMessagesImportance()));
+          SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
+
 }
 
 void FeedMessageViewer::initialize() {
