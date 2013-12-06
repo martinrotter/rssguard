@@ -314,6 +314,7 @@ void FormSettings::saveLanguage() {
                                         "en").toString();
   QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
 
+  // Save prompt for restart if language has changed.
   if (new_lang != actual_lang) {
 #if QT_VERSION >= 0x050000
     m_changedDataTexts.append(tr(" • language changed"));
@@ -490,7 +491,16 @@ void FormSettings::saveInterface() {
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
+  QString original_icon_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
   IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
+
+  if (selected_icon_theme != original_icon_theme) {
+#if QT_VERSION >= 0x050000
+    m_changedDataTexts.append(tr(" • icon theme changed"));
+#else
+    m_changedDataTexts.append(trUtf8(" • icon theme changed"));
+#endif
+  }
 
   // Save and activate new skin.
   if (m_ui->m_treeSkins->selectedItems().size() > 0) {

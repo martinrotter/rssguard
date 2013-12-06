@@ -148,16 +148,14 @@ void MessagesView::switchSelectedMessagesImportance() {
 
   m_sourceModel->switchBatchMessageImportance(mapped_idxs);
 
-  //selected_idxs.clear();
-  selected_idxs = m_proxyModel->mapListFromSource(mapped_idxs);
-
+  selected_idxs.clear();
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
-/*
+
   foreach (const QModelIndex &index, mapped_idxs) {
     selected_idxs << m_proxyModel->mapFromSource(m_sourceModel->index(index.row(),
                                                                          index.column()));
   }
-*/
+
   current_idx = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_idx.row(),
                                                           mapped_current_idx.column()));
 
