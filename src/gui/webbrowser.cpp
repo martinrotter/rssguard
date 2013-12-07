@@ -176,7 +176,7 @@ void WebBrowser::navigateToMessage(const Message &message) {
                                                                         tr("Written by ") + message.m_author,
                                                                         message.m_url,
                                                                         message.m_contents,
-                                                                        message.m_updated.toString(Qt::ISODate)));
+                                                                        message.m_updated.toString(Qt::DefaultLocaleLongDate)));
 }
 
 void WebBrowser::updateZoomGui() {

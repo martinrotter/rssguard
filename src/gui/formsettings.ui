@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>910</width>
+    <width>966</width>
     <height>445</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>2</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>666</width>
-            <height>399</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -147,8 +147,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>662</width>
-                <height>371</height>
+                <width>167</width>
+                <height>219</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -634,6 +634,7 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="m_pageFeedsMessages"/>
     </widget>
    </item>
    <item row="0" column="0">
@@ -663,7 +664,7 @@
       <bool>false</bool>
      </property>
      <property name="currentRow">
-      <number>0</number>
+      <number>-1</number>
      </property>
      <item>
       <property name="text">
@@ -688,6 +689,11 @@
      <item>
       <property name="text">
        <string>Web browser &amp; proxy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Feeds &amp; messages</string>
       </property>
      </item>
     </widget>

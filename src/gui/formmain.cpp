@@ -58,13 +58,33 @@ TabWidget *FormMain::getTabWidget() {
 
 QList<QAction*> FormMain::getActions() {
   QList<QAction*> actions;
+
+  // Add basic actions.
   actions << m_ui->m_actionImport << m_ui->m_actionExport <<
              m_ui->m_actionSettings << m_ui->m_actionQuit <<
-             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
-             m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
+             m_ui->m_actionFullscreen;
+
+  // Add web browser actions
+  actions << m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
              m_ui->m_actionCloseAllTabs;
 
-  return actions;
+  // Add feeds/messages actions.
+  actions << m_ui->m_actionOpenSelectedSourceArticlesExternally <<
+             m_ui->m_actionOpenSelectedMessagesExternally <<
+             m_ui->m_actionOpenSelectedMessagesInternally <<
+             m_ui->m_actionMarkAllMessagesAsRead <<
+             m_ui->m_actionMarkAllMessagesAsUnread <<
+             m_ui->m_actionDeleteAllMessages <<
+             m_ui->m_actionMarkSelectedMessagesAsRead <<
+             m_ui->m_actionMarkSelectedMessagesAsUnread <<
+             m_ui->m_actionSwitchImportanceOfSelectedMessages <<
+             m_ui->m_actionDeleteSelectedMessages <<
+             m_ui->m_actionUpdateAllFeeds <<
+             m_ui->m_actionUpdateSelectedFeeds <<
+             m_ui->m_actionEditSelectedFeed <<
+             m_ui->m_actionDeleteSelectedFeeds;
+
+             return actions;
 }
 
 void FormMain::prepareMenus() {
@@ -125,7 +145,7 @@ void FormMain::display() {
   QtSingleApplication::alert(this);
 }
 
-void FormMain::onCommitData(QSessionManager &manager) {
+void FormMain::onCommitData(QSessionManager &manager) { 
   qDebug("OS asked application to commit its data.");
 }
 
@@ -166,7 +186,9 @@ void FormMain::setupIcons() {
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-unread"));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
-
+  m_ui->m_actionOpenSelectedMessagesExternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
+  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
+  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

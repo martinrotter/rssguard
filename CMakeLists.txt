@@ -15,13 +15,13 @@
 #
 #   "-DUSE_QT_5=ON"
 #     Specifies which major Qt version to use. Qt 4 and Qt 5 are supported.
-#     If "OFF" is passed as an argument, then Qt 4 is used.
+#     If "OFF" is passed as an argument, then Qt 4 is used. Default is "OFF".
 #
 # Other information:
+#   - supports Windows, Linux, OS/2 (eComStation),
 #   - Qt 4.7.3 and higher is required,
 #   - resource compiler (windres.exe) is needed on MinGW,
-#   - resource compiler (rc.exe) is needed on OS/2,
-#   - supports Windows, Linux, OS/2 (eComStation).
+#   - resource compiler (rc.exe) is needed on OS/2.
 #
 # Authors and contributors:
 #   - Martin Rotter (project leader)
@@ -34,12 +34,14 @@ cmake_minimum_required(VERSION 2.8.11)
 # Setup basic variables.
 project(rssguard)
 set(APP_NAME "RSS Guard")
-set(APP_UP_NAME "RSSGuard")
 set(APP_LOW_NAME "rssguard")
 set(APP_VERSION "2.0.0-prealpha-3")
+set(FILE_VERSION "2,0,0,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
 set(MINIMUM_QT_VERSION 4.7.3)
+set(SOURCE_PACKAGE_SUFFIX "Source")
+set(EXE_NAME ${APP_LOW_NAME})
 
 option(USE_QT_5 "Use Qt 5 for building" ON)
 
@@ -50,13 +52,6 @@ message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 set(CMAKE_COLOR_MAKEFILE ON)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/resources/cmake ${CMAKE_MODULE_PATH})
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-# Setup name for executable file.
-if(APPLE)
-  set(EXE_NAME ${APP_UP_NAME})
-else(APPLE)
-  set(EXE_NAME ${APP_LOW_NAME})
-endif(APPLE)
 
 # Select which Qt version to use.
 if(${USE_QT_5})
@@ -159,14 +154,6 @@ endif(${USE_QT_5})
 
 # Setup libraries.
 if(${USE_QT_5})
-  #find_package(Qt5Sql)
-  #find_package(Qt5WebKit)
-  #find_package(Qt5WebKitWidgets)
-  #find_package(Qt5Widgets)
-  #find_package(Qt5Xml)
-  #find_package(Qt5XmlPatterns)
-  #find_package(Qt5Network)
-  #find_package(Qt5LinguistTools)
   find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools)
 else(${USE_QT_5})
   set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
@@ -490,7 +477,7 @@ set(CPACK_PACKAGE_NAME ${APP_LOW_NAME})
 set(CPACK_PACKAGE_VERSION ${APP_VERSION})
 set(CPACK_IGNORE_FILES "/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
 set(CPACK_SOURCE_GENERATOR "TGZ")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-src")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${SOURCE_PACKAGE_SUFFIX}")
 set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
 
 # Load packaging facilities.

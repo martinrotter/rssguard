@@ -24,6 +24,9 @@ class MessagesView : public QTreeView {
 
   public slots:
     // Message manipulators.
+    void openSelectedMessagesExternally();
+    void openSelectedSourceMessagesInternally();
+    void openSelectedTargetMessagesInternally();
     void switchSelectedMessagesImportance();
     void setAllMessagesRead();
 
@@ -31,7 +34,10 @@ class MessagesView : public QTreeView {
     void reselectIndexes(const QModelIndexList &indexes);
 
   protected:
+    void initializeContextMenu();
     void setupAppearance();
+
+    void contextMenuEvent(QContextMenuEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
     void currentChanged(const QModelIndex &current,
@@ -44,6 +50,8 @@ class MessagesView : public QTreeView {
     void currentMessageRemoved();
 
   private:
+    QMenu *m_contextMenu;
+
     MessagesProxyModel *m_proxyModel;
     MessagesModel *m_sourceModel;
 };

@@ -12,6 +12,7 @@ class FormMain : public QMainWindow {
 
     friend class TabWidget;
     friend class FeedMessageViewer;
+    friend class MessagesView;
 
   public:
     // Constructors and destructors.

@@ -51,8 +51,8 @@ void FeedMessageViewer::initialize() {
   QToolButton *update_button = new QToolButton(m_toolBar);
   update_button->setPopupMode(QToolButton::InstantPopup);
   update_button->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  update_button->setText(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds->text());
-  update_button->setToolTip(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds->toolTip());
+  update_button->setText(tr("Update selected/all feeds"));
+  update_button->setToolTip(tr("Select which feeds you want to update."));
 
   QMenu *update_menu = new QMenu(tr("Feed update menu"), update_button);
   update_menu->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);

@@ -48,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -355,6 +355,36 @@
    </property>
    <property name="toolTip">
     <string>Add new feed.</string>
+   </property>
+  </action>
+  <action name="m_actionOpenSelectedMessagesExternally">
+   <property name="text">
+    <string>Open selected messages in external browser</string>
+   </property>
+   <property name="toolTip">
+    <string>Open selected messages in external browser.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionOpenSelectedMessagesInternally">
+   <property name="text">
+    <string>Open selected messages in internal browser</string>
+   </property>
+   <property name="toolTip">
+    <string>Open selected messages in internal browser.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionOpenSelectedSourceArticlesExternally">
+   <property name="text">
+    <string>Open selected source articles in external browser</string>
+   </property>
+   <property name="toolTip">
+    <string>Open selected source messages  in external browser.</string>
    </property>
   </action>
  </widget>

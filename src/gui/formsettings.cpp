@@ -125,18 +125,30 @@ void FormSettings::displayProxyPassword(int state) {
 
 bool FormSettings::doSaveCheck() {
   bool everything_ok = true;
-  QString resulting_information;
+  QStringList resulting_information;
+  QMessageBox msg_error(this);
 
+  // Setup indication of settings consistence.
   everything_ok &= m_ui->m_shortcuts->areShortcutsUnique();
 
   if (!m_ui->m_shortcuts->areShortcutsUnique()) {
-    resulting_information = resulting_information.append(tr("Some keyboard shortcuts are not unique.\n"));
+#if QT_VERSION >= 0x050000
+    resulting_information.append(tr(" • some keyboard shortcuts are not unique"));
+#else
+    resulting_information.append(trUtf8(" • some keyboard shortcuts are not unique"));
+#endif
   }
 
+  // Setup dialog.
+  msg_error.setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));
+  msg_error.setWindowTitle(tr("Cannot save settings"));
+  msg_error.setDetailedText(tr("List of errors:\n %1.").arg(resulting_information.join(",\n")));
+  msg_error.setIcon(QMessageBox::Critical);
+  msg_error.setStandardButtons(QMessageBox::Ok);
+  msg_error.setDefaultButton(QMessageBox::Ok);
+
   if (!everything_ok) {
-    QMessageBox::warning(this,
-                         tr("Cannot save settings"),
-                         resulting_information);
+    msg_error.exec();
   }
 
   return everything_ok;
@@ -494,6 +506,7 @@ void FormSettings::saveInterface() {
   QString original_icon_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
   IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
 
+  // Check if icon theme was changed.
   if (selected_icon_theme != original_icon_theme) {
 #if QT_VERSION >= 0x050000
     m_changedDataTexts.append(tr(" • icon theme changed"));
