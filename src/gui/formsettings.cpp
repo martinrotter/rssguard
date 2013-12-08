@@ -353,17 +353,17 @@ void FormSettings::loadGeneral() {
   // Load auto-start status.
   SystemFactory::AutoStartStatus autostart_status = SystemFactory::getAutoStartStatus();
   switch (autostart_status) {
-    case SystemFactory::Enabled:
-      m_ui->m_checkAutostart->setChecked(true);
-      break;
-    case SystemFactory::Disabled:
-      m_ui->m_checkAutostart->setChecked(false);
-      break;
-    default:
-      m_ui->m_checkAutostart->setEnabled(false);
-      m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
-                                      tr(" (not supported on this platform)"));
-      break;
+  case SystemFactory::Enabled:
+    m_ui->m_checkAutostart->setChecked(true);
+    break;
+  case SystemFactory::Disabled:
+    m_ui->m_checkAutostart->setChecked(false);
+    break;
+  default:
+    m_ui->m_checkAutostart->setEnabled(false);
+    m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
+                                    tr(" (not supported on this platform)"));
+    break;
   }
 }
 
@@ -408,9 +408,11 @@ void FormSettings::loadInterface() {
   foreach (const QString &icon_theme_name, IconThemeFactory::getInstance()->getInstalledIconThemes()) {
     if (icon_theme_name == APP_THEME_SYSTEM) {
 #if defined(Q_OS_LINUX)
+      // Add "default theme" and "no theme" on Linux.
       m_ui->m_cmbIconTheme->addItem(tr("system icon theme (default)"),
                                     APP_THEME_SYSTEM);
 #else
+      // Add just "no theme" on other systems.
       m_ui->m_cmbIconTheme->addItem(tr("no icon theme"),
                                     APP_THEME_SYSTEM);
 #endif

@@ -24,13 +24,18 @@ class MessagesView : public QTreeView {
 
   public slots:
     // Message manipulators.
-    void openSelectedMessagesExternally();
+    void openSelectedSourceArticlesExternally();
     void openSelectedSourceMessagesInternally();
-    void openSelectedTargetMessagesInternally();
+    void openSelectedMessagesInternally();
+
+    void setSelectedMessagesReadStatus(int read);
+    void markSelectedMessagesRead();
+    void markSelectedMessagesUnread();
+    void deleteSelectedMessages();
     void switchSelectedMessagesImportance();
-    void setAllMessagesRead();
 
   protected slots:
+    // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);
 
   protected:

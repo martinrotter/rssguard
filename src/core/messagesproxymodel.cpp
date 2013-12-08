@@ -28,20 +28,25 @@ bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &ri
   return QSortFilterProxyModel::lessThan(left, right);
 }
 
-QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &idxs) {
+QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &indexes, bool deep) {
   QModelIndexList mapped_idxs;
 
-  foreach (const QModelIndex &index, idxs) {
-    mapped_idxs << mapFromSource(index);
+  foreach (const QModelIndex &index, indexes) {
+    if (deep) {
+      mapped_idxs << mapFromSource(m_sourceModel->index(index.row(), index.column()));
+    }
+    else {
+      mapped_idxs << mapFromSource(index);
+    }
   }
 
   return mapped_idxs;
 }
 
-QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &idxs) {
+QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) {
   QModelIndexList source_idxs;
 
-  foreach (const QModelIndex &index, idxs) {
+  foreach (const QModelIndex &index, indexes) {
     source_idxs << mapToSource(index);
   }
 

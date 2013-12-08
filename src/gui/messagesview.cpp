@@ -120,13 +120,9 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
 
 void MessagesView::initializeContextMenu() {
   m_contextMenu = new QMenu(tr("Context menu for messages"), this);
-
-  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesExternally,
-          SIGNAL(triggered()), this, SLOT(openSelectedMessagesExternally()));
-
   m_contextMenu->addActions(QList<QAction*>() <<
                             FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-                            FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesExternally <<
+                            FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
                             FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally <<
                             FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsRead <<
                             FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
@@ -160,32 +156,89 @@ void MessagesView::currentChanged(const QModelIndex &current,
                                   const QModelIndex &previous) {
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current);
 
-
   qDebug("Current row changed, row [%d,%d] source %d %d",
          current.row(), current.column(),
          mapped_current_index.row(), mapped_current_index.column());
 
-  if (mapped_current_index.isValid()) {
-    m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
-    emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
-  }
-  else {
-    emit currentMessageRemoved();
+  if (!signalsBlocked()) {
+    if (mapped_current_index.isValid()) {
+      m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
+      emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
+    }
+    else {
+      emit currentMessageRemoved();
+    }
   }
 
   QTreeView::currentChanged(current, previous);
 }
 
-void MessagesView::openSelectedMessagesExternally() {
+void MessagesView::openSelectedSourceArticlesExternally() {
   // TODO: otevře vybrane zpravy v externim prohlizeci
 }
 
 void MessagesView::openSelectedSourceMessagesInternally() {
-  // TODO: otevre vybrane nactene zpravy v internch tabech
+  // TODO: otevre vybrane zpravy ze zdrojovych webz v internch tabech
 }
 
-void MessagesView::openSelectedTargetMessagesInternally() {
-  // TODO: otevre vybrane zpravy ze zdrojovych webz v internich tabech
+void MessagesView::openSelectedMessagesInternally() {
+  // TODO: otevre vybrane nactene zpravy v internich tabech
+}
+
+void MessagesView::markSelectedMessagesRead() {
+  setSelectedMessagesReadStatus(1);
+}
+
+void MessagesView::markSelectedMessagesUnread() {
+  setSelectedMessagesReadStatus(0);
+}
+
+void MessagesView::setSelectedMessagesReadStatus(int read) {
+  QModelIndex current_index = selectionModel()->currentIndex();
+  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+
+  m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
+
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+
+  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
+  current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
+                                                                   mapped_current_index.column()));
+
+  if (read == 0) {
+    // User selected to mark some messages as unread, if one
+    // of them will be marked as current, then it will be read again.
+    blockSignals(true);
+    setCurrentIndex(current_index);
+    blockSignals(false);
+  }
+  else {
+    setCurrentIndex(current_index);
+  }
+
+  scrollTo(current_index);
+  reselectIndexes(selected_indexes);
+}
+
+void MessagesView::deleteSelectedMessages() {
+  QModelIndex current_index = selectionModel()->currentIndex();
+  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+
+  m_sourceModel->setBatchMessagesDeleted(mapped_indexes, 1);
+
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+
+  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
+  current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
+                                                                   mapped_current_index.column()));
+
+  setCurrentIndex(current_index);
+  scrollTo(current_index);
+  reselectIndexes(selected_indexes);
 }
 
 void MessagesView::switchSelectedMessagesImportance() {
@@ -196,16 +249,11 @@ void MessagesView::switchSelectedMessagesImportance() {
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
 
-  selected_indexes.clear();
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-  foreach (const QModelIndex &index, mapped_indexes) {
-    selected_indexes << m_proxyModel->mapFromSource(m_sourceModel->index(index.row(),
-                                                                         index.column()));
-  }
-
+  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
-                                                          mapped_current_index.column()));
+                                                                   mapped_current_index.column()));
 
   setCurrentIndex(current_index);
   scrollTo(current_index);
@@ -220,16 +268,4 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
                              QItemSelectionModel::Select |
                              QItemSelectionModel::Rows);
   }
-}
-
-void MessagesView::setAllMessagesRead() {
-  selectAll();
-  QModelIndexList selected_indexes = selectedIndexes();
-  QModelIndexList mapp;
-
-  foreach (const QModelIndex &index, selected_indexes) {
-    mapp << m_proxyModel->mapToSource(index);
-  }
-
-  m_sourceModel->switchBatchMessageImportance(mapp);
 }

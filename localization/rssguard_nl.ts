@@ -97,6 +97,18 @@
         <source>Toolbar for messages</source>
         <translation>Werkbalk voor berichten</translation>
     </message>
+    <message>
+        <source>Update selected/all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select which feeds you want to update.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed update menu</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -415,6 +427,30 @@
         <source>Add new feed.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open selected messages in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected messages in external browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected messages in internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected messages in internal browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source articles in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source messages  in external browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -639,12 +675,6 @@
         <translation>Geen pictogram thema</translation>
     </message>
     <message>
-        <source>Some keyboard shortcuts are not unique.
-</source>
-        <translation>Sommige sneltoetsen voor toetsenbord zijn niet uniek.
-</translation>
-    </message>
-    <message>
         <source>Cannot save settings</source>
         <translation>Kan instellingen niet opslaan</translation>
     </message>
@@ -694,7 +724,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>• language changed</source>
+        <source>Feeds &amp; messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> • some keyboard shortcuts are not unique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of errors:
+ %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> • language changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> • icon theme changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> • skin changed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -765,6 +820,13 @@
     <message>
         <source>Contents</source>
         <translation>Inhoud</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesView</name>
+    <message>
+        <source>Context menu for messages</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

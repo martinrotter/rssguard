@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>966</width>
-    <height>445</height>
+    <width>803</width>
+    <height>373</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -147,8 +147,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>195</width>
+                <height>238</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -634,7 +634,120 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="m_pageFeedsMessages"/>
+     <widget class="QWidget" name="m_pageFeedsMessages">
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTabWidget" name="m_tabFeedsMessages">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="m_tabFeeds">
+          <attribute name="title">
+           <string>Feeds</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="m_tabMessages">
+          <attribute name="title">
+           <string>Messages</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout_10">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>External web browser for message viewing</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_11">
+              <property name="fieldGrowthPolicy">
+               <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserPreset">
+                <property name="text">
+                 <string>Preset</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
+                <item>
+                 <property name="text">
+                  <string>custom</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Chromium</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Google Chrome</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Opera</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mozilla Firefox</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserExecutable">
+                <property name="text">
+                 <string>Web browser executable</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <item>
+                 <widget class="QLineEdit" name="m_txtExternalBrowserExecutable"/>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="m_btnExternalBrowserExecutable">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserArguments">
+                <property name="text">
+                 <string>Executable arguments</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="m_txtExternalBrowserArguments"/>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="0" column="0">

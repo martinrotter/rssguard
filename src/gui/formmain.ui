@@ -357,15 +357,12 @@
     <string>Add new feed.</string>
    </property>
   </action>
-  <action name="m_actionOpenSelectedMessagesExternally">
+  <action name="m_actionOpenSelectedSourceArticlesExternally">
    <property name="text">
-    <string>Open selected messages in external browser</string>
+    <string>Open selected source articles in external browser</string>
    </property>
    <property name="toolTip">
-    <string>Open selected messages in external browser.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Open selected source articles in external browser.</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedMessagesInternally">
@@ -379,12 +376,12 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionOpenSelectedSourceArticlesExternally">
+  <action name="m_actionOpenSelectedSourceArticlesInternally">
    <property name="text">
-    <string>Open selected source articles in external browser</string>
+    <string>Open selected source articles in internal browser</string>
    </property>
    <property name="toolTip">
-    <string>Open selected source messages  in external browser.</string>
+    <string>Open selected source messages  in internal browser.</string>
    </property>
   </action>
  </widget>

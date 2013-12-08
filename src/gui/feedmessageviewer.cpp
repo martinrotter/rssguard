@@ -25,10 +25,10 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
-  setupConnections();
+  createConnections();
 }
 
-void FeedMessageViewer::setupConnections() {
+void FeedMessageViewer::createConnections() {
   // General connections.
   connect(m_messagesView, SIGNAL(currentMessageRemoved()),
           m_messagesBrowser, SLOT(clear()));
@@ -38,7 +38,18 @@ void FeedMessageViewer::setupConnections() {
   // Toolbar forwardings.
   connect(FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
-
+  connect(FormMain::getInstance()->m_ui->m_actionDeleteSelectedMessages,
+          SIGNAL(triggered()), m_messagesView, SLOT(deleteSelectedMessages()));
+  connect(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsRead,
+          SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesRead()));
+  connect(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsUnread,
+          SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesUnread()));
+  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
+          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceArticlesExternally()));
+  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesInternally,
+          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
+  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally,
+          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
 }
 
 void FeedMessageViewer::initialize() {

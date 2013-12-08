@@ -236,11 +236,77 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 }
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
+  // Submit changes first.
+  submitAll();
 
+  if (!database().transaction()) {
+    qWarning("Starting transaction for batch message deletion.");
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  int message_id;
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare("UPDATE messages SET deleted = :deleted "
+                                "WHERE id = :id")) {
+    qWarning("Query preparation failed for message deletion.");
+    return false;
+  }
+
+  foreach (const QModelIndex &message, messages) {
+    message_id = messageId(message.row());
+    query_delete_msg.bindValue(":id", message_id);
+    query_delete_msg.bindValue(":deleted", deleted);
+    query_delete_msg.exec();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // FULLY reload the model if underlying data is changed.
+    select();
+    fetchAll();
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
 }
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
+  // Submit changes first.
+  submitAll();
 
+  if (!database().transaction()) {
+    qWarning("Starting transaction for batch message read change.");
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  int message_id;
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare("UPDATE messages SET read = :read "
+                                "WHERE id = :id")) {
+    qWarning("Query preparation failed for message read change.");
+    return false;
+  }
+
+  foreach (const QModelIndex &message, messages) {
+    message_id = messageId(message.row());
+    query_delete_msg.bindValue(":id", message_id);
+    query_delete_msg.bindValue(":read", read);
+    query_delete_msg.exec();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // FULLY reload the model if underlying data is changed.
+    select();
+    fetchAll();
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
 }
 
 bool MessagesModel::switchAllMessageImportance() {

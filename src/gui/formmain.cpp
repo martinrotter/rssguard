@@ -70,7 +70,7 @@ QList<QAction*> FormMain::getActions() {
 
   // Add feeds/messages actions.
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-             m_ui->m_actionOpenSelectedMessagesExternally <<
+             m_ui->m_actionOpenSelectedSourceArticlesInternally <<
              m_ui->m_actionOpenSelectedMessagesInternally <<
              m_ui->m_actionMarkAllMessagesAsRead <<
              m_ui->m_actionMarkAllMessagesAsUnread <<
@@ -186,7 +186,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-unread"));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
-  m_ui->m_actionOpenSelectedMessagesExternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
+  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
 

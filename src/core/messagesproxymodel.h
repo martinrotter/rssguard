@@ -18,8 +18,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     MessagesModel *sourceModel();
 
     // Maps list of indexes.
-    QModelIndexList mapListToSource(const QModelIndexList &idxs);
-    QModelIndexList mapListFromSource(const QModelIndexList &idxs);
+    QModelIndexList mapListToSource(const QModelIndexList &indexes);
+    QModelIndexList mapListFromSource(const QModelIndexList &indexes, bool deep = false);
 
   protected:
     // Compares two rows of data.

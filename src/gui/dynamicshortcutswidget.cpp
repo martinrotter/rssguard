@@ -48,7 +48,6 @@ void DynamicShortcutsWidget::populate(const QList<QAction *> actions) {
   m_actionBindings.clear();
 
   int row_id = 0;
-  bool second_column = false;
 
   foreach (QAction *action, actions) {
     // Create shortcut catcher for this action and set default shortcut.
@@ -68,27 +67,13 @@ void DynamicShortcutsWidget::populate(const QList<QAction *> actions) {
     label->setText(action->text().remove('&'));
     label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
 
-    if (second_column) {
-      m_layout->addWidget(label, row_id, 2);
-      m_layout->addWidget(catcher, row_id, 3);
-      second_column = false;
+    m_layout->addWidget(label, row_id, 0);
+    m_layout->addWidget(catcher, row_id, 1);
 
-      // Continue to the next row.
-      row_id++;
-    }
-    else {
-      QMargins catcher_margins = catcher->contentsMargins();
-      catcher_margins.setRight(10);
-
-      catcher->setContentsMargins(catcher_margins);
-
-      m_layout->addWidget(label, row_id, 0);
-      m_layout->addWidget(catcher, row_id, 1);
-
-      second_column = true;
-    }
+    row_id++;
   }
 
   // Make sure that "spacer" is added.
-  m_layout->setRowStretch(second_column ? ++row_id : row_id, 1);
+  m_layout->setRowStretch(row_id, 1);
+  m_layout->setColumnStretch(0, 1);
 }
