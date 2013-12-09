@@ -43,7 +43,9 @@ set(MINIMUM_QT_VERSION 4.7.3)
 set(SOURCE_PACKAGE_SUFFIX "Source")
 set(EXE_NAME ${APP_LOW_NAME})
 
+# Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
+option(BUNDLE_ICON_THEME "Equip installation with custom icon theme" ON)
 
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")

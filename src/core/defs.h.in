@@ -26,6 +26,7 @@
 
 #define TEXT_TITLE_LIMIT    30
 #define MAX_ZOOM_FACTOR     10.0
+#define ICON_SIZE_SETTINGS  16
 #define DATABASE_DRIVER     "QSQLITE"
 
 #define APP_DB_INIT_FILE    "db_init.sql"
