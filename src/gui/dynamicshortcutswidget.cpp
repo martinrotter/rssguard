@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QSpacerItem>
 
+#include "core/defs.h"
 #include "gui/dynamicshortcutswidget.h"
 #include "gui/shortcutcatcher.h"
 
@@ -63,17 +64,23 @@ void DynamicShortcutsWidget::populate(const QList<QAction *> actions) {
     m_actionBindings << new_binding;
 
     // Add new catcher to our control.
-    QLabel *label = new QLabel(this);
-    label->setText(action->text().remove('&'));
-    label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+    QLabel *action_label = new QLabel(this);
+    action_label->setText(action->text().remove('&'));
+    action_label->setToolTip(action->toolTip());
+    action_label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
 
-    m_layout->addWidget(label, row_id, 0);
-    m_layout->addWidget(catcher, row_id, 1);
+    QLabel *action_icon = new QLabel(this);
+    action_icon->setPixmap(action->icon().pixmap(ICON_SIZE_SETTINGS, ICON_SIZE_SETTINGS));
+    action_icon->setToolTip(action->toolTip());
+
+    m_layout->addWidget(action_icon, row_id, 0);
+    m_layout->addWidget(action_label, row_id, 1);
+    m_layout->addWidget(catcher, row_id, 2);
 
     row_id++;
   }
 
   // Make sure that "spacer" is added.
   m_layout->setRowStretch(row_id, 1);
-  m_layout->setColumnStretch(0, 1);
+  m_layout->setColumnStretch(1, 1);
 }
