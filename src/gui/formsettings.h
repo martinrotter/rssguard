@@ -15,12 +15,10 @@ struct TemporarySettings {
 
   public:
     TemporarySettings()
-      : m_webBrowserProgress(QColor()),
-        m_skin(QString()) {
+      : m_webBrowserProgress(QColor()) {
     }
 
     QColor m_webBrowserProgress;
-    QString m_skin;
 };
 
 class FormSettings : public QDialog {
@@ -62,6 +60,10 @@ class FormSettings : public QDialog {
     void loadProxy();
     void saveProxy();
     void displayProxyPassword(int state);
+
+    void loadFeedsMessages();
+    void saveFeedsMessages();
+    void changeDefaultBrowserArguments(int index);
 
     void onProxyTypeChanged(int index);
     

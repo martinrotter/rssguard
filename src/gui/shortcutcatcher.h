@@ -38,7 +38,9 @@ class ShortcutButton;
 
 class ShortcutCatcher : public QWidget {
     Q_OBJECT
+
     friend class ShortcutButton;
+    friend class DynamicShortcutsWidget;
 
   public:
     // Constructors and destructors.

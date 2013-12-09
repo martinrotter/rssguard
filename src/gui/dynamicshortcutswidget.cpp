@@ -2,9 +2,11 @@
 #include <QAction>
 #include <QLabel>
 #include <QSpacerItem>
+#include <QPalette>
 
 #include "gui/dynamicshortcutswidget.h"
 #include "gui/shortcutcatcher.h"
+#include "gui/shortcutbutton.h"
 
 
 DynamicShortcutsWidget::DynamicShortcutsWidget(QWidget *parent) : QWidget(parent) {
@@ -26,8 +28,8 @@ bool DynamicShortcutsWidget::areShortcutsUnique() {
   foreach (const ActionBinding &binding, m_actionBindings) {
     QKeySequence new_shortcut = binding.second->shortcut();
 
-    if (all_shortcuts.contains(new_shortcut)) {
-      // Problem, two identical shortcuts found.
+    if (all_shortcuts.contains(new_shortcut) && !new_shortcut.isEmpty()) {
+      // Problem, two identical non-empty shortcuts found.
       return false;
     }
     else {

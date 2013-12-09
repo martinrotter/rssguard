@@ -99,6 +99,10 @@ void MessagesView::selectionChanged(const QItemSelection &selected,
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {
   QTreeView::keyPressEvent(event);
+
+  if (event->key() == Qt::Key_Delete) {
+    deleteSelectedMessages();
+  }
 }
 
 void MessagesView::contextMenuEvent(QContextMenuEvent *event) {

@@ -81,6 +81,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(changeBrowserProgressColor()));
   connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
           this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
+  connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)),
+          this, SLOT(changeDefaultBrowserArguments(int)));
 
   // Load all settings.
   loadGeneral();
@@ -89,10 +91,17 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   loadProxy();
   loadBrowser();
   loadLanguage();
+  loadFeedsMessages();
 }
 
 FormSettings::~FormSettings() {
   delete m_ui;
+}
+
+void FormSettings::changeDefaultBrowserArguments(int index) {
+  if (index != 0) {
+    m_ui->m_txtExternalBrowserArguments->setText(m_ui->m_cmbExternalBrowserPreset->itemData(index).toString());
+  }
 }
 
 void FormSettings::onSkinSelected(QTreeWidgetItem *current,
@@ -112,6 +121,14 @@ void FormSettings::changeBrowserProgressColor() {
   color_dialog.exec();
 
   m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
+}
+
+void FormSettings::loadFeedsMessages() {
+  m_ui->m_cmbExternalBrowserPreset->addItem("Chromium", "aa %1");
+}
+
+void FormSettings::saveFeedsMessages() {
+
 }
 
 void FormSettings::displayProxyPassword(int state) {
@@ -192,6 +209,7 @@ void FormSettings::saveSettings() {
   saveProxy();
   saveBrowser();
   saveLanguage();
+  saveFeedsMessages();
 
   Settings::getInstance()->checkSettings();
   promptForRestart();
@@ -353,17 +371,17 @@ void FormSettings::loadGeneral() {
   // Load auto-start status.
   SystemFactory::AutoStartStatus autostart_status = SystemFactory::getAutoStartStatus();
   switch (autostart_status) {
-  case SystemFactory::Enabled:
-    m_ui->m_checkAutostart->setChecked(true);
-    break;
-  case SystemFactory::Disabled:
-    m_ui->m_checkAutostart->setChecked(false);
-    break;
-  default:
-    m_ui->m_checkAutostart->setEnabled(false);
-    m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
-                                    tr(" (not supported on this platform)"));
-    break;
+    case SystemFactory::Enabled:
+      m_ui->m_checkAutostart->setChecked(true);
+      break;
+    case SystemFactory::Disabled:
+      m_ui->m_checkAutostart->setChecked(false);
+      break;
+    default:
+      m_ui->m_checkAutostart->setEnabled(false);
+      m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
+                                      tr(" (not supported on this platform)"));
+      break;
   }
 }
 
@@ -455,7 +473,6 @@ void FormSettings::loadInterface() {
     m_ui->m_treeSkins->addTopLevelItem(new_item);
 
     if (skin.m_baseName == selected_skin) {
-      m_initialSettings.m_skin = selected_skin;
       m_ui->m_treeSkins->setCurrentItem(new_item);
       m_ui->m_lblActiveContents->setText(skin.m_visibleName);
     }
