@@ -13,7 +13,7 @@
 QPointer<IconThemeFactory> IconThemeFactory::s_instance;
 
 IconThemeFactory::IconThemeFactory(QObject *parent)
-  : QObject(parent), m_currentIconTheme(APP_THEME_SYSTEM) {
+  : QObject(parent), m_currentIconTheme(APP_THEME_DEFAULT) {
 }
 
 IconThemeFactory::~IconThemeFactory() {
@@ -38,8 +38,19 @@ QString IconThemeFactory::getCurrentIconTheme() {
   return m_currentIconTheme;
 }
 
-QIcon IconThemeFactory::fromTheme(const QString &name, const QIcon &fallback) {
-  return QIcon::fromTheme(name, fallback);
+QIcon IconThemeFactory::fromTheme(const QString &name) {
+  if (m_currentIconTheme == APP_NO_THEME) {
+    return QIcon();
+  }
+
+  if (!m_cachedIcons.contains(name)) {
+    // Icon is not cached yet.
+    m_cachedIcons.insert(name, QIcon(APP_THEME_PATH + QDir::separator() +
+                                     m_currentIconTheme + QDir::separator() +
+                                     name + APP_THEME_SUFFIX));
+  }
+
+  return m_cachedIcons.value(name);
 }
 
 void IconThemeFactory::setCurrentIconTheme(const QString &theme_name) {
@@ -67,22 +78,21 @@ void IconThemeFactory::loadCurrentIconTheme() {
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
     qDebug("Loading icon theme '%s'.", qPrintable(theme_name_from_settings));
-    QIcon::setThemeName(theme_name_from_settings);
     m_currentIconTheme = theme_name_from_settings;
   }
   else {
     // Desired icon theme is not currently available.
     // Install "default" icon theme instead.
-    qDebug("Icon theme '%s' cannot be loaded because it is not installed. Loading 'system default' theme.",
+    qDebug("Icon theme '%s' cannot be loaded because it is not installed. "
+           "No icon theme is loaded now.",
            qPrintable(theme_name_from_settings));
-    QIcon::setThemeName(APP_THEME_SYSTEM);
-    m_currentIconTheme = APP_THEME_SYSTEM;
+    m_currentIconTheme = APP_NO_THEME;
   }
 }
 
 QStringList IconThemeFactory::getInstalledIconThemes() {
   QStringList icon_theme_names;
-  icon_theme_names << APP_THEME_SYSTEM;
+  icon_theme_names << APP_NO_THEME;
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();
@@ -96,10 +106,7 @@ QStringList IconThemeFactory::getInstalledIconThemes() {
                                                          QDir::Readable | QDir::CaseSensitive |
                                                          QDir::NoSymLinks,
                                                          QDir::Time)) {
-      // Check if index.theme file in this path exists.
-      if (QFile::exists(icon_dir.path() + "/" + icon_theme_path + "/index.theme")) {
-        icon_theme_names << icon_theme_path;
-      }
+      icon_theme_names << icon_theme_path;
     }
   }
 

@@ -2,7 +2,6 @@
 #define THEMEFACTORY_H
 
 #include <QString>
-#include <QEvent>
 #include <QIcon>
 #include <QPointer>
 
@@ -17,11 +16,9 @@ class IconThemeFactory : public QObject {
     // Destructor.
     virtual ~IconThemeFactory();
 
-    // Wrapper for QIcon::fromTheme.
-    // TODO: If icon is not found in user-defined icon theme,
-    // then it is searched in system-default theme (ThemeFactory::getSystemIconTheme()).
-    // BUG: I tried to do that, but QIcon is apparently bugged.
-    QIcon fromTheme(const QString &name, const QIcon &fallback = QIcon());
+    // Returns icon from active theme or invalid icon if
+    // "no icon theme" is set.
+    QIcon fromTheme(const QString &name);
 
     // Adds custom application path to be search for icons.
     void setupSearchPaths();
@@ -44,6 +41,8 @@ class IconThemeFactory : public QObject {
     void setCurrentIconTheme(const QString &theme_name);
 
   private:
+    QHash<QString, QIcon> m_cachedIcons;
+
     // Constructor.
     explicit IconThemeFactory(QObject *parent = 0);
 

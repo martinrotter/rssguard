@@ -127,8 +127,20 @@ QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
     return initialize(connection_name);
   }
   else {
-    return QSqlDatabase::addDatabase(DATABASE_DRIVER,
-                                     connection_name);
+    QSqlDatabase database = QSqlDatabase::addDatabase(DATABASE_DRIVER,
+                                                      connection_name);
+    QDir db_path(getDatabasePath());
+    QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+
+    // Setup database file path.
+    database.setDatabaseName(db_file.fileName());
+
+    if (!database.open()) {
+      qFatal("Database was NOT opened. Delivered error message: '%s'",
+             qPrintable(database.lastError().text()));
+    }
+
+    return database;
   }
 }
 

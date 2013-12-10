@@ -174,6 +174,12 @@ int TabWidget::insertTab(int index, QWidget *widget, const QString &label,
   return tab_index;
 }
 
+int TabWidget::addBrowserWithMessage(const Message &message)  {
+  int new_index = addBrowser(false, false);
+  static_cast<WebBrowser*>(widget(new_index))->navigateToMessage(message);
+  return new_index;
+}
+
 int TabWidget::addEmptyBrowser() {
   return addBrowser(false, true);
 }

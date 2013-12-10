@@ -76,7 +76,7 @@ class FormMain : public QMainWindow {
     // Displays various dialogs.
     void showSettings();
     void showAbout();
-    
+
   private:
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;

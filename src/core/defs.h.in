@@ -5,7 +5,7 @@
 
 #if QT_VERSION >= 0x050000
 #include <qwebkitglobal.h>
-#elif QT_VERSION >= 0x040600
+#else
 #include <qwebkitversion.h>
 #endif
 
@@ -19,10 +19,7 @@
 #define APP_AUTHORS         "@APP_AUTHOR@"
 #define APP_URL             "@APP_URL@"
 #define APP_VERSION         "@APP_VERSION@"
-
-#if QT_VERSION >= 0x040600
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
-#endif
 
 #define TEXT_TITLE_LIMIT    30
 #define MAX_ZOOM_FACTOR     10.0
@@ -49,6 +46,8 @@
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
 #define APP_THEME_DEFAULT   "mini-kfaenza"
+#define APP_NO_THEME        "-"
+#define APP_THEME_SUFFIX    ".png"
 
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX           0
@@ -80,7 +79,6 @@
 #define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/icons")
 #define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
 #define APP_HTML_PATH APP_PREFIX + QString("/share/rssguard/html")
-#define APP_THEME_SYSTEM QString()
 #define APP_FLAGS_PATH APP_PREFIX + QString("/share/rssguard/flags")
 #define APP_ICON_PATH APP_PREFIX + QString("/share/icons/hicolor/128x128/apps/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/icons/hicolor/128x128/apps/@APP_LOW_NAME@_plain.png")
@@ -91,7 +89,6 @@
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/icons")
 #define APP_MISC_PATH QApplication::applicationDirPath() + QString("/misc")
 #define APP_HTML_PATH QApplication::applicationDirPath() + QString("/html")
-#define APP_THEME_SYSTEM "-"
 #define APP_FLAGS_PATH QApplication::applicationDirPath() + QString("/flags")
 #define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@_plain.png")
