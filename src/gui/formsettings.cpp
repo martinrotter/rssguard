@@ -124,7 +124,14 @@ void FormSettings::changeBrowserProgressColor() {
 }
 
 void FormSettings::loadFeedsMessages() {
+  Settings *settings = Settings::getInstance();
+
   m_ui->m_cmbExternalBrowserPreset->addItem("Chromium", "aa %1");
+
+  m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_MESSAGES,
+                                                                "external_browser_executable").toString());
+  m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_MESSAGES,
+                                                               "external_browser_arguments").toString());
 }
 
 void FormSettings::saveFeedsMessages() {

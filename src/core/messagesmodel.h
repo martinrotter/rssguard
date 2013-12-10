@@ -22,6 +22,7 @@ class Message {
 
     friend class WebBrowser;
     friend class MessagesModel;
+    friend class MessagesView;
 };
 
 

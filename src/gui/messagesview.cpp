@@ -182,12 +182,13 @@ void MessagesView::openSelectedSourceArticlesExternally() {
 }
 
 void MessagesView::openSelectedSourceMessagesInternally() {
-  // TODO: otevre vybrane zpravy ze zdrojovych webz v internch tabech
+  foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
+    // TODO: What to do with messages w/o link?
+    emit openLinkMessageNewTabRequested(m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url);
+  }
 }
 
 void MessagesView::openSelectedMessagesInternally() {
-  // TODO: otevre vybrane nactene zpravy v internich tabech
-
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     emit openMessageNewTabRequested(m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()));
   }

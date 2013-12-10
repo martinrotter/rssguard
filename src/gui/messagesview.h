@@ -51,6 +51,7 @@ class MessagesView : public QTreeView {
                           const QItemSelection &deselected);
 
   signals:
+    void openLinkMessageNewTabRequested(const QString &link);
     void openMessageNewTabRequested(const Message &message);
     void currentMessageChanged(const Message &message);
     void currentMessageRemoved();

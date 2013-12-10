@@ -184,6 +184,10 @@ int TabWidget::addEmptyBrowser() {
   return addBrowser(false, true);
 }
 
+int TabWidget::addLinkedBrowser(const QString &initial_url) {
+  return addLinkedBrowser(QUrl(initial_url));
+}
+
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
   return addBrowser(Settings::getInstance()->value(APP_CFG_BROWSER,
                                                    "queue_tabs",

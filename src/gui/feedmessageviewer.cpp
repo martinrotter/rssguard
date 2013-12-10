@@ -37,6 +37,9 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(openMessageNewTabRequested(Message)),
           FormMain::getInstance()->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessage(Message)));
+  connect(m_messagesView, SIGNAL(openLinkMessageNewTabRequested(QString)),
+          FormMain::getInstance()->m_ui->m_tabWidget,
+          SLOT(addLinkedBrowser(QString)));
 
   // Toolbar forwardings.
   connect(FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
