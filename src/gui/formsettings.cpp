@@ -126,16 +126,29 @@ void FormSettings::changeBrowserProgressColor() {
 void FormSettings::loadFeedsMessages() {
   Settings *settings = Settings::getInstance();
 
+  // TODO: dodělat
   m_ui->m_cmbExternalBrowserPreset->addItem("Chromium", "aa %1");
+  m_ui->m_cmbExternalBrowserPreset->addItem("Mozilla Firefox", "aa %1");
+  m_ui->m_cmbExternalBrowserPreset->addItem("Safari", "aa %1");
+  m_ui->m_cmbExternalBrowserPreset->addItem("Microsoft Internet Explorer", "aa %1");
+  m_ui->m_cmbExternalBrowserPreset->addItem("Opera 12 or older", "-nosession %1");
 
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_MESSAGES,
                                                                 "external_browser_executable").toString());
   m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_MESSAGES,
-                                                               "external_browser_arguments").toString());
+                                                               "external_browser_arguments",
+                                                               "%1").toString());
 }
 
 void FormSettings::saveFeedsMessages() {
+  Settings *settings = Settings::getInstance();
 
+  settings->setValue(APP_CFG_MESSAGES,
+                     "external_browser_executable",
+                     m_ui->m_txtExternalBrowserExecutable->text());
+  settings->setValue(APP_CFG_MESSAGES,
+                     "external_browser_arguments",
+                     m_ui->m_txtExternalBrowserArguments->text());
 }
 
 void FormSettings::displayProxyPassword(int state) {
@@ -153,13 +166,22 @@ bool FormSettings::doSaveCheck() {
   QMessageBox msg_error(this);
 
   // Setup indication of settings consistence.
-  everything_ok &= m_ui->m_shortcuts->areShortcutsUnique();
-
   if (!m_ui->m_shortcuts->areShortcutsUnique()) {
+    everything_ok = false;
 #if QT_VERSION >= 0x050000
     resulting_information.append(tr(" • some keyboard shortcuts are not unique"));
 #else
     resulting_information.append(trUtf8(" • some keyboard shortcuts are not unique"));
+#endif
+  }
+
+  if (m_ui->m_txtExternalBrowserExecutable->text().isEmpty() ||
+      m_ui->m_txtExternalBrowserArguments->text().isEmpty()) {
+    everything_ok = false;
+#if QT_VERSION >= 0x050000
+    resulting_information.append(tr(" • external browser is not set"));
+#else
+    resulting_information.append(trUtf8(" • external browser is not set"));
 #endif
   }
 

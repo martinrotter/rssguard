@@ -2,11 +2,14 @@
 #include <QKeyEvent>
 #include <QScrollBar>
 #include <QMenu>
+#include <QMessageBox>
+#include <QProcess>
 
 #include "gui/messagesview.h"
 #include "core/messagesproxymodel.h"
 #include "core/messagesmodel.h"
 #include "gui/formmain.h"
+#include "core/settings.h"
 
 
 MessagesView::MessagesView(QWidget *parent)
@@ -178,7 +181,26 @@ void MessagesView::currentChanged(const QModelIndex &current,
 }
 
 void MessagesView::openSelectedSourceArticlesExternally() {
-  // TODO: otevře vybrane zpravy v externim prohlizeci
+
+  QString browser = Settings::getInstance()->value(APP_CFG_MESSAGES,
+                                                   "external_browser_executable").toString();
+  QString arguments = Settings::getInstance()->value(APP_CFG_MESSAGES,
+                                      "external_browser_arguments",
+                                      "%1").toString();
+
+  if (browser.isEmpty() || arguments.isEmpty()) {
+    QMessageBox::critical(this,
+                          tr("External browser not set"),
+                          tr("External browser is not set, head to application settings and set it up to use this feature."),
+                          QMessageBox::Ok);
+    return;
+  }
+
+  foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
+    QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
+
+    QProcess::execute(browser, QStringList() << arguments.arg(link));
+  }
 }
 
 void MessagesView::openSelectedSourceMessagesInternally() {
