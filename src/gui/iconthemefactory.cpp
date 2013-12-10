@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QPointer>
 #include <QApplication>
+#include <QHash>
 
 #include "gui/iconthemefactory.h"
 #include "qtsingleapplication/qtsingleapplication.h"

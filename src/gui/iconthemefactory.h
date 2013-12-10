@@ -4,6 +4,7 @@
 #include <QString>
 #include <QIcon>
 #include <QPointer>
+#include <QHash>
 
 
 class IconThemeFactory : public QObject {
