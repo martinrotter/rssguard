@@ -65,6 +65,7 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
 
   // TODO: Enable when time is right.
   //setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(',')));
+  setFilter(QString("deleted = 0").arg(stringy_ids.join(',')));
   select();
   fetchAll();
 }
@@ -130,15 +131,9 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       }
     }
 
-      // Return RAW data for EditRole.
+    // Return RAW data for EditRole.
     case Qt::EditRole:
       return QSqlTableModel::data(idx, role);
-
-      // Return "red" color for just deleted messages.
-    case Qt::BackgroundRole:
-      return record(idx.row()).value(MSG_DB_DELETED_INDEX).toInt() == 1 ?
-            QColor(255, 0, 0, 100) :
-            QVariant();
 
     case Qt::FontRole:
       return record(idx.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
@@ -224,7 +219,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   }
 
   // Commit changes.
-  if (db_handle.commit()) {   
+  if (db_handle.commit()) {
     // FULLY reload the model if underlying data is changed.
     select();
     fetchAll();

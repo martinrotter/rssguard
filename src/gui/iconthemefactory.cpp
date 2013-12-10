@@ -47,7 +47,7 @@ QIcon IconThemeFactory::fromTheme(const QString &name) {
     // Icon is not cached yet.
     m_cachedIcons.insert(name, QIcon(APP_THEME_PATH + QDir::separator() +
                                      m_currentIconTheme + QDir::separator() +
-                                     name + ".png"));
+                                     name + APP_THEME_SUFFIX));
   }
 
   return m_cachedIcons.value(name);

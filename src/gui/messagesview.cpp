@@ -200,7 +200,6 @@ void MessagesView::setSelectedMessagesReadStatus(int read) {
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
-
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
@@ -224,21 +223,27 @@ void MessagesView::setSelectedMessagesReadStatus(int read) {
 
 void MessagesView::deleteSelectedMessages() {
   QModelIndex current_index = selectionModel()->currentIndex();
-  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes, 1);
-
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
-  current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
-                                                                   mapped_current_index.column()));
+  int row_count = m_sourceModel->rowCount();
+  if (row_count > 0) {
+    QModelIndex last_item = current_index.row() < row_count ?
+                              m_proxyModel->index(current_index.row(),
+                                                  MSG_DB_TITLE_INDEX) :
+                              m_proxyModel->index(row_count - 1,
+                                                  MSG_DB_TITLE_INDEX);
 
-  setCurrentIndex(current_index);
-  scrollTo(current_index);
-  reselectIndexes(selected_indexes);
+    setCurrentIndex(last_item);
+    scrollTo(last_item);
+    reselectIndexes(QModelIndexList() << last_item);
+  }
+  else {
+    emit currentMessageRemoved();
+  }
 }
 
 void MessagesView::switchSelectedMessagesImportance() {
@@ -248,7 +253,6 @@ void MessagesView::switchSelectedMessagesImportance() {
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
-
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);

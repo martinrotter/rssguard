@@ -50,6 +50,7 @@
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
 #define APP_THEME_DEFAULT   "mini-kfaenza"
 #define APP_NO_THEME        "-"
+#define APP_THEME_SUFFIX    ".png"
 
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX           0

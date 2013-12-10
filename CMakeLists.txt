@@ -45,10 +45,16 @@ set(EXE_NAME ${APP_LOW_NAME})
 
 # Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
-option(BUNDLE_ICON_THEME "Equip installation with custom icon theme" ON)
+option(BUNDLE_ICON_THEMES "Equip installation with custom icon themes" ON)
 
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
+
+if(BUNDLE_ICON_THEMES)
+  message(STATUS "[${APP_LOW_NAME}] Custom icon themes will be installed.")
+else(BUNDLE_ICON_THEMES)
+  message(STATUS "[${APP_LOW_NAME}] Custom icon themes will NOT be installed.")
+endif(BUNDLE_ICON_THEMES)
 
 # Setup misc options.
 set(CMAKE_COLOR_MAKEFILE ON)
@@ -427,8 +433,12 @@ if(WIN32 OR OS2)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
-  install(DIRECTORY resources/graphics/icons/mini-kfaenza
-          DESTINATION ./icons)
+
+  if(BUNDLE_ICON_THEMES)
+    install(DIRECTORY resources/graphics/icons/mini-kfaenza
+            DESTINATION ./icons)
+  endif(BUNDLE_ICON_THEMES)
+
   install(DIRECTORY resources/graphics/flags
           DESTINATION ./)
   install(DIRECTORY resources/skins/base
@@ -451,8 +461,12 @@ elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION bin)
-  install(DIRECTORY resources/graphics/icons/mini-kfaenza
-          DESTINATION share/${APP_LOW_NAME}/icons)
+
+  if(BUNDLE_ICON_THEMES)
+    install(DIRECTORY resources/graphics/icons/mini-kfaenza
+            DESTINATION share/${APP_LOW_NAME}/icons)
+  endif(BUNDLE_ICON_THEMES)
+
   install(DIRECTORY resources/graphics/flags
           DESTINATION share/${APP_LOW_NAME}/)
   install(DIRECTORY resources/skins/base

@@ -16,16 +16,8 @@ class IconThemeFactory : public QObject {
     // Destructor.
     virtual ~IconThemeFactory();
 
-    // Wrapper for QIcon::fromTheme.
-    // TODO: Na některých platformách ikony bugujou, takže kompletně přepsat.
-    // Budu mít vlastní témata, který se budou jednoduše skládat ze
-    // složky "mini-kfaenza", ve které budou přímo (bez podsložek)
-    // png soubory "application-exit" a další.
-    //
-    // Tato funkce v zadaném adresáři APP_THEME_PATH/m_currentIconTheme
-    // najde danou ikonu a přidá ji do nějakého slovníku (QMap, QHash).
-    // Všechny další požadavky na tutéž ikonu se budou brát ze slovníku.
-    // Nutnost omezit ikony na nutné minimum (30 dejme tomu).
+    // Returns icon from active theme or invalid icon if
+    // "no icon theme" is set.
     QIcon fromTheme(const QString &name);
 
     // Adds custom application path to be search for icons.
