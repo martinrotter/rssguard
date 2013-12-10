@@ -183,6 +183,10 @@ void MessagesView::openSelectedSourceMessagesInternally() {
 
 void MessagesView::openSelectedMessagesInternally() {
   // TODO: otevre vybrane nactene zpravy v internich tabech
+
+  foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
+    emit openMessageNewTabRequested(m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()));
+  }
 }
 
 void MessagesView::markSelectedMessagesRead() {

@@ -1,4 +1,5 @@
 #include <QCloseEvent>
+#include <QMessageBox>
 
 #include "gui/formmain.h"
 #include "gui/formabout.h"
@@ -146,6 +147,8 @@ void FormMain::display() {
 }
 
 void FormMain::onCommitData(QSessionManager &manager) { 
+  Q_UNUSED(manager);
+
   qDebug("OS asked application to commit its data.");
 }
 

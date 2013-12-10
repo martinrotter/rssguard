@@ -5,7 +5,7 @@
 
 #if QT_VERSION >= 0x050000
 #include <qwebkitglobal.h>
-#elif QT_VERSION >= 0x040600
+#else
 #include <qwebkitversion.h>
 #endif
 
@@ -19,10 +19,7 @@
 #define APP_AUTHORS         "@APP_AUTHOR@"
 #define APP_URL             "@APP_URL@"
 #define APP_VERSION         "@APP_VERSION@"
-
-#if QT_VERSION >= 0x040600
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
-#endif
 
 #define TEXT_TITLE_LIMIT    30
 #define MAX_ZOOM_FACTOR     10.0

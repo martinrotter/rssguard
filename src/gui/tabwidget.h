@@ -9,6 +9,7 @@
 
 
 class CornerButton;
+class Message;
 
 class TabWidget : public QTabWidget {
     Q_OBJECT
@@ -71,6 +72,8 @@ class TabWidget : public QTabWidget {
 
     // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();
+
+    int addBrowserWithMessage(const Message &message);
 
     // Adds new WebBrowser tab to global TabWidget.
     int addEmptyBrowser();
