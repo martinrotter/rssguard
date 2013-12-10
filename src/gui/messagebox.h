@@ -11,6 +11,8 @@ class MessageBox : public QMessageBox {
     explicit MessageBox(QWidget *parent = 0);
     virtual ~MessageBox();
 
+    // TODO: http://libqxt.bitbucket.org/doc/0.6/qxtconfirmationmessage.html
+
   signals:
 
   public slots:
