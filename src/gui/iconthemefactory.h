@@ -2,7 +2,6 @@
 #define THEMEFACTORY_H
 
 #include <QString>
-#include <QEvent>
 #include <QIcon>
 #include <QPointer>
 
@@ -18,10 +17,16 @@ class IconThemeFactory : public QObject {
     virtual ~IconThemeFactory();
 
     // Wrapper for QIcon::fromTheme.
-    // TODO: If icon is not found in user-defined icon theme,
-    // then it is searched in system-default theme (ThemeFactory::getSystemIconTheme()).
-    // BUG: I tried to do that, but QIcon is apparently bugged.
-    QIcon fromTheme(const QString &name, const QIcon &fallback = QIcon());
+    // TODO: Na některých platformách ikony bugujou, takže kompletně přepsat.
+    // Budu mít vlastní témata, který se budou jednoduše skládat ze
+    // složky "mini-kfaenza", ve které budou přímo (bez podsložek)
+    // png soubory "application-exit" a další.
+    //
+    // Tato funkce v zadaném adresáři APP_THEME_PATH/m_currentIconTheme
+    // najde danou ikonu a přidá ji do nějakého slovníku (QMap, QHash).
+    // Všechny další požadavky na tutéž ikonu se budou brát ze slovníku.
+    // Nutnost omezit ikony na nutné minimum (30 dejme tomu).
+    QIcon fromTheme(const QString &name);
 
     // Adds custom application path to be search for icons.
     void setupSearchPaths();
@@ -44,6 +49,8 @@ class IconThemeFactory : public QObject {
     void setCurrentIconTheme(const QString &theme_name);
 
   private:
+    QHash<QString, QIcon> m_cachedIcons;
+
     // Constructor.
     explicit IconThemeFactory(QObject *parent = 0);
 

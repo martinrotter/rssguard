@@ -406,16 +406,10 @@ void FormSettings::loadInterface() {
   QString current_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
 
   foreach (const QString &icon_theme_name, IconThemeFactory::getInstance()->getInstalledIconThemes()) {
-    if (icon_theme_name == APP_THEME_SYSTEM) {
-#if defined(Q_OS_LINUX)
-      // Add "default theme" and "no theme" on Linux.
-      m_ui->m_cmbIconTheme->addItem(tr("system icon theme (default)"),
-                                    APP_THEME_SYSTEM);
-#else
+    if (icon_theme_name == APP_NO_THEME) {
       // Add just "no theme" on other systems.
       m_ui->m_cmbIconTheme->addItem(tr("no icon theme"),
-                                    APP_THEME_SYSTEM);
-#endif
+                                    APP_NO_THEME);
     }
     else {
       m_ui->m_cmbIconTheme->addItem(icon_theme_name,
@@ -424,8 +418,8 @@ void FormSettings::loadInterface() {
   }
 
   // Mark active theme.
-  if (current_theme == APP_THEME_SYSTEM) {
-    // Because system icon theme lies at the index 0.
+  if (current_theme == APP_NO_THEME) {
+    // Because "no icon theme" lies at the index 0.
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }
   else {

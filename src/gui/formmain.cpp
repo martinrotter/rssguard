@@ -176,8 +176,10 @@ void FormMain::setupIcons() {
   m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
   m_ui->m_actionUpdateSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
   m_ui->m_actionDeleteAllMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
+
   m_ui->m_actionDeleteSelectedFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
+
   m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
   m_ui->m_actionEditSelectedFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("document-properties"));
   m_ui->m_actionMarkAllMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
