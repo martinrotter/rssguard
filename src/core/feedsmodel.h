@@ -4,6 +4,8 @@
 #include <QAbstractItemModel>
 
 
+class FeedsModelRootItem;
+
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
 
@@ -14,6 +16,10 @@ class FeedsModel : public QAbstractItemModel {
   signals:
 
   public slots:
+
+
+  private:
+    FeedsModelRootItem *m_rootItem;
 
 };
 

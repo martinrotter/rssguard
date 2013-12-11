@@ -2,6 +2,7 @@
 #include <QProcess>
 #include <QNetworkProxy>
 #include <QColorDialog>
+#include <QFileDialog>
 
 #include "gui/formsettings.h"
 #include "gui/iconthemefactory.h"
@@ -83,6 +84,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
   connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)),
           this, SLOT(changeDefaultBrowserArguments(int)));
+  connect(m_ui->m_btnExternalBrowserExecutable, SIGNAL(clicked()),
+          this, SLOT(selectBrowserExecutable()));
 
   // Load all settings.
   loadGeneral();
@@ -123,10 +126,21 @@ void FormSettings::changeBrowserProgressColor() {
   m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
 }
 
+void FormSettings::selectBrowserExecutable() {
+  QString executable_file = QFileDialog::getOpenFileName(this,
+                                                         tr("Select web browser executable"),
+                                                         QDir::homePath(),
+                                                         tr("Executables (*.*)"));
+
+  if (!executable_file.isEmpty()) {
+   m_ui->m_txtExternalBrowserExecutable->setText(executable_file);
+  }
+}
+
 void FormSettings::loadFeedsMessages() {
   Settings *settings = Settings::getInstance();
 
-  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older)", "-nosession %1"));
+  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_MESSAGES,
                                                                 "external_browser_executable").toString());
   m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_MESSAGES,

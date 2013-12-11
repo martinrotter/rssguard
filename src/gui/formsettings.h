@@ -64,6 +64,7 @@ class FormSettings : public QDialog {
     void loadFeedsMessages();
     void saveFeedsMessages();
     void changeDefaultBrowserArguments(int index);
+    void selectBrowserExecutable();
 
     void onProxyTypeChanged(int index);
     
