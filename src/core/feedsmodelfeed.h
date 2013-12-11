@@ -12,6 +12,9 @@ class FeedsModelFeed : public FeedsModelNonRootItem
     // Constructors and destructors.
     explicit FeedsModelFeed(BaseFeedsModelItem *parent_item);
     virtual ~FeedsModelFeed();
+
+    int childCount() const;
+
 };
 
 #endif // FEEDSMODELFEED_H
