@@ -21,6 +21,7 @@ class FeedsModelRootItem : public FeedsModelItem {
     int childCount() const;
     int columnCount() const;
     int row() const;
+    QVariant data(int column, int role) const;
 
   protected:
     QList<FeedsModelItem*> m_childItems;

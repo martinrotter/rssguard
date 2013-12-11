@@ -1,12 +1,16 @@
 #include "core/feedsmodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelnonrootitem.h"
-
+#include "core/feedsmodelfeed.h"
+#include "core/feedsmodelcategory.h"
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   m_rootItem = new FeedsModelRootItem();
 
-  m_rootItem->m_childItems.append(new FeedsModelNonRootItem(m_rootItem));
+  FeedsModelCategory *cat = new FeedsModelCategory(m_rootItem);
+  cat->m_childItems.append(new FeedsModelFeed(cat));
+  m_rootItem->m_childItems.append(cat);
+
 
 }
 
@@ -16,7 +20,17 @@ FeedsModel::~FeedsModel() {
 }
 
 QVariant FeedsModel::data(const QModelIndex &index, int role) const {
-  return QVariant();
+  if (!index.isValid()) {
+    return QVariant();
+  }
+
+  if (role != Qt::DisplayRole) {
+    return QVariant();
+  }
+
+  FeedsModelItem *item = static_cast<FeedsModelItem*>(index.internalPointer());
+
+  return item->data(index.column(), Qt::DisplayRole);
 }
 
 QVariant FeedsModel::headerData(int section,

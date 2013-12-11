@@ -1,3 +1,5 @@
+#include <QVariant>
+
 #include "core/feedsmodelrootitem.h"
 
 
@@ -28,4 +30,12 @@ int FeedsModelRootItem::row() const {
 
 int FeedsModelRootItem::childCount() const {
   return m_childItems.count();
+}
+
+QVariant FeedsModelRootItem::data(int column, int role) const {
+  if (role == Qt::DisplayRole) {
+    return "aaa";
+  }
+
+  return QVariant();
 }
