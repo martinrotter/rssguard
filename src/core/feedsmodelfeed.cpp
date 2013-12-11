@@ -1,7 +1,7 @@
 #include "core/feedsmodelfeed.h"
 
 
-FeedsModelFeed::FeedsModelFeed(BaseFeedsModelItem *parent_item)
+FeedsModelFeed::FeedsModelFeed(FeedsModelItem *parent_item)
   :FeedsModelNonRootItem(parent_item) {
 }
 

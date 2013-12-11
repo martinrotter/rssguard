@@ -10,7 +10,7 @@ class FeedsModelFeed : public FeedsModelNonRootItem
 {
   public:
     // Constructors and destructors.
-    explicit FeedsModelFeed(BaseFeedsModelItem *parent_item);
+    explicit FeedsModelFeed(FeedsModelItem *parent_item);
     virtual ~FeedsModelFeed();
 
     int childCount() const;

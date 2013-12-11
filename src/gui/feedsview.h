@@ -4,6 +4,9 @@
 #include <QTreeView>
 
 
+class FeedsModel;
+class FeedsProxyModel;
+
 class FeedsView : public QTreeView {
     Q_OBJECT
 
@@ -14,6 +17,10 @@ class FeedsView : public QTreeView {
   signals:
     
   public slots:
+
+  private:
+    FeedsModel *m_sourceModel;
+    FeedsProxyModel *m_proxyModel;
     
 };
 

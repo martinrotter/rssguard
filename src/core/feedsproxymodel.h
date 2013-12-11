@@ -4,17 +4,25 @@
 #include <QSortFilterProxyModel>
 
 
+class FeedsModel;
+
 class FeedsProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit FeedsProxyModel(QObject *parent = 0);
     virtual ~FeedsProxyModel();
 
-  signals:
+    FeedsModel *sourceModel();
 
-  public slots:
+  protected:
+    // Compares two rows of data.
+    bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
+  private:
+    // Source model pointer.
+    FeedsModel *m_sourceModel;
 };
 
 #endif // FEEDSPROXYMODEL_H

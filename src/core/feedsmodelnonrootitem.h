@@ -10,13 +10,14 @@
 class FeedsModelNonRootItem : public FeedsModelRootItem {
   public:
     // Constructors and destructors.
-    explicit FeedsModelNonRootItem(BaseFeedsModelItem *parent_item);
+    explicit FeedsModelNonRootItem(FeedsModelItem *parent_item);
     virtual ~FeedsModelNonRootItem();
 
-    BaseFeedsModelItem *parent();
+    FeedsModelItem *parent();
+    int row() const;
 
   protected:
-    BaseFeedsModelItem *m_parentItem;
+    FeedsModelItem *m_parentItem;
 };
 
 #endif // FEEDSMODELNONROOTITEM_H

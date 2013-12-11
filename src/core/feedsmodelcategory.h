@@ -6,12 +6,11 @@
 
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class is derived to create PARTICULAR category types.
-class BaseFeedsModelCategory : public FeedsModelNonRootItem
-{
+class FeedsModelCategory : public FeedsModelNonRootItem {
   public:
     // Constructors and destructors
-    explicit BaseFeedsModelCategory(BaseFeedsModelItem *parent_item);
-    virtual ~BaseFeedsModelCategory();
+    explicit FeedsModelCategory(FeedsModelItem *parent_item);
+    virtual ~FeedsModelCategory();
 
 };
 

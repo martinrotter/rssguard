@@ -269,8 +269,8 @@ set(APP_SOURCES
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
   src/core/feedsproxymodel.cpp
-  src/core/basefeedsmodelitem.cpp
-  src/core/basefeedsmodelcategory.cpp
+  src/core/feedsmodelitem.cpp
+  src/core/feedsmodelcategory.cpp
   src/core/feedsmodelrootitem.cpp
   src/core/feedsmodelnonrootitem.cpp
   src/core/feedsmodelfeed.cpp
