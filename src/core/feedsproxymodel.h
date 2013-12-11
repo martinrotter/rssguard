@@ -9,6 +9,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
   public:
     explicit FeedsProxyModel(QObject *parent = 0);
+    virtual ~FeedsProxyModel();
 
   signals:
 

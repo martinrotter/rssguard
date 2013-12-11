@@ -9,6 +9,7 @@ class FeedsModel : public QAbstractItemModel {
 
   public:
     explicit FeedsModel(QObject *parent = 0);
+    virtual ~FeedsModel();
 
   signals:
 

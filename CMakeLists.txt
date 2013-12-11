@@ -13,9 +13,15 @@
 #   "-DCMAKE_INSTALL_PREFIX=/usr"
 #     Installation path, replace with something like "C:\rssguard" on Windows.
 #
-#   "-DUSE_QT_5=ON"
+#   "-DUSE_QT_5=OFF"
 #     Specifies which major Qt version to use. Qt 4 and Qt 5 are supported.
 #     If "OFF" is passed as an argument, then Qt 4 is used. Default is "OFF".
+#
+#   "-DBUNDLE_ICON_THEMES=ON"
+#     If "ON", then custom icons theme(s) will be bundled with application
+#     installation. If "OFF", then no icon theme(s) will be available for
+#     the application and application will run in iconless mode.
+#     Default and recommended value is "ON".
 #
 # Other information:
 #   - supports Windows, Linux, OS/2 (eComStation),
@@ -35,7 +41,7 @@ cmake_minimum_required(VERSION 2.8.11)
 project(rssguard)
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.0.0-prealpha-3")
+set(APP_VERSION "2.0.0-prealpha-4")
 set(FILE_VERSION "2,0,0,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://rssguard.sf.net")
@@ -77,6 +83,7 @@ message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
   if(GIT_FOUND)
+    # TODO: https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines#Git
     execute_process(
       COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
@@ -262,6 +269,11 @@ set(APP_SOURCES
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
   src/core/feedsproxymodel.cpp
+  src/core/basefeedsmodelitem.cpp
+  src/core/basefeedsmodelcategory.cpp
+  src/core/feedsmodelrootitem.cpp
+  src/core/feedsmodelnonrootitem.cpp
+  src/core/feedsmodelfeed.cpp
 
   # Basic application sources.
   src/main.cpp

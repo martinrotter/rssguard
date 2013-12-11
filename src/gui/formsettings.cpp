@@ -126,13 +126,7 @@ void FormSettings::changeBrowserProgressColor() {
 void FormSettings::loadFeedsMessages() {
   Settings *settings = Settings::getInstance();
 
-  // TODO: dodělat
-  m_ui->m_cmbExternalBrowserPreset->addItem("Chromium", "aa %1");
-  m_ui->m_cmbExternalBrowserPreset->addItem("Mozilla Firefox", "aa %1");
-  m_ui->m_cmbExternalBrowserPreset->addItem("Safari", "aa %1");
-  m_ui->m_cmbExternalBrowserPreset->addItem("Microsoft Internet Explorer", "aa %1");
-  m_ui->m_cmbExternalBrowserPreset->addItem("Opera 12 or older", "-nosession %1");
-
+  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older)", "-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_MESSAGES,
                                                                 "external_browser_executable").toString());
   m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_MESSAGES,

@@ -26,6 +26,7 @@ class TabBar : public QTabBar {
     // Reimplementations.
     void mouseDoubleClickEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void wheelEvent(QWheelEvent *event);
 
   signals:
     // Emmited if empty space on tab bar is double clicked.

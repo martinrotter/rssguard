@@ -11,10 +11,14 @@ DROP TABLE IF EXISTS Categories;
 -- !
 CREATE TABLE IF NOT EXISTS Categories (
   id             INTEGER    PRIMARY KEY,
+  parent_id      INTEGER    NOT NULL,
   title          TEXT       NOT NULL UNIQUE CHECK (title != ''),
   description    TEXT,
   date_created   TEXT       NOT NULL CHECK (date_created != ''),
-  icon           BLOB
+  icon           BLOB,
+  type           INTEGER	NOT NULL,
+  
+  FOREIGN KEY (parent_id) REFERENCES Categories (id)
 );
 -- !
 DROP TABLE IF EXISTS Feeds;

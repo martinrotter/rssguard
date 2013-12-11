@@ -23,6 +23,24 @@ TabBar::TabType TabBar::tabType(int index) {
   return static_cast<TabBar::TabType>(tabData(index).value<int>());
 }
 
+void TabBar::wheelEvent(QWheelEvent *event) {
+  int current_index = currentIndex();
+  int number_of_tabs = count();
+
+  // Make sure rotating works.
+  if (number_of_tabs > 1) {
+    if (event->delta() > 0 && current_index == 0) {
+      setCurrentIndex(number_of_tabs - 1);
+    }
+    else if (event->delta() < 0 && current_index == number_of_tabs - 1) {
+      setCurrentIndex(0);
+    }
+  }
+  else {
+    QTabBar::wheelEvent(event);
+  }
+}
+
 void TabBar::mousePressEvent(QMouseEvent *event) {
   QTabBar::mousePressEvent(event);
 

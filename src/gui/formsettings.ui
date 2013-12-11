@@ -715,7 +715,7 @@
                 <item>
                  <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
                   <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+                   <enum>QComboBox::AdjustToContents</enum>
                   </property>
                   <item>
                    <property name="text">
