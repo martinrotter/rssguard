@@ -1,17 +1,28 @@
 #include "core/feedsmodel.h"
-#include "core/feedsmodelrootitem.h"
-#include "core/feedsmodelnonrootitem.h"
-#include "core/feedsmodelfeed.h"
-#include "core/feedsmodelcategory.h"
+#include "core/feedsmodelstandardcategory.h"
+#include "core/feedsmodelstandardfeed.h"
+
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
-  m_rootItem = new FeedsModelRootItem();
+  m_rootItem = new FeedsModelRootItem(NULL);
 
-  FeedsModelCategory *cat = new FeedsModelCategory(m_rootItem);
-  cat->m_childItems.append(new FeedsModelFeed(cat));
-  m_rootItem->m_childItems.append(cat);
+  FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory(m_rootItem);
+  FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory(cat1);
+  FeedsModelStandardFeed *feed1 = new FeedsModelStandardFeed(cat1);
+  FeedsModelStandardFeed *feed2 = new FeedsModelStandardFeed(cat1);
+  FeedsModelStandardFeed *feed3 = new FeedsModelStandardFeed(m_rootItem);
+  FeedsModelStandardFeed *feed4 = new FeedsModelStandardFeed(cat2);
+  FeedsModelStandardFeed *feed5 = new FeedsModelStandardFeed(cat2);
 
+  cat1->appendChild(feed1);
+  cat1->appendChild(feed2);
+  cat1->appendChild(cat2);
 
+  cat2->appendChild(feed4);
+  cat2->appendChild(feed5);
+
+  m_rootItem->appendChild(cat1);
+  m_rootItem->appendChild(feed3);
 }
 
 FeedsModel::~FeedsModel() {

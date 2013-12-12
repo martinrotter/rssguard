@@ -13,11 +13,12 @@ class FeedsModelRootItem {
 
   public:
     // Constructors and destructors.
-    explicit FeedsModelRootItem();
+    explicit FeedsModelRootItem(FeedsModelRootItem *parent_item);
     virtual ~FeedsModelRootItem();
 
     virtual FeedsModelRootItem *parent();
     virtual FeedsModelRootItem *child(int row);
+    virtual void appendChild(FeedsModelRootItem *child);
     virtual int childCount() const;
     virtual int columnCount() const;
     virtual int row() const;
@@ -26,6 +27,7 @@ class FeedsModelRootItem {
   protected:
     QIcon m_icon;
     QList<FeedsModelRootItem*> m_childItems;
+    FeedsModelRootItem *m_parentItem;
 
 };
 

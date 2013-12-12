@@ -3,7 +3,8 @@
 #include "core/feedsmodelrootitem.h"
 
 
-FeedsModelRootItem::FeedsModelRootItem() {
+FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
+  : m_parentItem(parent_item) {
 }
 
 FeedsModelRootItem::~FeedsModelRootItem() {
@@ -12,11 +13,15 @@ FeedsModelRootItem::~FeedsModelRootItem() {
 }
 
 FeedsModelRootItem *FeedsModelRootItem::parent() {
-  return NULL;
+  return m_parentItem;
 }
 
 FeedsModelRootItem *FeedsModelRootItem::child(int row) {
-  return m_childItems.at(0);
+  return m_childItems.value(row);
+}
+
+void FeedsModelRootItem::appendChild(FeedsModelRootItem *child) {
+  m_childItems.append(child);
 }
 
 int FeedsModelRootItem::columnCount() const {
@@ -24,7 +29,12 @@ int FeedsModelRootItem::columnCount() const {
 }
 
 int FeedsModelRootItem::row() const {
-  return 0;
+  if (m_parentItem) {
+    return m_parentItem->m_childItems.indexOf(const_cast<FeedsModelRootItem*>(this));
+  }
+  else {
+    return 0;
+  }
 }
 
 int FeedsModelRootItem::childCount() const {
@@ -32,9 +42,8 @@ int FeedsModelRootItem::childCount() const {
 }
 
 QVariant FeedsModelRootItem::data(int column, int role) const {
-  if (role == Qt::DisplayRole) {
-    return "aaa";
-  }
+  Q_UNUSED(column)
+  Q_UNUSED(role)
 
   return QVariant();
 }

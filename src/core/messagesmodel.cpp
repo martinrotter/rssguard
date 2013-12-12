@@ -102,7 +102,7 @@ void MessagesModel::setupHeaderData() {
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
-  Q_UNUSED(idx);
+  Q_UNUSED(idx)
 
   if (m_isInEditingMode) {
     // NOTE: Editing of model must be temporarily enabled here.
@@ -319,7 +319,7 @@ bool MessagesModel::setAllMessagesRead(int read) {
 QVariant MessagesModel::headerData(int section,
                                    Qt::Orientation orientation,
                                    int role) const {
-  Q_UNUSED(orientation);
+  Q_UNUSED(orientation)
 
   switch (role) {
     case Qt::DisplayRole:

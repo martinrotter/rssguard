@@ -11,6 +11,7 @@ class FeedsView : public QTreeView {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit FeedsView(QWidget *parent = 0);
     virtual ~FeedsView();
     

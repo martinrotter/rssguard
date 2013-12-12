@@ -271,7 +271,6 @@ set(APP_SOURCES
   src/core/feedsproxymodel.cpp
   src/core/feedsmodelcategory.cpp
   src/core/feedsmodelrootitem.cpp
-  src/core/feedsmodelnonrootitem.cpp
   src/core/feedsmodelfeed.cpp
   src/core/feedsmodelstandardcategory.cpp
   src/core/feedsmodelstandardfeed.cpp

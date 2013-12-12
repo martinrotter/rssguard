@@ -1,12 +1,12 @@
 #ifndef FEEDSMODELFEED_H
 #define FEEDSMODELFEED_H
 
-#include "core/feedsmodelnonrootitem.h"
+#include "core/feedsmodelrootitem.h"
 
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
-class FeedsModelFeed : public FeedsModelNonRootItem
+class FeedsModelFeed : public FeedsModelRootItem
 {
   public:
     // Constructors and destructors.

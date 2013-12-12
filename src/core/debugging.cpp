@@ -48,9 +48,9 @@ void Debugging::debugHandler(QtMsgType type,
       break;
   }
 #else
-  Q_UNUSED(type);
-  Q_UNUSED(placement);
-  Q_UNUSED(message);
+  Q_UNUSED(type)
+  Q_UNUSED(placement)
+  Q_UNUSED(message)
 #endif
 }
 #else
@@ -73,8 +73,8 @@ void Debugging::debugHandler(QtMsgType type, const char *message) {
       break;
   }
 #else
-  Q_UNUSED(type);
-  Q_UNUSED(message);
+  Q_UNUSED(type)
+  Q_UNUSED(message)
 #endif
 }
 #endif

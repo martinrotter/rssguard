@@ -2,7 +2,7 @@
 
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
-  :FeedsModelNonRootItem(parent_item) {
+  : FeedsModelRootItem(parent_item) {
 }
 
 FeedsModelFeed::~FeedsModelFeed() {

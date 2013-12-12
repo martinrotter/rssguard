@@ -147,7 +147,7 @@ void FormMain::display() {
 }
 
 void FormMain::onCommitData(QSessionManager &manager) { 
-  Q_UNUSED(manager);
+  Q_UNUSED(manager)
 
   qDebug("OS asked application to commit its data.");
 }

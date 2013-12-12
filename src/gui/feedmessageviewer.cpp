@@ -65,23 +65,11 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
-  QToolButton *update_button = new QToolButton(m_toolBar);
-  update_button->setPopupMode(QToolButton::InstantPopup);
-  update_button->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  update_button->setText(tr("Update selected/all feeds"));
-  update_button->setToolTip(tr("Select which feeds you want to update."));
-
-  QMenu *update_menu = new QMenu(tr("Feed update menu"), update_button);
-  update_menu->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
-  update_menu->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds);
-
-  update_button->setMenu(update_menu);
-
-  QWidgetAction *update_action = new QWidgetAction(m_toolBar);
-  update_action->setDefaultWidget(update_button);
-
   // Add everything to toolbar.
-  m_toolBar->addAction(update_action);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionAddNewFeed);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionEditSelectedFeed);
   m_toolBar->addSeparator();
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsRead);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsUnread);

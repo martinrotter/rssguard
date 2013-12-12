@@ -11,6 +11,9 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     // Constructors and destructors.
     explicit FeedsModelStandardFeed(FeedsModelRootItem *parent_item);
     virtual ~FeedsModelStandardFeed();
+
+    QVariant data(int column, int role) const;
+
 };
 
 #endif // FEEDSMODELSTANDARDFEED_H

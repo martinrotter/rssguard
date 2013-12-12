@@ -109,7 +109,7 @@ void FormSettings::changeDefaultBrowserArguments(int index) {
 
 void FormSettings::onSkinSelected(QTreeWidgetItem *current,
                                   QTreeWidgetItem *previous) {
-  Q_UNUSED(previous);
+  Q_UNUSED(previous)
 
   if (current != NULL) {
     Skin skin = current->data(0, Qt::UserRole).value<Skin>();
