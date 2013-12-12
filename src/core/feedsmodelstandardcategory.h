@@ -12,7 +12,7 @@
 class FeedsModelStandardCategory : public FeedsModelCategory {
   public:
     // Constructors and destructors.
-    explicit FeedsModelStandardCategory(FeedsModelRootItem *parent_item);
+    explicit FeedsModelStandardCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelStandardCategory();
 
     QVariant data(int column, int role) const;

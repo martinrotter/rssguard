@@ -6,5 +6,4 @@ FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
 }
 
 FeedsModelCategory::~FeedsModelCategory() {
-  qDebug("Destroying BaseFeedsModelCategory instance.");
 }

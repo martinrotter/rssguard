@@ -9,7 +9,7 @@
 class FeedsModelCategory : public FeedsModelRootItem {
   public:
     // Constructors and destructors
-    explicit FeedsModelCategory(FeedsModelRootItem *parent_item);
+    explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelCategory();
 
 };

@@ -64,13 +64,9 @@
 #define MSG_DB_DUPDATED_INDEX     9
 #define MSG_DB_CONTENTS_INDEX     10
 
-// Indexes of columns as they are USED IN THE MODEL for MESSAGES.
-#define MSG_MODEL_READ_INDEX        0
-#define MSG_MODEL_IMPORTANT_INDEX   1
-#define MSG_MODEL_TITLE_INDEX       2
-#define MSG_MODEL_AUTHOR_INDEX      3
-#define MSG_MODEL_DCREATED_INDEX    4
-#define MSG_MODEL_DUPDATED_INDEX    5
+// Indexes of columns for feed models.
+#define FDS_TITLE_INDEX           0
+#define FDS_COUNTS_INDEX          1
 
 #if defined(Q_OS_LINUX)
 #define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY_PATH@"

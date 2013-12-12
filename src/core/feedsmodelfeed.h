@@ -9,8 +9,16 @@
 class FeedsModelFeed : public FeedsModelRootItem
 {
   public:
+    // Describes possible types of feeds.
+    // NOTE: This is equivalent to attribute Feeds(type).
+    enum Type {
+      StandardRss   = 0,
+      StandardRdf   = 1,
+      StandardAtom  = 2
+    };
+
     // Constructors and destructors.
-    explicit FeedsModelFeed(FeedsModelRootItem *parent_item);
+    explicit FeedsModelFeed(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelFeed();
 
     int childCount() const;

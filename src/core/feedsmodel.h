@@ -2,6 +2,7 @@
 #define FEEDSMODEL_H
 
 #include <QAbstractItemModel>
+#include <QIcon>
 
 
 class FeedsModelRootItem;
@@ -25,6 +26,8 @@ class FeedsModel : public QAbstractItemModel {
 
   private:
     FeedsModelRootItem *m_rootItem;
+    QList<QString> m_headerData;
+    QIcon m_countsIcon;
 
 };
 

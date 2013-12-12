@@ -1,18 +1,23 @@
 #include "core/feedsmodel.h"
 #include "core/feedsmodelstandardcategory.h"
 #include "core/feedsmodelstandardfeed.h"
+#include "core/defs.h"
+#include "gui/iconthemefactory.h"
 
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
-  m_rootItem = new FeedsModelRootItem(NULL);
+  m_rootItem = new FeedsModelRootItem();
+  m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
 
-  FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory(m_rootItem);
-  FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory(cat1);
-  FeedsModelStandardFeed *feed1 = new FeedsModelStandardFeed(cat1);
-  FeedsModelStandardFeed *feed2 = new FeedsModelStandardFeed(cat1);
-  FeedsModelStandardFeed *feed3 = new FeedsModelStandardFeed(m_rootItem);
-  FeedsModelStandardFeed *feed4 = new FeedsModelStandardFeed(cat2);
-  FeedsModelStandardFeed *feed5 = new FeedsModelStandardFeed(cat2);
+  m_headerData << tr("Title");
+
+  FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
+  FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
+  FeedsModelStandardFeed *feed1 = new FeedsModelStandardFeed();
+  FeedsModelStandardFeed *feed2 = new FeedsModelStandardFeed();
+  FeedsModelStandardFeed *feed3 = new FeedsModelStandardFeed();
+  FeedsModelStandardFeed *feed4 = new FeedsModelStandardFeed();
+  FeedsModelStandardFeed *feed5 = new FeedsModelStandardFeed();
 
   cat1->appendChild(feed1);
   cat1->appendChild(feed2);
@@ -35,30 +40,41 @@ QVariant FeedsModel::data(const QModelIndex &index, int role) const {
     return QVariant();
   }
 
-  if (role != Qt::DisplayRole) {
-    return QVariant();
-  }
-
   FeedsModelRootItem *item = static_cast<FeedsModelRootItem*>(index.internalPointer());
-
-  return item->data(index.column(), Qt::DisplayRole);
+  return item->data(index.column(), role);
 }
 
 QVariant FeedsModel::headerData(int section,
                                 Qt::Orientation orientation,
                                 int role) const {
-  if (orientation == Qt::Horizontal) {
-    switch (role) {
-      case Qt::DisplayRole:
-        return "aaa";
-
-      default:
-        return QVariant();
-    }
-  }
-  else {
+  if (orientation != Qt::Horizontal) {
     return QVariant();
   }
+
+  switch (role) {
+    case Qt::DisplayRole:
+      if (section == FDS_TITLE_INDEX) {
+        return m_headerData.at(FDS_TITLE_INDEX);
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::ToolTipRole:
+      break;
+
+    case Qt::DecorationRole:
+      if (section == FDS_COUNTS_INDEX) {
+        return m_countsIcon;
+      }
+      else {
+        return QVariant();
+      }
+
+    default:
+      return QVariant();
+  }
+
 }
 
 QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) const {

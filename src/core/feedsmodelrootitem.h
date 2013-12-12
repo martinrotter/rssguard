@@ -13,9 +13,10 @@ class FeedsModelRootItem {
 
   public:
     // Constructors and destructors.
-    explicit FeedsModelRootItem(FeedsModelRootItem *parent_item);
+    explicit FeedsModelRootItem(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelRootItem();
 
+    virtual void setParent(FeedsModelRootItem *parent_item);
     virtual FeedsModelRootItem *parent();
     virtual FeedsModelRootItem *child(int row);
     virtual void appendChild(FeedsModelRootItem *child);
