@@ -12,6 +12,9 @@ class FeedsModelCategory : public FeedsModelRootItem {
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelCategory();
 
+    int countOfAllMessages() const;
+    int countOfUnreadMessages() const;
+
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

@@ -52,3 +52,11 @@ QVariant FeedsModelRootItem::data(int column, int role) const {
 
   return QVariant();
 }
+
+int FeedsModelRootItem::countOfAllMessages() const {
+  return 0;
+}
+
+int FeedsModelRootItem::countOfUnreadMessages() const {
+  return 0;
+}

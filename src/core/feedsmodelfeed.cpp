@@ -2,7 +2,7 @@
 
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
-  : FeedsModelRootItem(parent_item) {
+  : FeedsModelRootItem(parent_item), m_unreadCount(1), m_totalCount(0) {
 }
 
 FeedsModelFeed::~FeedsModelFeed() {
@@ -11,4 +11,12 @@ FeedsModelFeed::~FeedsModelFeed() {
 int FeedsModelFeed::childCount() const {
   // Because feed has no children.
   return 0;
+}
+
+int FeedsModelFeed::countOfAllMessages() const {
+  return m_totalCount;
+}
+
+int FeedsModelFeed::countOfUnreadMessages() const {
+  return m_unreadCount;
 }

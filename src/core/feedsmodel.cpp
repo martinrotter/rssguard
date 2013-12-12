@@ -10,6 +10,8 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
 
   m_headerData << tr("Title");
+  m_tooltipData << tr("Titles of feeds/categories.") <<
+                   tr("Counts of unread/all meesages.");
 
   FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
   FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
@@ -18,6 +20,12 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   FeedsModelStandardFeed *feed3 = new FeedsModelStandardFeed();
   FeedsModelStandardFeed *feed4 = new FeedsModelStandardFeed();
   FeedsModelStandardFeed *feed5 = new FeedsModelStandardFeed();
+
+  feed1->setTitle("aaa");
+  feed2->setTitle("aaa");
+  feed3->setTitle("aaa");
+  feed4->setTitle("aaa");
+  feed5->setTitle("aaa");
 
   cat1->appendChild(feed1);
   cat1->appendChild(feed2);
@@ -61,7 +69,7 @@ QVariant FeedsModel::headerData(int section,
       }
 
     case Qt::ToolTipRole:
-      break;
+      return m_tooltipData.at(section);
 
     case Qt::DecorationRole:
       if (section == FDS_COUNTS_INDEX) {
@@ -74,7 +82,6 @@ QVariant FeedsModel::headerData(int section,
     default:
       return QVariant();
   }
-
 }
 
 QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) const {

@@ -27,6 +27,7 @@ class FeedsModel : public QAbstractItemModel {
   private:
     FeedsModelRootItem *m_rootItem;
     QList<QString> m_headerData;
+    QList<QString> m_tooltipData;
     QIcon m_countsIcon;
 
 };

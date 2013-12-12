@@ -16,7 +16,6 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
     virtual ~FeedsModelStandardCategory();
 
     QVariant data(int column, int role) const;
-
 };
 
 #endif // FEEDSMODELSTANDARDCATEGORY_H

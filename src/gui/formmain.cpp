@@ -1,5 +1,6 @@
 #include <QCloseEvent>
 #include <QMessageBox>
+#include <QSessionManager>
 
 #include "gui/formmain.h"
 #include "gui/formabout.h"

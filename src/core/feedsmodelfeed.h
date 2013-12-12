@@ -6,8 +6,7 @@
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
-class FeedsModelFeed : public FeedsModelRootItem
-{
+class FeedsModelFeed : public FeedsModelRootItem {
   public:
     // Describes possible types of feeds.
     // NOTE: This is equivalent to attribute Feeds(type).
@@ -23,6 +22,12 @@ class FeedsModelFeed : public FeedsModelRootItem
 
     int childCount() const;
 
+    int countOfUnreadMessages() const;
+    int countOfAllMessages() const;
+
+  protected:
+    int m_totalCount;
+    int m_unreadCount;
 };
 
 #endif // FEEDSMODELFEED_H

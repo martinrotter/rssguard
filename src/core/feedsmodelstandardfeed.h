@@ -17,6 +17,8 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
     QVariant data(int column, int role) const;
 
+    void setTitle(const QString &title);
+    void setDescription(const QString &description);
 
   private:
     QString m_title;
@@ -25,9 +27,6 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     QString m_url;
     QString m_description;
     QString m_language;
-
-    int m_totalCount;
-    int m_unreadCount;
 };
 
 #endif // FEEDSMODELSTANDARDFEED_H

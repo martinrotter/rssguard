@@ -25,6 +25,9 @@ class FeedsModelRootItem {
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
 
+    virtual int countOfUnreadMessages() const;
+    virtual int countOfAllMessages() const;
+
   protected:
     QIcon m_icon;
     QList<FeedsModelRootItem*> m_childItems;

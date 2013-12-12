@@ -14,11 +14,11 @@ FeedsView::FeedsView(QWidget *parent) : QTreeView(parent) {
 
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.
-  header()->setSectionResizeMode(FDS_TITLE_INDEX, QHeaderView::Interactive);
+  header()->setSectionResizeMode(FDS_TITLE_INDEX, QHeaderView::Stretch);
   header()->setSectionResizeMode(FDS_COUNTS_INDEX, QHeaderView::ResizeToContents);
 #else
   // Setup column resize strategies.
-  header()->setResizeMode(FDS_TITLE_INDEX, QHeaderView::Interactive);
+  header()->setResizeMode(FDS_TITLE_INDEX, QHeaderView::Stretch);
   header()->setResizeMode(FDS_COUNTS_INDEX, QHeaderView::ResizeToContents);
 #endif
 
@@ -28,7 +28,7 @@ FeedsView::FeedsView(QWidget *parent) : QTreeView(parent) {
   setDragEnabled(false);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
-  setSelectionMode(QAbstractItemView::ExtendedSelection);
+  setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
 FeedsView::~FeedsView() {

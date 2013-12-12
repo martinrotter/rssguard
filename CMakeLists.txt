@@ -132,7 +132,7 @@ message(STATUS "[${APP_LOW_NAME}] Enabling verbose makefile and full warning rep
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   add_definitions(-pedantic -Wall -Wextra)
 elseif(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
-  add_definitions(/W2)
+  #add_definitions(/W3)
 endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
 # Verbose compiling ouputs.

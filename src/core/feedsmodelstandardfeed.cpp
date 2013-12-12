@@ -13,6 +13,14 @@ FeedsModelStandardFeed::~FeedsModelStandardFeed() {
   qDebug("Destroying FeedsModelStandardFeed instance.");
 }
 
+void FeedsModelStandardFeed::setDescription(const QString &description) {
+  m_description = description;
+}
+
+void FeedsModelStandardFeed::setTitle(const QString &title) {
+  m_title = title;
+}
+
 QVariant FeedsModelStandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
@@ -20,7 +28,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_COUNTS_INDEX) {
-        return QString("(%1)").arg(QString::number(m_unreadCount));
+        return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
       }
 
     case Qt::DecorationRole:
@@ -30,7 +38,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 
     case Qt::TextAlignmentRole:
       if (column == FDS_COUNTS_INDEX) {
-        return Qt::AlignRight;
+        return Qt::AlignCenter;
       }
       else {
         return QVariant();
