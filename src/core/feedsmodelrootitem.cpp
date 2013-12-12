@@ -3,8 +3,7 @@
 #include "core/feedsmodelrootitem.h"
 
 
-FeedsModelRootItem::FeedsModelRootItem()
-  : FeedsModelItem() {
+FeedsModelRootItem::FeedsModelRootItem() {
 }
 
 FeedsModelRootItem::~FeedsModelRootItem() {
@@ -12,11 +11,11 @@ FeedsModelRootItem::~FeedsModelRootItem() {
   qDeleteAll(m_childItems);
 }
 
-FeedsModelItem *FeedsModelRootItem::parent() {
+FeedsModelRootItem *FeedsModelRootItem::parent() {
   return NULL;
 }
 
-FeedsModelItem *FeedsModelRootItem::child(int row) {
+FeedsModelRootItem *FeedsModelRootItem::child(int row) {
   return m_childItems.at(0);
 }
 

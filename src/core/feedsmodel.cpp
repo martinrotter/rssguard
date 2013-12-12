@@ -28,7 +28,7 @@ QVariant FeedsModel::data(const QModelIndex &index, int role) const {
     return QVariant();
   }
 
-  FeedsModelItem *item = static_cast<FeedsModelItem*>(index.internalPointer());
+  FeedsModelRootItem *item = static_cast<FeedsModelRootItem*>(index.internalPointer());
 
   return item->data(index.column(), Qt::DisplayRole);
 }
@@ -55,16 +55,16 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) co
     return QModelIndex();
   }
 
-  FeedsModelItem *parent_item;
+  FeedsModelRootItem *parent_item;
 
   if (!parent.isValid()) {
     parent_item = m_rootItem;
   }
   else {
-    parent_item = static_cast<FeedsModelItem*>(parent.internalPointer());
+    parent_item = static_cast<FeedsModelRootItem*>(parent.internalPointer());
   }
 
-  FeedsModelItem *child_item = parent_item->child(row);
+  FeedsModelRootItem *child_item = parent_item->child(row);
 
   if (child_item) {
     return createIndex(row, column, child_item);
@@ -79,8 +79,8 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
     return QModelIndex();
   }
 
-  FeedsModelItem *child_item = static_cast<FeedsModelItem*>(child.internalPointer());
-  FeedsModelItem *parent_item = child_item->parent();
+  FeedsModelRootItem *child_item = static_cast<FeedsModelRootItem*>(child.internalPointer());
+  FeedsModelRootItem *parent_item = child_item->parent();
 
   if (parent_item == m_rootItem) {
     return QModelIndex();
@@ -91,7 +91,7 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
 }
 
 int FeedsModel::rowCount(const QModelIndex &parent) const {
-  FeedsModelItem *parent_item;
+  FeedsModelRootItem *parent_item;
 
   if (parent.column() > 0) {
     return 0;
@@ -101,7 +101,7 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
     parent_item = m_rootItem;
   }
   else {
-    parent_item = static_cast<FeedsModelItem*>(parent.internalPointer());
+    parent_item = static_cast<FeedsModelRootItem*>(parent.internalPointer());
   }
 
   return parent_item->childCount();
@@ -109,7 +109,7 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
   if (parent.isValid()) {
-    return static_cast<FeedsModelItem*>(parent.internalPointer())->columnCount();
+    return static_cast<FeedsModelRootItem*>(parent.internalPointer())->columnCount();
   }
   else {
     return m_rootItem->columnCount();

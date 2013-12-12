@@ -1,7 +1,7 @@
 #include "core/feedsmodelcategory.h"
 
 
-FeedsModelCategory::FeedsModelCategory(FeedsModelItem *parent_item)
+FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
   : FeedsModelNonRootItem(parent_item) {
 }
 

@@ -1,13 +1,13 @@
 #ifndef FEEDMODELROOTITEM_H
 #define FEEDMODELROOTITEM_H
 
-#include "core/feedsmodelitem.h"
+#include <QIcon>
 
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
-// all non-root items of FeedsModel.
-class FeedsModelRootItem : public FeedsModelItem {
+// all other non-root items of FeedsModel.
+class FeedsModelRootItem {
     friend class FeedsModelNonRootItem;
     friend class FeedsModel;
 
@@ -16,15 +16,16 @@ class FeedsModelRootItem : public FeedsModelItem {
     explicit FeedsModelRootItem();
     virtual ~FeedsModelRootItem();
 
-    FeedsModelItem *parent();
-    FeedsModelItem *child(int row);
-    int childCount() const;
-    int columnCount() const;
-    int row() const;
-    QVariant data(int column, int role) const;
+    virtual FeedsModelRootItem *parent();
+    virtual FeedsModelRootItem *child(int row);
+    virtual int childCount() const;
+    virtual int columnCount() const;
+    virtual int row() const;
+    virtual QVariant data(int column, int role) const;
 
   protected:
-    QList<FeedsModelItem*> m_childItems;
+    QIcon m_icon;
+    QList<FeedsModelRootItem*> m_childItems;
 
 };
 
