@@ -19,6 +19,29 @@ MessagesView::MessagesView(QWidget *parent)
 
   setModel(m_proxyModel);
 
+  // NOTE: It is recommended to call this after the model is set
+  // due to sorting performance.
+  setupAppearance();
+}
+
+MessagesView::~MessagesView() {
+  qDebug("Destroying MessagesView instance.");
+}
+
+MessagesModel *MessagesView::sourceModel() {
+  return m_sourceModel;
+}
+
+MessagesProxyModel *MessagesView::model() {
+  return m_proxyModel;
+}
+
+void MessagesView::setSortingEnabled(bool enable) {
+  QTreeView::setSortingEnabled(enable);
+  header()->setSortIndicatorShown(false);
+}
+
+void MessagesView::setupAppearance() {
   // FIXME: Sometimes ASSERT occurs if model provides less columns
   // than we set resize mode for.
   qDebug("Loading MessagesView with %d columns.",
@@ -59,29 +82,6 @@ MessagesView::MessagesView(QWidget *parent)
   hideColumn(MSG_DB_URL_INDEX);
   hideColumn(MSG_DB_CONTENTS_INDEX);
 
-  // NOTE: It is recommended to call this after the model is set
-  // due to sorting performance.
-  setupAppearance();
-}
-
-MessagesView::~MessagesView() {
-  qDebug("Destroying MessagesView instance.");
-}
-
-MessagesModel *MessagesView::sourceModel() {
-  return m_sourceModel;
-}
-
-MessagesProxyModel *MessagesView::model() {
-  return m_proxyModel;
-}
-
-void MessagesView::setSortingEnabled(bool enable) {
-  QTreeView::setSortingEnabled(enable);
-  header()->setSortIndicatorShown(false);
-}
-
-void MessagesView::setupAppearance() {
   header()->setStretchLastSection(false);
   setUniformRowHeights(true);
   setAcceptDrops(false);

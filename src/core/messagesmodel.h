@@ -95,6 +95,7 @@ class MessagesModel : public QSqlTableModel {
 
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
+    QList<QString> m_tooltipData;
 
 #if QT_VERSION >= 0x050000
     bool m_isInEditingMode;

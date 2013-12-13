@@ -97,17 +97,20 @@
         <source>Toolbar for messages</source>
         <translation>Werkbalk voor berichten</translation>
     </message>
+</context>
+<context>
+    <name>FeedsModel</name>
     <message>
-        <source>Update selected/all feeds</source>
-        <translation type="unfinished"></translation>
+        <source>Title</source>
+        <translation>Titel</translation>
     </message>
     <message>
-        <source>Select which feeds you want to update.</source>
-        <translation type="unfinished"></translation>
+        <source>Titles of feeds/categories.</source>
+        <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
-        <source>Feed update menu</source>
-        <translation type="unfinished"></translation>
+        <source>Counts of unread/all meesages.</source>
+        <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
 </context>
 <context>
@@ -173,7 +176,7 @@
         <translation>Auteurs informatie niet gevonden.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%3 %4&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -285,171 +288,143 @@
     </message>
     <message>
         <source>&amp;Web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Webbrowser</translation>
     </message>
     <message>
         <source>Mark selected messages &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde berichten als &amp;gelezen</translation>
     </message>
     <message>
         <source>Mark selected messages &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde berichten als &amp;ongelezen</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Wissel het &amp;belang van geselecteerde berichten</translation>
     </message>
     <message>
         <source>Mark &amp;all messages read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer &amp;alle berichten als gelezen</translation>
     </message>
     <message>
         <source>Mark a&amp;ll messages unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer a&amp;lle berichten als ongelezen</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verwijder geselecteerde berichten</translation>
     </message>
     <message>
         <source>Dele&amp;te all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijde&amp;r alle berichten</translation>
     </message>
     <message>
         <source>Import stuff.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeer bestanden.</translation>
     </message>
     <message>
         <source>Export stuff.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+E</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer bestanden.</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit het programma.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon instellingen van het programma.</translation>
     </message>
     <message>
         <source>About RSS Guard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation>Over RSS Guard.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel beeldvullende modus.</translation>
     </message>
     <message>
         <source>Add new web browser tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+T</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw webbrowser tabblad toe.</translation>
     </message>
     <message>
         <source>Close current web browser tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit huidige webbrowser tabblad.</translation>
     </message>
     <message>
         <source>Update &amp;all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Update a&amp;lle feeds</translation>
     </message>
     <message>
         <source>Update &amp;selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Update ge&amp;selecteerde feeds</translation>
     </message>
     <message>
         <source>&amp;Edit selected feed(s)/category(ies)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bewerk geselecteerde feed(s)/categorie(ën)</translation>
     </message>
     <message>
         <source>&amp;Delete selected feed(s)/category(ies)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verwijder geselecteerde feed(s)/categorie(ën)</translation>
     </message>
     <message>
         <source>Mark selected feed(s)/category(ies) as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde feed(s)/categorie(ën) als gelezen</translation>
     </message>
     <message>
         <source>Mark selected feed(s)/category(ies) as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde feed(s)/categorie(ën) als gelezen.</translation>
     </message>
     <message>
         <source>Mark all messages read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten als gelezen.</translation>
     </message>
     <message>
         <source>Mark all messages unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten als ongelezen.</translation>
     </message>
     <message>
         <source>Delete selected messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder geselecteerde berichten.</translation>
     </message>
     <message>
         <source>Delete all messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten.</translation>
     </message>
     <message>
         <source>Add new &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuwe &amp;feed toe</translation>
     </message>
     <message>
         <source>Add new feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected messages in external browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected messages in external browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuwe feed toe.</translation>
     </message>
     <message>
         <source>Open selected messages in internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open geselecteerde bericht in externe webbrowser</translation>
     </message>
     <message>
         <source>Open selected messages in internal browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Open geselecteerde bericht in externe webbrowser.</translation>
     </message>
     <message>
         <source>Open selected source articles in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open geselecteerde bron artikelen in externe webbrowser</translation>
     </message>
     <message>
-        <source>Open selected source messages  in external browser.</source>
-        <translation type="unfinished"></translation>
+        <source>Open selected source articles in external browser.</source>
+        <translation>Open geselecteerde bron artikelen in externe webbrowser.</translation>
+    </message>
+    <message>
+        <source>Open selected source articles in internal browser</source>
+        <translation>Open geselecteerde bron artikelen in interne webbrowser</translation>
+    </message>
+    <message>
+        <source>Open selected source messages  in internal browser.</source>
+        <translation>Open geselecteerde bron artikelen in interne webbrowser.</translation>
+    </message>
+    <message>
+        <source>Add new &amp;category</source>
+        <translation>Voeg nieuwe &amp;categorie toe</translation>
     </message>
 </context>
 <context>
@@ -465,10 +440,6 @@
     <message>
         <source>Icon theme</source>
         <translation>Pictogram thema</translation>
-    </message>
-    <message>
-        <source>system icon theme (default)</source>
-        <translation>Systeem pictogram thema (standaard)</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -564,7 +535,7 @@
     </message>
     <message>
         <source>Password is stored in plain string in RSS Guard configuration file.</source>
-        <translation>Paswoord is opgeslagen in gewone tekst in RSS Guard configuratie bestand.</translation>
+        <translation>Paswoord is opgeslagen in gewone tekst in het RSSGuard configuratie bestand.</translation>
     </message>
     <message>
         <source>Code</source>
@@ -572,7 +543,7 @@
     </message>
     <message>
         <source>Version</source>
-        <translation>versie</translation>
+        <translation>Versie</translation>
     </message>
     <message>
         <source>Author</source>
@@ -704,53 +675,127 @@
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kritieke instellingen zijn veranderd</translation>
     </message>
     <message>
         <source>List of changes:
  %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst van veranderingen/l
+%1.</translation>
     </message>
     <message>
         <source>Problem with application restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Probleem met programma herstart</translation>
     </message>
     <message>
         <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Programma kan niet worden herstart. Herstart het handmatig zodat de veranderingen worden doorgevoerd.</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds &amp; berichten</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"></translation>
+        <translation>...sommige sneltoetsen zijn niet uniek</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige kritieke instellingen zijn niet instelbaar. Je moet deze nieuwe instellingen bevestigen om op te lossen.</translation>
     </message>
     <message>
         <source>List of errors:
  %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>lijst van fouten:
+ %1.</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • language changed</source>
-        <translation type="unfinished"></translation>
+        <translation>...van taal veranderd</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • icon theme changed</source>
-        <translation type="unfinished"></translation>
+        <translation>...pictogram thema veranderd</translation>
+    </message>
+    <message utf8="true">
+        <source> • skin changed</source>
+        <translation>...skin veranderd</translation>
     </message>
     <message>
-        <source> • skin changed</source>
-        <translation type="unfinished"></translation>
+        <source>Feeds</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Messages</source>
+        <translation>Berichten</translation>
+    </message>
+    <message>
+        <source>External web browser for message viewing</source>
+        <translation>Externe webbrowser voor bekijken van berichten</translation>
+    </message>
+    <message>
+        <source>Web browser executable</source>
+        <translation>Webbrowser exe</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Executable parameters</source>
+        <translation>exe parameters</translation>
+    </message>
+    <message>
+        <source>use sample arguments for</source>
+        <translation>gebruik voorbeeld argumenten voor</translation>
+    </message>
+    <message>
+        <source>select browser</source>
+        <translation>Selecteer browser</translation>
+    </message>
+    <message>
+        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
+        <translation>Noteer dat.&quot;%1&quot; (zonder aanhalingstekens) is tijdelijke aanduiding voor URL of geselecteerde berichten.</translation>
+    </message>
+    <message>
+        <source>Select web browser executable</source>
+        <translation>Selecteer exe bestand voor browser</translation>
+    </message>
+    <message>
+        <source>Executables (*.*)</source>
+        <translation>Uitvoerbare bestanden (*.*)</translation>
+    </message>
+    <message>
+        <source>Opera 12 or older</source>
+        <translation>Opera 12 of ouder</translation>
+    </message>
+    <message>
+        <source> â¢ some keyboard shortcuts are not unique</source>
+        <translation>...sommige sneltoetsen zijn niet uniek</translation>
+    </message>
+    <message>
+        <source> â¢ external browser is not set</source>
+        <translation>...externe browser niet ingesteld</translation>
+    </message>
+    <message utf8="true">
+        <source> • external browser is not set</source>
+        <translation>...externe browser niet ingesteld</translation>
+    </message>
+    <message>
+        <source> â¢ language changed</source>
+        <translation>...van taal veranderd</translation>
+    </message>
+    <message>
+        <source> â¢ icon theme changed</source>
+        <translation>...pictogram thema veranderd</translation>
+    </message>
+    <message>
+        <source> â¢ skin changed</source>
+        <translation>... skin veranderd</translation>
     </message>
 </context>
 <context>
@@ -772,7 +817,7 @@
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation>Website adress gaat hier</translation>
+        <translation>Tik Website adres hier</translation>
     </message>
 </context>
 <context>
@@ -821,12 +866,64 @@
         <source>Contents</source>
         <translation>Inhoud</translation>
     </message>
+    <message>
+        <source>Id of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is message read?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is message deleted?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is message important?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id of feed which this message belongs to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Url of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Author of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creation date of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date of the most recent update of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contents of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Contextmenu voor berichten</translation>
+    </message>
+    <message>
+        <source>External browser not set</source>
+        <translation>Externe browser niet ingesteld</translation>
+    </message>
+    <message>
+        <source>External browser is not set, head to application settings and set it up to use this feature.</source>
+        <translation>Externe browser is niet ingesteld, ga naar hulpmiddelen instellingen en zet deze functie aan.</translation>
     </message>
 </context>
 <context>

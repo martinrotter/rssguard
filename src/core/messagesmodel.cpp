@@ -96,6 +96,12 @@ void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Deleted") << tr("Important") <<
                   tr("Feed") << tr("Title") << tr("Url") << tr("Author") <<
                   tr("Created on") << tr("Updated on") << tr("Contents");
+  m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
+                   tr("Is message deleted?") << tr("Is message important?") <<
+                   tr("Id of feed which this message belongs to.") <<
+                   tr("Title of the message.") << tr("Url of the message.") <<
+                   tr("Author of the message.") << tr("Creation date of the message.") <<
+                   tr("Date of the most recent update of the message.") << tr("Contents of the message.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
@@ -408,8 +414,9 @@ QVariant MessagesModel::headerData(int section,
         return QVariant();
       }
 
-      // Return RAW data for these roles.
     case Qt::ToolTipRole:
+      return m_tooltipData.at(section);
+
     case Qt::EditRole:
       return m_headerData.at(section);
 

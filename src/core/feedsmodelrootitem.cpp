@@ -60,3 +60,7 @@ int FeedsModelRootItem::countOfAllMessages() const {
 int FeedsModelRootItem::countOfUnreadMessages() const {
   return 0;
 }
+
+void FeedsModelRootItem::setIcon(const QIcon &icon) {
+  m_icon = icon;
+}

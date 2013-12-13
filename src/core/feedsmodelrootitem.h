@@ -8,9 +8,6 @@
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
 class FeedsModelRootItem {
-    friend class FeedsModelNonRootItem;
-    friend class FeedsModel;
-
   public:
     // Constructors and destructors.
     explicit FeedsModelRootItem(FeedsModelRootItem *parent_item = NULL);
@@ -27,6 +24,8 @@ class FeedsModelRootItem {
 
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
+
+    void setIcon(const QIcon &icon);
 
   protected:
     QIcon m_icon;

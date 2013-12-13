@@ -73,10 +73,13 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   m_ui->m_txtInfo->setText(tr("<body>RSS Guard is a (very) tiny feed reader."
                               "<br><br>This software is distributed under the terms of GNU General Public License, version 3."
                               "<br><br>Contacts:"
-                              "<ul><li><a href=\"mailto://rotter.martinos@gmail.com\">rotter.martinos@gmail</a>  ~email</li>"
-                              "<li><a href=\"http://www.rssguard.sf.net\">www.rssguard.sf.net</a> ~website</li></ul>"
+                              "<ul><li><a href=\"mailto://%1\">%1</a> ~email</li>"
+                              "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                               "You can obtain source code for RSS Guard from its website."
-                              "<br><br><br>Copyright © 2011-%1 Martin Rotter</body>").arg(QDateTime::currentDateTime().date().year()));
+                              "<br><br><br>Copyright © 2011-%3 %4</body>").arg(APP_EMAIL,
+                                                                               APP_URL,
+                                                                               QString::number(QDateTime::currentDateTime().date().year()),
+                                                                               APP_AUTHOR));
 }
 
 FormAbout::~FormAbout() {

@@ -11,7 +11,14 @@ FeedsView::FeedsView(QWidget *parent) : QTreeView(parent) {
   m_sourceModel = m_proxyModel->sourceModel();
 
   setModel(m_proxyModel);
+  setupAppearance();
+}
 
+FeedsView::~FeedsView() {
+  qDebug("Destroying FeedsView instance.");
+}
+
+void FeedsView::setupAppearance() {
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.
   header()->setSectionResizeMode(FDS_TITLE_INDEX, QHeaderView::Stretch);
@@ -28,9 +35,5 @@ FeedsView::FeedsView(QWidget *parent) : QTreeView(parent) {
   setDragEnabled(false);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
-  setSelectionMode(QAbstractItemView::SingleSelection);
-}
-
-FeedsView::~FeedsView() {
-  qDebug("Destroying FeedsView instance.");
+  setSelectionMode(QAbstractItemView::ExtendedSelection);
 }

@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);
   QtSingleApplication::setApplicationVersion(APP_VERSION);
-  QtSingleApplication::setOrganizationName(APP_AUTHORS);
+  QtSingleApplication::setOrganizationName(APP_AUTHOR);
   QtSingleApplication::setOrganizationDomain(APP_URL);
   QtSingleApplication::setWindowIcon(QIcon(APP_ICON_PATH));
 

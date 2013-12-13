@@ -70,6 +70,7 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionAddNewFeed);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionEditSelectedFeed);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeeds);
   m_toolBar->addSeparator();
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsRead);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsUnread);

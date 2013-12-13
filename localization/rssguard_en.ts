@@ -97,16 +97,19 @@
         <source>Toolbar for messages</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>FeedsModel</name>
     <message>
-        <source>Update selected/all feeds</source>
+        <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select which feeds you want to update.</source>
+        <source>Titles of feeds/categories.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Feed update menu</source>
+        <source>Counts of unread/all meesages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -173,7 +176,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://rotter.martinos@gmail.com&quot;&gt;rotter.martinos@gmail&lt;/a&gt;  ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://www.rssguard.sf.net&quot;&gt;www.rssguard.sf.net&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%1 Martin Rotter&lt;/body&gt;</source>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%3 %4&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -320,15 +323,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Export stuff.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -336,15 +331,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Display settings of the application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -352,15 +339,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Switch fullscreen mode.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -368,15 +347,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Close current web browser tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -428,14 +399,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open selected messages in external browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected messages in external browser.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open selected messages in internal browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -448,7 +411,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open selected source messages  in external browser.</source>
+        <source>Open selected source articles in external browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source articles in internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source messages  in internal browser.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new &amp;category</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -464,10 +439,6 @@
     </message>
     <message>
         <source>Icon theme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>system icon theme (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -721,7 +692,7 @@
         <source>Feeds &amp; messages</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • some keyboard shortcuts are not unique</source>
         <translation type="unfinished"></translation>
     </message>
@@ -734,16 +705,88 @@
  %1.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • language changed</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • icon theme changed</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source> • skin changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser for message viewing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>use sample arguments for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>select browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select web browser executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executables (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Opera 12 or older</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> â¢ some keyboard shortcuts are not unique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> â¢ external browser is not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source> • external browser is not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> â¢ language changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> â¢ icon theme changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> â¢ skin changed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -815,11 +858,63 @@
         <source>Contents</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Id of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is message read?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is message deleted?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is message important?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id of feed which this message belongs to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Url of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Author of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Creation date of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Date of the most recent update of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contents of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External browser not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External browser is not set, head to application settings and set it up to use this feature.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
