@@ -10,9 +10,6 @@
 TextFactory::TextFactory() {
 }
 
-TextFactory::~TextFactory() {
-}
-
 QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString date = date_time.simplified();
   QDateTime dt;

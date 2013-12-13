@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Categories (
   description    TEXT,
   date_created   TEXT       NOT NULL CHECK (date_created != ''),
   icon           BLOB,
-  type           INTEGER	NOT NULL,
+  type           INTEGER    NOT NULL,
   
   FOREIGN KEY (parent_id) REFERENCES Categories (id)
 );
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   encoding       TEXT       NOT NULL CHECK (encoding != ''),
   url            TEXT       NOT NULL UNIQUE CHECK (url != ''),
   language       TEXT,
-  type           INTEGER    NOT NULL
+  type           INTEGER    NOT NULL CHECK (type > 0)
 );
 -- !
 DROP TABLE IF EXISTS FeedsData;
@@ -64,3 +64,10 @@ CREATE TABLE IF NOT EXISTS Messages (
   
   FOREIGN KEY (feed) REFERENCES Feeds (id)
 );
+-- !
+INSERT INTO Feeds (title, date_created, category, encoding, url, type) VALUES ('abcd', '1994-11-05T08:15:30-05:00', -1, 'UTF-8', 'http://www.seznam1.cz', 1);
+INSERT INTO Feeds (title, date_created, category, encoding, url, type) VALUES ('qqq', '1994-11-05T08:15:30-05:00', 0, 'UTF-8', 'http://www.seznam2.cz', 1); 
+INSERT INTO Feeds (title, date_created, category, encoding, url, type) VALUES ('vwvw', '1994-11-05T08:15:30-05:00', 1, 'UTF-8', 'http://www.seznam3.cz', 1); 
+INSERT INTO Feeds (title, date_created, category, encoding, url, type) VALUES ('tttt', '1994-11-05T08:15:30-05:00', 1, 'UTF-8', 'http://www.seznam4.cz', 1);
+INSERT INTO Categories (id, parent_id, title, date_created, type) VALUES (0, -1, 'aaa', '1994-11-05T08:15:30-05:00', 0);
+INSERT INTO Categories (id, parent_id, title, date_created, type) VALUES (1, 0, 'bbb', '1994-11-05T08:15:30-05:00', 0);

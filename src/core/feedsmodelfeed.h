@@ -22,10 +22,16 @@ class FeedsModelFeed : public FeedsModelRootItem {
 
     int childCount() const;
 
-    int countOfUnreadMessages() const;
     int countOfAllMessages() const;
+    int countOfUnreadMessages() const;
+    void setCountOfAllMessages(int count_total);
+    void setCountOfUnreadMessages(int count_unread);
+
+    Type type() const;
+    void setType(const Type &type);
 
   protected:
+    Type m_type;
     int m_totalCount;
     int m_unreadCount;
 };

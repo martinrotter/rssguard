@@ -27,7 +27,11 @@ class FeedsModelRootItem {
 
     void setIcon(const QIcon &icon);
 
+    int id() const;
+    void setId(int id);
+
   protected:
+    int m_id;
     QIcon m_icon;
     QList<FeedsModelRootItem*> m_childItems;
     FeedsModelRootItem *m_parentItem;

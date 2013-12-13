@@ -1,6 +1,9 @@
 #ifndef FEEDSMODELSTANDARDCATEGORY_H
 #define FEEDSMODELSTANDARDCATEGORY_H
 
+#include <QSqlRecord>
+#include <QDateTime>
+
 #include "core/feedsmodelcategory.h"
 
 
@@ -16,6 +19,23 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
     virtual ~FeedsModelStandardCategory();
 
     QVariant data(int column, int role) const;
+
+    static FeedsModelStandardCategory *loadFromRecord(const QSqlRecord &record);
+
+    QString title() const;
+    void setTitle(const QString &title);
+
+    QString description() const;
+    void setDescription(const QString &description);
+
+    QDateTime creationDate() const;
+    void setCreationDate(const QDateTime &creation_date);
+
+  private:
+    QDateTime m_creationDate;
+    QString m_title;
+    QString m_description;
+
 };
 
 #endif // FEEDSMODELSTANDARDCATEGORY_H

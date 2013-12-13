@@ -65,9 +65,30 @@
 #define MSG_DB_DUPDATED_INDEX     9
 #define MSG_DB_CONTENTS_INDEX     10
 
+// Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
+#define CAT_DB_ID_INDEX           0
+#define CAT_DB_PARENT_ID_INDEX    1
+#define CAT_DB_TITLE_INDEX        2
+#define CAT_DB_DESCRIPTION_INDEX  3
+#define CAT_DB_DCREATED_INDEX     4
+#define CAT_DB_ICON_INDEX         5
+#define CAT_DB_TYPE_INDEX         6
+
+// Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
+#define FDS_DB_ID_INDEX           0
+#define FDS_DB_TITLE_INDEX        1
+#define FDS_DB_DESCRIPTION_INDEX  2
+#define FDS_DB_DCREATED_INDEX     3
+#define FDS_DB_ICON_INDEX         4
+#define FDS_DB_CATEGORY_INDEX     5
+#define FDS_DB_ENCODING_INDEX     6
+#define FDS_DB_URL_INDEX          7
+#define FDS_DB_LANGUAGE_INDEX     8
+#define FDS_DB_TYPE_INDEX         9
+
 // Indexes of columns for feed models.
-#define FDS_TITLE_INDEX           0
-#define FDS_COUNTS_INDEX          1
+#define FDS_MODEL_TITLE_INDEX           0
+#define FDS_MODEL_COUNTS_INDEX          1
 
 #if defined(Q_OS_LINUX)
 #define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY_PATH@"

@@ -135,11 +135,6 @@ QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
     // Setup database file path.
     database.setDatabaseName(db_file.fileName());
 
-    if (!database.open()) {
-      qFatal("Database was NOT opened. Delivered error message: '%s'",
-             qPrintable(database.lastError().text()));
-    }
-
     return database;
   }
 }

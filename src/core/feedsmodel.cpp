@@ -1,17 +1,27 @@
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QSqlRecord>
+#include <QPair>
+
 #include "core/feedsmodel.h"
 #include "core/feedsmodelstandardcategory.h"
 #include "core/feedsmodelstandardfeed.h"
 #include "core/defs.h"
+#include "core/databasefactory.h"
 #include "gui/iconthemefactory.h"
 
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
+  setObjectName("FeedsModel");
+
   m_rootItem = new FeedsModelRootItem();
   m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
 
   m_headerData << tr("Title");
   m_tooltipData << tr("Titles of feeds/categories.") <<
                    tr("Counts of unread/all meesages.");
+
+  loadFromDatabase();
 
   FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
   FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
@@ -61,8 +71,8 @@ QVariant FeedsModel::headerData(int section,
 
   switch (role) {
     case Qt::DisplayRole:
-      if (section == FDS_TITLE_INDEX) {
-        return m_headerData.at(FDS_TITLE_INDEX);
+      if (section == FDS_MODEL_TITLE_INDEX) {
+        return m_headerData.at(FDS_MODEL_TITLE_INDEX);
       }
       else {
         return QVariant();
@@ -72,7 +82,7 @@ QVariant FeedsModel::headerData(int section,
       return m_tooltipData.at(section);
 
     case Qt::DecorationRole:
-      if (section == FDS_COUNTS_INDEX) {
+      if (section == FDS_MODEL_COUNTS_INDEX) {
         return m_countsIcon;
       }
       else {
@@ -148,4 +158,72 @@ int FeedsModel::columnCount(const QModelIndex &parent) const {
   else {
     return m_rootItem->columnCount();
   }
+}
+
+void FeedsModel::loadFromDatabase() {
+  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
+  QList<QPair<int, FeedsModelCategory*> > categories;
+  QList<QPair<int, FeedsModelFeed*> > feeds;
+
+  if (!database.open()) {
+    qFatal("Database was NOT opened. Delivered error message: '%s'",
+           qPrintable(database.lastError().text()));
+  }
+
+  QSqlQuery query_categories = database.exec("SELECT * FROM Categories;");
+
+  if (query_categories.lastError().isValid()) {
+    qFatal("Query for obtaining categories failed.");
+  }
+
+  while (query_categories.next()) {
+    // Process this category.
+    FeedsModelCategory::Type type = static_cast<FeedsModelCategory::Type>(query_categories.value(CAT_DB_TYPE_INDEX).toInt());
+
+    switch (type) {
+      case FeedsModelCategory::Standard: {
+        QPair<int, FeedsModelCategory*> pair;
+        pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+        pair.second = FeedsModelStandardCategory::loadFromRecord(query_categories.record());
+
+        categories << pair;
+        break;
+      }
+
+      case FeedsModelCategory::Feedly:
+      case FeedsModelCategory::TinyTinyRss:
+      default:
+        // NOTE: Not yet implemented.
+        break;
+    }
+  }
+
+  // All categories are now loaded.
+  QSqlQuery query_feeds = database.exec("SELECT * FROM Feeds;");
+
+  if (query_feeds.lastError().isValid()) {
+    qFatal("Query for obtaining feeds failed.");
+  }
+
+  while (query_feeds.next()) {
+    // Process this feed.
+    FeedsModelFeed::Type type = static_cast<FeedsModelFeed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
+
+    switch (type) {
+      case FeedsModelFeed::StandardAtom:
+      case FeedsModelFeed::StandardRdf:
+      case FeedsModelFeed::StandardRss: {
+        QPair<int, FeedsModelFeed*> pair;
+        pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+        // TODO: pokračovat tady, ve stejnym stylu jako u kategorii
+        break;
+      }
+
+
+      default:
+        break;
+    }
+
+  }
+
 }

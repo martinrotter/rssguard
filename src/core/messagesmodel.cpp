@@ -25,7 +25,6 @@ MessagesModel::MessagesModel(QObject *parent)
   // via model, but DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable("Messages");
-
   loadMessages(QList<int>());
 }
 
@@ -146,12 +145,6 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       return record(idx.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
             m_normalFont :
             m_boldFont;
-      /*
-    case Qt::BackgroundRole:
-      return record(idx.row()).value(MSG_DB_DELETED_INDEX).toInt() == 1 ?
-            QColor(255, 0, 0, 100) :
-            QVariant();
-            */
 
     case Qt::DecorationRole: {
       int index_column = idx.column();

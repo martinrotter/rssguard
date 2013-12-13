@@ -22,6 +22,8 @@ class FeedsModel : public QAbstractItemModel {
     int columnCount(const QModelIndex &parent) const;
     int rowCount(const QModelIndex &parent) const;
 
+    void loadFromDatabase();
+
   private:
     FeedsModelRootItem *m_rootItem;
     QList<QString> m_headerData;

@@ -13,6 +13,7 @@ int FeedsModelFeed::childCount() const {
   return 0;
 }
 
+
 int FeedsModelFeed::countOfAllMessages() const {
   return m_totalCount;
 }
@@ -20,3 +21,20 @@ int FeedsModelFeed::countOfAllMessages() const {
 int FeedsModelFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
+
+void FeedsModelFeed::setCountOfAllMessages(int count_total) {
+  m_totalCount = count_total;
+}
+
+void FeedsModelFeed::setCountOfUnreadMessages(int count_unread) {
+  m_unreadCount = count_unread;
+}
+
+FeedsModelFeed::Type FeedsModelFeed::type() const {
+  return m_type;
+}
+
+void FeedsModelFeed::setType(const Type &type) {
+  m_type = type;
+}
+

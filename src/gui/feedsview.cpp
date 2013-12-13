@@ -21,12 +21,12 @@ FeedsView::~FeedsView() {
 void FeedsView::setupAppearance() {
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.
-  header()->setSectionResizeMode(FDS_TITLE_INDEX, QHeaderView::Stretch);
-  header()->setSectionResizeMode(FDS_COUNTS_INDEX, QHeaderView::ResizeToContents);
+  header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
+  header()->setSectionResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
 #else
   // Setup column resize strategies.
-  header()->setResizeMode(FDS_TITLE_INDEX, QHeaderView::Stretch);
-  header()->setResizeMode(FDS_COUNTS_INDEX, QHeaderView::ResizeToContents);
+  header()->setResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::Stretch);
+  header()->setResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
 #endif
 
   header()->setStretchLastSection(false);

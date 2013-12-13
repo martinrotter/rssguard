@@ -11,8 +11,6 @@ class TextFactory {
     explicit TextFactory();
 
   public:
-    virtual ~TextFactory();
-
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
     static QDateTime parseDateTime(const QString &date_time);

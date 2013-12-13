@@ -24,20 +24,20 @@ void FeedsModelStandardFeed::setTitle(const QString &title) {
 QVariant FeedsModelStandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
-      if (column == FDS_TITLE_INDEX) {
+      if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;
       }
-      else if (column == FDS_COUNTS_INDEX) {
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
         return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
       }
 
     case Qt::DecorationRole:
-      return column == FDS_TITLE_INDEX ?
+      return column == FDS_MODEL_TITLE_INDEX ?
             m_icon :
             QVariant();
 
     case Qt::TextAlignmentRole:
-      if (column == FDS_COUNTS_INDEX) {
+      if (column == FDS_MODEL_COUNTS_INDEX) {
         return Qt::AlignCenter;
       }
       else {

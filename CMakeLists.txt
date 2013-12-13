@@ -254,6 +254,7 @@ set(APP_SOURCES
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
   src/gui/messagebox.cpp
+  src/gui/iconfactory.cpp
 
   # CORE sources.
   src/core/debugging.cpp

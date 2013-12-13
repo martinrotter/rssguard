@@ -64,3 +64,11 @@ int FeedsModelRootItem::countOfUnreadMessages() const {
 void FeedsModelRootItem::setIcon(const QIcon &icon) {
   m_icon = icon;
 }
+
+int FeedsModelRootItem::id() const {
+  return m_id;
+}
+
+void FeedsModelRootItem::setId(int id) {
+  m_id = id;
+}
