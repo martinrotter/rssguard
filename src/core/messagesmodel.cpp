@@ -21,6 +21,8 @@ MessagesModel::MessagesModel(QObject *parent)
   setupHeaderData();
 
   // Set desired table and edit strategy.
+  // NOTE: Changes to the database are actually NOT submitted
+  // via model, but DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable("Messages");
 
@@ -29,6 +31,11 @@ MessagesModel::MessagesModel(QObject *parent)
 
 MessagesModel::~MessagesModel() {
   qDebug("Destroying MessagesModel instance.");
+}
+
+bool MessagesModel::submitAll() {
+  qFatal("Submittting changes via model is not allowed.");
+  return false;
 }
 
 void MessagesModel::setupIcons() {
@@ -51,9 +58,6 @@ void MessagesModel::setupFonts() {
 }
 
 void MessagesModel::loadMessages(const QList<int> feed_ids) {
-  // Submit changes first.
-  submitAll();
-
   // Conversion of parameter.
   m_currentFeeds = feed_ids;
   QStringList stringy_ids;
@@ -104,6 +108,7 @@ void MessagesModel::setupHeaderData() {
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
   Q_UNUSED(idx)
 
+#if QT_VERSION >= 0x050000
   if (m_isInEditingMode) {
     // NOTE: Editing of model must be temporarily enabled here.
     return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
@@ -111,6 +116,9 @@ Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
   else {
     return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
   }
+#else
+  return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
+#endif
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {
@@ -131,7 +139,7 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       }
     }
 
-    // Return RAW data for EditRole.
+      // Return RAW data for EditRole.
     case Qt::EditRole:
       return QSqlTableModel::data(idx, role);
 
@@ -139,6 +147,12 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       return record(idx.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
             m_normalFont :
             m_boldFont;
+      /*
+    case Qt::BackgroundRole:
+      return record(idx.row()).value(MSG_DB_DELETED_INDEX).toInt() == 1 ?
+            QColor(255, 0, 0, 100) :
+            QVariant();
+            */
 
     case Qt::DecorationRole: {
       int index_column = idx.column();
@@ -164,36 +178,111 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
 }
 
 bool MessagesModel::setData(const QModelIndex &idx, const QVariant &value, int role) {
+
+#if QT_VERSION >= 0x050000
   m_isInEditingMode = true;
+#endif
+
   bool set_data_result = QSqlTableModel::setData(idx, value, role);
+
+#if QT_VERSION >= 0x050000
   m_isInEditingMode = false;
+#endif
 
   return set_data_result;
 }
 
 bool MessagesModel::setMessageRead(int row_index, int read) {
-  return setData(index(row_index, MSG_DB_READ_INDEX),
-                 read);
+  if (!database().transaction()) {
+    qWarning("Starting transaction for batch message read change.");
+    return false;
+  }
+
+  // Rewrite "visible" data in the model.
+  bool working_change = setData(index(row_index, MSG_DB_READ_INDEX),
+                                read);
+
+  if (!working_change) {
+    // If rewriting in the model failed, then cancel all actions.
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  int message_id;
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare("UPDATE messages SET read = :read "
+                                "WHERE id = :id")) {
+    qWarning("Query preparation failed for message read change.");
+    return false;
+  }
+
+  // Rewrite the actual data in the database itself.
+  message_id = messageId(row_index);
+  query_delete_msg.bindValue(":id", message_id);
+  query_delete_msg.bindValue(":read", read);
+  query_delete_msg.exec();
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // If commit succeeded, then emit changes, so that view
+    // can reflect.
+    emit dataChanged(index(row_index, 0),
+                     index(row_index, columnCount() - 1));
+    return true;
+  }
+  else {
+    return db_handle.rollback();;
+  }
 }
 
-bool MessagesModel::setMessageDeleted(int row_index, int deleted) {
-  return setData(index(row_index, MSG_DB_DELETED_INDEX),
-                 deleted);
-}
+bool MessagesModel::switchMessageImportance(int row_index) { 
+  if (!database().transaction()) {
+    qWarning("Starting transaction for batch message importance switch failed.");
+    return false;
+  }
 
-bool MessagesModel::switchMessageImportance(int row_index) {
   QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
   int current_importance = data(target_index, Qt::EditRole).toInt();
 
-  return current_importance == 1 ?
-        setData(target_index, 0) :
-        setData(target_index, 1);
+  // Rewrite "visible" data in the model.
+  bool working_change = current_importance == 1 ?
+                          setData(target_index, 0) :
+                          setData(target_index, 1);
+
+  if (!working_change) {
+    // If rewriting in the model failed, then cancel all actions.
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  int message_id;
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
+                                "WHERE id = :id")) {
+    qWarning("Query preparation failed for message importance switch.");
+    return false;
+  }
+
+  message_id = messageId(row_index);
+  query_delete_msg.bindValue(":id", message_id);
+  query_delete_msg.bindValue(":important",
+                             current_importance == 1 ? 0 : 1);
+  query_delete_msg.exec();
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // If commit succeeded, then emit changes, so that view
+    // can reflect.
+    emit dataChanged(index(row_index, 0),
+                     index(row_index, columnCount() - 1));
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
 }
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
-  // Submit changes first.
-  submitAll();
-
   if (!database().transaction()) {
     qWarning("Starting transaction for batch message importance switch failed.");
     return false;
@@ -231,9 +320,6 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 }
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
-  // Submit changes first.
-  submitAll();
-
   if (!database().transaction()) {
     qWarning("Starting transaction for batch message deletion.");
     return false;
@@ -268,9 +354,6 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 }
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
-  // Submit changes first.
-  submitAll();
-
   if (!database().transaction()) {
     qWarning("Starting transaction for batch message read change.");
     return false;

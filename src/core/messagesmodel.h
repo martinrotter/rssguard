@@ -53,17 +53,21 @@ class MessagesModel : public QSqlTableModel {
     void endInsertColumns();
 
   public slots:
+    // To disable persistent changes submissions.
+    bool submitAll();
+
     // CORE messages manipulators.
     // NOTE: These are used to change properties of one message.
-    // NOTE: Model is NOT reset after one of these methods are applied.
+    // NOTE: Model is NOT reset after one of these methods are applied
+    // but changes ARE written to the database.
     bool switchMessageImportance(int row_index);
-    bool setMessageDeleted(int row_index, int deleted);
     bool setMessageRead(int row_index, int read);
 
     // BATCH messages manipulators.
     // NOTE: These methods are used for changing of attributes of
     // many messages via DIRECT SQL calls.
-    // NOTE: Model is reset after one of these methods is applied.
+    // NOTE: Model is reset after one of these methods is applied and
+    // changes ARE written to the database.
     bool switchBatchMessageImportance(const QModelIndexList &messages);
     bool setBatchMessagesDeleted(const QModelIndexList &messages, int deleted);
     bool setBatchMessagesRead(const QModelIndexList &messages, int read);
@@ -94,7 +98,10 @@ class MessagesModel : public QSqlTableModel {
 
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
+
+#if QT_VERSION >= 0x050000
     bool m_isInEditingMode;
+#endif
 
     QFont m_normalFont;
     QFont m_boldFont;
