@@ -74,13 +74,6 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
   fetchAll();
 }
 
-void MessagesModel::endInsertColumns() {
-
-  qDebug("end insert cols");
-
-  QSqlTableModel::endInsertColumns();
-}
-
 int MessagesModel::messageId(int row_index) const {
   return record(row_index).value(MSG_DB_ID_INDEX).toInt();
 }

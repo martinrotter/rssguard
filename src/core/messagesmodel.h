@@ -49,9 +49,6 @@ class MessagesModel : public QSqlTableModel {
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
 
-  protected:
-    void endInsertColumns();
-
   public slots:
     // To disable persistent changes submissions.
     bool submitAll();
