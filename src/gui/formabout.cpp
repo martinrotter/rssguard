@@ -76,7 +76,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                               "<ul><li><a href=\"mailto://%1\">%1</a> ~email</li>"
                               "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                               "You can obtain source code for RSS Guard from its website."
-                              "<br><br><br>Copyright © 2011-%3 %4</body>").arg(APP_EMAIL,
+                              "<br><br><br>Copyrigh (C) 2011-%3 %4</body>").arg(APP_EMAIL,
                                                                                APP_URL,
                                                                                QString::number(QDateTime::currentDateTime().date().year()),
                                                                                APP_AUTHOR));

@@ -176,8 +176,8 @@
         <translation>Informace o autorech nebyly nalezeny.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright Â© 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webová stránka&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy aplikace lze získat z jejího web.u&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright © 2011-%3 %4&lt;/body&gt;</translation>
+        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
+        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webová stránka&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy aplikace lze získat z jejího web.u&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -675,97 +675,99 @@
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Některá kritická nastavení se změnila a pro jejich aplikování je třeba restartovat aplikaci.</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kritická nastavení změněna</translation>
     </message>
     <message>
         <source>List of changes:
  %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam změn:
+ %1.</translation>
     </message>
     <message>
         <source>Problem with application restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Problém s restartováním aplikace</translation>
     </message>
     <message>
         <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikaci se nepodařilo restartovat. Prosím, restartuje ji manuálně.</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály &amp; zprávy</translation>
     </message>
     <message utf8="true">
         <source> • some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"></translation>
+        <translation> • některé klávesové zkratky nejsou unikátní</translation>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Některá kritická nastavení nejsou vyplněna. Musíte je opravit než bude možné dialog potvrdit.</translation>
     </message>
     <message>
         <source>List of errors:
  %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam chyb:
+ %1.</translation>
     </message>
     <message utf8="true">
         <source> • language changed</source>
-        <translation type="unfinished"></translation>
+        <translation> • jazyk změněn</translation>
     </message>
     <message utf8="true">
         <source> • icon theme changed</source>
-        <translation type="unfinished"></translation>
+        <translation> • téma ikon změněno</translation>
     </message>
     <message utf8="true">
         <source> • skin changed</source>
-        <translation type="unfinished"></translation>
+        <translation> • skin změněn</translation>
     </message>
     <message>
         <source>Feeds</source>
-        <translation type="unfinished">Kanály</translation>
+        <translation>Kanály</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Zprávy</translation>
     </message>
     <message>
         <source>External web browser for message viewing</source>
-        <translation type="unfinished"></translation>
+        <translation>Externí prohlížeč pro náhled zpráv</translation>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Spouštěcí soubor</translation>
     </message>
     <message>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry spouštěče</translation>
     </message>
     <message>
         <source>use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>použít argumenty pro</translation>
     </message>
     <message>
         <source>select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>zvolte prohlížeč</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mějte na vědomí, že &quot;%1&quot; (bez uvozovek) je zástupný symbol pro URL dané zprávy.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit spouštěč webového externího prohlížeče</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Spouštěče (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
@@ -866,47 +868,47 @@
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Id zprávy.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"></translation>
+        <translation>Je zpráva přečtená?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Je zpráva smazaná?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"></translation>
+        <translation>Je zpráva důležitá?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Id kanálu, ke kterému zpráva náleží.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadpis zprávy.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Url zprávy.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor zprávy.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum vytvoření zprávy.</translation>
     </message>
     <message>
         <source>Date of the most recent update of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum poslední aktualizace zprávy.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsah zprávy.</translation>
     </message>
 </context>
 <context>
@@ -917,11 +919,11 @@
     </message>
     <message>
         <source>External browser not set</source>
-        <translation type="unfinished"></translation>
+        <translation>Externí prohlížeč nenastaven</translation>
     </message>
     <message>
         <source>External browser is not set, head to application settings and set it up to use this feature.</source>
-        <translation type="unfinished"></translation>
+        <translation>Externí prohlížeč není nastavení, nastavte jej v nastavení aplikace.</translation>
     </message>
 </context>
 <context>
