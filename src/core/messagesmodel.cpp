@@ -33,7 +33,7 @@ MessagesModel::~MessagesModel() {
 }
 
 bool MessagesModel::submitAll() {
-  qFatal("Submittting changes via model is not allowed.");
+  qFatal("Submitting changes via model is not allowed.");
   return false;
 }
 
@@ -51,7 +51,6 @@ void MessagesModel::fetchAll() {
 
 void MessagesModel::setupFonts() {
   m_normalFont = QtSingleApplication::font("MessagesView");
-
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
 }
@@ -103,8 +102,8 @@ void MessagesModel::setupHeaderData() {
                    tr("Date of the most recent update of the message.") << tr("Contents of the message.");
 }
 
-Qt::ItemFlags MessagesModel::flags(const QModelIndex &idx) const {
-  Q_UNUSED(idx)
+Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
+  Q_UNUSED(index)
 
 #if QT_VERSION >= 0x050000
   if (m_isInEditingMode) {
@@ -123,39 +122,38 @@ QVariant MessagesModel::data(int row, int column, int role) const {
   return data(index(row, column), role);
 }
 
-QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
+QVariant MessagesModel::data(const QModelIndex &index, int role) const {
   switch (role) {
     // Human readable data for viewing.
     case Qt::DisplayRole: {
-      int index_column = idx.column();
+      int index_column = index.column();
       if (index_column != MSG_DB_IMPORTANT_INDEX &&
           index_column != MSG_DB_READ_INDEX) {
-        return QSqlTableModel::data(idx, role);
+        return QSqlTableModel::data(index, role);
       }
       else {
         return QVariant();
       }
     }
 
-      // Return RAW data for EditRole.
     case Qt::EditRole:
-      return QSqlTableModel::data(idx, role);
+      return QSqlTableModel::data(index, role);
 
     case Qt::FontRole:
-      return record(idx.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
+      return record(index.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
             m_normalFont :
             m_boldFont;
 
     case Qt::DecorationRole: {
-      int index_column = idx.column();
+      int index_column = index.column();
 
       if (index_column == MSG_DB_READ_INDEX) {
-        return record(idx.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
+        return record(index.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
               m_readIcon :
               m_unreadIcon;
       }
       else if (index_column == MSG_DB_IMPORTANT_INDEX) {
-        return record(idx.row()).value(MSG_DB_IMPORTANT_INDEX).toInt() == 1 ?
+        return record(index.row()).value(MSG_DB_IMPORTANT_INDEX).toInt() == 1 ?
               m_favoriteIcon :
               QVariant();
       }
@@ -169,13 +167,14 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   }
 }
 
-bool MessagesModel::setData(const QModelIndex &idx, const QVariant &value, int role) {
-
+bool MessagesModel::setData(const QModelIndex &index,
+                            const QVariant &value,
+                            int role) {
 #if QT_VERSION >= 0x050000
   m_isInEditingMode = true;
 #endif
 
-  bool set_data_result = QSqlTableModel::setData(idx, value, role);
+  bool set_data_result = QSqlTableModel::setData(index, value, role);
 
 #if QT_VERSION >= 0x050000
   m_isInEditingMode = false;
@@ -184,9 +183,17 @@ bool MessagesModel::setData(const QModelIndex &idx, const QVariant &value, int r
   return set_data_result;
 }
 
-bool MessagesModel::setMessageRead(int row_index, int read) {
-  if (!database().transaction()) {
-    qWarning("Starting transaction for batch message read change.");
+bool MessagesModel::setMessageRead(int row_index, int read) {  
+  if (data(row_index, MSG_DB_READ_INDEX, Qt::EditRole).toInt() == read) {
+    // Read status is the same is the one currently set.
+    // In that case, no extra work is needed.
+    return true;
+  }
+
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for message read change.");
     return false;
   }
 
@@ -196,15 +203,19 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
+    qDebug("Setting of new data to the model failed for message read change.");
+
+    db_handle.rollback();
     return false;
   }
 
-  QSqlDatabase db_handle = database();
   int message_id;
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare("UPDATE messages SET read = :read "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
+
+    db_handle.rollback();
     return false;
   }
 
@@ -227,9 +238,11 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
   }
 }
 
-bool MessagesModel::switchMessageImportance(int row_index) { 
-  if (!database().transaction()) {
-    qWarning("Starting transaction for batch message importance switch failed.");
+bool MessagesModel::switchMessageImportance(int row_index) {
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for message importance switch failed.");
     return false;
   }
 
@@ -243,15 +256,19 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
+    qDebug("Setting of new data to the model failed for message importance change.");
+
+    db_handle.rollback();
     return false;
   }
 
-  QSqlDatabase db_handle = database();
   int message_id;
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
+
+    db_handle.rollback();
     return false;
   }
 
@@ -275,17 +292,20 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 }
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
-  if (!database().transaction()) {
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
     qWarning("Starting transaction for batch message importance switch failed.");
     return false;
   }
 
-  QSqlDatabase db_handle = database();
   int message_id, importance;
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
+
+    db_handle.rollback();
     return false;
   }
 
@@ -312,17 +332,20 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 }
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
-  if (!database().transaction()) {
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
     qWarning("Starting transaction for batch message deletion.");
     return false;
   }
 
-  QSqlDatabase db_handle = database();
   int message_id;
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare("UPDATE messages SET deleted = :deleted "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message deletion.");
+
+    db_handle.rollback();
     return false;
   }
 
@@ -346,17 +369,20 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 }
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
-  if (!database().transaction()) {
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
     qWarning("Starting transaction for batch message read change.");
     return false;
   }
 
-  QSqlDatabase db_handle = database();
   int message_id;
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare("UPDATE messages SET read = :read "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
+
+    db_handle.rollback();
     return false;
   }
 

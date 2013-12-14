@@ -13,16 +13,16 @@
 // NOTE: This is primarily used for transfering data
 // to WebBrowser responsible for displaying of messages.
 class Message {
+    friend class WebBrowser;
+    friend class MessagesModel;
+    friend class MessagesView;
+
   private:
     QString m_title;
     QString m_url;
     QString m_author;
     QString m_contents;
     QDateTime m_updated;
-
-    friend class WebBrowser;
-    friend class MessagesModel;
-    friend class MessagesView;
 };
 
 
@@ -35,11 +35,11 @@ class MessagesModel : public QSqlTableModel {
     virtual ~MessagesModel();
 
     // Model implementation.
-    bool setData(const QModelIndex &idx, const QVariant &value, int role = Qt::EditRole);
-    QVariant data(const QModelIndex &idx, int role = Qt::DisplayRole) const;
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    Qt::ItemFlags flags(const QModelIndex &idx) const;
+    Qt::ItemFlags flags(const QModelIndex &index) const;
 
   public:
     // Sets up all icons which are used directly by this model.

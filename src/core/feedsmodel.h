@@ -31,12 +31,15 @@ class FeedsModel : public QAbstractItemModel {
 
     void loadFromDatabase();
 
+    // Returns all categories.
     QHash<int, FeedsModelCategory*> getCategories();
+
+    // Returns categories from the subtree with given root node.
     QHash<int, FeedsModelCategory*> getCategories(FeedsModelRootItem *root);
 
-    bool addFeed(FeedsModelFeed *feed, int parent_id);
-
   protected:
+    // Takes lists of feeds/categories and assembles
+    // them into the tree structure.
     void assembleCategories(CategoryAssignment categories);
     void assembleFeeds(FeedAssignment feeds);
 
