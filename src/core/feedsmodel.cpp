@@ -263,9 +263,13 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
       // This is top-level feed, add it to the root item.
       m_rootItem->appendChild(feed.second);
     }
-    else {
+    else if (categories.contains(feed.first)) {
       // This feed belongs to some category.
       categories.value(feed.first)->appendChild(feed.second);
+    }
+    else {
+      qWarning("Feed '%s' is loose, skipping it.",
+               qPrintable(feed.second->title()));
     }
   }
 }

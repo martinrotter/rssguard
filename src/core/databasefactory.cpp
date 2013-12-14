@@ -88,7 +88,7 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("Databaza initialization file '%s' was not found. Database is uninitialized.",
+        qFatal("Database initialization file '%s' was not found. Database is uninitialized.",
                APP_DB_INIT_FILE);
       }
 
