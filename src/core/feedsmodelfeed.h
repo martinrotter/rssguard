@@ -35,8 +35,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
     void setTitle(const QString &title);
 
   protected:
-    QString m_title;
     Type m_type;
+    QString m_title;
     int m_totalCount;
     int m_unreadCount;
 };
