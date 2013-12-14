@@ -35,3 +35,11 @@ FeedsModelCategory:: Type FeedsModelCategory::type() const {
 void FeedsModelCategory::setType(const Type &type) {
   m_type = type;
 }
+
+QString FeedsModelCategory::title() const {
+  return m_title;
+}
+
+void FeedsModelCategory::setTitle(const QString &title) {
+  m_title = title;
+}

@@ -6,6 +6,13 @@
 
 
 class FeedsModelRootItem;
+class FeedsModelCategory;
+class FeedsModelFeed;
+
+typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
+typedef QPair<int, FeedsModelCategory*> CategoryAssignmentItem;
+typedef QList<QPair<int, FeedsModelFeed*> > FeedAssignment;
+typedef QPair<int, FeedsModelFeed*> FeedAssignmentItem;
 
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
@@ -23,6 +30,15 @@ class FeedsModel : public QAbstractItemModel {
     int rowCount(const QModelIndex &parent) const;
 
     void loadFromDatabase();
+
+    QHash<int, FeedsModelCategory*> getCategories();
+    QHash<int, FeedsModelCategory*> getCategories(FeedsModelRootItem *root);
+
+    bool addFeed(FeedsModelFeed *feed, int parent_id);
+
+  protected:
+    void assembleCategories(CategoryAssignment categories);
+    void assembleFeeds(FeedAssignment feeds);
 
   private:
     FeedsModelRootItem *m_rootItem;

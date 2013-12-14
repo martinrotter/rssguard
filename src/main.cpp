@@ -30,7 +30,8 @@ int main(int argc, char *argv[]) {
   //: Name of language, e.g. English.
   QObject::tr("LANG_NAME");
   //: Abbreviation of language, e.g. en.
-  //: Use ISO 639-1 code here!
+  //: Use ISO 639-1 code here. They may be combined with ISO 3166-1 (alpha-2) codes.
+  //: Examples: "cs", "nl", "en", "cs_CZ", "en_GB", "en_US".
   QObject::tr("LANG_ABBREV");
   //: Version of your translation, e.g. 1.0.
   QObject::tr("LANG_VERSION");
@@ -60,13 +61,6 @@ int main(int argc, char *argv[]) {
     qDebug("Another instance of the application is already running. Notifying it.");
     return EXIT_SUCCESS;
   }
-
-  // Add 3rd party plugin directory to application PATH variable.
-  // This is useful for styles, encoders, ...
-  // This is probably not needed on Windows or Linux, not sure about Mac OS X.
-#if defined(Q_OS_MAC)
-  QtSingleApplication::addLibraryPath(APP_PLUGIN_PATH);
-#endif
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.

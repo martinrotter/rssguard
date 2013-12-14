@@ -1,6 +1,7 @@
 #include <QVariant>
 
 #include "core/defs.h"
+#include "gui/iconfactory.h"
 #include "gui/iconthemefactory.h"
 #include "core/feedsmodelstandardfeed.h"
 
@@ -17,8 +18,56 @@ void FeedsModelStandardFeed::setDescription(const QString &description) {
   m_description = description;
 }
 
-void FeedsModelStandardFeed::setTitle(const QString &title) {
-  m_title = title;
+FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord &record) {
+  FeedsModelStandardFeed *feed = new FeedsModelStandardFeed(NULL);
+
+  feed->setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
+  feed->setId(record.value(FDS_DB_ID_INDEX).toInt());
+  feed->setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
+  feed->setCreationDate(QDateTime::fromString(record.value(FDS_DB_DCREATED_INDEX).toString(),
+                                              Qt::ISODate));
+  feed->setIcon(IconFactory::fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+  feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
+  feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
+  feed->setLanguage(record.value(FDS_DB_LANGUAGE_INDEX).toString());
+
+  return feed;
+}
+
+QDateTime FeedsModelStandardFeed::creationDate() const {
+  return m_creationDate;
+}
+
+void FeedsModelStandardFeed::setCreationDate(const QDateTime &creation_date) {
+  m_creationDate = creation_date;
+}
+
+QString FeedsModelStandardFeed::encoding() const {
+  return m_encoding;
+}
+
+void FeedsModelStandardFeed::setEncoding(const QString &encoding) {
+  m_encoding = encoding;
+}
+
+QString FeedsModelStandardFeed::url() const {
+  return m_url;
+}
+
+void FeedsModelStandardFeed::setUrl(const QString &url) {
+  m_url = url;
+}
+
+QString FeedsModelStandardFeed::language() const {
+  return m_language;
+}
+
+void FeedsModelStandardFeed::setLanguage(const QString &language) {
+  m_language = language;
+}
+
+QString FeedsModelStandardFeed::description() const {
+  return m_description;
 }
 
 QVariant FeedsModelStandardFeed::data(int column, int role) const {

@@ -37,6 +37,8 @@ class DatabaseFactory : public QObject {
     QString getDatabasePath();
 
     // Database manipulators.
+
+    // NOTE: This returns OPENED database.
     QSqlDatabase addConnection(const QString &connection_name);
     QSqlDatabase getConnection(const QString &connection_name);
     void removeConnection(const QString &connection_name);

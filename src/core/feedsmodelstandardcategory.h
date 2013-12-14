@@ -20,20 +20,16 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
 
     QVariant data(int column, int role) const;
 
-    static FeedsModelStandardCategory *loadFromRecord(const QSqlRecord &record);
-
-    QString title() const;
-    void setTitle(const QString &title);
-
     QString description() const;
     void setDescription(const QString &description);
 
     QDateTime creationDate() const;
     void setCreationDate(const QDateTime &creation_date);
 
+    static FeedsModelStandardCategory *loadFromRecord(const QSqlRecord &record);
+
   private:
     QDateTime m_creationDate;
-    QString m_title;
     QString m_description;
 
 };

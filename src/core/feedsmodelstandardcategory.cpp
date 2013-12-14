@@ -19,7 +19,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return "m_title";
+        return QString("%1%2").arg(m_title, "-C");
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
@@ -56,14 +56,6 @@ FeedsModelStandardCategory *FeedsModelStandardCategory::loadFromRecord(const QSq
   return category;
 }
 
-QString FeedsModelStandardCategory::title() const {
-  return m_title;
-}
-
-void FeedsModelStandardCategory::setTitle(const QString &title) {
-  m_title = title;
-}
-
 QString FeedsModelStandardCategory::description() const {
   return m_description;
 }
@@ -79,6 +71,3 @@ QDateTime FeedsModelStandardCategory::creationDate() const {
 void FeedsModelStandardCategory::setCreationDate(const QDateTime &creation_date) {
   m_creationDate = creation_date;
 }
-
-
-

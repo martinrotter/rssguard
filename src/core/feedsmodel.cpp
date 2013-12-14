@@ -9,6 +9,7 @@
 #include "core/defs.h"
 #include "core/databasefactory.h"
 #include "gui/iconthemefactory.h"
+#include "gui/iconfactory.h"
 
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
@@ -22,7 +23,7 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
                    tr("Counts of unread/all meesages.");
 
   loadFromDatabase();
-
+/*
   FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
   FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
   FeedsModelStandardFeed *feed1 = new FeedsModelStandardFeed();
@@ -46,11 +47,13 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 
   m_rootItem->appendChild(cat1);
   m_rootItem->appendChild(feed3);
+  */
 }
 
 FeedsModel::~FeedsModel() {
   qDebug("Destroying FeedsModel instance.");
   delete m_rootItem;
+  DatabaseFactory::getInstance()->removeConnection(objectName());
 }
 
 QVariant FeedsModel::data(const QModelIndex &index, int role) const {
@@ -161,15 +164,13 @@ int FeedsModel::columnCount(const QModelIndex &parent) const {
 }
 
 void FeedsModel::loadFromDatabase() {
+  qDeleteAll(m_rootItem->m_childItems);
+
   QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
-  QList<QPair<int, FeedsModelCategory*> > categories;
-  QList<QPair<int, FeedsModelFeed*> > feeds;
+  CategoryAssignment categories;
+  FeedAssignment feeds;
 
-  if (!database.open()) {
-    qFatal("Database was NOT opened. Delivered error message: '%s'",
-           qPrintable(database.lastError().text()));
-  }
-
+  // Obtain data for categories from the database.
   QSqlQuery query_categories = database.exec("SELECT * FROM Categories;");
 
   if (query_categories.lastError().isValid()) {
@@ -182,7 +183,7 @@ void FeedsModel::loadFromDatabase() {
 
     switch (type) {
       case FeedsModelCategory::Standard: {
-        QPair<int, FeedsModelCategory*> pair;
+        CategoryAssignmentItem pair;
         pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
         pair.second = FeedsModelStandardCategory::loadFromRecord(query_categories.record());
 
@@ -213,17 +214,82 @@ void FeedsModel::loadFromDatabase() {
       case FeedsModelFeed::StandardAtom:
       case FeedsModelFeed::StandardRdf:
       case FeedsModelFeed::StandardRss: {
-        QPair<int, FeedsModelFeed*> pair;
+        FeedAssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        // TODO: pokračovat tady, ve stejnym stylu jako u kategorii
+        pair.second = FeedsModelStandardFeed::loadFromRecord(query_feeds.record());
+        pair.second->setType(type);
+
+        feeds << pair;
         break;
       }
-
 
       default:
         break;
     }
-
   }
 
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
+}
+
+QHash<int, FeedsModelCategory *> FeedsModel::getCategories(FeedsModelRootItem *root) {
+  QHash<int, FeedsModelCategory*> categories;
+
+  foreach (FeedsModelRootItem *child, root->m_childItems) {
+    FeedsModelCategory *converted = dynamic_cast<FeedsModelCategory*>(child);
+
+    if (converted != NULL) {
+      // This child is some kind of category.
+      categories.insert(converted->id(), converted);
+
+      // Moreover, add all child categories of this category.
+      categories.unite(getCategories(converted));
+    }
+  }
+
+  return categories;
+}
+
+QHash<int, FeedsModelCategory *> FeedsModel::getCategories() {
+  return getCategories(m_rootItem);
+}
+
+void FeedsModel::assembleFeeds(FeedAssignment feeds) {
+  QHash<int, FeedsModelCategory*> categories = getCategories();
+
+  foreach (FeedAssignmentItem feed, feeds) {
+    if (feed.first == NO_PARENT_CATEGORY) {
+      // This is top-level feed, add it to the root item.
+      m_rootItem->appendChild(feed.second);
+    }
+    else {
+      // This feed belongs to some category.
+      categories.value(feed.first)->appendChild(feed.second);
+    }
+  }
+}
+
+void FeedsModel::assembleCategories(CategoryAssignment categories) {
+  QHash<int, FeedsModelRootItem*> assignments;
+  assignments.insert(-1, m_rootItem);
+
+  // Add top-level categories.
+  while (!categories.isEmpty()) {
+    for (int i = 0; i < categories.size(); i++) {
+      if (assignments.contains(categories.at(i).first)) {
+        // Parent category of this category is already added.
+        assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
+
+        // Now, added category can be parent for another categories, add it.
+        assignments.insert(categories.at(i).second->id(),
+                           categories.at(i).second);
+
+        // Remove the category from the list, because it was
+        // added to the final collection.
+        categories.removeAt(i);
+        i--;
+      }
+    }
+  }
 }

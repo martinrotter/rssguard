@@ -26,6 +26,8 @@
 #define MAX_ZOOM_FACTOR     10.0
 #define ICON_SIZE_SETTINGS  16
 #define DATABASE_DRIVER     "QSQLITE"
+#define NO_PARENT_FEED      -1
+#define NO_PARENT_CATEGORY  -1
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"

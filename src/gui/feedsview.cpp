@@ -18,6 +18,11 @@ FeedsView::~FeedsView() {
   qDebug("Destroying FeedsView instance.");
 }
 
+void FeedsView::setSortingEnabled(bool enable) {
+  QTreeView::setSortingEnabled(enable);
+  header()->setSortIndicatorShown(false);
+}
+
 void FeedsView::setupAppearance() {
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.
@@ -33,6 +38,8 @@ void FeedsView::setupAppearance() {
   setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
+  setSortingEnabled(true);
+  sortByColumn(0, Qt::AscendingOrder);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);

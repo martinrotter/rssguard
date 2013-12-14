@@ -2,6 +2,7 @@
 #define FEEDSMODELSTANDARDFEED_H
 
 #include <QDateTime>
+#include <QSqlRecord>
 
 #include "core/feedsmodelfeed.h"
 
@@ -17,11 +18,25 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
     QVariant data(int column, int role) const;
 
-    void setTitle(const QString &title);
+    // Various getters/setters.
+    QString description() const;
     void setDescription(const QString &description);
 
+    QDateTime creationDate() const;
+    void setCreationDate(const QDateTime &creation_date);
+
+    QString encoding() const;
+    void setEncoding(const QString &encoding);
+
+    QString url() const;
+    void setUrl(const QString &url);
+
+    QString language() const;
+    void setLanguage(const QString &language);
+
+    static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
+
   private:
-    QString m_title;
     QDateTime m_creationDate;
     QString m_encoding;
     QString m_url;

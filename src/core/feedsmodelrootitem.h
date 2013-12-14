@@ -8,6 +8,8 @@
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
 class FeedsModelRootItem {
+    friend class FeedsModel;
+
   public:
     // Constructors and destructors.
     explicit FeedsModelRootItem(FeedsModelRootItem *parent_item = NULL);

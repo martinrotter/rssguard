@@ -14,6 +14,8 @@ class FeedsView : public QTreeView {
     // Constructors and destructors.
     explicit FeedsView(QWidget *parent = 0);
     virtual ~FeedsView();
+
+    void setSortingEnabled(bool enable);
     
   protected:
     void setupAppearance();
