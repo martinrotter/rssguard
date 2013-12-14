@@ -43,3 +43,19 @@ QString FeedsModelCategory::title() const {
 void FeedsModelCategory::setTitle(const QString &title) {
   m_title = title;
 }
+
+QString FeedsModelCategory::description() const {
+  return m_description;
+}
+
+void FeedsModelCategory::setDescription(const QString &description) {
+  m_description = description;
+}
+
+QDateTime FeedsModelCategory::creationDate() const {
+  return m_creationDate;
+}
+
+void FeedsModelCategory::setCreationDate(const QDateTime &creation_date) {
+  m_creationDate = creation_date;
+}

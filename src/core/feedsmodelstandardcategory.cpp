@@ -43,6 +43,13 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
   }
 }
 
+void FeedsModelStandardCategory::update() {
+  // Update all children.
+  foreach (FeedsModelRootItem *child, m_childItems) {
+    child->update();
+  }
+}
+
 FeedsModelStandardCategory *FeedsModelStandardCategory::loadFromRecord(const QSqlRecord &record) {
   FeedsModelStandardCategory *category = new FeedsModelStandardCategory(NULL);
 
@@ -54,20 +61,4 @@ FeedsModelStandardCategory *FeedsModelStandardCategory::loadFromRecord(const QSq
   category->setIcon(IconFactory::fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 
   return category;
-}
-
-QString FeedsModelStandardCategory::description() const {
-  return m_description;
-}
-
-void FeedsModelStandardCategory::setDescription(const QString &description) {
-  m_description = description;
-}
-
-QDateTime FeedsModelStandardCategory::creationDate() const {
-  return m_creationDate;
-}
-
-void FeedsModelStandardCategory::setCreationDate(const QDateTime &creation_date) {
-  m_creationDate = creation_date;
 }

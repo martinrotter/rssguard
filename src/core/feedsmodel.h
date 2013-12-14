@@ -22,6 +22,7 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
+    // Model implementation.
     QVariant data(const QModelIndex &index, int role) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
@@ -29,6 +30,10 @@ class FeedsModel : public QAbstractItemModel {
     int columnCount(const QModelIndex &parent) const;
     int rowCount(const QModelIndex &parent) const;
 
+    // Returns feed/category which lies at the specified index.
+    FeedsModelRootItem *itemForIndex(const QModelIndex &index);
+
+    // Loads feed/categories from the database.
     void loadFromDatabase();
 
     // Returns all categories.

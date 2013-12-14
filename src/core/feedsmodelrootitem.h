@@ -15,6 +15,7 @@ class FeedsModelRootItem {
     explicit FeedsModelRootItem(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelRootItem();
 
+    // Basic operations.
     virtual void setParent(FeedsModelRootItem *parent_item);
     virtual FeedsModelRootItem *parent();
     virtual FeedsModelRootItem *child(int row);
@@ -24,11 +25,17 @@ class FeedsModelRootItem {
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
 
+    // Each item offers "counts" of messages.
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
+    // Each item can be "updated".
+    virtual void update();
+
+    // Each item has icon.
     void setIcon(const QIcon &icon);
 
+    // Each item has some kind of id.
     int id() const;
     void setId(int id);
 
@@ -37,7 +44,6 @@ class FeedsModelRootItem {
     QIcon m_icon;
     QList<FeedsModelRootItem*> m_childItems;
     FeedsModelRootItem *m_parentItem;
-
 };
 
 #endif // FEEDMODELROOTITEM_H

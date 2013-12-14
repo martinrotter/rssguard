@@ -18,20 +18,11 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
     explicit FeedsModelStandardCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelStandardCategory();
 
+    void update();
+
     QVariant data(int column, int role) const;
 
-    QString description() const;
-    void setDescription(const QString &description);
-
-    QDateTime creationDate() const;
-    void setCreationDate(const QDateTime &creation_date);
-
     static FeedsModelStandardCategory *loadFromRecord(const QSqlRecord &record);
-
-  private:
-    QDateTime m_creationDate;
-    QString m_description;
-
 };
 
 #endif // FEEDSMODELSTANDARDCATEGORY_H

@@ -20,13 +20,14 @@ class FeedsModelFeed : public FeedsModelRootItem {
     explicit FeedsModelFeed(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelFeed();
 
+    // Returns 0, feeds have no children.
     int childCount() const;
 
+    // Getters/setters for count of messages.
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
-    void setCountOfAllMessages(int count_total);
-    void setCountOfUnreadMessages(int count_unread);
 
+    // Other getters/setters.
     Type type() const;
     void setType(const Type &type);
 

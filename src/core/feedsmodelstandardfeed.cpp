@@ -97,3 +97,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       return QVariant();
   }
 }
+
+void FeedsModelStandardFeed::update() {
+  // TODO: Perform fetching of new messages.
+}

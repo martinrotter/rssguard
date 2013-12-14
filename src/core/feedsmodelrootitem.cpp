@@ -20,6 +20,9 @@ void FeedsModelRootItem::setParent(FeedsModelRootItem *parent_item) {
   m_parentItem = parent_item;
 }
 
+void FeedsModelRootItem::update() {
+}
+
 FeedsModelRootItem *FeedsModelRootItem::child(int row) {
   return m_childItems.value(row);
 }

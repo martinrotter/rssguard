@@ -10,18 +10,13 @@
 
 
 // Represents single message.
-// NOTE: This is primarily used for transfering data
-// to WebBrowser responsible for displaying of messages.
 class Message {
-    friend class WebBrowser;
-    friend class MessagesModel;
-    friend class MessagesView;
-
-  private:
+  public:
     QString m_title;
     QString m_url;
     QString m_author;
     QString m_contents;
+    QDateTime m_created;
     QDateTime m_updated;
 };
 

@@ -45,3 +45,7 @@ QString TextFactory::shorten(const QString &input, int text_length_limit) {
     return input;
   }
 }
+
+QString TextFactory::stripTags(QString text) {
+  return text.remove(QRegExp("<[^>]*>"));
+}

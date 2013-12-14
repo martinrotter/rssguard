@@ -18,6 +18,9 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
     QVariant data(int column, int role) const;
 
+    // Perform fetching of new messages.
+    void update();
+
     // Various getters/setters.
     QString description() const;
     void setDescription(const QString &description);

@@ -1,3 +1,8 @@
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+
+#include "core/databasefactory.h"
 #include "core/feedsmodelfeed.h"
 
 
@@ -13,21 +18,12 @@ int FeedsModelFeed::childCount() const {
   return 0;
 }
 
-
 int FeedsModelFeed::countOfAllMessages() const {
   return m_totalCount;
 }
 
 int FeedsModelFeed::countOfUnreadMessages() const {
   return m_unreadCount;
-}
-
-void FeedsModelFeed::setCountOfAllMessages(int count_total) {
-  m_totalCount = count_total;
-}
-
-void FeedsModelFeed::setCountOfUnreadMessages(int count_unread) {
-  m_unreadCount = count_unread;
 }
 
 FeedsModelFeed::Type FeedsModelFeed::type() const {

@@ -163,6 +163,11 @@ int FeedsModel::columnCount(const QModelIndex &parent) const {
   }
 }
 
+FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
+  FeedsModelRootItem *item = static_cast<FeedsModelRootItem*>(index.internalPointer());
+  return item;
+}
+
 void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->m_childItems);
 
