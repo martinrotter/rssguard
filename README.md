@@ -22,4 +22,4 @@ You need to compile and install RSS Guard before you can use it. Basic steps are
 cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX="C:\Program Files\rssguard" -DUSE_QT_5=ON
 make install
 ```
-This compiles and installs RSS Guard using Qt 5 on Windows machines.
+This compiles and installs RSS Guard using Qt 5 on Windows machines. For further information head to CMakeLists.txt file.
