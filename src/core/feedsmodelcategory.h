@@ -23,6 +23,9 @@ class FeedsModelCategory : public FeedsModelRootItem {
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelCategory();
 
+    // Counts of messages.
+    // NOTE: Counts of messages in categories include
+    // counts of messages from all children.
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 

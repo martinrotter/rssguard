@@ -24,6 +24,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
     int childCount() const;
 
     // Getters/setters for count of messages.
+    // NOTE: For feeds, counts are stored internally
+    // and can be updated from the database.
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 

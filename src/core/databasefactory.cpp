@@ -72,6 +72,9 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
            qPrintable(database.lastError().text()));
   }
   else {
+    // TODO: smazat QSQLDatabase::exec() všude
+    // a nahradit jej funkcí QSQLquery::exec()
+
     database.exec("PRAGMA encoding = \"UTF-8\"");
     database.exec("PRAGMA synchronous = OFF");
     database.exec("PRAGMA journal_mode = MEMORY");

@@ -18,11 +18,13 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
     explicit FeedsModelStandardCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelStandardCategory();
 
+    // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
 
     // Performs update on all children of this category.
     void update();
 
+    // Loads particular "standard category" from given sql record.
     static FeedsModelStandardCategory *loadFromRecord(const QSqlRecord &record);
 };
 
