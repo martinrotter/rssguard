@@ -1,1 +1,4 @@
-RSS Guard is simple (yet powerful) feed reader. It deals with all generally used feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the mighty [Qt framework](http://qt-project.org/).
+RSS Guard is simple (yet powerful) feed reader. It deals with all generally used feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the mighty [Qt framework][qt-framework].
+
+
+[qt-framework]: http://qt-project.org
