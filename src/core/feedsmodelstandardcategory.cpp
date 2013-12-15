@@ -17,12 +17,30 @@ FeedsModelStandardCategory::~FeedsModelStandardCategory() {
 
 QVariant FeedsModelStandardCategory::data(int column, int role) const {
   switch (role) {
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return QObject::tr("%1\n\n"
+                           "Category type: standard\n"
+                           "Creation date: %2").arg(m_title,
+                                                      m_creationDate.toString(Qt::DefaultLocaleShortDate));
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        // TODO: tady dat plural a singular
+        return QObject::tr("%1 unread messages.").arg(countOfUnreadMessages());
+      }
+      else {
+        return QVariant();
+      }
+
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return QString("%1%2").arg(m_title, "-C");
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
+      }
+      else {
+        return QVariant();
       }
 
     case Qt::DecorationRole:
