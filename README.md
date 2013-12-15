@@ -19,13 +19,14 @@ Installation
 ------------
 You need to compile and install RSS Guard before you can use it. Basic steps are really simple
 ```
-cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX="C:\Program Files\rssguard" -DUSE_QT_5=ON
+cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX="C:\Program Files\rssguard"
 make install
 ```
-This compiles and installs RSS Guard using Qt 5 on Windows machines. For further information head to [CMakeLists.txt](https://github.com/martinrotter/rssguard/blob/master/CMakeLists.txt) file.
+This compiles and installs RSS Guard using Qt 4 on Windows machines. Qt 5 can be used too. For further information head to [CMakeLists.txt](https://github.com/martinrotter/rssguard/blob/master/CMakeLists.txt) file.
 
 Other information
 -----------------
+ * Binaries will be builded for Windows platform. If you want to build binaries for your platform by yourself, I can support you. **File an issue request in that case. 
  * If you want to have some feature/ehancement implemented in RSS Guard, then **file an issue request**.
  * If you want to translate RSS Guard, then contact me or **file an issue request** too.
  * Make sure to read the Wiki.
