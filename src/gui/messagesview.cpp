@@ -180,6 +180,10 @@ void MessagesView::currentChanged(const QModelIndex &current,
   QTreeView::currentChanged(current, previous);
 }
 
+void MessagesView::loadFeeds(const QList<int> feed_ids) {
+  m_sourceModel->loadMessages(feed_ids);
+}
+
 void MessagesView::openSelectedSourceArticlesExternally() {
 
   QString browser = Settings::getInstance()->value(APP_CFG_MESSAGES,

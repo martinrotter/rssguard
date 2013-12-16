@@ -1,8 +1,10 @@
 #include <QHeaderView>
 
+#include "core/feedsmodelfeed.h"
 #include "gui/feedsview.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
+#include "core/feedsmodelrootitem.h"
 #include "core/defs.h"
 
 
@@ -47,11 +49,14 @@ void FeedsView::setupAppearance() {
 
 void FeedsView::selectionChanged(const QItemSelection &selected,
                                  const QItemSelection &deselected) {
-  QModelIndexList curr = selectionModel()->selectedRows();
-  QModelIndexList mapped = m_proxyModel->mapListToSource(curr);
+  QModelIndexList selection = selectionModel()->selectedRows();
+  QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
+  QList<FeedsModelFeed*> selected_feeds = m_sourceModel->feedsForIndexes(mapped_selection);
+  QList<int> feed_ids;
 
-  QList<FeedsModelFeed*> feeds = m_sourceModel->feedsForIndexes(mapped);
+  foreach (FeedsModelFeed *feed, selected_feeds) {
+    feed_ids << feed->id();
+  }
 
-
-  int a = 5;
+  emit feedsSelected(feed_ids);
 }

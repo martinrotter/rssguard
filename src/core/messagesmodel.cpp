@@ -66,8 +66,8 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
   }
 
   // TODO: Enable when time is right.
-  //setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(',')));
-  setFilter(QString("deleted = 0").arg(stringy_ids.join(",")));
+  setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(", ")));
+  //setFilter(QString("deleted = 0").arg(stringy_ids.join(",")));
   select();
   fetchAll();
 }
