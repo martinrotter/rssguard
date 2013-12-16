@@ -26,7 +26,7 @@ This compiles and installs RSS Guard using Qt 4 on Windows machines. Qt 5 can be
 
 Other information
 -----------------
- * Binaries will be builded for Windows platform. If you want to build binaries for your platform by yourself, I can support you. **File an issue request in that case. 
+ * Binaries will be builded for Windows platform. If you want to build binaries for your platform by yourself, I can support you. **File an issue request** in that case. 
  * If you want to have some feature/ehancement implemented in RSS Guard, then **file an issue request**.
  * If you want to translate RSS Guard, then contact me or **file an issue request** too.
  * Make sure to read the Wiki.
