@@ -19,6 +19,8 @@ class FeedsView : public QTreeView {
     
   protected:
     void setupAppearance();
+    void selectionChanged(const QItemSelection &selected,
+                          const QItemSelection &deselected);
 
   private:
     FeedsModel *m_sourceModel;

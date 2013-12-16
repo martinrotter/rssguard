@@ -8,6 +8,7 @@
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item), m_totalCount(0), m_unreadCount(0) {
+  m_kind = FeedsModelRootItem::Feed;
 }
 
 FeedsModelFeed::~FeedsModelFeed() {

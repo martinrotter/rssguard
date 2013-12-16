@@ -45,14 +45,15 @@ class FeedsModel : public QAbstractItemModel {
     // Returns feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
 
+    // Returns feed/category which lies at the specified index or
+    // null if index is invalid.
+    FeedsModelRootItem *itemForIndex(const QModelIndex &index);
+
   protected:
     // Loads feed/categories from the database.
     void loadFromDatabase();
 
     // TODO: Otestovat metody itemForIndex, feedsForIndex, feedsForIndexes.
-
-    // Returns feed/category which lies at the specified index.
-    FeedsModelRootItem *itemForIndex(const QModelIndex &index);
 
     // Takes lists of feeds/categories and assembles
     // them into the tree structure.

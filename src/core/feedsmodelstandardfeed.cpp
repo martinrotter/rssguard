@@ -8,7 +8,6 @@
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)
   : FeedsModelFeed(parent_item) {
-  m_kind = FeedsModelRootItem::Category;
 }
 
 FeedsModelStandardFeed::~FeedsModelStandardFeed() {

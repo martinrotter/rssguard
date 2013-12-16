@@ -7,6 +7,7 @@
 
 FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item) {
+  m_kind = FeedsModelRootItem::Category;
 }
 
 FeedsModelCategory::~FeedsModelCategory() {

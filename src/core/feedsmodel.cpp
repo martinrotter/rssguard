@@ -23,7 +23,7 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
                    tr("Counts of unread/all meesages.");
 
   loadFromDatabase();
-/*
+  /*
   FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
   FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
   FeedsModelStandardFeed *feed1 = new FeedsModelStandardFeed();
@@ -164,8 +164,12 @@ int FeedsModel::columnCount(const QModelIndex &parent) const {
 }
 
 FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
-  FeedsModelRootItem *item = static_cast<FeedsModelRootItem*>(index.internalPointer());
-  return item;
+  if (index.isValid() && index.model() == this) {
+    return static_cast<FeedsModelRootItem*>(index.internalPointer());
+  }
+  else {
+    return NULL;
+  }
 }
 
 void FeedsModel::loadFromDatabase() {
@@ -244,11 +248,12 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
 
   switch (item->kind()) {
     case FeedsModelRootItem::Category:
+      // This item is a category, add all its child feeds.
       feeds.append(static_cast<FeedsModelCategory*>(item)->feeds());
       break;
 
     case FeedsModelRootItem::Feed:
-      // This item is feed (it SURELY subclasses FeedsModelFeed),add it.
+      // This item is feed (it SURELY subclasses FeedsModelFeed), add it.
       feeds.append(static_cast<FeedsModelFeed*>(item));
       break;
 
