@@ -33,11 +33,3 @@ FeedsModelFeed::Type FeedsModelFeed::type() const {
 void FeedsModelFeed::setType(const Type &type) {
   m_type = type;
 }
-
-void FeedsModelFeed::setTitle(const QString &title) {
-  m_title = title;
-}
-
-QString FeedsModelFeed::title() const {
-  return m_title;
-}

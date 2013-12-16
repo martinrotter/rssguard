@@ -8,6 +8,7 @@
 
 FeedsModelStandardCategory::FeedsModelStandardCategory(FeedsModelRootItem *parent_item)
   : FeedsModelCategory(parent_item) {
+  m_kind = FeedsModelRootItem::Category;
   m_type = Standard;
 }
 

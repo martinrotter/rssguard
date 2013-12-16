@@ -33,9 +33,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     Type type() const;
     void setType(const Type &type);
 
-    QString title() const;
-    void setTitle(const QString &title);
-
     QString description() const;
     void setDescription(const QString &description);
 
@@ -44,7 +41,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
 
   protected:
     Type m_type;
-    QString m_title;
     QDateTime m_creationDate;
     QString m_description;
 };

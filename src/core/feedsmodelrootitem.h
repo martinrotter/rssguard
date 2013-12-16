@@ -11,6 +11,12 @@ class FeedsModelRootItem {
     friend class FeedsModel;
 
   public:
+    enum Kind {
+      RootItem,
+      Feed,
+      Category
+    };
+
     // Constructors and destructors.
     explicit FeedsModelRootItem(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelRootItem();
@@ -32,6 +38,8 @@ class FeedsModelRootItem {
     // Each item can be "updated".
     virtual void update();
 
+    virtual Kind kind() const;
+
     // Each item has icon.
     void setIcon(const QIcon &icon);
 
@@ -39,7 +47,12 @@ class FeedsModelRootItem {
     int id() const;
     void setId(int id);
 
+    QString title() const;
+    void setTitle(const QString &title);
+
   protected:
+    Kind m_kind;
+    QString m_title;
     int m_id;
     QIcon m_icon;
     QList<FeedsModelRootItem*> m_childItems;

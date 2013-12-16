@@ -4,7 +4,7 @@
 
 
 FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
-  : m_parentItem(parent_item) {
+  : m_kind(FeedsModelRootItem::RootItem), m_parentItem(parent_item) {
 }
 
 FeedsModelRootItem::~FeedsModelRootItem() {
@@ -21,6 +21,10 @@ void FeedsModelRootItem::setParent(FeedsModelRootItem *parent_item) {
 }
 
 void FeedsModelRootItem::update() {
+}
+
+FeedsModelRootItem::Kind FeedsModelRootItem::kind() const {
+  return m_kind;
 }
 
 FeedsModelRootItem *FeedsModelRootItem::child(int row) {
@@ -75,3 +79,12 @@ int FeedsModelRootItem::id() const {
 void FeedsModelRootItem::setId(int id) {
   m_id = id;
 }
+
+QString FeedsModelRootItem::title() const {
+  return m_title;
+}
+
+void FeedsModelRootItem::setTitle(const QString &title) {
+  m_title = title;
+}
+

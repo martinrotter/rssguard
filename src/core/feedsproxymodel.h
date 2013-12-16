@@ -14,6 +14,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     explicit FeedsProxyModel(QObject *parent = 0);
     virtual ~FeedsProxyModel();
 
+    // Access to the source model.
     FeedsModel *sourceModel();
 
   protected:

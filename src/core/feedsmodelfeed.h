@@ -33,12 +33,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
     Type type() const;
     void setType(const Type &type);
 
-    QString title() const;
-    void setTitle(const QString &title);
-
   protected:
     Type m_type;
-    QString m_title;
     int m_totalCount;
     int m_unreadCount;
 };
