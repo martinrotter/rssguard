@@ -37,6 +37,7 @@ void FeedsModelRootItem::appendChild(FeedsModelRootItem *child) {
 }
 
 int FeedsModelRootItem::columnCount() const {
+  // FeedsModel offers exactly two columns.
   return 2;
 }
 
@@ -45,6 +46,7 @@ int FeedsModelRootItem::row() const {
     return m_parentItem->m_childItems.indexOf(const_cast<FeedsModelRootItem*>(this));
   }
   else {
+    // This item has no parent. Therefore, its row index is 0.
     return 0;
   }
 }
@@ -57,6 +59,7 @@ QVariant FeedsModelRootItem::data(int column, int role) const {
   Q_UNUSED(column)
   Q_UNUSED(role)
 
+  // Do not return anything for the root item.
   return QVariant();
 }
 
@@ -88,3 +91,6 @@ void FeedsModelRootItem::setTitle(const QString &title) {
   m_title = title;
 }
 
+QList<FeedsModelRootItem *> FeedsModelRootItem::childItems() const {
+  return m_childItems;
+}

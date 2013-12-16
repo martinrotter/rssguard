@@ -169,7 +169,7 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
 }
 
 void FeedsModel::loadFromDatabase() {
-  qDeleteAll(m_rootItem->m_childItems);
+  qDeleteAll(m_rootItem->childItems());
 
   QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
   CategoryAssignment categories;
@@ -241,7 +241,7 @@ void FeedsModel::loadFromDatabase() {
 QHash<int, FeedsModelCategory *> FeedsModel::getCategories(FeedsModelRootItem *root) {
   QHash<int, FeedsModelCategory*> categories;
 
-  foreach (FeedsModelRootItem *child, root->m_childItems) {
+  foreach (FeedsModelRootItem *child, root->childItems()) {
     FeedsModelCategory *converted = dynamic_cast<FeedsModelCategory*>(child);
 
     if (converted != NULL) {
