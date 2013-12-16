@@ -22,6 +22,9 @@ class FeedsView : public QTreeView {
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 
+  signals:
+    void feedsSelected(const QList<int> feed_ids);
+
   private:
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;

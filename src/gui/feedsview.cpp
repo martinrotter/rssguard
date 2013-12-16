@@ -47,11 +47,11 @@ void FeedsView::setupAppearance() {
 
 void FeedsView::selectionChanged(const QItemSelection &selected,
                                  const QItemSelection &deselected) {
-    QModelIndexList curr = selectionModel()->selectedRows();
-    QModelIndexList mapped = m_proxyModel->mapListToSource(curr);
+  QModelIndexList curr = selectionModel()->selectedRows();
+  QModelIndexList mapped = m_proxyModel->mapListToSource(curr);
 
-    QList<FeedsModelFeed*> feeds = m_sourceModel->feedsForIndexes(mapped);
+  QList<FeedsModelFeed*> feeds = m_sourceModel->feedsForIndexes(mapped);
 
 
-    int a = 5;
+  int a = 5;
 }
