@@ -37,6 +37,7 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     QString language() const;
     void setLanguage(const QString &language);
 
+    // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
 
   private:

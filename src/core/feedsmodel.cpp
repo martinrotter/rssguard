@@ -238,6 +238,37 @@ void FeedsModel::loadFromDatabase() {
   assembleFeeds(feeds);
 }
 
+QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
+  QList<FeedsModelFeed*> feeds;
+  FeedsModelRootItem *item = itemForIndex(index);
+
+  switch (item->kind()) {
+    case FeedsModelRootItem::Category:
+      feeds.append(static_cast<FeedsModelCategory*>(item)->feeds());
+      break;
+
+    case FeedsModelRootItem::Feed:
+      // This item is feed (it SURELY subclasses FeedsModelFeed),add it.
+      feeds.append(static_cast<FeedsModelFeed*>(item));
+      break;
+
+    default:
+      break;
+  }
+
+  return feeds;
+}
+
+QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
+  QList<FeedsModelFeed*> feeds;
+
+  foreach (const QModelIndex &index, indexes) {
+    feeds.append(feedsForIndex(index));
+  }
+
+  return feeds;
+}
+
 QHash<int, FeedsModelCategory *> FeedsModel::getCategories(FeedsModelRootItem *root) {
   QHash<int, FeedsModelCategory*> categories;
 

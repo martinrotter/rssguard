@@ -11,9 +11,9 @@ class FeedsModelRootItem {
   public:
     // Describes the kind of the item.
     enum Kind {
-      RootItem,
-      Feed,
-      Category
+      RootItem  = 1001,
+      Feed      = 1002,
+      Category  = 1003
     };
 
     // Constructors and destructors.

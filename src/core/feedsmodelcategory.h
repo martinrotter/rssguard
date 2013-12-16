@@ -6,6 +6,8 @@
 #include "core/feedsmodelrootitem.h"
 
 
+class FeedsModelFeed;
+
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
@@ -22,6 +24,12 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // Constructors and destructors
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelCategory();
+
+    // TODO: Otestovat metodu feeds.
+
+    // Returns list of ALL feeds situated under this category.
+    // NOTE: This is recursive.
+    virtual QList<FeedsModelFeed*> feeds();
 
     // Counts of messages.
     // NOTE: Counts of messages in categories include

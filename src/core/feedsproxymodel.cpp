@@ -56,3 +56,23 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
     return false;
   }
 }
+
+QModelIndexList FeedsProxyModel::mapListFromSource(const QModelIndexList &indexes) {
+  QModelIndexList mapped_indexes;
+
+  foreach (const QModelIndex &index, indexes) {
+    mapped_indexes << mapFromSource(index);
+  }
+
+  return mapped_indexes;
+}
+
+QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {
+  QModelIndexList source_indexes;
+
+  foreach (const QModelIndex &index, indexes) {
+    source_indexes << mapToSource(index);
+  }
+
+  return source_indexes;
+}

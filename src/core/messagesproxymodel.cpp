@@ -52,4 +52,3 @@ QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &index
 
   return source_indexes;
 }
-
