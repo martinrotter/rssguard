@@ -130,25 +130,33 @@ QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
     return initialize(connection_name);
   }
   else {
-    QSqlDatabase database = QSqlDatabase::addDatabase(DATABASE_DRIVER,
-                                                      connection_name);
-    QDir db_path(getDatabasePath());
-    QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+    QSqlDatabase database;
 
-    // Setup database file path.
-    database.setDatabaseName(db_file.fileName());
+    if (QSqlDatabase::contains(connection_name)) {
+      qDebug("Connection '%s' is already active.",
+             qPrintable(connection_name));
 
-    if (!database.open()) {
+      // This database connection was added previously, no need to
+      // setup its properties.
+      database = QSqlDatabase::database(connection_name);
+    }
+    else {
+      database = QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
+
+      QDir db_path(getDatabasePath());
+      QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+
+      // Setup database file path.
+      database.setDatabaseName(db_file.fileName());
+    }
+
+    if (!database.isOpen() && !database.open()) {
       qFatal("Database was NOT opened. Delivered error message: '%s'",
              qPrintable(database.lastError().text()));
     }
 
     return database;
   }
-}
-
-QSqlDatabase DatabaseFactory::getConnection(const QString &connection_name) {
-  return QSqlDatabase::database(connection_name);
 }
 
 void DatabaseFactory::removeConnection(const QString &connection_name) {

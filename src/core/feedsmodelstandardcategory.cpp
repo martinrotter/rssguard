@@ -26,7 +26,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         // TODO: tady dat plural a singular
-        return QObject::tr("%1 unread messages.").arg(countOfUnreadMessages());
+        return QObject::tr("%n unread message(s).", "", countOfUnreadMessages());
       }
       else {
         return QVariant();

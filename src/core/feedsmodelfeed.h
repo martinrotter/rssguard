@@ -27,11 +27,18 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // NOTE: For feeds, counts are stored internally
     // and can be updated from the database.
     int countOfAllMessages() const;
+    void setCountOfAllMessages(int count);
+
     int countOfUnreadMessages() const;
+    void setCountOfUnreadMessages(int count);
 
     // Other getters/setters.
     Type type() const;
     void setType(const Type &type);
+
+  public slots:
+    // Updates counts of all/unread messages for this feed.
+    void updateCounts();
 
   protected:
     Type m_type;

@@ -40,7 +40,8 @@ class DatabaseFactory : public QObject {
 
     // NOTE: This returns OPENED database.
     QSqlDatabase addConnection(const QString &connection_name);
-    QSqlDatabase getConnection(const QString &connection_name);
+
+    // Removes connection.
     void removeConnection(const QString &connection_name);
 
     // Singleton getter.

@@ -23,8 +23,16 @@ int FeedsModelFeed::countOfAllMessages() const {
   return m_totalCount;
 }
 
+void FeedsModelFeed::setCountOfAllMessages(int count) {
+  m_totalCount = count;
+}
+
 int FeedsModelFeed::countOfUnreadMessages() const {
   return m_unreadCount;
+}
+
+void FeedsModelFeed::setCountOfUnreadMessages(int count) {
+  m_unreadCount = count;
 }
 
 FeedsModelFeed::Type FeedsModelFeed::type() const {
@@ -33,4 +41,8 @@ FeedsModelFeed::Type FeedsModelFeed::type() const {
 
 void FeedsModelFeed::setType(const Type &type) {
   m_type = type;
+}
+
+void FeedsModelFeed::updateCounts() {
+  //QSqlDatabase database = DatabaseFactory::getInstance()->
 }

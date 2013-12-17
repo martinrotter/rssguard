@@ -375,20 +375,8 @@
         <translation>Markeer geselecteerde feed(s)/categorie(ën) als gelezen.</translation>
     </message>
     <message>
-        <source>Mark all messages read.</source>
-        <translation>Markeer alle berichten als gelezen.</translation>
-    </message>
-    <message>
-        <source>Mark all messages unread.</source>
-        <translation>Markeer alle berichten als ongelezen.</translation>
-    </message>
-    <message>
         <source>Delete selected messages.</source>
         <translation>Verwijder geselecteerde berichten.</translation>
-    </message>
-    <message>
-        <source>Delete all messages.</source>
-        <translation>Verwijder alle berichten.</translation>
     </message>
     <message>
         <source>Add new &amp;feed</source>
@@ -425,6 +413,18 @@
     <message>
         <source>Add new &amp;category</source>
         <translation>Voeg nieuwe &amp;categorie toe</translation>
+    </message>
+    <message>
+        <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages from selected feeds unread. This does NOT take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -935,7 +935,7 @@
     </message>
     <message>
         <source>LANG_ABBREV</source>
-        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here!</extracomment>
+        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here. They may be combined with ISO 3166-1 (alpha-2) codes. Examples: &quot;cs&quot;, &quot;nl&quot;, &quot;en&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>nl</translation>
     </message>
     <message>
@@ -952,6 +952,20 @@
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
         <translation>elbert.pol@gmail.com</translation>
+    </message>
+    <message>
+        <source>%1
+
+Category type: standard
+Creation date: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

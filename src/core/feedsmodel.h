@@ -49,7 +49,7 @@ class FeedsModel : public QAbstractItemModel {
     // null if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index);
 
-  protected:
+  protected:    
     // Loads feed/categories from the database.
     void loadFromDatabase();
 

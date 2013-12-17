@@ -375,19 +375,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark all messages read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark all messages unread.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Delete selected messages.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete all messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -424,6 +412,18 @@
     </message>
     <message>
         <source>Add new &amp;category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages from selected feeds unread. This does NOT take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -935,7 +935,7 @@
     </message>
     <message>
         <source>LANG_ABBREV</source>
-        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here!</extracomment>
+        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here. They may be combined with ISO 3166-1 (alpha-2) codes. Examples: &quot;cs&quot;, &quot;nl&quot;, &quot;en&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>cs</translation>
     </message>
     <message>
@@ -952,6 +952,21 @@
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
         <translation>rotter.martinos@gmail.com</translation>
+    </message>
+    <message>
+        <source>%1
+
+Category type: standard
+Creation date: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
     </message>
 </context>
 <context>

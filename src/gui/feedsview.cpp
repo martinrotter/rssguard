@@ -49,6 +49,9 @@ void FeedsView::setupAppearance() {
 
 void FeedsView::selectionChanged(const QItemSelection &selected,
                                  const QItemSelection &deselected) {
+  Q_UNUSED(selected)
+  Q_UNUSED(deselected)
+
   QModelIndexList selection = selectionModel()->selectedRows();
   QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
   QList<FeedsModelFeed*> selected_feeds = m_sourceModel->feedsForIndexes(mapped_selection);
