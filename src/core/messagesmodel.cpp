@@ -58,18 +58,21 @@ void MessagesModel::setupFonts() {
 void MessagesModel::loadMessages(const QList<int> feed_ids) {
   // Conversion of parameter.
   m_currentFeeds = feed_ids;
-  QStringList stringy_ids;
-  stringy_ids.reserve(feed_ids.count());
 
-  foreach (int feed_id, feed_ids) {
+  setFilter(QString("feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")));
+  select();
+  fetchAll();
+}
+
+QStringList MessagesModel::textualFeeds() const {
+  QStringList stringy_ids;
+  stringy_ids.reserve(m_currentFeeds.count());
+
+  foreach (int feed_id, m_currentFeeds) {
     stringy_ids.append(QString::number(feed_id));
   }
 
-  // TODO: Enable when time is right.
-  setFilter(QString("feed IN (%1) AND deleted = 0").arg(stringy_ids.join(", ")));
-  //setFilter(QString("deleted = 0").arg(stringy_ids.join(",")));
-  select();
-  fetchAll();
+  return stringy_ids;
 }
 
 int MessagesModel::messageId(int row_index) const {
@@ -316,6 +319,9 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     query_delete_msg.bindValue(":id", message_id);
     query_delete_msg.bindValue(":important",
                                importance == 1 ? 0 : 1);
+
+    // TODO: dat u vsech funkci ty execy do ifu a kdyz
+    // vratijou false tak udela rollback a vratit funkci s hodnotou false.
     query_delete_msg.exec();
   }
 
@@ -414,7 +420,39 @@ bool MessagesModel::setAllMessagesDeleted(int deleted) {
 }
 
 bool MessagesModel::setAllMessagesRead(int read) {
-  return false;
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for all message read change.");
+    return false;
+  }
+
+  QSqlQuery query_read_msg(db_handle);
+  if (!query_read_msg.prepare(QString("UPDATE messages SET read = :read "
+                                        "WHERE feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")))) {
+    qWarning("Query preparation failed for message read change.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_read_msg.bindValue(":read", read);
+
+  if (!query_read_msg.exec()) {
+    qDebug("Query execution for all message read change failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // FULLY reload the model if underlying data is changed.
+    select();
+    fetchAll();
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
 }
 
 QVariant MessagesModel::headerData(int section,

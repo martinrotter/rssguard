@@ -338,10 +338,7 @@
     <string>Mark &amp;all messages read</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages read.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Mark all messages from selected feeds read. This does NOT take message filters into account.</string>
    </property>
   </action>
   <action name="m_actionMarkAllMessagesAsUnread">
@@ -349,10 +346,7 @@
     <string>Mark a&amp;ll messages unread</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages unread.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Mark all messages from selected feeds unread. This does NOT take message filters into account.</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
@@ -371,10 +365,7 @@
     <string>Dele&amp;te all messages</string>
    </property>
    <property name="toolTip">
-    <string>Delete all messages.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Delete all messages from selected feeds. This does NOT take message filters into account.</string>
    </property>
   </action>
   <action name="m_actionAddNewFeed">

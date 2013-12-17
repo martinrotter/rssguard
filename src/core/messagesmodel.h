@@ -81,13 +81,16 @@ class MessagesModel : public QSqlTableModel {
     // Loads messages of given feeds.
     void loadMessages(const QList<int> feed_ids);
 
-  private:
+  protected:
+    QStringList textualFeeds() const;
+
     // Sets up header data.
     void setupHeaderData();
 
     // Creates "normal" and "bold" fonts.
     void setupFonts();
 
+  private:
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
