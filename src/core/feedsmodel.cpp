@@ -24,8 +24,6 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 
   loadFromDatabase();
 
-  loadFromDatabase();
-
   /*
   FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
   FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();

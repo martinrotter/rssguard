@@ -1,12 +1,19 @@
 #ifndef SYSTEMFACTORY_H
 #define SYSTEMFACTORY_H
 
+#include <QObject>
+#include <QPointer>
 
-class SystemFactory {
+
+class SystemFactory : public QObject {
+    Q_OBJECT
+
   private:
-    explicit SystemFactory();
+    explicit SystemFactory(QObject *parent = 0);
 
   public:
+    virtual ~SystemFactory();
+
     // Specifies possible states of auto-start functionality.
     enum AutoStartStatus {
       Enabled,
@@ -15,18 +22,24 @@ class SystemFactory {
     };
 
     // Returns current status of auto-start function.
-    static SystemFactory::AutoStartStatus getAutoStartStatus();
+    SystemFactory::AutoStartStatus getAutoStartStatus();
 
     // Sets new status for auto-start function.
     // Function returns false if setting of
     // new status failed.
-    static bool setAutoStartStatus(const SystemFactory::AutoStartStatus &new_status);
+    bool setAutoStartStatus(const SystemFactory::AutoStartStatus &new_status);
 
 #if defined(Q_OS_LINUX)
     // Returns standard location where auto-start .desktop files
     // should be placed.
     static QString getAutostartDesktopFileLocation();
 #endif
+
+    // Singleton getter.
+    static SystemFactory *getInstance();
+
+  private:
+    static QPointer<SystemFactory> s_instance;
 };
 
 #endif // SYSTEMFACTORY_H

@@ -429,7 +429,7 @@ bool MessagesModel::setAllMessagesRead(int read) {
 
   QSqlQuery query_read_msg(db_handle);
   if (!query_read_msg.prepare(QString("UPDATE messages SET read = :read "
-                                        "WHERE feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")))) {
+                                      "WHERE feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")))) {
     qWarning("Query preparation failed for message read change.");
 
     db_handle.rollback();

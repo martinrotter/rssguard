@@ -108,7 +108,7 @@ if(UNIX)
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/rssguard.desktop
   )
-  set(DESKTOP_ENTRY ${CMAKE_INSTALL_PREFIX}/share/applications)
+  set(DESKTOP_ENTRY_PATH ${CMAKE_INSTALL_PREFIX}/share/applications)
 endif(UNIX)
 
 # Configure internal C++ defines.
@@ -319,6 +319,7 @@ set(APP_HEADERS
   src/core/basenetworkaccessmanager.h
   src/core/webbrowsernetworkaccessmanager.h
   src/core/basewebpage.h
+  src/core/systemfactory.h
   src/core/databasefactory.h
   src/core/messagesmodel.h
   src/core/messagesproxymodel.h

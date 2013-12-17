@@ -406,7 +406,7 @@ void FormSettings::saveShortcuts() {
 
 void FormSettings::loadGeneral() {
   // Load auto-start status.
-  SystemFactory::AutoStartStatus autostart_status = SystemFactory::getAutoStartStatus();
+  SystemFactory::AutoStartStatus autostart_status = SystemFactory::getInstance()->getAutoStartStatus();
   switch (autostart_status) {
     case SystemFactory::Enabled:
       m_ui->m_checkAutostart->setChecked(true);
@@ -425,12 +425,12 @@ void FormSettings::loadGeneral() {
 void FormSettings::saveGeneral() {
   // If auto-start feature is available and user wants
   // to turn it on, then turn it on.
-  if (SystemFactory::getAutoStartStatus() != SystemFactory::Unavailable) {
+  if (SystemFactory::getInstance()->getAutoStartStatus() != SystemFactory::Unavailable) {
     if (m_ui->m_checkAutostart->isChecked()) {
-      SystemFactory::setAutoStartStatus(SystemFactory::Enabled);
+      SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Enabled);
     }
     else {
-      SystemFactory::setAutoStartStatus(SystemFactory::Disabled);
+      SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Disabled);
     }
   }
 }

@@ -1,5 +1,6 @@
 #include <QString>
 #include <QFile>
+#include <QApplication>
 
 #if defined(Q_OS_WIN)
 #include <QSettings>
@@ -10,8 +11,15 @@
 #include "core/defs.h"
 
 
-SystemFactory::SystemFactory() {
+QPointer<SystemFactory> SystemFactory::s_instance;
+
+SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
 }
+
+SystemFactory::~SystemFactory() {
+  qDebug("Destroying SystemFactory instance.");
+}
+
 
 SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // User registry way to auto-start the application on Windows.
@@ -77,6 +85,14 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
 
   // No location found, return empty string.
   return desktop_file_location;
+}
+
+SystemFactory *SystemFactory::getInstance() {
+  if (s_instance.isNull()) {
+    s_instance = new SystemFactory(qApp);
+  }
+
+  return s_instance;
 }
 #endif
 
