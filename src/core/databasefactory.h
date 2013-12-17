@@ -36,8 +36,6 @@ class DatabaseFactory : public QObject {
     // Returns absolute file path to database file.
     QString getDatabasePath();
 
-    // Database manipulators.
-
     // NOTE: This returns OPENED database.
     QSqlDatabase addConnection(const QString &connection_name);
 

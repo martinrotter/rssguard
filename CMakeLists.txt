@@ -253,7 +253,6 @@ set(APP_SOURCES
   src/gui/feedsview.cpp
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
-  src/gui/messagebox.cpp
   src/gui/iconfactory.cpp
 
   # CORE sources.
@@ -314,7 +313,6 @@ set(APP_HEADERS
   src/gui/feedsview.h
   src/gui/messagesview.h
   src/gui/statusbar.h
-  src/gui/messagebox.h
 
   # CORE headers.
   src/core/settings.h

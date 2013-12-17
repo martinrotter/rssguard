@@ -57,6 +57,9 @@ class FeedsModelRootItem {
     // Acess to children.
     QList<FeedsModelRootItem *> childItems() const;
 
+    // Removes all childs from this item.
+    void clearChilds();
+
   protected:
     Kind m_kind;
     QString m_title;

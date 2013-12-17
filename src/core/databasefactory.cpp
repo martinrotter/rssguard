@@ -127,6 +127,7 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 
 QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
   if (!m_initialized) {
+    m_initialized = true;
     return initialize(connection_name);
   }
   else {
@@ -153,6 +154,11 @@ QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
     if (!database.isOpen() && !database.open()) {
       qFatal("Database was NOT opened. Delivered error message: '%s'",
              qPrintable(database.lastError().text()));
+    }
+    else {
+      qDebug("Database connection '%s' to file '%s' seems to be established.",
+             qPrintable(connection_name),
+             qPrintable(QDir::toNativeSeparators(database.databaseName())));
     }
 
     return database;

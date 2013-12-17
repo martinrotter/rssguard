@@ -23,6 +23,9 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
                    tr("Counts of unread/all meesages.");
 
   loadFromDatabase();
+
+  loadFromDatabase();
+
   /*
   FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
   FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
@@ -173,7 +176,9 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
 }
 
 void FeedsModel::loadFromDatabase() {
+  // Delete all childs of the root node and clear them from the memory.
   qDeleteAll(m_rootItem->childItems());
+  m_rootItem->clearChilds();
 
   QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
   CategoryAssignment categories;

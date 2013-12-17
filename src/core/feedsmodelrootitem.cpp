@@ -94,3 +94,7 @@ void FeedsModelRootItem::setTitle(const QString &title) {
 QList<FeedsModelRootItem *> FeedsModelRootItem::childItems() const {
   return m_childItems;
 }
+
+void FeedsModelRootItem::clearChilds() {
+  m_childItems.clear();
+}

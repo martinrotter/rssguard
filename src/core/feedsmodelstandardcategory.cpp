@@ -25,7 +25,6 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
                                                       m_creationDate.toString(Qt::DefaultLocaleShortDate));
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        // TODO: tady dat plural a singular
         return QObject::tr("%n unread message(s).", "", countOfUnreadMessages());
       }
       else {
