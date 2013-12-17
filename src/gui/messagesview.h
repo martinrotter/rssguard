@@ -67,6 +67,8 @@ class MessagesView : public QTreeView {
 
     MessagesProxyModel *m_proxyModel;
     MessagesModel *m_sourceModel;
+
+    bool m_batchUnreadSwitch;
 };
 
 #endif // MESSAGESVIEW_H

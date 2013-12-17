@@ -13,7 +13,7 @@
 
 
 MessagesView::MessagesView(QWidget *parent)
-  : QTreeView(parent), m_contextMenu(NULL) {
+  : QTreeView(parent), m_contextMenu(NULL), m_batchUnreadSwitch(false) {
   m_proxyModel = new MessagesProxyModel(this);
   m_sourceModel = m_proxyModel->sourceModel();
 
@@ -167,14 +167,17 @@ void MessagesView::currentChanged(const QModelIndex &current,
          current.row(), current.column(),
          mapped_current_index.row(), mapped_current_index.column());
 
-  if (!signalsBlocked()) {
-    if (mapped_current_index.isValid()) {
+  if (mapped_current_index.isValid()) {
+    if (!m_batchUnreadSwitch) {
+      // Set this message as read only if current item
+      // wasn't changed by "mark selected messages unread" action.
       m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
-      emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
     }
-    else {
-      emit currentMessageRemoved();
-    }
+
+    emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
+  }
+  else {
+    emit currentMessageRemoved();
   }
 
   QTreeView::currentChanged(current, previous);
@@ -189,8 +192,8 @@ void MessagesView::openSelectedSourceArticlesExternally() {
   QString browser = Settings::getInstance()->value(APP_CFG_MESSAGES,
                                                    "external_browser_executable").toString();
   QString arguments = Settings::getInstance()->value(APP_CFG_MESSAGES,
-                                      "external_browser_arguments",
-                                      "%1").toString();
+                                                     "external_browser_arguments",
+                                                     "%1").toString();
 
   if (browser.isEmpty() || arguments.isEmpty()) {
     QMessageBox::critical(this,
@@ -244,9 +247,9 @@ void MessagesView::setSelectedMessagesReadStatus(int read) {
   if (read == 0) {
     // User selected to mark some messages as unread, if one
     // of them will be marked as current, then it will be read again.
-    blockSignals(true);
+    m_batchUnreadSwitch = true;
     setCurrentIndex(current_index);
-    blockSignals(false);
+    m_batchUnreadSwitch = false;
   }
   else {
     setCurrentIndex(current_index);
@@ -315,9 +318,9 @@ void MessagesView::setAllMessagesReadStatus(int read) {
   if (read == 0) {
     // User selected to mark some messages as unread, if one
     // of them will be marked as current, then it will be read again.
-    blockSignals(true);
+    m_batchUnreadSwitch = true;
     setCurrentIndex(current_index);
-    blockSignals(false);
+    m_batchUnreadSwitch = false;
   }
   else {
     setCurrentIndex(current_index);
