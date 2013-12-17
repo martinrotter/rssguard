@@ -133,7 +133,7 @@ void FormSettings::selectBrowserExecutable() {
                                                          tr("Executables (*.*)"));
 
   if (!executable_file.isEmpty()) {
-   m_ui->m_txtExternalBrowserExecutable->setText(executable_file);
+    m_ui->m_txtExternalBrowserExecutable->setText(executable_file);
   }
 }
 
@@ -425,13 +425,11 @@ void FormSettings::loadGeneral() {
 void FormSettings::saveGeneral() {
   // If auto-start feature is available and user wants
   // to turn it on, then turn it on.
-  if (SystemFactory::getInstance()->getAutoStartStatus() != SystemFactory::Unavailable) {
-    if (m_ui->m_checkAutostart->isChecked()) {
-      SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Enabled);
-    }
-    else {
-      SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Disabled);
-    }
+  if (m_ui->m_checkAutostart->isChecked()) {
+    SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Enabled);
+  }
+  else {
+    SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Disabled);
   }
 }
 

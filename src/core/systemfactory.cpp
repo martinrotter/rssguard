@@ -1,6 +1,7 @@
 #include <QString>
 #include <QFile>
 #include <QApplication>
+#include <QReadWriteLock>
 
 #if defined(Q_OS_WIN)
 #include <QSettings>
@@ -86,6 +87,7 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
   // No location found, return empty string.
   return desktop_file_location;
 }
+#endif
 
 SystemFactory *SystemFactory::getInstance() {
   if (s_instance.isNull()) {
@@ -94,7 +96,6 @@ SystemFactory *SystemFactory::getInstance() {
 
   return s_instance;
 }
-#endif
 
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();

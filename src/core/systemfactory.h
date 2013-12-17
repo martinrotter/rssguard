@@ -5,6 +5,8 @@
 #include <QPointer>
 
 
+class QReadWriteLock;
+
 class SystemFactory : public QObject {
     Q_OBJECT
 
@@ -32,7 +34,7 @@ class SystemFactory : public QObject {
 #if defined(Q_OS_LINUX)
     // Returns standard location where auto-start .desktop files
     // should be placed.
-    static QString getAutostartDesktopFileLocation();
+    QString getAutostartDesktopFileLocation();
 #endif
 
     // Singleton getter.
