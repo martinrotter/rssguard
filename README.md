@@ -5,7 +5,9 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
  * Windows XP and newer,
  * GNU/Linux,
  * OS/2 (eComStation),
- * Mac OS X (possibly).
+ * Mac OS X (possibly),
+ * xBSD (possibly),
+ * other platforms supported by Qt.
 
 RSS Guard is written in C++. It is pretty fast even with tons of messages loaded. The core features are:
  * multiplatformity,
