@@ -188,13 +188,13 @@ void FeedsModel::changeLayout(QModelIndexList list) {
     }
   }
 
-  /*
+/*
   emit layoutAboutToBeChanged();
   // TODO: kouknout do dokumentace na signal layoutChanged,
   // protoze ten signal layoutAboutToBeChanged by se měl volat PRED
   // zmenou dat v modelu
   emit layoutChanged();
-  */
+*/
 }
 
 void FeedsModel::loadFromDatabase() {

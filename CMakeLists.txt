@@ -136,7 +136,7 @@ elseif(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
   #add_definitions(/W3)
 endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
-# Verbose compiling ouputs.
+# Verbose compiling outputs.
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
