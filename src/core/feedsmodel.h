@@ -52,7 +52,7 @@ class FeedsModel : public QAbstractItemModel {
   public slots:
     // Signals that ALL data of this model need
     // to be reloaded by ALL attached views.
-    void changeLayout();
+    void changeLayout(QModelIndexList list);
 
   protected:    
     // Loads feed/categories from the database.

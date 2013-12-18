@@ -173,9 +173,28 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
   }
 }
 
-void FeedsModel::changeLayout() {
+void FeedsModel::changeLayout(QModelIndexList list) {
+  // TODO: Udělat analyzu pres cachegrind
+  // esli je lepsi tohle, nebo zakomentovana cast
+  // zakomentovana cast udela to ze view se dopta na všecky
+  // polozky
+
+  while (!list.isEmpty()) {
+    QModelIndex ix = list.takeLast();
+    emit dataChanged(index(ix.row(), 0, ix.parent()),
+                     index(ix.row(), FDS_MODEL_COUNTS_INDEX, ix.parent()));
+    if (ix.parent().isValid()) {
+      list.append(ix.parent());
+    }
+  }
+
+  /*
   emit layoutAboutToBeChanged();
+  // TODO: kouknout do dokumentace na signal layoutChanged,
+  // protoze ten signal layoutAboutToBeChanged by se měl volat PRED
+  // zmenou dat v modelu
   emit layoutChanged();
+  */
 }
 
 void FeedsModel::loadFromDatabase() {

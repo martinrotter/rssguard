@@ -34,7 +34,7 @@ void FeedsView::updateCountsOfSelectedFeeds() {
     feed->updateCounts();
   }
 
-  m_sourceModel->changeLayout();
+  m_sourceModel->changeLayout(mapped_rows);
 }
 
 void FeedsView::setupAppearance() {
