@@ -320,27 +320,27 @@
     </message>
     <message>
         <source>Import stuff.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat položky.</translation>
     </message>
     <message>
         <source>Export stuff.</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat položky.</translation>
     </message>
     <message>
         <source>Quit the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit aplikaci.</translation>
     </message>
     <message>
         <source>Display settings of the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit nastavení aplikace.</translation>
     </message>
     <message>
         <source>About RSS Guard.</source>
-        <translation type="unfinished"></translation>
+        <translation>O programu RSS Guard.</translation>
     </message>
     <message>
         <source>Switch fullscreen mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepnout režim celé obrazovky.</translation>
     </message>
     <message>
         <source>Add new web browser tab.</source>
@@ -412,7 +412,7 @@
     </message>
     <message>
         <source>Add new &amp;category</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat novou &amp;kategorii</translation>
     </message>
     <message>
         <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
@@ -699,7 +699,7 @@
         <source>Feeds &amp; messages</source>
         <translation>Kanály &amp; zprávy</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source> • some keyboard shortcuts are not unique</source>
         <translation> • některé klávesové zkratky nejsou unikátní</translation>
     </message>
@@ -713,15 +713,15 @@
         <translation>Seznam chyb:
  %1.</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source> • language changed</source>
         <translation> • jazyk změněn</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source> • icon theme changed</source>
         <translation> • téma ikon změněno</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source> • skin changed</source>
         <translation> • skin změněn</translation>
     </message>
@@ -781,7 +781,7 @@
         <source> â¢ external browser is not set</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source> • external browser is not set</source>
         <translation type="unfinished"></translation>
     </message>
@@ -958,7 +958,10 @@
 
 Category type: standard
 Creation date: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+
+Typ kategorie: standardní
+Datum vytvoření: %2</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
