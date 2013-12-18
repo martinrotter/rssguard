@@ -6,9 +6,9 @@
 #include <QProcess>
 
 #include "gui/messagesview.h"
+#include "gui/formmain.h"
 #include "core/messagesproxymodel.h"
 #include "core/messagesmodel.h"
-#include "gui/formmain.h"
 #include "core/settings.h"
 
 
@@ -16,6 +16,10 @@ MessagesView::MessagesView(QWidget *parent)
   : QTreeView(parent), m_contextMenu(NULL), m_batchUnreadSwitch(false) {
   m_proxyModel = new MessagesProxyModel(this);
   m_sourceModel = m_proxyModel->sourceModel();
+
+  // Forward count changes to the view.
+  connect(m_sourceModel, SIGNAL(feedCountsChanged()),
+          this, SIGNAL(feedCountsChanged()));
 
   setModel(m_proxyModel);
 
@@ -170,7 +174,6 @@ void MessagesView::currentChanged(const QModelIndex &current,
     }
 
     emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
-    emit feedCountsChanged();
   }
   else {
     emit currentMessageRemoved();

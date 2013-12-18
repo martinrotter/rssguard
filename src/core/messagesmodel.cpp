@@ -239,6 +239,7 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     // can reflect.
     emit dataChanged(index(row_index, 0),
                      index(row_index, columnCount() - 1));
+    emit feedCountsChanged();
     return true;
   }
   else {
@@ -409,6 +410,8 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
     // FULLY reload the model if underlying data is changed.
     select();
     fetchAll();
+
+    emit feedCountsChanged();
     return true;
   }
   else {
@@ -453,6 +456,8 @@ bool MessagesModel::setAllMessagesRead(int read) {
     // FULLY reload the model if underlying data is changed.
     select();
     fetchAll();
+
+    emit feedCountsChanged();
     return true;
   }
   else {
