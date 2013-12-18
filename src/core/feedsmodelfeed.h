@@ -11,9 +11,11 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Describes possible types of feeds.
     // NOTE: This is equivalent to attribute Feeds(type).
     enum Type {
-      StandardRss   = 0,
-      StandardRdf   = 1,
-      StandardAtom  = 2
+      StandardRss0X = 0,
+      StandardRss1X = 1,
+      StandardRss2X = 2,
+      StandardRdf   = 3,
+      StandardAtom  = 4
     };
 
     // Constructors and destructors.
@@ -36,9 +38,11 @@ class FeedsModelFeed : public FeedsModelRootItem {
     Type type() const;
     void setType(const Type &type);
 
+    static QString typeToString(Type type);
+
   public slots:
     // Updates counts of all/unread messages for this feed.
-    void updateCounts();
+    void updateCounts(bool including_total_count = true);
 
   protected:
     Type m_type;

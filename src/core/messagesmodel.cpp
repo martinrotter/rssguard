@@ -55,11 +55,16 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-void MessagesModel::loadMessages(const QList<int> feed_ids) {
-  // Conversion of parameter.
-  m_currentFeeds = feed_ids;
+QList<int> MessagesModel::currentFeeds() const {
+    return m_currentFeeds;
+}
 
-  setFilter(QString("feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")));
+
+void MessagesModel::loadMessages(const QList<int> feed_ids) {
+    // Conversion of parameter.
+    m_currentFeeds = feed_ids;
+    
+    setFilter(QString("feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")));
   select();
   fetchAll();
 }

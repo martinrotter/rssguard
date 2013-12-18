@@ -44,6 +44,8 @@ class MessagesModel : public QSqlTableModel {
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
 
+    QList<int> currentFeeds() const;
+
   public slots:
     // To disable persistent changes submissions.
     bool submitAll();

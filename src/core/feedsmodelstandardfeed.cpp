@@ -30,6 +30,7 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
   feed->setLanguage(record.value(FDS_DB_LANGUAGE_INDEX).toString());
+  feed->updateCounts();
 
   return feed;
 }
@@ -84,6 +85,26 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       return column == FDS_MODEL_TITLE_INDEX ?
             m_icon :
             QVariant();
+
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return QObject::tr("%1\n\n"
+                           "Feed type: %2\n"
+                           "URL: %3\n"
+                           "Encoding: %4\n"
+                           "Language: %5").arg(m_title,
+                                               FeedsModelFeed::typeToString(m_type),
+                                               m_url,
+                                               m_encoding,
+                                               m_language.isEmpty() ?
+                                                 "-" :
+                                                 m_language);      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        return QObject::tr("%n unread message(s).", "", countOfUnreadMessages());
+      }
+      else {
+        return QVariant();
+      }
 
     case Qt::TextAlignmentRole:
       if (column == FDS_MODEL_COUNTS_INDEX) {

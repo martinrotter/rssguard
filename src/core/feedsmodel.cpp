@@ -173,6 +173,11 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
   }
 }
 
+void FeedsModel::changeLayout() {
+  emit layoutAboutToBeChanged();
+  emit layoutChanged();
+}
+
 void FeedsModel::loadFromDatabase() {
   // Delete all childs of the root node and clear them from the memory.
   qDeleteAll(m_rootItem->childItems());
@@ -225,7 +230,9 @@ void FeedsModel::loadFromDatabase() {
     switch (type) {
       case FeedsModelFeed::StandardAtom:
       case FeedsModelFeed::StandardRdf:
-      case FeedsModelFeed::StandardRss: {
+      case FeedsModelFeed::StandardRss0X:
+      case FeedsModelFeed::StandardRss1X:
+      case FeedsModelFeed::StandardRss2X: {
         FeedAssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
         pair.second = FeedsModelStandardFeed::loadFromRecord(query_feeds.record());

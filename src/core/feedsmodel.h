@@ -49,6 +49,11 @@ class FeedsModel : public QAbstractItemModel {
     // null if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index);
 
+  public slots:
+    // Signals that ALL data of this model need
+    // to be reloaded by ALL attached views.
+    void changeLayout();
+
   protected:    
     // Loads feed/categories from the database.
     void loadFromDatabase();

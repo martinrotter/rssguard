@@ -95,11 +95,6 @@ void MessagesView::setupAppearance() {
   setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
-void MessagesView::selectionChanged(const QItemSelection &selected,
-                                    const QItemSelection &deselected) {
-  QTreeView::selectionChanged(selected, deselected);
-}
-
 void MessagesView::keyPressEvent(QKeyEvent *event) {
   QTreeView::keyPressEvent(event);
 
@@ -175,6 +170,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
     }
 
     emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
+    emit feedCountsChanged();
   }
   else {
     emit currentMessageRemoved();

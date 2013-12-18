@@ -1,6 +1,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QVariant>
 
 #include "core/databasefactory.h"
 #include "core/feedsmodelfeed.h"
@@ -43,6 +44,45 @@ void FeedsModelFeed::setType(const Type &type) {
   m_type = type;
 }
 
-void FeedsModelFeed::updateCounts() {
-  //QSqlDatabase database = DatabaseFactory::getInstance()->
+QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
+  switch (type) {
+    case StandardAtom:
+      return QObject::tr("ATOM 1.0");
+
+    case StandardRdf:
+      return QObject::tr("RDF 1.0");
+
+    case StandardRss0X:
+      return QObject::tr("RSS 0.X");
+
+    case StandardRss1X:
+      return QObject::tr("RSS 1.X");
+
+    case StandardRss2X:
+    default:
+      return QObject::tr("RSS 2.X");
+  }
 }
+
+void FeedsModelFeed::updateCounts(bool including_total_count) {
+  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelFeed");
+
+  if (including_total_count) {
+    // Obtain count of all messages.
+    QSqlQuery query_all = database.exec(QString("SELECT count() FROM messages "
+                                                "WHERE feed = %1 AND deleted = 0;").arg(id()));
+    if (query_all.next()){
+      m_totalCount = query_all.value(0).toInt();
+    }
+  }
+
+  // Obtain count of unread messages.
+  QSqlQuery query_unread = database.exec(QString("SELECT count() FROM messages "
+                                                 "WHERE feed = %1 AND deleted = 0 AND read = 0;").arg(id()));
+  if (query_unread.next()) {
+    m_unreadCount = query_unread.value(0).toInt();
+  }
+}
+
+
+

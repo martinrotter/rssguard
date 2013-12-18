@@ -17,6 +17,10 @@ class FeedsView : public QTreeView {
 
     void setSortingEnabled(bool enable);
     
+  public slots:
+    // Reloads count for selected feeds.
+    void updateCountsOfSelectedFeeds();
+
   protected:
     void setupAppearance();
     void selectionChanged(const QItemSelection &selected,

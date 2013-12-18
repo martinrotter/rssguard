@@ -42,6 +42,8 @@ void FeedMessageViewer::createConnections() {
           SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)),
           m_messagesView, SLOT(loadFeeds(QList<int>)));
+  connect(m_messagesView, SIGNAL(feedCountsChanged()),
+          m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
 
   // Toolbar forwardings.
   connect(FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,

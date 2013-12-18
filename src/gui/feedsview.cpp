@@ -25,6 +25,18 @@ void FeedsView::setSortingEnabled(bool enable) {
   header()->setSortIndicatorShown(false);
 }
 
+void FeedsView::updateCountsOfSelectedFeeds() {
+  QModelIndexList selected_rows = selectionModel()->selectedRows();
+  QModelIndexList mapped_rows = m_proxyModel->mapListToSource(selected_rows);
+  QList<FeedsModelFeed*> feeds = m_sourceModel->feedsForIndexes(mapped_rows);
+
+  foreach (FeedsModelFeed *feed, feeds) {
+    feed->updateCounts();
+  }
+
+  m_sourceModel->changeLayout();
+}
+
 void FeedsView::setupAppearance() {
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.

@@ -53,14 +53,16 @@ class MessagesView : public QTreeView {
     void keyPressEvent(QKeyEvent *event);
     void currentChanged(const QModelIndex &current,
                         const QModelIndex &previous);
-    void selectionChanged(const QItemSelection &selected,
-                          const QItemSelection &deselected);
 
   signals:
     void openLinkMessageNewTabRequested(const QString &link);
     void openMessageNewTabRequested(const Message &message);
     void currentMessageChanged(const Message &message);
     void currentMessageRemoved();
+
+    // Emitted if counts of unread/total messages has changed
+    // because of user interaction with list of messages.
+    void feedCountsChanged();
 
   private:
     QMenu *m_contextMenu;
