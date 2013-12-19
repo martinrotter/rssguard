@@ -21,8 +21,11 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
       if (column == FDS_MODEL_TITLE_INDEX) {
         return QObject::tr("%1\n\n"
                            "Category type: standard\n"
-                           "Creation date: %2").arg(m_title,
-                                                      m_creationDate.toString(Qt::DefaultLocaleShortDate));
+                           "Creation date: %2%3").arg(m_title,
+                                                      m_creationDate.toString(Qt::DefaultLocaleShortDate),
+                                                      m_childItems.size() == 0 ?
+                                                        QObject::tr("\n\nThis category does not contain any nested items.") :
+                                                        "");
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return QObject::tr("%n unread message(s).", "", countOfUnreadMessages());
@@ -37,6 +40,15 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return countOfUnreadMessages();
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::ForegroundRole:
+      if (m_childItems.size() == 0) {
+        // TODO: Make this configurable.
+        return QColor(Qt::red);
       }
       else {
         return QVariant();

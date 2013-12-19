@@ -1,5 +1,6 @@
 #include <QVariant>
 
+#include "qtsingleapplication/qtsingleapplication.h"
 #include "core/feedsmodelrootitem.h"
 
 

@@ -58,12 +58,14 @@ FeedsModel::~FeedsModel() {
 }
 
 QVariant FeedsModel::data(const QModelIndex &index, int role) const {
-  if (!index.isValid()) {
+  FeedsModelRootItem *item = itemForIndex(index);
+
+  if (item != NULL) {
+    return item->data(index.column(), role);
+  }
+  else {
     return QVariant();
   }
-
-  FeedsModelRootItem *item = static_cast<FeedsModelRootItem*>(index.internalPointer());
-  return item->data(index.column(), role);
 }
 
 QVariant FeedsModel::headerData(int section,
@@ -164,7 +166,7 @@ int FeedsModel::columnCount(const QModelIndex &parent) const {
   }
 }
 
-FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
+FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   if (index.isValid() && index.model() == this) {
     return static_cast<FeedsModelRootItem*>(index.internalPointer());
   }
@@ -173,7 +175,7 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
   }
 }
 
-void FeedsModel::changeLayout(QModelIndexList list) {
+void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex ix = list.takeLast();
 
@@ -181,21 +183,20 @@ void FeedsModel::changeLayout(QModelIndexList list) {
     emit dataChanged(index(ix.row(), 0, ix.parent()),
                      index(ix.row(), FDS_MODEL_COUNTS_INDEX, ix.parent()));
 
-
     if (ix.parent().isValid()) {
       // Make sure that data of parent are changed too.
       list.append(ix.parent());
     }
   }
+}
 
-/*
+void FeedsModel::reloadWholeLayout() {
   // NOTE: Take a look at docs about this.
   // I have tested that this is LITTLE slower than code above,
   // but it is really SIMPLER, so if code above will be buggy, then
   // we can use this.
   emit layoutAboutToBeChanged();
   emit layoutChanged();
-*/
 }
 
 void FeedsModel::loadFromDatabase() {
