@@ -121,6 +121,7 @@ void FormSettings::changeBrowserProgressColor() {
   QColorDialog color_dialog(m_initialSettings.m_webBrowserProgress, this);
   color_dialog.setWindowTitle(tr("Select color for web browser progress bar"));
   color_dialog.setOption(QColorDialog::ShowAlphaChannel);
+
   if (color_dialog.exec() == QDialog::Accepted) {
     m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
     loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
@@ -178,9 +179,9 @@ bool FormSettings::doSaveCheck() {
   if (!m_ui->m_shortcuts->areShortcutsUnique()) {
     everything_ok = false;
 #if QT_VERSION >= 0x050000
-    resulting_information.append(tr(" • some keyboard shortcuts are not unique"));
+    resulting_information.append(tr(" \u2022 some keyboard shortcuts are not unique"));
 #else
-    resulting_information.append(trUtf8(" • some keyboard shortcuts are not unique"));
+    resulting_information.append(trUtf8(" \u2022 some keyboard shortcuts are not unique"));
 #endif
   }
 
@@ -188,9 +189,9 @@ bool FormSettings::doSaveCheck() {
       m_ui->m_txtExternalBrowserArguments->text().isEmpty()) {
     everything_ok = false;
 #if QT_VERSION >= 0x050000
-    resulting_information.append(tr(" • external browser is not set"));
+    resulting_information.append(tr(" \u2022 external browser is not set"));
 #else
-    resulting_information.append(trUtf8(" • external browser is not set"));
+    resulting_information.append(trUtf8(" \u2022 external browser is not set"));
 #endif
   }
 
@@ -393,9 +394,9 @@ void FormSettings::saveLanguage() {
   // Save prompt for restart if language has changed.
   if (new_lang != actual_lang) {
 #if QT_VERSION >= 0x050000
-    m_changedDataTexts.append(tr(" • language changed"));
+    m_changedDataTexts.append(tr(" \u2022 language changed"));
 #else
-    m_changedDataTexts.append(trUtf8(" • language changed"));
+    m_changedDataTexts.append(trUtf8(" \u2022 language changed"));
 #endif
     settings->setValue(APP_CFG_GEN, "language", new_lang);
   }
@@ -566,9 +567,9 @@ void FormSettings::saveInterface() {
   // Check if icon theme was changed.
   if (selected_icon_theme != original_icon_theme) {
 #if QT_VERSION >= 0x050000
-    m_changedDataTexts.append(tr(" • icon theme changed"));
+    m_changedDataTexts.append(tr(" \u2022 icon theme changed"));
 #else
-    m_changedDataTexts.append(trUtf8(" • icon theme changed"));
+    m_changedDataTexts.append(trUtf8(" \u2022 icon theme changed"));
 #endif
   }
 
@@ -579,9 +580,9 @@ void FormSettings::saveInterface() {
     if (SkinFactory::getInstance()->getSelectedSkinName() != active_skin.m_baseName) {
       SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
 #if QT_VERSION >= 0x050000
-      m_changedDataTexts.append(tr(" • skin changed"));
+      m_changedDataTexts.append(tr(" \u2022 skin changed"));
 #else
-      m_changedDataTexts.append(trUtf8(" • skin changed"));
+      m_changedDataTexts.append(trUtf8(" \u2022 skin changed"));
 #endif
     }
   }

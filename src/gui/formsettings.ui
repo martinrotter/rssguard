@@ -863,8 +863,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>325</x>
-     <y>404</y>
+     <x>334</x>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -895,12 +895,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>261</x>
-     <y>37</y>
+     <x>508</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>261</x>
-     <y>37</y>
+     <x>419</x>
+     <y>128</y>
     </hint>
    </hints>
   </connection>
@@ -911,12 +911,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>261</x>
-     <y>37</y>
+     <x>508</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>261</x>
-     <y>37</y>
+     <x>678</x>
+     <y>128</y>
     </hint>
    </hints>
   </connection>
@@ -927,12 +927,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>261</x>
-     <y>37</y>
+     <x>508</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>261</x>
-     <y>37</y>
+     <x>508</x>
+     <y>151</y>
     </hint>
    </hints>
   </connection>
@@ -947,8 +947,24 @@
      <y>48</y>
     </hint>
     <hint type="destinationlabel">
-     <x>667</x>
-     <y>54</y>
+     <x>577</x>
+     <y>63</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkBrowserProgressColor</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_btnWebBrowserColorSample</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>468</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>664</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>

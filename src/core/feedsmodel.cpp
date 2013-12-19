@@ -174,25 +174,26 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) {
 }
 
 void FeedsModel::changeLayout(QModelIndexList list) {
-  // TODO: Udělat analyzu pres cachegrind
-  // esli je lepsi tohle, nebo zakomentovana cast
-  // zakomentovana cast udela to ze view se dopta na všecky
-  // polozky
-
   while (!list.isEmpty()) {
     QModelIndex ix = list.takeLast();
+
+    // Underlying data are changed.
     emit dataChanged(index(ix.row(), 0, ix.parent()),
                      index(ix.row(), FDS_MODEL_COUNTS_INDEX, ix.parent()));
+
+
     if (ix.parent().isValid()) {
+      // Make sure that data of parent are changed too.
       list.append(ix.parent());
     }
   }
 
 /*
+  // NOTE: Take a look at docs about this.
+  // I have tested that this is LITTLE slower than code above,
+  // but it is really SIMPLER, so if code above will be buggy, then
+  // we can use this.
   emit layoutAboutToBeChanged();
-  // TODO: kouknout do dokumentace na signal layoutChanged,
-  // protoze ten signal layoutAboutToBeChanged by se měl volat PRED
-  // zmenou dat v modelu
   emit layoutChanged();
 */
 }

@@ -50,7 +50,7 @@ class FeedsModel : public QAbstractItemModel {
     FeedsModelRootItem *itemForIndex(const QModelIndex &index);
 
   public slots:
-    // Signals that ALL data of this model need
+    // Signals that SOME data of this model need
     // to be reloaded by ALL attached views.
     void changeLayout(QModelIndexList list);
 
