@@ -30,16 +30,19 @@ class MessagesView : public QTreeView {
     void openSelectedSourceMessagesInternally();
     void openSelectedMessagesInternally();
 
+    // Works with SELECTED messages only.
     void setSelectedMessagesReadStatus(int read);
     void markSelectedMessagesRead();
     void markSelectedMessagesUnread();
     void deleteSelectedMessages();
     void switchSelectedMessagesImportance();
 
+    // Sets ALL (unfiltered) messages read.
     void setAllMessagesReadStatus(int read);
     void setAllMessagesRead();
     void setAllMessagesUnread();
 
+    // Sets ALL (unfiltered) messages deleted.
     void setAllMessagesDeleteStatus(int deleted);
     void setAllMessagesDeleted();
 

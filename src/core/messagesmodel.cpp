@@ -418,10 +418,6 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
   }
 }
 
-bool MessagesModel::switchAllMessageImportance() {
-  return false;
-}
-
 bool MessagesModel::setAllMessagesDeleted(int deleted) {
   QSqlDatabase db_handle = database();
 

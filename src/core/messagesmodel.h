@@ -70,7 +70,6 @@ class MessagesModel : public QSqlTableModel {
     // of many messages via DIRECT SQL calls.
     // List of loaded feed ids is used for WHERE clause.
     // Model is reset after one of these methods is applied.
-    bool switchAllMessageImportance();
     bool setAllMessagesDeleted(int deleted);
     bool setAllMessagesRead(int read);
 

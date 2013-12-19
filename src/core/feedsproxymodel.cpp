@@ -3,6 +3,7 @@
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
 #include "core/feedsmodelrootitem.h"
+#include "core/defs.h"
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
@@ -37,11 +38,19 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
     // NOTE: Here we want to accomplish that ALL
     // categories are queued one after another and all
     // feeds are queued one after another too.
-    // Moreover, sort everything alphabetically.
+    // Moreover, sort everything alphabetically or
+    // by item counts, depending on the sort column.
 
     if (left_item->kind() == right_item->kind()) {
       // Both items are feeds or both items are categories.
-      return left_item->title() < right_item->title();
+      if (left.column() == FDS_MODEL_COUNTS_INDEX) {
+        // User wants to sort according to counts.
+        return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
+      }
+      else {
+        // In other cases, sort by title.
+        return left_item->title() < right_item->title();
+      }
     }
     else if (left_item->kind() == FeedsModelRootItem::Feed) {
       // Left item is feed, right item is category.

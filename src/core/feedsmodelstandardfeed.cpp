@@ -80,6 +80,20 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
       }
+      else {
+        return QVariant();
+      }
+
+    case Qt::EditRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_title;
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        return countOfUnreadMessages();
+      }
+      else {
+        return QVariant();
+      }
 
     case Qt::DecorationRole:
       return column == FDS_MODEL_TITLE_INDEX ?
