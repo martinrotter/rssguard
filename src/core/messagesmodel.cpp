@@ -325,9 +325,6 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     query_delete_msg.bindValue(":id", message_id);
     query_delete_msg.bindValue(":important",
                                importance == 1 ? 0 : 1);
-
-    // TODO: dat u vsech funkci ty execy do ifu a kdyz
-    // vratijou false tak udela rollback a vratit funkci s hodnotou false.
     query_delete_msg.exec();
   }
 
@@ -373,6 +370,8 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     // FULLY reload the model if underlying data is changed.
     select();
     fetchAll();
+
+    emit feedCountsChanged();
     return true;
   }
   else {
@@ -424,7 +423,41 @@ bool MessagesModel::switchAllMessageImportance() {
 }
 
 bool MessagesModel::setAllMessagesDeleted(int deleted) {
-  return false;
+  QSqlDatabase db_handle = database();
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for all message deletion.");
+    return false;
+  }
+
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare(QString("UPDATE messages SET deleted = :deleted "
+                                      "WHERE feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")))) {
+    qWarning("Query preparation failed for message deletion.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_delete_msg.bindValue(":deleted", deleted);
+
+  if (!query_delete_msg.exec()) {
+    qDebug("Query execution for all message deletion failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    // FULLY reload the model if underlying data is changed.
+    select();
+    fetchAll();
+
+    emit feedCountsChanged();
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
 }
 
 bool MessagesModel::setAllMessagesRead(int read) {

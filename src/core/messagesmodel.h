@@ -20,7 +20,6 @@ class Message {
     QDateTime m_updated;
 };
 
-
 class MessagesModel : public QSqlTableModel {
     Q_OBJECT
 

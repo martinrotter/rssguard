@@ -40,6 +40,9 @@ class MessagesView : public QTreeView {
     void setAllMessagesRead();
     void setAllMessagesUnread();
 
+    void setAllMessagesDeleteStatus(int deleted);
+    void setAllMessagesDeleted();
+
   protected slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);

@@ -338,6 +338,18 @@ void MessagesView::setAllMessagesUnread() {
   setAllMessagesReadStatus(0);
 }
 
+void MessagesView::setAllMessagesDeleteStatus(int deleted) {
+  m_sourceModel->setAllMessagesDeleted(deleted);
+
+  // We deleted completely each and every visible message.
+  // That is why no message can be displayed now.
+  emit currentMessageRemoved();
+}
+
+void MessagesView::setAllMessagesDeleted() {
+  setAllMessagesDeleteStatus(1);
+}
+
 void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
   selectionModel()->clearSelection();
 

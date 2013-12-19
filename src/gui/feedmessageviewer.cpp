@@ -62,6 +62,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
   connect(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsRead,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesRead()));
+  connect(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages,
+          SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesDeleted()));
 }
 
 void FeedMessageViewer::initialize() {
