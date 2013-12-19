@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>5</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>559</width>
+            <height>363</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -147,8 +147,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>553</width>
+                <height>337</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -424,27 +424,65 @@
            <string>Web browser</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_4">
-           <property name="fieldGrowthPolicy">
-            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-           </property>
            <item row="0" column="0">
-            <widget class="QCheckBox" name="m_checkBrowserProgressColor">
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <item>
+              <widget class="QCheckBox" name="m_checkBrowserProgressColor">
+               <property name="text">
+                <string>Use custom color for web browser progress bar</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="m_btnBrowserProgressColor">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>&amp;Change...</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Current color</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="m_btnWebBrowserColorSample">
+               <property name="autoFillBackground">
+                <bool>true</bool>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="m_checkQueueTabs">
              <property name="text">
-              <string>Use custom color for web browser progress bar</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
+              <string>Queue new tabs (with hyperlinks) after the active tab</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0" colspan="2">
+           <item row="2" column="0">
             <widget class="QCheckBox" name="m_checkMouseGestures">
              <property name="text">
               <string>Enable mouse gestures</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="0" colspan="2">
+           <item row="3" column="0">
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
               <string>Mouse gestures work with middle mouse button. Possible gestures are:
@@ -460,26 +498,6 @@
              </property>
              <property name="indent">
               <number>20</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0" colspan="2">
-            <widget class="QCheckBox" name="m_checkQueueTabs">
-             <property name="text">
-              <string>Queue new tabs (with hyperlinks) after the active tab</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QPushButton" name="m_btnBrowserProgressColor">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>&amp;Change...</string>
              </property>
             </widget>
            </item>
@@ -651,7 +669,7 @@
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -682,7 +700,11 @@
               <item row="0" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_10">
                 <item>
-                 <widget class="QLineEdit" name="m_txtExternalBrowserExecutable"/>
+                 <widget class="QLineEdit" name="m_txtExternalBrowserExecutable">
+                  <property name="placeholderText">
+                   <string>Executable file of web browser</string>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QToolButton" name="m_btnExternalBrowserExecutable">
@@ -703,7 +725,11 @@
               <item row="1" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_11">
                 <item>
-                 <widget class="QLineEdit" name="m_txtExternalBrowserArguments"/>
+                 <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
+                  <property name="placeholderText">
+                   <string>Parameters to executable</string>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="m_lblExternalBrowserPreset">

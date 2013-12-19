@@ -43,6 +43,10 @@ class FormSettings : public QDialog {
     void loadInterface();
     void saveInterface();
     void changeBrowserProgressColor();
+
+    // Loads QColor instance into given button.
+    void loadWebBrowserColor(const QColor &color);
+
     void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
     void loadGeneral();

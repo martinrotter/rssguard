@@ -23,7 +23,7 @@ class MessagesView : public QTreeView {
     MessagesModel *sourceModel();
 
   public slots:
-    void loadFeeds(const QList<int> feed_ids);
+    void loadFeeds(const QList<int> &feed_ids);
 
     // Message manipulators.
     void openSelectedSourceArticlesExternally();

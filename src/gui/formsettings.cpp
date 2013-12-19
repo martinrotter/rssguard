@@ -121,9 +121,10 @@ void FormSettings::changeBrowserProgressColor() {
   QColorDialog color_dialog(m_initialSettings.m_webBrowserProgress, this);
   color_dialog.setWindowTitle(tr("Select color for web browser progress bar"));
   color_dialog.setOption(QColorDialog::ShowAlphaChannel);
-  color_dialog.exec();
-
-  m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
+  if (color_dialog.exec() == QDialog::Accepted) {
+    m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
+    loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
+  }
 }
 
 void FormSettings::selectBrowserExecutable() {
@@ -208,6 +209,13 @@ bool FormSettings::doSaveCheck() {
   return everything_ok;
 }
 
+void FormSettings::loadWebBrowserColor(const QColor &color) {
+  m_ui->m_btnWebBrowserColorSample->setStyleSheet(QString("QToolButton { background-color: rgba(%1, %2, %3, %4); }").arg(QString::number(color.red()),
+                                                                                                                         QString::number(color.green()),
+                                                                                                                         QString::number(color.blue()),
+                                                                                                                         QString::number(color.alpha())));
+}
+
 void FormSettings::promptForRestart() {
   if (m_changedDataTexts.count() > 0) {
     QMessageBox msg_question(this);
@@ -277,6 +285,7 @@ void FormSettings::loadBrowser() {
   m_initialSettings.m_webBrowserProgress = settings->value(APP_CFG_BROWSER,
                                                            "browser_progress_color",
                                                            QColor(0, 255, 0, 100)).value<QColor>();
+  loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
   m_ui->m_checkBrowserProgressColor->setChecked(settings->value(APP_CFG_BROWSER,
                                                                 "browser_colored_progress_enabled",
                                                                 true).toBool());

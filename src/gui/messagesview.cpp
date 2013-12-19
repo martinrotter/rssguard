@@ -182,8 +182,9 @@ void MessagesView::currentChanged(const QModelIndex &current,
   QTreeView::currentChanged(current, previous);
 }
 
-void MessagesView::loadFeeds(const QList<int> feed_ids) {
+void MessagesView::loadFeeds(const QList<int> &feed_ids) {
   m_sourceModel->loadMessages(feed_ids);
+  emit currentMessageRemoved();
 }
 
 void MessagesView::openSelectedSourceArticlesExternally() {
