@@ -73,7 +73,7 @@ QSettings::Status Settings::setupSettings() {
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
-    qDebug("Initializing settings in %s (portable way).",
+    qDebug("Initializing settings in '%s' (portable way).",
            qPrintable(QDir::toNativeSeparators(app_path)));
   }
   else {
@@ -91,7 +91,7 @@ QSettings::Status Settings::setupSettings() {
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
-    qDebug("Initializing settings in %s (non-portable way).",
+    qDebug("Initializing settings in '%s' (non-portable way).",
            qPrintable(QDir::toNativeSeparators(home_path_file)));
   }
 

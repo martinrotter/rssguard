@@ -14,7 +14,7 @@
 QPointer<IconThemeFactory> IconThemeFactory::s_instance;
 
 IconThemeFactory::IconThemeFactory(QObject *parent)
-  : QObject(parent), m_currentIconTheme(APP_THEME_DEFAULT) {
+  : QObject(parent) {
 }
 
 IconThemeFactory::~IconThemeFactory() {
@@ -32,7 +32,8 @@ IconThemeFactory *IconThemeFactory::getInstance() {
 void IconThemeFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QStringList() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
-         qPrintable(QIcon::themeSearchPaths().join(", ")));
+         qPrintable(QIcon::themeSearchPaths().replaceInStrings(QRegExp("^|$"),
+                                                               "\'").join(", ")));
 }
 
 QString IconThemeFactory::getCurrentIconTheme() {
@@ -74,7 +75,8 @@ void IconThemeFactory::loadCurrentIconTheme() {
 
   // Display list of installed themes.
   qDebug("Installed icon themes are: %s.",
-         qPrintable(installed_themes.join(", ")));
+         qPrintable(QStringList(installed_themes).replaceInStrings(QRegExp("^|$"),
+                                                                   "\'").join(", ")));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
@@ -104,9 +106,9 @@ QStringList IconThemeFactory::getInstalledIconThemes() {
 
     // Iterate all icon themes in this directory.
     foreach (const QString &icon_theme_path, icon_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot |
-                                                         QDir::Readable | QDir::CaseSensitive |
-                                                         QDir::NoSymLinks,
-                                                         QDir::Time)) {
+                                                                QDir::Readable | QDir::CaseSensitive |
+                                                                QDir::NoSymLinks,
+                                                                QDir::Time)) {
       icon_theme_names << icon_theme_path;
     }
   }
