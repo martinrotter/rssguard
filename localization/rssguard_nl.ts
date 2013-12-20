@@ -699,10 +699,6 @@
         <source>Feeds &amp; messages</source>
         <translation>Feeds &amp; berichten</translation>
     </message>
-    <message utf8="true">
-        <source> • some keyboard shortcuts are not unique</source>
-        <translation>...sommige sneltoetsen zijn niet uniek</translation>
-    </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
         <translation>Sommige kritieke instellingen zijn niet instelbaar. Je moet deze nieuwe instellingen bevestigen om op te lossen.</translation>
@@ -712,18 +708,6 @@
  %1.</source>
         <translation>lijst van fouten:
  %1.</translation>
-    </message>
-    <message utf8="true">
-        <source> • language changed</source>
-        <translation>...van taal veranderd</translation>
-    </message>
-    <message utf8="true">
-        <source> • icon theme changed</source>
-        <translation>...pictogram thema veranderd</translation>
-    </message>
-    <message utf8="true">
-        <source> • skin changed</source>
-        <translation>...skin veranderd</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -774,28 +758,36 @@
         <translation>Opera 12 of ouder</translation>
     </message>
     <message>
-        <source> â¢ some keyboard shortcuts are not unique</source>
-        <translation>...sommige sneltoetsen zijn niet uniek</translation>
+        <source>Current color</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> â¢ external browser is not set</source>
-        <translation>...externe browser niet ingesteld</translation>
-    </message>
-    <message utf8="true">
-        <source> • external browser is not set</source>
-        <translation>...externe browser niet ingesteld</translation>
+        <source>Executable file of web browser</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> â¢ language changed</source>
-        <translation>...van taal veranderd</translation>
+        <source>Parameters to executable</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> â¢ icon theme changed</source>
-        <translation>...pictogram thema veranderd</translation>
+        <source> u2022 some keyboard shortcuts are not unique</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> â¢ skin changed</source>
-        <translation>... skin veranderd</translation>
+        <source> u2022 external browser is not set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> u2022 language changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> u2022 icon theme changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> u2022 skin changed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -953,19 +945,50 @@
         <extracomment>Email of translator - optional.</extracomment>
         <translation>elbert.pol@gmail.com</translation>
     </message>
-    <message>
-        <source>%1
-
-Category type: standard
-Creation date: %2</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>ATOM 1.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RDF 1.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSS 0.90/0.91/0.92</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSS 2.0/2.0.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1
+
+Category type: standard
+Creation date: %2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+
+This category does not contain any nested items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1
+
+Feed type: %2
+URL: %3
+Encoding: %4
+Language: %5</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -139,22 +139,31 @@ void MessagesView::initializeContextMenu() {
 void MessagesView::mousePressEvent(QMouseEvent *event) {
   QTreeView::mousePressEvent(event);
 
-  if (event->button() != Qt::LeftButton) {
-    // No need for extra actions on right/middle click.
-    return;
-  }
+  switch (event->button()) {
+    case Qt::LeftButton: {
+      // Make sure that message importance is switched when user
+      // clicks the "important" column.
+      QModelIndex clicked_index = indexAt(event->pos());
 
-  QModelIndex clicked_index = indexAt(event->pos());
+      if (clicked_index.isValid()) {
+        QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
 
-  if (!clicked_index.isValid()) {
-    qDebug("Clicked on invalid index in MessagesView.");
-    return;
-  }
+        if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
+          m_sourceModel->switchMessageImportance(mapped_index.row());
+        }
+      }
 
-  QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
+      break;
+    }
 
-  if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
-    m_sourceModel->switchMessageImportance(mapped_index.row());
+    case Qt::MiddleButton: {
+      // Open selected messages in new tab on mouse middle button click.
+      openSelectedSourceMessagesInternally();
+      break;
+    }
+
+    default:
+      break;
   }
 }
 
@@ -162,7 +171,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
                                   const QModelIndex &previous) {
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current);
 
-  qDebug("Current row changed, row [%d,%d] source %d %d",
+  qDebug("Current row changed - row [%d,%d] source [%d, %d].",
          current.row(), current.column(),
          mapped_current_index.row(), mapped_current_index.column());
 
