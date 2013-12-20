@@ -77,9 +77,6 @@ WebBrowser::WebBrowser(QWidget *parent)
 
   createConnections();
   initializeZoomWidget();
-
-  // NOTE: Not needed here probably.
-  //setupIcons();
 }
 
 void WebBrowser::initializeZoomWidget() {
@@ -153,8 +150,6 @@ void WebBrowser::onTitleChanged(const QString &new_title) {
   else {
     emit titleChanged(m_index, new_title);
   }
-
-  emit iconChanged(m_index, QIcon());
 }
 
 void WebBrowser::updateUrl(const QUrl &url) {

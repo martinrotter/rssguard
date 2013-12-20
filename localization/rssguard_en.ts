@@ -676,11 +676,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>List of changes:
- %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Problem with application restart</source>
         <translation type="unfinished"></translation>
     </message>
@@ -694,11 +689,6 @@
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>List of errors:
- %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -762,23 +752,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 some keyboard shortcuts are not unique</source>
+        <source>some keyboard shortcuts are not unique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 external browser is not set</source>
+        <source>external browser is not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 language changed</source>
+        <source>List of errors:
+%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 icon theme changed</source>
+        <source>List of changes:
+%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 skin changed</source>
+        <source>language changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>icon theme changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>skin changed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

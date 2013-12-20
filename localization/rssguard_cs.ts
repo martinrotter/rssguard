@@ -682,12 +682,6 @@
         <translation>Kritická nastavení změněna</translation>
     </message>
     <message>
-        <source>List of changes:
- %1.</source>
-        <translation>Seznam změn:
- %1.</translation>
-    </message>
-    <message>
         <source>Problem with application restart</source>
         <translation>Problém s restartováním aplikace</translation>
     </message>
@@ -702,12 +696,6 @@
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
         <translation>Některá kritická nastavení nejsou vyplněna. Musíte je opravit než bude možné dialog potvrdit.</translation>
-    </message>
-    <message>
-        <source>List of errors:
- %1.</source>
-        <translation>Seznam chyb:
- %1.</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -770,23 +758,33 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 some keyboard shortcuts are not unique</source>
+        <source>some keyboard shortcuts are not unique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 external browser is not set</source>
+        <source>external browser is not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 language changed</source>
+        <source>List of errors:
+%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 icon theme changed</source>
+        <source>List of changes:
+%1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> u2022 skin changed</source>
+        <source>language changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>icon theme changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>skin changed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
