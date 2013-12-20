@@ -173,37 +173,31 @@ void FormSettings::displayProxyPassword(int state) {
 bool FormSettings::doSaveCheck() {
   bool everything_ok = true;
   QStringList resulting_information;
-  QMessageBox msg_error(this);
 
   // Setup indication of settings consistence.
   if (!m_ui->m_shortcuts->areShortcutsUnique()) {
     everything_ok = false;
-#if QT_VERSION >= 0x050000
-    resulting_information.append(tr(" \u2022 some keyboard shortcuts are not unique"));
-#else
-    resulting_information.append(trUtf8(" \u2022 some keyboard shortcuts are not unique"));
-#endif
+    resulting_information.append(tr("some keyboard shortcuts are not unique"));
   }
 
   if (m_ui->m_txtExternalBrowserExecutable->text().isEmpty() ||
       m_ui->m_txtExternalBrowserArguments->text().isEmpty()) {
     everything_ok = false;
-#if QT_VERSION >= 0x050000
-    resulting_information.append(tr(" \u2022 external browser is not set"));
-#else
-    resulting_information.append(trUtf8(" \u2022 external browser is not set"));
-#endif
+    resulting_information.append(tr("external browser is not set"));
   }
 
-  // Setup dialog.
-  msg_error.setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));
-  msg_error.setWindowTitle(tr("Cannot save settings"));
-  msg_error.setDetailedText(tr("List of errors:\n %1.").arg(resulting_information.join(",\n")));
-  msg_error.setIcon(QMessageBox::Critical);
-  msg_error.setStandardButtons(QMessageBox::Ok);
-  msg_error.setDefaultButton(QMessageBox::Ok);
-
   if (!everything_ok) {
+    resulting_information.replaceInStrings(QRegExp("^"),
+                                           QString::fromUtf8(" • "));
+
+    // Some critical errors occurred, display warnings.
+    QMessageBox msg_error(this);
+    msg_error.setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));
+    msg_error.setWindowTitle(tr("Cannot save settings"));
+    msg_error.setDetailedText(tr("List of errors:\n%1.").arg(resulting_information.join(",\n")));
+    msg_error.setIcon(QMessageBox::Critical);
+    msg_error.setStandardButtons(QMessageBox::Ok);
+    msg_error.setDefaultButton(QMessageBox::Ok);
     msg_error.exec();
   }
 
@@ -219,12 +213,16 @@ void FormSettings::loadWebBrowserColor(const QColor &color) {
 
 void FormSettings::promptForRestart() {
   if (m_changedDataTexts.count() > 0) {
-    QMessageBox msg_question(this);
+    QStringList changed_data_texts = m_changedDataTexts;
 
+    changed_data_texts.replaceInStrings(QRegExp("^"),
+                                           QString::fromUtf8(" • "));
+
+    QMessageBox msg_question(this);
     msg_question.setText(tr("Some critical settings were changed and will be applied after the application gets restarted."));
     msg_question.setInformativeText(tr("Do you want to restart now?"));
     msg_question.setWindowTitle(tr("Critical settings were changed"));
-    msg_question.setDetailedText(tr("List of changes:\n %1.").arg(m_changedDataTexts.join(",\n")));
+    msg_question.setDetailedText(tr("List of changes:\n%1.").arg(changed_data_texts.join(",\n")));
     msg_question.setIcon(QMessageBox::Question);
     msg_question.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msg_question.setDefaultButton(QMessageBox::Yes);
@@ -393,11 +391,7 @@ void FormSettings::saveLanguage() {
 
   // Save prompt for restart if language has changed.
   if (new_lang != actual_lang) {
-#if QT_VERSION >= 0x050000
-    m_changedDataTexts.append(tr(" \u2022 language changed"));
-#else
-    m_changedDataTexts.append(trUtf8(" \u2022 language changed"));
-#endif
+    m_changedDataTexts.append(tr("language changed"));
     settings->setValue(APP_CFG_GEN, "language", new_lang);
   }
 }
@@ -566,11 +560,7 @@ void FormSettings::saveInterface() {
 
   // Check if icon theme was changed.
   if (selected_icon_theme != original_icon_theme) {
-#if QT_VERSION >= 0x050000
-    m_changedDataTexts.append(tr(" \u2022 icon theme changed"));
-#else
-    m_changedDataTexts.append(trUtf8(" \u2022 icon theme changed"));
-#endif
+    m_changedDataTexts.append(tr("icon theme changed"));
   }
 
   // Save and activate new skin.
@@ -579,11 +569,7 @@ void FormSettings::saveInterface() {
 
     if (SkinFactory::getInstance()->getSelectedSkinName() != active_skin.m_baseName) {
       SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
-#if QT_VERSION >= 0x050000
-      m_changedDataTexts.append(tr(" \u2022 skin changed"));
-#else
-      m_changedDataTexts.append(trUtf8(" \u2022 skin changed"));
-#endif
+      m_changedDataTexts.append(tr("skin changed"));
     }
   }
 

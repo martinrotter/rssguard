@@ -30,7 +30,7 @@ IconThemeFactory *IconThemeFactory::getInstance() {
 }
 
 void IconThemeFactory::setupSearchPaths() {
-  QIcon::setThemeSearchPaths(QIcon::themeSearchPaths() << APP_THEME_PATH);
+  QIcon::setThemeSearchPaths(QStringList() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
          qPrintable(QIcon::themeSearchPaths().join(", ")));
 }

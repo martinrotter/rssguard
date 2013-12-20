@@ -25,8 +25,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelCategory();
 
-    // TODO: Otestovat metodu feeds.
-
     // Returns list of ALL feeds situated under this category.
     // NOTE: This is recursive.
     virtual QList<FeedsModelFeed*> feeds();
