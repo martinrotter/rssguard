@@ -167,7 +167,6 @@ void WebBrowser::clear() {
 }
 
 void WebBrowser::navigateToMessage(const Message &message) {
-
   m_webView->setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_title,
                                                                         tr("Written by ") + message.m_author,
                                                                         message.m_url,
