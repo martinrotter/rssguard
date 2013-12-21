@@ -348,7 +348,7 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
 
 void FeedsModel::assembleCategories(CategoryAssignment categories) {
   QHash<int, FeedsModelRootItem*> assignments;
-  assignments.insert(-1, m_rootItem);
+  assignments.insert(NO_PARENT_CATEGORY, m_rootItem);
 
   // Add top-level categories.
   while (!categories.isEmpty()) {

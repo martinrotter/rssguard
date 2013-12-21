@@ -15,6 +15,7 @@
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "core/messagesproxymodel.h"
+#include "core/settings.h"
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
@@ -26,6 +27,28 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   initialize();
   initializeViews();
   createConnections();
+
+  loadSize();
+}
+
+FeedMessageViewer::~FeedMessageViewer() {
+  qDebug("Destroying FeedMessageViewer instance.");
+
+  saveSize();
+}
+
+void FeedMessageViewer::saveSize() {
+  Settings::getInstance()->setValue(APP_CFG_GUI,
+                                    "splitter_feeds",
+                                    m_feedSplitter->saveState());
+  Settings::getInstance()->setValue(APP_CFG_GUI,
+                                    "splitter_messages",
+                                    m_messageSplitter->saveState());
+}
+
+void FeedMessageViewer::loadSize() {
+  m_feedSplitter->restoreState(Settings::getInstance()->value(APP_CFG_GUI, "splitter_feeds").toByteArray());
+  m_messageSplitter->restoreState(Settings::getInstance()->value(APP_CFG_GUI, "splitter_messages").toByteArray());
 }
 
 void FeedMessageViewer::createConnections() {
@@ -93,8 +116,8 @@ void FeedMessageViewer::initialize() {
 void FeedMessageViewer::initializeViews() {
   // Instantiate needed components.
   QVBoxLayout *central_layout = new QVBoxLayout(this);
-  QSplitter *feed_splitter = new QSplitter(Qt::Horizontal, this);
-  QSplitter *message_splitter = new QSplitter(Qt::Vertical, this);
+  m_feedSplitter = new QSplitter(Qt::Horizontal, this);
+  m_messageSplitter = new QSplitter(Qt::Vertical, this);
 
   // Set layout properties.
   central_layout->setMargin(0);
@@ -105,28 +128,24 @@ void FeedMessageViewer::initializeViews() {
   m_messagesView->setFrameStyle(QFrame::NoFrame);
 
   // Setup splitters.
-  message_splitter->setHandleWidth(1);
-  message_splitter->setChildrenCollapsible(false);
-  message_splitter->setStretchFactor(0, 1);
-  message_splitter->addWidget(m_messagesView);
-  message_splitter->addWidget(m_messagesBrowser);
+  m_messageSplitter->setHandleWidth(1);
+  m_messageSplitter->setChildrenCollapsible(false);
+  m_messageSplitter->setStretchFactor(0, 1);
+  m_messageSplitter->addWidget(m_messagesView);
+  m_messageSplitter->addWidget(m_messagesBrowser);
 
-  feed_splitter->setHandleWidth(1);
-  feed_splitter->setChildrenCollapsible(false);
-  feed_splitter->setStretchFactor(0, 1);
-  feed_splitter->addWidget(m_feedsView);
-  feed_splitter->addWidget(message_splitter);
+  m_feedSplitter->setHandleWidth(1);
+  m_feedSplitter->setChildrenCollapsible(false);
+  m_feedSplitter->setStretchFactor(0, 1);
+  m_feedSplitter->addWidget(m_feedsView);
+  m_feedSplitter->addWidget(m_messageSplitter);
 
   // Add toolbar and main feeds/messages widget to main layout.
   central_layout->addWidget(m_toolBar);
-  central_layout->addWidget(feed_splitter);
+  central_layout->addWidget(m_feedSplitter);
 
   // Set layout as active.
   setLayout(central_layout);
-}
-
-FeedMessageViewer::~FeedMessageViewer() {
-  qDebug("Destroying FeedMessageViewer instance.");
 }
 
 WebBrowser *FeedMessageViewer::webBrowser() {

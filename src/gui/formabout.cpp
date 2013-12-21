@@ -66,8 +66,8 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                              APP_REVISION,
                                                                              TextFactory::parseDateTime(QString("%1 %2").arg(__DATE__,
                                                                                                                              __TIME__)).toString(Qt::DefaultLocaleShortDate),
-                                                                             QT_VERSION_STR,
                                                                              qVersion(),
+                                                                             QT_VERSION_STR,
                                                                              APP_NAME));
 
   m_ui->m_txtInfo->setText(tr("<body>RSS Guard is a (very) tiny feed reader."

@@ -22,12 +22,12 @@
 #define APP_VERSION         "@APP_VERSION@"
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
 
-#define TEXT_TITLE_LIMIT    30
-#define MAX_ZOOM_FACTOR     10.0
-#define ICON_SIZE_SETTINGS  16
-#define DATABASE_DRIVER     "QSQLITE"
-#define NO_PARENT_FEED      -1
-#define NO_PARENT_CATEGORY  -1
+#define TEXT_TITLE_LIMIT        30
+#define MAX_ZOOM_FACTOR         10.0
+#define ICON_SIZE_SETTINGS      16
+#define DATABASE_DRIVER         "QSQLITE"
+#define NO_PARENT_CATEGORY        -1
+#define TRAY_ICON_BUBBLE_TIMEOUT  15000
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"

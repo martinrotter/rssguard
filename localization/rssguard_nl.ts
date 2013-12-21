@@ -177,7 +177,7 @@
     </message>
     <message>
         <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;body&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termenvan de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a ref=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website &lt;/li&gt;&lt;ul&gt;U kunt de broncode voor RSS Guard verkrijgen op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht(C)2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -416,15 +416,15 @@
     </message>
     <message>
         <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten van geselekteerde feeds als gelezen. Dit zal GEEN bericht filters meenemen in account.</translation>
     </message>
     <message>
         <source>Mark all messages from selected feeds unread. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten van geselekteerde feeds als ongelezen. Dit zal GEEN bericht filters meenemen in account.</translation>
     </message>
     <message>
         <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van geselekteerde feeds. Dit zal GEEN bericht filters meenemen in account.</translation>
     </message>
 </context>
 <context>
@@ -747,15 +747,15 @@
     </message>
     <message>
         <source>Current color</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidige kleur</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbaar bestand van webbrowser</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter voor exe</translation>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
@@ -858,47 +858,47 @@
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Id van het bericht.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"></translation>
+        <translation>Is bericht gelezen?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Is bericht verwijderd?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"></translation>
+        <translation>IS bericht belangrijk?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Id van feed waar dit bericht bijhoort.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel van het bericht.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Url van het bericht.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>De schrijver van het bericht.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanmaakdatum van het bericht.</translation>
     </message>
     <message>
         <source>Date of the most recent update of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum van het meest recente update van het bericht.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhoud van het bericht.</translation>
     </message>
 </context>
 <context>
@@ -945,39 +945,44 @@
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
     </message>
     <message>
         <source>ATOM 1.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RDF 1.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RSS 0.90/0.91/0.92</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RSS 2.0/2.0.1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>%1
 
 Category type: standard
 Creation date: %2%3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+
+Categorie type: standaard
+aanmaakdatum: %2%3</translation>
     </message>
     <message>
         <source>
 
 This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Deze categorie bevat geen nested items.</translation>
     </message>
     <message>
         <source>%1
@@ -986,7 +991,12 @@ Feed type: %2
 URL: %3
 Encoding: %4
 Language: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+
+Feed type: %2
+URL: %3
+Encodering: %4
+Taal: %5</translation>
     </message>
 </context>
 <context>

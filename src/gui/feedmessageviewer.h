@@ -8,6 +8,7 @@ class WebBrowser;
 class FeedsView;
 class MessagesView;
 class QToolBar;
+class QSplitter;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -19,6 +20,12 @@ class FeedMessageViewer : public TabContent {
 
     // WebBrowser getter from TabContent interface.
     WebBrowser *webBrowser();
+
+    // Loads/saves sizes and states of ALL
+    // underlying widgets, this contains primarily
+    // splitters, toolbar and views.
+    void saveSize();
+    void loadSize();
 
   protected:
     // Initializes some properties of the widget.
@@ -32,6 +39,9 @@ class FeedMessageViewer : public TabContent {
 
   private:
     QToolBar *m_toolBar;
+
+    QSplitter *m_feedSplitter;
+    QSplitter *m_messageSplitter;
 
     MessagesView *m_messagesView;
     FeedsView *m_feedsView;

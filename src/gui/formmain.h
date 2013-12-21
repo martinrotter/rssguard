@@ -48,6 +48,10 @@ class FormMain : public QMainWindow {
     // kind of method and catch ThemeFactoryEvent::type() in its event handler.
     void setupIcons();
 
+    // Loads saves visual state of the application.
+    void setupSize();
+    void saveSize();
+
   public slots:
     // Processes incoming message from another RSS Guard instance.
     void processExecutionMessage(const QString &message);

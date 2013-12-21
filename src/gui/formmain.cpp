@@ -1,6 +1,8 @@
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QSessionManager>
+#include <QRect>
+#include <QDesktopWidget>
 
 #include "gui/formmain.h"
 #include "gui/formabout.h"
@@ -35,6 +37,7 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
   m_ui->m_tabWidget->initializeTabs();
 
   setupIcons();
+  setupSize();
 }
 
 FormMain::~FormMain() {
@@ -86,7 +89,7 @@ QList<QAction*> FormMain::getActions() {
              m_ui->m_actionEditSelectedFeed <<
              m_ui->m_actionDeleteSelectedFeeds;
 
-             return actions;
+  return actions;
 }
 
 void FormMain::prepareMenus() {
@@ -109,7 +112,17 @@ void FormMain::prepareMenus() {
 void FormMain::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.",
          qPrintable(message));
-  display();
+
+  if (message == APP_IS_RUNNING) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::getInstance()->showMessage(APP_NAME,
+                                                 tr("Application is already running."),
+                                                 QSystemTrayIcon::Information,
+                                                 TRAY_ICON_BUBBLE_TIMEOUT);
+    }
+
+    display();
+  }
 }
 
 void FormMain::quit() {
@@ -155,6 +168,8 @@ void FormMain::onCommitData(QSessionManager &manager) {
 
 void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state before it exits.");
+
+  saveSize();
 }
 
 bool FormMain::event(QEvent *event) {
@@ -204,6 +219,22 @@ void FormMain::setupIcons() {
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
+}
+
+void FormMain::setupSize() {
+  QRect screen = qApp->desktop()->screenGeometry();
+
+  resize(Settings::getInstance()->value(APP_CFG_GUI,
+                                        "window_size",
+                                        size()).toSize());
+  move(Settings::getInstance()->value(APP_CFG_GUI,
+                                      "window_position",
+                                      screen.center() - rect().center()).toPoint());
+}
+
+void FormMain::saveSize() {
+  Settings::getInstance()->setValue(APP_CFG_GUI, "window_position", pos());
+  Settings::getInstance()->setValue(APP_CFG_GUI, "window_size", size());
 }
 
 void FormMain::createConnections() {
