@@ -209,7 +209,7 @@ void FeedsModel::loadFromDatabase() {
   FeedAssignment feeds;
 
   // Obtain data for categories from the database.
-  QSqlQuery query_categories = database.exec("SELECT * FROM Categories;");
+  QSqlQuery query_categories("SELECT * FROM Categories;", database);
 
   if (query_categories.lastError().isValid()) {
     qFatal("Query for obtaining categories failed.");
@@ -238,7 +238,7 @@ void FeedsModel::loadFromDatabase() {
   }
 
   // All categories are now loaded.
-  QSqlQuery query_feeds = database.exec("SELECT * FROM Feeds;");
+  QSqlQuery query_feeds("SELECT * FROM Feeds;", database);
 
   if (query_feeds.lastError().isValid()) {
     qFatal("Query for obtaining feeds failed.");

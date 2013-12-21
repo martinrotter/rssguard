@@ -72,19 +72,20 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
            qPrintable(database.lastError().text()));
   }
   else {
-    // TODO: smazat QSQLDatabase::exec() všude
-    // a nahradit jej funkcí QSQLquery::exec()
+    QSqlQuery query_db(database);
 
-    database.exec("PRAGMA encoding = \"UTF-8\"");
-    database.exec("PRAGMA synchronous = OFF");
-    database.exec("PRAGMA journal_mode = MEMORY");
-    database.exec("PRAGMA count_changes = OFF");
-    database.exec("PRAGMA temp_store = MEMORY");
+    // TODO: smazat QSQLDatabase::exec() všude
+    // a nahradit jej funkcí QSQLquery::exec()   
+    query_db.exec("PRAGMA encoding = \"UTF-8\"");
+    query_db.exec("PRAGMA synchronous = OFF");
+    query_db.exec("PRAGMA journal_mode = MEMORY");
+    query_db.exec("PRAGMA count_changes = OFF");
+    query_db.exec("PRAGMA temp_store = MEMORY");
 
     // Sample query which checks for existence of tables.
-    QSqlQuery query = database.exec("SELECT value FROM Information WHERE key = 'schema_version'");
+    query_db.exec("SELECT value FROM Information WHERE key = 'schema_version'");
 
-    if (query.lastError().isValid()) {
+    if (query_db.lastError().isValid()) {
       qWarning("Error occurred. Database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_FILE);
@@ -97,29 +98,30 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 
       QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
                                                                   QString::SkipEmptyParts);
-      database.exec("BEGIN TRANSACTION");
+      query_db.exec("BEGIN TRANSACTION");
 
       foreach(const QString &statement, statements) {
-        query = database.exec(statement);
-        if (query.lastError().isValid()) {
+        query_db.exec(statement);
+
+        if (query_db.lastError().isValid()) {
           qFatal("Database initialization failed. Initialization script '%s' is not correct.",
                  APP_DB_INIT_FILE);
         }
       }
 
-      database.exec("COMMIT");
+      query_db.exec("COMMIT");
       qDebug("Database backend should be ready now.");
     }
     else {
-      query.next();
+      query_db.next();
 
       qDebug("Database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
-      qDebug("Database has version '%s'.", qPrintable(query.value(0).toString()));
+      qDebug("Database has version '%s'.", qPrintable(query_db.value(0).toString()));
     }
 
-    query.finish();
+    query_db.finish();
   }
 
   return database;
