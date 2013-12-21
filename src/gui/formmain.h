@@ -1,10 +1,10 @@
 #ifndef FORMMAIN_H
 #define FORMMAIN_H
 
+#include "ui_formmain.h"
+
 #include <QMainWindow>
 #include <QUrl>
-
-#include "ui_formmain.h"
 
 
 class FormMain : public QMainWindow {

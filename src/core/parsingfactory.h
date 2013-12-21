@@ -1,9 +1,9 @@
 #ifndef PARSINGFACTORY_H
 #define PARSINGFACTORY_H
 
-#include <QNetworkReply>
-
 #include "core/messagesmodel.h"
+
+#include <QList>
 
 
 class ParsingFactory {

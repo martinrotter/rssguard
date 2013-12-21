@@ -1,9 +1,10 @@
-#include <QNetworkReply>
-#include <QWebFrame>
+#include "core/basewebpage.h"
 
 #include "core/webbrowsernetworkaccessmanager.h"
-#include "core/basewebpage.h"
 #include "gui/webbrowser.h"
+
+#include <QNetworkReply>
+#include <QWebFrame>
 
 
 BaseWebPage::BaseWebPage(QObject *parent)

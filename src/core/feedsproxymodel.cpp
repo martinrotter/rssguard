@@ -1,9 +1,10 @@
 #include "core/feedsproxymodel.h"
+
+#include "core/defs.h"
 #include "core/feedsmodel.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
 #include "core/feedsmodelrootitem.h"
-#include "core/defs.h"
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)

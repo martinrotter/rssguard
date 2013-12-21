@@ -1,10 +1,11 @@
+#include "core/feedsmodelfeed.h"
+
+#include "core/databasefactory.h"
+
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
-
-#include "core/databasefactory.h"
-#include "core/feedsmodelfeed.h"
 
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)

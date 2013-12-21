@@ -1,13 +1,14 @@
+#include "gui/systemtrayicon.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+#include "gui/formmain.h"
+#include "gui/formsettings.h"
+#include "qtsingleapplication/qtsingleapplication.h"
+
 #include <QPainter>
 #include <QTimer>
 #include <QMessageBox>
-
-#include "gui/systemtrayicon.h"
-#include "gui/formmain.h"
-#include "gui/formsettings.h"
-#include "core/settings.h"
-#include "core/defs.h"
-#include "qtsingleapplication/qtsingleapplication.h"
 
 
 #if defined(Q_OS_WIN)

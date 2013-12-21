@@ -1,9 +1,10 @@
-#include <QVariant>
-
-#include "core/textfactory.h"
 #include "core/feedsmodelstandardcategory.h"
+
 #include "core/defs.h"
+#include "core/textfactory.h"
 #include "gui/iconfactory.h"
+
+#include <QVariant>
 
 
 FeedsModelStandardCategory::FeedsModelStandardCategory(FeedsModelRootItem *parent_item)

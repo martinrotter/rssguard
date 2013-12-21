@@ -1,3 +1,16 @@
+#include "gui/webbrowser.h"
+
+#include "core/defs.h"
+#include "core/basenetworkaccessmanager.h"
+#include "core/webbrowsernetworkaccessmanager.h"
+#include "core/basewebpage.h"
+#include "gui/skinfactory.h"
+#include "gui/basewebview.h"
+#include "gui/formmain.h"
+#include "gui/locationlineedit.h"
+#include "gui/iconthemefactory.h"
+#include "gui/tabwidget.h"
+
 #include <QVBoxLayout>
 #include <QToolBar>
 #include <QAction>
@@ -6,22 +19,9 @@
 #include <QWebFrame>
 #include <QWidgetAction>
 #include <QSlider>
-
 #include <QLabel>
 #include <QMessageBox>
 #include <QToolButton>
-
-#include "core/defs.h"
-#include "core/basenetworkaccessmanager.h"
-#include "core/webbrowsernetworkaccessmanager.h"
-#include "core/basewebpage.h"
-#include "gui/skinfactory.h"
-#include "gui/basewebview.h"
-#include "gui/webbrowser.h"
-#include "gui/formmain.h"
-#include "gui/locationlineedit.h"
-#include "gui/iconthemefactory.h"
-#include "gui/tabwidget.h"
 
 
 QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;

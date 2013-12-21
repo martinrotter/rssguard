@@ -1,12 +1,13 @@
+#include "gui/skinfactory.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+
 #include <QApplication>
 #include <QDomDocument>
 #include <QDir>
 #include <QXmlQuery>
 #include <QStyleFactory>
-
-#include "core/defs.h"
-#include "core/settings.h"
-#include "gui/skinfactory.h"
 
 
 QPointer<SkinFactory> SkinFactory::s_instance;
@@ -72,7 +73,7 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
 
   if (!raw_data.isEmpty()) {
     QString parsed_data = raw_data.replace("##",
-                                           APP_SKIN_PATH + "/" +
+                                           APP_SKIN_PATH + '/' +
                                            skin_folder + "/images");
     qApp->setStyleSheet(parsed_data);
   }
@@ -119,7 +120,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   // Obtain visible skin name.
   query.setQuery("string(skin/name)");
   query.evaluateTo(&skin.m_visibleName);
-  skin.m_visibleName = skin.m_visibleName.remove("\n");
+  skin.m_visibleName = skin.m_visibleName.remove('\n');
 
   // Obtain skin raw data.
   query.setQuery("string(skin/data)");
@@ -129,22 +130,22 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   // Obtain style name.
   query.setQuery("string(/skin/style)");
   query.evaluateTo(&styles);
-  skin.m_stylesNames = styles.remove("\n").split(",", QString::SkipEmptyParts);
+  skin.m_stylesNames = styles.remove('\n').split(",", QString::SkipEmptyParts);
 
   // Obtain author.
   query.setQuery("string(/skin/author/name)");
   query.evaluateTo(&skin.m_author);
-  skin.m_author = skin.m_author.remove("\n");
+  skin.m_author = skin.m_author.remove('\n');
 
   // Obtain email.
   query.setQuery("string(/skin/author/email)");
   query.evaluateTo(&skin.m_email);
-  skin.m_email = skin.m_email.remove("\n");
+  skin.m_email = skin.m_email.remove('\n');
 
   // Obtain version.
   query.setQuery("string(/skin/@version)");
   query.evaluateTo(&skin.m_version);
-  skin.m_version = skin.m_version.remove("\n");
+  skin.m_version = skin.m_version.remove('\n');
 
   // Obtain layout markup.
   query.setQuery("string(/skin/markup)");

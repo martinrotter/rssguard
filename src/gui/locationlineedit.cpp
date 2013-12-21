@@ -1,11 +1,12 @@
+#include "gui/locationlineedit.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+
 #include <QPaintEvent>
 #include <QStyleOptionFrameV2>
 #include <QPainter>
 #include <QApplication>
-
-#include "core/defs.h"
-#include "core/settings.h"
-#include "gui/locationlineedit.h"
 
 
 LocationLineEdit::LocationLineEdit(QWidget *parent)

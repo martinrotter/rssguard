@@ -1,6 +1,6 @@
-#include <QKeyEvent>
-
 #include "gui/baselineedit.h"
+
+#include <QKeyEvent>
 
 
 BaseLineEdit::BaseLineEdit(QWidget *parent) : QLineEdit(parent) {

@@ -1,21 +1,22 @@
-#include <QMessageBox>
-#include <QProcess>
-#include <QNetworkProxy>
-#include <QColorDialog>
-#include <QFileDialog>
-
 #include "gui/formsettings.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+#include "core/localization.h"
+#include "core/systemfactory.h"
+#include "core/dynamicshortcuts.h"
+#include "core/webbrowsernetworkaccessmanager.h"
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/formmain.h"
 #include "gui/webbrowser.h"
-#include "core/settings.h"
-#include "core/defs.h"
-#include "core/localization.h"
-#include "core/systemfactory.h"
-#include "core/dynamicshortcuts.h"
-#include "core/webbrowsernetworkaccessmanager.h"
+
+#include <QMessageBox>
+#include <QProcess>
+#include <QNetworkProxy>
+#include <QColorDialog>
+#include <QFileDialog>
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -78,7 +79,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(onProxyTypeChanged(int)));
   connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)),
           this, SLOT(displayProxyPassword(int)));
-  connect(m_ui->m_btnBrowserProgressColor, SIGNAL(clicked()),
+  connect(m_ui->m_btnWebBrowserColorSample, SIGNAL(clicked()),
           this, SLOT(changeBrowserProgressColor()));
   connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
           this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
@@ -98,6 +99,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 }
 
 FormSettings::~FormSettings() {
+  qDebug("Destroying FormSettings distance.");
   delete m_ui;
 }
 
@@ -118,14 +120,17 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
 }
 
 void FormSettings::changeBrowserProgressColor() {
-  QColorDialog color_dialog(m_initialSettings.m_webBrowserProgress, this);
-  color_dialog.setWindowTitle(tr("Select color for web browser progress bar"));
-  color_dialog.setOption(QColorDialog::ShowAlphaChannel);
+  QPointer<QColorDialog> color_dialog = new QColorDialog(m_initialSettings.m_webBrowserProgress,
+                                                             this);
+  color_dialog.data()->setWindowTitle(tr("Select color for web browser progress bar"));
+  color_dialog.data()->setOption(QColorDialog::ShowAlphaChannel);
 
-  if (color_dialog.exec() == QDialog::Accepted) {
-    m_initialSettings.m_webBrowserProgress = color_dialog.selectedColor();
+  if (color_dialog.data()->exec() == QDialog::Accepted) {
+    m_initialSettings.m_webBrowserProgress = color_dialog.data()->selectedColor();
     loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
   }
+
+  delete color_dialog.data();
 }
 
 void FormSettings::selectBrowserExecutable() {
@@ -191,14 +196,16 @@ bool FormSettings::doSaveCheck() {
                                            QString::fromUtf8(" • "));
 
     // Some critical errors occurred, display warnings.
-    QMessageBox msg_error(this);
-    msg_error.setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));
-    msg_error.setWindowTitle(tr("Cannot save settings"));
-    msg_error.setDetailedText(tr("List of errors:\n%1.").arg(resulting_information.join(",\n")));
-    msg_error.setIcon(QMessageBox::Critical);
-    msg_error.setStandardButtons(QMessageBox::Ok);
-    msg_error.setDefaultButton(QMessageBox::Ok);
-    msg_error.exec();
+    QPointer<QMessageBox> msg_error = new QMessageBox(this);
+    msg_error.data()->setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));
+    msg_error.data()->setWindowTitle(tr("Cannot save settings"));
+    msg_error.data()->setDetailedText(tr("List of errors:\n%1.").arg(resulting_information.join(",\n")));
+    msg_error.data()->setIcon(QMessageBox::Critical);
+    msg_error.data()->setStandardButtons(QMessageBox::Ok);
+    msg_error.data()->setDefaultButton(QMessageBox::Ok);
+    msg_error.data()->exec();
+
+    delete msg_error.data();
   }
 
   return everything_ok;
@@ -218,16 +225,20 @@ void FormSettings::promptForRestart() {
     changed_data_texts.replaceInStrings(QRegExp("^"),
                                            QString::fromUtf8(" • "));
 
-    QMessageBox msg_question(this);
-    msg_question.setText(tr("Some critical settings were changed and will be applied after the application gets restarted."));
-    msg_question.setInformativeText(tr("Do you want to restart now?"));
-    msg_question.setWindowTitle(tr("Critical settings were changed"));
-    msg_question.setDetailedText(tr("List of changes:\n%1.").arg(changed_data_texts.join(",\n")));
-    msg_question.setIcon(QMessageBox::Question);
-    msg_question.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    msg_question.setDefaultButton(QMessageBox::Yes);
+    QPointer<QMessageBox> msg_question = new QMessageBox(this);
+    msg_question.data()->setText(tr("Some critical settings were changed and will be applied after the application gets restarted."));
+    msg_question.data()->setInformativeText(tr("Do you want to restart now?"));
+    msg_question.data()->setWindowTitle(tr("Critical settings were changed"));
+    msg_question.data()->setDetailedText(tr("List of changes:\n%1.").arg(changed_data_texts.join(",\n")));
+    msg_question.data()->setIcon(QMessageBox::Question);
+    msg_question.data()->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msg_question.data()->setDefaultButton(QMessageBox::Yes);
 
-    if (msg_question.exec() == QMessageBox::Yes) {
+    int question_result = msg_question.data()->exec();
+
+    delete msg_question.data();
+
+    if (question_result == QMessageBox::Yes) {
       if (!QProcess::startDetached(qApp->applicationFilePath())) {
         QMessageBox::warning(this,
                              tr("Problem with application restart"),
@@ -364,7 +375,7 @@ void FormSettings::loadLanguage() {
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, QIcon(APP_FLAGS_PATH + "/" + language.m_code + ".png"));
+    item->setIcon(0, QIcon(APP_FLAGS_PATH + '/' + language.m_code + ".png"));
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::getInstance()->value(APP_CFG_GEN,

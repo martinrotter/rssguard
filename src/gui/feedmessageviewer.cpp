@@ -1,3 +1,13 @@
+#include "gui/feedmessageviewer.h"
+
+#include "core/settings.h"
+#include "core/messagesproxymodel.h"
+#include "gui/webbrowser.h"
+#include "gui/formmain.h"
+#include "gui/iconthemefactory.h"
+#include "gui/messagesview.h"
+#include "gui/feedsview.h"
+
 #include <QVBoxLayout>
 #include <QSplitter>
 #include <QToolBar>
@@ -7,15 +17,6 @@
 #include <QToolButton>
 #include <QMenu>
 #include <QWidgetAction>
-
-#include "gui/feedmessageviewer.h"
-#include "gui/webbrowser.h"
-#include "gui/formmain.h"
-#include "gui/iconthemefactory.h"
-#include "gui/messagesview.h"
-#include "gui/feedsview.h"
-#include "core/messagesproxymodel.h"
-#include "core/settings.h"
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)

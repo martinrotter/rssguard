@@ -1,14 +1,14 @@
-#include <QSqlRecord>
-#include <QSqlError>
-#include <QSqlQuery>
-
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "core/messagesmodel.h"
 
 #include "core/defs.h"
 #include "core/textfactory.h"
-#include "core/messagesmodel.h"
 #include "core/databasefactory.h"
 #include "gui/iconthemefactory.h"
+#include "qtsingleapplication/qtsingleapplication.h"
+
+#include <QSqlRecord>
+#include <QSqlError>
+#include <QSqlQuery>
 
 
 MessagesModel::MessagesModel(QObject *parent)

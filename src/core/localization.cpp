@@ -1,11 +1,12 @@
+#include "core/localization.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+#include "qtsingleapplication/qtsingleapplication.h"
+
 #include <QTranslator>
 #include <QDir>
 #include <QFileInfoList>
-
-#include "qtsingleapplication/qtsingleapplication.h"
-#include "core/localization.h"
-#include "core/defs.h"
-#include "core/settings.h"
 
 
 Localization::Localization() {

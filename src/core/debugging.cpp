@@ -1,8 +1,9 @@
-#include <QApplication>
-#include <QDir>
+#include "core/debugging.h"
 
 #include "core/defs.h"
-#include "core/debugging.h"
+
+#include <QApplication>
+#include <QDir>
 
 #include <cstdio>
 

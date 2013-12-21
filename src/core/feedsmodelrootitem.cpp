@@ -1,7 +1,8 @@
-#include <QVariant>
+#include "core/feedsmodelrootitem.h"
 
 #include "qtsingleapplication/qtsingleapplication.h"
-#include "core/feedsmodelrootitem.h"
+
+#include <QVariant>
 
 
 FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)

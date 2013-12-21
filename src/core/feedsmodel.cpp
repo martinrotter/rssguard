@@ -1,15 +1,16 @@
+#include "core/feedsmodel.h"
+
+#include "core/defs.h"
+#include "core/databasefactory.h"
+#include "core/feedsmodelstandardcategory.h"
+#include "core/feedsmodelstandardfeed.h"
+#include "gui/iconthemefactory.h"
+#include "gui/iconfactory.h"
+
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
-
-#include "core/feedsmodel.h"
-#include "core/feedsmodelstandardcategory.h"
-#include "core/feedsmodelstandardfeed.h"
-#include "core/defs.h"
-#include "core/databasefactory.h"
-#include "gui/iconthemefactory.h"
-#include "gui/iconfactory.h"
 
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
@@ -330,7 +331,7 @@ QHash<int, FeedsModelCategory *> FeedsModel::getCategories() {
 void FeedsModel::assembleFeeds(FeedAssignment feeds) {
   QHash<int, FeedsModelCategory*> categories = getCategories();
 
-  foreach (FeedAssignmentItem feed, feeds) {
+  foreach (const FeedAssignmentItem &feed, feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
       // This is top-level feed, add it to the root item.
       m_rootItem->appendChild(feed.second);

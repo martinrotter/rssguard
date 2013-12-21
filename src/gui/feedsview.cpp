@@ -1,11 +1,13 @@
-#include <QHeaderView>
-
-#include "core/feedsmodelfeed.h"
 #include "gui/feedsview.h"
+
+#include "core/defs.h"
+#include "core/feedsmodelfeed.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
-#include "core/defs.h"
+
+
+#include <QHeaderView>
 
 
 FeedsView::FeedsView(QWidget *parent) : QTreeView(parent) {

@@ -1,15 +1,16 @@
+#include "gui/messagesview.h"
+
+#include "core/messagesproxymodel.h"
+#include "core/messagesmodel.h"
+#include "core/settings.h"
+#include "gui/formmain.h"
+
 #include <QHeaderView>
 #include <QKeyEvent>
 #include <QScrollBar>
 #include <QMenu>
 #include <QMessageBox>
 #include <QProcess>
-
-#include "gui/messagesview.h"
-#include "gui/formmain.h"
-#include "core/messagesproxymodel.h"
-#include "core/messagesmodel.h"
-#include "core/settings.h"
 
 
 MessagesView::MessagesView(QWidget *parent)

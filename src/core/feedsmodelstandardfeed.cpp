@@ -1,9 +1,10 @@
-#include <QVariant>
+#include "core/feedsmodelstandardfeed.h"
 
 #include "core/defs.h"
 #include "gui/iconfactory.h"
 #include "gui/iconthemefactory.h"
-#include "core/feedsmodelstandardfeed.h"
+
+#include <QVariant>
 
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)

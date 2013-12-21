@@ -1,12 +1,13 @@
+#include "core/databasefactory.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+
 #include <QApplication>
 #include <QDir>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
-
-#include "core/defs.h"
-#include "core/databasefactory.h"
-#include "core/settings.h"
 
 
 QPointer<DatabaseFactory> DatabaseFactory::s_instance;
@@ -74,8 +75,6 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
   else {
     QSqlQuery query_db(database);
 
-    // TODO: smazat QSQLDatabase::exec() všude
-    // a nahradit jej funkcí QSQLquery::exec()   
     query_db.exec("PRAGMA encoding = \"UTF-8\"");
     query_db.exec("PRAGMA synchronous = OFF");
     query_db.exec("PRAGMA journal_mode = MEMORY");

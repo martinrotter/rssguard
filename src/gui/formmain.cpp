@@ -1,10 +1,7 @@
-#include <QCloseEvent>
-#include <QMessageBox>
-#include <QSessionManager>
-#include <QRect>
-#include <QDesktopWidget>
-
 #include "gui/formmain.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/webbrowser.h"
@@ -12,10 +9,14 @@
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "gui/statusbar.h"
-#include "core/settings.h"
 #include "gui/feedmessageviewer.h"
-#include "core/defs.h"
 #include "qtsingleapplication/qtsingleapplication.h"
+
+#include <QCloseEvent>
+#include <QMessageBox>
+#include <QSessionManager>
+#include <QRect>
+#include <QDesktopWidget>
 
 
 FormMain *FormMain::s_instance;
@@ -314,12 +315,18 @@ void FormMain::closeEvent(QCloseEvent *event) {
 }
 
 void FormMain::showAbout() {
-  FormAbout(this).exec();
+  QPointer<FormAbout> form_pointer = new FormAbout(this);
+  form_pointer.data()->exec();
+  delete form_pointer.data();
 }
 
 void FormMain::showSettings() {
-  if (FormSettings(this).exec() == QDialog::Accepted) {
+  QPointer<FormSettings> form_pointer = new FormSettings(this);
+
+  if (form_pointer.data()->exec() == QDialog::Accepted) {
     // User applied new settings, reload neede components.
     m_ui->m_tabWidget->checkTabBarVisibility();
   }
+
+  delete form_pointer.data();
 }

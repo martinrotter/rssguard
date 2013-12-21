@@ -1,9 +1,10 @@
+#include "gui/formwelcome.h"
+
+#include "core/defs.h"
+
 #include <QDesktopServices>
 #include <QUrl>
 #include <QDesktopWidget>
-
-#include "gui/formwelcome.h"
-#include "core/defs.h"
 
 
 FormWelcome::FormWelcome(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormWelcome) {

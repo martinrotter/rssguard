@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>803</width>
+    <width>808</width>
     <height>410</height>
    </rect>
   </property>
@@ -69,8 +69,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>559</width>
-            <height>363</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -147,8 +147,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>553</width>
-                <height>337</height>
+                <width>195</width>
+                <height>238</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -437,27 +437,13 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="m_btnBrowserProgressColor">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="text">
-                <string>&amp;Change...</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_2">
-               <property name="text">
-                <string>Current color</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QToolButton" name="m_btnWebBrowserColorSample">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="autoFillBackground">
                 <bool>true</bool>
                </property>
@@ -933,22 +919,6 @@
     <hint type="destinationlabel">
      <x>508</x>
      <y>151</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_checkBrowserProgressColor</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_btnBrowserProgressColor</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>300</x>
-     <y>48</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>577</x>
-     <y>63</y>
     </hint>
    </hints>
   </connection>

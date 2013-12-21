@@ -1,10 +1,10 @@
 #ifndef FEEDSMODELSTANDARDCATEGORY_H
 #define FEEDSMODELSTANDARDCATEGORY_H
 
+#include "core/feedsmodelcategory.h"
+
 #include <QSqlRecord>
 #include <QDateTime>
-
-#include "core/feedsmodelcategory.h"
 
 
 // Represents STANDARD category container.

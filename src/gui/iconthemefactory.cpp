@@ -1,14 +1,15 @@
+#include "gui/iconthemefactory.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+#include "qtsingleapplication/qtsingleapplication.h"
+
 #include <QIcon>
 #include <QFile>
 #include <QDir>
 #include <QPointer>
 #include <QApplication>
 #include <QHash>
-
-#include "gui/iconthemefactory.h"
-#include "qtsingleapplication/qtsingleapplication.h"
-#include "core/settings.h"
-#include "core/defs.h"
 
 
 QPointer<IconThemeFactory> IconThemeFactory::s_instance;

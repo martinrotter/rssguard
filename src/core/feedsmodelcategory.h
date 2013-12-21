@@ -1,9 +1,9 @@
 #ifndef FEEDSMODELCLASSICCATEGORY_H
 #define FEEDSMODELCLASSICCATEGORY_H
 
-#include <QDateTime>
-
 #include "core/feedsmodelrootitem.h"
+
+#include <QDateTime>
 
 
 class FeedsModelFeed;

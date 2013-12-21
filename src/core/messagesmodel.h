@@ -1,12 +1,12 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
+#include "core/defs.h"
+
 #include <QSqlTableModel>
 #include <QFont>
 #include <QIcon>
 #include <QDateTime>
-
-#include "core/defs.h"
 
 
 // Represents single message.

@@ -1,3 +1,11 @@
+#include "gui/basewebview.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+#include "core/basewebpage.h"
+#include "gui/skinfactory.h"
+#include "gui/iconthemefactory.h"
+
 #include <QStyleOptionFrameV3>
 #include <QAction>
 #include <QMenu>
@@ -6,13 +14,6 @@
 #include <QWebFrame>
 #include <QContextMenuEvent>
 #include <QDateTime>
-
-#include "core/defs.h"
-#include "core/settings.h"
-#include "core/basewebpage.h"
-#include "gui/basewebview.h"
-#include "gui/skinfactory.h"
-#include "gui/iconthemefactory.h"
 
 
 BaseWebView::BaseWebView(QWidget *parent)

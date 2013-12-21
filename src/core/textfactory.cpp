@@ -1,10 +1,11 @@
+#include "core/textfactory.h"
+
+#include "core/defs.h"
+
 #include <QString>
 #include <QStringList>
 #include <QLocale>
 #include <QRegExp>
-
-#include "core/defs.h"
-#include "core/textfactory.h"
 
 
 TextFactory::TextFactory() {

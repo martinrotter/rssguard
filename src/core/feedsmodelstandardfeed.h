@@ -1,10 +1,10 @@
 #ifndef FEEDSMODELSTANDARDFEED_H
 #define FEEDSMODELSTANDARDFEED_H
 
+#include "core/feedsmodelfeed.h"
+
 #include <QDateTime>
 #include <QSqlRecord>
-
-#include "core/feedsmodelfeed.h"
 
 
 // Represents STANDARD RSS/RDF/ATOM feed with no

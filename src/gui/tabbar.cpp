@@ -1,8 +1,9 @@
-#include <QMouseEvent>
+#include "gui/tabbar.h"
 
 #include "core/defs.h"
 #include "core/settings.h"
-#include "gui/tabbar.h"
+
+#include <QMouseEvent>
 
 
 TabBar::TabBar(QWidget *parent) : QTabBar(parent) {

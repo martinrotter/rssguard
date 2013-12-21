@@ -1,12 +1,5 @@
-// Needed for setting ini file format on Mac OS.
-#ifdef Q_OS_MAC
-#include <QSettings>
-#endif
-
-#include <QTranslator>
-
-#include "core/databasefactory.h"
 #include "core/defs.h"
+#include "core/databasefactory.h"
 #include "core/debugging.h"
 #include "core/localization.h"
 #include "core/settings.h"
@@ -18,6 +11,12 @@
 #include "gui/systemtrayicon.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
+// Needed for setting ini file format on Mac OS.
+#ifdef Q_OS_MAC
+#include <QSettings>
+#endif
+
+#include <QTranslator>
 
 
 // TODO: Check if extra UNIX signalling is needed.

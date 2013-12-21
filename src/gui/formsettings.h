@@ -1,9 +1,9 @@
 #ifndef FORMSETTINGS_H
 #define FORMSETTINGS_H
 
-#include <QDialog>
-
 #include "ui_formsettings.h"
+
+#include <QDialog>
 
 
 namespace Ui {

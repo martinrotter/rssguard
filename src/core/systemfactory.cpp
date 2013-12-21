@@ -1,15 +1,17 @@
+#include "core/systemfactory.h"
+
+#include "core/defs.h"
+
+#if defined(Q_OS_WIN)
+#include "qtsingleapplication/qtsingleapplication.h"
+
+#include <QSettings>
+#endif
+
 #include <QString>
 #include <QFile>
 #include <QApplication>
 #include <QReadWriteLock>
-
-#if defined(Q_OS_WIN)
-#include <QSettings>
-#include "qtsingleapplication/qtsingleapplication.h"
-#endif
-
-#include "core/systemfactory.h"
-#include "core/defs.h"
 
 
 QPointer<SystemFactory> SystemFactory::s_instance;
@@ -125,7 +127,7 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   // "rssguard.desktop" desktop file.
   switch (new_status) {
     case SystemFactory::Enabled:
-      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + "/" + APP_DESKTOP_ENTRY_FILE,
+      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + '/' + APP_DESKTOP_ENTRY_FILE,
                   getAutostartDesktopFileLocation());
       return true;
     case SystemFactory::Disabled:

@@ -1,8 +1,9 @@
-#include <QAction>
-
 #include "core/dynamicshortcuts.h"
-#include "core/settings.h"
+
 #include "core/defs.h"
+#include "core/settings.h"
+
+#include <QAction>
 
 
 DynamicShortcuts::DynamicShortcuts() {

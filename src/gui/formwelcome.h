@@ -1,9 +1,9 @@
 #ifndef FORMWELCOME_H
 #define FORMWELCOME_H
 
-#include <QDialog>
-
 #include "ui_formwelcome.h"
+
+#include <QDialog>
 
 
 namespace Ui {

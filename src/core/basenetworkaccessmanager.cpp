@@ -1,9 +1,10 @@
+#include "core/basenetworkaccessmanager.h"
+
+#include "core/defs.h"
+#include "core/settings.h"
+
 #include <QNetworkProxy>
 #include <QNetworkRequest>
-
-#include "core/settings.h"
-#include "core/defs.h"
-#include "core/basenetworkaccessmanager.h"
 
 
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject *parent)

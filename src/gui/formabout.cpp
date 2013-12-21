@@ -1,9 +1,10 @@
-#include <QFile>
-#include <QTextStream>
+#include "gui/formabout.h"
 
 #include "core/textfactory.h"
-#include "gui/formabout.h"
 #include "gui/iconthemefactory.h"
+
+#include <QFile>
+#include <QTextStream>
 
 
 FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout) {
@@ -83,5 +84,6 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 }
 
 FormAbout::~FormAbout() {
+  qDebug("Destroying FormAbout instance.");
   delete m_ui;
 }

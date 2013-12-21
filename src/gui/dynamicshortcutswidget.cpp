@@ -1,13 +1,14 @@
+#include "gui/dynamicshortcutswidget.h"
+
+#include "core/defs.h"
+#include "gui/shortcutcatcher.h"
+#include "gui/shortcutbutton.h"
+
 #include <QGridLayout>
 #include <QAction>
 #include <QLabel>
 #include <QSpacerItem>
 #include <QPalette>
-
-#include "core/defs.h"
-#include "gui/dynamicshortcutswidget.h"
-#include "gui/shortcutcatcher.h"
-#include "gui/shortcutbutton.h"
 
 
 DynamicShortcutsWidget::DynamicShortcutsWidget(QWidget *parent) : QWidget(parent) {
@@ -42,7 +43,7 @@ bool DynamicShortcutsWidget::areShortcutsUnique() {
 }
 
 void DynamicShortcutsWidget::updateShortcuts() {
-  foreach (ActionBinding binding, m_actionBindings) {
+  foreach (const ActionBinding &binding, m_actionBindings) {
     binding.first->setShortcut(binding.second->shortcut());
   }
 }

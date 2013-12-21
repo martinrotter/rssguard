@@ -1,9 +1,9 @@
 #ifndef MESSAGESVIEW_H
 #define MESSAGESVIEW_H
 
-#include <QTreeView>
-
 #include "core/messagesmodel.h"
+
+#include <QTreeView>
 
 
 class MessagesProxyModel;

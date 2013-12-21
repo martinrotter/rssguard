@@ -1,8 +1,9 @@
+#include "core/parsingfactory.h"
+
+#include "core/textfactory.h"
+
 #include <QDomDocument>
 #include <QDomElement>
-
-#include "core/parsingfactory.h"
-#include "core/textfactory.h"
 
 
 ParsingFactory::ParsingFactory() {

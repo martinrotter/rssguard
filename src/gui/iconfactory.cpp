@@ -1,6 +1,6 @@
-#include <QBuffer>
-
 #include "gui/iconfactory.h"
+
+#include <QBuffer>
 
 
 IconFactory::IconFactory() {

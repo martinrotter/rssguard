@@ -1,11 +1,11 @@
 #ifndef TABWIDGET_H
 #define TABWIDGET_H
 
-#include <QTabWidget>
-#include <QUrl>
-
 #include "gui/tabbar.h"
 #include "gui/tabcontent.h"
+
+#include <QTabWidget>
+#include <QUrl>
 
 
 class CornerButton;

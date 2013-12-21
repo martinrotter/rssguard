@@ -1,11 +1,12 @@
+#include "core/settings.h"
+
+#include "core/defs.h"
+
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
 #include <QPointer>
 #include <QWebSettings>
-
-#include "core/settings.h"
-#include "core/defs.h"
 
 
 QPointer<Settings> Settings::s_instance;

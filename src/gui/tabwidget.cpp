@@ -1,15 +1,16 @@
-#include <QUrl>
-#include <QApplication>
+#include "gui/tabwidget.h"
 
 #include "core/defs.h"
 #include "core/settings.h"
 #include "core/textfactory.h"
-#include "gui/tabwidget.h"
 #include "gui/tabbar.h"
 #include "gui/iconthemefactory.h"
 #include "gui/webbrowser.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/cornerbutton.h"
+
+#include <QUrl>
+#include <QApplication>
 
 
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent) {
