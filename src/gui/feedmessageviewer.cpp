@@ -26,14 +26,12 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
-  createConnections();
-
+  createConnections();  
   loadSize();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
   qDebug("Destroying FeedMessageViewer instance.");
-
   saveSize();
 }
 

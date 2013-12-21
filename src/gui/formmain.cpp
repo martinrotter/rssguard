@@ -162,13 +162,11 @@ void FormMain::display() {
 
 void FormMain::onCommitData(QSessionManager &manager) { 
   Q_UNUSED(manager)
-
   qDebug("OS asked application to commit its data.");
 }
 
 void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state before it exits.");
-
   saveSize();
 }
 
