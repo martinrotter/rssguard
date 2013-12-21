@@ -27,12 +27,10 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   initialize();
   initializeViews();
   createConnections();  
-  loadSize();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
   qDebug("Destroying FeedMessageViewer instance.");
-  saveSize();
 }
 
 void FeedMessageViewer::saveSize() {

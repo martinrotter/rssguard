@@ -57,8 +57,8 @@ TabBar *TabWidget::tabBar() {
 
 void TabWidget::initializeTabs() { 
   // Create widget for "Feeds" page and add it.
-  FeedMessageViewer *browser = new FeedMessageViewer(this);
-  int index_of_browser = addTab(static_cast<TabContent*>(browser),
+  m_feedMessageViewer = new FeedMessageViewer(this);
+  int index_of_browser = addTab(static_cast<TabContent*>(m_feedMessageViewer),
                                 QIcon(),
                                 tr("Feeds"),
                                 TabBar::FeedReader);
@@ -242,6 +242,10 @@ int TabWidget::addBrowser(bool move_after_current,
   }
 
   return final_index;
+}
+
+FeedMessageViewer *TabWidget::feedMessageViewer() const {
+  return m_feedMessageViewer;
 }
 
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {

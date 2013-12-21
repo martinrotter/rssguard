@@ -48,8 +48,8 @@ class FormMain : public QMainWindow {
     // kind of method and catch ThemeFactoryEvent::type() in its event handler.
     void setupIcons();
 
-    // Loads saves visual state of the application.
-    void setupSize();
+    // Loads/saves visual state of the application.
+    void loadSize();
     void saveSize();
 
   public slots:
@@ -70,6 +70,7 @@ class FormMain : public QMainWindow {
 
   protected slots:
     void onCommitData(QSessionManager &manager);
+    void onSaveState(QSessionManager &manager);
 
     // Used for last-minute actions.
     void onAboutToQuit();

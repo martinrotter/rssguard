@@ -13,6 +13,7 @@
 #include "gui/tabbar.h"
 #include "gui/statusbar.h"
 #include "core/settings.h"
+#include "gui/feedmessageviewer.h"
 #include "core/defs.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
@@ -37,7 +38,7 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
   m_ui->m_tabWidget->initializeTabs();
 
   setupIcons();
-  setupSize();
+  loadSize();
 }
 
 FormMain::~FormMain() {
@@ -163,10 +164,19 @@ void FormMain::display() {
 void FormMain::onCommitData(QSessionManager &manager) { 
   Q_UNUSED(manager)
   qDebug("OS asked application to commit its data.");
+
+  onAboutToQuit();
+}
+
+void FormMain::onSaveState(QSessionManager &manager) {
+  Q_UNUSED(manager)
+  qDebug("OS asked application to save its state.");
+
+  onAboutToQuit();
 }
 
 void FormMain::onAboutToQuit() {
-  qDebug("Cleaning up resources and saving application state before it exits.");
+  qDebug("Cleaning up resources and saving application state.");
   saveSize();
 }
 
@@ -219,7 +229,7 @@ void FormMain::setupIcons() {
   m_ui->m_tabWidget->setupIcons();
 }
 
-void FormMain::setupSize() {
+void FormMain::loadSize() {
   QRect screen = qApp->desktop()->screenGeometry();
 
   resize(Settings::getInstance()->value(APP_CFG_GUI,
@@ -228,17 +238,21 @@ void FormMain::setupSize() {
   move(Settings::getInstance()->value(APP_CFG_GUI,
                                       "window_position",
                                       screen.center() - rect().center()).toPoint());
+  m_ui->m_tabWidget->feedMessageViewer()->loadSize();
 }
 
 void FormMain::saveSize() {
   Settings::getInstance()->setValue(APP_CFG_GUI, "window_position", pos());
   Settings::getInstance()->setValue(APP_CFG_GUI, "window_size", size());
+  m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
 
 void FormMain::createConnections() {
   // Core connections.
   connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)),
           this, SLOT(onCommitData(QSessionManager&)));
+  connect(qApp, SIGNAL(saveStateRequest(QSessionManager&)),
+          this, SLOT(onSaveState(QSessionManager&)));
 
   // Menu "File" connections.
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));

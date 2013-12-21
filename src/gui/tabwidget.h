@@ -10,6 +10,7 @@
 
 class CornerButton;
 class Message;
+class FeedMessageViewer;
 
 class TabWidget : public QTabWidget {
     Q_OBJECT
@@ -40,6 +41,9 @@ class TabWidget : public QTabWidget {
 
     // Sets up icons for this TabWidget.
     void setupIcons();
+
+    // Accessor to feed/message viewer.
+    FeedMessageViewer *feedMessageViewer() const;
 
   protected:
     // Creates necesary connections.
@@ -90,6 +94,7 @@ class TabWidget : public QTabWidget {
 
   private:
     CornerButton *m_cornerButton;
+    FeedMessageViewer *m_feedMessageViewer;
 };
 
 #endif // TABWIDGET_H

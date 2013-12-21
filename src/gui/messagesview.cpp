@@ -48,43 +48,47 @@ void MessagesView::setSortingEnabled(bool enable) {
 void MessagesView::setupAppearance() {
   // FIXME: Sometimes ASSERT occurs if model provides less columns
   // than we set resize mode for.
-  qDebug("Loading MessagesView with %d columns.",
-         header()->count());
+  int column_count = header()->count();
 
+  qDebug("Loading MessagesView with %d columns.",
+         column_count);
+
+  if (column_count > 0) {
 #if QT_VERSION >= 0x050000
-  // Setup column resize strategies.
-  header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
-  header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
-  header()->setSectionResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
-  header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
-  header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+    // Setup column resize strategies.
+    header()->setSectionResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
+    header()->setSectionResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
+    header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
 #else
-  // Setup column resize strategies.
-  header()->setResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
-  header()->setResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
-  header()->setResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
-  header()->setResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
-  header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+    // Setup column resize strategies.
+    header()->setResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_READ_INDEX, QHeaderView::ResizeToContents);
+    header()->setResizeMode(MSG_DB_DELETED_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_IMPORTANT_INDEX, QHeaderView::ResizeToContents);
+    header()->setResizeMode(MSG_DB_FEED_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_TITLE_INDEX, QHeaderView::Stretch);
+    header()->setResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
 #endif
 
-  // Hide columns.
-  hideColumn(MSG_DB_ID_INDEX);
-  hideColumn(MSG_DB_DELETED_INDEX);
-  hideColumn(MSG_DB_FEED_INDEX);
-  hideColumn(MSG_DB_URL_INDEX);
-  hideColumn(MSG_DB_CONTENTS_INDEX);
+    // Hide columns.
+    hideColumn(MSG_DB_ID_INDEX);
+    hideColumn(MSG_DB_DELETED_INDEX);
+    hideColumn(MSG_DB_FEED_INDEX);
+    hideColumn(MSG_DB_URL_INDEX);
+    hideColumn(MSG_DB_CONTENTS_INDEX);
+  }
 
   header()->setStretchLastSection(false);
   setUniformRowHeights(true);
