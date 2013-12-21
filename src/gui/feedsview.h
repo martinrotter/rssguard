@@ -32,7 +32,6 @@ class FeedsView : public QTreeView {
   private:
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
-    
 };
 
 #endif // FEEDSVIEW_H
