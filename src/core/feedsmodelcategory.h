@@ -25,10 +25,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelCategory();
 
-    // Returns list of ALL feeds situated under this category.
-    // NOTE: This is recursive.
-    virtual QList<FeedsModelFeed*> feeds();
-
     // Counts of messages.
     // NOTE: Counts of messages in categories include
     // counts of messages from all children.

@@ -21,6 +21,8 @@ class FeedsView : public QTreeView {
     // Returns list of selected feeds.
     QList<FeedsModelFeed*> selectedFeeds() const;
 
+    QList<FeedsModelFeed*> allFeeds() const;
+
   public slots:
     // Reloads count for selected feeds.
     void updateCountsOfSelectedFeeds();

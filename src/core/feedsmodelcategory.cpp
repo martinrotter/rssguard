@@ -14,35 +14,6 @@ FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
 FeedsModelCategory::~FeedsModelCategory() {
 }
 
-QList<FeedsModelFeed*> FeedsModelCategory::feeds() {
-  QList<FeedsModelFeed*> feeds;
-  QQueue<FeedsModelCategory*> categories;
-
-  categories.enqueue(this);
-
-  while (!categories.isEmpty()) {
-    FeedsModelCategory *active_category = categories.dequeue();
-
-    foreach (FeedsModelRootItem *child, active_category->childItems()) {
-      switch (child->kind()) {
-        case FeedsModelRootItem::Feed:
-          feeds.append(static_cast<FeedsModelFeed*>(child));
-          break;
-
-        case FeedsModelRootItem::Category:
-          // This is category, so add it to traversed categories.
-          categories.enqueue(static_cast<FeedsModelCategory*>(child));
-          break;
-
-        default:
-          break;
-      }
-    }
-  }
-
-  return feeds;
-}
-
 int FeedsModelCategory::countOfAllMessages() const {
   int total_count = 0;
 

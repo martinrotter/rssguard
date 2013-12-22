@@ -34,6 +34,10 @@ QList<FeedsModelFeed *> FeedsView::selectedFeeds() const {
   return m_sourceModel->feedsForIndexes(mapped_selection);
 }
 
+QList<FeedsModelFeed *> FeedsView::allFeeds() const {
+  return m_sourceModel->getAllFeeds();
+}
+
 void FeedsView::updateCountsOfSelectedFeeds() {
   QList<FeedsModelFeed*> feeds = selectedFeeds();
 

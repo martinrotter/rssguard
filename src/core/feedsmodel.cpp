@@ -11,6 +11,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
+#include <QQueue>
 
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
@@ -277,25 +278,8 @@ void FeedsModel::loadFromDatabase() {
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
-  QList<FeedsModelFeed*> feeds;
   FeedsModelRootItem *item = itemForIndex(index);
-
-  switch (item->kind()) {
-    case FeedsModelRootItem::Category:
-      // This item is a category, add all its child feeds.
-      feeds.append(static_cast<FeedsModelCategory*>(item)->feeds());
-      break;
-
-    case FeedsModelRootItem::Feed:
-      // This item is feed (it SURELY subclasses FeedsModelFeed), add it.
-      feeds.append(static_cast<FeedsModelFeed*>(item));
-      break;
-
-    default:
-      break;
-  }
-
-  return feeds;
+  return getFeeds(item);
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
@@ -308,13 +292,19 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
   return feeds;
 }
 
-QHash<int, FeedsModelCategory *> FeedsModel::getCategories(FeedsModelRootItem *root) {
+QHash<int, FeedsModelCategory*> FeedsModel::getAllCategories() {
+  return getCategories(m_rootItem);
+}
+
+// TODO: Rewrite this iterativelly (instead of
+// current recursive implementation).
+QHash<int, FeedsModelCategory*> FeedsModel::getCategories(FeedsModelRootItem *root) {
   QHash<int, FeedsModelCategory*> categories;
 
   foreach (FeedsModelRootItem *child, root->childItems()) {
-    FeedsModelCategory *converted = dynamic_cast<FeedsModelCategory*>(child);
+    if (child->kind() == FeedsModelRootItem::Category) {
+      FeedsModelCategory *converted = static_cast<FeedsModelCategory*>(child);
 
-    if (converted != NULL) {
       // This child is some kind of category.
       categories.insert(converted->id(), converted);
 
@@ -326,12 +316,45 @@ QHash<int, FeedsModelCategory *> FeedsModel::getCategories(FeedsModelRootItem *r
   return categories;
 }
 
-QHash<int, FeedsModelCategory *> FeedsModel::getCategories() {
-  return getCategories(m_rootItem);
+QList<FeedsModelFeed*> FeedsModel::getAllFeeds() {
+  return getFeeds(m_rootItem);
+}
+
+QList<FeedsModelFeed*> FeedsModel::getFeeds(FeedsModelRootItem *root) {
+  QList<FeedsModelFeed*> feeds;
+
+  if (root->kind() == FeedsModelRootItem::Feed) {
+    // Root itself is a FEED.
+    feeds.append(static_cast<FeedsModelFeed*>(root));
+  }
+  else {
+    // Root itself is a CATEGORY or ROOT item.
+    QQueue<FeedsModelRootItem*> traversable_items;
+
+    traversable_items.enqueue(root);
+
+    // Iterate all nested categories.
+    while (!traversable_items.isEmpty()) {
+      FeedsModelRootItem *active_category = traversable_items.dequeue();
+
+      foreach (FeedsModelRootItem *child, active_category->childItems()) {
+        if (child->kind() == FeedsModelRootItem::Feed) {
+          // This child is feed.
+          feeds.append(static_cast<FeedsModelFeed*>(child));
+        }
+        else if (child->kind() == FeedsModelRootItem::Category) {
+          // This child is category, add its child feeds too.
+          traversable_items.enqueue(static_cast<FeedsModelCategory*>(child));
+        }
+      }
+    }
+  }
+
+  return feeds;
 }
 
 void FeedsModel::assembleFeeds(FeedAssignment feeds) {
-  QHash<int, FeedsModelCategory*> categories = getCategories();
+  QHash<int, FeedsModelCategory*> categories = getAllCategories();
 
   foreach (const FeedAssignmentItem &feed, feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
@@ -339,7 +362,7 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
       m_rootItem->appendChild(feed.second);
     }
     else if (categories.contains(feed.first)) {
-      // This feed belongs to some category.
+      // This feed belongs to this category.
       categories.value(feed.first)->appendChild(feed.second);
     }
     else {
