@@ -6,6 +6,7 @@
 
 class FeedsModel;
 class FeedsProxyModel;
+class FeedsModelFeed;
 
 class FeedsView : public QTreeView {
     Q_OBJECT
@@ -17,6 +18,8 @@ class FeedsView : public QTreeView {
 
     void setSortingEnabled(bool enable);
     
+    QList<FeedsModelFeed*> selectedFeeds() const;
+
   public slots:
     // Reloads count for selected feeds.
     void updateCountsOfSelectedFeeds();

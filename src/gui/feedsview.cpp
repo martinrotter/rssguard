@@ -27,6 +27,13 @@ void FeedsView::setSortingEnabled(bool enable) {
   header()->setSortIndicatorShown(false);
 }
 
+QList<FeedsModelFeed *> FeedsView::selectedFeeds() const {
+  QModelIndexList selection = selectionModel()->selectedRows();
+  QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
+
+  return m_sourceModel->feedsForIndexes(mapped_selection);
+}
+
 void FeedsView::updateCountsOfSelectedFeeds() {
   QModelIndexList selected_rows = selectionModel()->selectedRows();
   QModelIndexList mapped_rows = m_proxyModel->mapListToSource(selected_rows);
@@ -65,9 +72,7 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
                                  const QItemSelection &deselected) {
   QTreeView::selectionChanged(selected, deselected);
 
-  QModelIndexList selection = selectionModel()->selectedRows();
-  QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
-  QList<FeedsModelFeed*> selected_feeds = m_sourceModel->feedsForIndexes(mapped_selection);
+  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
   QList<int> feed_ids;
 
   foreach (FeedsModelFeed *feed, selected_feeds) {
