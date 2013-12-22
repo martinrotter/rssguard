@@ -56,15 +56,15 @@ void MessagesModel::setupFonts() {
 }
 
 QList<int> MessagesModel::currentFeeds() const {
-    return m_currentFeeds;
+  return m_currentFeeds;
 }
 
 
 void MessagesModel::loadMessages(const QList<int> feed_ids) {
-    // Conversion of parameter.
-    m_currentFeeds = feed_ids;
-    
-    setFilter(QString("feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")));
+  // Conversion of parameter.
+  m_currentFeeds = feed_ids;
+
+  setFilter(QString("feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")));
   select();
   fetchAll();
 }
@@ -428,7 +428,7 @@ bool MessagesModel::setAllMessagesDeleted(int deleted) {
 
   QSqlQuery query_delete_msg(db_handle);
   if (!query_delete_msg.prepare(QString("UPDATE messages SET deleted = :deleted "
-                                      "WHERE feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")))) {
+                                        "WHERE feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")))) {
     qWarning("Query preparation failed for message deletion.");
 
     db_handle.rollback();

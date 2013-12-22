@@ -2,6 +2,7 @@
 
 #include "core/defs.h"
 #include "core/settings.h"
+#include "core/systemfactory.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/webbrowser.h"
@@ -17,6 +18,7 @@
 #include <QSessionManager>
 #include <QRect>
 #include <QDesktopWidget>
+#include <QReadWriteLock>
 
 
 FormMain *FormMain::s_instance;
@@ -129,6 +131,20 @@ void FormMain::processExecutionMessage(const QString &message) {
 
 void FormMain::quit() {
   qDebug("Quitting the application.");
+
+  // Make sure that we obtain close lock
+  // BEFORE even trying to quit the application.
+  if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForWrite(CLOSE_LOCK_TIMEOUT)) {
+    // Application obtained permission to close
+    // in a safety way.
+    qDebug("Close lock obtained safely.");
+  }
+  else {
+    // Request for write lock timed-out. This means
+    // that some critical action can be processed right now.
+    qDebug("Close lock timed-out.");
+  }
+
   qApp->quit();
 }
 
@@ -178,6 +194,7 @@ void FormMain::onSaveState(QSessionManager &manager) {
 
 void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state.");
+
   saveSize();
 }
 

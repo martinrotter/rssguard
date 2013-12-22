@@ -23,6 +23,7 @@ class MessagesView : public QTreeView {
     MessagesModel *sourceModel();
 
   public slots:
+    // Loads un-deleted messages from selected feeds.
     void loadFeeds(const QList<int> &feed_ids);
 
     // Message manipulators.

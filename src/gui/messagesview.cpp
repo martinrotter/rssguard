@@ -103,6 +103,11 @@ void MessagesView::setupAppearance() {
   setSortingEnabled(true);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
+
+  // Make sure that initial sorting is that unread messages are visible
+  // first.
+  // NOTE: This can be rewritten so that it's changeable.
+  sortByColumn(MSG_DB_READ_INDEX, Qt::AscendingOrder);
 }
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {
@@ -198,7 +203,13 @@ void MessagesView::currentChanged(const QModelIndex &current,
 }
 
 void MessagesView::loadFeeds(const QList<int> &feed_ids) {
+  // Load messages.
+  // TODO: Here we could load user-defined default sorting
+  // column/order AND possibly hide/show user-defined columns.
   m_sourceModel->loadMessages(feed_ids);
+
+  // Messages are loaded, make sure that previously
+  // active message is not shown in browser.
   emit currentMessageRemoved();
 }
 

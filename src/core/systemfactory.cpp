@@ -17,10 +17,13 @@
 QPointer<SystemFactory> SystemFactory::s_instance;
 
 SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
+  m_applicationCloseLock = new QReadWriteLock(QReadWriteLock::NonRecursive);
 }
 
 SystemFactory::~SystemFactory() {
   qDebug("Destroying SystemFactory instance.");
+
+  delete m_applicationCloseLock;
 }
 
 
@@ -97,6 +100,10 @@ SystemFactory *SystemFactory::getInstance() {
   }
 
   return s_instance;
+}
+
+QReadWriteLock *SystemFactory::applicationCloseLock() const {
+  return m_applicationCloseLock;
 }
 
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {

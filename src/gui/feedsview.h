@@ -18,6 +18,7 @@ class FeedsView : public QTreeView {
 
     void setSortingEnabled(bool enable);
     
+    // Returns list of selected feeds.
     QList<FeedsModelFeed*> selectedFeeds() const;
 
   public slots:
@@ -25,7 +26,10 @@ class FeedsView : public QTreeView {
     void updateCountsOfSelectedFeeds();
 
   protected:
+    // Sets up appearance of this widget.
     void setupAppearance();
+
+
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 

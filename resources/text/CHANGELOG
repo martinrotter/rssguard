@@ -1,6 +1,11 @@
 <body>
 [2.0.0]
 <ul>
-<li>Initial second generation release.</li>
+<li>[@] Initial second generation release.</li>
 </ul>
+
+[+] added <br/>
+[#] fixed <br/>
+[~] changed <br/>
+[@] other action <br/>
 </body>
