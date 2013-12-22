@@ -2,6 +2,7 @@
 
 #include "core/settings.h"
 #include "core/messagesproxymodel.h"
+#include "core/feeddownloader.h"
 #include "gui/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/iconthemefactory.h"

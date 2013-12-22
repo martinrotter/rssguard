@@ -16,7 +16,9 @@
 #include <QSettings>
 #endif
 
+#include <QThread>
 #include <QTranslator>
+#include <QDebug>
 
 
 // TODO: Check if extra UNIX signalling is needed.
@@ -76,6 +78,9 @@ int main(int argc, char *argv[]) {
   QtSingleApplication::setOrganizationName(APP_AUTHOR);
   QtSingleApplication::setOrganizationDomain(APP_URL);
   QtSingleApplication::setWindowIcon(QIcon(APP_ICON_PATH));
+
+  qDebug().nospace() << "Creating main application form in thread: \'" <<
+                        QThread::currentThreadId() << "\'.";
 
   // Instantiate main application window.
   FormMain window;

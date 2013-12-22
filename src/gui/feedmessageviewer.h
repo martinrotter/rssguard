@@ -7,6 +7,7 @@
 class WebBrowser;
 class FeedsView;
 class MessagesView;
+class FeedDownloader;
 class QToolBar;
 class QSplitter;
 
@@ -46,6 +47,8 @@ class FeedMessageViewer : public TabContent {
     MessagesView *m_messagesView;
     FeedsView *m_feedsView;
     WebBrowser *m_messagesBrowser;
+
+    FeedDownloader *m_feedDownloader;
 };
 
 #endif // FEEDMESSAGEVIEWER_H

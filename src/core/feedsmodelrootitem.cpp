@@ -6,7 +6,8 @@
 
 
 FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
-  : m_kind(FeedsModelRootItem::RootItem), m_parentItem(parent_item) {
+  : m_kind(FeedsModelRootItem::RootItem),
+    m_parentItem(parent_item) {
 }
 
 FeedsModelRootItem::~FeedsModelRootItem() {

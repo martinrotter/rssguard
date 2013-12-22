@@ -46,6 +46,8 @@ class FeedsModel : public QAbstractItemModel {
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
 
   public slots:
+    // Signals that properties (probably counts)
+    // of ALL items have changed.
     void reloadWholeLayout();
 
     // Signals that SOME data of this model need

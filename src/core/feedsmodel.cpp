@@ -17,6 +17,8 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   setObjectName("FeedsModel");
 
   m_rootItem = new FeedsModelRootItem();
+  m_rootItem->setTitle(tr("root"));
+
   m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
 
   m_headerData << tr("Title");
