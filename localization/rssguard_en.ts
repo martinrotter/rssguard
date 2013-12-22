@@ -2,89 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="en_US">
 <context>
-    <name>BaseWebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload current web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open this image in this tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Page not found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Check your internet connection or website address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
@@ -110,6 +27,10 @@
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>root</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -426,6 +347,10 @@
         <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Application is already running.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -487,10 +412,6 @@
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Change...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -737,10 +658,6 @@
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Current color</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1076,6 +993,89 @@ Language: %5</source>
     </message>
     <message>
         <source>Written by </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebView</name>
+    <message>
+        <source>Reload web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload current web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy link url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy link url to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image url to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open link in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open image in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this image in this tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Page not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check your internet connection or website address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hyperlink</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

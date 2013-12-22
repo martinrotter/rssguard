@@ -1,4 +1,4 @@
-#include "gui/basewebview.h"
+#include "gui/webview.h"
 
 #include "core/defs.h"
 #include "core/settings.h"
@@ -16,7 +16,7 @@
 #include <QDateTime>
 
 
-BaseWebView::BaseWebView(QWidget *parent)
+WebView::WebView(QWidget *parent)
   : QWebView(parent), m_page(new BaseWebPage(this)) {
   setPage(m_page);
   setContextMenuPolicy(Qt::CustomContextMenu);
@@ -24,26 +24,26 @@ BaseWebView::BaseWebView(QWidget *parent)
   createConnections();
 }
 
-BaseWebView::~BaseWebView() {
+WebView::~WebView() {
   qDebug("Destroying BaseWebView.");
 }
 
-void BaseWebView::onLoadFinished(bool ok) {
+void WebView::onLoadFinished(bool ok) {
   // If page was not loaded, then display custom error page.
   if (!ok) {
     displayErrorPage();
   }
 }
 
-void BaseWebView::openLinkInNewTab() {
+void WebView::openLinkInNewTab() {
   emit linkMiddleClicked(m_contextLinkUrl);
 }
 
-void BaseWebView::openImageInNewTab() {
+void WebView::openImageInNewTab() {
   emit linkMiddleClicked(m_contextImageUrl);
 }
 
-void BaseWebView::createConnections() {
+void WebView::createConnections() {
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
   connect(this, SIGNAL(customContextMenuRequested(QPoint)),
           this, SLOT(popupContextMenu(QPoint)));
@@ -52,7 +52,7 @@ void BaseWebView::createConnections() {
   connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
 }
 
-void BaseWebView::setupIcons() {
+void WebView::setupIcons() {
   m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
   m_actionCopyLink->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
   m_actionCopyImage->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
@@ -66,7 +66,7 @@ void BaseWebView::setupIcons() {
   m_actionOpenImageNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
 }
 
-void BaseWebView::initializeActions() {
+void WebView::initializeActions() {
   // Create needed actions.
   m_actionReload = pageAction(QWebPage::Reload);
   m_actionReload->setParent(this);
@@ -106,7 +106,7 @@ void BaseWebView::initializeActions() {
   m_actionOpenImageNewTab->setToolTip(tr("Open this image in this tab"));
 }
 
-void BaseWebView::displayErrorPage() {
+void WebView::displayErrorPage() {
   setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(tr("Page not found"),
                                                              tr("Check your internet connection or website address"),
                                                              QString(),
@@ -120,7 +120,7 @@ void BaseWebView::displayErrorPage() {
                                                              QDateTime::currentDateTime().toString(Qt::DefaultLocaleLongDate)));
 }
 
-void BaseWebView::popupContextMenu(const QPoint &pos) {
+void WebView::popupContextMenu(const QPoint &pos) {
   QMenu context_menu(tr("Web browser"), this);
   QMenu image_submenu(tr("Image"), &context_menu);
   QMenu link_submenu(tr("Hyperlink"), this);
@@ -163,7 +163,7 @@ void BaseWebView::popupContextMenu(const QPoint &pos) {
   context_menu.exec(mapToGlobal(pos));
 }
 
-void BaseWebView::mousePressEvent(QMouseEvent *event) {
+void WebView::mousePressEvent(QMouseEvent *event) {
   if (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) {
     QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
 
@@ -190,7 +190,7 @@ void BaseWebView::mousePressEvent(QMouseEvent *event) {
   QWebView::mousePressEvent(event);
 }
 
-void BaseWebView::mouseReleaseEvent(QMouseEvent *event) {
+void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
     bool are_gestures_enabled = Settings::getInstance()->value(APP_CFG_BROWSER,
                                                                "gestures_enabled",
@@ -223,7 +223,7 @@ void BaseWebView::mouseReleaseEvent(QMouseEvent *event) {
   QWebView::mouseReleaseEvent(event);
 }
 
-void BaseWebView::wheelEvent(QWheelEvent *event) {
+void WebView::wheelEvent(QWheelEvent *event) {
   if (event->modifiers() & Qt::ControlModifier) {
     if (event->delta() > 0) {
       increaseWebPageZoom();
@@ -240,7 +240,7 @@ void BaseWebView::wheelEvent(QWheelEvent *event) {
   QWebView::wheelEvent(event);
 }
 
-void BaseWebView::paintEvent(QPaintEvent *event) {
+void WebView::paintEvent(QPaintEvent *event) {
   QWebView::paintEvent(event);
 
   // Draw additional frame.
@@ -261,7 +261,7 @@ void BaseWebView::paintEvent(QPaintEvent *event) {
   */
 }
 
-bool BaseWebView::increaseWebPageZoom() {
+bool WebView::increaseWebPageZoom() {
   qreal new_factor = zoomFactor() + 0.1;
 
   if (new_factor >= 0.0 && new_factor <= MAX_ZOOM_FACTOR) {
@@ -273,7 +273,7 @@ bool BaseWebView::increaseWebPageZoom() {
   }
 }
 
-bool BaseWebView::decreaseWebPageZoom() {
+bool WebView::decreaseWebPageZoom() {
   qreal new_factor = zoomFactor() - 0.1;
 
   if (new_factor >= 0.0 && new_factor <= MAX_ZOOM_FACTOR) {
@@ -285,7 +285,7 @@ bool BaseWebView::decreaseWebPageZoom() {
   }
 }
 
-bool BaseWebView::resetWebPageZoom() {
+bool WebView::resetWebPageZoom() {
   qreal new_factor = 1.0;
 
   if (new_factor != zoomFactor()) {

@@ -28,7 +28,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
-  createConnections();  
+  createConnections();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
@@ -36,17 +36,43 @@ FeedMessageViewer::~FeedMessageViewer() {
 }
 
 void FeedMessageViewer::saveSize() {
-  Settings::getInstance()->setValue(APP_CFG_GUI,
-                                    "splitter_feeds",
-                                    m_feedSplitter->saveState());
-  Settings::getInstance()->setValue(APP_CFG_GUI,
-                                    "splitter_messages",
-                                    m_messageSplitter->saveState());
+  Settings *settings = Settings::getInstance();
+
+  // Store offsets of splitters.
+  settings->setValue(APP_CFG_GUI,
+                     "splitter_feeds",
+                     m_feedSplitter->saveState());
+  settings->setValue(APP_CFG_GUI,
+                     "splitter_messages",
+                     m_messageSplitter->saveState());
+
+  // States of splitters are stored, let's store
+  // widths of columns.
+  settings->setValue(APP_CFG_GUI,
+                     KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
+                     m_messagesView->columnWidth(MSG_DB_AUTHOR_INDEX));
+  settings->setValue(APP_CFG_GUI,
+                     KEY_MESSAGES_VIEW + QString::number(MSG_DB_DUPDATED_INDEX),
+                     m_messagesView->columnWidth(MSG_DB_DUPDATED_INDEX));
 }
 
 void FeedMessageViewer::loadSize() {
-  m_feedSplitter->restoreState(Settings::getInstance()->value(APP_CFG_GUI, "splitter_feeds").toByteArray());
-  m_messageSplitter->restoreState(Settings::getInstance()->value(APP_CFG_GUI, "splitter_messages").toByteArray());
+  Settings *settings = Settings::getInstance();
+  int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
+
+  // Restore offsets of splitters.
+  m_feedSplitter->restoreState(settings->value(APP_CFG_GUI, "splitter_feeds").toByteArray());
+  m_messageSplitter->restoreState(settings->value(APP_CFG_GUI, "splitter_messages").toByteArray());
+
+  // Splitters are restored, now, restore widths of columns.
+  m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX,
+                                 settings->value(APP_CFG_GUI,
+                                                 KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
+                                                 default_msg_section_size).toInt());
+  m_messagesView->setColumnWidth(MSG_DB_DUPDATED_INDEX,
+                                 settings->value(APP_CFG_GUI,
+                                                 KEY_MESSAGES_VIEW + QString::number(MSG_DB_DUPDATED_INDEX),
+                                                 default_msg_section_size).toInt());
 }
 
 void FeedMessageViewer::createConnections() {

@@ -88,6 +88,7 @@ void MessagesView::setupAppearance() {
     hideColumn(MSG_DB_DELETED_INDEX);
     hideColumn(MSG_DB_FEED_INDEX);
     hideColumn(MSG_DB_URL_INDEX);
+    hideColumn(MSG_DB_DCREATED_INDEX);
     hideColumn(MSG_DB_CONTENTS_INDEX);
   }
 

@@ -233,12 +233,15 @@ void FormMain::setupIcons() {
 void FormMain::loadSize() {
   QRect screen = qApp->desktop()->screenGeometry();
 
+  // Reload main window size & position.
   resize(Settings::getInstance()->value(APP_CFG_GUI,
                                         "window_size",
                                         size()).toSize());
   move(Settings::getInstance()->value(APP_CFG_GUI,
                                       "window_position",
                                       screen.center() - rect().center()).toPoint());
+
+  // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
 }
 

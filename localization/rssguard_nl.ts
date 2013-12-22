@@ -2,89 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="nl">
 <context>
-    <name>BaseWebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation>Herlaad webpagina</translation>
-    </message>
-    <message>
-        <source>Reload current web page</source>
-        <translation>Herlaad huidige webpagina</translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation>URL kopiëren</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard</source>
-        <translation>URL kopiëren naar klembord</translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation>Kopiëer afbeelding</translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard</source>
-        <translation>Kopiëer afbeelding naar klembord</translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation>URL afbeelding kopiëren</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard</source>
-        <translation>URL afbeelding naar klembord kopiëren</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webbrowser</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation>Afbeelding</translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation>Open link in nieuw tabblad</translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab</source>
-        <translation>Open deze koppeling in nieuw tabblad</translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation>Volg koppeling</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab</source>
-        <translation>Open koppeling in dit tabblad</translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation>Open afbeelding in nieuw tabblad</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab</source>
-        <translation>Open deze afbeelding in dit tabblad</translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation>Koppeling</translation>
-    </message>
-    <message>
-        <source>Page not found</source>
-        <translation>Pagina niet gevonden</translation>
-    </message>
-    <message>
-        <source>Check your internet connection or website address</source>
-        <translation>Controleer je internet verbinding of website adres</translation>
-    </message>
-    <message>
-        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Deze fout kan veroorzaakt worden door:&lt;br&gt;&lt;ul&gt;&lt;li&gt;niet werkende internet verbinding,&lt;/li&gt;&lt;li&gt;onjuiste website adres,&lt;/li&gt;&lt;li&gt;slechte proxy server instelling,&lt;/li&gt;&lt;li&gt;uitval van doellocatie,&lt;/li&gt;&lt;li&gt;of vele andere zaken.&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-</context>
-<context>
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
@@ -111,6 +28,10 @@
     <message>
         <source>Counts of unread/all meesages.</source>
         <translation>Aantal van alle ongelezen berichten.</translation>
+    </message>
+    <message>
+        <source>root</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -426,6 +347,10 @@
         <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
         <translation>Verwijder alle berichten van geselekteerde feeds. Dit zal GEEN bericht filters meenemen in account.</translation>
     </message>
+    <message>
+        <source>Application is already running.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -488,10 +413,6 @@
     <message>
         <source>Web browser</source>
         <translation>Webbrowser</translation>
-    </message>
-    <message>
-        <source>&amp;Change...</source>
-        <translation>&amp;Verander...</translation>
     </message>
     <message>
         <source>Use custom color for web browser progress bar</source>
@@ -744,10 +665,6 @@
     <message>
         <source>Opera 12 or older</source>
         <translation>Opera 12 of ouder</translation>
-    </message>
-    <message>
-        <source>Current color</source>
-        <translation>Huidige kleur</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
@@ -1093,6 +1010,89 @@ Taal: %5</translation>
     <message>
         <source>Written by </source>
         <translation>Geschreven door </translation>
+    </message>
+</context>
+<context>
+    <name>WebView</name>
+    <message>
+        <source>Reload web page</source>
+        <translation type="unfinished">Herlaad webpagina</translation>
+    </message>
+    <message>
+        <source>Reload current web page</source>
+        <translation type="unfinished">Herlaad huidige webpagina</translation>
+    </message>
+    <message>
+        <source>Copy link url</source>
+        <translation type="unfinished">URL kopiëren</translation>
+    </message>
+    <message>
+        <source>Copy link url to clipboard</source>
+        <translation type="unfinished">URL kopiëren naar klembord</translation>
+    </message>
+    <message>
+        <source>Copy image</source>
+        <translation type="unfinished">Kopiëer afbeelding</translation>
+    </message>
+    <message>
+        <source>Copy image to clipboard</source>
+        <translation type="unfinished">Kopiëer afbeelding naar klembord</translation>
+    </message>
+    <message>
+        <source>Copy image url</source>
+        <translation type="unfinished">URL afbeelding kopiëren</translation>
+    </message>
+    <message>
+        <source>Copy image url to clipboard</source>
+        <translation type="unfinished">URL afbeelding naar klembord kopiëren</translation>
+    </message>
+    <message>
+        <source>Open link in new tab</source>
+        <translation type="unfinished">Open link in nieuw tabblad</translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab</source>
+        <translation type="unfinished">Open deze koppeling in nieuw tabblad</translation>
+    </message>
+    <message>
+        <source>Follow link</source>
+        <translation type="unfinished">Volg koppeling</translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab</source>
+        <translation type="unfinished">Open koppeling in dit tabblad</translation>
+    </message>
+    <message>
+        <source>Open image in new tab</source>
+        <translation type="unfinished">Open afbeelding in nieuw tabblad</translation>
+    </message>
+    <message>
+        <source>Open this image in this tab</source>
+        <translation type="unfinished">Open deze afbeelding in dit tabblad</translation>
+    </message>
+    <message>
+        <source>Page not found</source>
+        <translation type="unfinished">Pagina niet gevonden</translation>
+    </message>
+    <message>
+        <source>Check your internet connection or website address</source>
+        <translation type="unfinished">Controleer je internet verbinding of website adres</translation>
+    </message>
+    <message>
+        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished">Deze fout kan veroorzaakt worden door:&lt;br&gt;&lt;ul&gt;&lt;li&gt;niet werkende internet verbinding,&lt;/li&gt;&lt;li&gt;onjuiste website adres,&lt;/li&gt;&lt;li&gt;slechte proxy server instelling,&lt;/li&gt;&lt;li&gt;uitval van doellocatie,&lt;/li&gt;&lt;li&gt;of vele andere zaken.&lt;/li&gt;&lt;/ul&gt;</translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <translation type="unfinished">Webbrowser</translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation type="unfinished">Afbeelding</translation>
+    </message>
+    <message>
+        <source>Hyperlink</source>
+        <translation type="unfinished">Koppeling</translation>
     </message>
 </context>
 </TS>

@@ -2,89 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="cs_CZ">
 <context>
-    <name>BaseWebView</name>
-    <message>
-        <source>Reload web page</source>
-        <translation>Obnovit stránku</translation>
-    </message>
-    <message>
-        <source>Reload current web page</source>
-        <translation>Znovu načíst aktuální stránku</translation>
-    </message>
-    <message>
-        <source>Copy link url</source>
-        <translation>Kopírovat adresu odkazu</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard</source>
-        <translation>Kopírovat adresu odkazu to schránky</translation>
-    </message>
-    <message>
-        <source>Copy image</source>
-        <translation>Kopírovat obrázek</translation>
-    </message>
-    <message>
-        <source>Copy image to clipboard</source>
-        <translation>Kopírovat obrázek do schránky</translation>
-    </message>
-    <message>
-        <source>Copy image url</source>
-        <translation>Kopírovat adresu obrázku</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard</source>
-        <translation>Kopírovat adresu obrázku do schránky</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webový prohlížeč</translation>
-    </message>
-    <message>
-        <source>Image</source>
-        <translation>Obrázek</translation>
-    </message>
-    <message>
-        <source>Open link in new tab</source>
-        <translation>Otevřít odkaz v novém panelu</translation>
-    </message>
-    <message>
-        <source>Open this hyperlink in new tab</source>
-        <translation>Otevřít tento odkaz v novém panelu</translation>
-    </message>
-    <message>
-        <source>Follow link</source>
-        <translation>Přejít</translation>
-    </message>
-    <message>
-        <source>Open the hyperlink in this tab</source>
-        <translation>Otevřít tento odkaz v tomto panelu</translation>
-    </message>
-    <message>
-        <source>Open image in new tab</source>
-        <translation>Otevřít obrázek v novém panelu</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab</source>
-        <translation>Otevřít tento obrázek v novém panelu</translation>
-    </message>
-    <message>
-        <source>Hyperlink</source>
-        <translation>Hypertextový odkaz</translation>
-    </message>
-    <message>
-        <source>Page not found</source>
-        <translation>Stránka nenalezena</translation>
-    </message>
-    <message>
-        <source>Check your internet connection or website address</source>
-        <translation>Zkontrolujte Vaše internetové připojení a adresu webové stránky</translation>
-    </message>
-    <message>
-        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Tuto chybu může způsobit:&lt;br&gt;&lt;ul&gt;&lt;li&gt;nefunkční internetové připojení,&lt;/li&gt;&lt;li&gt;&lt;/li&gt;nesprávně zadaná webová adresa,&lt;/li&gt;&lt;li&gt;špatně nastavená proxy,&lt;/li&gt;&lt;li&gt;výpadek cílového webu,&lt;/li&gt;&lt;li&gt;mnoho dalších věcí.&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-</context>
-<context>
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
@@ -111,6 +28,10 @@
     <message>
         <source>Counts of unread/all meesages.</source>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
+    </message>
+    <message>
+        <source>root</source>
+        <translation>kořen</translation>
     </message>
 </context>
 <context>
@@ -264,27 +185,27 @@
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat vybrané kategorie/kanály.</translation>
     </message>
     <message>
         <source>Edit selected feed/category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Editovat vybrané kategorii/kanál.</translation>
     </message>
     <message>
         <source>Delete selected feeds/categories.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vybrané kategorie/kanály.</translation>
     </message>
     <message>
         <source>Mark selected messages as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zprávy jako přečtené.</translation>
     </message>
     <message>
         <source>Mark selected messages as unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zprávy jako nepřečtené.</translation>
     </message>
     <message>
         <source>Switch importance of selected messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepnout důležitost vybraných zpráv.</translation>
     </message>
     <message>
         <source>&amp;Web browser</source>
@@ -292,31 +213,31 @@
     </message>
     <message>
         <source>Mark selected messages &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vyb&amp;rané zprávy jako přečtené</translation>
     </message>
     <message>
         <source>Mark selected messages &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zprávy jako &amp;nepřečtené</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepnout &amp;důležitost vybraných zpráv</translation>
     </message>
     <message>
         <source>Mark &amp;all messages read</source>
-        <translation type="unfinished"></translation>
+        <translation>Ozn&amp;ačit všechny zprávy jako přečtené</translation>
     </message>
     <message>
         <source>Mark a&amp;ll messages unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit &amp;všechny zprávy jako nepřečtené</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Smazat vybrané zprávy</translation>
     </message>
     <message>
         <source>Dele&amp;te all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Smaza&amp;t všechny zprávy</translation>
     </message>
     <message>
         <source>Import stuff.</source>
@@ -344,19 +265,19 @@
     </message>
     <message>
         <source>Add new web browser tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat nový panel webového prohlížeče.</translation>
     </message>
     <message>
         <source>Close current web browser tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavřít aktuální panel webového prohlížeče..</translation>
     </message>
     <message>
         <source>Update &amp;all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizov&amp;at vše</translation>
     </message>
     <message>
         <source>Update &amp;selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat vybrané kanál&amp;y</translation>
     </message>
     <message>
         <source>&amp;Edit selected feed(s)/category(ies)</source>
@@ -364,7 +285,7 @@
     </message>
     <message>
         <source>&amp;Delete selected feed(s)/category(ies)</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vybrané kanály/kategor&amp;ie</translation>
     </message>
     <message>
         <source>Mark selected feed(s)/category(ies) as read</source>
@@ -380,11 +301,11 @@
     </message>
     <message>
         <source>Add new &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat k&amp;anál</translation>
     </message>
     <message>
         <source>Add new feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat nový kanál.</translation>
     </message>
     <message>
         <source>Open selected messages in internal browser</source>
@@ -424,6 +345,10 @@
     </message>
     <message>
         <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Application is already running.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -488,10 +413,6 @@
     <message>
         <source>Web browser</source>
         <translation>Webový prohlížeč</translation>
-    </message>
-    <message>
-        <source>&amp;Change...</source>
-        <translation>&amp;Změnit...</translation>
     </message>
     <message>
         <source>Use custom color for web browser progress bar</source>
@@ -743,49 +664,47 @@
     </message>
     <message>
         <source>Opera 12 or older</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Current color</source>
-        <translation type="unfinished"></translation>
+        <translation>Opera 12 nebo starší</translation>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Spouštěcí soubor prohlžeče webu</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Parametry spouštěče</translation>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"></translation>
+        <translation>některé klávesové zkratky nejsou unikátní</translation>
     </message>
     <message>
         <source>external browser is not set</source>
-        <translation type="unfinished"></translation>
+        <translation>externí prohlížeč není nastaven</translation>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam chyb:
+%1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam změn:
+%1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation type="unfinished"></translation>
+        <translation>jazyk změněn</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation type="unfinished"></translation>
+        <translation>téma ikon změněno</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation type="unfinished"></translation>
+        <translation>skin změněn</translation>
     </message>
 </context>
 <context>
@@ -953,36 +872,37 @@
     </message>
     <message>
         <source>ATOM 1.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RDF 1.0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RSS 0.90/0.91/0.92</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RSS 2.0/2.0.1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>%1
 
 Category type: standard
 Creation date: %2%3</source>
-        <translation type="unfinished">%1
+        <translation>%1
 
 Typ kategorie: standardní
-Datum vytvoření: %2%3 {1
-?}</translation>
+Datum vytvoření: %2%3</translation>
     </message>
     <message>
         <source>
 
 This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Tato kategorie neobsahuje žádné podřízené položky.</translation>
     </message>
     <message>
         <source>%1
@@ -991,7 +911,12 @@ Feed type: %2
 URL: %3
 Encoding: %4
 Language: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+
+Typ kanálu: %2
+URL: %3
+Kódování: %4
+Jazyk: %5</translation>
     </message>
 </context>
 <context>
@@ -1088,6 +1013,89 @@ Language: %5</source>
     <message>
         <source>Written by </source>
         <translation>Napsal</translation>
+    </message>
+</context>
+<context>
+    <name>WebView</name>
+    <message>
+        <source>Reload web page</source>
+        <translation>Obnovit stránku</translation>
+    </message>
+    <message>
+        <source>Reload current web page</source>
+        <translation>Znovu načíst aktuální stránku</translation>
+    </message>
+    <message>
+        <source>Copy link url</source>
+        <translation>Kopírovat adresu odkazu</translation>
+    </message>
+    <message>
+        <source>Copy link url to clipboard</source>
+        <translation>Kopírovat adresu odkazu to schránky</translation>
+    </message>
+    <message>
+        <source>Copy image</source>
+        <translation>Kopírovat obrázek</translation>
+    </message>
+    <message>
+        <source>Copy image to clipboard</source>
+        <translation>Kopírovat obrázek do schránky</translation>
+    </message>
+    <message>
+        <source>Copy image url</source>
+        <translation>Kopírovat adresu obrázku</translation>
+    </message>
+    <message>
+        <source>Copy image url to clipboard</source>
+        <translation>Kopírovat adresu obrázku do schránky</translation>
+    </message>
+    <message>
+        <source>Open link in new tab</source>
+        <translation>Otevřít odkaz v novém panelu</translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab</source>
+        <translation>Otevřít tento odkaz v novém panelu</translation>
+    </message>
+    <message>
+        <source>Follow link</source>
+        <translation>Přejít</translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab</source>
+        <translation>Otevřít tento odkaz v tomto panelu</translation>
+    </message>
+    <message>
+        <source>Open image in new tab</source>
+        <translation>Otevřít obrázek v novém panelu</translation>
+    </message>
+    <message>
+        <source>Open this image in this tab</source>
+        <translation>Otevřít tento obrázek v novém panelu</translation>
+    </message>
+    <message>
+        <source>Page not found</source>
+        <translation>Stránka nenalezena</translation>
+    </message>
+    <message>
+        <source>Check your internet connection or website address</source>
+        <translation>Zkontrolujte Vaše internetové připojení a adresu webové stránky</translation>
+    </message>
+    <message>
+        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation>Tuto chybu může způsobit:&lt;br&gt;&lt;ul&gt;&lt;li&gt;nefunkční internetové připojení,&lt;/li&gt;&lt;li&gt;nesprávně zadaná webová adresa,&lt;/li&gt;&lt;li&gt;špatně nastavená proxy,&lt;/li&gt;&lt;li&gt;výpadek cílového webu,&lt;/li&gt;&lt;li&gt;mnoho dalších věcí.&lt;/li&gt;&lt;/ul&gt;</translation>
+    </message>
+    <message>
+        <source>Web browser</source>
+        <translation>Webový prohlížeč</translation>
+    </message>
+    <message>
+        <source>Image</source>
+        <translation>Obrázek</translation>
+    </message>
+    <message>
+        <source>Hyperlink</source>
+        <translation>Hypertextový odkaz</translation>
     </message>
 </context>
 </TS>

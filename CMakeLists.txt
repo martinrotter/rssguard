@@ -242,7 +242,7 @@ set(APP_SOURCES
   src/gui/shortcutbutton.cpp
   src/gui/dynamicshortcutswidget.cpp
   src/gui/webbrowser.cpp
-  src/gui/basewebview.cpp
+  src/gui/webview.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
   src/gui/tabwidget.cpp
@@ -302,7 +302,7 @@ set(APP_HEADERS
   src/gui/shortcutbutton.h
   src/gui/dynamicshortcutswidget.h
   src/gui/webbrowser.h
-  src/gui/basewebview.h
+  src/gui/webview.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
   src/gui/tabwidget.h

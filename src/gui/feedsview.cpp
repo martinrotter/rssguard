@@ -35,15 +35,14 @@ QList<FeedsModelFeed *> FeedsView::selectedFeeds() const {
 }
 
 void FeedsView::updateCountsOfSelectedFeeds() {
-  QModelIndexList selected_rows = selectionModel()->selectedRows();
-  QModelIndexList mapped_rows = m_proxyModel->mapListToSource(selected_rows);
-  QList<FeedsModelFeed*> feeds = m_sourceModel->feedsForIndexes(mapped_rows);
+  QList<FeedsModelFeed*> feeds = selectedFeeds();
 
   foreach (FeedsModelFeed *feed, feeds) {
     feed->updateCounts();
   }
 
-  m_sourceModel->reloadChangedLayout(mapped_rows);
+  // Make sure that selected view reloads changed indexes.
+  m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
 }
 
 void FeedsView::setupAppearance() {

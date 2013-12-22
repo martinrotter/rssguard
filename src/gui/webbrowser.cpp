@@ -5,7 +5,7 @@
 #include "core/webbrowsernetworkaccessmanager.h"
 #include "core/basewebpage.h"
 #include "gui/skinfactory.h"
-#include "gui/basewebview.h"
+#include "gui/webview.h"
 #include "gui/formmain.h"
 #include "gui/locationlineedit.h"
 #include "gui/iconthemefactory.h"
@@ -31,7 +31,7 @@ WebBrowser::WebBrowser(QWidget *parent)
   : TabContent(parent),
     m_layout(new QVBoxLayout(this)),
     m_toolBar(new QToolBar(tr("Navigation panel"), this)),
-    m_webView(new BaseWebView(this)),
+    m_webView(new WebView(this)),
     m_txtLocation(new LocationLineEdit(this)),
     m_actionBack(m_webView->pageAction(QWebPage::Back)),
     m_actionForward(m_webView->pageAction(QWebPage::Forward)),

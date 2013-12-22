@@ -14,7 +14,7 @@ class QToolButton;
 class QWidgetAction;
 class QVBoxLayout;
 class LocationLineEdit;
-class BaseWebView;
+class WebView;
 class WebBrowserNetworkAccessManager;
 class QMenu;
 class TabWidget;
@@ -98,7 +98,7 @@ class WebBrowser : public TabContent {
   private:
     QVBoxLayout *m_layout;
     QToolBar *m_toolBar;
-    BaseWebView *m_webView;
+    WebView *m_webView;
     LocationLineEdit *m_txtLocation;
     QWidget *m_zoomButtons;
     QToolButton *m_btnResetZoom;

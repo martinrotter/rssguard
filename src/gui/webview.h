@@ -8,13 +8,13 @@ class QAction;
 class QPaintEvent;
 class BaseWebPage;
 
-class BaseWebView : public QWebView {
+class WebView : public QWebView {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    explicit BaseWebView(QWidget *parent = 0);
-    virtual ~BaseWebView();
+    explicit WebView(QWidget *parent = 0);
+    virtual ~WebView();
 
     void setupIcons();
 
@@ -30,6 +30,7 @@ class BaseWebView : public QWebView {
     void zoomFactorChanged();
 
   public slots:
+    // Page zoom modifiers.
     bool increaseWebPageZoom();
     bool decreaseWebPageZoom();
     bool resetWebPageZoom();
