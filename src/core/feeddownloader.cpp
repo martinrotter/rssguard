@@ -34,7 +34,7 @@ void FeedDownloader::updateFeeds(const QList<FeedsModelFeed *> &feeds) {
   for (int i = 0, total = feeds.size(); i < total; i++) {
     feeds.at(i)->update();
 
-    qDebug("Made progress in feed updates: %d/%d.", i, total);
+    qDebug("Made progress in feed updates: %d/%d.", i + 1, total);
 
     emit progress(feeds.at(i), i + 1, total);
   }

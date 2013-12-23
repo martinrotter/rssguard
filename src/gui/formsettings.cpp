@@ -296,7 +296,7 @@ void FormSettings::loadBrowser() {
   // Load settings of web browser GUI.
   m_initialSettings.m_webBrowserProgress = settings->value(APP_CFG_BROWSER,
                                                            "browser_progress_color",
-                                                           QColor(0, 255, 0, 100)).value<QColor>();
+                                                           QColor(59, 94, 248, 70)).value<QColor>();
   loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
   m_ui->m_checkBrowserProgressColor->setChecked(settings->value(APP_CFG_BROWSER,
                                                                 "browser_colored_progress_enabled",
