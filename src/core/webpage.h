@@ -1,16 +1,16 @@
-#ifndef BASEWEBPAGE_H
-#define BASEWEBPAGE_H
+#ifndef WEBPAGE_H
+#define WEBPAGE_H
 
 #include <QWebPage>
 
 
-class BaseWebPage : public QWebPage {
+class WebPage : public QWebPage {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    explicit BaseWebPage(QObject *parent = 0);
-    virtual ~BaseWebPage();
+    explicit WebPage(QObject *parent = 0);
+    virtual ~WebPage();
 
   protected:
     QWebPage *createWindow(WebWindowType type);

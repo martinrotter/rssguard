@@ -26,8 +26,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-#ifndef KEYSEQUENCECATCHER_H
-#define KEYSEQUENCECATCHER_H
+#ifndef SHORTCUTCATCHER_H
+#define SHORTCUTCATCHER_H
 
 #include <QWidget>
 

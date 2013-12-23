@@ -262,7 +262,7 @@ set(APP_SOURCES
   src/core/localization.cpp
   src/core/dynamicshortcuts.cpp
   src/core/basenetworkaccessmanager.cpp
-  src/core/basewebpage.cpp
+  src/core/webpage.cpp
   src/core/webbrowsernetworkaccessmanager.cpp
   src/core/textfactory.cpp
   src/core/databasefactory.cpp
@@ -318,7 +318,7 @@ set(APP_HEADERS
   src/core/settings.h
   src/core/basenetworkaccessmanager.h
   src/core/webbrowsernetworkaccessmanager.h
-  src/core/basewebpage.h
+  src/core/webpage.h
   src/core/systemfactory.h
   src/core/databasefactory.h
   src/core/messagesmodel.h

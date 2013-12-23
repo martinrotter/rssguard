@@ -1,5 +1,5 @@
-#ifndef FEEDSMODELCLASSICCATEGORY_H
-#define FEEDSMODELCLASSICCATEGORY_H
+#ifndef FEEDSMODELCATEGORY_H
+#define FEEDSMODELCATEGORY_H
 
 #include "core/feedsmodelrootitem.h"
 

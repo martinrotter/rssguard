@@ -1,9 +1,8 @@
 #include "gui/webbrowser.h"
 
 #include "core/defs.h"
-#include "core/basenetworkaccessmanager.h"
 #include "core/webbrowsernetworkaccessmanager.h"
-#include "core/basewebpage.h"
+#include "core/webpage.h"
 #include "gui/skinfactory.h"
 #include "gui/webview.h"
 #include "gui/formmain.h"

@@ -8,7 +8,7 @@ class FeedsModelFeed;
 
 // This class offers means to "update" feeds
 // and "special" categories.
-// NOTE: This class is used withing separate thread.
+// NOTE: This class is used within separate thread.
 class FeedDownloader : public QObject {
     Q_OBJECT
 

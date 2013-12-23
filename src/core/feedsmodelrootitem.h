@@ -1,5 +1,5 @@
-#ifndef FEEDMODELROOTITEM_H
-#define FEEDMODELROOTITEM_H
+#ifndef FEEDSMODELROOTITEM_H
+#define FEEDSMODELROOTITEM_H
 
 #include <QIcon>
 
@@ -54,7 +54,7 @@ class FeedsModelRootItem {
     QString title() const;
     void setTitle(const QString &title);
 
-    // Acess to children.
+    // Access to children.
     QList<FeedsModelRootItem *> childItems() const;
 
     // Removes all childs from this item.

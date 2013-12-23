@@ -2,7 +2,7 @@
 
 #include "core/defs.h"
 #include "core/settings.h"
-#include "core/basewebpage.h"
+#include "core/webpage.h"
 #include "gui/skinfactory.h"
 #include "gui/iconthemefactory.h"
 
@@ -17,7 +17,7 @@
 
 
 WebView::WebView(QWidget *parent)
-  : QWebView(parent), m_page(new BaseWebPage(this)) {
+  : QWebView(parent), m_page(new WebPage(this)) {
   setPage(m_page);
   setContextMenuPolicy(Qt::CustomContextMenu);
   initializeActions();

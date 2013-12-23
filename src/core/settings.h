@@ -31,7 +31,7 @@ class Settings : public QSettings {
                   const QString &key,
                   const QVariant &value);
 
-    // Synchronises settings.
+    // Synchronizes settings.
     QSettings::Status checkSettings();
 
   private:

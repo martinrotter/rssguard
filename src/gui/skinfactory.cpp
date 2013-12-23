@@ -130,7 +130,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   // Obtain style name.
   query.setQuery("string(/skin/style)");
   query.evaluateTo(&styles);
-  skin.m_stylesNames = styles.remove('\n').split(",", QString::SkipEmptyParts);
+  skin.m_stylesNames = styles.remove('\n').split(',', QString::SkipEmptyParts);
 
   // Obtain author.
   query.setQuery("string(/skin/author/name)");

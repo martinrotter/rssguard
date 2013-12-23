@@ -6,7 +6,7 @@
 
 class QAction;
 class QPaintEvent;
-class BaseWebPage;
+class WebPage;
 
 class WebView : public QWebView {
     Q_OBJECT
@@ -66,7 +66,7 @@ class WebView : public QWebView {
     void mouseReleaseEvent(QMouseEvent *event);
 
   private:
-    BaseWebPage *m_page;
+    WebPage *m_page;
 
     QAction *m_actionReload;
     QAction *m_actionCopyLink;
