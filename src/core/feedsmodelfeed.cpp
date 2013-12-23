@@ -37,6 +37,9 @@ void FeedsModelFeed::setCountOfUnreadMessages(int count) {
   m_unreadCount = count;
 }
 
+void FeedsModelFeed::update() {
+}
+
 FeedsModelFeed::Type FeedsModelFeed::type() const {
   return m_type;
 }

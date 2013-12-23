@@ -34,12 +34,6 @@ class FeedsModelRootItem {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
-    // Each item can be "updated".
-    // NOTE: This method is used in the "update worker".
-    // For example, it can fetch new messages from a remote destination
-    // and store them in a local database and so on.
-    virtual void update();
-
     virtual Kind kind() const;
 
     // Each item has icon.

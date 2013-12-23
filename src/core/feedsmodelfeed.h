@@ -34,6 +34,12 @@ class FeedsModelFeed : public FeedsModelRootItem {
     int countOfUnreadMessages() const;
     void setCountOfUnreadMessages(int count);
 
+    // Each feed can be "updated".
+    // NOTE: This method is used in the "update worker".
+    // For example, it can fetch new messages from a remote destination
+    // and store them in a local database and so on.
+    virtual void update();
+
     // Other getters/setters.
     Type type() const;
     void setType(const Type &type);

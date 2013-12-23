@@ -84,13 +84,6 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
   }
 }
 
-void FeedsModelStandardCategory::update() {
-  // Update all children.
-  foreach (FeedsModelRootItem *child, m_childItems) {
-    child->update();
-  }
-}
-
 FeedsModelStandardCategory *FeedsModelStandardCategory::loadFromRecord(const QSqlRecord &record) {
   FeedsModelStandardCategory *category = new FeedsModelStandardCategory(NULL);
 

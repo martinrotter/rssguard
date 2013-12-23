@@ -5,6 +5,8 @@
 #include "gui/iconthemefactory.h"
 
 #include <QVariant>
+#include <QThread>
+#include <unistd.h>
 
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)
@@ -135,5 +137,5 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 }
 
 void FeedsModelStandardFeed::update() {
-  // TODO: Perform fetching of new messages.
+  usleep(5500000);
 }

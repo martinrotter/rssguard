@@ -3,6 +3,8 @@
 #include "core/settings.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
+#include "core/feedsmodelstandardfeed.h"
+#include "core/systemfactory.h"
 #include "gui/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/iconthemefactory.h"
@@ -18,6 +20,8 @@
 #include <QToolButton>
 #include <QMenu>
 #include <QWidgetAction>
+#include <QThread>
+#include <QReadWriteLock>
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
@@ -25,10 +29,15 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBar(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new WebBrowser(this)) {
+    m_messagesBrowser(new WebBrowser(this)),
+    m_feedDownloaderThread(new QThread()),
+    m_feedDownloader(new FeedDownloader())  {
   initialize();
   initializeViews();
   createConnections();
+
+  // Start the feed downloader thread.
+  m_feedDownloaderThread->start();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
@@ -75,6 +84,27 @@ void FeedMessageViewer::loadSize() {
                                                  default_msg_section_size).toInt());
 }
 
+void FeedMessageViewer::quitDownloader() {
+  qDebug("Quitting feed downloader thread.");
+
+  m_feedDownloaderThread->quit();
+  m_feedDownloader->deleteLater();
+}
+
+void FeedMessageViewer::updateSelectedFeeds() {
+  if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForRead()) {
+    emit feedsUpdateRequested(m_feedsView->selectedFeeds());
+  }
+  else {
+    qDebug("Lock for feed updates was NOT obtained.");
+  }
+}
+
+void FeedMessageViewer::onFeedUpdatesFinished() {
+  // Updates of some feeds finished, unlock the lock.
+  SystemFactory::getInstance()->applicationCloseLock()->unlock();
+}
+
 void FeedMessageViewer::createConnections() {
   // General connections.
   connect(m_messagesView, SIGNAL(currentMessageRemoved()),
@@ -113,6 +143,17 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesUnread()));
   connect(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesDeleted()));
+  connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds,
+          SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
+
+  // Downloader connections.
+  // TODO: Připravit spojení pro progress a finished.
+  connect(m_feedDownloaderThread, SIGNAL(finished()),
+          m_feedDownloaderThread, SLOT(deleteLater()));
+  connect(this, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)),
+          m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
+  connect(m_feedDownloader, SIGNAL(finished()),
+          this, SLOT(onFeedUpdatesFinished()));
 }
 
 void FeedMessageViewer::initialize() {
@@ -135,6 +176,10 @@ void FeedMessageViewer::initialize() {
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
+
+  // Downloader setup.
+  qRegisterMetaType<QList<FeedsModelFeed*> >("QList<FeedsModelFeed*>");
+  m_feedDownloader->moveToThread(m_feedDownloaderThread);
 }
 
 void FeedMessageViewer::initializeViews() {

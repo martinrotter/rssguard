@@ -23,9 +23,6 @@ void FeedsModelRootItem::setParent(FeedsModelRootItem *parent_item) {
   m_parentItem = parent_item;
 }
 
-void FeedsModelRootItem::update() {
-}
-
 FeedsModelRootItem::Kind FeedsModelRootItem::kind() const {
   return m_kind;
 }

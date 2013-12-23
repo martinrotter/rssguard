@@ -16,11 +16,11 @@ class FeedsView : public QTreeView {
     explicit FeedsView(QWidget *parent = 0);
     virtual ~FeedsView();
 
+    // Enables or disables sorting.
     void setSortingEnabled(bool enable);
     
-    // Returns list of selected feeds.
+    // Returns list of selected/all feeds.
     QList<FeedsModelFeed*> selectedFeeds() const;
-
     QList<FeedsModelFeed*> allFeeds() const;
 
   public slots:
@@ -31,12 +31,11 @@ class FeedsView : public QTreeView {
     // Sets up appearance of this widget.
     void setupAppearance();
 
-
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 
   signals:
-    void feedsSelected(const QList<int> feed_ids);
+    void feedsSelected(const QList<int> &feed_ids);
 
   private:
     FeedsModel *m_sourceModel;

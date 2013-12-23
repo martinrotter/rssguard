@@ -10,6 +10,7 @@ class MessagesView;
 class FeedDownloader;
 class QToolBar;
 class QSplitter;
+class FeedsModelFeed;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -28,6 +29,13 @@ class FeedMessageViewer : public TabContent {
     void saveSize();
     void loadSize();
 
+    // Destroys worker/feed downloader thread.
+    void quitDownloader();
+
+  public slots:
+    void updateSelectedFeeds();
+    void onFeedUpdatesFinished();
+
   protected:
     // Initializes some properties of the widget.
     void initialize();
@@ -37,6 +45,9 @@ class FeedMessageViewer : public TabContent {
 
     // Sets up connections.
     void createConnections();
+
+  signals:
+    void feedsUpdateRequested(QList<FeedsModelFeed*>);
 
   private:
     QToolBar *m_toolBar;
@@ -48,6 +59,7 @@ class FeedMessageViewer : public TabContent {
     FeedsView *m_feedsView;
     WebBrowser *m_messagesBrowser;
 
+    QThread *m_feedDownloaderThread;
     FeedDownloader *m_feedDownloader;
 };
 

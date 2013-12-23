@@ -29,7 +29,7 @@
 #define NO_PARENT_CATEGORY        -1
 #define TRAY_ICON_BUBBLE_TIMEOUT  15000
 #define KEY_MESSAGES_VIEW         "messages_view_column_"
-#define CLOSE_LOCK_TIMEOUT        2000
+#define CLOSE_LOCK_TIMEOUT        3000
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"

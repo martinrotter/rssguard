@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
   window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(FormMain::getInstance()->getActions());
+  DynamicShortcuts::load(window.getActions());
 
   // Display welcome dialog if application is launched for the first time.
   if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
