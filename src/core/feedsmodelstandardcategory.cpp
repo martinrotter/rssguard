@@ -2,6 +2,7 @@
 
 #include "core/defs.h"
 #include "core/textfactory.h"
+#include "gui/iconthemefactory.h"
 #include "gui/iconfactory.h"
 
 #include <QVariant>
@@ -67,9 +68,14 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
       }
 
     case Qt::DecorationRole:
-      return column == FDS_MODEL_TITLE_INDEX ?
-            m_icon :
-            QVariant();
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_icon.isNull() ?
+              IconThemeFactory::getInstance()->fromTheme("folder-cyan") :
+              m_icon;
+      }
+      else {
+        return QVariant();
+      }
 
     case Qt::TextAlignmentRole:
       if (column == FDS_MODEL_COUNTS_INDEX) {

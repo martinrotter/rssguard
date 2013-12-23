@@ -36,9 +36,6 @@ class MessagesModel : public QSqlTableModel {
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
   public:
-    // Sets up all icons which are used directly by this model.
-    void setupIcons();
-
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
@@ -94,6 +91,9 @@ class MessagesModel : public QSqlTableModel {
 
     // Creates "normal" and "bold" fonts.
     void setupFonts();
+
+    // Sets up all icons which are used directly by this model.
+    void setupIcons();
 
   private:
     QList<int> m_currentFeeds;

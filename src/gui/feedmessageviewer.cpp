@@ -82,6 +82,8 @@ void FeedMessageViewer::loadSize() {
                                  settings->value(APP_CFG_GUI,
                                                  KEY_MESSAGES_VIEW + QString::number(MSG_DB_DUPDATED_INDEX),
                                                  default_msg_section_size).toInt());
+  // TODO: Perhaps make toolbar icon size changeable,
+  // this concerns toolbars of web browsers too.
 }
 
 void FeedMessageViewer::quitDownloader() {
@@ -201,14 +203,14 @@ void FeedMessageViewer::initializeViews() {
 
   // Setup splitters.
   m_messageSplitter->setHandleWidth(1);
+  m_messageSplitter->setOpaqueResize(false);
   m_messageSplitter->setChildrenCollapsible(false);
-  m_messageSplitter->setStretchFactor(0, 1);
   m_messageSplitter->addWidget(m_messagesView);
   m_messageSplitter->addWidget(m_messagesBrowser);
 
   m_feedSplitter->setHandleWidth(1);
+  m_feedSplitter->setOpaqueResize(false);
   m_feedSplitter->setChildrenCollapsible(false);
-  m_feedSplitter->setStretchFactor(0, 1);
   m_feedSplitter->addWidget(m_feedsView);
   m_feedSplitter->addWidget(m_messageSplitter);
 

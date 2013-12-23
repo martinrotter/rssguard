@@ -103,9 +103,14 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       }
 
     case Qt::DecorationRole:
-      return column == FDS_MODEL_TITLE_INDEX ?
-            m_icon :
-            QVariant();
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_icon.isNull() ?
+              IconThemeFactory::getInstance()->fromTheme("application-rss+xml") :
+              m_icon;
+      }
+      else {
+        return QVariant();
+      }
 
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {

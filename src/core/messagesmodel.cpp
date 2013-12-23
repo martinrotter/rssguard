@@ -38,9 +38,9 @@ bool MessagesModel::submitAll() {
 }
 
 void MessagesModel::setupIcons() {
-  m_favoriteIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-important");
-  m_readIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-read");
-  m_unreadIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
+  m_favoriteIcon = IconThemeFactory::getInstance()->fromTheme("favorites");
+  m_readIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk");
+  m_unreadIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-important");
 }
 
 void MessagesModel::fetchAll() {
