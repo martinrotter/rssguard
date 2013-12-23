@@ -6,8 +6,12 @@
 #include <QList>
 
 
+// This class contains methods to
+// parse input Unicode textual data into
+// another objects.
 class ParsingFactory {
   private:
+    // Constructors and destructors.
     explicit ParsingFactory();
 
   public:

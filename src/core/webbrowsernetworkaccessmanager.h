@@ -4,7 +4,7 @@
 #include "core/basenetworkaccessmanager.h"
 
 
-// This is custom network access manager for web browsers.
+// This is network access manager for web browsers.
 class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     Q_OBJECT
 

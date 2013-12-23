@@ -8,6 +8,7 @@
 
 class TextFactory {
   private:
+    // Constructors and destructors.
     explicit TextFactory();
 
   public:
@@ -15,7 +16,7 @@ class TextFactory {
     // Returns invalid date/time if processing fails.
     static QDateTime parseDateTime(const QString &date_time);
 
-    // Strips "<....>" tags from given text.
+    // Strips "<....>" (HTML, XML) tags from given text.
     static QString stripTags(QString text);
 
     // Shortens input string according to given length limit.

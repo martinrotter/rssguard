@@ -4,8 +4,10 @@
 #include "core/settings.h"
 #include "core/localization.h"
 #include "core/systemfactory.h"
+#include "core/feeddownloader.h"
 #include "core/dynamicshortcuts.h"
 #include "core/webbrowsernetworkaccessmanager.h"
+#include "core/silentnetworkaccessmanager.h"
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
 #include "gui/systemtrayicon.h"
@@ -363,6 +365,7 @@ void FormSettings::saveProxy() {
 
   // Reload settings for all network access managers.
   WebBrowser::globalNetworkManager()->loadSettings();
+  FeedDownloader::globalNetworkManager()->loadSettings();
 }
 
 void FormSettings::loadLanguage() {

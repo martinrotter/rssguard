@@ -13,23 +13,22 @@ BaseNetworkAccessManager::BaseNetworkAccessManager(QObject *parent)
 }
 
 BaseNetworkAccessManager::~BaseNetworkAccessManager() {
-  qDebug("Destroying BaseNetworkAccessManager instance.");
 }
 
 void BaseNetworkAccessManager::loadSettings() {
   qDebug("Settings of BaseNetworkAccessManager changed.");
 
   QNetworkProxy new_proxy;
-
-  // Load proxy values from settings.
   QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::getInstance()->value(APP_CFG_PROXY,
                                                                                                                       "proxy_type",
                                                                                                                       QNetworkProxy::NoProxy).toInt());
+
   if (selected_proxy_type == QNetworkProxy::NoProxy) {
     // No extra setting is needed, set new proxy and exit this method.
     setProxy(QNetworkProxy::NoProxy);
     return;
   }
+
   Settings *settings = Settings::getInstance();
 
   // Custom proxy is selected, set it up.

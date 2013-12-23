@@ -264,6 +264,7 @@ set(APP_SOURCES
   src/core/basenetworkaccessmanager.cpp
   src/core/webpage.cpp
   src/core/webbrowsernetworkaccessmanager.cpp
+  src/core/silentnetworkaccessmanager.cpp
   src/core/textfactory.cpp
   src/core/databasefactory.cpp
   src/core/messagesmodel.cpp
@@ -318,6 +319,7 @@ set(APP_HEADERS
   src/core/settings.h
   src/core/basenetworkaccessmanager.h
   src/core/webbrowsernetworkaccessmanager.h
+  src/core/silentnetworkaccessmanager.h
   src/core/webpage.h
   src/core/systemfactory.h
   src/core/databasefactory.h
