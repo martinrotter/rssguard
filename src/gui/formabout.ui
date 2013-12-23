@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>FormAbout</class>
  <widget class="QDialog" name="FormAbout">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -145,7 +142,7 @@ p, li { white-space: pre-wrap; }
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
          </property>
          <property name="searchPaths">
-          <stringlist notr="true"/>
+          <stringlist/>
          </property>
          <property name="openExternalLinks">
           <bool>true</bool>
@@ -169,12 +166,12 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>687</width>
-            <height>180</height>
+            <width>693</width>
+            <height>196</height>
            </rect>
           </property>
           <property name="autoFillBackground">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <attribute name="label">
            <string>GNU GPL License (applies to RSS Guard source code)</string>
@@ -183,16 +180,7 @@ p, li { white-space: pre-wrap; }
            <string>GNU GPL License</string>
           </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_3">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item>
@@ -245,24 +233,15 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>687</width>
-            <height>180</height>
+            <width>85</width>
+            <height>66</height>
            </rect>
           </property>
           <attribute name="label">
            <string>BSD License (applies to QtSingleApplication source code)</string>
           </attribute>
           <layout class="QVBoxLayout" name="verticalLayout_5">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item>

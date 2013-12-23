@@ -19,18 +19,25 @@ MessagesView::MessagesView(QWidget *parent)
   m_sourceModel = m_proxyModel->sourceModel();
 
   // Forward count changes to the view.
-  connect(m_sourceModel, SIGNAL(feedCountsChanged()),
-          this, SIGNAL(feedCountsChanged()));
+  createConnections();
 
   setModel(m_proxyModel);
-
-  // NOTE: It is recommended to call this after the model is set
-  // due to sorting performance.
   setupAppearance();
 }
 
 MessagesView::~MessagesView() {
   qDebug("Destroying MessagesView instance.");
+}
+
+void MessagesView::createConnections() {
+  // Forward feed counts changes.
+  connect(m_sourceModel, SIGNAL(feedCountsChanged()),
+          this, SIGNAL(feedCountsChanged()));
+
+  // Make sure that source message is opened
+  // in new tab on double click.
+  connect(this, SIGNAL(doubleClicked(QModelIndex)),
+          this, SLOT(openSelectedSourceMessagesInternally()));
 }
 
 MessagesModel *MessagesView::sourceModel() {
@@ -84,6 +91,7 @@ void MessagesView::setupAppearance() {
 #endif
 
     // Hide columns.
+    // TODO: Make this changeable.
     hideColumn(MSG_DB_ID_INDEX);
     hideColumn(MSG_DB_DELETED_INDEX);
     hideColumn(MSG_DB_FEED_INDEX);

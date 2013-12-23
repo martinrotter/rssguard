@@ -22,6 +22,7 @@ class MessagesView : public QTreeView {
     MessagesProxyModel *model();
     MessagesModel *sourceModel();
 
+    void createConnections();
   public slots:
     // Loads un-deleted messages from selected feeds.
     void loadFeeds(const QList<int> &feed_ids);
