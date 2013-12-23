@@ -88,6 +88,9 @@ void FeedMessageViewer::quitDownloader() {
   qDebug("Quitting feed downloader thread.");
 
   m_feedDownloaderThread->quit();
+
+  qDebug("Feed downloader thread aborted.");
+
   m_feedDownloader->deleteLater();
 }
 
