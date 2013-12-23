@@ -365,7 +365,6 @@ void FormSettings::saveProxy() {
 
   // Reload settings for all network access managers.
   WebBrowser::globalNetworkManager()->loadSettings();
-  FeedDownloader::globalNetworkManager()->loadSettings();
 }
 
 void FormSettings::loadLanguage() {

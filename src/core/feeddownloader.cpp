@@ -1,30 +1,17 @@
 #include "core/feeddownloader.h"
 
 #include "core/feedsmodelfeed.h"
-#include "core/systemfactory.h"
-#include "core/silentnetworkaccessmanager.h"
 
 #include <QThread>
 #include <QDebug>
-#include <QReadWriteLock>
 #include <QApplication>
 
-
-QPointer<SilentNetworkAccessManager> FeedDownloader::m_networkManager;
 
 FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent) {
 }
 
 FeedDownloader::~FeedDownloader() {
   qDebug("Destroying FeedDownloader instance.");
-}
-
-SilentNetworkAccessManager *FeedDownloader::globalNetworkManager() {
-  if (m_networkManager.isNull()) {
-    m_networkManager = new SilentNetworkAccessManager(qApp);
-  }
-
-  return m_networkManager;
 }
 
 void FeedDownloader::updateFeeds(const QList<FeedsModelFeed *> &feeds) {

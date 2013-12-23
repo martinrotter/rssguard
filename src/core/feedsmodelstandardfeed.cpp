@@ -1,12 +1,16 @@
 #include "core/feedsmodelstandardfeed.h"
 
 #include "core/defs.h"
+#include "core/settings.h"
+#include "core/parsingfactory.h"
+#include "core/databasefactory.h"
+#include "core/networkfactory.h"
 #include "gui/iconfactory.h"
 #include "gui/iconthemefactory.h"
 
 #include <QVariant>
-#include <QThread>
-#include <unistd.h>
+#include <QTextCodec>
+#include <QSqlQuery>
 
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)
@@ -137,5 +141,101 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 }
 
 void FeedsModelStandardFeed::update() {
-  usleep(5500000);
+  QByteArray feed_contents;
+  int download_timeout =  Settings::getInstance()->value(APP_CFG_FEEDS,
+                                                         "download_timeout",
+                                                         5000).toInt();
+
+  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url(),
+                                                                             download_timeout,
+                                                                             feed_contents);
+
+  if (download_result != QNetworkReply::NoError) {
+    qWarning("Error during fetching of new messages for feed '%s' (id %d).",
+             qPrintable(url()),
+             id());
+    return;
+  }
+
+  // Encode downloaded data for further parsing.
+  QTextCodec *codec = QTextCodec::codecForName(encoding().toLocal8Bit());
+  QString formatted_feed_contents;
+
+  if (codec == NULL) {
+    // No suitable codec for this encoding was found.
+    // Use non-converted data.
+    formatted_feed_contents = feed_contents;
+  }
+  else {
+    formatted_feed_contents = codec->toUnicode(feed_contents);
+  }
+
+  // Feed data are downloaded and encoded.
+  // Parse data and obtain messages.
+  QList<Message> messages;
+
+  switch (type()) {
+    case FeedsModelFeed::StandardRss2X:
+      messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
+      break;
+
+      // TODO: Add support for other standard formats.
+
+    default:
+      break;
+  }
+
+  updateMessages(messages);
+}
+
+void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
+  int feed_id = id(), message_id;
+  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelStandardFeed");
+
+  // Prepare queries.
+  QSqlQuery query_select(database);
+  QSqlQuery query_insert(database);
+
+  query_select.prepare("SELECT id, feed, date_created FROM Messages "
+                       "WHERE feed = :feed AND title = :title AND url = :url;");
+
+  query_insert.prepare("INSERT INTO Messages "
+                       "(feed, title, url, author, date_created, date_updated, contents) "
+                       "VALUES (:feed, :title, :url, :author, :date_created, :date_updated, :contents);");
+
+  foreach (const Message &message, messages) {
+    query_select.bindValue(":feed", feed_id);
+    query_select.bindValue(":title", message.m_title);
+    query_select.bindValue(":url", message.m_url);
+    query_select.exec();
+
+    if (query_select.next()) {
+      // Message with this title & url probably exists in current feed.
+      message_id = query_select.value(0).toInt();
+    }
+    else {
+      message_id = -1;
+    }
+
+    query_select.finish();
+
+    if (message_id == -1) {
+      // Message is not fetched in this feed yet. Add it.
+      query_insert.bindValue(":feed", feed_id);
+      query_insert.bindValue(":title", message.m_title);
+      query_insert.bindValue(":url", message.m_url);
+      query_insert.bindValue(":author", message.m_author);
+      query_insert.bindValue(":date_created", message.m_created.toString(Qt::ISODate));
+      query_insert.bindValue(":date_updated", message.m_updated.toString(Qt::ISODate));
+      query_insert.bindValue(":contents", message.m_contents);
+
+      query_insert.exec();
+      query_insert.finish();
+    }
+    else {
+      // Message is already persistently stored.
+      // TODO: Update message if it got updated in the
+      // online feed.
+    }
+  }
 }

@@ -7,6 +7,8 @@
 #include <QSqlRecord>
 
 
+class Message;
+
 // Represents STANDARD RSS/RDF/ATOM feed with no
 // online synchronization services (NO TT-RSS, NO FEEDLY).
 // So, parent item is either root item or category.
@@ -39,6 +41,12 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
     // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
+
+  protected:
+    // Persistently stores given messages into the database
+    // and updates existing messages if newer version is
+    // available.
+    void updateMessages(const QList<Message>  &messages);
 
   private:
     QDateTime m_creationDate;

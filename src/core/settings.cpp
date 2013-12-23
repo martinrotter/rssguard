@@ -68,7 +68,8 @@ QSettings::Status Settings::setupSettings() {
     s_instance = new Settings(app_path_file, QSettings::IniFormat,
                               Settings::Portable, qApp);
 
-    // TODO: Separate web settings into another unit.
+    // TODO: Separate web settings into another unit if
+    // MORE web/network-related settings will be needed.
     // Construct icon cache in the same path.
     QString web_path = app_path + QDir::separator() + QString(APP_DB_WEB_PATH);
     QDir(web_path).mkpath(web_path);

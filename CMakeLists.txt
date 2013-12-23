@@ -278,6 +278,7 @@ set(APP_SOURCES
   src/core/feedsmodelstandardfeed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
+  src/core/networkfactory.cpp
 
   # Basic application sources.
   src/main.cpp

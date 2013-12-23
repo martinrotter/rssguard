@@ -19,12 +19,6 @@ class FeedDownloader : public QObject {
     explicit FeedDownloader(QObject *parent = 0);
     virtual ~FeedDownloader();
 
-    // Returns pointer to global network access manager
-    // for feed online operations (primarily fetchich of new messages).
-    // NOTE: All feed online operations shar network access manager,
-    // which makes setting of custom network settings easy.
-    static SilentNetworkAccessManager *globalNetworkManager();
-
   signals:
     // Emitted if all items from update queue are
     // processed.
@@ -42,9 +36,6 @@ class FeedDownloader : public QObject {
     // are stored persistently in the database.
     // Appropriate signals are emitted.
     void updateFeeds(const QList<FeedsModelFeed*> &feeds);
-
-  private:
-    static QPointer<SilentNetworkAccessManager> m_networkManager;
 };
 
 #endif // FEEDDOWNLOADER_H

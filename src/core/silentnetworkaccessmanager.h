@@ -16,7 +16,6 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
   protected slots:
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
     void onAuthenticationRequired(QNetworkReply * reply, QAuthenticator *authenticator);
-
 };
 
 #endif // SILENTNETWORKACCESSMANAGES_H

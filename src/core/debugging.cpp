@@ -32,6 +32,7 @@ void Debugging::debugHandler(QtMsgType type,
                              const QString &message) {
 #ifndef QT_NO_DEBUG_OUTPUT
   const char *file = qPrintable(QString(placement.file).section(QDir::separator(), -1));
+
   switch (type) {
     case QtDebugMsg:
       DEBUG_OUTPUT_WORKER("INFO", file, placement.line, message);
