@@ -138,7 +138,8 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const {
 
       if (index_column == MSG_DB_DUPDATED_INDEX) {
         // This column contains QDateTime.
-        return TextFactory::parseDateTime(QSqlTableModel::data(index, role).toString()).toString(Qt::DefaultLocaleShortDate);
+        return TextFactory::parseDateTime(QSqlTableModel::data(index,
+                                                               role).toString()).toString(Qt::DefaultLocaleShortDate);
       }
       else if (index_column != MSG_DB_IMPORTANT_INDEX &&
                index_column != MSG_DB_READ_INDEX) {

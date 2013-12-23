@@ -33,8 +33,7 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
     }
   }
 
-  qWarning("Problem with parsing date '%s', returning invalid QDateTime instance.",
-           qPrintable(date));
+  // Parsing failed, return invalid datetime.
   return QDateTime();
 }
 

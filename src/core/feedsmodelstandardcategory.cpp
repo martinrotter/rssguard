@@ -57,7 +57,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
 
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return QString("%1%2").arg(m_title, "-C");
+        return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
