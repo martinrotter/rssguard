@@ -6,8 +6,9 @@
 #include <QApplication>
 #include <QDomDocument>
 #include <QDir>
-#include <QXmlQuery>
 #include <QStyleFactory>
+#include <QDomDocument>
+#include <QDomElement>
 
 
 QPointer<SkinFactory> SkinFactory::s_instance;
@@ -43,7 +44,7 @@ void SkinFactory::loadCurrentSkin() {
   else {
     // TODO: Change this to qFatal once code is stable.
     qWarning("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
-           qPrintable(skin_name_from_settings));
+             qPrintable(skin_name_from_settings));
   }
 }
 
@@ -105,11 +106,11 @@ QString SkinFactory::getCurrentMarkup() {
 
 Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   Skin skin;
-  QXmlQuery query;
   QString styles;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
+  QDomDocument dokument;
 
-  if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !query.setFocus(&skin_file)) {
+  if (!skin_file.open(QIODevice::Text | QIODevice::ReadOnly) || !dokument.setContent(&skin_file, true)) {
     if (ok) {
       *ok = false;
     }
@@ -117,39 +118,30 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
     return skin;
   }
 
+  QDomNode skin_node = dokument.namedItem("skin");
+
   // Obtain visible skin name.
-  query.setQuery("string(skin/name)");
-  query.evaluateTo(&skin.m_visibleName);
-  skin.m_visibleName = skin.m_visibleName.remove('\n');
+  skin.m_visibleName = skin_node.namedItem("name").toElement().text();
 
   // Obtain skin raw data.
-  query.setQuery("string(skin/data)");
-  query.evaluateTo(&skin.m_rawData);
+  skin.m_rawData = skin_node.namedItem("data").toElement().text();
   skin.m_rawData = QByteArray::fromBase64(skin.m_rawData.toLocal8Bit());
 
   // Obtain style name.
-  query.setQuery("string(/skin/style)");
-  query.evaluateTo(&styles);
-  skin.m_stylesNames = styles.remove('\n').split(',', QString::SkipEmptyParts);
+  styles = skin_node.namedItem("style").toElement().text();
+  skin.m_stylesNames = styles.split(',', QString::SkipEmptyParts);
 
   // Obtain author.
-  query.setQuery("string(/skin/author/name)");
-  query.evaluateTo(&skin.m_author);
-  skin.m_author = skin.m_author.remove('\n');
+  skin.m_author = skin_node.namedItem("author").namedItem("name").toElement().text();
 
   // Obtain email.
-  query.setQuery("string(/skin/author/email)");
-  query.evaluateTo(&skin.m_email);
-  skin.m_email = skin.m_email.remove('\n');
+  skin.m_email = skin_node.namedItem("author").namedItem("email").toElement().text();
 
   // Obtain version.
-  query.setQuery("string(/skin/@version)");
-  query.evaluateTo(&skin.m_version);
-  skin.m_version = skin.m_version.remove('\n');
+  skin.m_version = skin_node.attributes().namedItem("version").toAttr().value();
 
   // Obtain layout markup.
-  query.setQuery("string(/skin/markup)");
-  query.evaluateTo(&skin.m_layoutMarkup);
+  skin.m_layoutMarkup = skin_node.namedItem("markup").toElement().text();
   skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
 
   // Obtain other information.
@@ -180,7 +172,7 @@ QList<Skin> SkinFactory::getInstalledSkins() {
   foreach (const QString &base_directory, skin_directories) {
     // Check skins installed in this base directory.
     QStringList skin_files = QDir(APP_SKIN_PATH + QDir::separator() + base_directory).entryList(QStringList() << "*.xml",
-                                                                                               QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
+                                                                                                QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
 
     foreach (const QString &skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.

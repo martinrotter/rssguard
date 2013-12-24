@@ -17,6 +17,10 @@ class Message {
     QString m_author;
     QString m_contents;
     QDateTime m_created;
+
+    // Is true if "created" date was obtained directly
+    // from the feed, otherwise is false
+    bool m_createdFromFeed;
 };
 
 class MessagesModel : public QSqlTableModel {

@@ -422,7 +422,7 @@ if(${USE_QT_5})
     Sql
     Network
     Xml
-    XmlPatterns
+    #XmlPatterns
     WebKit
     WebKitWidgets
   )
@@ -443,7 +443,7 @@ else(${USE_QT_5})
     ${QT_QTNETWORK_LIBRARY}
     ${QT_QTSQL_LIBRARY}
     ${QT_QTXML_LIBRARY}
-    ${QT_QTXMLPATTERNS_LIBRARY}
+    #${QT_QTXMLPATTERNS_LIBRARY}
     ${QT_QTMAIN_LIBRARY}
     ${QT_QTWEBKIT_LIBRARY}
   )
