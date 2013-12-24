@@ -34,6 +34,9 @@ class FeedMessageViewer : public TabContent {
 
   public slots:
     void updateSelectedFeeds();
+
+  protected slots:
+    void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
     void onFeedUpdatesFinished();
 
   protected:

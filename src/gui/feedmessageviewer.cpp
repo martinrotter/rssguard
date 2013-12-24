@@ -105,6 +105,19 @@ void FeedMessageViewer::updateSelectedFeeds() {
   }
 }
 
+void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
+                                              int current,
+                                              int total) {
+  // Some feed got updated.
+  // Now we should change some widgets (reload counts
+  // of messages for the feed, update status bar and so on).
+
+
+  // TODO: Don't update counts of all feeds here,
+  // it is enough to update counts of update feed.
+  m_feedsView->updateCountsOfAllFeeds(true);
+}
+
 void FeedMessageViewer::onFeedUpdatesFinished() {
   // Updates of some feeds finished, unlock the lock.
   SystemFactory::getInstance()->applicationCloseLock()->unlock();
@@ -126,6 +139,16 @@ void FeedMessageViewer::createConnections() {
           m_messagesView, SLOT(loadFeeds(QList<int>)));
   connect(m_messagesView, SIGNAL(feedCountsChanged()),
           m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
+
+  // Downloader connections.
+  connect(m_feedDownloaderThread, SIGNAL(finished()),
+          m_feedDownloaderThread, SLOT(deleteLater()));
+  connect(this, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)),
+          m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
+  connect(m_feedDownloader, SIGNAL(finished()),
+          this, SLOT(onFeedUpdatesFinished()));
+  connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)),
+          this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
 
   // Toolbar forwardings.
   connect(FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
@@ -150,15 +173,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesDeleted()));
   connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds,
           SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
-
-  // Downloader connections.
-  // TODO: Připravit spojení pro progress a finished.
-  connect(m_feedDownloaderThread, SIGNAL(finished()),
-          m_feedDownloaderThread, SLOT(deleteLater()));
-  connect(this, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)),
-          m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
-  connect(m_feedDownloader, SIGNAL(finished()),
-          this, SLOT(onFeedUpdatesFinished()));
 }
 
 void FeedMessageViewer::initialize() {

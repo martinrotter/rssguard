@@ -100,6 +100,7 @@ void MessagesView::setupAppearance() {
     hideColumn(MSG_DB_CONTENTS_INDEX);
   }
 
+  header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setStretchLastSection(false);
   setUniformRowHeights(true);
   setAcceptDrops(false);
@@ -115,7 +116,7 @@ void MessagesView::setupAppearance() {
   // Make sure that initial sorting is that unread messages are visible
   // first.
   // NOTE: This can be rewritten so that it's changeable.
-  sortByColumn(MSG_DB_READ_INDEX, Qt::AscendingOrder);
+  sortByColumn(MSG_DB_DUPDATED_INDEX, Qt::AscendingOrder);
 }
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {

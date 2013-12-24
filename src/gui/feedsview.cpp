@@ -38,15 +38,26 @@ QList<FeedsModelFeed *> FeedsView::allFeeds() const {
   return m_sourceModel->getAllFeeds();
 }
 
-void FeedsView::updateCountsOfSelectedFeeds() {
+void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
   QList<FeedsModelFeed*> feeds = selectedFeeds();
 
   foreach (FeedsModelFeed *feed, feeds) {
-    feed->updateCounts();
+    feed->updateCounts(update_total_too);
   }
 
   // Make sure that selected view reloads changed indexes.
   m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
+}
+
+void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
+  QList<FeedsModelFeed*> feeds = allFeeds();
+
+  foreach (FeedsModelFeed *feed, feeds) {
+    feed->updateCounts(update_total_too);
+  }
+
+  // Make sure that all views reloads its data.
+  m_sourceModel->reloadWholeLayout();
 }
 
 void FeedsView::setupAppearance() {

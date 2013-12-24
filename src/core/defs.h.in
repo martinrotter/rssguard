@@ -30,6 +30,7 @@
 #define TRAY_ICON_BUBBLE_TIMEOUT  15000
 #define KEY_MESSAGES_VIEW         "messages_view_column_"
 #define CLOSE_LOCK_TIMEOUT        3000
+#define MESSAGES_VIEW_DEFAULT_COL 170
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"

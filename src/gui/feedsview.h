@@ -24,8 +24,11 @@ class FeedsView : public QTreeView {
     QList<FeedsModelFeed*> allFeeds() const;
 
   public slots:
-    // Reloads count for selected feeds.
-    void updateCountsOfSelectedFeeds();
+    // Reloads counts for selected feeds.
+    void updateCountsOfSelectedFeeds(bool update_total_too = true);
+
+    // Reloads counts for all feeds.
+    void updateCountsOfAllFeeds(bool update_total_too = true);
 
   protected:
     // Sets up appearance of this widget.
