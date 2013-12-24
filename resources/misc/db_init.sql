@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS Messages (
   url            TEXT,
   author         TEXT,
   date_created   TEXT       NOT NULL CHECK (date_created != ''),
-  date_updated   TEXT,
   contents       TEXT,
   
   FOREIGN KEY (feed) REFERENCES Feeds (id)

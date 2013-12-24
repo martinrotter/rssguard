@@ -17,7 +17,6 @@ class Message {
     QString m_author;
     QString m_contents;
     QDateTime m_created;
-    QDateTime m_updated;
 };
 
 class MessagesModel : public QSqlTableModel {

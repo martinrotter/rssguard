@@ -93,7 +93,7 @@ Message MessagesModel::messageAt(int row_index) const {
   message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
-  message.m_updated = TextFactory::parseDateTime(rec.value(MSG_DB_DUPDATED_INDEX).toString());
+  message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).toString());
 
   return message;
 }
@@ -101,13 +101,13 @@ Message MessagesModel::messageAt(int row_index) const {
 void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Deleted") << tr("Important") <<
                   tr("Feed") << tr("Title") << tr("Url") << tr("Author") <<
-                  tr("Created on") << tr("Updated on") << tr("Contents");
+                  tr("Created on") << tr("Contents");
   m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
                    tr("Is message deleted?") << tr("Is message important?") <<
                    tr("Id of feed which this message belongs to.") <<
                    tr("Title of the message.") << tr("Url of the message.") <<
                    tr("Author of the message.") << tr("Creation date of the message.") <<
-                   tr("Date of the most recent update of the message.") << tr("Contents of the message.");
+                   tr("Contents of the message.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
@@ -136,7 +136,7 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const {
     case Qt::DisplayRole: {
       int index_column = index.column();
 
-      if (index_column == MSG_DB_DUPDATED_INDEX) {
+      if (index_column == MSG_DB_DCREATED_INDEX) {
         // This column contains QDateTime.
         return TextFactory::parseDateTime(QSqlTableModel::data(index,
                                                                role).toString()).toString(Qt::DefaultLocaleShortDate);

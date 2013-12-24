@@ -9,6 +9,9 @@
 // This class contains methods to
 // parse input Unicode textual data into
 // another objects.
+//
+// NOTE: Each parsed message MUST CONTAINT THESE FIELDS.
+
 class ParsingFactory {
   private:
     // Constructors and destructors.

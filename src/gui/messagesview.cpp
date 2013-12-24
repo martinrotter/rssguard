@@ -73,7 +73,6 @@ void MessagesView::setupAppearance() {
     header()->setSectionResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-    header()->setSectionResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
 #else
     // Setup column resize strategies.
@@ -86,7 +85,6 @@ void MessagesView::setupAppearance() {
     header()->setResizeMode(MSG_DB_URL_INDEX, QHeaderView::Interactive);
     header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
     header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
-    header()->setResizeMode(MSG_DB_DUPDATED_INDEX, QHeaderView::Interactive);
     header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
 #endif
 
@@ -96,7 +94,6 @@ void MessagesView::setupAppearance() {
     hideColumn(MSG_DB_DELETED_INDEX);
     hideColumn(MSG_DB_FEED_INDEX);
     hideColumn(MSG_DB_URL_INDEX);
-    hideColumn(MSG_DB_DCREATED_INDEX);
     hideColumn(MSG_DB_CONTENTS_INDEX);
   }
 
@@ -116,7 +113,7 @@ void MessagesView::setupAppearance() {
   // Make sure that initial sorting is that unread messages are visible
   // first.
   // NOTE: This can be rewritten so that it's changeable.
-  sortByColumn(MSG_DB_DUPDATED_INDEX, Qt::AscendingOrder);
+  sortByColumn(MSG_DB_DCREATED_INDEX, Qt::AscendingOrder);
 }
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {

@@ -205,8 +205,8 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
                        "WHERE feed = :feed AND title = :title AND url = :url;");
 
   query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, url, author, date_created, date_updated, contents) "
-                       "VALUES (:feed, :title, :url, :author, :date_created, :date_updated, :contents);");
+                       "(feed, title, url, author, date_created, contents) "
+                       "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
 
   foreach (const Message &message, messages) {
     query_select.bindValue(":feed", feed_id);
@@ -231,7 +231,6 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(":url", message.m_url);
       query_insert.bindValue(":author", message.m_author);
       query_insert.bindValue(":date_created", message.m_created.toString(Qt::ISODate));
-      query_insert.bindValue(":date_updated", message.m_updated.toString(Qt::ISODate));
       query_insert.bindValue(":contents", message.m_contents);
 
       query_insert.exec();

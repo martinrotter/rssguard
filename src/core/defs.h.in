@@ -67,8 +67,7 @@
 #define MSG_DB_URL_INDEX          6
 #define MSG_DB_AUTHOR_INDEX       7
 #define MSG_DB_DCREATED_INDEX     8
-#define MSG_DB_DUPDATED_INDEX     9
-#define MSG_DB_CONTENTS_INDEX     10
+#define MSG_DB_CONTENTS_INDEX     9
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0

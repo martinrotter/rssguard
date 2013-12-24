@@ -61,8 +61,8 @@ void FeedMessageViewer::saveSize() {
                      KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
                      m_messagesView->columnWidth(MSG_DB_AUTHOR_INDEX));
   settings->setValue(APP_CFG_GUI,
-                     KEY_MESSAGES_VIEW + QString::number(MSG_DB_DUPDATED_INDEX),
-                     m_messagesView->columnWidth(MSG_DB_DUPDATED_INDEX));
+                     KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
+                     m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX));
 }
 
 void FeedMessageViewer::loadSize() {
@@ -78,9 +78,9 @@ void FeedMessageViewer::loadSize() {
                                  settings->value(APP_CFG_GUI,
                                                  KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
                                                  default_msg_section_size).toInt());
-  m_messagesView->setColumnWidth(MSG_DB_DUPDATED_INDEX,
+  m_messagesView->setColumnWidth(MSG_DB_DCREATED_INDEX,
                                  settings->value(APP_CFG_GUI,
-                                                 KEY_MESSAGES_VIEW + QString::number(MSG_DB_DUPDATED_INDEX),
+                                                 KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
                                                  default_msg_section_size).toInt());
   // TODO: Perhaps make toolbar icon size changeable,
   // this concerns toolbars of web browsers too.

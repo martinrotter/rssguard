@@ -170,7 +170,7 @@ void WebBrowser::navigateToMessage(const Message &message) {
                                                                         tr("Written by ") + message.m_author,
                                                                         message.m_url,
                                                                         message.m_contents,
-                                                                        message.m_updated.toString(Qt::DefaultLocaleLongDate)));
+                                                                        message.m_created.toString(Qt::DefaultLocaleLongDate)));
   emit iconChanged(m_index,
                    IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
 }

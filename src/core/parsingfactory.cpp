@@ -48,8 +48,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       new_message.m_author = elem_author2.text();
     }
 
-    new_message.m_updated = TextFactory::parseDateTime(elem_updated.text());
-    new_message.m_created = new_message.m_updated;
+    new_message.m_created = TextFactory::parseDateTime(elem_updated.text());
 
     messages.append(new_message);
   }
