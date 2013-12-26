@@ -25,13 +25,15 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
   QDomNodeList messages_in_xml = xml_file.elementsByTagName("item");
 
   for (int i = 0; i < messages_in_xml.size(); i++) {
-    QDomElement elem_link = messages_in_xml.item(i).namedItem("link").toElement();
-    QDomElement elem_description = messages_in_xml.item(i).namedItem("description").toElement();
-    QDomElement elem_description2 = messages_in_xml.item(i).namedItem("encoded").toElement();
-    QDomElement elem_title = messages_in_xml.item(i).namedItem("title").toElement();
-    QDomElement elem_updated = messages_in_xml.item(i).namedItem("pubDate").toElement();
-    QDomElement elem_author = messages_in_xml.item(i).namedItem("author").toElement();
-    QDomElement elem_author2 = messages_in_xml.item(i).namedItem("creator").toElement();
+    QDomNode message_item = messages_in_xml.item(i);
+
+    QDomElement elem_link = message_item.namedItem("link").toElement();
+    QDomElement elem_description = message_item.namedItem("description").toElement();
+    QDomElement elem_description2 = message_item.namedItem("encoded").toElement();
+    QDomElement elem_title = message_item.namedItem("title").toElement();
+    QDomElement elem_updated = message_item.namedItem("pubDate").toElement();
+    QDomElement elem_author = message_item.namedItem("author").toElement();
+    QDomElement elem_author2 = message_item.namedItem("creator").toElement();
 
     // RSS 1.0 requires to have title and link valid.
     if (elem_description.text().isEmpty() && elem_title.text().isEmpty()) {
@@ -57,6 +59,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       new_message.m_author = elem_author2.text();
     }
 
+    // Setup dates.
     new_message.m_created = TextFactory::parseDateTime(elem_updated.text());
     new_message.m_createdFromFeed = !new_message.m_created.isNull();
 

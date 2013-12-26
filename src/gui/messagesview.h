@@ -53,6 +53,9 @@ class MessagesView : public QTreeView {
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);
 
+    // Changes resize mode for all columns.
+    void adjustColumns();
+
   protected:
     void initializeContextMenu();
     void setupAppearance();
@@ -79,6 +82,7 @@ class MessagesView : public QTreeView {
     MessagesProxyModel *m_proxyModel;
     MessagesModel *m_sourceModel;
 
+    bool m_columnsAdjusted;
     bool m_batchUnreadSwitch;
 };
 
