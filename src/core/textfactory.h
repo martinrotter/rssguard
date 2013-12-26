@@ -19,6 +19,11 @@ class TextFactory {
     // Strips "<....>" (HTML, XML) tags from given text.
     static QString stripTags(QString text);
 
+    // HTML entity escaping.
+    // TODO: Optimize these methods.
+    static QString escapeHtml(const QString &html);
+    static QString deEscapeHtrml(const QString &text);
+
     // Shortens input string according to given length limit.
     static QString shorten(const QString &input, int text_length_limit = TEXT_TITLE_LIMIT);
 };

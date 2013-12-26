@@ -49,3 +49,44 @@ QString TextFactory::shorten(const QString &input, int text_length_limit) {
 QString TextFactory::stripTags(QString text) {
   return text.remove(QRegExp("<[^>]*>"));
 }
+
+QString TextFactory::escapeHtml(const QString &html) {
+  QMap<QString, QString> sequences;
+
+  sequences["&lt;"]		= "<";
+  sequences["&gt;"]		= ">";
+  sequences["&amp;"]		= "&";
+  sequences["&quot;"]		= "\"";
+  sequences["&nbsp;"]		= " ";
+  sequences["&plusmn;"]	= "±";
+  sequences["&times;"]	= "×";
+
+  QList<QString> keys = sequences.uniqueKeys();
+  QString output = html;
+
+  foreach (const QString &key, keys) {
+    output.replace(key, sequences.value(key));
+  }
+
+  return output;
+}
+
+QString TextFactory::deEscapeHtrml(const QString &text) {
+  QMap<QString, QString> sequences;
+
+  sequences["<"]	= "&lt;";
+  sequences[">"]	= "&gt;";
+  sequences["&"]	= "&amp;";
+  sequences["\""]	= "&quot;";
+  sequences["±"]	= "&plusmn;";
+  sequences["×"]	= "&times;";
+
+  QList<QString> keys = sequences.uniqueKeys();
+  QString output = text;
+
+  foreach (const QString &key, keys) {
+    output.replace(key, sequences.value(key));
+  }
+
+  return output;
+}
