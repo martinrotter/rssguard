@@ -19,6 +19,7 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
  * integrated web browser + external browser support,
  * desktop integration via tray icon,
  * Qt library is the only dependency,
+ * dynamic keyboard shortcuts,
  * no ads, no hidden costs.
 
 Installation
