@@ -177,7 +177,7 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesRead()));
   connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesUnread()));
-  connect(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages,
+  connect(FormMain::getInstance()->m_ui->m_actionClearFeeds,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesDeleted()));
   connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds,
           SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
@@ -200,8 +200,11 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeeds);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionClearFeeds);
   m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsRead);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedMessages);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

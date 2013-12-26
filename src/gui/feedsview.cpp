@@ -39,9 +39,7 @@ QList<FeedsModelFeed *> FeedsView::allFeeds() const {
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
-  QList<FeedsModelFeed*> feeds = selectedFeeds();
-
-  foreach (FeedsModelFeed *feed, feeds) {
+  foreach (FeedsModelFeed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -50,9 +48,7 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
-  QList<FeedsModelFeed*> feeds = allFeeds();
-
-  foreach (FeedsModelFeed *feed, feeds) {
+  foreach (FeedsModelFeed *feed, allFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -86,12 +82,11 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
                                  const QItemSelection &deselected) {
   QTreeView::selectionChanged(selected, deselected);
 
-  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
-  QList<int> feed_ids;
+  m_selectedFeeds.clear();
 
-  foreach (FeedsModelFeed *feed, selected_feeds) {
-    feed_ids << feed->id();
+  foreach (FeedsModelFeed *feed, selectedFeeds()) {
+    m_selectedFeeds << feed->id();
   }
 
-  emit feedsSelected(feed_ids);
+  emit feedsSelected(m_selectedFeeds);
 }

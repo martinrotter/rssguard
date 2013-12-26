@@ -46,9 +46,6 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="m_actionImport"/>
-    <addaction name="m_actionExport"/>
-    <addaction name="separator"/>
     <addaction name="m_actionQuit"/>
    </widget>
    <widget class="QMenu" name="m_menuHelp">
@@ -98,6 +95,7 @@
     <addaction name="separator"/>
     <addaction name="m_actionMarkFeedsAsRead"/>
     <addaction name="m_actionMarkFeedsAsUnread"/>
+    <addaction name="m_actionClearFeeds"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -106,9 +104,7 @@
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
-    <addaction name="separator"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
-    <addaction name="m_actionDeleteAllMessages"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
@@ -221,20 +217,6 @@
     <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
-  <action name="m_actionNoActions">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;No actions possible</string>
-   </property>
-   <property name="toolTip">
-    <string>No actions are possible at this point of time.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
   <action name="m_actionUpdateAllFeeds">
    <property name="text">
     <string>Update &amp;all feeds</string>
@@ -259,7 +241,7 @@
   </action>
   <action name="m_actionEditSelectedFeed">
    <property name="text">
-    <string>&amp;Edit selected feed(s)/category(ies)</string>
+    <string>&amp;Edit selected feed/category</string>
    </property>
    <property name="toolTip">
     <string>Edit selected feed/category.</string>
@@ -314,7 +296,7 @@
   </action>
   <action name="m_actionMarkFeedsAsRead">
    <property name="text">
-    <string>Mark &amp;selected feed(s) read</string>
+    <string>Mark &amp;selected feeds read</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages (without message filters) from selected feeds as read.</string>
@@ -330,21 +312,18 @@
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
-    <string>&amp;Delete selected messages</string>
+    <string>&amp;Clear selected messages</string>
    </property>
    <property name="toolTip">
     <string>Delete selected messages.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
-  <action name="m_actionDeleteAllMessages">
+  <action name="m_actionClearFeeds">
    <property name="text">
-    <string>Dele&amp;te all messages</string>
+    <string>Clear selected feeds</string>
    </property>
    <property name="toolTip">
-    <string>Delete all messages from selected feeds. This does NOT take message filters into account.</string>
+    <string>Removes all messages from selected feeds.</string>
    </property>
   </action>
   <action name="m_actionAddNewFeed">
@@ -397,6 +376,14 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionNoActions">
+   <property name="text">
+    <string>No actions available</string>
+   </property>
+   <property name="toolTip">
+    <string>No actions are available right now.</string>
    </property>
   </action>
  </widget>

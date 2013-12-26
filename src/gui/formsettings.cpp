@@ -123,7 +123,7 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
 
 void FormSettings::changeBrowserProgressColor() {
   QPointer<QColorDialog> color_dialog = new QColorDialog(m_initialSettings.m_webBrowserProgress,
-                                                             this);
+                                                         this);
   color_dialog.data()->setWindowTitle(tr("Select color for web browser progress bar"));
   color_dialog.data()->setOption(QColorDialog::ShowAlphaChannel);
 
@@ -225,7 +225,7 @@ void FormSettings::promptForRestart() {
     QStringList changed_data_texts = m_changedDataTexts;
 
     changed_data_texts.replaceInStrings(QRegExp("^"),
-                                           QString::fromUtf8(" • "));
+                                        QString::fromUtf8(" • "));
 
     QPointer<QMessageBox> msg_question = new QMessageBox(this);
     msg_question.data()->setText(tr("Some critical settings were changed and will be applied after the application gets restarted."));
@@ -368,9 +368,7 @@ void FormSettings::saveProxy() {
 }
 
 void FormSettings::loadLanguage() {
-  QList<Language> languages = Localization::getInstalledLanguages();
-
-  foreach (const Language &language, languages) {
+  foreach (const Language &language, Localization::getInstalledLanguages()) {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
@@ -504,10 +502,9 @@ void FormSettings::loadInterface() {
   }
 
   // Load skin.
-  QList<Skin> installed_skins = SkinFactory::getInstance()->getInstalledSkins();
   QString selected_skin = SkinFactory::getInstance()->getSelectedSkinName();
 
-  foreach (const Skin &skin, installed_skins) {
+  foreach (const Skin &skin, SkinFactory::getInstance()->getInstalledSkins()) {
     QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
                                                     skin.m_visibleName <<
                                                     skin.m_version <<

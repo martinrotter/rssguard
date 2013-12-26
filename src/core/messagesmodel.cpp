@@ -398,8 +398,8 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
   }
 
   int message_id;
-  QSqlQuery query_delete_msg(db_handle);
-  if (!query_delete_msg.prepare("UPDATE messages SET read = :read "
+  QSqlQuery query_read_msg(db_handle);
+  if (!query_read_msg.prepare("UPDATE messages SET read = :read "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
 
@@ -409,9 +409,9 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
 
   foreach (const QModelIndex &message, messages) {
     message_id = messageId(message.row());
-    query_delete_msg.bindValue(":id", message_id);
-    query_delete_msg.bindValue(":read", read);
-    query_delete_msg.exec();
+    query_read_msg.bindValue(":id", message_id);
+    query_read_msg.bindValue(":read", read);
+    query_read_msg.exec();
   }
 
   // Commit changes.

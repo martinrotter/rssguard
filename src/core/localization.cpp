@@ -15,12 +15,11 @@ Localization::Localization() {
 QList<Language> Localization::getInstalledLanguages() {
   QList<Language> languages;
   QDir file_dir(APP_LANG_PATH);
-  QFileInfoList file_list = file_dir.entryInfoList(QStringList() << "rssguard_*.qm",
-                                                   QDir::Files,
-                                                   QDir::Name);
   QTranslator translator;
 
-  foreach (const QFileInfo &file, file_list) {
+  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard_*.qm",
+                                                         QDir::Files,
+                                                         QDir::Name)) {
     if (translator.load(file.absoluteFilePath())) {
       Language new_language;
       new_language.m_name = translator.translate("QObject", "LANG_NAME");

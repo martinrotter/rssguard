@@ -41,6 +41,7 @@ class FeedsView : public QTreeView {
     void feedsSelected(const QList<int> &feed_ids);
 
   private:
+    QList<int> m_selectedFeeds;
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
 };
