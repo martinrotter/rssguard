@@ -43,6 +43,7 @@ class MessagesModel : public QSqlTableModel {
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
 
+    // Access to list of currently loaded feed IDs.
     QList<int> currentFeeds() const;
 
   public slots:

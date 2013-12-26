@@ -72,6 +72,7 @@ void FeedsView::setupAppearance() {
   setAcceptDrops(false);
   setDragEnabled(false);
   setSortingEnabled(true);
+  setIndentation(10);
   sortByColumn(0, Qt::AscendingOrder);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
