@@ -81,8 +81,8 @@ QList<QAction*> FormMain::getActions() {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally <<
              m_ui->m_actionOpenSelectedSourceArticlesInternally <<
              m_ui->m_actionOpenSelectedMessagesInternally <<
-             m_ui->m_actionMarkAllMessagesAsRead <<
-             m_ui->m_actionMarkAllMessagesAsUnread <<
+             m_ui->m_actionMarkFeedsAsRead <<
+             m_ui->m_actionMarkFeedsAsUnread <<
              m_ui->m_actionDeleteAllMessages <<
              m_ui->m_actionMarkSelectedMessagesAsRead <<
              m_ui->m_actionMarkSelectedMessagesAsUnread <<
@@ -225,8 +225,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionAddNewCategory->setIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
   m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
   m_ui->m_actionEditSelectedFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("gnome-other"));
-  m_ui->m_actionMarkAllMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkAllMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
+  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkFeedsAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
   m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));

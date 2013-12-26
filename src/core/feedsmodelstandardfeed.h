@@ -18,6 +18,7 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     explicit FeedsModelStandardFeed(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelStandardFeed();
 
+    // Obtains data related to this feed.
     QVariant data(int column, int role) const;
 
     // Perform fetching of new messages.

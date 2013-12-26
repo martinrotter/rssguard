@@ -151,6 +151,8 @@ void FeedsModelStandardFeed::update() {
                                                          "download_timeout",
                                                          5000).toInt();
 
+  // TODO: Provide download time-measures debugging
+  // outputs here.
   QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url(),
                                                                              download_timeout,
                                                                              feed_contents);

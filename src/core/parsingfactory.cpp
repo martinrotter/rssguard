@@ -18,7 +18,10 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
   QList<Message> messages;
   QDomDocument xml_file;
   QDateTime current_time = QDateTime::currentDateTime();
+
   xml_file.setContent(data, true);
+
+  // Pull out all messages.
   QDomNodeList messages_in_xml = xml_file.elementsByTagName("item");
 
   for (int i = 0; i < messages_in_xml.size(); i++) {

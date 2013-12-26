@@ -105,13 +105,21 @@ void FeedMessageViewer::updateSelectedFeeds() {
   }
 }
 
+void FeedMessageViewer::updateAllFeeds() {
+  if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForRead()) {
+    emit feedsUpdateRequested(m_feedsView->allFeeds());
+  }
+  else {
+    qDebug("Lock for feed updates was NOT obtained.");
+  }
+}
+
 void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
                                               int current,
                                               int total) {
   // Some feed got updated.
-  // Now we should change some widgets (reload counts
+  // TODO: Now we should change some widgets (reload counts
   // of messages for the feed, update status bar and so on).
-
 
   // TODO: Don't update counts of all feeds here,
   // it is enough to update counts of update feed.
@@ -165,14 +173,16 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
   connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsRead,
+  connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesRead()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsUnread,
+  connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesUnread()));
   connect(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesDeleted()));
   connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds,
           SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
+  connect(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds,
+          SIGNAL(triggered()), this, SLOT(updateAllFeeds()));
 }
 
 void FeedMessageViewer::initialize() {
@@ -188,9 +198,9 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionAddNewFeed);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionEditSelectedFeed);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeeds);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
   m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsRead);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllMessagesAsUnread);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteAllMessages);
 
   // Finish web/message browser setup.

@@ -15,16 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
@@ -48,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>19</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -106,6 +97,7 @@
     <addaction name="m_actionDeleteSelectedFeeds"/>
     <addaction name="separator"/>
     <addaction name="m_actionMarkFeedsAsRead"/>
+    <addaction name="m_actionMarkFeedsAsUnread"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -113,8 +105,6 @@
     </property>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
-    <addaction name="m_actionMarkAllMessagesAsRead"/>
-    <addaction name="m_actionMarkAllMessagesAsUnread"/>
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="separator"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
@@ -324,29 +314,18 @@
   </action>
   <action name="m_actionMarkFeedsAsRead">
    <property name="text">
-    <string>Mark selected feed(s)/category(ies) as read</string>
+    <string>Mark &amp;selected feed(s) read</string>
    </property>
    <property name="toolTip">
-    <string>Mark selected feed(s)/category(ies) as read.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
+    <string>Marks all messages (without message filters) from selected feeds as read.</string>
    </property>
   </action>
-  <action name="m_actionMarkAllMessagesAsRead">
+  <action name="m_actionMarkFeedsAsUnread">
    <property name="text">
-    <string>Mark &amp;all messages read</string>
+    <string>Mark selected feeds unread</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages from selected feeds read. This does NOT take message filters into account.</string>
-   </property>
-  </action>
-  <action name="m_actionMarkAllMessagesAsUnread">
-   <property name="text">
-    <string>Mark a&amp;ll messages unread</string>
-   </property>
-   <property name="toolTip">
-    <string>Mark all messages from selected feeds unread. This does NOT take message filters into account.</string>
+    <string>Marks all messages (without message filters) from selected feeds as unread.</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">

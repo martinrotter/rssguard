@@ -54,6 +54,9 @@ class FeedsModel : public QAbstractItemModel {
     // Returns feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
 
+    static bool isUnequal(FeedsModelFeed *lhs, FeedsModelFeed *rhs);
+    static bool isEqual(FeedsModelFeed *lhs, FeedsModelFeed *rhs);
+
   public slots:
     // Signals that properties (probably counts)
     // of ALL items have changed.

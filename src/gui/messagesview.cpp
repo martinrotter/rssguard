@@ -20,7 +20,6 @@ MessagesView::MessagesView(QWidget *parent)
 
   // Forward count changes to the view.
   createConnections();
-
   setModel(m_proxyModel);
   setupAppearance();
 }
@@ -113,7 +112,7 @@ void MessagesView::setupAppearance() {
   // Make sure that initial sorting is that unread messages are visible
   // first.
   // NOTE: This can be rewritten so that it's changeable.
-  sortByColumn(MSG_DB_DCREATED_INDEX, Qt::AscendingOrder);
+  sortByColumn(MSG_DB_DCREATED_INDEX, Qt::DescendingOrder);
 }
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {

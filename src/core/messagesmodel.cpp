@@ -60,13 +60,17 @@ QList<int> MessagesModel::currentFeeds() const {
 }
 
 
-void MessagesModel::loadMessages(const QList<int> feed_ids) {
+void MessagesModel::loadMessages(const QList<int> feed_ids) { 
   // Conversion of parameter.
   m_currentFeeds = feed_ids;
 
-  setFilter(QString("feed IN (%1) AND deleted = 0").arg(textualFeeds().join(", ")));
+  QString assembled_ids = textualFeeds().join(", ");
+
+  setFilter(QString("feed IN (%1) AND deleted = 0").arg(assembled_ids));
   select();
   fetchAll();
+
+  qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
 }
 
 QStringList MessagesModel::textualFeeds() const {
