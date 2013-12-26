@@ -167,7 +167,9 @@ void WebBrowser::clear() {
 
 void WebBrowser::navigateToMessage(const Message &message) {
   m_webView->setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_title,
-                                                                        tr("Written by ") + message.m_author,
+                                                                        tr("Written by ") + (message.m_author.isEmpty() ?
+                                                                                               tr("uknown author") :
+                                                                                               message.m_author),
                                                                         message.m_url,
                                                                         message.m_contents,
                                                                         message.m_created.toString(Qt::DefaultLocaleLongDate)));

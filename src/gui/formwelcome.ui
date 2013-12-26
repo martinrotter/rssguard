@@ -80,7 +80,7 @@
    <item row="1" column="1">
     <widget class="QLabel" name="m_lblInfo">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string notr="true"/>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

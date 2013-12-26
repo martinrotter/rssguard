@@ -76,6 +76,10 @@ void FeedsView::setupAppearance() {
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
+
+  // TODO: Check if stylesheets or drawBranches(...) reimplementation
+  // is better for hiding the branches of the view.
+  setRootIsDecorated(false);
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected,
