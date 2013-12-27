@@ -55,8 +55,9 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
   if (!db_path.exists()) {
     if (!db_path.mkpath(db_path.absolutePath())) {
       // Failure when create database file path.
-      qFatal("Directory for database file '%s' was NOT created."
+      qFatal("Directory '%s' for database file '%s' was NOT created."
              "This is HUGE problem.",
+             qPrintable(db_path.absolutePath()),
              qPrintable(db_file.symLinkTarget()));
     }
   }
@@ -91,8 +92,9 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("Database initialization file '%s' was not found. Database is uninitialized.",
-               APP_DB_INIT_FILE);
+        qFatal("Database initialization file '%s' from directory '%s' was not found. Database is uninitialized.",
+               APP_DB_INIT_FILE,
+               qPrintable(APP_MISC_PATH));
       }
 
       QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
