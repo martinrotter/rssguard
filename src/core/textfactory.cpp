@@ -6,6 +6,7 @@
 #include <QStringList>
 #include <QLocale>
 #include <QRegExp>
+#include <QMap>
 
 
 TextFactory::TextFactory() {

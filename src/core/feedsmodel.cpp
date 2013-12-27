@@ -13,6 +13,8 @@
 #include <QPair>
 #include <QQueue>
 
+#include <algorithm>
+
 
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   setObjectName("FeedsModel");
