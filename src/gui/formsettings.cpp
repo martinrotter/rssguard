@@ -375,7 +375,7 @@ void FormSettings::loadLanguage() {
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, QIcon(APP_FLAGS_PATH + '/' + language.m_code + ".png"));
+    item->setIcon(0, IconThemeFactory::getInstance()->fromTheme(language.m_code));
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::getInstance()->value(APP_CFG_GEN,

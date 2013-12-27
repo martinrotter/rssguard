@@ -104,7 +104,6 @@
 #define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/icons")
 #define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
 #define APP_HTML_PATH APP_PREFIX + QString("/share/rssguard/html")
-#define APP_FLAGS_PATH APP_PREFIX + QString("/share/rssguard/flags")
 #define APP_ICON_PATH APP_PREFIX + QString("/share/icons/hicolor/128x128/apps/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/icons/hicolor/128x128/apps/@APP_LOW_NAME@_plain.png")
 #elif defined(Q_OS_WIN) || defined(Q_OS_OS2)
@@ -114,7 +113,6 @@
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/icons")
 #define APP_MISC_PATH QApplication::applicationDirPath() + QString("/misc")
 #define APP_HTML_PATH QApplication::applicationDirPath() + QString("/html")
-#define APP_FLAGS_PATH QApplication::applicationDirPath() + QString("/flags")
 #define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@_plain.png")
 #endif

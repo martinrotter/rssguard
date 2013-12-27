@@ -461,8 +461,6 @@ if(WIN32 OR OS2)
             DESTINATION ./icons)
   endif(BUNDLE_ICON_THEMES)
 
-  install(DIRECTORY resources/graphics/flags
-          DESTINATION ./)
   install(DIRECTORY resources/skins/base
           DESTINATION ./skins)
   install(DIRECTORY resources/misc
@@ -489,8 +487,6 @@ elseif(UNIX)
             DESTINATION share/${APP_LOW_NAME}/icons)
   endif(BUNDLE_ICON_THEMES)
 
-  install(DIRECTORY resources/graphics/flags
-          DESTINATION share/${APP_LOW_NAME}/)
   install(DIRECTORY resources/skins/base
           DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc
