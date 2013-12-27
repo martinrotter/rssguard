@@ -145,6 +145,11 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const {
         return TextFactory::parseDateTime(QSqlTableModel::data(index,
                                                                role).toString()).toString(Qt::DefaultLocaleShortDate);
       }
+      else if (index_column == MSG_DB_AUTHOR_INDEX) {
+        QString author_name = QSqlTableModel::data(index, role).toString();
+
+        return author_name.isEmpty() ? "-" : author_name;
+      }
       else if (index_column != MSG_DB_IMPORTANT_INDEX &&
                index_column != MSG_DB_READ_INDEX) {
         return QSqlTableModel::data(index, role);

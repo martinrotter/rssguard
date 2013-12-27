@@ -255,10 +255,9 @@ void FeedsModel::loadFromDatabase() {
     FeedsModelFeed::Type type = static_cast<FeedsModelFeed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
 
     switch (type) {
-      case FeedsModelFeed::StandardAtom:
+      case FeedsModelFeed::StandardAtom10:
       case FeedsModelFeed::StandardRdf:
       case FeedsModelFeed::StandardRss0X:
-      case FeedsModelFeed::StandardRss1X:
       case FeedsModelFeed::StandardRss2X: {
         FeedAssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();

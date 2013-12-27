@@ -50,7 +50,7 @@ void FeedsModelFeed::setType(const Type &type) {
 
 QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
   switch (type) {
-    case StandardAtom:
+    case StandardAtom10:
       return QObject::tr("ATOM 1.0");
 
     case StandardRdf:

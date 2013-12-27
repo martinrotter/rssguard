@@ -12,10 +12,9 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // NOTE: This is equivalent to attribute Feeds(type).
     enum Type {
       StandardRss0X = 0,
-      StandardRss1X = 1,
-      StandardRss2X = 2,
-      StandardRdf   = 3,
-      StandardAtom  = 4
+      StandardRss2X = 1,
+      StandardRdf   = 2,
+      StandardAtom10  = 3
     };
 
     // Constructors and destructors.
@@ -44,6 +43,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     Type type() const;
     void setType(const Type &type);
 
+    // Converts particular feed type to string.
     static QString typeToString(Type type);
 
   public slots:

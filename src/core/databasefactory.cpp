@@ -99,7 +99,7 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
 
       QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
                                                                   QString::SkipEmptyParts);
-      query_db.exec("BEGIN TRANSACTION");
+      database.transaction();
 
       foreach(const QString &statement, statements) {
         query_db.exec(statement);
@@ -110,7 +110,7 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
         }
       }
 
-      query_db.exec("COMMIT");
+      database.commit();
       qDebug("Database backend should be ready now.");
     }
     else {

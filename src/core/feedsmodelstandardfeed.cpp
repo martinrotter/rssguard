@@ -182,6 +182,7 @@ void FeedsModelStandardFeed::update() {
   QList<Message> messages;
 
   switch (type()) {
+    case FeedsModelFeed::StandardRss0X:
     case FeedsModelFeed::StandardRss2X:
       messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
       break;
@@ -189,6 +190,9 @@ void FeedsModelStandardFeed::update() {
     case FeedsModelFeed::StandardRdf:
       messages = ParsingFactory::parseAsRDF(formatted_feed_contents);
       break;
+
+    case FeedsModelFeed::StandardAtom10:
+      messages = ParsingFactory::parseAsATOM10(formatted_feed_contents);
 
       // TODO: Add support for other standard formats.
 
@@ -213,6 +217,13 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   query_insert.prepare("INSERT INTO Messages "
                        "(feed, title, url, author, date_created, contents) "
                        "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
+
+  if (!database.transaction()) {
+    database.rollback();
+
+    qDebug("Transaction start for message downloader failed.");
+    return;
+  }
 
   foreach (const Message &message, messages) {
     query_select.bindValue(":feed", feed_id);
@@ -247,5 +258,11 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
       // TODO: Update message if it got updated in the
       // online feed.
     }
+  }
+
+  if (!database.commit()) {
+    database.rollback();
+
+    qDebug("Transaction commit for message downloader failed.");
   }
 }
