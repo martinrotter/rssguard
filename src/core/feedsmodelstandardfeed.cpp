@@ -186,6 +186,10 @@ void FeedsModelStandardFeed::update() {
       messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
       break;
 
+    case FeedsModelFeed::StandardRdf:
+      messages = ParsingFactory::parseAsRDF(formatted_feed_contents);
+      break;
+
       // TODO: Add support for other standard formats.
 
     default:

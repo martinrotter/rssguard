@@ -23,6 +23,7 @@ class ParsingFactory {
     // Parses input textual data into Message objects.
     // NOTE: Input is correctly encoded in Unicode.
     static QList<Message> parseAsATOM10(const QString &data);
+    static QList<Message> parseAsRDF(const QString &data);
     static QList<Message> parseAsRSS20(const QString &data);
 };
 

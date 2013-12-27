@@ -54,10 +54,10 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
       return QObject::tr("ATOM 1.0");
 
     case StandardRdf:
-      return QObject::tr("RDF 1.0");
+      return QObject::tr("RDF");
 
     case StandardRss0X:
-      return QObject::tr("RSS 0.90/0.91/0.92");
+      return QObject::tr("RSS 0.91/0.92/0.93");
 
     case StandardRss2X:
     default:
