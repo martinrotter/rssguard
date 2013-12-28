@@ -25,6 +25,12 @@ class MessagesView : public QTreeView {
     void createConnections();
 
   public slots:
+    // Called after data got changed externally
+    // and it needs to be reloaded to the view.
+    // If "mark_current_index_read" is 0, then message with
+    // "current" index is not marked as read.
+    void reloadSelections(int mark_current_index_read);
+
     // Loads un-deleted messages from selected feeds.
     void loadFeeds(const QList<int> &feed_ids);
 

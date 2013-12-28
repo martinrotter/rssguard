@@ -59,6 +59,9 @@ class FeedsModel : public QAbstractItemModel {
     static bool isEqual(FeedsModelFeed *lhs, FeedsModelFeed *rhs);
 
   public slots:
+    bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
+    bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted);
+
     // Signals that properties (probably counts)
     // of ALL items have changed.
     void reloadWholeLayout();
@@ -68,6 +71,8 @@ class FeedsModel : public QAbstractItemModel {
     void reloadChangedLayout(QModelIndexList list);
 
   protected:
+    QStringList textualFeedIds(const QList<FeedsModelFeed*> &feeds);
+
     // Returns feed/category which lies at the specified index or
     // null if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;

@@ -38,6 +38,32 @@ QList<FeedsModelFeed *> FeedsView::allFeeds() const {
   return m_sourceModel->getAllFeeds();
 }
 
+void FeedsView::setSelectedFeedsClearStatus(int clear) {
+  m_sourceModel->markFeedsDeleted(selectedFeeds(), clear);
+  updateCountsOfSelectedFeeds();
+
+  emit feedsNeedToBeReloaded(1);
+}
+
+void FeedsView::clearSelectedFeeds() {
+  setSelectedFeedsClearStatus(1);
+}
+
+void FeedsView::markSelectedFeedsReadStatus(int read) {
+  m_sourceModel->markFeedsRead(selectedFeeds(), read);
+  updateCountsOfSelectedFeeds(false);
+
+  emit feedsNeedToBeReloaded(read);
+}
+
+void FeedsView::markSelectedFeedsRead() {
+  markSelectedFeedsReadStatus(1);
+}
+
+void FeedsView::markSelectedFeedsUnread() {
+  markSelectedFeedsReadStatus(0);
+}
+
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
   foreach (FeedsModelFeed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);

@@ -24,6 +24,15 @@ class FeedsView : public QTreeView {
     QList<FeedsModelFeed*> allFeeds() const;
 
   public slots:
+    // Feed read/unread manipulators.
+    void markSelectedFeedsReadStatus(int read);
+    void markSelectedFeedsRead();
+    void markSelectedFeedsUnread();
+
+    // Feed clearers.
+    void setSelectedFeedsClearStatus(int clear);
+    void clearSelectedFeeds();
+
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);
 
@@ -38,6 +47,7 @@ class FeedsView : public QTreeView {
                           const QItemSelection &deselected);
 
   signals:
+    void feedsNeedToBeReloaded(int mark_current_index_read);
     void feedsSelected(const QList<int> &feed_ids);
 
   private:

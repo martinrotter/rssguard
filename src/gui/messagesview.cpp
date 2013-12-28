@@ -46,6 +46,37 @@ void MessagesView::createConnections() {
           this, SLOT(adjustColumns()));
 }
 
+void MessagesView::reloadSelections(int mark_current_index_read) {
+  QModelIndex current_index = selectionModel()->currentIndex();
+  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+
+  // Reload the model now.
+  m_sourceModel->select();
+  m_sourceModel->fetchAll();
+
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+
+  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
+  current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
+                                                                   mapped_current_index.column()));
+
+  if (mark_current_index_read == 0) {
+    // User selected to mark some messages as unread, if one
+    // of them will be marked as current, then it will be read again.
+    m_batchUnreadSwitch = true;
+    setCurrentIndex(current_index);
+    m_batchUnreadSwitch = false;
+  }
+  else {
+    setCurrentIndex(current_index);
+  }
+
+  scrollTo(current_index);
+  reselectIndexes(selected_indexes);
+}
+
 MessagesModel *MessagesView::sourceModel() {
   return m_sourceModel;
 }

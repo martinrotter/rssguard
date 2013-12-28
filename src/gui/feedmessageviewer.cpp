@@ -147,6 +147,8 @@ void FeedMessageViewer::createConnections() {
           m_messagesView, SLOT(loadFeeds(QList<int>)));
   connect(m_messagesView, SIGNAL(feedCountsChanged()),
           m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
+  connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)),
+          m_messagesView, SLOT(reloadSelections(int)));
 
   // Downloader connections.
   connect(m_feedDownloaderThread, SIGNAL(finished()),
@@ -174,11 +176,11 @@ void FeedMessageViewer::createConnections() {
   connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
   connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead,
-          SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesRead()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
   connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread,
-          SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesUnread()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
   connect(FormMain::getInstance()->m_ui->m_actionClearFeeds,
-          SIGNAL(triggered()), m_messagesView, SLOT(setAllMessagesDeleted()));
+          SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
   connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds,
           SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
   connect(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds,

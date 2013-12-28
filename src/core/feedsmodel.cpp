@@ -196,6 +196,17 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   }
 }
 
+QStringList FeedsModel::textualFeedIds(const QList<FeedsModelFeed*> &feeds) {
+  QStringList stringy_ids;
+  stringy_ids.reserve(feeds.size());
+
+  foreach (FeedsModelFeed *feed, feeds) {
+    stringy_ids.append(QString::number(feed->id()));
+  }
+
+  return stringy_ids;
+}
+
 void FeedsModel::reloadWholeLayout() {
   // NOTE: Take a look at docs about this.
   // I have tested that this is LITTLE slower than code above,
@@ -290,6 +301,75 @@ bool FeedsModel::isUnequal(FeedsModelFeed *lhs, FeedsModelFeed *rhs) {
 bool FeedsModel::isEqual(FeedsModelFeed *lhs, FeedsModelFeed *rhs) {
   return lhs->id() == rhs->id();
 }
+
+bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
+                               int read) {
+  QSqlDatabase db_handle = DatabaseFactory::getInstance()->addConnection(objectName());
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for feeds read change.");
+    return false;
+  }
+
+  QSqlQuery query_read_msg(db_handle);
+  if (!query_read_msg.prepare(QString("UPDATE messages SET read = :read "
+                                      "WHERE feed IN (%1) AND deleted = 0").arg(textualFeedIds(feeds).join(", ")))) {
+    qWarning("Query preparation failed for feeds read change.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_read_msg.bindValue(":read", read);
+
+  if (!query_read_msg.exec()) {
+    qDebug("Query execution for feeds read change failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
+bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
+                                  int deleted) {
+  QSqlDatabase db_handle = DatabaseFactory::getInstance()->addConnection(objectName());
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for feeds clearing.");
+    return false;
+  }
+
+  QSqlQuery query_delete_msg(db_handle);
+  if (!query_delete_msg.prepare(QString("UPDATE messages SET deleted = :deleted "
+                                        "WHERE feed IN (%1) AND deleted = 0").arg(textualFeedIds(feeds).join(", ")))) {
+    qWarning("Query preparation failed for feeds clearing.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_delete_msg.bindValue(":deleted", deleted);
+
+  if (!query_delete_msg.exec()) {
+    qDebug("Query execution for feeds clearing failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
   QList<FeedsModelFeed*> feeds;
