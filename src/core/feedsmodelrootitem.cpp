@@ -27,6 +27,10 @@ FeedsModelRootItem::Kind FeedsModelRootItem::kind() const {
   return m_kind;
 }
 
+QIcon FeedsModelRootItem::icon() const {
+  return m_icon;
+}
+
 FeedsModelRootItem *FeedsModelRootItem::child(int row) {
   return m_childItems.value(row);
 }

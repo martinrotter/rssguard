@@ -340,6 +340,7 @@ set(APP_FORMS
   src/gui/formsettings.ui
   src/gui/formwelcome.ui
   src/gui/formabout.ui
+  src/gui/formcategorydetails.ui
 )
 
 # Add resources.

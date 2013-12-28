@@ -1,10 +1,17 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
+#include "ui_formcategorydetails.h"
+
 #include <QDialog>
 
 
+namespace Ui {
+  class FormSettings;
+}
+
 class FeedsModelCategory;
+class FeedsModelRootItem;
 class FeedsView;
 
 class FormCategoryDetails : public QDialog {
@@ -22,9 +29,16 @@ class FormCategoryDetails : public QDialog {
     // Destructor.
     virtual ~FormCategoryDetails();
 
-  signals:
+  protected:
+    void initialize(FeedsView *view);
 
-  public slots:
+    // Loads categories into the dialog.
+    void loadCategories(const QList<FeedsModelCategory*> categories,
+                        FeedsModelRootItem *root_item);
+
+  private:
+    Ui::FormCategoryDetails *m_ui;
+    QPushButton *m_btnObtainDetails;
 
 };
 

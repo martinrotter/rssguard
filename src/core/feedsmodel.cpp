@@ -20,7 +20,9 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   setObjectName("FeedsModel");
 
   m_rootItem = new FeedsModelRootItem();
+  m_rootItem->setId(NO_PARENT_CATEGORY);
   m_rootItem->setTitle(tr("root"));
+  m_rootItem->setIcon(IconThemeFactory::getInstance()->fromTheme("folder-red"));
 
   m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
 
@@ -29,32 +31,6 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
                    tr("Counts of unread/all meesages.");
 
   loadFromDatabase();
-
-  /*
-  FeedsModelStandardCategory *cat1 = new FeedsModelStandardCategory();
-  FeedsModelStandardCategory *cat2 = new FeedsModelStandardCategory();
-  FeedsModelStandardFeed *feed1 = new FeedsModelStandardFeed();
-  FeedsModelStandardFeed *feed2 = new FeedsModelStandardFeed();
-  FeedsModelStandardFeed *feed3 = new FeedsModelStandardFeed();
-  FeedsModelStandardFeed *feed4 = new FeedsModelStandardFeed();
-  FeedsModelStandardFeed *feed5 = new FeedsModelStandardFeed();
-
-  feed1->setTitle("aaa");
-  feed2->setTitle("aaa");
-  feed3->setTitle("aaa");
-  feed4->setTitle("aaa");
-  feed5->setTitle("aaa");
-
-  cat1->appendChild(feed1);
-  cat1->appendChild(feed2);
-  cat1->appendChild(cat2);
-
-  cat2->appendChild(feed4);
-  cat2->appendChild(feed5);
-
-  m_rootItem->appendChild(cat1);
-  m_rootItem->appendChild(feed3);
-  */
 }
 
 FeedsModel::~FeedsModel() {
@@ -461,6 +437,10 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
                qPrintable(feed.second->title()));
     }
   }
+}
+
+FeedsModelRootItem *FeedsModel::rootItem() const {
+  return m_rootItem;
 }
 
 void FeedsModel::assembleCategories(CategoryAssignment categories) {

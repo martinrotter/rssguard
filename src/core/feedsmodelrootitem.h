@@ -37,6 +37,7 @@ class FeedsModelRootItem {
     virtual Kind kind() const;
 
     // Each item has icon.
+    QIcon icon() const;
     void setIcon(const QIcon &icon);
 
     // Each item has some kind of id.

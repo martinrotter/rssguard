@@ -26,6 +26,14 @@ FeedsView::~FeedsView() {
   qDebug("Destroying FeedsView instance.");
 }
 
+FeedsProxyModel *FeedsView::model() {
+  return m_proxyModel;
+}
+
+FeedsModel *FeedsView::sourceModel() {
+  return m_sourceModel;
+}
+
 void FeedsView::setSortingEnabled(bool enable) {
   QTreeView::setSortingEnabled(enable);
   header()->setSortIndicatorShown(false);

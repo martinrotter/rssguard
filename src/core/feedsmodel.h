@@ -54,6 +54,9 @@ class FeedsModel : public QAbstractItemModel {
     // Returns feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
 
+    // Access to root item.
+    FeedsModelRootItem *rootItem() const;
+
   public slots:
     bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
     bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted);

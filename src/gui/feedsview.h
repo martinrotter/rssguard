@@ -16,6 +16,9 @@ class FeedsView : public QTreeView {
     explicit FeedsView(QWidget *parent = 0);
     virtual ~FeedsView();
 
+    FeedsProxyModel *model();
+    FeedsModel *sourceModel();
+
     // Enables or disables sorting.
     void setSortingEnabled(bool enable);
     
