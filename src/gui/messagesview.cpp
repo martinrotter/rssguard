@@ -326,54 +326,6 @@ void MessagesView::switchSelectedMessagesImportance() {
   reselectIndexes(selected_indexes);
 }
 
-void MessagesView::setAllMessagesReadStatus(int read) {
-  QModelIndex current_index = selectionModel()->currentIndex();
-  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-
-  m_sourceModel->setAllMessagesRead(read);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
-
-  selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
-  current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
-                                                                   mapped_current_index.column()));
-
-  if (read == 0) {
-    // User selected to mark some messages as unread, if one
-    // of them will be marked as current, then it will be read again.
-    m_batchUnreadSwitch = true;
-    setCurrentIndex(current_index);
-    m_batchUnreadSwitch = false;
-  }
-  else {
-    setCurrentIndex(current_index);
-  }
-
-  scrollTo(current_index);
-  reselectIndexes(selected_indexes);
-}
-
-void MessagesView::setAllMessagesRead() {
-  setAllMessagesReadStatus(1);
-}
-
-void MessagesView::setAllMessagesUnread() {
-  setAllMessagesReadStatus(0);
-}
-
-void MessagesView::setAllMessagesDeleteStatus(int deleted) {
-  m_sourceModel->setAllMessagesDeleted(deleted);
-
-  // We deleted completely each and every visible message.
-  // That is why no message can be displayed now.
-  emit currentMessageRemoved();
-}
-
-void MessagesView::setAllMessagesDeleted() {
-  setAllMessagesDeleteStatus(1);
-}
-
 void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
   selectionModel()->clearSelection();
 

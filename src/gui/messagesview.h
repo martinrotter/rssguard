@@ -46,15 +46,6 @@ class MessagesView : public QTreeView {
     void deleteSelectedMessages();
     void switchSelectedMessagesImportance();
 
-    // Sets ALL (unfiltered) messages read.
-    void setAllMessagesReadStatus(int read);
-    void setAllMessagesRead();
-    void setAllMessagesUnread();
-
-    // Sets ALL (unfiltered) messages deleted.
-    void setAllMessagesDeleteStatus(int deleted);
-    void setAllMessagesDeleted();
-
   protected slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);

@@ -66,14 +66,6 @@ class MessagesModel : public QSqlTableModel {
     bool setBatchMessagesDeleted(const QModelIndexList &messages, int deleted);
     bool setBatchMessagesRead(const QModelIndexList &messages, int read);
 
-    // ALL messages manipulators.
-    // NOTE: These methods are used for changing of attributes
-    // of many messages via DIRECT SQL calls.
-    // List of loaded feed ids is used for WHERE clause.
-    // Model is reset after one of these methods is applied.
-    bool setAllMessagesDeleted(int deleted);
-    bool setAllMessagesRead(int read);
-
     // Fetches ALL available data to the model.
     // NOTE: This is almost always needed when sorting
     // and makes the model more predictable.
