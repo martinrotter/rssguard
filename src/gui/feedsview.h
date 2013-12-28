@@ -60,6 +60,8 @@ class FeedsView : public QTreeView {
     // Show custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
 
+    void drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const;
+
   signals:
     // Emitted if currently selected feeds needs to be reloaded.
     void feedsNeedToBeReloaded(int mark_current_index_read);

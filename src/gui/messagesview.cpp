@@ -110,6 +110,7 @@ void MessagesView::setupAppearance() {
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setExpandsOnDoubleClick(false);
   setRootIsDecorated(false);
+  setEditTriggers(QAbstractItemView::NoEditTriggers);
   setItemsExpandable(false);
   setSortingEnabled(true);
   setAllColumnsShowFocus(true);

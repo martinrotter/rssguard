@@ -12,6 +12,7 @@
 #include <QHeaderView>
 #include <QContextMenuEvent>
 #include <QPointer>
+#include <QPainter>
 
 
 FeedsView::FeedsView(QWidget *parent) : QTreeView(parent), m_contextMenu(NULL) {
@@ -145,6 +146,7 @@ void FeedsView::setupAppearance() {
   setSortingEnabled(true);
   setItemsExpandable(true);
   setExpandsOnDoubleClick(true);
+  setEditTriggers(QAbstractItemView::NoEditTriggers);
   setIndentation(10);
   sortByColumn(0, Qt::AscendingOrder);
   setDragDropMode(QAbstractItemView::NoDragDrop);
@@ -184,4 +186,11 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
   }
 
   m_contextMenu->exec(event->globalPos());
+}
+
+void FeedsView::drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const {
+  Q_UNUSED(painter)
+  Q_UNUSED(rect)
+  Q_UNUSED(index);
+  // NOTE: Don't draw branches at all.
 }
