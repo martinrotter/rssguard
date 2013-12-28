@@ -62,19 +62,30 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
                                                                    mapped_current_index.column()));
 
-  if (mark_current_index_read == 0) {
-    // User selected to mark some messages as unread, if one
-    // of them will be marked as current, then it will be read again.
-    m_batchUnreadSwitch = true;
-    setCurrentIndex(current_index);
-    m_batchUnreadSwitch = false;
+
+
+  if (current_index.isValid()) {
+    if (mark_current_index_read == 0) {
+      // User selected to mark some messages as unread, if one
+      // of them will be marked as current, then it will be read again.
+      m_batchUnreadSwitch = true;
+      setCurrentIndex(current_index);
+      m_batchUnreadSwitch = false;
+    }
+    else {
+      setCurrentIndex(current_index);
+    }
+
+    scrollTo(current_index);
+    reselectIndexes(selected_indexes);
   }
   else {
-    setCurrentIndex(current_index);
+    // Messages were probably removed from the model, nothing can
+    // be selected and no message can be displayed.
+    // TOTO: Check if this is OKAY. If not, then emit this signal
+    // from FeedsView itself.
+    emit currentMessageRemoved();
   }
-
-  scrollTo(current_index);
-  reselectIndexes(selected_indexes);
 }
 
 MessagesModel *MessagesView::sourceModel() {
