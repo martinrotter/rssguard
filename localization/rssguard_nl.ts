@@ -35,6 +35,13 @@
     </message>
 </context>
 <context>
+    <name>FeedsView</name>
+    <message>
+        <source>Context menu for feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FormAbout</name>
     <message>
         <source>About RSS Guard</source>
@@ -164,14 +171,6 @@
         <translation>Sluit huidig &amp;tabblad</translation>
     </message>
     <message>
-        <source>&amp;No actions possible</source>
-        <translation>&amp;Geen acties mogelijk</translation>
-    </message>
-    <message>
-        <source>No actions are possible at this point of time.</source>
-        <translation>Geen acties mogelijk op dit moment.</translation>
-    </message>
-    <message>
         <source>Fee&amp;ds</source>
         <translation></translation>
     </message>
@@ -224,22 +223,6 @@
         <translation>Wissel het &amp;belang van geselecteerde berichten</translation>
     </message>
     <message>
-        <source>Mark &amp;all messages read</source>
-        <translation>Markeer &amp;alle berichten als gelezen</translation>
-    </message>
-    <message>
-        <source>Mark a&amp;ll messages unread</source>
-        <translation>Markeer a&amp;lle berichten als ongelezen</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected messages</source>
-        <translation>&amp;Verwijder geselecteerde berichten</translation>
-    </message>
-    <message>
-        <source>Dele&amp;te all messages</source>
-        <translation>Verwijde&amp;r alle berichten</translation>
-    </message>
-    <message>
         <source>Import stuff.</source>
         <translation>Importeer bestanden.</translation>
     </message>
@@ -280,20 +263,8 @@
         <translation>Update ge&amp;selecteerde feeds</translation>
     </message>
     <message>
-        <source>&amp;Edit selected feed(s)/category(ies)</source>
-        <translation>&amp;Bewerk geselecteerde feed(s)/categorie(ën)</translation>
-    </message>
-    <message>
         <source>&amp;Delete selected feed(s)/category(ies)</source>
         <translation>&amp;Verwijder geselecteerde feed(s)/categorie(ën)</translation>
-    </message>
-    <message>
-        <source>Mark selected feed(s)/category(ies) as read</source>
-        <translation>Markeer geselecteerde feed(s)/categorie(ën) als gelezen</translation>
-    </message>
-    <message>
-        <source>Mark selected feed(s)/category(ies) as read.</source>
-        <translation>Markeer geselecteerde feed(s)/categorie(ën) als gelezen.</translation>
     </message>
     <message>
         <source>Delete selected messages.</source>
@@ -336,19 +307,47 @@
         <translation>Voeg nieuwe &amp;categorie toe</translation>
     </message>
     <message>
-        <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
-        <translation>Markeer alle berichten van geselekteerde feeds als gelezen. Dit zal GEEN bericht filters meenemen in account.</translation>
-    </message>
-    <message>
-        <source>Mark all messages from selected feeds unread. This does NOT take message filters into account.</source>
-        <translation>Markeer alle berichten van geselekteerde feeds als ongelezen. Dit zal GEEN bericht filters meenemen in account.</translation>
-    </message>
-    <message>
-        <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
-        <translation>Verwijder alle berichten van geselekteerde feeds. Dit zal GEEN bericht filters meenemen in account.</translation>
-    </message>
-    <message>
         <source>Application is already running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected feeds read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages (without message filters) from selected feeds as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feeds unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages (without message filters) from selected feeds as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clear selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removes all messages from selected feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No actions available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No actions are available right now.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -716,8 +715,8 @@
         <translation>Welkom bij RSS Guard</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.Het ondersteunt alle grote feed formaten, zoals RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Zorg ervoor dat u alle beschikbare functies verkent. Als je een bug vindt of als je een nieuwe functie wilt zien, creëren dan nieuw &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span stijl=&quot;tekst-decoratie:onderstreep;kleur:#0000ff;&quot;&gt;probleem report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard kan vertaalt worden naar elke taal. Email naar &lt;a ref=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span stijl=&quot;tekst-decoratie:onderstreep;kleur:#0000ff;&quot;&gt;auteur&lt;/span&gt;&lt;/a&gt;in geval van interesse.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -766,10 +765,6 @@
         <translation>Gemaakt op</translation>
     </message>
     <message>
-        <source>Updated on</source>
-        <translation>Updated op</translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation>Inhoud</translation>
     </message>
@@ -808,10 +803,6 @@
     <message>
         <source>Creation date of the message.</source>
         <translation>Aanmaakdatum van het bericht.</translation>
-    </message>
-    <message>
-        <source>Date of the most recent update of the message.</source>
-        <translation>Datum van het meest recente update van het bericht.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
@@ -872,14 +863,6 @@
         <translation></translation>
     </message>
     <message>
-        <source>RDF 1.0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>RSS 0.90/0.91/0.92</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>RSS 2.0/2.0.1</source>
         <translation></translation>
     </message>
@@ -914,6 +897,14 @@ Feed type: %2
 URL: %3
 Encodering: %4
 Taal: %5</translation>
+    </message>
+    <message>
+        <source>RDF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSS 0.91/0.92/0.93</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1010,6 +1001,10 @@ Taal: %5</translation>
     <message>
         <source>Written by </source>
         <translation>Geschreven door </translation>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

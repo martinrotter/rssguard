@@ -35,6 +35,13 @@
     </message>
 </context>
 <context>
+    <name>FeedsView</name>
+    <message>
+        <source>Context menu for feeds</source>
+        <translation>Kontextové menu pro přehled kanálů</translation>
+    </message>
+</context>
+<context>
     <name>FormAbout</name>
     <message>
         <source>About RSS Guard</source>
@@ -164,14 +171,6 @@
         <translation>Zavřít aktivní &amp;panel</translation>
     </message>
     <message>
-        <source>&amp;No actions possible</source>
-        <translation>Žádné &amp;povolené akce</translation>
-    </message>
-    <message>
-        <source>No actions are possible at this point of time.</source>
-        <translation>Nejsou povoleny žádné akce.</translation>
-    </message>
-    <message>
         <source>Fee&amp;ds</source>
         <translation>&amp;Kanály</translation>
     </message>
@@ -224,22 +223,6 @@
         <translation>Přepnout &amp;důležitost vybraných zpráv</translation>
     </message>
     <message>
-        <source>Mark &amp;all messages read</source>
-        <translation>Ozn&amp;ačit všechny zprávy jako přečtené</translation>
-    </message>
-    <message>
-        <source>Mark a&amp;ll messages unread</source>
-        <translation>Označit &amp;všechny zprávy jako nepřečtené</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected messages</source>
-        <translation>&amp;Smazat vybrané zprávy</translation>
-    </message>
-    <message>
-        <source>Dele&amp;te all messages</source>
-        <translation>Smaza&amp;t všechny zprávy</translation>
-    </message>
-    <message>
         <source>Import stuff.</source>
         <translation>Importovat položky.</translation>
     </message>
@@ -280,24 +263,12 @@
         <translation>Aktualizovat vybrané kanál&amp;y</translation>
     </message>
     <message>
-        <source>&amp;Edit selected feed(s)/category(ies)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Delete selected feed(s)/category(ies)</source>
         <translation>Smazat vybrané kanály/kategor&amp;ie</translation>
     </message>
     <message>
-        <source>Mark selected feed(s)/category(ies) as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected feed(s)/category(ies) as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Delete selected messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vybrané zprávy.</translation>
     </message>
     <message>
         <source>Add new &amp;feed</source>
@@ -309,47 +280,75 @@
     </message>
     <message>
         <source>Open selected messages in internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané zprávy v interním prohlížeči</translation>
     </message>
     <message>
         <source>Open selected messages in internal browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané zprávy v interním prohlížeči.</translation>
     </message>
     <message>
         <source>Open selected source articles in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané zdrojové články v externím prohlížeči</translation>
     </message>
     <message>
         <source>Open selected source articles in external browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané zdrojové články v externím prohlížeči.</translation>
     </message>
     <message>
         <source>Open selected source articles in internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané zdrojové články v interním prohlížeči</translation>
     </message>
     <message>
         <source>Open selected source messages  in internal browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vybrané zdrojové články v interním prohlížeči.</translation>
     </message>
     <message>
         <source>Add new &amp;category</source>
         <translation>Přidat novou &amp;kategorii</translation>
     </message>
     <message>
-        <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark all messages from selected feeds unread. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikace již běží.</translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation>Uprav&amp;it vybraní kanál/kategorii</translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected feeds read</source>
+        <translation>Označit vybrané kanály jako &amp;přečtené</translation>
+    </message>
+    <message>
+        <source>Marks all messages (without message filters) from selected feeds as read.</source>
+        <translation>Označí všechny zprávy z vybraných kanálů jako přečtené, neuvažuje filtry zpráv.</translation>
+    </message>
+    <message>
+        <source>Mark selected feeds unread</source>
+        <translation>Označit vybrané kanály jako nepřečtené</translation>
+    </message>
+    <message>
+        <source>Marks all messages (without message filters) from selected feeds as unread.</source>
+        <translation>Označí všechny zprávy z vybraných kanálů jako nepřečtené, neuvažuje filtry zpráv.</translation>
+    </message>
+    <message>
+        <source>&amp;Clear selected messages</source>
+        <translation>&amp;Smazat vybrané zprávy</translation>
+    </message>
+    <message>
+        <source>Clear selected feeds</source>
+        <translation>Promazat vybrané kanály</translation>
+    </message>
+    <message>
+        <source>Removes all messages from selected feeds.</source>
+        <translation>Smaže všechny zprávy z vybraných kanálů.</translation>
+    </message>
+    <message>
+        <source>No actions available</source>
+        <translation>Žádná dostupná akce</translation>
+    </message>
+    <message>
+        <source>No actions are available right now.</source>
+        <translation>Žádná akce není právě dostupná.</translation>
     </message>
 </context>
 <context>
@@ -718,8 +717,8 @@
         <translation>Vítá Vás RSS Guard</translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů. Podporuje všechny rozšířené formáty, včetně RSS, ATOM a RDF.&lt;/p&gt;&lt;p&gt;Ujistěte se, že projdete všechny funkce této aplikace. Pokud chcete nahlásit chybu nebo chcete v programu mít novou vlastnost, pak vyplňte &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hlášení o chybě&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard může být přeložen do libovolného jazyka. Kontaktujte &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;autora&lt;/span&gt;&lt;/a&gt; v případě zájmu o překlad.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
+        <translation>&lt;p&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů. Podporuje všechny používáné typy kanálů, tedy RSS, ATOM a RDF.&lt;/p&gt;&lt;p&gt;Ujistěte se, že jste prozkoumali všechny její funkce.. Pokud jste našli chybu nebo chcete žádat o novou funkcionalitu, vyplňte &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;žádost&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard může být přeložen do kteréhokoliv jazyka. Máte-li zájem o překlad, pak kontaktujte &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;autora&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -768,10 +767,6 @@
         <translation>Vytvořeno</translation>
     </message>
     <message>
-        <source>Updated on</source>
-        <translation>Aktualizováno</translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation>Obsah</translation>
     </message>
@@ -810,10 +805,6 @@
     <message>
         <source>Creation date of the message.</source>
         <translation>Datum vytvoření zprávy.</translation>
-    </message>
-    <message>
-        <source>Date of the most recent update of the message.</source>
-        <translation>Datum poslední aktualizace zprávy.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
@@ -875,14 +866,6 @@
         <translation></translation>
     </message>
     <message>
-        <source>RDF 1.0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>RSS 0.90/0.91/0.92</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>RSS 2.0/2.0.1</source>
         <translation></translation>
     </message>
@@ -917,6 +900,14 @@ Typ kanálu: %2
 URL: %3
 Kódování: %4
 Jazyk: %5</translation>
+    </message>
+    <message>
+        <source>RDF</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>RSS 0.91/0.92/0.93</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1013,6 +1004,10 @@ Jazyk: %5</translation>
     <message>
         <source>Written by </source>
         <translation>Napsal</translation>
+    </message>
+    <message>
+        <source>uknown author</source>
+        <translation>neznámý autor</translation>
     </message>
 </context>
 <context>

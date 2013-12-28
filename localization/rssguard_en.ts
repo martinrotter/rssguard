@@ -35,6 +35,13 @@
     </message>
 </context>
 <context>
+    <name>FeedsView</name>
+    <message>
+        <source>Context menu for feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FormAbout</name>
     <message>
         <source>About RSS Guard</source>
@@ -164,14 +171,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;No actions possible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No actions are possible at this point of time.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fee&amp;ds</source>
         <translation type="unfinished"></translation>
     </message>
@@ -224,22 +223,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark &amp;all messages read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark a&amp;ll messages unread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Dele&amp;te all messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Import stuff.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -280,19 +263,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Edit selected feed(s)/category(ies)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Delete selected feed(s)/category(ies)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected feed(s)/category(ies) as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected feed(s)/category(ies) as read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -336,19 +307,47 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark all messages from selected feeds read. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark all messages from selected feeds unread. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete all messages from selected feeds. This does NOT take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Application is already running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected feeds read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages (without message filters) from selected feeds as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feeds unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages (without message filters) from selected feeds as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clear selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removes all messages from selected feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No actions available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No actions are available right now.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -710,7 +709,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;https://sourceforge.net/p/rssguard/tickets&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:rotter.martinos@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -760,10 +759,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Updated on</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Contents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -801,10 +796,6 @@
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Date of the most recent update of the message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -866,14 +857,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RDF 1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RSS 0.90/0.91/0.92</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>RSS 2.0/2.0.1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -897,6 +880,14 @@ Feed type: %2
 URL: %3
 Encoding: %4
 Language: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RDF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSS 0.91/0.92/0.93</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -993,6 +984,10 @@ Language: %5</source>
     </message>
     <message>
         <source>Written by </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>uknown author</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
