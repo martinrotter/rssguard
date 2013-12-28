@@ -72,6 +72,8 @@ INSERT INTO Feeds (title, description, date_created, category, encoding, url, ty
 -- !
 INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('LinuxInsider', 'LinuxInsider: Linux News & Information from Around the World.', '2013-12-20T08:00:00-05:00', 1, 'UTF-8', 'http://www.linuxinsider.com/perl/syndication/rssfull.pl', 2);
 -- !
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('LXer: Linux News', 'The world is talking about GNU/Linux and Free/Open Source Software.', '2013-12-20T08:00:00-05:00', 1, 'UTF-8', 'http://lxer.com/module/newswire/headlines.rss', 2);
+-- !
 INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Recent Commits', 'Recent commits for RSS Guard project.', '2013-12-20T08:00:00-05:00', 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/commits/master.atom', 3);
 -- !
 INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Releases', 'Releases for RSS Guard.', '2013-12-20T08:00:00-05:00', 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/releases.atom', 3);

@@ -157,6 +157,47 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   }
 }
 
+QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
+  if (item->kind() == FeedsModelRootItem::RootItem) {
+    // Root item lies on invalid index.
+    return QModelIndex();
+  }
+
+  QModelIndexList parents;
+
+  // Start with invalid index (so that we start from the root
+  // item).
+  parents << QModelIndex();
+
+  while (!parents.isEmpty()) {
+    QModelIndex active_index = parents.takeFirst();
+    int row_count = rowCount(active_index);
+
+    // Iterate all childs of this parent.
+    for (int i = 0; i < row_count; i++) {
+      QModelIndex candidate_index = index(i, 0, active_index);
+
+      // This index could be our target item.
+      FeedsModelRootItem *target_item = itemForIndex(candidate_index);
+
+      if (target_item != NULL) {
+        if (FeedsModelRootItem::isEqual(target_item, item)) {
+          // We found our target index, it's good.
+          return candidate_index;
+        }
+        else if (hasChildren(candidate_index)) {
+          // This is not our target index but it has children,
+          // scan them too.
+          parents << candidate_index;
+        }
+      }
+    }
+
+  }
+
+  return QModelIndex();
+}
+
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex ix = list.takeLast();

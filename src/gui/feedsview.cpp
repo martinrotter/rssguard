@@ -141,7 +141,10 @@ void FeedsView::setupAppearance() {
   setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
+  setAnimated(true);
   setSortingEnabled(true);
+  setItemsExpandable(true);
+  setExpandsOnDoubleClick(true);
   setIndentation(10);
   sortByColumn(0, Qt::AscendingOrder);
   setDragDropMode(QAbstractItemView::NoDragDrop);

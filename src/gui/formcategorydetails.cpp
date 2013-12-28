@@ -42,11 +42,9 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category,
 
   if (input_category == NULL) {
     // User is adding new category.
-
   }
   else {
     // User is editing existing category.
-
   }
 
   return result;

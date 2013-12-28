@@ -48,11 +48,19 @@ class FeedsModel : public QAbstractItemModel {
     // Returns list of feeds which belong to given indexes.
     // NOTE: If index is "category", then all child feeds are contained in the
     // result.
-    // NOTE: This is particularly useful for displaying messages of selected feeds.
+    // NOTE: This is particularly useful for displaying messages of
+    // selected feeds.
     QList<FeedsModelFeed*> feedsForIndexes(const QModelIndexList &indexes);
 
     // Returns feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
+
+    // Returns feed/category which lies at the specified index or
+    // null if index is invalid.
+    FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;
+
+    // Returns QModelIndex on which lies given item.
+    QModelIndex indexForItem(FeedsModelRootItem *item) const;
 
     // Access to root item.
     FeedsModelRootItem *rootItem() const;
@@ -71,10 +79,6 @@ class FeedsModel : public QAbstractItemModel {
 
   protected:
     QStringList textualFeedIds(const QList<FeedsModelFeed*> &feeds);
-
-    // Returns feed/category which lies at the specified index or
-    // null if index is invalid.
-    FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;
 
     // Loads feed/categories from the database.
     void loadFromDatabase();
