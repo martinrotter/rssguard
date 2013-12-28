@@ -7,6 +7,7 @@
 class FeedsModel;
 class FeedsProxyModel;
 class FeedsModelFeed;
+class FeedsModelCategory;
 
 class FeedsView : public QTreeView {
     Q_OBJECT
@@ -38,6 +39,7 @@ class FeedsView : public QTreeView {
 
     // Category operators.
     void addNewCategory();
+    void editSelectedCategory();
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);

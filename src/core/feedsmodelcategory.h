@@ -23,6 +23,7 @@ class FeedsModelCategory : public FeedsModelRootItem {
 
     // Constructors and destructors
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
+    explicit FeedsModelCategory(const FeedsModelCategory &other);
     virtual ~FeedsModelCategory();
 
     // Counts of messages.

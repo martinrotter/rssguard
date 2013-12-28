@@ -15,7 +15,7 @@ FeedsModelRootItem::~FeedsModelRootItem() {
   qDeleteAll(m_childItems);
 }
 
-FeedsModelRootItem *FeedsModelRootItem::parent() {
+FeedsModelRootItem *FeedsModelRootItem::parent() const {
   return m_parentItem;
 }
 

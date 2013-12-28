@@ -21,7 +21,7 @@ class FeedsModelRootItem {
     virtual ~FeedsModelRootItem();
 
     // Basic operations.
-    virtual FeedsModelRootItem *parent();
+    virtual FeedsModelRootItem *parent() const;
     virtual void setParent(FeedsModelRootItem *parent_item);
     virtual FeedsModelRootItem *child(int row);
     virtual void appendChild(FeedsModelRootItem *child);

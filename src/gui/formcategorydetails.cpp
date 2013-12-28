@@ -10,41 +10,55 @@
 #include <QPushButton>
 
 
-FormCategoryDetails::FormCategoryDetails(FeedsView *parent)
-  : QDialog(parent) {
-  initialize(parent);
-  loadCategories(parent->sourceModel()->getAllCategories().values(),
-                 parent->sourceModel()->rootItem());
+FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
+  : QDialog(parent), m_editableCategory(NULL) {
+  initialize();
+  loadCategories(model->getAllCategories().values(),
+                 model->rootItem());
 
   setWindowTitle(tr("Add new category"));
-}
-
-FormCategoryDetails::FormCategoryDetails(FeedsModelCategory *category,
-                                         FeedsView *parent)
-  : QDialog(parent) {
-  initialize(parent);
-  loadCategories(parent->sourceModel()->getAllCategories().values(),
-                 parent->sourceModel()->rootItem());
-
-  setWindowTitle(tr("Edit existing category"));
 }
 
 FormCategoryDetails::~FormCategoryDetails() {
   qDebug("Destroying FormCategoryDetails instance.");
 }
 
-void FormCategoryDetails::initialize(FeedsView *view) {
+void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_category) {
+  m_editableCategory = editable_category;
+
+  if (m_editableCategory != NULL) {
+    // TODO: Setup the dialog according to new category.
+    // so remove this category from category combobox!!
+  }
+}
+
+int FormCategoryDetails::exec(FeedsModelCategory *input_category,
+                              FeedsModelCategory *output_item,
+                              FeedsModelRootItem *parent_item) {
+  // TODO: Implement this.
+  setEditableCategory(input_category);
+
+  int result = QDialog::exec();
+
+  if (input_category == NULL) {
+    // User is adding new category.
+
+  }
+  else {
+    // User is editing existing category.
+
+  }
+
+  return result;
+}
+
+void FormCategoryDetails::initialize() {
   m_ui = new Ui::FormCategoryDetails();
   m_ui->setupUi(this);
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
-
-  // Add button for obtaining data about feed from internet.
-  m_btnObtainDetails = m_ui->m_buttonBox->addButton(tr("Get details via internet"),
-                                                    QDialogButtonBox::ActionRole);
-  m_btnObtainDetails->setIcon(IconThemeFactory::getInstance()->fromTheme("document-save"));
 }
 
 void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categories,
@@ -59,5 +73,4 @@ void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categ
                                        category->title(),
                                        category->id());
   }
-
 }

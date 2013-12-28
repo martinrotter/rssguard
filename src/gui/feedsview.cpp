@@ -62,15 +62,27 @@ void FeedsView::clearSelectedFeeds() {
 }
 
 void FeedsView::addNewCategory() {
-  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(this);
+  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel,
+                                                                       this);
+  FeedsModelCategory *output_item;
+  FeedsModelRootItem *parent_item;
 
-  if (form_pointer.data()->exec() == QDialog::Accepted) {
-    // User submitted some new category.
+  if (form_pointer.data()->exec(NULL,
+                                output_item,
+                                parent_item) == QDialog::Accepted) {
+    // User submitted some new category and
+    // it now resides in output_item pointer,
+    // parent_item contains parent_that user selected for
+    // new category.
 
-
+    // TODO: Add new category to the model and to the database.
   }
 
   delete form_pointer.data();
+}
+
+void FeedsView::editSelectedCategory() {
+  // TODO: Implement this.
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {
