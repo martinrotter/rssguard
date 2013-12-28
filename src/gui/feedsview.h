@@ -40,17 +40,28 @@ class FeedsView : public QTreeView {
     void updateCountsOfAllFeeds(bool update_total_too = true);
 
   protected:
+    void initializeContextMenu();
+
     // Sets up appearance of this widget.
     void setupAppearance();
 
+    // Make feeds loadable.
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 
+    // Show custom context menu.
+    void contextMenuEvent(QContextMenuEvent *event);
+
   signals:
+    // Emitted if currently selected feeds needs to be reloaded.
     void feedsNeedToBeReloaded(int mark_current_index_read);
+
+    // Emitted if user selects new feeds.
     void feedsSelected(const QList<int> &feed_ids);
 
   private:
+    QMenu *m_contextMenu;
+
     QList<int> m_selectedFeeds;
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
