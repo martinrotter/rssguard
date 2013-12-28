@@ -54,10 +54,6 @@ class FeedsModel : public QAbstractItemModel {
     // Returns feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
 
-    // Equality "operators" used for identifying duplicate feeds.
-    static bool isUnequal(FeedsModelFeed *lhs, FeedsModelFeed *rhs);
-    static bool isEqual(FeedsModelFeed *lhs, FeedsModelFeed *rhs);
-
   public slots:
     bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
     bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted);

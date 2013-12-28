@@ -255,6 +255,7 @@ set(APP_SOURCES
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
   src/gui/iconfactory.cpp
+  src/gui/formcategorydetails.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -316,6 +317,7 @@ set(APP_HEADERS
   src/gui/feedsview.h
   src/gui/messagesview.h
   src/gui/statusbar.h
+  src/gui/formcategorydetails.h
 
   # CORE headers.
   src/core/settings.h

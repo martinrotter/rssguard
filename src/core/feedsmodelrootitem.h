@@ -54,6 +54,10 @@ class FeedsModelRootItem {
     // Removes all childs from this item.
     void clearChilds();
 
+    // Compares two model items.
+    static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);
+    static bool lessThan(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);
+
   protected:
     Kind m_kind;
     QString m_title;

@@ -6,10 +6,12 @@
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "gui/formmain.h"
+#include "gui/formcategorydetails.h"
 
 #include <QMenu>
 #include <QHeaderView>
 #include <QContextMenuEvent>
+#include <QPointer>
 
 
 FeedsView::FeedsView(QWidget *parent) : QTreeView(parent), m_contextMenu(NULL) {
@@ -49,6 +51,18 @@ void FeedsView::setSelectedFeedsClearStatus(int clear) {
 
 void FeedsView::clearSelectedFeeds() {
   setSelectedFeedsClearStatus(1);
+}
+
+void FeedsView::addNewCategory() {
+  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(this);
+
+  if (form_pointer.data()->exec() == QDialog::Accepted) {
+    // User submitted some new category.
+
+
+  }
+
+  delete form_pointer.data();
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {

@@ -33,6 +33,9 @@ class FeedsView : public QTreeView {
     void setSelectedFeedsClearStatus(int clear);
     void clearSelectedFeeds();
 
+    // Category operators.
+    void addNewCategory();
+
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);
 

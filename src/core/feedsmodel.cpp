@@ -294,12 +294,25 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
   return getFeeds(item);
 }
 
-bool FeedsModel::isUnequal(FeedsModelFeed *lhs, FeedsModelFeed *rhs) {
-  return !isEqual(lhs, rhs);
-}
+QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
+  QList<FeedsModelFeed*> feeds;
 
-bool FeedsModel::isEqual(FeedsModelFeed *lhs, FeedsModelFeed *rhs) {
-  return lhs->id() == rhs->id();
+  // Get selected feeds for each index.
+  foreach (const QModelIndex &index, indexes) {
+    feeds.append(feedsForIndex(index));
+  }
+
+  // Now we obtained all feeds from corresponding indexes.
+  if (indexes.size() != feeds.size()) {
+    // Selection contains duplicate feeds (for
+    // example situation where feed and its parent category are both
+    // selected). So, remove duplicates from the list.
+    qSort(feeds.begin(), feeds.end(), FeedsModelRootItem::lessThan);
+    feeds.erase(std::unique(feeds.begin(), feeds.end(), FeedsModelRootItem::isEqual),
+                feeds.end());
+  }
+
+  return feeds;
 }
 
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
@@ -368,28 +381,6 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
   else {
     return db_handle.rollback();
   }
-}
-
-
-QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
-  QList<FeedsModelFeed*> feeds;
-
-  // Get selected feeds for each index.
-  foreach (const QModelIndex &index, indexes) {
-    feeds.append(feedsForIndex(index));
-  }
-
-  // Now we obtained all feeds from corresponding indexes.
-  if (indexes.size() != feeds.size()) {
-    // Selection contains duplicate feeds (for
-    // example situation where feed and its parent category are both
-    // selected). So, remove duplicates from the list.
-    qSort(feeds.begin(), feeds.end(), isUnequal);
-    feeds.erase(std::unique(feeds.begin(), feeds.end(), isEqual),
-                feeds.end());
-  }
-
-  return feeds;
 }
 
 QHash<int, FeedsModelCategory*> FeedsModel::getAllCategories() {
