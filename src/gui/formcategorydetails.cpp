@@ -7,7 +7,9 @@
 #include "gui/iconthemefactory.h"
 #include "gui/feedsview.h"
 
-#include <QPushButton>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <QToolButton>
 
 
 FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
@@ -26,18 +28,16 @@ FormCategoryDetails::~FormCategoryDetails() {
 void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_category) {
   m_editableCategory = editable_category;
 
-  if (m_editableCategory != NULL) {
-    // TODO: Setup the dialog according to new category.
-    // so remove this category from category combobox!!
-  }
+  // TODO: Setup the dialog according to new category.
+  // so remove this category from category combobox!!
+  m_ui->m_txtTitle->setText(editable_category->title());
+  m_ui->m_txtDescription->setText(editable_category->description());
+  m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
 int FormCategoryDetails::exec(FeedsModelCategory *input_category,
                               FeedsModelCategory *output_item,
                               FeedsModelRootItem *parent_item) {
-  // TODO: Implement this.
-  setEditableCategory(input_category);
-
   int result = QDialog::exec();
 
   if (input_category == NULL) {
@@ -45,6 +45,7 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category,
   }
   else {
     // User is editing existing category.
+    setEditableCategory(input_category);
   }
 
   return result;

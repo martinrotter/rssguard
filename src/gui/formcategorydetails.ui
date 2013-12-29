@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>362</width>
-    <height>183</height>
+    <width>346</width>
+    <height>199</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>180</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -21,48 +27,50 @@
        <property name="text">
         <string>Parent category</string>
        </property>
+       <property name="buddy">
+        <cstring>m_cmbParentCategory</cstring>
+       </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QComboBox" name="m_cmbParentCategory"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="m_lblParentCategory_2">
+      <widget class="QLabel" name="m_lblTitle">
        <property name="text">
         <string>Title</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtTitle</cstring>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="m_txtTitle">
        <property name="placeholderText">
         <string>Title of the category</string>
        </property>
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="m_lblParentCategory_3">
+      <widget class="QLabel" name="m_lblDescription">
        <property name="text">
         <string>Description</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_2">
-       <property name="placeholderText">
-        <string>Description of the category</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="m_lblParentCategory_4">
+      <widget class="QLabel" name="m_lblIcon">
        <property name="text">
         <string>Icon</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_btnIcon</cstring>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QToolButton" name="toolButton">
+      <widget class="QToolButton" name="m_btnIcon">
        <property name="minimumSize">
         <size>
          <width>40</width>
@@ -71,6 +79,16 @@
        </property>
        <property name="text">
         <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QTextEdit" name="m_txtDescription">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
       </widget>
      </item>
