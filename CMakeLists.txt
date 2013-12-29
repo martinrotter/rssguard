@@ -497,10 +497,10 @@ elseif(UNIX)
   install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
           DESTINATION share/applications)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
-          DESTINATION share/icons/hicolor/128x128/apps/
+          DESTINATION share/pixmaps
           RENAME ${APP_LOW_NAME}.png)
   install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
-          DESTINATION share/icons/hicolor/128x128/apps/
+          DESTINATION share/rssguard/icons
           RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM}
           DESTINATION share/${APP_LOW_NAME}/l10n)
