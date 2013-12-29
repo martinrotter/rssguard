@@ -10,4 +10,4 @@ Comment=a (very) tiny feed reader
 Comment[cs]=velmi jednoduchá čtečka kanálů
 Icon=rssguard
 Terminal=false
-Categories=Qt;Office;Network;Utility
+Categories=Qt;Network;News;
