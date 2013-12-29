@@ -64,7 +64,10 @@ void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categ
                                          FeedsModelRootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
-                                     root_item->id());
+                                     QVariant::fromValue((void*) root_item));
+  // pro ziskani root_item static_cast<FeedsModelRootItem*>(itemData(i).value<void*>())
+  // a stejně dole ve foreachi
+
 
   foreach (FeedsModelCategory *category, categories) {
     m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX,
