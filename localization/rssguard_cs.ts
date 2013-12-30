@@ -1003,7 +1003,7 @@ Jazyk: %5</translation>
     </message>
     <message>
         <source>Written by </source>
-        <translation>Napsal</translation>
+        <translation>Napsal </translation>
     </message>
     <message>
         <source>uknown author</source>
