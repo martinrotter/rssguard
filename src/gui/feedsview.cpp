@@ -17,7 +17,10 @@
 #include <QPainter>
 
 
-FeedsView::FeedsView(QWidget *parent) : QTreeView(parent), m_contextMenu(NULL) {
+FeedsView::FeedsView(QWidget *parent)
+  : QTreeView(parent),
+    m_contextMenuCategoriesFeeds(NULL),
+    m_contextMenuEmptySpace(NULL) {
   m_proxyModel = new FeedsProxyModel(this);
   m_sourceModel = m_proxyModel->sourceModel();
 
@@ -141,12 +144,19 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   m_sourceModel->reloadWholeLayout();
 }
 
-void FeedsView::initializeContextMenu() {
-  m_contextMenu = new QMenu(tr("Context menu for feeds"), this);
-  m_contextMenu->addActions(QList<QAction*>() <<
-                            FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds <<
-                            FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead <<
-                            FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
+void FeedsView::initializeContextMenuCategoriesFeeds() {
+  m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
+  m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
+                                           FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories <<
+                                           FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead <<
+                                           FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
+}
+
+void FeedsView::initializeContextMenuEmptySpace() {
+  m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
+  m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
+                                      FormMain::getInstance()->m_ui->m_actionAddNewFeed);
+
 }
 
 void FeedsView::setupAppearance() {
@@ -194,20 +204,24 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
 }
 
 void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
-  QModelIndex clicked_index = indexAt(event->pos());
+  if (indexAt(event->pos()).isValid()) {
+    // Display context menu for categories.
+    if (m_contextMenuCategoriesFeeds == NULL) {
+      // Context menu is not initialized, initialize.
+      initializeContextMenuCategoriesFeeds();
+    }
 
-  if (!clicked_index.isValid()) {
-    qDebug("Context menu for FeedsView will not be shown because "
-           "user clicked on invalid item.");
-    return;
+    m_contextMenuCategoriesFeeds->exec(event->globalPos());
   }
+  else {
+    // Display menu for empty space.
+    if (m_contextMenuEmptySpace == NULL) {
+      // Context menu is not initialized, initialize.
+      initializeContextMenuEmptySpace();
+    }
 
-  if (m_contextMenu == NULL) {
-    // Context menu is not initialized, initialize.
-    initializeContextMenu();
+    m_contextMenuEmptySpace->exec(event->globalPos());
   }
-
-  m_contextMenu->exec(event->globalPos());
 }
 
 void FeedsView::drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const {

@@ -181,13 +181,13 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
   connect(FormMain::getInstance()->m_ui->m_actionClearFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
-  connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds,
+  connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories,
           SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
   connect(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds,
           SIGNAL(triggered()), this, SLOT(updateAllFeeds()));
   connect(FormMain::getInstance()->m_ui->m_actionAddNewCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewCategory()));
-  connect(FormMain::getInstance()->m_ui->m_actionEditSelectedFeed,
+  connect(FormMain::getInstance()->m_ui->m_actionEditSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
 }
 
@@ -200,10 +200,10 @@ void FeedMessageViewer::initialize() {
 
   // Add everything to toolbar.
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeeds);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionAddNewFeed);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionEditSelectedFeed);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeeds);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionEditSelectedFeedCategory);
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeedsCategories);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionClearFeeds);

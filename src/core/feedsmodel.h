@@ -74,6 +74,7 @@ class FeedsModel : public QAbstractItemModel {
     FeedsModelRootItem *rootItem() const;
 
   public slots:
+    // Feeds operations.
     bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
     bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted);
 
@@ -86,6 +87,8 @@ class FeedsModel : public QAbstractItemModel {
     void reloadChangedLayout(QModelIndexList list);
 
   protected:
+    // Returns converted ids of given feeds
+    // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<FeedsModelFeed*> &feeds);
 
     // Loads feed/categories from the database.

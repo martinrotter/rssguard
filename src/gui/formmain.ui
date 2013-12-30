@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -83,15 +92,15 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>Fee&amp;ds</string>
+     <string>Fee&amp;ds &amp;&amp; categories</string>
     </property>
     <addaction name="m_actionUpdateAllFeeds"/>
-    <addaction name="m_actionUpdateSelectedFeeds"/>
+    <addaction name="m_actionUpdateSelectedFeedsCategories"/>
     <addaction name="separator"/>
     <addaction name="m_actionAddNewFeed"/>
     <addaction name="m_actionAddNewCategory"/>
-    <addaction name="m_actionEditSelectedFeed"/>
-    <addaction name="m_actionDeleteSelectedFeeds"/>
+    <addaction name="m_actionEditSelectedFeedCategory"/>
+    <addaction name="m_actionDeleteSelectedFeedsCategories"/>
     <addaction name="separator"/>
     <addaction name="m_actionMarkFeedsAsRead"/>
     <addaction name="m_actionMarkFeedsAsUnread"/>
@@ -219,46 +228,34 @@
   </action>
   <action name="m_actionUpdateAllFeeds">
    <property name="text">
-    <string>Update &amp;all feeds</string>
+    <string>Update &amp;all items</string>
    </property>
    <property name="toolTip">
     <string>Update all feeds.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
-  <action name="m_actionUpdateSelectedFeeds">
+  <action name="m_actionUpdateSelectedFeedsCategories">
    <property name="text">
-    <string>Update &amp;selected feeds</string>
+    <string>Update &amp;selected items</string>
    </property>
    <property name="toolTip">
     <string>Update selected feeds/categories.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
-  <action name="m_actionEditSelectedFeed">
+  <action name="m_actionEditSelectedFeedCategory">
    <property name="text">
     <string>&amp;Edit selected feed/category</string>
    </property>
    <property name="toolTip">
     <string>Edit selected feed/category.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
-  <action name="m_actionDeleteSelectedFeeds">
+  <action name="m_actionDeleteSelectedFeedsCategories">
    <property name="text">
-    <string>&amp;Delete selected feed(s)/category(ies)</string>
+    <string>&amp;Delete selected feeds/categories</string>
    </property>
    <property name="toolTip">
     <string>Delete selected feeds/categories.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
@@ -296,7 +293,7 @@
   </action>
   <action name="m_actionMarkFeedsAsRead">
    <property name="text">
-    <string>Mark &amp;selected feeds read</string>
+    <string>Mark &amp;selected items read</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages (without message filters) from selected feeds as read.</string>
@@ -304,7 +301,7 @@
   </action>
   <action name="m_actionMarkFeedsAsUnread">
    <property name="text">
-    <string>Mark selected feeds unread</string>
+    <string>Mark selected items unread</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages (without message filters) from selected feeds as unread.</string>
@@ -320,7 +317,7 @@
   </action>
   <action name="m_actionClearFeeds">
    <property name="text">
-    <string>Clear selected feeds</string>
+    <string>Clear selected items</string>
    </property>
    <property name="toolTip">
     <string>Removes all messages from selected feeds.</string>

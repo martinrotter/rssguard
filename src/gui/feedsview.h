@@ -54,7 +54,8 @@ class FeedsView : public QTreeView {
     void updateCountsOfAllFeeds(bool update_total_too = true);
 
   protected:
-    void initializeContextMenu();
+    void initializeContextMenuCategoriesFeeds();
+    void initializeContextMenuEmptySpace();
 
     // Sets up appearance of this widget.
     void setupAppearance();
@@ -79,7 +80,8 @@ class FeedsView : public QTreeView {
     void feedsSelected(const QList<int> &feed_ids);
 
   private:
-    QMenu *m_contextMenu;
+    QMenu *m_contextMenuCategoriesFeeds;
+    QMenu *m_contextMenuEmptySpace;
 
     QList<int> m_selectedFeeds;
     FeedsModel *m_sourceModel;
