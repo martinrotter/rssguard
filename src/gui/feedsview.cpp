@@ -126,6 +126,17 @@ void FeedsView::markSelectedFeedsUnread() {
   markSelectedFeedsReadStatus(0);
 }
 
+void FeedsView::markAllFeedsReadStatus(int read) {
+  m_sourceModel->markFeedsRead(allFeeds(), read);
+  updateCountsOfAllFeeds(false);
+
+  emit feedsNeedToBeReloaded(read);
+}
+
+void FeedsView::markAllFeedsRead() {
+  markAllFeedsReadStatus(1);
+}
+
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
   foreach (FeedsModelFeed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
@@ -155,7 +166,7 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
-                                      FormMain::getInstance()->m_ui->m_actionAddNewFeed);
+                                      FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
 
 }
 

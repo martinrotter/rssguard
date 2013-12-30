@@ -102,6 +102,7 @@
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedsCategories"/>
     <addaction name="separator"/>
+    <addaction name="m_actionMarkAllFeedsRead"/>
     <addaction name="m_actionMarkFeedsAsRead"/>
     <addaction name="m_actionMarkFeedsAsUnread"/>
     <addaction name="m_actionClearFeeds"/>
@@ -123,7 +124,7 @@
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="m_statusBar"/>
+  <widget class="StatusBar" name="m_statusBar"/>
   <action name="m_actionImport">
    <property name="text">
     <string>&amp;Import</string>
@@ -383,6 +384,14 @@
     <string>No actions are available right now.</string>
    </property>
   </action>
+  <action name="m_actionMarkAllFeedsRead">
+   <property name="text">
+    <string>Mark all &amp;items read</string>
+   </property>
+   <property name="toolTip">
+    <string>Mark all messages in all feeds read. This does not take message filters into account.</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -390,6 +399,11 @@
    <extends>QTabWidget</extends>
    <header>tabwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>StatusBar</class>
+   <extends>QStatusBar</extends>
+   <header>statusbar.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

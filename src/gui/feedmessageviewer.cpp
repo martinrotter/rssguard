@@ -175,6 +175,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
   connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
+  connect(FormMain::getInstance()->m_ui->m_actionMarkAllFeedsRead,
+          SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
   connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
   connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread,

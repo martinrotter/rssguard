@@ -39,6 +39,9 @@ class FeedsView : public QTreeView {
     void markSelectedFeedsRead();
     void markSelectedFeedsUnread();
 
+    void markAllFeedsReadStatus(int read);
+    void markAllFeedsRead();
+
     // Feed clearers.
     void setSelectedFeedsClearStatus(int clear);
     void clearSelectedFeeds();
