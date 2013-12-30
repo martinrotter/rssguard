@@ -11,7 +11,8 @@ FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
   m_kind = FeedsModelRootItem::Category;
 }
 
-FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other) {
+FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
+  : FeedsModelRootItem(NULL) {
   m_kind = other.kind();
   m_title = other.title();
   m_id = other.id();

@@ -38,8 +38,6 @@ void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_categ
 int FormCategoryDetails::exec(FeedsModelCategory *input_category,
                               FeedsModelCategory *output_item,
                               FeedsModelRootItem *parent_item) {
-  int result = QDialog::exec();
-
   if (input_category == NULL) {
     // User is adding new category.
   }
@@ -47,6 +45,8 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category,
     // User is editing existing category.
     setEditableCategory(input_category);
   }
+
+  int result = QDialog::exec();
 
   return result;
 }

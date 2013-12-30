@@ -187,6 +187,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), this, SLOT(updateAllFeeds()));
   connect(FormMain::getInstance()->m_ui->m_actionAddNewCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewCategory()));
+  connect(FormMain::getInstance()->m_ui->m_actionEditSelectedFeed,
+          SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
 }
 
 void FeedMessageViewer::initialize() {

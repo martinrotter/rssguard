@@ -5,6 +5,8 @@
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
+#include "core/feedsmodelcategory.h"
+#include "core/feedsmodelstandardcategory.h"
 #include "gui/formmain.h"
 #include "gui/formcategorydetails.h"
 
@@ -51,6 +53,16 @@ QList<FeedsModelFeed *> FeedsView::allFeeds() const {
   return m_sourceModel->getAllFeeds();
 }
 
+FeedsModelCategory *FeedsView::isCurrentIndexCategory() const {
+  QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
+  return m_sourceModel->categoryForIndex(current_mapped);
+}
+
+FeedsModelFeed *FeedsView::isCurrentIndexFeed() const {
+  QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
+  return m_sourceModel->feedForIndex(current_mapped);
+}
+
 void FeedsView::setSelectedFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(selectedFeeds(), clear);
   updateCountsOfSelectedFeeds();
@@ -82,8 +94,18 @@ void FeedsView::addNewCategory() {
   delete form_pointer.data();
 }
 
-void FeedsView::editSelectedCategory() {
+void FeedsView::editSelectedItem() {
   // TODO: Implement this.
+  FeedsModelCategory *category;
+  FeedsModelFeed *feed;
+
+  if ((category = isCurrentIndexCategory()) != NULL) {
+    // Category is selected.
+  }
+  else if ((feed = isCurrentIndexFeed()) != NULL) {
+    // Feed is selected.
+  }
+
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {

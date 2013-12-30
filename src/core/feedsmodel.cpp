@@ -157,11 +157,24 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   }
 }
 
+FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const {
+  FeedsModelRootItem *item = itemForIndex(index);
+
+  if (item->kind() == FeedsModelRootItem::Category) {
+    return static_cast<FeedsModelCategory*>(item);
+  }
+  else {
+    return NULL;
+  }
+}
+
 QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   if (item->kind() == FeedsModelRootItem::RootItem) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
+
+  // TODO: Rewrite for better performance.
 
   QModelIndexList parents;
 
@@ -309,6 +322,17 @@ void FeedsModel::loadFromDatabase() {
 QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
   FeedsModelRootItem *item = itemForIndex(index);
   return getFeeds(item);
+}
+
+FeedsModelFeed *FeedsModel::feedForIndex(const QModelIndex &index) {
+  FeedsModelRootItem *item = itemForIndex(index);
+
+  if (item->kind() == FeedsModelRootItem::Feed) {
+    return static_cast<FeedsModelFeed*>(item);
+  }
+  else {
+    return NULL;
+  }
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {

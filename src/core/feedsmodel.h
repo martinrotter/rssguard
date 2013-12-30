@@ -52,8 +52,16 @@ class FeedsModel : public QAbstractItemModel {
     // selected feeds.
     QList<FeedsModelFeed*> feedsForIndexes(const QModelIndexList &indexes);
 
-    // Returns feeds contained within single index.
+    // Returns ALL CHILD feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
+
+    // Returns pointer to feed if it lies in given index
+    // or NULL if no feed lies in given index.
+    FeedsModelFeed *feedForIndex(const QModelIndex &index);
+
+    // Returns pointer to category if it lies in given index
+    // or NULL if no category lies in given index.
+    FeedsModelCategory *categoryForIndex(const QModelIndex &index) const;
 
     // Returns feed/category which lies at the specified index or
     // null if index is invalid.

@@ -27,6 +27,12 @@ class FeedsView : public QTreeView {
     QList<FeedsModelFeed*> selectedFeeds() const;
     QList<FeedsModelFeed*> allFeeds() const;
 
+    // Return true if current index contains category/feed and
+    // stores category/feed in the parameter pointer,
+    // otherwise false.
+    FeedsModelCategory *isCurrentIndexCategory() const;
+    FeedsModelFeed *isCurrentIndexFeed() const;
+
   public slots:
     // Feed read/unread manipulators.
     void markSelectedFeedsReadStatus(int read);
@@ -39,7 +45,7 @@ class FeedsView : public QTreeView {
 
     // Category operators.
     void addNewCategory();
-    void editSelectedCategory();
+    void editSelectedItem();
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);
@@ -60,7 +66,10 @@ class FeedsView : public QTreeView {
     // Show custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
 
-    void drawBranches(QPainter *painter, const QRect &rect, const QModelIndex &index) const;
+    // Don't draw branches at all.
+    void drawBranches(QPainter *painter,
+                      const QRect &rect,
+                      const QModelIndex &index) const;
 
   signals:
     // Emitted if currently selected feeds needs to be reloaded.
