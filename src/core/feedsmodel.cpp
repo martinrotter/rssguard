@@ -35,19 +35,13 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 
 FeedsModel::~FeedsModel() {
   qDebug("Destroying FeedsModel instance.");
+
   delete m_rootItem;
   DatabaseFactory::getInstance()->removeConnection(objectName());
 }
 
 QVariant FeedsModel::data(const QModelIndex &index, int role) const {
-  FeedsModelRootItem *item = itemForIndex(index);
-
-  if (item != NULL) {
-    return item->data(index.column(), role);
-  }
-  else {
-    return QVariant();
-  }
+  return itemForIndex(index)->data(index.column(), role);
 }
 
 QVariant FeedsModel::headerData(int section,
@@ -153,7 +147,7 @@ FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
     return static_cast<FeedsModelRootItem*>(index.internalPointer());
   }
   else {
-    return NULL;
+    return m_rootItem;
   }
 }
 
@@ -168,9 +162,9 @@ FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const
   }
 }
 
-/*
+
 QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
-  if (item->kind() == FeedsModelRootItem::RootItem) {
+  if (item == NULL || item->kind() == FeedsModelRootItem::RootItem) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -212,8 +206,8 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
 
   return QModelIndex();
 }
-*/
 
+/*
 QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   if (item->kind() == FeedsModelRootItem::RootItem) {
     // Root item lies on invalid index.
@@ -255,7 +249,7 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   }
 
   return QModelIndex();
-}
+}*/
 
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {

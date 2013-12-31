@@ -19,7 +19,6 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     virtual void loadSettings();
 
   protected:
-
     QNetworkReply *createRequest(Operation op,
                                  const QNetworkRequest &request,
                                  QIODevice *outgoingData);

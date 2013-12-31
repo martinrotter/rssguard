@@ -205,8 +205,12 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
   m_selectedFeeds.clear();
 
   foreach (FeedsModelFeed *feed, selectedFeeds()) {
-    QModelIndex id = m_sourceModel->indexForItem(feed);
-    qDebug("INDEX %d, %d", id.row(), id.column());
+#if defined(DEBUG)
+    QModelIndex index_for_feed = m_sourceModel->indexForItem(feed);
+
+    qDebug("Selecting feed '%s' (source index [%d, %d]).",
+           qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
+#endif
 
     m_selectedFeeds << feed->id();
   }

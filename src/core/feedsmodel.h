@@ -64,7 +64,7 @@ class FeedsModel : public QAbstractItemModel {
     FeedsModelCategory *categoryForIndex(const QModelIndex &index) const;
 
     // Returns feed/category which lies at the specified index or
-    // null if index is invalid.
+    // root item if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;
 
     // Returns QModelIndex on which lies given item.
