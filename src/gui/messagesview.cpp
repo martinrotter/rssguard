@@ -248,8 +248,16 @@ void MessagesView::openSelectedSourceArticlesExternally() {
 
 void MessagesView::openSelectedSourceMessagesInternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
-    // TODO: What to do with messages w/o link?
-    emit openLinkMessageNewTabRequested(m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url);
+    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
+
+    if (message.m_url.isEmpty()) {
+      QMessageBox::warning(this,
+                           tr("Meesage without URL"),
+                           tr("Message '%s' does not contain URL.").arg(message.m_title));
+    }
+    else {
+      emit openLinkMessageNewTabRequested(message.m_url);
+    }
   }
 }
 

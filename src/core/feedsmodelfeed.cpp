@@ -68,6 +68,7 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
 void FeedsModelFeed::updateCounts(bool including_total_count) {
   QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelFeed");
   QSqlQuery query_all(database);
+  query_all.setForwardOnly(true);
 
   if (including_total_count) {
     if (query_all.exec(QString("SELECT count() FROM messages "

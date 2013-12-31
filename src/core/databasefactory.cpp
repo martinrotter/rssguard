@@ -76,6 +76,7 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
   else {
     QSqlQuery query_db(database);
 
+    query_db.setForwardOnly(true);
     query_db.exec("PRAGMA encoding = \"UTF-8\"");
     query_db.exec("PRAGMA synchronous = OFF");
     query_db.exec("PRAGMA journal_mode = MEMORY");

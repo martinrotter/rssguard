@@ -149,7 +149,7 @@ void FeedsModelStandardFeed::update() {
   QByteArray feed_contents;
   int download_timeout =  Settings::getInstance()->value(APP_CFG_FEEDS,
                                                          "download_timeout",
-                                                         5000).toInt();
+                                                         DOWNLOAD_TIMEOUT).toInt();
 
   // TODO: Provide download time-measures debugging
   // outputs here.
@@ -211,9 +211,11 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   QSqlQuery query_select(database);
   QSqlQuery query_insert(database);
 
+  query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "
                        "WHERE feed = :feed AND title = :title AND url = :url;");
 
+  query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
                        "(feed, title, url, author, date_created, contents) "
                        "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
@@ -257,6 +259,11 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
       // Message is already persistently stored.
       // TODO: Update message if it got updated in the
       // online feed.
+      if (message.m_createdFromFeed) {
+        // Creation data of the message was obtained from
+        // feed itself.
+
+      }
     }
   }
 

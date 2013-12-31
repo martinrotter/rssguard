@@ -40,7 +40,7 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 
 QString TextFactory::shorten(const QString &input, int text_length_limit) {
   if (input.size() > text_length_limit) {
-    return input.left(text_length_limit - 3) + QString(3, '.');
+    return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, '.');
   }
   else {
     return input;

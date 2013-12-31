@@ -59,10 +59,12 @@ QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
     }
 
     // In this phase, some part of downloading process is completed.
+    QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 
-    if (reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl().isValid()) {
+    if (redirection_url.isValid()) {
       // Communication indicates that HTTP redirection is needed.
-      request.setUrl(reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl());
+      // Setup redirection URL and download again.
+      request.setUrl(redirection_url);
     }
     else {
       // No redirection is indicated. Final file is obtained

@@ -11,7 +11,6 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
-#include <QQueue>
 
 #include <algorithm>
 
@@ -23,9 +22,7 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   m_rootItem->setId(NO_PARENT_CATEGORY);
   m_rootItem->setTitle(tr("root"));
   m_rootItem->setIcon(IconThemeFactory::getInstance()->fromTheme("folder-red"));
-
   m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
-
   m_headerData << tr("Title");
   m_tooltipData << tr("Titles of feeds/categories.") <<
                    tr("Counts of unread/all meesages.");
@@ -204,50 +201,6 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   return QModelIndex();
 }
 
-/*
-QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
-  if (item->kind() == FeedsModelRootItem::RootItem) {
-    // Root item lies on invalid index.
-    return QModelIndex();
-  }
-
-  // TODO: Rewrite for better performance.
-
-  QModelIndexList parents;
-
-  // Start with invalid index (so that we start from the root
-  // item).
-  parents << QModelIndex();
-
-  while (!parents.isEmpty()) {
-    QModelIndex active_index = parents.takeFirst();
-    int row_count = rowCount(active_index);
-
-    // Iterate all childs of this parent.
-    for (int i = 0; i < row_count; i++) {
-      QModelIndex candidate_index = index(i, 0, active_index);
-
-      // This index could be our target item.
-      FeedsModelRootItem *target_item = itemForIndex(candidate_index);
-
-      if (target_item != NULL) {
-        if (FeedsModelRootItem::isEqual(target_item, item)) {
-          // We found our target index, it's good.
-          return candidate_index;
-        }
-        else if (hasChildren(candidate_index)) {
-          // This is not our target index but it has children,
-          // scan them too.
-          parents << candidate_index;
-        }
-      }
-    }
-
-  }
-
-  return QModelIndex();
-}*/
-
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex ix = list.takeLast();
@@ -293,9 +246,11 @@ void FeedsModel::loadFromDatabase() {
   FeedAssignment feeds;
 
   // Obtain data for categories from the database.
-  QSqlQuery query_categories("SELECT * FROM Categories;", database);
+  QSqlQuery query_categories(database);
+  query_categories.setForwardOnly(true);
 
-  if (query_categories.lastError().isValid()) {
+  if (!query_categories.exec("SELECT * FROM Categories;") ||
+      query_categories.lastError().isValid()) {
     qFatal("Query for obtaining categories failed.");
   }
 
@@ -322,9 +277,11 @@ void FeedsModel::loadFromDatabase() {
   }
 
   // All categories are now loaded.
-  QSqlQuery query_feeds("SELECT * FROM Feeds;", database);
+  QSqlQuery query_feeds(database);
+  query_feeds.setForwardOnly(true);
 
-  if (query_feeds.lastError().isValid()) {
+  if (!query_feeds.exec("SELECT * FROM Feeds;") ||
+      query_feeds.lastError().isValid()) {
     qFatal("Query for obtaining feeds failed.");
   }
 
@@ -403,6 +360,8 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
   }
 
   QSqlQuery query_read_msg(db_handle);
+  query_read_msg.setForwardOnly(true);
+
   if (!query_read_msg.prepare(QString("UPDATE messages SET read = :read "
                                       "WHERE feed IN (%1) AND deleted = 0").arg(textualFeedIds(feeds).join(", ")))) {
     qWarning("Query preparation failed for feeds read change.");
@@ -437,6 +396,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
   }
 
   QSqlQuery query_delete_msg(db_handle);
+  query_delete_msg.setForwardOnly(true);
+
   if (!query_delete_msg.prepare(QString("UPDATE messages SET deleted = :deleted "
                                         "WHERE feed IN (%1) AND deleted = 0").arg(textualFeedIds(feeds).join(", ")))) {
     qWarning("Query preparation failed for feeds clearing.");
@@ -498,13 +459,13 @@ QList<FeedsModelFeed*> FeedsModel::getFeeds(FeedsModelRootItem *root) {
   }
   else {
     // Root itself is a CATEGORY or ROOT item.
-    QQueue<FeedsModelRootItem*> traversable_items;
+    QList<FeedsModelRootItem*> traversable_items;
 
-    traversable_items.enqueue(root);
+    traversable_items.append(root);
 
     // Iterate all nested categories.
     while (!traversable_items.isEmpty()) {
-      FeedsModelRootItem *active_category = traversable_items.dequeue();
+      FeedsModelRootItem *active_category = traversable_items.takeFirst();
 
       foreach (FeedsModelRootItem *child, active_category->childItems()) {
         if (child->kind() == FeedsModelRootItem::Feed) {
@@ -513,7 +474,7 @@ QList<FeedsModelFeed*> FeedsModel::getFeeds(FeedsModelRootItem *root) {
         }
         else if (child->kind() == FeedsModelRootItem::Category) {
           // This child is category, add its child feeds too.
-          traversable_items.enqueue(static_cast<FeedsModelCategory*>(child));
+          traversable_items.append(static_cast<FeedsModelCategory*>(child));
         }
       }
     }

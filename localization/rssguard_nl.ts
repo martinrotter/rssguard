@@ -109,6 +109,37 @@
     </message>
 </context>
 <context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Titel</translation>
+    </message>
+    <message>
+        <source>Title of the category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
@@ -169,10 +200,6 @@
     <message>
         <source>Close current &amp;tab</source>
         <translation>Sluit huidig &amp;tabblad</translation>
-    </message>
-    <message>
-        <source>Fee&amp;ds</source>
-        <translation></translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -255,18 +282,6 @@
         <translation>Sluit huidige webbrowser tabblad.</translation>
     </message>
     <message>
-        <source>Update &amp;all feeds</source>
-        <translation>Update a&amp;lle feeds</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation>Update ge&amp;selecteerde feeds</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed(s)/category(ies)</source>
-        <translation>&amp;Verwijder geselecteerde feed(s)/categorie(ën)</translation>
-    </message>
-    <message>
         <source>Delete selected messages.</source>
         <translation>Verwijder geselecteerde berichten.</translation>
     </message>
@@ -315,15 +330,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark &amp;selected feeds read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Marks all messages (without message filters) from selected feeds as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected feeds unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -332,10 +339,6 @@
     </message>
     <message>
         <source>&amp;Clear selected messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear selected feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -348,6 +351,42 @@
     </message>
     <message>
         <source>No actions are available right now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fee&amp;ds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feeds/categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected items read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected items unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all &amp;items read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages in all feeds read. This does not take message filters into account.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

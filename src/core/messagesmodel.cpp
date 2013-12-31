@@ -233,9 +233,11 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
   }
 
   int message_id;
-  QSqlQuery query_delete_msg(db_handle);
-  if (!query_delete_msg.prepare("UPDATE messages SET read = :read "
-                                "WHERE id = :id")) {
+  QSqlQuery query_read_msg(db_handle);
+  query_read_msg.setForwardOnly(true);
+
+  if (!query_read_msg.prepare("UPDATE messages SET read = :read "
+                              "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
 
     db_handle.rollback();
@@ -244,9 +246,9 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
 
   // Rewrite the actual data in the database itself.
   message_id = messageId(row_index);
-  query_delete_msg.bindValue(":id", message_id);
-  query_delete_msg.bindValue(":read", read);
-  query_delete_msg.exec();
+  query_read_msg.bindValue(":id", message_id);
+  query_read_msg.bindValue(":read", read);
+  query_read_msg.exec();
 
   // Commit changes.
   if (db_handle.commit()) {
@@ -287,9 +289,11 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   }
 
   int message_id;
-  QSqlQuery query_delete_msg(db_handle);
-  if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
-                                "WHERE id = :id")) {
+  QSqlQuery query_importance_msg(db_handle);
+  query_importance_msg.setForwardOnly(true);
+
+  if (!query_importance_msg.prepare("UPDATE messages SET important = :important "
+                                    "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
 
     db_handle.rollback();
@@ -297,10 +301,10 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   }
 
   message_id = messageId(row_index);
-  query_delete_msg.bindValue(":id", message_id);
-  query_delete_msg.bindValue(":important",
-                             current_importance == 1 ? 0 : 1);
-  query_delete_msg.exec();
+  query_importance_msg.bindValue(":id", message_id);
+  query_importance_msg.bindValue(":important",
+                                 current_importance == 1 ? 0 : 1);
+  query_importance_msg.exec();
 
   // Commit changes.
   if (db_handle.commit()) {
@@ -324,9 +328,11 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   }
 
   int message_id, importance;
-  QSqlQuery query_delete_msg(db_handle);
-  if (!query_delete_msg.prepare("UPDATE messages SET important = :important "
-                                "WHERE id = :id")) {
+  QSqlQuery query_importance_msg(db_handle);
+  query_importance_msg.setForwardOnly(true);
+
+  if (!query_importance_msg.prepare("UPDATE messages SET important = :important "
+                                    "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
 
     db_handle.rollback();
@@ -337,10 +343,10 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     message_id = messageId(message.row());
     importance = data(message.row(), MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
 
-    query_delete_msg.bindValue(":id", message_id);
-    query_delete_msg.bindValue(":important",
-                               importance == 1 ? 0 : 1);
-    query_delete_msg.exec();
+    query_importance_msg.bindValue(":id", message_id);
+    query_importance_msg.bindValue(":important",
+                                   importance == 1 ? 0 : 1);
+    query_importance_msg.exec();
   }
 
   // Commit changes.
@@ -365,6 +371,8 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   int message_id;
   QSqlQuery query_delete_msg(db_handle);
+  query_delete_msg.setForwardOnly(true);
+
   if (!query_delete_msg.prepare("UPDATE messages SET deleted = :deleted "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message deletion.");
@@ -404,8 +412,10 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
 
   int message_id;
   QSqlQuery query_read_msg(db_handle);
+  query_read_msg.setForwardOnly(true);
+
   if (!query_read_msg.prepare("UPDATE messages SET read = :read "
-                                "WHERE id = :id")) {
+                              "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
 
     db_handle.rollback();

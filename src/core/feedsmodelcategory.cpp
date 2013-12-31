@@ -3,8 +3,6 @@
 #include "core/feedsmodelstandardcategory.h"
 #include "core/feedsmodelstandardfeed.h"
 
-#include <QQueue>
-
 
 FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item) {
