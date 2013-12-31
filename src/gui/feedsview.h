@@ -57,6 +57,7 @@ class FeedsView : public QTreeView {
     void updateCountsOfAllFeeds(bool update_total_too = true);
 
   protected:
+    // Initializes context menus.
     void initializeContextMenuCategoriesFeeds();
     void initializeContextMenuEmptySpace();
 

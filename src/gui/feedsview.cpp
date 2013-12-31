@@ -195,9 +195,6 @@ void FeedsView::setupAppearance() {
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
-
-  // TODO: Check if stylesheets or drawBranches(...) reimplementation
-  // is better for hiding the branches of the view.
   setRootIsDecorated(false);
 }
 
@@ -208,6 +205,9 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
   m_selectedFeeds.clear();
 
   foreach (FeedsModelFeed *feed, selectedFeeds()) {
+    QModelIndex id = m_sourceModel->indexForItem(feed);
+    qDebug("INDEX %d, %d", id.row(), id.column());
+
     m_selectedFeeds << feed->id();
   }
 

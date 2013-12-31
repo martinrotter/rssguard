@@ -168,6 +168,52 @@ FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const
   }
 }
 
+/*
+QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
+  if (item->kind() == FeedsModelRootItem::RootItem) {
+    // Root item lies on invalid index.
+    return QModelIndex();
+  }
+
+  // TODO: Rewrite for better performance.
+
+  QModelIndexList parents;
+
+  // Start with invalid index (so that we start from the root
+  // item).
+  parents << QModelIndex();
+
+  while (!parents.isEmpty()) {
+    QModelIndex active_index = parents.takeFirst();
+    int row_count = rowCount(active_index);
+
+    if (row_count > 0) {
+      // This index has children.
+      // Lets take a look if our target item is among them.
+      FeedsModelRootItem *active_item = itemForIndex(active_index);
+      int candidate_index = active_item->childItems().indexOf(item);
+
+      if (candidate_index >= 0) {
+        // We found our item.
+        return index(candidate_index, 0, active_index);
+      }
+      else {
+        // Item is not found, add all "categories" from active_item.
+        for (int i = 0; i < row_count; i++) {
+          FeedsModelRootItem *possible_category = active_item->child(i);
+
+          if (possible_category->kind() == FeedsModelRootItem::Category) {
+            parents << index(i, 0, active_index);
+          }
+        }
+      }
+    }
+  }
+
+  return QModelIndex();
+}
+*/
+
 QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   if (item->kind() == FeedsModelRootItem::RootItem) {
     // Root item lies on invalid index.
