@@ -169,13 +169,10 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
     return QModelIndex();
   }
 
-  // TODO: Rewrite for better performance.
+  QList<QModelIndex> parents;
 
-  QModelIndexList parents;
-
-  // Start with invalid index (so that we start from the root
-  // item).
-  parents << QModelIndex();
+  // Start with root item.
+  parents << indexForItem(m_rootItem);
 
   while (!parents.isEmpty()) {
     QModelIndex active_index = parents.takeFirst();
