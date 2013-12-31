@@ -35,9 +35,10 @@ void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_categ
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormCategoryDetails::exec(FeedsModelCategory *input_category,
-                              FeedsModelCategory *output_item,
-                              FeedsModelRootItem *parent_item) {
+FormCategoryDetailsAnswer FormCategoryDetails::exec(FeedsModelCategory *input_category,
+                                                    FeedsModelCategory *input_parent_category) {
+  FormCategoryDetailsAnswer answer;
+
   if (input_category == NULL) {
     // User is adding new category.
   }
@@ -46,9 +47,9 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category,
     setEditableCategory(input_category);
   }
 
-  int result = QDialog::exec();
+  answer.m_dialogCode = QDialog::exec();
 
-  return result;
+  return answer;
 }
 
 void FormCategoryDetails::initialize() {

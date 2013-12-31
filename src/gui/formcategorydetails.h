@@ -14,6 +14,13 @@ class FeedsModelCategory;
 class FeedsModel;
 class FeedsModelRootItem;
 
+class FormCategoryDetailsAnswer {
+  public:
+    int m_dialogCode;
+    FeedsModelCategory *m_outputItem;
+    FeedsModelRootItem *m_outputParentItem;
+};
+
 class FormCategoryDetails : public QDialog {
     Q_OBJECT
 
@@ -34,9 +41,8 @@ class FormCategoryDetails : public QDialog {
     // in the database.
     // NOTE: Newly EDITED category IS COPY of its original.
     // SO NO ORIGINAL MODEL DATA ARE EDITED OR CHANGED.
-    int exec(FeedsModelCategory *input_category,
-             FeedsModelCategory *output_item,
-             FeedsModelRootItem *parent_item);
+    FormCategoryDetailsAnswer exec(FeedsModelCategory *input_category,
+                                   FeedsModelCategory *input_parent_category);
 
   protected:
     // Sets the category which will be edited.
