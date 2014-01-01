@@ -141,9 +141,11 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const {
       int index_column = index.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
-        // This column contains QDateTime.
-        return TextFactory::parseDateTime(QSqlTableModel::data(index,
-                                                               role).toString()).toString(Qt::DefaultLocaleShortDate);
+        // This column contains QDateTime properly stored in ISO format.
+        // So that QDateTime::fromString(...) is okay here.
+        return QDateTime::fromString(QSqlTableModel::data(index,
+                                                          role).toString(),
+                                     Qt::ISODate).toLocalTime().toString(Qt::DefaultLocaleShortDate);
       }
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
         QString author_name = QSqlTableModel::data(index, role).toString();

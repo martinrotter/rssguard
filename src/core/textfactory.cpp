@@ -18,7 +18,6 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString temp;
   QLocale locale(QLocale::C);
   QStringList date_patterns;
-  // Dec 1 2013 07:56:46
   date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
                    "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
                    "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
@@ -30,9 +29,12 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
     temp = date.left(pattern.size());
     dt = locale.toDateTime(temp, pattern);
     if (dt.isValid()) {
+      dt.setTimeSpec(Qt::UTC);
       return dt;
     }
   }
+
+  // TODO: ISO time zone offsets are not read now, problem.
 
   // Parsing failed, return invalid datetime.
   return QDateTime();
