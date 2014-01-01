@@ -24,6 +24,6 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,
                                                           QAuthenticator *authenticator) {
   Q_UNUSED(authenticator)
 
-  qDebug("Authentification problems for '%s'.",
+  qDebug("Autorization problems for '%s'.",
          qPrintable(reply->url().toString()));
 }

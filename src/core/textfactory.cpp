@@ -54,11 +54,11 @@ QString TextFactory::stripTags(QString text) {
 QString TextFactory::escapeHtml(const QString &html) {
   QMap<QString, QString> sequences;
 
-  sequences["&lt;"]		= "<";
-  sequences["&gt;"]		= ">";
-  sequences["&amp;"]		= "&";
-  sequences["&quot;"]		= "\"";
-  sequences["&nbsp;"]		= " ";
+  sequences["&lt;"]		= '<';
+  sequences["&gt;"]		= '>';
+  sequences["&amp;"]		= '&';
+  sequences["&quot;"]		= '\"';
+  sequences["&nbsp;"]		= ' ';
   sequences["&plusmn;"]	= "±";
   sequences["&times;"]	= "×";
 

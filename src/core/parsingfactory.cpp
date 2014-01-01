@@ -33,7 +33,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       elem_summary = message_item.namedItem("content").toElement().text();
     }
 
-    // Now we obtained maximum of informations for title & description.
+    // Now we obtained maximum of information for title & description.
     if (elem_title.isEmpty()) {
       if (elem_summary.isEmpty()) {
         // BOTH title and description are empty, skip this message.
@@ -100,7 +100,7 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
     QString elem_title = message_item.namedItem("title").toElement().text().simplified();
     QString elem_description = message_item.namedItem("description").toElement().text();
 
-    // Now we obtained maximum of informations for title & description.
+    // Now we obtained maximum of information for title & description.
     if (elem_title.isEmpty()) {
       if (elem_description.isEmpty()) {
         // BOTH title and description are empty, skip this message.
@@ -168,7 +168,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       elem_description = message_item.namedItem("encoded").toElement().text();
     }
 
-    // Now we obtained maximum of informations for title & description.
+    // Now we obtained maximum of information for title & description.
     if (elem_title.isEmpty()) {
       if (elem_description.isEmpty()) {
         // BOTH title and description are empty, skip this message.

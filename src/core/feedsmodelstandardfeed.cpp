@@ -5,6 +5,7 @@
 #include "core/parsingfactory.h"
 #include "core/databasefactory.h"
 #include "core/networkfactory.h"
+#include "core/textfactory.h"
 #include "gui/iconfactory.h"
 #include "gui/iconthemefactory.h"
 
@@ -205,20 +206,35 @@ void FeedsModelStandardFeed::update() {
 
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id(), message_id;
+  QDateTime message_creation_date;
   QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelStandardFeed");
 
   // Prepare queries.
   QSqlQuery query_select(database);
   QSqlQuery query_insert(database);
+  QSqlQuery query_update(database);
 
+  // Used to check if give feed contains with message with given
+  // title and url.
   query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "
                        "WHERE feed = :feed AND title = :title AND url = :url;");
 
+  // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
                        "(feed, title, url, author, date_created, contents) "
                        "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
+
+  // Used to update existing messages of given feed.
+  // NOTE: Messages are updated if its creation date
+  // is changed.
+  query_update.setForwardOnly(true);
+  query_update.prepare("UPDATE Messages "
+                       "SET title = :title, url = :url, author = :author, "
+                       "date_created = :date_created, contents = :contents, "
+                       "read = 0, important = 0, deleted = 0 "
+                       "WHERE id = :id");
 
   if (!database.transaction()) {
     database.rollback();
@@ -236,6 +252,7 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     if (query_select.next()) {
       // Message with this title & url probably exists in current feed.
       message_id = query_select.value(0).toInt();
+      message_creation_date = TextFactory::parseDateTime(query_select.value(2).toString());
     }
     else {
       message_id = -1;
@@ -255,15 +272,28 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
       query_insert.exec();
       query_insert.finish();
     }
-    else {
-      // Message is already persistently stored.
-      // TODO: Update message if it got updated in the
-      // online feed.
-      if (message.m_createdFromFeed) {
-        // Creation data of the message was obtained from
-        // feed itself.
+    else if (message.m_createdFromFeed &&
+             message_creation_date.isValid() &&
+             message_creation_date > message.m_created) {
+      qDebug("Message '%s' (id %d) was updated in the feed, updating too.",
+             qPrintable(message.m_title),
+             message_id);
 
-      }
+      // TODO: Check if this is actually working.
+
+      // Message with given title/url is already persistently
+      // stored in given feed.
+      // Creation data of the message was obtained from
+      // feed itself. We can update this message.
+      query_update.bindValue(":title", message.m_title);
+      query_update.bindValue(":url", message.m_url);
+      query_update.bindValue(":author", message.m_author);
+      query_update.bindValue(":date_created", message.m_created.toString(Qt::ISODate));
+      query_update.bindValue(":contents", message.m_contents);
+      query_update.bindValue(":id", message_id);
+
+      query_update.exec();
+      query_update.finish();
     }
   }
 

@@ -4,7 +4,6 @@
 #include "core/settings.h"
 
 #include <QApplication>
-#include <QDomDocument>
 #include <QDir>
 #include <QStyleFactory>
 #include <QDomDocument>
