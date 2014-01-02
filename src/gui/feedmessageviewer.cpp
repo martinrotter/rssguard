@@ -118,11 +118,9 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
                                               int current,
                                               int total) {
   // Some feed got updated.
-  // TODO: Now we should change some widgets (reload counts
-  // of messages for the feed, update status bar and so on).
-
   // TODO: Don't update counts of all feeds here,
   // it is enough to update counts of update feed.
+  // So use indexForItem method from the model.
   m_feedsView->updateCountsOfAllFeeds(true);
 }
 
