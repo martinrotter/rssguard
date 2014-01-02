@@ -26,6 +26,8 @@ MessagesModel *MessagesProxyModel::sourceModel() {
 }
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
+  // TODO: mozna pouzit QString::localeAwareCompare tady
+  // pro title a author.
   return QSortFilterProxyModel::lessThan(left, right);
 }
 

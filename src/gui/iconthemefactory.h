@@ -25,14 +25,11 @@ class IconThemeFactory : public QObject {
     void setupSearchPaths();
 
     // Returns list of installed themes, including "default" theme.
-    // NOTE: "Default" theme is system theme on Linux and "no theme" on windows.
     QStringList getInstalledIconThemes();
 
     // Loads name of selected icon theme (from settings) for the application and
     // activates it. If that particular theme is not installed, then
     // "default" theme is loaded.
-    // NOTE: All existing widgets get a chance to repaint its icons if
-    // notify_widgets is true.
     void loadCurrentIconTheme();
 
     // Returns name of currently activated theme for the application.

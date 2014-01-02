@@ -23,9 +23,6 @@ Q_DECLARE_METATYPE(Skin)
 // NOTE: Skin "base/vergilius.xml" is now NEEDED for rssguard
 // to run. IT IS DEFAULT skin. It sets no styles and stylesheet.
 // It just contains markup for webbrowser.
-// NOTE: Check skins "base/vergilius.xml" and "luxuous.xml"
-// for skin syntax reference. Note that <markup> and <data> tags
-// have contents encoded in Base64.
 
 class SkinFactory : public QObject {
     Q_OBJECT

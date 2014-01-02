@@ -187,11 +187,14 @@ void FeedsView::setupAppearance() {
   setExpandsOnDoubleClick(true);
   setEditTriggers(QAbstractItemView::NoEditTriggers);
   setIndentation(10);
-  sortByColumn(0, Qt::AscendingOrder);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
   setRootIsDecorated(false);
+
+  // Sort in ascending order, that is categories are
+  // "bigger" than feeds.
+  sortByColumn(0, Qt::AscendingOrder);
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected,
@@ -240,4 +243,6 @@ void FeedsView::drawBranches(QPainter *painter, const QRect &rect, const QModelI
   Q_UNUSED(rect)
   Q_UNUSED(index);
   // NOTE: Don't draw branches at all.
+  // TODO: tady mozna nakreslit proste ten rect s tim painterem
+  // aby tam aspon neco bylo (blbne pak skrz stylesheety)
 }

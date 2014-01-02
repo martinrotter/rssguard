@@ -22,7 +22,7 @@ MessagesModel::MessagesModel(QObject *parent)
 
   // Set desired table and edit strategy.
   // NOTE: Changes to the database are actually NOT submitted
-  // via model, but DIRECT SQL calls are used to do persistent messages.
+  // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable("Messages");
   loadMessages(QList<int>());

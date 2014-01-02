@@ -45,8 +45,6 @@ class FormMain : public QMainWindow {
     bool event(QEvent *event);
 
     // Sets up proper icons for this widget.
-    // NOTE: All permanent widgets should implement this
-    // kind of method and catch ThemeFactoryEvent::type() in its event handler.
     void setupIcons();
 
     // Loads/saves visual state of the application.
