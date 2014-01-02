@@ -28,7 +28,7 @@ FormCategoryDetails::~FormCategoryDetails() {
 void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_category) {
   m_editableCategory = editable_category;
 
-  // TODO: Setup the dialog according to new category.
+  // TODO: Setup the dialog according to the category.
   // so remove this category from category combobox!!
   m_ui->m_txtTitle->setText(editable_category->title());
   m_ui->m_txtDescription->setText(editable_category->description());

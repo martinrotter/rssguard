@@ -18,7 +18,8 @@ class TextFactory {
     static QDateTime parseDateTime(const QString &date_time);
 
     // Converts 1970-epoch miliseconds to date/time.
-    // NOTE: This method returns date/time in UTC+00:00.
+    // NOTE: This method returns date/time local-time
+    // which is calculated from the system settings.
     // NOTE: On Windows UTC is known to be broken.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
 

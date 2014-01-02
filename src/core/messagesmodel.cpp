@@ -97,7 +97,7 @@ Message MessagesModel::messageAt(int row_index) const {
   message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
-  message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).toString());
+  message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).value<qint64>());
 
   return message;
 }

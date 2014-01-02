@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Categories (
   parent_id      INTEGER    NOT NULL,
   title          TEXT       NOT NULL UNIQUE CHECK (title != ''),
   description    TEXT,
-  date_created   TEXT       NOT NULL CHECK (date_created != ''),
+  date_created   INTEGER    NOT NULL CHECK (date_created != 0),
   icon           BLOB,
   type           INTEGER    NOT NULL,
   
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   id             INTEGER    PRIMARY KEY,
   title          TEXT       NOT NULL CHECK (title != ''),
   description    TEXT,
-  date_created   TEXT       NOT NULL CHECK (date_created != ''),
+  date_created   INTEGER    NOT NULL CHECK (date_created != 0),
   icon           BLOB,
   category       INTEGER    NOT NULL CHECK (category >= -1),
   encoding       TEXT       NOT NULL CHECK (encoding != ''),
@@ -58,24 +58,24 @@ CREATE TABLE IF NOT EXISTS Messages (
   title          TEXT       NOT NULL CHECK (title != ''),
   url            TEXT,
   author         TEXT,
-  date_created   TEXT       NOT NULL CHECK (date_created != ''),
+  date_created   INTEGER       NOT NULL CHECK (date_created != 0),
   contents       TEXT,
   
   FOREIGN KEY (feed) REFERENCES Feeds (id)
 );
 -- !
-INSERT INTO Categories (id, parent_id, title, description, date_created, type) VALUES (1, -1, 'Linux', 'Collections of GNU/Linux-related feeds.', '2013-12-20T08:00:00-05:00', 0);
+INSERT INTO Categories (id, parent_id, title, description, date_created, type) VALUES (1, -1, 'Linux', 'Collections of GNU/Linux-related feeds.', 1388678961000, 0);
 -- !
-INSERT INTO Categories (id, parent_id, title, description, date_created, type) VALUES (2, -1, 'RSS Guard', 'News and updates on RSS Guard.', '2013-12-20T08:00:00-05:00', 0);
+INSERT INTO Categories (id, parent_id, title, description, date_created, type) VALUES (2, -1, 'RSS Guard', 'News and updates on RSS Guard.', 1388678961000, 0);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Linux Today', 'Linux Today - Linux News on Internet Time.', '2013-12-20T08:00:00-05:00', 1, 'UTF-8', 'http://feeds.feedburner.com/linuxtoday/linux?format=xml', 1);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Linux Today', 'Linux Today - Linux News on Internet Time.', 1388678961000, 1, 'UTF-8', 'http://feeds.feedburner.com/linuxtoday/linux?format=xml', 1);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('LinuxInsider', 'LinuxInsider: Linux News & Information from Around the World.', '2013-12-20T08:00:00-05:00', 1, 'UTF-8', 'http://www.linuxinsider.com/perl/syndication/rssfull.pl', 2);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('LinuxInsider', 'LinuxInsider: Linux News & Information from Around the World.', 1388678961000, 1, 'UTF-8', 'http://www.linuxinsider.com/perl/syndication/rssfull.pl', 2);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('LXer: Linux News', 'The world is talking about GNU/Linux and Free/Open Source Software.', '2013-12-20T08:00:00-05:00', 1, 'UTF-8', 'http://lxer.com/module/newswire/headlines.rss', 2);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('LXer: Linux News', 'The world is talking about GNU/Linux and Free/Open Source Software.', 1388678961000, 1, 'UTF-8', 'http://lxer.com/module/newswire/headlines.rss', 2);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Recent Commits', 'Recent commits for RSS Guard project.', '2013-12-20T08:00:00-05:00', 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/commits/master.atom', 3);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Recent Commits', 'Recent commits for RSS Guard project.', 1388678961000, 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/commits/master.atom', 3);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Releases', 'Releases for RSS Guard.', '2013-12-20T08:00:00-05:00', 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/releases.atom', 3);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Releases', 'Releases for RSS Guard.', 1388678961000, 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/releases.atom', 3);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Author''s Activity', 'RSS Guard author public activity overview.', '2013-12-20T08:00:00-05:00', 2, 'UTF-8', 'https://github.com/martinrotter.atom', 3);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, type) VALUES ('Author''s Activity', 'RSS Guard author public activity overview.', 1388678961000, 2, 'UTF-8', 'https://github.com/martinrotter.atom', 3);

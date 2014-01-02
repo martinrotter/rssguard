@@ -18,23 +18,69 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString temp;
   QLocale locale(QLocale::C);
   QStringList date_patterns;
+  QTime time_zone_offset;
+  bool positive_time_zone_offset = false;
+
   date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
                    "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
                    "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
-                   "YYYY" << "YYYY-MM" << "YYYY-MM-DD" << "YYYY-MM-DDThh:mmTZD" <<
-                   "YYYY-MM-DDThh:mm:ssTZD";
+                   "YYYY" << "YYYY-MM" << "YYYY-MM-DD" << "YYYY-MM-DDThh:mm" <<
+                   "YYYY-MM-DDThh:mm:ss";
+
+  // Check if last part of date is time zone offset,
+  // represented as [+|-]hh:mm.
+  int date_length = date.size();
+
+  if (date_length > 6) {
+    char zone_sign = date.at(date_length - 6).toLatin1();
+
+    switch (zone_sign) {
+      case '+':
+        // Positive time zone offset detected.
+        positive_time_zone_offset = true;
+        time_zone_offset = QTime::fromString(date.right(5),
+                                             "hh:mm");
+
+        date.chop(6);
+        break;
+
+      case '-':
+        // Negative time zone offset detected.
+        time_zone_offset = QTime::fromString(date.right(5),
+                                             "hh:mm");
+
+        date.chop(6);
+        break;
+
+      default:
+        // No time zone offset.
+        break;
+    }
+  }
 
   // Iterate over patterns and check if input date/time matches the pattern.
   foreach (const QString &pattern, date_patterns) {
     temp = date.left(pattern.size());
     dt = locale.toDateTime(temp, pattern);
+
     if (dt.isValid()) {
       dt.setTimeSpec(Qt::UTC);
-      return dt;
+
+      if (time_zone_offset.isValid()) {
+        if (positive_time_zone_offset) {
+          return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
+        }
+        else {
+          int secs = QTime(0, 0, 0, 0).secsTo(time_zone_offset);
+
+          return dt.addSecs(- QTime(0, 0, 0, 0).secsTo(time_zone_offset));
+        }
+      }
+      else {
+        return dt;
+      }
     }
   }
-
-  // TODO: ISO time zone offsets are not read now, problem.
 
   // Parsing failed, return invalid datetime.
   return QDateTime();
@@ -42,15 +88,6 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 
 QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
   QDateTime converted = QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
-
-  // TODO: tadle funkce nahore fromMSec.. by mela vracet cas v UTC
-  // tedy timespec Qt::UTC, ale na windows vraci local time.
-  // overit co to vraci na linuxu a podle toho
-  // prenastavit zobrazovani datumu v messagesmodelu::data (delani
-  // nebo nedelani konverze .toLocalTime().
-  // mozna taky toString() udela konverzi za me.
-  // vsude je pouzito prozatim toLocalTime()
-  //converted.setTimeSpec(Qt::UTC);
   return converted;
 }
 
