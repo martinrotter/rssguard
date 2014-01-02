@@ -245,4 +245,5 @@ void FeedsView::drawBranches(QPainter *painter, const QRect &rect, const QModelI
   // NOTE: Don't draw branches at all.
   // TODO: tady mozna nakreslit proste ten rect s tim painterem
   // aby tam aspon neco bylo (blbne pak skrz stylesheety)
+  // nebo ocekovat fora na netu a delegates
 }
