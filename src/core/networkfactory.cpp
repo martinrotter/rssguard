@@ -78,8 +78,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
 
   QNetworkReply::NetworkError reply_error = reply->error();
 
-  qDebug("File '%s' fetched with status %d.",
+  qDebug("File '%s' fetched with status '%s' (code %d).",
          qPrintable(url),
+         qPrintable(reply->errorString()),
          reply_error);
 
   // Delete needed stuff and exit.

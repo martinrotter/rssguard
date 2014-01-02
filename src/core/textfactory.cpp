@@ -56,13 +56,14 @@ QString TextFactory::stripTags(QString text) {
 QString TextFactory::escapeHtml(const QString &html) {
   QMap<QString, QString> sequences;
 
-  sequences["&lt;"]		= '<';
-  sequences["&gt;"]		= '>';
+  sequences["&lt;"]     = '<';
+  sequences["&gt;"]     = '>';
   sequences["&amp;"]		= '&';
   sequences["&quot;"]		= '\"';
   sequences["&nbsp;"]		= ' ';
   sequences["&plusmn;"]	= "±";
   sequences["&times;"]	= "×";
+  sequences["&#039;"]   = '\'';
 
   QList<QString> keys = sequences.uniqueKeys();
   QString output = html;
@@ -83,6 +84,7 @@ QString TextFactory::deEscapeHtrml(const QString &text) {
   sequences["\""]	= "&quot;";
   sequences["±"]	= "&plusmn;";
   sequences["×"]	= "&times;";
+  sequences["\'"] = "&#039;";
 
   QList<QString> keys = sequences.uniqueKeys();
   QString output = text;

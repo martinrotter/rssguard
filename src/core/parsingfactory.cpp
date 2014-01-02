@@ -108,13 +108,13 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
       }
       else {
         // Title is empty but description is not.
-        new_message.m_title = TextFactory::stripTags(elem_description.simplified());
+        new_message.m_title = TextFactory::escapeHtml(TextFactory::stripTags(elem_description.simplified()));
         new_message.m_contents = elem_description;
       }
     }
     else {
       // Title is really not empty, description does not matter.
-      new_message.m_title = TextFactory::stripTags(elem_title);
+      new_message.m_title = TextFactory::escapeHtml(TextFactory::stripTags(elem_title));
       new_message.m_contents = elem_description;
     }
 

@@ -5,7 +5,10 @@
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
   : BaseNetworkAccessManager(parent) {
-
+  connect(this, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
+          this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
+  connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
+          this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)));
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
@@ -14,8 +17,10 @@ SilentNetworkAccessManager::~SilentNetworkAccessManager() {
 
 void SilentNetworkAccessManager::onSslErrors(QNetworkReply *reply,
                                            const QList<QSslError> &error) {
-  qDebug("SSL errors for '%s'.",
-         qPrintable(reply->url().toString()));
+  qDebug("SSL errors for '%s': '%s' (code %d).",
+         qPrintable(reply->url().toString()),
+         qPrintable(reply->errorString()),
+         (int) reply->error());
 
   reply->ignoreSslErrors(error);
 }
