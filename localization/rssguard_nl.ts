@@ -862,6 +862,14 @@
         <source>External browser is not set, head to application settings and set it up to use this feature.</source>
         <translation>Externe browser is niet ingesteld, ga naar hulpmiddelen instellingen en zet deze functie aan.</translation>
     </message>
+    <message>
+        <source>Meesage without URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message &apos;%s&apos; does not contain URL.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
