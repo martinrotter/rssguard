@@ -96,8 +96,7 @@ FeedsModelStandardCategory *FeedsModelStandardCategory::loadFromRecord(const QSq
   category->setId(record.value(CAT_DB_ID_INDEX).toInt());
   category->setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   category->setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
-  category->setCreationDate(QDateTime::fromString(record.value(CAT_DB_DCREATED_INDEX).toString(),
-                                                  Qt::ISODate));
+  category->setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
   category->setIcon(IconFactory::fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 
   return category;

@@ -32,8 +32,7 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   feed->setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   feed->setId(record.value(FDS_DB_ID_INDEX).toInt());
   feed->setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
-  feed->setCreationDate(QDateTime::fromString(record.value(FDS_DB_DCREATED_INDEX).toString(),
-                                              Qt::ISODate));
+  feed->setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
   feed->setIcon(IconFactory::fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
@@ -206,7 +205,7 @@ void FeedsModelStandardFeed::update() {
 
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id(), message_id;
-  QDateTime message_creation_date;
+  qint64 message_creation_date;
   QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelStandardFeed");
 
   // Prepare queries.
@@ -252,7 +251,7 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     if (query_select.next()) {
       // Message with this title & url probably exists in current feed.
       message_id = query_select.value(0).toInt();
-      message_creation_date = TextFactory::parseDateTime(query_select.value(2).toString());
+      message_creation_date = query_select.value(2).value<qint64>();
     }
     else {
       message_id = -1;
@@ -266,15 +265,15 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(":title", message.m_title);
       query_insert.bindValue(":url", message.m_url);
       query_insert.bindValue(":author", message.m_author);
-      query_insert.bindValue(":date_created", message.m_created.toString(Qt::ISODate));
+      query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
       query_insert.bindValue(":contents", message.m_contents);
 
       query_insert.exec();
       query_insert.finish();
     }
     else if (message.m_createdFromFeed &&
-             message_creation_date.isValid() &&
-             message_creation_date > message.m_created) {
+             message_creation_date != 0 &&
+             message_creation_date > message.m_created.toMSecsSinceEpoch()) {
       qDebug("Message '%s' (id %d) was updated in the feed, updating too.",
              qPrintable(message.m_title),
              message_id);
@@ -288,7 +287,7 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
       query_update.bindValue(":title", message.m_title);
       query_update.bindValue(":url", message.m_url);
       query_update.bindValue(":author", message.m_author);
-      query_update.bindValue(":date_created", message.m_created.toString(Qt::ISODate));
+      query_update.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
       query_update.bindValue(":contents", message.m_contents);
       query_update.bindValue(":id", message_id);
 

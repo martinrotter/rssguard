@@ -40,6 +40,20 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   return QDateTime();
 }
 
+QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
+  QDateTime converted = QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
+
+  // TODO: tadle funkce nahore fromMSec.. by mela vracet cas v UTC
+  // tedy timespec Qt::UTC, ale na windows vraci local time.
+  // overit co to vraci na linuxu a podle toho
+  // prenastavit zobrazovani datumu v messagesmodelu::data (delani
+  // nebo nedelani konverze .toLocalTime().
+  // mozna taky toString() udela konverzi za me.
+  // vsude je pouzito prozatim toLocalTime()
+  //converted.setTimeSpec(Qt::UTC);
+  return converted;
+}
+
 QString TextFactory::shorten(const QString &input, int text_length_limit) {
   if (input.size() > text_length_limit) {
     return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, '.');

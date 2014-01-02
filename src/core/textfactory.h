@@ -14,7 +14,13 @@ class TextFactory {
   public:
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
+    // NOTE: This method tries to always return time in UTC+00:00.
     static QDateTime parseDateTime(const QString &date_time);
+
+    // Converts 1970-epoch miliseconds to date/time.
+    // NOTE: This method returns date/time in UTC+00:00.
+    // NOTE: On Windows UTC is known to be broken.
+    static QDateTime parseDateTime(qint64 milis_from_epoch);
 
     // Strips "<....>" (HTML, XML) tags from given text.
     static QString stripTags(QString text);
