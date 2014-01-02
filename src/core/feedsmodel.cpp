@@ -426,20 +426,26 @@ QHash<int, FeedsModelCategory*> FeedsModel::getAllCategories() {
   return getCategories(m_rootItem);
 }
 
-// TODO: Rewrite this iterativelly (instead of
-// current recursive implementation).
 QHash<int, FeedsModelCategory*> FeedsModel::getCategories(FeedsModelRootItem *root) {
   QHash<int, FeedsModelCategory*> categories;
+  QList<FeedsModelRootItem*> parents;
 
-  foreach (FeedsModelRootItem *child, root->childItems()) {
-    if (child->kind() == FeedsModelRootItem::Category) {
-      FeedsModelCategory *converted = static_cast<FeedsModelCategory*>(child);
+  parents.append(root->childItems());
 
-      // This child is some kind of category.
-      categories.insert(converted->id(), converted);
+  while (!parents.isEmpty()) {
+    FeedsModelRootItem *item = parents.takeFirst();
 
-      // Moreover, add all child categories of this category.
-      categories.unite(getCategories(converted));
+    if (item->kind() == FeedsModelRootItem::Category) {
+      // This item is category, add it to the output list and
+      // scan its children.
+      int category_id = item->id();
+      FeedsModelCategory *category = static_cast<FeedsModelCategory*>(item);
+
+      if (!categories.contains(category_id)) {
+        categories.insert(category_id, category);
+      }
+
+      parents.append(category->childItems());
     }
   }
 
