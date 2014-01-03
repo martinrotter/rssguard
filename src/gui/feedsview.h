@@ -56,6 +56,8 @@ class FeedsView : public QTreeView {
     // Reloads counts for all feeds.
     void updateCountsOfAllFeeds(bool update_total_too = true);
 
+    void updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too = true);
+
   protected:
     // Initializes context menus.
     void initializeContextMenuCategoriesFeeds();

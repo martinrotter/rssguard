@@ -151,6 +151,16 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   m_sourceModel->reloadWholeLayout();
 }
 
+void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
+                                             bool update_total_too) {
+  QModelIndex index = m_sourceModel->indexForItem(feed);
+
+  if (index.isValid()) {
+    feed->updateCounts(update_total_too);
+    m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
+  }
+}
+
 void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<

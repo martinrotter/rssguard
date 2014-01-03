@@ -120,8 +120,9 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
   // Some feed got updated.
   // TODO: Don't update counts of all feeds here,
   // it is enough to update counts of update feed.
-  // So use indexForItem method from the model.
-  m_feedsView->updateCountsOfAllFeeds(true);
+  // So use indexForItem method from the model. 
+  //m_feedsView->updateCountsOfAllFeeds(true);
+  m_feedsView->updateCountsOfParticularFeed(feed, true);
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {

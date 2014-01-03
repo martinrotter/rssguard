@@ -203,15 +203,16 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
 
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
-    QModelIndex ix = list.takeLast();
+    QModelIndex indx = list.takeLast();
+    QModelIndex indx_parent = indx.parent();
 
     // Underlying data are changed.
-    emit dataChanged(index(ix.row(), 0, ix.parent()),
-                     index(ix.row(), FDS_MODEL_COUNTS_INDEX, ix.parent()));
+    emit dataChanged(index(indx.row(), 0, indx_parent),
+                     index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
 
-    if (ix.parent().isValid()) {
+    if (indx_parent.isValid()) {
       // Make sure that data of parent are changed too.
-      list.append(ix.parent());
+      list.append(indx_parent);
     }
   }
 }
