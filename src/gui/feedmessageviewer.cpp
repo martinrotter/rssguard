@@ -200,6 +200,8 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
   // Add everything to toolbar.
+  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllFeedsRead);
+  m_toolBar->addSeparator();
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories);
   m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionAddNewFeed);
