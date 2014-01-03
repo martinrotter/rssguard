@@ -63,6 +63,9 @@ class WebBrowser : public TabContent {
     // Navigates to message.
     void navigateToMessage(const Message &message);
 
+    // Navigates to messages via "newspaper" view.
+    void navigateToMessages(const QList<Message> &messages);
+
     // Clears contents.
     void clear();
 

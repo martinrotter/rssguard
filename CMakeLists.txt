@@ -153,6 +153,8 @@ endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release"
 
 # Force Qt to use string builders.
 add_definitions(-DQT_USE_QSTRINGBUILDER)
+add_definitions(-DQT_USE_FAST_CONCATENATION)
+add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
 
 # Unicode settings.
 add_definitions(-DUNICODE -D_UNICODE)

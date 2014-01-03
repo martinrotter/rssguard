@@ -182,6 +182,28 @@ void WebBrowser::navigateToMessage(const Message &message) {
                    IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
 }
 
+void WebBrowser::navigateToMessages(const QList<Message> &messages) {
+  QString messages_layout;
+  QString default_message_layout = SkinFactory::getInstance()->getCurrentMarkup();
+
+  foreach (const Message &message, messages) {
+    messages_layout.append(default_message_layout.arg(message.m_title,
+                                                      tr("Written by ") + (message.m_author.isEmpty() ?
+                                                                             tr("uknown author") :
+                                                                             message.m_author),
+                                                      message.m_url,
+                                                      message.m_contents,
+                                                      message.m_created.toString(Qt::DefaultLocaleShortDate)));
+  }
+  QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(tr("Newspaper view"),
+                                                                                    messages_layout);
+
+  m_webView->setHtml(layout_wrapper);
+  emit iconChanged(m_index,
+                   IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
+
+}
+
 void WebBrowser::updateZoomGui() {
   m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100,
                                                              'f',

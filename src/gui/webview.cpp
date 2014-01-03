@@ -107,17 +107,19 @@ void WebView::initializeActions() {
 }
 
 void WebView::displayErrorPage() {
-  setHtml(SkinFactory::getInstance()->getCurrentMarkup().arg(tr("Page not found"),
-                                                             tr("Check your internet connection or website address"),
-                                                             QString(),
-                                                             tr("This failure can be caused by:<br><ul>"
-                                                                "<li>non-functional internet connection,</li>"
-                                                                "<li>incorrect website address,</li>"
-                                                                "<li>bad proxy server settings,</li>"
-                                                                "<li>target destination outage,</li>"
-                                                                "<li>many other things.</li>"
-                                                                "</ul>"),
-                                                             QDateTime::currentDateTime().toString(Qt::DefaultLocaleLongDate)));
+  setHtml(SkinFactory::getInstance()->getCurrentMarkupLayout().arg(
+            tr("Error page"),
+            SkinFactory::getInstance()->getCurrentMarkup().arg(tr("Page not found"),
+                                                               tr("Check your internet connection or website address"),
+                                                               QString(),
+                                                               tr("This failure can be caused by:<br><ul>"
+                                                                  "<li>non-functional internet connection,</li>"
+                                                                  "<li>incorrect website address,</li>"
+                                                                  "<li>bad proxy server settings,</li>"
+                                                                  "<li>target destination outage,</li>"
+                                                                  "<li>many other things.</li>"
+                                                                  "</ul>"),
+                                                               QDateTime::currentDateTime().toString(Qt::DefaultLocaleLongDate))));
 }
 
 void WebView::popupContextMenu(const QPoint &pos) {

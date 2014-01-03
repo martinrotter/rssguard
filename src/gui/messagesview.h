@@ -66,6 +66,8 @@ class MessagesView : public QTreeView {
   signals:
     void openLinkMessageNewTabRequested(const QString &link);
     void openMessageNewTabRequested(const Message &message);
+    void openMessagesInNewspaperViewRequested(const QList<Message> &messages);
+
     void currentMessageChanged(const Message &message);
     void currentMessageRemoved();
 
