@@ -8,10 +8,13 @@
 // přepsat počet nepřečtených zpráv podle screenshotu (tedy smazat asi sloupec "unread")
 // a počet nepřečtených přes drawRow kreslit do prvního sloupce
 // taky použít ten layout pro zobrazení zprávy
+// NEBO pouzit delegaty (QItemDelegate nebo QStyledItemDelegate) - https://qt-project.org/forums/viewthread/24493
 // + NEWSPAPER view -> v currentChanged MessagesView se
-// vytáhnou všechny vybrané zprávy a pro každou se vygeneruje ten HTML templejt
-// - na tohle udelat metodu v WebBrowseru, neco
-// jako navigateToMessages(const QList<Message> &messages)
+// vytáhnou všechny vybrané zprávy, dají se do QList<Message>
+// a bude se emitovat signal ze se maji tyto zpravy zobrazit
+// - na tohle navazat metodu v WebBrowseru, neco
+// jako navigateToMessages(const QList<Message> &messages), mrknout
+// do navigateToMessage
 
 class FeedsModel;
 class FeedsProxyModel;
