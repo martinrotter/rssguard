@@ -103,6 +103,10 @@ QString SkinFactory::getCurrentMarkup() {
   return m_currentSkin.m_layoutMarkup;
 }
 
+QString SkinFactory::getCurrentMarkupLayout() {
+  return m_currentSkin.m_layoutMarkupWrapper;
+}
+
 Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   Skin skin;
   QString styles;
@@ -138,6 +142,10 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
 
   // Obtain version.
   skin.m_version = skin_node.attributes().namedItem("version").toAttr().value();
+
+  // Obtain layout markup wrapper.
+  skin.m_layoutMarkupWrapper = skin_node.namedItem("markup_wrapper").toElement().text();
+  skin.m_layoutMarkupWrapper = QByteArray::fromBase64(skin.m_layoutMarkupWrapper.toLocal8Bit());
 
   // Obtain layout markup.
   skin.m_layoutMarkup = skin_node.namedItem("markup").toElement().text();

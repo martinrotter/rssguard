@@ -15,6 +15,7 @@ struct Skin {
     QString m_email;
     QString m_version;
     QString m_rawData;
+    QString m_layoutMarkupWrapper;
     QString m_layoutMarkup;
 };
 
@@ -47,6 +48,7 @@ class SkinFactory : public QObject {
 
     // Returns contents of current layout markup.
     QString getCurrentMarkup();
+    QString getCurrentMarkupLayout();
 
     // Returns the name of the skin, that should be activated
     // after application restart.
