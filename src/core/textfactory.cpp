@@ -71,8 +71,6 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
           return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
         }
         else {
-          int secs = QTime(0, 0, 0, 0).secsTo(time_zone_offset);
-
           return dt.addSecs(- QTime(0, 0, 0, 0).secsTo(time_zone_offset));
         }
       }
