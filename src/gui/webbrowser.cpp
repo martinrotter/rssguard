@@ -174,7 +174,7 @@ void WebBrowser::navigateToMessage(const Message &message) {
                                                                               message.m_contents,
                                                                               message.m_created.toString(Qt::DefaultLocaleShortDate));
 
-  QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(tr("Newspaper view"),
+  QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(message.m_title,
                                                                                     message_layout);
 
   m_webView->setHtml(layout_wrapper);

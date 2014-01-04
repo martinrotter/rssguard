@@ -15,7 +15,7 @@
 FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
   : QDialog(parent), m_editableCategory(NULL) {
   initialize();
-  loadCategories(model->getAllCategories().values(),
+  loadCategories(model->allCategories().values(),
                  model->rootItem());
 
   setWindowTitle(tr("Add new category"));

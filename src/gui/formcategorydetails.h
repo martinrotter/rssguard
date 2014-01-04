@@ -17,7 +17,7 @@ class FeedsModelRootItem;
 class FormCategoryDetailsAnswer {
   public:
     int m_dialogCode;
-    FeedsModelCategory *m_outputItem;
+    FeedsModelCategory *m_outputCategory;
     FeedsModelRootItem *m_outputParentItem;
 };
 

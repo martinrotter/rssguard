@@ -53,7 +53,7 @@ QList<FeedsModelFeed *> FeedsView::selectedFeeds() const {
 }
 
 QList<FeedsModelFeed *> FeedsView::allFeeds() const {
-  return m_sourceModel->getAllFeeds();
+  return m_sourceModel->allFeeds();
 }
 
 FeedsModelCategory *FeedsView::isCurrentIndexCategory() const {
@@ -131,6 +131,17 @@ void FeedsView::markAllFeedsReadStatus(int read) {
 
 void FeedsView::markAllFeedsRead() {
   markAllFeedsReadStatus(1);
+}
+
+void FeedsView::openSelectedFeedsInNewspaperMode() {
+  // TODO: oznacit vybrane feedy jako prectene zde
+  // protoze je uzivatel otvira v newspaperu -> jsou prectene automaticky
+
+  QList<Message> messages = m_sourceModel->messagesForFeeds(selectedFeeds());
+
+  if (!messages.isEmpty()) {
+    emit newspaperModeRequested(messages);
+  }
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {

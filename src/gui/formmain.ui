@@ -15,16 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
@@ -48,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -102,6 +93,7 @@
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedsCategories"/>
     <addaction name="separator"/>
+    <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkAllFeedsRead"/>
     <addaction name="m_actionMarkFeedsAsRead"/>
     <addaction name="m_actionMarkFeedsAsUnread"/>
@@ -390,6 +382,14 @@
    </property>
    <property name="toolTip">
     <string>Mark all messages in all feeds read. This does not take message filters into account.</string>
+   </property>
+  </action>
+  <action name="m_actionViewSelectedItemsNewspaperMode">
+   <property name="text">
+    <string>View selected items in newspaper mode</string>
+   </property>
+   <property name="toolTip">
+    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab.</string>
    </property>
   </action>
  </widget>

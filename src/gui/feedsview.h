@@ -3,6 +3,8 @@
 
 #include <QTreeView>
 
+#include "core/messagesmodel.h"
+
 
 // TODO: http://soundguyrob.files.wordpress.com/2011/03/screen-shot-2011-03-01-at-7-45-23-pm.jpg
 // přepsat počet nepřečtených zpráv podle screenshotu (tedy smazat asi sloupec "unread")
@@ -54,6 +56,9 @@ class FeedsView : public QTreeView {
     void markAllFeedsReadStatus(int read);
     void markAllFeedsRead();
 
+    // Newspaper accessors.
+    void openSelectedFeedsInNewspaperMode();
+
     // Feed clearers.
     void setSelectedFeedsClearStatus(int clear);
     void clearSelectedFeeds();
@@ -68,6 +73,7 @@ class FeedsView : public QTreeView {
     // Reloads counts for all feeds.
     void updateCountsOfAllFeeds(bool update_total_too = true);
 
+    // Reloads counts for particular feed.
     void updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too = true);
 
   protected:
@@ -91,6 +97,9 @@ class FeedsView : public QTreeView {
 
     // Emitted if user selects new feeds.
     void feedsSelected(const QList<int> &feed_ids);
+
+    // Requests opening of given messages in newspaper mode.
+    void newspaperModeRequested(const QList<Message> &messages);
 
   private:
     QMenu *m_contextMenuCategoriesFeeds;

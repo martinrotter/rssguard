@@ -233,6 +233,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
+  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(IconThemeFactory::getInstance()->fromTheme("document-multiple"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

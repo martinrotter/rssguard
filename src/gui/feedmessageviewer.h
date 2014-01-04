@@ -3,6 +3,8 @@
 
 #include "gui/tabcontent.h"
 
+#include "core/messagesmodel.h"
+
 
 class WebBrowser;
 class FeedsView;
@@ -33,10 +35,12 @@ class FeedMessageViewer : public TabContent {
     void quitDownloader();
 
   public slots:
+    // Feed updates.
     void updateSelectedFeeds();
     void updateAllFeeds();
 
-  protected slots:
+  protected slots:   
+    // Reacts on feed updates.
     void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
     void onFeedUpdatesFinished();
 

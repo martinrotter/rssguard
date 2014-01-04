@@ -181,6 +181,12 @@ int TabWidget::addBrowserWithMessage(const Message &message)  {
   return new_index;
 }
 
+int TabWidget::addBrowserWithMessages(const QList<Message> &messages) {
+  int new_index = addBrowser(false, true);
+  static_cast<WebBrowser*>(widget(new_index))->navigateToMessages(messages);
+  return new_index;
+}
+
 int TabWidget::addEmptyBrowser() {
   return addBrowser(false, true);
 }

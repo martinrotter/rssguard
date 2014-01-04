@@ -4,6 +4,7 @@
 #include "core/databasefactory.h"
 #include "core/feedsmodelstandardcategory.h"
 #include "core/feedsmodelstandardfeed.h"
+#include "core/textfactory.h"
 #include "gui/iconthemefactory.h"
 #include "gui/iconfactory.h"
 
@@ -128,6 +129,37 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 
   return parent_item->childCount();
+}
+
+QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed *> &feeds) {
+  QList<Message> messages;
+
+  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
+  QSqlQuery query_read_msg(database);
+  query_read_msg.setForwardOnly(true);
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents "
+                         "FROM Messages "
+                         "WHERE deleted = 0 AND feed = :feed;");
+
+  foreach (FeedsModelFeed *feed, feeds) {
+    query_read_msg.bindValue(":feed", feed->id());
+
+    if (query_read_msg.exec()) {
+      while (query_read_msg.next()) {
+        Message message;
+
+        message.m_title = query_read_msg.value(0).toString();
+        message.m_url = query_read_msg.value(1).toString();
+        message.m_author = query_read_msg.value(2).toString();
+        message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
+        message.m_contents = query_read_msg.value(4).toString();
+
+        messages.append(message);
+      }
+    }
+  }
+
+  return messages;
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
@@ -316,7 +348,7 @@ void FeedsModel::loadFromDatabase() {
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
   FeedsModelRootItem *item = itemForIndex(index);
-  return getFeeds(item);
+  return feedsForItem(item);
 }
 
 FeedsModelFeed *FeedsModel::feedForIndex(const QModelIndex &index) {
@@ -423,11 +455,11 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
   }
 }
 
-QHash<int, FeedsModelCategory*> FeedsModel::getAllCategories() {
-  return getCategories(m_rootItem);
+QHash<int, FeedsModelCategory*> FeedsModel::allCategories() {
+  return categoriesForItem(m_rootItem);
 }
 
-QHash<int, FeedsModelCategory*> FeedsModel::getCategories(FeedsModelRootItem *root) {
+QHash<int, FeedsModelCategory*> FeedsModel::categoriesForItem(FeedsModelRootItem *root) {
   QHash<int, FeedsModelCategory*> categories;
   QList<FeedsModelRootItem*> parents;
 
@@ -453,11 +485,11 @@ QHash<int, FeedsModelCategory*> FeedsModel::getCategories(FeedsModelRootItem *ro
   return categories;
 }
 
-QList<FeedsModelFeed*> FeedsModel::getAllFeeds() {
-  return getFeeds(m_rootItem);
+QList<FeedsModelFeed*> FeedsModel::allFeeds() {
+  return feedsForItem(m_rootItem);
 }
 
-QList<FeedsModelFeed*> FeedsModel::getFeeds(FeedsModelRootItem *root) {
+QList<FeedsModelFeed*> FeedsModel::feedsForItem(FeedsModelRootItem *root) {
   QList<FeedsModelFeed*> feeds;
 
   if (root->kind() == FeedsModelRootItem::Feed) {
@@ -491,7 +523,7 @@ QList<FeedsModelFeed*> FeedsModel::getFeeds(FeedsModelRootItem *root) {
 }
 
 void FeedsModel::assembleFeeds(FeedAssignment feeds) {
-  QHash<int, FeedsModelCategory*> categories = getAllCategories();
+  QHash<int, FeedsModelCategory*> categories = allCategories();
 
   foreach (const FeedAssignmentItem &feed, feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
