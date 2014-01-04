@@ -151,7 +151,7 @@ void WebBrowser::onTitleChanged(const QString &new_title) {
   }
 }
 
-void WebBrowser::updateUrl(const QUrl &url) {
+void WebBrowser::updateUrl(const QUrl &url) { 
   m_txtLocation->setText(url.toString());
 }
 

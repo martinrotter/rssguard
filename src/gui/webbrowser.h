@@ -25,7 +25,7 @@ class WebBrowser : public TabContent {
   public:
     // Constructors and destructors.
     explicit WebBrowser(QWidget *parent = 0);
-    ~WebBrowser();
+    virtual ~WebBrowser();
 
     // Reloads icons for all buttons.
     void setupIcons();
@@ -60,7 +60,7 @@ class WebBrowser : public TabContent {
     void navigateToUrl(const QString &url);
     void navigateToUrl(const QUrl &url);
 
-    // Navigates to message.
+    // Navigates to single message.
     void navigateToMessage(const Message &message);
 
     // Navigates to messages via "newspaper" view.

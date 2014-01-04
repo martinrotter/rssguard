@@ -14,6 +14,9 @@ class WebPage : public QWebPage {
 
   protected:
     QWebPage *createWindow(WebWindowType type);
+    bool acceptNavigationRequest(QWebFrame *frame,
+                                 const QNetworkRequest &request,
+                                 NavigationType type);
 };
 
 #endif // BASEWEBPAGE_H

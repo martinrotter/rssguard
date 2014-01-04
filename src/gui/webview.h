@@ -35,7 +35,6 @@ class WebView : public QWebView {
     bool decreaseWebPageZoom();
     bool resetWebPageZoom();
 
-  protected slots:
     // Executes if loading of any page is done.
     void onLoadFinished(bool ok);
 

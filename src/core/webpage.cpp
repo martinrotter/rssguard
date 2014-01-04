@@ -17,6 +17,19 @@ WebPage::WebPage(QObject *parent)
 WebPage::~WebPage() {
 }
 
+bool WebPage::acceptNavigationRequest(QWebFrame *frame,
+                                      const QNetworkRequest &request,
+                                      QWebPage::NavigationType type) {
+  if (type == QWebPage::NavigationTypeLinkClicked &&
+      frame == mainFrame()) {
+    // Make sure that appropriate signal is emitted even if
+    // no delegation is enabled.
+    emit linkClicked(request.url());
+  }
+
+  return QWebPage::acceptNavigationRequest(frame, request, type);
+}
+
 QWebPage *WebPage::createWindow(WebWindowType type) {
   return QWebPage::createWindow(type);
 }
