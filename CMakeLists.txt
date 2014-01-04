@@ -153,8 +153,6 @@ endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release"
 
 # Force Qt to use string builders.
 add_definitions(-DQT_USE_QSTRINGBUILDER)
-add_definitions(-DQT_USE_FAST_CONCATENATION)
-add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
 
 # Unicode settings.
 add_definitions(-DUNICODE -D_UNICODE)
@@ -187,6 +185,21 @@ else(${USE_QT_5})
   set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
   find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
   include(${QT_USE_FILE})
+endif(${USE_QT_5})
+
+# Configure QStringBuilder behavior.
+if(${USE_QT_5})
+  message(STATUS "[${APP_LOW_NAME}] Enabling fast QString concatenation.")
+
+  add_definitions(-DQT_USE_FAST_CONCATENATION)
+  add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
+elseif(NOT ${QTVERSION} VERSION_LESS 4.8.0)
+  message(STATUS "[${APP_LOW_NAME}] Enabling fast QString concatenation.")
+
+  add_definitions(-DQT_USE_FAST_CONCATENATION)
+  add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
+else(NOT ${QTVERSION} VERSION_LESS 4.8.0)
+  message(STATUS "[${APP_LOW_NAME}] Disabling fast QString concatenation.")
 endif(${USE_QT_5})
 
 # Configure executable "properties" for Windows or OS2.
