@@ -69,12 +69,15 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
   //
   // "##" is placeholder for the actual path to skin file. This is needed for using
   // images within the QSS file.
+  // So if one uses "##/images/border.png" in QSS then it is
+  // replaced by fully absolute path and target file can
+  // be safely loaded.
   QString raw_data = skin.m_rawData;
 
   if (!raw_data.isEmpty()) {
     QString parsed_data = raw_data.replace("##",
                                            APP_SKIN_PATH + '/' +
-                                           skin_folder + "/images");
+                                           skin_folder);
     qApp->setStyleSheet(parsed_data);
   }
 
