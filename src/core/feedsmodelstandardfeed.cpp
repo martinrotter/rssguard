@@ -22,10 +22,6 @@ FeedsModelStandardFeed::~FeedsModelStandardFeed() {
   qDebug("Destroying FeedsModelStandardFeed instance.");
 }
 
-void FeedsModelStandardFeed::setDescription(const QString &description) {
-  m_description = description;
-}
-
 FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord &record) {
   FeedsModelStandardFeed *feed = new FeedsModelStandardFeed(NULL);
 
@@ -40,14 +36,6 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   feed->updateCounts();
 
   return feed;
-}
-
-QDateTime FeedsModelStandardFeed::creationDate() const {
-  return m_creationDate;
-}
-
-void FeedsModelStandardFeed::setCreationDate(const QDateTime &creation_date) {
-  m_creationDate = creation_date;
 }
 
 QString FeedsModelStandardFeed::encoding() const {
@@ -72,10 +60,6 @@ QString FeedsModelStandardFeed::language() const {
 
 void FeedsModelStandardFeed::setLanguage(const QString &language) {
   m_language = language;
-}
-
-QString FeedsModelStandardFeed::description() const {
-  return m_description;
 }
 
 QVariant FeedsModelStandardFeed::data(int column, int role) const {
@@ -114,13 +98,12 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return QObject::tr("%1\n\n"
-                           "Feed type: %2\n"
-                           "URL: %3\n"
+        return QObject::tr("%1 (%2)\n"
+                           "%3\n\n"
                            "Encoding: %4\n"
                            "Language: %5").arg(m_title,
                                                FeedsModelFeed::typeToString(m_type),
-                                               m_url,
+                                               m_description,
                                                m_encoding,
                                                m_language.isEmpty() ?
                                                  "-" :
@@ -206,7 +189,7 @@ void FeedsModelStandardFeed::update() {
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id(), message_id;
   qint64 message_creation_date;
-  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelStandardFeed");
+  QSqlDatabase database = DatabaseFactory::getInstance()->connection("FeedsModelStandardFeed");
 
   // Prepare queries.
   QSqlQuery query_select(database);

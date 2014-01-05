@@ -3,6 +3,8 @@
 
 #include <QIcon>
 
+#include <QDateTime>
+
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
@@ -49,6 +51,12 @@ class FeedsModelRootItem {
     QString title() const;
     void setTitle(const QString &title);
 
+    QDateTime creationDate() const;
+    void setCreationDate(const QDateTime &creation_date);
+
+    QString description() const;
+    void setDescription(const QString &description);
+
     // Access to children.
     QList<FeedsModelRootItem *> childItems() const;
 
@@ -64,6 +72,8 @@ class FeedsModelRootItem {
     QString m_title;
     int m_id;
     QIcon m_icon;
+    QDateTime m_creationDate;
+    QString m_description;
     QList<FeedsModelRootItem*> m_childItems;
     FeedsModelRootItem *m_parentItem;
 };

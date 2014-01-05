@@ -5,13 +5,9 @@
 
 
 class Debugging {
-  private:
-    explicit Debugging();
-
   public:
     // Specifies format of output console messages.
-    // Macros:
-    //    QT_NO_DEBUG_OUTPUT - disables debug outputs completely!!!
+    // NOTE: QT_NO_DEBUG_OUTPUT - disables debug outputs completely!!!
 #if QT_VERSION >= 0x050000
     static void debugHandler(QtMsgType type,
                              const QMessageLogContext &placement,
@@ -20,6 +16,10 @@ class Debugging {
     static void debugHandler(QtMsgType type,
                              const char *message);
 #endif
+
+  private:
+    // Constructor.
+    explicit Debugging();
 };
 
 #endif // DEBUGGING_H

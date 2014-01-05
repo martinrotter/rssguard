@@ -25,12 +25,6 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     void update();
 
     // Various getters/setters.
-    QString description() const;
-    void setDescription(const QString &description);
-
-    QDateTime creationDate() const;
-    void setCreationDate(const QDateTime &creation_date);
-
     QString encoding() const;
     void setEncoding(const QString &encoding);
 
@@ -50,10 +44,8 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     void updateMessages(const QList<Message>  &messages);
 
   private:
-    QDateTime m_creationDate;
     QString m_encoding;
     QString m_url;
-    QString m_description;
     QString m_language;
 };
 

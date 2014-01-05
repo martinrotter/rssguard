@@ -23,6 +23,7 @@
 #define APP_VERSION         "@APP_VERSION@"
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
 
+#define USER_AGENT_HTTP_HEADER      "User-Agent"
 #define TEXT_TITLE_LIMIT            30
 #define MAX_ZOOM_FACTOR             10.0
 #define ICON_SIZE_SETTINGS          16

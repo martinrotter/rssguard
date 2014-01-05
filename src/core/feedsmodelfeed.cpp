@@ -25,16 +25,8 @@ int FeedsModelFeed::countOfAllMessages() const {
   return m_totalCount;
 }
 
-void FeedsModelFeed::setCountOfAllMessages(int count) {
-  m_totalCount = count;
-}
-
 int FeedsModelFeed::countOfUnreadMessages() const {
   return m_unreadCount;
-}
-
-void FeedsModelFeed::setCountOfUnreadMessages(int count) {
-  m_unreadCount = count;
 }
 
 void FeedsModelFeed::update() {
@@ -66,7 +58,7 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
 }
 
 void FeedsModelFeed::updateCounts(bool including_total_count) {
-  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection("FeedsModelFeed");
+  QSqlDatabase database = DatabaseFactory::getInstance()->connection("FeedsModelFeed");
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 

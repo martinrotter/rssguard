@@ -7,9 +7,6 @@
 class QAction;
 
 class DynamicShortcuts {
-  private:
-    explicit DynamicShortcuts();
-
   public:
     // Checks the application settings and then initializes shortcut of
     // each action from actions from the settings.
@@ -18,6 +15,10 @@ class DynamicShortcuts {
     // Stores shortcut of each action from actions into the application
     // settings.
     static void save(const QList<QAction*> actions);
+
+  private:
+    // Constructor.
+    explicit DynamicShortcuts();
 };
 
 #endif // DYNAMICSHORTCUTS_H

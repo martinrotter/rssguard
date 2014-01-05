@@ -3,8 +3,6 @@
 
 #include "core/feedsmodelrootitem.h"
 
-#include <QDateTime>
-
 
 class FeedsModelFeed;
 
@@ -36,16 +34,8 @@ class FeedsModelCategory : public FeedsModelRootItem {
     Type type() const;
     void setType(const Type &type);
 
-    QString description() const;
-    void setDescription(const QString &description);
-
-    QDateTime creationDate() const;
-    void setCreationDate(const QDateTime &creation_date);
-
   protected:
     Type m_type;
-    QDateTime m_creationDate;
-    QString m_description;
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

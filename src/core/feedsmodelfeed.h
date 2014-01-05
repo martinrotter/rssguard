@@ -28,10 +28,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // NOTE: For feeds, counts are stored internally
     // and can be updated from the database.
     int countOfAllMessages() const;
-    void setCountOfAllMessages(int count);
-
     int countOfUnreadMessages() const;
-    void setCountOfUnreadMessages(int count);
 
     // Each feed can be "updated".
     // NOTE: This method is used in the "update worker".

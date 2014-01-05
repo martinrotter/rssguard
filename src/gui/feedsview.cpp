@@ -134,18 +134,10 @@ void FeedsView::markAllFeedsRead() {
 }
 
 void FeedsView::openSelectedFeedsInNewspaperMode() {
-  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
-  QList<Message> messages = m_sourceModel->messagesForFeeds(selected_feeds);
+  QList<Message> messages = m_sourceModel->messagesForFeeds(selectedFeeds());
 
   if (!messages.isEmpty()) {
     emit newspaperModeRequested(messages);
-
-    // Moreover, mark those feeds as read because they were opened in
-    // newspaper mode, thus, they are read.
-    m_sourceModel->markFeedsRead(selected_feeds, 1);
-    updateCountsOfAllFeeds(false);
-
-    emit feedsNeedToBeReloaded(1);
   }
 }
 

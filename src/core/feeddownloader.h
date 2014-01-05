@@ -20,6 +20,9 @@ class FeedDownloader : public QObject {
     virtual ~FeedDownloader();
 
   signals:
+    // Emitted if feed updates started.
+    void started();
+
     // Emitted if all items from update queue are
     // processed.
     void finished();

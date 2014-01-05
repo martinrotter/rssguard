@@ -129,7 +129,7 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
   return database;
 }
 
-QSqlDatabase DatabaseFactory::addConnection(const QString &connection_name) {
+QSqlDatabase DatabaseFactory::connection(const QString &connection_name) {
   if (!m_initialized) {
     m_initialized = true;
     return initialize(connection_name);

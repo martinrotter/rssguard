@@ -134,7 +134,7 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed *> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
+  QSqlDatabase database = DatabaseFactory::getInstance()->connection(objectName());
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -274,7 +274,7 @@ void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChilds();
 
-  QSqlDatabase database = DatabaseFactory::getInstance()->addConnection(objectName());
+  QSqlDatabase database = DatabaseFactory::getInstance()->connection(objectName());
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -385,7 +385,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
 
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
                                int read) {
-  QSqlDatabase db_handle = DatabaseFactory::getInstance()->addConnection(objectName());
+  QSqlDatabase db_handle = DatabaseFactory::getInstance()->connection(objectName());
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -421,7 +421,7 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
 
 bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
                                   int deleted) {
-  QSqlDatabase db_handle = DatabaseFactory::getInstance()->addConnection(objectName());
+  QSqlDatabase db_handle = DatabaseFactory::getInstance()->connection(objectName());
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds clearing.");

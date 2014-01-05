@@ -111,7 +111,6 @@ class FeedsModel : public QAbstractItemModel {
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;
-
 };
 
 #endif // FEEDSMODEL_H

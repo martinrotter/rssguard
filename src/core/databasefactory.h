@@ -9,6 +9,22 @@
 class DatabaseFactory : public QObject {
     Q_OBJECT
 
+  public:
+    // Destructor.
+    virtual ~DatabaseFactory();
+
+    // Returns absolute file path to database file.
+    QString getDatabasePath();
+
+    // NOTE: This always returns OPENED database.
+    QSqlDatabase connection(const QString &connection_name);
+
+    // Removes connection.
+    void removeConnection(const QString &connection_name);
+
+    // Singleton getter.
+    static DatabaseFactory *getInstance();
+
   private:
     // Conctructor.
     explicit DatabaseFactory(QObject *parent = 0);
@@ -28,22 +44,6 @@ class DatabaseFactory : public QObject {
 
     // Private singleton value.
     static QPointer<DatabaseFactory> s_instance;
-
-  public:
-    // Destructor.
-    virtual ~DatabaseFactory();
-
-    // Returns absolute file path to database file.
-    QString getDatabasePath();
-
-    // NOTE: This returns OPENED database.
-    QSqlDatabase addConnection(const QString &connection_name);
-
-    // Removes connection.
-    void removeConnection(const QString &connection_name);
-
-    // Singleton getter.
-    static DatabaseFactory *getInstance();
 };
 
 #endif // DATABASEFACTORY_H

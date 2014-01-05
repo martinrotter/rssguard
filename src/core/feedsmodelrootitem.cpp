@@ -103,6 +103,25 @@ void FeedsModelRootItem::clearChilds() {
   m_childItems.clear();
 }
 
+
+
+QDateTime FeedsModelRootItem::creationDate() const {
+  return m_creationDate;
+}
+
+void FeedsModelRootItem::setCreationDate(const QDateTime &creation_date) {
+  m_creationDate = creation_date;
+}
+
+QString FeedsModelRootItem::description() const {
+  return m_description;
+}
+
+void FeedsModelRootItem::setDescription(const QString &description) {
+  m_description = description;
+}
+
+
 bool FeedsModelRootItem::isEqual(FeedsModelRootItem *lhs,
                                  FeedsModelRootItem *rhs) {
   return (lhs->kind() == rhs->kind()) && (lhs->id() == rhs->id());

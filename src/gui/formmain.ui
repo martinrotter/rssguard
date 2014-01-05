@@ -298,7 +298,7 @@
     <string>Mark &amp;selected items read</string>
    </property>
    <property name="toolTip">
-    <string>Marks all messages (without message filters) from selected feeds as read.</string>
+    <string>Mark all messages (without message filters) from selected feeds as read.</string>
    </property>
   </action>
   <action name="m_actionMarkFeedsAsUnread">
@@ -306,7 +306,7 @@
     <string>Mark selected items unread</string>
    </property>
    <property name="toolTip">
-    <string>Marks all messages (without message filters) from selected feeds as unread.</string>
+    <string>Mark all messages (without message filters) from selected feeds as unread.</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
@@ -322,7 +322,7 @@
     <string>Clear selected items</string>
    </property>
    <property name="toolTip">
-    <string>Removes all messages from selected feeds.</string>
+    <string>Remove all messages from selected feeds.</string>
    </property>
   </action>
   <action name="m_actionAddNewFeed">
@@ -398,7 +398,7 @@
     <string>View selected items in newspaper mode</string>
    </property>
    <property name="toolTip">
-    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</string>
+    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
    </property>
   </action>
  </widget>
