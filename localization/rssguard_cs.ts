@@ -355,7 +355,7 @@
     </message>
     <message>
         <source>Fee&amp;ds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály &amp;&amp; ka&amp;tegorie</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
@@ -1066,7 +1066,7 @@ Jazyk: %5</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"></translation>
+        <translation>Novinový náhled</translation>
     </message>
 </context>
 <context>
@@ -1153,7 +1153,7 @@ Jazyk: %5</translation>
     </message>
     <message>
         <source>Error page</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
 </context>
 </TS>
