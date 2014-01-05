@@ -16,6 +16,8 @@ class WebView : public QWebView {
     explicit WebView(QWidget *parent = 0);
     virtual ~WebView();
 
+    WebPage *page() const;
+
     void setupIcons();
 
   signals:

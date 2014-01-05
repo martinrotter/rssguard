@@ -389,6 +389,14 @@
         <source>Mark all messages in all feeds read. This does not take message filters into account.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>View selected items in newspaper mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1053,6 +1061,10 @@ Taal: %5</translation>
         <source>uknown author</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Newspaper view</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WebView</name>
@@ -1135,6 +1147,10 @@ Taal: %5</translation>
     <message>
         <source>Hyperlink</source>
         <translation type="unfinished">Koppeling</translation>
+    </message>
+    <message>
+        <source>Error page</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

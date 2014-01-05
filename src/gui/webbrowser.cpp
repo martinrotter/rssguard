@@ -166,25 +166,13 @@ void WebBrowser::clear() {
 }
 
 void WebBrowser::navigateToMessage(const Message &message) {
-  QString message_layout = SkinFactory::getInstance()->getCurrentMarkup().arg(message.m_title,
-                                                                              tr("Written by ") + (message.m_author.isEmpty() ?
-                                                                                                     tr("uknown author") :
-                                                                                                     message.m_author),
-                                                                              message.m_url,
-                                                                              message.m_contents,
-                                                                              message.m_created.toString(Qt::DefaultLocaleShortDate));
-
-  QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(message.m_title,
-                                                                                    message_layout);
-
-  m_webView->setHtml(layout_wrapper, QUrl(NEWSPAPER_URL));
-  emit iconChanged(m_index,
-                   IconThemeFactory::getInstance()->fromTheme("document-multiple"));
+  navigateToMessages(QList<Message>() << message);
 }
 
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
+  SkinFactory *factory = SkinFactory::getInstance();
   QString messages_layout;
-  QString default_message_layout = SkinFactory::getInstance()->getCurrentMarkup();
+  QString default_message_layout = factory->getCurrentMarkup();
 
   foreach (const Message &message, messages) {
     messages_layout.append(default_message_layout.arg(message.m_title,
@@ -195,13 +183,15 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
                                                       message.m_contents,
                                                       message.m_created.toString(Qt::DefaultLocaleShortDate)));
   }
-  QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(tr("Newspaper view"),
-                                                                                    messages_layout);
 
-  m_webView->setHtml(layout_wrapper, QUrl(NEWSPAPER_URL));
+  QString layout_wrapper = factory->getCurrentMarkupLayout().arg(messages.size() == 1 ?
+                                                                   messages.at(0).m_title :
+                                                                   tr("Newspaper view"),
+                                                                 messages_layout);
+
+  m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
   emit iconChanged(m_index,
                    IconThemeFactory::getInstance()->fromTheme("document-multiple"));
-
 }
 
 void WebBrowser::updateZoomGui() {
