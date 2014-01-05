@@ -60,10 +60,7 @@ class WebBrowser : public TabContent {
     void navigateToUrl(const QString &url);
     void navigateToUrl(const QUrl &url);
 
-    // Navigates to single message.
-    void navigateToMessage(const Message &message);
-
-    // Navigates to messages via "newspaper" view.
+    // Navigates to messages, used also as "newspaper" view.
     void navigateToMessages(const QList<Message> &messages);
 
     // Clears contents.
@@ -111,6 +108,8 @@ class WebBrowser : public TabContent {
     QAction *m_actionForward;
     QAction *m_actionReload;
     QAction *m_actionStop;
+
+    bool m_activeNewspaperMode;
 
     static QPointer<WebBrowserNetworkAccessManager> m_networkManager;
     static QList<WebBrowser*> m_runningWebBrowsers;

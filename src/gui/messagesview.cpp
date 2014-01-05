@@ -84,7 +84,7 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
     // be selected and no message can be displayed.
     // TOTO: Check if this is OKAY. If not, then emit this signal
     // from FeedsView itself.
-    emit currentMessageRemoved();
+    emit currentMessagesRemoved();
   }
 }
 
@@ -205,10 +205,11 @@ void MessagesView::currentChanged(const QModelIndex &current,
       m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
     }
 
-    emit currentMessageChanged(m_sourceModel->messageAt(mapped_current_index.row()));
+    emit currentMessagesChanged(QList<Message>() <<
+                                m_sourceModel->messageAt(mapped_current_index.row()));
   }
   else {
-    emit currentMessageRemoved();
+    emit currentMessagesRemoved();
   }
 
   QTreeView::currentChanged(current, previous);
@@ -222,7 +223,7 @@ void MessagesView::loadFeeds(const QList<int> &feed_ids) {
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
-  emit currentMessageRemoved();
+  emit currentMessagesRemoved();
 }
 
 void MessagesView::openSelectedSourceArticlesExternally() {
@@ -256,15 +257,19 @@ void MessagesView::openSelectedSourceMessagesInternally() {
                            tr("Message '%s' does not contain URL.").arg(message.m_title));
     }
     else {
-      emit openLinkMessageNewTabRequested(message.m_url);
+      emit openLinkNewTab(message.m_url);
     }
   }
 }
 
 void MessagesView::openSelectedMessagesInternally() {
+  QList<Message> messages;
+
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
-    emit openMessageNewTabRequested(m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()));
+    messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
   }
+
+  emit openMessagesInNewspaperView(messages);
 }
 
 void MessagesView::markSelectedMessagesRead() {
@@ -324,7 +329,7 @@ void MessagesView::deleteSelectedMessages() {
     reselectIndexes(QModelIndexList() << last_item);
   }
   else {
-    emit currentMessageRemoved();
+    emit currentMessagesRemoved();
   }
 }
 

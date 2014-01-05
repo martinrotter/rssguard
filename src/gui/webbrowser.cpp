@@ -35,7 +35,8 @@ WebBrowser::WebBrowser(QWidget *parent)
     m_actionBack(m_webView->pageAction(QWebPage::Back)),
     m_actionForward(m_webView->pageAction(QWebPage::Forward)),
     m_actionReload(m_webView->pageAction(QWebPage::Reload)),
-    m_actionStop(m_webView->pageAction(QWebPage::Stop)) {
+    m_actionStop(m_webView->pageAction(QWebPage::Stop)),
+    m_activeNewspaperMode(false) {
 
   m_index = -1;
 
@@ -163,10 +164,6 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
 
 void WebBrowser::clear() {
   m_webView->load(QUrl());
-}
-
-void WebBrowser::navigateToMessage(const Message &message) {
-  navigateToMessages(QList<Message>() << message);
 }
 
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {

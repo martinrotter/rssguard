@@ -78,7 +78,6 @@ class TabWidget : public QTabWidget {
     void closeAllTabsExceptCurrent();
 
     // Open single or multiple (newspaper mode) messages in new tab.
-    int addBrowserWithMessage(const Message &message);
     int addBrowserWithMessages(const QList<Message> &messages);
 
     // Adds new WebBrowser tab to global TabWidget.

@@ -132,13 +132,13 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
 
 void FeedMessageViewer::createConnections() {
   // General connections.
-  connect(m_messagesView, SIGNAL(currentMessageRemoved()),
+  connect(m_messagesView, SIGNAL(currentMessagesRemoved()),
           m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessageChanged(Message)),
-          m_messagesBrowser, SLOT(navigateToMessage(Message)));
-  connect(m_messagesView, SIGNAL(openMessageNewTabRequested(Message)),
+  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)),
+          m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           FormMain::getInstance()->m_ui->m_tabWidget,
-          SLOT(addBrowserWithMessage(Message)));
+          SLOT(addBrowserWithMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(openLinkMessageNewTabRequested(QString)),
           FormMain::getInstance()->m_ui->m_tabWidget,
           SLOT(addLinkedBrowser(QString)));

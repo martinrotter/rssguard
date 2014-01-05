@@ -64,12 +64,12 @@ class MessagesView : public QTreeView {
                         const QModelIndex &previous);
 
   signals:
-    void openLinkMessageNewTabRequested(const QString &link);
-    void openMessageNewTabRequested(const Message &message);
-    void openMessagesInNewspaperViewRequested(const QList<Message> &messages);
+    void openLinkNewTab(const QString &link);
+    void openMessagesInNewspaperView(const QList<Message> &messages);
 
-    void currentMessageChanged(const Message &message);
-    void currentMessageRemoved();
+    // Notify others about message selections.
+    void currentMessagesChanged(const QList<Message> &messages);
+    void currentMessagesRemoved();
 
     // Emitted if counts of unread/total messages has changed
     // because of user interaction with list of messages.

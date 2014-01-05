@@ -16,6 +16,7 @@ class WebView : public QWebView {
     explicit WebView(QWidget *parent = 0);
     virtual ~WebView();
 
+    // Page accessor.
     WebPage *page() const;
 
     void setupIcons();
