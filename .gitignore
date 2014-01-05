@@ -21,4 +21,4 @@
 *.app
 
 # Other files.
-*.user
+*.user*

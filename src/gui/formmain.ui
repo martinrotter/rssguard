@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -389,7 +398,7 @@
     <string>View selected items in newspaper mode</string>
    </property>
    <property name="toolTip">
-    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab.</string>
+    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</string>
    </property>
   </action>
  </widget>

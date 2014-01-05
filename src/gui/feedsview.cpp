@@ -185,6 +185,7 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
                                            FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories <<
+                                           FormMain::getInstance()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                            FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead <<
                                            FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
 }

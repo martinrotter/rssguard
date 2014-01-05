@@ -34,6 +34,7 @@
 #define DOWNLOAD_TIMEOUT          5000
 #define MESSAGES_VIEW_DEFAULT_COL 170
 #define ELLIPSIS_LENGTH           3
+#define NEWSPAPER_URL             "rssguard:newspaper"
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"

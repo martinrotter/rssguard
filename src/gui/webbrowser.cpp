@@ -177,9 +177,9 @@ void WebBrowser::navigateToMessage(const Message &message) {
   QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(message.m_title,
                                                                                     message_layout);
 
-  m_webView->setHtml(layout_wrapper);
+  m_webView->setHtml(layout_wrapper, QUrl(NEWSPAPER_URL));
   emit iconChanged(m_index,
-                   IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
+                   IconThemeFactory::getInstance()->fromTheme("document-multiple"));
 }
 
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
@@ -198,9 +198,9 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
   QString layout_wrapper = SkinFactory::getInstance()->getCurrentMarkupLayout().arg(tr("Newspaper view"),
                                                                                     messages_layout);
 
-  m_webView->setHtml(layout_wrapper);
+  m_webView->setHtml(layout_wrapper, QUrl(NEWSPAPER_URL));
   emit iconChanged(m_index,
-                   IconThemeFactory::getInstance()->fromTheme("mail-mark-read"));
+                   IconThemeFactory::getInstance()->fromTheme("document-multiple"));
 
 }
 
