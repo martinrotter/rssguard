@@ -31,6 +31,9 @@ class TextFactory {
     static QString escapeHtml(const QString &html);
     static QString deEscapeHtrml(const QString &text);
 
+    static QMap<QString, QString> generetaEscapes();
+    static QMap<QString, QString> generateDeescapes();
+
     // Shortens input string according to given length limit.
     static QString shorten(const QString &input, int text_length_limit = TEXT_TITLE_LIMIT);
 };

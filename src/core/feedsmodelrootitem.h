@@ -69,11 +69,12 @@ class FeedsModelRootItem {
 
   protected:
     Kind m_kind;
-    QString m_title;
     int m_id;
+    QString m_title;
+    QString m_description;
     QIcon m_icon;
     QDateTime m_creationDate;
-    QString m_description;
+
     QList<FeedsModelRootItem*> m_childItems;
     FeedsModelRootItem *m_parentItem;
 };

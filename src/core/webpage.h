@@ -13,7 +13,6 @@ class WebPage : public QWebPage {
     virtual ~WebPage();
 
   protected:
-    QWebPage *createWindow(WebWindowType type);
     bool acceptNavigationRequest(QWebFrame *frame,
                                  const QNetworkRequest &request,
                                  NavigationType type);

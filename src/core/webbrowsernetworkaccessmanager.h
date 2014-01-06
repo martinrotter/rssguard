@@ -12,6 +12,9 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     // Constructors and destructors.
     explicit WebBrowserNetworkAccessManager(QObject *parent = 0);
     virtual ~WebBrowserNetworkAccessManager();
+
+  protected slots:
+    void onSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
 };
 
 #endif // WEBBROWSERNETWORKACCESSMANAGER_H

@@ -103,6 +103,32 @@ QString TextFactory::stripTags(QString text) {
 }
 
 QString TextFactory::escapeHtml(const QString &html) {
+  static QMap<QString, QString> escape_sequences = generetaEscapes();
+
+  QList<QString> keys = escape_sequences.uniqueKeys();
+  QString output = html;
+
+  foreach (const QString &key, keys) {
+    output.replace(key, escape_sequences.value(key));
+  }
+
+  return output;
+}
+
+QString TextFactory::deEscapeHtrml(const QString &text) {
+  static QMap<QString, QString> deescape_sequences = generateDeescapes();
+
+  QList<QString> keys = deescape_sequences.uniqueKeys();
+  QString output = text;
+
+  foreach (const QString &key, keys) {
+    output.replace(key, deescape_sequences.value(key));
+  }
+
+  return output;
+}
+
+QMap<QString, QString> TextFactory::generetaEscapes() {
   QMap<QString, QString> sequences;
 
   sequences["&lt;"]     = '<';
@@ -114,17 +140,10 @@ QString TextFactory::escapeHtml(const QString &html) {
   sequences["&times;"]	= "×";
   sequences["&#039;"]   = '\'';
 
-  QList<QString> keys = sequences.uniqueKeys();
-  QString output = html;
-
-  foreach (const QString &key, keys) {
-    output.replace(key, sequences.value(key));
-  }
-
-  return output;
+  return sequences;
 }
 
-QString TextFactory::deEscapeHtrml(const QString &text) {
+QMap<QString, QString> TextFactory::generateDeescapes() {
   QMap<QString, QString> sequences;
 
   sequences["<"]	= "&lt;";
@@ -135,12 +154,5 @@ QString TextFactory::deEscapeHtrml(const QString &text) {
   sequences["×"]	= "&times;";
   sequences["\'"] = "&#039;";
 
-  QList<QString> keys = sequences.uniqueKeys();
-  QString output = text;
-
-  foreach (const QString &key, keys) {
-    output.replace(key, sequences.value(key));
-  }
-
-  return output;
+  return sequences;
 }

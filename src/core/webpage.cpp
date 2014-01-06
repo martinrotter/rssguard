@@ -29,7 +29,3 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame,
 
   return QWebPage::acceptNavigationRequest(frame, request, type);
 }
-
-QWebPage *WebPage::createWindow(WebWindowType type) {
-  return QWebPage::createWindow(type);
-}

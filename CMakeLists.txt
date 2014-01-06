@@ -402,10 +402,10 @@ if(${USE_QT_5})
   
   # Load translations.
   if(Qt5LinguistTools_FOUND)
-    message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools found. Translations will get refreshed.")
+    message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools found. Translations will get compiled.")
     qt5_add_translation(APP_QM ${APP_TRANSLATIONS})
   else(Qt5LinguistTools_FOUND)
-    message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools NOT found. No refreshing for translations.")
+    message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools NOT found. No compilation for translations.")
   endif(Qt5LinguistTools_FOUND)
 else(${USE_QT_5})
   qt4_wrap_cpp(APP_MOC ${APP_HEADERS})

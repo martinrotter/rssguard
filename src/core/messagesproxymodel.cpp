@@ -26,8 +26,8 @@ MessagesModel *MessagesProxyModel::sourceModel() {
 }
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
-  // TODO: mozna pouzit QString::localeAwareCompare tady
-  // pro title a author.
+  // TODO: Maybe use QString::localeAwareCompare() here for
+  // title at least, but this will be probably little slower.
   return QSortFilterProxyModel::lessThan(left, right);
 }
 
@@ -36,6 +36,7 @@ QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &ind
 
   foreach (const QModelIndex &index, indexes) {
     if (deep) {
+      // Construct new source index.
       mapped_indexes << mapFromSource(m_sourceModel->index(index.row(), index.column()));
     }
     else {
