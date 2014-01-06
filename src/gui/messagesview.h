@@ -22,6 +22,7 @@ class MessagesView : public QTreeView {
     MessagesProxyModel *model();
     MessagesModel *sourceModel();
 
+    // Creates needed connections.
     void createConnections();
 
   public slots:

@@ -29,7 +29,8 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
   // Initialize singleton.
   s_instance = this;
 
-  setStatusBar(new StatusBar(this));
+  m_statusBar = new StatusBar(this);
+  setStatusBar(m_statusBar);
 
   // Prepare main window and tabs.
   prepareMenus();
@@ -94,6 +95,10 @@ QList<QAction*> FormMain::getActions() {
              m_ui->m_actionDeleteSelectedFeedsCategories;
 
   return actions;
+}
+
+StatusBar *FormMain::statusBar() {
+  return m_statusBar;
 }
 
 void FormMain::prepareMenus() {
@@ -266,6 +271,10 @@ void FormMain::saveSize() {
 }
 
 void FormMain::createConnections() {
+  // Status bar connections.
+  connect(m_statusBar->fullscreenSwitcher(), SIGNAL(clicked()),
+          m_ui->m_actionFullscreen, SLOT(trigger()));
+
   // Core connections.
   connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)),
           this, SLOT(onCommitData(QSessionManager&)));

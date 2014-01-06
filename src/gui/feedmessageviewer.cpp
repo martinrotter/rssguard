@@ -14,6 +14,7 @@
 #include <QVBoxLayout>
 #include <QSplitter>
 #include <QToolBar>
+#include <QDebug>
 #include <QApplication>
 #include <QLineEdit>
 #include <QAction>
@@ -22,6 +23,8 @@
 #include <QWidgetAction>
 #include <QThread>
 #include <QReadWriteLock>
+#include <QProgressBar>
+#include <QStatusBar>
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
@@ -114,15 +117,17 @@ void FeedMessageViewer::updateAllFeeds() {
   }
 }
 
+void FeedMessageViewer::onFeedUpdatesStarted() {
+
+}
+
 void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
                                               int current,
                                               int total) {
   // Some feed got updated.
-  // TODO: Don't update counts of all feeds here,
-  // it is enough to update counts of update feed.
-  // So use indexForItem method from the model. 
-  //m_feedsView->updateCountsOfAllFeeds(true);
   m_feedsView->updateCountsOfParticularFeed(feed, true);
+
+
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
@@ -131,23 +136,27 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
 }
 
 void FeedMessageViewer::createConnections() {
-  // General connections.
+  // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()),
           m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)),
           m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          FormMain::getInstance()->m_ui->m_tabWidget,
-          SLOT(addBrowserWithMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
-          FormMain::getInstance()->m_ui->m_tabWidget,
-          SLOT(addLinkedBrowser(QString)));
+
+  // Feed changers.
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)),
           m_messagesView, SLOT(loadFeeds(QList<int>)));
   connect(m_messagesView, SIGNAL(feedCountsChanged()),
           m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)),
           m_messagesView, SLOT(reloadSelections(int)));
+
+  // Message openers.
+  connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
+          FormMain::getInstance()->m_ui->m_tabWidget,
+          SLOT(addBrowserWithMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
+          FormMain::getInstance()->m_ui->m_tabWidget,
+          SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(newspaperModeRequested(QList<Message>)),
           FormMain::getInstance()->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessages(QList<Message>)));

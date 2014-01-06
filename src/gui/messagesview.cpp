@@ -175,7 +175,6 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
     }
 
     case Qt::MiddleButton: {
-      // TODO: nefunguje?
       // Open selected messages in new tab on mouse middle button click.
       openSelectedSourceMessagesInternally();
       break;
@@ -363,7 +362,7 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
 }
 
 void MessagesView::adjustColumns() {
-  if (header()->count() == 10 && !m_columnsAdjusted) {
+  if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
 
 #if QT_VERSION >= 0x050000

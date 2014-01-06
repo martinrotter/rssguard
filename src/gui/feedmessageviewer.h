@@ -12,6 +12,7 @@ class MessagesView;
 class FeedDownloader;
 class QToolBar;
 class QSplitter;
+class QProgressBar;
 class FeedsModelFeed;
 
 class FeedMessageViewer : public TabContent {
@@ -41,6 +42,7 @@ class FeedMessageViewer : public TabContent {
 
   protected slots:   
     // Reacts on feed updates.
+    void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
     void onFeedUpdatesFinished();
 

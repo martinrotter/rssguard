@@ -4,6 +4,10 @@
 #include <QStatusBar>
 
 
+class QProgressBar;
+class QToolButton;
+class QLabel;
+
 class StatusBar : public QStatusBar {
     Q_OBJECT
 
@@ -12,9 +16,12 @@ class StatusBar : public QStatusBar {
     explicit StatusBar(QWidget *parent = 0);
     virtual ~StatusBar();
 
-  signals:
-    
-  public slots:
+    QToolButton *fullscreenSwitcher() const;
+
+  private:
+    QProgressBar *m_progressBar;
+    QLabel *m_progressLabel;
+    QToolButton *m_fullscreenSwitcher;
     
 };
 

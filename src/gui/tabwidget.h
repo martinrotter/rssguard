@@ -64,6 +64,7 @@ class TabWidget : public QTabWidget {
     // Fixes indexes of tab contents.
     void fixContentsIndexes(int starting_index, int ending_index);
 
+    // Called when number of tab pages changes.
     void checkTabBarVisibility();
 
     // Changes icon/text of the tab.

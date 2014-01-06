@@ -7,6 +7,8 @@
 #include <QUrl>
 
 
+class StatusBar;
+
 class FormMain : public QMainWindow {
     Q_OBJECT
 
@@ -29,6 +31,9 @@ class FormMain : public QMainWindow {
     // Returns list of all globally available actions.
     // NOTE: This is used for setting dynamic shortcuts for given actions.
     QList<QAction*> getActions();
+
+    // Access to statusbar.
+    StatusBar *statusBar();
 
     // Singleton accessor.
     static FormMain *getInstance();
@@ -84,6 +89,7 @@ class FormMain : public QMainWindow {
   private:
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
+    StatusBar *m_statusBar;
 
     static FormMain *s_instance;
 };

@@ -125,7 +125,6 @@
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
-  <widget class="StatusBar" name="m_statusBar"/>
   <action name="m_actionImport">
    <property name="text">
     <string>&amp;Import</string>
@@ -408,11 +407,6 @@
    <extends>QTabWidget</extends>
    <header>tabwidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>StatusBar</class>
-   <extends>QStatusBar</extends>
-   <header>statusbar.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
