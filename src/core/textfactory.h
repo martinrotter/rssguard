@@ -4,6 +4,7 @@
 #include "core/defs.h"
 
 #include <QDateTime>
+#include <QMap>
 
 
 class TextFactory {

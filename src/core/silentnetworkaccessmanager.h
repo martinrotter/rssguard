@@ -1,5 +1,5 @@
-#ifndef SILENTNETWORKACCESSMANAGES_H
-#define SILENTNETWORKACCESSMANAGES_H
+#ifndef SILENTNETWORKACCESSMANAGER_H
+#define SILENTNETWORKACCESSMANAGER_H
 
 #include "core/basenetworkaccessmanager.h"
 
@@ -18,4 +18,4 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
     void onAuthenticationRequired(QNetworkReply * reply, QAuthenticator *authenticator);
 };
 
-#endif // SILENTNETWORKACCESSMANAGES_H
+#endif // SILENTNETWORKACCESSMANAGER_H

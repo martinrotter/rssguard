@@ -139,7 +139,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           FormMain::getInstance()->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessages(QList<Message>)));
-  connect(m_messagesView, SIGNAL(openLinkMessageNewTabRequested(QString)),
+  connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
           FormMain::getInstance()->m_ui->m_tabWidget,
           SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)),
