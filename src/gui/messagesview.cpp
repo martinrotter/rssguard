@@ -180,6 +180,7 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
     }
 
     case Qt::MiddleButton: {
+      // TODO: nefunguje?
       // Open selected messages in new tab on mouse middle button click.
       openSelectedSourceMessagesInternally();
       break;
