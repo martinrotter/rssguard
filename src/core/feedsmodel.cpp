@@ -131,23 +131,40 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
+// TODO: přepsat tudle metodu,
+// vim ze to zhruba funguje ale je potreba pridat taky
+// vymazani feedu/kategorie z SQL (pridat metodu do FeedsModelRootItem
+// kterou si podedi)
 bool FeedsModel::removeItems(const QModelIndexList &indexes) {
-  foreach (const QModelIndex &index, indexes) {
-    QModelIndex parent = index.parent();
+  QList<FeedsModelRootItem*> items;
+  QList<FeedsModelRootItem*> items_for_deletion;
 
+  // Collect all items lying on given indexes.
+  foreach (const QModelIndex &index, indexes) {
     FeedsModelRootItem *item = itemForIndex(index);
 
     if (item->kind() != FeedsModelRootItem::RootItem) {
-      // TODO: Selected item is category or feed, delete it.
+      items << item;
+    }
+  }
 
-      FeedsModelRootItem *parent_item = itemForIndex(parent);
+  // Remove given items from the model.
+  foreach (FeedsModelRootItem *item, items) {
+    QModelIndex index = indexForItem(item);
 
-      beginRemoveRows(parent, index.row(), index.row());
-      FeedsModelRootItem *deleted_item = parent_item->removeChild(index.row());
-      delete deleted_item;
+    if (index.isValid()) {
+      QModelIndex parent_index = index.parent();
+      FeedsModelRootItem *parent_item = itemForIndex(parent_index);
+
+      beginRemoveRows(parent_index, index.row(), index.row());
+      items_for_deletion << parent_item->removeChild(index.row());
       endRemoveRows();
     }
+  }
 
+  // Free deleted items from the memory.
+  while (!items_for_deletion.isEmpty()) {
+    delete items_for_deletion.takeFirst();
   }
 
 
