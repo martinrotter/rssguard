@@ -31,14 +31,14 @@
     </message>
     <message>
         <source>root</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofdmap</translation>
     </message>
 </context>
 <context>
     <name>FeedsView</name>
     <message>
         <source>Context menu for feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Contextmenu voor feeds</translation>
     </message>
 </context>
 <context>
@@ -105,38 +105,38 @@
     </message>
     <message>
         <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termenvan de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a ref=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website &lt;/li&gt;&lt;ul&gt;U kunt de broncode voor RSS Guard verkrijgen op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht(C)2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a ref=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website &lt;/li&gt;&lt;ul&gt;U kunt de broncode voor RSS Guard verkrijgen op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht(C)2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
     <name>FormCategoryDetails</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"></translation>
+        <translation>Oudere categorie</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Title of the category</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel van categorie</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuwe categorie toe</translation>
     </message>
 </context>
 <context>
@@ -323,79 +323,79 @@
     </message>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"></translation>
+        <translation>RSSguard is al gestart.</translation>
     </message>
     <message>
         <source>&amp;Edit selected feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bewerk geselecteerde feed/categorie</translation>
     </message>
     <message>
         <source>Marks all messages (without message filters) from selected feeds as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten(zonder berichten filters)van geselecteerde feeds als gelezen.</translation>
     </message>
     <message>
         <source>Marks all messages (without message filters) from selected feeds as unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten(zonder berichten filters)van geselecteerde feeds als ongelezen.</translation>
     </message>
     <message>
         <source>&amp;Clear selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Wis gesele&amp;cteerde berichten</translation>
     </message>
     <message>
         <source>Removes all messages from selected feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van geselecteerde feeds.</translation>
     </message>
     <message>
         <source>No actions available</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen acties beschikbaar</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er zijn geen acties beschikbaar op dit moment.</translation>
     </message>
     <message>
         <source>Fee&amp;ds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Fee&amp;ds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Update &amp;alle items</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Update ge&amp;seleckteerde items</translation>
     </message>
     <message>
         <source>&amp;Delete selected feeds/categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwij&amp;der geselekteerde feeds/categorieën</translation>
     </message>
     <message>
         <source>Mark &amp;selected items read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer ge&amp;selecteerde items als gelezen</translation>
     </message>
     <message>
         <source>Mark selected items unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde items als ongelezen</translation>
     </message>
     <message>
         <source>Clear selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Wis geselecteerde items</translation>
     </message>
     <message>
         <source>Mark all &amp;items read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle &amp;items als gelezen</translation>
     </message>
     <message>
         <source>Mark all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten van alle feeds als gelezen. Dit is niet van toepassing op berichten filters in account.</translation>
     </message>
     <message>
         <source>View selected items in newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekijk de geselecteerde items in de krantweergave modus</translation>
     </message>
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alle berichten van geselecteerde feeds/categorieën in een nieuw &quot;krantweergave modus&quot;tabblad. Alle geselecteerde feeds zijn gemarkeerd als gelezen.</translation>
     </message>
 </context>
 <context>
@@ -698,7 +698,7 @@
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation>Noteer dat.&quot;%1&quot; (zonder aanhalingstekens) is tijdelijke aanduiding voor URL of geselecteerde berichten.</translation>
+        <translation>Noteer dat &quot;%1&quot; (zonder aanhalingstekens) een tijdelijke aanduiding is voor URL of geselecteerde berichten.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
@@ -722,33 +722,35 @@
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige Sneltoetsen van toetsenbord zijn niet uniek</translation>
     </message>
     <message>
         <source>external browser is not set</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe browser is niet ingesteld</translation>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst van fouten:
+%1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst van veranderingen:
+%1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Van taal veranderd</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram thema is veranderd</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Skin is veranderd</translation>
     </message>
 </context>
 <context>
@@ -763,7 +765,7 @@
     </message>
     <message>
         <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.Het ondersteund alle grote formaten, inclusief RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Maak gebruik van all beschikbare functies die er zijn. Ook als je een bug vind, of je hebt een nieuwe functie die je wilt zien, maak dan een nieuwe &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text decoration: underline;color:#0000ff;&quot;&gt;probleem rapport&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard kan naar iedere taal worden vertaald. Contactpersoon is &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;Auteur&lt;/span&gt;&lt;/a&gt;In geval van belangstelling.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -872,11 +874,11 @@
     </message>
     <message>
         <source>Meesage without URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Berischt zonder URL</translation>
     </message>
     <message>
         <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bericht &apos;%s&apos; bevat geen geldige URL.</translation>
     </message>
 </context>
 <context>
@@ -955,11 +957,11 @@ Taal: %5</translation>
     </message>
     <message>
         <source>RDF</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>RSS 0.91/0.92/0.93</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1059,98 +1061,98 @@ Taal: %5</translation>
     </message>
     <message>
         <source>uknown author</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekende auteur</translation>
     </message>
     <message>
         <source>Newspaper view</source>
-        <translation type="unfinished"></translation>
+        <translation>Krantweergave</translation>
     </message>
 </context>
 <context>
     <name>WebView</name>
     <message>
         <source>Reload web page</source>
-        <translation type="unfinished">Herlaad webpagina</translation>
+        <translation>Herlaad webpagina</translation>
     </message>
     <message>
         <source>Reload current web page</source>
-        <translation type="unfinished">Herlaad huidige webpagina</translation>
+        <translation>Herlaad huidige webpagina</translation>
     </message>
     <message>
         <source>Copy link url</source>
-        <translation type="unfinished">URL kopiëren</translation>
+        <translation>URL kopiëren</translation>
     </message>
     <message>
         <source>Copy link url to clipboard</source>
-        <translation type="unfinished">URL kopiëren naar klembord</translation>
+        <translation>URL kopiëren naar klembord</translation>
     </message>
     <message>
         <source>Copy image</source>
-        <translation type="unfinished">Kopiëer afbeelding</translation>
+        <translation>Kopiëer afbeelding</translation>
     </message>
     <message>
         <source>Copy image to clipboard</source>
-        <translation type="unfinished">Kopiëer afbeelding naar klembord</translation>
+        <translation>Kopiëer afbeelding naar klembord</translation>
     </message>
     <message>
         <source>Copy image url</source>
-        <translation type="unfinished">URL afbeelding kopiëren</translation>
+        <translation>URL afbeelding kopiëren</translation>
     </message>
     <message>
         <source>Copy image url to clipboard</source>
-        <translation type="unfinished">URL afbeelding naar klembord kopiëren</translation>
+        <translation>URL afbeelding naar klembord kopiëren</translation>
     </message>
     <message>
         <source>Open link in new tab</source>
-        <translation type="unfinished">Open link in nieuw tabblad</translation>
+        <translation>Open link in nieuw tabblad</translation>
     </message>
     <message>
         <source>Open this hyperlink in new tab</source>
-        <translation type="unfinished">Open deze koppeling in nieuw tabblad</translation>
+        <translation>Open deze koppeling in nieuw tabblad</translation>
     </message>
     <message>
         <source>Follow link</source>
-        <translation type="unfinished">Volg koppeling</translation>
+        <translation>Volg koppeling</translation>
     </message>
     <message>
         <source>Open the hyperlink in this tab</source>
-        <translation type="unfinished">Open koppeling in dit tabblad</translation>
+        <translation>Open koppeling in dit tabblad</translation>
     </message>
     <message>
         <source>Open image in new tab</source>
-        <translation type="unfinished">Open afbeelding in nieuw tabblad</translation>
+        <translation>Open afbeelding in nieuw tabblad</translation>
     </message>
     <message>
         <source>Open this image in this tab</source>
-        <translation type="unfinished">Open deze afbeelding in dit tabblad</translation>
+        <translation>Open deze afbeelding in dit tabblad</translation>
     </message>
     <message>
         <source>Page not found</source>
-        <translation type="unfinished">Pagina niet gevonden</translation>
+        <translation>Pagina niet gevonden</translation>
     </message>
     <message>
         <source>Check your internet connection or website address</source>
-        <translation type="unfinished">Controleer je internet verbinding of website adres</translation>
+        <translation>Controleer je internet verbinding of website adres</translation>
     </message>
     <message>
         <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished">Deze fout kan veroorzaakt worden door:&lt;br&gt;&lt;ul&gt;&lt;li&gt;niet werkende internet verbinding,&lt;/li&gt;&lt;li&gt;onjuiste website adres,&lt;/li&gt;&lt;li&gt;slechte proxy server instelling,&lt;/li&gt;&lt;li&gt;uitval van doellocatie,&lt;/li&gt;&lt;li&gt;of vele andere zaken.&lt;/li&gt;&lt;/ul&gt;</translation>
+        <translation>Deze fout kan veroorzaakt worden door:&lt;br&gt;&lt;ul&gt;&lt;li&gt;niet werkende internet verbinding,&lt;/li&gt;&lt;li&gt;onjuiste website adres,&lt;/li&gt;&lt;li&gt;slechte proxy server instelling,&lt;/li&gt;&lt;li&gt;uitval van doellocatie,&lt;/li&gt;&lt;li&gt;of vele andere zaken.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation type="unfinished">Webbrowser</translation>
+        <translation>Webbrowser</translation>
     </message>
     <message>
         <source>Image</source>
-        <translation type="unfinished">Afbeelding</translation>
+        <translation>Afbeelding</translation>
     </message>
     <message>
         <source>Hyperlink</source>
-        <translation type="unfinished">Koppeling</translation>
+        <translation>Koppeling</translation>
     </message>
     <message>
         <source>Error page</source>
-        <translation type="unfinished"></translation>
+        <translation>Foutpagina</translation>
     </message>
 </context>
 </TS>
