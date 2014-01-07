@@ -60,8 +60,13 @@ class FeedsModelRootItem {
     // Access to children.
     QList<FeedsModelRootItem *> childItems() const;
 
-    // Removes all childs from this item.
+    // Removes all children from this item.
+    // NOTE: Children are NOT freed from the memory.
     void clearChilds();
+
+    // Removes particular child at given index.
+    // NOTE: Child is NOT freed from the memory.
+    FeedsModelRootItem *removeChild(int index);
 
     // Compares two model items.
     static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);

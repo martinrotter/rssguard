@@ -107,6 +107,13 @@ void FeedsView::editSelectedItem() {
 
 }
 
+void FeedsView::deleteSelectedItems() {
+  QModelIndexList selection = selectionModel()->selectedRows();
+  QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
+
+  m_sourceModel->removeItems(mapped_selection);
+}
+
 void FeedsView::markSelectedFeedsReadStatus(int read) {
   m_sourceModel->markFeedsRead(selectedFeeds(), read);
   updateCountsOfSelectedFeeds(false);

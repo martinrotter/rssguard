@@ -33,6 +33,9 @@ class FeedsModel : public QAbstractItemModel {
     int columnCount(const QModelIndex &parent) const;
     int rowCount(const QModelIndex &parent) const;
 
+    // Feed/category manipulators.
+    bool removeItems(const QModelIndexList &indexes);
+
     // Returns all (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);
 

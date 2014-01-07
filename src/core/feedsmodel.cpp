@@ -131,6 +131,29 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
+bool FeedsModel::removeItems(const QModelIndexList &indexes) {
+  foreach (const QModelIndex &index, indexes) {
+    QModelIndex parent = index.parent();
+
+    FeedsModelRootItem *item = itemForIndex(index);
+
+    if (item->kind() != FeedsModelRootItem::RootItem) {
+      // TODO: Selected item is category or feed, delete it.
+
+      FeedsModelRootItem *parent_item = itemForIndex(parent);
+
+      beginRemoveRows(parent, index.row(), index.row());
+      FeedsModelRootItem *deleted_item = parent_item->removeChild(index.row());
+      delete deleted_item;
+      endRemoveRows();
+    }
+
+  }
+
+
+  return true;
+}
+
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed *> &feeds) {
   QList<Message> messages;
 

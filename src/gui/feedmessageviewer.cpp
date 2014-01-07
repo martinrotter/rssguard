@@ -206,6 +206,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(FormMain::getInstance()->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
+  connect(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeedsCategories,
+          SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItems()));
 }
 
 void FeedMessageViewer::initialize() {

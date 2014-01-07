@@ -8,7 +8,8 @@
 
 
 StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
-  setContentsMargins(3, 1, 3, 1);
+  setSizeGripEnabled(false);
+  setContentsMargins(0, 0, 0, 0);
 
   // Initializations of widgets for status bar.
   m_fullscreenSwitcher = new QToolButton(this);

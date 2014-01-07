@@ -103,6 +103,14 @@ void FeedsModelRootItem::clearChilds() {
   m_childItems.clear();
 }
 
+FeedsModelRootItem *FeedsModelRootItem::removeChild(int index) {
+  FeedsModelRootItem *item_to_delete = m_childItems.at(index);
+
+  m_childItems.removeAt(index);
+
+  return item_to_delete;
+}
+
 
 
 QDateTime FeedsModelRootItem::creationDate() const {
