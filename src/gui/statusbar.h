@@ -18,6 +18,10 @@ class StatusBar : public QStatusBar {
 
     QToolButton *fullscreenSwitcher() const;
 
+    // Progress bar operations
+    void showProgress(int progress, const QString &label);
+    void clearProgress();
+
   private:
     QProgressBar *m_progressBar;
     QLabel *m_progressLabel;

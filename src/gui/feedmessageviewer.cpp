@@ -10,6 +10,7 @@
 #include "gui/iconthemefactory.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
+#include "gui/statusbar.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -118,7 +119,7 @@ void FeedMessageViewer::updateAllFeeds() {
 }
 
 void FeedMessageViewer::onFeedUpdatesStarted() {
-
+  FormMain::getInstance()->statusBar()->showProgress(0, tr("Feed update started"));
 }
 
 void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
@@ -126,13 +127,14 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
                                               int total) {
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
-
-
+  FormMain::getInstance()->statusBar()->showProgress((current * 100.0) / total,
+                                                     tr("Updated feed '%1'").arg(feed->title()));
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
   // Updates of some feeds finished, unlock the lock.
   SystemFactory::getInstance()->applicationCloseLock()->unlock();
+  FormMain::getInstance()->statusBar()->clearProgress();
 }
 
 void FeedMessageViewer::createConnections() {
