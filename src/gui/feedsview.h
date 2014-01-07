@@ -99,7 +99,7 @@ class FeedsView : public QTreeView {
     void feedsSelected(const QList<int> &feed_ids);
 
     // Requests opening of given messages in newspaper mode.
-    void newspaperModeRequested(const QList<Message> &messages);
+    void openMessagesInNewspaperView(const QList<Message> &messages);
 
   private:
     QMenu *m_contextMenuCategoriesFeeds;

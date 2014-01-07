@@ -137,7 +137,7 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
   QList<Message> messages = m_sourceModel->messagesForFeeds(selectedFeeds());
 
   if (!messages.isEmpty()) {
-    emit newspaperModeRequested(messages);
+    emit openMessagesInNewspaperView(messages);
   }
 }
 
