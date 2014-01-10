@@ -18,6 +18,7 @@ void FeedDownloader::updateFeeds(const QList<FeedsModelFeed *> &feeds) {
   qDebug().nospace() << "Performing feed updates in thread: \'" <<
                         QThread::currentThreadId() << "\'.";
 
+  // Job starts now.
   emit started();
 
   for (int i = 0, total = feeds.size(); i < total; i++) {

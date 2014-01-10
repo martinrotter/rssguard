@@ -23,7 +23,7 @@ class DatabaseFactory : public QObject {
     void removeConnection(const QString &connection_name);
 
     // Singleton getter.
-    static DatabaseFactory *getInstance();
+    static DatabaseFactory *instance();
 
   private:
     // Conctructor.

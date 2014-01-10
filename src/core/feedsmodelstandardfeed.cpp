@@ -189,7 +189,7 @@ void FeedsModelStandardFeed::update() {
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id(), message_id;
   qint64 message_creation_date;
-  QSqlDatabase database = DatabaseFactory::getInstance()->connection("FeedsModelStandardFeed");
+  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelStandardFeed");
 
   // Prepare queries.
   QSqlQuery query_select(database);

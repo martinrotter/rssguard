@@ -120,11 +120,11 @@
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Nadpis</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <source>Title of the category</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kategorie</translation>
     </message>
     <message>
         <source>Description</source>
@@ -359,11 +359,11 @@
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizov&amp;at všechny položky</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat v&amp;ybrané položky</translation>
     </message>
     <message>
         <source>&amp;Delete selected feeds/categories</source>
@@ -371,31 +371,31 @@
     </message>
     <message>
         <source>Mark &amp;selected items read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané položky jako přečte&amp;né</translation>
     </message>
     <message>
         <source>Mark selected items unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané položky jako nepřečtené</translation>
     </message>
     <message>
         <source>Clear selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyprázdnit vybrané položky</translation>
     </message>
     <message>
         <source>Mark all &amp;items read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označ&amp;it všechny položky jako přečtené</translation>
     </message>
     <message>
         <source>Mark all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označí všechny zprávy ve všech kanálech jako přečtené. Toto nebere v potaz filtry zpráv.</translation>
     </message>
     <message>
         <source>View selected items in newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit vybrané položky v novinovém náhledu</translation>
     </message>
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazí všechny zprávy z vybraných kanálů v novinovém náhledu v novém panelu.</translation>
     </message>
 </context>
 <context>
@@ -874,11 +874,11 @@
     </message>
     <message>
         <source>Meesage without URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpráva bez URL</translation>
     </message>
     <message>
         <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zpráva &apos;%s&apos; neobsahuje URL.</translation>
     </message>
 </context>
 <context>

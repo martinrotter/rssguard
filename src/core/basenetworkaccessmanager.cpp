@@ -51,7 +51,8 @@ QNetworkReply *BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
   // This rapidly speeds up loading of web sites.
   // NOTE: https://en.wikipedia.org/wiki/HTTP_pipelining
-  new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
+  new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute,
+                           true);
 
   // Setup custom user-agent.
   new_request.setRawHeader(USER_AGENT_HTTP_HEADER,

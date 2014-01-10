@@ -36,7 +36,7 @@ class FeedsModel : public QAbstractItemModel {
     // Feed/category manipulators.
     bool removeItems(const QModelIndexList &indexes);
 
-    // Returns all (undeleted) messages for given feeds.
+    // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);
 
     // Returns all categories, each pair

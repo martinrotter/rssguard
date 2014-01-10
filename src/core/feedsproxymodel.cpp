@@ -33,8 +33,8 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
                                const QModelIndex &right) const {
   if (left.isValid() && right.isValid()) {
     // Make necessary castings.
-    FeedsModelRootItem *left_item = static_cast<FeedsModelRootItem*>(left.internalPointer());
-    FeedsModelRootItem *right_item = static_cast<FeedsModelRootItem*>(right.internalPointer());
+    FeedsModelRootItem *left_item = m_sourceModel->itemForIndex(left);
+    FeedsModelRootItem *right_item = m_sourceModel->itemForIndex(right);
 
     // NOTE: Here we want to accomplish that ALL
     // categories are queued one after another and all
@@ -59,7 +59,10 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
       return false;
     }
     else {
-      // Left item is category, right item is feed.*/
+      // Left item is category, right item is feed.
+      // NOTE: Category is in fact "more" than feed but
+      // we consider it to be "less" because it should be "placed"
+      // above the "smalles" feed when ascending sort is used.
       return true;
     }
   }

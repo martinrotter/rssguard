@@ -56,7 +56,7 @@ int FeedsModelRootItem::row() const {
 }
 
 int FeedsModelRootItem::childCount() const {
-  return m_childItems.count();
+  return m_childItems.size();
 }
 
 QVariant FeedsModelRootItem::data(int column, int role) const {
@@ -103,12 +103,14 @@ void FeedsModelRootItem::clearChilds() {
   m_childItems.clear();
 }
 
-FeedsModelRootItem *FeedsModelRootItem::removeChild(int index) {
-  FeedsModelRootItem *item_to_delete = m_childItems.at(index);
-
-  m_childItems.removeAt(index);
-
-  return item_to_delete;
+bool FeedsModelRootItem::removeChild(int index) {
+  if (index >= 0 && index < m_childItems.size()) {
+    m_childItems.removeAt(index);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 

@@ -21,7 +21,7 @@ DatabaseFactory::~DatabaseFactory() {
   qDebug("Destroying DatabaseFactory object.");
 }
 
-DatabaseFactory *DatabaseFactory::getInstance() {
+DatabaseFactory *DatabaseFactory::instance() {
   if (s_instance.isNull()) {
     s_instance = new DatabaseFactory(qApp);
   }
@@ -126,12 +126,14 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
     query_db.finish();
   }
 
+  // Everything is initialized now.
+  m_initialized = true;
+
   return database;
 }
 
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name) {
   if (!m_initialized) {
-    m_initialized = true;
     return initialize(connection_name);
   }
   else {

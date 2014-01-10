@@ -23,7 +23,7 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   m_rootItem->setId(NO_PARENT_CATEGORY);
   m_rootItem->setTitle(tr("root"));
   m_rootItem->setIcon(IconThemeFactory::getInstance()->fromTheme("folder-red"));
-  m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-unread");
+  m_countsIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-important");
   m_headerData << tr("Title");
   m_tooltipData << tr("Titles of feeds/categories.") <<
                    tr("Counts of unread/all meesages.");
@@ -34,8 +34,11 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 FeedsModel::~FeedsModel() {
   qDebug("Destroying FeedsModel instance.");
 
+  // Delete all model items.
   delete m_rootItem;
-  DatabaseFactory::getInstance()->removeConnection(objectName());
+
+  // Remove connection.
+  DatabaseFactory::instance()->removeConnection(objectName());
 }
 
 QVariant FeedsModel::data(const QModelIndex &index, int role) const {
@@ -81,6 +84,8 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) co
 
   FeedsModelRootItem *parent_item;
 
+  // TODO: overit zda zde misto internalPointer nepouzit
+  // metodu itemFornIndex a overit vykonnostni dopady
   if (!parent.isValid()) {
     parent_item = m_rootItem;
   }
@@ -103,6 +108,8 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
     return QModelIndex();
   }
 
+  // TODO: overit zda zde misto internalPointer nepouzit
+  // metodu itemFornIndex a overit vykonnostni dopady
   FeedsModelRootItem *child_item = static_cast<FeedsModelRootItem*>(child.internalPointer());
   FeedsModelRootItem *parent_item = child_item->parent();
 
@@ -121,6 +128,8 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
     return 0;
   }
 
+  // TODO: overit zda zde misto internalPointer nepouzit
+  // metodu itemFornIndex a overit vykonnostni dopady
   if (!parent.isValid()) {
     parent_item = m_rootItem;
   }
@@ -157,7 +166,9 @@ bool FeedsModel::removeItems(const QModelIndexList &indexes) {
       FeedsModelRootItem *parent_item = itemForIndex(parent_index);
 
       beginRemoveRows(parent_index, index.row(), index.row());
-      items_for_deletion << parent_item->removeChild(index.row());
+      if (parent_item->removeChild(index.row())) {
+        items_for_deletion << item;
+      }
       endRemoveRows();
     }
   }
@@ -167,14 +178,13 @@ bool FeedsModel::removeItems(const QModelIndexList &indexes) {
     delete items_for_deletion.takeFirst();
   }
 
-
   return true;
 }
 
-QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed *> &feeds) {
+QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = DatabaseFactory::getInstance()->connection(objectName());
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName());
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -203,6 +213,8 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed *> &feeds
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
+  // TODO: overit zda zde misto internalPointer nepouzit
+  // metodu itemFornIndex a overit vykonnostni dopady
   if (parent.isValid()) {
     return static_cast<FeedsModelRootItem*>(parent.internalPointer())->columnCount();
   }
@@ -314,7 +326,7 @@ void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChilds();
 
-  QSqlDatabase database = DatabaseFactory::getInstance()->connection(objectName());
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName());
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -416,7 +428,8 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
     // example situation where feed and its parent category are both
     // selected). So, remove duplicates from the list.
     qSort(feeds.begin(), feeds.end(), FeedsModelRootItem::lessThan);
-    feeds.erase(std::unique(feeds.begin(), feeds.end(), FeedsModelRootItem::isEqual),
+    feeds.erase(std::unique(feeds.begin(),
+                            feeds.end(), FeedsModelRootItem::isEqual),
                 feeds.end());
   }
 
@@ -425,7 +438,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
 
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
                                int read) {
-  QSqlDatabase db_handle = DatabaseFactory::getInstance()->connection(objectName());
+  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName());
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -461,7 +474,7 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
 
 bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
                                   int deleted) {
-  QSqlDatabase db_handle = DatabaseFactory::getInstance()->connection(objectName());
+  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName());
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds clearing.");

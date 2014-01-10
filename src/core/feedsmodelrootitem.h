@@ -66,7 +66,7 @@ class FeedsModelRootItem {
 
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
-    FeedsModelRootItem *removeChild(int index);
+    bool removeChild(int index);
 
     // Compares two model items.
     static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);
