@@ -68,11 +68,23 @@ QVariant FeedsModelRootItem::data(int column, int role) const {
 }
 
 int FeedsModelRootItem::countOfAllMessages() const {
-  return 0;
+  int total_count = 0;
+
+  foreach (FeedsModelRootItem *child_item, m_childItems) {
+    total_count += child_item->countOfAllMessages();
+  }
+
+  return total_count;
 }
 
 int FeedsModelRootItem::countOfUnreadMessages() const {
-  return 0;
+  int total_count = 0;
+
+  foreach (FeedsModelRootItem *child_item, m_childItems) {
+    total_count += child_item->countOfUnreadMessages();
+  }
+
+  return total_count;
 }
 
 void FeedsModelRootItem::setIcon(const QIcon &icon) {

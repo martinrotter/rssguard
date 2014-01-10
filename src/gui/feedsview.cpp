@@ -190,16 +190,16 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
 void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
-                                           FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories <<
-                                           FormMain::getInstance()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                           FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead <<
-                                           FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
+                                           FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories <<
+                                           FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
+                                           FormMain::instance()->m_ui->m_actionMarkFeedsAsRead <<
+                                           FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread);
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
-                                      FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
+                                      FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
 
 }
 

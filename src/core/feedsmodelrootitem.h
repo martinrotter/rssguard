@@ -33,6 +33,7 @@ class FeedsModelRootItem {
     virtual QVariant data(int column, int role) const;
 
     // Each item offers "counts" of messages.
+    // Returns counts of messages of all child items summed up.
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 

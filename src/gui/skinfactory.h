@@ -29,6 +29,7 @@ class SkinFactory : public QObject {
     Q_OBJECT
 
   private:
+    // Constructor.
     explicit SkinFactory(QObject *parent = 0);
 
     // Loads the skin from give skin_data.
@@ -38,7 +39,7 @@ class SkinFactory : public QObject {
 
   public:
     // Singleton getter.
-    static SkinFactory *getInstance();
+    static SkinFactory *instance();
 
     // Destructor.
     virtual ~SkinFactory();
@@ -47,19 +48,19 @@ class SkinFactory : public QObject {
     void loadCurrentSkin();
 
     // Returns contents of current layout markup.
-    QString getCurrentMarkup();
-    QString getCurrentMarkupLayout();
+    QString currentMarkup();
+    QString currentMarkupLayout();
 
     // Returns the name of the skin, that should be activated
     // after application restart.
-    QString getSelectedSkinName();
+    QString selectedSkinName();
 
     // Gets skin about a particular skin.
-    Skin getSkinInfo(const QString &skin_name, bool *ok = NULL);
+    Skin skinInfo(const QString &skin_name, bool *ok = NULL);
 
     // Returns list of installed skins, including "default system skin".
     // NOTE: Default skin always lies at position 0.
-    QList<Skin> getInstalledSkins();
+    QList<Skin> installedSkins();
 
     // Sets the desired skin as the active one if it exists.
     void setCurrentSkinName(const QString &skin_name);

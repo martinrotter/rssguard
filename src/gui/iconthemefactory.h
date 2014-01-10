@@ -12,7 +12,7 @@ class IconThemeFactory : public QObject {
 
   public:
     // Singleton getter.
-    static IconThemeFactory *getInstance();
+    static IconThemeFactory *instance();
 
     // Destructor.
     virtual ~IconThemeFactory();
@@ -25,7 +25,7 @@ class IconThemeFactory : public QObject {
     void setupSearchPaths();
 
     // Returns list of installed themes, including "default" theme.
-    QStringList getInstalledIconThemes();
+    QStringList installedIconThemes();
 
     // Loads name of selected icon theme (from settings) for the application and
     // activates it. If that particular theme is not installed, then
@@ -33,18 +33,16 @@ class IconThemeFactory : public QObject {
     void loadCurrentIconTheme();
 
     // Returns name of currently activated theme for the application.
-    QString getCurrentIconTheme();
+    QString currentIconTheme();
 
     // Sets icon theme with given name as the active one and loads it.
     void setCurrentIconTheme(const QString &theme_name);
 
   private:
-    QHash<QString, QIcon> m_cachedIcons;
-
     // Constructor.
     explicit IconThemeFactory(QObject *parent = 0);
 
-    // Holds name of the current icon theme.
+    QHash<QString, QIcon> m_cachedIcons;
     QString m_currentIconTheme;
 
     // Singleton.

@@ -22,7 +22,7 @@ IconThemeFactory::~IconThemeFactory() {
   qDebug("Destroying IconThemeFactory instance.");
 }
 
-IconThemeFactory *IconThemeFactory::getInstance() {
+IconThemeFactory *IconThemeFactory::instance() {
   if (s_instance.isNull()) {
     s_instance = new IconThemeFactory(qApp);
   }
@@ -37,7 +37,7 @@ void IconThemeFactory::setupSearchPaths() {
                                                                "\'").join(", ")));
 }
 
-QString IconThemeFactory::getCurrentIconTheme() {
+QString IconThemeFactory::currentIconTheme() {
   return m_currentIconTheme;
 }
 
@@ -57,14 +57,14 @@ QIcon IconThemeFactory::fromTheme(const QString &name) {
 }
 
 void IconThemeFactory::setCurrentIconTheme(const QString &theme_name) {
-  Settings::getInstance()->setValue(APP_CFG_GUI,
+  Settings::instance()->setValue(APP_CFG_GUI,
                                     "icon_theme",
                                     theme_name);
 }
 
 void IconThemeFactory::loadCurrentIconTheme() {
-  QStringList installed_themes = getInstalledIconThemes();
-  QString theme_name_from_settings = Settings::getInstance()->value(APP_CFG_GUI,
+  QStringList installed_themes = installedIconThemes();
+  QString theme_name_from_settings = Settings::instance()->value(APP_CFG_GUI,
                                                                     "icon_theme",
                                                                     APP_THEME_DEFAULT).toString();
 
@@ -94,7 +94,7 @@ void IconThemeFactory::loadCurrentIconTheme() {
   }
 }
 
-QStringList IconThemeFactory::getInstalledIconThemes() {
+QStringList IconThemeFactory::installedIconThemes() {
   QStringList icon_theme_names;
   icon_theme_names << APP_NO_THEME;
 

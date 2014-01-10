@@ -40,7 +40,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
 
     // Creates new tray icon if necessary and returns it.
     // WARNING: Use this in cooperation with SystemTrayIcon::isSystemTrayActivated().
-    static SystemTrayIcon *getInstance();
+    static SystemTrayIcon *instance();
     
     // Sets the number to be visible in the tray icon, -1 removes it.
     void setNumber(int number = -1);

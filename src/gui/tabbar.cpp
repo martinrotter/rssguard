@@ -55,7 +55,7 @@ void TabBar::mousePressEvent(QMouseEvent *event) {
     // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
-    if (event->button() & Qt::MiddleButton && Settings::getInstance()->value(APP_CFG_GUI,
+    if (event->button() & Qt::MiddleButton && Settings::instance()->value(APP_CFG_GUI,
                                                                              "tab_close_mid_button",
                                                                              true).toBool()) {
       if (tabType(tab_index) == TabBar::Closable) {
@@ -76,7 +76,7 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent *event) {
     // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
-    if (event->button() & Qt::LeftButton && Settings::getInstance()->value(APP_CFG_GUI,
+    if (event->button() & Qt::LeftButton && Settings::instance()->value(APP_CFG_GUI,
                                                                            "tab_close_double_button",
                                                                            true).toBool()) {
       if (tabType(tab_index) == TabBar::Closable) {
@@ -88,7 +88,7 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent *event) {
   // Check if new tab should be opened with initial web browser.
   // NOTE: This check could be unnecesary here and should be done in
   // destination object but we keep it here for consistency.
-  else if (Settings::getInstance()->value(APP_CFG_GUI,
+  else if (Settings::instance()->value(APP_CFG_GUI,
                                           "tab_new_double_button",
                                           true).toBool()) {
     emit emptySpaceDoubleClicked();

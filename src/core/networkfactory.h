@@ -6,6 +6,7 @@
 
 class NetworkFactory {
   private:
+    // Constructor.
     explicit NetworkFactory();
 
   public:
@@ -14,7 +15,6 @@ class NetworkFactory {
     static QNetworkReply::NetworkError downloadFile(const QString &url,
                                                     int timeout,
                                                     QByteArray &output);
-
 };
 
 #endif // NETWORKFACTORY_H

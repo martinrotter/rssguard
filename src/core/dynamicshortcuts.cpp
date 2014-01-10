@@ -10,7 +10,7 @@ DynamicShortcuts::DynamicShortcuts() {
 }
 
 void DynamicShortcuts::save(const QList<QAction *> actions) {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   foreach (QAction *action, actions) {
     settings->setValue(APP_CFG_CUTS,
@@ -20,7 +20,7 @@ void DynamicShortcuts::save(const QList<QAction *> actions) {
 }
 
 void DynamicShortcuts::load(const QList<QAction *> actions) {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   foreach (QAction *action, actions) {
     QString shortcut_for_action = settings->value(APP_CFG_CUTS,

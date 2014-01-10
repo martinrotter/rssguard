@@ -69,7 +69,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
     case Qt::DecorationRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_icon.isNull() ?
-              IconThemeFactory::getInstance()->fromTheme("folder-black") :
+              IconThemeFactory::instance()->fromTheme("folder-black") :
               m_icon;
       }
       else {

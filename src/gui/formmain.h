@@ -36,7 +36,7 @@ class FormMain : public QMainWindow {
     StatusBar *statusBar();
 
     // Singleton accessor.
-    static FormMain *getInstance();
+    static FormMain *instance();
 
   protected:
     // Creates all needed menus and sets them up.

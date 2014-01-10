@@ -122,7 +122,7 @@ void WebBrowser::createConnections() {
   connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
 
   // Connect this WebBrowser to global TabWidget.
-  TabWidget *tab_widget = FormMain::getInstance()->getTabWidget();
+  TabWidget *tab_widget = FormMain::instance()->getTabWidget();
   connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
   connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)),
           tab_widget, SLOT(addLinkedBrowser(QUrl)));
@@ -167,9 +167,9 @@ void WebBrowser::clear() {
 }
 
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
-  SkinFactory *factory = SkinFactory::getInstance();
+  SkinFactory *factory = SkinFactory::instance();
   QString messages_layout;
-  QString default_message_layout = factory->getCurrentMarkup();
+  QString default_message_layout = factory->currentMarkup();
 
   foreach (const Message &message, messages) {
     messages_layout.append(default_message_layout.arg(message.m_title,
@@ -181,14 +181,14 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
                                                       message.m_created.toString(Qt::DefaultLocaleShortDate)));
   }
 
-  QString layout_wrapper = factory->getCurrentMarkupLayout().arg(messages.size() == 1 ?
+  QString layout_wrapper = factory->currentMarkupLayout().arg(messages.size() == 1 ?
                                                                    messages.at(0).m_title :
                                                                    tr("Newspaper view"),
                                                                  messages_layout);
 
   m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
   emit iconChanged(m_index,
-                   IconThemeFactory::getInstance()->fromTheme("document-multiple"));
+                   IconThemeFactory::instance()->fromTheme("document-multiple"));
 }
 
 void WebBrowser::updateZoomGui() {
@@ -254,11 +254,11 @@ void WebBrowser::setFocus(Qt::FocusReason reason) {
 }
 
 void WebBrowser::setupIcons() {
-  m_actionZoom->setIcon(IconThemeFactory::getInstance()->fromTheme("zoom-fit-best"));
-  m_actionBack->setIcon(IconThemeFactory::getInstance()->fromTheme("go-previous"));
-  m_actionForward->setIcon(IconThemeFactory::getInstance()->fromTheme("go-next"));
-  m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_actionStop->setIcon(IconThemeFactory::getInstance()->fromTheme("process-stop"));
+  m_actionZoom->setIcon(IconThemeFactory::instance()->fromTheme("zoom-fit-best"));
+  m_actionBack->setIcon(IconThemeFactory::instance()->fromTheme("go-previous"));
+  m_actionForward->setIcon(IconThemeFactory::instance()->fromTheme("go-next"));
+  m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("view-refresh"));
+  m_actionStop->setIcon(IconThemeFactory::instance()->fromTheme("process-stop"));
   m_webView->setupIcons();
 }
 

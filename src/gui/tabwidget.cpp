@@ -29,7 +29,7 @@ void TabWidget::setupCornerButton() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  tabBar()->setVisible(count() > 1 || !Settings::getInstance()->value(APP_CFG_GUI,
+  tabBar()->setVisible(count() > 1 || !Settings::instance()->value(APP_CFG_GUI,
                                                                      "hide_tabbar_one_tab",
                                                                      true).toBool());
 }
@@ -76,7 +76,7 @@ void TabWidget::setupIcons() {
   for (int index = 0; index < count(); index++) {
     // Index 0 usually contains widget which displays feeds & messages.
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
-      setTabIcon(index, IconThemeFactory::getInstance()->fromTheme("application-rss+xml"));
+      setTabIcon(index, IconThemeFactory::instance()->fromTheme("application-rss+xml"));
     }
     // Other indexes probably contain WebBrowsers.
     else {
@@ -84,13 +84,13 @@ void TabWidget::setupIcons() {
       if (active_browser != NULL && active_browser->icon().isNull()) {
         // We found WebBrowser instance of this tab page, which
         // has no suitable icon, load a new one from the icon theme.
-        setTabIcon(index, IconThemeFactory::getInstance()->fromTheme("text-html"));
+        setTabIcon(index, IconThemeFactory::instance()->fromTheme("text-html"));
       }
     }
   }
 
   // Setup corner button icon.
-  m_cornerButton->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
+  m_cornerButton->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
 }
 
 bool TabWidget::closeTab(int index) {
@@ -194,7 +194,7 @@ int TabWidget::addLinkedBrowser(const QString &initial_url) {
 }
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  return addBrowser(Settings::getInstance()->value(APP_CFG_BROWSER,
+  return addBrowser(Settings::instance()->value(APP_CFG_BROWSER,
                                                    "queue_tabs",
                                                    true).toBool(),
                     false,
@@ -214,14 +214,14 @@ int TabWidget::addBrowser(bool move_after_current,
     // Insert web browser after current tab.
     final_index = insertTab(currentIndex() + 1,
                             browser,
-                            IconThemeFactory::getInstance()->fromTheme("text-html"),
+                            IconThemeFactory::instance()->fromTheme("text-html"),
                             tr("Web browser"),
                             TabBar::Closable);
   }
   else {
     // Add new browser as the last tab.
     final_index = addTab(browser,
-                         IconThemeFactory::getInstance()->fromTheme("text-html"),
+                         IconThemeFactory::instance()->fromTheme("text-html"),
                          tr("Web browser"),
                          TabBar::Closable);
   }

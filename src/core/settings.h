@@ -9,17 +9,19 @@ class Settings : public QSettings {
     Q_OBJECT
 
   public:
+    // Describes possible types of loaded settings.
     enum Type {
       Portable,
       NonPortable
     };
 
     // Singleton getter.
-    static Settings *getInstance();
+    static Settings *instance();
 
     // Destructor.
     virtual ~Settings();
 
+    // Type of used settings.
     Type type() const;
 
     // Getter/setter for settings values.

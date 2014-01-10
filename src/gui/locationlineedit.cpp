@@ -52,7 +52,7 @@ void LocationLineEdit::mousePressEvent(QMouseEvent *event) {
 
 void LocationLineEdit::paintEvent(QPaintEvent *event) {
   // Draw "progress bar" if needed.
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   if (m_progress > 0 && settings->value(APP_CFG_BROWSER,
                                         "browser_colored_progress_enabled",

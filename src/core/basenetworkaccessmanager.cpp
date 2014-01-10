@@ -19,7 +19,7 @@ void BaseNetworkAccessManager::loadSettings() {
   qDebug("Settings of BaseNetworkAccessManager changed.");
 
   QNetworkProxy new_proxy;
-  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::getInstance()->value(APP_CFG_PROXY,
+  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::instance()->value(APP_CFG_PROXY,
                                                                                                                       "proxy_type",
                                                                                                                       QNetworkProxy::NoProxy).toInt());
 
@@ -29,7 +29,7 @@ void BaseNetworkAccessManager::loadSettings() {
     return;
   }
 
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   // Custom proxy is selected, set it up.
   new_proxy.setType(selected_proxy_type);

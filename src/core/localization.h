@@ -4,7 +4,7 @@
 // Loads currently active language.
 // NOTE: Macro is used due to QTranslator persistency.
 #define LoadLocalization(); \
-  QString locale_name = Settings::getInstance()->value( \
+  QString locale_name = Settings::instance()->value( \
   APP_CFG_GEN, \
   "language", \
   "en").toString(); \
@@ -41,12 +41,13 @@ struct Language {
 
 class Localization {
   private:
+    // Constructor.
     explicit Localization();
 
   public:
     // Returns list of installed application localizations.
     // This list is used ie. in settings dialog.
-    static QList<Language> getInstalledLanguages();
+    static QList<Language> installedLanguages();
 };
 
 #endif // LOCALIZATION_H

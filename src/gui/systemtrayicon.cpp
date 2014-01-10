@@ -23,7 +23,7 @@ bool TrayIconMenu::event(QEvent *event) {
   if (QtSingleApplication::activeModalWidget() != NULL &&
       event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
-    SystemTrayIcon::getInstance()->showMessage(APP_LONG_NAME,
+    SystemTrayIcon::instance()->showMessage(APP_LONG_NAME,
                                                tr("Close opened modal dialogs first."),
                                                QSystemTrayIcon::Warning);
   }
@@ -69,16 +69,16 @@ bool SystemTrayIcon::isSystemTrayAvailable() {
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
-  return SystemTrayIcon::isSystemTrayAvailable() && Settings::getInstance()->value(APP_CFG_GUI,
+  return SystemTrayIcon::isSystemTrayAvailable() && Settings::instance()->value(APP_CFG_GUI,
                                                                                    "use_tray_icon",
                                                                                    true).toBool();
 }
 
-SystemTrayIcon *SystemTrayIcon::getInstance() {
+SystemTrayIcon *SystemTrayIcon::instance() {
   if (s_trayIcon.isNull()) {
     s_trayIcon = new SystemTrayIcon(APP_ICON_PATH,
                                     APP_ICON_PLAIN_PATH,
-                                    FormMain::getInstance());
+                                    FormMain::instance());
   }
 
   return s_trayIcon;

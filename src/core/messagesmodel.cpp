@@ -38,9 +38,9 @@ bool MessagesModel::submitAll() {
 }
 
 void MessagesModel::setupIcons() {
-  m_favoriteIcon = IconThemeFactory::getInstance()->fromTheme("favorites");
-  m_readIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk");
-  m_unreadIcon = IconThemeFactory::getInstance()->fromTheme("mail-mark-important");
+  m_favoriteIcon = IconThemeFactory::instance()->fromTheme("favorites");
+  m_readIcon = IconThemeFactory::instance()->fromTheme("mail-mark-not-junk");
+  m_unreadIcon = IconThemeFactory::instance()->fromTheme("mail-mark-important");
 }
 
 void MessagesModel::fetchAll() {
@@ -59,9 +59,7 @@ QList<int> MessagesModel::currentFeeds() const {
   return m_currentFeeds;
 }
 
-
 void MessagesModel::loadMessages(const QList<int> feed_ids) { 
-  // Conversion of parameter.
   m_currentFeeds = feed_ids;
 
   QString assembled_ids = textualFeeds().join(", ");
@@ -75,7 +73,7 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
 
 QStringList MessagesModel::textualFeeds() const {
   QStringList stringy_ids;
-  stringy_ids.reserve(m_currentFeeds.count());
+  stringy_ids.reserve(m_currentFeeds.size());
 
   foreach (int feed_id, m_currentFeeds) {
     stringy_ids.append(QString::number(feed_id));

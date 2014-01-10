@@ -12,7 +12,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::getInstance()->fromTheme("help-about"));
+  setWindowIcon(IconThemeFactory::instance()->fromTheme("help-about"));
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 
   // Load information from embedded text files.

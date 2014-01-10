@@ -89,7 +89,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
     case Qt::DecorationRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_icon.isNull() ?
-              IconThemeFactory::getInstance()->fromTheme("application-rss+xml") :
+              IconThemeFactory::instance()->fromTheme("application-rss+xml") :
               m_icon;
       }
       else {
@@ -130,7 +130,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 
 void FeedsModelStandardFeed::update() {
   QByteArray feed_contents;
-  int download_timeout =  Settings::getInstance()->value(APP_CFG_FEEDS,
+  int download_timeout =  Settings::instance()->value(APP_CFG_FEEDS,
                                                          "download_timeout",
                                                          DOWNLOAD_TIMEOUT).toInt();
 

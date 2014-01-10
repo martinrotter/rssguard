@@ -49,7 +49,7 @@ FeedMessageViewer::~FeedMessageViewer() {
 }
 
 void FeedMessageViewer::saveSize() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   // Store offsets of splitters.
   settings->setValue(APP_CFG_GUI,
@@ -70,7 +70,7 @@ void FeedMessageViewer::saveSize() {
 }
 
 void FeedMessageViewer::loadSize() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
   int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
 
   // Restore offsets of splitters.
@@ -86,6 +86,7 @@ void FeedMessageViewer::loadSize() {
                                  settings->value(APP_CFG_GUI,
                                                  KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
                                                  default_msg_section_size).toInt());
+
   // TODO: Perhaps make toolbar icon size changeable,
   // this concerns toolbars of web browsers too.
 }
@@ -119,7 +120,7 @@ void FeedMessageViewer::updateAllFeeds() {
 }
 
 void FeedMessageViewer::onFeedUpdatesStarted() {
-  FormMain::getInstance()->statusBar()->showProgress(0, tr("Feed update started"));
+  FormMain::instance()->statusBar()->showProgress(0, tr("Feed update started"));
 }
 
 void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
@@ -127,14 +128,14 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
                                               int total) {
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
-  FormMain::getInstance()->statusBar()->showProgress((current * 100.0) / total,
+  FormMain::instance()->statusBar()->showProgress((current * 100.0) / total,
                                                      tr("Updated feed '%1'").arg(feed->title()));
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
   // Updates of some feeds finished, unlock the lock.
   SystemFactory::getInstance()->applicationCloseLock()->unlock();
-  FormMain::getInstance()->statusBar()->clearProgress();
+  FormMain::instance()->statusBar()->clearProgress();
 }
 
 void FeedMessageViewer::createConnections() {
@@ -154,13 +155,13 @@ void FeedMessageViewer::createConnections() {
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          FormMain::getInstance()->m_ui->m_tabWidget,
+          FormMain::instance()->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
-          FormMain::getInstance()->m_ui->m_tabWidget,
+          FormMain::instance()->m_ui->m_tabWidget,
           SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          FormMain::getInstance()->m_ui->m_tabWidget,
+          FormMain::instance()->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessages(QList<Message>)));
 
   // Downloader connections.
@@ -174,39 +175,39 @@ void FeedMessageViewer::createConnections() {
           this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
 
   // Toolbar forwardings.
-  connect(FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
+  connect(FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
-  connect(FormMain::getInstance()->m_ui->m_actionDeleteSelectedMessages,
+  connect(FormMain::instance()->m_ui->m_actionDeleteSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(deleteSelectedMessages()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsRead,
+  connect(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesRead()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsUnread,
+  connect(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesUnread()));
-  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
+  connect(FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceArticlesExternally()));
-  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesInternally,
+  connect(FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
-  connect(FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally,
+  connect(FormMain::instance()->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkAllFeedsRead,
+  connect(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead,
+  connect(FormMain::instance()->m_ui->m_actionMarkFeedsAsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
-  connect(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread,
+  connect(FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
-  connect(FormMain::getInstance()->m_ui->m_actionClearFeeds,
+  connect(FormMain::instance()->m_ui->m_actionClearFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
-  connect(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories,
+  connect(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories,
           SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
-  connect(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds,
+  connect(FormMain::instance()->m_ui->m_actionUpdateAllFeeds,
           SIGNAL(triggered()), this, SLOT(updateAllFeeds()));
-  connect(FormMain::getInstance()->m_ui->m_actionAddNewCategory,
+  connect(FormMain::instance()->m_ui->m_actionAddNewCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewCategory()));
-  connect(FormMain::getInstance()->m_ui->m_actionEditSelectedFeedCategory,
+  connect(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
-  connect(FormMain::getInstance()->m_ui->m_actionViewSelectedItemsNewspaperMode,
+  connect(FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
-  connect(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeedsCategories,
+  connect(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedsCategories,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItems()));
 }
 
@@ -218,20 +219,20 @@ void FeedMessageViewer::initialize() {
   m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
   // Add everything to toolbar.
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateAllFeeds);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkAllFeedsRead);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
   m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionUpdateSelectedFeedsCategories);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionAddNewFeed);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionEditSelectedFeedCategory);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedFeedsCategories);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsRead);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkFeedsAsUnread);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionClearFeeds);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionAddNewFeed);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedsCategories);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsRead);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearFeeds);
   m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsRead);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
-  m_toolBar->addAction(FormMain::getInstance()->m_ui->m_actionDeleteSelectedMessages);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedMessages);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

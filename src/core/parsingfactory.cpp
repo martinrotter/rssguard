@@ -10,8 +10,6 @@ ParsingFactory::ParsingFactory() {
 }
 
 QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
-  // TODO: Implement this.
-
   QList<Message> messages;
   QDomDocument xml_file;
   QDateTime current_time = QDateTime::currentDateTime();

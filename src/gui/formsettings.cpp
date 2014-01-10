@@ -26,7 +26,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::getInstance()->fromTheme("preferences-system"));
+  setWindowIcon(IconThemeFactory::instance()->fromTheme("preferences-system"));
 
   // Setup behavior.
   m_ui->m_treeLanguages->setColumnCount(5);
@@ -147,7 +147,7 @@ void FormSettings::selectBrowserExecutable() {
 }
 
 void FormSettings::loadFeedsMessages() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_MESSAGES,
@@ -158,7 +158,7 @@ void FormSettings::loadFeedsMessages() {
 }
 
 void FormSettings::saveFeedsMessages() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   settings->setValue(APP_CFG_MESSAGES,
                      "external_browser_executable",
@@ -268,7 +268,7 @@ void FormSettings::saveSettings() {
   saveLanguage();
   saveFeedsMessages();
 
-  Settings::getInstance()->checkSettings();
+  Settings::instance()->checkSettings();
   promptForRestart();
 
   accept();
@@ -291,7 +291,7 @@ void FormSettings::onProxyTypeChanged(int index) {
 }
 
 void FormSettings::loadBrowser() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   // Load settings of web browser GUI.
   m_initialSettings.m_webBrowserProgress = settings->value(APP_CFG_BROWSER,
@@ -310,7 +310,7 @@ void FormSettings::loadBrowser() {
 }
 
 void FormSettings::saveBrowser() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   // Save settings of GUI of web browser.
   settings->setValue(APP_CFG_BROWSER,
@@ -333,10 +333,10 @@ void FormSettings::loadProxy() {
   m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
 
   // Load the settings.
-  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::getInstance()->value(APP_CFG_PROXY,
+  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::instance()->value(APP_CFG_PROXY,
                                                                                                                       "proxy_type",
                                                                                                                       QNetworkProxy::NoProxy).toInt());
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
   m_ui->m_txtProxyHost->setText(settings->value(APP_CFG_PROXY,
@@ -350,7 +350,7 @@ void FormSettings::loadProxy() {
 }
 
 void FormSettings::saveProxy() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   settings->setValue(APP_CFG_PROXY, "proxy_type",
                      m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
@@ -368,17 +368,17 @@ void FormSettings::saveProxy() {
 }
 
 void FormSettings::loadLanguage() {
-  foreach (const Language &language, Localization::getInstalledLanguages()) {
+  foreach (const Language &language, Localization::installedLanguages()) {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, IconThemeFactory::getInstance()->fromTheme(language.m_code));
+    item->setIcon(0, IconThemeFactory::instance()->fromTheme(language.m_code));
   }
 
-  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::getInstance()->value(APP_CFG_GEN,
+  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::instance()->value(APP_CFG_GEN,
                                                                                                            "language",
                                                                                                            "en").toString(),
                                                                             Qt::MatchExactly,
@@ -394,7 +394,7 @@ void FormSettings::saveLanguage() {
     return;
   }
 
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
   QString actual_lang = settings->value(APP_CFG_GEN,
                                         "language",
                                         "en").toString();
@@ -408,7 +408,7 @@ void FormSettings::saveLanguage() {
 }
 
 void FormSettings::loadShortcuts() {
-  m_ui->m_shortcuts->populate(FormMain::getInstance()->getActions());
+  m_ui->m_shortcuts->populate(FormMain::instance()->getActions());
 }
 
 void FormSettings::saveShortcuts() {
@@ -416,7 +416,7 @@ void FormSettings::saveShortcuts() {
   m_ui->m_shortcuts->updateShortcuts();
 
   // Save new shortcuts to the settings.
-  DynamicShortcuts::save(FormMain::getInstance()->getActions());
+  DynamicShortcuts::save(FormMain::instance()->getActions());
 }
 
 void FormSettings::loadGeneral() {
@@ -449,7 +449,7 @@ void FormSettings::saveGeneral() {
 }
 
 void FormSettings::loadInterface() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -471,9 +471,9 @@ void FormSettings::loadInterface() {
   }
 
   // Load settings of icon theme.
-  QString current_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
+  QString current_theme = IconThemeFactory::instance()->currentIconTheme();
 
-  foreach (const QString &icon_theme_name, IconThemeFactory::getInstance()->getInstalledIconThemes()) {
+  foreach (const QString &icon_theme_name, IconThemeFactory::instance()->installedIconThemes()) {
     if (icon_theme_name == APP_NO_THEME) {
       // Add just "no theme" on other systems.
       m_ui->m_cmbIconTheme->addItem(tr("no icon theme"),
@@ -502,9 +502,9 @@ void FormSettings::loadInterface() {
   }
 
   // Load skin.
-  QString selected_skin = SkinFactory::getInstance()->getSelectedSkinName();
+  QString selected_skin = SkinFactory::instance()->selectedSkinName();
 
-  foreach (const Skin &skin, SkinFactory::getInstance()->getInstalledSkins()) {
+  foreach (const Skin &skin, SkinFactory::instance()->installedSkins()) {
     QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
                                                     skin.m_visibleName <<
                                                     skin.m_version <<
@@ -544,7 +544,7 @@ void FormSettings::loadInterface() {
 }
 
 void FormSettings::saveInterface() {
-  Settings *settings = Settings::getInstance();
+  Settings *settings = Settings::instance();
 
   // Save tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -555,18 +555,18 @@ void FormSettings::saveInterface() {
     settings->setValue(APP_CFG_GUI, "start_hidden",
                        m_ui->m_checkHidden->isChecked());
     if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
-      SystemTrayIcon::getInstance()->show();
+      SystemTrayIcon::instance()->show();
     }
     else {
-      FormMain::getInstance()->display();
+      FormMain::instance()->display();
       SystemTrayIcon::deleteInstance();
     }
   }
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
-  QString original_icon_theme = IconThemeFactory::getInstance()->getCurrentIconTheme();
-  IconThemeFactory::getInstance()->setCurrentIconTheme(selected_icon_theme);
+  QString original_icon_theme = IconThemeFactory::instance()->currentIconTheme();
+  IconThemeFactory::instance()->setCurrentIconTheme(selected_icon_theme);
 
   // Check if icon theme was changed.
   if (selected_icon_theme != original_icon_theme) {
@@ -577,8 +577,8 @@ void FormSettings::saveInterface() {
   if (m_ui->m_treeSkins->selectedItems().size() > 0) {
     Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
 
-    if (SkinFactory::getInstance()->getSelectedSkinName() != active_skin.m_baseName) {
-      SkinFactory::getInstance()->setCurrentSkinName(active_skin.m_baseName);
+    if (SkinFactory::instance()->selectedSkinName() != active_skin.m_baseName) {
+      SkinFactory::instance()->setCurrentSkinName(active_skin.m_baseName);
       m_changedDataTexts.append(tr("skin changed"));
     }
   }

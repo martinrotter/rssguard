@@ -54,7 +54,7 @@ FormMain::~FormMain() {
   }
 }
 
-FormMain *FormMain::getInstance() {
+FormMain *FormMain::instance() {
   return s_instance;
 }
 
@@ -124,7 +124,7 @@ void FormMain::processExecutionMessage(const QString &message) {
 
   if (message == APP_IS_RUNNING) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::getInstance()->showMessage(APP_NAME,
+      SystemTrayIcon::instance()->showMessage(APP_NAME,
                                                  tr("Application is already running."),
                                                  QSystemTrayIcon::Information,
                                                  TRAY_ICON_BUBBLE_TIMEOUT);
@@ -206,39 +206,39 @@ bool FormMain::event(QEvent *event) {
 
 void FormMain::setupIcons() {
   // Setup icons of this main window.
-  m_ui->m_actionSettings->setIcon(IconThemeFactory::getInstance()->fromTheme("preferences-system"));
-  m_ui->m_actionQuit->setIcon(IconThemeFactory::getInstance()->fromTheme("application-exit"));
-  m_ui->m_actionAboutGuard->setIcon(IconThemeFactory::getInstance()->fromTheme("help-about"));
-  m_ui->m_actionImport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-import"));
-  m_ui->m_actionExport->setIcon(IconThemeFactory::getInstance()->fromTheme("document-export"));
-  m_ui->m_actionFullscreen->setIcon(IconThemeFactory::getInstance()->fromTheme("view-fullscreen"));
+  m_ui->m_actionSettings->setIcon(IconThemeFactory::instance()->fromTheme("preferences-system"));
+  m_ui->m_actionQuit->setIcon(IconThemeFactory::instance()->fromTheme("application-exit"));
+  m_ui->m_actionAboutGuard->setIcon(IconThemeFactory::instance()->fromTheme("help-about"));
+  m_ui->m_actionImport->setIcon(IconThemeFactory::instance()->fromTheme("document-import"));
+  m_ui->m_actionExport->setIcon(IconThemeFactory::instance()->fromTheme("document-export"));
+  m_ui->m_actionFullscreen->setIcon(IconThemeFactory::instance()->fromTheme("view-fullscreen"));
 
   // Web browser.
-  m_ui->m_actionAddBrowser->setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
-  m_ui->m_actionCloseCurrentTab->setIcon(IconThemeFactory::getInstance()->fromTheme("list-remove"));
-  m_ui->m_actionCloseAllTabs->setIcon(IconThemeFactory::getInstance()->fromTheme("list-remove"));
-  m_ui->m_menuCurrentTab->setIcon(IconThemeFactory::getInstance()->fromTheme("go-home"));
+  m_ui->m_actionAddBrowser->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
+  m_ui->m_actionCloseCurrentTab->setIcon(IconThemeFactory::instance()->fromTheme("list-remove"));
+  m_ui->m_actionCloseAllTabs->setIcon(IconThemeFactory::instance()->fromTheme("list-remove"));
+  m_ui->m_menuCurrentTab->setIcon(IconThemeFactory::instance()->fromTheme("go-home"));
 
   // Feeds/messages.
-  m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("document-save-as"));
-  m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(IconThemeFactory::getInstance()->fromTheme("document-save"));
-  m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-junk"));
-  m_ui->m_actionDeleteSelectedFeedsCategories->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-delete"));
-  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-junk"));
-  m_ui->m_actionAddNewCategory->setIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
-  m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
-  m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::getInstance()->fromTheme("gnome-other"));
-  m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkFeedsAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
-  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::getInstance()->fromTheme("mail-mark-important"));
-  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::getInstance()->fromTheme("favorites"));
-  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
-  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
-  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::getInstance()->fromTheme("document-open"));
-  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(IconThemeFactory::getInstance()->fromTheme("document-multiple"));
+  m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::instance()->fromTheme("document-save-as"));
+  m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("document-save"));
+  m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
+  m_ui->m_actionDeleteSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("edit-delete"));
+  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
+  m_ui->m_actionAddNewCategory->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
+  m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
+  m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("gnome-other"));
+  m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkFeedsAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
+  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("favorites"));
+  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(IconThemeFactory::instance()->fromTheme("document-open"));
+  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::instance()->fromTheme("document-open"));
+  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::instance()->fromTheme("document-open"));
+  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(IconThemeFactory::instance()->fromTheme("document-multiple"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
@@ -251,22 +251,25 @@ void FormMain::setupIcons() {
 
 void FormMain::loadSize() {
   QRect screen = qApp->desktop()->screenGeometry();
+  Settings *settings = Settings::instance();
 
   // Reload main window size & position.
-  resize(Settings::getInstance()->value(APP_CFG_GUI,
-                                        "window_size",
-                                        size()).toSize());
-  move(Settings::getInstance()->value(APP_CFG_GUI,
-                                      "window_position",
-                                      screen.center() - rect().center()).toPoint());
+  resize(settings->value(APP_CFG_GUI,
+                         "window_size",
+                         size()).toSize());
+  move(settings->value(APP_CFG_GUI,
+                       "window_position",
+                       screen.center() - rect().center()).toPoint());
 
   // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
 }
 
 void FormMain::saveSize() {
-  Settings::getInstance()->setValue(APP_CFG_GUI, "window_position", pos());
-  Settings::getInstance()->setValue(APP_CFG_GUI, "window_size", size());
+  Settings *settings = Settings::instance();
+
+  settings->setValue(APP_CFG_GUI, "window_position", pos());
+  settings->setValue(APP_CFG_GUI, "window_size", size());
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
 
@@ -324,7 +327,7 @@ void FormMain::loadWebBrowserMenu(int index) {
 
 void FormMain::closeEvent(QCloseEvent *event) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    if (Settings::getInstance()->value(APP_CFG_GUI,
+    if (Settings::instance()->value(APP_CFG_GUI,
                                        "close_win_action",
                                        0).toInt() == 0) {
       // User selected to minimize the application if its main

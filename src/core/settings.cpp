@@ -32,7 +32,7 @@ QSettings::Status Settings::checkSettings() {
   return status();
 }
 
-Settings *Settings::getInstance() {
+Settings *Settings::instance() {
   if (s_instance.isNull()) {
     setupSettings();
   }

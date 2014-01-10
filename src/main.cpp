@@ -65,9 +65,9 @@ int main(int argc, char *argv[]) {
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
-  IconThemeFactory::getInstance()->setupSearchPaths();
-  IconThemeFactory::getInstance()->loadCurrentIconTheme();
-  SkinFactory::getInstance()->loadCurrentSkin();
+  IconThemeFactory::instance()->setupSearchPaths();
+  IconThemeFactory::instance()->loadCurrentIconTheme();
+  SkinFactory::instance()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();
@@ -92,13 +92,13 @@ int main(int argc, char *argv[]) {
   DynamicShortcuts::load(window.getActions());
 
   // Display welcome dialog if application is launched for the first time.
-  if (Settings::getInstance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
-    Settings::getInstance()->setValue(APP_CFG_GEN, "first_start", false);
+  if (Settings::instance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
+    Settings::instance()->setValue(APP_CFG_GEN, "first_start", false);
     FormWelcome(&window).exec();
   }
 
   // Display main window.
-  if (Settings::getInstance()->value(APP_CFG_GUI, "start_hidden",
+  if (Settings::instance()->value(APP_CFG_GUI, "start_hidden",
                                      false).toBool() &&
       SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
 
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    SystemTrayIcon::getInstance()->show();
+    SystemTrayIcon::instance()->show();
   }
 
   // Setup single-instance behavior.

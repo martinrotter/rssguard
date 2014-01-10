@@ -57,17 +57,17 @@ void WebView::createConnections() {
 }
 
 void WebView::setupIcons() {
-  m_actionReload->setIcon(IconThemeFactory::getInstance()->fromTheme("view-refresh"));
-  m_actionCopyLink->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
-  m_actionCopyImage->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
+  m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("view-refresh"));
+  m_actionCopyLink->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy"));
+  m_actionCopyImage->setIcon(IconThemeFactory::instance()->fromTheme("insert-image"));
 
 #if QT_VERSION >= 0x040800
-  m_actionCopyImageUrl->setIcon(IconThemeFactory::getInstance()->fromTheme("edit-copy"));
+  m_actionCopyImageUrl->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy"));
 #endif
 
-  m_actionOpenLinkThisTab->setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
-  m_actionOpenLinkNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
-  m_actionOpenImageNewTab->setIcon(IconThemeFactory::getInstance()->fromTheme("insert-image"));
+  m_actionOpenLinkThisTab->setIcon(IconThemeFactory::instance()->fromTheme("text-html"));
+  m_actionOpenLinkNewTab->setIcon(IconThemeFactory::instance()->fromTheme("text-html"));
+  m_actionOpenImageNewTab->setIcon(IconThemeFactory::instance()->fromTheme("insert-image"));
 }
 
 void WebView::initializeActions() {
@@ -111,9 +111,9 @@ void WebView::initializeActions() {
 }
 
 void WebView::displayErrorPage() {
-  setHtml(SkinFactory::getInstance()->getCurrentMarkupLayout().arg(
+  setHtml(SkinFactory::instance()->currentMarkupLayout().arg(
             tr("Error page"),
-            SkinFactory::getInstance()->getCurrentMarkup().arg(tr("Page not found"),
+            SkinFactory::instance()->currentMarkup().arg(tr("Page not found"),
                                                                tr("Check your internet connection or website address"),
                                                                QString(),
                                                                tr("This failure can be caused by:<br><ul>"
@@ -132,8 +132,8 @@ void WebView::popupContextMenu(const QPoint &pos) {
   QMenu link_submenu(tr("Hyperlink"), this);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
-  image_submenu.setIcon(IconThemeFactory::getInstance()->fromTheme("image-x-generic"));
-  link_submenu.setIcon(IconThemeFactory::getInstance()->fromTheme("text-html"));
+  image_submenu.setIcon(IconThemeFactory::instance()->fromTheme("image-x-generic"));
+  link_submenu.setIcon(IconThemeFactory::instance()->fromTheme("text-html"));
 
   // Assemble the menu from actions.
   context_menu.addAction(m_actionReload);
@@ -198,7 +198,7 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
-    bool are_gestures_enabled = Settings::getInstance()->value(APP_CFG_BROWSER,
+    bool are_gestures_enabled = Settings::instance()->value(APP_CFG_BROWSER,
                                                                "gestures_enabled",
                                                                true).toBool();
     if (are_gestures_enabled) {

@@ -30,7 +30,7 @@ DatabaseFactory *DatabaseFactory::instance() {
 }
 
 void DatabaseFactory::assemblyDatabaseFilePath()  {
-  if (Settings::getInstance()->type() == Settings::Portable) {
+  if (Settings::instance()->type() == Settings::Portable) {
     m_databasePath = qApp->applicationDirPath() +
                      QDir::separator() +
                      QString(APP_DB_PATH);

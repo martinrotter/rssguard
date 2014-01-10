@@ -6,7 +6,7 @@
 CornerButton::CornerButton(QWidget *parent) : QToolButton(parent) {
   setToolTip(tr("Open new tab"));
   setAutoRaise(true);
-  setIcon(IconThemeFactory::getInstance()->fromTheme("list-add"));
+  setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
 }
 
 CornerButton::~CornerButton() {

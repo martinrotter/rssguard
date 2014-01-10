@@ -80,6 +80,8 @@ class MessagesModel : public QSqlTableModel {
     void feedCountsChanged();
 
   protected:
+    // Returns selected feed ids in concatenated textual form,
+    // which is used for SQL queries.
     QStringList textualFeeds() const;
 
     // Sets up header data.

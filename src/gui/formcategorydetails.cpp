@@ -58,7 +58,7 @@ void FormCategoryDetails::initialize() {
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::getInstance()->fromTheme("document-new"));
+  setWindowIcon(IconThemeFactory::instance()->fromTheme("document-new"));
 }
 
 void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categories,

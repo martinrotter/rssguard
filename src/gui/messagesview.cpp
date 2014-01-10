@@ -145,13 +145,13 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
 void MessagesView::initializeContextMenu() {
   m_contextMenu = new QMenu(tr("Context menu for messages"), this);
   m_contextMenu->addActions(QList<QAction*>() <<
-                            FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-                            FormMain::getInstance()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
-                            FormMain::getInstance()->m_ui->m_actionOpenSelectedMessagesInternally <<
-                            FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsRead <<
-                            FormMain::getInstance()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
-                            FormMain::getInstance()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-                            FormMain::getInstance()->m_ui->m_actionDeleteSelectedMessages);
+                            FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
+                            FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
+                            FormMain::instance()->m_ui->m_actionOpenSelectedMessagesInternally <<
+                            FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead <<
+                            FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
+                            FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
+                            FormMain::instance()->m_ui->m_actionDeleteSelectedMessages);
 }
 
 void MessagesView::mousePressEvent(QMouseEvent *event) {
@@ -227,9 +227,9 @@ void MessagesView::loadFeeds(const QList<int> &feed_ids) {
 }
 
 void MessagesView::openSelectedSourceArticlesExternally() {
-  QString browser = Settings::getInstance()->value(APP_CFG_MESSAGES,
+  QString browser = Settings::instance()->value(APP_CFG_MESSAGES,
                                                    "external_browser_executable").toString();
-  QString arguments = Settings::getInstance()->value(APP_CFG_MESSAGES,
+  QString arguments = Settings::instance()->value(APP_CFG_MESSAGES,
                                                      "external_browser_arguments",
                                                      "%1").toString();
 

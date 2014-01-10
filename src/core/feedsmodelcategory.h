@@ -24,12 +24,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     explicit FeedsModelCategory(const FeedsModelCategory &other);
     virtual ~FeedsModelCategory();
 
-    // Counts of messages.
-    // NOTE: Counts of messages in categories include
-    // counts of messages from all children.
-    int countOfAllMessages() const;
-    int countOfUnreadMessages() const;
-
     // All types of categories offer these getters/setters.
     Type type() const;
     void setType(const Type &type);

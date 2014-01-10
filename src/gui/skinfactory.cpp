@@ -19,7 +19,7 @@ SkinFactory::~SkinFactory() {
   qDebug("Destroying SkinFactory instance.");
 }
 
-SkinFactory *SkinFactory::getInstance() {
+SkinFactory *SkinFactory::instance() {
   if (s_instance.isNull()) {
     s_instance = new SkinFactory(qApp);
   }
@@ -28,9 +28,9 @@ SkinFactory *SkinFactory::getInstance() {
 }
 
 void SkinFactory::loadCurrentSkin() {
-  QString skin_name_from_settings = getSelectedSkinName();
+  QString skin_name_from_settings = selectedSkinName();
   bool skin_parsed;
-  Skin skin_data = getSkinInfo(skin_name_from_settings, &skin_parsed);
+  Skin skin_data = skinInfo(skin_name_from_settings, &skin_parsed);
 
   if (skin_parsed) {
     loadSkinFromData(skin_data);
@@ -93,24 +93,24 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
 }
 
 void SkinFactory::setCurrentSkinName(const QString &skin_name) {
-  Settings::getInstance()->setValue(APP_CFG_GUI, "skin", skin_name);
+  Settings::instance()->setValue(APP_CFG_GUI, "skin", skin_name);
 }
 
-QString SkinFactory::getSelectedSkinName() {
-  return Settings::getInstance()->value(APP_CFG_GUI,
+QString SkinFactory::selectedSkinName() {
+  return Settings::instance()->value(APP_CFG_GUI,
                                         "skin",
                                         APP_SKIN_DEFAULT).toString();
 }
 
-QString SkinFactory::getCurrentMarkup() {
+QString SkinFactory::currentMarkup() {
   return m_currentSkin.m_layoutMarkup;
 }
 
-QString SkinFactory::getCurrentMarkupLayout() {
+QString SkinFactory::currentMarkupLayout() {
   return m_currentSkin.m_layoutMarkupWrapper;
 }
 
-Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
+Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
   Skin skin;
   QString styles;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
@@ -171,7 +171,7 @@ Skin SkinFactory::getSkinInfo(const QString &skin_name, bool *ok) {
   return skin;
 }
 
-QList<Skin> SkinFactory::getInstalledSkins() {
+QList<Skin> SkinFactory::installedSkins() {
   QList<Skin> skins;
   bool skin_load_ok;
   QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
@@ -186,7 +186,7 @@ QList<Skin> SkinFactory::getInstalledSkins() {
 
     foreach (const QString &skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.
-      Skin skin_info = getSkinInfo(base_directory + QDir::separator() + skin_file,
+      Skin skin_info = skinInfo(base_directory + QDir::separator() + skin_file,
                                    &skin_load_ok);
 
       if (skin_load_ok) {

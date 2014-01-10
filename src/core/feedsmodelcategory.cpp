@@ -25,26 +25,6 @@ FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
 FeedsModelCategory::~FeedsModelCategory() {
 }
 
-int FeedsModelCategory::countOfAllMessages() const {
-  int total_count = 0;
-
-  foreach (FeedsModelRootItem *child_item, m_childItems) {
-    total_count += child_item->countOfAllMessages();
-  }
-
-  return total_count;
-}
-
-int FeedsModelCategory::countOfUnreadMessages() const {
-  int total_count = 0;
-
-  foreach (FeedsModelRootItem *child_item, m_childItems) {
-    total_count += child_item->countOfUnreadMessages();
-  }
-
-  return total_count;
-}
-
 FeedsModelCategory:: Type FeedsModelCategory::type() const {
   return m_type;
 }
