@@ -11,6 +11,7 @@
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "gui/statusbar.h"
+#include "gui/systemtrayicon.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -119,6 +120,15 @@ void FeedMessageViewer::updateAllFeeds() {
   }
 }
 
+void FeedMessageViewer::updateCountsOfMessages(int unread_messages,
+                                               int total_messages) {
+  // TODO: Optimize the call isSystemTrayActivated()
+  // because it opens settings (use member variable)?.
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    SystemTrayIcon::instance()->setNumber(unread_messages);
+  }
+}
+
 void FeedMessageViewer::onFeedUpdatesStarted() {
   FormMain::instance()->statusBar()->showProgress(0, tr("Feed update started"));
 }
@@ -152,6 +162,8 @@ void FeedMessageViewer::createConnections() {
           m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)),
           m_messagesView, SLOT(reloadSelections(int)));
+  connect(m_feedsView, SIGNAL(feedCountsChanged(int,int)),
+          this, SLOT(updateCountsOfMessages(int,int)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),

@@ -160,12 +160,16 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
-  foreach (FeedsModelFeed *feed, selectedFeeds()) {
-    feed->updateCounts(update_total_too);
-  }
+  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
 
-  // Make sure that selected view reloads changed indexes.
-  m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
+  if (!selected_feeds.isEmpty()) {
+    foreach (FeedsModelFeed *feed, selected_feeds) {
+      feed->updateCounts(update_total_too);
+    }
+
+    // Make sure that selected view reloads changed indexes.
+    m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
+  }
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
@@ -185,6 +189,10 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
     feed->updateCounts(update_total_too);
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
+
+  // TODO: Optimize this and call the signal in all updateCounts* methods.
+  emit feedCountsChanged(m_sourceModel->rootItem()->countOfUnreadMessages(),
+                         m_sourceModel->rootItem()->countOfAllMessages());
 }
 
 void FeedsView::initializeContextMenuCategoriesFeeds() {

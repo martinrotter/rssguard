@@ -93,6 +93,9 @@ class FeedsView : public QTreeView {
     void contextMenuEvent(QContextMenuEvent *event);
 
   signals:
+    // Emitted if counts of messages are changed.
+    void feedCountsChanged(int unread_messages, int total_messages);
+
     // Emitted if currently selected feeds needs to be reloaded.
     void feedsNeedToBeReloaded(int mark_current_index_read);
 

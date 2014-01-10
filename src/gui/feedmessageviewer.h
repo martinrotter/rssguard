@@ -40,7 +40,10 @@ class FeedMessageViewer : public TabContent {
     void updateSelectedFeeds();
     void updateAllFeeds();
 
-  protected slots:   
+  protected slots:
+    // Updates counts of messages for example in tray icon.
+    void updateCountsOfMessages(int unread_messages, int total_messages);
+
     // Reacts on feed updates.
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);

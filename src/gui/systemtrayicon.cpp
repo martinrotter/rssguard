@@ -119,6 +119,7 @@ void SystemTrayIcon::show() {
 #endif
 }
 
+// TODO: Set better colors for number -> better readability.
 void SystemTrayIcon::setNumber(int number) {
   if (number < 0) {
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
