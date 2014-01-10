@@ -24,8 +24,8 @@ bool TrayIconMenu::event(QEvent *event) {
       event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
     SystemTrayIcon::instance()->showMessage(APP_LONG_NAME,
-                                               tr("Close opened modal dialogs first."),
-                                               QSystemTrayIcon::Warning);
+                                            tr("Close opened modal dialogs first."),
+                                            QSystemTrayIcon::Warning);
   }
   return QMenu::event(event);
 }
@@ -69,9 +69,10 @@ bool SystemTrayIcon::isSystemTrayAvailable() {
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
+  // TODO: check if this can be rewritten for bigger speed.
   return SystemTrayIcon::isSystemTrayAvailable() && Settings::instance()->value(APP_CFG_GUI,
-                                                                                   "use_tray_icon",
-                                                                                   true).toBool();
+                                                                                "use_tray_icon",
+                                                                                true).toBool();
 }
 
 SystemTrayIcon *SystemTrayIcon::instance() {
@@ -89,6 +90,7 @@ void SystemTrayIcon::deleteInstance() {
     qDebug("Disabling tray icon and raising main application window.");
     static_cast<FormMain*>((*s_trayIcon).parent())->display();
     delete s_trayIcon.data();
+    s_trayIcon = NULL;
 
     // Make sure that application quits when last window is closed.
     qApp->setQuitOnLastWindowClosed(true);
@@ -121,7 +123,7 @@ void SystemTrayIcon::show() {
 
 // TODO: Set better colors for number -> better readability.
 void SystemTrayIcon::setNumber(int number) {
-  if (number < 0) {
+  if (number <= 0) {
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }
   else {
@@ -131,7 +133,7 @@ void SystemTrayIcon::setNumber(int number) {
 
     font.setBold(true);
     trayPainter.begin(&background);
-    trayPainter.setPen(Qt::black);
+    trayPainter.setBrush(Qt::black);
 
     // Numbers with more than 2 digits won't be readable, display
     // infinity symbol in that case.

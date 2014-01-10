@@ -42,7 +42,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     // WARNING: Use this in cooperation with SystemTrayIcon::isSystemTrayActivated().
     static SystemTrayIcon *instance();
     
-    // Sets the number to be visible in the tray icon, -1 removes it.
+    // Sets the number to be visible in the tray icon, number <= 0 removes it.
     void setNumber(int number = -1);
 
     // Explicitle clears SystemTrayIcon instance from the memory.
