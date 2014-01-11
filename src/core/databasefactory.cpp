@@ -80,6 +80,9 @@ QSqlDatabase DatabaseFactory::initialize(const QString &connection_name) {
     query_db.exec("PRAGMA encoding = \"UTF-8\"");
     query_db.exec("PRAGMA synchronous = OFF");
     query_db.exec("PRAGMA journal_mode = MEMORY");
+    // TODO: prozkoumat cache a page size a lockingmode co to je
+    query_db.exec("PRAGMA page_size = 4096");
+    query_db.exec("PRAGMA cache_size = 16384");
     query_db.exec("PRAGMA count_changes = OFF");
     query_db.exec("PRAGMA temp_store = MEMORY");
 
@@ -158,7 +161,7 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name) {
     }
 
     if (!database.isOpen() && !database.open()) {
-      qFatal("Database was NOT opened. Delivered error message: '%s'",
+      qFatal("Database was NOT opened. Delivered error message: '%s'.",
              qPrintable(database.lastError().text()));
     }
     else {

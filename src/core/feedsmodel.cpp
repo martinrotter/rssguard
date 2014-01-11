@@ -344,7 +344,8 @@ void FeedsModel::loadFromDatabase() {
 
   if (!query_categories.exec("SELECT * FROM Categories;") ||
       query_categories.lastError().isValid()) {
-    qFatal("Query for obtaining categories failed.");
+    qFatal("Query for obtaining categories failed. Error message: '%s'.",
+           qPrintable(query_categories.lastError().text()));
   }
 
   while (query_categories.next()) {
