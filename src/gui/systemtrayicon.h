@@ -3,6 +3,7 @@
 
 #include <QSystemTrayIcon>
 #include <QPointer>
+#include <QPixmap>
 #include <QMenu>
 
 
@@ -22,7 +23,7 @@ class TrayIconMenu : public QMenu {
 #endif
 
 class SystemTrayIcon : public QSystemTrayIcon {
-    Q_OBJECT  
+    Q_OBJECT
 
   public:
     // Constructors and destructors.
@@ -56,8 +57,9 @@ class SystemTrayIcon : public QSystemTrayIcon {
     void onActivated(const QSystemTrayIcon::ActivationReason &reason);
 
   private:
-    QString m_normalIcon;
-    QString m_plainIcon;
+    QIcon m_normalIcon;
+    QPixmap m_plainPixmap;
+    QFont m_font;
 
     static QPointer<SystemTrayIcon> s_trayIcon;
 };

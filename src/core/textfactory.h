@@ -24,6 +24,10 @@ class TextFactory {
     // NOTE: On Windows UTC is known to be broken.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
 
+    // TODO: ocekovat stripovani tagu a escapovani
+    // http://harmattan-dev.nokia.com/docs/library/html/qt4/qtextdocumentfragment.html
+    // mozna by to bylo lepsi, meotda ::fromHtml
+
     // Strips "<....>" (HTML, XML) tags from given text.
     static QString stripTags(QString text);
 

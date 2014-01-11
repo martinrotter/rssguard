@@ -36,8 +36,13 @@ QPointer<SystemTrayIcon> SystemTrayIcon::s_trayIcon;
 SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
                                const QString &plain_icon,
                                FormMain *parent)
-  : QSystemTrayIcon(parent), m_normalIcon(normal_icon), m_plainIcon(plain_icon) {
+  : QSystemTrayIcon(parent),
+    m_normalIcon(normal_icon),
+    m_plainPixmap(plain_icon),
+    m_font(QFont())  {
   qDebug("Creating SystemTrayIcon instance.");
+
+  m_font.setBold(true);
 
   // Initialize icon.
   setNumber();
@@ -121,45 +126,46 @@ void SystemTrayIcon::show() {
 #endif
 }
 
-// TODO: Set better colors for number -> better readability.
 void SystemTrayIcon::setNumber(int number) {
   if (number <= 0) {
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }
   else {
-    QPixmap background = QPixmap(APP_ICON_PLAIN_PATH);
-    QPainter trayPainter;
-    QFont font = QFont();
+    QPixmap background(m_plainPixmap);
+    QPainter tray_painter;
 
-    font.setBold(true);
-    trayPainter.begin(&background);
-    trayPainter.setBrush(Qt::black);
+    tray_painter.begin(&background);
+    tray_painter.setBrush(Qt::black);
+    tray_painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+    tray_painter.setRenderHint(QPainter::TextAntialiasing, false);
 
     // Numbers with more than 2 digits won't be readable, display
     // infinity symbol in that case.
     if (number > 99) {
-      font.setPixelSize(90);
-      trayPainter.setFont(font);
-      trayPainter.drawText(QRect(0, 0, 128, 128),
-                           Qt::AlignVCenter | Qt::AlignCenter ,
-                           "∞");
+      m_font.setPixelSize(100);
+
+      tray_painter.setFont(m_font);
+      tray_painter.drawText(QRect(0, 0, 128, 128),
+                            Qt::AlignVCenter | Qt::AlignCenter ,
+                            QChar(8734));
     }
     else {
       // Smaller number if it has 2 digits.
       if (number > 9) {
-        font.setPixelSize(70);
+        m_font.setPixelSize(80);
       }
       // Bigger number if it has just one digit.
       else {
-        font.setPixelSize(90);
+        m_font.setPixelSize(100);
       }
 
-      trayPainter.setFont(font);
-      trayPainter.drawText(QRect(0, 0, 128, 128),
-                           Qt::AlignVCenter | Qt::AlignCenter ,
-                           QString::number(number));
+      tray_painter.setFont(m_font);
+      tray_painter.drawText(QRect(0, 0, 128, 128),
+                            Qt::AlignVCenter | Qt::AlignCenter ,
+                            QString::number(number));
     }
-    trayPainter.end();
+    tray_painter.end();
+
     QSystemTrayIcon::setIcon(QIcon(background));
   }
 }

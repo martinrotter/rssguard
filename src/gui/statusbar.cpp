@@ -24,13 +24,12 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_progressBar->setVisible(false);
 
   m_progressLabel = new QLabel(this);
-  m_progressLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-  m_progressLabel->setText("aaa");
+  m_progressLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_progressLabel->setVisible(false);
 
   // Add widgets.
-  addPermanentWidget(m_progressLabel);
-  addPermanentWidget(m_progressBar);
+  addWidget(m_progressBar);
+  addWidget(m_progressLabel);
   addPermanentWidget(m_fullscreenSwitcher);
 }
 
