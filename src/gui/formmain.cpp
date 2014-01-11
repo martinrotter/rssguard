@@ -23,7 +23,8 @@
 
 FormMain *FormMain::s_instance;
 
-FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain) {
+FormMain::FormMain(QWidget *parent)
+  : QMainWindow(parent), m_ui(new Ui::FormMain) {
   m_ui->setupUi(this);
 
   // Initialize singleton.

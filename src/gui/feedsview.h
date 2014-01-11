@@ -85,7 +85,7 @@ class FeedsView : public QTreeView {
     // Sets up appearance of this widget.
     void setupAppearance();
 
-    // Make feeds loadable.
+    // Handle selections.
     void selectionChanged(const QItemSelection &selected,
                           const QItemSelection &deselected);
 
