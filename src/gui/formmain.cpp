@@ -47,11 +47,6 @@ FormMain::FormMain(QWidget *parent) : QMainWindow(parent), m_ui(new Ui::FormMain
 
 FormMain::~FormMain() {
   delete m_ui;
-
-  if (SystemTrayIcon::isSystemTrayAvailable()) {
-    delete m_trayMenu;
-    qDebug("Deleting tray icon menu.");
-  }
 }
 
 FormMain *FormMain::instance() {

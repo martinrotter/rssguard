@@ -33,6 +33,10 @@ class FeedsModel : public QAbstractItemModel {
     int columnCount(const QModelIndex &parent) const;
     int rowCount(const QModelIndex &parent) const;
 
+    // Returns couns of ALL/UNREAD (non-deleted) messages for the model.
+    int countOfAllMessages() const;
+    int countOfUnreadMessages() const;
+
     // Feed/category manipulators.
     bool removeItems(const QModelIndexList &indexes);
 

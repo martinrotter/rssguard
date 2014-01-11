@@ -140,6 +140,14 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
+int FeedsModel::countOfAllMessages() const {
+  return m_rootItem->countOfAllMessages();
+}
+
+int FeedsModel::countOfUnreadMessages() const {
+  return m_rootItem->countOfUnreadMessages();
+}
+
 // TODO: přepsat tudle metodu,
 // vim ze to zhruba funguje ale je potreba pridat taky
 // vymazani feedu/kategorie z SQL (pridat metodu do FeedsModelRootItem

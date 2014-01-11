@@ -64,6 +64,7 @@ void SystemTrayIcon::onActivated(const QSystemTrayIcon::ActivationReason &reason
     case SystemTrayIcon::DoubleClick:
     case SystemTrayIcon::MiddleClick:
       static_cast<FormMain*>(parent())->switchVisibility();
+
     default:
       break;
   }
