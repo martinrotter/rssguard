@@ -171,12 +171,14 @@ void FormMain::display() {
 void FormMain::onCommitData(QSessionManager &manager) {
   qDebug("OS asked application to commit its data.");
 
+  manager.setRestartHint(QSessionManager::RestartNever);
   manager.release();
 }
 
 void FormMain::onSaveState(QSessionManager &manager) {
   qDebug("OS asked application to save its state.");
 
+  manager.setRestartHint(QSessionManager::RestartNever);
   manager.release();
 }
 
