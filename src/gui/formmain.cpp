@@ -3,6 +3,7 @@
 #include "core/defs.h"
 #include "core/settings.h"
 #include "core/systemfactory.h"
+#include "core/databasefactory.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/webbrowser.h"
@@ -193,6 +194,9 @@ void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state.");
 
   m_ui->m_tabWidget->feedMessageViewer()->quitDownloader();
+
+  DatabaseFactory::instance()->saveMemoryDatabase();
+
   saveSize();
 }
 

@@ -17,10 +17,15 @@ class DatabaseFactory : public QObject {
     QString getDatabasePath();
 
     // NOTE: This always returns OPENED database.
-    QSqlDatabase connection(const QString &connection_name);
+    QSqlDatabase connection(const QString &connection_name = QString(),
+                            bool in_memory = true);
 
     // Removes connection.
-    void removeConnection(const QString &connection_name);
+    void removeConnection(const QString &connection_name = QString());
+
+    // Performs saving of items from in-memory database
+    // to file-based database.
+    void saveMemoryDatabase();
 
     // Singleton getter.
     static DatabaseFactory *instance();
@@ -34,13 +39,15 @@ class DatabaseFactory : public QObject {
 
     // Creates new connection, initializes database and
     // returns opened connection.
-    QSqlDatabase initialize(const QString &connection_name);
+    QSqlDatabase initializeInMemory();
+    QSqlDatabase initializeFileBased(const QString &connection_name, bool in_memory);
 
     // Path to database file.
     QString m_databasePath;
 
     // Is database file initialized?
-    bool m_initialized;
+    bool m_fileBasedinitialized;
+    bool m_inMemoryInitialized;
 
     // Private singleton value.
     static QPointer<DatabaseFactory> s_instance;

@@ -38,6 +38,7 @@
 #define INTERNAL_URL_NEWSPAPER      "@APP_LOW_NAME@:newspaper"
 
 #define APP_DB_INIT_FILE    "db_init.sql"
+#define APP_DB_INIT_MEMORY    "db_init_memory.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"
 #define APP_DB_PATH         "data/database/local"
 #define APP_DB_FILE         "database.db"
