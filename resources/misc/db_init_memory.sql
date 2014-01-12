@@ -5,8 +5,6 @@ CREATE TABLE IF NOT EXISTS Information (
   value         TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES ('schema_version', '0.0.1');
--- !
 DROP TABLE IF EXISTS Categories;
 -- !
 CREATE TABLE IF NOT EXISTS Categories (

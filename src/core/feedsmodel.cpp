@@ -36,9 +36,6 @@ FeedsModel::~FeedsModel() {
 
   // Delete all model items.
   delete m_rootItem;
-
-  // Remove connection.
-  DatabaseFactory::instance()->removeConnection(objectName());
 }
 
 QVariant FeedsModel::data(const QModelIndex &index, int role) const {
@@ -192,7 +189,7 @@ bool FeedsModel::removeItems(const QModelIndexList &indexes) {
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName());
+  QSqlDatabase database = DatabaseFactory::instance()->connection();
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -334,7 +331,7 @@ void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChilds();
 
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName());
+  QSqlDatabase database = DatabaseFactory::instance()->connection();
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -447,7 +444,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
 
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
                                int read) {
-  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName());
+  QSqlDatabase db_handle = DatabaseFactory::instance()->connection();
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -483,7 +480,7 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
 
 bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
                                   int deleted) {
-  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName());
+  QSqlDatabase db_handle = DatabaseFactory::instance()->connection();
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds clearing.");

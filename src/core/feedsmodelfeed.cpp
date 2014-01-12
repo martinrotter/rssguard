@@ -58,7 +58,7 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
 }
 
 void FeedsModelFeed::updateCounts(bool including_total_count) {
-  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelFeed");
+  QSqlDatabase database = DatabaseFactory::instance()->connection();
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 

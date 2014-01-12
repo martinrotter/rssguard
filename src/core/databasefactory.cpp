@@ -13,7 +13,10 @@
 QPointer<DatabaseFactory> DatabaseFactory::s_instance;
 
 DatabaseFactory::DatabaseFactory(QObject *parent)
-  : QObject(parent), m_fileBasedinitialized(false), m_inMemoryInitialized(false) {
+  : QObject(parent),
+    m_fileBasedinitialized(false),
+    m_inMemoryInitialized(false) {
+  setObjectName("DatabaseFactory");
   assemblyDatabaseFilePath();
 }
 
@@ -48,7 +51,7 @@ QSqlDatabase DatabaseFactory::initializeInMemory() {
   database.setDatabaseName(":memory:");
 
   if (!database.open()) {
-    qFatal("Database was NOT opened. Delivered error message: '%s'",
+    qFatal("In-memory database was NOT opened. Delivered error message: '%s'",
            qPrintable(database.lastError().text()));
   }
   else {
@@ -67,13 +70,13 @@ QSqlDatabase DatabaseFactory::initializeInMemory() {
     query_db.exec("SELECT value FROM Information WHERE key = 'schema_version'");
 
     if (query_db.lastError().isValid()) {
-      qWarning("Error occurred. Database is not initialized. Initializing now.");
+      qWarning("Error occurred. In-memory database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_MEMORY);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("Database initialization file '%s' from directory '%s' was not found. Database is uninitialized.",
+        qFatal("In-memory database initialization file '%s' from directory '%s' was not found. In-memory database is uninitialized.",
                APP_DB_INIT_FILE,
                qPrintable(APP_MISC_PATH));
       }
@@ -86,40 +89,40 @@ QSqlDatabase DatabaseFactory::initializeInMemory() {
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
-          qFatal("Database initialization failed. Initialization script '%s' is not correct.",
+          qFatal("In-memory database initialization failed. Initialization script '%s' is not correct.",
                  APP_DB_INIT_FILE);
         }
       }
 
       database.commit();
-      qDebug("Database backend should be ready now.");
+      qDebug("In-memory database backend should be ready now.");
     }
     else {
       query_db.next();
 
       qDebug("In-memory database connection seems to be established.");
-      qDebug("Database has version '%s'.", qPrintable(query_db.value(0).toString()));
+      qDebug("In-memory database has version '%s'.", qPrintable(query_db.value(0).toString()));
     }
 
     // Loading messages from file-based database.
-    QSqlDatabase file_database = connection("fdb", false);
-
-    QSqlQuery copy_msgs(database);
+    QSqlDatabase file_database = connection(objectName(), false);
+    QSqlQuery copy_contents(database);
 
     // Attach database.
-    copy_msgs.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
+    copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
     // Copy all stuff.
-    QStringList tables; tables << "Categories" << "Feeds" << "FeedsData" <<
+    QStringList tables; tables << "Information" << "Categories" <<
+                                  "Feeds" << "FeedsData" <<
                                   "Messages";
 
     foreach (const QString &table, tables) {
-      copy_msgs.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
+      copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
     // Detach database and finish.
-    copy_msgs.exec("DETACH 'storage'");
-    copy_msgs.finish();
+    copy_contents.exec("DETACH 'storage'");
+    copy_contents.finish();
 
     // DB is attached.
 
@@ -145,8 +148,7 @@ QString DatabaseFactory::getDatabasePath() {
 // a pri vypinani se zase :memory: presype do
 // souborove databaze
 
-QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name,
-                                                  bool in_memory) {
+QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name) {
   // Prepare file paths.
   QDir db_path(getDatabasePath());
   QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
@@ -170,7 +172,7 @@ QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name
   database.setDatabaseName(db_file.fileName());
 
   if (!database.open()) {
-    qFatal("Database was NOT opened. Delivered error message: '%s'",
+    qFatal("File-based database was NOT opened. Delivered error message: '%s'",
            qPrintable(database.lastError().text()));
   }
   else {
@@ -190,13 +192,13 @@ QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name
     query_db.exec("SELECT value FROM Information WHERE key = 'schema_version'");
 
     if (query_db.lastError().isValid()) {
-      qWarning("Error occurred. Database is not initialized. Initializing now.");
+      qWarning("Error occurred. File-based database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_FILE);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("Database initialization file '%s' from directory '%s' was not found. Database is uninitialized.",
+        qFatal("Database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
                APP_DB_INIT_FILE,
                qPrintable(APP_MISC_PATH));
       }
@@ -209,21 +211,21 @@ QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
-          qFatal("Database initialization failed. Initialization script '%s' is not correct.",
+          qFatal("File-based database initialization failed. Initialization script '%s' is not correct.",
                  APP_DB_INIT_FILE);
         }
       }
 
       database.commit();
-      qDebug("Database backend should be ready now.");
+      qDebug("File-based database backend should be ready now.");
     }
     else {
       query_db.next();
 
-      qDebug("Database connection '%s' to file '%s' seems to be established.",
+      qDebug("File-based database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
-      qDebug("Database has version '%s'.", qPrintable(query_db.value(0).toString()));
+      qDebug("File-based database has version '%s'.", qPrintable(query_db.value(0).toString()));
     }
 
     query_db.finish();
@@ -262,7 +264,7 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
 
   if (!m_fileBasedinitialized) {
     // File-based database is not yet initialised.
-    return initializeFileBased(connection_name, in_memory);
+    return initializeFileBased(connection_name);
   }
   else {
     QSqlDatabase database;
@@ -286,11 +288,11 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
     }
 
     if (!database.isOpen() && !database.open()) {
-      qFatal("Database was NOT opened. Delivered error message: '%s'.",
+      qFatal("File-based database was NOT opened. Delivered error message: '%s'.",
              qPrintable(database.lastError().text()));
     }
     else {
-      qDebug("Database connection '%s' to file '%s' seems to be established.",
+      qDebug("File-based database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
     }
@@ -306,7 +308,7 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
 
 void DatabaseFactory::saveMemoryDatabase() {
   QSqlDatabase database = connection();
-  QSqlDatabase file_database = connection("fdb", false);
+  QSqlDatabase file_database = connection(objectName(), false);
 
   QSqlQuery copy_msgs(database);
 
