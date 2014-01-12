@@ -169,20 +169,18 @@ void FormMain::display() {
 }
 
 void FormMain::onCommitData(QSessionManager &manager) {
-  QFile("/home/martin/Dokumenty/aaa").open(QIODevice::ReadWrite);
+  qDebug("OS asked application to commit its data.");
 
   manager.release();
 }
 
 void FormMain::onSaveState(QSessionManager &manager) {
-  QFile("/home/martin/Dokumenty/ccc").open(QIODevice::ReadWrite);
+  qDebug("OS asked application to save its state.");
 
   manager.release();
 }
 
 void FormMain::onAboutToQuit() {
-  QFile("/home/martin/Dokumenty/bbb").open(QIODevice::ReadWrite);
-
   // Make sure that we obtain close lock
   // BEFORE even trying to quit the application.
   if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForWrite(CLOSE_LOCK_TIMEOUT)) {

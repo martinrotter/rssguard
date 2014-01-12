@@ -334,8 +334,8 @@ void FormSettings::loadProxy() {
 
   // Load the settings.
   QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::instance()->value(APP_CFG_PROXY,
-                                                                                                                      "proxy_type",
-                                                                                                                      QNetworkProxy::NoProxy).toInt());
+                                                                                                                   "proxy_type",
+                                                                                                                   QNetworkProxy::NoProxy).toInt());
   Settings *settings = Settings::instance();
 
   m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
@@ -379,8 +379,8 @@ void FormSettings::loadLanguage() {
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::instance()->value(APP_CFG_GEN,
-                                                                                                           "language",
-                                                                                                           "en").toString(),
+                                                                                                        "language",
+                                                                                                        "en").toString(),
                                                                             Qt::MatchExactly,
                                                                             1);
   if (!matching_items.isEmpty()) {
