@@ -456,9 +456,6 @@ void FormSettings::loadInterface() {
     m_ui->m_radioTrayOff->setChecked(!settings->value(APP_CFG_GUI,
                                                       "use_tray_icon",
                                                       true).toBool());
-    m_ui->m_cmbTrayClose->setCurrentIndex(settings->value(APP_CFG_GUI,
-                                                          "close_win_action",
-                                                          0).toInt());
     m_ui->m_checkHidden->setChecked(settings->value(APP_CFG_GUI,
                                                     "start_hidden",
                                                     false).toBool());
@@ -550,8 +547,6 @@ void FormSettings::saveInterface() {
   if (SystemTrayIcon::isSystemTrayAvailable()) {
     settings->setValue(APP_CFG_GUI, "use_tray_icon",
                        m_ui->m_radioTrayOn->isChecked());
-    settings->setValue(APP_CFG_GUI, "close_win_action",
-                       m_ui->m_cmbTrayClose->currentIndex());
     settings->setValue(APP_CFG_GUI, "start_hidden",
                        m_ui->m_checkHidden->isChecked());
     if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {

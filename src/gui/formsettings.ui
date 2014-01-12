@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -51,8 +51,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>576</width>
-            <height>373</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -79,7 +79,7 @@
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -216,6 +216,9 @@
               <string>Tray icon</string>
              </property>
              <layout class="QFormLayout" name="formLayout_2">
+              <property name="fieldGrowthPolicy">
+               <enum>QFormLayout::ExpandingFieldsGrow</enum>
+              </property>
               <item row="0" column="0" colspan="2">
                <widget class="QRadioButton" name="m_radioTrayOff">
                 <property name="text">
@@ -233,28 +236,7 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="m_lblTrayClose">
-                <property name="text">
-                 <string>When main window is closed, then</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="QComboBox" name="m_cmbTrayClose">
-                <item>
-                 <property name="text">
-                  <string>hide it.</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>quit the application.</string>
-                 </property>
-                </item>
-               </widget>
-              </item>
-              <item row="3" column="0" colspan="2">
+              <item row="2" column="0" colspan="2">
                <widget class="QCheckBox" name="m_checkHidden">
                 <property name="text">
                  <string>Start application hidden</string>
@@ -799,38 +781,6 @@
     <hint type="destinationlabel">
      <x>370</x>
      <y>162</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_radioTrayOn</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_lblTrayClose</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>508</x>
-     <y>102</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>419</x>
-     <y>128</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_radioTrayOn</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_cmbTrayClose</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>508</x>
-     <y>102</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>678</x>
-     <y>128</y>
     </hint>
    </hints>
   </connection>

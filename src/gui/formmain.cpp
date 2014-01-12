@@ -20,6 +20,7 @@
 #include <QRect>
 #include <QDesktopWidget>
 #include <QReadWriteLock>
+#include <QTimer>
 
 
 FormMain *FormMain::s_instance;
@@ -122,9 +123,9 @@ void FormMain::processExecutionMessage(const QString &message) {
   if (message == APP_IS_RUNNING) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       SystemTrayIcon::instance()->showMessage(APP_NAME,
-                                                 tr("Application is already running."),
-                                                 QSystemTrayIcon::Information,
-                                                 TRAY_ICON_BUBBLE_TIMEOUT);
+                                              tr("Application is already running."),
+                                              QSystemTrayIcon::Information,
+                                              TRAY_ICON_BUBBLE_TIMEOUT);
     }
 
     display();
@@ -167,17 +168,21 @@ void FormMain::display() {
   QtSingleApplication::alert(this);
 }
 
-void FormMain::onCommitData(QSessionManager &manager) { 
-  Q_UNUSED(manager)
-  qDebug("OS asked application to commit its data.");
+void FormMain::onCommitData(QSessionManager &manager) {
+  QFile("/home/martin/Dokumenty/aaa").open(QIODevice::ReadWrite);
+
+  manager.release();
 }
 
 void FormMain::onSaveState(QSessionManager &manager) {
-  Q_UNUSED(manager)
-  qDebug("OS asked application to save its state.");
+  QFile("/home/martin/Dokumenty/ccc").open(QIODevice::ReadWrite);
+
+  manager.release();
 }
 
 void FormMain::onAboutToQuit() {
+  QFile("/home/martin/Dokumenty/bbb").open(QIODevice::ReadWrite);
+
   // Make sure that we obtain close lock
   // BEFORE even trying to quit the application.
   if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForWrite(CLOSE_LOCK_TIMEOUT)) {
@@ -325,22 +330,23 @@ void FormMain::loadWebBrowserMenu(int index) {
   m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
 }
 
-void FormMain::closeEvent(QCloseEvent *event) {
-  if (SystemTrayIcon::isSystemTrayActivated()) {
-    if (Settings::instance()->value(APP_CFG_GUI,
-                                       "close_win_action",
-                                       0).toInt() == 0) {
-      // User selected to minimize the application if its main
-      // window gets closed and tray icon is activated.
-      hide();
-      event->ignore();
+void FormMain::changeEvent(QEvent *event) {
+  switch (event->type()) {
+    case QEvent::WindowStateChange: {
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        if (this->windowState() & Qt::WindowMinimized) {
+          QTimer::singleShot(250, this, SLOT(hide()));
+        }
+      }
+
+      break;
     }
-    else {
-      // User selected to quit the application if its main
-      // window gets closed and tray icon is activated.
-      qApp->quit();
-    }
+
+    default:
+      break;
   }
+
+  QMainWindow::changeEvent(event);
 }
 
 void FormMain::showAbout() {

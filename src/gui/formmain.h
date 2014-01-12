@@ -46,7 +46,7 @@ class FormMain : public QMainWindow {
     void createConnections();
 
     // Event handler reimplementations.
-    void closeEvent(QCloseEvent *event);
+    void changeEvent(QEvent *event);
     bool event(QEvent *event);
 
     // Sets up proper icons for this widget.
@@ -87,6 +87,7 @@ class FormMain : public QMainWindow {
     void showAbout();
 
   private:
+    bool m_quitting;
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;
