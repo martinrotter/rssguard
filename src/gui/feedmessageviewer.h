@@ -24,7 +24,9 @@ class FeedMessageViewer : public TabContent {
     virtual ~FeedMessageViewer();
 
     // WebBrowser getter from TabContent interface.
-    WebBrowser *webBrowser();
+    inline WebBrowser *webBrowser() {
+      return m_messagesBrowser;
+    }
 
     // Loads/saves sizes and states of ALL
     // underlying widgets, this contains primarily

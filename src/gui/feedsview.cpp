@@ -170,8 +170,7 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
     // Make sure that selected view reloads changed indexes.
     m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
 
-    emit feedCountsChanged(m_sourceModel->countOfUnreadMessages(),
-                           m_sourceModel->countOfAllMessages());
+    notifyWithCounts();
   }
 }
 
@@ -183,8 +182,7 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   // Make sure that all views reloads its data.
   m_sourceModel->reloadWholeLayout();
 
-  emit feedCountsChanged(m_sourceModel->countOfUnreadMessages(),
-                         m_sourceModel->countOfAllMessages());
+  notifyWithCounts();
 }
 
 void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
@@ -196,8 +194,7 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
 
-  emit feedCountsChanged(m_sourceModel->countOfUnreadMessages(),
-                         m_sourceModel->countOfAllMessages());
+  notifyWithCounts();
 }
 
 void FeedsView::initializeContextMenuCategoriesFeeds() {

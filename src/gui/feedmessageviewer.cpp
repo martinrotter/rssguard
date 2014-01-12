@@ -290,7 +290,3 @@ void FeedMessageViewer::initializeViews() {
   // Set layout as active.
   setLayout(central_layout);
 }
-
-WebBrowser *FeedMessageViewer::webBrowser() {
-  return m_messagesBrowser;
-}
