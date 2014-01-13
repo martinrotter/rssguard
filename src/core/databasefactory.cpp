@@ -45,7 +45,7 @@ void DatabaseFactory::assemblyDatabaseFilePath()  {
   }
 }
 
-QSqlDatabase DatabaseFactory::initializeInMemory() {
+QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
   QSqlDatabase database = QSqlDatabase::addDatabase(DATABASE_DRIVER);
 
   database.setDatabaseName(":memory:");
@@ -124,8 +124,6 @@ QSqlDatabase DatabaseFactory::initializeInMemory() {
     copy_contents.exec("DETACH 'storage'");
     copy_contents.finish();
 
-    // DB is attached.
-
     query_db.finish();
   }
 
@@ -133,10 +131,6 @@ QSqlDatabase DatabaseFactory::initializeInMemory() {
   m_inMemoryInitialized = true;
 
   return database;
-}
-
-QString DatabaseFactory::getDatabasePath() {
-  return m_databasePath;
 }
 
 // TODO: :memory: database je rychllejsi, overit
@@ -148,7 +142,7 @@ QString DatabaseFactory::getDatabasePath() {
 // a pri vypinani se zase :memory: presype do
 // souborove databaze
 
-QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name) {
+QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connection_name) {
   // Prepare file paths.
   QDir db_path(getDatabasePath());
   QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
@@ -182,7 +176,6 @@ QSqlDatabase DatabaseFactory::initializeFileBased(const QString &connection_name
     query_db.exec("PRAGMA encoding = \"UTF-8\"");
     query_db.exec("PRAGMA synchronous = OFF");
     query_db.exec("PRAGMA journal_mode = MEMORY");
-    // TODO: prozkoumat cache a page size a lockingmode co to je
     query_db.exec("PRAGMA page_size = 4096");
     query_db.exec("PRAGMA cache_size = 16384");
     query_db.exec("PRAGMA count_changes = OFF");
@@ -243,7 +236,7 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
     // We request in-memory database.
     if (!m_inMemoryInitialized) {
       // It is not initialized yet.
-      return initializeInMemory();
+      return initializeInMemoryDatabase();
     }
     else {
       QSqlDatabase database = QSqlDatabase::database();
@@ -261,43 +254,47 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
       return database;
     }
   }
-
-  if (!m_fileBasedinitialized) {
-    // File-based database is not yet initialised.
-    return initializeFileBased(connection_name);
-  }
   else {
-    QSqlDatabase database;
-
-    if (QSqlDatabase::contains(connection_name)) {
-      qDebug("Connection '%s' is already active.",
-             qPrintable(connection_name));
-
-      // This database connection was added previously, no need to
-      // setup its properties.
-      database = QSqlDatabase::database(connection_name);
+    // We request file-based database.
+    if (!m_fileBasedinitialized) {
+      // File-based database is not yet initialised.
+      return initializeFileBasedDatabase(connection_name);
     }
     else {
-      database = QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
+      QSqlDatabase database;
 
-      QDir db_path(getDatabasePath());
-      QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+      if (QSqlDatabase::contains(connection_name)) {
+        qDebug("Connection '%s' is already active.",
+               qPrintable(connection_name));
 
-      // Setup database file path.
-      database.setDatabaseName(db_file.fileName());
+        // This database connection was added previously, no need to
+        // setup its properties.
+        database = QSqlDatabase::database(connection_name);
+      }
+      else {
+        // Database connection with this name does not exist
+        // yet, add it and set it up.
+        database = QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
+
+        QDir db_path(getDatabasePath());
+        QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+
+        // Setup database file path.
+        database.setDatabaseName(db_file.fileName());
+      }
+
+      if (!database.isOpen() && !database.open()) {
+        qFatal("File-based database was NOT opened. Delivered error message: '%s'.",
+               qPrintable(database.lastError().text()));
+      }
+      else {
+        qDebug("File-based database connection '%s' to file '%s' seems to be established.",
+               qPrintable(connection_name),
+               qPrintable(QDir::toNativeSeparators(database.databaseName())));
+      }
+
+      return database;
     }
-
-    if (!database.isOpen() && !database.open()) {
-      qFatal("File-based database was NOT opened. Delivered error message: '%s'.",
-             qPrintable(database.lastError().text()));
-    }
-    else {
-      qDebug("File-based database connection '%s' to file '%s' seems to be established.",
-             qPrintable(connection_name),
-             qPrintable(QDir::toNativeSeparators(database.databaseName())));
-    }
-
-    return database;
   }
 }
 
@@ -309,22 +306,21 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
 void DatabaseFactory::saveMemoryDatabase() {
   QSqlDatabase database = connection();
   QSqlDatabase file_database = connection(objectName(), false);
-
-  QSqlQuery copy_msgs(database);
+  QSqlQuery copy_contents(database);
 
   // Attach database.
-  copy_msgs.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
+  copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
   // Copy all stuff.
   QStringList tables; tables << "Categories" << "Feeds" << "FeedsData" <<
                                 "Messages";
 
   foreach (const QString &table, tables) {
-    copy_msgs.exec(QString("DELETE FROM storage.%1;").arg(table));
-    copy_msgs.exec(QString("INSERT INTO storage.%1 SELECT * FROM main.%1;").arg(table));
+    copy_contents.exec(QString("DELETE FROM storage.%1;").arg(table));
+    copy_contents.exec(QString("INSERT INTO storage.%1 SELECT * FROM main.%1;").arg(table));
   }
 
   // Detach database and finish.
-  copy_msgs.exec("DETACH 'storage'");
-  copy_msgs.finish();
+  copy_contents.exec("DETACH 'storage'");
+  copy_contents.finish();
 }

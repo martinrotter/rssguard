@@ -14,7 +14,9 @@ class DatabaseFactory : public QObject {
     virtual ~DatabaseFactory();
 
     // Returns absolute file path to database file.
-    QString getDatabasePath();
+    inline QString getDatabasePath() {
+      return m_databasePath;
+    }
 
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
@@ -40,9 +42,9 @@ class DatabaseFactory : public QObject {
     void assemblyDatabaseFilePath();
 
     // Creates new connection, initializes database and
-    // returns opened connection.
-    QSqlDatabase initializeInMemory();
-    QSqlDatabase initializeFileBased(const QString &connection_name);
+    // returns opened connections.
+    QSqlDatabase initializeInMemoryDatabase();
+    QSqlDatabase initializeFileBasedDatabase(const QString &connection_name);
 
     // Path to database file.
     QString m_databasePath;
