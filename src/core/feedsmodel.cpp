@@ -38,10 +38,6 @@ FeedsModel::~FeedsModel() {
   delete m_rootItem;
 }
 
-QVariant FeedsModel::data(const QModelIndex &index, int role) const {
-  return itemForIndex(index)->data(index.column(), role);
-}
-
 QVariant FeedsModel::headerData(int section,
                                 Qt::Orientation orientation,
                                 int role) const {
@@ -135,14 +131,6 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 
   return parent_item->childCount();
-}
-
-int FeedsModel::countOfAllMessages() const {
-  return m_rootItem->countOfAllMessages();
-}
-
-int FeedsModel::countOfUnreadMessages() const {
-  return m_rootItem->countOfUnreadMessages();
 }
 
 // TODO: přepsat tudle metodu,
@@ -598,10 +586,6 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
                qPrintable(feed.second->title()));
     }
   }
-}
-
-FeedsModelRootItem *FeedsModel::rootItem() const {
-  return m_rootItem;
 }
 
 void FeedsModel::assembleCategories(CategoryAssignment categories) {

@@ -24,11 +24,3 @@ FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
 
 FeedsModelCategory::~FeedsModelCategory() {
 }
-
-FeedsModelCategory:: Type FeedsModelCategory::type() const {
-  return m_type;
-}
-
-void FeedsModelCategory::setType(const Type &type) {
-  m_type = type;
-}

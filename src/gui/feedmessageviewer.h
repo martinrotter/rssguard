@@ -28,6 +28,11 @@ class FeedMessageViewer : public TabContent {
       return m_messagesBrowser;
     }
 
+    // FeedsView getter.
+    inline FeedsView *feedsView() {
+      return m_feedsView;
+    }
+
     // Loads/saves sizes and states of ALL
     // underlying widgets, this contains primarily
     // splitters, toolbar and views.

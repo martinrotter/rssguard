@@ -23,14 +23,15 @@ class FormMain : public QMainWindow {
     virtual ~FormMain();
 
     // Returns menu for the tray icon.
-    QMenu *getTrayMenu();
+    QMenu *trayMenu();
 
     // Returns global tab widget.
-    TabWidget *getTabWidget();
+    TabWidget *tabWidget();
 
     // Returns list of all globally available actions.
-    // NOTE: This is used for setting dynamic shortcuts for given actions.
-    QList<QAction*> getActions();
+    // NOTE: This is used for setting dynamic shortcuts
+    // for given actions.
+    QList<QAction*> allActions();
 
     // Access to statusbar.
     StatusBar *statusBar();
@@ -73,6 +74,7 @@ class FormMain : public QMainWindow {
     void switchFullscreenMode(bool turn_fullscreen_on);
 
   protected slots:
+    // Last-minute reactors.
     void onCommitData(QSessionManager &manager);
     void onSaveState(QSessionManager &manager);
 
@@ -87,7 +89,6 @@ class FormMain : public QMainWindow {
     void showAbout();
 
   private:
-    bool m_quitting;
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;

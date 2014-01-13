@@ -4,11 +4,11 @@
 #include <QAbstractItemModel>
 
 #include "core/messagesmodel.h"
+#include "core/feedsmodelrootitem.h"
 
 #include <QIcon>
 
 
-class FeedsModelRootItem;
 class FeedsModelCategory;
 class FeedsModelFeed;
 
@@ -26,7 +26,10 @@ class FeedsModel : public QAbstractItemModel {
     virtual ~FeedsModel();
 
     // Model implementation.
-    QVariant data(const QModelIndex &index, int role) const;
+    inline QVariant data(const QModelIndex &index, int role) const {
+      return itemForIndex(index)->data(index.column(), role);
+    }
+
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
     QModelIndex parent(const QModelIndex &child) const;
@@ -34,8 +37,13 @@ class FeedsModel : public QAbstractItemModel {
     int rowCount(const QModelIndex &parent) const;
 
     // Returns couns of ALL/UNREAD (non-deleted) messages for the model.
-    int countOfAllMessages() const;
-    int countOfUnreadMessages() const;
+    inline int countOfAllMessages() const {
+      return m_rootItem->countOfAllMessages();
+    }
+
+    inline int countOfUnreadMessages() const {
+      return m_rootItem->countOfUnreadMessages();
+    }
 
     // Feed/category manipulators.
     bool removeItems(const QModelIndexList &indexes);
@@ -84,7 +92,9 @@ class FeedsModel : public QAbstractItemModel {
     QModelIndex indexForItem(FeedsModelRootItem *item) const;
 
     // Access to root item.
-    FeedsModelRootItem *rootItem() const;
+    inline FeedsModelRootItem *rootItem() const {
+      return m_rootItem;
+    }
 
   public slots:
     // Feeds operations.

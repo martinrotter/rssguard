@@ -46,7 +46,7 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
 
   // Initialize icon.
   setNumber();
-  setContextMenu(parent->getTrayMenu());
+  setContextMenu(parent->trayMenu());
 
   // Create necessary connections.
   connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),

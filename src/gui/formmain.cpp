@@ -56,15 +56,15 @@ FormMain *FormMain::instance() {
   return s_instance;
 }
 
-QMenu *FormMain::getTrayMenu() {
+QMenu *FormMain::trayMenu() {
   return m_trayMenu;
 }
 
-TabWidget *FormMain::getTabWidget() {
+TabWidget *FormMain::tabWidget() {
   return m_ui->m_tabWidget;
 }
 
-QList<QAction*> FormMain::getActions() {
+QList<QAction*> FormMain::allActions() {
   QList<QAction*> actions;
 
   // Add basic actions.
@@ -358,10 +358,7 @@ void FormMain::showAbout() {
 void FormMain::showSettings() {
   QPointer<FormSettings> form_pointer = new FormSettings(this);
 
-  if (form_pointer.data()->exec() == QDialog::Accepted) {
-    // User applied new settings, reload neede components.
-    m_ui->m_tabWidget->checkTabBarVisibility();
-  }
+  form_pointer.data()->exec();
 
   delete form_pointer.data();
 }

@@ -34,12 +34,12 @@ DatabaseFactory *DatabaseFactory::instance() {
 
 void DatabaseFactory::assemblyDatabaseFilePath()  {
   if (Settings::instance()->type() == Settings::Portable) {
-    m_databasePath = qApp->applicationDirPath() +
+    m_databaseFilePath = qApp->applicationDirPath() +
                      QDir::separator() +
                      QString(APP_DB_PATH);
   }
   else {
-    m_databasePath = QDir::homePath() + QDir::separator() +
+    m_databaseFilePath = QDir::homePath() + QDir::separator() +
                      QString(APP_LOW_H_NAME) + QDir::separator() +
                      QString(APP_DB_PATH);
   }
@@ -296,11 +296,6 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
       return database;
     }
   }
-}
-
-void DatabaseFactory::removeConnection(const QString &connection_name) {
-  qDebug("Removing database connection '%s'.", qPrintable(connection_name));
-  QSqlDatabase::removeDatabase(connection_name);
 }
 
 void DatabaseFactory::saveMemoryDatabase() {

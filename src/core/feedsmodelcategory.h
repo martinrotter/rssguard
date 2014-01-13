@@ -25,8 +25,13 @@ class FeedsModelCategory : public FeedsModelRootItem {
     virtual ~FeedsModelCategory();
 
     // All types of categories offer these getters/setters.
-    Type type() const;
-    void setType(const Type &type);
+    inline Type type() const {
+      return m_type;
+    }
+
+    inline void setType(const Type &type) {
+      m_type = type;
+    }
 
   protected:
     Type m_type;

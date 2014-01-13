@@ -11,6 +11,8 @@
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
 #include "gui/systemtrayicon.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
 #include "gui/formmain.h"
 #include "gui/webbrowser.h"
 
@@ -408,7 +410,7 @@ void FormSettings::saveLanguage() {
 }
 
 void FormSettings::loadShortcuts() {
-  m_ui->m_shortcuts->populate(FormMain::instance()->getActions());
+  m_ui->m_shortcuts->populate(FormMain::instance()->allActions());
 }
 
 void FormSettings::saveShortcuts() {
@@ -416,7 +418,7 @@ void FormSettings::saveShortcuts() {
   m_ui->m_shortcuts->updateShortcuts();
 
   // Save new shortcuts to the settings.
-  DynamicShortcuts::save(FormMain::instance()->getActions());
+  DynamicShortcuts::save(FormMain::instance()->allActions());
 }
 
 void FormSettings::loadGeneral() {
@@ -551,6 +553,7 @@ void FormSettings::saveInterface() {
                        m_ui->m_checkHidden->isChecked());
     if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
       SystemTrayIcon::instance()->show();
+      FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
     }
     else {
       FormMain::instance()->display();
@@ -587,4 +590,6 @@ void FormSettings::saveInterface() {
                      m_ui->m_checkNewTabDoubleClick->isChecked());
   settings->setValue(APP_CFG_GUI, "hide_tabbar_one_tab",
                      m_ui->m_hideTabBarIfOneTabVisible->isChecked());
+
+  FormMain::instance()->tabWidget()->checkTabBarVisibility();
 }

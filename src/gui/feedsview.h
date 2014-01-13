@@ -82,7 +82,7 @@ class FeedsView : public QTreeView {
 
     // Notifies other components about messages
     // counts.
-    void notifyWithCounts() {
+    inline void notifyWithCounts() {
       emit feedCountsChanged(m_sourceModel->countOfUnreadMessages(),
                              m_sourceModel->countOfAllMessages());
     }

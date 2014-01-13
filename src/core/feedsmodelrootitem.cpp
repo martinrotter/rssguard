@@ -12,15 +12,8 @@ FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
 
 FeedsModelRootItem::~FeedsModelRootItem() {
   qDebug("Destroying FeedsModelRootItem instance.");
+
   qDeleteAll(m_childItems);
-}
-
-FeedsModelRootItem *FeedsModelRootItem::parent() const {
-  return m_parentItem;
-}
-
-void FeedsModelRootItem::setParent(FeedsModelRootItem *parent_item) {
-  m_parentItem = parent_item;
 }
 
 FeedsModelRootItem::Kind FeedsModelRootItem::kind() const {
@@ -29,10 +22,6 @@ FeedsModelRootItem::Kind FeedsModelRootItem::kind() const {
 
 QIcon FeedsModelRootItem::icon() const {
   return m_icon;
-}
-
-FeedsModelRootItem *FeedsModelRootItem::child(int row) {
-  return m_childItems.value(row);
 }
 
 void FeedsModelRootItem::appendChild(FeedsModelRootItem *child) {

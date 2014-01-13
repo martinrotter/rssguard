@@ -366,11 +366,6 @@ set(APP_FORMS
   src/gui/formcategorydetails.ui
 )
 
-# Add resources.
-set(APP_RESOURCES
-  resources/rssguard_resources.qrc
-)
-
 # Add translations.
 set(APP_TRANSLATIONS
   localization/rssguard_en.ts
@@ -397,7 +392,6 @@ set(APP_TEXT
 # Wrap files, create moc files.
 if(${USE_QT_5})
   qt5_wrap_ui(APP_UI ${APP_FORMS})
-  qt5_add_resources(APP_RCC ${APP_RESOURCES})
   
   # Load translations.
   if(Qt5LinguistTools_FOUND)
@@ -409,7 +403,6 @@ if(${USE_QT_5})
 else(${USE_QT_5})
   qt4_wrap_cpp(APP_MOC ${APP_HEADERS})
   qt4_wrap_ui(APP_UI ${APP_FORMS})
-  qt4_add_resources(APP_RCC ${APP_RESOURCES})
   
   # Load translations.
   qt4_add_translation(APP_QM ${APP_TRANSLATIONS})

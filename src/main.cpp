@@ -9,6 +9,8 @@
 #include "gui/formmain.h"
 #include "gui/formwelcome.h"
 #include "gui/systemtrayicon.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 // Needed for setting ini file format on Mac OS.
@@ -83,18 +85,18 @@ int main(int argc, char *argv[]) {
                         QThread::currentThreadId() << "\'.";
 
   // Instantiate main application window.
-  FormMain window;
+  FormMain main_window;
 
   // Set correct information for main window.
-  window.setWindowTitle(APP_LONG_NAME);
+  main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(window.getActions());
+  DynamicShortcuts::load(main_window.allActions());
 
   // Display welcome dialog if application is launched for the first time.
   if (Settings::instance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
     Settings::instance()->setValue(APP_CFG_GEN, "first_start", false);
-    FormWelcome(&window).exec();
+    FormWelcome(&main_window).exec();
   }
 
   // Display main window.
@@ -102,21 +104,22 @@ int main(int argc, char *argv[]) {
                                      false).toBool() &&
       SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
-    window.hide();
+    main_window.hide();
   }
   else {
     qDebug("Showing the main window when the application is starting.");
-    window.show();
+    main_window.show();
   }
 
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
     SystemTrayIcon::instance()->show();
+    main_window.tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
   }
 
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)),
-                   &window, SLOT(processExecutionMessage(QString)));
+                   &main_window, SLOT(processExecutionMessage(QString)));
 
   // Enter global event loop.
   return QtSingleApplication::exec();

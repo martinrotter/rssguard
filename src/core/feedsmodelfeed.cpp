@@ -29,17 +29,6 @@ int FeedsModelFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-void FeedsModelFeed::update() {
-}
-
-FeedsModelFeed::Type FeedsModelFeed::type() const {
-  return m_type;
-}
-
-void FeedsModelFeed::setType(const Type &type) {
-  m_type = type;
-}
-
 QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
   switch (type) {
     case StandardAtom10:

@@ -34,11 +34,17 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // NOTE: This method is used in the "update worker".
     // For example, it can fetch new messages from a remote destination
     // and store them in a local database and so on.
-    virtual void update();
+    virtual void update() {
+    }
 
     // Other getters/setters.
-    Type type() const;
-    void setType(const Type &type);
+    inline Type type() const {
+      return m_type;
+    }
+
+    inline void setType(const Type &type) {
+      m_type = type;
+    }
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);

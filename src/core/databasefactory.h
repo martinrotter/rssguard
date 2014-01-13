@@ -15,7 +15,7 @@ class DatabaseFactory : public QObject {
 
     // Returns absolute file path to database file.
     inline QString getDatabasePath() {
-      return m_databasePath;
+      return m_databaseFilePath;
     }
 
     // If in-memory is true, then :memory: database is returned
@@ -25,7 +25,11 @@ class DatabaseFactory : public QObject {
                             bool in_memory = true);
 
     // Removes connection.
-    void removeConnection(const QString &connection_name = QString());
+    inline void removeConnection(const QString &connection_name = QString()) {
+      qDebug("Removing database connection '%s'.", qPrintable(connection_name));
+
+      QSqlDatabase::removeDatabase(connection_name);
+    }
 
     // Performs saving of items from in-memory database
     // to file-based database.
@@ -47,7 +51,7 @@ class DatabaseFactory : public QObject {
     QSqlDatabase initializeFileBasedDatabase(const QString &connection_name);
 
     // Path to database file.
-    QString m_databasePath;
+    QString m_databaseFilePath;
 
     // Is database file initialized?
     bool m_fileBasedinitialized;
