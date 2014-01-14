@@ -21,13 +21,12 @@ Settings::~Settings() {
   qDebug("Deleting Settings instance.");
 }
 
-Settings::Type Settings::type() const {
-  return m_initializationStatus;
-}
+
 
 
 QSettings::Status Settings::checkSettings() {
   qDebug("Syncing settings.");
+
   sync();
   return status();
 }
@@ -40,17 +39,9 @@ Settings *Settings::instance() {
   return s_instance;
 }
 
-QVariant Settings::value(const QString &section,
-                         const QString &key,
-                         const QVariant &default_value) {
-  return QSettings::value(QString("%1/%2").arg(section, key), default_value);
-}
 
-void Settings::setValue(const QString &section,
-                        const QString &key,
-                        const QVariant &value) {
-  QSettings::setValue(QString("%1/%2").arg(section, key), value);
-}
+
+
 
 QSettings::Status Settings::setupSettings() {
   // If settings file exists in executable file working directory

@@ -22,16 +22,22 @@ class Settings : public QSettings {
     virtual ~Settings();
 
     // Type of used settings.
-    Type type() const;
+    inline Type type() const {
+      return m_initializationStatus;
+    }
 
     // Getter/setter for settings values.
-    QVariant value(const QString &section,
+    inline QVariant value(const QString &section,
                    const QString &key,
-                   const QVariant &default_value = QVariant());
+                   const QVariant &default_value = QVariant()) {
+      return QSettings::value(QString("%1/%2").arg(section, key), default_value);
+    }
 
-    void setValue(const QString &section,
+    inline void setValue(const QString &section,
                   const QString &key,
-                  const QVariant &value);
+                  const QVariant &value) {
+      QSettings::setValue(QString("%1/%2").arg(section, key), value);
+    }
 
     // Synchronizes settings.
     QSettings::Status checkSettings();

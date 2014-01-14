@@ -185,6 +185,8 @@ void FeedMessageViewer::createConnections() {
           m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
   connect(m_feedDownloader, SIGNAL(finished()),
           this, SLOT(onFeedUpdatesFinished()));
+  connect(m_feedDownloader, SIGNAL(started()),
+          this, SLOT(onFeedUpdatesStarted()));
   connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)),
           this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
 

@@ -25,9 +25,7 @@ FeedsProxyModel::~FeedsProxyModel() {
   qDebug("Destroying FeedsProxyModel instance");
 }
 
-FeedsModel *FeedsProxyModel::sourceModel() {
-  return m_sourceModel;
-}
+
 
 bool FeedsProxyModel::lessThan(const QModelIndex &left,
                                const QModelIndex &right) const {

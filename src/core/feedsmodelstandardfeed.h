@@ -25,14 +25,29 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     void update();
 
     // Various getters/setters.
-    QString encoding() const;
-    void setEncoding(const QString &encoding);
+    inline QString encoding() const {
+      return m_encoding;
+    }
 
-    QString url() const;
-    void setUrl(const QString &url);
+    inline void setEncoding(const QString &encoding) {
+      m_encoding = encoding;
+    }
 
-    QString language() const;
-    void setLanguage(const QString &language);
+    inline QString url() const {
+      return m_url;
+    }
+
+    inline void setUrl(const QString &url) {
+      m_url = url;
+    }
+
+    inline QString language() const {
+      return m_language;
+    }
+
+    inline void setLanguage(const QString &language) {
+      m_language = language;
+    }
 
     // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);

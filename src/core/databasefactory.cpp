@@ -298,6 +298,12 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
   }
 }
 
+void DatabaseFactory::removeConnection(const QString &connection_name) {
+  qDebug("Removing database connection '%s'.", qPrintable(connection_name));
+
+  QSqlDatabase::removeDatabase(connection_name);
+}
+
 void DatabaseFactory::saveMemoryDatabase() {
   QSqlDatabase database = connection();
   QSqlDatabase file_database = connection(objectName(), false);

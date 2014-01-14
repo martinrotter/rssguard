@@ -32,10 +32,7 @@ MessagesModel::~MessagesModel() {
   qDebug("Destroying MessagesModel instance.");
 }
 
-bool MessagesModel::submitAll() {
-  qFatal("Submitting changes via model is not allowed.");
-  return false;
-}
+
 
 void MessagesModel::setupIcons() {
   m_favoriteIcon = IconThemeFactory::instance()->fromTheme("favorites");
@@ -55,9 +52,7 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-QList<int> MessagesModel::currentFeeds() const {
-  return m_currentFeeds;
-}
+
 
 void MessagesModel::loadMessages(const QList<int> feed_ids) { 
   m_currentFeeds = feed_ids;

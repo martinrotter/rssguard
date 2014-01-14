@@ -38,30 +38,6 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   return feed;
 }
 
-QString FeedsModelStandardFeed::encoding() const {
-  return m_encoding;
-}
-
-void FeedsModelStandardFeed::setEncoding(const QString &encoding) {
-  m_encoding = encoding;
-}
-
-QString FeedsModelStandardFeed::url() const {
-  return m_url;
-}
-
-void FeedsModelStandardFeed::setUrl(const QString &url) {
-  m_url = url;
-}
-
-QString FeedsModelStandardFeed::language() const {
-  return m_language;
-}
-
-void FeedsModelStandardFeed::setLanguage(const QString &language) {
-  m_language = language;
-}
-
 QVariant FeedsModelStandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
@@ -131,8 +107,8 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 void FeedsModelStandardFeed::update() {
   QByteArray feed_contents;
   int download_timeout =  Settings::instance()->value(APP_CFG_FEEDS,
-                                                         "download_timeout",
-                                                         DOWNLOAD_TIMEOUT).toInt();
+                                                      "download_timeout",
+                                                      DOWNLOAD_TIMEOUT).toInt();
 
   // TODO: Provide download time-measures debugging
   // outputs here.

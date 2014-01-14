@@ -15,7 +15,9 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     virtual ~FeedsProxyModel();
 
     // Access to the source model.
-    FeedsModel *sourceModel();
+    inline FeedsModel *sourceModel() {
+      return m_sourceModel;
+    }
 
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);

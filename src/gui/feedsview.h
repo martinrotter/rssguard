@@ -31,8 +31,13 @@ class FeedsView : public QTreeView {
     explicit FeedsView(QWidget *parent = 0);
     virtual ~FeedsView();
 
-    FeedsProxyModel *model();
-    FeedsModel *sourceModel();
+    inline FeedsProxyModel *model() {
+      return m_proxyModel;
+    }
+
+    inline FeedsModel *sourceModel() {
+      return m_sourceModel;
+    }
 
     // Enables or disables sorting.
     void setSortingEnabled(bool enable);
@@ -76,9 +81,6 @@ class FeedsView : public QTreeView {
 
     // Reloads counts for particular feed.
     void updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too = true);
-
-    // TODO: pouzit metodu dole pro uvodni zobrazeni
-    // poctu v trayi
 
     // Notifies other components about messages
     // counts.

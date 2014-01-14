@@ -15,7 +15,9 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     virtual ~MessagesProxyModel();
 
     // Source model getter.
-    MessagesModel *sourceModel();
+    inline MessagesModel *sourceModel() {
+      return m_sourceModel;
+    }
 
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);

@@ -35,9 +35,20 @@ class FeedsModelRootItem {
       return m_childItems.value(row);
     }
 
-    virtual void appendChild(FeedsModelRootItem *child);
-    virtual int childCount() const;
-    virtual int columnCount() const;
+    inline virtual int childCount() const {
+      return m_childItems.size();
+    }
+
+    inline virtual int columnCount() const {
+      // FeedsModel offers exactly two columns.
+      return 2;
+    }
+
+    inline virtual void appendChild(FeedsModelRootItem *child) {
+      m_childItems.append(child);
+      child->setParent(this);
+    }
+
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
 
@@ -46,37 +57,68 @@ class FeedsModelRootItem {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
-    virtual Kind kind() const;
-
-    // Each item has icon.
-    QIcon icon() const;
-    void setIcon(const QIcon &icon);
-
-    // Each item has some kind of id.
-    int id() const;
-    void setId(int id);
-
-    // Each item has its title.
-    // NOTE: This is note entirely true for the root item.
-    QString title() const;
-    void setTitle(const QString &title);
-
-    QDateTime creationDate() const;
-    void setCreationDate(const QDateTime &creation_date);
-
-    QString description() const;
-    void setDescription(const QString &description);
-
     // Access to children.
-    QList<FeedsModelRootItem *> childItems() const;
+    inline QList<FeedsModelRootItem*> childItems() const {
+      return m_childItems;
+    }
 
     // Removes all children from this item.
     // NOTE: Children are NOT freed from the memory.
-    void clearChilds();
+    inline void clearChildren() {
+      m_childItems.clear();
+    }
 
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
     bool removeChild(int index);
+
+    inline Kind kind() const {
+      return m_kind;
+    }
+
+    // Each item has icon.
+    inline QIcon icon() const {
+      return m_icon;
+    }
+
+    inline void setIcon(const QIcon &icon) {
+      m_icon = icon;
+    }
+
+    // Each item has some kind of id.
+    inline int id() const {
+      return m_id;
+    }
+
+    inline void setId(int id) {
+      m_id = id;
+    }
+
+    // Each item has its title.
+    // NOTE: This is note entirely true for the root item.
+    inline QString title() const {
+      return m_title;
+    }
+
+    inline void setTitle(const QString &title) {
+      m_title = title;
+    }
+
+    inline QDateTime creationDate() const {
+      return m_creationDate;
+    }
+
+    inline void setCreationDate(const QDateTime &creation_date) {
+      m_creationDate = creation_date;
+    }
+
+    inline QString description() const {
+      return m_description;
+    }
+
+    inline void setDescription(const QString &description) {
+      m_description = description;
+    }
 
     // Compares two model items.
     static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);

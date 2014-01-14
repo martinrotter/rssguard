@@ -56,13 +56,9 @@ FormMain *FormMain::instance() {
   return s_instance;
 }
 
-QMenu *FormMain::trayMenu() {
-  return m_trayMenu;
-}
 
-TabWidget *FormMain::tabWidget() {
-  return m_ui->m_tabWidget;
-}
+
+
 
 QList<QAction*> FormMain::allActions() {
   QList<QAction*> actions;
@@ -95,9 +91,7 @@ QList<QAction*> FormMain::allActions() {
   return actions;
 }
 
-StatusBar *FormMain::statusBar() {
-  return m_statusBar;
-}
+
 
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.

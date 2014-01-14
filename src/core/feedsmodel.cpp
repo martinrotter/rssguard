@@ -317,7 +317,7 @@ void FeedsModel::reloadWholeLayout() {
 void FeedsModel::loadFromDatabase() {
   // Delete all childs of the root node and clear them from the memory.
   qDeleteAll(m_rootItem->childItems());
-  m_rootItem->clearChilds();
+  m_rootItem->clearChildren();
 
   QSqlDatabase database = DatabaseFactory::instance()->connection();
   CategoryAssignment categories;

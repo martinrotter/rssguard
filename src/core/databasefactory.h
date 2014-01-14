@@ -25,11 +25,7 @@ class DatabaseFactory : public QObject {
                             bool in_memory = true);
 
     // Removes connection.
-    inline void removeConnection(const QString &connection_name = QString()) {
-      qDebug("Removing database connection '%s'.", qPrintable(connection_name));
-
-      QSqlDatabase::removeDatabase(connection_name);
-    }
+    void removeConnection(const QString &connection_name = QString());
 
     // Performs saving of items from in-memory database
     // to file-based database.

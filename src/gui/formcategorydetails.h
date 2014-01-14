@@ -38,7 +38,7 @@ class FormCategoryDetails : public QDialog {
     // and parent_item contains parent item of newly
     // created or edited category.
     // NOTE: Newly ADDED category is NOT added to the model NOR
-    // in the database.
+    // to the database.
     // NOTE: Newly EDITED category IS COPY of its original.
     // SO NO ORIGINAL MODEL DATA ARE EDITED OR CHANGED.
     FormCategoryDetailsAnswer exec(FeedsModelCategory *input_category,

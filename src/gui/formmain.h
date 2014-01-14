@@ -23,18 +23,24 @@ class FormMain : public QMainWindow {
     virtual ~FormMain();
 
     // Returns menu for the tray icon.
-    QMenu *trayMenu();
+    inline QMenu *trayMenu() {
+      return m_trayMenu;
+    }
 
     // Returns global tab widget.
-    TabWidget *tabWidget();
+    inline TabWidget *tabWidget() {
+      return m_ui->m_tabWidget;
+    }
+
+    // Access to statusbar.
+    inline StatusBar *statusBar() {
+      return m_statusBar;
+    }
 
     // Returns list of all globally available actions.
     // NOTE: This is used for setting dynamic shortcuts
     // for given actions.
     QList<QAction*> allActions();
-
-    // Access to statusbar.
-    StatusBar *statusBar();
 
     // Singleton accessor.
     static FormMain *instance();

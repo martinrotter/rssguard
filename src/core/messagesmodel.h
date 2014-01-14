@@ -44,11 +44,17 @@ class MessagesModel : public QSqlTableModel {
     int messageId(int row_index) const;
 
     // Access to list of currently loaded feed IDs.
-    QList<int> currentFeeds() const;
+    inline QList<int> currentFeeds() const {
+      return m_currentFeeds;
+    }
 
   public slots:
     // To disable persistent changes submissions.
-    bool submitAll();
+    inline bool submitAll() {
+      qFatal("Submitting changes via model is not allowed.");
+
+      return false;
+    }
 
     // CORE messages manipulators.
     // NOTE: These are used to change properties of one message.

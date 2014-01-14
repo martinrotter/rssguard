@@ -40,11 +40,14 @@ class SystemFactory : public QObject {
     QString getAutostartDesktopFileLocation();
 #endif
 
-    // Singleton getter.
-    static SystemFactory *getInstance();
 
     // Access to application-wide close lock.
-    QReadWriteLock *applicationCloseLock() const;
+    inline QReadWriteLock *applicationCloseLock() const {
+      return m_applicationCloseLock;
+    }
+
+    // Singleton getter.
+    static SystemFactory *getInstance();
 
   private:
     // This read-write lock is used by application on its close.

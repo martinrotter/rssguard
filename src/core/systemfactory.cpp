@@ -102,9 +102,7 @@ SystemFactory *SystemFactory::getInstance() {
   return s_instance;
 }
 
-QReadWriteLock *SystemFactory::applicationCloseLock() const {
-  return m_applicationCloseLock;
-}
+
 
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();

@@ -16,23 +16,7 @@ FeedsModelRootItem::~FeedsModelRootItem() {
   qDeleteAll(m_childItems);
 }
 
-FeedsModelRootItem::Kind FeedsModelRootItem::kind() const {
-  return m_kind;
-}
 
-QIcon FeedsModelRootItem::icon() const {
-  return m_icon;
-}
-
-void FeedsModelRootItem::appendChild(FeedsModelRootItem *child) {
-  m_childItems.append(child);
-  child->setParent(this);
-}
-
-int FeedsModelRootItem::columnCount() const {
-  // FeedsModel offers exactly two columns.
-  return 2;
-}
 
 int FeedsModelRootItem::row() const {
   if (m_parentItem) {
@@ -42,10 +26,6 @@ int FeedsModelRootItem::row() const {
     // This item has no parent. Therefore, its row index is 0.
     return 0;
   }
-}
-
-int FeedsModelRootItem::childCount() const {
-  return m_childItems.size();
 }
 
 QVariant FeedsModelRootItem::data(int column, int role) const {
@@ -76,34 +56,6 @@ int FeedsModelRootItem::countOfUnreadMessages() const {
   return total_count;
 }
 
-void FeedsModelRootItem::setIcon(const QIcon &icon) {
-  m_icon = icon;
-}
-
-int FeedsModelRootItem::id() const {
-  return m_id;
-}
-
-void FeedsModelRootItem::setId(int id) {
-  m_id = id;
-}
-
-QString FeedsModelRootItem::title() const {
-  return m_title;
-}
-
-void FeedsModelRootItem::setTitle(const QString &title) {
-  m_title = title;
-}
-
-QList<FeedsModelRootItem *> FeedsModelRootItem::childItems() const {
-  return m_childItems;
-}
-
-void FeedsModelRootItem::clearChilds() {
-  m_childItems.clear();
-}
-
 bool FeedsModelRootItem::removeChild(int index) {
   if (index >= 0 && index < m_childItems.size()) {
     m_childItems.removeAt(index);
@@ -113,25 +65,6 @@ bool FeedsModelRootItem::removeChild(int index) {
     return false;
   }
 }
-
-
-
-QDateTime FeedsModelRootItem::creationDate() const {
-  return m_creationDate;
-}
-
-void FeedsModelRootItem::setCreationDate(const QDateTime &creation_date) {
-  m_creationDate = creation_date;
-}
-
-QString FeedsModelRootItem::description() const {
-  return m_description;
-}
-
-void FeedsModelRootItem::setDescription(const QString &description) {
-  m_description = description;
-}
-
 
 bool FeedsModelRootItem::isEqual(FeedsModelRootItem *lhs,
                                  FeedsModelRootItem *rhs) {
