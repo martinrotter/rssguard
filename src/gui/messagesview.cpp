@@ -5,7 +5,6 @@
 #include "core/settings.h"
 #include "gui/formmain.h"
 
-#include <QHeaderView>
 #include <QKeyEvent>
 #include <QScrollBar>
 #include <QMenu>
@@ -86,19 +85,6 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
     // from FeedsView itself.
     emit currentMessagesRemoved();
   }
-}
-
-MessagesModel *MessagesView::sourceModel() {
-  return m_sourceModel;
-}
-
-MessagesProxyModel *MessagesView::model() {
-  return m_proxyModel;
-}
-
-void MessagesView::setSortingEnabled(bool enable) {
-  QTreeView::setSortingEnabled(enable);
-  header()->setSortIndicatorShown(false);
 }
 
 void MessagesView::setupAppearance() {

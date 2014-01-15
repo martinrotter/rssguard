@@ -6,7 +6,6 @@
 
 #include <QIcon>
 #include <QFile>
-#include <QDir>
 #include <QPointer>
 #include <QApplication>
 #include <QHash>
@@ -41,20 +40,7 @@ QString IconThemeFactory::currentIconTheme() {
   return m_currentIconTheme;
 }
 
-QIcon IconThemeFactory::fromTheme(const QString &name) {
-  if (m_currentIconTheme == APP_NO_THEME) {
-    return QIcon();
-  }
 
-  if (!m_cachedIcons.contains(name)) {
-    // Icon is not cached yet.
-    m_cachedIcons.insert(name, QIcon(APP_THEME_PATH + QDir::separator() +
-                                     m_currentIconTheme + QDir::separator() +
-                                     name + APP_THEME_SUFFIX));
-  }
-
-  return m_cachedIcons.value(name);
-}
 
 void IconThemeFactory::setCurrentIconTheme(const QString &theme_name) {
   Settings::instance()->setValue(APP_CFG_GUI,

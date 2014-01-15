@@ -1,10 +1,13 @@
 #ifndef THEMEFACTORY_H
 #define THEMEFACTORY_H
 
+#include "core/defs.h"
+
 #include <QString>
 #include <QIcon>
 #include <QPointer>
 #include <QHash>
+#include <QDir>
 
 
 class IconThemeFactory : public QObject {
@@ -19,7 +22,20 @@ class IconThemeFactory : public QObject {
 
     // Returns icon from active theme or invalid icon if
     // "no icon theme" is set.
-    QIcon fromTheme(const QString &name);
+    inline QIcon fromTheme(const QString &name) {
+      if (m_currentIconTheme == APP_NO_THEME) {
+        return QIcon();
+      }
+
+      if (!m_cachedIcons.contains(name)) {
+        // Icon is not cached yet.
+        m_cachedIcons.insert(name, QIcon(APP_THEME_PATH + QDir::separator() +
+                                         m_currentIconTheme + QDir::separator() +
+                                         name + APP_THEME_SUFFIX));
+      }
+
+      return m_cachedIcons.value(name);
+    }
 
     // Adds custom application path to be search for icons.
     void setupSearchPaths();

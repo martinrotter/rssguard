@@ -4,6 +4,7 @@
 #include "core/messagesmodel.h"
 
 #include <QTreeView>
+#include <QHeaderView>
 
 
 class MessagesProxyModel;
@@ -16,11 +17,19 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
-    void setSortingEnabled(bool enable);
+    inline void setSortingEnabled(bool enable) {
+      QTreeView::setSortingEnabled(enable);
+      header()->setSortIndicatorShown(false);
+    }
 
     // Model accessors.
-    MessagesProxyModel *model();
-    MessagesModel *sourceModel();
+    inline MessagesProxyModel *model() {
+      return m_proxyModel;
+    }
+
+    inline MessagesModel *sourceModel() {
+      return m_sourceModel;
+    }
 
     // Creates needed connections.
     void createConnections();

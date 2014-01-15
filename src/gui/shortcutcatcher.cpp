@@ -98,8 +98,7 @@ void ShortcutCatcher::controlModifierlessTimout() {
   }
 }
 
-void ShortcutCatcher::updateDisplayShortcut()
-{
+void ShortcutCatcher::updateDisplayShortcut() {
   QString str = m_currentSequence.toString(QKeySequence::NativeText);
   str.replace('&', QLatin1String("&&"));
 
@@ -126,15 +125,4 @@ void ShortcutCatcher::updateDisplayShortcut()
   m_sequenceButton->setText(str);
 }
 
-QKeySequence ShortcutCatcher::shortcut() const {
-  return m_currentSequence;
-}
 
-void ShortcutCatcher::setShortcut(const QKeySequence &key) {
-  m_currentSequence = m_defaultSequence = key;
-  doneRecording();
-}
-
-void ShortcutCatcher::clearShortcut() {
-  setShortcut(m_defaultSequence);
-}

@@ -1,22 +1,22 @@
 #ifndef WEBBROWSER_H
 #define WEBBROWSER_H
 
-#include <QWidget>
-#include <QPointer>
-#include <QUrl>
-
 #include "core/messagesmodel.h"
 #include "gui/tabcontent.h"
+#include "gui/webview.h"
+
+#include <QWidget>
+#include <QWidgetAction>
+#include <QPointer>
+#include <QUrl>
+#include <QToolBar>
 
 
-class QToolBar;
 class QToolButton;
-class QWidgetAction;
 class QVBoxLayout;
-class LocationLineEdit;
-class WebView;
-class WebBrowserNetworkAccessManager;
 class QMenu;
+class LocationLineEdit;
+class WebBrowserNetworkAccessManager;
 class TabWidget;
 
 class WebBrowser : public TabContent {
@@ -31,17 +31,28 @@ class WebBrowser : public TabContent {
     void setupIcons();
 
     // Returns icon associated with currently loaded website.
-    QIcon icon();
+    inline QIcon icon() {
+      return m_webView->icon();
+    }
 
     // Sets this WebBrowser instance as focused.
     void setFocus(Qt::FocusReason reason);
 
     // Returns this instance.
     // NOTE: This is needed due to TabContent interface.
-    WebBrowser *webBrowser();
+    inline WebBrowser *webBrowser() {
+      return this;
+    }
 
     // Returns global menu for this web browser.
-    virtual QList<QAction*> globalMenu();
+    inline virtual QList<QAction*> globalMenu() {
+      QList<QAction*> browser_menu;
+
+      // Add needed actions into the menu.
+      browser_menu.append(m_actionZoom);
+
+      return browser_menu;
+    }
 
     // Returns pointer to global network access manager
     // for web browsers.
@@ -54,7 +65,9 @@ class WebBrowser : public TabContent {
 
   public slots:
     // Switches visibility of navigation bar.
-    void setNavigationBarVisible(bool visible);
+    inline void setNavigationBarVisible(bool visible) {
+      m_toolBar->setVisible(visible);
+    }
 
     // Loads new url into the web browser.
     void navigateToUrl(const QString &url);

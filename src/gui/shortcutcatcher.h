@@ -50,15 +50,23 @@ class ShortcutCatcher : public QWidget {
     void controlModifierlessTimout();
     void updateDisplayShortcut();
 
-    QKeySequence shortcut() const;
-    void setShortcut(const QKeySequence &key);
+    inline QKeySequence shortcut() const {
+      return m_currentSequence;
+    }
+
+    inline void setShortcut(const QKeySequence &key) {
+      m_currentSequence = m_defaultSequence = key;
+      doneRecording();
+    }
 
   protected slots:
     void startRecording();
     void doneRecording();
 
   public slots:
-    void clearShortcut();
+    inline void clearShortcut() {
+      setShortcut(m_defaultSequence);
+    }
 
   signals:
     void shortcutChanged(const QKeySequence &seguence);

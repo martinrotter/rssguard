@@ -16,7 +16,9 @@ class StatusBar : public QStatusBar {
     explicit StatusBar(QWidget *parent = 0);
     virtual ~StatusBar();
 
-    QToolButton *fullscreenSwitcher() const;
+    inline QToolButton *fullscreenSwitcher() const {
+      return m_fullscreenSwitcher;
+    }
 
     // Progress bar operations
     void showProgress(int progress, const QString &label);

@@ -52,9 +52,7 @@ void TabWidget::createConnections() {
   connect(tabBar(), SIGNAL(currentChanged(int)), this, SLOT(fixContentAfterIndexChange(int)));
 }
 
-TabBar *TabWidget::tabBar() {
-  return static_cast<TabBar*>(QTabWidget::tabBar());
-}
+
 
 void TabWidget::initializeTabs() { 
   // Create widget for "Feeds" page and add it.
@@ -64,10 +62,6 @@ void TabWidget::initializeTabs() {
                                 tr("Feeds"),
                                 TabBar::FeedReader);
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
-}
-
-TabContent *TabWidget::widget(int index) const {
-  return static_cast<TabContent*>(QTabWidget::widget(index));
 }
 
 void TabWidget::setupIcons() {
@@ -249,9 +243,7 @@ int TabWidget::addBrowser(bool move_after_current,
   return final_index;
 }
 
-FeedMessageViewer *TabWidget::feedMessageViewer() const {
-  return m_feedMessageViewer;
-}
+
 
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {
   setTabIcon(index, new_icon);

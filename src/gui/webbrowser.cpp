@@ -232,22 +232,11 @@ WebBrowser::~WebBrowser() {
   delete m_actionZoom;
 }
 
-WebBrowser *WebBrowser::webBrowser() {
-  return this;
-}
 
-QList<QAction *> WebBrowser::globalMenu() {
-  QList<QAction*> browser_menu;
 
-  // Add needed actions into the menu.
-  browser_menu.append(m_actionZoom);
 
-  return browser_menu;
-}
 
-QIcon WebBrowser::icon() {
-  return m_webView->icon();
-}
+
 
 void WebBrowser::setFocus(Qt::FocusReason reason) {
   m_txtLocation->setFocus(reason);
@@ -266,9 +255,7 @@ QList<WebBrowser *> WebBrowser::runningWebBrowsers() {
   return m_runningWebBrowsers;
 }
 
-void WebBrowser::setNavigationBarVisible(bool visible) {
-  m_toolBar->setVisible(visible);
-}
+
 
 WebBrowserNetworkAccessManager *WebBrowser::globalNetworkManager() {
   if (m_networkManager.isNull()) {

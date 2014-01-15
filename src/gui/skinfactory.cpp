@@ -102,14 +102,6 @@ QString SkinFactory::selectedSkinName() {
                                         APP_SKIN_DEFAULT).toString();
 }
 
-QString SkinFactory::currentMarkup() {
-  return m_currentSkin.m_layoutMarkup;
-}
-
-QString SkinFactory::currentMarkupLayout() {
-  return m_currentSkin.m_layoutMarkupWrapper;
-}
-
 Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
   Skin skin;
   QString styles;

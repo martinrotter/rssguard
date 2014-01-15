@@ -18,8 +18,13 @@ class TabContent : public QWidget {
     // Gets/sets current index of this TabContent.
     // NOTE: This is the index under which this object lies
     // in some TabWidget instance.
-    virtual int index() const;
-    virtual void setIndex(int index);
+    inline virtual int index() const {
+      return m_index;
+    }
+
+    inline virtual void setIndex(int index) {
+      m_index = index;
+    }
 
     // Obtains instance contained in this TabContent or nullptr.
     // This can be used for obtaining the menu from the instance and so on.

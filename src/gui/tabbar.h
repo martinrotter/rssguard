@@ -2,6 +2,7 @@
 #define TABBAR_H
 
 #include <QTabBar>
+#include <QVariant>
 
 
 class TabBar : public QTabBar {
@@ -19,8 +20,13 @@ class TabBar : public QTabBar {
     virtual ~TabBar();
 
     // Getter/setter for tab type.
-    void setTabType(int index, const TabBar::TabType &type);
-    TabBar::TabType tabType(int index);
+    inline void setTabType(int index, const TabBar::TabType &type) {
+      setTabData(index, QVariant(type));
+    }
+
+    inline TabBar::TabType tabType(int index) {
+      return static_cast<TabBar::TabType>(tabData(index).value<int>());
+    }
     
   protected:
     // Reimplementations.

@@ -37,9 +37,7 @@ StatusBar::~StatusBar() {
   qDebug("Destroying StatusBar instance.");
 }
 
-QToolButton *StatusBar::fullscreenSwitcher() const {
-  return m_fullscreenSwitcher;
-}
+
 
 void StatusBar::showProgress(int progress, const QString &label) {
   m_progressLabel->setVisible(true);

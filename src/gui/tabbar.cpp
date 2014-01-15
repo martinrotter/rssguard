@@ -16,14 +16,6 @@ TabBar::~TabBar() {
   qDebug("Destroying TabBar instance.");
 }
 
-void TabBar::setTabType(int index, const TabBar::TabType &type) {
-  setTabData(index, QVariant(type));
-}
-
-TabBar::TabType TabBar::tabType(int index) {
-  return static_cast<TabBar::TabType>(tabData(index).value<int>());
-}
-
 void TabBar::wheelEvent(QWheelEvent *event) {
   int current_index = currentIndex();
   int number_of_tabs = count();

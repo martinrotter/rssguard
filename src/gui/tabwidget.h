@@ -32,8 +32,13 @@ class TabWidget : public QTabWidget {
     void removeTab(int index);
 
     // Returns tab bar.
-    TabBar *tabBar();
-    TabContent *widget(int index) const;
+    inline TabBar *tabBar() {
+      return static_cast<TabBar*>(QTabWidget::tabBar());
+    }
+
+    inline TabContent *widget(int index) const {
+      return static_cast<TabContent*>(QTabWidget::widget(index));
+    }
 
     // Initializes TabWidget with tabs, this includes initialization
     // of main "Feeds" widget.
@@ -43,7 +48,9 @@ class TabWidget : public QTabWidget {
     void setupIcons();
 
     // Accessor to feed/message viewer.
-    FeedMessageViewer *feedMessageViewer() const;
+    inline FeedMessageViewer *feedMessageViewer() const {
+      return m_feedMessageViewer;
+    }
 
   protected:
     // Creates necesary connections.

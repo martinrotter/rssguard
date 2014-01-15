@@ -19,6 +19,7 @@ class FormWelcome : public QDialog {
     virtual ~FormWelcome();
     
   private slots:
+    // Opens given link in a default web browser.
     void openLink(const QString &link);
 
   private:

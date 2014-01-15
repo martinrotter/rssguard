@@ -48,8 +48,13 @@ class SkinFactory : public QObject {
     void loadCurrentSkin();
 
     // Returns contents of current layout markup.
-    QString currentMarkup();
-    QString currentMarkupLayout();
+    inline QString currentMarkup() {
+      return m_currentSkin.m_layoutMarkup;
+    }
+
+    inline QString currentMarkupLayout() {
+      return m_currentSkin.m_layoutMarkupWrapper;
+    }
 
     // Returns the name of the skin, that should be activated
     // after application restart.
