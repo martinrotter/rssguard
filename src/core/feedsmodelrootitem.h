@@ -57,6 +57,15 @@ class FeedsModelRootItem {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
+    // This method is used to permanently
+    // "remove" (or "unregister") this item.
+    // This typically removes item and its
+    // "children" (for example messages or child feeds)
+    // from the database.
+    virtual bool removeItself() {
+      return false;
+    }
+
     // Access to children.
     inline QList<FeedsModelRootItem*> childItems() const {
       return m_childItems;

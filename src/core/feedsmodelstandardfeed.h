@@ -24,6 +24,10 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     // Perform fetching of new messages.
     void update();
 
+    // Removes this standard feed from persistent
+    // storage.
+    bool removeItself();
+
     // Various getters/setters.
     inline QString encoding() const {
       return m_encoding;

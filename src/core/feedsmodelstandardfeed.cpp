@@ -162,6 +162,12 @@ void FeedsModelStandardFeed::update() {
   updateMessages(messages);
 }
 
+bool FeedsModelStandardFeed::removeItself() {
+  // TODO: pokracovat, vymazat tento standardni
+  // kanal z database a smazat jeho zpravy atp.
+  return false;
+}
+
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id(), message_id;
   qint64 message_creation_date;
