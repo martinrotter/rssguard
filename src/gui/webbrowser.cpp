@@ -6,7 +6,6 @@
 #include "gui/skinfactory.h"
 #include "gui/webview.h"
 #include "gui/formmain.h"
-#include "gui/locationlineedit.h"
 #include "gui/iconthemefactory.h"
 #include "gui/tabwidget.h"
 
@@ -162,10 +161,6 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
   }
 }
 
-void WebBrowser::clear() {
-  m_webView->load(QUrl());
-}
-
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
   SkinFactory *factory = SkinFactory::instance();
   QString messages_layout;
@@ -230,16 +225,6 @@ WebBrowser::~WebBrowser() {
   delete m_layout;
   delete m_zoomButtons;
   delete m_actionZoom;
-}
-
-
-
-
-
-
-
-void WebBrowser::setFocus(Qt::FocusReason reason) {
-  m_txtLocation->setFocus(reason);
 }
 
 void WebBrowser::setupIcons() {

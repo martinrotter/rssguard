@@ -17,7 +17,9 @@ class WebView : public QWebView {
     virtual ~WebView();
 
     // Page accessor.
-    WebPage *page() const;
+    inline WebPage *page() const {
+      return m_page;
+    }
 
     void setupIcons();
 

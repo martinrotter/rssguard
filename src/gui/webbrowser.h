@@ -4,6 +4,7 @@
 #include "core/messagesmodel.h"
 #include "gui/tabcontent.h"
 #include "gui/webview.h"
+#include "gui/locationlineedit.h"
 
 #include <QWidget>
 #include <QWidgetAction>
@@ -15,7 +16,6 @@
 class QToolButton;
 class QVBoxLayout;
 class QMenu;
-class LocationLineEdit;
 class WebBrowserNetworkAccessManager;
 class TabWidget;
 
@@ -36,7 +36,9 @@ class WebBrowser : public TabContent {
     }
 
     // Sets this WebBrowser instance as focused.
-    void setFocus(Qt::FocusReason reason);
+    inline void setFocus(Qt::FocusReason reason) {
+      m_txtLocation->setFocus(reason);
+    }
 
     // Returns this instance.
     // NOTE: This is needed due to TabContent interface.
@@ -77,7 +79,9 @@ class WebBrowser : public TabContent {
     void navigateToMessages(const QList<Message> &messages);
 
     // Clears contents.
-    void clear();
+    inline void clear() {
+      m_webView->load(QUrl());
+    }
 
     // Zoom manipulators.
     void increaseZoom();

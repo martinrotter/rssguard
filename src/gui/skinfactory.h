@@ -38,9 +38,6 @@ class SkinFactory : public QObject {
     bool loadSkinFromData(const Skin &skin);
 
   public:
-    // Singleton getter.
-    static SkinFactory *instance();
-
     // Destructor.
     virtual ~SkinFactory();
 
@@ -69,6 +66,9 @@ class SkinFactory : public QObject {
 
     // Sets the desired skin as the active one if it exists.
     void setCurrentSkinName(const QString &skin_name);
+
+    // Singleton getter.
+    static SkinFactory *instance();
 
   private:
     // Holds name of the current skin.
