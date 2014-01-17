@@ -14,6 +14,14 @@
         <source>Toolbar for messages</source>
         <translation>Panel zpráv</translation>
     </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -218,10 +226,6 @@
         <translation>Editovat vybrané kategorii/kanál.</translation>
     </message>
     <message>
-        <source>Delete selected feeds/categories.</source>
-        <translation>Smazat vybrané kategorie/kanály.</translation>
-    </message>
-    <message>
         <source>Mark selected messages as read.</source>
         <translation>Označit vybrané zprávy jako přečtené.</translation>
     </message>
@@ -330,20 +334,8 @@
         <translation>Uprav&amp;it vybraní kanál/kategorii</translation>
     </message>
     <message>
-        <source>Marks all messages (without message filters) from selected feeds as read.</source>
-        <translation>Označí všechny zprávy z vybraných kanálů jako přečtené, neuvažuje filtry zpráv.</translation>
-    </message>
-    <message>
-        <source>Marks all messages (without message filters) from selected feeds as unread.</source>
-        <translation>Označí všechny zprávy z vybraných kanálů jako nepřečtené, neuvažuje filtry zpráv.</translation>
-    </message>
-    <message>
         <source>&amp;Clear selected messages</source>
         <translation>&amp;Smazat vybrané zprávy</translation>
-    </message>
-    <message>
-        <source>Removes all messages from selected feeds.</source>
-        <translation>Smaže všechny zprávy z vybraných kanálů.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -364,10 +356,6 @@
     <message>
         <source>Update &amp;selected items</source>
         <translation>Aktualizovat v&amp;ybrané položky</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feeds/categories</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark &amp;selected items read</source>
@@ -394,8 +382,28 @@
         <translation>Zobrazit vybrané položky v novinovém náhledu</translation>
     </message>
     <message>
-        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</source>
-        <translation>Zobrazí všechny zprávy z vybraných kanálů v novinovém náhledu v novém panelu.</translation>
+        <source>&amp;Delete selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected feeds as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected feeds as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from selected feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -439,18 +447,6 @@
     <message>
         <source>Tray icon</source>
         <translation>Notifikační ikona</translation>
-    </message>
-    <message>
-        <source>When main window is closed, then</source>
-        <translation>Je-li hlavní okno aplikace zavřeno, pak</translation>
-    </message>
-    <message>
-        <source>hide it.</source>
-        <translation>jej pouze skrýt (aplikace běží na pozadí).</translation>
-    </message>
-    <message>
-        <source>quit the application.</source>
-        <translation>aplikaci ukončit.</translation>
     </message>
     <message>
         <source>Start application hidden</source>
@@ -689,10 +685,6 @@
         <translation>Parametry spouštěče</translation>
     </message>
     <message>
-        <source>use sample arguments for</source>
-        <translation>použít argumenty pro</translation>
-    </message>
-    <message>
         <source>select browser</source>
         <translation>zvolte prohlížeč</translation>
     </message>
@@ -751,6 +743,10 @@
     <message>
         <source>skin changed</source>
         <translation>skin změněn</translation>
+    </message>
+    <message>
+        <source>Use sample arguments for</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -880,6 +876,14 @@
         <source>Message &apos;%s&apos; does not contain URL.</source>
         <translation>Zpráva &apos;%s&apos; neobsahuje URL.</translation>
     </message>
+    <message>
+        <source>Problem with starting external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser could not be started.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -925,16 +929,6 @@
         <translation></translation>
     </message>
     <message>
-        <source>%1
-
-Category type: standard
-Creation date: %2%3</source>
-        <translation>%1
-
-Typ kategorie: standardní
-Datum vytvoření: %2%3</translation>
-    </message>
-    <message>
         <source>
 
 This category does not contain any nested items.</source>
@@ -943,26 +937,25 @@ This category does not contain any nested items.</source>
 Tato kategorie neobsahuje žádné podřízené položky.</translation>
     </message>
     <message>
-        <source>%1
-
-Feed type: %2
-URL: %3
-Encoding: %4
-Language: %5</source>
-        <translation>%1
-
-Typ kanálu: %2
-URL: %3
-Kódování: %4
-Jazyk: %5</translation>
-    </message>
-    <message>
         <source>RDF</source>
         <translation></translation>
     </message>
     <message>
         <source>RSS 0.91/0.92/0.93</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>%1 (standard category)
+%2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Encoding: %4
+Language: %5</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -974,6 +967,17 @@ Jazyk: %5</translation>
     <message>
         <source>Set shortcut.</source>
         <translation>Nastavit zkratku.</translation>
+    </message>
+</context>
+<context>
+    <name>StatusBar</name>
+    <message>
+        <source>Fullscreen mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

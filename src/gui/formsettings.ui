@@ -79,7 +79,7 @@
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -102,8 +102,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>177</width>
-                <height>213</height>
+                <width>568</width>
+                <height>344</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -625,7 +625,7 @@
               <item row="2" column="0">
                <widget class="QLabel" name="m_lblExternalBrowserPreset">
                 <property name="text">
-                 <string>use sample arguments for</string>
+                 <string>Use sample arguments for</string>
                 </property>
                </widget>
               </item>

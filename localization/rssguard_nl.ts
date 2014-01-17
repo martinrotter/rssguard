@@ -14,6 +14,14 @@
         <source>Toolbar for messages</source>
         <translation>Werkbalk voor berichten</translation>
     </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -218,10 +226,6 @@
         <translation>Bewerk geselekteerde feeds/categorieën.</translation>
     </message>
     <message>
-        <source>Delete selected feeds/categories.</source>
-        <translation>verwijder geselekteerde feeds/categorieën.</translation>
-    </message>
-    <message>
         <source>Mark selected messages as read.</source>
         <translation>Markeer geselekteerde bericht als gelezen.</translation>
     </message>
@@ -330,20 +334,8 @@
         <translation>&amp;Bewerk geselecteerde feed/categorie</translation>
     </message>
     <message>
-        <source>Marks all messages (without message filters) from selected feeds as read.</source>
-        <translation>Markeer alle berichten(zonder berichten filters)van geselecteerde feeds als gelezen.</translation>
-    </message>
-    <message>
-        <source>Marks all messages (without message filters) from selected feeds as unread.</source>
-        <translation>Markeer alle berichten(zonder berichten filters)van geselecteerde feeds als ongelezen.</translation>
-    </message>
-    <message>
         <source>&amp;Clear selected messages</source>
         <translation>Wis gesele&amp;cteerde berichten</translation>
-    </message>
-    <message>
-        <source>Removes all messages from selected feeds.</source>
-        <translation>Verwijder alle berichten van geselecteerde feeds.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -364,10 +356,6 @@
     <message>
         <source>Update &amp;selected items</source>
         <translation>Update ge&amp;seleckteerde items</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feeds/categories</source>
-        <translation>Verwij&amp;der geselekteerde feeds/categorieën</translation>
     </message>
     <message>
         <source>Mark &amp;selected items read</source>
@@ -394,8 +382,28 @@
         <translation>Bekijk de geselecteerde items in de krantweergave modus</translation>
     </message>
     <message>
-        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</source>
-        <translation>Toon alle berichten van geselecteerde feeds/categorieën in een nieuw &quot;krantweergave modus&quot;tabblad. Alle geselecteerde feeds zijn gemarkeerd als gelezen.</translation>
+        <source>&amp;Delete selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected feeds as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected feeds as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from selected feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -439,18 +447,6 @@
     <message>
         <source>Tray icon</source>
         <translation>Pictogram in het systeemvak</translation>
-    </message>
-    <message>
-        <source>When main window is closed, then</source>
-        <translation>Als hoofvenster gesloten is, dan</translation>
-    </message>
-    <message>
-        <source>hide it.</source>
-        <translation>verberg het.</translation>
-    </message>
-    <message>
-        <source>quit the application.</source>
-        <translation>sluit het programma.</translation>
     </message>
     <message>
         <source>Start application hidden</source>
@@ -689,10 +685,6 @@
         <translation>exe parameters</translation>
     </message>
     <message>
-        <source>use sample arguments for</source>
-        <translation>gebruik voorbeeld argumenten voor</translation>
-    </message>
-    <message>
         <source>select browser</source>
         <translation>Selecteer browser</translation>
     </message>
@@ -751,6 +743,10 @@
     <message>
         <source>skin changed</source>
         <translation>Skin is veranderd</translation>
+    </message>
+    <message>
+        <source>Use sample arguments for</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -880,6 +876,14 @@
         <source>Message &apos;%s&apos; does not contain URL.</source>
         <translation>Bericht &apos;%s&apos; bevat geen geldige URL.</translation>
     </message>
+    <message>
+        <source>Problem with starting external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser could not be started.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -924,16 +928,6 @@
         <translation></translation>
     </message>
     <message>
-        <source>%1
-
-Category type: standard
-Creation date: %2%3</source>
-        <translation>%1
-
-Categorie type: standaard
-aanmaakdatum: %2%3</translation>
-    </message>
-    <message>
         <source>
 
 This category does not contain any nested items.</source>
@@ -942,26 +936,25 @@ This category does not contain any nested items.</source>
 Deze categorie bevat geen nested items.</translation>
     </message>
     <message>
-        <source>%1
-
-Feed type: %2
-URL: %3
-Encoding: %4
-Language: %5</source>
-        <translation>%1
-
-Feed type: %2
-URL: %3
-Encodering: %4
-Taal: %5</translation>
-    </message>
-    <message>
         <source>RDF</source>
         <translation></translation>
     </message>
     <message>
         <source>RSS 0.91/0.92/0.93</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>%1 (standard category)
+%2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Encoding: %4
+Language: %5</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -973,6 +966,17 @@ Taal: %5</translation>
     <message>
         <source>Set shortcut.</source>
         <translation>Stel sneltoets in.</translation>
+    </message>
+</context>
+<context>
+    <name>StatusBar</name>
+    <message>
+        <source>Fullscreen mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -14,6 +14,14 @@
         <source>Toolbar for messages</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Feed update started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -218,10 +226,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Delete selected feeds/categories.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark selected messages as read.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -330,19 +334,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Marks all messages (without message filters) from selected feeds as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Marks all messages (without message filters) from selected feeds as unread.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Clear selected messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Removes all messages from selected feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -363,10 +355,6 @@
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feeds/categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -394,7 +382,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. All selected feeds are marked as read.</source>
+        <source>&amp;Delete selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected feeds as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected feeds as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from selected feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -438,18 +446,6 @@
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>When main window is closed, then</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>hide it.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>quit the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -683,10 +679,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>use sample arguments for</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>select browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -742,6 +734,10 @@
     </message>
     <message>
         <source>skin changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use sample arguments for</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -872,6 +868,14 @@
         <source>Message &apos;%s&apos; does not contain URL.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Problem with starting external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser could not be started.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -916,25 +920,9 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1
-
-Category type: standard
-Creation date: %2%3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>
 
 This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1
-
-Feed type: %2
-URL: %3
-Encoding: %4
-Language: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -943,6 +931,19 @@ Language: %5</source>
     </message>
     <message>
         <source>RSS 0.91/0.92/0.93</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (standard category)
+%2%3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Encoding: %4
+Language: %5</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -954,6 +955,17 @@ Language: %5</source>
     </message>
     <message>
         <source>Set shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StatusBar</name>
+    <message>
+        <source>Fullscreen mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
