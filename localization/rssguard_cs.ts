@@ -16,11 +16,11 @@
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"></translation>
+        <translation>Spuštěn update kanálů</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizován kanál &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -746,7 +746,7 @@
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít typické argumenty pro</translation>
     </message>
 </context>
 <context>
@@ -878,11 +878,11 @@
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>PRoblém s externím webovým prohlížečem</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"></translation>
+        <translation>Externí webový prohlížeč nebyl úspěšně spuštěn.</translation>
     </message>
 </context>
 <context>
@@ -947,7 +947,8 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
     <message>
         <source>%1 (standard category)
 %2%3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (standardní kategorie)
+%2%3</translation>
     </message>
     <message>
         <source>%1 (%2)
@@ -955,7 +956,11 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
 
 Encoding: %4
 Language: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)
+%3
+
+Kódování: %4
+Jazyk: %5</translation>
     </message>
 </context>
 <context>
@@ -973,11 +978,11 @@ Language: %5</source>
     <name>StatusBar</name>
     <message>
         <source>Fullscreen mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mód celé obrazovky</translation>
     </message>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepnout režim okna aplikace rovnou z ikonky ve stavovém pruhu.</translation>
     </message>
 </context>
 <context>

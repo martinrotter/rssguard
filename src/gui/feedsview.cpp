@@ -246,6 +246,14 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
   emit feedsSelected(m_selectedFeeds);
 }
 
+void FeedsView::keyPressEvent(QKeyEvent *event) {
+  QTreeView::keyPressEvent(event);
+
+  if (event->key() == Qt::Key_Delete) {
+    deleteSelectedItem();
+  }
+}
+
 void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
   if (indexAt(event->pos()).isValid()) {
     // Display context menu for categories.

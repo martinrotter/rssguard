@@ -133,15 +133,6 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
   return database;
 }
 
-// TODO: :memory: database je rychllejsi, overit
-// na windows, a udelat to takto:
-// vsechny connectiony v aplikaci budou defaultní (bez connection_name)
-// a budou používat :memory: databazi (problem s vlakny?)
-// na zacatku aplikace se kompletni souborova
-// databaze presype do :memory: databaze
-// a pri vypinani se zase :memory: presype do
-// souborove databaze
-
 QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connection_name) {
   // Prepare file paths.
   QDir db_path(getDatabasePath());
