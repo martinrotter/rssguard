@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -51,8 +51,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>576</width>
+            <height>373</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -102,8 +102,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>568</width>
-                <height>344</height>
+                <width>177</width>
+                <height>213</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -565,7 +565,7 @@
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -576,16 +576,13 @@
           <attribute name="title">
            <string>Messages</string>
           </attribute>
-          <layout class="QFormLayout" name="formLayout_10">
-           <property name="fieldGrowthPolicy">
-            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-           </property>
+          <layout class="QFormLayout" name="formLayout_11">
            <item row="0" column="0" colspan="2">
             <widget class="QGroupBox" name="groupBox_3">
              <property name="title">
               <string>External web browser for message viewing</string>
              </property>
-             <layout class="QFormLayout" name="formLayout_11">
+             <layout class="QFormLayout" name="formLayout_10">
               <item row="0" column="0">
                <widget class="QLabel" name="m_lblExternalBrowserExecutable">
                 <property name="text">
@@ -619,36 +616,32 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_11">
-                <item>
-                 <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
-                  <property name="placeholderText">
-                   <string>Parameters to executable</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="m_lblExternalBrowserPreset">
-                  <property name="text">
-                   <string>use sample arguments for</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
-                  <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContents</enum>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>select browser</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
+               <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
+                <property name="placeholderText">
+                 <string>Parameters to executable</string>
+                </property>
+               </widget>
               </item>
-              <item row="2" column="0" colspan="2">
+              <item row="2" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserPreset">
+                <property name="text">
+                 <string>use sample arguments for</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>select browser</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
                <widget class="QLabel" name="label">
                 <property name="text">
                  <string>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</string>
@@ -662,6 +655,8 @@
             </widget>
            </item>
           </layout>
+          <zorder>groupBox_3</zorder>
+          <zorder>label</zorder>
          </widget>
         </widget>
        </item>
