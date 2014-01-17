@@ -103,23 +103,8 @@ void FeedsView::editSelectedItem() {
 
 }
 
-void FeedsView::deleteSelectedItems() {
-  QModelIndexList selection = selectionModel()->selectedRows();
-  QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
-
-  //FeedsModelRootItem *parent = m_sourceModel->itemForIndex(mapped_selection.at(0).parent());
-
-  m_sourceModel->removeItems(mapped_selection);
-
-  /*
-  QModelIndex id = m_sourceModel->indexForItem(parent);
-
-  if (id.isValid()) {
-    selectionModel()->clearSelection();
-    selectionModel()->select(m_proxyModel->mapFromSource(id),
-                             QItemSelectionModel::Rows |
-                             QItemSelectionModel::Select);
-  }*/
+void FeedsView::deleteSelectedItem() {
+  m_sourceModel->removeItem(m_proxyModel->mapToSource(currentIndex()));
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {
@@ -233,7 +218,7 @@ void FeedsView::setupAppearance() {
   setIndentation(10);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
-  setSelectionMode(QAbstractItemView::ExtendedSelection);
+  setSelectionMode(QAbstractItemView::SingleSelection);
   setRootIsDecorated(false);
 
   // Sort in ascending order, that is categories are

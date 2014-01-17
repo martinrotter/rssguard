@@ -15,16 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
@@ -48,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -100,7 +91,7 @@
     <addaction name="m_actionAddNewFeed"/>
     <addaction name="m_actionAddNewCategory"/>
     <addaction name="m_actionEditSelectedFeedCategory"/>
-    <addaction name="m_actionDeleteSelectedFeedsCategories"/>
+    <addaction name="m_actionDeleteSelectedFeedCategory"/>
     <addaction name="separator"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkAllFeedsRead"/>
@@ -251,12 +242,12 @@
     <string>Edit selected feed/category.</string>
    </property>
   </action>
-  <action name="m_actionDeleteSelectedFeedsCategories">
+  <action name="m_actionDeleteSelectedFeedCategory">
    <property name="text">
-    <string>&amp;Delete selected feeds/categories</string>
+    <string>&amp;Delete selected feed/category</string>
    </property>
    <property name="toolTip">
-    <string>Delete selected feeds/categories.</string>
+    <string>Delete selected feed/category.</string>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">

@@ -72,6 +72,37 @@ class FeedsModelRootItem {
       return m_childItems;
     }
 
+    // Checks whether this instance is child (can be nested)
+    // if given root item.
+    bool isChild(FeedsModelRootItem *root) {
+
+      while (root->kind() != FeedsModelRootItem::RootItem) {
+        if (root->childItems().contains(this)) {
+          return true;
+        }
+        else {
+          root = root->parent();
+        }
+      }
+
+      return false;
+/*
+      parents << root;
+
+      while (!parents.isEmpty()) {
+        foreach (FeedsModelRootItem *root_child, parents.takeFirst()->childItems()) {
+          if (root_child == this) {
+            return true;
+          }
+          else if (root_child->kind() == FeedsModelRootItem::Category) {
+            parents << root_child;
+          }
+        }
+      }
+
+      return false;*/
+    }
+
     // Removes all children from this item.
     // NOTE: Children are NOT freed from the memory.
     inline void clearChildren() {
@@ -81,6 +112,7 @@ class FeedsModelRootItem {
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
     bool removeChild(int index);
+    bool removeChild(FeedsModelRootItem *child);
 
     inline Kind kind() const {
       return m_kind;

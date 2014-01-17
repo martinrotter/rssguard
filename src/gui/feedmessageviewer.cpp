@@ -223,8 +223,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
-  connect(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedsCategories,
-          SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItems()));
+  connect(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedCategory,
+          SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
 }
 
 void FeedMessageViewer::initialize() {
@@ -241,7 +241,7 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionAddNewFeed);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedsCategories);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedCategory);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsRead);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearFeeds);

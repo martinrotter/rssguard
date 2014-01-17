@@ -46,6 +46,10 @@ int FeedsModelRootItem::countOfAllMessages() const {
   return total_count;
 }
 
+bool FeedsModelRootItem::removeChild(FeedsModelRootItem *child) {
+  return m_childItems.removeOne(child);
+}
+
 int FeedsModelRootItem::countOfUnreadMessages() const {
   int total_count = 0;
 

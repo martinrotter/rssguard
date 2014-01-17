@@ -46,7 +46,7 @@ class FeedsModel : public QAbstractItemModel {
     }
 
     // Feed/category manipulators.
-    bool removeItems(const QModelIndexList &indexes);
+    bool removeItem(const QModelIndex &index);
 
     // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);

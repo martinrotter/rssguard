@@ -229,7 +229,13 @@ void MessagesView::openSelectedSourceArticlesExternally() {
 
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
-    QProcess::execute(browser, QStringList() << arguments.arg(link));
+
+    if (!QProcess::startDetached(browser, QStringList() << arguments.arg(link))) {
+      QMessageBox::critical(this,
+                            tr("Problem with starting external web browser"),
+                            tr("External web browser could not be started."),
+                            QMessageBox::Ok);
+    }
   }
 }
 

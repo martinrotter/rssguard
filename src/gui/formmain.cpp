@@ -86,7 +86,7 @@ QList<QAction*> FormMain::allActions() {
              m_ui->m_actionUpdateAllFeeds <<
              m_ui->m_actionUpdateSelectedFeedsCategories <<
              m_ui->m_actionEditSelectedFeedCategory <<
-             m_ui->m_actionDeleteSelectedFeedsCategories;
+             m_ui->m_actionDeleteSelectedFeedCategory;
 
   return actions;
 }
@@ -222,7 +222,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::instance()->fromTheme("document-save-as"));
   m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("document-save"));
   m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
-  m_ui->m_actionDeleteSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("edit-delete"));
+  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("edit-delete"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
   m_ui->m_actionAddNewCategory->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
   m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
