@@ -215,9 +215,9 @@ void MessagesView::loadFeeds(const QList<int> &feed_ids) {
 void MessagesView::openSelectedSourceArticlesExternally() {
   QString browser = Settings::instance()->value(APP_CFG_MESSAGES,
                                                 "external_browser_executable").toString();
-  QStringList arguments = Settings::instance()->value(APP_CFG_MESSAGES,
-                                                      "external_browser_arguments",
-                                                      "%1").toString().split(' ');
+  QString arguments = Settings::instance()->value(APP_CFG_MESSAGES,
+                                                  "external_browser_arguments",
+                                                  "%1").toString();
 
   if (browser.isEmpty() || arguments.isEmpty()) {
     QMessageBox::critical(this,
@@ -229,9 +229,8 @@ void MessagesView::openSelectedSourceArticlesExternally() {
 
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
-    QStringList real_arguments = arguments.replaceInStrings("%1", link);
 
-    if (!QProcess::startDetached(browser, real_arguments)) {
+    if (!QProcess::startDetached(browser + ' ' + arguments.arg(link))) {
       QMessageBox::critical(this,
                             tr("Problem with starting external web browser"),
                             tr("External web browser could not be started."),
