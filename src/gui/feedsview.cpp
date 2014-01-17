@@ -107,10 +107,11 @@ void FeedsView::deleteSelectedItems() {
   QModelIndexList selection = selectionModel()->selectedRows();
   QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
 
-  FeedsModelRootItem *parent = m_sourceModel->itemForIndex(mapped_selection.at(0).parent());
+  //FeedsModelRootItem *parent = m_sourceModel->itemForIndex(mapped_selection.at(0).parent());
 
   m_sourceModel->removeItems(mapped_selection);
 
+  /*
   QModelIndex id = m_sourceModel->indexForItem(parent);
 
   if (id.isValid()) {
@@ -118,7 +119,7 @@ void FeedsView::deleteSelectedItems() {
     selectionModel()->select(m_proxyModel->mapFromSource(id),
                              QItemSelectionModel::Rows |
                              QItemSelectionModel::Select);
-  }
+  }*/
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {

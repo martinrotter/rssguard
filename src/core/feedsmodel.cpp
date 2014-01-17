@@ -159,17 +159,14 @@ bool FeedsModel::removeItems(const QModelIndexList &indexes) {
       FeedsModelRootItem *parent_item = itemForIndex(parent_index);
 
       beginRemoveRows(parent_index, index.row(), index.row());
-      if (parent_item->removeChild(index.row())) {
+      if (item->removeItself() || parent_item->removeChild(index.row())) {
         items_for_deletion << item;
       }
       endRemoveRows();
     }
   }
 
-  // Free deleted items from the memory.
-  while (!items_for_deletion.isEmpty()) {
-    delete items_for_deletion.takeFirst();
-  }
+  qDeleteAll(items_for_deletion);
 
   return true;
 }

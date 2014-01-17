@@ -163,9 +163,24 @@ void FeedsModelStandardFeed::update() {
 }
 
 bool FeedsModelStandardFeed::removeItself() {
-  // TODO: pokracovat, vymazat tento standardni
-  // kanal z database a smazat jeho zpravy atp.
-  return false;
+  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlQuery query_remove(database);
+
+  query_remove.setForwardOnly(true);
+
+  // Remove all messages from this standard feed.
+  query_remove.prepare("DELETE FROM Messages WHERE feed = :feed;");
+  query_remove.bindValue(":feed", id());
+
+  if (!query_remove.exec()) {
+    return false;
+  }
+
+  // Remove feed itself.
+  query_remove.prepare("DELETE FROM Feeds WHERE id = :feed;");
+  query_remove.bindValue(":feed", id());
+
+  return query_remove.exec();
 }
 
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {

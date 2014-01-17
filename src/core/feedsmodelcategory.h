@@ -24,16 +24,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     explicit FeedsModelCategory(const FeedsModelCategory &other);
     virtual ~FeedsModelCategory();
 
-    inline bool removeItself() {
-      bool result = true;
-
-      foreach (FeedsModelRootItem *child, m_childItems) {
-        result &= child->removeItself();
-      }
-
-      return result;
-    }
-
     // All types of categories offer these getters/setters.
     inline Type type() const {
       return m_type;

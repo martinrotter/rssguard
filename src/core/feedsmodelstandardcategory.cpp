@@ -1,11 +1,13 @@
 #include "core/feedsmodelstandardcategory.h"
 
 #include "core/defs.h"
+#include "core/databasefactory.h"
 #include "core/textfactory.h"
 #include "gui/iconthemefactory.h"
 #include "gui/iconfactory.h"
 
 #include <QVariant>
+#include <QSqlQuery>
 
 
 FeedsModelStandardCategory::FeedsModelStandardCategory(FeedsModelRootItem *parent_item)
@@ -87,6 +89,31 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
     default:
       return QVariant();
   }
+}
+
+bool FeedsModelStandardCategory::removeItself() {
+  bool result = true;
+
+  // Remove all child items (feeds, categories.)
+  foreach (FeedsModelRootItem *child, m_childItems) {
+    result &= child->removeItself();
+  }
+
+  if (!result) {
+    return result;
+  }
+
+  // Children are removed, remove this standard category too.
+  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlQuery query_remove(database);
+
+  query_remove.setForwardOnly(true);
+
+  // Remove all messages from this standard feed.
+  query_remove.prepare("DELETE FROM Categories WHERE id = :category;");
+  query_remove.bindValue(":category", id());
+
+  return query_remove.exec();
 }
 
 FeedsModelStandardCategory *FeedsModelStandardCategory::loadFromRecord(const QSqlRecord &record) {

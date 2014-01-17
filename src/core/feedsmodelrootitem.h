@@ -62,6 +62,7 @@ class FeedsModelRootItem {
     // This typically removes item and its
     // "children" (for example messages or child feeds)
     // from the database.
+    // Returns true if "I" was removed.
     virtual bool removeItself() {
       return false;
     }

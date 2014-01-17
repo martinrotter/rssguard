@@ -21,6 +21,10 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
 
+    // Removes category and all its children from persistent
+    // database.
+    bool removeItself();
+
     // Loads particular "standard category" from given sql record.
     static FeedsModelStandardCategory *loadFromRecord(const QSqlRecord &record);
 };
