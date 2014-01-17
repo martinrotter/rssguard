@@ -7,6 +7,7 @@
 #include <QIcon>
 #include <QPointer>
 #include <QHash>
+#include <QApplication>
 #include <QDir>
 
 

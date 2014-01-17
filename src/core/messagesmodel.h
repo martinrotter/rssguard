@@ -32,7 +32,6 @@ class MessagesModel : public QSqlTableModel {
     virtual ~MessagesModel();
 
     // Model implementation.
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant data(int row, int column, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
@@ -103,10 +102,6 @@ class MessagesModel : public QSqlTableModel {
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
-
-#if QT_VERSION >= 0x050000
-    bool m_isInEditingMode;
-#endif
 
     QFont m_normalFont;
     QFont m_boldFont;

@@ -52,8 +52,6 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-
-
 void MessagesModel::loadMessages(const QList<int> feed_ids) { 
   m_currentFeeds = feed_ids;
 
@@ -110,17 +108,7 @@ void MessagesModel::setupHeaderData() {
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
   Q_UNUSED(index)
 
-#if QT_VERSION >= 0x050000
-  if (m_isInEditingMode) {
-    // NOTE: Editing of model must be temporarily enabled here.
-    return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
-  }
-  else {
-    return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
-  }
-#else
-  return Qt::ItemIsSelectable | Qt::ItemIsEnabled;
-#endif
+  return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {
@@ -180,22 +168,6 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const {
     default:
       return QVariant();
   }
-}
-
-bool MessagesModel::setData(const QModelIndex &index,
-                            const QVariant &value,
-                            int role) {
-#if QT_VERSION >= 0x050000
-  m_isInEditingMode = true;
-#endif
-
-  bool set_data_result = QSqlTableModel::setData(index, value, role);
-
-#if QT_VERSION >= 0x050000
-  m_isInEditingMode = false;
-#endif
-
-  return set_data_result;
 }
 
 bool MessagesModel::setMessageRead(int row_index, int read) {  
