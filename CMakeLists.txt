@@ -35,7 +35,6 @@
 #
 #################################################################
 
-cmake_minimum_required(VERSION 2.8.10)
 
 # Setup basic variables.
 project(rssguard)
@@ -53,6 +52,12 @@ set(EXE_NAME ${APP_LOW_NAME})
 # Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
 option(BUNDLE_ICON_THEMES "Equip installation with custom icon themes" ON)
+
+if(${USE_QT_5})
+  cmake_minimum_required(VERSION 2.8.10)
+else(${USE_QT_5})
+  cmake_minimum_required(VERSION 2.8.0)
+endif(${USE_QT_5})
 
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
