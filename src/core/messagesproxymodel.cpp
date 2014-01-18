@@ -21,8 +21,6 @@ MessagesProxyModel::~MessagesProxyModel() {
   qDebug("Destroying MessagesProxyModel instance.");
 }
 
-
-
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   // TODO: Maybe use QString::localeAwareCompare() here for
   // title at least, but this will be probably little slower

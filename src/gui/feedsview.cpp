@@ -108,6 +108,10 @@ void FeedsView::deleteSelectedItem() {
   }
 
   if (selection_model->selectedRows().size() > 1) {
+    // pridat BalloonTip z qonverteru a tady
+    // ho odpalit pokud todle nastane
+    // s hlaskou "More than one item selected, removing
+    // only current one."
     selection_model->clearSelection();
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
   }
