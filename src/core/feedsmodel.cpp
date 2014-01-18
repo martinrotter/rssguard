@@ -133,6 +133,23 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
+bool FeedsModel::addItem(FeedsModelRootItem *item,
+                         FeedsModelRootItem *parent) {
+  QModelIndex parent_index = indexForItem(parent);
+
+  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
+
+  // Add item to hierarchy.
+  parent->appendChild(item);
+
+  // Add item to persistent storage.
+  item->addItself();
+
+  endInsertRows();
+
+  return true;
+}
+
 bool FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
@@ -329,7 +346,6 @@ void FeedsModel::loadFromDatabase() {
       }
 
       case FeedsModelCategory::Feedly:
-      case FeedsModelCategory::TinyTinyRss:
       default:
         // NOTE: Not yet implemented.
         break;

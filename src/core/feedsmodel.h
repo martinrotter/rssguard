@@ -46,6 +46,8 @@ class FeedsModel : public QAbstractItemModel {
     }
 
     // Feed/category manipulators.
+    bool addItem(FeedsModelRootItem *item,
+                 FeedsModelRootItem *parent);
     bool removeItem(const QModelIndex &index);
 
     // Returns (undeleted) messages for given feeds.

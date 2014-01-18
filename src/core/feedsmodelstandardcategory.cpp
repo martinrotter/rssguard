@@ -91,6 +91,39 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
   }
 }
 
+bool FeedsModelStandardCategory::addItself() {
+  // Children are removed, remove this standard category too.
+  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlQuery query_add(database);
+
+  query_add.setForwardOnly(true);
+
+  // Remove all messages from this standard feed.
+  query_add.prepare("INSERT INTO Categories "
+                    "(parent_id, title, description, date_created, icon, type) "
+                    "VALUES (:parent_id, :title, :description, :date_created, :icon, :type);");
+  query_add.bindValue(":parent_id", m_parentItem->id());
+  query_add.bindValue(":title", m_title);
+  query_add.bindValue(":description", m_description);
+  query_add.bindValue(":date_created", m_creationDate.toMSecsSinceEpoch());
+  query_add.bindValue(":icon", IconFactory::toByteArray(m_icon));
+  query_add.bindValue(":type", (int) m_type);
+
+  if (!query_add.exec()) {
+    return false;
+  }
+
+  query_add.prepare("SELECT id FROM Categories WHERE date_created = :date_created;");
+  query_add.bindValue(":date_created", m_creationDate.toMSecsSinceEpoch());
+  if (query_add.exec() && query_add.next()) {
+    setId(query_add.value(0).toInt());
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 bool FeedsModelStandardCategory::removeItself() {
   bool result = true;
 

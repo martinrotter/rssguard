@@ -57,6 +57,10 @@ class FeedsModelRootItem {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
+    virtual bool addItself() {
+      return false;
+    }
+
     // This method is used to permanently
     // "remove" (or "unregister") this item.
     // This typically removes item and its

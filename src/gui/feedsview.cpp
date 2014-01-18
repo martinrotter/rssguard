@@ -32,10 +32,6 @@ FeedsView::~FeedsView() {
   qDebug("Destroying FeedsView instance.");
 }
 
-
-
-
-
 void FeedsView::setSortingEnabled(bool enable) {
   QTreeView::setSortingEnabled(enable);
   header()->setSortIndicatorShown(false);
@@ -75,7 +71,7 @@ void FeedsView::clearSelectedFeeds() {
 
 void FeedsView::addNewCategory() {
   QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
-  FormCategoryDetailsAnswer answer = form_pointer.data()->exec(NULL, NULL);
+  FormCategoryDetailsAnswer answer = form_pointer.data()->exec(NULL);
 
   if (answer.m_dialogCode == QDialog::Accepted) {
     // User submitted some new category and
@@ -104,7 +100,19 @@ void FeedsView::editSelectedItem() {
 }
 
 void FeedsView::deleteSelectedItem() {
-  m_sourceModel->removeItem(m_proxyModel->mapToSource(currentIndex()));
+  QModelIndex current_index = currentIndex();
+  QItemSelectionModel *selection_model = selectionModel();
+
+  if (!current_index.isValid()) {
+    return;
+  }
+
+  if (selection_model->selectedRows().size() > 1) {
+    selection_model->clearSelection();
+    selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
+  }
+
+  m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index));
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {
@@ -218,7 +226,7 @@ void FeedsView::setupAppearance() {
   setIndentation(10);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
-  setSelectionMode(QAbstractItemView::SingleSelection);
+  setSelectionMode(QAbstractItemView::ExtendedSelection);
   setRootIsDecorated(false);
 
   // Sort in ascending order, that is categories are

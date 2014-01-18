@@ -21,6 +21,9 @@ class FeedsModelStandardCategory : public FeedsModelCategory {
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
 
+    // Add itself to persistent database.
+    bool addItself();
+
     // Removes category and all its children from persistent
     // database.
     bool removeItself();

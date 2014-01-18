@@ -15,8 +15,7 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // NOTE: This is equivavelnt to Categories(type).
     enum Type {
       Standard    = 0,
-      Feedly      = 1,
-      TinyTinyRss = 2
+      Feedly      = 1
     };
 
     // Constructors and destructors

@@ -41,8 +41,10 @@ class FormCategoryDetails : public QDialog {
     // to the database.
     // NOTE: Newly EDITED category IS COPY of its original.
     // SO NO ORIGINAL MODEL DATA ARE EDITED OR CHANGED.
-    FormCategoryDetailsAnswer exec(FeedsModelCategory *input_category,
-                                   FeedsModelCategory *input_parent_category);
+    FormCategoryDetailsAnswer exec(FeedsModelCategory *input_category);
+
+  protected slots:
+    void apply();
 
   protected:
     // Sets the category which will be edited.
@@ -59,6 +61,7 @@ class FormCategoryDetails : public QDialog {
   private:
     Ui::FormCategoryDetails *m_ui;
     FeedsModelCategory *m_editableCategory;
+    FeedsModel *m_feedsModel;
 };
 
 #endif // FORMCATEGORYDETAILS_H

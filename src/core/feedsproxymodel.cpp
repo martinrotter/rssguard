@@ -49,7 +49,8 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
       else {
         // In other cases, sort by title.
         // TODO: mozna pouzit QString::localeAwareCompare tady.
-        return left_item->title() < right_item->title();
+        return QString::compare(left_item->title(),
+                                right_item->title()) < 0;
       }
     }
     else if (left_item->kind() == FeedsModelRootItem::Feed) {
