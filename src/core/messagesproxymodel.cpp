@@ -25,7 +25,8 @@ MessagesProxyModel::~MessagesProxyModel() {
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   // TODO: Maybe use QString::localeAwareCompare() here for
-  // title at least, but this will be probably little slower.
+  // title at least, but this will be probably little slower
+  // than default implementation.
   return QSortFilterProxyModel::lessThan(left, right);
 }
 
