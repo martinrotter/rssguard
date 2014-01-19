@@ -1,4 +1,4 @@
-#include "gui/closebutton.h"
+#include "gui/plaintoolbutton.h"
 
 #include <QToolButton>
 #include <QStyle>
@@ -7,16 +7,17 @@
 #include <QStyleOption>
 
 
-CloseButton::CloseButton(QWidget *parent) : QToolButton(parent) {
+PlainToolButton::PlainToolButton(QWidget *parent) : QToolButton(parent) {
 }
 
-CloseButton::~CloseButton() {
+PlainToolButton::~PlainToolButton() {
 }
 
-void CloseButton::paintEvent(QPaintEvent *e) {
+void PlainToolButton::paintEvent(QPaintEvent *e) {
   QPainter p(this);
   icon().paint(&p, QRect(QPoint(0, 0), iconSize()));
 
+  /*
   if (underMouse()) {
     QStyleOptionFrameV3 style_option;
     int frame_shape = QFrame::Sunken & QFrame::Shape_Mask;
@@ -33,4 +34,5 @@ void CloseButton::paintEvent(QPaintEvent *e) {
                          &style_option, &p,
                          this);
   }
+  */
 }

@@ -288,7 +288,8 @@ set(APP_SOURCES
   src/gui/statusbar.cpp
   src/gui/iconfactory.cpp
   src/gui/formcategorydetails.cpp
-  src/gui/closebutton.cpp
+  src/gui/plaintoolbutton.cpp
+  src/gui/lineeditwithstatus.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -351,7 +352,8 @@ set(APP_HEADERS
   src/gui/messagesview.h
   src/gui/statusbar.h
   src/gui/formcategorydetails.h
-  src/gui/closebutton.h
+  src/gui/plaintoolbutton.h
+  src/gui/lineeditwithstatus.h
 
   # CORE headers.
   src/core/settings.h

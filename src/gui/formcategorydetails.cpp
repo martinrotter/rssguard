@@ -59,19 +59,18 @@ FormCategoryDetailsAnswer FormCategoryDetails::exec(FeedsModelCategory *input_ca
   return answer;
 }
 
-void FormCategoryDetails::apply() {
+void FormCategoryDetails::apply() { 
   if (m_editableCategory == NULL) {
-    // add category
+    // Add the category.
     FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-    FeedsModelStandardCategory *cat = new FeedsModelStandardCategory();
+    FeedsModelStandardCategory *new_category = new FeedsModelStandardCategory();
 
-    cat->setTitle(m_ui->m_txtTitle->text());
-    cat->setCreationDate(QDateTime::currentDateTime());
-    cat->setDescription(m_ui->m_txtDescription->toPlainText());
-    cat->setIcon(m_ui->m_btnIcon->icon());
-    cat->setType(FeedsModelCategory::Standard);
+    new_category->setTitle(m_ui->m_txtTitle->text());
+    new_category->setCreationDate(QDateTime::currentDateTime());
+    new_category->setDescription(m_ui->m_txtDescription->toPlainText());
+    new_category->setIcon(m_ui->m_btnIcon->icon());
 
-    if (m_feedsModel->addItem(cat, parent)) {
+    if (m_feedsModel->addItem(new_category, parent)) {
       accept();
     }
     else {

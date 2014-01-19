@@ -4,13 +4,13 @@
 #include <QToolButton>
 
 
-class CloseButton : public QToolButton {
+class PlainToolButton : public QToolButton {
     Q_OBJECT
 
   public:
     // Contructors and destructors.
-    explicit CloseButton(QWidget *parent = 0);
-    virtual ~CloseButton();
+    explicit PlainToolButton(QWidget *parent = 0);
+    virtual ~PlainToolButton();
 
   protected:
     // Custom look.

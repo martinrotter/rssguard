@@ -21,9 +21,6 @@ Settings::~Settings() {
   qDebug("Deleting Settings instance.");
 }
 
-
-
-
 QSettings::Status Settings::checkSettings() {
   qDebug("Syncing settings.");
 

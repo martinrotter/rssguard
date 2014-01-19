@@ -35,6 +35,7 @@
 #define DOWNLOAD_TIMEOUT            5000
 #define MESSAGES_VIEW_DEFAULT_COL   170
 #define ELLIPSIS_LENGTH             3
+#define MIN_CATEGORY_NAME_LENGTH    3
 #define INTERNAL_URL_NEWSPAPER      "@APP_LOW_NAME@:newspaper"
 
 #define APP_DB_INIT_FILE    "db_init.sql"
