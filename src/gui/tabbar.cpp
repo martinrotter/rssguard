@@ -21,7 +21,7 @@ TabBar::~TabBar() {
 void TabBar::setTabType(int index, const TabBar::TabType &type) {
   switch (type) {
     case TabBar::Closable: {
-      QToolButton *close_button = new QToolButton();
+      QToolButton *close_button = new QToolButton(this);
 
       close_button->setIcon(IconThemeFactory::instance()->fromTheme("application-exit"));
       close_button->setToolTip(tr("Close this tab."));
@@ -29,6 +29,7 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
       close_button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
       close_button->setFixedSize(iconSize());
 
+      // Close underlying tab when button is clicked.
       connect(close_button, SIGNAL(clicked()),
               this, SLOT(closeTabViaButton()));
 
@@ -48,9 +49,9 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
 
 void TabBar::closeTabViaButton() {
   QToolButton *close_button = qobject_cast<QToolButton*>(sender());
-  QTabBar::ButtonPosition button_position = (ButtonPosition) style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
-                                                                                0,
-                                                                                this);;
+  QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+                                                                                           0,
+                                                                                           this));
 
   if (close_button != NULL) {
     // Find index of tab for this close button.
