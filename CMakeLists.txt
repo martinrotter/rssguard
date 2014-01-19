@@ -53,6 +53,10 @@ set(EXE_NAME ${APP_LOW_NAME})
 option(USE_QT_5 "Use Qt 5 for building" OFF)
 option(BUNDLE_ICON_THEMES "Equip installation with custom icon themes" ON)
 
+if(POLICY CMP0012)
+  cmake_policy(SET CMP0012 NEW)
+endif()
+
 if(${USE_QT_5})
   cmake_minimum_required(VERSION 2.8.10)
 else(${USE_QT_5})
