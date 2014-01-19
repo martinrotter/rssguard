@@ -4,6 +4,8 @@
 #include "core/settings.h"
 
 #include <QMouseEvent>
+#include <QToolButton>
+#include <QStyle>
 
 
 TabBar::TabBar(QWidget *parent) : QTabBar(parent) {
@@ -46,11 +48,14 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
 
 void TabBar::closeTabViaButton() {
   QToolButton *close_button = qobject_cast<QToolButton*>(sender());
+  QTabBar::ButtonPosition button_position = (ButtonPosition) style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+                                                                                0,
+                                                                                this);;
 
   if (close_button != NULL) {
     // Find index of tab for this close button.
     for (int i = 0; i < count(); i++) {
-      if (tabButton(i, QTabBar::RightSide) == close_button) {
+      if (tabButton(i, button_position) == close_button) {
         emit tabCloseRequested(i);
 
         return;
@@ -91,8 +96,8 @@ void TabBar::mousePressEvent(QMouseEvent *event) {
     // NOTE: This needs to be done here because
     // destination does not know the original event.
     if (event->button() & Qt::MiddleButton && Settings::instance()->value(APP_CFG_GUI,
-                                                                             "tab_close_mid_button",
-                                                                             true).toBool()) {
+                                                                          "tab_close_mid_button",
+                                                                          true).toBool()) {
       if (tabType(tab_index) == TabBar::Closable) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
@@ -112,8 +117,8 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent *event) {
     // NOTE: This needs to be done here because
     // destination does not know the original event.
     if (event->button() & Qt::LeftButton && Settings::instance()->value(APP_CFG_GUI,
-                                                                           "tab_close_double_button",
-                                                                           true).toBool()) {
+                                                                        "tab_close_double_button",
+                                                                        true).toBool()) {
       if (tabType(tab_index) == TabBar::Closable) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
@@ -124,8 +129,8 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent *event) {
   // NOTE: This check could be unnecesary here and should be done in
   // destination object but we keep it here for consistency.
   else if (Settings::instance()->value(APP_CFG_GUI,
-                                          "tab_new_double_button",
-                                          true).toBool()) {
+                                       "tab_new_double_button",
+                                       true).toBool()) {
     emit emptySpaceDoubleClicked();
   }
 }

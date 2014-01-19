@@ -5,7 +5,6 @@
 
 #include <QTabBar>
 #include <QVariant>
-#include <QToolButton>
 
 
 class TabBar : public QTabBar {
