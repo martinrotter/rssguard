@@ -1,8 +1,11 @@
 #ifndef TABBAR_H
 #define TABBAR_H
 
+#include "gui/iconthemefactory.h"
+
 #include <QTabBar>
 #include <QVariant>
+#include <QToolButton>
 
 
 class TabBar : public QTabBar {
@@ -20,14 +23,16 @@ class TabBar : public QTabBar {
     virtual ~TabBar();
 
     // Getter/setter for tab type.
-    inline void setTabType(int index, const TabBar::TabType &type) {
-      setTabData(index, QVariant(type));
-    }
+    void setTabType(int index, const TabBar::TabType &type);
 
     inline TabBar::TabType tabType(int index) {
       return static_cast<TabBar::TabType>(tabData(index).value<int>());
     }
-    
+
+  protected slots:
+    // Called when user selects to close tab via close button.
+    void closeTabViaButton();
+
   protected:
     // Reimplementations.
     void mouseDoubleClickEvent(QMouseEvent *event);
@@ -36,7 +41,7 @@ class TabBar : public QTabBar {
 
   signals:
     // Emmited if empty space on tab bar is double clicked.
-    void emptySpaceDoubleClicked(); 
+    void emptySpaceDoubleClicked();
 };
 
 #endif // TABBAR_H

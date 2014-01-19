@@ -16,6 +16,49 @@ TabBar::~TabBar() {
   qDebug("Destroying TabBar instance.");
 }
 
+void TabBar::setTabType(int index, const TabBar::TabType &type) {
+  switch (type) {
+    case TabBar::Closable: {
+      QToolButton *close_button = new QToolButton();
+
+      close_button->setIcon(IconThemeFactory::instance()->fromTheme("application-exit"));
+      close_button->setToolTip(tr("Close this tab."));
+      close_button->setText(tr("Close tab"));
+      close_button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+      close_button->setFixedSize(iconSize());
+
+      connect(close_button, SIGNAL(clicked()),
+              this, SLOT(closeTabViaButton()));
+
+      setTabButton(index, QTabBar::RightSide, close_button);
+      break;
+    }
+
+    case TabBar::NonClosable:
+    case TabBar::FeedReader:
+    default:
+      setTabButton(index, QTabBar::RightSide, 0);
+      break;
+  }
+
+  setTabData(index, QVariant(type));
+}
+
+void TabBar::closeTabViaButton() {
+  QToolButton *close_button = qobject_cast<QToolButton*>(sender());
+
+  if (close_button != NULL) {
+    // Find index of tab for this close button.
+    for (int i = 0; i < count(); i++) {
+      if (tabButton(i, QTabBar::RightSide) == close_button) {
+        emit tabCloseRequested(i);
+
+        return;
+      }
+    }
+  }
+}
+
 void TabBar::wheelEvent(QWheelEvent *event) {
   int current_index = currentIndex();
   int number_of_tabs = count();

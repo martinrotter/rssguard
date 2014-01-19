@@ -16,6 +16,8 @@
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent) {
   setTabBar(new TabBar(this));
   setupCornerButton();
+  //setTabsClosable(true);
+
   createConnections();
 }
 
@@ -51,8 +53,6 @@ void TabWidget::createConnections() {
   connect(tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(fixContentsAfterMove(int,int)));
   connect(tabBar(), SIGNAL(currentChanged(int)), this, SLOT(fixContentAfterIndexChange(int)));
 }
-
-
 
 void TabWidget::initializeTabs() { 
   // Create widget for "Feeds" page and add it.
