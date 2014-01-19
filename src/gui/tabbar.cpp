@@ -2,9 +2,9 @@
 
 #include "core/defs.h"
 #include "core/settings.h"
+#include "gui/closebutton.h"
 
 #include <QMouseEvent>
-#include <QToolButton>
 #include <QStyle>
 
 
@@ -21,7 +21,7 @@ TabBar::~TabBar() {
 void TabBar::setTabType(int index, const TabBar::TabType &type) {
   switch (type) {
     case TabBar::Closable: {
-      QToolButton *close_button = new QToolButton(this);
+      CloseButton *close_button = new CloseButton(this);
 
       close_button->setIcon(IconThemeFactory::instance()->fromTheme("application-exit"));
       close_button->setToolTip(tr("Close this tab."));
@@ -48,7 +48,7 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
 }
 
 void TabBar::closeTabViaButton() {
-  QToolButton *close_button = qobject_cast<QToolButton*>(sender());
+  CloseButton *close_button = qobject_cast<CloseButton*>(sender());
   QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
                                                                                            0,
                                                                                            this));
