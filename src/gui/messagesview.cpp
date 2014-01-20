@@ -4,6 +4,7 @@
 #include "core/messagesmodel.h"
 #include "core/settings.h"
 #include "gui/formmain.h"
+#include "gui/messagebox.h"
 
 #include <QKeyEvent>
 #include <QScrollBar>
@@ -220,6 +221,9 @@ void MessagesView::openSelectedSourceArticlesExternally() {
                                                   "%1").toString();
 
   if (browser.isEmpty() || arguments.isEmpty()) {
+    MessageBox::showMessageBox(this, QMessageBox::Information,
+                                  "aa", "bb", QMessageBox::Ok, QMessageBox::Ok);
+
     QMessageBox::critical(this,
                           tr("External browser not set"),
                           tr("External browser is not set, head to application settings and set it up to use this feature."),

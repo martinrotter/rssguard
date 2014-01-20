@@ -15,7 +15,6 @@
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QCloseEvent>
-#include <QMessageBox>
 #include <QSessionManager>
 #include <QRect>
 #include <QDesktopWidget>

@@ -290,6 +290,7 @@ set(APP_SOURCES
   src/gui/formcategorydetails.cpp
   src/gui/plaintoolbutton.cpp
   src/gui/lineeditwithstatus.cpp
+  src/gui/messagebox.cpp
 
   # CORE sources.
   src/core/debugging.cpp

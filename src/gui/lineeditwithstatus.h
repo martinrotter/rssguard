@@ -16,7 +16,11 @@ class LineEditWithStatus : public QWidget {
     explicit LineEditWithStatus(QWidget *parent = 0);
     virtual ~LineEditWithStatus();
 
-
+    // TODO: napsat metodu setStatus(enum-statusu, qstring)
+    // kde enum-statusu bude Ok, Warning, Error a qstring bude text kerej se objevi jako
+    // tooltip na toolbuttonu
+    // pak bude proste navazani na textEdited() a tam si bude uzivatel
+    // widgetu nastavovat pres to setStatus co chce on
 
   private:
     BaseLineEdit *m_txtInput;

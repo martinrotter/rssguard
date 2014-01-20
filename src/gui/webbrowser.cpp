@@ -18,7 +18,6 @@
 #include <QWidgetAction>
 #include <QSlider>
 #include <QLabel>
-#include <QMessageBox>
 #include <QToolButton>
 
 

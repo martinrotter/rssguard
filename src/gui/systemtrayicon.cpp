@@ -8,7 +8,6 @@
 
 #include <QPainter>
 #include <QTimer>
-#include <QMessageBox>
 
 
 #if defined(Q_OS_WIN)
