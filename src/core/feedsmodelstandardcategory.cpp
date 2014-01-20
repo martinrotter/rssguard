@@ -93,7 +93,8 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
 
 bool FeedsModelStandardCategory::addItself() {
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelStandardCategory",
+                                                                  false);
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
@@ -137,7 +138,8 @@ bool FeedsModelStandardCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelStandardCategory",
+                                                                  false);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);

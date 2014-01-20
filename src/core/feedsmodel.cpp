@@ -175,7 +175,8 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+                                                                  false);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -317,7 +318,8 @@ void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChildren();
 
-  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+                                                                  false);
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -429,7 +431,8 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
 
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
                                int read) {
-  QSqlDatabase db_handle = DatabaseFactory::instance()->connection();
+  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName(),
+                                                                   false);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -465,7 +468,8 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
 
 bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
                                   int deleted) {
-  QSqlDatabase db_handle = DatabaseFactory::instance()->connection();
+  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName(),
+                                                                   false);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds clearing.");

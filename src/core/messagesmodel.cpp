@@ -13,7 +13,8 @@
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent,
-                   DatabaseFactory::instance()->connection()) {
+                   DatabaseFactory::instance()->connection("MessagesModel",
+                                                           false)) {
   setObjectName("MessagesModel");
 
   setupFonts();

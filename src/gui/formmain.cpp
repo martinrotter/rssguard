@@ -194,7 +194,7 @@ void FormMain::onAboutToQuit() {
 
   m_ui->m_tabWidget->feedMessageViewer()->quitDownloader();
 
-  DatabaseFactory::instance()->saveMemoryDatabase();
+  //DatabaseFactory::instance()->saveMemoryDatabase();
 
   saveSize();
 }

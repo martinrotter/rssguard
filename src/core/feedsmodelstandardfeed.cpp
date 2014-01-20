@@ -163,7 +163,8 @@ void FeedsModelStandardFeed::update() {
 }
 
 bool FeedsModelStandardFeed::removeItself() {
-  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelStandardFeed",
+                                                                  false);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
@@ -186,7 +187,8 @@ bool FeedsModelStandardFeed::removeItself() {
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id(), message_id;
   qint64 message_creation_date;
-  QSqlDatabase database = DatabaseFactory::instance()->connection();
+  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelStandardFeed",
+                                                                  false);
 
   // Prepare queries.
   QSqlQuery query_select(database);
