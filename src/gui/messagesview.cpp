@@ -237,7 +237,7 @@ void MessagesView::openSelectedSourceArticlesExternally() {
 #if defined(Q_OS_LINUX)
     if (!QProcess::startDetached(browser + ' ' + arguments.arg(link))) {
 #else
-    if (!QProcess::startDetached('\"' + browser + '\"' + ' ' + arguments.arg(link))) {
+    if (!QProcess::startDetached('\"' + browser + "\" \"" + arguments.arg(link) + "\"")) {
 #endif
       QMessageBox::critical(this,
                             tr("Problem with starting external web browser"),

@@ -8,7 +8,7 @@
 MessageBox::MessageBox() {
 }
 
-QMessageBox::StandardButton MessageBox::showMessageBox(QWidget *parent,
+QMessageBox::StandardButton MessageBox::  showMessageBox(QWidget *parent,
                                                           QMessageBox::Icon icon,
                                                           const QString &title,
                                                           const QString &text,

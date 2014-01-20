@@ -13,6 +13,8 @@ class MessageBox {
     // TODO: tudle metodu udelat private a udelat public
     // metody information, warning atd a ty budou tudle volat
     // se spravnejma parametrama
+    // a napsat taky metodu iconifyMessageButtonBox(qmessabebuttonbox)
+    // ktera nahraje do daneho boxu aktualni ikony
     static QMessageBox::StandardButton showMessageBox(QWidget *parent,
                                                       QMessageBox::Icon icon,
                                                       const QString& title, const QString& text,
