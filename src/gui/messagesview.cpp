@@ -235,8 +235,8 @@ void MessagesView::openSelectedSourceArticlesExternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
-    QProcess::startDetached('\"' + browser + "\"");
-    continue;
+    //QProcess::startDetached('\"' + browser + "\"");
+    //continue;
 
 #if defined(Q_OS_LINUX)
     if (!QProcess::startDetached(browser + ' ' + arguments.arg(link))) {
