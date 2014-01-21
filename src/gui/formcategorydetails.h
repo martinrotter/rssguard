@@ -46,6 +46,9 @@ class FormCategoryDetails : public QDialog {
   protected slots:
     void apply();
 
+    // Trigerred when title/description changes.
+    void onTitleChanged(const QString &new_title);
+
   protected:
     // Sets the category which will be edited.
     // NOTE: This is used for editing categories.

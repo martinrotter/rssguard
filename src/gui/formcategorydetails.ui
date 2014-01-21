@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>346</width>
-    <height>199</height>
+    <height>180</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -22,6 +22,9 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QFormLayout" name="formLayout">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
      <item row="0" column="0">
       <widget class="QLabel" name="m_lblParentCategory">
        <property name="text">
@@ -39,16 +42,6 @@
       <widget class="QLabel" name="m_lblTitle">
        <property name="text">
         <string>Title</string>
-       </property>
-       <property name="buddy">
-        <cstring>m_txtTitle</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="m_txtTitle">
-       <property name="placeholderText">
-        <string>Title of the category</string>
        </property>
       </widget>
      </item>
@@ -82,15 +75,11 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="1">
+      <widget class="LineEditWithStatus" name="m_txtTitle" native="true"/>
+     </item>
      <item row="2" column="1">
-      <widget class="QTextEdit" name="m_txtDescription">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
+      <widget class="LineEditWithStatus" name="m_txtDescription" native="true"/>
      </item>
     </layout>
    </item>
@@ -106,6 +95,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

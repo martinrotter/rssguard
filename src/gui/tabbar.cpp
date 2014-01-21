@@ -26,7 +26,6 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
       close_button->setIcon(IconThemeFactory::instance()->fromTheme("application-exit"));
       close_button->setToolTip(tr("Close this tab."));
       close_button->setText(tr("Close tab"));
-      close_button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
       close_button->setFixedSize(iconSize());
 
       // Close underlying tab when button is clicked.

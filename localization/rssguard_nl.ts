@@ -16,11 +16,11 @@
     </message>
     <message>
         <source>Feed update started</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed update is gestart</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
-        <translation type="unfinished"></translation>
+        <translation>Update feed &apos;%1&apos;</translation>
     </message>
 </context>
 <context>
@@ -299,27 +299,27 @@
     </message>
     <message>
         <source>Open selected messages in internal browser</source>
-        <translation>Open geselecteerde bericht in externe webbrowser</translation>
+        <translation>Open geselecteerde berichten met ingebouwde webbrowser</translation>
     </message>
     <message>
         <source>Open selected messages in internal browser.</source>
-        <translation>Open geselecteerde bericht in externe webbrowser.</translation>
+        <translation>Open geselecteerde berichten met ingebouwde webbrowser.</translation>
     </message>
     <message>
         <source>Open selected source articles in external browser</source>
-        <translation>Open geselecteerde bron artikelen in externe webbrowser</translation>
+        <translation>Open geselecteerde bron artikelen met externe webbrowser</translation>
     </message>
     <message>
         <source>Open selected source articles in external browser.</source>
-        <translation>Open geselecteerde bron artikelen in externe webbrowser.</translation>
+        <translation>Open geselecteerde bron artikelen met externe webbrowser.</translation>
     </message>
     <message>
         <source>Open selected source articles in internal browser</source>
-        <translation>Open geselecteerde bron artikelen in interne webbrowser</translation>
+        <translation>Open geselecteerde bron artikelen met ingebouwde webbrowser</translation>
     </message>
     <message>
         <source>Open selected source messages  in internal browser.</source>
-        <translation>Open geselecteerde bron artikelen in interne webbrowser.</translation>
+        <translation>Open geselecteerde bron artikelen met ingebouwde webbrowser.</translation>
     </message>
     <message>
         <source>Add new &amp;category</source>
@@ -383,27 +383,27 @@
     </message>
     <message>
         <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verwijder geselecteerde feed/categorie</translation>
     </message>
     <message>
         <source>Delete selected feed/category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder geselecteerde feed/categorie.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected feeds as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten (zonder berichten filters) van geselecteerde feeds als gelezen.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected feeds as unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten (zonder berichten filters) van geselecteerde feeds als ongelezen.</translation>
     </message>
     <message>
         <source>Remove all messages from selected feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van geselecteerde feeds.</translation>
     </message>
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alle berichten van geselecteerde feeds/categorieën in een nieuwe &quot;Krantweergave modus&quot; tabblad. Onthoud dat de berichten niet zijn ingesteld als automatisch gelezen.</translation>
     </message>
 </context>
 <context>
@@ -746,7 +746,7 @@
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik voorbeeld argumenten voor</translation>
     </message>
 </context>
 <context>
@@ -878,11 +878,11 @@
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Probleem om externe webbrowser te starten</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe webbrowser kon niet worden gestart.</translation>
     </message>
 </context>
 <context>
@@ -946,7 +946,8 @@ Deze categorie bevat geen nested items.</translation>
     <message>
         <source>%1 (standard category)
 %2%3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (standaard categorie)
+%2%3</translation>
     </message>
     <message>
         <source>%1 (%2)
@@ -954,7 +955,11 @@ Deze categorie bevat geen nested items.</translation>
 
 Encoding: %4
 Language: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)
+%3
+
+Codering: %4
+Taal: %5</translation>
     </message>
 </context>
 <context>
@@ -972,11 +977,11 @@ Language: %5</source>
     <name>StatusBar</name>
     <message>
         <source>Fullscreen mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Beeldvullende modus</translation>
     </message>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wissel Rssguard tussen volledige scherm/normale staat vanaf deze statusbar pictogram.</translation>
     </message>
 </context>
 <context>

@@ -7,6 +7,7 @@
 #include "core/feedsmodel.h"
 #include "gui/iconthemefactory.h"
 #include "gui/feedsview.h"
+#include "gui/baselineedit.h"
 
 #include <QLineEdit>
 #include <QTextEdit>
@@ -25,6 +26,8 @@ FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
 
   connect(m_ui->m_buttonBox, SIGNAL(accepted()),
           this, SLOT(apply()));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onTitleChanged(QString)));
 }
 
 FormCategoryDetails::~FormCategoryDetails() {
@@ -36,8 +39,8 @@ void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_categ
 
   // TODO: Setup the dialog according to the category.
   // so remove this category from category combobox!!
-  m_ui->m_txtTitle->setText(editable_category->title());
-  m_ui->m_txtDescription->setText(editable_category->description());
+  m_ui->m_txtTitle->lineEdit()->setText(editable_category->title());
+  m_ui->m_txtDescription->lineEdit()->setText(editable_category->description());
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
@@ -65,9 +68,9 @@ void FormCategoryDetails::apply() {
     FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
     FeedsModelStandardCategory *new_category = new FeedsModelStandardCategory();
 
-    new_category->setTitle(m_ui->m_txtTitle->text());
+    new_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
     new_category->setCreationDate(QDateTime::currentDateTime());
-    new_category->setDescription(m_ui->m_txtDescription->toPlainText());
+    new_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
     new_category->setIcon(m_ui->m_btnIcon->icon());
 
     if (m_feedsModel->addItem(new_category, parent)) {
@@ -79,6 +82,15 @@ void FormCategoryDetails::apply() {
   }
   else {
     // edit category
+  }
+}
+
+void FormCategoryDetails::onTitleChanged(const QString &new_title){
+  if (m_ui->m_txtTitle->lineEdit()->text().size() >= MIN_CATEGORY_NAME_LENGTH) {
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("This category name is ok."));
+  }
+  else {
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("This category name is too short."));
   }
 }
 

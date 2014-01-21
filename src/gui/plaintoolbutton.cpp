@@ -15,7 +15,7 @@ PlainToolButton::~PlainToolButton() {
 
 void PlainToolButton::paintEvent(QPaintEvent *e) {
   QPainter p(this);
-  icon().paint(&p, QRect(QPoint(0, 0), iconSize()));
+  icon().paint(&p, QRect(QPoint(0, 0), size()));
 
   /*
   if (underMouse()) {
