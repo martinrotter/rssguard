@@ -74,6 +74,9 @@ int main(int argc, char *argv[]) {
   IconThemeFactory::instance()->loadCurrentIconTheme();
   SkinFactory::instance()->loadCurrentSkin();
 
+  // Decide whether user decided to use in-memory database or not.
+  DatabaseFactory::instance()->determineInMemoryDatabase();
+
   // Load localization and setup locale before any widget is constructed.
   LoadLocalization();
 

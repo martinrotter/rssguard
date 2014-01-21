@@ -437,6 +437,9 @@ void FormSettings::loadGeneral() {
                                       tr(" (not supported on this platform)"));
       break;
   }
+
+  // Load in-memory database status.
+  m_ui->m_cmbUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool());
 }
 
 void FormSettings::saveGeneral() {
@@ -448,6 +451,16 @@ void FormSettings::saveGeneral() {
   else {
     SystemFactory::getInstance()->setAutoStartStatus(SystemFactory::Disabled);
   }
+
+  // Setup in-memory database status.
+  bool original_inmemory = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
+  bool new_inmemory = m_ui->m_cmbUseInMemoryDatabase->isChecked();
+
+  if (original_inmemory != new_inmemory) {
+    m_changedDataTexts.append(tr("in-memory database switched"));
+  }
+
+  Settings::instance()->setValue(APP_CFG_GEN, "use_in_memory_db", new_inmemory);
 }
 
 void FormSettings::loadInterface() {

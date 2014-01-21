@@ -35,13 +35,13 @@ DatabaseFactory *DatabaseFactory::instance() {
 void DatabaseFactory::assemblyDatabaseFilePath()  {
   if (Settings::instance()->type() == Settings::Portable) {
     m_databaseFilePath = qApp->applicationDirPath() +
-                     QDir::separator() +
-                     QString(APP_DB_PATH);
+                         QDir::separator() +
+                         QString(APP_DB_PATH);
   }
   else {
     m_databaseFilePath = QDir::homePath() + QDir::separator() +
-                     QString(APP_LOW_H_NAME) + QDir::separator() +
-                     QString(APP_DB_PATH);
+                         QString(APP_LOW_H_NAME) + QDir::separator() +
+                         QString(APP_DB_PATH);
   }
 }
 
@@ -105,7 +105,7 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
     }
 
     // Loading messages from file-based database.
-    QSqlDatabase file_database = connection(objectName(), false);
+    QSqlDatabase file_database = connection(objectName(), StrictlyFileBased);
     QSqlQuery copy_contents(database);
 
     // Attach database.
@@ -135,7 +135,7 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
 
 QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connection_name) {
   // Prepare file paths.
-  QDir db_path(getDatabasePath());
+  QDir db_path(databaseFilePath());
   QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
 
   // Check if database directory exists.
@@ -222,9 +222,11 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
 }
 
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
-                                         bool in_memory) {
-  if (in_memory) {
-    // We request in-memory database.
+                                         DesiredType desired_type) {
+  if (desired_type == DatabaseFactory::StrictlyInMemory ||
+      (desired_type == DatabaseFactory::FromSettings && m_inMemoryEnabled)) {
+    // We request in-memory database (either user don't care
+    // about the type or user overrided it in the settings).
     if (!m_inMemoryInitialized) {
       // It is not initialized yet.
       return initializeInMemoryDatabase();
@@ -267,7 +269,7 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
         // yet, add it and set it up.
         database = QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
 
-        QDir db_path(getDatabasePath());
+        QDir db_path(databaseFilePath());
         QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
 
         // Setup database file path.
@@ -296,8 +298,14 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
 }
 
 void DatabaseFactory::saveMemoryDatabase() {
-  QSqlDatabase database = connection();
-  QSqlDatabase file_database = connection(objectName(), false);
+  if (!m_inMemoryEnabled) {
+    return;
+  }
+
+  qDebug("Saving in-memory working database back to persistent file-based storage.");
+
+  QSqlDatabase database = connection(objectName(), StrictlyInMemory);
+  QSqlDatabase file_database = connection(objectName(), StrictlyFileBased);
   QSqlQuery copy_contents(database);
 
   // Attach database.
@@ -315,4 +323,11 @@ void DatabaseFactory::saveMemoryDatabase() {
   // Detach database and finish.
   copy_contents.exec("DETACH 'storage'");
   copy_contents.finish();
+}
+
+void DatabaseFactory::determineInMemoryDatabase() {
+  m_inMemoryEnabled = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
+
+  qDebug("Working database source was determined as %s.",
+         m_inMemoryEnabled ? "in-memory database" : "file-based database");
 }

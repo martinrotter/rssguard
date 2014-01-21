@@ -10,19 +10,26 @@ class DatabaseFactory : public QObject {
     Q_OBJECT
 
   public:
+    // Describes what type of database user wants.
+    enum DesiredType {
+      StrictlyFileBased,
+      StrictlyInMemory,
+      FromSettings
+    };
+
     // Destructor.
     virtual ~DatabaseFactory();
 
     // Returns absolute file path to database file.
-    inline QString getDatabasePath() {
+    inline QString databaseFilePath() {
       return m_databaseFilePath;
     }
 
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
     // NOTE: This always returns OPENED database.
-    QSqlDatabase connection(const QString &connection_name = QString(),
-                            bool in_memory = true);
+    QSqlDatabase connection(const QString &connection_name,
+                            DesiredType desired_type);
 
     // Removes connection.
     void removeConnection(const QString &connection_name = QString());
@@ -30,6 +37,9 @@ class DatabaseFactory : public QObject {
     // Performs saving of items from in-memory database
     // to file-based database.
     void saveMemoryDatabase();
+
+    // Sets m_inMemoryEnabled according to user settings.
+    void determineInMemoryDatabase();
 
     // Singleton getter.
     static DatabaseFactory *instance();
@@ -52,6 +62,10 @@ class DatabaseFactory : public QObject {
     // Is database file initialized?
     bool m_fileBasedinitialized;
     bool m_inMemoryInitialized;
+
+    // Is true when user selected in-memory database.
+    // NOTE: This is set only on application startup.
+    bool m_inMemoryEnabled;
 
     // Private singleton value.
     static QPointer<DatabaseFactory> s_instance;

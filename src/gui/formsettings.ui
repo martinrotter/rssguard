@@ -21,7 +21,16 @@
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item row="0" column="0">
@@ -31,11 +40,53 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_cmbUseInMemoryDatabase">
+         <property name="text">
+          <string>Use in-memory database as the working database</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+&lt;ul&gt;
+&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
+&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
+&lt;/ul&gt;
+Disadvantages:
+&lt;ul&gt;
+&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
+&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+Authors of this application are NOT responsible for lost data.</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::RichText</enum>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="indent">
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="m_pageShortcuts">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -51,12 +102,21 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>576</width>
-            <height>373</height>
+            <width>564</width>
+            <height>363</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -70,7 +130,16 @@
      </widget>
      <widget class="QWidget" name="m_pageUi">
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -86,7 +155,16 @@
            <string>Icons &amp;&amp; skins</string>
           </attribute>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -102,8 +180,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>568</width>
-                <height>344</height>
+                <width>558</width>
+                <height>337</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -301,7 +379,16 @@
      </widget>
      <widget class="QWidget" name="m_pageLanguages">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -330,7 +417,16 @@
      </widget>
      <widget class="QWidget" name="m_pageProxy">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -387,7 +483,7 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="3" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
               <string>Mouse gestures work with middle mouse button. Possible gestures are:
@@ -559,7 +655,16 @@
      </widget>
      <widget class="QWidget" name="m_pageFeedsMessages">
       <layout class="QHBoxLayout" name="horizontalLayout_9">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -655,8 +760,6 @@
             </widget>
            </item>
           </layout>
-          <zorder>groupBox_3</zorder>
-          <zorder>label</zorder>
          </widget>
         </widget>
        </item>
