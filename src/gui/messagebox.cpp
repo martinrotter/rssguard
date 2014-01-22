@@ -37,6 +37,7 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
       return IconThemeFactory::instance()->fromTheme("dialog-ok");
 
     case QMessageBox::Cancel:
+    case QMessageBox::Close:
       return IconThemeFactory::instance()->fromTheme("edit-delete");
 
     case QMessageBox::Yes:
@@ -77,22 +78,26 @@ QMessageBox::StandardButton MessageBox::show(QWidget *parent,
                                              const QString &title,
                                              const QString &text,
                                              const QString &informative_text,
+                                             const QString &detailed_text,
                                              QMessageBox::StandardButtons buttons,
                                              QMessageBox::StandardButton default_button) {
   // Create and find needed components.
   MessageBox msg_box(parent);
-  QDialogButtonBox *button_box = msg_box.findChild<QDialogButtonBox*>();
 
   // Initialize message box properties.
   msg_box.setWindowTitle(title);
   msg_box.setText(text);
   msg_box.setInformativeText(informative_text);
+  msg_box.setDetailedText(detailed_text);
   msg_box.setIcon(icon);
   msg_box.setStandardButtons(buttons);
   msg_box.setDefaultButton(default_button);
 
   // Setup button box icons.
+#if !defined(Q_OS_WIN)
+  QDialogButtonBox *button_box = msg_box.findChild<QDialogButtonBox*>();
   iconify(button_box);
+#endif
 
   // Display it.
   if (msg_box.exec() == -1) {

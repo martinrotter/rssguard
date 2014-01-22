@@ -15,8 +15,8 @@
 #include "gui/feedsview.h"
 #include "gui/formmain.h"
 #include "gui/webbrowser.h"
+#include "gui/messagebox.h"
 
-#include <QMessageBox>
 #include <QProcess>
 #include <QNetworkProxy>
 #include <QColorDialog>
@@ -199,21 +199,12 @@ bool FormSettings::doSaveCheck() {
     resulting_information.replaceInStrings(QRegExp("^"),
                                            QString::fromUtf8(" • "));
 
-    // TODO: dedit qmessagebox
-    // MessageBox a tam pretizit setIcon
-    // a setStandardButtons atp
-
-    // Some critical errors occurred, display warnings.
-    QPointer<QMessageBox> msg_error = new QMessageBox(this);
-    msg_error.data()->setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));
-    msg_error.data()->setWindowTitle(tr("Cannot save settings"));
-    msg_error.data()->setDetailedText(tr("List of errors:\n%1.").arg(resulting_information.join(",\n")));
-    msg_error.data()->setIcon(QMessageBox::Critical);
-    msg_error.data()->setStandardButtons(QMessageBox::Ok);
-    msg_error.data()->setDefaultButton(QMessageBox::Ok);
-    msg_error.data()->exec();
-
-    delete msg_error.data();
+    MessageBox::show(this,
+                     QMessageBox::Critical,
+                     tr("Cannot save settings"),
+                     tr("Some critical settings are not set. You must fix these settings in order confirm new settings."),
+                     QString(),
+                     tr("List of errors:\n%1.").arg(resulting_information.join(",\n")));
   }
 
   return everything_ok;
@@ -233,24 +224,21 @@ void FormSettings::promptForRestart() {
     changed_data_texts.replaceInStrings(QRegExp("^"),
                                         QString::fromUtf8(" • "));
 
-    QPointer<QMessageBox> msg_question = new QMessageBox(this);
-    msg_question.data()->setText(tr("Some critical settings were changed and will be applied after the application gets restarted."));
-    msg_question.data()->setInformativeText(tr("Do you want to restart now?"));
-    msg_question.data()->setWindowTitle(tr("Critical settings were changed"));
-    msg_question.data()->setDetailedText(tr("List of changes:\n%1.").arg(changed_data_texts.join(",\n")));
-    msg_question.data()->setIcon(QMessageBox::Question);
-    msg_question.data()->setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    msg_question.data()->setDefaultButton(QMessageBox::Yes);
-
-    int question_result = msg_question.data()->exec();
-
-    delete msg_question.data();
+    int question_result = MessageBox::show(this,
+                                           QMessageBox::Question,
+                                           tr("Critical settings were changed"),
+                                           tr("Some critical settings were changed and will be applied after the application gets restarted."),
+                                           tr("Do you want to restart now?"),
+                                           tr("List of changes:\n%1.").arg(changed_data_texts.join(",\n")),
+                                           QMessageBox::Yes | QMessageBox::No,
+                                           QMessageBox::Yes);
 
     if (question_result == QMessageBox::Yes) {
       if (!QProcess::startDetached(qApp->applicationFilePath())) {
-        QMessageBox::warning(this,
-                             tr("Problem with application restart"),
-                             tr("Application couldn't be restarted. Please, restart it manually for changes to take effect."));
+        MessageBox::show(this,
+                         QMessageBox::Warning,
+                         tr("Problem with application restart"),
+                         tr("Application couldn't be restarted. Please, restart it manually for changes to take effect."));
       }
       else {
         qApp->quit();
