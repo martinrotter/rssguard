@@ -5,12 +5,16 @@
 #include <QDialogButtonBox>
 
 
-class MessageBox {
-  private:
-    // Constructors and destructors.
-    explicit MessageBox();
+class MessageBox : public QMessageBox {
+    Q_OBJECT
 
   public:
+    // Constructors and destructors.
+    explicit MessageBox(QWidget *parent = 0);
+    virtual ~MessageBox();
+
+    void setIcon(Icon icon);
+
     // TODO: tudle metodu udelat private a udelat public
     // metody information, warning atd a ty budou tudle volat
     // se spravnejma parametrama

@@ -9,7 +9,20 @@
 #include <QStyle>
 #include <QApplication>
 
-MessageBox::MessageBox() {
+MessageBox::MessageBox(QWidget *parent) : QMessageBox(parent) {
+}
+
+MessageBox::~MessageBox() {
+}
+
+void MessageBox::setIcon(QMessageBox::Icon icon) {
+  // Determine correct status icon size.
+  int icon_size = qApp->style()->pixelMetric(QStyle::PM_MessageBoxIconSize,
+                                             0,
+                                             this);
+  // Setup status icon.
+  setIconPixmap(iconForStatus(icon).pixmap(icon_size,
+                                           icon_size));
 }
 
 void MessageBox::iconify(QDialogButtonBox *button_box) {
@@ -63,21 +76,19 @@ QMessageBox::StandardButton MessageBox::show(QWidget *parent,
                                              QMessageBox::StandardButtons buttons,
                                              QMessageBox::StandardButton defaultButton) {
   // Create and find needed components.
-  QMessageBox msg_box(parent);
+  MessageBox msg_box(parent);
   QDialogButtonBox *button_box = msg_box.findChild<QDialogButtonBox*>();
 
   // Initialize message box properties.
   msg_box.setWindowTitle(title);
   msg_box.setText(text);
+  msg_box.setIcon(icon);
   msg_box.setStandardButtons(buttons);
   msg_box.setDefaultButton(defaultButton);
 
   iconify(button_box);
 
-  // Setup status icon.
-  int icon_size = qApp->style()->pixelMetric(QStyle::PM_MessageBoxIconSize, 0, &msg_box);
-  msg_box.setIconPixmap(iconForStatus(icon).pixmap(icon_size,
-                                                   icon_size));
+
 
   // Display it.
   if (msg_box.exec() == -1) {
