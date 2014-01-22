@@ -199,6 +199,10 @@ bool FormSettings::doSaveCheck() {
     resulting_information.replaceInStrings(QRegExp("^"),
                                            QString::fromUtf8(" • "));
 
+    // TODO: dedit qmessagebox
+    // MessageBox a tam pretizit setIcon
+    // a setStandardButtons atp
+
     // Some critical errors occurred, display warnings.
     QPointer<QMessageBox> msg_error = new QMessageBox(this);
     msg_error.data()->setText(tr("Some critical settings are not set. You must fix these settings in order confirm new settings."));

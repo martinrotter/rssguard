@@ -15,9 +15,9 @@ LineEditWithStatus::LineEditWithStatus(QWidget *parent)
 
   // TODO: nastavit korektni ikony
   m_iconInformation = IconThemeFactory::instance()->fromTheme("help-about");
-  m_iconWarning = IconThemeFactory::instance()->fromTheme("application-exit");
-  m_iconError = IconThemeFactory::instance()->fromTheme("application-exit");
-  m_iconOk = IconThemeFactory::instance()->fromTheme("application-exit");
+  m_iconWarning = IconThemeFactory::instance()->fromTheme("dialog-warning");
+  m_iconError = IconThemeFactory::instance()->fromTheme("dialog-error");
+  m_iconOk = IconThemeFactory::instance()->fromTheme("dialog-yes");
 
   // Set correct size for the tool button.
   int txt_input_height = m_txtInput->sizeHint().height();

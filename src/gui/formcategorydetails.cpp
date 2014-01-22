@@ -13,7 +13,6 @@
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QToolButton>
-#include "QComboBox"
 
 
 FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
@@ -24,14 +23,21 @@ FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
   loadCategories(model->allCategories().values(),
                  model->rootItem());
 
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
-          this, SLOT(apply()));
-  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onTitleChanged(QString)));
+  createConnections();
+
+  // Initialize text boxes.
+  onTitleChanged(QString());
 }
 
 FormCategoryDetails::~FormCategoryDetails() {
   qDebug("Destroying FormCategoryDetails instance.");
+}
+
+void FormCategoryDetails::createConnections() {
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
+          this, SLOT(apply()));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onTitleChanged(QString)));
 }
 
 void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_category) {
@@ -86,7 +92,7 @@ void FormCategoryDetails::apply() {
 }
 
 void FormCategoryDetails::onTitleChanged(const QString &new_title){
-  if (m_ui->m_txtTitle->lineEdit()->text().size() >= MIN_CATEGORY_NAME_LENGTH) {
+  if (new_title.size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("This category name is ok."));
   }
   else {

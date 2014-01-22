@@ -9,7 +9,6 @@
 #include <QKeyEvent>
 #include <QScrollBar>
 #include <QMenu>
-#include <QMessageBox>
 #include <QProcess>
 #include <QDesktopServices>
 
@@ -222,28 +221,25 @@ void MessagesView::openSelectedSourceArticlesExternally() {
                                                   "%1").toString();
 
   if (browser.isEmpty() || arguments.isEmpty()) {
-    MessageBox::showMessageBox(this, QMessageBox::Information,
-                                  "aa", "bb", QMessageBox::Ok, QMessageBox::Ok);
+    MessageBox::show(this,
+                     QMessageBox::Critical,
+                     tr("External browser not set"),
+                     tr("External browser is not set, head to application settings and set it up to use this feature."),
+                     QMessageBox::Ok, QMessageBox::Ok);
 
-    QMessageBox::critical(this,
-                          tr("External browser not set"),
-                          tr("External browser is not set, head to application settings and set it up to use this feature."),
-                          QMessageBox::Ok);
     return;
   }
 
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
-#if defined(Q_OS_LINUX)
-    if (!QProcess::startDetached(browser + ' ' + arguments.arg(link))) {
-#else
     if (!QProcess::startDetached('\"' + browser + "\" \"" + arguments.arg(link) + "\"")) {
-#endif
-      QMessageBox::critical(this,
-                            tr("Problem with starting external web browser"),
-                            tr("External web browser could not be started."),
-                            QMessageBox::Ok);
+      MessageBox::show(this,
+                       QMessageBox::Critical,
+                       tr("Problem with starting external web browser"),
+                       tr("External web browser could not be started."),
+                       QMessageBox::Ok,
+                       QMessageBox::Ok);
       return;
     }
   }
@@ -254,9 +250,12 @@ void MessagesView::openSelectedSourceMessagesInternally() {
     Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
 
     if (message.m_url.isEmpty()) {
-      QMessageBox::warning(this,
-                           tr("Meesage without URL"),
-                           tr("Message '%s' does not contain URL.").arg(message.m_title));
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Meesage without URL"),
+                       tr("Message '%s' does not contain URL.").arg(message.m_title),
+                       QMessageBox::Ok,
+                       QMessageBox::Ok);
     }
     else {
       emit openLinkNewTab(message.m_url);

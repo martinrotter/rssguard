@@ -32,6 +32,9 @@ class FormCategoryDetails : public QDialog {
     // Destructor.
     virtual ~FormCategoryDetails();
 
+    // Creates needed connections.
+    void createConnections();
+
   public slots:
     // Start dialog execution. If result is QDialog::Accepted,
     // then output_item contains added or edited category
