@@ -224,8 +224,7 @@ void MessagesView::openSelectedSourceArticlesExternally() {
     MessageBox::show(this,
                      QMessageBox::Critical,
                      tr("External browser not set"),
-                     tr("External browser is not set, head to application settings and set it up to use this feature."),
-                     QMessageBox::Ok, QMessageBox::Ok);
+                     tr("External browser is not set, head to application settings and set it up to use this feature."));
 
     return;
   }
@@ -237,9 +236,7 @@ void MessagesView::openSelectedSourceArticlesExternally() {
       MessageBox::show(this,
                        QMessageBox::Critical,
                        tr("Problem with starting external web browser"),
-                       tr("External web browser could not be started."),
-                       QMessageBox::Ok,
-                       QMessageBox::Ok);
+                       tr("External web browser could not be started."));
       return;
     }
   }
@@ -253,9 +250,7 @@ void MessagesView::openSelectedSourceMessagesInternally() {
       MessageBox::show(this,
                        QMessageBox::Warning,
                        tr("Meesage without URL"),
-                       tr("Message '%s' does not contain URL.").arg(message.m_title),
-                       QMessageBox::Ok,
-                       QMessageBox::Ok);
+                       tr("Message '%s' does not contain URL.").arg(message.m_title));
     }
     else {
       emit openLinkNewTab(message.m_url);
