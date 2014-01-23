@@ -355,6 +355,7 @@ set(APP_HEADERS
   src/gui/formcategorydetails.h
   src/gui/plaintoolbutton.h
   src/gui/lineeditwithstatus.h
+  src/gui/messagebox.h
 
   # CORE headers.
   src/core/settings.h
