@@ -11,6 +11,8 @@
 
 class FeedsModelCategory;
 class FeedsModelFeed;
+class FeedsModelStandardCategory;
+class FeedsModelStandardFeed;
 
 typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
 typedef QPair<int, FeedsModelCategory*> CategoryAssignmentItem;
@@ -50,6 +52,12 @@ class FeedsModel : public QAbstractItemModel {
                  FeedsModelRootItem *parent);
     bool editItem(const QModelIndex &index);
     bool removeItem(const QModelIndex &index);
+
+    // TODO: addItself a removeItself z itemů
+    // asi přesunout do modelu a pro každej typ feedů/kanalu
+    // napsat skupinu metod na přidavani/upravu/mazani
+    // Standard feed/category manipulators.
+    //bool addStandardCategory(FeedsModelCategory *category);
 
     // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);
