@@ -150,21 +150,27 @@ bool FeedsModel::addItem(FeedsModelRootItem *item,
   return true;
 }
 
+bool FeedsModel::editItem(const QModelIndex &index) {
+  // TODO: pokračovat
+  return true;
+}
+
 bool FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
     FeedsModelRootItem *deleting_item = itemForIndex(index);
     FeedsModelRootItem *parent_item = itemForIndex(parent_index);
 
-    beginRemoveRows(parent_index, index.row(), index.row());
+    if (deleting_item->removeItself()) {
+      beginRemoveRows(parent_index, index.row(), index.row());
 
-    if (deleting_item->removeItself() &&
-        parent_item->removeChild(deleting_item)) {
-      // Free deleted item from the memory
-      delete deleting_item;
+      if (parent_item->removeChild(deleting_item)) {
+        // Free deleted item from the memory
+        delete deleting_item;
+      }
+
+      endRemoveRows();
     }
-
-    endRemoveRows();
 
     return true;
   }
