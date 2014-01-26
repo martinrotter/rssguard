@@ -71,15 +71,12 @@ void FeedsView::clearSelectedFeeds() {
 
 void FeedsView::addNewCategory() {
   QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
-  FormCategoryDetailsAnswer answer = form_pointer.data()->exec(NULL);
 
-  if (answer.m_dialogCode == QDialog::Accepted) {
-    // User submitted some new category and
-    // it now resides in output_item pointer,
-    // parent_item contains parent_that user selected for
-    // new category.
-
-    // TODO: Add new category to the model and to the database.
+  if (form_pointer.data()->exec(NULL) == QDialog::Accepted) {
+    // TODO: nova kategorie pridana
+  }
+  else {
+    // TODO: nova kategorie nepridana
   }
 
   delete form_pointer.data();
@@ -92,6 +89,27 @@ void FeedsView::editSelectedItem() {
 
   if ((category = isCurrentIndexCategory()) != NULL) {
     // Category is selected.
+    switch (category->type()) {
+      case FeedsModelCategory::Standard: {
+        // User wants to edit standard category.
+        FeedsModelStandardCategory *std_category = static_cast<FeedsModelStandardCategory*>(category);
+
+        QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
+
+        if (form_pointer.data()->exec(std_category) == QDialog::Accepted) {
+          // TODO: kategorie upravena
+        }
+        else {
+          // TODO: kategorie neupravena
+        }
+
+        delete form_pointer.data();
+        break;
+      }
+
+      default:
+        break;
+    }
   }
   else if ((feed = isCurrentIndexFeed()) != NULL) {
     // Feed is selected.

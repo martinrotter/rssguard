@@ -47,17 +47,22 @@ class FeedsModel : public QAbstractItemModel {
       return m_rootItem->countOfUnreadMessages();
     }
 
-    // Feed/category manipulators.
-    bool addItem(FeedsModelRootItem *item,
-                 FeedsModelRootItem *parent);
+    // Base manipulators.
     bool editItem(const QModelIndex &index);
     bool removeItem(const QModelIndex &index);
 
-    // TODO: addItself a removeItself z itemů
-    // asi přesunout do modelu a pro každej typ feedů/kanalu
-    // napsat skupinu metod na přidavani/upravu/mazani
-    // Standard feed/category manipulators.
-    //bool addStandardCategory(FeedsModelCategory *category);
+    // Standard category manipulators.
+    bool addStandardCategory(FeedsModelStandardCategory *category,
+                             FeedsModelRootItem *parent);
+    bool editStandardCategory(FeedsModelStandardCategory *original_category,
+                              FeedsModelStandardCategory *new_category);
+
+    // Standard feed manipulators.
+    /*
+    bool addStandardFeed(FeedsModelStandardFeed *feed,
+                         FeedsModelRootItem *parent);
+    bool removeStandardFeed(FeedsModelStandardFeed *feed);
+    */
 
     // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);

@@ -133,23 +133,6 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
-bool FeedsModel::addItem(FeedsModelRootItem *item,
-                         FeedsModelRootItem *parent) {
-  QModelIndex parent_index = indexForItem(parent);
-
-  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-
-  // Add item to hierarchy.
-  parent->appendChild(item);
-
-  // Add item to persistent storage.
-  item->addItself();
-
-  endInsertRows();
-
-  return true;
-}
-
 bool FeedsModel::editItem(const QModelIndex &index) {
   // TODO: pokračovat
   return true;
@@ -161,20 +144,84 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
     FeedsModelRootItem *deleting_item = itemForIndex(index);
     FeedsModelRootItem *parent_item = itemForIndex(parent_index);
 
+    // Try to persistently remove the item.
     if (deleting_item->removeItself()) {
+      // Item was persistently removed.
+      // Remove it from the model.
       beginRemoveRows(parent_index, index.row(), index.row());
 
       if (parent_item->removeChild(deleting_item)) {
-        // Free deleted item from the memory
+        // Free deleted item (and its children) from the memory.
         delete deleting_item;
       }
 
       endRemoveRows();
-    }
 
-    return true;
+      return true;
+    }
   }
 
+  // Item was not removed successfully.
+  return false;
+}
+
+bool FeedsModel::addStandardCategory(FeedsModelStandardCategory *category,
+                                     FeedsModelRootItem *parent) {
+  // Get index of parent item (parent standard category).
+  QModelIndex parent_index = indexForItem(parent);
+
+  // Now, add category to persistent storage.
+  // Children are removed, remove this standard category too.
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+                                                                  DatabaseFactory::FromSettings);
+  QSqlQuery query_add(database);
+
+  query_add.setForwardOnly(true);
+
+  // Remove all messages from this standard feed.
+  query_add.prepare("INSERT INTO Categories "
+                    "(parent_id, title, description, date_created, icon, type) "
+                    "VALUES (:parent_id, :title, :description, :date_created, :icon, :type);");
+  query_add.bindValue(":parent_id", parent->id());
+  query_add.bindValue(":title", category->title());
+  query_add.bindValue(":description", category->description());
+  query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
+  query_add.bindValue(":icon", IconFactory::toByteArray(category->icon()));
+  query_add.bindValue(":type", (int) FeedsModelCategory::Standard);
+
+  if (!query_add.exec()) {
+    // Query failed.
+    return false;
+  }
+
+  query_add.prepare("SELECT id FROM Categories WHERE date_created = :date_created;");
+  query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
+  if (query_add.exec() && query_add.next()) {
+    // New category was added, fetch is primary id
+    // from the database.
+    category->setId(query_add.value(0).toInt());
+  }
+  else {
+    // Something failed.
+    return false;
+  }
+
+  // Category was added to the persistent storage,
+  // so add it to the model.
+  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
+
+  // Add category to parent's children list.
+  parent->appendChild(category);
+
+  // Everything is completed now.
+  endInsertRows();
+
+  return true;
+}
+
+bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_category,
+                                      FeedsModelStandardCategory *new_category) {
+  // TODO: implementovat
   return false;
 }
 

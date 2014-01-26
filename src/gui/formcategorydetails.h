@@ -11,15 +11,10 @@ namespace Ui {
 }
 
 class FeedsModelCategory;
+class FeedsModelStandardCategory;
 class FeedsModel;
 class FeedsModelRootItem;
 
-class FormCategoryDetailsAnswer {
-  public:
-    int m_dialogCode;
-    FeedsModelCategory *m_outputCategory;
-    FeedsModelRootItem *m_outputParentItem;
-};
 
 class FormCategoryDetails : public QDialog {
     Q_OBJECT
@@ -44,7 +39,7 @@ class FormCategoryDetails : public QDialog {
     // to the database.
     // NOTE: Newly EDITED category IS COPY of its original.
     // SO NO ORIGINAL MODEL DATA ARE EDITED OR CHANGED.
-    FormCategoryDetailsAnswer exec(FeedsModelCategory *input_category);
+    int exec(FeedsModelStandardCategory *input_category);
 
   protected slots:
     void apply();
@@ -55,7 +50,7 @@ class FormCategoryDetails : public QDialog {
   protected:
     // Sets the category which will be edited.
     // NOTE: This is used for editing categories.
-    void setEditableCategory(FeedsModelCategory *editable_category);
+    void setEditableCategory(FeedsModelStandardCategory *editable_category);
 
     // Initializes the dialog.
     void initialize();
@@ -66,7 +61,7 @@ class FormCategoryDetails : public QDialog {
 
   private:
     Ui::FormCategoryDetails *m_ui;
-    FeedsModelCategory *m_editableCategory;
+    FeedsModelStandardCategory *m_editableCategory;
     FeedsModel *m_feedsModel;
 };
 

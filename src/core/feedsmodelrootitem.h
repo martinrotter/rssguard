@@ -57,10 +57,6 @@ class FeedsModelRootItem {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
-    virtual bool addItself() {
-      return false;
-    }
-
     // This method is used to permanently
     // "remove" (or "unregister") this item.
     // This typically removes item and its
@@ -90,21 +86,6 @@ class FeedsModelRootItem {
       }
 
       return false;
-/*
-      parents << root;
-
-      while (!parents.isEmpty()) {
-        foreach (FeedsModelRootItem *root_child, parents.takeFirst()->childItems()) {
-          if (root_child == this) {
-            return true;
-          }
-          else if (root_child->kind() == FeedsModelRootItem::Category) {
-            parents << root_child;
-          }
-        }
-      }
-
-      return false;*/
     }
 
     // Removes all children from this item.
