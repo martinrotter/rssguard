@@ -48,7 +48,6 @@ class FeedsModel : public QAbstractItemModel {
     }
 
     // Base manipulators.
-    bool editItem(const QModelIndex &index);
     bool removeItem(const QModelIndex &index);
 
     // Standard category manipulators.

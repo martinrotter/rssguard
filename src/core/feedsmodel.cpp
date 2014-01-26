@@ -133,11 +133,6 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
-bool FeedsModel::editItem(const QModelIndex &index) {
-  // TODO: pokračovat
-  return true;
-}
-
 bool FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
@@ -221,8 +216,50 @@ bool FeedsModel::addStandardCategory(FeedsModelStandardCategory *category,
 
 bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_category,
                                       FeedsModelStandardCategory *new_category) {
-  // TODO: implementovat
-  return false;
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+                                                                  DatabaseFactory::FromSettings);
+  QSqlQuery query_update_category(database);
+
+  query_update_category.setForwardOnly(true);
+  query_update_category.prepare("UPDATE Categories "
+                                "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
+                                "WHERE id = :id;");
+  query_update_category.bindValue(":title", new_category->title());
+  query_update_category.bindValue(":description", new_category->description());
+  query_update_category.bindValue(":icon", IconFactory::toByteArray(new_category->icon()));
+  query_update_category.bindValue(":parent_id", new_category->parent()->id());
+  query_update_category.bindValue(":id", original_category->id());
+
+  if (!query_update_category.exec()) {
+    return false;
+  }
+
+  // TODO: nastavit originalni kategorii podle nove; doimplementovat
+  // celkove dodelat
+
+  if (original_category->parent() != new_category->parent()) {
+    // User edited category but left its parent intact.
+    beginRemoveRows(indexForItem(original_category->parent()),
+                    original_category->parent()->childItems().indexOf(original_category),
+                    original_category->parent()->childItems().indexOf(original_category));
+
+    original_category->parent()->removeChild(original_category);
+
+    endRemoveRows();
+
+    beginInsertRows(indexForItem(new_category->parent()),
+                    new_category->parent()->childCount(),
+                    new_category->parent()->childCount());
+
+    new_category->parent()->appendChild(original_category);
+
+    endInsertRows();
+  }
+
+  // Free temporary category from memory.
+  delete new_category;
+
+  return true;
 }
 
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
