@@ -8,7 +8,7 @@
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelstandardcategory.h"
 #include "gui/formmain.h"
-#include "gui/formcategorydetails.h"
+#include "gui/formstandardcategorydetails.h"
 
 #include <QMenu>
 #include <QHeaderView>
@@ -69,8 +69,8 @@ void FeedsView::clearSelectedFeeds() {
   setSelectedFeedsClearStatus(1);
 }
 
-void FeedsView::addNewCategory() {
-  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
+void FeedsView::addNewStandardCategory() {
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
   if (form_pointer.data()->exec(NULL) == QDialog::Accepted) {
     // TODO: nova kategorie pridana
@@ -82,8 +82,25 @@ void FeedsView::addNewCategory() {
   delete form_pointer.data();
 }
 
+void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
+  FeedsModelStandardCategory *std_category = static_cast<FeedsModelStandardCategory*>(category);
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
+
+  if (form_pointer.data()->exec(std_category) == QDialog::Accepted) {
+    // TODO: kategorie upravena
+  }
+  else {
+    // TODO: kategorie neupravena (uživatel zrušil dialog)
+  }
+
+  delete form_pointer.data();
+}
+
 void FeedsView::editSelectedItem() {
-  // TODO: Implement this.
+  // TODO: preda pridavanim/upravou/mazanim kanalu/kategorii
+  // ziskat ZAPISOVACI zamek pres systemfactory::applicationCloseLock
+  // a po dokonceni cinnosti jej odevzdavat
+
   FeedsModelCategory *category;
   FeedsModelFeed *feed;
 
@@ -92,18 +109,7 @@ void FeedsView::editSelectedItem() {
     switch (category->type()) {
       case FeedsModelCategory::Standard: {
         // User wants to edit standard category.
-        FeedsModelStandardCategory *std_category = static_cast<FeedsModelStandardCategory*>(category);
-
-        QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
-
-        if (form_pointer.data()->exec(std_category) == QDialog::Accepted) {
-          // TODO: kategorie upravena
-        }
-        else {
-          // TODO: kategorie neupravena
-        }
-
-        delete form_pointer.data();
+        editStandardCategory(static_cast<FeedsModelStandardCategory*>(category));
         break;
       }
 

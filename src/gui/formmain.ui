@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -89,7 +98,7 @@
     <addaction name="m_actionUpdateSelectedFeedsCategories"/>
     <addaction name="separator"/>
     <addaction name="m_actionAddNewFeed"/>
-    <addaction name="m_actionAddNewCategory"/>
+    <addaction name="m_actionAddStandardCategory"/>
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedCategory"/>
     <addaction name="separator"/>
@@ -359,12 +368,12 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionAddNewCategory">
+  <action name="m_actionAddStandardCategory">
    <property name="text">
-    <string>Add new &amp;category</string>
+    <string>Add new standard &amp;category</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+   <property name="toolTip">
+    <string>Add new standard category.</string>
    </property>
   </action>
   <action name="m_actionNoActions">

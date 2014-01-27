@@ -1,13 +1,13 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
-#include "ui_formcategorydetails.h"
+#include "ui_formstandardcategorydetails.h"
 
 #include <QDialog>
 
 
 namespace Ui {
-  class FormSettings;
+  class FormStandardCategoryDetails;
 }
 
 class FeedsModelCategory;
@@ -16,16 +16,16 @@ class FeedsModel;
 class FeedsModelRootItem;
 
 
-class FormCategoryDetails : public QDialog {
+class FormStandardCategoryDetails : public QDialog {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
     // This constructor is supposed to create new categories.
-    explicit FormCategoryDetails(FeedsModel *model, QWidget *parent = 0);
+    explicit FormStandardCategoryDetails(FeedsModel *model, QWidget *parent = 0);
 
     // Destructor.
-    virtual ~FormCategoryDetails();
+    virtual ~FormStandardCategoryDetails();
 
     // Creates needed connections.
     void createConnections();
@@ -60,7 +60,7 @@ class FormCategoryDetails : public QDialog {
                         FeedsModelRootItem *root_item);
 
   private:
-    Ui::FormCategoryDetails *m_ui;
+    Ui::FormStandardCategoryDetails *m_ui;
     FeedsModelStandardCategory *m_editableCategory;
     FeedsModel *m_feedsModel;
 };

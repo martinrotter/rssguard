@@ -137,20 +137,17 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
     FeedsModelRootItem *deleting_item = itemForIndex(index);
-    FeedsModelRootItem *parent_item = itemForIndex(parent_index);
+    FeedsModelRootItem *parent_item = deleting_item->parent();
 
     // Try to persistently remove the item.
     if (deleting_item->removeItself()) {
       // Item was persistently removed.
       // Remove it from the model.
       beginRemoveRows(parent_index, index.row(), index.row());
-
-      if (parent_item->removeChild(deleting_item)) {
-        // Free deleted item (and its children) from the memory.
-        delete deleting_item;
-      }
-
+      parent_item->removeChild(deleting_item);
       endRemoveRows();
+
+      delete deleting_item;
 
       return true;
     }
@@ -204,11 +201,7 @@ bool FeedsModel::addStandardCategory(FeedsModelStandardCategory *category,
   // Category was added to the persistent storage,
   // so add it to the model.
   beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-
-  // Add category to parent's children list.
   parent->appendChild(category);
-
-  // Everything is completed now.
   endInsertRows();
 
   return true;
@@ -219,6 +212,8 @@ bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_categ
   QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
+  FeedsModelRootItem *original_parent = original_category->parent();
+  FeedsModelRootItem *new_parent = new_category->parent();
 
   query_update_category.setForwardOnly(true);
   query_update_category.prepare("UPDATE Categories "
@@ -227,38 +222,44 @@ bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_categ
   query_update_category.bindValue(":title", new_category->title());
   query_update_category.bindValue(":description", new_category->description());
   query_update_category.bindValue(":icon", IconFactory::toByteArray(new_category->icon()));
-  query_update_category.bindValue(":parent_id", new_category->parent()->id());
+  query_update_category.bindValue(":parent_id", new_parent->id());
   query_update_category.bindValue(":id", original_category->id());
 
   if (!query_update_category.exec()) {
+    // Persistent storage update failed, no way to continue now.
     return false;
   }
 
-  // TODO: nastavit originalni kategorii podle nove; doimplementovat
-  // celkove dodelat
+  // Setup new model data for the original item.
+  original_category->setDescription(new_category->description());
+  original_category->setIcon(new_category->icon());
+  original_category->setTitle(new_category->title());
 
-  if (original_category->parent() != new_category->parent()) {
-    // User edited category but left its parent intact.
-    beginRemoveRows(indexForItem(original_category->parent()),
-                    original_category->parent()->childItems().indexOf(original_category),
-                    original_category->parent()->childItems().indexOf(original_category));
+  if (original_parent != new_parent) {
+    // User edited category and set it new parent item,
+    // se we need to move the item in the model too.
+    int original_index_of_category = original_parent->childItems().indexOf(original_category);
+    int new_index_of_category = new_parent->childCount();
 
-    original_category->parent()->removeChild(original_category);
-
+    // Remove the original item from the model...
+    beginRemoveRows(indexForItem(original_parent),
+                    original_index_of_category,
+                    original_index_of_category);
+    original_parent->removeChild(original_category);
     endRemoveRows();
 
-    beginInsertRows(indexForItem(new_category->parent()),
-                    new_category->parent()->childCount(),
-                    new_category->parent()->childCount());
-
-    new_category->parent()->appendChild(original_category);
-
+    // ... and insert it under the new parent.
+    beginInsertRows(indexForItem(new_parent),
+                    new_index_of_category,
+                    new_index_of_category);
+    new_parent->appendChild(original_category);
     endInsertRows();
   }
 
   // Free temporary category from memory.
   delete new_category;
 
+  // Editing is done.
   return true;
 }
 

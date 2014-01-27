@@ -223,7 +223,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("edit-delete"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
-  m_ui->m_actionAddNewCategory->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
+  m_ui->m_actionAddStandardCategory->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
   m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
   m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("gnome-other"));
   m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));

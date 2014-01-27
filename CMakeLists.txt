@@ -287,7 +287,7 @@ set(APP_SOURCES
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
   src/gui/iconfactory.cpp
-  src/gui/formcategorydetails.cpp
+  src/gui/formstandardcategorydetails.cpp
   src/gui/plaintoolbutton.cpp
   src/gui/lineeditwithstatus.cpp
   src/gui/messagebox.cpp
@@ -352,7 +352,7 @@ set(APP_HEADERS
   src/gui/feedsview.h
   src/gui/messagesview.h
   src/gui/statusbar.h
-  src/gui/formcategorydetails.h
+  src/gui/formstandardcategorydetails.h
   src/gui/plaintoolbutton.h
   src/gui/lineeditwithstatus.h
   src/gui/messagebox.h
@@ -378,7 +378,7 @@ set(APP_FORMS
   src/gui/formsettings.ui
   src/gui/formwelcome.ui
   src/gui/formabout.ui
-  src/gui/formcategorydetails.ui
+  src/gui/formstandardcategorydetails.ui
 )
 
 # Add translations.

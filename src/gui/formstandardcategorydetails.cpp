@@ -1,4 +1,4 @@
-#include "gui/formcategorydetails.h"
+#include "gui/formstandardcategorydetails.h"
 
 #include "core/defs.h"
 #include "core/feedsmodelrootitem.h"
@@ -16,7 +16,7 @@
 #include <QPushButton>
 
 
-FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
+FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model, QWidget *parent)
   : QDialog(parent),
     m_editableCategory(NULL),
     m_feedsModel(model)  {
@@ -30,18 +30,18 @@ FormCategoryDetails::FormCategoryDetails(FeedsModel *model, QWidget *parent)
   onTitleChanged(QString());
 }
 
-FormCategoryDetails::~FormCategoryDetails() {
+FormStandardCategoryDetails::~FormStandardCategoryDetails() {
   qDebug("Destroying FormCategoryDetails instance.");
 }
 
-void FormCategoryDetails::createConnections() {
+void FormStandardCategoryDetails::createConnections() {
   connect(m_ui->m_buttonBox, SIGNAL(accepted()),
           this, SLOT(apply()));
   connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
           this, SLOT(onTitleChanged(QString)));
 }
 
-void FormCategoryDetails::setEditableCategory(FeedsModelStandardCategory *editable_category) {
+void FormStandardCategoryDetails::setEditableCategory(FeedsModelStandardCategory *editable_category) {
   m_editableCategory = editable_category;
 
   m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) editable_category->parent())));
@@ -50,7 +50,7 @@ void FormCategoryDetails::setEditableCategory(FeedsModelStandardCategory *editab
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormCategoryDetails::exec(FeedsModelStandardCategory *input_category) {
+int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category) {
   if (input_category == NULL) {
     // User is adding new category.
     setWindowTitle(tr("Add new category"));
@@ -67,7 +67,7 @@ int FormCategoryDetails::exec(FeedsModelStandardCategory *input_category) {
   return QDialog::exec();
 }
 
-void FormCategoryDetails::apply() {
+void FormStandardCategoryDetails::apply() {
   FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
   FeedsModelStandardCategory *new_category = new FeedsModelStandardCategory();
 
@@ -97,7 +97,7 @@ void FormCategoryDetails::apply() {
   }
 }
 
-void FormCategoryDetails::onTitleChanged(const QString &new_title){
+void FormStandardCategoryDetails::onTitleChanged(const QString &new_title){
   if (new_title.size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
     m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("This category name is ok."));
@@ -108,8 +108,8 @@ void FormCategoryDetails::onTitleChanged(const QString &new_title){
   }
 }
 
-void FormCategoryDetails::initialize() {
-  m_ui = new Ui::FormCategoryDetails();
+void FormStandardCategoryDetails::initialize() {
+  m_ui = new Ui::FormStandardCategoryDetails();
   m_ui->setupUi(this);
 
   // Set flags and attributes.
@@ -119,7 +119,7 @@ void FormCategoryDetails::initialize() {
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
-void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categories,
+void FormStandardCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categories,
                                          FeedsModelRootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
