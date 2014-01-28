@@ -140,7 +140,13 @@ void FeedsView::deleteSelectedItem() {
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
   }
 
-  m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index));
+  if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
+    // Item WAS removed.
+  }
+  else {
+    // Item WAS NOT removed, either database-related error occurred
+    // or update is undergoing.
+  }
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {
