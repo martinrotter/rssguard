@@ -103,7 +103,7 @@ void FeedMessageViewer::quitDownloader() {
 }
 
 void FeedMessageViewer::updateSelectedFeeds() {
-  if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForRead()) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLockForRead()) {
     emit feedsUpdateRequested(m_feedsView->selectedFeeds());
   }
   else {
@@ -112,7 +112,7 @@ void FeedMessageViewer::updateSelectedFeeds() {
 }
 
 void FeedMessageViewer::updateAllFeeds() {
-  if (SystemFactory::getInstance()->applicationCloseLock()->tryLockForRead()) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLockForRead()) {
     emit feedsUpdateRequested(m_feedsView->allFeeds());
   }
   else {
@@ -146,7 +146,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
   // Updates of some feeds finished, unlock the lock.
-  SystemFactory::getInstance()->applicationCloseLock()->unlock();
+  SystemFactory::instance()->applicationCloseLock()->unlock();
   FormMain::instance()->statusBar()->clearProgress();
 }
 

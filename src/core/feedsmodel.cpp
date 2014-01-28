@@ -133,7 +133,7 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   return parent_item->childCount();
 }
 
-bool FeedsModel::removeItem(const QModelIndex &index) {
+bool FeedsModel::removeItem(const QModelIndex &index) { 
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
     FeedsModelRootItem *deleting_item = itemForIndex(index);

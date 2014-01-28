@@ -1,6 +1,7 @@
 #include "gui/feedsview.h"
 
 #include "core/defs.h"
+#include "core/systemfactory.h"
 #include "core/feedsmodelfeed.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -9,12 +10,14 @@
 #include "core/feedsmodelstandardcategory.h"
 #include "gui/formmain.h"
 #include "gui/formstandardcategorydetails.h"
+#include "gui/systemtrayicon.h"
 
 #include <QMenu>
 #include <QHeaderView>
 #include <QContextMenuEvent>
 #include <QPointer>
 #include <QPainter>
+#include <QReadWriteLock>
 
 
 FeedsView::FeedsView(QWidget *parent)
@@ -124,6 +127,23 @@ void FeedsView::editSelectedItem() {
 }
 
 void FeedsView::deleteSelectedItem() {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot delete item"),
+                                              tr("Selected item cannot be deleted because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+
+    }
+
+    // Thus, cannot delete and quit the method.
+    return;
+  }
+
   QModelIndex current_index = currentIndex();
   QItemSelectionModel *selection_model = selectionModel();
 

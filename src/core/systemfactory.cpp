@@ -94,7 +94,7 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
 }
 #endif
 
-SystemFactory *SystemFactory::getInstance() {
+SystemFactory *SystemFactory::instance() {
   if (s_instance.isNull()) {
     s_instance = new SystemFactory(qApp);
   }

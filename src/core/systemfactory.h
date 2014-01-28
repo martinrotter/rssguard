@@ -47,7 +47,7 @@ class SystemFactory : public QObject {
     }
 
     // Singleton getter.
-    static SystemFactory *getInstance();
+    static SystemFactory *instance();
 
   private:
     // This read-write lock is used by application on its close.
