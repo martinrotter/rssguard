@@ -16,14 +16,12 @@
 #include <QPushButton>
 
 
-FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model, QWidget *parent)
+FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model,
+                                                         QWidget *parent)
   : QDialog(parent),
     m_editableCategory(NULL),
     m_feedsModel(model)  {
   initialize();
-  loadCategories(model->allCategories().values(),
-                 model->rootItem());
-
   createConnections();
 
   // Initialize text boxes.
@@ -56,14 +54,17 @@ int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category
     setWindowTitle(tr("Add new category"));
   }
   else {
-    // This item cannot have set itself as the parent.
-    m_ui->m_cmbParentCategory->removeItem(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) input_category)));
-
     // User is editing existing category.
     setWindowTitle(tr("Edit existing category"));
     setEditableCategory(input_category);
   }
 
+  // Load categories.
+  loadCategories(m_feedsModel->allCategories().values(),
+                 m_feedsModel->rootItem(),
+                 input_category);
+
+  // Run the dialog.
   return QDialog::exec();
 }
 
@@ -119,16 +120,23 @@ void FormStandardCategoryDetails::initialize() {
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
-void FormStandardCategoryDetails::loadCategories(const QList<FeedsModelCategory *> categories,
-                                         FeedsModelRootItem *root_item) {
+void FormStandardCategoryDetails::loadCategories(const QList<FeedsModelCategory*> categories,
+                                                 FeedsModelRootItem *root_item,
+                                                 FeedsModelCategory *input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
-  // pro ziskani root_item static_cast<FeedsModelRootItem*>(itemData(i).value<void*>())
-  // a stejně dole ve foreachi
-
 
   foreach (FeedsModelCategory *category, categories) {
+    if (input_category != NULL && (category == input_category ||
+                                   input_category->parent() == category ||
+                                   category->isChildOf(input_category))) {
+      // This category cannot be selected as the new
+      // parent for currently edited category, so
+      // don't add it.
+      continue;
+    }
+
     m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX,
                                                       Qt::DecorationRole).value<QIcon>(),
                                        category->title(),

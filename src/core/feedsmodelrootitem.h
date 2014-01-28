@@ -74,7 +74,7 @@ class FeedsModelRootItem {
 
     // Checks whether this instance is child (can be nested)
     // if given root item.
-    bool isChild(FeedsModelRootItem *root) {
+    bool isChildOf(FeedsModelRootItem *root) {
 
       while (root->kind() != FeedsModelRootItem::RootItem) {
         if (root->childItems().contains(this)) {

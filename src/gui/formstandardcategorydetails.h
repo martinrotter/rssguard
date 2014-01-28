@@ -55,9 +55,12 @@ class FormStandardCategoryDetails : public QDialog {
     // Initializes the dialog.
     void initialize();
 
-    // Loads categories into the dialog.
+    // Loads categories into the dialog + give root "category"
+    // and make sure that no childs of input category (including)
+    // input category are loaded.
     void loadCategories(const QList<FeedsModelCategory*> categories,
-                        FeedsModelRootItem *root_item);
+                        FeedsModelRootItem *root_item,
+                        FeedsModelCategory *input_category);
 
   private:
     Ui::FormStandardCategoryDetails *m_ui;
