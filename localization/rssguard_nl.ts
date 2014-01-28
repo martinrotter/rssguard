@@ -117,37 +117,6 @@
     </message>
 </context>
 <context>
-    <name>FormCategoryDetails</name>
-    <message>
-        <source>Dialog</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Title of the category</source>
-        <translation>Titel van categorie</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Omschrijving</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Pictogram</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Voeg nieuwe categorie toe</translation>
-    </message>
-</context>
-<context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
@@ -322,10 +291,6 @@
         <translation>Open geselecteerde bron artikelen met ingebouwde webbrowser.</translation>
     </message>
     <message>
-        <source>Add new &amp;category</source>
-        <translation>Voeg nieuwe &amp;categorie toe</translation>
-    </message>
-    <message>
         <source>Application is already running.</source>
         <translation>RSSguard is al gestart.</translation>
     </message>
@@ -404,6 +369,14 @@
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
         <translation>Toon alle berichten van geselecteerde feeds/categorieën in een nieuwe &quot;Krantweergave modus&quot; tabblad. Onthoud dat de berichten niet zijn ingesteld als automatisch gelezen.</translation>
+    </message>
+    <message>
+        <source>Add new standard &amp;category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new standard category.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -748,6 +721,67 @@
         <source>Use sample arguments for</source>
         <translation>Gebruik voorbeeld argumenten voor</translation>
     </message>
+    <message>
+        <source>Use in-memory database as the working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+&lt;ul&gt;
+&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
+&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
+&lt;/ul&gt;
+Disadvantages:
+&lt;ul&gt;
+&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
+&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>in-memory database switched</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardCategoryDetails</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished">Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">Omschrijving</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished">Pictogram</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished">Voeg nieuwe categorie toe</translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This category name is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This category name is too short.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -982,6 +1016,17 @@ Taal: %5</translation>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation>Wissel Rssguard tussen volledige scherm/normale staat vanaf deze statusbar pictogram.</translation>
+    </message>
+</context>
+<context>
+    <name>TabBar</name>
+    <message>
+        <source>Close this tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close tab</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

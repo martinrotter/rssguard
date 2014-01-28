@@ -117,37 +117,6 @@
     </message>
 </context>
 <context>
-    <name>FormCategoryDetails</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Parent category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Název</translation>
-    </message>
-    <message>
-        <source>Title of the category</source>
-        <translation>Název kategorie</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
@@ -322,10 +291,6 @@
         <translation>Otevřít vybrané zdrojové články v interním prohlížeči.</translation>
     </message>
     <message>
-        <source>Add new &amp;category</source>
-        <translation>Přidat novou &amp;kategorii</translation>
-    </message>
-    <message>
         <source>Application is already running.</source>
         <translation>Aplikace již běží.</translation>
     </message>
@@ -383,26 +348,34 @@
     </message>
     <message>
         <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vy&amp;braný kanál/kategorii</translation>
     </message>
     <message>
         <source>Delete selected feed/category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vybraný kanál/kategorii.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected feeds as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit všechny zprávy (i přes filtry zpráv) z vybraných kanálů jako přečtené.</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected feeds as unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit všechny zprávy (i přes filtry zpráv) z vybraných kanálů jako nepřečtené.</translation>
     </message>
     <message>
         <source>Remove all messages from selected feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat všechny zprávy z vybraných kanálů.</translation>
     </message>
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new standard &amp;category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new standard category.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -748,6 +721,67 @@
         <source>Use sample arguments for</source>
         <translation>Použít typické argumenty pro</translation>
     </message>
+    <message>
+        <source>Use in-memory database as the working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+&lt;ul&gt;
+&lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
+&lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
+&lt;/ul&gt;
+Disadvantages:
+&lt;ul&gt;
+&lt;li&gt;if application crashes, your changes from last session are lost,&lt;/li&gt;
+&lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
+&lt;/ul&gt;
+Authors of this application are NOT responsible for lost data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>in-memory database switched</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardCategoryDetails</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This category name is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This category name is too short.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -983,6 +1017,17 @@ Jazyk: %5</translation>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation>Přepnout režim okna aplikace rovnou z ikonky ve stavovém pruhu.</translation>
+    </message>
+</context>
+<context>
+    <name>TabBar</name>
+    <message>
+        <source>Close this tab.</source>
+        <translation>Zavřít tento panel.</translation>
+    </message>
+    <message>
+        <source>Close tab</source>
+        <translation>Zavřít panel</translation>
     </message>
 </context>
 <context>
