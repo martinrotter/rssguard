@@ -11,6 +11,7 @@
 #include "gui/formmain.h"
 #include "gui/formstandardcategorydetails.h"
 #include "gui/systemtrayicon.h"
+#include "gui/messagebox.h"
 
 #include <QMenu>
 #include <QHeaderView>
@@ -73,6 +74,26 @@ void FeedsView::clearSelectedFeeds() {
 }
 
 void FeedsView::addNewStandardCategory() {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot add category"),
+                                              tr("You cannot add new category now because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot add category"),
+                       tr("You cannot add new category now because feed update is ongoing."));
+    }
+
+    // Thus, cannot delete and quit the method.
+    return;
+  }
+
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
   if (form_pointer.data()->exec(NULL) == QDialog::Accepted) {
@@ -100,9 +121,25 @@ void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
 }
 
 void FeedsView::editSelectedItem() {
-  // TODO: preda pridavanim/upravou/mazanim kanalu/kategorii
-  // ziskat ZAPISOVACI zamek pres systemfactory::applicationCloseLock
-  // a po dokonceni cinnosti jej odevzdavat
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot edit item"),
+                                              tr("Selected item cannot be edited because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot edit item"),
+                       tr("Selected item cannot be edited because feed update is ongoing."));
+    }
+
+    // Thus, cannot delete and quit the method.
+    return;
+  }
 
   FeedsModelCategory *category;
   FeedsModelFeed *feed;
@@ -137,7 +174,10 @@ void FeedsView::deleteSelectedItem() {
                                               QSystemTrayIcon::Warning);
     }
     else {
-
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot delete item"),
+                       tr("Selected item cannot be deleted because feed update is ongoing."));
     }
 
     // Thus, cannot delete and quit the method.
