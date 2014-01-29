@@ -48,6 +48,38 @@
         <source>Context menu for feeds</source>
         <translation>Kontextové menu pro přehled kanálů</translation>
     </message>
+    <message>
+        <source>Cannot add standard category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard category now because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot add standard feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard feed now because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot edit item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot delete item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be deleted because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -259,10 +291,6 @@
         <translation>Smazat vybrané zprávy.</translation>
     </message>
     <message>
-        <source>Add new &amp;feed</source>
-        <translation>Přidat k&amp;anál</translation>
-    </message>
-    <message>
         <source>Add new feed.</source>
         <translation>Přidat nový kanál.</translation>
     </message>
@@ -376,6 +404,10 @@
     </message>
     <message>
         <source>Add new standard category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new standard &amp;feed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -747,16 +779,12 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Parent category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nadpis</translation>
     </message>
     <message>
         <source>Description</source>
@@ -767,19 +795,194 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new category</source>
+        <source>Select parent item for your category.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Edit existing category</source>
+        <source>Select icon for your category.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This category name is ok.</source>
+        <source>Add new standard category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This category name is too short.</source>
+        <source>Edit existing standard category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardFeedDetails</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished">Typ</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Nadpis</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new standard feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing standard feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -988,13 +1191,8 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
         <source>%1 (%2)
 %3
 
-Encoding: %4
-Language: %5</source>
-        <translation>%1 (%2)
-%3
-
-Kódování: %4
-Jazyk: %5</translation>
+Encoding: %4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

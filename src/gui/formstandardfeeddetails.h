@@ -26,7 +26,13 @@ class FormStandardFeedDetails : public QDialog {
   public slots:
     int exec(FeedsModelStandardFeed *input_feed);
 
+  protected slots:
+    // Trigerred when title/description changes.
+    void onTitleChanged(const QString &new_title);
+    void onDescriptionChanged(const QString &new_description);
+
   protected:
+    void createConnections();
     void setEditableFeed(FeedsModelStandardFeed *editable_feed);
     void initialize();
 

@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS Feeds (
   category       INTEGER    NOT NULL CHECK (category >= -1),
   encoding       TEXT       NOT NULL CHECK (encoding != ''),
   url            TEXT       NOT NULL UNIQUE CHECK (url != ''),
-  language       TEXT,
   type           INTEGER    NOT NULL CHECK (type >= 0)
 );
 -- !

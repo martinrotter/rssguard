@@ -29,18 +29,7 @@ class FormStandardCategoryDetails : public QDialog {
     // Destructor.
     virtual ~FormStandardCategoryDetails();
 
-    // Creates needed connections.
-    void createConnections();
-
   public slots:
-    // Start dialog execution. If result is QDialog::Accepted,
-    // then output_item contains added or edited category
-    // and parent_item contains parent item of newly
-    // created or edited category.
-    // NOTE: Newly ADDED category is NOT added to the model NOR
-    // to the database.
-    // NOTE: Newly EDITED category IS COPY of its original.
-    // SO NO ORIGINAL MODEL DATA ARE EDITED OR CHANGED.
     int exec(FeedsModelStandardCategory *input_category);
 
   protected slots:
@@ -57,6 +46,9 @@ class FormStandardCategoryDetails : public QDialog {
     void onUseDefaultIcon();
 
   protected:
+    // Creates needed connections.
+    void createConnections();
+
     // Sets the category which will be edited.
     // NOTE: This is used for editing categories.
     void setEditableCategory(FeedsModelStandardCategory *editable_category);

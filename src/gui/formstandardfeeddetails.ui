@@ -32,7 +32,7 @@
      <item row="0" column="1">
       <widget class="QComboBox" name="m_cmbParentCategory">
        <property name="toolTip">
-        <string>Select parent item for your category.</string>
+        <string>Select parent item for your feed.</string>
        </property>
       </widget>
      </item>
@@ -125,7 +125,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>Select icon for your category.</string>
+        <string>Select icon for your feed.</string>
        </property>
        <property name="text">
         <string notr="true"/>

@@ -22,6 +22,11 @@ FormStandardFeedDetails::FormStandardFeedDetails(FeedsModel *model, QWidget *par
     m_editableFeed(NULL),
     m_feedsModel(model) {
   initialize();
+  createConnections();
+
+  // Initialize that shit.
+  onTitleChanged(QString());
+  onDescriptionChanged(QString());
 }
 
 FormStandardFeedDetails::~FormStandardFeedDetails() {
@@ -48,6 +53,36 @@ int FormStandardFeedDetails::exec(FeedsModelStandardFeed *input_feed) {
   return QDialog::exec();
 }
 
+void FormStandardFeedDetails::onTitleChanged(const QString &new_title){
+  if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
+    m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("Feed name is ok."));
+  }
+  else {
+    m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("Feed name is too short."));
+  }
+}
+
+void FormStandardFeedDetails::onDescriptionChanged(const QString &new_description) {
+  if (new_description.simplified().isEmpty()) {
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
+  }
+  else {
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description os ok."));
+  }
+}
+
+void FormStandardFeedDetails::createConnections() {
+  // General connections.
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onTitleChanged(QString)));
+  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onDescriptionChanged(QString)));
+
+  // Icon connections.
+}
+
 void FormStandardFeedDetails::setEditableFeed(FeedsModelStandardFeed *editable_feed) {
   m_editableFeed = editable_feed;
 
@@ -70,6 +105,16 @@ void FormStandardFeedDetails::initialize() {
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+
+  // Set text boxes.
+  m_ui->m_txtTitle->lineEdit()->setPlaceholderText(tr("Feed title"));
+  m_ui->m_txtTitle->lineEdit()->setToolTip(tr("Set title for your feed."));
+
+  m_ui->m_txtDescription->lineEdit()->setPlaceholderText(tr("Feed description"));
+  m_ui->m_txtDescription->lineEdit()->setToolTip(tr("Set description for your feed."));
+
+  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("Feed url"));
+  m_ui->m_txtUrl->lineEdit()->setToolTip(tr("Set url for your feed."));
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);

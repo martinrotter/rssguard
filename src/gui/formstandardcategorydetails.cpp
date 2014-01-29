@@ -118,7 +118,7 @@ void FormStandardCategoryDetails::apply() {
 }
 
 void FormStandardCategoryDetails::onTitleChanged(const QString &new_title){
-  if (new_title.size() >= MIN_CATEGORY_NAME_LENGTH) {
+  if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
     m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("Category name is ok."));
   }
