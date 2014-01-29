@@ -73,12 +73,26 @@ void FormStandardFeedDetails::onDescriptionChanged(const QString &new_descriptio
   }
 }
 
+void FormStandardFeedDetails::onUrlChanged(const QString &new_url) {
+  if (new_url.isEmpty()) {
+    // New url is well-formed.
+  }
+  else if (!new_url.simplified().isEmpty()) {
+    // New url is not well-formed but is not empty on the other hand.
+  }
+  else {
+    // New url is empty.
+  }
+}
+
 void FormStandardFeedDetails::createConnections() {
   // General connections.
   connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
           this, SLOT(onTitleChanged(QString)));
   connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)),
           this, SLOT(onDescriptionChanged(QString)));
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onUrlChanged(QString)));
 
   // Icon connections.
 }

@@ -30,6 +30,7 @@ class FormStandardFeedDetails : public QDialog {
     // Trigerred when title/description changes.
     void onTitleChanged(const QString &new_title);
     void onDescriptionChanged(const QString &new_description);
+    void onUrlChanged(const QString &new_url);
 
   protected:
     void createConnections();
