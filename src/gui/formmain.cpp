@@ -55,10 +55,6 @@ FormMain *FormMain::instance() {
   return s_instance;
 }
 
-
-
-
-
 QList<QAction*> FormMain::allActions() {
   QList<QAction*> actions;
 
@@ -224,7 +220,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("edit-delete"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
   m_ui->m_actionAddStandardCategory->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
-  m_ui->m_actionAddNewFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
+  m_ui->m_actionAddStandardFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
   m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("gnome-other"));
   m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
   m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));

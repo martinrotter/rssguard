@@ -36,12 +36,19 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="m_cmbParentCategory"/>
+      <widget class="QComboBox" name="m_cmbParentCategory">
+       <property name="toolTip">
+        <string>Select parent item for your category.</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="m_lblTitle">
        <property name="text">
         <string>Title</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtTitle</cstring>
        </property>
       </widget>
      </item>
@@ -49,6 +56,9 @@
       <widget class="QLabel" name="m_lblDescription">
        <property name="text">
         <string>Description</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtDescription</cstring>
        </property>
       </widget>
      </item>
@@ -75,6 +85,9 @@
          <width>40</width>
          <height>40</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>Select icon for your category.</string>
        </property>
        <property name="text">
         <string notr="true"/>
@@ -124,6 +137,11 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_buttonBox</tabstop>
+  <tabstop>m_cmbParentCategory</tabstop>
+  <tabstop>m_btnIcon</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -133,8 +151,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>325</x>
+     <y>170</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

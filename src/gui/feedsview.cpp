@@ -250,6 +250,7 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(messages);
+    markSelectedFeedsRead();
   }
 }
 

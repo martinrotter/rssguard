@@ -2,6 +2,10 @@
 
 #include "core/defs.h"
 
+#if !defined(Q_OS_WIN)
+#include "gui/messagebox.h"
+#endif
+
 #include <QDesktopServices>
 #include <QUrl>
 #include <QLabel>
@@ -13,6 +17,10 @@ FormWelcome::FormWelcome(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormWe
 
   // Set flags.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+
+#if !defined(Q_OS_WIN)
+  MessageBox::iconify(m_ui->m_buttonBox);
+#endif
 
   // Set icon.
   setWindowIcon(QIcon(APP_ICON_PATH));

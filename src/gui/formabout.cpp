@@ -2,6 +2,9 @@
 
 #include "core/textfactory.h"
 #include "gui/iconthemefactory.h"
+#if !defined(Q_OS_WIN)
+#include "gui/messagebox.h"
+#endif
 
 #include <QFile>
 #include <QTextStream>
@@ -13,6 +16,11 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::instance()->fromTheme("help-about"));
+
+#if !defined(Q_OS_WIN)
+  MessageBox::iconify(m_ui->m_buttonBox);
+#endif
+
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 
   // Load information from embedded text files.

@@ -30,6 +30,10 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::instance()->fromTheme("preferences-system"));
 
+#if !defined(Q_OS_WIN)
+  MessageBox::iconify(m_ui->m_buttonBox);
+#endif
+
   // Setup behavior.
   m_ui->m_treeLanguages->setColumnCount(5);
   m_ui->m_treeLanguages->setHeaderHidden(false);

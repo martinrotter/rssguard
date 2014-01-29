@@ -240,6 +240,9 @@ void MessagesView::openSelectedSourceArticlesExternally() {
       return;
     }
   }
+
+  // Finally, mark opened messages as read.
+  markSelectedMessagesRead();
 }
 
 void MessagesView::openSelectedSourceMessagesInternally() {
@@ -256,6 +259,9 @@ void MessagesView::openSelectedSourceMessagesInternally() {
       emit openLinkNewTab(message.m_url);
     }
   }
+
+  // Finally, mark opened messages as read.
+  markSelectedMessagesRead();
 }
 
 void MessagesView::openSelectedMessagesInternally() {
@@ -266,6 +272,11 @@ void MessagesView::openSelectedMessagesInternally() {
   }
 
   emit openMessagesInNewspaperView(messages);
+
+  // Finally, mark opened messages as read.
+  // TODO: It is a question if to mark selected messages as read
+  // when they get opened externally/in new tab.
+  markSelectedMessagesRead();
 }
 
 void MessagesView::markSelectedMessagesRead() {

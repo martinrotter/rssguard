@@ -97,7 +97,7 @@
     <addaction name="m_actionUpdateAllFeeds"/>
     <addaction name="m_actionUpdateSelectedFeedsCategories"/>
     <addaction name="separator"/>
-    <addaction name="m_actionAddNewFeed"/>
+    <addaction name="m_actionAddStandardFeed"/>
     <addaction name="m_actionAddStandardCategory"/>
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedCategory"/>
@@ -324,15 +324,12 @@
     <string>Remove all messages from selected feeds.</string>
    </property>
   </action>
-  <action name="m_actionAddNewFeed">
+  <action name="m_actionAddStandardFeed">
    <property name="text">
-    <string>Add new &amp;feed</string>
+    <string>Add new standard &amp;feed</string>
    </property>
    <property name="toolTip">
     <string>Add new feed.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">

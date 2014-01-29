@@ -8,7 +8,10 @@
 #include "gui/iconthemefactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
+
+#if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
+#endif
 
 #include <QLineEdit>
 #include <QTextEdit>
@@ -65,6 +68,10 @@ int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category
   if (input_category == NULL) {
     // User is adding new category.
     setWindowTitle(tr("Add new category"));
+
+    // Make sure that "default" icon is used as the default option for new
+    // categories.
+    m_actionUseDefaultIcon->trigger();
   }
   else {
     // User is editing existing category.
@@ -122,8 +129,8 @@ void FormStandardCategoryDetails::onTitleChanged(const QString &new_title){
 }
 
 void FormStandardCategoryDetails::onDescriptionChanged(const QString &new_description) {
-  if (new_description.isEmpty()) {
-    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Please, enter some description."));
+  if (new_description.simplified().isEmpty()) {
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
   }
   else {
     m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description os ok."));
@@ -160,6 +167,13 @@ void FormStandardCategoryDetails::initialize() {
   m_ui = new Ui::FormStandardCategoryDetails();
   m_ui->setupUi(this);
 
+  // Set text boxes.
+  m_ui->m_txtTitle->lineEdit()->setPlaceholderText(tr("Category title"));
+  m_ui->m_txtTitle->lineEdit()->setToolTip(tr("Set title for your category."));
+
+  m_ui->m_txtDescription->lineEdit()->setPlaceholderText(tr("Category description"));
+  m_ui->m_txtDescription->lineEdit()->setToolTip(tr("Set description for your category."));
+
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::instance()->fromTheme("document-new"));
@@ -177,7 +191,7 @@ void FormStandardCategoryDetails::initialize() {
                                          tr("Load icon from file..."),
                                          this);
   m_actionNoIcon = new QAction(IconThemeFactory::instance()->fromTheme("edit-delete"),
-                               tr("No icon"),
+                               tr("Do not use icon"),
                                this);
   m_actionUseDefaultIcon = new QAction(IconThemeFactory::instance()->fromTheme("folder-black"),
                                        tr("Use default icon"),

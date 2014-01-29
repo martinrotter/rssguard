@@ -6,6 +6,7 @@
 
 class IconFactory {
   private:
+    // Constructors and destructors.
     explicit IconFactory();
 
   public:

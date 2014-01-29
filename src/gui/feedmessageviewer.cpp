@@ -239,16 +239,12 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
   m_toolBar->addSeparator();
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionAddNewFeed);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedCategory);
+  m_toolBar->addSeparator();
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsRead);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearFeeds);
-  m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedMessages);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
