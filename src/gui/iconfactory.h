@@ -9,7 +9,8 @@ class IconFactory {
     explicit IconFactory();
 
   public:
-    // Used to store/retrieve QIcons from/to database.
+    // Used to store/retrieve QIcons from/to database via Base64-encoded
+    // byte array.
     static QIcon fromByteArray(QByteArray array);
     static QByteArray toByteArray(const QIcon &icon);
 };

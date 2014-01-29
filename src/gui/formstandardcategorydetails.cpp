@@ -8,12 +8,16 @@
 #include "gui/iconthemefactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
+#include "gui/messagebox.h"
 
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QDialogButtonBox>
 #include <QToolButton>
 #include <QPushButton>
+#include <QMenu>
+#include <QAction>
+#include <QFileDialog>
 
 
 FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model,
@@ -26,6 +30,7 @@ FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model,
 
   // Initialize text boxes.
   onTitleChanged(QString());
+  onDescriptionChanged(QString());
 }
 
 FormStandardCategoryDetails::~FormStandardCategoryDetails() {
@@ -33,10 +38,18 @@ FormStandardCategoryDetails::~FormStandardCategoryDetails() {
 }
 
 void FormStandardCategoryDetails::createConnections() {
+  // General connections.
   connect(m_ui->m_buttonBox, SIGNAL(accepted()),
           this, SLOT(apply()));
   connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
           this, SLOT(onTitleChanged(QString)));
+  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onDescriptionChanged(QString)));
+
+  // Icon connections.
+  connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
+  connect(m_actionNoIcon, SIGNAL(triggered()), this, SLOT(onNoIconSelected()));
+  connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
 }
 
 void FormStandardCategoryDetails::setEditableCategory(FeedsModelStandardCategory *editable_category) {
@@ -88,7 +101,6 @@ void FormStandardCategoryDetails::apply() {
     }
   }
   else {
-    // TODO: edit category
     if (m_feedsModel->editStandardCategory(m_editableCategory, new_category)) {
       accept();
     }
@@ -101,12 +113,47 @@ void FormStandardCategoryDetails::apply() {
 void FormStandardCategoryDetails::onTitleChanged(const QString &new_title){
   if (new_title.size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("This category name is ok."));
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("Category name is ok."));
   }
   else {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("This category name is too short."));
+    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("Category name is too short."));
   }
+}
+
+void FormStandardCategoryDetails::onDescriptionChanged(const QString &new_description) {
+  if (new_description.isEmpty()) {
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Please, enter some description."));
+  }
+  else {
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description os ok."));
+  }
+}
+
+void FormStandardCategoryDetails::onNoIconSelected() {
+  m_ui->m_btnIcon->setIcon(QIcon());
+}
+
+void FormStandardCategoryDetails::onLoadIconFromFile() {
+  QFileDialog dialog(this, tr("Select icon file for the category"),
+                     QDir::homePath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
+  dialog.setFileMode(QFileDialog::ExistingFile);
+  dialog.setWindowIcon(IconThemeFactory::instance()->fromTheme("image-x-generic"));
+  dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
+  dialog.setViewMode(QFileDialog::Detail);
+  dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
+  dialog.setLabelText(QFileDialog::Reject, tr("Cancel"));
+  dialog.setLabelText(QFileDialog::LookIn, tr("Look in:"));
+  dialog.setLabelText(QFileDialog::FileName, tr("Icon name:"));
+  dialog.setLabelText(QFileDialog::FileType, tr("Icon type:"));
+
+  if (dialog.exec() == QDialog::Accepted) {
+    m_ui->m_btnIcon->setIcon(QIcon(dialog.selectedFiles().value(0)));
+  }
+}
+
+void FormStandardCategoryDetails::onUseDefaultIcon() {
+  m_ui->m_btnIcon->setIcon(IconThemeFactory::instance()->fromTheme("folder-black"));
 }
 
 void FormStandardCategoryDetails::initialize() {
@@ -117,7 +164,28 @@ void FormStandardCategoryDetails::initialize() {
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::instance()->fromTheme("document-new"));
 
+  // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+
+#if !defined(Q_OS_WIN)
+  MessageBox::iconify(m_ui->m_buttonBox);
+#endif
+
+  // Setup menu & actions for icon selection.
+  m_iconMenu = new QMenu(tr("Icon selection"), this);
+  m_actionLoadIconFromFile = new QAction(IconThemeFactory::instance()->fromTheme("image-x-generic"),
+                                         tr("Load icon from file..."),
+                                         this);
+  m_actionNoIcon = new QAction(IconThemeFactory::instance()->fromTheme("edit-delete"),
+                               tr("No icon"),
+                               this);
+  m_actionUseDefaultIcon = new QAction(IconThemeFactory::instance()->fromTheme("folder-black"),
+                                       tr("Use default icon"),
+                                       this);
+  m_iconMenu->addAction(m_actionLoadIconFromFile);
+  m_iconMenu->addAction(m_actionUseDefaultIcon);
+  m_iconMenu->addAction(m_actionNoIcon);
+  m_ui->m_btnIcon->setMenu(m_iconMenu);
 }
 
 void FormStandardCategoryDetails::loadCategories(const QList<FeedsModelCategory*> categories,

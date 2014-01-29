@@ -7,6 +7,8 @@ IconFactory::IconFactory() {
 }
 
 QIcon IconFactory::fromByteArray(QByteArray array) {
+  array = QByteArray::fromBase64(array);
+
   QIcon icon;
   QBuffer buffer(&array);
   buffer.open(QIODevice::ReadOnly);
@@ -27,5 +29,5 @@ QByteArray IconFactory::toByteArray(const QIcon &icon) {
   out << icon;
 
   buffer.close();
-  return array;
+  return array.toBase64();
 }

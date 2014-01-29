@@ -104,6 +104,9 @@ void FeedsView::addNewStandardCategory() {
   }
 
   delete form_pointer.data();
+
+  // Changes are done, unlock the update master lock.
+  SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
 void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
@@ -161,6 +164,8 @@ void FeedsView::editSelectedItem() {
     // Feed is selected.
   }
 
+  // Changes are done, unlock the update master lock.
+  SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
 void FeedsView::deleteSelectedItem() {
@@ -188,6 +193,8 @@ void FeedsView::deleteSelectedItem() {
   QItemSelectionModel *selection_model = selectionModel();
 
   if (!current_index.isValid()) {
+    // Changes are done, unlock the update master lock and exit.
+    SystemFactory::instance()->applicationCloseLock()->unlock();
     return;
   }
 
@@ -207,6 +214,9 @@ void FeedsView::deleteSelectedItem() {
     // Item WAS NOT removed, either database-related error occurred
     // or update is undergoing.
   }
+
+  // Changes are done, unlock the update master lock.
+  SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {

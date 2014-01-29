@@ -14,6 +14,8 @@ class FeedsModelCategory;
 class FeedsModelStandardCategory;
 class FeedsModel;
 class FeedsModelRootItem;
+class QMenu;
+class QAction;
 
 
 class FormStandardCategoryDetails : public QDialog {
@@ -42,10 +44,17 @@ class FormStandardCategoryDetails : public QDialog {
     int exec(FeedsModelStandardCategory *input_category);
 
   protected slots:
+    // Applies changes.
     void apply();
 
     // Trigerred when title/description changes.
     void onTitleChanged(const QString &new_title);
+    void onDescriptionChanged(const QString &new_description);
+
+    // Icon selectors.
+    void onNoIconSelected();
+    void onLoadIconFromFile();
+    void onUseDefaultIcon();
 
   protected:
     // Sets the category which will be edited.
@@ -66,6 +75,11 @@ class FormStandardCategoryDetails : public QDialog {
     Ui::FormStandardCategoryDetails *m_ui;
     FeedsModelStandardCategory *m_editableCategory;
     FeedsModel *m_feedsModel;
+
+    QMenu *m_iconMenu;
+    QAction *m_actionLoadIconFromFile;
+    QAction *m_actionUseDefaultIcon;
+    QAction *m_actionNoIcon;
 };
 
 #endif // FORMCATEGORYDETAILS_H
