@@ -1,6 +1,9 @@
 #include "gui/formstandardfeeddetails.h"
 
+#include "core/textfactory.h"
 #include "core/feedsmodel.h"
+#include "core/feedsmodelfeed.h"
+#include "core/feedsmodelstandardfeed.h"
 #include "gui/iconthemefactory.h"
 
 #if !defined(Q_OS_WIN)
@@ -8,6 +11,8 @@
 #endif
 
 #include <QPushButton>
+#include <QTextCodec>
+
 
 FormStandardFeedDetails::FormStandardFeedDetails(FeedsModel *model, QWidget *parent)
   : QDialog(parent) {
@@ -26,9 +31,13 @@ int FormStandardFeedDetails::exec(FeedsModelStandardFeed *input_feed) {
   else {
     // User is editing existing category.
     setWindowTitle(tr("Edit existing standard feed"));
+    // TODO: set editable feed.
   }
 
-  return 0;
+  // TODO: Load categories.
+
+  // Run the dialog.
+  return QDialog::exec();
 }
 
 void FormStandardFeedDetails::initialize() {
@@ -45,4 +54,22 @@ void FormStandardFeedDetails::initialize() {
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
+
+  // Add standard feed types.
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardAtom10), QVariant::fromValue(FeedsModelFeed::StandardAtom10));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRdf), QVariant::fromValue(FeedsModelFeed::StandardRdf));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRss0X), QVariant::fromValue(FeedsModelFeed::StandardRss0X));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRss2X), QVariant::fromValue(FeedsModelFeed::StandardRss2X));
+
+  // Load available encodings.
+  QList<QByteArray> encodings = QTextCodec::availableCodecs();
+  QStringList encoded_encodings;
+
+  foreach (const QByteArray &encoding, encodings) {
+    encoded_encodings.append(encoding);
+  }
+
+  qSort(encoded_encodings.begin(), encoded_encodings.end(), TextFactory::isCaseInsensitiveLessThan);
+  m_ui->m_cmbEncoding->addItems(encoded_encodings);
+
 }

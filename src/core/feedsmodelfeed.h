@@ -59,4 +59,6 @@ class FeedsModelFeed : public FeedsModelRootItem {
     int m_unreadCount;
 };
 
+Q_DECLARE_METATYPE(FeedsModelFeed::Type)
+
 #endif // FEEDSMODELFEED_H

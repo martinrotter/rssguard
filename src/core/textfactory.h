@@ -13,6 +13,10 @@ class TextFactory {
     explicit TextFactory();
 
   public:
+    static bool isCaseInsensitiveLessThan(const QString &lhs, const QString &rhs) {
+      return lhs.toLower() < rhs.toLower();
+    }
+
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
     // NOTE: This method tries to always return time in UTC+00:00.
