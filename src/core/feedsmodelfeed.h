@@ -3,6 +3,8 @@
 
 #include "core/feedsmodelrootitem.h"
 
+#include <QMetaType>
+
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
