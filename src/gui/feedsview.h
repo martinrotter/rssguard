@@ -76,6 +76,9 @@ class FeedsView : public QTreeView {
     void addNewStandardCategory();
     void editStandardCategory(FeedsModelStandardCategory *category);
 
+    // Standard feed manipulators.
+    void addNewStandardFeed();
+
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);
 

@@ -1,9 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>FormStandardFeedDetails</class>
- <widget name="FormStandardFeedDetails" class="QDialog">
+ <widget class="QDialog" name="FormStandardFeedDetails">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget name="buttonBox" class="QDialogButtonBox">
+  <widget class="QDialogButtonBox" name="m_buttonBox">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -32,11 +30,10 @@
    </property>
   </widget>
  </widget>
- <pixmapfunction/>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>accepted()</signal>
    <receiver>FormStandardFeedDetails</receiver>
    <slot>accept()</slot>
@@ -52,7 +49,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>FormStandardFeedDetails</receiver>
    <slot>reject()</slot>

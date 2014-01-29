@@ -67,7 +67,7 @@ void FormStandardCategoryDetails::setEditableCategory(FeedsModelStandardCategory
 int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category) {
   if (input_category == NULL) {
     // User is adding new category.
-    setWindowTitle(tr("Add new category"));
+    setWindowTitle(tr("Add new standard category"));
 
     // Make sure that "default" icon is used as the default option for new
     // categories.
@@ -75,7 +75,7 @@ int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category
   }
   else {
     // User is editing existing category.
-    setWindowTitle(tr("Edit existing category"));
+    setWindowTitle(tr("Edit existing standard category"));
     setEditableCategory(input_category);
   }
 

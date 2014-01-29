@@ -10,6 +10,7 @@
 #include "core/feedsmodelstandardcategory.h"
 #include "gui/formmain.h"
 #include "gui/formstandardcategorydetails.h"
+#include "gui/formstandardfeeddetails.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
 
@@ -79,15 +80,15 @@ void FeedsView::addNewStandardCategory() {
     // it is used probably by feed updater or application
     // is quitting.
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot add category"),
-                                              tr("You cannot add new category now because feed update is ongoing."),
+      SystemTrayIcon::instance()->showMessage(tr("Cannot add standard category"),
+                                              tr("You cannot add new standard category now because feed update is ongoing."),
                                               QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
                        QMessageBox::Warning,
-                       tr("Cannot add category"),
-                       tr("You cannot add new category now because feed update is ongoing."));
+                       tr("Cannot add standard category"),
+                       tr("You cannot add new standard category now because feed update is ongoing."));
     }
 
     // Thus, cannot delete and quit the method.
@@ -121,6 +122,42 @@ void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
   }
 
   delete form_pointer.data();
+}
+
+void FeedsView::addNewStandardFeed() {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot add standard feed"),
+                                              tr("You cannot add new standard feed now because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot add standard feed"),
+                       tr("You cannot add new standard feed now because feed update is ongoing."));
+    }
+
+    // Thus, cannot delete and quit the method.
+    return;
+  }
+
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
+
+  if (form_pointer.data()->exec(NULL) == QDialog::Accepted) {
+    // TODO: nova kategorie pridana
+  }
+  else {
+    // TODO: nova kategorie nepridana
+  }
+
+  delete form_pointer.data();
+
+  // Changes are done, unlock the update master lock.
+  SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
 void FeedsView::editSelectedItem() {

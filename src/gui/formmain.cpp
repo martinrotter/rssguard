@@ -86,8 +86,6 @@ QList<QAction*> FormMain::allActions() {
   return actions;
 }
 
-
-
 void FormMain::prepareMenus() {
   // Setup menu for tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -98,6 +96,8 @@ void FormMain::prepareMenus() {
 #endif
 
     // Add needed items to the menu.
+    m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
+    m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
 

@@ -219,6 +219,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), this, SLOT(updateAllFeeds()));
   connect(FormMain::instance()->m_ui->m_actionAddStandardCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardCategory()));
+  connect(FormMain::instance()->m_ui->m_actionAddStandardFeed,
+          SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardFeed()));
   connect(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode,
