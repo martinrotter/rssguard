@@ -12,6 +12,8 @@ namespace Ui {
 
 class FeedsModel;
 class FeedsModelStandardFeed;
+class FeedsModelCategory;
+class FeedsModelRootItem;
 
 class FormStandardFeedDetails : public QDialog {
     Q_OBJECT
@@ -25,10 +27,23 @@ class FormStandardFeedDetails : public QDialog {
     int exec(FeedsModelStandardFeed *input_feed);
 
   protected:
+    void setEditableFeed(FeedsModelStandardFeed *editable_feed);
     void initialize();
+
+    // Loads categories into the dialog from the model.
+    void loadCategories(const QList<FeedsModelCategory*> categories,
+                        FeedsModelRootItem *root_item,
+                        FeedsModelStandardFeed *input_feed);
 
   private:
     Ui::FormStandardFeedDetails *m_ui;
+    FeedsModelStandardFeed *m_editableFeed;
+    FeedsModel *m_feedsModel;
+
+    QMenu *m_iconMenu;
+    QAction *m_actionLoadIconFromFile;
+    QAction *m_actionUseDefaultIcon;
+    QAction *m_actionNoIcon;
 };
 
 #endif // FORMSTANDARDFEEDDETAILS_H

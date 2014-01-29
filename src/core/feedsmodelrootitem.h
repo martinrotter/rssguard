@@ -72,16 +72,17 @@ class FeedsModelRootItem {
       return m_childItems;
     }
 
-    // Checks whether this instance is child (can be nested)
-    // if given root item.
-    bool isChildOf(FeedsModelRootItem *root) {
+    // Checks whether THIS object is child (direct or indirect)
+    // of the given root.
+    bool isChildOf(FeedsModelRootItem *root) {     
+      FeedsModelRootItem *this_item = this;
 
-      while (root->kind() != FeedsModelRootItem::RootItem) {
-        if (root->childItems().contains(this)) {
+      while (this_item->kind() != FeedsModelRootItem::RootItem) {
+        if (root->childItems().contains(this_item)) {
           return true;
         }
         else {
-          root = root->parent();
+          this_item = this_item->parent();
         }
       }
 

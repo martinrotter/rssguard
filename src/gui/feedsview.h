@@ -78,6 +78,7 @@ class FeedsView : public QTreeView {
 
     // Standard feed manipulators.
     void addNewStandardFeed();
+    void editStandardFeed(FeedsModelStandardFeed *feed);
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);

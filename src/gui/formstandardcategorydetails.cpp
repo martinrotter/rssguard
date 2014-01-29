@@ -65,6 +65,11 @@ void FormStandardCategoryDetails::setEditableCategory(FeedsModelStandardCategory
 }
 
 int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category) {
+  // Load categories.
+  loadCategories(m_feedsModel->allCategories().values(),
+                 m_feedsModel->rootItem(),
+                 input_category);
+
   if (input_category == NULL) {
     // User is adding new category.
     setWindowTitle(tr("Add new standard category"));
@@ -78,11 +83,6 @@ int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category
     setWindowTitle(tr("Edit existing standard category"));
     setEditableCategory(input_category);
   }
-
-  // Load categories.
-  loadCategories(m_feedsModel->allCategories().values(),
-                 m_feedsModel->rootItem(),
-                 input_category);
 
   // Run the dialog.
   return QDialog::exec();
@@ -211,7 +211,6 @@ void FormStandardCategoryDetails::loadCategories(const QList<FeedsModelCategory*
 
   foreach (FeedsModelCategory *category, categories) {
     if (input_category != NULL && (category == input_category ||
-                                   input_category->parent() == category ||
                                    category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so

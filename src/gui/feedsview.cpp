@@ -7,6 +7,7 @@
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
+#include "core/feedsmodelstandardfeed.h"
 #include "core/feedsmodelstandardcategory.h"
 #include "gui/formmain.h"
 #include "gui/formstandardcategorydetails.h"
@@ -111,10 +112,9 @@ void FeedsView::addNewStandardCategory() {
 }
 
 void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
-  FeedsModelStandardCategory *std_category = static_cast<FeedsModelStandardCategory*>(category);
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
-  if (form_pointer.data()->exec(std_category) == QDialog::Accepted) {
+  if (form_pointer.data()->exec(category) == QDialog::Accepted) {
     // TODO: kategorie upravena
   }
   else {
@@ -160,6 +160,19 @@ void FeedsView::addNewStandardFeed() {
   SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
+void FeedsView::editStandardFeed(FeedsModelStandardFeed *feed) {
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
+
+  if (form_pointer.data()->exec(feed) == QDialog::Accepted) {
+    // TODO: kategorie upravena
+  }
+  else {
+    // TODO: kategorie neupravena (uživatel zrušil dialog)
+  }
+
+  delete form_pointer.data();
+}
+
 void FeedsView::editSelectedItem() {
   if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
     // Lock was not obtained because
@@ -199,6 +212,19 @@ void FeedsView::editSelectedItem() {
   }
   else if ((feed = isCurrentIndexFeed()) != NULL) {
     // Feed is selected.
+    switch (feed->type()) {
+      case FeedsModelFeed::StandardAtom10:
+      case FeedsModelFeed::StandardRdf:
+      case FeedsModelFeed::StandardRss0X:
+      case FeedsModelFeed::StandardRss2X: {
+        // User wants to edit standard feed.
+        editStandardFeed(static_cast<FeedsModelStandardFeed*>(feed));
+        break;
+      }
+
+      default:
+        break;
+    }
   }
 
   // Changes are done, unlock the update master lock.

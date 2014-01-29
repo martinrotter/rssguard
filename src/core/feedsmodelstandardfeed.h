@@ -45,14 +45,6 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
       m_url = url;
     }
 
-    inline QString language() const {
-      return m_language;
-    }
-
-    inline void setLanguage(const QString &language) {
-      m_language = language;
-    }
-
     // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
 
@@ -65,7 +57,6 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
   private:
     QString m_encoding;
     QString m_url;
-    QString m_language;
 };
 
 #endif // FEEDSMODELSTANDARDFEED_H
