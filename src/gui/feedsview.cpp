@@ -360,8 +360,8 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
                                            FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories <<
                                            FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                           FormMain::instance()->m_ui->m_actionMarkFeedsAsRead <<
-                                           FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread);
+                                           FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead <<
+                                           FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread);
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {

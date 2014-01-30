@@ -28,11 +28,15 @@ class FormStandardFeedDetails : public QDialog {
     int exec(FeedsModelStandardFeed *input_feed);
 
   protected slots:
+    // Applies changes.
+    void apply();
+
     // Trigerred when title/description/url changes.
     void onTitleChanged(const QString &new_title);
     void onDescriptionChanged(const QString &new_description);
     void onUrlChanged(const QString &new_url);
 
+    // Check if "OK" button can be enabled or not.
     void checkOkButtonEnabled();
 
     // Icon selectors.

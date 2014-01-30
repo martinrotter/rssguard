@@ -133,8 +133,37 @@ void FormStandardFeedDetails::onUseDefaultIcon() {
   m_ui->m_btnIcon->setIcon(IconThemeFactory::instance()->fromTheme("application-rss+xml"));
 }
 
+void FormStandardFeedDetails::apply() {
+  FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  FeedsModelStandardFeed *new_feed = new FeedsModelStandardFeed();
+
+  // TODO: Setup data for new_feed.
+
+  if (m_editableFeed == NULL) {
+    // TODO: Add the feed.
+    // Add the category.
+    if (m_feedsModel->addStandardFeed(new_feed, parent)) {
+      accept();
+    }
+    else {
+      // TODO: hlasit chybu
+    }
+  }
+  else {
+    // TODO: Edit the feed.
+    if (m_feedsModel->editStandardFeed(m_editableFeed, new_feed)) {
+      accept();
+    }
+    else {
+      // TODO: hlasit chybu
+    }
+  }
+}
+
 void FormStandardFeedDetails::createConnections() {
   // General connections.
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
+          this, SLOT(apply()));
   connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
           this, SLOT(onTitleChanged(QString)));
   connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)),

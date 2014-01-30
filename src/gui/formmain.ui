@@ -94,18 +94,24 @@
     <property name="title">
      <string>Fee&amp;ds &amp;&amp; categories</string>
     </property>
+    <widget class="QMenu" name="m_menuAddItem">
+     <property name="title">
+      <string>Add new item</string>
+     </property>
+     <addaction name="m_actionAddStandardCategory"/>
+     <addaction name="m_actionAddStandardFeed"/>
+    </widget>
     <addaction name="m_actionUpdateAllFeeds"/>
     <addaction name="m_actionUpdateSelectedFeedsCategories"/>
     <addaction name="separator"/>
-    <addaction name="m_actionAddStandardFeed"/>
-    <addaction name="m_actionAddStandardCategory"/>
+    <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedCategory"/>
     <addaction name="separator"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkAllFeedsRead"/>
-    <addaction name="m_actionMarkFeedsAsRead"/>
-    <addaction name="m_actionMarkFeedsAsUnread"/>
+    <addaction name="m_actionMarkSelectedFeedsAsRead"/>
+    <addaction name="m_actionMarkSelectedFeedsAsUnread"/>
     <addaction name="m_actionClearFeeds"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
@@ -292,7 +298,7 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionMarkFeedsAsRead">
+  <action name="m_actionMarkSelectedFeedsAsRead">
    <property name="text">
     <string>Mark &amp;selected items read</string>
    </property>
@@ -300,7 +306,7 @@
     <string>Mark all messages (without message filters) from selected feeds as read.</string>
    </property>
   </action>
-  <action name="m_actionMarkFeedsAsUnread">
+  <action name="m_actionMarkSelectedFeedsAsUnread">
    <property name="text">
     <string>Mark selected items unread</string>
    </property>
@@ -326,10 +332,10 @@
   </action>
   <action name="m_actionAddStandardFeed">
    <property name="text">
-    <string>Add new standard &amp;feed</string>
+    <string>Standard &amp;feed</string>
    </property>
    <property name="toolTip">
-    <string>Add new feed.</string>
+    <string>Add new standard feed.</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
@@ -367,7 +373,7 @@
   </action>
   <action name="m_actionAddStandardCategory">
    <property name="text">
-    <string>Add new standard &amp;category</string>
+    <string>Standard &amp;category</string>
    </property>
    <property name="toolTip">
     <string>Add new standard category.</string>

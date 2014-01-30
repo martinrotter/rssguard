@@ -57,11 +57,10 @@ class FeedsModel : public QAbstractItemModel {
                               FeedsModelStandardCategory *new_category);
 
     // Standard feed manipulators.
-    /*
     bool addStandardFeed(FeedsModelStandardFeed *feed,
                          FeedsModelRootItem *parent);
-    bool removeStandardFeed(FeedsModelStandardFeed *feed);
-    */
+    bool editStandardFeed(FeedsModelStandardFeed *original_feed,
+                          FeedsModelStandardFeed *new_feed);
 
     // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);

@@ -71,8 +71,8 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally <<
              m_ui->m_actionOpenSelectedSourceArticlesInternally <<
              m_ui->m_actionOpenSelectedMessagesInternally <<
-             m_ui->m_actionMarkFeedsAsRead <<
-             m_ui->m_actionMarkFeedsAsUnread <<
+             m_ui->m_actionMarkSelectedFeedsAsRead <<
+             m_ui->m_actionMarkSelectedFeedsAsUnread <<
              m_ui->m_actionClearFeeds <<
              m_ui->m_actionMarkSelectedMessagesAsRead <<
              m_ui->m_actionMarkSelectedMessagesAsUnread <<
@@ -97,6 +97,7 @@ void FormMain::prepareMenus() {
 
     // Add needed items to the menu.
     m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
+    m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
@@ -214,6 +215,7 @@ void FormMain::setupIcons() {
   m_ui->m_menuCurrentTab->setIcon(IconThemeFactory::instance()->fromTheme("go-home"));
 
   // Feeds/messages.
+  m_ui->m_menuAddItem->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
   m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::instance()->fromTheme("document-save-as"));
   m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("document-save"));
   m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
@@ -223,9 +225,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionAddStandardFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
   m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("gnome-other"));
   m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkFeedsAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
-  m_ui->m_actionMarkFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
+  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("favorites"));

@@ -207,9 +207,9 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
   connect(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
-  connect(FormMain::instance()->m_ui->m_actionMarkFeedsAsRead,
+  connect(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
-  connect(FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread,
+  connect(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
   connect(FormMain::instance()->m_ui->m_actionClearFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
@@ -244,8 +244,8 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedCategory);
   m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsRead);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkFeedsAsUnread);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearFeeds);
 
   // Finish web/message browser setup.

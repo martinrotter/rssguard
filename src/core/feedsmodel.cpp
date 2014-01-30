@@ -263,6 +263,16 @@ bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_categ
   return true;
 }
 
+bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
+                                 FeedsModelRootItem *parent) {
+  return false;
+}
+
+bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
+                                  FeedsModelStandardFeed *new_feed) {
+  return false;
+}
+
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
   QList<Message> messages;
 
