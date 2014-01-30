@@ -1,6 +1,9 @@
 #include "core/silentnetworkaccessmanager.h"
 
+#include "core/feedsmodelstandardfeed.h"
+
 #include <QNetworkReply>
+#include <QAuthenticator>
 
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
@@ -16,7 +19,7 @@ SilentNetworkAccessManager::~SilentNetworkAccessManager() {
 }
 
 void SilentNetworkAccessManager::onSslErrors(QNetworkReply *reply,
-                                           const QList<QSslError> &error) {
+                                             const QList<QSslError> &error) {
   qDebug("SSL errors for '%s': '%s' (code %d).",
          qPrintable(reply->url().toString()),
          qPrintable(reply->errorString()),
@@ -27,8 +30,17 @@ void SilentNetworkAccessManager::onSslErrors(QNetworkReply *reply,
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,
                                                           QAuthenticator *authenticator) {
-  Q_UNUSED(authenticator)
+  FeedsModelStandardFeed *feed = static_cast<FeedsModelStandardFeed*>(reply->request().originatingObject()->property("feed").value<void*>());
 
-  qDebug("Autorization problems for '%s'.",
+  // TODO: tady do autenticatoru dosadit udaje z feedu
+  // pokud je obsahuje
+  // a taky promyslet zda to delat takhle vubec, ale funguje
+  // to
+  /*
+   *authenticator->setUser("rotter.martinos");
+   *authenticator->setPassword("gorottin0151");
+  */
+
+  qDebug("Authentication problems for '%s'.",
          qPrintable(reply->url().toString()));
 }

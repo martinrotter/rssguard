@@ -9,9 +9,10 @@
 NetworkFactory::NetworkFactory() {
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
-                                                         int timeout,
-                                                         QByteArray &output) {
+QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
+                                                             int timeout,
+                                                             QByteArray &output,
+                                                             FeedsModelStandardFeed *feed) {
   // Original asynchronous behavior of QNetworkAccessManager
   // is replaced by synchronous behavior in order to make
   // process of downloading of a file easier to understand.
@@ -22,6 +23,11 @@ QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
   QTimer timer;
   QNetworkRequest request;
   QNetworkReply *reply;
+  QObject originatingObject;
+
+  // Set feed as originating object.
+  originatingObject.setProperty("feed", QVariant::fromValue((void*) feed));
+  request.setOriginatingObject(&originatingObject);
 
   // Set url for this reques.
   request.setUrl(url);

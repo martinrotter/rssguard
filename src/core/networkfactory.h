@@ -4,6 +4,8 @@
 #include <QNetworkReply>
 
 
+class FeedsModelStandardFeed;
+
 class NetworkFactory {
   private:
     // Constructor.
@@ -12,9 +14,10 @@ class NetworkFactory {
   public:
     // Performs SYNCHRONOUS download of file with given URL
     // and given timeout.
-    static QNetworkReply::NetworkError downloadFile(const QString &url,
-                                                    int timeout,
-                                                    QByteArray &output);
+    static QNetworkReply::NetworkError downloadFeedFile(const QString &url,
+                                                        int timeout,
+                                                        QByteArray &output,
+                                                        FeedsModelStandardFeed *feed);
 };
 
 #endif // NETWORKFACTORY_H

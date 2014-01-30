@@ -106,9 +106,10 @@ void FeedsModelStandardFeed::update() {
 
   // TODO: Provide download time-measures debugging
   // outputs here.
-  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url(),
-                                                                             download_timeout,
-                                                                             feed_contents);
+  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFeedFile(url(),
+                                                                                 download_timeout,
+                                                                                 feed_contents,
+                                                                                 this);
 
   if (download_result != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).",
