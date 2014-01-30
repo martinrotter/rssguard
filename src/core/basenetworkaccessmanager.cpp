@@ -20,8 +20,8 @@ void BaseNetworkAccessManager::loadSettings() {
 
   QNetworkProxy new_proxy;
   QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::instance()->value(APP_CFG_PROXY,
-                                                                                                                      "proxy_type",
-                                                                                                                      QNetworkProxy::NoProxy).toInt());
+                                                                                                                   "proxy_type",
+                                                                                                                   QNetworkProxy::NoProxy).toInt());
 
   if (selected_proxy_type == QNetworkProxy::NoProxy) {
     // No extra setting is needed, set new proxy and exit this method.
