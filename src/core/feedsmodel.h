@@ -59,6 +59,10 @@ class FeedsModel : public QAbstractItemModel {
     // Standard feed manipulators.
     bool addStandardFeed(FeedsModelStandardFeed *feed,
                          FeedsModelRootItem *parent);
+
+    // New feed is just temporary feed, it is not added to the model.
+    // It is used to fetch its data to the original feed
+    // and the original feed is moved if needed.
     bool editStandardFeed(FeedsModelStandardFeed *original_feed,
                           FeedsModelStandardFeed *new_feed);
 

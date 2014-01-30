@@ -270,32 +270,32 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
   // Children are removed, remove this standard category too.
   QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
-  QSqlQuery query_add(database);
+  QSqlQuery query_add_feed(database);
 
-  query_add.setForwardOnly(true);
-  query_add.prepare("INSERT INTO Feeds "
-                    "(title, description, date_created, icon, category, encoding, url, type) "
-                    "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :type);");
-  query_add.bindValue(":title", feed->title());
-  query_add.bindValue(":description", feed->description());
-  query_add.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
-  query_add.bindValue(":icon", IconFactory::toByteArray(feed->icon()));
-  query_add.bindValue(":category", parent->id());
-  query_add.bindValue(":encoding", feed->encoding());
-  query_add.bindValue(":url", feed->url());
-  query_add.bindValue(":type", (int) FeedsModelCategory::Standard);
+  query_add_feed.setForwardOnly(true);
+  query_add_feed.prepare("INSERT INTO Feeds "
+                         "(title, description, date_created, icon, category, encoding, url, type) "
+                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :type);");
+  query_add_feed.bindValue(":title", feed->title());
+  query_add_feed.bindValue(":description", feed->description());
+  query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
+  query_add_feed.bindValue(":icon", IconFactory::toByteArray(feed->icon()));
+  query_add_feed.bindValue(":category", parent->id());
+  query_add_feed.bindValue(":encoding", feed->encoding());
+  query_add_feed.bindValue(":url", feed->url());
+  query_add_feed.bindValue(":type", (int) FeedsModelCategory::Standard);
 
-  if (!query_add.exec()) {
+  if (!query_add_feed.exec()) {
     // Query failed.
     return false;
   }
 
-  query_add.prepare("SELECT id FROM Feeds WHERE date_created = :date_created;");
-  query_add.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
-  if (query_add.exec() && query_add.next()) {
+  query_add_feed.prepare("SELECT id FROM Feeds WHERE date_created = :date_created;");
+  query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
+  if (query_add_feed.exec() && query_add_feed.next()) {
     // New category was added, fetch is primary id
     // from the database.
-    feed->setId(query_add.value(0).toInt());
+    feed->setId(query_add_feed.value(0).toInt());
   }
   else {
     // Something failed.
@@ -309,13 +309,69 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
   endInsertRows();
 
   return true;
-
-  return false;
 }
 
 bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
                                   FeedsModelStandardFeed *new_feed) {
-  return false;
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+                                                                  DatabaseFactory::FromSettings);
+  QSqlQuery query_update_feed(database);
+  FeedsModelRootItem *original_parent = original_feed->parent();
+  FeedsModelRootItem *new_parent = new_feed->parent();
+
+  query_update_feed.setForwardOnly(true);
+  query_update_feed.prepare("UPDATE Feeds "
+                            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, type = :type "
+                            "WHERE id = :id;");
+  query_update_feed.bindValue(":title", new_feed->title());
+  query_update_feed.bindValue(":description", new_feed->description());
+  query_update_feed.bindValue(":icon", IconFactory::toByteArray(new_feed->icon()));
+  query_update_feed.bindValue(":category", new_parent->id());
+  query_update_feed.bindValue(":encoding", new_feed->encoding());
+  query_update_feed.bindValue(":url", new_feed->url());
+  query_update_feed.bindValue(":type", new_feed->type());
+  query_update_feed.bindValue(":id", original_feed->id());
+
+  if (!query_update_feed.exec()) {
+    // Persistent storage update failed, no way to continue now.
+    return false;
+  }
+
+  // Setup new model data for the original item.
+  original_feed->setTitle(new_feed->title());
+  original_feed->setDescription(new_feed->description());
+  original_feed->setIcon(new_feed->icon());
+  original_feed->setEncoding(new_feed->encoding());
+  original_feed->setDescription(new_feed->description());
+  original_feed->setUrl(new_feed->url());
+  original_feed->setType(new_feed->type());
+
+  if (original_parent != new_parent) {
+    // User edited category and set it new parent item,
+    // se we need to move the item in the model too.
+    int original_index_of_feed = original_parent->childItems().indexOf(original_feed);
+    int new_index_of_feed = new_parent->childCount();
+
+    // Remove the original item from the model...
+    beginRemoveRows(indexForItem(original_parent),
+                    original_index_of_feed,
+                    original_index_of_feed);
+    original_parent->removeChild(original_feed);
+    endRemoveRows();
+
+    // ... and insert it under the new parent.
+    beginInsertRows(indexForItem(new_parent),
+                    new_index_of_feed,
+                    new_index_of_feed);
+    new_parent->appendChild(original_feed);
+    endInsertRows();
+  }
+
+  // Free temporary category from memory.
+  delete new_feed;
+
+  // Editing is done.
+  return true;
 }
 
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
