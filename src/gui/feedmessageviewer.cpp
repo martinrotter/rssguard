@@ -55,10 +55,10 @@ void FeedMessageViewer::saveSize() {
   // Store offsets of splitters.
   settings->setValue(APP_CFG_GUI,
                      "splitter_feeds",
-                     m_feedSplitter->saveState());
+                     m_feedSplitter->saveState().toBase64());
   settings->setValue(APP_CFG_GUI,
                      "splitter_messages",
-                     m_messageSplitter->saveState());
+                     m_messageSplitter->saveState().toBase64());
 
   // States of splitters are stored, let's store
   // widths of columns.
@@ -75,8 +75,8 @@ void FeedMessageViewer::loadSize() {
   int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
 
   // Restore offsets of splitters.
-  m_feedSplitter->restoreState(settings->value(APP_CFG_GUI, "splitter_feeds").toByteArray());
-  m_messageSplitter->restoreState(settings->value(APP_CFG_GUI, "splitter_messages").toByteArray());
+  m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, "splitter_feeds").toByteArray()));
+  m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, "splitter_messages").toByteArray()));
 
   // Splitters are restored, now, restore widths of columns.
   m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX,

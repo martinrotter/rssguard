@@ -135,9 +135,18 @@ void FormStandardFeedDetails::onUseDefaultIcon() {
 
 void FormStandardFeedDetails::apply() {
   FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  FeedsModelStandardFeed::Type type = static_cast<FeedsModelStandardFeed::Type>(m_ui->m_cmbType->itemData(m_ui->m_cmbType->currentIndex()).value<int>());
   FeedsModelStandardFeed *new_feed = new FeedsModelStandardFeed();
 
   // TODO: Setup data for new_feed.
+  new_feed->setTitle(m_ui->m_txtTitle->lineEdit()->text());
+  new_feed->setCreationDate(QDateTime::currentDateTime());
+  new_feed->setDescription(m_ui->m_txtDescription->lineEdit()->text());
+  new_feed->setIcon(m_ui->m_btnIcon->icon());
+  new_feed->setEncoding(m_ui->m_cmbEncoding->currentText());
+  new_feed->setType(type);
+  new_feed->setUrl(m_ui->m_txtUrl->lineEdit()->text());
+  new_feed->setParent(parent);
 
   if (m_editableFeed == NULL) {
     // TODO: Add the feed.
@@ -184,7 +193,7 @@ void FormStandardFeedDetails::setEditableFeed(FeedsModelStandardFeed *editable_f
   m_ui->m_txtTitle->lineEdit()->setText(editable_feed->title());
   m_ui->m_txtDescription->lineEdit()->setText(editable_feed->description());
   m_ui->m_btnIcon->setIcon(editable_feed->icon());
-  m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((void*) editable_feed->type())));
+  m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) editable_feed->type())));
   m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(editable_feed->encoding(), Qt::DisplayRole));
   m_ui->m_txtUrl->lineEdit()->setText(editable_feed->url());
 }
@@ -215,10 +224,10 @@ void FormStandardFeedDetails::initialize() {
 #endif
 
   // Add standard feed types.
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardAtom10), QVariant::fromValue((void*) FeedsModelFeed::StandardAtom10));
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRdf), QVariant::fromValue((void*) FeedsModelFeed::StandardRdf));
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRss0X), QVariant::fromValue((void*) FeedsModelFeed::StandardRss0X));
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRss2X), QVariant::fromValue((void*) FeedsModelFeed::StandardRss2X));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardAtom10), QVariant::fromValue((int) FeedsModelFeed::StandardAtom10));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRdf), QVariant::fromValue((int) FeedsModelFeed::StandardRdf));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRss0X), QVariant::fromValue((int) FeedsModelFeed::StandardRss0X));
+  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::StandardRss2X), QVariant::fromValue((int) FeedsModelFeed::StandardRss2X));
 
   // Load available encodings.
   QList<QByteArray> encodings = QTextCodec::availableCodecs();

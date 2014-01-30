@@ -169,8 +169,6 @@ bool FeedsModel::addStandardCategory(FeedsModelStandardCategory *category,
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
-
-  // Remove all messages from this standard feed.
   query_add.prepare("INSERT INTO Categories "
                     "(parent_id, title, description, date_created, icon, type) "
                     "VALUES (:parent_id, :title, :description, :date_created, :icon, :type);");
@@ -265,6 +263,53 @@ bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_categ
 
 bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
                                  FeedsModelRootItem *parent) {
+  // Get index of parent item (parent standard category).
+  QModelIndex parent_index = indexForItem(parent);
+
+  // Now, add category to persistent storage.
+  // Children are removed, remove this standard category too.
+  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+                                                                  DatabaseFactory::FromSettings);
+  QSqlQuery query_add(database);
+
+  query_add.setForwardOnly(true);
+  query_add.prepare("INSERT INTO Feeds "
+                    "(title, description, date_created, icon, category, encoding, url, type) "
+                    "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :type);");
+  query_add.bindValue(":title", feed->title());
+  query_add.bindValue(":description", feed->description());
+  query_add.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
+  query_add.bindValue(":icon", IconFactory::toByteArray(feed->icon()));
+  query_add.bindValue(":category", parent->id());
+  query_add.bindValue(":encoding", feed->encoding());
+  query_add.bindValue(":url", feed->url());
+  query_add.bindValue(":type", (int) FeedsModelCategory::Standard);
+
+  if (!query_add.exec()) {
+    // Query failed.
+    return false;
+  }
+
+  query_add.prepare("SELECT id FROM Feeds WHERE date_created = :date_created;");
+  query_add.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
+  if (query_add.exec() && query_add.next()) {
+    // New category was added, fetch is primary id
+    // from the database.
+    feed->setId(query_add.value(0).toInt());
+  }
+  else {
+    // Something failed.
+    return false;
+  }
+
+  // Category was added to the persistent storage,
+  // so add it to the model.
+  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
+  parent->appendChild(feed);
+  endInsertRows();
+
+  return true;
+
   return false;
 }
 
