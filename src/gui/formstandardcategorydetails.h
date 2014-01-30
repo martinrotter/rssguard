@@ -17,19 +17,16 @@ class FeedsModelRootItem;
 class QMenu;
 class QAction;
 
-
 class FormStandardCategoryDetails : public QDialog {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    // This constructor is supposed to create new categories.
     explicit FormStandardCategoryDetails(FeedsModel *model, QWidget *parent = 0);
-
-    // Destructor.
     virtual ~FormStandardCategoryDetails();
 
   public slots:
+    // Executes add/edit standard category dialog.
     int exec(FeedsModelStandardCategory *input_category);
 
   protected slots:
@@ -50,7 +47,6 @@ class FormStandardCategoryDetails : public QDialog {
     void createConnections();
 
     // Sets the category which will be edited.
-    // NOTE: This is used for editing categories.
     void setEditableCategory(FeedsModelStandardCategory *editable_category);
 
     // Initializes the dialog.

@@ -33,12 +33,17 @@ class LineEditWithStatus : public QWidget {
     // Sets custom status for this control.
     void setStatus(StatusType status, const QString &tooltip_text);
 
+    inline StatusType status() const {
+      return m_status;
+    }
+
     // Access to line edit.
     inline BaseLineEdit *lineEdit() const {
       return m_txtInput;
     }
 
   private:
+    StatusType m_status;
     BaseLineEdit *m_txtInput;
     PlainToolButton *m_btnStatus;
     QHBoxLayout *m_layout;

@@ -13,7 +13,6 @@ LineEditWithStatus::LineEditWithStatus(QWidget *parent)
   m_txtInput = new BaseLineEdit(this);
   m_btnStatus = new PlainToolButton(this);
 
-  // TODO: nastavit korektni ikony
   m_iconInformation = IconThemeFactory::instance()->fromTheme("help-about");
   m_iconWarning = IconThemeFactory::instance()->fromTheme("dialog-warning");
   m_iconError = IconThemeFactory::instance()->fromTheme("dialog-error");
@@ -37,6 +36,8 @@ LineEditWithStatus::~LineEditWithStatus() {
 
 void LineEditWithStatus::setStatus(LineEditWithStatus::StatusType status,
                                    const QString &tooltip_text) {
+  m_status = status;
+
   switch (status) {
     case Information:
       m_btnStatus->setIcon(m_iconInformation);

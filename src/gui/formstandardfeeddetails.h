@@ -24,17 +24,30 @@ class FormStandardFeedDetails : public QDialog {
     virtual ~FormStandardFeedDetails();
 
   public slots:
+    // Executes add/edit standard feed dialog.
     int exec(FeedsModelStandardFeed *input_feed);
 
   protected slots:
-    // Trigerred when title/description changes.
+    // Trigerred when title/description/url changes.
     void onTitleChanged(const QString &new_title);
     void onDescriptionChanged(const QString &new_description);
     void onUrlChanged(const QString &new_url);
 
+    void checkOkButtonEnabled();
+
+    // Icon selectors.
+    void onNoIconSelected();
+    void onLoadIconFromFile();
+    void onUseDefaultIcon();
+
   protected:
+    // Creates needed connections.
     void createConnections();
+
+    // Sets the feed which will be edited.
     void setEditableFeed(FeedsModelStandardFeed *editable_feed);
+
+    // Initializes the dialog.
     void initialize();
 
     // Loads categories into the dialog from the model.
