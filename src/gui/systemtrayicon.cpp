@@ -74,7 +74,7 @@ bool SystemTrayIcon::isSystemTrayAvailable() {
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
-  // TODO: check if this can be rewritten for bigger speed.
+  // TODO: Check if this can be rewritten for bigger speed.
   return SystemTrayIcon::isSystemTrayAvailable() && Settings::instance()->value(APP_CFG_GUI,
                                                                                 "use_tray_icon",
                                                                                 true).toBool();

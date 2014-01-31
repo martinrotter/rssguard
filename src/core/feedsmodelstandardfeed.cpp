@@ -148,8 +148,6 @@ void FeedsModelStandardFeed::update() {
     case FeedsModelFeed::StandardAtom10:
       messages = ParsingFactory::parseAsATOM10(formatted_feed_contents);
 
-      // TODO: Add support for other standard formats.
-
     default:
       break;
   }

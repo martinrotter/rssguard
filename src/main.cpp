@@ -23,9 +23,6 @@
 #include <QDebug>
 
 
-// TODO: lepsi paint bez framu balloontip
-// http://windowdetective.sourceforge.net/files/Window%20Detective/src/ui/custom_widgets/BalloonTip.cpp
-
 // TODO: Check if extra UNIX signalling is needed.
 // Use <csignal> header for it - signal function and catch SIGHUP
 // void my_terminate (int param) {

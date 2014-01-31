@@ -200,7 +200,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
 void MessagesView::loadFeeds(const QList<int> &feed_ids) {
   // Load messages.
   // TODO: Here we could load user-defined default sorting
-  // column/order AND possibly hide/show user-defined columns.
+  // column/order AND possibly hide/show user-defined columns for the feed(s).
   m_sourceModel->loadMessages(feed_ids);
 
   // Make sure that initial sorting is that unread messages are visible

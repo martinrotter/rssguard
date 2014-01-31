@@ -87,9 +87,6 @@ void FeedMessageViewer::loadSize() {
                                  settings->value(APP_CFG_GUI,
                                                  KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
                                                  default_msg_section_size).toInt());
-
-  // TODO: Perhaps make toolbar icon size changeable,
-  // this concerns toolbars of web browsers too.
 }
 
 void FeedMessageViewer::quitDownloader() {

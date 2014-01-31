@@ -43,14 +43,14 @@ void FeedsView::setSortingEnabled(bool enable) {
   header()->setSortIndicatorShown(false);
 }
 
-QList<FeedsModelFeed *> FeedsView::selectedFeeds() const {
+QList<FeedsModelFeed*> FeedsView::selectedFeeds() const {
   QModelIndexList selection = selectionModel()->selectedRows();
   QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
 
   return m_sourceModel->feedsForIndexes(mapped_selection);
 }
 
-QList<FeedsModelFeed *> FeedsView::allFeeds() const {
+QList<FeedsModelFeed*> FeedsView::allFeeds() const {
   return m_sourceModel->allFeeds();
 }
 
@@ -98,12 +98,7 @@ void FeedsView::addNewStandardCategory() {
 
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
-  if (form_pointer.data()->exec(NULL) == QDialog::Accepted) {
-    // TODO: nova kategorie pridana
-  }
-  else {
-    // TODO: nova kategorie nepridana
-  }
+  form_pointer.data()->exec(NULL);
 
   delete form_pointer.data();
 
@@ -114,12 +109,7 @@ void FeedsView::addNewStandardCategory() {
 void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
-  if (form_pointer.data()->exec(category) == QDialog::Accepted) {
-    // TODO: kategorie upravena
-  }
-  else {
-    // TODO: kategorie neupravena (uživatel zrušil dialog)
-  }
+  form_pointer.data()->exec(category);
 
   delete form_pointer.data();
 }
@@ -147,12 +137,7 @@ void FeedsView::addNewStandardFeed() {
 
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
 
-  if (form_pointer.data()->exec(NULL) == QDialog::Accepted) {
-    // TODO: nova kategorie pridana
-  }
-  else {
-    // TODO: nova kategorie nepridana
-  }
+  form_pointer.data()->exec(NULL);
 
   delete form_pointer.data();
 
@@ -163,12 +148,7 @@ void FeedsView::addNewStandardFeed() {
 void FeedsView::editStandardFeed(FeedsModelStandardFeed *feed) {
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
 
-  if (form_pointer.data()->exec(feed) == QDialog::Accepted) {
-    // TODO: kategorie upravena
-  }
-  else {
-    // TODO: kategorie neupravena (uživatel zrušil dialog)
-  }
+  form_pointer.data()->exec(feed);
 
   delete form_pointer.data();
 }

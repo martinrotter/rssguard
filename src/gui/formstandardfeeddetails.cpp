@@ -173,7 +173,7 @@ void FormStandardFeedDetails::apply() {
   FeedsModelStandardFeed::Type type = static_cast<FeedsModelStandardFeed::Type>(m_ui->m_cmbType->itemData(m_ui->m_cmbType->currentIndex()).value<int>());
   FeedsModelStandardFeed *new_feed = new FeedsModelStandardFeed();
 
-  // TODO: Setup data for new_feed.
+  // Setup data for new_feed.
   new_feed->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   new_feed->setCreationDate(QDateTime::currentDateTime());
   new_feed->setDescription(m_ui->m_txtDescription->lineEdit()->text());
@@ -184,8 +184,7 @@ void FormStandardFeedDetails::apply() {
   new_feed->setParent(parent);
 
   if (m_editableFeed == NULL) {
-    // TODO: Add the feed.
-    // Add the category.
+    // Add the feed.
     if (m_feedsModel->addStandardFeed(new_feed, parent)) {
       accept();
     }
@@ -194,7 +193,7 @@ void FormStandardFeedDetails::apply() {
     }
   }
   else {
-    // TODO: Edit the feed.
+    // Edit the feed.
     if (m_feedsModel->editStandardFeed(m_editableFeed, new_feed)) {
       accept();
     }

@@ -7,18 +7,6 @@
 #include "core/feedsmodel.h"
 
 
-// TODO: http://soundguyrob.files.wordpress.com/2011/03/screen-shot-2011-03-01-at-7-45-23-pm.jpg
-// přepsat počet nepřečtených zpráv podle screenshotu (tedy smazat asi sloupec "unread")
-// a počet nepřečtených přes drawRow kreslit do prvního sloupce
-// taky použít ten layout pro zobrazení zprávy
-// NEBO pouzit delegaty (QItemDelegate nebo QStyledItemDelegate) - https://qt-project.org/forums/viewthread/24493
-// + NEWSPAPER view -> v currentChanged MessagesView se
-// vytáhnou všechny vybrané zprávy, dají se do QList<Message>
-// a bude se emitovat signal ze se maji tyto zpravy zobrazit
-// - na tohle navazat metodu v WebBrowseru, neco
-// jako navigateToMessages(const QList<Message> &messages), mrknout
-// do navigateToMessage
-
 class FeedsProxyModel;
 class FeedsModelFeed;
 class FeedsModelCategory;
