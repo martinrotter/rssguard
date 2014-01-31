@@ -50,6 +50,12 @@ int FormStandardFeedDetails::exec(FeedsModelStandardFeed *input_feed) {
     // Make sure that "default" icon is used as the default option for new
     // feed.
     m_actionUseDefaultIcon->trigger();
+
+    int default_encoding_index = m_ui->m_cmbEncoding->findText(DEFAULT_FEED_ENCODING);
+
+    if (default_encoding_index >= 0) {
+      m_ui->m_cmbEncoding->setCurrentIndex(default_encoding_index);
+    }
   }
   else {
     // User is editing existing category.
