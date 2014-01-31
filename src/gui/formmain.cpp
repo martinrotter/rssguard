@@ -128,8 +128,8 @@ void FormMain::quit() {
   qApp->quit();
 }
 
-void FormMain::switchFullscreenMode(bool turn_fullscreen_on) {
-  if (turn_fullscreen_on) {
+void FormMain::switchFullscreenMode() {
+  if (!isFullScreen()) {
     showFullScreen();
   } else {
     showNormal();
@@ -256,6 +256,12 @@ void FormMain::loadSize() {
                        "window_position",
                        screen.center() - rect().center()).toPoint());
 
+  // If user exited the application while in fullsreen mode,
+  // then re-enable it now.
+  if (settings->value(APP_CFG_GUI, "start_in_fullscreen", false).toBool()) {
+    switchFullscreenMode();
+  }
+
   // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
 }
@@ -265,6 +271,8 @@ void FormMain::saveSize() {
 
   settings->setValue(APP_CFG_GUI, "window_position", pos());
   settings->setValue(APP_CFG_GUI, "window_size", size());
+  settings->setValue(APP_CFG_GUI, "start_in_fullscreen", isFullScreen());
+
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
 
@@ -283,7 +291,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
 
   // Menu "View" connections.
-  connect(m_ui->m_actionFullscreen, SIGNAL(triggered(bool)), this, SLOT(switchFullscreenMode(bool)));
+  connect(m_ui->m_actionFullscreen, SIGNAL(triggered()), this, SLOT(switchFullscreenMode()));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));

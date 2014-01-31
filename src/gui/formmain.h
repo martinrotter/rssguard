@@ -77,7 +77,7 @@ class FormMain : public QMainWindow {
     void switchVisibility();
 
     // Turns on/off fullscreen mode
-    void switchFullscreenMode(bool turn_fullscreen_on);
+    void switchFullscreenMode();
 
   protected slots:
     // Last-minute reactors.

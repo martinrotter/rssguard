@@ -187,17 +187,14 @@
    </property>
   </action>
   <action name="m_actionFullscreen">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
    <property name="text">
-    <string>&amp;Fullscreen mode</string>
+    <string>Switch &amp;fullscreen/normal mode</string>
    </property>
    <property name="toolTip">
     <string>Switch fullscreen mode.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+F</string>
+    <string>Ctrl+Shift+F</string>
    </property>
   </action>
   <action name="m_actionAddBrowser">

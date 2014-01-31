@@ -38,12 +38,12 @@ CREATE TABLE IF NOT EXISTS Feeds (
 DROP TABLE IF EXISTS FeedsData;
 -- !
 CREATE TABLE IF NOT EXISTS FeedsData (
-  id             INTEGER	NOT NULL,
+  feed_id        INTEGER	NOT NULL,
   key		     TEXT		NOT NULL,
   value	         TEXT,
   
-  PRIMARY KEY (id, key),
-  FOREIGN KEY (id) REFERENCES Feeds (id)
+  PRIMARY KEY (feed_id, key),
+  FOREIGN KEY (feed_id) REFERENCES Feeds (id)
 );
 -- !
 DROP TABLE IF EXISTS Messages;
