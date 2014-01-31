@@ -48,6 +48,9 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
     case QMessageBox::NoToAll:
       return IconThemeFactory::instance()->fromTheme("dialog-no");
 
+    case QMessageBox::Help:
+      return IconThemeFactory::instance()->fromTheme("dialog-information");
+
     default:
       return QIcon();
   }

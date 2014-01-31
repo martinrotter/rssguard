@@ -243,6 +243,10 @@ void FormStandardFeedDetails::initialize() {
   m_ui = new Ui::FormStandardFeedDetails();
   m_ui->setupUi(this);
 
+  // Add button for fetching feed data from internet.
+  m_btnLoadDataFromInternet = m_ui->m_buttonBox->addButton(tr("Auto-fetch feed metadata"),
+                                                           QDialogButtonBox::HelpRole);
+
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::instance()->fromTheme("document-new"));
