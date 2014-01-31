@@ -31,6 +31,8 @@ FormStandardFeedDetails::FormStandardFeedDetails(FeedsModel *model, QWidget *par
   onTitleChanged(QString());
   onDescriptionChanged(QString());
   onUrlChanged(QString());
+  onUsernameChanged(QString());
+  onPasswordChanged(QString());
 }
 
 FormStandardFeedDetails::~FormStandardFeedDetails() {
@@ -102,6 +104,33 @@ void FormStandardFeedDetails::onUrlChanged(const QString &new_url) {
   }
 
   checkOkButtonEnabled();
+}
+
+void FormStandardFeedDetails::onUsernameChanged(const QString &new_username) {
+  bool is_username_ok = !m_ui->m_gbAuthentication->isChecked() || !new_username.simplified().isEmpty();
+
+  m_ui->m_txtUsername->setStatus(is_username_ok ?
+                                   LineEditWithStatus::Ok :
+                                   LineEditWithStatus::Warning,
+                                 is_username_ok ?
+                                   tr("Username is ok or it is not needed.") :
+                                   tr("Username is empty."));
+}
+
+void FormStandardFeedDetails::onPasswordChanged(const QString &new_password) {
+  bool is_password_ok = !m_ui->m_gbAuthentication->isChecked() || !new_password.simplified().isEmpty();
+
+  m_ui->m_txtPassword->setStatus(is_password_ok ?
+                                   LineEditWithStatus::Ok :
+                                   LineEditWithStatus::Warning,
+                                 is_password_ok ?
+                                   tr("Password is ok or it is not needed.") :
+                                   tr("Password is empty."));
+}
+
+void FormStandardFeedDetails::onAuthenticationSwitched() {
+  onUsernameChanged(m_ui->m_txtUsername->lineEdit()->text());
+  onPasswordChanged(m_ui->m_txtPassword->lineEdit()->text());
 }
 
 void FormStandardFeedDetails::checkOkButtonEnabled() {
@@ -185,6 +214,12 @@ void FormStandardFeedDetails::createConnections() {
           this, SLOT(onDescriptionChanged(QString)));
   connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)),
           this, SLOT(onUrlChanged(QString)));
+  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onUsernameChanged(QString)));
+  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onPasswordChanged(QString)));
+  connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)),
+          this, SLOT(onAuthenticationSwitched()));
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
@@ -224,6 +259,12 @@ void FormStandardFeedDetails::initialize() {
 
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("Full feed url including scheme"));
   m_ui->m_txtUrl->lineEdit()->setToolTip(tr("Set url for your feed."));
+
+  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username"));
+  m_ui->m_txtUsername->lineEdit()->setToolTip(tr("Set username to access the feed."));
+
+  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password"));
+  m_ui->m_txtPassword->lineEdit()->setToolTip(tr("Set password to access the feed."));
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);

@@ -31,10 +31,13 @@ class FormStandardFeedDetails : public QDialog {
     // Applies changes.
     void apply();
 
-    // Trigerred when title/description/url changes.
+    // Trigerred when title/description/url/username/password changes.
     void onTitleChanged(const QString &new_title);
     void onDescriptionChanged(const QString &new_description);
     void onUrlChanged(const QString &new_url);
+    void onUsernameChanged(const QString &new_username);
+    void onPasswordChanged(const QString &new_password);
+    void onAuthenticationSwitched();
 
     // Check if "OK" button can be enabled or not.
     void checkOkButtonEnabled();
