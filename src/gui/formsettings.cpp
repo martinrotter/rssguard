@@ -193,12 +193,6 @@ bool FormSettings::doSaveCheck() {
     resulting_information.append(tr("some keyboard shortcuts are not unique"));
   }
 
-  if (m_ui->m_txtExternalBrowserExecutable->text().isEmpty() ||
-      m_ui->m_txtExternalBrowserArguments->text().isEmpty()) {
-    everything_ok = false;
-    resulting_information.append(tr("external browser is not set"));
-  }
-
   if (!everything_ok) {
     resulting_information.replaceInStrings(QRegExp("^"),
                                            QString::fromUtf8(" • "));
