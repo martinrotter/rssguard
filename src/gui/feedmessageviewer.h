@@ -43,7 +43,7 @@ class FeedMessageViewer : public TabContent {
     void quitDownloader();
 
   public slots:
-    // Feed updates.
+    // Feed updating.
     void updateSelectedFeeds();
     void updateAllFeeds();
 

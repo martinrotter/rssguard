@@ -91,16 +91,14 @@ void FeedMessageViewer::loadSize() {
 
 void FeedMessageViewer::quitDownloader() {
   qDebug("Quitting feed downloader thread.");
-
   m_feedDownloaderThread->quit();
 
   qDebug("Feed downloader thread aborted.");
-
   m_feedDownloader->deleteLater();
 }
 
 void FeedMessageViewer::updateSelectedFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLockForRead()) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
     emit feedsUpdateRequested(m_feedsView->selectedFeeds());
   }
   else {
@@ -109,7 +107,7 @@ void FeedMessageViewer::updateSelectedFeeds() {
 }
 
 void FeedMessageViewer::updateAllFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLockForRead()) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
     emit feedsUpdateRequested(m_feedsView->allFeeds());
   }
   else {
