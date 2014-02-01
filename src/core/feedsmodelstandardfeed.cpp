@@ -32,6 +32,9 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   feed->setIcon(IconFactory::fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
+  feed->setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
+  feed->setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
+  feed->setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
   feed->updateCounts();
 
   return feed;

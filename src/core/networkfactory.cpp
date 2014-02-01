@@ -1,6 +1,7 @@
 #include "core/networkfactory.h"
 
 #include "core/silentnetworkaccessmanager.h"
+#include "core/feedsmodelstandardfeed.h"
 
 #include <QEventLoop>
 #include <QTimer>
@@ -25,8 +26,10 @@ QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
   QNetworkReply *reply;
   QObject originatingObject;
 
-  // Set feed as originating object.
-  originatingObject.setProperty("feed", QVariant::fromValue((void*) feed));
+  // Set credential information as originating object.
+  originatingObject.setProperty("protected", feed->passwordProtected());
+  originatingObject.setProperty("username", feed->username());
+  originatingObject.setProperty("password", feed->password());
   request.setOriginatingObject(&originatingObject);
 
   // Set url for this reques.

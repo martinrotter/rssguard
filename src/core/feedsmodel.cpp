@@ -274,8 +274,8 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
 
   query_add_feed.setForwardOnly(true);
   query_add_feed.prepare("INSERT INTO Feeds "
-                         "(title, description, date_created, icon, category, encoding, url, type) "
-                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :type);");
+                         "(title, description, date_created, icon, category, encoding, url, protected, username, password, type) "
+                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :type);");
   query_add_feed.bindValue(":title", feed->title());
   query_add_feed.bindValue(":description", feed->description());
   query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
@@ -283,6 +283,9 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
   query_add_feed.bindValue(":category", parent->id());
   query_add_feed.bindValue(":encoding", feed->encoding());
   query_add_feed.bindValue(":url", feed->url());
+  query_add_feed.bindValue(":protected", (int) feed->passwordProtected());
+  query_add_feed.bindValue(":username", feed->username());
+  query_add_feed.bindValue(":password", feed->password());
   query_add_feed.bindValue(":type", (int) FeedsModelCategory::Standard);
 
   if (!query_add_feed.exec()) {
@@ -321,7 +324,7 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
 
   query_update_feed.setForwardOnly(true);
   query_update_feed.prepare("UPDATE Feeds "
-                            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, type = :type "
+                            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, type = :type "
                             "WHERE id = :id;");
   query_update_feed.bindValue(":title", new_feed->title());
   query_update_feed.bindValue(":description", new_feed->description());
@@ -329,10 +332,15 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
   query_update_feed.bindValue(":category", new_parent->id());
   query_update_feed.bindValue(":encoding", new_feed->encoding());
   query_update_feed.bindValue(":url", new_feed->url());
+  query_update_feed.bindValue(":protected", (int) new_feed->passwordProtected());
+  query_update_feed.bindValue(":username", new_feed->username());
+  query_update_feed.bindValue(":password", new_feed->password());
   query_update_feed.bindValue(":type", new_feed->type());
   query_update_feed.bindValue(":id", original_feed->id());
 
   if (!query_update_feed.exec()) {
+    QString aaa = query_update_feed.lastError().databaseText();
+
     // Persistent storage update failed, no way to continue now.
     return false;
   }
@@ -344,6 +352,9 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
   original_feed->setEncoding(new_feed->encoding());
   original_feed->setDescription(new_feed->description());
   original_feed->setUrl(new_feed->url());
+  original_feed->setPasswordProtected(new_feed->passwordProtected());
+  original_feed->setUsername(new_feed->username());
+  original_feed->setPassword(new_feed->password());
   original_feed->setType(new_feed->type());
 
   if (original_parent != new_parent) {

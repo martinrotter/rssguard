@@ -96,9 +96,10 @@
 #define FDS_DB_CATEGORY_INDEX     5
 #define FDS_DB_ENCODING_INDEX     6
 #define FDS_DB_URL_INDEX          7
-#define FDS_DB_TYPE_INDEX         8
-//#define FDS_DB_LANGUAGE_INDEX     8
-//#define FDS_DB_TYPE_INDEX         9
+#define FDS_DB_PROTECTED_INDEX    8
+#define FDS_DB_USERNAME_INDEX     9
+#define FDS_DB_PASSWORD_INDEX     10
+#define FDS_DB_TYPE_INDEX         11
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

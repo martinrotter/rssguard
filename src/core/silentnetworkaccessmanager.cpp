@@ -30,17 +30,19 @@ void SilentNetworkAccessManager::onSslErrors(QNetworkReply *reply,
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,
                                                           QAuthenticator *authenticator) {
-  FeedsModelStandardFeed *feed = static_cast<FeedsModelStandardFeed*>(reply->request().originatingObject()->property("feed").value<void*>());
+  QObject *originating_object = reply->request().originatingObject();
 
-  // TODO: tady do autenticatoru dosadit udaje z feedu
-  // pokud je obsahuje
-  // a taky promyslet zda to delat takhle vubec, ale funguje
-  // to
-  /*
-   *authenticator->setUser("rotter.martinos");
-   *authenticator->setPassword("gorottin0151");
-  */
+  if (originating_object->property("protected").toBool()) {
+    // This feed contains authentication information, it is good.
+    authenticator->setUser(originating_object->property("username").toString());
+    authenticator->setPassword(originating_object->property("password").toString());
 
-  qDebug("Authentication problems for '%s'.",
-         qPrintable(reply->url().toString()));
+    qDebug("Feed '%s' requested authentication and got it.",
+           qPrintable(reply->url().toString()));
+  }
+  else {
+    // Authentication is required but this feed does not contain it.
+    qDebug("Feed '%s' requested authentication but username/password is not available.",
+           qPrintable(reply->url().toString()));
+  }
 }

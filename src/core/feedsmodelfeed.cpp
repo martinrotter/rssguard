@@ -67,3 +67,6 @@ void FeedsModelFeed::updateCounts(bool including_total_count) {
     m_unreadCount = query_all.value(0).toInt();
   }
 }
+
+
+

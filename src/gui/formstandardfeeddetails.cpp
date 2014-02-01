@@ -181,6 +181,9 @@ void FormStandardFeedDetails::apply() {
   new_feed->setEncoding(m_ui->m_cmbEncoding->currentText());
   new_feed->setType(type);
   new_feed->setUrl(m_ui->m_txtUrl->lineEdit()->text());
+  new_feed->setPasswordProtected(m_ui->m_gbAuthentication->isChecked());
+  new_feed->setUsername(m_ui->m_txtUsername->lineEdit()->text());
+  new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
   new_feed->setParent(parent);
 
   if (m_editableFeed == NULL) {
@@ -235,6 +238,9 @@ void FormStandardFeedDetails::setEditableFeed(FeedsModelStandardFeed *editable_f
   m_ui->m_btnIcon->setIcon(editable_feed->icon());
   m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) editable_feed->type())));
   m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(editable_feed->encoding(), Qt::DisplayRole));
+  m_ui->m_gbAuthentication->setChecked(editable_feed->passwordProtected());
+  m_ui->m_txtUsername->lineEdit()->setText(editable_feed->username());
+  m_ui->m_txtPassword->lineEdit()->setText(editable_feed->password());
   m_ui->m_txtUrl->lineEdit()->setText(editable_feed->url());
 }
 
@@ -306,6 +312,18 @@ void FormStandardFeedDetails::initialize() {
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_iconMenu->addAction(m_actionNoIcon);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
+
+  // Set tab order.
+  setTabOrder(m_ui->m_buttonBox, m_ui->m_cmbParentCategory);
+  setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_cmbType);
+  setTabOrder(m_ui->m_cmbType, m_ui->m_txtTitle->lineEdit());
+  setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtDescription->lineEdit());
+  setTabOrder(m_ui->m_txtDescription->lineEdit(), m_ui->m_txtUrl->lineEdit());
+  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_cmbEncoding);
+  setTabOrder(m_ui->m_cmbEncoding, m_ui->m_btnIcon);
+  setTabOrder(m_ui->m_btnIcon, m_ui->m_gbAuthentication);
+  setTabOrder(m_ui->m_gbAuthentication, m_ui->m_txtUsername->lineEdit());
+  setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
 }
 
 void FormStandardFeedDetails::loadCategories(const QList<FeedsModelCategory*> categories,

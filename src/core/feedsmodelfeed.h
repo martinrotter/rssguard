@@ -48,6 +48,30 @@ class FeedsModelFeed : public FeedsModelRootItem {
       m_type = type;
     }
 
+    inline bool passwordProtected() const {
+      return m_passwordProtected;
+    }
+
+    inline void setPasswordProtected(bool passwordProtected) {
+      m_passwordProtected = passwordProtected;
+    }
+
+    inline QString username() const {
+      return m_username;
+    }
+
+    inline void setUsername(const QString &username) {
+      m_username = username;
+    }
+
+    inline QString password() const {
+      return m_password;
+    }
+
+    inline void setPassword(const QString &password) {
+      m_password = password;
+    }
+
     // Converts particular feed type to string.
     static QString typeToString(Type type);
 
@@ -56,6 +80,10 @@ class FeedsModelFeed : public FeedsModelRootItem {
     void updateCounts(bool including_total_count = true);
 
   protected:
+    bool m_passwordProtected;
+    QString m_username;
+    QString m_password;
+
     Type m_type;
     int m_totalCount;
     int m_unreadCount;
