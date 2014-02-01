@@ -31,6 +31,8 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   addWidget(m_progressBar);
   addWidget(m_progressLabel);
   addPermanentWidget(m_fullscreenSwitcher);
+
+  setStyleSheet("StatusBar::item { border: none; }");
 }
 
 StatusBar::~StatusBar() {

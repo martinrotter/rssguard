@@ -364,14 +364,15 @@ void FeedsView::setupAppearance() {
 
   header()->setStretchLastSection(false);
   setUniformRowHeights(true);
-  setAcceptDrops(false);
-  setDragEnabled(false);
   setAnimated(true);
   setSortingEnabled(true);
   setItemsExpandable(true);
   setExpandsOnDoubleClick(true);
   setEditTriggers(QAbstractItemView::NoEditTriggers);
   setIndentation(10);
+  setAcceptDrops(false);
+  setDragEnabled(false);
+  setDropIndicatorShown(false);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
