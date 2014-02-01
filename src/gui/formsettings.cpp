@@ -153,25 +153,9 @@ void FormSettings::selectBrowserExecutable() {
 }
 
 void FormSettings::loadFeedsMessages() {
-  Settings *settings = Settings::instance();
-
-  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
-  m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_MESSAGES,
-                                                                "external_browser_executable").toString());
-  m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_MESSAGES,
-                                                               "external_browser_arguments",
-                                                               "%1").toString());
 }
 
 void FormSettings::saveFeedsMessages() {
-  Settings *settings = Settings::instance();
-
-  settings->setValue(APP_CFG_MESSAGES,
-                     "external_browser_executable",
-                     m_ui->m_txtExternalBrowserExecutable->text());
-  settings->setValue(APP_CFG_MESSAGES,
-                     "external_browser_arguments",
-                     m_ui->m_txtExternalBrowserArguments->text());
 }
 
 void FormSettings::displayProxyPassword(int state) {
@@ -299,6 +283,13 @@ void FormSettings::loadBrowser() {
   m_ui->m_checkQueueTabs->setChecked(settings->value(APP_CFG_BROWSER,
                                                      "queue_tabs",
                                                      true).toBool());
+
+  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
+  m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_BROWSER,
+                                                                "external_browser_executable").toString());
+  m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_BROWSER,
+                                                               "external_browser_arguments",
+                                                               "%1").toString());
 }
 
 void FormSettings::saveBrowser() {
@@ -317,6 +308,13 @@ void FormSettings::saveBrowser() {
   settings->setValue(APP_CFG_BROWSER,
                      "queue_tabs",
                      m_ui->m_checkQueueTabs->isChecked());
+
+  settings->setValue(APP_CFG_BROWSER,
+                     "external_browser_executable",
+                     m_ui->m_txtExternalBrowserExecutable->text());
+  settings->setValue(APP_CFG_BROWSER,
+                     "external_browser_arguments",
+                     m_ui->m_txtExternalBrowserArguments->text());
 }
 
 void FormSettings::loadProxy() {

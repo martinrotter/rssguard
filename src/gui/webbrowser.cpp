@@ -49,13 +49,13 @@ WebBrowser::WebBrowser(QWidget *parent)
 
   // Modify action texts.
   m_actionBack->setText(tr("Back"));
-  m_actionBack->setToolTip(tr("Go back"));
+  m_actionBack->setToolTip(tr("Go back."));
   m_actionForward->setText(tr("Forward"));
-  m_actionForward->setToolTip(tr("Go forward"));
+  m_actionForward->setToolTip(tr("Go forward."));
   m_actionReload->setText(tr("Reload"));
-  m_actionReload->setToolTip(tr("Reload current web page"));
+  m_actionReload->setToolTip(tr("Reload current web page."));
   m_actionStop->setText(tr("Stop"));
-  m_actionStop->setToolTip(tr("Stop web page loading"));
+  m_actionStop->setToolTip(tr("Stop web page loading."));
 
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);

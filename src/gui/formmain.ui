@@ -248,7 +248,7 @@
   </action>
   <action name="m_actionEditSelectedFeedCategory">
    <property name="text">
-    <string>&amp;Edit selected feed/category</string>
+    <string>&amp;Edit selected item</string>
    </property>
    <property name="toolTip">
     <string>Edit selected feed/category.</string>
@@ -256,7 +256,7 @@
   </action>
   <action name="m_actionDeleteSelectedFeedCategory">
    <property name="text">
-    <string>&amp;Delete selected feed/category</string>
+    <string>&amp;Delete selected item</string>
    </property>
    <property name="toolTip">
     <string>Delete selected feed/category.</string>

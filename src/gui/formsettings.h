@@ -60,17 +60,16 @@ class FormSettings : public QDialog {
 
     void loadBrowser();
     void saveBrowser();
+    void changeDefaultBrowserArguments(int index);
+    void selectBrowserExecutable();
 
     void loadProxy();
     void saveProxy();
     void displayProxyPassword(int state);
+    void onProxyTypeChanged(int index);
 
     void loadFeedsMessages();
     void saveFeedsMessages();
-    void changeDefaultBrowserArguments(int index);
-    void selectBrowserExecutable();
-
-    void onProxyTypeChanged(int index);
     
   private:
     Ui::FormSettings *m_ui;

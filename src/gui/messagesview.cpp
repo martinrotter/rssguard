@@ -214,9 +214,9 @@ void MessagesView::loadFeeds(const QList<int> &feed_ids) {
 }
 
 void MessagesView::openSelectedSourceArticlesExternally() {
-  QString browser = Settings::instance()->value(APP_CFG_MESSAGES,
+  QString browser = Settings::instance()->value(APP_CFG_BROWSER,
                                                 "external_browser_executable").toString();
-  QString arguments = Settings::instance()->value(APP_CFG_MESSAGES,
+  QString arguments = Settings::instance()->value(APP_CFG_BROWSER,
                                                   "external_browser_arguments",
                                                   "%1").toString();
 
