@@ -97,7 +97,7 @@ void FeedMessageViewer::quitDownloader() {
   m_feedDownloader->deleteLater();
 }
 
-void FeedMessageViewer::updateCountsOfMessages(int unread_messages,
+void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
                                                int total_messages) {
   Q_UNUSED(total_messages)
 
@@ -134,15 +134,22 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)),
           m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
 
-  // Feed changers.
+  // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)),
           m_messagesView, SLOT(loadFeeds(QList<int>)));
+
+  // If user changes status of some messages, recalculate message counts.
   connect(m_messagesView, SIGNAL(feedCountsChanged()),
           m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
+
+  // State of many messages is changed, then we need
+  // to reload selections.
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)),
           m_messagesView, SLOT(reloadSelections(int)));
+
+  // If counts of unread/all messages change, update the tray icon.
   connect(m_feedsView, SIGNAL(feedCountsChanged(int,int)),
-          this, SLOT(updateCountsOfMessages(int,int)));
+          this, SLOT(updateTrayIconStatus(int,int)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
