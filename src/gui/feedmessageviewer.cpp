@@ -101,8 +101,6 @@ void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
                                                int total_messages) {
   Q_UNUSED(total_messages)
 
-  // TODO: Optimize the call isSystemTrayActivated()
-  // because it opens settings (use member variable)?.
   if (SystemTrayIcon::isSystemTrayActivated()) {
     SystemTrayIcon::instance()->setNumber(unread_messages);
   }

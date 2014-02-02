@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>375</width>
-    <height>360</height>
+    <height>373</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,6 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QFormLayout" name="formLayout">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-     </property>
      <item row="0" column="0">
       <widget class="QLabel" name="m_lblParentCategory">
        <property name="text">
@@ -101,6 +98,20 @@
       </widget>
      </item>
      <item row="6" column="0">
+      <widget class="QCheckBox" name="m_checkAutoUpdate">
+       <property name="text">
+        <string>Update each</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QSpinBox" name="m_spinAutoUpdate">
+       <property name="suffix">
+        <string> minutes</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
       <widget class="QLabel" name="m_lblIcon">
        <property name="text">
         <string>Icon</string>
@@ -110,7 +121,7 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
+     <item row="7" column="1">
       <widget class="QToolButton" name="m_btnIcon">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -147,7 +158,7 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0" colspan="2">
+     <item row="8" column="0" colspan="2">
       <widget class="QGroupBox" name="m_gbAuthentication">
        <property name="toolTip">
         <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>

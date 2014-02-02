@@ -141,7 +141,7 @@ void SystemTrayIcon::setNumber(int number) {
 
     // Numbers with more than 2 digits won't be readable, display
     // infinity symbol in that case.
-    if (number > 99) {
+    if (number > 999) {
       m_font.setPixelSize(100);
 
       tray_painter.setFont(m_font);
@@ -150,8 +150,11 @@ void SystemTrayIcon::setNumber(int number) {
                             QChar(8734));
     }
     else {
-      // Smaller number if it has 2 digits.
-      if (number > 9) {
+      // Smaller number if it has 3 digits.
+      if (number > 99) {
+        m_font.setPixelSize(55);
+      }
+      else if (number > 9) {
         m_font.setPixelSize(80);
       }
       // Bigger number if it has just one digit.
