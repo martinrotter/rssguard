@@ -189,9 +189,7 @@ void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state.");
 
   m_ui->m_tabWidget->feedMessageViewer()->quitDownloader();
-
   DatabaseFactory::instance()->saveMemoryDatabase();
-
   saveSize();
 }
 

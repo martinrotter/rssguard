@@ -93,46 +93,8 @@ void FeedMessageViewer::quitDownloader() {
   qDebug("Quitting feed downloader thread.");
   m_feedDownloaderThread->quit();
 
-  qDebug("Feed downloader thread aborted.");
+  qDebug("Feed downloader thread aborted. Deleting it from memory.");
   m_feedDownloader->deleteLater();
-}
-
-void FeedMessageViewer::updateSelectedFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
-    emit feedsUpdateRequested(m_feedsView->selectedFeeds());
-  }
-  else {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update selected items"),
-                                              tr("You cannot update selected items because another feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot update selected items"),
-                       tr("You cannot update selected items because another feed update is ongoing."));
-    }
-  }
-}
-
-void FeedMessageViewer::updateAllFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
-    emit feedsUpdateRequested(m_feedsView->allFeeds());
-  }
-  else {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update all items"),
-                                              tr("You cannot update all items because another feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot update all items"),
-                       tr("You cannot update all items because another feed update is ongoing."));
-    }
-  }
 }
 
 void FeedMessageViewer::updateCountsOfMessages(int unread_messages,
@@ -196,7 +158,7 @@ void FeedMessageViewer::createConnections() {
   // Downloader connections.
   connect(m_feedDownloaderThread, SIGNAL(finished()),
           m_feedDownloaderThread, SLOT(deleteLater()));
-  connect(this, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)),
+  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)),
           m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
   connect(m_feedDownloader, SIGNAL(finished()),
           this, SLOT(onFeedUpdatesFinished()));
@@ -229,9 +191,9 @@ void FeedMessageViewer::createConnections() {
   connect(FormMain::instance()->m_ui->m_actionClearFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
   connect(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories,
-          SIGNAL(triggered()), this, SLOT(updateSelectedFeeds()));
+          SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
   connect(FormMain::instance()->m_ui->m_actionUpdateAllFeeds,
-          SIGNAL(triggered()), this, SLOT(updateAllFeeds()));
+          SIGNAL(triggered()), m_feedsView, SLOT(updateAllFeeds()));
   connect(FormMain::instance()->m_ui->m_actionAddStandardCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardCategory()));
   connect(FormMain::instance()->m_ui->m_actionAddStandardFeed,

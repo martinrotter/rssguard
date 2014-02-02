@@ -7,13 +7,13 @@
 
 
 class WebBrowser;
-class FeedsView;
 class MessagesView;
+class FeedsView;
 class FeedDownloader;
+class FeedsModelFeed;
 class QToolBar;
 class QSplitter;
 class QProgressBar;
-class FeedsModelFeed;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -42,11 +42,6 @@ class FeedMessageViewer : public TabContent {
     // Destroys worker/feed downloader thread.
     void quitDownloader();
 
-  public slots:
-    // Feed updating.
-    void updateSelectedFeeds();
-    void updateAllFeeds();
-
   protected slots:
     // Updates counts of messages for example in tray icon.
     void updateCountsOfMessages(int unread_messages, int total_messages);
@@ -65,9 +60,6 @@ class FeedMessageViewer : public TabContent {
 
     // Sets up connections.
     void createConnections();
-
-  signals:
-    void feedsUpdateRequested(QList<FeedsModelFeed*>);
 
   private:
     QToolBar *m_toolBar;

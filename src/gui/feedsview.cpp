@@ -64,6 +64,44 @@ FeedsModelFeed *FeedsView::isCurrentIndexFeed() const {
   return m_sourceModel->feedForIndex(current_mapped);
 }
 
+void FeedsView::updateAllFeeds() {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+    emit feedsUpdateRequested(allFeeds());
+  }
+  else {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update all items"),
+                                              tr("You cannot update all items because another feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot update all items"),
+                       tr("You cannot update all items because another feed update is ongoing."));
+    }
+  }
+}
+
+void FeedsView::updateSelectedFeeds() {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+    emit feedsUpdateRequested(selectedFeeds());
+  }
+  else {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update selected items"),
+                                              tr("You cannot update selected items because another feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot update selected items"),
+                       tr("You cannot update selected items because another feed update is ongoing."));
+    }
+  }
+}
+
 void FeedsView::setSelectedFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(selectedFeeds(), clear);
   updateCountsOfSelectedFeeds();

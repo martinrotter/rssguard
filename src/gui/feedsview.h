@@ -41,6 +41,10 @@ class FeedsView : public QTreeView {
     FeedsModelFeed *isCurrentIndexFeed() const;
 
   public slots:
+    // Feed updating.
+    void updateAllFeeds();
+    void updateSelectedFeeds();
+
     // Feed read/unread manipulators.
     void markSelectedFeedsReadStatus(int read);
     void markSelectedFeedsRead();
@@ -102,6 +106,9 @@ class FeedsView : public QTreeView {
     void contextMenuEvent(QContextMenuEvent *event);
 
   signals:
+    // Emitted if user/application requested updating of some feeds.
+    void feedsUpdateRequested(const QList<FeedsModelFeed*> feeds);
+
     // Emitted if counts of messages are changed.
     void feedCountsChanged(int unread_messages, int total_messages);
 
