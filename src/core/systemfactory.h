@@ -3,10 +3,8 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QMutex>
 
-
-class QReadWriteLock;
-class QMutex;
 
 class SystemFactory : public QObject {
     Q_OBJECT
@@ -42,7 +40,7 @@ class SystemFactory : public QObject {
 
 
     // Access to application-wide close lock.
-    inline QReadWriteLock *applicationCloseLock() const {
+    inline QMutex *applicationCloseLock() const {
       return m_applicationCloseLock;
     }
 
@@ -62,7 +60,7 @@ class SystemFactory : public QObject {
     // But of user decides to close the application (in other words,
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
-    QReadWriteLock *m_applicationCloseLock;
+    QMutex *m_applicationCloseLock;
 
     static QPointer<SystemFactory> s_instance;
 };

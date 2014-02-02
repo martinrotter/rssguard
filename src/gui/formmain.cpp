@@ -175,7 +175,7 @@ void FormMain::onSaveState(QSessionManager &manager) {
 void FormMain::onAboutToQuit() {
   // Make sure that we obtain close lock
   // BEFORE even trying to quit the application.
-  if (SystemFactory::instance()->applicationCloseLock()->tryLockForWrite(CLOSE_LOCK_TIMEOUT)) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLock(CLOSE_LOCK_TIMEOUT)) {
     // Application obtained permission to close
     // in a safety way.
     qDebug("Close lock obtained safely.");

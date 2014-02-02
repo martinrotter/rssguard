@@ -11,13 +11,12 @@
 #include <QString>
 #include <QFile>
 #include <QApplication>
-#include <QReadWriteLock>
 
 
 QPointer<SystemFactory> SystemFactory::s_instance;
 
 SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
-  m_applicationCloseLock = new QReadWriteLock(QReadWriteLock::NonRecursive);
+  m_applicationCloseLock = new QMutex();
 }
 
 SystemFactory::~SystemFactory() {

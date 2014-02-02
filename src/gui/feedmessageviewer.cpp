@@ -25,7 +25,6 @@
 #include <QMenu>
 #include <QWidgetAction>
 #include <QThread>
-#include <QReadWriteLock>
 #include <QProgressBar>
 #include <QStatusBar>
 
@@ -99,7 +98,7 @@ void FeedMessageViewer::quitDownloader() {
 }
 
 void FeedMessageViewer::updateSelectedFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     emit feedsUpdateRequested(m_feedsView->selectedFeeds());
   }
   else {
@@ -118,7 +117,7 @@ void FeedMessageViewer::updateSelectedFeeds() {
 }
 
 void FeedMessageViewer::updateAllFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     emit feedsUpdateRequested(m_feedsView->allFeeds());
   }
   else {

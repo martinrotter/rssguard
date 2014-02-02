@@ -76,7 +76,7 @@ void FeedsView::clearSelectedFeeds() {
 }
 
 void FeedsView::addNewStandardCategory() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -115,7 +115,7 @@ void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
 }
 
 void FeedsView::addNewStandardFeed() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -154,7 +154,7 @@ void FeedsView::editStandardFeed(FeedsModelStandardFeed *feed) {
 }
 
 void FeedsView::editSelectedItem() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -212,7 +212,7 @@ void FeedsView::editSelectedItem() {
 }
 
 void FeedsView::deleteSelectedItem() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLockForWrite()) {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
