@@ -124,6 +124,8 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
 void FeedMessageViewer::onFeedUpdatesFinished() {
   // Updates of some feeds finished, unlock the lock.
   SystemFactory::instance()->applicationCloseLock()->unlock();
+
+  // And also hide progress bar.
   FormMain::instance()->statusBar()->clearProgress();
 }
 

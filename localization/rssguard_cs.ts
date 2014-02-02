@@ -22,22 +22,6 @@
         <source>Updated feed &apos;%1&apos;</source>
         <translation>Aktualizován kanál &apos;%1&apos;</translation>
     </message>
-    <message>
-        <source>Cannot update selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -95,6 +79,22 @@
     <message>
         <source>Selected item cannot be deleted because feed update is ongoing.</source>
         <translation>Vybraná položka nemůže být nyní smazána, protože právě probíhá aktualizace kanálů.</translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation>Nelze aktualizovat všechny položky</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another feed update is ongoing.</source>
+        <translation>Právě nyní nemůžete aktualizovat všechny položky, protože nejspíše probíhá jiná aktualizace.</translation>
+    </message>
+    <message>
+        <source>Cannot update selected items</source>
+        <translation>Nelze aktualizovat vybrané položky</translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another feed update is ongoing.</source>
+        <translation>Právě nyní nemůžete aktualizovat vybrané položky, protože nejspíše probíhá jiná aktualizace.</translation>
     </message>
 </context>
 <context>
@@ -409,10 +409,6 @@
     <message>
         <source>Switch &amp;fullscreen/normal mode</source>
         <translation>Přepnout režim &amp;celé obrazovky</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>

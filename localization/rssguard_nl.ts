@@ -22,22 +22,6 @@
         <source>Updated feed &apos;%1&apos;</source>
         <translation>Update feed &apos;%1&apos;</translation>
     </message>
-    <message>
-        <source>Cannot update selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -94,6 +78,22 @@
     </message>
     <message>
         <source>Selected item cannot be deleted because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot update selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -408,10 +408,6 @@
     </message>
     <message>
         <source>Switch &amp;fullscreen/normal mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
