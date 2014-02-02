@@ -153,9 +153,11 @@ void FormSettings::selectBrowserExecutable() {
 }
 
 void FormSettings::loadFeedsMessages() {
+  m_ui->m_checkRemoveReadMessagesOnExit->setChecked(Settings::instance()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool());
 }
 
 void FormSettings::saveFeedsMessages() {
+  Settings::instance()->setValue(APP_CFG_MESSAGES, "clear_read_on_exit", m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
 }
 
 void FormSettings::displayProxyPassword(int state) {

@@ -188,11 +188,12 @@ void FormMain::onAboutToQuit() {
   }
 
   qDebug("Cleaning up resources and saving application state.");
-
   m_ui->m_tabWidget->feedMessageViewer()->quitDownloader();
 
-  // TODO: podle nastaveni
-  m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
+  if (Settings::instance()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
+    m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
+  }
+
   DatabaseFactory::instance()->saveMemoryDatabase();
   saveSize();
 }
