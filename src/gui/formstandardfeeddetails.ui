@@ -102,12 +102,24 @@
        <property name="text">
         <string>Update each</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item row="6" column="1">
       <widget class="QSpinBox" name="m_spinAutoUpdate">
        <property name="suffix">
         <string> minutes</string>
+       </property>
+       <property name="minimum">
+        <number>5</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="value">
+        <number>15</number>
        </property>
       </widget>
      </item>
@@ -245,6 +257,22 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkAutoUpdate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_spinAutoUpdate</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>51</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>232</x>
+     <y>154</y>
     </hint>
    </hints>
   </connection>
