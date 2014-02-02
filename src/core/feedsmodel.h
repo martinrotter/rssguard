@@ -117,7 +117,9 @@ class FeedsModel : public QAbstractItemModel {
   public slots:
     // Feeds operations.
     bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
-    bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted);
+    bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
+                          int deleted,
+                          bool read_only);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.

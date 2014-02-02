@@ -51,6 +51,7 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  int row_count;
 
   // Reload the model now.
   m_sourceModel->select();
@@ -61,8 +62,6 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
                                                                    mapped_current_index.column()));
-
-
 
   if (current_index.isValid()) {
     if (mark_current_index_read == 0) {
@@ -78,6 +77,13 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
 
     scrollTo(current_index);
     reselectIndexes(selected_indexes);
+  }
+  else if ((row_count = m_proxyModel->rowCount()) > 0) {
+    current_index = m_proxyModel->index(row_count - 1, 0);
+
+    setCurrentIndex(current_index);
+    scrollTo(current_index);
+    reselectIndexes(QModelIndexList() << current_index);
   }
   else {
     // Messages were probably removed from the model, nothing can

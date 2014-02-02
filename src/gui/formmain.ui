@@ -163,6 +163,9 @@
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+Q</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="m_actionSettings">
    <property name="text">
@@ -184,6 +187,9 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+A</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="m_actionFullscreen">

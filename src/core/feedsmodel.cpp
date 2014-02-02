@@ -679,8 +679,9 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
   }
 }
 
-bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
-                                  int deleted) {
+bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
+                                  int deleted,
+                                  bool read_only) {
   QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName(),
                                                                    DatabaseFactory::FromSettings);
 
@@ -692,12 +693,23 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed *> &feeds,
   QSqlQuery query_delete_msg(db_handle);
   query_delete_msg.setForwardOnly(true);
 
-  if (!query_delete_msg.prepare(QString("UPDATE Messages SET deleted = :deleted "
-                                        "WHERE feed IN (%1) AND deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
-    qWarning("Query preparation failed for feeds clearing.");
+  if (read_only) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET deleted = :deleted "
+                                          "WHERE feed IN (%1) AND deleted = 0 AND read = 1;").arg(textualFeedIds(feeds).join(", ")))) {
+      qWarning("Query preparation failed for feeds clearing.");
 
-    db_handle.rollback();
-    return false;
+      db_handle.rollback();
+      return false;
+    }
+  }
+  else {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET deleted = :deleted "
+                                          "WHERE feed IN (%1) AND deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
+      qWarning("Query preparation failed for feeds clearing.");
+
+      db_handle.rollback();
+      return false;
+    }
   }
 
   query_delete_msg.bindValue(":deleted", deleted);

@@ -128,6 +128,8 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
 }
 
 void FeedMessageViewer::createConnections() {
+  FormMain *form_main = FormMain::instance();
+
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()),
           m_messagesBrowser, SLOT(clear()));
@@ -153,13 +155,13 @@ void FeedMessageViewer::createConnections() {
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          FormMain::instance()->m_ui->m_tabWidget,
+          form_main->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
-          FormMain::instance()->m_ui->m_tabWidget,
+          form_main->m_ui->m_tabWidget,
           SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          FormMain::instance()->m_ui->m_tabWidget,
+          form_main->m_ui->m_tabWidget,
           SLOT(addBrowserWithMessages(QList<Message>)));
 
   // Downloader connections.
@@ -175,41 +177,41 @@ void FeedMessageViewer::createConnections() {
           this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
 
   // Toolbar forwardings.
-  connect(FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
+  connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
-  connect(FormMain::instance()->m_ui->m_actionDeleteSelectedMessages,
+  connect(form_main->m_ui->m_actionDeleteSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(deleteSelectedMessages()));
-  connect(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead,
+  connect(form_main->m_ui->m_actionMarkSelectedMessagesAsRead,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesRead()));
-  connect(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread,
+  connect(form_main->m_ui->m_actionMarkSelectedMessagesAsUnread,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesUnread()));
-  connect(FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
+  connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceArticlesExternally()));
-  connect(FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesInternally,
+  connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
-  connect(FormMain::instance()->m_ui->m_actionOpenSelectedMessagesInternally,
+  connect(form_main->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
-  connect(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead,
+  connect(form_main->m_ui->m_actionMarkAllFeedsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
-  connect(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead,
+  connect(form_main->m_ui->m_actionMarkSelectedFeedsAsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
-  connect(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread,
+  connect(form_main->m_ui->m_actionMarkSelectedFeedsAsUnread,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
-  connect(FormMain::instance()->m_ui->m_actionClearFeeds,
+  connect(form_main->m_ui->m_actionClearFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
-  connect(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories,
+  connect(form_main->m_ui->m_actionUpdateSelectedFeedsCategories,
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
-  connect(FormMain::instance()->m_ui->m_actionUpdateAllFeeds,
+  connect(form_main->m_ui->m_actionUpdateAllFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(updateAllFeeds()));
-  connect(FormMain::instance()->m_ui->m_actionAddStandardCategory,
+  connect(form_main->m_ui->m_actionAddStandardCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardCategory()));
-  connect(FormMain::instance()->m_ui->m_actionAddStandardFeed,
+  connect(form_main->m_ui->m_actionAddStandardFeed,
           SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardFeed()));
-  connect(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory,
+  connect(form_main->m_ui->m_actionEditSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
-  connect(FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode,
+  connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
-  connect(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedCategory,
+  connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
 }
 

@@ -103,7 +103,7 @@ void FeedsView::updateSelectedFeeds() {
 }
 
 void FeedsView::setSelectedFeedsClearStatus(int clear) {
-  m_sourceModel->markFeedsDeleted(selectedFeeds(), clear);
+  m_sourceModel->markFeedsDeleted(selectedFeeds(), clear, 0);
   updateCountsOfSelectedFeeds();
 
   emit feedsNeedToBeReloaded(1);
@@ -324,6 +324,10 @@ void FeedsView::markAllFeedsReadStatus(int read) {
 
 void FeedsView::markAllFeedsRead() {
   markAllFeedsReadStatus(1);
+}
+
+void FeedsView::clearAllReadMessages() {
+  m_sourceModel->markFeedsDeleted(allFeeds(), 1, 1);
 }
 
 void FeedsView::openSelectedFeedsInNewspaperMode() {
