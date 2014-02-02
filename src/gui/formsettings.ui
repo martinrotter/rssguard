@@ -766,7 +766,7 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="0" column="0">
             <widget class="QCheckBox" name="m_checkRemoveReadMessagesOnExit">
              <property name="text">
-              <string>Remove all read messages from standard feeds on application exit</string>
+              <string>Remove all read messages from all standard feeds on application exit</string>
              </property>
             </widget>
            </item>

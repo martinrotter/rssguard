@@ -22,6 +22,22 @@
         <source>Updated feed &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Cannot update selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -187,10 +203,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Fullscreen mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Current tab</source>
         <translation type="unfinished"></translation>
     </message>
@@ -291,10 +303,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open selected messages in internal browser</source>
         <translation type="unfinished"></translation>
     </message>
@@ -320,10 +328,6 @@
     </message>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -375,10 +379,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Delete selected feed/category.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -399,15 +399,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new standard &amp;category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Add new standard category.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new standard &amp;feed</source>
+        <source>Add new item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;fullscreen/normal mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard &amp;feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new standard feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard &amp;category</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -455,10 +479,6 @@
     </message>
     <message>
         <source>Start application hidden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -668,10 +688,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>External web browser for message viewing</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Web browser executable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -713,10 +729,6 @@
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>external browser is not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -765,6 +777,18 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>in-memory database switched</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all standard feeds on application exit</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -882,10 +906,6 @@ Authors of this application are NOT responsible for lost data.</source>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Parent category</source>
         <translation type="unfinished"></translation>
     </message>
@@ -970,11 +990,111 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Feed url</source>
+        <source>Set url for your feed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set url for your feed.</source>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-fetch feed metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1249,15 +1369,7 @@ Encoding: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Go back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Forward</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go forward</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1265,15 +1377,7 @@ Encoding: %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reload current web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop web page loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1306,6 +1410,22 @@ Encoding: %4</source>
     </message>
     <message>
         <source>Newspaper view</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -22,6 +22,22 @@
         <source>Updated feed &apos;%1&apos;</source>
         <translation>Aktualizován kanál &apos;%1&apos;</translation>
     </message>
+    <message>
+        <source>Cannot update selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -50,35 +66,35 @@
     </message>
     <message>
         <source>Cannot add standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přidat standardní kategorii</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyní nelze přidat standardní kategorii, protože právě probíhá aktualizace kanálů.</translation>
     </message>
     <message>
         <source>Cannot add standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přidat standardní kanál</translation>
     </message>
     <message>
         <source>You cannot add new standard feed now because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyní nelze přidat standardní kanál, protože právě probíhá aktualizace kanálů.</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze upravit položku</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybraná položka nemůže být nyní upravena, protože právě probíhá aktualizace kanálů.</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze smazat položku</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybraná položka nemůže být nyní smazána, protože právě probíhá aktualizace kanálů.</translation>
     </message>
 </context>
 <context>
@@ -187,10 +203,6 @@
         <translation>&amp;O aplikaci RSS Guard</translation>
     </message>
     <message>
-        <source>&amp;Fullscreen mode</source>
-        <translation>&amp;Režim celé obrazovky</translation>
-    </message>
-    <message>
         <source>&amp;Current tab</source>
         <translation>&amp;Aktivní panel</translation>
     </message>
@@ -291,10 +303,6 @@
         <translation>Smazat vybrané zprávy.</translation>
     </message>
     <message>
-        <source>Add new feed.</source>
-        <translation>Přidat nový kanál.</translation>
-    </message>
-    <message>
         <source>Open selected messages in internal browser</source>
         <translation>Otevřít vybrané zprávy v interním prohlížeči</translation>
     </message>
@@ -321,10 +329,6 @@
     <message>
         <source>Application is already running.</source>
         <translation>Aplikace již běží.</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation>Uprav&amp;it vybraní kanál/kategorii</translation>
     </message>
     <message>
         <source>&amp;Clear selected messages</source>
@@ -375,10 +379,6 @@
         <translation>Zobrazit vybrané položky v novinovém náhledu</translation>
     </message>
     <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation>Smazat vy&amp;braný kanál/kategorii</translation>
-    </message>
-    <message>
         <source>Delete selected feed/category.</source>
         <translation>Smazat vybraný kanál/kategorii.</translation>
     </message>
@@ -396,19 +396,43 @@
     </message>
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new standard &amp;category</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazí všechny zprávy z vybraných kanálů/kategorií v &quot;novinovém&quot; náhledu. Všechny zprávy budou automaticky označeny jako přečtené.</translation>
     </message>
     <message>
         <source>Add new standard category.</source>
+        <translation>Přidat novou standardní kategorii.</translation>
+    </message>
+    <message>
+        <source>Add new item</source>
+        <translation>Přidat novou položku</translation>
+    </message>
+    <message>
+        <source>Switch &amp;fullscreen/normal mode</source>
+        <translation>Přepnout režim &amp;celé obrazovky</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new standard &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Edit selected item</source>
+        <translation>Upravit &amp;vybranou položku</translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected item</source>
+        <translation>&amp;Smazat vybranou položku</translation>
+    </message>
+    <message>
+        <source>Standard &amp;feed</source>
+        <translation>Standa&amp;rdní kanál</translation>
+    </message>
+    <message>
+        <source>Add new standard feed.</source>
+        <translation>Přidat nový standardní kanál.</translation>
+    </message>
+    <message>
+        <source>Standard &amp;category</source>
+        <translation>Standar&amp;dní kategorie</translation>
     </message>
 </context>
 <context>
@@ -456,10 +480,6 @@
     <message>
         <source>Start application hidden</source>
         <translation>Spouštět aplikaci skrytou</translation>
-    </message>
-    <message>
-        <source>Web browser</source>
-        <translation>Webový prohlížeč</translation>
     </message>
     <message>
         <source>Use custom color for web browser progress bar</source>
@@ -674,10 +694,6 @@
         <translation>Zprávy</translation>
     </message>
     <message>
-        <source>External web browser for message viewing</source>
-        <translation>Externí prohlížeč pro náhled zpráv</translation>
-    </message>
-    <message>
         <source>Web browser executable</source>
         <translation>Spouštěcí soubor</translation>
     </message>
@@ -722,10 +738,6 @@
         <translation>některé klávesové zkratky nejsou unikátní</translation>
     </message>
     <message>
-        <source>external browser is not set</source>
-        <translation>externí prohlížeč není nastaven</translation>
-    </message>
-    <message>
         <source>List of errors:
 %1.</source>
         <translation>Seznam chyb:
@@ -755,7 +767,7 @@
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít paměťovou datábázi jako pracovní datové uložiště</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -769,221 +781,339 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Použití paměťové databáze má hned několik výhod a nevýhod. Před povolením této funkce se ujistětě, že se s nimi seznámíte. Výhody:
+&lt;ul&gt;
+&lt;li&gt;vyšší rychlost při manipulaci se zprávami a kanály (obzvláště, pokud je zpráv hodně),&lt;/li&gt;
+&lt;li&gt;celá databáze je uložená v RAM, tedy pevný disk může více odpočívat.&lt;/li&gt;
+&lt;/ul&gt;
+Nevýhody:
+&lt;ul&gt;
+&lt;li&gt;pokud aplikace zhavaruje, tak Vaše změny z posledního sezení budou ztraceny,&lt;/li&gt;
+&lt;li&gt;start a vypnutí aplikace může trvat o něco déle (max. 2 vteřiny).&lt;/li&gt;
+&lt;/ul&gt;
+Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation type="unfinished"></translation>
+        <translation>paměťová databáze přepnuta</translation>
+    </message>
+    <message>
+        <source>Internal web browser</source>
+        <translation>Interní webový prohlížeč</translation>
+    </message>
+    <message>
+        <source>External web browser</source>
+        <translation>Externí webový prohlížeč</translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all standard feeds on application exit</source>
+        <translation>Smazat všechny přečtené zprávy ze všech kanálů při vypnutí aplikace</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadřazená kategorie</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Nadpis</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikona</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte nadřazenou kategorii pro Vaši kategorii.</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte ikonu pro Vaši kategorii.</translation>
     </message>
     <message>
         <source>Add new standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat novou standardní kategorii</translation>
     </message>
     <message>
         <source>Edit existing standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit existující standardní kategorii</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kategorie je v pořádku.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kategorie je příliš krátký.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis kategorie je prázdný.</translation>
     </message>
     <message>
         <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis kategorie je v pořádku.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte ikonu pro Vaši kategorii</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Zrušit</translation>
     </message>
     <message>
         <source>Look in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat v:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Název ikony:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ ikony:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kategorie</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte název pro Vaši kategorii.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis kategorie</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte popis Vaší kategorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat ikonu</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Načíst ikonu ze souboru...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepoužít ikonu</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít výchozí ikonu</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Parent category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nadřazená kategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte typ standardního kanálu.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Nadpis</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Kódování</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte kódování kanálu. Pokud si nejste jisti, tak zvolte kódování &quot;UTF-8&quot;.</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikona</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte ikonu pro Váš kanál.</translation>
     </message>
     <message>
         <source>Add new standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat nový standardní kanál</translation>
     </message>
     <message>
         <source>Edit existing standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit existující standardní kanál</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kanálu je v pořádku.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kanálu je příliš krátký.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis kanálu je prázdný.</translation>
     </message>
     <message>
         <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis kanálu je v pořádku.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"></translation>
+        <translation>Název kanálu</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte název pro Váš kanál.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"></translation>
+        <translation>Popis kanálu</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed url</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte popis Vašeho kanálu.</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte url Vašeho kanálu.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vyžaduje autentizaci</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Heslo</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>Url je v pořádku.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>Url neobsahuje standardní schéma. Začíná Vaše url schématem &quot;http://&quot; nebo &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>Url je prázdné.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Uživatelské jméno je prázdné.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Heslo je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Heslo je prázdné.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Vybrat ikonu pro kanál</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Vybrat ikonu</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <translation>Hledat v:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Název ikony:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Typ ikony:</translation>
+    </message>
+    <message>
+        <source>Auto-fetch feed metadata</source>
+        <translation>Načíst metadata z internetu</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Plné url kanálu včetně schématu</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Nastavte uživatelské jméno pro tento kanál.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Nastavte heslo pro tento kanál.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Načíst ikonu ze souboru...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Nepoužít ikonu</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Použít výchozí ikonu</translation>
     </message>
 </context>
 <context>
@@ -1192,7 +1322,10 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
 %3
 
 Encoding: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)
+%3
+
+Kódování: %4</translation>
     </message>
 </context>
 <context>
@@ -1261,32 +1394,16 @@ Encoding: %4</source>
         <translation>Zpět</translation>
     </message>
     <message>
-        <source>Go back</source>
-        <translation>Jít zpět</translation>
-    </message>
-    <message>
         <source>Forward</source>
         <translation>Vpřed</translation>
-    </message>
-    <message>
-        <source>Go forward</source>
-        <translation>Jít vpřed</translation>
     </message>
     <message>
         <source>Reload</source>
         <translation>Obnovit</translation>
     </message>
     <message>
-        <source>Reload current web page</source>
-        <translation>Znovu načíst aktuální stránku</translation>
-    </message>
-    <message>
         <source>Stop</source>
         <translation>Zastavit</translation>
-    </message>
-    <message>
-        <source>Stop web page loading</source>
-        <translation>Zastavit načítání aktuální webové stránky</translation>
     </message>
     <message>
         <source>Zoom  </source>
@@ -1319,6 +1436,22 @@ Encoding: %4</source>
     <message>
         <source>Newspaper view</source>
         <translation>Novinový náhled</translation>
+    </message>
+    <message>
+        <source>Go back.</source>
+        <translation>Jít zpět.</translation>
+    </message>
+    <message>
+        <source>Go forward.</source>
+        <translation>Jít vpřed.</translation>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation>Opět načíst aktuální webovou stránku.</translation>
+    </message>
+    <message>
+        <source>Stop web page loading.</source>
+        <translation>Zastavit načítání aktuální webové stránky.</translation>
     </message>
 </context>
 <context>

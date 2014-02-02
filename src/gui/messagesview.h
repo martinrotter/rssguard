@@ -64,9 +64,13 @@ class MessagesView : public QTreeView {
     void adjustColumns();
 
   protected:
+    // Initializes context menu.
     void initializeContextMenu();
+
+    // Sets up appearance.
     void setupAppearance();
 
+    // Event reimplementations.
     void contextMenuEvent(QContextMenuEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
@@ -74,6 +78,7 @@ class MessagesView : public QTreeView {
                         const QModelIndex &previous);
 
   signals:
+    // Link/message openers.
     void openLinkNewTab(const QString &link);
     void openMessagesInNewspaperView(const QList<Message> &messages);
 
