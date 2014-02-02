@@ -12,6 +12,7 @@
 #include "gui/feedsview.h"
 #include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
+#include "gui/messagebox.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -102,7 +103,17 @@ void FeedMessageViewer::updateSelectedFeeds() {
     emit feedsUpdateRequested(m_feedsView->selectedFeeds());
   }
   else {
-    qDebug("Lock for feed updates was NOT obtained.");
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update selected items"),
+                                              tr("You cannot update selected items because another feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot update selected items"),
+                       tr("You cannot update selected items because another feed update is ongoing."));
+    }
   }
 }
 
@@ -111,7 +122,17 @@ void FeedMessageViewer::updateAllFeeds() {
     emit feedsUpdateRequested(m_feedsView->allFeeds());
   }
   else {
-    qDebug("Lock for feed updates was NOT obtained.");
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update all items"),
+                                              tr("You cannot update all items because another feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot update all items"),
+                       tr("You cannot update all items because another feed update is ongoing."));
+    }
   }
 }
 
