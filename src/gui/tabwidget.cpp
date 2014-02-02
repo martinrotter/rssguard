@@ -70,7 +70,7 @@ void TabWidget::setupIcons() {
   for (int index = 0; index < count(); index++) {
     // Index 0 usually contains widget which displays feeds & messages.
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
-      setTabIcon(index, IconThemeFactory::instance()->fromTheme("application-rss+xml"));
+      setTabIcon(index, IconThemeFactory::instance()->fromTheme("folder-feed"));
     }
     // Other indexes probably contain WebBrowsers.
     else {

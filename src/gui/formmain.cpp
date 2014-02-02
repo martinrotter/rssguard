@@ -201,9 +201,9 @@ bool FormMain::event(QEvent *event) {
 
 void FormMain::setupIcons() {
   // Setup icons of this main window.
-  m_ui->m_actionSettings->setIcon(IconThemeFactory::instance()->fromTheme("preferences-system"));
+  m_ui->m_actionSettings->setIcon(IconThemeFactory::instance()->fromTheme("application-settings"));
   m_ui->m_actionQuit->setIcon(IconThemeFactory::instance()->fromTheme("application-exit"));
-  m_ui->m_actionAboutGuard->setIcon(IconThemeFactory::instance()->fromTheme("help-about"));
+  m_ui->m_actionAboutGuard->setIcon(IconThemeFactory::instance()->fromTheme("application-about"));
   m_ui->m_actionImport->setIcon(IconThemeFactory::instance()->fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(IconThemeFactory::instance()->fromTheme("document-export"));
   m_ui->m_actionFullscreen->setIcon(IconThemeFactory::instance()->fromTheme("view-fullscreen"));
@@ -212,28 +212,28 @@ void FormMain::setupIcons() {
   m_ui->m_actionAddBrowser->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
   m_ui->m_actionCloseCurrentTab->setIcon(IconThemeFactory::instance()->fromTheme("list-remove"));
   m_ui->m_actionCloseAllTabs->setIcon(IconThemeFactory::instance()->fromTheme("list-remove"));
-  m_ui->m_menuCurrentTab->setIcon(IconThemeFactory::instance()->fromTheme("go-home"));
+  m_ui->m_menuCurrentTab->setIcon(IconThemeFactory::instance()->fromTheme("list-current"));
 
   // Feeds/messages.
-  m_ui->m_menuAddItem->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
-  m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::instance()->fromTheme("document-save-as"));
-  m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("document-save"));
-  m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
-  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("edit-delete"));
-  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-junk"));
-  m_ui->m_actionAddStandardCategory->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
-  m_ui->m_actionAddStandardFeed->setIcon(IconThemeFactory::instance()->fromTheme("document-new"));
-  m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("gnome-other"));
-  m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
-  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-not-junk"));
-  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-important"));
-  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("favorites"));
-  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(IconThemeFactory::instance()->fromTheme("document-open"));
-  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::instance()->fromTheme("document-open"));
-  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::instance()->fromTheme("document-open"));
-  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(IconThemeFactory::instance()->fromTheme("document-multiple"));
+  m_ui->m_menuAddItem->setIcon(IconThemeFactory::instance()->fromTheme("item-new"));
+  m_ui->m_actionUpdateAllFeeds->setIcon(IconThemeFactory::instance()->fromTheme("item-update-all"));
+  m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(IconThemeFactory::instance()->fromTheme("item-update-selected"));
+  m_ui->m_actionClearFeeds->setIcon(IconThemeFactory::instance()->fromTheme("mail-remove"));
+  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("item-remove"));
+  m_ui->m_actionDeleteSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-remove"));
+  m_ui->m_actionAddStandardCategory->setIcon(IconThemeFactory::instance()->fromTheme("item-new"));
+  m_ui->m_actionAddStandardFeed->setIcon(IconThemeFactory::instance()->fromTheme("item-new"));
+  m_ui->m_actionEditSelectedFeedCategory->setIcon(IconThemeFactory::instance()->fromTheme("item-edit"));
+  m_ui->m_actionMarkAllFeedsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-read"));
+  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-read"));
+  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-unread"));
+  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-read"));
+  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-unread"));
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(IconThemeFactory::instance()->fromTheme("mail-mark-favorite"));
+  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(IconThemeFactory::instance()->fromTheme("item-open"));
+  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(IconThemeFactory::instance()->fromTheme("item-open"));
+  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(IconThemeFactory::instance()->fromTheme("item-open"));
+  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(IconThemeFactory::instance()->fromTheme("item-newspaper"));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

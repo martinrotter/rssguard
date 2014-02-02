@@ -13,7 +13,7 @@ LineEditWithStatus::LineEditWithStatus(QWidget *parent)
   m_txtInput = new BaseLineEdit(this);
   m_btnStatus = new PlainToolButton(this);
 
-  m_iconInformation = IconThemeFactory::instance()->fromTheme("help-about");
+  m_iconInformation = IconThemeFactory::instance()->fromTheme("dialog-information");
   m_iconWarning = IconThemeFactory::instance()->fromTheme("dialog-warning");
   m_iconError = IconThemeFactory::instance()->fromTheme("dialog-error");
   m_iconOk = IconThemeFactory::instance()->fromTheme("dialog-yes");

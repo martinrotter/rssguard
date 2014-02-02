@@ -38,7 +38,7 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
 
     case QMessageBox::Cancel:
     case QMessageBox::Close:
-      return IconThemeFactory::instance()->fromTheme("edit-delete");
+      return IconThemeFactory::instance()->fromTheme("dialog-cancel");
 
     case QMessageBox::Yes:
     case QMessageBox::YesToAll:
@@ -49,7 +49,7 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
       return IconThemeFactory::instance()->fromTheme("dialog-no");
 
     case QMessageBox::Help:
-      return IconThemeFactory::instance()->fromTheme("dialog-information");
+      return IconThemeFactory::instance()->fromTheme("dialog-question");
 
     default:
       return QIcon();
@@ -59,7 +59,7 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
 QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   switch (status) {
     case QMessageBox::Information:
-      return IconThemeFactory::instance()->fromTheme("help-about");
+      return IconThemeFactory::instance()->fromTheme("dialog-information");
 
     case QMessageBox::Warning:
       return IconThemeFactory::instance()->fromTheme("dialog-warning");

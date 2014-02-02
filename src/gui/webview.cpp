@@ -55,9 +55,9 @@ void WebView::createConnections() {
 }
 
 void WebView::setupIcons() {
-  m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("view-refresh"));
+  m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("go-refresh"));
   m_actionCopyLink->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy"));
-  m_actionCopyImage->setIcon(IconThemeFactory::instance()->fromTheme("insert-image"));
+  m_actionCopyImage->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy-image"));
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy"));
@@ -65,7 +65,7 @@ void WebView::setupIcons() {
 
   m_actionOpenLinkThisTab->setIcon(IconThemeFactory::instance()->fromTheme("text-html"));
   m_actionOpenLinkNewTab->setIcon(IconThemeFactory::instance()->fromTheme("text-html"));
-  m_actionOpenImageNewTab->setIcon(IconThemeFactory::instance()->fromTheme("insert-image"));
+  m_actionOpenImageNewTab->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy-image"));
 }
 
 void WebView::initializeActions() {
@@ -130,7 +130,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
   QMenu link_submenu(tr("Hyperlink"), this);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
-  image_submenu.setIcon(IconThemeFactory::instance()->fromTheme("image-x-generic"));
+  image_submenu.setIcon(IconThemeFactory::instance()->fromTheme("image-generic"));
   link_submenu.setIcon(IconThemeFactory::instance()->fromTheme("text-html"));
 
   // Assemble the menu from actions.

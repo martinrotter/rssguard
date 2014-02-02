@@ -22,8 +22,8 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   m_rootItem = new FeedsModelRootItem();
   m_rootItem->setId(NO_PARENT_CATEGORY);
   m_rootItem->setTitle(tr("root"));
-  m_rootItem->setIcon(IconThemeFactory::instance()->fromTheme("folder-red"));
-  m_countsIcon = IconThemeFactory::instance()->fromTheme("mail-mark-important");
+  m_rootItem->setIcon(IconThemeFactory::instance()->fromTheme("folder-root"));
+  m_countsIcon = IconThemeFactory::instance()->fromTheme("mail-mark-unread");
   m_headerData << tr("Title");
   m_tooltipData << tr("Titles of feeds/categories.") <<
                    tr("Counts of unread/all meesages.");

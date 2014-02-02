@@ -182,7 +182,7 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
 
   m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
   emit iconChanged(m_index,
-                   IconThemeFactory::instance()->fromTheme("document-multiple"));
+                   IconThemeFactory::instance()->fromTheme("item-newspaper"));
 }
 
 void WebBrowser::updateZoomGui() {
@@ -227,11 +227,10 @@ WebBrowser::~WebBrowser() {
 }
 
 void WebBrowser::setupIcons() {
-  m_actionZoom->setIcon(IconThemeFactory::instance()->fromTheme("zoom-fit-best"));
   m_actionBack->setIcon(IconThemeFactory::instance()->fromTheme("go-previous"));
   m_actionForward->setIcon(IconThemeFactory::instance()->fromTheme("go-next"));
-  m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("view-refresh"));
-  m_actionStop->setIcon(IconThemeFactory::instance()->fromTheme("process-stop"));
+  m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("go-refresh"));
+  m_actionStop->setIcon(IconThemeFactory::instance()->fromTheme("go-stop"));
   m_webView->setupIcons();
 }
 
