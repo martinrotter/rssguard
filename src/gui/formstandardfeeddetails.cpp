@@ -9,10 +9,8 @@
 #include "core/feedsmodelstandardfeed.h"
 #include "gui/iconthemefactory.h"
 #include "gui/baselineedit.h"
-
-#if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
-#endif
+#include "gui/systemtrayicon.h"
 
 #include <QPushButton>
 #include <QTextCodec>
@@ -192,7 +190,17 @@ void FormStandardFeedDetails::apply() {
       accept();
     }
     else {
-      // TODO: hlasit chybu
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        SystemTrayIcon::instance()->showMessage(tr("Cannot add feed"),
+                                                tr("Feed was not added due to error."),
+                                                QSystemTrayIcon::Critical);
+      }
+      else {
+        MessageBox::show(this,
+                         QMessageBox::Critical,
+                         tr("Cannot add feed"),
+                         tr("Feed was not added due to error."));
+      }
     }
   }
   else {
@@ -201,7 +209,17 @@ void FormStandardFeedDetails::apply() {
       accept();
     }
     else {
-      // TODO: hlasit chybu
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        SystemTrayIcon::instance()->showMessage(tr("Cannot edit feed"),
+                                                tr("Feed was not edited due to error."),
+                                                QSystemTrayIcon::Critical);
+      }
+      else {
+        MessageBox::show(this,
+                         QMessageBox::Critical,
+                         tr("Cannot edit feed"),
+                         tr("Feed was not edited due to error."));
+      }
     }
   }
 }

@@ -31,6 +31,15 @@
        <property name="toolTip">
         <string>Select parent item for your feed.</string>
        </property>
+       <property name="iconSize">
+        <size>
+         <width>12</width>
+         <height>12</height>
+        </size>
+       </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item row="1" column="0">

@@ -8,10 +8,8 @@
 #include "gui/iconthemefactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
-
-#if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
-#endif
+#include "gui/systemtrayicon.h"
 
 #include <QLineEdit>
 #include <QTextEdit>
@@ -104,7 +102,17 @@ void FormStandardCategoryDetails::apply() {
       accept();
     }
     else {
-      // TODO: hlasit chybu
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        SystemTrayIcon::instance()->showMessage(tr("Cannot add category"),
+                                                tr("Category was not added due to error."),
+                                                QSystemTrayIcon::Critical);
+      }
+      else {
+        MessageBox::show(this,
+                         QMessageBox::Critical,
+                         tr("Cannot add category"),
+                         tr("Category was not added due to error."));
+      }
     }
   }
   else {
@@ -112,7 +120,17 @@ void FormStandardCategoryDetails::apply() {
       accept();
     }
     else {
-      // TODO: hlasit chybu
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        SystemTrayIcon::instance()->showMessage(tr("Cannot edit category"),
+                                                tr("Category was not edited due to error."),
+                                                QSystemTrayIcon::Critical);
+      }
+      else {
+        MessageBox::show(this,
+                         QMessageBox::Critical,
+                         tr("Cannot edit category"),
+                         tr("Category was not edited due to error."));
+      }
     }
   }
 }
