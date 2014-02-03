@@ -14,6 +14,7 @@ class FeedsModelFeed;
 class QToolBar;
 class QSplitter;
 class QProgressBar;
+class QTimer;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -73,6 +74,8 @@ class FeedMessageViewer : public TabContent {
 
     QThread *m_feedDownloaderThread;
     FeedDownloader *m_feedDownloader;
+
+    QTimer *m_autoUpdateTimer;
 };
 
 #endif // FEEDMESSAGEVIEWER_H

@@ -44,6 +44,7 @@ class FeedsView : public QTreeView {
     // Feed updating.
     void updateAllFeeds();
     void updateSelectedFeeds();
+    void updateScheduledFeeds();
 
     // Feed read/unread manipulators.
     void markSelectedFeedsReadStatus(int read);

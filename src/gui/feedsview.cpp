@@ -102,6 +102,22 @@ void FeedsView::updateSelectedFeeds() {
   }
 }
 
+void FeedsView::updateScheduledFeeds() {
+  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+    // Update master lock obtained, select
+    // feeds which should be updated and
+    // request their update.
+    // TODO: emit feedsUpdateRequested(selectedFeeds());
+  }
+  else {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update scheduled items"),
+                                              tr("You cannot update scheduled items because another feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+  }
+}
+
 void FeedsView::setSelectedFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(selectedFeeds(), clear, 0);
   updateCountsOfSelectedFeeds();
