@@ -51,7 +51,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   // asi udelat metodu pro update v teto tride
   // ta obali update v m_feedsView
   // a nastavit jako single shot -> true nejak nevim
-  m_autoUpdateTimer->setInterval(1000);
+  m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
   m_autoUpdateTimer->setSingleShot(false);
   m_autoUpdateTimer->start();
 }

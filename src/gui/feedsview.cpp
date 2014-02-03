@@ -108,6 +108,7 @@ void FeedsView::updateScheduledFeeds() {
     // feeds which should be updated and
     // request their update.
     // TODO: emit feedsUpdateRequested(selectedFeeds());
+    // tady vybrat feedy ktery se maj updatovat ted
   }
   else {
     if (SystemTrayIcon::isSystemTrayActivated()) {

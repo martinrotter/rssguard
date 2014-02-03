@@ -40,6 +40,7 @@
 #define MIN_CATEGORY_NAME_LENGTH        3
 #define INTERNAL_URL_NEWSPAPER          "@APP_LOW_NAME@:newspaper"
 #define DEFAULT_AUTO_UPDATE_INTERVAL    15
+#define AUTO_UPDATE_INTERVAL            60000
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_MEMORY    "db_init_memory.sql"

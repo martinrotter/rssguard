@@ -19,6 +19,13 @@ class FeedDownloader : public QObject {
     explicit FeedDownloader(QObject *parent = 0);
     virtual ~FeedDownloader();
 
+  public slots:
+    // Performs update of all feeds from the "feeds" parameter.
+    // New messages are downloaded for each feed and they
+    // are stored persistently in the database.
+    // Appropriate signals are emitted.
+    void updateFeeds(const QList<FeedsModelFeed*> &feeds);
+
   signals:
     // Emitted if feed updates started.
     void started();
@@ -32,13 +39,6 @@ class FeedDownloader : public QObject {
     // and "total" number indicates total number of feeds
     // which are in the initial queue.
     void progress(FeedsModelFeed *feed, int current, int total);
-
-  public slots:
-    // Performs update of all feeds from the "feeds" parameter.
-    // New messages are downloaded for each feed and they
-    // are stored persistently in the database.
-    // Appropriate signals are emitted.
-    void updateFeeds(const QList<FeedsModelFeed*> &feeds);
 };
 
 #endif // FEEDDOWNLOADER_H
