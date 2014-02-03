@@ -131,6 +131,21 @@ void FormStandardFeedDetails::onAuthenticationSwitched() {
   onPasswordChanged(m_ui->m_txtPassword->lineEdit()->text());
 }
 
+void FormStandardFeedDetails::onAutoUpdateTypeChanged(int new_index) {
+  FeedsModelStandardFeed::AutoUpdateType auto_update_type = static_cast<FeedsModelStandardFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
+
+  switch (auto_update_type) {
+    case FeedsModelStandardFeed::DontAutoUpdate:
+    case FeedsModelStandardFeed::DefaultAutpUpdate:
+      m_ui->m_spinAutoUpdateInterval->setEnabled(false);
+      break;
+
+    case FeedsModelStandardFeed::SpecificAutoUpdate:
+    default:
+      m_ui->m_spinAutoUpdateInterval->setEnabled(true);
+  }
+}
+
 void FormStandardFeedDetails::checkOkButtonEnabled() {
   LineEditWithStatus::StatusType title_status = m_ui->m_txtTitle->status();
   LineEditWithStatus::StatusType url_status = m_ui->m_txtUrl->status();
@@ -182,6 +197,8 @@ void FormStandardFeedDetails::apply() {
   new_feed->setPasswordProtected(m_ui->m_gbAuthentication->isChecked());
   new_feed->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
+  new_feed->setAutoUpdateType(static_cast<FeedsModelStandardFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+  new_feed->setAutoUpdateInterval(m_ui->m_spinAutoUpdateInterval->value());
   new_feed->setParent(parent);
 
   if (m_editableFeed == NULL) {
@@ -240,6 +257,8 @@ void FormStandardFeedDetails::createConnections() {
           this, SLOT(onPasswordChanged(QString)));
   connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)),
           this, SLOT(onAuthenticationSwitched()));
+  connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)),
+          this, SLOT(onAutoUpdateTypeChanged(int)));
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
@@ -260,6 +279,8 @@ void FormStandardFeedDetails::setEditableFeed(FeedsModelStandardFeed *editable_f
   m_ui->m_txtUsername->lineEdit()->setText(editable_feed->username());
   m_ui->m_txtPassword->lineEdit()->setText(editable_feed->password());
   m_ui->m_txtUrl->lineEdit()->setText(editable_feed->url());
+  m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue((int) editable_feed->autoUpdateType())));
+  m_ui->m_spinAutoUpdateInterval->setValue(editable_feed->autoUpdateInterval());
 }
 
 void FormStandardFeedDetails::initialize() {
@@ -330,6 +351,12 @@ void FormStandardFeedDetails::initialize() {
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_iconMenu->addAction(m_actionNoIcon);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
+
+  // Setup auto-update options.
+  m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) FeedsModelStandardFeed::DontAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) FeedsModelStandardFeed::DefaultAutpUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) FeedsModelStandardFeed::SpecificAutoUpdate));
 
   // Set tab order.
   setTabOrder(m_ui->m_buttonBox, m_ui->m_cmbParentCategory);

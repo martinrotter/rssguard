@@ -23,22 +23,23 @@
 #define APP_VERSION         "@APP_VERSION@"
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
 
-#define DEFAULT_FEED_ENCODING       "UTF-8"
-#define URL_REGEXP                  "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
-#define USER_AGENT_HTTP_HEADER      "User-Agent"
-#define TEXT_TITLE_LIMIT            30
-#define MAX_ZOOM_FACTOR             10.0
-#define ICON_SIZE_SETTINGS          16
-#define DATABASE_DRIVER             "QSQLITE"
-#define NO_PARENT_CATEGORY          -1
-#define TRAY_ICON_BUBBLE_TIMEOUT    15000
-#define KEY_MESSAGES_VIEW           "messages_view_column_"
-#define CLOSE_LOCK_TIMEOUT          3000
-#define DOWNLOAD_TIMEOUT            5000
-#define MESSAGES_VIEW_DEFAULT_COL   170
-#define ELLIPSIS_LENGTH             3
-#define MIN_CATEGORY_NAME_LENGTH    3
-#define INTERNAL_URL_NEWSPAPER      "@APP_LOW_NAME@:newspaper"
+#define DEFAULT_FEED_ENCODING           "UTF-8"
+#define URL_REGEXP                      "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
+#define USER_AGENT_HTTP_HEADER          "User-Agent"
+#define TEXT_TITLE_LIMIT                30
+#define MAX_ZOOM_FACTOR                 10.0
+#define ICON_SIZE_SETTINGS              16
+#define DATABASE_DRIVER                 "QSQLITE"
+#define NO_PARENT_CATEGORY              -1
+#define TRAY_ICON_BUBBLE_TIMEOUT        15000
+#define KEY_MESSAGES_VIEW               "messages_view_column_"
+#define CLOSE_LOCK_TIMEOUT              3000
+#define DOWNLOAD_TIMEOUT                5000
+#define MESSAGES_VIEW_DEFAULT_COL       170
+#define ELLIPSIS_LENGTH                 3
+#define MIN_CATEGORY_NAME_LENGTH        3
+#define INTERNAL_URL_NEWSPAPER          "@APP_LOW_NAME@:newspaper"
+#define DEFAULT_AUTO_UPDATE_INTERVAL    15
 
 #define APP_DB_INIT_FILE    "db_init.sql"
 #define APP_DB_INIT_MEMORY    "db_init_memory.sql"
@@ -88,18 +89,20 @@
 #define CAT_DB_TYPE_INDEX         6
 
 // Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
-#define FDS_DB_ID_INDEX           0
-#define FDS_DB_TITLE_INDEX        1
-#define FDS_DB_DESCRIPTION_INDEX  2
-#define FDS_DB_DCREATED_INDEX     3
-#define FDS_DB_ICON_INDEX         4
-#define FDS_DB_CATEGORY_INDEX     5
-#define FDS_DB_ENCODING_INDEX     6
-#define FDS_DB_URL_INDEX          7
-#define FDS_DB_PROTECTED_INDEX    8
-#define FDS_DB_USERNAME_INDEX     9
-#define FDS_DB_PASSWORD_INDEX     10
-#define FDS_DB_TYPE_INDEX         11
+#define FDS_DB_ID_INDEX               0
+#define FDS_DB_TITLE_INDEX            1
+#define FDS_DB_DESCRIPTION_INDEX      2
+#define FDS_DB_DCREATED_INDEX         3
+#define FDS_DB_ICON_INDEX             4
+#define FDS_DB_CATEGORY_INDEX         5
+#define FDS_DB_ENCODING_INDEX         6
+#define FDS_DB_URL_INDEX              7
+#define FDS_DB_PROTECTED_INDEX        8
+#define FDS_DB_USERNAME_INDEX         9
+#define FDS_DB_PASSWORD_INDEX         10
+#define FDS_DB_UPDATE_TYPE_INDEX      11
+#define FDS_DB_UPDATE_INTERVAL_INDEX  12
+#define FDS_DB_TYPE_INDEX             13
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

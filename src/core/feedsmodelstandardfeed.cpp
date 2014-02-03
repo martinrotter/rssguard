@@ -15,7 +15,9 @@
 
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)
-  : FeedsModelFeed(parent_item), m_autoUpdateInterval(-1) {
+  : FeedsModelFeed(parent_item),
+    m_autoUpdateType(DontAutoUpdate),
+    m_autoUpdateInterval(DEFAULT_AUTO_UPDATE_INTERVAL) {
 }
 
 FeedsModelStandardFeed::~FeedsModelStandardFeed() {
@@ -35,6 +37,8 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   feed->setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
   feed->setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
   feed->setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
+  feed->setAutoUpdateType(static_cast<FeedsModelStandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  feed->setAutoUpdateInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
   feed->updateCounts();
 
   return feed;
@@ -280,7 +284,3 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     qDebug("Transaction commit for message downloader failed.");
   }
 }
-
-
-
-

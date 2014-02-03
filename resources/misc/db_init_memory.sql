@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS Feeds (
   protected       INTEGER(1)  NOT NULL CHECK (protected >= 0 AND protected <= 1),
   username        TEXT,
   password        TEXT,
+  update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
+  update_interval INTEGER     NOT NULL CHECK (update_interval >= 5) DEFAULT 15,
   type            INTEGER     NOT NULL CHECK (type >= 0)
 );
 -- !

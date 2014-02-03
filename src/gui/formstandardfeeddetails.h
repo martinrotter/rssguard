@@ -38,6 +38,7 @@ class FormStandardFeedDetails : public QDialog {
     void onUsernameChanged(const QString &new_username);
     void onPasswordChanged(const QString &new_password);
     void onAuthenticationSwitched();
+    void onAutoUpdateTypeChanged(int new_index);
 
     // Check if "OK" button can be enabled or not.
     void checkOkButtonEnabled();

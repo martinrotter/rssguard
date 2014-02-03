@@ -14,6 +14,12 @@ class Message;
 // So, parent item is either root item or category.
 class FeedsModelStandardFeed : public FeedsModelFeed {
   public:
+    enum AutoUpdateType {
+      DontAutoUpdate = 0,
+      DefaultAutpUpdate = 1,
+      SpecificAutoUpdate = 2
+    };
+
     // Constructors and destructors.
     explicit FeedsModelStandardFeed(FeedsModelRootItem *parent_item = NULL);
     virtual ~FeedsModelStandardFeed();
@@ -53,6 +59,14 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
       m_autoUpdateInterval = auto_update_interval;
     }
 
+    inline AutoUpdateType autoUpdateType() const {
+      return m_autoUpdateType;
+    }
+
+    inline void setAutoUpdateType(const AutoUpdateType &autoUpdateType) {
+      m_autoUpdateType = autoUpdateType;
+    }
+
     // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
 
@@ -63,6 +77,7 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     void updateMessages(const QList<Message>  &messages);
 
   private:
+    AutoUpdateType m_autoUpdateType;
     // NOTE: Number -1 means "do not auto-update", number
     // 0 means "auto-update with global interval" and number
     // > 0 means "auto-update with specific interval".
