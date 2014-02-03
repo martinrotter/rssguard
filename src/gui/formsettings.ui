@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -754,6 +754,34 @@ Authors of this application are NOT responsible for lost data.</string>
           <attribute name="title">
            <string>Feeds</string>
           </attribute>
+          <layout class="QFormLayout" name="formLayout_10">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="m_checkAutoUpdate">
+             <property name="text">
+              <string>Auto-update all feeds every</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="m_spinAutoUpdateInterval">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="suffix">
+              <string> minutes</string>
+             </property>
+             <property name="minimum">
+              <number>5</number>
+             </property>
+             <property name="maximum">
+              <number>240</number>
+             </property>
+             <property name="value">
+              <number>15</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="m_tabMessages">
           <attribute name="title">
@@ -922,6 +950,22 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>664</x>
      <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkAutoUpdate</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_spinAutoUpdateInterval</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>597</x>
+     <y>49</y>
     </hint>
    </hints>
   </connection>

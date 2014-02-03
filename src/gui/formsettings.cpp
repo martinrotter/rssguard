@@ -154,10 +154,15 @@ void FormSettings::selectBrowserExecutable() {
 
 void FormSettings::loadFeedsMessages() {
   m_ui->m_checkRemoveReadMessagesOnExit->setChecked(Settings::instance()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool());
+  m_ui->m_checkAutoUpdate->setChecked(Settings::instance()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool());
+  m_ui->m_spinAutoUpdateInterval->setValue(Settings::instance()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt());
 }
 
 void FormSettings::saveFeedsMessages() {
   Settings::instance()->setValue(APP_CFG_MESSAGES, "clear_read_on_exit", m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
+  Settings::instance()->setValue(APP_CFG_FEEDS, "auto_update_enabled", m_ui->m_checkAutoUpdate->isChecked());
+  Settings::instance()->setValue(APP_CFG_FEEDS, "auto_update_interval", m_ui->m_spinAutoUpdateInterval->value());
+
 }
 
 void FormSettings::displayProxyPassword(int state) {
