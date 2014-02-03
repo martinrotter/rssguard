@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>375</width>
-    <height>373</height>
+    <width>440</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,31 +106,50 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <widget class="QCheckBox" name="m_checkAutoUpdate">
-       <property name="text">
-        <string>Update each</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
      <item row="6" column="1">
-      <widget class="QSpinBox" name="m_spinAutoUpdate">
-       <property name="suffix">
-        <string> minutes</string>
-       </property>
-       <property name="minimum">
-        <number>5</number>
-       </property>
-       <property name="maximum">
-        <number>100</number>
-       </property>
-       <property name="value">
-        <number>15</number>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QComboBox" name="m_cmbAutoUpdateType">
+         <item>
+          <property name="text">
+           <string>Do not auto-update at all</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Auto-update using global interval</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Auto-update every</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="m_spinAutoUpdateInterval">
+         <property name="maximumSize">
+          <size>
+           <width>130</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="suffix">
+          <string> minutes</string>
+         </property>
+         <property name="minimum">
+          <number>5</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>15</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item row="7" column="0">
       <widget class="QLabel" name="m_lblIcon">
@@ -226,6 +245,13 @@
        </layout>
       </widget>
      </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Auto-update</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -266,22 +292,6 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_checkAutoUpdate</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_spinAutoUpdate</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>51</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>232</x>
-     <y>154</y>
     </hint>
    </hints>
   </connection>

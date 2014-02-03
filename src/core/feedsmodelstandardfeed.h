@@ -45,6 +45,14 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
       m_url = url;
     }
 
+    inline int autoUpdateInterval() const {
+      return m_autoUpdateInterval;
+    }
+
+    inline void setAutoUpdateInterval(int auto_update_interval) {
+      m_autoUpdateInterval = auto_update_interval;
+    }
+
     // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
 
@@ -55,6 +63,11 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     void updateMessages(const QList<Message>  &messages);
 
   private:
+    // NOTE: Number -1 means "do not auto-update", number
+    // 0 means "auto-update with global interval" and number
+    // > 0 means "auto-update with specific interval".
+    int m_autoUpdateInterval;
+
     QString m_encoding;
     QString m_url;
 };

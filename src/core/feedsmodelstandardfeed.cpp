@@ -15,7 +15,7 @@
 
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)
-  : FeedsModelFeed(parent_item) {
+  : FeedsModelFeed(parent_item), m_autoUpdateInterval(-1) {
 }
 
 FeedsModelStandardFeed::~FeedsModelStandardFeed() {
@@ -280,3 +280,7 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     qDebug("Transaction commit for message downloader failed.");
   }
 }
+
+
+
+
