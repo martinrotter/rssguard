@@ -365,7 +365,9 @@ void FormStandardFeedDetails::initialize() {
   setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtDescription->lineEdit());
   setTabOrder(m_ui->m_txtDescription->lineEdit(), m_ui->m_txtUrl->lineEdit());
   setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_cmbEncoding);
-  setTabOrder(m_ui->m_cmbEncoding, m_ui->m_btnIcon);
+  setTabOrder(m_ui->m_cmbEncoding, m_ui->m_cmbAutoUpdateType);
+  setTabOrder(m_ui->m_cmbAutoUpdateType, m_ui->m_spinAutoUpdateInterval);
+  setTabOrder(m_ui->m_spinAutoUpdateInterval, m_ui->m_btnIcon);
   setTabOrder(m_ui->m_btnIcon, m_ui->m_gbAuthentication);
   setTabOrder(m_ui->m_gbAuthentication, m_ui->m_txtUsername->lineEdit());
   setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
