@@ -68,7 +68,7 @@ class FeedsModel : public QAbstractItemModel {
 
     // Returns the list of updates which should be updated
     // according to auto-update schedule.
-    QList<FeedsModelFeed*> feedsForScheduledUpdate(int global_auto_update_minutes_remaining);
+    QList<FeedsModelFeed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);

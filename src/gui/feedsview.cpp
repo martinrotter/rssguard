@@ -54,25 +54,21 @@ void FeedsView::quit() {
 }
 
 void FeedsView::updateAutoUpdateStatus() {
-  // Update intervals.
+  // Restore global intervals.
+  // NOTE: Specific per-feed interval are left intact.
   m_globalAutoUpdateInitialInterval = Settings::instance()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
   m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
+  m_globalAutoUpdateEnabled = Settings::instance()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool();
 
-  // Start/stop the timer as needed.
-  if (Settings::instance()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool()) {
-    if (!m_autoUpdateTimer->isActive()) {
-      m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
-      m_autoUpdateTimer->start();
+  // Start global auto-update timer if it is not running yet.
+  // NOTE: The timer must run even if global auto-update
+  // is not enabled because user can still enable auto-update
+  // for individual feeds.
+  if (!m_autoUpdateTimer->isActive()) {
+    m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
+    m_autoUpdateTimer->start();
 
-      qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
-    }
-  }
-  else {
-    if (m_autoUpdateTimer->isActive()) {
-      m_autoUpdateTimer->stop();
-
-      qDebug("Auto-update timer stopped.");
-    }
+    qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
   }
 }
 
@@ -151,9 +147,11 @@ void FeedsView::executeNextAutoUpdate() {
     return;
   }
 
-  // If this reaches less than zero, then feeds with global auto-update interval should
-  // be updated.
-  if (--m_globalAutoUpdateRemainingInterval < 0) {
+  // If global auto-update is enabled
+  // and its interval counter reached zero,
+  // then we need to restore it.
+  if (m_globalAutoUpdateEnabled &&
+      --m_globalAutoUpdateRemainingInterval < 0) {
     // We should start next auto-update interval.
     m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
   }
@@ -163,7 +161,7 @@ void FeedsView::executeNextAutoUpdate() {
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
-  QList<FeedsModelFeed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateRemainingInterval);
+  QList<FeedsModelFeed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateRemainingInterval == 0);
 
   if (feeds_for_update.isEmpty()) {
     // No feeds are scheduled for update now, unlock the master lock.

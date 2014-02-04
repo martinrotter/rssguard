@@ -144,6 +144,7 @@ class FeedsView : public QTreeView {
 
     // Auto-update stuff.
     QTimer *m_autoUpdateTimer;
+    bool m_globalAutoUpdateEnabled;
     int m_globalAutoUpdateInitialInterval;
     int m_globalAutoUpdateRemainingInterval;
 };

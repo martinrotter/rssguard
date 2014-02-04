@@ -389,7 +389,7 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
   return true;
 }
 
-QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(int global_auto_update_minutes_remaining) {
+QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<FeedsModelFeed*> feeds_for_update;
 
   foreach (FeedsModelFeed *feed, allFeeds()) {
@@ -401,7 +401,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(int global_auto_updat
         continue;
 
       case FeedsModelStandardFeed::DefaultAutoUpdate:
-        if (global_auto_update_minutes_remaining == 0) {
+        if (auto_update_now) {
           feeds_for_update.append(feed);
         }
 

@@ -78,15 +78,37 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
+        QString auto_update_string;
+
+        switch (m_autoUpdateType) {
+          case DontAutoUpdate:
+            auto_update_string = QObject::tr("does not use auto-update");
+            break;
+
+          case DefaultAutoUpdate:
+            auto_update_string = QObject::tr("uses global settings");
+            break;
+
+          case SpecificAutoUpdate:
+          default:
+            auto_update_string = QObject::tr("uses specific settings "
+                                             "(%n minute(s) to next auto-update)",
+                                             0,
+                                             m_autoUpdateRemainingInterval);
+            break;
+        }
+
         return QObject::tr("%1 (%2)\n"
                            "%3\n\n"
-                           "Encoding: %4").arg(m_title,
-                                               FeedsModelFeed::typeToString(m_type),
-                                               m_description,
-                                               m_encoding);
+                           "Encoding: %4\n"
+                           "Auto-update status: %5").arg(m_title,
+                                                         FeedsModelFeed::typeToString(m_type),
+                                                         m_description,
+                                                         m_encoding,
+                                                         auto_update_string);
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return QObject::tr("%n unread message(s).", "", countOfUnreadMessages());
+        return QObject::tr("%n unread message(s).", 0, countOfUnreadMessages());
       }
       else {
         return QVariant();
