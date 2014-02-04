@@ -436,6 +436,17 @@
     <string notr="true"/>
    </property>
   </action>
+  <action name="m_actionSwitchMainWindow">
+   <property name="text">
+    <string>Switch visibility of main window</string>
+   </property>
+   <property name="toolTip">
+    <string>Hides main window if it is visible and shows it if it is hidden.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

@@ -101,6 +101,8 @@ void FormMain::prepareMenus() {
 #endif
 
     // Add needed items to the menu.
+    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
+    m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
     m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
     m_trayMenu->addSeparator();
@@ -221,6 +223,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionImport->setIcon(icon_theme_factory->fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(icon_theme_factory->fromTheme("document-export"));
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
+  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
@@ -306,6 +309,7 @@ void FormMain::createConnections() {
 
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(triggered()), this, SLOT(switchFullscreenMode()));
+  connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
