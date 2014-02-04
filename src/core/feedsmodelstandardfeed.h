@@ -16,7 +16,7 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
   public:
     enum AutoUpdateType {
       DontAutoUpdate = 0,
-      DefaultAutpUpdate = 1,
+      DefaultAutoUpdate = 1,
       SpecificAutoUpdate = 2
     };
 
@@ -51,12 +51,15 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
       m_url = url;
     }
 
-    inline int autoUpdateInterval() const {
-      return m_autoUpdateInterval;
+    inline int autoUpdateInitialInterval() const {
+      return m_autoUpdateInitialInterval;
     }
 
-    inline void setAutoUpdateInterval(int auto_update_interval) {
-      m_autoUpdateInterval = auto_update_interval;
+    inline void setAutoUpdateInitialInterval(int auto_update_interval) {
+      // If new initial auto-update interval is set, then
+      // we should reset time that remains to the next auto-update.
+      m_autoUpdateInitialInterval = auto_update_interval;
+      m_autoUpdateRemainingInterval = auto_update_interval;
     }
 
     inline AutoUpdateType autoUpdateType() const {
@@ -65,6 +68,14 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
     inline void setAutoUpdateType(const AutoUpdateType &autoUpdateType) {
       m_autoUpdateType = autoUpdateType;
+    }
+
+    inline int autoUpdateRemainingInterval() const {
+      return m_autoUpdateRemainingInterval;
+    }
+
+    inline void setAutoUpdateRemainingInterval(int autoUpdateRemainingInterval) {
+      m_autoUpdateRemainingInterval = autoUpdateRemainingInterval;
     }
 
     // Loads standard feed object from given SQL record.
@@ -81,7 +92,8 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     // NOTE: Number -1 means "do not auto-update", number
     // 0 means "auto-update with global interval" and number
     // > 0 means "auto-update with specific interval".
-    int m_autoUpdateInterval;
+    int m_autoUpdateInitialInterval;
+    int m_autoUpdateRemainingInterval;
 
     QString m_encoding;
     QString m_url;

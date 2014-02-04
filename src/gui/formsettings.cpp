@@ -163,6 +163,7 @@ void FormSettings::saveFeedsMessages() {
   Settings::instance()->setValue(APP_CFG_FEEDS, "auto_update_enabled", m_ui->m_checkAutoUpdate->isChecked());
   Settings::instance()->setValue(APP_CFG_FEEDS, "auto_update_interval", m_ui->m_spinAutoUpdateInterval->value());
 
+  FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
 }
 
 void FormSettings::displayProxyPassword(int state) {

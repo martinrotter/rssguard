@@ -176,19 +176,10 @@ void FormMain::onSaveState(QSessionManager &manager) {
 void FormMain::onAboutToQuit() {
   // Make sure that we obtain close lock
   // BEFORE even trying to quit the application.
-  if (SystemFactory::instance()->applicationCloseLock()->tryLock(CLOSE_LOCK_TIMEOUT)) {
-    // Application obtained permission to close
-    // in a safety way.
-    qDebug("Close lock obtained safely.");
-  }
-  else {
-    // Request for write lock timed-out. This means
-    // that some critical action can be processed right now.
-    qDebug("Close lock timed-out.");
-  }
+  bool locked_safely = SystemFactory::instance()->applicationCloseLock()->tryLock(CLOSE_LOCK_TIMEOUT);
 
   qDebug("Cleaning up resources and saving application state.");
-  m_ui->m_tabWidget->feedMessageViewer()->quitDownloader();
+  m_ui->m_tabWidget->feedMessageViewer()->quit();
 
   if (Settings::instance()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
     m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
@@ -196,6 +187,20 @@ void FormMain::onAboutToQuit() {
 
   DatabaseFactory::instance()->saveMemoryDatabase();
   saveSize();
+
+  if (locked_safely) {
+    // Application obtained permission to close
+    // in a safety way.
+    qDebug("Close lock was obtained safely.");
+
+    // We locked the lock to exit peacefully, unlock it to avoid warnings.
+    SystemFactory::instance()->applicationCloseLock()->unlock();
+  }
+  else {
+    // Request for write lock timed-out. This means
+    // that some critical action can be processed right now.
+    qDebug("Close lock timed-out.");
+  }
 }
 
 bool FormMain::event(QEvent *event) {

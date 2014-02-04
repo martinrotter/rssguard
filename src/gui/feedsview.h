@@ -5,11 +5,13 @@
 
 #include "core/messagesmodel.h"
 #include "core/feedsmodel.h"
+#include "core/settings.h"
 
 
 class FeedsProxyModel;
 class FeedsModelFeed;
 class FeedsModelCategory;
+class QTimer;
 
 class FeedsView : public QTreeView {
     Q_OBJECT
@@ -26,6 +28,13 @@ class FeedsView : public QTreeView {
     inline FeedsModel *sourceModel() {
       return m_sourceModel;
     }
+
+    // Does necessary job before quitting this component.
+    void quit();
+
+    // Resets global auto-update intervals according to settings
+    // and starts/stop the timer as needed.
+    void updateAutoUpdateStatus();
 
     // Enables or disables sorting.
     void setSortingEnabled(bool enable);
@@ -44,7 +53,9 @@ class FeedsView : public QTreeView {
     // Feed updating.
     void updateAllFeeds();
     void updateSelectedFeeds();
-    void updateScheduledFeeds();
+
+    // Is executed when next auto-update round could be done.
+    void executeNextAutoUpdate();
 
     // Feed read/unread manipulators.
     void markSelectedFeedsReadStatus(int read);
@@ -130,6 +141,11 @@ class FeedsView : public QTreeView {
     QList<int> m_selectedFeeds;
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
+
+    // Auto-update stuff.
+    QTimer *m_autoUpdateTimer;
+    int m_globalAutoUpdateInitialInterval;
+    int m_globalAutoUpdateRemainingInterval;
 };
 
 #endif // FEEDSVIEW_H

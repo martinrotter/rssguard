@@ -66,6 +66,10 @@ class FeedsModel : public QAbstractItemModel {
     bool editStandardFeed(FeedsModelStandardFeed *original_feed,
                           FeedsModelStandardFeed *new_feed);
 
+    // Returns the list of updates which should be updated
+    // according to auto-update schedule.
+    QList<FeedsModelFeed*> feedsForScheduledUpdate(int global_auto_update_minutes_remaining);
+
     // Returns (undeleted) messages for given feeds.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);
 

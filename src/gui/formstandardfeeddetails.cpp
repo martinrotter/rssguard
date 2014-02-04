@@ -136,7 +136,7 @@ void FormStandardFeedDetails::onAutoUpdateTypeChanged(int new_index) {
 
   switch (auto_update_type) {
     case FeedsModelStandardFeed::DontAutoUpdate:
-    case FeedsModelStandardFeed::DefaultAutpUpdate:
+    case FeedsModelStandardFeed::DefaultAutoUpdate:
       m_ui->m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
@@ -198,7 +198,7 @@ void FormStandardFeedDetails::apply() {
   new_feed->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
   new_feed->setAutoUpdateType(static_cast<FeedsModelStandardFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-  new_feed->setAutoUpdateInterval(m_ui->m_spinAutoUpdateInterval->value());
+  new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
   new_feed->setParent(parent);
 
   if (m_editableFeed == NULL) {
@@ -280,7 +280,7 @@ void FormStandardFeedDetails::setEditableFeed(FeedsModelStandardFeed *editable_f
   m_ui->m_txtPassword->lineEdit()->setText(editable_feed->password());
   m_ui->m_txtUrl->lineEdit()->setText(editable_feed->url());
   m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue((int) editable_feed->autoUpdateType())));
-  m_ui->m_spinAutoUpdateInterval->setValue(editable_feed->autoUpdateInterval());
+  m_ui->m_spinAutoUpdateInterval->setValue(editable_feed->autoUpdateInitialInterval());
 }
 
 void FormStandardFeedDetails::initialize() {
@@ -355,7 +355,7 @@ void FormStandardFeedDetails::initialize() {
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
   m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) FeedsModelStandardFeed::DontAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) FeedsModelStandardFeed::DefaultAutpUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) FeedsModelStandardFeed::DefaultAutoUpdate));
   m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) FeedsModelStandardFeed::SpecificAutoUpdate));
 
   // Set tab order.

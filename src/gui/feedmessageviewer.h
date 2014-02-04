@@ -14,7 +14,6 @@ class FeedsModelFeed;
 class QToolBar;
 class QSplitter;
 class QProgressBar;
-class QTimer;
 
 class FeedMessageViewer : public TabContent {
     Q_OBJECT
@@ -40,8 +39,9 @@ class FeedMessageViewer : public TabContent {
     void saveSize();
     void loadSize();
 
-    // Destroys worker/feed downloader thread.
-    void quitDownloader();
+    // Destroys worker/feed downloader thread and
+    // stops any child widgets/workers.
+    void quit();
 
   protected slots:
     // Updates counts of messages for example in tray icon.
@@ -74,8 +74,6 @@ class FeedMessageViewer : public TabContent {
 
     QThread *m_feedDownloaderThread;
     FeedDownloader *m_feedDownloader;
-
-    QTimer *m_autoUpdateTimer;
 };
 
 #endif // FEEDMESSAGEVIEWER_H

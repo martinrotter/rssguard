@@ -20,22 +20,60 @@
 #include <QContextMenuEvent>
 #include <QPointer>
 #include <QPainter>
-#include <QReadWriteLock>
+#include <QTimer>
 
 
 FeedsView::FeedsView(QWidget *parent)
   : QTreeView(parent),
     m_contextMenuCategoriesFeeds(NULL),
-    m_contextMenuEmptySpace(NULL) {
+    m_contextMenuEmptySpace(NULL),
+    m_autoUpdateTimer(new QTimer(this)) {
+  // Allocate models.
   m_proxyModel = new FeedsProxyModel(this);
   m_sourceModel = m_proxyModel->sourceModel();
 
+  // Timed actions.
+  connect(m_autoUpdateTimer, SIGNAL(timeout()),
+          this, SLOT(executeNextAutoUpdate()));
+
   setModel(m_proxyModel);
   setupAppearance();
+
+  // Setup the timer.
+  updateAutoUpdateStatus();
 }
 
 FeedsView::~FeedsView() {
   qDebug("Destroying FeedsView instance.");
+}
+
+void FeedsView::quit() {
+  if (m_autoUpdateTimer->isActive()) {
+    m_autoUpdateTimer->stop();
+  }
+}
+
+void FeedsView::updateAutoUpdateStatus() {
+  // Update intervals.
+  m_globalAutoUpdateInitialInterval = Settings::instance()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
+  m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
+
+  // Start/stop the timer as needed.
+  if (Settings::instance()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool()) {
+    if (!m_autoUpdateTimer->isActive()) {
+      m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
+      m_autoUpdateTimer->start();
+
+      qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
+    }
+  }
+  else {
+    if (m_autoUpdateTimer->isActive()) {
+      m_autoUpdateTimer->stop();
+
+      qDebug("Auto-update timer stopped.");
+    }
+  }
 }
 
 void FeedsView::setSortingEnabled(bool enable) {
@@ -102,20 +140,38 @@ void FeedsView::updateSelectedFeeds() {
   }
 }
 
-void FeedsView::updateScheduledFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
-    // Update master lock obtained, select
-    // feeds which should be updated and
-    // request their update.
-    // TODO: emit feedsUpdateRequested(selectedFeeds());
-    // tady vybrat feedy ktery se maj updatovat ted
+void FeedsView::executeNextAutoUpdate() {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock() &&
+      SystemTrayIcon::isSystemTrayActivated()) {
+    SystemTrayIcon::instance()->showMessage(tr("Cannot update scheduled items"),
+                                            tr("You cannot update scheduled items because another feed update is ongoing."),
+                                            QSystemTrayIcon::Warning);
+
+    // Cannot update, quit.
+    return;
+  }
+
+  // If this reaches less than zero, then feeds with global auto-update interval should
+  // be updated.
+  if (--m_globalAutoUpdateRemainingInterval < 0) {
+    // We should start next auto-update interval.
+    m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
+  }
+
+  qDebug("Starting auto-update event, pass %d/%d.",
+         m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
+
+  // Pass needed interval data and lets the model decide which feeds
+  // should be updated in this pass.
+  QList<FeedsModelFeed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateRemainingInterval);
+
+  if (feeds_for_update.isEmpty()) {
+    // No feeds are scheduled for update now, unlock the master lock.
+    SystemFactory::instance()->applicationCloseLock()->unlock();
   }
   else {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update scheduled items"),
-                                              tr("You cannot update scheduled items because another feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
-    }
+    // Request update for given feeds.
+    emit feedsUpdateRequested(feeds_for_update);
   }
 }
 

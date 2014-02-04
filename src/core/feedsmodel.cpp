@@ -287,7 +287,7 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
   query_add_feed.bindValue(":username", feed->username());
   query_add_feed.bindValue(":password", feed->password());
   query_add_feed.bindValue(":update_type", (int) feed->autoUpdateType());
-  query_add_feed.bindValue(":update_interval", feed->autoUpdateInterval());
+  query_add_feed.bindValue(":update_interval", feed->autoUpdateInitialInterval());
   query_add_feed.bindValue(":type", (int) FeedsModelCategory::Standard);
 
   if (!query_add_feed.exec()) {
@@ -338,7 +338,7 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
   query_update_feed.bindValue(":username", new_feed->username());
   query_update_feed.bindValue(":password", new_feed->password());
   query_update_feed.bindValue(":update_type", (int) new_feed->autoUpdateType());
-  query_update_feed.bindValue(":update_interval", new_feed->autoUpdateInterval());
+  query_update_feed.bindValue(":update_interval", new_feed->autoUpdateInitialInterval());
   query_update_feed.bindValue(":type", new_feed->type());
   query_update_feed.bindValue(":id", original_feed->id());
 
@@ -358,7 +358,7 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
   original_feed->setUsername(new_feed->username());
   original_feed->setPassword(new_feed->password());
   original_feed->setAutoUpdateType(new_feed->autoUpdateType());
-  original_feed->setAutoUpdateInterval(new_feed->autoUpdateInterval());
+  original_feed->setAutoUpdateInitialInterval(new_feed->autoUpdateInitialInterval());
   original_feed->setType(new_feed->type());
 
   if (original_parent != new_parent) {
@@ -387,6 +387,47 @@ bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
 
   // Editing is done.
   return true;
+}
+
+QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(int global_auto_update_minutes_remaining) {
+  QList<FeedsModelFeed*> feeds_for_update;
+
+  foreach (FeedsModelFeed *feed, allFeeds()) {
+    FeedsModelStandardFeed *std_feed = static_cast<FeedsModelStandardFeed*>(feed);
+
+    switch (std_feed->autoUpdateType()) {
+      case FeedsModelStandardFeed::DontAutoUpdate:
+        // Do not auto-update this feed ever.
+        continue;
+
+      case FeedsModelStandardFeed::DefaultAutoUpdate:
+        if (global_auto_update_minutes_remaining == 0) {
+          feeds_for_update.append(feed);
+        }
+
+        break;
+
+      case FeedsModelStandardFeed::SpecificAutoUpdate:
+      default:
+        int remaining_interval = std_feed->autoUpdateRemainingInterval();
+
+        if (--remaining_interval <= 0) {
+          // Interval of this feed passed, include this feed in the output list
+          // and reset the interval.
+          feeds_for_update.append(feed);
+          std_feed->setAutoUpdateRemainingInterval(std_feed->autoUpdateInitialInterval());
+        }
+        else {
+          // Interval did not pass, set new decremented interval and do NOT
+          // include this feed in the output list.
+          std_feed->setAutoUpdateRemainingInterval(remaining_interval);
+        }
+
+        break;
+    }
+  }
+
+  return feeds_for_update;
 }
 
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {

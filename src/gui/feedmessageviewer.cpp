@@ -27,7 +27,6 @@
 #include <QThread>
 #include <QProgressBar>
 #include <QStatusBar>
-#include <QTimer>
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
@@ -37,23 +36,13 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this)),
     m_feedDownloaderThread(new QThread()),
-    m_feedDownloader(new FeedDownloader()),
-    m_autoUpdateTimer(new QTimer(this))  {
+    m_feedDownloader(new FeedDownloader()) {
   initialize();
   initializeViews();
   createConnections();
 
   // Start the feed downloader thread.
   m_feedDownloaderThread->start();
-
-  // Start the auto-update timer.
-  // TODO: co kdyz update bude trvat dele nez minutu?
-  // asi udelat metodu pro update v teto tride
-  // ta obali update v m_feedsView
-  // a nastavit jako single shot -> true nejak nevim
-  m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
-  m_autoUpdateTimer->setSingleShot(false);
-  m_autoUpdateTimer->start();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
@@ -100,7 +89,10 @@ void FeedMessageViewer::loadSize() {
                                                  default_msg_section_size).toInt());
 }
 
-void FeedMessageViewer::quitDownloader() {
+void FeedMessageViewer::quit() {
+  // Quit the feeds view (stops auto-update timer etc.).
+  m_feedsView->quit();
+
   qDebug("Quitting feed downloader thread.");
   m_feedDownloaderThread->quit();
 
@@ -140,10 +132,6 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
 
 void FeedMessageViewer::createConnections() {
   FormMain *form_main = FormMain::instance();
-
-  // Timed actions.
-  connect(m_autoUpdateTimer, SIGNAL(timeout()),
-          m_feedsView, SLOT(updateScheduledFeeds()));
 
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()),
