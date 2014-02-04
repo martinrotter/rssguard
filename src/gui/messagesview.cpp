@@ -51,7 +51,6 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-  int row_count;
 
   // Reload the model now.
   m_sourceModel->select();

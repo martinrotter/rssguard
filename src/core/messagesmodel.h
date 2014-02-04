@@ -72,8 +72,6 @@ class MessagesModel : public QSqlTableModel {
     bool setBatchMessagesRead(const QModelIndexList &messages, int read);
 
     // Fetches ALL available data to the model.
-    // NOTE: This is almost always needed when sorting
-    // and makes the model more predictable.
     void fetchAll();
 
     // Loads messages of given feeds.

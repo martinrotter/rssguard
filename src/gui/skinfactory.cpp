@@ -41,9 +41,8 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
   }
   else {
-    // TODO: Change this to qFatal once code is stable.
-    qWarning("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
-             qPrintable(skin_name_from_settings));
+    qFatal("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
+           qPrintable(skin_name_from_settings));
   }
 }
 
@@ -98,8 +97,8 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
 
 QString SkinFactory::selectedSkinName() {
   return Settings::instance()->value(APP_CFG_GUI,
-                                        "skin",
-                                        APP_SKIN_DEFAULT).toString();
+                                     "skin",
+                                     APP_SKIN_DEFAULT).toString();
 }
 
 Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
@@ -147,7 +146,6 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
   skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
 
   // Obtain other information.
-  // NOTE: Probably fixed bug with "active skin" on Windows.
   skin.m_baseName = QString(skin_name).replace(QDir::separator(), '/');
 
   // Free resources.
@@ -179,7 +177,7 @@ QList<Skin> SkinFactory::installedSkins() {
     foreach (const QString &skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.
       Skin skin_info = skinInfo(base_directory + QDir::separator() + skin_file,
-                                   &skin_load_ok);
+                                &skin_load_ok);
 
       if (skin_load_ok) {
         skins.append(skin_info);

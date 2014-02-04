@@ -13,9 +13,9 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Describes possible types of feeds.
     // NOTE: This is equivalent to attribute Feeds(type).
     enum Type {
-      StandardRss0X = 0,
-      StandardRss2X = 1,
-      StandardRdf   = 2,
+      StandardRss0X   = 0,
+      StandardRss2X   = 1,
+      StandardRdf     = 2,
       StandardAtom10  = 3
     };
 

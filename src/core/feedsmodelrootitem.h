@@ -123,7 +123,6 @@ class FeedsModelRootItem {
     }
 
     // Each item has its title.
-    // NOTE: This is note entirely true for the root item.
     inline QString title() const {
       return m_title;
     }

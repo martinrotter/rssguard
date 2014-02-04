@@ -64,7 +64,7 @@ class DatabaseFactory : public QObject {
     bool m_inMemoryInitialized;
 
     // Is true when user selected in-memory database.
-    // NOTE: This is set only on application startup.
+    // NOTE: This can be changed only on application startup.
     bool m_inMemoryEnabled;
 
     // Private singleton value.

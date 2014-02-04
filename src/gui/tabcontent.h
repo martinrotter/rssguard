@@ -17,7 +17,7 @@ class TabContent : public QWidget {
 
     // Gets/sets current index of this TabContent.
     // NOTE: This is the index under which this object lies
-    // in some TabWidget instance.
+    // in parent tab widget.
     inline virtual int index() const {
       return m_index;
     }

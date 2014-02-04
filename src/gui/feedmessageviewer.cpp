@@ -200,7 +200,7 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
   connect(form_main->m_ui->m_actionMarkSelectedFeedsAsUnread,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
-  connect(form_main->m_ui->m_actionClearFeeds,
+  connect(form_main->m_ui->m_actionClearSelectedFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
   connect(form_main->m_ui->m_actionUpdateSelectedFeedsCategories,
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
@@ -235,7 +235,7 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addSeparator();
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearFeeds);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearSelectedFeeds);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);

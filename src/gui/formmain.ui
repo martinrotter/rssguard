@@ -112,7 +112,7 @@
     <addaction name="m_actionMarkAllFeedsRead"/>
     <addaction name="m_actionMarkSelectedFeedsAsRead"/>
     <addaction name="m_actionMarkSelectedFeedsAsUnread"/>
-    <addaction name="m_actionClearFeeds"/>
+    <addaction name="m_actionClearSelectedFeeds"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -346,26 +346,20 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionClearFeeds">
+  <action name="m_actionClearSelectedFeeds">
    <property name="text">
     <string>Clear selected items</string>
    </property>
    <property name="toolTip">
     <string>Remove all messages from selected feeds.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
   <action name="m_actionAddStandardFeed">
    <property name="text">
-    <string>Standard &amp;feed</string>
+    <string>New standard &amp;feed</string>
    </property>
    <property name="toolTip">
     <string>Add new standard feed.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
@@ -403,13 +397,10 @@
   </action>
   <action name="m_actionAddStandardCategory">
    <property name="text">
-    <string>Standard &amp;category</string>
+    <string>New standard &amp;category</string>
    </property>
    <property name="toolTip">
     <string>Add new standard category.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionNoActions">

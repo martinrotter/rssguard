@@ -62,7 +62,7 @@ QList<QAction*> FormMain::allActions() {
   // Add basic actions.
   actions << m_ui->m_actionImport << m_ui->m_actionExport <<
              m_ui->m_actionSettings << m_ui->m_actionQuit <<
-             m_ui->m_actionFullscreen;
+             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard;
 
   // Add web browser actions
   actions << m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
@@ -72,9 +72,10 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally <<
              m_ui->m_actionOpenSelectedSourceArticlesInternally <<
              m_ui->m_actionOpenSelectedMessagesInternally <<
+             m_ui->m_actionMarkAllFeedsRead <<
              m_ui->m_actionMarkSelectedFeedsAsRead <<
              m_ui->m_actionMarkSelectedFeedsAsUnread <<
-             m_ui->m_actionClearFeeds <<
+             m_ui->m_actionClearSelectedFeeds <<
              m_ui->m_actionMarkSelectedMessagesAsRead <<
              m_ui->m_actionMarkSelectedMessagesAsUnread <<
              m_ui->m_actionSwitchImportanceOfSelectedMessages <<
@@ -82,7 +83,10 @@ QList<QAction*> FormMain::allActions() {
              m_ui->m_actionUpdateAllFeeds <<
              m_ui->m_actionUpdateSelectedFeedsCategories <<
              m_ui->m_actionEditSelectedFeedCategory <<
-             m_ui->m_actionDeleteSelectedFeedCategory;
+             m_ui->m_actionDeleteSelectedFeedCategory <<
+             m_ui->m_actionViewSelectedItemsNewspaperMode <<
+             m_ui->m_actionAddStandardCategory <<
+             m_ui->m_actionAddStandardFeed;
 
   return actions;
 }
@@ -228,7 +232,7 @@ void FormMain::setupIcons() {
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme("item-new"));
   m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme("item-update-all"));
   m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(icon_theme_factory->fromTheme("item-update-selected"));
-  m_ui->m_actionClearFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
+  m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-remove"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionAddStandardCategory->setIcon(icon_theme_factory->fromTheme("item-new"));

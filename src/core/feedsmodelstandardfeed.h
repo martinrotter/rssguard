@@ -89,9 +89,6 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
   private:
     AutoUpdateType m_autoUpdateType;
-    // NOTE: Number -1 means "do not auto-update", number
-    // 0 means "auto-update with global interval" and number
-    // > 0 means "auto-update with specific interval".
     int m_autoUpdateInitialInterval;
     int m_autoUpdateRemainingInterval;
 

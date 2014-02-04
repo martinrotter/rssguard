@@ -563,10 +563,6 @@ QStringList FeedsModel::textualFeedIds(const QList<FeedsModelFeed*> &feeds) {
 }
 
 void FeedsModel::reloadWholeLayout() {
-  // NOTE: Take a look at docs about this.
-  // I have tested that this is LITTLE slower than code above,
-  // but it is really SIMPLER, so if code above will be buggy, then
-  // we can use this.
   emit layoutAboutToBeChanged();
   emit layoutChanged();
 }
@@ -607,7 +603,6 @@ void FeedsModel::loadFromDatabase() {
 
       case FeedsModelCategory::Feedly:
       default:
-        // NOTE: Not yet implemented.
         break;
     }
   }

@@ -91,8 +91,6 @@ class FeedsModel : public QAbstractItemModel {
     // Returns list of feeds which belong to given indexes.
     // NOTE: If index is "category", then all child feeds are contained in the
     // result.
-    // NOTE: This is particularly useful for displaying messages of
-    // selected feeds.
     QList<FeedsModelFeed*> feedsForIndexes(const QModelIndexList &indexes);
 
     // Returns ALL CHILD feeds contained within single index.
