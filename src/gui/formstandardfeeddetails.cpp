@@ -40,8 +40,7 @@ FormStandardFeedDetails::~FormStandardFeedDetails() {
 int FormStandardFeedDetails::exec(FeedsModelStandardFeed *input_feed) {
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(),
-                 m_feedsModel->rootItem(),
-                 input_feed);
+                 m_feedsModel->rootItem());
 
   if (input_feed == NULL) {
     // User is adding new category.
@@ -374,8 +373,7 @@ void FormStandardFeedDetails::initialize() {
 }
 
 void FormStandardFeedDetails::loadCategories(const QList<FeedsModelCategory*> categories,
-                                             FeedsModelRootItem *root_item,
-                                             FeedsModelStandardFeed *input_feed) {
+                                             FeedsModelRootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

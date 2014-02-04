@@ -60,8 +60,7 @@ class FormStandardFeedDetails : public QDialog {
 
     // Loads categories into the dialog from the model.
     void loadCategories(const QList<FeedsModelCategory*> categories,
-                        FeedsModelRootItem *root_item,
-                        FeedsModelStandardFeed *input_feed);
+                        FeedsModelRootItem *root_item);
 
   private:
     Ui::FormStandardFeedDetails *m_ui;

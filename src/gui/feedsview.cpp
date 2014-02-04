@@ -172,6 +172,12 @@ void FeedsView::executeNextAutoUpdate() {
   else {
     // Request update for given feeds.
     emit feedsUpdateRequested(feeds_for_update);
+
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Scheduled update started"),
+                                              tr("RSS Guard is performing scheduled update of some feeds."),
+                                              QSystemTrayIcon::Information);
+    }
   }
 }
 

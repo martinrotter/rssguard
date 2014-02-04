@@ -78,13 +78,6 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
     scrollTo(current_index);
     reselectIndexes(selected_indexes);
   }
-  else if ((row_count = m_proxyModel->rowCount()) > 0) {
-    current_index = m_proxyModel->index(row_count - 1, 0);
-
-    setCurrentIndex(current_index);
-    scrollTo(current_index);
-    reselectIndexes(QModelIndexList() << current_index);
-  }
   else {
     // Messages were probably removed from the model, nothing can
     // be selected and no message can be displayed.
