@@ -10,6 +10,8 @@ namespace Ui {
   class FormStandardFeedDetails;
 }
 
+// TODO: http://fvicon.com/
+
 class FeedsModel;
 class FeedsModelStandardFeed;
 class FeedsModelCategory;
