@@ -44,6 +44,17 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   return feed;
 }
 
+FeedsModelStandardFeed *FeedsModelStandardFeed::guessFeed(const QString &url,
+                                                          const QString &username,
+                                                          const QString &password) {
+  // TODO: http://www.google.com/s2/favicons?domain=root.cz
+  // ZISKAT ikonu (napsat taky aby se dala ikona pro
+  // dane url ziskavat taky samostatne
+  // pak ziskat informace o kanalu
+
+  return NULL;
+}
+
 QVariant FeedsModelStandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:

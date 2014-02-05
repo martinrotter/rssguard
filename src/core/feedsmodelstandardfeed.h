@@ -81,6 +81,13 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     // Loads standard feed object from given SQL record.
     static FeedsModelStandardFeed *loadFromRecord(const QSqlRecord &record);
 
+    // Tries to guess feed hidden under given URL
+    // and uses given credentials.
+    // Returns NULL if something failed.
+    static FeedsModelStandardFeed *guessFeed(const QString &url,
+                                             const QString &username,
+                                             const QString &password);
+
   protected:
     // Persistently stores given messages into the database
     // and updates existing messages if newer version is
