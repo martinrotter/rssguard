@@ -74,6 +74,8 @@
      <string>&amp;Tools</string>
     </property>
     <addaction name="m_actionSettings"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionDefragmentDatabase"/>
    </widget>
    <widget class="QMenu" name="m_menuWebBrowser">
     <property name="title">
@@ -445,6 +447,14 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionDefragmentDatabase">
+   <property name="text">
+    <string>Defragment database</string>
+   </property>
+   <property name="toolTip">
+    <string>Defragment database file so that its size decreases.</string>
    </property>
   </action>
  </widget>

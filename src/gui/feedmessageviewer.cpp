@@ -1,6 +1,7 @@
 #include "gui/feedmessageviewer.h"
 
 #include "core/settings.h"
+#include "core/databasefactory.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodelstandardfeed.h"
@@ -216,6 +217,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
   connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
+  connect(form_main->m_ui->m_actionDefragmentDatabase,
+          SIGNAL(triggered()), this, SLOT(vacuumDatabase()));
 }
 
 void FeedMessageViewer::initialize() {
@@ -278,4 +281,58 @@ void FeedMessageViewer::initializeViews() {
 
   // Set layout as active.
   setLayout(central_layout);
+}
+
+
+void FeedMessageViewer::vacuumDatabase() {
+  bool is_tray_activated = SystemTrayIcon::isSystemTrayActivated();
+
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    if (is_tray_activated) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot defragment database"),
+                                              tr("Database cannot be defragmented because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot defragment database"),
+                       tr("Database cannot be defragmented because feed update is ongoing."));
+    }
+
+    // Thus, cannot delete and quit the method.
+    return;
+  }
+
+  if (DatabaseFactory::instance()->vacuumDatabase()) {
+    if (is_tray_activated) {
+      SystemTrayIcon::instance()->showMessage(tr("Database defragmented"),
+                                              tr("Database was successfully defragmented."),
+                                              QSystemTrayIcon::Information);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Information,
+                       tr("Database defragmented"),
+                       tr("Database was successfully defragmented."));
+    }
+  }
+  else {
+    if (is_tray_activated) {
+      SystemTrayIcon::instance()->showMessage(tr("Database was not defragmented"),
+                                              tr("Database was not defragmented, try again later."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Database was not defragmented"),
+                       tr("Database was not defragmented, try again later."));
+    }
+  }
+
+  SystemFactory::instance()->applicationCloseLock()->unlock();
 }

@@ -43,6 +43,9 @@ class FeedMessageViewer : public TabContent {
     // stops any child widgets/workers.
     void quit();
 
+  public slots:
+    void vacuumDatabase();
+
   protected slots:
     // Updates counts of messages for example in tray icon.
     void updateTrayIconStatus(int unread_messages, int total_messages);

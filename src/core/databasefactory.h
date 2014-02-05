@@ -41,6 +41,16 @@ class DatabaseFactory : public QObject {
     // Sets m_inMemoryEnabled according to user settings.
     void determineInMemoryDatabase();
 
+    // Performs "VACUUM" on the database and
+    // returns true of operation succeeded.
+    bool vacuumDatabase();
+
+    // Returns whether in-memory database feature is currently
+    // used.
+    inline bool usingInMemoryDatabase() const {
+      return m_inMemoryEnabled;
+    }
+
     // Singleton getter.
     static DatabaseFactory *instance();
 

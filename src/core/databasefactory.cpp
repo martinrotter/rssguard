@@ -221,6 +221,7 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
   return database;
 }
 
+
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
                                          DesiredType desired_type) {
   if (desired_type == DatabaseFactory::StrictlyInMemory ||
@@ -330,4 +331,11 @@ void DatabaseFactory::determineInMemoryDatabase() {
 
   qDebug("Working database source was determined as %s.",
          m_inMemoryEnabled ? "in-memory database" : "file-based database");
+}
+
+bool DatabaseFactory::vacuumDatabase() {
+  QSqlDatabase database = connection(objectName(), FromSettings);
+  QSqlQuery query_vacuum(database);
+
+  return query_vacuum.exec("VACUUM");
 }
