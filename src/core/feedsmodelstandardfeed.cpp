@@ -129,16 +129,13 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 
 void FeedsModelStandardFeed::update() {
   QByteArray feed_contents;
-  int download_timeout =  Settings::instance()->value(APP_CFG_FEEDS,
-                                                      "download_timeout",
-                                                      DOWNLOAD_TIMEOUT).toInt();
-
-  // TODO: Provide download time-measures debugging
-  // outputs here.
+  int download_timeout = Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
   QNetworkReply::NetworkError download_result = NetworkFactory::downloadFeedFile(url(),
                                                                                  download_timeout,
                                                                                  feed_contents,
-                                                                                 this);
+                                                                                 passwordProtected(),
+                                                                                 username(),
+                                                                                 password());
 
   if (download_result != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).",

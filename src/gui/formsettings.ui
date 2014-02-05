@@ -102,8 +102,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>564</width>
-            <height>363</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -180,8 +180,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>558</width>
-                <height>337</height>
+                <width>167</width>
+                <height>219</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -778,6 +778,32 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
              <property name="value">
               <number>15</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Feed connection timeout</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QSpinBox" name="m_spinFeedUpdateTimeout">
+             <property name="toolTip">
+              <string>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</string>
+             </property>
+             <property name="suffix">
+              <string> ms</string>
+             </property>
+             <property name="minimum">
+              <number>1000</number>
+             </property>
+             <property name="maximum">
+              <number>15000</number>
+             </property>
+             <property name="singleStep">
+              <number>100</number>
              </property>
             </widget>
            </item>

@@ -13,7 +13,9 @@ NetworkFactory::NetworkFactory() {
 QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
                                                              int timeout,
                                                              QByteArray &output,
-                                                             FeedsModelStandardFeed *feed) {
+                                                             bool protected_contents,
+                                                             const QString &username,
+                                                             const QString &password) {
   // Original asynchronous behavior of QNetworkAccessManager
   // is replaced by synchronous behavior in order to make
   // process of downloading of a file easier to understand.
@@ -27,9 +29,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
   QObject originatingObject;
 
   // Set credential information as originating object.
-  originatingObject.setProperty("protected", feed->passwordProtected());
-  originatingObject.setProperty("username", feed->username());
-  originatingObject.setProperty("password", feed->password());
+  originatingObject.setProperty("protected", protected_contents);
+  originatingObject.setProperty("username", username);
+  originatingObject.setProperty("password", password);
   request.setOriginatingObject(&originatingObject);
 
   // Set url for this reques.

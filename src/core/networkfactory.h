@@ -17,7 +17,9 @@ class NetworkFactory {
     static QNetworkReply::NetworkError downloadFeedFile(const QString &url,
                                                         int timeout,
                                                         QByteArray &output,
-                                                        FeedsModelStandardFeed *feed);
+                                                        bool protected_contents = false,
+                                                        const QString &username = QString(),
+                                                        const QString &password = QString());
 };
 
 #endif // NETWORKFACTORY_H
