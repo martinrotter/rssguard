@@ -217,6 +217,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
   connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
+  connect(form_main->m_ui->m_actionSwitchFeedsListVisibility,
+          SIGNAL(triggered()), m_feedsView, SLOT(switchVisibility()));
   connect(form_main->m_ui->m_actionDefragmentDatabase,
           SIGNAL(triggered()), this, SLOT(vacuumDatabase()));
 }

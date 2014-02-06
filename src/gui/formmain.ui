@@ -68,6 +68,8 @@
      <string>&amp;View</string>
     </property>
     <addaction name="m_actionFullscreen"/>
+    <addaction name="m_actionSwitchMainWindow"/>
+    <addaction name="m_actionSwitchFeedsListVisibility"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -455,6 +457,14 @@
    </property>
    <property name="toolTip">
     <string>Defragment database file so that its size decreases.</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchFeedsListVisibility">
+   <property name="text">
+    <string>Switch feeds list visibility</string>
+   </property>
+   <property name="toolTip">
+    <string>Hides or shows the list of feeds/categories.</string>
    </property>
   </action>
  </widget>

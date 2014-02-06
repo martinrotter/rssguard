@@ -62,7 +62,8 @@ QList<QAction*> FormMain::allActions() {
   // Add basic actions.
   actions << m_ui->m_actionImport << m_ui->m_actionExport <<
              m_ui->m_actionSettings << m_ui->m_actionQuit <<
-             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard;
+             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
+             m_ui->m_actionSwitchFeedsListVisibility << m_ui->m_actionSwitchMainWindow;
 
   // Add web browser actions
   actions << m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
@@ -222,9 +223,12 @@ void FormMain::setupIcons() {
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
   m_ui->m_actionImport->setIcon(icon_theme_factory->fromTheme("document-import"));
   m_ui->m_actionExport->setIcon(icon_theme_factory->fromTheme("document-export"));
-  m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
-  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
+
+  // View.
+  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
+  m_ui->m_actionSwitchFeedsListVisibility->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));

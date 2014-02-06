@@ -101,6 +101,11 @@ class FeedsView : public QTreeView {
                              m_sourceModel->countOfAllMessages());
     }
 
+    // Switches visibility of the widget.
+    void switchVisibility() {
+      setVisible(!isVisible());
+    }
+
   protected:
     // Initializes context menus.
     void initializeContextMenuCategoriesFeeds();
