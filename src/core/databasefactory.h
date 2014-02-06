@@ -5,6 +5,17 @@
 #include <QPointer>
 #include <QSqlDatabase>
 
+// TODO: přidat podporu pro mysql
+// nemužu mit stejny SQL kod pro mysql a sqlite
+// ale musim docilit aby oba kody SQL delaly tabulky
+// se stejnymi atributy - stejnymi nazvy sloupcu
+// PROBLEMY se mysql: nutno pridat AUTO_INCREMENT u int primary keyů
+// taky bacha na nazvy sloupců, třeba
+// key a read sou klicovy slouva a fejlne to tak
+// taky bacha ze typ TEXT nemuze bejt dost dobre
+// pouzitej v UNIQUE CHECK, misto toho se da pouzit treba
+// VARCHAR (100)
+
 
 class DatabaseFactory : public QObject {
     Q_OBJECT
