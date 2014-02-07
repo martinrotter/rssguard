@@ -192,7 +192,7 @@ void FormMain::onAboutToQuit() {
     m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
   }
 
-  DatabaseFactory::instance()->saveMemoryDatabase();
+  DatabaseFactory::instance()->saveDatabase();
   saveSize();
 
   if (locked_safely) {

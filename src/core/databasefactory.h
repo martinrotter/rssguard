@@ -21,6 +21,13 @@ class DatabaseFactory : public QObject {
     Q_OBJECT
 
   public:
+    // Describes available typos of database backend.
+    enum UsedDriver {
+      SQLITE,
+      SQLITE_MEMORY,
+      MYSQL
+    };
+
     // Describes what type of database user wants.
     enum DesiredType {
       StrictlyFileBased,
@@ -28,13 +35,12 @@ class DatabaseFactory : public QObject {
       FromSettings
     };
 
+    //
+    // GENERAL stuff.
+    //
+
     // Destructor.
     virtual ~DatabaseFactory();
-
-    // Returns absolute file path to database file.
-    inline QString databaseFilePath() {
-      return m_databaseFilePath;
-    }
 
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
@@ -45,51 +51,65 @@ class DatabaseFactory : public QObject {
     // Removes connection.
     void removeConnection(const QString &connection_name = QString());
 
-    // Performs saving of items from in-memory database
-    // to file-based database.
-    void saveMemoryDatabase();
+    // Performs any needed database-related operation to be done
+    // to gracefully exit the application.
+    void saveDatabase();
 
-    // Sets m_inMemoryEnabled according to user settings.
-    void determineInMemoryDatabase();
+    // Singleton getter.
+    static DatabaseFactory *instance();
+
+    //
+    // SQLITE stuff.
+    //
 
     // Performs "VACUUM" on the database and
     // returns true of operation succeeded.
     bool vacuumDatabase();
 
-    // Returns whether in-memory database feature is currently
-    // used.
-    inline bool usingInMemoryDatabase() const {
-      return m_inMemoryEnabled;
-    }
-
-    // Singleton getter.
-    static DatabaseFactory *instance();
-
   private:
+    //
+    // GENERAL stuff.
+    //
+
     // Conctructor.
     explicit DatabaseFactory(QObject *parent = 0);
 
-    // Assemblies database file path.
-    void assemblyDatabaseFilePath();
-
-    // Creates new connection, initializes database and
-    // returns opened connections.
-    QSqlDatabase initializeInMemoryDatabase();
-    QSqlDatabase initializeFileBasedDatabase(const QString &connection_name);
-
-    // Path to database file.
-    QString m_databaseFilePath;
-
-    // Is database file initialized?
-    bool m_fileBasedinitialized;
-    bool m_inMemoryInitialized;
-
-    // Is true when user selected in-memory database.
-    // NOTE: This can be changed only on application startup.
-    bool m_inMemoryEnabled;
+    // Decides which database backend will be used in this
+    // application session.
+    void determineDriver();
 
     // Private singleton value.
     static QPointer<DatabaseFactory> s_instance;
+
+    // Holds the type of currently activated database backend.
+    UsedDriver m_activeDatabaseDriver;
+
+    //
+    // SQLITE stuff.
+    //
+
+    // Performs saving of items from in-memory database
+    // to file-based database.
+    void saveMemoryDatabase();
+
+    // Assemblies database file path.
+    void sqliteAssemblyDatabaseFilePath();
+
+    // Creates new connection, initializes database and
+    // returns opened connections.
+    QSqlDatabase sqliteInitializeInMemoryDatabase();
+    QSqlDatabase sqliteInitializeFileBasedDatabase(const QString &connection_name);
+
+    // Path to database file.
+    QString m_sqliteDatabaseFilePath;
+
+    // Is database file initialized?
+    bool m_sqliteFileBasedDatabaseinitialized;
+    bool m_sqliteInMemoryDatabaseInitialized;
+
+    // Is true when user selected in-memory database.
+    // NOTE: This can be changed only on application startup.
+    bool m_sqliteInMemoryDatabaseEnabled;
 };
 
 #endif // DATABASEFACTORY_H

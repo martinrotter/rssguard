@@ -439,14 +439,14 @@ void FormSettings::loadGeneral() {
   }
 
   // Load SQLITE.
-  m_ui->m_cmbDatabaseDriver->addItem("SQLite", DATABASE_DRIVER);
+  m_ui->m_cmbDatabaseDriver->addItem("SQLite", APP_DB_DRIVER_SQLITE);
 
   // Load in-memory database status.
   m_ui->m_cmbSqliteUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool());
 
-  if (QSqlDatabase::isDriverAvailable(DATABASE_DRIVER_MYSQL)) {
+  if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // Load MySQL.
-    m_ui->m_cmbDatabaseDriver->addItem("MySQL", DATABASE_DRIVER_MYSQL);
+    m_ui->m_cmbDatabaseDriver->addItem("MySQL", APP_DB_DRIVER_MYSQL);
 
     // TODO: nacist username, password atp.
   }
@@ -454,7 +454,7 @@ void FormSettings::loadGeneral() {
   // TODO: nacist podle nastaveni
   m_ui->m_cmbDatabaseDriver->setCurrentIndex(m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_GEN,
                                                                                                              "database_driver",
-                                                                                                             DATABASE_DRIVER).toString()));
+                                                                                                             APP_DB_DRIVER_SQLITE).toString()));
 }
 
 void FormSettings::saveGeneral() {
@@ -476,13 +476,13 @@ void FormSettings::saveGeneral() {
   }
 
   // Save data storage settings.
-  QString original_db_driver = Settings::instance()->value(APP_CFG_GEN, "database_driver", DATABASE_DRIVER).toString();
+  QString original_db_driver = Settings::instance()->value(APP_CFG_GEN, "database_driver", APP_DB_DRIVER_SQLITE).toString();
   QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
 
   // Save SQLite.
   Settings::instance()->setValue(APP_CFG_GEN, "use_in_memory_db", new_inmemory);
 
-  if (QSqlDatabase::isDriverAvailable(DATABASE_DRIVER_MYSQL)) {
+  if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // Save MySQL.
     // TODO: ulozit username, password atp.
   }

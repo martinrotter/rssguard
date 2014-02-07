@@ -29,8 +29,6 @@
 #define TEXT_TITLE_LIMIT                30
 #define MAX_ZOOM_FACTOR                 10.0
 #define ICON_SIZE_SETTINGS              16
-#define DATABASE_DRIVER                 "QSQLITE"
-#define DATABASE_DRIVER_MYSQL           "QMYSQL"
 #define NO_PARENT_CATEGORY              -1
 #define TRAY_ICON_BUBBLE_TIMEOUT        15000
 #define KEY_MESSAGES_VIEW               "messages_view_column_"
@@ -44,8 +42,10 @@
 #define AUTO_UPDATE_INTERVAL            60000
 #define STARTUP_UPDATE_DELAY            500
 
-#define APP_DB_INIT_FILE    "db_init.sql"
-#define APP_DB_INIT_MEMORY    "db_init_memory.sql"
+#define APP_DB_DRIVER_SQLITE          "QSQLITE"
+#define APP_DB_DRIVER_MYSQL           "QMYSQL"
+#define APP_DB_INIT_SQLITE          "db_init_sqlite.sql"
+#define APP_DB_INIT_SQLITE_MEMORY   "db_init_sqlite_memory.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"
 #define APP_DB_PATH         "data/database/local"
 #define APP_DB_FILE         "database.db"

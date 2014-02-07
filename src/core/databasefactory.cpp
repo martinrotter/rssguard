@@ -14,10 +14,11 @@ QPointer<DatabaseFactory> DatabaseFactory::s_instance;
 
 DatabaseFactory::DatabaseFactory(QObject *parent)
   : QObject(parent),
-    m_fileBasedinitialized(false),
-    m_inMemoryInitialized(false) {
+    m_sqliteFileBasedDatabaseinitialized(false),
+    m_sqliteInMemoryDatabaseInitialized(false) {
   setObjectName("DatabaseFactory");
-  assemblyDatabaseFilePath();
+  determineDriver();
+  sqliteAssemblyDatabaseFilePath();
 }
 
 DatabaseFactory::~DatabaseFactory() {
@@ -32,21 +33,21 @@ DatabaseFactory *DatabaseFactory::instance() {
   return s_instance;
 }
 
-void DatabaseFactory::assemblyDatabaseFilePath()  {
+void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
   if (Settings::instance()->type() == Settings::Portable) {
-    m_databaseFilePath = qApp->applicationDirPath() +
+    m_sqliteDatabaseFilePath = qApp->applicationDirPath() +
                          QDir::separator() +
                          QString(APP_DB_PATH);
   }
   else {
-    m_databaseFilePath = QDir::homePath() + QDir::separator() +
+    m_sqliteDatabaseFilePath = QDir::homePath() + QDir::separator() +
                          QString(APP_LOW_H_NAME) + QDir::separator() +
                          QString(APP_DB_PATH);
   }
 }
 
-QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
-  QSqlDatabase database = QSqlDatabase::addDatabase(DATABASE_DRIVER);
+QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_SQLITE);
 
   database.setDatabaseName(":memory:");
 
@@ -72,12 +73,12 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. In-memory database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_MEMORY);
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_SQLITE_MEMORY);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("In-memory database initialization file '%s' from directory '%s' was not found. In-memory database is uninitialized.",
-               APP_DB_INIT_FILE,
+               APP_DB_INIT_SQLITE,
                qPrintable(APP_MISC_PATH));
       }
 
@@ -90,7 +91,7 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
 
         if (query_db.lastError().isValid()) {
           qFatal("In-memory database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_INIT_FILE);
+                 APP_DB_INIT_SQLITE);
         }
       }
 
@@ -128,14 +129,14 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
   }
 
   // Everything is initialized now.
-  m_inMemoryInitialized = true;
+  m_sqliteInMemoryDatabaseInitialized = true;
 
   return database;
 }
 
-QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connection_name) {
+QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &connection_name) {
   // Prepare file paths.
-  QDir db_path(databaseFilePath());
+  QDir db_path(m_sqliteDatabaseFilePath);
   QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
 
   // Check if database directory exists.
@@ -152,7 +153,7 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database;
 
-  database = QSqlDatabase::addDatabase(DATABASE_DRIVER,
+  database = QSqlDatabase::addDatabase(APP_DB_DRIVER_SQLITE,
                                        connection_name);
   database.setDatabaseName(db_file.fileName());
 
@@ -178,12 +179,12 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. File-based database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_FILE);
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_SQLITE);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("Database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
-               APP_DB_INIT_FILE,
+               APP_DB_INIT_SQLITE,
                qPrintable(APP_MISC_PATH));
       }
 
@@ -196,7 +197,7 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
 
         if (query_db.lastError().isValid()) {
           qFatal("File-based database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_INIT_FILE);
+                 APP_DB_INIT_SQLITE);
         }
       }
 
@@ -216,7 +217,7 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
   }
 
   // Everything is initialized now.
-  m_fileBasedinitialized = true;
+  m_sqliteFileBasedDatabaseinitialized = true;
 
   return database;
 }
@@ -225,12 +226,12 @@ QSqlDatabase DatabaseFactory::initializeFileBasedDatabase(const QString &connect
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
                                          DesiredType desired_type) {
   if (desired_type == DatabaseFactory::StrictlyInMemory ||
-      (desired_type == DatabaseFactory::FromSettings && m_inMemoryEnabled)) {
+      (desired_type == DatabaseFactory::FromSettings && m_sqliteInMemoryDatabaseEnabled)) {
     // We request in-memory database (either user don't care
     // about the type or user overrided it in the settings).
-    if (!m_inMemoryInitialized) {
+    if (!m_sqliteInMemoryDatabaseInitialized) {
       // It is not initialized yet.
-      return initializeInMemoryDatabase();
+      return sqliteInitializeInMemoryDatabase();
     }
     else {
       QSqlDatabase database = QSqlDatabase::database();
@@ -250,9 +251,9 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
   }
   else {
     // We request file-based database.
-    if (!m_fileBasedinitialized) {
+    if (!m_sqliteFileBasedDatabaseinitialized) {
       // File-based database is not yet initialised.
-      return initializeFileBasedDatabase(connection_name);
+      return sqliteInitializeFileBasedDatabase(connection_name);
     }
     else {
       QSqlDatabase database;
@@ -268,9 +269,9 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
       else {
         // Database connection with this name does not exist
         // yet, add it and set it up.
-        database = QSqlDatabase::addDatabase(DATABASE_DRIVER, connection_name);
+        database = QSqlDatabase::addDatabase(APP_DB_DRIVER_SQLITE, connection_name);
 
-        QDir db_path(databaseFilePath());
+        QDir db_path(m_sqliteDatabaseFilePath);
         QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
 
         // Setup database file path.
@@ -299,7 +300,7 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
 }
 
 void DatabaseFactory::saveMemoryDatabase() {
-  if (!m_inMemoryEnabled) {
+  if (!m_sqliteInMemoryDatabaseEnabled) {
     return;
   }
 
@@ -326,11 +327,15 @@ void DatabaseFactory::saveMemoryDatabase() {
   copy_contents.finish();
 }
 
-void DatabaseFactory::determineInMemoryDatabase() {
-  m_inMemoryEnabled = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
+void DatabaseFactory::determineDriver() {
+  m_sqliteInMemoryDatabaseEnabled = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
 
   qDebug("Working database source was determined as %s.",
-         m_inMemoryEnabled ? "in-memory database" : "file-based database");
+         m_sqliteInMemoryDatabaseEnabled ? "in-memory database" : "file-based database");
+}
+
+void DatabaseFactory::saveDatabase() {
+  saveMemoryDatabase();
 }
 
 bool DatabaseFactory::vacuumDatabase() {
