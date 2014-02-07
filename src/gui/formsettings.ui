@@ -50,6 +50,11 @@
      </item>
      <item>
       <property name="text">
+       <string>Data storage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
        <string>Keyboard shortcuts</string>
       </property>
      </item>
@@ -78,10 +83,10 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QFormLayout" name="formLayout_5">
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -94,59 +99,85 @@
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item>
+       <item row="0" column="0">
         <widget class="QCheckBox" name="m_checkAutostart">
          <property name="text">
           <string>Launch RSS Guard on operating system startup</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QGroupBox" name="m_gbDataStorage">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_pageDataStorage">
+      <layout class="QFormLayout" name="formLayout_14">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="m_lblDataStorageWarning">
+         <property name="text">
+          <string>WARNING: Note that switching to another data storage type will NOT preserve your data from currently active data storage.</string>
          </property>
-         <property name="title">
-          <string>Data storage</string>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
-         <layout class="QFormLayout" name="formLayout_14">
-          <property name="fieldGrowthPolicy">
-           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-          </property>
-          <item row="1" column="0">
-           <widget class="QLabel" name="m_lblDatabaseDriver">
-            <property name="text">
-             <string>Database driver</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="m_cmbDatabaseDriver"/>
-          </item>
-          <item row="3" column="0" colspan="2">
-           <widget class="QStackedWidget" name="m_stackedDatabaseDriver">
-            <property name="currentIndex">
-             <number>0</number>
-            </property>
-            <widget class="QWidget" name="m_pageSqlite">
-             <layout class="QFormLayout" name="formLayout_15">
-              <property name="fieldGrowthPolicy">
-               <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-              </property>
-              <item row="0" column="0" colspan="2">
-               <widget class="QCheckBox" name="m_cmbSqliteUseInMemoryDatabase">
-                <property name="text">
-                 <string>Use in-memory database as the working database</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QLabel" name="m_lblSqliteInMemoryWarnings">
-                <property name="text">
-                 <string>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="m_lblDatabaseDriver">
+         <property name="text">
+          <string>Database driver</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="m_cmbDatabaseDriver"/>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QStackedWidget" name="m_stackedDatabaseDriver">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="m_pageSqlite">
+          <layout class="QFormLayout" name="formLayout_15">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item row="0" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_checkSqliteUseInMemoryDatabase">
+             <property name="text">
+              <string>Use in-memory database as the working database</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QLabel" name="m_lblSqliteInMemoryWarnings">
+             <property name="text">
+              <string>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
 &lt;ul&gt;
 &lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
 &lt;li&gt;whole database stored in RAM, thus your hard drive can rest more.&lt;/li&gt;
@@ -157,91 +188,87 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</string>
-                </property>
-                <property name="textFormat">
-                 <enum>Qt::RichText</enum>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-                <property name="indent">
-                 <number>20</number>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             </property>
+             <property name="textFormat">
+              <enum>Qt::RichText</enum>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="indent">
+              <number>20</number>
+             </property>
             </widget>
-            <widget class="QWidget" name="m_pageMysql">
-             <layout class="QFormLayout" name="formLayout_16">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_2">
-                <property name="text">
-                 <string>Hostname</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_6">
-                <item>
-                 <widget class="LineEditWithStatus" name="widget_2" native="true"/>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_6">
-                  <property name="text">
-                   <string>Port</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QSpinBox" name="spinBox">
-                  <property name="minimumSize">
-                   <size>
-                    <width>100</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_4">
-                <property name="text">
-                 <string>Username</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="LineEditWithStatus" name="widget" native="true"/>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_5">
-                <property name="text">
-                 <string>Password</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
-               <widget class="LineEditWithStatus" name="widget_3" native="true"/>
-              </item>
-             </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="m_pageMysql">
+          <layout class="QFormLayout" name="formLayout_16">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Hostname</string>
+             </property>
             </widget>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="m_lblDataStorageWarning">
-            <property name="text">
-             <string>WARNING: Note that switching to another data storage type will NOT preserve your data from currently active data storage.</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
+           </item>
+           <item row="0" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="LineEditWithStatus" name="widget_2" native="true"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>Port</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Username</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="LineEditWithStatus" name="widget" native="true"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Password</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="LineEditWithStatus" name="widget_3" native="true"/>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -351,8 +378,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>558</width>
-                <height>337</height>
+                <width>167</width>
+                <height>219</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1126,11 +1153,11 @@ Authors of this application are NOT responsible for lost data.</string>
    <hints>
     <hint type="sourcelabel">
      <x>558</x>
-     <y>96</y>
+     <y>50</y>
     </hint>
     <hint type="destinationlabel">
      <x>516</x>
-     <y>215</y>
+     <y>154</y>
     </hint>
    </hints>
   </connection>

@@ -83,6 +83,9 @@ class DatabaseFactory : public QObject {
     // SQLITE stuff.
     //
 
+    QSqlDatabase sqliteConnection(const QString &connection_name,
+                                  DesiredType desired_type);
+
     // Performs saving of items from in-memory database
     // to file-based database.
     void sqliteSaveMemoryDatabase();

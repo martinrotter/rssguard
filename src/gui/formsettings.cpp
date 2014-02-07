@@ -442,7 +442,7 @@ void FormSettings::loadGeneral() {
   m_ui->m_cmbDatabaseDriver->addItem("SQLite", APP_DB_DRIVER_SQLITE);
 
   // Load in-memory database status.
-  m_ui->m_cmbSqliteUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool());
+  m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_DB, "use_in_memory_db", false).toBool());
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // Load MySQL.
@@ -452,7 +452,7 @@ void FormSettings::loadGeneral() {
   }
 
   // TODO: nacist podle nastaveni
-  m_ui->m_cmbDatabaseDriver->setCurrentIndex(m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_GEN,
+  m_ui->m_cmbDatabaseDriver->setCurrentIndex(m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_DB,
                                                                                                              "database_driver",
                                                                                                              APP_DB_DRIVER_SQLITE).toString()));
 }
@@ -468,26 +468,26 @@ void FormSettings::saveGeneral() {
   }
 
   // Setup in-memory database status.
-  bool original_inmemory = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
-  bool new_inmemory = m_ui->m_cmbSqliteUseInMemoryDatabase->isChecked();
+  bool original_inmemory = Settings::instance()->value(APP_CFG_DB, "use_in_memory_db", false).toBool();
+  bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
 
   if (original_inmemory != new_inmemory) {
     m_changedDataTexts.append(tr("in-memory database switched"));
   }
 
   // Save data storage settings.
-  QString original_db_driver = Settings::instance()->value(APP_CFG_GEN, "database_driver", APP_DB_DRIVER_SQLITE).toString();
+  QString original_db_driver = Settings::instance()->value(APP_CFG_DB, "database_driver", APP_DB_DRIVER_SQLITE).toString();
   QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
 
   // Save SQLite.
-  Settings::instance()->setValue(APP_CFG_GEN, "use_in_memory_db", new_inmemory);
+  Settings::instance()->setValue(APP_CFG_DB, "use_in_memory_db", new_inmemory);
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // Save MySQL.
     // TODO: ulozit username, password atp.
   }
 
-  Settings::instance()->setValue(APP_CFG_GEN, "database_driver", selected_db_driver);
+  Settings::instance()->setValue(APP_CFG_DB, "database_driver", selected_db_driver);
 
   if (original_db_driver != selected_db_driver) {
     m_changedDataTexts.append(tr("data storage backend changed"));

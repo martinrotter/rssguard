@@ -244,7 +244,7 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   query_update.prepare("UPDATE Messages "
                        "SET title = :title, url = :url, author = :author, "
                        "date_created = :date_created, contents = :contents, "
-                       "read = 0, important = 0, deleted = 0 "
+                       "is_read = 0, is_important = 0, is_deleted = 0 "
                        "WHERE id = :id");
 
   if (!database.transaction()) {

@@ -58,7 +58,7 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
 
   QString assembled_ids = textualFeeds().join(", ");
 
-  setFilter(QString("feed IN (%1) AND deleted = 0").arg(assembled_ids));
+  setFilter(QString("feed IN (%1) AND is_deleted = 0").arg(assembled_ids));
   select();
   fetchAll();
 
@@ -201,7 +201,7 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare("UPDATE messages SET read = :read "
+  if (!query_read_msg.prepare("UPDATE messages SET is_read = :read "
                               "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
 
@@ -257,7 +257,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   QSqlQuery query_importance_msg(db_handle);
   query_importance_msg.setForwardOnly(true);
 
-  if (!query_importance_msg.prepare("UPDATE messages SET important = :important "
+  if (!query_importance_msg.prepare("UPDATE messages SET is_important = :important "
                                     "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
 
@@ -296,7 +296,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   QSqlQuery query_importance_msg(db_handle);
   query_importance_msg.setForwardOnly(true);
 
-  if (!query_importance_msg.prepare("UPDATE messages SET important = :important "
+  if (!query_importance_msg.prepare("UPDATE messages SET is_important = :important "
                                     "WHERE id = :id")) {
     qWarning("Query preparation failed for message importance switch.");
 
@@ -338,7 +338,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
   QSqlQuery query_delete_msg(db_handle);
   query_delete_msg.setForwardOnly(true);
 
-  if (!query_delete_msg.prepare("UPDATE messages SET deleted = :deleted "
+  if (!query_delete_msg.prepare("UPDATE messages SET is_deleted = :deleted "
                                 "WHERE id = :id")) {
     qWarning("Query preparation failed for message deletion.");
 
@@ -379,7 +379,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare("UPDATE messages SET read = :read "
+  if (!query_read_msg.prepare("UPDATE messages SET is_read = :read "
                               "WHERE id = :id")) {
     qWarning("Query preparation failed for message read change.");
 

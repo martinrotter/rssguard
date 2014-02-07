@@ -439,7 +439,7 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
                          "FROM Messages "
-                         "WHERE deleted = 0 AND feed = :feed;");
+                         "WHERE is_deleted = 0 AND feed = :feed;");
 
   foreach (FeedsModelFeed *feed, feeds) {
     query_read_msg.bindValue(":feed", feed->id());
@@ -695,8 +695,8 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare(QString("UPDATE Messages SET read = :read "
-                                      "WHERE feed IN (%1) AND deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
+  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
     qWarning("Query preparation failed for feeds read change.");
 
     db_handle.rollback();
@@ -734,8 +734,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
   query_delete_msg.setForwardOnly(true);
 
   if (read_only) {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET deleted = :deleted "
-                                          "WHERE feed IN (%1) AND deleted = 0 AND read = 1;").arg(textualFeedIds(feeds).join(", ")))) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(feeds).join(", ")))) {
       qWarning("Query preparation failed for feeds clearing.");
 
       db_handle.rollback();
@@ -743,8 +743,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
     }
   }
   else {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET deleted = :deleted "
-                                          "WHERE feed IN (%1) AND deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
       qWarning("Query preparation failed for feeds clearing.");
 
       db_handle.rollback();

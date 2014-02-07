@@ -40,7 +40,7 @@
 #define INTERNAL_URL_NEWSPAPER          "@APP_LOW_NAME@:newspaper"
 #define DEFAULT_AUTO_UPDATE_INTERVAL    15
 #define AUTO_UPDATE_INTERVAL            60000
-#define STARTUP_UPDATE_DELAY            500
+#define STARTUP_UPDATE_DELAY            1500
 
 #define APP_DB_DRIVER_SQLITE          "QSQLITE"
 #define APP_DB_DRIVER_MYSQL           "QMYSQL"
@@ -56,6 +56,7 @@
 #define APP_CFG_GUI         "gui"
 #define APP_CFG_GEN         "main"
 #define APP_CFG_PROXY       "proxy"
+#define APP_CFG_DB          "database"
 #define APP_CFG_CUTS        "keyboard"
 #define APP_CFG_BROWSER     "browser"
 #define APP_CFG_MESSAGES    "messages"
