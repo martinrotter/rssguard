@@ -438,8 +438,23 @@ void FormSettings::loadGeneral() {
       break;
   }
 
+  // Load SQLITE.
+  m_ui->m_cmbDatabaseDriver->addItem("SQLite", DATABASE_DRIVER);
+
   // Load in-memory database status.
-  m_ui->m_cmbUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool());
+  m_ui->m_cmbSqliteUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool());
+
+  if (QSqlDatabase::isDriverAvailable(DATABASE_DRIVER_MYSQL)) {
+    // Load MySQL.
+    m_ui->m_cmbDatabaseDriver->addItem("MySQL", DATABASE_DRIVER_MYSQL);
+
+    // TODO: nacist username, password atp.
+  }
+
+  // TODO: nacist podle nastaveni
+  m_ui->m_cmbDatabaseDriver->setCurrentIndex(m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_GEN,
+                                                                                                             "database_driver",
+                                                                                                             DATABASE_DRIVER).toString()));
 }
 
 void FormSettings::saveGeneral() {
@@ -454,13 +469,29 @@ void FormSettings::saveGeneral() {
 
   // Setup in-memory database status.
   bool original_inmemory = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
-  bool new_inmemory = m_ui->m_cmbUseInMemoryDatabase->isChecked();
+  bool new_inmemory = m_ui->m_cmbSqliteUseInMemoryDatabase->isChecked();
 
   if (original_inmemory != new_inmemory) {
     m_changedDataTexts.append(tr("in-memory database switched"));
   }
 
+  // Save data storage settings.
+  QString original_db_driver = Settings::instance()->value(APP_CFG_GEN, "database_driver", DATABASE_DRIVER).toString();
+  QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
+
+  // Save SQLite.
   Settings::instance()->setValue(APP_CFG_GEN, "use_in_memory_db", new_inmemory);
+
+  if (QSqlDatabase::isDriverAvailable(DATABASE_DRIVER_MYSQL)) {
+    // Save MySQL.
+    // TODO: ulozit username, password atp.
+  }
+
+  Settings::instance()->setValue(APP_CFG_GEN, "database_driver", selected_db_driver);
+
+  if (original_db_driver != selected_db_driver) {
+    m_changedDataTexts.append(tr("data storage backend changed"));
+  }
 }
 
 void FormSettings::loadInterface() {

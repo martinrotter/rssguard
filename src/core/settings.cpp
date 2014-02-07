@@ -62,7 +62,7 @@ QSettings::Status Settings::setupSettings() {
     QWebSettings::setIconDatabasePath(web_path);
 
     qDebug("Initializing settings in '%s' (portable way).",
-           qPrintable(QDir::toNativeSeparators(app_path)));
+           qPrintable(QDir::toNativeSeparators(app_path_file)));
   }
   else {
     // Portable settings are NOT available, store them in
