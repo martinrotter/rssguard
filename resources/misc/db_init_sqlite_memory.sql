@@ -1,11 +1,12 @@
 DROP TABLE IF EXISTS Information;
 -- !
 CREATE TABLE IF NOT EXISTS Information (
-  key             TEXT        PRIMARY KEY,
-  value           TEXT        NOT NULL
+  id              INTEGER     PRIMARY KEY,
+  inf_key         TEXT        NOT NULL,
+  inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES ('schema_version', '0.0.1');
+INSERT INTO Information VALUES (1, 'schema_version', '0.0.1');
 -- !
 DROP TABLE IF EXISTS Categories;
 -- !
@@ -16,9 +17,7 @@ CREATE TABLE IF NOT EXISTS Categories (
   description     TEXT,
   date_created    INTEGER     NOT NULL CHECK (date_created != 0),
   icon            BLOB,
-  type            INTEGER     NOT NULL,
-  
-  FOREIGN KEY (parent_id) REFERENCES Categories (id)
+  type            INTEGER     NOT NULL
 );
 -- !
 DROP TABLE IF EXISTS Feeds;
@@ -55,9 +54,9 @@ DROP TABLE IF EXISTS Messages;
 -- !
 CREATE TABLE IF NOT EXISTS Messages (
   id              INTEGER     PRIMARY KEY,
-  read            INTEGER(1)  NOT NULL CHECK (read >= 0 AND read <= 1) DEFAULT (0),
-  deleted         INTEGER(1)  NOT NULL CHECK (deleted >= 0 AND deleted <= 1) DEFAULT (0),
-  important       INTEGER(1)  NOT NULL CHECK (important >= 0 AND important <= 1) DEFAULT (0),
+  is_read         INTEGER(1)  NOT NULL CHECK (is_read >= 0 AND is_read <= 1) DEFAULT (0),
+  is_deleted      INTEGER(1)  NOT NULL CHECK (is_deleted >= 0 AND is_deleted <= 1) DEFAULT (0),
+  is_important    INTEGER(1)  NOT NULL CHECK (is_important >= 0 AND is_important <= 1) DEFAULT (0),
   feed            INTEGER     NOT NULL,
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,
