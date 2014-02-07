@@ -14,6 +14,7 @@ QPointer<DatabaseFactory> DatabaseFactory::s_instance;
 
 DatabaseFactory::DatabaseFactory(QObject *parent)
   : QObject(parent),
+    m_mysqlDatabaseInitialized(false),
     m_sqliteFileBasedDatabaseinitialized(false),
     m_sqliteInMemoryDatabaseInitialized(false) {
   setObjectName("DatabaseFactory");
@@ -226,7 +227,7 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
                                          DesiredType desired_type) {
   switch (m_activeDatabaseDriver) {
     case MYSQL:
-      return QSqlDatabase();
+      return mysqlConnection(connection_name);
 
     case SQLITE:
     case SQLITE_MEMORY:
@@ -293,6 +294,116 @@ void DatabaseFactory::determineDriver() {
 
     sqliteAssemblyDatabaseFilePath();
   }
+}
+
+QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
+  if (!m_mysqlDatabaseInitialized) {
+    // Return initialized database.
+    return mysqlInitializeDatabase(connection_name);
+  }
+  else {
+    QSqlDatabase database;
+
+    if (QSqlDatabase::contains(connection_name)) {
+      qDebug("MySQL connection '%s' is already active.",
+             qPrintable(connection_name));
+
+      // This database connection was added previously, no need to
+      // setup its properties.
+      database = QSqlDatabase::database(connection_name);
+    }
+    else {
+      // Database connection with this name does not exist
+      // yet, add it and set it up.
+      database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL, connection_name);
+
+      database.setHostName("localhost");
+      database.setPort(3306);
+      database.setUserName("root");
+      database.setDatabaseName("rssguard");
+      //database.setPassword("password");
+    }
+
+    if (!database.isOpen() && !database.open()) {
+      qFatal("MySQL database was NOT opened. Delivered error message: '%s'.",
+             qPrintable(database.lastError().text()));
+    }
+    else {
+      qDebug("MySQL database connection '%s' to file '%s' seems to be established.",
+             qPrintable(connection_name),
+             qPrintable(QDir::toNativeSeparators(database.databaseName())));
+    }
+
+    return database;
+  }
+}
+
+QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_name) {
+  // Folders are created. Create new QSQLDatabase object.
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL,
+                                                    connection_name);
+
+  database.setHostName("localhost");
+  database.setPort(3306);
+  database.setUserName("root");
+  //database.setPassword("password");
+
+  if (!database.open()) {
+    qFatal("MySQL database was NOT opened. Delivered error message: '%s'",
+           qPrintable(database.lastError().text()));
+  }
+  else {
+    QSqlQuery query_db(database);
+
+    query_db.setForwardOnly(true);
+
+    if (!query_db.exec("USE rssguard") ||
+        !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
+      // If no "rssguard" database exists
+      // or schema version is wrong, then initialize it.
+      qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
+
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_MYSQL);
+
+      if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        // Database initialization file not opened. HUGE problem.
+        qFatal("MySQL database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
+               APP_DB_INIT_MYSQL,
+               qPrintable(APP_MISC_PATH));
+      }
+
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
+                                                                  QString::SkipEmptyParts);
+      database.transaction();
+
+      foreach(const QString &statement, statements) {
+        query_db.exec(statement);
+
+        if (query_db.lastError().isValid()) {
+          qFatal("MySQL database initialization failed. Initialization script '%s' is not correct.",
+                 APP_DB_INIT_MYSQL);
+        }
+      }
+
+      database.commit();
+      qDebug("MySQL database backend should be ready now.");
+    }
+    else {
+      query_db.next();
+
+      qDebug("MySQL database connection '%s' seems to be established.",
+             qPrintable(connection_name),
+             qPrintable(QDir::toNativeSeparators(database.databaseName())));
+      qDebug("MySQL database has version '%s'.", qPrintable(query_db.value(0).toString()));
+    }
+
+    query_db.finish();
+  }
+
+  // Everything is initialized now.
+  m_mysqlDatabaseInitialized = true;
+
+  return database;
 }
 
 QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,

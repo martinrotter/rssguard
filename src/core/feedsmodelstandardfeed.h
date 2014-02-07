@@ -92,7 +92,7 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
     // Persistently stores given messages into the database
     // and updates existing messages if newer version is
     // available.
-    void updateMessages(const QList<Message>  &messages);
+    void updateMessages(const QList<Message> &messages);
 
   private:
     AutoUpdateType m_autoUpdateType;

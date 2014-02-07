@@ -44,8 +44,9 @@
 
 #define APP_DB_DRIVER_SQLITE          "QSQLITE"
 #define APP_DB_DRIVER_MYSQL           "QMYSQL"
-#define APP_DB_INIT_SQLITE          "db_init_sqlite.sql"
-#define APP_DB_INIT_SQLITE_MEMORY   "db_init_sqlite_memory.sql"
+#define APP_DB_INIT_MYSQL             "db_init_mysql.sql"
+#define APP_DB_INIT_SQLITE            "db_init_sqlite.sql"
+#define APP_DB_INIT_SQLITE_MEMORY     "db_init_sqlite_memory.sql"
 #define APP_DB_INIT_SPLIT   "-- !\n"
 #define APP_DB_PATH         "data/database/local"
 #define APP_DB_FILE         "database.db"

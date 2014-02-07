@@ -80,6 +80,20 @@ class DatabaseFactory : public QObject {
     UsedDriver m_activeDatabaseDriver;
 
     //
+    // MYSQL stuff.
+    //
+
+    // Returns (always OPENED) MySQL database connection.
+    QSqlDatabase mysqlConnection(const QString &connection_name);
+
+    // Initializes MySQL database.
+    QSqlDatabase mysqlInitializeDatabase(const QString &connection_name);
+
+    // True if MySQL database is fully initialized for use,
+    // otherwise false.
+    bool m_mysqlDatabaseInitialized;
+
+    //
     // SQLITE stuff.
     //
 
