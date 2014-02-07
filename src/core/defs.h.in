@@ -30,7 +30,7 @@
 #define MAX_ZOOM_FACTOR                 10.0
 #define ICON_SIZE_SETTINGS              16
 #define NO_PARENT_CATEGORY              -1
-#define TRAY_ICON_BUBBLE_TIMEOUT        15000
+#define TRAY_ICON_BUBBLE_TIMEOUT        20000
 #define KEY_MESSAGES_VIEW               "messages_view_column_"
 #define CLOSE_LOCK_TIMEOUT              3000
 #define DOWNLOAD_TIMEOUT                5000
@@ -42,6 +42,7 @@
 #define AUTO_UPDATE_INTERVAL            60000
 #define STARTUP_UPDATE_DELAY            1500
 
+#define APP_DB_MYSQL_PORT             3306
 #define APP_DB_DRIVER_SQLITE          "QSQLITE"
 #define APP_DB_DRIVER_MYSQL           "QMYSQL"
 #define APP_DB_INIT_MYSQL             "db_init_mysql.sql"

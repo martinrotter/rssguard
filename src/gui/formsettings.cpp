@@ -98,6 +98,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Load all settings.
   loadGeneral();
+  loadDataStorage();
   loadShortcuts();
   loadInterface();
   loadProxy();
@@ -249,6 +250,7 @@ void FormSettings::saveSettings() {
 
   // Save all settings.
   saveGeneral();
+  saveDataStorage();
   saveShortcuts();
   saveInterface();
   saveProxy();
@@ -421,24 +423,8 @@ void FormSettings::saveShortcuts() {
   DynamicShortcuts::save(FormMain::instance()->allActions());
 }
 
-void FormSettings::loadGeneral() {
-  // Load auto-start status.
-  SystemFactory::AutoStartStatus autostart_status = SystemFactory::instance()->getAutoStartStatus();
-  switch (autostart_status) {
-    case SystemFactory::Enabled:
-      m_ui->m_checkAutostart->setChecked(true);
-      break;
-    case SystemFactory::Disabled:
-      m_ui->m_checkAutostart->setChecked(false);
-      break;
-    default:
-      m_ui->m_checkAutostart->setEnabled(false);
-      m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
-                                      tr(" (not supported on this platform)"));
-      break;
-  }
-
-  // Load SQLITE.
+void FormSettings::loadDataStorage() {
+  // Load SQLite.
   m_ui->m_cmbDatabaseDriver->addItem("SQLite", APP_DB_DRIVER_SQLITE);
 
   // Load in-memory database status.
@@ -448,7 +434,10 @@ void FormSettings::loadGeneral() {
     // Load MySQL.
     m_ui->m_cmbDatabaseDriver->addItem("MySQL", APP_DB_DRIVER_MYSQL);
 
-    // TODO: nacist username, password atp.
+    m_ui->m_txtMysqlHostname->lineEdit()->setText(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
+    m_ui->m_txtMysqlUsername->lineEdit()->setText(Settings::instance()->value(APP_CFG_DB, "mysql_username").toString());
+    m_ui->m_txtMysqlPassword->lineEdit()->setText(Settings::instance()->value(APP_CFG_DB, "mysql_password").toString());
+    m_ui->m_spinMysqlPort->setValue(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
   }
 
   // TODO: nacist podle nastaveni
@@ -457,16 +446,7 @@ void FormSettings::loadGeneral() {
                                                                                                              APP_DB_DRIVER_SQLITE).toString()));
 }
 
-void FormSettings::saveGeneral() {
-  // If auto-start feature is available and user wants
-  // to turn it on, then turn it on.
-  if (m_ui->m_checkAutostart->isChecked()) {
-    SystemFactory::instance()->setAutoStartStatus(SystemFactory::Enabled);
-  }
-  else {
-    SystemFactory::instance()->setAutoStartStatus(SystemFactory::Disabled);
-  }
-
+void FormSettings::saveDataStorage() {
   // Setup in-memory database status.
   bool original_inmemory = Settings::instance()->value(APP_CFG_DB, "use_in_memory_db", false).toBool();
   bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
@@ -484,13 +464,45 @@ void FormSettings::saveGeneral() {
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // Save MySQL.
-    // TODO: ulozit username, password atp.
+    Settings::instance()->setValue(APP_CFG_DB, "mysql_hostname", m_ui->m_txtMysqlHostname->lineEdit()->text());
+    Settings::instance()->setValue(APP_CFG_DB, "mysql_username", m_ui->m_txtMysqlUsername->lineEdit()->text());
+    Settings::instance()->setValue(APP_CFG_DB, "mysql_password", m_ui->m_txtMysqlPassword->lineEdit()->text());
+    Settings::instance()->setValue(APP_CFG_DB, "mysql_port", m_ui->m_spinMysqlPort->value());
   }
 
   Settings::instance()->setValue(APP_CFG_DB, "database_driver", selected_db_driver);
 
   if (original_db_driver != selected_db_driver) {
     m_changedDataTexts.append(tr("data storage backend changed"));
+  }
+}
+
+void FormSettings::loadGeneral() {
+  // Load auto-start status.
+  SystemFactory::AutoStartStatus autostart_status = SystemFactory::instance()->getAutoStartStatus();
+  switch (autostart_status) {
+    case SystemFactory::Enabled:
+      m_ui->m_checkAutostart->setChecked(true);
+      break;
+    case SystemFactory::Disabled:
+      m_ui->m_checkAutostart->setChecked(false);
+      break;
+    default:
+      m_ui->m_checkAutostart->setEnabled(false);
+      m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text() +
+                                      tr(" (not supported on this platform)"));
+      break;
+  }
+}
+
+void FormSettings::saveGeneral() {
+  // If auto-start feature is available and user wants
+  // to turn it on, then turn it on.
+  if (m_ui->m_checkAutostart->isChecked()) {
+    SystemFactory::instance()->setAutoStartStatus(SystemFactory::Enabled);
+  }
+  else {
+    SystemFactory::instance()->setAutoStartStatus(SystemFactory::Disabled);
   }
 }
 

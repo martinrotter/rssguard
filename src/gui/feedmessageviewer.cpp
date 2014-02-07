@@ -328,14 +328,15 @@ void FeedMessageViewer::vacuumDatabase() {
   else {
     if (is_tray_activated) {
       SystemTrayIcon::instance()->showMessage(tr("Database was not defragmented"),
-                                              tr("Database was not defragmented, try again later."),
-                                              QSystemTrayIcon::Warning);
+                                              tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."),
+                                              QSystemTrayIcon::Warning,
+                                              TRAY_ICON_BUBBLE_TIMEOUT);
     }
     else {
       MessageBox::show(this,
                        QMessageBox::Warning,
                        tr("Database was not defragmented"),
-                       tr("Database was not defragmented, try again later."));
+                       tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."));
     }
   }
 

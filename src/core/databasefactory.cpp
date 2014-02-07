@@ -498,6 +498,7 @@ bool DatabaseFactory::vacuumDatabase() {
       break;
     }
 
+    case MYSQL:
     default:
       return false;
   }

@@ -52,6 +52,9 @@ class FormSettings : public QDialog {
     void loadGeneral();
     void saveGeneral();
 
+    void loadDataStorage();
+    void saveDataStorage();
+
     void loadLanguage();
     void saveLanguage();
 
