@@ -18,7 +18,6 @@ DatabaseFactory::DatabaseFactory(QObject *parent)
     m_sqliteInMemoryDatabaseInitialized(false) {
   setObjectName("DatabaseFactory");
   determineDriver();
-  sqliteAssemblyDatabaseFilePath();
 }
 
 DatabaseFactory::~DatabaseFactory() {
@@ -36,13 +35,13 @@ DatabaseFactory *DatabaseFactory::instance() {
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
   if (Settings::instance()->type() == Settings::Portable) {
     m_sqliteDatabaseFilePath = qApp->applicationDirPath() +
-                         QDir::separator() +
-                         QString(APP_DB_PATH);
+                               QDir::separator() +
+                               QString(APP_DB_PATH);
   }
   else {
     m_sqliteDatabaseFilePath = QDir::homePath() + QDir::separator() +
-                         QString(APP_LOW_H_NAME) + QDir::separator() +
-                         QString(APP_DB_PATH);
+                               QString(APP_LOW_H_NAME) + QDir::separator() +
+                               QString(APP_DB_PATH);
   }
 }
 
@@ -226,7 +225,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
                                          DesiredType desired_type) {
   if (desired_type == DatabaseFactory::StrictlyInMemory ||
-      (desired_type == DatabaseFactory::FromSettings && m_sqliteInMemoryDatabaseEnabled)) {
+      (desired_type == DatabaseFactory::FromSettings && m_activeDatabaseDriver == SQLITE_MEMORY)) {
     // We request in-memory database (either user don't care
     // about the type or user overrided it in the settings).
     if (!m_sqliteInMemoryDatabaseInitialized) {
@@ -299,11 +298,7 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
   QSqlDatabase::removeDatabase(connection_name);
 }
 
-void DatabaseFactory::saveMemoryDatabase() {
-  if (!m_sqliteInMemoryDatabaseEnabled) {
-    return;
-  }
-
+void DatabaseFactory::sqliteSaveMemoryDatabase() {
   qDebug("Saving in-memory working database back to persistent file-based storage.");
 
   QSqlDatabase database = connection(objectName(), StrictlyInMemory);
@@ -328,19 +323,58 @@ void DatabaseFactory::saveMemoryDatabase() {
 }
 
 void DatabaseFactory::determineDriver() {
-  m_sqliteInMemoryDatabaseEnabled = Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool();
+  QString db_driver = Settings::instance()->value(APP_CFG_GEN, "database_driver", APP_DB_DRIVER_SQLITE).toString();
 
-  qDebug("Working database source was determined as %s.",
-         m_sqliteInMemoryDatabaseEnabled ? "in-memory database" : "file-based database");
+  if (db_driver == APP_DB_DRIVER_MYSQL && QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
+    // User wants to use MySQL and MySQL is actually available. Use it.
+    // TODO: Perform username & password check if db is really fine.
+    m_activeDatabaseDriver = MYSQL;
+
+    qDebug("Working database source was as MySQL database.");
+  }
+  else {
+    // User wants to use SQLite, which is always available. Check if file-based
+    // or in-memory database will be used.
+    if (Settings::instance()->value(APP_CFG_GEN, "use_in_memory_db", false).toBool()) {
+      // Use in-memory SQLite database.
+      m_activeDatabaseDriver = SQLITE_MEMORY;
+
+      qDebug("Working database source was determined as SQLite in-memory database.");
+    }
+    else {
+      // Use strictly file-base SQLite database.
+      m_activeDatabaseDriver = SQLITE;
+
+      qDebug("Working database source was determined as SQLite file-based database.");
+    }
+
+    sqliteAssemblyDatabaseFilePath();
+  }
 }
 
 void DatabaseFactory::saveDatabase() {
-  saveMemoryDatabase();
+  switch (m_activeDatabaseDriver) {
+    case SQLITE_MEMORY:
+      sqliteSaveMemoryDatabase();
+      break;
+
+    default:
+      break;
+  }
 }
 
 bool DatabaseFactory::vacuumDatabase() {
-  QSqlDatabase database = connection(objectName(), FromSettings);
-  QSqlQuery query_vacuum(database);
+  switch (m_activeDatabaseDriver) {
+    case SQLITE_MEMORY:
+    case SQLITE: {
+      QSqlDatabase database = connection(objectName(), FromSettings);
+      QSqlQuery query_vacuum(database);
 
-  return query_vacuum.exec("VACUUM");
+      return query_vacuum.exec("VACUUM");
+      break;
+    }
+
+    default:
+      return false;
+  }
 }

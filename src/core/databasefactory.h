@@ -55,23 +55,18 @@ class DatabaseFactory : public QObject {
     // to gracefully exit the application.
     void saveDatabase();
 
+    // Performs cleanup of the database.
+    bool vacuumDatabase();
+
     // Singleton getter.
     static DatabaseFactory *instance();
-
-    //
-    // SQLITE stuff.
-    //
-
-    // Performs "VACUUM" on the database and
-    // returns true of operation succeeded.
-    bool vacuumDatabase();
 
   private:
     //
     // GENERAL stuff.
     //
 
-    // Conctructor.
+    // Constructor.
     explicit DatabaseFactory(QObject *parent = 0);
 
     // Decides which database backend will be used in this
@@ -90,7 +85,7 @@ class DatabaseFactory : public QObject {
 
     // Performs saving of items from in-memory database
     // to file-based database.
-    void saveMemoryDatabase();
+    void sqliteSaveMemoryDatabase();
 
     // Assemblies database file path.
     void sqliteAssemblyDatabaseFilePath();
@@ -106,10 +101,6 @@ class DatabaseFactory : public QObject {
     // Is database file initialized?
     bool m_sqliteFileBasedDatabaseinitialized;
     bool m_sqliteInMemoryDatabaseInitialized;
-
-    // Is true when user selected in-memory database.
-    // NOTE: This can be changed only on application startup.
-    bool m_sqliteInMemoryDatabaseEnabled;
 };
 
 #endif // DATABASEFACTORY_H
