@@ -67,7 +67,7 @@ QSqlDatabase DatabaseFactory::initializeInMemoryDatabase() {
     query_db.exec("PRAGMA temp_store = MEMORY");
 
     // Sample query which checks for existence of tables.
-    query_db.exec("SELECT value FROM Information WHERE key = 'schema_version'");
+    query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'");
 
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. In-memory database is not initialized. Initializing now.");

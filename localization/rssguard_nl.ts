@@ -50,51 +50,51 @@
     </message>
     <message>
         <source>Cannot add standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geen standaard categorie toevoegen</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan niet een nieuwe standaard categorie toevoegen omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot add standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geen standaard feed toevoegen</translation>
     </message>
     <message>
         <source>You cannot add new standard feed now because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan niet een nieuwe standaard feed toevoegen omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan item niet bewerken</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gekozen item kan niet worden bewerkt omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot delete item</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan item niet verwijderen</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde item kan niet worden verwijderd omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan alle items niet updaten</translation>
     </message>
     <message>
         <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan niet alle items updaten omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot update selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geselecteerde items niet updaten</translation>
     </message>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan gekozen items niet updaten omdat feeds aan het updaten zijn.</translation>
     </message>
 </context>
 <context>
@@ -161,7 +161,7 @@
     </message>
     <message>
         <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a ref=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website &lt;/li&gt;&lt;ul&gt;U kunt de broncode voor RSS Guard verkrijgen op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht(C)2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;RSS Guard is een (zeer) makelijk te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a ref=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website &lt;/li&gt;&lt;ul&gt;U kunt de broncode voor RSS Guard verkrijgen op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht(C)2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -232,23 +232,23 @@
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
-        <translation>Update geselekteerde feeds/categorieën.</translation>
+        <translation>Update geselecteerde feeds/categorieën.</translation>
     </message>
     <message>
         <source>Edit selected feed/category.</source>
-        <translation>Bewerk geselekteerde feeds/categorieën.</translation>
+        <translation>Bewerk geselecteerde feeds/categorieën.</translation>
     </message>
     <message>
         <source>Mark selected messages as read.</source>
-        <translation>Markeer geselekteerde bericht als gelezen.</translation>
+        <translation>Markeer geselecteerde bericht als gelezen.</translation>
     </message>
     <message>
         <source>Mark selected messages as unread.</source>
-        <translation>Markeer geselekteerde bericht als ongelezen.</translation>
+        <translation>Markeer geselecteerde bericht als ongelezen.</translation>
     </message>
     <message>
         <source>Switch importance of selected messages.</source>
-        <translation>Wissel de belangrijkheid van geselekteerde berichten.</translation>
+        <translation>Wissel de belangrijkheid van geselecteerde berichten.</translation>
     </message>
     <message>
         <source>&amp;Web browser</source>
@@ -352,7 +352,7 @@
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation>Update ge&amp;seleckteerde items</translation>
+        <translation>Update ge&amp;selecteerde items</translation>
     </message>
     <message>
         <source>Mark &amp;selected items read</source>
@@ -400,35 +400,35 @@
     </message>
     <message>
         <source>Add new standard category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw standaard categorie toe.</translation>
     </message>
     <message>
         <source>Add new item</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw item toe</translation>
     </message>
     <message>
         <source>Switch &amp;fullscreen/normal mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel &amp;beeldvullende/normale modus</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bewerk geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verwijder geselecteerde items</translation>
     </message>
     <message>
         <source>Standard &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard &amp;feed</translation>
     </message>
     <message>
         <source>Add new standard feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw standaard feed toe.</translation>
     </message>
     <message>
         <source>Standard &amp;category</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard &amp;categorie</translation>
     </message>
 </context>
 <context>
@@ -763,7 +763,7 @@
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik in-geheugen database als de werkende database</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -777,329 +777,339 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het gebruik van in-geheugen werkende database heeft een aantal voordelen en nadelen.Zorg ervoor dat u er bekend mee bent voordat u deze functie inschakelt. Voordelen:
+&lt;ul&gt;
+&lt;li&gt;hogere snelheid voor feed/bericht manipulaties (vooral met duizenden berichten weergegeven),&lt;/li&gt;
+&lt;li&gt;gehele database opgeslagen in het RAM geheugen, waardoor uw harde schijf meer rust.&lt;/li&gt;
+&lt;/ul&gt;
+Nadelen:
+&lt;ul&gt;
+&lt;li&gt;als rssguard crasht, gaan wijzigingen van laatste sessie verloren,&lt;/li&gt;
+&lt;li&gt;opstarten en afsluiten van rssguard kan iets langer duren (max. 2 seconden).&lt;/li&gt;
+&lt;/lu&gt;
+Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation type="unfinished"></translation>
+        <translation>in-geheugen database overgeschakeld</translation>
     </message>
     <message>
         <source>Internal web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Interne webbrowser</translation>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe webbrowser</translation>
     </message>
     <message>
         <source>Remove all read messages from all standard feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de gelezen berichten van alle standaard feeds als rssguard sluit</translation>
     </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished">Oudere categorie</translation>
+        <translation>Oudere categorie</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished">Omschrijving</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished">Pictogram</translation>
+        <translation>Pictogram</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies hoofd item voor je categorie.</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer pictogram voor je categorie.</translation>
     </message>
     <message>
         <source>Add new standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw standaard categorie toe</translation>
     </message>
     <message>
         <source>Edit existing standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk bestaande standaard categorie</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Categorie naam is ok.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>Categorie naam is te kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving is leeg.</translation>
     </message>
     <message>
         <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving is ok.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies pictogram bestand voor de categorie</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer pictogram</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleer</translation>
     </message>
     <message>
         <source>Look in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijk in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram naam:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Type pictogram:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel categorie</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel titel in voor je categorie.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"></translation>
+        <translation>Categorie omschrijving</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel omschrijving in voor je categorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram selectie</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad pictogram uit een bestand...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik geen pictogram</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik standaard pictogram</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished">Oudere categorie</translation>
+        <translation>Oudere categorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies hoofd item voor je feed.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer type van de standaard feed.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished">Omschrijving</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Coderen</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished">Pictogram</translation>
+        <translation>Pictogram</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer pictogram voor je feed.</translation>
     </message>
     <message>
         <source>Add new standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw standaard feed toe</translation>
     </message>
     <message>
         <source>Edit existing standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk bestaande standaard feed</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed naam is ok.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed naam is te kort.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving is leeg.</translation>
     </message>
     <message>
         <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving is ok.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed naam</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel titel in voor je feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed omschrijving</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel omschrijving voor feed in.</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel url in voor je feed.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
         <source>Requires authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Vereist verificatie</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Gebruikersnaam</translation>
+        <translation>Gebruikersnaam</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Paswoord</translation>
+        <translation>Paswoord</translation>
     </message>
     <message>
         <source>The url is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>De url is ok.</translation>
     </message>
     <message>
         <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"></translation>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
     </message>
     <message>
         <source>The url is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>De url is leeg.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer pictogram bestand voor je feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer pictogram</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuleer</translation>
     </message>
     <message>
         <source>Look in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijk in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram naam:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Type pictogram:</translation>
     </message>
     <message>
         <source>Auto-fetch feed metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch de feed metadata ophalen</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Volledige feed url inclusief schema</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stel paswoord in voor toegang tot feed.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram selectie</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad pictogram uit een bestand...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik geen pictogram</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik standaard pictogram</translation>
     </message>
 </context>
 <context>
@@ -1114,7 +1124,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;RSS Guard is een (zeer) makelijk om te gebruiken feed lezer.Het ondersteund alle grote formaten, inclusief RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Maak gebruik van all beschikbare functies die er zijn. Ook als je een bug vind, of je hebt een nieuwe functie die je wilt zien, maak dan een nieuwe &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text decoration: underline;color:#0000ff;&quot;&gt;probleem rapport&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard kan naar iedere taal worden vertaald. Contactpersoon is &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;Auteur&lt;/span&gt;&lt;/a&gt;In geval van belangstelling.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
+        <translation>&lt;p&gt;RSS Guard is een (zeer) makelijk te gebruiken feed lezer.Het ondersteund alle grote formaten, inclusief RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Maak gebruik van all beschikbare functies die er zijn. Ook als je een bug vind, of je hebt een nieuwe functie die je wilt zien, maak dan een nieuwe &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text decoration: underline;color:#0000ff;&quot;&gt;probleem rapport&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard kan naar iedere taal worden vertaald. Contactpersoon is &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;Auteur&lt;/span&gt;&lt;/a&gt;In geval van belangstelling.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -1307,7 +1317,10 @@ Deze categorie bevat geen nested items.</translation>
 %3
 
 Encoding: %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)
+%3
+
+Codering: %4</translation>
     </message>
 </context>
 <context>
@@ -1336,11 +1349,11 @@ Encoding: %4</source>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit dit tabblad.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit tabblad</translation>
     </message>
 </context>
 <context>
@@ -1421,19 +1434,19 @@ Encoding: %4</source>
     </message>
     <message>
         <source>Go back.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga terug.</translation>
     </message>
     <message>
         <source>Go forward.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga vooruit.</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vernieuw huidige webpagina.</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stop het laden van pagina.</translation>
     </message>
 </context>
 <context>

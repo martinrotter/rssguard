@@ -117,6 +117,13 @@ void FeedsView::updateAllFeeds() {
   }
 }
 
+void FeedsView::updateAllFeedsOnStartup() {
+  if (Settings::instance()->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool()) {
+    qDebug("Requesting update for all feeds on application startup.");
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
+  }
+}
+
 void FeedsView::updateSelectedFeeds() {
   if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     emit feedsUpdateRequested(selectedFeeds());

@@ -52,6 +52,7 @@ class FeedsView : public QTreeView {
   public slots:
     // Feed updating.
     void updateAllFeeds();
+    void updateAllFeedsOnStartup();
     void updateSelectedFeeds();
 
     // Is executed when next auto-update round could be done.

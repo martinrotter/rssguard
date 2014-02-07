@@ -44,6 +44,9 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
 
   // Start the feed downloader thread.
   m_feedDownloaderThread->start();
+
+  // Now, update all feeds if user has set it.
+  m_feedsView->updateAllFeedsOnStartup();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
