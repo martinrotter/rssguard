@@ -14,76 +14,10 @@
    <string>Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QListWidget" name="m_listSettings">
-     <property name="minimumSize">
-      <size>
-       <width>220</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>220</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="showDropIndicator" stdset="0">
-      <bool>false</bool>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>false</bool>
-     </property>
-     <property name="movement">
-      <enum>QListView::Static</enum>
-     </property>
-     <property name="selectionRectVisible">
-      <bool>false</bool>
-     </property>
-     <property name="currentRow">
-      <number>0</number>
-     </property>
-     <item>
-      <property name="text">
-       <string>General</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Data storage</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Keyboard shortcuts</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>User interface</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Language</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Web browser &amp; proxy</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Feeds &amp; messages</string>
-      </property>
-     </item>
-    </widget>
-   </item>
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -125,7 +59,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QLabel" name="m_lblDataStorageWarning">
          <property name="text">
-          <string>WARNING: Note that switching to another data storage type will NOT preserve your data from currently active data storage.</string>
+          <string>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -148,7 +82,7 @@
        <item row="2" column="0" colspan="2">
         <widget class="QStackedWidget" name="m_stackedDatabaseDriver">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_pageSqlite">
           <layout class="QFormLayout" name="formLayout_15">
@@ -276,6 +210,33 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="2" column="1">
             <widget class="LineEditWithStatus" name="m_txtMysqlPassword" native="true"/>
            </item>
+           <item row="3" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <widget class="QPushButton" name="m_btnMysqlTestSetup">
+               <property name="text">
+                <string>Test setup</string>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
           </layout>
          </widget>
         </widget>
@@ -309,8 +270,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>564</width>
+            <height>363</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -1054,6 +1015,72 @@ Authors of this application are NOT responsible for lost data.</string>
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QListWidget" name="m_listSettings">
+     <property name="minimumSize">
+      <size>
+       <width>220</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>220</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="selectionRectVisible">
+      <bool>false</bool>
+     </property>
+     <property name="currentRow">
+      <number>0</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>General</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Data storage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Keyboard shortcuts</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>User interface</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Language</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Web browser &amp; proxy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Feeds &amp; messages</string>
+      </property>
+     </item>
     </widget>
    </item>
   </layout>

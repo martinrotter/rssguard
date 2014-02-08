@@ -33,6 +33,13 @@ DatabaseFactory *DatabaseFactory::instance() {
   return s_instance;
 }
 
+int DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
+                                         const QString &usernam, const QString &password) {
+  // TODO: Otestovat, připojení k databázi pod danými
+  // údaji. Vrátit kód chyby. Použije se v dialogu nastavení.
+  return 0;
+}
+
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
   if (Settings::instance()->type() == Settings::Portable) {
     m_sqliteDatabaseFilePath = qApp->applicationDirPath() +
@@ -106,7 +113,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     }
 
     // Loading messages from file-based database.
-    QSqlDatabase file_database = connection(objectName(), StrictlyFileBased);
+    QSqlDatabase file_database = sqliteConnection(objectName(), StrictlyFileBased);
     QSqlQuery copy_contents(database);
 
     // Attach database.
@@ -245,8 +252,8 @@ void DatabaseFactory::removeConnection(const QString &connection_name) {
 void DatabaseFactory::sqliteSaveMemoryDatabase() {
   qDebug("Saving in-memory working database back to persistent file-based storage.");
 
-  QSqlDatabase database = connection(objectName(), StrictlyInMemory);
-  QSqlDatabase file_database = connection(objectName(), StrictlyFileBased);
+  QSqlDatabase database = sqliteConnection(objectName(), StrictlyInMemory);
+  QSqlDatabase file_database = sqliteConnection(objectName(), StrictlyFileBased);
   QSqlQuery copy_contents(database);
 
   // Attach database.
@@ -317,11 +324,11 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
       // yet, add it and set it up.
       database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL, connection_name);
 
-      database.setHostName("localhost");
-      database.setPort(3306);
-      database.setUserName("root");
-      database.setDatabaseName("rssguard");
-      //database.setPassword("password");
+      database.setHostName(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
+      database.setPort(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
+      database.setUserName(Settings::instance()->value(APP_CFG_DB, "mysql_username").toString());
+      database.setPassword(Settings::instance()->value(APP_CFG_DB, "mysql_password").toString());
+      database.setDatabaseName(APP_LOW_NAME);
     }
 
     if (!database.isOpen() && !database.open()) {
@@ -343,10 +350,10 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL,
                                                     connection_name);
 
-  database.setHostName("localhost");
-  database.setPort(3306);
-  database.setUserName("root");
-  //database.setPassword("password");
+  database.setHostName(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
+  database.setPort(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
+  database.setUserName(Settings::instance()->value(APP_CFG_DB, "mysql_username").toString());
+  database.setPassword(Settings::instance()->value(APP_CFG_DB, "mysql_password").toString());
 
   if (!database.open()) {
     qFatal("MySQL database was NOT opened. Delivered error message: '%s'",
@@ -392,8 +399,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       query_db.next();
 
       qDebug("MySQL database connection '%s' seems to be established.",
-             qPrintable(connection_name),
-             qPrintable(QDir::toNativeSeparators(database.databaseName())));
+             qPrintable(connection_name));
       qDebug("MySQL database has version '%s'.", qPrintable(query_db.value(0).toString()));
     }
 
@@ -476,6 +482,13 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,
   }
 }
 
+bool DatabaseFactory::sqliteVacuumDatabase() {
+  QSqlDatabase database = sqliteConnection(objectName(), FromSettings);
+  QSqlQuery query_vacuum(database);
+
+  return query_vacuum.exec("VACUUM");
+}
+
 void DatabaseFactory::saveDatabase() {
   switch (m_activeDatabaseDriver) {
     case SQLITE_MEMORY:
@@ -490,13 +503,8 @@ void DatabaseFactory::saveDatabase() {
 bool DatabaseFactory::vacuumDatabase() {
   switch (m_activeDatabaseDriver) {
     case SQLITE_MEMORY:
-    case SQLITE: {
-      QSqlDatabase database = connection(objectName(), FromSettings);
-      QSqlQuery query_vacuum(database);
-
-      return query_vacuum.exec("VACUUM");
-      break;
-    }
+    case SQLITE:
+      return sqliteVacuumDatabase();
 
     case MYSQL:
     default:

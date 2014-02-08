@@ -61,6 +61,13 @@ class DatabaseFactory : public QObject {
     // Singleton getter.
     static DatabaseFactory *instance();
 
+    //
+    // MySQL stuff.
+    //
+    int mysqlTestConnection(const QString &hostname, int port,
+                            const QString &usernam, const QString &password);
+
+
   private:
     //
     // GENERAL stuff.
@@ -99,6 +106,9 @@ class DatabaseFactory : public QObject {
 
     QSqlDatabase sqliteConnection(const QString &connection_name,
                                   DesiredType desired_type);
+
+    // Runs "VACUUM" on the database.
+    bool sqliteVacuumDatabase();
 
     // Performs saving of items from in-memory database
     // to file-based database.

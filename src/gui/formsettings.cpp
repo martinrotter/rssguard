@@ -2,6 +2,7 @@
 
 #include "core/defs.h"
 #include "core/settings.h"
+#include "core/databasefactory.h"
 #include "core/localization.h"
 #include "core/systemfactory.h"
 #include "core/feeddownloader.h"
@@ -95,6 +96,14 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(changeDefaultBrowserArguments(int)));
   connect(m_ui->m_btnExternalBrowserExecutable, SIGNAL(clicked()),
           this, SLOT(selectBrowserExecutable()));
+  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onMysqlUsernameChanged(QString)));
+  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onMysqlHostnameChanged(QString)));
+  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textChanged(QString)),
+          this, SLOT(onMysqlPasswordChanged(QString)));
+  connect(m_ui->m_btnMysqlTestSetup, SIGNAL(clicked()),
+          this, SLOT(mysqlTestConnection()));
 
   // Load all settings.
   loadGeneral();
@@ -425,14 +434,21 @@ void FormSettings::saveShortcuts() {
 
 void FormSettings::loadDataStorage() {
   // Load SQLite.
-  m_ui->m_cmbDatabaseDriver->addItem("SQLite", APP_DB_DRIVER_SQLITE);
+  m_ui->m_cmbDatabaseDriver->addItem(
+        tr("SQLite (embedded database)"), APP_DB_DRIVER_SQLITE);
 
   // Load in-memory database status.
   m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_DB, "use_in_memory_db", false).toBool());
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // Load MySQL.
-    m_ui->m_cmbDatabaseDriver->addItem("MySQL", APP_DB_DRIVER_MYSQL);
+    m_ui->m_cmbDatabaseDriver->addItem(
+          tr("MySQL/MariaDB (dedicated database)"), APP_DB_DRIVER_MYSQL);
+
+    // Setup placeholders.
+    m_ui->m_txtMysqlHostname->lineEdit()->setPlaceholderText(tr("Hostname of your MySQL server"));
+    m_ui->m_txtMysqlUsername->lineEdit()->setPlaceholderText(tr("Username to login with"));
+    m_ui->m_txtMysqlPassword->lineEdit()->setPlaceholderText(tr("Password for your username"));
 
     m_ui->m_txtMysqlHostname->lineEdit()->setText(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
     m_ui->m_txtMysqlUsername->lineEdit()->setText(Settings::instance()->value(APP_CFG_DB, "mysql_username").toString());
@@ -440,7 +456,6 @@ void FormSettings::loadDataStorage() {
     m_ui->m_spinMysqlPort->setValue(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
   }
 
-  // TODO: nacist podle nastaveni
   m_ui->m_cmbDatabaseDriver->setCurrentIndex(m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_DB,
                                                                                                              "database_driver",
                                                                                                              APP_DB_DRIVER_SQLITE).toString()));
@@ -474,6 +489,48 @@ void FormSettings::saveDataStorage() {
 
   if (original_db_driver != selected_db_driver) {
     m_changedDataTexts.append(tr("data storage backend changed"));
+  }
+}
+
+void FormSettings::mysqlTestConnection() {
+  int result = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
+                                                                m_ui->m_spinMysqlPort->value(),
+                                                                m_ui->m_txtMysqlUsername->lineEdit()->text(),
+                                                                m_ui->m_txtMysqlPassword->lineEdit()->text());
+
+  // TODO: zobrazit výsledek
+}
+
+void FormSettings::onMysqlHostnameChanged(const QString &new_hostname) {
+  if (new_hostname.isEmpty()) {
+    m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::Warning,
+                                        tr("Hostname is empty."));
+  }
+  else {
+    m_ui->m_txtMysqlHostname->setStatus(LineEditWithStatus::Ok,
+                                        tr("Hostname looks ok."));
+  }
+}
+
+void FormSettings::onMysqlUsernameChanged(const QString &new_username) {
+  if (new_username.isEmpty()) {
+    m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::Warning,
+                                        tr("Username is empty."));
+  }
+  else {
+    m_ui->m_txtMysqlUsername->setStatus(LineEditWithStatus::Ok,
+                                        tr("Username looks ok."));
+  }
+}
+
+void FormSettings::onMysqlPasswordChanged(const QString &new_password) {
+  if (new_password.isEmpty()) {
+    m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Warning,
+                                        tr("Password is empty."));
+  }
+  else {
+    m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Ok,
+                                        tr("Password looks ok."));
   }
 }
 

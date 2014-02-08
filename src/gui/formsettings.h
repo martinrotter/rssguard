@@ -54,6 +54,10 @@ class FormSettings : public QDialog {
 
     void loadDataStorage();
     void saveDataStorage();
+    void mysqlTestConnection();
+    void onMysqlHostnameChanged(const QString &new_hostname);
+    void onMysqlUsernameChanged(const QString &new_username);
+    void onMysqlPasswordChanged(const QString &new_password);
 
     void loadLanguage();
     void saveLanguage();
