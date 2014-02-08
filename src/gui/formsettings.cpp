@@ -104,6 +104,14 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(onMysqlPasswordChanged(QString)));
   connect(m_ui->m_btnMysqlTestSetup, SIGNAL(clicked()),
           this, SLOT(mysqlTestConnection()));
+  connect(m_ui->m_spinMysqlPort, SIGNAL(editingFinished()),
+          this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textEdited(QString)),
+          this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textEdited(QString)),
+          this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textEdited(QString)),
+          this, SLOT(onMysqlDataStorageEdited()));
 
   // Load all settings.
   loadGeneral();
@@ -491,7 +499,8 @@ void FormSettings::saveDataStorage() {
 
   Settings::instance()->setValue(APP_CFG_DB, "database_driver", selected_db_driver);
 
-  if (original_db_driver != selected_db_driver) {
+  if (original_db_driver != selected_db_driver ||
+      m_initialSettings.m_mysqlDataStorageChanged) {
     m_changedDataTexts.append(tr("data storage backend changed"));
   }
 }
@@ -537,6 +546,10 @@ void FormSettings::onMysqlPasswordChanged(const QString &new_password) {
     m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Ok,
                                         tr("Password looks ok."));
   }
+}
+
+void FormSettings::onMysqlDataStorageEdited() {
+  m_initialSettings.m_mysqlDataStorageChanged = true;
 }
 
 void FormSettings::loadGeneral() {

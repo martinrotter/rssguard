@@ -15,10 +15,12 @@ struct TemporarySettings {
 
   public:
     TemporarySettings()
-      : m_webBrowserProgress(QColor()) {
+      : m_webBrowserProgress(QColor()),
+        m_mysqlDataStorageChanged(false) {
     }
 
     QColor m_webBrowserProgress;
+    bool m_mysqlDataStorageChanged;
 };
 
 class FormSettings : public QDialog {
@@ -58,6 +60,7 @@ class FormSettings : public QDialog {
     void onMysqlHostnameChanged(const QString &new_hostname);
     void onMysqlUsernameChanged(const QString &new_username);
     void onMysqlPasswordChanged(const QString &new_password);
+    void onMysqlDataStorageEdited();
 
     void loadLanguage();
     void saveLanguage();
