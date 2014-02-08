@@ -493,12 +493,13 @@ void FormSettings::saveDataStorage() {
 }
 
 void FormSettings::mysqlTestConnection() {
-  int result = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
+  int error_code = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
                                                                 m_ui->m_spinMysqlPort->value(),
                                                                 m_ui->m_txtMysqlUsername->lineEdit()->text(),
                                                                 m_ui->m_txtMysqlPassword->lineEdit()->text());
 
-  // TODO: zobrazit výsledek
+  // Let's interpret the result.
+  m_ui->m_lblMysqlTestResult->setText(DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));
 }
 
 void FormSettings::onMysqlHostnameChanged(const QString &new_hostname) {

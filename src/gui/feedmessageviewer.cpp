@@ -66,12 +66,17 @@ void FeedMessageViewer::saveSize() {
 
   // States of splitters are stored, let's store
   // widths of columns.
-  settings->setValue(APP_CFG_GUI,
-                     KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
-                     m_messagesView->columnWidth(MSG_DB_AUTHOR_INDEX));
-  settings->setValue(APP_CFG_GUI,
-                     KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
-                     m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX));
+  int width_column_author = m_messagesView->columnWidth(MSG_DB_AUTHOR_INDEX);
+  int width_column_date = m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX);
+
+  if (width_column_author != 0 && width_column_date != 0) {
+    settings->setValue(APP_CFG_GUI,
+                       KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
+                       width_column_author);
+    settings->setValue(APP_CFG_GUI,
+                       KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
+                       width_column_date);
+  }
 }
 
 void FeedMessageViewer::loadSize() {

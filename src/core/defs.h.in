@@ -42,6 +42,7 @@
 #define AUTO_UPDATE_INTERVAL            60000
 #define STARTUP_UPDATE_DELAY            1500
 
+#define APP_DB_TEST_MYSQL             "MySQLTest"
 #define APP_DB_MYSQL_PORT             3306
 #define APP_DB_DRIVER_SQLITE          "QSQLITE"
 #define APP_DB_DRIVER_MYSQL           "QMYSQL"

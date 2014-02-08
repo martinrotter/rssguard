@@ -34,10 +34,45 @@ DatabaseFactory *DatabaseFactory::instance() {
 }
 
 int DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
-                                         const QString &usernam, const QString &password) {
-  // TODO: Otestovat, připojení k databázi pod danými
-  // údaji. Vrátit kód chyby. Použije se v dialogu nastavení.
-  return 0;
+                                         const QString &username, const QString &password) {
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL,
+                                                    APP_DB_TEST_MYSQL);
+
+  database.setHostName(hostname);
+  database.setPort(port);
+  database.setUserName(username);
+  database.setPassword(password);
+
+  if (database.open()) {
+    // Connection succeeded, clean up the mess and return 0.
+    database.close();
+    removeConnection(APP_DB_TEST_MYSQL);
+    return 0;
+  }
+  else {
+    // Connection failed, do cleanup and return specific
+    // error code.
+    int error_code = database.lastError().number();
+
+    removeConnection(APP_DB_TEST_MYSQL);
+    return error_code;
+  }
+}
+
+QString DatabaseFactory::mysqlInterpretErrorCode(int error_code) {
+  switch (error_code) {
+    case 0:
+      return QObject::tr("Operation successful.");
+
+    case 2005:
+      return QObject::tr("No MySQL server is running in the target destination.");
+
+    case 1045:
+      return QObject::tr("Access denied. Invalid username or password used.");
+
+    default:
+      return QObject::tr("Unknown error.");
+  }
 }
 
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {

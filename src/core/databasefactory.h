@@ -64,9 +64,14 @@ class DatabaseFactory : public QObject {
     //
     // MySQL stuff.
     //
-    int mysqlTestConnection(const QString &hostname, int port,
-                            const QString &usernam, const QString &password);
 
+    // Tests if database connection with given data
+    // can be established and returns 0 if it can.
+    // Otherwise returns MySQL-specific error code.
+    int mysqlTestConnection(const QString &hostname, int port,
+                            const QString &username, const QString &password);
+
+    QString mysqlInterpretErrorCode(int error_code);
 
   private:
     //

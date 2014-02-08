@@ -16,7 +16,6 @@ MessagesModel::MessagesModel(QObject *parent)
                    DatabaseFactory::instance()->connection("MessagesModel",
                                                            DatabaseFactory::FromSettings)) {
   setObjectName("MessagesModel");
-
   setupFonts();
   setupIcons();
   setupHeaderData();
