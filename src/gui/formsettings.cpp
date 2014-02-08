@@ -433,6 +433,10 @@ void FormSettings::saveShortcuts() {
 }
 
 void FormSettings::loadDataStorage() {
+  onMysqlHostnameChanged(QString());
+  onMysqlUsernameChanged(QString());
+  onMysqlPasswordChanged(QString());
+
   // Load SQLite.
   m_ui->m_cmbDatabaseDriver->addItem(
         tr("SQLite (embedded database)"), APP_DB_DRIVER_SQLITE);
