@@ -1,4 +1,9 @@
 <body>
+[1.9.9.4]
+<ul>
+<li>[+] Experimental MySQL backend support.</li>
+<li>[~] Other major features tweaked, many bugs fixed.</li>
+</ul>
 [1.9.9.3]
 <ul>
 <li>[@] Alpha pre-release for testing purposes.</li>
