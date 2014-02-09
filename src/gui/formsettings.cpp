@@ -468,9 +468,13 @@ void FormSettings::loadDataStorage() {
     m_ui->m_spinMysqlPort->setValue(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
   }
 
-  m_ui->m_cmbDatabaseDriver->setCurrentIndex(m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_DB,
-                                                                                                             "database_driver",
-                                                                                                             APP_DB_DRIVER_SQLITE).toString()));
+  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_DB,
+                                                                                              "database_driver",
+                                                                                              APP_DB_DRIVER_SQLITE).toString());
+
+  if (index_current_backend >= 0) {
+    m_ui->m_cmbDatabaseDriver->setCurrentIndex(index_current_backend);
+  }
 }
 
 void FormSettings::saveDataStorage() {
@@ -507,9 +511,9 @@ void FormSettings::saveDataStorage() {
 
 void FormSettings::mysqlTestConnection() {
   int error_code = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
-                                                                m_ui->m_spinMysqlPort->value(),
-                                                                m_ui->m_txtMysqlUsername->lineEdit()->text(),
-                                                                m_ui->m_txtMysqlPassword->lineEdit()->text());
+                                                                    m_ui->m_spinMysqlPort->value(),
+                                                                    m_ui->m_txtMysqlUsername->lineEdit()->text(),
+                                                                    m_ui->m_txtMysqlPassword->lineEdit()->text());
 
   // Let's interpret the result.
   m_ui->m_lblMysqlTestResult->setText(DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));

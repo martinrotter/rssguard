@@ -14,7 +14,11 @@ NetworkFactory::NetworkFactory() {
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
                                                          int timeout,
                                                          QIcon &output) {
+#if QT_VERSION >= 0x050000
+  QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
+#else
   QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
+#endif
   QByteArray icon_data;
 
   QNetworkReply::NetworkError network_result =  downloadFeedFile(google_s2_with_url,
