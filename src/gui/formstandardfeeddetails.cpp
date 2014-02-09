@@ -310,7 +310,7 @@ void FormStandardFeedDetails::initialize() {
   m_ui->setupUi(this);
 
   // Add button for fetching feed data from internet.
-  m_btnLoadDataFromInternet = m_ui->m_buttonBox->addButton(tr("Auto-fetch feed metadata"),
+  m_btnLoadDataFromInternet = m_ui->m_buttonBox->addButton(tr("Fetch feed metadata"),
                                                            QDialogButtonBox::HelpRole);
 
   // Set flags and attributes.

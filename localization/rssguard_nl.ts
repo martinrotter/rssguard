@@ -22,6 +22,30 @@
         <source>Updated feed &apos;%1&apos;</source>
         <translation>Update feed &apos;%1&apos;</translation>
     </message>
+    <message>
+        <source>Cannot defragment database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cannot be defragmented because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database defragmented</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database was successfully defragmented.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database was not defragmented</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -95,6 +119,22 @@
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation>Je kan gekozen items niet updaten omdat feeds aan het updaten zijn.</translation>
+    </message>
+    <message>
+        <source>Cannot update scheduled items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update scheduled items because another feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scheduled update started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RSS Guard is performing scheduled update of some feeds.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -419,16 +459,40 @@
         <translation>&amp;Verwijder geselecteerde items</translation>
     </message>
     <message>
-        <source>Standard &amp;feed</source>
-        <translation>Standaard &amp;feed</translation>
-    </message>
-    <message>
         <source>Add new standard feed.</source>
         <translation>Voeg nieuw standaard feed toe.</translation>
     </message>
     <message>
-        <source>Standard &amp;category</source>
-        <translation>Standaard &amp;categorie</translation>
+        <source>New standard &amp;feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New standard &amp;category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch visibility of main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides main window if it is visible and shows it if it is hidden.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Defragment database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Defragment database file so that its size decreases.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch feeds list visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides or shows the list of feeds/categories.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -580,10 +644,6 @@
     <message>
         <source>Close tabs with</source>
         <translation>Sluit tabblad met</translation>
-    </message>
-    <message>
-        <source>Left mouse button double-click</source>
-        <translation>Linker muisknop dubbele-klik</translation>
     </message>
     <message>
         <source>Middle mouse button single-click</source>
@@ -805,6 +865,110 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <source>Remove all read messages from all standard feeds on application exit</source>
         <translation>Verwijder de gelezen berichten van alle standaard feeds als rssguard sluit</translation>
     </message>
+    <message>
+        <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database driver</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test run so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right mouse button double-click</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update all feeds every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed connection timeout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update all feed on application startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data storage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MySQL/MariaDB (dedicated database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname of your MySQL server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username to login with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>data storage backend changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hostname looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Username looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>Password looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -915,6 +1079,22 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <message>
         <source>Use default icon</source>
         <translation>Gebruik standaard pictogram</translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1080,10 +1260,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Type pictogram:</translation>
     </message>
     <message>
-        <source>Auto-fetch feed metadata</source>
-        <translation>Automatisch de feed metadata ophalen</translation>
-    </message>
-    <message>
         <source>Full feed url including scheme</source>
         <translation>Volledige feed url inclusief schema</translation>
     </message>
@@ -1110,6 +1286,50 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <message>
         <source>Use default icon</source>
         <translation>Gebruik standaard pictogram</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch feed metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1313,14 +1533,43 @@ Deze categorie bevat geen nested items.</translation>
 %2%3</translation>
     </message>
     <message>
+        <source>Operation successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
         <source>%1 (%2)
 %3
 
-Encoding: %4</source>
-        <translation>%1 (%2)
-%3
-
-Codering: %4</translation>
+Encoding: %4
+Auto-update status: %5</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
