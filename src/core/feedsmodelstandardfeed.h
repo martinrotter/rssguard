@@ -5,6 +5,8 @@
 
 #include <QDateTime>
 #include <QSqlRecord>
+#include <QPair>
+#include <QNetworkReply>
 
 
 class Message;
@@ -83,10 +85,12 @@ class FeedsModelStandardFeed : public FeedsModelFeed {
 
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
-    // Returns NULL if something failed.
-    static FeedsModelStandardFeed *guessFeed(const QString &url,
-                                             const QString &username,
-                                             const QString &password);
+    // Returns pointer to guessed feed (if at least partially
+    // guessed) and retrieved error/status code from network layer
+    // or NULL feed.
+    static QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> guessFeed(const QString &url,
+                                                                                 const QString &username,
+                                                                                 const QString &password);
 
   protected:
     // Persistently stores given messages into the database

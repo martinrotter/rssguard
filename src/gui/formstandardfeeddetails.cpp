@@ -16,6 +16,8 @@
 #include <QTextCodec>
 #include <QFileDialog>
 #include <QMenu>
+#include <QPair>
+#include <QNetworkReply>
 
 
 FormStandardFeedDetails::FormStandardFeedDetails(FeedsModel *model, QWidget *parent)
@@ -240,6 +242,25 @@ void FormStandardFeedDetails::apply() {
   }
 }
 
+void FormStandardFeedDetails::guessFeed() {
+  QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> result =  FeedsModelStandardFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
+                                                                                                          m_ui->m_txtUsername->lineEdit()->text(),
+                                                                                                          m_ui->m_txtPassword->lineEdit()->text());
+
+  if (result.first != NULL) {
+    // Icon was perhaps guessed.
+    m_ui->m_btnIcon->setIcon(result.first->icon());
+
+    m_ui->m_txtTitle->lineEdit()->setText(result.first->title());
+    m_ui->m_txtDescription->lineEdit()->setText(result.first->description());
+    m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
+    m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(result.first->encoding(), Qt::DisplayRole));
+  }
+  else {
+    // No feed guessed, even no icon available.
+  }
+}
+
 void FormStandardFeedDetails::createConnections() {
   // General connections.
   connect(m_ui->m_buttonBox, SIGNAL(accepted()),
@@ -258,6 +279,8 @@ void FormStandardFeedDetails::createConnections() {
           this, SLOT(onAuthenticationSwitched()));
   connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)),
           this, SLOT(onAutoUpdateTypeChanged(int)));
+  connect(m_btnLoadDataFromInternet, SIGNAL(clicked()),
+          this, SLOT(guessFeed()));
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));

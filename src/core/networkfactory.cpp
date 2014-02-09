@@ -5,9 +5,29 @@
 
 #include <QEventLoop>
 #include <QTimer>
+#include <QTextDocument>
 
 
 NetworkFactory::NetworkFactory() {
+}
+
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
+                                                         int timeout,
+                                                         QIcon &output) {
+  QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
+  QByteArray icon_data;
+
+  QNetworkReply::NetworkError network_result =  downloadFeedFile(google_s2_with_url,
+                                                                 timeout,
+                                                                 icon_data);
+
+  if (network_result == QNetworkReply::NoError) {
+    QPixmap icon_pixmap;
+    icon_pixmap.loadFromData(icon_data);
+    output = QIcon(icon_pixmap);
+  }
+
+  return network_result;
 }
 
 QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,

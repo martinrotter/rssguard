@@ -30,6 +30,7 @@ class FormStandardFeedDetails : public QDialog {
   protected slots:
     // Applies changes.
     void apply();
+    void guessFeed();
 
     // Trigerred when title/description/url/username/password changes.
     void onTitleChanged(const QString &new_title);

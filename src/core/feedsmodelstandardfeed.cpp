@@ -13,6 +13,11 @@
 #include <QTextCodec>
 #include <QSqlQuery>
 
+#include <QDomDocument>
+#include <QDomNode>
+#include <QDomElement>
+#include <QXmlStreamReader>
+
 
 FeedsModelStandardFeed::FeedsModelStandardFeed(FeedsModelRootItem *parent_item)
   : FeedsModelFeed(parent_item),
@@ -44,15 +49,117 @@ FeedsModelStandardFeed *FeedsModelStandardFeed::loadFromRecord(const QSqlRecord 
   return feed;
 }
 
-FeedsModelStandardFeed *FeedsModelStandardFeed::guessFeed(const QString &url,
-                                                          const QString &username,
-                                                          const QString &password) {
-  // TODO: http://www.google.com/s2/favicons?domain=root.cz
-  // ZISKAT ikonu (napsat taky aby se dala ikona pro
-  // dane url ziskavat taky samostatne
-  // pak ziskat informace o kanalu
+QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFeed::guessFeed(const QString &url,
+                                                                                              const QString &username,
+                                                                                              const QString &password) {
+  QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> result; result.first = NULL;
 
-  return NULL;
+  // Try to obtain icon.
+  QIcon icon_data;
+
+  if (NetworkFactory::downloadIcon(url,
+                                   5000,
+                                   icon_data) == QNetworkReply::NoError) {
+    // Icon for feed was downloaded and is stored now in _icon_data.
+    result.first = new FeedsModelStandardFeed();
+    result.first->setIcon(icon_data);
+  }
+
+  QByteArray feed_contents;
+  if ((result.second = NetworkFactory::downloadFeedFile(url,
+                                                        Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
+                                                        feed_contents,
+                                                        true,
+                                                        username,
+                                                        password)) == QNetworkReply::NoError) {
+    // Feed XML was obtained, now we need to try to guess
+    // its encoding before we can read further data.
+
+    QXmlStreamReader xml_stream_reader(feed_contents);
+    QString xml_schema_encoding;
+    QString xml_contents_encoded;
+
+    // We have several chances to read the XML version directly
+    // from XML declaration.
+    for (int i = 0; i < 2 && !xml_stream_reader.atEnd(); i++) {
+      if ((xml_schema_encoding = xml_stream_reader.documentEncoding().toString()).isEmpty()) {
+        xml_stream_reader.readNext();
+      }
+      else {
+        break;
+      }
+    }
+
+    QTextCodec *custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
+
+    if (custom_codec != NULL) {
+      // Feed encoding was probably guessed.
+      xml_contents_encoded = custom_codec->toUnicode(feed_contents);
+      result.first->setEncoding(xml_schema_encoding);
+    }
+    else {
+      // Feed encoding probably not guessed, set it as
+      // default.
+      xml_contents_encoded = feed_contents;
+      result.first->setEncoding(DEFAULT_FEED_ENCODING);
+    }
+
+    // Feed XML was obtained, guess it now.
+    QDomDocument xml_document;
+
+    if (!xml_document.setContent(xml_contents_encoded)) {
+      // XML is invalid, exit.
+      return result;
+    }
+
+    QDomElement root_element = xml_document.documentElement();
+    QString root_tag_name = root_element.tagName();
+
+    if (root_tag_name == "rdf:RDF") {
+      if (result.first == NULL) {
+        result.first = new FeedsModelStandardFeed();
+      }
+
+      // We found RDF feed.
+      QDomElement channel_element = root_element.namedItem("channel").toElement();
+
+      result.first->setType(StandardRdf);
+      result.first->setTitle(channel_element.namedItem("title").toElement().text());
+      result.first->setDescription(channel_element.namedItem("description").toElement().text());
+    }
+    else if (root_tag_name == "rss") {
+      if (result.first == NULL) {
+        result.first = new FeedsModelStandardFeed();
+      }
+
+      // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
+      QString rss_type = root_element.attribute("version", "2.0");
+
+      if (rss_type == "0.91" || rss_type == "0.92" || rss_type == "0.93") {
+        result.first->setType(StandardRss0X);
+      }
+      else {
+        result.first->setType(StandardRss2X);
+      }
+
+      QDomElement channel_element = root_element.namedItem("channel").toElement();
+
+      result.first->setTitle(channel_element.namedItem("title").toElement().text());
+      result.first->setDescription(channel_element.namedItem("description").toElement().text());
+    }
+    else if (root_tag_name == "feed") {
+      if (result.first == NULL) {
+        result.first = new FeedsModelStandardFeed();
+      }
+
+      // We found ATOM feed.
+      result.first->setType(StandardAtom10);
+      result.first->setTitle(root_element.namedItem("title").toElement().text());
+      result.first->setDescription(root_element.namedItem("subtitle").toElement().text());
+    }
+  }
+
+  return result;
 }
 
 QVariant FeedsModelStandardFeed::data(int column, int role) const {

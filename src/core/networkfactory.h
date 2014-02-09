@@ -12,6 +12,12 @@ class NetworkFactory {
     explicit NetworkFactory();
 
   public:
+    // Performs SYNCHRONOUS download if favicon for the site,
+    // given URL belongs to.
+    static QNetworkReply::NetworkError downloadIcon(const QString &url,
+                                                    int timeout,
+                                                    QIcon &output);
+
     // Performs SYNCHRONOUS download of file with given URL
     // and given timeout.
     static QNetworkReply::NetworkError downloadFeedFile(const QString &url,
