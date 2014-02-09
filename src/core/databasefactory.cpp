@@ -64,6 +64,8 @@ QString DatabaseFactory::mysqlInterpretErrorCode(int error_code) {
     case 0:
       return QObject::tr("Operation successful.");
 
+    case 2002:
+    case 2003:
     case 2005:
       return QObject::tr("No MySQL server is running in the target destination.");
 
