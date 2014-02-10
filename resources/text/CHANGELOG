@@ -3,6 +3,7 @@
 <ul>
 <li>[+] Experimental MySQL backend support.</li>
 <li>[+] Feed metadata fetching.</li>
+<li>[+] Changeable toolbar button style.</li>
 <li>[~] Other major features tweaked, many bugs fixed.</li>
 </ul>
 [1.9.9.3]
