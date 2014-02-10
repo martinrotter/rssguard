@@ -144,11 +144,9 @@ void FeedsView::updateSelectedFeeds() {
 }
 
 void FeedsView::executeNextAutoUpdate() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock() &&
-      SystemTrayIcon::isSystemTrayActivated()) {
-    SystemTrayIcon::instance()->showMessage(tr("Cannot update scheduled items"),
-                                            tr("You cannot update scheduled items because another feed update is ongoing."),
-                                            QSystemTrayIcon::Warning);
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+    qDebug("Delaying scheduled feed auto-updates for one minute "
+           "due to another running update.");
 
     // Cannot update, quit.
     return;
