@@ -114,6 +114,7 @@
     <addaction name="separator"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkAllFeedsRead"/>
+    <addaction name="m_actionClearAllFeeds"/>
     <addaction name="m_actionMarkSelectedFeedsAsRead"/>
     <addaction name="m_actionMarkSelectedFeedsAsUnread"/>
     <addaction name="m_actionClearSelectedFeeds"/>
@@ -465,6 +466,17 @@
    </property>
    <property name="toolTip">
     <string>Hides or shows the list of feeds/categories.</string>
+   </property>
+  </action>
+  <action name="m_actionClearAllFeeds">
+   <property name="text">
+    <string>Clear all  items</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove all messages from all feeds.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>

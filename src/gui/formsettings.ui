@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -289,8 +289,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>564</width>
+            <height>363</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -367,8 +367,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>558</width>
+                <height>337</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -393,6 +393,16 @@ Authors of this application are NOT responsible for lost data.</string>
                   </item>
                   <item row="0" column="1">
                    <widget class="QComboBox" name="m_cmbIconTheme"/>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QComboBox" name="m_cmbToolbarButtonStyle"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>Toolbar button style</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </widget>

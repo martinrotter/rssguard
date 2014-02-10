@@ -241,6 +241,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme("item-update-all"));
   m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(icon_theme_factory->fromTheme("item-update-selected"));
   m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
+  m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-remove"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionAddStandardCategory->setIcon(icon_theme_factory->fromTheme("item-new"));

@@ -46,6 +46,9 @@ class FeedMessageViewer : public TabContent {
   public slots:
     void vacuumDatabase();
 
+    // Reloads some changeable visual settings.
+    void refreshVisualProperties();
+
   protected slots:
     // Updates counts of messages for example in tray icon.
     void updateTrayIconStatus(int unread_messages, int total_messages);

@@ -111,7 +111,7 @@ void FeedMessageViewer::quit() {
 }
 
 void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
-                                               int total_messages) {
+                                             int total_messages) {
   Q_UNUSED(total_messages)
 
   if (SystemTrayIcon::isSystemTrayActivated()) {
@@ -129,7 +129,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
   FormMain::instance()->statusBar()->showProgress((current * 100.0) / total,
-                                                     tr("Updated feed '%1'").arg(feed->title()));
+                                                  tr("Updated feed '%1'").arg(feed->title()));
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
@@ -212,6 +212,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
   connect(form_main->m_ui->m_actionClearSelectedFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
+  connect(form_main->m_ui->m_actionClearAllFeeds,
+          SIGNAL(triggered()), m_feedsView, SLOT(clearAllFeeds()));
   connect(form_main->m_ui->m_actionUpdateSelectedFeedsCategories,
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
   connect(form_main->m_ui->m_actionUpdateAllFeeds,
@@ -242,14 +244,9 @@ void FeedMessageViewer::initialize() {
   // Add everything to toolbar.
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
-  m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionDeleteSelectedFeedCategory);
-  m_toolBar->addSeparator();
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearSelectedFeeds);
+  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearAllFeeds);
+
+  m_toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
@@ -257,6 +254,8 @@ void FeedMessageViewer::initialize() {
   // Downloader setup.
   qRegisterMetaType<QList<FeedsModelFeed*> >("QList<FeedsModelFeed*>");
   m_feedDownloader->moveToThread(m_feedDownloaderThread);
+
+  refreshVisualProperties();
 }
 
 void FeedMessageViewer::initializeViews() {
@@ -347,4 +346,10 @@ void FeedMessageViewer::vacuumDatabase() {
   }
 
   SystemFactory::instance()->applicationCloseLock()->unlock();
+}
+
+void FeedMessageViewer::refreshVisualProperties() {
+  m_toolBar->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(Settings::instance()->value(APP_CFG_GUI,
+                                                                                             "toolbar_style",
+                                                                                             Qt::ToolButtonIconOnly).toInt()));
 }

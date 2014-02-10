@@ -675,10 +675,27 @@ void FormSettings::loadInterface() {
   m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings->value(APP_CFG_GUI,
                                                                 "hide_tabbar_one_tab",
                                                                 true).toBool());
+
+  // Load toolbar button style.
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("icon only"), Qt::ToolButtonIconOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("text only"), Qt::ToolButtonTextOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("text beside icon"), Qt::ToolButtonTextBesideIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("text under icon"), Qt::ToolButtonTextUnderIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("follow OS style"), Qt::ToolButtonFollowStyle);
+
+  m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(Settings::instance()->value(APP_CFG_GUI,
+                                                                                                                     "toolbar_style",
+                                                                                                                     Qt::ToolButtonIconOnly).toInt()));
+
 }
 
 void FormSettings::saveInterface() {
   Settings *settings = Settings::instance();
+
+  // Save toolbar.
+  Settings::instance()->setValue(APP_CFG_GUI,
+                                 "toolbar_style",
+                                 m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
 
   // Save tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
@@ -727,4 +744,5 @@ void FormSettings::saveInterface() {
                      m_ui->m_hideTabBarIfOneTabVisible->isChecked());
 
   FormMain::instance()->tabWidget()->checkTabBarVisibility();
+  FormMain::instance()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 }

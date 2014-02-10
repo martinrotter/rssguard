@@ -191,8 +191,19 @@ void FeedsView::setSelectedFeedsClearStatus(int clear) {
   emit feedsNeedToBeReloaded(1);
 }
 
+void FeedsView::setAllFeedsClearStatus(int clear) {
+  m_sourceModel->markFeedsDeleted(allFeeds(), clear, 0);
+  updateCountsOfAllFeeds();
+
+  emit feedsNeedToBeReloaded(1);
+}
+
 void FeedsView::clearSelectedFeeds() {
   setSelectedFeedsClearStatus(1);
+}
+
+void FeedsView::clearAllFeeds() {
+  setAllFeedsClearStatus(1);
 }
 
 void FeedsView::addNewStandardCategory() {

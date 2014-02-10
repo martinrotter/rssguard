@@ -71,7 +71,9 @@ class FeedsView : public QTreeView {
 
     // Feed clearers.
     void setSelectedFeedsClearStatus(int clear);
+    void setAllFeedsClearStatus(int clear);
     void clearSelectedFeeds();
+    void clearAllFeeds();
     void clearAllReadMessages();
 
     // Base manipulators.
