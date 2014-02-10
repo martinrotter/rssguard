@@ -77,8 +77,6 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) co
 
   FeedsModelRootItem *parent_item;
 
-  // TODO: overit zda zde misto internalPointer nepouzit
-  // metodu itemFornIndex a overit vykonnostni dopady
   if (!parent.isValid()) {
     parent_item = m_rootItem;
   }
@@ -101,8 +99,6 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
     return QModelIndex();
   }
 
-  // TODO: overit zda zde misto internalPointer nepouzit
-  // metodu itemFornIndex a overit vykonnostni dopady
   FeedsModelRootItem *child_item = static_cast<FeedsModelRootItem*>(child.internalPointer());
   FeedsModelRootItem *parent_item = child_item->parent();
 
@@ -121,8 +117,6 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
     return 0;
   }
 
-  // TODO: overit zda zde misto internalPointer nepouzit
-  // metodu itemFornIndex a overit vykonnostni dopady
   if (!parent.isValid()) {
     parent_item = m_rootItem;
   }
@@ -463,8 +457,6 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
-  // TODO: overit zda zde misto internalPointer nepouzit
-  // metodu itemFornIndex a overit vykonnostni dopady
   if (parent.isValid()) {
     return static_cast<FeedsModelRootItem*>(parent.internalPointer())->columnCount();
   }

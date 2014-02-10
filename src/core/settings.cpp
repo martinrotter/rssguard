@@ -36,10 +36,6 @@ Settings *Settings::instance() {
   return s_instance;
 }
 
-
-
-
-
 QSettings::Status Settings::setupSettings() {
   // If settings file exists in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).

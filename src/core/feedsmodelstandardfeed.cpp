@@ -397,8 +397,6 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
              qPrintable(message.m_title),
              message_id);
 
-      // TODO: Check if this is actually working.
-
       // Message with given title/url is already persistently
       // stored in given feed.
       // Creation data of the message was obtained from

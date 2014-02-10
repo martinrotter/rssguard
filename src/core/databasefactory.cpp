@@ -315,7 +315,6 @@ void DatabaseFactory::determineDriver() {
 
   if (db_driver == APP_DB_DRIVER_MYSQL && QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
     // User wants to use MySQL and MySQL is actually available. Use it.
-    // TODO: Perform username & password check if db is really fine.
     m_activeDatabaseDriver = MYSQL;
 
     qDebug("Working database source was as MySQL database.");

@@ -1,51 +1,23 @@
 #ifndef LINEEDITWITHSTATUS_H
 #define LINEEDITWITHSTATUS_H
 
-#include <QWidget>
-#include <QIcon>
+#include "gui/widgetwithstatus.h"
+
+#include "gui/baselineedit.h"
 
 
-class BaseLineEdit;
-class PlainToolButton;
-class QHBoxLayout;
-
-class LineEditWithStatus : public QWidget {
+class LineEditWithStatus : public WidgetWithStatus {
     Q_OBJECT
 
   public:
-    enum StatusType {
-      Information,
-      Warning,
-      Error,
-      Ok
-    };
-
     // Constructors and destructors.
     explicit LineEditWithStatus(QWidget *parent = 0);
     virtual ~LineEditWithStatus();
 
-    // Sets custom status for this control.
-    void setStatus(StatusType status, const QString &tooltip_text);
-
-    inline StatusType status() const {
-      return m_status;
-    }
-
     // Access to line edit.
     inline BaseLineEdit *lineEdit() const {
-      return m_txtInput;
+      return static_cast<BaseLineEdit*>(m_wdgInput);
     }
-
-  private:
-    StatusType m_status;
-    BaseLineEdit *m_txtInput;
-    PlainToolButton *m_btnStatus;
-    QHBoxLayout *m_layout;
-
-    QIcon m_iconInformation;
-    QIcon m_iconWarning;
-    QIcon m_iconError;
-    QIcon m_iconOk;
 };
 
 #endif // LINEEDITWITHSTATUS_H

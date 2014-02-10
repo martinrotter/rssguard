@@ -291,6 +291,7 @@ set(APP_SOURCES
   src/gui/formstandardfeeddetails.cpp
   src/gui/plaintoolbutton.cpp
   src/gui/lineeditwithstatus.cpp
+  src/gui/widgetwithstatus.cpp
   src/gui/messagebox.cpp
 
   # CORE sources.
@@ -357,6 +358,7 @@ set(APP_HEADERS
   src/gui/formstandardfeeddetails.h
   src/gui/plaintoolbutton.h
   src/gui/lineeditwithstatus.h
+  src/gui/widgetwithstatus.h
   src/gui/messagebox.h
 
   # CORE headers.
