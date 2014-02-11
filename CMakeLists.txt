@@ -292,6 +292,7 @@ set(APP_SOURCES
   src/gui/plaintoolbutton.cpp
   src/gui/lineeditwithstatus.cpp
   src/gui/widgetwithstatus.cpp
+  src/gui/labelwithstatus.cpp
   src/gui/messagebox.cpp
 
   # CORE sources.
@@ -359,6 +360,7 @@ set(APP_HEADERS
   src/gui/plaintoolbutton.h
   src/gui/lineeditwithstatus.h
   src/gui/widgetwithstatus.h
+  src/gui/labelwithstatus.h
   src/gui/messagebox.h
 
   # CORE headers.

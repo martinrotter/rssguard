@@ -33,8 +33,8 @@ DatabaseFactory *DatabaseFactory::instance() {
   return s_instance;
 }
 
-int DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
-                                         const QString &username, const QString &password) {
+DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
+                                                                 const QString &username, const QString &password) {
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL,
                                                     APP_DB_TEST_MYSQL);
 
@@ -47,29 +47,29 @@ int DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
     // Connection succeeded, clean up the mess and return 0.
     database.close();
     removeConnection(APP_DB_TEST_MYSQL);
-    return 0;
+    return MySQLOk;
   }
   else {
     // Connection failed, do cleanup and return specific
     // error code.
-    int error_code = database.lastError().number();
+    MySQLError error_code = static_cast<MySQLError>(database.lastError().number());
 
     removeConnection(APP_DB_TEST_MYSQL);
     return error_code;
   }
 }
 
-QString DatabaseFactory::mysqlInterpretErrorCode(int error_code) {
+QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
   switch (error_code) {
-    case 0:
-      return QObject::tr("Operation successful.");
+    case MySQLOk:
+      return QObject::tr("MySQL server works as expected.");
 
-    case 2002:
-    case 2003:
-    case 2005:
+    case MySQLCantConnect:
+    case MySQLConnectionError:
+    case MySQLUnknownHost:
       return QObject::tr("No MySQL server is running in the target destination.");
 
-    case 1045:
+    case MySQLAccessDenied:
       return QObject::tr("Access denied. Invalid username or password used.");
 
     default:

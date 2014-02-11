@@ -24,6 +24,14 @@ class DatabaseFactory : public QObject {
       FromSettings
     };
 
+    enum MySQLError {
+      MySQLOk                 = 0,
+      MySQLAccessDenied       = 1045,
+      MySQLConnectionError    = 2002,
+      MySQLCantConnect        = 2003,
+      MySQLUnknownHost        = 2005
+    };
+
     //
     // GENERAL stuff.
     //
@@ -57,10 +65,10 @@ class DatabaseFactory : public QObject {
     // Tests if database connection with given data
     // can be established and returns 0 if it can.
     // Otherwise returns MySQL-specific error code.
-    int mysqlTestConnection(const QString &hostname, int port,
-                            const QString &username, const QString &password);
+    MySQLError mysqlTestConnection(const QString &hostname, int port,
+                                   const QString &username, const QString &password);
 
-    QString mysqlInterpretErrorCode(int error_code);
+    QString mysqlInterpretErrorCode(MySQLError error_code);
 
   private:
     //

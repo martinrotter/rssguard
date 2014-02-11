@@ -445,6 +445,10 @@ void FormSettings::loadDataStorage() {
   onMysqlUsernameChanged(QString());
   onMysqlPasswordChanged(QString());
 
+  m_ui->m_lblMysqlTestResult->setLayoutDirection(Qt::RightToLeft);
+  m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,
+                                        tr("No connection test triggered so far."));
+
   // Load SQLite.
   m_ui->m_cmbDatabaseDriver->addItem(
         tr("SQLite (embedded database)"), APP_DB_DRIVER_SQLITE);
@@ -510,13 +514,24 @@ void FormSettings::saveDataStorage() {
 }
 
 void FormSettings::mysqlTestConnection() {
-  int error_code = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
-                                                                    m_ui->m_spinMysqlPort->value(),
-                                                                    m_ui->m_txtMysqlUsername->lineEdit()->text(),
-                                                                    m_ui->m_txtMysqlPassword->lineEdit()->text());
+  DatabaseFactory::MySQLError error_code = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
+                                                                                            m_ui->m_spinMysqlPort->value(),
+                                                                                            m_ui->m_txtMysqlUsername->lineEdit()->text(),
+                                                                                            m_ui->m_txtMysqlPassword->lineEdit()->text());
 
-  // Let's interpret the result.
-  m_ui->m_lblMysqlTestResult->setText(DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));
+  switch (error_code) {
+    case DatabaseFactory::MySQLOk:
+      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok,
+                                            DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));
+      break;
+
+    default:
+      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Error,
+                                            DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));
+      break;
+
+
+  }
 }
 
 void FormSettings::onMysqlHostnameChanged(const QString &new_hostname) {

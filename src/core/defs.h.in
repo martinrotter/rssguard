@@ -42,6 +42,12 @@
 #define AUTO_UPDATE_INTERVAL            60000
 #define STARTUP_UPDATE_DELAY            1500
 
+#define MYSQL_CODE_OK             0
+#define MYSQL_CODE_NOT_FOUND      2002
+#define MYSQL_CODE_NOT_FOUND      2002
+#define MYSQL_CODE_NOT_FOUND      2002
+#define MYSQL_CODE_NOT_FOUND      2002
+
 #define APP_DB_TEST_MYSQL             "MySQLTest"
 #define APP_DB_MYSQL_PORT             3306
 #define APP_DB_DRIVER_SQLITE          "QSQLITE"
