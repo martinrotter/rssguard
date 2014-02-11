@@ -250,14 +250,18 @@ void FormStandardFeedDetails::guessFeed() {
   if (result.first != NULL) {
     // Icon was perhaps guessed.
     m_ui->m_btnIcon->setIcon(result.first->icon());
-
     m_ui->m_txtTitle->lineEdit()->setText(result.first->title());
     m_ui->m_txtDescription->lineEdit()->setText(result.first->description());
     m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
     m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(result.first->encoding(), Qt::DisplayRole));
+
+    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
+                                        tr("Feed metadata fetched successfully."));
   }
   else {
     // No feed guessed, even no icon available.
+    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
+                                        tr("Error occurred."));
   }
 }
 
@@ -279,7 +283,7 @@ void FormStandardFeedDetails::createConnections() {
           this, SLOT(onAuthenticationSwitched()));
   connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)),
           this, SLOT(onAutoUpdateTypeChanged(int)));
-  connect(m_btnLoadDataFromInternet, SIGNAL(clicked()),
+  connect(m_ui->m_btnFetchMetadata, SIGNAL(clicked()),
           this, SLOT(guessFeed()));
 
   // Icon connections.
@@ -308,10 +312,6 @@ void FormStandardFeedDetails::setEditableFeed(FeedsModelStandardFeed *editable_f
 void FormStandardFeedDetails::initialize() {
   m_ui = new Ui::FormStandardFeedDetails();
   m_ui->setupUi(this);
-
-  // Add button for fetching feed data from internet.
-  m_btnLoadDataFromInternet = m_ui->m_buttonBox->addButton(tr("Fetch feed metadata"),
-                                                           QDialogButtonBox::HelpRole);
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
@@ -373,6 +373,10 @@ void FormStandardFeedDetails::initialize() {
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_iconMenu->addAction(m_actionNoIcon);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
+
+  // Set feed metadata fetch label.
+  m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Information,
+                                      tr("No metadata fetched so far."));
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);

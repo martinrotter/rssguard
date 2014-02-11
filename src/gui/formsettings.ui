@@ -230,6 +230,9 @@ Authors of this application are NOT responsible for lost data.</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
               </widget>
              </item>
             </layout>
@@ -283,8 +286,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>564</width>
-            <height>363</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -361,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>558</width>
-                <height>337</height>
+                <width>209</width>
+                <height>245</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1110,12 +1113,6 @@ Authors of this application are NOT responsible for lost data.</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DynamicShortcutsWidget</class>
-   <extends>QWidget</extends>
-   <header>dynamicshortcutswidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
@@ -1125,6 +1122,12 @@ Authors of this application are NOT responsible for lost data.</string>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>
    <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DynamicShortcutsWidget</class>
+   <extends>QWidget</extends>
+   <header>dynamicshortcutswidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

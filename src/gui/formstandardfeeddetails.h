@@ -72,7 +72,6 @@ class FormStandardFeedDetails : public QDialog {
     QAction *m_actionLoadIconFromFile;
     QAction *m_actionUseDefaultIcon;
     QAction *m_actionNoIcon;
-    QPushButton *m_btnLoadDataFromInternet;
 };
 
 #endif // FORMSTANDARDFEEDDETAILS_H

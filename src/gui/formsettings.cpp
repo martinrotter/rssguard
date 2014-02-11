@@ -445,7 +445,6 @@ void FormSettings::loadDataStorage() {
   onMysqlUsernameChanged(QString());
   onMysqlPasswordChanged(QString());
 
-  m_ui->m_lblMysqlTestResult->setLayoutDirection(Qt::RightToLeft);
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,
                                         tr("No connection test triggered so far."));
 
