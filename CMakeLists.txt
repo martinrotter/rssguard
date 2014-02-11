@@ -323,6 +323,9 @@ set(APP_SOURCES
   # Basic application sources.
   src/main.cpp
 )
+if (APPLE)
+  SET (APP_SOURCES ${APP_SOURCES} resources/graphics/rssguard.icns)
+endif (APPLE)
 
 # Add headers.
 set(APP_HEADERS
@@ -440,21 +443,14 @@ include_directories (
 
 # Setup compilation for Qt 5.
 if(${USE_QT_5})
+  add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
+      ${APP_SOURCES}
+      ${APP_FORMS}
+      ${APP_RCC}
+      ${APP_QM}
+    )
   if(WIN32)
-    add_executable(${EXE_NAME} WIN32
-      ${APP_SOURCES}
-      ${APP_FORMS}
-      ${APP_RCC}
-      ${APP_QM}
-    )
     target_link_libraries(${EXE_NAME} Qt5::WinMain)
-  else(WIN32)
-    add_executable(${EXE_NAME}
-      ${APP_SOURCES}
-      ${APP_FORMS}
-      ${APP_RCC}
-      ${APP_QM}
-    )
   endif(WIN32)
   
   # Use modules from Qt.
@@ -470,7 +466,7 @@ if(${USE_QT_5})
   )
 # Setup compilation for Qt 4.
 else(${USE_QT_5})
-  add_executable(${EXE_NAME} WIN32
+  add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
     ${APP_SOURCES}
     ${APP_FORMS}
     ${APP_MOC}
@@ -518,6 +514,41 @@ if(WIN32 OR OS2)
           DESTINATION ./l10n)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
+elseif(APPLE)
+  message(STATUS "[${APP_LOW_NAME}] You will probably install on OS X.")
+
+  SET(MACOSX_BUNDLE_ICON_FILE rssguard.icns)
+  SET(MACOSX_BUNDLE_INFO_STRING "${EXE_NAME} ${APP_VERSION}")
+  SET(MACOSX_BUNDLE_GUI_IDENTIFIER "cz.comehere.rssguard")
+  SET(MACOSX_BUNDLE_LONG_VERSION_STRING "${APP_VERSION}")
+  SET(MACOSX_BUNDLE_BUNDLE_NAME "${EXE_NAME}")
+  SET(MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}")
+  SET(MACOSX_BUNDLE_BUNDLE_VERSION "${APP_VERSION}")
+  SET(MACOSX_BUNDLE_COPYRIGHT "(c) ${APP_AUTHOR}")
+  SET_SOURCE_FILES_PROPERTIES(${CMAKE_SOURCE_DIR}/resources/graphics/rssguard.icns
+                              PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+
+  install(TARGETS ${EXE_NAME} BUNDLE DESTINATION ${CMAKE_INSTALL_PREFIX})
+  set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${APP_LOW_NAME}.app/Contents/Resources/)
+  if(BUNDLE_ICON_THEMES)
+    install(DIRECTORY resources/graphics/icons/mini-kfaenza
+            DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/icons)
+  endif(BUNDLE_ICON_THEMES)
+
+  install(DIRECTORY resources/skins/base
+          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/skins)
+  install(DIRECTORY resources/misc
+          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/)
+  install(FILES resources/graphics/${APP_LOW_NAME}_128.png
+          DESTINATION ${APPLE_PREFIX}/share/pixmaps
+          RENAME ${APP_LOW_NAME}.png)
+  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
+          DESTINATION ${APPLE_PREFIX}/share/rssguard/icons
+          RENAME ${APP_LOW_NAME}_plain.png)
+  install(FILES ${APP_QM}
+          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/l10n)
+  install(FILES ${APP_TEXT}
+          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/information)
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
