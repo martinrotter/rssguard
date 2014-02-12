@@ -71,7 +71,12 @@
 #define APP_CFG_MESSAGES    "messages"
 #define APP_CFG_FEEDS       "feeds"
 
+#ifdef Q_OS_OSX
+#define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@/@APP_LOW_NAME@.app/Contents/Resources"
+#else
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@"
+#endif
+
 #define APP_REVISION        "@APP_REVISION@"
 
 #define APP_IS_RUNNING      "app_is_running"
@@ -121,7 +126,7 @@
 #define FDS_MODEL_TITLE_INDEX           0
 #define FDS_MODEL_COUNTS_INDEX          1
 
-#if defined(Q_OS_LINUX)
+#if defined(Q_OS_LINUX) || defined(Q_OS_OSX)
 #define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY_PATH@"
 #define APP_DESKTOP_ENTRY_FILE "@APP_LOW_NAME@.desktop"
 #define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
