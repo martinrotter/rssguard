@@ -38,6 +38,7 @@
 
 # Setup basic variables.
 project(rssguard)
+
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
 set(APP_VERSION "1.9.9.4")
@@ -48,6 +49,10 @@ set(APP_URL_ISSUES "http://github.com/martinrotter/rssguard/issues")
 set(APP_EMAIL "rotter.martinos@gmail.com")
 set(MINIMUM_QT_VERSION 4.7.3)
 set(EXE_NAME ${APP_LOW_NAME})
+
+if(APPLE)
+  set(APP_URL_BACKWARDS "cz.comehere.rssguard")
+endif(APPLE)
 
 # Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
@@ -323,9 +328,6 @@ set(APP_SOURCES
   # Basic application sources.
   src/main.cpp
 )
-if (APPLE)
-  SET (APP_SOURCES ${APP_SOURCES} resources/graphics/rssguard.icns)
-endif (APPLE)
 
 # Add headers.
 set(APP_HEADERS
@@ -414,6 +416,11 @@ set(APP_TEXT
   resources/text/AUTHORS
 )
 
+# Add custom icon on Mac OS X.
+if(APPLE)
+  SET (APP_SOURCES ${APP_SOURCES} resources/graphics/rssguard.icns)
+endif(APPLE)
+
 # Wrap files, create moc files.
 if(${USE_QT_5})
   qt5_wrap_ui(APP_UI ${APP_FORMS})
@@ -449,6 +456,7 @@ if(${USE_QT_5})
       ${APP_RCC}
       ${APP_QM}
     )
+
   if(WIN32)
     target_link_libraries(${EXE_NAME} Qt5::WinMain)
   endif(WIN32)
@@ -460,7 +468,6 @@ if(${USE_QT_5})
     Sql
     Network
     Xml
-    #XmlPatterns
     WebKit
     WebKitWidgets
   )
@@ -481,7 +488,6 @@ else(${USE_QT_5})
     ${QT_QTNETWORK_LIBRARY}
     ${QT_QTSQL_LIBRARY}
     ${QT_QTXML_LIBRARY}
-    #${QT_QTXMLPATTERNS_LIBRARY}
     ${QT_QTMAIN_LIBRARY}
     ${QT_QTWEBKIT_LIBRARY}
   )
@@ -515,11 +521,11 @@ if(WIN32 OR OS2)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
 elseif(APPLE)
-  message(STATUS "[${APP_LOW_NAME}] You will probably install on OS X.")
+  message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")
 
   SET(MACOSX_BUNDLE_ICON_FILE rssguard.icns)
   SET(MACOSX_BUNDLE_INFO_STRING "${EXE_NAME} ${APP_VERSION}")
-  SET(MACOSX_BUNDLE_GUI_IDENTIFIER "cz.comehere.rssguard")
+  SET(MACOSX_BUNDLE_GUI_IDENTIFIER "${APP_URL_BACKWARDS}")
   SET(MACOSX_BUNDLE_LONG_VERSION_STRING "${APP_VERSION}")
   SET(MACOSX_BUNDLE_BUNDLE_NAME "${EXE_NAME}")
   SET(MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}")
@@ -530,6 +536,7 @@ elseif(APPLE)
 
   install(TARGETS ${EXE_NAME} BUNDLE DESTINATION ${CMAKE_INSTALL_PREFIX})
   set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${APP_LOW_NAME}.app/Contents/Resources/)
+
   if(BUNDLE_ICON_THEMES)
     install(DIRECTORY resources/graphics/icons/mini-kfaenza
             DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/icons)
