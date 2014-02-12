@@ -23,12 +23,6 @@
 #include <QDebug>
 
 
-// TODO: Check if extra UNIX signalling is needed.
-// Use <csignal> header for it - signal function and catch SIGHUP
-// void my_terminate (int param) {
-//   qApp->quit();
-// }
-
 int main(int argc, char *argv[]) {
   //: Name of language, e.g. English.
   QObject::tr("LANG_NAME");

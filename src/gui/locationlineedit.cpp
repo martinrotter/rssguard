@@ -64,7 +64,6 @@ void LocationLineEdit::paintEvent(QPaintEvent *event) {
     QLinearGradient gradient(0, 0, width(), 0);
     qreal percentage_border = m_progress / 100.0;
 
-    // TODO: Use better gradient here, something fancy.
     gradient.setColorAt(0, loadingColor);
     gradient.setColorAt(percentage_border - 0.01, loadingColor);
     gradient.setColorAt(percentage_border - 0.008, loadingColor.lighter(130));
