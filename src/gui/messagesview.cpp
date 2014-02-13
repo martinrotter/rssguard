@@ -231,7 +231,8 @@ void MessagesView::openSelectedSourceArticlesExternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
-    if (!QProcess::startDetached('\"' + browser + "\" \"" + arguments.arg(link) + "\"")) {
+    if (!QProcess::startDetached(browser,
+                                 QStringList() << arguments.arg(link))) {
       MessageBox::show(this,
                        QMessageBox::Critical,
                        tr("Problem with starting external web browser"),
