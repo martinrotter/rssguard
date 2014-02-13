@@ -123,6 +123,10 @@
     <property name="title">
      <string>&amp;Messages</string>
     </property>
+    <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
+    <addaction name="m_actionOpenSelectedSourceArticlesInternally"/>
+    <addaction name="m_actionOpenSelectedMessagesInternally"/>
+    <addaction name="separator"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
@@ -470,7 +474,7 @@
   </action>
   <action name="m_actionClearAllFeeds">
    <property name="text">
-    <string>Clear all  items</string>
+    <string>Clear all items</string>
    </property>
    <property name="toolTip">
     <string>Remove all messages from all feeds.</string>

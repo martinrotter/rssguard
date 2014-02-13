@@ -121,14 +121,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot update scheduled items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update scheduled items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Scheduled update started</source>
         <translation type="unfinished"></translation>
     </message>
@@ -492,6 +484,14 @@
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -864,10 +864,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No test run so far.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -949,6 +945,38 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Password looks ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar button style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide main window when it is minimized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No connection test triggered so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>icon only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text beside icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text under icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1298,10 +1326,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fetch feed metadata</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1311,6 +1335,26 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Auto-update every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed metadata fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1512,10 +1556,6 @@ This category does not contain any nested items.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Operation successful.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No MySQL server is running in the target destination.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1548,6 +1588,10 @@ This category does not contain any nested items.</source>
 
 Encoding: %4
 Auto-update status: %5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MySQL server works as expected.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

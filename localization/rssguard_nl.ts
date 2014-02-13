@@ -16,35 +16,35 @@
     </message>
     <message>
         <source>Feed update started</source>
-        <translation>Feed update is gestart</translation>
+        <translation>Bijwerken feed is gestart</translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
-        <translation>Update feed &apos;%1&apos;</translation>
+        <translation>Feed bijwerken &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Cannot defragment database</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan database niet defragmenteren</translation>
     </message>
     <message>
         <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan database niet defragmenteren omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Database defragmented</source>
-        <translation type="unfinished"></translation>
+        <translation>Database gedefragmenteerd</translation>
     </message>
     <message>
         <source>Database was successfully defragmented.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database is met succes gedefragmenteerd.</translation>
     </message>
     <message>
         <source>Database was not defragmented</source>
-        <translation type="unfinished"></translation>
+        <translation>Database is niet gedefragmenteerd</translation>
     </message>
     <message>
         <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database is niet gedefragmenteerd. Deze database backend word niet ondersteund of kan nu niet worden gedefragmenteerd.</translation>
     </message>
 </context>
 <context>
@@ -106,7 +106,7 @@
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation>Kan alle items niet updaten</translation>
+        <translation>Kan alle items niet bijwerken</translation>
     </message>
     <message>
         <source>You cannot update all items because another feed update is ongoing.</source>
@@ -114,27 +114,19 @@
     </message>
     <message>
         <source>Cannot update selected items</source>
-        <translation>Kan geselecteerde items niet updaten</translation>
+        <translation>Kan geselecteerde items niet bijwerken</translation>
     </message>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation>Je kan gekozen items niet updaten omdat feeds aan het updaten zijn.</translation>
-    </message>
-    <message>
-        <source>Cannot update scheduled items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You cannot update scheduled items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan gekozen items niet bijwerken omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Scheduled update started</source>
-        <translation type="unfinished"></translation>
+        <translation>Geplande update begint</translation>
     </message>
     <message>
         <source>RSS Guard is performing scheduled update of some feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>RSS Guard is geplande updates van sommige feeds aan het uitvoeren.</translation>
     </message>
 </context>
 <context>
@@ -268,7 +260,7 @@
     </message>
     <message>
         <source>Update all feeds.</source>
-        <translation>Update alle feeds.</translation>
+        <translation>Alle feeds bijwerken.</translation>
     </message>
     <message>
         <source>Update selected feeds/categories.</source>
@@ -464,34 +456,42 @@
     </message>
     <message>
         <source>New standard &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw standaard &amp;feed</translation>
     </message>
     <message>
         <source>New standard &amp;category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw standaard &amp;categorie</translation>
     </message>
     <message>
         <source>Switch visibility of main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel zichtbaarheid over van het hoofdvenster</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verberg hoofdvenster als het zichtbaar is en toon het als het verborgen is.</translation>
     </message>
     <message>
         <source>Defragment database</source>
-        <translation type="unfinished"></translation>
+        <translation>Defragmenteer database</translation>
     </message>
     <message>
         <source>Defragment database file so that its size decreases.</source>
-        <translation type="unfinished"></translation>
+        <translation>Defragmenteren databasebestand zodat de grootte afneemt.</translation>
     </message>
     <message>
         <source>Switch feeds list visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel zichtbaarheid feeds lijst</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
+        <translation>Verberg of toon de lijst van feeds/categorieën.</translation>
+    </message>
+    <message>
+        <source>Clear all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -867,106 +867,134 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>WAARSCHUWING: Let op dat de overstap naar een ander type gegevens opslag NIET bestaande gegevens van dat moment kopiëren naar nieuw geselecteerde gegevens opslag.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No test run so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Test instelling</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechter muisknop dubbele-klik</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle feeds automatisch bijwerken elke</translation>
     </message>
     <message>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation> minuten</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed verbindings time-out</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinding timeout is tijdsinterval dat wordt gereserveerd voor downloaden van nieuwe berichten voor de feed. Als het tijdsinterval is verstreken, dan wordt het download proces afgebroken.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle feeds bijwerken met starten van RSSguard</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Gegevens opslag</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"></translation>
+        <translation>SQLite (ingesloten database)</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL/MariaDB (specifieke database)</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam van je MySQL server</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam om in te loggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Paswoord voor je gebruikersnaam</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Gegevens opslag backend is veranderd</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam is leeg.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostnaam voldoet.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished">Gebruikersnaam is leeg.</translation>
+        <translation>Gebruikersnaam is leeg.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikersnaam voldoet.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished">Paswoord is leeg.</translation>
+        <translation>Paswoord is leeg.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
+        <translation>Paswoord voldoet.</translation>
+    </message>
+    <message>
+        <source>Toolbar button style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hide main window when it is minimized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No connection test triggered so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>icon only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text beside icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>text under icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1082,19 +1110,19 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geen categorie toevoegen</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Door een fout is de categorie niet toegevoegd.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan categorie niet bewerken</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Door een fout is de categorie niet bewerkt.</translation>
     </message>
 </context>
 <context>
@@ -1289,46 +1317,62 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
     </message>
     <message>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation> minuten</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische-update</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geen feed toevoegen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan feed niet bewerken</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fetch feed metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Door een fout is de feed niet bewerkt.</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet alles automatisch bijwerken</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch bijwerken met tussenpauze</translation>
     </message>
     <message>
         <source>Auto-update every</source>
+        <translation>Automatische-bijwerken elke</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed metadata fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1533,34 +1577,30 @@ Deze categorie bevat geen nested items.</translation>
 %2%3</translation>
     </message>
     <message>
-        <source>Operation successful.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen MySQL server draait in de doelbestemming.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Onbekende fout.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
-        <translation type="unfinished"></translation>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
-        <translation type="unfinished"></translation>
+        <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
         </translation>
     </message>
     <message>
@@ -1569,6 +1609,14 @@ Deze categorie bevat geen nested items.</translation>
 
 Encoding: %4
 Auto-update status: %5</source>
+        <translation>%1 (%2)
+%3
+
+Encoderen: %4
+Status automatisch bijwerken: %5</translation>
+    </message>
+    <message>
+        <source>MySQL server works as expected.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
