@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -286,8 +286,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>564</width>
+            <height>363</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -364,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>209</width>
-                <height>245</height>
+                <width>558</width>
+                <height>337</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -508,10 +508,17 @@ Authors of this application are NOT responsible for lost data.</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0" colspan="2">
+              <item row="3" column="0" colspan="2">
                <widget class="QCheckBox" name="m_checkHidden">
                 <property name="text">
                  <string>Start application hidden</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="m_checkHideWhenMinimized">
+                <property name="text">
+                 <string>Hide main window when it is minimized</string>
                 </property>
                </widget>
               </item>
@@ -1226,6 +1233,22 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>516</x>
      <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_radioTrayOn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_checkHideWhenMinimized</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>117</y>
     </hint>
    </hints>
   </connection>

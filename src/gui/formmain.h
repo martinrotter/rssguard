@@ -54,7 +54,6 @@ class FormMain : public QMainWindow {
 
     // Event handler reimplementations.
     void changeEvent(QEvent *event);
-    bool event(QEvent *event);
 
     // Sets up proper icons for this widget.
     void setupIcons();

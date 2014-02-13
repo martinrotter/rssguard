@@ -607,9 +607,6 @@ void FormSettings::loadInterface() {
     m_ui->m_radioTrayOff->setChecked(!settings->value(APP_CFG_GUI,
                                                       "use_tray_icon",
                                                       true).toBool());
-    m_ui->m_checkHidden->setChecked(settings->value(APP_CFG_GUI,
-                                                    "start_hidden",
-                                                    false).toBool());
   }
   // Tray icon is not supported on this machine.
   else {
@@ -617,6 +614,13 @@ void FormSettings::loadInterface() {
     m_ui->m_radioTrayOff->setChecked(true);
     m_ui->m_grpTray->setDisabled(true);
   }
+
+  m_ui->m_checkHidden->setChecked(settings->value(APP_CFG_GUI,
+                                                  "start_hidden",
+                                                  false).toBool());
+  m_ui->m_checkHideWhenMinimized->setChecked(settings->value(APP_CFG_GUI,
+                                                             "hide_when_minimized",
+                                                             false).toBool());
 
   // Load settings of icon theme.
   QString current_theme = IconThemeFactory::instance()->currentIconTheme();
@@ -715,8 +719,6 @@ void FormSettings::saveInterface() {
   if (SystemTrayIcon::isSystemTrayAvailable()) {
     settings->setValue(APP_CFG_GUI, "use_tray_icon",
                        m_ui->m_radioTrayOn->isChecked());
-    settings->setValue(APP_CFG_GUI, "start_hidden",
-                       m_ui->m_checkHidden->isChecked());
     if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
       SystemTrayIcon::instance()->show();
       FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
@@ -726,6 +728,12 @@ void FormSettings::saveInterface() {
       SystemTrayIcon::deleteInstance();
     }
   }
+
+  settings->setValue(APP_CFG_GUI, "start_hidden",
+                     m_ui->m_checkHidden->isChecked());
+  settings->setValue(APP_CFG_GUI,
+                     "hide_when_minimized",
+                     m_ui->m_checkHideWhenMinimized->isChecked());
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();

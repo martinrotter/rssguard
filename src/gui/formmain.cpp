@@ -210,10 +210,6 @@ void FormMain::onAboutToQuit() {
   }
 }
 
-bool FormMain::event(QEvent *event) {
-  return QMainWindow::event(event);
-}
-
 void FormMain::setupIcons() {
   IconThemeFactory *icon_theme_factory = IconThemeFactory::instance();
 
@@ -355,10 +351,12 @@ void FormMain::loadWebBrowserMenu(int index) {
 void FormMain::changeEvent(QEvent *event) {
   switch (event->type()) {
     case QEvent::WindowStateChange: {
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        if (this->windowState() & Qt::WindowMinimized) {
-          QTimer::singleShot(250, this, SLOT(hide()));
-        }
+      if (this->windowState() & Qt::WindowMinimized &&
+          SystemTrayIcon::isSystemTrayActivated() &&
+          Settings::instance()->value(APP_CFG_GUI,
+                                      "hide_when_minimized",
+                                      false).toBool()) {
+        QTimer::singleShot(250, this, SLOT(hide()));
       }
 
       break;
