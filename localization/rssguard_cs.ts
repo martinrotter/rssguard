@@ -24,27 +24,27 @@
     </message>
     <message>
         <source>Cannot defragment database</source>
-        <translation type="unfinished"></translation>
+        <translation>Databázi nelze nefragmentovat</translation>
     </message>
     <message>
         <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databázi nelze defragmentovat, protože právě běží aktualizace kanálů.</translation>
     </message>
     <message>
         <source>Database defragmented</source>
-        <translation type="unfinished"></translation>
+        <translation>Databáze defragmentována</translation>
     </message>
     <message>
         <source>Database was successfully defragmented.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databáze byla úspěšně defragmentována.</translation>
     </message>
     <message>
         <source>Database was not defragmented</source>
-        <translation type="unfinished"></translation>
+        <translation>Database nedefragmentována</translation>
     </message>
     <message>
         <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databáze nebyla defragmentována. Tento typ databáze defragmentaci neumožňuje nebo databáze nemůže být defragmentována nyní.</translation>
     </message>
 </context>
 <context>
@@ -122,11 +122,11 @@
     </message>
     <message>
         <source>Scheduled update started</source>
-        <translation type="unfinished"></translation>
+        <translation>Naplánovaná aktualizace kanálu odstartována</translation>
     </message>
     <message>
         <source>RSS Guard is performing scheduled update of some feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>RSS Guard právě provádí naplánovanou aktualizaci některých kanálů.</translation>
     </message>
 </context>
 <context>
@@ -456,43 +456,43 @@
     </message>
     <message>
         <source>New standard &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový standard&amp;ní kanál</translation>
     </message>
     <message>
         <source>New standard &amp;category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nová standardní &amp;kategorie</translation>
     </message>
     <message>
         <source>Switch visibility of main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepnout hlavní okno</translation>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
     </message>
     <message>
         <source>Defragment database</source>
-        <translation type="unfinished"></translation>
+        <translation>Defragmentovat databázi</translation>
     </message>
     <message>
         <source>Defragment database file so that its size decreases.</source>
-        <translation type="unfinished"></translation>
+        <translation>Defragmentuje a optimalizuje databázi.</translation>
     </message>
     <message>
         <source>Switch feeds list visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepneout zobrazení seznamu kanálů</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Clear all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyprázdnit všechny položky</translation>
     </message>
     <message>
         <source>Remove all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat všechnyzprávy ze všech kanálů. </translation>
     </message>
 </context>
 <context>
@@ -1110,19 +1110,19 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přidat kategorii</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie nebyla přidána kvůli chybě.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze upravit kategorii</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie nebyla upravena kvůli chybě.</translation>
     </message>
 </context>
 <context>
@@ -1579,30 +1579,30 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"></translation>
+        <translation>V daném umístění neběží žádný MySQL server.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
-        <translation type="unfinished"></translation>
+        <translation>Přístup zamítnut. Nesprávne jméno či heslo.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznámá chyba.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
-        <translation type="unfinished"></translation>
+        <translation>nepoužívá auto-aktualizace</translation>
     </message>
     <message>
         <source>uses global settings</source>
-        <translation type="unfinished"></translation>
+        <translation>používá globální nastavení</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
         </translation>
     </message>
     <message>
@@ -1611,11 +1611,15 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
 
 Encoding: %4
 Auto-update status: %5</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)
+%3
+
+Kódování: %4
+Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL server pracuje v pořádku.</translation>
     </message>
 </context>
 <context>
