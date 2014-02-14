@@ -230,6 +230,14 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsListVisibility,
           SIGNAL(triggered()), m_feedsView, SLOT(switchVisibility()));
+  connect(form_main->m_ui->m_actionSelectNextFeedCategory,
+          SIGNAL(triggered()), m_feedsView, SLOT(selectNextItem()));
+  connect(form_main->m_ui->m_actionSelectPreviousFeedCategory,
+          SIGNAL(triggered()), m_feedsView, SLOT(selectPreviousItem()));
+  connect(form_main->m_ui->m_actionSelectNextMessage,
+          SIGNAL(triggered()), m_messagesView, SLOT(selectNextItem()));
+  connect(form_main->m_ui->m_actionSelectPreviousMessage,
+          SIGNAL(triggered()), m_messagesView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionDefragmentDatabase,
           SIGNAL(triggered()), this, SLOT(vacuumDatabase()));
 }

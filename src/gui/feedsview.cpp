@@ -470,6 +470,24 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
   notifyWithCounts();
 }
 
+void FeedsView::selectNextItem() {
+  QModelIndex index_next = index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+
+  if (index_next.isValid()) {
+    setCurrentIndex(index_next);
+    selectionModel()->select(index_next, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+  }
+}
+
+void FeedsView::selectPreviousItem() {
+  QModelIndex index_previous = index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+
+  if (index_previous.isValid()) {
+    setCurrentIndex(index_previous);
+    selectionModel()->select(index_previous, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+  }
+}
+
 void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<

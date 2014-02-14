@@ -104,6 +104,9 @@ class FeedsView : public QTreeView {
                              m_sourceModel->countOfAllMessages());
     }
 
+    void selectNextItem();
+    void selectPreviousItem();
+
     // Switches visibility of the widget.
     void switchVisibility() {
       setVisible(!isVisible());

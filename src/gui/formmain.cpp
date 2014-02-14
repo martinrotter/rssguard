@@ -87,7 +87,11 @@ QList<QAction*> FormMain::allActions() {
              m_ui->m_actionDeleteSelectedFeedCategory <<
              m_ui->m_actionViewSelectedItemsNewspaperMode <<
              m_ui->m_actionAddStandardCategory <<
-             m_ui->m_actionAddStandardFeed;
+             m_ui->m_actionAddStandardFeed <<
+             m_ui->m_actionSelectNextFeedCategory <<
+             m_ui->m_actionSelectPreviousFeedCategory <<
+             m_ui->m_actionSelectNextMessage <<
+             m_ui->m_actionSelectPreviousMessage;
 
   return actions;
 }
@@ -253,6 +257,12 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme("item-open"));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme("item-open"));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme("item-newspaper"));
+
+  m_ui->m_actionSelectNextFeedCategory->setIcon(icon_theme_factory->fromTheme("go-down"));
+  m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme("go-up"));
+  m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme("go-down"));
+  m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme("go-up"));
+
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

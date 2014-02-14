@@ -112,6 +112,9 @@
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedCategory"/>
     <addaction name="separator"/>
+    <addaction name="m_actionSelectNextFeedCategory"/>
+    <addaction name="m_actionSelectPreviousFeedCategory"/>
+    <addaction name="separator"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkAllFeedsRead"/>
     <addaction name="m_actionClearAllFeeds"/>
@@ -126,6 +129,9 @@
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedSourceArticlesInternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionSelectNextMessage"/>
+    <addaction name="m_actionSelectPreviousMessage"/>
     <addaction name="separator"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
@@ -481,6 +487,35 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionSelectNextFeedCategory">
+   <property name="text">
+    <string>Select next feed/category</string>
+   </property>
+   <property name="toolTip">
+    <string>Select next feed/category.</string>
+   </property>
+  </action>
+  <action name="m_actionSelectPreviousFeedCategory">
+   <property name="text">
+    <string>Select previous feed/category</string>
+   </property>
+   <property name="toolTip">
+    <string>Select previous feed/category.</string>
+   </property>
+  </action>
+  <action name="m_actionSelectNextMessage">
+   <property name="text">
+    <string>Select next message</string>
+   </property>
+   <property name="toolTip">
+    <string>Select next message.</string>
+   </property>
+  </action>
+  <action name="m_actionSelectPreviousMessage">
+   <property name="text">
+    <string>Select previous message</string>
    </property>
   </action>
  </widget>

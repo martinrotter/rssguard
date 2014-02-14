@@ -56,6 +56,9 @@ class MessagesView : public QTreeView {
     void deleteSelectedMessages();
     void switchSelectedMessagesImportance();
 
+    void selectNextItem();
+    void selectPreviousItem();
+
   protected slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);
