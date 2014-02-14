@@ -26,6 +26,10 @@ void BaseNetworkAccessManager::loadSettings() {
     setProxy(QNetworkProxy::NoProxy);
     return;
   }
+  else if (selected_proxy_type == QNetworkProxy::DefaultProxy) {
+    setProxy(QNetworkProxy::applicationProxy());
+    return;
+  }
 
   Settings *settings = Settings::instance();
 

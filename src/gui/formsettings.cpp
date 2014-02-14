@@ -283,7 +283,7 @@ void FormSettings::saveSettings() {
 
 void FormSettings::onProxyTypeChanged(int index) {
   QNetworkProxy::ProxyType selected_type = static_cast<QNetworkProxy::ProxyType>(m_ui->m_cmbProxyType->itemData(index).toInt());
-  bool is_proxy_selected = selected_type != QNetworkProxy::NoProxy;
+  bool is_proxy_selected = selected_type != QNetworkProxy::NoProxy && selected_type != QNetworkProxy::DefaultProxy;
 
   m_ui->m_txtProxyHost->setEnabled(is_proxy_selected);
   m_ui->m_txtProxyPassword->setEnabled(is_proxy_selected);
@@ -350,6 +350,7 @@ void FormSettings::saveBrowser() {
 
 void FormSettings::loadProxy() {
   m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::NoProxy);
+  m_ui->m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::DefaultProxy);
   m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
   m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
 
