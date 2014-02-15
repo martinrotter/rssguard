@@ -44,14 +44,14 @@ set(APP_LOW_NAME "rssguard")
 set(APP_VERSION "1.9.9.5")
 set(FILE_VERSION "1,9,9,5")
 set(APP_AUTHOR "Martin Rotter")
-set(APP_URL "http://www.rssguard.comehere.cz")
-set(APP_URL_ISSUES "http://github.com/martinrotter/rssguard/issues")
+set(APP_URL "http://bitbucket.org/skunkos/rssguard")
+set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
 set(APP_EMAIL "rotter.martinos@gmail.com")
 set(MINIMUM_QT_VERSION 4.7.3)
 set(EXE_NAME ${APP_LOW_NAME})
 
 if(APPLE)
-  set(APP_URL_BACKWARDS "cz.comehere.rssguard")
+  set(APP_URL_BACKWARDS "org.bitbucket.rssguard")
 endif(APPLE)
 
 # Options declaration.
