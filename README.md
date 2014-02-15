@@ -1,6 +1,8 @@
 RSS Guard
 =========
 
+Features
+--------
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
 
 * Windows XP and newer,
