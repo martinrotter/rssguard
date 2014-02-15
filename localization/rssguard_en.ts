@@ -494,6 +494,34 @@
         <source>Remove all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Select next feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -582,10 +610,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Password is stored in plain string in RSS Guard configuration file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Code</source>
         <translation type="unfinished"></translation>
     </message>
@@ -603,10 +627,6 @@
     </message>
     <message>
         <source>Select color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -979,6 +999,18 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>system proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1326,18 +1358,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Do not auto-update at all</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Fetch it now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1355,6 +1375,18 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>do not auto-update at all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>auto-update using global interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>auto-update every</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

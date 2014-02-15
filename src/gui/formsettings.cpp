@@ -349,8 +349,8 @@ void FormSettings::saveBrowser() {
 }
 
 void FormSettings::loadProxy() {
-  m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::NoProxy);
-  m_ui->m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::DefaultProxy);
+  m_ui->m_cmbProxyType->addItem(tr("no proxy"), QNetworkProxy::NoProxy);
+  m_ui->m_cmbProxyType->addItem(tr("system proxy"), QNetworkProxy::DefaultProxy);
   m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
   m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
 

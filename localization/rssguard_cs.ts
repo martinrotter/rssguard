@@ -494,6 +494,34 @@
         <source>Remove all messages from all feeds.</source>
         <translation>Smazat všechnyzprávy ze všech kanálů. </translation>
     </message>
+    <message>
+        <source>Select next feed/category</source>
+        <translation>Vybrat další kanál/kategorii</translation>
+    </message>
+    <message>
+        <source>Select next feed/category.</source>
+        <translation>Vybrat další kanál/kategorii.</translation>
+    </message>
+    <message>
+        <source>Select previous feed/category</source>
+        <translation>Vybrat předchozí kanál/kategorii</translation>
+    </message>
+    <message>
+        <source>Select previous feed/category.</source>
+        <translation>Vybrat předchozí kanál/kategorii.</translation>
+    </message>
+    <message>
+        <source>Select next message</source>
+        <translation>Vybrat další zprávu</translation>
+    </message>
+    <message>
+        <source>Select next message.</source>
+        <translation>Vybrat další zprávu.</translation>
+    </message>
+    <message>
+        <source>Select previous message</source>
+        <translation>Vybrat předchozí zprávu</translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -582,10 +610,6 @@
         <translation>Zobrazit heslo</translation>
     </message>
     <message>
-        <source>Password is stored in plain string in RSS Guard configuration file.</source>
-        <translation>Heslo je uloženo v nezašifrované podobě jako prostý text v souboru s nastavením aplikace RSS Guard.</translation>
-    </message>
-    <message>
         <source>Code</source>
         <translation>Kód</translation>
     </message>
@@ -604,10 +628,6 @@
     <message>
         <source>Select color for web browser progress bar</source>
         <translation>Zvolit barvu pro průběhový pás při načítání stránky</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>Žádné proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -867,135 +887,147 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>VAROVÁNÍ: Mějte na paměti, že přepnutí z jednoho databázového backendu na jiný neprovede zkopírování dat mezi těmito backendy.</translation>
     </message>
     <message>
         <source>Database driver</source>
-        <translation type="unfinished"></translation>
+        <translation>Datbázový ovladač</translation>
     </message>
     <message>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostitel</translation>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Otestovat</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Berte na vědomí, že latence a celková rychlost zvoleného MySQL serveru může mít rozhodující vliv na rychlost této aplikace. Použití pomalého serveru může vést k tomu, že práce se zprávami či kanály bude neúměrně pomalá.</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvojklik pravého tlačítka myši</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-aktualizovat všechny kanály každých</translation>
     </message>
     <message>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>minut</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Časový limit stažení souboru kanálu</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento časový limit označuje čas, který si stahovací komponenta vyhradí pro získání souboru každého kanálu. Pokud tento čas vyprší a soubor doposud nebyl získán, tak se aktualizace kanálu ukončí a přejde se na další kanál.</translation>
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat všechny kanály po startu aplikace</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložiště dat</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"></translation>
+        <translation>SQLite (embedded databáze)</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL/MariaDB (dedikovaná database)</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostitel Vašeho MySQL serveru</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Heslo</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation type="unfinished"></translation>
+        <translation>databázový backend změněn</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostitel je prázdný.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostitel vypadá být v pořádku.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished">Uživatelské jméno je prázdné.</translation>
+        <translation>Uživatelské jméno je prázdné.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uživatelské jméno se jeví být v pořádku.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished">Heslo je prázdné.</translation>
+        <translation>Heslo je prázdné.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Heslo vypadá dobře.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Styl nástrojové lišty</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Skrýt hlavní okno při jeho minimalizaci</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Test připojení doposud nespuštěn.</translation>
     </message>
     <message>
         <source>icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>pouze ikony</translation>
     </message>
     <message>
         <source>text only</source>
-        <translation type="unfinished"></translation>
+        <translation>pouze text</translation>
     </message>
     <message>
         <source>text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>text vedle ikon</translation>
     </message>
     <message>
         <source>text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>text pod ikonami</translation>
     </message>
     <message>
         <source>follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>podle nastavení systému</translation>
+    </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation>Tato nastavení se projeví pouze na nově vytvořených spojeních.</translation>
+    </message>
+    <message>
+        <source>no proxy</source>
+        <translation>žádná proxy</translation>
+    </message>
+    <message>
+        <source>system proxy</source>
+        <translation>systémová proxy</translation>
     </message>
 </context>
 <context>
@@ -1317,63 +1349,63 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
     </message>
     <message>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>minut</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-aktualizace</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přidat kanál</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanál nepřidán kvůli chybě.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze upravit kanál</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanál neupraven kvůli chybě.</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"></translation>
+        <translation>Načíst nyní</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Načíst metadata</translation>
     </message>
     <message>
         <source>Feed metadata fetched successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata načtena úspěšně.</translation>
     </message>
     <message>
         <source>Error occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Při načtení nastala chyba.</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata doposud nenačtena.</translation>
+    </message>
+    <message>
+        <source>do not auto-update at all</source>
+        <translation>žádná auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>auto-update using global interval</source>
+        <translation>globálně nastavená auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>auto-update every</source>
+        <translation>auto-aktualizovat každých</translation>
     </message>
 </context>
 <context>

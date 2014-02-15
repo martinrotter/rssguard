@@ -494,6 +494,34 @@
         <source>Remove all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Select next feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous feed/category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select previous message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -582,10 +610,6 @@
         <translation>Toon paswoord</translation>
     </message>
     <message>
-        <source>Password is stored in plain string in RSS Guard configuration file.</source>
-        <translation>Paswoord is opgeslagen in gewone tekst in het RSSGuard configuratie bestand.</translation>
-    </message>
-    <message>
         <source>Code</source>
         <translation>Code</translation>
     </message>
@@ -604,10 +628,6 @@
     <message>
         <source>Select color for web browser progress bar</source>
         <translation>Selecteer kleur voor webbrowser voortgangsbalk</translation>
-    </message>
-    <message>
-        <source>No proxy</source>
-        <translation>Geen proxy</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -997,6 +1017,18 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <source>follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Note that these settings are applied only on newly established connections.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>system proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1344,18 +1376,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Door een fout is de feed niet bewerkt.</translation>
     </message>
     <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet alles automatisch bijwerken</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met tussenpauze</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatische-bijwerken elke</translation>
-    </message>
-    <message>
         <source>Fetch it now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1373,6 +1393,18 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>No metadata fetched so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>do not auto-update at all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>auto-update using global interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>auto-update every</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -380,9 +380,9 @@ void FormStandardFeedDetails::initialize() {
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) FeedsModelStandardFeed::DontAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) FeedsModelStandardFeed::DefaultAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) FeedsModelStandardFeed::SpecificAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("do not auto-update at all"), QVariant::fromValue((int) FeedsModelStandardFeed::DontAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("auto-update using global interval"), QVariant::fromValue((int) FeedsModelStandardFeed::DefaultAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("auto-update every"), QVariant::fromValue((int) FeedsModelStandardFeed::SpecificAutoUpdate));
 
   // Set tab order.
   setTabOrder(m_ui->m_buttonBox, m_ui->m_cmbParentCategory);
