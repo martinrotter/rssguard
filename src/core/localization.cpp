@@ -9,6 +9,7 @@
 #include <QTranslator>
 #include <QDir>
 #include <QFileInfoList>
+#include <QLocale>
 
 
 Localization::Localization() {
