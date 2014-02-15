@@ -1,5 +1,6 @@
 RSS Guard
 =========
+Welcome to RSS Guard project website. See below basic information or see the wiki for detailed information.
 
 Features
 --------
@@ -34,12 +35,3 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * desktop integration via tray icon,
 * Qt library is the only dependency,
 * no ads, no hidden costs.
-
-Installation
-------------
-You need to compile RSS Guard if binary distribution is not available for your platform. Basic steps are really simple:
-```
-cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX="C:\Program Files\rssguard"
-make install
-```
-This compiles and installs RSS Guard using Qt 4 on Windows machines. Qt 5 can be used too.
