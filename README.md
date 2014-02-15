@@ -1,6 +1,6 @@
 RSS Guard
 =========
-Welcome to RSS Guard project website. See below basic information or see the wiki for detailed information.
+Welcome to RSS Guard project website. See below for basic information or see the wiki for detailed information.
 
 Features
 --------
