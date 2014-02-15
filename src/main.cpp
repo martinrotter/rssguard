@@ -66,7 +66,8 @@ int main(int argc, char *argv[]) {
   SkinFactory::instance()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.
-  LoadLocalization();
+  //LoadLocalization();
+  Localization::load();
 
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);
