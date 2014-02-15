@@ -2,25 +2,25 @@ RSS Guard
 =========
 
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
- + Windows XP and newer,
- + GNU/Linux,
- + OS/2 (eComStation),
- + Mac OS X (possibly),
- + xBSD (possibly),
- + other platforms supported by Qt.
+    * Windows XP and newer,
+    * GNU/Linux,
+    * OS/2 (eComStation),
+    * Mac OS X (possibly),
+    * xBSD (possibly),
+    * other platforms supported by Qt.
 
 RSS Guard is written in C++. It is pretty fast even with tons of messages loaded. The core features are:
- * multiplatformity,
- * support for all feed formats,
- * simplicity,
- * sweet look & feel,
- * open-source development model based on GNU GPL license, version 3,
- * tabbed interface,
- * integrated web browser + external browser support,
- * desktop integration via tray icon,
- * Qt library is the only dependency,
- * dynamic keyboard shortcuts,
- * no ads, no hidden costs.
+    * multiplatformity,
+    * support for all feed formats,
+    * simplicity,
+    * sweet look & feel,
+    * open-source development model based on GNU GPL license, version 3,
+    * tabbed interface,
+    * integrated web browser + external browser support,
+    * desktop integration via tray icon,
+    * Qt library is the only dependency,
+    * dynamic keyboard shortcuts,
+    * no ads, no hidden costs.
 
 Installation
 ------------
@@ -33,10 +33,10 @@ This compiles and installs RSS Guard using Qt 4 on Windows machines. Qt 5 can be
 
 Other information
 -----------------
- * Binaries will be builded for Windows platform by myself. If you want to build binaries for your platform by yourself, I can provide you some support. **File an issue request** in that case. 
- * If you want to have some feature/ehancement implemented in RSS Guard, then **file an issue request**.
- * If you want to translate RSS Guard, then contact me or **file an issue request** too.
- * Make sure to read the Wiki.
+    * Binaries will be builded for Windows platform by myself. If you want to build binaries for your platform by yourself, I can provide you some support. **File an issue request** in that case. 
+    * If you want to have some feature/ehancement implemented in RSS Guard, then **file an issue request**.
+    * If you want to translate RSS Guard, then contact me or **file an issue request** too.
+    * Make sure to read the Wiki.
 
 
 I appreciate any constructive actions.
