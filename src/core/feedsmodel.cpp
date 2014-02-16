@@ -38,6 +38,10 @@ FeedsModel::~FeedsModel() {
   delete m_rootItem;
 }
 
+QModelIndexList FeedsModel::persistentIndexList() const {
+  return QAbstractItemModel::persistentIndexList();
+}
+
 QVariant FeedsModel::headerData(int section,
                                 Qt::Orientation orientation,
                                 int role) const {

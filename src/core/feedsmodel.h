@@ -27,6 +27,10 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
+    // Returns list of all indexes available
+    // in the model.
+    QModelIndexList persistentIndexList() const;
+
     // Model implementation.
     inline QVariant data(const QModelIndex &index, int role) const {
       return itemForIndex(index)->data(index.column(), role);

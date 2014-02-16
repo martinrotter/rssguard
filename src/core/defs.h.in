@@ -70,6 +70,7 @@
 #define APP_CFG_BROWSER     "browser"
 #define APP_CFG_MESSAGES    "messages"
 #define APP_CFG_FEEDS       "feeds"
+#define APP_CFG_CAT_EXT     "expanded_categories"
 
 #ifdef Q_OS_OSX
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@/@APP_LOW_NAME@.app/Contents/Resources"

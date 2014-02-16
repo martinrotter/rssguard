@@ -136,7 +136,6 @@ void FormMain::processExecutionMessage(const QString &message) {
 
 void FormMain::quit() {
   qDebug("Quitting the application.");
-
   qApp->quit();
 }
 
@@ -387,8 +386,6 @@ void FormMain::showAbout() {
 
 void FormMain::showSettings() {
   QPointer<FormSettings> form_pointer = new FormSettings(this);
-
   form_pointer.data()->exec();
-
   delete form_pointer.data();
 }
