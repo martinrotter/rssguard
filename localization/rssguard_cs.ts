@@ -480,7 +480,7 @@
     </message>
     <message>
         <source>Switch feeds list visibility</source>
-        <translation>Přepneout zobrazení seznamu kanálů</translation>
+        <translation>Přepnout zobrazení seznamu kanálů</translation>
     </message>
     <message>
         <source>Hides or shows the list of feeds/categories.</source>
