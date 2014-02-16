@@ -77,8 +77,4 @@ INSERT INTO Feeds (title, description, date_created, category, encoding, url, pr
 -- !
 INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, type) VALUES ('LXer: Linux News', 'The world is talking about GNU/Linux and Free/Open Source Software.', 1388678961000, 1, 'UTF-8', 'http://lxer.com/module/newswire/headlines.rss', 0, 0, 2);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, update_interval, type) VALUES ('Recent Commits', 'Recent commits for RSS Guard project.', 1388678961000, 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/commits/master.atom', 0, 2, 30, 3);
--- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, update_interval, type) VALUES ('Releases', 'Releases for RSS Guard.', 1388678961000, 2, 'UTF-8', 'https://github.com/martinrotter/rssguard/releases.atom', 0, 2, 30, 3);
--- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, update_interval, type) VALUES ('Author''s Activity', 'RSS Guard author public activity overview.', 1388678961000, 2, 'UTF-8', 'https://github.com/martinrotter.atom', 0, 2, 30, 3);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, update_interval, type) VALUES ('Recent Commits', 'Recent commits for RSS Guard project.', 1388678961000, 2, 'UTF-8', 'http://bitbucket.org/skunkos/rssguard/rss', 0, 2, 30, 1);
