@@ -115,9 +115,10 @@
     <addaction name="m_actionSelectNextFeedCategory"/>
     <addaction name="m_actionSelectPreviousFeedCategory"/>
     <addaction name="separator"/>
-    <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkAllFeedsRead"/>
     <addaction name="m_actionClearAllFeeds"/>
+    <addaction name="separator"/>
+    <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
     <addaction name="m_actionMarkSelectedFeedsAsRead"/>
     <addaction name="m_actionMarkSelectedFeedsAsUnread"/>
     <addaction name="m_actionClearSelectedFeeds"/>

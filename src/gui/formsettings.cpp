@@ -149,7 +149,7 @@ void FormSettings::changeBrowserProgressColor() {
   QPointer<QColorDialog> color_dialog = new QColorDialog(m_initialSettings.m_webBrowserProgress,
                                                          this);
   color_dialog.data()->setWindowTitle(tr("Select color for web browser progress bar"));
-  color_dialog.data()->setOption(QColorDialog::ShowAlphaChannel);
+  color_dialog.data()->setOption(QColorDialog::ShowAlphaChannel, false);
 
   if (color_dialog.data()->exec() == QDialog::Accepted) {
     m_initialSettings.m_webBrowserProgress = color_dialog.data()->selectedColor();
@@ -301,10 +301,9 @@ void FormSettings::loadBrowser() {
   Settings *settings = Settings::instance();
 
   // Load settings of web browser GUI.
-  m_initialSettings.m_webBrowserProgress = settings->value(APP_CFG_BROWSER,
-                                                           "browser_progress_color",
-                                                           QColor(59, 94, 248, 70)).value<QColor>();
-  loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
+  m_initialSettings.m_webBrowserProgress = QColor(settings->value(APP_CFG_BROWSER,
+                                                                  "browser_progress_color",
+                                                                  QColor(59, 94, 248)).toString());
   m_ui->m_checkBrowserProgressColor->setChecked(settings->value(APP_CFG_BROWSER,
                                                                 "browser_colored_progress_enabled",
                                                                 true).toBool());
@@ -314,6 +313,8 @@ void FormSettings::loadBrowser() {
   m_ui->m_checkQueueTabs->setChecked(settings->value(APP_CFG_BROWSER,
                                                      "queue_tabs",
                                                      true).toBool());
+  m_ui->m_btnWebBrowserColorSample->setMaximumHeight(m_ui->m_checkBrowserProgressColor->sizeHint().height());
+  loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
 
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_BROWSER,
@@ -329,7 +330,7 @@ void FormSettings::saveBrowser() {
   // Save settings of GUI of web browser.
   settings->setValue(APP_CFG_BROWSER,
                      "browser_progress_color",
-                     m_initialSettings.m_webBrowserProgress);
+                     m_initialSettings.m_webBrowserProgress.name());
   settings->setValue(APP_CFG_BROWSER,
                      "browser_colored_progress_enabled",
                      m_ui->m_checkBrowserProgressColor->isChecked());
@@ -349,8 +350,8 @@ void FormSettings::saveBrowser() {
 }
 
 void FormSettings::loadProxy() {
-  m_ui->m_cmbProxyType->addItem(tr("no proxy"), QNetworkProxy::NoProxy);
-  m_ui->m_cmbProxyType->addItem(tr("system proxy"), QNetworkProxy::DefaultProxy);
+  m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::NoProxy);
+  m_ui->m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::DefaultProxy);
   m_ui->m_cmbProxyType->addItem(tr("Socks5"), QNetworkProxy::Socks5Proxy);
   m_ui->m_cmbProxyType->addItem(tr("Http"), QNetworkProxy::HttpProxy);
 
@@ -696,11 +697,11 @@ void FormSettings::loadInterface() {
                                                                 true).toBool());
 
   // Load toolbar button style.
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("icon only"), Qt::ToolButtonIconOnly);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("text only"), Qt::ToolButtonTextOnly);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("text beside icon"), Qt::ToolButtonTextBesideIcon);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("text under icon"), Qt::ToolButtonTextUnderIcon);
-  m_ui->m_cmbToolbarButtonStyle->addItem(tr("follow OS style"), Qt::ToolButtonFollowStyle);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonIconOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text only"), Qt::ToolButtonTextOnly);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text beside icon"), Qt::ToolButtonTextBesideIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text under icon"), Qt::ToolButtonTextUnderIcon);
+  m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonFollowStyle);
 
   m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(Settings::instance()->value(APP_CFG_GUI,
                                                                                                                      "toolbar_style",

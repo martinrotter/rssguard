@@ -286,8 +286,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>564</width>
+            <height>363</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -364,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>209</width>
-                <height>245</height>
+                <width>558</width>
+                <height>337</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -498,13 +498,10 @@ Authors of this application are NOT responsible for lost data.</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QRadioButton" name="m_radioTrayOn">
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="m_checkHideWhenMinimized">
                 <property name="text">
-                 <string>Enable</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
+                 <string>Hide main window when it is minimized</string>
                 </property>
                </widget>
               </item>
@@ -515,10 +512,13 @@ Authors of this application are NOT responsible for lost data.</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QCheckBox" name="m_checkHideWhenMinimized">
+              <item row="1" column="0" colspan="2">
+               <widget class="QRadioButton" name="m_radioTrayOn">
                 <property name="text">
-                 <string>Hide main window when it is minimized</string>
+                 <string>Enable</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -633,7 +633,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabBrowserProxy">
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabInternalBrowser">
           <attribute name="title">
@@ -766,7 +766,7 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
              <item>
               <property name="text">
-               <string>select browser</string>
+               <string>Select browser</string>
               </property>
              </item>
             </widget>

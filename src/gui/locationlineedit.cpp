@@ -58,9 +58,9 @@ void LocationLineEdit::paintEvent(QPaintEvent *event) {
                                         "browser_colored_progress_enabled",
                                         true).toBool()) {
     QPalette current_palette = palette();
-    QColor loadingColor = settings->value(APP_CFG_BROWSER,
-                                          "browser_progress_color",
-                                          QColor(59, 94, 248, 70)).value<QColor>();
+    QColor loadingColor = QColor(settings->value(APP_CFG_BROWSER,
+                                                 "browser_progress_color",
+                                                 QColor(59, 94, 248)).toString());
     QLinearGradient gradient(0, 0, width(), 0);
     qreal percentage_border = m_progress / 100.0;
 
