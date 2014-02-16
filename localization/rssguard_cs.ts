@@ -62,8 +62,8 @@
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
-        <source>root</source>
-        <translation>kořen</translation>
+        <source>Root</source>
+        <translation>Kořen</translation>
     </message>
 </context>
 <context>
@@ -782,10 +782,6 @@
         <translation>Parametry spouštěče</translation>
     </message>
     <message>
-        <source>select browser</source>
-        <translation>zvolte prohlížeč</translation>
-    </message>
-    <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
         <translation>Mějte na vědomí, že &quot;%1&quot; (bez uvozovek) je zástupný symbol pro URL dané zprávy.</translation>
     </message>
@@ -998,36 +994,40 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Test připojení doposud nespuštěn.</translation>
     </message>
     <message>
-        <source>icon only</source>
-        <translation>pouze ikony</translation>
-    </message>
-    <message>
-        <source>text only</source>
-        <translation>pouze text</translation>
-    </message>
-    <message>
-        <source>text beside icon</source>
-        <translation>text vedle ikon</translation>
-    </message>
-    <message>
-        <source>text under icon</source>
-        <translation>text pod ikonami</translation>
-    </message>
-    <message>
-        <source>follow OS style</source>
-        <translation>podle nastavení systému</translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation>Tato nastavení se projeví pouze na nově vytvořených spojeních.</translation>
     </message>
     <message>
-        <source>no proxy</source>
-        <translation>žádná proxy</translation>
+        <source>Select browser</source>
+        <translation>Zvolte prohlížeč</translation>
     </message>
     <message>
-        <source>system proxy</source>
-        <translation>systémová proxy</translation>
+        <source>No proxy</source>
+        <translation>Bez proxy</translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation>Systémová proxy</translation>
+    </message>
+    <message>
+        <source>Icon only</source>
+        <translation>Pouze ikony</translation>
+    </message>
+    <message>
+        <source>Text only</source>
+        <translation>Pouze texty</translation>
+    </message>
+    <message>
+        <source>Text beside icon</source>
+        <translation>Texty vedle ikon</translation>
+    </message>
+    <message>
+        <source>Text under icon</source>
+        <translation>Texty pod ikonami</translation>
+    </message>
+    <message>
+        <source>Follow OS style</source>
+        <translation>Podle nastavení systému</translation>
     </message>
 </context>
 <context>
@@ -1396,16 +1396,16 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Metadata doposud nenačtena.</translation>
     </message>
     <message>
-        <source>do not auto-update at all</source>
-        <translation>žádná auto-aktualizace</translation>
+        <source>Auto-update using global interval</source>
+        <translation>Auto-aktualizovat dle hlavního nastavení</translation>
     </message>
     <message>
-        <source>auto-update using global interval</source>
-        <translation>globálně nastavená auto-aktualizace</translation>
+        <source>Auto-update every</source>
+        <translation>Auto-aktualizovat každých</translation>
     </message>
     <message>
-        <source>auto-update every</source>
-        <translation>auto-aktualizovat každých</translation>
+        <source>Do not auto-update at all</source>
+        <translation>Zakázat auto-aktualizace</translation>
     </message>
 </context>
 <context>

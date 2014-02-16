@@ -62,8 +62,8 @@
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
-        <source>root</source>
-        <translation>Hoofdmap</translation>
+        <source>Root</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -782,10 +782,6 @@
         <translation>exe parameters</translation>
     </message>
     <message>
-        <source>select browser</source>
-        <translation>Selecteer browser</translation>
-    </message>
-    <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
         <translation>Noteer dat &quot;%1&quot; (zonder aanhalingstekens) een tijdelijke aanduiding is voor URL of geselecteerde berichten.</translation>
     </message>
@@ -998,35 +994,39 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>icon only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>text only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>text beside icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>text under icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>follow OS style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>no proxy</source>
+        <source>Select browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>system proxy</source>
+        <source>No proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text beside icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text under icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1396,15 +1396,15 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>do not auto-update at all</source>
+        <source>Auto-update using global interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>auto-update using global interval</source>
+        <source>Auto-update every</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>auto-update every</source>
+        <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

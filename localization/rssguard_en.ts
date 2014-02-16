@@ -62,7 +62,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>root</source>
+        <source>Root</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -776,10 +776,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>select browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -980,35 +976,39 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>icon only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>text only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>text beside icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>text under icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>follow OS style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>no proxy</source>
+        <source>Select browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>system proxy</source>
+        <source>No proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text beside icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text under icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1378,15 +1378,15 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>do not auto-update at all</source>
+        <source>Auto-update using global interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>auto-update using global interval</source>
+        <source>Auto-update every</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>auto-update every</source>
+        <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
