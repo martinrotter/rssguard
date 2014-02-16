@@ -193,7 +193,7 @@
     </message>
     <message>
         <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webová stránka&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy aplikace lze získat z jejího web.u&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;RSS Guard je (velmi) jednoduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod licencí GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webová stránka&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy aplikace lze získat z jejího webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
@@ -1353,7 +1353,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source> minutes</source>
-        <translation>minut</translation>
+        <translation> minut</translation>
     </message>
     <message>
         <source>Auto-update</source>

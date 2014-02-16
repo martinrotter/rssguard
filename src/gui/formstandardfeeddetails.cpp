@@ -253,7 +253,8 @@ void FormStandardFeedDetails::guessFeed() {
     m_ui->m_txtTitle->lineEdit()->setText(result.first->title());
     m_ui->m_txtDescription->lineEdit()->setText(result.first->description());
     m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
-    m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(result.first->encoding(), Qt::DisplayRole));
+    m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findText(result.first->encoding(),
+                                                                       Qt::MatchFixedString));
 
     m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
                                         tr("Feed metadata fetched successfully."));
