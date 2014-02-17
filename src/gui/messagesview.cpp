@@ -195,6 +195,15 @@ void MessagesView::currentChanged(const QModelIndex &current,
   QTreeView::currentChanged(current, previous);
 }
 
+void MessagesView::selectionChanged(const QItemSelection &selected,
+                                    const QItemSelection &deselected) {
+  // TODO: This fixes bug #13 + possibly
+  // move code from currentChanged to this method too.
+  scrollTo(currentIndex(), QAbstractItemView::PositionAtCenter);
+
+  QTreeView::selectionChanged(selected, deselected);
+}
+
 void MessagesView::loadFeeds(const QList<int> &feed_ids) {
   // Load messages.
 

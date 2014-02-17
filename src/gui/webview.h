@@ -63,9 +63,6 @@ class WebView : public QWebView {
     // Customize mouse wheeling.
     void wheelEvent(QWheelEvent *event);
 
-    // Does additional painting.
-    void paintEvent(QPaintEvent *event);
-
     // Provides custom mouse actions.
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);

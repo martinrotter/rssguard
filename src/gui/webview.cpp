@@ -256,27 +256,6 @@ void WebView::wheelEvent(QWheelEvent *event) {
   QWebView::wheelEvent(event);
 }
 
-void WebView::paintEvent(QPaintEvent *event) {
-  QWebView::paintEvent(event);
-
-  // Draw additional frame.
-  /*
-  QPainter painter(this);
-  QStyleOptionFrameV3 style_option;
-  int frame_shape = QFrame::Sunken & QFrame::Shape_Mask;
-
-  style_option.init(this);
-  style_option.frameShape = QFrame::Shape(int(style_option.frameShape) |
-                                          QFrame::StyledPanel |
-                                          frame_shape);
-  style_option.rect = rect();
-  style_option.lineWidth = 1;
-  style_option.midLineWidth = 0;
-
-  style()->drawControl(QStyle::CE_ShapedFrame, &style_option, &painter, this);
-  */
-}
-
 bool WebView::increaseWebPageZoom() {
   qreal new_factor = zoomFactor() + 0.1;
 
