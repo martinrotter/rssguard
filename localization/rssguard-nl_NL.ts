@@ -1785,56 +1785,28 @@ Status automatisch bijwerken: %5</translation>
         <translation>Herlaad webpagina</translation>
     </message>
     <message>
-        <source>Reload current web page</source>
-        <translation>Herlaad huidige webpagina</translation>
-    </message>
-    <message>
         <source>Copy link url</source>
         <translation>URL kopiëren</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard</source>
-        <translation>URL kopiëren naar klembord</translation>
     </message>
     <message>
         <source>Copy image</source>
         <translation>Kopiëer afbeelding</translation>
     </message>
     <message>
-        <source>Copy image to clipboard</source>
-        <translation>Kopiëer afbeelding naar klembord</translation>
-    </message>
-    <message>
         <source>Copy image url</source>
         <translation>URL afbeelding kopiëren</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard</source>
-        <translation>URL afbeelding naar klembord kopiëren</translation>
     </message>
     <message>
         <source>Open link in new tab</source>
         <translation>Open link in nieuw tabblad</translation>
     </message>
     <message>
-        <source>Open this hyperlink in new tab</source>
-        <translation>Open deze koppeling in nieuw tabblad</translation>
-    </message>
-    <message>
         <source>Follow link</source>
         <translation>Volg koppeling</translation>
     </message>
     <message>
-        <source>Open the hyperlink in this tab</source>
-        <translation>Open koppeling in dit tabblad</translation>
-    </message>
-    <message>
         <source>Open image in new tab</source>
         <translation>Open afbeelding in nieuw tabblad</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab</source>
-        <translation>Open deze afbeelding in dit tabblad</translation>
     </message>
     <message>
         <source>Page not found</source>
@@ -1863,6 +1835,42 @@ Status automatisch bijwerken: %5</translation>
     <message>
         <source>Error page</source>
         <translation>Foutpagina</translation>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished">Vernieuw huidige webpagina.</translation>
+    </message>
+    <message>
+        <source>Copy selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copies current selection into the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy link url to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image url to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this image in this tab.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

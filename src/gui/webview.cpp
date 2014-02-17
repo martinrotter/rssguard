@@ -14,6 +14,7 @@
 #include <QWebFrame>
 #include <QContextMenuEvent>
 #include <QDateTime>
+#include <QClipboard>
 
 
 WebView::WebView(QWidget *parent)
@@ -37,6 +38,10 @@ void WebView::onLoadFinished(bool ok) {
   }
 }
 
+void WebView::copySelectedText() {
+  QApplication::clipboard()->setText(selectedText());
+}
+
 void WebView::openLinkInNewTab() {
   emit linkMiddleClicked(m_contextLinkUrl);
 }
@@ -50,12 +55,13 @@ void WebView::createConnections() {
   connect(this, SIGNAL(customContextMenuRequested(QPoint)),
           this, SLOT(popupContextMenu(QPoint)));
 
-  connect(m_actionOpenLinkNewTab,SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
+  connect(m_actionOpenLinkNewTab, SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
   connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
 }
 
 void WebView::setupIcons() {
   m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("go-refresh"));
+  m_actionCopySelectedItem->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy"));
   m_actionCopyLink->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy"));
   m_actionCopyImage->setIcon(IconThemeFactory::instance()->fromTheme("edit-copy-image"));
 
@@ -73,55 +79,60 @@ void WebView::initializeActions() {
   m_actionReload = pageAction(QWebPage::Reload);
   m_actionReload->setParent(this);
   m_actionReload->setText(tr("Reload web page"));
-  m_actionReload->setToolTip(tr("Reload current web page"));
+  m_actionReload->setToolTip(tr("Reload current web page."));
+
+  m_actionCopySelectedItem = pageAction(QWebPage::Copy);
+  m_actionCopySelectedItem->setParent(this);
+  m_actionCopySelectedItem->setText(tr("Copy selection"));
+  m_actionCopySelectedItem->setToolTip(tr("Copies current selection into the clipboard."));
 
   m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
   m_actionCopyLink->setParent(this);
   m_actionCopyLink->setText(tr("Copy link url"));
-  m_actionCopyLink->setToolTip(tr("Copy link url to clipboard"));
+  m_actionCopyLink->setToolTip(tr("Copy link url to clipboard."));
 
   m_actionCopyImage = pageAction(QWebPage::CopyImageToClipboard);
   m_actionCopyImage->setParent(this);
   m_actionCopyImage->setText(tr("Copy image"));
-  m_actionCopyImage->setToolTip(tr("Copy image to clipboard"));
+  m_actionCopyImage->setToolTip(tr("Copy image to clipboard."));
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
   m_actionCopyImageUrl->setParent(this);
   m_actionCopyImageUrl->setText(tr("Copy image url"));
-  m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard"));
+  m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard."));
 #endif
 
   m_actionOpenLinkNewTab = pageAction(QWebPage::OpenLinkInNewWindow);
   m_actionOpenLinkNewTab->setParent(this);
   m_actionOpenLinkNewTab->setText(tr("Open link in new tab"));
-  m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab"));
+  m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab."));
 
   m_actionOpenLinkThisTab = pageAction(QWebPage::OpenLink);
   m_actionOpenLinkThisTab->setParent(this);
   m_actionOpenLinkThisTab->setText(tr("Follow link"));
-  m_actionOpenLinkThisTab->setToolTip(tr("Open the hyperlink in this tab"));
+  m_actionOpenLinkThisTab->setToolTip(tr("Open the hyperlink in this tab."));
 
   m_actionOpenImageNewTab = pageAction(QWebPage::OpenImageInNewWindow);
   m_actionOpenImageNewTab->setParent(this);
   m_actionOpenImageNewTab->setText(tr("Open image in new tab"));
-  m_actionOpenImageNewTab->setToolTip(tr("Open this image in this tab"));
+  m_actionOpenImageNewTab->setToolTip(tr("Open this image in this tab."));
 }
 
 void WebView::displayErrorPage() {
   setHtml(SkinFactory::instance()->currentMarkupLayout().arg(
             tr("Error page"),
             SkinFactory::instance()->currentMarkup().arg(tr("Page not found"),
-                                                               tr("Check your internet connection or website address"),
-                                                               QString(),
-                                                               tr("This failure can be caused by:<br><ul>"
-                                                                  "<li>non-functional internet connection,</li>"
-                                                                  "<li>incorrect website address,</li>"
-                                                                  "<li>bad proxy server settings,</li>"
-                                                                  "<li>target destination outage,</li>"
-                                                                  "<li>many other things.</li>"
-                                                                  "</ul>"),
-                                                               QDateTime::currentDateTime().toString(Qt::DefaultLocaleLongDate))));
+                                                         tr("Check your internet connection or website address"),
+                                                         QString(),
+                                                         tr("This failure can be caused by:<br><ul>"
+                                                            "<li>non-functional internet connection,</li>"
+                                                            "<li>incorrect website address,</li>"
+                                                            "<li>bad proxy server settings,</li>"
+                                                            "<li>target destination outage,</li>"
+                                                            "<li>many other things.</li>"
+                                                            "</ul>"),
+                                                         QDateTime::currentDateTime().toString(Qt::DefaultLocaleLongDate))));
 }
 
 void WebView::popupContextMenu(const QPoint &pos) {
@@ -135,6 +146,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
 
   // Assemble the menu from actions.
   context_menu.addAction(m_actionReload);
+  context_menu.addAction(m_actionCopySelectedItem);
 
   QUrl hit_url = hit_result.linkUrl();
   QUrl hit_image_url = hit_result.imageUrl();
@@ -197,8 +209,8 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
     bool are_gestures_enabled = Settings::instance()->value(APP_CFG_BROWSER,
-                                                               "gestures_enabled",
-                                                               true).toBool();
+                                                            "gestures_enabled",
+                                                            true).toBool();
     if (are_gestures_enabled) {
       QPoint release_point = event->pos();
       int left_move = m_gestureOrigin.x() - release_point.x();

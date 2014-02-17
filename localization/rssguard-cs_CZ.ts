@@ -1787,56 +1787,28 @@ Status auto-aktualizace: %5</translation>
         <translation>Obnovit stránku</translation>
     </message>
     <message>
-        <source>Reload current web page</source>
-        <translation>Znovu načíst aktuální stránku</translation>
-    </message>
-    <message>
         <source>Copy link url</source>
         <translation>Kopírovat adresu odkazu</translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard</source>
-        <translation>Kopírovat adresu odkazu to schránky</translation>
     </message>
     <message>
         <source>Copy image</source>
         <translation>Kopírovat obrázek</translation>
     </message>
     <message>
-        <source>Copy image to clipboard</source>
-        <translation>Kopírovat obrázek do schránky</translation>
-    </message>
-    <message>
         <source>Copy image url</source>
         <translation>Kopírovat adresu obrázku</translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard</source>
-        <translation>Kopírovat adresu obrázku do schránky</translation>
     </message>
     <message>
         <source>Open link in new tab</source>
         <translation>Otevřít odkaz v novém panelu</translation>
     </message>
     <message>
-        <source>Open this hyperlink in new tab</source>
-        <translation>Otevřít tento odkaz v novém panelu</translation>
-    </message>
-    <message>
         <source>Follow link</source>
         <translation>Přejít</translation>
     </message>
     <message>
-        <source>Open the hyperlink in this tab</source>
-        <translation>Otevřít tento odkaz v tomto panelu</translation>
-    </message>
-    <message>
         <source>Open image in new tab</source>
         <translation>Otevřít obrázek v novém panelu</translation>
-    </message>
-    <message>
-        <source>Open this image in this tab</source>
-        <translation>Otevřít tento obrázek v novém panelu</translation>
     </message>
     <message>
         <source>Page not found</source>
@@ -1865,6 +1837,42 @@ Status auto-aktualizace: %5</translation>
     <message>
         <source>Error page</source>
         <translation>Chyba</translation>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation>Opět načíst aktuální webovou stránku.</translation>
+    </message>
+    <message>
+        <source>Copy selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copies current selection into the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy link url to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image url to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this image in this tab.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

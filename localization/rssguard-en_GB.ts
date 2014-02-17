@@ -1760,15 +1760,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reload current web page</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copy link url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy link url to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1776,15 +1768,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copy image to clipboard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Copy image url</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy image url to clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1792,23 +1776,11 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open this hyperlink in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Follow link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open the hyperlink in this tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open image in new tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open this image in this tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1837,6 +1809,42 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Error page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload current web page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copies current selection into the clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy link url to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy image url to clipboard.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this hyperlink in new tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in this tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open this image in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

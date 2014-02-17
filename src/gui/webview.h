@@ -43,6 +43,7 @@ class WebView : public QWebView {
     // Executes if loading of any page is done.
     void onLoadFinished(bool ok);
 
+    void copySelectedText();
     void openLinkInNewTab();
     void openImageInNewTab();
 
@@ -73,6 +74,7 @@ class WebView : public QWebView {
     WebPage *m_page;
 
     QAction *m_actionReload;
+    QAction *m_actionCopySelectedItem;
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;
 
