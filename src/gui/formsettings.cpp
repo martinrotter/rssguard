@@ -391,7 +391,7 @@ void FormSettings::saveProxy() {
 }
 
 void FormSettings::loadLanguage() {
-  foreach (const Language &language, Localization::installedLanguages()) {
+  foreach (const Language &language, Localization::instance()->installedLanguages()) {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
@@ -401,10 +401,8 @@ void FormSettings::loadLanguage() {
     item->setIcon(0, IconThemeFactory::instance()->fromTheme(language.m_code));
   }
 
-  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Settings::instance()->value(APP_CFG_GEN,
-                                                                                                        "language",
-                                                                                                        "en").toString(),
-                                                                            Qt::MatchExactly,
+  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Localization::instance()->loadedLanguage(),
+                                                                            Qt::MatchContains,
                                                                             1);
   if (!matching_items.isEmpty()) {
     m_ui->m_treeLanguages->setCurrentItem(matching_items[0]);
@@ -418,9 +416,7 @@ void FormSettings::saveLanguage() {
   }
 
   Settings *settings = Settings::instance();
-  QString actual_lang = settings->value(APP_CFG_GEN,
-                                        "language",
-                                        "en").toString();
+  QString actual_lang = Localization::instance()->loadedLanguage();
   QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
 
   // Save prompt for restart if language has changed.

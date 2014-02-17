@@ -370,6 +370,7 @@ set(APP_HEADERS
 
   # CORE headers.
   src/core/settings.h
+  src/core/localization.h
   src/core/basenetworkaccessmanager.h
   src/core/webbrowsernetworkaccessmanager.h
   src/core/silentnetworkaccessmanager.h
@@ -395,17 +396,17 @@ set(APP_FORMS
 
 # Add translations.
 set(APP_TRANSLATIONS
-  localization/rssguard_en.ts
-  localization/rssguard_cs.ts
-  localization/rssguard_nl.ts
-  localization/qt_cs.ts
-  localization/qt_nl.ts
+  localization/rssguard-en_GB.ts
+  localization/rssguard-cs_CZ.ts
+  localization/rssguard-nl_NL.ts
+  localization/qt-cs_CZ.ts
+  localization/qt-nl_NL.ts
 )
 
 set(APP_TRANSLATIONS_WO_QT
-  localization/rssguard_en.ts
-  localization/rssguard_cs.ts
-  localization/rssguard_nl.ts
+  localization/rssguard-en_GB.ts
+  localization/rssguard-cs_CZ.ts
+  localization/rssguard-nl_NL.ts
 )
 
 set(APP_TEXT

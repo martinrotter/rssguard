@@ -1553,8 +1553,8 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>LANG_ABBREV</source>
-        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here. They may be combined with ISO 3166-1 (alpha-2) codes. Examples: &quot;cs&quot;, &quot;nl&quot;, &quot;en&quot;, &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>cs</translation>
+        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
+        <translation>cs_CZ</translation>
     </message>
     <message>
         <source>LANG_VERSION</source>

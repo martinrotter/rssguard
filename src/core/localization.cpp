@@ -12,43 +12,62 @@
 #include <QLocale>
 
 
-Localization::Localization() {
+QPointer<Localization> Localization::s_instance;
+
+Localization::Localization(QObject *parent)
+  : QObject(parent) {
+}
+
+Localization::~Localization() {
+  qDebug("Destroying Localization instance.");
+}
+
+Localization *Localization::instance() {
+  if (s_instance.isNull()) {
+    s_instance = new Localization(qApp);
+  }
+
+  return s_instance;
+}
+
+QString Localization::desiredLanguage() {
+  return Settings::instance()->value(APP_CFG_GEN,
+                                     "language",
+                                     QLocale::system().name()).toString();
 }
 
 void Localization::load() {
   QTranslator *qt_translator = new QTranslator(qApp);
   QTranslator *app_translator = new QTranslator(qApp);
-  QString locale_system = QLocale::system().name();
-  QString locale_name = Settings::instance()->value(APP_CFG_GEN,
-                                                    "language",
-                                                    locale_system).toString();
+  QString desired_localization = desiredLanguage();
 
-  qDebug("Try to load application localization. "
-         "System locale was detected as '%s'. "
-         "Trying to load localization for '%s'.",
-         qPrintable(locale_system),
-         qPrintable(locale_name));
-
-  if (app_translator->load(QString("rssguard_%1.qm").arg(locale_name),
-                           APP_LANG_PATH)) {
+  if (app_translator->load(QString("rssguard-%1.qm").arg(desired_localization),
+                           APP_LANG_PATH,
+                           "-")) {
     QApplication::installTranslator(app_translator);
     qDebug("Application localization '%s' loaded successfully.",
-           qPrintable(locale_name));
+           qPrintable(desired_localization));
   }
   else {
-    qWarning("Application localization '%s' was not loaded.", qPrintable(locale_name));
-  }
-  if (qt_translator->load(QString("qt_%1.qm").arg(locale_name),
-                          APP_LANG_PATH)) {
-    QApplication::installTranslator(qt_translator);
-    qDebug("Qt localization '%s' loaded successfully.",
-           qPrintable(locale_name));
-  }
-  else {
-    qWarning("Qt localization '%s' was not loaded.", qPrintable(locale_name));
+    qWarning("Application localization '%s' was not loaded.", qPrintable(desired_localization));
+
+    m_loadedLanguage = DEFAULT_LOCALE;
+    return;
   }
 
-  QLocale::setDefault(QLocale(locale_name));
+  if (qt_translator->load(QString("qt-%1.qm").arg(desired_localization),
+                          APP_LANG_PATH,
+                          "-")) {
+    QApplication::installTranslator(qt_translator);
+    qDebug("Qt localization '%s' loaded successfully.",
+           qPrintable(desired_localization));
+  }
+  else {
+    qWarning("Qt localization '%s' was not loaded.", qPrintable(desired_localization));
+  }
+
+  m_loadedLanguage = desired_localization;
+  QLocale::setDefault(QLocale(desired_localization));
 }
 
 QList<Language> Localization::installedLanguages() {
@@ -57,7 +76,7 @@ QList<Language> Localization::installedLanguages() {
   QTranslator translator;
 
   // Iterate all found language files.
-  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard_*.qm",
+  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard-*.qm",
                                                          QDir::Files,
                                                          QDir::Name)) {
     if (translator.load(file.absoluteFilePath())) {
@@ -73,3 +92,4 @@ QList<Language> Localization::installedLanguages() {
   }
   return languages;
 }
+

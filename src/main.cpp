@@ -27,8 +27,8 @@ int main(int argc, char *argv[]) {
   //: Name of language, e.g. English.
   QObject::tr("LANG_NAME");
   //: Abbreviation of language, e.g. en.
-  //: Use ISO 639-1 code here. They may be combined with ISO 3166-1 (alpha-2) codes.
-  //: Examples: "cs", "nl", "en", "cs_CZ", "en_GB", "en_US".
+  //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
+  //: Examples: "cs_CZ", "en_GB", "en_US".
   QObject::tr("LANG_ABBREV");
   //: Version of your translation, e.g. 1.0.
   QObject::tr("LANG_VERSION");
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
 
   // Load localization and setup locale before any widget is constructed.
   //LoadLocalization();
-  Localization::load();
+  Localization::instance()->load();
 
   // These settings needs to be set before any QSettings object.
   QtSingleApplication::setApplicationName(APP_NAME);
