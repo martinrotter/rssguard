@@ -2,6 +2,12 @@ RSS Guard
 =========
 Welcome to RSS Guard project website. See below for basic information or see the wiki for detailed information.
 
+Contacts
+--------
+* [rotter.martinos@gmail.com](mailto:rotter.martinos@gmail.com) ~e-mail
+* [https://groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums
+* [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode)
+
 Features
 --------
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
