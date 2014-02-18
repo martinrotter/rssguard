@@ -1041,7 +1041,7 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="1" column="0">
             <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
              <property name="text">
-              <string>Kepp message selection in the middle of the message list viewport</string>
+              <string>Keep message selection in the middle of the message list viewport</string>
              </property>
             </widget>
            </item>
