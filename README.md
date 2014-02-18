@@ -5,7 +5,7 @@ Welcome to RSS Guard project website. See below for basic information or see the
 Contacts
 --------
 * [rotter.martinos@gmail.com](mailto:rotter.martinos@gmail.com) ~e-mail
-* [https://groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums
+* [groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums
 * [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode)
 
 Features
