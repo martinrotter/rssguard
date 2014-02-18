@@ -86,6 +86,11 @@ void WebView::initializeActions() {
   m_actionCopySelectedItem->setText(tr("Copy selection"));
   m_actionCopySelectedItem->setToolTip(tr("Copies current selection into the clipboard."));
 
+#if defined(Q_OS_OS2)
+  m_actionCopySelectedItem->setShortcut(QKeySequence::Copy);
+  addAction(m_actionCopySelectedItem);
+#endif
+
   m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
   m_actionCopyLink->setParent(this);
   m_actionCopyLink->setText(tr("Copy link url"));
