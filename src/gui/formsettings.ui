@@ -17,11 +17,20 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item row="0" column="0">
@@ -35,7 +44,16 @@
      </widget>
      <widget class="QWidget" name="m_pageDataStorage">
       <layout class="QFormLayout" name="formLayout_14">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item row="0" column="0" colspan="2">
@@ -71,7 +89,16 @@
            <property name="fieldGrowthPolicy">
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item row="0" column="0" colspan="2">
@@ -111,7 +138,16 @@ Authors of this application are NOT responsible for lost data.</string>
          </widget>
          <widget class="QWidget" name="m_pageMysql">
           <layout class="QFormLayout" name="formLayout_16">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item row="0" column="0">
@@ -225,7 +261,16 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageShortcuts">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -241,12 +286,21 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>576</width>
-            <height>373</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -260,7 +314,16 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageUi">
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -276,7 +339,16 @@ Authors of this application are NOT responsible for lost data.</string>
            <string>Icons &amp;&amp; skins</string>
           </attribute>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -292,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>568</width>
-                <height>344</height>
+                <width>209</width>
+                <height>245</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -508,7 +580,16 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageLanguages">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -537,7 +618,16 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageProxy">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -847,7 +937,16 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageFeedsMessages">
       <layout class="QHBoxLayout" name="horizontalLayout_9">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -860,6 +959,16 @@ Authors of this application are NOT responsible for lost data.</string>
            <string>Feeds</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_10">
+           <property name="fieldGrowthPolicy">
+            <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+           </property>
+           <item row="0" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
+             <property name="text">
+              <string>Update all feed on application startup</string>
+             </property>
+            </widget>
+           </item>
            <item row="1" column="0">
             <widget class="QCheckBox" name="m_checkAutoUpdate">
              <property name="text">
@@ -912,13 +1021,6 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="0" colspan="2">
-            <widget class="QCheckBox" name="m_checkUpdateAllFeedsOnStartup">
-             <property name="text">
-              <string>Update all feed on application startup</string>
-             </property>
-            </widget>
-           </item>
           </layout>
          </widget>
          <widget class="QWidget" name="m_tabMessages">
@@ -933,6 +1035,13 @@ Authors of this application are NOT responsible for lost data.</string>
             <widget class="QCheckBox" name="m_checkRemoveReadMessagesOnExit">
              <property name="text">
               <string>Remove all read messages from all standard feeds on application exit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="m_checkKeppMessagesInTheMiddle">
+             <property name="text">
+              <string>Kepp message selection in the middle of the message list viewport</string>
              </property>
             </widget>
            </item>
