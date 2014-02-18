@@ -286,7 +286,7 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
   query_add_feed.bindValue(":password", feed->password());
   query_add_feed.bindValue(":update_type", (int) feed->autoUpdateType());
   query_add_feed.bindValue(":update_interval", feed->autoUpdateInitialInterval());
-  query_add_feed.bindValue(":type", (int) FeedsModelCategory::Standard);
+  query_add_feed.bindValue(":type", (int) feed->type());
 
   if (!query_add_feed.exec()) {
     // Query failed.
