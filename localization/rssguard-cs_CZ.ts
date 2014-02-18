@@ -911,7 +911,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source> minutes</source>
-        <translation>minut</translation>
+        <translation> minut</translation>
     </message>
     <message>
         <source>Feed connection timeout</source>
@@ -1844,35 +1844,35 @@ Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat výběr</translation>
     </message>
     <message>
         <source>Copies current selection into the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zkopíruje aktuální výběr do schránky.</translation>
     </message>
     <message>
         <source>Copy link url to clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat adresu odkazu do schránky.</translation>
     </message>
     <message>
         <source>Copy image to clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat obrázek do schránky.</translation>
     </message>
     <message>
         <source>Copy image url to clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat adresu obrázku do schránky.</translation>
     </message>
     <message>
         <source>Open this hyperlink in new tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít tento odkaz v novém tabu.</translation>
     </message>
     <message>
         <source>Open the hyperlink in this tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít tento odkaz v aktuálním tabu.</translation>
     </message>
     <message>
         <source>Open this image in this tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít tento obrázek v aktuálním tabu.</translation>
     </message>
 </context>
 </TS>

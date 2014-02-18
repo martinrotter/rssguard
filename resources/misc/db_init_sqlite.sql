@@ -73,7 +73,7 @@ INSERT INTO Categories (id, parent_id, title, description, date_created, type, i
 -- !
 INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, type) VALUES ('Linux Today', 'Linux Today - Linux News on Internet Time.', 1388678961000, 1, 'UTF-8', 'http://feeds.feedburner.com/linuxtoday/linux?format=xml', 0, 0, 1);
 -- !
-INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, type) VALUES ('LinuxInsider', 'LinuxInsider: Linux News & Information from Around the World.', 1388678961000, 1, 'UTF-8', 'http://www.linuxinsider.com/perl/syndication/rssfull.pl', 0, 0, 2);
+INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, type) VALUES ('LinuxInsider', 'LinuxInsider: Linux News & Information from Around the World.', 1388678961000, 1, 'UTF-8', 'http://www.linuxinsider.com/perl/syndication/rssfull.pl', 0, 0, 1);
 -- !
 INSERT INTO Feeds (title, description, date_created, category, encoding, url, protected, update_type, type) VALUES ('LXer: Linux News', 'The world is talking about GNU/Linux and Free/Open Source Software.', 1388678961000, 1, 'UTF-8', 'http://lxer.com/module/newswire/headlines.rss', 0, 0, 2);
 -- !

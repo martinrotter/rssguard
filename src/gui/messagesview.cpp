@@ -197,9 +197,30 @@ void MessagesView::currentChanged(const QModelIndex &current,
 
 void MessagesView::selectionChanged(const QItemSelection &selected,
                                     const QItemSelection &deselected) {
+//  QModelIndex current_index = currentIndex();
+//  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+
+//  qDebug("Current row changed - row [%d,%d] source [%d, %d].",
+//         current_index.row(), current_index.column(),
+//         mapped_current_index.row(), mapped_current_index.column());
+
+//  if (mapped_current_index.isValid()) {
+//    if (!m_batchUnreadSwitch) {
+//      // Set this message as read only if current item
+//      // wasn't changed by "mark selected messages unread" action.
+//      m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
+//    }
+
+//    emit currentMessagesChanged(QList<Message>() <<
+//                                m_sourceModel->messageAt(mapped_current_index.row()));
+//  }
+//  else {
+//    emit currentMessagesRemoved();
+//  }
+
   // TODO: This fixes bug #13 + possibly
   // move code from currentChanged to this method too.
-  scrollTo(currentIndex(), QAbstractItemView::PositionAtCenter);
+  //scrollTo(current_index, QAbstractItemView::PositionAtCenter);
 
   QTreeView::selectionChanged(selected, deselected);
 }
