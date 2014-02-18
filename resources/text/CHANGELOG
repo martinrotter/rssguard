@@ -3,6 +3,7 @@
 <ul>
 <li>[~] Localization handling.</li>
 <li>[+] "Copy selection" context menu item for internal web browser.</li>
+<li>[#] Feed type saved to database when feed is added.</li>
 </ul>
 [1.9.9.5]
 <ul>

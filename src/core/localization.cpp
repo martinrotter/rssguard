@@ -51,8 +51,7 @@ void Localization::load() {
   else {
     qWarning("Application localization '%s' was not loaded.", qPrintable(desired_localization));
 
-    m_loadedLanguage = DEFAULT_LOCALE;
-    return;
+    desired_localization = DEFAULT_LOCALE;
   }
 
   if (qt_translator->load(QString("qt-%1.qm").arg(desired_localization),
