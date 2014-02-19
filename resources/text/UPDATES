@@ -7,16 +7,16 @@
 <![CDATA[
 <html>
   <body>
-    <ul>
-      <li>[#] Mac OS X support missing.</li>
-      <li>[#] Virtual desktop change hides main window.</li>
-      <li>[#] Misleding external browser settings.</li>
-      <li>[#] Non-functional external browser shortcuts.</li>
-      <li>[#] Saving of webbrowser progressbar color.</li>
-      <li>[~] Usability of some GUI elements.</li>
-      <li>[@] Completely switched to new website.</li>
-      <li>[+] Some missing shortcuts.</li>
-    </ul>
+<ul>
+<li>[#] Mac OS X support missing.</li>
+<li>[#] Virtual desktop change hides main window.</li>
+<li>[#] Misleding external browser settings.</li>
+<li>[#] Non-functional external browser shortcuts.</li>
+<li>[#] Saving of webbrowser progressbar color.</li>
+<li>[~] Usability of some GUI elements.</li>
+<li>[@] Completely switched to new website.</li>
+<li>[+] Some missing shortcuts.</li>
+</ul>
   </body>
 </html>
 ]]>
