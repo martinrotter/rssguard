@@ -4,22 +4,16 @@
     <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.5-os2.7z</url>
     <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.5-win32.7z</url>
     <changes>
-<![CDATA[
-<html>
-  <body>
-<ul>
-<li>[#] Mac OS X support missing.</li>
-<li>[#] Virtual desktop change hides main window.</li>
-<li>[#] Misleding external browser settings.</li>
-<li>[#] Non-functional external browser shortcuts.</li>
-<li>[#] Saving of webbrowser progressbar color.</li>
-<li>[~] Usability of some GUI elements.</li>
-<li>[@] Completely switched to new website.</li>
-<li>[+] Some missing shortcuts.</li>
-</ul>
-  </body>
-</html>
-]]>
+      <![CDATA[
+      [#] Mac OS X support missing.
+      [#] Virtual desktop change hides main window.
+      [#] Misleding external browser settings.
+      [#] Non-functional external browser shortcuts.
+      [#] Saving of webbrowser progressbar color.
+      [~] Usability of some GUI elements.
+      [@] Completely switched to new website.
+      [+] Some missing shortcuts.
+      ]]>
     </changes>
   </release>
 </releases>
