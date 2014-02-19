@@ -24,6 +24,9 @@ FormUpdate::FormUpdate(QWidget *parent)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 
+  connect(m_ui->m_cmbAvailableRelease->comboBox(), SIGNAL(currentIndexChanged(int)),
+          this, SLOT(updateChanges(int)));
+
   m_ui->m_lblCurrentRelease->setText(APP_VERSION);
 
   checkForUpdates();
@@ -31,6 +34,14 @@ FormUpdate::FormUpdate(QWidget *parent)
 
 FormUpdate::~FormUpdate() {
   delete m_ui;
+}
+
+void FormUpdate::updateChanges(int new_release_index) {
+  if (new_release_index >= 0) {
+    UpdateInfo info = m_ui->m_cmbAvailableRelease->comboBox()->itemData(new_release_index).value<UpdateInfo>();
+
+    m_ui->m_txtChanges->setText(info.m_changes);
+  }
 }
 
 void FormUpdate::checkForUpdates() {

@@ -18,7 +18,8 @@ class FormUpdate : public QDialog {
     explicit FormUpdate(QWidget *parent = 0);
     virtual ~FormUpdate();
 
-  protected:
+  protected slots:
+    void updateChanges(int new_release_index);
     void checkForUpdates();
 
   private:

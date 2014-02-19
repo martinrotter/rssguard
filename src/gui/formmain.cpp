@@ -411,6 +411,8 @@ void FormMain::showUpdates() {
   QPointer<FormUpdate> form_update = new FormUpdate(this);
   form_update.data()->exec();
   delete form_update.data();
+
+  SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
 void FormMain::showSettings() {
