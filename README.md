@@ -4,9 +4,14 @@ Welcome to RSS Guard project website. See below for basic information or see the
 
 Contacts
 --------
-* [rotter.martinos@gmail.com](mailto:rotter.martinos@gmail.com) ~e-mail
-* [groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums
-* [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode)
+* [rotter.martinos@gmail.com](mailto:rotter.martinos@gmail.com) ~e-mail,
+* [groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums,
+* [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode).
+
+RSS Guard feeds
+---------------
+* [groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50) ~forums feed,
+* [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed
 
 Features
 --------
