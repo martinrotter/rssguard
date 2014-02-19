@@ -15,10 +15,7 @@
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
 #include "qtsingleapplication/qtsingleapplication.h"
-
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 #include "gui/formupdate.h"
-#endif
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -110,13 +107,9 @@ void FormMain::prepareMenus() {
     m_trayMenu = new QMenu(APP_NAME, this);
 #endif
 
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
     // Add "check for updates" item on some platforms.
-    m_actionCheckForUpdates = new QAction(tr("Check for updates"), this);
-    m_actionCheckForUpdates->setIcon(IconThemeFactory::instance()->fromTheme("check-for-updates"));
-    m_actionCheckForUpdates->setToolTip(tr("Check if new update for the application is available for download."));
-    m_ui->m_menuHelp->insertAction(m_ui->m_actionAboutGuard, m_actionCheckForUpdates);
-#endif
+    m_ui->m_actionCheckForUpdates->setIcon(IconThemeFactory::instance()->fromTheme("check-for-updates"));
+    m_ui->m_actionCheckForUpdates->setToolTip(tr("Check if new update for the application is available for download."));
 
     // Add needed items to the menu.
     m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
@@ -340,10 +333,7 @@ void FormMain::createConnections() {
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
-
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-  connect(m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
-#endif
+  connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
 
   // General connections.
   connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
@@ -401,7 +391,6 @@ void FormMain::showAbout() {
   delete form_pointer.data();
 }
 
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 void FormMain::showUpdates() {
   if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
@@ -423,7 +412,6 @@ void FormMain::showUpdates() {
   form_update.data()->exec();
   delete form_update.data();
 }
-#endif
 
 void FormMain::showSettings() {
   QPointer<FormSettings> form_pointer = new FormSettings(this);

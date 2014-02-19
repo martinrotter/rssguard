@@ -14,8 +14,12 @@ class FormUpdate : public QDialog {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit FormUpdate(QWidget *parent = 0);
     virtual ~FormUpdate();
+
+  protected:
+    void checkForUpdates();
 
   private:
     Ui::FormUpdate *m_ui;

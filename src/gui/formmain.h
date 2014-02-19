@@ -92,15 +92,9 @@ class FormMain : public QMainWindow {
     // Displays various dialogs.
     void showSettings();
     void showAbout();
-
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
     void showUpdates();
-#endif
 
   private:
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-    QAction *m_actionCheckForUpdates;
-#endif
 
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;

@@ -2,6 +2,7 @@
 
 #include "core/textfactory.h"
 #include "gui/iconthemefactory.h"
+
 #if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
 #endif

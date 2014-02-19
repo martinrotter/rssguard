@@ -61,6 +61,7 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
+    <addaction name="m_actionCheckForUpdates"/>
     <addaction name="m_actionAboutGuard"/>
    </widget>
    <widget class="QMenu" name="m_menuView">
@@ -517,6 +518,14 @@
   <action name="m_actionSelectPreviousMessage">
    <property name="text">
     <string>Select previous message</string>
+   </property>
+  </action>
+  <action name="m_actionCheckForUpdates">
+   <property name="text">
+    <string>Check for updates</string>
+   </property>
+   <property name="toolTip">
+    <string>Check if new application updates are available.</string>
    </property>
   </action>
  </widget>

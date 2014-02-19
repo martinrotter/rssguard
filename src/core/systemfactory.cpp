@@ -144,3 +144,10 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   return false;
 #endif
 }
+
+QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
+  QList<UpdateInfo> updates;
+
+
+  return updates;
+}

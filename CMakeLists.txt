@@ -300,6 +300,7 @@ set(APP_SOURCES
   src/gui/labelwithstatus.cpp
   src/gui/messagebox.cpp
   src/gui/formupdate.cpp
+  src/gui/comboboxwithstatus.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -369,6 +370,7 @@ set(APP_HEADERS
   src/gui/labelwithstatus.h
   src/gui/messagebox.h
   src/gui/formupdate.h
+  src/gui/comboboxwithstatus.h
 
   # CORE headers.
   src/core/settings.h

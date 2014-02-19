@@ -4,7 +4,27 @@
 #include <QObject>
 #include <QPointer>
 #include <QMutex>
+#include <QMetaType>
 
+
+class UpdateInfo {
+  public:
+    enum UpdateType {
+      // Corresponding enum to "maintenace" from UPDATES file.
+      Maintenance,
+      // Corresponding enum to "evolution" from UPDATES file.
+      Evolution
+    };
+
+    QString m_availableVersion;
+    QString m_fileUrl;
+    QString m_platform;
+    QString m_os;
+    UpdateType m_type;
+    QString m_changes;
+};
+
+Q_DECLARE_METATYPE(UpdateInfo);
 
 class SystemFactory : public QObject {
     Q_OBJECT
@@ -38,6 +58,7 @@ class SystemFactory : public QObject {
     QString getAutostartDesktopFileLocation();
 #endif
 
+    QList<UpdateInfo> parseUpdatesFile(const QByteArray &updates_file);
 
     // Access to application-wide close lock.
     inline QMutex *applicationCloseLock() const {
