@@ -24,7 +24,7 @@ class UpdateInfo {
     QString m_changes;
 };
 
-Q_DECLARE_METATYPE(UpdateInfo);
+Q_DECLARE_METATYPE(UpdateInfo)
 
 class SystemFactory : public QObject {
     Q_OBJECT

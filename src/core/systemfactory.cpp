@@ -11,6 +11,9 @@
 #include <QString>
 #include <QFile>
 #include <QApplication>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomAttr>
 
 
 QPointer<SystemFactory> SystemFactory::s_instance;
@@ -148,6 +151,29 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
   QList<UpdateInfo> updates;
 
+  QDomDocument document; document.setContent(updates_file, false);
+  QDomNodeList releases = document.elementsByTagName("release");
+
+  for (int i = 0; i < releases.size(); i++) {
+    UpdateInfo info;
+    QDomElement rel_elem = releases.at(0).toElement();
+    QString type = rel_elem.attributes().namedItem("type").toAttr().value();
+
+    info.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
+    info.m_changes = rel_elem.namedItem("changes").toElement().text();
+    info.m_fileUrl = rel_elem.namedItem("url").toElement().text();
+    info.m_os = rel_elem.attributes().namedItem("os").toAttr().value();
+    info.m_platform = rel_elem.attributes().namedItem("platform").toAttr().value();
+
+    if (type == "maintenance") {
+      info.m_type = UpdateInfo::Maintenance;
+    }
+    else {
+      info.m_type = UpdateInfo::Evolution;
+    }
+
+    updates.append(info);
+  }
 
   return updates;
 }

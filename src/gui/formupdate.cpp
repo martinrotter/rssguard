@@ -43,7 +43,7 @@ void FormUpdate::checkForUpdates() {
 
   foreach (const UpdateInfo &release, releases_list) {
     m_ui->m_cmbAvailableRelease->comboBox()->addItem(release.m_availableVersion,
-                                                     release);
+                                                     QVariant::fromValue(release));
   }
 
 }
