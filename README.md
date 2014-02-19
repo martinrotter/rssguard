@@ -11,7 +11,7 @@ Contacts
 RSS Guard feeds
 ---------------
 * [groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50) ~forums feed,
-* [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed
+* [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed.
 
 Features
 --------
