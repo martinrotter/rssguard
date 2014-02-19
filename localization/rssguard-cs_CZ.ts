@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (build on %2 with CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (OS při sestavování %2 verze CMake %3)&lt;br&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (při sestavování použit OS %2 a CMake %3)&lt;br&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>Thanks to page is available only in English language.</source>

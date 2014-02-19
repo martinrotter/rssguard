@@ -7,6 +7,7 @@
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/feedsview.h"
+#include "gui/messagebox.h"
 #include "gui/webbrowser.h"
 #include "gui/iconthemefactory.h"
 #include "gui/systemtrayicon.h"
@@ -14,6 +15,10 @@
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
 #include "qtsingleapplication/qtsingleapplication.h"
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+#include "gui/formupdate.h"
+#endif
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -103,6 +108,14 @@ void FormMain::prepareMenus() {
     m_trayMenu = new TrayIconMenu(APP_NAME, this);
 #else
     m_trayMenu = new QMenu(APP_NAME, this);
+#endif
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+    // Add "check for updates" item on some platforms.
+    m_actionCheckForUpdates = new QAction(tr("Check for updates"), this);
+    m_actionCheckForUpdates->setIcon(IconThemeFactory::instance()->fromTheme("check-for-updates"));
+    m_actionCheckForUpdates->setToolTip(tr("Check if new update for the application is available for download."));
+    m_ui->m_menuHelp->insertAction(m_ui->m_actionAboutGuard, m_actionCheckForUpdates);
 #endif
 
     // Add needed items to the menu.
@@ -328,6 +341,10 @@ void FormMain::createConnections() {
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
 
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+  connect(m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
+#endif
+
   // General connections.
   connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
 
@@ -383,6 +400,30 @@ void FormMain::showAbout() {
   form_pointer.data()->exec();
   delete form_pointer.data();
 }
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+void FormMain::showUpdates() {
+  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot check for updates"),
+                                              tr("You cannot check for updates because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot check for updates"),
+                       tr("You cannot check for updates because feed update is ongoing."));
+    }
+
+    return;
+  }
+
+  QPointer<FormUpdate> form_update = new FormUpdate(this);
+  form_update.data()->exec();
+  delete form_update.data();
+}
+#endif
 
 void FormMain::showSettings() {
   QPointer<FormSettings> form_pointer = new FormSettings(this);

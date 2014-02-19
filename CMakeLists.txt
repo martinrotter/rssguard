@@ -299,6 +299,7 @@ set(APP_SOURCES
   src/gui/widgetwithstatus.cpp
   src/gui/labelwithstatus.cpp
   src/gui/messagebox.cpp
+  src/gui/formupdate.cpp
 
   # CORE sources.
   src/core/debugging.cpp
@@ -367,6 +368,7 @@ set(APP_HEADERS
   src/gui/widgetwithstatus.h
   src/gui/labelwithstatus.h
   src/gui/messagebox.h
+  src/gui/formupdate.h
 
   # CORE headers.
   src/core/settings.h
@@ -386,6 +388,7 @@ set(APP_HEADERS
 
 # Add form files.
 set(APP_FORMS
+  src/gui/formupdate.ui
   src/gui/formmain.ui
   src/gui/formsettings.ui
   src/gui/formwelcome.ui
