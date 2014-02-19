@@ -5,7 +5,15 @@
 #include <QPointer>
 #include <QMutex>
 #include <QMetaType>
+#include <QHash>
 
+
+class UpdateUrl {
+  public:
+    QString m_fileUrl;
+    QString m_platform;
+    QString m_os;
+};
 
 class UpdateInfo {
   public:
@@ -17,11 +25,9 @@ class UpdateInfo {
     };
 
     QString m_availableVersion;
-    QString m_fileUrl;
-    QString m_platform;
-    QString m_os;
-    UpdateType m_type;
     QString m_changes;
+    UpdateType m_type;
+    QHash<QString, UpdateUrl> m_urls;
 };
 
 Q_DECLARE_METATYPE(UpdateInfo)

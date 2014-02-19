@@ -36,6 +36,13 @@ FormUpdate::~FormUpdate() {
   delete m_ui;
 }
 
+// TODO: tady v update nacist do m_lblSupportedPlatforms
+// seznam platform ktery danej release podporuje oddelenej carkama
+// treba "Windows, OS2" atp atp.
+// ten combobox se statusem previst na normalni combobox
+// asi. jednotlivy URL souborů pro danej release
+// sou dostupny v qhashi podle klice podle OS.
+
 void FormUpdate::updateChanges(int new_release_index) {
   if (new_release_index >= 0) {
     UpdateInfo info = m_ui->m_cmbAvailableRelease->comboBox()->itemData(new_release_index).value<UpdateInfo>();

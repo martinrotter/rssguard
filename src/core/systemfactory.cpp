@@ -161,9 +161,20 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray &updates_file
 
     info.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
     info.m_changes = rel_elem.namedItem("changes").toElement().text();
-    info.m_fileUrl = rel_elem.namedItem("url").toElement().text();
-    info.m_os = rel_elem.attributes().namedItem("os").toAttr().value();
-    info.m_platform = rel_elem.attributes().namedItem("platform").toAttr().value();
+
+    QDomNodeList urls = rel_elem.elementsByTagName("url");
+
+    for (int j = 0; j < urls.size(); j++) {
+      UpdateUrl url;
+      QDomElement url_elem = urls.at(j).toElement();
+
+      url.m_fileUrl = url_elem.text();
+      url.m_os = url_elem.attributes().namedItem("os").toAttr().value();
+      url.m_platform = url_elem.attributes().namedItem("platform").toAttr().value();
+
+      info.m_urls.insert(url.m_os,
+                         url);
+    }
 
     if (type == "maintenance") {
       info.m_type = UpdateInfo::Maintenance;

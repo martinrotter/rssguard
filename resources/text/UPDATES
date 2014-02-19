@@ -11,7 +11,12 @@
 [#] Saving of webbrowser progressbar color.
 [~] Usability of some GUI elements.
 [@] Completely switched to new website.
-[+] Some missing shortcuts.]]>
+[+] Some missing shortcuts.
+
+[+] added
+[#] fixed
+[~] changed
+[@] other action]]>
     </changes>
   </release>
 </releases>
