@@ -3,7 +3,6 @@
   <release version="1.9.9.5" type="maintenance">
     <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.5-os2.7z</url>
     <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.5-win32.7z</url>
-    <url platform="x86" os="Linux"></url>
     <changes>
 <![CDATA[[#] Mac OS X support missing.
 [#] Virtual desktop change hides main window.
