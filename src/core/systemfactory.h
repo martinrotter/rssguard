@@ -6,6 +6,8 @@
 #include <QMutex>
 #include <QMetaType>
 #include <QHash>
+#include <QPair>
+#include <QNetworkReply>
 
 
 class UpdateUrl {
@@ -39,6 +41,9 @@ class SystemFactory : public QObject {
     // Constructors and destructors.
     explicit SystemFactory(QObject *parent = 0);
 
+    // Performs parsing of downloaded file with list of updates.
+    UpdateInfo parseUpdatesFile(const QByteArray &updates_file);
+
   public:
     // Constructors and destructors.
     virtual ~SystemFactory();
@@ -64,7 +69,8 @@ class SystemFactory : public QObject {
     QString getAutostartDesktopFileLocation();
 #endif
 
-    QList<UpdateInfo> parseUpdatesFile(const QByteArray &updates_file);
+    // Tries to download list with new updates.
+    QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
     // Access to application-wide close lock.
     inline QMutex *applicationCloseLock() const {

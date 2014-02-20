@@ -446,7 +446,8 @@ void FormSettings::loadDataStorage() {
   onMysqlPasswordChanged(QString());
 
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,
-                                        tr("No connection test triggered so far."));
+                                        tr("No connection test triggered so far."),
+                                        tr("You dit not executed any connection test yet."));
 
   // Load SQLite.
   m_ui->m_cmbDatabaseDriver->addItem(
@@ -517,16 +518,19 @@ void FormSettings::mysqlTestConnection() {
                                                                                             m_ui->m_spinMysqlPort->value(),
                                                                                             m_ui->m_txtMysqlUsername->lineEdit()->text(),
                                                                                             m_ui->m_txtMysqlPassword->lineEdit()->text());
+  QString interpretation = DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code);
 
   switch (error_code) {
     case DatabaseFactory::MySQLOk:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok,
-                                            DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));
+                                            interpretation,
+                                            interpretation);
       break;
 
     default:
       m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Error,
-                                            DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code));
+                                            interpretation,
+                                            interpretation);
       break;
 
 

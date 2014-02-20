@@ -257,11 +257,13 @@ void FormStandardFeedDetails::guessFeed() {
                                                                        Qt::MatchFixedString));
 
     m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
+                                        tr("Feed metada fetched."),
                                         tr("Feed metadata fetched successfully."));
   }
   else {
     // No feed guessed, even no icon available.
     m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
+                                        tr("Error occurred."),
                                         tr("Error occurred."));
   }
 }
@@ -377,6 +379,7 @@ void FormStandardFeedDetails::initialize() {
 
   // Set feed metadata fetch label.
   m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Information,
+                                      tr("No metadata fetched so far."),
                                       tr("No metadata fetched so far."));
 
   // Setup auto-update options.

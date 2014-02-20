@@ -1,6 +1,7 @@
 #include "core/systemfactory.h"
 
 #include "core/defs.h"
+#include "core/networkfactory.h"
 
 #if defined(Q_OS_WIN)
 #include "qtsingleapplication/qtsingleapplication.h"
@@ -33,10 +34,10 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
   QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
-                        QSettings::NativeFormat);
+                         QSettings::NativeFormat);
   bool autostart_enabled = registry_key.value(APP_LOW_NAME,
-                                             "").toString().replace('\\',
-                                                                    '/') ==
+                                              "").toString().replace('\\',
+                                                                     '/') ==
                            QtSingleApplication::applicationFilePath();
 
   if (autostart_enabled) {
@@ -148,19 +149,32 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 #endif
 }
 
-QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
-  QList<UpdateInfo> updates;
+QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() {
+  QPair<UpdateInfo, QNetworkReply::NetworkError> result;
+  QByteArray releases_xml;
 
+  result.second = NetworkFactory::downloadFeedFile(RELEASES_LIST,
+                                                   5000,
+                                                   releases_xml);
+
+  if (result.second == QNetworkReply::NoError) {
+    result.first = SystemFactory::instance()->parseUpdatesFile(releases_xml);
+  }
+
+  return result;
+}
+
+UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
+  UpdateInfo update;
   QDomDocument document; document.setContent(updates_file, false);
   QDomNodeList releases = document.elementsByTagName("release");
 
-  for (int i = 0; i < releases.size(); i++) {
-    UpdateInfo info;
+  if (releases.size() == 1) {
     QDomElement rel_elem = releases.at(0).toElement();
     QString type = rel_elem.attributes().namedItem("type").toAttr().value();
 
-    info.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
-    info.m_changes = rel_elem.namedItem("changes").toElement().text();
+    update.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
+    update.m_changes = rel_elem.namedItem("changes").toElement().text();
 
     QDomNodeList urls = rel_elem.elementsByTagName("url");
 
@@ -172,19 +186,21 @@ QList<UpdateInfo> SystemFactory::parseUpdatesFile(const QByteArray &updates_file
       url.m_os = url_elem.attributes().namedItem("os").toAttr().value();
       url.m_platform = url_elem.attributes().namedItem("platform").toAttr().value();
 
-      info.m_urls.insert(url.m_os,
-                         url);
+      update.m_urls.insert(url.m_os,
+                           url);
     }
 
     if (type == "maintenance") {
-      info.m_type = UpdateInfo::Maintenance;
+      update.m_type = UpdateInfo::Maintenance;
     }
     else {
-      info.m_type = UpdateInfo::Evolution;
+      update.m_type = UpdateInfo::Evolution;
     }
-
-    updates.append(info);
+  }
+  else {
+    update.m_availableVersion = QString();
   }
 
-  return updates;
+
+  return update;
 }

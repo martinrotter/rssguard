@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>226</height>
+    <width>405</width>
+    <height>259</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,12 +36,9 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Available releaseS</string>
+        <string>Available release</string>
        </property>
       </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="ComboBoxWithStatus" name="m_cmbAvailableRelease" native="true"/>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
@@ -52,6 +49,15 @@
      </item>
      <item row="3" column="1">
       <widget class="QTextEdit" name="m_txtChanges">
+       <property name="tabChangesFocus">
+        <bool>true</bool>
+       </property>
+       <property name="undoRedoEnabled">
+        <bool>false</bool>
+       </property>
+       <property name="lineWrapMode">
+        <enum>QTextEdit::NoWrap</enum>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -67,17 +73,24 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="m_lblAvailableRelease">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Supported platforms</string>
+        <string>Status</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLabel" name="m_lblPlatforms">
-       <property name="text">
-        <string/>
+      <widget class="LabelWithStatus" name="m_lblStatus" native="true">
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
        </property>
       </widget>
      </item>
@@ -97,9 +110,9 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBoxWithStatus</class>
+   <class>LabelWithStatus</class>
    <extends>QWidget</extends>
-   <header>comboboxwithstatus.h</header>
+   <header>labelwithstatus.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

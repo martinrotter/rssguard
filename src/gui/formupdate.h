@@ -19,7 +19,6 @@ class FormUpdate : public QDialog {
     virtual ~FormUpdate();
 
   protected slots:
-    void updateChanges(int new_release_index);
     void checkForUpdates();
 
   private:

@@ -14,7 +14,9 @@ class LabelWithStatus : public WidgetWithStatus {
     explicit LabelWithStatus(QWidget *parent = 0);
     virtual ~LabelWithStatus();
 
-    void setStatus(StatusType status, const QString &label_text);
+    void setStatus(StatusType status,
+                   const QString &label_text,
+                   const QString &status_text);
 
     // Access to label.
     inline QLabel *label() const {
