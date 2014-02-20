@@ -48,6 +48,23 @@ void FormUpdate::updateChanges(int new_release_index) {
     UpdateInfo info = m_ui->m_cmbAvailableRelease->comboBox()->itemData(new_release_index).value<UpdateInfo>();
 
     m_ui->m_txtChanges->setText(info.m_changes);
+
+    if (info.m_availableVersion > APP_VERSION) {
+      m_ui->m_cmbAvailableRelease->setStatus(WidgetWithStatus::Ok,
+                                             tr("This is new version which can be\ndownloaded and installed."));
+    }
+    else {
+      m_ui->m_cmbAvailableRelease->setStatus(WidgetWithStatus::Warning,
+                                             tr("This release is not newer than\ncurrently installed one.."));
+    }
+
+    m_ui->m_lblPlatforms->setText(QStringList(info.m_urls.keys()).join(", "));
+
+    // TODO: PODLE definice OS_ID (defs.h) se zjisti esli info.m_urls.keys()
+    // obsahuje instalacni soubor pro danou platformu
+    // a pokud ano tak se umoznuje update (jen windows a os2)
+    // budou zahrnuty i "prazdne" soubory pro ostatni platformy
+    // ale na tech nebude mozno updatovat.
   }
 }
 
@@ -57,11 +74,21 @@ void FormUpdate::checkForUpdates() {
                                                                                  5000,
                                                                                  releases_xml);
 
+  m_ui->m_cmbAvailableRelease->comboBox()->clear();
+
+  if (download_result != QNetworkReply::NoError) {
+    m_ui->m_lblPlatforms->setText("-");
+    m_ui->m_cmbAvailableRelease->setEnabled(false);
+    m_ui->m_cmbAvailableRelease->setStatus(WidgetWithStatus::Error,
+                                           tr("List with updates was not\ndownloaded successfully."));
+
+    return;
+  }
+
   QList<UpdateInfo> releases_list = SystemFactory::instance()->parseUpdatesFile(releases_xml);
 
   foreach (const UpdateInfo &release, releases_list) {
     m_ui->m_cmbAvailableRelease->comboBox()->addItem(release.m_availableVersion,
                                                      QVariant::fromValue(release));
   }
-
 }

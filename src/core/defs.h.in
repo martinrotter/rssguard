@@ -129,6 +129,18 @@
 #define FDS_MODEL_TITLE_INDEX           0
 #define FDS_MODEL_COUNTS_INDEX          1
 
+#if defined(Q_OS_LINUX)
+#define OS_ID   "Linux"
+#elif defined(Q_OS_OSX)
+#define OS_ID   "Mac OS X"
+#elif defined(Q_OS_WIN)
+#define OS_ID   "Windows"
+#elif defined(Q_OS_OS2)
+#define OS_ID   "OS2"
+#else
+#define OS_ID   ""
+#endif
+
 #if defined(Q_OS_LINUX) || defined(Q_OS_OSX)
 #define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY_PATH@"
 #define APP_DESKTOP_ENTRY_FILE "@APP_LOW_NAME@.desktop"
