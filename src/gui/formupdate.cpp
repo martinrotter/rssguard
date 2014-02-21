@@ -54,7 +54,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
-    if (update.first.m_availableVersion <= APP_VERSION) {
+    if (update.first.m_availableVersion > APP_VERSION) {
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
