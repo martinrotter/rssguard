@@ -330,29 +330,21 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
   // Prepare queries.
   QSqlQuery query_select(database);
   QSqlQuery query_insert(database);
-  QSqlQuery query_update(database);
 
   // Used to check if give feed contains with message with given
-  // title and url.
+  // title, url and date_created.
+  // WARNING: One feed CANNOT contain
+  // two (or more) messages with same
+  // AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "
-                       "WHERE feed = :feed AND title = :title AND url = :url;");
+                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;");
 
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
                        "(feed, title, url, author, date_created, contents) "
                        "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
-
-  // Used to update existing messages of given feed.
-  // NOTE: Messages are updated if its creation date
-  // is changed.
-  query_update.setForwardOnly(true);
-  query_update.prepare("UPDATE Messages "
-                       "SET title = :title, url = :url, author = :author, "
-                       "date_created = :date_created, contents = :contents, "
-                       "is_read = 0, is_important = 0, is_deleted = 0 "
-                       "WHERE id = :id");
 
   if (!database.transaction()) {
     database.rollback();
@@ -365,21 +357,36 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     query_select.bindValue(":feed", feed_id);
     query_select.bindValue(":title", message.m_title);
     query_select.bindValue(":url", message.m_url);
+    query_select.bindValue(":author", message.m_author);
     query_select.exec();
 
-    if (query_select.next()) {
-      // Message with this title & url probably exists in current feed.
-      message_id = query_select.value(0).toInt();
-      message_creation_date = query_select.value(2).value<qint64>();
-    }
-    else {
-      message_id = -1;
+    QList<qint64> datetime_stamps;
+
+    while (query_select.next()) {
+      datetime_stamps << query_select.value(2).value<qint64>();
     }
 
     query_select.finish();
 
-    if (message_id == -1) {
-      // Message is not fetched in this feed yet. Add it.
+    // TODO: potreba opravit nacitani URL
+    // pro http://forum.tea-earth.net/feed.php
+    // a taky vyresit problem v situaci
+    // kdy nastane situace ze message_id == -1
+    // tedy zprava s danym nazvem, autorem, url a casem
+    // neexistuje, ale existuje ta sama starsi s
+    // datem ktery se neziskalo z kanalu ale vygenerovalo
+    // a ja tam ted vkladam tu samou zpravu s opet novym
+    // vygenerovanym datem, takze se ty zpravy duplikujou a
+    // duplikujou
+
+    if (datetime_stamps.size() == 0 ||
+        (message.m_createdFromFeed &&
+         !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch()))) {
+      // Message is not fetched in this feed yet
+      // or it is. If it is, then go
+      // through datetime stamps of stored messages
+      // and check if new (not auto-generated timestamp
+      // is among them and add this message if it is not.
       query_insert.bindValue(":feed", feed_id);
       query_insert.bindValue(":title", message.m_title);
       query_insert.bindValue(":url", message.m_url);
@@ -389,27 +396,6 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
 
       query_insert.exec();
       query_insert.finish();
-    }
-    else if (message.m_createdFromFeed &&
-             message_creation_date != 0 &&
-             message_creation_date > message.m_created.toMSecsSinceEpoch()) {
-      qDebug("Message '%s' (id %d) was updated in the feed, updating too.",
-             qPrintable(message.m_title),
-             message_id);
-
-      // Message with given title/url is already persistently
-      // stored in given feed.
-      // Creation data of the message was obtained from
-      // feed itself. We can update this message.
-      query_update.bindValue(":title", message.m_title);
-      query_update.bindValue(":url", message.m_url);
-      query_update.bindValue(":author", message.m_author);
-      query_update.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
-      query_update.bindValue(":contents", message.m_contents);
-      query_update.bindValue(":id", message_id);
-
-      query_update.exec();
-      query_update.finish();
     }
   }
 

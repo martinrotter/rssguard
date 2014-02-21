@@ -74,6 +74,18 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       new_message.m_created = current_time;
     }
 
+    // TODO: NESMI se vracet isNull() hodnoty
+    // v url a author, to děla bordel při sql dotazech
+    // proto tento kod, trošku zlidštit ve
+    // všech třech metodach
+    if (new_message.m_author.isNull()) {
+      new_message.m_author = "";
+    }
+
+    if (new_message.m_url.isNull()) {
+      new_message.m_url = "";
+    }
+
     messages.append(new_message);
   }
 
@@ -138,6 +150,14 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
       new_message.m_created = current_time;
     }
 
+    if (new_message.m_author.isNull()) {
+      new_message.m_author = "";
+    }
+
+    if (new_message.m_url.isNull()) {
+      new_message.m_url = "";
+    }
+
     messages.append(new_message);
   }
 
@@ -200,6 +220,14 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       // Date was NOT obtained from the feed,
       // set current date as creation date for the message.
       new_message.m_created = current_time;
+    }
+
+    if (new_message.m_author.isNull()) {
+      new_message.m_author = "";
+    }
+
+    if (new_message.m_url.isNull()) {
+      new_message.m_url = "";
     }
 
     messages.append(new_message);

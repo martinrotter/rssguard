@@ -12,6 +12,10 @@
 // Represents single message.
 class Message {
   public:
+    Message() {
+      m_title = m_url = m_author = m_contents = "";
+    }
+
     QString m_title;
     QString m_url;
     QString m_author;
