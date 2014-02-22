@@ -254,8 +254,16 @@ void FormStandardFeedDetails::guessFeed() {
     m_ui->m_txtTitle->lineEdit()->setText(result.first->title());
     m_ui->m_txtDescription->lineEdit()->setText(result.first->description());
     m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) result.first->type())));
-    m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findText(result.first->encoding(),
-                                                                       Qt::MatchFixedString));
+
+    int encoding_index = m_ui->m_cmbEncoding->findText(result.first->encoding(), Qt::MatchFixedString);
+
+    if (encoding_index >= 0) {
+      m_ui->m_cmbEncoding->setCurrentIndex(encoding_index);
+    }
+    else {
+      m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findText(DEFAULT_FEED_ENCODING,
+                                                                         Qt::MatchFixedString));
+    }
 
     if (result.second == QNetworkReply::NoError) {
       m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,

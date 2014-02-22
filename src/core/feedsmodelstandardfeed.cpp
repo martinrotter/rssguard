@@ -75,10 +75,12 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
                                                         password)) == QNetworkReply::NoError) {
     // Feed XML was obtained, now we need to try to guess
     // its encoding before we can read further data.
-
     QXmlStreamReader xml_stream_reader(feed_contents);
     QString xml_schema_encoding;
     QString xml_contents_encoded;
+
+    // TODO: Use QRegExp and capture encoding attribute with it
+    // instead of heavy QXmlStreamReader.
 
     // We have several chances to read the XML version directly
     // from XML declaration.
@@ -172,7 +174,9 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
+        // TODO: Changeable text.
+        return QString("%1").arg(QString::number(countOfUnreadMessages()),
+                                 QString::number(countOfAllMessages()));
       }
       else {
         return QVariant();
