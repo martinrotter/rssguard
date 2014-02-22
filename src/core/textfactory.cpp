@@ -21,6 +21,12 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QTime time_zone_offset;
   bool positive_time_zone_offset = false;
 
+  // TODO: Patterny revidovat a nejdriv u predaneho stringu
+  // hledat +,- znak, je li nalezen tak odriznout vse vpravo od nej
+  // a to (mozna pomoci vice patternů) konvertovat na QTime (offset)
+  // pote konvertovat zaklad date/time co je vlevo od -,+
+  // a na konec pricist/odecist offse.
+
   date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
                    "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
                    "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
