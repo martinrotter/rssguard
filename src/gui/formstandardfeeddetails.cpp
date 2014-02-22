@@ -267,6 +267,9 @@ void FormStandardFeedDetails::guessFeed() {
                                           tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
                                           tr("Feed or icon metatada not fetched."));
     }
+
+    // Remove temporary feed object.
+    delete result.first;
   }
   else {
     // No feed guessed, even no icon available.

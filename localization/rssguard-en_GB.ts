@@ -522,6 +522,26 @@
         <source>Select previous message</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check if new application updates are available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check if new update for the application is available for download.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot check for updates because feed update is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1011,6 +1031,14 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Keep message selection in the middle of the message list viewport</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You dit not executed any connection test yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1366,14 +1394,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Feed metadata fetched successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error occurred.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No metadata fetched so far.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1387,6 +1407,88 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Do not auto-update at all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormUpdate</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current release</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available release</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>unknown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Connection error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List with updates was not
+downloaded successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New release available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is new version which can be
+downloaded and installed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is new version. Upgrade to it manually or via your system package manager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No new releases available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This release is not newer than
+currently installed one..</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1624,6 +1726,54 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>MySQL server works as expected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>protocol error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>host not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>connection refused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>connection timed out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSL handshake failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>proxy server connection refused</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>temporary failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>proxy authentication required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>proxy server not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>uknown content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>unknown error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -126,10 +126,6 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
     QString root_tag_name = root_element.tagName();
 
     if (root_tag_name == "rdf:RDF") {
-      if (result.first == NULL) {
-        result.first = new FeedsModelStandardFeed();
-      }
-
       // We found RDF feed.
       QDomElement channel_element = root_element.namedItem("channel").toElement();
 
@@ -138,10 +134,6 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
       result.first->setDescription(channel_element.namedItem("description").toElement().text());
     }
     else if (root_tag_name == "rss") {
-      if (result.first == NULL) {
-        result.first = new FeedsModelStandardFeed();
-      }
-
       // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
       QString rss_type = root_element.attribute("version", "2.0");
 
@@ -158,14 +150,15 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
       result.first->setDescription(channel_element.namedItem("description").toElement().text());
     }
     else if (root_tag_name == "feed") {
-      if (result.first == NULL) {
-        result.first = new FeedsModelStandardFeed();
-      }
-
       // We found ATOM feed.
       result.first->setType(StandardAtom10);
       result.first->setTitle(root_element.namedItem("title").toElement().text());
       result.first->setDescription(root_element.namedItem("subtitle").toElement().text());
+    }
+    else {
+      // File was downloaded and it really was XML file
+      // but feed format was NOT recognized.
+      result.second = QNetworkReply::UnknownContentError;
     }
   }
 
