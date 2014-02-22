@@ -12,6 +12,8 @@ class NetworkFactory {
     explicit NetworkFactory();
 
   public:
+    static QString networkErrorText(QNetworkReply::NetworkError error_code);
+
     // Performs SYNCHRONOUS download if favicon for the site,
     // given URL belongs to.
     static QNetworkReply::NetworkError downloadIcon(const QString &url,

@@ -11,6 +11,49 @@
 NetworkFactory::NetworkFactory() {
 }
 
+QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {
+  switch (error_code) {
+    case QNetworkReply::ProtocolFailure:
+      return QObject::tr("protocol error");
+
+    case QNetworkReply::HostNotFoundError:
+      return QObject::tr("host not found");
+
+    case QNetworkReply::RemoteHostClosedError:
+    case QNetworkReply::ConnectionRefusedError:
+      return QObject::tr("connection refused");
+
+    case QNetworkReply::TimeoutError:
+    case QNetworkReply::ProxyTimeoutError:
+      return QObject::tr("connection timed out");
+
+    case QNetworkReply::SslHandshakeFailedError:
+      return QObject::tr("SSL handshake failed");
+
+    case QNetworkReply::ProxyConnectionClosedError:
+    case QNetworkReply::ProxyConnectionRefusedError:
+      return QObject::tr("proxy server connection refused");
+
+    case QNetworkReply::TemporaryNetworkFailureError:
+      return QObject::tr("temporary failure");
+
+    case QNetworkReply::ProxyAuthenticationRequiredError:
+      return QObject::tr("proxy authentication required");
+
+    case QNetworkReply::ProxyNotFoundError:
+      return QObject::tr("proxy server not found");
+
+    case QNetworkReply::NoError:
+      return QObject::tr("success");
+
+    case QNetworkReply::UnknownContentError:
+      return QObject::tr("uknown content");
+
+    default:
+      return QObject::tr("unknown error");
+  }
+}
+
 QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
                                                          int timeout,
                                                          QIcon &output) {
@@ -115,7 +158,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
 
   qDebug("File '%s' fetched with status '%s' (code %d).",
          qPrintable(url),
-         qPrintable(reply->errorString()),
+         qPrintable(networkErrorText(reply_error)),
          reply_error);
 
   // Delete needed stuff and exit.

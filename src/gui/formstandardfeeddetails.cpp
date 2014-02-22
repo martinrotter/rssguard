@@ -7,6 +7,7 @@
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
 #include "core/feedsmodelstandardfeed.h"
+#include "core/networkfactory.h"
 #include "gui/iconthemefactory.h"
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
@@ -248,7 +249,7 @@ void FormStandardFeedDetails::guessFeed() {
                                                                                                           m_ui->m_txtPassword->lineEdit()->text());
 
   if (result.first != NULL) {
-    // Icon was perhaps guessed.
+    // Icon or whole feed was guessed.
     m_ui->m_btnIcon->setIcon(result.first->icon());
     m_ui->m_txtTitle->lineEdit()->setText(result.first->title());
     m_ui->m_txtDescription->lineEdit()->setText(result.first->description());
@@ -256,15 +257,22 @@ void FormStandardFeedDetails::guessFeed() {
     m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findText(result.first->encoding(),
                                                                        Qt::MatchFixedString));
 
-    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
-                                        tr("Feed metada fetched."),
-                                        tr("Feed metadata fetched successfully."));
+    if (result.second == QNetworkReply::NoError) {
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
+                                          tr("All metadata fetched successfully."),
+                                          tr("Feed and icon metadata fetched."));
+    }
+    else {
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
+                                          tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                          tr("Feed or icon metatada not fetched."));
+    }
   }
   else {
     // No feed guessed, even no icon available.
     m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
-                                        tr("Error occurred."),
-                                        tr("Error occurred."));
+                                        tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                        tr("No metadata fetched."));
   }
 }
 

@@ -57,9 +57,10 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
   // Try to obtain icon.
   QIcon icon_data;
 
-  if (NetworkFactory::downloadIcon(url,
-                                   5000,
-                                   icon_data) == QNetworkReply::NoError) {
+  if ((result.second = NetworkFactory::downloadIcon(url,
+                                                    5000,
+                                                    icon_data)) ==
+      QNetworkReply::NoError) {
     // Icon for feed was downloaded and is stored now in _icon_data.
     result.first = new FeedsModelStandardFeed();
     result.first->setIcon(icon_data);
@@ -90,6 +91,10 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
       }
     }
 
+    if (result.first == NULL) {
+      result.first = new FeedsModelStandardFeed();
+    }
+
     QTextCodec *custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
 
     if (custom_codec != NULL) {
@@ -108,6 +113,11 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
     QDomDocument xml_document;
 
     if (!xml_document.setContent(xml_contents_encoded)) {
+      qDebug("XML of feed '%s' is not valid and cannot be loaded.",
+             qPrintable(url));
+
+      result.second = QNetworkReply::UnknownContentError;
+
       // XML is invalid, exit.
       return result;
     }

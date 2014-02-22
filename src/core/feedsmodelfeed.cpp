@@ -9,7 +9,10 @@
 
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
-  : FeedsModelRootItem(parent_item), m_totalCount(0), m_unreadCount(0) {
+  : FeedsModelRootItem(parent_item),
+    m_type(StandardRss0X),
+    m_totalCount(0),
+    m_unreadCount(0) {
   m_kind = FeedsModelRootItem::Feed;
 }
 
