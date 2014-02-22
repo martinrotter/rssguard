@@ -322,8 +322,7 @@ bool FeedsModelStandardFeed::removeItself() {
 }
 
 void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
-  int feed_id = id(), message_id;
-  qint64 message_creation_date;
+  int feed_id = id();
   QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelStandardFeed",
                                                                   DatabaseFactory::FromSettings);
 

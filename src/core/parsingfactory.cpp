@@ -52,11 +52,10 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     // Deal with link.
     QDomNodeList elem_links = message_item.toElement().elementsByTagName("link");
 
-    for (int i = 0; i < elem_links.size(); i++) {
-      QDomNode elem_link = elem_links.at(i);
+    for (int i = 0; i < elem_links.size(); i++) {    
+      new_message.m_url = elem_links.at(i).attributes().namedItem("href").toAttr().value();
 
-      if (elem_link.attributes().namedItem("rel").toAttr().value() == "alternate") {
-        new_message.m_url = elem_link.attributes().namedItem("href").toAttr().value();
+      if (!new_message.m_url.isNull() && !new_message.m_url.isEmpty()) {
         break;
       }
     }
@@ -214,9 +213,12 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
 
     // Deal with creation date.
     new_message.m_created = TextFactory::parseDateTime(message_item.namedItem("pubDate").toElement().text());
-    new_message.m_createdFromFeed = !new_message.m_created.isNull();
 
-    if (!new_message.m_createdFromFeed) {
+    if (new_message.m_created.isNull()) {
+      new_message.m_created = TextFactory::parseDateTime(message_item.namedItem("date").toElement().text());
+    }
+
+    if (!(new_message.m_createdFromFeed = !new_message.m_created.isNull())) {
       // Date was NOT obtained from the feed,
       // set current date as creation date for the message.
       new_message.m_created = current_time;

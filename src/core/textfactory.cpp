@@ -24,8 +24,8 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
                    "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
                    "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
-                   "YYYY" << "YYYY-MM" << "YYYY-MM-DD" << "YYYY-MM-DDThh:mm" <<
-                   "YYYY-MM-DDThh:mm:ss";
+                   "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
+                   "yyyy-MM-ddThh:mm:ss";
 
   // Check if last part of date is time zone offset,
   // represented as [+|-]hh:mm.
@@ -85,8 +85,7 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 }
 
 QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
-  QDateTime converted = QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
-  return converted;
+  return QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
 }
 
 QString TextFactory::shorten(const QString &input, int text_length_limit) {
