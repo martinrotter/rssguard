@@ -138,6 +138,9 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
 
   // And also hide progress bar.
   FormMain::instance()->statusBar()->clearProgress();
+
+  // TODO: Check integrity and conformance of this.
+  m_messagesView->reloadSelections(1);
 }
 
 void FeedMessageViewer::createConnections() {
