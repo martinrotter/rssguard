@@ -59,7 +59,9 @@ void FormUpdate::checkForUpdates() {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
-      // TODO: Display "update" button.
+      // TODO: Display "update" button if
+      // URL of file for current platform
+      // is available.
 #else
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
@@ -68,8 +70,8 @@ void FormUpdate::checkForUpdates() {
     }
     else {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
-                                   tr("No new releases available."),
-                                   tr("This release is not newer than\ncurrently installed one.."));
+                                   tr("No new release available."),
+                                   tr("This release is not newer than\ncurrently installed one."));
     }
   }
 }

@@ -81,7 +81,8 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
 
     if (encoding_rexp.indexIn(feed_contents) != -1 &&
         !(xml_schema_encoding = encoding_rexp.cap(0)).isEmpty()) {
-      // Some "encoding" attribute was found.
+      // Some "encoding" attribute was found get the encoding
+      // out of it.
       encoding_rexp.setPattern("[^\"]\\S+[^\"]");
       encoding_rexp.indexIn(xml_schema_encoding, 9);
       xml_schema_encoding = encoding_rexp.cap(0);
@@ -107,10 +108,18 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
 
     // Feed XML was obtained, guess it now.
     QDomDocument xml_document;
+    QString error_msg;
+    int error_line, error_column;
 
-    if (!xml_document.setContent(xml_contents_encoded)) {
-      qDebug("XML of feed '%s' is not valid and cannot be loaded.",
-             qPrintable(url));
+    if (!xml_document.setContent(xml_contents_encoded,
+                                 &error_msg,
+                                 &error_line,
+                                 &error_column)) {
+      qDebug("XML of feed '%s' is not valid and cannot be loaded. Error: '%s' "
+             "(line %d, column %d).",
+             qPrintable(url),
+             qPrintable(error_msg),
+             error_line, error_column);
 
       result.second = QNetworkReply::UnknownContentError;
 
@@ -367,17 +376,6 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     }
 
     query_select.finish();
-
-    // TODO: potreba opravit nacitani URL
-    // pro http://forum.tea-earth.net/feed.php
-    // a taky vyresit problem v situaci
-    // kdy nastane situace ze message_id == -1
-    // tedy zprava s danym nazvem, autorem, url a casem
-    // neexistuje, ale existuje ta sama starsi s
-    // datem ktery se neziskalo z kanalu ale vygenerovalo
-    // a ja tam ted vkladam tu samou zpravu s opet novym
-    // vygenerovanym datem, takze se ty zpravy duplikujou a
-    // duplikujou
 
     if (datetime_stamps.size() == 0 ||
         (message.m_createdFromFeed &&
