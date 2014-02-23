@@ -70,27 +70,21 @@ QPair<FeedsModelStandardFeed*, QNetworkReply::NetworkError> FeedsModelStandardFe
   if ((result.second = NetworkFactory::downloadFeedFile(url,
                                                         Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
                                                         feed_contents,
-                                                        true,
+                                                        !username.isEmpty(),
                                                         username,
                                                         password)) == QNetworkReply::NoError) {
     // Feed XML was obtained, now we need to try to guess
     // its encoding before we can read further data.
-    QXmlStreamReader xml_stream_reader(feed_contents);
     QString xml_schema_encoding;
     QString xml_contents_encoded;
+    QRegExp encoding_rexp("encoding=\"[^\"]\\S+\"");
 
-    // TODO: Use QRegExp and capture encoding attribute with it
-    // instead of heavy QXmlStreamReader.
-
-    // We have several chances to read the XML version directly
-    // from XML declaration.
-    for (int i = 0; i < 2 && !xml_stream_reader.atEnd(); i++) {
-      if ((xml_schema_encoding = xml_stream_reader.documentEncoding().toString()).isEmpty()) {
-        xml_stream_reader.readNext();
-      }
-      else {
-        break;
-      }
+    if (encoding_rexp.indexIn(feed_contents) != -1 &&
+        !(xml_schema_encoding = encoding_rexp.cap(0)).isEmpty()) {
+      // Some "encoding" attribute was found.
+      encoding_rexp.setPattern("[^\"]\\S+[^\"]");
+      encoding_rexp.indexIn(xml_schema_encoding, 9);
+      xml_schema_encoding = encoding_rexp.cap(0);
     }
 
     if (result.first == NULL) {
@@ -175,8 +169,8 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         // TODO: Changeable text.
-        return QString("%1").arg(QString::number(countOfUnreadMessages()),
-                                 QString::number(countOfAllMessages()));
+        return QString("%1").arg(QString::number(countOfUnreadMessages()));
+                                 //QString::number(countOfAllMessages()));
       }
       else {
         return QVariant();

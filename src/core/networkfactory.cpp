@@ -13,6 +13,7 @@ NetworkFactory::NetworkFactory() {
 
 QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {
   switch (error_code) {
+    case QNetworkReply::ProtocolUnknownError:
     case QNetworkReply::ProtocolFailure:
       return QObject::tr("protocol error");
 
@@ -37,6 +38,9 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
     case QNetworkReply::TemporaryNetworkFailureError:
       return QObject::tr("temporary failure");
 
+    case QNetworkReply::AuthenticationRequiredError:
+      return QObject::tr("authentication failed");
+
     case QNetworkReply::ProxyAuthenticationRequiredError:
       return QObject::tr("proxy authentication required");
 
@@ -48,6 +52,9 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
 
     case QNetworkReply::UnknownContentError:
       return QObject::tr("uknown content");
+
+    case QNetworkReply::ContentNotFoundError:
+      return QObject::tr("content not found");
 
     default:
       return QObject::tr("unknown error");
