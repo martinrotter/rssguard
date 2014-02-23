@@ -13,7 +13,7 @@ class TextFactory {
     explicit TextFactory();
 
   public:
-    static bool isCaseInsensitiveLessThan(const QString &lhs, const QString &rhs) {
+    static inline bool isCaseInsensitiveLessThan(const QString &lhs, const QString &rhs) {
       return lhs.toLower() < rhs.toLower();
     }
 

@@ -18,8 +18,37 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString temp;
   QLocale locale(QLocale::C);
   QStringList date_patterns;
+  QStringList timezone_offset_patterns;
   QTime time_zone_offset;
+  //QRegExp timezone_rexp;
   bool positive_time_zone_offset = false;
+
+  date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
+                   "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
+                   "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
+                   "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
+                   "yyyy-MM-ddThh:mm:ss";
+
+  timezone_offset_patterns << "[+-]\\d\\d:\\d\\d$" <<   // ±[hh]:[mm]
+                              "[+-]\\d\\d\\d\\d$" <<    // ±[hh][mm]
+                              "[+-]\\d\\d$";            // ±[hh]
+
+
+  /*if (date.size() > 7) {
+    int index = date.size() - 7;
+
+    foreach (const QString &pattern, timezone_offset_patterns) {
+      timezone_rexp.setPattern(pattern);
+
+      int index_start_timezone = timezone_rexp.indexIn(date, index);
+
+      if (index_start_timezone != 1) {
+
+      }
+    }
+  }*/
+
+
 
   // TODO: Patterny revidovat a nejdriv u predaneho stringu
   // hledat +,- znak, je li nalezen tak odriznout vse vpravo od nej
@@ -27,11 +56,6 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   // pote konvertovat zaklad date/time co je vlevo od -,+
   // a na konec pricist/odecist offse.
 
-  date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
-                   "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
-                   "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
-                   "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
-                   "yyyy-MM-ddThh:mm:ss";
 
   // Check if last part of date is time zone offset,
   // represented as [+|-]hh:mm.
@@ -74,10 +98,10 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 
       if (time_zone_offset.isValid()) {
         if (positive_time_zone_offset) {
-          return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
+          return dt.addSecs(- QTime(0, 0, 0, 0).secsTo(time_zone_offset));
         }
         else {
-          return dt.addSecs(- QTime(0, 0, 0, 0).secsTo(time_zone_offset));
+          return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
         }
       }
       else {
