@@ -8,7 +8,6 @@
 
 #include <QWidget>
 #include <QWidgetAction>
-#include <QPointer>
 #include <QUrl>
 #include <QToolBar>
 
@@ -56,14 +55,10 @@ class WebBrowser : public TabContent {
       return browser_menu;
     }
 
-    // Returns pointer to global network access manager
-    // for web browsers.
-    // NOTE: All web browsers use shared network access manager,
-    // which makes setting of custom network settings easy.
-    static WebBrowserNetworkAccessManager *globalNetworkManager();
-
     // Returns list of all running web browsers.
-    static QList<WebBrowser*> runningWebBrowsers();
+    static inline QList<WebBrowser*> runningWebBrowsers() {
+      return m_runningWebBrowsers;
+    }
 
   public slots:
     // Switches visibility of navigation bar.
@@ -95,6 +90,9 @@ class WebBrowser : public TabContent {
     // Initializes all buttons and widgets, which are needed for "Zoom" menu item.
     void initializeZoomWidget();
 
+    // Initializes layout.
+    void initializeLayout();
+
   protected slots:
     // Updates zoom-related gui.
     void updateZoomGui();
@@ -102,13 +100,17 @@ class WebBrowser : public TabContent {
     // Updates url (for example on location text box).
     void updateUrl(const QUrl &url);
 
+    // Title/icon is changed.
     void onTitleChanged(const QString &new_title);
     void onIconChanged();
 
   signals:
+    // User requests opening of new tab or clicks the link
+    // with middle mouse button
     void newTabRequested();
     void linkMiddleClicked(const QUrl &link_url);
 
+    // Title/icon is changed.
     void iconChanged(int index, const QIcon &icon);
     void titleChanged(int index, const QString &title);
 
@@ -128,7 +130,6 @@ class WebBrowser : public TabContent {
 
     bool m_activeNewspaperMode;
 
-    static QPointer<WebBrowserNetworkAccessManager> m_networkManager;
     static QList<WebBrowser*> m_runningWebBrowsers;
 };
 

@@ -178,7 +178,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         // TODO: Changeable text.
-        return QString("%1").arg(QString::number(countOfUnreadMessages()));
+        return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
                                  //QString::number(countOfAllMessages()));
       }
       else {

@@ -1,7 +1,10 @@
 #include "core/webbrowsernetworkaccessmanager.h"
 
 #include <QNetworkReply>
+#include <QApplication>
 
+
+QPointer<WebBrowserNetworkAccessManager> WebBrowserNetworkAccessManager::s_instance;
 
 WebBrowserNetworkAccessManager::WebBrowserNetworkAccessManager(QObject *parent)
   : BaseNetworkAccessManager(parent) {
@@ -29,7 +32,15 @@ void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *rep
                                                               QAuthenticator *authenticator) {
   Q_UNUSED(authenticator);
 
-  // Authentication is required but this feed does not contain it.
+  // TODO: Support authentication for web pages.
   qDebug("URL '%s' requested authentication but username/password is not available.",
          qPrintable(reply->url().toString()));
+}
+
+WebBrowserNetworkAccessManager *WebBrowserNetworkAccessManager::instance() {
+  if (s_instance.isNull()) {
+    s_instance = new WebBrowserNetworkAccessManager(qApp);
+  }
+
+  return s_instance;
 }

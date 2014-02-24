@@ -46,7 +46,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(tr("unknown"));
     m_ui->m_txtChanges->clear();
     m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error,
-                                 tr("Connection error occurred."),
+                                 tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
                                  tr("List with updates was "
                                     "not\ndownloaded successfully."));
   }

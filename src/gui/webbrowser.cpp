@@ -12,8 +12,6 @@
 #include <QVBoxLayout>
 #include <QToolBar>
 #include <QAction>
-#include <QPointer>
-#include <QApplication>
 #include <QWebFrame>
 #include <QWidgetAction>
 #include <QSlider>
@@ -21,7 +19,6 @@
 #include <QToolButton>
 
 
-QPointer<WebBrowserNetworkAccessManager> WebBrowser::m_networkManager;
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
 
 WebBrowser::WebBrowser(QWidget *parent)
@@ -42,33 +39,8 @@ WebBrowser::WebBrowser(QWidget *parent)
   // NOTE: This is used primarily for dynamic icon theme switching.
   m_runningWebBrowsers.append(this);
 
-  // Set properties of some components.
-  m_toolBar->setFloatable(false);
-  m_toolBar->setMovable(false);
-  m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
-
-  // Modify action texts.
-  m_actionBack->setText(tr("Back"));
-  m_actionBack->setToolTip(tr("Go back."));
-  m_actionForward->setText(tr("Forward"));
-  m_actionForward->setToolTip(tr("Go forward."));
-  m_actionReload->setText(tr("Reload"));
-  m_actionReload->setToolTip(tr("Reload current web page."));
-  m_actionStop->setText(tr("Stop"));
-  m_actionStop->setToolTip(tr("Stop web page loading."));
-
-  // Add needed actions into toolbar.
-  m_toolBar->addAction(m_actionBack);
-  m_toolBar->addAction(m_actionForward);
-  m_toolBar->addAction(m_actionReload);
-  m_toolBar->addAction(m_actionStop);
-  m_toolBar->addWidget(m_txtLocation);
-
-  // Setup layout.
-  m_layout->addWidget(m_toolBar);
-  m_layout->addWidget(m_webView);
-  m_layout->setMargin(0);
-  m_layout->setSpacing(0);
+  // Initialize the components and layout.
+  initializeLayout();
 
   setTabOrder(m_txtLocation, m_toolBar);
   setTabOrder(m_toolBar, m_webView);
@@ -110,6 +82,35 @@ void WebBrowser::initializeZoomWidget() {
 
   m_actionZoom = new QWidgetAction(this);
   m_actionZoom->setDefaultWidget(m_zoomButtons);
+}
+
+void WebBrowser::initializeLayout() {
+  m_toolBar->setFloatable(false);
+  m_toolBar->setMovable(false);
+  m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
+
+  // Modify action texts.
+  m_actionBack->setText(tr("Back"));
+  m_actionBack->setToolTip(tr("Go back."));
+  m_actionForward->setText(tr("Forward"));
+  m_actionForward->setToolTip(tr("Go forward."));
+  m_actionReload->setText(tr("Reload"));
+  m_actionReload->setToolTip(tr("Reload current web page."));
+  m_actionStop->setText(tr("Stop"));
+  m_actionStop->setToolTip(tr("Stop web page loading."));
+
+  // Add needed actions into toolbar.
+  m_toolBar->addAction(m_actionBack);
+  m_toolBar->addAction(m_actionForward);
+  m_toolBar->addAction(m_actionReload);
+  m_toolBar->addAction(m_actionStop);
+  m_toolBar->addWidget(m_txtLocation);
+
+  // Setup layout.
+  m_layout->addWidget(m_toolBar);
+  m_layout->addWidget(m_webView);
+  m_layout->setMargin(0);
+  m_layout->setSpacing(0);
 }
 
 void WebBrowser::createConnections() {
@@ -163,22 +164,22 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
   SkinFactory *factory = SkinFactory::instance();
   QString messages_layout;
-  QString default_message_layout = factory->currentMarkup();
+  QString single_message_layout = factory->currentMarkup();
 
   foreach (const Message &message, messages) {
-    messages_layout.append(default_message_layout.arg(message.m_title,
-                                                      tr("Written by ") + (message.m_author.isEmpty() ?
-                                                                             tr("uknown author") :
-                                                                             message.m_author),
-                                                      message.m_url,
-                                                      message.m_contents,
-                                                      message.m_created.toString(Qt::DefaultLocaleShortDate)));
+    messages_layout.append(single_message_layout.arg(message.m_title,
+                                                     tr("Written by ") + (message.m_author.isEmpty() ?
+                                                                            tr("uknown author") :
+                                                                            message.m_author),
+                                                     message.m_url,
+                                                     message.m_contents,
+                                                     message.m_created.toString(Qt::DefaultLocaleShortDate)));
   }
 
   QString layout_wrapper = factory->currentMarkupLayout().arg(messages.size() == 1 ?
-                                                                   messages.at(0).m_title :
-                                                                   tr("Newspaper view"),
-                                                                 messages_layout);
+                                                                messages.at(0).m_title :
+                                                                tr("Newspaper view"),
+                                                              messages_layout);
 
   m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
   emit iconChanged(m_index,
@@ -232,18 +233,4 @@ void WebBrowser::setupIcons() {
   m_actionReload->setIcon(IconThemeFactory::instance()->fromTheme("go-refresh"));
   m_actionStop->setIcon(IconThemeFactory::instance()->fromTheme("go-stop"));
   m_webView->setupIcons();
-}
-
-QList<WebBrowser *> WebBrowser::runningWebBrowsers() {
-  return m_runningWebBrowsers;
-}
-
-
-
-WebBrowserNetworkAccessManager *WebBrowser::globalNetworkManager() {
-  if (m_networkManager.isNull()) {
-    m_networkManager = new WebBrowserNetworkAccessManager(qApp);
-  }
-
-  return m_networkManager;
 }

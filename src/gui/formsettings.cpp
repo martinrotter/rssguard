@@ -389,7 +389,7 @@ void FormSettings::saveProxy() {
                      m_ui->m_spinProxyPort->value());
 
   // Reload settings for all network access managers.
-  WebBrowser::globalNetworkManager()->loadSettings();
+  WebBrowserNetworkAccessManager::instance()->loadSettings();
 }
 
 void FormSettings::loadLanguage() {
