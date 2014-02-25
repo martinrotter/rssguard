@@ -14,13 +14,11 @@ TextFactory::TextFactory() {
 
 QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString date = date_time.simplified();
-  QDateTime dt;
-  QString temp;
-  QLocale locale(QLocale::C);
   QStringList date_patterns;
   QStringList timezone_offset_patterns;
+  QDateTime dt;
   QTime time_zone_offset;
-  //QRegExp timezone_rexp;
+  QLocale locale(QLocale::C);
   bool positive_time_zone_offset = false;
 
   date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
@@ -29,78 +27,34 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
                    "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
                    "yyyy-MM-ddThh:mm:ss";
 
-  timezone_offset_patterns << "[+-]\\d\\d:\\d\\d$" <<   // ±[hh]:[mm]
-                              "[+-]\\d\\d\\d\\d$" <<    // ±[hh][mm]
-                              "[+-]\\d\\d$";            // ±[hh]
+  timezone_offset_patterns << "+hh:mm" << "-hh:mm" << "+hhmm" << "-hhmm" << "+hh" << "-hh";
 
-
-  /*if (date.size() > 7) {
-    int index = date.size() - 7;
-
+  if (date.size() >= TIMEZONE_OFFSET_LIMIT) {
     foreach (const QString &pattern, timezone_offset_patterns) {
-      timezone_rexp.setPattern(pattern);
+      time_zone_offset = QTime::fromString(date.right(pattern.size()), pattern);
 
-      int index_start_timezone = timezone_rexp.indexIn(date, index);
+      if (time_zone_offset.isValid()) {
+        positive_time_zone_offset = pattern.at(0) == '+';
 
-      if (index_start_timezone != 1) {
-
+        break;
       }
-    }
-  }*/
-
-
-
-  // TODO: Patterny revidovat a nejdriv u predaneho stringu
-  // hledat +,- znak, je li nalezen tak odriznout vse vpravo od nej
-  // a to (mozna pomoci vice patternů) konvertovat na QTime (offset)
-  // pote konvertovat zaklad date/time co je vlevo od -,+
-  // a na konec pricist/odecist offse.
-
-
-  // Check if last part of date is time zone offset,
-  // represented as [+|-]hh:mm.
-  int date_length = date.size();
-
-  if (date_length > 6) {
-    char zone_sign = date.at(date_length - 6).toLatin1();
-
-    switch (zone_sign) {
-      case '+':
-        // Positive time zone offset detected.
-        positive_time_zone_offset = true;
-        time_zone_offset = QTime::fromString(date.right(5),
-                                             "hh:mm");
-
-        date.chop(6);
-        break;
-
-      case '-':
-        // Negative time zone offset detected.
-        time_zone_offset = QTime::fromString(date.right(5),
-                                             "hh:mm");
-
-        date.chop(6);
-        break;
-
-      default:
-        // No time zone offset.
-        break;
     }
   }
 
   // Iterate over patterns and check if input date/time matches the pattern.
   foreach (const QString &pattern, date_patterns) {
-    temp = date.left(pattern.size());
-    dt = locale.toDateTime(temp, pattern);
+    dt = locale.toDateTime(date.left(pattern.size()), pattern);
 
     if (dt.isValid()) {
-      dt.setTimeSpec(Qt::UTC);
-
       if (time_zone_offset.isValid()) {
+        // Time zone offset was detected.
         if (positive_time_zone_offset) {
+          // Offset is positive, so we have to subtract it to get
+          // the original UTC.
           return dt.addSecs(- QTime(0, 0, 0, 0).secsTo(time_zone_offset));
         }
         else {
+          // Vice versa.
           return dt.addSecs(QTime(0, 0, 0, 0).secsTo(time_zone_offset));
         }
       }

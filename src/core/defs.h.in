@@ -43,6 +43,7 @@
 #define DEFAULT_AUTO_UPDATE_INTERVAL    15
 #define AUTO_UPDATE_INTERVAL            60000
 #define STARTUP_UPDATE_DELAY            1500
+#define TIMEZONE_OFFSET_LIMIT           6
 
 #define MYSQL_CODE_OK             0
 #define MYSQL_CODE_NOT_FOUND      2002
