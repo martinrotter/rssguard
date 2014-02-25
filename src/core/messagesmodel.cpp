@@ -285,76 +285,18 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
   QSqlDatabase db_handle = database();
+  QSqlQuery query_read_msg(db_handle);
+  QStringList message_ids;
 
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for batch message importance switch failed.");
-    return false;
-  }
+  query_read_msg.setForwardOnly(true);
 
-  int message_id, importance;
-  QSqlQuery query_importance_msg(db_handle);
-  query_importance_msg.setForwardOnly(true);
-
-  if (!query_importance_msg.prepare("UPDATE messages SET is_important = :important "
-                                    "WHERE id = :id")) {
-    qWarning("Query preparation failed for message importance switch.");
-
-    db_handle.rollback();
-    return false;
-  }
-
+  // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_id = messageId(message.row());
-    importance = data(message.row(), MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
-
-    query_importance_msg.bindValue(":id", message_id);
-    query_importance_msg.bindValue(":important",
-                                   importance == 1 ? 0 : 1);
-    query_importance_msg.exec();
+    message_ids.append(QString::number(messageId(message.row())));
   }
 
-  // Commit changes.
-  if (db_handle.commit()) {
-    // FULLY reload the model if underlying data is changed.
-    select();
-    fetchAll();
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
-}
-
-bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
-  QSqlDatabase db_handle = database();
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for batch message deletion.");
-    return false;
-  }
-
-  int message_id;
-  QSqlQuery query_delete_msg(db_handle);
-  query_delete_msg.setForwardOnly(true);
-
-  if (!query_delete_msg.prepare("UPDATE messages SET is_deleted = :deleted "
-                                "WHERE id = :id")) {
-    qWarning("Query preparation failed for message deletion.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  foreach (const QModelIndex &message, messages) {
-    message_id = messageId(message.row());
-    query_delete_msg.bindValue(":id", message_id);
-    query_delete_msg.bindValue(":deleted", deleted);
-    query_delete_msg.exec();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    // FULLY reload the model if underlying data is changed.
+  if (query_read_msg.exec(QString("UPDATE messages SET is_important = NOT is_important "
+                                  "WHERE id IN (%1)").arg(message_ids.join(", ")))) {
     select();
     fetchAll();
 
@@ -362,51 +304,61 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     return true;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
-bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
+bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages,
+                                            int deleted) {
   QSqlDatabase db_handle = database();
-
-  /*if (!db_handle.transaction()) {
-    qWarning("Starting transaction for batch message read change.");
-    return false;
-  }*/
-
-  // TODO: pokracovat tady
-  //int message_id;
   QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
 
   query_read_msg.setForwardOnly(true);
 
+  // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
     message_ids.append(QString::number(messageId(message.row())));
-    /*
-    message_id = messageId(message.row());
-    query_read_msg.bindValue(":id", message_id);
-    query_read_msg.bindValue(":read", read);
-    query_read_msg.exec();
-    */
   }
 
-  query_read_msg.exec(QString("UPDATE messages SET is_read = %2 "
-                              "WHERE id IN (%1)").arg(message_ids.join(", "),
-                                                      QString::number(read)));
+  if (query_read_msg.exec(QString("UPDATE messages SET is_deleted = %2 "
+                                  "WHERE id IN (%1)").arg(message_ids.join(", "),
+                                                          QString::number(deleted)))) {
+    select();
+    fetchAll();
 
-  // Commit changes.
-  /*if (db_handle.commit()) {
-    // FULLY reload the model if underlying data is changed.*/
-  select();
-  fetchAll();
-
-  emit feedCountsChanged();
-  return true;/*
+    emit feedCountsChanged();
+    return true;
   }
   else {
-    return db_handle.rollback();
-  }*/
+    return false;
+  }
+}
+
+bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
+  QSqlDatabase db_handle = database();
+  QSqlQuery query_read_msg(db_handle);
+  QStringList message_ids;
+
+  query_read_msg.setForwardOnly(true);
+
+  // Obtain IDs of all desired messages.
+  foreach (const QModelIndex &message, messages) {
+    message_ids.append(QString::number(messageId(message.row())));
+  }
+
+  if (query_read_msg.exec(QString("UPDATE messages SET is_read = %2 "
+                                  "WHERE id IN (%1)").arg(message_ids.join(", "),
+                                                          QString::number(read)))) {
+    select();
+    fetchAll();
+
+    emit feedCountsChanged();
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 QVariant MessagesModel::headerData(int section,
