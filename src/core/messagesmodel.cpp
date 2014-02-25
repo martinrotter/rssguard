@@ -369,42 +369,44 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
   QSqlDatabase db_handle = database();
 
-  if (!db_handle.transaction()) {
+  /*if (!db_handle.transaction()) {
     qWarning("Starting transaction for batch message read change.");
     return false;
-  }
+  }*/
 
-  int message_id;
+  // TODO: pokracovat tady
+  //int message_id;
   QSqlQuery query_read_msg(db_handle);
+  QStringList message_ids;
+
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare("UPDATE messages SET is_read = :read "
-                              "WHERE id = :id")) {
-    qWarning("Query preparation failed for message read change.");
-
-    db_handle.rollback();
-    return false;
-  }
-
   foreach (const QModelIndex &message, messages) {
+    message_ids.append(QString::number(messageId(message.row())));
+    /*
     message_id = messageId(message.row());
     query_read_msg.bindValue(":id", message_id);
     query_read_msg.bindValue(":read", read);
     query_read_msg.exec();
+    */
   }
 
-  // Commit changes.
-  if (db_handle.commit()) {
-    // FULLY reload the model if underlying data is changed.
-    select();
-    fetchAll();
+  query_read_msg.exec(QString("UPDATE messages SET is_read = %2 "
+                              "WHERE id IN (%1)").arg(message_ids.join(", "),
+                                                      QString::number(read)));
 
-    emit feedCountsChanged();
-    return true;
+  // Commit changes.
+  /*if (db_handle.commit()) {
+    // FULLY reload the model if underlying data is changed.*/
+  select();
+  fetchAll();
+
+  emit feedCountsChanged();
+  return true;/*
   }
   else {
     return db_handle.rollback();
-  }
+  }*/
 }
 
 QVariant MessagesModel::headerData(int section,
