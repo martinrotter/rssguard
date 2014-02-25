@@ -7,8 +7,6 @@
 #include <QApplication>
 
 
-QPointer<SilentNetworkAccessManager> SilentNetworkAccessManager::s_instance;
-
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
   : BaseNetworkAccessManager(parent) {
   connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
@@ -17,14 +15,6 @@ SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
   qDebug("Destroying SilentNetworkAccessManages instance.");
-}
-
-SilentNetworkAccessManager *SilentNetworkAccessManager::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new SilentNetworkAccessManager(qApp);
-  }
-
-  return s_instance;
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,
