@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.0" language="en_GB">
 <context>
     <name>CornerButton</name>
     <message>
@@ -1461,10 +1461,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connection error occurred.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>List with updates was not
 downloaded successfully.</source>
         <translation type="unfinished"></translation>
@@ -1483,12 +1479,16 @@ downloaded and installed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No new releases available.</source>
+        <source>Error: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No new release available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This release is not newer than
-currently installed one..</source>
+currently installed one.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1774,6 +1774,14 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>unknown error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>authentication failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>content not found</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

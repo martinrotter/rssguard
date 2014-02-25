@@ -1479,10 +1479,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connection error occurred.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>List with updates was not
 downloaded successfully.</source>
         <translation type="unfinished"></translation>
@@ -1501,12 +1497,16 @@ downloaded and installed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No new releases available.</source>
+        <source>Error: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No new release available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This release is not newer than
-currently installed one..</source>
+currently installed one.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1801,6 +1801,14 @@ Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>unknown error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>authentication failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>content not found</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
