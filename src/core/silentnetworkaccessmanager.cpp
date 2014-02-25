@@ -4,12 +4,13 @@
 
 #include <QNetworkReply>
 #include <QAuthenticator>
+#include <QApplication>
 
+
+QPointer<SilentNetworkAccessManager> SilentNetworkAccessManager::s_instance;
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
   : BaseNetworkAccessManager(parent) {
-  connect(this, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
-          this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
   connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
           this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)));
 }
@@ -18,14 +19,12 @@ SilentNetworkAccessManager::~SilentNetworkAccessManager() {
   qDebug("Destroying SilentNetworkAccessManages instance.");
 }
 
-void SilentNetworkAccessManager::onSslErrors(QNetworkReply *reply,
-                                             const QList<QSslError> &error) {
-  qDebug("SSL errors for '%s': '%s' (code %d).",
-         qPrintable(reply->url().toString()),
-         qPrintable(reply->errorString()),
-         (int) reply->error());
+SilentNetworkAccessManager *SilentNetworkAccessManager::instance() {
+  if (s_instance.isNull()) {
+    s_instance = new SilentNetworkAccessManager(qApp);
+  }
 
-  reply->ignoreSslErrors(error);
+  return s_instance;
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,

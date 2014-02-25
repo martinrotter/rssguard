@@ -22,7 +22,6 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     static WebBrowserNetworkAccessManager *instance();
 
   protected slots:
-    void onSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
     void onAuthenticationRequired(QNetworkReply * reply, QAuthenticator *authenticator);
 
   private:

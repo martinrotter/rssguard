@@ -3,6 +3,8 @@
 
 #include "core/basenetworkaccessmanager.h"
 
+#include <QPointer>
+
 
 // Network manager used for more communication for feeds.
 class SilentNetworkAccessManager : public BaseNetworkAccessManager {
@@ -13,9 +15,15 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
     explicit SilentNetworkAccessManager(QObject *parent = 0);
     virtual ~SilentNetworkAccessManager();
 
+    // Returns pointer to global network access manager
+    // used by ALL feed downloaders.
+    static SilentNetworkAccessManager *instance();
+
   protected slots:
-    void onSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
     void onAuthenticationRequired(QNetworkReply * reply, QAuthenticator *authenticator);
+
+  private:
+    static QPointer<SilentNetworkAccessManager> s_instance;
 };
 
 #endif // SILENTNETWORKACCESSMANAGER_H

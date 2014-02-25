@@ -18,6 +18,10 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     // NOTE: This sets up proxy settings.
     virtual void loadSettings();
 
+  protected slots:
+    void onSslErrors(QNetworkReply *reply,
+                     const QList<QSslError> &error);
+
   protected:
     // Creates custom request.
     QNetworkReply *createRequest(Operation op,

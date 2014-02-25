@@ -194,6 +194,8 @@ void FormMain::onAboutToQuit() {
   // BEFORE even trying to quit the application.
   bool locked_safely = SystemFactory::instance()->applicationCloseLock()->tryLock(CLOSE_LOCK_TIMEOUT);
 
+  qApp->processEvents();
+
   qDebug("Cleaning up resources and saving application state.");
   m_ui->m_tabWidget->feedMessageViewer()->quit();
 

@@ -95,7 +95,22 @@ QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
   // process of downloading of a file easier to understand.
 
   // Make necessary variables.
+
+  // TODO: Tady bych chtěl použit singleton
+  // jenže když je toto v jinym vlakně (viz feedmessageviewer movetothread)
+  // tak se manager ze singletonu vytvoří s parentem qApp kterej je z jinyho
+  // vlakna a dojde k warningu (TO NECHCI)
+  // reseni: but necham silent bez parenta a pridam metodu na odstraneni
+  // nebo k metode instance() pridam parametr kde se specifikuje
+  // parent kterej se pouzije pro vytvoreni managera a to by mel
+  // byt parent z tohodle worker vlakna nebo jeste je moznost
+  // zakomentovat movetothread a vykonavat updaty v hlavnim vlakne,
+  // ale to vyusti v drobnej lag a NEBO jeste je moznost
+  // zavolat SilentNetworkAccessManager::instance() před vytvořením hlavního
+  // okna aplikace v mainu tak aby se nastavil byl manager i parent
+  // na stejnem vlaknu
   SilentNetworkAccessManager manager;
+  //SilentNetworkAccessManager *manager = SilentNetworkAccessManager::instance();
   QEventLoop loop;
   QTimer timer;
   QNetworkRequest request;

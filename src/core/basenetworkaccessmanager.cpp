@@ -4,11 +4,15 @@
 #include "core/settings.h"
 
 #include <QNetworkProxy>
+#include <QNetworkReply>
 #include <QNetworkRequest>
 
 
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject *parent)
   : QNetworkAccessManager(parent) {
+  connect(this, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
+          this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
+
   loadSettings();
 }
 
@@ -46,6 +50,16 @@ void BaseNetworkAccessManager::loadSettings() {
   setProxy(new_proxy);
 
   qDebug("Settings of BaseNetworkAccessManager loaded.");
+}
+
+void BaseNetworkAccessManager::onSslErrors(QNetworkReply *reply,
+                                           const QList<QSslError> &error) {
+  qDebug("SSL errors for '%s': '%s' (code %d).",
+         qPrintable(reply->url().toString()),
+         qPrintable(reply->errorString()),
+         (int) reply->error());
+
+  reply->ignoreSslErrors(error);
 }
 
 QNetworkReply *BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op,
