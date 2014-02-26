@@ -1,8 +1,8 @@
 RSS Guard
 =========
-Welcome to RSS Guard website. Here you can find basic information and rest in the Wiki.
+Welcome to RSS Guard website. Here you can find basic information and rest in the (Wiki)[https://bitbucket.org/skunkos/rssguard/wiki/Home].
 
-**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Features](#markdown-header-features)**
+**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features)**
 - - -
 Contacts
 --------
@@ -14,6 +14,13 @@ Feeds
 -----
 * [groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50) ~forums feed,
 * [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed.
+- - -
+Downloads
+---------
+You can download source tarballs or binaries for some platforms in "Downloads" section of this website. Precompiled binaries for particular Linux distributions are available too:
+
+* [stable releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard)
+* [development releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard-git) (compiled from the master branch of RSS Guard Git repository)
 - - -
 Features
 --------
