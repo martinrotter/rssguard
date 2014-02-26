@@ -5,6 +5,7 @@
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
+        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
         <translation>Otevřít nový panel</translation>
     </message>
 </context>
@@ -51,10 +52,12 @@
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
+        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header tooltips.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
@@ -63,6 +66,7 @@
     </message>
     <message>
         <source>Root</source>
+        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Kořen</translation>
     </message>
 </context>
@@ -1532,42 +1536,52 @@ currently installed one.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -1671,19 +1685,14 @@ currently installed one.</source>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.
+----------
+Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation>
             <numerusform>%n nepřečtená zpráva.</numerusform>
             <numerusform>%n nepřečtené zprávy.</numerusform>
             <numerusform>%n nepřečtených zpráv.</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>ATOM 1.0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>RSS 2.0/2.0.1</source>
-        <translation></translation>
     </message>
     <message>
         <source>
@@ -1694,16 +1703,9 @@ This category does not contain any nested items.</source>
 Tato kategorie neobsahuje žádné podřízené položky.</translation>
     </message>
     <message>
-        <source>RDF</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>RSS 0.91/0.92/0.93</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>%1 (standard category)
 %2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
         <translation>%1 (standardní kategorie)
 %2%3</translation>
     </message>
@@ -1713,22 +1715,27 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
+        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Přístup zamítnut. Nesprávne jméno či heslo.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Neznámá chyba.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation>nepoužívá auto-aktualizace</translation>
     </message>
     <message>
         <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation>používá globální nastavení</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation>
             <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
             <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
@@ -1741,6 +1748,7 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
 
 Encoding: %4
 Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
         <translation>%1 (%2)
 %3
 
@@ -1753,58 +1761,72 @@ Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>protocol error</source>
+        <extracomment>Network status.</extracomment>
         <translation>chyba protokolu</translation>
     </message>
     <message>
         <source>host not found</source>
+        <extracomment>Network status.</extracomment>
         <translation>hostitel nenalezen</translation>
     </message>
     <message>
         <source>connection refused</source>
+        <extracomment>Network status.</extracomment>
         <translation>spojení odmítnuto</translation>
     </message>
     <message>
         <source>connection timed out</source>
+        <extracomment>Network status.</extracomment>
         <translation>spojení vypršelo</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
+        <extracomment>Network status.</extracomment>
         <translation>SSL handshake selhal</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
+        <extracomment>Network status.</extracomment>
         <translation>spojení k proxy serveru odmítnuto</translation>
     </message>
     <message>
         <source>temporary failure</source>
+        <extracomment>Network status.</extracomment>
         <translation>dočasný výpadek</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
+        <extracomment>Network status.</extracomment>
         <translation>proxy autentifikace selhala</translation>
     </message>
     <message>
         <source>proxy server not found</source>
+        <extracomment>Network status.</extracomment>
         <translation>proxy server nenalezen</translation>
     </message>
     <message>
         <source>success</source>
+        <extracomment>Network status.</extracomment>
         <translation>úspěch</translation>
     </message>
     <message>
         <source>uknown content</source>
+        <extracomment>Network status.</extracomment>
         <translation>neznámý obsah</translation>
     </message>
     <message>
         <source>unknown error</source>
+        <extracomment>Network status.</extracomment>
         <translation>neznámá chyba</translation>
     </message>
     <message>
         <source>authentication failed</source>
+        <extracomment>Network status.</extracomment>
         <translation>autentifikace selhala</translation>
     </message>
     <message>
         <source>content not found</source>
+        <extracomment>Network status.</extracomment>
         <translation>obsah nenalezen</translation>
     </message>
 </context>

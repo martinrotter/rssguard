@@ -52,17 +52,17 @@ int FeedsModelFeed::countOfUnreadMessages() const {
 QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
   switch (type) {
     case StandardAtom10:
-      return QObject::tr("ATOM 1.0");
+      return "ATOM 1.0";
 
     case StandardRdf:
-      return QObject::tr("RDF");
+      return "RDF";
 
     case StandardRss0X:
-      return QObject::tr("RSS 0.91/0.92/0.93");
+      return "RSS 0.91/0.92/0.93";
 
     case StandardRss2X:
     default:
-      return QObject::tr("RSS 2.0/2.0.1");
+      return "RSS 2.0/2.0.1";
   }
 }
 

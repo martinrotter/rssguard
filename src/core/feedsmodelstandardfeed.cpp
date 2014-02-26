@@ -227,15 +227,18 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
 
         switch (m_autoUpdateType) {
           case DontAutoUpdate:
+            //: Describes feed auto-update status.
             auto_update_string = QObject::tr("does not use auto-update");
             break;
 
           case DefaultAutoUpdate:
+            //: Describes feed auto-update status.
             auto_update_string = QObject::tr("uses global settings");
             break;
 
           case SpecificAutoUpdate:
           default:
+            //: Describes feed auto-update status.
             auto_update_string = QObject::tr("uses specific settings "
                                              "(%n minute(s) to next auto-update)",
                                              0,
@@ -243,6 +246,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
             break;
         }
 
+        //: Tooltip for feed.
         return QObject::tr("%1 (%2)\n"
                            "%3\n\n"
                            "Encoding: %4\n"
@@ -253,6 +257,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
                                                          auto_update_string);
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
+        //: Tooltip for "unread" column of feed list.
         return QObject::tr("%n unread message(s).", 0, countOfUnreadMessages());
       }
       else {

@@ -87,9 +87,11 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
       return QObject::tr("No MySQL server is running in the target destination.");
 
     case MySQLAccessDenied:
+      //: Access to MySQL server was denied.
       return QObject::tr("Access denied. Invalid username or password used.");
 
     default:
+      //: Unknown MySQL error arised.
       return QObject::tr("Unknown error.");
   }
 }

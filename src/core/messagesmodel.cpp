@@ -111,9 +111,17 @@ Message MessagesModel::messageAt(int row_index) const {
 }
 
 void MessagesModel::setupHeaderData() {
-  m_headerData << tr("Id") << tr("Read") << tr("Deleted") << tr("Important") <<
-                  tr("Feed") << tr("Title") << tr("Url") << tr("Author") <<
-                  tr("Created on") << tr("Contents");
+  m_headerData << /*: Tooltip for ID of message.*/ tr("Id") <<
+                  /*: Tooltip for "read" column in msg list.*/ tr("Read") <<
+                  /*: Tooltip for "deleted" column in msg list.*/ tr("Deleted") <<
+                  /*: Tooltip for "important" column in msg list.*/ tr("Important") <<
+                  /*: Tooltip for name of feed for message.*/ tr("Feed") <<
+                  /*: Tooltip for title of message.*/ tr("Title") <<
+                  /*: Tooltip for url of message.*/ tr("Url") <<
+                  /*: Tooltip for author of message.*/ tr("Author") <<
+                  /*: Tooltip for creation date of message.*/ tr("Created on") <<
+                  /*: Tooltip for contents of message.*/ tr("Contents");
+
   m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
                    tr("Is message deleted?") << tr("Is message important?") <<
                    tr("Id of feed which this message belongs to.") <<

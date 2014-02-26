@@ -5,6 +5,7 @@
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
+        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
         <translation>Open nieuw tabblad</translation>
     </message>
 </context>
@@ -51,10 +52,12 @@
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
+        <extracomment>Title text in the feed list header.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header tooltips.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
@@ -63,6 +66,7 @@
     </message>
     <message>
         <source>Root</source>
+        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Root</translation>
     </message>
 </context>
@@ -1535,42 +1539,52 @@ de geïnstalleerde.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -1674,18 +1688,13 @@ de geïnstalleerde.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.
+----------
+Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation>
             <numerusform>%n ongelezen bericht.</numerusform>
             <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
-    </message>
-    <message>
-        <source>ATOM 1.0</source>
-        <translation>ATOM 1.0</translation>
-    </message>
-    <message>
-        <source>RSS 2.0/2.0.1</source>
-        <translation>RSS 2.0/2.0.1</translation>
     </message>
     <message>
         <source>
@@ -1696,16 +1705,9 @@ This category does not contain any nested items.</source>
 Deze categorie bevat geen nested items.</translation>
     </message>
     <message>
-        <source>RDF</source>
-        <translation>RDF</translation>
-    </message>
-    <message>
-        <source>RSS 0.91/0.92/0.93</source>
-        <translation>RSS 0.91/0.92/0.93</translation>
-    </message>
-    <message>
         <source>%1 (standard category)
 %2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
         <translation>%1 (standaard categorie)
 %2%3</translation>
     </message>
@@ -1715,22 +1717,27 @@ Deze categorie bevat geen nested items.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
+        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation>Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Onbekende fout.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation>
             <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
             <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
@@ -1742,6 +1749,7 @@ Deze categorie bevat geen nested items.</translation>
 
 Encoding: %4
 Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
         <translation>%1 (%2)
 %3
 
@@ -1754,58 +1762,72 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>protocol error</source>
+        <extracomment>Network status.</extracomment>
         <translation>protocol fout</translation>
     </message>
     <message>
         <source>host not found</source>
+        <extracomment>Network status.</extracomment>
         <translation>host niet gevonden</translation>
     </message>
     <message>
         <source>connection refused</source>
+        <extracomment>Network status.</extracomment>
         <translation>verbinding geweigerd</translation>
     </message>
     <message>
         <source>connection timed out</source>
+        <extracomment>Network status.</extracomment>
         <translation>Verbindings time-out</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
+        <extracomment>Network status.</extracomment>
         <translation>SSL handshake is mislukt</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
+        <extracomment>Network status.</extracomment>
         <translation>proxy server verbinding geweigerd</translation>
     </message>
     <message>
         <source>temporary failure</source>
+        <extracomment>Network status.</extracomment>
         <translation>tijdelijke storing</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
+        <extracomment>Network status.</extracomment>
         <translation>proxy verificatie vereist</translation>
     </message>
     <message>
         <source>proxy server not found</source>
+        <extracomment>Network status.</extracomment>
         <translation>proxy server niet gevonden</translation>
     </message>
     <message>
         <source>success</source>
+        <extracomment>Network status.</extracomment>
         <translation>succes</translation>
     </message>
     <message>
         <source>uknown content</source>
+        <extracomment>Network status.</extracomment>
         <translation>onbekende inhoud</translation>
     </message>
     <message>
         <source>unknown error</source>
+        <extracomment>Network status.</extracomment>
         <translation>onbekende fout</translation>
     </message>
     <message>
         <source>authentication failed</source>
+        <extracomment>Network status.</extracomment>
         <translation>verificatie mislukt</translation>
     </message>
     <message>
         <source>content not found</source>
+        <extracomment>Network status.</extracomment>
         <translation>inhoud niet gevonden</translation>
     </message>
 </context>

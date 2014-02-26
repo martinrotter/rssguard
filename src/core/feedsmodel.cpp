@@ -38,10 +38,16 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 
   m_rootItem = new FeedsModelRootItem();
   m_rootItem->setId(NO_PARENT_CATEGORY);
+
+  //: Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
   m_rootItem->setIcon(IconThemeFactory::instance()->fromTheme("folder-root"));
   m_countsIcon = IconThemeFactory::instance()->fromTheme("mail-mark-unread");
+
+  //: Title text in the feed list header.
   m_headerData << tr("Title");
+
+  //: Feed list header tooltips.
   m_tooltipData << tr("Titles of feeds/categories.") <<
                    tr("Counts of unread/all meesages.");
 

@@ -23,7 +23,7 @@
 
 class FeedsModelStandardFeed;
 
-class NetworkFactory {
+class NetworkFactory {   
   private:
     // Constructor.
     explicit NetworkFactory();

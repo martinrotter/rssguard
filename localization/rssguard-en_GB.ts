@@ -5,6 +5,7 @@
     <name>CornerButton</name>
     <message>
         <source>Open new tab</source>
+        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -51,10 +52,12 @@
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
+        <extracomment>Title text in the feed list header.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header tooltips.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -63,6 +66,7 @@
     </message>
     <message>
         <source>Root</source>
+        <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1514,42 +1518,52 @@ currently installed one.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1653,18 +1667,13 @@ currently installed one.</source>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.
+----------
+Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
-    </message>
-    <message>
-        <source>ATOM 1.0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RSS 2.0/2.0.1</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>
@@ -1673,16 +1682,9 @@ This category does not contain any nested items.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RDF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>RSS 0.91/0.92/0.93</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>%1 (standard category)
 %2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1691,22 +1693,27 @@ This category does not contain any nested items.</source>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
+        <extracomment>Access to MySQL server was denied.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Unknown error.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -1718,6 +1725,7 @@ This category does not contain any nested items.</source>
 
 Encoding: %4
 Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1726,58 +1734,72 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>protocol error</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>host not found</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>connection refused</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>connection timed out</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>temporary failure</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>proxy authentication required</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>proxy server not found</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>success</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>uknown content</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>unknown error</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>authentication failed</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>content not found</source>
+        <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

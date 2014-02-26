@@ -21,6 +21,7 @@
 
 
 CornerButton::CornerButton(QWidget *parent) : QToolButton(parent) {
+  //: Tooltip for "new tab" webbrowser corner button.
   setToolTip(tr("Open new tab"));
   setAutoRaise(true);
   setIcon(IconThemeFactory::instance()->fromTheme("list-add"));

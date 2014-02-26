@@ -40,6 +40,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
+        //: Tooltip for standard feed.
         return QObject::tr("%1 (standard category)\n"
                            "%2%3").arg(m_title,
                                        m_description,
@@ -48,6 +49,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
                                          "");
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
+        //: Tooltip for "unread" column of feed list.
         return QObject::tr("%n unread message(s).", "", countOfUnreadMessages());
       }
       else {
