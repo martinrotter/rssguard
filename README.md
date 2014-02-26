@@ -1,18 +1,20 @@
 RSS Guard
 =========
-Welcome to RSS Guard project website. See below for basic information or see the wiki for detailed information.
+Welcome to RSS Guard website. Here you can find basic information and rest in the Wiki.
 
+**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Features](#markdown-header-features)**
+- - -
 Contacts
 --------
 * [rotter.martinos@gmail.com](mailto:rotter.martinos@gmail.com) ~e-mail,
 * [groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums,
 * [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode).
-
+- - -
 Feeds
 -----
 * [groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50) ~forums feed,
 * [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed.
-
+- - -
 Features
 --------
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
