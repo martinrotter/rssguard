@@ -195,7 +195,7 @@ void FeedsView::executeNextAutoUpdate() {
 
     if (SystemTrayIcon::isSystemTrayActivated()) {
       SystemTrayIcon::instance()->showMessage(tr("Scheduled update started"),
-                                              tr("RSS Guard is performing scheduled update of some feeds."),
+                                              tr("%1 is performing scheduled update of some feeds.").arg(APP_NAME),
                                               QSystemTrayIcon::Information);
     }
   }
@@ -307,6 +307,7 @@ void FeedsView::editSelectedItem() {
     // it is used probably by feed updater or application
     // is quitting.
     if (SystemTrayIcon::isSystemTrayActivated()) {
+      //: Warning messagebox title when selected item cannot be edited.
       SystemTrayIcon::instance()->showMessage(tr("Cannot edit item"),
                                               tr("Selected item cannot be edited because feed update is ongoing."),
                                               QSystemTrayIcon::Warning);
@@ -314,6 +315,7 @@ void FeedsView::editSelectedItem() {
     else {
       MessageBox::show(this,
                        QMessageBox::Warning,
+                       //: Warning messagebox title when selected item cannot be edited.
                        tr("Cannot edit item"),
                        tr("Selected item cannot be edited because feed update is ongoing."));
     }

@@ -233,6 +233,7 @@ int TabWidget::addBrowser(bool move_after_current,
     // Add new browser as the last tab.
     final_index = addTab(browser,
                          IconThemeFactory::instance()->fromTheme("text-html"),
+                         //: Web browser default tab title.
                          tr("Web browser"),
                          TabBar::Closable);
   }

@@ -299,24 +299,18 @@
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
    <property name="text">
-    <string>Mark selected messages &amp;read</string>
+    <string>Mark selected messages as &amp;read</string>
    </property>
    <property name="toolTip">
     <string>Mark selected messages as read.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
-    <string>Mark selected messages &amp;unread</string>
+    <string>Mark selected messages as &amp;unread</string>
    </property>
    <property name="toolTip">
     <string>Mark selected messages as unread.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchImportanceOfSelectedMessages">
@@ -332,24 +326,18 @@
   </action>
   <action name="m_actionMarkSelectedFeedsAsRead">
    <property name="text">
-    <string>Mark &amp;selected items read</string>
+    <string>Mark &amp;selected items as read</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected feeds as read.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
   </action>
   <action name="m_actionMarkSelectedFeedsAsUnread">
    <property name="text">
-    <string>Mark selected items unread</string>
+    <string>Mark selected items as unread</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected feeds as unread.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
@@ -433,13 +421,10 @@
   </action>
   <action name="m_actionMarkAllFeedsRead">
    <property name="text">
-    <string>Mark all &amp;items read</string>
+    <string>Mark all &amp;items as read</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages in all feeds read. This does not take message filters into account.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionViewSelectedItemsNewspaperMode">

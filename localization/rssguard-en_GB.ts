@@ -94,6 +94,9 @@
     </message>
     <message>
         <source>Cannot edit item</source>
+        <extracomment>Warning messagebox title when selected item cannot be edited.
+----------
+Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -129,7 +132,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RSS Guard is performing scheduled update of some feeds.</source>
+        <source>%1 is performing scheduled update of some feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -193,10 +196,11 @@
     </message>
     <message>
         <source>Authors information not found.</source>
+        <extracomment>File containing list of authors was not found.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
+        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -288,14 +292,6 @@
     </message>
     <message>
         <source>&amp;Web browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected messages &amp;read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected messages &amp;unread</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -391,19 +387,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark &amp;selected items read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected items unread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Clear selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark all &amp;items read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -546,11 +530,32 @@
         <source>You cannot check for updates because feed update is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected items as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected items as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all &amp;items as read</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
     <message>
         <source>General</source>
+        <extracomment>General settings section.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -571,14 +576,13 @@
     </message>
     <message>
         <source>Language</source>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Launch RSS Guard on operating system startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -599,6 +603,7 @@
     </message>
     <message>
         <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -635,6 +640,7 @@
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -725,6 +731,7 @@
     </message>
     <message>
         <source>no icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1043,6 +1050,10 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Launch %1 on operating system startup</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1112,6 +1123,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1323,6 +1335,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1458,6 +1471,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>unknown</source>
+        <extracomment>Uknown release.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1848,6 +1862,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1886,6 +1901,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

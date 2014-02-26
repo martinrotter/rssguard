@@ -60,6 +60,7 @@ void FormUpdate::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> update = SystemFactory::instance()->checkForUpdates();
 
   if (update.second != QNetworkReply::NoError) {
+    //: Uknown release.
     m_ui->m_lblAvailableRelease->setText(tr("unknown"));
     m_ui->m_txtChanges->clear();
     m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error,

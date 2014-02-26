@@ -69,6 +69,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
     m_ui->m_txtThanks->setText(text_stream.readAll());
   }
   else {
+    //: File containing list of authors was not found.
     m_ui->m_txtThanks->setText(tr("Authors information not found."));
   }
   file.close();
@@ -97,16 +98,17 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                              QT_VERSION_STR,
                                                                              APP_NAME));
 
-  m_ui->m_txtInfo->setText(tr("<body>RSS Guard is a (very) tiny feed reader."
+  m_ui->m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                               "<br><br>This software is distributed under the terms of GNU General Public License, version 3."
                               "<br><br>Contacts:"
                               "<ul><li><a href=\"mailto://%1\">%1</a> ~email</li>"
                               "<li><a href=\"%2\">%2</a> ~website</li></ul>"
-                              "You can obtain source code for RSS Guard from its website."
-                              "<br><br><br>Copyrigh (C) 2011-%3 %4</body>").arg(APP_EMAIL,
-                                                                               APP_URL,
-                                                                               QString::number(QDateTime::currentDateTime().date().year()),
-                                                                               APP_AUTHOR));
+                              "You can obtain source code for %5 from its website."
+                              "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(APP_EMAIL,
+                                                                                 APP_URL,
+                                                                                 QString::number(QDateTime::currentDateTime().date().year()),
+                                                                                 APP_AUTHOR,
+                                                                                 APP_NAME));
 }
 
 FormAbout::~FormAbout() {

@@ -94,6 +94,9 @@
     </message>
     <message>
         <source>Cannot edit item</source>
+        <extracomment>Warning messagebox title when selected item cannot be edited.
+----------
+Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Kan item niet bewerken</translation>
     </message>
     <message>
@@ -129,8 +132,8 @@
         <translation>Geplande update begint</translation>
     </message>
     <message>
-        <source>RSS Guard is performing scheduled update of some feeds.</source>
-        <translation>RSS Guard is geplande updates van sommige feeds aan het uitvoeren.</translation>
+        <source>%1 is performing scheduled update of some feeds.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -193,11 +196,12 @@
     </message>
     <message>
         <source>Authors information not found.</source>
+        <extracomment>File containing list of authors was not found.</extracomment>
         <translation>Auteurs informatie niet gevonden.</translation>
     </message>
     <message>
-        <source>&lt;body&gt;RSS Guard is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for RSS Guard from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyrigh (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;RSS Guard is een (zeer) makelijk te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a ref=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website &lt;/li&gt;&lt;ul&gt;U kunt de broncode voor RSS Guard verkrijgen op de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht(C)2011-%3 %4&lt;/body&gt;</translation>
+        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -289,14 +293,6 @@
     <message>
         <source>&amp;Web browser</source>
         <translation>&amp;Webbrowser</translation>
-    </message>
-    <message>
-        <source>Mark selected messages &amp;read</source>
-        <translation>Markeer geselecteerde berichten als &amp;gelezen</translation>
-    </message>
-    <message>
-        <source>Mark selected messages &amp;unread</source>
-        <translation>Markeer geselecteerde berichten als &amp;ongelezen</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -391,20 +387,8 @@
         <translation>Update ge&amp;selecteerde items</translation>
     </message>
     <message>
-        <source>Mark &amp;selected items read</source>
-        <translation>Markeer ge&amp;selecteerde items als gelezen</translation>
-    </message>
-    <message>
-        <source>Mark selected items unread</source>
-        <translation>Markeer geselecteerde items als ongelezen</translation>
-    </message>
-    <message>
         <source>Clear selected items</source>
         <translation>Wis geselecteerde items</translation>
-    </message>
-    <message>
-        <source>Mark all &amp;items read</source>
-        <translation>Markeer alle &amp;items als gelezen</translation>
     </message>
     <message>
         <source>Mark all messages in all feeds read. This does not take message filters into account.</source>
@@ -546,11 +530,32 @@
         <source>You cannot check for updates because feed update is ongoing.</source>
         <translation>Je kan niet controleren op updates omdat feeds aan het updaten zijn.</translation>
     </message>
+    <message>
+        <source>Mark selected messages as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected messages as &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected items as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected items as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all &amp;items as read</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
     <message>
         <source>General</source>
+        <extracomment>General settings section.</extracomment>
         <translation>Algemeen</translation>
     </message>
     <message>
@@ -571,15 +576,14 @@
     </message>
     <message>
         <source>Language</source>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
         <source>Proxy</source>
         <translation>Proxy</translation>
-    </message>
-    <message>
-        <source>Launch RSS Guard on operating system startup</source>
-        <translation>Laad RSS Guard als systeem opstart</translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
@@ -599,6 +603,7 @@
     </message>
     <message>
         <source>Type</source>
+        <extracomment>Proxy server type.</extracomment>
         <translation>Type</translation>
     </message>
     <message>
@@ -635,6 +640,7 @@
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
@@ -731,6 +737,7 @@
     </message>
     <message>
         <source>no icon theme</source>
+        <extracomment>Label for disabling icon theme.</extracomment>
         <translation>Geen pictogram thema</translation>
     </message>
     <message>
@@ -1061,6 +1068,10 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Launch %1 on operating system startup</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1130,6 +1141,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
         <translation>Kijk in:</translation>
     </message>
     <message>
@@ -1341,6 +1353,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
         <translation>Kijk in:</translation>
     </message>
     <message>
@@ -1476,6 +1489,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>unknown</source>
+        <extracomment>Uknown release.</extracomment>
         <translation>onbekend</translation>
     </message>
     <message>
@@ -1876,6 +1890,7 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Web browser</source>
+        <extracomment>Web browser default tab title.</extracomment>
         <translation>Webbrowser</translation>
     </message>
 </context>
@@ -1914,6 +1929,7 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>No title</source>
+        <extracomment>Webbrowser tab title when no title is available.</extracomment>
         <translation>Geen titel</translation>
     </message>
     <message>

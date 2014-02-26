@@ -187,6 +187,7 @@ void FormStandardFeedDetails::onLoadIconFromFile() {
   dialog.setViewMode(QFileDialog::Detail);
   dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
   dialog.setLabelText(QFileDialog::Reject, tr("Cancel"));
+  //: Label for field with icon file name textbox for selection dialog.
   dialog.setLabelText(QFileDialog::LookIn, tr("Look in:"));
   dialog.setLabelText(QFileDialog::FileName, tr("Icon name:"));
   dialog.setLabelText(QFileDialog::FileType, tr("Icon type:"));

@@ -56,8 +56,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_treeLanguages->setColumnCount(5);
   m_ui->m_treeLanguages->setHeaderHidden(false);
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
-                                         << tr("Language")
-                                         << tr("Code")
+                                         << /*: Language column of language list. */ tr("Language")
+                                         << /*: Lang. code column of language list. */ tr("Code")
                                          << tr("Version")
                                          << tr("Author")
                                          << tr("Email"));
@@ -592,6 +592,8 @@ void FormSettings::onMysqlDataStorageEdited() {
 }
 
 void FormSettings::loadGeneral() {
+  m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(APP_NAME));
+
   // Load auto-start status.
   SystemFactory::AutoStartStatus autostart_status = SystemFactory::instance()->getAutoStartStatus();
   switch (autostart_status) {
@@ -649,6 +651,7 @@ void FormSettings::loadInterface() {
   foreach (const QString &icon_theme_name, IconThemeFactory::instance()->installedIconThemes()) {
     if (icon_theme_name == APP_NO_THEME) {
       // Add just "no theme" on other systems.
+      //: Label for disabling icon theme.
       m_ui->m_cmbIconTheme->addItem(tr("no icon theme"),
                                     APP_NO_THEME);
     }

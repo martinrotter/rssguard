@@ -403,6 +403,7 @@ set(APP_FORMS
 set(APP_TRANSLATIONS
   localization/rssguard-en_GB.ts
   localization/rssguard-cs_CZ.ts
+  localization/rssguard-de_DE.ts
   localization/rssguard-nl_NL.ts
   localization/qt-cs_CZ.ts
   localization/qt-nl_NL.ts
@@ -411,6 +412,7 @@ set(APP_TRANSLATIONS
 set(APP_TRANSLATIONS_WO_QT
   localization/rssguard-en_GB.ts
   localization/rssguard-cs_CZ.ts
+  localization/rssguard-de_DE.ts
   localization/rssguard-nl_NL.ts
 )
 

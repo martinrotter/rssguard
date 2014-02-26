@@ -161,6 +161,7 @@ void WebBrowser::onIconChanged() {
 
 void WebBrowser::onTitleChanged(const QString &new_title) {
   if (new_title.isEmpty()) {
+    //: Webbrowser tab title when no title is available.
     emit titleChanged(m_index, tr("No title"));
   }
   else {
