@@ -1054,8 +1054,8 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Držet vybranou zprávu uprostřed seznamu zpráv při jejich procházení</translation>
     </message>
     <message>
-        <source>You dit not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
+        <source>You did not executed any connection test yet.</source>
+        <translation>Doposud nebyl probeden žádny test spojení.</translation>
     </message>
 </context>
 <context>
@@ -1454,10 +1454,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 </context>
 <context>
     <name>FormUpdate</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Current release</source>
         <translation>Nainstalovaná verze</translation>

@@ -464,7 +464,7 @@ void FormSettings::loadDataStorage() {
 
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,
                                         tr("No connection test triggered so far."),
-                                        tr("You dit not executed any connection test yet."));
+                                        tr("You did not executed any connection test yet."));
 
   // Load SQLite.
   m_ui->m_cmbDatabaseDriver->addItem(

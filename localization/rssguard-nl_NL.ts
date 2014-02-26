@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Root</source>
-        <translation type="unfinished"></translation>
+        <translation>Root</translation>
     </message>
 </context>
 <context>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Changelog</source>
-        <translation></translation>
+        <translation>Changelog</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
@@ -204,7 +204,7 @@
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation></translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <source>&amp;View</source>
@@ -488,59 +488,59 @@
     </message>
     <message>
         <source>Clear all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Wis alle items</translation>
     </message>
     <message>
         <source>Remove all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van alle feeds.</translation>
     </message>
     <message>
         <source>Select next feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volgende feeds/categorieën</translation>
     </message>
     <message>
         <source>Select next feed/category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volgende feed/categorie.</translation>
     </message>
     <message>
         <source>Select previous feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer vorige feeds/categorieën</translation>
     </message>
     <message>
         <source>Select previous feed/category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer vorige feeds/categorieën.</translation>
     </message>
     <message>
         <source>Select next message</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volgend bericht</translation>
     </message>
     <message>
         <source>Select next message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volgend bericht.</translation>
     </message>
     <message>
         <source>Select previous message</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer vorige bericht</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer op updates</translation>
     </message>
     <message>
         <source>Check if new application updates are available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer als nieuwe Rssguard update beschikbaar is.</translation>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer als nieuwe update voor RSSguard beschikbaar is om te downloaden.</translation>
     </message>
     <message>
         <source>Cannot check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet controleren op updates</translation>
     </message>
     <message>
         <source>You cannot check for updates because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan niet controleren op updates omdat feeds aan het updaten zijn.</translation>
     </message>
 </context>
 <context>
@@ -571,7 +571,7 @@
     </message>
     <message>
         <source>Proxy</source>
-        <translation></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <source>Launch RSS Guard on operating system startup</source>
@@ -599,7 +599,7 @@
     </message>
     <message>
         <source>Host</source>
-        <translation></translation>
+        <translation>Host</translation>
     </message>
     <message>
         <source>Hostname or IP of your proxy server</source>
@@ -643,7 +643,7 @@
     </message>
     <message>
         <source>Email</source>
-        <translation></translation>
+        <translation>Email</translation>
     </message>
     <message>
         <source>Select color for web browser progress bar</source>
@@ -651,11 +651,11 @@
     </message>
     <message>
         <source>Socks5</source>
-        <translation></translation>
+        <translation>Socks5</translation>
     </message>
     <message>
         <source>Http</source>
-        <translation></translation>
+        <translation>Http</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
@@ -699,7 +699,7 @@
     </message>
     <message>
         <source>Web browser &amp; proxy</source>
-        <translation></translation>
+        <translation>Webbrowser &amp; proxy</translation>
     </message>
     <message>
         <source>Disable (Tray icon is not available.)</source>
@@ -783,7 +783,7 @@
     </message>
     <message>
         <source>Feeds</source>
-        <translation></translation>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -795,7 +795,7 @@
     </message>
     <message>
         <source>...</source>
-        <translation></translation>
+        <translation>...</translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -907,7 +907,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Database driver</source>
-        <translation></translation>
+        <translation>Database driver</translation>
     </message>
     <message>
         <source>Hostname</source>
@@ -943,7 +943,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source> ms</source>
-        <translation></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
@@ -1003,58 +1003,58 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalkknop stijl</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbergen hoofdvenster wanneer het wordt geminimaliseerd</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen verbindings test geactiveerd tot nu toe.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat deze instellingen alleen worden  toegepast op nieuw tot stand gebrachte verbindingen.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer browser</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeem proxy</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen pictogram</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"></translation>
+        <translation>Alleen tekst</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst naast pictogram</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst onder pictogram</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>Volg OS stijl</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Houd bericht selectie in het midden van de lijst met berichten kijkvenster</translation>
     </message>
     <message>
-        <source>You dit not executed any connection test yet.</source>
+        <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1213,7 +1213,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>URL</source>
-        <translation></translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Encoding</source>
@@ -1405,109 +1405,108 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"></translation>
+        <translation>Nu ophalen</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Ophalen van metadata</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nog geen metadata opgehaald.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch bijwerken elke</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet automatisch bijwerken </translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle metadata is succesvol opgehaald.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata opgehaald voor feed en pictogram.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultaat: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata voor feed en pictogram niet opgehaald.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen metadata opgehaald.</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Current release</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidige versie</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare versie</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Veranderingen</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>onbekend</translation>
     </message>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijst met updates is niet
+succesvol gedownload.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe versie beschikbaar.</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded and installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een nieuwe versie welke kan
+worden gedownload en geinstalleerd.</translation>
     </message>
     <message>
         <source>This is new version. Upgrade to it manually or via your system package manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een nieuwe versie.Upgrade  het handmatig of via uw systeem package manager.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout: %1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen nieuwe versie beschikbaar.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze versie is niet nieuwer dan
+de geïnstalleerde.</translation>
     </message>
 </context>
 <context>
@@ -1536,7 +1535,7 @@ currently installed one.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation></translation>
+        <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
@@ -1552,7 +1551,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Feed</source>
-        <translation></translation>
+        <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1560,7 +1559,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Url</source>
-        <translation></translation>
+        <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
@@ -1682,11 +1681,11 @@ currently installed one.</source>
     </message>
     <message>
         <source>ATOM 1.0</source>
-        <translation></translation>
+        <translation>ATOM 1.0</translation>
     </message>
     <message>
         <source>RSS 2.0/2.0.1</source>
-        <translation></translation>
+        <translation>RSS 2.0/2.0.1</translation>
     </message>
     <message>
         <source>
@@ -1698,11 +1697,11 @@ Deze categorie bevat geen nested items.</translation>
     </message>
     <message>
         <source>RDF</source>
-        <translation></translation>
+        <translation>RDF</translation>
     </message>
     <message>
         <source>RSS 0.91/0.92/0.93</source>
-        <translation></translation>
+        <translation>RSS 0.91/0.92/0.93</translation>
     </message>
     <message>
         <source>%1 (standard category)
@@ -1751,63 +1750,63 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL server werkt als verwacht.</translation>
     </message>
     <message>
         <source>protocol error</source>
-        <translation type="unfinished"></translation>
+        <translation>protocol fout</translation>
     </message>
     <message>
         <source>host not found</source>
-        <translation type="unfinished"></translation>
+        <translation>host niet gevonden</translation>
     </message>
     <message>
         <source>connection refused</source>
-        <translation type="unfinished"></translation>
+        <translation>verbinding geweigerd</translation>
     </message>
     <message>
         <source>connection timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindings time-out</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
-        <translation type="unfinished"></translation>
+        <translation>SSL handshake is mislukt</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
-        <translation type="unfinished"></translation>
+        <translation>proxy server verbinding geweigerd</translation>
     </message>
     <message>
         <source>temporary failure</source>
-        <translation type="unfinished"></translation>
+        <translation>tijdelijke storing</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
-        <translation type="unfinished"></translation>
+        <translation>proxy verificatie vereist</translation>
     </message>
     <message>
         <source>proxy server not found</source>
-        <translation type="unfinished"></translation>
+        <translation>proxy server niet gevonden</translation>
     </message>
     <message>
         <source>success</source>
-        <translation type="unfinished"></translation>
+        <translation>succes</translation>
     </message>
     <message>
         <source>uknown content</source>
-        <translation type="unfinished"></translation>
+        <translation>onbekende inhoud</translation>
     </message>
     <message>
         <source>unknown error</source>
-        <translation type="unfinished"></translation>
+        <translation>onbekende fout</translation>
     </message>
     <message>
         <source>authentication failed</source>
-        <translation type="unfinished"></translation>
+        <translation>verificatie mislukt</translation>
     </message>
     <message>
         <source>content not found</source>
-        <translation type="unfinished"></translation>
+        <translation>inhoud niet gevonden</translation>
     </message>
 </context>
 <context>
@@ -1847,7 +1846,7 @@ Status automatisch bijwerken: %5</translation>
     <name>TabWidget</name>
     <message>
         <source>Feeds</source>
-        <translation></translation>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
@@ -1855,7 +1854,7 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Web browser</source>
-        <translation></translation>
+        <translation>Webbrowser</translation>
     </message>
 </context>
 <context>
@@ -1885,11 +1884,11 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation></translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Zoom  </source>
-        <translation></translation>
+        <translation>Zoom</translation>
     </message>
     <message>
         <source>No title</source>
@@ -1996,39 +1995,39 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished">Vernieuw huidige webpagina.</translation>
+        <translation>Vernieuw huidige webpagina.</translation>
     </message>
     <message>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie kopiëren</translation>
     </message>
     <message>
         <source>Copies current selection into the clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëer huidige selectie naar het klembord.</translation>
     </message>
     <message>
         <source>Copy link url to clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëer link url naar klembord.</translation>
     </message>
     <message>
         <source>Copy image to clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëer afbeelding naar klembord.</translation>
     </message>
     <message>
         <source>Copy image url to clipboard.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiëer afbeeldings url naar klembord.</translation>
     </message>
     <message>
         <source>Open this hyperlink in new tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Open deze link in nieuw tabblad.</translation>
     </message>
     <message>
         <source>Open the hyperlink in this tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Open link in dit tabblad.</translation>
     </message>
     <message>
         <source>Open this image in this tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Open deze afbeelding in dit tabblad.</translation>
     </message>
 </context>
 </TS>

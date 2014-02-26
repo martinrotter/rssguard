@@ -1036,7 +1036,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You dit not executed any connection test yet.</source>
+        <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1436,10 +1436,6 @@ Authors of this application are NOT responsible for lost data.</source>
 </context>
 <context>
     <name>FormUpdate</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Current release</source>
         <translation type="unfinished"></translation>
