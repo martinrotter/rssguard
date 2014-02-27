@@ -195,6 +195,7 @@ void FeedsView::executeNextAutoUpdate() {
 
     if (SystemTrayIcon::isSystemTrayActivated()) {
       SystemTrayIcon::instance()->showMessage(tr("Scheduled update started"),
+                                              //: RSS Guard is performing updates right now.
                                               tr("%1 is performing scheduled update of some feeds.").arg(APP_NAME),
                                               QSystemTrayIcon::Information);
     }

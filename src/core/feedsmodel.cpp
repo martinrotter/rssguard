@@ -47,9 +47,8 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   //: Title text in the feed list header.
   m_headerData << tr("Title");
 
-  //: Feed list header tooltips.
-  m_tooltipData << tr("Titles of feeds/categories.") <<
-                   tr("Counts of unread/all meesages.");
+  m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.") <<
+                   /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all meesages.");
 
   loadFromDatabase();
 }

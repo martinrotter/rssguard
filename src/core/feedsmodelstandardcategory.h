@@ -22,6 +22,7 @@
 
 #include <QSqlRecord>
 #include <QDateTime>
+#include <QApplication>
 
 
 // Represents STANDARD category container.
@@ -30,6 +31,8 @@
 //  b) standard feeds,
 //  c) other containers and feeds (synchronized ones).
 class FeedsModelStandardCategory : public FeedsModelCategory {
+    Q_DECLARE_TR_FUNCTIONS(FeedsModelStandardCategory)
+
   public:
     // Constructors and destructors.
     explicit FeedsModelStandardCategory(FeedsModelRootItem *parent_item = NULL);

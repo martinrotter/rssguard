@@ -33,62 +33,62 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
     case QNetworkReply::ProtocolUnknownError:
     case QNetworkReply::ProtocolFailure:
       //: Network status.
-      return QObject::tr("protocol error");
+      return tr("protocol error");
 
     case QNetworkReply::HostNotFoundError:
       //: Network status.
-      return QObject::tr("host not found");
+      return tr("host not found");
 
     case QNetworkReply::RemoteHostClosedError:
     case QNetworkReply::ConnectionRefusedError:
       //: Network status.
-      return QObject::tr("connection refused");
+      return tr("connection refused");
 
     case QNetworkReply::TimeoutError:
     case QNetworkReply::ProxyTimeoutError:
       //: Network status.
-      return QObject::tr("connection timed out");
+      return tr("connection timed out");
 
     case QNetworkReply::SslHandshakeFailedError:
       //: Network status.
-      return QObject::tr("SSL handshake failed");
+      return tr("SSL handshake failed");
 
     case QNetworkReply::ProxyConnectionClosedError:
     case QNetworkReply::ProxyConnectionRefusedError:
       //: Network status.
-      return QObject::tr("proxy server connection refused");
+      return tr("proxy server connection refused");
 
     case QNetworkReply::TemporaryNetworkFailureError:
       //: Network status.
-      return QObject::tr("temporary failure");
+      return tr("temporary failure");
 
     case QNetworkReply::AuthenticationRequiredError:
       //: Network status.
-      return QObject::tr("authentication failed");
+      return tr("authentication failed");
 
     case QNetworkReply::ProxyAuthenticationRequiredError:
       //: Network status.
-      return QObject::tr("proxy authentication required");
+      return tr("proxy authentication required");
 
     case QNetworkReply::ProxyNotFoundError:
       //: Network status.
-      return QObject::tr("proxy server not found");
+      return tr("proxy server not found");
 
     case QNetworkReply::NoError:
       //: Network status.
-      return QObject::tr("success");
+      return tr("success");
 
     case QNetworkReply::UnknownContentError:
       //: Network status.
-      return QObject::tr("uknown content");
+      return tr("uknown content");
 
     case QNetworkReply::ContentNotFoundError:
       //: Network status.
-      return QObject::tr("content not found");
+      return tr("content not found");
 
     default:
       //: Network status.
-      return QObject::tr("unknown error");
+      return tr("unknown error");
   }
 }
 

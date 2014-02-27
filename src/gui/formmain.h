@@ -112,7 +112,6 @@ class FormMain : public QMainWindow {
     void showUpdates();
 
   private:
-
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;

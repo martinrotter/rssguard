@@ -19,11 +19,14 @@
 #define NETWORKFACTORY_H
 
 #include <QNetworkReply>
+#include <QApplication>
 
 
 class FeedsModelStandardFeed;
 
-class NetworkFactory {   
+class NetworkFactory {
+    Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
+
   private:
     // Constructor.
     explicit NetworkFactory();

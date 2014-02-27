@@ -196,7 +196,7 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         // TODO: Changeable text.
         return QString("(%1)").arg(QString::number(countOfUnreadMessages()));
-                                 //QString::number(countOfAllMessages()));
+        //QString::number(countOfAllMessages()));
       }
       else {
         return QVariant();
@@ -228,37 +228,37 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
         switch (m_autoUpdateType) {
           case DontAutoUpdate:
             //: Describes feed auto-update status.
-            auto_update_string = QObject::tr("does not use auto-update");
+            auto_update_string = tr("does not use auto-update");
             break;
 
           case DefaultAutoUpdate:
             //: Describes feed auto-update status.
-            auto_update_string = QObject::tr("uses global settings");
+            auto_update_string = tr("uses global settings");
             break;
 
           case SpecificAutoUpdate:
           default:
             //: Describes feed auto-update status.
-            auto_update_string = QObject::tr("uses specific settings "
-                                             "(%n minute(s) to next auto-update)",
-                                             0,
-                                             m_autoUpdateRemainingInterval);
+            auto_update_string = tr("uses specific settings "
+                                    "(%n minute(s) to next auto-update)",
+                                    0,
+                                    m_autoUpdateRemainingInterval);
             break;
         }
 
         //: Tooltip for feed.
-        return QObject::tr("%1 (%2)\n"
-                           "%3\n\n"
-                           "Encoding: %4\n"
-                           "Auto-update status: %5").arg(m_title,
-                                                         FeedsModelFeed::typeToString(m_type),
-                                                         m_description,
-                                                         m_encoding,
-                                                         auto_update_string);
+        return tr("%1 (%2)\n"
+                  "%3\n\n"
+                  "Encoding: %4\n"
+                  "Auto-update status: %5").arg(m_title,
+                                                FeedsModelFeed::typeToString(m_type),
+                                                m_description,
+                                                m_encoding,
+                                                auto_update_string);
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.
-        return QObject::tr("%n unread message(s).", 0, countOfUnreadMessages());
+        return tr("%n unread message(s).", 0, countOfUnreadMessages());
       }
       else {
         return QVariant();
@@ -425,7 +425,3 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
     qDebug("Transaction commit for message downloader failed.");
   }
 }
-
-
-
-

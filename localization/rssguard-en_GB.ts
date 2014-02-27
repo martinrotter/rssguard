@@ -4,8 +4,29 @@
 <context>
     <name>CornerButton</name>
     <message>
-        <source>Open new tab</source>
+        <source>Open new web browser tab.</source>
         <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DatabaseFactory</name>
+    <message>
+        <source>MySQL server works as expected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No MySQL server is running in the target destination.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Access denied. Invalid username or password used.</source>
+        <extracomment>Access to MySQL server was denied.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown error.</source>
+        <extracomment>Unknown MySQL error arised.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -17,10 +38,12 @@
     </message>
     <message>
         <source>Feed update started</source>
+        <extracomment>Text display in status bar when feed update is started.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -57,17 +80,79 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header tooltips.</extracomment>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FeedsModelStandardCategory</name>
+    <message>
+        <source>%1 (standard category)
+%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+
+This category does not contain any nested items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>FeedsModelStandardFeed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -133,15 +218,12 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>%1 is performing scheduled update of some feeds.</source>
+        <extracomment>RSS Guard is performing updates right now.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FormAbout</name>
-    <message>
-        <source>About RSS Guard</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Information</source>
         <translation type="unfinished"></translation>
@@ -203,6 +285,11 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>About %1</source>
+        <extracomment>About RSS Guard dialog title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -239,10 +326,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;About RSS Guard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Current tab</source>
         <translation type="unfinished"></translation>
     </message>
@@ -264,30 +347,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update all feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update selected feeds/categories.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit selected feed/category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected messages as read.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected messages as unread.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch importance of selected messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -315,10 +374,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About RSS Guard.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Switch fullscreen mode.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -331,15 +386,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Delete selected messages.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open selected messages in internal browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected messages in internal browser.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -347,23 +394,11 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open selected source articles in external browser.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open selected source articles in internal browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open selected source messages  in internal browser.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Application is already running.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Clear selected messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -379,39 +414,11 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Update &amp;all items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clear selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View selected items in newspaper mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Delete selected feed/category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark all messages (without message filters) from selected feeds as read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected feeds as unread.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove all messages from selected feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -423,19 +430,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Switch &amp;fullscreen/normal mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -475,19 +470,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear all items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select next feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select next feed/category.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -495,15 +478,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select previous feed/category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select next message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select next message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -539,15 +514,75 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark &amp;selected items as read</source>
+        <source>&amp;About application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark selected items as unread</source>
+        <source>Displays extra info about this application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark all &amp;items as read</source>
+        <source>Ctrl+Shift+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected feeds as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark selected feeds as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clean selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from selected feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from all feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all &amp;feeds as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View selected feeds in newspaper mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clean all feeds</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -645,6 +680,7 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -740,6 +776,7 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -816,6 +853,7 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Executables (*.*)</source>
+        <extracomment>File filter for external browser selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1505,6 +1543,10 @@ downloaded and installed.</source>
 currently installed one.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Check for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -1653,99 +1695,7 @@ currently installed one.</source>
     </message>
 </context>
 <context>
-    <name>QObject</name>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>English</translation>
-    </message>
-    <message>
-        <source>LANG_ABBREV</source>
-        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>en_GB</translation>
-    </message>
-    <message>
-        <source>LANG_VERSION</source>
-        <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.01</translation>
-    </message>
-    <message>
-        <source>LANG_AUTHOR</source>
-        <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
-    </message>
-    <message>
-        <source>LANG_EMAIL</source>
-        <extracomment>Email of translator - optional.</extracomment>
-        <translation>rotter.martinos@gmail.com</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.
-----------
-Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>
-
-This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 (standard category)
-%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Access denied. Invalid username or password used.</source>
-        <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (%2)
-%3
-
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>MySQL server works as expected.</source>
-        <translation type="unfinished"></translation>
-    </message>
+    <name>NetworkFactory</name>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
@@ -1782,6 +1732,11 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>authentication failed</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
@@ -1802,19 +1757,42 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>content not found</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>QObject</name>
     <message>
-        <source>authentication failed</source>
-        <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <source>LANG_NAME</source>
+        <extracomment>Name of language, e.g. English.</extracomment>
+        <translation>English</translation>
     </message>
     <message>
-        <source>content not found</source>
-        <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <source>LANG_ABBREV</source>
+        <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
+        <translation>en_GB</translation>
+    </message>
+    <message>
+        <source>LANG_VERSION</source>
+        <extracomment>Version of your translation, e.g. 1.0.</extracomment>
+        <translation>0.01</translation>
+    </message>
+    <message>
+        <source>LANG_AUTHOR</source>
+        <extracomment>Name of translator - optional.</extracomment>
+        <translation>Martin Rotter</translation>
+    </message>
+    <message>
+        <source>LANG_EMAIL</source>
+        <extracomment>Email of translator - optional.</extracomment>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
 </context>
 <context>

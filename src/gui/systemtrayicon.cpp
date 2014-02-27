@@ -137,8 +137,7 @@ void SystemTrayIcon::show() {
 #else
   // Delay avoids race conditions and tray icon is properly displayed.
   qDebug("Showing tray icon with 1000 ms delay.");
-  QTimer::singleShot(1000,
-                     this, SLOT(showPrivate()));
+  QTimer::singleShot(1000, this, SLOT(showPrivate()));
 #endif
 }
 

@@ -53,6 +53,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 #endif
 
   // Setup behavior.
+  m_ui->m_listSettings->setCurrentRow(0);
   m_ui->m_treeLanguages->setColumnCount(5);
   m_ui->m_treeLanguages->setHeaderHidden(false);
   m_ui->m_treeLanguages->setHeaderLabels(QStringList()
@@ -65,8 +66,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_treeSkins->setColumnCount(4);
   m_ui->m_treeSkins->setHeaderHidden(false);
   m_ui->m_treeSkins->setHeaderLabels(QStringList()
-                                     << tr("Name")
-                                     << tr("Version")
+                                     << /*: Skin list name column. */ tr("Name")
+                                     << /*: Version column of skin list. */ tr("Version")
                                      << tr("Author")
                                      << tr("Email"));
 
@@ -180,6 +181,7 @@ void FormSettings::selectBrowserExecutable() {
   QString executable_file = QFileDialog::getOpenFileName(this,
                                                          tr("Select web browser executable"),
                                                          QDir::homePath(),
+                                                         //: File filter for external browser selection dialog.
                                                          tr("Executables (*.*)"));
 
   if (!executable_file.isEmpty()) {

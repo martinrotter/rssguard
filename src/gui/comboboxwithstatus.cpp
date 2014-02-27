@@ -36,5 +36,4 @@ ComboBoxWithStatus::ComboBoxWithStatus(QWidget *parent)
 }
 
 ComboBoxWithStatus::~ComboBoxWithStatus() {
-
 }

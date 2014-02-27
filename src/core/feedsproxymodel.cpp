@@ -42,8 +42,6 @@ FeedsProxyModel::~FeedsProxyModel() {
   qDebug("Destroying FeedsProxyModel instance");
 }
 
-
-
 bool FeedsProxyModel::lessThan(const QModelIndex &left,
                                const QModelIndex &right) const {
   if (left.isValid() && right.isValid()) {

@@ -46,8 +46,6 @@ WebView::~WebView() {
   qDebug("Destroying BaseWebView.");
 }
 
-
-
 void WebView::onLoadFinished(bool ok) {
   // If page was not loaded, then display custom error page.
   if (!ok) {

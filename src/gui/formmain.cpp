@@ -302,12 +302,8 @@ void FormMain::loadSize() {
   Settings *settings = Settings::instance();
 
   // Reload main window size & position.
-  resize(settings->value(APP_CFG_GUI,
-                         "window_size",
-                         size()).toSize());
-  move(settings->value(APP_CFG_GUI,
-                       "window_position",
-                       screen.center() - rect().center()).toPoint());
+  resize(settings->value(APP_CFG_GUI, "window_size", size()).toSize());
+  move(settings->value(APP_CFG_GUI, "window_position", screen.center() - rect().center()).toPoint());
 
   // If user exited the application while in fullsreen mode,
   // then re-enable it now.

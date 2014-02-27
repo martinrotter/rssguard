@@ -261,8 +261,6 @@ int TabWidget::addBrowser(bool move_after_current,
   return final_index;
 }
 
-
-
 void TabWidget::changeIcon(int index, const QIcon &new_icon) {
   setTabIcon(index, new_icon);
 }

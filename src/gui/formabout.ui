@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>About RSS Guard</string>
+   <string notr="true"/>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -166,8 +166,8 @@ p, li { white-space: pre-wrap; }
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>693</width>
-            <height>196</height>
+            <width>67</width>
+            <height>66</height>
            </rect>
           </property>
           <property name="autoFillBackground">

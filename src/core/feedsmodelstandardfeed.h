@@ -24,6 +24,7 @@
 #include <QSqlRecord>
 #include <QPair>
 #include <QNetworkReply>
+#include <QApplication>
 
 
 class Message;
@@ -32,6 +33,8 @@ class Message;
 // online synchronization services (NO TT-RSS, NO FEEDLY).
 // So, parent item is either root item or category.
 class FeedsModelStandardFeed : public FeedsModelFeed {
+    Q_DECLARE_TR_FUNCTIONS(FeedsModelStandardFeed)
+
   public:
     enum AutoUpdateType {
       DontAutoUpdate = 0,

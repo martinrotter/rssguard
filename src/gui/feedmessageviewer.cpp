@@ -137,6 +137,7 @@ void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
 }
 
 void FeedMessageViewer::onFeedUpdatesStarted() {
+  //: Text display in status bar when feed update is started.
   FormMain::instance()->statusBar()->showProgress(0, tr("Feed update started"));
 }
 
@@ -146,6 +147,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
   FormMain::instance()->statusBar()->showProgress((current * 100.0) / total,
+                                                  //: Text display in status bar when particular feed is updated.
                                                   tr("Updated feed '%1'").arg(feed->title()));
 }
 
@@ -320,7 +322,6 @@ void FeedMessageViewer::initializeViews() {
   // Set layout as active.
   setLayout(central_layout);
 }
-
 
 void FeedMessageViewer::vacuumDatabase() {
   bool is_tray_activated = SystemTrayIcon::isSystemTrayActivated();

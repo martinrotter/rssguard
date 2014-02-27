@@ -133,11 +133,11 @@ QMap<QString, QString> TextFactory::generetaEscapes() {
 
   sequences["&lt;"]     = '<';
   sequences["&gt;"]     = '>';
-  sequences["&amp;"]		= '&';
-  sequences["&quot;"]		= '\"';
-  sequences["&nbsp;"]		= ' ';
+  sequences["&amp;"]    = '&';
+  sequences["&quot;"]   = '\"';
+  sequences["&nbsp;"]   = ' ';
   sequences["&plusmn;"]	= "±";
-  sequences["&times;"]	= "×";
+  sequences["&times;"]  = "×";
   sequences["&#039;"]   = '\'';
 
   return sequences;
@@ -146,12 +146,12 @@ QMap<QString, QString> TextFactory::generetaEscapes() {
 QMap<QString, QString> TextFactory::generateDeescapes() {
   QMap<QString, QString> sequences;
 
-  sequences["<"]	= "&lt;";
-  sequences[">"]	= "&gt;";
-  sequences["&"]	= "&amp;";
+  sequences["<"]  = "&lt;";
+  sequences[">"]  = "&gt;";
+  sequences["&"]  = "&amp;";
   sequences["\""]	= "&quot;";
-  sequences["±"]	= "&plusmn;";
-  sequences["×"]	= "&times;";
+  sequences["±"]  = "&plusmn;";
+  sequences["×"]  = "&times;";
   sequences["\'"] = "&#039;";
 
   return sequences;
