@@ -529,10 +529,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark &amp;selected feeds as read</source>
         <translation type="unfinished"></translation>
     </message>

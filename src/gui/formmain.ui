@@ -194,7 +194,7 @@
     <string>Displays extra info about this application.</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+A</string>
+    <string notr="true">Ctrl+Shift+A</string>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
