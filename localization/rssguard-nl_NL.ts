@@ -13,21 +13,21 @@
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished">MySQL server werkt als verwacht.</translation>
+        <translation>MySQL server werkt als verwacht.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation type="unfinished">Geen MySQL server draait in de doelbestemming.</translation>
+        <translation>Geen MySQL server draait in de doelbestemming.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
-        <translation type="unfinished">Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
+        <translation>Toegang geweigerd. Ongeldig gebruikersnaam of paswoord gebruikt.</translation>
     </message>
     <message>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
-        <translation type="unfinished">Onbekende fout.</translation>
+        <translation>Onbekende fout.</translation>
     </message>
 </context>
 <context>
@@ -100,21 +100,21 @@
         <source>%1 (standard category)
 %2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished">%1 (standaard categorie)
+        <translation>%1 (standaard categorie)
 %2%3</translation>
     </message>
     <message>
         <source>
 
 This category does not contain any nested items.</source>
-        <translation type="unfinished">
+        <translation>
 
 Deze categorie bevat geen nested items.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n ongelezen bericht.</numerusform>
             <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
@@ -125,17 +125,17 @@ Deze categorie bevat geen nested items.</translation>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">automatisch bijwerken niet gebruiken</translation>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">gebruik algemene instellingen</translation>
+        <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
             <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
         </translation>
@@ -147,7 +147,7 @@ Deze categorie bevat geen nested items.</translation>
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished">%1 (%2)
+        <translation>%1 (%2)
 %3
 
 Encoderen: %4
@@ -156,7 +156,7 @@ Status automatisch bijwerken: %5</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%n ongelezen bericht.</numerusform>
             <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
@@ -521,11 +521,31 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Add new feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;About application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -549,35 +569,11 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Deletes all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;all feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mark all &amp;feeds as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -586,6 +582,10 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Clean all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1569,7 +1569,7 @@ de geïnstalleerde.</translation>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation type="unfinished">Controleer op updates</translation>
+        <translation>Controleer op updates</translation>
     </message>
 </context>
 <context>
@@ -1723,72 +1723,72 @@ de geïnstalleerde.</translation>
     <message>
         <source>protocol error</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">protocol fout</translation>
+        <translation>protocol fout</translation>
     </message>
     <message>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">host niet gevonden</translation>
+        <translation>host niet gevonden</translation>
     </message>
     <message>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">verbinding geweigerd</translation>
+        <translation>verbinding geweigerd</translation>
     </message>
     <message>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">Verbindings time-out</translation>
+        <translation>Verbindings time-out</translation>
     </message>
     <message>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">SSL handshake is mislukt</translation>
+        <translation>SSL handshake is mislukt</translation>
     </message>
     <message>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">proxy server verbinding geweigerd</translation>
+        <translation>proxy server verbinding geweigerd</translation>
     </message>
     <message>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">tijdelijke storing</translation>
+        <translation>tijdelijke storing</translation>
     </message>
     <message>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">verificatie mislukt</translation>
+        <translation>verificatie mislukt</translation>
     </message>
     <message>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">proxy verificatie vereist</translation>
+        <translation>proxy verificatie vereist</translation>
     </message>
     <message>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">proxy server niet gevonden</translation>
+        <translation>proxy server niet gevonden</translation>
     </message>
     <message>
         <source>success</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">succes</translation>
+        <translation>succes</translation>
     </message>
     <message>
         <source>uknown content</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">onbekende inhoud</translation>
+        <translation>onbekende inhoud</translation>
     </message>
     <message>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">inhoud niet gevonden</translation>
+        <translation>inhoud niet gevonden</translation>
     </message>
     <message>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished">onbekende fout</translation>
+        <translation>onbekende fout</translation>
     </message>
 </context>
 <context>
@@ -1806,7 +1806,7 @@ de geïnstalleerde.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.01</translation>
+        <translation>0.06</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>

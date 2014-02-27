@@ -401,19 +401,23 @@ set(APP_FORMS
 
 # Add translations.
 set(APP_TRANSLATIONS
-  localization/rssguard-en_GB.ts
   localization/rssguard-cs_CZ.ts
   localization/rssguard-de_DE.ts
+  localization/rssguard-en_GB.ts
+  localization/rssguard-fr_FR.ts
   localization/rssguard-nl_NL.ts
+  localization/rssguard-pt_BR.ts
   localization/qt-cs_CZ.ts
   localization/qt-nl_NL.ts
 )
 
 set(APP_TRANSLATIONS_WO_QT
-  localization/rssguard-en_GB.ts
   localization/rssguard-cs_CZ.ts
   localization/rssguard-de_DE.ts
+  localization/rssguard-en_GB.ts
+  localization/rssguard-fr_FR.ts
   localization/rssguard-nl_NL.ts
+  localization/rssguard-pt_BR.ts
 )
 
 set(APP_TEXT
