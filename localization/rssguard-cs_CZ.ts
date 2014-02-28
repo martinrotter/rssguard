@@ -6,7 +6,7 @@
     <message>
         <source>Open new web browser tab.</source>
         <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít nový tab webového prohlížeče.</translation>
     </message>
 </context>
 <context>
@@ -229,7 +229,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>%1 is performing scheduled update of some feeds.</source>
         <extracomment>RSS Guard is performing updates right now.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 právě aktualizuje kanály.</translation>
     </message>
 </context>
 <context>
@@ -293,12 +293,12 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;body&gt;%5 je (velmi) jednoduduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tato aplikace je šířena pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy pro %5 je možné získat z jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>O aplikaci %1</translation>
     </message>
 </context>
 <context>
@@ -517,79 +517,79 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zp&amp;rávy jako přečtené</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zprávy jako ne&amp;přečtené</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation type="unfinished"></translation>
+        <translation>O &amp;aplikaci</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazí dodatečné informace o této aplikaci.</translation>
     </message>
     <message>
         <source>Mark &amp;selected feeds as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané kanály jako přeč&amp;tené</translation>
     </message>
     <message>
         <source>Mark selected feeds as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané kanály jako nepřečtené</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Sma&amp;zat vybrané zprávy</translation>
     </message>
     <message>
         <source>Clean selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyčistit vybrané kanály</translation>
     </message>
     <message>
         <source>Deletes all messages from selected feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smaže všechny zprávy z vybraných kanálů.</translation>
     </message>
     <message>
         <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označí všechny zprávy ve všech kanálech jako přečtené. Tato funkce nemusí brát v potaz případně filtry zpráv.</translation>
     </message>
     <message>
         <source>Deletes all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smaže všechny zprávy ze všech kanálů.</translation>
     </message>
     <message>
         <source>Add new feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat nový kanál/kategorii</translation>
     </message>
     <message>
         <source>Update &amp;all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat všechny k&amp;anály</translation>
     </message>
     <message>
         <source>Update &amp;selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat vy&amp;brané kanály</translation>
     </message>
     <message>
         <source>&amp;Edit selected feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Up&amp;ravit vybraný kanál/kategorii</translation>
     </message>
     <message>
         <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vybraný kaná&amp;l/kategorii</translation>
     </message>
     <message>
         <source>Mark all &amp;feeds as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit všechny kaná&amp;ly jako přečtené</translation>
     </message>
     <message>
         <source>View selected feeds in newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit vybrané kanály v novinovém náhledu</translation>
     </message>
     <message>
         <source>Clean all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyčistit všechny kanály</translation>
     </message>
 </context>
 <context>
@@ -1114,7 +1114,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustit %1 při spuštění operačního systému</translation>
     </message>
 </context>
 <context>

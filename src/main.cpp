@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
 
   // Display main window.
   if (Settings::instance()->value(APP_CFG_GUI, "start_hidden",
-                                     false).toBool() &&
+                                  false).toBool() &&
       SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
     main_window.hide();
