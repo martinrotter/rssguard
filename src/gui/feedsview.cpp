@@ -115,6 +115,29 @@ FeedsModelFeed *FeedsView::isCurrentIndexFeed() const {
   return m_sourceModel->feedForIndex(current_mapped);
 }
 
+void FeedsView::saveExpandedStates() {
+  Settings *settings = Settings::instance();
+
+  // Iterate all categories and save their expand statuses.
+  foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
+    settings->setValue(APP_CFG_CAT_EXP,
+                       QString::number(category->id()),
+                       isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
+  }
+}
+
+void FeedsView::loadExpandedStates() {
+  Settings *settings = Settings::instance();
+
+  // Iterate all categories and save their expand statuses.
+  foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
+    setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
+                settings->value(APP_CFG_CAT_EXP,
+                                QString::number(category->id()),
+                                true).toBool());
+  }
+}
+
 void FeedsView::updateAllFeeds() {
   if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     emit feedsUpdateRequested(allFeeds());

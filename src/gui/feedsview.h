@@ -66,6 +66,9 @@ class FeedsView : public QTreeView {
     FeedsModelCategory *isCurrentIndexCategory() const;
     FeedsModelFeed *isCurrentIndexFeed() const;
 
+    void saveExpandedStates();
+    void loadExpandedStates();
+
   public slots:
     // Feed updating.
     void updateAllFeeds();

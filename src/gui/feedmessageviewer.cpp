@@ -73,6 +73,8 @@ FeedMessageViewer::~FeedMessageViewer() {
 void FeedMessageViewer::saveSize() {
   Settings *settings = Settings::instance();
 
+  m_feedsView->saveExpandedStates();
+
   // Store offsets of splitters.
   settings->setValue(APP_CFG_GUI,
                      "splitter_feeds",
@@ -99,6 +101,8 @@ void FeedMessageViewer::saveSize() {
 void FeedMessageViewer::loadSize() {
   Settings *settings = Settings::instance();
   int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
+
+  m_feedsView->loadExpandedStates();
 
   // Restore offsets of splitters.
   m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, "splitter_feeds").toString().toLocal8Bit()));
