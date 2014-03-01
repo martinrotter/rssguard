@@ -5,6 +5,7 @@
 <li>[+] "Copy selection" context menu item for internal web browser.</li>
 <li>[#] Feed type saved to database when feed is added.</li>
 <li>[~] Default feeds.</li>
+<li>[#] Restarting of application on all platforms.</li>
 <li>[+] Initial French, Portuguese, German localizations. THANKS to theirs authors!!!</li>
 <li>[#] Bugs #15, #16, #13, #19, #20, #26, #25, #18, #21, #25.</li>
 </ul>
