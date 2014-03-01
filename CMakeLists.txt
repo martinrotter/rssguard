@@ -466,11 +466,11 @@ include_directories (
 # Setup compilation for Qt 5.
 if(${USE_QT_5})
   add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
-      ${APP_SOURCES}
-      ${APP_FORMS}
-      ${APP_RCC}
-      ${APP_QM}
-    )
+    ${APP_SOURCES}
+    ${APP_FORMS}
+    ${APP_RCC}
+    ${APP_QM}
+  )
 
   if(WIN32)
     target_link_libraries(${EXE_NAME} Qt5::WinMain)

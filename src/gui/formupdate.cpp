@@ -78,8 +78,10 @@ void FormUpdate::checkForUpdates() {
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
       // TODO: Display "update" button if
-      // URL of file for current platform
+      // URL of file for current platform (Windows or OS2)
       // is available.
+      // TODO: Tady po stisku update tlacitka se provede
+      // stazeni archivu do tempu.
 #else
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
