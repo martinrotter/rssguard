@@ -10,7 +10,12 @@
 [~] Default feeds.
 [#] Restarting of application on all platforms.
 [+] Initial French, Portuguese, German localizations. THANKS to theirs authors!!!
-[#] Bugs #15, #16, #13, #19, #20, #26, #25, #18, #21, #25.]]>
+[#] Bugs #15, #16, #13, #19, #20, #26, #25, #18, #21, #25.
+
+[+] added
+[#] fixed
+[~] changed
+[@] other action]]>
     </changes>
   </release>
 </releases>

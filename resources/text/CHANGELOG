@@ -1,6 +1,11 @@
 <body>
 [1.9.9.6]
 <ul>
+<li>[~] Message list optimizations.</li>
+</ul>
+
+[1.9.9.6]
+<ul>
 <li>[~] Localization handling.</li>
 <li>[+] "Copy selection" context menu item for internal web browser.</li>
 <li>[#] Feed type saved to database when feed is added.</li>

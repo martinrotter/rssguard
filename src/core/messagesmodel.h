@@ -29,7 +29,7 @@
 // Represents single message.
 class Message {
   public:
-    Message() {
+    explicit Message() {
       m_title = m_url = m_author = m_contents = "";
     }
 
@@ -58,7 +58,6 @@ class MessagesModel : public QSqlTableModel {
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-  public:
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
