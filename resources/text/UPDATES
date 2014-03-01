@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="1.9.9.5" type="maintenance">
-    <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.5-os2.7z</url>
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.5-win32.7z</url>
+  <release version="1.9.9.6" type="maintenance">
+    <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.6-os2.7z</url>
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.6-win32.7z</url>
     <changes>
-<![CDATA[[#] Mac OS X support missing.
-[#] Virtual desktop change hides main window.
-[#] Misleding external browser settings.
-[#] Non-functional external browser shortcuts.
-[#] Saving of webbrowser progressbar color.
-[~] Usability of some GUI elements.
-[@] Completely switched to new website.
-[+] Some missing shortcuts.
-
-[+] added
-[#] fixed
-[~] changed
-[@] other action]]>
+<![CDATA[[~] Localization handling.
+[+] "Copy selection" context menu item for internal web browser.
+[#] Feed type saved to database when feed is added.
+[~] Default feeds.
+[#] Restarting of application on all platforms.
+[+] Initial French, Portuguese, German localizations. THANKS to theirs authors!!!
+[#] Bugs #15, #16, #13, #19, #20, #26, #25, #18, #21, #25.]]>
     </changes>
   </release>
 </releases>
