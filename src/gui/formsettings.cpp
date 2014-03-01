@@ -34,6 +34,7 @@
 #include "gui/formmain.h"
 #include "gui/webbrowser.h"
 #include "gui/messagebox.h"
+#include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QProcess>
 #include <QNetworkProxy>
@@ -274,6 +275,7 @@ void FormSettings::promptForRestart() {
                          tr("Application couldn't be restarted. Please, restart it manually for changes to take effect."));
       }
       else {
+        QtSingleApplication::instance()->unlock();
         qApp->quit();
       }
     }

@@ -61,11 +61,10 @@ class QtLocalPeer;
 #  define QT_QTSINGLEAPPLICATION_EXPORT
 #endif
 
-class QT_QTSINGLEAPPLICATION_EXPORT QtSingleApplication : public QApplication
-{
+class QT_QTSINGLEAPPLICATION_EXPORT QtSingleApplication : public QApplication {
     Q_OBJECT
 
-public:
+  public:
     explicit QtSingleApplication(int &argc, char **argv, bool GUIenabled = true);
     explicit QtSingleApplication(const QString &id, int &argc, char **argv);
 #if QT_VERSION < 0x050000
@@ -80,23 +79,32 @@ public:
     bool isRunning();
     QString id() const;
 
+    // Unlocks locked file, thus allows second instance to start
+    // when application is restarted programatically.
+    // Returns true if unlocked.
+    bool unlock();
+
     void setActivationWindow(QWidget* aw, bool activateOnMessage = true);
     QWidget* activationWindow() const;
 
     // Obsolete:
-    void initialize(bool dummy = true)
-        { isRunning(); Q_UNUSED(dummy) }
+    void initialize(bool dummy = true) {
+      isRunning();
+      Q_UNUSED(dummy)
+    }
 
-public Q_SLOTS:
+    static QtSingleApplication *instance() {
+      return static_cast<QtSingleApplication*>(qApp);
+    }
+
+  public Q_SLOTS:
     bool sendMessage(const QString &message, int timeout = 5000);
     void activateWindow();
 
-
-Q_SIGNALS:
+  Q_SIGNALS:
     void messageReceived(const QString &message);
 
-
-private:
+  private:
     void sysInit(const QString &appId = QString());
     QtLocalPeer *peer;
     QWidget *actWin;

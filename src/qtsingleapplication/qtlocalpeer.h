@@ -47,21 +47,28 @@
 
 #include "qtlockedfile.h"
 
-class QtLocalPeer : public QObject
-{
+class QtLocalPeer : public QObject {
     Q_OBJECT
 
 public:
     explicit QtLocalPeer(QObject *parent = 0, const QString &appId = QString());
+
     bool isClient();
     bool sendMessage(const QString &message, int timeout);
-    QString applicationId() const
-        { return id; }
 
-Q_SIGNALS:
+    QString applicationId() const {
+      return id;
+    }
+
+    // Unlocks the file.
+    bool unlock() {
+      return lockFile.unlock();
+    }
+
+  Q_SIGNALS:
     void messageReceived(const QString &message);
 
-protected Q_SLOTS:
+  protected Q_SLOTS:
     void receiveConnection();
 
 protected:
