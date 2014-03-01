@@ -93,7 +93,7 @@ QStringList MessagesModel::textualFeeds() const {
 }
 
 int MessagesModel::messageId(int row_index) const {
-  return record(row_index).value(MSG_DB_ID_INDEX).toInt();
+  return data(row_index, MSG_DB_ID_INDEX).toInt();
 }
 
 Message MessagesModel::messageAt(int row_index) const {
@@ -140,24 +140,26 @@ QVariant MessagesModel::data(int row, int column, int role) const {
   return data(index(row, column), role);
 }
 
-QVariant MessagesModel::data(const QModelIndex &index, int role) const {
+QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   switch (role) {
     // Human readable data for viewing.
     case Qt::DisplayRole: {
-      int index_column = index.column();
+      int index_column = idx.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
-        return TextFactory::parseDateTime(QSqlTableModel::data(index,
+        // TODO: toLocalTime() may be unnecessary here
+        // because parseDateTime already returns localtime.
+        return TextFactory::parseDateTime(QSqlTableModel::data(idx,
                                                                role).value<qint64>()).toLocalTime().toString(Qt::DefaultLocaleShortDate);
       }
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
-        QString author_name = QSqlTableModel::data(index, role).toString();
+        QString author_name = QSqlTableModel::data(idx, role).toString();
 
         return author_name.isEmpty() ? "-" : author_name;
       }
       else if (index_column != MSG_DB_IMPORTANT_INDEX &&
                index_column != MSG_DB_READ_INDEX) {
-        return QSqlTableModel::data(index, role);
+        return QSqlTableModel::data(idx, role);
       }
       else {
         return QVariant();
@@ -165,23 +167,24 @@ QVariant MessagesModel::data(const QModelIndex &index, int role) const {
     }
 
     case Qt::EditRole:
-      return QSqlTableModel::data(index, role);
+      return QSqlTableModel::data(idx, role);
 
     case Qt::FontRole:
-      return record(index.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
+      return QSqlTableModel::data(index(idx.row(),
+                                        MSG_DB_READ_INDEX)).toInt() == 1 ?
             m_normalFont :
             m_boldFont;
 
     case Qt::DecorationRole: {
-      int index_column = index.column();
+      int index_column = idx.column();
 
       if (index_column == MSG_DB_READ_INDEX) {
-        return record(index.row()).value(MSG_DB_READ_INDEX).toInt() == 1 ?
+        return QSqlTableModel::data(idx).toInt() == 1 ?
               m_readIcon :
               m_unreadIcon;
       }
       else if (index_column == MSG_DB_IMPORTANT_INDEX) {
-        return record(index.row()).value(MSG_DB_IMPORTANT_INDEX).toInt() == 1 ?
+        return QSqlTableModel::data(idx).toInt() == 1 ?
               m_favoriteIcon :
               QVariant();
       }

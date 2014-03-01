@@ -72,7 +72,6 @@ class MessagesModel : public QSqlTableModel {
     // To disable persistent changes submissions.
     inline bool submitAll() {
       qFatal("Submitting changes via model is not allowed.");
-
       return false;
     }
 
