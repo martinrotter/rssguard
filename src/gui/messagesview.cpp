@@ -20,14 +20,13 @@
 #include "core/messagesproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/settings.h"
+#include "core/networkfactory.h"
 #include "gui/formmain.h"
 #include "gui/messagebox.h"
 
 #include <QKeyEvent>
 #include <QScrollBar>
 #include <QMenu>
-#include <QProcess>
-#include <QDesktopServices>
 
 
 MessagesView::MessagesView(QWidget *parent)
@@ -241,26 +240,10 @@ void MessagesView::loadFeeds(const QList<int> &feed_ids) {
 }
 
 void MessagesView::openSelectedSourceArticlesExternally() {
-  QString browser = Settings::instance()->value(APP_CFG_BROWSER,
-                                                "external_browser_executable").toString();
-  QString arguments = Settings::instance()->value(APP_CFG_BROWSER,
-                                                  "external_browser_arguments",
-                                                  "%1").toString();
-
-  if (browser.isEmpty() || arguments.isEmpty()) {
-    MessageBox::show(this,
-                     QMessageBox::Critical,
-                     tr("External browser not set"),
-                     tr("External browser is not set, head to application settings and set it up to use this feature."));
-
-    return;
-  }
-
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
-    if (!QProcess::startDetached(browser,
-                                 QStringList() << arguments.arg(link))) {
+    if (!NetworkFactory::openUrlInExternalBrowser(link)) {
       MessageBox::show(this,
                        QMessageBox::Critical,
                        tr("Problem with starting external web browser"),

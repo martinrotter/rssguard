@@ -32,6 +32,9 @@ class NetworkFactory {
     explicit NetworkFactory();
 
   public:
+    static bool openUrlInExternalBrowser(const QString &url);
+
+    // Returns human readable text for given network error.
     static QString networkErrorText(QNetworkReply::NetworkError error_code);
 
     // Performs SYNCHRONOUS download if favicon for the site,

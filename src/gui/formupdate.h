@@ -19,8 +19,11 @@
 #define FORMUPDATE_H
 
 #include <QDialog>
+#include <QPushButton>
 
 #include "ui_formupdate.h"
+
+#include "core/systemfactory.h"
 
 
 namespace Ui {
@@ -35,12 +38,19 @@ class FormUpdate : public QDialog {
     explicit FormUpdate(QWidget *parent = 0);
     virtual ~FormUpdate();
 
+    // Returns true if current update provides
+    // installation file for current platform.
+    bool isUpdateForThisSystem();
+
   protected slots:
     // Check for updates and interprets the results.
     void checkForUpdates();
+    void startUpdate();
 
   private:
     Ui::FormUpdate *m_ui;
+    UpdateInfo m_updateInfo;
+    QPushButton *m_btnUpdate;
 };
 
 #endif // FORMUPDATE_H

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de">
+<TS version="2.0" language="de">
 <context>
     <name>CornerButton</name>
     <message>
@@ -80,16 +80,18 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Titel der Feeds/Kategorien.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Anzahl ungelesener/aller Nachrichten.</translation>
     </message>
     <message>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Wurzel</translation>
     </message>
 </context>
 <context>
@@ -177,7 +179,9 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.</extracomment>
+        <extracomment>Warning messagebox title when selected item cannot be edited.
+----------
+Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Kann das Item nicht editieren</translation>
     </message>
     <message>
@@ -427,7 +431,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Switch &amp;fullscreen/normal mode</source>
-        <translation type="unfinished">Schalte zwischen &amp;Vollbild- und Normalmodus um.</translation>
+        <translation>Schalte zwischen &amp;Vollbild- und Normalmodus um.</translation>
     </message>
     <message>
         <source>Add new standard feed.</source>
@@ -510,31 +514,11 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add new feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;About application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;all feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -558,11 +542,35 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark all &amp;feeds as read</source>
+        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
+        <source>Deletes all messages from all feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all &amp;feeds as read</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -571,10 +579,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Clean all feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Deletes all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -603,7 +607,9 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Sprache</translation>
     </message>
     <message>
@@ -665,10 +671,12 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -747,11 +755,17 @@ Auto-update status: %5</source>
 &lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
 &lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Mausgesten mit mittlerer Maustaste benutzen. Mögliche Gesten sind:
+&lt;ul&gt;
+&lt;li&gt;vorherige Webseite (ziehe Maus nach links)&lt;/li&gt;
+&lt;li&gt;nächste Webseite (ziehe Maus nach rechts)&lt;/li&gt;
+&lt;li&gt;aktuelle Webseite neu laden (ziehe Maus nach oben)&lt;/li&gt;
+&lt;li&gt;neuen Webbrowserreiter öffnen (ziehe Maus nach unten)&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Reihe neue Reiter (mit Hyperlink) nach dem aktiven Reiter ein</translation>
     </message>
     <message>
         <source>no icon theme</source>
@@ -764,6 +778,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Name</translation>
     </message>
     <message>
@@ -784,23 +799,23 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Hide tab bar if just one tab is visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Verstecke die Reiterleiste falls nur ein Reiter sichtbar ist</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein paar kritische Einstellungen wurden geändert und werden nach dem Programmneustart angewendet.</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kritische Einstellungen wurden geändert</translation>
     </message>
     <message>
         <source>Problem with application restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem mit Programmneustart</translation>
     </message>
     <message>
         <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Applikation konnte nicht neu gestartet werden. Bitte starten Sie sie neu damit die Änderungen angewendet werden können.</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -808,7 +823,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein paar kritische Einstellungen sind nicht gesetzt. Sie müssen diese Einstellungen korrigieren damit neue gesetzt werden können.</translation>
     </message>
     <message>
         <source>Feeds</source>
@@ -820,7 +835,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausführbare Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>...</source>
@@ -828,20 +843,20 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Executable parameters</source>
-        <translation type="unfinished"></translation>
+        <translation>Parameter der ausführbaren Datei</translation>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) der Platzhalter der URL der selektierten Nachricht ist.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie die ausführbare Datei des Webbrowsers</translation>
     </message>
     <message>
         <source>Executables (*.*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ausführbare Dateien (*.*)</translation>
     </message>
     <message>
         <source>Opera 12 or older</source>
@@ -849,7 +864,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausführbare Datei des Webbrowsern</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
@@ -857,37 +872,39 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>some keyboard shortcuts are not unique</source>
-        <translation type="unfinished"></translation>
+        <translation>einige Tastaturkombinationen sind nicht eindeutig</translation>
     </message>
     <message>
         <source>List of errors:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste der Fehler:
+%1.</translation>
     </message>
     <message>
         <source>List of changes:
 %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste der Änderungen:
+%1.</translation>
     </message>
     <message>
         <source>language changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprache geändert</translation>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Thema geändert</translation>
     </message>
     <message>
         <source>skin changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Skin geändert</translation>
     </message>
     <message>
         <source>Use sample arguments for</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwenden Sie Beispielargumente für</translation>
     </message>
     <message>
         <source>Use in-memory database as the working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwenden Sie die In-Speicherdatenbank als aktuelle Datenbank</translation>
     </message>
     <message>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
@@ -905,23 +922,23 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation type="unfinished"></translation>
+        <translation>In-Speicherdatenbank umgeschaltet</translation>
     </message>
     <message>
         <source>Internal web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Interner Webbrowser</translation>
     </message>
     <message>
         <source>External web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Externer Webbrowser</translation>
     </message>
     <message>
         <source>Remove all read messages from all standard feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösche alle gelesenen Nachrichten aus allen Standard-Feeds beim Beenden der Applikation</translation>
     </message>
     <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Warnung: Beachten Sie, dass das Umschalten auf einen anderen Datenspeicherung ihre bestehenden Daten NICHT auf den neuen selektierten kopieren wird.</translation>
     </message>
     <message>
         <source>Database driver</source>
@@ -933,19 +950,19 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Testkonfiguration</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Beachten Sie, dass die Geschwindigkeit und Latenz des verwendeten MySQL-Servers SEHR vom verwendeten Verbindungsmedium abhängt und die Applikation somit beeinflusst. Langsame Verbindungen führen zu einer schlechten Performanz der Feeds oder Nachrichten.</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
-        <translation type="unfinished"></translation>
+        <translation>Doppelklick der rechten Maustaste</translation>
     </message>
     <message>
         <source>Auto-update all feeds every</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Update alle Feeds alle</translation>
     </message>
     <message>
         <source> minutes</source>
@@ -953,11 +970,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Feed connection timeout</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbindungs-Timeout des Feed</translation>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Verbindungs-Timeout ist das Intervall welches für das Herunterladen neuer Nachrichten reserviert ist. Falls dieses Intervall abläuft wird das Herunterladen abgebrochen.</translation>
     </message>
     <message>
         <source> ms</source>
@@ -965,111 +982,111 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Update all feed on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Update alle Feeds bei Applikationsstart</translation>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenspeicher</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished"></translation>
+        <translation>SQLite (eingebaute Datenbank)</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished"></translation>
+        <translation>MySQL/MariaDB (zugeordnete Datenbank)</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname Ihres MySQL Servers</translation>
     </message>
     <message>
         <source>Username to login with</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername zum einloggen</translation>
     </message>
     <message>
         <source>Password for your username</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort für Ihren Benutzernamen</translation>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenspeicher-Backend wurde geändert</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname ist leer.</translation>
     </message>
     <message>
         <source>Hostname looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hostname sieht okay aus.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername sieht okay aus.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Password looks ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort sieht okay aus.</translation>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolbar-Knopfstil</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Verstecke das Hauptfenster wenn es minimisiert ist</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bisher noch kein Verbindungstest ausgelöst.</translation>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Beachte, dass diese Einstellungen nur auf neue Verbindungen angewendet werden.</translation>
     </message>
     <message>
         <source>Select browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle Browser aus</translation>
     </message>
     <message>
         <source>No proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Proxy</translation>
     </message>
     <message>
         <source>System proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>System Proxy</translation>
     </message>
     <message>
         <source>Icon only</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Icon</translation>
     </message>
     <message>
         <source>Text only</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Text</translation>
     </message>
     <message>
         <source>Text beside icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text neben Icon</translation>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Text unter Icon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
-        <translation type="unfinished"></translation>
+        <translation>Folge Betriebssystemstil</translation>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Behalte die Nachrichten in der Mitte des Nachrichten-Listenfelds</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
@@ -1084,7 +1101,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"></translation>
+        <translation>Stammkategorie</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1100,11 +1117,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektieren Sie das Stamm-Item für Ihre Kategorie</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektieren Sie das Icon für Ihre Kategorie</translation>
     </message>
     <message>
         <source>Add new standard category</source>
@@ -1112,35 +1129,35 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Edit existing standard category</source>
-        <translation type="unfinished"></translation>
+        <translation>Editiere die Standardkategorie</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategoriename ist okay.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategoriename ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Beschreibung ist okay.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektiere die Icon-Datei für die Kategorie</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektiere Icon</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -1149,74 +1166,74 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Schauen Sie in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorietitel</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setzen Sie den Titel für die Kategorie.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategoriebeschreibung</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setzen Sie die Beschreibung für die Kategorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Selektion</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lade Icon aus Datei...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon nicht verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard-Icon verwenden</translation>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie kann nicht hinzugefügt werden</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie kann nicht editiert werden</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie wurde nicht editiert aufgrund eines Fehler.</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"></translation>
+        <translation>Stammkategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektieren Sie das Stamm-Item für Ihren Feed.</translation>
     </message>
     <message>
         <source>Type</source>
@@ -1224,7 +1241,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektiere den Typ des Standard-Feeds.</translation>
     </message>
     <message>
         <source>Title</source>
@@ -1240,11 +1257,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkodierung</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektiere die Enkodierung des Standard-Feeds. Falls Sie unsicher sind wählen einfach die &quot;UTF-8&quot; Enkodierung.</translation>
     </message>
     <message>
         <source>Icon</source>
@@ -1252,59 +1269,59 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektieren Sie das Icon für Ihren Feed.</translation>
     </message>
     <message>
         <source>Add new standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Füge einen neuen Standard-Feed hinzu.</translation>
     </message>
     <message>
         <source>Edit existing standard feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Editiere die Standardkategorie</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed-Name ist okay.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed-Name ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Beschreibung ist okay.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed-Titel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setzen Sie den Titel für Ihren Feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed-Beschreibung</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setzen Sie die Beschreibung für Ihren Feed.</translation>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setze die URL für Ihren Feed.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmodelle werden unterstützt.</translation>
     </message>
     <message>
         <source>Requires authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Benötigt Authentifizierung</translation>
     </message>
     <message>
         <source>Username</source>
@@ -1316,43 +1333,43 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>The url is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die URL ist okay.</translation>
     </message>
     <message>
         <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die URL entspricht nicht dem Standardmuster. Beginnt Ihre URL mit &quot;http://&quot; oder &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The url is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die URL ist leer.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername ist okay oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort ist okay oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektiere die Icon-Datei für den Feed.</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Selektiere Icon</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -1361,15 +1378,15 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Schauen Sie in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -1377,27 +1394,27 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setzen Sie den Benutzernamen um zum Feed zu gelangen.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setzen Sie das Passwort um zum Feed zu gelangen.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon-Selektion</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lade Icon aus Datei...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon nicht verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard-Icon verwenden</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -1413,86 +1430,86 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed kann nicht editiert werden</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed wurde nicht editiert aufgrund eines Fehler.</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished"></translation>
+        <translation>Jetzt abrufen</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadaten abrufen</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bisher keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Update benutzt globales Intervall</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Update alle</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Auto-Update ausführen</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Metadaten wurden erfolgreich abgerufen.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed- und Icon-Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultat: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed- oder Icon-Metadaten nicht abgerufen.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Metadaten abgerufen.</translation>
     </message>
 </context>
 <context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Version</translation>
     </message>
     <message>
         <source>Available release</source>
-        <translation type="unfinished"></translation>
+        <translation>Verfügbare Version</translation>
     </message>
     <message>
         <source>Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>Änderungen</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <source>unknown</source>
@@ -1502,33 +1519,36 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>List with updates was not
 downloaded successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>List mit Updates wurde nicht
+erfolgreich heruntergeladen.</translation>
     </message>
     <message>
         <source>New release available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Version verfügbar.</translation>
     </message>
     <message>
         <source>This is new version which can be
 downloaded and installed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dies ist die neue Version welche
+heruntergeladen und installiert werden kann.</translation>
     </message>
     <message>
         <source>This is new version. Upgrade to it manually or via your system package manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dies ist die neue Version. Updaten Sie manuell oder über den System-Package-Manager.</translation>
     </message>
     <message>
         <source>Error: &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>No new release available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine neue Version verfügbar.</translation>
     </message>
     <message>
         <source>This release is not newer than
 currently installed one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Version ist nicht neuer als
+die aktuell installierte.</translation>
     </message>
     <message>
         <source>Check for updates</source>
@@ -1554,101 +1574,111 @@ currently installed one.</source>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Webseitenadresse kommt hierhin</translation>
     </message>
 </context>
 <context>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
-        <translation type="unfinished"></translation>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
+        <translation>Lesen</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Gelöscht</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Wichtig</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Author</translation>
     </message>
     <message>
         <source>Created on</source>
-        <translation type="unfinished"></translation>
+        <extracomment>Tooltip for creation date of message.</extracomment>
+        <translation>Erstellt am</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhalt</translation>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID der Nachricht.</translation>
     </message>
     <message>
         <source>Is message read?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wurde die Nachricht gelesen?</translation>
     </message>
     <message>
         <source>Is message deleted?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wurde die Nachricht gelöscht?</translation>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ist die Nachricht wichtig?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"></translation>
+        <translation>ID des Feeds zu welchem die Nachricht gehört.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel der Nachricht.</translation>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>URL der Nachricht.</translation>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Author der Nachricht.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellungsdatum der Nachricht.</translation>
     </message>
     <message>
         <source>Contents of the message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inhalt der Nachricht.</translation>
     </message>
 </context>
 <context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextmenü der Nachricht</translation>
     </message>
     <message>
         <source>External browser not set</source>
-        <translation type="unfinished"></translation>
+        <translation>Externer Browser wurde nicht gesetzt</translation>
     </message>
     <message>
         <source>External browser is not set, head to application settings and set it up to use this feature.</source>
@@ -1656,19 +1686,19 @@ currently installed one.</source>
     </message>
     <message>
         <source>Meesage without URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachricht ohne URL</translation>
     </message>
     <message>
         <source>Message &apos;%s&apos; does not contain URL.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachricht &quot;%&quot; enthält keine URL.</translation>
     </message>
     <message>
         <source>Problem with starting external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem mit Start des externen Webbrowsers</translation>
     </message>
     <message>
         <source>External web browser could not be started.</source>
-        <translation type="unfinished"></translation>
+        <translation>Externer Webbrowser konnte nicht gestartet werden.</translation>
     </message>
 </context>
 <context>
@@ -1759,35 +1789,35 @@ currently installed one.</source>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.02</translation>
+        <translation>0.03</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation>Patrick Scheller</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation>patlecat@gmail.com</translation>
     </message>
 </context>
 <context>
     <name>ShortcutCatcher</name>
     <message>
         <source>Reset shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kürzel zurücksetzen.</translation>
     </message>
     <message>
         <source>Set shortcut.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kürzel setzen.</translation>
     </message>
 </context>
 <context>
     <name>StatusBar</name>
     <message>
         <source>Fullscreen mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Vollbildmodus</translation>
     </message>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
@@ -1798,11 +1828,11 @@ currently installed one.</source>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schliesse diesen Reiter.</translation>
     </message>
     <message>
         <source>Close tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Schliesse Reiter</translation>
     </message>
 </context>
 <context>
@@ -1813,7 +1843,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Browse your feeds and messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Blätteren Sie Ihre Feeds und Nachrichten</translation>
     </message>
     <message>
         <source>Web browser</source>
@@ -1825,14 +1855,14 @@ currently installed one.</source>
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Schliessen Sie zuerst alle modalen Fenster.</translation>
     </message>
 </context>
 <context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigations-Panel</translation>
     </message>
     <message>
         <source>Back</source>
@@ -1844,7 +1874,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Reload</source>
-        <translation type="unfinished"></translation>
+        <translation>Neu laden</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -1861,15 +1891,15 @@ currently installed one.</source>
     </message>
     <message>
         <source>Decrease zoom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom verkleinern.</translation>
     </message>
     <message>
         <source>Reset zoom to default.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom auf Standard zurücksetzen.</translation>
     </message>
     <message>
         <source>Increase zoom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom vergrössern.</translation>
     </message>
     <message>
         <source>Written by </source>
@@ -1893,42 +1923,42 @@ currently installed one.</source>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Webseite neu laden.</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppe das laden der Webseite.</translation>
     </message>
 </context>
 <context>
     <name>WebView</name>
     <message>
         <source>Reload web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Webseite neu laden</translation>
     </message>
     <message>
         <source>Copy link url</source>
-        <translation type="unfinished"></translation>
+        <translation>URL-Link kopieren</translation>
     </message>
     <message>
         <source>Copy image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild kopieren</translation>
     </message>
     <message>
         <source>Copy image url</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild-URL kopieren</translation>
     </message>
     <message>
         <source>Open link in new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Link in neuem Reiter öffnen</translation>
     </message>
     <message>
         <source>Follow link</source>
-        <translation type="unfinished"></translation>
+        <translation>Link folgen</translation>
     </message>
     <message>
         <source>Open image in new tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild in neuem Reiter öffnen</translation>
     </message>
     <message>
         <source>Page not found</source>
@@ -1960,11 +1990,11 @@ currently installed one.</source>
     </message>
     <message>
         <source>Reload current web page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lade aktuelle Webseite neu.</translation>
     </message>
     <message>
         <source>Copy selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiere Selektion</translation>
     </message>
     <message>
         <source>Copies current selection into the clipboard.</source>

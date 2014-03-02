@@ -17,15 +17,36 @@
 
 #include "core/networkfactory.h"
 
+#include "core/defs.h"
 #include "core/silentnetworkaccessmanager.h"
 #include "core/feedsmodelstandardfeed.h"
+#include "core/settings.h"
 
 #include <QEventLoop>
 #include <QTimer>
 #include <QTextDocument>
+#include <QProcess>
+#include <QDesktopServices>
 
 
 NetworkFactory::NetworkFactory() {
+}
+
+bool NetworkFactory::openUrlInExternalBrowser(const QString &url) {
+  if (Settings::instance()->value(APP_CFG_BROWSER,
+                                  "custom_external_browser",
+                                  false).toBool()) {
+    QString browser = Settings::instance()->value(APP_CFG_BROWSER,
+                                                  "external_browser_executable").toString();
+    QString arguments = Settings::instance()->value(APP_CFG_BROWSER,
+                                                    "external_browser_arguments",
+                                                    "%1").toString();
+
+    return QProcess::startDetached(browser, QStringList() << arguments.arg(url));
+  }
+  else {
+    return QDesktopServices::openUrl(url);
+  }
 }
 
 QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {

@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -633,7 +633,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabBrowserProxy">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabInternalBrowser">
           <attribute name="title">
@@ -712,73 +712,91 @@ Authors of this application are NOT responsible for lost data.</string>
           <attribute name="title">
            <string>External web browser</string>
           </attribute>
-          <layout class="QFormLayout" name="formLayout_12">
-           <item row="0" column="0">
-            <widget class="QLabel" name="m_lblExternalBrowserExecutable">
-             <property name="text">
-              <string>Web browser executable</string>
+          <layout class="QFormLayout" name="formLayout_17">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="m_grpCustomExternalBrowser">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <layout class="QHBoxLayout" name="horizontalLayout_10">
-             <item>
-              <widget class="QLineEdit" name="m_txtExternalBrowserExecutable">
-               <property name="placeholderText">
-                <string>Executable file of web browser</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="m_btnExternalBrowserExecutable">
-               <property name="text">
-                <string>...</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="m_lblExternalBrowserArguments">
-             <property name="text">
-              <string>Executable parameters</string>
+             <property name="title">
+              <string>Custom external web browser</string>
              </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
-             <property name="placeholderText">
-              <string>Parameters to executable</string>
+             <property name="flat">
+              <bool>false</bool>
              </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="m_lblExternalBrowserPreset">
-             <property name="text">
-              <string>Use sample arguments for</string>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
-             <property name="sizeAdjustPolicy">
-              <enum>QComboBox::AdjustToContents</enum>
-             </property>
-             <item>
-              <property name="text">
-               <string>Select browser</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="2">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
+             <layout class="QFormLayout" name="formLayout_12">
+              <item row="0" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserExecutable">
+                <property name="text">
+                 <string>Web browser executable</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                <item>
+                 <widget class="QLineEdit" name="m_txtExternalBrowserExecutable">
+                  <property name="placeholderText">
+                   <string>Executable file of web browser</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="m_btnExternalBrowserExecutable">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserArguments">
+                <property name="text">
+                 <string>Executable parameters</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="m_txtExternalBrowserArguments">
+                <property name="placeholderText">
+                 <string>Parameters to executable</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="m_lblExternalBrowserPreset">
+                <property name="text">
+                 <string>Use sample arguments for</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="m_cmbExternalBrowserPreset">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Select browser</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="0" colspan="2">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>

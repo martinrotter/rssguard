@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<TS version="2.0" language="nl_NL">
 <context>
     <name>CornerButton</name>
     <message>
         <source>Open new web browser tab.</source>
         <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Open een nieuw webbrowser tabblad</translation>
     </message>
 </context>
 <context>
@@ -80,10 +80,12 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -184,7 +186,9 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.</extracomment>
+        <extracomment>Warning messagebox title when selected item cannot be edited.
+----------
+Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Kan item niet bewerken</translation>
     </message>
     <message>
@@ -222,7 +226,7 @@ Status automatisch bijwerken: %5</translation>
     <message>
         <source>%1 is performing scheduled update of some feeds.</source>
         <extracomment>RSS Guard is performing updates right now.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 is geplande updates van sommige feeds aan het uitvoeren.</translation>
     </message>
 </context>
 <context>
@@ -286,12 +290,12 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;U kunt de broncode voor %5 op de website..&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Over %1</translation>
     </message>
 </context>
 <context>
@@ -510,79 +514,79 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde berichten als &amp;gelezen</translation>
     </message>
     <message>
         <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde berichten als &amp;ongelezen</translation>
     </message>
     <message>
         <source>&amp;About application</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Over RSSguard</translation>
     </message>
     <message>
         <source>Displays extra info about this application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;all feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon extra informatie over RSSguard.</translation>
     </message>
     <message>
         <source>Mark &amp;selected feeds as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer ge&amp;selecteerde feeds als gelezen</translation>
     </message>
     <message>
         <source>Mark selected feeds as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer geselecteerde bericht als ongelezen</translation>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwij&amp;der geselecteerde berichten.</translation>
     </message>
     <message>
         <source>Clean selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Wis geselecteerde feeds</translation>
     </message>
     <message>
         <source>Deletes all messages from selected feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark all &amp;feeds as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van geselecteerde feeds.</translation>
     </message>
     <message>
         <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View selected feeds in newspaper mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clean all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten van alle feeds als gelezen. Dit is niet van toepassing op berichten filters in account.</translation>
     </message>
     <message>
         <source>Deletes all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van alle feeds.</translation>
+    </message>
+    <message>
+        <source>Add new feed/category</source>
+        <translation>Voeg nieuwe feeds/categorieën toe</translation>
+    </message>
+    <message>
+        <source>Update &amp;all feeds</source>
+        <translation>&amp;Alle feeds bijwerken</translation>
+    </message>
+    <message>
+        <source>Update &amp;selected feeds</source>
+        <translation>Update ge&amp;selecteerde feeds</translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected feed/category</source>
+        <translation>B&amp;ewerk geselecteerde feed/categorie</translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected feed/category</source>
+        <translation>Verwij&amp;der geselecteerde feed/categorie</translation>
+    </message>
+    <message>
+        <source>Mark all &amp;feeds as read</source>
+        <translation>Markeer alle &amp;feeds als gelezen</translation>
+    </message>
+    <message>
+        <source>View selected feeds in newspaper mode</source>
+        <translation>Bekijk de geselecteerde items in de krantweergave modus</translation>
+    </message>
+    <message>
+        <source>Clean all feeds</source>
+        <translation>Alle feeds opschonen</translation>
     </message>
 </context>
 <context>
@@ -610,7 +614,9 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -672,10 +678,12 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -777,6 +785,7 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -1098,11 +1107,11 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>U heeft nog geen verbindings test uitgevoerd.</translation>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad %1 als systeem opstart</translation>
     </message>
 </context>
 <context>
@@ -1589,42 +1598,52 @@ de geïnstalleerde.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>

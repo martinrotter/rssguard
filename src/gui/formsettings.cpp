@@ -229,6 +229,15 @@ bool FormSettings::doSaveCheck() {
     resulting_information.append(tr("some keyboard shortcuts are not unique"));
   }
 
+  // User selected custom external browser but did not set its
+  // properties.
+  if (m_ui->m_grpCustomExternalBrowser->isChecked() &&
+      (m_ui->m_txtExternalBrowserExecutable->text().simplified().isEmpty() ||
+       !m_ui->m_txtExternalBrowserArguments->text().simplified().contains("%1"))) {
+    everything_ok = false;
+    resulting_information.append(tr("custom external browser is not set correctly"));
+  }
+
   if (!everything_ok) {
     resulting_information.replaceInStrings(QRegExp("^"),
                                            QString::fromUtf8(" • "));
@@ -345,12 +354,18 @@ void FormSettings::loadBrowser() {
   m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_BROWSER,
                                                                "external_browser_arguments",
                                                                "%1").toString());
+  m_ui->m_grpCustomExternalBrowser->setChecked(settings->value(APP_CFG_BROWSER,
+                                                               "custom_external_browser",
+                                                               false).toBool());
 }
 
 void FormSettings::saveBrowser() {
   Settings *settings = Settings::instance();
 
   // Save settings of GUI of web browser.
+  settings->setValue(APP_CFG_BROWSER,
+                     "custom_external_browser",
+                     m_ui->m_grpCustomExternalBrowser->isChecked());
   settings->setValue(APP_CFG_BROWSER,
                      "browser_progress_color",
                      m_initialSettings.m_webBrowserProgress.name());

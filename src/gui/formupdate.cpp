@@ -21,12 +21,11 @@
 #include "core/systemfactory.h"
 #include "core/networkfactory.h"
 #include "gui/iconthemefactory.h"
-
-#if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
-#endif
+#include "gui/systemtrayicon.h"
 
 #include <QNetworkReply>
+#include <QDesktopServices>
 
 
 FormUpdate::FormUpdate(QWidget *parent)
@@ -36,6 +35,12 @@ FormUpdate::FormUpdate(QWidget *parent)
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
   setWindowIcon(IconThemeFactory::instance()->fromTheme("application-about"));
+
+  m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
+  m_btnUpdate->setToolTip(tr("Download new installation files."));
+  m_btnUpdate->hide();
+
+  connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
@@ -49,6 +54,10 @@ FormUpdate::~FormUpdate() {
   delete m_ui;
 }
 
+bool FormUpdate::isUpdateForThisSystem() {
+  return m_updateInfo.m_urls.keys().contains(OS_ID);
+}
+
 // TODO: tady v update nacist do m_lblSupportedPlatforms
 // seznam platform ktery danej release podporuje oddelenej carkama
 // treba "Windows, OS2" atp atp.
@@ -58,6 +67,8 @@ FormUpdate::~FormUpdate() {
 
 void FormUpdate::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> update = SystemFactory::instance()->checkForUpdates();
+
+  m_updateInfo = update.first;
 
   if (update.second != QNetworkReply::NoError) {
     //: Uknown release.
@@ -73,7 +84,6 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
     if (update.first.m_availableVersion > APP_VERSION) {
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -82,16 +92,31 @@ void FormUpdate::checkForUpdates() {
       // is available.
       // TODO: Tady po stisku update tlacitka se provede
       // stazeni archivu do tempu.
-#else
-      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
-                                   tr("New release available."),
-                                   tr("This is new version. Upgrade to it manually or via your system package manager."));
-#endif
+      m_btnUpdate->setVisible(isUpdateForThisSystem());
     }
     else {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
                                    tr("No new release available."),
                                    tr("This release is not newer than\ncurrently installed one."));
+      m_btnUpdate->show();
+    }
+  }
+}
+
+void FormUpdate::startUpdate() {
+  if (!NetworkFactory::openUrlInExternalBrowser(m_updateInfo.m_urls.value(OS_ID).m_fileUrl)) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
+                                              tr("Cannot navigate to installation file. Check new installation downloads "
+                                                 "manually on project website."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot update application"),
+                       tr("Cannot navigate to installation file. Check new installation downloads "
+                          "manually on project website."));
     }
   }
 }

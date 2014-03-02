@@ -2,6 +2,8 @@
 [1.9.9.6]
 <ul>
 <li>[~] Message list optimizations.</li>
+<li>[+] Feed list categories exapand status is now persistent.</li>
+<li>[+] System-wide external web browser can now be used.</li>
 </ul>
 
 [1.9.9.6]
