@@ -1,6 +1,7 @@
 <body>
 [1.9.9.7]
 <ul>
+<li>[#] Custom counts of messages in feed list (issue #14).</li>
 <li>[~] Message list optimizations.</li>
 <li>[+] Feed list categories exapand status is now persistent.</li>
 <li>[+] System-wide external web browser can now be used.</li>

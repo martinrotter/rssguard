@@ -26,6 +26,7 @@
 #include "core/dynamicshortcuts.h"
 #include "core/webbrowsernetworkaccessmanager.h"
 #include "core/silentnetworkaccessmanager.h"
+#include "core/feedsmodel.h"
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
 #include "gui/systemtrayicon.h"
@@ -197,6 +198,8 @@ void FormSettings::loadFeedsMessages() {
   m_ui->m_spinAutoUpdateInterval->setValue(Settings::instance()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt());
   m_ui->m_spinFeedUpdateTimeout->setValue(Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt());
   m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(Settings::instance()->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool());
+  m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
+  m_ui->m_cmbCountsFeedList->setCurrentText(Settings::instance()->value(APP_CFG_FEEDS, "count_format", "(%unread)").toString());
 }
 
 void FormSettings::saveFeedsMessages() {
@@ -206,8 +209,10 @@ void FormSettings::saveFeedsMessages() {
   Settings::instance()->setValue(APP_CFG_FEEDS, "auto_update_interval", m_ui->m_spinAutoUpdateInterval->value());
   Settings::instance()->setValue(APP_CFG_FEEDS, "feed_update_timeout", m_ui->m_spinFeedUpdateTimeout->value());
   Settings::instance()->setValue(APP_CFG_FEEDS, "feeds_update_on_startup", m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
+  Settings::instance()->setValue(APP_CFG_FEEDS, "count_format", m_ui->m_cmbCountsFeedList->currentText());
 
   FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
+  FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
 }
 
 void FormSettings::displayProxyPassword(int state) {
