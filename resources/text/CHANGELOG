@@ -3,7 +3,7 @@
 <ul>
 <li>[#] Custom counts of messages in feed list (issue #14).</li>
 <li>[~] Message list optimizations.</li>
-<li>[+] Feed list categories exapand status is now persistent.</li>
+<li>[+] Feed list categories expand status is now persistent.</li>
 <li>[+] System-wide external web browser can now be used.</li>
 </ul>
 
