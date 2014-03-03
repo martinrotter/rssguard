@@ -286,8 +286,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>564</width>
-            <height>363</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -364,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>558</width>
-                <height>337</height>
+                <width>209</width>
+                <height>245</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1053,9 +1053,6 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
              <property name="editable">
               <bool>true</bool>
-             </property>
-             <property name="currentText">
-              <string notr="true"/>
              </property>
             </widget>
            </item>

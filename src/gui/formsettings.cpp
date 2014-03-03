@@ -199,7 +199,7 @@ void FormSettings::loadFeedsMessages() {
   m_ui->m_spinFeedUpdateTimeout->setValue(Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt());
   m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(Settings::instance()->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
-  m_ui->m_cmbCountsFeedList->setCurrentText(Settings::instance()->value(APP_CFG_FEEDS, "count_format", "(%unread)").toString());
+  m_ui->m_cmbCountsFeedList->setEditText(Settings::instance()->value(APP_CFG_FEEDS, "count_format", "(%unread)").toString());
 }
 
 void FormSettings::saveFeedsMessages() {
