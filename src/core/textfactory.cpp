@@ -63,6 +63,9 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
     dt = locale.toDateTime(date.left(pattern.size()), pattern);
 
     if (dt.isValid()) {
+      // Make sure that this date/time is considered UTC.
+      dt.setTimeSpec(Qt::UTC);
+
       if (time_zone_offset.isValid()) {
         // Time zone offset was detected.
         if (positive_time_zone_offset) {
