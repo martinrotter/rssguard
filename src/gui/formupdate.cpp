@@ -38,7 +38,6 @@ FormUpdate::FormUpdate(QWidget *parent)
 
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));
-  m_btnUpdate->hide();
 
   connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
 
@@ -71,13 +70,15 @@ void FormUpdate::checkForUpdates() {
   m_updateInfo = update.first;
 
   if (update.second != QNetworkReply::NoError) {
-    //: Uknown release.
+    //: Unknown release.
     m_ui->m_lblAvailableRelease->setText(tr("unknown"));
     m_ui->m_txtChanges->clear();
     m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error,
                                  tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
                                  tr("List with updates was "
                                     "not\ndownloaded successfully."));
+    m_btnUpdate->setEnabled(false);
+    m_btnUpdate->setToolTip(tr("Checking for updates failed."));
   }
   else {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
@@ -92,19 +93,33 @@ void FormUpdate::checkForUpdates() {
       // is available.
       // TODO: Tady po stisku update tlacitka se provede
       // stazeni archivu do tempu.
-      m_btnUpdate->setVisible(isUpdateForThisSystem());
+      m_btnUpdate->setEnabled(true);
+      m_btnUpdate->setToolTip(isUpdateForThisSystem() ?
+                                tr("Download installation file for your OS.") :
+                                tr("Installation file is not available directly.\n"
+                                   "Go to application website to obtain it manually."));
     }
     else {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
                                    tr("No new release available."),
                                    tr("This release is not newer than\ncurrently installed one."));
-      m_btnUpdate->show();
+      m_btnUpdate->setEnabled(true);
+      m_btnUpdate->setToolTip(tr("No new update available."));
     }
   }
 }
 
 void FormUpdate::startUpdate() {
-  if (!NetworkFactory::openUrlInExternalBrowser(m_updateInfo.m_urls.value(OS_ID).m_fileUrl)) {
+  QString url_file;
+
+  if (isUpdateForThisSystem()) {
+    url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;
+  }
+  else {
+    url_file = APP_URL;
+  }
+
+  if (!NetworkFactory::openUrlInExternalBrowser(url_file)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
                                               tr("Cannot navigate to installation file. Check new installation downloads "

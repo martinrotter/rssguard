@@ -43,6 +43,10 @@ class UpdateInfo {
       Evolution
     };
 
+    explicit UpdateInfo() {
+      m_availableVersion = m_changes = "";
+    }
+
     QString m_availableVersion;
     QString m_changes;
     UpdateType m_type;
