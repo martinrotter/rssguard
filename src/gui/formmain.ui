@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -139,28 +148,6 @@
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
   </widget>
-  <action name="m_actionImport">
-   <property name="text">
-    <string>&amp;Import</string>
-   </property>
-   <property name="toolTip">
-    <string>Import stuff.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+I</string>
-   </property>
-  </action>
-  <action name="m_actionExport">
-   <property name="text">
-    <string>E&amp;xport</string>
-   </property>
-   <property name="toolTip">
-    <string>Export stuff.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+E</string>
-   </property>
-  </action>
   <action name="m_actionQuit">
    <property name="text">
     <string>&amp;Quit</string>

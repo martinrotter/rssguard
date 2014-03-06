@@ -145,8 +145,6 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       int index_column = idx.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
-        // TODO: toLocalTime() may be unnecessary here
-        // because parseDateTime already returns localtime.
         return TextFactory::parseDateTime(QSqlTableModel::data(idx,
                                                                role).value<qint64>()).toLocalTime().toString(Qt::DefaultLocaleShortDate);
       }

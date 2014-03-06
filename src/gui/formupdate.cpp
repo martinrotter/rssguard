@@ -91,8 +91,6 @@ void FormUpdate::checkForUpdates() {
       // TODO: Display "update" button if
       // URL of file for current platform (Windows or OS2)
       // is available.
-      // TODO: Tady po stisku update tlacitka se provede
-      // stazeni archivu do tempu.
       m_btnUpdate->setEnabled(true);
       m_btnUpdate->setToolTip(isUpdateForThisSystem() ?
                                 tr("Download installation file for your OS.") :
@@ -103,7 +101,7 @@ void FormUpdate::checkForUpdates() {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
                                    tr("No new release available."),
                                    tr("This release is not newer than\ncurrently installed one."));
-      m_btnUpdate->setEnabled(true);
+      m_btnUpdate->setEnabled(false);
       m_btnUpdate->setToolTip(tr("No new update available."));
     }
   }

@@ -60,6 +60,14 @@ FormMain::FormMain(QWidget *parent)
   // Establish connections.
   createConnections();
 
+  // Add these actions to the list of actions of the main window.
+  // This allows to use actions via shortcuts
+  // even if main menu is not visible.
+  // TODO: volba zobrazit/skryt hlavni menu
+  // bude li menu skryte tak jen v rohu robrazit
+  // tlacitko s tim menu.
+  addActions(allActions());
+
   // Prepare tabs.
   m_ui->m_tabWidget->initializeTabs();
 
@@ -79,8 +87,7 @@ QList<QAction*> FormMain::allActions() {
   QList<QAction*> actions;
 
   // Add basic actions.
-  actions << m_ui->m_actionImport << m_ui->m_actionExport <<
-             m_ui->m_actionSettings << m_ui->m_actionQuit <<
+  actions << m_ui->m_actionSettings << m_ui->m_actionQuit <<
              m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
              m_ui->m_actionSwitchFeedsListVisibility << m_ui->m_actionSwitchMainWindow;
 
@@ -245,8 +252,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme("application-exit"));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
-  m_ui->m_actionImport->setIcon(icon_theme_factory->fromTheme("document-import"));
-  m_ui->m_actionExport->setIcon(icon_theme_factory->fromTheme("document-export"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
 
   // View.
