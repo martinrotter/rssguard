@@ -95,6 +95,9 @@ class FormMain : public QMainWindow {
     // Turns on/off fullscreen mode
     void switchFullscreenMode();
 
+    // Switches visibility of main menu.
+    void switchMainMenu();
+
   protected slots:
     // Last-minute reactors.
     void onCommitData(QSessionManager &manager);
@@ -115,6 +118,7 @@ class FormMain : public QMainWindow {
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;
+    bool m_mainMenuActivated;
 
     static FormMain *s_instance;
 };

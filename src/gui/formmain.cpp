@@ -45,7 +45,7 @@
 FormMain *FormMain::s_instance;
 
 FormMain::FormMain(QWidget *parent)
-  : QMainWindow(parent), m_ui(new Ui::FormMain) {
+  : QMainWindow(parent), m_ui(new Ui::FormMain), m_mainMenuActivated(false) {
   m_ui->setupUi(this);
 
   // Initialize singleton.
@@ -89,7 +89,8 @@ QList<QAction*> FormMain::allActions() {
   // Add basic actions.
   actions << m_ui->m_actionSettings << m_ui->m_actionQuit <<
              m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
-             m_ui->m_actionSwitchFeedsListVisibility << m_ui->m_actionSwitchMainWindow;
+             m_ui->m_actionSwitchFeedsListVisibility << m_ui->m_actionSwitchMainWindow <<
+             m_ui->m_actionSwitchMainMenu;
 
   // Add web browser actions
   actions << m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
@@ -177,6 +178,16 @@ void FormMain::switchFullscreenMode() {
   }
 }
 
+void FormMain::switchMainMenu() {
+  // TODO: toto nefunguje protože při obnoveni menu
+  // neni okno ještě viditelné, tedy nějak vyřešit,
+  // stejny problem nastane u ukladani pokud je okno zrovna
+  // skryte, pak se uloze visible false ikdyz (protoze okno
+  // neni vide) ale menu je protimo povoleno
+  m_mainMenuActivated = !m_mainMenuActivated;
+  m_ui->m_menuBar->setVisible(m_mainMenuActivated);
+}
+
 void FormMain::switchVisibility() {
   if (isVisible()) {
     hide();
@@ -258,6 +269,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
   m_ui->m_actionSwitchFeedsListVisibility->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
@@ -316,6 +328,11 @@ void FormMain::loadSize() {
     switchFullscreenMode();
   }
 
+  // Hide the main menu if user wants it.
+  if (!settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool()) {
+    m_ui->m_menuBar->setVisible(false);
+  }
+
   // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
 }
@@ -323,6 +340,7 @@ void FormMain::loadSize() {
 void FormMain::saveSize() {
   Settings *settings = Settings::instance();
 
+  settings->setValue(APP_CFG_GUI, "main_menu_visible", m_mainMenuActivated);
   settings->setValue(APP_CFG_GUI, "window_position", pos());
   settings->setValue(APP_CFG_GUI, "window_size", size());
   settings->setValue(APP_CFG_GUI, "start_in_fullscreen", isFullScreen());
@@ -347,6 +365,7 @@ void FormMain::createConnections() {
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(triggered()), this, SLOT(switchFullscreenMode()));
   connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
+  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(triggered()), this, SLOT(switchMainMenu()));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));

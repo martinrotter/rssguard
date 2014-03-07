@@ -71,6 +71,7 @@
     <addaction name="m_actionFullscreen"/>
     <addaction name="m_actionSwitchMainWindow"/>
     <addaction name="m_actionSwitchFeedsListVisibility"/>
+    <addaction name="m_actionSwitchMainMenu"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -414,6 +415,14 @@
    </property>
    <property name="toolTip">
     <string>Check if new application updates are available.</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchMainMenu">
+   <property name="text">
+    <string>Switch &amp;main menu visibility</string>
+   </property>
+   <property name="toolTip">
+    <string>Hides or displays the main menu.</string>
    </property>
   </action>
  </widget>
