@@ -49,7 +49,8 @@
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   : TabContent(parent),
-    m_toolBar(new QToolBar(tr("Toolbar for messages"), this)),
+    m_toolBar(new QToolBar(tr("Toolbar for feeds"), this)),
+    m_toolBarMessages(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this)),
@@ -269,11 +270,16 @@ void FeedMessageViewer::createConnections() {
 }
 
 void FeedMessageViewer::initialize() {
-  // Initialize/populate toolbar.
+  // Initialize/populate toolbars.
   m_toolBar->setFloatable(false);
   m_toolBar->setMovable(false);
   m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
+
+  m_toolBarMessages->setFloatable(false);
+  m_toolBarMessages->setMovable(false);
+  m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarMessages->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
   // Add everything to toolbar.
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
@@ -281,6 +287,9 @@ void FeedMessageViewer::initialize() {
   m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearAllFeeds);
 
   m_toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+
+  m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead);
+  m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
@@ -295,12 +304,20 @@ void FeedMessageViewer::initialize() {
 void FeedMessageViewer::initializeViews() {
   // Instantiate needed components.
   QVBoxLayout *central_layout = new QVBoxLayout(this);
+  QVBoxLayout *feed_layout = new QVBoxLayout(this);
+  QVBoxLayout *message_layout = new QVBoxLayout(this);
+  QWidget *feed_widget = new QWidget(this);
+  QWidget *message_widget = new QWidget(this);
   m_feedSplitter = new QSplitter(Qt::Horizontal, this);
   m_messageSplitter = new QSplitter(Qt::Vertical, this);
 
   // Set layout properties.
   central_layout->setMargin(0);
   central_layout->setSpacing(0);
+  feed_layout->setMargin(0);
+  feed_layout->setSpacing(0);
+  message_layout->setMargin(0);
+  message_layout->setSpacing(0);
 
   // Set views.
   m_feedsView->setFrameStyle(QFrame::NoFrame);
@@ -313,14 +330,21 @@ void FeedMessageViewer::initializeViews() {
   m_messageSplitter->addWidget(m_messagesView);
   m_messageSplitter->addWidget(m_messagesBrowser);
 
+  message_layout->addWidget(m_toolBarMessages);
+  message_layout->addWidget(m_messageSplitter);
+  message_widget->setLayout(message_layout);
+
+  feed_layout->addWidget(m_toolBar);
+  feed_layout->addWidget(m_feedsView);
+  feed_widget->setLayout(feed_layout);
+
   m_feedSplitter->setHandleWidth(1);
   m_feedSplitter->setOpaqueResize(false);
   m_feedSplitter->setChildrenCollapsible(false);
-  m_feedSplitter->addWidget(m_feedsView);
-  m_feedSplitter->addWidget(m_messageSplitter);
+  m_feedSplitter->addWidget(feed_widget);
+  m_feedSplitter->addWidget(message_widget);
 
   // Add toolbar and main feeds/messages widget to main layout.
-  central_layout->addWidget(m_toolBar);
   central_layout->addWidget(m_feedSplitter);
 
   // Set layout as active.

@@ -61,6 +61,7 @@ class FeedMessageViewer : public TabContent {
     void quit();
 
   public slots:
+    // Runs "cleanup" of the database.
     void vacuumDatabase();
 
     // Reloads some changeable visual settings.
@@ -87,6 +88,7 @@ class FeedMessageViewer : public TabContent {
 
   private:
     QToolBar *m_toolBar;
+    QToolBar *m_toolBarMessages;
 
     QSplitter *m_feedSplitter;
     QSplitter *m_messageSplitter;
