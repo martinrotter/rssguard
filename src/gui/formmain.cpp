@@ -179,11 +179,6 @@ void FormMain::switchFullscreenMode() {
 }
 
 void FormMain::switchMainMenu() {
-  // TODO: toto nefunguje protože při obnoveni menu
-  // neni okno ještě viditelné, tedy nějak vyřešit,
-  // stejny problem nastane u ukladani pokud je okno zrovna
-  // skryte, pak se uloze visible false ikdyz (protoze okno
-  // neni vide) ale menu je protimo povoleno
   m_mainMenuActivated = !m_mainMenuActivated;
   m_ui->m_menuBar->setVisible(m_mainMenuActivated);
 }
