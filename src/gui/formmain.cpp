@@ -324,7 +324,7 @@ void FormMain::loadSize() {
   }
 
   // Hide the main menu if user wants it.
-  if (!settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool()) {
+  if (!(m_mainMenuActivated = settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool())) {
     m_ui->m_menuBar->setVisible(false);
   }
 

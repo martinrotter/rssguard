@@ -4,18 +4,24 @@
     <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.6-os2.7z</url>
     <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.6-win32.7z</url>
     <changes>
-<![CDATA[[~] Localization handling.
-[+] "Copy selection" context menu item for internal web browser.
-[#] Feed type saved to database when feed is added.
-[~] Default feeds.
-[#] Restarting of application on all platforms.
-[+] Initial French, Portuguese, German localizations. THANKS to theirs authors!!!
-[#] Bugs #15, #16, #13, #19, #20, #26, #25, #18, #21, #25.
+<![CDATA[Fixed:
+<ul>
+<li>Restarting of application on all platforms fixed.</li>
+<li>Feed type saved correctly to database when feed is added.</li>
+<li>Fixed bugs #15, #16, #13, #19, #20, #26, #25, #18, #21, #25.</li>
+</ul>
 
-[+] added
-[#] fixed
-[~] changed
-[@] other action]]>
+Added:
+<ul>
+<li>Added initial French, Portuguese, German localizations. THANKS to theirs authors!!!</li>
+<li>"Copy selection" context menu item for internal web browser added. </li>
+</ul>
+
+Changed:
+<ul>
+<li>Localization handling improved.</li>
+<li>Default feed list improved.</li>
+</ul>]]>
     </changes>
   </release>
 </releases>
