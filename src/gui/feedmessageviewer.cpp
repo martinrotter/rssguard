@@ -167,6 +167,10 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
   m_messagesView->reloadSelections(1);
 }
 
+void FeedMessageViewer::switchFeedComponentVisibility() {
+  m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
+}
+
 void FeedMessageViewer::createConnections() {
   FormMain *form_main = FormMain::instance();
 
@@ -256,7 +260,7 @@ void FeedMessageViewer::createConnections() {
   connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsListVisibility,
-          SIGNAL(triggered()), m_feedsView, SLOT(switchVisibility()));
+          SIGNAL(triggered()), this, SLOT(switchFeedComponentVisibility()));
   connect(form_main->m_ui->m_actionSelectNextFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(selectNextItem()));
   connect(form_main->m_ui->m_actionSelectPreviousFeedCategory,
@@ -306,8 +310,8 @@ void FeedMessageViewer::initializeViews() {
   QVBoxLayout *central_layout = new QVBoxLayout(this);
   QVBoxLayout *feed_layout = new QVBoxLayout(this);
   QVBoxLayout *message_layout = new QVBoxLayout(this);
-  QWidget *feed_widget = new QWidget(this);
   QWidget *message_widget = new QWidget(this);
+  m_feedsWidget = new QWidget(this);
   m_feedSplitter = new QSplitter(Qt::Horizontal, this);
   m_messageSplitter = new QSplitter(Qt::Vertical, this);
 
@@ -323,25 +327,28 @@ void FeedMessageViewer::initializeViews() {
   m_feedsView->setFrameStyle(QFrame::NoFrame);
   m_messagesView->setFrameStyle(QFrame::NoFrame);
 
-  // Setup splitters.
+  // Setup message splitter.
   m_messageSplitter->setHandleWidth(1);
   m_messageSplitter->setOpaqueResize(false);
   m_messageSplitter->setChildrenCollapsible(false);
   m_messageSplitter->addWidget(m_messagesView);
   m_messageSplitter->addWidget(m_messagesBrowser);
 
+  // Assemble message-related components to single widget.
   message_layout->addWidget(m_toolBarMessages);
   message_layout->addWidget(m_messageSplitter);
   message_widget->setLayout(message_layout);
 
+  // Assemble feed-related components to another widget.
   feed_layout->addWidget(m_toolBar);
   feed_layout->addWidget(m_feedsView);
-  feed_widget->setLayout(feed_layout);
+  m_feedsWidget->setLayout(feed_layout);
 
+  // Assembler everything together.
   m_feedSplitter->setHandleWidth(1);
   m_feedSplitter->setOpaqueResize(false);
   m_feedSplitter->setChildrenCollapsible(false);
-  m_feedSplitter->addWidget(feed_widget);
+  m_feedSplitter->addWidget(m_feedsWidget);
   m_feedSplitter->addWidget(message_widget);
 
   // Add toolbar and main feeds/messages widget to main layout.

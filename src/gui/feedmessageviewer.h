@@ -76,6 +76,8 @@ class FeedMessageViewer : public TabContent {
     void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
     void onFeedUpdatesFinished();
 
+    void switchFeedComponentVisibility();
+
   protected:
     // Initializes some properties of the widget.
     void initialize();
@@ -95,6 +97,7 @@ class FeedMessageViewer : public TabContent {
 
     MessagesView *m_messagesView;
     FeedsView *m_feedsView;
+    QWidget *m_feedsWidget;
     WebBrowser *m_messagesBrowser;
 
     QThread *m_feedDownloaderThread;
