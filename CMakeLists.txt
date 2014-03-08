@@ -326,6 +326,7 @@ set(APP_SOURCES
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
   src/core/networkfactory.cpp
+  src/core/webfactory.cpp
 
   # Basic application sources.
   src/main.cpp
@@ -386,6 +387,7 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
+  src/core/webfactory.h
 )
 
 # Add form files.

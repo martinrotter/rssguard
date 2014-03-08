@@ -76,6 +76,8 @@ class FeedMessageViewer : public TabContent {
     void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
     void onFeedUpdatesFinished();
 
+    // Switches visibility of feed list and related
+    // toolbar.
     void switchFeedComponentVisibility();
 
   protected:
@@ -89,7 +91,7 @@ class FeedMessageViewer : public TabContent {
     void createConnections();
 
   private:
-    QToolBar *m_toolBar;
+    QToolBar *m_toolBarFeeds;
     QToolBar *m_toolBarMessages;
 
     QSplitter *m_feedSplitter;

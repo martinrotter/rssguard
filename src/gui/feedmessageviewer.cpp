@@ -49,7 +49,7 @@
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   : TabContent(parent),
-    m_toolBar(new QToolBar(tr("Toolbar for feeds"), this)),
+    m_toolBarFeeds(new QToolBar(tr("Toolbar for feeds"), this)),
     m_toolBarMessages(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
@@ -275,10 +275,10 @@ void FeedMessageViewer::createConnections() {
 
 void FeedMessageViewer::initialize() {
   // Initialize/populate toolbars.
-  m_toolBar->setFloatable(false);
-  m_toolBar->setMovable(false);
-  m_toolBar->setAllowedAreas(Qt::TopToolBarArea);
-  m_toolBar->setToolButtonStyle(Qt::ToolButtonIconOnly);
+  m_toolBarFeeds->setFloatable(false);
+  m_toolBarFeeds->setMovable(false);
+  m_toolBarFeeds->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarFeeds->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
   m_toolBarMessages->setFloatable(false);
   m_toolBarMessages->setMovable(false);
@@ -286,14 +286,15 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
   // Add everything to toolbar.
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
-  m_toolBar->addAction(FormMain::instance()->m_ui->m_actionClearAllFeeds);
+  m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
+  m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
+  m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionClearAllFeeds);
 
-  m_toolBar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+  m_toolBarFeeds->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 
   m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead);
   m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
+  m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages);
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
@@ -311,6 +312,7 @@ void FeedMessageViewer::initializeViews() {
   QVBoxLayout *feed_layout = new QVBoxLayout(this);
   QVBoxLayout *message_layout = new QVBoxLayout(this);
   QWidget *message_widget = new QWidget(this);
+
   m_feedsWidget = new QWidget(this);
   m_feedSplitter = new QSplitter(Qt::Horizontal, this);
   m_messageSplitter = new QSplitter(Qt::Vertical, this);
@@ -340,7 +342,7 @@ void FeedMessageViewer::initializeViews() {
   message_widget->setLayout(message_layout);
 
   // Assemble feed-related components to another widget.
-  feed_layout->addWidget(m_toolBar);
+  feed_layout->addWidget(m_toolBarFeeds);
   feed_layout->addWidget(m_feedsView);
   m_feedsWidget->setLayout(feed_layout);
 
@@ -413,7 +415,10 @@ void FeedMessageViewer::vacuumDatabase() {
 }
 
 void FeedMessageViewer::refreshVisualProperties() {
-  m_toolBar->setToolButtonStyle(static_cast<Qt::ToolButtonStyle>(Settings::instance()->value(APP_CFG_GUI,
-                                                                                             "toolbar_style",
-                                                                                             Qt::ToolButtonIconOnly).toInt()));
+  Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(Settings::instance()->value(APP_CFG_GUI,
+                                                                                                  "toolbar_style",
+                                                                                                  Qt::ToolButtonIconOnly).toInt());
+
+  m_toolBarFeeds->setToolButtonStyle(button_style);
+  m_toolBarMessages->setToolButtonStyle(button_style);
 }
