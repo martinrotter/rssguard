@@ -6,12 +6,19 @@
 #include <QMap>
 
 
+class QWebSettings;
+
 class WebFactory : public QObject {
     Q_OBJECT
 
   public:
     // Destructor.
     virtual ~WebFactory();
+
+    // Loads the web settings directly from
+    // application settings and notifies the rest of
+    // the world about current situation.
+    void loadState();
 
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
@@ -23,6 +30,16 @@ class WebFactory : public QObject {
 
     // Singleton getter.
     static WebFactory *instance();
+
+  public slots:
+    // Operations.
+    bool javascriptEnabled() const;
+    bool pluginsEnabled() const;
+    bool autoloadImages() const;
+
+    void switchJavascript(bool enable, bool save_settings = true);
+    void switchPlugins(bool enable, bool save_settings = true);
+    void switchImages(bool enable, bool save_settings = true);
 
   signals:
     void javascriptSwitched(bool enabled);
@@ -36,6 +53,8 @@ class WebFactory : public QObject {
     // Escape sequences generators.
     QMap<QString, QString> generetaEscapes();
     QMap<QString, QString> generateDeescapes();
+
+    QWebSettings *m_globalSettings;
 
     // Singleton.
     static QPointer<WebFactory> s_instance;

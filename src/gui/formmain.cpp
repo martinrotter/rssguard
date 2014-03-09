@@ -21,6 +21,7 @@
 #include "core/settings.h"
 #include "core/systemfactory.h"
 #include "core/databasefactory.h"
+#include "core/webfactory.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/feedsview.h"
@@ -71,8 +72,12 @@ FormMain::FormMain(QWidget *parent)
   // Prepare tabs.
   m_ui->m_tabWidget->initializeTabs();
 
+  // Setup some appearance of the window.
   setupIcons();
   loadSize();
+
+  // Initialize the web factory.
+  WebFactory::instance()->loadState();
 }
 
 FormMain::~FormMain() {
@@ -271,6 +276,10 @@ void FormMain::setupIcons() {
   m_ui->m_actionCloseCurrentTab->setIcon(icon_theme_factory->fromTheme("list-remove"));
   m_ui->m_actionCloseAllTabs->setIcon(icon_theme_factory->fromTheme("list-remove"));
   m_ui->m_menuCurrentTab->setIcon(icon_theme_factory->fromTheme("list-current"));
+  m_ui->m_menuWebSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
+  m_ui->m_actionWebAutoloadImages->setIcon(icon_theme_factory->fromTheme("image-generic"));
+  m_ui->m_actionWebEnableExternalPlugins->setIcon(icon_theme_factory->fromTheme("web-flash"));
+  m_ui->m_actionWebEnableJavascript->setIcon(icon_theme_factory->fromTheme("web-javascript"));
 
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme("item-new"));
@@ -381,6 +390,18 @@ void FormMain::createConnections() {
           m_ui->m_tabWidget, SLOT(addEmptyBrowser()));
   connect(m_ui->m_actionCloseAllTabs, SIGNAL(triggered()),
           m_ui->m_tabWidget, SLOT(closeAllTabsExceptCurrent()));
+  connect(WebFactory::instance(), SIGNAL(imagesLoadingSwitched(bool)),
+          m_ui->m_actionWebAutoloadImages, SLOT(setChecked(bool)));
+  connect(WebFactory::instance(), SIGNAL(javascriptSwitched(bool)),
+          m_ui->m_actionWebEnableJavascript, SLOT(setChecked(bool)));
+  connect(WebFactory::instance(), SIGNAL(pluginsSwitched(bool)),
+          m_ui->m_actionWebEnableExternalPlugins, SLOT(setChecked(bool)));
+  connect(m_ui->m_actionWebAutoloadImages, SIGNAL(toggled(bool)),
+          WebFactory::instance(), SLOT(switchImages(bool)));
+  connect(m_ui->m_actionWebEnableExternalPlugins, SIGNAL(toggled(bool)),
+          WebFactory::instance(), SLOT(switchPlugins(bool)));
+  connect(m_ui->m_actionWebEnableJavascript, SIGNAL(toggled(bool)),
+          WebFactory::instance(), SLOT(switchJavascript(bool)));
 }
 
 void FormMain::loadWebBrowserMenu(int index) {

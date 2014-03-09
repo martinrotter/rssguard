@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>6</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -286,8 +286,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>564</width>
+            <height>364</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -364,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>209</width>
-                <height>245</height>
+                <width>560</width>
+                <height>336</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -643,15 +643,15 @@ Authors of this application are NOT responsible for lost data.</string>
            <property name="fieldGrowthPolicy">
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-           <item row="3" column="0" colspan="2">
+           <item row="6" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
               <string>Mouse gestures work with middle mouse button. Possible gestures are:
 &lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
+&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
+&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
+&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
+&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
 &lt;/ul&gt;</string>
              </property>
              <property name="textFormat">
@@ -662,7 +662,7 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0" colspan="2">
+           <item row="5" column="0" colspan="2">
             <widget class="QCheckBox" name="m_checkMouseGestures">
              <property name="text">
               <string>Enable mouse gestures</string>
@@ -705,6 +705,27 @@ Authors of this application are NOT responsible for lost data.</string>
               </widget>
              </item>
             </layout>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="m_checkEnableJavascript">
+             <property name="text">
+              <string>Enable JavaScript</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="m_checkEnablePlugins">
+             <property name="text">
+              <string>Enable external plugins based on NPAPI</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QCheckBox" name="m_checkAutoLoadImages">
+             <property name="text">
+              <string>Auto-load images</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -1049,9 +1070,22 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="3" column="1">
             <widget class="QComboBox" name="m_cmbCountsFeedList">
              <property name="toolTip">
-              <string>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; placeholders.</string>
+              <string notr="true"/>
              </property>
              <property name="editable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+             <property name="wordWrap">
               <bool>true</bool>
              </property>
             </widget>

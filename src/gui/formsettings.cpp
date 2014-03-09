@@ -22,6 +22,7 @@
 #include "core/databasefactory.h"
 #include "core/localization.h"
 #include "core/systemfactory.h"
+#include "core/webfactory.h"
 #include "core/feeddownloader.h"
 #include "core/dynamicshortcuts.h"
 #include "core/webbrowsernetworkaccessmanager.h"
@@ -362,6 +363,9 @@ void FormSettings::loadBrowser() {
   m_ui->m_grpCustomExternalBrowser->setChecked(settings->value(APP_CFG_BROWSER,
                                                                "custom_external_browser",
                                                                false).toBool());
+  m_ui->m_checkAutoLoadImages->setChecked(WebFactory::instance()->autoloadImages());
+  m_ui->m_checkEnableJavascript->setChecked(WebFactory::instance()->javascriptEnabled());
+  m_ui->m_checkEnablePlugins->setChecked(WebFactory::instance()->pluginsEnabled());
 }
 
 void FormSettings::saveBrowser() {
@@ -383,6 +387,10 @@ void FormSettings::saveBrowser() {
   settings->setValue(APP_CFG_BROWSER,
                      "queue_tabs",
                      m_ui->m_checkQueueTabs->isChecked());
+
+  WebFactory::instance()->switchImages(m_ui->m_checkAutoLoadImages->isChecked());
+  WebFactory::instance()->switchJavascript(m_ui->m_checkEnableJavascript->isChecked());
+  WebFactory::instance()->switchPlugins(m_ui->m_checkEnablePlugins->isChecked());
 
   settings->setValue(APP_CFG_BROWSER,
                      "external_browser_executable",

@@ -15,16 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
@@ -48,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -90,10 +81,19 @@
       <string>&amp;Current tab</string>
      </property>
     </widget>
+    <widget class="QMenu" name="m_menuWebSettings">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <addaction name="m_actionWebEnableJavascript"/>
+     <addaction name="m_actionWebEnableExternalPlugins"/>
+     <addaction name="m_actionWebAutoloadImages"/>
+    </widget>
     <addaction name="m_actionAddBrowser"/>
     <addaction name="m_actionCloseCurrentTab"/>
     <addaction name="m_actionCloseAllTabs"/>
     <addaction name="separator"/>
+    <addaction name="m_menuWebSettings"/>
     <addaction name="m_menuCurrentTab"/>
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
@@ -423,6 +423,30 @@
    </property>
    <property name="toolTip">
     <string>Hides or displays the main menu.</string>
+   </property>
+  </action>
+  <action name="m_actionWebEnableJavascript">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Enable JavaScript</string>
+   </property>
+  </action>
+  <action name="m_actionWebEnableExternalPlugins">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Enable external plugins</string>
+   </property>
+  </action>
+  <action name="m_actionWebAutoloadImages">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto-load images</string>
    </property>
   </action>
  </widget>
