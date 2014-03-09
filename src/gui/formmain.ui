@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -102,7 +111,7 @@
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
-      <string>Add new feed/category</string>
+      <string>Add &amp;new feed/category</string>
      </property>
      <addaction name="m_actionAddStandardCategory"/>
      <addaction name="m_actionAddStandardFeed"/>
@@ -181,9 +190,6 @@
    <property name="toolTip">
     <string>Displays extra info about this application.</string>
    </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+A</string>
-   </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
    </property>
@@ -212,29 +218,26 @@
   </action>
   <action name="m_actionCloseAllTabs">
    <property name="text">
-    <string>Close &amp;all tabs except current one</string>
+    <string>&amp;Close all tabs except current one</string>
    </property>
    <property name="toolTip">
     <string>Close all tabs except current one</string>
    </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+O</string>
-   </property>
   </action>
   <action name="m_actionCloseCurrentTab">
    <property name="text">
-    <string>Close current &amp;tab</string>
+    <string>&amp;Close current tab</string>
    </property>
    <property name="toolTip">
     <string>Close current web browser tab.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="m_actionUpdateAllFeeds">
    <property name="text">
     <string>Update &amp;all feeds</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+U</string>
    </property>
   </action>
   <action name="m_actionUpdateSelectedFeedsCategories">
@@ -254,12 +257,12 @@
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
    <property name="text">
-    <string>Mark selected messages as &amp;read</string>
+    <string>Mark &amp;selected messages as &amp;read</string>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
-    <string>Mark selected messages as &amp;unread</string>
+    <string>Mark &amp;selected messages as &amp;unread</string>
    </property>
   </action>
   <action name="m_actionSwitchImportanceOfSelectedMessages">
@@ -269,7 +272,7 @@
   </action>
   <action name="m_actionMarkSelectedFeedsAsRead">
    <property name="text">
-    <string>Mark &amp;selected feeds as read</string>
+    <string>&amp;Mark selected feeds as read</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected feeds as read.</string>
@@ -277,7 +280,7 @@
   </action>
   <action name="m_actionMarkSelectedFeedsAsUnread">
    <property name="text">
-    <string>Mark selected feeds as unread</string>
+    <string>&amp;Mark selected feeds as unread</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected feeds as unread.</string>
@@ -290,7 +293,7 @@
   </action>
   <action name="m_actionClearSelectedFeeds">
    <property name="text">
-    <string>Clean selected feeds</string>
+    <string>&amp;Clean selected feeds</string>
    </property>
    <property name="toolTip">
     <string>Deletes all messages from selected feeds.</string>
@@ -306,17 +309,17 @@
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
    <property name="text">
-    <string>Open selected source articles in external browser</string>
+    <string>Open selected source articles in &amp;external browser</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedMessagesInternally">
    <property name="text">
-    <string>Open selected messages in internal browser</string>
+    <string>Open selected messages in &amp;internal browser</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesInternally">
    <property name="text">
-    <string>Open selected source articles in internal browser</string>
+    <string>Open selected source articles in &amp;internal browser</string>
    </property>
   </action>
   <action name="m_actionAddStandardCategory">
@@ -340,7 +343,7 @@
   </action>
   <action name="m_actionMarkAllFeedsRead">
    <property name="text">
-    <string>Mark all &amp;feeds as read</string>
+    <string>&amp;Mark all feeds as &amp;read</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages in all feeds read. This does not take message filters into account.</string>
@@ -348,7 +351,7 @@
   </action>
   <action name="m_actionViewSelectedItemsNewspaperMode">
    <property name="text">
-    <string>View selected feeds in newspaper mode</string>
+    <string>View selected feeds in &amp;newspaper mode</string>
    </property>
    <property name="toolTip">
     <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
@@ -356,7 +359,7 @@
   </action>
   <action name="m_actionSwitchMainWindow">
    <property name="text">
-    <string>Switch visibility of main window</string>
+    <string>Switch visibility of main &amp;window</string>
    </property>
    <property name="toolTip">
     <string>Hides main window if it is visible and shows it if it is hidden.</string>
@@ -367,7 +370,7 @@
   </action>
   <action name="m_actionDefragmentDatabase">
    <property name="text">
-    <string>Defragment database</string>
+    <string>&amp;Defragment database</string>
    </property>
    <property name="toolTip">
     <string>Defragment database file so that its size decreases.</string>
@@ -375,7 +378,7 @@
   </action>
   <action name="m_actionSwitchFeedsListVisibility">
    <property name="text">
-    <string>Switch feeds list visibility</string>
+    <string>Switch &amp;feed list visibility</string>
    </property>
    <property name="toolTip">
     <string>Hides or shows the list of feeds/categories.</string>
@@ -383,35 +386,50 @@
   </action>
   <action name="m_actionClearAllFeeds">
    <property name="text">
-    <string>Clean all feeds</string>
+    <string>&amp;Clean all feeds</string>
    </property>
    <property name="toolTip">
     <string>Deletes all messages from all feeds.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+C</string>
+   </property>
   </action>
   <action name="m_actionSelectNextFeedCategory">
    <property name="text">
-    <string>Select next feed/category</string>
+    <string>Select &amp;next feed/category</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Down</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousFeedCategory">
    <property name="text">
-    <string>Select previous feed/category</string>
+    <string>Select &amp;previous feed/category</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Up</string>
    </property>
   </action>
   <action name="m_actionSelectNextMessage">
    <property name="text">
-    <string>Select next message</string>
+    <string>Select &amp;next message</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Alt+Down</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousMessage">
    <property name="text">
-    <string>Select previous message</string>
+    <string>Select &amp;previous message</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Alt+Up</string>
    </property>
   </action>
   <action name="m_actionCheckForUpdates">
    <property name="text">
-    <string>Check for updates</string>
+    <string>Check for &amp;updates</string>
    </property>
    <property name="toolTip">
     <string>Check if new application updates are available.</string>
@@ -424,13 +442,16 @@
    <property name="toolTip">
     <string>Hides or displays the main menu.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">M</string>
+   </property>
   </action>
   <action name="m_actionWebEnableJavascript">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Enable JavaScript</string>
+    <string>Enable &amp;JavaScript</string>
    </property>
   </action>
   <action name="m_actionWebEnableExternalPlugins">
@@ -438,7 +459,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Enable external plugins</string>
+    <string>Enable external &amp;plugins</string>
    </property>
   </action>
   <action name="m_actionWebAutoloadImages">
@@ -446,7 +467,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Auto-load images</string>
+    <string>Auto-load &amp;images</string>
    </property>
   </action>
  </widget>

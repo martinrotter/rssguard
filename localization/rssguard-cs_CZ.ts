@@ -340,16 +340,8 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>&amp;Přidat panel</translation>
     </message>
     <message>
-        <source>Close &amp;all tabs except current one</source>
-        <translation>Zavřít &amp;všechny panely kromě aktivního</translation>
-    </message>
-    <message>
         <source>Close all tabs except current one</source>
         <translation>Zavřít všechny panely kromě aktivního</translation>
-    </message>
-    <message>
-        <source>Close current &amp;tab</source>
-        <translation>Zavřít aktivní &amp;panel</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -382,18 +374,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Close current web browser tab.</source>
         <translation>Zavřít aktuální panel webového prohlížeče..</translation>
-    </message>
-    <message>
-        <source>Open selected messages in internal browser</source>
-        <translation>Otevřít vybrané zprávy v interním prohlížeči</translation>
-    </message>
-    <message>
-        <source>Open selected source articles in external browser</source>
-        <translation>Otevřít vybrané zdrojové články v externím prohlížeči</translation>
-    </message>
-    <message>
-        <source>Open selected source articles in internal browser</source>
-        <translation>Otevřít vybrané zdrojové články v interním prohlížeči</translation>
     </message>
     <message>
         <source>Application is already running.</source>
@@ -444,48 +424,16 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Nová standardní &amp;kategorie</translation>
     </message>
     <message>
-        <source>Switch visibility of main window</source>
-        <translation>Přepnout hlavní okno</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
-    </message>
-    <message>
-        <source>Defragment database</source>
-        <translation>Defragmentovat databázi</translation>
     </message>
     <message>
         <source>Defragment database file so that its size decreases.</source>
         <translation>Defragmentuje a optimalizuje databázi.</translation>
     </message>
     <message>
-        <source>Switch feeds list visibility</source>
-        <translation>Přepnout zobrazení seznamu kanálů</translation>
-    </message>
-    <message>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
-    </message>
-    <message>
-        <source>Select next feed/category</source>
-        <translation>Vybrat další kanál/kategorii</translation>
-    </message>
-    <message>
-        <source>Select previous feed/category</source>
-        <translation>Vybrat předchozí kanál/kategorii</translation>
-    </message>
-    <message>
-        <source>Select next message</source>
-        <translation>Vybrat další zprávu</translation>
-    </message>
-    <message>
-        <source>Select previous message</source>
-        <translation>Vybrat předchozí zprávu</translation>
-    </message>
-    <message>
-        <source>Check for updates</source>
-        <translation>Zkontrolovat aktualizace</translation>
     </message>
     <message>
         <source>Check if new application updates are available.</source>
@@ -504,14 +452,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Nelze spustit kontrolu aktualizací, protože běží aktualizace kanálů.</translation>
     </message>
     <message>
-        <source>Mark selected messages as &amp;read</source>
-        <translation>Označit vybrané zp&amp;rávy jako přečtené</translation>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;unread</source>
-        <translation>Označit vybrané zprávy jako ne&amp;přečtené</translation>
-    </message>
-    <message>
         <source>&amp;About application</source>
         <translation>O &amp;aplikaci</translation>
     </message>
@@ -520,20 +460,8 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Zobrazí dodatečné informace o této aplikaci.</translation>
     </message>
     <message>
-        <source>Mark &amp;selected feeds as read</source>
-        <translation>Označit vybrané kanály jako přeč&amp;tené</translation>
-    </message>
-    <message>
-        <source>Mark selected feeds as unread</source>
-        <translation>Označit vybrané kanály jako nepřečtené</translation>
-    </message>
-    <message>
         <source>&amp;Delete selected messages</source>
         <translation>Sma&amp;zat vybrané zprávy</translation>
-    </message>
-    <message>
-        <source>Clean selected feeds</source>
-        <translation>Vyčistit vybrané kanály</translation>
     </message>
     <message>
         <source>Deletes all messages from selected feeds.</source>
@@ -546,10 +474,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Deletes all messages from all feeds.</source>
         <translation>Smaže všechny zprávy ze všech kanálů.</translation>
-    </message>
-    <message>
-        <source>Add new feed/category</source>
-        <translation>Přidat nový kanál/kategorii</translation>
     </message>
     <message>
         <source>Update &amp;all feeds</source>
@@ -568,18 +492,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Smazat vybraný kaná&amp;l/kategorii</translation>
     </message>
     <message>
-        <source>Mark all &amp;feeds as read</source>
-        <translation>Označit všechny kaná&amp;ly jako přečtené</translation>
-    </message>
-    <message>
-        <source>View selected feeds in newspaper mode</source>
-        <translation>Zobrazit vybrané kanály v novinovém náhledu</translation>
-    </message>
-    <message>
-        <source>Clean all feeds</source>
-        <translation>Vyčistit všechny kanály</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation type="unfinished">Nastavení</translation>
     </message>
@@ -592,15 +504,103 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
+        <source>Add &amp;new feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable external plugins</source>
+        <source>&amp;Close all tabs except current one</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto-load images</source>
+        <source>&amp;Close current tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected messages as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected messages as &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected feeds as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected feeds as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source articles in &amp;external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected messages in &amp;internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source articles in &amp;internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark all feeds as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View selected feeds in &amp;newspaper mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch visibility of main &amp;window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Defragment database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;feed list visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;next feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;previous feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;next message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;previous message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for &amp;updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable &amp;JavaScript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable external &amp;plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load &amp;images</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -330,15 +330,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Close &amp;all tabs except current one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Close all tabs except current one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close current &amp;tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -371,18 +363,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Close current web browser tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected messages in internal browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected source articles in external browser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open selected source articles in internal browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -434,15 +414,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch visibility of main window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Defragment database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -450,31 +422,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch feeds list visibility</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hides or shows the list of feeds/categories.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select next feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select previous feed/category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select next message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select previous message</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Check for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -494,14 +442,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark selected messages as &amp;read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected messages as &amp;unread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;About application</source>
         <translation type="unfinished"></translation>
     </message>
@@ -510,19 +450,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark &amp;selected feeds as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mark selected feeds as unread</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Delete selected messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clean selected feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -535,10 +463,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Deletes all messages from all feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -558,18 +482,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mark all &amp;feeds as read</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>View selected feeds in newspaper mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Clean all feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -582,15 +494,103 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable JavaScript</source>
+        <source>Add &amp;new feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable external plugins</source>
+        <source>&amp;Close all tabs except current one</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Auto-load images</source>
+        <source>&amp;Close current tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected messages as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark &amp;selected messages as &amp;unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected feeds as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected feeds as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean selected feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source articles in &amp;external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected messages in &amp;internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open selected source articles in &amp;internal browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark all feeds as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View selected feeds in &amp;newspaper mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch visibility of main &amp;window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Defragment database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;feed list visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean all feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;next feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;previous feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;next message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;previous message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for &amp;updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable &amp;JavaScript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable external &amp;plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load &amp;images</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
