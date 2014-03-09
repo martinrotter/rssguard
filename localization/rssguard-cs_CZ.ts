@@ -72,7 +72,7 @@
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Panel kanálů</translation>
     </message>
 </context>
 <context>
@@ -1116,19 +1116,25 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
 &lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
 &lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesta myši se používají středním tlačítkem myši. Dostupná gesta:
+&lt;ul&gt;
+&lt;li&gt;předchozí stránka (táhnutí myši vlevo),&lt;/li&gt;
+&lt;li&gt;následující stránka (táhnutí myši vpravo),&lt;/li&gt;
+&lt;li&gt;znovu načíst stránku (táhnutí myši nahoru),&lt;/li&gt;
+&lt;li&gt;otevřít nový tab webového prohlížeče (táhnutí myši dolů).&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Enable JavaScript</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit JavaScript</translation>
     </message>
     <message>
         <source>Enable external plugins based on NPAPI</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit externí NPAPI pluginy</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
+        <translation>Načítat obrázky ve webových stránkách</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -1607,36 +1613,37 @@ currently installed one.</source>
     </message>
     <message>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stáhnout instalační soubory nové verze.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrola aktualizací selhala.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stáhnout instalační soubor pro Váš OS.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Instalační soubor není přímo dostupný.
+Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádná nová aktualizace není k dispozici.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze aktualizovat</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přejít k instalačnímu souboru. Zkontrolujte nové instalační soubory ručně na webu aplikace.</translation>
     </message>
 </context>
 <context>
@@ -1647,11 +1654,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Welcome to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vítá Vás %1</translation>
     </message>
     <message>
         <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%3 je (velmi) jednoduchá čtečka kanálů. Podporuje všechny rozšířené formáty kanálů, včetně RSS, ATOM a RDF.&lt;/p&gt;&lt;p&gt;Ujistěte se, že prozkoumáte všechny její funkce. Pokud najdete v aplikaci chybu nebo jste dostali nápad na její vylepšení, pak to &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;nahlaste&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 může být přeložen do kteréhokoliv jazyka. Kontaktujte jeho &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;autora&lt;/span&gt;&lt;/a&gt; pro více informací.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
