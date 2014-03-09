@@ -299,7 +299,6 @@ void FormSettings::promptForRestart() {
         }
       }
       else {
-        QtSingleApplication::instance()->unlock();
         qApp->quit();
       }
     }
