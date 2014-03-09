@@ -416,16 +416,17 @@ void FeedsView::deleteSelectedItem() {
   }
 
   if (selection_model->selectedRows().size() > 1) {
-    // pridat BalloonTip z qonverteru a tady
-    // ho odpalit pokud todle nastane
-    // s hlaskou "More than one item selected, removing
-    // only current one."
+    // User selected more than one item.
+    // Note that we can remove items only one by one.
+    // TODO: Display information balloon tip
+    // here, but only if tray icon is active.
     selection_model->clearSelection();
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
   }
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
-    // Item WAS removed.
+    // Item WAS removed, update counts.
+    updateCountsOfAllFeeds(true);
   }
   else {
     // Item WAS NOT removed, either database-related error occurred

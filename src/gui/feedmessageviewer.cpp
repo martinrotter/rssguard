@@ -307,15 +307,15 @@ void FeedMessageViewer::initialize() {
 }
 
 void FeedMessageViewer::initializeViews() {
-  // Instantiate needed components.
-  QVBoxLayout *central_layout = new QVBoxLayout(this);
-  QVBoxLayout *feed_layout = new QVBoxLayout(this);
-  QVBoxLayout *message_layout = new QVBoxLayout(this);
-  QWidget *message_widget = new QWidget(this);
-
   m_feedsWidget = new QWidget(this);
+  m_messagesWidget = new QWidget(this);
   m_feedSplitter = new QSplitter(Qt::Horizontal, this);
   m_messageSplitter = new QSplitter(Qt::Vertical, this);
+
+  // Instantiate needed components.
+  QVBoxLayout *central_layout = new QVBoxLayout(this);
+  QVBoxLayout *feed_layout = new QVBoxLayout(m_feedsWidget);
+  QVBoxLayout *message_layout = new QVBoxLayout(m_messagesWidget);
 
   // Set layout properties.
   central_layout->setMargin(0);
@@ -330,6 +330,7 @@ void FeedMessageViewer::initializeViews() {
   m_messagesView->setFrameStyle(QFrame::NoFrame);
 
   // Setup message splitter.
+  m_messageSplitter->setObjectName("MessageSplitter");
   m_messageSplitter->setHandleWidth(1);
   m_messageSplitter->setOpaqueResize(false);
   m_messageSplitter->setChildrenCollapsible(false);
@@ -339,25 +340,20 @@ void FeedMessageViewer::initializeViews() {
   // Assemble message-related components to single widget.
   message_layout->addWidget(m_toolBarMessages);
   message_layout->addWidget(m_messageSplitter);
-  message_widget->setLayout(message_layout);
 
   // Assemble feed-related components to another widget.
   feed_layout->addWidget(m_toolBarFeeds);
   feed_layout->addWidget(m_feedsView);
-  m_feedsWidget->setLayout(feed_layout);
 
   // Assembler everything together.
   m_feedSplitter->setHandleWidth(1);
   m_feedSplitter->setOpaqueResize(false);
   m_feedSplitter->setChildrenCollapsible(false);
   m_feedSplitter->addWidget(m_feedsWidget);
-  m_feedSplitter->addWidget(message_widget);
+  m_feedSplitter->addWidget(m_messagesWidget);
 
   // Add toolbar and main feeds/messages widget to main layout.
   central_layout->addWidget(m_feedSplitter);
-
-  // Set layout as active.
-  setLayout(central_layout);
 }
 
 void FeedMessageViewer::vacuumDatabase() {

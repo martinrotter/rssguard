@@ -100,6 +100,7 @@ class FeedMessageViewer : public TabContent {
     MessagesView *m_messagesView;
     FeedsView *m_feedsView;
     QWidget *m_feedsWidget;
+    QWidget *m_messagesWidget;
     WebBrowser *m_messagesBrowser;
 
     QThread *m_feedDownloaderThread;

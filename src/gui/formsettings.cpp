@@ -284,10 +284,19 @@ void FormSettings::promptForRestart() {
 
     if (question_result == QMessageBox::Yes) {
       if (!QProcess::startDetached(qApp->applicationFilePath())) {
-        MessageBox::show(this,
-                         QMessageBox::Warning,
-                         tr("Problem with application restart"),
-                         tr("Application couldn't be restarted. Please, restart it manually for changes to take effect."));
+        if (SystemTrayIcon::isSystemTrayActivated()) {
+          SystemTrayIcon::instance()->showMessage(tr("Problem with application restart"),
+                                                  tr("Application couldn't be restarted. "
+                                                     "Please, restart it manually for changes to take effect."),
+                                                  QSystemTrayIcon::Warning);
+        }
+        else {
+          MessageBox::show(this,
+                           QMessageBox::Warning,
+                           tr("Problem with application restart"),
+                           tr("Application couldn't be restarted. "
+                              "Please, restart it manually for changes to take effect."));
+        }
       }
       else {
         QtSingleApplication::instance()->unlock();
