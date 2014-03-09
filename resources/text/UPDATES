@@ -4,7 +4,8 @@
     <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.6-os2.7z</url>
     <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.6-win32.7z</url>
     <changes>
-<![CDATA[Fixed:
+<![CDATA[<body>
+Fixed:
 <ul>
 <li>Restarting of application on all platforms fixed.</li>
 <li>Feed type saved correctly to database when feed is added.</li>
@@ -21,7 +22,8 @@ Changed:
 <ul>
 <li>Localization handling improved.</li>
 <li>Default feed list improved.</li>
-</ul>]]>
+</ul>
+</body>]]>
     </changes>
   </release>
 </releases>

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QPointer>
+#include <QMap>
 
 
 class WebFactory : public QObject {
@@ -11,6 +12,14 @@ class WebFactory : public QObject {
   public:
     // Destructor.
     virtual ~WebFactory();
+
+    // Strips "<....>" (HTML, XML) tags from given text.
+    QString stripTags(QString text);
+
+    // HTML entity escaping.
+    // TODO: Optimize these methods.
+    QString escapeHtml(const QString &html);
+    QString deEscapeHtml(const QString &text);
 
     // Singleton getter.
     static WebFactory *instance();
@@ -23,6 +32,10 @@ class WebFactory : public QObject {
   private:
     // Constructor.
     explicit WebFactory(QObject *parent = 0);
+
+    // Escape sequences generators.
+    QMap<QString, QString> generetaEscapes();
+    QMap<QString, QString> generateDeescapes();
 
     // Singleton.
     static QPointer<WebFactory> s_instance;

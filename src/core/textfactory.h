@@ -43,17 +43,6 @@ class TextFactory {
     // NOTE: This apparently returns date/time in localtime.
     static QDateTime parseDateTime(qint64 milis_from_epoch);
 
-    // Strips "<....>" (HTML, XML) tags from given text.
-    static QString stripTags(QString text);
-
-    // HTML entity escaping.
-    // TODO: Optimize these methods.
-    static QString escapeHtml(const QString &html);
-    static QString deEscapeHtrml(const QString &text);
-
-    static QMap<QString, QString> generetaEscapes();
-    static QMap<QString, QString> generateDeescapes();
-
     // Shortens input string according to given length limit.
     static QString shorten(const QString &input, int text_length_limit = TEXT_TITLE_LIMIT);
 };

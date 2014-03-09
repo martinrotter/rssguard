@@ -70,7 +70,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Welcome to RSS Guard</string>
+      <string notr="true"/>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

@@ -17,6 +17,7 @@
 
 #include "core/parsingfactory.h"
 
+#include "core/webfactory.h"
 #include "core/textfactory.h"
 
 #include <QDomDocument>
@@ -56,13 +57,13 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       }
       else {
         // Title is empty but description is not.
-        new_message.m_title = TextFactory::stripTags(elem_summary.simplified());
+        new_message.m_title = WebFactory::instance()->stripTags(elem_summary.simplified());
         new_message.m_contents = elem_summary;
       }
     }
     else {
       // Title is not empty, description does not matter.
-      new_message.m_title = TextFactory::stripTags(elem_title);
+      new_message.m_title = WebFactory::instance()->stripTags(elem_title);
       new_message.m_contents = elem_summary;
     }
 
@@ -78,7 +79,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     }
 
     // Deal with authors.
-    new_message.m_author = TextFactory::escapeHtml(message_item.namedItem("author").namedItem("name").toElement().text());
+    new_message.m_author = WebFactory::instance()->escapeHtml(message_item.namedItem("author").namedItem("name").toElement().text());
 
     // Deal with creation date.
     new_message.m_created = TextFactory::parseDateTime(message_item.namedItem("updated").toElement().text());
@@ -134,13 +135,13 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
       }
       else {
         // Title is empty but description is not.
-        new_message.m_title = TextFactory::escapeHtml(TextFactory::stripTags(elem_description.simplified()));
+        new_message.m_title = WebFactory::instance()->escapeHtml(WebFactory::instance()->stripTags(elem_description.simplified()));
         new_message.m_contents = elem_description;
       }
     }
     else {
       // Title is really not empty, description does not matter.
-      new_message.m_title = TextFactory::escapeHtml(TextFactory::stripTags(elem_title));
+      new_message.m_title = WebFactory::instance()->escapeHtml(WebFactory::instance()->stripTags(elem_title));
       new_message.m_contents = elem_description;
     }
 
@@ -210,13 +211,13 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       }
       else {
         // Title is empty but description is not.
-        new_message.m_title = TextFactory::stripTags(elem_description.simplified());
+        new_message.m_title = WebFactory::instance()->stripTags(elem_description.simplified());
         new_message.m_contents = elem_description;
       }
     }
     else {
       // Title is really not empty, description does not matter.
-      new_message.m_title = TextFactory::stripTags(elem_title);
+      new_message.m_title = WebFactory::instance()->stripTags(elem_title);
       new_message.m_contents = elem_description;
     }
 

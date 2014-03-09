@@ -52,8 +52,9 @@ FormWelcome::FormWelcome(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormWe
           this, SLOT(openLink(QString)));
 
   // Setup the text.
+  m_ui->m_lblCaption->setText(tr("Welcome to %1").arg(APP_NAME));
   m_ui->m_lblInfo->setText(
-        tr("<p>RSS Guard is a (very) easy-to-use feed reader. "
+        tr("<p>%3 is a (very) easy-to-use feed reader. "
            "It supports all major feed formats, including RSS, "
            "ATOM and RDF.</p>"
            "<p>Make sure you explore all available features. "
@@ -62,11 +63,12 @@ FormWelcome::FormWelcome(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormWe
            "<a href=\"%1\"><span "
            "style=\"text-decoration: underline; color:#0000ff;\">issue "
            "report</span></a>.</p>"
-           "<p>RSS Guard can be translated to any language. "
+           "<p>%3 can be translated to any language. "
            "Contact its <a href=\"mailto:%2\"><span "
            "style=\"text-decoration: underline; color:#0000ff;\">author</span></a> "
            "in case of your interest.</p><p><br/></p>").arg(APP_URL_ISSUES,
-                                                            APP_EMAIL));
+                                                            APP_EMAIL,
+                                                            APP_NAME));
 }
 
 void FormWelcome::openLink(const QString &link) {
