@@ -70,6 +70,10 @@
         <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
         <translation>Database is niet gedefragmenteerd. Deze database backend word niet ondersteund of kan nu niet worden gedefragmenteerd.</translation>
     </message>
+    <message>
+        <source>Toolbar for feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -317,14 +321,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>&amp;Hulpmiddelen</translation>
     </message>
     <message>
-        <source>&amp;Import</source>
-        <translation>&amp;Importeer</translation>
-    </message>
-    <message>
-        <source>E&amp;xport</source>
-        <translation>E&amp;xporteer</translation>
-    </message>
-    <message>
         <source>&amp;Quit</source>
         <translation>&amp;Sluit</translation>
     </message>
@@ -363,14 +359,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Switch &amp;importance of selected messages</source>
         <translation>Wissel het &amp;belang van geselecteerde berichten</translation>
-    </message>
-    <message>
-        <source>Import stuff.</source>
-        <translation>Importeer bestanden.</translation>
-    </message>
-    <message>
-        <source>Export stuff.</source>
-        <translation>Exporteer bestanden.</translation>
     </message>
     <message>
         <source>Quit the application.</source>
@@ -588,6 +576,30 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>Clean all feeds</source>
         <translation>Alle feeds opschonen</translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Instellingen</translation>
+    </message>
+    <message>
+        <source>Switch &amp;main menu visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides or displays the main menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable JavaScript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable external plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load images</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -755,22 +767,6 @@ Language column of language list.</extracomment>
         <translation>Uitzetten (Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation>Muisbeweging werkt met middelste muisknop. Mogelijke muisbewegingen zijn:
-&lt;ul&gt;
-&lt;li&gt;vorige webpagina (sleep muis links)&lt;/li&gt;
-&lt;li&gt;volgende webpagina(sleep muis rechts)&lt;/li&gt;
-&lt;li&gt;herlaad huidige webpagina(sleep muis omhoog)&lt;/li&gt;
-&lt;li&gt;Open nieuw webbrowser pagina(sleep muis omlaag)&lt;/li&gt;
-&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
         <translation>Wachtrij nieuwe tabbladen (met koppelingen) na de actieve tabblad</translation>
     </message>
@@ -831,10 +827,6 @@ Language column of language list.</extracomment>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
         <translation>Sommige kritieke instellingen zijn niet instelbaar. Je moet deze nieuwe instellingen bevestigen om op te lossen.</translation>
-    </message>
-    <message>
-        <source>Feeds</source>
-        <translation>Feeds</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -1112,6 +1104,52 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <message>
         <source>Launch %1 on operating system startup</source>
         <translation>Laad %1 als systeem opstart</translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+&lt;ul&gt;
+&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
+&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
+&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
+&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
+&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable JavaScript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable external plugins based on NPAPI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message count format in feed list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>custom external browser is not set correctly</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1530,7 +1568,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>unknown</source>
-        <extracomment>Uknown release.</extracomment>
+        <extracomment>Unknown release.</extracomment>
         <translation>onbekend</translation>
     </message>
     <message>
@@ -1550,10 +1588,6 @@ downloaded and installed.</source>
 worden gedownload en geinstalleerd.</translation>
     </message>
     <message>
-        <source>This is new version. Upgrade to it manually or via your system package manager.</source>
-        <translation>Dit is een nieuwe versie.Upgrade  het handmatig of via uw systeem package manager.</translation>
-    </message>
-    <message>
         <source>Error: &apos;%1&apos;.</source>
         <translation>Fout: %1&apos;.</translation>
     </message>
@@ -1571,6 +1605,39 @@ de geïnstalleerde.</translation>
         <source>Check for updates</source>
         <translation>Controleer op updates</translation>
     </message>
+    <message>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download new installation files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checking for updates failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download installation file for your OS.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installation file is not available directly.
+Go to application website to obtain it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No new update available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot update application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -1579,12 +1646,12 @@ de geïnstalleerde.</translation>
         <translation>Welkom</translation>
     </message>
     <message>
-        <source>Welcome to RSS Guard</source>
-        <translation>Welkom bij RSS Guard</translation>
+        <source>Welcome to %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;RSS Guard is een (zeer) makelijk te gebruiken feed lezer.Het ondersteund alle grote formaten, inclusief RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Maak gebruik van all beschikbare functies die er zijn. Ook als je een bug vind, of je hebt een nieuwe functie die je wilt zien, maak dan een nieuwe &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text decoration: underline;color:#0000ff;&quot;&gt;probleem rapport&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard kan naar iedere taal worden vertaald. Contactpersoon is &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;Auteur&lt;/span&gt;&lt;/a&gt;In geval van belangstelling.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
+        <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1692,14 +1759,6 @@ de geïnstalleerde.</translation>
     <message>
         <source>Context menu for messages</source>
         <translation>Contextmenu voor berichten</translation>
-    </message>
-    <message>
-        <source>External browser not set</source>
-        <translation>Externe browser niet ingesteld</translation>
-    </message>
-    <message>
-        <source>External browser is not set, head to application settings and set it up to use this feature.</source>
-        <translation>Externe browser is niet ingesteld, ga naar hulpmiddelen instellingen en zet deze functie aan.</translation>
     </message>
     <message>
         <source>Meesage without URL</source>

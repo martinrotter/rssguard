@@ -70,6 +70,10 @@
         <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
         <translation>O banco de dados não foi desfragmentado. O banco de dados do backend não suporta ou não pode ser desfragmentado neste momento.</translation>
     </message>
+    <message>
+        <source>Toolbar for feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -310,14 +314,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>E&amp;xport</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Quit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -355,14 +351,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Import stuff.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Export stuff.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -581,6 +569,30 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>Deletes all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch &amp;main menu visibility</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hides or displays the main menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable JavaScript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable external plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load images</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -748,16 +760,6 @@ Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left)&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right)&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up)&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down)&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
         <translation type="unfinished"></translation>
     </message>
@@ -817,10 +819,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1086,6 +1084,52 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Launch %1 on operating system startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+&lt;ul&gt;
+&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
+&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
+&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
+&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
+&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable JavaScript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable external plugins based on NPAPI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-load images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message count format in feed list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>custom external browser is not set correctly</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1505,7 +1549,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>unknown</source>
-        <extracomment>Uknown release.</extracomment>
+        <extracomment>Unknown release.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1520,10 +1564,6 @@ downloaded successfully.</source>
     <message>
         <source>This is new version which can be
 downloaded and installed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This is new version. Upgrade to it manually or via your system package manager.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1543,6 +1583,39 @@ currently installed one.</source>
         <source>Check for updates</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download new installation files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checking for updates failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download installation file for your OS.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Installation file is not available directly.
+Go to application website to obtain it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No new update available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot update application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormWelcome</name>
@@ -1551,11 +1624,11 @@ currently installed one.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Welcome to RSS Guard</source>
+        <source>Welcome to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;p&gt;RSS Guard is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;RSS Guard can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
+        <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1663,14 +1736,6 @@ currently installed one.</source>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>External browser not set</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>External browser is not set, head to application settings and set it up to use this feature.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
