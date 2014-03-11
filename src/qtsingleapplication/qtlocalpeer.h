@@ -60,13 +60,6 @@ public:
       return id;
     }
 
-    // Unlocks the file.
-    bool unlock() {
-      bool unlocked = lockFile.unlock();
-      lockFile.remove();
-      return unlocked;
-    }
-
   Q_SIGNALS:
     void messageReceived(const QString &message);
 

@@ -79,11 +79,6 @@ class QT_QTSINGLEAPPLICATION_EXPORT QtSingleApplication : public QApplication {
     bool isRunning();
     QString id() const;
 
-    // Unlocks locked file, thus allows second instance to start
-    // when application is restarted programatically.
-    // Returns true if unlocked.
-    bool unlock();
-
     void setActivationWindow(QWidget* aw, bool activateOnMessage = true);
     QWidget* activationWindow() const;
 

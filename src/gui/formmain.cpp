@@ -248,7 +248,6 @@ void FormMain::onAboutToQuit() {
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
     SystemFactory::instance()->applicationCloseLock()->unlock();
-    QtSingleApplication::instance()->unlock();
   }
   else {
     // Request for write lock timed-out. This means
@@ -303,7 +302,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme("item-open"));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme("item-open"));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme("item-newspaper"));
-
   m_ui->m_actionSelectNextFeedCategory->setIcon(icon_theme_factory->fromTheme("go-down"));
   m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme("go-up"));
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme("go-down"));

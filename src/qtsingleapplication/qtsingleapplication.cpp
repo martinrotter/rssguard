@@ -95,10 +95,6 @@ QString QtSingleApplication::id() const {
   return peer->applicationId();
 }
 
-bool QtSingleApplication::unlock() {
-  return peer->unlock();
-}
-
 void QtSingleApplication::setActivationWindow(QWidget* aw, bool activateOnMessage) {
   actWin = aw;
   if (activateOnMessage)
