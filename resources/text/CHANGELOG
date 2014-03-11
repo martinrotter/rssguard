@@ -3,6 +3,7 @@
 
 Fixed:
 <ul>
+<li>Partially fixed bug #33.</li>
 <li>All datetimes fetched from feeds are now considered to be UTC.</li>
 </ul>
 
