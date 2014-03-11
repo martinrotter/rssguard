@@ -248,6 +248,7 @@ void FormMain::onAboutToQuit() {
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
     SystemFactory::instance()->applicationCloseLock()->unlock();
+    QtSingleApplication::instance()->unlock();
   }
   else {
     // Request for write lock timed-out. This means

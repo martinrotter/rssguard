@@ -62,7 +62,9 @@ public:
 
     // Unlocks the file.
     bool unlock() {
-      return lockFile.unlock();
+      bool unlocked = lockFile.unlock();
+      lockFile.remove();
+      return unlocked;
     }
 
   Q_SIGNALS:
