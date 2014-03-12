@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_GB">
+<TS version="2.0" language="vi_VN">
 <context>
     <name>CornerButton</name>
     <message>
@@ -117,7 +117,6 @@ This category does not contain any nested items.</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
@@ -138,7 +137,6 @@ This category does not contain any nested items.</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -154,7 +152,6 @@ Auto-update status: %5</source>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -1845,27 +1842,27 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>English</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
-        <translation>en_GB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.01</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
-        <translation>Martin Rotter</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
-        <translation>rotter.martinos@gmail.com</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

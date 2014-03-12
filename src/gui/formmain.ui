@@ -72,12 +72,12 @@
      <property name="title">
       <string>Show/hide</string>
      </property>
+     <addaction name="m_actionFullscreen"/>
      <addaction name="m_actionSwitchFeedsList"/>
      <addaction name="m_actionSwitchMainMenu"/>
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
-    <addaction name="m_actionFullscreen"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -201,8 +201,11 @@
    </property>
   </action>
   <action name="m_actionFullscreen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Switch &amp;fullscreen/normal mode</string>
+    <string>&amp;Fullscreen</string>
    </property>
    <property name="toolTip">
     <string>Switch fullscreen mode.</string>

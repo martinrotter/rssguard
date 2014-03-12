@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de">
+<TS version="2.0" language="de_DE">
 <context>
     <name>CornerButton</name>
     <message>
@@ -398,10 +398,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Neue Standardkategorie hinzufügen.</translation>
     </message>
     <message>
-        <source>Switch &amp;fullscreen/normal mode</source>
-        <translation>Schalte zwischen &amp;Vollbild- und Normalmodus um.</translation>
-    </message>
-    <message>
         <source>Add new standard feed.</source>
         <translation>Füge einen neuen Standard-Feed hinzu.</translation>
     </message>
@@ -483,11 +479,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
-    </message>
-    <message>
-        <source>Switch &amp;main menu visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
@@ -546,15 +538,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch visibility of main &amp;window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Defragment database</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch &amp;feed list visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -591,6 +575,34 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Auto-load &amp;images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show/hide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch main &amp;window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Feed list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Main menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

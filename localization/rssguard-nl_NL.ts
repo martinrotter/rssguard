@@ -72,7 +72,7 @@
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk voor feeds</translation>
     </message>
 </context>
 <context>
@@ -405,10 +405,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Voeg nieuw standaard categorie toe.</translation>
     </message>
     <message>
-        <source>Switch &amp;fullscreen/normal mode</source>
-        <translation>Schakel &amp;beeldvullende/normale modus</translation>
-    </message>
-    <message>
         <source>Add new standard feed.</source>
         <translation>Voeg nieuw standaard feed toe.</translation>
     </message>
@@ -490,27 +486,23 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
-    </message>
-    <message>
-        <source>Switch &amp;main menu visibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verberg of toon het hoofdmenu</translation>
     </message>
     <message>
         <source>Add &amp;new feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg &amp;nieuwe feeds/categorieën toe</translation>
     </message>
     <message>
         <source>&amp;Close all tabs except current one</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sluit alle tabbladen behalve deze</translation>
     </message>
     <message>
         <source>&amp;Close current tab</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sluit huidig tabblad</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
@@ -553,15 +545,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch visibility of main &amp;window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Defragment database</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switch &amp;feed list visibility</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -598,6 +582,34 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Auto-load &amp;images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show/hide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch main &amp;window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Feed list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Main menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
