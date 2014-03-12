@@ -94,7 +94,7 @@ QList<QAction*> FormMain::allActions() {
   // Add basic actions.
   actions << m_ui->m_actionSettings << m_ui->m_actionQuit <<
              m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
-             m_ui->m_actionSwitchFeedsListVisibility << m_ui->m_actionSwitchMainWindow <<
+             m_ui->m_actionSwitchFeedsList << m_ui->m_actionSwitchMainWindow <<
              m_ui->m_actionSwitchMainMenu;
 
   // Add web browser actions
@@ -268,8 +268,9 @@ void FormMain::setupIcons() {
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
-  m_ui->m_actionSwitchFeedsListVisibility->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme("view-switch"));
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
@@ -333,7 +334,8 @@ void FormMain::loadSize() {
 
   // Hide the main menu if user wants it.
   if (!(m_mainMenuActivated = settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool())) {
-    m_ui->m_menuBar->setVisible(false);
+    m_mainMenuActivated = !m_mainMenuActivated;
+    m_ui->m_actionSwitchMainMenu->setChecked(false);
   }
 
   // Adjust dimensions of "feeds & messages" widget.
@@ -368,7 +370,7 @@ void FormMain::createConnections() {
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(triggered()), this, SLOT(switchFullscreenMode()));
   connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
-  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(triggered()), this, SLOT(switchMainMenu()));
+  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), this, SLOT(switchMainMenu()));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));

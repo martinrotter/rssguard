@@ -48,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -68,10 +68,16 @@
     <property name="title">
      <string>&amp;View</string>
     </property>
-    <addaction name="m_actionFullscreen"/>
+    <widget class="QMenu" name="m_menuShowHide">
+     <property name="title">
+      <string>Show/hide</string>
+     </property>
+     <addaction name="m_actionSwitchFeedsList"/>
+     <addaction name="m_actionSwitchMainMenu"/>
+    </widget>
+    <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
-    <addaction name="m_actionSwitchFeedsListVisibility"/>
-    <addaction name="m_actionSwitchMainMenu"/>
+    <addaction name="m_actionFullscreen"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -358,14 +364,14 @@
    </property>
   </action>
   <action name="m_actionSwitchMainWindow">
+   <property name="checked">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>Switch visibility of main &amp;window</string>
+    <string>Switch main &amp;window</string>
    </property>
    <property name="toolTip">
     <string>Hides main window if it is visible and shows it if it is hidden.</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionDefragmentDatabase">
@@ -376,12 +382,18 @@
     <string>Defragment database file so that its size decreases.</string>
    </property>
   </action>
-  <action name="m_actionSwitchFeedsListVisibility">
+  <action name="m_actionSwitchFeedsList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Switch &amp;feed list visibility</string>
+    <string>&amp;Feed list</string>
    </property>
    <property name="toolTip">
     <string>Hides or shows the list of feeds/categories.</string>
+   </property>
+   <property name="shortcut">
+    <string>F</string>
    </property>
   </action>
   <action name="m_actionClearAllFeeds">
@@ -436,14 +448,20 @@
    </property>
   </action>
   <action name="m_actionSwitchMainMenu">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
-    <string>Switch &amp;main menu visibility</string>
+    <string>&amp;Main menu</string>
    </property>
    <property name="toolTip">
     <string>Hides or displays the main menu.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">M</string>
+    <string>M</string>
    </property>
   </action>
   <action name="m_actionWebEnableJavascript">
