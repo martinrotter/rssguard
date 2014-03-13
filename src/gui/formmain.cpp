@@ -70,6 +70,7 @@ FormMain::FormMain(QWidget *parent)
   addActions(allActions());
 
   // Prepare tabs.
+  m_ui->m_tabWidget->setupMainMenuButton();
   m_ui->m_tabWidget->initializeTabs();
 
   // Setup some appearance of the window.
@@ -195,20 +196,6 @@ void FormMain::switchVisibility(bool force_hide) {
   }
   else {
     display();
-  }
-}
-
-void FormMain::setApplicationMode(FormMain::ApplicationMode mode) {
-  switch (mode) {
-    case Tray:
-
-      break;
-
-    case SingleWindow:
-      break;
-
-    default:
-      break;
   }
 }
 

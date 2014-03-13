@@ -25,6 +25,8 @@
 #include <QUrl>
 
 
+class QMenu;
+class QToolButton;
 class CornerButton;
 class Message;
 class FeedMessageViewer;
@@ -60,6 +62,8 @@ class TabWidget : public QTabWidget {
     // Initializes TabWidget with tabs, this includes initialization
     // of main "Feeds" widget.
     void initializeTabs();
+
+    void setupMainMenuButton();
 
     // Sets up icons for this TabWidget.
     void setupIcons();
@@ -120,6 +124,8 @@ class TabWidget : public QTabWidget {
 
   private:
     CornerButton *m_cornerButton;
+    QToolButton *m_menuButton;
+    QMenu *m_mainMenu;
     FeedMessageViewer *m_feedMessageViewer;
 };
 

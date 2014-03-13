@@ -35,11 +35,6 @@ class FormMain : public QMainWindow {
     friend class FeedsView;
 
   public:
-    enum ApplicationMode {
-      SingleWindow,
-      Tray
-    };
-
     // Constructors and destructors.
     explicit FormMain(QWidget *parent = 0);
     virtual ~FormMain();
@@ -96,8 +91,6 @@ class FormMain : public QMainWindow {
 
     // Switches visibility of main window.
     void switchVisibility(bool force_hide = false);
-
-    void setApplicationMode(ApplicationMode mode);
 
     // Turns on/off fullscreen mode
     void switchFullscreenMode();

@@ -23,17 +23,18 @@
 #include "gui/tabbar.h"
 #include "gui/iconthemefactory.h"
 #include "gui/webbrowser.h"
+#include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/cornerbutton.h"
 
 #include <QUrl>
 #include <QApplication>
+#include <QMenu>
 
 
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent) {
   setTabBar(new TabBar(this));
   setupCornerButton();
-  //setTabsClosable(true);
 
   createConnections();
 }
@@ -45,6 +46,23 @@ TabWidget::~TabWidget() {
 void TabWidget::setupCornerButton() {
   m_cornerButton = new CornerButton(this);
   setCornerWidget(m_cornerButton);
+}
+
+void TabWidget::setupMainMenuButton() {
+  m_mainMenu = new QMenu("Main menu", this);
+  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFile);
+  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuView);
+  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFeeds);
+  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuMessages);
+  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuTools);
+  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuHelp);
+
+  m_menuButton = new QToolButton(this);
+  m_menuButton->setAutoRaise(true);
+  m_menuButton->setIcon(IconThemeFactory::instance()->fromTheme("application-menu"));
+  m_menuButton->setPopupMode(QToolButton::InstantPopup);
+  m_menuButton->setMenu(m_mainMenu);
+  setCornerWidget(m_menuButton, Qt::TopLeftCorner);
 }
 
 void TabWidget::checkTabBarVisibility() {
@@ -71,7 +89,7 @@ void TabWidget::createConnections() {
   connect(tabBar(), SIGNAL(currentChanged(int)), this, SLOT(fixContentAfterIndexChange(int)));
 }
 
-void TabWidget::initializeTabs() { 
+void TabWidget::initializeTabs() {
   // Create widget for "Feeds" page and add it.
   m_feedMessageViewer = new FeedMessageViewer(this);
   int index_of_browser = addTab(static_cast<TabContent*>(m_feedMessageViewer),
