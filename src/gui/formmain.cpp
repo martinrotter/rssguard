@@ -137,12 +137,8 @@ void FormMain::prepareMenus() {
     m_trayMenu = new QMenu(APP_NAME, this);
 #endif
 
-    // Add "check for updates" item on some platforms.
-    m_ui->m_actionCheckForUpdates->setIcon(IconThemeFactory::instance()->fromTheme("check-for-updates"));
-    m_ui->m_actionCheckForUpdates->setToolTip(tr("Check if new update for the application is available for download."));
-
     // Add needed items to the menu.
-    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindowTray);
+    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
     m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
@@ -187,12 +183,27 @@ void FormMain::switchMainMenu() {
   m_ui->m_menuBar->setVisible(m_ui->m_actionSwitchMainMenu->isChecked());
 }
 
-void FormMain::switchVisibility() {
-  if (isVisible()) {
-    hide();
+void FormMain::switchVisibility(bool force_hide) {
+  // TODO: Kdyz neni povolena tray ikona, tak je povolena satle polozka "switch window" v menu.
+  // v pripade ze tedy neni povolena tray ikona, tak polozku switch bud disabnout
+  // nebo upravit jeji chovani aby provedla minimalizaci a ne hide.
+  // aktualne nastaveno na tu minimalizaci
+  if (force_hide || isVisible()) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      hide();
+    }
+    else {
+      setWindowState(windowState() & Qt::WindowMinimized);
+    }
+    m_ui->m_actionSwitchMainWindow->blockSignals(true);
+    m_ui->m_actionSwitchMainWindow->setChecked(false);
+    m_ui->m_actionSwitchMainWindow->blockSignals(false);
   }
   else {
     display();
+    m_ui->m_actionSwitchMainWindow->blockSignals(true);
+    m_ui->m_actionSwitchMainWindow->setChecked(true);
+    m_ui->m_actionSwitchMainWindow->blockSignals(false);
   }
 }
 
@@ -262,6 +273,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme("application-exit"));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
+  m_ui->m_actionCheckForUpdates->setIcon(IconThemeFactory::instance()->fromTheme("check-for-updates"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
 
   // View.
@@ -372,8 +384,8 @@ void FormMain::createConnections() {
 
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
-  connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
   connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), this, SLOT(switchMainMenu()));
+  connect(m_ui->m_actionSwitchMainWindow, SIGNAL(toggled(bool)), this, SLOT(switchVisibility()));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
@@ -431,7 +443,8 @@ void FormMain::changeEvent(QEvent *event) {
           Settings::instance()->value(APP_CFG_GUI,
                                       "hide_when_minimized",
                                       false).toBool()) {
-        QTimer::singleShot(250, this, SLOT(hide()));
+        event->ignore();
+        QTimer::singleShot(CHANGE_EVENT_DELAY, this, SLOT(switchVisibility()));
       }
 
       break;

@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
                                   false).toBool() &&
       SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
-    main_window.hide();
+    main_window.switchVisibility(true);
   }
   else {
     qDebug("Showing the main window when the application is starting.");
