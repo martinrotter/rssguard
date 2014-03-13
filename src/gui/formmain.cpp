@@ -191,13 +191,14 @@ void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || isVisible()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       hide();
+
+      m_ui->m_actionSwitchMainWindow->blockSignals(true);
+      m_ui->m_actionSwitchMainWindow->setChecked(false);
+      m_ui->m_actionSwitchMainWindow->blockSignals(false);
     }
     else {
-      setWindowState(windowState() & Qt::WindowMinimized);
+      showMinimized();
     }
-    m_ui->m_actionSwitchMainWindow->blockSignals(true);
-    m_ui->m_actionSwitchMainWindow->setChecked(false);
-    m_ui->m_actionSwitchMainWindow->blockSignals(false);
   }
   else {
     display();
