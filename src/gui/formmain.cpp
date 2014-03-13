@@ -142,7 +142,7 @@ void FormMain::prepareMenus() {
     m_ui->m_actionCheckForUpdates->setToolTip(tr("Check if new update for the application is available for download."));
 
     // Add needed items to the menu.
-    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
+    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindowTray);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
     m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
@@ -329,7 +329,7 @@ void FormMain::loadSize() {
   // If user exited the application while in fullsreen mode,
   // then re-enable it now.
   if (settings->value(APP_CFG_GUI, "start_in_fullscreen", false).toBool()) {
-    switchFullscreenMode();
+    m_ui->m_actionFullscreen->setChecked(true);
   }
 
   // Hide the main menu if user wants it.
@@ -344,11 +344,16 @@ void FormMain::loadSize() {
 
 void FormMain::saveSize() {
   Settings *settings = Settings::instance();
+  bool is_fullscreen = isFullScreen();
+
+  if (is_fullscreen) {
+    m_ui->m_actionFullscreen->setChecked(false);
+  }
 
   settings->setValue(APP_CFG_GUI, "main_menu_visible", m_mainMenuActivated);
   settings->setValue(APP_CFG_GUI, "window_position", pos());
   settings->setValue(APP_CFG_GUI, "window_size", size());
-  settings->setValue(APP_CFG_GUI, "start_in_fullscreen", isFullScreen());
+  settings->setValue(APP_CFG_GUI, "start_in_fullscreen", is_fullscreen);
 
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
@@ -368,7 +373,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
 
   // Menu "View" connections.
-  connect(m_ui->m_actionFullscreen, SIGNAL(triggered()), this, SLOT(switchFullscreenMode()));
+  connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
   connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
   connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), this, SLOT(switchMainMenu()));
 

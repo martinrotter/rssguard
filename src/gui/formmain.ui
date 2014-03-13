@@ -75,9 +75,9 @@
      <addaction name="m_actionFullscreen"/>
      <addaction name="m_actionSwitchFeedsList"/>
      <addaction name="m_actionSwitchMainMenu"/>
+     <addaction name="m_actionSwitchMainWindow"/>
     </widget>
     <addaction name="m_menuShowHide"/>
-    <addaction name="m_actionSwitchMainWindow"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -367,11 +367,14 @@
    </property>
   </action>
   <action name="m_actionSwitchMainWindow">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="checked">
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>Switch main &amp;window</string>
+    <string>Main &amp;window</string>
    </property>
    <property name="toolTip">
     <string>Hides main window if it is visible and shows it if it is hidden.</string>
@@ -489,6 +492,17 @@
    </property>
    <property name="text">
     <string>Auto-load &amp;images</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchMainWindowTray">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Switch visibility of main &amp;window</string>
+   </property>
+   <property name="toolTip">
+    <string>Hides main window if it is visible and shows it if it is hidden.</string>
    </property>
   </action>
  </widget>
