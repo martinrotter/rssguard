@@ -46,7 +46,7 @@
 FormMain *FormMain::s_instance;
 
 FormMain::FormMain(QWidget *parent)
-  : QMainWindow(parent), m_ui(new Ui::FormMain), m_mainMenuActivated(false) {
+  : QMainWindow(parent), m_ui(new Ui::FormMain) {
   m_ui->setupUi(this);
 
   // Initialize singleton.
@@ -184,8 +184,7 @@ void FormMain::switchFullscreenMode() {
 }
 
 void FormMain::switchMainMenu() {
-  m_mainMenuActivated = !m_mainMenuActivated;
-  m_ui->m_menuBar->setVisible(m_mainMenuActivated);
+  m_ui->m_menuBar->setVisible(m_ui->m_actionSwitchMainMenu->isChecked());
 }
 
 void FormMain::switchVisibility() {
@@ -333,8 +332,7 @@ void FormMain::loadSize() {
   }
 
   // Hide the main menu if user wants it.
-  if (!(m_mainMenuActivated = settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool())) {
-    m_mainMenuActivated = !m_mainMenuActivated;
+  if (!settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool()) {
     m_ui->m_actionSwitchMainMenu->setChecked(false);
   }
 
@@ -350,7 +348,7 @@ void FormMain::saveSize() {
     m_ui->m_actionFullscreen->setChecked(false);
   }
 
-  settings->setValue(APP_CFG_GUI, "main_menu_visible", m_mainMenuActivated);
+  settings->setValue(APP_CFG_GUI, "main_menu_visible", m_ui->m_actionSwitchMainMenu->isChecked());
   settings->setValue(APP_CFG_GUI, "window_position", pos());
   settings->setValue(APP_CFG_GUI, "window_size", size());
   settings->setValue(APP_CFG_GUI, "start_in_fullscreen", is_fullscreen);

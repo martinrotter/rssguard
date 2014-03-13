@@ -211,7 +211,7 @@
     <string>Switch fullscreen mode.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+F</string>
+    <string notr="true">F</string>
    </property>
   </action>
   <action name="m_actionAddBrowser">
@@ -399,7 +399,7 @@
     <string>Hides or shows the list of feeds/categories.</string>
    </property>
    <property name="shortcut">
-    <string>F</string>
+    <string notr="true">L</string>
    </property>
   </action>
   <action name="m_actionClearAllFeeds">

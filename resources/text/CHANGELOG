@@ -3,6 +3,7 @@
 
 Fixed:
 <ul>
+<li>Simplified hiding of main menu - primarily in source code.</li>
 <li>Fixed size of "normal" window display when fullscreen mode is active on application exit.</li>
 <li>Partially fixed bug #33.</li>
 <li>All datetimes fetched from feeds are now considered to be UTC.</li>
