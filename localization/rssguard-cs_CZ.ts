@@ -489,111 +489,111 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Skryje či zobrazí hlavní menu.</translation>
     </message>
     <message>
         <source>Add &amp;new feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Přidat novou položku</translation>
     </message>
     <message>
         <source>&amp;Close all tabs except current one</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zavřít všechny taby až na ten aktivní</translation>
     </message>
     <message>
         <source>&amp;Close current tab</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zavřít všechny taby</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zprávy jako &amp;přečtené</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané zprávy jako &amp;nepřečtené</translation>
     </message>
     <message>
         <source>&amp;Mark selected feeds as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané kanály jako &amp;přečtené</translation>
     </message>
     <message>
         <source>&amp;Mark selected feeds as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané kanály jako &amp;nepřečtené</translation>
     </message>
     <message>
         <source>&amp;Clean selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vyčistit vybrané kanály</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít vybrané zdrojové články v externím prohlížeči</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít vybrané zdrojové články v interním prohlížeči</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít vybrané krátké články v interním prohlížeči</translation>
     </message>
     <message>
         <source>&amp;Mark all feeds as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit všechny kanály jako &amp;přečtené</translation>
     </message>
     <message>
         <source>View selected feeds in &amp;newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit vybrané kanály v &amp;novinovém náhledu</translation>
     </message>
     <message>
         <source>&amp;Defragment database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Optimalizovat databázi</translation>
     </message>
     <message>
         <source>&amp;Clean all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vyčistit všechny kanály</translation>
     </message>
     <message>
         <source>Select &amp;next feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat &amp;další kanál/kategorii</translation>
     </message>
     <message>
         <source>Select &amp;previous feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat &amp;předchozí kanál/kategorii</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat &amp;další zprávu</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat &amp;předchozí zprávu</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Ověřit dostupnost &amp;aktualizace</translation>
     </message>
     <message>
         <source>Enable &amp;JavaScript</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit &amp;JavaScript</translation>
     </message>
     <message>
         <source>Enable external &amp;plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit externí &amp;pluginy</translation>
     </message>
     <message>
         <source>Auto-load &amp;images</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky načítat &amp;obrázky</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit/skrýt</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Přes celou &amp;obrazovku</translation>
     </message>
     <message>
         <source>Switch main &amp;window</source>
@@ -601,7 +601,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam &amp;kanálů</translation>
     </message>
     <message>
         <source>F</source>
@@ -609,7 +609,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlavní &amp;menu</translation>
     </message>
     <message>
         <source>M</source>
@@ -1150,27 +1150,27 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní externí webový prohlížeč</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály &amp;&amp; kategorie</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát čítače zpráv v seznamu kanálů</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadejte formát pro čítače zpráv, které jsou zobrazeny u každého kanálu/kategorie. Použijte zástupné symboly &quot;%all&quot; a &quot;%unread&quot;, které představují aktuální hodnoty čítačů.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation type="unfinished"></translation>
+        <translation>vlastní externí prohlížeč není správně nastaven</translation>
     </message>
 </context>
 <context>
