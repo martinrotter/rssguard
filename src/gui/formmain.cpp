@@ -184,27 +184,31 @@ void FormMain::switchMainMenu() {
 }
 
 void FormMain::switchVisibility(bool force_hide) {
-  // TODO: Kdyz neni povolena tray ikona, tak je povolena satle polozka "switch window" v menu.
-  // v pripade ze tedy neni povolena tray ikona, tak polozku switch bud disabnout
-  // nebo upravit jeji chovani aby provedla minimalizaci a ne hide.
-  // aktualne nastaveno na tu minimalizaci
   if (force_hide || isVisible()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       hide();
-
-      m_ui->m_actionSwitchMainWindow->blockSignals(true);
-      m_ui->m_actionSwitchMainWindow->setChecked(false);
-      m_ui->m_actionSwitchMainWindow->blockSignals(false);
     }
     else {
+      // Window gets minimized in single-window mode.
       showMinimized();
     }
   }
   else {
     display();
-    m_ui->m_actionSwitchMainWindow->blockSignals(true);
-    m_ui->m_actionSwitchMainWindow->setChecked(true);
-    m_ui->m_actionSwitchMainWindow->blockSignals(false);
+  }
+}
+
+void FormMain::setApplicationMode(FormMain::ApplicationMode mode) {
+  switch (mode) {
+    case Tray:
+
+      break;
+
+    case SingleWindow:
+      break;
+
+    default:
+      break;
   }
 }
 
@@ -386,7 +390,7 @@ void FormMain::createConnections() {
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
   connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), this, SLOT(switchMainMenu()));
-  connect(m_ui->m_actionSwitchMainWindow, SIGNAL(toggled(bool)), this, SLOT(switchVisibility()));
+  connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
