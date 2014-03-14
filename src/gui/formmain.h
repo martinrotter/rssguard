@@ -36,7 +36,7 @@ class FormMain : public QMainWindow {
 
   public:
     // Constructors and destructors.
-    explicit FormMain(QWidget *parent = 0);
+    explicit FormMain(QWidget *parent = 0, Qt::WindowFlags f = 0);
     virtual ~FormMain();
 
     // Returns menu for the tray icon.
