@@ -24,6 +24,7 @@
 
 #include <QEventLoop>
 #include <QTimer>
+#include <QTextDocument>
 
 
 NetworkFactory::NetworkFactory() {
