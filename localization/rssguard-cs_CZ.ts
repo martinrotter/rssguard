@@ -533,11 +533,11 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation>&amp;Otevřít vybrané zdrojové články v interním prohlížeči</translation>
+        <translation>&amp;Otevřít vybrané krátké články v interním prohlížeči</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;internal browser</source>
-        <translation>&amp;Otevřít vybrané krátké články v interním prohlížeči</translation>
+        <translation>&amp;Otevřít vybrané zdrojové články v interním prohlížeči</translation>
     </message>
     <message>
         <source>&amp;Mark all feeds as &amp;read</source>

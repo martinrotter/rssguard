@@ -21,6 +21,7 @@
 #include <QToolButton>
 
 
+// TODO: potřebuju extra třídu? mozna presunout do tabwidgetu.
 class CornerButton : public QToolButton {
     Q_OBJECT
 

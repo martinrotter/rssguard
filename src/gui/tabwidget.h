@@ -63,8 +63,6 @@ class TabWidget : public QTabWidget {
     // of main "Feeds" widget.
     void initializeTabs();
 
-    void setupMainMenuButton();
-
     // Sets up icons for this TabWidget.
     void setupIcons();
 
@@ -79,11 +77,12 @@ class TabWidget : public QTabWidget {
 
     // Sets up properties of custom corner button.
     void setupCornerButton();
+    void setupMainMenuButton();
 
     // Handlers of insertin/removing of tabs.
     void tabInserted(int index);
     void tabRemoved(int index);
-    
+
   public slots:
     // Fixes tabs indexes.
     void fixContentAfterIndexChange(int from);
@@ -102,6 +101,8 @@ class TabWidget : public QTabWidget {
     // Closes tab with given index and deletes contained widget.
     bool closeTab(int index);
     bool closeCurrentTab();
+
+    bool openMainMenu();
 
     // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();

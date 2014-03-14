@@ -70,7 +70,6 @@ FormMain::FormMain(QWidget *parent)
   addActions(allActions());
 
   // Prepare tabs.
-  m_ui->m_tabWidget->setupMainMenuButton();
   m_ui->m_tabWidget->initializeTabs();
 
   // Setup some appearance of the window.

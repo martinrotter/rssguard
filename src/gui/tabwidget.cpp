@@ -32,10 +32,10 @@
 #include <QMenu>
 
 
-TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent) {
+TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_mainMenu(NULL) {
   setTabBar(new TabBar(this));
   setupCornerButton();
-
+  setupMainMenuButton();
   createConnections();
 }
 
@@ -49,26 +49,41 @@ void TabWidget::setupCornerButton() {
 }
 
 void TabWidget::setupMainMenuButton() {
-  m_mainMenu = new QMenu("Main menu", this);
-  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFile);
-  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuView);
-  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFeeds);
-  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuMessages);
-  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuTools);
-  m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuHelp);
-
   m_menuButton = new QToolButton(this);
   m_menuButton->setAutoRaise(true);
+  m_menuButton->setToolTip(tr("Displays main menu."));
   m_menuButton->setIcon(IconThemeFactory::instance()->fromTheme("application-menu"));
   m_menuButton->setPopupMode(QToolButton::InstantPopup);
-  m_menuButton->setMenu(m_mainMenu);
+
+  connect(m_menuButton, SIGNAL(clicked()), this, SLOT(openMainMenu()));
+
   setCornerWidget(m_menuButton, Qt::TopLeftCorner);
+}
+
+bool TabWidget::openMainMenu() {
+  if (m_mainMenu == NULL) {
+    m_mainMenu = new QMenu(tr("Main menu"), this);
+    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFile);
+    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuView);
+    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFeeds);
+    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuMessages);
+    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuTools);
+    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuHelp);
+  }
+
+  QPoint button_position = m_menuButton->pos();
+  QSize target_size = m_menuButton->size() / 2.0;
+
+  button_position.setX(button_position.x() + target_size.width());
+  button_position.setY(button_position.y() + target_size.height());
+
+  m_mainMenu->exec(mapToGlobal(button_position));
 }
 
 void TabWidget::checkTabBarVisibility() {
   tabBar()->setVisible(count() > 1 || !Settings::instance()->value(APP_CFG_GUI,
-                                                                     "hide_tabbar_one_tab",
-                                                                     true).toBool());
+                                                                   "hide_tabbar_one_tab",
+                                                                   true).toBool());
 }
 
 void TabWidget::tabInserted(int index) {
@@ -224,8 +239,8 @@ int TabWidget::addLinkedBrowser(const QString &initial_url) {
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
   return addBrowser(Settings::instance()->value(APP_CFG_BROWSER,
-                                                   "queue_tabs",
-                                                   true).toBool(),
+                                                "queue_tabs",
+                                                true).toBool(),
                     false,
                     initial_url);
 }
