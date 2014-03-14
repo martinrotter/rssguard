@@ -6,6 +6,9 @@
 #include <QApplication>
 #include <QRegExp>
 #include <QWebSettings>
+#include <QProcess>
+#include <QUrl>
+#include <QDesktopServices>
 
 
 QPointer<WebFactory> WebFactory::s_instance;
@@ -27,6 +30,23 @@ void WebFactory::loadState() {
                false);
   switchPlugins(settings->value(APP_CFG_BROWSER, "enable_plugins", false).toBool(),
                 false);
+}
+
+bool WebFactory::openUrlInExternalBrowser(const QString &url) {
+  if (Settings::instance()->value(APP_CFG_BROWSER,
+                                  "custom_external_browser",
+                                  false).toBool()) {
+    QString browser = Settings::instance()->value(APP_CFG_BROWSER,
+                                                  "external_browser_executable").toString();
+    QString arguments = Settings::instance()->value(APP_CFG_BROWSER,
+                                                    "external_browser_arguments",
+                                                    "%1").toString();
+
+    return QProcess::startDetached(browser, QStringList() << arguments.arg(url));
+  }
+  else {
+    return QDesktopServices::openUrl(url);
+  }
 }
 
 void WebFactory::switchJavascript(bool enable, bool save_settings) {

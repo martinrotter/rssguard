@@ -384,6 +384,7 @@ void FormMain::createConnections() {
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
   connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
+  connect(m_ui->m_actionReportBug, SIGNAL(triggered()), this, SLOT(reportABug()));
 
   // General connections.
   connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
@@ -476,6 +477,22 @@ void FormMain::showUpdates() {
   delete form_update.data();
 
   SystemFactory::instance()->applicationCloseLock()->unlock();
+}
+
+void FormMain::reportABug() {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW)) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot open external browser"),
+                                              tr("Cannot open external browser. Navigate to application website manually."),
+                                              QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot open external browser"),
+                       tr("Cannot open external browser. Navigate to application website manually."));
+    }
+  }
 }
 
 void FormMain::showSettings() {

@@ -62,6 +62,7 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="m_actionCheckForUpdates"/>
+    <addaction name="m_actionReportBug"/>
     <addaction name="m_actionAboutGuard"/>
    </widget>
    <widget class="QMenu" name="m_menuView">
@@ -489,6 +490,11 @@
    </property>
    <property name="text">
     <string>Auto-load &amp;images</string>
+   </property>
+  </action>
+  <action name="m_actionReportBug">
+   <property name="text">
+    <string>Report a &amp;bug...</string>
    </property>
   </action>
  </widget>

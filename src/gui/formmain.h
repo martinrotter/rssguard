@@ -113,6 +113,7 @@ class FormMain : public QMainWindow {
     void showSettings();
     void showAbout();
     void showUpdates();
+    void reportABug();
 
   private:
     Ui::FormMain *m_ui;

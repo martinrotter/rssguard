@@ -20,6 +20,7 @@
 #include "core/defs.h"
 #include "core/systemfactory.h"
 #include "core/networkfactory.h"
+#include "core/webfactory.h"
 #include "gui/iconthemefactory.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
@@ -117,7 +118,7 @@ void FormUpdate::startUpdate() {
     url_file = APP_URL;
   }
 
-  if (!NetworkFactory::openUrlInExternalBrowser(url_file)) {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
                                               tr("Cannot navigate to installation file. Check new installation downloads "

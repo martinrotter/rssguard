@@ -37,6 +37,7 @@
 #define APP_EMAIL           "@APP_EMAIL@"
 #define APP_URL             "@APP_URL@"
 #define APP_URL_ISSUES      "@APP_URL_ISSUES@"
+#define APP_URL_ISSUES_NEW  "@APP_URL_ISSUES_NEW@"
 #define APP_VERSION         "@APP_VERSION@"
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@; Webkit/") + qWebKitVersion()
 

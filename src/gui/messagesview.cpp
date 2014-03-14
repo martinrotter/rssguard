@@ -21,6 +21,7 @@
 #include "core/messagesmodel.h"
 #include "core/settings.h"
 #include "core/networkfactory.h"
+#include "core/webfactory.h"
 #include "gui/formmain.h"
 #include "gui/messagebox.h"
 
@@ -243,7 +244,7 @@ void MessagesView::openSelectedSourceArticlesExternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
-    if (!NetworkFactory::openUrlInExternalBrowser(link)) {
+    if (!WebFactory::instance()->openUrlInExternalBrowser(link)) {
       MessageBox::show(this,
                        QMessageBox::Critical,
                        tr("Problem with starting external web browser"),

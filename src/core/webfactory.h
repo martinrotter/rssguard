@@ -28,15 +28,19 @@ class WebFactory : public QObject {
     QString escapeHtml(const QString &html);
     QString deEscapeHtml(const QString &text);
 
-    // Singleton getter.
-    static WebFactory *instance();
-
-  public slots:
-    // Operations.
+    // Switchers.
     bool javascriptEnabled() const;
     bool pluginsEnabled() const;
     bool autoloadImages() const;
 
+    // Singleton getter.
+    static WebFactory *instance();
+
+  public slots:
+    // Opens given string URL in external browser.
+    bool openUrlInExternalBrowser(const QString &url);
+
+    // Switchers.
     void switchJavascript(bool enable, bool save_settings = true);
     void switchPlugins(bool enable, bool save_settings = true);
     void switchImages(bool enable, bool save_settings = true);
