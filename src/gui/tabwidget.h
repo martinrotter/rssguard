@@ -102,7 +102,7 @@ class TabWidget : public QTabWidget {
     bool closeTab(int index);
     bool closeCurrentTab();
 
-    bool openMainMenu();
+    void openMainMenu();
 
     // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();

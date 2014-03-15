@@ -60,7 +60,7 @@ void TabWidget::setupMainMenuButton() {
   setCornerWidget(m_menuButton, Qt::TopLeftCorner);
 }
 
-bool TabWidget::openMainMenu() {
+void TabWidget::openMainMenu() {
   if (m_mainMenu == NULL) {
     m_mainMenu = new QMenu(tr("Main menu"), this);
     m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFile);
