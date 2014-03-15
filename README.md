@@ -10,8 +10,9 @@ Contacts
 * [groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums,
 * [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode).
 - - -
-Feeds
+Feeds & Videos
 -----
+* [www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j](http://www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j) ~videos,
 * [groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50) ~forums feed,
 * [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed.
 - - -
