@@ -6,15 +6,15 @@ Welcome to RSS Guard website. You can find here basic information. Rest is locat
 - - -
 Contacts
 --------
-* [rotter.martinos@gmail.com](mailto:rotter.martinos@gmail.com) ~e-mail,
-* [groups.google.com/d/forum/rssguard](https://groups.google.com/d/forum/rssguard) ~forums,
-* [#rssguard](http://webchat.freenode.net/?channels=#rssguard) ~irc channel (freenode).
+* [author's e-mail](mailto:rotter.martinos@gmail.com),
+* [forums](https://groups.google.com/d/forum/rssguard),
+* [IRC channel at #freenode](http://webchat.freenode.net/?channels=#rssguard).
 - - -
 Feeds & Videos
 -----
-* [www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j](http://www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j) ~videos,
-* [groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50) ~forums feed,
-* [bitbucket.org/skunkos/rssguard/rss](https://bitbucket.org/skunkos/rssguard/rss) ~homepage feed.
+* [video channel at YouTube](http://www.youtube.com/playlist?list=PL-75mFFA3wujyMyea6W1qJEV_ulh6433j),
+* [RSS channel at Google Groups](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50),
+* [RSS channel at BitBucket](https://bitbucket.org/skunkos/rssguard/rss).
 - - -
 Downloads
 ---------
