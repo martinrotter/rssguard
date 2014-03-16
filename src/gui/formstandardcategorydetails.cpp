@@ -212,7 +212,7 @@ void FormStandardCategoryDetails::initialize() {
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::instance()->fromTheme("item-new"));
+  setWindowIcon(IconThemeFactory::instance()->fromTheme("folder-category"));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);

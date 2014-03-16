@@ -271,8 +271,8 @@ void FormMain::setupIcons() {
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
-  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme("view-switch"));
-  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
+  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch-menu"));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
@@ -293,8 +293,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-remove"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme("mail-remove"));
-  m_ui->m_actionAddStandardCategory->setIcon(icon_theme_factory->fromTheme("item-new"));
-  m_ui->m_actionAddStandardFeed->setIcon(icon_theme_factory->fromTheme("item-new"));
+  m_ui->m_actionAddStandardCategory->setIcon(icon_theme_factory->fromTheme("folder-category"));
+  m_ui->m_actionAddStandardFeed->setIcon(icon_theme_factory->fromTheme("folder-feed"));
   m_ui->m_actionEditSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-edit"));
   m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
   m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
