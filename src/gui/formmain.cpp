@@ -264,8 +264,9 @@ void FormMain::setupIcons() {
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme("application-exit"));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
-  m_ui->m_actionCheckForUpdates->setIcon(IconThemeFactory::instance()->fromTheme("check-for-updates"));
+  m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme("check-for-updates"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
+  m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
 
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
