@@ -432,10 +432,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
     </message>
     <message>
-        <source>Check if new application updates are available.</source>
-        <translation>Zkontrolovat, zda nejsou k dispozici aktualizace programu.</translation>
-    </message>
-    <message>
         <source>Check if new update for the application is available for download.</source>
         <translation>Zkontrolovat, zda nejsou k dispozici aktualizace programu.</translation>
     </message>
@@ -596,24 +592,28 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Přes celou &amp;obrazovku</translation>
     </message>
     <message>
-        <source>Switch main &amp;window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
         <translation>Seznam &amp;kanálů</translation>
-    </message>
-    <message>
-        <source>F</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
         <translation>Hlavní &amp;menu</translation>
     </message>
     <message>
-        <source>M</source>
-        <translation type="unfinished"></translation>
+        <source>Switch visibility of main &amp;window</source>
+        <translation>Přepnout &amp;hlavní okno</translation>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation>Nahlásit &amp;chybu programu...</translation>
+    </message>
+    <message>
+        <source>Cannot open external browser</source>
+        <translation>Nelze otevřít externí prohlížeč webu</translation>
+    </message>
+    <message>
+        <source>Cannot open external browser. Navigate to application website manually.</source>
+        <translation>Externí webový prohlížeč nelze otevřít. Zkontrolujte aktualizace ručně na webu programu.</translation>
     </message>
 </context>
 <context>
@@ -1944,6 +1944,14 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
         <translation>Webový prohlížeč</translation>
+    </message>
+    <message>
+        <source>Displays main menu.</source>
+        <translation>ZObrazí hlavní menu.</translation>
+    </message>
+    <message>
+        <source>Main menu</source>
+        <translation>Hlavní menu</translation>
     </message>
 </context>
 <context>

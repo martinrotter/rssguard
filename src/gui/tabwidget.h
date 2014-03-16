@@ -55,6 +55,7 @@ class TabWidget : public QTabWidget {
       return static_cast<TabBar*>(QTabWidget::tabBar());
     }
 
+    // Returns the central widget of this tab.
     inline TabContent *widget(int index) const {
       return static_cast<TabContent*>(QTabWidget::widget(index));
     }

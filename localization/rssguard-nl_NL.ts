@@ -429,10 +429,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Verberg of toon de lijst van feeds/categorieën.</translation>
     </message>
     <message>
-        <source>Check if new application updates are available.</source>
-        <translation>Controleer als nieuwe Rssguard update beschikbaar is.</translation>
-    </message>
-    <message>
         <source>Check if new update for the application is available for download.</source>
         <translation>Controleer als nieuwe update voor RSSguard beschikbaar is om te downloaden.</translation>
     </message>
@@ -593,15 +589,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Switch main &amp;window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Feed list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -609,7 +597,19 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>M</source>
+        <source>Switch visibility of main &amp;window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report a &amp;bug...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open external browser. Navigate to application website manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1937,6 +1937,14 @@ Go to application website to obtain it manually.</source>
         <source>Web browser</source>
         <extracomment>Web browser default tab title.</extracomment>
         <translation>Webbrowser</translation>
+    </message>
+    <message>
+        <source>Displays main menu.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Main menu</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
