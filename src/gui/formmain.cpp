@@ -269,10 +269,11 @@ void FormMain::setupIcons() {
   m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
 
   // View.
-  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch-window"));
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
   m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch-menu"));
+  m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
