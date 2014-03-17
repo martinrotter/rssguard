@@ -68,7 +68,7 @@
     </message>
     <message>
         <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation type="unfinished"></translation>
+        <translation>La base de données n&apos;a pas été défragmentée. Le logiciel de base de données ne le supporte pas ou il est impossible de la défragmenter actuellement.</translation>
     </message>
     <message>
         <source>Toolbar for feeds</source>
@@ -139,9 +139,9 @@ Cette catégorie ne peut pas contenir d&apos;articles imbriqués.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Utiliser des paramètres spécifiques (%n minute(s) avant la prochaine mise à jour automatique)</numerusform>
+            <numerusform>Utiliser des paramètres spécifiques (%n minute(s) avant la prochaine mise à jour automatique)</numerusform>
         </translation>
     </message>
     <message>
@@ -398,7 +398,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher tout les messages depuis les flux/catégories sélectionnées dans un nouvel onglet en mode &quot;journal&quot;. Notez que les messages ne sont pas marqué lus automatiquement.</translation>
     </message>
     <message>
         <source>Add new standard category.</source>
@@ -418,7 +418,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cacher la fenêtre principale si il est visible et la montrer si il est cacher.</translation>
     </message>
     <message>
         <source>Defragment database file so that its size decreases.</source>
@@ -458,7 +458,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Marquer tout les messages dans tout les flux lus. Cela ne tient pas en compte les filtres de messages.</translation>
     </message>
     <message>
         <source>Deletes all messages from all feeds.</source>
@@ -582,19 +582,19 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer/cacher</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Plein écran</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste des &amp;flux</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Menu &amp;principal</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
@@ -818,7 +818,7 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Certains paramètres critiques ont changés et ils seront appliqués après le redémarrage de l&apos;application.</translation>
     </message>
     <message>
         <source>Critical settings were changed</source>
@@ -838,7 +838,7 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Certains paramètres critiques ne sont pas définis. Vous devez les définir dans le but de confirmer les nouveaux paramètres.</translation>
     </message>
     <message>
         <source>Messages</source>
@@ -858,7 +858,7 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notez que &quot;%1&quot; (sans les guillemets) est l&apos;espace réservé pour l&apos;URL d&apos;un message sélectionné.</translation>
     </message>
     <message>
         <source>Select web browser executable</source>
@@ -929,11 +929,21 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;usage d&apos;une base de données en mémoire a de nombreux avantages et écueils. Assurez-vous que vous êtes familier avec ces derniers avant d&apos;activer cette fonctionnalité. Avantages :
+&lt;ul&gt;
+&lt;li&gt;Vitesse plus élevée pour la manipulation des messages et des flux (spécialement avec des centaines de messages affichés),&lt;/li&gt;
+&lt;li&gt;avec la base de données stocké en RAM, le disque dur est moins sollicité.&lt;/li&gt;
+&lt;/ul&gt;
+Désavantages :
+&lt;ul&gt;
+&lt;li&gt;Si l&apos;application crash, les changements depuis la dernière session seront perdus,&lt;/li&gt;
+&lt;li&gt;Le démarrage et l&apos;arrêt de l&apos;application peuvent prendre un peu plus longtemps (max. 2 secondes).&lt;/li&gt;
+&lt;/ul&gt;
+Les auteurs de cette application NE sont PAS responsable de la perte de données.</translation>
     </message>
     <message>
         <source>in-memory database switched</source>
-        <translation type="unfinished"></translation>
+        <translation>base de données en mémoire changée</translation>
     </message>
     <message>
         <source>Internal web browser</source>
@@ -965,7 +975,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Noter que la vitesse du serveur MySQL utilisé et la latence de la connexion utilisée influent FORTEMENT la performance finale de cette application. L&apos;utilisation de connexions lentes pour la base de données conduit à une mauvaise performance lors de la navigation dans les flux ou messages.</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
@@ -985,7 +995,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le délai de connexion est l&apos;intervalle de temps qui est réservé pour le téléchargement de nouveaux messages pour le flux. Si cet intervalle de temps est écoulé, alors le processus de téléchargement est interrompu.</translation>
     </message>
     <message>
         <source> ms</source>
@@ -1021,7 +1031,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>data storage backend changed</source>
-        <translation type="unfinished"></translation>
+        <translation>Le programme de base de données a changé</translation>
     </message>
     <message>
         <source>Hostname is empty.</source>
@@ -1061,7 +1071,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Note that these settings are applied only on newly established connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>Noter que ces paramètres sont appliqués seulement sur les nouvelles connexions établies.</translation>
     </message>
     <message>
         <source>Select browser</source>
@@ -1097,7 +1107,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Keep message selection in the middle of the message list viewport</source>
-        <translation type="unfinished"></translation>
+        <translation>Garder la sélection des messages dans le milieu de la liste de messages de visualisation</translation>
     </message>
     <message>
         <source>You did not executed any connection test yet.</source>
@@ -1153,11 +1163,11 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrer un format pour le compteur des messages affiché à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%all&quot; et &quot;%unread&quot; qui sont des places réservées pour l&apos;actuel compteur de tout (ou les non-lus) messages.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation type="unfinished"></translation>
+        <translation>Le navigateur externe n&apos;a pas été correctement défini</translation>
     </message>
 </context>
 <context>
@@ -1380,7 +1390,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
     </message>
     <message>
         <source>Requires authentication</source>
@@ -1517,7 +1527,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de métadonnées trouvé aussi loin.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -1740,7 +1750,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Identifiant du fil auquel ce message appartient.</translation>
     </message>
     <message>
         <source>Title of the message.</source>
@@ -1906,7 +1916,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
-        <translation type="unfinished"></translation>
+        <translation>Changer l&apos;état de l&apos;application entre plein écran/normal depuis l&apos;icône de la barre des status.</translation>
     </message>
 </context>
 <context>
@@ -1948,7 +1958,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <name>TrayIconMenu</name>
     <message>
         <source>Close opened modal dialogs first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermer en premier les fenêtres modales ouvertes.</translation>
     </message>
 </context>
 <context>
@@ -2063,7 +2073,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Cette échec a été causé par :&lt;br&gt;&lt;ul&gt;&lt;li&gt;le non-fonctionnement de la connexion internet,&lt;/li&gt;&lt;li&gt;une adresse internet incorrecte,&lt;/li&gt;&lt;li&gt;de mauvais paramètres pour le serveur proxy,&lt;/li&gt;&lt;li&gt;une panne du côté de la destination,&lt;/li&gt;&lt;li&gt;beaucoup d&apos;autres choses.&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Web browser</source>

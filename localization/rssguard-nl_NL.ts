@@ -502,99 +502,99 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer ge&amp;selecteerde berichten als &amp;gelezen</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer ge&amp;selecteerde berichten als &amp;ongelezen</translation>
     </message>
     <message>
         <source>&amp;Mark selected feeds as read</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Markeer geselecteerde feeds als gelezen</translation>
     </message>
     <message>
         <source>&amp;Mark selected feeds as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Markeer geselecteerde bericht als ongelezen</translation>
     </message>
     <message>
         <source>&amp;Clean selected feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Wis geselecteerde feeds</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open geselecteerde bron artikelen met &amp;externe webbrowser</translation>
     </message>
     <message>
         <source>Open selected messages in &amp;internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open geselecteerde berichten met &amp;ingebouwde webbrowser</translation>
     </message>
     <message>
         <source>Open selected source articles in &amp;internal browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open geselecteerde bron artikelen met &amp;ingebouwde webbrowser</translation>
     </message>
     <message>
         <source>&amp;Mark all feeds as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Markeer alle feeds als &amp;gelezen</translation>
     </message>
     <message>
         <source>View selected feeds in &amp;newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekijk de geselecteerde items in de kra&amp;ntweergave modus</translation>
     </message>
     <message>
         <source>&amp;Defragment database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Defragmenteer database</translation>
     </message>
     <message>
         <source>&amp;Clean all feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle feeds ops&amp;chonen</translation>
     </message>
     <message>
         <source>Select &amp;next feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volge&amp;nde feeds/categorieën.</translation>
     </message>
     <message>
         <source>Select &amp;previous feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer &amp;vorige feeds/categorieën.</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volge&amp;nd bericht</translation>
     </message>
     <message>
         <source>Select &amp;previous message</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer &amp;vorige bericht</translation>
     </message>
     <message>
         <source>Check for &amp;updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer op &amp;updates</translation>
     </message>
     <message>
         <source>Enable &amp;JavaScript</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Javascript aanzetten</translation>
     </message>
     <message>
         <source>Enable external &amp;plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe &amp;plugins aanzetten</translation>
     </message>
     <message>
         <source>Auto-load &amp;images</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch afbeeld&amp;ingen laden</translation>
     </message>
     <message>
         <source>Show/hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon/verberg</translation>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Beeldvullend</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Feed lijst</translation>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofd&amp;menu</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
@@ -929,7 +929,8 @@ Disadvantages:
 &lt;li&gt;application startup and shutdown can take little longer (max. 2 seconds).&lt;/li&gt;
 &lt;/ul&gt;
 Authors of this application are NOT responsible for lost data.</source>
-        <translation>Het gebruik van in-geheugen werkende database heeft een aantal voordelen en nadelen.Zorg ervoor dat u er bekend mee bent voordat u deze functie inschakelt. Voordelen:
+        <translation>Het gebruik van in-geheugen werkende database heeft een aantal voordelen en nadelen.Zorg ervoor dat u er bekend mee bent voordat u deze functie inschakelt.
+Voordelen:
 &lt;ul&gt;
 &lt;li&gt;hogere snelheid voor feed/bericht manipulaties (vooral met duizenden berichten weergegeven),&lt;/li&gt;
 &lt;li&gt;gehele database opgeslagen in het RAM geheugen, waardoor uw harde schijf meer rust.&lt;/li&gt;
@@ -1063,7 +1064,7 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
-        <translation>Verbergen hoofdvenster wanneer het wordt geminimaliseerd</translation>
+        <translation>Verberg hoofdvenster wanneer het wordt geminimaliseerd</translation>
     </message>
     <message>
         <source>No connection test triggered so far.</source>
@@ -1125,43 +1126,49 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
 &lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
 &lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
 &lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Muisbeweging werkt met middelste muisknop. Mogelijke muisbewegingen zijn:
+&lt;ul&gt;
+&lt;li&gt;vorige webpagina (sleep muis links)&lt;/li&gt;
+&lt;li&gt;volgende webpagina(sleep muis rechts)&lt;/li&gt;
+&lt;li&gt;herlaad huidige webpagina(sleep muis omhoog)&lt;/li&gt;
+&lt;li&gt;Open nieuw webbrowser pagina(sleep muis omlaag)&lt;/li&gt;
+&lt;/ul&gt;</translation>
     </message>
     <message>
         <source>Enable JavaScript</source>
-        <translation type="unfinished"></translation>
+        <translation>Javascript aanzetten</translation>
     </message>
     <message>
         <source>Enable external plugins based on NPAPI</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe plugins gebaseerd op NPAPI aanzetten</translation>
     </message>
     <message>
         <source>Auto-load images</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch afbeeldingen laden</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt standaard de systeem  webbrowser gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepaste externe webbrowser</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Message count format in feed list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aantal bericht formaat in feeds lijst</translation>
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer formaat in voor telling van berichten weergegeven naast elke feed / categorie in feed lijst. Gebruik &quot;%alle&quot; en &quot;%ongelezen&quot; strings die tijdelijke aanduidingen zijn voor de eigenlijke telling van alle (of ongelezen) berichten zijn.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepaste externe browser in niet correct ingesteld</translation>
     </message>
 </context>
 <context>
@@ -1619,36 +1626,37 @@ de geïnstalleerde.</translation>
     </message>
     <message>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Update</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download nieuwe installatie bestanden.</translation>
     </message>
     <message>
         <source>Checking for updates failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken naar updates mislukt.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download installatie bestand voor OS/2</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
 Go to application website to obtain it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Installatie bestand in nu niet beschikbaar.
+Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>No new update available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen nieuwe update beschikbaar.</translation>
     </message>
     <message>
         <source>Cannot update application</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan RSSguard niet updaten</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet naar installatiebestand bladeren. Controleer nieuwe installatie downloads handmatig op RSSguard website</translation>
     </message>
 </context>
 <context>
@@ -1659,11 +1667,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Welcome to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkom bij %1</translation>
     </message>
     <message>
         <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;%3 is een (zeer) makelijk te gebruiken feed lezer.Het ondersteund alle grote formaten, inclusief RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Maak gebruik van all beschikbare functies die er zijn. Ook als je een bug vind, of je hebt een nieuwe functie die je wilt zien, maak dan een nieuwe &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 kan naar iedere taal worden vertaald. Contactpersoon is&lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;autheur&lt;/span&gt;&lt;/a&gt; In geval van belangstelling.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
