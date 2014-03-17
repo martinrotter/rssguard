@@ -362,8 +362,10 @@ void FormMain::saveSize() {
 
 void FormMain::createConnections() {
   // Status bar connections.
-  connect(m_statusBar->fullscreenSwitcher(), SIGNAL(clicked()),
-          m_ui->m_actionFullscreen, SLOT(trigger()));
+  connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)),
+          m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
+  connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)),
+          m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
   // Core connections.
   connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)),

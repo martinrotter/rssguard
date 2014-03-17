@@ -31,6 +31,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   // Initializations of widgets for status bar.
   m_fullscreenSwitcher = new QToolButton(this);
   m_fullscreenSwitcher->setAutoRaise(true);
+  m_fullscreenSwitcher->setCheckable(true);
   m_fullscreenSwitcher->setIcon(IconThemeFactory::instance()->fromTheme("view-fullscreen"));
   m_fullscreenSwitcher->setText(tr("Fullscreen mode"));
   m_fullscreenSwitcher->setToolTip(tr("Switch application between fulscreen/normal states right from this status bar icon."));
@@ -53,8 +54,6 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
 StatusBar::~StatusBar() {
   qDebug("Destroying StatusBar instance.");
 }
-
-
 
 void StatusBar::showProgress(int progress, const QString &label) {
   m_progressLabel->setVisible(true);
