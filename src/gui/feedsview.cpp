@@ -206,7 +206,8 @@ void FeedsView::executeNextAutoUpdate() {
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
-  QList<FeedsModelFeed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateRemainingInterval == 0);
+  QList<FeedsModelFeed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
+                                                                                   m_globalAutoUpdateRemainingInterval == 0);
 
   if (feeds_for_update.isEmpty()) {
     // No feeds are scheduled for update now, unlock the master lock.
