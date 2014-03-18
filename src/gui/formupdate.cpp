@@ -58,13 +58,6 @@ bool FormUpdate::isUpdateForThisSystem() {
   return m_updateInfo.m_urls.keys().contains(OS_ID);
 }
 
-// TODO: tady v update nacist do m_lblSupportedPlatforms
-// seznam platform ktery danej release podporuje oddelenej carkama
-// treba "Windows, OS2" atp atp.
-// ten combobox se statusem previst na normalni combobox
-// asi. jednotlivy URL souborů pro danej release
-// sou dostupny v qhashi podle klice podle OS.
-
 void FormUpdate::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> update = SystemFactory::instance()->checkForUpdates();
 
@@ -89,9 +82,6 @@ void FormUpdate::checkForUpdates() {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
-      // TODO: Display "update" button if
-      // URL of file for current platform (Windows or OS2)
-      // is available.
       m_btnUpdate->setEnabled(true);
       m_btnUpdate->setToolTip(isUpdateForThisSystem() ?
                                 tr("Download installation file for your OS.") :

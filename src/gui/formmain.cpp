@@ -64,9 +64,6 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   // Add these actions to the list of actions of the main window.
   // This allows to use actions via shortcuts
   // even if main menu is not visible.
-  // TODO: volba zobrazit/skryt hlavni menu
-  // bude li menu skryte tak jen v rohu robrazit
-  // tlacitko s tim menu.
   addActions(allActions());
 
   // Prepare tabs.

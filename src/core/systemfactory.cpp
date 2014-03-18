@@ -175,7 +175,7 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
                                                    releases_xml);
 
   if (result.second == QNetworkReply::NoError) {
-    result.first = SystemFactory::instance()->parseUpdatesFile(releases_xml);
+    result.first = parseUpdatesFile(releases_xml);
   }
 
   return result;

@@ -416,12 +416,14 @@ void FeedsView::deleteSelectedItem() {
   }
 
   if (selection_model->selectedRows().size() > 1) {
-    // User selected more than one item.
-    // Note that we can remove items only one by one.
-    // TODO: Display information balloon tip
-    // here, but only if tray icon is active.
     selection_model->clearSelection();
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
+
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot delete multiple "),
+                                              tr("Selected item cannot be deleted because feed update is ongoing."),
+                                              QSystemTrayIcon::Warning);
+    }
   }
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
