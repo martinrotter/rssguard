@@ -24,7 +24,6 @@ class WebFactory : public QObject {
     QString stripTags(QString text);
 
     // HTML entity escaping.
-    // TODO: Optimize these methods.
     QString escapeHtml(const QString &html);
     QString deEscapeHtml(const QString &text);
 
@@ -55,9 +54,11 @@ class WebFactory : public QObject {
     explicit WebFactory(QObject *parent = 0);
 
     // Escape sequences generators.
-    QMap<QString, QString> generetaEscapes();
-    QMap<QString, QString> generateDeescapes();
+    void generetaEscapes();
+    void generateDeescapes();
 
+    QMap<QString, QString> m_escapes;
+    QMap<QString, QString> m_deEscapes;
     QWebSettings *m_globalSettings;
 
     // Singleton.

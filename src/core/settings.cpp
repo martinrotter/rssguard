@@ -92,18 +92,6 @@ QSettings::Status Settings::setupSettings() {
     QDir(web_path).mkpath(web_path);
     QWebSettings::setIconDatabasePath(web_path);
 
-    // TODO: pridat http://qt-project.org/doc/qt-4.8/qwebsettings.html#WebAttribute-enum
-    // - napsat nejakou webfactory ktera bude ke qwebsettings pristupovat
-    // a upravovat dané vlastnosti
-    // do FOrmSettings Webbrowser & proxy pridat tab "Advanced" a tam
-    // naflakat vsecky zajimavy attributy
-    /*QWebSettings::globalSettings()->setAttribute(QWebSettings::DnsPrefetchEnabled,
-                                                 true);
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::AutoLoadImages,
-                                                 false);
-    QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptEnabled,
-                                                 false);*/
-
     qDebug("Initializing settings in '%s' (non-portable way).",
            qPrintable(QDir::toNativeSeparators(home_path_file)));
   }

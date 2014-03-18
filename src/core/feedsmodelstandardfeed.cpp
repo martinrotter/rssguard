@@ -366,8 +366,7 @@ void FeedsModelStandardFeed::updateMessages(const QList<Message> &messages) {
 
   // Used to check if give feed contains with message with given
   // title, url and date_created.
-  // WARNING: One feed CANNOT contain
-  // two (or more) messages with same
+  // WARNING: One feed CANNOT contain two (or more) messages with same
   // AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "

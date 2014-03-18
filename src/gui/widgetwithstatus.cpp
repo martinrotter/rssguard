@@ -27,6 +27,7 @@ WidgetWithStatus::WidgetWithStatus(QWidget *parent)
   : QWidget(parent), m_wdgInput(NULL) {
   m_layout = new QHBoxLayout(this);
   m_btnStatus = new PlainToolButton(this);
+  m_btnStatus->setFocusPolicy(Qt::NoFocus);
 
   m_iconInformation = IconThemeFactory::instance()->fromTheme("dialog-information");
   m_iconWarning = IconThemeFactory::instance()->fromTheme("dialog-warning");

@@ -13,8 +13,10 @@
 
 QPointer<WebFactory> WebFactory::s_instance;
 
-WebFactory::WebFactory(QObject *parent) : QObject(parent) {
-  m_globalSettings = QWebSettings::globalSettings();
+WebFactory::WebFactory(QObject *parent)
+  : QObject(parent), m_escapes(QMap<QString, QString>()),
+    m_deEscapes(QMap<QString, QString>()),
+    m_globalSettings(QWebSettings::globalSettings()) {
 }
 
 WebFactory::~WebFactory() {
@@ -24,12 +26,9 @@ WebFactory::~WebFactory() {
 void WebFactory::loadState() {
   Settings *settings = Settings::instance();
 
-  switchJavascript(settings->value(APP_CFG_BROWSER, "enable_javascript", true).toBool(),
-                   false);
-  switchImages(settings->value(APP_CFG_BROWSER, "enable_images", true).toBool(),
-               false);
-  switchPlugins(settings->value(APP_CFG_BROWSER, "enable_plugins", false).toBool(),
-                false);
+  switchJavascript(settings->value(APP_CFG_BROWSER, "enable_javascript", true).toBool(), false);
+  switchImages(settings->value(APP_CFG_BROWSER, "enable_images", true).toBool(), false);
+  switchPlugins(settings->value(APP_CFG_BROWSER, "enable_plugins", false).toBool(), false);
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QString &url) {
@@ -107,56 +106,50 @@ QString WebFactory::stripTags(QString text) {
 }
 
 QString WebFactory::escapeHtml(const QString &html) {
-  static QMap<QString, QString> escape_sequences = generetaEscapes();
+  if (m_escapes.isEmpty()) {
+    generetaEscapes();
+  }
 
-  QList<QString> keys = escape_sequences.uniqueKeys();
   QString output = html;
 
-  foreach (const QString &key, keys) {
-    output.replace(key, escape_sequences.value(key));
+  foreach (const QString &key, m_escapes.keys()) {
+    output = output.replace(key, m_escapes.value(key));
   }
 
   return output;
 }
 
 QString WebFactory::deEscapeHtml(const QString &text) {
-  static QMap<QString, QString> deescape_sequences = generateDeescapes();
+  if (m_deEscapes.isEmpty()) {
+    generateDeescapes();
+  }
 
-  QList<QString> keys = deescape_sequences.uniqueKeys();
   QString output = text;
 
-  foreach (const QString &key, keys) {
-    output.replace(key, deescape_sequences.value(key));
+  foreach (const QString &key, m_deEscapes.keys()) {
+    output = output.replace(key, m_deEscapes.value(key));
   }
 
   return output;
 }
 
-QMap<QString, QString> WebFactory::generetaEscapes() {
-  QMap<QString, QString> sequences;
-
-  sequences["&lt;"]     = '<';
-  sequences["&gt;"]     = '>';
-  sequences["&amp;"]    = '&';
-  sequences["&quot;"]   = '\"';
-  sequences["&nbsp;"]   = ' ';
-  sequences["&plusmn;"]	= "±";
-  sequences["&times;"]  = "×";
-  sequences["&#039;"]   = '\'';
-
-  return sequences;
+void WebFactory::generetaEscapes() {
+  m_escapes["&lt;"]     = '<';
+  m_escapes["&gt;"]     = '>';
+  m_escapes["&amp;"]    = '&';
+  m_escapes["&quot;"]   = '\"';
+  m_escapes["&nbsp;"]   = ' ';
+  m_escapes["&plusmn;"]	= "±";
+  m_escapes["&times;"]  = "×";
+  m_escapes["&#039;"]   = '\'';
 }
 
-QMap<QString, QString> WebFactory::generateDeescapes() {
-  QMap<QString, QString> sequences;
-
-  sequences["<"]  = "&lt;";
-  sequences[">"]  = "&gt;";
-  sequences["&"]  = "&amp;";
-  sequences["\""]	= "&quot;";
-  sequences["±"]  = "&plusmn;";
-  sequences["×"]  = "&times;";
-  sequences["\'"] = "&#039;";
-
-  return sequences;
+void WebFactory::generateDeescapes() {
+  m_deEscapes["<"]  = "&lt;";
+  m_deEscapes[">"]  = "&gt;";
+  m_deEscapes["&"]  = "&amp;";
+  m_deEscapes["\""]	= "&quot;";
+  m_deEscapes["±"]  = "&plusmn;";
+  m_deEscapes["×"]  = "&times;";
+  m_deEscapes["\'"] = "&#039;";
 }

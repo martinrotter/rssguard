@@ -1,4 +1,19 @@
 <body>
+<center><h2>1.9.9.8</h2></center>
+
+Fixed:
+<ul>
+<li>Informative buttons now do not accept focus.</li>
+</ul>
+
+Added:
+
+Changed:
+<ul>
+<li>Tab order and default widget changed for category/feed add/edit dialogs.</li>
+</ul>
+
+<hr/>
 <center><h2>1.9.9.7</h2></center>
 
 Fixed:

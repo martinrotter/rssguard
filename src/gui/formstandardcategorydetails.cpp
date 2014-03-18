@@ -238,10 +238,12 @@ void FormStandardCategoryDetails::initialize() {
   m_ui->m_btnIcon->setMenu(m_iconMenu);
 
   // Setup tab order.
-  setTabOrder(m_ui->m_buttonBox, m_ui->m_cmbParentCategory);
   setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_txtTitle->lineEdit());
   setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtDescription->lineEdit());
   setTabOrder(m_ui->m_txtDescription->lineEdit(), m_ui->m_btnIcon);
+  setTabOrder(m_ui->m_btnIcon, m_ui->m_buttonBox);
+
+  m_ui->m_txtTitle->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
 void FormStandardCategoryDetails::loadCategories(const QList<FeedsModelCategory*> categories,

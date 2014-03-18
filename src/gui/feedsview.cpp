@@ -547,8 +547,8 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
-                                      FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
-
+                                      FormMain::instance()->m_ui->m_actionUpdateAllFeeds <<
+                                      FormMain::instance()->m_ui->m_actionAddStandardFeed);
 }
 
 void FeedsView::setupAppearance() {
