@@ -25,11 +25,11 @@
 #include "gui/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/cornerbutton.h"
+#include "gui/plaintoolbutton.h"
 
-#include <QUrl>
 #include <QApplication>
 #include <QMenu>
+#include <QToolButton>
 
 
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_mainMenu(NULL) {
@@ -44,12 +44,18 @@ TabWidget::~TabWidget() {
 }
 
 void TabWidget::setupCornerButton() {
-  m_cornerButton = new CornerButton(this);
-  setCornerWidget(m_cornerButton);
+  m_cornerButton = new PlainToolButton(this);
+  m_cornerButton->setAutoRaise(true);
+  m_cornerButton->setToolTip(tr("Open new web browser tab."));
+  m_cornerButton->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
+
+  connect(m_cornerButton, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
+
+  setCornerWidget(m_cornerButton, Qt::TopRightCorner);
 }
 
 void TabWidget::setupMainMenuButton() {
-  m_menuButton = new QToolButton(this);
+  m_menuButton = new PlainToolButton(this);
   m_menuButton->setAutoRaise(true);
   m_menuButton->setToolTip(tr("Displays main menu."));
   m_menuButton->setIcon(IconThemeFactory::instance()->fromTheme("application-menu"));
@@ -97,7 +103,6 @@ void TabWidget::tabRemoved(int index) {
 }
 
 void TabWidget::createConnections() {
-  connect(m_cornerButton, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
   connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(fixContentsAfterMove(int,int)));

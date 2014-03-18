@@ -287,7 +287,6 @@ set(APP_SOURCES
   src/gui/tabwidget.cpp
   src/gui/tabbar.cpp
   src/gui/tabcontent.cpp
-  src/gui/cornerbutton.cpp
   src/gui/feedmessageviewer.cpp
   src/gui/feedsview.cpp
   src/gui/messagesview.cpp
@@ -359,7 +358,6 @@ set(APP_HEADERS
   src/gui/tabwidget.h
   src/gui/tabbar.h
   src/gui/tabcontent.h
-  src/gui/cornerbutton.h
   src/gui/feedmessageviewer.h
   src/gui/feedsview.h
   src/gui/messagesview.h

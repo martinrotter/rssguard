@@ -34,5 +34,11 @@ void PlainToolButton::paintEvent(QPaintEvent *e) {
   Q_UNUSED(e)
 
   QPainter p(this);
-  icon().paint(&p, QRect(QPoint(0, 0), size()));
+  QRect rect(QPoint(0, 0), size());
+
+  // TODO: adjustable "padding" of the icon.
+  //rect.adjust(2, 2, -2, -2);
+
+  // Paint the icon.
+  icon().paint(&p, rect);
 }

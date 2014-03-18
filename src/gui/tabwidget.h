@@ -27,7 +27,6 @@
 
 class QMenu;
 class QToolButton;
-class CornerButton;
 class Message;
 class FeedMessageViewer;
 
@@ -125,7 +124,7 @@ class TabWidget : public QTabWidget {
                    const QUrl &initial_url = QUrl());
 
   private:
-    CornerButton *m_cornerButton;
+    QToolButton *m_cornerButton;
     QToolButton *m_menuButton;
     QMenu *m_mainMenu;
     FeedMessageViewer *m_feedMessageViewer;
