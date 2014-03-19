@@ -87,8 +87,8 @@ void TabWidget::openMainMenu() {
 
 void TabWidget::checkTabBarVisibility() {
   bool should_be_visible = count() > 1 || !Settings::instance()->value(APP_CFG_GUI,
-                                                                     "hide_tabbar_one_tab",
-                                                                     true).toBool();
+                                                                       "hide_tabbar_one_tab",
+                                                                       true).toBool();
 
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
