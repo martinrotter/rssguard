@@ -132,7 +132,7 @@ void WebBrowser::initializeLayout() {
   m_loadingProgress->setFixedHeight(15);
   m_loadingProgress->setMinimum(0);
   m_loadingProgress->setMaximum(100);
-  m_loadingProgress->setVisible(true);
+  m_loadingProgress->setAttribute(Qt::WA_TranslucentBackground);
 
   m_loadingLayout = new QHBoxLayout();
   m_loadingLayout->setMargin(0);
@@ -145,18 +145,27 @@ void WebBrowser::initializeLayout() {
   m_layout->addWidget(m_loadingProgress);
   m_layout->setMargin(0);
   m_layout->setSpacing(0);
+
+  m_loadingProgress->hide();
 }
 
 void WebBrowser::onLoadingStarted() {
-
+  m_loadingProgress->setValue(0);
+  m_loadingProgress->show();
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
   m_txtLocation->setProgress(progress);
+  m_loadingProgress->setValue(progress);
+
+  m_lblProgress->setText(tr(" %1 kB / %2 kB").
+                         arg(m_webView->page()->bytesReceived() / 1000).
+                         arg(m_webView->page()->totalBytes() / 1000));
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
   m_txtLocation->clearProgress();
+  m_loadingProgress->hide();
 }
 
 void WebBrowser::createConnections() {
