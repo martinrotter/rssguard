@@ -51,8 +51,6 @@ void TabWidget::setupCornerButton() {
   m_btnAddTab->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
 
   connect(m_btnAddTab, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
-
-  setCornerWidget(m_btnAddTab, Qt::TopRightCorner);
 }
 
 void TabWidget::setupMainMenuButton() {
@@ -64,8 +62,6 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
 
   connect(m_btnMainMenu, SIGNAL(clicked()), this, SLOT(openMainMenu()));
-
-  setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
 }
 
 void TabWidget::openMainMenu() {
@@ -90,9 +86,26 @@ void TabWidget::openMainMenu() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  tabBar()->setVisible(count() > 1 || !Settings::instance()->value(APP_CFG_GUI,
-                                                                   "hide_tabbar_one_tab",
-                                                                   true).toBool());
+  bool should_be_visible = count() > 1 || !Settings::instance()->value(APP_CFG_GUI,
+                                                                     "hide_tabbar_one_tab",
+                                                                     true).toBool();
+
+  if (should_be_visible) {
+    setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
+    setCornerWidget(m_btnAddTab, Qt::TopRightCorner);
+
+    m_btnMainMenu->setVisible(true);
+    m_btnAddTab->setVisible(true);
+  }
+  else {
+    setCornerWidget(0, Qt::TopLeftCorner);
+    setCornerWidget(0, Qt::TopRightCorner);
+
+    m_btnMainMenu->setVisible(false);
+    m_btnAddTab->setVisible(false);
+  }
+
+  tabBar()->setVisible(should_be_visible);
 }
 
 void TabWidget::tabInserted(int index) {
