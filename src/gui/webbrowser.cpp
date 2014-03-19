@@ -27,12 +27,14 @@
 #include "gui/tabwidget.h"
 
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QToolBar>
 #include <QAction>
 #include <QWebFrame>
 #include <QWidgetAction>
 #include <QSlider>
 #include <QLabel>
+#include <QProgressBar>
 #include <QToolButton>
 
 
@@ -123,29 +125,55 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionStop);
   m_toolBar->addWidget(m_txtLocation);
 
+  // Initialize dynamic progress bar which will be displayed
+  // at the bottom of web browser.
+  m_lblProgress = new QLabel(this);
+  m_loadingProgress = new QProgressBar(this);
+  m_loadingProgress->setFixedHeight(15);
+  m_loadingProgress->setMinimum(0);
+  m_loadingProgress->setMaximum(100);
+  m_loadingProgress->setVisible(true);
+
+  m_loadingLayout = new QHBoxLayout();
+  m_loadingLayout->setMargin(0);
+  m_loadingLayout->addWidget(m_lblProgress, 0, Qt::AlignLeft|Qt::AlignVCenter);
+  m_loadingProgress->setLayout(m_loadingLayout);
+
   // Setup layout.
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
+  m_layout->addWidget(m_loadingProgress);
   m_layout->setMargin(0);
   m_layout->setSpacing(0);
 }
 
+void WebBrowser::onLoadingStarted() {
+
+}
+
+void WebBrowser::onLoadingProgress(int progress) {
+  m_txtLocation->setProgress(progress);
+}
+
+void WebBrowser::onLoadingFinished(bool success) {
+  m_txtLocation->clearProgress();
+}
+
 void WebBrowser::createConnections() {
   // When user confirms new url, then redirect to it.
-  connect(m_txtLocation,SIGNAL(submitted(QString)),
-          this, SLOT(navigateToUrl(QString)));
+  connect(m_txtLocation,SIGNAL(submitted(QString)), this, SLOT(navigateToUrl(QString)));
   // If new page loads, then update current url.
   connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
 
   // Connect this WebBrowser to global TabWidget.
   TabWidget *tab_widget = FormMain::instance()->tabWidget();
   connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
-  connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)),
-          tab_widget, SLOT(addLinkedBrowser(QUrl)));
+  connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)), tab_widget, SLOT(addLinkedBrowser(QUrl)));
 
   // Change location textbox status according to webpage status.
-  connect(m_webView, SIGNAL(loadProgress(int)), m_txtLocation, SLOT(setProgress(int)));
-  connect(m_webView, SIGNAL(loadFinished(bool)), m_txtLocation, SLOT(clearProgress()));
+  connect(m_webView, SIGNAL(loadStarted()), this, SLOT(onLoadingStarted()));
+  connect(m_webView, SIGNAL(loadProgress(int)), this, SLOT(onLoadingProgress(int)));
+  connect(m_webView, SIGNAL(loadFinished(bool)), this, SLOT(onLoadingFinished(bool)));
 
   // Forward title/icon changes.
   connect(m_webView, SIGNAL(titleChanged(QString)), this, SLOT(onTitleChanged(QString)));

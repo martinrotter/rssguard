@@ -31,7 +31,10 @@
 
 class QToolButton;
 class QVBoxLayout;
+class QHBoxLayout;
+class QProgressBar;
 class QMenu;
+class QLabel;
 class WebBrowserNetworkAccessManager;
 class TabWidget;
 
@@ -111,6 +114,10 @@ class WebBrowser : public TabContent {
     void initializeLayout();
 
   protected slots:
+    void onLoadingStarted();
+    void onLoadingProgress(int progress);
+    void onLoadingFinished(bool success);
+
     // Updates zoom-related gui.
     void updateZoomGui();
 
@@ -138,6 +145,9 @@ class WebBrowser : public TabContent {
     LocationLineEdit *m_txtLocation;
     QWidget *m_zoomButtons;
     QToolButton *m_btnResetZoom;
+    QHBoxLayout *m_loadingLayout;
+    QProgressBar *m_loadingProgress;
+    QLabel *m_lblProgress;
 
     QWidgetAction *m_actionZoom;
     QAction *m_actionBack;
