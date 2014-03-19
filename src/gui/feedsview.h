@@ -24,6 +24,26 @@
 #include "core/feedsmodel.h"
 #include "core/settings.h"
 
+/*
+#include <QStyledItemDelegate>
+#include <QPainter>
+
+class Del : public QStyledItemDelegate {
+    Q_OBJECT
+
+  protected:
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+      painter->setBrush(Qt::SolidPattern);
+      painter->setPen(Qt::SolidLine);
+
+      QRect rc(option.rect);
+      rc.adjust(2, 2, -2, -2);
+
+      painter->fillRect(rc, Qt::gray);
+      painter->drawText(rc, "123", Qt::AlignCenter | Qt::AlignVCenter);
+    }
+};
+*/
 
 class FeedsProxyModel;
 class FeedsModelFeed;
