@@ -24,7 +24,7 @@
 #include <QStyleOption>
 
 
-PlainToolButton::PlainToolButton(QWidget *parent) : QToolButton(parent) {
+PlainToolButton::PlainToolButton(QWidget *parent) : QToolButton(parent), m_padding(0) {
 }
 
 PlainToolButton::~PlainToolButton() {
@@ -36,9 +36,24 @@ void PlainToolButton::paintEvent(QPaintEvent *e) {
   QPainter p(this);
   QRect rect(QPoint(0, 0), size());
 
-  // TODO: adjustable "padding" of the icon.
-  //rect.adjust(2, 2, -2, -2);
+  // Set padding.
+  rect.adjust(m_padding, m_padding, -m_padding, -m_padding);
 
   // Paint the icon.
+  if (underMouse()) {
+    p.setOpacity(0.7);
+  }
+
   icon().paint(&p, rect);
 }
+
+int PlainToolButton::padding() const {
+  return m_padding;
+}
+
+void PlainToolButton::setPadding(int padding) {
+  m_padding = padding;
+
+  repaint();
+}
+

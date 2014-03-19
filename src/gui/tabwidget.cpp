@@ -32,7 +32,7 @@
 #include <QToolButton>
 
 
-TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_mainMenu(NULL) {
+TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent), m_menuMain(NULL) {
   setTabBar(new TabBar(this));
   setupCornerButton();
   setupMainMenuButton();
@@ -44,46 +44,48 @@ TabWidget::~TabWidget() {
 }
 
 void TabWidget::setupCornerButton() {
-  m_cornerButton = new PlainToolButton(this);
-  m_cornerButton->setAutoRaise(true);
-  m_cornerButton->setToolTip(tr("Open new web browser tab."));
-  m_cornerButton->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
+  m_btnAddTab = new PlainToolButton(this);
+  m_btnAddTab->setAutoRaise(true);
+  m_btnAddTab->setPadding(3);
+  m_btnAddTab->setToolTip(tr("Open new web browser tab."));
+  m_btnAddTab->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
 
-  connect(m_cornerButton, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
+  connect(m_btnAddTab, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
 
-  setCornerWidget(m_cornerButton, Qt::TopRightCorner);
+  setCornerWidget(m_btnAddTab, Qt::TopRightCorner);
 }
 
 void TabWidget::setupMainMenuButton() {
-  m_menuButton = new PlainToolButton(this);
-  m_menuButton->setAutoRaise(true);
-  m_menuButton->setToolTip(tr("Displays main menu."));
-  m_menuButton->setIcon(IconThemeFactory::instance()->fromTheme("application-menu"));
-  m_menuButton->setPopupMode(QToolButton::InstantPopup);
+  m_btnMainMenu = new PlainToolButton(this);
+  m_btnMainMenu->setAutoRaise(true);
+  m_btnMainMenu->setPadding(3);
+  m_btnMainMenu->setToolTip(tr("Displays main menu."));
+  m_btnMainMenu->setIcon(IconThemeFactory::instance()->fromTheme("application-menu"));
+  m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
 
-  connect(m_menuButton, SIGNAL(clicked()), this, SLOT(openMainMenu()));
+  connect(m_btnMainMenu, SIGNAL(clicked()), this, SLOT(openMainMenu()));
 
-  setCornerWidget(m_menuButton, Qt::TopLeftCorner);
+  setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
 }
 
 void TabWidget::openMainMenu() {
-  if (m_mainMenu == NULL) {
-    m_mainMenu = new QMenu(tr("Main menu"), this);
-    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFile);
-    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuView);
-    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuFeeds);
-    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuMessages);
-    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuTools);
-    m_mainMenu->addMenu(FormMain::instance()->m_ui->m_menuHelp);
+  if (m_menuMain == NULL) {
+    m_menuMain = new QMenu(tr("Main menu"), this);
+    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuFile);
+    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuView);
+    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuFeeds);
+    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuMessages);
+    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuTools);
+    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuHelp);
   }
 
-  QPoint button_position = m_menuButton->pos();
-  QSize target_size = m_menuButton->size() / 2.0;
+  QPoint button_position = m_btnMainMenu->pos();
+  QSize target_size = m_btnMainMenu->size() / 2.0;
 
   button_position.setX(button_position.x() + target_size.width());
   button_position.setY(button_position.y() + target_size.height());
 
-  m_mainMenu->exec(mapToGlobal(button_position));
+  m_menuMain->exec(mapToGlobal(button_position));
 }
 
 void TabWidget::checkTabBarVisibility() {
@@ -139,7 +141,7 @@ void TabWidget::setupIcons() {
   }
 
   // Setup corner button icon.
-  m_cornerButton->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
+  m_btnAddTab->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
 }
 
 bool TabWidget::closeTab(int index) {

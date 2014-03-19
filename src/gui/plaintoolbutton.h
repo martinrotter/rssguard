@@ -29,9 +29,16 @@ class PlainToolButton : public QToolButton {
     explicit PlainToolButton(QWidget *parent = 0);
     virtual ~PlainToolButton();
 
+    // Padding changers.
+    int padding() const;
+    void setPadding(int padding);
+
   protected:
     // Custom look.
     void paintEvent(QPaintEvent *e);
+
+  private:
+    int m_padding;
 };
 
 #endif // CLOSEBUTTON_H
