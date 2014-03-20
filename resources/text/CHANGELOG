@@ -8,12 +8,16 @@ Fixed:
 
 Added:
 <ul>
+<li>Added option to clear keyboard shortcuts.</li>
+<li>Added "progress bar" to web browser.</li>
+<li>Added blue color to feeds/categories which contain unread msgs.</li>
 <li>Added new "greeen" skin.</li>
 <li>Added "Web browser" menu to corner main menu button.</li>
 </ul>
 
 Changed:
 <ul>
+<li>Removed "progress bar" from address text edit of web browser.</li>
 <li>Removed "blau" skin due to its slowness.</li>
 <li>Tab order and default widget changed for category/feed add/edit dialogs.</li>
 <li>New style for tab widget corner buttons.</li>

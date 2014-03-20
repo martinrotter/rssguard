@@ -274,6 +274,9 @@ QVariant FeedsModelStandardFeed::data(int column, int role) const {
         return QVariant();
       }
 
+    case Qt::ForegroundRole:
+      return countOfUnreadMessages() > 0 ? QColor(0, 64, 255) : QVariant();
+
     default:
       return QVariant();
   }

@@ -64,16 +64,21 @@ class ShortcutCatcher : public QWidget {
     void doneRecording();
 
   public slots:
-    inline void clearShortcut() {
+    inline void resetShortcut() {
       setShortcut(m_defaultSequence);
+    }
+
+    inline void clearShortcut() {
+      setShortcut(QKeySequence());
     }
 
   signals:
     void shortcutChanged(const QKeySequence &seguence);
 
   private:
-    QToolButton *m_clearButton;
-    ShortcutButton *m_sequenceButton;
+    QToolButton *m_btnReset;
+    QToolButton *m_btnClear;
+    ShortcutButton *m_btnChange;
     QHBoxLayout *m_layout;
 
     QKeySequence m_currentSequence;

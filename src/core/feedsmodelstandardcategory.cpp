@@ -69,13 +69,7 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
       }
 
     case Qt::ForegroundRole:
-      if (m_childItems.size() == 0) {
-        // TODO: Make this configurable.
-        return QColor(Qt::red);
-      }
-      else {
-        return QVariant();
-      }
+      return countOfUnreadMessages() > 0 ? QColor(0, 64, 255) : QVariant();
 
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {

@@ -155,7 +155,6 @@ void WebBrowser::onLoadingStarted() {
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
-  m_txtLocation->setProgress(progress);
   m_loadingProgress->setValue(progress);
 
   m_lblProgress->setText(tr(" %1 kB / %2 kB").
@@ -164,7 +163,6 @@ void WebBrowser::onLoadingProgress(int progress) {
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
-  m_txtLocation->clearProgress();
   m_loadingProgress->hide();
 }
 
