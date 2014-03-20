@@ -24,7 +24,6 @@
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
 #include "gui/formmain.h"
-#include "gui/formwelcome.h"
 #include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
@@ -103,12 +102,6 @@ int main(int argc, char *argv[]) {
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
   DynamicShortcuts::load(main_window.allActions());
-
-  // Display welcome dialog if application is launched for the first time.
-  if (Settings::instance()->value(APP_CFG_GEN, "first_start", true).toBool()) {
-    Settings::instance()->setValue(APP_CFG_GEN, "first_start", false);
-    FormWelcome(&main_window).exec();
-  }
 
   // Display main window.
   if (Settings::instance()->value(APP_CFG_GUI, "start_hidden",

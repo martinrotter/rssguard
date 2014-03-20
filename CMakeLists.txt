@@ -275,7 +275,6 @@ set(APP_SOURCES
   src/gui/iconthemefactory.cpp
   src/gui/skinfactory.cpp
   src/gui/formsettings.cpp
-  src/gui/formwelcome.cpp
   src/gui/formabout.cpp
   src/gui/shortcutcatcher.cpp
   src/gui/shortcutbutton.cpp
@@ -346,7 +345,6 @@ set(APP_HEADERS
   src/gui/iconthemefactory.h
   src/gui/skinfactory.h
   src/gui/formsettings.h
-  src/gui/formwelcome.h
   src/gui/formabout.h
   src/gui/shortcutcatcher.h
   src/gui/shortcutbutton.h
@@ -394,7 +392,6 @@ set(APP_FORMS
   src/gui/formupdate.ui
   src/gui/formmain.ui
   src/gui/formsettings.ui
-  src/gui/formwelcome.ui
   src/gui/formabout.ui
   src/gui/formstandardcategorydetails.ui
   src/gui/formstandardfeeddetails.ui
