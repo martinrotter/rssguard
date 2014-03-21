@@ -45,6 +45,8 @@ FeedsView::FeedsView(QWidget *parent)
     m_contextMenuCategoriesFeeds(NULL),
     m_contextMenuEmptySpace(NULL),
     m_autoUpdateTimer(new QTimer(this)) {
+  setObjectName("FeedsView");
+
   // Allocate models.
   m_proxyModel = new FeedsProxyModel(this);
   m_sourceModel = m_proxyModel->sourceModel();
