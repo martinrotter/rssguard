@@ -133,5 +133,3 @@ void ShortcutCatcher::updateDisplayShortcut() {
 
   m_btnChange->setText(str);
 }
-
-

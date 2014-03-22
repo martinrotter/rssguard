@@ -68,8 +68,8 @@ QVariant FeedsModelStandardCategory::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::ForegroundRole:
-      return countOfUnreadMessages() > 0 ? QColor(0, 64, 255) : QVariant();
+    case Qt::FontRole:
+      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {

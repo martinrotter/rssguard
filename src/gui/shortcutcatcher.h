@@ -54,14 +54,15 @@ class ShortcutCatcher : public QWidget {
       return m_currentSequence;
     }
 
-    inline void setShortcut(const QKeySequence &key) {
-      m_currentSequence = m_defaultSequence = key;
-      doneRecording();
+    inline void setDefaultShortcut(const QKeySequence &key) {
+      m_defaultSequence = key;
+      setShortcut(key);
     }
 
-  protected slots:
-    void startRecording();
-    void doneRecording();
+    inline void setShortcut(const QKeySequence &key) {
+      m_currentSequence = key;
+      doneRecording();
+    }
 
   public slots:
     inline void resetShortcut() {
@@ -71,6 +72,10 @@ class ShortcutCatcher : public QWidget {
     inline void clearShortcut() {
       setShortcut(QKeySequence());
     }
+
+  protected slots:
+    void startRecording();
+    void doneRecording();
 
   signals:
     void shortcutChanged(const QKeySequence &seguence);

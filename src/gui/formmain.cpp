@@ -120,7 +120,8 @@ QList<QAction*> FormMain::allActions() {
              m_ui->m_actionSelectNextFeedCategory <<
              m_ui->m_actionSelectPreviousFeedCategory <<
              m_ui->m_actionSelectNextMessage <<
-             m_ui->m_actionSelectPreviousMessage;
+             m_ui->m_actionSelectPreviousMessage <<
+             m_ui->m_actionDefragmentDatabase;
 
   return actions;
 }

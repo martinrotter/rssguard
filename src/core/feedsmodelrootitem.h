@@ -21,6 +21,7 @@
 #include <QIcon>
 
 #include <QDateTime>
+#include <QFont>
 
 
 // Represents ROOT item of FeedsModel.
@@ -91,7 +92,7 @@ class FeedsModelRootItem {
 
     // Checks whether THIS object is child (direct or indirect)
     // of the given root.
-    bool isChildOf(FeedsModelRootItem *root) {     
+    bool isChildOf(FeedsModelRootItem *root) {
       FeedsModelRootItem *this_item = this;
 
       while (this_item->kind() != FeedsModelRootItem::RootItem) {
@@ -169,12 +170,17 @@ class FeedsModelRootItem {
     static bool lessThan(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);
 
   protected:
+    void setupFonts();
+
     Kind m_kind;
     int m_id;
     QString m_title;
     QString m_description;
     QIcon m_icon;
     QDateTime m_creationDate;
+
+    QFont m_normalFont;
+    QFont m_boldFont;
 
     QList<FeedsModelRootItem*> m_childItems;
     FeedsModelRootItem *m_parentItem;

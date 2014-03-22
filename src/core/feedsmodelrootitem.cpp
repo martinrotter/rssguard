@@ -25,6 +25,7 @@
 FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
   : m_kind(FeedsModelRootItem::RootItem),
     m_parentItem(parent_item) {
+  setupFonts();
 }
 
 FeedsModelRootItem::~FeedsModelRootItem() {
@@ -33,7 +34,11 @@ FeedsModelRootItem::~FeedsModelRootItem() {
   qDeleteAll(m_childItems);
 }
 
-
+void FeedsModelRootItem::setupFonts() {
+  m_normalFont = QtSingleApplication::font("FeedsView");
+  m_boldFont = m_normalFont;
+  m_boldFont.setBold(true);
+}
 
 int FeedsModelRootItem::row() const {
   if (m_parentItem) {

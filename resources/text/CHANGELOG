@@ -4,10 +4,12 @@
 Fixed:
 <ul>
 <li>Informative buttons now do not accept focus.</li>
+<li>Button for resetting keyboard shortcut now works.</li>
 </ul>
 
 Added:
 <ul>
+<li>"Defragment database" button shortcut is now changeable.</li>
 <li>Added option to clear keyboard shortcuts.</li>
 <li>Added "progress bar" to web browser.</li>
 <li>Added blue color to feeds/categories which contain unread msgs.</li>
