@@ -5,6 +5,7 @@ Fixed:
 <ul>
 <li>Informative buttons now do not accept focus.</li>
 <li>Button for resetting keyboard shortcut now works.</li>
+<li>Fixed web browser tab title/icon handling (bug #39).</li>
 </ul>
 
 Added:
