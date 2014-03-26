@@ -38,6 +38,7 @@ class FeedsView : public QTreeView {
     explicit FeedsView(QWidget *parent = 0);
     virtual ~FeedsView();
 
+    // Fundamental accessors.
     inline FeedsProxyModel *model() {
       return m_proxyModel;
     }
@@ -66,6 +67,8 @@ class FeedsView : public QTreeView {
     FeedsModelCategory *isCurrentIndexCategory() const;
     FeedsModelFeed *isCurrentIndexFeed() const;
 
+    // Saves/loads expand states of all nodes (feeds/categories) of the list
+    // to/from settings.
     void saveExpandedStates();
     void loadExpandedStates();
 
@@ -82,7 +85,6 @@ class FeedsView : public QTreeView {
     void markSelectedFeedsReadStatus(int read);
     void markSelectedFeedsRead();
     void markSelectedFeedsUnread();
-
     void markAllFeedsReadStatus(int read);
     void markAllFeedsRead();
 
@@ -124,6 +126,7 @@ class FeedsView : public QTreeView {
                              m_sourceModel->countOfAllMessages());
     }
 
+    // Selects next/previous item (feed/category) in the list.
     void selectNextItem();
     void selectPreviousItem();
 

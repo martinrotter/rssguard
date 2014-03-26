@@ -431,6 +431,8 @@ void FeedsView::deleteSelectedItem() {
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
     // Item WAS removed, update counts.
+    // TODO:_I do not need to update counts of all items here.
+    // Updating counts of parent item (feed) should be enough.
     updateCountsOfAllFeeds(true);
   }
   else {
