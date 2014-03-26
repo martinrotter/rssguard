@@ -21,8 +21,8 @@
 #include "core/settings.h"
 #include "core/parsingfactory.h"
 #include "core/databasefactory.h"
-#include "core/networkfactory.h"
 #include "core/textfactory.h"
+#include "network-web/networkfactory.h"
 #include "gui/iconfactory.h"
 #include "gui/iconthemefactory.h"
 

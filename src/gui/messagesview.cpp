@@ -20,8 +20,8 @@
 #include "core/messagesproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/settings.h"
-#include "core/networkfactory.h"
-#include "core/webfactory.h"
+#include "network-web/networkfactory.h"
+#include "network-web/webfactory.h"
 #include "gui/formmain.h"
 #include "gui/messagebox.h"
 

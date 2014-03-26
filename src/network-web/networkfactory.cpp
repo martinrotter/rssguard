@@ -15,11 +15,11 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/networkfactory.h"
+#include "network-web/networkfactory.h"
 
 #include "core/defs.h"
-#include "core/silentnetworkaccessmanager.h"
 #include "core/settings.h"
+#include "network-web/silentnetworkaccessmanager.h"
 
 #include <QEventLoop>
 #include <QTimer>

@@ -18,7 +18,7 @@
 #include "core/systemfactory.h"
 
 #include "core/defs.h"
-#include "core/networkfactory.h"
+#include "network-web/networkfactory.h"
 
 #if defined(Q_OS_WIN)
 #include "qtsingleapplication/qtsingleapplication.h"

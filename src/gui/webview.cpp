@@ -19,7 +19,7 @@
 
 #include "core/defs.h"
 #include "core/settings.h"
-#include "core/webpage.h"
+#include "network-web/webpage.h"
 #include "gui/skinfactory.h"
 #include "gui/iconthemefactory.h"
 

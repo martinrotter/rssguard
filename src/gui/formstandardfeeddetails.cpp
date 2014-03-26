@@ -23,7 +23,7 @@
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
-#include "core/networkfactory.h"
+#include "network-web/networkfactory.h"
 #include "gui/iconthemefactory.h"
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"

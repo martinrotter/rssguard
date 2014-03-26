@@ -21,7 +21,7 @@
 #include "core/settings.h"
 #include "core/systemfactory.h"
 #include "core/databasefactory.h"
-#include "core/webfactory.h"
+#include "network-web/webfactory.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/feedsview.h"

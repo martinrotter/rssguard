@@ -18,8 +18,8 @@
 #include "gui/webbrowser.h"
 
 #include "core/defs.h"
-#include "core/webbrowsernetworkaccessmanager.h"
-#include "core/webpage.h"
+#include "network-web/webbrowsernetworkaccessmanager.h"
+#include "network-web/webpage.h"
 #include "gui/skinfactory.h"
 #include "gui/webview.h"
 #include "gui/formmain.h"
