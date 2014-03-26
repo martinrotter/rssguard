@@ -15,13 +15,13 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/webbrowser.h"
+#include "network-web/webbrowser.h"
 
 #include "core/defs.h"
 #include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/webpage.h"
+#include "network-web/webview.h"
 #include "gui/skinfactory.h"
-#include "gui/webview.h"
 #include "gui/formmain.h"
 #include "gui/iconthemefactory.h"
 #include "gui/tabwidget.h"

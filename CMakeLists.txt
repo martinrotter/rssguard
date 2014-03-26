@@ -279,8 +279,6 @@ set(APP_SOURCES
   src/gui/shortcutcatcher.cpp
   src/gui/shortcutbutton.cpp
   src/gui/dynamicshortcutswidget.cpp
-  src/gui/webbrowser.cpp
-  src/gui/webview.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
   src/gui/tabwidget.cpp
@@ -326,6 +324,8 @@ set(APP_SOURCES
   src/network-web/silentnetworkaccessmanager.cpp
   src/network-web/networkfactory.cpp
   src/network-web/webfactory.cpp
+  src/network-web/webbrowser.cpp
+  src/network-web/webview.cpp
 
   # MAIN sources.
   src/main.cpp
@@ -349,8 +349,6 @@ set(APP_HEADERS
   src/gui/shortcutcatcher.h
   src/gui/shortcutbutton.h
   src/gui/dynamicshortcutswidget.h
-  src/gui/webbrowser.h
-  src/gui/webview.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
   src/gui/tabwidget.h
@@ -387,6 +385,8 @@ set(APP_HEADERS
   src/network-web/webbrowsernetworkaccessmanager.h
   src/network-web/silentnetworkaccessmanager.h
   src/network-web/webfactory.h
+  src/network-web/webbrowser.h
+  src/network-web/webview.h
 )
 
 # Add form files.

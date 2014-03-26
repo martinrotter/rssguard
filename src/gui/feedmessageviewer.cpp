@@ -23,7 +23,7 @@
 #include "core/feeddownloader.h"
 #include "core/feedsmodelfeed.h"
 #include "core/systemfactory.h"
-#include "gui/webbrowser.h"
+#include "network-web/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/iconthemefactory.h"
 #include "gui/messagesview.h"

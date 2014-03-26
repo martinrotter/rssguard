@@ -18,7 +18,7 @@
 #include "network-web/webpage.h"
 
 #include "network-web/webbrowsernetworkaccessmanager.h"
-#include "gui/webbrowser.h"
+#include "network-web/webbrowser.h"
 
 #include <QNetworkReply>
 #include <QWebFrame>

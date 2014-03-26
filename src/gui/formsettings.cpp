@@ -27,6 +27,7 @@
 #include "network-web/webfactory.h"
 #include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webbrowser.h"
 #include "core/feedsmodel.h"
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
@@ -34,7 +35,6 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/formmain.h"
-#include "gui/webbrowser.h"
 #include "gui/messagebox.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
