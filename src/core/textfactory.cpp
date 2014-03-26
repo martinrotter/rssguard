@@ -50,7 +50,6 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 
       if (time_zone_offset.isValid()) {
         positive_time_zone_offset = pattern.at(0) == '+';
-
         break;
       }
     }
