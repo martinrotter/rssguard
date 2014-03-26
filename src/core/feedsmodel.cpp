@@ -19,8 +19,8 @@
 
 #include "core/defs.h"
 #include "core/databasefactory.h"
-#include "core/feedsmodelstandardcategory.h"
-#include "core/feedsmodelstandardfeed.h"
+#include "core/feedsmodelcategory.h"
+#include "core/feedsmodelfeed.h"
 #include "core/textfactory.h"
 #include "gui/iconthemefactory.h"
 #include "gui/iconfactory.h"
@@ -177,7 +177,7 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   return false;
 }
 
-bool FeedsModel::addStandardCategory(FeedsModelStandardCategory *category,
+bool FeedsModel::addCategory(FeedsModelCategory *category,
                                      FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
@@ -225,8 +225,8 @@ bool FeedsModel::addStandardCategory(FeedsModelStandardCategory *category,
   return true;
 }
 
-bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_category,
-                                      FeedsModelStandardCategory *new_category) {
+bool FeedsModel::editCategory(FeedsModelCategory *original_category,
+                                      FeedsModelCategory *new_category) {
   QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
@@ -281,7 +281,7 @@ bool FeedsModel::editStandardCategory(FeedsModelStandardCategory *original_categ
   return true;
 }
 
-bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
+bool FeedsModel::addFeed(FeedsModelFeed *feed,
                                  FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
@@ -336,8 +336,8 @@ bool FeedsModel::addStandardFeed(FeedsModelStandardFeed *feed,
   return true;
 }
 
-bool FeedsModel::editStandardFeed(FeedsModelStandardFeed *original_feed,
-                                  FeedsModelStandardFeed *new_feed) {
+bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
+                                  FeedsModelFeed *new_feed) {
   QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
@@ -413,34 +413,32 @@ QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now)
   QList<FeedsModelFeed*> feeds_for_update;
 
   foreach (FeedsModelFeed *feed, allFeeds()) {
-    FeedsModelStandardFeed *std_feed = static_cast<FeedsModelStandardFeed*>(feed);
-
-    switch (std_feed->autoUpdateType()) {
-      case FeedsModelStandardFeed::DontAutoUpdate:
+    switch (feed->autoUpdateType()) {
+      case FeedsModelFeed::DontAutoUpdate:
         // Do not auto-update this feed ever.
         continue;
 
-      case FeedsModelStandardFeed::DefaultAutoUpdate:
+      case FeedsModelFeed::DefaultAutoUpdate:
         if (auto_update_now) {
           feeds_for_update.append(feed);
         }
 
         break;
 
-      case FeedsModelStandardFeed::SpecificAutoUpdate:
+      case FeedsModelFeed::SpecificAutoUpdate:
       default:
-        int remaining_interval = std_feed->autoUpdateRemainingInterval();
+        int remaining_interval = feed->autoUpdateRemainingInterval();
 
         if (--remaining_interval <= 0) {
           // Interval of this feed passed, include this feed in the output list
           // and reset the interval.
           feeds_for_update.append(feed);
-          std_feed->setAutoUpdateRemainingInterval(std_feed->autoUpdateInitialInterval());
+          feed->setAutoUpdateRemainingInterval(feed->autoUpdateInitialInterval());
         }
         else {
           // Interval did not pass, set new decremented interval and do NOT
           // include this feed in the output list.
-          std_feed->setAutoUpdateRemainingInterval(remaining_interval);
+          feed->setAutoUpdateRemainingInterval(remaining_interval);
         }
 
         break;
@@ -613,13 +611,12 @@ void FeedsModel::loadFromDatabase() {
       case FeedsModelCategory::Standard: {
         CategoryAssignmentItem pair;
         pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-        pair.second = FeedsModelStandardCategory::loadFromRecord(query_categories.record());
+        pair.second = FeedsModelCategory::loadFromRecord(query_categories.record());
 
         categories << pair;
         break;
       }
 
-      case FeedsModelCategory::Feedly:
       default:
         break;
     }
@@ -639,13 +636,13 @@ void FeedsModel::loadFromDatabase() {
     FeedsModelFeed::Type type = static_cast<FeedsModelFeed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
 
     switch (type) {
-      case FeedsModelFeed::StandardAtom10:
-      case FeedsModelFeed::StandardRdf:
-      case FeedsModelFeed::StandardRss0X:
-      case FeedsModelFeed::StandardRss2X: {
+      case FeedsModelFeed::Atom10:
+      case FeedsModelFeed::Rdf:
+      case FeedsModelFeed::Rss0X:
+      case FeedsModelFeed::Rss2X: {
         FeedAssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = FeedsModelStandardFeed::loadFromRecord(query_feeds.record());
+        pair.second = FeedsModelFeed::loadFromRecord(query_feeds.record());
         pair.second->setType(type);
 
         feeds << pair;

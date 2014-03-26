@@ -115,8 +115,8 @@ QList<QAction*> FormMain::allActions() {
              m_ui->m_actionEditSelectedFeedCategory <<
              m_ui->m_actionDeleteSelectedFeedCategory <<
              m_ui->m_actionViewSelectedItemsNewspaperMode <<
-             m_ui->m_actionAddStandardCategory <<
-             m_ui->m_actionAddStandardFeed <<
+             m_ui->m_actionAddCategory <<
+             m_ui->m_actionAddFeed <<
              m_ui->m_actionSelectNextFeedCategory <<
              m_ui->m_actionSelectPreviousFeedCategory <<
              m_ui->m_actionSelectNextMessage <<
@@ -291,8 +291,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-remove"));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme("mail-remove"));
-  m_ui->m_actionAddStandardCategory->setIcon(icon_theme_factory->fromTheme("folder-category"));
-  m_ui->m_actionAddStandardFeed->setIcon(icon_theme_factory->fromTheme("folder-feed"));
+  m_ui->m_actionAddCategory->setIcon(icon_theme_factory->fromTheme("folder-category"));
+  m_ui->m_actionAddFeed->setIcon(icon_theme_factory->fromTheme("folder-feed"));
   m_ui->m_actionEditSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-edit"));
   m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
   m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
@@ -308,7 +308,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme("go-up"));
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme("go-down"));
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme("go-up"));
-
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

@@ -19,11 +19,12 @@
 
 #include "core/defs.h"
 #include "core/silentnetworkaccessmanager.h"
-#include "core/feedsmodelstandardfeed.h"
 #include "core/settings.h"
 
 #include <QEventLoop>
 #include <QTimer>
+#include <QIcon>
+#include <QPixmap>
 #include <QTextDocument>
 
 

@@ -320,8 +320,6 @@ set(APP_SOURCES
   src/core/feedsmodelcategory.cpp
   src/core/feedsmodelrootitem.cpp
   src/core/feedsmodelfeed.cpp
-  src/core/feedsmodelstandardcategory.cpp
-  src/core/feedsmodelstandardfeed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
   src/core/networkfactory.cpp

@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -111,8 +120,8 @@
      <property name="title">
       <string>Add &amp;new feed/category</string>
      </property>
-     <addaction name="m_actionAddStandardCategory"/>
-     <addaction name="m_actionAddStandardFeed"/>
+     <addaction name="m_actionAddCategory"/>
+     <addaction name="m_actionAddFeed"/>
     </widget>
     <addaction name="m_actionUpdateAllFeeds"/>
     <addaction name="m_actionUpdateSelectedFeedsCategories"/>
@@ -300,12 +309,12 @@
     <string>Deletes all messages from selected feeds.</string>
    </property>
   </action>
-  <action name="m_actionAddStandardFeed">
+  <action name="m_actionAddFeed">
    <property name="text">
-    <string>New standard &amp;feed</string>
+    <string>New &amp;feed</string>
    </property>
    <property name="toolTip">
-    <string>Add new standard feed.</string>
+    <string>Add new feed.</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
@@ -323,12 +332,12 @@
     <string>Open selected source articles in &amp;internal browser</string>
    </property>
   </action>
-  <action name="m_actionAddStandardCategory">
+  <action name="m_actionAddCategory">
    <property name="text">
-    <string>New standard &amp;category</string>
+    <string>New &amp;category</string>
    </property>
    <property name="toolTip">
-    <string>Add new standard category.</string>
+    <string>Add new category.</string>
    </property>
   </action>
   <action name="m_actionNoActions">

@@ -22,8 +22,6 @@
 #include <QApplication>
 
 
-class FeedsModelStandardFeed;
-
 class NetworkFactory {
     Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
 

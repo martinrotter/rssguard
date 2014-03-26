@@ -17,8 +17,6 @@
 
 #include "core/silentnetworkaccessmanager.h"
 
-#include "core/feedsmodelstandardfeed.h"
-
 #include <QNetworkReply>
 #include <QAuthenticator>
 #include <QApplication>

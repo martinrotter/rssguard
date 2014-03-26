@@ -28,8 +28,6 @@
 
 class FeedsModelCategory;
 class FeedsModelFeed;
-class FeedsModelStandardCategory;
-class FeedsModelStandardFeed;
 
 typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
 typedef QPair<int, FeedsModelCategory*> CategoryAssignmentItem;
@@ -72,20 +70,20 @@ class FeedsModel : public QAbstractItemModel {
     bool removeItem(const QModelIndex &index);
 
     // Standard category manipulators.
-    bool addStandardCategory(FeedsModelStandardCategory *category,
-                             FeedsModelRootItem *parent);
-    bool editStandardCategory(FeedsModelStandardCategory *original_category,
-                              FeedsModelStandardCategory *new_category);
+    bool addCategory(FeedsModelCategory *category,
+                     FeedsModelRootItem *parent);
+    bool editCategory(FeedsModelCategory *original_category,
+                      FeedsModelCategory *new_category);
 
     // Standard feed manipulators.
-    bool addStandardFeed(FeedsModelStandardFeed *feed,
-                         FeedsModelRootItem *parent);
+    bool addFeed(FeedsModelFeed *feed,
+                 FeedsModelRootItem *parent);
 
     // New feed is just temporary feed, it is not added to the model.
     // It is used to fetch its data to the original feed
     // and the original feed is moved if needed.
-    bool editStandardFeed(FeedsModelStandardFeed *original_feed,
-                          FeedsModelStandardFeed *new_feed);
+    bool editFeed(FeedsModelFeed *original_feed,
+                  FeedsModelFeed *new_feed);
 
     // Returns the list of updates which should be updated
     // according to auto-update schedule.

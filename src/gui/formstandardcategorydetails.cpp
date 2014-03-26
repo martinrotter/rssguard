@@ -20,7 +20,6 @@
 #include "core/defs.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
-#include "core/feedsmodelstandardcategory.h"
 #include "core/feedsmodel.h"
 #include "gui/iconthemefactory.h"
 #include "gui/feedsview.h"
@@ -70,7 +69,7 @@ void FormStandardCategoryDetails::createConnections() {
   connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
 }
 
-void FormStandardCategoryDetails::setEditableCategory(FeedsModelStandardCategory *editable_category) {
+void FormStandardCategoryDetails::setEditableCategory(FeedsModelCategory *editable_category) {
   m_editableCategory = editable_category;
 
   m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) editable_category->parent())));
@@ -79,7 +78,7 @@ void FormStandardCategoryDetails::setEditableCategory(FeedsModelStandardCategory
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category) {
+int FormStandardCategoryDetails::exec(FeedsModelCategory *input_category) {
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(),
                  m_feedsModel->rootItem(),
@@ -105,7 +104,7 @@ int FormStandardCategoryDetails::exec(FeedsModelStandardCategory *input_category
 
 void FormStandardCategoryDetails::apply() {
   FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  FeedsModelStandardCategory *new_category = new FeedsModelStandardCategory();
+  FeedsModelCategory *new_category = new FeedsModelCategory();
 
   new_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   new_category->setCreationDate(QDateTime::currentDateTime());
@@ -115,7 +114,7 @@ void FormStandardCategoryDetails::apply() {
 
   if (m_editableCategory == NULL) {
     // Add the category.
-    if (m_feedsModel->addStandardCategory(new_category, parent)) {
+    if (m_feedsModel->addCategory(new_category, parent)) {
       accept();
     }
     else {
@@ -133,7 +132,7 @@ void FormStandardCategoryDetails::apply() {
     }
   }
   else {
-    if (m_feedsModel->editStandardCategory(m_editableCategory, new_category)) {
+    if (m_feedsModel->editCategory(m_editableCategory, new_category)) {
       accept();
     }
     else {

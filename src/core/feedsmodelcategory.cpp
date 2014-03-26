@@ -17,12 +17,20 @@
 
 #include "core/feedsmodelcategory.h"
 
-#include "core/feedsmodelstandardcategory.h"
-#include "core/feedsmodelstandardfeed.h"
+#include "core/defs.h"
+#include "core/databasefactory.h"
+#include "core/textfactory.h"
+#include "core/settings.h"
+#include "gui/iconthemefactory.h"
+#include "gui/iconfactory.h"
+
+#include <QVariant>
+#include <QSqlQuery>
 
 
 FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item) {
+  m_type = Standard;
   m_kind = FeedsModelRootItem::Category;
 }
 
@@ -40,4 +48,113 @@ FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
 }
 
 FeedsModelCategory::~FeedsModelCategory() {
+  qDebug("Destroying FeedsModelCategory instance.");
+}
+
+QVariant FeedsModelCategory::data(int column, int role) const {
+  switch (role) {
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        //: Tooltip for standard feed.
+        return tr("%1 (category)\n"
+                  "%2%3").arg(m_title,
+                              m_description,
+                              m_childItems.size() == 0 ?
+                                tr("\n\nThis category does not contain any nested items.") :
+                                "");
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        //: Tooltip for "unread" column of feed list.
+        return tr("%n unread message(s).", "", countOfUnreadMessages());
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::EditRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_title;
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        return countOfUnreadMessages();
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::FontRole:
+      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
+
+    case Qt::DisplayRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_title;
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        return Settings::instance()->value(APP_CFG_FEEDS,
+                                           "count_format",
+                                           "(%unread)").toString()
+            .replace("%unread", QString::number(countOfUnreadMessages()))
+            .replace("%all", QString::number(countOfAllMessages()));
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::DecorationRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_icon;
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::TextAlignmentRole:
+      if (column == FDS_MODEL_COUNTS_INDEX) {
+        return Qt::AlignCenter;
+      }
+      else {
+        return QVariant();
+      }
+
+    default:
+      return QVariant();
+  }
+}
+
+bool FeedsModelCategory::removeItself() {
+  bool result = true;
+
+  // Remove all child items (feeds, categories.)
+  foreach (FeedsModelRootItem *child, m_childItems) {
+    result &= child->removeItself();
+  }
+
+  if (!result) {
+    return result;
+  }
+
+  // Children are removed, remove this standard category too.
+  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelCategory",
+                                                                  DatabaseFactory::FromSettings);
+  QSqlQuery query_remove(database);
+
+  query_remove.setForwardOnly(true);
+
+  // Remove all messages from this standard feed.
+  query_remove.prepare("DELETE FROM Categories WHERE id = :category;");
+  query_remove.bindValue(":category", id());
+
+  return query_remove.exec();
+}
+
+FeedsModelCategory *FeedsModelCategory::loadFromRecord(const QSqlRecord &record) {
+  FeedsModelCategory *category = new FeedsModelCategory(NULL);
+
+  category->setId(record.value(CAT_DB_ID_INDEX).toInt());
+  category->setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
+  category->setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
+  category->setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+  category->setIcon(IconFactory::fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
+
+  return category;
 }

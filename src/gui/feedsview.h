@@ -103,12 +103,12 @@ class FeedsView : public QTreeView {
     void deleteSelectedItem();
 
     // Standard category manipulators.
-    void addNewStandardCategory();
-    void editStandardCategory(FeedsModelStandardCategory *category);
+    void addNewCategory();
+    void editCategory(FeedsModelCategory *category);
 
     // Standard feed manipulators.
-    void addNewStandardFeed();
-    void editStandardFeed(FeedsModelStandardFeed *feed);
+    void addNewFeed();
+    void editFeed(FeedsModelFeed *feed);
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too = true);

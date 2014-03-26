@@ -21,7 +21,7 @@
 #include "core/databasefactory.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
-#include "core/feedsmodelstandardfeed.h"
+#include "core/feedsmodelfeed.h"
 #include "core/systemfactory.h"
 #include "gui/webbrowser.h"
 #include "gui/formmain.h"
@@ -249,10 +249,10 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
   connect(form_main->m_ui->m_actionUpdateAllFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(updateAllFeeds()));
-  connect(form_main->m_ui->m_actionAddStandardCategory,
-          SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardCategory()));
-  connect(form_main->m_ui->m_actionAddStandardFeed,
-          SIGNAL(triggered()), m_feedsView, SLOT(addNewStandardFeed()));
+  connect(form_main->m_ui->m_actionAddCategory,
+          SIGNAL(triggered()), m_feedsView, SLOT(addNewCategory()));
+  connect(form_main->m_ui->m_actionAddFeed,
+          SIGNAL(triggered()), m_feedsView, SLOT(addNewFeed()));
   connect(form_main->m_ui->m_actionEditSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
