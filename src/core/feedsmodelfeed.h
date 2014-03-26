@@ -21,19 +21,36 @@
 #include "core/feedsmodelrootitem.h"
 
 #include <QMetaType>
+#include <QDateTime>
+#include <QSqlRecord>
+#include <QPair>
+#include <QNetworkReply>
+#include <QApplication>
+
+
+class Message;
 
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
 class FeedsModelFeed : public FeedsModelRootItem {
+    Q_DECLARE_TR_FUNCTIONS(FeedsModelFeed)
+
   public:
     // Describes possible types of feeds.
     // NOTE: This is equivalent to attribute Feeds(type).
     enum Type {
-      StandardRss0X   = 0,
-      StandardRss2X   = 1,
-      StandardRdf     = 2,
-      StandardAtom10  = 3
+      Rss0X   = 0,
+      Rss2X   = 1,
+      Rdf     = 2,
+      Atom10  = 3
+    };
+
+    // Specifies the auto-update strategy for the feed.
+    enum AutoUpdateType {
+      DontAutoUpdate = 0,
+      DefaultAutoUpdate = 1,
+      SpecificAutoUpdate = 2
     };
 
     // Constructors and destructors.
@@ -49,12 +66,15 @@ class FeedsModelFeed : public FeedsModelRootItem {
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 
-    // Each feed can be "updated".
-    // NOTE: This method is used in the "update worker".
-    // For example, it can fetch new messages from a remote destination
-    // and store them in a local database and so on.
-    virtual void update() {
-    }
+    // Obtains data related to this feed.
+    QVariant data(int column, int role) const;
+
+    // Perform fetching of new messages.
+    void update();
+
+    // Removes this standard feed from persistent
+    // storage.
+    bool removeItself();
 
     // Other getters/setters.
     inline Type type() const {
@@ -89,6 +109,61 @@ class FeedsModelFeed : public FeedsModelRootItem {
       m_password = password;
     }
 
+    inline QString encoding() const {
+      return m_encoding;
+    }
+
+    inline void setEncoding(const QString &encoding) {
+      m_encoding = encoding;
+    }
+
+    inline QString url() const {
+      return m_url;
+    }
+
+    inline void setUrl(const QString &url) {
+      m_url = url;
+    }
+
+    inline int autoUpdateInitialInterval() const {
+      return m_autoUpdateInitialInterval;
+    }
+
+    inline void setAutoUpdateInitialInterval(int auto_update_interval) {
+      // If new initial auto-update interval is set, then
+      // we should reset time that remains to the next auto-update.
+      m_autoUpdateInitialInterval = auto_update_interval;
+      m_autoUpdateRemainingInterval = auto_update_interval;
+    }
+
+    inline AutoUpdateType autoUpdateType() const {
+      return m_autoUpdateType;
+    }
+
+    inline void setAutoUpdateType(const AutoUpdateType &autoUpdateType) {
+      m_autoUpdateType = autoUpdateType;
+    }
+
+    inline int autoUpdateRemainingInterval() const {
+      return m_autoUpdateRemainingInterval;
+    }
+
+    inline void setAutoUpdateRemainingInterval(int autoUpdateRemainingInterval) {
+      m_autoUpdateRemainingInterval = autoUpdateRemainingInterval;
+    }
+
+    // Loads standard feed object from given SQL record.
+    static FeedsModelFeed *loadFromRecord(const QSqlRecord &record);
+
+    // Tries to guess feed hidden under given URL
+    // and uses given credentials.
+    // Returns pointer to guessed feed (if at least partially
+    // guessed) and retrieved error/status code from network layer
+    // or NULL feed.
+    static QPair<FeedsModelFeed*, QNetworkReply::NetworkError> guessFeed(const QString &url,
+                                                                         const QString &username,
+                                                                         const QString &password);
+
     // Converts particular feed type to string.
     static QString typeToString(Type type);
 
@@ -97,6 +172,12 @@ class FeedsModelFeed : public FeedsModelRootItem {
     void updateCounts(bool including_total_count = true);
 
   protected:
+    // Persistently stores given messages into the database
+    // and updates existing messages if newer version is
+    // available.
+    void updateMessages(const QList<Message> &messages);
+
+  private:
     bool m_passwordProtected;
     QString m_username;
     QString m_password;
@@ -104,6 +185,13 @@ class FeedsModelFeed : public FeedsModelRootItem {
     Type m_type;
     int m_totalCount;
     int m_unreadCount;
+
+    AutoUpdateType m_autoUpdateType;
+    int m_autoUpdateInitialInterval;
+    int m_autoUpdateRemainingInterval;
+
+    QString m_encoding;
+    QString m_url;
 };
 
 Q_DECLARE_METATYPE(FeedsModelFeed::Type)

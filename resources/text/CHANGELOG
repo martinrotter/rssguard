@@ -5,6 +5,7 @@ Fixed:
 <ul>
 <li>Informative buttons now do not accept focus.</li>
 <li>Button for resetting keyboard shortcut now works.</li>
+<li>Fixed web browser tab title/icon handling (bug #39).</li>
 </ul>
 
 Added:
@@ -19,6 +20,7 @@ Added:
 
 Changed:
 <ul>
+<li>Massive code cleanups.</li>
 <li>Removed "progress bar" from address text edit of web browser.</li>
 <li>Removed "blau" skin due to its slowness.</li>
 <li>Tab order and default widget changed for category/feed add/edit dialogs.</li>

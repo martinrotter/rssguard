@@ -15,10 +15,10 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/webpage.h"
+#include "network-web/webpage.h"
 
-#include "core/webbrowsernetworkaccessmanager.h"
-#include "gui/webbrowser.h"
+#include "network-web/webbrowsernetworkaccessmanager.h"
+#include "network-web/webbrowser.h"
 
 #include <QNetworkReply>
 #include <QWebFrame>

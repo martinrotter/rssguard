@@ -28,7 +28,7 @@ namespace Ui {
 }
 
 class FeedsModelCategory;
-class FeedsModelStandardCategory;
+class FeedsModelCategory;
 class FeedsModel;
 class FeedsModelRootItem;
 class QMenu;
@@ -44,7 +44,7 @@ class FormStandardCategoryDetails : public QDialog {
 
   public slots:
     // Executes add/edit standard category dialog.
-    int exec(FeedsModelStandardCategory *input_category);
+    int exec(FeedsModelCategory *input_category);
 
   protected slots:
     // Applies changes.
@@ -64,7 +64,7 @@ class FormStandardCategoryDetails : public QDialog {
     void createConnections();
 
     // Sets the category which will be edited.
-    void setEditableCategory(FeedsModelStandardCategory *editable_category);
+    void setEditableCategory(FeedsModelCategory *editable_category);
 
     // Initializes the dialog.
     void initialize();
@@ -78,7 +78,7 @@ class FormStandardCategoryDetails : public QDialog {
 
   private:
     Ui::FormStandardCategoryDetails *m_ui;
-    FeedsModelStandardCategory *m_editableCategory;
+    FeedsModelCategory *m_editableCategory;
     FeedsModel *m_feedsModel;
 
     QMenu *m_iconMenu;

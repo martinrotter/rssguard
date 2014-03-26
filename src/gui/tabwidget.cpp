@@ -20,9 +20,9 @@
 #include "core/defs.h"
 #include "core/settings.h"
 #include "core/textfactory.h"
+#include "network-web/webbrowser.h"
 #include "gui/tabbar.h"
 #include "gui/iconthemefactory.h"
-#include "gui/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
@@ -109,20 +109,33 @@ void TabWidget::checkTabBarVisibility() {
 }
 
 void TabWidget::tabInserted(int index) {
-  QTabWidget::tabInserted(index);
+  QTabWidget::tabInserted(index); 
   checkTabBarVisibility();
+
+  int count_of_tabs = count();
+
+  if (index < count_of_tabs - 1 && count_of_tabs > 1) {
+    // New tab was inserted and the tab is not the last one.
+    fixContentsAfterMove(index, count_of_tabs - 1);
+  }
 }
 
 void TabWidget::tabRemoved(int index) {
   QTabWidget::tabRemoved(index);
   checkTabBarVisibility();
+
+  int count_of_tabs = count();
+
+  if (index < count_of_tabs && count_of_tabs > 1) {
+    // Some tab was removed and the tab was not the last one.
+    fixContentsAfterMove(index, count_of_tabs - 1);
+  }
 }
 
 void TabWidget::createConnections() {
   connect(tabBar(), SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
   connect(tabBar(), SIGNAL(emptySpaceDoubleClicked()), this, SLOT(addEmptyBrowser()));
   connect(tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(fixContentsAfterMove(int,int)));
-  connect(tabBar(), SIGNAL(currentChanged(int)), this, SLOT(fixContentAfterIndexChange(int)));
 }
 
 void TabWidget::initializeTabs() {
@@ -324,17 +337,12 @@ void TabWidget::changeTitle(int index, const QString &new_title) {
   setTabToolTip(index, new_title);
 }
 
-void TabWidget::fixContentAfterIndexChange(int from) {
-  fixContentsIndexes(from, count() - 1);
-}
-
 void TabWidget::fixContentsAfterMove(int from, int to) {
-  fixContentsIndexes(qMin(from, to), qMax(from, to));
-}
+  from = qMin(from, to);
+  to = qMax(from, to);
 
-void TabWidget::fixContentsIndexes(int starting_index, int ending_index) {
-  for ( ; starting_index <= ending_index; starting_index++) {
-    TabContent *content = static_cast<TabContent*>(widget(starting_index));
-    content->setIndex(starting_index);
+  for ( ; from <= to; from++) {
+    TabContent *content = static_cast<TabContent*>(widget(from));
+    content->setIndex(from);
   }
 }

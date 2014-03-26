@@ -85,11 +85,7 @@ class TabWidget : public QTabWidget {
 
   public slots:
     // Fixes tabs indexes.
-    void fixContentAfterIndexChange(int from);
     void fixContentsAfterMove(int from, int to);
-
-    // Fixes indexes of tab contents.
-    void fixContentsIndexes(int starting_index, int ending_index);
 
     // Called when number of tab pages changes.
     void checkTabBarVisibility();

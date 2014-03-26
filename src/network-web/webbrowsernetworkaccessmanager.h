@@ -18,7 +18,7 @@
 #ifndef WEBBROWSERNETWORKACCESSMANAGER_H
 #define WEBBROWSERNETWORKACCESSMANAGER_H
 
-#include "core/basenetworkaccessmanager.h"
+#include "network-web/basenetworkaccessmanager.h"
 
 #include <QPointer>
 

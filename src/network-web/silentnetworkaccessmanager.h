@@ -18,7 +18,7 @@
 #ifndef SILENTNETWORKACCESSMANAGER_H
 #define SILENTNETWORKACCESSMANAGER_H
 
-#include "core/basenetworkaccessmanager.h"
+#include "network-web/basenetworkaccessmanager.h"
 
 #include <QPointer>
 

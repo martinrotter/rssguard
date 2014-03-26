@@ -279,8 +279,6 @@ set(APP_SOURCES
   src/gui/shortcutcatcher.cpp
   src/gui/shortcutbutton.cpp
   src/gui/dynamicshortcutswidget.cpp
-  src/gui/webbrowser.cpp
-  src/gui/webview.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
   src/gui/tabwidget.cpp
@@ -307,10 +305,6 @@ set(APP_SOURCES
   src/core/systemfactory.cpp
   src/core/localization.cpp
   src/core/dynamicshortcuts.cpp
-  src/core/basenetworkaccessmanager.cpp
-  src/core/webpage.cpp
-  src/core/webbrowsernetworkaccessmanager.cpp
-  src/core/silentnetworkaccessmanager.cpp
   src/core/textfactory.cpp
   src/core/databasefactory.cpp
   src/core/messagesmodel.cpp
@@ -320,14 +314,20 @@ set(APP_SOURCES
   src/core/feedsmodelcategory.cpp
   src/core/feedsmodelrootitem.cpp
   src/core/feedsmodelfeed.cpp
-  src/core/feedsmodelstandardcategory.cpp
-  src/core/feedsmodelstandardfeed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
-  src/core/networkfactory.cpp
-  src/core/webfactory.cpp
 
-  # Basic application sources.
+  # NETWORK-WEB sources.
+  src/network-web/basenetworkaccessmanager.cpp
+  src/network-web/webpage.cpp
+  src/network-web/webbrowsernetworkaccessmanager.cpp
+  src/network-web/silentnetworkaccessmanager.cpp
+  src/network-web/networkfactory.cpp
+  src/network-web/webfactory.cpp
+  src/network-web/webbrowser.cpp
+  src/network-web/webview.cpp
+
+  # MAIN sources.
   src/main.cpp
 )
 
@@ -349,8 +349,6 @@ set(APP_HEADERS
   src/gui/shortcutcatcher.h
   src/gui/shortcutbutton.h
   src/gui/dynamicshortcutswidget.h
-  src/gui/webbrowser.h
-  src/gui/webview.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
   src/gui/tabwidget.h
@@ -373,10 +371,7 @@ set(APP_HEADERS
   # CORE headers.
   src/core/settings.h
   src/core/localization.h
-  src/core/basenetworkaccessmanager.h
-  src/core/webbrowsernetworkaccessmanager.h
-  src/core/silentnetworkaccessmanager.h
-  src/core/webpage.h
+  src/network-web/webpage.h
   src/core/systemfactory.h
   src/core/databasefactory.h
   src/core/messagesmodel.h
@@ -384,7 +379,14 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
-  src/core/webfactory.h
+
+  # NETWORK-WEB headers.
+  src/network-web/basenetworkaccessmanager.h
+  src/network-web/webbrowsernetworkaccessmanager.h
+  src/network-web/silentnetworkaccessmanager.h
+  src/network-web/webfactory.h
+  src/network-web/webbrowser.h
+  src/network-web/webview.h
 )
 
 # Add form files.
@@ -454,6 +456,7 @@ endif(${USE_QT_5})
 include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_SOURCE_DIR}/src/gui
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/network-web
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )

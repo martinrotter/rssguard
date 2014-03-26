@@ -24,8 +24,7 @@
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
-#include "core/feedsmodelstandardfeed.h"
-#include "core/feedsmodelstandardcategory.h"
+#include "core/feedsmodelfeed.h"
 #include "gui/formmain.h"
 #include "gui/formstandardcategorydetails.h"
 #include "gui/formstandardfeeddetails.h"
@@ -250,7 +249,7 @@ void FeedsView::clearAllFeeds() {
   setAllFeedsClearStatus(1);
 }
 
-void FeedsView::addNewStandardCategory() {
+void FeedsView::addNewCategory() {
   if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -281,7 +280,7 @@ void FeedsView::addNewStandardCategory() {
   SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
-void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
+void FeedsView::editCategory(FeedsModelCategory *category) {
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(category);
@@ -289,7 +288,7 @@ void FeedsView::editStandardCategory(FeedsModelStandardCategory *category) {
   delete form_pointer.data();
 }
 
-void FeedsView::addNewStandardFeed() {
+void FeedsView::addNewFeed() {
   if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
@@ -320,7 +319,7 @@ void FeedsView::addNewStandardFeed() {
   SystemFactory::instance()->applicationCloseLock()->unlock();
 }
 
-void FeedsView::editStandardFeed(FeedsModelStandardFeed *feed) {
+void FeedsView::editFeed(FeedsModelFeed *feed) {
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(feed);
@@ -359,7 +358,7 @@ void FeedsView::editSelectedItem() {
     switch (category->type()) {
       case FeedsModelCategory::Standard: {
         // User wants to edit standard category.
-        editStandardCategory(static_cast<FeedsModelStandardCategory*>(category));
+        editCategory(static_cast<FeedsModelCategory*>(category));
         break;
       }
 
@@ -370,12 +369,12 @@ void FeedsView::editSelectedItem() {
   else if ((feed = isCurrentIndexFeed()) != NULL) {
     // Feed is selected.
     switch (feed->type()) {
-      case FeedsModelFeed::StandardAtom10:
-      case FeedsModelFeed::StandardRdf:
-      case FeedsModelFeed::StandardRss0X:
-      case FeedsModelFeed::StandardRss2X: {
+      case FeedsModelFeed::Atom10:
+      case FeedsModelFeed::Rdf:
+      case FeedsModelFeed::Rss0X:
+      case FeedsModelFeed::Rss2X: {
         // User wants to edit standard feed.
-        editStandardFeed(static_cast<FeedsModelStandardFeed*>(feed));
+        editFeed(static_cast<FeedsModelFeed*>(feed));
         break;
       }
 
@@ -431,6 +430,8 @@ void FeedsView::deleteSelectedItem() {
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
     // Item WAS removed, update counts.
+    // TODO:_I do not need to update counts of all items here.
+    // Updating counts of parent item (feed) should be enough.
     updateCountsOfAllFeeds(true);
   }
   else {
@@ -551,7 +552,8 @@ void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
                                       FormMain::instance()->m_ui->m_actionUpdateAllFeeds <<
-                                      FormMain::instance()->m_ui->m_actionAddStandardFeed);
+                                      FormMain::instance()->m_ui->m_actionAddCategory <<
+                                      FormMain::instance()->m_ui->m_actionAddFeed);
 }
 
 void FeedsView::setupAppearance() {

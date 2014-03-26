@@ -19,8 +19,8 @@
 #define WEBBROWSER_H
 
 #include "core/messagesmodel.h"
+#include "network-web/webview.h"
 #include "gui/tabcontent.h"
-#include "gui/webview.h"
 #include "gui/locationlineedit.h"
 
 #include <QWidget>
