@@ -20,7 +20,7 @@
 #include "core/debugging.h"
 #include "core/localization.h"
 #include "core/settings.h"
-#include "core/dynamicshortcuts.h"
+#include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "gui/iconthemefactory.h"
 #include "gui/skinfactory.h"
 #include "gui/formmain.h"

@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/dynamicshortcuts.h"
+#include "dynamic-shortcuts/dynamicshortcuts.h"
 
 #include "core/defs.h"
 #include "core/settings.h"

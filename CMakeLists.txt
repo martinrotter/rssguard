@@ -265,7 +265,7 @@ endif(MINGW AND WIN32)
 set(APP_SOURCES
   ${APP_SOURCES}
 
-  # QtSingleApplication suite sources.
+  # QTSINGLEAPPLICATION sources.
   src/qtsingleapplication/qtlocalpeer.cpp
   src/qtsingleapplication/qtsingleapplication.cpp
 
@@ -276,9 +276,6 @@ set(APP_SOURCES
   src/gui/skinfactory.cpp
   src/gui/formsettings.cpp
   src/gui/formabout.cpp
-  src/gui/shortcutcatcher.cpp
-  src/gui/shortcutbutton.cpp
-  src/gui/dynamicshortcutswidget.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
   src/gui/tabwidget.cpp
@@ -299,12 +296,17 @@ set(APP_SOURCES
   src/gui/formupdate.cpp
   src/gui/comboboxwithstatus.cpp
 
+  # DYNAMIC-SHORTCUTS sources.
+  src/dynamic-shortcuts/shortcutcatcher.cpp
+  src/dynamic-shortcuts/shortcutbutton.cpp
+  src/dynamic-shortcuts/dynamicshortcutswidget.cpp
+  src/dynamic-shortcuts/dynamicshortcuts.cpp
+
   # CORE sources.
   src/core/debugging.cpp
   src/core/settings.cpp
   src/core/systemfactory.cpp
   src/core/localization.cpp
-  src/core/dynamicshortcuts.cpp
   src/core/textfactory.cpp
   src/core/databasefactory.cpp
   src/core/messagesmodel.cpp
@@ -335,7 +337,7 @@ set(APP_SOURCES
 set(APP_HEADERS
   ${APP_HEADERS}
 
-  # QtSingleApplication suite headers.
+  # QTSINGLEAPPLICATION headers.
   src/qtsingleapplication/qtlocalpeer.h
   src/qtsingleapplication/qtsingleapplication.h
 
@@ -346,9 +348,6 @@ set(APP_HEADERS
   src/gui/skinfactory.h
   src/gui/formsettings.h
   src/gui/formabout.h
-  src/gui/shortcutcatcher.h
-  src/gui/shortcutbutton.h
-  src/gui/dynamicshortcutswidget.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
   src/gui/tabwidget.h
@@ -368,10 +367,14 @@ set(APP_HEADERS
   src/gui/formupdate.h
   src/gui/comboboxwithstatus.h
 
+  # DYNAMIC-SHORTCUTS headers.
+  src/dynamic-shortcuts/dynamicshortcutswidget.h
+  src/dynamic-shortcuts/shortcutcatcher.h
+  src/dynamic-shortcuts/shortcutbutton.h
+
   # CORE headers.
   src/core/settings.h
   src/core/localization.h
-  src/network-web/webpage.h
   src/core/systemfactory.h
   src/core/databasefactory.h
   src/core/messagesmodel.h
@@ -381,6 +384,7 @@ set(APP_HEADERS
   src/core/feeddownloader.h
 
   # NETWORK-WEB headers.
+  src/network-web/webpage.h
   src/network-web/basenetworkaccessmanager.h
   src/network-web/webbrowsernetworkaccessmanager.h
   src/network-web/silentnetworkaccessmanager.h
@@ -457,6 +461,7 @@ include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_SOURCE_DIR}/src/gui
   ${CMAKE_CURRENT_SOURCE_DIR}/src/network-web
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/dynamic-shortcuts
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )

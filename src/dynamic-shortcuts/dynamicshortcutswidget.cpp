@@ -15,11 +15,11 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/dynamicshortcutswidget.h"
+#include "dynamic-shortcuts/dynamicshortcutswidget.h"
 
+#include "dynamic-shortcuts/shortcutcatcher.h"
+#include "dynamic-shortcuts/shortcutbutton.h"
 #include "core/defs.h"
-#include "gui/shortcutcatcher.h"
-#include "gui/shortcutbutton.h"
 
 #include <QGridLayout>
 #include <QAction>
