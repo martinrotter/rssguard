@@ -76,6 +76,7 @@
      <addaction name="m_actionFullscreen"/>
      <addaction name="m_actionSwitchFeedsList"/>
      <addaction name="m_actionSwitchMainMenu"/>
+     <addaction name="m_actionSwitchToolBars"/>
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
@@ -495,6 +496,23 @@
   <action name="m_actionReportBug">
    <property name="text">
     <string>Report a &amp;bug...</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchToolBars">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Toolbars</string>
+   </property>
+   <property name="toolTip">
+    <string>Switch visibility of main toolbars.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">T</string>
    </property>
   </action>
  </widget>

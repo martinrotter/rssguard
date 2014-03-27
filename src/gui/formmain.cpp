@@ -92,7 +92,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSettings << m_ui->m_actionQuit <<
              m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
              m_ui->m_actionSwitchFeedsList << m_ui->m_actionSwitchMainWindow <<
-             m_ui->m_actionSwitchMainMenu;
+             m_ui->m_actionSwitchMainMenu << m_ui->m_actionSwitchToolBars;
 
   // Add web browser actions
   actions << m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
@@ -271,6 +271,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
   m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch-menu"));
+  m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Web browser.
@@ -339,6 +340,7 @@ void FormMain::loadSize() {
 
   // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
+  m_ui->m_actionSwitchToolBars->setChecked(settings->value(APP_CFG_GUI, "enable_toolbars", true).toBool());
 }
 
 void FormMain::saveSize() {

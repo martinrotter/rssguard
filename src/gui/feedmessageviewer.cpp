@@ -97,6 +97,9 @@ void FeedMessageViewer::saveSize() {
                        KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
                        width_column_date);
   }
+
+  // Store "visibility" of toolbars.
+  settings->setValue(APP_CFG_GUI, "enable_toolbars", m_toolBarsEnabled);
 }
 
 void FeedMessageViewer::loadSize() {
@@ -130,6 +133,12 @@ void FeedMessageViewer::quit() {
 
   qDebug("Feed downloader thread aborted. Deleting it from memory.");
   m_feedDownloader->deleteLater();
+}
+
+void FeedMessageViewer::setToolBarsEnabled(bool enable) {
+  m_toolBarsEnabled = enable;
+  m_toolBarFeeds->setVisible(enable);
+  m_toolBarMessages->setVisible(enable);
 }
 
 void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
@@ -263,6 +272,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), this, SLOT(switchFeedComponentVisibility()));
   connect(form_main->m_ui->m_actionSelectNextFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(selectNextItem()));
+  connect(form_main->m_ui->m_actionSwitchToolBars,
+          SIGNAL(toggled(bool)), this, SLOT(setToolBarsEnabled(bool)));
   connect(form_main->m_ui->m_actionSelectPreviousFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSelectNextMessage,

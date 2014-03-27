@@ -10,6 +10,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Added option to hide main toolbars.</li>
 <li>"Defragment database" button shortcut is now changeable.</li>
 <li>Added option to clear keyboard shortcuts.</li>
 <li>Added "progress bar" to web browser.</li>

@@ -60,7 +60,14 @@ class FeedMessageViewer : public TabContent {
     // stops any child widgets/workers.
     void quit();
 
+    inline bool areToolBarsEnabled() const {
+      return m_toolBarsEnabled;
+    }
+
   public slots:
+    // Enables/disables main toolbars.
+    void setToolBarsEnabled(bool enable);
+
     // Runs "cleanup" of the database.
     void vacuumDatabase();
 
@@ -91,6 +98,7 @@ class FeedMessageViewer : public TabContent {
     void createConnections();
 
   private:
+    bool m_toolBarsEnabled;
     QToolBar *m_toolBarFeeds;
     QToolBar *m_toolBarMessages;
 
