@@ -17,7 +17,7 @@
 
 #include "gui/messagebox.h"
 
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 
 #include <QDialogButtonBox>
 #include <QtGlobal>

@@ -20,7 +20,7 @@
 
 #include "ui_formabout.h"
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 
 #include <QDialog>
 

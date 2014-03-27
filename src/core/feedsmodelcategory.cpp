@@ -17,12 +17,12 @@
 
 #include "core/feedsmodelcategory.h"
 
-#include "core/defs.h"
-#include "core/databasefactory.h"
-#include "core/textfactory.h"
-#include "core/settings.h"
-#include "gui/iconthemefactory.h"
-#include "gui/iconfactory.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/textfactory.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QVariant>
 #include <QSqlQuery>

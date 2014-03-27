@@ -17,8 +17,8 @@
 
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
 
 #include <QAction>
 

@@ -18,7 +18,7 @@
 #include "gui/widgetwithstatus.h"
 
 #include "gui/plaintoolbutton.h"
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 
 #include <QHBoxLayout>
 

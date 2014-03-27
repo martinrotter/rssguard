@@ -18,7 +18,7 @@
 #ifndef THEMEFACTORY_H
 #define THEMEFACTORY_H
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 
 #include <QString>
 #include <QIcon>

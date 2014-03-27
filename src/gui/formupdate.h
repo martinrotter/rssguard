@@ -23,7 +23,7 @@
 
 #include "ui_formupdate.h"
 
-#include "core/systemfactory.h"
+#include "miscellaneous/systemfactory.h"
 
 
 namespace Ui {

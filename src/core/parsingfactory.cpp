@@ -17,7 +17,7 @@
 
 #include "core/parsingfactory.h"
 
-#include "core/textfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 
 #include <QDomDocument>

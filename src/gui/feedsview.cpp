@@ -17,14 +17,14 @@
 
 #include "gui/feedsview.h"
 
-#include "core/defs.h"
-#include "core/systemfactory.h"
+#include "definitions/definitions.h"
 #include "core/feedsmodelfeed.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
+#include "miscellaneous/systemfactory.h"
 #include "gui/formmain.h"
 #include "gui/formstandardcategorydetails.h"
 #include "gui/formstandardfeeddetails.h"
@@ -430,7 +430,7 @@ void FeedsView::deleteSelectedItem() {
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
     // Item WAS removed, update counts.
-    // TODO:_I do not need to update counts of all items here.
+    // TODO: I do not need to update counts of all items here.
     // Updating counts of parent item (feed) should be enough.
     updateCountsOfAllFeeds(true);
   }

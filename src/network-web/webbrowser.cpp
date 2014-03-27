@@ -17,13 +17,13 @@
 
 #include "network-web/webbrowser.h"
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 #include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/webpage.h"
 #include "network-web/webview.h"
-#include "gui/skinfactory.h"
+#include "miscellaneous/skinfactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "gui/formmain.h"
-#include "gui/iconthemefactory.h"
 #include "gui/tabwidget.h"
 
 #include <QVBoxLayout>

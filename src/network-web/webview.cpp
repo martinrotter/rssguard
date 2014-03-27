@@ -17,11 +17,11 @@
 
 #include "network-web/webview.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/skinfactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "network-web/webpage.h"
-#include "gui/skinfactory.h"
-#include "gui/iconthemefactory.h"
 
 #include <QStyleOptionFrameV3>
 #include <QAction>

@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "dynamic-shortcuts/shortcutbutton.h"
 #include "gui/plaintoolbutton.h"
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 
 #include <QHBoxLayout>
 

@@ -17,23 +17,23 @@
 
 #include "gui/formmain.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
-#include "core/systemfactory.h"
-#include "core/databasefactory.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/systemfactory.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/webbrowser.h"
 #include "gui/formabout.h"
 #include "gui/formsettings.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
-#include "gui/iconthemefactory.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
-#include "qtsingleapplication/qtsingleapplication.h"
 #include "gui/formupdate.h"
+#include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>

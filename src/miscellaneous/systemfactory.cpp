@@ -15,9 +15,9 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/systemfactory.h"
+#include "miscellaneous/systemfactory.h"
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 #include "network-web/networkfactory.h"
 
 #if defined(Q_OS_WIN)

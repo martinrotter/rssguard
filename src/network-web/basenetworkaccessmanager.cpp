@@ -17,8 +17,8 @@
 
 #include "network-web/basenetworkaccessmanager.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
 
 #include <QNetworkProxy>
 #include <QNetworkReply>

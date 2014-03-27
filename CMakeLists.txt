@@ -137,8 +137,8 @@ endif(UNIX)
 
 # Configure internal C++ defines.
 configure_file (
-  ${PROJECT_SOURCE_DIR}/src/core/defs.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/src/core/defs.h
+  ${PROJECT_SOURCE_DIR}/src/definitions/definitions.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/src/definitions/definitions.h
 )
 
 # Define some useful DEBUG for, ehrm, debug build.
@@ -272,8 +272,6 @@ set(APP_SOURCES
   # GUI sources.
   src/gui/formmain.cpp
   src/gui/systemtrayicon.cpp
-  src/gui/iconthemefactory.cpp
-  src/gui/skinfactory.cpp
   src/gui/formsettings.cpp
   src/gui/formabout.cpp
   src/gui/baselineedit.cpp
@@ -285,7 +283,6 @@ set(APP_SOURCES
   src/gui/feedsview.cpp
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
-  src/gui/iconfactory.cpp
   src/gui/formstandardcategorydetails.cpp
   src/gui/formstandardfeeddetails.cpp
   src/gui/plaintoolbutton.cpp
@@ -302,13 +299,18 @@ set(APP_SOURCES
   src/dynamic-shortcuts/dynamicshortcutswidget.cpp
   src/dynamic-shortcuts/dynamicshortcuts.cpp
 
+  # MISCELLANEOUS sources.
+  src/miscellaneous/debugging.cpp
+  src/miscellaneous/settings.cpp
+  src/miscellaneous/systemfactory.cpp
+  src/miscellaneous/localization.cpp
+  src/miscellaneous/textfactory.cpp
+  src/miscellaneous/databasefactory.cpp
+  src/miscellaneous/iconthemefactory.cpp
+  src/miscellaneous/skinfactory.cpp
+  src/miscellaneous/iconfactory.cpp
+
   # CORE sources.
-  src/core/debugging.cpp
-  src/core/settings.cpp
-  src/core/systemfactory.cpp
-  src/core/localization.cpp
-  src/core/textfactory.cpp
-  src/core/databasefactory.cpp
   src/core/messagesmodel.cpp
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
@@ -344,8 +346,6 @@ set(APP_HEADERS
   # GUI headers.
   src/gui/formmain.h
   src/gui/systemtrayicon.h
-  src/gui/iconthemefactory.h
-  src/gui/skinfactory.h
   src/gui/formsettings.h
   src/gui/formabout.h
   src/gui/baselineedit.h
@@ -372,11 +372,15 @@ set(APP_HEADERS
   src/dynamic-shortcuts/shortcutcatcher.h
   src/dynamic-shortcuts/shortcutbutton.h
 
+  # MISCELLANEOUS headers.
+  src/miscellaneous/settings.h
+  src/miscellaneous/localization.h
+  src/miscellaneous/systemfactory.h
+  src/miscellaneous/databasefactory.h
+  src/miscellaneous/iconthemefactory.h
+  src/miscellaneous/skinfactory.h
+
   # CORE headers.
-  src/core/settings.h
-  src/core/localization.h
-  src/core/systemfactory.h
-  src/core/databasefactory.h
   src/core/messagesmodel.h
   src/core/messagesproxymodel.h
   src/core/feedsmodel.h

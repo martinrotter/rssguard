@@ -17,11 +17,11 @@
 
 #include "gui/formstandardcategorydetails.h"
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodel.h"
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"

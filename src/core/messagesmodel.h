@@ -18,7 +18,7 @@
 #ifndef MESSAGESMODEL_H
 #define MESSAGESMODEL_H
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 
 #include <QSqlTableModel>
 #include <QFont>

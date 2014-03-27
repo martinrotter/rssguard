@@ -22,7 +22,7 @@
 
 #include "core/messagesmodel.h"
 #include "core/feedsmodel.h"
-#include "core/settings.h"
+#include "miscellaneous/settings.h"
 
 
 class FeedsProxyModel;

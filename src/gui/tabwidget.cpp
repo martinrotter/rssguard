@@ -17,12 +17,12 @@
 
 #include "gui/tabwidget.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
-#include "core/textfactory.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/webbrowser.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "gui/tabbar.h"
-#include "gui/iconthemefactory.h"
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"

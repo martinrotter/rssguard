@@ -17,10 +17,10 @@
 
 #include "core/messagesmodel.h"
 
-#include "core/defs.h"
-#include "core/textfactory.h"
-#include "core/databasefactory.h"
-#include "gui/iconthemefactory.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/textfactory.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QSqlRecord>

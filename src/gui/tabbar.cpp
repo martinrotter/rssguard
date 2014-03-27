@@ -17,8 +17,8 @@
 
 #include "gui/tabbar.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
 #include "gui/plaintoolbutton.h"
 
 #include <QMouseEvent>

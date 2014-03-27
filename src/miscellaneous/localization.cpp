@@ -15,10 +15,10 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/localization.h"
+#include "miscellaneous/localization.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QPointer>

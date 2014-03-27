@@ -1,7 +1,7 @@
 #include "network-web/webfactory.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
 
 #include <QApplication>
 #include <QRegExp>

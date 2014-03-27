@@ -19,7 +19,7 @@
 
 #include "core/messagesproxymodel.h"
 #include "core/messagesmodel.h"
-#include "core/settings.h"
+#include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "gui/formmain.h"

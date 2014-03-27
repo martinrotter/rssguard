@@ -17,11 +17,11 @@
 
 #include "gui/formupdate.h"
 
-#include "core/defs.h"
-#include "core/systemfactory.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/systemfactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
-#include "gui/iconthemefactory.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
 

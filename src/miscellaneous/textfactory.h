@@ -18,7 +18,7 @@
 #ifndef TEXTFACTORY_H
 #define TEXTFACTORY_H
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 
 #include <QDateTime>
 #include <QMap>

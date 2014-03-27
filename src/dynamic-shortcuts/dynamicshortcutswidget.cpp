@@ -19,7 +19,7 @@
 
 #include "dynamic-shortcuts/shortcutcatcher.h"
 #include "dynamic-shortcuts/shortcutbutton.h"
-#include "core/defs.h"
+#include "definitions/definitions.h"
 
 #include <QGridLayout>
 #include <QAction>

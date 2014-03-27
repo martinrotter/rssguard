@@ -17,14 +17,14 @@
 
 #include "gui/formstandardfeeddetails.h"
 
-#include "core/defs.h"
-#include "core/textfactory.h"
+#include "definitions/definitions.h"
 #include "core/feedsmodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
+#include "miscellaneous/textfactory.h"
+#include "miscellaneous/iconthemefactory.h"
 #include "network-web/networkfactory.h"
-#include "gui/iconthemefactory.h"
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"

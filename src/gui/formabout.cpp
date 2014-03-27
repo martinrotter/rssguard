@@ -17,8 +17,8 @@
 
 #include "gui/formabout.h"
 
-#include "core/textfactory.h"
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/textfactory.h"
 
 #if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"

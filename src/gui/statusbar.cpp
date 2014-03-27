@@ -17,7 +17,7 @@
 
 #include "gui/statusbar.h"
 
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 
 #include <QToolButton>
 #include <QLabel>

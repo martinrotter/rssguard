@@ -17,7 +17,7 @@
 
 #include "core/feedsproxymodel.h"
 
-#include "core/defs.h"
+#include "definitions/definitions.h"
 #include "core/feedsmodel.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"

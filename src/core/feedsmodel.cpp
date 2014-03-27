@@ -17,13 +17,13 @@
 
 #include "core/feedsmodel.h"
 
-#include "core/defs.h"
-#include "core/databasefactory.h"
+#include "definitions/definitions.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
-#include "core/textfactory.h"
-#include "gui/iconthemefactory.h"
-#include "gui/iconfactory.h"
+#include "miscellaneous/textfactory.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QSqlError>
 #include <QSqlQuery>

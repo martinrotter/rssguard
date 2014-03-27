@@ -17,8 +17,8 @@
 
 #include "gui/systemtrayicon.h"
 
-#include "core/defs.h"
-#include "core/settings.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/settings.h"
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
 #include "qtsingleapplication/qtsingleapplication.h"

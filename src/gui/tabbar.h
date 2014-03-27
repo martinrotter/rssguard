@@ -18,7 +18,7 @@
 #ifndef TABBAR_H
 #define TABBAR_H
 
-#include "gui/iconthemefactory.h"
+#include "miscellaneous/iconthemefactory.h"
 
 #include <QTabBar>
 #include <QVariant>
