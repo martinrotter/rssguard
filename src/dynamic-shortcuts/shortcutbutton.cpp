@@ -48,7 +48,7 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
   }
 
   Qt::KeyboardModifiers new_modifiers = event->modifiers() &
-                                       (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
+                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
   if (!m_catcher->m_isRecording && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
     return;
@@ -106,14 +106,14 @@ void ShortcutButton::keyReleaseEvent(QKeyEvent *event) {
     return;
   }
 
-  if (m_catcher->m_isRecording == false) {
+  if (!m_catcher->m_isRecording) {
     return QPushButton::keyReleaseEvent(event);
   }
 
   event->accept();
 
   Qt::KeyboardModifiers new_modifiers = event->modifiers() &
-                                       (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
+                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
   if (((uint) new_modifiers & m_catcher->m_modifierKeys) < m_catcher->m_modifierKeys) {
     m_catcher->m_modifierKeys = new_modifiers;

@@ -50,6 +50,7 @@
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   : TabContent(parent),
     m_toolBarsEnabled(true),
+    m_listHeadersEnabled(true),
     m_toolBarFeeds(new QToolBar(tr("Toolbar for feeds"), this)),
     m_toolBarMessages(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
@@ -99,8 +100,9 @@ void FeedMessageViewer::saveSize() {
                        width_column_date);
   }
 
-  // Store "visibility" of toolbars.
+  // Store "visibility" of toolbars and list headers.
   settings->setValue(APP_CFG_GUI, "enable_toolbars", m_toolBarsEnabled);
+  settings->setValue(APP_CFG_GUI, "enable_list_headers", m_listHeadersEnabled);
 }
 
 void FeedMessageViewer::loadSize() {
@@ -140,6 +142,12 @@ void FeedMessageViewer::setToolBarsEnabled(bool enable) {
   m_toolBarsEnabled = enable;
   m_toolBarFeeds->setVisible(enable);
   m_toolBarMessages->setVisible(enable);
+}
+
+void FeedMessageViewer::setListHeadersEnabled(bool enable) {
+  m_listHeadersEnabled = enable;
+  m_feedsView->header()->setVisible(enable);
+  m_messagesView->header()->setVisible(enable);
 }
 
 void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
@@ -275,6 +283,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(selectNextItem()));
   connect(form_main->m_ui->m_actionSwitchToolBars,
           SIGNAL(toggled(bool)), this, SLOT(setToolBarsEnabled(bool)));
+  connect(form_main->m_ui->m_actionSwitchListHeaders,
+          SIGNAL(toggled(bool)), this, SLOT(setListHeadersEnabled(bool)));
   connect(form_main->m_ui->m_actionSelectPreviousFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSelectNextMessage,

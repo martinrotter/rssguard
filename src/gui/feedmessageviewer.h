@@ -64,9 +64,14 @@ class FeedMessageViewer : public TabContent {
       return m_toolBarsEnabled;
     }
 
+    inline bool areListHeadersEnabled() const {
+      return m_listHeadersEnabled;
+    }
+
   public slots:
-    // Enables/disables main toolbars.
+    // Enables/disables main toolbars or list headers.
     void setToolBarsEnabled(bool enable);
+    void setListHeadersEnabled(bool enable);
 
     // Runs "cleanup" of the database.
     void vacuumDatabase();
@@ -99,6 +104,7 @@ class FeedMessageViewer : public TabContent {
 
   private:
     bool m_toolBarsEnabled;
+    bool m_listHeadersEnabled;
     QToolBar *m_toolBarFeeds;
     QToolBar *m_toolBarMessages;
 

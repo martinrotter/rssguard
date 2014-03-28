@@ -77,6 +77,7 @@
      <addaction name="m_actionSwitchFeedsList"/>
      <addaction name="m_actionSwitchMainMenu"/>
      <addaction name="m_actionSwitchToolBars"/>
+     <addaction name="m_actionSwitchListHeaders"/>
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
@@ -513,6 +514,20 @@
    </property>
    <property name="shortcut">
     <string notr="true">T</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchListHeaders">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Feed/message list headers</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">H</string>
    </property>
   </action>
  </widget>
