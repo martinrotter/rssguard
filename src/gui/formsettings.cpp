@@ -24,7 +24,7 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/systemfactory.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/webbrowsernetworkaccessmanager.h"
@@ -49,7 +49,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::instance()->fromTheme("application-settings"));
+  setWindowIcon(IconFactory::instance()->fromTheme("application-settings"));
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
@@ -457,7 +457,7 @@ void FormSettings::loadLanguage() {
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, IconThemeFactory::instance()->fromTheme(language.m_code));
+    item->setIcon(0, IconFactory::instance()->fromTheme(language.m_code));
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Localization::instance()->loadedLanguage(),
@@ -686,9 +686,9 @@ void FormSettings::loadInterface() {
                                                              false).toBool());
 
   // Load settings of icon theme.
-  QString current_theme = IconThemeFactory::instance()->currentIconTheme();
+  QString current_theme = IconFactory::instance()->currentIconTheme();
 
-  foreach (const QString &icon_theme_name, IconThemeFactory::instance()->installedIconThemes()) {
+  foreach (const QString &icon_theme_name, IconFactory::instance()->installedIconThemes()) {
     if (icon_theme_name == APP_NO_THEME) {
       // Add just "no theme" on other systems.
       //: Label for disabling icon theme.
@@ -801,8 +801,8 @@ void FormSettings::saveInterface() {
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
-  QString original_icon_theme = IconThemeFactory::instance()->currentIconTheme();
-  IconThemeFactory::instance()->setCurrentIconTheme(selected_icon_theme);
+  QString original_icon_theme = IconFactory::instance()->currentIconTheme();
+  IconFactory::instance()->setCurrentIconTheme(selected_icon_theme);
 
   // Check if icon theme was changed.
   if (selected_icon_theme != original_icon_theme) {

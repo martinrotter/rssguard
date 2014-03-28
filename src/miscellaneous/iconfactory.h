@@ -18,19 +18,74 @@
 #ifndef ICONFACTORY_H
 #define ICONFACTORY_H
 
+#include <QString>
 #include <QIcon>
+#include <QPointer>
+#include <QHash>
+#include <QApplication>
+#include <QDir>
+
+#include "definitions/definitions.h"
 
 
-class IconFactory {
-  private:
-    // Constructors and destructors.
-    explicit IconFactory();
-
+class IconFactory : public QObject {
   public:
+    // Destructor.
+    virtual ~IconFactory();
+
     // Used to store/retrieve QIcons from/to database via Base64-encoded
     // byte array.
-    static QIcon fromByteArray(QByteArray array);
-    static QByteArray toByteArray(const QIcon &icon);
+    QIcon fromByteArray(QByteArray array);
+    QByteArray toByteArray(const QIcon &icon);
+
+    // Returns icon from active theme or invalid icon if
+    // "no icon theme" is set.
+    inline QIcon fromTheme(const QString &name) {
+      if (m_currentIconTheme == APP_NO_THEME) {
+        return QIcon();
+      }
+
+      if (!m_cachedIcons.contains(name)) {
+        // Icon is not cached yet.
+        m_cachedIcons.insert(name, QIcon(APP_THEME_PATH + QDir::separator() +
+                                         m_currentIconTheme + QDir::separator() +
+                                         name + APP_THEME_SUFFIX));
+      }
+
+      return m_cachedIcons.value(name);
+    }
+
+    // Adds custom application path to be search for icons.
+    void setupSearchPaths();
+
+    // Returns list of installed themes, including "default" theme.
+    QStringList installedIconThemes() const;
+
+    // Loads name of selected icon theme (from settings) for the application and
+    // activates it. If that particular theme is not installed, then
+    // "default" theme is loaded.
+    void loadCurrentIconTheme();
+
+    // Returns name of currently activated theme for the application.
+    inline QString currentIconTheme() const {
+      return m_currentIconTheme;
+    }
+
+    // Sets icon theme with given name as the active one and loads it.
+    void setCurrentIconTheme(const QString &theme_name);
+
+    // Singleton getter.
+    static IconFactory *instance();
+
+  private:
+    // Constructor.
+    explicit IconFactory(QObject *parent = 0);
+
+    QHash<QString, QIcon> m_cachedIcons;
+    QString m_currentIconTheme;
+
+    // Singleton.
+    static QPointer<IconFactory> s_instance;
 };
 
 #endif // ICONFACTORY_H

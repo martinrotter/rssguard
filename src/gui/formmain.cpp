@@ -21,7 +21,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/databasefactory.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/webbrowser.h"
 #include "gui/formabout.h"
@@ -256,7 +256,7 @@ void FormMain::onAboutToQuit() {
 }
 
 void FormMain::setupIcons() {
-  IconThemeFactory *icon_theme_factory = IconThemeFactory::instance();
+  IconFactory *icon_theme_factory = IconFactory::instance();
 
   // Setup icons of this main window.
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));

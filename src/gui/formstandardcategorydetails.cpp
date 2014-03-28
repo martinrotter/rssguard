@@ -21,7 +21,7 @@
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodel.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
@@ -179,7 +179,7 @@ void FormStandardCategoryDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the category"),
                      QDir::homePath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
   dialog.setFileMode(QFileDialog::ExistingFile);
-  dialog.setWindowIcon(IconThemeFactory::instance()->fromTheme("image-generic"));
+  dialog.setWindowIcon(IconFactory::instance()->fromTheme("image-generic"));
   dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
   dialog.setViewMode(QFileDialog::Detail);
   dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
@@ -195,7 +195,7 @@ void FormStandardCategoryDetails::onLoadIconFromFile() {
 }
 
 void FormStandardCategoryDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(IconThemeFactory::instance()->fromTheme("folder-category"));
+  m_ui->m_btnIcon->setIcon(IconFactory::instance()->fromTheme("folder-category"));
 }
 
 void FormStandardCategoryDetails::initialize() {
@@ -211,7 +211,7 @@ void FormStandardCategoryDetails::initialize() {
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::instance()->fromTheme("folder-category"));
+  setWindowIcon(IconFactory::instance()->fromTheme("folder-category"));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
@@ -222,13 +222,13 @@ void FormStandardCategoryDetails::initialize() {
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile = new QAction(IconThemeFactory::instance()->fromTheme("image-generic"),
+  m_actionLoadIconFromFile = new QAction(IconFactory::instance()->fromTheme("image-generic"),
                                          tr("Load icon from file..."),
                                          this);
-  m_actionNoIcon = new QAction(IconThemeFactory::instance()->fromTheme("dialog-cancel"),
+  m_actionNoIcon = new QAction(IconFactory::instance()->fromTheme("dialog-cancel"),
                                tr("Do not use icon"),
                                this);
-  m_actionUseDefaultIcon = new QAction(IconThemeFactory::instance()->fromTheme("folder-category"),
+  m_actionUseDefaultIcon = new QAction(IconFactory::instance()->fromTheme("folder-category"),
                                        tr("Use default icon"),
                                        this);
   m_iconMenu->addAction(m_actionLoadIconFromFile);

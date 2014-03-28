@@ -22,7 +22,6 @@
 #include "core/feedsmodelfeed.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
-#include "miscellaneous/iconthemefactory.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QSqlError>
@@ -36,13 +35,16 @@
 FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
   setObjectName("FeedsModel");
 
+  // Create root item.
   m_rootItem = new FeedsModelRootItem();
   m_rootItem->setId(NO_PARENT_CATEGORY);
 
   //: Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
-  m_rootItem->setIcon(IconThemeFactory::instance()->fromTheme("folder-root"));
-  m_countsIcon = IconThemeFactory::instance()->fromTheme("mail-mark-unread");
+  m_rootItem->setIcon(IconFactory::instance()->fromTheme("folder-root"));
+
+  // Setup icons.
+  m_countsIcon = IconFactory::instance()->fromTheme("mail-mark-unread");
 
   //: Title text in the feed list header.
   m_headerData << tr("Title");
@@ -101,15 +103,7 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) co
     return QModelIndex();
   }
 
-  FeedsModelRootItem *parent_item;
-
-  if (!parent.isValid()) {
-    parent_item = m_rootItem;
-  }
-  else {
-    parent_item = static_cast<FeedsModelRootItem*>(parent.internalPointer());
-  }
-
+  FeedsModelRootItem *parent_item = itemForIndex(parent);
   FeedsModelRootItem *child_item = parent_item->child(row);
 
   if (child_item) {
@@ -125,7 +119,7 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
     return QModelIndex();
   }
 
-  FeedsModelRootItem *child_item = static_cast<FeedsModelRootItem*>(child.internalPointer());
+  FeedsModelRootItem *child_item = itemForIndex(child);
   FeedsModelRootItem *parent_item = child_item->parent();
 
   if (parent_item == m_rootItem) {
@@ -137,20 +131,12 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
 }
 
 int FeedsModel::rowCount(const QModelIndex &parent) const {
-  FeedsModelRootItem *parent_item;
-
   if (parent.column() > 0) {
     return 0;
   }
-
-  if (!parent.isValid()) {
-    parent_item = m_rootItem;
-  }
   else {
-    parent_item = static_cast<FeedsModelRootItem*>(parent.internalPointer());
+    return itemForIndex(parent)->childCount();
   }
-
-  return parent_item->childCount();
 }
 
 bool FeedsModel::removeItem(const QModelIndex &index) { 
@@ -178,7 +164,7 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
 }
 
 bool FeedsModel::addCategory(FeedsModelCategory *category,
-                                     FeedsModelRootItem *parent) {
+                             FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
 
@@ -196,7 +182,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
   query_add.bindValue(":title", category->title());
   query_add.bindValue(":description", category->description());
   query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
-  query_add.bindValue(":icon", IconFactory::toByteArray(category->icon()));
+  query_add.bindValue(":icon", IconFactory::instance()->toByteArray(category->icon()));
   query_add.bindValue(":type", (int) FeedsModelCategory::Standard);
 
   if (!query_add.exec()) {
@@ -226,7 +212,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
 }
 
 bool FeedsModel::editCategory(FeedsModelCategory *original_category,
-                                      FeedsModelCategory *new_category) {
+                              FeedsModelCategory *new_category) {
   QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
@@ -239,7 +225,7 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category,
                                 "WHERE id = :id;");
   query_update_category.bindValue(":title", new_category->title());
   query_update_category.bindValue(":description", new_category->description());
-  query_update_category.bindValue(":icon", IconFactory::toByteArray(new_category->icon()));
+  query_update_category.bindValue(":icon", IconFactory::instance()->toByteArray(new_category->icon()));
   query_update_category.bindValue(":parent_id", new_parent->id());
   query_update_category.bindValue(":id", original_category->id());
 
@@ -282,7 +268,7 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category,
 }
 
 bool FeedsModel::addFeed(FeedsModelFeed *feed,
-                                 FeedsModelRootItem *parent) {
+                         FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
 
@@ -299,7 +285,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
   query_add_feed.bindValue(":title", feed->title());
   query_add_feed.bindValue(":description", feed->description());
   query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
-  query_add_feed.bindValue(":icon", IconFactory::toByteArray(feed->icon()));
+  query_add_feed.bindValue(":icon", IconFactory::instance()->toByteArray(feed->icon()));
   query_add_feed.bindValue(":category", parent->id());
   query_add_feed.bindValue(":encoding", feed->encoding());
   query_add_feed.bindValue(":url", feed->url());
@@ -337,7 +323,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
 }
 
 bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
-                                  FeedsModelFeed *new_feed) {
+                          FeedsModelFeed *new_feed) {
   QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
@@ -350,7 +336,7 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
                             "WHERE id = :id;");
   query_update_feed.bindValue(":title", new_feed->title());
   query_update_feed.bindValue(":description", new_feed->description());
-  query_update_feed.bindValue(":icon", IconFactory::toByteArray(new_feed->icon()));
+  query_update_feed.bindValue(":icon", IconFactory::instance()->toByteArray(new_feed->icon()));
   query_update_feed.bindValue(":category", new_parent->id());
   query_update_feed.bindValue(":encoding", new_feed->encoding());
   query_update_feed.bindValue(":url", new_feed->url());
@@ -481,12 +467,7 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
-  if (parent.isValid()) {
-    return static_cast<FeedsModelRootItem*>(parent.internalPointer())->columnCount();
-  }
-  else {
-    return m_rootItem->columnCount();
-  }
+  return itemForIndex(parent)->columnCount();
 }
 
 FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {

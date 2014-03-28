@@ -17,7 +17,7 @@
 
 #include "gui/messagebox.h"
 
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QDialogButtonBox>
 #include <QtGlobal>
@@ -51,22 +51,22 @@ void MessageBox::iconify(QDialogButtonBox *button_box) {
 QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
   switch (button) {
     case QMessageBox::Ok:
-      return IconThemeFactory::instance()->fromTheme("dialog-ok");
+      return IconFactory::instance()->fromTheme("dialog-ok");
 
     case QMessageBox::Cancel:
     case QMessageBox::Close:
-      return IconThemeFactory::instance()->fromTheme("dialog-cancel");
+      return IconFactory::instance()->fromTheme("dialog-cancel");
 
     case QMessageBox::Yes:
     case QMessageBox::YesToAll:
-      return IconThemeFactory::instance()->fromTheme("dialog-yes");
+      return IconFactory::instance()->fromTheme("dialog-yes");
 
     case QMessageBox::No:
     case QMessageBox::NoToAll:
-      return IconThemeFactory::instance()->fromTheme("dialog-no");
+      return IconFactory::instance()->fromTheme("dialog-no");
 
     case QMessageBox::Help:
-      return IconThemeFactory::instance()->fromTheme("dialog-question");
+      return IconFactory::instance()->fromTheme("dialog-question");
 
     default:
       return QIcon();
@@ -76,16 +76,16 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
 QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   switch (status) {
     case QMessageBox::Information:
-      return IconThemeFactory::instance()->fromTheme("dialog-information");
+      return IconFactory::instance()->fromTheme("dialog-information");
 
     case QMessageBox::Warning:
-      return IconThemeFactory::instance()->fromTheme("dialog-warning");
+      return IconFactory::instance()->fromTheme("dialog-warning");
 
     case QMessageBox::Critical:
-      return IconThemeFactory::instance()->fromTheme("dialog-error");
+      return IconFactory::instance()->fromTheme("dialog-error");
 
     case QMessageBox::Question:
-      return IconThemeFactory::instance()->fromTheme("dialog-question");
+      return IconFactory::instance()->fromTheme("dialog-question");
 
     case QMessageBox::NoIcon:
     default:

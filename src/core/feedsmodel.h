@@ -31,6 +31,7 @@ class FeedsModelFeed;
 
 typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
 typedef QPair<int, FeedsModelCategory*> CategoryAssignmentItem;
+
 typedef QList<QPair<int, FeedsModelFeed*> > FeedAssignment;
 typedef QPair<int, FeedsModelFeed*> FeedAssignmentItem;
 
@@ -44,10 +45,13 @@ class FeedsModel : public QAbstractItemModel {
 
     // Returns list of all indexes available
     // in the model.
+    // NOTE: Overriden because original method
+    // is protected.
     QModelIndexList persistentIndexList() const;
 
     // Model implementation.
     inline QVariant data(const QModelIndex &index, int role) const {
+      // Return data according to item.
       return itemForIndex(index)->data(index.column(), role);
     }
 
@@ -66,7 +70,7 @@ class FeedsModel : public QAbstractItemModel {
       return m_rootItem->countOfUnreadMessages();
     }
 
-    // Base manipulators.
+    // Removes item with given index.
     bool removeItem(const QModelIndex &index);
 
     // Standard category manipulators.
@@ -87,9 +91,14 @@ class FeedsModel : public QAbstractItemModel {
 
     // Returns the list of updates which should be updated
     // according to auto-update schedule.
+    // Variable "auto_update_now" is true, when global timeout
+    // for scheduled auto-update was met so feeds with "default"
+    // auto-update strategy should be updated.
     QList<FeedsModelFeed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
+    // This is usually used for displaying whole feeds
+    // in "newspaper" mode.
     QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);
 
     // Returns all categories, each pair
@@ -107,9 +116,7 @@ class FeedsModel : public QAbstractItemModel {
     // as root. If root itself is a feed, then it is returned.
     QList<FeedsModelFeed*> feedsForItem(FeedsModelRootItem *root);
 
-    // Returns list of feeds which belong to given indexes.
-    // NOTE: If index is "category", then all child feeds are contained in the
-    // result.
+    // Returns list of ALL CHILD feeds which belong to given parent indexes.
     QList<FeedsModelFeed*> feedsForIndexes(const QModelIndexList &indexes);
 
     // Returns ALL CHILD feeds contained within single index.
@@ -127,7 +134,7 @@ class FeedsModel : public QAbstractItemModel {
     // root item if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;
 
-    // Returns QModelIndex on which lies given item.
+    // Returns source QModelIndex on which lies given item.
     QModelIndex indexForItem(FeedsModelRootItem *item) const;
 
     // Access to root item.
@@ -138,9 +145,7 @@ class FeedsModel : public QAbstractItemModel {
   public slots:
     // Feeds operations.
     bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
-    bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
-                          int deleted,
-                          bool read_only);
+    bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted, bool read_only);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.

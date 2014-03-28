@@ -23,7 +23,6 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/iconthemefactory.h"
 #include "network-web/networkfactory.h"
 
 #include <QSqlDatabase>
@@ -110,7 +109,7 @@ FeedsModelFeed *FeedsModelFeed::loadFromRecord(const QSqlRecord &record) {
   feed->setId(record.value(FDS_DB_ID_INDEX).toInt());
   feed->setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
   feed->setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  feed->setIcon(IconFactory::fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+  feed->setIcon(IconFactory::instance()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
   feed->setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());

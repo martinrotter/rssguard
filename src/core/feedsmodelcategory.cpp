@@ -21,7 +21,6 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/iconthemefactory.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QVariant>
@@ -154,7 +153,7 @@ FeedsModelCategory *FeedsModelCategory::loadFromRecord(const QSqlRecord &record)
   category->setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   category->setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
   category->setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  category->setIcon(IconFactory::fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
+  category->setIcon(IconFactory::instance()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 
   return category;
 }

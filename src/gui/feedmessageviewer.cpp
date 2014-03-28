@@ -20,7 +20,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/systemfactory.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodelfeed.h"
@@ -49,6 +49,7 @@
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   : TabContent(parent),
+    m_toolBarsEnabled(true),
     m_toolBarFeeds(new QToolBar(tr("Toolbar for feeds"), this)),
     m_toolBarMessages(new QToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),

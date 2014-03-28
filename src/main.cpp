@@ -20,7 +20,7 @@
 #include "miscellaneous/debugging.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "gui/formmain.h"
@@ -77,8 +77,8 @@ int main(int argc, char *argv[]) {
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
-  IconThemeFactory::instance()->setupSearchPaths();
-  IconThemeFactory::instance()->loadCurrentIconTheme();
+  IconFactory::instance()->setupSearchPaths();
+  IconFactory::instance()->loadCurrentIconTheme();
   SkinFactory::instance()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.

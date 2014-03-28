@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "dynamic-shortcuts/shortcutbutton.h"
 #include "gui/plaintoolbutton.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QHBoxLayout>
 
@@ -44,13 +44,13 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
 
   // Create reset button.
   m_btnReset = new PlainToolButton(this);
-  m_btnReset->setIcon(IconThemeFactory::instance()->fromTheme("edit-revert"));
+  m_btnReset->setIcon(IconFactory::instance()->fromTheme("edit-revert"));
   m_btnReset->setFocusPolicy(Qt::NoFocus);
   m_btnReset->setToolTip(tr("Reset to original shortcut."));
 
   // Create clear button.
   m_btnClear = new PlainToolButton(this);
-  m_btnClear->setIcon(IconThemeFactory::instance()->fromTheme("item-remove"));
+  m_btnClear->setIcon(IconFactory::instance()->fromTheme("item-remove"));
   m_btnClear->setFocusPolicy(Qt::NoFocus);
   m_btnClear->setToolTip(tr("Clear current shortcut."));
 

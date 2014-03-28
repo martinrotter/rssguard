@@ -23,7 +23,6 @@
 
 
 class FeedsModelFeed;
-class SilentNetworkAccessManager;
 
 // This class offers means to "update" feeds
 // and "special" categories.

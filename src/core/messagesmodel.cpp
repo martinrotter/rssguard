@@ -20,7 +20,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QSqlRecord>
@@ -50,9 +50,9 @@ MessagesModel::~MessagesModel() {
 }
 
 void MessagesModel::setupIcons() {
-  m_favoriteIcon = IconThemeFactory::instance()->fromTheme("mail-mark-favorite");
-  m_readIcon = IconThemeFactory::instance()->fromTheme("mail-mark-read");
-  m_unreadIcon = IconThemeFactory::instance()->fromTheme("mail-mark-unread");
+  m_favoriteIcon = IconFactory::instance()->fromTheme("mail-mark-favorite");
+  m_readIcon = IconFactory::instance()->fromTheme("mail-mark-read");
+  m_unreadIcon = IconFactory::instance()->fromTheme("mail-mark-unread");
 }
 
 void MessagesModel::fetchAll() {

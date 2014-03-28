@@ -20,8 +20,8 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/webbrowser.h"
-#include "miscellaneous/iconthemefactory.h"
 #include "gui/tabbar.h"
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -48,7 +48,7 @@ void TabWidget::setupCornerButton() {
   m_btnAddTab->setAutoRaise(true);
   m_btnAddTab->setPadding(3);
   m_btnAddTab->setToolTip(tr("Open new web browser tab."));
-  m_btnAddTab->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
+  m_btnAddTab->setIcon(IconFactory::instance()->fromTheme("list-add"));
 
   connect(m_btnAddTab, SIGNAL(clicked()), this, SLOT(addEmptyBrowser()));
 }
@@ -58,7 +58,7 @@ void TabWidget::setupMainMenuButton() {
   m_btnMainMenu->setAutoRaise(true);
   m_btnMainMenu->setPadding(3);
   m_btnMainMenu->setToolTip(tr("Displays main menu."));
-  m_btnMainMenu->setIcon(IconThemeFactory::instance()->fromTheme("application-menu"));
+  m_btnMainMenu->setIcon(IconFactory::instance()->fromTheme("application-menu"));
   m_btnMainMenu->setPopupMode(QToolButton::InstantPopup);
 
   connect(m_btnMainMenu, SIGNAL(clicked()), this, SLOT(openMainMenu()));
@@ -154,7 +154,7 @@ void TabWidget::setupIcons() {
   for (int index = 0; index < count(); index++) {
     // Index 0 usually contains widget which displays feeds & messages.
     if (tabBar()->tabType(index) == TabBar::FeedReader) {
-      setTabIcon(index, IconThemeFactory::instance()->fromTheme("folder-feed"));
+      setTabIcon(index, IconFactory::instance()->fromTheme("folder-feed"));
     }
     // Other indexes probably contain WebBrowsers.
     else {
@@ -162,13 +162,13 @@ void TabWidget::setupIcons() {
       if (active_browser != NULL && active_browser->icon().isNull()) {
         // We found WebBrowser instance of this tab page, which
         // has no suitable icon, load a new one from the icon theme.
-        setTabIcon(index, IconThemeFactory::instance()->fromTheme("text-html"));
+        setTabIcon(index, IconFactory::instance()->fromTheme("text-html"));
       }
     }
   }
 
   // Setup corner button icon.
-  m_btnAddTab->setIcon(IconThemeFactory::instance()->fromTheme("list-add"));
+  m_btnAddTab->setIcon(IconFactory::instance()->fromTheme("list-add"));
 }
 
 bool TabWidget::closeTab(int index) {
@@ -292,14 +292,14 @@ int TabWidget::addBrowser(bool move_after_current,
     // Insert web browser after current tab.
     final_index = insertTab(currentIndex() + 1,
                             browser,
-                            IconThemeFactory::instance()->fromTheme("text-html"),
+                            IconFactory::instance()->fromTheme("text-html"),
                             tr("Web browser"),
                             TabBar::Closable);
   }
   else {
     // Add new browser as the last tab.
     final_index = addTab(browser,
-                         IconThemeFactory::instance()->fromTheme("text-html"),
+                         IconFactory::instance()->fromTheme("text-html"),
                          //: Web browser default tab title.
                          tr("Web browser"),
                          TabBar::Closable);

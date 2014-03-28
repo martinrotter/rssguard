@@ -18,7 +18,7 @@
 #include "gui/widgetwithstatus.h"
 
 #include "gui/plaintoolbutton.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QHBoxLayout>
 
@@ -29,10 +29,10 @@ WidgetWithStatus::WidgetWithStatus(QWidget *parent)
   m_btnStatus = new PlainToolButton(this);
   m_btnStatus->setFocusPolicy(Qt::NoFocus);
 
-  m_iconInformation = IconThemeFactory::instance()->fromTheme("dialog-information");
-  m_iconWarning = IconThemeFactory::instance()->fromTheme("dialog-warning");
-  m_iconError = IconThemeFactory::instance()->fromTheme("dialog-error");
-  m_iconOk = IconThemeFactory::instance()->fromTheme("dialog-yes");
+  m_iconInformation = IconFactory::instance()->fromTheme("dialog-information");
+  m_iconWarning = IconFactory::instance()->fromTheme("dialog-warning");
+  m_iconError = IconFactory::instance()->fromTheme("dialog-error");
+  m_iconOk = IconFactory::instance()->fromTheme("dialog-yes");
 
   // Set layout properties.
   m_layout->setMargin(0);

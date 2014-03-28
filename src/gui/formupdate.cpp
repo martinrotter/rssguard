@@ -19,7 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/systemfactory.h"
-#include "miscellaneous/iconthemefactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "gui/messagebox.h"
@@ -35,7 +35,7 @@ FormUpdate::FormUpdate(QWidget *parent)
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
-  setWindowIcon(IconThemeFactory::instance()->fromTheme("application-about"));
+  setWindowIcon(IconFactory::instance()->fromTheme("application-about"));
 
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));

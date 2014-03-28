@@ -31,7 +31,7 @@ FeedDownloader::~FeedDownloader() {
   qDebug("Destroying FeedDownloader instance.");
 }
 
-void FeedDownloader::updateFeeds(const QList<FeedsModelFeed *> &feeds) {
+void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
   qDebug().nospace() << "Performing feed updates in thread: \'" <<
                         QThread::currentThreadId() << "\'.";
 

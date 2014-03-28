@@ -306,7 +306,6 @@ set(APP_SOURCES
   src/miscellaneous/localization.cpp
   src/miscellaneous/textfactory.cpp
   src/miscellaneous/databasefactory.cpp
-  src/miscellaneous/iconthemefactory.cpp
   src/miscellaneous/skinfactory.cpp
   src/miscellaneous/iconfactory.cpp
 
@@ -377,7 +376,7 @@ set(APP_HEADERS
   src/miscellaneous/localization.h
   src/miscellaneous/systemfactory.h
   src/miscellaneous/databasefactory.h
-  src/miscellaneous/iconthemefactory.h
+  src/miscellaneous/iconfactory.h
   src/miscellaneous/skinfactory.h
 
   # CORE headers.
