@@ -68,4 +68,4 @@ Philosophy
 ----------
 RSS Guard tends to be **independent** software. It's free, it's open-source. RSS Guard will never depend on other services - this includes online news aggregators like Feedly, The Old Reader and others.
 
-That's why RSS Guard will never integrate those services unless someone else codes support for them on his own. Remember, RSS Guard supports online synchronization via MySQL/MariaDB.
+That's why RSS Guard will never integrate those services unless someone else codes support for them on his own. Remember, RSS Guard supports online synchronization via MySQL/MariaDB or you can use Dropbox to synchronize SQLite data storage.
