@@ -29,7 +29,6 @@
 
 FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item) {
-  m_type = Standard;
   m_kind = FeedsModelRootItem::Category;
 }
 
@@ -41,7 +40,6 @@ FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
   m_icon = other.icon();
   m_childItems = other.childItems();
   m_parentItem = other.parent();
-  m_type = other.type();
   m_creationDate = other.creationDate();
   m_description = other.description();
 }

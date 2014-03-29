@@ -57,11 +57,6 @@ class FeedsModelRootItem {
       return m_childItems.size();
     }
 
-    inline virtual int columnCount() const {
-      // FeedsModel offers exactly two columns.
-      return 2;
-    }
-
     inline virtual void appendChild(FeedsModelRootItem *child) {
       m_childItems.append(child);
       child->setParent(this);

@@ -48,9 +48,18 @@ class FeedsModelFeed : public FeedsModelRootItem {
 
     // Specifies the auto-update strategy for the feed.
     enum AutoUpdateType {
-      DontAutoUpdate = 0,
-      DefaultAutoUpdate = 1,
-      SpecificAutoUpdate = 2
+      DontAutoUpdate      = 0,
+      DefaultAutoUpdate   = 1,
+      SpecificAutoUpdate  = 2
+    };
+
+    // Specifies the actual "status" of the feed.
+    // For example if it has new messages, error
+    // occurred, and so on.
+    enum Status {
+      Normal        = 0,
+      NewMessages   = 1,
+      NetworkError  = 2
     };
 
     // Constructors and destructors.
@@ -152,6 +161,14 @@ class FeedsModelFeed : public FeedsModelRootItem {
       m_autoUpdateRemainingInterval = autoUpdateRemainingInterval;
     }
 
+    inline Status status() const {
+      return m_status;
+    }
+
+    inline void setStatus(const Status &status) {
+      m_status = status;
+    }
+
     // Loads standard feed object from given SQL record.
     static FeedsModelFeed *loadFromRecord(const QSqlRecord &record);
 
@@ -169,7 +186,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
 
   public slots:
     // Updates counts of all/unread messages for this feed.
-    void updateCounts(bool including_total_count = true);
+    void updateCounts(bool including_total_count = true, bool update_feed_statuses = true);
 
   protected:
     // Persistently stores given messages into the database
@@ -182,6 +199,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     QString m_username;
     QString m_password;
 
+    Status m_status;
     Type m_type;
     int m_totalCount;
     int m_unreadCount;

@@ -16,8 +16,7 @@ CREATE TABLE IF NOT EXISTS Categories (
   title           TEXT        NOT NULL UNIQUE CHECK (title != ''),
   description     TEXT,
   date_created    INTEGER     NOT NULL CHECK (date_created != 0),
-  icon            BLOB,
-  type            INTEGER     NOT NULL
+  icon            BLOB
 );
 -- !
 DROP TABLE IF EXISTS Feeds;

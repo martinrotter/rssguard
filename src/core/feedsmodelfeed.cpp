@@ -80,7 +80,7 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
   }
 }
 
-void FeedsModelFeed::updateCounts(bool including_total_count) {
+void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
   QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelFeed",
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
@@ -98,7 +98,13 @@ void FeedsModelFeed::updateCounts(bool including_total_count) {
   if (query_all.exec(QString("SELECT count(*) FROM Messages "
                              "WHERE feed = %1 AND is_deleted = 0 AND is_read = 0;").arg(id())) &&
       query_all.next()) {
-    m_unreadCount = query_all.value(0).toInt();
+    int new_unread_count = query_all.value(0).toInt();
+
+    if (update_feed_statuses && m_status == NewMessages && new_unread_count != m_unreadCount) {
+      m_status = Normal;
+    }
+
+    m_unreadCount = new_unread_count;
   }
 }
 
@@ -331,6 +337,9 @@ QVariant FeedsModelFeed::data(int column, int role) const {
     case Qt::FontRole:
       return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
+    case Qt::ForegroundRole:
+      return m_status == NewMessages ? QColor(Qt::blue) : QVariant();
+
     default:
       return QVariant();
   }
@@ -472,7 +481,10 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
       query_insert.bindValue(":contents", message.m_contents);
 
-      query_insert.exec();
+      if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
+        setStatus(NewMessages);
+      }
+
       query_insert.finish();
     }
   }
@@ -483,3 +495,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
     qDebug("Transaction commit for message downloader failed.");
   }
 }
+
+
+
+

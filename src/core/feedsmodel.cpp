@@ -176,14 +176,13 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
 
   query_add.setForwardOnly(true);
   query_add.prepare("INSERT INTO Categories "
-                    "(parent_id, title, description, date_created, icon, type) "
-                    "VALUES (:parent_id, :title, :description, :date_created, :icon, :type);");
+                    "(parent_id, title, description, date_created, icon) "
+                    "VALUES (:parent_id, :title, :description, :date_created, :icon);");
   query_add.bindValue(":parent_id", parent->id());
   query_add.bindValue(":title", category->title());
   query_add.bindValue(":description", category->description());
   query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
   query_add.bindValue(":icon", IconFactory::instance()->toByteArray(category->icon()));
-  query_add.bindValue(":type", (int) FeedsModelCategory::Standard);
 
   if (!query_add.exec()) {
     // Query failed.
@@ -467,7 +466,9 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
-  return itemForIndex(parent)->columnCount();
+  Q_UNUSED(parent)
+
+  return FEEDS_VIEW_COLUMN_COUNT;
 }
 
 FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
@@ -499,7 +500,7 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
 
   QList<QModelIndex> parents;
 
-  // Start with root item.
+  // Start with root item (which obviously has invalid index).
   parents << indexForItem(m_rootItem);
 
   while (!parents.isEmpty()) {
@@ -541,10 +542,11 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
     emit dataChanged(index(indx.row(), 0, indx_parent),
                      index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
 
-    if (indx_parent.isValid()) {
+    // NOTE: The code below seems not to be necessary.
+    /*if (indx_parent.isValid()) {
       // Make sure that data of parent are changed too.
       list.prepend(indx_parent);
-    }
+    }*/
   }
 }
 
@@ -585,22 +587,11 @@ void FeedsModel::loadFromDatabase() {
   }
 
   while (query_categories.next()) {
-    // Process this category.
-    FeedsModelCategory::Type type = static_cast<FeedsModelCategory::Type>(query_categories.value(CAT_DB_TYPE_INDEX).toInt());
+    CategoryAssignmentItem pair;
+    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = FeedsModelCategory::loadFromRecord(query_categories.record());
 
-    switch (type) {
-      case FeedsModelCategory::Standard: {
-        CategoryAssignmentItem pair;
-        pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-        pair.second = FeedsModelCategory::loadFromRecord(query_categories.record());
-
-        categories << pair;
-        break;
-      }
-
-      default:
-        break;
-    }
+    categories << pair;
   }
 
   // All categories are now loaded.

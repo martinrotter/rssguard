@@ -33,12 +33,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     Q_DECLARE_TR_FUNCTIONS(FeedsModelCategory)
 
   public:
-    // Describes possible types of categories.
-    // NOTE: This is equivavelnt to Categories(type).
-    enum Type {
-      Standard = 0
-    };
-
     // Constructors and destructors
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     explicit FeedsModelCategory(const FeedsModelCategory &other);
@@ -51,20 +45,8 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // database.
     bool removeItself();
 
-    // All types of categories offer these getters/setters.
-    inline Type type() const {
-      return m_type;
-    }
-
-    inline void setType(const Type &type) {
-      m_type = type;
-    }
-
     // Loads particular "standard category" from given sql record.
     static FeedsModelCategory *loadFromRecord(const QSqlRecord &record);
-
-  protected:
-    Type m_type;
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

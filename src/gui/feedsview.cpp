@@ -354,17 +354,7 @@ void FeedsView::editSelectedItem() {
   FeedsModelFeed *feed;
 
   if ((category = isCurrentIndexCategory()) != NULL) {
-    // Category is selected.
-    switch (category->type()) {
-      case FeedsModelCategory::Standard: {
-        // User wants to edit standard category.
-        editCategory(static_cast<FeedsModelCategory*>(category));
-        break;
-      }
-
-      default:
-        break;
-    }
+    editCategory(static_cast<FeedsModelCategory*>(category));
   }
   else if ((feed = isCurrentIndexFeed()) != NULL) {
     // Feed is selected.
@@ -513,7 +503,7 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
   QModelIndex index = m_sourceModel->indexForItem(feed);
 
   if (index.isValid()) {
-    feed->updateCounts(update_total_too);
+    feed->updateCounts(update_total_too, false);
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
 

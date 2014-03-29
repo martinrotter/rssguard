@@ -55,6 +55,7 @@
 #define CLOSE_LOCK_TIMEOUT              3000
 #define DOWNLOAD_TIMEOUT                5000
 #define MESSAGES_VIEW_DEFAULT_COL       170
+#define FEEDS_VIEW_COLUMN_COUNT         2
 #define ELLIPSIS_LENGTH                 3
 #define MIN_CATEGORY_NAME_LENGTH        3
 #define INTERNAL_URL_NEWSPAPER          "@APP_LOW_NAME@:newspaper"
@@ -121,7 +122,6 @@
 #define CAT_DB_DESCRIPTION_INDEX  3
 #define CAT_DB_DCREATED_INDEX     4
 #define CAT_DB_ICON_INDEX         5
-#define CAT_DB_TYPE_INDEX         6
 
 // Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
 #define FDS_DB_ID_INDEX               0
