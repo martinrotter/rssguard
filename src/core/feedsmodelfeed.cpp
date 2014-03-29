@@ -38,6 +38,7 @@
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item),
+    m_status(Normal),
     m_type(Rss0X),
     m_totalCount(0),
     m_unreadCount(0),
