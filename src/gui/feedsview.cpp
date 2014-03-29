@@ -412,7 +412,7 @@ void FeedsView::deleteSelectedItem() {
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
 
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot delete multiple "),
+      SystemTrayIcon::instance()->showMessage(tr("Cannot delete item"),
                                               tr("Selected item cannot be deleted because feed update is ongoing."),
                                               QSystemTrayIcon::Warning);
     }

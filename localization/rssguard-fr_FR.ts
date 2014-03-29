@@ -2,14 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="fr_FR">
 <context>
-    <name>CornerButton</name>
-    <message>
-        <source>Open new web browser tab.</source>
-        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
-        <translation>Ouvrir un nouvel onglet de navigation web.</translation>
-    </message>
-</context>
-<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -99,47 +91,46 @@
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardCategory</name>
+    <name>FeedsModelCategory</name>
     <message>
-        <source>%1 (standard category)
+        <source>%1 (category)
 %2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (catégorie standard)
-%2%3</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>
 
 This category does not contain any nested items.</source>
-        <translation>
+        <translation type="unfinished">
 
 Cette catégorie ne peut pas contenir d&apos;articles imbriqués.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
+        <translation type="unfinished">
             <numerusform>%n message(s) non lu(s).</numerusform>
             <numerusform>%n message(s) non lu(s).</numerusform>
         </translation>
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardFeed</name>
+    <name>FeedsModelFeed</name>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Ne pas utiliser la mise à jour automatique</translation>
+        <translation type="unfinished">Ne pas utiliser la mise à jour automatique</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Utiliser les paramètres globaux</translation>
+        <translation type="unfinished">Utiliser les paramètres globaux</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
+        <translation type="unfinished">
             <numerusform>Utiliser des paramètres spécifiques (%n minute(s) avant la prochaine mise à jour automatique)</numerusform>
             <numerusform>Utiliser des paramètres spécifiques (%n minute(s) avant la prochaine mise à jour automatique)</numerusform>
         </translation>
@@ -151,7 +142,7 @@ Cette catégorie ne peut pas contenir d&apos;articles imbriqués.</translation>
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)
+        <translation type="unfinished">%1 (%2)
 %3
 
 Encodage : %4
@@ -160,7 +151,7 @@ Statut de la mise à jour automatique : %5</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
+        <translation type="unfinished">
             <numerusform>%n message(s) non lu(s).</numerusform>
             <numerusform>%n message(s) non lu(s).</numerusform>
         </translation>
@@ -401,22 +392,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Afficher tout les messages depuis les flux/catégories sélectionnées dans un nouvel onglet en mode &quot;journal&quot;. Notez que les messages ne sont pas marqué lus automatiquement.</translation>
     </message>
     <message>
-        <source>Add new standard category.</source>
-        <translation>Ajouter une nouvelle catégorie standard.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed.</source>
-        <translation>Ajouter un nouveau flux standard.</translation>
-    </message>
-    <message>
-        <source>New standard &amp;feed</source>
-        <translation>Nouveau &amp;flux standard</translation>
-    </message>
-    <message>
-        <source>New standard &amp;category</source>
-        <translation>Nouvelle &amp;catégorie standard</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Cacher la fenêtre principale si il est visible et la montrer si il est cacher.</translation>
     </message>
@@ -610,6 +585,34 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New &amp;feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New &amp;category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch visibility of main toolbars.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Feed/message list headers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1659,21 +1662,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
 </context>
 <context>
-    <name>FormWelcome</name>
-    <message>
-        <source>Welcome</source>
-        <translation>Bienvenu</translation>
-    </message>
-    <message>
-        <source>Welcome to %1</source>
-        <translation>Bienvenu à %1</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;%3 est un lecteur de flux (très) facile d&apos;utilisation. Il supporte tout les principaux formats de flux, incluant RSS, ATOM et RDF.&lt;/p&gt;&lt;p&gt;Assurez-vous d&apos;explorer toutes les fonctionnalités disponibles. Si vous trouvez un bug ou si vous souhaitez proposer une nouvelle fonctionnalité, alors créez une nouvelle &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;&quot;issue report&quot;&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 peut être traduit dans n&apos;importe quelle langue. Contactez l&apos;&lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;auteur&lt;/span&gt;&lt;/a&gt; dans le cas où vous seriez intéressé(e).&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
-    </message>
-</context>
-<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -1900,12 +1888,16 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
 <context>
     <name>ShortcutCatcher</name>
     <message>
-        <source>Reset shortcut.</source>
-        <translation>Réinitialiser le raccourcis.</translation>
+        <source>Reset to original shortcut.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set shortcut.</source>
-        <translation>Définir le raccourcis.</translation>
+        <source>Clear current shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click and hit new shortcut.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1952,6 +1944,10 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <message>
         <source>Main menu</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open new web browser tab.</source>
+        <translation type="unfinished">Ouvrir un nouvel onglet de navigation web.</translation>
     </message>
 </context>
 <context>
@@ -2031,6 +2027,10 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <message>
         <source>Stop web page loading.</source>
         <translation>Arrêter le chargement de la page</translation>
+    </message>
+    <message>
+        <source> %1 kB / %2 kB</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

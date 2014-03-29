@@ -2,14 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="nl_NL">
 <context>
-    <name>CornerButton</name>
-    <message>
-        <source>Open new web browser tab.</source>
-        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
-        <translation>Open een nieuw webbrowser tabblad</translation>
-    </message>
-</context>
-<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -99,12 +91,12 @@
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardCategory</name>
+    <name>FeedsModelCategory</name>
     <message>
-        <source>%1 (standard category)
+        <source>%1 (category)
 %2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (standaard categorie)
+        <translation>%1 (categorie)
 %2%3</translation>
     </message>
     <message>
@@ -125,7 +117,7 @@ Deze categorie bevat geen nested items.</translation>
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardFeed</name>
+    <name>FeedsModelFeed</name>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
@@ -401,22 +393,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Toon alle berichten van geselecteerde feeds/categorieën in een nieuwe &quot;Krantweergave modus&quot; tabblad. Onthoud dat de berichten niet zijn ingesteld als automatisch gelezen.</translation>
     </message>
     <message>
-        <source>Add new standard category.</source>
-        <translation>Voeg nieuw standaard categorie toe.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed.</source>
-        <translation>Voeg nieuw standaard feed toe.</translation>
-    </message>
-    <message>
-        <source>New standard &amp;feed</source>
-        <translation>Nieuw standaard &amp;feed</translation>
-    </message>
-    <message>
-        <source>New standard &amp;category</source>
-        <translation>Nieuw standaard &amp;categorie</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Verberg hoofdvenster als het zichtbaar is en toon het als het verborgen is.</translation>
     </message>
@@ -450,7 +426,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>&amp;Delete selected messages</source>
-        <translation>Verwij&amp;der geselecteerde berichten.</translation>
+        <translation>Verwij&amp;der geselecteerde berichten</translation>
     </message>
     <message>
         <source>Deletes all messages from selected feeds.</source>
@@ -486,7 +462,7 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
-        <translation>Verberg of toon het hoofdmenu</translation>
+        <translation>Verberg of toon het hoofdmenu.</translation>
     </message>
     <message>
         <source>Add &amp;new feed/category</source>
@@ -550,11 +526,11 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Select &amp;next feed/category</source>
-        <translation>Selecteer volge&amp;nde feeds/categorieën.</translation>
+        <translation>Selecteer volge&amp;nde feeds/categorieën</translation>
     </message>
     <message>
         <source>Select &amp;previous feed/category</source>
-        <translation>Selecteer &amp;vorige feeds/categorieën.</translation>
+        <translation>Selecteer &amp;vorige feeds/categorieën</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
@@ -598,19 +574,47 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel over naar het hoofd&amp;venster</translation>
     </message>
     <message>
         <source>Report a &amp;bug...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporteer een &amp;bug...</translation>
     </message>
     <message>
         <source>Cannot open external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan externe browser niet starten</translation>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan externe webbrowser niet starten, Navigeer handmatig naar RSSguard website.</translation>
+    </message>
+    <message>
+        <source>New &amp;feed</source>
+        <translation>Nieuw &amp;feed</translation>
+    </message>
+    <message>
+        <source>Add new feed.</source>
+        <translation>Voeg nieuw feed toe.</translation>
+    </message>
+    <message>
+        <source>New &amp;category</source>
+        <translation>Nieuw &amp;categorie</translation>
+    </message>
+    <message>
+        <source>Add new category.</source>
+        <translation>Voeg nieuwe categorie toe.</translation>
+    </message>
+    <message>
+        <source>&amp;Toolbars</source>
+        <translation>&amp;Werkbalk</translation>
+    </message>
+    <message>
+        <source>Switch visibility of main toolbars.</source>
+        <translation>Schakel over naar het hoofdvenster.</translation>
+    </message>
+    <message>
+        <source>&amp;Feed/message list headers</source>
+        <translation>&amp;Feed/bericht  kopteksten</translation>
     </message>
 </context>
 <context>
@@ -1638,7 +1642,7 @@ de geïnstalleerde.</translation>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation>Download installatie bestand voor OS/2</translation>
+        <translation>Download installatie bestand voor OS/2.</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
@@ -1656,22 +1660,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
-        <translation>Kan niet naar installatiebestand bladeren. Controleer nieuwe installatie downloads handmatig op RSSguard website</translation>
-    </message>
-</context>
-<context>
-    <name>FormWelcome</name>
-    <message>
-        <source>Welcome</source>
-        <translation>Welkom</translation>
-    </message>
-    <message>
-        <source>Welcome to %1</source>
-        <translation>Welkom bij %1</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;%3 is een (zeer) makelijk te gebruiken feed lezer.Het ondersteund alle grote formaten, inclusief RSS, ATOM en RDF.&lt;/p&gt;&lt;p&gt;Maak gebruik van all beschikbare functies die er zijn. Ook als je een bug vind, of je hebt een nieuwe functie die je wilt zien, maak dan een nieuwe &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 kan naar iedere taal worden vertaald. Contactpersoon is&lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;autheur&lt;/span&gt;&lt;/a&gt; In geval van belangstelling.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
+        <translation>Kan niet naar installatiebestand bladeren. Controleer nieuwe installatie downloads handmatig op RSSguard website.</translation>
     </message>
 </context>
 <context>
@@ -1885,7 +1874,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>0.06</translation>
+        <translation>0.07</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -1901,12 +1890,16 @@ Ga naar RRSguard website en download het handmatig.</translation>
 <context>
     <name>ShortcutCatcher</name>
     <message>
-        <source>Reset shortcut.</source>
-        <translation>Reset Sneltoets.</translation>
+        <source>Reset to original shortcut.</source>
+        <translation>Reset naar standaard sneltoets.</translation>
     </message>
     <message>
-        <source>Set shortcut.</source>
-        <translation>Stel sneltoets in.</translation>
+        <source>Clear current shortcut.</source>
+        <translation>Wis huidige sneltoets.</translation>
+    </message>
+    <message>
+        <source>Click and hit new shortcut.</source>
+        <translation>Klik en raak nieuwe sneltoets.</translation>
     </message>
 </context>
 <context>
@@ -1948,11 +1941,15 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Displays main menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toont het hoofdmenu.</translation>
     </message>
     <message>
         <source>Main menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoofdmenu</translation>
+    </message>
+    <message>
+        <source>Open new web browser tab.</source>
+        <translation>Open een nieuw webbrowser tabblad.</translation>
     </message>
 </context>
 <context>
@@ -2032,6 +2029,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stop het laden van pagina.</translation>
+    </message>
+    <message>
+        <source> %1 kB / %2 kB</source>
+        <translation>%1 kB / %2 kB</translation>
     </message>
 </context>
 <context>

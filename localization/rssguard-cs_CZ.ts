@@ -2,14 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="cs_CZ">
 <context>
-    <name>CornerButton</name>
-    <message>
-        <source>Open new web browser tab.</source>
-        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
-        <translation>Otevřít nový tab webového prohlížeče.</translation>
-    </message>
-</context>
-<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -99,12 +91,12 @@
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardCategory</name>
+    <name>FeedsModelCategory</name>
     <message>
-        <source>%1 (standard category)
+        <source>%1 (category)
 %2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (standardní kategorie)
+        <translation>%1 (kategorie)
 %2%3</translation>
     </message>
     <message>
@@ -126,7 +118,7 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardFeed</name>
+    <name>FeedsModelFeed</name>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
@@ -404,22 +396,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Zobrazí všechny zprávy z vybraných kanálů/kategorií v &quot;novinovém&quot; náhledu. Všechny zprávy budou automaticky označeny jako přečtené.</translation>
     </message>
     <message>
-        <source>Add new standard category.</source>
-        <translation>Přidat novou standardní kategorii.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed.</source>
-        <translation>Přidat nový standardní kanál.</translation>
-    </message>
-    <message>
-        <source>New standard &amp;feed</source>
-        <translation>Nový standard&amp;ní kanál</translation>
-    </message>
-    <message>
-        <source>New standard &amp;category</source>
-        <translation>Nová standardní &amp;kategorie</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
     </message>
@@ -614,6 +590,34 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
         <translation>Externí webový prohlížeč nelze otevřít. Zkontrolujte aktualizace ručně na webu programu.</translation>
+    </message>
+    <message>
+        <source>New &amp;feed</source>
+        <translation>Nový &amp;kanál</translation>
+    </message>
+    <message>
+        <source>Add new feed.</source>
+        <translation>Přidat nový kanál.</translation>
+    </message>
+    <message>
+        <source>New &amp;category</source>
+        <translation>No&amp;vá kategorie</translation>
+    </message>
+    <message>
+        <source>Add new category.</source>
+        <translation>Přidat novou kategorii.</translation>
+    </message>
+    <message>
+        <source>&amp;Toolbars</source>
+        <translation>&amp;Nástrojové lišty</translation>
+    </message>
+    <message>
+        <source>Switch visibility of main toolbars.</source>
+        <translation>Přepnout viditelnost hlavnich nástrojových lišet.</translation>
+    </message>
+    <message>
+        <source>&amp;Feed/message list headers</source>
+        <translation>&amp;Hlavičky seznamů zpráv/kanálů</translation>
     </message>
 </context>
 <context>
@@ -1659,21 +1663,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
 </context>
 <context>
-    <name>FormWelcome</name>
-    <message>
-        <source>Welcome</source>
-        <translation>Vítejte</translation>
-    </message>
-    <message>
-        <source>Welcome to %1</source>
-        <translation>Vítá Vás %1</translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation>&lt;p&gt;%3 je (velmi) jednoduchá čtečka kanálů. Podporuje všechny rozšířené formáty kanálů, včetně RSS, ATOM a RDF.&lt;/p&gt;&lt;p&gt;Ujistěte se, že prozkoumáte všechny její funkce. Pokud najdete v aplikaci chybu nebo jste dostali nápad na její vylepšení, pak to &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;nahlaste&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 může být přeložen do kteréhokoliv jazyka. Kontaktujte jeho &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;autora&lt;/span&gt;&lt;/a&gt; pro více informací.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</translation>
-    </message>
-</context>
-<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -1900,12 +1889,16 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
 <context>
     <name>ShortcutCatcher</name>
     <message>
-        <source>Reset shortcut.</source>
-        <translation>Obnovit zkratku.</translation>
+        <source>Reset to original shortcut.</source>
+        <translation>Obnovit původní zkratku.</translation>
     </message>
     <message>
-        <source>Set shortcut.</source>
-        <translation>Nastavit zkratku.</translation>
+        <source>Clear current shortcut.</source>
+        <translation>Vymazat současnou zkratku.</translation>
+    </message>
+    <message>
+        <source>Click and hit new shortcut.</source>
+        <translation>Klikněte a stiskněte novou zkratku.</translation>
     </message>
 </context>
 <context>
@@ -1952,6 +1945,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Main menu</source>
         <translation>Hlavní menu</translation>
+    </message>
+    <message>
+        <source>Open new web browser tab.</source>
+        <translation>Otevřít nový tab webového prohlížeče.</translation>
     </message>
 </context>
 <context>
@@ -2031,6 +2028,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Zastavit načítání aktuální webové stránky.</translation>
+    </message>
+    <message>
+        <source> %1 kB / %2 kB</source>
+        <translation></translation>
     </message>
 </context>
 <context>

@@ -2,14 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="de_DE">
 <context>
-    <name>CornerButton</name>
-    <message>
-        <source>Open new web browser tab.</source>
-        <extracomment>Tooltip for &quot;new tab&quot; webbrowser corner button.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -99,9 +91,9 @@
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardCategory</name>
+    <name>FeedsModelCategory</name>
     <message>
-        <source>%1 (standard category)
+        <source>%1 (category)
 %2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
         <translation type="unfinished"></translation>
@@ -122,7 +114,7 @@ This category does not contain any nested items.</source>
     </message>
 </context>
 <context>
-    <name>FeedsModelStandardFeed</name>
+    <name>FeedsModelFeed</name>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
@@ -394,22 +386,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Zeige alle Nachrichten der selektierten Feeds/Kategorien in einem neuen Zeitungsmodusreiter an. Bemerke, dass Nachrichten nicht automatisch als gelesen gesetzt werden.</translation>
     </message>
     <message>
-        <source>Add new standard category.</source>
-        <translation>Neue Standardkategorie hinzufügen.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed.</source>
-        <translation>Füge einen neuen Standard-Feed hinzu.</translation>
-    </message>
-    <message>
-        <source>New standard &amp;feed</source>
-        <translation>Neuen Standard-&amp;Feed</translation>
-    </message>
-    <message>
-        <source>New standard &amp;category</source>
-        <translation>Neue Standard-&amp;Kategorie</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Hauptfenster verstecken falls es sichtbar was oder sichtbar falls es versteckt war.</translation>
     </message>
@@ -603,6 +579,34 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Cannot open external browser. Navigate to application website manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New &amp;feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New &amp;category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch visibility of main toolbars.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Feed/message list headers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1635,21 +1639,6 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
-    <name>FormWelcome</name>
-    <message>
-        <source>Welcome</source>
-        <translation>Willkommen</translation>
-    </message>
-    <message>
-        <source>Welcome to %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;p&gt;%3 is a (very) easy-to-use feed reader. It supports all major feed formats, including RSS, ATOM and RDF.&lt;/p&gt;&lt;p&gt;Make sure you explore all available features. If you find a bug or if you want to propose new feature, then create new &lt;a href=&quot;%1&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;issue report&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;%3 can be translated to any language. Contact its &lt;a href=&quot;mailto:%2&quot;&gt;&lt;span style=&quot;text-decoration: underline; color:#0000ff;&quot;&gt;author&lt;/span&gt;&lt;/a&gt; in case of your interest.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -1876,12 +1865,16 @@ Go to application website to obtain it manually.</source>
 <context>
     <name>ShortcutCatcher</name>
     <message>
-        <source>Reset shortcut.</source>
-        <translation>Kürzel zurücksetzen.</translation>
+        <source>Reset to original shortcut.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set shortcut.</source>
-        <translation>Kürzel setzen.</translation>
+        <source>Clear current shortcut.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click and hit new shortcut.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1927,6 +1920,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Main menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open new web browser tab.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2007,6 +2004,10 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stoppe das laden der Webseite.</translation>
+    </message>
+    <message>
+        <source> %1 kB / %2 kB</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
