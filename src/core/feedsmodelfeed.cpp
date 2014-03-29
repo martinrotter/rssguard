@@ -101,7 +101,7 @@ void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_s
       query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
-    if (update_feed_statuses && m_status == NewMessages && new_unread_count != m_unreadCount) {
+    if (update_feed_statuses && m_status == NewMessages && new_unread_count < m_unreadCount) {
       m_status = Normal;
     }
 
