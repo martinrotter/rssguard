@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="1.9.9.7" type="feature">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.7-win32.7z</url>
-    <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.7-os2.7z</url>
+  <release version="1.9.9.8" type="maintenance">
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.8-win32.7z</url>
+    <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.8-os2.7z</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Simplified hiding of main menu - primarily in source code.</li>
-<li>Fixed size of "normal" window display when fullscreen mode is active on application exit.</li>
-<li>Partially fixed bug #33.</li>
-<li>All datetimes fetched from feeds are now considered to be UTC.</li>
+<li>Informative buttons now do not accept focus.</li>
+<li>Button for resetting keyboard shortcut now works.</li>
+<li>Fixed web browser tab title/icon handling (bug #39).</li>
 </ul>
 
 Added:
 <ul>
-<li>Toolbutton-based main menu.</li>
-<li>User can enable/disable web browser javascript, external plugins and images auto-loading (bug #9).</li>
-<li>Custom counts of messages in feed list (issue #14) are now changeable.</li>
-<li>Feed list categories expand status is now persistent.</li>
-<li>System-wide external web browser can now be used.</li>
-<li>Switchable (with user-defined keyboard shortcut) main menu.</li>
-<li>Added better changelog.</li>
+<li>Added option to hide main toolbars and feed/message list headers.</li>
+<li>"Defragment database" button shortcut is now changeable.</li>
+<li>Added option to clear keyboard shortcuts.</li>
+<li>Added "progress bar" to web browser.</li>
+<li>Added blue color to feeds which contain unread messages.</li>
+<li>Added new "greeen" skin.</li>
+<li>Added "Web browser" menu to corner main menu button.</li>
 </ul>
 
 Changed:
 <ul>
-<li>Some icons replaced.</li>
-<li>Several keyboard shortcuts + accelerators changed.</li>
-<li>Message list optimizations done.</li>
-<li>"Check for updates" dialog tweaked.</li>
+<li>Massive code cleanups.</li>
+<li>Removed "progress bar" from address text edit of web browser.</li>
+<li>Removed "blau" skin due to its slowness.</li>
+<li>Tab order and default widget changed for category/feed add/edit dialogs.</li>
+<li>New style for tab widget corner buttons.</li>
 </ul>
 </body>]]>
     </changes>
