@@ -4,6 +4,8 @@
 #include "gui/basetoolbar.h"
 
 
+class BaseLineEdit;
+
 class MessagesToolBar : public BaseToolBar {
     Q_OBJECT
 
@@ -30,12 +32,15 @@ class MessagesToolBar : public BaseToolBar {
     void saveChangeableActions() const {
     }
 
-    void loadChangeableActions() {
-    }
+    void loadChangeableActions();
 
   signals:
 
   public slots:
+
+  private:
+    QWidget *m_spacer;
+    BaseLineEdit *m_txtFilter;
 
 };
 

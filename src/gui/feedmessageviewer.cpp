@@ -303,21 +303,16 @@ void FeedMessageViewer::initialize() {
   m_toolBarFeeds->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarFeeds->setToolButtonStyle(Qt::ToolButtonIconOnly);
 
-  m_toolBarMessages->setFloatable(false);
-  m_toolBarMessages->setMovable(false);
-  m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
-  m_toolBarMessages->setToolButtonStyle(Qt::ToolButtonIconOnly);
-
   // Add everything to toolbar.
   m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
   m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
   m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionClearAllFeeds);
 
-  m_toolBarFeeds->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-
-  m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead);
-  m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
-  m_toolBarMessages->addAction(FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages);
+  m_toolBarMessages->setFloatable(false);
+  m_toolBarMessages->setMovable(false);
+  m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
+  m_toolBarMessages->setToolButtonStyle(Qt::ToolButtonIconOnly);
+  m_toolBarMessages->loadChangeableActions();
 
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
