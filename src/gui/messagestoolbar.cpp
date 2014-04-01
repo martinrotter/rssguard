@@ -2,7 +2,7 @@
 
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
-  : QToolBar(title, parent) {
+  : BaseToolBar(title, parent) {
 }
 
 MessagesToolBar::~MessagesToolBar() {

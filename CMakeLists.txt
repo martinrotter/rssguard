@@ -292,6 +292,7 @@ set(APP_SOURCES
   src/gui/messagebox.cpp
   src/gui/formupdate.cpp
   src/gui/comboboxwithstatus.cpp
+  src/gui/basetoolbar.cpp
   src/gui/messagestoolbar.cpp
 
   # DYNAMIC-SHORTCUTS sources.
@@ -366,6 +367,7 @@ set(APP_HEADERS
   src/gui/messagebox.h
   src/gui/formupdate.h
   src/gui/comboboxwithstatus.h
+  src/gui/basetoolbar.h
   src/gui/messagestoolbar.h
 
   # DYNAMIC-SHORTCUTS headers.
