@@ -25,6 +25,7 @@
 
 class WebBrowser;
 class MessagesView;
+class MessagesToolBar;
 class FeedsView;
 class FeedDownloader;
 class FeedsModelFeed;
@@ -106,7 +107,7 @@ class FeedMessageViewer : public TabContent {
     bool m_toolBarsEnabled;
     bool m_listHeadersEnabled;
     QToolBar *m_toolBarFeeds;
-    QToolBar *m_toolBarMessages;
+    MessagesToolBar *m_toolBarMessages;
 
     QSplitter *m_feedSplitter;
     QSplitter *m_messageSplitter;

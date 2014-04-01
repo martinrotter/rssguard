@@ -31,6 +31,7 @@
 #include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
+#include "gui/messagestoolbar.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -52,7 +53,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarsEnabled(true),
     m_listHeadersEnabled(true),
     m_toolBarFeeds(new QToolBar(tr("Toolbar for feeds"), this)),
-    m_toolBarMessages(new QToolBar(tr("Toolbar for messages"), this)),
+    m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this)),
