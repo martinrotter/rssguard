@@ -5,8 +5,6 @@
 #include "gui/formmain.h"
 #include "miscellaneous/settings.h"
 
-#include <QChar>
-
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   : BaseToolBar(title, parent),
@@ -60,7 +58,7 @@ void MessagesToolBar::saveChangeableActions() const {
     }
   }
 
-  Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", action_names.join(','));
+  Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", action_names.join(","));
 }
 
 void MessagesToolBar::loadChangeableActions() {
