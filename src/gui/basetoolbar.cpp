@@ -27,5 +27,8 @@ void BaseToolBar::loadChangeableActions() {
     if (available_actions.contains(action_name)) {
       addAction(available_actions.value(action_name));
     }
+    else if (action_name == SEPARATOR_ACTION_NAME) {
+      addSeparator();
+    }
   }
 }

@@ -56,6 +56,9 @@ void MessagesToolBar::saveChangeableActions() const {
     if (action_name != FILTER_OBJECT_NAME && action_name != SPACER_OBJECT_NAME) {
       action_names.append(action->objectName());
     }
+    else if (action->isSeparator()) {
+      action_names.append(SEPARATOR_ACTION_NAME);
+    }
   }
 
   Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", action_names.join(","));

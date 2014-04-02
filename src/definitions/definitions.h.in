@@ -66,6 +66,7 @@
 #define CHANGE_EVENT_DELAY              250
 #define SPACER_OBJECT_NAME              "spacer"
 #define FILTER_OBJECT_NAME              "filter"
+#define SEPARATOR_ACTION_NAME           "separator"
 #define FILTER_WIDTH                    150
 #define FILTER_RIGHT_MARGIN             5
 
