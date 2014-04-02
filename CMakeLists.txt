@@ -294,6 +294,7 @@ set(APP_SOURCES
   src/gui/comboboxwithstatus.cpp
   src/gui/basetoolbar.cpp
   src/gui/messagestoolbar.cpp
+  src/gui/toolbareditor.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -333,6 +334,7 @@ set(APP_SOURCES
   src/network-web/webview.cpp
 
   # MAIN sources.
+  src/application.cpp
   src/main.cpp
 )
 
@@ -369,6 +371,7 @@ set(APP_HEADERS
   src/gui/comboboxwithstatus.h
   src/gui/basetoolbar.h
   src/gui/messagestoolbar.h
+  src/gui/toolbareditor.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -398,6 +401,9 @@ set(APP_HEADERS
   src/network-web/webfactory.h
   src/network-web/webbrowser.h
   src/network-web/webview.h
+
+  # MAIN headers.
+  src/application.h
 )
 
 # Add form files.
@@ -408,6 +414,7 @@ set(APP_FORMS
   src/gui/formabout.ui
   src/gui/formstandardcategorydetails.ui
   src/gui/formstandardfeeddetails.ui
+  src/gui/toolbareditor.ui
 )
 
 # Add translations.

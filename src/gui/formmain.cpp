@@ -86,6 +86,9 @@ FormMain *FormMain::instance() {
 }
 
 QHash<QString, QAction*> FormMain::allActions() {
+  // TODO: nevytvaret pokazde novej hash ale udelat jeden
+  // a ten pak pouzivat.
+  // tohle by mohl bejt kandidat
   QHash<QString, QAction*> actions;
 
   // Add basic actions.
