@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
   main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(main_window.allActions());
+  DynamicShortcuts::load(main_window.allActions().values());
 
   // Display main window.
   if (Settings::instance()->value(APP_CFG_GUI, "start_hidden",

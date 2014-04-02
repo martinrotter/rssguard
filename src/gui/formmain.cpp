@@ -64,7 +64,7 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   // Add these actions to the list of actions of the main window.
   // This allows to use actions via shortcuts
   // even if main menu is not visible.
-  addActions(allActions());
+  addActions(allActions().values());
 
   // Prepare tabs.
   m_ui->m_tabWidget->initializeTabs();
@@ -85,44 +85,50 @@ FormMain *FormMain::instance() {
   return s_instance;
 }
 
-QList<QAction*> FormMain::allActions() {
-  QList<QAction*> actions;
+QHash<QString, QAction*> FormMain::allActions() {
+  QHash<QString, QAction*> actions;
 
   // Add basic actions.
-  actions << m_ui->m_actionSettings << m_ui->m_actionQuit <<
-             m_ui->m_actionFullscreen << m_ui->m_actionAboutGuard <<
-             m_ui->m_actionSwitchFeedsList << m_ui->m_actionSwitchMainWindow <<
-             m_ui->m_actionSwitchMainMenu << m_ui->m_actionSwitchToolBars <<
-             m_ui->m_actionSwitchListHeaders;
+  actions.insert(m_ui->m_actionSettings->objectName(), m_ui->m_actionSettings);
+  actions.insert(m_ui->m_actionSettings->objectName(), m_ui->m_actionSettings);
+  actions.insert(m_ui->m_actionQuit->objectName(), m_ui->m_actionQuit);
+  actions.insert(m_ui->m_actionFullscreen->objectName(), m_ui->m_actionFullscreen);
+  actions.insert(m_ui->m_actionAboutGuard->objectName(), m_ui->m_actionAboutGuard);
+  actions.insert(m_ui->m_actionSwitchFeedsList->objectName(), m_ui->m_actionSwitchFeedsList);
+  actions.insert(m_ui->m_actionSwitchMainWindow->objectName(), m_ui->m_actionSwitchMainWindow);
+  actions.insert(m_ui->m_actionSwitchMainMenu->objectName(), m_ui->m_actionSwitchMainMenu);
+  actions.insert(m_ui->m_actionSwitchToolBars->objectName(), m_ui->m_actionSwitchToolBars);
+  actions.insert(m_ui->m_actionSwitchListHeaders->objectName(), m_ui->m_actionSwitchListHeaders);
 
   // Add web browser actions
-  actions << m_ui->m_actionAddBrowser << m_ui->m_actionCloseCurrentTab <<
-             m_ui->m_actionCloseAllTabs;
+  actions.insert(m_ui->m_actionAddBrowser->objectName(), m_ui->m_actionAddBrowser);
+  actions.insert(m_ui->m_actionCloseCurrentTab->objectName(), m_ui->m_actionCloseCurrentTab);
+  actions.insert(m_ui->m_actionCloseAllTabs->objectName(), m_ui->m_actionCloseAllTabs);
 
   // Add feeds/messages actions.
-  actions << m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-             m_ui->m_actionOpenSelectedSourceArticlesInternally <<
-             m_ui->m_actionOpenSelectedMessagesInternally <<
-             m_ui->m_actionMarkAllFeedsRead <<
-             m_ui->m_actionMarkSelectedFeedsAsRead <<
-             m_ui->m_actionMarkSelectedFeedsAsUnread <<
-             m_ui->m_actionClearSelectedFeeds <<
-             m_ui->m_actionMarkSelectedMessagesAsRead <<
-             m_ui->m_actionMarkSelectedMessagesAsUnread <<
-             m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-             m_ui->m_actionDeleteSelectedMessages <<
-             m_ui->m_actionUpdateAllFeeds <<
-             m_ui->m_actionUpdateSelectedFeedsCategories <<
-             m_ui->m_actionEditSelectedFeedCategory <<
-             m_ui->m_actionDeleteSelectedFeedCategory <<
-             m_ui->m_actionViewSelectedItemsNewspaperMode <<
-             m_ui->m_actionAddCategory <<
-             m_ui->m_actionAddFeed <<
-             m_ui->m_actionSelectNextFeedCategory <<
-             m_ui->m_actionSelectPreviousFeedCategory <<
-             m_ui->m_actionSelectNextMessage <<
-             m_ui->m_actionSelectPreviousMessage <<
-             m_ui->m_actionDefragmentDatabase;
+  actions.insert(m_ui->m_actionOpenSelectedSourceArticlesExternally->objectName(), m_ui->m_actionOpenSelectedSourceArticlesExternally);
+  actions.insert(m_ui->m_actionOpenSelectedSourceArticlesInternally->objectName(), m_ui->m_actionOpenSelectedSourceArticlesInternally);
+  actions.insert(m_ui->m_actionOpenSelectedMessagesInternally->objectName(), m_ui->m_actionOpenSelectedMessagesInternally);
+  actions.insert(m_ui->m_actionMarkAllFeedsRead->objectName(), m_ui->m_actionMarkAllFeedsRead);
+  actions.insert(m_ui->m_actionMarkSelectedFeedsAsRead->objectName(), m_ui->m_actionMarkSelectedFeedsAsRead);
+  actions.insert(m_ui->m_actionMarkSelectedFeedsAsUnread->objectName(), m_ui->m_actionMarkSelectedFeedsAsUnread);
+  actions.insert(m_ui->m_actionClearSelectedFeeds->objectName(), m_ui->m_actionClearSelectedFeeds);
+  actions.insert(m_ui->m_actionMarkSelectedMessagesAsRead->objectName(), m_ui->m_actionMarkSelectedMessagesAsRead);
+  actions.insert(m_ui->m_actionMarkSelectedMessagesAsUnread->objectName(), m_ui->m_actionMarkSelectedMessagesAsUnread);
+  actions.insert(m_ui->m_actionSwitchImportanceOfSelectedMessages->objectName(), m_ui->m_actionSwitchImportanceOfSelectedMessages);
+  actions.insert(m_ui->m_actionDeleteSelectedMessages->objectName(), m_ui->m_actionDeleteSelectedMessages);
+  actions.insert(m_ui->m_actionUpdateAllFeeds->objectName(), m_ui->m_actionUpdateAllFeeds);
+  actions.insert(m_ui->m_actionUpdateSelectedFeedsCategories->objectName(), m_ui->m_actionUpdateSelectedFeedsCategories);
+  actions.insert(m_ui->m_actionEditSelectedFeedCategory->objectName(), m_ui->m_actionEditSelectedFeedCategory);
+  actions.insert(m_ui->m_actionDeleteSelectedFeedCategory->objectName(), m_ui->m_actionDeleteSelectedFeedCategory);
+  actions.insert(m_ui->m_actionViewSelectedItemsNewspaperMode->objectName(), m_ui->m_actionViewSelectedItemsNewspaperMode);
+  actions.insert(m_ui->m_actionAddCategory->objectName(), m_ui->m_actionAddCategory);
+  actions.insert(m_ui->m_actionAddFeed->objectName(), m_ui->m_actionAddFeed);
+  actions.insert(m_ui->m_actionSelectNextFeedCategory->objectName(), m_ui->m_actionSelectNextFeedCategory);
+  actions.insert(m_ui->m_actionSelectPreviousFeedCategory->objectName(), m_ui->m_actionSelectPreviousFeedCategory);
+  actions.insert(m_ui->m_actionSelectNextMessage->objectName(), m_ui->m_actionSelectNextMessage);
+  actions.insert(m_ui->m_actionSelectPreviousMessage->objectName(), m_ui->m_actionSelectPreviousMessage);
+  actions.insert(m_ui->m_actionDefragmentDatabase->objectName(), m_ui->m_actionDefragmentDatabase);
 
   return actions;
 }

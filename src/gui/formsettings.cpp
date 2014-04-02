@@ -486,7 +486,7 @@ void FormSettings::saveLanguage() {
 }
 
 void FormSettings::loadShortcuts() {
-  m_ui->m_shortcuts->populate(FormMain::instance()->allActions());
+  m_ui->m_shortcuts->populate(FormMain::instance()->allActions().values());
 }
 
 void FormSettings::saveShortcuts() {
@@ -494,7 +494,7 @@ void FormSettings::saveShortcuts() {
   m_ui->m_shortcuts->updateShortcuts();
 
   // Save new shortcuts to the settings.
-  DynamicShortcuts::save(FormMain::instance()->allActions());
+  DynamicShortcuts::save(FormMain::instance()->allActions().values());
 }
 
 void FormSettings::loadDataStorage() {

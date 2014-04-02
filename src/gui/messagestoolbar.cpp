@@ -3,6 +3,7 @@
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
 #include "gui/formmain.h"
+#include "miscellaneous/settings.h"
 
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
@@ -15,6 +16,7 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   m_txtFilter->setFixedWidth(FILTER_WIDTH);
   m_txtFilter->setPlaceholderText(tr("Filter messages"));
 
+  // Update right margin of filter textbox.
   QMargins margins = contentsMargins();
   margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
   setContentsMargins(margins);
@@ -23,16 +25,44 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
 MessagesToolBar::~MessagesToolBar() {
 }
 
+QList<QAction*> MessagesToolBar::changeableActions() const {
+  // TODO: Vracet akce, ktere muze uzivatel upravovat v tomto toolbaru.
+  // nebudou se tedy vracet spacer widgety nebo lineedity a tak podobně,
+  // proste jen akce ktere sou uzivatelsky upravitelne
+  // http://stackoverflow.com/questions/5364957/in-qt-4-7-how-can-a-pop-up-menu-be-added-to-a-qtoolbar-button
+  QList<QAction*> changeable_actions;
+
+  // Iterates all actions present in the toolbar and
+  // returns actions which can be replaced by user.
+  foreach (QAction *action, actions()) {
+    QString action_name = action->objectName();
+
+    if (action_name != FILTER_OBJECT_NAME && action_name != SPACER_OBJECT_NAME) {
+      changeable_actions.append(action);
+    }
+  }
+
+  return changeable_actions;
+}
+
+void MessagesToolBar::saveChangeableActions() const {
+  QStringList action_names;
+
+  // Iterates all actions present in the toolbar and
+  // returns actions which can be replaced by user.
+  foreach (QAction *action, actions()) {
+    QString action_name = action->objectName();
+
+    if (action_name != FILTER_OBJECT_NAME && action_name != SPACER_OBJECT_NAME) {
+      action_names.append(action->objectName());
+    }
+  }
+
+  Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", action_names.join(','));
+}
+
 void MessagesToolBar::loadChangeableActions() {
-
-  // TODO: udelat dynamicky, nacitat z nastaveni
-  // pouzit formmain::allActions treba a ukladat podle "objectname"
-  // allactions ale nani qhash, tak pouzit treba
-  // http://qt-project.org/doc/qt-4.8/qobject.html#findChild na hledani podle jmena
-
-  addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead);
-  addAction(FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread);
-  addAction(FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages);
+  BaseToolBar::loadChangeableActions();
 
   addWidget(m_spacer);
   addWidget(m_txtFilter);
