@@ -5,7 +5,7 @@
 #include "gui/formmain.h"
 #include "miscellaneous/settings.h"
 
-#include <QStringList>
+#include <QChar>
 
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
