@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -286,8 +286,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>564</width>
-            <height>364</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -332,7 +332,7 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -364,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>560</width>
-                <height>336</height>
+                <width>558</width>
+                <height>337</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -571,6 +571,16 @@ Authors of this application are NOT responsible for lost data.</string>
               </item>
              </layout>
             </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="m_tabToolBars">
+          <attribute name="title">
+           <string>Toolbars</string>
+          </attribute>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="ToolBarEditor" name="widget" native="true"/>
            </item>
           </layout>
          </widget>
@@ -1217,6 +1227,12 @@ Authors of this application are NOT responsible for lost data.</string>
    <class>DynamicShortcutsWidget</class>
    <extends>QWidget</extends>
    <header>dynamicshortcutswidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToolBarEditor</class>
+   <extends>QWidget</extends>
+   <header>toolbareditor.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

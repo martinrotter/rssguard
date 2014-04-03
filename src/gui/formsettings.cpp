@@ -35,6 +35,8 @@
 #include "gui/feedsview.h"
 #include "gui/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/basetoolbar.h"
+#include "gui/messagestoolbar.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 
@@ -769,6 +771,8 @@ void FormSettings::loadInterface() {
                                                                                                                      "toolbar_style",
                                                                                                                      Qt::ToolButtonIconOnly).toInt()));
 
+  // Load toolbars.
+  m_ui->widget->loadFromToolBar(FormMain::instance()->tabWidget()->feedMessageViewer()->messagesToolBar());
 }
 
 void FormSettings::saveInterface() {

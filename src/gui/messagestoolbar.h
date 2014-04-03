@@ -26,7 +26,6 @@ class MessagesToolBar : public BaseToolBar {
   private:
     QWidget *m_spacer;
     BaseLineEdit *m_txtFilter;
-
 };
 
 #endif // NEWSTOOLBAR_H

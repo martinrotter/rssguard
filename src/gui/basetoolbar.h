@@ -14,7 +14,7 @@ class BaseToolBar : public QToolBar {
 
     virtual QList<QAction*> changeableActions() const = 0;
     virtual void saveChangeableActions() const = 0;
-    virtual void loadChangeableActions();
+    virtual void loadChangeableActions() = 0;
 
   signals:
 

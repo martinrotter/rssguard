@@ -5,14 +5,14 @@
 #include "gui/formmain.h"
 #include "miscellaneous/settings.h"
 
+#include <QWidgetAction>
+
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   : BaseToolBar(title, parent),
     m_spacer(new QWidget(this)),
     m_txtFilter(new BaseLineEdit(this)) {
-  m_spacer->setObjectName(SPACER_OBJECT_NAME);
   m_spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-  m_txtFilter->setObjectName(FILTER_OBJECT_NAME);
   m_txtFilter->setFixedWidth(FILTER_WIDTH);
   m_txtFilter->setPlaceholderText(tr("Filter messages"));
 
@@ -65,8 +65,24 @@ void MessagesToolBar::saveChangeableActions() const {
 }
 
 void MessagesToolBar::loadChangeableActions() {
-  BaseToolBar::loadChangeableActions();
+  QHash<QString, QAction*> available_actions = FormMain::instance()->allActions();
+  QStringList action_names = Settings::instance()->value(APP_CFG_GUI,
+                                                         "messages_toolbar",
+                                                         "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages").toString().split(',',
+                                                                                                                                                                                                QString::SkipEmptyParts);
 
-  addWidget(m_spacer);
-  addWidget(m_txtFilter);
+  actions().clear();
+
+  // Iterate action names and add respectable actions into the toolbar.
+  foreach (const QString &action_name, action_names) {
+    if (available_actions.contains(action_name)) {
+      addAction(available_actions.value(action_name));
+    }
+    else if (action_name == SEPARATOR_ACTION_NAME) {
+      addSeparator();
+    }
+  }
+
+  addWidget(m_spacer)->setObjectName(SPACER_OBJECT_NAME);
+  addWidget(m_txtFilter)->setObjectName(FILTER_OBJECT_NAME);
 }

@@ -1,7 +1,7 @@
 #ifndef TOOLBAREDITOR_H
 #define TOOLBAREDITOR_H
 
-#include <QDialog>
+#include <QWidget>
 
 #include "ui_toolbareditor.h"
 
@@ -13,7 +13,7 @@ namespace Ui {
 class BaseToolBar;
 
 // TODO: dialog pro úpravu prirazeneho toolbaru.
-class ToolBarEditor : public QDialog {
+class ToolBarEditor : public QWidget {
     Q_OBJECT
 
   public:
