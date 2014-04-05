@@ -5,6 +5,7 @@
 
 
 class BaseLineEdit;
+class QWidgetAction;
 
 class MessagesToolBar : public BaseToolBar {
     Q_OBJECT
@@ -15,8 +16,10 @@ class MessagesToolBar : public BaseToolBar {
     virtual ~MessagesToolBar();
 
     // Operations with changeable actions.
+    QList<QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
     void saveChangeableActions() const;
+    void saveChangeableActions(const QStringList &actions);
     void loadChangeableActions();
 
   signals:
@@ -24,7 +27,7 @@ class MessagesToolBar : public BaseToolBar {
   public slots:
 
   private:
-    QWidget *m_spacer;
+    QWidgetAction *m_actionFilter;
     BaseLineEdit *m_txtFilter;
 };
 

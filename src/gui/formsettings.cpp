@@ -833,6 +833,9 @@ void FormSettings::saveInterface() {
   settings->setValue(APP_CFG_GUI, "hide_tabbar_one_tab",
                      m_ui->m_hideTabBarIfOneTabVisible->isChecked());
 
+
+  m_ui->widget->saveToolBar();
+
   FormMain::instance()->tabWidget()->checkTabBarVisibility();
   FormMain::instance()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 }

@@ -12,8 +12,10 @@ class BaseToolBar : public QToolBar {
     explicit BaseToolBar(const QString &title, QWidget *parent = 0);
     virtual ~BaseToolBar();
 
+    virtual QList<QAction*> availableActions() const = 0;
     virtual QList<QAction*> changeableActions() const = 0;
     virtual void saveChangeableActions() const = 0;
+    virtual void saveChangeableActions(const QStringList &actions) = 0;
     virtual void loadChangeableActions() = 0;
 
   signals:
