@@ -15,20 +15,24 @@ class MessagesToolBar : public BaseToolBar {
     explicit MessagesToolBar(const QString &title, QWidget *parent = 0);
     virtual ~MessagesToolBar();
 
-    // Operations with changeable actions.
-    QList<QAction*> availableActions() const;
+    // Implementation of BaseToolBar interface.
+    QHash<QString, QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
-    void saveChangeableActions() const;
     void saveChangeableActions(const QStringList &actions);
     void loadChangeableActions();
+
+    // Loads actions as specified by external actions list.
+    // NOTE: This is used primarily for reloading actions
+    // when they are changed from settings.
+    void loadChangeableActions(const QStringList &actions);
 
   signals:
 
   public slots:
 
   private:
-    QWidgetAction *m_actionFilter;
-    BaseLineEdit *m_txtFilter;
+    QWidgetAction *m_actionSearchMessages;
+    BaseLineEdit *m_txtSearchMessages;
 };
 
 #endif // NEWSTOOLBAR_H

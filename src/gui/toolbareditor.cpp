@@ -9,6 +9,10 @@
 ToolBarEditor::ToolBarEditor(QWidget *parent)
   : QWidget(parent), m_ui(new Ui::ToolBarEditor) {
   m_ui->setupUi(this);
+
+  // Create connections.
+  connect(m_ui->m_btnInsertSeparator, SIGNAL(clicked()), this, SLOT(insertSeparator()));
+  connect(m_ui->m_btnInsertSpacer, SIGNAL(clicked()), this, SLOT(insertSpacer()));
 }
 
 ToolBarEditor::~ToolBarEditor() {
@@ -19,7 +23,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
   m_toolBar = tool_bar;
 
   QList<QAction*> activated_actions = m_toolBar->changeableActions();
-  QList<QAction*> available_actions = m_toolBar->availableActions();
+  QList<QAction*> available_actions = m_toolBar->availableActions().values();
 
   foreach (QAction *action, activated_actions) {
     QListWidgetItem *action_item = new QListWidgetItem(action->icon(),
@@ -28,7 +32,8 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
 
     if (action->isSeparator()) {
       action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
-      action_item->setText(tr("separator"));
+      action_item->setIcon(IconFactory::instance()->fromTheme("view-separator"));
+      action_item->setText(tr("Separator"));
     }
     else if (action->property("type").isValid()) {
       action_item->setData(Qt::UserRole, action->property("type").toString());
@@ -47,7 +52,8 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
 
       if (action->isSeparator()) {
         action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
-        action_item->setText(tr("separator"));
+        action_item->setText(tr("Separator"));
+        action_item->setIcon(IconFactory::instance()->fromTheme("view-separator"));
       }
       else if (action->property("type").isValid()) {
         action_item->setData(Qt::UserRole, action->property("type").toString());
@@ -70,4 +76,34 @@ void ToolBarEditor::saveToolBar() {
   }
 
   m_toolBar->saveChangeableActions(action_names);
+}
+
+void ToolBarEditor::insertSpacer() {
+  int current_row = m_ui->m_listActivatedActions->currentRow();
+
+  QListWidgetItem *item = new QListWidgetItem(tr("Toolbar spacer"));
+  item->setIcon(IconFactory::instance()->fromTheme("application-search"));
+  item->setData(Qt::UserRole, SPACER_ACTION_NAME);
+
+  if (current_row >= 0) {
+    m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
+  }
+  else {
+    m_ui->m_listActivatedActions->addItem(item);
+  }
+}
+
+void ToolBarEditor::insertSeparator() {
+  int current_row = m_ui->m_listActivatedActions->currentRow();
+
+  QListWidgetItem *item = new QListWidgetItem(tr("Separator"));
+  item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
+  item->setIcon(IconFactory::instance()->fromTheme("view-separator"));
+
+  if (current_row >= 0) {
+    m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
+  }
+  else {
+    m_ui->m_listActivatedActions->addItem(item);
+  }
 }

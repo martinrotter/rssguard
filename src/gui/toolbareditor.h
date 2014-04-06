@@ -25,6 +25,10 @@ class ToolBarEditor : public QWidget {
     void loadFromToolBar(BaseToolBar *tool_bar);
     void saveToolBar();
 
+  private slots:
+    void insertSpacer();
+    void insertSeparator();
+
   private:
     Ui::ToolBarEditor *m_ui;
     BaseToolBar *m_toolBar;

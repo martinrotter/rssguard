@@ -3,6 +3,7 @@
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
 #include "gui/formmain.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
 #include <QWidgetAction>
@@ -10,13 +11,17 @@
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   : BaseToolBar(title, parent),
-    m_txtFilter(new BaseLineEdit(this)) {
-  m_txtFilter->setFixedWidth(FILTER_WIDTH);
-  m_txtFilter->setPlaceholderText(tr("Filter messages"));
-  m_actionFilter = new QWidgetAction(this);
-  m_actionFilter->setDefaultWidget(m_txtFilter);
-  m_actionFilter->setProperty("type", FILTER_OBJECT_NAME);
-  m_actionFilter->setProperty("name", tr("message filter"));
+    m_txtSearchMessages(new BaseLineEdit(this)) {
+
+  m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
+  m_txtSearchMessages->setPlaceholderText(tr("Filter messages"));
+
+  // Setup wrapping action for search box.
+  m_actionSearchMessages = new QWidgetAction(this);
+  m_actionSearchMessages->setDefaultWidget(m_txtSearchMessages);
+  m_actionSearchMessages->setIcon(IconFactory::instance()->fromTheme("view-spacer"));
+  m_actionSearchMessages->setProperty("type", SEACRH_MESSAGES_ACTION_NAME);
+  m_actionSearchMessages->setProperty("name", tr("Message search box"));
 
   // Update right margin of filter textbox.
   QMargins margins = contentsMargins();
@@ -27,9 +32,9 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
 MessagesToolBar::~MessagesToolBar() {
 }
 
-QList<QAction*> MessagesToolBar::availableActions() const {
-  QList<QAction*> available_actions = FormMain::instance()->allActions().values();
-  available_actions.append(m_actionFilter);
+QHash<QString, QAction*> MessagesToolBar::availableActions() const {
+  QHash<QString, QAction*> available_actions = FormMain::instance()->allActions();
+  available_actions.insert(SEACRH_MESSAGES_ACTION_NAME, m_actionSearchMessages);
   return available_actions;
 }
 
@@ -37,45 +42,18 @@ QList<QAction*> MessagesToolBar::changeableActions() const {
   return actions();
 }
 
-void MessagesToolBar::saveChangeableActions() const {
-  QStringList action_names;
-
-  // Iterates all actions present in the toolbar and
-  // returns actions which can be replaced by user.
-  foreach (QAction *action, actions()) {
-    if (action->isSeparator()) {
-      // This action is separator, add its "name" to settings.
-      action_names.append(SEPARATOR_ACTION_NAME);
-    }
-    else if (action->property("type").isValid()) {
-      // This action is extra widget or spacer.
-      action_names.append(action->property("type").toString());
-    }
-    else {
-      // This action is normal action.
-      action_names.append(action->objectName());
-    }
-  }
-
-  Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", action_names.join(","));
-}
-
 void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
   Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", actions.join(","));
-  loadChangeableActions();
+  loadChangeableActions(actions);
 }
 
-void MessagesToolBar::loadChangeableActions() {
-  QHash<QString, QAction*> available_actions = FormMain::instance()->allActions();
-  QStringList action_names = Settings::instance()->value(APP_CFG_GUI,
-                                                         "messages_toolbar",
-                                                         "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,spacer,filter").toString().split(',',
-                                                                                                                                                                                                              QString::SkipEmptyParts);
+void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
+  QHash<QString, QAction*> available_actions = availableActions();
 
   clear();
 
   // Iterate action names and add respectable actions into the toolbar.
-  foreach (const QString &action_name, action_names) {
+  foreach (const QString &action_name, actions) {
     if (available_actions.contains(action_name)) {
       // Add existing standard action.
       addAction(available_actions.value(action_name));
@@ -84,9 +62,9 @@ void MessagesToolBar::loadChangeableActions() {
       // Add new separator.
       addSeparator();
     }
-    else if (action_name == FILTER_OBJECT_NAME) {
-      // Add filter.
-      addAction(m_actionFilter);
+    else if (action_name == SEACRH_MESSAGES_ACTION_NAME) {
+      // Add search box.
+      addAction(m_actionSearchMessages);
     }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
@@ -94,8 +72,18 @@ void MessagesToolBar::loadChangeableActions() {
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
       QAction *action = addWidget(spacer);
+      action->setIcon(IconFactory::instance()->fromTheme("application-search"));
       action->setProperty("type", SPACER_ACTION_NAME);
-      action->setProperty("name", tr("spacer"));
+      action->setProperty("name", tr("Toolbar spacer"));
     }
   }
+}
+
+void MessagesToolBar::loadChangeableActions() {
+  QStringList action_names = Settings::instance()->value(APP_CFG_GUI,
+                                                         "messages_toolbar",
+                                                         "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,spacer,filter").toString().split(',',
+                                                                                                                                                                                                              QString::SkipEmptyParts);
+
+  loadChangeableActions(action_names);
 }

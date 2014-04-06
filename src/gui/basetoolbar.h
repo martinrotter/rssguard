@@ -12,16 +12,19 @@ class BaseToolBar : public QToolBar {
     explicit BaseToolBar(const QString &title, QWidget *parent = 0);
     virtual ~BaseToolBar();
 
-    virtual QList<QAction*> availableActions() const = 0;
+    // Returns all actions which can be added to the toolbar.
+    virtual QHash<QString, QAction*> availableActions() const = 0;
+
+    // Returns all changeable actions which are currently included
+    // in the toolbar.
     virtual QList<QAction*> changeableActions() const = 0;
-    virtual void saveChangeableActions() const = 0;
+
+    // Sets new "actions" to the toolbar and perhaps saves the toolbar
+    // state into the settings.
     virtual void saveChangeableActions(const QStringList &actions) = 0;
+
+    // Loads the toolbar state from settings.
     virtual void loadChangeableActions() = 0;
-
-  signals:
-
-  public slots:
-
 };
 
 #endif // TOOLBAR_H
