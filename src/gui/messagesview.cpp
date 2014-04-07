@@ -398,6 +398,14 @@ void MessagesView::selectPreviousItem() {
   }
 }
 
+void MessagesView::filterMessages(const QString &pattern) {
+  m_proxyModel->setFilterWildcard(pattern);
+
+  if (selectionModel()->selectedRows().size() == 0) {
+    emit currentMessagesRemoved();
+  }
+}
+
 void MessagesView::adjustColumns() {
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;

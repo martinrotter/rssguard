@@ -76,6 +76,9 @@ class MessagesView : public QTreeView {
     void selectNextItem();
     void selectPreviousItem();
 
+    // Filters the visible message according to given pattern.
+    void filterMessages(const QString &pattern);
+
   protected slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);

@@ -14,7 +14,7 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
     m_txtSearchMessages(new BaseLineEdit(this)) {
 
   m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
-  m_txtSearchMessages->setPlaceholderText(tr("Filter messages"));
+  m_txtSearchMessages->setPlaceholderText(tr("Search messages"));
 
   // Setup wrapping action for search box.
   m_actionSearchMessages = new QWidgetAction(this);
@@ -27,6 +27,9 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   QMargins margins = contentsMargins();
   margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
   setContentsMargins(margins);
+
+  connect(m_txtSearchMessages, SIGNAL(textChanged(QString)),
+          this, SIGNAL(messageSearchPatternChanged(QString)));
 }
 
 MessagesToolBar::~MessagesToolBar() {
@@ -45,6 +48,11 @@ QList<QAction*> MessagesToolBar::changeableActions() const {
 void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
   Settings::instance()->setValue(APP_CFG_GUI, "messages_toolbar", actions.join(","));
   loadChangeableActions(actions);
+
+  // If user hidden search messages box, then remove the filter.
+  if (!changeableActions().contains(m_actionSearchMessages)) {
+    m_txtSearchMessages->clear();
+  }
 }
 
 void MessagesToolBar::loadChangeableActions(const QStringList& actions) {

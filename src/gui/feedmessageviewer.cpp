@@ -194,6 +194,10 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 void FeedMessageViewer::createConnections() {
   FormMain *form_main = FormMain::instance();
 
+  // Filtering.
+  connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)),
+          m_messagesView, SLOT(filterMessages(QString)));
+
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()),
           m_messagesBrowser, SLOT(clear()));

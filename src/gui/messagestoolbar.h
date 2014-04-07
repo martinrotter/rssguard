@@ -15,6 +15,10 @@ class MessagesToolBar : public BaseToolBar {
     explicit MessagesToolBar(const QString &title, QWidget *parent = 0);
     virtual ~MessagesToolBar();
 
+    inline BaseLineEdit *searchLineEdit() {
+      return m_txtSearchMessages;
+    }
+
     // Implementation of BaseToolBar interface.
     QHash<QString, QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
@@ -27,6 +31,9 @@ class MessagesToolBar : public BaseToolBar {
     void loadChangeableActions(const QStringList &actions);
 
   signals:
+    // TODO: sem pridat este mozna mode: wildcard, regexp, fixed text.
+    // na tuto udalost se navaze filtrovani
+    void messageSearchPatternChanged(const QString &pattern);
 
   public slots:
 
