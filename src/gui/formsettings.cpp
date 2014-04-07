@@ -33,6 +33,7 @@
 #include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "gui/feedstoolbar.h"
 #include "gui/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/basetoolbar.h"
@@ -135,6 +136,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(onMysqlDataStorageEdited()));
   connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textEdited(QString)),
           this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_cmbSelectToolBar, SIGNAL(currentIndexChanged(int)),
+          m_ui->m_stackedToolbars, SLOT(setCurrentIndex(int)));
 
   // Load all settings.
   loadGeneral();
@@ -772,7 +775,8 @@ void FormSettings::loadInterface() {
                                                                                                                      Qt::ToolButtonIconOnly).toInt()));
 
   // Load toolbars.
-  m_ui->widget->loadFromToolBar(FormMain::instance()->tabWidget()->feedMessageViewer()->messagesToolBar());
+  m_ui->m_editorFeedsToolbar->loadFromToolBar(FormMain::instance()->tabWidget()->feedMessageViewer()->feedsToolBar());
+  m_ui->m_editorMessagesToolbar->loadFromToolBar(FormMain::instance()->tabWidget()->feedMessageViewer()->messagesToolBar());
 }
 
 void FormSettings::saveInterface() {
@@ -833,8 +837,8 @@ void FormSettings::saveInterface() {
   settings->setValue(APP_CFG_GUI, "hide_tabbar_one_tab",
                      m_ui->m_hideTabBarIfOneTabVisible->isChecked());
 
-
-  m_ui->widget->saveToolBar();
+  m_ui->m_editorFeedsToolbar->saveToolBar();
+  m_ui->m_editorMessagesToolbar->saveToolBar();
 
   FormMain::instance()->tabWidget()->checkTabBarVisibility();
   FormMain::instance()->tabWidget()->feedMessageViewer()->refreshVisualProperties();

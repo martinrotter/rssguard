@@ -294,6 +294,7 @@ set(APP_SOURCES
   src/gui/comboboxwithstatus.cpp
   src/gui/basetoolbar.cpp
   src/gui/messagestoolbar.cpp
+  src/gui/feedstoolbar.cpp
   src/gui/toolbareditor.cpp
 
   # DYNAMIC-SHORTCUTS sources.
@@ -371,6 +372,7 @@ set(APP_HEADERS
   src/gui/comboboxwithstatus.h
   src/gui/basetoolbar.h
   src/gui/messagestoolbar.h
+  src/gui/feedstoolbar.h
   src/gui/toolbareditor.h
 
   # DYNAMIC-SHORTCUTS headers.

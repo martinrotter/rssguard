@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>410</height>
+    <width>820</width>
+    <height>427</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -364,8 +364,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>558</width>
-                <height>337</height>
+                <width>570</width>
+                <height>354</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -378,6 +378,9 @@ Authors of this application are NOT responsible for lost data.</string>
                   <string>Icons</string>
                  </property>
                  <layout class="QFormLayout" name="formLayout_8">
+                  <property name="fieldGrowthPolicy">
+                   <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+                  </property>
                   <item row="0" column="0">
                    <widget class="QLabel" name="m_lblIconTheme">
                     <property name="text">
@@ -390,16 +393,6 @@ Authors of this application are NOT responsible for lost data.</string>
                   </item>
                   <item row="0" column="1">
                    <widget class="QComboBox" name="m_cmbIconTheme"/>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QComboBox" name="m_cmbToolbarButtonStyle"/>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_7">
-                    <property name="text">
-                     <string>Toolbar button style</string>
-                    </property>
-                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -578,9 +571,91 @@ Authors of this application are NOT responsible for lost data.</string>
           <attribute name="title">
            <string>Toolbars</string>
           </attribute>
-          <layout class="QHBoxLayout" name="horizontalLayout_13">
-           <item>
-            <widget class="ToolBarEditor" name="widget" native="true"/>
+          <layout class="QFormLayout" name="formLayout_18">
+           <item row="0" column="1">
+            <widget class="QComboBox" name="m_cmbToolbarButtonStyle"/>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="m_cmbSelectToolBar">
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <item>
+              <property name="text">
+               <string>Toolbar for feeds list</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Toolbar for messages list</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="2">
+            <widget class="QStackedWidget" name="m_stackedToolbars">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="m_pageFeedsToolbar">
+              <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="ToolBarEditor" name="m_editorFeedsToolbar" native="true"/>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="m_pageMessagesToolbar">
+              <layout class="QHBoxLayout" name="horizontalLayout_14">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="ToolBarEditor" name="m_editorMessagesToolbar" native="true"/>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Toolbar button style</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Select toolbar to edit</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>

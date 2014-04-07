@@ -1,4 +1,21 @@
 <body>
+<center><h2>1.9.9.9</h2></center>
+
+Fixed:
+<ul>
+<li>Various GUI and bug fixes.</li>
+</ul>
+
+Added:
+<ul>
+<li>Added option to adjust icons/buttons displayed in toolbars. See Settings/User interface/Toolbars dialog for more information.</li>
+</ul>
+
+Changed:
+<ul>
+</ul>
+
+<hr/>
 <center><h2>1.9.9.8</h2></center>
 
 Fixed:

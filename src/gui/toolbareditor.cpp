@@ -34,13 +34,16 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
       action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
       action_item->setIcon(IconFactory::instance()->fromTheme("view-separator"));
       action_item->setText(tr("Separator"));
+      action_item->setToolTip(tr("Separator"));
     }
     else if (action->property("type").isValid()) {
       action_item->setData(Qt::UserRole, action->property("type").toString());
       action_item->setText(action->property("name").toString());
+      action_item->setToolTip(action_item->text());
     }
     else {
       action_item->setData(Qt::UserRole, action->objectName());
+      action_item->setToolTip(action->toolTip());
     }
   }
 
@@ -53,14 +56,17 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
       if (action->isSeparator()) {
         action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
         action_item->setText(tr("Separator"));
+        action_item->setToolTip(tr("Separator"));
         action_item->setIcon(IconFactory::instance()->fromTheme("view-separator"));
       }
       else if (action->property("type").isValid()) {
         action_item->setData(Qt::UserRole, action->property("type").toString());
         action_item->setText(action->property("name").toString());
+        action_item->setToolTip(action_item->text());
       }
       else {
         action_item->setData(Qt::UserRole, action->objectName());
+        action_item->setToolTip(action->toolTip());
       }
     }
   }
@@ -98,6 +104,7 @@ void ToolBarEditor::insertSeparator() {
 
   QListWidgetItem *item = new QListWidgetItem(tr("Separator"));
   item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
+  item->setToolTip(tr("Separator"));
   item->setIcon(IconFactory::instance()->fromTheme("view-separator"));
 
   if (current_row >= 0) {

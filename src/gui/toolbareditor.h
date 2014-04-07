@@ -26,6 +26,7 @@ class ToolBarEditor : public QWidget {
     void saveToolBar();
 
   private slots:
+    // Insert common controls.
     void insertSpacer();
     void insertSeparator();
 

@@ -32,6 +32,7 @@
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
+#include "gui/feedstoolbar.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -52,7 +53,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   : TabContent(parent),
     m_toolBarsEnabled(true),
     m_listHeadersEnabled(true),
-    m_toolBarFeeds(new QToolBar(tr("Toolbar for feeds"), this)),
+    m_toolBarFeeds(new FeedsToolBar(tr("Toolbar for feeds"), this)),
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
@@ -301,17 +302,11 @@ void FeedMessageViewer::initialize() {
   m_toolBarFeeds->setFloatable(false);
   m_toolBarFeeds->setMovable(false);
   m_toolBarFeeds->setAllowedAreas(Qt::TopToolBarArea);
-  m_toolBarFeeds->setToolButtonStyle(Qt::ToolButtonIconOnly);
-
-  // Add everything to toolbar.
-  m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionUpdateAllFeeds);
-  m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionMarkAllFeedsRead);
-  m_toolBarFeeds->addAction(FormMain::instance()->m_ui->m_actionClearAllFeeds);
+  m_toolBarFeeds->loadChangeableActions();
 
   m_toolBarMessages->setFloatable(false);
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
-  m_toolBarMessages->setToolButtonStyle(Qt::ToolButtonIconOnly);
   m_toolBarMessages->loadChangeableActions();
 
   // Finish web/message browser setup.

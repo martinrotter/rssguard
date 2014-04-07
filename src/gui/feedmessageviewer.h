@@ -26,6 +26,7 @@
 class WebBrowser;
 class MessagesView;
 class MessagesToolBar;
+class FeedsToolBar;
 class FeedsView;
 class FeedDownloader;
 class FeedsModelFeed;
@@ -53,6 +54,10 @@ class FeedMessageViewer : public TabContent {
 
     inline MessagesToolBar *messagesToolBar() {
       return m_toolBarMessages;
+    }
+
+    inline FeedsToolBar *feedsToolBar() {
+      return m_toolBarFeeds;
     }
 
     // Loads/saves sizes and states of ALL
@@ -110,7 +115,7 @@ class FeedMessageViewer : public TabContent {
   private:
     bool m_toolBarsEnabled;
     bool m_listHeadersEnabled;
-    QToolBar *m_toolBarFeeds;
+    FeedsToolBar *m_toolBarFeeds;
     MessagesToolBar *m_toolBarMessages;
 
     QSplitter *m_feedSplitter;

@@ -162,6 +162,8 @@ void WebBrowser::onLoadingProgress(int progress) {
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
+  Q_UNUSED(success)
+
   m_loadingProgress->hide();
 }
 
