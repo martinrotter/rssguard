@@ -3,8 +3,6 @@
 #include "gui/basetoolbar.h"
 #include "gui/formmain.h"
 
-#include <cstdint>
-
 
 ToolBarEditor::ToolBarEditor(QWidget *parent)
   : QWidget(parent), m_ui(new Ui::ToolBarEditor) {
