@@ -3,9 +3,13 @@
 
 #include "gui/basetoolbar.h"
 
+#include "core/messagesmodel.h"
+
 
 class BaseLineEdit;
 class QWidgetAction;
+class QToolButton;
+class QMenu;
 
 class MessagesToolBar : public BaseToolBar {
     Q_OBJECT
@@ -35,9 +39,17 @@ class MessagesToolBar : public BaseToolBar {
     // na tuto udalost se navaze filtrovani
     void messageSearchPatternChanged(const QString &pattern);
 
-  public slots:
+    // Emitted if message filter is changed.
+    void messageFilterChanged(MessagesModel::DisplayFilter filter);
+
+  private slots:
+    void handleMessageFilterChange(QAction *action);
 
   private:
+    QWidgetAction *m_actionFilterMessages;
+    QToolButton *m_btnFilterMessages;
+    QMenu *m_menuFilterMessages;
+
     QWidgetAction *m_actionSearchMessages;
     BaseLineEdit *m_txtSearchMessages;
 };

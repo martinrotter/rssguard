@@ -48,6 +48,14 @@ class MessagesModel : public QSqlTableModel {
     Q_OBJECT
 
   public:
+    // Enum which describes basic filtering schemes
+    // for messages.
+    enum DisplayFilter {
+      DisplayAll = 100,
+      DisplayUnread = 101,
+      DisplayImportant = 102
+    };
+
     // Constructors and destructors.
     explicit MessagesModel(QObject *parent = 0);
     virtual ~MessagesModel();
@@ -127,5 +135,7 @@ class MessagesModel : public QSqlTableModel {
     QIcon m_readIcon;
     QIcon m_unreadIcon;
 };
+
+Q_DECLARE_METATYPE(MessagesModel::DisplayFilter)
 
 #endif // MESSAGESMODEL_H

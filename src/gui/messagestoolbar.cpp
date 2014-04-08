@@ -7,6 +7,8 @@
 #include "miscellaneous/settings.h"
 
 #include <QWidgetAction>
+#include <QToolButton>
+#include <QMenu>
 
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
@@ -23,6 +25,25 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   m_actionSearchMessages->setProperty("type", SEACRH_MESSAGES_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Message search box"));
 
+  m_menuFilterMessages = new QMenu(tr("Menu for filtering messages"), this);
+  m_menuFilterMessages->addAction(IconFactory::instance()->fromTheme("mail-mark-read"),
+                                  tr("Display all messages"))->setData(QVariant::fromValue(MessagesModel::DisplayAll));
+  m_menuFilterMessages->addAction(IconFactory::instance()->fromTheme("mail-mark-unread"),
+                                  tr("Display unread messages"))->setData(QVariant::fromValue(MessagesModel::DisplayUnread));
+  m_menuFilterMessages->addAction(IconFactory::instance()->fromTheme("mail-mark-favorite"),
+                                  tr("Display important messages"))->setData(QVariant::fromValue(MessagesModel::DisplayImportant));
+
+  m_btnFilterMessages = new QToolButton(this);
+  m_btnFilterMessages->setToolTip(tr("Display all messages"));
+  m_btnFilterMessages->setMenu(m_menuFilterMessages);
+  m_btnFilterMessages->setPopupMode(QToolButton::MenuButtonPopup);
+  m_btnFilterMessages->setIcon(IconFactory::instance()->fromTheme("mail-mark-read"));
+
+  m_actionFilterMessages = new QWidgetAction(this);
+  m_actionFilterMessages->setDefaultWidget(m_btnFilterMessages);
+  m_actionFilterMessages->setProperty("type", FILTER_ACTION_NAME);
+  m_actionFilterMessages->setProperty("name", tr("Message filter"));
+
   // Update right margin of filter textbox.
   QMargins margins = contentsMargins();
   margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);
@@ -30,6 +51,8 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
 
   connect(m_txtSearchMessages, SIGNAL(textChanged(QString)),
           this, SIGNAL(messageSearchPatternChanged(QString)));
+  connect(m_menuFilterMessages, SIGNAL(triggered(QAction*)),
+          this, SLOT(handleMessageFilterChange(QAction*)));
 }
 
 MessagesToolBar::~MessagesToolBar() {
@@ -38,6 +61,7 @@ MessagesToolBar::~MessagesToolBar() {
 QHash<QString, QAction*> MessagesToolBar::availableActions() const {
   QHash<QString, QAction*> available_actions = FormMain::instance()->allActions();
   available_actions.insert(SEACRH_MESSAGES_ACTION_NAME, m_actionSearchMessages);
+  available_actions.insert(FILTER_ACTION_NAME, m_actionFilterMessages);
   return available_actions;
 }
 
@@ -74,6 +98,10 @@ void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
       // Add search box.
       addAction(m_actionSearchMessages);
     }
+    else if (action_name == FILTER_ACTION_NAME) {
+      // Add filter button.
+      addAction(m_actionFilterMessages);
+    }
     else if (action_name == SPACER_ACTION_NAME) {
       // Add new spacer.
       QWidget *spacer = new QWidget(this);
@@ -87,10 +115,17 @@ void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
   }
 }
 
+void MessagesToolBar::handleMessageFilterChange(QAction *action) {
+  m_btnFilterMessages->setIcon(action->icon());
+  m_btnFilterMessages->setToolTip(action->text());
+
+  emit messageFilterChanged(action->data().value<MessagesModel::DisplayFilter>());
+}
+
 void MessagesToolBar::loadChangeableActions() {
   QStringList action_names = Settings::instance()->value(APP_CFG_GUI,
                                                          "messages_toolbar",
-                                                         "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,spacer,filter").toString().split(',',
+                                                         "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,spacer,search").toString().split(',',
                                                                                                                                                                                                               QString::SkipEmptyParts);
 
   loadChangeableActions(action_names);
