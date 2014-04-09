@@ -373,11 +373,16 @@ void MessagesView::switchSelectedMessagesImportance() {
 void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
   selectionModel()->clearSelection();
 
+  QItemSelection selection;
+
   foreach (const QModelIndex &index, indexes) {
-    selectionModel()->select(index,
-                             QItemSelectionModel::Select |
-                             QItemSelectionModel::Rows);
+    // TODO: THIS IS very slow. Try to select 4000 messages
+    // and hit "mark as read" button.
+    selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
   }
+
+  selectionModel()->select(selection,
+                           QItemSelectionModel::Select | QItemSelectionModel::Rows);
 }
 
 void MessagesView::selectNextItem() {
@@ -398,7 +403,7 @@ void MessagesView::selectPreviousItem() {
   }
 }
 
-void MessagesView::filterMessages(const QString &pattern) {
+void MessagesView::searchMessages(const QString &pattern) {
   m_proxyModel->setFilterWildcard(pattern);
 
   if (selectionModel()->selectedRows().size() == 0) {

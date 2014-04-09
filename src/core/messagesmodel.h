@@ -124,6 +124,8 @@ class MessagesModel : public QSqlTableModel {
     void setupIcons();
 
   private:
+    DisplayFilter m_filter;
+
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
