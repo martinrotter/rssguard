@@ -25,13 +25,13 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   m_actionSearchMessages->setProperty("type", SEACRH_MESSAGES_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Message search box"));
 
-  m_menuFilterMessages = new QMenu(tr("Menu for filtering messages"), this);
+  m_menuFilterMessages = new QMenu(tr("Menu for highlighting messages"), this);
   m_menuFilterMessages->addAction(IconFactory::instance()->fromTheme("mail-mark-read"),
-                                  tr("Display all messages"))->setData(QVariant::fromValue(MessagesModel::DisplayAll));
+                                  tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::DisplayAll));
   m_menuFilterMessages->addAction(IconFactory::instance()->fromTheme("mail-mark-unread"),
-                                  tr("Display unread messages"))->setData(QVariant::fromValue(MessagesModel::DisplayUnread));
+                                  tr("Highlight unread messages"))->setData(QVariant::fromValue(MessagesModel::DisplayUnread));
   m_menuFilterMessages->addAction(IconFactory::instance()->fromTheme("mail-mark-favorite"),
-                                  tr("Display important messages"))->setData(QVariant::fromValue(MessagesModel::DisplayImportant));
+                                  tr("Highlight important messages"))->setData(QVariant::fromValue(MessagesModel::DisplayImportant));
 
   m_btnFilterMessages = new QToolButton(this);
   m_btnFilterMessages->setToolTip(tr("Display all messages"));
@@ -42,7 +42,7 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   m_actionFilterMessages = new QWidgetAction(this);
   m_actionFilterMessages->setDefaultWidget(m_btnFilterMessages);
   m_actionFilterMessages->setProperty("type", FILTER_ACTION_NAME);
-  m_actionFilterMessages->setProperty("name", tr("Message filter"));
+  m_actionFilterMessages->setProperty("name", tr("Message highlighter"));
 
   // Update right margin of filter textbox.
   QMargins margins = contentsMargins();

@@ -79,6 +79,12 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
   qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
 }
 
+void MessagesModel::filterMessages(MessagesModel::DisplayFilter filter) {
+  m_filter = filter;
+  emit layoutAboutToBeChanged();
+  emit layoutChanged();
+}
+
 QStringList MessagesModel::textualFeeds() const {
   QStringList stringy_ids;
   stringy_ids.reserve(m_currentFeeds.size());
@@ -170,6 +176,25 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
                                         MSG_DB_READ_INDEX)).toInt() == 1 ?
             m_normalFont :
             m_boldFont;
+
+    case Qt::ForegroundRole:
+      switch (m_filter) {
+        case DisplayImportant:
+          return QSqlTableModel::data(index(idx.row(),
+                                            MSG_DB_IMPORTANT_INDEX)).toInt() == 1 ?
+                QColor(Qt::blue) :
+                QVariant();
+
+        case DisplayUnread:
+          return QSqlTableModel::data(index(idx.row(),
+                                            MSG_DB_READ_INDEX)).toInt() == 0 ?
+                QColor(Qt::blue) :
+                QVariant();
+
+        case DisplayAll:
+        default:
+          return QVariant();
+      }
 
     case Qt::DecorationRole: {
       int index_column = idx.column();

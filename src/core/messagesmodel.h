@@ -104,6 +104,8 @@ class MessagesModel : public QSqlTableModel {
     // Loads messages of given feeds.
     void loadMessages(const QList<int> feed_ids);
 
+    void filterMessages(DisplayFilter filter);
+
   signals:
     // Emitted if some persistent change is made which affects
     // count of "unread/all" messages.

@@ -411,6 +411,10 @@ void MessagesView::searchMessages(const QString &pattern) {
   }
 }
 
+void MessagesView::filterMessages(MessagesModel::DisplayFilter filter) {
+  m_sourceModel->filterMessages(filter);
+}
+
 void MessagesView::adjustColumns() {
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
