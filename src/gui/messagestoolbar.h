@@ -6,7 +6,7 @@
 #include "core/messagesmodel.h"
 
 
-class BaseLineEdit;
+class MessagesSearchLineEdit;
 class QWidgetAction;
 class QToolButton;
 class QMenu;
@@ -19,7 +19,8 @@ class MessagesToolBar : public BaseToolBar {
     explicit MessagesToolBar(const QString &title, QWidget *parent = 0);
     virtual ~MessagesToolBar();
 
-    inline BaseLineEdit *searchLineEdit() {
+    // External access to search line edit.
+    inline MessagesSearchLineEdit *searchLineEdit() {
       return m_txtSearchMessages;
     }
 
@@ -51,7 +52,7 @@ class MessagesToolBar : public BaseToolBar {
     QMenu *m_menuFilterMessages;
 
     QWidgetAction *m_actionSearchMessages;
-    BaseLineEdit *m_txtSearchMessages;
+    MessagesSearchLineEdit *m_txtSearchMessages;
 };
 
 #endif // NEWSTOOLBAR_H

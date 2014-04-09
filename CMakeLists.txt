@@ -296,6 +296,7 @@ set(APP_SOURCES
   src/gui/messagestoolbar.cpp
   src/gui/feedstoolbar.cpp
   src/gui/toolbareditor.cpp
+  src/gui/messagessearchlineedit.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -374,6 +375,7 @@ set(APP_HEADERS
   src/gui/messagestoolbar.h
   src/gui/feedstoolbar.h
   src/gui/toolbareditor.h
+  src/gui/messagessearchlineedit.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h

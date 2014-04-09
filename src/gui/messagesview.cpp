@@ -404,7 +404,7 @@ void MessagesView::selectPreviousItem() {
 }
 
 void MessagesView::searchMessages(const QString &pattern) {
-  m_proxyModel->setFilterWildcard(pattern);
+  m_proxyModel->setFilterRegExp(pattern);
 
   if (selectionModel()->selectedRows().size() == 0) {
     emit currentMessagesRemoved();

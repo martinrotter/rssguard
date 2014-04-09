@@ -3,6 +3,7 @@
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
 #include "gui/formmain.h"
+#include "gui/messagessearchlineedit.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
@@ -13,7 +14,7 @@
 
 MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
   : BaseToolBar(title, parent),
-    m_txtSearchMessages(new BaseLineEdit(this)) {
+    m_txtSearchMessages(new MessagesSearchLineEdit(this)) {
 
   m_txtSearchMessages->setFixedWidth(FILTER_WIDTH);
   m_txtSearchMessages->setPlaceholderText(tr("Search messages"));
