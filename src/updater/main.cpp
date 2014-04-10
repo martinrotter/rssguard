@@ -21,12 +21,22 @@
 #include <QTranslator>
 #include <QDebug>
 #include <QThread>
+#include <QProcess>
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) { 
   // Instantiate base application object.
   QtSingleCoreApplication application("rssguard", argc, argv);
   qDebug("Instantiated QtSingleApplication class.");
+
+  if (argc != 3) {
+    qDebug("Insufficient arguments passed. Quitting updater...");
+  }
+  else {
+    // Print input data.
+    qDebug("RSS Guard application executable: %s", argv[1]);
+    qDebug("File with update to be installed: %s", argv[2]);
+  }
 
   // Check if main RSS Guard instance is running.
   if (application.sendMessage("app_quit")) {
@@ -41,6 +51,11 @@ int main(int argc, char *argv[]) {
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)),
                    &detector, SLOT(handleMessage(QString)));
+
+  // Everything is set up, file is downloaded, RSS Guard is not running.
+  // TODO: nahradit spravne "/" > "\\" v argumentech pro 7za
+  // https://code.google.com/p/quite-rss/source/browse/src/mainwindow.cpp?repo=updater#393
+  QProcess::startDetached("7za", QStringList() << "e" << argv[2]);
 
   // Enter global event loop.
   return QtSingleCoreApplication::exec();

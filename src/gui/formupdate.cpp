@@ -29,6 +29,9 @@
 #include <QDesktopServices>
 #include <QProcess>
 
+#if defined(Q_OS_WIN32)
+#include "qt_windows.h"
+#endif
 
 FormUpdate::FormUpdate(QWidget *parent)
   : QDialog(parent), m_ui(new Ui::FormUpdate) {
@@ -136,6 +139,23 @@ void FormUpdate::startUpdate() {
 
       // TODO: spustit updater
       // pouzit qprocess, nebo neco multiplatformniho
+      // nebo z quiterss shellexecuter
+      // program obcas pada, to je mozna zpusobeny tim
+      // ze je otevreny modalni okno.
+      close();
+
+#if defined(Q_OS_WIN32)
+      ShellExecute(0,
+                   0,
+                   (wchar_t *)QString("updater.exe").utf16(),
+                   (wchar_t *) QString("\"%1\" \"%2\"").arg(qApp->applicationFilePath(),
+                                                            output_file.fileName()).utf16(),
+                   0,
+                   SW_SHOWNORMAL);
+#elif defined(Q_OS_OS2)
+
+#endif
+      // TODO: vetev pro osn
     }
     else {
       // TODO: chyba - nelze zapisovat do souboru
