@@ -29,7 +29,7 @@
 #include <QDesktopServices>
 #include <QProcess>
 
-#if defined(Q_OS_WIN32)
+#if defined(Q_OS_WIN)
 #include "qt_windows.h"
 #endif
 
@@ -82,7 +82,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
-    if (update.first.m_availableVersion >= APP_VERSION) {
+    if (update.first.m_availableVersion > APP_VERSION) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -116,7 +116,9 @@ void FormUpdate::startUpdate() {
   // On Windows/OS2 we can update the application right away.
   // Download the files.
   QByteArray output;
-  //NetworkFactory::downloadFile(url_file, DOWNLOAD_TIMEOUT, output);
+  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url_file,
+                                                                             10 * DOWNLOAD_TIMEOUT,
+                                                                             output);
 
 #if QT_VERSION >= 0x050000
   QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
@@ -128,11 +130,7 @@ void FormUpdate::startUpdate() {
     QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
     QFile output_file(temp_directory + QDir::separator() + output_file_name);
 
-    if (output_file.exists()) {
-      output_file.remove();
-    }
-
-    if (output_file.open(QIODevice::WriteOnly)) {
+    if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
       output_file.write(output);
       output_file.flush();
       output_file.close();
@@ -147,9 +145,10 @@ void FormUpdate::startUpdate() {
 #if defined(Q_OS_WIN32)
       ShellExecute(0,
                    0,
-                   (wchar_t *)QString("updater.exe").utf16(),
-                   (wchar_t *) QString("\"%1\" \"%2\"").arg(qApp->applicationFilePath(),
-                                                            output_file.fileName()).utf16(),
+                   (wchar_t *) QString("updater.exe").utf16(),
+                   (wchar_t *) QString("\"%1\" \"%2\" \"%3\"").arg(temp_directory,
+                                                                   qApp->applicationFilePath(),
+                                                                   output_file.fileName()).utf16(),
                    0,
                    SW_SHOWNORMAL);
 #elif defined(Q_OS_OS2)

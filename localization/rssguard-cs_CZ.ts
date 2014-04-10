@@ -162,6 +162,13 @@ Status auto-aktualizace: %5</translation>
     </message>
 </context>
 <context>
+    <name>FeedsToolBar</name>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation>Mezera</translation>
+    </message>
+</context>
+<context>
     <name>FeedsView</name>
     <message>
         <source>Context menu for feeds</source>
@@ -1176,6 +1183,22 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <source>custom external browser is not set correctly</source>
         <translation>vlastní externí prohlížeč není správně nastaven</translation>
     </message>
+    <message>
+        <source>Toolbars</source>
+        <translation>Nástrojové lišty</translation>
+    </message>
+    <message>
+        <source>Toolbar for feeds list</source>
+        <translation>Lišta seznamu kanálů</translation>
+    </message>
+    <message>
+        <source>Toolbar for messages list</source>
+        <translation>Lišta seznamu zpráv</translation>
+    </message>
+    <message>
+        <source>Select toolbar to edit</source>
+        <translation>Zvolte lištu, kterou chcete upravit</translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1763,6 +1786,45 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
 </context>
 <context>
+    <name>MessagesToolBar</name>
+    <message>
+        <source>Search messages</source>
+        <translation>Hledat zprávy</translation>
+    </message>
+    <message>
+        <source>Message search box</source>
+        <translation>Hledací panel zpráv</translation>
+    </message>
+    <message>
+        <source>Menu for highlighting messages</source>
+        <translation>Menu pro zvýrazňování zpráv</translation>
+    </message>
+    <message>
+        <source>No extra highlighting</source>
+        <translation>Nic nezvýrazňovat</translation>
+    </message>
+    <message>
+        <source>Highlight unread messages</source>
+        <translation>Zvýraznit nepřečtené zprávy</translation>
+    </message>
+    <message>
+        <source>Highlight important messages</source>
+        <translation>Zvýraznit důležité zprávy</translation>
+    </message>
+    <message>
+        <source>Display all messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message highlighter</source>
+        <translation>Zvýrazňovač zpráv</translation>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation>Mezera</translation>
+    </message>
+</context>
+<context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
@@ -1949,6 +2011,37 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Open new web browser tab.</source>
         <translation>Otevřít nový tab webového prohlížeče.</translation>
+    </message>
+</context>
+<context>
+    <name>ToolBarEditor</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activated actions</source>
+        <translation>Aktivované akce</translation>
+    </message>
+    <message>
+        <source>Available actions</source>
+        <translation>Dostupné akce</translation>
+    </message>
+    <message>
+        <source>Insert separator</source>
+        <translation>Vložit oddělovač</translation>
+    </message>
+    <message>
+        <source>Insert spacer</source>
+        <translation>Vložit mezeru</translation>
+    </message>
+    <message>
+        <source>Separator</source>
+        <translation>Oddělovač</translation>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation>Mezera</translation>
     </message>
 </context>
 <context>

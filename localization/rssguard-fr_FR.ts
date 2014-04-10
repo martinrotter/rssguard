@@ -158,6 +158,13 @@ Statut de la mise à jour automatique : %5</translation>
     </message>
 </context>
 <context>
+    <name>FeedsToolBar</name>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedsView</name>
     <message>
         <source>Context menu for feeds</source>
@@ -1172,6 +1179,22 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
         <source>custom external browser is not set correctly</source>
         <translation>Le navigateur externe n&apos;a pas été correctement défini</translation>
     </message>
+    <message>
+        <source>Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar for feeds list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar for messages list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select toolbar to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormStandardCategoryDetails</name>
@@ -1762,6 +1785,45 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
 </context>
 <context>
+    <name>MessagesToolBar</name>
+    <message>
+        <source>Search messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message search box</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Menu for highlighting messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No extra highlighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight unread messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight important messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display all messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message highlighter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessagesView</name>
     <message>
         <source>Context menu for messages</source>
@@ -1948,6 +2010,37 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <message>
         <source>Open new web browser tab.</source>
         <translation type="unfinished">Ouvrir un nouvel onglet de navigation web.</translation>
+    </message>
+</context>
+<context>
+    <name>ToolBarEditor</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activated actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Available actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert separator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert spacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Separator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toolbar spacer</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
