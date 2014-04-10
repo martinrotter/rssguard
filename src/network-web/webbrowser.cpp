@@ -149,6 +149,7 @@ void WebBrowser::initializeLayout() {
 }
 
 void WebBrowser::onLoadingStarted() {
+  // TODO: Do not display this when navigating to "about:blank".
   m_loadingProgress->setValue(0);
   m_loadingProgress->show();
 }
@@ -156,7 +157,7 @@ void WebBrowser::onLoadingStarted() {
 void WebBrowser::onLoadingProgress(int progress) {
   m_loadingProgress->setValue(progress);
 
-  m_lblProgress->setText(tr(" %1 kB / %2 kB").
+  m_lblProgress->setText(QString(" %1 kB / %2 kB").
                          arg(m_webView->page()->bytesReceived() / 1000).
                          arg(m_webView->page()->totalBytes() / 1000));
 }

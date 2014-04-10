@@ -283,8 +283,8 @@ set(APP_SOURCES
   src/gui/feedsview.cpp
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
-  src/gui/formstandardcategorydetails.cpp
-  src/gui/formstandardfeeddetails.cpp
+  src/gui/formcategorydetails.cpp
+  src/gui/formfeeddetails.cpp
   src/gui/plaintoolbutton.cpp
   src/gui/lineeditwithstatus.cpp
   src/gui/widgetwithstatus.cpp
@@ -362,8 +362,8 @@ set(APP_HEADERS
   src/gui/feedsview.h
   src/gui/messagesview.h
   src/gui/statusbar.h
-  src/gui/formstandardcategorydetails.h
-  src/gui/formstandardfeeddetails.h
+  src/gui/formcategorydetails.h
+  src/gui/formfeeddetails.h
   src/gui/plaintoolbutton.h
   src/gui/lineeditwithstatus.h
   src/gui/widgetwithstatus.h
@@ -416,8 +416,8 @@ set(APP_FORMS
   src/gui/formmain.ui
   src/gui/formsettings.ui
   src/gui/formabout.ui
-  src/gui/formstandardcategorydetails.ui
-  src/gui/formstandardfeeddetails.ui
+  src/gui/formcategorydetails.ui
+  src/gui/formfeeddetails.ui
   src/gui/toolbareditor.ui
 )
 

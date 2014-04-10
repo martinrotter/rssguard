@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FormStandardCategoryDetails</class>
- <widget class="QDialog" name="FormStandardCategoryDetails">
+ <class>FormCategoryDetails</class>
+ <widget class="QDialog" name="FormCategoryDetails">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -153,7 +153,7 @@
   <connection>
    <sender>m_buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>FormStandardCategoryDetails</receiver>
+   <receiver>FormCategoryDetails</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

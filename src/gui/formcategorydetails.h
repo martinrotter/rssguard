@@ -18,13 +18,13 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
-#include "ui_formstandardcategorydetails.h"
+#include "ui_formcategorydetails.h"
 
 #include <QDialog>
 
 
 namespace Ui {
-  class FormStandardCategoryDetails;
+  class FormCategoryDetails;
 }
 
 class FeedsModelCategory;
@@ -34,13 +34,13 @@ class FeedsModelRootItem;
 class QMenu;
 class QAction;
 
-class FormStandardCategoryDetails : public QDialog {
+class FormCategoryDetails : public QDialog {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    explicit FormStandardCategoryDetails(FeedsModel *model, QWidget *parent = 0);
-    virtual ~FormStandardCategoryDetails();
+    explicit FormCategoryDetails(FeedsModel *model, QWidget *parent = 0);
+    virtual ~FormCategoryDetails();
 
   public slots:
     // Executes add/edit standard category dialog.
@@ -77,7 +77,7 @@ class FormStandardCategoryDetails : public QDialog {
                         FeedsModelCategory *input_category);
 
   private:
-    Ui::FormStandardCategoryDetails *m_ui;
+    Ui::FormCategoryDetails *m_ui;
     FeedsModelCategory *m_editableCategory;
     FeedsModel *m_feedsModel;
 

@@ -26,8 +26,8 @@
 #include "core/feedsmodelfeed.h"
 #include "miscellaneous/systemfactory.h"
 #include "gui/formmain.h"
-#include "gui/formstandardcategorydetails.h"
-#include "gui/formstandardfeeddetails.h"
+#include "gui/formcategorydetails.h"
+#include "gui/formfeeddetails.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
 
@@ -270,7 +270,7 @@ void FeedsView::addNewCategory() {
     return;
   }
 
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
+  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(NULL);
 
@@ -281,7 +281,7 @@ void FeedsView::addNewCategory() {
 }
 
 void FeedsView::editCategory(FeedsModelCategory *category) {
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
+  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(category);
 
@@ -309,7 +309,7 @@ void FeedsView::addNewFeed() {
     return;
   }
 
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
+  QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(NULL);
 
@@ -320,7 +320,7 @@ void FeedsView::addNewFeed() {
 }
 
 void FeedsView::editFeed(FeedsModelFeed *feed) {
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
+  QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(feed);
 

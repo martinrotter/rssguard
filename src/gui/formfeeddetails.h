@@ -20,11 +20,11 @@
 
 #include <QDialog>
 
-#include "ui_formstandardfeeddetails.h"
+#include "ui_formfeeddetails.h"
 
 
 namespace Ui {
-  class FormStandardFeedDetails;
+  class FormFeedDetails;
 }
 
 class FeedsModel;
@@ -32,13 +32,13 @@ class FeedsModelFeed;
 class FeedsModelCategory;
 class FeedsModelRootItem;
 
-class FormStandardFeedDetails : public QDialog {
+class FormFeedDetails : public QDialog {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    explicit FormStandardFeedDetails(FeedsModel *model, QWidget *parent = 0);
-    virtual ~FormStandardFeedDetails();
+    explicit FormFeedDetails(FeedsModel *model, QWidget *parent = 0);
+    virtual ~FormFeedDetails();
 
   public slots:
     // Executes add/edit standard feed dialog.
@@ -81,7 +81,7 @@ class FormStandardFeedDetails : public QDialog {
                         FeedsModelRootItem *root_item);
 
   private:
-    Ui::FormStandardFeedDetails *m_ui;
+    Ui::FormFeedDetails *m_ui;
     FeedsModelFeed *m_editableFeed;
     FeedsModel *m_feedsModel;
 

@@ -65,7 +65,7 @@
 #define TIMEZONE_OFFSET_LIMIT           6
 #define CHANGE_EVENT_DELAY              250
 #define SEACRH_MESSAGES_ACTION_NAME     "search"
-#define FILTER_ACTION_NAME              "filter"
+#define HIGHLIGHTER_ACTION_NAME         "highlighter"
 #define SPACER_ACTION_NAME              "spacer"
 #define SEPARATOR_ACTION_NAME           "separator"
 #define FILTER_WIDTH                    150
