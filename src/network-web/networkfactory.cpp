@@ -105,9 +105,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
 #endif
   QByteArray icon_data;
 
-  QNetworkReply::NetworkError network_result =  downloadFeedFile(google_s2_with_url,
-                                                                 timeout,
-                                                                 icon_data);
+  QNetworkReply::NetworkError network_result =  downloadFile(google_s2_with_url,
+                                                             timeout,
+                                                             icon_data);
 
   if (network_result == QNetworkReply::NoError) {
     QPixmap icon_pixmap;
@@ -118,12 +118,12 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
   return network_result;
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
-                                                             int timeout,
-                                                             QByteArray &output,
-                                                             bool protected_contents,
-                                                             const QString &username,
-                                                             const QString &password) {
+QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
+                                                         int timeout,
+                                                         QByteArray &output,
+                                                         bool protected_contents,
+                                                         const QString &username,
+                                                         const QString &password) {
   // Original asynchronous behavior of QNetworkAccessManager
   // is replaced by synchronous behavior in order to make
   // process of downloading of a file easier to understand.

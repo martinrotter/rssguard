@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Instantiate base application object.
-  QtSingleApplication application(argc, argv);
+  QtSingleApplication application(APP_LOW_NAME, argc, argv);
   qDebug("Instantiated QtSingleApplication class.");
 
   // Check if another instance is running.

@@ -41,7 +41,7 @@ class NetworkFactory {
 
     // Performs SYNCHRONOUS download of file with given URL
     // and given timeout.
-    static QNetworkReply::NetworkError downloadFeedFile(const QString &url,
+    static QNetworkReply::NetworkError downloadFile(const QString &url,
                                                         int timeout,
                                                         QByteArray &output,
                                                         bool protected_contents = false,

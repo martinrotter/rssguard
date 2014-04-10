@@ -172,6 +172,9 @@ void FormMain::processExecutionMessage(const QString &message) {
 
     display();
   }
+  else if (message == APP_QUIT_INSTANCE) {
+    qApp->quit();
+  }
 }
 
 void FormMain::quit() {

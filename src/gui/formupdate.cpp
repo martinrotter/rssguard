@@ -27,6 +27,7 @@
 
 #include <QNetworkReply>
 #include <QDesktopServices>
+#include <QProcess>
 
 
 FormUpdate::FormUpdate(QWidget *parent)
@@ -78,7 +79,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
-    if (update.first.m_availableVersion > APP_VERSION) {
+    if (update.first.m_availableVersion >= APP_VERSION) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -108,6 +109,44 @@ void FormUpdate::startUpdate() {
     url_file = APP_URL;
   }
 
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+  // On Windows/OS2 we can update the application right away.
+  // Download the files.
+  QByteArray output;
+  //NetworkFactory::downloadFile(url_file, DOWNLOAD_TIMEOUT, output);
+
+#if QT_VERSION >= 0x050000
+  QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+#else
+  QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
+#endif
+
+  if (!temp_directory.isEmpty()) {
+    QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
+    QFile output_file(temp_directory + QDir::separator() + output_file_name);
+
+    if (output_file.exists()) {
+      output_file.remove();
+    }
+
+    if (output_file.open(QIODevice::WriteOnly)) {
+      output_file.write(output);
+      output_file.flush();
+      output_file.close();
+
+      // TODO: spustit updater
+      // pouzit qprocess, nebo neco multiplatformniho
+    }
+    else {
+      // TODO: chyba - nelze zapisovat do souboru
+    }
+
+  }
+  else {
+    // TODO: chyba - nelze ulozit soubor.
+  }
+
+#else
   if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
@@ -123,4 +162,5 @@ void FormUpdate::startUpdate() {
                           "manually on project website."));
     }
   }
+#endif
 }

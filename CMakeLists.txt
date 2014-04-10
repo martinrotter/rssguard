@@ -261,12 +261,13 @@ elseif(WIN32 AND MSVC)
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
 
-# Add source files.
+# APP source files.
 set(APP_SOURCES
   ${APP_SOURCES}
 
   # QTSINGLEAPPLICATION sources.
   src/qtsingleapplication/qtlocalpeer.cpp
+  src/qtsingleapplication/qtsinglecoreapplication.cpp
   src/qtsingleapplication/qtsingleapplication.cpp
 
   # GUI sources.
@@ -340,12 +341,13 @@ set(APP_SOURCES
   src/main.cpp
 )
 
-# Add headers.
+# APP headers.
 set(APP_HEADERS
   ${APP_HEADERS}
 
   # QTSINGLEAPPLICATION headers.
   src/qtsingleapplication/qtlocalpeer.h
+  src/qtsingleapplication/qtsinglecoreapplication.h
   src/qtsingleapplication/qtsingleapplication.h
 
   # GUI headers.
@@ -410,7 +412,7 @@ set(APP_HEADERS
   src/application.h
 )
 
-# Add form files.
+# APP form files.
 set(APP_FORMS
   src/gui/formupdate.ui
   src/gui/formmain.ui
@@ -421,7 +423,7 @@ set(APP_FORMS
   src/gui/toolbareditor.ui
 )
 
-# Add translations.
+# APP translations.
 set(APP_TRANSLATIONS
   localization/rssguard-cs_CZ.ts
   localization/rssguard-de_DE.ts
@@ -480,9 +482,56 @@ include_directories (
   ${CMAKE_CURRENT_SOURCE_DIR}/src/gui
   ${CMAKE_CURRENT_SOURCE_DIR}/src/network-web
   ${CMAKE_CURRENT_SOURCE_DIR}/src/dynamic-shortcuts
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/updater
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )
+
+if(WIN32 OR OS2)
+  project(updater)
+
+  set(UPDATER_SOURCES
+    # QTSINGLEAPPLICATION sources.
+    src/qtsingleapplication/qtlocalpeer.cpp
+    src/qtsingleapplication/qtsinglecoreapplication.cpp
+
+    src/updater/detector.cpp
+    src/updater/main.cpp
+  )
+
+  set(UPDATER_HEADERS
+    # QTSINGLEAPPLICATION headers.
+    src/qtsingleapplication/qtlocalpeer.h
+    src/qtsingleapplication/qtsinglecoreapplication.h
+
+    src/updater/detector.h
+  )
+
+  if(${USE_QT_5})
+    add_executable("updater"
+      ${UPDATER_SOURCES}
+    )
+
+    # Use modules from Qt.
+    qt5_use_modules(updater
+      Core
+      Network
+    )
+  else(${USE_QT_5})
+    qt4_wrap_cpp(UPDATER_MOC ${UPDATER_HEADERS})
+
+    add_executable("updater"
+      ${UPDATER_SOURCES}
+      ${UPDATER_MOC}
+    )
+
+    # Link modules from Qt.
+    target_link_libraries("updater"
+      ${QT_QTCORE_LIBRARY}
+      ${QT_QTNETWORK_LIBRARY}
+    )
+  endif(${USE_QT_5})
+endif(WIN32 OR OS2)
 
 # Setup compilation for Qt 5.
 if(${USE_QT_5})

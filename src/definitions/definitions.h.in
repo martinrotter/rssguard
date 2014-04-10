@@ -103,6 +103,7 @@
 
 #define APP_REVISION        "@APP_REVISION@"
 
+#define APP_QUIT_INSTANCE   "app_quit"
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
 #define APP_THEME_DEFAULT   "mini-kfaenza"
