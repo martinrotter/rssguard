@@ -25,6 +25,8 @@
 #include <QFileInfo>
 #include <QDir>
 
+#include <iostream>
+
 
 bool removeDir(const QString & dirName) {
   bool result = true;
@@ -50,6 +52,23 @@ bool removeDir(const QString & dirName) {
   return result;
 }
 
+void copyPath(QString src, QString dst) {
+  QDir dir(src);
+  if (! dir.exists()) {
+    return;
+  }
+
+  foreach (QString d, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+    QString dst_path = dst + QDir::separator() + d;
+    dir.mkpath(dst_path);
+    copyPath(src + QDir::separator() + d, dst_path);
+  }
+
+  foreach (QString f, dir.entryList(QDir::Files)) {
+    QFile::copy(src + QDir::separator() + f, dst + QDir::separator() + f);
+  }
+}
+
 int main(int argc, char *argv[]) { 
   // Instantiate base application object.
   QtSingleCoreApplication application("rssguard", argc, argv);
@@ -65,16 +84,16 @@ int main(int argc, char *argv[]) {
   QString update_archive = QDir::toNativeSeparators(argv[3]);
 
   // Print input data.
-  qDebug("\n===== directories & files =====");
+  qDebug("\n===== directories & files =====\n");
   qDebug("TEMP folder:\n\t %s", qPrintable(temp_directory));
   qDebug("RSS Guard application executable:\n\t %s", qPrintable(rssguard_executable));
   qDebug("RSS Guard application path:\n\t %s", qPrintable(rssguard_path));
   qDebug("File with update to be installed:\n\t %s", qPrintable(update_archive));
-  qDebug("===== directories & files =====\n");
+  qDebug("\n===== directories & files =====\n");
 
   // Check if main RSS Guard instance is running.
   if (application.sendMessage("app_quit")) {
-    qDebug("RSS Guard application is running. Quitting it...");
+    qDebug("RSS Guard application is running. Quitting it.");
   }
 
   Detector detector;
@@ -98,6 +117,8 @@ int main(int argc, char *argv[]) {
   arguments << "x" << update_archive << "-r" <<
                "-y" << QString("-o%1").arg(output_temp_directory);
 
+  qDebug("\n===== decompression =====\n");
+
   switch (QProcess::execute(extractor_program, arguments)) {
     case -1:
       qDebug("\nDecompressor crashed. Upgrading process failed.");
@@ -108,7 +129,7 @@ int main(int argc, char *argv[]) {
       return EXIT_FAILURE;
 
     case 0:
-      qDebug("\nDecompression is done.");
+      qDebug("\nDecompression is done. Proceeding to copying files to application directory.");
       break;
 
     default:
@@ -116,11 +137,36 @@ int main(int argc, char *argv[]) {
       return EXIT_FAILURE;
   }
 
+  qDebug("\n===== decompression =====\n");
+
   // All needed files are now decompressed in temporary directory.
   // Copy all possible files to RSS Guard application path and
   // do final cleanup.
 
-  // Enter global event loop.
-  return QtSingleCoreApplication::exec();
+  qDebug("\n===== copying =====\n");
+
+  // Find "rssguard" subfolder path in
+
+  // TODO: upravit copyPath aby prepisoval soubory kdyz je kopiruje
+  // a to udelat tak ze se ten cilovej soubor pokusi smazat
+  // a az pak nakopiruje.
+  copyPath(output_temp_directory, rssguard_path);
+
+  qDebug("\n===== copying =====\n");
+
+  qDebug("\n===== cleanup =====\n");
+
+  removeDir(output_temp_directory);
+
+  qDebug("\n===== cleanup =====\n\n\n");
+
+
+  qDebug("Press any key to exit updater and start RSS Guard.");
+
+  std::cin.ignore();
+
+  QProcess::startDetached(rssguard_executable);
+
+  return EXIT_SUCCESS;
 }
 
