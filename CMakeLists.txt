@@ -596,6 +596,9 @@ if(WIN32 OR OS2)
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
 
+  install(TARGETS ${UPDATER_EXE_NAME}
+          RUNTIME DESTINATION ./)
+
   if(BUNDLE_ICON_THEMES)
     install(DIRECTORY resources/graphics/icons/mini-kfaenza
             DESTINATION ./icons)
@@ -618,9 +621,11 @@ if(WIN32 OR OS2)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
 
+if(WIN32)
   # Copy "7za" utility.
   install(FILES resources/7za/7za.exe resources/7za/7za_license.txt
           DESTINATION ./)
+endif(WIN32)
 elseif(APPLE)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")
 
