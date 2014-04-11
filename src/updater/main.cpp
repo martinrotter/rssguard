@@ -15,8 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "qtsingleapplication/qtsinglecoreapplication.h"
 #include "definitions/definitions.h"
+#include "qtsingleapplication/qtsinglecoreapplication.h"
 
 #include <QTranslator>
 #include <QDebug>

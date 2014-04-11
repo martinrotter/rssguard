@@ -115,13 +115,13 @@ void FormUpdate::startUpdate() {
   }
 
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-  Downloader *down = new Downloader(this);
+  Downloader *downloader = new Downloader(this);
 
-  connect(down, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)),
+  connect(downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)),
           this, SLOT(finish(QNetworkReply::NetworkError,QByteArray)));
 
   // TODO: tady jen zavolat updater a ten by si to mohl stahnout sam.
-  down->downloadFile(url_file);
+  downloader->downloadFile(url_file);
 #else
   if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
