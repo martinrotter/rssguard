@@ -141,6 +141,7 @@ void FormUpdate::startUpdate() {
 #endif
 }
 
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 void FormUpdate::finish(QNetworkReply::NetworkError err, QByteArray arr)
 {
   // TODO: presunou do updatera.
@@ -185,3 +186,4 @@ void FormUpdate::finish(QNetworkReply::NetworkError err, QByteArray arr)
     // TODO: chyba - nelze ulozit soubor.
   }
 }
+#endif
