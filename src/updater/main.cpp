@@ -16,7 +16,6 @@
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
 #include "qtsingleapplication/qtsinglecoreapplication.h"
-#include "updater/detector.h"
 #include "updater/definitions.h"
 
 #include <QTranslator>
@@ -125,14 +124,8 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
-  Detector detector;
-
   qDebug().nospace() << "Running updater in thread: \'" <<
                         QThread::currentThreadId() << "\'.";
-
-  // Setup single-instance behavior.
-  QObject::connect(&application, SIGNAL(messageReceived(QString)),
-                   &detector, SLOT(handleMessage(QString)));
 
   QString extractor_program(EXECUTABLE_7ZA);
   QStringList arguments;

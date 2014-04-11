@@ -145,7 +145,7 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
   }
 
   QByteArray feed_contents;
-  if ((result.second = NetworkFactory::downloadFile(url,
+  if ((result.second = NetworkFactory::downloadFeedFile(url,
                                                         Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
                                                         feed_contents,
                                                         !username.isEmpty(),
@@ -349,7 +349,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = Settings::instance()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
-  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url(),
+  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFeedFile(url(),
                                                                                  download_timeout,
                                                                                  feed_contents,
                                                                                  passwordProtected(),

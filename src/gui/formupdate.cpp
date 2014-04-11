@@ -116,7 +116,7 @@ void FormUpdate::startUpdate() {
   // On Windows/OS2 we can update the application right away.
   // Download the files.
   QByteArray output;
-  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url_file,
+  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFeedFile(url_file,
                                                                              10 * DOWNLOAD_TIMEOUT,
                                                                              output);
 

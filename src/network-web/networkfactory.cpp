@@ -25,7 +25,6 @@
 #include <QTimer>
 #include <QIcon>
 #include <QPixmap>
-#include <QTextDocument>
 
 
 NetworkFactory::NetworkFactory() {
@@ -105,9 +104,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
 #endif
   QByteArray icon_data;
 
-  QNetworkReply::NetworkError network_result =  downloadFile(google_s2_with_url,
-                                                             timeout,
-                                                             icon_data);
+  QNetworkReply::NetworkError network_result =  downloadFeedFile(google_s2_with_url,
+                                                                 timeout,
+                                                                 icon_data);
 
   if (network_result == QNetworkReply::NoError) {
     QPixmap icon_pixmap;
@@ -118,12 +117,12 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
   return network_result;
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
-                                                         int timeout,
-                                                         QByteArray &output,
-                                                         bool protected_contents,
-                                                         const QString &username,
-                                                         const QString &password) {
+QNetworkReply::NetworkError NetworkFactory::downloadFeedFile(const QString &url,
+                                                             int timeout,
+                                                             QByteArray &output,
+                                                             bool protected_contents,
+                                                             const QString &username,
+                                                             const QString &password) {
   // Original asynchronous behavior of QNetworkAccessManager
   // is replaced by synchronous behavior in order to make
   // process of downloading of a file easier to understand.
@@ -171,7 +170,10 @@ QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
       timer.stop();
     }
     else {
-      reply->deleteLater();
+      if (reply != NULL) {
+        delete reply;
+        reply = NULL;
+      }
 
       // Timer already fired. Download is NOT successful.
       return QNetworkReply::TimeoutError;
@@ -184,6 +186,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
       // Communication indicates that HTTP redirection is needed.
       // Setup redirection URL and download again.
       request.setUrl(redirection_url);
+
+      delete reply;
+      reply = NULL;
     }
     else {
       // No redirection is indicated. Final file is obtained
@@ -203,6 +208,10 @@ QNetworkReply::NetworkError NetworkFactory::downloadFile(const QString &url,
          reply_error);
 
   // Delete needed stuff and exit.
-  reply->deleteLater();
+  if (reply != NULL) {
+    delete reply;
+    reply = NULL;
+  }
+
   return reply_error;
 }

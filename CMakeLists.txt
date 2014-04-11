@@ -346,6 +346,7 @@ set(APP_SOURCES
   src/network-web/webfactory.cpp
   src/network-web/webbrowser.cpp
   src/network-web/webview.cpp
+  src/network-web/downloader.cpp
 
   # MAIN sources.
   src/application.cpp
@@ -418,6 +419,7 @@ set(APP_HEADERS
   src/network-web/webfactory.h
   src/network-web/webbrowser.h
   src/network-web/webview.h
+  src/network-web/downloader.h
 
   # MAIN headers.
   src/application.h
@@ -470,7 +472,6 @@ if(WIN32 OR OS2)
     src/qtsingleapplication/qtlocalpeer.cpp
     src/qtsingleapplication/qtsinglecoreapplication.cpp
 
-    src/updater/detector.cpp
     src/updater/main.cpp
   )
 
@@ -478,8 +479,6 @@ if(WIN32 OR OS2)
     # QTSINGLEAPPLICATION headers.
     src/qtsingleapplication/qtlocalpeer.h
     src/qtsingleapplication/qtsinglecoreapplication.h
-
-    src/updater/detector.h
   )
 endif(WIN32 OR OS2)
 
