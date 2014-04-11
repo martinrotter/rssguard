@@ -47,6 +47,8 @@ class FormUpdate : public QDialog {
     void checkForUpdates();
     void startUpdate();
 
+    void finish(QNetworkReply::NetworkError err, QByteArray arr);
+
   private:
     Ui::FormUpdate *m_ui;
     UpdateInfo m_updateInfo;

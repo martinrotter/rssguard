@@ -147,11 +147,6 @@ configure_file (
   ${CMAKE_CURRENT_BINARY_DIR}/src/definitions/definitions.h
 )
 
-configure_file (
-  ${PROJECT_SOURCE_DIR}/src/updater/definitions.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/src/updater/definitions.h
-)
-
 # Define some useful DEBUG for, ehrm, debug build.
 if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
   message(STATUS "[${APP_LOW_NAME}] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")

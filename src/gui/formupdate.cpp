@@ -22,6 +22,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
+#include "network-web/downloader.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
 
@@ -104,8 +105,9 @@ void FormUpdate::checkForUpdates() {
 
 void FormUpdate::startUpdate() {
   QString url_file;
+  bool update_for_this_system = isUpdateForThisSystem();
 
-  if (isUpdateForThisSystem()) {
+  if (update_for_this_system) {
     url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;
   }
   else {
@@ -113,57 +115,13 @@ void FormUpdate::startUpdate() {
   }
 
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-  // On Windows/OS2 we can update the application right away.
-  // Download the files.
-  QByteArray output;
-  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFeedFile(url_file,
-                                                                             10 * DOWNLOAD_TIMEOUT,
-                                                                             output);
+  Downloader *down = new Downloader(this);
 
-#if QT_VERSION >= 0x050000
-  QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-#else
-  QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
-#endif
+  connect(down, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)),
+          this, SLOT(finish(QNetworkReply::NetworkError,QByteArray)));
 
-  if (!temp_directory.isEmpty()) {
-    QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
-    QFile output_file(temp_directory + QDir::separator() + output_file_name);
-
-    if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-      output_file.write(output);
-      output_file.flush();
-      output_file.close();
-
-      // TODO: spustit updater
-      // pouzit qprocess, nebo neco multiplatformniho
-      // nebo z quiterss shellexecuter
-      // program obcas pada, to je mozna zpusobeny tim
-      // ze je otevreny modalni okno.
-      close();
-
-      QProcess::startDetached(APP_UPDATER_EXECUTABLE,
-                              QStringList() << temp_directory <<qApp->applicationFilePath() << output_file.fileName());
-      /*
-      ShellExecute(0,
-                   0,
-                   (wchar_t *) QString(APP_UPDATER_EXECUTABLE).utf16(),
-                   (wchar_t *) QString("\"%1\" \"%2\" \"%3\"").arg(temp_directory,
-                                                                   qApp->applicationFilePath(),
-                                                                   output_file.fileName()).utf16(),
-                   0,
-                   SW_SHOWNORMAL);
-      */
-    }
-    else {
-      // TODO: chyba - nelze zapisovat do souboru
-    }
-
-  }
-  else {
-    // TODO: chyba - nelze ulozit soubor.
-  }
-
+  // TODO: tady jen zavolat updater a ten by si to mohl stahnout sam.
+  down->downloadFile(url_file);
 #else
   if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
@@ -181,4 +139,49 @@ void FormUpdate::startUpdate() {
     }
   }
 #endif
+}
+
+void FormUpdate::finish(QNetworkReply::NetworkError err, QByteArray arr)
+{
+  // TODO: presunou do updatera.
+  QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
+
+#if QT_VERSION >= 0x050000
+  QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+#else
+  QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
+#endif
+
+  if (!temp_directory.isEmpty()) {
+    QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
+    QFile output_file(temp_directory + QDir::separator() + output_file_name);
+
+    if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+      output_file.write(arr);
+      output_file.flush();
+      output_file.close();
+
+      close();
+
+      QProcess::startDetached(APP_UPDATER_EXECUTABLE,
+                              QStringList() << temp_directory <<qApp->applicationFilePath() << output_file.fileName());
+
+      //ShellExecute(0,
+      //             0,
+      //             (wchar_t *) QString(APP_UPDATER_EXECUTABLE).utf16(),
+      //             (wchar_t *) QString("\"%1\" \"%2\" \"%3\"").arg(temp_directory,
+      //                                                             qApp->applicationFilePath(),
+      //                                                             output_file.fileName()).utf16(),
+      //             0,
+      //             SW_SHOWNORMAL);
+
+    }
+    else {
+      // TODO: chyba - nelze zapisovat do souboru
+    }
+
+  }
+  else {
+    // TODO: chyba - nelze ulozit soubor.
+  }
 }

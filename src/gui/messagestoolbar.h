@@ -53,8 +53,6 @@ class MessagesToolBar : public BaseToolBar {
     void loadChangeableActions(const QStringList &actions);
 
   signals:
-    // TODO: sem pridat este mozna mode: wildcard, regexp, fixed text.
-    // na tuto udalost se navaze filtrovani
     void messageSearchPatternChanged(const QString &pattern);
 
     // Emitted if message filter is changed.

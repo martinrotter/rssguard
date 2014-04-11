@@ -16,7 +16,7 @@
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
 #include "qtsingleapplication/qtsinglecoreapplication.h"
-#include "updater/definitions.h"
+#include "definitions/definitions.h"
 
 #include <QTranslator>
 #include <QDebug>
@@ -86,7 +86,7 @@ bool copyPath(QString src, QString dst) {
 
 int main(int argc, char *argv[]) { 
   // Instantiate base application object.
-  QtSingleCoreApplication application(RSSGUARD_LOW_NAME, argc, argv);
+  QtSingleCoreApplication application(APP_LOW_NAME, argc, argv);
 
   if (argc != 4) {
     qDebug("Insufficient arguments passed. Update process cannot proceed.");
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
   qDebug("\n===== directories & files =====\n");
 
   // Check if main RSS Guard instance is running.
-  if (application.sendMessage(UPDATER_QUIT_INSTANCE)) {
+  if (application.sendMessage(APP_QUIT_INSTANCE)) {
     qDebug("RSS Guard application is running. Quitting it.");
   }
 
@@ -127,9 +127,9 @@ int main(int argc, char *argv[]) {
   qDebug().nospace() << "Running updater in thread: \'" <<
                         QThread::currentThreadId() << "\'.";
 
-  QString extractor_program(EXECUTABLE_7ZA);
+  QString extractor_program(APP_7ZA_EXECUTABLE);
   QStringList arguments;
-  QString output_temp_directory = temp_directory + QDir::separator() + RSSGUARD_LOW_NAME;
+  QString output_temp_directory = temp_directory + QDir::separator() + APP_LOW_NAME;
 
   // Remove old folders.
   if (QDir(output_temp_directory).exists()) {
@@ -190,10 +190,6 @@ int main(int argc, char *argv[]) {
 
   QString rssguard_single_temp_root = rssguard_temp_root.at(0).absoluteFilePath();
 
-
-  // TODO: upravit copyPath aby prepisoval soubory kdyz je kopiruje
-  // a to udelat tak ze se ten cilovej soubor pokusi smazat
-  // a az pak nakopiruje.
   if (!copyPath(rssguard_single_temp_root, rssguard_path)) {
     qDebug("Critical error appeared during copying of application files.");
   }

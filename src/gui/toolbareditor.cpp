@@ -88,8 +88,6 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
 }
 
 void ToolBarEditor::saveToolBar() {
-  // TODO: ulozit actiony nastaveny v tomdl
-  // e nastavovacim dialogu do prirazenyho toolbaru
   QStringList action_names;
 
   for (int i = 0; i < m_ui->m_listActivatedActions->count(); i++) {
