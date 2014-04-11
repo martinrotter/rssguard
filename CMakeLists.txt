@@ -621,11 +621,11 @@ if(WIN32 OR OS2)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
 
-if(WIN32)
-  # Copy "7za" utility.
-  install(FILES resources/7za/7za.exe resources/7za/7za_license.txt
-          DESTINATION ./)
-endif(WIN32)
+  if(WIN32)
+    # Copy "7za" utility.
+    install(FILES resources/7za/7za.exe resources/7za/7za_license.txt
+            DESTINATION ./)
+  endif(WIN32)
 elseif(APPLE)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")
 
