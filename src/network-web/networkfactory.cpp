@@ -25,6 +25,7 @@
 #include <QTimer>
 #include <QIcon>
 #include <QPixmap>
+#include <QTextDocument>
 
 
 NetworkFactory::NetworkFactory() {
