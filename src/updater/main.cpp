@@ -17,6 +17,7 @@
 
 #include "qtsingleapplication/qtsinglecoreapplication.h"
 #include "updater/detector.h"
+#include "updater/definitions.h"
 
 #include <QTranslator>
 #include <QDebug>
@@ -52,10 +53,10 @@ bool removeDir(const QString & dirName) {
   return result;
 }
 
-void copyPath(QString src, QString dst) {
+bool copyPath(QString src, QString dst) {
   QDir dir(src);
   if (! dir.exists()) {
-    return;
+    return false;
   }
 
   foreach (QString d, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
@@ -65,16 +66,35 @@ void copyPath(QString src, QString dst) {
   }
 
   foreach (QString f, dir.entryList(QDir::Files)) {
-    QFile::copy(src + QDir::separator() + f, dst + QDir::separator() + f);
+    QString original_file = src + QDir::separator() + f;
+    QString destination_file = dst + QDir::separator() + f;
+
+    if (!QFile::exists(destination_file) || QFile::remove(destination_file)) {
+      if (QFile::copy(src + QDir::separator() + f, destination_file)) {
+        qDebug("Copied  %s", qPrintable(f));
+      }
+      else {
+        qDebug("Failed to copy file '%s'", qPrintable(original_file));
+      }
+    }
+    else {
+      qDebug("Failed to remove file '%s'", qPrintable(original_file));
+    }
   }
+
+  return true;
 }
 
 int main(int argc, char *argv[]) { 
   // Instantiate base application object.
-  QtSingleCoreApplication application("rssguard", argc, argv);
+  QtSingleCoreApplication application(RSSGUARD_LOW_NAME, argc, argv);
 
   if (argc != 4) {
-    qDebug("Insufficient arguments passed. Quitting RSS Guard updater...");
+    qDebug("Insufficient arguments passed. Update process cannot proceed.");
+    qDebug("Press any key to exit updater...");
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     return EXIT_FAILURE;
   }
 
@@ -92,8 +112,17 @@ int main(int argc, char *argv[]) {
   qDebug("\n===== directories & files =====\n");
 
   // Check if main RSS Guard instance is running.
-  if (application.sendMessage("app_quit")) {
+  if (application.sendMessage(UPDATER_QUIT_INSTANCE)) {
     qDebug("RSS Guard application is running. Quitting it.");
+  }
+
+  if (!QFile::exists(update_archive)) {
+    qDebug("Update file '%s' does not exist.", qPrintable(update_archive));
+    qDebug("Press any key to exit updater...");
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    return EXIT_FAILURE;
   }
 
   Detector detector;
@@ -105,14 +134,24 @@ int main(int argc, char *argv[]) {
   QObject::connect(&application, SIGNAL(messageReceived(QString)),
                    &detector, SLOT(handleMessage(QString)));
 
-  QString extractor_program("7za.exe");
+  QString extractor_program(EXECUTABLE_7ZA);
   QStringList arguments;
-  QString output_temp_directory = temp_directory + QDir::separator() + "rssguard";
+  QString output_temp_directory = temp_directory + QDir::separator() + RSSGUARD_LOW_NAME;
 
   // Remove old folders.
   if (QDir(output_temp_directory).exists()) {
-    removeDir(output_temp_directory);
+    if (!removeDir(output_temp_directory)) {
+      qDebug("Cleanup of old temporary files failed. Press any key to exit updater...");
+
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+      return EXIT_FAILURE;
+    }
   }
+
+  qDebug("Update files are ready. Press any key to proceed...");
+
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   arguments << "x" << update_archive << "-r" <<
                "-y" << QString("-o%1").arg(output_temp_directory);
@@ -146,24 +185,38 @@ int main(int argc, char *argv[]) {
   qDebug("\n===== copying =====\n");
 
   // Find "rssguard" subfolder path in
+  QFileInfoList rssguard_temp_root = QDir(output_temp_directory).entryInfoList(QDir::Dirs |
+                                                                               QDir::NoDotAndDotDot |
+                                                                               QDir::NoSymLinks);
+
+  if (rssguard_temp_root.size() != 1) {
+    qDebug("Could not find root of downloaded application data.");
+
+    return EXIT_FAILURE;
+  }
+
+  QString rssguard_single_temp_root = rssguard_temp_root.at(0).absoluteFilePath();
+
 
   // TODO: upravit copyPath aby prepisoval soubory kdyz je kopiruje
   // a to udelat tak ze se ten cilovej soubor pokusi smazat
   // a az pak nakopiruje.
-  copyPath(output_temp_directory, rssguard_path);
+  if (!copyPath(rssguard_single_temp_root, rssguard_path)) {
+    qDebug("Critical error appeared during copying of application files.");
+  }
 
   qDebug("\n===== copying =====\n");
 
   qDebug("\n===== cleanup =====\n");
 
   removeDir(output_temp_directory);
+  QFile::remove(update_archive);
 
-  qDebug("\n===== cleanup =====\n\n\n");
-
+  qDebug("\n===== cleanup =====\n");
 
   qDebug("Press any key to exit updater and start RSS Guard.");
 
-  std::cin.ignore();
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
   QProcess::startDetached(rssguard_executable);
 

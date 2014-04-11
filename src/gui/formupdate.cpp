@@ -142,19 +142,18 @@ void FormUpdate::startUpdate() {
       // ze je otevreny modalni okno.
       close();
 
-#if defined(Q_OS_WIN32)
+      QProcess::startDetached(APP_UPDATER_EXECUTABLE,
+                              QStringList() << temp_directory <<qApp->applicationFilePath() << output_file.fileName());
+      /*
       ShellExecute(0,
                    0,
-                   (wchar_t *) QString("updater.exe").utf16(),
+                   (wchar_t *) QString(APP_UPDATER_EXECUTABLE).utf16(),
                    (wchar_t *) QString("\"%1\" \"%2\" \"%3\"").arg(temp_directory,
                                                                    qApp->applicationFilePath(),
                                                                    output_file.fileName()).utf16(),
                    0,
                    SW_SHOWNORMAL);
-#elif defined(Q_OS_OS2)
-
-#endif
-      // TODO: vetev pro osn
+      */
     }
     else {
       // TODO: chyba - nelze zapisovat do souboru

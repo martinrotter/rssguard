@@ -39,6 +39,12 @@
 # Setup basic variables.
 project(rssguard)
 
+if(WIN32 OR OS2)
+  project(rssguard_updater)
+
+  set(UPDATER_EXE_NAME "rssguard_updater")
+endif(WIN32 OR OS2)
+
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
 set(APP_VERSION "1.9.9.8")
@@ -139,6 +145,11 @@ endif(UNIX)
 configure_file (
   ${PROJECT_SOURCE_DIR}/src/definitions/definitions.h.in
   ${CMAKE_CURRENT_BINARY_DIR}/src/definitions/definitions.h
+)
+
+configure_file (
+  ${PROJECT_SOURCE_DIR}/src/updater/definitions.h.in
+  ${CMAKE_CURRENT_BINARY_DIR}/src/updater/definitions.h
 )
 
 # Define some useful DEBUG for, ehrm, debug build.
@@ -452,6 +463,26 @@ set(APP_TEXT
   resources/text/AUTHORS
 )
 
+# Setup source & header files for "rssguard_updater".
+if(WIN32 OR OS2)
+  set(UPDATER_SOURCES
+    # QTSINGLEAPPLICATION sources.
+    src/qtsingleapplication/qtlocalpeer.cpp
+    src/qtsingleapplication/qtsinglecoreapplication.cpp
+
+    src/updater/detector.cpp
+    src/updater/main.cpp
+  )
+
+  set(UPDATER_HEADERS
+    # QTSINGLEAPPLICATION headers.
+    src/qtsingleapplication/qtlocalpeer.h
+    src/qtsingleapplication/qtsinglecoreapplication.h
+
+    src/updater/detector.h
+  )
+endif(WIN32 OR OS2)
+
 # Add custom icon on Mac OS X.
 if(APPLE)
   SET (APP_SOURCES ${APP_SOURCES} resources/graphics/rssguard.icns)
@@ -474,6 +505,11 @@ else(${USE_QT_5})
   
   # Load translations.
   qt4_add_translation(APP_QM ${APP_TRANSLATIONS})
+
+  # Setup Qt for "rssguard_updater".
+  if(WIN32 OR OS2)
+    qt4_wrap_cpp(UPDATER_MOC ${UPDATER_HEADERS})
+  endif(WIN32 OR OS2)
 endif(${USE_QT_5})
 
 # Include additional directory paths.
@@ -487,53 +523,35 @@ include_directories (
   ${CMAKE_CURRENT_BINARY_DIR}/src
 )
 
+# Compile "rssguard_updater" utility on supported platforms.
 if(WIN32 OR OS2)
-  project(updater)
-
-  set(UPDATER_SOURCES
-    # QTSINGLEAPPLICATION sources.
-    src/qtsingleapplication/qtlocalpeer.cpp
-    src/qtsingleapplication/qtsinglecoreapplication.cpp
-
-    src/updater/detector.cpp
-    src/updater/main.cpp
-  )
-
-  set(UPDATER_HEADERS
-    # QTSINGLEAPPLICATION headers.
-    src/qtsingleapplication/qtlocalpeer.h
-    src/qtsingleapplication/qtsinglecoreapplication.h
-
-    src/updater/detector.h
-  )
+  message(STATUS "[${APP_LOW_NAME}] RSS Guard updater will be compiled.")
 
   if(${USE_QT_5})
-    add_executable("updater"
+    add_executable(${UPDATER_EXE_NAME}
       ${UPDATER_SOURCES}
     )
 
     # Use modules from Qt.
-    qt5_use_modules(updater
+    qt5_use_modules(rssguard_updater
       Core
       Network
     )
   else(${USE_QT_5})
-    qt4_wrap_cpp(UPDATER_MOC ${UPDATER_HEADERS})
-
-    add_executable("updater"
+    add_executable(${UPDATER_EXE_NAME}
       ${UPDATER_SOURCES}
       ${UPDATER_MOC}
     )
 
     # Link modules from Qt.
-    target_link_libraries("updater"
+    target_link_libraries(${UPDATER_EXE_NAME}
       ${QT_QTCORE_LIBRARY}
       ${QT_QTNETWORK_LIBRARY}
     )
   endif(${USE_QT_5})
 endif(WIN32 OR OS2)
 
-# Setup compilation for Qt 5.
+# Compile "rssguard"
 if(${USE_QT_5})
   add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
     ${APP_SOURCES}
@@ -567,7 +585,7 @@ else(${USE_QT_5})
   )
 
   # Link modules from Qt.
-  target_link_libraries( ${EXE_NAME}
+  target_link_libraries(${EXE_NAME}
     ${QT_QTCORE_LIBRARY}
     ${QT_QTGUI_LIBRARY}
     ${QT_QTNETWORK_LIBRARY}
@@ -604,6 +622,10 @@ if(WIN32 OR OS2)
   install(FILES ${APP_QM}
           DESTINATION ./l10n)
   install(FILES ${APP_TEXT}
+          DESTINATION ./)
+
+  # Copy "7za" utility.
+  install(FILES resources/7za/7za.exe resources/7za/7za_license.txt
           DESTINATION ./)
 elseif(APPLE)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")

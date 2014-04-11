@@ -1,0 +1,10 @@
+#ifndef DEFINITIONS_H_IN
+#define DEFINITIONS_H_IN
+
+#define RSSGUARD_LOW_NAME       "@APP_LOW_NAME@"
+
+#define UPDATER_QUIT_INSTANCE   "app_quit"
+#define UPDATER_IS_RUNNING      "app_is_running"
+#define EXECUTABLE_7ZA          "7za.exe"
+
+#endif // DEFINITIONS_H_IN

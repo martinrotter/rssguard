@@ -174,6 +174,7 @@
 #define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/@APP_LOW_NAME@_plain.png")
 #elif defined(Q_OS_WIN) || defined(Q_OS_OS2)
+#define APP_UPDATER_EXECUTABLE "rssguard_updater.exe"
 #define APP_LANG_PATH QApplication::applicationDirPath() + QString("/l10n")
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
