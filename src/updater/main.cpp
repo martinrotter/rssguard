@@ -26,6 +26,7 @@
 #include <QDir>
 
 #include <iostream>
+#include <limits>
 
 
 bool removeDir(const QString & dirName) {
