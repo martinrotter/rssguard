@@ -21,6 +21,10 @@
 #include <QDialog>
 #include <QPushButton>
 
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+#include <QNetworkReply>
+#endif
+
 #include "ui_formupdate.h"
 
 #include "miscellaneous/systemfactory.h"
@@ -29,6 +33,10 @@
 namespace Ui {
   class FormUpdate;
 }
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+class Downloader;
+#endif
 
 class FormUpdate : public QDialog {
     Q_OBJECT
@@ -48,10 +56,16 @@ class FormUpdate : public QDialog {
     void startUpdate();
 
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-    void finish(QNetworkReply::NetworkError err, QByteArray arr);
-#endif
+    void updateProgress(qint64 bytes_received, qint64 bytes_total);
+    void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
+    void saveUpdateFile(const QByteArray &file_contents);
 
   private:
+    Downloader *m_downloader;
+    bool m_readyToInstall;
+    QString m_updateFilePath;
+#endif
+
     Ui::FormUpdate *m_ui;
     UpdateInfo m_updateInfo;
     QPushButton *m_btnUpdate;

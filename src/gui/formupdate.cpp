@@ -30,13 +30,15 @@
 #include <QDesktopServices>
 #include <QProcess>
 
-#if defined(Q_OS_WIN)
-#include "qt_windows.h"
-#endif
 
 FormUpdate::FormUpdate(QWidget *parent)
   : QDialog(parent), m_ui(new Ui::FormUpdate) {
   m_ui->setupUi(this);
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+  m_downloader = NULL;
+  m_readyToInstall = false;
+#endif
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
@@ -84,6 +86,8 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
     if (update.first.m_availableVersion >= APP_VERSION) {
+      bool update_for_this_system = isUpdateForThisSystem();
+
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -92,6 +96,10 @@ void FormUpdate::checkForUpdates() {
                                 tr("Download installation file for your OS.") :
                                 tr("Installation file is not available directly.\n"
                                    "Go to application website to obtain it manually."));
+
+      if (update_for_this_system) {
+        m_btnUpdate->setText(tr("Download update"));
+      }
     }
     else {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
@@ -102,6 +110,74 @@ void FormUpdate::checkForUpdates() {
     }
   }
 }
+
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
+  qApp->processEvents();
+  m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
+                               tr("Downloaded %1% (update size is %2 kB).").arg(QString::number((bytes_received * 100.0) / bytes_total,
+                                                                                                'f',
+                                                                                                2),
+                                                                                QString::number(bytes_total / 1000,
+                                                                                                'f',
+                                                                                                2)),
+                               tr("Downloading update..."));
+}
+
+void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
+  QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
+
+#if QT_VERSION >= 0x050000
+  QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+#else
+  QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
+#endif
+
+  if (!temp_directory.isEmpty()) {
+    QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
+    QFile output_file(temp_directory + QDir::separator() + output_file_name);
+
+    if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+      qDebug("Storing update file to temporary location '%s'.",
+             qPrintable(output_file_name));
+
+      output_file.write(file_contents);
+      output_file.flush();
+      output_file.close();
+
+      qDebug("Update file contents was successfuly saved.");
+
+      m_updateFilePath = output_file.fileName();
+      m_readyToInstall = true;
+    }
+    else {
+      qDebug("Cannot save downloaded update file because target temporary file '%s' cannot be "
+             "opened for writing.", output_file_name);
+    }
+  }
+  else {
+    qDebug("Cannot save downloaded update file because no TEMP folder is available.");
+  }
+}
+
+void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray contents) {
+  qDebug("Download of application update file was completed with code '%s'.",
+         status);
+
+  switch (status) {
+    case QNetworkReply::NoError:
+      saveUpdateFile(contents);
+
+      m_btnUpdate->setText(tr("Install update"));
+      m_btnUpdate->setEnabled(true);
+      break;
+
+    default:
+      m_btnUpdate->setText(tr("Error occured"));
+      break;
+  }
+}
+#endif
 
 void FormUpdate::startUpdate() {
   QString url_file;
@@ -115,35 +191,71 @@ void FormUpdate::startUpdate() {
   }
 
 #if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-  Downloader *downloader = new Downloader(this);
+  if (m_readyToInstall) {
+    close();
 
-  connect(downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)),
-          this, SLOT(finish(QNetworkReply::NetworkError,QByteArray)));
+    qDebug("Preparing to launch external updater '%s'.", APP_UPDATER_EXECUTABLE);
 
-  // TODO: tady jen zavolat updater a ten by si to mohl stahnout sam.
-  downloader->downloadFile(url_file);
-#else
-  if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
-                                              tr("Cannot navigate to installation file. Check new installation downloads "
-                                                 "manually on project website."),
-                                              QSystemTrayIcon::Warning);
+    if (!QProcess::startDetached(APP_UPDATER_EXECUTABLE,
+                                 QStringList() <<
+                                 APP_VERSION <<
+                                 m_updateInfo.m_availableVersion <<
+                                 QDir::toNativeSeparators(qApp->applicationFilePath()) <<
+                                 QDir::toNativeSeparators(m_updateFilePath))) {
+      qDebug("External updater was not launched due to error.");
+
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
+                                                tr("Cannot launch external updater. Update application manually."),
+                                                QSystemTrayIcon::Warning);
+      }
+      else {
+        MessageBox::show(this,
+                         QMessageBox::Warning,
+                         tr("Cannot update application"),
+                         tr("Cannot launch external updater. Update application manually."));
+      }
     }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot update application"),
-                       tr("Cannot navigate to installation file. Check new installation downloads "
-                          "manually on project website."));
+
+    return;
+  }
+
+  if (update_for_this_system) {
+    if (m_downloader == NULL) {
+      // Initialie downloader.
+      m_downloader = new Downloader(this);
+
+      connect(m_downloader, SIGNAL(progress(qint64,qint64)),
+              this, SLOT(updateProgress(qint64,qint64)));
+      connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)),
+              this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
+    }
+
+    m_btnUpdate->setText(tr("Downloading update..."));
+    m_btnUpdate->setEnabled(false);
+
+    m_downloader->downloadFile(url_file);
+
+  } else {
+    if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
+      if (SystemTrayIcon::isSystemTrayActivated()) {
+        SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
+                                                tr("Cannot navigate to installation file. Check new installation downloads "
+                                                   "manually on project website."),
+                                                QSystemTrayIcon::Warning);
+      }
+      else {
+        MessageBox::show(this,
+                         QMessageBox::Warning,
+                         tr("Cannot update application"),
+                         tr("Cannot navigate to installation file. Check new installation downloads "
+                            "manually on project website."));
+      }
     }
   }
-#endif
-}
-
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-void FormUpdate::finish(QNetworkReply::NetworkError err, QByteArray arr)
-{
+  /*
+   *   // TODO: http://pastebin.com/Lvb1bsJP
+  // chyba od elberta
   // TODO: presunou do updatera.
   QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
 
@@ -163,27 +275,23 @@ void FormUpdate::finish(QNetworkReply::NetworkError err, QByteArray arr)
       output_file.close();
 
       close();
-
-      QProcess::startDetached(APP_UPDATER_EXECUTABLE,
-                              QStringList() << temp_directory <<qApp->applicationFilePath() << output_file.fileName());
-
-      //ShellExecute(0,
-      //             0,
-      //             (wchar_t *) QString(APP_UPDATER_EXECUTABLE).utf16(),
-      //             (wchar_t *) QString("\"%1\" \"%2\" \"%3\"").arg(temp_directory,
-      //                                                             qApp->applicationFilePath(),
-      //                                                             output_file.fileName()).utf16(),
-      //             0,
-      //             SW_SHOWNORMAL);
-
+    }
+  }*/
+#else
+  if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
+                                              tr("Cannot navigate to installation file. Check new installation downloads "
+                                                 "manually on project website."),
+                                              QSystemTrayIcon::Warning);
     }
     else {
-      // TODO: chyba - nelze zapisovat do souboru
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot update application"),
+                       tr("Cannot navigate to installation file. Check new installation downloads "
+                          "manually on project website."));
     }
-
   }
-  else {
-    // TODO: chyba - nelze ulozit soubor.
-  }
-}
 #endif
+}     
