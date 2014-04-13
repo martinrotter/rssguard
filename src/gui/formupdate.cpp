@@ -32,13 +32,8 @@
 
 
 FormUpdate::FormUpdate(QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormUpdate) {
+  : QDialog(parent), m_downloader(NULL), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
   m_ui->setupUi(this);
-
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
-  m_downloader = NULL;
-  m_readyToInstall = false;
-#endif
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
@@ -61,8 +56,16 @@ FormUpdate::~FormUpdate() {
   delete m_ui;
 }
 
-bool FormUpdate::isUpdateForThisSystem() {
+bool FormUpdate::isUpdateForThisSystem() const {
   return m_updateInfo.m_urls.keys().contains(OS_ID);
+}
+
+bool FormUpdate::isSelfUpdateSupported() const {
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+  return true;
+#else
+  return false;
+#endif
 }
 
 void FormUpdate::checkForUpdates() {
@@ -86,8 +89,6 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
     if (update.first.m_availableVersion >= APP_VERSION) {
-      bool update_for_this_system = isUpdateForThisSystem();
-
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -97,7 +98,7 @@ void FormUpdate::checkForUpdates() {
                                 tr("Installation file is not available directly.\n"
                                    "Go to application website to obtain it manually."));
 
-      if (update_for_this_system) {
+      if (isUpdateForThisSystem() && isSelfUpdateSupported()) {
         m_btnUpdate->setText(tr("Download update"));
       }
     }
@@ -111,7 +112,6 @@ void FormUpdate::checkForUpdates() {
   }
 }
 
-//#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
   qApp->processEvents();
   m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
@@ -168,16 +168,19 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
     case QNetworkReply::NoError:
       saveUpdateFile(contents);
 
+      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"),
+                                   tr("Package was downloaded successfully."));
       m_btnUpdate->setText(tr("Install update"));
       m_btnUpdate->setEnabled(true);
       break;
 
     default:
+      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error, tr("Error occured"),
+                                   tr("Error occured during downloading of the package."));
       m_btnUpdate->setText(tr("Error occured"));
       break;
   }
 }
-//#endif
 
 void FormUpdate::startUpdate() {
   QString url_file;
@@ -190,8 +193,9 @@ void FormUpdate::startUpdate() {
     url_file = APP_URL;
   }
 
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
   if (m_readyToInstall) {
+    // Some package is downloaded and it can be installed
+    // via self-update feature.
     close();
 
     qDebug("Preparing to launch external updater '%s'.", APP_UPDATER_EXECUTABLE);
@@ -216,11 +220,11 @@ void FormUpdate::startUpdate() {
                          tr("Cannot launch external updater. Update application manually."));
       }
     }
-
-    return;
   }
+  else if (update_for_this_system && isSelfUpdateSupported()) {
+    // Nothing is downloaded yet, but update for this system
+    // is available and self-update feature is present.
 
-  if (update_for_this_system) {
     if (m_downloader == NULL) {
       // Initialie downloader.
       m_downloader = new Downloader(this);
@@ -237,6 +241,7 @@ void FormUpdate::startUpdate() {
     m_downloader->downloadFile(url_file);
 
   } else {
+    // Self-update and package are not available.
     if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
       if (SystemTrayIcon::isSystemTrayActivated()) {
         SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
@@ -253,21 +258,4 @@ void FormUpdate::startUpdate() {
       }
     }
   }
-#else
-  if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
-                                              tr("Cannot navigate to installation file. Check new installation downloads "
-                                                 "manually on project website."),
-                                              QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot update application"),
-                       tr("Cannot navigate to installation file. Check new installation downloads "
-                          "manually on project website."));
-    }
-  }
-#endif
 }     

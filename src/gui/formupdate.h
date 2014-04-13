@@ -20,10 +20,7 @@
 
 #include <QDialog>
 #include <QPushButton>
-
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 #include <QNetworkReply>
-#endif
 
 #include "ui_formupdate.h"
 
@@ -34,9 +31,7 @@ namespace Ui {
   class FormUpdate;
 }
 
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 class Downloader;
-#endif
 
 class FormUpdate : public QDialog {
     Q_OBJECT
@@ -48,26 +43,25 @@ class FormUpdate : public QDialog {
 
     // Returns true if current update provides
     // installation file for current platform.
-    bool isUpdateForThisSystem();
+    bool isUpdateForThisSystem() const;
+
+    // Returns true if application can self-update
+    // on current platform.
+    bool isSelfUpdateSupported() const;
 
   protected slots:
     // Check for updates and interprets the results.
     void checkForUpdates();
     void startUpdate();
 
-//#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
     void updateProgress(qint64 bytes_received, qint64 bytes_total);
     void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
     void saveUpdateFile(const QByteArray &file_contents);
-//#endif
 
   private:
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
     Downloader *m_downloader;
     bool m_readyToInstall;
     QString m_updateFilePath;
-#endif
-
     Ui::FormUpdate *m_ui;
     UpdateInfo m_updateInfo;
     QPushButton *m_btnUpdate;
