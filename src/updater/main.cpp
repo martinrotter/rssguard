@@ -29,65 +29,6 @@
 #include <iostream>
 #include <limits>
 
-/*
-bool removeDir(const QString & dirName,
-               const QStringList &exception_file_list = QStringList(),
-               const QStringList &exception_folder_list = QStringList()) {
-  bool result = true;
-  QDir dir(dirName);
-
-  if (dir.exists(dirName)) {
-    foreach (QFileInfo info,
-             dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
-      if (info.isDir()) {
-        if (!exception_folder_list.contains(info.fileName())) {
-          result &= removeDir(info.absoluteFilePath(), exception_file_list);
-        }
-      }
-      else if (!exception_file_list.contains(info.fileName())) {
-        result &= QFile::remove(info.absoluteFilePath());
-      }
-    }
-
-    result &= dir.rmdir(dirName);
-  }
-
-  return result;
-}
-
-bool copyPath(QString src, QString dst) {
-  QDir dir(src);
-
-  if (! dir.exists()) {
-    return false;
-  }
-
-  foreach (QString d, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
-    QString dst_path = dst + QDir::separator() + d;
-    dir.mkpath(dst_path);
-    copyPath(src + QDir::separator() + d, dst_path);
-  }
-
-  foreach (QString f, dir.entryList(QDir::Files)) {
-    QString original_file = src + QDir::separator() + f;
-    QString destination_file = dst + QDir::separator() + f;
-
-    if (!QFile::exists(destination_file) || QFile::remove(destination_file)) {
-      if (QFile::copy(original_file, destination_file)) {
-        qDebug("Copied file %s", qPrintable(f));
-      }
-      else {
-        qDebug("Failed to copy file %s", qPrintable(original_file));
-      }
-    }
-    else {
-      qDebug("Failed to remove file %s", qPrintable(original_file));
-    }
-  }
-
-  return true;
-}*/
-
 // Main entry point to "rssguard_updater.exe".
 // It expects 4 ARGUMENTS:
 //  0) - the actual path of this process,
@@ -102,6 +43,7 @@ int main(int argc, char *argv[]) {
   FormUpdater main_form;
 
   main_form.show();
+  main_form.startUpgrade();
 
   return application.exec();
 
