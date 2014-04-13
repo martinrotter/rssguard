@@ -19,8 +19,8 @@ Feeds & Videos
 - - -
 Thanks to
 -----
-Person       | Contribution
------------: | :-----------
+Person        | Contribution
+:-----------: | :-----------
 **Elbert Pol**   |  Huge contrubutions, including translating, testing. He is also maintainer of OS/2 RSS Guard package.
 
 
