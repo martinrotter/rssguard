@@ -152,7 +152,7 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
     }
     else {
       qDebug("Cannot save downloaded update file because target temporary file '%s' cannot be "
-             "opened for writing.", output_file_name);
+             "opened for writing.", qPrintable(output_file_name));
     }
   }
   else {
@@ -161,7 +161,7 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
 }
 
 void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray contents) {
-  qDebug("Download of application update file was completed with code '%s'.",
+  qDebug("Download of application update file was completed with code '%d'.",
          status);
 
   switch (status) {

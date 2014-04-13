@@ -73,14 +73,14 @@ bool copyPath(QString src, QString dst) {
 
     if (!QFile::exists(destination_file) || QFile::remove(destination_file)) {
       if (QFile::copy(src + QDir::separator() + f, destination_file)) {
-        qDebug("Copied file '%s'.", qPrintable(f));
+        qDebug("Copied file %s", qPrintable(f));
       }
       else {
-        qDebug("Failed to copy file '%s'.", qPrintable(original_file));
+        qDebug("Failed to copy file %s", qPrintable(original_file));
       }
     }
     else {
-      qDebug("Failed to remove file '%s'.", qPrintable(original_file));
+      qDebug("Failed to remove file %s", qPrintable(original_file));
     }
   }
 
@@ -125,17 +125,17 @@ int main(int argc, char *argv[]) {
 
   qDebug("\n===== Files & versions ====\n");
 
-  qDebug("This process:\n\t %s", qPrintable(this_process_path));
-  qDebug("Application executable:\n\t %s", qPrintable(rssguard_executable_path));
-  qDebug("TEMP path:\n\t %s", qPrintable(temp_path));
+  qDebug("This process:\n ->  %s", qPrintable(this_process_path));
+  qDebug("Application executable:\n ->  %s", qPrintable(rssguard_executable_path));
+  qDebug("TEMP path:\n ->  %s", qPrintable(temp_path));
 
   qDebug("\n===== Update file metadata ====\n");
 
   bool update_file_exists = QFile::exists(update_file_path);
 
-  qDebug("Update file exists:\n\t %s", update_file_exists ? "yes" : "no");
-  qDebug("Update file path:\n\t %s", qPrintable(update_file_path));
-  qDebug("Update file size:\n\t %d bytes", QFileInfo(update_file_path).size());
+  qDebug("Update file exists:\n ->  %s", update_file_exists ? "yes" : "no");
+  qDebug("Update file path:\n ->  %s", qPrintable(update_file_path));
+  qDebug("Update file size:\n ->  %lld bytes", QFileInfo(update_file_path).size());
 
   if (!update_file_exists) {
     qDebug("\nUpdate file does NOT exist. Updater cannot proceed.");
@@ -146,12 +146,12 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  qDebug("\n===== Cleanup ====\n");
+
   // Check if main RSS Guard instance is running.
   if (application.sendMessage(APP_QUIT_INSTANCE)) {
     qDebug("RSS Guard application is running. Quitting it.");
   }
-
-  qDebug("\n===== Cleanup ====\n");
 
   // Remove old folders.
   if (QDir(output_temp_path).exists()) {
