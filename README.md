@@ -4,7 +4,7 @@ Welcome to RSS Guard website. You can find here basic information. Rest is locat
 
 **[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy)**
 - - -
-:fax: Contacts
+Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [forums](https://groups.google.com/d/forum/rssguard),
@@ -19,7 +19,7 @@ Feeds & Videos
 - - -
 Downloads
 ---------
-You can download source tarballs or binaries for some platforms in "Downloads" section of this website. Precompiled binaries for particular Linux distributions are available too:
+You can download source tarballs or binaries for some platforms in [Downloads](../downloads) section of this website. Precompiled binaries for particular Linux distributions are available too:
 
 * [stable releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard),
 * [development releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard-git) (compiled from the master branch of RSS Guard Git repository).
