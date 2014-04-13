@@ -21,7 +21,7 @@ Thanks to
 -----
 Person       | Contribution
 -----------: | :-----------
-Elbert Pol   |  Huge contrubutions, including translating, testing. He is also maintainer of OS/2 RSS Guard package.
+**Elbert Pol**   |  Huge contrubutions, including translating, testing. He is also maintainer of OS/2 RSS Guard package.
 
 
 Downloads
