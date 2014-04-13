@@ -111,7 +111,7 @@ void FormUpdate::checkForUpdates() {
   }
 }
 
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+//#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
 void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
   qApp->processEvents();
   m_ui->m_lblStatus->setStatus(WidgetWithStatus::Information,
@@ -177,7 +177,7 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
       break;
   }
 }
-#endif
+//#endif
 
 void FormUpdate::startUpdate() {
   QString url_file;
