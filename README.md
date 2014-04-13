@@ -4,7 +4,7 @@ Welcome to RSS Guard website. You can find here basic information. Rest is locat
 
 **[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy)**
 - - -
-:emoji: Contacts
+:fax: Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [forums](https://groups.google.com/d/forum/rssguard),
