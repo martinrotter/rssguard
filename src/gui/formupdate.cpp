@@ -253,30 +253,6 @@ void FormUpdate::startUpdate() {
       }
     }
   }
-  /*
-   *   // TODO: http://pastebin.com/Lvb1bsJP
-  // chyba od elberta
-  // TODO: presunou do updatera.
-  QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
-
-#if QT_VERSION >= 0x050000
-  QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-#else
-  QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
-#endif
-
-  if (!temp_directory.isEmpty()) {
-    QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
-    QFile output_file(temp_directory + QDir::separator() + output_file_name);
-
-    if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-      output_file.write(arr);
-      output_file.flush();
-      output_file.close();
-
-      close();
-    }
-  }*/
 #else
   if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
