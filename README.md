@@ -22,7 +22,8 @@ Thanks to
 Person       | Contribution
 -----------: | :-----------
 Elbert Pol   |  Huge contrubutions, including translating, testing. He is also maintainer of OS/2 RSS Guard package.
-- - -
+
+
 Downloads
 ---------
 You can download source tarballs or binaries for some platforms in [Downloads](downloads) section of this website. Precompiled binaries for particular Linux distributions are available too:
