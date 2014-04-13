@@ -17,6 +17,13 @@ Feeds & Videos
 * [RSS channel at BitBucket](https://bitbucket.org/skunkos/rssguard/rss),
 * [screenshots](https://drive.google.com/folderview?id=0B8XNkQ-jUoBYdVRSNm1kQ3BUMzQ&usp=sharing).
 - - -
+Thanks to
+-----
+Person        | Contribution
+:-----------: | :-----------
+**Elbert Pol**   |  Huge contrubutions, including translating, testing. He is also maintainer of OS/2 RSS Guard package.
+
+
 Downloads
 ---------
 You can download source tarballs or binaries for some platforms in [Downloads](downloads) section of this website. Precompiled binaries for particular Linux distributions are available too:
