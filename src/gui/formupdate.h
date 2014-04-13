@@ -59,8 +59,10 @@ class FormUpdate : public QDialog {
     void updateProgress(qint64 bytes_received, qint64 bytes_total);
     void updateCompleted(QNetworkReply::NetworkError status, QByteArray contents);
     void saveUpdateFile(const QByteArray &file_contents);
+#endif
 
   private:
+#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
     Downloader *m_downloader;
     bool m_readyToInstall;
     QString m_updateFilePath;
