@@ -466,15 +466,19 @@ if(WIN32 OR OS2)
   set(UPDATER_SOURCES
     # QTSINGLEAPPLICATION sources.
     src/qtsingleapplication/qtlocalpeer.cpp
-    src/qtsingleapplication/qtsinglecoreapplication.cpp
+    src/qtsingleapplication/qtsingleapplication.cpp
 
     src/updater/main.cpp
+
+    src/updater/formupdater.cpp
   )
 
   set(UPDATER_HEADERS
     # QTSINGLEAPPLICATION headers.
     src/qtsingleapplication/qtlocalpeer.h
-    src/qtsingleapplication/qtsinglecoreapplication.h
+    src/qtsingleapplication/qtsingleapplication.h
+
+    src/updater/formupdater.h
   )
 endif(WIN32 OR OS2)
 
@@ -523,17 +527,22 @@ if(WIN32 OR OS2)
   message(STATUS "[${APP_LOW_NAME}] RSS Guard updater will be compiled.")
 
   if(${USE_QT_5})
-    add_executable(${UPDATER_EXE_NAME}
+    add_executable(${UPDATER_EXE_NAME} WIN32
       ${UPDATER_SOURCES}
     )
+
+    if(WIN32)
+      target_link_libraries(${UPDATER_EXE_NAME} Qt5::WinMain)
+    endif(WIN32)
 
     # Use modules from Qt.
     qt5_use_modules(rssguard_updater
       Core
+      Widgets
       Network
     )
   else(${USE_QT_5})
-    add_executable(${UPDATER_EXE_NAME}
+    add_executable(${UPDATER_EXE_NAME} WIN32
       ${UPDATER_SOURCES}
       ${UPDATER_MOC}
     )
@@ -541,7 +550,9 @@ if(WIN32 OR OS2)
     # Link modules from Qt.
     target_link_libraries(${UPDATER_EXE_NAME}
       ${QT_QTCORE_LIBRARY}
+      ${QT_QTGUI_LIBRARY}
       ${QT_QTNETWORK_LIBRARY}
+      ${QT_QTMAIN_LIBRARY}
     )
   endif(${USE_QT_5})
 endif(WIN32 OR OS2)

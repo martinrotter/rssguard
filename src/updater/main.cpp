@@ -16,7 +16,8 @@
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
 #include "definitions/definitions.h"
-#include "qtsingleapplication/qtsinglecoreapplication.h"
+#include "qtsingleapplication/qtsingleapplication.h"
+#include "updater/formupdater.h"
 
 #include <QTranslator>
 #include <QDebug>
@@ -28,7 +29,7 @@
 #include <iostream>
 #include <limits>
 
-
+/*
 bool removeDir(const QString & dirName,
                const QStringList &exception_file_list = QStringList(),
                const QStringList &exception_folder_list = QStringList()) {
@@ -85,7 +86,7 @@ bool copyPath(QString src, QString dst) {
   }
 
   return true;
-}
+}*/
 
 // Main entry point to "rssguard_updater.exe".
 // It expects 4 ARGUMENTS:
@@ -96,8 +97,15 @@ bool copyPath(QString src, QString dst) {
 //  4) - path to update file (stored in TEMP folder).
 int main(int argc, char *argv[]) { 
   // Instantiate base application object.
-  QtSingleCoreApplication application(APP_LOW_NAME, argc, argv);
+  QtSingleApplication application(APP_LOW_NAME, argc, argv);
 
+  FormUpdater main_form;
+
+  main_form.show();
+
+  return application.exec();
+
+  /*
   qDebug("\n===== RSS Guard updater ====\n");
 
   if (argc != 5) {
@@ -273,6 +281,6 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
-  return EXIT_SUCCESS;
+  return EXIT_SUCCESS;*/
 }
 
