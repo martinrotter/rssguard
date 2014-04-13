@@ -29,7 +29,9 @@
 #include <limits>
 
 
-bool removeDir(const QString & dirName, const QStringList &exception_file_list = QStringList()) {
+bool removeDir(const QString & dirName,
+               const QStringList &exception_file_list = QStringList(),
+               const QStringList &exception_folder_list = QStringList()) {
   bool result = true;
   QDir dir(dirName);
 
@@ -37,7 +39,9 @@ bool removeDir(const QString & dirName, const QStringList &exception_file_list =
     foreach (QFileInfo info,
              dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
       if (info.isDir()) {
-        result &= removeDir(info.absoluteFilePath(), exception_file_list);
+        if (!exception_folder_list.contains(info.fileName())) {
+          result &= removeDir(info.absoluteFilePath(), exception_file_list);
+        }
       }
       else if (!exception_file_list.contains(info.fileName())) {
         result &= QFile::remove(info.absoluteFilePath());
@@ -166,7 +170,9 @@ int main(int argc, char *argv[]) {
 
   qDebug("Old temporary files removed.");
 
-  if (!removeDir(rssguard_path, QStringList() << extractor)) {
+  if (!removeDir(rssguard_path,
+                 QStringList() << extractor,
+                 QStringList() << "data")) {
     qDebug("Full cleanup of actual RSS Guard installation failed.");
     qDebug("Some files from old installation may persist.");
   }
