@@ -8,6 +8,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Application is now able to self-update itself on OS/2 and Windows. Currently, this is EXPERIMENTAL support. Please, report any bugs.</li>
 <li>Added option to adjust icons/buttons displayed in toolbars. See Settings/User interface/Toolbars dialog for more information.</li>
 <li>Added option to search messages via regular expression.</li>
 <li>Added option to highlight particular messages - unread, important, none.</li>

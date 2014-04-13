@@ -40,6 +40,7 @@
 project(rssguard)
 
 if(WIN32 OR OS2)
+  # Setup "rssguard_updater" project.
   project(rssguard_updater)
 
   set(UPDATER_EXE_NAME "rssguard_updater")
