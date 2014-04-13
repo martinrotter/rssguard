@@ -4,11 +4,11 @@ Welcome to RSS Guard website. You can find here basic information. Rest is locat
 
 **[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy)**
 - - -
-Contacts
+:emoji: Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [forums](https://groups.google.com/d/forum/rssguard),
-* [IRC channel at #freenode](http://webchat.freenode.net/?channels=#rssguard).
+* [IRC channel at freenode](http://webchat.freenode.net/?channels=#rssguard) (nick of author is #skunkos).
 - - -
 Feeds & Videos
 -----
