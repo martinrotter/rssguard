@@ -18,11 +18,13 @@
 
 
 FormUpdater::FormUpdater(QWidget *parent)
-  : QMainWindow(parent),
+  : QMainWindow(parent, Qt::Dialog | Qt::WindowStaysOnTopHint),
     m_state(NoState),
     m_txtOutput(new QTextEdit(this)),
     m_parsedArguments(QHash<QString, QString>())  {
 
+  m_txtOutput->setAutoFormatting(QTextEdit::AutoNone);
+  m_txtOutput->setAcceptRichText(true);
   m_txtOutput->setFontPointSize(10.0);
   m_txtOutput->setReadOnly(true);
   m_txtOutput->setFocusPolicy(Qt::StrongFocus);
@@ -35,6 +37,9 @@ FormUpdater::FormUpdater(QWidget *parent)
   setCentralWidget(m_txtOutput);
   setWindowTitle("RSS Guard updater");
   setWindowIcon(QIcon(APP_ICON_PATH));
+
+  qApp->setQuitOnLastWindowClosed(true);
+
   moveToCenterAndResize();
 }
 
@@ -43,7 +48,6 @@ FormUpdater::~FormUpdater() {
 
 void FormUpdater::startUpgrade() {
   printHeading("Welcome to RSS Guard updater");
-
   printText("Analyzing updater arguments...");
 
   if (QApplication::arguments().size() != 5) {
@@ -54,18 +58,8 @@ void FormUpdater::startUpgrade() {
     return;
   }
 
-  // Obtain parameters.
-  QStringList arguments = QApplication::arguments();
-
-  m_parsedArguments["updater_path"] = QDir::toNativeSeparators(qApp->applicationFilePath());
-  m_parsedArguments["current_version"] = arguments.at(1);
-  m_parsedArguments["next_version"] = arguments.at(2);
-  m_parsedArguments["rssguard_executable_path"] = QDir::toNativeSeparators(arguments.at(3));
-  m_parsedArguments["rssguard_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["rssguard_executable_path"]).absolutePath());
-  m_parsedArguments["update_file_path"] = QDir::toNativeSeparators(arguments.at(4));
-  m_parsedArguments["temp_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["update_file_path"]).absolutePath());
-  m_parsedArguments["output_temp_path"] = m_parsedArguments["temp_path"] + QDir::separator() + APP_LOW_NAME;
-
+  // Process arguments.
+  saveArguments();
   printArguments();
 
   if (!printUpdateInformation() || !doPreparationCleanup() || !doExtractionAndCopying()) {
@@ -77,13 +71,31 @@ void FormUpdater::startUpgrade() {
 
   doFinalCleanup();
 
+  printText("Application was upgraded without serious errors.");
+
   if (!QProcess::startDetached(m_parsedArguments["rssguard_executable_path"])) {
     printText("RSS Guard was not started successfully. Start it manually.");
     m_state = ExitError;
   }
+  else {
+    m_state = ExitNormal;
+  }
 
   printText("\nPress any key to exit updater...");
-  m_state = ExitNormal;
+}
+
+void FormUpdater::saveArguments() {
+  // Obtain parameters.
+  QStringList arguments = QApplication::arguments();
+
+  m_parsedArguments["updater_path"] = QDir::toNativeSeparators(qApp->applicationFilePath());
+  m_parsedArguments["current_version"] = arguments.at(1);
+  m_parsedArguments["next_version"] = arguments.at(2);
+  m_parsedArguments["rssguard_executable_path"] = QDir::toNativeSeparators(arguments.at(3));
+  m_parsedArguments["rssguard_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["rssguard_executable_path"]).absolutePath());
+  m_parsedArguments["update_file_path"] = QDir::toNativeSeparators(arguments.at(4));
+  m_parsedArguments["temp_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["update_file_path"]).absolutePath());
+  m_parsedArguments["output_temp_path"] = m_parsedArguments["temp_path"] + QDir::separator() + APP_LOW_NAME;
 }
 
 void FormUpdater::printArguments() {

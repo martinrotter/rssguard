@@ -24,6 +24,7 @@ class FormUpdater : public QMainWindow {
     virtual ~FormUpdater();
 
     void startUpgrade();
+    void saveArguments();
     void printArguments();
     bool printUpdateInformation();
     bool doPreparationCleanup();
