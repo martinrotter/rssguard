@@ -68,16 +68,22 @@ void FormUpdater::startUpgrade() {
 
   printArguments();
 
-  if (!printUpdateInformation()) {
-    printText("Update file does not exist or is corrupted.");
+  if (!printUpdateInformation() || !doPreparationCleanup() || !doExtractionAndCopying()) {
     printText("\nPress any key to exit updater...");
 
     m_state = ExitError;
     return;
   }
 
-  doPreparationCleanup();
-  doExtractionAndCopying();
+  doFinalCleanup();
+
+  if (!QProcess::startDetached(m_parsedArguments["rssguard_executable_path"])) {
+    printText("RSS Guard was not started successfully. Start it manually.");
+    m_state = ExitError;
+  }
+
+  printText("\nPress any key to exit updater...");
+  m_state = ExitNormal;
 }
 
 void FormUpdater::printArguments() {
@@ -91,6 +97,8 @@ void FormUpdater::printArguments() {
 }
 
 bool FormUpdater::printUpdateInformation() {
+  qApp->processEvents();
+
   bool update_file_exists = QFile::exists(m_parsedArguments["update_file_path"]);
 
   printNewline();
@@ -101,10 +109,16 @@ bool FormUpdater::printUpdateInformation() {
   printText(QString("Update file exists:\n   -> %1").arg(update_file_exists ? "yes" : "no"));
   printText(QString("Update file size:\n   -> %1 bytes").arg(QFileInfo(m_parsedArguments["update_file_path"]).size()));
 
+  if (!update_file_exists) {
+    printText("\nUpdate file does not exist or is corrupted.");
+  }
+
   return update_file_exists;
 }
 
 bool FormUpdater::doPreparationCleanup() {
+  qApp->processEvents();
+
   printNewline();
   printHeading("Initial cleanup");
 
@@ -139,24 +153,58 @@ bool FormUpdater::doPreparationCleanup() {
 }
 
 bool FormUpdater::doExtractionAndCopying() {
+  qApp->processEvents();
+
+  printNewline();
+  printHeading("Extraction of update package");
+
   QStringList extractor_arguments;
+  QProcess process_extractor(this);
 
   extractor_arguments << "x" << m_parsedArguments["update_file_path"] << "-r" <<
                          "-y" << QString("-o%1").arg(m_parsedArguments["output_temp_path"]);
 
-  QProcess process_extractor(this);
   process_extractor.setEnvironment(QProcessEnvironment::systemEnvironment().toStringList());
-  process_extractor.setProcessChannelMode(QProcess::MergedChannels);
+  process_extractor.setWorkingDirectory(m_parsedArguments["rssguard_path"]);
   process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
 
-  if (process_extractor.waitForFinished()) {
+  if (!process_extractor.waitForFinished()) {
+    process_extractor.close();
     printText("Extraction of update files failed.");
     return false;
   }
 
+  printText(process_extractor.readAll());
   printText("Extraction done successfully.");
 
+  // Find "rssguard" subfolder path in
+  QFileInfoList rssguard_temp_root = QDir(m_parsedArguments["output_temp_path"]).entryInfoList(QDir::Dirs |
+                                                                                               QDir::NoDotAndDotDot |
+                                                                                               QDir::NoSymLinks);
+
+  if (rssguard_temp_root.size() != 1) {
+    printText("Could not find root of downloaded application data.");
+    return false;
+  }
+
+  QString rssguard_single_temp_root = rssguard_temp_root.at(0).absoluteFilePath();
+
+  if (!copyDirectory(rssguard_single_temp_root, m_parsedArguments["rssguard_path"])) {
+    printText("Critical error appeared during copying of application files.");
+    return false;
+  }
+
   return true;
+}
+
+bool FormUpdater::doFinalCleanup() {
+  qApp->processEvents();
+
+  printNewline();
+  printHeading("Final cleanup");
+
+  return removeDirectory(m_parsedArguments["output_temp_path"]) &&
+      QFile::remove(m_parsedArguments["update_file_path"]);
 }
 
 void FormUpdater::keyPressEvent(QKeyEvent* event) {
@@ -173,8 +221,6 @@ void FormUpdater::keyPressEvent(QKeyEvent* event) {
       break;
 
     case ExitNormal:
-      break;
-
     case ExitError:
       qApp->quit();
       break;

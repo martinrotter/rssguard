@@ -28,6 +28,7 @@ class FormUpdater : public QMainWindow {
     bool printUpdateInformation();
     bool doPreparationCleanup();
     bool doExtractionAndCopying();
+    bool doFinalCleanup();
 
   protected:
     void keyPressEvent(QKeyEvent *event);
