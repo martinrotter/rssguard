@@ -18,13 +18,13 @@
 #ifndef FORMUPDATE_H
 #define FORMUPDATE_H
 
-#include <QDialog>
-#include <QPushButton>
-#include <QNetworkReply>
-
 #include "ui_formupdate.h"
 
 #include "miscellaneous/systemfactory.h"
+
+#include <QDialog>
+#include <QPushButton>
+#include <QNetworkReply>
 
 
 namespace Ui {

@@ -18,9 +18,9 @@
 #ifndef FORMSTANDARDFEEDDETAILS_H
 #define FORMSTANDARDFEEDDETAILS_H
 
-#include <QDialog>
-
 #include "ui_formfeeddetails.h"
+
+#include <QDialog>
 
 
 namespace Ui {

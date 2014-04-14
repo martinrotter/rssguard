@@ -458,7 +458,6 @@ set(APP_TEXT
   resources/text/COPYING_GNU_GPL
   resources/text/COPYING_GNU_GPL_HTML
   resources/text/COPYING_BSD
-  resources/text/AUTHORS
 )
 
 # Setup source & header files for "rssguard_updater".

@@ -67,16 +67,6 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   }
   file.close();
 
-  file.setFileName(APP_INFO_PATH + "/AUTHORS");
-  if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtThanks->setText(text_stream.readAll());
-  }
-  else {
-    //: File containing list of authors was not found.
-    m_ui->m_txtThanks->setText(tr("Authors information not found."));
-  }
-  file.close();
-
   file.setFileName(APP_INFO_PATH + "/CHANGELOG");
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtChangelog->setText(text_stream.readAll());

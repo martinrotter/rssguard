@@ -1,6 +1,7 @@
 #include "updater/formupdater.h"
 
 #include "definitions/definitions.h"
+#include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QApplication>
 #include <QDesktopWidget>
@@ -12,15 +13,24 @@
 #include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QProcess>
+#include <QProcessEnvironment>
+#include <QScrollBar>
 
 
 FormUpdater::FormUpdater(QWidget *parent)
   : QMainWindow(parent),
     m_state(NoState),
-    m_txtOutput(new QTextEdit(this)) {
+    m_txtOutput(new QTextEdit(this)),
+    m_parsedArguments(QHash<QString, QString>())  {
 
+  m_txtOutput->setFontPointSize(10.0);
   m_txtOutput->setReadOnly(true);
-  m_txtOutput->setFocusPolicy(Qt::NoFocus);
+  m_txtOutput->setFocusPolicy(Qt::StrongFocus);
+  m_txtOutput->setContextMenuPolicy(Qt::DefaultContextMenu);
+  m_txtOutput->setTextInteractionFlags(Qt::TextSelectableByMouse |
+                                       Qt::TextSelectableByKeyboard |
+                                       Qt::LinksAccessibleByKeyboard |
+                                       Qt::LinksAccessibleByMouse);
 
   setCentralWidget(m_txtOutput);
   setWindowTitle("RSS Guard updater");
@@ -32,20 +42,131 @@ FormUpdater::~FormUpdater() {
 }
 
 void FormUpdater::startUpgrade() {
-  m_txtOutput->append("Welcome to RSS Guard updater.");
+  printHeading("Welcome to RSS Guard updater");
+
+  printText("Analyzing updater arguments...");
 
   if (QApplication::arguments().size() != 5) {
-    m_txtOutput->append("Insufficient arguments passed. Update process cannot proceed.");
-    m_txtOutput->append("Press any key to exit updater...");
+    printText("Insufficient arguments passed. Update process cannot proceed.");
+    printText("\nPress any key to exit updater...");
+
     m_state = ExitError;
-    // Ted je nastavenej state a pri keyPressEvent se appka ukonci
+    return;
   }
 
-  // do datovejch memberu teto tridy ulozit argumenty a pokracovat
+  // Obtain parameters.
+  QStringList arguments = QApplication::arguments();
+
+  m_parsedArguments["updater_path"] = QDir::toNativeSeparators(qApp->applicationFilePath());
+  m_parsedArguments["current_version"] = arguments.at(1);
+  m_parsedArguments["next_version"] = arguments.at(2);
+  m_parsedArguments["rssguard_executable_path"] = QDir::toNativeSeparators(arguments.at(3));
+  m_parsedArguments["rssguard_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["rssguard_executable_path"]).absolutePath());
+  m_parsedArguments["update_file_path"] = QDir::toNativeSeparators(arguments.at(4));
+  m_parsedArguments["temp_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["update_file_path"]).absolutePath());
+  m_parsedArguments["output_temp_path"] = m_parsedArguments["temp_path"] + QDir::separator() + APP_LOW_NAME;
+
+  printArguments();
+
+  if (!printUpdateInformation()) {
+    printText("Update file does not exist or is corrupted.");
+    printText("\nPress any key to exit updater...");
+
+    m_state = ExitError;
+    return;
+  }
+
+  doPreparationCleanup();
+  doExtractionAndCopying();
+}
+
+void FormUpdater::printArguments() {
+  printNewline();
+  printHeading("Arguments");
+
+  printText(QString("Updater executable file:\n   -> %1").arg(m_parsedArguments["updater_path"]));
+  printText(QString("Application executable file:\n   -> %1").arg(m_parsedArguments["rssguard_executable_path"]));
+  printText(QString("Temp folder:\n   -> %1").arg(m_parsedArguments["temp_path"]));
+  printText(QString("Application temp folder:\n   -> %1").arg(m_parsedArguments["output_temp_path"]));
+}
+
+bool FormUpdater::printUpdateInformation() {
+  bool update_file_exists = QFile::exists(m_parsedArguments["update_file_path"]);
+
+  printNewline();
+  printHeading("Update information");
+
+  printText(QString("Version change:\n   -> %1 --> %2").arg(m_parsedArguments["current_version"], m_parsedArguments["next_version"]));
+  printText(QString("Update file:\n   -> %1").arg(m_parsedArguments["update_file_path"]));
+  printText(QString("Update file exists:\n   -> %1").arg(update_file_exists ? "yes" : "no"));
+  printText(QString("Update file size:\n   -> %1 bytes").arg(QFileInfo(m_parsedArguments["update_file_path"]).size()));
+
+  return update_file_exists;
+}
+
+bool FormUpdater::doPreparationCleanup() {
+  printNewline();
+  printHeading("Initial cleanup");
+
+  // Check if main RSS Guard instance is running.
+  if (static_cast<QtSingleApplication*>(qApp)->sendMessage(APP_QUIT_INSTANCE)) {
+    printText("The main application is running. Quitting it.");
+  }
+  else {
+    printText("The main application is not running.");
+  }
+
+  // Remove old folders.
+  if (QDir(m_parsedArguments["output_temp_path"]).exists()) {
+    if (!removeDirectory(m_parsedArguments["output_temp_path"])) {
+      printText("Cleanup of old temporary files failed.");
+      return false;
+    }
+  }
+
+  if (!removeDirectory(m_parsedArguments["rssguard_path"],
+                       QStringList() << APP_7ZA_EXECUTABLE,
+                       QStringList() << "data")) {
+    printText("Full cleanup of actual RSS Guard installation failed.");
+    printText("Some files from old installation may persist.");
+  }
+
+  if (!QFile::rename(m_parsedArguments["updater_path"], m_parsedArguments["updater_path"] + ".old")) {
+    qDebug("Updater executable was not renamed and it will not be updated.");
+  }
+
+  return true;
+}
+
+bool FormUpdater::doExtractionAndCopying() {
+  QStringList extractor_arguments;
+
+  extractor_arguments << "x" << m_parsedArguments["update_file_path"] << "-r" <<
+                         "-y" << QString("-o%1").arg(m_parsedArguments["output_temp_path"]);
+
+  QProcess process_extractor(this);
+  process_extractor.setEnvironment(QProcessEnvironment::systemEnvironment().toStringList());
+  process_extractor.setProcessChannelMode(QProcess::MergedChannels);
+  process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
+
+  if (process_extractor.waitForFinished()) {
+    printText("Extraction of update files failed.");
+    return false;
+  }
+
+  printText("Extraction done successfully.");
+
+  return true;
 }
 
 void FormUpdater::keyPressEvent(QKeyEvent* event) {
-  event->ignore();
+  if (event->matches(QKeySequence::Copy)) {
+    event->accept();
+    return;
+  }
+  else {
+    event->ignore();
+  }
 
   switch (m_state) {
     case NoState:
@@ -63,8 +184,22 @@ void FormUpdater::keyPressEvent(QKeyEvent* event) {
   }
 }
 
+void FormUpdater::printHeading(const QString &header) {
+  m_txtOutput->setAlignment(Qt::AlignCenter);
+  m_txtOutput->append(QString("****** %1 ******\n").arg(header));
+}
+
+void FormUpdater::printText(const QString &text) {
+  m_txtOutput->setAlignment(Qt::AlignLeft);
+  m_txtOutput->append(text);
+}
+
+void FormUpdater::printNewline() {
+  m_txtOutput->append("\n");
+}
+
 void FormUpdater::moveToCenterAndResize() {
-  resize(500, 400);
+  resize(600, 400);
   move(qApp->desktop()->screenGeometry().center() - rect().center());
 }
 

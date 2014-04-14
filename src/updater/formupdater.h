@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <QHash>
+
 
 class QTextEdit;
 class QKeyEvent;
@@ -22,11 +24,18 @@ class FormUpdater : public QMainWindow {
     virtual ~FormUpdater();
 
     void startUpgrade();
+    void printArguments();
+    bool printUpdateInformation();
+    bool doPreparationCleanup();
+    bool doExtractionAndCopying();
 
   protected:
     void keyPressEvent(QKeyEvent *event);
 
   private:
+    void printText(const QString &text);
+    void printNewline();
+    void printHeading(const QString &header);
     void moveToCenterAndResize();
 
     // File/directory manipulators.
@@ -39,8 +48,7 @@ class FormUpdater : public QMainWindow {
     UpdaterState m_state;
     QTextEdit *m_txtOutput;
 
-    QString m_rssguardExecutablePath;
-
+    QHash<QString, QString> m_parsedArguments;
 };
 
 #endif // FORMUPDATER_H
