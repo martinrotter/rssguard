@@ -135,6 +135,7 @@ void MessagesToolBar::initializeHighlighter() {
 
   m_actionMessageHighlighter = new QWidgetAction(this);
   m_actionMessageHighlighter->setDefaultWidget(m_btnMessageHighlighter);
+  m_actionMessageHighlighter->setIcon(m_btnMessageHighlighter->icon());
   m_actionMessageHighlighter->setProperty("type", HIGHLIGHTER_ACTION_NAME);
   m_actionMessageHighlighter->setProperty("name", tr("Message highlighter"));
 
