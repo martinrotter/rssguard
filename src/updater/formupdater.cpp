@@ -208,7 +208,14 @@ bool FormUpdater::doExtractionAndCopying() {
 
   process_extractor.setEnvironment(QProcessEnvironment::systemEnvironment().toStringList());
   process_extractor.setWorkingDirectory(m_parsedArguments["rssguard_path"]);
-  process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
+
+  QString prog_line = QString(APP_7ZA_EXECUTABLE) + " " +
+                      "x -r -y \"-o" + m_parsedArguments["output_temp_path"] +
+                      "\" \"" + m_parsedArguments["update_file_path"] + "\"";
+  printText(prog_line);
+
+  process_extractor.start(prog_line);
+  //process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
 
   if (!process_extractor.waitForFinished()) {
     process_extractor.close();
