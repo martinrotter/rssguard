@@ -52,8 +52,8 @@ DatabaseFactory *DatabaseFactory::instance() {
 
 DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
                                                                  const QString &username, const QString &password) {
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL,
-                                                    APP_DB_TEST_MYSQL);
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER,
+                                                    APP_DB_MYSQL_TEST);
 
   database.setHostName(hostname);
   database.setPort(port);
@@ -63,7 +63,7 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
   if (database.open()) {
     // Connection succeeded, clean up the mess and return OK status.
     database.close();
-    removeConnection(APP_DB_TEST_MYSQL);
+    removeConnection(APP_DB_MYSQL_TEST);
     return MySQLOk;
   }
   else {
@@ -71,7 +71,7 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
     // error code.
     MySQLError error_code = static_cast<MySQLError>(database.lastError().number());
 
-    removeConnection(APP_DB_TEST_MYSQL);
+    removeConnection(APP_DB_MYSQL_TEST);
     return error_code;
   }
 }
@@ -100,17 +100,17 @@ void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
   if (Settings::instance()->type() == Settings::Portable) {
     m_sqliteDatabaseFilePath = qApp->applicationDirPath() +
                                QDir::separator() +
-                               QString(APP_DB_PATH);
+                               QString(APP_DB_SQLITE_PATH);
   }
   else {
     m_sqliteDatabaseFilePath = QDir::homePath() + QDir::separator() +
                                QString(APP_LOW_H_NAME) + QDir::separator() +
-                               QString(APP_DB_PATH);
+                               QString(APP_DB_SQLITE_PATH);
   }
 }
 
 QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_SQLITE);
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER);
 
   database.setDatabaseName(":memory:");
 
@@ -136,16 +136,16 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. In-memory SQLite database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_SQLITE_MEMORY);
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_MEMORY_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("In-memory SQLite database initialization file '%s' from directory '%s' was not found. In-memory database is uninitialized.",
-               APP_DB_INIT_SQLITE,
+               APP_DB_SQLITE_INIT,
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
                                                                   QString::SkipEmptyParts);
       database.transaction();
 
@@ -154,7 +154,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 
         if (query_db.lastError().isValid()) {
           qFatal("In-memory SQLite database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_INIT_SQLITE);
+                 APP_DB_SQLITE_INIT);
         }
       }
 
@@ -200,7 +200,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &connection_name) {
   // Prepare file paths.
   QDir db_path(m_sqliteDatabaseFilePath);
-  QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+  QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
 
   // Check if database directory exists.
   if (!db_path.exists()) {
@@ -216,7 +216,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database;
 
-  database = QSqlDatabase::addDatabase(APP_DB_DRIVER_SQLITE,
+  database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER,
                                        connection_name);
   database.setDatabaseName(db_file.fileName());
 
@@ -242,16 +242,16 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. File-based SQLite database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_SQLITE);
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("SQLite database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
-               APP_DB_INIT_SQLITE,
+               APP_DB_SQLITE_INIT,
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
                                                                   QString::SkipEmptyParts);
       database.transaction();
 
@@ -260,7 +260,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
 
         if (query_db.lastError().isValid()) {
           qFatal("File-based SQLite database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_INIT_SQLITE);
+                 APP_DB_SQLITE_INIT);
         }
       }
 
@@ -330,9 +330,12 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 }
 
 void DatabaseFactory::determineDriver() {
-  QString db_driver = Settings::instance()->value(APP_CFG_DB, "database_driver", APP_DB_DRIVER_SQLITE).toString();
+  QString db_driver = Settings::instance()->value(APP_CFG_DB,
+                                                  "database_driver",
+                                                  APP_DB_SQLITE_DRIVER).toString();
 
-  if (db_driver == APP_DB_DRIVER_MYSQL && QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
+  if (db_driver == APP_DB_MYSQL_DRIVER &&
+      QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
     // User wants to use MySQL and MySQL is actually available. Use it.
     m_activeDatabaseDriver = MYSQL;
 
@@ -377,7 +380,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
     else {
       // Database connection with this name does not exist
       // yet, add it and set it up.
-      database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL, connection_name);
+      database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
 
       database.setHostName(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
       database.setPort(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
@@ -402,7 +405,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
 
 QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_name) {
   // Folders are created. Create new QSQLDatabase object.
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_DRIVER_MYSQL,
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER,
                                                     connection_name);
 
   database.setHostName(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
@@ -425,16 +428,16 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       // or schema version is wrong, then initialize it.
       qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_INIT_MYSQL);
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_MYSQL_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
         qFatal("MySQL database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
-               APP_DB_INIT_MYSQL,
+               APP_DB_MYSQL_INIT,
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_INIT_SPLIT,
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
                                                                   QString::SkipEmptyParts);
       database.transaction();
 
@@ -443,7 +446,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
 
         if (query_db.lastError().isValid()) {
           qFatal("MySQL database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_INIT_MYSQL);
+                 APP_DB_MYSQL_INIT);
         }
       }
 
@@ -513,10 +516,10 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,
       else {
         // Database connection with this name does not exist
         // yet, add it and set it up.
-        database = QSqlDatabase::addDatabase(APP_DB_DRIVER_SQLITE, connection_name);
+        database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
 
         QDir db_path(m_sqliteDatabaseFilePath);
-        QFile db_file(db_path.absoluteFilePath(APP_DB_FILE));
+        QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
 
         // Setup database file path.
         database.setDatabaseName(db_file.fileName());

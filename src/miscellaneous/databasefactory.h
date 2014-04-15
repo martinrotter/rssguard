@@ -41,6 +41,7 @@ class DatabaseFactory : public QObject {
       FromSettings
     };
 
+    // Describes possible MySQL-specific errors.
     enum MySQLError {
       MySQLOk                 = 0,
       MySQLAccessDenied       = 1045,

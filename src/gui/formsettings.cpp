@@ -513,15 +513,15 @@ void FormSettings::loadDataStorage() {
 
   // Load SQLite.
   m_ui->m_cmbDatabaseDriver->addItem(
-        tr("SQLite (embedded database)"), APP_DB_DRIVER_SQLITE);
+        tr("SQLite (embedded database)"), APP_DB_SQLITE_DRIVER);
 
   // Load in-memory database status.
   m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(Settings::instance()->value(APP_CFG_DB, "use_in_memory_db", false).toBool());
 
-  if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
+  if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
     // Load MySQL.
     m_ui->m_cmbDatabaseDriver->addItem(
-          tr("MySQL/MariaDB (dedicated database)"), APP_DB_DRIVER_MYSQL);
+          tr("MySQL/MariaDB (dedicated database)"), APP_DB_MYSQL_DRIVER);
 
     // Setup placeholders.
     m_ui->m_txtMysqlHostname->lineEdit()->setPlaceholderText(tr("Hostname of your MySQL server"));
@@ -536,7 +536,7 @@ void FormSettings::loadDataStorage() {
 
   int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(Settings::instance()->value(APP_CFG_DB,
                                                                                               "database_driver",
-                                                                                              APP_DB_DRIVER_SQLITE).toString());
+                                                                                              APP_DB_SQLITE_DRIVER).toString());
 
   if (index_current_backend >= 0) {
     m_ui->m_cmbDatabaseDriver->setCurrentIndex(index_current_backend);
@@ -553,13 +553,13 @@ void FormSettings::saveDataStorage() {
   }
 
   // Save data storage settings.
-  QString original_db_driver = Settings::instance()->value(APP_CFG_DB, "database_driver", APP_DB_DRIVER_SQLITE).toString();
+  QString original_db_driver = Settings::instance()->value(APP_CFG_DB, "database_driver", APP_DB_SQLITE_DRIVER).toString();
   QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
 
   // Save SQLite.
   Settings::instance()->setValue(APP_CFG_DB, "use_in_memory_db", new_inmemory);
 
-  if (QSqlDatabase::isDriverAvailable(APP_DB_DRIVER_MYSQL)) {
+  if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
     // Save MySQL.
     Settings::instance()->setValue(APP_CFG_DB, "mysql_hostname", m_ui->m_txtMysqlHostname->lineEdit()->text());
     Settings::instance()->setValue(APP_CFG_DB, "mysql_username", m_ui->m_txtMysqlUsername->lineEdit()->text());

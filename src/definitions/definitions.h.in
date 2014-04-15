@@ -68,16 +68,22 @@
 #define FILTER_WIDTH                    150
 #define FILTER_RIGHT_MARGIN             5
 
-#define APP_DB_TEST_MYSQL             "MySQLTest"
+#define APP_DB_PSQL_DRIVER            "QPSQL"
+#define APP_DB_PSQL_PORT              5432
+#define APP_DB_PSQL_FALLBACK_DB       "postgres"
+
+#define APP_DB_MYSQL_DRIVER           "QMYSQL"
+#define APP_DB_MYSQL_INIT             "db_init_mysql.sql"
+#define APP_DB_MYSQL_TEST             "MySQLTest"
 #define APP_DB_MYSQL_PORT             3306
-#define APP_DB_DRIVER_SQLITE          "QSQLITE"
-#define APP_DB_DRIVER_MYSQL           "QMYSQL"
-#define APP_DB_INIT_MYSQL             "db_init_mysql.sql"
-#define APP_DB_INIT_SQLITE            "db_init_sqlite.sql"
-#define APP_DB_INIT_SQLITE_MEMORY     "db_init_sqlite_memory.sql"
-#define APP_DB_INIT_SPLIT             "-- !\n"
-#define APP_DB_PATH                   "data/database/local"
-#define APP_DB_FILE                   "database.db"
+
+#define APP_DB_SQLITE_DRIVER          "QSQLITE"
+#define APP_DB_SQLITE_INIT            "db_init_sqlite.sql"
+#define APP_DB_SQLITE_MEMORY_INIT     "db_init_sqlite_memory.sql"
+#define APP_DB_SQLITE_PATH            "data/database/local"
+#define APP_DB_SQLITE_FILE            "database.db"
+
+#define APP_DB_COMMENT_SPLIT          "-- !\n"
 #define APP_DB_WEB_PATH               "data/database/web"
 
 #define APP_CFG_PATH        "data/config"
