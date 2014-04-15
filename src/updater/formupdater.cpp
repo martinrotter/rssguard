@@ -3,8 +3,6 @@
 #include "definitions/definitions.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
-#include <unistd.h>
-
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QIcon>
