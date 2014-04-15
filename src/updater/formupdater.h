@@ -23,7 +23,10 @@ class FormUpdater : public QMainWindow {
     explicit FormUpdater(QWidget *parent = 0);
     virtual ~FormUpdater();
 
+    // Starts the whole update process.
     void startUpgrade();
+
+    // Various parts of update process.
     void saveArguments();
     void printArguments();
     bool printUpdateInformation();
@@ -32,12 +35,16 @@ class FormUpdater : public QMainWindow {
     bool doFinalCleanup();
 
   protected:
+    // Catch the "press any key event" to exit the updater.
     void keyPressEvent(QKeyEvent *event);
 
   private:
+    // Prints various texts.
     void printText(const QString &text);
     void printNewline();
     void printHeading(const QString &header);
+
+    // Moves the window into the center of the screen and resizes it.
     void moveToCenterAndResize();
 
     // File/directory manipulators.

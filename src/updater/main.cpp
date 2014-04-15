@@ -39,6 +39,9 @@
 int main(int argc, char *argv[]) {
   // Instantiate base application object.
   QtSingleApplication application(APP_LOW_NAME, argc, argv);
+
+  application.setQuitOnLastWindowClosed(true);
+
   FormUpdater main_form;
 
   main_form.show();
