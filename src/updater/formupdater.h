@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+#include <QtGlobal>
 #include <QHash>
 
 
@@ -13,6 +14,7 @@ class FormUpdater : public QMainWindow {
     Q_OBJECT
 
   public:
+    // Describes the state of updater.
     enum UpdaterState {
       NoState,
       ExitNormal,
@@ -22,6 +24,11 @@ class FormUpdater : public QMainWindow {
     // Constructors and destructors.
     explicit FormUpdater(QWidget *parent = 0);
     virtual ~FormUpdater();
+
+    // Prints various texts.
+    void printText(const QString &text);
+    void printNewline();
+    void printHeading(const QString &header);
 
     // Starts the whole update process.
     void startUpgrade();
@@ -35,15 +42,19 @@ class FormUpdater : public QMainWindow {
     bool doFinalCleanup();
     void executeMainApplication();
 
+    // Debug handlers for messages.
+#if QT_VERSION >= 0x050000
+    static void debugHandler(QtMsgType type,
+                             const QMessageLogContext &placement,
+                             const QString &message);
+#else
+    static void debugHandler(QtMsgType type,
+                             const char *message);
+#endif
+
   protected:
     // Catch the "press any key event" to exit the updater.
     void keyPressEvent(QKeyEvent *event);
-
-  private:
-    // Prints various texts.
-    void printText(const QString &text);
-    void printNewline();
-    void printHeading(const QString &header);
 
     // Moves the window into the center of the screen and resizes it.
     void moveToCenterAndResize();
@@ -57,8 +68,9 @@ class FormUpdater : public QMainWindow {
   private:
     UpdaterState m_state;
     QTextEdit *m_txtOutput;
-
     QHash<QString, QString> m_parsedArguments;
+
+    static FormUpdater *s_instance;
 };
 
 #endif // FORMUPDATER_H

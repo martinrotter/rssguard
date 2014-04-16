@@ -19,11 +19,16 @@
 #include <QTimer>
 
 
+FormUpdater *FormUpdater::s_instance;
+
 FormUpdater::FormUpdater(QWidget *parent)
   : QMainWindow(parent, Qt::Dialog | Qt::WindowStaysOnTopHint),
     m_state(NoState),
     m_txtOutput(new QTextEdit(this)),
     m_parsedArguments(QHash<QString, QString>())  {
+
+  // Initialize singleton.
+  s_instance = this;
 
   m_txtOutput->setAutoFormatting(QTextEdit::AutoNone);
   m_txtOutput->setAcceptRichText(true);
@@ -47,6 +52,8 @@ FormUpdater::~FormUpdater() {
 }
 
 void FormUpdater::startUpgrade() {
+  qDebug("Started...");
+
   printHeading("Welcome to RSS Guard updater");
   printText("Analyzing updater arguments.");
 
@@ -100,6 +107,70 @@ void FormUpdater::executeMainApplication() {
     m_state = ExitNormal;
   }
 }
+
+
+#if QT_VERSION >= 0x050000
+void FormUpdater::debugHandler(QtMsgType type,
+                               const QMessageLogContext &placement,
+                               const QString &message) {
+#ifndef QT_NO_DEBUG_OUTPUT
+  Q_UNUSED(placement)
+
+  switch (type) {
+    case QtDebugMsg:
+      s_instance->printText(QString("DEBUG: %1").arg(message));
+      break;
+
+    case QtWarningMsg:
+      s_instance->printText(QString("WARNING: %1").arg(message));
+      break;
+
+    case QtCriticalMsg:
+      s_instance->printText(QString("CRITICAL: %1").arg(message));
+      break;
+
+    case QtFatalMsg:
+      s_instance->printText(QString("FATAL: %1").arg(message));
+      qApp->exit(EXIT_FAILURE);
+
+    default:
+      break;
+  }
+#else
+  Q_UNUSED(type)
+  Q_UNUSED(placement)
+  Q_UNUSED(message)
+#endif
+}
+#else
+void FormUpdater::debugHandler(QtMsgType type, const char *message) {
+#ifndef QT_NO_DEBUG_OUTPUT
+  switch (type) {
+    case QtDebugMsg:
+      s_instance->printText(QString("DEBUG: %1").arg(message));
+      break;
+
+    case QtWarningMsg:
+      s_instance->printText(QString("WARNING: %1").arg(message));
+      break;
+
+    case QtCriticalMsg:
+      s_instance->printText(QString("CRITICAL: %1").arg(message));
+      break;
+
+    case QtFatalMsg:
+      s_instance->printText(QString("FATAL: %1").arg(message));
+      qApp->exit(EXIT_FAILURE);
+
+    default:
+      break;
+  }
+#else
+  Q_UNUSED(type)
+  Q_UNUSED(message)
+#endif
+}
+#endif
 
 void FormUpdater::printArguments() {
   printNewline();

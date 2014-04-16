@@ -29,6 +29,7 @@
 #include <iostream>
 #include <limits>
 
+
 // Main entry point to "rssguard_updater.exe".
 // It expects 4 ARGUMENTS:
 //  0) - the actual path of this process,
@@ -39,10 +40,12 @@
 int main(int argc, char *argv[]) {
   // Instantiate base application object.
   QtSingleApplication application(APP_LOW_NAME, argc, argv);
-
   application.setQuitOnLastWindowClosed(true);
 
   FormUpdater main_form;
+
+  // Setup message handler after main_form is created.
+  qInstallMessageHandler(FormUpdater::debugHandler);
 
   main_form.show();
   main_form.startUpgrade();
