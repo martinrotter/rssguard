@@ -70,16 +70,7 @@ void FormUpdater::startUpgrade() {
   }
 
   doFinalCleanup();
-
-  printText("Application was upgraded without serious errors.");
-
-  if (!QProcess::startDetached(m_parsedArguments["rssguard_executable_path"])) {
-    printText("RSS Guard was not started successfully. Start it manually.");
-    m_state = ExitError;
-  }
-  else {
-    m_state = ExitNormal;
-  }
+  executeMainApplication();
 
   printText("\nPress any key to exit updater...");
 }
@@ -96,6 +87,18 @@ void FormUpdater::saveArguments() {
   m_parsedArguments["update_file_path"] = QDir::toNativeSeparators(arguments.at(4));
   m_parsedArguments["temp_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["update_file_path"]).absolutePath());
   m_parsedArguments["output_temp_path"] = m_parsedArguments["temp_path"] + QDir::separator() + APP_LOW_NAME;
+}
+
+void FormUpdater::executeMainApplication() {
+  printText("\nApplication was upgraded without serious errors.");
+
+  if (!QProcess::startDetached(m_parsedArguments["rssguard_executable_path"])) {
+    printText("RSS Guard was not started successfully. Start it manually.");
+    m_state = ExitError;
+  }
+  else {
+    m_state = ExitNormal;
+  }
 }
 
 void FormUpdater::printArguments() {
@@ -198,7 +201,7 @@ bool FormUpdater::doExtractionAndCopying() {
 
   extractor_arguments << "x" << "-r" << "-y" <<
                          QString("-o%1").arg(m_parsedArguments["output_temp_path"]) <<
-                         m_parsedArguments["update_file_path"];
+                                                                                       m_parsedArguments["update_file_path"];
 
   printText(QString("Calling extractor %1 with these arguments:").arg(APP_7ZA_EXECUTABLE));
 
@@ -209,13 +212,7 @@ bool FormUpdater::doExtractionAndCopying() {
   process_extractor.setEnvironment(QProcessEnvironment::systemEnvironment().toStringList());
   process_extractor.setWorkingDirectory(m_parsedArguments["rssguard_path"]);
 
-  QString prog_line = QString(APP_7ZA_EXECUTABLE) + " " +
-                      "x -r -y \"-o" + m_parsedArguments["output_temp_path"] +
-                      "\" \"" + m_parsedArguments["update_file_path"] + "\"";
-  printText(prog_line);
-
-  process_extractor.start(prog_line);
-  //process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
+  process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
 
   if (!process_extractor.waitForFinished()) {
     process_extractor.close();
@@ -252,13 +249,22 @@ bool FormUpdater::doExtractionAndCopying() {
 }
 
 bool FormUpdater::doFinalCleanup() {
+  bool result_file;
+  bool result_path;
+
   qApp->processEvents();
 
   printNewline();
   printHeading("Final cleanup");
 
-  return removeDirectory(m_parsedArguments["output_temp_path"]) &&
-      QFile::remove(m_parsedArguments["update_file_path"]);
+  result_path = removeDirectory(m_parsedArguments["output_temp_path"]);
+  result_file = QFile::remove(m_parsedArguments["update_file_path"]);
+
+  printText(QString("Removing temporary files\n   -> %1 -> %2\n   -> %3 -> %4").arg(
+              m_parsedArguments["output_temp_path"], result_path ? "success" : "failure",
+            m_parsedArguments["update_file_path"], result_file ? "success" : "failure"));
+
+  return result_file && result_path;
 }
 
 void FormUpdater::keyPressEvent(QKeyEvent* event) {

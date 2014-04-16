@@ -33,6 +33,7 @@ class FormUpdater : public QMainWindow {
     bool doPreparationCleanup();
     bool doExtractionAndCopying();
     bool doFinalCleanup();
+    void executeMainApplication();
 
   protected:
     // Catch the "press any key event" to exit the updater.
