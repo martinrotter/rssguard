@@ -46,6 +46,9 @@ FormUpdater::FormUpdater(QWidget *parent)
   setWindowIcon(QIcon(APP_ICON_PATH));
 
   moveToCenterAndResize();
+
+  connect(this, SIGNAL(debugMessageProduced(QtMsgType,QString)),
+          this, SLOT(consumeDebugMessage(QtMsgType,QString)));
 }
 
 FormUpdater::~FormUpdater() {
@@ -108,14 +111,11 @@ void FormUpdater::executeMainApplication() {
   }
 }
 
+void FormUpdater::triggerDebugMessageConsumption(QtMsgType type, const QString &message) {
+  emit debugMessageProduced(type, message);
+}
 
-#if QT_VERSION >= 0x050000
-void FormUpdater::debugHandler(QtMsgType type,
-                               const QMessageLogContext &placement,
-                               const QString &message) {
-#ifndef QT_NO_DEBUG_OUTPUT
-  Q_UNUSED(placement)
-
+void FormUpdater::consumeDebugMessage(QtMsgType type, const QString &message) {
   switch (type) {
     case QtDebugMsg:
       s_instance->printText(QString("DEBUG: %1").arg(message));
@@ -136,6 +136,16 @@ void FormUpdater::debugHandler(QtMsgType type,
     default:
       break;
   }
+}
+
+#if QT_VERSION >= 0x050000
+void FormUpdater::debugHandler(QtMsgType type,
+                               const QMessageLogContext &placement,
+                               const QString &message) {
+#ifndef QT_NO_DEBUG_OUTPUT
+  Q_UNUSED(placement)
+
+  s_instance->triggerDebugMessageConsumption(type, message);
 #else
   Q_UNUSED(type)
   Q_UNUSED(placement)
@@ -145,26 +155,7 @@ void FormUpdater::debugHandler(QtMsgType type,
 #else
 void FormUpdater::debugHandler(QtMsgType type, const char *message) {
 #ifndef QT_NO_DEBUG_OUTPUT
-  switch (type) {
-    case QtDebugMsg:
-      s_instance->printText(QString("DEBUG: %1").arg(message));
-      break;
-
-    case QtWarningMsg:
-      s_instance->printText(QString("WARNING: %1").arg(message));
-      break;
-
-    case QtCriticalMsg:
-      s_instance->printText(QString("CRITICAL: %1").arg(message));
-      break;
-
-    case QtFatalMsg:
-      s_instance->printText(QString("FATAL: %1").arg(message));
-      qApp->exit(EXIT_FAILURE);
-
-    default:
-      break;
-  }
+  s_instance->triggerDebugMessageConsumption(type, QString(message));
 #else
   Q_UNUSED(type)
   Q_UNUSED(message)

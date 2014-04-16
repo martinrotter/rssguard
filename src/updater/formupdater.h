@@ -42,6 +42,9 @@ class FormUpdater : public QMainWindow {
     bool doFinalCleanup();
     void executeMainApplication();
 
+    // Used to trigger signal informaing about new debug message.
+    void triggerDebugMessageConsumption(QtMsgType type, const QString &message);
+
     // Debug handlers for messages.
 #if QT_VERSION >= 0x050000
     static void debugHandler(QtMsgType type,
@@ -51,6 +54,14 @@ class FormUpdater : public QMainWindow {
     static void debugHandler(QtMsgType type,
                              const char *message);
 #endif
+
+  public slots:
+    // Should be always called on GUI thread which is enforced
+    // by signal/slot auto connection.
+    void consumeDebugMessage(QtMsgType type, const QString &message);
+
+  signals:
+    void debugMessageProduced(QtMsgType type, QString message);
 
   protected:
     // Catch the "press any key event" to exit the updater.
