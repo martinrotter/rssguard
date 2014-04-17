@@ -44,8 +44,12 @@ int main(int argc, char *argv[]) {
 
   FormUpdater main_form;
 
-  // Setup message handler after main_form is created.
+  // Setup debug output system.
+#if QT_VERSION >= 0x050000
   qInstallMessageHandler(FormUpdater::debugHandler);
+#else
+  qInstallMsgHandler(FormUpdater::debugHandler);
+#endif
 
   main_form.show();
   main_form.startUpgrade();
