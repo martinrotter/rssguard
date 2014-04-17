@@ -19,6 +19,7 @@
 #define SETTINGS_H
 
 #include <QSettings>
+
 #include <QPointer>
 
 

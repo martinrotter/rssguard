@@ -19,6 +19,7 @@
 #define SYSTEMFACTORY_H
 
 #include <QObject>
+
 #include <QPointer>
 #include <QMutex>
 #include <QMetaType>

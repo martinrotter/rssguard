@@ -2,8 +2,8 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "application.h"
 
-#include <QApplication>
 #include <QRegExp>
 #include <QWebSettings>
 #include <QProcess>

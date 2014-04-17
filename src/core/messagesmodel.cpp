@@ -21,7 +21,7 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "application.h"
 
 #include <QSqlRecord>
 #include <QSqlError>
@@ -62,7 +62,7 @@ void MessagesModel::fetchAll() {
 }
 
 void MessagesModel::setupFonts() {
-  m_normalFont = QtSingleApplication::font("MessagesView");
+  m_normalFont = Application::font("MessagesView");
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
 }

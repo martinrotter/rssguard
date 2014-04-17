@@ -38,8 +38,8 @@
 #include "gui/messagebox.h"
 #include "gui/basetoolbar.h"
 #include "gui/messagestoolbar.h"
-#include "qtsingleapplication/qtsingleapplication.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
+#include "application.h"
 
 #include <QProcess>
 #include <QNetworkProxy>

@@ -18,14 +18,16 @@
 #ifndef ICONFACTORY_H
 #define ICONFACTORY_H
 
+#include <QObject>
+
+#include "definitions/definitions.h"
+#include "application.h"
+
 #include <QString>
 #include <QIcon>
 #include <QPointer>
 #include <QHash>
-#include <QApplication>
 #include <QDir>
-
-#include "definitions/definitions.h"
 
 
 class IconFactory : public QObject {

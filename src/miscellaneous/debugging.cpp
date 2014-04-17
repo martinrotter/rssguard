@@ -18,8 +18,8 @@
 #include "miscellaneous/debugging.h"
 
 #include "definitions/definitions.h"
+#include "application.h"
 
-#include <QApplication>
 #include <QDir>
 
 #include <cstdio>

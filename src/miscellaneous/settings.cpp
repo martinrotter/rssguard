@@ -18,8 +18,8 @@
 #include "miscellaneous/settings.h"
 
 #include "definitions/definitions.h"
+#include "application.h"
 
-#include <QApplication>
 #include <QDebug>
 #include <QDir>
 #include <QPointer>

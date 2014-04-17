@@ -21,7 +21,6 @@
 
 #include <QThread>
 #include <QDebug>
-#include <QApplication>
 
 
 FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent) {

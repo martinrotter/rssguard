@@ -19,16 +19,14 @@
 
 #include "definitions/definitions.h"
 #include "network-web/networkfactory.h"
+#include "application.h"
 
 #if defined(Q_OS_WIN)
-#include "qtsingleapplication/qtsingleapplication.h"
-
 #include <QSettings>
 #endif
 
 #include <QString>
 #include <QFile>
-#include <QApplication>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QDomAttr>
@@ -55,7 +53,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   bool autostart_enabled = registry_key.value(APP_LOW_NAME,
                                               "").toString().replace('\\',
                                                                      '/') ==
-                           QtSingleApplication::applicationFilePath();
+                           Application::applicationFilePath();
 
   if (autostart_enabled) {
     return SystemFactory::Enabled;
@@ -138,8 +136,8 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   switch (new_status) {
     case SystemFactory::Enabled:
       registry_key.setValue(APP_LOW_NAME,
-                            QtSingleApplication::applicationFilePath().replace('/',
-                                                                               '\\'));
+                            Application::applicationFilePath().replace('/',
+                                                                       '\\'));
       return true;
     case SystemFactory::Disabled:
       registry_key.remove(APP_LOW_NAME);

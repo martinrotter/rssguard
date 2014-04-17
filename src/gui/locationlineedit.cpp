@@ -17,13 +17,7 @@
 
 #include "gui/locationlineedit.h"
 
-#include "definitions/definitions.h"
-#include "miscellaneous/settings.h"
-
-#include <QPaintEvent>
-#include <QStyleOptionFrameV2>
-#include <QPainter>
-#include <QApplication>
+#include <QMouseEvent>
 
 
 LocationLineEdit::LocationLineEdit(QWidget *parent)

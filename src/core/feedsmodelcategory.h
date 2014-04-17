@@ -21,7 +21,7 @@
 #include "core/feedsmodelrootitem.h"
 
 #include <QSqlRecord>
-#include <QApplication>
+#include <QCoreApplication>
 
 
 class FeedsModelFeed;

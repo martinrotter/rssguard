@@ -19,10 +19,9 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "application.h"
 
 #include <QPointer>
-#include <QApplication>
 #include <QTranslator>
 #include <QDir>
 #include <QFileInfoList>
@@ -61,7 +60,7 @@ void Localization::load() {
   if (app_translator->load(QString("rssguard-%1.qm").arg(desired_localization),
                            APP_LANG_PATH,
                            "-")) {
-    QApplication::installTranslator(app_translator);
+    Application::installTranslator(app_translator);
     qDebug("Application localization '%s' loaded successfully.",
            qPrintable(desired_localization));
   }
@@ -74,7 +73,7 @@ void Localization::load() {
   if (qt_translator->load(QString("qt-%1.qm").arg(desired_localization),
                           APP_LANG_PATH,
                           "-")) {
-    QApplication::installTranslator(qt_translator);
+    Application::installTranslator(qt_translator);
     qDebug("Qt localization '%s' loaded successfully.",
            qPrintable(desired_localization));
   }

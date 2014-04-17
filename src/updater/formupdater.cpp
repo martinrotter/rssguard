@@ -1,9 +1,25 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "updater/formupdater.h"
 
 #include "definitions/definitions.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
-#include <QApplication>
 #include <QDesktopWidget>
 #include <QIcon>
 #include <QDir>
@@ -60,7 +76,7 @@ void FormUpdater::startUpgrade() {
   printHeading("Welcome to RSS Guard updater");
   printText("Analyzing updater arguments.");
 
-  if (QApplication::arguments().size() != 5) {
+  if (QtSingleApplication::arguments().size() != 5) {
     printText("Insufficient arguments passed. Update process cannot proceed.");
     printText("\nPress any key to exit updater...");
 
@@ -87,7 +103,7 @@ void FormUpdater::startUpgrade() {
 
 void FormUpdater::saveArguments() {
   // Obtain parameters.
-  QStringList arguments = QApplication::arguments();
+  QStringList arguments = QtSingleApplication::arguments();
 
   m_parsedArguments["updater_path"] = QDir::toNativeSeparators(qApp->applicationFilePath());
   m_parsedArguments["current_version"] = arguments.at(1);
@@ -210,7 +226,7 @@ bool FormUpdater::doPreparationCleanup() {
 
     printText(QString("Check for running instances of RSS Guard, attempt %1.").arg(i));
 
-    if (static_cast<QtSingleApplication*>(qApp)->sendMessage(APP_QUIT_INSTANCE)) {
+    if (static_cast<QtSingleApplication*>(QCoreApplication::instance())->sendMessage(APP_QUIT_INSTANCE)) {
       printText("The main application is running. Quitting it.");
       printText("Waiting for 6000 ms for main application to finish.");
 

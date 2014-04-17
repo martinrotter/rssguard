@@ -18,13 +18,14 @@
 #include "gui/messagebox.h"
 
 #include "miscellaneous/iconfactory.h"
+#include "application.h"
 
-#include <QDialogButtonBox>
 #include <QtGlobal>
+#include <QDialogButtonBox>
 #include <QPushButton>
 #include <QDialogButtonBox>
 #include <QStyle>
-#include <QApplication>
+
 
 MessageBox::MessageBox(QWidget *parent) : QMessageBox(parent) {
 }
