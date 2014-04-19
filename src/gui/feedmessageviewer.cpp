@@ -38,7 +38,6 @@
 #include <QSplitter>
 #include <QToolBar>
 #include <QDebug>
-#include <QApplication>
 #include <QLineEdit>
 #include <QAction>
 #include <QToolButton>

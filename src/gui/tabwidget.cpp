@@ -26,8 +26,8 @@
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
+#include "application.h"
 
-#include <QApplication>
 #include <QMenu>
 #include <QToolButton>
 

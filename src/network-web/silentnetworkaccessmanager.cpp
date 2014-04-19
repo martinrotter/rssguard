@@ -19,7 +19,6 @@
 
 #include <QNetworkReply>
 #include <QAuthenticator>
-#include <QApplication>
 
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)

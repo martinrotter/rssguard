@@ -25,11 +25,10 @@
 #include <QSqlRecord>
 #include <QPair>
 #include <QNetworkReply>
-#include <QApplication>
+#include <QCoreApplication>
 
 
 class Message;
-
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.

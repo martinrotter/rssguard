@@ -21,7 +21,7 @@
 #include "miscellaneous/settings.h"
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "application.h"
 
 #include <QPainter>
 #include <QTimer>
@@ -36,7 +36,7 @@ TrayIconMenu::~TrayIconMenu() {
 }
 
 bool TrayIconMenu::event(QEvent *event) {
-  if (QtSingleApplication::activeModalWidget() != NULL &&
+  if (Application::activeModalWidget() != NULL &&
       event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
     SystemTrayIcon::instance()->showMessage(APP_LONG_NAME,

@@ -33,7 +33,7 @@
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/formupdate.h"
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "application.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -219,7 +219,7 @@ void FormMain::display() {
   raise();
 
   // Raise alert event. Check the documentation for more info on this.
-  QtSingleApplication::alert(this);
+  Application::alert(this);
 }
 
 void FormMain::onCommitData(QSessionManager &manager) {

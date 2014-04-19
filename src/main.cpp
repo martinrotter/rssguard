@@ -27,7 +27,7 @@
 #include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "application.h"
 
 // Needed for setting ini file format on Mac OS.
 #ifdef Q_OS_MAC
@@ -66,8 +66,8 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Instantiate base application object.
-  QtSingleApplication application(APP_LOW_NAME, argc, argv);
-  qDebug("Instantiated QtSingleApplication class.");
+  Application application(APP_LOW_NAME, argc, argv);
+  qDebug("Instantiated Application class.");
 
   // Check if another instance is running.
   if (application.sendMessage(APP_IS_RUNNING)) {
@@ -85,11 +85,11 @@ int main(int argc, char *argv[]) {
   Localization::instance()->load();
 
   // These settings needs to be set before any QSettings object.
-  QtSingleApplication::setApplicationName(APP_NAME);
-  QtSingleApplication::setApplicationVersion(APP_VERSION);
-  QtSingleApplication::setOrganizationName(APP_AUTHOR);
-  QtSingleApplication::setOrganizationDomain(APP_URL);
-  QtSingleApplication::setWindowIcon(QIcon(APP_ICON_PATH));
+  Application::setApplicationName(APP_NAME);
+  Application::setApplicationVersion(APP_VERSION);
+  Application::setOrganizationName(APP_AUTHOR);
+  Application::setOrganizationDomain(APP_URL);
+  Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
   qDebug().nospace() << "Creating main application form in thread: \'" <<
                         QThread::currentThreadId() << "\'.";
@@ -126,5 +126,5 @@ int main(int argc, char *argv[]) {
                    &main_window, SLOT(processExecutionMessage(QString)));
 
   // Enter global event loop.
-  return QtSingleApplication::exec();
+  return Application::exec();
 }

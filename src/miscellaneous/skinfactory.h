@@ -19,6 +19,7 @@
 #define SKINFACTORY_H
 
 #include <QObject>
+
 #include <QPointer>
 #include <QStringList>
 #include <QMetaType>

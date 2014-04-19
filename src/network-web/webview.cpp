@@ -54,7 +54,7 @@ void WebView::onLoadFinished(bool ok) {
 }
 
 void WebView::copySelectedText() {
-  QApplication::clipboard()->setText(selectedText());
+  Application::clipboard()->setText(selectedText());
 }
 
 void WebView::openLinkInNewTab() {

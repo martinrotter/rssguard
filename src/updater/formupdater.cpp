@@ -1,9 +1,25 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "updater/formupdater.h"
 
 #include "definitions/definitions.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
-#include <QApplication>
 #include <QDesktopWidget>
 #include <QIcon>
 #include <QDir>
@@ -19,11 +35,16 @@
 #include <QTimer>
 
 
+FormUpdater *FormUpdater::s_instance;
+
 FormUpdater::FormUpdater(QWidget *parent)
   : QMainWindow(parent, Qt::Dialog | Qt::WindowStaysOnTopHint),
     m_state(NoState),
     m_txtOutput(new QTextEdit(this)),
     m_parsedArguments(QHash<QString, QString>())  {
+
+  // Initialize singleton.
+  s_instance = this;
 
   m_txtOutput->setAutoFormatting(QTextEdit::AutoNone);
   m_txtOutput->setAcceptRichText(true);
@@ -41,16 +62,21 @@ FormUpdater::FormUpdater(QWidget *parent)
   setWindowIcon(QIcon(APP_ICON_PATH));
 
   moveToCenterAndResize();
+
+  connect(this, SIGNAL(debugMessageProduced(QtMsgType,QString)),
+          this, SLOT(consumeDebugMessage(QtMsgType,QString)));
 }
 
 FormUpdater::~FormUpdater() {
 }
 
 void FormUpdater::startUpgrade() {
+  qDebug("Started...");
+
   printHeading("Welcome to RSS Guard updater");
   printText("Analyzing updater arguments.");
 
-  if (QApplication::arguments().size() != 5) {
+  if (QtSingleApplication::arguments().size() != 5) {
     printText("Insufficient arguments passed. Update process cannot proceed.");
     printText("\nPress any key to exit updater...");
 
@@ -70,23 +96,14 @@ void FormUpdater::startUpgrade() {
   }
 
   doFinalCleanup();
-
-  printText("Application was upgraded without serious errors.");
-
-  if (!QProcess::startDetached(m_parsedArguments["rssguard_executable_path"])) {
-    printText("RSS Guard was not started successfully. Start it manually.");
-    m_state = ExitError;
-  }
-  else {
-    m_state = ExitNormal;
-  }
+  executeMainApplication();
 
   printText("\nPress any key to exit updater...");
 }
 
 void FormUpdater::saveArguments() {
   // Obtain parameters.
-  QStringList arguments = QApplication::arguments();
+  QStringList arguments = QtSingleApplication::arguments();
 
   m_parsedArguments["updater_path"] = QDir::toNativeSeparators(qApp->applicationFilePath());
   m_parsedArguments["current_version"] = arguments.at(1);
@@ -97,6 +114,70 @@ void FormUpdater::saveArguments() {
   m_parsedArguments["temp_path"] = QDir::toNativeSeparators(QFileInfo(m_parsedArguments["update_file_path"]).absolutePath());
   m_parsedArguments["output_temp_path"] = m_parsedArguments["temp_path"] + QDir::separator() + APP_LOW_NAME;
 }
+
+void FormUpdater::executeMainApplication() {
+  printText("\nApplication was upgraded without serious errors.");
+
+  if (!QProcess::startDetached(m_parsedArguments["rssguard_executable_path"])) {
+    printText("RSS Guard was not started successfully. Start it manually.");
+    m_state = ExitError;
+  }
+  else {
+    m_state = ExitNormal;
+  }
+}
+
+void FormUpdater::triggerDebugMessageConsumption(QtMsgType type, const QString &message) {
+  emit debugMessageProduced(type, message);
+}
+
+void FormUpdater::consumeDebugMessage(QtMsgType type, const QString &message) {
+  switch (type) {
+    case QtDebugMsg:
+      s_instance->printText(QString("DEBUG: %1").arg(message));
+      break;
+
+    case QtWarningMsg:
+      s_instance->printText(QString("WARNING: %1").arg(message));
+      break;
+
+    case QtCriticalMsg:
+      s_instance->printText(QString("CRITICAL: %1").arg(message));
+      break;
+
+    case QtFatalMsg:
+      s_instance->printText(QString("FATAL: %1").arg(message));
+      qApp->exit(EXIT_FAILURE);
+
+    default:
+      break;
+  }
+}
+
+#if QT_VERSION >= 0x050000
+void FormUpdater::debugHandler(QtMsgType type,
+                               const QMessageLogContext &placement,
+                               const QString &message) {
+#ifndef QT_NO_DEBUG_OUTPUT
+  Q_UNUSED(placement)
+
+  s_instance->triggerDebugMessageConsumption(type, message);
+#else
+  Q_UNUSED(type)
+  Q_UNUSED(placement)
+  Q_UNUSED(message)
+#endif
+}
+#else
+void FormUpdater::debugHandler(QtMsgType type, const char *message) {
+#ifndef QT_NO_DEBUG_OUTPUT
+  s_instance->triggerDebugMessageConsumption(type, QString(message));
+#else
+  Q_UNUSED(type)
+  Q_UNUSED(message)
+#endif
+}
+#endif
 
 void FormUpdater::printArguments() {
   printNewline();
@@ -145,7 +226,7 @@ bool FormUpdater::doPreparationCleanup() {
 
     printText(QString("Check for running instances of RSS Guard, attempt %1.").arg(i));
 
-    if (static_cast<QtSingleApplication*>(qApp)->sendMessage(APP_QUIT_INSTANCE)) {
+    if (static_cast<QtSingleApplication*>(QCoreApplication::instance())->sendMessage(APP_QUIT_INSTANCE)) {
       printText("The main application is running. Quitting it.");
       printText("Waiting for 6000 ms for main application to finish.");
 
@@ -198,7 +279,7 @@ bool FormUpdater::doExtractionAndCopying() {
 
   extractor_arguments << "x" << "-r" << "-y" <<
                          QString("-o%1").arg(m_parsedArguments["output_temp_path"]) <<
-                         m_parsedArguments["update_file_path"];
+                                                                                       m_parsedArguments["update_file_path"];
 
   printText(QString("Calling extractor %1 with these arguments:").arg(APP_7ZA_EXECUTABLE));
 
@@ -209,13 +290,7 @@ bool FormUpdater::doExtractionAndCopying() {
   process_extractor.setEnvironment(QProcessEnvironment::systemEnvironment().toStringList());
   process_extractor.setWorkingDirectory(m_parsedArguments["rssguard_path"]);
 
-  QString prog_line = QString(APP_7ZA_EXECUTABLE) + " " +
-                      "x -r -y \"-o" + m_parsedArguments["output_temp_path"] +
-                      "\" \"" + m_parsedArguments["update_file_path"] + "\"";
-  printText(prog_line);
-
-  process_extractor.start(prog_line);
-  //process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
+  process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
 
   if (!process_extractor.waitForFinished()) {
     process_extractor.close();
@@ -252,13 +327,22 @@ bool FormUpdater::doExtractionAndCopying() {
 }
 
 bool FormUpdater::doFinalCleanup() {
+  bool result_file;
+  bool result_path;
+
   qApp->processEvents();
 
   printNewline();
   printHeading("Final cleanup");
 
-  return removeDirectory(m_parsedArguments["output_temp_path"]) &&
-      QFile::remove(m_parsedArguments["update_file_path"]);
+  result_path = removeDirectory(m_parsedArguments["output_temp_path"]);
+  result_file = QFile::remove(m_parsedArguments["update_file_path"]);
+
+  printText(QString("Removing temporary files\n   -> %1 -> %2\n   -> %3 -> %4").arg(
+              m_parsedArguments["output_temp_path"], result_path ? "success" : "failure",
+            m_parsedArguments["update_file_path"], result_file ? "success" : "failure"));
+
+  return result_file && result_path;
 }
 
 void FormUpdater::keyPressEvent(QKeyEvent* event) {

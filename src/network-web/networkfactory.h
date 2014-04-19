@@ -19,7 +19,7 @@
 #define NETWORKFACTORY_H
 
 #include <QNetworkReply>
-#include <QApplication>
+#include <QCoreApplication>
 
 
 class NetworkFactory {

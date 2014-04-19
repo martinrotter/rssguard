@@ -17,8 +17,9 @@
 
 #include "network-web/webbrowsernetworkaccessmanager.h"
 
+#include "application.h"
+
 #include <QNetworkReply>
-#include <QApplication>
 
 
 QPointer<WebBrowserNetworkAccessManager> WebBrowserNetworkAccessManager::s_instance;

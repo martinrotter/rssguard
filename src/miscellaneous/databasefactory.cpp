@@ -19,8 +19,8 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "application.h"
 
-#include <QApplication>
 #include <QDir>
 #include <QSqlQuery>
 #include <QSqlError>

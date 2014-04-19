@@ -17,7 +17,7 @@
 
 #include "core/feedsmodelrootitem.h"
 
-#include "qtsingleapplication/qtsingleapplication.h"
+#include "application.h"
 
 #include <QVariant>
 
@@ -35,7 +35,7 @@ FeedsModelRootItem::~FeedsModelRootItem() {
 }
 
 void FeedsModelRootItem::setupFonts() {
-  m_normalFont = QtSingleApplication::font("FeedsView");
+  m_normalFont = Application::font("FeedsView");
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
 }

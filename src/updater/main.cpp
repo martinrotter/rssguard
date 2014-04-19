@@ -26,8 +26,6 @@
 #include <QFileInfo>
 #include <QDir>
 
-#include <iostream>
-#include <limits>
 
 // Main entry point to "rssguard_updater.exe".
 // It expects 4 ARGUMENTS:
@@ -39,10 +37,16 @@
 int main(int argc, char *argv[]) {
   // Instantiate base application object.
   QtSingleApplication application(APP_LOW_NAME, argc, argv);
-
-  application.setQuitOnLastWindowClosed(true);
+  QtSingleApplication::setQuitOnLastWindowClosed(true);
 
   FormUpdater main_form;
+
+  // Setup debug output system.
+#if QT_VERSION >= 0x050000
+  qInstallMessageHandler(FormUpdater::debugHandler);
+#else
+  qInstallMsgHandler(FormUpdater::debugHandler);
+#endif
 
   main_form.show();
   main_form.startUpgrade();
