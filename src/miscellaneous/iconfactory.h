@@ -31,6 +31,8 @@
 
 
 class IconFactory : public QObject {
+    Q_OBJECT
+
   public:
     // Destructor.
     virtual ~IconFactory();

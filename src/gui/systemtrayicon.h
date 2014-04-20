@@ -29,6 +29,8 @@ class QEvent;
 
 #if defined(Q_OS_WIN)
 class TrayIconMenu : public QMenu {
+    Q_OBJECT
+
   public:
     // Constructors and destructors.
     explicit TrayIconMenu(const QString &title, QWidget *parent);

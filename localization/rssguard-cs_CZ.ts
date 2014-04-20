@@ -262,10 +262,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Stránka Licence je dostupná pouze v anglickém jazyce.</translation>
     </message>
     <message>
-        <source>Thanks to</source>
-        <translation>Poděkování</translation>
-    </message>
-    <message>
         <source>Changelog</source>
         <translation>Historie verzí</translation>
     </message>
@@ -286,15 +282,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (při sestavování použit OS %2 a CMake %3)&lt;br&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <source>Thanks to page is available only in English language.</source>
-        <translation>Poděkování je k dispozici pouze v anglickém jazyce.</translation>
-    </message>
-    <message>
-        <source>Authors information not found.</source>
-        <extracomment>File containing list of authors was not found.</extracomment>
-        <translation>Informace o autorech nebyly nalezeny.</translation>
-    </message>
-    <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation>&lt;body&gt;%5 je (velmi) jednoduduchá čtečka kanálů.&lt;br&gt;&lt;br&gt;Tato aplikace je šířena pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojové kódy pro %5 je možné získat z jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
@@ -302,6 +289,402 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>O aplikaci %1</translation>
+    </message>
+</context>
+<context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Nadřazená kategorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Zvolte nadřazenou kategorii pro Vaši kategorii.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Nadpis</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Popis</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Ikona</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Zvolte ikonu pro Vaši kategorii.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Přidat novou kategorii</translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation>Upravit existující kategorii</translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Nelze přidat kategorii</translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation>Kategorie nebyla přidána kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation>Nelze upravit kategorii</translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation>Kategorie nebyla upravena kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Název kategorie je v pořádku.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Název kategorie je příliš krátký.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Popis je prázdný.</translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Zvolte ikonu pro Vaši kategorii</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Vybrat ikonu</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Hledat v:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Název ikony:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Typ ikony:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Název kategorie</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Zvolte název pro Vaši kategorii.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Popis kategorie</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Zvolte popis Vaší kategorie.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Vybrat ikonu</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Načíst ikonu ze souboru...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Nepoužít ikonu</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Použít výchozí ikonu</translation>
+    </message>
+</context>
+<context>
+    <name>FormFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Nadřazená kategorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>Zvolte typ standardního kanálu.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>Kódování</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>Zvolte kódování kanálu. Pokud si nejste jisti, tak zvolte kódování &quot;UTF-8&quot;.</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation> minut</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Nadpis</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Popis</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>Načíst nyní</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Ikona</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>Zvolte ikonu pro Váš kanál.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vyžaduje autentizaci</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Heslo</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Načíst metadata</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Přidat nový kanál</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Upravit existující kanál</translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>Název kanálu je v pořádku.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>Název kanálu je příliš krátký.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Popis je prázdný.</translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>Url je v pořádku.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>Url neobsahuje standardní schéma. Začíná Vaše url schématem &quot;http://&quot; nebo &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>Url je prázdné.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Uživatelské jméno je prázdné.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Heslo je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Heslo je prázdné.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Vybrat ikonu pro kanál</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Vybrat ikonu</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Zrušit</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Hledat v:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Název ikony:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Typ ikony:</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Nelze přidat kanál</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Kanál nepřidán kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>Nelze upravit kanál</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>Kanál neupraven kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Metadata stažena úspěšně.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Metadata a ikona staženy.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Výsledek: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation>Metadata nebo ikona nestaženy.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Chyba: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Žádná metadata nestažena.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Název kanálu</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Zvolte název pro Váš kanál.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Popis kanálu</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Zvolte popis Vašeho kanálu.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Plné url kanálu včetně schématu</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Zvolte url Vašeho kanálu.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Nastavte uživatelské jméno pro tento kanál.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Nastavte heslo pro tento kanál.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Vybrat ikonu</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Načíst ikonu ze souboru...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Nepoužít ikonu</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Použít výchozí ikonu</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Metadata doposud nenačtena.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Auto-aktualizovat dle hlavního nastavení</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Auto-aktualizovat každých</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Zakázat auto-aktualizace</translation>
     </message>
 </context>
 <context>
@@ -1201,402 +1584,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Nadřazená kategorie</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Název</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Popis</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikona</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Zvolte nadřazenou kategorii pro Vaši kategorii.</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Zvolte ikonu pro Vaši kategorii.</translation>
-    </message>
-    <message>
-        <source>Add new standard category</source>
-        <translation>Přidat novou standardní kategorii</translation>
-    </message>
-    <message>
-        <source>Edit existing standard category</source>
-        <translation>Upravit existující standardní kategorii</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Název kategorie je v pořádku.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Název kategorie je příliš krátký.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Popis kategorie je prázdný.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>Popis kategorie je v pořádku.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Zvolte ikonu pro Vaši kategorii</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Vybrat ikonu</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Zrušit</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Hledat v:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Název ikony:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Typ ikony:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Název kategorie</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Zvolte název pro Vaši kategorii.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Popis kategorie</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Zvolte popis Vaší kategorie.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Vybrat ikonu</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Načíst ikonu ze souboru...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Nepoužít ikonu</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Použít výchozí ikonu</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Nelze přidat kategorii</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Kategorie nebyla přidána kvůli chybě.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Nelze upravit kategorii</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Kategorie nebyla upravena kvůli chybě.</translation>
-    </message>
-</context>
-<context>
-    <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Nadřazená kategorie</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Typ</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Zvolte typ standardního kanálu.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Název</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Popis</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Kódování</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Zvolte kódování kanálu. Pokud si nejste jisti, tak zvolte kódování &quot;UTF-8&quot;.</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikona</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Zvolte ikonu pro Váš kanál.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed</source>
-        <translation>Přidat nový standardní kanál</translation>
-    </message>
-    <message>
-        <source>Edit existing standard feed</source>
-        <translation>Upravit existující standardní kanál</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Název kanálu je v pořádku.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Název kanálu je příliš krátký.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Popis kanálu je prázdný.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>Popis kanálu je v pořádku.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Název kanálu</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Zvolte název pro Váš kanál.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Popis kanálu</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Zvolte popis Vašeho kanálu.</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Zvolte url Vašeho kanálu.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation>Vyžaduje autentizaci</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Uživatelské jméno</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Heslo</translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation>Url je v pořádku.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>Url neobsahuje standardní schéma. Začíná Vaše url schématem &quot;http://&quot; nebo &quot;https://&quot;.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>Url je prázdné.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Uživatelské jméno je prázdné.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Heslo je v pořádku nebo není třeba.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Heslo je prázdné.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Vybrat ikonu pro kanál</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Obrázky (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Vybrat ikonu</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Zrušit</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Hledat v:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Název ikony:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Typ ikony:</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Plné url kanálu včetně schématu</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Nastavte uživatelské jméno pro tento kanál.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Nastavte heslo pro tento kanál.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Načíst ikonu ze souboru...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Nepoužít ikonu</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Použít výchozí ikonu</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minut</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Auto-aktualizace</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Nelze přidat kanál</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Kanál nepřidán kvůli chybě.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Nelze upravit kanál</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Kanál neupraven kvůli chybě.</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Načíst nyní</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Načíst metadata</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Metadata doposud nenačtena.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Auto-aktualizovat dle hlavního nastavení</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Auto-aktualizovat každých</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Zakázat auto-aktualizace</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Metadata stažena úspěšně.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata a ikona staženy.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Výsledek: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation>Metadata nebo ikona nestaženy.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Chyba: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Žádná metadata nestažena.</translation>
-    </message>
-</context>
-<context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
@@ -1683,6 +1670,42 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
         <translation>Nelze přejít k instalačnímu souboru. Zkontrolujte nové instalační soubory ručně na webu aplikace.</translation>
+    </message>
+    <message>
+        <source>Download update</source>
+        <translation>Stáhnout aktualizaci</translation>
+    </message>
+    <message>
+        <source>Downloaded %1% (update size is %2 kB).</source>
+        <translation>Staženo %1% (velikost aktualizace je %2 kB).</translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation>Stahuji aktualizaci...</translation>
+    </message>
+    <message>
+        <source>Downloaded successfully</source>
+        <translation>Staženo úspěšně</translation>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.</source>
+        <translation>Balík aktualizace úspěšně stažen.</translation>
+    </message>
+    <message>
+        <source>Install update</source>
+        <translation>Instalovat aktualizaci</translation>
+    </message>
+    <message>
+        <source>Error occured</source>
+        <translation>Vyskytla se chyba</translation>
+    </message>
+    <message>
+        <source>Error occured during downloading of the package.</source>
+        <translation>Během stahování aktualizace se vyskytla chyba.</translation>
+    </message>
+    <message>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation>Nelze spustit externí aktualizátor. Aktualizuje aplikaci manuálně.</translation>
     </message>
 </context>
 <context>
@@ -1813,7 +1836,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit všechny zprávy</translation>
     </message>
     <message>
         <source>Message highlighter</source>
@@ -2121,10 +2144,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Zastavit načítání aktuální webové stránky.</translation>
-    </message>
-    <message>
-        <source> %1 kB / %2 kB</source>
-        <translation></translation>
     </message>
 </context>
 <context>

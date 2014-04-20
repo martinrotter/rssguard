@@ -259,10 +259,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Licentie pagina is alleen beschikbaar in het Engels.</translation>
     </message>
     <message>
-        <source>Thanks to</source>
-        <translation>Dank aan</translation>
-    </message>
-    <message>
         <source>Changelog</source>
         <translation>Changelog</translation>
     </message>
@@ -283,15 +279,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (Bouwtijd %2 met Cmake %3)&lt;br&gt;&lt;b&gt; Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Bouwdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (Gecompileerd met %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <source>Thanks to page is available only in English language.</source>
-        <translation>Dank pagina is alleen beschikbaar in het Engels.</translation>
-    </message>
-    <message>
-        <source>Authors information not found.</source>
-        <extracomment>File containing list of authors was not found.</extracomment>
-        <translation>Auteurs informatie niet gevonden.</translation>
-    </message>
-    <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;U kunt de broncode voor %5 op de website..&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
@@ -299,6 +286,402 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Over %1</translation>
+    </message>
+</context>
+<context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Kies hoofd item voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Omschrijving</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Pictogram</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Selecteer pictogram voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Kan geen categorie toevoegen</translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation>Door een fout is de categorie niet toegevoegd.</translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation>Kan categorie niet bewerken</translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation>Door een fout is de categorie niet bewerkt.</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Categorie naam is ok.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Categorie naam is te kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Omschrijving is leeg.</translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation>Omschrijving is ok.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Kies pictogram bestand voor de categorie</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Selecteer pictogram</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuleer</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Kijk in:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Pictogram naam:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Type pictogram:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Titel categorie</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Stel titel in voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Categorie omschrijving</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Stel omschrijving in voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Pictogram selectie</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Laad pictogram uit een bestand...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Gebruik geen pictogram</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Gebruik standaard pictogram</translation>
+    </message>
+</context>
+<context>
+    <name>FormFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Kies hoofd item voor je feed.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>Selecteer type van de standaard feed.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>Coderen</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Automatische-update</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation> minuten</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Omschrijving</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>Nu ophalen</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Pictogram</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>Selecteer pictogram voor je feed.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vereist verificatie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Paswoord</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Ophalen van metadata</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>Feed naam is ok.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>Feed naam is te kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Omschrijving is leeg.</translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation>Omschrijving is ok.</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>De url is ok.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>De url is leeg.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Selecteer pictogram bestand voor je feed</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Selecteer pictogram</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuleer</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Kijk in:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Pictogram naam:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Type pictogram:</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan geen feed toevoegen</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>Kan feed niet bewerken</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>Door een fout is de feed niet bewerkt.</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Alle metadata is succesvol opgehaald.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Metadata opgehaald voor feed en pictogram.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Resultaat: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation>Metadata voor feed en pictogram niet opgehaald.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Fout: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Geen metadata opgehaald.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Feed naam</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Stel titel in voor je feed.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Feed omschrijving</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Stel omschrijving voor feed in.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Volledige feed url inclusief schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Stel url in voor je feed.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Stel paswoord in voor toegang tot feed.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Pictogram selectie</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Laad pictogram uit een bestand...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Gebruik geen pictogram</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Gebruik standaard pictogram</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Nog geen metadata opgehaald.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Automatisch bijwerken elke</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Niet automatisch bijwerken </translation>
     </message>
 </context>
 <context>
@@ -1199,402 +1582,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Omschrijving</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Pictogram</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Kies hoofd item voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Selecteer pictogram voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Add new standard category</source>
-        <translation>Voeg nieuw standaard categorie toe</translation>
-    </message>
-    <message>
-        <source>Edit existing standard category</source>
-        <translation>Bewerk bestaande standaard categorie</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Categorie naam is ok.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Categorie naam is te kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>Omschrijving is ok.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Kies pictogram bestand voor de categorie</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuleer</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Titel categorie</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Stel titel in voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Categorie omschrijving</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Stel omschrijving in voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Kan geen categorie toevoegen</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Door een fout is de categorie niet toegevoegd.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Kan categorie niet bewerken</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Door een fout is de categorie niet bewerkt.</translation>
-    </message>
-</context>
-<context>
-    <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Selecteer type van de standaard feed.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Omschrijving</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Coderen</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Pictogram</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Selecteer pictogram voor je feed.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed</source>
-        <translation>Voeg nieuw standaard feed toe</translation>
-    </message>
-    <message>
-        <source>Edit existing standard feed</source>
-        <translation>Bewerk bestaande standaard feed</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Feed naam is ok.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Feed naam is te kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>Omschrijving is ok.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Feed naam</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Stel titel in voor je feed.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Feed omschrijving</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Stel omschrijving voor feed in.</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Stel url in voor je feed.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation>Vereist verificatie</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Paswoord</translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation>De url is ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>De url is leeg.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Selecteer pictogram bestand voor je feed</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuleer</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Volledige feed url inclusief schema</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Stel paswoord in voor toegang tot feed.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minuten</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Automatische-update</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Door een fout is de feed niet toegevoegd.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan feed niet bewerken</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Door een fout is de feed niet bewerkt.</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Nu ophalen</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Ophalen van metadata</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Nog geen metadata opgehaald.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Alle metadata is succesvol opgehaald.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata opgehaald voor feed en pictogram.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Resultaat: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation>Metadata voor feed en pictogram niet opgehaald.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fout: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Geen metadata opgehaald.</translation>
-    </message>
-</context>
-<context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
@@ -1684,6 +1671,42 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
         <translation>Kan niet naar installatiebestand bladeren. Controleer nieuwe installatie downloads handmatig op RSSguard website.</translation>
+    </message>
+    <message>
+        <source>Download update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded %1% (update size is %2 kB).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Install update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occured during downloading of the package.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2122,10 +2145,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stop het laden van pagina.</translation>
-    </message>
-    <message>
-        <source> %1 kB / %2 kB</source>
-        <translation>%1 kB / %2 kB</translation>
     </message>
 </context>
 <context>

@@ -258,10 +258,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>La page des licences n&apos;est disponible qu&apos;en Anglais.</translation>
     </message>
     <message>
-        <source>Thanks to</source>
-        <translation>Merci à</translation>
-    </message>
-    <message>
         <source>Changelog</source>
         <translation>Changelog</translation>
     </message>
@@ -282,15 +278,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version :&lt;/b&gt; %1 (construit sur %2 avec CMake %3)&lt;br&gt;&lt;b&gt;Révision :&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Date de création :&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compilé avec %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <source>Thanks to page is available only in English language.</source>
-        <translation>La page des remerciements n&apos;est disponible qu&apos;en Anglais.</translation>
-    </message>
-    <message>
-        <source>Authors information not found.</source>
-        <extracomment>File containing list of authors was not found.</extracomment>
-        <translation>Les informations sur les auteurs non pas été trouvées.</translation>
-    </message>
-    <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation>&lt;body&gt;%5 est un lecteur de flux (très) petit.&lt;br&gt;&lt;br&gt;Ce logiciel est distribué sous les termes de la licence GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts : &lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~site internet&lt;/li&gt;&lt;/ul&gt;Vous pouvez obtenir le code source de %5 depuis le site internet.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
@@ -298,6 +285,402 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>A propos de %1</translation>
+    </message>
+</context>
+<context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished">Catégorie parente</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation type="unfinished">Sélectionner l&apos;article parent pour votre catégorie.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Titre</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">Description</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished">Icône</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation type="unfinished">Sélectionner un icône pour votre catégorie</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation type="unfinished">Impossible d&apos;ajouter une catégorie</translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation type="unfinished">La catégorie n&apos;a pas été ajoutée dû à une erreur</translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation type="unfinished">Impossible d&apos;éditer la catégori</translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation type="unfinished">La catégorie n&apos;a pas été éditée dû à une erreur.</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation type="unfinished">Le nom de la catégorie est correct.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation type="unfinished">Le nom de la catégorie est trop court.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished">La description est vide.</translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished">La description est correct.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation type="unfinished">Sélectionner un icône pour la catégorie</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished">Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished">Sélectionner l&apos;icône</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation type="unfinished">Rechercher dans :</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished">Nom de l&apos;icône :</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished">Type d&apos;icône :</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation type="unfinished">Titre de la catégorie</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation type="unfinished">Définir un titre pour votre catégorie</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation type="unfinished">Description de la catégorie</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation type="unfinished">Définir une description pour votre catégorie.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished">Sélection de l&apos;icône</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished">Charger l&apos;icône depuis un fichier...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished">Ne pas utiliser les icônes</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished">Utiliser les icônes par défaut</translation>
+    </message>
+</context>
+<context>
+    <name>FormFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished">Catégorie parente</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished">Sélectionner l&apos;article parent pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished">Sélectionner un type pour le flux standard.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished">Encodage</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished">Sélectionner un encodage pour le flux standard. Si vous n&apos;êtes pas sûr à propos de l&apos;encodage, sélectionner alors l&apos;encodage &quot;UTF-8&quot;.</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation type="unfinished">Mise à jour automatique</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation type="unfinished">Sélectionner la stratégie des mises à jour automatique pour ce flux. Par défaut, cette stratégie signifie que le flux sera mis à jour par intervalle de temps défini dans les paramètres de l&apos;application.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation type="unfinished">minutes</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Titre</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">Description</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished">Le chercher maintenant</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished">Icône</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished">Sélectionner un icône pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished">Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation type="unfinished">Authentification requise</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Nom d&apos;utilisateur</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Mot de passe</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished">Chercher les métadonnées</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished">Le nom du flux est correct.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished">Le nom du flux est trop court.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished">La description est vide.</translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished">La description est correct.</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation type="unfinished">L&apos;URL est correct.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished">L&apos;URL ne respecte pas le pattern standard. Votre URL doit commencer avec les préfixe &quot;http://&quot; ou &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation type="unfinished">L&apos;URL est vide.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Le nom d&apos;utilisateur est vide.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Le mot de passe  est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Le mot de passe est vide.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished">Sélectionner un icône pour le flux</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished">Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished">Sélectionner l&apos;icône</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">Annuler</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished">Rechercher dans :</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished">Nom de l&apos;icône :</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished">Type d&apos;icône :</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished">Impossible d&apos;ajouter le flux</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished">Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation type="unfinished">Impossible d&apos;éditer le flux</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation type="unfinished">Le flux n&apos;a pas été édité dû à une erreur.</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished">Tout les méta-datas ont été extraites avec succès.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished">Flux et icône extraits.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished">Résultat : %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation type="unfinished">Flux ou icône non extrait.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished">Erreur : %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished">Aucune méta-donnée extraite.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished">Titre du flux</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished">Définir un titre pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished">Description du flux</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished">Définir une description pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished">URL du flux complet incluant le préfixe</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation type="unfinished">Définir l&apos;URL pour votre flux.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished">Définir le nom d&apos;utilisateur pour accéder au flux.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished">Définir le mot de passe pour accéder au flux.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished">Sélection de l&apos;icône</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished">Charger l&apos;icône depuis un fichier...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished">Ne pas utiliser les icônes</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished">Utiliser les icônes par défaut</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation type="unfinished">Pas de métadonnées trouvé aussi loin.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished">Mise à jour automatique utilisant l&apos;intervalle global</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished">Tout mettre à jour</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation type="unfinished">Ne pas mettre tout à jour automatiquement</translation>
     </message>
 </context>
 <context>
@@ -1197,402 +1580,6 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Catégorie parente</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titre</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Description</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Icône</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Sélectionner l&apos;article parent pour votre catégorie.</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Sélectionner un icône pour votre catégorie</translation>
-    </message>
-    <message>
-        <source>Add new standard category</source>
-        <translation>Ajouter une nouvelle catégorie standard</translation>
-    </message>
-    <message>
-        <source>Edit existing standard category</source>
-        <translation>Éditer une catégorie standard existante</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Le nom de la catégorie est correct.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Le nom de la catégorie est trop court.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>La description est vide.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>La description est correct.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Sélectionner un icône pour la catégorie</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Sélectionner l&apos;icône</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuler</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Rechercher dans :</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Nom de l&apos;icône :</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type d&apos;icône :</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Titre de la catégorie</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Définir un titre pour votre catégorie</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Description de la catégorie</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Définir une description pour votre catégorie.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Sélection de l&apos;icône</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Charger l&apos;icône depuis un fichier...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Ne pas utiliser les icônes</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Utiliser les icônes par défaut</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Impossible d&apos;ajouter une catégorie</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>La catégorie n&apos;a pas été ajoutée dû à une erreur</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Impossible d&apos;éditer la catégori</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>La catégorie n&apos;a pas été éditée dû à une erreur.</translation>
-    </message>
-</context>
-<context>
-    <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Catégorie parente</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Sélectionner un type pour le flux standard.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titre</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Description</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Encodage</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Sélectionner un encodage pour le flux standard. Si vous n&apos;êtes pas sûr à propos de l&apos;encodage, sélectionner alors l&apos;encodage &quot;UTF-8&quot;.</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Icône</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Sélectionner un icône pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Add new standard feed</source>
-        <translation>Ajouter un nouveau flux standard.</translation>
-    </message>
-    <message>
-        <source>Edit existing standard feed</source>
-        <translation>Editer un flux standard existant.</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Le nom du flux est correct.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Le nom du flux est trop court.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>La description est vide.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>La description est correct.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Titre du flux</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Définir un titre pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Description du flux</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Définir une description pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Définir l&apos;URL pour votre flux.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation>Authentification requise</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Nom d&apos;utilisateur</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Mot de passe</translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation>L&apos;URL est correct.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>L&apos;URL ne respecte pas le pattern standard. Votre URL doit commencer avec les préfixe &quot;http://&quot; ou &quot;https://&quot;.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>L&apos;URL est vide.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Le nom d&apos;utilisateur est vide.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Le mot de passe  est correct ou non nécessaire.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Le mot de passe est vide.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Sélectionner un icône pour le flux</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Sélectionner l&apos;icône</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuler</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Rechercher dans :</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Nom de l&apos;icône :</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type d&apos;icône :</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>URL du flux complet incluant le préfixe</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Définir le nom d&apos;utilisateur pour accéder au flux.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Définir le mot de passe pour accéder au flux.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Sélection de l&apos;icône</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Charger l&apos;icône depuis un fichier...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Ne pas utiliser les icônes</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Utiliser les icônes par défaut</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Sélectionner la stratégie des mises à jour automatique pour ce flux. Par défaut, cette stratégie signifie que le flux sera mis à jour par intervalle de temps défini dans les paramètres de l&apos;application.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation>minutes</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Mise à jour automatique</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Impossible d&apos;ajouter le flux</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Impossible d&apos;éditer le flux</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Le flux n&apos;a pas été édité dû à une erreur.</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Le chercher maintenant</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Chercher les métadonnées</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Pas de métadonnées trouvé aussi loin.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Mise à jour automatique utilisant l&apos;intervalle global</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Tout mettre à jour</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Ne pas mettre tout à jour automatiquement</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Tout les méta-datas ont été extraites avec succès.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Flux et icône extraits.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Résultat : %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation>Flux ou icône non extrait.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Erreur : %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Aucune méta-donnée extraite.</translation>
-    </message>
-</context>
-<context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
@@ -1682,6 +1669,42 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
         <translation>Impossible d&apos;aller récupérer le fichier d&apos;installation. Vérifiez le nouveau fichier d&apos;installation manuellement sur ​​le site web du projet.</translation>
+    </message>
+    <message>
+        <source>Download update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded %1% (update size is %2 kB).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Install update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occured during downloading of the package.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2120,10 +2143,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <message>
         <source>Stop web page loading.</source>
         <translation>Arrêter le chargement de la page</translation>
-    </message>
-    <message>
-        <source> %1 kB / %2 kB</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -252,10 +252,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Changelog</source>
         <translation type="unfinished"></translation>
     </message>
@@ -276,21 +272,408 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Thanks to page is available only in English language.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Authors information not found.</source>
-        <extracomment>File containing list of authors was not found.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The description os ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1173,402 +1556,6 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
 </context>
 <context>
-    <name>FormStandardCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new standard category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit existing standard category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FormStandardFeedDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add new standard feed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Edit existing standard feed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FormUpdate</name>
     <message>
         <source>Current release</source>
@@ -1653,6 +1640,42 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded %1% (update size is %2 kB).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloaded successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Package was downloaded successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Install update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occured</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occured during downloading of the package.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot launch external updater. Update application manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2091,10 +2114,6 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source> %1 kB / %2 kB</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
