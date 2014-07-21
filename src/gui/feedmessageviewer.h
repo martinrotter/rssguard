@@ -89,6 +89,11 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
+    // Displays dialog for export/import of feeds
+    // in various formats + does the whole job.
+    void importFeeds();
+    void exportFeeds();
+
   protected slots:
     // Updates counts of messages for example in tray icon.
     void updateTrayIconStatus(int unread_messages, int total_messages);

@@ -93,7 +93,8 @@ QHash<QString, QAction*> FormMain::allActions() {
 
   // Add basic actions.
   actions.insert(m_ui->m_actionSettings->objectName(), m_ui->m_actionSettings);
-  actions.insert(m_ui->m_actionSettings->objectName(), m_ui->m_actionSettings);
+  actions.insert(m_ui->m_actionImportFeeds->objectName(), m_ui->m_actionImportFeeds);
+  actions.insert(m_ui->m_actionExportFeeds->objectName(), m_ui->m_actionExportFeeds);
   actions.insert(m_ui->m_actionQuit->objectName(), m_ui->m_actionQuit);
   actions.insert(m_ui->m_actionFullscreen->objectName(), m_ui->m_actionFullscreen);
   actions.insert(m_ui->m_actionAboutGuard->objectName(), m_ui->m_actionAboutGuard);

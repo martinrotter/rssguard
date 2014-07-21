@@ -23,6 +23,9 @@
 #     the application and application will run in iconless mode.
 #     Default and recommended value is "ON".
 #
+#   "-DENABLE_OS2_RC=OFF"
+#     If "ON" then icon is compiled into executable file on OS/2. Defaults to "OFF".
+#
 # Other information:
 #   - supports Windows, Linux, OS/2 (eComStation),
 #   - Qt 4.7.3 and higher is required,
@@ -64,6 +67,7 @@ endif(APPLE)
 
 # Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
+option(ENABLE_OS2_RC "Compile application icon on OS/2" OFF)
 option(BUNDLE_ICON_THEMES "Equip installation with custom icon themes" ON)
 
 if(POLICY CMP0012)
@@ -230,7 +234,7 @@ if(WIN32)
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
     ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
   )
-elseif(OS2)
+elseif(OS2 AND ${ENABLE_OS2_RC})
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
@@ -251,17 +255,20 @@ if(MINGW AND WIN32)
       ${APP_SOURCES}
       ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 elseif(OS2)
-  enable_language(RC)
-  set(CMAKE_RC_COMPILER_INIT rc)
-  message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
-  message(STATUS "[${APP_LOW_NAME}] Used tool is: ${CMAKE_RC_COMPILER}")
-  set(CMAKE_RC_COMPILE_OBJECT
-      "<CMAKE_RC_COMPILER> -n -r <SOURCE> <OBJECT>")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Zstack 0x2000 -Zlinker \"DISABLE 1121\" -s -Zlinker /PM:PM -Zno-fork -Zhigh-mem -Zmap")
 
-  set(APP_SOURCES
-      ${APP_SOURCES}
-      ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
+  if(${ENABLE_OS2_RC})
+    enable_language(RC)
+    set(CMAKE_RC_COMPILER_INIT rc)
+    message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for OS2.")
+    message(STATUS "[${APP_LOW_NAME}] Used tool is: ${CMAKE_RC_COMPILER}")
+    set(CMAKE_RC_COMPILE_OBJECT
+        "<CMAKE_RC_COMPILER> -n -r <SOURCE> <OBJECT>")
+
+    set(APP_SOURCES
+        ${APP_SOURCES}
+        ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
+  endif(${ENABLE_OS2_RC})
 elseif(WIN32 AND MSVC)
   # MSVC takes care of this automatically - no need to use windres.exe
   # for MSVC compilers.
@@ -305,6 +312,7 @@ set(APP_SOURCES
   src/gui/feedstoolbar.cpp
   src/gui/toolbareditor.cpp
   src/gui/messagessearchlineedit.cpp
+  src/gui/formexport.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -386,6 +394,7 @@ set(APP_HEADERS
   src/gui/feedstoolbar.h
   src/gui/toolbareditor.h
   src/gui/messagessearchlineedit.h
+  src/gui/formexport.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -430,6 +439,7 @@ set(APP_FORMS
   src/gui/formcategorydetails.ui
   src/gui/formfeeddetails.ui
   src/gui/toolbareditor.ui
+  src/gui/formexport.ui
 )
 
 # APP translations.

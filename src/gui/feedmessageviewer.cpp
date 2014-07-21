@@ -33,6 +33,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
+#include "gui/formexport.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -204,6 +205,12 @@ void FeedMessageViewer::createConnections() {
           m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)),
           m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
+
+  // Import & export of feeds.
+  connect(form_main->m_ui->m_actionExportFeeds, SIGNAL(triggered()),
+          this, SLOT(exportFeeds()));
+  connect(form_main->m_ui->m_actionImportFeeds, SIGNAL(triggered()),
+          this, SLOT(importFeeds()));
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)),
@@ -435,4 +442,12 @@ void FeedMessageViewer::refreshVisualProperties() {
 
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
+}
+
+void FeedMessageViewer::importFeeds() {
+  // TODO: todo
+}
+
+void FeedMessageViewer::exportFeeds() {
+  // TODO: todo
 }

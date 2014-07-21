@@ -58,7 +58,7 @@ class FormMain : public QMainWindow {
     // Returns list of all globally available actions.
     // NOTE: This is used for setting dynamic shortcuts
     // for given actions.
-    QHash<QString, QAction *> allActions();
+    QHash<QString, QAction*> allActions();
 
     // Singleton accessor.
     static FormMain *instance();

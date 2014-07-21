@@ -1,4 +1,22 @@
 <body>
+<center><h2>2.0.0.0</h2></center>
+
+Fixed:
+<ul>
+<li>/li>
+</ul>
+
+Added:
+<ul>
+<li></li>
+</ul>
+
+Changed:
+<ul>
+<li>Updated bundled OpenSSL libraries for Windows portable version.</li>
+</ul>
+
+<hr/>
 <center><h2>1.9.9.9</h2></center>
 
 Fixed:

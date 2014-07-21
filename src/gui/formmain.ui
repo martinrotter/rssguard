@@ -55,6 +55,9 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <addaction name="m_actionImportFeeds"/>
+    <addaction name="m_actionExportFeeds"/>
+    <addaction name="separator"/>
     <addaction name="m_actionQuit"/>
    </widget>
    <widget class="QMenu" name="m_menuHelp">
@@ -528,6 +531,22 @@
    </property>
    <property name="shortcut">
     <string notr="true">H</string>
+   </property>
+  </action>
+  <action name="m_actionImportFeeds">
+   <property name="text">
+    <string>&amp;Import feeds</string>
+   </property>
+   <property name="toolTip">
+    <string>Imports feeds you want from selected file.</string>
+   </property>
+  </action>
+  <action name="m_actionExportFeeds">
+   <property name="text">
+    <string>&amp;Export feeds</string>
+   </property>
+   <property name="toolTip">
+    <string>Imports feeds you want to selected file.</string>
    </property>
   </action>
  </widget>
