@@ -144,17 +144,9 @@ void FeedsView::updateAllFeeds() {
     emit feedsUpdateRequested(allFeeds());
   }
   else {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot update all items"),
-                                    tr("You cannot update all items because another feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot update all items"),
-                       tr("You cannot update all items because another feed update is ongoing."));
-    }
+    qApp->showGuiMessage(tr("Cannot update all items"),
+                         tr("You cannot update all items because another feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
   }
 }
 
@@ -170,17 +162,9 @@ void FeedsView::updateSelectedFeeds() {
     emit feedsUpdateRequested(selectedFeeds());
   }
   else {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot update selected items"),
-                                    tr("You cannot update selected items because another feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot update selected items"),
-                       tr("You cannot update selected items because another feed update is ongoing."));
-    }
+    qApp->showGuiMessage(tr("Cannot update selected items"),
+                         tr("You cannot update selected items because another feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
   }
 }
 
@@ -196,8 +180,7 @@ void FeedsView::executeNextAutoUpdate() {
   // If global auto-update is enabled
   // and its interval counter reached zero,
   // then we need to restore it.
-  if (m_globalAutoUpdateEnabled &&
-      --m_globalAutoUpdateRemainingInterval < 0) {
+  if (m_globalAutoUpdateEnabled && --m_globalAutoUpdateRemainingInterval < 0) {
     // We should start next auto-update interval.
     m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
   }
@@ -218,12 +201,8 @@ void FeedsView::executeNextAutoUpdate() {
     // Request update for given feeds.
     emit feedsUpdateRequested(feeds_for_update);
 
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Scheduled update started"),
-                                    //: RSS Guard is performing updates right now.
-                                    tr("%1 is performing scheduled update of some feeds.").arg(APP_NAME),
-                                    QSystemTrayIcon::Information);
-    }
+    // NOTE: OSD/bubble informing about performing
+    // of scheduled update can be shown now.
   }
 }
 
@@ -254,19 +233,9 @@ void FeedsView::addNewCategory() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot add standard category"),
-                                    tr("You cannot add new standard category now because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot add standard category"),
-                       tr("You cannot add new standard category now because feed update is ongoing."));
-    }
-
-    // Thus, cannot delete and quit the method.
+    qApp->showGuiMessage(tr("Cannot add standard category"),
+                         tr("You cannot add new standard category now because feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
     return;
   }
 
@@ -293,19 +262,9 @@ void FeedsView::addNewFeed() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot add standard feed"),
-                                    tr("You cannot add new standard feed now because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot add standard feed"),
-                       tr("You cannot add new standard feed now because feed update is ongoing."));
-    }
-
-    // Thus, cannot delete and quit the method.
+    qApp->showGuiMessage(tr("Cannot add standard feed"),
+                         tr("You cannot add new standard feed now because feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
     return;
   }
 
@@ -332,19 +291,9 @@ void FeedsView::editSelectedItem() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      //: Warning messagebox title when selected item cannot be edited.
-      qApp->trayIcon()->showMessage(tr("Cannot edit item"),
-                                    tr("Selected item cannot be edited because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       //: Warning messagebox title when selected item cannot be edited.
-                       tr("Cannot edit item"),
-                       tr("Selected item cannot be edited because feed update is ongoing."));
-    }
+    qApp->showGuiMessage(tr("Cannot edit item"),
+                         tr("Selected item cannot be edited because feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
 
     // Thus, cannot delete and quit the method.
     return;
@@ -382,17 +331,9 @@ void FeedsView::deleteSelectedItem() {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot delete item"),
-                                    tr("Selected item cannot be deleted because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot delete item"),
-                       tr("Selected item cannot be deleted because feed update is ongoing."));
-    }
+    qApp->showGuiMessage(tr("Cannot delete item"),
+                         tr("Selected item cannot be deleted because feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
 
     // Thus, cannot delete and quit the method.
     return;
@@ -411,11 +352,9 @@ void FeedsView::deleteSelectedItem() {
     selection_model->clearSelection();
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
 
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot delete item"),
-                                    tr("Selected item cannot be deleted because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
+    qApp->showGuiMessage(tr("Cannot delete item"),
+                         tr("Selected item cannot be deleted because feed update is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
   }
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {

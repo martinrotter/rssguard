@@ -18,7 +18,6 @@
 #include "application.h"
 
 #include "miscellaneous/systemfactory.h"
-#include "gui/formmain.h"
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"

@@ -38,7 +38,7 @@
 
 
 FormCategoryDetails::FormCategoryDetails(FeedsModel *model,
-                                                         QWidget *parent)
+                                         QWidget *parent)
   : QDialog(parent),
     m_editableCategory(NULL),
     m_feedsModel(model)  {
@@ -118,17 +118,10 @@ void FormCategoryDetails::apply() {
       accept();
     }
     else {
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        qApp->trayIcon()->showMessage(tr("Cannot add category"),
-                                                tr("Category was not added due to error."),
-                                                QSystemTrayIcon::Critical);
-      }
-      else {
-        MessageBox::show(this,
-                         QMessageBox::Critical,
-                         tr("Cannot add category"),
-                         tr("Category was not added due to error."));
-      }
+      qApp->showGuiMessage(tr("Cannot add category"),
+                           tr("Category was not added due to error."),
+                           QSystemTrayIcon::Critical,
+                           qApp->mainForm());
     }
   }
   else {
@@ -136,17 +129,10 @@ void FormCategoryDetails::apply() {
       accept();
     }
     else {
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        qApp->trayIcon()->showMessage(tr("Cannot edit category"),
-                                                tr("Category was not edited due to error."),
-                                                QSystemTrayIcon::Critical);
-      }
-      else {
-        MessageBox::show(this,
-                         QMessageBox::Critical,
-                         tr("Cannot edit category"),
-                         tr("Category was not edited due to error."));
-      }
+      qApp->showGuiMessage(tr("Cannot edit category"),
+                           tr("Category was not edited due to error."),
+                           QSystemTrayIcon::Critical,
+                           qApp->mainForm());
     }
   }
 }
@@ -154,11 +140,11 @@ void FormCategoryDetails::apply() {
 void FormCategoryDetails::onTitleChanged(const QString &new_title){
   if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Ok, tr("Category name is ok."));
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::Ok, tr("Category name is ok."));
   }
   else {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-    m_ui->m_txtTitle->setStatus(LineEditWithStatus::Error, tr("Category name is too short."));
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::Error, tr("Category name is too short."));
   }
 }
 
@@ -246,8 +232,8 @@ void FormCategoryDetails::initialize() {
 }
 
 void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory*> categories,
-                                                 FeedsModelRootItem *root_item,
-                                                 FeedsModelCategory *input_category) {
+                                         FeedsModelRootItem *root_item,
+                                         FeedsModelCategory *input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

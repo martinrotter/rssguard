@@ -382,46 +382,28 @@ void FeedMessageViewer::initializeViews() {
 }
 
 void FeedMessageViewer::vacuumDatabase() {
-  bool is_tray_activated = SystemTrayIcon::isSystemTrayActivated();
-
   if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
-    if (is_tray_activated) {
-      qApp->trayIcon()->showMessage(tr("Cannot defragment database"),
-                                    tr("Database cannot be defragmented because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot defragment database"),
-                       tr("Database cannot be defragmented because feed update is ongoing."));
-    }
-
-    // Thus, cannot delete and quit the method.
+    qApp->showGuiMessage(tr("Cannot defragment database"),
+                         tr("Database cannot be defragmented because feed update is ongoing."),
+                         QSystemTrayIcon::Warning,
+                         this);
     return;
   }
 
   if (DatabaseFactory::instance()->vacuumDatabase()) {
     qApp->showGuiMessage(tr("Database defragmented"),
                          tr("Database was successfully defragmented."),
-                         QSystemTrayIcon::Information);
+                         QSystemTrayIcon::Information,
+                         this);
   }
   else {
-    if (is_tray_activated) {
-      qApp->trayIcon()->showMessage(tr("Database was not defragmented"),
-                                    tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."),
-                                    QSystemTrayIcon::Warning,
-                                    TRAY_ICON_BUBBLE_TIMEOUT);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Database was not defragmented"),
-                       tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."));
-    }
+    qApp->showGuiMessage(tr("Database was not defragmented"),
+                         tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."),
+                         QSystemTrayIcon::Warning,
+                         this);
   }
 
   qApp->closeLock()->unlock();
