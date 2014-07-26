@@ -31,11 +31,11 @@ FeedsToolBar::FeedsToolBar(const QString &title, QWidget *parent) : BaseToolBar(
 FeedsToolBar::~FeedsToolBar() {
 }
 
-QHash<QString, QAction *> FeedsToolBar::availableActions() const {
+QHash<QString, QAction*> FeedsToolBar::availableActions() const {
   return FormMain::instance()->allActions();;
 }
 
-QList<QAction *> FeedsToolBar::changeableActions() const {
+QList<QAction*> FeedsToolBar::changeableActions() const {
   return actions();
 }
 
