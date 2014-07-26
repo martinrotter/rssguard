@@ -1,6 +1,24 @@
 #################################################################
 #
-# RSS Guard compilation script for CMake.
+# This file is part of RSS Guard.
+#
+# Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+#
+# RSS Guard is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# RSS Guard is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with RSS Guard. If not, see <http:# www.gnu.org/licenses/>.
+#
+#
+#  This is RSS Guard compilation script for CMake.
 #
 # Usage:
 #   a) DEBUG build for testing.
@@ -10,30 +28,39 @@
 #     cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT_5=ON
 #
 # Arguments:
-#   "-DCMAKE_INSTALL_PREFIX=/usr"
+#   -DCMAKE_INSTALL_PREFIX=/usr
 #     Installation path, replace with something like "C:\rssguard" on Windows.
 #
-#   "-DUSE_QT_5=OFF"
+#   -DUSE_QT_5=OFF
 #     Specifies which major Qt version to use. Qt 4 and Qt 5 are supported.
 #     If "OFF" is passed as an argument, then Qt 4 is used. Default is "OFF".
 #
-#   "-DBUNDLE_ICON_THEMES=ON"
+#   -DBUNDLE_ICON_THEMES=ON
 #     If "ON", then custom icons theme(s) will be bundled with application
 #     installation. If "OFF", then no icon theme(s) will be available for
 #     the application and application will run in iconless mode.
 #     Default and recommended value is "ON".
 #
-#   "-DENABLE_OS2_RC=OFF"
+#   -DENABLE_OS2_RC=OFF
 #     If "ON" then icon is compiled into executable file on OS/2. Defaults to "OFF".
+#
+# Refreshing translation sources:
+#   make lupdate
+#
+# Generating source tarballs:
+#   make dist or make package_source
+#
+# Generating binary tarballs:
+#   make package
 #
 # Other information:
 #   - supports Windows, Linux, OS/2 (eComStation),
 #   - Qt 4.7.3 and higher is required,
 #   - resource compiler (windres.exe) is needed on MinGW,
-#   - resource compiler (rc.exe) is needed on OS/2.
+#   - resource compiler (rc.exe) is recommended on OS/2.
 #
 # Authors and contributors:
-#   - Martin Rotter (project leader)
+#   - Martin Rotter (project leader),
 #   - Elbert Pol (huge OS/2-related contributions)
 #
 #################################################################
@@ -51,8 +78,8 @@ endif(WIN32 OR OS2)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "1.9.9.9")
-set(FILE_VERSION "1,9,9,9")
+set(APP_VERSION "2.0.0.0")
+set(FILE_VERSION "0,0,0,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -70,6 +97,7 @@ option(USE_QT_5 "Use Qt 5 for building" OFF)
 option(ENABLE_OS2_RC "Compile application icon on OS/2" OFF)
 option(BUNDLE_ICON_THEMES "Equip installation with custom icon themes" ON)
 
+# Set appropriate CMake policies.
 if(POLICY CMP0012)
   cmake_policy(SET CMP0012 NEW)
 endif()
@@ -80,18 +108,23 @@ else(${USE_QT_5})
   cmake_minimum_required(VERSION 2.8.0)
 endif(${USE_QT_5})
 
+if(APPLE AND NOT USE_QT_5)
+  message(FATAL_ERROR "[${APP_LOW_NAME}] Only Qt 5.x.x is supported on Mac OS X.")
+endif(APPLE AND NOT USE_QT_5)
+
+message(STATUS "")
+message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
+message(STATUS "[${APP_LOW_NAME}] Use Qt 5 for building -> ${USE_QT_5}")
+message(STATUS "[${APP_LOW_NAME}] Equip installation with custom icon themes -> ${BUNDLE_ICON_THEMES}")
+message(STATUS "[${APP_LOW_NAME}] Compile application icon on OS/2 -> ${ENABLE_OS2_RC}")
+message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
+message(STATUS "")
+
 message(STATUS "[${APP_LOW_NAME}] Welcome to ${APP_NAME} compilation process.")
 message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
-if(BUNDLE_ICON_THEMES)
-  message(STATUS "[${APP_LOW_NAME}] Custom icon themes will be installed.")
-else(BUNDLE_ICON_THEMES)
-  message(STATUS "[${APP_LOW_NAME}] Custom icon themes will NOT be installed.")
-endif(BUNDLE_ICON_THEMES)
-
 # Setup misc options.
 set(CMAKE_COLOR_MAKEFILE ON)
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/resources/cmake ${CMAKE_MODULE_PATH})
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Eliminate a warning when building in Windows that relates
@@ -128,20 +161,23 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
     string(REGEX REPLACE "\n" "" GIT_REVISION "${GIT_REVISION}")
     set(APP_REVISION ${GIT_REVISION})
   else(GIT_FOUND)
-    set(APP_REVISION -)
+    # Git was not found, we cannot determine current revision.
+    set(APP_REVISION "-")
   endif(GIT_FOUND)
 else(EXISTS "${PROJECT_SOURCE_DIR}/.git")
-  set(APP_REVISION -)
+  # Not information for Git are available, this is stripped
+  # build environment
+  set(APP_REVISION "-")
 endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
-message(STATUS "[${APP_LOW_NAME}] Revision number obtained: " ${APP_REVISION} ".")
+message(STATUS "[${APP_LOW_NAME}] Revision number obtained: ${APP_REVISION}.")
 
 # Configure desktop entry for Linux.
 if(UNIX)
   message(STATUS "[${APP_LOW_NAME}] Generating desktop entry for Linux.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
-    ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/rssguard.desktop
+    ${CMAKE_BINARY_DIR}/resources/desktop/rssguard.desktop
   )
   set(DESKTOP_ENTRY_PATH ${CMAKE_INSTALL_PREFIX}/share/applications)
 endif(UNIX)
@@ -149,15 +185,16 @@ endif(UNIX)
 # Configure internal C++ defines.
 configure_file (
   ${PROJECT_SOURCE_DIR}/src/definitions/definitions.h.in
-  ${CMAKE_CURRENT_BINARY_DIR}/src/definitions/definitions.h
+  ${CMAKE_BINARY_DIR}/src/definitions/definitions.h
 )
 
 # Define some useful DEBUG for, ehrm, debug build.
-if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
+string(TOLOWER CMAKE_BUILD_TYPE CMAKE_BUILD_TYPE)
+if(CMAKE_BUILD_TYPE STREQUAL "release")
   message(STATUS "[${APP_LOW_NAME}] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")
   set(CMAKE_BUILD_TYPE MinSizeRel)
   message(STATUS "[${APP_LOW_NAME}] Output executable file is optimized for minimum size.")
-else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
+else(CMAKE_BUILD_TYPE STREQUAL "release")
   message(STATUS "[${APP_LOW_NAME}] A debug build is chosen.")
   add_definitions(-DDEBUG)
   set(CMAKE_BUILD_TYPE Debug)
@@ -167,19 +204,16 @@ else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" 
 message(STATUS "[${APP_LOW_NAME}] Enabling verbose makefile and full warning reports.")
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   add_definitions(-pedantic -Wall -Wextra)
-elseif(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
-  #add_definitions(/W3)
 endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
 # Verbose compiling outputs.
 set(CMAKE_VERBOSE_MAKEFILE ON)
-
-endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
+endif(CMAKE_BUILD_TYPE STREQUAL "release")
 
 # Force Qt to use string builders.
 add_definitions(-DQT_USE_QSTRINGBUILDER)
 
-# Unicode settings.
+# Force Unicode.
 add_definitions(-DUNICODE -D_UNICODE)
 
 if(${USE_QT_5})
@@ -203,7 +237,7 @@ if(${USE_QT_5})
   endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
 endif(${USE_QT_5})
 
-# Setup libraries.
+# Setup librar  ies.
 if(${USE_QT_5})
   find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools)
 else(${USE_QT_5})
@@ -232,13 +266,13 @@ if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for Windows.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
-    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
+    ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
   )
 elseif(OS2 AND ${ENABLE_OS2_RC})
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
-    ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
+    ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
   )
 endif(WIN32)
 
@@ -253,7 +287,7 @@ if(MINGW AND WIN32)
 
   set(APP_SOURCES
       ${APP_SOURCES}
-      ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
+      ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 elseif(OS2)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Zstack 0x2000 -Zlinker \"DISABLE 1121\" -s -Zlinker /PM:PM -Zno-fork -Zhigh-mem -Zmap")
 
@@ -267,12 +301,12 @@ elseif(OS2)
 
     set(APP_SOURCES
         ${APP_SOURCES}
-        ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
+        ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
   endif(${ENABLE_OS2_RC})
 elseif(WIN32 AND MSVC)
   # MSVC takes care of this automatically - no need to use windres.exe
   # for MSVC compilers.
-  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
+  set(APP_SOURCES ${APP_SOURCES} ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
 endif(MINGW AND WIN32)
 
 # APP source files.
@@ -477,9 +511,9 @@ if(WIN32 OR OS2)
     src/qtsingleapplication/qtlocalpeer.cpp
     src/qtsingleapplication/qtsingleapplication.cpp
 
-    src/updater/main.cpp
-
+    # MAIN sources.
     src/updater/formupdater.cpp
+    src/updater/main.cpp
   )
 
   set(UPDATER_HEADERS
@@ -487,13 +521,14 @@ if(WIN32 OR OS2)
     src/qtsingleapplication/qtlocalpeer.h
     src/qtsingleapplication/qtsingleapplication.h
 
+    # MAIN headers.
     src/updater/formupdater.h
   )
 endif(WIN32 OR OS2)
 
 # Add custom icon on Mac OS X.
 if(APPLE)
-  SET (APP_SOURCES ${APP_SOURCES} resources/graphics/rssguard.icns)
+  SET (APP_SOURCES ${APP_SOURCES} resources/macosx/rssguard.icns)
 endif(APPLE)
 
 # Wrap files, create moc files.
@@ -522,13 +557,12 @@ endif(${USE_QT_5})
 
 # Include additional directory paths.
 include_directories (
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/gui
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/network-web
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/dynamic-shortcuts
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/updater
-  ${CMAKE_CURRENT_BINARY_DIR}
-  ${CMAKE_CURRENT_BINARY_DIR}/src
+  ${CMAKE_SOURCE_DIR}/src
+  ${CMAKE_SOURCE_DIR}/src/gui
+  ${CMAKE_SOURCE_DIR}/src/network-web
+  ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts
+  ${CMAKE_SOURCE_DIR}/src/updater
+  ${CMAKE_BINARY_DIR}/src
 )
 
 # Compile "rssguard_updater" utility on supported platforms.
@@ -616,7 +650,6 @@ if(WIN32 OR OS2)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
-
   install(TARGETS ${UPDATER_EXE_NAME}
           RUNTIME DESTINATION ./)
 
@@ -643,46 +676,54 @@ if(WIN32 OR OS2)
           DESTINATION ./)
 
   if(WIN32)
-    # Copy "7za" utility.
+    # Copy "7za" utility on Windows, OS/2 uses built-in "7za".
     install(FILES resources/7za/7za.exe resources/7za/7za_license.txt
             DESTINATION ./)
   endif(WIN32)
 elseif(APPLE)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")
 
-  SET(MACOSX_BUNDLE_ICON_FILE rssguard.icns)
-  SET(MACOSX_BUNDLE_INFO_STRING "${EXE_NAME} ${APP_VERSION}")
-  SET(MACOSX_BUNDLE_GUI_IDENTIFIER "${APP_URL_BACKWARDS}")
-  SET(MACOSX_BUNDLE_LONG_VERSION_STRING "${APP_VERSION}")
-  SET(MACOSX_BUNDLE_BUNDLE_NAME "${EXE_NAME}")
-  SET(MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}")
-  SET(MACOSX_BUNDLE_BUNDLE_VERSION "${APP_VERSION}")
-  SET(MACOSX_BUNDLE_COPYRIGHT "(c) ${APP_AUTHOR}")
-  SET_SOURCE_FILES_PROPERTIES(${CMAKE_SOURCE_DIR}/resources/graphics/rssguard.icns
+  set_target_properties(${EXE_NAME}
+                        PROPERTIES
+                        MACOSX_BUNDLE_INFO_PLIST
+                        "${CMAKE_SOURCE_DIR}/resources/macosx/Info.plist.in")
+
+  set_source_files_properties(${CMAKE_SOURCE_DIR}/resources/macosx/${APP_LOW_NAME}.icns
                               PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
 
+  set(MACOSX_BUNDLE_ICON_FILE ${APP_LOW_NAME}.icns)
+  set(MACOSX_BUNDLE_INFO_STRING "${EXE_NAME} ${APP_VERSION}")
+  set(MACOSX_BUNDLE_GUI_IDENTIFIER "${APP_URL_BACKWARDS}")
+  set(MACOSX_BUNDLE_LONG_VERSION_STRING "${APP_VERSION}")
+  set(MACOSX_BUNDLE_BUNDLE_NAME "${EXE_NAME}")
+  set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}")
+  set(MACOSX_BUNDLE_BUNDLE_VERSION "${APP_VERSION}")
+  set(MACOSX_BUNDLE_COPYRIGHT "(c) ${APP_AUTHOR}")
+
   install(TARGETS ${EXE_NAME} BUNDLE DESTINATION ${CMAKE_INSTALL_PREFIX})
-  set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${APP_LOW_NAME}.app/Contents/Resources/)
+
+  # Setup custom "bundle" prefix.
+  set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${EXE_NAME}.app/Contents/Resources)
 
   if(BUNDLE_ICON_THEMES)
     install(DIRECTORY resources/graphics/icons/mini-kfaenza
-            DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/icons)
+            DESTINATION ${APPLE_PREFIX}/icons)
   endif(BUNDLE_ICON_THEMES)
 
-  install(DIRECTORY resources/skins/base
-          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/skins)
+  install(DIRECTORY resources/skins
+          DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/misc
-          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/)
+          DESTINATION ${APPLE_PREFIX})
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
-          DESTINATION ${APPLE_PREFIX}/share/pixmaps
+          DESTINATION ${APPLE_PREFIX}
           RENAME ${APP_LOW_NAME}.png)
   install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
-          DESTINATION ${APPLE_PREFIX}/share/rssguard/icons
+          DESTINATION ${APPLE_PREFIX}
           RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM}
-          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/l10n)
+          DESTINATION ${APPLE_PREFIX}/l10n)
   install(FILES ${APP_TEXT}
-          DESTINATION ${APPLE_PREFIX}/share/${APP_LOW_NAME}/information)
+          DESTINATION ${APPLE_PREFIX}/information)
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
   install(TARGETS ${EXE_NAME}
@@ -696,8 +737,8 @@ elseif(UNIX)
   install(DIRECTORY resources/skins/base
           DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc
-          DESTINATION share/${APP_LOW_NAME}/)
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
+          DESTINATION share/${APP_LOW_NAME})
+  install(FILES ${CMAKE_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
           DESTINATION share/applications)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
           DESTINATION share/pixmaps
@@ -729,14 +770,14 @@ add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 # make lupdate implementation.
 if(${USE_QT_5})
   add_custom_target(lupdate
-    ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-      COMMAND ${Qt5_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+    ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
+      COMMAND ${Qt5_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
 else(${USE_QT_5})
   add_custom_target(lupdate
-    ${QT_QMAKE_EXECUTABLE} -project -o ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
-      COMMAND ${QT_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_CURRENT_BINARY_DIR}/${APP_LOW_NAME}.pro
+    ${QT_QMAKE_EXECUTABLE} -project -o ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
+      COMMAND ${QT_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
 endif(${USE_QT_5})

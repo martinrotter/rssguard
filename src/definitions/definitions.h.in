@@ -165,7 +165,7 @@
 #define OS_ID   ""
 #endif
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_OSX)
+#if defined(Q_OS_LINUX)
 #define APP_DESKTOP_ENTRY_PATH "@DESKTOP_ENTRY_PATH@"
 #define APP_DESKTOP_ENTRY_FILE "@APP_LOW_NAME@.desktop"
 #define APP_LANG_PATH APP_PREFIX + QString("/share/rssguard/l10n")
@@ -173,16 +173,22 @@
 #define APP_INFO_PATH APP_PREFIX + QString("/share/rssguard/information")
 #define APP_THEME_PATH APP_PREFIX + QString("/share/rssguard/icons")
 #define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
-#define APP_HTML_PATH APP_PREFIX + QString("/share/rssguard/html")
 #define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/@APP_LOW_NAME@_plain.png")
+#elif defined(Q_OS_OSX) || defined(Q_WS_MAC)
+#define APP_LANG_PATH APP_PREFIX + QString("/l10n")
+#define APP_SKIN_PATH APP_PREFIX + QString("/skins")
+#define APP_INFO_PATH APP_PREFIX + QString("/information")
+#define APP_THEME_PATH APP_PREFIX + QString("/icons")
+#define APP_MISC_PATH APP_PREFIX + QString("/misc")
+#define APP_ICON_PATH APP_PREFIX + QString("/@APP_LOW_NAME@.png")
+#define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/@APP_LOW_NAME@_plain.png")
 #elif defined(Q_OS_WIN) || defined(Q_OS_OS2)
 #define APP_LANG_PATH QApplication::applicationDirPath() + QString("/l10n")
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
 #define APP_INFO_PATH QApplication::applicationDirPath()
 #define APP_THEME_PATH QApplication::applicationDirPath() + QString("/icons")
 #define APP_MISC_PATH QApplication::applicationDirPath() + QString("/misc")
-#define APP_HTML_PATH QApplication::applicationDirPath() + QString("/html")
 #define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@_plain.png")
 #endif
