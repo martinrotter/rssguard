@@ -152,7 +152,6 @@ message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
   if(GIT_FOUND)
-    # TODO: https://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines#Git
     execute_process(
       COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}

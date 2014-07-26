@@ -47,9 +47,9 @@ Localization *Localization::instance() {
 }
 
 QString Localization::desiredLanguage() {
-  return Settings::instance()->value(APP_CFG_GEN,
-                                     "language",
-                                     QLocale::system().name()).toString();
+  return qApp->settings()->value(APP_CFG_GEN,
+                                 "language",
+                                 QLocale::system().name()).toString();
 }
 
 void Localization::load() {

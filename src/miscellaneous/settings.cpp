@@ -26,8 +26,6 @@
 #include <QWebSettings>
 
 
-QPointer<Settings> Settings::s_instance;
-
 Settings::Settings(const QString &file_name, Format format,
                    const Type &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
@@ -45,15 +43,9 @@ QSettings::Status Settings::checkSettings() {
   return status();
 }
 
-Settings *Settings::instance() {
-  if (s_instance.isNull()) {
-    setupSettings();
-  }
+Settings *Settings::setupSettings(QObject *parent) {
+  Settings *new_settings;
 
-  return s_instance;
-}
-
-QSettings::Status Settings::setupSettings() {
   // If settings file exists in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).
   // Otherwise use settings file stored in homePath();
@@ -66,8 +58,8 @@ QSettings::Status Settings::setupSettings() {
   // Check if portable settings are available.
   if (QFile(app_path_file).exists()) {
     // Portable settings are available, use them.
-    s_instance = new Settings(app_path_file, QSettings::IniFormat,
-                              Settings::Portable, qApp);
+    new_settings = new Settings(app_path_file, QSettings::IniFormat,
+                                Settings::Portable, parent);
 
     // Construct icon cache in the same path.
     QString web_path = app_path + QDir::separator() + QString(APP_DB_WEB_PATH);
@@ -84,8 +76,8 @@ QSettings::Status Settings::setupSettings() {
                         QString(APP_LOW_H_NAME);
     QString home_path_file = home_path + relative_path;
 
-    s_instance = new Settings(home_path_file, QSettings::IniFormat,
-                              Settings::NonPortable, qApp);
+    new_settings = new Settings(home_path_file, QSettings::IniFormat,
+                                Settings::NonPortable, parent);
 
     // Construct icon cache in the same path.
     QString web_path = home_path + QDir::separator() + QString(APP_DB_WEB_PATH);
@@ -96,5 +88,5 @@ QSettings::Status Settings::setupSettings() {
            qPrintable(QDir::toNativeSeparators(home_path_file)));
   }
 
-  return (*s_instance).checkSettings();
+  return new_settings;
 }

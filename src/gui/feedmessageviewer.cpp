@@ -76,7 +76,7 @@ FeedMessageViewer::~FeedMessageViewer() {
 }
 
 void FeedMessageViewer::saveSize() {
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
 
   m_feedsView->saveExpandedStates();
 
@@ -108,7 +108,7 @@ void FeedMessageViewer::saveSize() {
 }
 
 void FeedMessageViewer::loadSize() {
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
   int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
 
   m_feedsView->loadExpandedStates();
@@ -436,9 +436,9 @@ void FeedMessageViewer::vacuumDatabase() {
 }
 
 void FeedMessageViewer::refreshVisualProperties() {
-  Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(Settings::instance()->value(APP_CFG_GUI,
-                                                                                                  "toolbar_style",
-                                                                                                  Qt::ToolButtonIconOnly).toInt());
+  Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(APP_CFG_GUI,
+                                                                                              "toolbar_style",
+                                                                                              Qt::ToolButtonIconOnly).toInt());
 
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);

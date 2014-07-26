@@ -91,9 +91,9 @@ bool SystemTrayIcon::isSystemTrayAvailable() {
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
-  return SystemTrayIcon::isSystemTrayAvailable() && Settings::instance()->value(APP_CFG_GUI,
-                                                                                "use_tray_icon",
-                                                                                true).toBool();
+  return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(APP_CFG_GUI,
+                                                                            "use_tray_icon",
+                                                                            true).toBool();
 }
 
 SystemTrayIcon *SystemTrayIcon::instance() {

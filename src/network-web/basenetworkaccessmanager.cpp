@@ -19,6 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "application.h"
 
 #include <QNetworkProxy>
 #include <QNetworkReply>
@@ -38,7 +39,7 @@ BaseNetworkAccessManager::~BaseNetworkAccessManager() {
 
 void BaseNetworkAccessManager::loadSettings() {
   QNetworkProxy new_proxy;
-  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(Settings::instance()->value(APP_CFG_PROXY,
+  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(APP_CFG_PROXY,
                                                                                                                    "proxy_type",
                                                                                                                    QNetworkProxy::NoProxy).toInt());
 
@@ -52,7 +53,7 @@ void BaseNetworkAccessManager::loadSettings() {
     return;
   }
 
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
 
   // Custom proxy is selected, set it up.
   new_proxy.setType(selected_proxy_type);

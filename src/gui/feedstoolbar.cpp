@@ -40,15 +40,15 @@ QList<QAction *> FeedsToolBar::changeableActions() const {
 }
 
 void FeedsToolBar::saveChangeableActions(const QStringList &actions) {
-  Settings::instance()->setValue(APP_CFG_GUI, "feeds_toolbar", actions.join(","));
+  qApp->settings()->setValue(APP_CFG_GUI, "feeds_toolbar", actions.join(","));
   loadChangeableActions(actions);
 }
 
 void FeedsToolBar::loadChangeableActions() {
-  QStringList action_names = Settings::instance()->value(APP_CFG_GUI,
-                                                         "feeds_toolbar",
-                                                         "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead").toString().split(',',
-                                                                                                                                                                                                              QString::SkipEmptyParts);
+  QStringList action_names = qApp->settings()->value(APP_CFG_GUI,
+                                                     "feeds_toolbar",
+                                                     "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead").toString().split(',',
+                                                                                                                         QString::SkipEmptyParts);
 
   loadChangeableActions(action_names);
 }

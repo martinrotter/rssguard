@@ -104,8 +104,8 @@ int main(int argc, char *argv[]) {
   DynamicShortcuts::load(main_window.allActions().values());
 
   // Display main window.
-  if (Settings::instance()->value(APP_CFG_GUI, "start_hidden",
-                                  false).toBool() &&
+  if (qApp->settings()->value(APP_CFG_GUI, "start_hidden",
+                              false).toBool() &&
       SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
     main_window.switchVisibility(true);

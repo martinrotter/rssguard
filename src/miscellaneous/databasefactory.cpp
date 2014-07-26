@@ -97,7 +97,7 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
 }
 
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
-  if (Settings::instance()->type() == Settings::Portable) {
+  if (qApp->settings()->type() == Settings::Portable) {
     m_sqliteDatabaseFilePath = qApp->applicationDirPath() +
                                QDir::separator() +
                                QString(APP_DB_SQLITE_PATH);
@@ -330,9 +330,9 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 }
 
 void DatabaseFactory::determineDriver() {
-  QString db_driver = Settings::instance()->value(APP_CFG_DB,
-                                                  "database_driver",
-                                                  APP_DB_SQLITE_DRIVER).toString();
+  QString db_driver = qApp->settings()->value(APP_CFG_DB,
+                                              "database_driver",
+                                              APP_DB_SQLITE_DRIVER).toString();
 
   if (db_driver == APP_DB_MYSQL_DRIVER &&
       QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
@@ -344,7 +344,7 @@ void DatabaseFactory::determineDriver() {
   else {
     // User wants to use SQLite, which is always available. Check if file-based
     // or in-memory database will be used.
-    if (Settings::instance()->value(APP_CFG_DB, "use_in_memory_db", false).toBool()) {
+    if (qApp->settings()->value(APP_CFG_DB, "use_in_memory_db", false).toBool()) {
       // Use in-memory SQLite database.
       m_activeDatabaseDriver = SQLITE_MEMORY;
 
@@ -382,10 +382,10 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
       // yet, add it and set it up.
       database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
 
-      database.setHostName(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
-      database.setPort(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
-      database.setUserName(Settings::instance()->value(APP_CFG_DB, "mysql_username").toString());
-      database.setPassword(Settings::instance()->value(APP_CFG_DB, "mysql_password").toString());
+      database.setHostName(qApp->settings()->value(APP_CFG_DB, "mysql_hostname").toString());
+      database.setPort(qApp->settings()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
+      database.setUserName(qApp->settings()->value(APP_CFG_DB, "mysql_username").toString());
+      database.setPassword(qApp->settings()->value(APP_CFG_DB, "mysql_password").toString());
       database.setDatabaseName(APP_LOW_NAME);
     }
 
@@ -408,10 +408,10 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER,
                                                     connection_name);
 
-  database.setHostName(Settings::instance()->value(APP_CFG_DB, "mysql_hostname").toString());
-  database.setPort(Settings::instance()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
-  database.setUserName(Settings::instance()->value(APP_CFG_DB, "mysql_username").toString());
-  database.setPassword(Settings::instance()->value(APP_CFG_DB, "mysql_password").toString());
+  database.setHostName(qApp->settings()->value(APP_CFG_DB, "mysql_hostname").toString());
+  database.setPort(qApp->settings()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
+  database.setUserName(qApp->settings()->value(APP_CFG_DB, "mysql_username").toString());
+  database.setPassword(qApp->settings()->value(APP_CFG_DB, "mysql_password").toString());
 
   if (!database.open()) {
     qFatal("MySQL database was NOT opened. Delivered error message: '%s'",

@@ -74,9 +74,9 @@ void FeedsView::quit() {
 void FeedsView::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.
-  m_globalAutoUpdateInitialInterval = Settings::instance()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
+  m_globalAutoUpdateInitialInterval = qApp->settings()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
   m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  m_globalAutoUpdateEnabled = Settings::instance()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool();
+  m_globalAutoUpdateEnabled = qApp->settings()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool();
 
   // Start global auto-update timer if it is not running yet.
   // NOTE: The timer must run even if global auto-update
@@ -117,7 +117,7 @@ FeedsModelFeed *FeedsView::isCurrentIndexFeed() const {
 }
 
 void FeedsView::saveExpandedStates() {
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
 
   // Iterate all categories and save their expand statuses.
   foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
@@ -128,7 +128,7 @@ void FeedsView::saveExpandedStates() {
 }
 
 void FeedsView::loadExpandedStates() {
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
 
   // Iterate all categories and save their expand statuses.
   foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
@@ -159,7 +159,7 @@ void FeedsView::updateAllFeeds() {
 }
 
 void FeedsView::updateAllFeedsOnStartup() {
-  if (Settings::instance()->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool()) {
+  if (qApp->settings()->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
   }

@@ -20,9 +20,13 @@
 
 #include "qtsingleapplication/qtsingleapplication.h"
 
+#include "miscellaneous/settings.h"
+
 #if defined(qApp)
 #undef qApp
 #endif
+
+// Define new qApp macro. Yeaaaaah.
 #define qApp (Application::instance())
 
 
@@ -35,10 +39,21 @@ class Application : public QtSingleApplication {
     explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
 
+    inline Settings *settings() {
+      if (m_settings == NULL) {
+        m_settings = Settings::setupSettings(this);
+      }
+
+      return m_settings;
+    }
+
     // Returns pointer to "GOD" application singleton.
     inline static Application *instance() {
       return static_cast<Application*>(QCoreApplication::instance());
     }
+
+  private:
+    Settings *m_settings;
 };
 
 #endif // APPLICATION_H

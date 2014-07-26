@@ -19,7 +19,7 @@
 
 
 Application::Application(const QString &id, int &argc, char **argv)
-  : QtSingleApplication(id, argc, argv) {
+  : QtSingleApplication(id, argc, argv), m_settings(NULL) {
 }
 
 Application::~Application() {

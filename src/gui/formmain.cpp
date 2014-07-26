@@ -247,7 +247,7 @@ void FormMain::onAboutToQuit() {
   qDebug("Cleaning up resources and saving application state.");
   m_ui->m_tabWidget->feedMessageViewer()->quit();
 
-  if (Settings::instance()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
+  if (qApp->settings()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
     m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
   }
 
@@ -336,7 +336,7 @@ void FormMain::setupIcons() {
 
 void FormMain::loadSize() {
   QRect screen = qApp->desktop()->screenGeometry();
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
 
   // Reload main window size & position.
   resize(settings->value(APP_CFG_GUI, "window_size", size()).toSize());
@@ -360,7 +360,7 @@ void FormMain::loadSize() {
 }
 
 void FormMain::saveSize() {
-  Settings *settings = Settings::instance();
+  Settings *settings = qApp->settings();
   bool is_fullscreen = isFullScreen();
 
   if (is_fullscreen) {
@@ -450,9 +450,9 @@ void FormMain::changeEvent(QEvent *event) {
     case QEvent::WindowStateChange: {
       if (this->windowState() & Qt::WindowMinimized &&
           SystemTrayIcon::isSystemTrayActivated() &&
-          Settings::instance()->value(APP_CFG_GUI,
-                                      "hide_when_minimized",
-                                      false).toBool()) {
+          qApp->settings()->value(APP_CFG_GUI,
+                                  "hide_when_minimized",
+                                  false).toBool()) {
         event->ignore();
         QTimer::singleShot(CHANGE_EVENT_DELAY, this, SLOT(switchVisibility()));
       }

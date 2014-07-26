@@ -33,9 +33,6 @@ class Settings : public QSettings {
       NonPortable
     };
 
-    // Singleton getter.
-    static Settings *instance();
-
     // Destructor.
     virtual ~Settings();
 
@@ -60,18 +57,15 @@ class Settings : public QSettings {
     // Synchronizes settings.
     QSettings::Status checkSettings();
 
+    // Creates settings file in correct location.
+    static Settings* setupSettings(QObject *parent);
+
   private:
     // Constructor.
     Settings(const QString & file_name, Format format,
              const Type &type, QObject * parent = 0);
 
     Type m_initializationStatus;
-
-    // Creates settings file in correct location.
-    static QSettings::Status setupSettings();
-
-    // Private singleton value.
-    static QPointer<Settings> s_instance;
 };
 
 #endif // SETTINGS_H

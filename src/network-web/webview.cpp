@@ -228,9 +228,9 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
-    bool are_gestures_enabled = Settings::instance()->value(APP_CFG_BROWSER,
-                                                            "gestures_enabled",
-                                                            true).toBool();
+    bool are_gestures_enabled = qApp->settings()->value(APP_CFG_BROWSER,
+                                                        "gestures_enabled",
+                                                        true).toBool();
     if (are_gestures_enabled) {
       QPoint release_point = event->pos();
       int left_move = m_gestureOrigin.x() - release_point.x();

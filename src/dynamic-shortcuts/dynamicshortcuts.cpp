@@ -19,6 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "application.h"
 
 #include <QAction>
 
@@ -26,8 +27,8 @@
 DynamicShortcuts::DynamicShortcuts() {
 }
 
-void DynamicShortcuts::save(const QList<QAction *> actions) {
-  Settings *settings = Settings::instance();
+void DynamicShortcuts::save(const QList<QAction*> actions) {
+  Settings *settings = qApp->settings();
 
   foreach (QAction *action, actions) {
     settings->setValue(APP_CFG_CUTS,
@@ -36,8 +37,8 @@ void DynamicShortcuts::save(const QList<QAction *> actions) {
   }
 }
 
-void DynamicShortcuts::load(const QList<QAction *> actions) {
-  Settings *settings = Settings::instance();
+void DynamicShortcuts::load(const QList<QAction*> actions) {
+  Settings *settings = qApp->settings();
 
   foreach (QAction *action, actions) {
     QString shortcut_for_action = settings->value(APP_CFG_CUTS,
