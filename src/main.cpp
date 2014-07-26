@@ -96,6 +96,7 @@ int main(int argc, char *argv[]) {
 
   // Instantiate main application window.
   FormMain main_window;
+  application.setMainForm(&main_window);
 
   // Set correct information for main window.
   main_window.setWindowTitle(APP_LONG_NAME);
@@ -117,8 +118,7 @@ int main(int argc, char *argv[]) {
 
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    SystemTrayIcon::instance()->show();
-    main_window.tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
+    qApp->showTrayIcon();
   }
 
   // Setup single-instance behavior.

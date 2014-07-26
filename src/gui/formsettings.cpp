@@ -294,10 +294,10 @@ void FormSettings::promptForRestart() {
     if (question_result == QMessageBox::Yes) {
       if (!QProcess::startDetached(qApp->applicationFilePath())) {
         if (SystemTrayIcon::isSystemTrayActivated()) {
-          SystemTrayIcon::instance()->showMessage(tr("Problem with application restart"),
-                                                  tr("Application couldn't be restarted. "
-                                                     "Please, restart it manually for changes to take effect."),
-                                                  QSystemTrayIcon::Warning);
+          qApp->trayIcon()->showMessage(tr("Problem with application restart"),
+                                        tr("Application couldn't be restarted. "
+                                           "Please, restart it manually for changes to take effect."),
+                                        QSystemTrayIcon::Warning);
         }
         else {
           MessageBox::show(this,
@@ -800,12 +800,10 @@ void FormSettings::saveInterface() {
                        m_ui->m_radioTrayOn->isChecked());
 
     if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
-      SystemTrayIcon::instance()->show();
-      FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
+      qApp->showTrayIcon();
     }
     else {
-      FormMain::instance()->display();
-      SystemTrayIcon::deleteInstance();
+      qApp->deleteTrayIcon();
     }
   }
 

@@ -209,9 +209,9 @@ void FormUpdate::startUpdate() {
       qDebug("External updater was not launched due to error.");
 
       if (SystemTrayIcon::isSystemTrayActivated()) {
-        SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
-                                                tr("Cannot launch external updater. Update application manually."),
-                                                QSystemTrayIcon::Warning);
+        qApp->trayIcon()->showMessage(tr("Cannot update application"),
+                                      tr("Cannot launch external updater. Update application manually."),
+                                      QSystemTrayIcon::Warning);
       }
       else {
         MessageBox::show(this,
@@ -244,10 +244,10 @@ void FormUpdate::startUpdate() {
     // Self-update and package are not available.
     if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
       if (SystemTrayIcon::isSystemTrayActivated()) {
-        SystemTrayIcon::instance()->showMessage(tr("Cannot update application"),
-                                                tr("Cannot navigate to installation file. Check new installation downloads "
-                                                   "manually on project website."),
-                                                QSystemTrayIcon::Warning);
+        qApp->trayIcon()->showMessage(tr("Cannot update application"),
+                                      tr("Cannot navigate to installation file. Check new installation downloads "
+                                         "manually on project website."),
+                                      QSystemTrayIcon::Warning);
       }
       else {
         MessageBox::show(this,

@@ -17,10 +17,62 @@
 
 #include "application.h"
 
+#include "miscellaneous/systemfactory.h"
+#include "gui/formmain.h"
+#include "gui/feedsview.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/messagebox.h"
+
 
 Application::Application(const QString &id, int &argc, char **argv)
-  : QtSingleApplication(id, argc, argv), m_settings(NULL) {
+  : QtSingleApplication(id, argc, argv), m_closeLock(NULL), m_mainForm(NULL), m_trayIcon(NULL), m_settings(NULL) {
 }
 
 Application::~Application() {
+  delete m_closeLock;
+}
+
+SystemTrayIcon *Application::trayIcon() {
+  if (m_trayIcon == NULL) {
+    m_trayIcon = new SystemTrayIcon(APP_ICON_PATH,
+                                    APP_ICON_PLAIN_PATH,
+                                    m_mainForm);
+    m_trayIcon->setToolTip(APP_LONG_NAME);
+  }
+
+  return m_trayIcon;
+}
+
+void Application::showTrayIcon() {
+  trayIcon()->show();
+
+  if (m_mainForm != NULL) {
+    m_mainForm->tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
+  }
+}
+
+void Application::deleteTrayIcon() {
+  if (m_trayIcon != NULL) {
+    qDebug("Disabling tray icon and raising main application window.");
+
+    m_mainForm->display();
+    delete m_trayIcon;
+    m_trayIcon = NULL;
+
+    // Make sure that application quits when last window is closed.
+    setQuitOnLastWindowClosed(true);
+  }
+}
+
+void Application::showGuiMessage(const QString& title, const QString& message,
+                                 QSystemTrayIcon::MessageIcon message_type,
+                                 QWidget* parent, int duration) {
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    trayIcon()->showMessage(title, message, message_type, duration);
+  }
+  else {
+    // TODO: Tray icon or OSD is not available, display simple text box.
+    MessageBox::show(parent, (QMessageBox::Icon) message_type,
+                     title, message);
+  }
 }

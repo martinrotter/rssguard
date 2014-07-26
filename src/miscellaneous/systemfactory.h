@@ -21,7 +21,6 @@
 #include <QObject>
 
 #include <QPointer>
-#include <QMutex>
 #include <QMetaType>
 #include <QHash>
 #include <QPair>
@@ -94,29 +93,10 @@ class SystemFactory : public QObject {
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
-    // Access to application-wide close lock.
-    inline QMutex *applicationCloseLock() const {
-      return m_applicationCloseLock;
-    }
-
     // Singleton getter.
     static SystemFactory *instance();
 
   private:
-    // This read-write lock is used by application on its close.
-    // Application locks this lock for WRITING.
-    // This means that if application locks that lock, then
-    // no other transaction-critical action can acquire lock
-    // for reading and won't be executed, so no critical action
-    // will be running when application quits
-    //
-    // EACH critical action locks this lock for READING.
-    // Several actions can lock this lock for reading.
-    // But of user decides to close the application (in other words,
-    // tries to lock the lock for writing), then no other
-    // action will be allowed to lock for reading.
-    QMutex *m_applicationCloseLock;
-
     static QPointer<SystemFactory> s_instance;
 };
 

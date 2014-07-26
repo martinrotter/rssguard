@@ -157,7 +157,7 @@ void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
   Q_UNUSED(total_messages)
 
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    SystemTrayIcon::instance()->setNumber(unread_messages);
+    qApp->trayIcon()->setNumber(unread_messages);
   }
 }
 
@@ -178,7 +178,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
   // Updates of some feeds finished, unlock the lock.
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 
   // And also hide progress bar.
   FormMain::instance()->statusBar()->clearProgress();
@@ -384,14 +384,14 @@ void FeedMessageViewer::initializeViews() {
 void FeedMessageViewer::vacuumDatabase() {
   bool is_tray_activated = SystemTrayIcon::isSystemTrayActivated();
 
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
     if (is_tray_activated) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot defragment database"),
-                                              tr("Database cannot be defragmented because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot defragment database"),
+                                    tr("Database cannot be defragmented because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -405,24 +405,16 @@ void FeedMessageViewer::vacuumDatabase() {
   }
 
   if (DatabaseFactory::instance()->vacuumDatabase()) {
-    if (is_tray_activated) {
-      SystemTrayIcon::instance()->showMessage(tr("Database defragmented"),
-                                              tr("Database was successfully defragmented."),
-                                              QSystemTrayIcon::Information);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Information,
-                       tr("Database defragmented"),
-                       tr("Database was successfully defragmented."));
-    }
+    qApp->showGuiMessage(tr("Database defragmented"),
+                         tr("Database was successfully defragmented."),
+                         QSystemTrayIcon::Information);
   }
   else {
     if (is_tray_activated) {
-      SystemTrayIcon::instance()->showMessage(tr("Database was not defragmented"),
-                                              tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."),
-                                              QSystemTrayIcon::Warning,
-                                              TRAY_ICON_BUBBLE_TIMEOUT);
+      qApp->trayIcon()->showMessage(tr("Database was not defragmented"),
+                                    tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."),
+                                    QSystemTrayIcon::Warning,
+                                    TRAY_ICON_BUBBLE_TIMEOUT);
     }
     else {
       MessageBox::show(this,
@@ -432,7 +424,7 @@ void FeedMessageViewer::vacuumDatabase() {
     }
   }
 
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 }
 
 void FeedMessageViewer::refreshVisualProperties() {

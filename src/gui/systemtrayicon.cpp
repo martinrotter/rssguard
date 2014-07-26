@@ -39,15 +39,13 @@ bool TrayIconMenu::event(QEvent *event) {
   if (Application::activeModalWidget() != NULL &&
       event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
-    SystemTrayIcon::instance()->showMessage(APP_LONG_NAME,
-                                            tr("Close opened modal dialogs first."),
-                                            QSystemTrayIcon::Warning);
+    qApp->trayIcon()->showMessage(APP_LONG_NAME,
+                                  tr("Close opened modal dialogs first."),
+                                  QSystemTrayIcon::Warning);
   }
   return QMenu::event(event);
 }
 #endif
-
-QPointer<SystemTrayIcon> SystemTrayIcon::s_trayIcon;
 
 SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
                                const QString &plain_icon,
@@ -96,28 +94,6 @@ bool SystemTrayIcon::isSystemTrayActivated() {
                                                                             true).toBool();
 }
 
-SystemTrayIcon *SystemTrayIcon::instance() {
-  if (s_trayIcon.isNull()) {
-    s_trayIcon = new SystemTrayIcon(APP_ICON_PATH,
-                                    APP_ICON_PLAIN_PATH,
-                                    FormMain::instance());
-  }
-
-  return s_trayIcon;
-}
-
-void SystemTrayIcon::deleteInstance() {
-  if (!s_trayIcon.isNull()) {
-    qDebug("Disabling tray icon and raising main application window.");
-    static_cast<FormMain*>((*s_trayIcon).parent())->display();
-    delete s_trayIcon.data();
-    s_trayIcon = NULL;
-
-    // Make sure that application quits when last window is closed.
-    qApp->setQuitOnLastWindowClosed(true);
-  }
-}
-
 void SystemTrayIcon::showPrivate() {
   // Make sure that application does not exit some window (for example
   // the settings window) gets closed. Behavior for main window
@@ -129,7 +105,7 @@ void SystemTrayIcon::showPrivate() {
   qDebug("Tray icon displayed.");
 }
 
-void SystemTrayIcon::show() {
+void SystemTrayIcon::show() { 
 #if defined(Q_OS_WIN)
   // Show immediately.
   qDebug("Showing tray icon immediately.");

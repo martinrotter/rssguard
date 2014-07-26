@@ -35,13 +35,10 @@
 QPointer<SystemFactory> SystemFactory::s_instance;
 
 SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
-  m_applicationCloseLock = new QMutex();
 }
 
 SystemFactory::~SystemFactory() {
   qDebug("Destroying SystemFactory instance.");
-
-  delete m_applicationCloseLock;
 }
 
 

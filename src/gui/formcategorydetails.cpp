@@ -119,7 +119,7 @@ void FormCategoryDetails::apply() {
     }
     else {
       if (SystemTrayIcon::isSystemTrayActivated()) {
-        SystemTrayIcon::instance()->showMessage(tr("Cannot add category"),
+        qApp->trayIcon()->showMessage(tr("Cannot add category"),
                                                 tr("Category was not added due to error."),
                                                 QSystemTrayIcon::Critical);
       }
@@ -137,7 +137,7 @@ void FormCategoryDetails::apply() {
     }
     else {
       if (SystemTrayIcon::isSystemTrayActivated()) {
-        SystemTrayIcon::instance()->showMessage(tr("Cannot edit category"),
+        qApp->trayIcon()->showMessage(tr("Cannot edit category"),
                                                 tr("Category was not edited due to error."),
                                                 QSystemTrayIcon::Critical);
       }

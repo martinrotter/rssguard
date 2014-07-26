@@ -165,10 +165,10 @@ void FormMain::processExecutionMessage(const QString &message) {
 
   if (message == APP_IS_RUNNING) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(APP_NAME,
-                                              tr("Application is already running."),
-                                              QSystemTrayIcon::Information,
-                                              TRAY_ICON_BUBBLE_TIMEOUT);
+      qApp->trayIcon()->showMessage(APP_NAME,
+                                    tr("Application is already running."),
+                                    QSystemTrayIcon::Information,
+                                    TRAY_ICON_BUBBLE_TIMEOUT);
     }
 
     display();
@@ -240,7 +240,7 @@ void FormMain::onSaveState(QSessionManager &manager) {
 void FormMain::onAboutToQuit() {
   // Make sure that we obtain close lock
   // BEFORE even trying to quit the application.
-  bool locked_safely = SystemFactory::instance()->applicationCloseLock()->tryLock(CLOSE_LOCK_TIMEOUT);
+  bool locked_safely = qApp->closeLock()->tryLock(CLOSE_LOCK_TIMEOUT);
 
   qApp->processEvents();
 
@@ -260,7 +260,7 @@ void FormMain::onAboutToQuit() {
     qDebug("Close lock was obtained safely.");
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
-    SystemFactory::instance()->applicationCloseLock()->unlock();
+    qApp->closeLock()->unlock();
   }
   else {
     // Request for write lock timed-out. This means
@@ -474,11 +474,11 @@ void FormMain::showAbout() {
 }
 
 void FormMain::showUpdates() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot check for updates"),
-                                              tr("You cannot check for updates because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot check for updates"),
+                                    tr("You cannot check for updates because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -494,15 +494,15 @@ void FormMain::showUpdates() {
   form_update.data()->exec();
   delete form_update.data();
 
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 }
 
 void FormMain::reportABug() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot open external browser"),
-                                              tr("Cannot open external browser. Navigate to application website manually."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot open external browser"),
+                                    tr("Cannot open external browser. Navigate to application website manually."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,

@@ -58,15 +58,8 @@ class SystemTrayIcon : public QSystemTrayIcon {
     // application settings.
     static bool isSystemTrayActivated();
 
-    // Creates new tray icon if necessary and returns it.
-    // WARNING: Use this in cooperation with SystemTrayIcon::isSystemTrayActivated().
-    static SystemTrayIcon *instance();
-    
     // Sets the number to be visible in the tray icon, number <= 0 removes it.
     void setNumber(int number = -1);
-
-    // Explicitle clears SystemTrayIcon instance from the memory.
-    static void deleteInstance();
     
   public slots:
     void show();
@@ -79,8 +72,6 @@ class SystemTrayIcon : public QSystemTrayIcon {
     QIcon m_normalIcon;
     QPixmap m_plainPixmap;
     QFont m_font;
-
-    static QPointer<SystemTrayIcon> s_trayIcon;
 };
 
 #endif // SYSTEMTRAYICON_H

@@ -140,14 +140,14 @@ void FeedsView::loadExpandedStates() {
 }
 
 void FeedsView::updateAllFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (qApp->closeLock()->tryLock()) {
     emit feedsUpdateRequested(allFeeds());
   }
   else {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update all items"),
-                                              tr("You cannot update all items because another feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot update all items"),
+                                    tr("You cannot update all items because another feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -166,14 +166,14 @@ void FeedsView::updateAllFeedsOnStartup() {
 }
 
 void FeedsView::updateSelectedFeeds() {
-  if (SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (qApp->closeLock()->tryLock()) {
     emit feedsUpdateRequested(selectedFeeds());
   }
   else {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot update selected items"),
-                                              tr("You cannot update selected items because another feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot update selected items"),
+                                    tr("You cannot update selected items because another feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -185,7 +185,7 @@ void FeedsView::updateSelectedFeeds() {
 }
 
 void FeedsView::executeNextAutoUpdate() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     qDebug("Delaying scheduled feed auto-updates for one minute "
            "due to another running update.");
 
@@ -212,17 +212,17 @@ void FeedsView::executeNextAutoUpdate() {
 
   if (feeds_for_update.isEmpty()) {
     // No feeds are scheduled for update now, unlock the master lock.
-    SystemFactory::instance()->applicationCloseLock()->unlock();
+    qApp->closeLock()->unlock();
   }
   else {
     // Request update for given feeds.
     emit feedsUpdateRequested(feeds_for_update);
 
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Scheduled update started"),
-                                              //: RSS Guard is performing updates right now.
-                                              tr("%1 is performing scheduled update of some feeds.").arg(APP_NAME),
-                                              QSystemTrayIcon::Information);
+      qApp->trayIcon()->showMessage(tr("Scheduled update started"),
+                                    //: RSS Guard is performing updates right now.
+                                    tr("%1 is performing scheduled update of some feeds.").arg(APP_NAME),
+                                    QSystemTrayIcon::Information);
     }
   }
 }
@@ -250,14 +250,14 @@ void FeedsView::clearAllFeeds() {
 }
 
 void FeedsView::addNewCategory() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot add standard category"),
-                                              tr("You cannot add new standard category now because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot add standard category"),
+                                    tr("You cannot add new standard category now because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -277,7 +277,7 @@ void FeedsView::addNewCategory() {
   delete form_pointer.data();
 
   // Changes are done, unlock the update master lock.
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 }
 
 void FeedsView::editCategory(FeedsModelCategory *category) {
@@ -289,14 +289,14 @@ void FeedsView::editCategory(FeedsModelCategory *category) {
 }
 
 void FeedsView::addNewFeed() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot add standard feed"),
-                                              tr("You cannot add new standard feed now because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot add standard feed"),
+                                    tr("You cannot add new standard feed now because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -316,7 +316,7 @@ void FeedsView::addNewFeed() {
   delete form_pointer.data();
 
   // Changes are done, unlock the update master lock.
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 }
 
 void FeedsView::editFeed(FeedsModelFeed *feed) {
@@ -328,15 +328,15 @@ void FeedsView::editFeed(FeedsModelFeed *feed) {
 }
 
 void FeedsView::editSelectedItem() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
     if (SystemTrayIcon::isSystemTrayActivated()) {
       //: Warning messagebox title when selected item cannot be edited.
-      SystemTrayIcon::instance()->showMessage(tr("Cannot edit item"),
-                                              tr("Selected item cannot be edited because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot edit item"),
+                                    tr("Selected item cannot be edited because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -374,18 +374,18 @@ void FeedsView::editSelectedItem() {
   }
 
   // Changes are done, unlock the update master lock.
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 }
 
 void FeedsView::deleteSelectedItem() {
-  if (!SystemFactory::instance()->applicationCloseLock()->tryLock()) {
+  if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot delete item"),
-                                              tr("Selected item cannot be deleted because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot delete item"),
+                                    tr("Selected item cannot be deleted because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
     else {
       MessageBox::show(this,
@@ -403,7 +403,7 @@ void FeedsView::deleteSelectedItem() {
 
   if (!current_index.isValid()) {
     // Changes are done, unlock the update master lock and exit.
-    SystemFactory::instance()->applicationCloseLock()->unlock();
+    qApp->closeLock()->unlock();
     return;
   }
 
@@ -412,9 +412,9 @@ void FeedsView::deleteSelectedItem() {
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
 
     if (SystemTrayIcon::isSystemTrayActivated()) {
-      SystemTrayIcon::instance()->showMessage(tr("Cannot delete item"),
-                                              tr("Selected item cannot be deleted because feed update is ongoing."),
-                                              QSystemTrayIcon::Warning);
+      qApp->trayIcon()->showMessage(tr("Cannot delete item"),
+                                    tr("Selected item cannot be deleted because feed update is ongoing."),
+                                    QSystemTrayIcon::Warning);
     }
   }
 
@@ -430,7 +430,7 @@ void FeedsView::deleteSelectedItem() {
   }
 
   // Changes are done, unlock the update master lock.
-  SystemFactory::instance()->applicationCloseLock()->unlock();
+  qApp->closeLock()->unlock();
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {

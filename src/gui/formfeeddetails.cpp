@@ -227,9 +227,9 @@ void FormFeedDetails::apply() {
     }
     else {
       if (SystemTrayIcon::isSystemTrayActivated()) {
-        SystemTrayIcon::instance()->showMessage(tr("Cannot add feed"),
-                                                tr("Feed was not added due to error."),
-                                                QSystemTrayIcon::Critical);
+        qApp->trayIcon()->showMessage(tr("Cannot add feed"),
+                                      tr("Feed was not added due to error."),
+                                      QSystemTrayIcon::Critical);
       }
       else {
         MessageBox::show(this,
@@ -246,9 +246,9 @@ void FormFeedDetails::apply() {
     }
     else {
       if (SystemTrayIcon::isSystemTrayActivated()) {
-        SystemTrayIcon::instance()->showMessage(tr("Cannot edit feed"),
-                                                tr("Feed was not edited due to error."),
-                                                QSystemTrayIcon::Critical);
+        qApp->trayIcon()->showMessage(tr("Cannot edit feed"),
+                                      tr("Feed was not edited due to error."),
+                                      QSystemTrayIcon::Critical);
       }
       else {
         MessageBox::show(this,
@@ -447,7 +447,7 @@ void FormFeedDetails::initialize() {
 }
 
 void FormFeedDetails::loadCategories(const QList<FeedsModelCategory*> categories,
-                                             FeedsModelRootItem *root_item) {
+                                     FeedsModelRootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

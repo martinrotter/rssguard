@@ -20,7 +20,11 @@
 
 #include "qtsingleapplication/qtsingleapplication.h"
 
+#include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "gui/systemtrayicon.h"
+
+#include <QMutex>
 
 #if defined(qApp)
 #undef qApp
@@ -29,6 +33,7 @@
 // Define new qApp macro. Yeaaaaah.
 #define qApp (Application::instance())
 
+class FormMain;
 
 // TODO: presunout nektery veci sem, settings atp
 class Application : public QtSingleApplication {
@@ -47,12 +52,57 @@ class Application : public QtSingleApplication {
       return m_settings;
     }
 
+    // Access to application-wide close lock.
+    inline QMutex *closeLock() {
+      if (m_closeLock == NULL) {
+        m_closeLock = new QMutex();
+      }
+
+      return m_closeLock;
+    }
+
+    inline FormMain *mainForm() {
+      return m_mainForm;
+    }
+
+    void setMainForm(FormMain *main_form) {
+      m_mainForm = main_form;
+    }
+
+    // Access to application tray icon. Always use this in cooperation with
+    // SystemTrayIcon::isSystemTrayActivated().
+    SystemTrayIcon *trayIcon();
+    void showTrayIcon();
+    void deleteTrayIcon();
+
+    // Displays given simple message in tray icon bubble or OSD
+    // or in message box if tray icon is disabled.
+    void showGuiMessage(const QString &title, const QString &message,
+                        QSystemTrayIcon::MessageIcon message_type,
+                        QWidget *parent = NULL,
+                        int duration = TRAY_ICON_BUBBLE_TIMEOUT);
+
     // Returns pointer to "GOD" application singleton.
     inline static Application *instance() {
       return static_cast<Application*>(QCoreApplication::instance());
     }
 
   private:
+    // This read-write lock is used by application on its close.
+    // Application locks this lock for WRITING.
+    // This means that if application locks that lock, then
+    // no other transaction-critical action can acquire lock
+    // for reading and won't be executed, so no critical action
+    // will be running when application quits
+    //
+    // EACH critical action locks this lock for READING.
+    // Several actions can lock this lock for reading.
+    // But of user decides to close the application (in other words,
+    // tries to lock the lock for writing), then no other
+    // action will be allowed to lock for reading.
+    QMutex *m_closeLock;
+    FormMain *m_mainForm;
+    SystemTrayIcon *m_trayIcon;
     Settings *m_settings;
 };
 
