@@ -26,6 +26,7 @@
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
+#include "gui/formmain.h"
 
 #include <QLineEdit>
 #include <QTextEdit>

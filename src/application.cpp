@@ -21,6 +21,7 @@
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
+#include "gui/formmain.h"
 
 
 Application::Application(const QString &id, int &argc, char **argv)

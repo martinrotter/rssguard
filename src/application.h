@@ -23,7 +23,6 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
 #include "gui/systemtrayicon.h"
-#include "gui/formmain.h"
 
 #include <QMutex>
 
@@ -34,6 +33,8 @@
 // Define new qApp macro. Yeaaaaah.
 #define qApp (Application::instance())
 
+
+class FormMain;
 
 // TODO: presunout nektery veci sem, settings atp
 class Application : public QtSingleApplication {
