@@ -43,8 +43,7 @@ class UpdateInfo {
       Evolution
     };
 
-    explicit UpdateInfo() {
-      m_availableVersion = m_changes = "";
+    explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()) {
     }
 
     QString m_availableVersion;
@@ -58,23 +57,19 @@ Q_DECLARE_METATYPE(UpdateInfo)
 class SystemFactory : public QObject {
     Q_OBJECT
 
-  private:
-    // Constructors and destructors.
-    explicit SystemFactory(QObject *parent = 0);
-
-    // Performs parsing of downloaded file with list of updates.
-    UpdateInfo parseUpdatesFile(const QByteArray &updates_file);
-
   public:
-    // Constructors and destructors.
-    virtual ~SystemFactory();
-
     // Specifies possible states of auto-start functionality.
     enum AutoStartStatus {
       Enabled,
       Disabled,
       Unavailable
     };
+
+    // Constructors and destructors.
+    explicit SystemFactory(QObject *parent = 0);
+
+    // Constructors and destructors.
+    virtual ~SystemFactory();
 
     // Returns current status of auto-start function.
     SystemFactory::AutoStartStatus getAutoStartStatus();
@@ -93,11 +88,9 @@ class SystemFactory : public QObject {
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
-    // Singleton getter.
-    static SystemFactory *instance();
-
   private:
-    static QPointer<SystemFactory> s_instance;
+    // Performs parsing of downloaded file with list of updates.
+    UpdateInfo parseUpdatesFile(const QByteArray &updates_file);
 };
 
 #endif // SYSTEMFACTORY_H

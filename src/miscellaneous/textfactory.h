@@ -21,7 +21,6 @@
 #include "definitions/definitions.h"
 
 #include <QDateTime>
-#include <QMap>
 
 
 class TextFactory {
@@ -30,6 +29,7 @@ class TextFactory {
     explicit TextFactory();
 
   public:
+    // Returns true if lhs is smaller than rhs if case-insensitive string comparison is used.
     static inline bool isCaseInsensitiveLessThan(const QString &lhs, const QString &rhs) {
       return lhs.toLower() < rhs.toLower();
     }

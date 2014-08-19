@@ -28,25 +28,23 @@ TextFactory::TextFactory() {
 }
 
 QDateTime TextFactory::parseDateTime(const QString &date_time) {
-  QString date = date_time.simplified();
-  QStringList date_patterns;
-  QStringList timezone_offset_patterns;
+  QString input_date = date_time.simplified();
   QDateTime dt;
   QTime time_zone_offset;
   QLocale locale(QLocale::C);
   bool positive_time_zone_offset = false;
 
-  date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
-                   "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
-                   "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
-                   "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
-                   "yyyy-MM-ddThh:mm:ss";
+  QStringList date_patterns; date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
+                                              "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
+                                              "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
+                                              "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
+                                              "yyyy-MM-ddThh:mm:ss";
 
-  timezone_offset_patterns << "+hh:mm" << "-hh:mm" << "+hhmm" << "-hhmm" << "+hh" << "-hh";
+  QStringList timezone_offset_patterns; timezone_offset_patterns << "+hh:mm" << "-hh:mm" << "+hhmm" << "-hhmm" << "+hh" << "-hh";
 
-  if (date.size() >= TIMEZONE_OFFSET_LIMIT) {
+  if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {
     foreach (const QString &pattern, timezone_offset_patterns) {
-      time_zone_offset = QTime::fromString(date.right(pattern.size()), pattern);
+      time_zone_offset = QTime::fromString(input_date.right(pattern.size()), pattern);
 
       if (time_zone_offset.isValid()) {
         positive_time_zone_offset = pattern.at(0) == '+';
@@ -57,7 +55,7 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 
   // Iterate over patterns and check if input date/time matches the pattern.
   foreach (const QString &pattern, date_patterns) {
-    dt = locale.toDateTime(date.left(pattern.size()), pattern);
+    dt = locale.toDateTime(input_date.left(pattern.size()), pattern);
 
     if (dt.isValid()) {
       // Make sure that this date/time is considered UTC.

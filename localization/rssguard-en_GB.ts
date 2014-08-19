@@ -182,9 +182,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.
-----------
-Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -213,15 +210,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Scheduled update started</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 is performing scheduled update of some feeds.</source>
-        <extracomment>RSS Guard is performing updates right now.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -406,6 +394,13 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>Use default icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormExport</name>
+    <message>
+        <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -999,6 +994,22 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>&amp;Feed/message list headers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want from selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1118,10 +1129,6 @@ Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1204,19 +1211,7 @@ Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Critical settings were changed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Problem with application restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1552,6 +1547,12 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Select toolbar to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2009,10 +2010,6 @@ Go to application website to obtain it manually.</source>
 </context>
 <context>
     <name>ToolBarEditor</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Activated actions</source>
         <translation type="unfinished"></translation>

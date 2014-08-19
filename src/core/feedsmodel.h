@@ -43,10 +43,8 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
-    // Returns list of all indexes available
-    // in the model.
-    // NOTE: Overriden because original method
-    // is protected.
+    // Returns list of all indexes available in the model.
+    // NOTE: Overriden because original method is protected.
     QModelIndexList persistentIndexList() const;
 
     // Model implementation.
@@ -61,7 +59,7 @@ class FeedsModel : public QAbstractItemModel {
     int columnCount(const QModelIndex &parent) const;
     int rowCount(const QModelIndex &parent) const;
 
-    // Returns couns of ALL/UNREAD (non-deleted) messages for the model.
+    // Returns counts of ALL/UNREAD (non-deleted) messages for the model.
     inline int countOfAllMessages() const {
       return m_rootItem->countOfAllMessages();
     }
@@ -74,20 +72,16 @@ class FeedsModel : public QAbstractItemModel {
     bool removeItem(const QModelIndex &index);
 
     // Standard category manipulators.
-    bool addCategory(FeedsModelCategory *category,
-                     FeedsModelRootItem *parent);
-    bool editCategory(FeedsModelCategory *original_category,
-                      FeedsModelCategory *new_category);
+    bool addCategory(FeedsModelCategory *category, FeedsModelRootItem *parent);
+    bool editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category);
 
     // Standard feed manipulators.
-    bool addFeed(FeedsModelFeed *feed,
-                 FeedsModelRootItem *parent);
+    bool addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent);
 
     // New feed is just temporary feed, it is not added to the model.
     // It is used to fetch its data to the original feed
     // and the original feed is moved if needed.
-    bool editFeed(FeedsModelFeed *original_feed,
-                  FeedsModelFeed *new_feed);
+    bool editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed);
 
     // Returns the list of updates which should be updated
     // according to auto-update schedule.

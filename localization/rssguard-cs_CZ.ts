@@ -192,9 +192,6 @@ Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.
-----------
-Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Nelze upravit položku</translation>
     </message>
     <message>
@@ -224,15 +221,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation>Právě nyní nemůžete aktualizovat vybrané položky, protože nejspíše probíhá jiná aktualizace.</translation>
-    </message>
-    <message>
-        <source>Scheduled update started</source>
-        <translation>Naplánovaná aktualizace kanálu odstartována</translation>
-    </message>
-    <message>
-        <source>%1 is performing scheduled update of some feeds.</source>
-        <extracomment>RSS Guard is performing updates right now.</extracomment>
-        <translation>%1 právě aktualizuje kanály.</translation>
     </message>
 </context>
 <context>
@@ -417,6 +405,13 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Use default icon</source>
         <translation>Použít výchozí ikonu</translation>
+    </message>
+</context>
+<context>
+    <name>FormExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1009,6 +1004,22 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>&amp;Feed/message list headers</source>
         <translation>&amp;Hlavičky seznamů zpráv/kanálů</translation>
     </message>
+    <message>
+        <source>&amp;Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want from selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1128,10 +1139,6 @@ Language column of language list.</extracomment>
         <translation></translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation>Chcete restartovat nyní?</translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation> (na této platformě nepodporováno)</translation>
     </message>
@@ -1214,20 +1221,8 @@ Language column of language list.</extracomment>
         <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
     </message>
     <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation>Některá kritická nastavení se změnila a pro jejich aplikování je třeba restartovat aplikaci.</translation>
-    </message>
-    <message>
         <source>Critical settings were changed</source>
         <translation>Kritická nastavení změněna</translation>
-    </message>
-    <message>
-        <source>Problem with application restart</source>
-        <translation>Problém s restartováním aplikace</translation>
-    </message>
-    <message>
-        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation>Aplikaci se nepodařilo restartovat. Prosím, restartuje ji manuálně.</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -1581,6 +1576,12 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <source>Select toolbar to edit</source>
         <translation>Zvolte lištu, kterou chcete upravit</translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2038,10 +2039,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
 </context>
 <context>
     <name>ToolBarEditor</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Activated actions</source>
         <translation>Aktivované akce</translation>

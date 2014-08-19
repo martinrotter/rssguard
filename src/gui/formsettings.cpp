@@ -277,40 +277,16 @@ void FormSettings::loadWebBrowserColor(const QColor &color) {
 
 void FormSettings::promptForRestart() {
   if (m_changedDataTexts.count() > 0) {
-    QStringList changed_data_texts = m_changedDataTexts;
+    QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp("^"), QString::fromUtf8(" • "));
 
-    changed_data_texts.replaceInStrings(QRegExp("^"),
-                                        QString::fromUtf8(" • "));
-
-    int question_result = MessageBox::show(this,
-                                           QMessageBox::Question,
-                                           tr("Critical settings were changed"),
-                                           tr("Some critical settings were changed and will be applied after the application gets restarted."),
-                                           tr("Do you want to restart now?"),
-                                           tr("List of changes:\n%1.").arg(changed_data_texts.join(",\n")),
-                                           QMessageBox::Yes | QMessageBox::No,
-                                           QMessageBox::Yes);
-
-    if (question_result == QMessageBox::Yes) {
-      if (!QProcess::startDetached(qApp->applicationFilePath())) {
-        if (SystemTrayIcon::isSystemTrayActivated()) {
-          qApp->trayIcon()->showMessage(tr("Problem with application restart"),
-                                        tr("Application couldn't be restarted. "
-                                           "Please, restart it manually for changes to take effect."),
-                                        QSystemTrayIcon::Warning);
-        }
-        else {
-          MessageBox::show(this,
-                           QMessageBox::Warning,
-                           tr("Problem with application restart"),
-                           tr("Application couldn't be restarted. "
-                              "Please, restart it manually for changes to take effect."));
-        }
-      }
-      else {
-        qApp->quit();
-      }
-    }
+    MessageBox::show(this,
+                     QMessageBox::Question,
+                     tr("Critical settings were changed"),
+                     tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                        "\n\nYou have to restart manually."),
+                     QString(),
+                     tr("List of changes:\n%1.").arg(changed_settings_description .join(",\n")),
+                     QMessageBox::Ok, QMessageBox::Ok);
   }
 }
 
@@ -647,7 +623,7 @@ void FormSettings::loadGeneral() {
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(APP_NAME));
 
   // Load auto-start status.
-  SystemFactory::AutoStartStatus autostart_status = SystemFactory::instance()->getAutoStartStatus();
+  SystemFactory::AutoStartStatus autostart_status = qApp->system()->getAutoStartStatus();
   switch (autostart_status) {
     case SystemFactory::Enabled:
       m_ui->m_checkAutostart->setChecked(true);
@@ -667,10 +643,10 @@ void FormSettings::saveGeneral() {
   // If auto-start feature is available and user wants
   // to turn it on, then turn it on.
   if (m_ui->m_checkAutostart->isChecked()) {
-    SystemFactory::instance()->setAutoStartStatus(SystemFactory::Enabled);
+    qApp->system()->setAutoStartStatus(SystemFactory::Enabled);
   }
   else {
-    SystemFactory::instance()->setAutoStartStatus(SystemFactory::Disabled);
+    qApp->system()->setAutoStartStatus(SystemFactory::Disabled);
   }
 }
 

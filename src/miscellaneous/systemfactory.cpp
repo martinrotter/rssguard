@@ -32,15 +32,12 @@
 #include <QDomAttr>
 
 
-QPointer<SystemFactory> SystemFactory::s_instance;
-
 SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
 }
 
 SystemFactory::~SystemFactory() {
   qDebug("Destroying SystemFactory instance.");
 }
-
 
 SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // User registry way to auto-start the application on Windows.
@@ -109,16 +106,6 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
 }
 #endif
 
-SystemFactory *SystemFactory::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new SystemFactory(qApp);
-  }
-
-  return s_instance;
-}
-
-
-
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();
 
@@ -165,9 +152,7 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
   QByteArray releases_xml;
 
-  result.second = NetworkFactory::downloadFeedFile(RELEASES_LIST,
-                                                   5000,
-                                                   releases_xml);
+  result.second = NetworkFactory::downloadFeedFile(RELEASES_LIST, DOWNLOAD_TIMEOUT, releases_xml);
 
   if (result.second == QNetworkReply::NoError) {
     result.first = parseUpdatesFile(releases_xml);

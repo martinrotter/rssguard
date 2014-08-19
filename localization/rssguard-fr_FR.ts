@@ -188,9 +188,6 @@ Statut de la mise à jour automatique : %5</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.
-----------
-Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Impossible d&apos;éditer l&apos;article</translation>
     </message>
     <message>
@@ -220,15 +217,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation>Vous ne pouvez pas mettre à jour les articles sélectionnés car une autre  mise à jour est en cours sur les flux.</translation>
-    </message>
-    <message>
-        <source>Scheduled update started</source>
-        <translation>La mise à jour programmée a commencée</translation>
-    </message>
-    <message>
-        <source>%1 is performing scheduled update of some feeds.</source>
-        <extracomment>RSS Guard is performing updates right now.</extracomment>
-        <translation>%1 effectue la mise à jour programmée de certains flux.</translation>
     </message>
 </context>
 <context>
@@ -413,6 +401,13 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Use default icon</source>
         <translation type="unfinished">Utiliser les icônes par défaut</translation>
+    </message>
+</context>
+<context>
+    <name>FormExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1005,6 +1000,22 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>&amp;Feed/message list headers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want from selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1124,10 +1135,6 @@ Language column of language list.</extracomment>
         <translation>Http</translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation>Voulez vous redémarrer maintenant ?</translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation>(non supporté sur cette plate-forme)</translation>
     </message>
@@ -1210,20 +1217,8 @@ Language column of language list.</extracomment>
         <translation>Masquer la barre des onglets si un seul est visible</translation>
     </message>
     <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation>Certains paramètres critiques ont changés et ils seront appliqués après le redémarrage de l&apos;application.</translation>
-    </message>
-    <message>
         <source>Critical settings were changed</source>
         <translation>Les paramètres important ont changé</translation>
-    </message>
-    <message>
-        <source>Problem with application restart</source>
-        <translation>Problème avec le redémarrage de l&apos;application</translation>
-    </message>
-    <message>
-        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation>L&apos;application ne peut être redémarrée. Redémarrer la manuellement pour que les changements prennent effet, s&apos;il vous plait.</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -1576,6 +1571,12 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     </message>
     <message>
         <source>Select toolbar to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2037,10 +2038,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
 </context>
 <context>
     <name>ToolBarEditor</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Activated actions</source>
         <translation type="unfinished"></translation>

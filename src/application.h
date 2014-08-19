@@ -22,6 +22,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/systemfactory.h"
 #include "gui/systemtrayicon.h"
 
 #include <QMutex>
@@ -44,6 +45,14 @@ class Application : public QtSingleApplication {
     // Constructors and destructors.
     explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
+
+    inline SystemFactory *system() {
+      if (m_system == NULL) {
+        m_system = new SystemFactory(this);
+      }
+
+      return m_system;
+    }
 
     inline Settings *settings() {
       if (m_settings == NULL) {
@@ -73,15 +82,14 @@ class Application : public QtSingleApplication {
     // Access to application tray icon. Always use this in cooperation with
     // SystemTrayIcon::isSystemTrayActivated().
     SystemTrayIcon *trayIcon();
+
     void showTrayIcon();
     void deleteTrayIcon();
 
     // Displays given simple message in tray icon bubble or OSD
     // or in message box if tray icon is disabled.
-    void showGuiMessage(const QString &title, const QString &message,
-                        QSystemTrayIcon::MessageIcon message_type,
-                        QWidget *parent = NULL,
-                        int duration = TRAY_ICON_BUBBLE_TIMEOUT);
+    void showGuiMessage(const QString &title, const QString &message, QSystemTrayIcon::MessageIcon message_type,
+                        QWidget *parent = NULL, int duration = TRAY_ICON_BUBBLE_TIMEOUT);
 
     // Returns pointer to "GOD" application singleton.
     inline static Application *instance() {
@@ -105,6 +113,7 @@ class Application : public QtSingleApplication {
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;
     Settings *m_settings;
+    SystemFactory *m_system;
 };
 
 #endif // APPLICATION_H

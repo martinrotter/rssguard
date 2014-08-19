@@ -31,8 +31,7 @@ FeedDownloader::~FeedDownloader() {
 }
 
 void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
-  qDebug().nospace() << "Performing feed updates in thread: \'" <<
-                        QThread::currentThreadId() << "\'.";
+  qDebug().nospace() << "Performing feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
 
   // Job starts now.
   emit started();
@@ -40,14 +39,12 @@ void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
   for (int i = 0, total = feeds.size(); i < total; i++) {
     feeds.at(i)->update();
 
-    qDebug("Made progress in feed updates: %d/%d (id of feed is %d).",
-           i + 1, total, feeds.at(i)->id());
+    qDebug("Made progress in feed updates: %d/%d (id of feed is %d).", i + 1, total, feeds.at(i)->id());
 
     emit progress(feeds.at(i), i + 1, total);
   }
 
-  qDebug().nospace() << "Finished feed updates in thread: \'" <<
-                        QThread::currentThreadId() << "\'.";
+  qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked

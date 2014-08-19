@@ -189,9 +189,6 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.
-----------
-Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Kan item niet bewerken</translation>
     </message>
     <message>
@@ -221,15 +218,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation>Je kan gekozen items niet bijwerken omdat feeds aan het updaten zijn.</translation>
-    </message>
-    <message>
-        <source>Scheduled update started</source>
-        <translation>Geplande update begint</translation>
-    </message>
-    <message>
-        <source>%1 is performing scheduled update of some feeds.</source>
-        <extracomment>RSS Guard is performing updates right now.</extracomment>
-        <translation>%1 is geplande updates van sommige feeds aan het uitvoeren.</translation>
     </message>
 </context>
 <context>
@@ -414,6 +402,13 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Use default icon</source>
         <translation>Gebruik standaard pictogram</translation>
+    </message>
+</context>
+<context>
+    <name>FormExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1006,6 +1001,22 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>&amp;Feed/message list headers</source>
         <translation>&amp;Feed/bericht  kopteksten</translation>
     </message>
+    <message>
+        <source>&amp;Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want from selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1125,10 +1136,6 @@ Language column of language list.</extracomment>
         <translation>Http</translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation>Wil je nu herstarten?</translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation> (Platform wordt niet ondersteunt)</translation>
     </message>
@@ -1211,20 +1218,8 @@ Language column of language list.</extracomment>
         <translation>Verberg  tabblad als alleen een tabblad zichtbaar is</translation>
     </message>
     <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.</translation>
-    </message>
-    <message>
         <source>Critical settings were changed</source>
         <translation>Kritieke instellingen zijn veranderd</translation>
-    </message>
-    <message>
-        <source>Problem with application restart</source>
-        <translation>Probleem met programma herstart</translation>
-    </message>
-    <message>
-        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation>Programma kan niet worden herstart. Herstart het handmatig zodat de veranderingen worden doorgevoerd.</translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -1578,6 +1573,12 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Select toolbar to edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2039,10 +2040,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
 </context>
 <context>
     <name>ToolBarEditor</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Activated actions</source>
         <translation type="unfinished"></translation>
