@@ -2,7 +2,7 @@ RSS Guard
 =========
 Welcome to RSS Guard website. You can find here basic information. Rest is located in [Wiki](https://bitbucket.org/skunkos/rssguard/wiki/Home).
 
-**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy)**
+**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds-videos) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy)**
 - - -
 Contacts
 --------
@@ -21,7 +21,7 @@ Thanks to
 -----
 Person        | Contribution
 :-----------: | :-----------
-**Elbert Pol**   |  Huge contrubutions, including translating, testing. He is also maintainer of OS/2 RSS Guard package.
+**Elbert Pol**   |  Huge contrubutions, including translating and testing in OS/2 environment.
 
 
 Downloads
@@ -51,7 +51,9 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * simplicity,
 * feed metadata fetching including icons,
 * enhanced feed auto-updating with separate time intervals,
-* multiple data backend support (SQLite + MySQL),
+* multiple data backend support,
+    * SQLite (in-memory DBs too),
+    * MySQL.
 * “portable” mode support,
 * feed categorization,
 * feed authentication (Digest-MD5, BASIC, NTLM-2),
