@@ -152,7 +152,7 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
   QByteArray releases_xml;
 
-  result.second = NetworkFactory::downloadFeedFile(RELEASES_LIST, DOWNLOAD_TIMEOUT, releases_xml);
+  result.second = NetworkFactory::downloadFile(RELEASES_LIST, DOWNLOAD_TIMEOUT, releases_xml);
 
   if (result.second == QNetworkReply::NoError) {
     result.first = parseUpdatesFile(releases_xml);

@@ -37,9 +37,13 @@ class Downloader : public QObject {
     explicit Downloader(QObject *parent = 0);
     virtual ~Downloader();
 
+    // Access to last received full output data/error.
+    QByteArray lastOutputData() const;
+    QNetworkReply::NetworkError lastOutputError() const;
+
   public slots:
     // Performs asynchronous download of given file. Redirections are handled.
-    void downloadFile(const QString &url, bool protected_contents = false,
+    void downloadFile(const QString &url, int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
                       const QString &username = QString(), const QString &password = QString());
 
   signals:
@@ -64,6 +68,9 @@ class Downloader : public QObject {
     QNetworkReply *m_activeReply;
     SilentNetworkAccessManager *m_downloadManager;
     QTimer *m_timer;
+
+    QByteArray m_lastOutputData;
+    QNetworkReply::NetworkError m_lastOutputError;
 };
 
 #endif // DOWNLOADER_H

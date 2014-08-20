@@ -145,12 +145,12 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
   }
 
   QByteArray feed_contents;
-  if ((result.second = NetworkFactory::downloadFeedFile(url,
-                                                        qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
-                                                        feed_contents,
-                                                        !username.isEmpty(),
-                                                        username,
-                                                        password)) == QNetworkReply::NoError) {
+  if ((result.second = NetworkFactory::downloadFile(url,
+                                                    qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
+                                                    feed_contents,
+                                                    !username.isEmpty(),
+                                                    username,
+                                                    password)) == QNetworkReply::NoError) {
     // Feed XML was obtained, now we need to try to guess
     // its encoding before we can read further data.
     QString xml_schema_encoding;
@@ -349,12 +349,9 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
-  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFeedFile(url(),
-                                                                                 download_timeout,
-                                                                                 feed_contents,
-                                                                                 passwordProtected(),
-                                                                                 username(),
-                                                                                 password());
+  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url(), download_timeout,
+                                                                             feed_contents, passwordProtected(),
+                                                                             username(), password());
 
   if (download_result != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).",

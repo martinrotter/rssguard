@@ -23,10 +23,8 @@
 
 
 Downloader::Downloader(QObject *parent)
-  : QObject(parent),
-    m_activeReply(NULL),
-    m_downloadManager(new SilentNetworkAccessManager(this)),
-    m_timer(new QTimer(this)) {
+  : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
+    m_timer(new QTimer(this)), m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError) {
 
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
@@ -39,7 +37,7 @@ Downloader::~Downloader() {
   m_downloadManager->deleteLater();
 }
 
-void Downloader::downloadFile(const QString &url, bool protected_contents,
+void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents,
                               const QString &username, const QString &password) {
   QNetworkRequest request;
   QObject originatingObject;
@@ -75,13 +73,13 @@ void Downloader::finished(QNetworkReply *reply) {
   else {
     // No redirection is indicated. Final file is obtained in our "reply" object.
     // Read the data into output buffer.
-    QByteArray output = reply->readAll();
-    QNetworkReply::NetworkError reply_error = reply->error();
+    m_lastOutputData = reply->readAll();
+    m_lastOutputError = reply->error();
 
     m_activeReply->deleteLater();
     m_activeReply = NULL;
 
-    emit completed(reply_error, output);
+    emit completed(m_lastOutputError, m_lastOutputData);
   }
 }
 
@@ -106,4 +104,12 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
 
   connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)),
           this, SLOT(progressInternal(qint64,qint64)));
+}
+
+QNetworkReply::NetworkError Downloader::lastOutputError() const {
+  return m_lastOutputError;
+}
+
+QByteArray Downloader::lastOutputData() const {
+  return m_lastOutputData;
 }
