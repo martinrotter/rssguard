@@ -51,7 +51,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(IconFactory::instance()->fromTheme("application-settings"));
 
 #if !defined(Q_OS_WIN)
@@ -442,7 +442,7 @@ void FormSettings::loadLanguage() {
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, IconFactory::instance()->fromTheme("flags" + QDir::separator() +
+    item->setIcon(0, IconFactory::instance()->fromTheme(FLAG_ICON_SUBFOLDER + QDir::separator() +
                                                         language.m_code));
   }
 

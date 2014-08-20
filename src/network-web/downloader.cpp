@@ -1,3 +1,20 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #include "network-web/downloader.h"
 
 #include "network-web/silentnetworkaccessmanager.h"
@@ -11,7 +28,7 @@ Downloader::Downloader(QObject *parent)
     m_downloadManager(new SilentNetworkAccessManager(this)),
     m_timer(new QTimer(this)) {
 
-  m_timer->setInterval(2000);
+  m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 
   connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
@@ -33,10 +50,9 @@ void Downloader::downloadFile(const QString &url, bool protected_contents,
   originatingObject.setProperty("password", password);
   request.setOriginatingObject(&originatingObject);
 
-  // Set url for this reques.
+  // Set url for this request and fire it up.
   request.setUrl(url);
-
-  runRequest(request);
+  runGetRequest(request);
 }
 
 void Downloader::finished(QNetworkReply *reply) {
@@ -54,12 +70,10 @@ void Downloader::finished(QNetworkReply *reply) {
     m_activeReply->deleteLater();
     m_activeReply = NULL;
 
-    runRequest(request);
+    runGetRequest(request);
   }
   else {
-    // No redirection is indicated. Final file is obtained
-    // in our "reply" object.
-
+    // No redirection is indicated. Final file is obtained in our "reply" object.
     // Read the data into output buffer.
     QByteArray output = reply->readAll();
     QNetworkReply::NetworkError reply_error = reply->error();
@@ -81,11 +95,12 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
 
 void Downloader::timeout() {
   if (m_activeReply != NULL) {
+    // Download action timed-out, too slow connection or target is no reachable.
     m_activeReply->abort();
   }
 }
 
-void Downloader::runRequest(const QNetworkRequest &request) {
+void Downloader::runGetRequest(const QNetworkRequest &request) {
   m_timer->start();
   m_activeReply = m_downloadManager->get(request);
 

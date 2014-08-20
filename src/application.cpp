@@ -34,9 +34,7 @@ Application::~Application() {
 
 SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == NULL) {
-    m_trayIcon = new SystemTrayIcon(APP_ICON_PATH,
-                                    APP_ICON_PLAIN_PATH,
-                                    m_mainForm);
+    m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
     m_trayIcon->setToolTip(APP_LONG_NAME);
   }
 
@@ -44,19 +42,17 @@ SystemTrayIcon *Application::trayIcon() {
 }
 
 void Application::showTrayIcon() {
+  qDebug("Showing tray icon.");
   trayIcon()->show();
 
   if (m_mainForm != NULL) {
     m_mainForm->tabWidget()->feedMessageViewer()->feedsView()->notifyWithCounts();
   }
-
-  qDebug("Showing tray icon.");
 }
 
 void Application::deleteTrayIcon() {
   if (m_trayIcon != NULL) {
     qDebug("Disabling tray icon, deleting it and raising main application window.");
-
     m_mainForm->display();
     delete m_trayIcon;
     m_trayIcon = NULL;

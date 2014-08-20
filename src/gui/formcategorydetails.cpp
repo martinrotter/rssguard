@@ -197,7 +197,7 @@ void FormCategoryDetails::initialize() {
   m_ui->m_txtDescription->lineEdit()->setToolTip(tr("Set description for your category."));
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(IconFactory::instance()->fromTheme("folder-category"));
 
   // Setup button box.

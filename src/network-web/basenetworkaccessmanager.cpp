@@ -57,14 +57,10 @@ void BaseNetworkAccessManager::loadSettings() {
 
   // Custom proxy is selected, set it up.
   new_proxy.setType(selected_proxy_type);
-  new_proxy.setHostName(settings->value(APP_CFG_PROXY,
-                                        "host").toString());
-  new_proxy.setPort(settings->value(APP_CFG_PROXY,
-                                    "port", 80).toInt());
-  new_proxy.setUser(settings->value(APP_CFG_PROXY,
-                                    "username").toString());
-  new_proxy.setPassword(settings->value(APP_CFG_PROXY,
-                                        "password").toString());
+  new_proxy.setHostName(settings->value(APP_CFG_PROXY, "host").toString());
+  new_proxy.setPort(settings->value(APP_CFG_PROXY, "port", 80).toInt());
+  new_proxy.setUser(settings->value(APP_CFG_PROXY, "username").toString());
+  new_proxy.setPassword(settings->value(APP_CFG_PROXY, "password").toString());
   setProxy(new_proxy);
 
   qDebug("Settings of BaseNetworkAccessManager loaded.");
@@ -72,10 +68,8 @@ void BaseNetworkAccessManager::loadSettings() {
 
 void BaseNetworkAccessManager::onSslErrors(QNetworkReply *reply,
                                            const QList<QSslError> &error) {
-  qDebug("SSL errors for '%s': '%s' (code %d).",
-         qPrintable(reply->url().toString()),
-         qPrintable(reply->errorString()),
-         (int) reply->error());
+  qDebug("SSL errors for '%s': '%s' (code %d).", qPrintable(reply->url().toString()),
+         qPrintable(reply->errorString()), (int) reply->error());
 
   reply->ignoreSslErrors(error);
 }
@@ -87,12 +81,10 @@ QNetworkReply *BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
   // This rapidly speeds up loading of web sites.
   // NOTE: https://en.wikipedia.org/wiki/HTTP_pipelining
-  new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute,
-                           true);
+  new_request.setAttribute(QNetworkRequest::HttpPipeliningAllowedAttribute, true);
 
   // Setup custom user-agent.
-  new_request.setRawHeader(USER_AGENT_HTTP_HEADER,
-                           QString(APP_USERAGENT).toLocal8Bit());
+  new_request.setRawHeader(USER_AGENT_HTTP_HEADER, QString(APP_USERAGENT).toLocal8Bit());
 
   return QNetworkAccessManager::createRequest(op, new_request, outgoingData);
 }

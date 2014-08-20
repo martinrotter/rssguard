@@ -353,7 +353,7 @@ void FormFeedDetails::initialize() {
   m_ui->setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(IconFactory::instance()->fromTheme("folder-feed"));
 
   // Setup button box.

@@ -104,10 +104,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
   QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
 #endif
   QByteArray icon_data;
-
-  QNetworkReply::NetworkError network_result =  downloadFeedFile(google_s2_with_url,
-                                                                 timeout,
-                                                                 icon_data);
+  QNetworkReply::NetworkError network_result =  downloadFeedFile(google_s2_with_url, timeout, icon_data);
 
   if (network_result == QNetworkReply::NoError) {
     QPixmap icon_pixmap;

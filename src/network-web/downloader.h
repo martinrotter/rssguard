@@ -1,12 +1,29 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #ifndef DOWNLOADER_H
 #define DOWNLOADER_H
 
 #include <QObject>
 
+#include "definitions/definitions.h"
+
 #include <QNetworkReply>
 #include <QSslError>
-
-#include "definitions/definitions.h"
 
 
 class SilentNetworkAccessManager;
@@ -21,12 +38,9 @@ class Downloader : public QObject {
     virtual ~Downloader();
 
   public slots:
-    // Performs asynchronous download of given file.
-    // Redirections are handled.
-    void downloadFile(const QString &url,
-                      bool protected_contents = false,
-                      const QString &username = QString(),
-                      const QString &password = QString());
+    // Performs asynchronous download of given file. Redirections are handled.
+    void downloadFile(const QString &url, bool protected_contents = false,
+                      const QString &username = QString(), const QString &password = QString());
 
   signals:
     // Emitted when new progress is known.
@@ -44,11 +58,10 @@ class Downloader : public QObject {
     void timeout();
 
   private:
-    void runRequest(const QNetworkRequest &request);
+    void runGetRequest(const QNetworkRequest &request);
 
   private:
     QNetworkReply *m_activeReply;
-
     SilentNetworkAccessManager *m_downloadManager;
     QTimer *m_timer;
 };

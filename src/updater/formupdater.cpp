@@ -60,7 +60,6 @@ FormUpdater::FormUpdater(QWidget *parent)
   setCentralWidget(m_txtOutput);
   setWindowTitle("RSS Guard updater");
   setWindowIcon(QIcon(APP_ICON_PATH));
-
   moveToCenterAndResize();
 
   connect(this, SIGNAL(debugMessageProduced(QtMsgType,QString)),
@@ -134,19 +133,19 @@ void FormUpdater::triggerDebugMessageConsumption(QtMsgType type, const QString &
 void FormUpdater::consumeDebugMessage(QtMsgType type, const QString &message) {
   switch (type) {
     case QtDebugMsg:
-      s_instance->printText(QString("DEBUG: %1").arg(message));
+      printText(QString("DEBUG: %1").arg(message));
       break;
 
     case QtWarningMsg:
-      s_instance->printText(QString("WARNING: %1").arg(message));
+      printText(QString("WARNING: %1").arg(message));
       break;
 
     case QtCriticalMsg:
-      s_instance->printText(QString("CRITICAL: %1").arg(message));
+      printText(QString("CRITICAL: %1").arg(message));
       break;
 
     case QtFatalMsg:
-      s_instance->printText(QString("FATAL: %1").arg(message));
+      printText(QString("FATAL: %1").arg(message));
       qApp->exit(EXIT_FAILURE);
 
     default:

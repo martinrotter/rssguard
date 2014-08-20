@@ -36,7 +36,7 @@ FormUpdate::FormUpdate(QWidget *parent)
   m_ui->setupUi(this);
 
   // Set flags and attributes.
-  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(IconFactory::instance()->fromTheme("application-about"));
 
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
