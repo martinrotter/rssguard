@@ -26,8 +26,8 @@ IOFactory::IOFactory() {
 }
 
 bool IOFactory::removeDirectory(const QString& directory_name,
-                                  const QStringList& exception_file_list,
-                                  const QStringList& exception_folder_list) {
+                                const QStringList& exception_file_list,
+                                const QStringList& exception_folder_list) {
   bool result = true;
   QDir dir(directory_name);
 
@@ -37,34 +37,48 @@ bool IOFactory::removeDirectory(const QString& directory_name,
                                QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
       if (info.isDir()) {
         if (!exception_folder_list.contains(info.fileName())) {
-          result &= removeDirectory(info.absoluteFilePath(), exception_file_list);
+          result &= removeDirectory(info.absoluteFilePath(), exception_file_list, exception_folder_list);
         }
       }
       else if (!exception_file_list.contains(info.fileName())) {
-        result &= QFile::remove(info.absoluteFilePath());
+        if (!QFile::remove(info.absoluteFilePath())) {
+          result &= false;
+          qDebug("Failed to remove file \'%s\'.", qPrintable(QDir::toNativeSeparators(info.absoluteFilePath())));
+        }
+        else {
+          result &= true;
+        }
       }
     }
 
-    result &= dir.rmdir(directory_name);
+    if (dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden | QDir::AllDirs | QDir::Files).isEmpty()) {
+      result &= dir.rmdir(directory_name);
+    }
   }
 
   return result;
 }
 
 bool IOFactory::copyDirectory(QString source, QString destination) {
-  QDir dir(source);
+  QDir dir_source(source);
 
-  if (!dir.exists()) {
+  if (!dir_source.exists()) {
     return false;
   }
 
-  foreach (QString d, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+  QDir dir_destination(destination);
+
+  if (!dir_destination.exists()) {
+    dir_destination.mkpath(destination);
+  }
+
+  foreach (QString d, dir_source.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
     QString dst_path = destination + QDir::separator() + d;
-    dir.mkpath(dst_path);
+    dir_source.mkpath(dst_path);
     copyDirectory(source + QDir::separator() + d, dst_path);
   }
 
-  foreach (QString f, dir.entryList(QDir::Files)) {
+  foreach (QString f, dir_source.entryList(QDir::Files)) {
     QString original_file = source + QDir::separator() + f;
     QString destination_file = destination + QDir::separator() + f;
 

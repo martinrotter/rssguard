@@ -189,12 +189,11 @@ configure_file (
 )
 
 # Define some useful DEBUG for, ehrm, debug build.
-string(TOLOWER CMAKE_BUILD_TYPE CMAKE_BUILD_TYPE)
-if(CMAKE_BUILD_TYPE STREQUAL "release")
+if(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
   message(STATUS "[${APP_LOW_NAME}] A release build (non-debug) is chosen. Debugging outputs are silently ignored.")
   set(CMAKE_BUILD_TYPE MinSizeRel)
   message(STATUS "[${APP_LOW_NAME}] Output executable file is optimized for minimum size.")
-else(CMAKE_BUILD_TYPE STREQUAL "release")
+else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
   message(STATUS "[${APP_LOW_NAME}] A debug build is chosen.")
   add_definitions(-DDEBUG)
   set(CMAKE_BUILD_TYPE Debug)
@@ -208,7 +207,7 @@ endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
 # Verbose compiling outputs.
 set(CMAKE_VERBOSE_MAKEFILE ON)
-endif(CMAKE_BUILD_TYPE STREQUAL "release")
+endif(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RELEASE")
 
 # Force Qt to use string builders.
 add_definitions(-DQT_USE_QSTRINGBUILDER)
@@ -519,6 +518,9 @@ if(WIN32)
     resources/binaries/windows/deployment/qt4-msvc2010/QtWebKit4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/QtXml4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/ssleay32.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/libintl.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/libmysql.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/libpq.dll
   )
 
   set(APP_DLLS_QT4_MSVC2010_IMAGEFORMATS
@@ -529,6 +531,12 @@ if(WIN32)
     resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qsvg4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qtga4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qtiff4.dll
+  )
+
+  set(APP_DLLS_QT4_MSVC2010_SQLDRIVERS
+    resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlite4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlmysql4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlpsql4.dll
   )
 endif(WIN32)
 
@@ -694,6 +702,8 @@ if(WIN32 OR OS2)
               DESTINATION ./)
       install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS}
               DESTINATION ./imageformats)
+      install(FILES ${APP_DLLS_QT4_MSVC2010_SQLDRIVERS}
+              DESTINATION ./sqldrivers)
 
       install(FILES ${APP_DLLS_QT4_MSVC2010}
               DESTINATION ./${UPDATER_SUBFOLDER})

@@ -68,8 +68,9 @@ IconFactory *IconFactory::instance() {
 void IconFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QStringList() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
-         qPrintable(QIcon::themeSearchPaths().replaceInStrings(QRegExp("^|$"),
-                                                               "\'").join(", ")));
+         qPrintable(QIcon::themeSearchPaths()
+                    .replaceInStrings(QRegExp("^|$"), "\'")
+                    .replaceInStrings(QRegExp("/"), QDir::separator()).join(", ")));
 }
 
 void IconFactory::setCurrentIconTheme(const QString &theme_name) {

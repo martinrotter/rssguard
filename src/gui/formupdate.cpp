@@ -89,7 +89,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
-    if (update.first.m_availableVersion > APP_VERSION) {
+    if (update.first.m_availableVersion != APP_VERSION) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -140,7 +140,7 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
 
     if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
       qDebug("Storing update file to temporary location '%s'.",
-             qPrintable(output_file_name));
+             qPrintable(QDir::toNativeSeparators(output_file.fileName())));
 
       output_file.write(file_contents);
       output_file.flush();
