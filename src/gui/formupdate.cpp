@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/iofactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/downloader.h"
@@ -198,9 +199,29 @@ void FormUpdate::startUpdate() {
     // via self-update feature.
     close();
 
-    qDebug("Preparing to launch external updater '%s'.", APP_UPDATER_EXECUTABLE);
+    // Now we need to copy updater to temporary path and launch it
+    // with correct arguments from there.
+#if QT_VERSION >= 0x050000
+    QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+#else
+    QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
+#endif
 
-    if (!QProcess::startDetached(APP_UPDATER_EXECUTABLE,
+    QString source_updater_directory = QDir::toNativeSeparators(qApp->applicationDirPath() + QDir::separator() +
+                                                                APP_UPDATER_SUBFOLDER);
+    QString target_updater_directory = QDir::toNativeSeparators(temp_directory + QDir::separator() +
+                                                                APP_UPDATER_SUBFOLDER);
+
+    if (QDir(temp_directory).exists(APP_UPDATER_SUBFOLDER)) {
+      IOFactory::removeDirectory(target_updater_directory);
+    }
+
+    IOFactory::copyDirectory(source_updater_directory, target_updater_directory);
+
+    qDebug("Preparing to launch external updater '%s'.",
+           qPrintable(target_updater_directory + QDir::separator() + APP_UPDATER_EXECUTABLE));
+
+    if (!QProcess::startDetached(target_updater_directory + QDir::separator() + APP_UPDATER_EXECUTABLE,
                                  QStringList() <<
                                  APP_VERSION <<
                                  m_updateInfo.m_availableVersion <<

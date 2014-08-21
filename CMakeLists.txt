@@ -73,6 +73,7 @@ if(WIN32 OR OS2)
   # Setup "rssguard_updater" project.
   project(rssguard_updater)
 
+  set(UPDATER_SUBFOLDER "updater")
   set(UPDATER_EXE_NAME "rssguard_updater")
 endif(WIN32 OR OS2)
 
@@ -362,6 +363,7 @@ set(APP_SOURCES
   src/miscellaneous/databasefactory.cpp
   src/miscellaneous/skinfactory.cpp
   src/miscellaneous/iconfactory.cpp
+  src/miscellaneous/iofactory.cpp
 
   # CORE sources.
   src/core/messagesmodel.cpp
@@ -505,6 +507,31 @@ set(APP_TEXT
   resources/text/COPYING_BSD
 )
 
+if(WIN32)
+  set(APP_DLLS_QT4_MSVC2010
+    resources/binaries/windows/deployment/qt4-msvc2010/libeay32.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/msvcp100.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/msvcr100.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/QtCore4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/QtGui4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/QtNetwork4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/QtSql4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/QtWebKit4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/QtXml4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/ssleay32.dll
+  )
+
+  set(APP_DLLS_QT4_MSVC2010_IMAGEFORMATS
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qgif4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qico4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qjpeg4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qmng4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qsvg4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qtga4.dll
+    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qtiff4.dll
+  )
+endif(WIN32)
+
 # Setup source & header files for "rssguard_updater".
 if(WIN32 OR OS2)
   set(UPDATER_SOURCES
@@ -513,6 +540,7 @@ if(WIN32 OR OS2)
     src/qtsingleapplication/qtsingleapplication.cpp
 
     # MAIN sources.
+    src/miscellaneous/iofactory.cpp
     src/updater/formupdater.cpp
     src/updater/main.cpp
   )
@@ -652,7 +680,25 @@ if(WIN32 OR OS2)
   install(TARGETS ${EXE_NAME}
           RUNTIME DESTINATION ./)
   install(TARGETS ${UPDATER_EXE_NAME}
-          RUNTIME DESTINATION ./)
+          RUNTIME DESTINATION ./${UPDATER_SUBFOLDER})
+
+  # Copy DLLs and other binary files for main installation and updater.
+  if(WIN32)
+    # Copy "7za" utility on Windows, OS/2 uses built-in "7za".
+    install(FILES resources/binaries/windows/7za/7za.exe
+                  resources/binaries/windows/7za/7za_license.txt
+            DESTINATION ./${UPDATER_SUBFOLDER})
+
+    if(NOT ${USE_QT_5})
+      install(FILES ${APP_DLLS_QT4_MSVC2010}
+              DESTINATION ./)
+      install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS}
+              DESTINATION ./imageformats)
+
+      install(FILES ${APP_DLLS_QT4_MSVC2010}
+              DESTINATION ./${UPDATER_SUBFOLDER})
+    endif(NOT ${USE_QT_5})
+  endif(WIN32)
 
   if(BUNDLE_ICON_THEMES)
     install(DIRECTORY resources/graphics/icons/mini-kfaenza
@@ -675,12 +721,6 @@ if(WIN32 OR OS2)
           DESTINATION ./l10n)
   install(FILES ${APP_TEXT}
           DESTINATION ./)
-
-  if(WIN32)
-    # Copy "7za" utility on Windows, OS/2 uses built-in "7za".
-    install(FILES resources/7za/7za.exe resources/7za/7za_license.txt
-            DESTINATION ./)
-  endif(WIN32)
 elseif(APPLE)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Mac OS X.")
 

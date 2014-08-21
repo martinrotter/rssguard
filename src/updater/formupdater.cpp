@@ -18,6 +18,7 @@
 #include "updater/formupdater.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/iofactory.h"
 #include "qtsingleapplication/qtsingleapplication.h"
 
 #include <QDesktopWidget>
@@ -133,7 +134,7 @@ void FormUpdater::triggerDebugMessageConsumption(QtMsgType type, const QString &
 void FormUpdater::consumeDebugMessage(QtMsgType type, const QString &message) {
   switch (type) {
     case QtDebugMsg:
-      printText(QString("DEBUG: %1").arg(message));
+      printText(message);
       break;
 
     case QtWarningMsg:
@@ -241,7 +242,7 @@ bool FormUpdater::doPreparationCleanup() {
 
   // Remove old folders.
   if (QDir(m_parsedArguments["output_temp_path"]).exists()) {
-    if (!removeDirectory(m_parsedArguments["output_temp_path"])) {
+    if (!IOFactory::removeDirectory(m_parsedArguments["output_temp_path"])) {
       printText("Cleanup of old temporary files failed.");
       return false;
     }
@@ -250,18 +251,12 @@ bool FormUpdater::doPreparationCleanup() {
     }
   }
 
-  if (!removeDirectory(m_parsedArguments["rssguard_path"],
-                       QStringList() << APP_7ZA_EXECUTABLE,
-                       QStringList() << "data")) {
+  if (!IOFactory::removeDirectory(m_parsedArguments["rssguard_path"],
+                                  QStringList(),
+                                  // Keep the folder with settings.
+                                  QStringList() << "data")) {
     printText("Full cleanup of actual RSS Guard installation failed.");
     printText("Some files from old installation may persist.");
-  }
-
-  // TODO: Přidat obecně rekurzivní funkci renameDirectory
-  // která ke všem souborům a složkám (mimo vyjimky) přidá dohodnutý suffix.
-  // Tydle soubory budou pak smazaný hlavní aplikací při startu.
-  if (!QFile::rename(m_parsedArguments["updater_path"], m_parsedArguments["updater_path"] + ".old")) {
-    printText("Updater executable was not renamed and it will not be updated.");
   }
 
   return true;
@@ -280,14 +275,14 @@ bool FormUpdater::doExtractionAndCopying() {
                          QString("-o%1").arg(m_parsedArguments["output_temp_path"]) <<
                                                                                        m_parsedArguments["update_file_path"];
 
-  printText(QString("Calling extractor %1 with these arguments:").arg(APP_7ZA_EXECUTABLE));
+  printText(QString("Calling extractor \'%1\' with these arguments:").arg(APP_7ZA_EXECUTABLE));
 
   foreach(const QString &argument, extractor_arguments) {
     printText(QString("   -> '%1'").arg(argument));
   }
 
   process_extractor.setEnvironment(QProcessEnvironment::systemEnvironment().toStringList());
-  process_extractor.setWorkingDirectory(m_parsedArguments["rssguard_path"]);
+  process_extractor.setWorkingDirectory(qApp->applicationDirPath());
 
   process_extractor.start(APP_7ZA_EXECUTABLE, extractor_arguments);
 
@@ -296,7 +291,7 @@ bool FormUpdater::doExtractionAndCopying() {
   }
 
   printText(process_extractor.readAll());
-  printText(QString("Extractor finished with exit code %1.").arg(process_extractor.exitCode()));
+  printText(QString("Extractor finished with exit code \'%1\'.").arg(process_extractor.exitCode()));
 
   if (process_extractor.exitCode() != 0 || process_extractor.exitStatus() != QProcess::NormalExit) {
     printText("Extraction failed due errors. Update cannot continue.");
@@ -317,7 +312,7 @@ bool FormUpdater::doExtractionAndCopying() {
 
   QString rssguard_single_temp_root = rssguard_temp_root.at(0).absoluteFilePath();
 
-  if (!copyDirectory(rssguard_single_temp_root, m_parsedArguments["rssguard_path"])) {
+  if (!IOFactory::copyDirectory(rssguard_single_temp_root, m_parsedArguments["rssguard_path"])) {
     printText("Critical error appeared during copying of application files.");
     return false;
   }
@@ -334,7 +329,7 @@ bool FormUpdater::doFinalCleanup() {
   printNewline();
   printHeading("Final cleanup");
 
-  result_path = removeDirectory(m_parsedArguments["output_temp_path"]);
+  result_path = IOFactory::removeDirectory(m_parsedArguments["output_temp_path"]);
   result_file = QFile::remove(m_parsedArguments["update_file_path"]);
 
   printText(QString("Removing temporary files\n   -> %1 -> %2\n   -> %3 -> %4").arg(
@@ -384,63 +379,4 @@ void FormUpdater::printNewline() {
 void FormUpdater::moveToCenterAndResize() {
   resize(600, 400);
   move(qApp->desktop()->screenGeometry().center() - rect().center());
-}
-
-bool FormUpdater::removeDirectory(const QString& directory_name,
-                                  const QStringList& exception_file_list,
-                                  const QStringList& exception_folder_list) {
-  bool result = true;
-  QDir dir(directory_name);
-
-  if (dir.exists(directory_name)) {
-    foreach (QFileInfo info,
-             dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System |
-                               QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
-      if (info.isDir()) {
-        if (!exception_folder_list.contains(info.fileName())) {
-          result &= removeDirectory(info.absoluteFilePath(), exception_file_list);
-        }
-      }
-      else if (!exception_file_list.contains(info.fileName())) {
-        result &= QFile::remove(info.absoluteFilePath());
-      }
-    }
-
-    result &= dir.rmdir(directory_name);
-  }
-
-  return result;
-}
-
-bool FormUpdater::copyDirectory(QString source, QString destination) {
-  QDir dir(source);
-
-  if (! dir.exists()) {
-    return false;
-  }
-
-  foreach (QString d, dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
-    QString dst_path = destination + QDir::separator() + d;
-    dir.mkpath(dst_path);
-    copyDirectory(source + QDir::separator() + d, dst_path);
-  }
-
-  foreach (QString f, dir.entryList(QDir::Files)) {
-    QString original_file = source + QDir::separator() + f;
-    QString destination_file = destination + QDir::separator() + f;
-
-    if (!QFile::exists(destination_file) || QFile::remove(destination_file)) {
-      if (QFile::copy(original_file, destination_file)) {
-        printText(QString("Copied file %1").arg(f));
-      }
-      else {
-        printText(QString("Failed to copy file %1").arg(original_file));
-      }
-    }
-    else {
-      printText(QString("Failed to remove file %1").arg(original_file));
-    }
-  }
-
-  return true;
 }
