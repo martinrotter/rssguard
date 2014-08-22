@@ -175,7 +175,7 @@ void WebBrowser::createConnections() {
   connect(m_webView, SIGNAL(urlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
 
   // Connect this WebBrowser to global TabWidget.
-  TabWidget *tab_widget = FormMain::instance()->tabWidget();
+  TabWidget *tab_widget = qApp->mainForm()->tabWidget();
   connect(m_webView, SIGNAL(newTabRequested()), tab_widget, SLOT(addEmptyBrowser()));
   connect(m_webView, SIGNAL(linkMiddleClicked(QUrl)), tab_widget, SLOT(addLinkedBrowser(QUrl)));
 

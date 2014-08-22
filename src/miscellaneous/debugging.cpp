@@ -18,7 +18,7 @@
 #include "miscellaneous/debugging.h"
 
 #include "definitions/definitions.h"
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #include <QDir>
 

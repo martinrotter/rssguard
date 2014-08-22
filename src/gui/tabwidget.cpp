@@ -18,6 +18,7 @@
 #include "gui/tabwidget.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -26,7 +27,6 @@
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
-#include "application.h"
 
 #include <QMenu>
 #include <QToolButton>
@@ -67,13 +67,13 @@ void TabWidget::setupMainMenuButton() {
 void TabWidget::openMainMenu() {
   if (m_menuMain == NULL) {
     m_menuMain = new QMenu(tr("Main menu"), this);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuFile);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuView);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuFeeds);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuMessages);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuWebBrowser);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuTools);
-    m_menuMain->addMenu(FormMain::instance()->m_ui->m_menuHelp);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFile);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuView);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFeeds);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuMessages);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuWebBrowser);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuTools);
+    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuHelp);
   }
 
   QPoint button_position = m_btnMainMenu->pos();

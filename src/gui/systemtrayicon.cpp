@@ -18,10 +18,10 @@
 #include "gui/systemtrayicon.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "gui/formmain.h"
 #include "gui/formsettings.h"
-#include "application.h"
 
 #include <QPainter>
 #include <QTimer>

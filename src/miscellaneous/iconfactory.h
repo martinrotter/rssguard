@@ -21,7 +21,7 @@
 #include <QObject>
 
 #include "definitions/definitions.h"
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #include <QString>
 #include <QIcon>

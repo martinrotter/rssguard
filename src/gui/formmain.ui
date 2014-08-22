@@ -178,7 +178,7 @@
     <string>Quit the application.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+Q</string>
+    <string notr="true">Ctrl+Q</string>
    </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
@@ -228,7 +228,7 @@
     <string>Add new web browser tab.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+T</string>
+    <string notr="true">Ctrl+T</string>
    </property>
   </action>
   <action name="m_actionCloseAllTabs">
@@ -258,6 +258,9 @@
   <action name="m_actionUpdateSelectedFeedsCategories">
    <property name="text">
     <string>Update &amp;selected feeds</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+U</string>
    </property>
   </action>
   <action name="m_actionEditSelectedFeedCategory">
@@ -421,7 +424,7 @@
     <string>Select &amp;next feed/category</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Down</string>
+    <string notr="true">S</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousFeedCategory">
@@ -429,7 +432,7 @@
     <string>Select &amp;previous feed/category</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Up</string>
+    <string notr="true">A</string>
    </property>
   </action>
   <action name="m_actionSelectNextMessage">
@@ -437,7 +440,7 @@
     <string>Select &amp;next message</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Alt+Down</string>
+    <string notr="true">W</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousMessage">
@@ -445,7 +448,7 @@
     <string>Select &amp;previous message</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Alt+Up</string>
+    <string notr="true">Q</string>
    </property>
   </action>
   <action name="m_actionCheckForUpdates">
@@ -480,6 +483,9 @@
    <property name="text">
     <string>Enable &amp;JavaScript</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">J</string>
+   </property>
   </action>
   <action name="m_actionWebEnableExternalPlugins">
    <property name="checkable">
@@ -488,6 +494,9 @@
    <property name="text">
     <string>Enable external &amp;plugins</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">P</string>
+   </property>
   </action>
   <action name="m_actionWebAutoloadImages">
    <property name="checkable">
@@ -495,6 +504,9 @@
    </property>
    <property name="text">
     <string>Auto-load &amp;images</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">I</string>
    </property>
   </action>
   <action name="m_actionReportBug">

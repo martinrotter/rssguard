@@ -2,7 +2,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #include <QRegExp>
 #include <QWebSettings>

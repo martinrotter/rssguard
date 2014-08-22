@@ -17,7 +17,7 @@
 
 #include "network-web/webbrowsernetworkaccessmanager.h"
 
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #include <QNetworkReply>
 

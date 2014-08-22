@@ -19,7 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "network-web/networkfactory.h"
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #if defined(Q_OS_WIN)
 #include <QSettings>

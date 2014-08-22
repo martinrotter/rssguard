@@ -354,6 +354,7 @@ set(APP_SOURCES
   src/dynamic-shortcuts/dynamicshortcuts.cpp
 
   # MISCELLANEOUS sources.
+  src/miscellaneous/application.cpp
   src/miscellaneous/debugging.cpp
   src/miscellaneous/settings.cpp
   src/miscellaneous/systemfactory.cpp
@@ -387,7 +388,6 @@ set(APP_SOURCES
   src/network-web/downloader.cpp
 
   # MAIN sources.
-  src/application.cpp
   src/main.cpp
 )
 
@@ -436,6 +436,7 @@ set(APP_HEADERS
   src/dynamic-shortcuts/shortcutbutton.h
 
   # MISCELLANEOUS headers.
+  src/miscellaneous/application.h
   src/miscellaneous/settings.h
   src/miscellaneous/localization.h
   src/miscellaneous/systemfactory.h
@@ -459,9 +460,6 @@ set(APP_HEADERS
   src/network-web/webbrowser.h
   src/network-web/webview.h
   src/network-web/downloader.h
-
-  # MAIN headers.
-  src/application.h
 )
 
 # APP form files.

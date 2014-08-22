@@ -26,6 +26,7 @@
 #include "gui/systemtrayicon.h"
 
 #include <QMutex>
+#include <QList>
 
 #if defined(qApp)
 #undef qApp
@@ -36,6 +37,7 @@
 
 
 class FormMain;
+class QAction;
 
 // TODO: presunout nektery veci sem, settings atp
 class Application : public QtSingleApplication {
@@ -45,6 +47,8 @@ class Application : public QtSingleApplication {
     // Constructors and destructors.
     explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
+
+    QList<QAction*> userActions();
 
     inline SystemFactory *system() {
       if (m_system == NULL) {
@@ -110,6 +114,7 @@ class Application : public QtSingleApplication {
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
     QMutex *m_closeLock;
+    QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;
     Settings *m_settings;

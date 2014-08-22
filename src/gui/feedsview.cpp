@@ -470,19 +470,19 @@ void FeedsView::selectPreviousItem() {
 void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
-                                           FormMain::instance()->m_ui->m_actionUpdateSelectedFeedsCategories <<
-                                           FormMain::instance()->m_ui->m_actionEditSelectedFeedCategory <<
-                                           FormMain::instance()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                           FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsRead <<
-                                           FormMain::instance()->m_ui->m_actionMarkSelectedFeedsAsUnread);
+                                           qApp->mainForm()->m_ui->m_actionUpdateSelectedFeedsCategories <<
+                                           qApp->mainForm()->m_ui->m_actionEditSelectedFeedCategory <<
+                                           qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
+                                           qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
+                                           qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread);
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
-                                      FormMain::instance()->m_ui->m_actionUpdateAllFeeds <<
-                                      FormMain::instance()->m_ui->m_actionAddCategory <<
-                                      FormMain::instance()->m_ui->m_actionAddFeed);
+                                      qApp->mainForm()->m_ui->m_actionUpdateAllFeeds <<
+                                      qApp->mainForm()->m_ui->m_actionAddCategory <<
+                                      qApp->mainForm()->m_ui->m_actionAddFeed);
 }
 
 void FeedsView::setupAppearance() {

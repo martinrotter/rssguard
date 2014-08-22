@@ -163,7 +163,7 @@ void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
 
 void FeedMessageViewer::onFeedUpdatesStarted() {
   //: Text display in status bar when feed update is started.
-  FormMain::instance()->statusBar()->showProgress(0, tr("Feed update started"));
+  qApp->mainForm()->statusBar()->showProgress(0, tr("Feed update started"));
 }
 
 void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
@@ -171,7 +171,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
                                               int total) {
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
-  FormMain::instance()->statusBar()->showProgress((current * 100.0) / total,
+  qApp->mainForm()->statusBar()->showProgress((current * 100.0) / total,
                                                   //: Text display in status bar when particular feed is updated.
                                                   tr("Updated feed '%1'").arg(feed->title()));
 }
@@ -181,7 +181,7 @@ void FeedMessageViewer::onFeedUpdatesFinished() {
   qApp->closeLock()->unlock();
 
   // And also hide progress bar.
-  FormMain::instance()->statusBar()->clearProgress();
+  qApp->mainForm()->statusBar()->clearProgress();
 
   // TODO: Check integrity and conformance of this.
   m_messagesView->reloadSelections(1);
@@ -192,7 +192,7 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 }
 
 void FeedMessageViewer::createConnections() {
-  FormMain *form_main = FormMain::instance();
+  FormMain *form_main = qApp->mainForm();
 
   // Filtering & searching.
   connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)),

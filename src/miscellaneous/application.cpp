@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #include "miscellaneous/systemfactory.h"
 #include "gui/feedsview.h"
@@ -25,11 +25,21 @@
 
 
 Application::Application(const QString &id, int &argc, char **argv)
-  : QtSingleApplication(id, argc, argv), m_closeLock(NULL), m_mainForm(NULL), m_trayIcon(NULL), m_settings(NULL), m_system(NULL) {
+  : QtSingleApplication(id, argc, argv),
+    m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
+    m_trayIcon(NULL), m_settings(NULL), m_system(NULL) {
 }
 
 Application::~Application() {
   delete m_closeLock;
+}
+
+QList<QAction*> Application::userActions() {
+  if (m_mainForm != NULL && m_userActions.isEmpty()) {
+    m_userActions = m_mainForm->allActions();
+  }
+
+  return m_userActions;
 }
 
 SystemTrayIcon *Application::trayIcon() {

@@ -19,6 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -33,7 +34,6 @@
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/formupdate.h"
-#include "application.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -43,14 +43,10 @@
 #include <QTimer>
 
 
-FormMain *FormMain::s_instance;
-
 FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain) {
   m_ui->setupUi(this);
-
-  // Initialize singleton.
-  s_instance = this;
+  qApp->setMainForm(this);
 
   m_statusBar = new StatusBar(this);
   setStatusBar(m_statusBar);
@@ -64,7 +60,7 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   // Add these actions to the list of actions of the main window.
   // This allows to use actions via shortcuts
   // even if main menu is not visible.
-  addActions(allActions().values());
+  addActions(allActions());
 
   // Prepare tabs.
   m_ui->m_tabWidget->initializeTabs();
@@ -81,58 +77,51 @@ FormMain::~FormMain() {
   delete m_ui;
 }
 
-FormMain *FormMain::instance() {
-  return s_instance;
-}
-
-QHash<QString, QAction*> FormMain::allActions() {
-  // TODO: nevytvaret pokazde novej hash ale udelat jeden
-  // a ten pak pouzivat.
-  // tohle by mohl bejt kandidat
-  QHash<QString, QAction*> actions;
+QList<QAction*> FormMain::allActions() {
+  QList<QAction*> actions;
 
   // Add basic actions.
-  actions.insert(m_ui->m_actionSettings->objectName(), m_ui->m_actionSettings);
-  actions.insert(m_ui->m_actionImportFeeds->objectName(), m_ui->m_actionImportFeeds);
-  actions.insert(m_ui->m_actionExportFeeds->objectName(), m_ui->m_actionExportFeeds);
-  actions.insert(m_ui->m_actionQuit->objectName(), m_ui->m_actionQuit);
-  actions.insert(m_ui->m_actionFullscreen->objectName(), m_ui->m_actionFullscreen);
-  actions.insert(m_ui->m_actionAboutGuard->objectName(), m_ui->m_actionAboutGuard);
-  actions.insert(m_ui->m_actionSwitchFeedsList->objectName(), m_ui->m_actionSwitchFeedsList);
-  actions.insert(m_ui->m_actionSwitchMainWindow->objectName(), m_ui->m_actionSwitchMainWindow);
-  actions.insert(m_ui->m_actionSwitchMainMenu->objectName(), m_ui->m_actionSwitchMainMenu);
-  actions.insert(m_ui->m_actionSwitchToolBars->objectName(), m_ui->m_actionSwitchToolBars);
-  actions.insert(m_ui->m_actionSwitchListHeaders->objectName(), m_ui->m_actionSwitchListHeaders);
+  actions << m_ui->m_actionSettings;
+  actions << m_ui->m_actionImportFeeds;
+  actions << m_ui->m_actionExportFeeds;
+  actions << m_ui->m_actionQuit;
+  actions << m_ui->m_actionFullscreen;
+  actions << m_ui->m_actionAboutGuard;
+  actions << m_ui->m_actionSwitchFeedsList;
+  actions << m_ui->m_actionSwitchMainWindow;
+  actions << m_ui->m_actionSwitchMainMenu;
+  actions << m_ui->m_actionSwitchToolBars;
+  actions << m_ui->m_actionSwitchListHeaders;
 
   // Add web browser actions
-  actions.insert(m_ui->m_actionAddBrowser->objectName(), m_ui->m_actionAddBrowser);
-  actions.insert(m_ui->m_actionCloseCurrentTab->objectName(), m_ui->m_actionCloseCurrentTab);
-  actions.insert(m_ui->m_actionCloseAllTabs->objectName(), m_ui->m_actionCloseAllTabs);
+  actions << m_ui->m_actionAddBrowser;
+  actions << m_ui->m_actionCloseCurrentTab;
+  actions << m_ui->m_actionCloseAllTabs;
 
   // Add feeds/messages actions.
-  actions.insert(m_ui->m_actionOpenSelectedSourceArticlesExternally->objectName(), m_ui->m_actionOpenSelectedSourceArticlesExternally);
-  actions.insert(m_ui->m_actionOpenSelectedSourceArticlesInternally->objectName(), m_ui->m_actionOpenSelectedSourceArticlesInternally);
-  actions.insert(m_ui->m_actionOpenSelectedMessagesInternally->objectName(), m_ui->m_actionOpenSelectedMessagesInternally);
-  actions.insert(m_ui->m_actionMarkAllFeedsRead->objectName(), m_ui->m_actionMarkAllFeedsRead);
-  actions.insert(m_ui->m_actionMarkSelectedFeedsAsRead->objectName(), m_ui->m_actionMarkSelectedFeedsAsRead);
-  actions.insert(m_ui->m_actionMarkSelectedFeedsAsUnread->objectName(), m_ui->m_actionMarkSelectedFeedsAsUnread);
-  actions.insert(m_ui->m_actionClearSelectedFeeds->objectName(), m_ui->m_actionClearSelectedFeeds);
-  actions.insert(m_ui->m_actionMarkSelectedMessagesAsRead->objectName(), m_ui->m_actionMarkSelectedMessagesAsRead);
-  actions.insert(m_ui->m_actionMarkSelectedMessagesAsUnread->objectName(), m_ui->m_actionMarkSelectedMessagesAsUnread);
-  actions.insert(m_ui->m_actionSwitchImportanceOfSelectedMessages->objectName(), m_ui->m_actionSwitchImportanceOfSelectedMessages);
-  actions.insert(m_ui->m_actionDeleteSelectedMessages->objectName(), m_ui->m_actionDeleteSelectedMessages);
-  actions.insert(m_ui->m_actionUpdateAllFeeds->objectName(), m_ui->m_actionUpdateAllFeeds);
-  actions.insert(m_ui->m_actionUpdateSelectedFeedsCategories->objectName(), m_ui->m_actionUpdateSelectedFeedsCategories);
-  actions.insert(m_ui->m_actionEditSelectedFeedCategory->objectName(), m_ui->m_actionEditSelectedFeedCategory);
-  actions.insert(m_ui->m_actionDeleteSelectedFeedCategory->objectName(), m_ui->m_actionDeleteSelectedFeedCategory);
-  actions.insert(m_ui->m_actionViewSelectedItemsNewspaperMode->objectName(), m_ui->m_actionViewSelectedItemsNewspaperMode);
-  actions.insert(m_ui->m_actionAddCategory->objectName(), m_ui->m_actionAddCategory);
-  actions.insert(m_ui->m_actionAddFeed->objectName(), m_ui->m_actionAddFeed);
-  actions.insert(m_ui->m_actionSelectNextFeedCategory->objectName(), m_ui->m_actionSelectNextFeedCategory);
-  actions.insert(m_ui->m_actionSelectPreviousFeedCategory->objectName(), m_ui->m_actionSelectPreviousFeedCategory);
-  actions.insert(m_ui->m_actionSelectNextMessage->objectName(), m_ui->m_actionSelectNextMessage);
-  actions.insert(m_ui->m_actionSelectPreviousMessage->objectName(), m_ui->m_actionSelectPreviousMessage);
-  actions.insert(m_ui->m_actionDefragmentDatabase->objectName(), m_ui->m_actionDefragmentDatabase);
+  actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
+  actions << m_ui->m_actionOpenSelectedSourceArticlesInternally;
+  actions << m_ui->m_actionOpenSelectedMessagesInternally;
+  actions << m_ui->m_actionMarkAllFeedsRead;
+  actions << m_ui->m_actionMarkSelectedFeedsAsRead;
+  actions << m_ui->m_actionMarkSelectedFeedsAsUnread;
+  actions << m_ui->m_actionClearSelectedFeeds;
+  actions << m_ui->m_actionMarkSelectedMessagesAsRead;
+  actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
+  actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
+  actions << m_ui->m_actionDeleteSelectedMessages;
+  actions << m_ui->m_actionUpdateAllFeeds;
+  actions << m_ui->m_actionUpdateSelectedFeedsCategories;
+  actions << m_ui->m_actionEditSelectedFeedCategory;
+  actions << m_ui->m_actionDeleteSelectedFeedCategory;
+  actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
+  actions << m_ui->m_actionAddCategory;
+  actions << m_ui->m_actionAddFeed;
+  actions << m_ui->m_actionSelectNextFeedCategory;
+  actions << m_ui->m_actionSelectPreviousFeedCategory;
+  actions << m_ui->m_actionSelectNextMessage;
+  actions << m_ui->m_actionSelectPreviousMessage;
+  actions << m_ui->m_actionDefragmentDatabase;
 
   return actions;
 }

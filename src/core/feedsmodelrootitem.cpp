@@ -17,7 +17,7 @@
 
 #include "core/feedsmodelrootitem.h"
 
-#include "application.h"
+#include "miscellaneous/application.h"
 
 #include <QVariant>
 

@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/localization.h"
@@ -39,7 +40,6 @@
 #include "gui/basetoolbar.h"
 #include "gui/messagestoolbar.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
-#include "application.h"
 
 #include <QProcess>
 #include <QNetworkProxy>
@@ -221,8 +221,8 @@ void FormSettings::saveFeedsMessages() {
   settings->setValue(APP_CFG_FEEDS, "feeds_update_on_startup", m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
   settings->setValue(APP_CFG_FEEDS, "count_format", m_ui->m_cmbCountsFeedList->currentText());
 
-  FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
-  FormMain::instance()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
 }
 
 void FormSettings::displayProxyPassword(int state) {
@@ -472,7 +472,7 @@ void FormSettings::saveLanguage() {
 }
 
 void FormSettings::loadShortcuts() {
-  m_ui->m_shortcuts->populate(FormMain::instance()->allActions().values());
+  m_ui->m_shortcuts->populate(qApp->mainForm()->allActions());
 }
 
 void FormSettings::saveShortcuts() {
@@ -480,7 +480,7 @@ void FormSettings::saveShortcuts() {
   m_ui->m_shortcuts->updateShortcuts();
 
   // Save new shortcuts to the settings.
-  DynamicShortcuts::save(FormMain::instance()->allActions().values());
+  DynamicShortcuts::save(qApp->mainForm()->allActions());
 }
 
 void FormSettings::loadDataStorage() {
@@ -759,8 +759,8 @@ void FormSettings::loadInterface() {
                                                                                                                  Qt::ToolButtonIconOnly).toInt()));
 
   // Load toolbars.
-  m_ui->m_editorFeedsToolbar->loadFromToolBar(FormMain::instance()->tabWidget()->feedMessageViewer()->feedsToolBar());
-  m_ui->m_editorMessagesToolbar->loadFromToolBar(FormMain::instance()->tabWidget()->feedMessageViewer()->messagesToolBar());
+  m_ui->m_editorFeedsToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsToolBar());
+  m_ui->m_editorMessagesToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesToolBar());
 }
 
 void FormSettings::saveInterface() {
@@ -823,6 +823,6 @@ void FormSettings::saveInterface() {
   m_ui->m_editorFeedsToolbar->saveToolBar();
   m_ui->m_editorMessagesToolbar->saveToolBar();
 
-  FormMain::instance()->tabWidget()->checkTabBarVisibility();
-  FormMain::instance()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
+  qApp->mainForm()->tabWidget()->checkTabBarVisibility();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 }

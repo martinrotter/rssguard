@@ -18,10 +18,10 @@
 #include "core/messagesmodel.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
-#include "application.h"
 
 #include <QSqlRecord>
 #include <QSqlError>

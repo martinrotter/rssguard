@@ -27,7 +27,7 @@
 #include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "application.h"
+#include "miscellaneous/application.h"
 
 // Needed for setting ini file format on Mac OS.
 #ifdef Q_OS_MAC
@@ -96,13 +96,12 @@ int main(int argc, char *argv[]) {
 
   // Instantiate main application window.
   FormMain main_window;
-  application.setMainForm(&main_window);
 
   // Set correct information for main window.
   main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(main_window.allActions().values());
+  DynamicShortcuts::load(main_window.allActions());
 
   // Display main window.
   if (qApp->settings()->value(APP_CFG_GUI, "start_hidden",

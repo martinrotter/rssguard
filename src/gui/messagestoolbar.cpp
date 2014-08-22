@@ -39,9 +39,16 @@ MessagesToolBar::~MessagesToolBar() {
 }
 
 QHash<QString, QAction*> MessagesToolBar::availableActions() const {
-  QHash<QString, QAction*> available_actions = FormMain::instance()->allActions();
+  QList<QAction*> application_actions = qApp->mainForm()->allActions();
+  QHash<QString, QAction*> available_actions;
+
+  foreach (QAction *application_action, application_actions) {
+    available_actions.insert(application_action->objectName(), application_action);
+  }
+
   available_actions.insert(SEACRH_MESSAGES_ACTION_NAME, m_actionSearchMessages);
   available_actions.insert(HIGHLIGHTER_ACTION_NAME, m_actionMessageHighlighter);
+
   return available_actions;
 }
 

@@ -17,8 +17,9 @@
 
 #include "gui/feedstoolbar.h"
 
-#include "gui/formmain.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/iconfactory.h"
 
 
 FeedsToolBar::FeedsToolBar(const QString &title, QWidget *parent) : BaseToolBar(title, parent) {
@@ -32,7 +33,14 @@ FeedsToolBar::~FeedsToolBar() {
 }
 
 QHash<QString, QAction*> FeedsToolBar::availableActions() const {
-  return FormMain::instance()->allActions();;
+  QList<QAction*> application_actions = qApp->userActions();
+  QHash<QString, QAction*> available_actions;
+
+  foreach (QAction *application_action, application_actions) {
+    available_actions.insert(application_action->objectName(), application_action);
+  }
+
+  return available_actions;
 }
 
 QList<QAction*> FeedsToolBar::changeableActions() const {

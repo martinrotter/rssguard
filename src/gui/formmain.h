@@ -58,10 +58,7 @@ class FormMain : public QMainWindow {
     // Returns list of all globally available actions.
     // NOTE: This is used for setting dynamic shortcuts
     // for given actions.
-    QHash<QString, QAction*> allActions();
-
-    // Singleton accessor.
-    static FormMain *instance();
+    QList<QAction*> allActions();
 
   protected:
     // Creates all needed menus and sets them up.
@@ -120,8 +117,6 @@ class FormMain : public QMainWindow {
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;
-
-    static FormMain *s_instance;
 };
 
 #endif // FORMMAIN_H

@@ -18,8 +18,8 @@
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
-#include "application.h"
 
 #include <QAction>
 

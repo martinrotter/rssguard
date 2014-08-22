@@ -147,13 +147,13 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
 void MessagesView::initializeContextMenu() {
   m_contextMenu = new QMenu(tr("Context menu for messages"), this);
   m_contextMenu->addActions(QList<QAction*>() <<
-                            FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
-                            FormMain::instance()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
-                            FormMain::instance()->m_ui->m_actionOpenSelectedMessagesInternally <<
-                            FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsRead <<
-                            FormMain::instance()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
-                            FormMain::instance()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-                            FormMain::instance()->m_ui->m_actionDeleteSelectedMessages);
+                            qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
+                            qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
+                            qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally <<
+                            qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead <<
+                            qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
+                            qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
+                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 }
 
 void MessagesView::mousePressEvent(QMouseEvent *event) {
