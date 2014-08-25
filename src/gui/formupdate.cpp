@@ -231,7 +231,8 @@ void FormUpdate::startUpdate() {
 
     m_downloader->downloadFile(url_file);
 
-  } else {
+  }
+  else {
     // Self-update and package are not available.
     if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
       qApp->showGuiMessage(tr("Cannot update application"),
