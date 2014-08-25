@@ -31,6 +31,10 @@
 #include <QDesktopServices>
 #include <QProcess>
 
+#if defined(Q_OS_WIN)
+#include <windows.h>
+#endif
+
 
 FormUpdate::FormUpdate(QWidget *parent)
   : QDialog(parent), m_downloader(NULL), m_readyToInstall(false), m_ui(new Ui::FormUpdate) {
@@ -62,7 +66,7 @@ bool FormUpdate::isUpdateForThisSystem() const {
 }
 
 bool FormUpdate::isSelfUpdateSupported() const {
-#if defined(Q_OS_WIN) || defined(Q_OS_OS2)
+#if defined(Q_OS_WIN32)
   return true;
 #else
   return false;
@@ -184,6 +188,7 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
 }
 
 void FormUpdate::startUpdate() {
+#if defined(Q_OS_WIN)
   QString url_file;
   bool update_for_this_system = isUpdateForThisSystem();
 
@@ -202,7 +207,14 @@ void FormUpdate::startUpdate() {
     qDebug("Preparing to launch external installer '%s'.",
            qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
-    if (!QProcess::startDetached(m_updateFilePath)) {
+    long exec_result = (long) ShellExecute(NULL,
+                                           NULL,
+                                           reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
+                                           NULL,
+                                           NULL,
+                                           SW_NORMAL);
+
+    if (exec_result <= 32) {
       qDebug("External updater was not launched due to error.");
 
       qApp->showGuiMessage(tr("Cannot update application"),
@@ -242,4 +254,5 @@ void FormUpdate::startUpdate() {
                            QSystemTrayIcon::Warning, this);
     }
   }
+#endif
 }     
