@@ -148,7 +148,7 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
 
       qDebug("Update file contents was successfuly saved.");
 
-      m_updateFilePath = QDir::toNativeSeparators(output_file.fileName());
+      m_updateFilePath = output_file.fileName();
       m_readyToInstall = true;
     }
     else {
@@ -199,7 +199,8 @@ void FormUpdate::startUpdate() {
     // via self-update feature.
     close();
 
-    qDebug("Preparing to launch external installer '%s'.", qPrintable(m_updateFilePath));
+    qDebug("Preparing to launch external installer '%s'.",
+           qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
     if (!QProcess::startDetached(m_updateFilePath)) {
       qDebug("External updater was not launched due to error.");
