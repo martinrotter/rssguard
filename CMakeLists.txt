@@ -69,14 +69,6 @@
 # Setup basic variables.
 project(rssguard)
 
-if(WIN32 OR OS2)
-  # Setup "rssguard_updater" project.
-  project(rssguard_updater)
-
-  set(UPDATER_SUBFOLDER "updater")
-  set(UPDATER_EXE_NAME "rssguard_updater")
-endif(WIN32 OR OS2)
-
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
 set(APP_VERSION "2.0.0.0")
@@ -98,6 +90,10 @@ option(USE_QT_5 "Use Qt 5 for building" OFF)
 option(ENABLE_OS2_RC "Compile application icon on OS/2" OFF)
 option(BUNDLE_ICON_THEMES "Equip installation with custom icon themes" ON)
 
+if(WIN32)
+  option(USE_NSIS "Use NSIS generator to produce installer" OFF)
+endif(WIN32)
+
 # Set appropriate CMake policies.
 if(POLICY CMP0012)
   cmake_policy(SET CMP0012 NEW)
@@ -118,6 +114,11 @@ message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
 message(STATUS "[${APP_LOW_NAME}] Use Qt 5 for building -> ${USE_QT_5}")
 message(STATUS "[${APP_LOW_NAME}] Equip installation with custom icon themes -> ${BUNDLE_ICON_THEMES}")
 message(STATUS "[${APP_LOW_NAME}] Compile application icon on OS/2 -> ${ENABLE_OS2_RC}")
+
+if(WIN32)
+  message(STATUS "[${APP_LOW_NAME}] Use NSIS generator to produce installer -> ${USE_NSIS}")
+endif(WIN32)
+
 message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
 message(STATUS "")
 
@@ -126,6 +127,9 @@ message(STATUS "[${APP_LOW_NAME}] Compilation process begins right now.")
 
 # Setup misc options.
 set(CMAKE_COLOR_MAKEFILE ON)
+set(CMAKE_MODULE_PATH
+  ${PROJECT_SOURCE_DIR}/resources/nsis
+  ${CMAKE_MODULE_PATH})
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Eliminate a warning when building in Windows that relates
@@ -538,29 +542,6 @@ if(WIN32)
   )
 endif(WIN32)
 
-# Setup source & header files for "rssguard_updater".
-if(WIN32 OR OS2)
-  set(UPDATER_SOURCES
-    # QTSINGLEAPPLICATION sources.
-    src/qtsingleapplication/qtlocalpeer.cpp
-    src/qtsingleapplication/qtsingleapplication.cpp
-
-    # MAIN sources.
-    src/miscellaneous/iofactory.cpp
-    src/updater/formupdater.cpp
-    src/updater/main.cpp
-  )
-
-  set(UPDATER_HEADERS
-    # QTSINGLEAPPLICATION headers.
-    src/qtsingleapplication/qtlocalpeer.h
-    src/qtsingleapplication/qtsingleapplication.h
-
-    # MAIN headers.
-    src/updater/formupdater.h
-  )
-endif(WIN32 OR OS2)
-
 # Add custom icon on Mac OS X.
 if(APPLE)
   SET (APP_SOURCES ${APP_SOURCES} resources/macosx/rssguard.icns)
@@ -596,44 +577,8 @@ include_directories (
   ${CMAKE_SOURCE_DIR}/src/gui
   ${CMAKE_SOURCE_DIR}/src/network-web
   ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts
-  ${CMAKE_SOURCE_DIR}/src/updater
   ${CMAKE_BINARY_DIR}/src
 )
-
-# Compile "rssguard_updater" utility on supported platforms.
-if(WIN32 OR OS2)
-  message(STATUS "[${APP_LOW_NAME}] RSS Guard updater will be compiled.")
-
-  if(${USE_QT_5})
-    add_executable(${UPDATER_EXE_NAME} WIN32
-      ${UPDATER_SOURCES}
-    )
-
-    if(WIN32)
-      target_link_libraries(${UPDATER_EXE_NAME} Qt5::WinMain)
-    endif(WIN32)
-
-    # Use modules from Qt.
-    qt5_use_modules(rssguard_updater
-      Core
-      Widgets
-      Network
-    )
-  else(${USE_QT_5})
-    add_executable(${UPDATER_EXE_NAME} WIN32
-      ${UPDATER_SOURCES}
-      ${UPDATER_MOC}
-    )
-
-    # Link modules from Qt.
-    target_link_libraries(${UPDATER_EXE_NAME}
-      ${QT_QTCORE_LIBRARY}
-      ${QT_QTGUI_LIBRARY}
-      ${QT_QTNETWORK_LIBRARY}
-      ${QT_QTMAIN_LIBRARY}
-    )
-  endif(${USE_QT_5})
-endif(WIN32 OR OS2)
 
 # Compile "rssguard"
 if(${USE_QT_5})
@@ -689,24 +634,17 @@ if(WIN32 OR OS2)
           RUNTIME DESTINATION ./${UPDATER_SUBFOLDER})
 
   # Copy DLLs and other binary files for main installation and updater.
-  if(WIN32)
-    # Copy "7za" utility on Windows, OS/2 uses built-in "7za".
-    install(FILES resources/binaries/windows/7za/7za.exe
-                  resources/binaries/windows/7za/7za_license.txt
+  if(WIN32 AND NOT ${USE_QT_5})
+    install(FILES ${APP_DLLS_QT4_MSVC2010}
+            DESTINATION ./)
+    install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS}
+            DESTINATION ./imageformats)
+    install(FILES ${APP_DLLS_QT4_MSVC2010_SQLDRIVERS}
+            DESTINATION ./sqldrivers)
+
+    install(FILES ${APP_DLLS_QT4_MSVC2010}
             DESTINATION ./${UPDATER_SUBFOLDER})
-
-    if(NOT ${USE_QT_5})
-      install(FILES ${APP_DLLS_QT4_MSVC2010}
-              DESTINATION ./)
-      install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS}
-              DESTINATION ./imageformats)
-      install(FILES ${APP_DLLS_QT4_MSVC2010_SQLDRIVERS}
-              DESTINATION ./sqldrivers)
-
-      install(FILES ${APP_DLLS_QT4_MSVC2010}
-              DESTINATION ./${UPDATER_SUBFOLDER})
-    endif(NOT ${USE_QT_5})
-  endif(WIN32)
+  endif(WIN32 AND NOT ${USE_QT_5})
 
   if(BUNDLE_ICON_THEMES)
     install(DIRECTORY resources/graphics/icons/mini-kfaenza
@@ -802,16 +740,39 @@ elseif(UNIX)
 endif(WIN32 OR OS2)
 
 # Custom target for packaging.
-set(CPACK_GENERATOR "ZIP")
+if(WIN32)
+  if(USE_NSIS)
+    set(CPACK_GENERATOR "NSIS")
+  else(USE_NSIS)
+    set(CPACK_GENERATOR "ZIP")
+  endif(USE_NSIS)
+else(WIN32)
+  set(CPACK_GENERATOR "ZIP")
+endif(WIN32)
+
 set(CPACK_PACKAGE_NAME ${APP_LOW_NAME})
 set(CPACK_PACKAGE_VERSION ${APP_VERSION})
+set(CPACK_PACKAGE_VERSION_PATCH "0")
+set(CPACK_PACKAGE_VENDOR ${APP_AUTHOR})
+set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY ${APP_NAME})
 set(CPACK_IGNORE_FILES "/resources/aur/;\\\\.psd$;/resources/deployment;/CVS/;/\\\\.svn/;/\\\\.git/;\\\\.swp$;/CMakeLists.txt.user;\\\\.#;/#;\\\\.tar.gz$;/CMakeFiles/;CMakeCache.txt;\\\\.qm$;/build/;\\\\.diff$;.DS_Store'")
 set(CPACK_SOURCE_GENERATOR "TGZ")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}")
 set(CPACK_SOURCE_IGNORE_FILES ${CPACK_IGNORE_FILES})
 
+set(CPACK_NSIS_INSTALLED_ICON_NAME "${APP_LOW_NAME}.ico")
+set(CPACK_NSIS_HELP_LINK ${APP_URL})
+set(CPACK_NSIS_URL_INFO_ABOUT ${APP_URL})
+set(CPACK_NSIS_CONTACT ${APP_EMAIL})
+
 # Load packaging facilities.
 include(CPack)
+
+# Configure file with custom definitions for NSIS.
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/resources/nsis/NSIS.definitions.nsh.in
+  ${CMAKE_CURRENT_BINARY_DIR}/resources/nsis/NSIS.definitions.nsh
+)
 
 # make dist implementation.
 add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)

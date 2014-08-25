@@ -148,7 +148,7 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
 
       qDebug("Update file contents was successfuly saved.");
 
-      m_updateFilePath = output_file.fileName();
+      m_updateFilePath = QDir::toNativeSeparators(output_file.fileName());
       m_readyToInstall = true;
     }
     else {
@@ -199,47 +199,17 @@ void FormUpdate::startUpdate() {
     // via self-update feature.
     close();
 
-    // Now we need to copy updater to temporary path and launch it
-    // with correct arguments from there.
-#if QT_VERSION >= 0x050000
-    QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-#else
-    QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
-#endif
+    qDebug("Preparing to launch external installer '%s'.", qPrintable(m_updateFilePath));
 
-    QString source_updater_directory = QDir::toNativeSeparators(qApp->applicationDirPath() + QDir::separator() +
-                                                                APP_UPDATER_SUBFOLDER);
-    QString target_updater_directory = QDir::toNativeSeparators(temp_directory + QDir::separator() +
-                                                                APP_UPDATER_SUBFOLDER);
-
-    if (QDir(temp_directory).exists(APP_UPDATER_SUBFOLDER)) {
-      IOFactory::removeDirectory(target_updater_directory);
-    }
-
-    IOFactory::copyDirectory(source_updater_directory, target_updater_directory);
-
-    qDebug("Preparing to launch external updater '%s'.",
-           qPrintable(target_updater_directory + QDir::separator() + APP_UPDATER_EXECUTABLE));
-
-    if (!QProcess::startDetached(target_updater_directory + QDir::separator() + APP_UPDATER_EXECUTABLE,
-                                 QStringList() <<
-                                 APP_VERSION <<
-                                 m_updateInfo.m_availableVersion <<
-                                 QDir::toNativeSeparators(qApp->applicationFilePath()) <<
-                                 QDir::toNativeSeparators(m_updateFilePath))) {
+    if (!QProcess::startDetached(m_updateFilePath)) {
       qDebug("External updater was not launched due to error.");
 
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        qApp->trayIcon()->showMessage(tr("Cannot update application"),
-                                      tr("Cannot launch external updater. Update application manually."),
-                                      QSystemTrayIcon::Warning);
-      }
-      else {
-        MessageBox::show(this,
-                         QMessageBox::Warning,
-                         tr("Cannot update application"),
-                         tr("Cannot launch external updater. Update application manually."));
-      }
+      qApp->showGuiMessage(tr("Cannot update application"),
+                           tr("Cannot launch external updater. Update application manually."),
+                           QSystemTrayIcon::Warning, this);
+    }
+    else {
+      qApp->quit();
     }
   }
   else if (update_for_this_system && isSelfUpdateSupported()) {
@@ -264,19 +234,10 @@ void FormUpdate::startUpdate() {
   } else {
     // Self-update and package are not available.
     if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        qApp->trayIcon()->showMessage(tr("Cannot update application"),
-                                      tr("Cannot navigate to installation file. Check new installation downloads "
-                                         "manually on project website."),
-                                      QSystemTrayIcon::Warning);
-      }
-      else {
-        MessageBox::show(this,
-                         QMessageBox::Warning,
-                         tr("Cannot update application"),
-                         tr("Cannot navigate to installation file. Check new installation downloads "
-                            "manually on project website."));
-      }
+      qApp->showGuiMessage(tr("Cannot update application"),
+                           tr("Cannot navigate to installation file. Check new installation downloads "
+                              "manually on project website."),
+                           QSystemTrayIcon::Warning, this);
     }
   }
 }     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
   <release version="1.9.9.9" type="feature">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.9-win32.7z</url>
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.0-win32-test.exe</url>
     <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.9-os2.7z</url>
     <changes>
 <![CDATA[<body>

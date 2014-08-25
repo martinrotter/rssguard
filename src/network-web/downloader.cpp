@@ -49,6 +49,8 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
   request.setOriginatingObject(&originatingObject);
 
   // Set url for this request and fire it up.
+  m_timer->setInterval(timeout);
+
   request.setUrl(url);
   runGetRequest(request);
 }

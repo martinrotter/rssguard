@@ -8,7 +8,7 @@ Fixed:
 
 Added:
 <ul>
-<li></li>
+<li>Added NSIS-based "portable" installer for Windows and restructured update process.</li>
 </ul>
 
 Changed:
