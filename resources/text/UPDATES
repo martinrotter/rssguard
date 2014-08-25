@@ -2,20 +2,21 @@
 <releases>
   <release version="1.9.9.9" type="feature">
     <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.0-win32-test.exe</url>
-    <url platform="x86" os="OS2">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-1.9.9.9-os2.7z</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Various GUI and bug fixes.</li>
+<li>Improved behavior of updater.</li>
 </ul>
 
 Added:
 <ul>
-<li>Application is now able to self-update itself on OS/2 and Windows. Currently, this is EXPERIMENTAL support. Please, report any bugs. Authors take no responsibility for removed files or lost application settings.</li>
-<li>Added option to adjust icons/buttons displayed in toolbars. See Settings/User interface/Toolbars dialog for more information.</li>
-<li>Added option to search messages via regular expression.</li>
-<li>Added option to highlight particular messages - unread, important, none.</li>
+<li>Added NSIS-based "portable" installer for Windows and restructured update process.</li>
+</ul>
+
+Changed:
+<ul>
+<li>Updated bundled OpenSSL libraries for Windows portable version.</li>
 </ul>
 </body>]]>
     </changes>

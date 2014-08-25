@@ -47,7 +47,9 @@ FormUpdate::FormUpdate(QWidget *parent)
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));
 
+#if defined(Q_OS_WIN)
   connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
+#endif
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
@@ -233,17 +235,13 @@ void FormUpdate::startUpdate() {
       // Initialie downloader.
       m_downloader = new Downloader(this);
 
-      connect(m_downloader, SIGNAL(progress(qint64,qint64)),
-              this, SLOT(updateProgress(qint64,qint64)));
-      connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)),
-              this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
+      connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
+      connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)), this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
     }
 
     m_btnUpdate->setText(tr("Downloading update..."));
     m_btnUpdate->setEnabled(false);
-
     m_downloader->downloadFile(url_file);
-
   }
   else {
     // Self-update and package are not available.
