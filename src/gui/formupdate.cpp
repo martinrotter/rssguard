@@ -47,9 +47,7 @@ FormUpdate::FormUpdate(QWidget *parent)
   m_btnUpdate = m_ui->m_buttonBox->addButton(tr("Update"), QDialogButtonBox::ActionRole);
   m_btnUpdate->setToolTip(tr("Download new installation files."));
 
-#if defined(Q_OS_WIN)
   connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
-#endif
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
@@ -86,8 +84,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_txtChanges->clear();
     m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error,
                                  tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
-                                 tr("List with updates was "
-                                    "not\ndownloaded successfully."));
+                                 tr("List with updates was not\ndownloaded successfully."));
     m_btnUpdate->setEnabled(false);
     m_btnUpdate->setToolTip(tr("Checking for updates failed."));
   }
@@ -95,19 +92,19 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
-    if (update.first.m_availableVersion != APP_VERSION) {
+    bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
+
+    if (update.first.m_availableVersion > APP_VERSION) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
       m_btnUpdate->setEnabled(true);
-      m_btnUpdate->setToolTip(isUpdateForThisSystem() ?
+      m_btnUpdate->setToolTip(is_self_update_for_this_system ?
                                 tr("Download installation file for your OS.") :
                                 tr("Installation file is not available directly.\n"
                                    "Go to application website to obtain it manually."));
 
-      if (isUpdateForThisSystem() && isSelfUpdateSupported()) {
-        m_btnUpdate->setText(tr("Download update"));
-      }
+      m_btnUpdate->setText(is_self_update_for_this_system ? tr("Download update") : tr("Go to application website"));
     }
     else {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Warning,
@@ -190,9 +187,8 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
 }
 
 void FormUpdate::startUpdate() {
-#if defined(Q_OS_WIN)
   QString url_file;
-  bool update_for_this_system = isUpdateForThisSystem();
+  bool update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
   if (update_for_this_system) {
     url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;
@@ -209,6 +205,7 @@ void FormUpdate::startUpdate() {
     qDebug("Preparing to launch external installer '%s'.",
            qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
+#if defined(Q_OS_WIN)
     long exec_result = (long) ShellExecute(NULL,
                                            NULL,
                                            reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
@@ -226,8 +223,9 @@ void FormUpdate::startUpdate() {
     else {
       qApp->quit();
     }
+#endif
   }
-  else if (update_for_this_system && isSelfUpdateSupported()) {
+  else if (update_for_this_system) {
     // Nothing is downloaded yet, but update for this system
     // is available and self-update feature is present.
 
@@ -247,10 +245,9 @@ void FormUpdate::startUpdate() {
     // Self-update and package are not available.
     if (!WebFactory::instance()->openUrlInExternalBrowser(url_file)) {
       qApp->showGuiMessage(tr("Cannot update application"),
-                           tr("Cannot navigate to installation file. Check new installation downloads "
-                              "manually on project website."),
-                           QSystemTrayIcon::Warning, this);
+                           tr("Cannot navigate to installation file. Check new installation downloads manually on project website."),
+                           QSystemTrayIcon::Warning,
+                           this);
     }
   }
-#endif
 }     
