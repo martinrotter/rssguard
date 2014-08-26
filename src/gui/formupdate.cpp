@@ -165,22 +165,19 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
 }
 
 void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray contents) {
-  qDebug("Download of application update file was completed with code '%d'.",
-         status);
+  qDebug("Download of application update file was completed with code '%d'.", status);
 
   switch (status) {
     case QNetworkReply::NoError:
       saveUpdateFile(contents);
 
-      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"),
-                                   tr("Package was downloaded successfully."));
+      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully."));
       m_btnUpdate->setText(tr("Install update"));
       m_btnUpdate->setEnabled(true);
       break;
 
     default:
-      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error, tr("Error occured"),
-                                   tr("Error occured during downloading of the package."));
+      m_ui->m_lblStatus->setStatus(WidgetWithStatus::Error, tr("Error occured"), tr("Error occured during downloading of the package."));
       m_btnUpdate->setText(tr("Error occured"));
       break;
   }
