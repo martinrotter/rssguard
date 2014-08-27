@@ -75,18 +75,18 @@ void WebView::createConnections() {
 }
 
 void WebView::setupIcons() {
-  m_actionReload->setIcon(IconFactory::instance()->fromTheme("go-refresh"));
-  m_actionCopySelectedItem->setIcon(IconFactory::instance()->fromTheme("edit-copy"));
-  m_actionCopyLink->setIcon(IconFactory::instance()->fromTheme("edit-copy"));
-  m_actionCopyImage->setIcon(IconFactory::instance()->fromTheme("edit-copy-image"));
+  m_actionReload->setIcon(qApp->icons()->fromTheme("go-refresh"));
+  m_actionCopySelectedItem->setIcon(qApp->icons()->fromTheme("edit-copy"));
+  m_actionCopyLink->setIcon(qApp->icons()->fromTheme("edit-copy"));
+  m_actionCopyImage->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
 
 #if QT_VERSION >= 0x040800
-  m_actionCopyImageUrl->setIcon(IconFactory::instance()->fromTheme("edit-copy"));
+  m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme("edit-copy"));
 #endif
 
-  m_actionOpenLinkThisTab->setIcon(IconFactory::instance()->fromTheme("text-html"));
-  m_actionOpenLinkNewTab->setIcon(IconFactory::instance()->fromTheme("text-html"));
-  m_actionOpenImageNewTab->setIcon(IconFactory::instance()->fromTheme("edit-copy-image"));
+  m_actionOpenLinkThisTab->setIcon(qApp->icons()->fromTheme("text-html"));
+  m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme("text-html"));
+  m_actionOpenImageNewTab->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
 }
 
 void WebView::initializeActions() {
@@ -161,8 +161,8 @@ void WebView::popupContextMenu(const QPoint &pos) {
   QMenu link_submenu(tr("Hyperlink"), this);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
-  image_submenu.setIcon(IconFactory::instance()->fromTheme("image-generic"));
-  link_submenu.setIcon(IconFactory::instance()->fromTheme("text-html"));
+  image_submenu.setIcon(qApp->icons()->fromTheme("image-generic"));
+  link_submenu.setIcon(qApp->icons()->fromTheme("text-html"));
 
   // Assemble the menu from actions.
   context_menu.addAction(m_actionReload);

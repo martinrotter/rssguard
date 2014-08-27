@@ -393,7 +393,7 @@ void FeedMessageViewer::vacuumDatabase() {
     return;
   }
 
-  if (DatabaseFactory::instance()->vacuumDatabase()) {
+  if (qApp->database()->vacuumDatabase()) {
     qApp->showGuiMessage(tr("Database defragmented"),
                          tr("Database was successfully defragmented."),
                          QSystemTrayIcon::Information,

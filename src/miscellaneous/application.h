@@ -25,6 +25,7 @@
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/localization.h"
+#include "miscellaneous/databasefactory.h"
 #include "gui/systemtrayicon.h"
 
 #include <QMutex>
@@ -39,6 +40,7 @@
 
 
 class FormMain;
+class IconFactory;
 class QAction;
 
 // TODO: presunout nektery veci sem, settings atp
@@ -75,6 +77,16 @@ class Application : public QtSingleApplication {
 
       return m_localization;
     }
+
+    inline DatabaseFactory *database() {
+      if (m_database == NULL) {
+        m_database = new DatabaseFactory(this);
+      }
+
+      return m_database;
+    }
+
+    IconFactory *icons();
 
     inline Settings *settings() {
       if (m_settings == NULL) {
@@ -139,6 +151,8 @@ class Application : public QtSingleApplication {
     SystemFactory *m_system;
     SkinFactory *m_skins;
     Localization *m_localization;
+    IconFactory *m_icons;
+    DatabaseFactory *m_database;
 };
 
 #endif // APPLICATION_H

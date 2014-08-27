@@ -25,7 +25,6 @@
 
 #include <QString>
 #include <QIcon>
-#include <QPointer>
 #include <QHash>
 #include <QDir>
 
@@ -34,6 +33,9 @@ class IconFactory : public QObject {
     Q_OBJECT
 
   public:
+    // Constructor.
+    explicit IconFactory(QObject *parent = 0);
+
     // Destructor.
     virtual ~IconFactory();
 
@@ -82,14 +84,8 @@ class IconFactory : public QObject {
     static IconFactory *instance();
 
   private:
-    // Constructor.
-    explicit IconFactory(QObject *parent = 0);
-
     QHash<QString, QIcon> m_cachedIcons;
     QString m_currentIconTheme;
-
-    // Singleton.
-    static QPointer<IconFactory> s_instance;
 };
 
 #endif // ICONFACTORY_H

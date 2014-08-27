@@ -181,7 +181,7 @@ void FormFeedDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the feed"),
                      QDir::homePath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
   dialog.setFileMode(QFileDialog::ExistingFile);
-  dialog.setWindowIcon(IconFactory::instance()->fromTheme("image-generic"));
+  dialog.setWindowIcon(qApp->icons()->fromTheme("image-generic"));
   dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
   dialog.setViewMode(QFileDialog::Detail);
   dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
@@ -197,7 +197,7 @@ void FormFeedDetails::onLoadIconFromFile() {
 }
 
 void FormFeedDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(IconFactory::instance()->fromTheme("folder-feed"));
+  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme("folder-feed"));
 }
 
 void FormFeedDetails::apply() {
@@ -354,7 +354,7 @@ void FormFeedDetails::initialize() {
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(IconFactory::instance()->fromTheme("folder-feed"));
+  setWindowIcon(qApp->icons()->fromTheme("folder-feed"));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
@@ -399,13 +399,13 @@ void FormFeedDetails::initialize() {
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile = new QAction(IconFactory::instance()->fromTheme("image-generic"),
+  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme("image-generic"),
                                          tr("Load icon from file..."),
                                          this);
-  m_actionNoIcon = new QAction(IconFactory::instance()->fromTheme("dialog-cancel"),
+  m_actionNoIcon = new QAction(qApp->icons()->fromTheme("dialog-cancel"),
                                tr("Do not use icon"),
                                this);
-  m_actionUseDefaultIcon = new QAction(IconFactory::instance()->fromTheme("folder-feed"),
+  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme("folder-feed"),
                                        tr("Use default icon"),
                                        this);
   m_iconMenu->addAction(m_actionLoadIconFromFile);

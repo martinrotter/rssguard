@@ -82,7 +82,7 @@ void FeedsToolBar::loadChangeableActions(const QStringList &actions) {
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
       QAction *action = addWidget(spacer);
-      action->setIcon(IconFactory::instance()->fromTheme("application-search"));
+      action->setIcon(qApp->icons()->fromTheme("application-search"));
       action->setProperty("type", SPACER_ACTION_NAME);
       action->setProperty("name", tr("Toolbar spacer"));
     }

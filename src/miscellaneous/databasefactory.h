@@ -19,7 +19,6 @@
 #define DATABASEFACTORY_H
 
 #include <QObject>
-#include <QPointer>
 #include <QSqlDatabase>
 
 
@@ -31,7 +30,8 @@ class DatabaseFactory : public QObject {
     enum UsedDriver {
       SQLITE,
       SQLITE_MEMORY,
-      MYSQL
+      MYSQL,
+      POSTGRESQL
     };
 
     // Describes what type of database user wants.
@@ -54,14 +54,16 @@ class DatabaseFactory : public QObject {
     // GENERAL stuff.
     //
 
+    // Constructor.
+    explicit DatabaseFactory(QObject *parent = 0);
+
     // Destructor.
     virtual ~DatabaseFactory();
 
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
     // NOTE: This always returns OPENED database.
-    QSqlDatabase connection(const QString &connection_name,
-                            DesiredType desired_type);
+    QSqlDatabase connection(const QString &connection_name, DesiredType desired_type);
 
     // Removes connection.
     void removeConnection(const QString &connection_name = QString());
@@ -72,9 +74,6 @@ class DatabaseFactory : public QObject {
 
     // Performs cleanup of the database.
     bool vacuumDatabase();
-
-    // Singleton getter.
-    static DatabaseFactory *instance();
 
     //
     // MySQL stuff.
@@ -93,15 +92,9 @@ class DatabaseFactory : public QObject {
     // GENERAL stuff.
     //
 
-    // Constructor.
-    explicit DatabaseFactory(QObject *parent = 0);
-
     // Decides which database backend will be used in this
     // application session.
     void determineDriver();
-
-    // Private singleton value.
-    static QPointer<DatabaseFactory> s_instance;
 
     // Holds the type of currently activated database backend.
     UsedDriver m_activeDatabaseDriver;

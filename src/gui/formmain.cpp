@@ -240,7 +240,7 @@ void FormMain::onAboutToQuit() {
     m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
   }
 
-  DatabaseFactory::instance()->saveDatabase();
+  qApp->database()->saveDatabase();
   saveSize();
 
   if (locked_safely) {
@@ -259,7 +259,7 @@ void FormMain::onAboutToQuit() {
 }
 
 void FormMain::setupIcons() {
-  IconFactory *icon_theme_factory = IconFactory::instance();
+  IconFactory *icon_theme_factory = qApp->icons();
 
   // Setup icons of this main window.
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));

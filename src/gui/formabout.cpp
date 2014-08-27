@@ -33,7 +33,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(IconFactory::instance()->fromTheme("application-about"));
+  setWindowIcon(qApp->icons()->fromTheme("application-about"));
 
   //: About RSS Guard dialog title.
   setWindowTitle(tr("About %1").arg(APP_NAME));

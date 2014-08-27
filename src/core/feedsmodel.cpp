@@ -41,10 +41,10 @@ FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
 
   //: Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
-  m_rootItem->setIcon(IconFactory::instance()->fromTheme("folder-root"));
+  m_rootItem->setIcon(qApp->icons()->fromTheme("folder-root"));
 
   // Setup icons.
-  m_countsIcon = IconFactory::instance()->fromTheme("mail-mark-unread");
+  m_countsIcon = qApp->icons()->fromTheme("mail-mark-unread");
 
   //: Title text in the feed list header.
   m_headerData << tr("Title");
@@ -170,7 +170,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
 
   // Now, add category to persistent storage.
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase database = qApp->database()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_add(database);
 
@@ -182,7 +182,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
   query_add.bindValue(":title", category->title());
   query_add.bindValue(":description", category->description());
   query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
-  query_add.bindValue(":icon", IconFactory::instance()->toByteArray(category->icon()));
+  query_add.bindValue(":icon", qApp->icons()->toByteArray(category->icon()));
 
   if (!query_add.exec()) {
     // Query failed.
@@ -212,7 +212,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
 
 bool FeedsModel::editCategory(FeedsModelCategory *original_category,
                               FeedsModelCategory *new_category) {
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase database = qApp->database()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
   FeedsModelRootItem *original_parent = original_category->parent();
@@ -224,7 +224,7 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category,
                                 "WHERE id = :id;");
   query_update_category.bindValue(":title", new_category->title());
   query_update_category.bindValue(":description", new_category->description());
-  query_update_category.bindValue(":icon", IconFactory::instance()->toByteArray(new_category->icon()));
+  query_update_category.bindValue(":icon", qApp->icons()->toByteArray(new_category->icon()));
   query_update_category.bindValue(":parent_id", new_parent->id());
   query_update_category.bindValue(":id", original_category->id());
 
@@ -273,7 +273,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
 
   // Now, add category to persistent storage.
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase database = qApp->database()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_add_feed(database);
 
@@ -284,7 +284,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
   query_add_feed.bindValue(":title", feed->title());
   query_add_feed.bindValue(":description", feed->description());
   query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
-  query_add_feed.bindValue(":icon", IconFactory::instance()->toByteArray(feed->icon()));
+  query_add_feed.bindValue(":icon", qApp->icons()->toByteArray(feed->icon()));
   query_add_feed.bindValue(":category", parent->id());
   query_add_feed.bindValue(":encoding", feed->encoding());
   query_add_feed.bindValue(":url", feed->url());
@@ -323,7 +323,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
 
 bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
                           FeedsModelFeed *new_feed) {
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase database = qApp->database()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
   FeedsModelRootItem *original_parent = original_feed->parent();
@@ -335,7 +335,7 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
                             "WHERE id = :id;");
   query_update_feed.bindValue(":title", new_feed->title());
   query_update_feed.bindValue(":description", new_feed->description());
-  query_update_feed.bindValue(":icon", IconFactory::instance()->toByteArray(new_feed->icon()));
+  query_update_feed.bindValue(":icon", qApp->icons()->toByteArray(new_feed->icon()));
   query_update_feed.bindValue(":category", new_parent->id());
   query_update_feed.bindValue(":encoding", new_feed->encoding());
   query_update_feed.bindValue(":url", new_feed->url());
@@ -436,7 +436,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now)
 QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase database = qApp->database()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
@@ -571,7 +571,7 @@ void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChildren();
 
-  QSqlDatabase database = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase database = qApp->database()->connection(objectName(),
                                                                   DatabaseFactory::FromSettings);
   CategoryAssignment categories;
   FeedAssignment feeds;
@@ -671,7 +671,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
 
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
                                int read) {
-  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase db_handle = qApp->database()->connection(objectName(),
                                                                    DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -709,7 +709,7 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
 bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
                                   int deleted,
                                   bool read_only) {
-  QSqlDatabase db_handle = DatabaseFactory::instance()->connection(objectName(),
+  QSqlDatabase db_handle = qApp->database()->connection(objectName(),
                                                                    DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {

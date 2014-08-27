@@ -82,7 +82,7 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
 }
 
 void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
-  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelFeed",
+  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
@@ -116,7 +116,7 @@ FeedsModelFeed *FeedsModelFeed::loadFromRecord(const QSqlRecord &record) {
   feed->setId(record.value(FDS_DB_ID_INDEX).toInt());
   feed->setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
   feed->setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  feed->setIcon(IconFactory::instance()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+  feed->setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
   feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
   feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
   feed->setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
@@ -398,7 +398,7 @@ void FeedsModelFeed::update() {
 }
 
 bool FeedsModelFeed::removeItself() {
-  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelFeed",
+  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
@@ -421,7 +421,7 @@ bool FeedsModelFeed::removeItself() {
 
 void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
-  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelFeed",
+  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
                                                                   DatabaseFactory::FromSettings);
 
   // Prepare queries.

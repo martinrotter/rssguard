@@ -17,8 +17,6 @@
 
 #include "miscellaneous/databasefactory.h"
 
-#include "definitions/definitions.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/application.h"
 
 #include <QDir>
@@ -26,8 +24,6 @@
 #include <QSqlError>
 #include <QVariant>
 
-
-QPointer<DatabaseFactory> DatabaseFactory::s_instance;
 
 DatabaseFactory::DatabaseFactory(QObject *parent)
   : QObject(parent),
@@ -42,18 +38,9 @@ DatabaseFactory::~DatabaseFactory() {
   qDebug("Destroying DatabaseFactory object.");
 }
 
-DatabaseFactory *DatabaseFactory::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new DatabaseFactory(qApp);
-  }
-
-  return s_instance;
-}
-
 DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
                                                                  const QString &username, const QString &password) {
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER,
-                                                    APP_DB_MYSQL_TEST);
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, APP_DB_MYSQL_TEST);
 
   database.setHostName(hostname);
   database.setPort(port);
@@ -565,6 +552,7 @@ bool DatabaseFactory::vacuumDatabase() {
       return sqliteVacuumDatabase();
 
     case MYSQL:
+    case POSTGRESQL:
     default:
       return false;
   }

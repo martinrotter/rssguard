@@ -52,7 +52,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(IconFactory::instance()->fromTheme("application-settings"));
+  setWindowIcon(qApp->icons()->fromTheme("application-settings"));
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
@@ -442,7 +442,7 @@ void FormSettings::loadLanguage() {
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, IconFactory::instance()->fromTheme(FLAG_ICON_SUBFOLDER + QDir::separator() +
+    item->setIcon(0, qApp->icons()->fromTheme(FLAG_ICON_SUBFOLDER + QDir::separator() +
                                                         language.m_code));
   }
 
@@ -560,11 +560,11 @@ void FormSettings::saveDataStorage() {
 }
 
 void FormSettings::mysqlTestConnection() {
-  DatabaseFactory::MySQLError error_code = DatabaseFactory::instance()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
+  DatabaseFactory::MySQLError error_code = qApp->database()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
                                                                                             m_ui->m_spinMysqlPort->value(),
                                                                                             m_ui->m_txtMysqlUsername->lineEdit()->text(),
                                                                                             m_ui->m_txtMysqlPassword->lineEdit()->text());
-  QString interpretation = DatabaseFactory::instance()->mysqlInterpretErrorCode(error_code);
+  QString interpretation = qApp->database()->mysqlInterpretErrorCode(error_code);
 
   switch (error_code) {
     case DatabaseFactory::MySQLOk:
@@ -675,9 +675,9 @@ void FormSettings::loadInterface() {
                                                              false).toBool());
 
   // Load settings of icon theme.
-  QString current_theme = IconFactory::instance()->currentIconTheme();
+  QString current_theme = qApp->icons()->currentIconTheme();
 
-  foreach (const QString &icon_theme_name, IconFactory::instance()->installedIconThemes()) {
+  foreach (const QString &icon_theme_name, qApp->icons()->installedIconThemes()) {
     if (icon_theme_name == APP_NO_THEME) {
       // Add just "no theme" on other systems.
       //: Label for disabling icon theme.
@@ -792,8 +792,8 @@ void FormSettings::saveInterface() {
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();
-  QString original_icon_theme = IconFactory::instance()->currentIconTheme();
-  IconFactory::instance()->setCurrentIconTheme(selected_icon_theme);
+  QString original_icon_theme = qApp->icons()->currentIconTheme();
+  qApp->icons()->setCurrentIconTheme(selected_icon_theme);
 
   // Check if icon theme was changed.
   if (selected_icon_theme != original_icon_theme) {

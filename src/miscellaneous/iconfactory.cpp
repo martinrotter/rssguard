@@ -22,8 +22,6 @@
 #include <QBuffer>
 
 
-QPointer<IconFactory> IconFactory::s_instance;
-
 IconFactory::IconFactory(QObject *parent) : QObject(parent) {
 }
 
@@ -57,14 +55,6 @@ QByteArray IconFactory::toByteArray(const QIcon &icon) {
   return array.toBase64();
 }
 
-IconFactory *IconFactory::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new IconFactory(qApp);
-  }
-
-  return s_instance;
-}
-
 void IconFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QStringList() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
@@ -74,9 +64,7 @@ void IconFactory::setupSearchPaths() {
 }
 
 void IconFactory::setCurrentIconTheme(const QString &theme_name) {
-  qApp->settings()->setValue(APP_CFG_GUI,
-                             "icon_theme",
-                             theme_name);
+  qApp->settings()->setValue(APP_CFG_GUI, "icon_theme", theme_name);
 }
 
 void IconFactory::loadCurrentIconTheme() {
@@ -86,15 +74,13 @@ void IconFactory::loadCurrentIconTheme() {
                                                              APP_THEME_DEFAULT).toString();
 
   if (m_currentIconTheme == theme_name_from_settings) {
-    qDebug("Icon theme '%s' already loaded.",
-           qPrintable(theme_name_from_settings));
+    qDebug("Icon theme '%s' already loaded.", qPrintable(theme_name_from_settings));
     return;
   }
 
   // Display list of installed themes.
   qDebug("Installed icon themes are: %s.",
-         qPrintable(QStringList(installed_themes).replaceInStrings(QRegExp("^|$"),
-                                                                   "\'").join(", ")));
+         qPrintable(QStringList(installed_themes).replaceInStrings(QRegExp("^|$"), "\'").join(", ")));
 
   if (installed_themes.contains(theme_name_from_settings)) {
     // Desired icon theme is installed and can be loaded.
@@ -104,16 +90,14 @@ void IconFactory::loadCurrentIconTheme() {
   else {
     // Desired icon theme is not currently available.
     // Install "default" icon theme instead.
-    qDebug("Icon theme '%s' cannot be loaded because it is not installed. "
-           "No icon theme is loaded now.",
+    qDebug("Icon theme '%s' cannot be loaded because it is not installed. No icon theme is loaded now.",
            qPrintable(theme_name_from_settings));
     m_currentIconTheme = APP_NO_THEME;
   }
 }
 
 QStringList IconFactory::installedIconThemes() const {
-  QStringList icon_theme_names;
-  icon_theme_names << APP_NO_THEME;
+  QStringList icon_theme_names; icon_theme_names << APP_NO_THEME;
 
   // Iterate all directories with icon themes.
   QStringList icon_themes_paths = QIcon::themeSearchPaths();

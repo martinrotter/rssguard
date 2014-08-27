@@ -52,22 +52,22 @@ void MessageBox::iconify(QDialogButtonBox *button_box) {
 QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
   switch (button) {
     case QMessageBox::Ok:
-      return IconFactory::instance()->fromTheme("dialog-ok");
+      return qApp->icons()->fromTheme("dialog-ok");
 
     case QMessageBox::Cancel:
     case QMessageBox::Close:
-      return IconFactory::instance()->fromTheme("dialog-cancel");
+      return qApp->icons()->fromTheme("dialog-cancel");
 
     case QMessageBox::Yes:
     case QMessageBox::YesToAll:
-      return IconFactory::instance()->fromTheme("dialog-yes");
+      return qApp->icons()->fromTheme("dialog-yes");
 
     case QMessageBox::No:
     case QMessageBox::NoToAll:
-      return IconFactory::instance()->fromTheme("dialog-no");
+      return qApp->icons()->fromTheme("dialog-no");
 
     case QMessageBox::Help:
-      return IconFactory::instance()->fromTheme("dialog-question");
+      return qApp->icons()->fromTheme("dialog-question");
 
     default:
       return QIcon();
@@ -77,16 +77,16 @@ QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
 QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   switch (status) {
     case QMessageBox::Information:
-      return IconFactory::instance()->fromTheme("dialog-information");
+      return qApp->icons()->fromTheme("dialog-information");
 
     case QMessageBox::Warning:
-      return IconFactory::instance()->fromTheme("dialog-warning");
+      return qApp->icons()->fromTheme("dialog-warning");
 
     case QMessageBox::Critical:
-      return IconFactory::instance()->fromTheme("dialog-error");
+      return qApp->icons()->fromTheme("dialog-error");
 
     case QMessageBox::Question:
-      return IconFactory::instance()->fromTheme("dialog-question");
+      return qApp->icons()->fromTheme("dialog-question");
 
     case QMessageBox::NoIcon:
     default:

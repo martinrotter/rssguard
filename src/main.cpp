@@ -73,8 +73,8 @@ int main(int argc, char *argv[]) {
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
-  IconFactory::instance()->setupSearchPaths();
-  IconFactory::instance()->loadCurrentIconTheme();
+  qApp->icons()->setupSearchPaths();
+  qApp->icons()->loadCurrentIconTheme();
   qApp->skins()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.

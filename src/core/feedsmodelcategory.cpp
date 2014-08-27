@@ -131,7 +131,7 @@ bool FeedsModelCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = DatabaseFactory::instance()->connection("FeedsModelCategory",
+  QSqlDatabase database = qApp->database()->connection("FeedsModelCategory",
                                                                   DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
@@ -151,7 +151,7 @@ FeedsModelCategory *FeedsModelCategory::loadFromRecord(const QSqlRecord &record)
   category->setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   category->setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
   category->setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  category->setIcon(IconFactory::instance()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
+  category->setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 
   return category;
 }

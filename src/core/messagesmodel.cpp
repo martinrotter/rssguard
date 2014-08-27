@@ -30,7 +30,7 @@
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent,
-                   DatabaseFactory::instance()->connection("MessagesModel",
+                   qApp->database()->connection("MessagesModel",
                                                            DatabaseFactory::FromSettings)) {
   setObjectName("MessagesModel");
   setupFonts();
@@ -50,9 +50,9 @@ MessagesModel::~MessagesModel() {
 }
 
 void MessagesModel::setupIcons() {
-  m_favoriteIcon = IconFactory::instance()->fromTheme("mail-mark-favorite");
-  m_readIcon = IconFactory::instance()->fromTheme("mail-mark-read");
-  m_unreadIcon = IconFactory::instance()->fromTheme("mail-mark-unread");
+  m_favoriteIcon = qApp->icons()->fromTheme("mail-mark-favorite");
+  m_readIcon = qApp->icons()->fromTheme("mail-mark-read");
+  m_unreadIcon = qApp->icons()->fromTheme("mail-mark-unread");
 }
 
 void MessagesModel::fetchAll() {

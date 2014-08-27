@@ -17,7 +17,7 @@
 
 #include "miscellaneous/application.h"
 
-#include "miscellaneous/systemfactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
@@ -30,7 +30,7 @@ Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL) {
+    m_localization(NULL), m_icons(NULL), m_database(NULL) {
 }
 
 Application::~Application() {
@@ -43,6 +43,14 @@ QList<QAction*> Application::userActions() {
   }
 
   return m_userActions;
+}
+
+IconFactory *Application::icons() {
+  if (m_icons == NULL) {
+    m_icons = new IconFactory(this);
+  }
+
+  return m_icons;
 }
 
 SystemTrayIcon *Application::trayIcon() {
