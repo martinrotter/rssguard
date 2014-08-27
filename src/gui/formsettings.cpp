@@ -435,7 +435,7 @@ void FormSettings::saveProxy() {
 }
 
 void FormSettings::loadLanguage() {
-  foreach (const Language &language, Localization::instance()->installedLanguages()) {
+  foreach (const Language &language, qApp->localization()->installedLanguages()) {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_ui->m_treeLanguages);
     item->setText(0, language.m_name);
     item->setText(1, language.m_code);
@@ -446,7 +446,7 @@ void FormSettings::loadLanguage() {
                                                         language.m_code));
   }
 
-  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(Localization::instance()->loadedLanguage(),
+  QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(),
                                                                             Qt::MatchContains,
                                                                             1);
   if (!matching_items.isEmpty()) {
@@ -461,7 +461,7 @@ void FormSettings::saveLanguage() {
   }
 
   Settings *settings = qApp->settings();
-  QString actual_lang = Localization::instance()->loadedLanguage();
+  QString actual_lang = qApp->localization()->loadedLanguage();
   QString new_lang = m_ui->m_treeLanguages->currentItem()->text(1);
 
   // Save prompt for restart if language has changed.
@@ -707,9 +707,9 @@ void FormSettings::loadInterface() {
   }
 
   // Load skin.
-  QString selected_skin = SkinFactory::instance()->selectedSkinName();
+  QString selected_skin = qApp->skins()->selectedSkinName();
 
-  foreach (const Skin &skin, SkinFactory::instance()->installedSkins()) {
+  foreach (const Skin &skin, qApp->skins()->installedSkins()) {
     QTreeWidgetItem *new_item = new QTreeWidgetItem(QStringList() <<
                                                     skin.m_visibleName <<
                                                     skin.m_version <<
@@ -804,8 +804,8 @@ void FormSettings::saveInterface() {
   if (m_ui->m_treeSkins->selectedItems().size() > 0) {
     Skin active_skin = m_ui->m_treeSkins->currentItem()->data(0, Qt::UserRole).value<Skin>();
 
-    if (SkinFactory::instance()->selectedSkinName() != active_skin.m_baseName) {
-      SkinFactory::instance()->setCurrentSkinName(active_skin.m_baseName);
+    if (qApp->skins()->selectedSkinName() != active_skin.m_baseName) {
+      qApp->skins()->setCurrentSkinName(active_skin.m_baseName);
       m_changedDataTexts.append(tr("skin changed"));
     }
   }

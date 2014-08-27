@@ -16,18 +16,14 @@
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/debugging.h"
-#include "miscellaneous/localization.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/skinfactory.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "gui/formmain.h"
-#include "gui/systemtrayicon.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "miscellaneous/application.h"
 
 // Needed for setting ini file format on Mac OS.
 #ifdef Q_OS_MAC
@@ -79,10 +75,10 @@ int main(int argc, char *argv[]) {
   // and skin.
   IconFactory::instance()->setupSearchPaths();
   IconFactory::instance()->loadCurrentIconTheme();
-  SkinFactory::instance()->loadCurrentSkin();
+  qApp->skins()->loadCurrentSkin();
 
   // Load localization and setup locale before any widget is constructed.
-  Localization::instance()->load();
+  qApp->localization()->loadActiveLanguage();
 
   // These settings needs to be set before any QSettings object.
   Application::setApplicationName(APP_NAME);

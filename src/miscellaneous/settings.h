@@ -58,12 +58,11 @@ class Settings : public QSettings {
     QSettings::Status checkSettings();
 
     // Creates settings file in correct location.
-    static Settings* setupSettings(QObject *parent);
+    static Settings *setupSettings(QObject *parent);
 
   private:
     // Constructor.
-    Settings(const QString & file_name, Format format,
-             const Type &type, QObject * parent = 0);
+    explicit Settings(const QString & file_name, Format format, const Type &type, QObject *parent = 0);
 
     Type m_initializationStatus;
 };

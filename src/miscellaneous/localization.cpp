@@ -21,14 +21,11 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/application.h"
 
-#include <QPointer>
 #include <QTranslator>
 #include <QDir>
 #include <QFileInfoList>
 #include <QLocale>
 
-
-QPointer<Localization> Localization::s_instance;
 
 Localization::Localization(QObject *parent)
   : QObject(parent) {
@@ -38,21 +35,13 @@ Localization::~Localization() {
   qDebug("Destroying Localization instance.");
 }
 
-Localization *Localization::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new Localization(qApp);
-  }
-
-  return s_instance;
-}
-
 QString Localization::desiredLanguage() {
   return qApp->settings()->value(APP_CFG_GEN,
                                  "language",
                                  QLocale::system().name()).toString();
 }
 
-void Localization::load() {
+void Localization::loadActiveLanguage() {
   QTranslator *qt_translator = new QTranslator(qApp);
   QTranslator *app_translator = new QTranslator(qApp);
   QString desired_localization = desiredLanguage();
@@ -61,12 +50,10 @@ void Localization::load() {
                            APP_LANG_PATH,
                            "-")) {
     Application::installTranslator(app_translator);
-    qDebug("Application localization '%s' loaded successfully.",
-           qPrintable(desired_localization));
+    qDebug("Application localization '%s' loaded successfully.", qPrintable(desired_localization));
   }
   else {
     qWarning("Application localization '%s' was not loaded.", qPrintable(desired_localization));
-
     desired_localization = DEFAULT_LOCALE;
   }
 
@@ -74,8 +61,7 @@ void Localization::load() {
                           APP_LANG_PATH,
                           "-")) {
     Application::installTranslator(qt_translator);
-    qDebug("Qt localization '%s' loaded successfully.",
-           qPrintable(desired_localization));
+    qDebug("Qt localization '%s' loaded successfully.", qPrintable(desired_localization));
   }
   else {
     qWarning("Qt localization '%s' was not loaded.", qPrintable(desired_localization));

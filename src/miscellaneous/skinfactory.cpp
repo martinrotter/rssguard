@@ -27,21 +27,11 @@
 #include <QDomElement>
 
 
-QPointer<SkinFactory> SkinFactory::s_instance;
-
 SkinFactory::SkinFactory(QObject *parent) : QObject(parent) {
 }
 
 SkinFactory::~SkinFactory() {
   qDebug("Destroying SkinFactory instance.");
-}
-
-SkinFactory *SkinFactory::instance() {
-  if (s_instance.isNull()) {
-    s_instance = new SkinFactory(qApp);
-  }
-
-  return s_instance;
 }
 
 void SkinFactory::loadCurrentSkin() {

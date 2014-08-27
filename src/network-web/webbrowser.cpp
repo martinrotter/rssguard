@@ -217,7 +217,7 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
 }
 
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
-  SkinFactory *factory = SkinFactory::instance();
+  SkinFactory *factory = qApp->skins();
   QString messages_layout;
   QString single_message_layout = factory->currentMarkup();
 

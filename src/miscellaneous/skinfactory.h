@@ -20,7 +20,6 @@
 
 #include <QObject>
 
-#include <QPointer>
 #include <QStringList>
 #include <QMetaType>
 
@@ -42,14 +41,10 @@ Q_DECLARE_METATYPE(Skin)
 class SkinFactory : public QObject {
     Q_OBJECT
 
-  private:
+  public:
     // Constructor.
     explicit SkinFactory(QObject *parent = 0);
 
-    // Loads the skin from give skin_data.
-    bool loadSkinFromData(const Skin &skin);
-
-  public:
     // Destructor.
     virtual ~SkinFactory();
 
@@ -78,15 +73,12 @@ class SkinFactory : public QObject {
     // Sets the desired skin as the active one if it exists.
     void setCurrentSkinName(const QString &skin_name);
 
-    // Singleton getter.
-    static SkinFactory *instance();
-
   private:
+    // Loads the skin from give skin_data.
+    bool loadSkinFromData(const Skin &skin);
+
     // Holds name of the current skin.
     Skin m_currentSkin;
-
-    // Singleton.
-    static QPointer<SkinFactory> s_instance;
 };
 
 #endif // SKINFACTORY_H

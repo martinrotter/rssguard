@@ -23,11 +23,14 @@
 #include "gui/messagebox.h"
 #include "gui/formmain.h"
 
+#include <QThread>
+
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
-    m_trayIcon(NULL), m_settings(NULL), m_system(NULL) {
+    m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
+    m_localization(NULL) {
 }
 
 Application::~Application() {
@@ -76,6 +79,8 @@ void Application::showGuiMessage(const QString& title, const QString& message,
                                  QSystemTrayIcon::MessageIcon message_type,
                                  QWidget *parent, int duration) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
+    // TODO: Maybe show OSD instead if tray icon bubble,
+    // depending on settings.
     trayIcon()->showMessage(title, message, message_type, duration);
   }
   else {

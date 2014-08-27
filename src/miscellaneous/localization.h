@@ -18,9 +18,9 @@
 #ifndef LOCALIZATION_H
 #define LOCALIZATION_H
 
-#include <QString>
 #include <QObject>
-#include <QPointer>
+
+#include <QString>
 
 
 struct Language {
@@ -34,23 +34,19 @@ struct Language {
 class Localization : public QObject {
     Q_OBJECT
 
-  private:
+  public:
     // Constructor.
     explicit Localization(QObject *parent = 0);
 
-  public:
     // Destructor.
     virtual ~Localization();
-
-    // Singleton getter.
-    static Localization *instance();
 
     // Returns code of language that should
     // be loaded according to settings.
     QString desiredLanguage();
 
     // Loads currently active language.
-    void load();
+    void loadActiveLanguage();
 
     // Returns list of installed application localizations.
     // This list is used ie. in settings dialog.
@@ -65,9 +61,6 @@ class Localization : public QObject {
   private:
     // Code of loaded language.
     QString m_loadedLanguage;
-
-    // Singleton.
-    static QPointer<Localization> s_instance;
 };
 
 #endif // LOCALIZATION_H

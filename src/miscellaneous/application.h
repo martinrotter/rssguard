@@ -23,6 +23,8 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
+#include "miscellaneous/skinfactory.h"
+#include "miscellaneous/localization.h"
 #include "gui/systemtrayicon.h"
 
 #include <QMutex>
@@ -56,6 +58,22 @@ class Application : public QtSingleApplication {
       }
 
       return m_system;
+    }
+
+    inline SkinFactory *skins() {
+      if (m_skins == NULL) {
+        m_skins = new SkinFactory(this);
+      }
+
+      return m_skins;
+    }
+
+    inline Localization *localization() {
+      if (m_localization == NULL) {
+        m_localization = new Localization(this);
+      }
+
+      return m_localization;
     }
 
     inline Settings *settings() {
@@ -119,6 +137,8 @@ class Application : public QtSingleApplication {
     SystemTrayIcon *m_trayIcon;
     Settings *m_settings;
     SystemFactory *m_system;
+    SkinFactory *m_skins;
+    Localization *m_localization;
 };
 
 #endif // APPLICATION_H
