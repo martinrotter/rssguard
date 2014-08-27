@@ -17,8 +17,6 @@
 
 #include "miscellaneous/skinfactory.h"
 
-#include "definitions/definitions.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/application.h"
 
 #include <QDir>

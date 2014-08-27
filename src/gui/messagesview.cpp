@@ -301,6 +301,11 @@ void MessagesView::markSelectedMessagesUnread() {
 
 void MessagesView::setSelectedMessagesReadStatus(int read) {
   QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (!current_index.isValid()) {
+    return;
+  }
+
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
@@ -329,6 +334,11 @@ void MessagesView::setSelectedMessagesReadStatus(int read) {
 
 void MessagesView::deleteSelectedMessages() {
   QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (!current_index.isValid()) {
+    return;
+  }
+
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
@@ -354,6 +364,11 @@ void MessagesView::deleteSelectedMessages() {
 
 void MessagesView::switchSelectedMessagesImportance() {
   QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (!current_index.isValid()) {
+    return;
+  }
+
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);

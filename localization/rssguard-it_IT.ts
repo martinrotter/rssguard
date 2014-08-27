@@ -131,6 +131,7 @@ This category does not contain any nested items.</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -146,7 +147,8 @@ Auto-update status: %5</source>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
-            <numerusform></numerusform>
+            <numerusform>%n messaggio(i) non letto.</numerusform>
+            <numerusform>%n messaggio(i) non letti.</numerusform>
         </translation>
     </message>
 </context>
@@ -181,9 +183,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Cannot edit item</source>
-        <extracomment>Warning messagebox title when selected item cannot be edited.
-----------
-Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>Impossibile modificare elemento</translation>
     </message>
     <message>
@@ -212,15 +211,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     </message>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Scheduled update started</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 is performing scheduled update of some feeds.</source>
-        <extracomment>RSS Guard is performing updates right now.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -343,10 +333,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <translation>La descrizione è vuota.</translation>
     </message>
     <message>
-        <source>The description os ok.</source>
-        <translation>La descrizione è ok.</translation>
-    </message>
-    <message>
         <source>Select icon file for the category</source>
         <translation>Seleziona icona per la categoria</translation>
     </message>
@@ -406,6 +392,17 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Use default icon</source>
         <translation>Usa icona di default </translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialogo</translation>
     </message>
 </context>
 <context>
@@ -509,10 +506,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>Description is empty.</source>
         <translation>La descrizione è vuota.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>La descrizione è ok.</translation>
     </message>
     <message>
         <source>The url is ok.</source>
@@ -675,6 +668,10 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -709,10 +706,6 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
     <message>
         <source>&amp;Add tab</source>
         <translation>&amp;Aggiungi tab</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one</source>
-        <translation>Chiudi tutti i tab tranne quello corrente</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -998,6 +991,26 @@ Warning messagebox title when selected item cannot be edited.</extracomment>
         <source>&amp;Feed/message list headers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imports feeds you want from selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1117,10 +1130,6 @@ Language column of language list.</extracomment>
         <translation>Http</translation>
     </message>
     <message>
-        <source>Do you want to restart now?</source>
-        <translation>Vuoi riavviare adesso?</translation>
-    </message>
-    <message>
         <source> (not supported on this platform)</source>
         <translation>(non supportato su questa piattaforma)</translation>
     </message>
@@ -1203,20 +1212,8 @@ Language column of language list.</extracomment>
         <translation>Nascondi tab se è visibile un tab solo</translation>
     </message>
     <message>
-        <source>Some critical settings were changed and will be applied after the application gets restarted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Critical settings were changed</source>
         <translation>Le impostazioni critiche sono cambiate</translation>
-    </message>
-    <message>
-        <source>Problem with application restart</source>
-        <translation>Problema con il riavvio dell&apos;applicazione</translation>
-    </message>
-    <message>
-        <source>Application couldn&apos;t be restarted. Please, restart it manually for changes to take effect.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Feeds &amp; messages</source>
@@ -1555,6 +1552,12 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Select toolbar to edit</source>
         <translation>Seleziona toolbar da modificare</translation>
     </message>
+    <message>
+        <source>Some critical settings were changed and will be applied after the application gets restarted. 
+
+You have to restart manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -1680,6 +1683,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to application website</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2013,10 +2020,6 @@ Go to application website to obtain it manually.</source>
 </context>
 <context>
     <name>ToolBarEditor</name>
-    <message>
-        <source>Dialog</source>
-        <translation>Dialogo</translation>
-    </message>
     <message>
         <source>Activated actions</source>
         <translation>Azioni attivate</translation>

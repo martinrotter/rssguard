@@ -20,8 +20,6 @@
 
 #include "network-web/basenetworkaccessmanager.h"
 
-#include <QPointer>
-
 
 // Network manager used for more communication for feeds.
 class SilentNetworkAccessManager : public BaseNetworkAccessManager {

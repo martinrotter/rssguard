@@ -17,7 +17,6 @@
 
 #include "miscellaneous/systemfactory.h"
 
-#include "definitions/definitions.h"
 #include "network-web/networkfactory.h"
 #include "miscellaneous/application.h"
 

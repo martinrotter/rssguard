@@ -1,7 +1,5 @@
 #include "network-web/webfactory.h"
 
-#include "definitions/definitions.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/application.h"
 
 #include <QRegExp>

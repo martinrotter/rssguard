@@ -15,16 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
@@ -48,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -236,7 +227,7 @@
     <string>&amp;Close all tabs except current one</string>
    </property>
    <property name="toolTip">
-    <string>Close all tabs except current one</string>
+    <string>Close all tabs except current one.</string>
    </property>
   </action>
   <action name="m_actionCloseCurrentTab">
@@ -558,7 +549,7 @@
     <string>&amp;Export feeds</string>
    </property>
    <property name="toolTip">
-    <string>Imports feeds you want to selected file.</string>
+    <string>Exports feeds you want to selected file.</string>
    </property>
   </action>
  </widget>

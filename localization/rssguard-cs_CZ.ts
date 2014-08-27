@@ -342,10 +342,6 @@ Status auto-aktualizace: %5</translation>
         <translation>Popis je prázdný.</translation>
     </message>
     <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select icon file for the category</source>
         <translation>Zvolte ikonu pro Vaši kategorii</translation>
     </message>
@@ -405,6 +401,10 @@ Status auto-aktualizace: %5</translation>
     <message>
         <source>Use default icon</source>
         <translation>Použít výchozí ikonu</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Popis je v pořádku.</translation>
     </message>
 </context>
 <context>
@@ -515,10 +515,6 @@ Status auto-aktualizace: %5</translation>
     <message>
         <source>Description is empty.</source>
         <translation>Popis je prázdný.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The url is ok.</source>
@@ -681,6 +677,10 @@ Status auto-aktualizace: %5</translation>
         <source>Do not auto-update at all</source>
         <translation>Zakázat auto-aktualizace</translation>
     </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Popis je v pořádku.</translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -715,10 +715,6 @@ Status auto-aktualizace: %5</translation>
     <message>
         <source>&amp;Add tab</source>
         <translation>&amp;Přidat panel</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one</source>
-        <translation>Zavřít všechny panely kromě aktivního</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -862,7 +858,7 @@ Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>&amp;Close current tab</source>
-        <translation>&amp;Zavřít všechny taby</translation>
+        <translation>&amp;Zavřít aktivní tab</translation>
     </message>
     <message>
         <source>Mark &amp;selected messages as &amp;read</source>
@@ -1006,19 +1002,23 @@ Status auto-aktualizace: %5</translation>
     </message>
     <message>
         <source>&amp;Import feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Importovat kanály</translation>
     </message>
     <message>
         <source>Imports feeds you want from selected file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuje kanály ze souboru.</translation>
     </message>
     <message>
         <source>&amp;Export feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Exportovat kanály</translation>
     </message>
     <message>
-        <source>Imports feeds you want to selected file.</source>
-        <translation type="unfinished"></translation>
+        <source>Exports feeds you want to selected file.</source>
+        <translation>Exportuje kanály do souboru.</translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one.</source>
+        <translation>Zavřít všechny taby kromě aktivního.</translation>
     </message>
 </context>
 <context>
@@ -1581,7 +1581,9 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Některá kritická nastavení se změnila a budou aktivována až po restartu aplikace.
+
+Musíte restartovat manuálně.</translation>
     </message>
 </context>
 <context>
@@ -1707,6 +1709,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
         <translation>Nelze spustit externí aktualizátor. Aktualizuje aplikaci manuálně.</translation>
+    </message>
+    <message>
+        <source>Go to application website</source>
+        <translation>Přejít na web aplikace</translation>
     </message>
 </context>
 <context>

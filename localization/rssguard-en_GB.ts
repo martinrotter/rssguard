@@ -332,10 +332,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select icon file for the category</source>
         <translation type="unfinished"></translation>
     </message>
@@ -394,6 +390,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Use default icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -504,10 +504,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -671,6 +667,10 @@ Auto-update status: %5</source>
         <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -704,10 +704,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Add tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1007,7 +1003,11 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Imports feeds you want to selected file.</source>
+        <source>Exports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1677,6 +1677,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to application website</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

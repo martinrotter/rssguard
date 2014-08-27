@@ -268,6 +268,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme("check-for-updates"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
   m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
+  m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
+  m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme("document-import"));
 
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch-window"));

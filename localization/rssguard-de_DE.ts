@@ -332,10 +332,6 @@ Auto-update status: %5</source>
         <translation type="unfinished">Beschreibung ist leer.</translation>
     </message>
     <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished">Die Beschreibung ist okay.</translation>
-    </message>
-    <message>
         <source>Select icon file for the category</source>
         <translation type="unfinished">Selektiere die Icon-Datei für die Kategorie</translation>
     </message>
@@ -395,6 +391,10 @@ Auto-update status: %5</source>
     <message>
         <source>Use default icon</source>
         <translation type="unfinished">Standard-Icon verwenden</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -505,10 +505,6 @@ Auto-update status: %5</source>
     <message>
         <source>Description is empty.</source>
         <translation type="unfinished">Beschreibung ist leer.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished">Die Beschreibung ist okay.</translation>
     </message>
     <message>
         <source>The url is ok.</source>
@@ -671,6 +667,10 @@ Auto-update status: %5</source>
         <source>Do not auto-update at all</source>
         <translation type="unfinished">Kein Auto-Update ausführen</translation>
     </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -705,10 +705,6 @@ Auto-update status: %5</source>
     <message>
         <source>&amp;Add tab</source>
         <translation>&amp;Reiter hinzufügen</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one</source>
-        <translation>Alle Reiter schliessen ausser dem aktuellen</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -1007,7 +1003,11 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Imports feeds you want to selected file.</source>
+        <source>Exports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1682,6 +1682,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to application website</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

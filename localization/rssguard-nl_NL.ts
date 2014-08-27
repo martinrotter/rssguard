@@ -339,10 +339,6 @@ Status automatisch bijwerken: %5</translation>
         <translation>Omschrijving is leeg.</translation>
     </message>
     <message>
-        <source>The description os ok.</source>
-        <translation>Omschrijving is ok.</translation>
-    </message>
-    <message>
         <source>Select icon file for the category</source>
         <translation>Kies pictogram bestand voor de categorie</translation>
     </message>
@@ -402,6 +398,10 @@ Status automatisch bijwerken: %5</translation>
     <message>
         <source>Use default icon</source>
         <translation>Gebruik standaard pictogram</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -512,10 +512,6 @@ Status automatisch bijwerken: %5</translation>
     <message>
         <source>Description is empty.</source>
         <translation>Omschrijving is leeg.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation>Omschrijving is ok.</translation>
     </message>
     <message>
         <source>The url is ok.</source>
@@ -678,6 +674,10 @@ Status automatisch bijwerken: %5</translation>
         <source>Do not auto-update at all</source>
         <translation>Niet automatisch bijwerken </translation>
     </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -712,10 +712,6 @@ Status automatisch bijwerken: %5</translation>
     <message>
         <source>&amp;Add tab</source>
         <translation>&amp;Tabblad toevoegen</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one</source>
-        <translation>Sluit alle tabbladen behalve deze</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -1014,7 +1010,11 @@ Status automatisch bijwerken: %5</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Imports feeds you want to selected file.</source>
+        <source>Exports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1707,6 +1707,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to application website</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -338,10 +338,6 @@ Statut de la mise à jour automatique : %5</translation>
         <translation type="unfinished">La description est vide.</translation>
     </message>
     <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished">La description est correct.</translation>
-    </message>
-    <message>
         <source>Select icon file for the category</source>
         <translation type="unfinished">Sélectionner un icône pour la catégorie</translation>
     </message>
@@ -401,6 +397,10 @@ Statut de la mise à jour automatique : %5</translation>
     <message>
         <source>Use default icon</source>
         <translation type="unfinished">Utiliser les icônes par défaut</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -511,10 +511,6 @@ Statut de la mise à jour automatique : %5</translation>
     <message>
         <source>Description is empty.</source>
         <translation type="unfinished">La description est vide.</translation>
-    </message>
-    <message>
-        <source>The description os ok.</source>
-        <translation type="unfinished">La description est correct.</translation>
     </message>
     <message>
         <source>The url is ok.</source>
@@ -677,6 +673,10 @@ Statut de la mise à jour automatique : %5</translation>
         <source>Do not auto-update at all</source>
         <translation type="unfinished">Ne pas mettre tout à jour automatiquement</translation>
     </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -711,10 +711,6 @@ Statut de la mise à jour automatique : %5</translation>
     <message>
         <source>&amp;Add tab</source>
         <translation>&amp;Ajouter un onglet</translation>
-    </message>
-    <message>
-        <source>Close all tabs except current one</source>
-        <translation>Fermer tout les onglets sauf le courant</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
@@ -1013,7 +1009,11 @@ Statut de la mise à jour automatique : %5</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Imports feeds you want to selected file.</source>
+        <source>Exports feeds you want to selected file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close all tabs except current one.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1705,6 +1705,10 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Go to application website</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

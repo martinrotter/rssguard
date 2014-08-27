@@ -101,7 +101,7 @@ void FormFeedDetails::onDescriptionChanged(const QString &new_description) {
     m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
   }
   else {
-    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description os ok."));
+    m_ui->m_txtDescription->setStatus(LineEditWithStatus::Ok, tr("The description is ok."));
   }
 }
 
