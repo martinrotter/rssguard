@@ -58,8 +58,7 @@ FormFeedDetails::~FormFeedDetails() {
 
 int FormFeedDetails::exec(FeedsModelFeed *input_feed) {
   // Load categories.
-  loadCategories(m_feedsModel->allCategories().values(),
-                 m_feedsModel->rootItem());
+  loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem());
 
   if (input_feed == NULL) {
     // User is adding new category.
@@ -226,17 +225,9 @@ void FormFeedDetails::apply() {
       accept();
     }
     else {
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        qApp->trayIcon()->showMessage(tr("Cannot add feed"),
-                                      tr("Feed was not added due to error."),
-                                      QSystemTrayIcon::Critical);
-      }
-      else {
-        MessageBox::show(this,
-                         QMessageBox::Critical,
-                         tr("Cannot add feed"),
-                         tr("Feed was not added due to error."));
-      }
+      qApp->showGuiMessage(tr("Cannot add feed"),
+                           tr("Feed was not added due to error."),
+                           QSystemTrayIcon::Critical);
     }
   }
   else {
@@ -245,17 +236,9 @@ void FormFeedDetails::apply() {
       accept();
     }
     else {
-      if (SystemTrayIcon::isSystemTrayActivated()) {
-        qApp->trayIcon()->showMessage(tr("Cannot edit feed"),
-                                      tr("Feed was not edited due to error."),
-                                      QSystemTrayIcon::Critical);
-      }
-      else {
-        MessageBox::show(this,
-                         QMessageBox::Critical,
-                         tr("Cannot edit feed"),
-                         tr("Feed was not edited due to error."));
-      }
+      qApp->showGuiMessage(tr("Cannot edit feed"),
+                           tr("Feed was not edit due to error."),
+                           QSystemTrayIcon::Critical);
     }
   }
 }

@@ -112,8 +112,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
           this, SLOT(onProxyTypeChanged(int)));
   connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)),
           this, SLOT(displayProxyPassword(int)));
-  connect(m_ui->m_btnWebBrowserColorSample, SIGNAL(clicked()),
-          this, SLOT(changeBrowserProgressColor()));
   connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
           this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
   connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)),
@@ -169,20 +167,6 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
     Skin skin = current->data(0, Qt::UserRole).value<Skin>();
     m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
   }
-}
-
-void FormSettings::changeBrowserProgressColor() {
-  QPointer<QColorDialog> color_dialog = new QColorDialog(m_initialSettings.m_webBrowserProgress,
-                                                         this);
-  color_dialog.data()->setWindowTitle(tr("Select color for web browser progress bar"));
-  color_dialog.data()->setOption(QColorDialog::ShowAlphaChannel, false);
-
-  if (color_dialog.data()->exec() == QDialog::Accepted) {
-    m_initialSettings.m_webBrowserProgress = color_dialog.data()->selectedColor();
-    loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
-  }
-
-  delete color_dialog.data();
 }
 
 void FormSettings::selectBrowserExecutable() {
@@ -268,15 +252,8 @@ bool FormSettings::doSaveCheck() {
   return everything_ok;
 }
 
-void FormSettings::loadWebBrowserColor(const QColor &color) {
-  m_ui->m_btnWebBrowserColorSample->setStyleSheet(QString("QToolButton { background-color: rgba(%1, %2, %3, %4); }").arg(QString::number(color.red()),
-                                                                                                                         QString::number(color.green()),
-                                                                                                                         QString::number(color.blue()),
-                                                                                                                         QString::number(color.alpha())));
-}
-
 void FormSettings::promptForRestart() {
-  if (m_changedDataTexts.count() > 0) {
+  if (!m_changedDataTexts.isEmpty()) {
     QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp("^"), QString::fromUtf8(" • "));
 
     MessageBox::show(this,
@@ -332,21 +309,12 @@ void FormSettings::loadBrowser() {
   Settings *settings = qApp->settings();
 
   // Load settings of web browser GUI.
-  m_initialSettings.m_webBrowserProgress = QColor(settings->value(APP_CFG_BROWSER,
-                                                                  "browser_progress_color",
-                                                                  QColor(155, 250, 80)).toString());
-  m_ui->m_checkBrowserProgressColor->setChecked(settings->value(APP_CFG_BROWSER,
-                                                                "browser_colored_progress_enabled",
-                                                                true).toBool());
   m_ui->m_checkMouseGestures->setChecked(settings->value(APP_CFG_BROWSER,
                                                          "gestures_enabled",
                                                          true).toBool());
   m_ui->m_checkQueueTabs->setChecked(settings->value(APP_CFG_BROWSER,
                                                      "queue_tabs",
                                                      true).toBool());
-  m_ui->m_btnWebBrowserColorSample->setMaximumHeight(m_ui->m_checkBrowserProgressColor->sizeHint().height());
-  loadWebBrowserColor(m_initialSettings.m_webBrowserProgress);
-
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_BROWSER,
                                                                 "external_browser_executable").toString());
@@ -368,12 +336,6 @@ void FormSettings::saveBrowser() {
   settings->setValue(APP_CFG_BROWSER,
                      "custom_external_browser",
                      m_ui->m_grpCustomExternalBrowser->isChecked());
-  settings->setValue(APP_CFG_BROWSER,
-                     "browser_progress_color",
-                     m_initialSettings.m_webBrowserProgress.name());
-  settings->setValue(APP_CFG_BROWSER,
-                     "browser_colored_progress_enabled",
-                     m_ui->m_checkBrowserProgressColor->isChecked());
   settings->setValue(APP_CFG_BROWSER,
                      "gestures_enabled",
                      m_ui->m_checkMouseGestures->isChecked());

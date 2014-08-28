@@ -349,7 +349,6 @@ set(APP_SOURCES
   src/gui/feedstoolbar.cpp
   src/gui/toolbareditor.cpp
   src/gui/messagessearchlineedit.cpp
-  src/gui/formexport.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -432,7 +431,6 @@ set(APP_HEADERS
   src/gui/feedstoolbar.h
   src/gui/toolbareditor.h
   src/gui/messagessearchlineedit.h
-  src/gui/formexport.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -475,7 +473,6 @@ set(APP_FORMS
   src/gui/formcategorydetails.ui
   src/gui/formfeeddetails.ui
   src/gui/toolbareditor.ui
-  src/gui/formexport.ui
 )
 
 # APP translations.

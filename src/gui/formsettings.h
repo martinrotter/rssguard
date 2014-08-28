@@ -31,12 +31,9 @@ namespace Ui {
 struct TemporarySettings {
 
   public:
-    TemporarySettings()
-      : m_webBrowserProgress(QColor()),
-        m_mysqlDataStorageChanged(false) {
+    TemporarySettings() : m_mysqlDataStorageChanged(false) {
     }
 
-    QColor m_webBrowserProgress;
     bool m_mysqlDataStorageChanged;
 };
 
@@ -84,8 +81,6 @@ class FormSettings : public QDialog {
     void saveBrowser();
     void changeDefaultBrowserArguments(int index);
     void selectBrowserExecutable();
-    void changeBrowserProgressColor();
-    void loadWebBrowserColor(const QColor &color);
 
     void loadProxy();
     void saveProxy();

@@ -728,7 +728,42 @@ Authors of this application are NOT responsible for lost data.</string>
            <property name="fieldGrowthPolicy">
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-           <item row="6" column="0" colspan="2">
+           <item row="0" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_checkQueueTabs">
+             <property name="text">
+              <string>Queue new tabs (with hyperlinks) after the active tab</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="m_checkEnableJavascript">
+             <property name="text">
+              <string>Enable JavaScript</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="m_checkEnablePlugins">
+             <property name="text">
+              <string>Enable external plugins based on NPAPI</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="m_checkAutoLoadImages">
+             <property name="text">
+              <string>Auto-load images</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_checkMouseGestures">
+             <property name="text">
+              <string>Enable mouse gestures</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
               <string>Mouse gestures work with middle mouse button. Possible gestures are:
@@ -744,71 +779,6 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
              <property name="indent">
               <number>20</number>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="2">
-            <widget class="QCheckBox" name="m_checkMouseGestures">
-             <property name="text">
-              <string>Enable mouse gestures</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0" colspan="2">
-            <widget class="QCheckBox" name="m_checkQueueTabs">
-             <property name="text">
-              <string>Queue new tabs (with hyperlinks) after the active tab</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_12">
-             <item>
-              <widget class="QCheckBox" name="m_checkBrowserProgressColor">
-               <property name="text">
-                <string>Use custom color for web browser progress bar</string>
-               </property>
-               <property name="checked">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QToolButton" name="m_btnWebBrowserColorSample">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="autoFillBackground">
-                <bool>true</bool>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-           <item row="2" column="0">
-            <widget class="QCheckBox" name="m_checkEnableJavascript">
-             <property name="text">
-              <string>Enable JavaScript</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QCheckBox" name="m_checkEnablePlugins">
-             <property name="text">
-              <string>Enable external plugins based on NPAPI</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QCheckBox" name="m_checkAutoLoadImages">
-             <property name="text">
-              <string>Auto-load images</string>
              </property>
             </widget>
            </item>
@@ -1358,22 +1328,6 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>508</x>
      <y>151</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_checkBrowserProgressColor</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_btnWebBrowserColorSample</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>468</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>664</x>
-     <y>52</y>
     </hint>
    </hints>
   </connection>

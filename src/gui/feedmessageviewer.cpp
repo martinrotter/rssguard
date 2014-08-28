@@ -33,7 +33,6 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
-#include "gui/formexport.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>

@@ -139,6 +139,11 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 }
 
+bool FeedsModel::exportToFile(FeedsModel::ExternalFeedsFileType type, QByteArray &result) {
+  // TODO: POkračovat tady.
+  return false;
+}
+
 bool FeedsModel::removeItem(const QModelIndex &index) { 
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
@@ -171,7 +176,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
   // Now, add category to persistent storage.
   // Children are removed, remove this standard category too.
   QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
@@ -213,7 +218,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
 bool FeedsModel::editCategory(FeedsModelCategory *original_category,
                               FeedsModelCategory *new_category) {
   QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
   FeedsModelRootItem *original_parent = original_category->parent();
   FeedsModelRootItem *new_parent = new_category->parent();
@@ -273,8 +278,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
 
   // Now, add category to persistent storage.
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                                  DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
   QSqlQuery query_add_feed(database);
 
   query_add_feed.setForwardOnly(true);
@@ -312,8 +316,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
     return false;
   }
 
-  // Category was added to the persistent storage,
-  // so add it to the model.
+  // Category was added to the persistent storage so add it to the model.
   beginInsertRows(parent_index, parent->childCount(), parent->childCount());
   parent->appendChild(feed);
   endInsertRows();
@@ -324,7 +327,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
 bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
                           FeedsModelFeed *new_feed) {
   QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
   FeedsModelRootItem *original_parent = original_feed->parent();
   FeedsModelRootItem *new_parent = new_feed->parent();
@@ -437,7 +440,7 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
   QList<Message> messages;
 
   QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -572,7 +575,7 @@ void FeedsModel::loadFromDatabase() {
   m_rootItem->clearChildren();
 
   QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -672,7 +675,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
 bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
                                int read) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(),
-                                                                   DatabaseFactory::FromSettings);
+                                                        DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -710,7 +713,7 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
                                   int deleted,
                                   bool read_only) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(),
-                                                                   DatabaseFactory::FromSettings);
+                                                        DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds clearing.");

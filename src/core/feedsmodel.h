@@ -39,6 +39,10 @@ class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
 
   public:
+    enum ExternalFeedsFileType {
+      OMPL20
+    };
+
     // Constructors and destructors.
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
@@ -67,6 +71,9 @@ class FeedsModel : public QAbstractItemModel {
     inline int countOfUnreadMessages() const {
       return m_rootItem->countOfUnreadMessages();
     }
+
+    // Import/export.
+    bool exportToFile(ExternalFeedsFileType type, QByteArray &result);
 
     // Removes item with given index.
     bool removeItem(const QModelIndex &index);
