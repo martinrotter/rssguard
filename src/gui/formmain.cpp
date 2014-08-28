@@ -41,6 +41,8 @@
 #include <QDesktopWidget>
 #include <QReadWriteLock>
 #include <QTimer>
+#include <QFileDialog>
+#include <QTextStream>
 
 
 FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
@@ -368,18 +370,16 @@ void FormMain::saveSize() {
 
 void FormMain::createConnections() {
   // Status bar connections.
-  connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)),
-          m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
-  connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)),
-          m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
+  connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)), m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
+  connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
   // Core connections.
-  connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)),
-          this, SLOT(onCommitData(QSessionManager&)));
-  connect(qApp, SIGNAL(saveStateRequest(QSessionManager&)),
-          this, SLOT(onSaveState(QSessionManager&)));
+  connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
+  connect(qApp, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
 
   // Menu "File" connections.
+  connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
+  connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
 
   // Menu "View" connections.
@@ -434,6 +434,52 @@ void FormMain::loadWebBrowserMenu(int index) {
   }
 
   m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
+}
+
+void FormMain::exportFeeds() {
+  QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+
+  QString filter;
+  QString selected_filter;
+
+  // Add more filters here.
+  filter += filter_opml20;
+
+  QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds import"),
+                                                       QDir::homePath(), filter, &selected_filter);
+
+
+  if (!selected_file.isEmpty()) {
+    bool export_result;
+    QByteArray result_data;
+
+    if (selected_filter == filter_opml20) {
+      export_result = tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->exportToFile(FeedsModel::OPML20,
+                                                                                                 result_data);
+    }
+
+    if (!export_result) {
+      qApp->showGuiMessage(tr("Export failed"),
+                           tr("Export of feeds failed, is target file writtable?"),
+                           QSystemTrayIcon::Critical);
+    }
+    else {
+      // Save exported data.
+      QFile output_file(selected_file);
+
+      if (output_file.open(QIODevice::Unbuffered | QIODevice::Truncate | QIODevice::WriteOnly)) {
+        QTextStream stream(&output_file);
+
+        stream << result_data;
+        output_file.flush();
+        output_file.close();
+      }
+    }
+  }
+}
+
+void FormMain::importFeeds() {
+
 }
 
 void FormMain::changeEvent(QEvent *event) {

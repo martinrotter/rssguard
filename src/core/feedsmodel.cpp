@@ -28,6 +28,11 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomAttr>
+#include <QStack>
+
 
 #include <algorithm>
 
@@ -140,8 +145,36 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
 }
 
 bool FeedsModel::exportToFile(FeedsModel::ExternalFeedsFileType type, QByteArray &result) {
-  // TODO: POkračovat tady.
-  return false;
+  switch (type) {
+    case OPML20:
+      return exportToOMPL20(result);
+
+    default:
+      return false;
+  }
+}
+
+bool FeedsModel::exportToOMPL20(QByteArray &result) {
+  QDomDocument opml_document;
+  QStack<FeedsModelRootItem*> items_to_process; items_to_process.push(m_rootItem);
+
+  // Adde OPML 2.0 metadata.
+  opml_document.appendChild(opml_document.createElement("opml"));
+  opml_document.documentElement().setAttribute("version", "2.0");
+
+  QDomElement elem_opml_title = opml_document.createElement("title");
+  QDomText text_opml_title = opml_document.createTextNode(QString(APP_NAME) + tr(" feeds"));
+  elem_opml_title.appendChild(text_opml_title);
+  opml_document.documentElement().appendChild(elem_opml_title);
+
+  // Process all unprocessed nodes.
+  /*while (!items_to_process.isEmpty()) {
+
+  }*/
+
+
+  result = opml_document.toByteArray(2);
+  return true;
 }
 
 bool FeedsModel::removeItem(const QModelIndex &index) { 

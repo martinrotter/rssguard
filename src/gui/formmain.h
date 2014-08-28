@@ -108,6 +108,8 @@ class FormMain : public QMainWindow {
     void loadWebBrowserMenu(int index);
 
     // Displays various dialogs.
+    void exportFeeds();
+    void importFeeds();
     void showSettings();
     void showAbout();
     void showUpdates();

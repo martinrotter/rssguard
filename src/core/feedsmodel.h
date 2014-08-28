@@ -40,7 +40,7 @@ class FeedsModel : public QAbstractItemModel {
 
   public:
     enum ExternalFeedsFileType {
-      OMPL20
+      OPML20 = 0
     };
 
     // Constructors and destructors.
@@ -74,6 +74,10 @@ class FeedsModel : public QAbstractItemModel {
 
     // Import/export.
     bool exportToFile(ExternalFeedsFileType type, QByteArray &result);
+
+    // Exports to OPML 2.0
+    // NOTE: http://dev.opml.org/spec2.html
+    bool exportToOMPL20(QByteArray &result);
 
     // Removes item with given index.
     bool removeItem(const QModelIndex &index);
