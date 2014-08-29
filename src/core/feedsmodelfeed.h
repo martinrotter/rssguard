@@ -199,6 +199,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     QString m_password;
 
     Status m_status;
+    QNetworkReply::NetworkError m_networkError;
     Type m_type;
     int m_totalCount;
     int m_unreadCount;

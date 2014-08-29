@@ -80,7 +80,7 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
 
     case QNetworkReply::NoError:
       //: Network status.
-      return tr("success");
+      return tr("no errors");
 
     case QNetworkReply::UnknownContentError:
       //: Network status.

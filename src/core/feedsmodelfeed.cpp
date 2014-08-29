@@ -39,6 +39,7 @@
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item),
     m_status(Normal),
+    m_networkError(QNetworkReply::NoError),
     m_type(Rss0X),
     m_totalCount(0),
     m_unreadCount(0),
@@ -83,7 +84,7 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
 
 void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
   QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 
@@ -312,12 +313,14 @@ QVariant FeedsModelFeed::data(int column, int role) const {
         //: Tooltip for feed.
         return tr("%1 (%2)\n"
                   "%3\n\n"
+                  "Network status: %6\n"
                   "Encoding: %4\n"
                   "Auto-update status: %5").arg(m_title,
                                                 FeedsModelFeed::typeToString(m_type),
                                                 m_description,
                                                 m_encoding,
-                                                auto_update_string);
+                                                auto_update_string,
+                                                NetworkFactory::networkErrorText(m_networkError));
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.
@@ -339,7 +342,16 @@ QVariant FeedsModelFeed::data(int column, int role) const {
       return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     case Qt::ForegroundRole:
-      return m_status == NewMessages ? QColor(Qt::blue) : QVariant();
+      switch (m_status) {
+        case NewMessages:
+          return QColor(Qt::blue);
+
+        case NetworkError:
+          return QColor(Qt::red);
+
+        default:
+          return QVariant();
+      }
 
     default:
       return QVariant();
@@ -349,15 +361,18 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
-  QNetworkReply::NetworkError download_result = NetworkFactory::downloadFile(url(), download_timeout,
-                                                                             feed_contents, passwordProtected(),
-                                                                             username(), password());
+  m_networkError = NetworkFactory::downloadFile(url(), download_timeout,
+                                                feed_contents, passwordProtected(),
+                                                username(), password());
 
-  if (download_result != QNetworkReply::NoError) {
-    qWarning("Error during fetching of new messages for feed '%s' (id %d).",
-             qPrintable(url()),
-             id());
+  if (m_networkError != QNetworkReply::NoError) {
+    qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
+    m_status = NetworkError;
+
     return;
+  }
+  else {
+    m_status = Normal;
   }
 
   // Encode downloaded data for further parsing.
@@ -399,7 +414,7 @@ void FeedsModelFeed::update() {
 
 bool FeedsModelFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
@@ -422,7 +437,7 @@ bool FeedsModelFeed::removeItself() {
 void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
 
   // Prepare queries.
   QSqlQuery query_select(database);
