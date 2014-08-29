@@ -156,21 +156,91 @@ bool FeedsModel::exportToFile(FeedsModel::ExternalFeedsFileType type, QByteArray
 
 bool FeedsModel::exportToOMPL20(QByteArray &result) {
   QDomDocument opml_document;
-  QStack<FeedsModelRootItem*> items_to_process; items_to_process.push(m_rootItem);
+  QDomProcessingInstruction xml_declaration = opml_document.createProcessingInstruction("xml",
+                                                                                        "version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"");
+  opml_document.appendChild(xml_declaration);
 
   // Adde OPML 2.0 metadata.
   opml_document.appendChild(opml_document.createElement("opml"));
   opml_document.documentElement().setAttribute("version", "2.0");
 
+  QDomElement elem_opml_head = opml_document.createElement("head");
+
   QDomElement elem_opml_title = opml_document.createElement("title");
-  QDomText text_opml_title = opml_document.createTextNode(QString(APP_NAME) + tr(" feeds"));
+  QDomText text_opml_title = opml_document.createTextNode(QString(APP_NAME));
   elem_opml_title.appendChild(text_opml_title);
-  opml_document.documentElement().appendChild(elem_opml_title);
+  elem_opml_head.appendChild(elem_opml_title);
+
+  QDomElement elem_opml_created = opml_document.createElement("dateCreated");
+  QDomText text_opml_created = opml_document.createTextNode(QLocale::c().toString(QDateTime::currentDateTimeUtc(),
+                                                                                  "ddd, dd MMM yyyy hh:mm:ss") + " GMT");
+  elem_opml_created.appendChild(text_opml_created);
+  elem_opml_head.appendChild(elem_opml_created);
+  opml_document.documentElement().appendChild(elem_opml_head);
+
+  QDomElement elem_opml_body = opml_document.createElement("body");
+
+  QStack<FeedsModelRootItem*> items_to_process; items_to_process.push(m_rootItem);
+  QStack<QDomElement> elements_to_use; elements_to_use.push(elem_opml_body);
 
   // Process all unprocessed nodes.
-  /*while (!items_to_process.isEmpty()) {
+  while (!items_to_process.isEmpty()) {
+    QDomElement active_element = elements_to_use.pop();
+    FeedsModelRootItem *active_item = items_to_process.pop();
 
-  }*/
+    foreach (FeedsModelRootItem *child_item, active_item->childItems()) {
+      switch (child_item->kind()) {
+        case FeedsModelRootItem::Category: {
+          QDomElement outline_category = opml_document.createElement("outline");
+          outline_category.setAttribute("text", child_item->title());
+          active_element.appendChild(outline_category);
+          items_to_process.push(child_item);
+          elements_to_use.push(outline_category);
+          break;
+        }
+
+        case FeedsModelRootItem::Feed: {
+          FeedsModelFeed *child_feed = static_cast<FeedsModelFeed*>(child_item);
+          QDomElement outline_feed = opml_document.createElement("outline");
+          outline_feed.setAttribute("text", child_feed->title());
+          outline_feed.setAttribute("xmlUrl", child_feed->url());
+          outline_feed.setAttribute("description", child_feed->description());
+          outline_feed.setAttribute("encoding", child_feed->encoding());
+
+          switch (child_feed->type()) {
+            case FeedsModelFeed::Rss0X:
+            case FeedsModelFeed::Rss2X:
+              outline_feed.setAttribute("version", "RSS");
+              break;
+
+            case FeedsModelFeed::Rdf:
+              outline_feed.setAttribute("version", "RSS");
+              break;
+
+            case FeedsModelFeed::Atom10:
+              outline_feed.setAttribute("version", "ATOM");
+              break;
+
+            default:
+              break;
+          }
+
+          if (child_feed->passwordProtected()) {
+            outline_feed.setAttribute("username", child_feed->username());
+            outline_feed.setAttribute("password", child_feed->password());
+          }
+
+          active_element.appendChild(outline_feed);
+          break;
+        }
+
+        default:
+          break;
+      }
+    }
+  }
+
+  opml_document.documentElement().appendChild(elem_opml_body);
 
 
   result = opml_document.toByteArray(2);

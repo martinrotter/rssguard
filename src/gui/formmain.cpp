@@ -470,7 +470,8 @@ void FormMain::exportFeeds() {
       if (output_file.open(QIODevice::Unbuffered | QIODevice::Truncate | QIODevice::WriteOnly)) {
         QTextStream stream(&output_file);
 
-        stream << result_data;
+        stream.setCodec("UTF-8");
+        stream << QString::fromUtf8(result_data);
         output_file.flush();
         output_file.close();
       }
@@ -487,9 +488,7 @@ void FormMain::changeEvent(QEvent *event) {
     case QEvent::WindowStateChange: {
       if (this->windowState() & Qt::WindowMinimized &&
           SystemTrayIcon::isSystemTrayActivated() &&
-          qApp->settings()->value(APP_CFG_GUI,
-                                  "hide_when_minimized",
-                                  false).toBool()) {
+          qApp->settings()->value(APP_CFG_GUI, "hide_when_minimized", false).toBool()) {
         event->ignore();
         QTimer::singleShot(CHANGE_EVENT_DELAY, this, SLOT(switchVisibility()));
       }
