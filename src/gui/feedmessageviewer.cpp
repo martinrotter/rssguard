@@ -171,8 +171,8 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
   qApp->mainForm()->statusBar()->showProgress((current * 100.0) / total,
-                                                  //: Text display in status bar when particular feed is updated.
-                                                  tr("Updated feed '%1'").arg(feed->title()));
+                                              //: Text display in status bar when particular feed is updated.
+                                              tr("Updated feed '%1'").arg(feed->title()));
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {

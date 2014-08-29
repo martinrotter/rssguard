@@ -32,7 +32,7 @@
 #include <QDomElement>
 #include <QDomAttr>
 #include <QStack>
-
+#include <QLocale>
 
 #include <algorithm>
 
