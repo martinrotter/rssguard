@@ -55,6 +55,7 @@ class FormImportExport : public QDialog {
   private:
     void selectExportFile();
     void selectImportFile();
+    void parseImportFile(const QString &file_name);
 
     void exportFeeds();
     void importFeeds();

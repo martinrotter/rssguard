@@ -32,6 +32,8 @@ FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new 
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
 
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+
   m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Error, tr("No file is selected."), tr("No file is selected."));
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->disconnect();
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
@@ -115,16 +117,68 @@ void FormImportExport::selectExportFile() {
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
   }
-  else {
-    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Error, tr("No file is selected."), tr("No file is selected."));
-  }
 
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(selected_file.isEmpty());
 }
 
 void FormImportExport::selectImportFile() {
-  // TODO: vyber soubor a kdyz je vybranej, tak rozparsovat a vytvorit dle nej strukturu
-  // itemů a narvat do modelu.
+  QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+
+  QString filter;
+  QString selected_filter;
+
+  // Add more filters here.
+  filter += filter_opml20;
+
+  QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"),
+                                                       QDir::homePath(), filter, &selected_filter);
+
+
+
+  if (!selected_file.isEmpty()) {
+    if (selected_filter == filter_opml20) {
+      m_conversionType = OPML20;
+    }
+    // NOTE: Add other types here.
+
+    m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
+  }
+
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(selected_file.isEmpty());
+  parseImportFile(selected_file);
+}
+
+void FormImportExport::parseImportFile(const QString &file_name) {
+  QFile input_file(file_name);
+  QByteArray input_data;
+
+  if (input_file.open(QIODevice::Text | QIODevice::Unbuffered | QIODevice::ReadOnly)) {
+    input_data = input_file.readAll();
+    input_file.close();
+  }
+  else {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot open source file."), tr("Cannot open source file."));
+    return;
+  }
+
+  bool parsing_result;
+
+  switch (m_conversionType) {
+    case OPML20:
+      parsing_result = m_model->importAsOPML20(input_data);
+      break;
+
+    default:
+      return;
+  }
+
+  if (parsing_result) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were imported."), tr("Feeds were imported."));
+  }
+  else {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error occurred. File is not well-formed."),
+                                 tr("Error occurred. File is not well-formed."));
+  }
 }
 
 void FormImportExport::performAction() {

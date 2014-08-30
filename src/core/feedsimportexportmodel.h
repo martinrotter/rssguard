@@ -51,6 +51,7 @@ class FeedsImportExportModel : public QAbstractItemModel {
     // Exports to OPML 2.0
     // NOTE: http://dev.opml.org/spec2.html
     bool exportToOMPL20(QByteArray &result);
+    bool importAsOPML20(const QByteArray &data);
 
   private:
     QHash<FeedsModelRootItem*, Qt::CheckState> m_checkStates;

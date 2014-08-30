@@ -148,6 +148,12 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   return true;
 }
 
+bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
+  // TODO: vytvorit strukturu podle obsahu OPML souboru, pokud se to podaří,
+  // pak vytvořít novej root item a ten nastavit jako root pro tento model
+  return false;
+}
+
 QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex &parent) const {
   if (!hasIndex(row, column, parent)) {
     return QModelIndex();
