@@ -31,7 +31,6 @@
 FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormImportExport), m_mode(Import) {
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
-  m_ui->m_treeFeeds->setModel(m_model);
 
   m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Error, tr("No file is selected."), tr("No file is selected."));
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->disconnect();
@@ -55,6 +54,7 @@ void FormImportExport::setMode(const Mode &mode) {
   switch (m_mode) {
     case Export: {
       m_model->setRootItem(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->rootItem());
+      m_ui->m_treeFeeds->setModel(m_model);
       m_ui->m_treeFeeds->expandAll();
       setWindowTitle(tr("Export feeds"));
       setWindowIcon(qApp->icons()->fromTheme("document-export"));
