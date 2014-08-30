@@ -349,6 +349,7 @@ set(APP_SOURCES
   src/gui/feedstoolbar.cpp
   src/gui/toolbareditor.cpp
   src/gui/messagessearchlineedit.cpp
+  src/gui/formimportexport.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -378,6 +379,7 @@ set(APP_SOURCES
   src/core/feedsmodelfeed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
+  src/core/feedsimportexportmodel.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp
@@ -431,6 +433,7 @@ set(APP_HEADERS
   src/gui/feedstoolbar.h
   src/gui/toolbareditor.h
   src/gui/messagessearchlineedit.h
+  src/gui/formimportexport.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -452,6 +455,7 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
+  src/core/feedsimportexportmodel.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h
@@ -473,6 +477,7 @@ set(APP_FORMS
   src/gui/formcategorydetails.ui
   src/gui/formfeeddetails.ui
   src/gui/toolbareditor.ui
+  src/gui/formimportexport.ui
 )
 
 # APP translations.

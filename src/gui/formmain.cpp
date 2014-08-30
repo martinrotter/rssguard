@@ -34,6 +34,7 @@
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/formupdate.h"
+#include "gui/formimportexport.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -436,7 +437,13 @@ void FormMain::loadWebBrowserMenu(int index) {
   m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
 }
 
-void FormMain::exportFeeds() {
+void FormMain::exportFeeds() {  
+  QPointer<FormImportExport> form = new FormImportExport(this);
+  form.data()->setMode(FormImportExport::Export);
+  form.data()->exec();
+  delete form.data();
+
+/*
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
 
   QString filter;
@@ -476,11 +483,14 @@ void FormMain::exportFeeds() {
         output_file.close();
       }
     }
-  }
+  }*/
 }
 
 void FormMain::importFeeds() {
-
+  QPointer<FormImportExport> form = new FormImportExport(this);
+  form.data()->setMode(FormImportExport::Import);
+  form.data()->exec();
+  delete form.data();
 }
 
 void FormMain::changeEvent(QEvent *event) {
