@@ -95,6 +95,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
         case FeedsModelRootItem::Category: {
           QDomElement outline_category = opml_document.createElement("outline");
           outline_category.setAttribute("text", child_item->title());
+          outline_category.setAttribute("description", child_item->description());
           active_element.appendChild(outline_category);
           items_to_process.push(child_item);
           elements_to_use.push(outline_category);
@@ -108,6 +109,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           outline_feed.setAttribute("xmlUrl", child_feed->url());
           outline_feed.setAttribute("description", child_feed->description());
           outline_feed.setAttribute("encoding", child_feed->encoding());
+          outline_feed.setAttribute("title", child_feed->title());
 
           switch (child_feed->type()) {
             case FeedsModelFeed::Rss0X:
@@ -116,7 +118,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
               break;
 
             case FeedsModelFeed::Rdf:
-              outline_feed.setAttribute("version", "RSS");
+              outline_feed.setAttribute("version", "RSS1");
               break;
 
             case FeedsModelFeed::Atom10:
@@ -149,9 +151,95 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
 }
 
 bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
-  // TODO: vytvorit strukturu podle obsahu OPML souboru, pokud se to podaří,
-  // pak vytvořít novej root item a ten nastavit jako root pro tento model
-  return false;
+  QDomDocument opml_document;
+
+  if (!opml_document.setContent(data)) {
+    return false;
+  }
+
+  if (opml_document.documentElement().isNull() || opml_document.documentElement().tagName() != "opml" ||
+      opml_document.documentElement().elementsByTagName("body").size() != 1) {
+    return false;
+  }
+
+  FeedsModelRootItem *root_item = new FeedsModelRootItem();
+
+  QStack<FeedsModelRootItem*> model_items; model_items.push(root_item);
+  QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName("body").at(0).toElement());
+
+  while (!elements_to_process.isEmpty()) {
+    FeedsModelRootItem *active_model_item = model_items.pop();
+    QDomElement active_element = elements_to_process.pop();
+
+    for (int i = 0; i < active_element.childNodes().size(); i++) {
+      QDomNode child = active_element.childNodes().at(i);
+
+      if (child.isElement()) {
+        QDomElement child_element = child.toElement();
+
+        // Now analyze if this element is category or feed.
+        // NOTE: All feeds must include xmlUrl attribute.
+        if (child_element.attributes().contains("xmlUrl") && child.attributes().contains("text")) {
+          // This is FEED.
+          // Add feed and end this iteration.
+          QString feed_title = child_element.attribute("text");
+          QString feed_url = child_element.attribute("xmlUrl");
+          QString feed_encoding = child_element.attribute("encoding", DEFAULT_FEED_ENCODING);
+          QString feed_type = child_element.attribute("version", DEFAULT_FEED_TYPE);
+          QString feed_username = child_element.attribute("username");
+          QString feed_password = child_element.attribute("password");
+          QString feed_description = child_element.attribute("description");
+
+          FeedsModelFeed *new_feed = new FeedsModelFeed(active_model_item);
+          new_feed->setTitle(feed_title);
+          new_feed->setDescription(feed_description);
+          new_feed->setEncoding(feed_encoding);
+          new_feed->setUrl(feed_url);
+
+          if (!feed_username.isEmpty() && !feed_password.isEmpty()) {
+            new_feed->setPasswordProtected(true);
+            new_feed->setUsername(feed_username);
+            new_feed->setPassword(feed_password);
+          }
+
+          if (feed_type == "RSS1") {
+            new_feed->setType(FeedsModelFeed::Rdf);
+          }
+          else if (feed_type == "ATOM") {
+            new_feed->setType(FeedsModelFeed::Atom10);
+          }
+          else {
+            new_feed->setType(FeedsModelFeed::Rss2X);
+          }
+
+          active_model_item->appendChild(new_feed);
+        }
+        else {
+          // This must be CATEGORY.
+          // Add category and continue.
+          QString category_title = child_element.attribute("text");
+          QString category_description = child_element.attribute("description");
+
+          FeedsModelCategory *new_category = new FeedsModelCategory(active_model_item);
+          new_category->setTitle(category_title);
+          new_category->setDescription(category_description);
+
+          active_model_item->appendChild(new_category);
+
+          // Children of this node must be processed later.
+          elements_to_process.push(child_element);
+          model_items.push(new_category);
+        }
+      }
+    }
+  }
+
+  // Now, XML is processed and we have result in form of pointer item structure.
+  emit layoutAboutToBeChanged();
+  setRootItem(root_item);
+  emit layoutChanged();
+
+  return true;
 }
 
 QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex &parent) const {

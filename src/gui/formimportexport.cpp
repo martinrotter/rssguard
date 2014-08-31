@@ -77,6 +77,8 @@ void FormImportExport::setMode(const Mode &mode) {
     default:
       break;
   }
+
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
 }
 
 void FormImportExport::selectFile() {
@@ -142,10 +144,8 @@ void FormImportExport::selectImportFile() {
     // NOTE: Add other types here.
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
+    parseImportFile(selected_file);
   }
-
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(selected_file.isEmpty());
-  parseImportFile(selected_file);
 }
 
 void FormImportExport::parseImportFile(const QString &file_name) {
@@ -174,11 +174,15 @@ void FormImportExport::parseImportFile(const QString &file_name) {
 
   if (parsing_result) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were imported."), tr("Feeds were imported."));
+    m_ui->m_treeFeeds->setEnabled(true);
+    m_ui->m_treeFeeds->setModel(m_model);
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error occurred. File is not well-formed."),
-                                 tr("Error occurred. File is not well-formed."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error occurred. File is not well-formed. Select another file."),
+                                 tr("Error occurred. File is not well-formed. Select another file."));
   }
+
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(parsing_result);
 }
 
 void FormImportExport::performAction() {

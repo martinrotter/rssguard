@@ -38,6 +38,7 @@
 #define RELEASES_LIST                   "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/UPDATES?at=master"
 #define DEFAULT_LOCALE                  "en_GB"
 #define DEFAULT_FEED_ENCODING           "UTF-8"
+#define DEFAULT_FEED_TYPE               "RSS"
 #define URL_REGEXP                      "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
 #define USER_AGENT_HTTP_HEADER          "User-Agent"
 #define TEXT_TITLE_LIMIT                30
