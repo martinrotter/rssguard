@@ -41,7 +41,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     enum Type {
       Rss0X   = 0,
       Rss2X   = 1,
-      Rdf     = 2,
+      Rdf     = 2,  // Sometimes denoted as RSS 1.0.
       Atom10  = 3
     };
 

@@ -176,9 +176,10 @@ void FormImportExport::parseImportFile(const QString &file_name) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were imported."), tr("Feeds were imported."));
     m_ui->m_treeFeeds->setEnabled(true);
     m_ui->m_treeFeeds->setModel(m_model);
+    m_ui->m_treeFeeds->expandAll();
   }
   else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error occurred. File is not well-formed. Select another file."),
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error, file is not well-formed. Select another file."),
                                  tr("Error occurred. File is not well-formed. Select another file."));
   }
 

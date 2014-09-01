@@ -538,12 +538,6 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
     // Underlying data are changed.
     emit dataChanged(index(indx.row(), 0, indx_parent),
                      index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
-
-    // NOTE: The code below seems not to be necessary.
-    /*if (indx_parent.isValid()) {
-      // Make sure that data of parent are changed too.
-      list.prepend(indx_parent);
-    }*/
   }
 }
 

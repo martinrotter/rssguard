@@ -27,6 +27,7 @@ class FeedsImportExportModel : public QAbstractItemModel {
     Q_OBJECT
 
   public:
+    // Constructors and destructors.
     explicit FeedsImportExportModel(QObject *parent = 0);
     virtual ~FeedsImportExportModel();
 
@@ -45,6 +46,7 @@ class FeedsImportExportModel : public QAbstractItemModel {
     // Returns source QModelIndex on which lies given item.
     QModelIndex indexForItem(FeedsModelRootItem *item) const;
 
+    // Root item manipulators.
     FeedsModelRootItem *rootItem() const;
     void setRootItem(FeedsModelRootItem *rootItem);
 
@@ -56,6 +58,8 @@ class FeedsImportExportModel : public QAbstractItemModel {
   private:
     QHash<FeedsModelRootItem*, Qt::CheckState> m_checkStates;
     FeedsModelRootItem *m_rootItem;
+
+    // When it's true, then
     bool m_recursiveChange;
 };
 
