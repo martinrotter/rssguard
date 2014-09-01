@@ -68,6 +68,17 @@
     </message>
 </context>
 <context>
+    <name>FeedsImportExportModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
@@ -138,19 +149,6 @@ Tato kategorie neobsahuje žádné podřízené položky.</translation>
             <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
         </translation>
     </message>
-    <message>
-        <source>%1 (%2)
-%3
-
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)
-%3
-
-Kódování: %4
-Status auto-aktualizace: %5</translation>
-    </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
@@ -159,6 +157,16 @@ Status auto-aktualizace: %5</translation>
             <numerusform>%n nepřečtené zprávy.</numerusform>
             <numerusform>%n nepřečtených zpráv.</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -408,13 +416,6 @@ Status auto-aktualizace: %5</translation>
     </message>
 </context>
 <context>
-    <name>FormExport</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
@@ -586,10 +587,6 @@ Status auto-aktualizace: %5</translation>
         <translation>Nelze upravit kanál</translation>
     </message>
     <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Kanál neupraven kvůli chybě.</translation>
-    </message>
-    <message>
         <source>All metadata fetched successfully.</source>
         <translation>Metadata stažena úspěšně.</translation>
     </message>
@@ -680,6 +677,105 @@ Status auto-aktualizace: %5</translation>
     <message>
         <source>The description is ok.</source>
         <translation>Popis je v pořádku.</translation>
+    </message>
+    <message>
+        <source>Feed was not edit due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormImportExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No file is selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OPML 2.0 files (*.opml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select file for feeds export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File is selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select file for feeds import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open source file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds were loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error, file is not well-formed. Select another file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occurred. File is not well-formed. Select another file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds were exported successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot write into destination file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Critical error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds imported successfully.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1068,10 +1164,6 @@ Language column of language list.</extracomment>
         <translation>Spouštět aplikaci skrytou</translation>
     </message>
     <message>
-        <source>Use custom color for web browser progress bar</source>
-        <translation>Použít barevný průběhový pás při načítání stránky</translation>
-    </message>
-    <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation>Typ</translation>
@@ -1125,10 +1217,6 @@ Language column of language list.</extracomment>
     <message>
         <source>Email</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>Select color for web browser progress bar</source>
-        <translation>Zvolit barvu pro průběhový pás při načítání stránky</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1930,11 +2018,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <translation>proxy server nenalezen</translation>
     </message>
     <message>
-        <source>success</source>
-        <extracomment>Network status.</extracomment>
-        <translation>úspěch</translation>
-    </message>
-    <message>
         <source>uknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>neznámý obsah</translation>
@@ -1948,6 +2031,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
         <translation>neznámá chyba</translation>
+    </message>
+    <message>
+        <source>no errors</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

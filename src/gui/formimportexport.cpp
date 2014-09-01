@@ -169,7 +169,7 @@ void FormImportExport::parseImportFile(const QString &file_name) {
   }
 
   if (parsing_result) {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were imported."), tr("Feeds were imported."));
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
     m_ui->m_treeFeeds->setEnabled(true);
     m_ui->m_treeFeeds->setModel(m_model);
     m_ui->m_treeFeeds->expandAll();
@@ -234,5 +234,12 @@ void FormImportExport::exportFeeds() {
 }
 
 void FormImportExport::importFeeds() {
+  QString output_message;
 
+  if (qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->mergeRootItem(m_model->rootItem(), output_message)) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
+  }
+  else {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, output_message, output_message);
+  }
 }

@@ -68,6 +68,17 @@
     </message>
 </context>
 <context>
+    <name>FeedsImportExportModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
@@ -136,19 +147,6 @@ Deze categorie bevat geen nested items.</translation>
             <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
         </translation>
     </message>
-    <message>
-        <source>%1 (%2)
-%3
-
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)
-%3
-
-Encoderen: %4
-Status automatisch bijwerken: %5</translation>
-    </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
@@ -156,6 +154,16 @@ Status automatisch bijwerken: %5</translation>
             <numerusform>%n ongelezen bericht.</numerusform>
             <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -405,13 +413,6 @@ Status automatisch bijwerken: %5</translation>
     </message>
 </context>
 <context>
-    <name>FormExport</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
@@ -583,10 +584,6 @@ Status automatisch bijwerken: %5</translation>
         <translation>Kan feed niet bewerken</translation>
     </message>
     <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Door een fout is de feed niet bewerkt.</translation>
-    </message>
-    <message>
         <source>All metadata fetched successfully.</source>
         <translation>Alle metadata is succesvol opgehaald.</translation>
     </message>
@@ -676,6 +673,105 @@ Status automatisch bijwerken: %5</translation>
     </message>
     <message>
         <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed was not edit due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormImportExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No file is selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OPML 2.0 files (*.opml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select file for feeds export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File is selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select file for feeds import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open source file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds were loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error, file is not well-formed. Select another file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occurred. File is not well-formed. Select another file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds were exported successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot write into destination file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Critical error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds imported successfully.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1065,10 +1161,6 @@ Language column of language list.</extracomment>
         <translation>Start programma verborgen</translation>
     </message>
     <message>
-        <source>Use custom color for web browser progress bar</source>
-        <translation>Gebruik eigen kleur voor webbrowser voortgangsbalk</translation>
-    </message>
-    <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation>Type</translation>
@@ -1122,10 +1214,6 @@ Language column of language list.</extracomment>
     <message>
         <source>Email</source>
         <translation>Email</translation>
-    </message>
-    <message>
-        <source>Select color for web browser progress bar</source>
-        <translation>Selecteer kleur voor webbrowser voortgangsbalk</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1929,11 +2017,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>proxy server niet gevonden</translation>
     </message>
     <message>
-        <source>success</source>
-        <extracomment>Network status.</extracomment>
-        <translation>succes</translation>
-    </message>
-    <message>
         <source>uknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>onbekende inhoud</translation>
@@ -1947,6 +2030,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
         <translation>onbekende fout</translation>
+    </message>
+    <message>
+        <source>no errors</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

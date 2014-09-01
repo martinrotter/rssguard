@@ -92,13 +92,11 @@ bool FeedsModelRootItem::removeChild(int index) {
   }
 }
 
-bool FeedsModelRootItem::isEqual(FeedsModelRootItem *lhs,
-                                 FeedsModelRootItem *rhs) {
+bool FeedsModelRootItem::isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs) {
   return (lhs->kind() == rhs->kind()) && (lhs->id() == rhs->id());
 }
 
-bool FeedsModelRootItem::lessThan(FeedsModelRootItem *lhs,
-                                  FeedsModelRootItem *rhs) {
+bool FeedsModelRootItem::lessThan(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs) {
   if (lhs->kind() == rhs->kind()) {
     return lhs->id() < rhs->id();
   }

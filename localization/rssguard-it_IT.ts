@@ -68,6 +68,17 @@
     </message>
 </context>
 <context>
+    <name>FeedsImportExportModel</name>
+    <message>
+        <source> (category)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> (feed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedsModel</name>
     <message>
         <source>Title</source>
@@ -134,15 +145,6 @@ This category does not contain any nested items.</source>
             <numerusform></numerusform>
         </translation>
     </message>
-    <message>
-        <source>%1 (%2)
-%3
-
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
@@ -150,6 +152,16 @@ Auto-update status: %5</source>
             <numerusform>%n messaggio(i) non letto.</numerusform>
             <numerusform>%n messaggio(i) non letti.</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>%1 (%2)
+%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -399,13 +411,6 @@ Auto-update status: %5</source>
     </message>
 </context>
 <context>
-    <name>FormExport</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished">Dialogo</translation>
-    </message>
-</context>
-<context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
@@ -577,10 +582,6 @@ Auto-update status: %5</source>
         <translation>Impossibile modificare il feed</translation>
     </message>
     <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Feed non modificato a coausa di un errore.</translation>
-    </message>
-    <message>
         <source>All metadata fetched successfully.</source>
         <translation>Tutti i metadata recuperati con successo.</translation>
     </message>
@@ -670,6 +671,105 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed was not edit due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormImportExport</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialogo</translation>
+    </message>
+    <message>
+        <source>&amp;Select file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No file is selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Destination file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target feeds &amp;&amp; categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OPML 2.0 files (*.opml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select file for feeds export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File is selected.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select file for feeds import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open source file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds were loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error, file is not well-formed. Select another file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error occurred. File is not well-formed. Select another file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds were exported successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot write into destination file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Critical error occurred.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds imported successfully.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1059,10 +1159,6 @@ Language column of language list.</extracomment>
         <translation>Avvia applicazione nascosta</translation>
     </message>
     <message>
-        <source>Use custom color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation>Tipo</translation>
@@ -1116,10 +1212,6 @@ Language column of language list.</extracomment>
     <message>
         <source>Email</source>
         <translation>Email</translation>
-    </message>
-    <message>
-        <source>Select color for web browser progress bar</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -1905,11 +1997,6 @@ Go to application website to obtain it manually.</source>
         <translation>server proxy non trovato</translation>
     </message>
     <message>
-        <source>success</source>
-        <extracomment>Network status.</extracomment>
-        <translation>successo</translation>
-    </message>
-    <message>
         <source>uknown content</source>
         <extracomment>Network status.</extracomment>
         <translation>contenuto sconosciuto</translation>
@@ -1923,6 +2010,11 @@ Go to application website to obtain it manually.</source>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
         <translation>errore sconosciuto</translation>
+    </message>
+    <message>
+        <source>no errors</source>
+        <extracomment>Network status.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

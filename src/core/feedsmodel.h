@@ -136,6 +136,11 @@ class FeedsModel : public QAbstractItemModel {
       return m_rootItem;
     }
 
+    // Takes structure residing under given root item and adds feeds/categories from
+    // it to active structure.
+    bool mergeRootItem(FeedsModelRootItem *root_item, QString &output_message);
+    bool doesItemContainSameItem(FeedsModelRootItem *parent, FeedsModelRootItem *item);
+
   public slots:
     // Feeds operations.
     bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);

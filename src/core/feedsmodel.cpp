@@ -520,14 +520,55 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   return QModelIndex();
 }
 
+bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_message) {
+  if (root_item == NULL) {
+    return false;
+  }
+
+  return false;
+}
+
+bool FeedsModel::doesItemContainSameItem(FeedsModelRootItem *parent, FeedsModelRootItem *item) {
+  if (parent == NULL || item == NULL) {
+    return false;
+  }
+
+  switch (item->kind()) {
+    case FeedsModelRootItem::Category: {
+      foreach (FeedsModelRootItem *child, parent->childItems()) {
+        if (child->kind() == FeedsModelRootItem::Category && child->title() == item->title()) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    case FeedsModelRootItem::Feed: {
+      foreach (FeedsModelRootItem *child, parent->childItems()) {
+        if (child->kind() == FeedsModelRootItem::Feed &&
+            static_cast<FeedsModelFeed*>(child)->url() == static_cast<FeedsModelFeed*>(item)->url()) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    default:
+      return false;
+  }
+}
+
+
+
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
     QModelIndex indx_parent = indx.parent();
 
     // Underlying data are changed.
-    emit dataChanged(index(indx.row(), 0, indx_parent),
-                     index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
+    emit dataChanged(index(indx.row(), 0, indx_parent), index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
   }
 }
 
@@ -552,8 +593,7 @@ void FeedsModel::loadFromDatabase() {
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChildren();
 
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -561,8 +601,7 @@ void FeedsModel::loadFromDatabase() {
   QSqlQuery query_categories(database);
   query_categories.setForwardOnly(true);
 
-  if (!query_categories.exec("SELECT * FROM Categories;") ||
-      query_categories.lastError().isValid()) {
+  if (!query_categories.exec("SELECT * FROM Categories;") || query_categories.lastError().isValid()) {
     qFatal("Query for obtaining categories failed. Error message: '%s'.",
            qPrintable(query_categories.lastError().text()));
   }
@@ -579,8 +618,7 @@ void FeedsModel::loadFromDatabase() {
   QSqlQuery query_feeds(database);
   query_feeds.setForwardOnly(true);
 
-  if (!query_feeds.exec("SELECT * FROM Feeds;") ||
-      query_feeds.lastError().isValid()) {
+  if (!query_feeds.exec("SELECT * FROM Feeds;") || query_feeds.lastError().isValid()) {
     qFatal("Query for obtaining feeds failed.");
   }
 
@@ -642,18 +680,14 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
     // example situation where feed and its parent category are both
     // selected). So, remove duplicates from the list.
     qSort(feeds.begin(), feeds.end(), FeedsModelRootItem::lessThan);
-    feeds.erase(std::unique(feeds.begin(),
-                            feeds.end(), FeedsModelRootItem::isEqual),
-                feeds.end());
+    feeds.erase(std::unique(feeds.begin(), feeds.end(), FeedsModelRootItem::isEqual), feeds.end());
   }
 
   return feeds;
 }
 
-bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
-                               int read) {
-  QSqlDatabase db_handle = qApp->database()->connection(objectName(),
-                                                        DatabaseFactory::FromSettings);
+bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read) {
+  QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -687,11 +721,8 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds,
   }
 }
 
-bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds,
-                                  int deleted,
-                                  bool read_only) {
-  QSqlDatabase db_handle = qApp->database()->connection(objectName(),
-                                                        DatabaseFactory::FromSettings);
+bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted, bool read_only) {
+  QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds clearing.");
