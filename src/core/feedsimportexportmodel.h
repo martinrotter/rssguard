@@ -27,6 +27,11 @@ class FeedsImportExportModel : public QAbstractItemModel {
     Q_OBJECT
 
   public:
+    enum Mode {
+      Import,
+      Export
+    };
+
     // Constructors and destructors.
     explicit FeedsImportExportModel(QObject *parent = 0);
     virtual ~FeedsImportExportModel();
@@ -55,12 +60,16 @@ class FeedsImportExportModel : public QAbstractItemModel {
     bool exportToOMPL20(QByteArray &result);
     bool importAsOPML20(const QByteArray &data);
 
+    Mode mode() const;
+    void setMode(const Mode &mode);
+
   private:
     QHash<FeedsModelRootItem*, Qt::CheckState> m_checkStates;
     FeedsModelRootItem *m_rootItem;
 
     // When it's true, then
     bool m_recursiveChange;
+    Mode m_mode;
 };
 
 #endif // FEEDIMPORTEXPORTMODEL_H

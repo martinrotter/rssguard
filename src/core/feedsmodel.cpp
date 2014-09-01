@@ -163,8 +163,7 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   return false;
 }
 
-bool FeedsModel::addCategory(FeedsModelCategory *category,
-                             FeedsModelRootItem *parent) {
+bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
 
@@ -210,8 +209,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category,
   return true;
 }
 
-bool FeedsModel::editCategory(FeedsModelCategory *original_category,
-                              FeedsModelCategory *new_category) {
+bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category) {
   QSqlDatabase database = qApp->database()->connection(objectName(),
                                                        DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
@@ -245,16 +243,12 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category,
     int new_index_of_category = new_parent->childCount();
 
     // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent),
-                    original_index_of_category,
-                    original_index_of_category);
+    beginRemoveRows(indexForItem(original_parent), original_index_of_category, original_index_of_category);
     original_parent->removeChild(original_category);
     endRemoveRows();
 
     // ... and insert it under the new parent.
-    beginInsertRows(indexForItem(new_parent),
-                    new_index_of_category,
-                    new_index_of_category);
+    beginInsertRows(indexForItem(new_parent), new_index_of_category, new_index_of_category);
     new_parent->appendChild(original_category);
     endInsertRows();
   }
@@ -266,13 +260,11 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category,
   return true;
 }
 
-bool FeedsModel::addFeed(FeedsModelFeed *feed,
-                         FeedsModelRootItem *parent) {
-  // Get index of parent item (parent standard category).
+bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
+  // Get index of parent item (parent standard category or root item).
   QModelIndex parent_index = indexForItem(parent);
 
-  // Now, add category to persistent storage.
-  // Children are removed, remove this standard category too.
+  // Now, add feed to persistent storage.
   QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
   QSqlQuery query_add_feed(database);
 
@@ -302,8 +294,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
   query_add_feed.prepare("SELECT id FROM Feeds WHERE date_created = :date_created;");
   query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
   if (query_add_feed.exec() && query_add_feed.next()) {
-    // New category was added, fetch is primary id
-    // from the database.
+    // New feed was added, fetch is primary id from the database.
     feed->setId(query_add_feed.value(0).toInt());
   }
   else {
@@ -311,7 +302,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
     return false;
   }
 
-  // Category was added to the persistent storage so add it to the model.
+  // Feed was added to the persistent storage so add it to the model.
   beginInsertRows(parent_index, parent->childCount(), parent->childCount());
   parent->appendChild(feed);
   endInsertRows();
@@ -319,8 +310,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed,
   return true;
 }
 
-bool FeedsModel::editFeed(FeedsModelFeed *original_feed,
-                          FeedsModelFeed *new_feed) {
+bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed) {
   QSqlDatabase database = qApp->database()->connection(objectName(),
                                                        DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);

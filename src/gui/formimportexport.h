@@ -21,13 +21,12 @@
 #include <QDialog>
 
 #include "ui_formimportexport.h"
+#include "core/feedsimportexportmodel.h"
 
 
 namespace Ui {
   class FormExport;
 }
-
-class FeedsImportExportModel;
 
 class FormImportExport : public QDialog {
     Q_OBJECT
@@ -37,16 +36,10 @@ class FormImportExport : public QDialog {
       OPML20 = 0
     };
 
-    enum Mode {
-      Import,
-      Export
-    };
-
     explicit FormImportExport(QWidget *parent = 0);
     virtual ~FormImportExport();
 
-    Mode mode() const;
-    void setMode(const Mode &mode);
+    void setMode(const FeedsImportExportModel::Mode &mode);
 
   private slots:
     void performAction();
@@ -61,7 +54,6 @@ class FormImportExport : public QDialog {
     void importFeeds();
 
     Ui::FormImportExport *m_ui;
-    Mode m_mode;
     ConversionType m_conversionType;
     FeedsImportExportModel *m_model;
 };

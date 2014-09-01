@@ -30,10 +30,15 @@
 
 FeedsImportExportModel::FeedsImportExportModel(QObject *parent)
   : QAbstractItemModel(parent), m_checkStates(QHash<FeedsModelRootItem*, Qt::CheckState>()),
-    m_rootItem(NULL), m_recursiveChange(false) {
+    m_rootItem(NULL), m_recursiveChange(false), m_mode(Import) {
 }
 
 FeedsImportExportModel::~FeedsImportExportModel() {
+  if (m_rootItem != NULL && m_mode == Import) {
+    // Delete all model items, but only if we are in import mode. Export mode shares
+    // root item with main feed model, thus cannot be deleted from memory now.
+    delete m_rootItem;
+  }
 }
 
 FeedsModelRootItem *FeedsImportExportModel::itemForIndex(const QModelIndex &index) const {
@@ -227,6 +232,14 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
   emit layoutChanged();
 
   return true;
+}
+
+FeedsImportExportModel::Mode FeedsImportExportModel::mode() const {
+  return m_mode;
+}
+
+void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
+  m_mode = mode;
 }
 
 QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex &parent) const {

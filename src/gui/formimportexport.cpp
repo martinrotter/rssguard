@@ -28,7 +28,7 @@
 #include <QTextStream>
 
 
-FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormImportExport), m_mode(Import) {
+FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormImportExport) {
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
 
@@ -46,15 +46,11 @@ FormImportExport::~FormImportExport() {
   delete m_ui;
 }
 
-FormImportExport::Mode FormImportExport::mode() const {
-  return m_mode;
-}
+void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
+  m_model->setMode(mode);
 
-void FormImportExport::setMode(const Mode &mode) {
-  m_mode = mode;
-
-  switch (m_mode) {
-    case Export: {
+  switch (mode) {
+    case FeedsImportExportModel::Export: {
       m_model->setRootItem(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->rootItem());
       m_ui->m_treeFeeds->setModel(m_model);
       m_ui->m_treeFeeds->expandAll();
@@ -65,7 +61,7 @@ void FormImportExport::setMode(const Mode &mode) {
       break;
     }
 
-    case Import: {
+    case FeedsImportExportModel::Import: {
       m_ui->m_groupFile->setTitle(tr("Source file"));
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
       m_ui->m_treeFeeds->setDisabled(true);
@@ -82,12 +78,12 @@ void FormImportExport::setMode(const Mode &mode) {
 }
 
 void FormImportExport::selectFile() {
-  switch (m_mode) {
-    case Import:
+  switch (m_model->mode()) {
+    case FeedsImportExportModel::Import:
       selectImportFile();
       break;
 
-    case Export: {
+    case FeedsImportExportModel::Export: {
       selectExportFile();
       break;
     }
@@ -187,12 +183,12 @@ void FormImportExport::parseImportFile(const QString &file_name) {
 }
 
 void FormImportExport::performAction() {
-  switch (m_mode) {
-    case Import:
+  switch (m_model->mode()) {
+    case FeedsImportExportModel::Import:
       importFeeds();
       break;
 
-    case Export:
+    case FeedsImportExportModel::Export:
       exportFeeds();
       break;
 

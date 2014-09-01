@@ -439,56 +439,14 @@ void FormMain::loadWebBrowserMenu(int index) {
 
 void FormMain::exportFeeds() {  
   QPointer<FormImportExport> form = new FormImportExport(this);
-  form.data()->setMode(FormImportExport::Export);
+  form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
   delete form.data();
-
-/*
-  QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-
-  QString filter;
-  QString selected_filter;
-
-  // Add more filters here.
-  filter += filter_opml20;
-
-  QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds import"),
-                                                       QDir::homePath(), filter, &selected_filter);
-
-
-  if (!selected_file.isEmpty()) {
-    bool export_result;
-    QByteArray result_data;
-
-    if (selected_filter == filter_opml20) {
-      export_result = tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->exportToFile(FeedsModel::OPML20,
-                                                                                                 result_data);
-    }
-
-    if (!export_result) {
-      qApp->showGuiMessage(tr("Export failed"),
-                           tr("Export of feeds failed, is target file writtable?"),
-                           QSystemTrayIcon::Critical);
-    }
-    else {
-      // Save exported data.
-      QFile output_file(selected_file);
-
-      if (output_file.open(QIODevice::Unbuffered | QIODevice::Truncate | QIODevice::WriteOnly)) {
-        QTextStream stream(&output_file);
-
-        stream.setCodec("UTF-8");
-        stream << QString::fromUtf8(result_data);
-        output_file.flush();
-        output_file.close();
-      }
-    }
-  }*/
 }
 
 void FormMain::importFeeds() {
   QPointer<FormImportExport> form = new FormImportExport(this);
-  form.data()->setMode(FormImportExport::Import);
+  form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
   delete form.data();
 }
