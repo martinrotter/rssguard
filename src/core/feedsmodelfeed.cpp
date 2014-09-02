@@ -48,6 +48,24 @@ FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
   m_kind = FeedsModelRootItem::Feed;
 }
 
+FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
+  : FeedsModelRootItem(NULL), m_totalCount(0), m_unreadCount(0) {
+  m_status = other.status();
+  m_type = other.type();
+  m_autoUpdateType = other.autoUpdateType();
+  m_autoUpdateInitialInterval = other.autoUpdateInitialInterval();
+  m_encoding = other.encoding();
+  m_url = other.url();
+  m_kind = other.kind();
+  m_title = other.title();
+  m_id = other.id();
+  m_icon = other.icon();
+  m_childItems = other.childItems();
+  m_parentItem = other.parent();
+  m_creationDate = other.creationDate();
+  m_description = other.description();
+}
+
 FeedsModelFeed::~FeedsModelFeed() {
   qDebug("Destroying FeedsModelFeed instance.");
 }

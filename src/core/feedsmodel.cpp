@@ -28,6 +28,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
+#include <QStack>
 
 #include <algorithm>
 
@@ -522,10 +523,51 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
 
 bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_message) {
   if (root_item == NULL) {
+    output_message = tr("Invalid tree data.");
+    qDebug("Root item for merging two models is null.");
     return false;
   }
 
-  return false;
+  QStack<FeedsModelRootItem*> original_parents; original_parents.push(m_rootItem);
+  QStack<FeedsModelRootItem*> new_parents; new_parents.push(root_item);
+  bool some_feed_category_error = false;
+
+  // We are definitely about to add some new items into the model.
+  emit layoutAboutToBeChanged();
+
+  // Iterate all new items we would like to merge into current model.
+  while (!new_parents.isEmpty()) {
+    FeedsModelRootItem *target_parent = original_parents.pop();
+    FeedsModelRootItem *source_parent = new_parents.pop();
+
+    foreach (FeedsModelRootItem *source_item, source_parent->childItems()) {
+      if (source_item->kind() == FeedsModelRootItem::Category) {
+        FeedsModelCategory *source_category = static_cast<FeedsModelCategory*>(source_item);
+        FeedsModelCategory *new_category = new FeedsModelCategory(source_category);
+
+        // Process all children of this category.
+        original_parents.push(new_category);
+        new_parents.push(source_category);
+
+        // Add category to model.
+        new_category->clearChildren();
+        addCategory(new_category, target_parent);
+      }
+      else if (source_item->kind() == FeedsModelRootItem::Feed) {
+        FeedsModelFeed *source_feed = static_cast<FeedsModelFeed*>(source_item);
+        // TODO: dodělat kopirovaci konstruktor pořádně.
+        FeedsModelFeed *new_feed = new FeedsModelFeed(*source_feed);
+
+        // Append this feed and end this iteration.
+        addFeed(new_feed, target_parent);
+      }
+    }
+  }
+
+  // Changes are done now. Finalize the new model.
+  emit layoutChanged();
+
+  return true;
 }
 
 bool FeedsModel::doesItemContainSameItem(FeedsModelRootItem *parent, FeedsModelRootItem *item) {

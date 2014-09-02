@@ -63,6 +63,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
 
     // Constructors and destructors.
     explicit FeedsModelFeed(FeedsModelRootItem *parent_item = NULL);
+    explicit FeedsModelFeed(const FeedsModelFeed &other);
     virtual ~FeedsModelFeed();
 
     // Returns 0, feeds have no children.
