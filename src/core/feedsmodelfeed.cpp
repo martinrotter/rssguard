@@ -38,13 +38,19 @@
 
 FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
   : FeedsModelRootItem(parent_item),
+    m_passwordProtected(false),
+    m_username(QString()),
+    m_password(QString()),
     m_status(Normal),
     m_networkError(QNetworkReply::NoError),
     m_type(Rss0X),
     m_totalCount(0),
     m_unreadCount(0),
     m_autoUpdateType(DontAutoUpdate),
-    m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL) {
+    m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+    m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+    m_encoding(QString()),
+    m_url(QString()) {
   m_kind = FeedsModelRootItem::Feed;
 }
 

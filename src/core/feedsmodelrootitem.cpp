@@ -24,6 +24,12 @@
 
 FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
   : m_kind(FeedsModelRootItem::RootItem),
+    m_id(NO_PARENT_CATEGORY),
+    m_title(QString()),
+    m_description(QString()),
+    m_icon(QIcon()),
+    m_creationDate(QDateTime()),
+    m_childItems(QList<FeedsModelRootItem*>()),
     m_parentItem(parent_item) {
   setupFonts();
 }

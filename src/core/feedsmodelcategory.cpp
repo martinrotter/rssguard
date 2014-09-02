@@ -27,21 +27,20 @@
 #include <QSqlQuery>
 
 
-FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item)
-  : FeedsModelRootItem(parent_item) {
+FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item) : FeedsModelRootItem(parent_item) {
   m_kind = FeedsModelRootItem::Category;
 }
 
 FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
   : FeedsModelRootItem(NULL) {
   m_kind = other.kind();
-  m_title = other.title();
   m_id = other.id();
+  m_title = other.title();
+  m_description = other.description();
   m_icon = other.icon();
+  m_creationDate = other.creationDate();
   m_childItems = other.childItems();
   m_parentItem = other.parent();
-  m_creationDate = other.creationDate();
-  m_description = other.description();
 }
 
 FeedsModelCategory::~FeedsModelCategory() {
@@ -58,7 +57,7 @@ QVariant FeedsModelCategory::data(int column, int role) const {
                               m_description,
                               m_childItems.size() == 0 ?
                                 tr("\n\nThis category does not contain any nested items.") :
-                                "");
+                                QString());
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.
@@ -132,7 +131,7 @@ bool FeedsModelCategory::removeItself() {
 
   // Children are removed, remove this standard category too.
   QSqlDatabase database = qApp->database()->connection("FeedsModelCategory",
-                                                                  DatabaseFactory::FromSettings);
+                                                       DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);

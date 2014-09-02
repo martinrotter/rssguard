@@ -185,8 +185,7 @@ void FeedsView::executeNextAutoUpdate() {
     m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
   }
 
-  qDebug("Starting auto-update event, pass %d/%d.",
-         m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
+  qDebug("Starting auto-update event, pass %d/%d.", m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.

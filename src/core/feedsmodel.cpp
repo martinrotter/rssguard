@@ -570,40 +570,6 @@ bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_me
   return true;
 }
 
-bool FeedsModel::doesItemContainSameItem(FeedsModelRootItem *parent, FeedsModelRootItem *item) {
-  if (parent == NULL || item == NULL) {
-    return false;
-  }
-
-  switch (item->kind()) {
-    case FeedsModelRootItem::Category: {
-      foreach (FeedsModelRootItem *child, parent->childItems()) {
-        if (child->kind() == FeedsModelRootItem::Category && child->title() == item->title()) {
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    case FeedsModelRootItem::Feed: {
-      foreach (FeedsModelRootItem *child, parent->childItems()) {
-        if (child->kind() == FeedsModelRootItem::Feed &&
-            static_cast<FeedsModelFeed*>(child)->url() == static_cast<FeedsModelFeed*>(item)->url()) {
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    default:
-      return false;
-  }
-}
-
-
-
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
