@@ -169,6 +169,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
       m_status = status;
     }
 
+    QNetworkReply::NetworkError networkError() const;
+
     // Loads standard feed object from given SQL record.
     static FeedsModelFeed *loadFromRecord(const QSqlRecord &record);
 

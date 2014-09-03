@@ -20,6 +20,8 @@
 #include "core/feedsmodelfeed.h"
 #include "core/feedsmodelcategory.h"
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 #include <QDomDocument>
 #include <QDomElement>
@@ -192,6 +194,8 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           new_feed->setDescription(feed_description);
           new_feed->setEncoding(feed_encoding);
           new_feed->setUrl(feed_url);
+          new_feed->setCreationDate(QDateTime::currentDateTime());
+          new_feed->setIcon(qApp->icons()->fromTheme("folder-feed"));
           new_feed->setAutoUpdateType(FeedsModelFeed::DefaultAutoUpdate);
 
           if (feed_type == "RSS1") {
@@ -214,6 +218,8 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
 
           FeedsModelCategory *new_category = new FeedsModelCategory(active_model_item);
           new_category->setTitle(category_title);
+          new_category->setIcon(qApp->icons()->fromTheme("folder-category"));
+          new_category->setCreationDate(QDateTime::currentDateTime());
           new_category->setDescription(category_description);
 
           active_model_item->appendChild(new_category);

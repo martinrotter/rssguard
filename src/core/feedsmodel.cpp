@@ -185,12 +185,14 @@ bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *p
   query_add.bindValue(":icon", qApp->icons()->toByteArray(category->icon()));
 
   if (!query_add.exec()) {
+    qDebug("Failed to add category to database: %s.", qPrintable(query_add.lastError().text()));
+
     // Query failed.
     return false;
   }
 
-  query_add.prepare("SELECT id FROM Categories WHERE date_created = :date_created;");
-  query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
+  query_add.prepare("SELECT id FROM Categories WHERE title = :title;");
+  query_add.bindValue(":title", category->title());
   if (query_add.exec() && query_add.next()) {
     // New category was added, fetch is primary id
     // from the database.
@@ -288,12 +290,14 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
   query_add_feed.bindValue(":type", (int) feed->type());
 
   if (!query_add_feed.exec()) {
+    qDebug("Failed to add feed to database: %s.", qPrintable(query_add_feed.lastError().text()));
+
     // Query failed.
     return false;
   }
 
-  query_add_feed.prepare("SELECT id FROM Feeds WHERE date_created = :date_created;");
-  query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
+  query_add_feed.prepare("SELECT id FROM Feeds WHERE url = :url;");
+  query_add_feed.bindValue(":url", feed->url());
   if (query_add_feed.exec() && query_add_feed.next()) {
     // New feed was added, fetch is primary id from the database.
     feed->setId(query_add_feed.value(0).toInt());
@@ -543,15 +547,19 @@ bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_me
     foreach (FeedsModelRootItem *source_item, source_parent->childItems()) {
       if (source_item->kind() == FeedsModelRootItem::Category) {
         FeedsModelCategory *source_category = static_cast<FeedsModelCategory*>(source_item);
-        FeedsModelCategory *new_category = new FeedsModelCategory(source_category);
-
-        // Process all children of this category.
-        original_parents.push(new_category);
-        new_parents.push(source_category);
+        FeedsModelCategory *new_category = new FeedsModelCategory(*source_category);
 
         // Add category to model.
         new_category->clearChildren();
-        addCategory(new_category, target_parent);
+
+        if (addCategory(new_category, target_parent)) {
+          // Process all children of this category.
+          original_parents.push(new_category);
+          new_parents.push(source_category);
+        }
+        else {
+          some_feed_category_error = true;
+        }
       }
       else if (source_item->kind() == FeedsModelRootItem::Feed) {
         FeedsModelFeed *source_feed = static_cast<FeedsModelFeed*>(source_item);
@@ -559,7 +567,9 @@ bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_me
         FeedsModelFeed *new_feed = new FeedsModelFeed(*source_feed);
 
         // Append this feed and end this iteration.
-        addFeed(new_feed, target_parent);
+        if (!addFeed(new_feed, target_parent)) {
+          some_feed_category_error = true;
+        }
       }
     }
   }
@@ -567,7 +577,14 @@ bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_me
   // Changes are done now. Finalize the new model.
   emit layoutChanged();
 
-  return true;
+  if (some_feed_category_error) {
+    output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");
+  }
+  else {
+    output_message = tr("Import was completely successfull.");
+  }
+
+  return !some_feed_category_error;
 }
 
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {

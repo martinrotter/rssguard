@@ -47,8 +47,8 @@ FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
     m_totalCount(0),
     m_unreadCount(0),
     m_autoUpdateType(DontAutoUpdate),
-    m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+    m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
     m_encoding(QString()),
     m_url(QString()) {
   m_kind = FeedsModelRootItem::Feed;
@@ -56,13 +56,18 @@ FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
 
 FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
   : FeedsModelRootItem(NULL), m_totalCount(0), m_unreadCount(0) {
+  m_passwordProtected = other.passwordProtected();
+  m_username = other.username();
+  m_password = other.password();
   m_status = other.status();
+  m_networkError = other.networkError();
   m_type = other.type();
   m_autoUpdateType = other.autoUpdateType();
   m_autoUpdateInitialInterval = other.autoUpdateInitialInterval();
+  m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();
   m_encoding = other.encoding();
   m_url = other.url();
-  m_kind = other.kind();
+  m_kind = FeedsModelRootItem::Feed;
   m_title = other.title();
   m_id = other.id();
   m_icon = other.icon();
@@ -533,6 +538,6 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   }
 }
 
-
-
-
+QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
+  return m_networkError;
+}
