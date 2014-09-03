@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
+#include "core/feedsimportexportmodel.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -525,15 +526,15 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   return QModelIndex();
 }
 
-bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_message) {
-  if (root_item == NULL) {
+bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_message) {
+  if (model == NULL || model->rootItem() == NULL) {
     output_message = tr("Invalid tree data.");
     qDebug("Root item for merging two models is null.");
     return false;
   }
 
   QStack<FeedsModelRootItem*> original_parents; original_parents.push(m_rootItem);
-  QStack<FeedsModelRootItem*> new_parents; new_parents.push(root_item);
+  QStack<FeedsModelRootItem*> new_parents; new_parents.push(model->rootItem());
   bool some_feed_category_error = false;
 
   // We are definitely about to add some new items into the model.
@@ -545,6 +546,12 @@ bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_me
     FeedsModelRootItem *source_parent = new_parents.pop();
 
     foreach (FeedsModelRootItem *source_item, source_parent->childItems()) {
+      if (!model->isItemChecked(source_item)) {
+        // We can skip this item, because it is not checked and should not be imported.
+        // NOTE: All descendants are thus skipped too.
+        continue;
+      }
+
       if (source_item->kind() == FeedsModelRootItem::Category) {
         FeedsModelCategory *source_category = static_cast<FeedsModelCategory*>(source_item);
         FeedsModelCategory *new_category = new FeedsModelCategory(*source_category);
@@ -563,7 +570,6 @@ bool FeedsModel::mergeRootItem(FeedsModelRootItem *root_item, QString &output_me
       }
       else if (source_item->kind() == FeedsModelRootItem::Feed) {
         FeedsModelFeed *source_feed = static_cast<FeedsModelFeed*>(source_item);
-        // TODO: dodělat kopirovaci konstruktor pořádně.
         FeedsModelFeed *new_feed = new FeedsModelFeed(*source_feed);
 
         // Append this feed and end this iteration.

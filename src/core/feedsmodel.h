@@ -28,6 +28,7 @@
 
 class FeedsModelCategory;
 class FeedsModelFeed;
+class FeedsImportExportModel;
 
 typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
 typedef QPair<int, FeedsModelCategory*> CategoryAssignmentItem;
@@ -138,7 +139,7 @@ class FeedsModel : public QAbstractItemModel {
 
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
-    bool mergeRootItem(FeedsModelRootItem *root_item, QString &output_message);
+    bool mergeModel(FeedsImportExportModel *model, QString &output_message);
 
   public slots:
     // Feeds operations.

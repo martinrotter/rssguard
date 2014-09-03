@@ -433,3 +433,7 @@ Qt::ItemFlags FeedsImportExportModel::flags(const QModelIndex &index) const {
 
   return flags;
 }
+
+bool FeedsImportExportModel::isItemChecked(FeedsModelRootItem *item) {
+  return m_checkStates.contains(item) && m_checkStates.value(item, Qt::Unchecked);
+}

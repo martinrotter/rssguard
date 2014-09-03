@@ -44,6 +44,8 @@ class FeedsImportExportModel : public QAbstractItemModel {
     bool setData(const QModelIndex &index, const QVariant &value, int role);
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
+    bool isItemChecked(FeedsModelRootItem *item);
+
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;

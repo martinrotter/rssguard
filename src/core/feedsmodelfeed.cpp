@@ -55,13 +55,15 @@ FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
 }
 
 FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
-  : FeedsModelRootItem(NULL), m_totalCount(0), m_unreadCount(0) {
+  : FeedsModelRootItem(NULL) {
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
   m_status = other.status();
   m_networkError = other.networkError();
   m_type = other.type();
+  m_totalCount = other.countOfAllMessages();
+  m_unreadCount = other.countOfUnreadMessages();
   m_autoUpdateType = other.autoUpdateType();
   m_autoUpdateInitialInterval = other.autoUpdateInitialInterval();
   m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();

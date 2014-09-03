@@ -236,7 +236,7 @@ void FormImportExport::exportFeeds() {
 void FormImportExport::importFeeds() {
   QString output_message;
 
-  if (qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->mergeRootItem(m_model->rootItem(), output_message)) {
+  if (qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->mergeModel(m_model, output_message)) {
     qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->expandAll();
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
   }
