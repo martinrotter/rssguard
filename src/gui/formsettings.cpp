@@ -404,8 +404,8 @@ void FormSettings::loadLanguage() {
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
     item->setText(4, language.m_email);
-    item->setIcon(0, qApp->icons()->fromTheme(FLAG_ICON_SUBFOLDER + QDir::separator() +
-                                                        language.m_code));
+    item->setIcon(0, qApp->icons()->fromTheme(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() +
+                                              language.m_code));
   }
 
   QList<QTreeWidgetItem*> matching_items = m_ui->m_treeLanguages->findItems(qApp->localization()->loadedLanguage(),
@@ -523,9 +523,9 @@ void FormSettings::saveDataStorage() {
 
 void FormSettings::mysqlTestConnection() {
   DatabaseFactory::MySQLError error_code = qApp->database()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
-                                                                                            m_ui->m_spinMysqlPort->value(),
-                                                                                            m_ui->m_txtMysqlUsername->lineEdit()->text(),
-                                                                                            m_ui->m_txtMysqlPassword->lineEdit()->text());
+                                                                                 m_ui->m_spinMysqlPort->value(),
+                                                                                 m_ui->m_txtMysqlUsername->lineEdit()->text(),
+                                                                                 m_ui->m_txtMysqlPassword->lineEdit()->text());
   QString interpretation = qApp->database()->mysqlInterpretErrorCode(error_code);
 
   switch (error_code) {
