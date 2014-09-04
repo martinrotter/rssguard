@@ -565,7 +565,18 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
           new_parents.push(source_category);
         }
         else {
-          some_feed_category_error = true;
+          // Add category failed, but this can mean that the same category (with same title)
+          // already exists. If such a category exists in current parent, then find it and
+          // add descendants to it.
+          FeedsModelRootItem *existing_category = target_parent->child(FeedsModelRootItem::Category, new_category->title());
+
+          if (existing_category != NULL) {
+            original_parents.push(existing_category);
+            new_parents.push(source_category);
+          }
+          else {
+            some_feed_category_error = true;
+          }
         }
       }
       else if (source_item->kind() == FeedsModelRootItem::Feed) {

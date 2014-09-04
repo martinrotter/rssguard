@@ -240,16 +240,14 @@ void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory*> catego
                                      QVariant::fromValue((void*) root_item));
 
   foreach (FeedsModelCategory *category, categories) {
-    if (input_category != NULL && (category == input_category ||
-                                   category->isChildOf(input_category))) {
+    if (input_category != NULL && (category == input_category || category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so
       // don't add it.
       continue;
     }
 
-    m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX,
-                                                      Qt::DecorationRole).value<QIcon>(),
+    m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX, Qt::DecorationRole).value<QIcon>(),
                                        category->title(),
                                        QVariant::fromValue((void*) category));
   }

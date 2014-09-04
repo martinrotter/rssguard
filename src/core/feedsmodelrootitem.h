@@ -53,6 +53,8 @@ class FeedsModelRootItem {
       return m_childItems.value(row);
     }
 
+    virtual FeedsModelRootItem *child(FeedsModelRootItem::Kind kind_of_child, const QString &identifier);
+
     inline virtual int childCount() const {
       return m_childItems.size();
     }

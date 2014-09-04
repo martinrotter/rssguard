@@ -16,7 +16,7 @@ Fixed:
 Added:
 <ul>
 <li>Added NSIS-based "portable" installer for Windows and restructured update process.</li>
-<li>Added experimental support for exporting feeds to OPML 2.0.</li>
+<li>Added experimental support for exporting and importing feeds to/from OPML 2.0.</li>
 <li>Feeds now change their color to red if their network status reports error - feed is not reachable or was moved or is unavailable due to other errors.</li>
 </ul>
 

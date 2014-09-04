@@ -18,6 +18,8 @@
 #include "core/feedsmodelrootitem.h"
 
 #include "miscellaneous/application.h"
+#include "core/feedsmodelcategory.h"
+#include "core/feedsmodelfeed.h"
 
 #include <QVariant>
 
@@ -76,6 +78,19 @@ int FeedsModelRootItem::countOfAllMessages() const {
 
 bool FeedsModelRootItem::removeChild(FeedsModelRootItem *child) {
   return m_childItems.removeOne(child);
+}
+
+FeedsModelRootItem *FeedsModelRootItem::child(FeedsModelRootItem::Kind kind_of_child, const QString &identifier) {
+  foreach (FeedsModelRootItem *child, childItems()) {
+    if (child->kind() == kind_of_child) {
+      if (kind_of_child == Category && static_cast<FeedsModelCategory*>(child)->title() == identifier ||
+          kind_of_child == Feed && static_cast<FeedsModelFeed*>(child)->url() == identifier) {
+        return child;
+      }
+    }
+  }
+
+  return NULL;
 }
 
 int FeedsModelRootItem::countOfUnreadMessages() const {

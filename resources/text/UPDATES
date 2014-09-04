@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="1.9.9.9" type="feature">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.0-win32-test.exe</url>
+  <release version="2.0.0.0" type="feature">
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.0-win32.exe</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Improved behavior of updater.</li>
+<li>Improved behavior of updater. Switched to NSIS installers.</li>
+<li>Adjusted OS/2 icon handling.</li>
+<li>Toolbars tweaked.</li>
+<li>Source code huge refactorings.</li>
+<li>Flag icons are now separated into their own directory.</li>
+<li>File downloaders are now thinner.</li>
+<li>GUI tweaked.</li>
+<li>Database connections are only used when really needed.</li>
 </ul>
 
 Added:
 <ul>
 <li>Added NSIS-based "portable" installer for Windows and restructured update process.</li>
+<li>Added experimental support for exporting and importing feeds to/from OPML 2.0.</li>
+<li>Feeds now change their color to red if their network status reports error - feed is not reachable or was moved or is unavailable due to other errors.</li>
 </ul>
 
 Changed:
 <ul>
+<li>Added newly-compiled SQL libraries - MariaDB, Postgre SQL.</li>
 <li>Updated bundled OpenSSL libraries for Windows portable version.</li>
 </ul>
 </body>]]>
