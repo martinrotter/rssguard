@@ -22,6 +22,7 @@
 #include <QDir>
 
 #include <cstdio>
+#include <cstdlib>
 
 #ifndef QT_NO_DEBUG_OUTPUT
 #if QT_VERSION >= 0x050000
