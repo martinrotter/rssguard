@@ -26,7 +26,7 @@
 !define INST_DIR "@CPACK_TEMPORARY_DIRECTORY@"
 
 ; Name and file.
-Name "${APP_NAME}"
+Name "${APP_NAME} portable"
 OutFile "@CPACK_TOPLEVEL_DIRECTORY@/@CPACK_OUTPUT_FILE_NAME@"
 
 ; Set custom branding text.
@@ -128,12 +128,11 @@ ${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${
 
 ; Installer sections.
 Section "!Core" Core
-  ReadRegStr $R0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "UninstallString"
-  IfFileExists $R0 +1 NotInstalled
-  MessageBox MB_OK|MB_ICONEXCLAMATION "${APP_NAME} is already installed. $\n$\nClick 'OK' to uninstall it then continue with current installation." IDOK Uninstall
+  IfFileExists $INSTDIR\Uninstall.exe +1 NotInstalled
+  MessageBox MB_OK|MB_ICONEXCLAMATION "${APP_NAME} is already installed. $\n$\nClick 'OK' to automatically uninstall it, installer will then automatically continue with current installation." IDOK Uninstall
   
 Uninstall:  
-  !insertmacro ExecWaitJob '"$R0 /S"'
+  !insertmacro ExecWaitJob '"$INSTDIR\Uninstall.exe /S"'
 
 NotInstalled:
   SetOutPath "$INSTDIR"
@@ -148,36 +147,36 @@ NotInstalled:
   WriteUninstaller "$INSTDIR\Uninstall.exe"
   
   ; Create entry in Windows "Add/Remove programs" panel.
-  Push "DisplayName"
-  Push "${APP_NAME}"
-  Call ConditionalAddToRegisty
-  Push "DisplayVersion"
-  Push "${APP_VERSION}"
-  Call ConditionalAddToRegisty
-  Push "Publisher"
-  Push "@CPACK_PACKAGE_VENDOR@"
-  Call ConditionalAddToRegisty
-  Push "UninstallString"
-  Push "$INSTDIR\Uninstall.exe"
-  Call ConditionalAddToRegisty
-  Push "NoRepair"
-  Push "1"
-  Call ConditionalAddToRegisty
-  Push "NoModify"
-  Push "1"
-  Call ConditionalAddToRegisty
-  Push "DisplayIcon"
-  Push "$INSTDIR\@CPACK_NSIS_INSTALLED_ICON_NAME@"
-  Call ConditionalAddToRegisty
-  Push "HelpLink"
-  Push "@CPACK_NSIS_HELP_LINK@"
-  Call ConditionalAddToRegisty
-  Push "URLInfoAbout"
-  Push "@CPACK_NSIS_URL_INFO_ABOUT@"
-  Call ConditionalAddToRegisty
-  Push "Contact"
-  Push "@CPACK_NSIS_CONTACT@"
-  Call ConditionalAddToRegisty
+  ;Push "DisplayName"
+  ;Push "${APP_NAME}"
+  ;Call ConditionalAddToRegisty
+  ;Push "DisplayVersion"
+  ;Push "${APP_VERSION}"
+  ;Call ConditionalAddToRegisty
+  ;Push "Publisher"
+  ;Push "@CPACK_PACKAGE_VENDOR@"
+  ; ConditionalAddToRegisty
+  ;Push "UninstallString"
+  ;Push "$INSTDIR\Uninstall.exe"
+  ;Call ConditionalAddToRegisty
+  ;Push "NoRepair"
+  ;Push "1"
+  ;Call ConditionalAddToRegisty
+  ;Push "NoModify"
+  ;Push "1"
+  ;Call ConditionalAddToRegisty
+  ;Push "DisplayIcon"
+  ;Push "$INSTDIR\@CPACK_NSIS_INSTALLED_ICON_NAME@"
+  ;Call ConditionalAddToRegisty
+  ;Push "HelpLink"
+  ;Push "@CPACK_NSIS_HELP_LINK@"
+  ;Call ConditionalAddToRegisty
+  ;Push "URLInfoAbout"
+  ;Push "@CPACK_NSIS_URL_INFO_ABOUT@"
+  ;Call ConditionalAddToRegisty
+  ;Push "Contact"
+  ;Push "@CPACK_NSIS_CONTACT@"
+  ;Call ConditionalAddToRegisty
 SectionEnd
 
 Section "Desktop Icon" DesktopIcon
@@ -192,13 +191,11 @@ SectionEnd
 
 LangString DESC_Core ${LANG_ENGLISH} "Core installation files for ${APP_NAME}."
 LangString DESC_DesktopIcon ${LANG_ENGLISH} "Desktop icon for ${APP_NAME}."
-LangString DESC_QuickLaunchIcon ${LANG_ENGLISH} "Quick launch icon for ${APP_NAME}."
 LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Start Menu Shortcuts for ${APP_NAME}."
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${Core} $(DESC_Core)
   !insertmacro MUI_DESCRIPTION_TEXT ${DesktopIcon} $(DESC_DesktopIcon)
-  !insertmacro MUI_DESCRIPTION_TEXT ${QuickLaunchIcon} $(DESC_QuickLaunchIcon)
   !insertmacro MUI_DESCRIPTION_TEXT ${StartMenuShortcuts} $(DESC_StartMenuShortcuts)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
@@ -212,7 +209,7 @@ Section "Uninstall"
   Delete "$INSTDIR\Uninstall.exe"
   
   ; Remove entry from Windows "Add/Remove programs" panel.
-  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
+  ;DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
   
   ; Remove rest of installed files.
   ; Custom files are left intact.
