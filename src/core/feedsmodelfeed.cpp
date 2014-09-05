@@ -495,7 +495,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
     return;
   }
 
-  foreach (const Message &message, messages) {
+  foreach (Message message, messages) {
     query_select.bindValue(":feed", feed_id);
     query_select.bindValue(":title", message.m_title);
     query_select.bindValue(":url", message.m_url);
@@ -520,6 +520,19 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       // is among them and add this message if it is not.
       query_insert.bindValue(":feed", feed_id);
       query_insert.bindValue(":title", message.m_title);
+
+      if (message.m_url.startsWith('/')) {
+        QString new_message_url = url();
+        int last_slash = new_message_url.lastIndexOf('/');
+
+        if (last_slash >= 0) {
+          new_message_url = new_message_url.left(last_slash);
+        }
+
+        new_message_url += message.m_url;
+        message.m_url = new_message_url;
+      }
+
       query_insert.bindValue(":url", message.m_url);
       query_insert.bindValue(":author", message.m_author);
       query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
