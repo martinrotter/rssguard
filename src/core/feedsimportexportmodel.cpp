@@ -186,7 +186,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           QString feed_title = child_element.attribute("text");
           QString feed_url = child_element.attribute("xmlUrl");
           QString feed_encoding = child_element.attribute("encoding", DEFAULT_FEED_ENCODING);
-          QString feed_type = child_element.attribute("version", DEFAULT_FEED_TYPE);
+          QString feed_type = child_element.attribute("version", DEFAULT_FEED_TYPE).toUpper();
           QString feed_description = child_element.attribute("description");
 
           FeedsModelFeed *new_feed = new FeedsModelFeed(active_model_item);
