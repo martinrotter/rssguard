@@ -106,36 +106,22 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 #endif
 
   // Establish needed connections.
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
-          this, SLOT(saveSettings()));
-  connect(m_ui->m_cmbProxyType, SIGNAL(currentIndexChanged(int)),
-          this, SLOT(onProxyTypeChanged(int)));
-  connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)),
-          this, SLOT(displayProxyPassword(int)));
-  connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
-          this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
-  connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)),
-          this, SLOT(changeDefaultBrowserArguments(int)));
-  connect(m_ui->m_btnExternalBrowserExecutable, SIGNAL(clicked()),
-          this, SLOT(selectBrowserExecutable()));
-  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onMysqlUsernameChanged(QString)));
-  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onMysqlHostnameChanged(QString)));
-  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onMysqlPasswordChanged(QString)));
-  connect(m_ui->m_btnMysqlTestSetup, SIGNAL(clicked()),
-          this, SLOT(mysqlTestConnection()));
-  connect(m_ui->m_spinMysqlPort, SIGNAL(editingFinished()),
-          this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textEdited(QString)),
-          this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textEdited(QString)),
-          this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textEdited(QString)),
-          this, SLOT(onMysqlDataStorageEdited()));
-  connect(m_ui->m_cmbSelectToolBar, SIGNAL(currentIndexChanged(int)),
-          m_ui->m_stackedToolbars, SLOT(setCurrentIndex(int)));
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(saveSettings()));
+  connect(m_ui->m_cmbProxyType, SIGNAL(currentIndexChanged(int)), this, SLOT(onProxyTypeChanged(int)));
+  connect(m_ui->m_checkShowPassword, SIGNAL(stateChanged(int)), this, SLOT(displayProxyPassword(int)));
+  connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)), this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
+  connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(changeDefaultBrowserArguments(int)));
+  connect(m_ui->m_btnExternalBrowserExecutable, SIGNAL(clicked()), this, SLOT(selectBrowserExecutable()));
+  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlUsernameChanged(QString)));
+  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlHostnameChanged(QString)));
+  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlPasswordChanged(QString)));
+  connect(m_ui->m_btnMysqlTestSetup, SIGNAL(clicked()), this, SLOT(mysqlTestConnection()));
+  connect(m_ui->m_spinMysqlPort, SIGNAL(editingFinished()), this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
+  connect(m_ui->m_cmbSelectToolBar, SIGNAL(currentIndexChanged(int)), m_ui->m_stackedToolbars, SLOT(setCurrentIndex(int)));
+  connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
 
   // Load all settings.
   loadGeneral();
@@ -446,17 +432,12 @@ void FormSettings::saveShortcuts() {
 }
 
 void FormSettings::loadDataStorage() {
-  onMysqlHostnameChanged(QString());
-  onMysqlUsernameChanged(QString());
-  onMysqlPasswordChanged(QString());
-
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,
                                         tr("No connection test triggered so far."),
                                         tr("You did not executed any connection test yet."));
 
   // Load SQLite.
-  m_ui->m_cmbDatabaseDriver->addItem(
-        tr("SQLite (embedded database)"), APP_DB_SQLITE_DRIVER);
+  m_ui->m_cmbDatabaseDriver->addItem(tr("SQLite (embedded database)"), APP_DB_SQLITE_DRIVER);
 
   // Load in-memory database status.
   Settings *settings = qApp->settings();
@@ -464,6 +445,10 @@ void FormSettings::loadDataStorage() {
   m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(settings->value(APP_CFG_DB, "use_in_memory_db", false).toBool());
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
+    onMysqlHostnameChanged(QString());
+    onMysqlUsernameChanged(QString());
+    onMysqlPasswordChanged(QString());
+
     // Load MySQL.
     m_ui->m_cmbDatabaseDriver->addItem(tr("MySQL/MariaDB (dedicated database)"), APP_DB_MYSQL_DRIVER);
 
@@ -478,8 +463,7 @@ void FormSettings::loadDataStorage() {
     m_ui->m_spinMysqlPort->setValue(settings->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
   }
 
-  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(APP_CFG_DB,
-                                                                                  "database_driver",
+  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(APP_CFG_DB, "database_driver",
                                                                                   APP_DB_SQLITE_DRIVER).toString());
 
   if (index_current_backend >= 0) {
@@ -516,7 +500,7 @@ void FormSettings::saveDataStorage() {
   settings->setValue(APP_CFG_DB, "database_driver", selected_db_driver);
 
   if (original_db_driver != selected_db_driver ||
-      m_initialSettings.m_mysqlDataStorageChanged) {
+      m_initialSettings.m_dataStorageDataChanged) {
     m_changedDataTexts.append(tr("data storage backend changed"));
   }
 }
@@ -540,8 +524,6 @@ void FormSettings::mysqlTestConnection() {
                                             interpretation,
                                             interpretation);
       break;
-
-
   }
 }
 
@@ -579,7 +561,21 @@ void FormSettings::onMysqlPasswordChanged(const QString &new_password) {
 }
 
 void FormSettings::onMysqlDataStorageEdited() {
-  m_initialSettings.m_mysqlDataStorageChanged = true;
+  m_initialSettings.m_dataStorageDataChanged = true;
+}
+
+void FormSettings::selectSqlBackend(int index) {
+  QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(index).toString();
+
+  if (selected_db_driver == APP_DB_SQLITE_DRIVER) {
+    m_ui->m_stackedDatabaseDriver->setCurrentIndex(0);
+  }
+  else if (selected_db_driver == APP_DB_MYSQL_DRIVER) {
+    m_ui->m_stackedDatabaseDriver->setCurrentIndex(1);
+  }
+  else {
+    qWarning("GUI for given database driver '%s' is not available.", qPrintable(selected_db_driver));
+  }
 }
 
 void FormSettings::loadGeneral() {

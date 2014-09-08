@@ -28,7 +28,6 @@
 DatabaseFactory::DatabaseFactory(QObject *parent)
   : QObject(parent),
     m_mysqlDatabaseInitialized(false),
-    m_postgresqlDatabaseInitialized(false),
     m_sqliteFileBasedDatabaseinitialized(false),
     m_sqliteInMemoryDatabaseInitialized(false) {
   setObjectName("DatabaseFactory");
@@ -280,9 +279,6 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
     case MYSQL:
       return mysqlConnection(connection_name);
 
-    case POSTGRESQL:
-      return postgresqlConnection(connection_name);
-
     case SQLITE:
     case SQLITE_MEMORY:
     default:
@@ -460,63 +456,6 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
   return database;
 }
 
-QSqlDatabase DatabaseFactory::postgresqlConnection(const QString& connection_name) {
-  if (!m_postgresqlDatabaseInitialized) {
-    // Return initialized database.
-    return postgresqlInitializeDatabase(connection_name);
-  }
-  else {
-    QSqlDatabase database;
-
-    if (QSqlDatabase::contains(connection_name)) {
-      qDebug("PostgreSQL connection '%s' is already active.",
-             qPrintable(connection_name));
-
-      // This database connection was added previously, no need to
-      // setup its properties.
-      database = QSqlDatabase::database(connection_name);
-    }
-    else {
-      // Database connection with this name does not exist
-      // yet, add it and set it up.
-      database = QSqlDatabase::addDatabase(APP_DB_PSQL_DRIVER, connection_name);
-
-      database.setHostName(qApp->settings()->value(APP_CFG_DB, "postgresql_hostname").toString());
-      database.setPort(qApp->settings()->value(APP_CFG_DB, "postgresql_port", APP_DB_PSQL_PORT).toInt());
-      database.setUserName(qApp->settings()->value(APP_CFG_DB, "postgresql_username").toString());
-      database.setPassword(qApp->settings()->value(APP_CFG_DB, "postgresql_password").toString());
-      database.setDatabaseName(APP_LOW_NAME);
-    }
-
-    if (!database.isOpen() && !database.open()) {
-      qFatal("MySQL database was NOT opened. Delivered error message: '%s'.",
-             qPrintable(database.lastError().text()));
-    }
-    else {
-      qDebug("MySQL database connection '%s' to file '%s' seems to be established.",
-             qPrintable(connection_name),
-             qPrintable(QDir::toNativeSeparators(database.databaseName())));
-    }
-
-    return database;
-  }
-}
-
-QSqlDatabase DatabaseFactory::postgresqlInitializeDatabase(const QString& connection_name) {
-  // Try to connect to "rssguard" database.
-  // If connection fails due to rssguard db does not exist
-  // then join to fallback database and create "rssguard" database
-  // the rejoin to rssguard database and create needed schema.
-  return QSqlDatabase();
-}
-
-bool DatabaseFactory::postgresqlVacuumDatabase() {
-  QSqlDatabase database = postgresqlConnection(objectName());
-  QSqlQuery query_vacuum(database);
-
-  return query_vacuum.exec("VACUUM;");
-}
-
 QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,
                                                DatabaseFactory::DesiredType desired_type) {
   if (desired_type == DatabaseFactory::StrictlyInMemory ||
@@ -610,9 +549,6 @@ bool DatabaseFactory::vacuumDatabase() {
     case SQLITE_MEMORY:
     case SQLITE:
       return sqliteVacuumDatabase();
-
-    case POSTGRESQL:
-      return postgresqlVacuumDatabase();
 
     case MYSQL:
     default:

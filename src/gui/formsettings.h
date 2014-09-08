@@ -31,10 +31,10 @@ namespace Ui {
 struct TemporarySettings {
 
   public:
-    TemporarySettings() : m_mysqlDataStorageChanged(false) {
+    TemporarySettings() : m_dataStorageDataChanged(false) {
     }
 
-    bool m_mysqlDataStorageChanged;
+    bool m_dataStorageDataChanged;
 };
 
 class FormSettings : public QDialog {
@@ -70,6 +70,7 @@ class FormSettings : public QDialog {
     void onMysqlUsernameChanged(const QString &new_username);
     void onMysqlPasswordChanged(const QString &new_password);
     void onMysqlDataStorageEdited();
+    void selectSqlBackend(int index);
 
     void loadLanguage();
     void saveLanguage();

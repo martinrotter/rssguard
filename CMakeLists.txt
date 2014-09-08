@@ -522,9 +522,7 @@ if(WIN32)
     resources/binaries/windows/deployment/qt4-msvc2010/QtWebKit4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/QtXml4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/ssleay32.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/libintl.dll
     resources/binaries/windows/deployment/qt4-msvc2010/libmysql.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/libpq.dll
   )
 
   set(APP_DLLS_QT4_MSVC2010_IMAGEFORMATS
@@ -540,7 +538,6 @@ if(WIN32)
   set(APP_DLLS_QT4_MSVC2010_SQLDRIVERS
     resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlite4.dll
     resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlmysql4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlpsql4.dll
   )
 endif(WIN32)
 

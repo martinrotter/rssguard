@@ -30,8 +30,7 @@ class DatabaseFactory : public QObject {
     enum UsedDriver {
       SQLITE,
       SQLITE_MEMORY,
-      MYSQL,
-      POSTGRESQL
+      MYSQL
     };
 
     // Describes what type of database user wants.
@@ -82,8 +81,7 @@ class DatabaseFactory : public QObject {
     // Tests if database connection with given data
     // can be established and returns 0 if it can.
     // Otherwise returns MySQL-specific error code.
-    MySQLError mysqlTestConnection(const QString &hostname, int port,
-                                   const QString &username, const QString &password);
+    MySQLError mysqlTestConnection(const QString &hostname, int port, const QString &username, const QString &password);
 
     QString mysqlInterpretErrorCode(MySQLError error_code);
 
@@ -112,16 +110,6 @@ class DatabaseFactory : public QObject {
     // True if MySQL database is fully initialized for use,
     // otherwise false.
     bool m_mysqlDatabaseInitialized;
-
-    //
-    // POSTGRESQL stuff.
-    //
-
-    QSqlDatabase postgresqlConnection(const QString &connection_name);
-    QSqlDatabase postgresqlInitializeDatabase(const QString &connection_name);
-    bool postgresqlVacuumDatabase();
-    bool m_postgresqlDatabaseInitialized;
-
 
     //
     // SQLITE stuff.
