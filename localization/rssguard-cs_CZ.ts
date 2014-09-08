@@ -71,11 +71,11 @@
     <name>FeedsImportExportModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"></translation>
+        <translation> (kategorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"></translation>
+        <translation> (kanál)</translation>
     </message>
 </context>
 <context>
@@ -166,7 +166,12 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)
+%3
+
+Síťový status: %6
+Kódování: %4
+Status auto-aktualizací: %5</translation>
     </message>
 </context>
 <context>
@@ -2035,7 +2040,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>žádné chyby</translation>
     </message>
 </context>
 <context>

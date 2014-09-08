@@ -70,6 +70,8 @@
 #define APP_DB_PSQL_DRIVER            "QPSQL"
 #define APP_DB_PSQL_PORT              5432
 #define APP_DB_PSQL_FALLBACK_DB       "postgres"
+#define APP_DB_PSQL_INIT              "db_init_postgresql.sql"
+#define APP_DB_PSQL_TEST              "PostgreSQLTest"
 
 #define APP_DB_MYSQL_DRIVER           "QMYSQL"
 #define APP_DB_MYSQL_INIT             "db_init_mysql.sql"

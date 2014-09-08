@@ -114,11 +114,20 @@ class DatabaseFactory : public QObject {
     bool m_mysqlDatabaseInitialized;
 
     //
+    // POSTGRESQL stuff.
+    //
+
+    QSqlDatabase postgresqlConnection(const QString &connection_name);
+    QSqlDatabase postgresqlInitializeDatabase(const QString &connection_name);
+    bool postgresqlVacuumDatabase();
+    bool m_postgresqlDatabaseInitialized;
+
+
+    //
     // SQLITE stuff.
     //
 
-    QSqlDatabase sqliteConnection(const QString &connection_name,
-                                  DesiredType desired_type);
+    QSqlDatabase sqliteConnection(const QString &connection_name, DesiredType desired_type);
 
     // Runs "VACUUM" on the database.
     bool sqliteVacuumDatabase();
