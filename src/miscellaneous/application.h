@@ -31,6 +31,12 @@
 #include <QMutex>
 #include <QList>
 
+#if QT_VERSION >= 0x050000
+#include <QStandardPaths>
+#else
+#include <QDesktopServices>
+#endif
+
 #if defined(qApp)
 #undef qApp
 #endif
@@ -111,6 +117,16 @@ class Application : public QtSingleApplication {
 
     void setMainForm(FormMain *main_form) {
       m_mainForm = main_form;
+    }
+
+    inline QString getTempDirectory() {
+#if QT_VERSION >= 0x050000
+      QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+#else
+      QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
+#endif
+
+  return temp_directory;
     }
 
     // Access to application tray icon. Always use this in cooperation with

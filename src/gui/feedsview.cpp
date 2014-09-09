@@ -351,8 +351,8 @@ void FeedsView::deleteSelectedItem() {
     selection_model->clearSelection();
     selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
 
-    qApp->showGuiMessage(tr("Cannot delete item"),
-                         tr("Selected item cannot be deleted because feed update is ongoing."),
+    qApp->showGuiMessage(tr("You selected multiplet items for deletion."),
+                         tr("You can delete feeds/categories only one by one."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
   }
 
@@ -365,6 +365,9 @@ void FeedsView::deleteSelectedItem() {
   else {
     // Item WAS NOT removed, either database-related error occurred
     // or update is undergoing.
+    qApp->showGuiMessage(tr("Deletion of item failed."),
+                         tr("Selected item was not deleted due to error."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
   }
 
   // Changes are done, unlock the update master lock.

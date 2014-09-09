@@ -130,8 +130,7 @@ bool FeedsModelCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->connection("FeedsModelCategory",
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection("FeedsModelCategory", DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);

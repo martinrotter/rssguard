@@ -392,9 +392,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
-  m_networkError = NetworkFactory::downloadFile(url(), download_timeout,
-                                                feed_contents, passwordProtected(),
-                                                username(), password());
+  m_networkError = NetworkFactory::downloadFile(url(), download_timeout, feed_contents, passwordProtected(), username(), password());
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
@@ -524,9 +522,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
     query_select.finish();
 
-    if (datetime_stamps.size() == 0 ||
-        (message.m_createdFromFeed &&
-         !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch()))) {
+    if (datetime_stamps.isEmpty() ||(message.m_createdFromFeed && !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch()))) {
       // Message is not fetched in this feed yet
       // or it is. If it is, then go
       // through datetime stamps of stored messages

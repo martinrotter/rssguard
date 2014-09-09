@@ -50,15 +50,12 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
   if (database.open()) {
     // Connection succeeded, clean up the mess and return OK status.
     database.close();
-    removeConnection(APP_DB_MYSQL_TEST);
     return MySQLOk;
   }
   else {
     // Connection failed, do cleanup and return specific
     // error code.
     MySQLError error_code = static_cast<MySQLError>(database.lastError().number());
-
-    removeConnection(APP_DB_MYSQL_TEST);
     return error_code;
   }
 }

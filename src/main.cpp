@@ -87,8 +87,7 @@ int main(int argc, char *argv[]) {
   Application::setOrganizationDomain(APP_URL);
   Application::setWindowIcon(QIcon(APP_ICON_PATH));
 
-  qDebug().nospace() << "Creating main application form in thread: \'" <<
-                        QThread::currentThreadId() << "\'.";
+  qDebug().nospace() << "Creating main application form in thread: \'" << QThread::currentThreadId() << "\'.";
 
   // Instantiate main application window.
   FormMain main_window;
@@ -100,9 +99,7 @@ int main(int argc, char *argv[]) {
   DynamicShortcuts::load(main_window.allActions());
 
   // Display main window.
-  if (qApp->settings()->value(APP_CFG_GUI, "start_hidden",
-                              false).toBool() &&
-      SystemTrayIcon::isSystemTrayActivated()) {
+  if (qApp->settings()->value(APP_CFG_GUI, "start_hidden", false).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
     main_window.switchVisibility(true);
   }

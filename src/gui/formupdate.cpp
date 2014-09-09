@@ -28,7 +28,6 @@
 #include "gui/systemtrayicon.h"
 
 #include <QNetworkReply>
-#include <QDesktopServices>
 #include <QProcess>
 
 #if defined(Q_OS_WIN)
@@ -94,7 +93,7 @@ void FormUpdate::checkForUpdates() {
 
     bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
-    if (update.first.m_availableVersion > APP_VERSION) {
+    if (update.first.m_availableVersion != APP_VERSION) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));
@@ -130,12 +129,7 @@ void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
 
 void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
   QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
-
-#if QT_VERSION >= 0x050000
-  QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-#else
-  QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
-#endif
+  QString temp_directory = qApp->getTempDirectory();
 
   if (!temp_directory.isEmpty()) {
     QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
