@@ -3,6 +3,7 @@
 
 Fixed:
 <ul>
+<li>Messages are now sorted using active locale.</li>
 <li>Fixed bug #49 and duplicate feed/category detection.</li>
 <li>Experimentally fixed bug #50.</li>
 <li>NSIS installer is now portable. It makes only ONE access to registry and you can use it to install RSS Guard to any location such as USB flash drives.</li>

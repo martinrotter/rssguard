@@ -39,10 +39,13 @@ MessagesProxyModel::~MessagesProxyModel() {
 }
 
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
-  // TODO: Maybe use QString::localeAwareCompare() here for
-  // title at least, but this will be probably little slower
-  // than default implementation.
-  return QSortFilterProxyModel::lessThan(left, right);
+  if (left.column() == MSG_DB_TITLE_INDEX && right.column() == MSG_DB_TITLE_INDEX) {
+    return QString::localeAwareCompare(m_sourceModel->data(left).toString(),
+                                       m_sourceModel->data(right).toString()) < 0;
+  }
+  else {
+    return QSortFilterProxyModel::lessThan(left, right);
+  }
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &indexes, bool deep) {
