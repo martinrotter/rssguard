@@ -378,6 +378,12 @@ void FeedMessageViewer::initializeViews() {
 
   // Add toolbar and main feeds/messages widget to main layout.
   central_layout->addWidget(m_feedSplitter);
+
+  setTabOrder(m_feedsView, m_messagesView);
+  setTabOrder(m_messagesView, m_toolBarFeeds);
+  setTabOrder(m_toolBarFeeds, m_toolBarMessages);
+  setTabOrder(m_toolBarMessages, m_messagesBrowser);
+
 }
 
 void FeedMessageViewer::vacuumDatabase() {
