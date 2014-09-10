@@ -237,7 +237,7 @@ void FormFeedDetails::apply() {
     }
     else {
       qApp->showGuiMessage(tr("Cannot edit feed"),
-                           tr("Feed was not edit due to error."),
+                           tr("Feed was not edited due to error."),
                            QSystemTrayIcon::Critical);
     }
   }

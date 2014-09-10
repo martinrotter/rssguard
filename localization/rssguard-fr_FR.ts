@@ -100,6 +100,18 @@
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Racine</translation>
     </message>
+    <message>
+        <source>Invalid tree data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Import was completely successfull.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModelCategory</name>
@@ -225,6 +237,34 @@ Auto-update status: %5</source>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation>Vous ne pouvez pas mettre à jour les articles sélectionnés car une autre  mise à jour est en cours sur les flux.</translation>
+    </message>
+    <message>
+        <source>You can delete feeds/categories only one by one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting feed or category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are about to delete selected feed or category.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you really want to remove selected item?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletion of item failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item was not deleted due to error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You selected multiple items for deletion.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -675,16 +715,12 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Feed was not edit due to error.</source>
+        <source>Feed was not edited due to error.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FormImportExport</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>&amp;Select file</source>
         <translation type="unfinished"></translation>
@@ -767,10 +803,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feeds imported successfully.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

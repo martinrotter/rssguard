@@ -416,11 +416,3 @@ void FeedMessageViewer::refreshVisualProperties() {
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
 }
-
-void FeedMessageViewer::importFeeds() {
-  // TODO: todo
-}
-
-void FeedMessageViewer::exportFeeds() {
-  // TODO: todo
-}

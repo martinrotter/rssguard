@@ -100,6 +100,18 @@
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation>Kořen</translation>
     </message>
+    <message>
+        <source>Invalid tree data.</source>
+        <translation>Chybná data stromu.</translation>
+    </message>
+    <message>
+        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
+        <translation>Import byl úspěšný, ale některé kanály či kategorie nebyly importovány kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>Import was completely successfull.</source>
+        <translation>Import byl zcela úspěšný.</translation>
+    </message>
 </context>
 <context>
     <name>FeedsModelCategory</name>
@@ -234,6 +246,34 @@ Status auto-aktualizací: %5</translation>
     <message>
         <source>You cannot update selected items because another feed update is ongoing.</source>
         <translation>Právě nyní nemůžete aktualizovat vybrané položky, protože nejspíše probíhá jiná aktualizace.</translation>
+    </message>
+    <message>
+        <source>You can delete feeds/categories only one by one.</source>
+        <translation>Kategorie a kanály lze mazat pouze po jednom.</translation>
+    </message>
+    <message>
+        <source>Deleting feed or category.</source>
+        <translation>Mažu kanál či kategorii.</translation>
+    </message>
+    <message>
+        <source>You are about to delete selected feed or category.</source>
+        <translation>Právě se chystáte smazat vybraný kanál či kategorii.</translation>
+    </message>
+    <message>
+        <source>Do you really want to remove selected item?</source>
+        <translation>Upravdu chcete vybranou položku smazat?</translation>
+    </message>
+    <message>
+        <source>Deletion of item failed.</source>
+        <translation>Mazání položky selhalo.</translation>
+    </message>
+    <message>
+        <source>Selected item was not deleted due to error.</source>
+        <translation>Vybraná položka nebyla smazána kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>You selected multiple items for deletion.</source>
+        <translation>Bylo zvoleno více položek pro vymazání najednou.</translation>
     </message>
 </context>
 <context>
@@ -684,103 +724,95 @@ Status auto-aktualizací: %5</translation>
         <translation>Popis je v pořádku.</translation>
     </message>
     <message>
-        <source>Feed was not edit due to error.</source>
-        <translation type="unfinished"></translation>
+        <source>Feed was not edited due to error.</source>
+        <translation>Kanál nebyl upraven kvůli chybě.</translation>
     </message>
 </context>
 <context>
     <name>FormImportExport</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Select file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zvolit soubor</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"></translation>
+        <translation>Výsledky operací</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nevybrán žádný soubor.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Doposud neprovedena žádná operace.</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportovat kanály</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation type="unfinished"></translation>
+        <translation>Cílový soubor</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdrojové kanály &amp;&amp; kategorie</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdrojový soubor</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Cílové kanály &amp;&amp; kategorie</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat kanály</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"></translation>
+        <translation>soubory OPML 2.0 (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit soubor pro export kanálů</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor je vybrán.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit soubot pro import kanálů</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdrojový soubor nelze otevřít.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály načteny.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba, soubor nemá správný formát, zvolte jiný.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba, soubor nemá správný formát, zvolte jiný.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály byly úspěšně exportovány.</translation>
     </message>
     <message>
         <source>Cannot write into destination file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Do cílového souboru nelze zapisovat.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feeds imported successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyskytla se kritická chyba.</translation>
     </message>
 </context>
 <context>
