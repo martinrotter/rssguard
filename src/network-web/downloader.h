@@ -37,9 +37,10 @@ class Downloader : public QObject {
     explicit Downloader(QObject *parent = 0);
     virtual ~Downloader();
 
-    // Access to last received full output data/error.
+    // Access to last received full output data/error/content-type.
     QByteArray lastOutputData() const;
     QNetworkReply::NetworkError lastOutputError() const;
+    QVariant lastContentType() const;
 
   public slots:
     // Performs asynchronous download of given file. Redirections are handled.
@@ -71,6 +72,7 @@ class Downloader : public QObject {
 
     QByteArray m_lastOutputData;
     QNetworkReply::NetworkError m_lastOutputError;
+    QVariant m_lastContentType;
 };
 
 #endif // DOWNLOADER_H

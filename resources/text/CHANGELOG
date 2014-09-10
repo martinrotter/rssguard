@@ -3,6 +3,8 @@
 
 Fixed:
 <ul>
+<li>Some visual tweaking.</li>
+<li>URL redirection now works with relative redirecting addresses.</li>
 <li>Messages are now sorted using active locale.</li>
 <li>Fixed bug #49 and duplicate feed/category detection.</li>
 <li>Experimentally fixed bug #50.</li>

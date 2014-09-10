@@ -476,7 +476,8 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
                                            qApp->mainForm()->m_ui->m_actionEditSelectedFeedCategory <<
                                            qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                            qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
-                                           qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread);
+                                           qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread <<
+                                           qApp->mainForm()->m_ui->m_actionDeleteSelectedFeedCategory);
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {

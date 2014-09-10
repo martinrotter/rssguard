@@ -20,7 +20,11 @@
 
 #include <QNetworkReply>
 #include <QCoreApplication>
+#include <QPair>
+#include <QVariant>
 
+
+typedef QPair<QNetworkReply::NetworkError, QVariant> NetworkResult;
 
 class NetworkFactory {
     Q_DECLARE_TR_FUNCTIONS(NetworkFactory)
@@ -39,9 +43,9 @@ class NetworkFactory {
 
     // Performs SYNCHRONOUS download of file with given URL
     // and given timeout.
-    static QNetworkReply::NetworkError downloadFile(const QString &url, int timeout, QByteArray &output,
-                                                    bool protected_contents = false, const QString &username = QString(),
-                                                    const QString &password = QString());
+    static NetworkResult downloadFile(const QString &url, int timeout, QByteArray &output,
+                                      bool protected_contents = false, const QString &username = QString(),
+                                      const QString &password = QString());
 };
 
 #endif // NETWORKFACTORY_H

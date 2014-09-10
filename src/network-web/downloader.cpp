@@ -24,7 +24,8 @@
 
 Downloader::Downloader(QObject *parent)
   : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
-    m_timer(new QTimer(this)), m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError) {
+    m_timer(new QTimer(this)), m_lastOutputData(QByteArray()),
+    m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
 
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
@@ -65,7 +66,14 @@ void Downloader::finished(QNetworkReply *reply) {
     // Communication indicates that HTTP redirection is needed.
     // Setup redirection URL and download again.
     QNetworkRequest request = reply->request();
-    request.setUrl(redirection_url);
+
+    if (redirection_url.host().isEmpty()) {
+      request.setUrl(QUrl(reply->request().url().scheme() + "://" + reply->request().url().host() +
+                          redirection_url.toString()));
+    }
+    else {
+      request.setUrl(redirection_url);
+    }
 
     m_activeReply->deleteLater();
     m_activeReply = NULL;
@@ -76,6 +84,7 @@ void Downloader::finished(QNetworkReply *reply) {
     // No redirection is indicated. Final file is obtained in our "reply" object.
     // Read the data into output buffer.
     m_lastOutputData = reply->readAll();
+    m_lastContentType = reply->header(QNetworkRequest::ContentTypeHeader);
     m_lastOutputError = reply->error();
 
     m_activeReply->deleteLater();
@@ -106,6 +115,10 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
 
   connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)),
           this, SLOT(progressInternal(qint64,qint64)));
+}
+
+QVariant Downloader::lastContentType() const {
+  return m_lastContentType;
 }
 
 QNetworkReply::NetworkError Downloader::lastOutputError() const {

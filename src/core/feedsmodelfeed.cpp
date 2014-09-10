@@ -177,12 +177,15 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
   }
 
   QByteArray feed_contents;
-  if ((result.second = NetworkFactory::downloadFile(url,
-                                                    qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
-                                                    feed_contents,
-                                                    !username.isEmpty(),
-                                                    username,
-                                                    password)) == QNetworkReply::NoError) {
+  NetworkResult network_result = NetworkFactory::downloadFile(url,
+                                                              qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
+                                                              feed_contents,
+                                                              !username.isEmpty(),
+                                                              username,
+                                                              password);
+  result.second = network_result.first;
+
+  if (result.second == QNetworkReply::NoError) {
     // Feed XML was obtained, now we need to try to guess
     // its encoding before we can read further data.
     QString xml_schema_encoding;
@@ -392,7 +395,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
-  m_networkError = NetworkFactory::downloadFile(url(), download_timeout, feed_contents, passwordProtected(), username(), password());
+  m_networkError = NetworkFactory::downloadFile(url(), download_timeout, feed_contents, passwordProtected(), username(), password()).first;
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
