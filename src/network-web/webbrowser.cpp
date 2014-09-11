@@ -135,7 +135,7 @@ void WebBrowser::initializeLayout() {
 
   m_loadingLayout = new QHBoxLayout();
   m_loadingLayout->setMargin(0);
-  m_loadingLayout->addWidget(m_lblProgress, 0, Qt::AlignLeft|Qt::AlignVCenter);
+  m_loadingLayout->addWidget(m_lblProgress, 0, Qt::AlignLeft | Qt::AlignVCenter);
   m_loadingProgress->setLayout(m_loadingLayout);
 
   // Setup layout.
@@ -149,17 +149,13 @@ void WebBrowser::initializeLayout() {
 }
 
 void WebBrowser::onLoadingStarted() {
-  // TODO: Do not display this when navigating to "about:blank".
   m_loadingProgress->setValue(0);
   m_loadingProgress->show();
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
   m_loadingProgress->setValue(progress);
-
-  m_lblProgress->setText(QString(" %1 kB / %2 kB").
-                         arg(m_webView->page()->bytesReceived() / 1000).
-                         arg(m_webView->page()->totalBytes() / 1000));
+  m_lblProgress->setText(QString(" %1 kB / %2 kB").arg(m_webView->page()->bytesReceived() / 1000).arg(m_webView->page()->totalBytes() / 1000));
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
