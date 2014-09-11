@@ -18,8 +18,9 @@ Added:
 
 Changed:
 <ul>
+<li>Selection in feed list is now single.</li>
+<li>Keyboard navigation to "next/previous" item in feed list is now recursively hybrid.</li>
 </ul>
-
 
 <hr/>
 <center><h2>2.0.0.0</h2></center>

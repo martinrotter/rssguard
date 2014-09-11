@@ -460,6 +460,10 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
 }
 
 void FeedsView::selectNextItem() {
+  if (!isExpanded(currentIndex())) {
+    expand(currentIndex());
+  }
+
   QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (index_next.isValid()) {
@@ -470,6 +474,12 @@ void FeedsView::selectNextItem() {
 
 void FeedsView::selectPreviousItem() {
   QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+
+  if (!isExpanded(index_previous)) {
+    expand(index_previous);
+  }
+
+  index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
