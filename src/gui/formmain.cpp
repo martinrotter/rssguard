@@ -270,7 +270,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme("check-for-updates"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
-  m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
+  m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
+  m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
   m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
   m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme("document-import"));
 
@@ -394,7 +395,8 @@ void FormMain::createConnections() {
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));
   connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
-  connect(m_ui->m_actionReportBug, SIGNAL(triggered()), this, SLOT(reportABug()));
+  connect(m_ui->m_actionReportBugGitHub, SIGNAL(triggered()), this, SLOT(reportABugOnGitHub()));
+  connect(m_ui->m_actionReportBugBitBucket, SIGNAL(triggered()), this, SLOT(reportABugOnBitBucket()));
 
   // General connections.
   connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
@@ -501,8 +503,24 @@ void FormMain::showUpdates() {
   qApp->closeLock()->unlock();
 }
 
-void FormMain::reportABug() {
-  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW)) {
+void FormMain::reportABugOnGitHub() {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_GITHUB)) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      qApp->trayIcon()->showMessage(tr("Cannot open external browser"),
+                                    tr("Cannot open external browser. Navigate to application website manually."),
+                                    QSystemTrayIcon::Warning);
+    }
+    else {
+      MessageBox::show(this,
+                       QMessageBox::Warning,
+                       tr("Cannot open external browser"),
+                       tr("Cannot open external browser. Navigate to application website manually."));
+    }
+  }
+}
+
+void FormMain::reportABugOnBitBucket() {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_BITBUCKET)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       qApp->trayIcon()->showMessage(tr("Cannot open external browser"),
                                     tr("Cannot open external browser. Navigate to application website manually."),

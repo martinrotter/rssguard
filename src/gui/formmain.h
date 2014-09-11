@@ -113,7 +113,8 @@ class FormMain : public QMainWindow {
     void showSettings();
     void showAbout();
     void showUpdates();
-    void reportABug();
+    void reportABugOnGitHub();
+    void reportABugOnBitBucket();
 
   private:
     Ui::FormMain *m_ui;

@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -56,7 +65,8 @@
      <string>&amp;Help</string>
     </property>
     <addaction name="m_actionCheckForUpdates"/>
-    <addaction name="m_actionReportBug"/>
+    <addaction name="m_actionReportBugGitHub"/>
+    <addaction name="m_actionReportBugBitBucket"/>
     <addaction name="m_actionAboutGuard"/>
    </widget>
    <widget class="QMenu" name="m_menuView">
@@ -500,9 +510,12 @@
     <string notr="true">I</string>
    </property>
   </action>
-  <action name="m_actionReportBug">
+  <action name="m_actionReportBugGitHub">
    <property name="text">
-    <string>Report a &amp;bug...</string>
+    <string>Report a &amp;bug (GitHub)...</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchToolBars">
@@ -550,6 +563,14 @@
    </property>
    <property name="toolTip">
     <string>Exports feeds you want to selected file.</string>
+   </property>
+  </action>
+  <action name="m_actionReportBugBitBucket">
+   <property name="text">
+    <string>Report a bug (BitBucket)...</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>
