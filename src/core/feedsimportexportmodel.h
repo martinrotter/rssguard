@@ -65,6 +65,10 @@ class FeedsImportExportModel : public QAbstractItemModel {
     Mode mode() const;
     void setMode(const Mode &mode);
 
+  public slots:
+    void checkAllItems();
+    void uncheckAllItems();
+
   private:
     QHash<FeedsModelRootItem*, Qt::CheckState> m_checkStates;
     FeedsModelRootItem *m_rootItem;

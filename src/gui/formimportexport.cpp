@@ -40,6 +40,8 @@ FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new 
 
   connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(performAction()));
   connect(m_ui->m_btnSelectFile, SIGNAL(clicked()), this, SLOT(selectFile()));
+  connect(m_ui->m_btnCheckAllItems, SIGNAL(clicked()), m_model, SLOT(checkAllItems()));
+  connect(m_ui->m_btnUncheckAllItems, SIGNAL(clicked()), m_model, SLOT(uncheckAllItems()));
 }
 
 FormImportExport::~FormImportExport() {
@@ -64,7 +66,7 @@ void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
     case FeedsImportExportModel::Import: {
       m_ui->m_groupFile->setTitle(tr("Source file"));
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
-      m_ui->m_treeFeeds->setDisabled(true);
+      m_ui->m_groupFeeds->setDisabled(true);
       setWindowTitle(tr("Import feeds"));
       setWindowIcon(qApp->icons()->fromTheme("document-import"));
       break;
@@ -176,7 +178,7 @@ void FormImportExport::parseImportFile(const QString &file_name) {
 
   if (parsing_result) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
-    m_ui->m_treeFeeds->setEnabled(true);
+    m_ui->m_groupFeeds->setEnabled(true);
     m_ui->m_treeFeeds->setModel(m_model);
     m_ui->m_treeFeeds->expandAll();
   }

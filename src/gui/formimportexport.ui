@@ -42,8 +42,35 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="m_btnCheckAllItems">
+        <property name="text">
+         <string>&amp;Check all items</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="m_btnUncheckAllItems">
+        <property name="text">
+         <string>&amp;Uncheck all items</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1" colspan="3">
        <widget class="QTreeView" name="m_treeFeeds">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -110,6 +137,13 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_btnSelectFile</tabstop>
+  <tabstop>m_btnCheckAllItems</tabstop>
+  <tabstop>m_btnUncheckAllItems</tabstop>
+  <tabstop>m_treeFeeds</tabstop>
+  <tabstop>m_buttonBox</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

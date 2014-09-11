@@ -248,6 +248,18 @@ void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
   m_mode = mode;
 }
 
+void FeedsImportExportModel::checkAllItems() {
+  foreach (FeedsModelRootItem *root_child, m_rootItem->childItems()) {
+    setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
+  }
+}
+
+void FeedsImportExportModel::uncheckAllItems() {
+  foreach (FeedsModelRootItem *root_child, m_rootItem->childItems()) {
+    setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+  }
+}
+
 QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex &parent) const {
   if (!hasIndex(row, column, parent)) {
     return QModelIndex();
