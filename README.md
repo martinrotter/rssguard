@@ -21,7 +21,8 @@ Thanks to
 -----
 Person        | Contribution
 :-----------: | :-----------
-**Elbert Pol**   |  Huge contrubutions, including translating and testing in OS/2 environment.
+**Elbert Pol**  |  Huge contrubutions, including translating and testing in OS/2 environment.
+**Asen Anastassov**  |  Testing, providing great feedback.
 
 
 Downloads
