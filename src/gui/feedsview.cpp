@@ -369,9 +369,6 @@ void FeedsView::deleteSelectedItem() {
     // TODO: I do not need to update counts of all items here.
     // Updating counts of parent item (feed) should be enough.
     updateCountsOfAllFeeds(true);
-
-    // TODO: při smazani itemu se neoznaci vedlejsi
-    selectionModel()->select(currentIndex(), QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
   }
   else {
     // Item WAS NOT removed, either database-related error occurred
@@ -523,8 +520,8 @@ void FeedsView::setupAppearance() {
   setDropIndicatorShown(false);
   setDragDropMode(QAbstractItemView::NoDragDrop);
   setAllColumnsShowFocus(true);
-  setSelectionMode(QAbstractItemView::ExtendedSelection);
   setRootIsDecorated(false);
+  setSelectionMode(QAbstractItemView::SingleSelection);
 
   // Sort in ascending order, that is categories are
   // "bigger" than feeds.
