@@ -25,6 +25,7 @@
 
 #include <QSessionManager>
 #include <QThread>
+#include <QProcess>
 
 
 Application::Application(const QString &id, int &argc, char **argv)
