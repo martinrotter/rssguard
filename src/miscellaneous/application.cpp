@@ -60,7 +60,6 @@ IconFactory *Application::icons() {
 SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == NULL) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
-    m_trayIcon->setToolTip(APP_LONG_NAME);
   }
 
   return m_trayIcon;

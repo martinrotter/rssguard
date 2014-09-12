@@ -339,7 +339,6 @@ void FeedsView::deleteSelectedItem() {
   }
 
   QModelIndex current_index = currentIndex();
-  QItemSelectionModel *selection_model = selectionModel();
 
   if (!current_index.isValid()) {
     // Changes are done, unlock the update master lock and exit.
@@ -347,17 +346,8 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  if (selection_model->selectedRows().size() > 1) {
-    selection_model->clearSelection();
-    selection_model->select(current_index, QItemSelectionModel::Rows | QItemSelectionModel::SelectCurrent);
-
-    qApp->showGuiMessage(tr("You selected multiple items for deletion."),
-                         tr("You can delete feeds/categories only one by one."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
-  }
-
-  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Deleting feed or category."),
-                   tr("You are about to delete selected feed or category."), tr("Do you really want to remove selected item?"),
+  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Deleting feed or category"),
+                   tr("You are about to delete selected feed or category."), tr("Do you really want to delete selected item?"),
                    QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
     // User changed his mind.
     qApp->closeLock()->unlock();

@@ -28,8 +28,7 @@
 
 
 #if defined(Q_OS_WIN)
-TrayIconMenu::TrayIconMenu(const QString &title, QWidget *parent)
-  : QMenu(title, parent) {
+TrayIconMenu::TrayIconMenu(const QString &title, QWidget *parent) : QMenu(title, parent) {
 }
 
 TrayIconMenu::~TrayIconMenu() {
@@ -119,9 +118,13 @@ void SystemTrayIcon::show() {
 
 void SystemTrayIcon::setNumber(int number) {
   if (number <= 0) {
+    setToolTip(APP_LONG_NAME);
+
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }
   else {
+    setToolTip(tr("%1\nUnread news: %2").arg(APP_LONG_NAME, QString::number(number)));
+
     QPixmap background(m_plainPixmap);
     QPainter tray_painter;
 
