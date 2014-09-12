@@ -125,8 +125,7 @@ class Application : public QtSingleApplication {
 #else
       QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
 #endif
-
-  return temp_directory;
+      return temp_directory;
     }
 
     // Access to application tray icon. Always use this in cooperation with
@@ -145,6 +144,12 @@ class Application : public QtSingleApplication {
     inline static Application *instance() {
       return static_cast<Application*>(QCoreApplication::instance());
     }
+
+  private slots:
+    // Last-minute reactors.
+    void onCommitData(QSessionManager &manager);
+    void onSaveState(QSessionManager &manager);
+    void onAboutToQuit();
 
   private:
     // This read-write lock is used by application on its close.

@@ -60,6 +60,10 @@ class FormMain : public QMainWindow {
     // for given actions.
     QList<QAction*> allActions();
 
+    // Loads/saves visual state of the application.
+    void loadSize();
+    void saveSize();
+
   protected:
     // Creates all needed menus and sets them up.
     void prepareMenus();
@@ -72,10 +76,6 @@ class FormMain : public QMainWindow {
 
     // Sets up proper icons for this widget.
     void setupIcons();
-
-    // Loads/saves visual state of the application.
-    void loadSize();
-    void saveSize();
 
   public slots:
     // Processes incoming message from another RSS Guard instance.
@@ -97,13 +97,6 @@ class FormMain : public QMainWindow {
     void switchMainMenu();
 
   protected slots:
-    // Last-minute reactors.
-    void onCommitData(QSessionManager &manager);
-    void onSaveState(QSessionManager &manager);
-
-    // Used for last-minute actions.
-    void onAboutToQuit();
-
     // Loads web browser menu if user selects to change tabs.
     void loadWebBrowserMenu(int index);
 

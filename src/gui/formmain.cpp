@@ -215,52 +215,6 @@ void FormMain::display() {
   Application::alert(this);
 }
 
-void FormMain::onCommitData(QSessionManager &manager) {
-  qDebug("OS asked application to commit its data.");
-
-  manager.setRestartHint(QSessionManager::RestartNever);
-  manager.release();
-}
-
-void FormMain::onSaveState(QSessionManager &manager) {
-  qDebug("OS asked application to save its state.");
-
-  manager.setRestartHint(QSessionManager::RestartNever);
-  manager.release();
-}
-
-void FormMain::onAboutToQuit() {
-  // Make sure that we obtain close lock
-  // BEFORE even trying to quit the application.
-  bool locked_safely = qApp->closeLock()->tryLock(CLOSE_LOCK_TIMEOUT);
-
-  qApp->processEvents();
-
-  qDebug("Cleaning up resources and saving application state.");
-  m_ui->m_tabWidget->feedMessageViewer()->quit();
-
-  if (qApp->settings()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
-    m_ui->m_tabWidget->feedMessageViewer()->feedsView()->clearAllReadMessages();
-  }
-
-  qApp->database()->saveDatabase();
-  saveSize();
-
-  if (locked_safely) {
-    // Application obtained permission to close
-    // in a safety way.
-    qDebug("Close lock was obtained safely.");
-
-    // We locked the lock to exit peacefully, unlock it to avoid warnings.
-    qApp->closeLock()->unlock();
-  }
-  else {
-    // Request for write lock timed-out. This means
-    // that some critical action can be processed right now.
-    qDebug("Close lock timed-out.");
-  }
-}
-
 void FormMain::setupIcons() {
   IconFactory *icon_theme_factory = qApp->icons();
 
@@ -375,10 +329,6 @@ void FormMain::createConnections() {
   connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)), m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
-  // Core connections.
-  connect(qApp, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
-  connect(qApp, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
-
   // Menu "File" connections.
   connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
   connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
@@ -397,9 +347,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
   connect(m_ui->m_actionReportBugGitHub, SIGNAL(triggered()), this, SLOT(reportABugOnGitHub()));
   connect(m_ui->m_actionReportBugBitBucket, SIGNAL(triggered()), this, SLOT(reportABugOnBitBucket()));
-
-  // General connections.
-  connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
 
   // Menu "Web browser" connections.
   connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)),

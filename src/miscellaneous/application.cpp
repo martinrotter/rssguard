@@ -23,6 +23,7 @@
 #include "gui/messagebox.h"
 #include "gui/formmain.h"
 
+#include <QSessionManager>
 #include <QThread>
 
 
@@ -31,6 +32,9 @@ Application::Application(const QString &id, int &argc, char **argv)
     m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
     m_localization(NULL), m_icons(NULL), m_database(NULL) {
+  connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
+  connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
+  connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
 }
 
 Application::~Application() {
@@ -87,12 +91,57 @@ void Application::showGuiMessage(const QString& title, const QString& message,
                                  QSystemTrayIcon::MessageIcon message_type,
                                  QWidget *parent, int duration) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    // TODO: Maybe show OSD instead if tray icon bubble,
-    // depending on settings.
+    // TODO: Maybe show OSD instead if tray icon bubble, depending on settings.
     trayIcon()->showMessage(title, message, message_type, duration);
   }
   else {
     // TODO: Tray icon or OSD is not available, display simple text box.
     MessageBox::show(parent, (QMessageBox::Icon) message_type, title, message);
+  }
+}
+
+void Application::onCommitData(QSessionManager &manager) {
+  qDebug("OS asked application to commit its data.");
+
+  manager.setRestartHint(QSessionManager::RestartNever);
+  manager.release();
+}
+
+void Application::onSaveState(QSessionManager &manager) {
+  qDebug("OS asked application to save its state.");
+
+  manager.setRestartHint(QSessionManager::RestartNever);
+  manager.release();
+}
+
+void Application::onAboutToQuit() {
+  // Make sure that we obtain close lock
+  // BEFORE even trying to quit the application.
+  bool locked_safely = closeLock()->tryLock(CLOSE_LOCK_TIMEOUT);
+
+  processEvents();
+
+  qDebug("Cleaning up resources and saving application state.");
+  mainForm()->tabWidget()->feedMessageViewer()->quit();
+
+  if (settings()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
+    mainForm()->tabWidget()->feedMessageViewer()->feedsView()->clearAllReadMessages();
+  }
+
+  database()->saveDatabase();
+  mainForm()->saveSize();
+
+  if (locked_safely) {
+    // Application obtained permission to close
+    // in a safety way.
+    qDebug("Close lock was obtained safely.");
+
+    // We locked the lock to exit peacefully, unlock it to avoid warnings.
+    closeLock()->unlock();
+  }
+  else {
+    // Request for write lock timed-out. This means
+    // that some critical action can be processed right now.
+    qDebug("Close lock timed-out.");
   }
 }
