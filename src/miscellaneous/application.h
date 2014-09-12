@@ -145,6 +145,10 @@ class Application : public QtSingleApplication {
       return static_cast<Application*>(QCoreApplication::instance());
     }
 
+  public slots:
+    // Processes incoming message from another RSS Guard instance.
+    void processExecutionMessage(const QString &message);
+
   private slots:
     // Last-minute reactors.
     void onCommitData(QSessionManager &manager);

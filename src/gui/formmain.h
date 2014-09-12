@@ -78,9 +78,6 @@ class FormMain : public QMainWindow {
     void setupIcons();
 
   public slots:
-    // Processes incoming message from another RSS Guard instance.
-    void processExecutionMessage(const QString &message);
-
     // Quits the application.
     void quit();
 

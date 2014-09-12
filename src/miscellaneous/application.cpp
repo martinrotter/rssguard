@@ -57,6 +57,25 @@ IconFactory *Application::icons() {
   return m_icons;
 }
 
+void Application::processExecutionMessage(const QString &message) {
+  qDebug("Received '%s' execution message from another application instance.",
+         qPrintable(message));
+
+  if (message == APP_IS_RUNNING) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+      qApp->trayIcon()->showMessage(APP_NAME,
+                                    tr("Application is already running."),
+                                    QSystemTrayIcon::Information,
+                                    TRAY_ICON_BUBBLE_TIMEOUT);
+    }
+
+    mainForm()->display();
+  }
+  else if (message == APP_QUIT_INSTANCE) {
+    quit();
+  }
+}
+
 SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == NULL) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);

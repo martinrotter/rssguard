@@ -151,25 +151,6 @@ void FormMain::prepareMenus() {
   }
 }
 
-void FormMain::processExecutionMessage(const QString &message) {
-  qDebug("Received '%s' execution message from another application instance.",
-         qPrintable(message));
-
-  if (message == APP_IS_RUNNING) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(APP_NAME,
-                                    tr("Application is already running."),
-                                    QSystemTrayIcon::Information,
-                                    TRAY_ICON_BUBBLE_TIMEOUT);
-    }
-
-    display();
-  }
-  else if (message == APP_QUIT_INSTANCE) {
-    qApp->quit();
-  }
-}
-
 void FormMain::quit() {
   qDebug("Quitting the application.");
   qApp->quit();

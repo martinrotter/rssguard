@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
 
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)),
-                   &main_window, SLOT(processExecutionMessage(QString)));
+                   &application, SLOT(processExecutionMessage(QString)));
 
   // Enter global event loop.
   return Application::exec();
