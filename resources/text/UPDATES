@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="2.0.0.0" type="feature">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.0-win32.exe</url>
+  <release version="2.0.0.1" type="maintenance">
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.1-win32.exe</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Improved behavior of updater. Switched to NSIS installers.</li>
-<li>Adjusted OS/2 icon handling.</li>
-<li>Toolbars tweaked.</li>
-<li>Source code huge refactorings.</li>
-<li>Flag icons are now separated into their own directory.</li>
-<li>File downloaders are now thinner.</li>
-<li>GUI tweaked.</li>
-<li>Database connections are only used when really needed.</li>
+<li>Some visual tweaking.</li>
+<li>URL redirection now works with relative redirecting addresses.</li>
+<li>Messages are now sorted using active locale.</li>
+<li>Fixed bug #49 and duplicate feed/category detection.</li>
+<li>Experimentally fixed bug #50.</li>
+<li>NSIS installer is now portable. It makes only ONE access to registry and you can use it to install RSS Guard to any location such as USB flash drives.</li>
 </ul>
 
 Added:
 <ul>
-<li>Added NSIS-based "portable" installer for Windows and restructured update process.</li>
-<li>Added experimental support for exporting and importing feeds to/from OPML 2.0.</li>
-<li>Feeds now change their color to red if their network status reports error - feed is not reachable or was moved or is unavailable due to other errors.</li>
+<li>RSS Guard now accepts donations, see "Help" menu for more information.</li>
+<li>Tray icon tooltips now displays number of unread messages if there is at least one unread message.</li>
+<li>Re-introduced "blau" (dark) skin.</li>
+<li>Import/export dialog now offers "Check/uncheck all items" button.</li>
 </ul>
 
 Changed:
 <ul>
-<li>Added newly-compiled SQL libraries - MariaDB, Postgre SQL.</li>
-<li>Updated bundled OpenSSL libraries for Windows portable version.</li>
+<li>Selection in feed list is now single.</li>
+<li>Keyboard navigation to "next/previous" item in feed list is now recursively hybrid.</li>
 </ul>
 </body>]]>
     </changes>
