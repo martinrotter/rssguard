@@ -381,6 +381,7 @@ set(APP_SOURCES
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
   src/core/feedsimportexportmodel.cpp
+  src/core/feedsmodelrecyclebin.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp
@@ -457,6 +458,7 @@ set(APP_HEADERS
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
   src/core/feedsimportexportmodel.h
+  src/core/feedsmodelrecyclebin.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h

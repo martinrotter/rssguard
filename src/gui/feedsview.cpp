@@ -347,8 +347,8 @@ void FeedsView::deleteSelectedItem() {
   }
 
   if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Deleting feed or category"),
-                   tr("You are about to delete selected feed or category."), tr("Do you really want to delete selected item?"),
-                   QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
+                       tr("You are about to delete selected feed or category."), tr("Do you really want to delete selected item?"),
+                       QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
     // User changed his mind.
     qApp->closeLock()->unlock();
     return;
@@ -545,6 +545,16 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
     m_selectedFeeds << feed->id();
   }
 
+  if (m_selectedFeeds.isEmpty() && selectionModel()->selectedIndexes().size() > 0) {
+    QModelIndex selected_index = selectionModel()->selectedIndexes().at(0);
+    QModelIndex mapped_index = model()->mapToSource(selected_index);
+    FeedsModelRootItem *item = sourceModel()->itemForIndex(mapped_index);
+
+    if (item->kind() == FeedsModelRootItem::RecycleBin) {
+      m_selectedFeeds.append(ID_RECYCLE_BIN);
+    }
+  }
+
   emit feedsSelected(m_selectedFeeds);
 }
 
@@ -557,14 +567,24 @@ void FeedsView::keyPressEvent(QKeyEvent *event) {
 }
 
 void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
-  if (indexAt(event->pos()).isValid()) {
-    // Display context menu for categories.
-    if (m_contextMenuCategoriesFeeds == NULL) {
-      // Context menu is not initialized, initialize.
-      initializeContextMenuCategoriesFeeds();
-    }
+  QModelIndex clicked_index = indexAt(event->pos());
 
-    m_contextMenuCategoriesFeeds->exec(event->globalPos());
+  if (clicked_index.isValid()) {
+    QModelIndex mapped_index = model()->mapToSource(clicked_index);
+    FeedsModelRootItem *clicked_item = sourceModel()->itemForIndex(mapped_index);
+
+    if (clicked_item->kind() == FeedsModelRootItem::Category || clicked_item->kind() == FeedsModelRootItem::Feed) {
+      // Display context menu for categories.
+      if (m_contextMenuCategoriesFeeds == NULL) {
+        // Context menu is not initialized, initialize.
+        initializeContextMenuCategoriesFeeds();
+      }
+
+      m_contextMenuCategoriesFeeds->exec(event->globalPos());
+    }
+    else if (clicked_item->kind() == FeedsModelRootItem::RecycleBin) {
+      // TODO: Display context menu for recycle bin.
+    }
   }
   else {
     // Display menu for empty space.

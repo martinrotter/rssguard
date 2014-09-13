@@ -38,7 +38,6 @@ FeedsModelRootItem::FeedsModelRootItem(FeedsModelRootItem *parent_item)
 
 FeedsModelRootItem::~FeedsModelRootItem() {
   qDebug("Destroying FeedsModelRootItem instance.");
-
   qDeleteAll(m_childItems);
 }
 

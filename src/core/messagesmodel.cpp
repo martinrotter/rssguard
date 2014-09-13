@@ -31,7 +31,7 @@
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent,
                    qApp->database()->connection("MessagesModel",
-                                                           DatabaseFactory::FromSettings)) {
+                                                DatabaseFactory::FromSettings)) {
   setObjectName("MessagesModel");
   setupFonts();
   setupIcons();
@@ -70,13 +70,18 @@ void MessagesModel::setupFonts() {
 void MessagesModel::loadMessages(const QList<int> feed_ids) { 
   m_currentFeeds = feed_ids;
 
-  QString assembled_ids = textualFeeds().join(", ");
+  if (feed_ids.size() == 1 && feed_ids[0] == ID_RECYCLE_BIN) {
+    setFilter("is_deleted = 1");
+  }
+  else {
+    QString assembled_ids = textualFeeds().join(", ");
 
-  setFilter(QString("feed IN (%1) AND is_deleted = 0").arg(assembled_ids));
+    setFilter(QString("feed IN (%1) AND is_deleted = 0").arg(assembled_ids));
+    qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
+  }
+
   select();
   fetchAll();
-
-  qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
 }
 
 void MessagesModel::filterMessages(MessagesModel::DisplayFilter filter) {

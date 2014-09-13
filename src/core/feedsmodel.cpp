@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
+#include "core/feedsmodelrecyclebin.h"
 #include "core/feedsimportexportmodel.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
@@ -690,6 +691,8 @@ void FeedsModel::loadFromDatabase() {
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);
   assembleFeeds(feeds);
+
+  m_rootItem->appendChild(new FeedsModelRecycleBin());
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
