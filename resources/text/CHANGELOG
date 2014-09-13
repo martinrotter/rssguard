@@ -1,4 +1,19 @@
 <body>
+<center><h2>2.0.0.2</h2></center>
+
+Fixed:
+<ul>
+</ul>
+
+Added:
+<ul>
+<li>MySQL backend now alows to defragment/optimize RSS Guard database.</li>
+</ul>
+
+Changed:
+</ul>
+
+<hr/>
 <center><h2>2.0.0.1</h2></center>
 
 Fixed:

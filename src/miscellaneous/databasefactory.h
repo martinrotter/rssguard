@@ -107,6 +107,9 @@ class DatabaseFactory : public QObject {
     // Initializes MySQL database.
     QSqlDatabase mysqlInitializeDatabase(const QString &connection_name);
 
+    // Runs "VACUUM" on the database.
+    bool mysqlVacuumDatabase();
+
     // True if MySQL database is fully initialized for use,
     // otherwise false.
     bool m_mysqlDatabaseInitialized;

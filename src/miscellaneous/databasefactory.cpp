@@ -428,8 +428,8 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
-          qFatal("MySQL database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_MYSQL_INIT);
+          qFatal("MySQL database initialization failed. Initialization script '%s' is not correct. Error : '%s'.",
+                 APP_DB_MYSQL_INIT, qPrintable(query_db.lastError().databaseText()));
         }
       }
 
@@ -451,6 +451,13 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
   m_mysqlDatabaseInitialized = true;
 
   return database;
+}
+
+bool DatabaseFactory::mysqlVacuumDatabase() {
+  QSqlDatabase database = mysqlConnection(objectName());
+  QSqlQuery query_vacuum(database);
+
+  return query_vacuum.exec("OPTIMIZE TABLE rssguard.feeds;") && query_vacuum.exec("OPTIMIZE TABLE rssguard.messages;");
 }
 
 QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,
@@ -548,6 +555,8 @@ bool DatabaseFactory::vacuumDatabase() {
       return sqliteVacuumDatabase();
 
     case MYSQL:
+      return mysqlVacuumDatabase();
+
     default:
       return false;
   }
