@@ -13,6 +13,7 @@ Fixed:
 
 Added:
 <ul>
+<li>RSS Guard now accepts donations, see "Help" menu for more information.</li>
 <li>Tray icon tooltips now displays number of unread messages if there is at least one unread message.</li>
 <li>Re-introduced "blau" (dark) skin.</li>
 <li>Import/export dialog now offers "Check/uncheck all items" button.</li>

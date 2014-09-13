@@ -35,6 +35,7 @@
 #define APP_URL_ISSUES_NEW_BITBUCKET  "@APP_URL_ISSUES_NEW_BITBUCKET@"
 #define APP_VERSION         "@APP_VERSION@"
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@")
+#define APP_DONATE_URL      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
 #define RELEASES_LIST                   "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/UPDATES?at=master"
 #define DEFAULT_LOCALE                  "en_GB"

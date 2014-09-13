@@ -105,6 +105,7 @@ class FormMain : public QMainWindow {
     void showUpdates();
     void reportABugOnGitHub();
     void reportABugOnBitBucket();
+    void donate();
 
   private:
     Ui::FormMain *m_ui;

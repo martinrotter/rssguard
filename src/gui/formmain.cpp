@@ -209,6 +209,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
   m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
   m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme("document-import"));
+  m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme("application-donate"));
 
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch-window"));
@@ -328,6 +329,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionCheckForUpdates, SIGNAL(triggered()), this, SLOT(showUpdates()));
   connect(m_ui->m_actionReportBugGitHub, SIGNAL(triggered()), this, SLOT(reportABugOnGitHub()));
   connect(m_ui->m_actionReportBugBitBucket, SIGNAL(triggered()), this, SLOT(reportABugOnBitBucket()));
+  connect(m_ui->m_actionDonate, SIGNAL(triggered()), this, SLOT(donate()));
 
   // Menu "Web browser" connections.
   connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)),
@@ -461,6 +463,10 @@ void FormMain::reportABugOnBitBucket() {
                        tr("Cannot open external browser. Navigate to application website manually."));
     }
   }
+}
+
+void FormMain::donate() {
+  WebFactory::instance()->openUrlInExternalBrowser(APP_DONATE_URL);
 }
 
 void FormMain::showSettings() {

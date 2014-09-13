@@ -67,6 +67,7 @@
     <addaction name="m_actionCheckForUpdates"/>
     <addaction name="m_actionReportBugGitHub"/>
     <addaction name="m_actionReportBugBitBucket"/>
+    <addaction name="m_actionDonate"/>
     <addaction name="m_actionAboutGuard"/>
    </widget>
    <widget class="QMenu" name="m_menuView">
@@ -568,6 +569,14 @@
   <action name="m_actionReportBugBitBucket">
    <property name="text">
     <string>Report a bug (BitBucket)...</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionDonate">
+   <property name="text">
+    <string>Donate via PayPal</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

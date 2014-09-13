@@ -2,13 +2,17 @@ RSS Guard
 =========
 Welcome to RSS Guard website. You can find here basic information. Rest is located in [Wiki](https://bitbucket.org/skunkos/rssguard/wiki/Home).
 
-**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds-videos) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy)**
+**[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds-videos) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy) | [Donate](#markdown-header-donate)**
 - - -
 Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [forums](https://groups.google.com/d/forum/rssguard),
 * [IRC channel at freenode](http://webchat.freenode.net/?channels=#rssguard) (nick of author is #skunkos).
+- - -
+Donate
+------
+You can [support RSS Guard with tiny amounts of money via PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4). 
 - - -
 Feeds & Videos
 -----
