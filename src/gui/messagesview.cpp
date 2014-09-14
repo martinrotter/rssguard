@@ -224,15 +224,10 @@ void MessagesView::selectionChanged(const QItemSelection &selected,
 }
 
 void MessagesView::loadFeeds(const QList<int> &feed_ids) {
-  // Load messages.
-
-  // TODO: Here we could load user-defined default sorting
-  // column/order AND possibly hide/show user-defined columns for the feed(s).
   m_sourceModel->loadMessages(feed_ids);
 
   // Make sure that initial sorting is that unread messages are visible
   // first.
-  // NOTE: This can be rewritten so that it's changeable.
   sortByColumn(MSG_DB_DCREATED_INDEX, Qt::DescendingOrder);
 
   // Messages are loaded, make sure that previously
@@ -286,8 +281,6 @@ void MessagesView::openSelectedMessagesInternally() {
   emit openMessagesInNewspaperView(messages);
 
   // Finally, mark opened messages as read.
-  // TODO: It is a question if to mark selected messages as read
-  // when they get opened externally/in new tab.
   markSelectedMessagesRead();
 }
 
@@ -396,8 +389,7 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
     selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
   }
 
-  selectionModel()->select(selection,
-                           QItemSelectionModel::Select | QItemSelectionModel::Rows);
+  selectionModel()->select(selection, QItemSelectionModel::Select | QItemSelectionModel::Rows);
 }
 
 void MessagesView::selectNextItem() {
@@ -461,7 +453,6 @@ void MessagesView::adjustColumns() {
 #endif
 
     // Hide columns.
-    // TODO: Make this changeable.
     hideColumn(MSG_DB_ID_INDEX);
     hideColumn(MSG_DB_DELETED_INDEX);
     hideColumn(MSG_DB_FEED_INDEX);

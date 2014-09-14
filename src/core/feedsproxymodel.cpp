@@ -67,15 +67,23 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
                                            right_item->title()) < 0;
       }
     }
+    else if (left_item->kind() == FeedsModelRootItem::RecycleBin) {
+      // Left item is recycle bin. Make sure it is "smaller" item if we have selected ascending order.
+      return sortOrder() == Qt::AscendingOrder;
+    }
+    else if (right_item->kind() == FeedsModelRootItem::RecycleBin) {
+      // Right item is recycle bin. Make sure it is "biggest" item if we have selected descending order.
+      return sortOrder() == Qt::DescendingOrder;
+    }
     else if (left_item->kind() == FeedsModelRootItem::Feed) {
       // Left item is feed, right item is category.
       return false;
     }
     else {
       // Left item is category, right item is feed.
-      // NOTE: Category is in fact "more" than feed but
-      // we consider it to be "less" because it should be "placed"
+      // NOTE: Category is in fact "more" than feed but we consider it to be "less" because it should be "placed"
       // above the "smalles" feed when ascending sort is used.
+      // NOTE: We need to keep recycle bin in first position.
       return true;
     }
   }

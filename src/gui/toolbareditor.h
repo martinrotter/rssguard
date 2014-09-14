@@ -29,7 +29,6 @@ namespace Ui {
 
 class BaseToolBar;
 
-// TODO: dialog pro úpravu prirazeneho toolbaru.
 class ToolBarEditor : public QWidget {
     Q_OBJECT
 

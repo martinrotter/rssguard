@@ -49,7 +49,6 @@ class FormMain;
 class IconFactory;
 class QAction;
 
-// TODO: presunout nektery veci sem, settings atp
 class Application : public QtSingleApplication {
     Q_OBJECT
 

@@ -176,13 +176,8 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
-  // Updates of some feeds finished, unlock the lock.
   qApp->closeLock()->unlock();
-
-  // And also hide progress bar.
   qApp->mainForm()->statusBar()->clearProgress();
-
-  // TODO: Check integrity and conformance of this.
   m_messagesView->reloadSelections(1);
 }
 
@@ -221,8 +216,7 @@ void FeedMessageViewer::createConnections() {
 
   // State of many messages is changed, then we need
   // to reload selections.
-  connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)),
-          m_messagesView, SLOT(reloadSelections(int)));
+  connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)), m_messagesView, SLOT(reloadSelections(int)));
 
   // If counts of unread/all messages change, update the tray icon.
   connect(m_feedsView, SIGNAL(feedCountsChanged(int,int)),
