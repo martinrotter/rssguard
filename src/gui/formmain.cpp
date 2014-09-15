@@ -151,11 +151,6 @@ void FormMain::prepareMenus() {
   }
 }
 
-void FormMain::quit() {
-  qDebug("Quitting the application.");
-  qApp->quit();
-}
-
 void FormMain::switchFullscreenMode() {
   if (!isFullScreen()) {
     showFullScreen();
@@ -279,10 +274,12 @@ void FormMain::loadSize() {
     m_ui->m_actionFullscreen->setChecked(true);
   }
 
-  // Hide the main menu if user wants it.
-  if (!settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool()) {
-    m_ui->m_actionSwitchMainMenu->setChecked(false);
+  if (settings->value(APP_CFG_GUI, "window_is_maximized", false).toBool()) {
+    setWindowState(windowState() | Qt::WindowMaximized);
   }
+
+  // Hide the main menu if user wants it.
+  m_ui->m_actionSwitchMainMenu->setChecked(settings->value(APP_CFG_GUI, "main_menu_visible", true).toBool());
 
   // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
@@ -293,14 +290,20 @@ void FormMain::loadSize() {
 void FormMain::saveSize() {
   Settings *settings = qApp->settings();
   bool is_fullscreen = isFullScreen();
+  bool is_maximized = isMaximized();
 
   if (is_fullscreen) {
     m_ui->m_actionFullscreen->setChecked(false);
   }
 
+  if (is_maximized) {
+    setWindowState(windowState() & ~Qt::WindowMaximized);
+  }
+
   settings->setValue(APP_CFG_GUI, "main_menu_visible", m_ui->m_actionSwitchMainMenu->isChecked());
   settings->setValue(APP_CFG_GUI, "window_position", pos());
   settings->setValue(APP_CFG_GUI, "window_size", size());
+  settings->setValue(APP_CFG_GUI, "window_is_maximized", is_maximized);
   settings->setValue(APP_CFG_GUI, "start_in_fullscreen", is_fullscreen);
 
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
@@ -314,7 +317,7 @@ void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
   connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
-  connect(m_ui->m_actionQuit, SIGNAL(triggered()), this, SLOT(quit()));
+  connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));

@@ -78,9 +78,6 @@ class FormMain : public QMainWindow {
     void setupIcons();
 
   public slots:
-    // Quits the application.
-    void quit();
-
     // Displays window on top or switches its visibility.
     void display();
 
