@@ -22,6 +22,7 @@
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webpage.h"
+#include "network-web/webfactory.h"
 
 #include <QStyleOptionFrameV3>
 #include <QAction>
@@ -61,17 +62,21 @@ void WebView::openLinkInNewTab() {
   emit linkMiddleClicked(m_contextLinkUrl);
 }
 
+void WebView::openLinkExternally() {
+  WebFactory::instance()->openUrlInExternalBrowser(m_contextLinkUrl.toString());
+}
+
 void WebView::openImageInNewTab() {
   emit linkMiddleClicked(m_contextImageUrl);
 }
 
 void WebView::createConnections() {
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
-  connect(this, SIGNAL(customContextMenuRequested(QPoint)),
-          this, SLOT(popupContextMenu(QPoint)));
+  connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(popupContextMenu(QPoint)));
 
   connect(m_actionOpenLinkNewTab, SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
   connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
+  connect(m_actionOpenLinkExternally, SIGNAL(triggered()), this, SLOT(openLinkExternally()));
 }
 
 void WebView::setupIcons() {
@@ -84,8 +89,9 @@ void WebView::setupIcons() {
   m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme("edit-copy"));
 #endif
 
-  m_actionOpenLinkThisTab->setIcon(qApp->icons()->fromTheme("text-html"));
-  m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme("text-html"));
+  m_actionOpenLinkThisTab->setIcon(qApp->icons()->fromTheme("item-open-internal"));
+  m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme("item-open-internal"));
+  m_actionOpenLinkExternally->setIcon(qApp->icons()->fromTheme("item-open-external"));
   m_actionOpenImageNewTab->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
 }
 
@@ -133,6 +139,9 @@ void WebView::initializeActions() {
   m_actionOpenLinkThisTab->setText(tr("Follow link"));
   m_actionOpenLinkThisTab->setToolTip(tr("Open the hyperlink in this tab."));
 
+  m_actionOpenLinkExternally = new QAction(tr("Open link in external browser"), this);
+  m_actionOpenLinkExternally->setToolTip(tr("Open the hyperlink in external browser."));
+
   m_actionOpenImageNewTab = pageAction(QWebPage::OpenImageInNewWindow);
   m_actionOpenImageNewTab->setParent(this);
   m_actionOpenImageNewTab->setText(tr("Open image in new tab"));
@@ -177,6 +186,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
     context_menu.addMenu(&link_submenu);
     link_submenu.addAction(m_actionOpenLinkThisTab);
     link_submenu.addAction(m_actionOpenLinkNewTab);
+    link_submenu.addAction(m_actionOpenLinkExternally);
     link_submenu.addAction(m_actionCopyLink);
   }
 

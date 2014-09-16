@@ -30,9 +30,7 @@ class WebPage : public QWebPage {
     virtual ~WebPage();
 
   protected:
-    bool acceptNavigationRequest(QWebFrame *frame,
-                                 const QNetworkRequest &request,
-                                 NavigationType type);
+    bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 };
 
 #endif // BASEWEBPAGE_H

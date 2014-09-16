@@ -62,6 +62,7 @@ class WebView : public QWebView {
 
     void copySelectedText();
     void openLinkInNewTab();
+    void openLinkExternally();
     void openImageInNewTab();
 
     // Provides custom context menu.
@@ -98,6 +99,7 @@ class WebView : public QWebView {
 
     QAction *m_actionOpenLinkThisTab;
     QAction *m_actionOpenLinkNewTab;
+    QAction *m_actionOpenLinkExternally;
     QAction *m_actionOpenImageNewTab;
 
     QPoint m_gestureOrigin;
