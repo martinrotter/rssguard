@@ -90,28 +90,27 @@ void FeedsView::updateAutoUpdateStatus() {
   }
 }
 
-void FeedsView::setSortingEnabled(bool enable) {
-  QTreeView::setSortingEnabled(enable);
-  header()->setSortIndicatorShown(false);
-}
-
 QList<FeedsModelFeed*> FeedsView::selectedFeeds() const {
-  QModelIndexList selection = selectionModel()->selectedRows();
-  QModelIndexList mapped_selection = m_proxyModel->mapListToSource(selection);
+  QModelIndex current_index = currentIndex();
 
-  return m_sourceModel->feedsForIndexes(mapped_selection);
+  if (current_index.isValid()) {
+    return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
+  }
+  else {
+    return QList<FeedsModelFeed*>();
+  }
 }
 
 QList<FeedsModelFeed*> FeedsView::allFeeds() const {
   return m_sourceModel->allFeeds();
 }
 
-FeedsModelCategory *FeedsView::isCurrentIndexCategory() const {
+FeedsModelCategory *FeedsView::selectedCategory() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->categoryForIndex(current_mapped);
 }
 
-FeedsModelFeed *FeedsView::isCurrentIndexFeed() const {
+FeedsModelFeed *FeedsView::selectedFeed() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->feedForIndex(current_mapped);
 }
@@ -301,10 +300,10 @@ void FeedsView::editSelectedItem() {
   FeedsModelCategory *category;
   FeedsModelFeed *feed;
 
-  if ((category = isCurrentIndexCategory()) != NULL) {
+  if ((category = selectedCategory()) != NULL) {
     editCategory(static_cast<FeedsModelCategory*>(category));
   }
-  else if ((feed = isCurrentIndexFeed()) != NULL) {
+  else if ((feed = selectedFeed()) != NULL) {
     // Feed is selected.
     switch (feed->type()) {
       case FeedsModelFeed::Atom10:
@@ -407,7 +406,7 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(messages);
-    markSelectedFeedsRead();
+    QTimer::singleShot(0, this, SLOT(markSelectedFeedsRead()));
   }
 }
 
@@ -421,7 +420,6 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
 
     // Make sure that selected view reloads changed indexes.
     m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
-
     notifyWithCounts();
   }
 }
@@ -489,7 +487,7 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {
-  m_contextMenuEmptySpace = new QMenu(tr("Context menu for feeds"), this);
+  m_contextMenuEmptySpace = new QMenu(tr("Context menu"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateAllFeeds <<
                                       qApp->mainForm()->m_ui->m_actionAddCategory <<
@@ -508,13 +506,14 @@ void FeedsView::setupAppearance() {
 #endif
 
   header()->setStretchLastSection(false);
+  header()->setSortIndicatorShown(false);
   setUniformRowHeights(true);
   setAnimated(true);
   setSortingEnabled(true);
   setItemsExpandable(true);
   setExpandsOnDoubleClick(true);
   setEditTriggers(QAbstractItemView::NoEditTriggers);
-  setIndentation(10);
+  setIndentation(FEEDS_VIEW_INDENTATION);
   setAcceptDrops(false);
   setDragEnabled(false);
   setDropIndicatorShown(false);
@@ -525,11 +524,10 @@ void FeedsView::setupAppearance() {
 
   // Sort in ascending order, that is categories are
   // "bigger" than feeds.
-  sortByColumn(0, Qt::AscendingOrder);
+  sortByColumn(FDS_MODEL_TITLE_INDEX, Qt::AscendingOrder);
 }
 
-void FeedsView::selectionChanged(const QItemSelection &selected,
-                                 const QItemSelection &deselected) {
+void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
   QTreeView::selectionChanged(selected, deselected);
 
   m_selectedFeeds.clear();
@@ -538,8 +536,7 @@ void FeedsView::selectionChanged(const QItemSelection &selected,
 #if defined(DEBUG)
     QModelIndex index_for_feed = m_sourceModel->indexForItem(feed);
 
-    qDebug("Selecting feed '%s' (source index [%d, %d]).",
-           qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
+    qDebug("Selecting feed '%s' (source index [%d, %d]).", qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
 #endif
 
     m_selectedFeeds << feed->id();

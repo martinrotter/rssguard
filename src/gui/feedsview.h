@@ -53,9 +53,6 @@ class FeedsView : public QTreeView {
     // Resets global auto-update intervals according to settings
     // and starts/stop the timer as needed.
     void updateAutoUpdateStatus();
-
-    // Enables or disables sorting.
-    void setSortingEnabled(bool enable);
     
     // Returns list of selected/all feeds.
     QList<FeedsModelFeed*> selectedFeeds() const;
@@ -64,8 +61,8 @@ class FeedsView : public QTreeView {
     // Return true if current index contains category/feed and
     // stores category/feed in the parameter pointer,
     // otherwise false.
-    FeedsModelCategory *isCurrentIndexCategory() const;
-    FeedsModelFeed *isCurrentIndexFeed() const;
+    FeedsModelCategory *selectedCategory() const;
+    FeedsModelFeed *selectedFeed() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list
     // to/from settings.
@@ -144,8 +141,7 @@ class FeedsView : public QTreeView {
     void setupAppearance();
 
     // Handle selections.
-    void selectionChanged(const QItemSelection &selected,
-                          const QItemSelection &deselected);
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
     void keyPressEvent(QKeyEvent *event);
 

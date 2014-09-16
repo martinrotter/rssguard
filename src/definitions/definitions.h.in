@@ -69,6 +69,7 @@
 #define SEPARATOR_ACTION_NAME           "separator"
 #define FILTER_WIDTH                    150
 #define FILTER_RIGHT_MARGIN             5
+#define FEEDS_VIEW_INDENTATION          10
 
 #define APP_DB_MYSQL_DRIVER           "QMYSQL"
 #define APP_DB_MYSQL_INIT             "db_init_mysql.sql"

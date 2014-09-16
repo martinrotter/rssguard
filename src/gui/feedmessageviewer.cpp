@@ -195,55 +195,40 @@ void FeedMessageViewer::createConnections() {
           m_messagesView, SLOT(filterMessages(MessagesModel::DisplayFilter)));
 
   // Message changers.
-  connect(m_messagesView, SIGNAL(currentMessagesRemoved()),
-          m_messagesBrowser, SLOT(clear()));
-  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)),
-          m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
+  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
 
   // Import & export of feeds.
-  connect(form_main->m_ui->m_actionExportFeeds, SIGNAL(triggered()),
-          this, SLOT(exportFeeds()));
-  connect(form_main->m_ui->m_actionImportFeeds, SIGNAL(triggered()),
-          this, SLOT(importFeeds()));
+  connect(form_main->m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
+  connect(form_main->m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
 
   // If user selects feeds, load their messages.
-  connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)),
-          m_messagesView, SLOT(loadFeeds(QList<int>)));
+  connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)), m_messagesView, SLOT(loadFeeds(QList<int>)));
 
   // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView, SIGNAL(feedCountsChanged()),
-          m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
+  connect(m_messagesView, SIGNAL(feedCountsChanged()), m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
 
   // State of many messages is changed, then we need
   // to reload selections.
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)), m_messagesView, SLOT(reloadSelections(int)));
 
   // If counts of unread/all messages change, update the tray icon.
-  connect(m_feedsView, SIGNAL(feedCountsChanged(int,int)),
-          this, SLOT(updateTrayIconStatus(int,int)));
+  connect(m_feedsView, SIGNAL(feedCountsChanged(int,int)), this, SLOT(updateTrayIconStatus(int,int)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          form_main->m_ui->m_tabWidget,
-          SLOT(addBrowserWithMessages(QList<Message>)));
+          form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
-          form_main->m_ui->m_tabWidget,
-          SLOT(addLinkedBrowser(QString)));
+          form_main->m_ui->m_tabWidget, SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
-          form_main->m_ui->m_tabWidget,
-          SLOT(addBrowserWithMessages(QList<Message>)));
+          form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
 
   // Downloader connections.
-  connect(m_feedDownloaderThread, SIGNAL(finished()),
-          m_feedDownloaderThread, SLOT(deleteLater()));
-  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)),
-          m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
-  connect(m_feedDownloader, SIGNAL(finished()),
-          this, SLOT(onFeedUpdatesFinished()));
-  connect(m_feedDownloader, SIGNAL(started()),
-          this, SLOT(onFeedUpdatesStarted()));
-  connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)),
-          this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
+  connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
+  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)), m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
+  connect(m_feedDownloader, SIGNAL(finished()), this, SLOT(onFeedUpdatesFinished()));
+  connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
+  connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)), this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
 
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,
