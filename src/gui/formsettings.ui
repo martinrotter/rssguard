@@ -17,7 +17,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -307,8 +307,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>684</width>
+            <height>451</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -385,8 +385,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>678</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -432,9 +432,6 @@ Authors of this application are NOT responsible for lost data.</string>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
-                    <property name="alternatingRowColors">
-                     <bool>false</bool>
-                    </property>
                     <property name="indentation">
                      <number>0</number>
                     </property>
@@ -447,6 +444,9 @@ Authors of this application are NOT responsible for lost data.</string>
                     <property name="expandsOnDoubleClick">
                      <bool>false</bool>
                     </property>
+                    <attribute name="headerMinimumSectionSize">
+                     <number>80</number>
+                    </attribute>
                     <column>
                      <property name="text">
                       <string notr="true">1</string>
@@ -718,6 +718,9 @@ Authors of this application are NOT responsible for lost data.</string>
          <property name="columnCount">
           <number>0</number>
          </property>
+         <attribute name="headerMinimumSectionSize">
+          <number>80</number>
+         </attribute>
         </widget>
        </item>
       </layout>
