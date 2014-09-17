@@ -15,16 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
+    <property name="margin">
      <number>0</number>
     </property>
     <item>
@@ -48,7 +39,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -67,6 +58,7 @@
     <addaction name="m_actionCheckForUpdates"/>
     <addaction name="m_actionReportBugGitHub"/>
     <addaction name="m_actionReportBugBitBucket"/>
+    <addaction name="m_actionDisplayWiki"/>
     <addaction name="m_actionDonate"/>
     <addaction name="m_actionAboutGuard"/>
    </widget>
@@ -576,10 +568,12 @@
   </action>
   <action name="m_actionDonate">
    <property name="text">
-    <string>Donate via PayPal</string>
+    <string>&amp;Donate via PayPal</string>
    </property>
-   <property name="shortcut">
-    <string notr="true"/>
+  </action>
+  <action name="m_actionDisplayWiki">
+   <property name="text">
+    <string>Display &amp;wiki</string>
    </property>
   </action>
  </widget>

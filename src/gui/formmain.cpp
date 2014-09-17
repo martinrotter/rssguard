@@ -205,6 +205,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
   m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme("document-import"));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme("application-donate"));
+  m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme("application-wiki"));
 
   // View.
   m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch-window"));
@@ -333,6 +334,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionReportBugGitHub, SIGNAL(triggered()), this, SLOT(reportABugOnGitHub()));
   connect(m_ui->m_actionReportBugBitBucket, SIGNAL(triggered()), this, SLOT(reportABugOnBitBucket()));
   connect(m_ui->m_actionDonate, SIGNAL(triggered()), this, SLOT(donate()));
+  connect(m_ui->m_actionDisplayWiki, SIGNAL(triggered()), this, SLOT(showWiki()));
 
   // Menu "Web browser" connections.
   connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)),
@@ -436,40 +438,36 @@ void FormMain::showUpdates() {
   qApp->closeLock()->unlock();
 }
 
+void FormMain::showWiki() {
+  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_WIKI)) {
+    qApp->showGuiMessage(tr("Cannot open external browser"),
+                         tr("Cannot open external browser. Navigate to application website manually."),
+                         QSystemTrayIcon::Warning);
+  }
+}
+
 void FormMain::reportABugOnGitHub() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_GITHUB)) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot open external browser"),
-                                    tr("Cannot open external browser. Navigate to application website manually."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot open external browser"),
-                       tr("Cannot open external browser. Navigate to application website manually."));
-    }
+    qApp->showGuiMessage(tr("Cannot open external browser"),
+                         tr("Cannot open external browser. Navigate to application website manually."),
+                         QSystemTrayIcon::Warning);
   }
 }
 
 void FormMain::reportABugOnBitBucket() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_BITBUCKET)) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot open external browser"),
-                                    tr("Cannot open external browser. Navigate to application website manually."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot open external browser"),
-                       tr("Cannot open external browser. Navigate to application website manually."));
-    }
+    qApp->showGuiMessage(tr("Cannot open external browser"),
+                         tr("Cannot open external browser. Navigate to application website manually."),
+                         QSystemTrayIcon::Warning);
   }
 }
 
 void FormMain::donate() {
-  WebFactory::instance()->openUrlInExternalBrowser(APP_DONATE_URL);
+  if (!WebFactory::instance()->openUrlInExternalBrowser(APP_DONATE_URL)) {
+    qApp->showGuiMessage(tr("Cannot open external browser"),
+                         tr("Cannot open external browser. Navigate to application website manually."),
+                         QSystemTrayIcon::Warning);
+  }
 }
 
 void FormMain::showSettings() {

@@ -100,6 +100,7 @@ class FormMain : public QMainWindow {
     void showSettings();
     void showAbout();
     void showUpdates();
+    void showWiki();
     void reportABugOnGitHub();
     void reportABugOnBitBucket();
     void donate();
