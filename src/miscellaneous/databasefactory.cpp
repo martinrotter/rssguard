@@ -129,16 +129,14 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
-                                                                  QString::SkipEmptyParts);
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
       foreach(const QString &statement, statements) {
         query_db.exec(statement);
 
         if (query_db.lastError().isValid()) {
-          qFatal("In-memory SQLite database initialization failed. Initialization script '%s' is not correct.",
-                 APP_DB_SQLITE_INIT);
+          qFatal("In-memory SQLite database initialization failed. Initialization script '%s' is not correct.", APP_DB_SQLITE_INIT);
         }
       }
 

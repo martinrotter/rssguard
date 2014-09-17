@@ -102,6 +102,18 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                                  QString::number(QDateTime::currentDateTime().date().year()),
                                                                                  APP_AUTHOR,
                                                                                  APP_NAME));
+
+  // Load additional paths information.
+  if (qApp->settings()->type() == Settings::Portable) {
+    m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
+    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
+  }
+  else {
+    m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
+    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(QDir::homePath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
+  }
+
+  m_ui->m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));
 }
 
 FormAbout::~FormAbout() {
