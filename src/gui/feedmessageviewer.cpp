@@ -206,7 +206,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)), m_messagesView, SLOT(loadFeeds(QList<int>)));
 
   // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView, SIGNAL(feedCountsChanged()), m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
+  connect(m_messagesView, SIGNAL(feedCountsChanged(bool)), m_feedsView, SLOT(updateCountsOfSelectedFeeds()));
 
   // State of many messages is changed, then we need
   // to reload selections.

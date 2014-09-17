@@ -50,17 +50,14 @@ MessagesView::~MessagesView() {
 
 void MessagesView::createConnections() {
   // Forward feed counts changes.
-  connect(m_sourceModel, SIGNAL(feedCountsChanged()),
-          this, SIGNAL(feedCountsChanged()));
+  connect(m_sourceModel, SIGNAL(feedCountsChanged(bool)), this, SIGNAL(feedCountsChanged(bool)));
 
   // Make sure that source message is opened
   // in new tab on double click.
-  connect(this, SIGNAL(doubleClicked(QModelIndex)),
-          this, SLOT(openSelectedSourceMessagesInternally()));
+  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternally()));
 
   // Adjust columns when layout gets changed.
-  connect(header(), SIGNAL(geometriesChanged()),
-          this, SLOT(adjustColumns()));
+  connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
 }
 
 void MessagesView::keyboardSearch(const QString &search) {
@@ -137,8 +134,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
   QModelIndex clicked_index = indexAt(event->pos());
 
   if (!clicked_index.isValid()) {
-    qDebug("Context menu for MessagesView will not be shown because "
-           "user clicked on invalid item.");
+    qDebug("Context menu for MessagesView will not be shown because user clicked on invalid item.");
     return;
   }
 

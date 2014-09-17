@@ -94,6 +94,9 @@ QVariant FeedsModelRecycleBin::data(int column, int role) const {
         return QVariant();
       }
 
+    case Qt::ToolTipRole:
+      return tr("Recycle bin\n%1").arg(tr("%n deleted message(s).", 0, countOfUnreadMessages()));
+
     case Qt::TextAlignmentRole:
       if (column == FDS_MODEL_COUNTS_INDEX) {
         return Qt::AlignCenter;

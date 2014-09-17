@@ -23,6 +23,7 @@
 #include "core/feedsproxymodel.h"
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
+#include "core/feedsmodelrecyclebin.h"
 #include "core/feedsmodelfeed.h"
 #include "miscellaneous/systemfactory.h"
 #include "gui/formmain.h"
@@ -407,18 +408,24 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
   }
 }
 
-void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
-  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
-
-  if (!selected_feeds.isEmpty()) {
-    foreach (FeedsModelFeed *feed, selected_feeds) {
-      feed->updateCounts(update_total_too);
-    }
-
-    // Make sure that selected view reloads changed indexes.
-    m_sourceModel->reloadChangedLayout(m_proxyModel->mapListToSource(selectionModel()->selectedRows()));
-    notifyWithCounts();
+void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) { 
+  foreach (FeedsModelFeed *feed, selectedFeeds()) {
+    feed->updateCounts(update_total_too);
   }
+
+  QModelIndexList selected_indexes = m_proxyModel->mapListToSource(selectionModel()->selectedRows());
+
+  if (update_total_too) {
+    // Number of items in recycle bin has changed.
+    m_sourceModel->recycleBin()->updateCounts();
+
+    // We need to refresh data for recycle bin too.
+    selected_indexes.append(m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
+  }
+
+  // Make sure that selected view reloads changed indexes.
+  m_sourceModel->reloadChangedLayout(selected_indexes);
+  notifyWithCounts();
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
@@ -426,9 +433,13 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
     feed->updateCounts(update_total_too);
   }
 
+  if (update_total_too) {
+    // Number of items in recycle bin has changed.
+    m_sourceModel->recycleBin()->updateCounts();
+  }
+
   // Make sure that all views reloads its data.
   m_sourceModel->reloadWholeLayout();
-
   notifyWithCounts();
 }
 

@@ -45,10 +45,6 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
-    // Returns list of all indexes available in the model.
-    // NOTE: Overriden because original method is protected.
-    QModelIndexList persistentIndexList() const;
-
     // Model implementation.
     inline QVariant data(const QModelIndex &index, int role) const {
       // Return data according to item.
@@ -141,6 +137,9 @@ class FeedsModel : public QAbstractItemModel {
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     bool mergeModel(FeedsImportExportModel *model, QString &output_message);
+
+    // Access to recycle bin.
+    FeedsModelRecycleBin *recycleBin() const;
 
   public slots:
     // Feeds operations.

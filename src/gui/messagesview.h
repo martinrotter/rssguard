@@ -52,11 +52,7 @@ class MessagesView : public QTreeView {
     void createConnections();
 
   public slots:
-    void keyboardSearch(const QString &search) {
-      setSelectionMode(QAbstractItemView::SingleSelection);
-      QTreeView::keyboardSearch(search);
-      setSelectionMode(QAbstractItemView::ExtendedSelection);
-    }
+    void keyboardSearch(const QString &search);
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
@@ -118,7 +114,7 @@ class MessagesView : public QTreeView {
 
     // Emitted if counts of unread/total messages has changed
     // because of user interaction with list of messages.
-    void feedCountsChanged();
+    void feedCountsChanged(bool total_message_number_changed = true);
 
   private:
     QMenu *m_contextMenu;

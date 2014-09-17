@@ -66,13 +66,7 @@ FeedsModel::~FeedsModel() {
   delete m_rootItem;
 }
 
-QModelIndexList FeedsModel::persistentIndexList() const {
-  return QAbstractItemModel::persistentIndexList();
-}
-
-QVariant FeedsModel::headerData(int section,
-                                Qt::Orientation orientation,
-                                int role) const {
+QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {
   if (orientation != Qt::Horizontal) {
     return QVariant();
   }
@@ -898,6 +892,10 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
                qPrintable(feed.second->title()));
     }
   }
+}
+
+FeedsModelRecycleBin *FeedsModel::recycleBin() const {
+  return m_recycleBin;
 }
 
 void FeedsModel::assembleCategories(CategoryAssignment categories) {

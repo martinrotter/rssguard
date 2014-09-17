@@ -109,7 +109,7 @@ class MessagesModel : public QSqlTableModel {
   signals:
     // Emitted if some persistent change is made which affects
     // count of "unread/all" messages.
-    void feedCountsChanged();
+    void feedCountsChanged(bool total_message_number_changed = true);
 
   protected:
     // Returns selected feed ids in concatenated textual form,

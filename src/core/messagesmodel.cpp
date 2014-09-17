@@ -274,7 +274,7 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     // can reflect.
     emit dataChanged(index(row_index, 0),
                      index(row_index, columnCount() - 1));
-    emit feedCountsChanged();
+    emit feedCountsChanged(false);
     return true;
   }
   else {
@@ -354,7 +354,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     select();
     fetchAll();
 
-    emit feedCountsChanged();
+    //emit feedCountsChanged(false);
     return true;
   }
   else {
@@ -381,7 +381,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages,
     select();
     fetchAll();
 
-    emit feedCountsChanged();
+    emit feedCountsChanged(true);
     return true;
   }
   else {
@@ -407,7 +407,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
     select();
     fetchAll();
 
-    emit feedCountsChanged();
+    emit feedCountsChanged(true);
     return true;
   }
   else {

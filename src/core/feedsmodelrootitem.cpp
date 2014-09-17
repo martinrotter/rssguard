@@ -68,7 +68,9 @@ int FeedsModelRootItem::countOfAllMessages() const {
   int total_count = 0;
 
   foreach (FeedsModelRootItem *child_item, m_childItems) {
-    total_count += child_item->countOfAllMessages();
+    if (child_item->kind() != FeedsModelRootItem::RecycleBin) {
+      total_count += child_item->countOfAllMessages();
+    }
   }
 
   return total_count;
@@ -95,7 +97,9 @@ int FeedsModelRootItem::countOfUnreadMessages() const {
   int total_count = 0;
 
   foreach (FeedsModelRootItem *child_item, m_childItems) {
-    total_count += child_item->countOfUnreadMessages();
+    if (child_item->kind() != FeedsModelRootItem::RecycleBin) {
+      total_count += child_item->countOfUnreadMessages();
+    }
   }
 
   return total_count;

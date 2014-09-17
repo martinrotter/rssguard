@@ -3,16 +3,20 @@
 
 Fixed:
 <ul>
+<li>Overall code cleanups and refactoring primarily in area of feed/message models and recycle bin functionality.</li>
 <li>Fixed bug #66, #67.</li>
 <li>Blau skin now has colored webkit scrollbars, fixed some button widths and enhanced menu popup tool buttons.</li>
 </ul>
 
 Added:
 <ul>
+<li>Top-level recycle bin which displays count of deleted items properly.</li>
 <li>MySQL backend now alows to defragment/optimize RSS Guard database.</li>
 </ul>
 
 Changed:
+<ul>
+<li>Target message is now selected instead of highlighted when searching with keyboard.</li>
 </ul>
 
 <hr/>
