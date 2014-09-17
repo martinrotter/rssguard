@@ -132,9 +132,7 @@ void FeedsView::loadExpandedStates() {
   // Iterate all categories and save their expand statuses.
   foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
-                settings->value(APP_CFG_CAT_EXP,
-                                QString::number(category->id()),
-                                true).toBool());
+                settings->value(APP_CFG_CAT_EXP, QString::number(category->id()), true).toBool());
   }
 }
 
@@ -169,8 +167,7 @@ void FeedsView::updateSelectedFeeds() {
 
 void FeedsView::executeNextAutoUpdate() {
   if (!qApp->closeLock()->tryLock()) {
-    qDebug("Delaying scheduled feed auto-updates for one minute "
-           "due to another running update.");
+    qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
 
     // Cannot update, quit.
     return;

@@ -55,17 +55,16 @@ class FeedsView : public QTreeView {
     void updateAutoUpdateStatus();
     
     // Returns list of selected/all feeds.
+    // NOTE: This is recursive method which returns all descendants.
     QList<FeedsModelFeed*> selectedFeeds() const;
     QList<FeedsModelFeed*> allFeeds() const;
 
-    // Return true if current index contains category/feed and
-    // stores category/feed in the parameter pointer,
-    // otherwise false.
+    // Returns pointers to selected feed/category if they are really
+    // selected.
     FeedsModelCategory *selectedCategory() const;
     FeedsModelFeed *selectedFeed() const;
 
-    // Saves/loads expand states of all nodes (feeds/categories) of the list
-    // to/from settings.
+    // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void saveExpandedStates();
     void loadExpandedStates();
 

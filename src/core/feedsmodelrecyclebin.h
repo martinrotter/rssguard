@@ -35,6 +35,12 @@ class FeedsModelRecycleBin : public FeedsModelRootItem {
     int countOfUnreadMessages() const;
     int countOfAllMessages() const;
     QVariant data(int column, int role) const;
+
+  public slots:
+    void updateCounts();
+
+  private:
+    int m_totalCount;
 };
 
 #endif // FEEDSMODELRECYCLEBIN_H

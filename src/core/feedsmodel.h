@@ -28,6 +28,7 @@
 
 class FeedsModelCategory;
 class FeedsModelFeed;
+class FeedsModelRecycleBin;
 class FeedsImportExportModel;
 
 typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
@@ -170,6 +171,7 @@ class FeedsModel : public QAbstractItemModel {
 
   private:
     FeedsModelRootItem *m_rootItem;
+    FeedsModelRecycleBin *m_recycleBin;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;

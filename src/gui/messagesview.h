@@ -52,6 +52,12 @@ class MessagesView : public QTreeView {
     void createConnections();
 
   public slots:
+    void keyboardSearch(const QString &search) {
+      setSelectionMode(QAbstractItemView::SingleSelection);
+      QTreeView::keyboardSearch(search);
+      setSelectionMode(QAbstractItemView::ExtendedSelection);
+    }
+
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
     // If "mark_current_index_read" is 0, then message with

@@ -35,7 +35,8 @@
 #include <algorithm>
 
 
-FeedsModel::FeedsModel(QObject *parent) : QAbstractItemModel(parent) {
+FeedsModel::FeedsModel(QObject *parent)
+  : QAbstractItemModel(parent), m_recycleBin(new FeedsModelRecycleBin()) {
   setObjectName("FeedsModel");
 
   // Create root item.
@@ -692,7 +693,8 @@ void FeedsModel::loadFromDatabase() {
   assembleCategories(categories);
   assembleFeeds(feeds);
 
-  m_rootItem->appendChild(new FeedsModelRecycleBin());
+  // As the last item, add recycle bin, which is needed.
+  m_rootItem->appendChild(m_recycleBin);
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {

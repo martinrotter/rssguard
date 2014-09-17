@@ -63,6 +63,12 @@ void MessagesView::createConnections() {
           this, SLOT(adjustColumns()));
 }
 
+void MessagesView::keyboardSearch(const QString &search) {
+  setSelectionMode(QAbstractItemView::SingleSelection);
+  QTreeView::keyboardSearch(search);
+  setSelectionMode(QAbstractItemView::ExtendedSelection);
+}
+
 void MessagesView::reloadSelections(int mark_current_index_read) {
   QModelIndex current_index = selectionModel()->currentIndex();
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);

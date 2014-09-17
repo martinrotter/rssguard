@@ -20,19 +20,24 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
+#include <QSqlQuery>
 
-FeedsModelRecycleBin::FeedsModelRecycleBin(FeedsModelRootItem *parent) : FeedsModelRootItem(parent) {
+
+FeedsModelRecycleBin::FeedsModelRecycleBin(FeedsModelRootItem *parent)
+  : FeedsModelRootItem(parent) {
   m_kind = FeedsModelRootItem::RecycleBin;
   m_icon = qApp->icons()->fromTheme("folder-recycle-bin");
   m_id = ID_RECYCLE_BIN;
   m_title = tr("Recycle bin");
   m_description = tr("Recycle bin contains all deleted messages from all feeds.");
   m_creationDate = QDateTime::currentDateTime();
+
+  updateCounts();
 }
 
 FeedsModelRecycleBin::~FeedsModelRecycleBin() {
+  qDebug("Destroying FeedsModelRecycleBin instance.");
 }
-
 
 int FeedsModelRecycleBin::childCount() const {
   return 0;
@@ -43,13 +48,12 @@ void FeedsModelRecycleBin::appendChild(FeedsModelRootItem *child) {
 }
 
 int FeedsModelRecycleBin::countOfUnreadMessages() const {
-  return 0;
+  return m_totalCount;
 }
 
 int FeedsModelRecycleBin::countOfAllMessages() const {
-  return 0;
+  return m_totalCount;
 }
-
 
 QVariant FeedsModelRecycleBin::data(int column, int role) const {
   switch (role) {
@@ -100,5 +104,19 @@ QVariant FeedsModelRecycleBin::data(int column, int role) const {
 
     default:
       return QVariant();
+  }
+}
+
+void FeedsModelRecycleBin::updateCounts() {
+  QSqlDatabase database = qApp->database()->connection("FeedsModelRecycleBin",
+                                                       DatabaseFactory::FromSettings);
+  QSqlQuery query_all(database);
+  query_all.setForwardOnly(true);
+
+  if (query_all.exec("SELECT count(*) FROM Messages WHERE is_deleted = 1;") && query_all.next()) {
+    m_totalCount = query_all.value(0).toInt();
+  }
+  else {
+    m_totalCount = 0;
   }
 }
