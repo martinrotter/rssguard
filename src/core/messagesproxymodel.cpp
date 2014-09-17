@@ -64,6 +64,75 @@ QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &ind
   return mapped_indexes;
 }
 
+QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
+                                          const QVariant &value, int hits, Qt::MatchFlags flags) const {
+  QModelIndexList result;
+  uint matchType = flags & 0x0F;
+  Qt::CaseSensitivity cs = Qt::CaseInsensitive;
+  bool wrap = flags & Qt::MatchWrap;
+  bool allHits = (hits == -1);
+  QString text;
+  int from = start.row();
+  int to = rowCount();
+
+  for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
+    for (int r = from; (r < to) && (allHits || result.count() < hits); ++r) {
+      QModelIndex idx = index(r, start.column());
+      if (!idx.isValid())
+        continue;
+      QVariant v;
+
+      if (start.column() == MSG_DB_ID_INDEX) {
+        v = m_sourceModel->data(mapToSource(idx).row(), MSG_DB_TITLE_INDEX);
+      }
+      else {
+        v = data(idx, role);
+      }
+
+      // QVariant based matching.
+      if (matchType == Qt::MatchExactly) {
+        if (value == v)
+          result.append(idx);
+      } else { // QString based matching.
+        if (text.isEmpty()) // Lazy conversion.
+          text = value.toString();
+        QString t = v.toString();
+        switch (matchType) {
+          case Qt::MatchRegExp:
+            if (QRegExp(text, cs).exactMatch(t))
+              result.append(idx);
+            break;
+          case Qt::MatchWildcard:
+            if (QRegExp(text, cs, QRegExp::Wildcard).exactMatch(t))
+              result.append(idx);
+            break;
+          case Qt::MatchStartsWith:
+            if (t.startsWith(text, cs))
+              result.append(idx);
+            break;
+          case Qt::MatchEndsWith:
+            if (t.endsWith(text, cs))
+              result.append(idx);
+            break;
+          case Qt::MatchFixedString:
+            if (t.compare(text, cs) == 0)
+              result.append(idx);
+            break;
+          case Qt::MatchContains:
+          default:
+            if (t.contains(text, cs))
+              result.append(idx);
+        }
+      }
+    }
+
+    // Prepare for the next iteration.
+    from = 0;
+    to = start.row();
+  }
+  return result;
+}
+
 QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) {
   QModelIndexList source_indexes;
 

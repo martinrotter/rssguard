@@ -29,9 +29,7 @@
 
 
 MessagesModel::MessagesModel(QObject *parent)
-  : QSqlTableModel(parent,
-                   qApp->database()->connection("MessagesModel",
-                                                DatabaseFactory::FromSettings)) {
+  : QSqlTableModel(parent, qApp->database()->connection("MessagesModel", DatabaseFactory::FromSettings)) {
   setObjectName("MessagesModel");
   setupFonts();
   setupIcons();
@@ -102,7 +100,7 @@ QStringList MessagesModel::textualFeeds() const {
 }
 
 int MessagesModel::messageId(int row_index) const {
-  return data(row_index, MSG_DB_ID_INDEX).toInt();
+  return data(row_index, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 }
 
 Message MessagesModel::messageAt(int row_index) const {
@@ -164,6 +162,11 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
 
         return author_name.isEmpty() ? "-" : author_name;
       }
+      /*
+      else if (index_column == MSG_DB_ID_INDEX) {
+        return QSqlTableModel::data(index(idx.row(), MSG_DB_TITLE_INDEX, idx.parent()));
+      }
+      */
       else if (index_column != MSG_DB_IMPORTANT_INDEX &&
                index_column != MSG_DB_READ_INDEX) {
         return QSqlTableModel::data(idx, role);

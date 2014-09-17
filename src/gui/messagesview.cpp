@@ -216,9 +216,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
 
 void MessagesView::selectionChanged(const QItemSelection &selected,
                                     const QItemSelection &deselected) {
-  if (qApp->settings()->value(APP_CFG_MESSAGES,
-                              "keep_cursor_center",
-                              false).toBool()) {
+  if (qApp->settings()->value(APP_CFG_MESSAGES, "keep_cursor_center", false).toBool()) {
     scrollTo(currentIndex(), QAbstractItemView::PositionAtCenter);
   }
 
