@@ -363,16 +363,12 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_fee
     int new_index_of_feed = new_parent->childCount();
 
     // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent),
-                    original_index_of_feed,
-                    original_index_of_feed);
+    beginRemoveRows(indexForItem(original_parent), original_index_of_feed, original_index_of_feed);
     original_parent->removeChild(original_feed);
     endRemoveRows();
 
     // ... and insert it under the new parent.
-    beginInsertRows(indexForItem(new_parent),
-                    new_index_of_feed,
-                    new_index_of_feed);
+    beginInsertRows(indexForItem(new_parent), new_index_of_feed, new_index_of_feed);
     new_parent->appendChild(original_feed);
     endInsertRows();
   }
@@ -888,8 +884,7 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
       categories.value(feed.first)->appendChild(feed.second);
     }
     else {
-      qWarning("Feed '%s' is loose, skipping it.",
-               qPrintable(feed.second->title()));
+      qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
     }
   }
 }
