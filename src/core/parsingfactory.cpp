@@ -91,10 +91,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       new_message.m_created = current_time;
     }
 
-    // TODO: NESMI se vracet isNull() hodnoty
-    // v url a author, to děla bordel při sql dotazech
-    // proto tento kod, trošku zlidštit ve
-    // všech třech metodach
+    // TODO: There is a difference between "" and QString() in terms of NULL SQL values!
     if (new_message.m_author.isNull()) {
       new_message.m_author = "";
     }

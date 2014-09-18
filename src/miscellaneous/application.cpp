@@ -141,12 +141,8 @@ void Application::onAboutToQuit() {
   processEvents();
 
   qDebug("Cleaning up resources and saving application state.");
+
   mainForm()->tabWidget()->feedMessageViewer()->quit();
-
-  if (settings()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
-    mainForm()->tabWidget()->feedMessageViewer()->feedsView()->clearAllReadMessages();
-  }
-
   database()->saveDatabase();
   mainForm()->saveSize();
 

@@ -372,7 +372,7 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
         return QVariant(item->data(index.column(), role).toString() + tr(" (feed)"));
 
       default:
-        return QVariant();
+        return item->title();
     }
   }
   else {
@@ -433,7 +433,7 @@ bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &v
 }
 
 Qt::ItemFlags FeedsImportExportModel::flags(const QModelIndex &index) const {
-  if (!index.isValid()) {
+  if (!index.isValid() || itemForIndex(index)->kind() == FeedsModelRootItem::RecycleBin) {
     return Qt::NoItemFlags;
   }
 

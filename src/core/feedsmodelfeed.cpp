@@ -345,13 +345,13 @@ QVariant FeedsModelFeed::data(int column, int role) const {
         }
 
         //: Tooltip for feed.
-        return tr("%1 (%2)\n"
+        return tr("%1 (%2)"
                   "%3\n\n"
                   "Network status: %6\n"
                   "Encoding: %4\n"
                   "Auto-update status: %5").arg(m_title,
                                                 FeedsModelFeed::typeToString(m_type),
-                                                m_description,
+                                                m_description.isEmpty() ? QString() : QString('\n') + m_description,
                                                 m_encoding,
                                                 auto_update_string,
                                                 NetworkFactory::networkErrorText(m_networkError));

@@ -52,8 +52,7 @@ FeedsView::FeedsView(QWidget *parent)
   m_sourceModel = m_proxyModel->sourceModel();
 
   // Timed actions.
-  connect(m_autoUpdateTimer, SIGNAL(timeout()),
-          this, SLOT(executeNextAutoUpdate()));
+  connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
 
   setModel(m_proxyModel);
   setupAppearance();
@@ -88,6 +87,9 @@ void FeedsView::updateAutoUpdateStatus() {
     m_autoUpdateTimer->start();
 
     qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
+  }
+  else {
+    qDebug("Auto-update timer is already running.");
   }
 }
 

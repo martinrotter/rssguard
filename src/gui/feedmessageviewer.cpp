@@ -137,6 +137,10 @@ void FeedMessageViewer::quit() {
 
   qDebug("Feed downloader thread aborted. Deleting it from memory.");
   m_feedDownloader->deleteLater();
+
+  if (qApp->settings()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
+    m_feedsView->clearAllReadMessages();
+  }
 }
 
 void FeedMessageViewer::setToolBarsEnabled(bool enable) {
@@ -197,10 +201,6 @@ void FeedMessageViewer::createConnections() {
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
-
-  // Import & export of feeds.
-  connect(form_main->m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
-  connect(form_main->m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)), m_messagesView, SLOT(loadFeeds(QList<int>)));

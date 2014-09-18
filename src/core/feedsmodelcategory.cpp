@@ -52,11 +52,11 @@ QVariant FeedsModelCategory::data(int column, int role) const {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         //: Tooltip for standard feed.
-        return tr("%1 (category)\n"
+        return tr("%1 (category)"
                   "%2%3").arg(m_title,
-                              m_description,
+                              m_description.isEmpty() ? QString() : QString('\n') + m_description,
                               m_childItems.size() == 0 ?
-                                tr("\n\nThis category does not contain any nested items.") :
+                                tr("\nThis category does not contain any nested items.") :
                                 QString());
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
