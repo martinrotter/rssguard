@@ -15,7 +15,16 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <item>
@@ -39,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>979</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -156,10 +165,18 @@
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
    </widget>
+   <widget class="QMenu" name="menu_Recycle_bin">
+    <property name="title">
+     <string>&amp;Recycle bin</string>
+    </property>
+    <addaction name="m_actionEmptyRecycleBin"/>
+    <addaction name="m_actionRestoreAllMessages"/>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
+   <addaction name="menu_Recycle_bin"/>
    <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
@@ -574,6 +591,16 @@
   <action name="m_actionDisplayWiki">
    <property name="text">
     <string>Display &amp;wiki</string>
+   </property>
+  </action>
+  <action name="m_actionEmptyRecycleBin">
+   <property name="text">
+    <string>&amp;Empty recycle bin</string>
+   </property>
+  </action>
+  <action name="m_actionRestoreAllMessages">
+   <property name="text">
+    <string>&amp;Restore all messages</string>
    </property>
   </action>
  </widget>

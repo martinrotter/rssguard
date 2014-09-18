@@ -216,6 +216,10 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
+  // Recycle bin.
+  m_ui->m_actionEmptyRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-empty"));
+  m_ui->m_actionRestoreAllMessages->setIcon(icon_theme_factory->fromTheme("recycle-bin-restore"));
+
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
   m_ui->m_actionCloseCurrentTab->setIcon(icon_theme_factory->fromTheme("list-remove"));
