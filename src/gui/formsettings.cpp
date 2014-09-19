@@ -791,7 +791,6 @@ void FormSettings::saveInterface() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
 }
 
-
 bool FormSettings::eventFilter(QObject *obj, QEvent *e) {
   Q_UNUSED(obj)
 
