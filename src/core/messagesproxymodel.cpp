@@ -65,63 +65,84 @@ QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &ind
 }
 
 QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
-                                          const QVariant &value, int hits, Qt::MatchFlags flags) const {
+                                          const QVariant &entered_value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  uint matchType = flags & 0x0F;
-  Qt::CaseSensitivity cs = Qt::CaseInsensitive;
+  uint match_type = flags & 0x0F;
+  Qt::CaseSensitivity case_sensitivity = Qt::CaseSensitive;
   bool wrap = flags & Qt::MatchWrap;
-  bool allHits = (hits == -1);
-  QString text;
+  bool all_hits = (hits == -1);
+  QString entered_text;
   int from = start.row();
   int to = rowCount();
 
-  for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
-    for (int r = from; (r < to) && (allHits || result.count() < hits); ++r) {
+  for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); i++) {
+    for (int r = from; (r < to) && (all_hits || result.count() < hits); r++) {
       QModelIndex idx = index(r, start.column());
-      if (!idx.isValid())
+
+      if (!idx.isValid()) {
         continue;
-      QVariant v;
+      }
+
+      QVariant item_value;
 
       if (start.column() == MSG_DB_ID_INDEX) {
-        v = m_sourceModel->data(mapToSource(idx).row(), MSG_DB_TITLE_INDEX);
+        item_value = m_sourceModel->data(mapToSource(idx).row(), MSG_DB_TITLE_INDEX);
       }
       else {
-        v = data(idx, role);
+        item_value = data(idx, role);
       }
 
       // QVariant based matching.
-      if (matchType == Qt::MatchExactly) {
-        if (value == v)
+      if (match_type == Qt::MatchExactly) {
+        if (entered_value == item_value) {
           result.append(idx);
-      } else { // QString based matching.
-        if (text.isEmpty()) // Lazy conversion.
-          text = value.toString();
-        QString t = v.toString();
-        switch (matchType) {
+        }
+      }
+      // QString based matching.
+      else {
+        if (entered_text.isEmpty()) {
+          entered_text = entered_value.toString();
+        }
+
+        QString item_text = item_value.toString();
+
+        switch (match_type) {
           case Qt::MatchRegExp:
-            if (QRegExp(text, cs).exactMatch(t))
+            if (QRegExp(entered_text, case_sensitivity).exactMatch(item_text)) {
               result.append(idx);
+            }
             break;
+
           case Qt::MatchWildcard:
-            if (QRegExp(text, cs, QRegExp::Wildcard).exactMatch(t))
+            if (QRegExp(entered_text, case_sensitivity, QRegExp::Wildcard).exactMatch(item_text)) {
               result.append(idx);
+            }
             break;
+
           case Qt::MatchStartsWith:
-            if (t.startsWith(text, cs))
+            if (item_text.startsWith(entered_text, case_sensitivity)) {
               result.append(idx);
+            }
             break;
+
           case Qt::MatchEndsWith:
-            if (t.endsWith(text, cs))
+            if (item_text.endsWith(entered_text, case_sensitivity)) {
               result.append(idx);
+            }
             break;
+
           case Qt::MatchFixedString:
-            if (t.compare(text, cs) == 0)
+            if (item_text.compare(entered_text, case_sensitivity) == 0) {
               result.append(idx);
+            }
             break;
+
           case Qt::MatchContains:
           default:
-            if (t.contains(text, cs))
+            if (item_text.contains(entered_text, case_sensitivity)) {
               result.append(idx);
+            }
+            break;
         }
       }
     }
@@ -130,6 +151,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
     from = 0;
     to = start.row();
   }
+
   return result;
 }
 

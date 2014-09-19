@@ -40,7 +40,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
     QModelIndexList mapListFromSource(const QModelIndexList &indexes, bool deep = false);
 
-    QModelIndexList match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const;
+    // Fix for matching indexes with respect to specifics of the message model.
+    QModelIndexList match(const QModelIndex &start, int role, const QVariant &entered_value, int hits, Qt::MatchFlags flags) const;
 
   protected:
     // Compares two rows of data.
