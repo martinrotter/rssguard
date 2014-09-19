@@ -18,6 +18,7 @@ Added:
 
 Changed:
 <ul>
+<li>File downloader now resolves "feed://" URI scheme to "http://" URI scheme.</li>
 <li>Target message is now selected instead of highlighted when searching with keyboard.</li>
 </ul>
 
