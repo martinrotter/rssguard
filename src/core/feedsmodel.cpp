@@ -477,6 +477,17 @@ FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const
   }
 }
 
+FeedsModelRecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) const {
+  FeedsModelRootItem *item = itemForIndex(index);
+
+  if (item->kind() == FeedsModelRootItem::RecycleBin) {
+    return static_cast<FeedsModelRecycleBin*>(item);
+  }
+  else {
+    return NULL;
+  }
+}
+
 QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   if (item == NULL || item->kind() == FeedsModelRootItem::RootItem) {
     // Root item lies on invalid index.

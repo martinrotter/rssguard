@@ -63,6 +63,7 @@ class FeedsView : public QTreeView {
     // selected.
     FeedsModelCategory *selectedCategory() const;
     FeedsModelFeed *selectedFeed() const;
+    FeedsModelRecycleBin *selectedRecycleBin() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void saveExpandedStates();

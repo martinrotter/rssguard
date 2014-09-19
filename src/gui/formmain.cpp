@@ -126,6 +126,10 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSelectPreviousMessage;
   actions << m_ui->m_actionDefragmentDatabase;
 
+  // Add recycle bin actions.
+  actions << m_ui->m_actionRestoreAllMessages;
+  actions << m_ui->m_actionEmptyRecycleBin;
+
   return actions;
 }
 

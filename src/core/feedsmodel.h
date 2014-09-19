@@ -122,6 +122,8 @@ class FeedsModel : public QAbstractItemModel {
     // or NULL if no category lies in given index.
     FeedsModelCategory *categoryForIndex(const QModelIndex &index) const;
 
+    FeedsModelRecycleBin *recycleBinForIndex(const QModelIndex &index) const;
+
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
     FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;

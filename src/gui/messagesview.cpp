@@ -278,10 +278,12 @@ void MessagesView::openSelectedMessagesInternally() {
     messages << m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
   }
 
-  emit openMessagesInNewspaperView(messages);
+  if (!messages.isEmpty()) {
+    emit openMessagesInNewspaperView(messages);
 
-  // Finally, mark opened messages as read.
-  markSelectedMessagesRead();
+    // Finally, mark opened messages as read.
+    markSelectedMessagesRead();
+  }
 }
 
 void MessagesView::markSelectedMessagesRead() {

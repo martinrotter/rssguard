@@ -119,6 +119,11 @@ FeedsModelFeed *FeedsView::selectedFeed() const {
   return m_sourceModel->feedForIndex(current_mapped);
 }
 
+FeedsModelRecycleBin *FeedsView::selectedRecycleBin() const{
+  QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
+  return m_sourceModel->recycleBinForIndex(current_mapped);
+}
+
 void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
 
@@ -305,20 +310,7 @@ void FeedsView::editSelectedItem() {
     editCategory(static_cast<FeedsModelCategory*>(category));
   }
   else if ((feed = selectedFeed()) != NULL) {
-    // Feed is selected.
-    switch (feed->type()) {
-      case FeedsModelFeed::Atom10:
-      case FeedsModelFeed::Rdf:
-      case FeedsModelFeed::Rss0X:
-      case FeedsModelFeed::Rss2X: {
-        // User wants to edit standard feed.
-        editFeed(static_cast<FeedsModelFeed*>(feed));
-        break;
-      }
-
-      default:
-        break;
-    }
+    editFeed(static_cast<FeedsModelFeed*>(feed));
   }
 
   // Changes are done, unlock the update master lock.
@@ -412,6 +404,13 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
 }
 
 void FeedsView::emptyRecycleBin() {
+  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Permanently delete messages"),
+                       tr("You are about to permanenty delete all messages from your recycle bin."), tr("Do you really want to empty your recycle bin?"),
+                       QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
+    // User changed his mind.
+    return;
+  }
+
   m_sourceModel->recycleBin()->empty();
   updateCountsOfSelectedFeeds();
 

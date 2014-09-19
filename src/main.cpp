@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
   main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(main_window.allActions());
+  DynamicShortcuts::load(qApp->userActions());
 
   // Display main window.
   if (qApp->settings()->value(APP_CFG_GUI, "start_hidden", false).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
