@@ -110,6 +110,62 @@ QVariant FeedsModelRecycleBin::data(int column, int role) const {
   }
 }
 
+bool FeedsModelRecycleBin::empty() {
+  QSqlDatabase db_handle = qApp->database()->connection("FeedsModelRecycleBin",
+                                                        DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for recycle bin emptying.");
+    return false;
+  }
+
+  QSqlQuery query_empty_bin(db_handle);
+  query_empty_bin.setForwardOnly(true);
+
+  if (!query_empty_bin.exec("DELETE FROM Messages WHERE is_deleted = 1;")) {
+    qWarning("Query execution failed for recycle bin emptying.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
+bool FeedsModelRecycleBin::restore() {
+  QSqlDatabase db_handle = qApp->database()->connection("FeedsModelRecycleBin",
+                                                        DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for recycle bin restoring.");
+    return false;
+  }
+
+  QSqlQuery query_empty_bin(db_handle);
+  query_empty_bin.setForwardOnly(true);
+
+  if (!query_empty_bin.exec("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1;")) {
+    qWarning("Query execution failed for recycle bin restoring.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
 void FeedsModelRecycleBin::updateCounts() {
   QSqlDatabase database = qApp->database()->connection("FeedsModelRecycleBin",
                                                        DatabaseFactory::FromSettings);

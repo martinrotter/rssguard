@@ -267,6 +267,10 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
+  connect(form_main->m_ui->m_actionEmptyRecycleBin,
+          SIGNAL(triggered()), m_feedsView, SLOT(emptyRecycleBin()));
+  connect(form_main->m_ui->m_actionRestoreAllMessages,
+          SIGNAL(triggered()), m_feedsView, SLOT(restoreRecycleBin()));
   connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsList,

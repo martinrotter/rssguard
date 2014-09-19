@@ -87,6 +87,10 @@ class FeedsView : public QTreeView {
     // Newspaper accessors.
     void openSelectedFeedsInNewspaperMode();
 
+    // Recycle bin operators.
+    void emptyRecycleBin();
+    void restoreRecycleBin();
+
     // Feed clearers.
     void setSelectedFeedsClearStatus(int clear);
     void setAllFeedsClearStatus(int clear);
@@ -135,6 +139,7 @@ class FeedsView : public QTreeView {
     // Initializes context menus.
     void initializeContextMenuCategoriesFeeds();
     void initializeContextMenuEmptySpace();
+    void initializeContextMenuRecycleBin();
 
     // Sets up appearance of this widget.
     void setupAppearance();
@@ -166,6 +171,7 @@ class FeedsView : public QTreeView {
   private:
     QMenu *m_contextMenuCategoriesFeeds;
     QMenu *m_contextMenuEmptySpace;
+    QMenu *m_contextMenuRecycleBin;
 
     QList<int> m_selectedFeeds;
     FeedsModel *m_sourceModel;

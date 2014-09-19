@@ -44,6 +44,7 @@ FeedsView::FeedsView(QWidget *parent)
   : QTreeView(parent),
     m_contextMenuCategoriesFeeds(NULL),
     m_contextMenuEmptySpace(NULL),
+    m_contextMenuRecycleBin(NULL),
     m_autoUpdateTimer(new QTimer(this)) {
   setObjectName("FeedsView");
 
@@ -410,6 +411,20 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
   }
 }
 
+void FeedsView::emptyRecycleBin() {
+  m_sourceModel->recycleBin()->empty();
+  updateCountsOfSelectedFeeds();
+
+  emit feedsNeedToBeReloaded(1);
+}
+
+void FeedsView::restoreRecycleBin() {
+  m_sourceModel->recycleBin()->restore();
+  updateCountsOfAllFeeds(true);
+
+  emit feedsNeedToBeReloaded(1);
+}
+
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) { 
   foreach (FeedsModelFeed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
@@ -497,11 +512,18 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {
-  m_contextMenuEmptySpace = new QMenu(tr("Context menu"), this);
+  m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateAllFeeds <<
                                       qApp->mainForm()->m_ui->m_actionAddCategory <<
                                       qApp->mainForm()->m_ui->m_actionAddFeed);
+}
+
+void FeedsView::initializeContextMenuRecycleBin() {
+  m_contextMenuRecycleBin = new QMenu(tr("Context menu for recycle bin"), this);
+  m_contextMenuRecycleBin->addActions(QList<QAction*>() <<
+                                      qApp->mainForm()->m_ui->m_actionRestoreAllMessages <<
+                                      qApp->mainForm()->m_ui->m_actionEmptyRecycleBin);
 }
 
 void FeedsView::setupAppearance() {
@@ -590,7 +612,12 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
       m_contextMenuCategoriesFeeds->exec(event->globalPos());
     }
     else if (clicked_item->kind() == FeedsModelRootItem::RecycleBin) {
-      // TODO: Display context menu for recycle bin.
+      // Display context menu for recycle bin.
+      if (m_contextMenuRecycleBin == NULL) {
+        initializeContextMenuRecycleBin();
+      }
+
+      m_contextMenuRecycleBin->exec(event->globalPos());
     }
   }
   else {

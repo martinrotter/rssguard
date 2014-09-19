@@ -36,6 +36,9 @@ class FeedsModelRecycleBin : public FeedsModelRootItem {
     int countOfAllMessages() const;
     QVariant data(int column, int role) const;
 
+    bool empty();
+    bool restore();
+
   public slots:
     void updateCounts();
 
