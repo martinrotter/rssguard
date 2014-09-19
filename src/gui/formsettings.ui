@@ -14,10 +14,86 @@
    <string>Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QListWidget" name="m_listSettings">
+     <property name="minimumSize">
+      <size>
+       <width>220</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>220</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="showDropIndicator" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="selectionRectVisible">
+      <bool>false</bool>
+     </property>
+     <property name="currentRow">
+      <number>-1</number>
+     </property>
+     <item>
+      <property name="text">
+       <string extracomment="General settings section.">General</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Data storage</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Keyboard shortcuts</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>User interface</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string extracomment="Language settings section.">Language</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Web browser &amp; proxy</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Feeds &amp; messages</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="m_buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -353,7 +429,7 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -1199,82 +1275,6 @@ Authors of this application are NOT responsible for lost data.</string>
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="m_buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QListWidget" name="m_listSettings">
-     <property name="minimumSize">
-      <size>
-       <width>220</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>220</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="showDropIndicator" stdset="0">
-      <bool>false</bool>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>false</bool>
-     </property>
-     <property name="movement">
-      <enum>QListView::Static</enum>
-     </property>
-     <property name="selectionRectVisible">
-      <bool>false</bool>
-     </property>
-     <property name="currentRow">
-      <number>-1</number>
-     </property>
-     <item>
-      <property name="text">
-       <string extracomment="General settings section.">General</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Data storage</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Keyboard shortcuts</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>User interface</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string extracomment="Language settings section.">Language</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Web browser &amp; proxy</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Feeds &amp; messages</string>
-      </property>
-     </item>
     </widget>
    </item>
   </layout>

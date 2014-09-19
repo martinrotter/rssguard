@@ -45,6 +45,7 @@
 #include <QNetworkProxy>
 #include <QColorDialog>
 #include <QFileDialog>
+#include <QKeyEvent>
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -53,6 +54,11 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme("application-settings"));
+
+  m_ui->m_editorMessagesToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
+  m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
+  m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
+  m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
 
 #if !defined(Q_OS_WIN)
   MessageBox::iconify(m_ui->m_buttonBox);
@@ -783,4 +789,19 @@ void FormSettings::saveInterface() {
 
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
+}
+
+
+bool FormSettings::eventFilter(QObject *obj, QEvent *e) {
+  Q_UNUSED(obj)
+
+  if (e->type() == QEvent::Drop) {
+    QDropEvent *drop_event = static_cast<QDropEvent*>(e);
+
+    if (drop_event->keyboardModifiers() != Qt::NoModifier) {
+      drop_event->setDropAction(Qt::MoveAction);
+    }
+  }
+
+  return false;
 }

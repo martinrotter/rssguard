@@ -41,6 +41,14 @@ class ToolBarEditor : public QWidget {
     void loadFromToolBar(BaseToolBar *tool_bar);
     void saveToolBar();
 
+    inline QListWidget *activeItemsWidget() {
+      return m_ui->m_listActivatedActions;
+    }
+
+    inline QListWidget *availableItemsWidget() {
+      return m_ui->m_listAvailableActions;
+    }
+
   private slots:
     // Insert common controls.
     void insertSpacer();
