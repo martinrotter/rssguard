@@ -38,10 +38,10 @@ Downloader::~Downloader() {
   m_downloadManager->deleteLater();
 }
 
-void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents,
-                              const QString &username, const QString &password) {
+void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username, const QString &password) {
   QNetworkRequest request;
   QObject originatingObject;
+  QString non_const_url = url;
 
   // Set credential information as originating object.
   originatingObject.setProperty("protected", protected_contents);
@@ -52,7 +52,14 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
   // Set url for this request and fire it up.
   m_timer->setInterval(timeout);
 
-  request.setUrl(url);
+  if (non_const_url.startsWith(URI_SCHEME_FEED)) {
+    qDebug("Replacing URI schemes for '%s'.", qPrintable(non_const_url));
+    request.setUrl(non_const_url.replace(QRegExp(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
+  }
+  else {
+    request.setUrl(non_const_url);
+  }
+
   runGetRequest(request);
 }
 
@@ -68,8 +75,7 @@ void Downloader::finished(QNetworkReply *reply) {
     QNetworkRequest request = reply->request();
 
     if (redirection_url.host().isEmpty()) {
-      request.setUrl(QUrl(reply->request().url().scheme() + "://" + reply->request().url().host() +
-                          redirection_url.toString()));
+      request.setUrl(QUrl(reply->request().url().scheme() + "://" + reply->request().url().host() + redirection_url.toString()));
     }
     else {
       request.setUrl(redirection_url);
@@ -113,8 +119,7 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
   m_timer->start();
   m_activeReply = m_downloadManager->get(request);
 
-  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)),
-          this, SLOT(progressInternal(qint64,qint64)));
+  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
 }
 
 QVariant Downloader::lastContentType() const {

@@ -39,6 +39,8 @@
 #define APP_DONATE_URL      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
 
+#define URI_SCHEME_FEED                 "feed://"
+#define URI_SCHEME_HTTP                 "http://"
 #define RELEASES_LIST                   "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/UPDATES?at=master"
 #define DEFAULT_LOCALE                  "en_GB"
 #define DEFAULT_FEED_ENCODING           "UTF-8"
