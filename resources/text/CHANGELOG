@@ -14,6 +14,7 @@ Added:
 <ul>
 <li>Top-level recycle bin which displays count of deleted items properly.</li>
 <li>MySQL backend now alows to defragment/optimize RSS Guard database.</li>
+<li>New blau-based yellow skin.</li>
 </ul>
 
 Changed:
