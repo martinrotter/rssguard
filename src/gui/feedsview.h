@@ -174,7 +174,6 @@ class FeedsView : public QTreeView {
     QMenu *m_contextMenuEmptySpace;
     QMenu *m_contextMenuRecycleBin;
 
-    QList<int> m_selectedFeeds;
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
 

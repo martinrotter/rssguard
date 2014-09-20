@@ -561,29 +561,25 @@ void FeedsView::setupAppearance() {
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
   QTreeView::selectionChanged(selected, deselected);
 
-  m_selectedFeeds.clear();
+  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
+  QList<int> selected_ids;
 
-  foreach (FeedsModelFeed *feed, selectedFeeds()) {
+  if (!selected_feeds.isEmpty()) {
+    foreach (FeedsModelFeed *feed, selected_feeds) {
 #if defined(DEBUG)
-    QModelIndex index_for_feed = m_sourceModel->indexForItem(feed);
+      QModelIndex index_for_feed = m_sourceModel->indexForItem(feed);
 
-    qDebug("Selecting feed '%s' (source index [%d, %d]).", qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
+      qDebug("Selecting feed '%s' (source index [%d, %d]).", qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
 #endif
 
-    m_selectedFeeds << feed->id();
-  }
-
-  if (m_selectedFeeds.isEmpty() && selectionModel()->selectedIndexes().size() > 0) {
-    QModelIndex selected_index = selectionModel()->selectedIndexes().at(0);
-    QModelIndex mapped_index = model()->mapToSource(selected_index);
-    FeedsModelRootItem *item = sourceModel()->itemForIndex(mapped_index);
-
-    if (item->kind() == FeedsModelRootItem::RecycleBin) {
-      m_selectedFeeds.append(ID_RECYCLE_BIN);
+      selected_ids << feed->id();
     }
   }
+  else if (selectedRecycleBin() != NULL) {
+    selected_ids << ID_RECYCLE_BIN;
+  }
 
-  emit feedsSelected(m_selectedFeeds);
+  emit feedsSelected(selected_ids);
 }
 
 void FeedsView::keyPressEvent(QKeyEvent *event) {

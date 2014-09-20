@@ -50,10 +50,15 @@ class MessagesModel : public QSqlTableModel {
   public:
     // Enum which describes basic filtering schemes
     // for messages.
-    enum DisplayFilter {
-      DisplayAll = 100,
-      DisplayUnread = 101,
-      DisplayImportant = 102
+    enum MessageFilter {
+      NoHighlighting = 100,
+      HighlightUnread = 101,
+      HighlightImportant = 102
+    };
+
+    enum MessageMode {
+      MessagesFromFeeds,
+      MessagesFromRecycleBin
     };
 
     // Constructors and destructors.
@@ -104,7 +109,7 @@ class MessagesModel : public QSqlTableModel {
     // Loads messages of given feeds.
     void loadMessages(const QList<int> feed_ids);
 
-    void filterMessages(DisplayFilter filter);
+    void filterMessages(MessageFilter filter);
 
   signals:
     // Emitted if some persistent change is made which affects
@@ -126,7 +131,8 @@ class MessagesModel : public QSqlTableModel {
     void setupIcons();
 
   private:
-    DisplayFilter m_filter;
+    MessageMode m_messageMode;
+    MessageFilter m_messageFilter;
 
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
@@ -140,6 +146,6 @@ class MessagesModel : public QSqlTableModel {
     QIcon m_unreadIcon;
 };
 
-Q_DECLARE_METATYPE(MessagesModel::DisplayFilter)
+Q_DECLARE_METATYPE(MessagesModel::MessageFilter)
 
 #endif // MESSAGESMODEL_H

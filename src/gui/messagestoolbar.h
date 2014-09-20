@@ -56,7 +56,7 @@ class MessagesToolBar : public BaseToolBar {
     void messageSearchPatternChanged(const QString &pattern);
 
     // Emitted if message filter is changed.
-    void messageFilterChanged(MessagesModel::DisplayFilter filter);
+    void messageFilterChanged(MessagesModel::MessageFilter filter);
 
   private slots:
     // Called when highlighter gets changed.

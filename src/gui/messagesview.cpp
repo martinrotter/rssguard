@@ -420,7 +420,7 @@ void MessagesView::searchMessages(const QString &pattern) {
   }
 }
 
-void MessagesView::filterMessages(MessagesModel::DisplayFilter filter) {
+void MessagesView::filterMessages(MessagesModel::MessageFilter filter) {
   m_sourceModel->filterMessages(filter);
 }
 

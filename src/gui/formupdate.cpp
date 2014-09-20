@@ -224,7 +224,7 @@ void FormUpdate::startUpdate() {
       // Initialie downloader.
       m_downloader = new Downloader(this);
 
-      connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
+      //connect(m_downloader, SIGNAL(progress(qint64,qint64)), this, SLOT(updateProgress(qint64,qint64)));
       connect(m_downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)), this, SLOT(updateCompleted(QNetworkReply::NetworkError,QByteArray)));
     }
 

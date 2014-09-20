@@ -106,7 +106,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction *action) {
   m_btnMessageHighlighter->setIcon(action->icon());
   m_btnMessageHighlighter->setToolTip(action->text());
 
-  emit messageFilterChanged(action->data().value<MessagesModel::DisplayFilter>());
+  emit messageFilterChanged(action->data().value<MessagesModel::MessageFilter>());
 }
 
 void MessagesToolBar::initializeSearchBox() {
@@ -128,11 +128,11 @@ void MessagesToolBar::initializeSearchBox() {
 void MessagesToolBar::initializeHighlighter() {
   m_menuMessageHighlighter = new QMenu(tr("Menu for highlighting messages"), this);
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme("mail-mark-read"),
-                                      tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::DisplayAll));
+                                      tr("No extra highlighting"))->setData(QVariant::fromValue(MessagesModel::NoHighlighting));
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme("mail-mark-unread"),
-                                      tr("Highlight unread messages"))->setData(QVariant::fromValue(MessagesModel::DisplayUnread));
+                                      tr("Highlight unread messages"))->setData(QVariant::fromValue(MessagesModel::HighlightUnread));
   m_menuMessageHighlighter->addAction(qApp->icons()->fromTheme("mail-mark-favorite"),
-                                      tr("Highlight important messages"))->setData(QVariant::fromValue(MessagesModel::DisplayImportant));
+                                      tr("Highlight important messages"))->setData(QVariant::fromValue(MessagesModel::HighlightImportant));
 
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all messages"));

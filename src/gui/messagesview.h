@@ -72,15 +72,15 @@ class MessagesView : public QTreeView {
     void setSelectedMessagesReadStatus(int read);
     void markSelectedMessagesRead();
     void markSelectedMessagesUnread();
-    void deleteSelectedMessages();
     void switchSelectedMessagesImportance();
+    void deleteSelectedMessages();
 
     void selectNextItem();
     void selectPreviousItem();
 
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString &pattern);
-    void filterMessages(MessagesModel::DisplayFilter filter);
+    void filterMessages(MessagesModel::MessageFilter filter);
 
   protected slots:
     // Marks given indexes as selected.
