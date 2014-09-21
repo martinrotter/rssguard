@@ -235,6 +235,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
   connect(form_main->m_ui->m_actionDeleteSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(deleteSelectedMessages()));
+  connect(form_main->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin,
+          SIGNAL(triggered()), m_messagesView, SLOT(restoreSelectedMessages()));
   connect(form_main->m_ui->m_actionMarkSelectedMessagesAsRead,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesRead()));
   connect(form_main->m_ui->m_actionMarkSelectedMessagesAsUnread,
@@ -269,7 +271,7 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
   connect(form_main->m_ui->m_actionEmptyRecycleBin,
           SIGNAL(triggered()), m_feedsView, SLOT(emptyRecycleBin()));
-  connect(form_main->m_ui->m_actionRestoreAllMessages,
+  connect(form_main->m_ui->m_actionRestoreRecycleBin,
           SIGNAL(triggered()), m_feedsView, SLOT(restoreRecycleBin()));
   connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));

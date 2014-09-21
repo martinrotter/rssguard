@@ -170,7 +170,8 @@
      <string>&amp;Recycle bin</string>
     </property>
     <addaction name="m_actionEmptyRecycleBin"/>
-    <addaction name="m_actionRestoreAllMessages"/>
+    <addaction name="m_actionRestoreRecycleBin"/>
+    <addaction name="m_actionRestoreSelectedMessagesFromRecycleBin"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
@@ -598,9 +599,14 @@
     <string>&amp;Empty recycle bin</string>
    </property>
   </action>
-  <action name="m_actionRestoreAllMessages">
+  <action name="m_actionRestoreRecycleBin">
    <property name="text">
     <string>&amp;Restore all messages</string>
+   </property>
+  </action>
+  <action name="m_actionRestoreSelectedMessagesFromRecycleBin">
+   <property name="text">
+    <string>Restore &amp;selected messages</string>
    </property>
   </action>
  </widget>

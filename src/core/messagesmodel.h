@@ -102,6 +102,7 @@ class MessagesModel : public QSqlTableModel {
     bool switchBatchMessageImportance(const QModelIndexList &messages);
     bool setBatchMessagesDeleted(const QModelIndexList &messages, int deleted);
     bool setBatchMessagesRead(const QModelIndexList &messages, int read);
+    bool setBatchMessagesRestored(const QModelIndexList &messages);
 
     // Fetches ALL available data to the model.
     void fetchAll();

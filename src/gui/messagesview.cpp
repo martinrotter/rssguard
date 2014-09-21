@@ -155,7 +155,8 @@ void MessagesView::initializeContextMenu() {
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
                             qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
+                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages <<
+                            qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
 }
 
 void MessagesView::mousePressEvent(QMouseEvent *event) {
@@ -338,6 +339,36 @@ void MessagesView::deleteSelectedMessages() {
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes, 1);
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+
+  int row_count = m_sourceModel->rowCount();
+  if (row_count > 0) {
+    QModelIndex last_item = current_index.row() < row_count ?
+                              m_proxyModel->index(current_index.row(),
+                                                  MSG_DB_TITLE_INDEX) :
+                              m_proxyModel->index(row_count - 1,
+                                                  MSG_DB_TITLE_INDEX);
+
+    setCurrentIndex(last_item);
+    scrollTo(last_item);
+    reselectIndexes(QModelIndexList() << last_item);
+  }
+  else {
+    emit currentMessagesRemoved();
+  }
+}
+
+void MessagesView::restoreSelectedMessages() {
+  QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (!current_index.isValid()) {
+    return;
+  }
+
+  QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+
+  m_sourceModel->setBatchMessagesRestored(mapped_indexes);
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   int row_count = m_sourceModel->rowCount();

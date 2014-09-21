@@ -521,7 +521,7 @@ void FeedsView::initializeContextMenuEmptySpace() {
 void FeedsView::initializeContextMenuRecycleBin() {
   m_contextMenuRecycleBin = new QMenu(tr("Context menu for recycle bin"), this);
   m_contextMenuRecycleBin->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionRestoreAllMessages <<
+                                      qApp->mainForm()->m_ui->m_actionRestoreRecycleBin <<
                                       qApp->mainForm()->m_ui->m_actionEmptyRecycleBin);
 }
 

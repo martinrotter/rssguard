@@ -365,7 +365,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   if (m_messageMode == MessagesFromFeeds) {
     sql_delete_query = QString("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);").arg(message_ids.join(", "),
-                                                                                           QString::number(deleted));
+                                                                                            QString::number(deleted));
   }
   else {
     sql_delete_query = QString("DELETE FROM Messages WHERE id in (%1);").arg(message_ids.join(", "));
@@ -406,6 +406,14 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
   else {
     return false;
   }
+}
+
+bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
+  // TODO: Model -> setBatchMessagesRestored();
+  // obnovime zpravy, po obnoveni je treba jako ve funkci setBatchMessagesDeleted
+  // pres feedCountsChanged dat informaci ze pocty zprav se zmenily, ale oni
+  // se zmenily nejen ve vybranych kanalech (je vybran odkadkovy kos) ale v kanalech do kterych patri
+  return true;
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {

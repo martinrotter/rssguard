@@ -127,7 +127,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionDefragmentDatabase;
 
   // Add recycle bin actions.
-  actions << m_ui->m_actionRestoreAllMessages;
+  actions << m_ui->m_actionRestoreRecycleBin;
   actions << m_ui->m_actionEmptyRecycleBin;
 
   return actions;
@@ -222,7 +222,8 @@ void FormMain::setupIcons() {
 
   // Recycle bin.
   m_ui->m_actionEmptyRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-empty"));
-  m_ui->m_actionRestoreAllMessages->setIcon(icon_theme_factory->fromTheme("recycle-bin-restore"));
+  m_ui->m_actionRestoreRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-restore-all"));
+  m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-restore-one"));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
