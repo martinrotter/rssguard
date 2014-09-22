@@ -264,7 +264,7 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     // can reflect.
     emit dataChanged(index(row_index, 0),
                      index(row_index, columnCount() - 1));
-    emit feedCountsChanged(false);
+    emit messageCountsChanged(false);
     return true;
   }
   else {
@@ -341,7 +341,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     select();
     fetchAll();
 
-    //emit feedCountsChanged(false);
+    //emit messageCountsChanged(false);
     return true;
   }
   else {
@@ -375,7 +375,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     select();
     fetchAll();
 
-    emit feedCountsChanged(true);
+    emit messageCountsChanged(true);
     return true;
   }
   else {
@@ -400,7 +400,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
     select();
     fetchAll();
 
-    emit feedCountsChanged(true);
+    emit messageCountsChanged(true);
     return true;
   }
   else {
@@ -411,9 +411,37 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
   // TODO: Model -> setBatchMessagesRestored();
   // obnovime zpravy, po obnoveni je treba jako ve funkci setBatchMessagesDeleted
-  // pres feedCountsChanged dat informaci ze pocty zprav se zmenily, ale oni
+  // pres messageCountsChanged dat informaci ze pocty zprav se zmenily, ale oni
   // se zmenily nejen ve vybranych kanalech (je vybran odkadkovy kos) ale v kanalech do kterych patri
-  return true;
+
+  if (m_messageMode == MessagesFromFeeds) {
+    qDebug("Cannot restore non-deleted messages.");
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  QSqlQuery query_read_msg(db_handle);
+  QStringList message_ids;
+
+  query_read_msg.setForwardOnly(true);
+
+  // Obtain IDs of all desired messages.
+  foreach (const QModelIndex &message, messages) {
+    message_ids.append(QString::number(messageId(message.row())));
+  }
+
+  QString sql_delete_query = QString("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);").arg(message_ids.join(", "));
+
+  if (query_read_msg.exec(sql_delete_query)) {
+    select();
+    fetchAll();
+
+    emit messageCountsChanged(true);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {

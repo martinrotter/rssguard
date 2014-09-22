@@ -80,12 +80,8 @@ void FeedMessageViewer::saveSize() {
   m_feedsView->saveExpandedStates();
 
   // Store offsets of splitters.
-  settings->setValue(APP_CFG_GUI,
-                     "splitter_feeds",
-                     QString(m_feedSplitter->saveState().toBase64()));
-  settings->setValue(APP_CFG_GUI,
-                     "splitter_messages",
-                     QString(m_messageSplitter->saveState().toBase64()));
+  settings->setValue(APP_CFG_GUI, "splitter_feeds", QString(m_feedSplitter->saveState().toBase64()));
+  settings->setValue(APP_CFG_GUI, "splitter_messages", QString(m_messageSplitter->saveState().toBase64()));
 
   // States of splitters are stored, let's store
   // widths of columns.
@@ -93,12 +89,8 @@ void FeedMessageViewer::saveSize() {
   int width_column_date = m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX);
 
   if (width_column_author != 0 && width_column_date != 0) {
-    settings->setValue(APP_CFG_GUI,
-                       KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
-                       width_column_author);
-    settings->setValue(APP_CFG_GUI,
-                       KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
-                       width_column_date);
+    settings->setValue(APP_CFG_GUI, KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX), width_column_author);
+    settings->setValue(APP_CFG_GUI, KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX), width_column_date);
   }
 
   // Store "visibility" of toolbars and list headers.
@@ -117,14 +109,12 @@ void FeedMessageViewer::loadSize() {
   m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, "splitter_messages").toString().toLocal8Bit()));
 
   // Splitters are restored, now, restore widths of columns.
-  m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX,
-                                 settings->value(APP_CFG_GUI,
-                                                 KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
-                                                 default_msg_section_size).toInt());
-  m_messagesView->setColumnWidth(MSG_DB_DCREATED_INDEX,
-                                 settings->value(APP_CFG_GUI,
-                                                 KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
-                                                 default_msg_section_size).toInt());
+  m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX, settings->value(APP_CFG_GUI,
+                                                                      KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
+                                                                      default_msg_section_size).toInt());
+  m_messagesView->setColumnWidth(MSG_DB_DCREATED_INDEX, settings->value(APP_CFG_GUI,
+                                                                        KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
+                                                                        default_msg_section_size).toInt());
 }
 
 void FeedMessageViewer::quit() {
@@ -155,8 +145,7 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
   m_messagesView->header()->setVisible(enable);
 }
 
-void FeedMessageViewer::updateTrayIconStatus(int unread_messages,
-                                             int total_messages) {
+void FeedMessageViewer::updateTrayIconStatus(int unread_messages, int total_messages) {
   Q_UNUSED(total_messages)
 
   if (SystemTrayIcon::isSystemTrayActivated()) {
@@ -191,10 +180,8 @@ void FeedMessageViewer::createConnections() {
   FormMain *form_main = qApp->mainForm();
 
   // Filtering & searching.
-  connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)),
-          m_messagesView, SLOT(searchMessages(QString)));
-  connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageFilter)),
-          m_messagesView, SLOT(filterMessages(MessagesModel::MessageFilter)));
+  connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)), m_messagesView, SLOT(searchMessages(QString)));
+  connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageFilter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageFilter)));
 
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
@@ -204,14 +191,14 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)), m_messagesView, SLOT(loadFeeds(QList<int>)));
 
   // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView, SIGNAL(feedCountsChanged(bool)), m_feedsView, SLOT(updateCountsOfSelectedFeeds(bool)));
+  connect(m_messagesView, SIGNAL(messageCountsChanged(bool)), m_feedsView, SLOT(updateCountsOfSelectedFeeds(bool)));
 
   // State of many messages is changed, then we need
   // to reload selections.
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)), m_messagesView, SLOT(reloadSelections(int)));
 
   // If counts of unread/all messages change, update the tray icon.
-  connect(m_feedsView, SIGNAL(feedCountsChanged(int,int)), this, SLOT(updateTrayIconStatus(int,int)));
+  connect(m_feedsView, SIGNAL(messageCountsChanged(int, int)), this, SLOT(updateTrayIconStatus(int, int)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),

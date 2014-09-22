@@ -50,7 +50,7 @@ MessagesView::~MessagesView() {
 
 void MessagesView::createConnections() {
   // Forward feed counts changes.
-  connect(m_sourceModel, SIGNAL(feedCountsChanged(bool)), this, SIGNAL(feedCountsChanged(bool)));
+  connect(m_sourceModel, SIGNAL(messageCountsChanged(bool)), this, SIGNAL(messageCountsChanged(bool)));
 
   // Make sure that source message is opened
   // in new tab on double click.
@@ -368,23 +368,24 @@ void MessagesView::restoreSelectedMessages() {
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
-  m_sourceModel->setBatchMessagesRestored(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  if (m_sourceModel->setBatchMessagesRestored(mapped_indexes)) {
+    sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-  int row_count = m_sourceModel->rowCount();
-  if (row_count > 0) {
-    QModelIndex last_item = current_index.row() < row_count ?
-                              m_proxyModel->index(current_index.row(),
-                                                  MSG_DB_TITLE_INDEX) :
-                              m_proxyModel->index(row_count - 1,
-                                                  MSG_DB_TITLE_INDEX);
+    int row_count = m_sourceModel->rowCount();
+    if (row_count > 0) {
+      QModelIndex last_item = current_index.row() < row_count ?
+                                m_proxyModel->index(current_index.row(),
+                                                    MSG_DB_TITLE_INDEX) :
+                                m_proxyModel->index(row_count - 1,
+                                                    MSG_DB_TITLE_INDEX);
 
-    setCurrentIndex(last_item);
-    scrollTo(last_item);
-    reselectIndexes(QModelIndexList() << last_item);
-  }
-  else {
-    emit currentMessagesRemoved();
+      setCurrentIndex(last_item);
+      scrollTo(last_item);
+      reselectIndexes(QModelIndexList() << last_item);
+    }
+    else {
+      emit currentMessagesRemoved();
+    }
   }
 }
 

@@ -113,9 +113,8 @@ class MessagesModel : public QSqlTableModel {
     void filterMessages(MessageFilter filter);
 
   signals:
-    // Emitted if some persistent change is made which affects
-    // count of "unread/all" messages.
-    void feedCountsChanged(bool total_message_number_changed = true);
+    // Emitted if some persistent change is made which affects count of "unread/all" messages.
+    void messageCountsChanged(bool total_message_number_changed);
 
   protected:
     // Returns selected feed ids in concatenated textual form,
