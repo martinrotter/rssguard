@@ -169,9 +169,7 @@ void FeedMessageViewer::onFeedUpdatesStarted() {
   qApp->mainForm()->statusBar()->showProgress(0, tr("Feed update started"));
 }
 
-void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed,
-                                              int current,
-                                              int total) {
+void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total) {
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
   qApp->mainForm()->statusBar()->showProgress((current * 100.0) / total,

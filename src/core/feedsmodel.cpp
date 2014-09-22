@@ -488,12 +488,31 @@ FeedsModelRecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) c
   }
 }
 
-QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
+QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const { 
   if (item == NULL || item->kind() == FeedsModelRootItem::RootItem) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
 
+  QStack<FeedsModelRootItem*> chain;
+
+  while (item->kind() != FeedsModelRootItem::RootItem) {
+    chain.push(item);
+    item = item->parent();
+  }
+
+  // Now, we have complete chain list: parent --- ..... --- parent --- leaf (item).
+  QModelIndex target_index = indexForItem(m_rootItem);
+
+  // We go through the stack and create our target index.
+  while (!chain.isEmpty()) {
+    FeedsModelRootItem *parent_item = chain.pop();
+    target_index = index(parent_item->parent()->childItems().indexOf(parent_item), 0, target_index);
+  }
+
+  return target_index;
+
+  /*
   QList<QModelIndex> parents;
 
   // Start with root item (which obviously has invalid index).
@@ -527,6 +546,7 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   }
 
   return QModelIndex();
+  */
 }
 
 bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_message) {
