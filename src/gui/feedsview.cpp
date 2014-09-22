@@ -212,14 +212,14 @@ void FeedsView::executeNextAutoUpdate() {
 
 void FeedsView::setSelectedFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(selectedFeeds(), clear, 0);
-  updateCountsOfSelectedFeeds();
+  updateCountsOfSelectedFeeds(true);
 
   emit feedsNeedToBeReloaded(1);
 }
 
 void FeedsView::setAllFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(allFeeds(), clear, 0);
-  updateCountsOfAllFeeds();
+  updateCountsOfAllFeeds(true);
 
   emit feedsNeedToBeReloaded(1);
 }
@@ -348,9 +348,9 @@ void FeedsView::deleteSelectedItem() {
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
     // Item WAS removed, update counts.
-    // TODO: I do not need to update counts of all items here.
-    // Updating counts of parent item (feed) should be enough.
-    updateCountsOfAllFeeds(true);
+    // TODO: Apparently, I do not need to update counts of all items here, therefore updateCountsOfAllFeeds(true)
+    // is not needed probably. We just need to inform other parts of application that number of messages has changed.
+    notifyWithCounts();
   }
   else {
     // Item WAS NOT removed, either database-related error occurred
@@ -412,7 +412,7 @@ void FeedsView::emptyRecycleBin() {
   }
 
   m_sourceModel->recycleBin()->empty();
-  updateCountsOfSelectedFeeds();
+  updateCountsOfSelectedFeeds(true);
 
   emit feedsNeedToBeReloaded(1);
 }
@@ -459,8 +459,7 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   notifyWithCounts();
 }
 
-void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed,
-                                             bool update_total_too) {
+void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too) {
   QModelIndex index = m_sourceModel->indexForItem(feed);
 
   if (index.isValid()) {

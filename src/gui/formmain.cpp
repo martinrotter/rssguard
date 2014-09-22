@@ -129,6 +129,7 @@ QList<QAction*> FormMain::allActions() {
   // Add recycle bin actions.
   actions << m_ui->m_actionRestoreRecycleBin;
   actions << m_ui->m_actionEmptyRecycleBin;
+  actions << m_ui->m_actionRestoreSelectedMessagesFromRecycleBin;
 
   return actions;
 }

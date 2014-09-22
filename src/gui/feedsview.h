@@ -112,19 +112,18 @@ class FeedsView : public QTreeView {
     void editFeed(FeedsModelFeed *feed);
 
     // Reloads counts for selected feeds.
-    void updateCountsOfSelectedFeeds(bool update_total_too = true);
+    void updateCountsOfSelectedFeeds(bool update_total_too);
 
     // Reloads counts for all feeds.
-    void updateCountsOfAllFeeds(bool update_total_too = true);
+    void updateCountsOfAllFeeds(bool update_total_too);
 
     // Reloads counts for particular feed.
-    void updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too = true);
+    void updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too);
 
     // Notifies other components about messages
     // counts.
     inline void notifyWithCounts() {
-      emit feedCountsChanged(m_sourceModel->countOfUnreadMessages(),
-                             m_sourceModel->countOfAllMessages());
+      emit feedCountsChanged(m_sourceModel->countOfUnreadMessages(), m_sourceModel->countOfAllMessages());
     }
 
     // Selects next/previous item (feed/category) in the list.
