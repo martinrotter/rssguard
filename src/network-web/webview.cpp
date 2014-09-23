@@ -161,7 +161,7 @@ void WebView::displayErrorPage() {
                                                   "<li>target destination outage,</li>"
                                                   "<li>many other things.</li>"
                                                   "</ul>"),
-                                               QDateTime::currentDateTime().toString(Qt::DefaultLocaleLongDate))));
+                                               QDateTime::currentDateTime().toString(Qt::DefaultLocaleShortDate))));
 }
 
 void WebView::popupContextMenu(const QPoint &pos) {
