@@ -97,16 +97,7 @@
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item row="0" column="0">
@@ -123,16 +114,7 @@
        <property name="fieldGrowthPolicy">
         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item row="0" column="0" colspan="2">
@@ -171,16 +153,7 @@
            <property name="fieldGrowthPolicy">
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item row="0" column="0" colspan="2">
@@ -223,16 +196,7 @@ Authors of this application are NOT responsible for lost data.</string>
            <property name="fieldGrowthPolicy">
             <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
            </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item row="0" column="0">
@@ -358,16 +322,7 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageShortcuts">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -383,21 +338,12 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>684</width>
-            <height>451</height>
+            <width>696</width>
+            <height>461</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item>
@@ -411,16 +357,7 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageUi">
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -429,23 +366,14 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
            <string>Icons &amp;&amp; skins</string>
           </attribute>
           <layout class="QHBoxLayout" name="horizontalLayout_8">
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
+           <property name="margin">
             <number>0</number>
            </property>
            <item>
@@ -461,8 +389,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>678</width>
-                <height>425</height>
+                <width>688</width>
+                <height>432</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -702,16 +630,7 @@ Authors of this application are NOT responsible for lost data.</string>
              </property>
              <widget class="QWidget" name="m_pageFeedsToolbar">
               <layout class="QHBoxLayout" name="horizontalLayout_13">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -721,16 +640,7 @@ Authors of this application are NOT responsible for lost data.</string>
              </widget>
              <widget class="QWidget" name="m_pageMessagesToolbar">
               <layout class="QHBoxLayout" name="horizontalLayout_14">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -762,16 +672,7 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageLanguages">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -803,16 +704,7 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageProxy">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -1131,16 +1023,7 @@ Authors of this application are NOT responsible for lost data.</string>
      </widget>
      <widget class="QWidget" name="m_pageFeedsMessages">
       <layout class="QHBoxLayout" name="horizontalLayout_9">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
