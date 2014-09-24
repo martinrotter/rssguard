@@ -31,6 +31,7 @@
 #include "gui/formfeeddetails.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
+#include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QMenu>
 #include <QHeaderView>
@@ -548,9 +549,10 @@ void FeedsView::setupAppearance() {
   setDragEnabled(false);
   setDropIndicatorShown(false);
   setDragDropMode(QAbstractItemView::NoDragDrop);
-  setAllColumnsShowFocus(true);
+  setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SingleSelection);
+  setItemDelegate(new StyledItemDelegateWithoutFocus(this));
 
   // Sort in ascending order, that is categories are
   // "bigger" than feeds.

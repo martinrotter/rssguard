@@ -352,6 +352,7 @@ set(APP_SOURCES
   src/gui/toolbareditor.cpp
   src/gui/messagessearchlineedit.cpp
   src/gui/formimportexport.cpp
+  src/gui/styleditemdelegatewithoutfocus.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp

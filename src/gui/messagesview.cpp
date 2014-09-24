@@ -24,6 +24,7 @@
 #include "network-web/webfactory.h"
 #include "gui/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/styleditemdelegatewithoutfocus.h"
 
 #include <QKeyEvent>
 #include <QScrollBar>
@@ -42,6 +43,7 @@ MessagesView::MessagesView(QWidget *parent)
   createConnections();
   setModel(m_proxyModel);
   setupAppearance();
+  setItemDelegate(new StyledItemDelegateWithoutFocus(this));
 }
 
 MessagesView::~MessagesView() {
@@ -118,7 +120,7 @@ void MessagesView::setupAppearance() {
   setEditTriggers(QAbstractItemView::NoEditTriggers);
   setItemsExpandable(false);
   setSortingEnabled(true);
-  setAllColumnsShowFocus(true);
+  setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
