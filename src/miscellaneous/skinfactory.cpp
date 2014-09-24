@@ -78,19 +78,19 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
   // be safely loaded.
   QString raw_data = skin.m_rawData;
 
-  if (!raw_data.isEmpty()) {
-    QString parsed_data = raw_data.replace("##",
-                                           APP_SKIN_PATH + '/' +
-                                           skin_folder);
-    qApp->setStyleSheet(parsed_data);
-  }
-
   // Iterate supported styles and load one.
   foreach (const QString &style, skin.m_stylesNames) {
     if (qApp->setStyle(style) != 0) {
       qDebug("Style '%s' loaded.", qPrintable(style));
       break;
     }
+  }
+
+  if (!raw_data.isEmpty()) {
+    QString parsed_data = raw_data.replace("##",
+                                           APP_SKIN_PATH + '/' +
+                                           skin_folder);
+    qApp->setStyleSheet(parsed_data);
   }
 
   return true;

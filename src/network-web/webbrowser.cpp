@@ -130,6 +130,7 @@ void WebBrowser::initializeLayout() {
   m_loadingProgress = new QProgressBar(this);
   m_loadingProgress->setFixedHeight(15);
   m_loadingProgress->setMinimum(0);
+  m_loadingProgress->setTextVisible(false);
   m_loadingProgress->setMaximum(100);
   m_loadingProgress->setAttribute(Qt::WA_TranslucentBackground);
 
