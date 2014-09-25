@@ -3,6 +3,7 @@
 
 Fixed:
 <ul>
+<li>Fully portable settings is now used as default if non portable settings does not exist yet.</li>
 <li>List of actions in toolbar editor now does not allow copying of items.</li>
 <li>Keyboard search for message list should now work with Qt 4.</li>
 <li>Overall code cleanups and refactoring primarily in area of feed/message models and recycle bin functionality.</li>
