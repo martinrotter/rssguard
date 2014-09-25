@@ -32,7 +32,7 @@ FeedsModelRecycleBin::FeedsModelRecycleBin(FeedsModelRootItem *parent)
   m_description = tr("Recycle bin contains all deleted messages from all feeds.");
   m_creationDate = QDateTime::currentDateTime();
 
-  updateCounts();
+  updateCounts(true);
 }
 
 FeedsModelRecycleBin::~FeedsModelRecycleBin() {
@@ -48,7 +48,7 @@ void FeedsModelRecycleBin::appendChild(FeedsModelRootItem *child) {
 }
 
 int FeedsModelRecycleBin::countOfUnreadMessages() const {
-  return m_totalCount;
+  return m_unreadCount;
 }
 
 int FeedsModelRecycleBin::countOfAllMessages() const {
@@ -166,16 +166,25 @@ bool FeedsModelRecycleBin::restore() {
   }
 }
 
-void FeedsModelRecycleBin::updateCounts() {
+void FeedsModelRecycleBin::updateCounts(bool update_total_count) {
   QSqlDatabase database = qApp->database()->connection("FeedsModelRecycleBin",
                                                        DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 
-  if (query_all.exec("SELECT count(*) FROM Messages WHERE is_deleted = 1;") && query_all.next()) {
-    m_totalCount = query_all.value(0).toInt();
+  if (query_all.exec("SELECT count(*) FROM Messages WHERE is_read = 0 AND is_deleted = 1;") && query_all.next()) {
+    m_unreadCount = query_all.value(0).toInt();
   }
   else {
-    m_totalCount = 0;
+    m_unreadCount = 0;
+  }
+
+  if (update_total_count) {
+    if (query_all.exec("SELECT count(*) FROM Messages WHERE is_deleted = 1;") && query_all.next()) {
+      m_totalCount = query_all.value(0).toInt();
+    }
+    else {
+      m_totalCount = 0;
+    }
   }
 }

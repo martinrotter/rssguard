@@ -262,9 +262,8 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
   if (db_handle.commit()) {
     // If commit succeeded, then emit changes, so that view
     // can reflect.
-    emit dataChanged(index(row_index, 0),
-                     index(row_index, columnCount() - 1));
-    emit messageCountsChanged(false);
+    emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
+    emit messageCountsChanged(m_messageMode, false, false);
     return true;
   }
   else {
@@ -375,7 +374,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     select();
     fetchAll();
 
-    emit messageCountsChanged(true);
+    emit messageCountsChanged(m_messageMode, true, false);
     return true;
   }
   else {
@@ -400,7 +399,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
     select();
     fetchAll();
 
-    emit messageCountsChanged(true);
+    emit messageCountsChanged(m_messageMode, false, false);
     return true;
   }
   else {
@@ -436,7 +435,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
     select();
     fetchAll();
 
-    emit messageCountsChanged(true);
+    emit messageCountsChanged(m_messageMode, true, true);
     return true;
   }
   else {

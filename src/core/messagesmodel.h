@@ -114,7 +114,9 @@ class MessagesModel : public QSqlTableModel {
 
   signals:
     // Emitted if some persistent change is made which affects count of "unread/all" messages.
-    void messageCountsChanged(bool total_message_number_changed);
+    void messageCountsChanged(MessagesModel::MessageMode mode,
+                              bool total_msg_count_changed,
+                              bool any_msg_restored);
 
   protected:
     // Returns selected feed ids in concatenated textual form,
@@ -146,6 +148,7 @@ class MessagesModel : public QSqlTableModel {
     QIcon m_unreadIcon;
 };
 
+Q_DECLARE_METATYPE(MessagesModel::MessageMode)
 Q_DECLARE_METATYPE(MessagesModel::MessageFilter)
 
 #endif // MESSAGESMODEL_H

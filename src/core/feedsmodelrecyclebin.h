@@ -40,10 +40,11 @@ class FeedsModelRecycleBin : public FeedsModelRootItem {
     bool restore();
 
   public slots:
-    void updateCounts();
+    void updateCounts(bool update_total_count);
 
   private:
     int m_totalCount;
+    int m_unreadCount;
 };
 
 #endif // FEEDSMODELRECYCLEBIN_H

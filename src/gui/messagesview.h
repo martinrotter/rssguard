@@ -113,10 +113,6 @@ class MessagesView : public QTreeView {
     void currentMessagesChanged(const QList<Message> &messages);
     void currentMessagesRemoved();
 
-    // Emitted if counts of unread/total messages has changed
-    // because of user interaction with list of messages.
-    void messageCountsChanged(bool total_message_number_changed);
-
   private:
     QMenu *m_contextMenu;
 

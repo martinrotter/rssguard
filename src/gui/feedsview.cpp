@@ -291,6 +291,43 @@ void FeedsView::editFeed(FeedsModelFeed *feed) {
   delete form_pointer.data();
 }
 
+void FeedsView::receiveMessageCountsChange(MessagesModel::MessageMode mode,
+                                           bool total_msg_count_changed,
+                                           bool any_msg_restored) {
+  // If the change came from recycle bin mode, then:
+  // a) total count of message was changed AND no message was restored - some messages
+  // were permanently deleted from recycle bin --> we need to update counts of
+  // just recycle bin, including total counts.
+  // b) total count of message was changed AND some message was restored - some messages
+  // were restored --> we need to update counts from all items and bin, including total counts.
+  // c) total count of message was not changed - state of some messages was switched, no
+  // deletings or restorings were made --> update counts of just recycle bin, excluding total counts.
+  //
+  // If the change came from feed mode, then:
+  // a) total count of message was changed - some messages were deleted --> we need to update
+  // counts of recycle bin, including total counts and update counts of selected feeds, including
+  // total counts.
+  // b) total count of message was not changed - some messages switched state --> we need to update
+  // counts of just selected feeds.
+
+  if (mode == MessagesModel::MessagesFromRecycleBin) {
+    if (total_msg_count_changed) {
+      if (any_msg_restored) {
+        updateCountsOfAllFeeds(true);
+      }
+      else {
+        updateCountsOfRecycleBin(true);
+      }
+    }
+    else {
+      updateCountsOfRecycleBin(false);
+    }
+  }
+  else {
+    updateCountsOfSelectedFeeds(total_msg_count_changed);
+  }
+}
+
 void FeedsView::editSelectedItem() {
   if (!qApp->closeLock()->tryLock()) {
     // Lock was not obtained because
@@ -434,7 +471,7 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
 
   if (update_total_too) {
     // Number of items in recycle bin has changed.
-    m_sourceModel->recycleBin()->updateCounts();
+    m_sourceModel->recycleBin()->updateCounts(true);
 
     // We need to refresh data for recycle bin too.
     selected_indexes.append(m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
@@ -445,6 +482,12 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
   notifyWithCounts();
 }
 
+void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
+  m_sourceModel->recycleBin()->updateCounts(update_total_too);
+  m_sourceModel->reloadChangedLayout(QModelIndexList() << m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
+  notifyWithCounts();
+}
+
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   foreach (FeedsModelFeed *feed, allFeeds()) {
     feed->updateCounts(update_total_too);
@@ -452,7 +495,7 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
 
   if (update_total_too) {
     // Number of items in recycle bin has changed.
-    m_sourceModel->recycleBin()->updateCounts();
+    m_sourceModel->recycleBin()->updateCounts(true);
   }
 
   // Make sure that all views reloads its data.

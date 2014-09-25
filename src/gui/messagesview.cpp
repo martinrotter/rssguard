@@ -51,9 +51,6 @@ MessagesView::~MessagesView() {
 }
 
 void MessagesView::createConnections() {
-  // Forward feed counts changes.
-  connect(m_sourceModel, SIGNAL(messageCountsChanged(bool)), this, SIGNAL(messageCountsChanged(bool)));
-
   // Make sure that source message is opened
   // in new tab on double click.
   connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternally()));

@@ -3,18 +3,18 @@
 
 Fixed:
 <ul>
-<li>List of actions in toolbar editor now do not allow copying of items.</li>
+<li>List of actions in toolbar editor now does not allow copying of items.</li>
 <li>Keyboard search for message list should now work with Qt 4.</li>
 <li>Overall code cleanups and refactoring primarily in area of feed/message models and recycle bin functionality.</li>
-<li>Fixed bug #66, #67, #69, #64.</li>
+<li>Fixed bugs #66, #67, #69, #64.</li>
 <li>Blau skin now has colored webkit scrollbars, fixed some button widths and enhanced menu popup tool buttons.</li>
 </ul>
 
 Added:
 <ul>
-<li>Top-level recycle bin which displays count of deleted items properly.</li>
-<li>MySQL backend now alows to defragment/optimize RSS Guard database.</li>
-<li>New blau-based yellow skin.</li>
+<li>Recycle bin with ability to trash or restore the whole bin or individual messages.</li>
+<li>MySQL backend now allows to defragment/optimize RSS Guard database.</li>
+<li>Three new skins, including solarized skin.</li>
 </ul>
 
 Changed:
