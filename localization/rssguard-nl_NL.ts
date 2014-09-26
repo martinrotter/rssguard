@@ -2,6 +2,13 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="nl_NL">
 <context>
+    <name>Application</name>
+    <message>
+        <source>Application is already running.</source>
+        <translation type="unfinished">RSSguard is al gestart.</translation>
+    </message>
+</context>
+<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -115,21 +122,6 @@
 </context>
 <context>
     <name>FeedsModelCategory</name>
-    <message>
-        <source>%1 (category)
-%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (categorie)
-%2%3</translation>
-    </message>
-    <message>
-        <source>
-
-This category does not contain any nested items.</source>
-        <translation>
-
-Deze categorie bevat geen nested items.</translation>
-    </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
@@ -137,6 +129,16 @@ Deze categorie bevat geen nested items.</translation>
             <numerusform>%n ongelezen bericht.</numerusform>
             <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -168,14 +170,36 @@ Deze categorie bevat geen nested items.</translation>
         </translation>
     </message>
     <message>
-        <source>%1 (%2)
-%3
+        <source>%1 (%2)%3
 
 Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FeedsModelRecycleBin</name>
+    <message>
+        <source>Recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recycle bin contains all deleted messages from all feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recycle bin
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted message(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -240,19 +264,7 @@ Auto-update status: %5</source>
         <translation>Je kan gekozen items niet bijwerken omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
-        <source>You can delete feeds/categories only one by one.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Deleting feed or category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>You are about to delete selected feed or category.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Do you really want to remove selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -264,7 +276,31 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You selected multiple items for deletion.</source>
+        <source>Deleting feed or category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you really want to delete selected item?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Permanently delete messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are about to permanenty delete all messages from your recycle bin.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you really want to empty your recycle bin?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Context menu for empty space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Context menu for recycle bin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -322,6 +358,30 @@ Auto-update status: %5</source>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Over %1</translation>
+    </message>
+    <message>
+        <source>Paths</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database root path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FULLY portable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PARTIALLY portable</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -806,6 +866,14 @@ Auto-update status: %5</source>
         <source>Critical error occurred.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Check all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Uncheck all items</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormMain</name>
@@ -872,10 +940,6 @@ Auto-update status: %5</source>
     <message>
         <source>Close current web browser tab.</source>
         <translation>Sluit huidige webbrowser tabblad.</translation>
-    </message>
-    <message>
-        <source>Application is already running.</source>
-        <translation>RSSguard is al gestart.</translation>
     </message>
     <message>
         <source>No actions available</source>
@@ -1086,10 +1150,6 @@ Auto-update status: %5</source>
         <translation>Schakel over naar het hoofd&amp;venster</translation>
     </message>
     <message>
-        <source>Report a &amp;bug...</source>
-        <translation>Rapporteer een &amp;bug...</translation>
-    </message>
-    <message>
         <source>Cannot open external browser</source>
         <translation>Kan externe browser niet starten</translation>
     </message>
@@ -1143,6 +1203,38 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Close all tabs except current one.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report a &amp;bug (GitHub)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report a bug (BitBucket)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Donate via PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display &amp;wiki</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Empty recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restore all messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore &amp;selected messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2124,6 +2216,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
 </context>
 <context>
+    <name>SystemTrayIcon</name>
+    <message>
+        <source>%1
+Unread news: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TabBar</name>
     <message>
         <source>Close this tab.</source>
@@ -2361,6 +2461,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Open this image in this tab.</source>
         <translation>Open deze afbeelding in dit tabblad.</translation>
+    </message>
+    <message>
+        <source>Open link in external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open the hyperlink in external browser.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
