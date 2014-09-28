@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="2.0.0.1" type="maintenance">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.1-win32.exe</url>
+  <release version="2.0.0.2" type="feature">
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.2-win32.exe</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Some visual tweaking.</li>
-<li>URL redirection now works with relative redirecting addresses.</li>
-<li>Messages are now sorted using active locale.</li>
-<li>Fixed bug #49 and duplicate feed/category detection.</li>
-<li>Experimentally fixed bug #50.</li>
-<li>NSIS installer is now portable. It makes only ONE access to registry and you can use it to install RSS Guard to any location such as USB flash drives.</li>
+<li>Fully portable settings is now used as default if non portable settings does not exist yet.</li>
+<li>List of actions in toolbar editor now does not allow copying of items.</li>
+<li>Keyboard search for message list should now work with Qt 4.</li>
+<li>Overall code cleanups and refactoring primarily in area of feed/message models and recycle bin functionality.</li>
+<li>Fixed bugs #66, #67, #69, #64, #48.</li>
+<li>Blau skin now has colored webkit scrollbars, fixed some button widths and enhanced menu popup tool buttons.</li>
 </ul>
 
 Added:
 <ul>
-<li>RSS Guard now accepts donations, see "Help" menu for more information.</li>
-<li>Tray icon tooltips now displays number of unread messages if there is at least one unread message.</li>
-<li>Re-introduced "blau" (dark) skin.</li>
-<li>Import/export dialog now offers "Check/uncheck all items" button.</li>
+<li>Application can now be safely restarted from within main menu.</li>
+<li>HTTP request for feed files now contains special "Accept" header.</li>
+<li>Recycle bin with ability to trash or restore the whole bin or individual messages.</li>
+<li>MySQL backend now allows to defragment/optimize RSS Guard database.</li>
+<li>Three new skins, including solarized skin. Vergilius improved.</li>
 </ul>
 
 Changed:
 <ul>
-<li>Selection in feed list is now single.</li>
-<li>Keyboard navigation to "next/previous" item in feed list is now recursively hybrid.</li>
+<li>File downloader now resolves "feed://" URI scheme to "http://" URI scheme.</li>
+<li>Target message is now selected instead of highlighted when searching with keyboard.</li>
 </ul>
 </body>]]>
     </changes>
