@@ -165,7 +165,7 @@
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
    </widget>
-   <widget class="QMenu" name="menu_Recycle_bin">
+   <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
      <string>&amp;Recycle bin</string>
     </property>
@@ -177,7 +177,7 @@
    <addaction name="m_menuView"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
-   <addaction name="menu_Recycle_bin"/>
+   <addaction name="m_menuRecycleBin"/>
    <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
