@@ -5,7 +5,7 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished">Applicazione già avviata.</translation>
+        <translation>Applicazione già avviata.</translation>
     </message>
 </context>
 <context>
@@ -165,7 +165,7 @@ This category does not contain any nested items.</source>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
-            <numerusform>%n messaggio(i) non letto.</numerusform>
+            <numerusform></numerusform>
             <numerusform>%n messaggio(i) non letti.</numerusform>
         </translation>
     </message>
@@ -777,7 +777,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed non modificato a coausa di un errore.</translation>
     </message>
 </context>
 <context>
@@ -1235,6 +1235,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2168,7 +2172,7 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
-        <translation></translation>
+        <translation>rotter.martinos@gmail.com</translation>
     </message>
 </context>
 <context>

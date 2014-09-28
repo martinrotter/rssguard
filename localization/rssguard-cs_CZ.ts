@@ -5,7 +5,7 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished">Aplikace již běží.</translation>
+        <translation>Aplikace již běží.</translation>
     </message>
 </context>
 <context>
@@ -872,11 +872,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Označit vše</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation type="unfinished"></translation>
+        <translation>O&amp;dznačit vše</translation>
     </message>
 </context>
 <context>
@@ -1239,6 +1239,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2222,7 +2226,8 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>%1
 Unread news: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+Nepřečtené zprávy: %2</translation>
     </message>
 </context>
 <context>
@@ -2466,11 +2471,11 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít odkaz v externím prohlížeči</translation>
     </message>
     <message>
         <source>Open the hyperlink in external browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít hypertextový odkaz v externím prohlížeči.</translation>
     </message>
 </context>
 </TS>

@@ -5,7 +5,7 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished">RSSguard is al gestart.</translation>
+        <translation>RSSguard is al gestart.</translation>
     </message>
 </context>
 <context>
@@ -78,11 +78,11 @@
     <name>FeedsImportExportModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"></translation>
+        <translation>(categorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"></translation>
+        <translation>(feed)</translation>
     </message>
 </context>
 <context>
@@ -109,15 +109,15 @@
     </message>
     <message>
         <source>Invalid tree data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige structuur gegevens</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeren is helemaal geslaagd.</translation>
     </message>
 </context>
 <context>
@@ -206,7 +206,7 @@ Auto-update status: %5</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalkruimte</translation>
     </message>
 </context>
 <context>
@@ -265,15 +265,15 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je gaat geselecteerde feed of categorie verwijderen.</translation>
     </message>
     <message>
         <source>Deletion of item failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijdering van Item is mislukt.</translation>
     </message>
     <message>
         <source>Selected item was not deleted due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde item is niet verwijderd door een fout.</translation>
     </message>
     <message>
         <source>Deleting feed or category</source>
@@ -412,11 +412,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuwe categorie toe</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk bestaande categorie</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -509,7 +509,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving is ok.</translation>
     </message>
 </context>
 <context>
@@ -596,11 +596,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Bewerk bestaande feed</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
@@ -773,98 +773,98 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Omschrijving is ok.</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Door een fout is de feed niet bewerkt.</translation>
     </message>
 </context>
 <context>
     <name>FormImportExport</name>
     <message>
         <source>&amp;Select file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Selecteer bestand</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultaten</translation>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen bestand geselecteerd.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporteer feeds</translation>
     </message>
     <message>
         <source>Destination file</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelbestand</translation>
     </message>
     <message>
         <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Source Feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Source bestand</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelgroep feeds &amp;&amp; categorieën</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeer feeds.</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"></translation>
+        <translation>OPML 2.0 bestanden (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer bestand voor feed export</translation>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand is geselecteerd.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer bestand voor feed import</translation>
     </message>
     <message>
         <source>Cannot open source file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan source bestand niet openen.</translation>
     </message>
     <message>
         <source>Feeds were loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds zijn geladen.</translation>
     </message>
     <message>
         <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout, het bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
     </message>
     <message>
         <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout opgetreden. Bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
     </message>
     <message>
         <source>Feeds were exported successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds zijn met succes geëxporteerd.</translation>
     </message>
     <message>
         <source>Cannot write into destination file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan niet schrijven naar doelbestand.</translation>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kritieke fout opgetreden.</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
@@ -1187,23 +1187,24 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Import feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Importeer feeds</translation>
     </message>
     <message>
         <source>Imports feeds you want from selected file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importeer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Export feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Exporteer feeds</translation>
     </message>
     <message>
         <source>Exports feeds you want to selected file.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Close all tabs except current one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sluit alle tabbladen behalve deze.</translation>
     </message>
     <message>
         <source>&amp;Recycle bin</source>
@@ -1235,6 +1236,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1773,25 +1778,27 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     </message>
     <message>
         <source>Toolbars</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalken</translation>
     </message>
     <message>
         <source>Toolbar for feeds list</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkbalk voor feeds lijst</translation>
     </message>
     <message>
         <source>Toolbar for messages list</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk voor berichten lijst</translation>
     </message>
     <message>
         <source>Select toolbar to edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer werkbalk om te bewerken</translation>
     </message>
     <message>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sommige kritieke instellingen zijn veranderd en worden van kracht als het programma wordt herstart.
+
+Je moet handmatig herstarten.</translation>
     </message>
 </context>
 <context>
@@ -1887,43 +1894,43 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Download update</source>
-        <translation type="unfinished"></translation>
+        <translation>Download update</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloaded %1% (update grootte is %2 kB).</translation>
     </message>
     <message>
         <source>Downloading update...</source>
-        <translation type="unfinished"></translation>
+        <translation>Update downloaden ...</translation>
     </message>
     <message>
         <source>Downloaded successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Download succesvol voltooid</translation>
     </message>
     <message>
         <source>Package was downloaded successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het pakket is succesvol gedownload.</translation>
     </message>
     <message>
         <source>Install update</source>
-        <translation type="unfinished"></translation>
+        <translation>Installeer de update</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout opgetreden</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is een fout opgetreden tijdens het downloaden van het pakket.</translation>
     </message>
     <message>
         <source>Cannot launch external updater. Update application manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan externe updater niet starten. Update rssguard handmatig.</translation>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation type="unfinished"></translation>
+        <translation>Ga naar Rssguard website</translation>
     </message>
 </context>
 <context>
@@ -2030,39 +2037,39 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesToolBar</name>
     <message>
         <source>Search messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek berichten</translation>
     </message>
     <message>
         <source>Message search box</source>
-        <translation type="unfinished"></translation>
+        <translation>Berichten zoek box</translation>
     </message>
     <message>
         <source>Menu for highlighting messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Menu voor markeren berichten</translation>
     </message>
     <message>
         <source>No extra highlighting</source>
-        <translation type="unfinished"></translation>
+        <translation>Niet extra markeren</translation>
     </message>
     <message>
         <source>Highlight unread messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer ongelezen berichten</translation>
     </message>
     <message>
         <source>Highlight important messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer belangrijke berichten</translation>
     </message>
     <message>
         <source>Display all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alle berichten</translation>
     </message>
     <message>
         <source>Message highlighter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bericht markeerder</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk ruimte</translation>
     </message>
 </context>
 <context>
@@ -2158,7 +2165,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>geen fouten</translation>
     </message>
 </context>
 <context>
@@ -2266,27 +2273,27 @@ Unread news: %2</source>
     <name>ToolBarEditor</name>
     <message>
         <source>Activated actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Geactiveerde acties</translation>
     </message>
     <message>
         <source>Available actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Beschikbare acties</translation>
     </message>
     <message>
         <source>Insert separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Scheidingsteken invoegen</translation>
     </message>
     <message>
         <source>Insert spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg ruimte in</translation>
     </message>
     <message>
         <source>Separator</source>
-        <translation type="unfinished"></translation>
+        <translation>Scheidingsteken</translation>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkbalk ruimte</translation>
     </message>
 </context>
 <context>

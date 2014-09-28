@@ -5,7 +5,7 @@
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
-        <translation type="unfinished">Die Applikation läuft bereits.</translation>
+        <translation>Die Applikation läuft bereits.</translation>
     </message>
 </context>
 <context>
@@ -388,27 +388,27 @@ Auto-update status: %5</source>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished">Stammkategorie</translation>
+        <translation>Stammkategorie</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
-        <translation type="unfinished">Selektieren Sie das Stamm-Item für Ihre Kategorie</translation>
+        <translation>Selektieren Sie das Stamm-Item für Ihre Kategorie</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished">Beschreibung</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished">Icon</translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
-        <translation type="unfinished">Selektieren Sie das Icon für Ihre Kategorie</translation>
+        <translation>Selektieren Sie das Icon für Ihre Kategorie</translation>
     </message>
     <message>
         <source>Add new category</source>
@@ -420,92 +420,92 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Cannot add category</source>
-        <translation type="unfinished">Kategorie kann nicht hinzugefügt werden</translation>
+        <translation>Kategorie kann nicht hinzugefügt werden</translation>
     </message>
     <message>
         <source>Category was not added due to error.</source>
-        <translation type="unfinished">Kategorie wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
+        <translation>Kategorie wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished">Kategorie kann nicht editiert werden</translation>
+        <translation>Kategorie kann nicht editiert werden</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished">Kategorie wurde nicht editiert aufgrund eines Fehler.</translation>
+        <translation>Kategorie wurde nicht editiert aufgrund eines Fehler.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished">Kategoriename ist okay.</translation>
+        <translation>Kategoriename ist okay.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
-        <translation type="unfinished">Kategoriename ist zu kurz.</translation>
+        <translation>Kategoriename ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished">Beschreibung ist leer.</translation>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
-        <translation type="unfinished">Selektiere die Icon-Datei für die Kategorie</translation>
+        <translation>Selektiere die Icon-Datei für die Kategorie</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished">Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished">Selektiere Icon</translation>
+        <translation>Selektiere Icon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Abbrechen</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished">Schauen Sie in:</translation>
+        <translation>Schauen Sie in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished">Icon-Name:</translation>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished">Icon-Typ:</translation>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>Category title</source>
-        <translation type="unfinished">Kategorietitel</translation>
+        <translation>Kategorietitel</translation>
     </message>
     <message>
         <source>Set title for your category.</source>
-        <translation type="unfinished">Setzen Sie den Titel für die Kategorie.</translation>
+        <translation>Setzen Sie den Titel für die Kategorie.</translation>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished">Kategoriebeschreibung</translation>
+        <translation>Kategoriebeschreibung</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
-        <translation type="unfinished">Setzen Sie die Beschreibung für die Kategorie.</translation>
+        <translation>Setzen Sie die Beschreibung für die Kategorie.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished">Icon-Selektion</translation>
+        <translation>Icon-Selektion</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished">Lade Icon aus Datei...</translation>
+        <translation>Lade Icon aus Datei...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished">Icon nicht verwenden</translation>
+        <translation>Icon nicht verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished">Standard-Icon verwenden</translation>
+        <translation>Standard-Icon verwenden</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -516,31 +516,31 @@ Auto-update status: %5</source>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished">Stammkategorie</translation>
+        <translation>Stammkategorie</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished">Selektieren Sie das Stamm-Item für Ihren Feed.</translation>
+        <translation>Selektieren Sie das Stamm-Item für Ihren Feed.</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
-        <translation type="unfinished">Selektiere den Typ des Standard-Feeds.</translation>
+        <translation>Selektiere den Typ des Standard-Feeds.</translation>
     </message>
     <message>
         <source>Encoding</source>
-        <translation type="unfinished">Enkodierung</translation>
+        <translation>Enkodierung</translation>
     </message>
     <message>
         <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished">Selektiere die Enkodierung des Standard-Feeds. Falls Sie unsicher sind wählen einfach die &quot;UTF-8&quot; Enkodierung.</translation>
+        <translation>Selektiere die Enkodierung des Standard-Feeds. Falls Sie unsicher sind wählen einfach die &quot;UTF-8&quot; Enkodierung.</translation>
     </message>
     <message>
         <source>Auto-update</source>
-        <translation type="unfinished">Auto-Update</translation>
+        <translation>Auto-Update</translation>
     </message>
     <message>
         <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
@@ -548,51 +548,51 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source> minutes</source>
-        <translation type="unfinished"> Minuten</translation>
+        <translation>Minuten</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished">Beschreibung</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished">URL</translation>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
-        <translation type="unfinished">Jetzt abrufen</translation>
+        <translation>Jetzt abrufen</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished">Icon</translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
-        <translation type="unfinished">Selektieren Sie das Icon für Ihren Feed.</translation>
+        <translation>Selektieren Sie das Icon für Ihren Feed.</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished">Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmodelle werden unterstützt.</translation>
+        <translation>Gewisse Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmodelle werden unterstützt.</translation>
     </message>
     <message>
         <source>Requires authentication</source>
-        <translation type="unfinished">Benötigt Authentifizierung</translation>
+        <translation>Benötigt Authentifizierung</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished">Benutzername</translation>
+        <translation>Benutzername</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished">Passwort</translation>
+        <translation>Passwort</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished">Metadaten abrufen</translation>
+        <translation>Metadaten abrufen</translation>
     </message>
     <message>
         <source>Add new feed</source>
@@ -604,124 +604,124 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished">Feed-Name ist okay.</translation>
+        <translation>Feed-Name ist okay.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
-        <translation type="unfinished">Feed-Name ist zu kurz.</translation>
+        <translation>Feed-Name ist zu kurz.</translation>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished">Beschreibung ist leer.</translation>
+        <translation>Beschreibung ist leer.</translation>
     </message>
     <message>
         <source>The url is ok.</source>
-        <translation type="unfinished">Die URL ist okay.</translation>
+        <translation>Die URL ist okay.</translation>
     </message>
     <message>
         <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished">Die URL entspricht nicht dem Standardmuster. Beginnt Ihre URL mit &quot;http://&quot; oder &quot;https://&quot;?</translation>
+        <translation>Die URL entspricht nicht dem Standardmuster. Beginnt Ihre URL mit &quot;http://&quot; oder &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The url is empty.</source>
-        <translation type="unfinished">Die URL ist leer.</translation>
+        <translation>Die URL ist leer.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished">Benutzername ist okay oder wird nicht benötigt.</translation>
+        <translation>Benutzername ist okay oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished">Benutzername ist leer.</translation>
+        <translation>Benutzername ist leer.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished">Passwort ist okay oder wird nicht benötigt.</translation>
+        <translation>Passwort ist okay oder wird nicht benötigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished">Passwort ist leer.</translation>
+        <translation>Passwort ist leer.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished">Selektiere die Icon-Datei für den Feed.</translation>
+        <translation>Selektiere die Icon-Datei für den Feed.</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished">Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+        <translation>Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished">Selektiere Icon</translation>
+        <translation>Selektiere Icon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished">Abbrechen</translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished">Schauen Sie in:</translation>
+        <translation>Schauen Sie in:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished">Icon-Name:</translation>
+        <translation>Icon-Name:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished">Icon-Typ:</translation>
+        <translation>Icon-Typ:</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished">Kann Feed nicht hinzufügen</translation>
+        <translation>Kann Feed nicht hinzufügen</translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished">Feed wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
+        <translation>Feed wurde nicht hinzugefügt aufgrund eines Fehler.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished">Feed kann nicht editiert werden</translation>
+        <translation>Feed kann nicht editiert werden</translation>
     </message>
     <message>
         <source>All metadata fetched successfully.</source>
-        <translation type="unfinished">Alle Metadaten wurden erfolgreich abgerufen.</translation>
+        <translation>Alle Metadaten wurden erfolgreich abgerufen.</translation>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished">Feed- und Icon-Metadaten abgerufen.</translation>
+        <translation>Feed- und Icon-Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
-        <translation type="unfinished">Resultat: %1.</translation>
+        <translation>Resultat: %1.</translation>
     </message>
     <message>
         <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished">Feed- oder Icon-Metadaten nicht abgerufen.</translation>
+        <translation>Feed- oder Icon-Metadaten nicht abgerufen.</translation>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished">Fehler: %1.</translation>
+        <translation>Fehler: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished">Keine Metadaten abgerufen.</translation>
+        <translation>Keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished">Feed-Titel</translation>
+        <translation>Feed-Titel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
-        <translation type="unfinished">Setzen Sie den Titel für Ihren Feed.</translation>
+        <translation>Setzen Sie den Titel für Ihren Feed.</translation>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished">Feed-Beschreibung</translation>
+        <translation>Feed-Beschreibung</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished">Setzen Sie die Beschreibung für Ihren Feed.</translation>
+        <translation>Setzen Sie die Beschreibung für Ihren Feed.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -729,47 +729,47 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Set url for your feed.</source>
-        <translation type="unfinished">Setze die URL für Ihren Feed.</translation>
+        <translation>Setze die URL für Ihren Feed.</translation>
     </message>
     <message>
         <source>Set username to access the feed.</source>
-        <translation type="unfinished">Setzen Sie den Benutzernamen um zum Feed zu gelangen.</translation>
+        <translation>Setzen Sie den Benutzernamen um zum Feed zu gelangen.</translation>
     </message>
     <message>
         <source>Set password to access the feed.</source>
-        <translation type="unfinished">Setzen Sie das Passwort um zum Feed zu gelangen.</translation>
+        <translation>Setzen Sie das Passwort um zum Feed zu gelangen.</translation>
     </message>
     <message>
         <source>Icon selection</source>
-        <translation type="unfinished">Icon-Selektion</translation>
+        <translation>Icon-Selektion</translation>
     </message>
     <message>
         <source>Load icon from file...</source>
-        <translation type="unfinished">Lade Icon aus Datei...</translation>
+        <translation>Lade Icon aus Datei...</translation>
     </message>
     <message>
         <source>Do not use icon</source>
-        <translation type="unfinished">Icon nicht verwenden</translation>
+        <translation>Icon nicht verwenden</translation>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished">Standard-Icon verwenden</translation>
+        <translation>Standard-Icon verwenden</translation>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished">Bisher keine Metadaten abgerufen.</translation>
+        <translation>Bisher keine Metadaten abgerufen.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation type="unfinished">Auto-Update benutzt globales Intervall</translation>
+        <translation>Auto-Update benutzt globales Intervall</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished">Auto-Update alle</translation>
+        <translation>Auto-Update alle</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation type="unfinished">Kein Auto-Update ausführen</translation>
+        <translation>Kein Auto-Update ausführen</translation>
     </message>
     <message>
         <source>The description is ok.</source>
@@ -777,7 +777,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed wurde nicht editiert aufgrund eines Fehler.</translation>
     </message>
 </context>
 <context>
@@ -1235,6 +1235,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

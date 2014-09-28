@@ -1237,6 +1237,10 @@ Auto-update status: %5</source>
         <source>Restore &amp;selected messages</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
