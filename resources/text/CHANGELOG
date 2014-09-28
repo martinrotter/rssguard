@@ -13,6 +13,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Application can now be safely restarted from within main menu.</li>
 <li>HTTP request for feed files now contains special "Accept" header.</li>
 <li>Recycle bin with ability to trash or restore the whole bin or individual messages.</li>
 <li>MySQL backend now allows to defragment/optimize RSS Guard database.</li>

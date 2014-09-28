@@ -58,6 +58,7 @@
     <addaction name="m_actionImportFeeds"/>
     <addaction name="m_actionExportFeeds"/>
     <addaction name="separator"/>
+    <addaction name="m_actionRestart"/>
     <addaction name="m_actionQuit"/>
    </widget>
    <widget class="QMenu" name="m_menuHelp">
@@ -607,6 +608,11 @@
   <action name="m_actionRestoreSelectedMessagesFromRecycleBin">
    <property name="text">
     <string>Restore &amp;selected messages</string>
+   </property>
+  </action>
+  <action name="m_actionRestart">
+   <property name="text">
+    <string>&amp;Restart</string>
    </property>
   </action>
  </widget>

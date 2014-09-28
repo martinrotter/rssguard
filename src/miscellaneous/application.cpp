@@ -32,7 +32,7 @@ Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL), m_icons(NULL), m_database(NULL) {
+    m_localization(NULL), m_icons(NULL), m_database(NULL), m_shouldRestart(false) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
@@ -159,4 +159,28 @@ void Application::onAboutToQuit() {
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
   }
+
+  // Now, we can check if application should just quit or restart itself.
+  if (m_shouldRestart) {
+    // TODO: Disable qtsinglepplication.
+    // TODO: Start new instance.
+    if (QProcess::startDetached(applicationFilePath())) {
+      finish();
+      qWarning("New application instance was not started successfully.");
+    }
+  }
 }
+
+bool Application::shouldRestart() const {
+  return m_shouldRestart;
+}
+
+void Application::setShouldRestart(bool shouldRestart) {
+  m_shouldRestart = shouldRestart;
+}
+
+void Application::restart() {
+  m_shouldRestart = true;
+  quit();
+}
+

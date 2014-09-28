@@ -329,6 +329,10 @@ void QtSingleApplication::activateWindow()
     }
 }
 
+void QtSingleApplication::finish()
+{
+  delete peer; peer = 0;
+}
 
 /*!
     \fn void QtSingleApplication::messageReceived(const QString& message)

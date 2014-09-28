@@ -1,4 +1,4 @@
-// This file is part of RSS Guard.
+﻿// This file is part of RSS Guard.
 //
 // Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
 //
@@ -144,7 +144,12 @@ class Application : public QtSingleApplication {
       return static_cast<Application*>(QCoreApplication::instance());
     }
 
+    bool shouldRestart() const;
+    void setShouldRestart(bool shouldRestart);
+
   public slots:
+    void restart();
+
     // Processes incoming message from another RSS Guard instance.
     void processExecutionMessage(const QString &message);
 
@@ -177,6 +182,7 @@ class Application : public QtSingleApplication {
     Localization *m_localization;
     IconFactory *m_icons;
     DatabaseFactory *m_database;
+    bool m_shouldRestart;
 };
 
 #endif // APPLICATION_H

@@ -87,6 +87,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSettings;
   actions << m_ui->m_actionImportFeeds;
   actions << m_ui->m_actionExportFeeds;
+  actions << m_ui->m_actionRestart;
   actions << m_ui->m_actionQuit;
   actions << m_ui->m_actionFullscreen;
   actions << m_ui->m_actionAboutGuard;
@@ -202,6 +203,7 @@ void FormMain::setupIcons() {
   // Setup icons of this main window.
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme("application-exit"));
+  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme("go-refresh"));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme("check-for-updates"));
   m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
@@ -328,6 +330,7 @@ void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
   connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
+  connect(m_ui->m_actionRestart, SIGNAL(triggered()), qApp, SLOT(restart()));
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
   // Menu "View" connections.
