@@ -96,9 +96,7 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
   }
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
-                                                         int timeout,
-                                                         QIcon &output) {
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url, int timeout, QIcon &output) {
 #if QT_VERSION >= 0x050000
   QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
 #else
@@ -114,6 +112,29 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url,
   }
 
   return network_result;
+}
+
+NetworkResult NetworkFactory::downloadFeedFile(const QString &url, int timeout,
+                                               QByteArray &output, bool protected_contents,
+                                               const QString &username, const QString &password) {
+  // Here, we want to achieve "synchronous" approach because we want synchronout download API for
+  // some use-cases too.
+  Downloader downloader;
+  QEventLoop loop;
+  NetworkResult result;
+
+  downloader.appendRawHeader("Accept", ACCEPT_HEADER_FOR_FEED_DOWNLOADER);
+
+  // We need to quit event loop when the download finishes.
+  QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
+
+  downloader.downloadFile(url, timeout, protected_contents, username, password);
+  loop.exec();
+  output = downloader.lastOutputData();
+  result.first = downloader.lastOutputError();
+  result.second = downloader.lastContentType();
+
+  return result;
 }
 
 NetworkResult NetworkFactory::downloadFile(const QString &url, int timeout,

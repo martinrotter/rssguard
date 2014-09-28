@@ -24,7 +24,7 @@
 
 Downloader::Downloader(QObject *parent)
   : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
-    m_timer(new QTimer(this)), m_lastOutputData(QByteArray()),
+    m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_lastOutputData(QByteArray()),
     m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
 
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
@@ -48,6 +48,10 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
   originatingObject.setProperty("username", username);
   originatingObject.setProperty("password", password);
   request.setOriginatingObject(&originatingObject);
+
+  foreach (const QByteArray &header_name, m_customHeaders.keys()) {
+    request.setRawHeader(header_name, m_customHeaders.value(header_name));
+  }
 
   // Set url for this request and fire it up.
   m_timer->setInterval(timeout);
@@ -124,6 +128,10 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
 
 QVariant Downloader::lastContentType() const {
   return m_lastContentType;
+}
+
+void Downloader::appendRawHeader(const QByteArray &name, const QByteArray &value) {
+  m_customHeaders.insert(name, value);
 }
 
 QNetworkReply::NetworkError Downloader::lastOutputError() const {

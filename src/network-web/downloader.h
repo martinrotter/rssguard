@@ -43,6 +43,8 @@ class Downloader : public QObject {
     QVariant lastContentType() const;
 
   public slots:
+    void appendRawHeader(const QByteArray &name, const QByteArray &value);
+
     // Performs asynchronous download of given file. Redirections are handled.
     void downloadFile(const QString &url, int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
                       const QString &username = QString(), const QString &password = QString());
@@ -69,6 +71,7 @@ class Downloader : public QObject {
     QNetworkReply *m_activeReply;
     SilentNetworkAccessManager *m_downloadManager;
     QTimer *m_timer;
+    QHash<QByteArray, QByteArray> m_customHeaders;
 
     QByteArray m_lastOutputData;
     QNetworkReply::NetworkError m_lastOutputError;
