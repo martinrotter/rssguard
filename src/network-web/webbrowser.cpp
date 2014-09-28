@@ -234,14 +234,11 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
                                                               messages_layout);
 
   m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
-  emit iconChanged(m_index,
-                   qApp->icons()->fromTheme("item-newspaper"));
+  emit iconChanged(m_index, qApp->icons()->fromTheme("item-newspaper"));
 }
 
 void WebBrowser::updateZoomGui() {
-  m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100,
-                                                             'f',
-                                                             0)));
+  m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0)));
 }
 
 void WebBrowser::increaseZoom() {
