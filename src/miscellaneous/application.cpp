@@ -162,10 +162,13 @@ void Application::onAboutToQuit() {
 
   // Now, we can check if application should just quit or restart itself.
   if (m_shouldRestart) {
-    // TODO: Disable qtsinglepplication.
-    // TODO: Start new instance.
+    finish();
+    qDebug("Killing local peer connection to allow another instances to start.");
+
     if (QProcess::startDetached(applicationFilePath())) {
-      finish();
+      qDebug("New application instance was started.");
+    }
+    else {
       qWarning("New application instance was not started successfully.");
     }
   }
