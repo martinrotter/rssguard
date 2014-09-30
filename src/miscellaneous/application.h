@@ -1,4 +1,4 @@
-﻿// This file is part of RSS Guard.
+// This file is part of RSS Guard.
 //
 // Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
 //
