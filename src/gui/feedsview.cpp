@@ -386,8 +386,6 @@ void FeedsView::deleteSelectedItem() {
 
   if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
     // Item WAS removed, update counts.
-    // TODO: Apparently, I do not need to update counts of all items here, therefore updateCountsOfAllFeeds(true)
-    // is not needed probably. We just need to inform other parts of application that number of messages has changed.
     notifyWithCounts();
   }
   else {

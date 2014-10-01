@@ -493,6 +493,7 @@ set(APP_TRANSLATIONS
   localization/rssguard-fr_FR.ts
   localization/rssguard-it_IT.ts
   localization/rssguard-nl_NL.ts
+  localization/rssguard-sv_SE.ts
   localization/qt-cs_CZ.ts
   localization/qt-de_DE.ts
   localization/qt-fr_FR.ts
@@ -506,6 +507,7 @@ set(APP_TRANSLATIONS_WO_QT
   localization/rssguard-fr_FR.ts
   localization/rssguard-it_IT.ts
   localization/rssguard-nl_NL.ts
+  localization/rssguard-sv_SE.ts
 )
 
 set(APP_TEXT

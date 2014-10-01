@@ -408,11 +408,6 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
 }
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
-  // TODO: Model -> setBatchMessagesRestored();
-  // obnovime zpravy, po obnoveni je treba jako ve funkci setBatchMessagesDeleted
-  // pres messageCountsChanged dat informaci ze pocty zprav se zmenily, ale oni
-  // se zmenily nejen ve vybranych kanalech (je vybran odkadkovy kos) ale v kanalech do kterych patri
-
   if (m_messageMode == MessagesFromFeeds) {
     qDebug("Cannot restore non-deleted messages.");
     return false;
