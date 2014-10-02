@@ -19,7 +19,6 @@
 #define FEEDDOWNLOADER_H
 
 #include <QObject>
-#include <QPointer>
 
 
 class FeedsModelFeed;
@@ -53,7 +52,7 @@ class FeedDownloader : public QObject {
     // Emitted if any item is processed.
     // "Current" number indicates count of processed feeds
     // and "total" number indicates total number of feeds
-    // which are in the initial queue.
+    // which were in the initial queue.
     void progress(FeedsModelFeed *feed, int current, int total);
 };
 

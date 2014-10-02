@@ -43,7 +43,6 @@ MessagesView::MessagesView(QWidget *parent)
   createConnections();
   setModel(m_proxyModel);
   setupAppearance();
-  setItemDelegate(new StyledItemDelegateWithoutFocus(this));
 }
 
 MessagesView::~MessagesView() {
@@ -106,8 +105,6 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
 }
 
 void MessagesView::setupAppearance() {
-  header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
-  header()->setStretchLastSection(false);
   setUniformRowHeights(true);
   setAcceptDrops(false);
   setDragEnabled(false);
@@ -119,6 +116,10 @@ void MessagesView::setupAppearance() {
   setSortingEnabled(true);
   setAllColumnsShowFocus(false);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
+  setItemDelegate(new StyledItemDelegateWithoutFocus(this));
+  header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
+  header()->setStretchLastSection(false);
+  header()->setSortIndicatorShown(false);
 }
 
 void MessagesView::keyPressEvent(QKeyEvent *event) {

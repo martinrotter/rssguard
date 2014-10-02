@@ -32,7 +32,7 @@ FeedsProxyModel::FeedsProxyModel(QObject *parent)
   setSortRole(Qt::EditRole);
   setSortCaseSensitivity(Qt::CaseInsensitive);
   setFilterCaseSensitivity(Qt::CaseInsensitive);
-  setFilterKeyColumn(0);
+  setFilterKeyColumn(-1);
   setFilterRole(Qt::EditRole);
   setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
@@ -42,8 +42,7 @@ FeedsProxyModel::~FeedsProxyModel() {
   qDebug("Destroying FeedsProxyModel instance");
 }
 
-bool FeedsProxyModel::lessThan(const QModelIndex &left,
-                               const QModelIndex &right) const {
+bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   if (left.isValid() && right.isValid()) {
     // Make necessary castings.
     FeedsModelRootItem *left_item = m_sourceModel->itemForIndex(left);
@@ -63,8 +62,7 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
       }
       else {
         // In other cases, sort by title.
-        return QString::localeAwareCompare(left_item->title(),
-                                           right_item->title()) < 0;
+        return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
       }
     }
     else if (left_item->kind() == FeedsModelRootItem::RecycleBin) {
@@ -90,16 +88,6 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left,
   else {
     return false;
   }
-}
-
-QModelIndexList FeedsProxyModel::mapListFromSource(const QModelIndexList &indexes) {
-  QModelIndexList mapped_indexes;
-
-  foreach (const QModelIndex &index, indexes) {
-    mapped_indexes << mapFromSource(index);
-  }
-
-  return mapped_indexes;
 }
 
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {

@@ -38,7 +38,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
-    QModelIndexList mapListFromSource(const QModelIndexList &indexes);
 
   protected:
     // Compares two rows of data.

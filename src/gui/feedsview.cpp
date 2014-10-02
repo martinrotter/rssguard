@@ -578,8 +578,6 @@ void FeedsView::setupAppearance() {
   header()->setResizeMode(FDS_MODEL_COUNTS_INDEX, QHeaderView::ResizeToContents);
 #endif
 
-  header()->setStretchLastSection(false);
-  header()->setSortIndicatorShown(false);
   setUniformRowHeights(true);
   setAnimated(true);
   setSortingEnabled(true);
@@ -595,6 +593,8 @@ void FeedsView::setupAppearance() {
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SingleSelection);
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
+  header()->setStretchLastSection(false);
+  header()->setSortIndicatorShown(false);
 
   // Sort in ascending order, that is categories are
   // "bigger" than feeds.
