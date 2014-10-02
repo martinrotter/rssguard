@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -134,12 +134,13 @@
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (kategorie)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Tato kategorie neobsahuje žádné položky.</translation>
     </message>
 </context>
 <context>
@@ -179,30 +180,35 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)%3
+
+Síťový status: %6
+Kódování: %4
+Automatický update: %5</translation>
     </message>
 </context>
 <context>
     <name>FeedsModelRecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Koš</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Koš obsahuje všechny smazané zprávy ze všech kanálů.</translation>
     </message>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Koš
+%1</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n smazaná zpráva.</numerusform>
+            <numerusform>%n smazané zprávy.</numerusform>
+            <numerusform>%n smazaných zpráv.</numerusform>
         </translation>
     </message>
 </context>
@@ -281,31 +287,31 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Deleting feed or category</source>
-        <translation type="unfinished"></translation>
+        <translation>Mazání zprávy či kategorie</translation>
     </message>
     <message>
         <source>Do you really want to delete selected item?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete vybranou položku smazat?</translation>
     </message>
     <message>
         <source>Permanently delete messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Trvalé smazání zpráv</translation>
     </message>
     <message>
         <source>You are about to permanenty delete all messages from your recycle bin.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chystáte se vysypat koš.</translation>
     </message>
     <message>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete koš vysypat?</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextové menu pro prázdný prostor</translation>
     </message>
     <message>
         <source>Context menu for recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextové menu pro koš</translation>
     </message>
 </context>
 <context>
@@ -365,27 +371,27 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesty</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ nastavení</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor nastavení</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation type="unfinished"></translation>
+        <translation>Kořenový adresář databáze</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation type="unfinished"></translation>
+        <translation>ZCELA portable</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation type="unfinished"></translation>
+        <translation>ČÁSTEČNĚ portable</translation>
     </message>
 </context>
 <context>
@@ -1211,39 +1217,39 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Koš</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahlásit &amp;chybu (GitHub)...</translation>
     </message>
     <message>
         <source>Report a bug (BitBucket)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahlásit chybu (BitBucket)...</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Podpořit vývojáře přes PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Empty recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vysypat koš</translation>
     </message>
     <message>
         <source>&amp;Restore all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obnovit všechny zprávy z koše</translation>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit &amp;vybrané zprávy z koše</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Restartovat</translation>
     </message>
 </context>
 <context>
