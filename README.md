@@ -31,7 +31,7 @@ Person        | Contribution
 
 Downloads
 ---------
-You can download source tarballs or binaries for some platforms in [Downloads](rssguard/downloads) section of this website. Precompiled binaries for particular Linux distributions are available too:
+You can download source tarballs or binaries for some platforms in [Downloads](https://bitbucket.org/skunkos/rssguard/downloads) section of this website. Precompiled binaries for particular Linux distributions are available too:
 
 * [stable releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard),
 * [development releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard-git) (compiled from the master branch of RSS Guard Git repository),
