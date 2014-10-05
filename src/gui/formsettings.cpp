@@ -248,14 +248,18 @@ void FormSettings::promptForRestart() {
   if (!m_changedDataTexts.isEmpty()) {
     QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp("^"), QString::fromUtf8(" • "));
 
-    MessageBox::show(this,
-                     QMessageBox::Question,
-                     tr("Critical settings were changed"),
-                     tr("Some critical settings were changed and will be applied after the application gets restarted. "
-                        "\n\nYou have to restart manually."),
-                     QString(),
-                     tr("List of changes:\n%1.").arg(changed_settings_description .join(",\n")),
-                     QMessageBox::Ok, QMessageBox::Ok);
+    QMessageBox::StandardButton clicked_button =  MessageBox::show(this,
+                                                                   QMessageBox::Question,
+                                                                   tr("Critical settings were changed"),
+                                                                   tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                                                                      "\n\nYou have to restart manually."),
+                                                                   tr("Do you want to restart now?"),
+                                                                   tr("List of changes:\n%1.").arg(changed_settings_description .join(",\n")),
+                                                                   QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+
+    if (clicked_button == QMessageBox::Yes) {
+      qApp->restart();
+    }
   }
 }
 

@@ -186,4 +186,3 @@ void Application::restart() {
   m_shouldRestart = true;
   quit();
 }
-
