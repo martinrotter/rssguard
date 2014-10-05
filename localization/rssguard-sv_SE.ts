@@ -1805,6 +1805,10 @@ You have to restart manually.</source>
 
 Du måste starta om manuellt.</translation>
     </message>
+    <message>
+        <source>Do you want to restart now?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>

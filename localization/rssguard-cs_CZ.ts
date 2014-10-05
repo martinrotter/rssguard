@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -1807,6 +1807,10 @@ You have to restart manually.</source>
         <translation>Některá kritická nastavení se změnila a budou aktivována až po restartu aplikace.
 
 Musíte restartovat manuálně.</translation>
+    </message>
+    <message>
+        <source>Do you want to restart now?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

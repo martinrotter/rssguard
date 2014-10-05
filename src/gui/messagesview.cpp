@@ -52,7 +52,7 @@ MessagesView::~MessagesView() {
 void MessagesView::createConnections() {
   // Make sure that source message is opened
   // in new tab on double click.
-  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternally()));
+  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceArticlesExternally()));
 
   // Adjust columns when layout gets changed.
   connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));

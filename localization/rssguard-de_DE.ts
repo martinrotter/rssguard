@@ -1780,6 +1780,10 @@ Authors of this application are NOT responsible for lost data.</source>
 You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Do you want to restart now?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
