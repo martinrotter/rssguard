@@ -19,6 +19,9 @@
 #define SYSTEMTRAYICON_H
 
 #include <QSystemTrayIcon>
+
+#include "definitions/definitions.h"
+
 #include <QPointer>
 #include <QPixmap>
 #include <QMenu>
@@ -51,6 +54,13 @@ class SystemTrayIcon : public QSystemTrayIcon {
                             FormMain *parent = 0);
     virtual ~SystemTrayIcon();
 
+    // Sets the number to be visible in the tray icon, number <= 0 removes it.
+    void setNumber(int number = -1);
+    
+    void showMessage(const QString &title, const QString &message, MessageIcon icon = Information,
+                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, QObject *click_target = NULL,
+                     const char *click_slot = NULL);
+
     // Returns true if tray icon CAN be constructed on this machine.
     static bool isSystemTrayAvailable();
 
@@ -58,9 +68,6 @@ class SystemTrayIcon : public QSystemTrayIcon {
     // application settings.
     static bool isSystemTrayActivated();
 
-    // Sets the number to be visible in the tray icon, number <= 0 removes it.
-    void setNumber(int number = -1);
-    
   public slots:
     void show();
 
@@ -72,6 +79,9 @@ class SystemTrayIcon : public QSystemTrayIcon {
     QIcon m_normalIcon;
     QPixmap m_plainPixmap;
     QFont m_font;
+
+    QObject *m_bubbleClickTarget;
+    char *m_bubbleClickSlot;
 };
 
 #endif // SYSTEMTRAYICON_H

@@ -590,6 +590,7 @@ void FormSettings::selectSqlBackend(int index) {
 
 void FormSettings::loadGeneral() {
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(APP_NAME));
+  m_ui->m_checkForUpdatesOnStart->setChecked(qApp->settings()->value(APP_CFG_GEN, "update_on_start", true).toBool());
 
   // Load auto-start status.
   SystemFactory::AutoStartStatus autostart_status = qApp->system()->getAutoStartStatus();
@@ -609,14 +610,15 @@ void FormSettings::loadGeneral() {
 }
 
 void FormSettings::saveGeneral() {
-  // If auto-start feature is available and user wants
-  // to turn it on, then turn it on.
+  // If auto-start feature is available and user wants to turn it on, then turn it on.
   if (m_ui->m_checkAutostart->isChecked()) {
     qApp->system()->setAutoStartStatus(SystemFactory::Enabled);
   }
   else {
     qApp->system()->setAutoStartStatus(SystemFactory::Disabled);
   }
+
+  qApp->settings()->setValue(APP_CFG_GEN, "update_on_start", m_ui->m_checkForUpdatesOnStart->isChecked());
 }
 
 void FormSettings::loadInterface() {

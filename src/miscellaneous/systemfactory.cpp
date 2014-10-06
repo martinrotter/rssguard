@@ -18,7 +18,9 @@
 #include "miscellaneous/systemfactory.h"
 
 #include "network-web/networkfactory.h"
+#include "gui/formmain.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/systemfactory.h"
 
 #if defined(Q_OS_WIN)
 #include <QSettings>
@@ -29,7 +31,17 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include <QDomAttr>
+#include <QFuture>
+#include <QFutureWatcher>
 
+#if QT_VERSION >= 0x050000
+#include <QtConcurrent/QtConcurrentRun>
+#else
+#include <QtConcurrentRun>
+#endif
+
+
+typedef QPair<UpdateInfo, QNetworkReply::NetworkError> UpdateCheck;
 
 SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
 }
@@ -43,10 +55,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
 #if defined(Q_OS_WIN)
   QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
                          QSettings::NativeFormat);
-  bool autostart_enabled = registry_key.value(APP_LOW_NAME,
-                                              "").toString().replace('\\',
-                                                                     '/') ==
-                           Application::applicationFilePath();
+  bool autostart_enabled = registry_key.value(APP_LOW_NAME, "").toString().replace('\\', '/') == Application::applicationFilePath();
 
   if (autostart_enabled) {
     return SystemFactory::Enabled;
@@ -199,4 +208,26 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
 
 
   return update;
+}
+
+void SystemFactory::checkForUpdatesAsynchronously() {
+  QFutureWatcher<UpdateCheck> *watcher_for_future = new QFutureWatcher<UpdateCheck>(this);
+
+  connect(watcher_for_future, SIGNAL(finished()), this, SLOT(handleBackgroundUpdatesCheck()));
+  watcher_for_future->setFuture(QtConcurrent::run(this, &SystemFactory::checkForUpdates));
+}
+
+void SystemFactory::handleBackgroundUpdatesCheck() {
+  QFutureWatcher<UpdateCheck> *future_watcher = static_cast<QFutureWatcher<UpdateCheck>*>(sender());
+  UpdateCheck updates = future_watcher->result();
+
+  if (updates.second == QNetworkReply::NoError && updates.first.m_availableVersion != APP_VERSION) {
+    if (SystemTrayIcon::isSystemTrayActivated()) {
+       qApp->trayIcon()->showMessage(tr("New version available"),
+                                     tr("Click the bubble for more information."),
+                                     QSystemTrayIcon::Information,
+                                     TRAY_ICON_BUBBLE_TIMEOUT,
+                                     qApp->mainForm(), SLOT(showUpdates()));
+    }
+  }
 }

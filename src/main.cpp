@@ -33,6 +33,7 @@
 #include <QThread>
 #include <QTranslator>
 #include <QDebug>
+#include <QTimer>
 
 
 int main(int argc, char *argv[]) {
@@ -111,11 +112,14 @@ int main(int argc, char *argv[]) {
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
     qApp->showTrayIcon();
+
+    if (qApp->settings()->value(APP_CFG_GEN, "update_on_start", true).toBool()) {
+      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesAsynchronously()));
+    }
   }
 
   // Setup single-instance behavior.
-  QObject::connect(&application, SIGNAL(messageReceived(QString)),
-                   &application, SLOT(processExecutionMessage(QString)));
+  QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
 
   // Enter global event loop.
   return Application::exec();

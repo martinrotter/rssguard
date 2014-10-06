@@ -116,6 +116,13 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_checkForUpdatesOnStart">
+         <property name="text">
+          <string>Check for updates on application startup</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="m_pageDataStorage">

@@ -52,7 +52,9 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
   : QSystemTrayIcon(parent),
     m_normalIcon(normal_icon),
     m_plainPixmap(plain_icon),
-    m_font(QFont())  {
+    m_font(QFont()),
+    m_bubbleClickTarget(NULL),
+    m_bubbleClickSlot(NULL) {
   qDebug("Creating SystemTrayIcon instance.");
 
   m_font.setBold(true);
@@ -62,8 +64,7 @@ SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
   setContextMenu(parent->trayMenu());
 
   // Create necessary connections.
-  connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-          this, SLOT(onActivated(QSystemTrayIcon::ActivationReason)));
+  connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onActivated(QSystemTrayIcon::ActivationReason)));
 }
 
 SystemTrayIcon::~SystemTrayIcon() {
@@ -88,9 +89,7 @@ bool SystemTrayIcon::isSystemTrayAvailable() {
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
-  return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(APP_CFG_GUI,
-                                                                            "use_tray_icon",
-                                                                            true).toBool();
+  return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(APP_CFG_GUI, "use_tray_icon", true).toBool();
 }
 
 void SystemTrayIcon::showPrivate() {
@@ -165,4 +164,24 @@ void SystemTrayIcon::setNumber(int number) {
 
     QSystemTrayIcon::setIcon(QIcon(background));
   }
+}
+
+void SystemTrayIcon::showMessage(const QString &title, const QString &message, QSystemTrayIcon::MessageIcon icon,
+                                 int milliseconds_timeout_hint, QObject *click_target, const char *click_slot) {
+  if (m_bubbleClickTarget != NULL && m_bubbleClickSlot != NULL) {
+    // Disconnect previous bubble click signalling.
+    disconnect(this, SIGNAL(messageClicked()), m_bubbleClickTarget, m_bubbleClickSlot);
+  }
+
+  m_bubbleClickSlot = (char*) click_slot;
+  m_bubbleClickTarget = click_target;
+
+  if (click_target != NULL && click_slot != NULL) {
+    // Establish new connection for bubble click.
+    connect(this, SIGNAL(messageClicked()), click_target, click_slot);
+  }
+
+  // NOTE: If connections do not work, then use QMetaObject::invokeMethod(...).
+
+  QSystemTrayIcon::showMessage(title, message, icon, milliseconds_timeout_hint);
 }

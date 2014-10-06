@@ -88,6 +88,15 @@ class SystemFactory : public QObject {
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
+  public slots:
+    void checkForUpdatesAsynchronously();
+
+  private slots:
+    void handleBackgroundUpdatesCheck();
+
+  signals:
+    void updateCheckedAsynchronously(QPair<UpdateInfo, QNetworkReply::NetworkError> update_info);
+
   private:
     // Performs parsing of downloaded file with list of updates.
     UpdateInfo parseUpdatesFile(const QByteArray &updates_file);
