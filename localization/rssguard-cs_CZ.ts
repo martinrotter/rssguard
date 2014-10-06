@@ -1810,7 +1810,7 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete restartovat nyní?</translation>
     </message>
 </context>
 <context>
