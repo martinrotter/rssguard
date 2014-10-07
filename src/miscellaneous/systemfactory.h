@@ -79,6 +79,10 @@ class SystemFactory : public QObject {
     // new status failed.
     bool setAutoStartStatus(const SystemFactory::AutoStartStatus &new_status);
 
+#if defined(Q_OS_WIN)
+    bool removeTrolltechJunkRegistryKeys();
+#endif
+
 #if defined(Q_OS_LINUX)
     // Returns standard location where auto-start .desktop files
     // should be placed.
@@ -89,6 +93,7 @@ class SystemFactory : public QObject {
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
   public slots:
+    // Performs asynchronous check for updates, result is emitted via updateCheckedAsynchronously(...) signal.
     void checkForUpdatesAsynchronously();
 
   private slots:

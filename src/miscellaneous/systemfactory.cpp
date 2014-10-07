@@ -123,13 +123,11 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   }
 
 #if defined(Q_OS_WIN)
-  QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
-                         QSettings::NativeFormat);
+  QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
   switch (new_status) {
     case SystemFactory::Enabled:
       registry_key.setValue(APP_LOW_NAME,
-                            Application::applicationFilePath().replace('/',
-                                                                       '\\'));
+                            Application::applicationFilePath().replace('/', '\\'));
       return true;
     case SystemFactory::Disabled:
       registry_key.remove(APP_LOW_NAME);
@@ -155,6 +153,22 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   return false;
 #endif
 }
+
+#if defined(Q_OS_WIN)
+bool SystemFactory::removeTrolltechJunkRegistryKeys() {
+  if (qApp->settings()->value(APP_CFG_GEN, "remove_trolltech_junk", false).toBool()) {
+    QSettings registry_key("HKEY_CURRENT_USER\\Software\\TrollTech", QSettings::NativeFormat);
+
+    registry_key.remove("");
+    registry_key.sync();
+
+    return registry_key.status() == QSettings::NoError;
+  }
+  else {
+    return false;
+  }
+}
+#endif
 
 QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
@@ -223,11 +237,11 @@ void SystemFactory::handleBackgroundUpdatesCheck() {
 
   if (updates.second == QNetworkReply::NoError && updates.first.m_availableVersion != APP_VERSION) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
-       qApp->trayIcon()->showMessage(tr("New version available"),
-                                     tr("Click the bubble for more information."),
-                                     QSystemTrayIcon::Information,
-                                     TRAY_ICON_BUBBLE_TIMEOUT,
-                                     qApp->mainForm(), SLOT(showUpdates()));
+      qApp->trayIcon()->showMessage(tr("New version available"),
+                                    tr("Click the bubble for more information."),
+                                    QSystemTrayIcon::Information,
+                                    TRAY_ICON_BUBBLE_TIMEOUT,
+                                    qApp->mainForm(), SLOT(showUpdates()));
     }
   }
 }

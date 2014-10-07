@@ -142,6 +142,7 @@ void Application::onAboutToQuit() {
 
   qDebug("Cleaning up resources and saving application state.");
 
+  system()->removeTrolltechJunkRegistryKeys();
   mainForm()->tabWidget()->feedMessageViewer()->quit();
   database()->saveDatabase();
   mainForm()->saveSize();

@@ -607,6 +607,11 @@ void FormSettings::loadGeneral() {
                                       tr(" (not supported on this platform)"));
       break;
   }
+
+#if defined(Q_OS_WIN)
+  m_ui->m_checkRemoveTrolltechJunk->setEnabled(true);
+  m_ui->m_checkRemoveTrolltechJunk->setChecked(qApp->settings()->value(APP_CFG_GEN, "remove_trolltech_junk", false).toBool());
+#endif
 }
 
 void FormSettings::saveGeneral() {
@@ -619,6 +624,7 @@ void FormSettings::saveGeneral() {
   }
 
   qApp->settings()->setValue(APP_CFG_GEN, "update_on_start", m_ui->m_checkForUpdatesOnStart->isChecked());
+  qApp->settings()->setValue(APP_CFG_GEN, "remove_trolltech_junk", m_ui->m_checkRemoveTrolltechJunk->isChecked());
 }
 
 void FormSettings::loadInterface() {
