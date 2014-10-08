@@ -58,6 +58,9 @@
     <addaction name="m_actionImportFeeds"/>
     <addaction name="m_actionExportFeeds"/>
     <addaction name="separator"/>
+    <addaction name="m_actionRestoreDatabaseSettings"/>
+    <addaction name="m_actionBackupDatabaseSettings"/>
+    <addaction name="separator"/>
     <addaction name="m_actionRestart"/>
     <addaction name="m_actionQuit"/>
    </widget>
@@ -613,6 +616,16 @@
   <action name="m_actionRestart">
    <property name="text">
     <string>&amp;Restart</string>
+   </property>
+  </action>
+  <action name="m_actionRestoreDatabaseSettings">
+   <property name="text">
+    <string>&amp;Restore database/settings</string>
+   </property>
+  </action>
+  <action name="m_actionBackupDatabaseSettings">
+   <property name="text">
+    <string>&amp;Backup database/settings</string>
    </property>
   </action>
  </widget>

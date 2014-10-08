@@ -87,6 +87,8 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSettings;
   actions << m_ui->m_actionImportFeeds;
   actions << m_ui->m_actionExportFeeds;
+  actions << m_ui->m_actionRestoreDatabaseSettings;
+  actions << m_ui->m_actionBackupDatabaseSettings;
   actions << m_ui->m_actionRestart;
   actions << m_ui->m_actionQuit;
   actions << m_ui->m_actionFullscreen;
@@ -211,6 +213,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
   m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
   m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme("document-import"));
+  m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme("document-export"));
+  m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme("document-import"));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme("application-donate"));
   m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme("application-wiki"));
 
