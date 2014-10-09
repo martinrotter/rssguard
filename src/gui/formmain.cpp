@@ -35,6 +35,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/formupdate.h"
 #include "gui/formimportexport.h"
+#include "gui/formbackupdatabasesettings.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -334,6 +335,8 @@ void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
   connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
+  connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));
+  connect(m_ui->m_actionRestoreDatabaseSettings, SIGNAL(triggered()), this, SLOT(restoreDatabaseSettings()));
   connect(m_ui->m_actionRestart, SIGNAL(triggered()), qApp, SLOT(restart()));
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
 
@@ -354,26 +357,16 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionDisplayWiki, SIGNAL(triggered()), this, SLOT(showWiki()));
 
   // Menu "Web browser" connections.
-  connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)),
-          this, SLOT(loadWebBrowserMenu(int)));
-  connect(m_ui->m_actionCloseCurrentTab, SIGNAL(triggered()),
-          m_ui->m_tabWidget, SLOT(closeCurrentTab()));
-  connect(m_ui->m_actionAddBrowser, SIGNAL(triggered()),
-          m_ui->m_tabWidget, SLOT(addEmptyBrowser()));
-  connect(m_ui->m_actionCloseAllTabs, SIGNAL(triggered()),
-          m_ui->m_tabWidget, SLOT(closeAllTabsExceptCurrent()));
-  connect(WebFactory::instance(), SIGNAL(imagesLoadingSwitched(bool)),
-          m_ui->m_actionWebAutoloadImages, SLOT(setChecked(bool)));
-  connect(WebFactory::instance(), SIGNAL(javascriptSwitched(bool)),
-          m_ui->m_actionWebEnableJavascript, SLOT(setChecked(bool)));
-  connect(WebFactory::instance(), SIGNAL(pluginsSwitched(bool)),
-          m_ui->m_actionWebEnableExternalPlugins, SLOT(setChecked(bool)));
-  connect(m_ui->m_actionWebAutoloadImages, SIGNAL(toggled(bool)),
-          WebFactory::instance(), SLOT(switchImages(bool)));
-  connect(m_ui->m_actionWebEnableExternalPlugins, SIGNAL(toggled(bool)),
-          WebFactory::instance(), SLOT(switchPlugins(bool)));
-  connect(m_ui->m_actionWebEnableJavascript, SIGNAL(toggled(bool)),
-          WebFactory::instance(), SLOT(switchJavascript(bool)));
+  connect(m_ui->m_tabWidget, SIGNAL(currentChanged(int)), this, SLOT(loadWebBrowserMenu(int)));
+  connect(m_ui->m_actionCloseCurrentTab, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(closeCurrentTab()));
+  connect(m_ui->m_actionAddBrowser, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(addEmptyBrowser()));
+  connect(m_ui->m_actionCloseAllTabs, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(closeAllTabsExceptCurrent()));
+  connect(WebFactory::instance(), SIGNAL(imagesLoadingSwitched(bool)), m_ui->m_actionWebAutoloadImages, SLOT(setChecked(bool)));
+  connect(WebFactory::instance(), SIGNAL(javascriptSwitched(bool)), m_ui->m_actionWebEnableJavascript, SLOT(setChecked(bool)));
+  connect(WebFactory::instance(), SIGNAL(pluginsSwitched(bool)), m_ui->m_actionWebEnableExternalPlugins, SLOT(setChecked(bool)));
+  connect(m_ui->m_actionWebAutoloadImages, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchImages(bool)));
+  connect(m_ui->m_actionWebEnableExternalPlugins, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchPlugins(bool)));
+  connect(m_ui->m_actionWebEnableJavascript, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchJavascript(bool)));
 }
 
 void FormMain::loadWebBrowserMenu(int index) {
@@ -403,6 +396,16 @@ void FormMain::importFeeds() {
   form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
   delete form.data();
+}
+
+void FormMain::backupDatabaseSettings() {
+  QPointer<FormBackupDatabaseSettings> form = new FormBackupDatabaseSettings(this);
+  form.data()->exec();
+  delete form.data();
+}
+
+void FormMain::restoreDatabaseSettings() {
+
 }
 
 void FormMain::changeEvent(QEvent *event) {

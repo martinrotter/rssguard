@@ -124,7 +124,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("In-memory SQLite database initialization file '%s' from directory '%s' was not found. In-memory database is uninitialized.",
+        qFatal("In-memory SQLite database initialization file '%s' from folder '%s' was not found. In-memory database is uninitialized.",
                APP_DB_SQLITE_INIT,
                qPrintable(APP_MISC_PATH));
       }
@@ -188,7 +188,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
   if (!db_path.exists()) {
     if (!db_path.mkpath(db_path.absolutePath())) {
       // Failure when create database file path.
-      qFatal("Directory '%s' for SQLite database file '%s' was NOT created."
+      qFatal("Folder '%s' for SQLite database file '%s' was NOT created."
              "This is HUGE problem.",
              qPrintable(db_path.absolutePath()),
              qPrintable(db_file.symLinkTarget()));
@@ -228,7 +228,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("SQLite database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
+        qFatal("SQLite database initialization file '%s' from folder '%s' was not found. File-based database is uninitialized.",
                APP_DB_SQLITE_INIT,
                qPrintable(APP_MISC_PATH));
       }
@@ -413,7 +413,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
-        qFatal("MySQL database initialization file '%s' from directory '%s' was not found. File-based database is uninitialized.",
+        qFatal("MySQL database initialization file '%s' from folder '%s' was not found. File-based database is uninitialized.",
                APP_DB_MYSQL_INIT,
                qPrintable(APP_MISC_PATH));
       }

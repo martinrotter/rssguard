@@ -53,9 +53,8 @@ class IconFactory : public QObject {
 
       if (!m_cachedIcons.contains(name)) {
         // Icon is not cached yet.
-        m_cachedIcons.insert(name, QIcon(APP_THEME_PATH + QDir::separator() +
-                                         m_currentIconTheme + QDir::separator() +
-                                         name + APP_THEME_SUFFIX));
+        m_cachedIcons.insert(name,
+                             QIcon(APP_THEME_PATH + QDir::separator() +  m_currentIconTheme + QDir::separator() + name + APP_THEME_SUFFIX));
       }
 
       return m_cachedIcons.value(name);

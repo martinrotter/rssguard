@@ -25,7 +25,7 @@
 IOFactory::IOFactory() {
 }
 
-bool IOFactory::removeDirectory(const QString& directory_name,
+bool IOFactory::removeFolder(const QString& directory_name,
                                 const QStringList& exception_file_list,
                                 const QStringList& exception_folder_list) {
   bool result = true;
@@ -37,7 +37,7 @@ bool IOFactory::removeDirectory(const QString& directory_name,
                                QDir::Hidden | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
       if (info.isDir()) {
         if (!exception_folder_list.contains(info.fileName())) {
-          result &= removeDirectory(info.absoluteFilePath(), exception_file_list, exception_folder_list);
+          result &= removeFolder(info.absoluteFilePath(), exception_file_list, exception_folder_list);
         }
       }
       else if (!exception_file_list.contains(info.fileName())) {
@@ -59,7 +59,7 @@ bool IOFactory::removeDirectory(const QString& directory_name,
   return result;
 }
 
-bool IOFactory::copyDirectory(QString source, QString destination) {
+bool IOFactory::copyFolder(QString source, QString destination) {
   QDir dir_source(source);
 
   if (!dir_source.exists()) {
@@ -75,7 +75,7 @@ bool IOFactory::copyDirectory(QString source, QString destination) {
   foreach (QString d, dir_source.entryList(QDir::Dirs | QDir::NoDotAndDotDot)) {
     QString dst_path = destination + QDir::separator() + d;
     dir_source.mkpath(dst_path);
-    copyDirectory(source + QDir::separator() + d, dst_path);
+    copyFolder(source + QDir::separator() + d, dst_path);
   }
 
   foreach (QString f, dir_source.entryList(QDir::Files)) {

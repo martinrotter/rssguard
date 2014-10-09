@@ -353,6 +353,7 @@ set(APP_SOURCES
   src/gui/messagessearchlineedit.cpp
   src/gui/formimportexport.cpp
   src/gui/styleditemdelegatewithoutfocus.cpp
+  src/gui/formbackupdatabasesettings.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -438,6 +439,7 @@ set(APP_HEADERS
   src/gui/toolbareditor.h
   src/gui/messagessearchlineedit.h
   src/gui/formimportexport.h
+  src/gui/formbackupdatabasesettings.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -483,6 +485,7 @@ set(APP_FORMS
   src/gui/formfeeddetails.ui
   src/gui/toolbareditor.ui
   src/gui/formimportexport.ui
+  src/gui/formbackupdatabasesettings.ui
 )
 
 # APP translations.
