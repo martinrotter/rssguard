@@ -164,7 +164,7 @@ void FormCategoryDetails::onNoIconSelected() {
 
 void FormCategoryDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the category"),
-                     QDir::homePath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
+                     qApp->homeFolderPath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
   dialog.setFileMode(QFileDialog::ExistingFile);
   dialog.setWindowIcon(qApp->icons()->fromTheme("image-generic"));
   dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);

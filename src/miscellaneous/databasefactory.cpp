@@ -87,7 +87,7 @@ void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
                                QString(APP_DB_SQLITE_PATH);
   }
   else {
-    m_sqliteDatabaseFilePath = QDir::homePath() + QDir::separator() +
+    m_sqliteDatabaseFilePath = qApp->homeFolderPath() + QDir::separator() +
                                QString(APP_LOW_H_NAME) + QDir::separator() +
                                QString(APP_DB_SQLITE_PATH);
   }

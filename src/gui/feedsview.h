@@ -120,6 +120,7 @@ class FeedsView : public QTreeView {
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too);
 
+    // Reloads counts of recycle bin.
     void updateCountsOfRecycleBin(bool update_total_too);
 
     // Reloads counts for all feeds.

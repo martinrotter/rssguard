@@ -118,13 +118,31 @@ class Application : public QtSingleApplication {
       m_mainForm = main_form;
     }
 
-    inline QString getTempDirectory() {
+    inline QString tempFolderPath() {
 #if QT_VERSION >= 0x050000
       QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
 #else
       QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
 #endif
       return temp_directory;
+    }
+
+    inline QString documentsFolderPath() {
+#if QT_VERSION >= 0x050000
+      QString doc_directory = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+#else
+      QString doc_directory = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
+#endif
+      return doc_directory;
+    }
+
+    inline QString homeFolderPath() {
+#if QT_VERSION >= 0x050000
+      QString home_path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+#else
+      QString home_path = QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
+#endif
+      return home_path;
     }
 
     // Access to application tray icon. Always use this in cooperation with

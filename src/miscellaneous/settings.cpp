@@ -47,13 +47,12 @@ Settings *Settings::setupSettings(QObject *parent) {
 
   // If settings file exists in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).
-  // Otherwise use settings file stored in homePath();
+  // Otherwise use settings file stored in home path.
   QString relative_path = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
   QString app_path = qApp->applicationDirPath();
   QString app_path_file = app_path + relative_path;
-  QString home_path = QDir::homePath() + QDir::separator() + QString(APP_LOW_H_NAME);
+  QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
   QString home_path_file = home_path + relative_path;
-
 
   bool portable_settings_available = QFileInfo(app_path).isWritable();
   bool non_portable_settings_exist = QFile::exists(home_path_file);

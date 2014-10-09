@@ -23,6 +23,8 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QCheckBox>
+#include <QFileDialog>
+#include <QDateTime>
 
 
 FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormBackupDatabaseSettings) {
@@ -34,16 +36,31 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
 
   connect(m_ui->m_checkBackupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
   connect(m_ui->m_checkBackupSettings, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
+  connect(m_ui->m_buttonBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(performBackup()));
   connect(m_ui->m_txtBackupName->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkBackupNames(QString)));
   connect(m_ui->m_txtBackupName->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
+  connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
 
-  checkOkButton();
-
+  selectFolder(qApp->documentsFolderPath());
   m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + "_" + QDateTime::currentDateTime().toString("yyyyMMddHHmm"));
 }
 
 FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
   delete m_ui;
+}
+
+void FormBackupDatabaseSettings::performBackup() {
+
+}
+
+void FormBackupDatabaseSettings::selectFolder(QString path) {
+  if (path.isEmpty()) {
+    path = QFileDialog::getExistingDirectory(this, tr("Select destionation folder"), m_ui->m_lblSelectFolder->label()->text());
+  }
+
+  if (!path.isEmpty()) {
+    m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(path), tr("Good destination folder is specified."));
+  }
 }
 
 void FormBackupDatabaseSettings::checkBackupNames(const QString &name) {

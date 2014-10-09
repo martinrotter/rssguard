@@ -37,6 +37,8 @@ class FormBackupDatabaseSettings : public QDialog {
 
 
   private slots:
+    void performBackup();
+    void selectFolder(QString path = QString());
     void checkBackupNames(const QString &name);
     void checkOkButton();
 

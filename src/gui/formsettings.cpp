@@ -164,7 +164,7 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
 void FormSettings::selectBrowserExecutable() {
   QString executable_file = QFileDialog::getOpenFileName(this,
                                                          tr("Select web browser executable"),
-                                                         QDir::homePath(),
+                                                         qApp->homeFolderPath(),
                                                          //: File filter for external browser selection dialog.
                                                          tr("Executables (*.*)"));
 

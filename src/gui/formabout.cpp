@@ -110,7 +110,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   }
   else {
     m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
-    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(QDir::homePath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
+    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
   }
 
   m_ui->m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));

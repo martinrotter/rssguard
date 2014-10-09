@@ -105,7 +105,7 @@ void FormImportExport::selectExportFile() {
   filter += filter_opml20;
 
   QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
-                                                       QDir::homePath(), filter, &selected_filter);
+                                                       qApp->homeFolderPath(), filter, &selected_filter);
 
 
 
@@ -136,7 +136,8 @@ void FormImportExport::selectImportFile() {
   // Add more filters here.
   filter += filter_opml20;
 
-  QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), QDir::homePath(), filter, &selected_filter);
+  QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolderPath(),
+                                                       filter, &selected_filter);
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
