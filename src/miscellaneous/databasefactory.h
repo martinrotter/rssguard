@@ -85,6 +85,8 @@ class DatabaseFactory : public QObject {
 
     QString mysqlInterpretErrorCode(MySQLError error_code);
 
+    UsedDriver activeDatabaseDriver() const;
+
   private:
     //
     // GENERAL stuff.

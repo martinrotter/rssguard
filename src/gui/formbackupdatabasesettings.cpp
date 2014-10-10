@@ -41,8 +41,13 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
   connect(m_ui->m_txtBackupName->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
   connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
 
-  selectFolder(qApp->documentsFolderPath());
+  selectFolder(qApp->documentsFolderPath());  
   m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + "_" + QDateTime::currentDateTime().toString("yyyyMMddHHmm"));
+
+  if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE &&
+      qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE_MEMORY) {
+    m_ui->m_checkBackupDatabase->setDisabled(true);
+  }
 }
 
 FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
@@ -50,7 +55,7 @@ FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
 }
 
 void FormBackupDatabaseSettings::performBackup() {
-
+  // TODO: Backup.
 }
 
 void FormBackupDatabaseSettings::selectFolder(QString path) {

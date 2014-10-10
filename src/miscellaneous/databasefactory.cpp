@@ -342,6 +342,10 @@ void DatabaseFactory::determineDriver() {
   }
 }
 
+DatabaseFactory::UsedDriver DatabaseFactory::activeDatabaseDriver() const {
+  return m_activeDatabaseDriver;
+}
+
 QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
   if (!m_mysqlDatabaseInitialized) {
     // Return initialized database.
