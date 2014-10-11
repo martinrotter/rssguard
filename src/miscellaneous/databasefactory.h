@@ -74,6 +74,14 @@ class DatabaseFactory : public QObject {
     // Performs cleanup of the database.
     bool vacuumDatabase();
 
+    // Returns identification of currently active database driver.
+    UsedDriver activeDatabaseDriver() const;
+
+    //
+    // SQLITE stuff.
+    //
+    QString sqliteDatabaseFilePath() const;
+
     //
     // MySQL stuff.
     //
@@ -84,8 +92,6 @@ class DatabaseFactory : public QObject {
     MySQLError mysqlTestConnection(const QString &hostname, int port, const QString &username, const QString &password);
 
     QString mysqlInterpretErrorCode(MySQLError error_code);
-
-    UsedDriver activeDatabaseDriver() const;
 
   private:
     //

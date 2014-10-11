@@ -82,9 +82,7 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
 
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
   if (qApp->settings()->type() == Settings::Portable) {
-    m_sqliteDatabaseFilePath = qApp->applicationDirPath() +
-                               QDir::separator() +
-                               QString(APP_DB_SQLITE_PATH);
+    m_sqliteDatabaseFilePath = qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH);
   }
   else {
     m_sqliteDatabaseFilePath = qApp->homeFolderPath() + QDir::separator() +
@@ -267,6 +265,9 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
   return database;
 }
 
+QString DatabaseFactory::sqliteDatabaseFilePath() const {
+  return m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
+}
 
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
                                          DesiredType desired_type) {
@@ -315,8 +316,7 @@ void DatabaseFactory::determineDriver() {
                                               "database_driver",
                                               APP_DB_SQLITE_DRIVER).toString();
 
-  if (db_driver == APP_DB_MYSQL_DRIVER &&
-      QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
+  if (db_driver == APP_DB_MYSQL_DRIVER && QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
     // User wants to use MySQL and MySQL is actually available. Use it.
     m_activeDatabaseDriver = MYSQL;
 
@@ -355,8 +355,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
     QSqlDatabase database;
 
     if (QSqlDatabase::contains(connection_name)) {
-      qDebug("MySQL connection '%s' is already active.",
-             qPrintable(connection_name));
+      qDebug("MySQL connection '%s' is already active.", qPrintable(connection_name));
 
       // This database connection was added previously, no need to
       // setup its properties.
@@ -390,8 +389,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
 
 QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_name) {
   // Folders are created. Create new QSQLDatabase object.
-  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER,
-                                                    connection_name);
+  QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
 
   database.setHostName(qApp->settings()->value(APP_CFG_DB, "mysql_hostname").toString());
   database.setPort(qApp->settings()->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
@@ -407,8 +405,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
 
     query_db.setForwardOnly(true);
 
-    if (!query_db.exec("USE rssguard") ||
-        !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
+    if (!query_db.exec("USE rssguard") || !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
       // If no "rssguard" database exists
       // or schema version is wrong, then initialize it.
       qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
@@ -422,8 +419,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
-                                                                  QString::SkipEmptyParts);
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
       foreach(const QString &statement, statements) {
@@ -441,8 +437,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
     else {
       query_db.next();
 
-      qDebug("MySQL database connection '%s' seems to be established.",
-             qPrintable(connection_name));
+      qDebug("MySQL database connection '%s' seems to be established.", qPrintable(connection_name));
       qDebug("MySQL database has version '%s'.", qPrintable(query_db.value(0).toString()));
     }
 
@@ -462,8 +457,7 @@ bool DatabaseFactory::mysqlVacuumDatabase() {
   return query_vacuum.exec("OPTIMIZE TABLE rssguard.feeds;") && query_vacuum.exec("OPTIMIZE TABLE rssguard.messages;");
 }
 
-QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,
-                                               DatabaseFactory::DesiredType desired_type) {
+QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name, DatabaseFactory::DesiredType desired_type) {
   if (desired_type == DatabaseFactory::StrictlyInMemory ||
       (desired_type == DatabaseFactory::FromSettings && m_activeDatabaseDriver == SQLITE_MEMORY)) {
     // We request in-memory database (either user explicitly
@@ -498,8 +492,7 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name,
       QSqlDatabase database;
 
       if (QSqlDatabase::contains(connection_name)) {
-        qDebug("SQLite connection '%s' is already active.",
-               qPrintable(connection_name));
+        qDebug("SQLite connection '%s' is already active.", qPrintable(connection_name));
 
         // This database connection was added previously, no need to
         // setup its properties.

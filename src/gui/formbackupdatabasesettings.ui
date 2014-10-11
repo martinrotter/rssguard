@@ -142,22 +142,6 @@
  <connections>
   <connection>
    <sender>m_buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>FormBackupDatabaseSettings</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>199</x>
-     <y>283</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>FormBackupDatabaseSettings</receiver>
    <slot>accept()</slot>

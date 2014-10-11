@@ -18,6 +18,7 @@
 #include "miscellaneous/application.h"
 
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/iofactory.h"
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
@@ -58,9 +59,34 @@ IconFactory *Application::icons() {
   return m_icons;
 }
 
+bool Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
+                                         const QString &target_path, const QString &backup_name) {
+  if (!QFileInfo(target_path).isWritable()) {
+    return false;
+  }
+
+  bool final_result = true;
+
+  if (backup_settings) {
+    settings()->sync();
+    final_result = final_result && IOFactory::copyFile(settings()->fileName(),
+                                                       target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_SETTINGS);
+  }
+
+  if (backup_database &&
+      (database()->activeDatabaseDriver() == DatabaseFactory::SQLITE ||
+       database()->activeDatabaseDriver() == DatabaseFactory::SQLITE_MEMORY)) {
+    // We need to save the database first.
+    database()->saveDatabase();
+    final_result = final_result && IOFactory::copyFile(database()->sqliteDatabaseFilePath(),
+                                                       target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE);
+  }
+
+  return final_result;
+}
+
 void Application::processExecutionMessage(const QString &message) {
-  qDebug("Received '%s' execution message from another application instance.",
-         qPrintable(message));
+  qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 
   if (message == APP_IS_RUNNING) {
     if (SystemTrayIcon::isSystemTrayActivated()) {

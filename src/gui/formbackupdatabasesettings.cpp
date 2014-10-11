@@ -43,6 +43,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
 
   selectFolder(qApp->documentsFolderPath());  
   m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + "_" + QDateTime::currentDateTime().toString("yyyyMMddHHmm"));
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
   if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE &&
       qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE_MEMORY) {
@@ -55,7 +56,20 @@ FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
 }
 
 void FormBackupDatabaseSettings::performBackup() {
-  // TODO: Backup.
+  if (qApp->backupDatabaseSettings(m_ui->m_checkBackupDatabase->isChecked(),
+                                   m_ui->m_checkBackupSettings->isChecked(),
+                                   m_ui->m_lblSelectFolder->label()->text(),
+                                   m_ui->m_txtBackupName->lineEdit()->text())) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok,
+                                 tr("Backup was created successfully and stored in target folder."),
+                                 tr("Backup was created successfully."));
+  }
+  else {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error,
+                                 tr("Backup failed, database and/or settings is probably not backed."),
+                                 tr("Backup failed. Check the output folder if your database\nand/or "
+                                    "settings were backed or not. Also make sure that target foder is writable."));
+  }
 }
 
 void FormBackupDatabaseSettings::selectFolder(QString path) {
@@ -64,7 +78,8 @@ void FormBackupDatabaseSettings::selectFolder(QString path) {
   }
 
   if (!path.isEmpty()) {
-    m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(path), tr("Good destination folder is specified."));
+    m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(path),
+                                       tr("Good destination folder is specified."));
   }
 }
 

@@ -25,6 +25,16 @@
 IOFactory::IOFactory() {
 }
 
+bool IOFactory::copyFile(const QString &source, const QString &destination) {
+  if (QFile::exists(destination)) {
+    if (!QFile::remove(destination)) {
+      return false;
+    }
+  }
+
+  return QFile::copy(source, destination);
+}
+
 bool IOFactory::removeFolder(const QString& directory_name,
                                 const QStringList& exception_file_list,
                                 const QStringList& exception_folder_list) {
@@ -59,7 +69,7 @@ bool IOFactory::removeFolder(const QString& directory_name,
   return result;
 }
 
-bool IOFactory::copyFolder(QString source, QString destination) {
+bool IOFactory::copyFolder(const QString &source, const QString &destination) {
   QDir dir_source(source);
 
   if (!dir_source.exists()) {

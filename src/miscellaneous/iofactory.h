@@ -26,9 +26,11 @@ class IOFactory {
     IOFactory();
 
   public:
+    static bool copyFile(const QString &source, const QString &destination);
+
     // Copy whole directory recursively.
     // Destination path is created if it does not exist.
-    static bool copyFolder(QString source, QString destination);
+    static bool copyFolder(const QString &source, const QString &destination);
 
     // Removes directory recursively and skips given folders/files.
     static bool removeFolder(const QString &directory_name,
