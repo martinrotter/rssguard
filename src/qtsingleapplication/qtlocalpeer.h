@@ -64,7 +64,7 @@ Q_SIGNALS:
 protected Q_SLOTS:
     void receiveConnection();
 
-protected:
+public:
     QString id;
     QString socketName;
     QLocalServer* server;

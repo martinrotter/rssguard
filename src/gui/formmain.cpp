@@ -36,6 +36,7 @@
 #include "gui/formupdate.h"
 #include "gui/formimportexport.h"
 #include "gui/formbackupdatabasesettings.h"
+#include "gui/formrestoredatabasesettings.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -405,7 +406,9 @@ void FormMain::backupDatabaseSettings() {
 }
 
 void FormMain::restoreDatabaseSettings() {
-
+  QPointer<FormRestoreDatabaseSettings> form = new FormRestoreDatabaseSettings(this);
+  form.data()->exec();
+  delete form.data();
 }
 
 void FormMain::changeEvent(QEvent *event) {
