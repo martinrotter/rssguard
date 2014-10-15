@@ -42,6 +42,7 @@ class FormRestoreDatabaseSettings : public QDialog {
 
   private:
     Ui::FormRestoreDatabaseSettings *m_ui;
+    QPushButton *m_btnRestart;
 };
 
 #endif // FORMRESTOREDATABASESETTINGS_H

@@ -17,6 +17,7 @@
 
 #include "miscellaneous/databasefactory.h"
 
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/application.h"
 
 #include <QDir>
@@ -77,6 +78,41 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
     default:
       //: Unknown MySQL error arised.
       return tr("Unknown error.");
+  }
+}
+
+bool DatabaseFactory::initiateRestoration(const QString &database_backup_file_path) {
+  switch (m_activeDatabaseDriver) {
+    case SQLITE:
+    case SQLITE_MEMORY:
+      return IOFactory::copyFile(database_backup_file_path,
+                                 m_sqliteDatabaseFilePath + QDir::separator() +
+                                 BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE);
+
+    default:
+      return false;
+  }
+}
+
+void DatabaseFactory::finishRestoration() {
+  // TODO: Finish restoration.
+  if (m_activeDatabaseDriver != SQLITE && m_activeDatabaseDriver != SQLITE_MEMORY) {
+    return;
+  }
+
+  QString backup_database_file = m_sqliteDatabaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
+
+  if (QFile::exists(backup_database_file)) {
+    qWarning("Backup database file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_database_file)));
+
+    if (IOFactory::copyFile(backup_database_file,
+                            m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE)) {
+      QFile::remove(backup_database_file);
+      qDebug("Database file was restored successully.");
+    }
+    else {
+      qCritical("Database file was NOT restored due to error when copying the file.");
+    }
   }
 }
 
@@ -178,6 +214,8 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 }
 
 QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &connection_name) {
+  finishRestoration();
+
   // Prepare file paths.
   QDir db_path(m_sqliteDatabaseFilePath);
   QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));

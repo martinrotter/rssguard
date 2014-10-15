@@ -146,6 +146,9 @@ class Application : public QtSingleApplication {
     }
 
     bool backupDatabaseSettings(bool backup_database, bool backup_settings, const QString &target_path, const QString &backup_name);
+    bool restoreDatabaseSettings(bool restore_database, bool restore_settings,
+                                 const QString &source_database_file_path = QString(),
+                                 const QString &source_settings_file_path = QString());
 
     // Access to application tray icon. Always use this in cooperation with
     // SystemTrayIcon::isSystemTrayActivated().

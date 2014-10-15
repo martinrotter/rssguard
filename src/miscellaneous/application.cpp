@@ -85,6 +85,21 @@ bool Application::backupDatabaseSettings(bool backup_database, bool backup_setti
   return final_result;
 }
 
+bool Application::restoreDatabaseSettings(bool restore_database, bool restore_settings,
+                                          const QString &source_database_file_path, const QString &source_settings_file_path) {
+  bool result = true;
+
+  if (restore_database) {
+    result &= qApp->database()->initiateRestoration(source_database_file_path);
+  }
+
+  if (restore_settings) {
+    result &= qApp->settings()->initiateRestoration(source_settings_file_path);
+  }
+
+  return result;
+}
+
 void Application::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 

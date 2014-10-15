@@ -18,6 +18,7 @@
 #include "miscellaneous/settings.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
 
 #include <QDebug>
 #include <QDir>
@@ -42,6 +43,29 @@ QSettings::Status Settings::checkSettings() {
   return status();
 }
 
+bool Settings::initiateRestoration(const QString &settings_backup_file_path) {
+  return IOFactory::copyFile(settings_backup_file_path,
+                             QFileInfo(fileName()).absolutePath() + QDir::separator() +
+                             BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS);
+}
+
+void Settings::finishRestoration(const QString &desired_settings_file_path) {
+  QString backup_settings_file = QFileInfo(desired_settings_file_path).absolutePath() + QDir::separator() +
+                                 BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
+
+  if (QFile::exists(backup_settings_file)) {
+    qWarning("Backup settings file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_settings_file)));
+
+    if (IOFactory::copyFile(backup_settings_file, desired_settings_file_path)) {
+      QFile::remove(backup_settings_file);
+      qDebug("Settings file was restored successully.");
+    }
+    else {
+      qCritical("Settings file was NOT restored due to error when copying the file.");
+    }
+  }
+}
+
 Settings *Settings::setupSettings(QObject *parent) {
   Settings *new_settings;
 
@@ -63,6 +87,8 @@ Settings *Settings::setupSettings(QObject *parent) {
 
   // Check if portable settings are available.
   if (will_we_use_portable_settings) {
+    finishRestoration(app_path_file);
+
     // Portable settings are available, use them.
     new_settings = new Settings(app_path_file, QSettings::IniFormat, Settings::Portable, parent);
 
@@ -74,6 +100,8 @@ Settings *Settings::setupSettings(QObject *parent) {
     qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(app_path_file)));
   }
   else {
+    finishRestoration(home_path_file);
+
     // Portable settings are NOT available, store them in
     // user's home directory.
     new_settings = new Settings(home_path_file, QSettings::IniFormat, Settings::NonPortable, parent);

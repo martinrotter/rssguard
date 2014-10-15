@@ -77,6 +77,11 @@ class DatabaseFactory : public QObject {
     // Returns identification of currently active database driver.
     UsedDriver activeDatabaseDriver() const;
 
+    // Copies selected backup database (file) to active database path.
+    bool initiateRestoration(const QString &database_backup_file_path);
+
+    void finishRestoration();
+
     //
     // SQLITE stuff.
     //

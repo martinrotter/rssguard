@@ -75,7 +75,9 @@
 #define FEEDS_VIEW_INDENTATION                10
 #define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
 
+#define BACKUP_NAME_SETTINGS    "config"
 #define BACKUP_SUFFIX_SETTINGS  ".ini.backup"
+#define BACKUP_NAME_DATABASE    "database"
 #define BACKUP_SUFFIX_DATABASE  ".db.backup"
 
 #define APP_DB_MYSQL_DRIVER           "QMYSQL"

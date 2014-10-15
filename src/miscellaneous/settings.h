@@ -53,12 +53,16 @@ class Settings : public QSettings {
     // Synchronizes settings.
     QSettings::Status checkSettings();
 
+    bool initiateRestoration(const QString &settings_backup_file_path);
+
+    static void finishRestoration(const QString &desired_settings_file_path);
+
     // Creates settings file in correct location.
     static Settings *setupSettings(QObject *parent);
 
   private:
     // Constructor.
-    explicit Settings(const QString & file_name, Format format, const Type &type, QObject *parent = 0);
+    explicit Settings(const QString &file_name, Format format, const Type &type, QObject *parent = 0);
 
     Type m_initializationStatus;
 };
