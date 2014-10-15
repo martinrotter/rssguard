@@ -57,12 +57,9 @@ FormCategoryDetails::~FormCategoryDetails() {
 
 void FormCategoryDetails::createConnections() {
   // General connections.
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
-          this, SLOT(apply()));
-  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onTitleChanged(QString)));
-  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onDescriptionChanged(QString)));
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(apply()));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onDescriptionChanged(QString)));
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
@@ -79,11 +76,14 @@ void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_categ
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormCategoryDetails::exec(FeedsModelCategory *input_category) {
+int FormCategoryDetails::exec(FeedsModelCategory *input_category, FeedsModelRootItem *parent_to_select) {
+  // TODO: řeseni bugu #92. pridal sem parametr parent_to_select
+  // kde volajici preda pointer na doporuceny nadrazeny prvek,
+  // nebo null pokud nic nedoporucuje.
+  // vybereme
+
   // Load categories.
-  loadCategories(m_feedsModel->allCategories().values(),
-                 m_feedsModel->rootItem(),
-                 input_category);
+  loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem(), input_category);
 
   if (input_category == NULL) {
     // User is adding new category.

@@ -44,7 +44,7 @@ class FormCategoryDetails : public QDialog {
 
   public slots:
     // Executes add/edit standard category dialog.
-    int exec(FeedsModelCategory *input_category);
+    int exec(FeedsModelCategory *input_category, FeedsModelRootItem *parent_to_select);
 
   protected slots:
     // Applies changes.
@@ -72,9 +72,7 @@ class FormCategoryDetails : public QDialog {
     // Loads categories into the dialog + give root "category"
     // and make sure that no childs of input category (including)
     // input category are loaded.
-    void loadCategories(const QList<FeedsModelCategory*> categories,
-                        FeedsModelRootItem *root_item,
-                        FeedsModelCategory *input_category);
+    void loadCategories(const QList<FeedsModelCategory*> categories, FeedsModelRootItem *root_item, FeedsModelCategory *input_category);
 
   private:
     Ui::FormCategoryDetails *m_ui;

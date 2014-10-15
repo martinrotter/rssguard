@@ -246,7 +246,7 @@ void FeedsView::addNewCategory() {
 
   QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
 
-  form_pointer.data()->exec(NULL);
+  form_pointer.data()->exec(NULL, NULL);
 
   delete form_pointer.data();
 
@@ -257,7 +257,7 @@ void FeedsView::addNewCategory() {
 void FeedsView::editCategory(FeedsModelCategory *category) {
   QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
 
-  form_pointer.data()->exec(category);
+  form_pointer.data()->exec(category, NULL);
 
   delete form_pointer.data();
 }
@@ -549,12 +549,17 @@ void FeedsView::initializeContextMenuCategoriesFeeds() {
                                            qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
                                            qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread <<
                                            qApp->mainForm()->m_ui->m_actionDeleteSelectedFeedCategory);
+  m_contextMenuCategoriesFeeds->addSeparator();
+  m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
+                                           qApp->mainForm()->m_ui->m_actionAddCategory <<
+                                           qApp->mainForm()->m_ui->m_actionAddFeed);
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
+  m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllFeeds);
+  m_contextMenuEmptySpace->addSeparator();
   m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionUpdateAllFeeds <<
                                       qApp->mainForm()->m_ui->m_actionAddCategory <<
                                       qApp->mainForm()->m_ui->m_actionAddFeed);
 }

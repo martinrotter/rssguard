@@ -28,7 +28,7 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
   : QDialog(parent), m_ui(new Ui::FormRestoreDatabaseSettings) {
   m_ui->setupUi(this);
 
-  m_btnRestart = m_ui->m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ApplyRole);
+  m_btnRestart = m_ui->m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ActionRole);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
   setWindowIcon(qApp->icons()->fromTheme("document-import"));
