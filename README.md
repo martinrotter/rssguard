@@ -8,7 +8,7 @@ Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [forums](https://groups.google.com/d/forum/rssguard),
-* [IRC channel at freenode](http://webchat.freenode.net/?channels=#rssguard) (nick of author is #skunkos).
+* [IRC channel at freenode](http://webchat.freenode.net/?channels=#rssguard) (My nick is #skunkos, I am not available on IRC all day long.).
 - - -
 Donate
 ------
