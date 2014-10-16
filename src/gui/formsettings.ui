@@ -93,7 +93,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -400,8 +400,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>684</width>
+            <height>451</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -478,8 +478,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>678</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1163,7 +1163,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -1284,6 +1284,49 @@ Authors of this application are NOT responsible for lost data.</string>
              <property name="text">
               <string>Keep message selection in the middle of the message list viewport</string>
              </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QGroupBox" name="m_grpMessagesDateTimeFormat">
+             <property name="title">
+              <string>Use custom date/time format (overrides format loaded from active localization)</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <layout class="QFormLayout" name="formLayout_19">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Format code</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Example</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="m_lblMessagesDateTimeFormat">
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>

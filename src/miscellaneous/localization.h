@@ -21,6 +21,7 @@
 #include <QObject>
 
 #include <QString>
+#include <QLocale>
 
 
 struct Language {
@@ -58,9 +59,14 @@ class Localization : public QObject {
       return m_loadedLanguage;
     }
 
+    inline QLocale loadedLocale() const {
+      return m_loadedLocale;
+    }
+
   private:
     // Code of loaded language.
     QString m_loadedLanguage;
+    QLocale m_loadedLocale;
 };
 
 #endif // LOCALIZATION_H

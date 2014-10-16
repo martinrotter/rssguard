@@ -9,7 +9,7 @@ Fixed:
 Added:
 <ul>
 <li>Settings/database can now experimentally be exported/imported.</li>
-<li>Added Swedish localization (thanks to Åke Engelbrektson).</li>
+<li>Added Swedish localization (thanks to &Aring;ke Engelbrektson).</li>
 <li>Parent item is now selected when adding new category/feed with that parent pre-selected in feed view.</li>
 </ul>
 
