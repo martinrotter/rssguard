@@ -110,6 +110,17 @@ QList<FeedsModelFeed*> FeedsView::allFeeds() const {
   return m_sourceModel->allFeeds();
 }
 
+FeedsModelRootItem *FeedsView::selectedItem() const {
+  QModelIndexList selected_rows = selectionModel()->selectedRows();
+
+  if (selected_rows.isEmpty()) {
+    return NULL;
+  }
+
+  FeedsModelRootItem *selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
+  return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
+}
+
 FeedsModelCategory *FeedsView::selectedCategory() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->categoryForIndex(current_mapped);
@@ -246,7 +257,7 @@ void FeedsView::addNewCategory() {
 
   QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
 
-  form_pointer.data()->exec(NULL, NULL);
+  form_pointer.data()->exec(NULL, selectedItem());
 
   delete form_pointer.data();
 
@@ -275,7 +286,7 @@ void FeedsView::addNewFeed() {
 
   QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
 
-  form_pointer.data()->exec(NULL);
+  form_pointer.data()->exec(NULL, selectedItem());
 
   delete form_pointer.data();
 
@@ -286,7 +297,7 @@ void FeedsView::addNewFeed() {
 void FeedsView::editFeed(FeedsModelFeed *feed) {
   QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
 
-  form_pointer.data()->exec(feed);
+  form_pointer.data()->exec(feed, NULL);
 
   delete form_pointer.data();
 }

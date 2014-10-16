@@ -61,6 +61,7 @@ class FeedsView : public QTreeView {
 
     // Returns pointers to selected feed/category if they are really
     // selected.
+    FeedsModelRootItem *selectedItem() const;
     FeedsModelCategory *selectedCategory() const;
     FeedsModelFeed *selectedFeed() const;
     FeedsModelRecycleBin *selectedRecycleBin() const;
@@ -113,9 +114,7 @@ class FeedsView : public QTreeView {
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
-    void receiveMessageCountsChange(MessagesModel::MessageMode mode,
-                                    bool total_msg_count_changed,
-                                    bool any_msg_restored);
+    void receiveMessageCountsChange(MessagesModel::MessageMode mode, bool total_msg_count_changed, bool any_msg_restored);
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too);

@@ -42,7 +42,7 @@ class FormFeedDetails : public QDialog {
 
   public slots:
     // Executes add/edit standard feed dialog.
-    int exec(FeedsModelFeed *input_feed);
+    int exec(FeedsModelFeed *input_feed, FeedsModelRootItem *parent_to_select);
 
   protected slots:
     // Applies changes.

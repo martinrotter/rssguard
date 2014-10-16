@@ -95,7 +95,6 @@ bool DatabaseFactory::initiateRestoration(const QString &database_backup_file_pa
 }
 
 void DatabaseFactory::finishRestoration() {
-  // TODO: Finish restoration.
   if (m_activeDatabaseDriver != SQLITE && m_activeDatabaseDriver != SQLITE_MEMORY) {
     return;
   }

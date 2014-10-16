@@ -56,7 +56,7 @@ FormFeedDetails::~FormFeedDetails() {
   delete m_ui;
 }
 
-int FormFeedDetails::exec(FeedsModelFeed *input_feed) {
+int FormFeedDetails::exec(FeedsModelFeed *input_feed, FeedsModelRootItem *parent_to_select) {
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem());
 
@@ -72,6 +72,19 @@ int FormFeedDetails::exec(FeedsModelFeed *input_feed) {
 
     if (default_encoding_index >= 0) {
       m_ui->m_cmbEncoding->setCurrentIndex(default_encoding_index);
+    }
+
+    if (parent_to_select != NULL) {
+      if (parent_to_select->kind() == FeedsModelRootItem::Category) {
+        m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
+      }
+      else if (parent_to_select->kind() == FeedsModelRootItem::Feed) {
+        int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
+
+        if (target_item >= 0) {
+          m_ui->m_cmbParentCategory->setCurrentIndex(target_item);
+        }
+      }
     }
   }
   else {

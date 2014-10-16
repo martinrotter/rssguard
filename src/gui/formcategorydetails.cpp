@@ -92,6 +92,20 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category, FeedsModelRoot
     // Make sure that "default" icon is used as the default option for new
     // categories.
     m_actionUseDefaultIcon->trigger();
+
+    // Load parent from suggested item.
+    if (parent_to_select != NULL) {
+      if (parent_to_select->kind() == FeedsModelRootItem::Category) {
+        m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
+      }
+      else if (parent_to_select->kind() == FeedsModelRootItem::Feed) {
+        int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
+
+        if (target_item >= 0) {
+          m_ui->m_cmbParentCategory->setCurrentIndex(target_item);
+        }
+      }
+    }
   }
   else {
     // User is editing existing category.
