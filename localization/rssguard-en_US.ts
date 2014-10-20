@@ -1750,7 +1750,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <location filename="../src/gui/formsettings.ui" line="68"/>
-        <location filename="../src/gui/formsettings.cpp" line="72"/>
+        <location filename="../src/gui/formsettings.cpp" line="74"/>
         <source>Language</source>
         <extracomment>Language settings section.
 ----------
@@ -2163,249 +2163,249 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="73"/>
+        <location filename="../src/gui/formsettings.cpp" line="75"/>
         <source>Code</source>
         <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="74"/>
-        <location filename="../src/gui/formsettings.cpp" line="82"/>
+        <location filename="../src/gui/formsettings.cpp" line="76"/>
+        <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
         <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="75"/>
-        <location filename="../src/gui/formsettings.cpp" line="83"/>
+        <location filename="../src/gui/formsettings.cpp" line="77"/>
+        <location filename="../src/gui/formsettings.cpp" line="85"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="76"/>
-        <location filename="../src/gui/formsettings.cpp" line="84"/>
+        <location filename="../src/gui/formsettings.cpp" line="78"/>
+        <location filename="../src/gui/formsettings.cpp" line="86"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="81"/>
+        <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
         <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="166"/>
+        <location filename="../src/gui/formsettings.cpp" line="168"/>
         <source>Select web browser executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="169"/>
+        <location filename="../src/gui/formsettings.cpp" line="171"/>
         <source>Executables (*.*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="245"/>
+        <location filename="../src/gui/formsettings.cpp" line="249"/>
         <source>some keyboard shortcuts are not unique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="254"/>
+        <location filename="../src/gui/formsettings.cpp" line="258"/>
         <source>custom external browser is not set correctly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="263"/>
+        <location filename="../src/gui/formsettings.cpp" line="267"/>
         <source>Cannot save settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="264"/>
+        <location filename="../src/gui/formsettings.cpp" line="268"/>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="266"/>
+        <location filename="../src/gui/formsettings.cpp" line="270"/>
         <source>List of errors:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="278"/>
+        <location filename="../src/gui/formsettings.cpp" line="282"/>
         <source>Critical settings were changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="279"/>
+        <location filename="../src/gui/formsettings.cpp" line="283"/>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="281"/>
+        <location filename="../src/gui/formsettings.cpp" line="285"/>
         <source>Do you want to restart now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="282"/>
+        <location filename="../src/gui/formsettings.cpp" line="286"/>
         <source>List of changes:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="339"/>
+        <location filename="../src/gui/formsettings.cpp" line="343"/>
         <source>Opera 12 or older</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="380"/>
+        <location filename="../src/gui/formsettings.cpp" line="384"/>
         <source>No proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="381"/>
+        <location filename="../src/gui/formsettings.cpp" line="385"/>
         <source>System proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="382"/>
+        <location filename="../src/gui/formsettings.cpp" line="386"/>
         <source>Socks5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="383"/>
+        <location filename="../src/gui/formsettings.cpp" line="387"/>
         <source>Http</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="452"/>
+        <location filename="../src/gui/formsettings.cpp" line="456"/>
         <source>language changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="471"/>
+        <location filename="../src/gui/formsettings.cpp" line="475"/>
         <source>No connection test triggered so far.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="472"/>
+        <location filename="../src/gui/formsettings.cpp" line="476"/>
         <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="475"/>
+        <location filename="../src/gui/formsettings.cpp" line="479"/>
         <source>SQLite (embedded database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="488"/>
+        <location filename="../src/gui/formsettings.cpp" line="492"/>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="491"/>
+        <location filename="../src/gui/formsettings.cpp" line="495"/>
         <source>Hostname of your MySQL server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="492"/>
+        <location filename="../src/gui/formsettings.cpp" line="496"/>
         <source>Username to login with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="493"/>
+        <location filename="../src/gui/formsettings.cpp" line="497"/>
         <source>Password for your username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="517"/>
+        <location filename="../src/gui/formsettings.cpp" line="521"/>
         <source>in-memory database switched</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="539"/>
+        <location filename="../src/gui/formsettings.cpp" line="543"/>
         <source>data storage backend changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="568"/>
+        <location filename="../src/gui/formsettings.cpp" line="572"/>
         <source>Hostname is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="572"/>
+        <location filename="../src/gui/formsettings.cpp" line="576"/>
         <source>Hostname looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="579"/>
+        <location filename="../src/gui/formsettings.cpp" line="583"/>
         <source>Username is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="583"/>
+        <location filename="../src/gui/formsettings.cpp" line="587"/>
         <source>Username looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="590"/>
+        <location filename="../src/gui/formsettings.cpp" line="594"/>
         <source>Password is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="594"/>
+        <location filename="../src/gui/formsettings.cpp" line="598"/>
         <source>Password looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="632"/>
+        <location filename="../src/gui/formsettings.cpp" line="636"/>
         <source> (not supported on this platform)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="666"/>
+        <location filename="../src/gui/formsettings.cpp" line="670"/>
         <source>Disable (Tray icon is not available.)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="685"/>
+        <location filename="../src/gui/formsettings.cpp" line="689"/>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="752"/>
+        <location filename="../src/gui/formsettings.cpp" line="756"/>
         <source>Icon only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="753"/>
+        <location filename="../src/gui/formsettings.cpp" line="757"/>
         <source>Text only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="754"/>
+        <location filename="../src/gui/formsettings.cpp" line="758"/>
         <source>Text beside icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="755"/>
+        <location filename="../src/gui/formsettings.cpp" line="759"/>
         <source>Text under icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="756"/>
+        <location filename="../src/gui/formsettings.cpp" line="760"/>
         <source>Follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="801"/>
+        <location filename="../src/gui/formsettings.cpp" line="805"/>
         <source>icon theme changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="810"/>
+        <location filename="../src/gui/formsettings.cpp" line="814"/>
         <source>skin changed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2582,112 +2582,112 @@ currently installed one.</source>
 <context>
     <name>MessagesModel</name>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="124"/>
+        <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Id</source>
         <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="125"/>
+        <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Read</source>
         <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="126"/>
+        <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Deleted</source>
         <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="127"/>
+        <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Important</source>
         <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="128"/>
+        <location filename="../src/core/messagesmodel.cpp" line="143"/>
         <source>Feed</source>
         <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="129"/>
+        <location filename="../src/core/messagesmodel.cpp" line="144"/>
         <source>Title</source>
         <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="130"/>
+        <location filename="../src/core/messagesmodel.cpp" line="145"/>
         <source>Url</source>
         <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="131"/>
+        <location filename="../src/core/messagesmodel.cpp" line="146"/>
         <source>Author</source>
         <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="132"/>
+        <location filename="../src/core/messagesmodel.cpp" line="147"/>
         <source>Created on</source>
         <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="133"/>
+        <location filename="../src/core/messagesmodel.cpp" line="148"/>
         <source>Contents</source>
         <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="135"/>
+        <location filename="../src/core/messagesmodel.cpp" line="150"/>
         <source>Id of the message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="135"/>
+        <location filename="../src/core/messagesmodel.cpp" line="150"/>
         <source>Is message read?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="136"/>
+        <location filename="../src/core/messagesmodel.cpp" line="151"/>
         <source>Is message deleted?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="136"/>
+        <location filename="../src/core/messagesmodel.cpp" line="151"/>
         <source>Is message important?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="137"/>
+        <location filename="../src/core/messagesmodel.cpp" line="152"/>
         <source>Id of feed which this message belongs to.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="138"/>
+        <location filename="../src/core/messagesmodel.cpp" line="153"/>
         <source>Title of the message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="138"/>
+        <location filename="../src/core/messagesmodel.cpp" line="153"/>
         <source>Url of the message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="139"/>
+        <location filename="../src/core/messagesmodel.cpp" line="154"/>
         <source>Author of the message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="139"/>
+        <location filename="../src/core/messagesmodel.cpp" line="154"/>
         <source>Creation date of the message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/messagesmodel.cpp" line="140"/>
+        <location filename="../src/core/messagesmodel.cpp" line="155"/>
         <source>Contents of the message.</source>
         <translation type="unfinished"></translation>
     </message>

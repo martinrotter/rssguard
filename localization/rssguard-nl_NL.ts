@@ -133,12 +133,14 @@
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (categorie)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Deze categorie bevat geen nested items.</translation>
     </message>
 </context>
 <context>
@@ -176,29 +178,34 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)%3
+
+Netwerk status: %6
+Coderen: %4
+Auto-update status: %5</translation>
     </message>
 </context>
 <context>
     <name>FeedsModelRecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Vuilnisbak</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>De vuilnisbak bevat alle verwijderde berichten van alle feeds.</translation>
     </message>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vuilnisbak
+%1</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
         </translation>
     </message>
 </context>
@@ -277,31 +284,31 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Deleting feed or category</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder feed of categorie</translation>
     </message>
     <message>
         <source>Do you really want to delete selected item?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wil je het geselecteerde item echt verwijderen?</translation>
     </message>
     <message>
         <source>Permanently delete messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Definitief berichten verwijderen</translation>
     </message>
     <message>
         <source>You are about to permanenty delete all messages from your recycle bin.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je gaat definitief alle berichten uit de prullenbak verwijderen.</translation>
     </message>
     <message>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wil je de vuilisbak echt legen?</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"></translation>
+        <translation>Contextmenu voor lege regels</translation>
     </message>
     <message>
         <source>Context menu for recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Contextmenu voor vuilnisbak</translation>
     </message>
 </context>
 <context>
@@ -361,27 +368,27 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>Paden</translation>
     </message>
     <message>
         <source>Settings type</source>
-        <translation type="unfinished"></translation>
+        <translation>Type instellingen</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestands instellingen</translation>
     </message>
     <message>
         <source>Database root path</source>
-        <translation type="unfinished"></translation>
+        <translation>Database root pad</translation>
     </message>
     <message>
         <source>FULLY portable</source>
-        <translation type="unfinished"></translation>
+        <translation>Volledig portable</translation>
     </message>
     <message>
         <source>PARTIALLY portable</source>
-        <translation type="unfinished"></translation>
+        <translation>Deels portable</translation>
     </message>
 </context>
 <context>
@@ -944,11 +951,11 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>&amp;Check all items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Controleer alle items</translation>
     </message>
     <message>
         <source>&amp;Uncheck all items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vinkje bij alle items</translation>
     </message>
 </context>
 <context>
@@ -1284,39 +1291,39 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vuilnisbak</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporteer een &amp;bug (Github)...</translation>
     </message>
     <message>
         <source>Report a bug (BitBucket)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rapporteer een &amp;bug (Bitbucket)...</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Doneer met PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon &amp;wiki</translation>
     </message>
     <message>
         <source>&amp;Empty recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vuilnisbak legen</translation>
     </message>
     <message>
         <source>&amp;Restore all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Herstel alle berichten</translation>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel &amp;geselecteerde berichten</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Herstart</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
@@ -1941,7 +1948,7 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wil je nu herstarten?</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
@@ -2393,7 +2400,9 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>%1
 Unread news: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+
+Ongelezen nieuws: %2</translation>
     </message>
 </context>
 <context>
@@ -2637,11 +2646,11 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open koppeling in externe browser</translation>
     </message>
     <message>
         <source>Open the hyperlink in external browser.</source>
-        <translation type="unfinished"></translation>
+        <translation>Open de hyperlink in externe browser</translation>
     </message>
 </context>
 </TS>

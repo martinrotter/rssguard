@@ -398,60 +398,60 @@ Automatický update: %5</translation>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Zálohovat databázi/nastavení</translation>
     </message>
     <message>
         <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vybrat složku</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti zálohy</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"></translation>
+        <translation>Zálohované položky</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Databáze</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Nastavení</translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název zálohy</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished">Výsledky operací</translation>
+        <translation>Výsledky operací</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"></translation>
+        <translation>Společné jméno pro záložní soubory</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished">Doposud neprovedena žádná operace.</translation>
+        <translation>Doposud neprovedena žádná operace.</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Záloha byla vytvořena a uložena v cílové složce.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Záloha byla vytvořena.</translation>
     </message>
     <message>
         <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zálohování selhalo, databáze a/nebo nastavení asi nebylo zálohováno.</translation>
     </message>
     <message>
         <source>Backup failed. Check the output folder if your database
 and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Záloha selhala, zkontrolujte obsah výstupní složky.</translation>
     </message>
     <message>
         <source>Select destionation folder</source>
@@ -459,15 +459,15 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Good destination folder is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je specifikována dobrá výstupní složka.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Název zálohy nemůže být prázdný.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Název zálohy je v pořádku.</translation>
     </message>
 </context>
 <context>
@@ -1329,66 +1329,66 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obnovit databázi/nastavení</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zálohovat databázi/nastavení</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit databázi/nastavení</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished">Výsledky operací</translation>
+        <translation>Výsledky operací</translation>
     </message>
     <message>
         <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vybrat složku</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit databázi</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit nastavení</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Restartovat</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished">Doposud neprovedena žádná operace.</translation>
+        <translation>Doposud neprovedena žádná operace.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnova byla spuštěna, pro její dokončení je třeba restart aplikace.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pro dokončení procesu obnovení je třeba restartovat aplikaci.</translation>
     </message>
     <message>
         <source>Restoration was not initiated successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovení nebylo spuštěno úspěšně.</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databáze a/nebo nastavení byly zkopírovány do obnovovací složky.</translation>
     </message>
     <message>
         <source>Select source folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Výběr zdrojové složky</translation>
     </message>
     <message>
         <source>Good source folder is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je specifikována dobrá zdrojová složka.</translation>
     </message>
 </context>
 <context>
@@ -1953,7 +1953,7 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrolovat aktualizace po startu programu</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
@@ -1961,7 +1961,7 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít vlastní format datumu (přepíše formát načtený z lokalizace)</translation>
     </message>
 </context>
 <context>
@@ -2386,11 +2386,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Nová verze k dispozici</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klikněte na bublinu pro více informací.</translation>
     </message>
 </context>
 <context>

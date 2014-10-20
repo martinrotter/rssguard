@@ -1946,7 +1946,7 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du starta om nu?</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
