@@ -52,6 +52,10 @@ class FeedMessageViewer : public TabContent {
       return m_feedsView;
     }
 
+    inline MessagesView *messagesView() {
+      return m_messagesView;
+    }
+
     inline MessagesToolBar *messagesToolBar() {
       return m_toolBarMessages;
     }

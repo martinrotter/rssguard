@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr_FR">
+<TS version="2.0" language="fr_FR">
 <context>
     <name>Application</name>
     <message>
@@ -78,11 +78,11 @@
     <name>FeedsImportExportModel</name>
     <message>
         <source> (category)</source>
-        <translation type="unfinished"></translation>
+        <translation>(catégorie)</translation>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"></translation>
+        <translation>(flux)</translation>
     </message>
 </context>
 <context>
@@ -94,10 +94,12 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Titres des flux/catégories.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Nombre des messages lus/non-lus.</translation>
     </message>
     <message>
@@ -123,15 +125,15 @@
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n message(s) non lu(s).</numerusform>
+            <numerusform>%n message(s) non lu(s).</numerusform>
         </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (catégorie)%2%3</translation>
     </message>
     <message>
         <source>
@@ -164,7 +166,7 @@ This category does not contain any nested items.</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n message(s) non lu(s).</numerusform>
         </translation>
     </message>
     <message>
@@ -181,7 +183,7 @@ Auto-update status: %5</source>
     <name>FeedsModelRecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Poubelle</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
@@ -190,7 +192,8 @@ Auto-update status: %5</source>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Corbeille
+%1</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
@@ -359,7 +362,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Paths</source>
-        <translation type="unfinished"></translation>
+        <translation>Chemins</translation>
     </message>
     <message>
         <source>Settings type</source>
@@ -379,6 +382,82 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>PARTIALLY portable</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormBackupDatabaseSettings</name>
+    <message>
+        <source>Backup database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Items to backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Paramètres</translation>
+    </message>
+    <message>
+        <source>Backup name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Common name for backup files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed, database and/or settings is probably not backed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed. Check the output folder if your database
+and/or settings were backed or not. Also make sure that target foder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destionation folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination folder is specified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup name cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup name looks okay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -410,7 +489,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter une nouvelle catégorie</translation>
     </message>
     <message>
         <source>Edit existing category</source>
@@ -594,7 +673,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
@@ -810,7 +889,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier source</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
@@ -818,11 +897,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer des flux</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichier OPML 2.0 (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
@@ -830,7 +909,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier est sélectionné </translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
@@ -862,7 +941,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur critique rencontrée</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
@@ -1157,19 +1236,19 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>New &amp;feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau &amp;flux</translation>
     </message>
     <message>
         <source>Add new feed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
     <message>
         <source>New &amp;category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelle &amp;catégorie</translation>
     </message>
     <message>
         <source>Add new category.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajouter une nouvelle catégorie </translation>
     </message>
     <message>
         <source>&amp;Toolbars</source>
@@ -1205,7 +1284,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Corbeille</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1217,7 +1296,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Donner via PayPal</translation>
     </message>
     <message>
         <source>Display &amp;wiki</source>
@@ -1237,6 +1316,69 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Restart</source>
+        <translation>&amp;Redémarrer</translation>
+    </message>
+    <message>
+        <source>&amp;Restore database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Backup database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormRestoreDatabaseSettings</name>
+    <message>
+        <source>Restore database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restoration was initiated. Restart to proceed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You need to restart application for restoration process to finish.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restoration was not initiated successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database and/or settings were not copied to restoration folder successully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select source folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good source folder is specified.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1265,7 +1407,9 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Langage</translation>
     </message>
     <message>
@@ -1323,10 +1467,12 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1404,6 +1550,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Nom</translation>
     </message>
     <message>
@@ -1791,6 +1938,18 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do you want to restart now?</source>
+        <translation>Voulez vous redémarrer maintenant ?</translation>
+    </message>
+    <message>
+        <source>Check for updates on application startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1907,11 +2066,11 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Install update</source>
-        <translation type="unfinished"></translation>
+        <translation>Installer la mise à jour</translation>
     </message>
     <message>
         <source>Error occured</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur rencontrée</translation>
     </message>
     <message>
         <source>Error occured during downloading of the package.</source>
@@ -1923,7 +2082,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Go to application website</source>
-        <translation type="unfinished"></translation>
+        <translation>Aller sur le site web de l&apos;application</translation>
     </message>
 </context>
 <context>
@@ -1937,42 +2096,52 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>Id</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lire</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Supprimé</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Important</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Flux</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titre</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Crée sur</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Contenus</translation>
     </message>
     <message>
@@ -2044,7 +2213,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Display all messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher tout les messages</translation>
     </message>
     <message>
         <source>Message highlighter</source>
@@ -2148,7 +2317,7 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Pas d&apos;erreurs</translation>
     </message>
 </context>
 <context>
@@ -2206,6 +2375,17 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
 </context>
 <context>
+    <name>SystemFactory</name>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SystemTrayIcon</name>
     <message>
         <source>%1
@@ -2245,7 +2425,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Main menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Menu principal</translation>
     </message>
     <message>
         <source>Open new web browser tab.</source>
@@ -2260,7 +2440,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Available actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Actions possibles</translation>
     </message>
     <message>
         <source>Insert separator</source>

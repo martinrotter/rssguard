@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
+#include "core/messagesmodel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/databasefactory.h"
@@ -39,6 +40,7 @@
 #include "gui/messagebox.h"
 #include "gui/basetoolbar.h"
 #include "gui/messagestoolbar.h"
+#include "gui/messagesview.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 
 #include <QProcess>
@@ -184,6 +186,27 @@ void FormSettings::loadFeedsMessages() {
   m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(settings->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(settings->value(APP_CFG_FEEDS, "count_format", "(%unread)").toString());
+
+  initializeMessageDateFormats();
+
+  m_ui->m_checkMessagesDateTimeFormat->setChecked(settings->value(APP_CFG_MESSAGES, "use_custom_date").toBool());
+  int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings->value(APP_CFG_MESSAGES, "custom_date_format").toString());
+
+  if (index_format >= 0) {
+    m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
+  }
+}
+
+void FormSettings::initializeMessageDateFormats() {
+  QStringList best_formats; best_formats << "d/M/yyyy hh:mm:ss" << "ddd, d. M. yy hh:mm:ss" <<
+                                            "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-ddThh:mm:ss" <<
+                                            "MMM d yyyy hh:mm:ss";;
+  QLocale current_locale = qApp->localization()->loadedLocale();
+  QDateTime current_dt = QDateTime::currentDateTime();
+
+  foreach (const QString &format, best_formats) {
+    m_ui->m_cmbMessagesDateTimeFormat->addItem(current_locale.toString(current_dt, format), format);
+  }
 }
 
 void FormSettings::saveFeedsMessages() {
@@ -196,9 +219,15 @@ void FormSettings::saveFeedsMessages() {
   settings->setValue(APP_CFG_FEEDS, "feed_update_timeout", m_ui->m_spinFeedUpdateTimeout->value());
   settings->setValue(APP_CFG_FEEDS, "feeds_update_on_startup", m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
   settings->setValue(APP_CFG_FEEDS, "count_format", m_ui->m_cmbCountsFeedList->currentText());
+  settings->setValue(APP_CFG_MESSAGES, "use_custom_date", m_ui->m_checkMessagesDateTimeFormat->isChecked());
+  settings->setValue(APP_CFG_MESSAGES, "custom_date_format",
+                     m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
 
+  // TODO: aktualizovat messageview s novym formatem
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->updateDateFormat();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->reloadWholeLayout();
 }
 
 void FormSettings::displayProxyPassword(int state) {

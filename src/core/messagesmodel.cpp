@@ -30,11 +30,12 @@
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent, qApp->database()->connection("MessagesModel", DatabaseFactory::FromSettings)),
-    m_messageMode(MessagesFromFeeds), m_messageFilter(NoHighlighting) {
+    m_messageMode(MessagesFromFeeds), m_messageFilter(NoHighlighting), m_customDateFormat(QString()) {
   setObjectName("MessagesModel");
   setupFonts();
   setupIcons();
   setupHeaderData();
+  updateDateFormat();
 
   // Set desired table and edit strategy.
   // NOTE: Changes to the database are actually NOT submitted
@@ -106,6 +107,20 @@ int MessagesModel::messageId(int row_index) const {
   return data(row_index, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 }
 
+void MessagesModel::updateDateFormat() {
+  if (qApp->settings()->value(APP_CFG_MESSAGES, "use_custom_date").toBool()) {
+    m_customDateFormat = qApp->settings()->value(APP_CFG_MESSAGES, "custom_date_format").toString();
+  }
+  else {
+    m_customDateFormat = QString();
+  }
+}
+
+void MessagesModel::reloadWholeLayout() {
+  emit layoutAboutToBeChanged();
+  emit layoutChanged();
+}
+
 Message MessagesModel::messageAt(int row_index) const {
   QSqlRecord rec = record(row_index);
   Message message;
@@ -157,8 +172,14 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       int index_column = idx.column();
 
       if (index_column == MSG_DB_DCREATED_INDEX) {
-        return TextFactory::parseDateTime(QSqlTableModel::data(idx,
-                                                               role).value<qint64>()).toLocalTime().toString(Qt::DefaultLocaleShortDate);
+        if (m_customDateFormat.isEmpty()) {
+          return TextFactory::parseDateTime(QSqlTableModel::data(idx,
+                                                                 role).value<qint64>()).toLocalTime().toString(Qt::DefaultLocaleShortDate);
+
+        }
+        else {
+          return TextFactory::parseDateTime(QSqlTableModel::data(idx, role).value<qint64>()).toLocalTime().toString(m_customDateFormat);
+        }
       }
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
         QString author_name = QSqlTableModel::data(idx, role).toString();

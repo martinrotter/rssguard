@@ -395,6 +395,82 @@ Automatický update: %5</translation>
     </message>
 </context>
 <context>
+    <name>FormBackupDatabaseSettings</name>
+    <message>
+        <source>Backup database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Items to backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Nastavení</translation>
+    </message>
+    <message>
+        <source>Backup name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished">Výsledky operací</translation>
+    </message>
+    <message>
+        <source>Common name for backup files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished">Doposud neprovedena žádná operace.</translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed, database and/or settings is probably not backed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed. Check the output folder if your database
+and/or settings were backed or not. Also make sure that target foder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destionation folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination folder is specified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup name cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup name looks okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FormCategoryDetails</name>
     <message>
         <source>Parent category</source>
@@ -1251,6 +1327,69 @@ Automatický update: %5</translation>
         <source>&amp;Restart</source>
         <translation>&amp;Restartovat</translation>
     </message>
+    <message>
+        <source>&amp;Restore database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Backup database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormRestoreDatabaseSettings</name>
+    <message>
+        <source>Restore database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished">Výsledky operací</translation>
+    </message>
+    <message>
+        <source>&amp;Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished">Doposud neprovedena žádná operace.</translation>
+    </message>
+    <message>
+        <source>Restoration was initiated. Restart to proceed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You need to restart application for restoration process to finish.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restoration was not initiated successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database and/or settings were not copied to restoration folder successully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select source folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good source folder is specified.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1812,6 +1951,18 @@ Musíte restartovat manuálně.</translation>
         <source>Do you want to restart now?</source>
         <translation>Chcete restartovat nyní?</translation>
     </message>
+    <message>
+        <source>Check for updates on application startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom date/time format (overrides format loaded from active localization)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2229,6 +2380,17 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation>Přepnout režim okna aplikace rovnou z ikonky ve stavovém pruhu.</translation>
+    </message>
+</context>
+<context>
+    <name>SystemFactory</name>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<TS version="2.0" language="nl_NL">
 <context>
     <name>Application</name>
     <message>
@@ -94,10 +94,12 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -379,6 +381,82 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>PARTIALLY portable</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormBackupDatabaseSettings</name>
+    <message>
+        <source>Backup database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Items to backup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished">Instellingen</translation>
+    </message>
+    <message>
+        <source>Backup name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished">Resultaten</translation>
+    </message>
+    <message>
+        <source>Common name for backup files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished">Nog geen handeling uitgevoerd.</translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed, database and/or settings is probably not backed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed. Check the output folder if your database
+and/or settings were backed or not. Also make sure that target foder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destionation folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination folder is specified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup name cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup name looks okay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1240,6 +1318,69 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <source>&amp;Restart</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Restore database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Backup database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormRestoreDatabaseSettings</name>
+    <message>
+        <source>Restore database/settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished">Resultaten</translation>
+    </message>
+    <message>
+        <source>&amp;Select folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished">Nog geen handeling uitgevoerd.</translation>
+    </message>
+    <message>
+        <source>Restoration was initiated. Restart to proceed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You need to restart application for restoration process to finish.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restoration was not initiated successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database and/or settings were not copied to restoration folder successully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select source folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good source folder is specified.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormSettings</name>
@@ -1266,7 +1407,9 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -1324,10 +1467,12 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1405,6 +1550,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -1797,6 +1943,18 @@ Je moet handmatig herstarten.</translation>
         <source>Do you want to restart now?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Check for updates on application startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom date/time format (overrides format loaded from active localization)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -1941,42 +2099,52 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -2207,6 +2375,17 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation>Wissel Rssguard tussen volledige scherm/normale staat vanaf deze statusbar pictogram.</translation>
+    </message>
+</context>
+<context>
+    <name>SystemFactory</name>
+    <message>
+        <source>New version available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click the bubble for more information.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -400,8 +400,8 @@ Authors of this application are NOT responsible for lost data.</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>684</width>
-            <height>451</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -478,8 +478,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>678</width>
-                <height>425</height>
+                <width>167</width>
+                <height>219</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1163,7 +1163,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -1287,47 +1287,20 @@ Authors of this application are NOT responsible for lost data.</string>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QGroupBox" name="m_grpMessagesDateTimeFormat">
-             <property name="title">
+            <widget class="QCheckBox" name="m_checkMessagesDateTimeFormat">
+             <property name="text">
               <string>Use custom date/time format (overrides format loaded from active localization)</string>
              </property>
              <property name="checkable">
               <bool>true</bool>
              </property>
              <property name="checked">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
-             <layout class="QFormLayout" name="formLayout_19">
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_11">
-                <property name="text">
-                 <string>Format code</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat">
-                <property name="editable">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_12">
-                <property name="text">
-                 <string>Example</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="m_lblMessagesDateTimeFormat">
-                <property name="text">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="m_cmbMessagesDateTimeFormat"/>
            </item>
           </layout>
          </widget>
@@ -1444,6 +1417,22 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>357</x>
      <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_checkMessagesDateTimeFormat</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_cmbMessagesDateTimeFormat</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>445</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>778</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>

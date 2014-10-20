@@ -80,12 +80,16 @@ class MessagesModel : public QSqlTableModel {
       return m_currentFeeds;
     }
 
+    void updateDateFormat();
+
   public slots:
     // To disable persistent changes submissions.
     inline bool submitAll() {
       qFatal("Submitting changes via model is not allowed.");
       return false;
     }
+
+    void reloadWholeLayout();
 
     // CORE messages manipulators.
     // NOTE: These are used to change properties of one message.
@@ -136,6 +140,7 @@ class MessagesModel : public QSqlTableModel {
     MessageMode m_messageMode;
     MessageFilter m_messageFilter;
 
+    QString m_customDateFormat;
     QList<int> m_currentFeeds;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;

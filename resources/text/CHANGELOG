@@ -3,7 +3,7 @@
 
 Fixed:
 <ul>
-<li>Fixed #76, #75, #82, #79, #85 #78, #92.</li>
+<li>Fixed #76, #75, #82, #79, #85 #78, #92, #93.</li>
 </ul>
 
 Added:
@@ -11,6 +11,7 @@ Added:
 <li>Settings/database can now experimentally be exported/imported.</li>
 <li>Added Swedish localization (thanks to &Aring;ke Engelbrektson).</li>
 <li>Parent item is now selected when adding new category/feed with that parent pre-selected in feed view.</li>
+<li>Message date/time format is now changeable.</li>
 </ul>
 
 Changed:

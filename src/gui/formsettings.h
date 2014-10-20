@@ -91,6 +91,7 @@ class FormSettings : public QDialog {
     void onProxyTypeChanged(int index);
 
     void loadFeedsMessages();
+    void initializeMessageDateFormats();
     void saveFeedsMessages();
     
   private:
