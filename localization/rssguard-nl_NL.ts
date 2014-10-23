@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.0">
 <context>
     <name>Application</name>
     <message>
@@ -125,10 +123,7 @@
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -158,18 +153,12 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -203,10 +192,7 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -300,7 +286,7 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation>Wil je de vuilisbak echt legen?</translation>
+        <translation>Wil je de vuilnisbak echt legen?</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
@@ -395,76 +381,77 @@ Auto-update status: %5</translation>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup database/instellingen</translation>
     </message>
     <message>
         <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup eigenschappen</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"></translation>
+        <translation>Items voor backup</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Database</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Instellingen</translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup naam</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished">Resultaten</translation>
+        <translation>Resultaten</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"></translation>
+        <translation>Algemene naam voor backup bestanden</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished">Nog geen handeling uitgevoerd.</translation>
+        <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup is succesvol aangemaakt en opgeslagen in de doelmap.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Back-up is gemaakt.</translation>
     </message>
     <message>
         <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Back-up mislukt, database en / of instellingen worden waarschijnlijk niet ondersteund.</translation>
     </message>
     <message>
         <source>Backup failed. Check the output folder if your database
 and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Back-up mislukt. Controleer de uitvoer map als uw database
+en / of instellingen die niet werden gesteund. Zorg er ook voor dat de doelmap beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Select destionation folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer bestemmingsmap</translation>
     </message>
     <message>
         <source>Good destination folder is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Juiste bestemmingsmap is opgegeven</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup naam kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup naam is in orde.</translation>
     </message>
 </context>
 <context>
@@ -1327,66 +1314,66 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Herstel database/instellingen</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup database/instellingen</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Hestel database/instellingen</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished">Resultaten</translation>
+        <translation>Resultaten</translation>
     </message>
     <message>
         <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel database</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel instellingen</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstart</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished">Nog geen handeling uitgevoerd.</translation>
+        <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel werd ingezet. Herstart om verder te gaan.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je moet RssGuard herstarten om de herstel procedure te voltooien.</translation>
     </message>
     <message>
         <source>Restoration was not initiated successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Het herstellen werd niet met succes gestart.</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database en / of instellingen werden niet gekopieerd naar de herstel map.</translation>
     </message>
     <message>
         <source>Select source folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer source map</translation>
     </message>
     <message>
         <source>Good source folder is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Juiste source map is opgegeven.</translation>
     </message>
 </context>
 <context>
@@ -1952,15 +1939,15 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Controleer op updates als RssGuard wordt gestart</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder ongewenste Trolltech registersleutel(HKCUSoftwareTrolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik aangepaste datum / tijd opmaak (overschrijft de opmaak van de actieve geladen locatie)</translation>
     </message>
 </context>
 <context>
@@ -2388,11 +2375,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe versie beschikbaar</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klik op luchtbel voor meer informatie.</translation>
     </message>
 </context>
 <context>
