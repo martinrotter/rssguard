@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="2.0.0.2" type="feature">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.2-win32.exe</url>
+  <release version="2.0.0.3" type="feature">
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.3-win32.exe</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Fully portable settings is now used as default if non portable settings does not exist yet.</li>
-<li>List of actions in toolbar editor now does not allow copying of items.</li>
-<li>Keyboard search for message list should now work with Qt 4.</li>
-<li>Overall code cleanups and refactoring primarily in area of feed/message models and recycle bin functionality.</li>
-<li>Fixed bugs #66, #67, #69, #64, #48.</li>
-<li>Blau skin now has colored webkit scrollbars, fixed some button widths and enhanced menu popup tool buttons.</li>
+<li>Fixed #76, #75, #82, #79, #85 #78, #92, #93.</li>
 </ul>
 
 Added:
 <ul>
-<li>Application can now be safely restarted from within main menu.</li>
-<li>HTTP request for feed files now contains special "Accept" header.</li>
-<li>Recycle bin with ability to trash or restore the whole bin or individual messages.</li>
-<li>MySQL backend now allows to defragment/optimize RSS Guard database.</li>
-<li>Three new skins, including solarized skin. Vergilius improved.</li>
-</ul>
-
-Changed:
-<ul>
-<li>File downloader now resolves "feed://" URI scheme to "http://" URI scheme.</li>
-<li>Target message is now selected instead of highlighted when searching with keyboard.</li>
+<li>Settings/database can now experimentally be exported/imported.</li>
+<li>Added Swedish localization (thanks to &Aring;ke Engelbrektson).</li>
+<li>Parent item is now selected when adding new category/feed with that parent pre-selected in feed view.</li>
+<li>Message date/time format is now changeable.</li>
 </ul>
 </body>]]>
     </changes>

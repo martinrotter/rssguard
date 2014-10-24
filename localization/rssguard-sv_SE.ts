@@ -394,76 +394,77 @@ Uppdateringsstatus: %5</translation>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopiera databas/inställningar</translation>
     </message>
     <message>
         <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Välj mapp</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopiering</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Backup name</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopians namn</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished">Åtgärdsresultat</translation>
+        <translation>Åtgärdsresultat</translation>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn för säkerhetskopior</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished">Ingen åtgärd slutförd än.</translation>
+        <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopia skapad, och lagrad i målmappen.</translation>
     </message>
     <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopiering slutförd.</translation>
     </message>
     <message>
         <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetshopiering misslyckades. Databas och/eller inställningar ej kopierade.</translation>
     </message>
     <message>
         <source>Backup failed. Check the output folder if your database
 and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetshopiering misslyckades. Kontrollera i målmappen om databas
+och/eller inställningar sparades. Tillse också att målmappen inte är skrivskyddad.</translation>
     </message>
     <message>
         <source>Select destionation folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj målmapp</translation>
     </message>
     <message>
         <source>Good destination folder is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Målmappen är godkänd.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopians namn saknas.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopians namn är godkänt.</translation>
     </message>
 </context>
 <context>
@@ -1325,66 +1326,66 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Återställ databas/inställningar</translation>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Säkerhetskopiera  databas/inställningar</translation>
     </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
         <source>Restore database/settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ databas/inställningar</translation>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished">Åtgärdsresultat</translation>
+        <translation>Åtgärdsresultat</translation>
     </message>
     <message>
         <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Välj mapp</translation>
     </message>
     <message>
         <source>Restore database</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ databas</translation>
     </message>
     <message>
         <source>Restore settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ inställningar</translation>
     </message>
     <message>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta om programmet</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
-        <translation type="unfinished">Ingen åtgärd slutförd än.</translation>
+        <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
         <source>Restoration was initiated. Restart to proceed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställning inledd. Starta om programmet för att slutföra.</translation>
     </message>
     <message>
         <source>You need to restart application for restoration process to finish.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du måste starta om programmet för att slutföra återställningen.</translation>
     </message>
     <message>
         <source>Restoration was not initiated successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställning kunde inte utföras.</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databas och/eller inställningar kopierades inte till återställningsmappen.</translation>
     </message>
     <message>
         <source>Select source folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj källmapp</translation>
     </message>
     <message>
         <source>Good source folder is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Källmappen är godkänd.</translation>
     </message>
 </context>
 <context>
@@ -1950,15 +1951,15 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök efter uppdateringar vid programstart</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort Trolltechs skräp från registret (HKCUSoftwareTrolltech) vid programavslut. (Används på egen risk)</translation>
     </message>
     <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
     </message>
 </context>
 <context>
@@ -2342,7 +2343,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
-        <translation>2.0.0.2</translation>
+        <translation>2.0.0.3</translation>
     </message>
     <message>
         <source>LANG_AUTHOR</source>
@@ -2385,11 +2386,11 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>SystemFactory</name>
     <message>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny tillgänglig version</translation>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klicka på detta meddelande för mer information.</translation>
     </message>
 </context>
 <context>
