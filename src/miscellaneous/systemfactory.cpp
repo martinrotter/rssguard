@@ -235,7 +235,7 @@ void SystemFactory::handleBackgroundUpdatesCheck() {
   QFutureWatcher<UpdateCheck> *future_watcher = static_cast<QFutureWatcher<UpdateCheck>*>(sender());
   UpdateCheck updates = future_watcher->result();
 
-  if (updates.second == QNetworkReply::NoError && updates.first.m_availableVersion != APP_VERSION) {
+  if (updates.second == QNetworkReply::NoError && updates.first.m_availableVersion > APP_VERSION) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       qApp->trayIcon()->showMessage(tr("New version available"),
                                     tr("Click the bubble for more information."),
