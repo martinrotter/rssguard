@@ -91,6 +91,9 @@
 #define APP_DB_SQLITE_PATH            "data/database/local"
 #define APP_DB_SQLITE_FILE            "database.db"
 
+// Keep this in sync with schema versions declared in SQL initialization code.
+#define APP_DB_SCHEMA_VERSION         "0.0.2"
+#define APP_DB_UPDATE_FILE_PATTERN    "data_update_%1_%2_3.sql"
 #define APP_DB_COMMENT_SPLIT          "-- !\n"
 #define APP_DB_WEB_PATH               "data/database/web"
 
@@ -132,6 +135,7 @@
 #define MSG_DB_AUTHOR_INDEX       7
 #define MSG_DB_DCREATED_INDEX     8
 #define MSG_DB_CONTENTS_INDEX     9
+#define MSG_DB_PDELETED_INDEX     10
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0

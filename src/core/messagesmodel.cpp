@@ -145,14 +145,15 @@ void MessagesModel::setupHeaderData() {
                   /*: Tooltip for url of message.*/ tr("Url") <<
                   /*: Tooltip for author of message.*/ tr("Author") <<
                   /*: Tooltip for creation date of message.*/ tr("Created on") <<
-                  /*: Tooltip for contents of message.*/ tr("Contents");
+                  /*: Tooltip for contents of message.*/ tr("Contents") <<
+                  /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted");
 
   m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
                    tr("Is message deleted?") << tr("Is message important?") <<
                    tr("Id of feed which this message belongs to.") <<
                    tr("Title of the message.") << tr("Url of the message.") <<
                    tr("Author of the message.") << tr("Creation date of the message.") <<
-                   tr("Contents of the message.");
+                   tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {

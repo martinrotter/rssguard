@@ -1,4 +1,20 @@
 <body>
+<center><h2>2.0.0.4</h2></center>
+
+Fixed:
+<ul>
+<li>Database is now correctly restored when using SQLite memory databases.</li>
+</ul>
+
+Added:
+<ul>
+</ul>
+
+Changed:
+<ul>
+</ul>
+
+<hr/>
 <center><h2>2.0.0.3</h2></center>
 
 Fixed:

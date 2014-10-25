@@ -86,6 +86,7 @@ class DatabaseFactory : public QObject {
     // SQLITE stuff.
     //
     QString sqliteDatabaseFilePath() const;
+    bool updateDatabaseSchema(const QString &source_db_schema_version);
 
     //
     // MySQL stuff.

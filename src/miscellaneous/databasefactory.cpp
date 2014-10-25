@@ -287,10 +287,23 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
     else {
       query_db.next();
 
+      QString installed_db_schema = query_db.value(0).toString();
+
+      if (!updateDatabaseSchema(installed_db_schema)) {
+        qFatal("Database schema was not updated from '%s' to '%s' successully.",
+               qPrintable(installed_db_schema),
+               qPrintable(APP_DB_SCHEMA_VERSION));
+      }
+      else {
+        qDebug("Database schema was updated from '%s' to '%s' successully.",
+               qPrintable(installed_db_schema),
+               qPrintable(APP_DB_SCHEMA_VERSION));
+      }
+
       qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
              qPrintable(connection_name),
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
-      qDebug("File-based SQLite database has version '%s'.", qPrintable(query_db.value(0).toString()));
+      qDebug("File-based SQLite database has version '%s'.", qPrintable(installed_db_schema));
     }
 
     query_db.finish();
@@ -304,6 +317,23 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
 
 QString DatabaseFactory::sqliteDatabaseFilePath() const {
   return m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
+}
+
+bool DatabaseFactory::updateDatabaseSchema(const QString &source_db_schema_version) {
+  switch (m_activeDatabaseDriver) {
+    case SQLITE:
+    case SQLITE_MEMORY:
+      break;
+
+    case MYSQL:
+      break;
+
+    default:
+      return false;
+  }
+
+  // TODO: tady udělat update databázového schématu na novou verzi.
+  return true;
 }
 
 QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
@@ -349,9 +379,7 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 }
 
 void DatabaseFactory::determineDriver() {
-  QString db_driver = qApp->settings()->value(APP_CFG_DB,
-                                              "database_driver",
-                                              APP_DB_SQLITE_DRIVER).toString();
+  QString db_driver = qApp->settings()->value(APP_CFG_DB, "database_driver", APP_DB_SQLITE_DRIVER).toString();
 
   if (db_driver == APP_DB_MYSQL_DRIVER && QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
     // User wants to use MySQL and MySQL is actually available. Use it.

@@ -472,6 +472,7 @@ void MessagesView::adjustColumns() {
     header()->setSectionResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
     header()->setSectionResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+    header()->setSectionResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
 #else
     // Setup column resize strategies.
     header()->setResizeMode(MSG_DB_ID_INDEX, QHeaderView::Interactive);
@@ -484,6 +485,7 @@ void MessagesView::adjustColumns() {
     header()->setResizeMode(MSG_DB_AUTHOR_INDEX, QHeaderView::Interactive);
     header()->setResizeMode(MSG_DB_DCREATED_INDEX, QHeaderView::Interactive);
     header()->setResizeMode(MSG_DB_CONTENTS_INDEX, QHeaderView::Interactive);
+    header()->setResizeMode(MSG_DB_PDELETED_INDEX, QHeaderView::Interactive);
 #endif
 
     // Hide columns.
@@ -492,6 +494,7 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_FEED_INDEX);
     hideColumn(MSG_DB_URL_INDEX);
     hideColumn(MSG_DB_CONTENTS_INDEX);
+    hideColumn(MSG_DB_PDELETED_INDEX);
 
     qDebug("Adjusting column resize modes for MessagesView.");
   }

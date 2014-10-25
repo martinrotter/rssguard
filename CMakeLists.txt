@@ -71,8 +71,8 @@ project(rssguard)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.0.0.3")
-set(FILE_VERSION "2,0,0,3")
+set(APP_VERSION "2.0.0.4")
+set(FILE_VERSION "2,0,0,4")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -642,27 +642,17 @@ endif(${USE_QT_5})
 # Installation stage.
 if(WIN32 OR OS2)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
-  install(TARGETS ${EXE_NAME}
-          RUNTIME DESTINATION ./)
-  install(TARGETS ${UPDATER_EXE_NAME}
-          RUNTIME DESTINATION ./${UPDATER_SUBFOLDER})
+  install(TARGETS ${EXE_NAME} RUNTIME DESTINATION ./)
 
   # Copy DLLs and other binary files for main installation and updater.
   if(WIN32 AND NOT ${USE_QT_5})
-    install(FILES ${APP_DLLS_QT4_MSVC2010}
-            DESTINATION ./)
-    install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS}
-            DESTINATION ./imageformats)
-    install(FILES ${APP_DLLS_QT4_MSVC2010_SQLDRIVERS}
-            DESTINATION ./sqldrivers)
-
-    install(FILES ${APP_DLLS_QT4_MSVC2010}
-            DESTINATION ./${UPDATER_SUBFOLDER})
+    install(FILES ${APP_DLLS_QT4_MSVC2010} DESTINATION ./)
+    install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS} DESTINATION ./imageformats)
+    install(FILES ${APP_DLLS_QT4_MSVC2010_SQLDRIVERS} DESTINATION ./sqldrivers)
   endif(WIN32 AND NOT ${USE_QT_5})
 
   if(BUNDLE_ICON_THEMES)
-    install(DIRECTORY resources/graphics/icons/mini-kfaenza
-            DESTINATION ./icons)
+    install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ./icons)
   endif(BUNDLE_ICON_THEMES)
 
   install(DIRECTORY resources/skins/base
@@ -707,50 +697,30 @@ elseif(APPLE)
   set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${EXE_NAME}.app/Contents/Resources)
 
   if(BUNDLE_ICON_THEMES)
-    install(DIRECTORY resources/graphics/icons/mini-kfaenza
-            DESTINATION ${APPLE_PREFIX}/icons)
+    install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ${APPLE_PREFIX}/icons)
   endif(BUNDLE_ICON_THEMES)
 
-  install(DIRECTORY resources/skins
-          DESTINATION ${APPLE_PREFIX})
-  install(DIRECTORY resources/misc
-          DESTINATION ${APPLE_PREFIX})
-  install(FILES resources/graphics/${APP_LOW_NAME}_128.png
-          DESTINATION ${APPLE_PREFIX}
-          RENAME ${APP_LOW_NAME}.png)
-  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
-          DESTINATION ${APPLE_PREFIX}
-          RENAME ${APP_LOW_NAME}_plain.png)
-  install(FILES ${APP_QM}
-          DESTINATION ${APPLE_PREFIX}/l10n)
-  install(FILES ${APP_TEXT}
-          DESTINATION ${APPLE_PREFIX}/information)
+  install(DIRECTORY resources/skins DESTINATION ${APPLE_PREFIX})
+  install(DIRECTORY resources/misc DESTINATION ${APPLE_PREFIX})
+  install(FILES resources/graphics/${APP_LOW_NAME}_128.png DESTINATION ${APPLE_PREFIX} RENAME ${APP_LOW_NAME}.png)
+  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png DESTINATION ${APPLE_PREFIX} RENAME ${APP_LOW_NAME}_plain.png)
+  install(FILES ${APP_QM} DESTINATION ${APPLE_PREFIX}/l10n)
+  install(FILES ${APP_TEXT} DESTINATION ${APPLE_PREFIX}/information)
 elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
-  install(TARGETS ${EXE_NAME}
-          RUNTIME DESTINATION bin)
+  install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
 
   if(BUNDLE_ICON_THEMES)
-    install(DIRECTORY resources/graphics/icons/mini-kfaenza
-            DESTINATION share/${APP_LOW_NAME}/icons)
+    install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION share/${APP_LOW_NAME}/icons)
   endif(BUNDLE_ICON_THEMES)
 
-  install(DIRECTORY resources/skins/base
-          DESTINATION share/${APP_LOW_NAME}/skins)
-  install(DIRECTORY resources/misc
-          DESTINATION share/${APP_LOW_NAME})
-  install(FILES ${CMAKE_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop
-          DESTINATION share/applications)
-  install(FILES resources/graphics/${APP_LOW_NAME}_128.png
-          DESTINATION share/pixmaps
-          RENAME ${APP_LOW_NAME}.png)
-  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png
-          DESTINATION share/rssguard/icons
-          RENAME ${APP_LOW_NAME}_plain.png)
-  install(FILES ${APP_QM}
-          DESTINATION share/${APP_LOW_NAME}/l10n)
-  install(FILES ${APP_TEXT}
-          DESTINATION share/${APP_LOW_NAME}/information)
+  install(DIRECTORY resources/skins/base DESTINATION share/${APP_LOW_NAME}/skins)
+  install(DIRECTORY resources/misc  DESTINATION share/${APP_LOW_NAME})
+  install(FILES ${CMAKE_BINARY_DIR}/resources/desktop/${APP_LOW_NAME}.desktop  DESTINATION share/applications)
+  install(FILES resources/graphics/${APP_LOW_NAME}_128.png DESTINATION share/pixmaps RENAME ${APP_LOW_NAME}.png)
+  install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png DESTINATION share/rssguard/icons RENAME ${APP_LOW_NAME}_plain.png)
+  install(FILES ${APP_QM} DESTINATION share/${APP_LOW_NAME}/l10n)
+  install(FILES ${APP_TEXT} DESTINATION share/${APP_LOW_NAME}/information)
 endif(WIN32 OR OS2)
 
 # Custom target for packaging.
