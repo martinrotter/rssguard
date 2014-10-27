@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS Messages (
   author          TEXT        NOT NULL,
   date_created    BIGINT      NOT NULL CHECK (date_created != 0),
   contents        TEXT,
-  is_hidden       INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_hidden >= 0 AND is_hidden <= 1),
+  is_pdeleted       INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
   
   FOREIGN KEY (feed) REFERENCES Feeds (id)
 );

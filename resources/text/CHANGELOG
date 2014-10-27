@@ -4,6 +4,7 @@
 Fixed:
 <ul>
 <li>Database is now correctly restored when using SQLite memory databases.</li>
+<li>When items are deleted from recycle bin then they are kept in DB and marked as "permanently deleted" (bug # 95).'
 </ul>
 
 Added:

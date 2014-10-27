@@ -77,11 +77,6 @@ void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_categ
 }
 
 int FormCategoryDetails::exec(FeedsModelCategory *input_category, FeedsModelRootItem *parent_to_select) {
-  // TODO: řeseni bugu #92. pridal sem parametr parent_to_select
-  // kde volajici preda pointer na doporuceny nadrazeny prvek,
-  // nebo null pokud nic nedoporucuje.
-  // vybereme
-
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem(), input_category);
 

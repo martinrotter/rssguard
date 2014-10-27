@@ -86,7 +86,6 @@ class DatabaseFactory : public QObject {
     // SQLITE stuff.
     //
     QString sqliteDatabaseFilePath() const;
-    bool updateDatabaseSchema(const QString &source_db_schema_version);
 
     //
     // MySQL stuff.
@@ -108,6 +107,8 @@ class DatabaseFactory : public QObject {
     // application session.
     void determineDriver();
 
+    bool updateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version);
+
     // Holds the type of currently activated database backend.
     UsedDriver m_activeDatabaseDriver;
 
@@ -120,6 +121,9 @@ class DatabaseFactory : public QObject {
 
     // Initializes MySQL database.
     QSqlDatabase mysqlInitializeDatabase(const QString &connection_name);
+
+    // Updates database schema.
+    bool mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version);
 
     // Runs "VACUUM" on the database.
     bool mysqlVacuumDatabase();
@@ -143,6 +147,9 @@ class DatabaseFactory : public QObject {
 
     // Assemblies database file path.
     void sqliteAssemblyDatabaseFilePath();
+
+    // Updates database schema.
+    bool sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version);
 
     // Creates new connection, initializes database and
     // returns opened connections.

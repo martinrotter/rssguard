@@ -120,7 +120,7 @@ bool FeedsModelRecycleBin::empty() {
   QSqlQuery query_empty_bin(db_handle);
   query_empty_bin.setForwardOnly(true);
 
-  if (!query_empty_bin.exec("DELETE FROM Messages WHERE is_deleted = 1;")) {
+  if (!query_empty_bin.exec("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1;")) {
     qWarning("Query execution failed for recycle bin emptying.");
 
     db_handle.rollback();
@@ -148,7 +148,7 @@ bool FeedsModelRecycleBin::restore() {
   QSqlQuery query_empty_bin(db_handle);
   query_empty_bin.setForwardOnly(true);
 
-  if (!query_empty_bin.exec("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1;")) {
+  if (!query_empty_bin.exec("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1 AND is_pdeleted = 0;")) {
     qWarning("Query execution failed for recycle bin restoring.");
 
     db_handle.rollback();
@@ -170,7 +170,7 @@ void FeedsModelRecycleBin::updateCounts(bool update_total_count) {
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 
-  if (query_all.exec("SELECT count(*) FROM Messages WHERE is_read = 0 AND is_deleted = 1;") && query_all.next()) {
+  if (query_all.exec("SELECT count(*) FROM Messages WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0;") && query_all.next()) {
     m_unreadCount = query_all.value(0).toInt();
   }
   else {
@@ -178,7 +178,7 @@ void FeedsModelRecycleBin::updateCounts(bool update_total_count) {
   }
 
   if (update_total_count) {
-    if (query_all.exec("SELECT count(*) FROM Messages WHERE is_deleted = 1;") && query_all.next()) {
+    if (query_all.exec("SELECT count(*) FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0;") && query_all.next()) {
       m_totalCount = query_all.value(0).toInt();
     }
     else {

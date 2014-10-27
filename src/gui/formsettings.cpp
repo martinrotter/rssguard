@@ -223,7 +223,6 @@ void FormSettings::saveFeedsMessages() {
   settings->setValue(APP_CFG_MESSAGES, "custom_date_format",
                      m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
 
-  // TODO: aktualizovat messageview s novym formatem
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->updateDateFormat();

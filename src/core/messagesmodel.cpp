@@ -72,7 +72,7 @@ void MessagesModel::loadMessages(const QList<int> feed_ids) {
 
   if (feed_ids.size() == 1 && feed_ids[0] == ID_RECYCLE_BIN) {
     m_messageMode = MessagesFromRecycleBin;
-    setFilter("is_deleted = 1");
+    setFilter("is_deleted = 1 AND is_pdeleted = 0");
   }
   else {
     m_messageMode = MessagesFromFeeds;
@@ -389,7 +389,8 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
                                                                                             QString::number(deleted));
   }
   else {
-    sql_delete_query = QString("DELETE FROM Messages WHERE id in (%1);").arg(message_ids.join(", "));
+    sql_delete_query = QString("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);").arg(message_ids.join(", "),
+                                                                                             QString::number(deleted));
   }
 
   if (query_read_msg.exec(sql_delete_query)) {

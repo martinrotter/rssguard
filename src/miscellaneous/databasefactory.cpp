@@ -233,8 +233,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database;
 
-  database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER,
-                                       connection_name);
+  database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
   database.setDatabaseName(db_file.fileName());
 
   if (!database.open()) {
@@ -289,15 +288,15 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
 
       QString installed_db_schema = query_db.value(0).toString();
 
-      if (!updateDatabaseSchema(installed_db_schema)) {
+      if (!updateDatabaseSchema(database, installed_db_schema)) {
         qFatal("Database schema was not updated from '%s' to '%s' successully.",
                qPrintable(installed_db_schema),
-               qPrintable(APP_DB_SCHEMA_VERSION));
+               APP_DB_SCHEMA_VERSION);
       }
       else {
         qDebug("Database schema was updated from '%s' to '%s' successully.",
                qPrintable(installed_db_schema),
-               qPrintable(APP_DB_SCHEMA_VERSION));
+               APP_DB_SCHEMA_VERSION);
       }
 
       qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
@@ -319,20 +318,93 @@ QString DatabaseFactory::sqliteDatabaseFilePath() const {
   return m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
 }
 
-bool DatabaseFactory::updateDatabaseSchema(const QString &source_db_schema_version) {
+bool DatabaseFactory::updateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
   switch (m_activeDatabaseDriver) {
     case SQLITE:
     case SQLITE_MEMORY:
-      break;
+      return sqliteUpdateDatabaseSchema(database, source_db_schema_version);
 
     case MYSQL:
-      break;
+      return mysqlUpdateDatabaseSchema(database, source_db_schema_version);
 
     default:
       return false;
   }
+}
 
-  // TODO: tady udělat update databázového schématu na novou verzi.
+bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
+  int working_version = QString(source_db_schema_version).remove('.').toInt();
+  int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+
+  while (working_version != current_version) {
+    QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
+                               QString(APP_DB_UPDATE_FILE_PATTERN).arg("sqlite",
+                                                                       QString::number(working_version),
+                                                                       QString::number(working_version + 1));
+
+    if (!QFile::exists(update_file_name)) {
+      qFatal("Updating of database schema failed. File '%s' does not exist.", qPrintable(QDir::toNativeSeparators(update_file_name)));
+    }
+
+    QFile update_file_handle(update_file_name);
+
+    if (!update_file_handle.open(QIODevice::Text | QIODevice::ReadOnly | QIODevice::Unbuffered)) {
+      qFatal("Updating of database schema failed. File '%s' cannot be opened.", qPrintable(QDir::toNativeSeparators(update_file_name)));
+    }
+
+    QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+
+    foreach (const QString &statement, statements) {
+      QSqlQuery query = database.exec(statement);
+
+      if (query.lastError().isValid()) {
+        qFatal("Query for updating database schema failed: '%s'.", qPrintable(query.lastError().text()));
+      }
+    }
+
+    // Increment the version.
+    qDebug("Updating database schema: '%d' -> '%d'.", working_version, working_version + 1);
+    working_version++;
+  }
+
+  return true;
+}
+
+bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
+  int working_version = QString(source_db_schema_version).remove('.').toInt();
+  int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+
+  while (working_version != current_version) {
+    QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
+                               QString(APP_DB_UPDATE_FILE_PATTERN).arg("mysql",
+                                                                       QString::number(working_version),
+                                                                       QString::number(working_version + 1));
+
+    if (!QFile::exists(update_file_name)) {
+      qFatal("Updating of database schema failed. File '%s' does not exist.", qPrintable(QDir::toNativeSeparators(update_file_name)));
+    }
+
+    QFile update_file_handle(update_file_name);
+
+    if (!update_file_handle.open(QIODevice::Text | QIODevice::ReadOnly | QIODevice::Unbuffered)) {
+      qFatal("Updating of database schema failed. File '%s' cannot be opened.", qPrintable(QDir::toNativeSeparators(update_file_name)));
+    }
+
+    QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+
+    foreach (const QString &statement, statements) {
+      QSqlQuery query = database.exec(statement);
+
+      if (query.lastError().isValid()) {
+        qFatal("Query for updating database schema failed: '%s'.", qPrintable(query.lastError().text()));
+      }
+    }
+
+    // Increment the version.
+    qDebug("Updating database schema: '%d' -> '%d'.", working_version, working_version + 1);
+    working_version++;
+  }
+
   return true;
 }
 
