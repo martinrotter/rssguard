@@ -549,6 +549,16 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   */
 }
 
+bool FeedsModel::hasAnyFeedNewMessages() {
+  foreach (const FeedsModelFeed *feed, allFeeds()) {
+    if (feed->status() == FeedsModelFeed::NewMessages) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_message) {
   if (model == NULL || model->rootItem() == NULL) {
     output_message = tr("Invalid tree data.");

@@ -120,17 +120,13 @@ void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_s
   query_all.setForwardOnly(true);
 
   if (including_total_count) {
-    if (query_all.exec(QString("SELECT count(*) FROM Messages "
-                               "WHERE feed = %1 AND is_deleted = 0;").arg(id())) &&
-        query_all.next()) {
+    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0;").arg(id())) && query_all.next()) {
       m_totalCount = query_all.value(0).toInt();
     }
   }
 
   // Obtain count of unread messages.
-  if (query_all.exec(QString("SELECT count(*) FROM Messages "
-                             "WHERE feed = %1 AND is_deleted = 0 AND is_read = 0;").arg(id())) &&
-      query_all.next()) {
+  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND is_read = 0;").arg(id())) && query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
     if (update_feed_statuses && m_status == NewMessages && new_unread_count < m_unreadCount) {

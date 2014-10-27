@@ -55,7 +55,7 @@ class SystemTrayIcon : public QSystemTrayIcon {
     virtual ~SystemTrayIcon();
 
     // Sets the number to be visible in the tray icon, number <= 0 removes it.
-    void setNumber(int number = -1);
+    void setNumber(int number = -1, bool any_unread_message = false);
     
     void showMessage(const QString &title, const QString &message, MessageIcon icon = Information,
                      int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT, QObject *click_target = NULL,

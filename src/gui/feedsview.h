@@ -131,7 +131,9 @@ class FeedsView : public QTreeView {
     // Notifies other components about messages
     // counts.
     inline void notifyWithCounts() {
-      emit messageCountsChanged(m_sourceModel->countOfUnreadMessages(), m_sourceModel->countOfAllMessages());
+      emit messageCountsChanged(m_sourceModel->countOfUnreadMessages(),
+                                m_sourceModel->countOfAllMessages(),
+                                m_sourceModel->hasAnyFeedNewMessages());
     }
 
     // Selects next/previous item (feed/category) in the list.
@@ -165,7 +167,7 @@ class FeedsView : public QTreeView {
     void feedsUpdateRequested(const QList<FeedsModelFeed*> feeds);
 
     // Emitted if counts of messages are changed.
-    void messageCountsChanged(int unread_messages, int total_messages);
+    void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);
 
     // Emitted if currently selected feeds needs to be reloaded.
     void feedsNeedToBeReloaded(int mark_current_index_read);

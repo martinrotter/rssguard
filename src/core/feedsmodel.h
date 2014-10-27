@@ -114,14 +114,16 @@ class FeedsModel : public QAbstractItemModel {
     // Returns ALL CHILD feeds contained within single index.
     QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
 
-    // Returns pointer to feed if it lies in given index
-    // or NULL if no feed lies in given index.
+    // Returns pointer to feed if it lies on given index
+    // or NULL if no feed lies on given index.
     FeedsModelFeed *feedForIndex(const QModelIndex &index);
 
-    // Returns pointer to category if it lies in given index
-    // or NULL if no category lies in given index.
+    // Returns pointer to category if it lies on given index
+    // or NULL if no category lies on given index.
     FeedsModelCategory *categoryForIndex(const QModelIndex &index) const;
 
+    // Returns pointer to recycle bin if lies on given index
+    // or NULL if no recycle bin lies on given index.
     FeedsModelRecycleBin *recycleBinForIndex(const QModelIndex &index) const;
 
     // Returns feed/category which lies at the specified index or
@@ -130,6 +132,8 @@ class FeedsModel : public QAbstractItemModel {
 
     // Returns source QModelIndex on which lies given item.
     QModelIndex indexForItem(FeedsModelRootItem *item) const;
+
+    bool hasAnyFeedNewMessages();
 
     // Access to root item.
     inline FeedsModelRootItem *rootItem() const {

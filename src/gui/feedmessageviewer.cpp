@@ -145,11 +145,11 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
   m_messagesView->header()->setVisible(enable);
 }
 
-void FeedMessageViewer::updateTrayIconStatus(int unread_messages, int total_messages) {
+void FeedMessageViewer::updateTrayIconStatus(int unread_messages, int total_messages, bool any_unread_messages) {
   Q_UNUSED(total_messages)
 
   if (SystemTrayIcon::isSystemTrayActivated()) {
-    qApp->trayIcon()->setNumber(unread_messages);
+    qApp->trayIcon()->setNumber(unread_messages, any_unread_messages);
   }
 }
 
@@ -199,7 +199,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)), m_messagesView, SLOT(reloadSelections(int)));
 
   // If counts of unread/all messages change, update the tray icon.
-  connect(m_feedsView, SIGNAL(messageCountsChanged(int, int)), this, SLOT(updateTrayIconStatus(int, int)));
+  connect(m_feedsView, SIGNAL(messageCountsChanged(int,int,bool)), this, SLOT(updateTrayIconStatus(int,int,bool)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),

@@ -452,7 +452,8 @@ void FeedsView::openSelectedFeedsInNewspaperMode() {
 
 void FeedsView::emptyRecycleBin() {
   if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Permanently delete messages"),
-                       tr("You are about to permanenty delete all messages from your recycle bin."), tr("Do you really want to empty your recycle bin?"),
+                       tr("You are about to permanenty delete all messages from your recycle bin."),
+                       tr("Do you really want to empty your recycle bin?"),
                        QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
     // User changed his mind.
     return;

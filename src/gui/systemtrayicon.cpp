@@ -115,10 +115,9 @@ void SystemTrayIcon::show() {
 #endif
 }
 
-void SystemTrayIcon::setNumber(int number) {
+void SystemTrayIcon::setNumber(int number, bool any_unread_message) {
   if (number <= 0) {
     setToolTip(APP_LONG_NAME);
-
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }
   else {
@@ -127,10 +126,12 @@ void SystemTrayIcon::setNumber(int number) {
     QPixmap background(m_plainPixmap);
     QPainter tray_painter;
 
+    // TODO: Here draw different background instead of different color of number.
+
     tray_painter.begin(&background);
-    tray_painter.setBrush(Qt::black);
+    tray_painter.setPen(any_unread_message ? Qt::blue : Qt::black);
     tray_painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
-    tray_painter.setRenderHint(QPainter::TextAntialiasing, false);
+    tray_painter.setRenderHint(QPainter::TextAntialiasing, true);
 
     // Numbers with more than 2 digits won't be readable, display
     // infinity symbol in that case.
@@ -138,9 +139,7 @@ void SystemTrayIcon::setNumber(int number) {
       m_font.setPixelSize(100);
 
       tray_painter.setFont(m_font);
-      tray_painter.drawText(QRect(0, 0, 128, 128),
-                            Qt::AlignVCenter | Qt::AlignCenter ,
-                            QChar(8734));
+      tray_painter.drawText(QRect(0, 0, 128, 128), Qt::AlignVCenter | Qt::AlignCenter, QChar(8734));
     }
     else {
       // Smaller number if it has 3 digits.
@@ -156,9 +155,7 @@ void SystemTrayIcon::setNumber(int number) {
       }
 
       tray_painter.setFont(m_font);
-      tray_painter.drawText(QRect(0, 0, 128, 128),
-                            Qt::AlignVCenter | Qt::AlignCenter ,
-                            QString::number(number));
+      tray_painter.drawText(QRect(0, 0, 128, 128), Qt::AlignVCenter | Qt::AlignCenter, QString::number(number));
     }
     tray_painter.end();
 
