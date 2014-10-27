@@ -9,6 +9,8 @@ Fixed:
 
 Added:
 <ul>
+<li>Fixed issue request #95: items are now permanently hidden (not deleted from database) when "deleted" from recycle bin.</li>
+<li>Issue request #95: moreover custom incremental ability to update database schema was added to keep RSS Guard 2.0.0.4+ fully compatible with previous releases. Incremental algorithm supports both database backends.</li>
 </ul>
 
 Changed:
