@@ -294,7 +294,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
                APP_DB_SCHEMA_VERSION);
       }
       else {
-        qDebug("Database schema was updated from '%s' to '%s' successully.",
+        qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
                qPrintable(installed_db_schema),
                APP_DB_SCHEMA_VERSION);
       }
