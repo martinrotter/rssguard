@@ -25,12 +25,14 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "gui/messagebox.h"
 
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QPair>
 #include <QStack>
+#include <QMimeData>
 
 #include <algorithm>
 
@@ -64,6 +66,117 @@ FeedsModel::~FeedsModel() {
 
   // Delete all model items.
   delete m_rootItem;
+}
+
+QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
+  QMimeData *mime_data = new QMimeData();
+  QByteArray encoded_data;
+  QDataStream stream(&encoded_data, QIODevice::WriteOnly);
+
+  foreach (const QModelIndex &index, indexes) {
+    if (index.column() != 0) {
+      continue;
+    }
+
+    FeedsModelRootItem *item_for_index = itemForIndex(index);
+
+    if (item_for_index->kind() != FeedsModelRootItem::RootItem) {
+      stream << (quintptr) item_for_index;
+    }
+  }
+
+  mime_data->setData(MIME_TYPE_ITEM_POINTER, encoded_data);
+  return mime_data;
+}
+
+QStringList FeedsModel::mimeTypes() const {
+  return QStringList() << MIME_TYPE_ITEM_POINTER;
+}
+
+bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) {
+  Q_UNUSED(row)
+  Q_UNUSED(column)
+
+
+  if (action == Qt::IgnoreAction) {
+    return true;
+  }
+  else if (action != Qt::MoveAction) {
+    return false;
+  }
+
+  QByteArray dragged_items_data = data->data(MIME_TYPE_ITEM_POINTER);
+
+  if (dragged_items_data.isEmpty()) {
+    return false;
+  }
+  else {
+    QDataStream stream(&dragged_items_data, QIODevice::ReadOnly);
+
+    while (!stream.atEnd()) {
+      quintptr pointer_to_item;
+      stream >> pointer_to_item;
+
+      // We have item we want to drag, we also determine the target item.
+      FeedsModelRootItem *dragged_item = (FeedsModelRootItem*) pointer_to_item;
+      FeedsModelRootItem *target_item = itemForIndex(parent);
+
+      if (dragged_item == target_item || dragged_item->parent() == target_item) {
+        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
+        return false;
+      }
+
+      if (dragged_item->kind() == FeedsModelRootItem::Feed) {
+        qDebug("Drag-drop action for feed '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
+
+        FeedsModelFeed *actual_feed = static_cast<FeedsModelFeed*>(dragged_item);
+        FeedsModelFeed *feed_new = new FeedsModelFeed(*actual_feed);
+
+        feed_new->setParent(target_item);
+        editFeed(actual_feed, feed_new);
+      }
+      else if (dragged_item->kind() == FeedsModelRootItem::Category) {
+        qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
+
+        FeedsModelCategory *actual_category = static_cast<FeedsModelCategory*>(dragged_item);
+        FeedsModelCategory *category_new = new FeedsModelCategory(*actual_category);
+
+        category_new->clearChildren();
+        category_new->setParent(target_item);
+        editCategory(actual_category, category_new);
+      }
+    }
+
+    return true;
+  }
+}
+
+Qt::DropActions FeedsModel::supportedDropActions() const {
+  return Qt::MoveAction;
+}
+
+Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const { 
+  Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
+  FeedsModelRootItem *item_for_index = itemForIndex(index);
+
+  switch (item_for_index->kind()) {
+    case FeedsModelRootItem::RecycleBin:
+      return base_flags;
+
+    case FeedsModelRootItem::Category:
+      return base_flags | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
+
+    case FeedsModelRootItem::Feed:
+      return base_flags | Qt::ItemIsDragEnabled;
+
+    case FeedsModelRootItem::RootItem:
+    default:
+      return base_flags | Qt::ItemIsDropEnabled;
+  }
+
+
+  // TODO: Pokračovat tady: http://qt-project.org/doc/qt-4.8/model-view-programming.html#using-drag-and-drop-with-item-views
+  // neumožnit drag ani drop nad odpadkovým košem
 }
 
 QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -210,8 +323,7 @@ bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *p
 }
 
 bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category) {
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
   FeedsModelRootItem *original_parent = original_category->parent();
   FeedsModelRootItem *new_parent = new_category->parent();
@@ -313,8 +425,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
 }
 
 bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed) {
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
   FeedsModelRootItem *original_parent = original_feed->parent();
   FeedsModelRootItem *new_parent = new_feed->parent();

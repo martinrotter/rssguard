@@ -603,9 +603,9 @@ void FeedsView::setupAppearance() {
   setEditTriggers(QAbstractItemView::NoEditTriggers);
   setIndentation(FEEDS_VIEW_INDENTATION);
   setAcceptDrops(false);
-  setDragEnabled(false);
-  setDropIndicatorShown(false);
-  setDragDropMode(QAbstractItemView::NoDragDrop);
+  setDragEnabled(true);
+  setDropIndicatorShown(true);
+  setDragDropMode(QAbstractItemView::InternalMove);
   setAllColumnsShowFocus(false);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SingleSelection);

@@ -9,6 +9,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Items in feed list (categories and feeds) now can be re-arranged via drag-drop functionality (issue report #91).</li>
 <li>Tray icon now displays blue number of unread messages if any of those messages is newly downloaded from online feed (enhancement #87).</li>
 <li>Fixed issue request #95: items are now permanently hidden (not deleted from database) when "deleted" from recycle bin.</li>
 <li>Issue request #95: moreover custom incremental ability to update database schema was added to keep RSS Guard 2.0.0.4+ fully compatible with previous releases. Incremental algorithm supports both database backends.</li>
