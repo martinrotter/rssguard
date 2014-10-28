@@ -179,6 +179,9 @@ class FeedsModel : public QAbstractItemModel {
     void assembleCategories(CategoryAssignment categories);
     void assembleFeeds(FeedAssignment feeds);
 
+  signals:
+    void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
+
   private:
     FeedsModelRootItem *m_rootItem;
     FeedsModelRecycleBin *m_recycleBin;

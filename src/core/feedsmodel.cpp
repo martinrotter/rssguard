@@ -97,7 +97,6 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
   Q_UNUSED(row)
   Q_UNUSED(column)
 
-
   if (action == Qt::IgnoreAction) {
     return true;
   }
@@ -134,6 +133,8 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
 
         feed_new->setParent(target_item);
         editFeed(actual_feed, feed_new);
+
+        emit requireItemValidationAfterDragDrop(indexForItem(actual_feed));
       }
       else if (dragged_item->kind() == FeedsModelRootItem::Category) {
         qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
@@ -144,6 +145,8 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
         category_new->clearChildren();
         category_new->setParent(target_item);
         editCategory(actual_category, category_new);
+
+        emit requireItemValidationAfterDragDrop(indexForItem(actual_category));
       }
     }
 
@@ -173,10 +176,6 @@ Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
     default:
       return base_flags | Qt::ItemIsDropEnabled;
   }
-
-
-  // TODO: Pokračovat tady: http://qt-project.org/doc/qt-4.8/model-view-programming.html#using-drag-and-drop-with-item-views
-  // neumožnit drag ani drop nad odpadkovým košem
 }
 
 QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {

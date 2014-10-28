@@ -53,7 +53,8 @@ FeedsView::FeedsView(QWidget *parent)
   m_proxyModel = new FeedsProxyModel(this);
   m_sourceModel = m_proxyModel->sourceModel();
 
-  // Timed actions.
+  // Connections.
+  connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
 
   setModel(m_proxyModel);
@@ -683,5 +684,14 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
     }
 
     m_contextMenuEmptySpace->exec(event->globalPos());
+  }
+}
+
+void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
+  QModelIndex mapped = m_proxyModel->mapFromSource(source_index);
+
+  if (mapped.isValid()) {
+    setExpanded(mapped, true);
+    setCurrentIndex(mapped);
   }
 }

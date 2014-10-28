@@ -131,9 +131,7 @@ class FeedsView : public QTreeView {
     // Notifies other components about messages
     // counts.
     inline void notifyWithCounts() {
-      emit messageCountsChanged(m_sourceModel->countOfUnreadMessages(),
-                                m_sourceModel->countOfAllMessages(),
-                                m_sourceModel->hasAnyFeedNewMessages());
+      emit messageCountsChanged(m_sourceModel->countOfUnreadMessages(), m_sourceModel->countOfAllMessages(), m_sourceModel->hasAnyFeedNewMessages());
     }
 
     // Selects next/previous item (feed/category) in the list.
@@ -161,6 +159,9 @@ class FeedsView : public QTreeView {
 
     // Show custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
+
+  private slots:
+    void validateItemAfterDragDrop(const QModelIndex &source_index);
 
   signals:
     // Emitted if user/application requested updating of some feeds.
