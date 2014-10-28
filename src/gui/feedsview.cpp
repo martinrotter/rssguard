@@ -356,10 +356,10 @@ void FeedsView::editSelectedItem() {
   FeedsModelFeed *feed;
 
   if ((category = selectedCategory()) != NULL) {
-    editCategory(static_cast<FeedsModelCategory*>(category));
+    editCategory(category);
   }
   else if ((feed = selectedFeed()) != NULL) {
-    editFeed(static_cast<FeedsModelFeed*>(feed));
+    editFeed(feed);
   }
 
   // Changes are done, unlock the update master lock.

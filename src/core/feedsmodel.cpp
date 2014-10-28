@@ -129,7 +129,7 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
       if (dragged_item->kind() == FeedsModelRootItem::Feed) {
         qDebug("Drag-drop action for feed '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
 
-        FeedsModelFeed *actual_feed = static_cast<FeedsModelFeed*>(dragged_item);
+        FeedsModelFeed *actual_feed = dragged_item->toFeed();
         FeedsModelFeed *feed_new = new FeedsModelFeed(*actual_feed);
 
         feed_new->setParent(target_item);
@@ -138,7 +138,7 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
       else if (dragged_item->kind() == FeedsModelRootItem::Category) {
         qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
 
-        FeedsModelCategory *actual_category = static_cast<FeedsModelCategory*>(dragged_item);
+        FeedsModelCategory *actual_category = dragged_item->toCategory();
         FeedsModelCategory *category_new = new FeedsModelCategory(*actual_category);
 
         category_new->clearChildren();
@@ -581,7 +581,7 @@ FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const
   FeedsModelRootItem *item = itemForIndex(index);
 
   if (item->kind() == FeedsModelRootItem::Category) {
-    return static_cast<FeedsModelCategory*>(item);
+    return item->toCategory();
   }
   else {
     return NULL;
@@ -592,7 +592,7 @@ FeedsModelRecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) c
   FeedsModelRootItem *item = itemForIndex(index);
 
   if (item->kind() == FeedsModelRootItem::RecycleBin) {
-    return static_cast<FeedsModelRecycleBin*>(item);
+    return item->toRecycleBin();
   }
   else {
     return NULL;
@@ -697,7 +697,7 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
       }
 
       if (source_item->kind() == FeedsModelRootItem::Category) {
-        FeedsModelCategory *source_category = static_cast<FeedsModelCategory*>(source_item);
+        FeedsModelCategory *source_category = source_item->toCategory();
         FeedsModelCategory *new_category = new FeedsModelCategory(*source_category);
 
         // Add category to model.
@@ -724,7 +724,7 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
         }
       }
       else if (source_item->kind() == FeedsModelRootItem::Feed) {
-        FeedsModelFeed *source_feed = static_cast<FeedsModelFeed*>(source_item);
+        FeedsModelFeed *source_feed = source_item->toFeed();
         FeedsModelFeed *new_feed = new FeedsModelFeed(*source_feed);
 
         // Append this feed and end this iteration.
@@ -848,7 +848,7 @@ FeedsModelFeed *FeedsModel::feedForIndex(const QModelIndex &index) {
   FeedsModelRootItem *item = itemForIndex(index);
 
   if (item->kind() == FeedsModelRootItem::Feed) {
-    return static_cast<FeedsModelFeed*>(item);
+    return item->toFeed();
   }
   else {
     return NULL;
@@ -973,7 +973,7 @@ QHash<int, FeedsModelCategory*> FeedsModel::categoriesForItem(FeedsModelRootItem
       // This item is category, add it to the output list and
       // scan its children.
       int category_id = item->id();
-      FeedsModelCategory *category = static_cast<FeedsModelCategory*>(item);
+      FeedsModelCategory *category = item->toCategory();
 
       if (!categories.contains(category_id)) {
         categories.insert(category_id, category);
@@ -995,7 +995,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForItem(FeedsModelRootItem *root) {
 
   if (root->kind() == FeedsModelRootItem::Feed) {
     // Root itself is a FEED.
-    feeds.append(static_cast<FeedsModelFeed*>(root));
+    feeds.append(root->toFeed());
   }
   else {
     // Root itself is a CATEGORY or ROOT item.
@@ -1010,11 +1010,11 @@ QList<FeedsModelFeed*> FeedsModel::feedsForItem(FeedsModelRootItem *root) {
       foreach (FeedsModelRootItem *child, active_category->childItems()) {
         if (child->kind() == FeedsModelRootItem::Feed) {
           // This child is feed.
-          feeds.append(static_cast<FeedsModelFeed*>(child));
+          feeds.append(child->toFeed());
         }
         else if (child->kind() == FeedsModelRootItem::Category) {
           // This child is category, add its child feeds too.
-          traversable_items.append(static_cast<FeedsModelCategory*>(child));
+          traversable_items.append(child->toCategory());
         }
       }
     }

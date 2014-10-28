@@ -23,6 +23,9 @@
 #include <QDateTime>
 #include <QFont>
 
+class FeedsModelRecycleBin;
+class FeedsModelCategory;
+class FeedsModelFeed;
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
@@ -162,6 +165,11 @@ class FeedsModelRootItem {
     inline void setDescription(const QString &description) {
       m_description = description;
     }
+
+    // Converters
+    FeedsModelRecycleBin* toRecycleBin();
+    FeedsModelCategory* toCategory();
+    FeedsModelFeed* toFeed();
 
     // Compares two model items.
     static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);

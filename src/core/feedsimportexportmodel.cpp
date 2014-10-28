@@ -110,7 +110,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
         }
 
         case FeedsModelRootItem::Feed: {
-          FeedsModelFeed *child_feed = static_cast<FeedsModelFeed*>(child_item);
+          FeedsModelFeed *child_feed = child_item->toFeed();
           QDomElement outline_feed = opml_document.createElement("outline");
           outline_feed.setAttribute("text", child_feed->title());
           outline_feed.setAttribute("xmlUrl", child_feed->url());
