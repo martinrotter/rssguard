@@ -42,6 +42,95 @@ FeedsProxyModel::~FeedsProxyModel() {
   qDebug("Destroying FeedsProxyModel instance");
 }
 
+QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const {
+  QModelIndexList result;
+  uint matchType = flags & 0x0F;
+  Qt::CaseSensitivity cs = Qt::CaseInsensitive;
+  bool recurse = flags & Qt::MatchRecursive;
+  bool wrap = flags & Qt::MatchWrap;
+  bool allHits = (hits == -1);
+  QString entered_text;
+  QModelIndex p = parent(start);
+  int from = start.row();
+  int to = rowCount(p);
+
+  for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
+    for (int r = from; (r < to) && (allHits || result.count() < hits); ++r) {
+      QModelIndex idx = index(r, start.column(), p);
+
+      if (!idx.isValid()) {
+        continue;
+      }
+
+      QModelIndex mapped_idx = mapToSource(idx);
+      QVariant item_value = m_sourceModel->data(m_sourceModel->index(mapped_idx.row(), FDS_MODEL_TITLE_INDEX, mapped_idx.parent()), role);
+
+      // QVariant based matching.
+      if (matchType == Qt::MatchExactly) {
+        if (value == item_value) {
+          result.append(idx);
+        }
+      }
+      // QString based matching.
+      else {
+        if (entered_text.isEmpty()) {
+          entered_text = value.toString();
+        }
+
+        QString item_text = item_value.toString();
+
+        switch (matchType) {
+          case Qt::MatchRegExp:
+            if (QRegExp(entered_text, cs).exactMatch(item_text)) {
+              result.append(idx);
+            }
+            break;
+
+          case Qt::MatchWildcard:
+            if (QRegExp(entered_text, cs, QRegExp::Wildcard).exactMatch(item_text)) {
+              result.append(idx);
+            }
+            break;
+
+          case Qt::MatchStartsWith:
+            if (item_text.startsWith(entered_text, cs)) {
+              result.append(idx);
+            }
+            break;
+
+          case Qt::MatchEndsWith:
+            if (item_text.endsWith(entered_text, cs)) {
+              result.append(idx);
+            }
+            break;
+
+          case Qt::MatchFixedString:
+            if (item_text.compare(entered_text, cs) == 0) {
+              result.append(idx);
+            }
+            break;
+
+          case Qt::MatchContains:
+          default:
+            if (item_text.contains(entered_text, cs)) {
+              result.append(idx);
+            }
+            break;
+        }
+      }
+
+      if (recurse && hasChildren(idx)) {
+        result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (allHits ? -1 : hits - result.count()), flags);
+      }
+    }
+
+    from = 0;
+    to = start.row();
+  }
+
+  return result;
+}
+
 bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   if (left.isValid() && right.isValid()) {
     // Make necessary castings.

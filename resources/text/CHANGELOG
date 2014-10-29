@@ -9,6 +9,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Inline searching in feed/message list is now case insensitive and more polished (bug report #84).</li>
 <li>Items in feed list (categories and feeds) now can be re-arranged via drag-drop functionality (issue report #91).</li>
 <li>Tray icon now displays blue number of unread messages if any of those messages is newly downloaded from online feed (enhancement #87).</li>
 <li>Fixed issue request #95: items are now permanently hidden (not deleted from database) when "deleted" from recycle bin.</li>

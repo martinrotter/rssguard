@@ -59,6 +59,8 @@ void MessagesView::createConnections() {
 }
 
 void MessagesView::keyboardSearch(const QString &search) {
+  // WARNING: This is quite hacky way how to force selection of next item even
+  // with extended selection enabled.
   setSelectionMode(QAbstractItemView::SingleSelection);
   QTreeView::keyboardSearch(search);
   setSelectionMode(QAbstractItemView::ExtendedSelection);
@@ -432,6 +434,7 @@ void MessagesView::selectNextItem() {
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
     selectionModel()->select(index_next, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    setFocus();
   }
 }
 
@@ -441,6 +444,7 @@ void MessagesView::selectPreviousItem() {
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
     selectionModel()->select(index_previous, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    setFocus();
   }
 }
 

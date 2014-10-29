@@ -68,7 +68,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
                                           const QVariant &entered_value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
   uint match_type = flags & 0x0F;
-  Qt::CaseSensitivity case_sensitivity = Qt::CaseSensitive;
+  Qt::CaseSensitivity case_sensitivity = Qt::CaseInsensitive;
   bool wrap = flags & Qt::MatchWrap;
   bool all_hits = (hits == -1);
   QString entered_text;
@@ -83,14 +83,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
         continue;
       }
 
-      QVariant item_value;
-
-      if (start.column() == MSG_DB_ID_INDEX) {
-        item_value = m_sourceModel->data(mapToSource(idx).row(), MSG_DB_TITLE_INDEX);
-      }
-      else {
-        item_value = data(idx, role);
-      }
+      QVariant item_value = m_sourceModel->data(mapToSource(idx).row(), MSG_DB_TITLE_INDEX, role);
 
       // QVariant based matching.
       if (match_type == Qt::MatchExactly) {

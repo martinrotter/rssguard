@@ -535,6 +535,7 @@ void FeedsView::selectNextItem() {
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
     selectionModel()->select(index_next, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    setFocus();
   }
 }
 
@@ -550,6 +551,7 @@ void FeedsView::selectPreviousItem() {
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
     selectionModel()->select(index_previous, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    setFocus();
   }
 }
 

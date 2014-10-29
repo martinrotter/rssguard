@@ -36,6 +36,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
       return m_sourceModel;
     }
 
+    QModelIndexList match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const;
+
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
 
