@@ -26,8 +26,7 @@
 
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject *parent)
   : QNetworkAccessManager(parent) {
-  connect(this, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
-          this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
+  connect(this, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(onSslErrors(QNetworkReply*,QList<QSslError>)));
 
   loadSettings();
 }
@@ -64,11 +63,8 @@ void BaseNetworkAccessManager::loadSettings() {
   qDebug("Settings of BaseNetworkAccessManager loaded.");
 }
 
-void BaseNetworkAccessManager::onSslErrors(QNetworkReply *reply,
-                                           const QList<QSslError> &error) {
-  qDebug("SSL errors for '%s': '%s' (code %d).", qPrintable(reply->url().toString()),
-         qPrintable(reply->errorString()), (int) reply->error());
-
+void BaseNetworkAccessManager::onSslErrors(QNetworkReply *reply, const QList<QSslError> &error) {
+  qDebug("SSL errors for '%s': '%s' (code %d).", qPrintable(reply->url().toString()), qPrintable(reply->errorString()), (int) reply->error());
   reply->ignoreSslErrors(error);
 }
 
