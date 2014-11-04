@@ -9,6 +9,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Sort order/column in message list is now persistent (bug #97).</li>
 <li>Inline searching in feed/message list is now case insensitive and more polished (bug report #84).</li>
 <li>Items in feed list (categories and feeds) now can be re-arranged via drag-drop functionality (issue report #91).</li>
 <li>Tray icon now displays blue number of unread messages if any of those messages is newly downloaded from online feed (enhancement #87).</li>

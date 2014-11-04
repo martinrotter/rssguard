@@ -44,5 +44,7 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame,
     emit linkClicked(request.url());
   }
 
+  qDebug("Accepting request '%s'.", qPrintable(request.url().toString()));
+
   return QWebPage::acceptNavigationRequest(frame, request, type);
 }

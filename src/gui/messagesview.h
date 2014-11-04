@@ -34,10 +34,7 @@ class MessagesView : public QTreeView {
     explicit MessagesView(QWidget *parent = 0);
     virtual ~MessagesView();
 
-    inline void setSortingEnabled(bool enable) {
-      QTreeView::setSortingEnabled(enable);
-      header()->setSortIndicatorShown(false);
-    }
+    void setSortingEnabled(bool enable);
 
     // Model accessors.
     inline MessagesProxyModel *model() {
@@ -83,12 +80,14 @@ class MessagesView : public QTreeView {
     void searchMessages(const QString &pattern);
     void filterMessages(MessagesModel::MessageFilter filter);
 
-  protected slots:
+  private slots:
     // Marks given indexes as selected.
     void reselectIndexes(const QModelIndexList &indexes);
 
     // Changes resize mode for all columns.
     void adjustColumns();
+
+    void saveSortState(int column, Qt::SortOrder order);
 
   protected:
     // Initializes context menu.

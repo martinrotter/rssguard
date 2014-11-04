@@ -49,6 +49,12 @@ MessagesView::~MessagesView() {
   qDebug("Destroying MessagesView instance.");
 }
 
+void MessagesView::setSortingEnabled(bool enable) {
+  disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  QTreeView::setSortingEnabled(enable);
+  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+}
+
 void MessagesView::createConnections() {
   // Make sure that source message is opened
   // in new tab on double click.
@@ -56,6 +62,7 @@ void MessagesView::createConnections() {
 
   // Adjust columns when layout gets changed.
   connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
+  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 }
 
 void MessagesView::keyboardSearch(const QString &search) {
@@ -231,7 +238,13 @@ void MessagesView::loadFeeds(const QList<int> &feed_ids) {
 
   // Make sure that initial sorting is that unread messages are visible
   // first.
-  sortByColumn(MSG_DB_DCREATED_INDEX, Qt::DescendingOrder);
+  // TODO: pokračovat, při stortovani uložit column a order
+  int col = qApp->settings()->value(APP_CFG_GUI, "default_sort_column_messages", MSG_DB_DCREATED_INDEX).toInt();
+  Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(APP_CFG_GUI,
+                                                                         "default_sort_order_messages", Qt::DescendingOrder).toInt());
+
+  sortByColumn(col,
+               ord);
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.
@@ -502,4 +515,9 @@ void MessagesView::adjustColumns() {
 
     qDebug("Adjusting column resize modes for MessagesView.");
   }
+}
+
+void MessagesView::saveSortState(int column, Qt::SortOrder order) {
+  qApp->settings()->setValue(APP_CFG_GUI, "default_sort_column_messages", column);
+  qApp->settings()->setValue(APP_CFG_GUI, "default_sort_order_messages", order);
 }
