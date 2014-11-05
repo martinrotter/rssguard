@@ -9,6 +9,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Layout orientation of message list/viewer is now changeable via "View" menu (bug report #98).</li>
 <li>Sort order/column in message list is now persistent (bug #97).</li>
 <li>Inline searching in feed/message list is now case insensitive and more polished (bug report #84).</li>
 <li>Items in feed list (categories and feeds) now can be re-arranged via drag-drop functionality (issue report #91).</li>

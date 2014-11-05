@@ -83,6 +83,8 @@ class FeedMessageViewer : public TabContent {
     }
 
   public slots:
+    void switchMessageSplitterOrientation();
+
     // Enables/disables main toolbars or list headers.
     void setToolBarsEnabled(bool enable);
     void setListHeadersEnabled(bool enable);

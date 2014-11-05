@@ -236,15 +236,11 @@ void MessagesView::selectionChanged(const QItemSelection &selected,
 void MessagesView::loadFeeds(const QList<int> &feed_ids) {
   m_sourceModel->loadMessages(feed_ids);
 
-  // Make sure that initial sorting is that unread messages are visible
-  // first.
-  // TODO: pokračovat, při stortovani uložit column a order
   int col = qApp->settings()->value(APP_CFG_GUI, "default_sort_column_messages", MSG_DB_DCREATED_INDEX).toInt();
   Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(APP_CFG_GUI,
                                                                          "default_sort_order_messages", Qt::DescendingOrder).toInt());
 
-  sortByColumn(col,
-               ord);
+  sortByColumn(col, ord);
 
   // Messages are loaded, make sure that previously
   // active message is not shown in browser.

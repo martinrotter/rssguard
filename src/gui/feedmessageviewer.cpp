@@ -133,6 +133,15 @@ void FeedMessageViewer::quit() {
   }
 }
 
+void FeedMessageViewer::switchMessageSplitterOrientation() {
+  if (m_messageSplitter->orientation() == Qt::Vertical) {
+    m_messageSplitter->setOrientation(Qt::Horizontal);
+  }
+  else {
+    m_messageSplitter->setOrientation(Qt::Vertical);
+  }
+}
+
 void FeedMessageViewer::setToolBarsEnabled(bool enable) {
   m_toolBarsEnabled = enable;
   m_toolBarFeeds->setVisible(enable);
@@ -277,6 +286,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionDefragmentDatabase,
           SIGNAL(triggered()), this, SLOT(vacuumDatabase()));
+  connect(form_main->m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),
+          this, SLOT(switchMessageSplitterOrientation()));
 }
 
 void FeedMessageViewer::initialize() {
@@ -354,7 +365,6 @@ void FeedMessageViewer::initializeViews() {
   setTabOrder(m_messagesView, m_toolBarFeeds);
   setTabOrder(m_toolBarFeeds, m_toolBarMessages);
   setTabOrder(m_toolBarMessages, m_messagesBrowser);
-
 }
 
 void FeedMessageViewer::vacuumDatabase() {

@@ -91,6 +91,7 @@
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
+    <addaction name="m_actionSwitchMessageListOrientation"/>
    </widget>
    <widget class="QMenu" name="m_menuTools">
     <property name="title">
@@ -626,6 +627,14 @@
   <action name="m_actionBackupDatabaseSettings">
    <property name="text">
     <string>&amp;Backup database/settings</string>
+   </property>
+  </action>
+  <action name="m_actionSwitchMessageListOrientation">
+   <property name="text">
+    <string>Switch message list layout orientation</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>
