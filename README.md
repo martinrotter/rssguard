@@ -66,6 +66,9 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
     * MySQL.
 * “portable” mode support with clever auto-detection,
 * feed categorization,
+* drap-n-drop for feed list,
+* automatic checking for updates,
+* ability to backup/restore database or settings,
 * fully-featured recycle bin,
 * can be fully controlled via keyboard,
 * feed authentication (Digest-MD5, BASIC, NTLM-2),
