@@ -174,7 +174,9 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
 
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,
-                                                                  qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt(),
+                                                                  qApp->settings()->value(APP_CFG_FEEDS,
+                                                                                          UPDATE_TIMEOUT,
+                                                                                          DEFAULT_VALUE(UPDATE_TIMEOUT)).toInt(),
                                                                   feed_contents,
                                                                   !username.isEmpty(),
                                                                   username,
@@ -286,9 +288,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(APP_CFG_FEEDS,
-                                       "count_format",
-                                       "(%unread)").toString()
+        return qApp->settings()->value(APP_CFG_FEEDS, COUNT_FORMAT, DEFAULT_VALUE(COUNT_FORMAT)).toString()
             .replace("%unread", QString::number(countOfUnreadMessages()))
             .replace("%all", QString::number(countOfAllMessages()));
       }
@@ -390,7 +390,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
-  int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, "feed_update_timeout", DOWNLOAD_TIMEOUT).toInt();
+  int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, UPDATE_TIMEOUT, DEFAULT_VALUE(UPDATE_TIMEOUT)).toInt();
   m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents, passwordProtected(), username(), password()).first;
 
   if (m_networkError != QNetworkReply::NoError) {

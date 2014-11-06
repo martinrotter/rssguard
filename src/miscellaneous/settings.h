@@ -20,7 +20,18 @@
 
 #include <QSettings>
 
+#include "definitions/definitions.h"
+
 #include <QPointer>
+
+#define DEFAULT_VALUE(x)  x##_DEF
+
+// Feeds.
+#define UPDATE_TIMEOUT      "feed_update_timeout"
+#define UPDATE_TIMEOUT_DEF  DOWNLOAD_TIMEOUT
+
+#define COUNT_FORMAT        "count_format"
+#define COUNT_FORMAT_DEF    "(%unread)"
 
 
 class Settings : public QSettings {
@@ -54,7 +65,6 @@ class Settings : public QSettings {
     QSettings::Status checkSettings();
 
     bool initiateRestoration(const QString &settings_backup_file_path);
-
     static void finishRestoration(const QString &desired_settings_file_path);
 
     // Creates settings file in correct location.

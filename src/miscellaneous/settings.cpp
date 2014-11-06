@@ -31,7 +31,7 @@ Settings::Settings(const QString &file_name, Format format,
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
 }
 
-Settings::~Settings() {
+Settings::~Settings() {  
   checkSettings();
   qDebug("Deleting Settings instance.");
 }
