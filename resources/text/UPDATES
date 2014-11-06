@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="2.0.0.3" type="feature">
-    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.3-win32.exe</url>
+  <release version="2.0.0.4" type="feature">
+    <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.0.0.4-win32.exe</url>
     <changes>
 <![CDATA[<body>
 Fixed:
 <ul>
-<li>Fixed #76, #75, #82, #79, #85 #78, #92, #93.</li>
+<li>Database is now correctly restored when using SQLite memory databases.</li>
+<li>When items are deleted from recycle bin then they are kept in DB and marked as "permanently deleted" (bug #95).'
 </ul>
 
 Added:
 <ul>
-<li>Settings/database can now experimentally be exported/imported.</li>
-<li>Added Swedish localization (thanks to &Aring;ke Engelbrektson).</li>
-<li>Parent item is now selected when adding new category/feed with that parent pre-selected in feed view.</li>
-<li>Message date/time format is now changeable.</li>
+<li>Layout orientation of message list/viewer is now changeable via "View" menu (bug report #98).</li>
+<li>Sort order/column in message list is now persistent (bug #97).</li>
+<li>Inline searching in feed/message list is now case insensitive and more polished (bug report #84).</li>
+<li>Items in feed list (categories and feeds) now can be re-arranged via drag-drop functionality (issue report #91).</li>
+<li>Tray icon now displays blue number of unread messages if any of those messages is newly downloaded from online feed (enhancement #87).</li>
+<li>Fixed issue request #95: items are now permanently hidden (not deleted from database) when "deleted" from recycle bin.</li>
+<li>Issue request #95: moreover custom incremental ability to update database schema was added to keep RSS Guard 2.0.0.4+ fully compatible with previous releases. Incremental algorithm supports both database backends.</li>
 </ul>
 </body>]]>
     </changes>
