@@ -373,6 +373,7 @@ set(APP_SOURCES
   src/miscellaneous/skinfactory.cpp
   src/miscellaneous/iconfactory.cpp
   src/miscellaneous/iofactory.cpp
+  src/miscellaneous/json/json.cpp
 
   # CORE sources.
   src/core/messagesmodel.cpp
@@ -464,7 +465,6 @@ set(APP_HEADERS
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
   src/core/feedsimportexportmodel.h
-  #src/core/feedsmodelrecyclebin.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h
