@@ -92,6 +92,8 @@ class SystemFactory : public QObject {
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
+    static bool isUpdateNewer(const QString &update_version);
+
   public slots:
     // Performs asynchronous check for updates, result is emitted via updateCheckedAsynchronously(...) signal.
     void checkForUpdatesAsynchronously();

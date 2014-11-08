@@ -86,9 +86,9 @@ QVariant FeedsModelCategory::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(APP_CFG_FEEDS, COUNT_FORMAT, DEFAULT_VALUE(COUNT_FORMAT)).toString()
-            .replace("%unread", QString::number(countOfUnreadMessages()))
-            .replace("%all", QString::number(countOfAllMessages()));
+        return qApp->settings()->value(APP_CFG_FEEDS, SETTING(Feeds::CountFormat)).toString()
+            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
+            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
       }
       else {
         return QVariant();

@@ -76,6 +76,9 @@
 #define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
 #define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"
 
+#define PLACEHOLDER_UNREAD_COUNTS   "%unread"
+#define PLACEHOLDER_ALL_COUNTS      "%all"
+
 #define BACKUP_NAME_SETTINGS    "config"
 #define BACKUP_SUFFIX_SETTINGS  ".ini.backup"
 #define BACKUP_NAME_DATABASE    "database"

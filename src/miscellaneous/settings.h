@@ -24,14 +24,47 @@
 
 #include <QPointer>
 
-#define DEFAULT_VALUE(x)  x##_DEF
+#define KEY static const char*
+#define VALUE(x) static const x
+#define SETTING(x) x, x##Def
 
 // Feeds.
-#define UPDATE_TIMEOUT      "feed_update_timeout"
-#define UPDATE_TIMEOUT_DEF  DOWNLOAD_TIMEOUT
+namespace Feeds {
+  KEY UpdateTimeout               = "feed_update_timeout";
+  VALUE(int) UpdateTimeoutDef     = DOWNLOAD_TIMEOUT;
 
-#define COUNT_FORMAT        "count_format"
-#define COUNT_FORMAT_DEF    "(%unread)"
+  KEY CountFormat                 = "count_format";
+  VALUE(char*) CountFormatDef     = "(%unread)";
+}
+
+// Messages.
+namespace Messages {
+  KEY UseCustomDate                 = "use_custom_date";
+  VALUE(bool) UseCustomDateDef      = false;
+
+  KEY CustomDateFormat              = "custom_date_format";
+  VALUE(char*) CustomDateFormatDef  = "";
+
+  KEY ClearReadOnExit               = "clear_read_on_exit";
+  VALUE(bool) ClearReadOnExitDef    = false;
+}
+
+// GUI.
+namespace GUI {
+  KEY SplitterFeeds                 = "splitter_feeds";
+  VALUE(char*) SplitterFeedsDef     = "";
+
+  KEY SplitterMessages              = "splitter_messages";
+  VALUE(char*) SplitterMessagesDef  = "";
+
+  KEY ToolbarStyle                  = "toolbar_style";
+  VALUE(Qt::ToolButtonStyle) ToolbarStyleDef  = Qt::ToolButtonIconOnly;
+}
+
+// General.
+namespace General {
+
+}
 
 
 class Settings : public QSettings {

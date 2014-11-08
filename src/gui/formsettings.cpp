@@ -182,7 +182,7 @@ void FormSettings::loadFeedsMessages() {
   m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool());
   m_ui->m_checkAutoUpdate->setChecked(settings->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool());
   m_ui->m_spinAutoUpdateInterval->setValue(settings->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt());
-  m_ui->m_spinFeedUpdateTimeout->setValue(settings->value(APP_CFG_FEEDS, UPDATE_TIMEOUT, DEFAULT_VALUE(UPDATE_TIMEOUT)).toInt());
+  m_ui->m_spinFeedUpdateTimeout->setValue(settings->value(APP_CFG_FEEDS, SETTING(Feeds::UpdateTimeout)).toInt());
   m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(settings->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(settings->value(APP_CFG_FEEDS, "count_format", "(%unread)").toString());
@@ -216,7 +216,7 @@ void FormSettings::saveFeedsMessages() {
   settings->setValue(APP_CFG_MESSAGES, "clear_read_on_exit", m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
   settings->setValue(APP_CFG_FEEDS, "auto_update_enabled", m_ui->m_checkAutoUpdate->isChecked());
   settings->setValue(APP_CFG_FEEDS, "auto_update_interval", m_ui->m_spinAutoUpdateInterval->value());
-  settings->setValue(APP_CFG_FEEDS, UPDATE_TIMEOUT, m_ui->m_spinFeedUpdateTimeout->value());
+  settings->setValue(APP_CFG_FEEDS, Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
   settings->setValue(APP_CFG_FEEDS, "feeds_update_on_startup", m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
   settings->setValue(APP_CFG_FEEDS, "count_format", m_ui->m_cmbCountsFeedList->currentText());
   settings->setValue(APP_CFG_MESSAGES, "use_custom_date", m_ui->m_checkMessagesDateTimeFormat->isChecked());

@@ -183,6 +183,31 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
   return result;
 }
 
+bool SystemFactory::isUpdateNewer(const QString &update_version) {
+  QStringList current_version_tkn = QString(APP_VERSION).split('.');
+  QStringList new_version_tkn = update_version.split('.');
+
+  while (!current_version_tkn.isEmpty() && !new_version_tkn.isEmpty()) {
+    int current_number = current_version_tkn.takeFirst().toInt();
+    int new_number = new_version_tkn.takeFirst().toInt();
+
+    if (new_number > current_number) {
+      // New version is indeed higher thatn current version.
+      return true;
+    }
+  }
+
+  // Versions are either the same or they have unequal sizes.
+  if (current_version_tkn.isEmpty() && new_version_tkn.isEmpty()) {
+    // Versions are the same.
+    return false;
+  }
+  else {
+    // Version are not the same length. New version is really higher if it is longer + its last digit is not 0.
+    return !new_version_tkn.isEmpty() && new_version_tkn.takeFirst().toInt() != 0;
+  }
+}
+
 UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
   UpdateInfo update;
   QDomDocument document; document.setContent(updates_file, false);
@@ -235,7 +260,7 @@ void SystemFactory::handleBackgroundUpdatesCheck() {
   QFutureWatcher<UpdateCheck> *future_watcher = static_cast<QFutureWatcher<UpdateCheck>*>(sender());
   UpdateCheck updates = future_watcher->result();
 
-  if (updates.second == QNetworkReply::NoError && updates.first.m_availableVersion > APP_VERSION) {
+  if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       qApp->trayIcon()->showMessage(tr("New version available"),
                                     tr("Click the bubble for more information."),

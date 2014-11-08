@@ -108,8 +108,8 @@ int MessagesModel::messageId(int row_index) const {
 }
 
 void MessagesModel::updateDateFormat() {
-  if (qApp->settings()->value(APP_CFG_MESSAGES, "use_custom_date").toBool()) {
-    m_customDateFormat = qApp->settings()->value(APP_CFG_MESSAGES, "custom_date_format").toString();
+  if (qApp->settings()->value(APP_CFG_MESSAGES, SETTING(Messages::UseCustomDate)).toBool()) {
+    m_customDateFormat = qApp->settings()->value(APP_CFG_MESSAGES, SETTING(Messages::CustomDateFormat)).toString();
   }
   else {
     m_customDateFormat = QString();

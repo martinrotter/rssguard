@@ -44,7 +44,6 @@ void DynamicShortcuts::load(const QList<QAction*> actions) {
     QString shortcut_for_action = settings->value(APP_CFG_CUTS,
                                                   action->objectName(),
                                                   action->shortcut().toString(QKeySequence::PortableText)).toString();
-    action->setShortcut(QKeySequence::fromString(shortcut_for_action,
-                                                 QKeySequence::PortableText));
+    action->setShortcut(QKeySequence::fromString(shortcut_for_action, QKeySequence::PortableText));
   }
 }

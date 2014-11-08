@@ -175,8 +175,7 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,
                                                                   qApp->settings()->value(APP_CFG_FEEDS,
-                                                                                          UPDATE_TIMEOUT,
-                                                                                          DEFAULT_VALUE(UPDATE_TIMEOUT)).toInt(),
+                                                                                          SETTING(Feeds::UpdateTimeout)).toInt(),
                                                                   feed_contents,
                                                                   !username.isEmpty(),
                                                                   username,
@@ -288,9 +287,9 @@ QVariant FeedsModelFeed::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(APP_CFG_FEEDS, COUNT_FORMAT, DEFAULT_VALUE(COUNT_FORMAT)).toString()
-            .replace("%unread", QString::number(countOfUnreadMessages()))
-            .replace("%all", QString::number(countOfAllMessages()));
+        return qApp->settings()->value(APP_CFG_FEEDS, SETTING(Feeds::CountFormat)).toString()
+            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
+            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
       }
       else {
         return QVariant();
@@ -390,7 +389,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
-  int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, UPDATE_TIMEOUT, DEFAULT_VALUE(UPDATE_TIMEOUT)).toInt();
+  int download_timeout = qApp->settings()->value(APP_CFG_FEEDS, SETTING(Feeds::UpdateTimeout)).toInt();
   m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents, passwordProtected(), username(), password()).first;
 
   if (m_networkError != QNetworkReply::NoError) {

@@ -104,8 +104,7 @@ void DatabaseFactory::finishRestoration() {
   if (QFile::exists(backup_database_file)) {
     qWarning("Backup database file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_database_file)));
 
-    if (IOFactory::copyFile(backup_database_file,
-                            m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE)) {
+    if (IOFactory::copyFile(backup_database_file, m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE)) {
       QFile::remove(backup_database_file);
       qDebug("Database file was restored successully.");
     }
@@ -132,8 +131,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
   database.setDatabaseName(":memory:");
 
   if (!database.open()) {
-    qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'",
-           qPrintable(database.lastError().text()));
+    qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
   }
   else {
     QSqlQuery query_db(database);
@@ -191,9 +189,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
     // Copy all stuff.
-    QStringList tables; tables << "Information" << "Categories" <<
-                                  "Feeds" << "FeedsData" <<
-                                  "Messages";
+    QStringList tables; tables << "Information" << "Categories" << "Feeds" << "FeedsData" << "Messages";
 
     foreach (const QString &table, tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));

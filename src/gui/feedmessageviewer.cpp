@@ -105,8 +105,8 @@ void FeedMessageViewer::loadSize() {
   m_feedsView->loadExpandedStates();
 
   // Restore offsets of splitters.
-  m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, "splitter_feeds").toString().toLocal8Bit()));
-  m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, "splitter_messages").toString().toLocal8Bit()));
+  m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
+  m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
 
   // Splitters are restored, now, restore widths of columns.
   m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX, settings->value(APP_CFG_GUI,
@@ -128,7 +128,7 @@ void FeedMessageViewer::quit() {
   qDebug("Feed downloader thread aborted. Deleting it from memory.");
   m_feedDownloader->deleteLater();
 
-  if (qApp->settings()->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool()) {
+  if (qApp->settings()->value(APP_CFG_MESSAGES, SETTING(Messages::ClearReadOnExit)).toBool()) {
     m_feedsView->clearAllReadMessages();
   }
 }
@@ -397,8 +397,7 @@ void FeedMessageViewer::vacuumDatabase() {
 
 void FeedMessageViewer::refreshVisualProperties() {
   Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(APP_CFG_GUI,
-                                                                                              "toolbar_style",
-                                                                                              Qt::ToolButtonIconOnly).toInt());
+                                                                                              SETTING(GUI::ToolbarStyle)).toInt());
 
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);

@@ -80,6 +80,7 @@ class DatabaseFactory : public QObject {
     // Copies selected backup database (file) to active database path.
     bool initiateRestoration(const QString &database_backup_file_path);
 
+    // Finishes restoration from backup file.
     void finishRestoration();
 
     //
@@ -96,6 +97,7 @@ class DatabaseFactory : public QObject {
     // Otherwise returns MySQL-specific error code.
     MySQLError mysqlTestConnection(const QString &hostname, int port, const QString &username, const QString &password);
 
+    // Interprets MySQL error code.
     QString mysqlInterpretErrorCode(MySQLError error_code);
 
   private:
@@ -107,6 +109,7 @@ class DatabaseFactory : public QObject {
     // application session.
     void determineDriver();
 
+    // Updates DB schema if necessary.
     bool updateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version);
 
     // Holds the type of currently activated database backend.
