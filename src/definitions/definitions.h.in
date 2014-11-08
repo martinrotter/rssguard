@@ -103,15 +103,6 @@
 
 #define APP_CFG_PATH        "data/config"
 #define APP_CFG_FILE        "config.ini"
-#define APP_CFG_GUI         "gui"
-#define APP_CFG_GEN         "main"
-#define APP_CFG_PROXY       "proxy"
-#define APP_CFG_DB          "database"
-#define APP_CFG_CUTS        "keyboard"
-#define APP_CFG_BROWSER     "browser"
-#define APP_CFG_MESSAGES    "messages"
-#define APP_CFG_FEEDS       "feeds"
-#define APP_CFG_CAT_EXP     "categories_expand_states"
 
 #if defined(Q_OS_OSX)
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@/@APP_LOW_NAME@.app/Contents/Resources"

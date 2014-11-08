@@ -87,7 +87,7 @@ void TabWidget::openMainMenu() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  bool should_be_visible = count() > 1 || !qApp->settings()->value(APP_CFG_GUI,
+  bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI),
                                                                    "hide_tabbar_one_tab",
                                                                    true).toBool();
 
@@ -273,7 +273,7 @@ int TabWidget::addLinkedBrowser(const QString &initial_url) {
 }
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  return addBrowser(qApp->settings()->value(APP_CFG_BROWSER,
+  return addBrowser(qApp->settings()->value(GROUP(Browser),
                                             "queue_tabs",
                                             true).toBool(),
                     false,

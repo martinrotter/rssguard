@@ -64,12 +64,12 @@ void IconFactory::setupSearchPaths() {
 }
 
 void IconFactory::setCurrentIconTheme(const QString &theme_name) {
-  qApp->settings()->setValue(APP_CFG_GUI, "icon_theme", theme_name);
+  qApp->settings()->setValue(GROUP(GUI), "icon_theme", theme_name);
 }
 
 void IconFactory::loadCurrentIconTheme() {
   QStringList installed_themes = installedIconThemes();
-  QString theme_name_from_settings = qApp->settings()->value(APP_CFG_GUI,
+  QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI),
                                                              "icon_theme",
                                                              APP_THEME_DEFAULT).toString();
 

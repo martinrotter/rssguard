@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
   DynamicShortcuts::load(qApp->userActions());
 
   // Display main window.
-  if (qApp->settings()->value(APP_CFG_GUI, "start_hidden", false).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
+  if (qApp->settings()->value(GROUP(GUI), "start_hidden", false).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
     qDebug("Hiding the main window when the application is starting.");
     main_window.switchVisibility(true);
   }
@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
   if (SystemTrayIcon::isSystemTrayActivated()) {
     qApp->showTrayIcon();
 
-    if (qApp->settings()->value(APP_CFG_GEN, "update_on_start", true).toBool()) {
+    if (qApp->settings()->value(GROUP(General), "update_on_start", true).toBool()) {
       QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesAsynchronously()));
     }
   }

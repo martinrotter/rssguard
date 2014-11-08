@@ -178,19 +178,19 @@ void FormSettings::selectBrowserExecutable() {
 void FormSettings::loadFeedsMessages() {
   Settings *settings = qApp->settings();
 
-  m_ui->m_checkKeppMessagesInTheMiddle->setChecked(settings->value(APP_CFG_MESSAGES, "keep_cursor_center", false).toBool());
-  m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings->value(APP_CFG_MESSAGES, "clear_read_on_exit", false).toBool());
-  m_ui->m_checkAutoUpdate->setChecked(settings->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool());
-  m_ui->m_spinAutoUpdateInterval->setValue(settings->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt());
-  m_ui->m_spinFeedUpdateTimeout->setValue(settings->value(APP_CFG_FEEDS, SETTING(Feeds::UpdateTimeout)).toInt());
-  m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(settings->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool());
+  m_ui->m_checkKeppMessagesInTheMiddle->setChecked(settings->value(GROUP(Messages), "keep_cursor_center", false).toBool());
+  m_ui->m_checkRemoveReadMessagesOnExit->setChecked(settings->value(GROUP(Messages), "clear_read_on_exit", false).toBool());
+  m_ui->m_checkAutoUpdate->setChecked(settings->value(GROUP(Feeds), "auto_update_enabled", false).toBool());
+  m_ui->m_spinAutoUpdateInterval->setValue(settings->value(GROUP(Feeds), "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt());
+  m_ui->m_spinFeedUpdateTimeout->setValue(settings->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt());
+  m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(settings->value(GROUP(Feeds), "feeds_update_on_startup", false).toBool());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
-  m_ui->m_cmbCountsFeedList->setEditText(settings->value(APP_CFG_FEEDS, "count_format", "(%unread)").toString());
+  m_ui->m_cmbCountsFeedList->setEditText(settings->value(GROUP(Feeds), "count_format", "(%unread)").toString());
 
   initializeMessageDateFormats();
 
-  m_ui->m_checkMessagesDateTimeFormat->setChecked(settings->value(APP_CFG_MESSAGES, "use_custom_date").toBool());
-  int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings->value(APP_CFG_MESSAGES, "custom_date_format").toString());
+  m_ui->m_checkMessagesDateTimeFormat->setChecked(settings->value(GROUP(Messages), "use_custom_date").toBool());
+  int index_format = m_ui->m_cmbMessagesDateTimeFormat->findData(settings->value(GROUP(Messages), "custom_date_format").toString());
 
   if (index_format >= 0) {
     m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
@@ -212,15 +212,15 @@ void FormSettings::initializeMessageDateFormats() {
 void FormSettings::saveFeedsMessages() {
   Settings *settings = qApp->settings();
 
-  settings->setValue(APP_CFG_MESSAGES, "keep_cursor_center", m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
-  settings->setValue(APP_CFG_MESSAGES, "clear_read_on_exit", m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
-  settings->setValue(APP_CFG_FEEDS, "auto_update_enabled", m_ui->m_checkAutoUpdate->isChecked());
-  settings->setValue(APP_CFG_FEEDS, "auto_update_interval", m_ui->m_spinAutoUpdateInterval->value());
-  settings->setValue(APP_CFG_FEEDS, Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
-  settings->setValue(APP_CFG_FEEDS, "feeds_update_on_startup", m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
-  settings->setValue(APP_CFG_FEEDS, "count_format", m_ui->m_cmbCountsFeedList->currentText());
-  settings->setValue(APP_CFG_MESSAGES, "use_custom_date", m_ui->m_checkMessagesDateTimeFormat->isChecked());
-  settings->setValue(APP_CFG_MESSAGES, "custom_date_format",
+  settings->setValue(GROUP(Messages), "keep_cursor_center", m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
+  settings->setValue(GROUP(Messages), "clear_read_on_exit", m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
+  settings->setValue(GROUP(Feeds), "auto_update_enabled", m_ui->m_checkAutoUpdate->isChecked());
+  settings->setValue(GROUP(Feeds), "auto_update_interval", m_ui->m_spinAutoUpdateInterval->value());
+  settings->setValue(GROUP(Feeds), Feeds::UpdateTimeout, m_ui->m_spinFeedUpdateTimeout->value());
+  settings->setValue(GROUP(Feeds), "feeds_update_on_startup", m_ui->m_checkUpdateAllFeedsOnStartup->isChecked());
+  settings->setValue(GROUP(Feeds), "count_format", m_ui->m_cmbCountsFeedList->currentText());
+  settings->setValue(GROUP(Messages), "use_custom_date", m_ui->m_checkMessagesDateTimeFormat->isChecked());
+  settings->setValue(GROUP(Messages), "custom_date_format",
                      m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
@@ -333,19 +333,19 @@ void FormSettings::loadBrowser() {
   Settings *settings = qApp->settings();
 
   // Load settings of web browser GUI.
-  m_ui->m_checkMouseGestures->setChecked(settings->value(APP_CFG_BROWSER,
+  m_ui->m_checkMouseGestures->setChecked(settings->value(GROUP(Browser),
                                                          "gestures_enabled",
                                                          true).toBool());
-  m_ui->m_checkQueueTabs->setChecked(settings->value(APP_CFG_BROWSER,
+  m_ui->m_checkQueueTabs->setChecked(settings->value(GROUP(Browser),
                                                      "queue_tabs",
                                                      true).toBool());
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
-  m_ui->m_txtExternalBrowserExecutable->setText(settings->value(APP_CFG_BROWSER,
+  m_ui->m_txtExternalBrowserExecutable->setText(settings->value(GROUP(Browser),
                                                                 "external_browser_executable").toString());
-  m_ui->m_txtExternalBrowserArguments->setText(settings->value(APP_CFG_BROWSER,
+  m_ui->m_txtExternalBrowserArguments->setText(settings->value(GROUP(Browser),
                                                                "external_browser_arguments",
                                                                "%1").toString());
-  m_ui->m_grpCustomExternalBrowser->setChecked(settings->value(APP_CFG_BROWSER,
+  m_ui->m_grpCustomExternalBrowser->setChecked(settings->value(GROUP(Browser),
                                                                "custom_external_browser",
                                                                false).toBool());
   m_ui->m_checkAutoLoadImages->setChecked(WebFactory::instance()->autoloadImages());
@@ -357,13 +357,13 @@ void FormSettings::saveBrowser() {
   Settings *settings = qApp->settings();
 
   // Save settings of GUI of web browser.
-  settings->setValue(APP_CFG_BROWSER,
+  settings->setValue(GROUP(Browser),
                      "custom_external_browser",
                      m_ui->m_grpCustomExternalBrowser->isChecked());
-  settings->setValue(APP_CFG_BROWSER,
+  settings->setValue(GROUP(Browser),
                      "gestures_enabled",
                      m_ui->m_checkMouseGestures->isChecked());
-  settings->setValue(APP_CFG_BROWSER,
+  settings->setValue(GROUP(Browser),
                      "queue_tabs",
                      m_ui->m_checkQueueTabs->isChecked());
 
@@ -371,10 +371,10 @@ void FormSettings::saveBrowser() {
   WebFactory::instance()->switchJavascript(m_ui->m_checkEnableJavascript->isChecked());
   WebFactory::instance()->switchPlugins(m_ui->m_checkEnablePlugins->isChecked());
 
-  settings->setValue(APP_CFG_BROWSER,
+  settings->setValue(GROUP(Browser),
                      "external_browser_executable",
                      m_ui->m_txtExternalBrowserExecutable->text());
-  settings->setValue(APP_CFG_BROWSER,
+  settings->setValue(GROUP(Browser),
                      "external_browser_arguments",
                      m_ui->m_txtExternalBrowserArguments->text());
 }
@@ -387,33 +387,33 @@ void FormSettings::loadProxy() {
 
   // Load the settings.
   Settings *settings = qApp->settings();
-  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings->value(APP_CFG_PROXY,
+  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(settings->value(GROUP(Proxy),
                                                                                                        "proxy_type",
                                                                                                        QNetworkProxy::NoProxy).toInt());
 
   m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
-  m_ui->m_txtProxyHost->setText(settings->value(APP_CFG_PROXY,
+  m_ui->m_txtProxyHost->setText(settings->value(GROUP(Proxy),
                                                 "host").toString());
-  m_ui->m_txtProxyUsername->setText(settings->value(APP_CFG_PROXY,
+  m_ui->m_txtProxyUsername->setText(settings->value(GROUP(Proxy),
                                                     "username").toString());
-  m_ui->m_txtProxyPassword->setText(settings->value(APP_CFG_PROXY,
+  m_ui->m_txtProxyPassword->setText(settings->value(GROUP(Proxy),
                                                     "password").toString());
-  m_ui->m_spinProxyPort->setValue(settings->value(APP_CFG_PROXY,
+  m_ui->m_spinProxyPort->setValue(settings->value(GROUP(Proxy),
                                                   "port", 80).toInt());
 }
 
 void FormSettings::saveProxy() {
   Settings *settings = qApp->settings();
 
-  settings->setValue(APP_CFG_PROXY, "proxy_type",
+  settings->setValue(GROUP(Proxy), "proxy_type",
                      m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
-  settings->setValue(APP_CFG_PROXY, "host",
+  settings->setValue(GROUP(Proxy), "host",
                      m_ui->m_txtProxyHost->text());
-  settings->setValue(APP_CFG_PROXY, "username",
+  settings->setValue(GROUP(Proxy), "username",
                      m_ui->m_txtProxyUsername->text());
-  settings->setValue(APP_CFG_PROXY, "password",
+  settings->setValue(GROUP(Proxy), "password",
                      m_ui->m_txtProxyPassword->text());
-  settings->setValue(APP_CFG_PROXY, "port",
+  settings->setValue(GROUP(Proxy), "port",
                      m_ui->m_spinProxyPort->value());
 
   // Reload settings for all network access managers.
@@ -453,7 +453,7 @@ void FormSettings::saveLanguage() {
   // Save prompt for restart if language has changed.
   if (new_lang != actual_lang) {
     m_changedDataTexts.append(tr("language changed"));
-    settings->setValue(APP_CFG_GEN, "language", new_lang);
+    settings->setValue(GROUP(General), "language", new_lang);
   }
 }
 
@@ -480,7 +480,7 @@ void FormSettings::loadDataStorage() {
   // Load in-memory database status.
   Settings *settings = qApp->settings();
 
-  m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(settings->value(APP_CFG_DB, "use_in_memory_db", false).toBool());
+  m_ui->m_checkSqliteUseInMemoryDatabase->setChecked(settings->value(GROUP(Database), "use_in_memory_db", false).toBool());
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
     onMysqlHostnameChanged(QString());
@@ -495,13 +495,13 @@ void FormSettings::loadDataStorage() {
     m_ui->m_txtMysqlUsername->lineEdit()->setPlaceholderText(tr("Username to login with"));
     m_ui->m_txtMysqlPassword->lineEdit()->setPlaceholderText(tr("Password for your username"));
 
-    m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(APP_CFG_DB, "mysql_hostname").toString());
-    m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(APP_CFG_DB, "mysql_username").toString());
-    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(APP_CFG_DB, "mysql_password").toString());
-    m_ui->m_spinMysqlPort->setValue(settings->value(APP_CFG_DB, "mysql_port", APP_DB_MYSQL_PORT).toInt());
+    m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(GROUP(Database), "mysql_hostname").toString());
+    m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(GROUP(Database), "mysql_username").toString());
+    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), "mysql_password").toString());
+    m_ui->m_spinMysqlPort->setValue(settings->value(GROUP(Database), "mysql_port", APP_DB_MYSQL_PORT).toInt());
   }
 
-  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(APP_CFG_DB, "database_driver",
+  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(GROUP(Database), "database_driver",
                                                                                   APP_DB_SQLITE_DRIVER).toString());
 
   if (index_current_backend >= 0) {
@@ -513,7 +513,7 @@ void FormSettings::saveDataStorage() {
   // Setup in-memory database status.
   Settings *settings = qApp->settings();
 
-  bool original_inmemory = settings->value(APP_CFG_DB, "use_in_memory_db", false).toBool();
+  bool original_inmemory = settings->value(GROUP(Database), "use_in_memory_db", false).toBool();
   bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
 
   if (original_inmemory != new_inmemory) {
@@ -521,21 +521,21 @@ void FormSettings::saveDataStorage() {
   }
 
   // Save data storage settings.
-  QString original_db_driver = settings->value(APP_CFG_DB, "database_driver", APP_DB_SQLITE_DRIVER).toString();
+  QString original_db_driver = settings->value(GROUP(Database), "database_driver", APP_DB_SQLITE_DRIVER).toString();
   QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
 
   // Save SQLite.
-  settings->setValue(APP_CFG_DB, "use_in_memory_db", new_inmemory);
+  settings->setValue(GROUP(Database), "use_in_memory_db", new_inmemory);
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
     // Save MySQL.
-    settings->setValue(APP_CFG_DB, "mysql_hostname", m_ui->m_txtMysqlHostname->lineEdit()->text());
-    settings->setValue(APP_CFG_DB, "mysql_username", m_ui->m_txtMysqlUsername->lineEdit()->text());
-    settings->setValue(APP_CFG_DB, "mysql_password", m_ui->m_txtMysqlPassword->lineEdit()->text());
-    settings->setValue(APP_CFG_DB, "mysql_port", m_ui->m_spinMysqlPort->value());
+    settings->setValue(GROUP(Database), "mysql_hostname", m_ui->m_txtMysqlHostname->lineEdit()->text());
+    settings->setValue(GROUP(Database), "mysql_username", m_ui->m_txtMysqlUsername->lineEdit()->text());
+    settings->setValue(GROUP(Database), "mysql_password", m_ui->m_txtMysqlPassword->lineEdit()->text());
+    settings->setValue(GROUP(Database), "mysql_port", m_ui->m_spinMysqlPort->value());
   }
 
-  settings->setValue(APP_CFG_DB, "database_driver", selected_db_driver);
+  settings->setValue(GROUP(Database), "database_driver", selected_db_driver);
 
   if (original_db_driver != selected_db_driver ||
       m_initialSettings.m_dataStorageDataChanged) {
@@ -618,7 +618,7 @@ void FormSettings::selectSqlBackend(int index) {
 
 void FormSettings::loadGeneral() {
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(APP_NAME));
-  m_ui->m_checkForUpdatesOnStart->setChecked(qApp->settings()->value(APP_CFG_GEN, "update_on_start", true).toBool());
+  m_ui->m_checkForUpdatesOnStart->setChecked(qApp->settings()->value(GROUP(General), "update_on_start", true).toBool());
 
   // Load auto-start status.
   SystemFactory::AutoStartStatus autostart_status = qApp->system()->getAutoStartStatus();
@@ -638,7 +638,7 @@ void FormSettings::loadGeneral() {
 
 #if defined(Q_OS_WIN)
   m_ui->m_checkRemoveTrolltechJunk->setEnabled(true);
-  m_ui->m_checkRemoveTrolltechJunk->setChecked(qApp->settings()->value(APP_CFG_GEN, "remove_trolltech_junk", false).toBool());
+  m_ui->m_checkRemoveTrolltechJunk->setChecked(qApp->settings()->value(GROUP(General), "remove_trolltech_junk", false).toBool());
 #endif
 }
 
@@ -651,8 +651,8 @@ void FormSettings::saveGeneral() {
     qApp->system()->setAutoStartStatus(SystemFactory::Disabled);
   }
 
-  qApp->settings()->setValue(APP_CFG_GEN, "update_on_start", m_ui->m_checkForUpdatesOnStart->isChecked());
-  qApp->settings()->setValue(APP_CFG_GEN, "remove_trolltech_junk", m_ui->m_checkRemoveTrolltechJunk->isChecked());
+  qApp->settings()->setValue(GROUP(General), "update_on_start", m_ui->m_checkForUpdatesOnStart->isChecked());
+  qApp->settings()->setValue(GROUP(General), "remove_trolltech_junk", m_ui->m_checkRemoveTrolltechJunk->isChecked());
 }
 
 void FormSettings::loadInterface() {
@@ -660,7 +660,7 @@ void FormSettings::loadInterface() {
 
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    m_ui->m_radioTrayOff->setChecked(!settings->value(APP_CFG_GUI,
+    m_ui->m_radioTrayOff->setChecked(!settings->value(GROUP(GUI),
                                                       "use_tray_icon",
                                                       true).toBool());
   }
@@ -671,10 +671,10 @@ void FormSettings::loadInterface() {
     m_ui->m_grpTray->setDisabled(true);
   }
 
-  m_ui->m_checkHidden->setChecked(settings->value(APP_CFG_GUI,
+  m_ui->m_checkHidden->setChecked(settings->value(GROUP(GUI),
                                                   "start_hidden",
                                                   false).toBool());
-  m_ui->m_checkHideWhenMinimized->setChecked(settings->value(APP_CFG_GUI,
+  m_ui->m_checkHideWhenMinimized->setChecked(settings->value(GROUP(GUI),
                                                              "hide_when_minimized",
                                                              false).toBool());
 
@@ -738,16 +738,16 @@ void FormSettings::loadInterface() {
   }
 
   // Load tab settings.
-  m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(APP_CFG_GUI,
+  m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(GROUP(GUI),
                                                                 "tab_close_mid_button",
                                                                 true).toBool());
-  m_ui->m_checkCloseTabsDoubleClick->setChecked(settings->value(APP_CFG_GUI,
+  m_ui->m_checkCloseTabsDoubleClick->setChecked(settings->value(GROUP(GUI),
                                                                 "tab_close_double_button",
                                                                 true).toBool());
-  m_ui->m_checkNewTabDoubleClick->setChecked(settings->value(APP_CFG_GUI,
+  m_ui->m_checkNewTabDoubleClick->setChecked(settings->value(GROUP(GUI),
                                                              "tab_new_double_button",
                                                              true).toBool());
-  m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings->value(APP_CFG_GUI,
+  m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings->value(GROUP(GUI),
                                                                 "hide_tabbar_one_tab",
                                                                 true).toBool());
 
@@ -758,7 +758,7 @@ void FormSettings::loadInterface() {
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Text under icon"), Qt::ToolButtonTextUnderIcon);
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonFollowStyle);
 
-  m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(qApp->settings()->value(APP_CFG_GUI,
+  m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(qApp->settings()->value(GROUP(GUI),
                                                                                                                  "toolbar_style",
                                                                                                                  Qt::ToolButtonIconOnly).toInt()));
 
@@ -771,16 +771,16 @@ void FormSettings::saveInterface() {
   Settings *settings = qApp->settings();
 
   // Save toolbar.
-  settings->setValue(APP_CFG_GUI,
+  settings->setValue(GROUP(GUI),
                      "toolbar_style",
                      m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
 
   // Save tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    settings->setValue(APP_CFG_GUI, "use_tray_icon",
+    settings->setValue(GROUP(GUI), "use_tray_icon",
                        m_ui->m_radioTrayOn->isChecked());
 
-    if (settings->value(APP_CFG_GUI, "use_tray_icon", true).toBool()) {
+    if (settings->value(GROUP(GUI), "use_tray_icon", true).toBool()) {
       qApp->showTrayIcon();
     }
     else {
@@ -788,9 +788,9 @@ void FormSettings::saveInterface() {
     }
   }
 
-  settings->setValue(APP_CFG_GUI, "start_hidden",
+  settings->setValue(GROUP(GUI), "start_hidden",
                      m_ui->m_checkHidden->isChecked());
-  settings->setValue(APP_CFG_GUI,
+  settings->setValue(GROUP(GUI),
                      "hide_when_minimized",
                      m_ui->m_checkHideWhenMinimized->isChecked());
 
@@ -815,13 +815,13 @@ void FormSettings::saveInterface() {
   }
 
   // Save tab settings.
-  settings->setValue(APP_CFG_GUI, "tab_close_mid_button",
+  settings->setValue(GROUP(GUI), "tab_close_mid_button",
                      m_ui->m_checkCloseTabsMiddleClick->isChecked());
-  settings->setValue(APP_CFG_GUI, "tab_close_double_button",
+  settings->setValue(GROUP(GUI), "tab_close_double_button",
                      m_ui->m_checkCloseTabsDoubleClick->isChecked());
-  settings->setValue(APP_CFG_GUI, "tab_new_double_button",
+  settings->setValue(GROUP(GUI), "tab_new_double_button",
                      m_ui->m_checkNewTabDoubleClick->isChecked());
-  settings->setValue(APP_CFG_GUI, "hide_tabbar_one_tab",
+  settings->setValue(GROUP(GUI), "hide_tabbar_one_tab",
                      m_ui->m_hideTabBarIfOneTabVisible->isChecked());
 
   m_ui->m_editorFeedsToolbar->saveToolBar();

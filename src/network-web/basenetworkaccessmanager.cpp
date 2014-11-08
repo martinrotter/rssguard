@@ -36,7 +36,7 @@ BaseNetworkAccessManager::~BaseNetworkAccessManager() {
 
 void BaseNetworkAccessManager::loadSettings() {
   QNetworkProxy new_proxy;
-  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(APP_CFG_PROXY,
+  QNetworkProxy::ProxyType selected_proxy_type = static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy),
                                                                                                                "proxy_type",
                                                                                                                QNetworkProxy::NoProxy).toInt());
 
@@ -54,10 +54,10 @@ void BaseNetworkAccessManager::loadSettings() {
 
   // Custom proxy is selected, set it up.
   new_proxy.setType(selected_proxy_type);
-  new_proxy.setHostName(settings->value(APP_CFG_PROXY, "host").toString());
-  new_proxy.setPort(settings->value(APP_CFG_PROXY, "port", 80).toInt());
-  new_proxy.setUser(settings->value(APP_CFG_PROXY, "username").toString());
-  new_proxy.setPassword(settings->value(APP_CFG_PROXY, "password").toString());
+  new_proxy.setHostName(settings->value(GROUP(Proxy), "host").toString());
+  new_proxy.setPort(settings->value(GROUP(Proxy), "port", 80).toInt());
+  new_proxy.setUser(settings->value(GROUP(Proxy), "username").toString());
+  new_proxy.setPassword(settings->value(GROUP(Proxy), "password").toString());
   setProxy(new_proxy);
 
   qDebug("Settings of BaseNetworkAccessManager loaded.");

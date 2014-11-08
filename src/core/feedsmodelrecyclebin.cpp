@@ -62,7 +62,7 @@ QVariant FeedsModelRecycleBin::data(int column, int role) const {
         return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(APP_CFG_FEEDS, SETTING(Feeds::CountFormat)).toString()
+        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
             .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
             .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
       }

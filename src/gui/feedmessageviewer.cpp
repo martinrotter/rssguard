@@ -80,8 +80,8 @@ void FeedMessageViewer::saveSize() {
   m_feedsView->saveExpandedStates();
 
   // Store offsets of splitters.
-  settings->setValue(APP_CFG_GUI, "splitter_feeds", QString(m_feedSplitter->saveState().toBase64()));
-  settings->setValue(APP_CFG_GUI, "splitter_messages", QString(m_messageSplitter->saveState().toBase64()));
+  settings->setValue(GROUP(GUI), "splitter_feeds", QString(m_feedSplitter->saveState().toBase64()));
+  settings->setValue(GROUP(GUI), "splitter_messages", QString(m_messageSplitter->saveState().toBase64()));
 
   // States of splitters are stored, let's store
   // widths of columns.
@@ -89,13 +89,13 @@ void FeedMessageViewer::saveSize() {
   int width_column_date = m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX);
 
   if (width_column_author != 0 && width_column_date != 0) {
-    settings->setValue(APP_CFG_GUI, KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX), width_column_author);
-    settings->setValue(APP_CFG_GUI, KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX), width_column_date);
+    settings->setValue(GROUP(GUI), KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX), width_column_author);
+    settings->setValue(GROUP(GUI), KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX), width_column_date);
   }
 
   // Store "visibility" of toolbars and list headers.
-  settings->setValue(APP_CFG_GUI, "enable_toolbars", m_toolBarsEnabled);
-  settings->setValue(APP_CFG_GUI, "enable_list_headers", m_listHeadersEnabled);
+  settings->setValue(GROUP(GUI), "enable_toolbars", m_toolBarsEnabled);
+  settings->setValue(GROUP(GUI), "enable_list_headers", m_listHeadersEnabled);
 }
 
 void FeedMessageViewer::loadSize() {
@@ -105,14 +105,14 @@ void FeedMessageViewer::loadSize() {
   m_feedsView->loadExpandedStates();
 
   // Restore offsets of splitters.
-  m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
-  m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(APP_CFG_GUI, SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
+  m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
+  m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
 
   // Splitters are restored, now, restore widths of columns.
-  m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX, settings->value(APP_CFG_GUI,
+  m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX, settings->value(GROUP(GUI),
                                                                       KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
                                                                       default_msg_section_size).toInt());
-  m_messagesView->setColumnWidth(MSG_DB_DCREATED_INDEX, settings->value(APP_CFG_GUI,
+  m_messagesView->setColumnWidth(MSG_DB_DCREATED_INDEX, settings->value(GROUP(GUI),
                                                                         KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX),
                                                                         default_msg_section_size).toInt());
 }
@@ -128,7 +128,7 @@ void FeedMessageViewer::quit() {
   qDebug("Feed downloader thread aborted. Deleting it from memory.");
   m_feedDownloader->deleteLater();
 
-  if (qApp->settings()->value(APP_CFG_MESSAGES, SETTING(Messages::ClearReadOnExit)).toBool()) {
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
     m_feedsView->clearAllReadMessages();
   }
 }
@@ -396,7 +396,7 @@ void FeedMessageViewer::vacuumDatabase() {
 }
 
 void FeedMessageViewer::refreshVisualProperties() {
-  Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(APP_CFG_GUI,
+  Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI),
                                                                                               SETTING(GUI::ToolbarStyle)).toInt());
 
   m_toolBarFeeds->setToolButtonStyle(button_style);

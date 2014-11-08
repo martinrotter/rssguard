@@ -77,9 +77,9 @@ void FeedsView::quit() {
 void FeedsView::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.
-  m_globalAutoUpdateInitialInterval = qApp->settings()->value(APP_CFG_FEEDS, "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
+  m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
   m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  m_globalAutoUpdateEnabled = qApp->settings()->value(APP_CFG_FEEDS, "auto_update_enabled", false).toBool();
+  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), "auto_update_enabled", false).toBool();
 
   // Start global auto-update timer if it is not running yet.
   // NOTE: The timer must run even if global auto-update
@@ -142,7 +142,7 @@ void FeedsView::saveExpandedStates() {
 
   // Iterate all categories and save their expand statuses.
   foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
-    settings->setValue(APP_CFG_CAT_EXP,
+    settings->setValue(GROUP(Categories),
                        QString::number(category->id()),
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
   }
@@ -154,7 +154,7 @@ void FeedsView::loadExpandedStates() {
   // Iterate all categories and save their expand statuses.
   foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
-                settings->value(APP_CFG_CAT_EXP, QString::number(category->id()), true).toBool());
+                settings->value(GROUP(Categories), QString::number(category->id()), true).toBool());
   }
 }
 
@@ -170,7 +170,7 @@ void FeedsView::updateAllFeeds() {
 }
 
 void FeedsView::updateAllFeedsOnStartup() {
-  if (qApp->settings()->value(APP_CFG_FEEDS, "feeds_update_on_startup", false).toBool()) {
+  if (qApp->settings()->value(GROUP(Feeds), "feeds_update_on_startup", false).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
   }

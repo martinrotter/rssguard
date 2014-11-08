@@ -27,9 +27,12 @@
 #define KEY static const char*
 #define VALUE(x) static const x
 #define SETTING(x) x, x##Def
+#define GROUP(x) x::ID
 
 // Feeds.
 namespace Feeds {
+  KEY ID                          = "feeds";
+
   KEY UpdateTimeout               = "feed_update_timeout";
   VALUE(int) UpdateTimeoutDef     = DOWNLOAD_TIMEOUT;
 
@@ -39,6 +42,8 @@ namespace Feeds {
 
 // Messages.
 namespace Messages {
+  KEY ID                          = "messages";
+
   KEY UseCustomDate                 = "use_custom_date";
   VALUE(bool) UseCustomDateDef      = false;
 
@@ -51,6 +56,8 @@ namespace Messages {
 
 // GUI.
 namespace GUI {
+  KEY ID                          = "gui";
+
   KEY SplitterFeeds                 = "splitter_feeds";
   VALUE(char*) SplitterFeedsDef     = "";
 
@@ -63,7 +70,32 @@ namespace GUI {
 
 // General.
 namespace General {
+  KEY ID                          = "main";
+}
 
+// Proxy.
+namespace Proxy {
+  KEY ID                          = "proxy";
+}
+
+// Database.
+namespace Database {
+  KEY ID                          = "database";
+}
+
+// Keyboard.
+namespace Keyboard {
+  KEY ID                          = "keyboard";
+}
+
+// Web browser.
+namespace Browser {
+  KEY ID                          = "browser";
+}
+
+// Categories.
+namespace Categories {
+  KEY ID                          = "categories_expand_states";
 }
 
 

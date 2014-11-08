@@ -57,7 +57,7 @@ QList<QAction*> MessagesToolBar::changeableActions() const {
 }
 
 void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
-  qApp->settings()->setValue(APP_CFG_GUI, "messages_toolbar", actions.join(","));
+  qApp->settings()->setValue(GROUP(GUI), "messages_toolbar", actions.join(","));
   loadChangeableActions(actions);
 
   // If user hidden search messages box, then remove the filter.
@@ -151,7 +151,7 @@ void MessagesToolBar::initializeHighlighter() {
 }
 
 void MessagesToolBar::loadChangeableActions() {
-  QStringList action_names = qApp->settings()->value(APP_CFG_GUI,
+  QStringList action_names = qApp->settings()->value(GROUP(GUI),
                                                      "messages_toolbar",
                                                      "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search").toString().split(',',
                                                                                                                                                                                                                                 QString::SkipEmptyParts);

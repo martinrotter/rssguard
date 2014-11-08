@@ -226,7 +226,7 @@ void MessagesView::currentChanged(const QModelIndex &current,
 
 void MessagesView::selectionChanged(const QItemSelection &selected,
                                     const QItemSelection &deselected) {
-  if (qApp->settings()->value(APP_CFG_MESSAGES, "keep_cursor_center", false).toBool()) {
+  if (qApp->settings()->value(GROUP(Messages), "keep_cursor_center", false).toBool()) {
     scrollTo(currentIndex(), QAbstractItemView::PositionAtCenter);
   }
 
@@ -236,8 +236,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected,
 void MessagesView::loadFeeds(const QList<int> &feed_ids) {
   m_sourceModel->loadMessages(feed_ids);
 
-  int col = qApp->settings()->value(APP_CFG_GUI, "default_sort_column_messages", MSG_DB_DCREATED_INDEX).toInt();
-  Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(APP_CFG_GUI,
+  int col = qApp->settings()->value(GROUP(GUI), "default_sort_column_messages", MSG_DB_DCREATED_INDEX).toInt();
+  Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI),
                                                                          "default_sort_order_messages", Qt::DescendingOrder).toInt());
 
   sortByColumn(col, ord);
@@ -514,6 +514,6 @@ void MessagesView::adjustColumns() {
 }
 
 void MessagesView::saveSortState(int column, Qt::SortOrder order) {
-  qApp->settings()->setValue(APP_CFG_GUI, "default_sort_column_messages", column);
-  qApp->settings()->setValue(APP_CFG_GUI, "default_sort_order_messages", order);
+  qApp->settings()->setValue(GROUP(GUI), "default_sort_column_messages", column);
+  qApp->settings()->setValue(GROUP(GUI), "default_sort_order_messages", order);
 }

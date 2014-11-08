@@ -24,20 +24,15 @@ WebFactory::~WebFactory() {
 void WebFactory::loadState() {
   Settings *settings = qApp->settings();
 
-  switchJavascript(settings->value(APP_CFG_BROWSER, "enable_javascript", true).toBool(), false);
-  switchImages(settings->value(APP_CFG_BROWSER, "enable_images", true).toBool(), false);
-  switchPlugins(settings->value(APP_CFG_BROWSER, "enable_plugins", false).toBool(), false);
+  switchJavascript(settings->value(GROUP(Browser), "enable_javascript", true).toBool(), false);
+  switchImages(settings->value(GROUP(Browser), "enable_images", true).toBool(), false);
+  switchPlugins(settings->value(GROUP(Browser), "enable_plugins", false).toBool(), false);
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QString &url) {
-  if (qApp->settings()->value(APP_CFG_BROWSER,
-                              "custom_external_browser",
-                              false).toBool()) {
-    QString browser = qApp->settings()->value(APP_CFG_BROWSER,
-                                              "external_browser_executable").toString();
-    QString arguments = qApp->settings()->value(APP_CFG_BROWSER,
-                                                "external_browser_arguments",
-                                                "%1").toString();
+  if (qApp->settings()->value(GROUP(Browser), "custom_external_browser", false).toBool()) {
+    QString browser = qApp->settings()->value(GROUP(Browser), "external_browser_executable").toString();
+    QString arguments = qApp->settings()->value(GROUP(Browser), "external_browser_arguments", "%1").toString();
 
     return QProcess::startDetached(browser, QStringList() << arguments.arg(url));
   }
@@ -48,9 +43,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
 
 void WebFactory::switchJavascript(bool enable, bool save_settings) {
   if (save_settings) {
-    qApp->settings()->setValue(APP_CFG_BROWSER,
-                               "enable_javascript",
-                               enable);
+    qApp->settings()->setValue(GROUP(Browser), "enable_javascript", enable);
   }
 
   m_globalSettings->setAttribute(QWebSettings::JavascriptEnabled, enable);
@@ -59,7 +52,7 @@ void WebFactory::switchJavascript(bool enable, bool save_settings) {
 
 void WebFactory::switchPlugins(bool enable, bool save_settings) {
   if (save_settings) {
-    qApp->settings()->setValue(APP_CFG_BROWSER,
+    qApp->settings()->setValue(GROUP(Browser),
                                "enable_plugins",
                                enable);
   }
@@ -70,7 +63,7 @@ void WebFactory::switchPlugins(bool enable, bool save_settings) {
 
 void WebFactory::switchImages(bool enable, bool save_settings) {
   if (save_settings) {
-    qApp->settings()->setValue(APP_CFG_BROWSER,
+    qApp->settings()->setValue(GROUP(Browser),
                                "enable_images",
                                enable);
   }

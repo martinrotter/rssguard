@@ -238,7 +238,7 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
-    bool are_gestures_enabled = qApp->settings()->value(APP_CFG_BROWSER,
+    bool are_gestures_enabled = qApp->settings()->value(GROUP(Browser),
                                                         "gestures_enabled",
                                                         true).toBool();
     if (are_gestures_enabled) {
