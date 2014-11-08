@@ -31,18 +31,27 @@
 
 // Feeds.
 namespace Feeds {
-  KEY ID                          = "feeds";
+  KEY ID                            = "feeds";
 
-  KEY UpdateTimeout               = "feed_update_timeout";
-  VALUE(int) UpdateTimeoutDef     = DOWNLOAD_TIMEOUT;
+  KEY UpdateTimeout                 = "feed_update_timeout";
+  VALUE(int) UpdateTimeoutDef       = DOWNLOAD_TIMEOUT;
 
-  KEY CountFormat                 = "count_format";
-  VALUE(char*) CountFormatDef     = "(%unread)";
+  KEY CountFormat                   = "count_format";
+  VALUE(char*) CountFormatDef       = "(%unread)";
+
+  KEY AutoUpdateInterval            = "auto_update_interval";
+  VALUE(int) AutoUpdateIntervalDef  = DEFAULT_AUTO_UPDATE_INTERVAL;
+
+  KEY AutoUpdateEnabled             = "auto_update_enabled";
+  VALUE(bool) AutoUpdateEnabledDef  = false;
+
+  KEY FeedsUpdateOnStartup            = "feeds_update_on_startup";
+  VALUE(bool) FeedsUpdateOnStartupDef = false;
 }
 
 // Messages.
 namespace Messages {
-  KEY ID                          = "messages";
+  KEY ID                            = "messages";
 
   KEY UseCustomDate                 = "use_custom_date";
   VALUE(bool) UseCustomDateDef      = false;
@@ -56,46 +65,49 @@ namespace Messages {
 
 // GUI.
 namespace GUI {
-  KEY ID                          = "gui";
+  KEY ID                                      = "gui";
 
-  KEY SplitterFeeds                 = "splitter_feeds";
-  VALUE(char*) SplitterFeedsDef     = "";
+  KEY SplitterFeeds                           = "splitter_feeds";
+  VALUE(char*) SplitterFeedsDef               = "";
 
-  KEY SplitterMessages              = "splitter_messages";
-  VALUE(char*) SplitterMessagesDef  = "";
+  KEY SplitterMessages                        = "splitter_messages";
+  VALUE(char*) SplitterMessagesDef            = "";
 
-  KEY ToolbarStyle                  = "toolbar_style";
+  KEY ToolbarStyle                            = "toolbar_style";
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef  = Qt::ToolButtonIconOnly;
+
+  KEY FeedsToolbarActions                     = "feeds_toolbar";
+  VALUE(char*) FeedsToolbarActionsDef         = "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead";
 }
 
 // General.
 namespace General {
-  KEY ID                          = "main";
+  KEY ID                            = "main";
 }
 
 // Proxy.
 namespace Proxy {
-  KEY ID                          = "proxy";
+  KEY ID                            = "proxy";
 }
 
 // Database.
 namespace Database {
-  KEY ID                          = "database";
+  KEY ID                            = "database";
 }
 
 // Keyboard.
 namespace Keyboard {
-  KEY ID                          = "keyboard";
+  KEY ID                            = "keyboard";
 }
 
 // Web browser.
 namespace Browser {
-  KEY ID                          = "browser";
+  KEY ID                            = "browser";
 }
 
 // Categories.
 namespace Categories {
-  KEY ID                          = "categories_expand_states";
+  KEY ID                            = "categories_expand_states";
 }
 
 

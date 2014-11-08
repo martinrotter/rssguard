@@ -77,9 +77,9 @@ void FeedsView::quit() {
 void FeedsView::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.
-  m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), "auto_update_interval", DEFAULT_AUTO_UPDATE_INTERVAL).toInt();
+  m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
   m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), "auto_update_enabled", false).toBool();
+  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
 
   // Start global auto-update timer if it is not running yet.
   // NOTE: The timer must run even if global auto-update
@@ -170,7 +170,7 @@ void FeedsView::updateAllFeeds() {
 }
 
 void FeedsView::updateAllFeedsOnStartup() {
-  if (qApp->settings()->value(GROUP(Feeds), "feeds_update_on_startup", false).toBool()) {
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
   }

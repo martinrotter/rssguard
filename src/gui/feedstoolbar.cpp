@@ -53,10 +53,8 @@ void FeedsToolBar::saveChangeableActions(const QStringList &actions) {
 }
 
 void FeedsToolBar::loadChangeableActions() {
-  QStringList action_names = qApp->settings()->value(GROUP(GUI),
-                                                     "feeds_toolbar",
-                                                     "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead").toString().split(',',
-                                                                                                                         QString::SkipEmptyParts);
+  QStringList action_names = qApp->settings()->value(GROUP(GUI), SETTING(GUI::FeedsToolbarActions)).toString().split(',',
+                                                                                                                     QString::SkipEmptyParts);
 
   loadChangeableActions(action_names);
 }
