@@ -81,6 +81,27 @@ namespace GUI {
 
   KEY FeedsToolbarActions;
   VALUE(char*) FeedsToolbarActionsDef;
+
+  KEY MainWindowInitialSize;
+  KEY MainWindowInitialPosition;
+
+  KEY MainWindowStartsFullscreen;
+  VALUE(bool) MainWindowStartsFullscreenDef;
+
+  KEY MainWindowStartsMaximized;
+  VALUE(bool) MainWindowStartsMaximizedDef;
+
+  KEY MainMenuVisible;
+  VALUE(bool) MainMenuVisibleDef;
+
+  KEY ToolbarsVisible;
+  VALUE(bool) ToolbarsVisibleDef;
+
+  KEY ListHeadersVisible;
+  VALUE(bool) ListHeadersVisibleDef;
+
+  KEY HideMainWindowWhenMinimized;
+  VALUE(bool) HideMainWindowWhenMinimizedDef;
 }
 
 // General.

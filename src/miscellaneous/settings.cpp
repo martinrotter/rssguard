@@ -71,6 +71,27 @@ DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
 DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead";
 
+DKEY GUI::MainWindowInitialSize        = "window_size";
+DKEY GUI::MainWindowInitialPosition    = "window_position";
+
+DKEY GUI::MainWindowStartsFullscreen             = "start_in_fullscreen";
+DVALUE(bool) GUI::MainWindowStartsFullscreenDef  = false;
+
+DKEY GUI::MainWindowStartsMaximized             = "window_is_maximized";
+DVALUE(bool) GUI::MainWindowStartsMaximizedDef  = false;
+
+DKEY GUI::MainMenuVisible                 = "main_menu_visible";
+DVALUE(bool) GUI::MainMenuVisibleDef      = true;
+
+DKEY GUI::ToolbarsVisible                 = "enable_toolbars";
+DVALUE(bool) GUI::ToolbarsVisibleDef      = true;
+
+DKEY GUI::ListHeadersVisible              = "enable_list_headers";
+DVALUE(bool) GUI::ListHeadersVisibleDef   = true;
+
+DKEY GUI::HideMainWindowWhenMinimized             = "hide_when_minimized";
+DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
+
 // General.
 DKEY General::ID                            = "main";
 

@@ -284,26 +284,26 @@ void FormMain::loadSize() {
   Settings *settings = qApp->settings();
 
   // Reload main window size & position.
-  resize(settings->value(GROUP(GUI), "window_size", size()).toSize());
-  move(settings->value(GROUP(GUI), "window_position", screen.center() - rect().center()).toPoint());
+  resize(settings->value(GROUP(GUI), GUI::MainWindowInitialSize, size()).toSize());
+  move(settings->value(GROUP(GUI), GUI::MainWindowInitialPosition, screen.center() - rect().center()).toPoint());
 
   // If user exited the application while in fullsreen mode,
   // then re-enable it now.
-  if (settings->value(GROUP(GUI), "start_in_fullscreen", false).toBool()) {
+  if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsFullscreen)).toBool()) {
     m_ui->m_actionFullscreen->setChecked(true);
   }
 
-  if (settings->value(GROUP(GUI), "window_is_maximized", false).toBool()) {
+  if (settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsMaximized)).toBool()) {
     setWindowState(windowState() | Qt::WindowMaximized);
   }
 
   // Hide the main menu if user wants it.
-  m_ui->m_actionSwitchMainMenu->setChecked(settings->value(GROUP(GUI), "main_menu_visible", true).toBool());
+  m_ui->m_actionSwitchMainMenu->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MainMenuVisible)).toBool());
 
   // Adjust dimensions of "feeds & messages" widget.
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
-  m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), "enable_toolbars", true).toBool());
-  m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), "enable_list_headers", true).toBool());
+  m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ToolbarsVisible)).toBool());
+  m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
 }
 
 void FormMain::saveSize() {
@@ -319,11 +319,11 @@ void FormMain::saveSize() {
     setWindowState(windowState() & ~Qt::WindowMaximized);
   }
 
-  settings->setValue(GROUP(GUI), "main_menu_visible", m_ui->m_actionSwitchMainMenu->isChecked());
-  settings->setValue(GROUP(GUI), "window_position", pos());
-  settings->setValue(GROUP(GUI), "window_size", size());
-  settings->setValue(GROUP(GUI), "window_is_maximized", is_maximized);
-  settings->setValue(GROUP(GUI), "start_in_fullscreen", is_fullscreen);
+  settings->setValue(GROUP(GUI), GUI::MainMenuVisible, m_ui->m_actionSwitchMainMenu->isChecked());
+  settings->setValue(GROUP(GUI), GUI::MainWindowInitialPosition, pos());
+  settings->setValue(GROUP(GUI), GUI::MainWindowInitialSize, size());
+  settings->setValue(GROUP(GUI), GUI::MainWindowStartsMaximized, is_maximized);
+  settings->setValue(GROUP(GUI), GUI::MainWindowStartsFullscreen, is_fullscreen);
 
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
@@ -416,7 +416,7 @@ void FormMain::changeEvent(QEvent *event) {
     case QEvent::WindowStateChange: {
       if (this->windowState() & Qt::WindowMinimized &&
           SystemTrayIcon::isSystemTrayActivated() &&
-          qApp->settings()->value(GROUP(GUI), "hide_when_minimized", false).toBool()) {
+          qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
         QTimer::singleShot(CHANGE_EVENT_DELAY, this, SLOT(switchVisibility()));
       }
