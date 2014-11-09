@@ -38,7 +38,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   //: About RSS Guard dialog title.
   setWindowTitle(tr("About %1").arg(APP_NAME));
 
-#if !defined(Q_OS_WIN)
+#if defined(Q_OS_OS2)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 

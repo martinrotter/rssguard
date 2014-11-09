@@ -39,8 +39,7 @@ void MessageBox::setIcon(QMessageBox::Icon icon) {
                                              0,
                                              this);
   // Setup status icon.
-  setIconPixmap(iconForStatus(icon).pixmap(icon_size,
-                                           icon_size));
+  setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));
 }
 
 void MessageBox::iconify(QDialogButtonBox *button_box) {

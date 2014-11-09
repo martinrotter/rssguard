@@ -238,18 +238,14 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
-    bool are_gestures_enabled = qApp->settings()->value(GROUP(Browser),
-                                                        "gestures_enabled",
-                                                        true).toBool();
+    bool are_gestures_enabled = qApp->settings()->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool();
     if (are_gestures_enabled) {
       QPoint release_point = event->pos();
       int left_move = m_gestureOrigin.x() - release_point.x();
       int right_move = -left_move;
       int top_move = m_gestureOrigin.y() - release_point.y();
       int bottom_move = -top_move;
-      int total_max = qMax(qMax(qMax(left_move, right_move),
-                                qMax(top_move, bottom_move)),
-                           40);
+      int total_max = qMax(qMax(qMax(left_move, right_move), qMax(top_move, bottom_move)), 40);
 
       if (total_max == left_move) {
         back();

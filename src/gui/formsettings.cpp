@@ -62,7 +62,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
 
-#if !defined(Q_OS_WIN)
+#if defined(Q_OS_OS2)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 
@@ -168,7 +168,12 @@ void FormSettings::selectBrowserExecutable() {
                                                          tr("Select web browser executable"),
                                                          qApp->homeFolderPath(),
                                                          //: File filter for external browser selection dialog.
-                                                         tr("Executables (*.*)"));
+                                                       #if defined(Q_OS_LINUX)
+                                                         tr("Executables (*)")
+                                                       #else
+                                                         tr("Executables (*.*)")
+                                                       #endif
+                                                         );
 
   if (!executable_file.isEmpty()) {
     m_ui->m_txtExternalBrowserExecutable->setText(executable_file);

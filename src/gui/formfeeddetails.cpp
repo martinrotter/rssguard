@@ -371,7 +371,7 @@ void FormFeedDetails::initialize() {
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password"));
   m_ui->m_txtPassword->lineEdit()->setToolTip(tr("Set password to access the feed."));
 
-#if !defined(Q_OS_WIN)
+#if defined(Q_OS_OS2)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 

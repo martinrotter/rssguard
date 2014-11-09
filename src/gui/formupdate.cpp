@@ -48,7 +48,7 @@ FormUpdate::FormUpdate(QWidget *parent)
 
   connect(m_btnUpdate, SIGNAL(clicked()), this, SLOT(startUpdate()));
 
-#if !defined(Q_OS_WIN)
+#if defined(Q_OS_OS2)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 

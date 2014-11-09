@@ -26,6 +26,90 @@
 #include <QWebSettings>
 
 
+// Feeds.
+DKEY Feeds::ID                            = "feeds";
+
+DKEY Feeds::UpdateTimeout                 = "feed_update_timeout";
+DVALUE(int) Feeds::UpdateTimeoutDef       = DOWNLOAD_TIMEOUT;
+
+DKEY Feeds::CountFormat                   = "count_format";
+DVALUE(char*) Feeds::CountFormatDef       = "(%unread)";
+
+DKEY Feeds::AutoUpdateInterval            = "auto_update_interval";
+DVALUE(int) Feeds::AutoUpdateIntervalDef  = DEFAULT_AUTO_UPDATE_INTERVAL;
+
+DKEY Feeds::AutoUpdateEnabled             = "auto_update_enabled";
+DVALUE(bool) Feeds::AutoUpdateEnabledDef  = false;
+
+DKEY Feeds::FeedsUpdateOnStartup            = "feeds_update_on_startup";
+DVALUE(bool) Feeds::FeedsUpdateOnStartupDef = false;
+
+// Messages.
+DKEY Messages::ID                            = "messages";
+
+DKEY Messages::UseCustomDate                 = "use_custom_date";
+DVALUE(bool) Messages::UseCustomDateDef      = false;
+
+DKEY Messages::CustomDateFormat              = "custom_date_format";
+DVALUE(char*) Messages::CustomDateFormatDef  = "";
+
+DKEY Messages::ClearReadOnExit               = "clear_read_on_exit";
+DVALUE(bool) Messages::ClearReadOnExitDef    = false;
+
+// GUI.
+DKEY GUI::ID                                      = "gui";
+
+DKEY GUI::SplitterFeeds                           = "splitter_feeds";
+DVALUE(char*) GUI::SplitterFeedsDef               = "";
+
+DKEY GUI::SplitterMessages                        = "splitter_messages";
+DVALUE(char*) GUI::SplitterMessagesDef            = "";
+
+DKEY GUI::ToolbarStyle                            = "toolbar_style";
+DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
+
+DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
+DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead";
+
+// General.
+DKEY General::ID                            = "main";
+
+// Proxy.
+DKEY Proxy::ID                              = "proxy";
+
+// Database.
+DKEY Database::ID                           = "database";
+
+// Keyboard.
+DKEY Keyboard::ID                           = "keyboard";
+
+// Web browser.
+DKEY Browser::ID                            = "browser";
+
+DKEY Browser::GesturesEnabled               = "gestures_enabled";
+DVALUE(bool) Browser::GesturesEnabledDef    = true;
+
+DKEY Browser::JavascriptEnabled             = "enable_javascript";
+DVALUE(bool) Browser::JavascriptEnabledDef  = true;
+
+DKEY Browser::ImagesEnabled                 = "enable_images";
+DVALUE(bool) Browser::ImagesEnabledDef      = true;
+
+DKEY Browser::PluginsEnabled                = "enable_plugins";
+DVALUE(bool) Browser::PluginsEnabledDef     = false;
+
+DKEY Browser::CustomExternalBrowserEnabled                = "custom_external_browser";
+DVALUE(bool) Browser::CustomExternalBrowserEnabledDef     = false;
+
+DKEY Browser::CustomExternalBrowserExecutable             = "external_browser_executable";
+DVALUE(char*) Browser::CustomExternalBrowserExecutableDef = "";
+
+DKEY Browser::CustomExternalBrowserArguments              = "external_browser_arguments";
+DVALUE(char*) Browser::CustomExternalBrowserArgumentsDef  = "%1";
+
+// Categories.
+DKEY Categories::ID                         = "categories_expand_states";
+
 Settings::Settings(const QString &file_name, Format format,
                    const Type &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {

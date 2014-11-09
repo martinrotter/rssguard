@@ -24,92 +24,115 @@
 
 #include <QPointer>
 
-#define KEY static const char*
-#define VALUE(x) static const x
+#define KEY extern const char*
+#define DKEY const char*
+#define VALUE(x) extern const x
+#define DVALUE(x) const x
 #define SETTING(x) x, x##Def
 #define GROUP(x) x::ID
 
+
 // Feeds.
 namespace Feeds {
-  KEY ID                            = "feeds";
+  KEY ID;
 
-  KEY UpdateTimeout                 = "feed_update_timeout";
-  VALUE(int) UpdateTimeoutDef       = DOWNLOAD_TIMEOUT;
+  KEY UpdateTimeout;
+  VALUE(int) UpdateTimeoutDef;
 
-  KEY CountFormat                   = "count_format";
-  VALUE(char*) CountFormatDef       = "(%unread)";
+  KEY CountFormat;
+  VALUE(char*) CountFormatDef;
 
-  KEY AutoUpdateInterval            = "auto_update_interval";
-  VALUE(int) AutoUpdateIntervalDef  = DEFAULT_AUTO_UPDATE_INTERVAL;
+  KEY AutoUpdateInterval;
+  VALUE(int) AutoUpdateIntervalDef;
 
-  KEY AutoUpdateEnabled             = "auto_update_enabled";
-  VALUE(bool) AutoUpdateEnabledDef  = false;
+  KEY AutoUpdateEnabled;
+  VALUE(bool) AutoUpdateEnabledDef;
 
-  KEY FeedsUpdateOnStartup            = "feeds_update_on_startup";
-  VALUE(bool) FeedsUpdateOnStartupDef = false;
+  KEY FeedsUpdateOnStartup;
+  VALUE(bool) FeedsUpdateOnStartupDef;
 }
 
 // Messages.
 namespace Messages {
-  KEY ID                            = "messages";
+  KEY ID;
 
-  KEY UseCustomDate                 = "use_custom_date";
-  VALUE(bool) UseCustomDateDef      = false;
+  KEY UseCustomDate;
+  VALUE(bool) UseCustomDateDef;
 
-  KEY CustomDateFormat              = "custom_date_format";
-  VALUE(char*) CustomDateFormatDef  = "";
+  KEY CustomDateFormat;
+  VALUE(char*) CustomDateFormatDef;
 
-  KEY ClearReadOnExit               = "clear_read_on_exit";
-  VALUE(bool) ClearReadOnExitDef    = false;
+  KEY ClearReadOnExit;
+  VALUE(bool) ClearReadOnExitDef;
 }
 
 // GUI.
 namespace GUI {
-  KEY ID                                      = "gui";
+  KEY ID;
 
-  KEY SplitterFeeds                           = "splitter_feeds";
-  VALUE(char*) SplitterFeedsDef               = "";
+  KEY SplitterFeeds;
+  VALUE(char*) SplitterFeedsDef;
 
-  KEY SplitterMessages                        = "splitter_messages";
-  VALUE(char*) SplitterMessagesDef            = "";
+  KEY SplitterMessages;
+  VALUE(char*) SplitterMessagesDef;
 
-  KEY ToolbarStyle                            = "toolbar_style";
-  VALUE(Qt::ToolButtonStyle) ToolbarStyleDef  = Qt::ToolButtonIconOnly;
+  KEY ToolbarStyle;
+  VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;
 
-  KEY FeedsToolbarActions                     = "feeds_toolbar";
-  VALUE(char*) FeedsToolbarActionsDef         = "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead";
+  KEY FeedsToolbarActions;
+  VALUE(char*) FeedsToolbarActionsDef;
 }
 
 // General.
 namespace General {
-  KEY ID                            = "main";
+  KEY ID;
 }
 
 // Proxy.
 namespace Proxy {
-  KEY ID                            = "proxy";
+  KEY ID;
 }
 
 // Database.
 namespace Database {
-  KEY ID                            = "database";
+  KEY ID;
 }
 
 // Keyboard.
 namespace Keyboard {
-  KEY ID                            = "keyboard";
+  KEY ID;
 }
 
 // Web browser.
 namespace Browser {
-  KEY ID                            = "browser";
+  KEY ID;
+
+  KEY GesturesEnabled;
+  VALUE(bool) GesturesEnabledDef;
+
+  KEY JavascriptEnabled;
+  VALUE(bool) JavascriptEnabledDef;
+
+  KEY ImagesEnabled;
+  VALUE(bool) ImagesEnabledDef;
+
+  KEY PluginsEnabled;
+  VALUE(bool) PluginsEnabledDef;
+
+  KEY CustomExternalBrowserEnabled;
+  VALUE(bool) CustomExternalBrowserEnabledDef;
+
+  KEY CustomExternalBrowserExecutable;
+  VALUE(char*) CustomExternalBrowserExecutableDef;
+
+  KEY CustomExternalBrowserArguments;
+  VALUE(char*) CustomExternalBrowserArgumentsDef;
 }
 
 // Categories.
 namespace Categories {
-  KEY ID                            = "categories_expand_states";
+  KEY ID;
 }
-
 
 class Settings : public QSettings {
     Q_OBJECT

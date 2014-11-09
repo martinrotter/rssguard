@@ -208,7 +208,7 @@ else(CMAKE_BUILD_TYPE STREQUAL "release" OR CMAKE_BUILD_TYPE STREQUAL "Release" 
 # See http://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake
 message(STATUS "[${APP_LOW_NAME}] Enabling verbose makefile and full warning reports.")
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-  add_definitions(-pedantic -Wall -Wextra)
+  add_definitions(-pedantic -Wall)  # -Wextra -Wno-unused-variable
 endif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 
 # Verbose compiling outputs.
