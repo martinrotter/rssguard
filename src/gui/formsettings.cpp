@@ -463,13 +463,13 @@ void FormSettings::loadDataStorage() {
     m_ui->m_txtMysqlUsername->lineEdit()->setPlaceholderText(tr("Username to login with"));
     m_ui->m_txtMysqlPassword->lineEdit()->setPlaceholderText(tr("Password for your username"));
 
-    m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(GROUP(Database), "mysql_hostname").toString());
-    m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(GROUP(Database), "mysql_username").toString());
-    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), "mysql_password").toString());
-    m_ui->m_spinMysqlPort->setValue(settings->value(GROUP(Database), "mysql_port", APP_DB_MYSQL_PORT).toInt());
+    m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
+    m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
+    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
+    m_ui->m_spinMysqlPort->setValue(settings->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
   }
 
-  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(GROUP(Database), "database_driver", APP_DB_SQLITE_DRIVER).toString());
+  int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString());
 
   if (index_current_backend >= 0) {
     m_ui->m_cmbDatabaseDriver->setCurrentIndex(index_current_backend);
@@ -480,7 +480,7 @@ void FormSettings::saveDataStorage() {
   // Setup in-memory database status.
   Settings *settings = qApp->settings();
 
-  bool original_inmemory = settings->value(GROUP(Database), "use_in_memory_db", false).toBool();
+  bool original_inmemory = settings->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool();
   bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
 
   if (original_inmemory != new_inmemory) {
@@ -488,21 +488,21 @@ void FormSettings::saveDataStorage() {
   }
 
   // Save data storage settings.
-  QString original_db_driver = settings->value(GROUP(Database), "database_driver", APP_DB_SQLITE_DRIVER).toString();
+  QString original_db_driver = settings->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
   QString selected_db_driver = m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
 
   // Save SQLite.
-  settings->setValue(GROUP(Database), "use_in_memory_db", new_inmemory);
+  settings->setValue(GROUP(Database), Database::UseInMemory, new_inmemory);
 
   if (QSqlDatabase::isDriverAvailable(APP_DB_MYSQL_DRIVER)) {
     // Save MySQL.
-    settings->setValue(GROUP(Database), "mysql_hostname", m_ui->m_txtMysqlHostname->lineEdit()->text());
-    settings->setValue(GROUP(Database), "mysql_username", m_ui->m_txtMysqlUsername->lineEdit()->text());
-    settings->setValue(GROUP(Database), "mysql_password", m_ui->m_txtMysqlPassword->lineEdit()->text());
-    settings->setValue(GROUP(Database), "mysql_port", m_ui->m_spinMysqlPort->value());
+    settings->setValue(GROUP(Database), Database::MySQLHostname, m_ui->m_txtMysqlHostname->lineEdit()->text());
+    settings->setValue(GROUP(Database), Database::MySQLUsername, m_ui->m_txtMysqlUsername->lineEdit()->text());
+    settings->setValue(GROUP(Database), Database::MySQLPassword, m_ui->m_txtMysqlPassword->lineEdit()->text());
+    settings->setValue(GROUP(Database), Database::MySQLPort, m_ui->m_spinMysqlPort->value());
   }
 
-  settings->setValue(GROUP(Database), "database_driver", selected_db_driver);
+  settings->setValue(GROUP(Database), Database::ActiveDriver, selected_db_driver);
 
   if (original_db_driver != selected_db_driver ||
       m_initialSettings.m_dataStorageDataChanged) {
@@ -519,15 +519,11 @@ void FormSettings::mysqlTestConnection() {
 
   switch (error_code) {
     case DatabaseFactory::MySQLOk:
-      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok,
-                                            interpretation,
-                                            interpretation);
+      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Ok, interpretation, interpretation);
       break;
 
     default:
-      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Error,
-                                            interpretation,
-                                            interpretation);
+      m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Error, interpretation, interpretation);
       break;
   }
 }
@@ -579,7 +575,7 @@ void FormSettings::selectSqlBackend(int index) {
 
 void FormSettings::loadGeneral() {
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(APP_NAME));
-  m_ui->m_checkForUpdatesOnStart->setChecked(qApp->settings()->value(GROUP(General), "update_on_start", true).toBool());
+  m_ui->m_checkForUpdatesOnStart->setChecked(qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
 
   // Load auto-start status.
   SystemFactory::AutoStartStatus autostart_status = qApp->system()->getAutoStartStatus();
@@ -598,7 +594,7 @@ void FormSettings::loadGeneral() {
 
 #if defined(Q_OS_WIN)
   m_ui->m_checkRemoveTrolltechJunk->setEnabled(true);
-  m_ui->m_checkRemoveTrolltechJunk->setChecked(qApp->settings()->value(GROUP(General), "remove_trolltech_junk", false).toBool());
+  m_ui->m_checkRemoveTrolltechJunk->setChecked(qApp->settings()->value(GROUP(General), SETTING(General::RemoveTrolltechJunk)).toBool());
 #endif
 }
 
@@ -611,8 +607,8 @@ void FormSettings::saveGeneral() {
     qApp->system()->setAutoStartStatus(SystemFactory::Disabled);
   }
 
-  qApp->settings()->setValue(GROUP(General), "update_on_start", m_ui->m_checkForUpdatesOnStart->isChecked());
-  qApp->settings()->setValue(GROUP(General), "remove_trolltech_junk", m_ui->m_checkRemoveTrolltechJunk->isChecked());
+  qApp->settings()->setValue(GROUP(General), General::UpdateOnStartup, m_ui->m_checkForUpdatesOnStart->isChecked());
+  qApp->settings()->setValue(GROUP(General), General::RemoveTrolltechJunk, m_ui->m_checkRemoveTrolltechJunk->isChecked());
 }
 
 void FormSettings::loadInterface() {
@@ -620,7 +616,7 @@ void FormSettings::loadInterface() {
 
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    m_ui->m_radioTrayOff->setChecked(!settings->value(GROUP(GUI), "use_tray_icon", true).toBool());
+    m_ui->m_radioTrayOff->setChecked(!settings->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
   }
   // Tray icon is not supported on this machine.
   else {
@@ -629,8 +625,8 @@ void FormSettings::loadInterface() {
     m_ui->m_grpTray->setDisabled(true);
   }
 
-  m_ui->m_checkHidden->setChecked(settings->value(GROUP(GUI), "start_hidden", false).toBool());
-  m_ui->m_checkHideWhenMinimized->setChecked(settings->value(GROUP(GUI), "hide_when_minimized", false).toBool());
+  m_ui->m_checkHidden->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
+  m_ui->m_checkHideWhenMinimized->setChecked(settings->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
 
   // Load settings of icon theme.
   QString current_theme = qApp->icons()->currentIconTheme();
@@ -690,10 +686,10 @@ void FormSettings::loadInterface() {
   }
 
   // Load tab settings.
-  m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(GROUP(GUI), "tab_close_mid_button", true).toBool());
-  m_ui->m_checkCloseTabsDoubleClick->setChecked(settings->value(GROUP(GUI), "tab_close_double_button", true).toBool());
-  m_ui->m_checkNewTabDoubleClick->setChecked(settings->value(GROUP(GUI), "tab_new_double_button", true).toBool());
-  m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings->value(GROUP(GUI), "hide_tabbar_one_tab", true).toBool());
+  m_ui->m_checkCloseTabsMiddleClick->setChecked(settings->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool());
+  m_ui->m_checkCloseTabsDoubleClick->setChecked(settings->value(GROUP(GUI), SETTING(GUI::TabCloseDoubleClick)).toBool());
+  m_ui->m_checkNewTabDoubleClick->setChecked(settings->value(GROUP(GUI), SETTING(GUI::TabNewDoubleClick)).toBool());
+  m_ui->m_hideTabBarIfOneTabVisible->setChecked(settings->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 
   // Load toolbar button style.
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Icon only"), Qt::ToolButtonIconOnly);
@@ -703,8 +699,7 @@ void FormSettings::loadInterface() {
   m_ui->m_cmbToolbarButtonStyle->addItem(tr("Follow OS style"), Qt::ToolButtonFollowStyle);
 
   m_ui->m_cmbToolbarButtonStyle->setCurrentIndex(m_ui->m_cmbToolbarButtonStyle->findData(qApp->settings()->value(GROUP(GUI),
-                                                                                                                 "toolbar_style",
-                                                                                                                 Qt::ToolButtonIconOnly).toInt()));
+                                                                                                                 SETTING(GUI::ToolbarStyle)).toInt()));
 
   // Load toolbars.
   m_ui->m_editorFeedsToolbar->loadFromToolBar(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsToolBar());
@@ -715,13 +710,13 @@ void FormSettings::saveInterface() {
   Settings *settings = qApp->settings();
 
   // Save toolbar.
-  settings->setValue(GROUP(GUI), "toolbar_style", m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
+  settings->setValue(GROUP(GUI), GUI::ToolbarStyle, m_ui->m_cmbToolbarButtonStyle->itemData(m_ui->m_cmbToolbarButtonStyle->currentIndex()));
 
   // Save tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    settings->setValue(GROUP(GUI), "use_tray_icon", m_ui->m_radioTrayOn->isChecked());
+    settings->setValue(GROUP(GUI), GUI::UseTrayIcon, m_ui->m_radioTrayOn->isChecked());
 
-    if (settings->value(GROUP(GUI), "use_tray_icon", true).toBool()) {
+    if (m_ui->m_radioTrayOn->isChecked()) {
       qApp->showTrayIcon();
     }
     else {
@@ -729,8 +724,8 @@ void FormSettings::saveInterface() {
     }
   }
 
-  settings->setValue(GROUP(GUI), "start_hidden", m_ui->m_checkHidden->isChecked());
-  settings->setValue(GROUP(GUI), "hide_when_minimized", m_ui->m_checkHideWhenMinimized->isChecked());
+  settings->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
+  settings->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();

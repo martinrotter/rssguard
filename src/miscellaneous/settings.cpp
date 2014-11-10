@@ -80,6 +80,9 @@ DKEY GUI::MainWindowInitialPosition    = "window_position";
 DKEY GUI::MainWindowStartsFullscreen             = "start_in_fullscreen";
 DVALUE(bool) GUI::MainWindowStartsFullscreenDef  = false;
 
+DKEY GUI::MainWindowStartsHidden             = "start_hidden";
+DVALUE(bool) GUI::MainWindowStartsHiddenDef  = false;
+
 DKEY GUI::MainWindowStartsMaximized             = "window_is_maximized";
 DVALUE(bool) GUI::MainWindowStartsMaximizedDef  = false;
 
@@ -95,8 +98,29 @@ DVALUE(bool) GUI::ListHeadersVisibleDef   = true;
 DKEY GUI::HideMainWindowWhenMinimized             = "hide_when_minimized";
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
 
+DKEY GUI::UseTrayIcon            = "use_tray_icon";
+DVALUE(bool) GUI::UseTrayIconDef = true;
+
+KEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
+VALUE(bool) GUI::TabCloseMiddleClickDef       = true;
+
+KEY GUI::TabCloseDoubleClick                  = "tab_close_double_button";
+VALUE(bool) GUI::TabCloseDoubleClickDef       = true;
+
+KEY GUI::TabNewDoubleClick                    = "tab_new_double_button";
+VALUE(bool) GUI::TabNewDoubleClickDef         = true;
+
+KEY GUI::HideTabBarIfOnlyOneTab               = "hide_tabbar_one_tab";
+VALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = true;
+
 // General.
-DKEY General::ID                            = "main";
+DKEY General::ID                              = "main";
+
+DKEY General::UpdateOnStartup                 = "update_on_start";
+DVALUE(bool) General::UpdateOnStartupDef      = true;
+
+DKEY General::RemoveTrolltechJunk             = "remove_trolltech_junk";
+DVALUE(bool) General::RemoveTrolltechJunkDef  = false;
 
 // Proxy.
 DKEY Proxy::ID                              = "proxy";
@@ -117,10 +141,25 @@ DKEY Proxy::Port                    = "port";
 DVALUE(int) Proxy::PortDef          = 80;
 
 // Database.
-DKEY Database::ID                           = "database";
+DKEY Database::ID                       = "database";
 
 DKEY Database::UseInMemory              = "use_in_memory_db";
 DVALUE(bool) Database::UseInMemoryDef   = false;
+
+DKEY Database::MySQLHostname              = "mysql_hostname";
+DVALUE(char*) Database::MySQLHostnameDef  = "";
+
+DKEY Database::MySQLUsername              = "mysql_username";
+DVALUE(char*) Database::MySQLUsernameDef  = "";
+
+DKEY Database::MySQLPassword              = "mysql_password";
+DVALUE(char*) Database::MySQLPasswordDef  = "";
+
+DKEY Database::MySQLPort                  = "mysql_port";
+DVALUE(int) Database::MySQLPortDef        = APP_DB_MYSQL_PORT;
+
+DKEY Database::ActiveDriver               = "database_driver";
+DVALUE(char*) Database::ActiveDriverDef   = APP_DB_SQLITE_DRIVER;
 
 // Keyboard.
 DKEY Keyboard::ID                           = "keyboard";

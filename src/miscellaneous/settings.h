@@ -92,6 +92,9 @@ namespace GUI {
   KEY MainWindowStartsFullscreen;
   VALUE(bool) MainWindowStartsFullscreenDef;
 
+  KEY MainWindowStartsHidden;
+  VALUE(bool) MainWindowStartsHiddenDef;
+
   KEY MainWindowStartsMaximized;
   VALUE(bool) MainWindowStartsMaximizedDef;
 
@@ -106,11 +109,32 @@ namespace GUI {
 
   KEY HideMainWindowWhenMinimized;
   VALUE(bool) HideMainWindowWhenMinimizedDef;
+
+  KEY UseTrayIcon;
+  VALUE(bool) UseTrayIconDef;
+
+  KEY TabCloseMiddleClick;
+  VALUE(bool) TabCloseMiddleClickDef;
+
+  KEY TabCloseDoubleClick;
+  VALUE(bool) TabCloseDoubleClickDef;
+
+  KEY TabNewDoubleClick;
+  VALUE(bool) TabNewDoubleClickDef;
+
+  KEY HideTabBarIfOnlyOneTab;
+  VALUE(bool) HideTabBarIfOnlyOneTabDef;
 }
 
 // General.
 namespace General {
   KEY ID;
+
+  KEY UpdateOnStartup;
+  VALUE(bool) UpdateOnStartupDef;
+
+  KEY RemoveTrolltechJunk;
+  VALUE(bool) RemoveTrolltechJunkDef;
 }
 
 // Proxy.
@@ -139,6 +163,21 @@ namespace Database {
 
   KEY UseInMemory;
   VALUE(bool) UseInMemoryDef;
+
+  KEY MySQLHostname;
+  VALUE(char*) MySQLHostnameDef;
+
+  KEY MySQLUsername;
+  VALUE(char*) MySQLUsernameDef;
+
+  KEY MySQLPassword;
+  VALUE(char*) MySQLPasswordDef;
+
+  KEY MySQLPort;
+  VALUE(int) MySQLPortDef;
+
+  KEY ActiveDriver;
+  VALUE(char*) ActiveDriverDef;
 }
 
 // Keyboard.
