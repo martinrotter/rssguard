@@ -56,6 +56,9 @@ DVALUE(char*) Messages::CustomDateFormatDef  = "";
 DKEY Messages::ClearReadOnExit               = "clear_read_on_exit";
 DVALUE(bool) Messages::ClearReadOnExitDef    = false;
 
+DKEY Messages::KeepCursorInCenter               = "keep_cursor_center";
+DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
+
 // GUI.
 DKEY GUI::ID                                      = "gui";
 
@@ -98,8 +101,26 @@ DKEY General::ID                            = "main";
 // Proxy.
 DKEY Proxy::ID                              = "proxy";
 
+DKEY Proxy::Type                                 = "proxy_type";
+DVALUE(QNetworkProxy::ProxyType) Proxy::TypeDef  = QNetworkProxy::NoProxy;
+
+DKEY Proxy::Host                    = "host";
+DVALUE(char*) Proxy::HostDef        = "";
+
+DKEY Proxy::Username                = "username";
+DVALUE(char*) Proxy::UsernameDef    = "";
+
+DKEY Proxy::Password                = "password";
+DVALUE(char*) Proxy::PasswordDef    = "";
+
+DKEY Proxy::Port                    = "port";
+DVALUE(int) Proxy::PortDef          = 80;
+
 // Database.
 DKEY Database::ID                           = "database";
+
+DKEY Database::UseInMemory              = "use_in_memory_db";
+DVALUE(bool) Database::UseInMemoryDef   = false;
 
 // Keyboard.
 DKEY Keyboard::ID                           = "keyboard";
@@ -127,6 +148,9 @@ DVALUE(char*) Browser::CustomExternalBrowserExecutableDef = "";
 
 DKEY Browser::CustomExternalBrowserArguments              = "external_browser_arguments";
 DVALUE(char*) Browser::CustomExternalBrowserArgumentsDef  = "%1";
+
+DKEY Browser::QueueTabs             = "queue_tabs";
+DVALUE(bool) Browser::QueueTabsDef  = true;
 
 // Categories.
 DKEY Categories::ID                         = "categories_expand_states";

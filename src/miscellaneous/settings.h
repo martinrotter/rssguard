@@ -23,6 +23,7 @@
 #include "definitions/definitions.h"
 
 #include <QPointer>
+#include <QNetworkProxy>
 
 #define KEY extern const char*
 #define DKEY const char*
@@ -64,6 +65,9 @@ namespace Messages {
 
   KEY ClearReadOnExit;
   VALUE(bool) ClearReadOnExitDef;
+
+  KEY KeepCursorInCenter;
+  VALUE(bool) KeepCursorInCenterDef;
 }
 
 // GUI.
@@ -112,11 +116,29 @@ namespace General {
 // Proxy.
 namespace Proxy {
   KEY ID;
+
+  KEY Type;
+  VALUE(QNetworkProxy::ProxyType) TypeDef;
+
+  KEY Host;
+  VALUE(char*) HostDef;
+
+  KEY Username;
+  VALUE(char*) UsernameDef;
+
+  KEY Password;
+  VALUE(char*) PasswordDef;
+
+  KEY Port;
+  VALUE(int) PortDef;
 }
 
 // Database.
 namespace Database {
   KEY ID;
+
+  KEY UseInMemory;
+  VALUE(bool) UseInMemoryDef;
 }
 
 // Keyboard.
@@ -148,6 +170,9 @@ namespace Browser {
 
   KEY CustomExternalBrowserArguments;
   VALUE(char*) CustomExternalBrowserArgumentsDef;
+
+  KEY QueueTabs;
+  VALUE(bool) QueueTabsDef;
 }
 
 // Categories.
