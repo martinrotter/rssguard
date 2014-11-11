@@ -129,7 +129,7 @@
           <bool>false</bool>
          </property>
          <property name="text">
-          <string>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</string>
+          <string>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</string>
          </property>
         </widget>
        </item>
