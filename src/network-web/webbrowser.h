@@ -96,7 +96,9 @@ class WebBrowser : public TabContent {
 
     // Clears contents.
     inline void clear() {
-      m_webView->load(QUrl());
+      if (m_webView->url() != QUrl()) {
+        m_webView->setHtml("<html><body></body></html>", QUrl());
+      }
     }
 
     // Zoom manipulators.
