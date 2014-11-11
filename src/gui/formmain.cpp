@@ -100,6 +100,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSwitchMainMenu;
   actions << m_ui->m_actionSwitchToolBars;
   actions << m_ui->m_actionSwitchListHeaders;
+  actions << m_ui->m_actionSwitchMessageListOrientation;
 
   // Add web browser actions
   actions << m_ui->m_actionAddBrowser;
@@ -227,6 +228,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch-menu"));
   m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
   m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
+  m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme("view-switch-layout-direction"));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
 
   // Recycle bin.
