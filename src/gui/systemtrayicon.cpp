@@ -89,7 +89,7 @@ bool SystemTrayIcon::isSystemTrayAvailable() {
 }
 
 bool SystemTrayIcon::isSystemTrayActivated() {
-  return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(GROUP(GUI), "use_tray_icon", true).toBool();
+  return SystemTrayIcon::isSystemTrayAvailable() && qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool();
 }
 
 void SystemTrayIcon::showPrivate() {

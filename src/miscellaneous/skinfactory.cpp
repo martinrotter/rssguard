@@ -94,11 +94,11 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
 }
 
 void SkinFactory::setCurrentSkinName(const QString &skin_name) {
-  qApp->settings()->setValue(GROUP(GUI), "skin", skin_name);
+  qApp->settings()->setValue(GROUP(GUI), GUI::Skin, skin_name);
 }
 
 QString SkinFactory::selectedSkinName() {
-  return qApp->settings()->value(GROUP(GUI), "skin", APP_SKIN_DEFAULT).toString();
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
 }
 
 Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {

@@ -34,7 +34,7 @@ Localization::~Localization() {
 }
 
 QString Localization::desiredLanguage() {
-  return qApp->settings()->value(GROUP(General), "language", QLocale::system().name()).toString();
+  return qApp->settings()->value(GROUP(General), SETTING(General::Language)).toString();
 }
 
 void Localization::loadActiveLanguage() {

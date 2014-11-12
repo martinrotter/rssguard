@@ -80,8 +80,8 @@ void FeedMessageViewer::saveSize() {
   m_feedsView->saveExpandedStates();
 
   // Store offsets of splitters.
-  settings->setValue(GROUP(GUI), "splitter_feeds", QString(m_feedSplitter->saveState().toBase64()));
-  settings->setValue(GROUP(GUI), "splitter_messages", QString(m_messageSplitter->saveState().toBase64()));
+  settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));
+  settings->setValue(GROUP(GUI), GUI::SplitterMessages, QString(m_messageSplitter->saveState().toBase64()));
 
   // States of splitters are stored, let's store
   // widths of columns.
@@ -94,8 +94,8 @@ void FeedMessageViewer::saveSize() {
   }
 
   // Store "visibility" of toolbars and list headers.
-  settings->setValue(GROUP(GUI), "enable_toolbars", m_toolBarsEnabled);
-  settings->setValue(GROUP(GUI), "enable_list_headers", m_listHeadersEnabled);
+  settings->setValue(GROUP(GUI), GUI::ToolbarsVisible, m_toolBarsEnabled);
+  settings->setValue(GROUP(GUI), GUI::ListHeadersVisible, m_listHeadersEnabled);
 }
 
 void FeedMessageViewer::loadSize() {

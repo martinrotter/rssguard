@@ -124,6 +124,21 @@ namespace GUI {
 
   KEY HideTabBarIfOnlyOneTab;
   VALUE(bool) HideTabBarIfOnlyOneTabDef;
+
+  KEY MessagesToolbarDefaultButtons;
+  VALUE(char*) MessagesToolbarDefaultButtonsDef;
+
+  KEY DefaultSortColumnMessages;
+  VALUE(int) DefaultSortColumnMessagesDef;
+
+  KEY DefaultSortOrderMessages;
+  VALUE(Qt::SortOrder) DefaultSortOrderMessagesDef;
+
+  KEY IconTheme;
+  VALUE(char*) IconThemeDef;
+
+  KEY Skin;
+  VALUE(char*) SkinDef;
 }
 
 // General.
@@ -135,6 +150,9 @@ namespace General {
 
   KEY RemoveTrolltechJunk;
   VALUE(bool) RemoveTrolltechJunkDef;
+
+  KEY Language;
+  VALUE(QString) LanguageDef;
 }
 
 // Proxy.

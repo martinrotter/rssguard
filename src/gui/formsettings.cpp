@@ -423,7 +423,7 @@ void FormSettings::saveLanguage() {
   // Save prompt for restart if language has changed.
   if (new_lang != actual_lang) {
     m_changedDataTexts.append(tr("language changed"));
-    settings->setValue(GROUP(General), "language", new_lang);
+    settings->setValue(GROUP(General), General::Language, new_lang);
   }
 }
 
@@ -748,10 +748,10 @@ void FormSettings::saveInterface() {
   }
 
   // Save tab settings.
-  settings->setValue(GROUP(GUI), "tab_close_mid_button",  m_ui->m_checkCloseTabsMiddleClick->isChecked());
-  settings->setValue(GROUP(GUI), "tab_close_double_button", m_ui->m_checkCloseTabsDoubleClick->isChecked());
-  settings->setValue(GROUP(GUI), "tab_new_double_button", m_ui->m_checkNewTabDoubleClick->isChecked());
-  settings->setValue(GROUP(GUI), "hide_tabbar_one_tab", m_ui->m_hideTabBarIfOneTabVisible->isChecked());
+  settings->setValue(GROUP(GUI), GUI::TabCloseMiddleClick,  m_ui->m_checkCloseTabsMiddleClick->isChecked());
+  settings->setValue(GROUP(GUI), GUI::TabCloseDoubleClick, m_ui->m_checkCloseTabsDoubleClick->isChecked());
+  settings->setValue(GROUP(GUI), GUI::TabNewDoubleClick, m_ui->m_checkNewTabDoubleClick->isChecked());
+  settings->setValue(GROUP(GUI), GUI::HideTabBarIfOnlyOneTab, m_ui->m_hideTabBarIfOneTabVisible->isChecked());
 
   m_ui->m_editorFeedsToolbar->saveToolBar();
   m_ui->m_editorMessagesToolbar->saveToolBar();

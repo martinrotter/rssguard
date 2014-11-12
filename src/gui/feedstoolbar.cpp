@@ -48,7 +48,7 @@ QList<QAction*> FeedsToolBar::changeableActions() const {
 }
 
 void FeedsToolBar::saveChangeableActions(const QStringList &actions) {
-  qApp->settings()->setValue(GROUP(GUI), "feeds_toolbar", actions.join(","));
+  qApp->settings()->setValue(GROUP(GUI), GUI::FeedsToolbarActions, actions.join(","));
   loadChangeableActions(actions);
 }
 

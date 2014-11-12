@@ -87,9 +87,7 @@ void TabWidget::openMainMenu() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI),
-                                                                   "hide_tabbar_one_tab",
-                                                                   true).toBool();
+  bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
 
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
@@ -273,9 +271,7 @@ int TabWidget::addLinkedBrowser(const QString &initial_url) {
 }
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  return addBrowser(qApp->settings()->value(GROUP(Browser),
-                                            "queue_tabs",
-                                            true).toBool(),
+  return addBrowser(qApp->settings()->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool(),
                     false,
                     initial_url);
 }

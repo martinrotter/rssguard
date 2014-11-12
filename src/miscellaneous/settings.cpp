@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QPointer>
 #include <QWebSettings>
+#include <QLocale>
 
 
 // Feeds.
@@ -101,17 +102,32 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
 DKEY GUI::UseTrayIcon            = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
 
-KEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
-VALUE(bool) GUI::TabCloseMiddleClickDef       = true;
+DKEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
+DVALUE(bool) GUI::TabCloseMiddleClickDef       = true;
 
-KEY GUI::TabCloseDoubleClick                  = "tab_close_double_button";
-VALUE(bool) GUI::TabCloseDoubleClickDef       = true;
+DKEY GUI::TabCloseDoubleClick                  = "tab_close_double_button";
+DVALUE(bool) GUI::TabCloseDoubleClickDef       = true;
 
-KEY GUI::TabNewDoubleClick                    = "tab_new_double_button";
-VALUE(bool) GUI::TabNewDoubleClickDef         = true;
+DKEY GUI::TabNewDoubleClick                    = "tab_new_double_button";
+DVALUE(bool) GUI::TabNewDoubleClickDef         = true;
 
-KEY GUI::HideTabBarIfOnlyOneTab               = "hide_tabbar_one_tab";
-VALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = true;
+DKEY GUI::HideTabBarIfOnlyOneTab               = "hide_tabbar_one_tab";
+DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef    = true;
+
+DKEY GUI::MessagesToolbarDefaultButtons             = "messages_toolbar";
+DVALUE(char*) GUI::MessagesToolbarDefaultButtonsDef = "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,separator,highlighter,spacer,search";
+
+DKEY GUI::DefaultSortColumnMessages                = "default_sort_column_messages";
+DVALUE(int) GUI::DefaultSortColumnMessagesDef      = MSG_DB_DCREATED_INDEX;
+
+DKEY GUI::DefaultSortOrderMessages                       = "default_sort_order_messages";
+DVALUE(Qt::SortOrder) GUI::DefaultSortOrderMessagesDef   = Qt::DescendingOrder;
+
+DKEY GUI::IconTheme              = "icon_theme";
+DVALUE(char*) GUI::IconThemeDef  = APP_THEME_DEFAULT;
+
+DKEY GUI::Skin              = "skin";
+DVALUE(char*) GUI::SkinDef  = APP_SKIN_DEFAULT;
 
 // General.
 DKEY General::ID                              = "main";
@@ -121,6 +137,9 @@ DVALUE(bool) General::UpdateOnStartupDef      = true;
 
 DKEY General::RemoveTrolltechJunk             = "remove_trolltech_junk";
 DVALUE(bool) General::RemoveTrolltechJunkDef  = false;
+
+DKEY General::Language               = "language";
+DVALUE(QString) General::LanguageDef = QLocale::system().name();
 
 // Proxy.
 DKEY Proxy::ID                              = "proxy";
