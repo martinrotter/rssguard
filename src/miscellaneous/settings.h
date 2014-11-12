@@ -134,6 +134,12 @@ namespace GUI {
   KEY DefaultSortOrderMessages;
   VALUE(Qt::SortOrder) DefaultSortOrderMessagesDef;
 
+  KEY DefaultSortColumnFeeds;
+  VALUE(int) DefaultSortColumnFeedsDef;
+
+  KEY DefaultSortOrderFeeds;
+  VALUE(Qt::SortOrder) DefaultSortOrderFeedsDef;
+
   KEY IconTheme;
   VALUE(char*) IconThemeDef;
 

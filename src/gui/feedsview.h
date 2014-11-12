@@ -162,6 +162,7 @@ class FeedsView : public QTreeView {
     void contextMenuEvent(QContextMenuEvent *event);
 
   private slots:
+    void saveSortState(int column, Qt::SortOrder order);
     void validateItemAfterDragDrop(const QModelIndex &source_index);
 
   signals:

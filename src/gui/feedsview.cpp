@@ -56,6 +56,7 @@ FeedsView::FeedsView(QWidget *parent)
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
+  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
   setupAppearance();
@@ -616,9 +617,8 @@ void FeedsView::setupAppearance() {
   header()->setStretchLastSection(false);
   header()->setSortIndicatorShown(false);
 
-  // Sort in ascending order, that is categories are
-  // "bigger" than feeds.
-  sortByColumn(FDS_MODEL_TITLE_INDEX, Qt::AscendingOrder);
+  sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
+               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
@@ -687,6 +687,11 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
 
     m_contextMenuEmptySpace->exec(event->globalPos());
   }
+}
+
+void FeedsView::saveSortState(int column, Qt::SortOrder order) {
+  qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortColumnFeeds, column);
+  qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortOrderFeeds, order);
 }
 
 void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {

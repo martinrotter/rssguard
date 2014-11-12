@@ -123,6 +123,12 @@ DVALUE(int) GUI::DefaultSortColumnMessagesDef      = MSG_DB_DCREATED_INDEX;
 DKEY GUI::DefaultSortOrderMessages                       = "default_sort_order_messages";
 DVALUE(Qt::SortOrder) GUI::DefaultSortOrderMessagesDef   = Qt::DescendingOrder;
 
+DKEY GUI::DefaultSortColumnFeeds                     = "default_sort_column_feeds";
+DVALUE(int) GUI::DefaultSortColumnFeedsDef           = FDS_MODEL_TITLE_INDEX;
+
+DKEY GUI::DefaultSortOrderFeeds                      = "default_sort_order_feeds";
+DVALUE(Qt::SortOrder) GUI::DefaultSortOrderFeedsDef  = Qt::AscendingOrder;
+
 DKEY GUI::IconTheme              = "icon_theme";
 DVALUE(char*) GUI::IconThemeDef  = APP_THEME_DEFAULT;
 
