@@ -208,14 +208,14 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
          current_index.row(), current_index.column(),
          mapped_current_index.row(), mapped_current_index.column());
 
-  if (mapped_current_index.isValid() && !selected_rows.isEmpty()) {
+  if (mapped_current_index.isValid() && selected_rows.count() == 1) {
     if (!m_batchUnreadSwitch) {
       // Set this message as read only if current item
       // wasn't changed by "mark selected messages unread" action.
       m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
     }
 
-    emit currentMessagesChanged(QList<Message>() << m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.first()).row()));
+    emit currentMessagesChanged(QList<Message>() << m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.at(0)).row()));
   }
   else {
     emit currentMessagesRemoved();

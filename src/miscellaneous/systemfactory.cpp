@@ -195,6 +195,9 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
       // New version is indeed higher thatn current version.
       return true;
     }
+    else if (new_number < current_number) {
+      return false;
+    }
   }
 
   // Versions are either the same or they have unequal sizes.
@@ -203,8 +206,12 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
     return false;
   }
   else {
-    // Version are not the same length. New version is really higher if it is longer + its last digit is not 0.
-    return !new_version_tkn.isEmpty() && new_version_tkn.takeFirst().toInt() != 0;
+    if (new_version_tkn.isEmpty()) {
+      return false;
+    }
+    else {
+      return new_version_tkn.join("").toInt() > 0;
+    }
   }
 }
 

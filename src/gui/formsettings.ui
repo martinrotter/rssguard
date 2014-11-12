@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
+    <width>951</width>
     <height>498</height>
    </rect>
   </property>
@@ -478,8 +478,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>190</width>
+                <height>238</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1163,7 +1163,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">

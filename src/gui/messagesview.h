@@ -87,6 +87,7 @@ class MessagesView : public QTreeView {
     // Changes resize mode for all columns.
     void adjustColumns();
 
+    // Saves current sort state.
     void saveSortState(int column, Qt::SortOrder order);
 
   protected:

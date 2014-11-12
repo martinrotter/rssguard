@@ -155,6 +155,7 @@ class FeedsView : public QTreeView {
     // Handle selections.
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
+    // React on "Del" key.
     void keyPressEvent(QKeyEvent *event);
 
     // Show custom context menu.

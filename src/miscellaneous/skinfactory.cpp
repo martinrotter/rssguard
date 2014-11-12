@@ -46,8 +46,7 @@ void SkinFactory::loadCurrentSkin() {
     qDebug("Skin '%s' loaded.", qPrintable(skin_name_from_settings));
   }
   else {
-    qFatal("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!",
-           qPrintable(skin_name_from_settings));
+    qFatal("Skin '%s' not loaded because its data are corrupted. No skin is loaded now!", qPrintable(skin_name_from_settings));
   }
 }
 
@@ -87,9 +86,7 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
   }
 
   if (!raw_data.isEmpty()) {
-    QString parsed_data = raw_data.replace("##",
-                                           APP_SKIN_PATH + '/' +
-                                           skin_folder);
+    QString parsed_data = raw_data.replace("##", APP_SKIN_PATH + '/' + skin_folder);
     qApp->setStyleSheet(parsed_data);
   }
 
@@ -101,9 +98,7 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
 }
 
 QString SkinFactory::selectedSkinName() {
-  return qApp->settings()->value(GROUP(GUI),
-                                 "skin",
-                                 APP_SKIN_DEFAULT).toString();
+  return qApp->settings()->value(GROUP(GUI), "skin", APP_SKIN_DEFAULT).toString();
 }
 
 Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
