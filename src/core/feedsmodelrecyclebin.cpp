@@ -109,8 +109,7 @@ QVariant FeedsModelRecycleBin::data(int column, int role) const {
 }
 
 bool FeedsModelRecycleBin::empty() {
-  QSqlDatabase db_handle = qApp->database()->connection("FeedsModelRecycleBin",
-                                                        DatabaseFactory::FromSettings);
+  QSqlDatabase db_handle = qApp->database()->connection("FeedsModelRecycleBin", DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for recycle bin emptying.");
@@ -137,8 +136,7 @@ bool FeedsModelRecycleBin::empty() {
 }
 
 bool FeedsModelRecycleBin::restore() {
-  QSqlDatabase db_handle = qApp->database()->connection("FeedsModelRecycleBin",
-                                                        DatabaseFactory::FromSettings);
+  QSqlDatabase db_handle = qApp->database()->connection("FeedsModelRecycleBin", DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for recycle bin restoring.");
@@ -165,8 +163,7 @@ bool FeedsModelRecycleBin::restore() {
 }
 
 void FeedsModelRecycleBin::updateCounts(bool update_total_count) {
-  QSqlDatabase database = qApp->database()->connection("FeedsModelRecycleBin",
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection("FeedsModelRecycleBin", DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 

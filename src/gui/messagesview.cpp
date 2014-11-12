@@ -345,10 +345,8 @@ void MessagesView::deleteSelectedMessages() {
   int row_count = m_sourceModel->rowCount();
   if (row_count > 0) {
     QModelIndex last_item = current_index.row() < row_count ?
-                              m_proxyModel->index(current_index.row(),
-                                                  MSG_DB_TITLE_INDEX) :
-                              m_proxyModel->index(row_count - 1,
-                                                  MSG_DB_TITLE_INDEX);
+                              m_proxyModel->index(current_index.row(), MSG_DB_TITLE_INDEX) :
+                              m_proxyModel->index(row_count - 1, MSG_DB_TITLE_INDEX);
 
     setCurrentIndex(last_item);
     scrollTo(last_item);
