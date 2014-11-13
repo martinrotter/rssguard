@@ -29,6 +29,9 @@ class WebPage : public QWebPage {
     explicit WebPage(QObject *parent = 0);
     virtual ~WebPage();
 
+    QString toHtml() const;
+    QString toPlainText() const;
+
   protected:
     bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 };

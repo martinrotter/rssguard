@@ -34,6 +34,14 @@ WebPage::WebPage(QObject *parent)
 WebPage::~WebPage() {
 }
 
+QString WebPage::toPlainText() const {
+  return mainFrame()->toPlainText();
+}
+
+QString WebPage::toHtml() const {
+  return mainFrame()->toHtml();
+}
+
 bool WebPage::acceptNavigationRequest(QWebFrame *frame,
                                       const QNetworkRequest &request,
                                       QWebPage::NavigationType type) {
