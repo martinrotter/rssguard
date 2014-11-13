@@ -303,10 +303,8 @@ int TabWidget::addBrowser(bool move_after_current,
   }
 
   // Make connections.
-  connect(browser, SIGNAL(titleChanged(int,QString)),
-          this, SLOT(changeTitle(int,QString)));
-  connect(browser, SIGNAL(iconChanged(int,QIcon)),
-          this, SLOT(changeIcon(int,QIcon)));
+  connect(browser, SIGNAL(titleChanged(int,QString)), this, SLOT(changeTitle(int,QString)));
+  connect(browser, SIGNAL(iconChanged(int,QIcon)), this, SLOT(changeIcon(int,QIcon)));
 
   // Setup the tab index.
   browser->setIndex(final_index);

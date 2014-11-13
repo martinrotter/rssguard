@@ -97,7 +97,7 @@ class WebBrowser : public TabContent {
     // Clears contents.
     inline void clear() {
       if (m_webView->url() != QUrl()) {
-        m_webView->setHtml("<html><body></body></html>", QUrl());
+        m_webView->setHtml("<html><body></body></html>", QUrl("rssguard:empty"));
       }
     }
 
@@ -157,8 +157,6 @@ class WebBrowser : public TabContent {
     QAction *m_actionForward;
     QAction *m_actionReload;
     QAction *m_actionStop;
-
-    bool m_activeNewspaperMode;
 
     static QList<WebBrowser*> m_runningWebBrowsers;
 };

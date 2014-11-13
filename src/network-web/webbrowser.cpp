@@ -48,11 +48,7 @@ WebBrowser::WebBrowser(QWidget *parent)
     m_actionBack(m_webView->pageAction(QWebPage::Back)),
     m_actionForward(m_webView->pageAction(QWebPage::Forward)),
     m_actionReload(m_webView->pageAction(QWebPage::Reload)),
-    m_actionStop(m_webView->pageAction(QWebPage::Stop)),
-    m_activeNewspaperMode(false) {
-
-  m_index = -1;
-
+    m_actionStop(m_webView->pageAction(QWebPage::Stop)) {
   // Add this new instance to the global list of web browsers.
   // NOTE: This is used primarily for dynamic icon theme switching.
   m_runningWebBrowsers.append(this);
@@ -203,8 +199,11 @@ void WebBrowser::onTitleChanged(const QString &new_title) {
   }
 }
 
-void WebBrowser::updateUrl(const QUrl &url) { 
-  m_txtLocation->setText(url.toString());
+void WebBrowser::updateUrl(const QUrl &url) {
+  QString url_string = url.toString();
+
+  m_txtLocation->setText(url_string);
+  setNavigationBarVisible(url_string != "rssguard:empty" && url_string != INTERNAL_URL_NEWSPAPER);
 }
 
 void WebBrowser::navigateToUrl(const QUrl &url) {
