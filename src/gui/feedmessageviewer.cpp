@@ -308,7 +308,6 @@ void FeedMessageViewer::initialize() {
   // Downloader setup.
   qRegisterMetaType<QList<FeedsModelFeed*> >("QList<FeedsModelFeed*>");
   m_feedDownloader->moveToThread(m_feedDownloaderThread);
-
   refreshVisualProperties();
 }
 

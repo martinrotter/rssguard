@@ -203,7 +203,7 @@ void WebBrowser::updateUrl(const QUrl &url) {
   QString url_string = url.toString();
 
   m_txtLocation->setText(url_string);
-  setNavigationBarVisible(url_string != "rssguard:empty" && url_string != INTERNAL_URL_NEWSPAPER);
+  setNavigationBarVisible(url_string != INTERNAL_URL_EMPTY && url_string != INTERNAL_URL_NEWSPAPER);
 }
 
 void WebBrowser::navigateToUrl(const QUrl &url) {

@@ -97,7 +97,7 @@ class WebBrowser : public TabContent {
     // Clears contents.
     inline void clear() {
       if (m_webView->url() != QUrl()) {
-        m_webView->setHtml("<html><body></body></html>", QUrl("rssguard:empty"));
+        m_webView->setHtml("<html><body></body></html>", QUrl(INTERNAL_URL_EMPTY));
       }
     }
 

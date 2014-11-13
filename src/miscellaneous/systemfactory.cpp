@@ -156,7 +156,7 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 
 #if defined(Q_OS_WIN)
 bool SystemFactory::removeTrolltechJunkRegistryKeys() {
-  if (qApp->settings()->value(GROUP(General), "remove_trolltech_junk", false).toBool()) {
+  if (qApp->settings()->value(GROUP(General), SETTING(General::RemoveTrolltechJunk)).toBool()) {
     QSettings registry_key("HKEY_CURRENT_USER\\Software\\TrollTech", QSettings::NativeFormat);
 
     registry_key.remove("");

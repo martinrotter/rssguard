@@ -60,6 +60,7 @@
 #define ELLIPSIS_LENGTH                       3
 #define MIN_CATEGORY_NAME_LENGTH              3
 #define INTERNAL_URL_NEWSPAPER                "@APP_LOW_NAME@:newspaper"
+#define INTERNAL_URL_EMPTY                    "@APP_LOW_NAME@:empty"
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
 #define AUTO_UPDATE_INTERVAL                  60000
 #define STARTUP_UPDATE_DELAY                  1500
@@ -111,7 +112,6 @@
 #endif
 
 #define APP_REVISION        "@APP_REVISION@"
-
 #define APP_QUIT_INSTANCE   "app_quit"
 #define APP_IS_RUNNING      "app_is_running"
 #define APP_SKIN_DEFAULT    "base/vergilius.xml"
