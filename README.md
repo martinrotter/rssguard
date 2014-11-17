@@ -70,6 +70,7 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * automatic checking for updates,
 * ability to backup/restore database or settings,
 * fully-featured recycle bin,
+* printing of messages and any web pages,
 * can be fully controlled via keyboard,
 * feed authentication (Digest-MD5, BASIC, NTLM-2),
 * handles tons of messages & feeds,
