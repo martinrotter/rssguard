@@ -1,5 +1,5 @@
 <body>
-<center><h2>2.0.5</h2></center>
+<center><h2>2.1.0</h2></center>
 
 Fixed:
 <ul>
@@ -8,6 +8,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Embedded web browser supports printing of its contents, feature is accessible via web browser context menu.</li>
 <li>Embedded web browser now displays navigation toolbar even in message preview mode/newspaper mode when user loads external links.</li>
 </ul>
 

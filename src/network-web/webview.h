@@ -68,6 +68,8 @@ class WebView : public QWebView {
     // Provides custom context menu.
     void popupContextMenu(const QPoint &pos);
 
+    void printCurrentPage();
+
   protected:
     // Initializes all actions.
     void initializeActions();
@@ -89,6 +91,7 @@ class WebView : public QWebView {
     WebPage *m_page;
 
     QAction *m_actionReload;
+    QAction *m_actionPrint;
     QAction *m_actionCopySelectedItem;
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;

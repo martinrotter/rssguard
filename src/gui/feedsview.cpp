@@ -75,6 +75,12 @@ void FeedsView::quit() {
   }
 }
 
+void FeedsView::setSortingEnabled(bool enable) {
+  disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+  QTreeView::setSortingEnabled(enable);
+  connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
+}
+
 void FeedsView::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.

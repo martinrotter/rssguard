@@ -50,6 +50,8 @@ class FeedsView : public QTreeView {
     // Does necessary job before quitting this component.
     void quit();
 
+    void setSortingEnabled(bool enable);
+
     // Resets global auto-update intervals according to settings
     // and starts/stop the timer as needed.
     void updateAutoUpdateStatus();

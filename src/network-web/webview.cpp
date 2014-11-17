@@ -34,6 +34,12 @@
 #include <QDateTime>
 #include <QClipboard>
 
+#if QT_VERSION >= 0x050000
+#include <QtPrintSupport/QPrintPreviewDialog>
+#else
+#include <QPrintPreviewDialog>
+#endif
+
 
 WebView::WebView(QWidget *parent)
   : QWebView(parent), m_page(new WebPage(this)) {
@@ -74,12 +80,14 @@ void WebView::createConnections() {
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
   connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(popupContextMenu(QPoint)));
 
+  connect(m_actionPrint, SIGNAL(triggered()), this, SLOT(printCurrentPage()));
   connect(m_actionOpenLinkNewTab, SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
   connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
   connect(m_actionOpenLinkExternally, SIGNAL(triggered()), this, SLOT(openLinkExternally()));
 }
 
 void WebView::setupIcons() {
+  m_actionPrint->setIcon(qApp->icons()->fromTheme("print-web-page"));
   m_actionReload->setIcon(qApp->icons()->fromTheme("go-refresh"));
   m_actionCopySelectedItem->setIcon(qApp->icons()->fromTheme("edit-copy"));
   m_actionCopyLink->setIcon(qApp->icons()->fromTheme("edit-copy"));
@@ -101,6 +109,9 @@ void WebView::initializeActions() {
   m_actionReload->setParent(this);
   m_actionReload->setText(tr("Reload web page"));
   m_actionReload->setToolTip(tr("Reload current web page."));
+
+  m_actionPrint = new QAction(tr("Print"), this);
+  m_actionPrint->setToolTip(tr("Print current web page."));
 
   m_actionCopySelectedItem = pageAction(QWebPage::Copy);
   m_actionCopySelectedItem->setParent(this);
@@ -174,7 +185,17 @@ void WebView::popupContextMenu(const QPoint &pos) {
   link_submenu.setIcon(qApp->icons()->fromTheme("text-html"));
 
   // Assemble the menu from actions.
-  context_menu.addAction(m_actionReload);
+
+  QString current_url = url().toString();
+
+  if (!current_url.isEmpty() && current_url != INTERNAL_URL_EMPTY && current_url != INTERNAL_URL_BLANK) {
+    context_menu.addAction(m_actionPrint);
+
+    if (current_url != INTERNAL_URL_NEWSPAPER) {
+      context_menu.addAction(m_actionReload);
+    }
+  }
+
   context_menu.addAction(m_actionCopySelectedItem);
 
   QUrl hit_url = hit_result.linkUrl();
@@ -209,6 +230,12 @@ void WebView::popupContextMenu(const QPoint &pos) {
   context_menu.exec(mapToGlobal(pos));
 }
 
+void WebView::printCurrentPage() {
+  QPointer<QPrintPreviewDialog> print_preview = new QPrintPreviewDialog(this);
+  connect(print_preview.data(), SIGNAL(paintRequested(QPrinter*)), this, SLOT(print(QPrinter*)));
+  print_preview.data()->exec();
+}
+
 void WebView::mousePressEvent(QMouseEvent *event) {
   if (event->button() & Qt::LeftButton && event->modifiers() & Qt::ControlModifier) {
     QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(event->pos());
@@ -239,6 +266,7 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
     bool are_gestures_enabled = qApp->settings()->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool();
+
     if (are_gestures_enabled) {
       QPoint release_point = event->pos();
       int left_move = m_gestureOrigin.x() - release_point.x();

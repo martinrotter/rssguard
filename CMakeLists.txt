@@ -244,7 +244,7 @@ endif(${USE_QT_5})
 
 # Setup librar  ies.
 if(${USE_QT_5})
-  find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools)
+  find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
 else(${USE_QT_5})
   set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
   find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
@@ -616,6 +616,7 @@ if(${USE_QT_5})
     Xml
     WebKit
     WebKitWidgets
+    PrintSupport
   )
 # Setup compilation for Qt 4.
 else(${USE_QT_5})
