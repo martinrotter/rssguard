@@ -192,8 +192,7 @@ void Application::onAboutToQuit() {
   mainForm()->saveSize();
 
   if (locked_safely) {
-    // Application obtained permission to close
-    // in a safety way.
+    // Application obtained permission to close in a safe way.
     qDebug("Close lock was obtained safely.");
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
