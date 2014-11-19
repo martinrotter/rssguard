@@ -1,6 +1,8 @@
 RSS Guard
 =========
 Welcome to RSS Guard website. You can find here basic information. Rest is located in [Wiki](https://bitbucket.org/skunkos/rssguard/wiki/Home).
+# ** I must concentrate my spare time for another projects!!! Therefore, there will not be any new huge features for RSS Guard for some time (at least one year) and I will preferably fix bugs. **
+#
 
 **[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds-videos) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy) | [Donate](#markdown-header-donate)**
 - - -
