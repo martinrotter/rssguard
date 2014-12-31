@@ -593,8 +593,10 @@ void FormSettings::loadGeneral() {
   }
 
 #if defined(Q_OS_WIN)
-  m_ui->m_checkRemoveTrolltechJunk->setEnabled(true);
+  m_ui->m_checkRemoveTrolltechJunk->setVisible(true);
   m_ui->m_checkRemoveTrolltechJunk->setChecked(qApp->settings()->value(GROUP(General), SETTING(General::RemoveTrolltechJunk)).toBool());
+#else
+  m_ui->m_checkRemoveTrolltechJunk->setVisible(false);
 #endif
 }
 
