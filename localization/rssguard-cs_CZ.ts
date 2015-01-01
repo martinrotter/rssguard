@@ -94,10 +94,12 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -453,7 +455,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Select destionation folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte cílovoý adresář</translation>
     </message>
     <message>
         <source>Good destination folder is specified.</source>
@@ -1335,7 +1337,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Přepnout orientaci rozložení seznamu zpráv</translation>
     </message>
 </context>
 <context>
@@ -1418,7 +1420,9 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1476,10 +1480,12 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1557,6 +1563,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -1617,7 +1624,6 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Executables (*.*)</source>
-        <extracomment>File filter for external browser selection dialog.</extracomment>
         <translation>Spouštěče (*.*)</translation>
     </message>
     <message>
@@ -1953,12 +1959,17 @@ Musíte restartovat manuálně.</translation>
         <translation>Kontrolovat aktualizace po startu programu</translation>
     </message>
     <message>
-        <source>Remove junk Trolltech registry key (HKCUSoftwareTrolltech) whn application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation>Použít vlastní format datumu (přepíše formát načtený z lokalizace)</translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation>Vymazat odpadní registrový klíč Trolltech (HKCU\\Software\\Trolltech) při vypnutí aplikace</translation>
+    </message>
+    <message>
+        <source>Executables (*)</source>
+        <extracomment>File filter for external browser selection dialog.</extracomment>
+        <translation>Spustitelné soubory (*)</translation>
     </message>
 </context>
 <context>
@@ -2101,42 +2112,52 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2181,11 +2202,12 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"></translation>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
+        <translation>Permanentně smazáno</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"></translation>
+        <translation>Je zpráva permanentně vysypána z koše?</translation>
     </message>
 </context>
 <context>
@@ -2643,6 +2665,14 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <source>Open the hyperlink in external browser.</source>
         <translation>Otevřít hypertextový odkaz v externím prohlížeči.</translation>
+    </message>
+    <message>
+        <source>Print</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Print current web page.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

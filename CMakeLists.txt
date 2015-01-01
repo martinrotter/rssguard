@@ -526,33 +526,33 @@ set(APP_TEXT
 )
 
 if(WIN32)
-  set(APP_DLLS_QT4_MSVC2010
-    resources/binaries/windows/deployment/qt4-msvc2010/libeay32.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/msvcp100.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/msvcr100.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/QtCore4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/QtGui4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/QtNetwork4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/QtSql4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/QtWebKit4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/QtXml4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/ssleay32.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/libmysql.dll
+  set(APP_DLLS_QT4_MSVC2013
+    resources/binaries/windows/deployment/qt4-msvc2013/libeay32.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/msvcp120.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/msvcr120.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/QtCore4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/QtGui4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/QtNetwork4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/QtSql4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/QtWebKit4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/QtXml4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/ssleay32.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/libmysql.dll
   )
 
-  set(APP_DLLS_QT4_MSVC2010_IMAGEFORMATS
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qgif4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qico4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qjpeg4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qmng4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qsvg4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qtga4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/imageformats/qtiff4.dll
+  set(APP_DLLS_QT4_MSVC2013_IMAGEFORMATS
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qgif4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qico4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qjpeg4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qmng4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qsvg4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qtga4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qtiff4.dll
   )
 
-  set(APP_DLLS_QT4_MSVC2010_SQLDRIVERS
-    resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlite4.dll
-    resources/binaries/windows/deployment/qt4-msvc2010/sqldrivers/qsqlmysql4.dll
+  set(APP_DLLS_QT4_MSVC2013_SQLDRIVERS
+    resources/binaries/windows/deployment/qt4-msvc2013/sqldrivers/qsqlite4.dll
+    resources/binaries/windows/deployment/qt4-msvc2013/sqldrivers/qsqlmysql4.dll
   )
 endif(WIN32)
 
@@ -647,9 +647,9 @@ if(WIN32 OR OS2)
 
   # Copy DLLs and other binary files for main installation and updater.
   if(WIN32 AND NOT ${USE_QT_5})
-    install(FILES ${APP_DLLS_QT4_MSVC2010} DESTINATION ./)
-    install(FILES ${APP_DLLS_QT4_MSVC2010_IMAGEFORMATS} DESTINATION ./imageformats)
-    install(FILES ${APP_DLLS_QT4_MSVC2010_SQLDRIVERS} DESTINATION ./sqldrivers)
+    install(FILES ${APP_DLLS_QT4_MSVC2013} DESTINATION ./)
+    install(FILES ${APP_DLLS_QT4_MSVC2013_IMAGEFORMATS} DESTINATION ./imageformats)
+    install(FILES ${APP_DLLS_QT4_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
   endif(WIN32 AND NOT ${USE_QT_5})
 
   if(BUNDLE_ICON_THEMES)
