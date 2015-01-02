@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -2668,11 +2668,11 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytisknout</translation>
     </message>
     <message>
         <source>Print current web page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytisknout aktuální webovou stránku.</translation>
     </message>
 </context>
 </TS>
