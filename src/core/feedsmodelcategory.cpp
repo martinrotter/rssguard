@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -141,14 +141,10 @@ bool FeedsModelCategory::removeItself() {
   return query_remove.exec();
 }
 
-FeedsModelCategory *FeedsModelCategory::loadFromRecord(const QSqlRecord &record) {
-  FeedsModelCategory *category = new FeedsModelCategory(NULL);
-
-  category->setId(record.value(CAT_DB_ID_INDEX).toInt());
-  category->setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
-  category->setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
-  category->setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  category->setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
-
-  return category;
+FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelCategory() {
+  setId(record.value(CAT_DB_ID_INDEX).toInt());
+  setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
+  setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
+  setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
 }

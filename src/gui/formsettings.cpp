@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -191,6 +191,7 @@ void FormSettings::loadFeedsMessages() {
   m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(settings->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString());
+  m_ui->m_checkRemoveDuplicateMessages->setChecked(settings->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool());
 
   initializeMessageDateFormats();
 
@@ -227,6 +228,7 @@ void FormSettings::saveFeedsMessages() {
   settings->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   settings->setValue(GROUP(Messages), Messages::CustomDateFormat,
                      m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
+  settings->setValue(GROUP(Messages), Messages::RemoveDuplicates, m_ui->m_checkRemoveDuplicateMessages->isChecked());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();

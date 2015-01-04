@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -64,6 +64,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Constructors and destructors.
     explicit FeedsModelFeed(FeedsModelRootItem *parent_item = NULL);
     explicit FeedsModelFeed(const FeedsModelFeed &other);
+    explicit FeedsModelFeed(const QSqlRecord &record);
     virtual ~FeedsModelFeed();
 
     // Returns 0, feeds have no children.
@@ -170,9 +171,6 @@ class FeedsModelFeed : public FeedsModelRootItem {
     }
 
     QNetworkReply::NetworkError networkError() const;
-
-    // Loads standard feed object from given SQL record.
-    static FeedsModelFeed *loadFromRecord(const QSqlRecord &record);
 
     // Tries to guess feed hidden under given URL
     // and uses given credentials.

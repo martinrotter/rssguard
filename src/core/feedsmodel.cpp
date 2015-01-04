@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -794,7 +794,7 @@ void FeedsModel::loadFromDatabase() {
   while (query_categories.next()) {
     CategoryAssignmentItem pair;
     pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = FeedsModelCategory::loadFromRecord(query_categories.record());
+    pair.second = new FeedsModelCategory(query_categories.record());
 
     categories << pair;
   }
@@ -818,7 +818,7 @@ void FeedsModel::loadFromDatabase() {
       case FeedsModelFeed::Rss2X: {
         FeedAssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = FeedsModelFeed::loadFromRecord(query_feeds.record());
+        pair.second = new FeedsModelFeed(query_feeds.record());
         pair.second->setType(type);
 
         feeds << pair;

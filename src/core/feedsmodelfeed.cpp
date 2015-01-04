@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -114,9 +114,9 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
 }
 
 void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
-  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
+
   query_all.setForwardOnly(true);
 
   if (including_total_count) {
@@ -135,26 +135,6 @@ void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_s
 
     m_unreadCount = new_unread_count;
   }
-}
-
-FeedsModelFeed *FeedsModelFeed::loadFromRecord(const QSqlRecord &record) {
-  FeedsModelFeed *feed = new FeedsModelFeed();
-
-  feed->setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
-  feed->setId(record.value(FDS_DB_ID_INDEX).toInt());
-  feed->setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
-  feed->setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
-  feed->setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
-  feed->setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
-  feed->setUrl(record.value(FDS_DB_URL_INDEX).toString());
-  feed->setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
-  feed->setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
-  feed->setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
-  feed->setAutoUpdateType(static_cast<FeedsModelFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
-  feed->setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-  feed->updateCounts();
-
-  return feed;
 }
 
 QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(const QString &url,
@@ -390,12 +370,12 @@ QVariant FeedsModelFeed::data(int column, int role) const {
 void FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents, passwordProtected(), username(), password()).first;
+  m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
+                                                    passwordProtected(), username(), password()).first;
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
     m_status = NetworkError;
-
     return;
   }
   else {
@@ -440,8 +420,7 @@ void FeedsModelFeed::update() {
 }
 
 bool FeedsModelFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
@@ -461,17 +440,30 @@ bool FeedsModelFeed::removeItself() {
   return query_remove.exec();
 }
 
+/*
+ * postup zpracování zpráv:
+ * 1. Kontrola, zda existují již v DB zprávy se stejným NAZVEM, AUTOREM, URL ze stejneho kanalu.
+ *  a. KONEC: Pokud neexistují, pak se aktuální nová zpráva přidá do DB.
+ *  b. Pokud existují, jde se na krok 2.
+ * 2. Pokud má uživatel nastaveno mazání duplicitních zpráv, pak udělej a. Jinak jdi na krok 3.
+ *  a. Vymaž všechny zprávy, které byly nalezeny ve kroku 1.
+ *  b. Přidej tuto novou zprávu, nastav ji status přečtena na true.
+ * 3. Uživatel nemá nastaveno mazani dupl zpráv. Novou zprávu přidáme do DB tehdy když zpráva
+ * má datum získané z kanálu a zároveň identická zpráva s takovým datumem ještě v DB není.
+ * */
+
+
 void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
-  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed",
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
+  bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
 
   // Prepare queries.
   QSqlQuery query_select(database);
+  QSqlQuery query_update(database);
   QSqlQuery query_insert(database);
 
-  // Used to check if give feed contains with message with given
-  // title, url and date_created.
+  // Used to check if given feed contains any message with given title, url and date_created.
   // WARNING: One feed CANNOT contain two (or more) messages with same AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "
@@ -483,6 +475,11 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
                        "(feed, title, url, author, date_created, contents) "
                        "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
 
+  if (remove_duplicates) {
+    query_update.setForwardOnly(true);
+    query_update.prepare("UPDATE Messages SET contents = :contents WHERE id = :id;");
+  }
+
   if (!database.transaction()) {
     database.rollback();
     qDebug("Transaction start for message downloader failed.");
@@ -490,8 +487,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   }
 
   foreach (Message message, messages) {
-    // Check if messages contain relative URLs and if they do,
-    // then replace them.
+    // Check if messages contain relative URLs and if they do, then replace them.
     if (message.m_url.startsWith('/')) {
       QString new_message_url = url();
       int last_slash = new_message_url.lastIndexOf('/');
@@ -511,19 +507,17 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
     query_select.exec();
 
     QList<qint64> datetime_stamps;
+    QList<int> ids;
 
     while (query_select.next()) {
+      ids << query_select.value(0).toInt();
       datetime_stamps << query_select.value(2).value<qint64>();
     }
 
     query_select.finish();
 
-    if (datetime_stamps.isEmpty() ||(message.m_createdFromFeed && !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch()))) {
-      // Message is not fetched in this feed yet
-      // or it is. If it is, then go
-      // through datetime stamps of stored messages
-      // and check if new (not auto-generated timestamp
-      // is among them and add this message if it is not.
+    if (datetime_stamps.isEmpty()) {
+      // Message is not fetched in this feed yet.
       query_insert.bindValue(":feed", feed_id);
       query_insert.bindValue(":title", message.m_title);
       query_insert.bindValue(":url", message.m_url);
@@ -536,6 +530,38 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       }
 
       query_insert.finish();
+
+      qDebug("Adding new message '%s' to DB.", qPrintable(message.m_title));
+    }
+    else if (message.m_createdFromFeed && !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch())) {
+      if (remove_duplicates && datetime_stamps.size() == 1) {
+        // Message is already in feed and new message has new unique time but user wishes to update existing
+        // messages and there is exactly ONE existing duplicate.
+        query_update.bindValue(":id", ids.at(0));
+        query_update.bindValue(":contents", message.m_contents);
+        query_update.exec();
+        query_update.finish();
+
+        qDebug("Updating contents of duplicate message '%s'.", qPrintable(message.m_title));
+      }
+      else {
+        // Message with same title, author and url exists, but new message has new unique time and
+        // user does not wish to update duplicates.
+        query_insert.bindValue(":feed", feed_id);
+        query_insert.bindValue(":title", message.m_title);
+        query_insert.bindValue(":url", message.m_url);
+        query_insert.bindValue(":author", message.m_author);
+        query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
+        query_insert.bindValue(":contents", message.m_contents);
+
+        if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
+          setStatus(NewMessages);
+        }
+
+        query_insert.finish();
+
+        qDebug("Adding new duplicate (with potentially updated contents) message '%s' to DB.", qPrintable(message.m_title));
+      }
     }
   }
 
@@ -548,4 +574,21 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
 QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
   return m_networkError;
+}
+
+
+FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelFeed() {
+  setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
+  setId(record.value(FDS_DB_ID_INDEX).toInt());
+  setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
+  setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
+  setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+  setEncoding(record.value(FDS_DB_ENCODING_INDEX).toString());
+  setUrl(record.value(FDS_DB_URL_INDEX).toString());
+  setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
+  setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
+  setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
+  setAutoUpdateType(static_cast<FeedsModelFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+  updateCounts();
 }

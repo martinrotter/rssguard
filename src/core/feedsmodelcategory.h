@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // Constructors and destructors
     explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
     explicit FeedsModelCategory(const FeedsModelCategory &other);
+    explicit FeedsModelCategory(const QSqlRecord &record);
     virtual ~FeedsModelCategory();
 
     // Returns the actual data representation of standard category.
@@ -44,9 +45,6 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // Removes category and all its children from persistent
     // database.
     bool removeItself();
-
-    // Loads particular "standard category" from given sql record.
-    static FeedsModelCategory *loadFromRecord(const QSqlRecord &record);
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

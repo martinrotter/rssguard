@@ -1,4 +1,16 @@
 <body>
+<center><h2>2.2.0</h2></center>
+
+Fixed:
+<ul>
+<li>Fixed issue #53 - removing of duplicate messages. Feature is available globally in "Settings -> Messages".</li>
+</ul>
+
+Added:
+<ul>
+</ul>
+
+<hr/>
 <center><h2>2.1.0</h2></center>
 
 Fixed:

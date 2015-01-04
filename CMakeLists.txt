@@ -2,7 +2,7 @@
 #
 # This file is part of RSS Guard.
 #
-# Copyright (C) 2011-2014 by Martin Rotter <rotter.martinos@gmail.com>
+# Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
 #
 # RSS Guard is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -71,8 +71,8 @@ project(rssguard)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.1.0")
-set(FILE_VERSION "2,1,0,0")
+set(APP_VERSION "2.2.0")
+set(FILE_VERSION "2,2,0,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -221,26 +221,24 @@ add_definitions(-DQT_USE_QSTRINGBUILDER)
 # Force Unicode.
 add_definitions(-DUNICODE -D_UNICODE)
 
-if(${USE_QT_5})
-  # Check for C++ 11 features availability.
-  # See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
-  if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
-    execute_process(
-      COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
-    )
+# Check for C++ 11 features availability.
+# See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+  execute_process(
+    COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
+  )
 
-    if(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-      message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
-    else(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-      add_definitions(-std=c++11)
-    endif(NOT (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7))
-
-  elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-    add_definitions(-std=c++11 -stdlib=libc++)
-  elseif(${MSVC_VERSION} VERSION_LESS 1600)
+  if(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+    add_definitions(-std=c++11)
+  else(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
     message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
-  endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
-endif(${USE_QT_5})
+  endif(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+
+elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+  add_definitions(-std=c++11 -stdlib=libc++)
+elseif(${MSVC_VERSION} VERSION_LESS 1600)
+  message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
+endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
 
 # Setup librar  ies.
 if(${USE_QT_5})
