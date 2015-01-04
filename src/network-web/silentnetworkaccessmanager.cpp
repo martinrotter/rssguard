@@ -31,8 +31,7 @@ SilentNetworkAccessManager::~SilentNetworkAccessManager() {
   qDebug("Destroying SilentNetworkAccessManages instance.");
 }
 
-void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,
-                                                          QAuthenticator *authenticator) {
+void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {
   QObject *originating_object = reply->request().originatingObject();
 
   if (originating_object->property("protected").toBool()) {

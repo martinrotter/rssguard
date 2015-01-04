@@ -371,7 +371,6 @@ set(APP_SOURCES
   src/miscellaneous/skinfactory.cpp
   src/miscellaneous/iconfactory.cpp
   src/miscellaneous/iofactory.cpp
-  src/miscellaneous/json/json.cpp
 
   # CORE sources.
   src/core/messagesmodel.cpp
@@ -396,6 +395,7 @@ set(APP_SOURCES
   src/network-web/webbrowser.cpp
   src/network-web/webview.cpp
   src/network-web/downloader.cpp
+  src/network-web/downloadmanager.cpp
 
   # MAIN sources.
   src/main.cpp
@@ -473,6 +473,7 @@ set(APP_HEADERS
   src/network-web/webbrowser.h
   src/network-web/webview.h
   src/network-web/downloader.h
+  src/network-web/downloadmanager.h
 )
 
 # APP form files.
@@ -487,6 +488,7 @@ set(APP_FORMS
   src/gui/formimportexport.ui
   src/gui/formbackupdatabasesettings.ui
   src/gui/formrestoredatabasesettings.ui
+  src/network-web/downloadmanager.ui
 )
 
 # APP translations.

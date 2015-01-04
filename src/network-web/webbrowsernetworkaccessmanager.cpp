@@ -34,8 +34,7 @@ WebBrowserNetworkAccessManager::~WebBrowserNetworkAccessManager() {
   qDebug("Destroying WebBrowserNetworkAccessManager instance.");
 }
 
-void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply,
-                                                              QAuthenticator *authenticator) {
+void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {
   Q_UNUSED(authenticator);
 
   // TODO: Support authentication for web pages.
