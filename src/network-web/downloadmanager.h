@@ -34,6 +34,8 @@ class DownloadManager : public TabContent {
     explicit DownloadManager(QWidget *parent = 0);
     virtual ~DownloadManager();
 
+    WebBrowser *webBrowser();
+
   private:
     Ui::DownloadManager *m_ui;
 };

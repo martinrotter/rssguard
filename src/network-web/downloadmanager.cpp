@@ -23,9 +23,15 @@ DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new
 }
 
 DownloadManager::~DownloadManager() {
+  qDebug("Destroying DownloadManager.");
   delete m_ui;
 }
 
 // TODO: pokračovat, převzít downloaditem, edittableview z arory
 // přistup k downloadmanageru bude z qApp->downloadManager(),
 // bude se využívat pro stahování skrze webview
+
+
+WebBrowser *DownloadManager::webBrowser() {
+  return NULL;
+}

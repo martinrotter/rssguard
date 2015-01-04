@@ -27,6 +27,7 @@
 #include "miscellaneous/localization.h"
 #include "miscellaneous/databasefactory.h"
 #include "gui/systemtrayicon.h"
+#include "network-web/downloadmanager.h"
 
 #include <QMutex>
 #include <QList>
@@ -92,6 +93,14 @@ class Application : public QtSingleApplication {
     }
 
     IconFactory *icons();
+
+    inline DownloadManager *downloadManager() {
+      if (m_downloadManager == NULL) {
+        m_downloadManager = new DownloadManager();
+      }
+
+      return m_downloadManager;
+    }
 
     inline Settings *settings() {
       if (m_settings == NULL) {
@@ -205,6 +214,7 @@ class Application : public QtSingleApplication {
     Localization *m_localization;
     IconFactory *m_icons;
     DatabaseFactory *m_database;
+    DownloadManager *m_downloadManager;
     bool m_shouldRestart;
 };
 

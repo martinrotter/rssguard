@@ -86,6 +86,20 @@ void TabWidget::openMainMenu() {
   m_menuMain->exec(mapToGlobal(button_position));
 }
 
+void TabWidget::showDownloadManager() {
+  for (int i = 0; i < count(); i++) {
+    if (QString(widget(i)->metaObject()->className()) == "DownloadManager") {
+      setCurrentIndex(i);
+      return;
+    }
+  }
+
+  // Download manager is not opened. Create tab with it.
+  qApp->downloadManager()->setParent(this);
+  addTab(qApp->downloadManager(), qApp->icons()->fromTheme("download-manager"), tr("Downloads"), TabBar::DownloadManager);
+  setCurrentIndex(count() - 1);
+}
+
 void TabWidget::checkTabBarVisibility() {
   bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
 
@@ -172,7 +186,11 @@ void TabWidget::setupIcons() {
 
 bool TabWidget::closeTab(int index) {
   if (tabBar()->tabType(index) == TabBar::Closable) {
-    removeTab(index);
+    removeTab(index, true);
+    return true;
+  }
+  else if (tabBar()->tabType(index) == TabBar::DownloadManager) {
+    removeTab(index, false);
     return true;
   }
   else {
@@ -216,8 +234,11 @@ void TabWidget::closeAllTabsExceptCurrent() {
   }
 }
 
-void TabWidget::removeTab(int index) {
-  widget(index)->deleteLater();
+void TabWidget::removeTab(int index, bool clear_from_memory) {
+  if (clear_from_memory) {
+    widget(index)->deleteLater();
+  }
+
   QTabWidget::removeTab(index);
 }
 

@@ -33,7 +33,7 @@ Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL), m_icons(NULL), m_database(NULL), m_shouldRestart(false) {
+    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));

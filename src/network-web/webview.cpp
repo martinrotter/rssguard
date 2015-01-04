@@ -52,7 +52,7 @@ WebView::WebView(QWidget *parent)
 }
 
 WebView::~WebView() {
-  qDebug("Destroying BaseWebView.");
+  qDebug("Destroying WebView.");
 }
 
 void WebView::onLoadFinished(bool ok) {

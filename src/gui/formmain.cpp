@@ -87,6 +87,7 @@ QList<QAction*> FormMain::allActions() {
 
   // Add basic actions.
   actions << m_ui->m_actionSettings;
+  actions << m_ui->m_actionDownloadManager;
   actions << m_ui->m_actionImportFeeds;
   actions << m_ui->m_actionExportFeeds;
   actions << m_ui->m_actionRestoreDatabaseSettings;
@@ -206,6 +207,7 @@ void FormMain::setupIcons() {
   IconFactory *icon_theme_factory = qApp->icons();
 
   // Setup icons of this main window.
+  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme("download-manager"));
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme("application-exit"));
   m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme("go-refresh"));
@@ -350,6 +352,7 @@ void FormMain::createConnections() {
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
+  connect(m_ui->m_actionDownloadManager, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(showDownloadManager()));
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, SIGNAL(triggered()), this, SLOT(showAbout()));

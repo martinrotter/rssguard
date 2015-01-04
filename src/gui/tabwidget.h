@@ -47,7 +47,7 @@ class TabWidget : public QTabWidget {
                   const TabBar::TabType &type = TabBar::Closable);
     int insertTab(int index, QWidget *widget, const QIcon &icon,
                   const QString &label, const TabBar::TabType &type = TabBar::NonClosable);
-    void removeTab(int index);
+    void removeTab(int index, bool clear_from_memory);
 
     // Returns tab bar.
     inline TabBar *tabBar() {
@@ -98,7 +98,10 @@ class TabWidget : public QTabWidget {
     bool closeTab(int index);
     bool closeCurrentTab();
 
+    // Opens main menu.
     void openMainMenu();
+
+    void showDownloadManager();
 
     // Closes all "closable" tabs except the active tab.
     void closeAllTabsExceptCurrent();

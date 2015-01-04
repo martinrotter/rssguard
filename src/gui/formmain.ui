@@ -100,6 +100,7 @@
     <addaction name="m_actionSettings"/>
     <addaction name="separator"/>
     <addaction name="m_actionDefragmentDatabase"/>
+    <addaction name="m_actionDownloadManager"/>
    </widget>
    <widget class="QMenu" name="m_menuWebBrowser">
     <property name="title">
@@ -635,6 +636,11 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionDownloadManager">
+   <property name="text">
+    <string>&amp;Downloads</string>
    </property>
   </action>
  </widget>
