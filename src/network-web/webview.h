@@ -64,6 +64,7 @@ class WebView : public QWebView {
     void openLinkInNewTab();
     void openLinkExternally();
     void openImageInNewTab();
+    void saveCurrentPageToFile();
 
     // Provides custom context menu.
     void popupContextMenu(const QPoint &pos);
@@ -95,6 +96,7 @@ class WebView : public QWebView {
     QAction *m_actionCopySelectedItem;
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;
+    QAction *m_actionSavePageAs;
 
 #if QT_VERSION >= 0x040800
     QAction *m_actionCopyImageUrl;

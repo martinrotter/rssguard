@@ -23,6 +23,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webpage.h"
 #include "network-web/webfactory.h"
+#include "gui/messagebox.h"
 
 #include <QStyleOptionFrameV3>
 #include <QAction>
@@ -33,6 +34,7 @@
 #include <QContextMenuEvent>
 #include <QDateTime>
 #include <QClipboard>
+#include <QFileDialog>
 
 #if QT_VERSION >= 0x050000
 #include <QtPrintSupport/QPrintPreviewDialog>
@@ -76,10 +78,41 @@ void WebView::openImageInNewTab() {
   emit linkMiddleClicked(m_contextImageUrl);
 }
 
+void WebView::saveCurrentPageToFile() {
+  QString filter_html = tr("HTML web pages (*.html)");
+
+  QString filter;
+  QString selected_filter;
+
+  // Add more filters here.
+  filter += filter_html;
+
+  QString selected_file = QFileDialog::getSaveFileName(this, tr("Select destination file for web page"),
+                                                       qApp->homeFolderPath(), filter, &selected_filter);
+
+  if (!selected_file.isEmpty()) {
+    QFile selected_file_handle(selected_file);
+
+    if (selected_file_handle.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
+      QString html_text = page()->mainFrame()->toHtml();
+      QTextStream str(&selected_file_handle);
+
+      str.setCodec("UTF-16");
+      str << html_text;
+      selected_file_handle.close();
+    }
+    else {
+      MessageBox::show(this, QMessageBox::Critical, tr("Cannot save web page"),
+                       tr("Web page cannot be saved because destination file is not writtable."));
+    }
+  }
+}
+
 void WebView::createConnections() {
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
   connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(popupContextMenu(QPoint)));
 
+  connect(m_actionSavePageAs, SIGNAL(triggered()), this, SLOT(saveCurrentPageToFile()));
   connect(m_actionPrint, SIGNAL(triggered()), this, SLOT(printCurrentPage()));
   connect(m_actionOpenLinkNewTab, SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
   connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
@@ -132,6 +165,8 @@ void WebView::initializeActions() {
   m_actionCopyImage->setParent(this);
   m_actionCopyImage->setText(tr("Copy image"));
   m_actionCopyImage->setToolTip(tr("Copy image to clipboard."));
+
+  m_actionSavePageAs = new QAction(qApp->icons()->fromTheme("document-export"), tr("Save page as..."), this);
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
@@ -197,6 +232,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
   }
 
   context_menu.addAction(m_actionCopySelectedItem);
+  context_menu.addAction(m_actionSavePageAs);
 
   QUrl hit_url = hit_result.linkUrl();
   QUrl hit_image_url = hit_result.imageUrl();

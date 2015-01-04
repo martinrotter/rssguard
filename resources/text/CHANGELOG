@@ -4,6 +4,7 @@
 Fixed:
 <ul>
 <li>Fixed issue #53 - removing of duplicate messages. Feature is available globally in "Settings -> Messages".</li>
+<li>Fixed issue #100 - saving HTML web pages.</li>
 </ul>
 
 Added:

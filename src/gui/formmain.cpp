@@ -376,12 +376,17 @@ void FormMain::loadWebBrowserMenu(int index) {
   WebBrowser *active_browser = m_ui->m_tabWidget->widget(index)->webBrowser();
 
   m_ui->m_menuCurrentTab->clear();
+
   if (active_browser != NULL) {
+    m_ui->m_menuCurrentTab->setEnabled(true);
     m_ui->m_menuCurrentTab->addActions(active_browser->globalMenu());
 
     if (m_ui->m_menuCurrentTab->actions().size() == 0) {
       m_ui->m_menuCurrentTab->insertAction(NULL, m_ui->m_actionNoActions);
     }
+  }
+  else {
+    m_ui->m_menuCurrentTab->setEnabled(false);
   }
 
   m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);

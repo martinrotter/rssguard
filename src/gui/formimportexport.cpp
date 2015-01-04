@@ -107,8 +107,6 @@ void FormImportExport::selectExportFile() {
   QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
                                                        qApp->homeFolderPath(), filter, &selected_filter);
 
-
-
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
       m_conversionType = OPML20;

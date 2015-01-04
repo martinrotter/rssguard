@@ -221,8 +221,7 @@ void TabWidget::removeTab(int index) {
   QTabWidget::removeTab(index);
 }
 
-int TabWidget::addTab(TabContent *widget, const QIcon &icon,
-                      const QString &label, const TabBar::TabType &type) {
+int TabWidget::addTab(TabContent *widget, const QIcon &icon, const QString &label, const TabBar::TabType &type) {
   int index = QTabWidget::addTab(widget, icon, label);
   tabBar()->setTabType(index, type);
 
@@ -236,16 +235,14 @@ int TabWidget::addTab(TabContent *widget, const QString &label, const TabBar::Ta
   return index;
 }
 
-int TabWidget::insertTab(int index, QWidget *widget, const QIcon &icon,
-                         const QString &label, const TabBar::TabType &type) {
+int TabWidget::insertTab(int index, QWidget *widget, const QIcon &icon, const QString &label, const TabBar::TabType &type) {
   int tab_index = QTabWidget::insertTab(index, widget, icon, label);
   tabBar()->setTabType(tab_index, type);
 
   return tab_index;
 }
 
-int TabWidget::insertTab(int index, QWidget *widget, const QString &label,
-                         const TabBar::TabType &type) {
+int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const TabBar::TabType &type) {
   int tab_index = QTabWidget::insertTab(index, widget, label);
   tabBar()->setTabType(tab_index, type);
 
@@ -271,14 +268,10 @@ int TabWidget::addLinkedBrowser(const QString &initial_url) {
 }
 
 int TabWidget::addLinkedBrowser(const QUrl &initial_url) {
-  return addBrowser(qApp->settings()->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool(),
-                    false,
-                    initial_url);
+  return addBrowser(qApp->settings()->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool(), false, initial_url);
 }
 
-int TabWidget::addBrowser(bool move_after_current,
-                          bool make_active,
-                          const QUrl &initial_url) {
+int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url) {
   // Create new WebBrowser.
   WebBrowser *browser = new WebBrowser(this);
   browser->setupIcons();
@@ -287,16 +280,12 @@ int TabWidget::addBrowser(bool move_after_current,
 
   if (move_after_current) {
     // Insert web browser after current tab.
-    final_index = insertTab(currentIndex() + 1,
-                            browser,
-                            qApp->icons()->fromTheme("text-html"),
-                            tr("Web browser"),
-                            TabBar::Closable);
+    final_index = insertTab(currentIndex() + 1, browser, qApp->icons()->fromTheme("text-html"),
+                            tr("Web browser"), TabBar::Closable);
   }
   else {
     // Add new browser as the last tab.
-    final_index = addTab(browser,
-                         qApp->icons()->fromTheme("text-html"),
+    final_index = addTab(browser, qApp->icons()->fromTheme("text-html"),
                          //: Web browser default tab title.
                          tr("Web browser"),
                          TabBar::Closable);
