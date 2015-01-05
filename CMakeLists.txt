@@ -223,22 +223,24 @@ add_definitions(-DUNICODE -D_UNICODE)
 
 # Check for C++ 11 features availability.
 # See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
-  execute_process(
-    COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
-  )
+if(${USE_QT_5})
+  if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+    execute_process(
+      COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
+    )
 
-  if(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
-    add_definitions(-std=c++11)
-  else(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+    if(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+      add_definitions(-std=c++11)
+    else(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+      message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
+    endif(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+
+  elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
+    add_definitions(-std=c++11 -stdlib=libc++)
+  elseif(${MSVC_VERSION} VERSION_LESS 1600)
     message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
-  endif(GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
-
-elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-  add_definitions(-std=c++11 -stdlib=libc++)
-elseif(${MSVC_VERSION} VERSION_LESS 1600)
-  message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
-endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+  endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+endif(${USE_QT_5})
 
 # Setup librar  ies.
 if(${USE_QT_5})
