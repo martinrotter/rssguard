@@ -45,6 +45,9 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // Removes category and all its children from persistent
     // database.
     bool removeItself();
+
+  private:
+    void init();
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

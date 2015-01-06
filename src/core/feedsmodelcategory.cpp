@@ -28,8 +28,12 @@
 #include <QSqlQuery>
 
 
-FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item) : FeedsModelRootItem(parent_item) {
+void FeedsModelCategory::init() {
   m_kind = FeedsModelRootItem::Category;
+}
+
+FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item) : FeedsModelRootItem(parent_item) {
+  init();
 }
 
 FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
@@ -141,7 +145,9 @@ bool FeedsModelCategory::removeItself() {
   return query_remove.exec();
 }
 
-FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelCategory(NULL) {
+FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelRootItem(NULL) {
+  init();
+
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());

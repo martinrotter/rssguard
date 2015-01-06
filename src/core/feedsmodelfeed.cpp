@@ -36,22 +36,26 @@
 #include <QXmlStreamReader>
 
 
-FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
-  : FeedsModelRootItem(parent_item),
-    m_passwordProtected(false),
-    m_username(QString()),
-    m_password(QString()),
-    m_status(Normal),
-    m_networkError(QNetworkReply::NoError),
-    m_type(Rss0X),
-    m_totalCount(0),
-    m_unreadCount(0),
-    m_autoUpdateType(DontAutoUpdate),
-    m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_encoding(QString()),
-    m_url(QString()) {
+void FeedsModelFeed::init() {
+  m_passwordProtected = false;
+  m_username = QString();
+  m_password = QString();
+  m_status = Normal;
+  m_networkError = QNetworkReply::NoError;
+  m_type = Rss0X;
+  m_totalCount = 0;
+  m_unreadCount = 0;
+  m_autoUpdateType = DontAutoUpdate;
+  m_autoUpdateInitialInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
+  m_autoUpdateRemainingInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
+  m_encoding = QString();
+  m_url = QString();
   m_kind = FeedsModelRootItem::Feed;
+}
+
+FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
+  : FeedsModelRootItem(parent_item) {
+  init();
 }
 
 FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
@@ -577,7 +581,9 @@ QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
 }
 
 
-FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelFeed(NULL) {
+FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelRootItem(NULL) {
+  init();
+
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());

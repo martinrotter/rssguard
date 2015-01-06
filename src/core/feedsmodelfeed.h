@@ -195,6 +195,9 @@ class FeedsModelFeed : public FeedsModelRootItem {
     void updateMessages(const QList<Message> &messages);
 
   private:
+    void init();
+
+  private:    
     bool m_passwordProtected;
     QString m_username;
     QString m_password;
