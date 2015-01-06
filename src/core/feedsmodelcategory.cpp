@@ -141,7 +141,7 @@ bool FeedsModelCategory::removeItself() {
   return query_remove.exec();
 }
 
-FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelCategory() {
+FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelCategory(NULL) {
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
