@@ -582,7 +582,7 @@ QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
 
 
 FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelRootItem(NULL) {
-  init();
+  m_kind = FeedsModelRootItem::Feed;
 
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
