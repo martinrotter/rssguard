@@ -577,7 +577,7 @@ QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
 }
 
 
-FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelFeed() {
+FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelFeed(NULL) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
