@@ -398,6 +398,9 @@ set(APP_SOURCES
   src/network-web/webview.cpp
   src/network-web/downloader.cpp
   src/network-web/downloadmanager.cpp
+  src/network-web/edittableview.cpp
+  src/network-web/autosaver.cpp
+  src/network-web/squeezelabel.cpp
 
   # MAIN sources.
   src/main.cpp
@@ -476,6 +479,9 @@ set(APP_HEADERS
   src/network-web/webview.h
   src/network-web/downloader.h
   src/network-web/downloadmanager.h
+  src/network-web/edittableview.h
+  src/network-web/autosaver.h
+  src/network-web/squeezelabel.h
 )
 
 # APP form files.
@@ -491,6 +497,7 @@ set(APP_FORMS
   src/gui/formbackupdatabasesettings.ui
   src/gui/formrestoredatabasesettings.ui
   src/network-web/downloadmanager.ui
+  src/network-web/downloaditem.ui
 )
 
 # APP translations.

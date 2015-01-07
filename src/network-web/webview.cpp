@@ -24,6 +24,7 @@
 #include "network-web/webpage.h"
 #include "network-web/webfactory.h"
 #include "gui/messagebox.h"
+#include "gui/formmain.h"
 
 #include <QStyleOptionFrameV3>
 #include <QAction>
