@@ -71,6 +71,9 @@ class WebView : public QWebView {
 
     void printCurrentPage();
 
+  private slots:
+    void downloadLink(const QNetworkRequest &request);
+
   protected:
     // Initializes all actions.
     void initializeActions();
@@ -97,6 +100,7 @@ class WebView : public QWebView {
     QAction *m_actionCopyLink;
     QAction *m_actionCopyImage;
     QAction *m_actionSavePageAs;
+    QAction *m_actionSaveHyperlinkAs;
 
 #if QT_VERSION >= 0x040800
     QAction *m_actionCopyImageUrl;

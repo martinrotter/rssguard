@@ -112,7 +112,7 @@ void TabBar::mousePressEvent(QMouseEvent *event) {
     // NOTE: This needs to be done here because
     // destination does not know the original event.
     if (event->button() & Qt::MiddleButton && qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabCloseMiddleClick)).toBool()) {
-      if (tabType(tab_index) == TabBar::Closable) {
+      if (tabType(tab_index) == TabBar::Closable || tabType(tab_index) == TabBar::DownloadManager) {
         // This tab is closable, so we can close it.
         emit tabCloseRequested(tab_index);
       }

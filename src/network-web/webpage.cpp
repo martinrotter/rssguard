@@ -19,6 +19,7 @@
 
 #include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/webbrowser.h"
+#include "miscellaneous/application.h"
 
 #include <QNetworkReply>
 #include <QWebFrame>
@@ -29,6 +30,8 @@ WebPage::WebPage(QObject *parent)
   // Setup global network access manager.
   // NOTE: This makes network settings easy for all web browsers.
   setNetworkAccessManager(WebBrowserNetworkAccessManager::instance());
+  setForwardUnsupportedContent(true);
+  connect(this, SIGNAL(unsupportedContent(QNetworkReply*)), this, SLOT(handleUnsupportedContent(QNetworkReply*)));
 }
 
 WebPage::~WebPage() {
@@ -36,6 +39,27 @@ WebPage::~WebPage() {
 
 QString WebPage::toPlainText() const {
   return mainFrame()->toPlainText();
+}
+
+void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
+  if (!reply)
+    return;
+
+  QUrl replyUrl = reply->url();
+
+  if (replyUrl.scheme() == QLatin1String("abp"))
+    return;
+
+  switch (reply->error()) {
+    case QNetworkReply::NoError:
+      if (reply->header(QNetworkRequest::ContentTypeHeader).isValid()) {
+        qApp->downloadManager()->handleUnsupportedContent(reply);
+        return;
+      }
+
+    default:
+      return;
+  }
 }
 
 QString WebPage::toHtml() const {

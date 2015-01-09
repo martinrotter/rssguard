@@ -15,28 +15,39 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef WEBPAGE_H
-#define WEBPAGE_H
+#ifndef AUTOSAVER_H
+#define AUTOSAVER_H
 
-#include <QWebPage>
+#include <qobject.h>
+#include <qbasictimer.h>
+#include <qdatetime.h>
 
+/*
+    This class will call the save() slot on the parent object when the parent changes.
+    It will wait several seconds after changed() to combining multiple changes and
+    prevent continuous writing to disk.
+  */
+class AutoSaver : public QObject
+{
 
-class WebPage : public QWebPage {
     Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit WebPage(QObject *parent = 0);
-    virtual ~WebPage();
+public:
+    AutoSaver(QObject *parent);
+    ~AutoSaver();
+    void saveIfNeccessary();
 
-    QString toHtml() const;
-    QString toPlainText() const;
+public slots:
+    void changeOccurred();
 
-  private slots:
-    void handleUnsupportedContent(QNetworkReply *reply);
+protected:
+    void timerEvent(QTimerEvent *event);
 
-  protected:
-    bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
+private:
+    QBasicTimer m_timer;
+    QTime m_firstChange;
+
 };
 
-#endif // BASEWEBPAGE_H
+#endif // AUTOSAVER_H
+

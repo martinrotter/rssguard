@@ -15,28 +15,23 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef WEBPAGE_H
-#define WEBPAGE_H
+#ifndef EDITTABLEVIEW_H
+#define EDITTABLEVIEW_H
 
-#include <QWebPage>
+#include <qtableview.h>
 
-
-class WebPage : public QWebPage {
+class EditTableView : public QTableView
+{
     Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit WebPage(QObject *parent = 0);
-    virtual ~WebPage();
+public:
+    EditTableView(QWidget *parent = 0);
+    void keyPressEvent(QKeyEvent *event);
 
-    QString toHtml() const;
-    QString toPlainText() const;
-
-  private slots:
-    void handleUnsupportedContent(QNetworkReply *reply);
-
-  protected:
-    bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
+public slots:
+    void removeSelected();
+    void removeAll();
 };
 
-#endif // BASEWEBPAGE_H
+#endif // EDITTABLEVIEW_H
+

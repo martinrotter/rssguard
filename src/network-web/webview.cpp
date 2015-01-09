@@ -112,6 +112,7 @@ void WebView::saveCurrentPageToFile() {
 void WebView::createConnections() {
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(onLoadFinished(bool)));
   connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(popupContextMenu(QPoint)));
+  connect(page(), SIGNAL(downloadRequested(QNetworkRequest)), this, SLOT(downloadLink(QNetworkRequest)));
 
   connect(m_actionSavePageAs, SIGNAL(triggered()), this, SLOT(saveCurrentPageToFile()));
   connect(m_actionPrint, SIGNAL(triggered()), this, SLOT(printCurrentPage()));
@@ -126,6 +127,7 @@ void WebView::setupIcons() {
   m_actionCopySelectedItem->setIcon(qApp->icons()->fromTheme("edit-copy"));
   m_actionCopyLink->setIcon(qApp->icons()->fromTheme("edit-copy"));
   m_actionCopyImage->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
+  m_actionSaveHyperlinkAs->setIcon(qApp->icons()->fromTheme("document-download"));
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme("edit-copy"));
@@ -157,6 +159,11 @@ void WebView::initializeActions() {
   addAction(m_actionCopySelectedItem);
 #endif
 
+  m_actionSaveHyperlinkAs = pageAction(QWebPage::DownloadLinkToDisk);
+  m_actionSaveHyperlinkAs->setParent(this);
+  m_actionSaveHyperlinkAs->setText(tr("Save as..."));
+  m_actionSaveHyperlinkAs->setToolTip(tr("Download content from the hyperlink."));
+
   m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
   m_actionCopyLink->setParent(this);
   m_actionCopyLink->setText(tr("Copy link url"));
@@ -167,7 +174,7 @@ void WebView::initializeActions() {
   m_actionCopyImage->setText(tr("Copy image"));
   m_actionCopyImage->setToolTip(tr("Copy image to clipboard."));
 
-  m_actionSavePageAs = new QAction(qApp->icons()->fromTheme("document-export"), tr("Save page as..."), this);
+  m_actionSavePageAs = new QAction(qApp->icons()->fromTheme("document-download"), tr("Save page as..."), this);
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
@@ -246,6 +253,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
     link_submenu.addAction(m_actionOpenLinkNewTab);
     link_submenu.addAction(m_actionOpenLinkExternally);
     link_submenu.addAction(m_actionCopyLink);
+    link_submenu.addAction(m_actionSaveHyperlinkAs);
   }
 
   if (!hit_result.pixmap().isNull()) {
@@ -271,6 +279,10 @@ void WebView::printCurrentPage() {
   QPointer<QPrintPreviewDialog> print_preview = new QPrintPreviewDialog(this);
   connect(print_preview.data(), SIGNAL(paintRequested(QPrinter*)), this, SLOT(print(QPrinter*)));
   print_preview.data()->exec();
+}
+
+void WebView::downloadLink(const QNetworkRequest &request) {
+  qApp->downloadManager()->download(request);
 }
 
 void WebView::mousePressEvent(QMouseEvent *event) {

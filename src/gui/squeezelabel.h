@@ -15,28 +15,28 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef WEBPAGE_H
-#define WEBPAGE_H
+#ifndef SQUEEZELABEL_H
+#define SQUEEZELABEL_H
 
-#include <QWebPage>
+#include <qlabel.h>
 
-
-class WebPage : public QWebPage {
+/*
+    A label that will squeeze the set text to fit within the size of the
+    widget.  The text will be elided in the middle.
+ */
+class SqueezeLabel : public QLabel
+{
     Q_OBJECT
 
-  public:
-    // Constructors and destructors.
-    explicit WebPage(QObject *parent = 0);
-    virtual ~WebPage();
+public:
+    SqueezeLabel(QWidget *parent = 0);
 
-    QString toHtml() const;
-    QString toPlainText() const;
+protected:
+    void paintEvent(QPaintEvent *event);
 
-  private slots:
-    void handleUnsupportedContent(QNetworkReply *reply);
-
-  protected:
-    bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
+private:
+    QString m_SqueezedTextCache;
 };
 
-#endif // BASEWEBPAGE_H
+#endif // SQUEEZELABEL_H
+

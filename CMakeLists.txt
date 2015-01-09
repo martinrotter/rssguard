@@ -355,6 +355,8 @@ set(APP_SOURCES
   src/gui/styleditemdelegatewithoutfocus.cpp
   src/gui/formbackupdatabasesettings.cpp
   src/gui/formrestoredatabasesettings.cpp
+  src/gui/edittableview.cpp
+  src/gui/squeezelabel.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -373,6 +375,7 @@ set(APP_SOURCES
   src/miscellaneous/skinfactory.cpp
   src/miscellaneous/iconfactory.cpp
   src/miscellaneous/iofactory.cpp
+  src/miscellaneous/autosaver.cpp
 
   # CORE sources.
   src/core/messagesmodel.cpp
@@ -398,9 +401,6 @@ set(APP_SOURCES
   src/network-web/webview.cpp
   src/network-web/downloader.cpp
   src/network-web/downloadmanager.cpp
-  src/network-web/edittableview.cpp
-  src/network-web/autosaver.cpp
-  src/network-web/squeezelabel.cpp
 
   # MAIN sources.
   src/main.cpp
@@ -446,6 +446,8 @@ set(APP_HEADERS
   src/gui/formimportexport.h
   src/gui/formbackupdatabasesettings.h
   src/gui/formrestoredatabasesettings.h
+  src/gui/edittableview.h
+  src/gui/squeezelabel.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -460,6 +462,7 @@ set(APP_HEADERS
   src/miscellaneous/databasefactory.h
   src/miscellaneous/iconfactory.h
   src/miscellaneous/skinfactory.h
+  src/miscellaneous/autosaver.h
 
   # CORE headers.
   src/core/messagesmodel.h
@@ -479,9 +482,6 @@ set(APP_HEADERS
   src/network-web/webview.h
   src/network-web/downloader.h
   src/network-web/downloadmanager.h
-  src/network-web/edittableview.h
-  src/network-web/autosaver.h
-  src/network-web/squeezelabel.h
 )
 
 # APP form files.
