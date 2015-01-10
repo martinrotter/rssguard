@@ -23,23 +23,25 @@
 
 #include "gui/tabcontent.h"
 
-#include <qnetworkreply.h>
+#include <QNetworkReply>
+#include <QFile>
+#include <QDateTime>
 
-#include <qfile.h>
-#include <qdatetime.h>
+
+class AutoSaver;
+class DownloadModel;
+class QFileIconProvider;
+class QMimeData;
 
 class DownloadItem : public QWidget, public Ui_DownloadItem {
     Q_OBJECT
 
     friend class DownloadManager;
-
-  signals:
-    void statusChanged();
-    void progress(qint64 bytesReceived = 0, qint64 bytesTotal = 0);
-    void downloadFinished();
+    friend class DownloadModel;
 
   public:
-    DownloadItem(QNetworkReply *reply = 0, bool requestFileName = false, QWidget *parent = 0);
+    explicit DownloadItem(QNetworkReply *reply = 0, bool request_file_name = false, QWidget *parent = 0);
+
     bool downloading() const;
     bool downloadedSuccessfully() const;
 
@@ -48,21 +50,21 @@ class DownloadItem : public QWidget, public Ui_DownloadItem {
     double remainingTime() const;
     double currentSpeed() const;
 
-    QUrl m_url;
-
-    QFile m_output;
-    QNetworkReply *m_reply;
-
   private slots:
     void stop();
     void tryAgain();
-    void open();
+    void openFile();
 
     void downloadReadyRead();
     void error(QNetworkReply::NetworkError code);
     void downloadProgress(qint64 bytesReceived, qint64 bytesTotal);
     void metaDataChanged();
     void finished();
+
+  signals:
+    void statusChanged();
+    void progress(qint64 bytesReceived = 0, qint64 bytesTotal = 0);
+    void downloadFinished();
 
   private:
     void getFileName();
@@ -71,22 +73,18 @@ class DownloadItem : public QWidget, public Ui_DownloadItem {
 
     QString saveFileName(const QString &directory) const;
 
-    bool m_requestFileName;
+    QUrl m_url;
+    QFile m_output;
+    QNetworkReply *m_reply;
     qint64 m_bytesReceived;
     QTime m_downloadTime;
+    QTime m_lastProgressTime;
+    bool m_requestFileName;
     bool m_startedSaving;
     bool m_finishedDownloading;
     bool m_gettingFileName;
     bool m_canceledFileSelect;
-    QTime m_lastProgressTime;
 };
-
-class AutoSaver;
-class DownloadModel;
-QT_BEGIN_NAMESPACE
-class QFileIconProvider;
-class QMimeData;
-QT_END_NAMESPACE
 
 class DownloadManager : public TabContent, public Ui_DownloadManager {
     Q_OBJECT
@@ -153,6 +151,7 @@ class DownloadModel : public QAbstractListModel {
 
   public:
     DownloadModel(DownloadManager *downloadManager, QObject *parent = 0);
+
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());

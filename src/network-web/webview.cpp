@@ -161,7 +161,7 @@ void WebView::initializeActions() {
 
   m_actionSaveHyperlinkAs = pageAction(QWebPage::DownloadLinkToDisk);
   m_actionSaveHyperlinkAs->setParent(this);
-  m_actionSaveHyperlinkAs->setText(tr("Save as..."));
+  m_actionSaveHyperlinkAs->setText(tr("Save target as..."));
   m_actionSaveHyperlinkAs->setToolTip(tr("Download content from the hyperlink."));
 
   m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
@@ -203,6 +203,7 @@ void WebView::initializeActions() {
 }
 
 void WebView::displayErrorPage() {
+  /*
   setHtml(qApp->skins()->currentMarkupLayout().arg(
             tr("Error page"),
             qApp->skins()->currentMarkup().arg(tr("Page not found"),
@@ -216,6 +217,7 @@ void WebView::displayErrorPage() {
                                                   "<li>many other things.</li>"
                                                   "</ul>"),
                                                QDateTime::currentDateTime().toString(Qt::DefaultLocaleShortDate))));
+  */
 }
 
 void WebView::popupContextMenu(const QPoint &pos) {

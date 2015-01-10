@@ -30,6 +30,122 @@
     </message>
 </context>
 <context>
+    <name>DownloadDialog</name>
+    <message>
+        <source>Downloading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DownloadItem</name>
+    <message>
+        <source>Ico</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished">Stopp</translation>
+    </message>
+    <message>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download canceled: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download directory (%1) couldn&apos;t be created.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error opening output file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error saving: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network Error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 - Download Complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Try again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DownloadManager</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clean up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are %1 downloads in progress
+Do you want to quit anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GB</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -1336,6 +1452,10 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
         <source>Switch message list layout orientation</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1709,10 +1829,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Extern webbläsare</translation>
     </message>
     <message>
-        <source>Remove all read messages from all standard feeds on application exit</source>
-        <translation>Ta bort alla lästa meddelanden från samtliga flöden vid programavslut</translation>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>VARNING! Notera att byte till en annan datalagringstyp INTE kopierar befintliga data från den aktiva datalagringen till den nyvalda.</translation>
     </message>
@@ -1967,6 +2083,18 @@ Du måste starta om manuellt.</translation>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all feeds on application exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove duplicate messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2457,6 +2585,10 @@ Olästa nyheter: %2</translation>
         <source>Open new web browser tab.</source>
         <translation>Öppna ny webbläsarflik.</translation>
     </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
@@ -2595,18 +2727,6 @@ Olästa nyheter: %2</translation>
         <translation>Öppna bild i ny flik</translation>
     </message>
     <message>
-        <source>Page not found</source>
-        <translation>Sidan kan inte hittas</translation>
-    </message>
-    <message>
-        <source>Check your internet connection or website address</source>
-        <translation>Kontrollera din Internetanslutning och/eller webbadressen</translation>
-    </message>
-    <message>
-        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Detta fel kan ha orsakats av:&lt;br&gt;&lt;ul&gt;&lt;li&gt;Icke fungerande Internetanslutning,&lt;/li&gt;&lt;li&gt;felaktig webbadress,&lt;/li&gt;&lt;li&gt;felaktiga proxyserverinställningar,&lt;/li&gt;&lt;li&gt;strömavbrott på måldestinationen&lt;/li&gt;och/eller&lt;li&gt;många andra saker.&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Web browser</source>
         <translation>Webbläsare</translation>
     </message>
@@ -2617,10 +2737,6 @@ Olästa nyheter: %2</translation>
     <message>
         <source>Hyperlink</source>
         <translation>Hyperlänk</translation>
-    </message>
-    <message>
-        <source>Error page</source>
-        <translation>Felsida</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
@@ -2672,6 +2788,34 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Print current web page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTML web pages (*.html)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination file for web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot save web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web page cannot be saved because destination file is not writtable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save target as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download content from the hyperlink.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save page as...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

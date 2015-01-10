@@ -30,6 +30,124 @@
     </message>
 </context>
 <context>
+    <name>DownloadDialog</name>
+    <message>
+        <source>Downloading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DownloadItem</name>
+    <message>
+        <source>Ico</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished">Zastavit</translation>
+    </message>
+    <message>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download canceled: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download directory (%1) couldn&apos;t be created.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error opening output file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error saving: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network Error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 - Download Complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Try again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DownloadManager</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clean up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are %1 downloads in progress
+Do you want to quit anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GB</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -1339,6 +1457,10 @@ and/or settings were backed or not. Also make sure that target foder is writable
         <source>Switch message list layout orientation</source>
         <translation>Přepnout orientaci rozložení seznamu zpráv</translation>
     </message>
+    <message>
+        <source>&amp;Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1711,10 +1833,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Externí webový prohlížeč</translation>
     </message>
     <message>
-        <source>Remove all read messages from all standard feeds on application exit</source>
-        <translation>Smazat všechny přečtené zprávy ze všech kanálů při vypnutí aplikace</translation>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>VAROVÁNÍ: Mějte na paměti, že přepnutí z jednoho databázového backendu na jiný neprovede zkopírování dat mezi těmito backendy.</translation>
     </message>
@@ -1970,6 +2088,18 @@ Musíte restartovat manuálně.</translation>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
         <translation>Spustitelné soubory (*)</translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all feeds on application exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove duplicate messages</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2457,6 +2587,10 @@ Nepřečtené zprávy: %2</translation>
         <source>Open new web browser tab.</source>
         <translation>Otevřít nový tab webového prohlížeče.</translation>
     </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
@@ -2595,18 +2729,6 @@ Nepřečtené zprávy: %2</translation>
         <translation>Otevřít obrázek v novém panelu</translation>
     </message>
     <message>
-        <source>Page not found</source>
-        <translation>Stránka nenalezena</translation>
-    </message>
-    <message>
-        <source>Check your internet connection or website address</source>
-        <translation>Zkontrolujte Vaše internetové připojení a adresu webové stránky</translation>
-    </message>
-    <message>
-        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Tuto chybu může způsobit:&lt;br&gt;&lt;ul&gt;&lt;li&gt;nefunkční internetové připojení,&lt;/li&gt;&lt;li&gt;nesprávně zadaná webová adresa,&lt;/li&gt;&lt;li&gt;špatně nastavená proxy,&lt;/li&gt;&lt;li&gt;výpadek cílového webu,&lt;/li&gt;&lt;li&gt;mnoho dalších věcí.&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Web browser</source>
         <translation>Webový prohlížeč</translation>
     </message>
@@ -2617,10 +2739,6 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <source>Hyperlink</source>
         <translation>Hypertextový odkaz</translation>
-    </message>
-    <message>
-        <source>Error page</source>
-        <translation>Chyba</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
@@ -2673,6 +2791,34 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <source>Print current web page.</source>
         <translation>Vytisknout aktuální webovou stránku.</translation>
+    </message>
+    <message>
+        <source>HTML web pages (*.html)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination file for web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot save web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web page cannot be saved because destination file is not writtable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save target as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download content from the hyperlink.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save page as...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

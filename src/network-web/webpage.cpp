@@ -58,6 +58,7 @@ void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
       }
 
     default:
+      //reply->deleteLater();
       return;
   }
 }
@@ -69,6 +70,12 @@ QString WebPage::toHtml() const {
 bool WebPage::acceptNavigationRequest(QWebFrame *frame,
                                       const QNetworkRequest &request,
                                       QWebPage::NavigationType type) {
+  QString scheme = request.url().scheme();
+
+  if (scheme == "mailto" || scheme == "ftp") {
+    return false;
+  }
+
   if (type == QWebPage::NavigationTypeLinkClicked &&
       frame == mainFrame()) {
     // Make sure that appropriate signal is emitted even if

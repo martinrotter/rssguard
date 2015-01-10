@@ -19,61 +19,51 @@
 
 #include "miscellaneous/autosaver.h"
 #include "miscellaneous/application.h"
-
+#include "gui/formmain.h"
+#include "gui/tabwidget.h"
 #include "network-web/silentnetworkaccessmanager.h"
 
 #include <math.h>
 
-#include <qdesktopservices.h>
-#include <qfiledialog.h>
-#include <qfileiconprovider.h>
-#include <qheaderview.h>
-#include <qmessagebox.h>
-#include <qmetaobject.h>
-#include <qmimedata.h>
-#include <qprocess.h>
-#include <qsettings.h>
+#include <QDesktopServices>
+#include <QFileDialog>
+#include <QFileIconProvider>
+#include <QHeaderView>
+#include <QMessageBox>
+#include <QMetaObject>
+#include <QMimeData>
+#include <QMetaEnum>
+#include <QProcess>
+#include <QSettings>
+#include <QDebug>
+#include <QWebSettings>
 
-#include <qdebug.h>
 
-#include <qwebsettings.h>
-
-/*!
-    DownloadItem is a widget that is displayed in the download manager list.
-    It moves the data from the QNetworkReply into the QFile as well
-    as update the information/progressbar and report errors.
- */
-DownloadItem::DownloadItem(QNetworkReply *reply, bool requestFileName, QWidget *parent)
-  : QWidget(parent)
-  , m_reply(reply)
-  , m_requestFileName(requestFileName)
-  , m_bytesReceived(0)
-  , m_startedSaving(false)
-  , m_finishedDownloading(false)
-  , m_gettingFileName(false)
-  , m_canceledFileSelect(false)
-{
+DownloadItem::DownloadItem(QNetworkReply *reply, bool request_file_name, QWidget *parent) : QWidget(parent), m_reply(reply),
+  m_bytesReceived(0), m_requestFileName(request_file_name), m_startedSaving(false), m_finishedDownloading(false),
+  m_gettingFileName(false), m_canceledFileSelect(false) {
   setupUi(this);
-  QPalette p = downloadInfoLabel->palette();
-  p.setColor(QPalette::Text, Qt::darkGray);
-  downloadInfoLabel->setPalette(p);
-  progressBar->setMaximum(0);
+
   tryAgainButton->hide();
+
   connect(stopButton, SIGNAL(clicked()), this, SLOT(stop()));
-  connect(openButton, SIGNAL(clicked()), this, SLOT(open()));
+  connect(openButton, SIGNAL(clicked()), this, SLOT(openFile()));
   connect(tryAgainButton, SIGNAL(clicked()), this, SLOT(tryAgain()));
 
-  if (!requestFileName) {
+  if (!request_file_name) {
     QSettings settings;
     settings.beginGroup(QLatin1String("downloadmanager"));
     m_requestFileName = settings.value(QLatin1String("alwaysPromptForFileName"), false).toBool();
   }
 
+  /*if (reply != NULL) {
+    reply->deleteLater();
+  }*/
+
   init();
 }
 
-void DownloadItem::init()
-{
+void DownloadItem::init() {
   if (!m_reply)
     return;
 
@@ -174,10 +164,6 @@ QString DownloadItem::saveFileName(const QString &directory) const
 
   if (baseName.isEmpty()) {
     baseName = QLatin1String("unnamed_download");
-
-#ifdef DOWNLOADMANAGER_DEBUG
-    qDebug() << "DownloadItem::" << __FUNCTION__ << "downloading unknown file:" << m_url;
-#endif
   }
 
   if (!endName.isEmpty())
@@ -206,15 +192,14 @@ void DownloadItem::stop()
   emit downloadFinished();
 }
 
-void DownloadItem::open()
-{
+void DownloadItem::openFile() {
   QFileInfo info(m_output);
   QUrl url = QUrl::fromLocalFile(info.absoluteFilePath());
+
   QDesktopServices::openUrl(url);
 }
 
-void DownloadItem::tryAgain()
-{
+void DownloadItem::tryAgain() {
   if (!tryAgainButton->isEnabled())
     return;
 
@@ -264,10 +249,6 @@ void DownloadItem::downloadReadyRead()
 
 void DownloadItem::error(QNetworkReply::NetworkError)
 {
-#ifdef DOWNLOADMANAGER_DEBUG
-  qDebug() << "DownloadItem::" << __FUNCTION__ << m_reply->errorString() << m_url;
-#endif
-
   downloadInfoLabel->setText(tr("Network Error: %1").arg(m_reply->errorString()));
   tryAgainButton->setEnabled(true);
   tryAgainButton->setVisible(true);
@@ -284,10 +265,6 @@ void DownloadItem::metaDataChanged()
     init();
     return;
   }
-
-#ifdef DOWNLOADMANAGER_DEBUG
-  qDebug() << "DownloadItem::" << __FUNCTION__ << "not handled.";
-#endif
 }
 
 void DownloadItem::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
@@ -486,30 +463,27 @@ void DownloadManager::download(const QUrl &url, bool requestFileName) {
 
 void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool requestFileName)
 {
-  if (!reply || reply->url().isEmpty())
+  if (reply == NULL || reply->url().isEmpty()) {
     return;
+  }
 
   QVariant header = reply->header(QNetworkRequest::ContentLengthHeader);
   bool ok;
   int size = header.toInt(&ok);
-  if (ok && size == 0)
-    return;
 
-#ifdef DOWNLOADMANAGER_DEBUG
-  qDebug() << "DownloadManager::" << __FUNCTION__ << reply->url() << "requestFileName" << requestFileName;
-#endif
+  if (ok && size == 0) {
+    return;
+  }
 
   DownloadItem *item = new DownloadItem(reply, requestFileName, this);
   addItem(item);
 
-  if (item->m_canceledFileSelect)
+  if (item->m_canceledFileSelect) {
     return;
-  /*
-    if (!isVisible())
-        show();
+  }
 
-    activateWindow();
-    raise();*/
+  // TODO: zobrazit ted.
+  qApp->mainForm()->tabWidget()->showDownloadManager();
 }
 
 void DownloadManager::addItem(DownloadItem *item)

@@ -30,6 +30,122 @@
     </message>
 </context>
 <context>
+    <name>DownloadDialog</name>
+    <message>
+        <source>Downloading %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DownloadItem</name>
+    <message>
+        <source>Ico</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished">Stop</translation>
+    </message>
+    <message>
+        <source>Save File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download canceled: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download directory (%1) couldn&apos;t be created.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error opening output file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error saving: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network Error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3/sec) - %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 - Download Complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Try again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DownloadManager</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clean up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There are %1 downloads in progress
+Do you want to quit anyway?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minutes remaining</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n seconds remaining</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>bytes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>kB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GB</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -1338,6 +1454,10 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <source>Switch message list layout orientation</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1711,10 +1831,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Externe webbrowser</translation>
     </message>
     <message>
-        <source>Remove all read messages from all standard feeds on application exit</source>
-        <translation>Verwijder de gelezen berichten van alle standaard feeds als rssguard sluit</translation>
-    </message>
-    <message>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation>WAARSCHUWING: Let op dat de overstap naar een ander type gegevens opslag NIET bestaande gegevens van dat moment kopiëren naar nieuw geselecteerde gegevens opslag.</translation>
     </message>
@@ -1969,6 +2085,18 @@ Je moet handmatig herstarten.</translation>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages from all feeds on application exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove duplicate messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2461,6 +2589,10 @@ Ongelezen nieuws: %2</translation>
         <source>Open new web browser tab.</source>
         <translation>Open een nieuw webbrowser tabblad.</translation>
     </message>
+    <message>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ToolBarEditor</name>
@@ -2599,18 +2731,6 @@ Ongelezen nieuws: %2</translation>
         <translation>Open afbeelding in nieuw tabblad</translation>
     </message>
     <message>
-        <source>Page not found</source>
-        <translation>Pagina niet gevonden</translation>
-    </message>
-    <message>
-        <source>Check your internet connection or website address</source>
-        <translation>Controleer je internet verbinding of website adres</translation>
-    </message>
-    <message>
-        <source>This failure can be caused by:&lt;br&gt;&lt;ul&gt;&lt;li&gt;non-functional internet connection,&lt;/li&gt;&lt;li&gt;incorrect website address,&lt;/li&gt;&lt;li&gt;bad proxy server settings,&lt;/li&gt;&lt;li&gt;target destination outage,&lt;/li&gt;&lt;li&gt;many other things.&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation>Deze fout kan veroorzaakt worden door:&lt;br&gt;&lt;ul&gt;&lt;li&gt;niet werkende internet verbinding,&lt;/li&gt;&lt;li&gt;onjuiste website adres,&lt;/li&gt;&lt;li&gt;slechte proxy server instelling,&lt;/li&gt;&lt;li&gt;uitval van doellocatie,&lt;/li&gt;&lt;li&gt;of vele andere zaken.&lt;/li&gt;&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Web browser</source>
         <translation>Webbrowser</translation>
     </message>
@@ -2621,10 +2741,6 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Hyperlink</source>
         <translation>Koppeling</translation>
-    </message>
-    <message>
-        <source>Error page</source>
-        <translation>Foutpagina</translation>
     </message>
     <message>
         <source>Reload current web page.</source>
@@ -2676,6 +2792,34 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Print current web page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTML web pages (*.html)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination file for web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot save web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web page cannot be saved because destination file is not writtable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save target as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download content from the hyperlink.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save page as...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
