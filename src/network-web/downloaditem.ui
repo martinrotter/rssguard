@@ -46,7 +46,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="SqueezeLabel" name="fileNameLabel" native="true">
+      <widget class="SqueezeLabel" name="m_fileNameLabel" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -59,7 +59,7 @@
       </widget>
      </item>
      <item>
-      <widget class="SqueezeLabel" name="downloadInfoLabel" native="true">
+      <widget class="SqueezeLabel" name="m_lblInfoDownload" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -79,21 +79,28 @@
       <bool>false</bool>
      </property>
      <property name="text">
-      <string>Try again</string>
+      <string>&amp;Try again</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QToolButton" name="stopButton">
      <property name="text">
-      <string>Stop</string>
+      <string>&amp;Stop</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QToolButton" name="openButton">
      <property name="text">
-      <string>Open file</string>
+      <string>&amp;Open file</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="toolButton">
+     <property name="text">
+      <string>Open &amp;folder</string>
      </property>
     </widget>
    </item>

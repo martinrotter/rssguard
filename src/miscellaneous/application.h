@@ -26,17 +26,12 @@
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/databasefactory.h"
+#include "miscellaneous/iofactory.h"
 #include "gui/systemtrayicon.h"
 #include "network-web/downloadmanager.h"
 
 #include <QMutex>
 #include <QList>
-
-#if QT_VERSION >= 0x050000
-#include <QStandardPaths>
-#else
-#include <QDesktopServices>
-#endif
 
 #if defined(qApp)
 #undef qApp
@@ -128,30 +123,15 @@ class Application : public QtSingleApplication {
     }
 
     inline QString tempFolderPath() {
-#if QT_VERSION >= 0x050000
-      QString temp_directory = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-#else
-      QString temp_directory = QDesktopServices::storageLocation(QDesktopServices::TempLocation);
-#endif
-      return temp_directory;
+      return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::TempLocation);
     }
 
     inline QString documentsFolderPath() {
-#if QT_VERSION >= 0x050000
-      QString doc_directory = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-#else
-      QString doc_directory = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
-#endif
-      return doc_directory;
+      return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DocumentsLocation);
     }
 
     inline QString homeFolderPath() {
-#if QT_VERSION >= 0x050000
-      QString home_path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-#else
-      QString home_path = QDesktopServices::storageLocation(QDesktopServices::HomeLocation);
-#endif
-      return home_path;
+      return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::HomeLocation);
     }
 
     bool backupDatabaseSettings(bool backup_database, bool backup_settings, const QString &target_path, const QString &backup_name);

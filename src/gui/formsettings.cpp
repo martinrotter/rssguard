@@ -130,6 +130,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
   connect(m_ui->m_cmbSelectToolBar, SIGNAL(currentIndexChanged(int)), m_ui->m_stackedToolbars, SLOT(setCurrentIndex(int)));
   connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
+  connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
 
   // Load all settings.
   loadGeneral();
@@ -140,6 +141,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   loadBrowser();
   loadLanguage();
   loadFeedsMessages();
+  loadDownloads();
 }
 
 FormSettings::~FormSettings() {
@@ -160,6 +162,30 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
   if (current != NULL) {
     Skin skin = current->data(0, Qt::UserRole).value<Skin>();
     m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
+  }
+}
+
+void FormSettings::loadDownloads() {
+  m_ui->m_txtDownloadsTargetDirectory->setText(qApp->settings()->value(GROUP(Downloads),
+                                                                       SETTING(Downloads::TargetDirectory)).toString());
+  m_ui->m_rbDownloadsAskEachFile->setChecked(qApp->settings()->value(GROUP(Downloads),
+                                                                     SETTING(Downloads::AlwaysPromptForFilename)).toBool());
+}
+
+void FormSettings::saveDownloads() {
+  qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetDirectory, m_ui->m_txtDownloadsTargetDirectory->text());
+  qApp->settings()->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename,
+                             m_ui->m_rbDownloadsAskEachFile->isChecked());
+}
+
+void FormSettings::selectDownloadsDirectory() {
+  QString target_directory = QFileDialog::getExistingDirectory(this,
+                                                               tr("Select downloads target directory"),
+                                                               m_ui->m_txtDownloadsTargetDirectory->text()
+                                                               );
+
+  if (!target_directory.isEmpty()) {
+    m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(target_directory));
   }
 }
 
@@ -312,6 +338,7 @@ void FormSettings::saveSettings() {
   saveBrowser();
   saveLanguage();
   saveFeedsMessages();
+  saveDownloads();
 
   qApp->settings()->checkSettings();
   promptForRestart();

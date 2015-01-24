@@ -24,6 +24,7 @@
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "network-web/silentnetworkaccessmanager.h"
 
 // Needed for setting ini file format on Mac OS.
 #ifdef Q_OS_MAC

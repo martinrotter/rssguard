@@ -164,6 +164,17 @@ namespace General {
   VALUE(QString) LanguageDef;
 }
 
+// Downloads.
+namespace Downloads {
+  KEY ID;
+
+  KEY AlwaysPromptForFilename;
+  VALUE(bool) AlwaysPromptForFilenameDef;
+
+  KEY TargetDirectory;
+  VALUE(QString) TargetDirectoryDef;
+}
+
 // Proxy.
 namespace Proxy {
   KEY ID;

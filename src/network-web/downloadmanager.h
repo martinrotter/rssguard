@@ -33,7 +33,7 @@ class DownloadModel;
 class QFileIconProvider;
 class QMimeData;
 
-class DownloadItem : public QWidget, public Ui_DownloadItem {
+class DownloadItem : public QWidget {
     Q_OBJECT
 
     friend class DownloadManager;
@@ -41,12 +41,13 @@ class DownloadItem : public QWidget, public Ui_DownloadItem {
 
   public:
     explicit DownloadItem(QNetworkReply *reply = 0, bool request_file_name = false, QWidget *parent = 0);
+    virtual ~DownloadItem();
 
     bool downloading() const;
     bool downloadedSuccessfully() const;
 
-    qint64 bytesTotal() const;
-    qint64 bytesReceived() const;
+    qint64 bytes_total() const;
+    qint64 bytes_received() const;
     double remainingTime() const;
     double currentSpeed() const;
 
@@ -54,25 +55,26 @@ class DownloadItem : public QWidget, public Ui_DownloadItem {
     void stop();
     void tryAgain();
     void openFile();
+    void openFolder();
 
     void downloadReadyRead();
     void error(QNetworkReply::NetworkError code);
-    void downloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+    void downloadProgress(qint64 bytes_received, qint64 bytes_total);
     void metaDataChanged();
     void finished();
 
   signals:
     void statusChanged();
-    void progress(qint64 bytesReceived = 0, qint64 bytesTotal = 0);
+    void progress(qint64 bytes_received = 0, qint64 bytes_total = 0);
     void downloadFinished();
 
   private:
     void getFileName();
     void init();
     void updateInfoLabel();
-
     QString saveFileName(const QString &directory) const;
 
+    Ui::DownloadItem *m_ui;
     QUrl m_url;
     QFile m_output;
     QNetworkReply *m_reply;
@@ -86,7 +88,7 @@ class DownloadItem : public QWidget, public Ui_DownloadItem {
     bool m_canceledFileSelect;
 };
 
-class DownloadManager : public TabContent, public Ui_DownloadManager {
+class DownloadManager : public TabContent {
     Q_OBJECT
     Q_PROPERTY(RemovePolicy removePolicy READ removePolicy WRITE setRemovePolicy)
     Q_ENUMS(RemovePolicy)
@@ -100,8 +102,8 @@ class DownloadManager : public TabContent, public Ui_DownloadManager {
       SuccessFullDownload
     };
 
-    DownloadManager(QWidget *parent = 0);
-    ~DownloadManager();
+    explicit DownloadManager(QWidget *parent = 0);
+    virtual ~DownloadManager();
 
     WebBrowser *webBrowser();
     QNetworkAccessManager *networkManager() const;
@@ -112,16 +114,16 @@ class DownloadManager : public TabContent, public Ui_DownloadManager {
     RemovePolicy removePolicy() const;
     void setRemovePolicy(RemovePolicy policy);
 
-    static QString timeString(double timeRemaining);
+    static QString timeString(double time_remaining);
     static QString dataString(qint64 size);
 
     void setDownloadDirectory(const QString &directory);
     QString downloadDirectory();
 
   public slots:
-    void download(const QNetworkRequest &request, bool requestFileName = false);
-    void download(const QUrl &url, bool requestFileName = false);
-    void handleUnsupportedContent(QNetworkReply *reply, bool requestFileName = false);
+    void download(const QNetworkRequest &request, bool request_filename = false);
+    void download(const QUrl &url, bool request_filename = false);
+    void handleUnsupportedContent(QNetworkReply *reply, bool request_filename = false);
     void cleanup();
 
   private slots:
@@ -133,8 +135,8 @@ class DownloadManager : public TabContent, public Ui_DownloadManager {
   private:
     void addItem(DownloadItem *item);
     void load();
-    void updateActiveItemCount();
 
+    Ui::DownloadManager *m_ui;
     AutoSaver *m_autoSaver;
     DownloadModel *m_model;
     QNetworkAccessManager *m_networkManager;
@@ -150,7 +152,7 @@ class DownloadModel : public QAbstractListModel {
     friend class DownloadManager;
 
   public:
-    DownloadModel(DownloadManager *downloadManager, QObject *parent = 0);
+    explicit DownloadModel(DownloadManager *download_manager, QObject *parent = 0);
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;

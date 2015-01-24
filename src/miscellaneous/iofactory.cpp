@@ -25,6 +25,14 @@
 IOFactory::IOFactory() {
 }
 
+QString IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location) {
+#if QT_VERSION >= 0x050000
+  return SYSTEM_FOLDER_ENUM::writableLocation(location);
+#else
+  return SYSTEM_FOLDER_ENUM::storageLocation(location);
+#endif
+}
+
 bool IOFactory::copyFile(const QString &source, const QString &destination) {
   if (QFile::exists(destination)) {
     if (!QFile::remove(destination)) {
@@ -36,8 +44,8 @@ bool IOFactory::copyFile(const QString &source, const QString &destination) {
 }
 
 bool IOFactory::removeFolder(const QString& directory_name,
-                                const QStringList& exception_file_list,
-                                const QStringList& exception_folder_list) {
+                             const QStringList& exception_file_list,
+                             const QStringList& exception_folder_list) {
   bool result = true;
   QDir dir(directory_name);
 

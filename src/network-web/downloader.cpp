@@ -31,7 +31,7 @@ Downloader::Downloader(QObject *parent)
   m_timer->setSingleShot(true);
 
   connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
-  connect(m_downloadManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
+  //connect(m_downloadManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
 }
 
 Downloader::~Downloader() {
@@ -67,7 +67,9 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
   runGetRequest(request);
 }
 
-void Downloader::finished(QNetworkReply *reply) {
+void Downloader::finished() {
+  QNetworkReply *reply = static_cast<QNetworkReply*>(sender());
+
   m_timer->stop();
 
   // In this phase, some part of downloading process is completed.
@@ -124,6 +126,7 @@ void Downloader::runGetRequest(const QNetworkRequest &request) {
   m_activeReply = m_downloadManager->get(request);
 
   connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
+  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
 }
 
 QVariant Downloader::lastContentType() const {

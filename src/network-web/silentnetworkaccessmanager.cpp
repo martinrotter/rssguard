@@ -17,6 +17,8 @@
 
 #include "network-web/silentnetworkaccessmanager.h"
 
+#include "miscellaneous/application.h"
+
 #include <QNetworkReply>
 #include <QAuthenticator>
 
@@ -38,15 +40,14 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, 
     // This feed contains authentication information, it is good.
     authenticator->setUser(originating_object->property("username").toString());
     authenticator->setPassword(originating_object->property("password").toString());
+    reply->setProperty("authentication-given", true);
 
     qDebug("Feed '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
-
-    reply->setProperty("authentication-given", true);
   }
   else {
+    reply->setProperty("authentication-given", false);
+
     // Authentication is required but this feed does not contain it.
     qDebug("Feed '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
-
-    reply->setProperty("authentication-given", false);
   }
 }

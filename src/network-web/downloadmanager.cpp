@@ -22,6 +22,7 @@
 #include "gui/formmain.h"
 #include "gui/tabwidget.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/webbrowsernetworkaccessmanager.h"
 
 #include <math.h>
 
@@ -39,58 +40,52 @@
 #include <QWebSettings>
 
 
-DownloadItem::DownloadItem(QNetworkReply *reply, bool request_file_name, QWidget *parent) : QWidget(parent), m_reply(reply),
+DownloadItem::DownloadItem(QNetworkReply *reply, bool request_file_name, QWidget *parent) : QWidget(parent),
+  m_ui(new Ui::DownloadItem), m_reply(reply),
   m_bytesReceived(0), m_requestFileName(request_file_name), m_startedSaving(false), m_finishedDownloading(false),
   m_gettingFileName(false), m_canceledFileSelect(false) {
-  setupUi(this);
+  m_ui->setupUi(this);
+  m_ui->tryAgainButton->hide();
 
-  tryAgainButton->hide();
-
-  connect(stopButton, SIGNAL(clicked()), this, SLOT(stop()));
-  connect(openButton, SIGNAL(clicked()), this, SLOT(openFile()));
-  connect(tryAgainButton, SIGNAL(clicked()), this, SLOT(tryAgain()));
+  connect(m_ui->stopButton, SIGNAL(clicked()), this, SLOT(stop()));
+  connect(m_ui->openButton, SIGNAL(clicked()), this, SLOT(openFile()));
+  connect(m_ui->tryAgainButton, SIGNAL(clicked()), this, SLOT(tryAgain()));
 
   if (!request_file_name) {
-    QSettings settings;
-    settings.beginGroup(QLatin1String("downloadmanager"));
-    m_requestFileName = settings.value(QLatin1String("alwaysPromptForFileName"), false).toBool();
+    m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
   }
-
-  /*if (reply != NULL) {
-    reply->deleteLater();
-  }*/
 
   init();
 }
 
+DownloadItem::~DownloadItem() {
+  delete m_ui;
+}
+
 void DownloadItem::init() {
-  if (!m_reply)
+  if (m_reply == NULL) {
     return;
+  }
 
   m_startedSaving = false;
   m_finishedDownloading = false;
-
-  openButton->setEnabled(false);
-
-  // attach to the m_reply
+  m_ui->openButton->setEnabled(false);
+  m_ui->toolButton->setEnabled(false);
   m_url = m_reply->url();
   m_reply->setParent(this);
-  connect(m_reply, SIGNAL(readyRead()), this, SLOT(downloadReadyRead()));
-  connect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)),
-          this, SLOT(error(QNetworkReply::NetworkError)));
-  connect(m_reply, SIGNAL(downloadProgress(qint64, qint64)),
-          this, SLOT(downloadProgress(qint64, qint64)));
-  connect(m_reply, SIGNAL(metaDataChanged()),
-          this, SLOT(metaDataChanged()));
-  connect(m_reply, SIGNAL(finished()),
-          this, SLOT(finished()));
 
-  // reset info
-  downloadInfoLabel->clear();
-  progressBar->setValue(0);
+  connect(m_reply, SIGNAL(readyRead()), this, SLOT(downloadReadyRead()));
+  connect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(error(QNetworkReply::NetworkError)));
+  connect(m_reply, SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(downloadProgress(qint64, qint64)));
+  connect(m_reply, SIGNAL(metaDataChanged()), this, SLOT(metaDataChanged()));
+  connect(m_reply, SIGNAL(finished()), this, SLOT(finished()));
+
+  // Reset info.
+  m_ui->m_lblInfoDownload->clear();
+  m_ui->progressBar->setValue(0);
   getFileName();
 
-  // start timer for the download estimation
+  // Start timer for the download estimation.
   m_downloadTime.start();
 
   if (m_reply->error() != QNetworkReply::NoError) {
@@ -99,82 +94,95 @@ void DownloadItem::init() {
   }
 }
 
-void DownloadItem::getFileName()
-{
-  if (m_gettingFileName)
+void DownloadItem::getFileName() {
+  if (m_gettingFileName) {
     return;
+  }
 
-  QString downloadDirectory = qApp->downloadManager()->downloadDirectory();
+  QString download_directory = qApp->downloadManager()->downloadDirectory();
+  QString default_filename = saveFileName(download_directory);
+  QString chosen_filename = default_filename;
 
-  QString defaultFileName = saveFileName(downloadDirectory);
-  QString fileName = defaultFileName;
   if (m_requestFileName) {
     m_gettingFileName = true;
-    fileName = QFileDialog::getSaveFileName(this, tr("Save File"), defaultFileName);
+    chosen_filename = QFileDialog::getSaveFileName(this, tr("Select destination for downloaded file"), default_filename);
     m_gettingFileName = false;
-    if (fileName.isEmpty()) {
-      progressBar->setVisible(false);
+
+    if (chosen_filename.isEmpty()) {
       stop();
-      fileNameLabel->setText(tr("Download canceled: %1").arg(QFileInfo(defaultFileName).fileName()));
+
+      m_ui->progressBar->setVisible(false);
+      m_ui->m_fileNameLabel->setText(tr("Download for %1 cancelled").arg(QFileInfo(default_filename).fileName()));
       m_canceledFileSelect = true;
       return;
     }
-    QFileInfo fileInfo = QFileInfo(fileName);
-    qApp->downloadManager()->setDownloadDirectory(fileInfo.absoluteDir().absolutePath());
-    fileNameLabel->setText(fileInfo.fileName());
+
+    QFileInfo file_info = QFileInfo(chosen_filename);
+
+    qApp->downloadManager()->setDownloadDirectory(file_info.absoluteDir().absolutePath());
+    m_ui->m_fileNameLabel->setText(file_info.fileName());
   }
-  m_output.setFileName(fileName);
+
+  m_output.setFileName(chosen_filename);
 
   // Check file path for saving.
-  QDir saveDirPath = QFileInfo(m_output.fileName()).dir();
-  if (!saveDirPath.exists()) {
-    if (!saveDirPath.mkpath(saveDirPath.absolutePath())) {
-      progressBar->setVisible(false);
-      stop();
-      downloadInfoLabel->setText(tr("Download directory (%1) couldn't be created.").arg(saveDirPath.absolutePath()));
-      return;
-    }
+  QDir save_dir = QFileInfo(m_output.fileName()).dir();
+
+  if (!save_dir.exists() && !save_dir.mkpath(save_dir.absolutePath())) {
+    stop();
+
+    m_ui->progressBar->setVisible(false);
+    m_ui->m_lblInfoDownload->setText(tr("Download directory %1 couldn't be created").arg(QDir::toNativeSeparators(save_dir.absolutePath())));
+    return;
   }
 
-  fileNameLabel->setText(QFileInfo(m_output.fileName()).fileName());
-  if (m_requestFileName)
+  m_ui->m_fileNameLabel->setText(QFileInfo(m_output.fileName()).fileName());
+
+  if (m_requestFileName) {
     downloadReadyRead();
+  }
 }
 
-QString DownloadItem::saveFileName(const QString &directory) const
-{
-  // Move this function into QNetworkReply to also get file name sent from the server
+QString DownloadItem::saveFileName(const QString &directory) const {
   QString path;
+
   if (m_reply->hasRawHeader("Content-Disposition")) {
     QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
     int pos = value.indexOf(QLatin1String("filename="));
+
     if (pos != -1) {
       QString name = value.mid(pos + 9);
-      if (name.startsWith(QLatin1Char('"')) && name.endsWith(QLatin1Char('"')))
+
+      if (name.startsWith(QLatin1Char('"')) && name.endsWith(QLatin1Char('"'))) {
         name = name.mid(1, name.size() - 2);
+      }
+
       path = name;
     }
   }
-  if (path.isEmpty())
+
+  if (path.isEmpty()) {
     path = m_url.path();
-
-  QFileInfo info(path);
-  QString baseName = info.completeBaseName();
-  QString endName = info.suffix();
-
-  if (baseName.isEmpty()) {
-    baseName = QLatin1String("unnamed_download");
   }
 
-  if (!endName.isEmpty())
-    endName = QLatin1Char('.') + endName;
+  QFileInfo info(path);
+  QString base_name = info.completeBaseName();
+  QString end_name = info.suffix();
 
-  QString name = directory + baseName + endName;
+  if (base_name.isEmpty()) {
+    base_name = QLatin1String("unnamed_download");
+  }
+
+  if (!end_name.isEmpty()) {
+    end_name = QLatin1Char('.') + end_name;
+  }
+
+  QString name = directory + base_name + end_name;
   if (!m_requestFileName && QFile::exists(name)) {
     // already exists, don't overwrite
     int i = 1;
     do {
-      name = directory + baseName + QLatin1Char('-') + QString::number(i++) + endName;
+      name = directory + base_name + QLatin1Char('-') + QString::number(i++) + end_name;
     } while (QFile::exists(name));
   }
   return name;
@@ -183,10 +191,10 @@ QString DownloadItem::saveFileName(const QString &directory) const
 void DownloadItem::stop()
 {
   setUpdatesEnabled(false);
-  stopButton->setEnabled(false);
-  stopButton->hide();
-  tryAgainButton->setEnabled(true);
-  tryAgainButton->show();
+  m_ui->stopButton->setEnabled(false);
+  m_ui->stopButton->hide();
+  m_ui->tryAgainButton->setEnabled(true);
+  m_ui->tryAgainButton->show();
   setUpdatesEnabled(true);
   m_reply->abort();
   emit downloadFinished();
@@ -199,15 +207,19 @@ void DownloadItem::openFile() {
   QDesktopServices::openUrl(url);
 }
 
+void DownloadItem::openFolder() {
+  // TODO: pouze na windows, otevrit explorer, jinde schovat tlacitko Open folder.
+}
+
 void DownloadItem::tryAgain() {
-  if (!tryAgainButton->isEnabled())
+  if (!m_ui->tryAgainButton->isEnabled())
     return;
 
-  tryAgainButton->setEnabled(false);
-  tryAgainButton->setVisible(false);
-  stopButton->setEnabled(true);
-  stopButton->setVisible(true);
-  progressBar->setVisible(true);
+  m_ui->tryAgainButton->setEnabled(false);
+  m_ui->tryAgainButton->setVisible(false);
+  m_ui->stopButton->setEnabled(true);
+  m_ui->stopButton->setVisible(true);
+  m_ui->progressBar->setVisible(true);
 
   QNetworkReply *r = qApp->downloadManager()->networkManager()->get(QNetworkRequest(m_url));
   if (m_reply)
@@ -228,8 +240,8 @@ void DownloadItem::downloadReadyRead()
     if (!m_requestFileName)
       getFileName();
     if (!m_output.open(QIODevice::WriteOnly)) {
-      downloadInfoLabel->setText(tr("Error opening output file: %1")
-                                 .arg(m_output.errorString()));
+      m_ui->m_lblInfoDownload->setText(tr("Error opening output file: %1")
+                                       .arg(m_output.errorString()));
       stop();
       emit statusChanged();
       return;
@@ -237,9 +249,9 @@ void DownloadItem::downloadReadyRead()
     emit statusChanged();
   }
   if (-1 == m_output.write(m_reply->readAll())) {
-    downloadInfoLabel->setText(tr("Error saving: %1")
-                               .arg(m_output.errorString()));
-    stopButton->click();
+    m_ui->m_lblInfoDownload->setText(tr("Error saving: %1")
+                                     .arg(m_output.errorString()));
+    m_ui->stopButton->click();
   } else {
     m_startedSaving = true;
     if (m_finishedDownloading)
@@ -249,9 +261,10 @@ void DownloadItem::downloadReadyRead()
 
 void DownloadItem::error(QNetworkReply::NetworkError)
 {
-  downloadInfoLabel->setText(tr("Network Error: %1").arg(m_reply->errorString()));
-  tryAgainButton->setEnabled(true);
-  tryAgainButton->setVisible(true);
+  m_ui->m_lblInfoDownload->setText(tr("Error: %1").arg(m_reply->errorString()));
+  m_ui->tryAgainButton->setEnabled(true);
+  m_ui->tryAgainButton->setVisible(true);
+
   emit downloadFinished();
 }
 
@@ -267,34 +280,33 @@ void DownloadItem::metaDataChanged()
   }
 }
 
-void DownloadItem::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
-{
+void DownloadItem::downloadProgress(qint64 bytes_received, qint64 bytes_total) {
   QTime now = QTime::currentTime();
-  if (m_lastProgressTime.msecsTo(now) < 200)
+  if (m_lastProgressTime.msecsTo(now) < 25)
     return;
 
   m_lastProgressTime = now;
 
-  m_bytesReceived = bytesReceived;
+  m_bytesReceived = bytes_received;
   qint64 currentValue = 0;
   qint64 totalValue = 0;
-  if (bytesTotal > 0) {
-    currentValue = bytesReceived * 100 / bytesTotal;
+  if (bytes_total > 0) {
+    currentValue = bytes_received * 100 / bytes_total;
     totalValue = 100;
   }
-  progressBar->setValue(currentValue);
-  progressBar->setMaximum(totalValue);
+  m_ui->progressBar->setValue(currentValue);
+  m_ui->progressBar->setMaximum(totalValue);
 
   emit progress(currentValue, totalValue);
   updateInfoLabel();
 }
 
-qint64 DownloadItem::bytesTotal() const
+qint64 DownloadItem::bytes_total() const
 {
   return m_reply->header(QNetworkRequest::ContentLengthHeader).toULongLong();
 }
 
-qint64 DownloadItem::bytesReceived() const
+qint64 DownloadItem::bytes_received() const
 {
   return m_bytesReceived;
 }
@@ -304,7 +316,7 @@ double DownloadItem::remainingTime() const
   if (!downloading())
     return -1.0;
 
-  double timeRemaining = ((double)(bytesTotal() - bytesReceived())) / currentSpeed();
+  double timeRemaining = ((double)(bytes_total() - bytes_received())) / currentSpeed();
 
   // When downloading the eta should never be 0
   if (timeRemaining == 0)
@@ -354,17 +366,17 @@ void DownloadItem::updateInfoLabel()
              .arg(DownloadManager::dataString(m_bytesReceived))
              .arg(DownloadManager::dataString(bytesTotal));
   }
-  downloadInfoLabel->setText(info);
+  m_ui->m_lblInfoDownload->setText(info);
 }
 
 bool DownloadItem::downloading() const
 {
-  return (progressBar->isVisible());
+  return (m_ui->progressBar->isVisible());
 }
 
 bool DownloadItem::downloadedSuccessfully() const
 {
-  return (stopButton->isHidden() && tryAgainButton->isHidden());
+  return (m_ui->stopButton->isHidden() && m_ui->tryAgainButton->isHidden());
 }
 
 void DownloadItem::finished()
@@ -373,44 +385,30 @@ void DownloadItem::finished()
   if (!m_startedSaving) {
     return;
   }
-  progressBar->hide();
-  stopButton->setEnabled(false);
-  stopButton->hide();
-  openButton->setEnabled(true);
+  m_ui->progressBar->hide();
+  m_ui->stopButton->setEnabled(false);
+  m_ui->stopButton->hide();
+  m_ui->openButton->setEnabled(true);
+  m_ui->toolButton->setEnabled(true);
   m_output.close();
   updateInfoLabel();
   emit statusChanged();
   emit downloadFinished();
 }
 
-/*!
-    DownloadManager is a Dialog that contains a list of DownloadItems
+DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
+  m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
+  m_networkManager(WebBrowserNetworkAccessManager::instance()), m_iconProvider(0), m_removePolicy(Never) {
+  m_ui->setupUi(this);
+  m_ui->downloadsView->setShowGrid(false);
+  m_ui->downloadsView->verticalHeader()->hide();
+  m_ui->downloadsView->horizontalHeader()->hide();
+  m_ui->downloadsView->setAlternatingRowColors(true);
+  m_ui->downloadsView->horizontalHeader()->setStretchLastSection(true);
+  m_ui->downloadsView->setModel(m_model);
 
-    It is a basic download manager.  It only downloads the file, doesn't do BitTorrent,
-    extract zipped files or anything fancy.
-  */
-DownloadManager::DownloadManager(QWidget *parent)
-  : TabContent(parent)
-  , m_autoSaver(new AutoSaver(this))
-  , m_model(new DownloadModel(this))
-  , m_networkManager(new SilentNetworkAccessManager(this))
-  , m_iconProvider(0)
-  , m_removePolicy(Never)
-{
-  setupUi(this);
-
-  QSettings settings;
-  settings.beginGroup(QLatin1String("downloadmanager"));
-  QString defaultLocation = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
-  setDownloadDirectory(settings.value(QLatin1String("downloadDirectory"), defaultLocation).toString());
-
-  downloadsView->setShowGrid(false);
-  downloadsView->verticalHeader()->hide();
-  downloadsView->horizontalHeader()->hide();
-  downloadsView->setAlternatingRowColors(true);
-  downloadsView->horizontalHeader()->setStretchLastSection(true);
-  downloadsView->setModel(m_model);
-  connect(cleanupButton, SIGNAL(clicked()), this, SLOT(cleanup()));
+  setDownloadDirectory(qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString());
+  connect(m_ui->cleanupButton, SIGNAL(clicked()), this, SLOT(cleanup()));
   load();
 }
 
@@ -418,22 +416,25 @@ DownloadManager::~DownloadManager()
 {
   m_autoSaver->changeOccurred();
   m_autoSaver->saveIfNeccessary();
-  if (m_iconProvider)
+
+  if (m_iconProvider) {
     delete m_iconProvider;
+  }
+
+  delete m_ui;
 }
 
 int DownloadManager::activeDownloads() const
 {
   int count = 0;
   for (int i = 0; i < m_downloads.count(); ++i) {
-    if (m_downloads.at(i)->stopButton->isEnabled())
+    if (m_downloads.at(i)->m_ui->stopButton->isEnabled())
       ++count;
   }
   return count;
 }
 
-bool DownloadManager::allowQuit()
-{
+bool DownloadManager::allowQuit() {
   if (activeDownloads() >= 1) {
     int choice = QMessageBox::warning(this, QString(),
                                       tr("There are %1 downloads in progress\n"
@@ -449,19 +450,19 @@ bool DownloadManager::allowQuit()
   return true;
 }
 
-void DownloadManager::download(const QNetworkRequest &request, bool requestFileName)
+void DownloadManager::download(const QNetworkRequest &request, bool request_filename)
 {
   if (request.url().isEmpty())
     return;
 
-  handleUnsupportedContent(m_networkManager->get(request), requestFileName);
+  handleUnsupportedContent(m_networkManager->get(request), request_filename);
 }
 
-void DownloadManager::download(const QUrl &url, bool requestFileName) {
-  download(QNetworkRequest(url), requestFileName);
+void DownloadManager::download(const QUrl &url, bool request_filename) {
+  download(QNetworkRequest(url), request_filename);
 }
 
-void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool requestFileName)
+void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool request_filename)
 {
   if (reply == NULL || reply->url().isEmpty()) {
     return;
@@ -475,50 +476,37 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply, bool reques
     return;
   }
 
-  DownloadItem *item = new DownloadItem(reply, requestFileName, this);
+  DownloadItem *item = new DownloadItem(reply, request_filename, this);
   addItem(item);
 
   if (item->m_canceledFileSelect) {
     return;
   }
 
-  // TODO: zobrazit ted.
   qApp->mainForm()->tabWidget()->showDownloadManager();
 }
 
-void DownloadManager::addItem(DownloadItem *item)
-{
+void DownloadManager::addItem(DownloadItem *item) {
   connect(item, SIGNAL(statusChanged()), this, SLOT(updateRow()));
   connect(item, SIGNAL(downloadFinished()), this, SLOT(finished()));
+
   int row = m_downloads.count();
   m_model->beginInsertRows(QModelIndex(), row, row);
   m_downloads.append(item);
   m_model->endInsertRows();
-  downloadsView->setIndexWidget(m_model->index(row, 0), item);
+  m_ui->downloadsView->setIndexWidget(m_model->index(row, 0), item);
   QIcon icon = style()->standardIcon(QStyle::SP_FileIcon);
-  item->fileIcon->setPixmap(icon.pixmap(48, 48));
-  downloadsView->setRowHeight(row, item->sizeHint().height());
+  item->m_ui->fileIcon->setPixmap(icon.pixmap(48, 48));
+  m_ui->downloadsView->setRowHeight(row, item->sizeHint().height());
   updateRow(item); //incase download finishes before the constructor returns
-  updateActiveItemCount();
 }
 
-void DownloadManager::updateActiveItemCount()
-{
-  int acCount = activeDownloads();
-  if (acCount > 0) {
-    setWindowTitle(QApplication::translate("DownloadDialog", "Downloading %1", 0, QApplication::UnicodeUTF8).arg(acCount));
-  } else {
-    setWindowTitle(QApplication::translate("DownloadDialog", "Downloads", 0, QApplication::UnicodeUTF8));
-  }
-}
-QNetworkAccessManager *DownloadManager::networkManager() const
-{
+QNetworkAccessManager *DownloadManager::networkManager() const {
   return m_networkManager;
 }
 
 void DownloadManager::finished()
 {
-  updateActiveItemCount();
   if (isVisible()) {
     QApplication::alert(this);
   }
@@ -540,10 +528,10 @@ void DownloadManager::updateRow(DownloadItem *item)
   QIcon icon = m_iconProvider->icon(item->m_output.fileName());
   if (icon.isNull())
     icon = style()->standardIcon(QStyle::SP_FileIcon);
-  item->fileIcon->setPixmap(icon.pixmap(48, 48));
+  item->m_ui->fileIcon->setPixmap(icon.pixmap(48, 48));
 
-  int oldHeight = downloadsView->rowHeight(row);
-  downloadsView->setRowHeight(row, qMax(oldHeight, item->minimumSizeHint().height()));
+  int oldHeight = m_ui->downloadsView->rowHeight(row);
+  m_ui->downloadsView->setRowHeight(row, qMax(oldHeight, item->minimumSizeHint().height()));
 
   bool remove = false;
   QWebSettings *globalSettings = QWebSettings::globalSettings();
@@ -558,7 +546,7 @@ void DownloadManager::updateRow(DownloadItem *item)
   if (remove)
     m_model->removeRow(row);
 
-  cleanupButton->setEnabled(m_downloads.count() - activeDownloads() > 0);
+  m_ui->cleanupButton->setEnabled(m_downloads.count() - activeDownloads() > 0);
 }
 
 DownloadManager::RemovePolicy DownloadManager::removePolicy() const
@@ -620,21 +608,20 @@ void DownloadManager::load()
     QString fileName = settings.value(key + QLatin1String("location")).toString();
     bool done = settings.value(key + QLatin1String("done"), true).toBool();
     if (!url.isEmpty() && !fileName.isEmpty()) {
-      DownloadItem *item = new DownloadItem(0, this);
+      DownloadItem *item = new DownloadItem(0, false, this);
       item->m_output.setFileName(fileName);
-      item->fileNameLabel->setText(QFileInfo(item->m_output.fileName()).fileName());
+      item->m_ui->m_fileNameLabel->setText(QFileInfo(item->m_output.fileName()).fileName());
       item->m_url = url;
-      item->stopButton->setVisible(false);
-      item->stopButton->setEnabled(false);
-      item->tryAgainButton->setVisible(!done);
-      item->tryAgainButton->setEnabled(!done);
-      item->progressBar->setVisible(false);
+      item->m_ui->stopButton->setVisible(false);
+      item->m_ui->stopButton->setEnabled(false);
+      item->m_ui->tryAgainButton->setVisible(!done);
+      item->m_ui->tryAgainButton->setEnabled(!done);
+      item->m_ui->progressBar->setVisible(false);
       addItem(item);
     }
     key = QString(QLatin1String("download_%1_")).arg(++i);
   }
-  cleanupButton->setEnabled(m_downloads.count() - activeDownloads() > 0);
-  updateActiveItemCount();
+  m_ui->cleanupButton->setEnabled(m_downloads.count() - activeDownloads() > 0);
 }
 
 void DownloadManager::cleanup()
@@ -642,7 +629,6 @@ void DownloadManager::cleanup()
   if (m_downloads.isEmpty())
     return;
   m_model->removeRows(0, m_downloads.count());
-  updateActiveItemCount();
   if (m_downloads.isEmpty() && m_iconProvider) {
     delete m_iconProvider;
     m_iconProvider = 0;
@@ -662,18 +648,18 @@ QString DownloadManager::downloadDirectory()
   return m_downloadDirectory;
 }
 
-QString DownloadManager::timeString(double timeRemaining)
+QString DownloadManager::timeString(double time_remaining)
 {
   QString remaining;
 
-  if (timeRemaining > 60) {
-    timeRemaining = timeRemaining / 60;
-    timeRemaining = floor(timeRemaining);
-    remaining = tr("%n minutes remaining", "", int(timeRemaining));
+  if (time_remaining > 60) {
+    time_remaining = time_remaining / 60;
+    time_remaining = floor(time_remaining);
+    remaining = tr("%n minutes remaining", "", int(time_remaining));
   }
   else {
-    timeRemaining = floor(timeRemaining);
-    remaining = tr("%n seconds remaining", "", int(timeRemaining));
+    time_remaining = floor(time_remaining);
+    remaining = tr("%n seconds remaining", "", int(time_remaining));
   }
 
   return remaining;
@@ -701,9 +687,9 @@ QString DownloadManager::dataString(qint64 size)
   return QString(QLatin1String("%1 %2")).arg(newSize, 0, 'f', 1).arg(unit);
 }
 
-DownloadModel::DownloadModel(DownloadManager *downloadManager, QObject *parent)
+DownloadModel::DownloadModel(DownloadManager *download_manager, QObject *parent)
   : QAbstractListModel(parent)
-  , m_downloadManager(downloadManager)
+  , m_downloadManager(download_manager)
 {
 }
 
@@ -713,7 +699,7 @@ QVariant DownloadModel::data(const QModelIndex &index, int role) const
     return QVariant();
   if (role == Qt::ToolTipRole)
     if (!m_downloadManager->m_downloads.at(index.row())->downloadedSuccessfully())
-      return m_downloadManager->m_downloads.at(index.row())->downloadInfoLabel->text();
+      return m_downloadManager->m_downloads.at(index.row())->m_ui->m_lblInfoDownload->text();
   return QVariant();
 }
 
@@ -730,7 +716,7 @@ bool DownloadModel::removeRows(int row, int count, const QModelIndex &parent)
   int lastRow = row + count - 1;
   for (int i = lastRow; i >= row; --i) {
     if (m_downloadManager->m_downloads.at(i)->downloadedSuccessfully()
-        || m_downloadManager->m_downloads.at(i)->tryAgainButton->isEnabled()) {
+        || m_downloadManager->m_downloads.at(i)->m_ui->tryAgainButton->isEnabled()) {
       beginRemoveRows(parent, i, i);
       m_downloadManager->m_downloads.takeAt(i)->deleteLater();
       endRemoveRows();

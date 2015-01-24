@@ -62,6 +62,10 @@ class FormSettings : public QDialog {
     void saveInterface();
     void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
+    void loadDownloads();
+    void saveDownloads();
+    void selectDownloadsDirectory();
+
     void loadGeneral();
     void saveGeneral();
 

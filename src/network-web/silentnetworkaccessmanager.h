@@ -31,6 +31,7 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
     virtual ~SilentNetworkAccessManager();
 
   protected slots:
+    // This cannot do any GUI stuff.
     void onAuthenticationRequired(QNetworkReply * reply, QAuthenticator *authenticator);
 };
 

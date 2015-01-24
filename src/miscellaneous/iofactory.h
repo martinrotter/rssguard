@@ -20,12 +20,24 @@
 
 #include <QStringList>
 
+#if QT_VERSION >= 0x050000
+#include <QStandardPaths>
+#define SYSTEM_FOLDER_ENUM QStandardPaths
+#else
+#include <QDesktopServices>
+#define SYSTEM_FOLDER_ENUM QDesktopServices
+#endif
+
 
 class IOFactory {
   private:
     IOFactory();
 
-  public:
+  public:   
+    // Returns system-wide folder according to type.
+    static QString getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location);
+
+    // Copies file, overwrites destination.
     static bool copyFile(const QString &source, const QString &destination);
 
     // Copy whole directory recursively.

@@ -281,6 +281,11 @@ elseif(OS2 AND ${ENABLE_OS2_RC})
   )
 endif(WIN32)
 
+# Set special linker flag for Windows XP & MSVC++ 2013 support.
+if(WIN32 AND MSVC)
+  set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS,5.01" )
+endif(WIN32 AND MSVC)
+
 # Compile application icon if compiling with MinGW on WIN32 or with OS2.
 if(MINGW AND WIN32)
   enable_language(RC)

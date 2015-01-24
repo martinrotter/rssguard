@@ -150,6 +150,15 @@ DVALUE(bool) General::RemoveTrolltechJunkDef  = false;
 DKEY General::Language               = "language";
 DVALUE(QString) General::LanguageDef = QLocale::system().name();
 
+// Downloads.
+DKEY Downloads::ID                                    = "download_manager";
+
+DKEY Downloads::AlwaysPromptForFilename               = "prompt_for_filename";
+DVALUE(bool) Downloads::AlwaysPromptForFilenameDef    = false;
+
+DKEY Downloads::TargetDirectory                       = "target_directory";
+DVALUE(QString) Downloads::TargetDirectoryDef         = IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DesktopLocation);
+
 // Proxy.
 DKEY Proxy::ID                              = "proxy";
 

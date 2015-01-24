@@ -56,7 +56,7 @@ class Downloader : public QObject {
 
   private slots:
     // Called when current reply is processed.
-    void finished(QNetworkReply *reply);
+    void finished();
 
     // Called when progress of downloaded file changes.
     void progressInternal(qint64 bytes_received, qint64 bytes_total);

@@ -78,22 +78,17 @@
        <string>Feeds &amp; messages</string>
       </property>
      </item>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="m_buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
+     <item>
+      <property name="text">
+       <string>Downloads</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>6</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -475,8 +470,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>695</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1315,6 +1310,82 @@ Authors of this application are NOT responsible for lost data.</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="m_pageDownloads">
+      <layout class="QFormLayout" name="formLayout_19">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item row="1" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Target directory for downloaded files</string>
+         </property>
+         <layout class="QFormLayout" name="formLayout_20">
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="m_rbDownloadsAskEachFile">
+            <property name="text">
+             <string>Ask for each individual downloaded file</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <widget class="QRadioButton" name="m_rbDownloadsSaveAllIntoDirectory">
+              <property name="text">
+               <string>Save all downloaded files into</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_txtDownloadsTargetDirectory">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="placeholderText">
+               <string>Target directory where all downloaded files are saved</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="m_btnDownloadsTargetDirectory">
+              <property name="text">
+               <string>&amp;Browse</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="m_buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
     </widget>
    </item>
   </layout>
@@ -1440,6 +1511,38 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>778</x>
      <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_rbDownloadsAskEachFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_txtDownloadsTargetDirectory</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>821</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_rbDownloadsAskEachFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_btnDownloadsTargetDirectory</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>821</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>673</x>
+     <y>50</y>
     </hint>
    </hints>
   </connection>
