@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="EditTableView" name="downloadsView">
+    <widget class="EditTableView" name="m_viewDownloads">
      <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
@@ -33,7 +33,7 @@
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="cleanupButton">
+      <widget class="QPushButton" name="m_btnCleanup">
        <property name="enabled">
         <bool>false</bool>
        </property>

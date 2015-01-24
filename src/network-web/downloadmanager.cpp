@@ -45,11 +45,12 @@ DownloadItem::DownloadItem(QNetworkReply *reply, bool request_file_name, QWidget
   m_bytesReceived(0), m_requestFileName(request_file_name), m_startedSaving(false), m_finishedDownloading(false),
   m_gettingFileName(false), m_canceledFileSelect(false) {
   m_ui->setupUi(this);
-  m_ui->tryAgainButton->hide();
+  m_ui->m_btnTryAgain->hide();
 
-  connect(m_ui->stopButton, SIGNAL(clicked()), this, SLOT(stop()));
-  connect(m_ui->openButton, SIGNAL(clicked()), this, SLOT(openFile()));
-  connect(m_ui->tryAgainButton, SIGNAL(clicked()), this, SLOT(tryAgain()));
+  connect(m_ui->m_btnStopDownload, SIGNAL(clicked()), this, SLOT(stop()));
+  connect(m_ui->m_btnOpenFile, SIGNAL(clicked()), this, SLOT(openFile()));
+  connect(m_ui->m_btnTryAgain, SIGNAL(clicked()), this, SLOT(tryAgain()));
+  connect(m_ui->m_btnOpenFolder, SIGNAL(clicked()), this, SLOT(openFolder()));
 
   if (!request_file_name) {
     m_requestFileName = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool();
@@ -69,8 +70,8 @@ void DownloadItem::init() {
 
   m_startedSaving = false;
   m_finishedDownloading = false;
-  m_ui->openButton->setEnabled(false);
-  m_ui->toolButton->setEnabled(false);
+  m_ui->m_btnOpenFile->setEnabled(false);
+  m_ui->m_btnOpenFolder->setEnabled(false);
   m_url = m_reply->url();
   m_reply->setParent(this);
 
@@ -82,7 +83,7 @@ void DownloadItem::init() {
 
   // Reset info.
   m_ui->m_lblInfoDownload->clear();
-  m_ui->progressBar->setValue(0);
+  m_ui->m_progressDownload->setValue(0);
   getFileName();
 
   // Start timer for the download estimation.
@@ -111,8 +112,8 @@ void DownloadItem::getFileName() {
     if (chosen_filename.isEmpty()) {
       stop();
 
-      m_ui->progressBar->setVisible(false);
-      m_ui->m_fileNameLabel->setText(tr("Download for %1 cancelled").arg(QFileInfo(default_filename).fileName()));
+      m_ui->m_progressDownload->setVisible(false);
+      m_ui->m_lblFilename->setText(tr("Download for %1 cancelled").arg(QFileInfo(default_filename).fileName()));
       m_canceledFileSelect = true;
       return;
     }
@@ -120,7 +121,7 @@ void DownloadItem::getFileName() {
     QFileInfo file_info = QFileInfo(chosen_filename);
 
     qApp->downloadManager()->setDownloadDirectory(file_info.absoluteDir().absolutePath());
-    m_ui->m_fileNameLabel->setText(file_info.fileName());
+    m_ui->m_lblFilename->setText(file_info.fileName());
   }
 
   m_output.setFileName(chosen_filename);
@@ -131,12 +132,12 @@ void DownloadItem::getFileName() {
   if (!save_dir.exists() && !save_dir.mkpath(save_dir.absolutePath())) {
     stop();
 
-    m_ui->progressBar->setVisible(false);
+    m_ui->m_progressDownload->setVisible(false);
     m_ui->m_lblInfoDownload->setText(tr("Download directory %1 couldn't be created").arg(QDir::toNativeSeparators(save_dir.absolutePath())));
     return;
   }
 
-  m_ui->m_fileNameLabel->setText(QFileInfo(m_output.fileName()).fileName());
+  m_ui->m_lblFilename->setText(QFileInfo(m_output.fileName()).fileName());
 
   if (m_requestFileName) {
     downloadReadyRead();
@@ -191,35 +192,35 @@ QString DownloadItem::saveFileName(const QString &directory) const {
 void DownloadItem::stop()
 {
   setUpdatesEnabled(false);
-  m_ui->stopButton->setEnabled(false);
-  m_ui->stopButton->hide();
-  m_ui->tryAgainButton->setEnabled(true);
-  m_ui->tryAgainButton->show();
+  m_ui->m_btnStopDownload->setEnabled(false);
+  m_ui->m_btnStopDownload->hide();
+  m_ui->m_btnTryAgain->setEnabled(true);
+  m_ui->m_btnTryAgain->show();
   setUpdatesEnabled(true);
   m_reply->abort();
   emit downloadFinished();
 }
 
 void DownloadItem::openFile() {
-  QFileInfo info(m_output);
-  QUrl url = QUrl::fromLocalFile(info.absoluteFilePath());
-
-  QDesktopServices::openUrl(url);
+  QDesktopServices::openUrl(QUrl::fromLocalFile(m_output.fileName()));
 }
 
 void DownloadItem::openFolder() {
-  // TODO: pouze na windows, otevrit explorer, jinde schovat tlacitko Open folder.
+  if (m_output.exists()) {
+    QString file = QDir::toNativeSeparators(m_output.fileName());
+    QProcess::startDetached(QString("explorer.exe /select, \"") + file + "\"");
+  }
 }
 
 void DownloadItem::tryAgain() {
-  if (!m_ui->tryAgainButton->isEnabled())
+  if (!m_ui->m_btnTryAgain->isEnabled())
     return;
 
-  m_ui->tryAgainButton->setEnabled(false);
-  m_ui->tryAgainButton->setVisible(false);
-  m_ui->stopButton->setEnabled(true);
-  m_ui->stopButton->setVisible(true);
-  m_ui->progressBar->setVisible(true);
+  m_ui->m_btnTryAgain->setEnabled(false);
+  m_ui->m_btnTryAgain->setVisible(false);
+  m_ui->m_btnStopDownload->setEnabled(true);
+  m_ui->m_btnStopDownload->setVisible(true);
+  m_ui->m_progressDownload->setVisible(true);
 
   QNetworkReply *r = qApp->downloadManager()->networkManager()->get(QNetworkRequest(m_url));
   if (m_reply)
@@ -251,7 +252,7 @@ void DownloadItem::downloadReadyRead()
   if (-1 == m_output.write(m_reply->readAll())) {
     m_ui->m_lblInfoDownload->setText(tr("Error saving: %1")
                                      .arg(m_output.errorString()));
-    m_ui->stopButton->click();
+    m_ui->m_btnStopDownload->click();
   } else {
     m_startedSaving = true;
     if (m_finishedDownloading)
@@ -262,8 +263,8 @@ void DownloadItem::downloadReadyRead()
 void DownloadItem::error(QNetworkReply::NetworkError)
 {
   m_ui->m_lblInfoDownload->setText(tr("Error: %1").arg(m_reply->errorString()));
-  m_ui->tryAgainButton->setEnabled(true);
-  m_ui->tryAgainButton->setVisible(true);
+  m_ui->m_btnTryAgain->setEnabled(true);
+  m_ui->m_btnTryAgain->setVisible(true);
 
   emit downloadFinished();
 }
@@ -294,8 +295,8 @@ void DownloadItem::downloadProgress(qint64 bytes_received, qint64 bytes_total) {
     currentValue = bytes_received * 100 / bytes_total;
     totalValue = 100;
   }
-  m_ui->progressBar->setValue(currentValue);
-  m_ui->progressBar->setMaximum(totalValue);
+  m_ui->m_progressDownload->setValue(currentValue);
+  m_ui->m_progressDownload->setMaximum(totalValue);
 
   emit progress(currentValue, totalValue);
   updateInfoLabel();
@@ -371,12 +372,12 @@ void DownloadItem::updateInfoLabel()
 
 bool DownloadItem::downloading() const
 {
-  return (m_ui->progressBar->isVisible());
+  return (m_ui->m_progressDownload->isVisible());
 }
 
 bool DownloadItem::downloadedSuccessfully() const
 {
-  return (m_ui->stopButton->isHidden() && m_ui->tryAgainButton->isHidden());
+  return (m_ui->m_btnStopDownload->isHidden() && m_ui->m_btnTryAgain->isHidden());
 }
 
 void DownloadItem::finished()
@@ -385,11 +386,11 @@ void DownloadItem::finished()
   if (!m_startedSaving) {
     return;
   }
-  m_ui->progressBar->hide();
-  m_ui->stopButton->setEnabled(false);
-  m_ui->stopButton->hide();
-  m_ui->openButton->setEnabled(true);
-  m_ui->toolButton->setEnabled(true);
+  m_ui->m_progressDownload->hide();
+  m_ui->m_btnStopDownload->setEnabled(false);
+  m_ui->m_btnStopDownload->hide();
+  m_ui->m_btnOpenFile->setEnabled(true);
+  m_ui->m_btnOpenFolder->setEnabled(true);
   m_output.close();
   updateInfoLabel();
   emit statusChanged();
@@ -400,15 +401,15 @@ DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new
   m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
   m_networkManager(WebBrowserNetworkAccessManager::instance()), m_iconProvider(0), m_removePolicy(Never) {
   m_ui->setupUi(this);
-  m_ui->downloadsView->setShowGrid(false);
-  m_ui->downloadsView->verticalHeader()->hide();
-  m_ui->downloadsView->horizontalHeader()->hide();
-  m_ui->downloadsView->setAlternatingRowColors(true);
-  m_ui->downloadsView->horizontalHeader()->setStretchLastSection(true);
-  m_ui->downloadsView->setModel(m_model);
+  m_ui->m_viewDownloads->setShowGrid(false);
+  m_ui->m_viewDownloads->verticalHeader()->hide();
+  m_ui->m_viewDownloads->horizontalHeader()->hide();
+  m_ui->m_viewDownloads->setAlternatingRowColors(true);
+  m_ui->m_viewDownloads->horizontalHeader()->setStretchLastSection(true);
+  m_ui->m_viewDownloads->setModel(m_model);
 
   setDownloadDirectory(qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString());
-  connect(m_ui->cleanupButton, SIGNAL(clicked()), this, SLOT(cleanup()));
+  connect(m_ui->m_btnCleanup, SIGNAL(clicked()), this, SLOT(cleanup()));
   load();
 }
 
@@ -428,7 +429,7 @@ int DownloadManager::activeDownloads() const
 {
   int count = 0;
   for (int i = 0; i < m_downloads.count(); ++i) {
-    if (m_downloads.at(i)->m_ui->stopButton->isEnabled())
+    if (m_downloads.at(i)->m_ui->m_btnStopDownload->isEnabled())
       ++count;
   }
   return count;
@@ -494,10 +495,10 @@ void DownloadManager::addItem(DownloadItem *item) {
   m_model->beginInsertRows(QModelIndex(), row, row);
   m_downloads.append(item);
   m_model->endInsertRows();
-  m_ui->downloadsView->setIndexWidget(m_model->index(row, 0), item);
+  m_ui->m_viewDownloads->setIndexWidget(m_model->index(row, 0), item);
   QIcon icon = style()->standardIcon(QStyle::SP_FileIcon);
-  item->m_ui->fileIcon->setPixmap(icon.pixmap(48, 48));
-  m_ui->downloadsView->setRowHeight(row, item->sizeHint().height());
+  item->m_ui->m_lblFileIcon->setPixmap(icon.pixmap(48, 48));
+  m_ui->m_viewDownloads->setRowHeight(row, item->sizeHint().height());
   updateRow(item); //incase download finishes before the constructor returns
 }
 
@@ -528,10 +529,10 @@ void DownloadManager::updateRow(DownloadItem *item)
   QIcon icon = m_iconProvider->icon(item->m_output.fileName());
   if (icon.isNull())
     icon = style()->standardIcon(QStyle::SP_FileIcon);
-  item->m_ui->fileIcon->setPixmap(icon.pixmap(48, 48));
+  item->m_ui->m_lblFileIcon->setPixmap(icon.pixmap(48, 48));
 
-  int oldHeight = m_ui->downloadsView->rowHeight(row);
-  m_ui->downloadsView->setRowHeight(row, qMax(oldHeight, item->minimumSizeHint().height()));
+  int oldHeight = m_ui->m_viewDownloads->rowHeight(row);
+  m_ui->m_viewDownloads->setRowHeight(row, qMax(oldHeight, item->minimumSizeHint().height()));
 
   bool remove = false;
   QWebSettings *globalSettings = QWebSettings::globalSettings();
@@ -546,7 +547,7 @@ void DownloadManager::updateRow(DownloadItem *item)
   if (remove)
     m_model->removeRow(row);
 
-  m_ui->cleanupButton->setEnabled(m_downloads.count() - activeDownloads() > 0);
+  m_ui->m_btnCleanup->setEnabled(m_downloads.count() - activeDownloads() > 0);
 }
 
 DownloadManager::RemovePolicy DownloadManager::removePolicy() const
@@ -610,18 +611,18 @@ void DownloadManager::load()
     if (!url.isEmpty() && !fileName.isEmpty()) {
       DownloadItem *item = new DownloadItem(0, false, this);
       item->m_output.setFileName(fileName);
-      item->m_ui->m_fileNameLabel->setText(QFileInfo(item->m_output.fileName()).fileName());
+      item->m_ui->m_lblFilename->setText(QFileInfo(item->m_output.fileName()).fileName());
       item->m_url = url;
-      item->m_ui->stopButton->setVisible(false);
-      item->m_ui->stopButton->setEnabled(false);
-      item->m_ui->tryAgainButton->setVisible(!done);
-      item->m_ui->tryAgainButton->setEnabled(!done);
-      item->m_ui->progressBar->setVisible(false);
+      item->m_ui->m_btnStopDownload->setVisible(false);
+      item->m_ui->m_btnStopDownload->setEnabled(false);
+      item->m_ui->m_btnTryAgain->setVisible(!done);
+      item->m_ui->m_btnTryAgain->setEnabled(!done);
+      item->m_ui->m_progressDownload->setVisible(false);
       addItem(item);
     }
     key = QString(QLatin1String("download_%1_")).arg(++i);
   }
-  m_ui->cleanupButton->setEnabled(m_downloads.count() - activeDownloads() > 0);
+  m_ui->m_btnCleanup->setEnabled(m_downloads.count() - activeDownloads() > 0);
 }
 
 void DownloadManager::cleanup()
@@ -693,13 +694,17 @@ DownloadModel::DownloadModel(DownloadManager *download_manager, QObject *parent)
 {
 }
 
-QVariant DownloadModel::data(const QModelIndex &index, int role) const
-{
-  if (index.row() < 0 || index.row() >= rowCount(index.parent()))
+QVariant DownloadModel::data(const QModelIndex &index, int role) const {
+  if (index.row() < 0 || index.row() >= rowCount(index.parent())) {
     return QVariant();
-  if (role == Qt::ToolTipRole)
-    if (!m_downloadManager->m_downloads.at(index.row())->downloadedSuccessfully())
+  }
+
+  if (role == Qt::ToolTipRole) {
+    if (!m_downloadManager->m_downloads.at(index.row())->downloadedSuccessfully()) {
       return m_downloadManager->m_downloads.at(index.row())->m_ui->m_lblInfoDownload->text();
+    }
+  }
+
   return QVariant();
 }
 
@@ -716,7 +721,7 @@ bool DownloadModel::removeRows(int row, int count, const QModelIndex &parent)
   int lastRow = row + count - 1;
   for (int i = lastRow; i >= row; --i) {
     if (m_downloadManager->m_downloads.at(i)->downloadedSuccessfully()
-        || m_downloadManager->m_downloads.at(i)->m_ui->tryAgainButton->isEnabled()) {
+        || m_downloadManager->m_downloads.at(i)->m_ui->m_btnTryAgain->isEnabled()) {
       beginRemoveRows(parent, i, i);
       m_downloadManager->m_downloads.takeAt(i)->deleteLater();
       endRemoveRows();

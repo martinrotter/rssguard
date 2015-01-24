@@ -128,6 +128,7 @@ void WebView::setupIcons() {
   m_actionCopyLink->setIcon(qApp->icons()->fromTheme("edit-copy"));
   m_actionCopyImage->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
   m_actionSaveHyperlinkAs->setIcon(qApp->icons()->fromTheme("document-download"));
+  m_actionSaveImageAs->setIcon(qApp->icons()->fromTheme("document-download"));
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme("edit-copy"));
@@ -173,6 +174,11 @@ void WebView::initializeActions() {
   m_actionCopyImage->setParent(this);
   m_actionCopyImage->setText(tr("Copy image"));
   m_actionCopyImage->setToolTip(tr("Copy image to clipboard."));
+
+  m_actionSaveImageAs = pageAction(QWebPage::DownloadImageToDisk);
+  m_actionSaveImageAs->setParent(this);
+  m_actionSaveImageAs->setText("Save image as...");
+  m_actionSaveImageAs->setToolTip(tr("Save image to disk."));
 
   m_actionSavePageAs = new QAction(qApp->icons()->fromTheme("document-download"), tr("Save page as..."), this);
 
@@ -271,6 +277,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
 #endif
     }
     image_submenu.addAction(m_actionCopyImage);
+    image_submenu.addAction(m_actionSaveImageAs);
   }
 
   // Display the menu.

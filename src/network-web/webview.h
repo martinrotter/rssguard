@@ -101,6 +101,7 @@ class WebView : public QWebView {
     QAction *m_actionCopyImage;
     QAction *m_actionSavePageAs;
     QAction *m_actionSaveHyperlinkAs;
+    QAction *m_actionSaveImageAs;
 
 #if QT_VERSION >= 0x040800
     QAction *m_actionCopyImageUrl;
