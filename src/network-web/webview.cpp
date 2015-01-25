@@ -144,16 +144,12 @@ void WebView::initializeActions() {
   // Create needed actions.
   m_actionReload = pageAction(QWebPage::Reload);
   m_actionReload->setParent(this);
-  m_actionReload->setText(tr("Reload web page"));
-  m_actionReload->setToolTip(tr("Reload current web page."));
 
   m_actionPrint = new QAction(tr("Print"), this);
   m_actionPrint->setToolTip(tr("Print current web page."));
 
   m_actionCopySelectedItem = pageAction(QWebPage::Copy);
   m_actionCopySelectedItem->setParent(this);
-  m_actionCopySelectedItem->setText(tr("Copy selection"));
-  m_actionCopySelectedItem->setToolTip(tr("Copies current selection into the clipboard."));
 
 #if defined(Q_OS_OS2)
   m_actionCopySelectedItem->setShortcut(QKeySequence::Copy);
@@ -162,48 +158,60 @@ void WebView::initializeActions() {
 
   m_actionSaveHyperlinkAs = pageAction(QWebPage::DownloadLinkToDisk);
   m_actionSaveHyperlinkAs->setParent(this);
-  m_actionSaveHyperlinkAs->setText(tr("Save target as..."));
-  m_actionSaveHyperlinkAs->setToolTip(tr("Download content from the hyperlink."));
 
   m_actionCopyLink = pageAction(QWebPage::CopyLinkToClipboard);
   m_actionCopyLink->setParent(this);
-  m_actionCopyLink->setText(tr("Copy link url"));
-  m_actionCopyLink->setToolTip(tr("Copy link url to clipboard."));
 
   m_actionCopyImage = pageAction(QWebPage::CopyImageToClipboard);
   m_actionCopyImage->setParent(this);
-  m_actionCopyImage->setText(tr("Copy image"));
-  m_actionCopyImage->setToolTip(tr("Copy image to clipboard."));
 
   m_actionSaveImageAs = pageAction(QWebPage::DownloadImageToDisk);
   m_actionSaveImageAs->setParent(this);
-  m_actionSaveImageAs->setText("Save image as...");
-  m_actionSaveImageAs->setToolTip(tr("Save image to disk."));
 
   m_actionSavePageAs = new QAction(qApp->icons()->fromTheme("document-download"), tr("Save page as..."), this);
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
   m_actionCopyImageUrl->setParent(this);
-  m_actionCopyImageUrl->setText(tr("Copy image url"));
-  m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard."));
 #endif
 
   m_actionOpenLinkNewTab = pageAction(QWebPage::OpenLinkInNewWindow);
   m_actionOpenLinkNewTab->setParent(this);
-  m_actionOpenLinkNewTab->setText(tr("Open link in new tab"));
-  m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab."));
 
   m_actionOpenLinkThisTab = pageAction(QWebPage::OpenLink);
   m_actionOpenLinkThisTab->setParent(this);
-  m_actionOpenLinkThisTab->setText(tr("Follow link"));
-  m_actionOpenLinkThisTab->setToolTip(tr("Open the hyperlink in this tab."));
 
   m_actionOpenLinkExternally = new QAction(tr("Open link in external browser"), this);
-  m_actionOpenLinkExternally->setToolTip(tr("Open the hyperlink in external browser."));
 
   m_actionOpenImageNewTab = pageAction(QWebPage::OpenImageInNewWindow);
   m_actionOpenImageNewTab->setParent(this);
+
+}
+
+void WebView::setActionTexts() {
+  m_actionReload->setText(tr("Reload web page"));
+  m_actionReload->setToolTip(tr("Reload current web page."));
+  m_actionCopySelectedItem->setText(tr("Copy selection"));
+  m_actionCopySelectedItem->setToolTip(tr("Copies current selection into the clipboard."));
+  m_actionSaveHyperlinkAs->setText(tr("Save target as..."));
+  m_actionSaveHyperlinkAs->setToolTip(tr("Download content from the hyperlink."));
+  m_actionCopyLink->setText(tr("Copy link url"));
+  m_actionCopyLink->setToolTip(tr("Copy link url to clipboard."));
+  m_actionCopyImage->setText(tr("Copy image"));
+  m_actionCopyImage->setToolTip(tr("Copy image to clipboard."));
+  m_actionSaveImageAs->setText(tr("Save image as..."));
+  m_actionSaveImageAs->setToolTip(tr("Save image to disk."));
+
+#if QT_VERSION >= 0x040800
+  m_actionCopyImageUrl->setText(tr("Copy image url"));
+  m_actionCopyImageUrl->setToolTip(tr("Copy image url to clipboard."));
+#endif
+
+  m_actionOpenLinkNewTab->setText(tr("Open link in new tab"));
+  m_actionOpenLinkNewTab->setToolTip(tr("Open this hyperlink in new tab."));
+  m_actionOpenLinkThisTab->setText(tr("Follow link"));
+  m_actionOpenLinkThisTab->setToolTip(tr("Open the hyperlink in this tab."));
+  m_actionOpenLinkExternally->setToolTip(tr("Open the hyperlink in external browser."));
   m_actionOpenImageNewTab->setText(tr("Open image in new tab"));
   m_actionOpenImageNewTab->setToolTip(tr("Open this image in this tab."));
 }
@@ -281,6 +289,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
   }
 
   // Display the menu.
+  setActionTexts();
   context_menu.exec(mapToGlobal(pos));
 }
 
@@ -305,7 +314,6 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
     if (link_url.isValid()) {
       emit linkMiddleClicked(link_url);
-      // No more handling of event is now needed. Return.
       return;
     }
     else if (image_url.isValid()) {

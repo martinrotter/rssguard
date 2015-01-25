@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -30,17 +30,6 @@
     </message>
 </context>
 <context>
-    <name>DownloadDialog</name>
-    <message>
-        <source>Downloading %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
@@ -51,31 +40,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation type="unfinished">Zastavit</translation>
-    </message>
-    <message>
-        <source>Save File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download canceled: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download directory (%1) couldn&apos;t be created.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error opening output file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error saving: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Network Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -91,28 +60,51 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Try again</source>
+        <source>&amp;Try again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open file</source>
+        <source>&amp;Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open &amp;folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination for downloaded file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download for %1 cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download directory %1 couldn&apos;t be created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation type="unfinished">Chyba: %1. {1?}</translation>
+    </message>
+    <message>
+        <source>Cannot open folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output folder. Open it manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DownloadManager</name>
     <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Clean up</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>There are %1 downloads in progress
-Do you want to quit anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyčistit</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
@@ -132,19 +124,19 @@ Do you want to quit anyway?</source>
     </message>
     <message>
         <source>bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>bajtů</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -212,12 +204,10 @@ Do you want to quit anyway?</source>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -1459,7 +1449,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Stahování</translation>
     </message>
 </context>
 <context>
@@ -1542,9 +1532,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1602,12 +1590,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1685,7 +1671,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2091,15 +2076,43 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat všechny přečtené zprávy, když se aplikace vypíná</translation>
     </message>
     <message>
         <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation type="unfinished"></translation>
+        <translation>Když se v kanálu objeví nová zpráva a existuje v databázi duplikát, pak jeho obsah je aktualizován a nová zpráva je zahozena.</translation>
     </message>
     <message>
         <source>Remove duplicate messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Mazat duplicitní zprávy</translation>
+    </message>
+    <message>
+        <source>Downloads</source>
+        <translation>Stahování</translation>
+    </message>
+    <message>
+        <source>Target directory for downloaded files</source>
+        <translation>Cílový adresář pro stahované soubory</translation>
+    </message>
+    <message>
+        <source>Ask for each individual downloaded file</source>
+        <translation>Ptát se u každého stahovaného souboru</translation>
+    </message>
+    <message>
+        <source>Save all downloaded files into</source>
+        <translation>Všechny soubory automaticky stahovat do</translation>
+    </message>
+    <message>
+        <source>Target directory where all downloaded files are saved</source>
+        <translation>Cílový adresář, kam jsou ukládány všechny stahované soubory</translation>
+    </message>
+    <message>
+        <source>&amp;Browse</source>
+        <translation>&amp;Procházet</translation>
+    </message>
+    <message>
+        <source>Select downloads target directory</source>
+        <translation>Zvolit cílový adresář pro uložení stahovaných souborů</translation>
     </message>
 </context>
 <context>
@@ -2242,52 +2255,42 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2332,7 +2335,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>
@@ -2589,7 +2591,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Stahování</translation>
     </message>
 </context>
 <context>
@@ -2794,31 +2796,39 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>HTML web pages (*.html)</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML stránky (*.html)</translation>
     </message>
     <message>
         <source>Select destination file for web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolte cílový soubor pro webovou stránku</translation>
     </message>
     <message>
         <source>Cannot save web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze uložit webovou stránku</translation>
     </message>
     <message>
         <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Webová stránka nemůže být uložena, protože do cíle nelze zapisovat.</translation>
     </message>
     <message>
         <source>Save target as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit cíl jako...</translation>
     </message>
     <message>
         <source>Download content from the hyperlink.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stáhnout cíl odkazu.</translation>
     </message>
     <message>
         <source>Save page as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit stránku jako...</translation>
+    </message>
+    <message>
+        <source>Save image to disk.</source>
+        <translation>Uloží obrázek na disk.</translation>
+    </message>
+    <message>
+        <source>Save image as...</source>
+        <translation>Uložit obrázek jako...</translation>
     </message>
 </context>
 </TS>

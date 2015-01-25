@@ -78,6 +78,8 @@ class WebView : public QWebView {
     // Initializes all actions.
     void initializeActions();
 
+    void setActionTexts();
+
     // Creates necessary connections.
     void createConnections();
 

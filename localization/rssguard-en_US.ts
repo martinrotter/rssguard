@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>Application</name>
     <message>
@@ -35,19 +35,6 @@
     </message>
 </context>
 <context>
-    <name>DownloadDialog</name>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="512"/>
-        <source>Downloading %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="514"/>
-        <source>Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DownloadItem</name>
     <message>
         <location filename="../src/network-web/downloaditem.ui" line="23"/>
@@ -61,61 +48,78 @@
     </message>
     <message>
         <location filename="../src/network-web/downloaditem.ui" line="82"/>
-        <source>Try again</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloaditem.ui" line="96"/>
-        <source>Open file</source>
+        <source>&amp;Try again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/network-web/downloaditem.ui" line="89"/>
-        <source>Stop</source>
+        <source>&amp;Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="113"/>
-        <source>Save File</source>
+        <location filename="../src/network-web/downloaditem.ui" line="96"/>
+        <source>&amp;Open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="118"/>
-        <source>Download canceled: %1</source>
+        <location filename="../src/network-web/downloaditem.ui" line="103"/>
+        <source>Open &amp;folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="134"/>
-        <source>Download directory (%1) couldn&apos;t be created.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="234"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="256"/>
         <source>Error opening output file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="243"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="265"/>
         <source>Error saving: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="255"/>
-        <source>Network Error: %1</source>
+        <location filename="../src/network-web/downloadmanager.cpp" line="110"/>
+        <source>Select destination for downloaded file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="347"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="117"/>
+        <source>Download for %1 cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="137"/>
+        <source>Download directory %1 couldn&apos;t be created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="217"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="221"/>
+        <source>Cannot open folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="217"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="221"/>
+        <source>Cannot open output folder. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="277"/>
+        <source>Error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="369"/>
         <source>%1 of %2 (%3/sec) - %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="349"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="371"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="356"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="378"/>
         <source>%1 of %2 - Download Complete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -123,23 +127,12 @@
 <context>
     <name>DownloadManager</name>
     <message>
-        <location filename="../src/network-web/downloadmanager.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.ui" line="41"/>
+        <location filename="../src/network-web/downloadmanager.ui" line="38"/>
         <source>Clean up</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="442"/>
-        <source>There are %1 downloads in progress
-Do you want to quit anyway?</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="675"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="655"/>
         <source>%n minutes remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -147,7 +140,7 @@ Do you want to quit anyway?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="679"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="659"/>
         <source>%n seconds remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -155,22 +148,22 @@ Do you want to quit anyway?</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="692"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="672"/>
         <source>bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="695"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="675"/>
         <source>kB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="698"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="678"/>
         <source>MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="701"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="681"/>
         <source>GB</source>
         <translation type="unfinished"></translation>
     </message>
@@ -260,13 +253,11 @@ Do you want to quit anyway?</source>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="58"/>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="59"/>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1903,9 +1894,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
         <location filename="../src/gui/formsettings.ui" line="68"/>
         <location filename="../src/gui/formsettings.cpp" line="74"/>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1919,37 +1908,42 @@ Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="115"/>
+        <location filename="../src/gui/formsettings.ui" line="83"/>
+        <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.ui" line="110"/>
         <source>Launch %1 on operating system startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="122"/>
+        <location filename="../src/gui/formsettings.ui" line="117"/>
         <source>Check for updates on application startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="129"/>
+        <location filename="../src/gui/formsettings.ui" line="124"/>
         <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="155"/>
+        <location filename="../src/gui/formsettings.ui" line="150"/>
         <source>WARNING: Note that switching to another data storage type will NOT copy existing your data from currently active data storage to newly selected one.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="168"/>
+        <location filename="../src/gui/formsettings.ui" line="163"/>
         <source>Database driver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="203"/>
+        <location filename="../src/gui/formsettings.ui" line="198"/>
         <source>Use in-memory database as the working database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="210"/>
+        <location filename="../src/gui/formsettings.ui" line="205"/>
         <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on. Advantages:
 &lt;ul&gt;
 &lt;li&gt;higher speed for feed/message manipulations (especially with thousands of messages displayed),&lt;/li&gt;
@@ -1964,185 +1958,185 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="255"/>
+        <location filename="../src/gui/formsettings.ui" line="250"/>
         <source>Hostname</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="270"/>
-        <location filename="../src/gui/formsettings.ui" line="1043"/>
+        <location filename="../src/gui/formsettings.ui" line="265"/>
+        <location filename="../src/gui/formsettings.ui" line="1038"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="301"/>
-        <location filename="../src/gui/formsettings.ui" line="1071"/>
+        <location filename="../src/gui/formsettings.ui" line="296"/>
+        <location filename="../src/gui/formsettings.ui" line="1066"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="314"/>
-        <location filename="../src/gui/formsettings.ui" line="1094"/>
+        <location filename="../src/gui/formsettings.ui" line="309"/>
+        <location filename="../src/gui/formsettings.ui" line="1089"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="329"/>
+        <location filename="../src/gui/formsettings.ui" line="324"/>
         <source>Test setup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="354"/>
+        <location filename="../src/gui/formsettings.ui" line="349"/>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="450"/>
+        <location filename="../src/gui/formsettings.ui" line="445"/>
         <source>Icons &amp;&amp; skins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="489"/>
+        <location filename="../src/gui/formsettings.ui" line="484"/>
         <source>Icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="498"/>
+        <location filename="../src/gui/formsettings.ui" line="493"/>
         <source>Icon theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="514"/>
+        <location filename="../src/gui/formsettings.ui" line="509"/>
         <source>Skins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="550"/>
+        <location filename="../src/gui/formsettings.ui" line="545"/>
         <source>Active skin:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="564"/>
+        <location filename="../src/gui/formsettings.ui" line="559"/>
         <source>Selected skin:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="586"/>
+        <location filename="../src/gui/formsettings.ui" line="581"/>
         <source>Tray area &amp;&amp; notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="592"/>
+        <location filename="../src/gui/formsettings.ui" line="587"/>
         <source>Tray icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="601"/>
+        <location filename="../src/gui/formsettings.ui" line="596"/>
         <source>Disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="608"/>
+        <location filename="../src/gui/formsettings.ui" line="603"/>
         <source>Hide main window when it is minimized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="615"/>
+        <location filename="../src/gui/formsettings.ui" line="610"/>
         <source>Start application hidden</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="622"/>
+        <location filename="../src/gui/formsettings.ui" line="617"/>
         <source>Enable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="636"/>
+        <location filename="../src/gui/formsettings.ui" line="631"/>
         <source>Tabs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="645"/>
+        <location filename="../src/gui/formsettings.ui" line="640"/>
         <source>Open new tabs with left mouse button double-click on tab bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="652"/>
+        <location filename="../src/gui/formsettings.ui" line="647"/>
         <source>Hide tab bar if just one tab is visible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="659"/>
+        <location filename="../src/gui/formsettings.ui" line="654"/>
         <source>Close tabs with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="665"/>
+        <location filename="../src/gui/formsettings.ui" line="660"/>
         <source>Right mouse button double-click</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="672"/>
+        <location filename="../src/gui/formsettings.ui" line="667"/>
         <source>Middle mouse button single-click</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="683"/>
+        <location filename="../src/gui/formsettings.ui" line="678"/>
         <source>Toolbars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="696"/>
+        <location filename="../src/gui/formsettings.ui" line="691"/>
         <source>Toolbar for feeds list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="701"/>
+        <location filename="../src/gui/formsettings.ui" line="696"/>
         <source>Toolbar for messages list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="760"/>
+        <location filename="../src/gui/formsettings.ui" line="755"/>
         <source>Toolbar button style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="767"/>
+        <location filename="../src/gui/formsettings.ui" line="762"/>
         <source>Select toolbar to edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="839"/>
+        <location filename="../src/gui/formsettings.ui" line="834"/>
         <source>Internal web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="848"/>
+        <location filename="../src/gui/formsettings.ui" line="843"/>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="855"/>
+        <location filename="../src/gui/formsettings.ui" line="850"/>
         <source>Enable JavaScript</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="862"/>
+        <location filename="../src/gui/formsettings.ui" line="857"/>
         <source>Enable external plugins based on NPAPI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="869"/>
+        <location filename="../src/gui/formsettings.ui" line="864"/>
         <source>Auto-load images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="876"/>
+        <location filename="../src/gui/formsettings.ui" line="871"/>
         <source>Enable mouse gestures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="883"/>
+        <location filename="../src/gui/formsettings.ui" line="878"/>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
 &lt;ul&gt;
 &lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
@@ -2153,187 +2147,210 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="903"/>
+        <location filename="../src/gui/formsettings.ui" line="898"/>
         <source>External web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="909"/>
+        <location filename="../src/gui/formsettings.ui" line="904"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="912"/>
+        <location filename="../src/gui/formsettings.ui" line="907"/>
         <source>Custom external web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="924"/>
+        <location filename="../src/gui/formsettings.ui" line="919"/>
         <source>Web browser executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="933"/>
+        <location filename="../src/gui/formsettings.ui" line="928"/>
         <source>Executable file of web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="940"/>
+        <location filename="../src/gui/formsettings.ui" line="935"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="949"/>
+        <location filename="../src/gui/formsettings.ui" line="944"/>
         <source>Executable parameters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="956"/>
+        <location filename="../src/gui/formsettings.ui" line="951"/>
         <source>Parameters to executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="963"/>
+        <location filename="../src/gui/formsettings.ui" line="958"/>
         <source>Use sample arguments for</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="974"/>
+        <location filename="../src/gui/formsettings.ui" line="969"/>
         <source>Select browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="982"/>
+        <location filename="../src/gui/formsettings.ui" line="977"/>
         <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="996"/>
+        <location filename="../src/gui/formsettings.ui" line="991"/>
         <source>Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1002"/>
+        <location filename="../src/gui/formsettings.ui" line="997"/>
         <source>Type</source>
         <extracomment>Proxy server type.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1018"/>
+        <location filename="../src/gui/formsettings.ui" line="1013"/>
         <source>Host</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1036"/>
+        <location filename="../src/gui/formsettings.ui" line="1031"/>
         <source>Hostname or IP of your proxy server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1087"/>
+        <location filename="../src/gui/formsettings.ui" line="1082"/>
         <source>Your username for proxy server authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1113"/>
+        <location filename="../src/gui/formsettings.ui" line="1108"/>
         <source>Your password for proxy server authentication</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1123"/>
+        <location filename="../src/gui/formsettings.ui" line="1118"/>
         <source>Display password</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1130"/>
+        <location filename="../src/gui/formsettings.ui" line="1125"/>
         <source>Note that these settings are applied only on newly established connections.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1167"/>
+        <location filename="../src/gui/formsettings.ui" line="1162"/>
         <source>Feeds &amp;&amp; categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1176"/>
+        <location filename="../src/gui/formsettings.ui" line="1171"/>
         <source>Update all feed on application startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1183"/>
+        <location filename="../src/gui/formsettings.ui" line="1178"/>
         <source>Auto-update all feeds every</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1193"/>
+        <location filename="../src/gui/formsettings.ui" line="1188"/>
         <source> minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1209"/>
+        <location filename="../src/gui/formsettings.ui" line="1204"/>
         <source>Feed connection timeout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1216"/>
+        <location filename="../src/gui/formsettings.ui" line="1211"/>
         <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1219"/>
+        <location filename="../src/gui/formsettings.ui" line="1214"/>
         <source> ms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1235"/>
+        <location filename="../src/gui/formsettings.ui" line="1230"/>
         <source>Message count format in feed list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1252"/>
+        <location filename="../src/gui/formsettings.ui" line="1247"/>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1266"/>
+        <location filename="../src/gui/formsettings.ui" line="1261"/>
         <source>Messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1275"/>
+        <location filename="../src/gui/formsettings.ui" line="1270"/>
         <source>Remove all read messages from all feeds on application exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1305"/>
+        <location filename="../src/gui/formsettings.ui" line="1300"/>
         <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1308"/>
+        <location filename="../src/gui/formsettings.ui" line="1303"/>
         <source>Remove duplicate messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1282"/>
+        <location filename="../src/gui/formsettings.ui" line="1333"/>
+        <source>Target directory for downloaded files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.ui" line="1339"/>
+        <source>Ask for each individual downloaded file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.ui" line="1348"/>
+        <source>Save all downloaded files into</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.ui" line="1361"/>
+        <source>Target directory where all downloaded files are saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.ui" line="1368"/>
+        <source>&amp;Browse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.ui" line="1277"/>
         <source>Keep message selection in the middle of the message list viewport</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.ui" line="1289"/>
+        <location filename="../src/gui/formsettings.ui" line="1284"/>
         <source>Use custom date/time format (overrides format loaded from active localization)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="75"/>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="76"/>
         <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2351,227 +2368,231 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="168"/>
+        <location filename="../src/gui/formsettings.cpp" line="183"/>
+        <source>Select downloads target directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formsettings.cpp" line="194"/>
         <source>Select web browser executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="172"/>
+        <location filename="../src/gui/formsettings.cpp" line="198"/>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="174"/>
+        <location filename="../src/gui/formsettings.cpp" line="200"/>
         <source>Executables (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="255"/>
+        <location filename="../src/gui/formsettings.cpp" line="281"/>
         <source>some keyboard shortcuts are not unique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="264"/>
+        <location filename="../src/gui/formsettings.cpp" line="290"/>
         <source>custom external browser is not set correctly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="272"/>
+        <location filename="../src/gui/formsettings.cpp" line="298"/>
         <source>Cannot save settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="273"/>
+        <location filename="../src/gui/formsettings.cpp" line="299"/>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="275"/>
+        <location filename="../src/gui/formsettings.cpp" line="301"/>
         <source>List of errors:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="287"/>
+        <location filename="../src/gui/formsettings.cpp" line="313"/>
         <source>Critical settings were changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="288"/>
+        <location filename="../src/gui/formsettings.cpp" line="314"/>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="290"/>
+        <location filename="../src/gui/formsettings.cpp" line="316"/>
         <source>Do you want to restart now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="291"/>
+        <location filename="../src/gui/formsettings.cpp" line="317"/>
         <source>List of changes:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="344"/>
+        <location filename="../src/gui/formsettings.cpp" line="371"/>
         <source>Opera 12 or older</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="369"/>
+        <location filename="../src/gui/formsettings.cpp" line="396"/>
         <source>No proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="370"/>
+        <location filename="../src/gui/formsettings.cpp" line="397"/>
         <source>System proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="371"/>
+        <location filename="../src/gui/formsettings.cpp" line="398"/>
         <source>Socks5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="372"/>
+        <location filename="../src/gui/formsettings.cpp" line="399"/>
         <source>Http</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="427"/>
+        <location filename="../src/gui/formsettings.cpp" line="454"/>
         <source>language changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="445"/>
+        <location filename="../src/gui/formsettings.cpp" line="472"/>
         <source>No connection test triggered so far.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="445"/>
+        <location filename="../src/gui/formsettings.cpp" line="472"/>
         <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="448"/>
+        <location filename="../src/gui/formsettings.cpp" line="475"/>
         <source>SQLite (embedded database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="461"/>
+        <location filename="../src/gui/formsettings.cpp" line="488"/>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="464"/>
+        <location filename="../src/gui/formsettings.cpp" line="491"/>
         <source>Hostname of your MySQL server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="465"/>
+        <location filename="../src/gui/formsettings.cpp" line="492"/>
         <source>Username to login with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="466"/>
+        <location filename="../src/gui/formsettings.cpp" line="493"/>
         <source>Password for your username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="489"/>
+        <location filename="../src/gui/formsettings.cpp" line="516"/>
         <source>in-memory database switched</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="511"/>
+        <location filename="../src/gui/formsettings.cpp" line="538"/>
         <source>data storage backend changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="535"/>
+        <location filename="../src/gui/formsettings.cpp" line="562"/>
         <source>Hostname is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="538"/>
+        <location filename="../src/gui/formsettings.cpp" line="565"/>
         <source>Hostname looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="544"/>
+        <location filename="../src/gui/formsettings.cpp" line="571"/>
         <source>Username is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="547"/>
+        <location filename="../src/gui/formsettings.cpp" line="574"/>
         <source>Username looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="553"/>
+        <location filename="../src/gui/formsettings.cpp" line="580"/>
         <source>Password is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="556"/>
+        <location filename="../src/gui/formsettings.cpp" line="583"/>
         <source>Password looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="593"/>
+        <location filename="../src/gui/formsettings.cpp" line="620"/>
         <source> (not supported on this platform)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="627"/>
+        <location filename="../src/gui/formsettings.cpp" line="654"/>
         <source>Disable (Tray icon is not available.)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="642"/>
+        <location filename="../src/gui/formsettings.cpp" line="669"/>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="699"/>
+        <location filename="../src/gui/formsettings.cpp" line="726"/>
         <source>Icon only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="700"/>
+        <location filename="../src/gui/formsettings.cpp" line="727"/>
         <source>Text only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="701"/>
+        <location filename="../src/gui/formsettings.cpp" line="728"/>
         <source>Text beside icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="702"/>
+        <location filename="../src/gui/formsettings.cpp" line="729"/>
         <source>Text under icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="703"/>
+        <location filename="../src/gui/formsettings.cpp" line="730"/>
         <source>Follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="741"/>
+        <location filename="../src/gui/formsettings.cpp" line="768"/>
         <source>icon theme changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="750"/>
+        <location filename="../src/gui/formsettings.cpp" line="777"/>
         <source>skin changed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2750,67 +2771,56 @@ currently installed one.</source>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="143"/>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="144"/>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="145"/>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="146"/>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="147"/>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="148"/>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="149"/>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3035,35 +3045,35 @@ currently installed one.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/main.cpp" line="41"/>
+        <location filename="../src/main.cpp" line="42"/>
         <location filename="../src/miscellaneous/localization.cpp" line="78"/>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
         <translation>English (USA)</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="45"/>
+        <location filename="../src/main.cpp" line="46"/>
         <location filename="../src/miscellaneous/localization.cpp" line="79"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>en_US</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="47"/>
+        <location filename="../src/main.cpp" line="48"/>
         <location filename="../src/miscellaneous/localization.cpp" line="80"/>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
         <translation>1.33.7</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="49"/>
+        <location filename="../src/main.cpp" line="50"/>
         <location filename="../src/miscellaneous/localization.cpp" line="81"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation type="unfinished">Martin Rotter</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="51"/>
+        <location filename="../src/main.cpp" line="52"/>
         <location filename="../src/miscellaneous/localization.cpp" line="82"/>
         <source>LANG_EMAIL</source>
         <extracomment>Email of translator - optional.</extracomment>
@@ -3334,132 +3344,142 @@ Unread news: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="146"/>
+        <location filename="../src/network-web/webview.cpp" line="147"/>
         <source>Reload web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="147"/>
+        <location filename="../src/network-web/webview.cpp" line="148"/>
         <source>Reload current web page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="149"/>
+        <location filename="../src/network-web/webview.cpp" line="150"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="150"/>
+        <location filename="../src/network-web/webview.cpp" line="151"/>
         <source>Print current web page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="154"/>
+        <location filename="../src/network-web/webview.cpp" line="155"/>
         <source>Copy selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="155"/>
+        <location filename="../src/network-web/webview.cpp" line="156"/>
         <source>Copies current selection into the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="164"/>
+        <location filename="../src/network-web/webview.cpp" line="165"/>
         <source>Save target as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="165"/>
+        <location filename="../src/network-web/webview.cpp" line="166"/>
         <source>Download content from the hyperlink.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="169"/>
+        <location filename="../src/network-web/webview.cpp" line="170"/>
         <source>Copy link url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="170"/>
+        <location filename="../src/network-web/webview.cpp" line="171"/>
         <source>Copy link url to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="174"/>
+        <location filename="../src/network-web/webview.cpp" line="175"/>
         <source>Copy image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="175"/>
+        <location filename="../src/network-web/webview.cpp" line="176"/>
         <source>Copy image to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="177"/>
-        <source>Save page as...</source>
+        <location filename="../src/network-web/webview.cpp" line="180"/>
+        <source>Save image as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="182"/>
-        <source>Copy image url</source>
+        <location filename="../src/network-web/webview.cpp" line="181"/>
+        <source>Save image to disk.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/network-web/webview.cpp" line="183"/>
-        <source>Copy image url to clipboard.</source>
+        <source>Save page as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/network-web/webview.cpp" line="188"/>
-        <source>Open link in new tab</source>
+        <source>Copy image url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/network-web/webview.cpp" line="189"/>
-        <source>Open this hyperlink in new tab.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/webview.cpp" line="193"/>
-        <source>Follow link</source>
+        <source>Copy image url to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/network-web/webview.cpp" line="194"/>
+        <source>Open link in new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/webview.cpp" line="195"/>
+        <source>Open this hyperlink in new tab.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/webview.cpp" line="199"/>
+        <source>Follow link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/webview.cpp" line="200"/>
         <source>Open the hyperlink in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="196"/>
+        <location filename="../src/network-web/webview.cpp" line="202"/>
         <source>Open link in external browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="197"/>
+        <location filename="../src/network-web/webview.cpp" line="203"/>
         <source>Open the hyperlink in external browser.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="201"/>
+        <location filename="../src/network-web/webview.cpp" line="207"/>
         <source>Open image in new tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="202"/>
+        <location filename="../src/network-web/webview.cpp" line="208"/>
         <source>Open this image in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="224"/>
+        <location filename="../src/network-web/webview.cpp" line="230"/>
         <source>Web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="225"/>
+        <location filename="../src/network-web/webview.cpp" line="231"/>
         <source>Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="226"/>
+        <location filename="../src/network-web/webview.cpp" line="232"/>
         <source>Hyperlink</source>
         <translation type="unfinished"></translation>
     </message>

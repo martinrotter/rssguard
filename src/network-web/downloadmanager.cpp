@@ -21,6 +21,7 @@
 #include "miscellaneous/application.h"
 #include "gui/formmain.h"
 #include "gui/tabwidget.h"
+#include "gui/messagebox.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webbrowsernetworkaccessmanager.h"
 
@@ -207,8 +208,19 @@ void DownloadItem::openFile() {
 
 void DownloadItem::openFolder() {
   if (m_output.exists()) {
+    QString folder = QDir::toNativeSeparators(QFileInfo(m_output.fileName()).absoluteDir().absolutePath());
+
+#if defined(Q_OS_WIN32)
     QString file = QDir::toNativeSeparators(m_output.fileName());
-    QProcess::startDetached(QString("explorer.exe /select, \"") + file + "\"");
+
+    if (!QProcess::startDetached(QString("explorer.exe /select, \"") + file + "\"")) {
+      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open folder"), tr("Cannot open output folder. Open it manually."), QString(), folder);
+    }
+#else
+    if (!QDesktopServices::openUrl(QUrl::fromLocalFile(folder))) {
+      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open folder"), tr("Cannot open output folder. Open it manually."), QString(), folder);
+    }
+#endif
   }
 }
 
@@ -433,22 +445,6 @@ int DownloadManager::activeDownloads() const
       ++count;
   }
   return count;
-}
-
-bool DownloadManager::allowQuit() {
-  if (activeDownloads() >= 1) {
-    int choice = QMessageBox::warning(this, QString(),
-                                      tr("There are %1 downloads in progress\n"
-                                         "Do you want to quit anyway?").arg(activeDownloads()),
-                                      QMessageBox::Yes | QMessageBox::No,
-                                      QMessageBox::No);
-    if (choice == QMessageBox::No) {
-      show();
-      return false;
-    }
-  }
-
-  return true;
 }
 
 void DownloadManager::download(const QNetworkRequest &request, bool request_filename)
@@ -689,9 +685,7 @@ QString DownloadManager::dataString(qint64 size)
 }
 
 DownloadModel::DownloadModel(DownloadManager *download_manager, QObject *parent)
-  : QAbstractListModel(parent)
-  , m_downloadManager(download_manager)
-{
+  : QAbstractListModel(parent), m_downloadManager(download_manager) {
 }
 
 QVariant DownloadModel::data(const QModelIndex &index, int role) const {
@@ -708,53 +702,57 @@ QVariant DownloadModel::data(const QModelIndex &index, int role) const {
   return QVariant();
 }
 
-int DownloadModel::rowCount(const QModelIndex &parent) const
-{
-  return (parent.isValid()) ? 0 : m_downloadManager->m_downloads.count();
+int DownloadModel::rowCount(const QModelIndex &parent) const {
+  return parent.isValid() ? 0 : m_downloadManager->m_downloads.count();
 }
 
-bool DownloadModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-  if (parent.isValid())
+bool DownloadModel::removeRows(int row, int count, const QModelIndex &parent) {
+  if (parent.isValid()) {
     return false;
+  }
 
   int lastRow = row + count - 1;
+
   for (int i = lastRow; i >= row; --i) {
-    if (m_downloadManager->m_downloads.at(i)->downloadedSuccessfully()
-        || m_downloadManager->m_downloads.at(i)->m_ui->m_btnTryAgain->isEnabled()) {
+    if (m_downloadManager->m_downloads.at(i)->downloadedSuccessfully() ||
+        m_downloadManager->m_downloads.at(i)->m_ui->m_btnTryAgain->isEnabled()) {
       beginRemoveRows(parent, i, i);
       m_downloadManager->m_downloads.takeAt(i)->deleteLater();
       endRemoveRows();
     }
   }
+
   m_downloadManager->m_autoSaver->changeOccurred();
   return true;
 }
 
-Qt::ItemFlags DownloadModel::flags(const QModelIndex &index) const
-{
-  if (index.row() < 0 || index.row() >= rowCount(index.parent()))
-    return 0;
+Qt::ItemFlags DownloadModel::flags(const QModelIndex &index) const {
+  if (index.row() < 0 || index.row() >= rowCount(index.parent())) {
+    return Qt::NoItemFlags;
+  }
 
-  Qt::ItemFlags defaultFlags = QAbstractItemModel::flags(index);
-
+  Qt::ItemFlags default_flags = QAbstractItemModel::flags(index);
   DownloadItem *item = m_downloadManager->m_downloads.at(index.row());
-  if (item->downloadedSuccessfully())
-    return defaultFlags | Qt::ItemIsDragEnabled;
 
-  return defaultFlags;
+  if (item->downloadedSuccessfully()) {
+    return default_flags | Qt::ItemIsDragEnabled;
+  }
+
+  return default_flags;
 }
 
-QMimeData *DownloadModel::mimeData(const QModelIndexList &indexes) const
-{
+QMimeData *DownloadModel::mimeData(const QModelIndexList &indexes) const {
   QMimeData *mimeData = new QMimeData();
   QList<QUrl> urls;
+
   foreach (const QModelIndex &index, indexes) {
-    if (!index.isValid())
+    if (!index.isValid()) {
       continue;
-    DownloadItem *item = m_downloadManager->m_downloads.at(index.row());
-    urls.append(QUrl::fromLocalFile(QFileInfo(item->m_output).absoluteFilePath()));
+    }
+
+    urls.append(QUrl::fromLocalFile(QFileInfo(m_downloadManager->m_downloads.at(index.row())->m_output).absoluteFilePath()));
   }
+
   mimeData->setUrls(urls);
   return mimeData;
 }

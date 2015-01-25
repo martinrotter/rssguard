@@ -109,7 +109,6 @@ class DownloadManager : public TabContent {
     QNetworkAccessManager *networkManager() const;
 
     int activeDownloads() const;
-    bool allowQuit();
 
     RemovePolicy removePolicy() const;
     void setRemovePolicy(RemovePolicy policy);
@@ -128,13 +127,14 @@ class DownloadManager : public TabContent {
 
   private slots:
     void save() const;
+    void load();
+
     void updateRow(DownloadItem *item);
     void updateRow();
     void finished();
 
   private:
     void addItem(DownloadItem *item);
-    void load();
 
     Ui::DownloadManager *m_ui;
     AutoSaver *m_autoSaver;
