@@ -32,7 +32,6 @@
 #define SETTING(x) x, x##Def
 #define GROUP(x) x::ID
 
-
 // Feeds.
 namespace Feeds {
   KEY ID;
@@ -173,6 +172,13 @@ namespace Downloads {
 
   KEY TargetDirectory;
   VALUE(QString) TargetDirectoryDef;
+
+  KEY RemovePolicy;
+  VALUE(int) RemovePolicyDef;
+
+  KEY ItemUrl;
+  KEY ItemLocation;
+  KEY ItemDone;
 }
 
 // Proxy.
@@ -282,6 +288,18 @@ class Settings : public QSettings {
 
     inline void setValue(const QString &section,  const QString &key, const QVariant &value) {
       QSettings::setValue(QString("%1/%2").arg(section, key), value);
+    }
+
+    inline void setValue(const QString &key, const QVariant &value) {
+      QSettings::setValue(key, value);
+    }
+
+    inline bool contains(const QString &section, const QString &key) {
+      return QSettings::contains(QString("%1/%2").arg(section, key));
+    }
+
+    inline void remove(const QString &section, const QString &key) {
+      QSettings::remove(QString("%1/%2").arg(section, key));
     }
 
     // Synchronizes settings.

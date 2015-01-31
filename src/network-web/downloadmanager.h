@@ -40,14 +40,14 @@ class DownloadItem : public QWidget {
     friend class DownloadModel;
 
   public:
-    explicit DownloadItem(QNetworkReply *reply = 0, bool request_file_name = false, QWidget *parent = 0);
+    explicit DownloadItem(QNetworkReply *reply = 0, QWidget *parent = 0);
     virtual ~DownloadItem();
 
     bool downloading() const;
     bool downloadedSuccessfully() const;
 
-    qint64 bytes_total() const;
-    qint64 bytes_received() const;
+    qint64 bytesTotal() const;
+    qint64 bytesReceived() const;
     double remainingTime() const;
     double currentSpeed() const;
 
@@ -65,7 +65,7 @@ class DownloadItem : public QWidget {
 
   signals:
     void statusChanged();
-    void progress(qint64 bytes_received = 0, qint64 bytes_total = 0);
+    void progress(qint64 bytesReceived, qint64 bytesTotal);
     void downloadFinished();
 
   private:
@@ -98,8 +98,8 @@ class DownloadManager : public TabContent {
   public:
     enum RemovePolicy {
       Never,
-      Exit,
-      SuccessFullDownload
+      OnExit,
+      OnSuccessfullDownload
     };
 
     explicit DownloadManager(QWidget *parent = 0);
@@ -120,9 +120,9 @@ class DownloadManager : public TabContent {
     QString downloadDirectory();
 
   public slots:
-    void download(const QNetworkRequest &request, bool request_filename = false);
-    void download(const QUrl &url, bool request_filename = false);
-    void handleUnsupportedContent(QNetworkReply *reply, bool request_filename = false);
+    void download(const QNetworkRequest &request);
+    void download(const QUrl &url);
+    void handleUnsupportedContent(QNetworkReply *reply);
     void cleanup();
 
   private slots:

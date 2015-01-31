@@ -159,6 +159,13 @@ DVALUE(bool) Downloads::AlwaysPromptForFilenameDef    = false;
 DKEY Downloads::TargetDirectory                       = "target_directory";
 DVALUE(QString) Downloads::TargetDirectoryDef         = IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DesktopLocation);
 
+DKEY Downloads::RemovePolicy             = "remove_policy";
+DVALUE(int) Downloads::RemovePolicyDef   = DownloadManager::Never;
+
+DKEY Downloads::ItemUrl                 = "download_%1_url";
+DKEY Downloads::ItemLocation            = "download_%1_location";
+DKEY Downloads::ItemDone                = "download_%1_done";
+
 // Proxy.
 DKEY Proxy::ID                              = "proxy";
 

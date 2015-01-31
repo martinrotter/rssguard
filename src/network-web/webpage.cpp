@@ -58,7 +58,6 @@ void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
       }
 
     default:
-      //reply->deleteLater();
       return;
   }
 }
