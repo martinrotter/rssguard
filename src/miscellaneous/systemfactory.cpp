@@ -173,11 +173,13 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
 QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
   QByteArray releases_xml;
+  QByteArray changelog;
 
   result.second = NetworkFactory::downloadFile(RELEASES_LIST, DOWNLOAD_TIMEOUT, releases_xml).first;
+  NetworkFactory::downloadFile(CHANGELOG, DOWNLOAD_TIMEOUT, changelog).first;
 
   if (result.second == QNetworkReply::NoError) {
-    result.first = parseUpdatesFile(releases_xml);
+    result.first = parseUpdatesFile(releases_xml, changelog);
   }
 
   return result;
@@ -215,7 +217,7 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
   }
 }
 
-UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
+UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) {
   UpdateInfo update;
   QDomDocument document; document.setContent(updates_file, false);
   QDomNodeList releases = document.elementsByTagName("release");
@@ -225,7 +227,7 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file) {
     QString type = rel_elem.attributes().namedItem("type").toAttr().value();
 
     update.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
-    update.m_changes = rel_elem.namedItem("changes").toElement().text();
+    update.m_changes = changelog;
 
     QDomNodeList urls = rel_elem.elementsByTagName("url");
 

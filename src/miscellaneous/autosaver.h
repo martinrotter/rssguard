@@ -18,36 +18,30 @@
 #ifndef AUTOSAVER_H
 #define AUTOSAVER_H
 
-#include <qobject.h>
-#include <qbasictimer.h>
-#include <qdatetime.h>
+#include <QObject>
+#include <QBasicTimer>
+#include <QDateTime>
 
-/*
-    This class will call the save() slot on the parent object when the parent changes.
-    It will wait several seconds after changed() to combining multiple changes and
-    prevent continuous writing to disk.
-  */
-class AutoSaver : public QObject
-{
+
+class AutoSaver : public QObject{
 
     Q_OBJECT
 
-public:
-    AutoSaver(QObject *parent);
-    ~AutoSaver();
+  public:
+    explicit AutoSaver(QObject *parent);
+    virtual ~AutoSaver();
+
     void saveIfNeccessary();
 
-public slots:
+  public slots:
     void changeOccurred();
 
-protected:
+  protected:
     void timerEvent(QTimerEvent *event);
 
-private:
+  private:
     QBasicTimer m_timer;
     QTime m_firstChange;
-
 };
 
 #endif // AUTOSAVER_H
-

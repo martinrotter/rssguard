@@ -18,20 +18,20 @@
 #ifndef EDITTABLEVIEW_H
 #define EDITTABLEVIEW_H
 
-#include <qtableview.h>
+#include <QTableView>
 
-class EditTableView : public QTableView
-{
+
+class EditTableView : public QTableView {
     Q_OBJECT
 
-public:
-    EditTableView(QWidget *parent = 0);
+  public:
+    explicit EditTableView(QWidget *parent = 0);
+
     void keyPressEvent(QKeyEvent *event);
 
-public slots:
+  public slots:
     void removeSelected();
     void removeAll();
 };
 
 #endif // EDITTABLEVIEW_H
-

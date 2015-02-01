@@ -10,7 +10,12 @@ Fixed:
 
 Added:
 <ul>
-<li></li>
+<li>Completely new downloader (see menu Tools -> Downloads) forked from original Qt examples.</li>
+</ul>
+
+Changed:
+<ul>
+<li>Updater now displays full changelog.</li>
 </ul>
 
 <hr/>

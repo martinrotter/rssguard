@@ -2,19 +2,5 @@
 <releases>
   <release version="2.1.0" type="feature">
     <url platform="x86" os="Windows">https://bitbucket.org/skunkos/rssguard/downloads/rssguard-2.1.0-win32.exe</url>
-    <changes>
-<![CDATA[<body>
-Fixed:
-<ul>
-<li>Fixed bug #105, #103.</li>
-</ul>
-
-Added:
-<ul>
-<li>Embedded web browser supports printing of its contents, feature is accessible via web browser context menu.</li>
-<li>Embedded web browser now displays navigation toolbar even in message preview mode/newspaper mode when user loads external links.</li>
-</ul>
-</body>]]>
-    </changes>
   </release>
 </releases>

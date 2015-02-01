@@ -643,14 +643,15 @@ void DownloadManager::load() {
 void DownloadManager::cleanup() {
   if (!m_downloads.isEmpty()) {
     m_model->removeRows(0, m_downloads.count());
+    m_ui->m_btnCleanup->setEnabled(false);
   }
 }
 
 void DownloadManager::setDownloadDirectory(const QString &directory) {
   m_downloadDirectory = directory;
 
-  if (!m_downloadDirectory.isEmpty() && !m_downloadDirectory.endsWith('/')) {
-    m_downloadDirectory += '/';
+  if (!m_downloadDirectory.isEmpty() && !m_downloadDirectory.endsWith(QLatin1Char('/'))) {
+    m_downloadDirectory += QLatin1Char('/');
   }
 }
 

@@ -41,6 +41,7 @@
 #define URI_SCHEME_FEED                       "feed://"
 #define URI_SCHEME_HTTP                       "http://"
 #define RELEASES_LIST                         "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/UPDATES?at=master"
+#define CHANGELOG                             "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/CHANGELOG?at=master"
 #define DEFAULT_LOCALE                        "en_GB"
 #define DEFAULT_FEED_ENCODING                 "UTF-8"
 #define DEFAULT_FEED_TYPE                     "RSS"

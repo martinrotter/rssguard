@@ -106,7 +106,7 @@ class SystemFactory : public QObject {
 
   private:
     // Performs parsing of downloaded file with list of updates.
-    UpdateInfo parseUpdatesFile(const QByteArray &updates_file);
+    UpdateInfo parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog);
 };
 
 #endif // SYSTEMFACTORY_H

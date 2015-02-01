@@ -15,55 +15,54 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "edittableview.h"
+#include "gui/edittableview.h"
 
-#include <qevent.h>
+#include <QKeyEvent>
 
-EditTableView::EditTableView(QWidget *parent)
-  : QTableView(parent)
-{
+
+EditTableView::EditTableView(QWidget *parent) : QTableView(parent) {
 }
 
-void EditTableView::keyPressEvent(QKeyEvent *event)
-{
+void EditTableView::keyPressEvent(QKeyEvent *event) {
   if (model() && event->key() == Qt::Key_Delete) {
     removeSelected();
-    event->setAccepted(true);
-  } else {
+    event->accept();
+  }
+  else {
     QAbstractItemView::keyPressEvent(event);
   }
 }
 
-void EditTableView::removeSelected()
-{
-  if (!model() || !selectionModel() || !selectionModel()->hasSelection())
+void EditTableView::removeSelected() {
+  if (!model() || !selectionModel() || !selectionModel()->hasSelection()) {
     return;
+  }
 
   QModelIndexList selectedRows = selectionModel()->selectedRows();
-  if (selectedRows.isEmpty())
+
+  if (selectedRows.isEmpty()) {
     return;
+  }
 
   int newSelectedRow = selectedRows.at(0).row();
-  for (int i = selectedRows.count() - 1; i >= 0; --i) {
+
+  for (int i = selectedRows.count() - 1; i >= 0; i--) {
     QModelIndex idx = selectedRows.at(i);
     model()->removeRow(idx.row(), rootIndex());
   }
 
-  // select the item at the same position
   QModelIndex newSelectedIndex = model()->index(newSelectedRow, 0, rootIndex());
-  // if that was the last item
-  if (!newSelectedIndex.isValid())
+
+  if (!newSelectedIndex.isValid()) {
     newSelectedIndex = model()->index(newSelectedRow - 1, 0, rootIndex());
+  }
 
   selectionModel()->select(newSelectedIndex, QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
   setCurrentIndex(newSelectedIndex);
 }
 
-void EditTableView::removeAll()
-{
-  if (!model())
-    return;
-
-  model()->removeRows(0, model()->rowCount(rootIndex()), rootIndex());
+void EditTableView::removeAll() {
+  if (model() != NULL) {
+    model()->removeRows(0, model()->rowCount(rootIndex()), rootIndex());
+  }
 }
-
