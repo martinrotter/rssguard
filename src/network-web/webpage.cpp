@@ -42,13 +42,15 @@ QString WebPage::toPlainText() const {
 }
 
 void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
-  if (!reply)
+  if (!reply) {
     return;
+  }
 
   QUrl replyUrl = reply->url();
 
-  if (replyUrl.scheme() == QLatin1String("abp"))
+  if (replyUrl.scheme() == QLatin1String("abp")) {
     return;
+  }
 
   switch (reply->error()) {
     case QNetworkReply::NoError:
