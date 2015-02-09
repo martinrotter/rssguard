@@ -36,19 +36,11 @@ class UpdateUrl {
 
 class UpdateInfo {
   public:
-    enum UpdateType {
-      // Corresponding enum to "maintenace" from UPDATES file.
-      Maintenance,
-      // Corresponding enum to "evolution" from UPDATES file.
-      Evolution
-    };
-
     explicit UpdateInfo() : m_availableVersion(QString()), m_changes(QString()) {
     }
 
     QString m_availableVersion;
     QString m_changes;
-    UpdateType m_type;
     QHash<QString, UpdateUrl> m_urls;
 };
 

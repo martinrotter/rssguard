@@ -224,7 +224,6 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
 
   if (releases.size() == 1) {
     QDomElement rel_elem = releases.at(0).toElement();
-    QString type = rel_elem.attributes().namedItem("type").toAttr().value();
 
     update.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
     update.m_changes = changelog;
@@ -241,13 +240,6 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
 
       update.m_urls.insert(url.m_os,
                            url);
-    }
-
-    if (type == "maintenance") {
-      update.m_type = UpdateInfo::Maintenance;
-    }
-    else {
-      update.m_type = UpdateInfo::Evolution;
     }
   }
   else {
