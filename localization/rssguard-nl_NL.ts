@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<TS version="2.0" language="nl_NL">
 <context>
     <name>Application</name>
     <message>
@@ -33,70 +33,70 @@
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"></translation>
+        <translation>Icon</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error saving: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 of %2 (%3/sec) - %4</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout bij het openen van uitvoerbestand: %1</translation>
     </message>
     <message>
         <source>?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 of %2 - Download Complete</source>
-        <translation type="unfinished"></translation>
+        <translation>?</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Probeer opnieuw</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Stop</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Open bestand</translation>
     </message>
     <message>
         <source>Open &amp;folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Open &amp;map</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download for %1 cancelled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download directory %1 couldn&apos;t be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies bestemming voor het gedownloade bestand</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished">Fout: %1. {1?}</translation>
+        <translation>Fout: %1</translation>
     </message>
     <message>
         <source>Cannot open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan map niet openen</translation>
     </message>
     <message>
         <source>Cannot open output folder. Open it manually.</source>
+        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+    </message>
+    <message>
+        <source>Cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download directory couldn&apos;t be created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error when saving file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3 per second) - %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 - download completed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -104,37 +104,37 @@
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation type="unfinished"></translation>
+        <translation>Opschonen</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
         </translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>bytes</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"></translation>
+        <translation>kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
 </context>
 <context>
@@ -202,10 +202,12 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -295,16 +297,16 @@ Auto-update status: %5</translation>
     <name>FeedsModelRecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation>Vuilnisbak</translation>
+        <translation>Prullenbak</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>De vuilnisbak bevat alle verwijderde berichten van alle feeds.</translation>
+        <translation>De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
     </message>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation>Vuilnisbak
+        <translation>Prullenbak
 %1</translation>
     </message>
     <message numerus="yes">
@@ -406,7 +408,7 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation>Wil je de vuilnisbak echt legen?</translation>
+        <translation>Wil je de prullenbak echt legen?</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
@@ -414,7 +416,7 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Context menu for recycle bin</source>
-        <translation>Contextmenu voor vuilnisbak</translation>
+        <translation>Contextmenu voor prullenbak</translation>
     </message>
 </context>
 <context>
@@ -1398,7 +1400,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Recycle bin</source>
-        <translation>&amp;Vuilnisbak</translation>
+        <translation>&amp;Prullenbak</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1418,7 +1420,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Empty recycle bin</source>
-        <translation>&amp;Vuilnisbak legen</translation>
+        <translation>&amp;Prullenbak legen</translation>
     </message>
     <message>
         <source>&amp;Restore all messages</source>
@@ -1442,11 +1444,11 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel tussen lijst met berichten indeling </translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Downloads</translation>
     </message>
 </context>
 <context>
@@ -1529,7 +1531,9 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -1587,10 +1591,12 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1668,6 +1674,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -2065,52 +2072,53 @@ Je moet handmatig herstarten.</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbare bestanden (*.*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder de gelezen berichten van alle feeds als rssguard sluit</translation>
     </message>
     <message>
         <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud bijgewerkt en nieuw bericht wordt verwijderd.</translation>
     </message>
     <message>
         <source>Remove duplicate messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder dubbele berichten</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloads</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelmap voor de gedownloade bestanden</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Vraag voor elk individuele gedownloade bestand</translation>
     </message>
     <message>
         <source>Save all downloaded files into</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla alle gedownloade bestanden op in</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Doelmap waar alle downloads worden opgeslagen</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Blader</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer gedownloade doelmap </translation>
     </message>
 </context>
 <context>
@@ -2256,42 +2264,52 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -2336,11 +2354,12 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"></translation>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
+        <translation>Definitief verwijderd</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"></translation>
+        <translation>Is het bericht definitief verwijderd uit de prullenbak?</translation>
     </message>
 </context>
 <context>
@@ -2593,7 +2612,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloads</translation>
     </message>
 </context>
 <context>
@@ -2790,47 +2809,47 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished"></translation>
+        <translation>Print</translation>
     </message>
     <message>
         <source>Print current web page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Print huidige webpagina.</translation>
     </message>
     <message>
         <source>HTML web pages (*.html)</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML web paginas (*.html)</translation>
     </message>
     <message>
         <source>Select destination file for web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies bestemming bestand voor de web pagina</translation>
     </message>
     <message>
         <source>Cannot save web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan webpagina niet opslaan</translation>
     </message>
     <message>
         <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan webpagina niet opslaan omdat bestand niet beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Save target as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Doel opslaan als..</translation>
     </message>
     <message>
         <source>Download content from the hyperlink.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download inhoud van de koppeling.</translation>
     </message>
     <message>
         <source>Save page as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina opslaan als...</translation>
     </message>
     <message>
         <source>Save image to disk.</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeelding opslaan op schijf.</translation>
     </message>
     <message>
         <source>Save image as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeelding opslaan als...</translation>
     </message>
 </context>
 </TS>

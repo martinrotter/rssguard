@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<TS version="2.0" language="sv_SE">
 <context>
     <name>Application</name>
     <message>
@@ -33,70 +33,70 @@
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Filnamn</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error saving: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 of %2 (%3/sec) - %4</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte öppna utdatafil: %1</translation>
     </message>
     <message>
         <source>?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 of %2 - Download Complete</source>
-        <translation type="unfinished"></translation>
+        <translation>?</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Försök igen</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Stopp</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Öppna fil</translation>
     </message>
     <message>
         <source>Open &amp;folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna &amp;mapp</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download for %1 cancelled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Download directory %1 couldn&apos;t be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj destination för nedladdad fil</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished">Fel: %1. {1?}</translation>
+        <translation>Fel: %1</translation>
     </message>
     <message>
         <source>Cannot open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte öppna mappen</translation>
     </message>
     <message>
         <source>Cannot open output folder. Open it manually.</source>
+        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
+    </message>
+    <message>
+        <source>Cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download directory couldn&apos;t be created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error when saving file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 (%3 per second) - %4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 of %2 - download completed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -104,37 +104,37 @@
     <name>DownloadManager</name>
     <message>
         <source>Clean up</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensa</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
         </translation>
     </message>
     <message>
         <source>bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>byte</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"></translation>
+        <translation>kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
 </context>
 <context>
@@ -202,10 +202,12 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Antal meddelanden.</translation>
     </message>
     <message>
@@ -1440,11 +1442,11 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     </message>
     <message>
         <source>Switch message list layout orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Växla meddelandelistans layout-orientering</translation>
     </message>
     <message>
         <source>&amp;Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nedladdningar</translation>
     </message>
 </context>
 <context>
@@ -1527,7 +1529,9 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Språk</translation>
     </message>
     <message>
@@ -1585,10 +1589,12 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Språkkod</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1613,7 +1619,7 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     </message>
     <message>
         <source>Tray area &amp;&amp; notifications</source>
-        <translation>Meddelandefält &amp;&amp; notifieringar</translation>
+        <translation>Meddelandefält &amp;&amp; aviseringar</translation>
     </message>
     <message>
         <source>Disable</source>
@@ -1666,6 +1672,7 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Namn</translation>
     </message>
     <message>
@@ -2063,52 +2070,52 @@ Du måste starta om manuellt.</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort Trolltechs registernyckel (HKCU\\Software\\Trolltech) när programmet avslutas (Används på egen risk!).</translation>
     </message>
     <message>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Körbara (*)</translation>
     </message>
     <message>
         <source>Remove all read messages from all feeds on application exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla lästa meddelanden från alla flöden vid programavslut</translation>
     </message>
     <message>
         <source>When new message arrives from feed and duplicate exists, then its content is updated and new message is dropped.</source>
-        <translation type="unfinished"></translation>
+        <translation>När nytt meddelande tas emot och dubblett finns, skall innehållet uppdateras och det nya meddelandet tas bort.</translation>
     </message>
     <message>
         <source>Remove duplicate messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort dubblettmeddelanden</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedladdningar</translation>
     </message>
     <message>
         <source>Target directory for downloaded files</source>
-        <translation type="unfinished"></translation>
+        <translation>Målmapp för nedladdade filer</translation>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Fråga om varje enskild fil</translation>
     </message>
     <message>
         <source>Save all downloaded files into</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara alla nedladdningar i</translation>
     </message>
     <message>
         <source>Target directory where all downloaded files are saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Målmapp där alla nedladdade filer sparas</translation>
     </message>
     <message>
         <source>&amp;Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bläddra</translation>
     </message>
     <message>
         <source>Select downloads target directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj nedladdningsmapp</translation>
     </message>
 </context>
 <context>
@@ -2253,42 +2260,52 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Läst</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Borttaget</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Viktigt</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Flöde</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Författare</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Skapad</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Innehåll</translation>
     </message>
     <message>
@@ -2333,11 +2350,12 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <translation type="unfinished"></translation>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
+        <translation>Permanent borttagna</translation>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
-        <translation type="unfinished"></translation>
+        <translation>Är meddelandet permanent borttaget från papperskorgen?</translation>
     </message>
 </context>
 <context>
@@ -2589,7 +2607,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedladdningar</translation>
     </message>
 </context>
 <context>
@@ -2786,47 +2804,47 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Print</source>
-        <translation type="unfinished"></translation>
+        <translation>Skriv ut</translation>
     </message>
     <message>
         <source>Print current web page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Skriv ut aktuell webbsida</translation>
     </message>
     <message>
         <source>HTML web pages (*.html)</source>
-        <translation type="unfinished"></translation>
+        <translation>HTML-webbsidor (*.html)</translation>
     </message>
     <message>
         <source>Select destination file for web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange målfil för webbsidan</translation>
     </message>
     <message>
         <source>Cannot save web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte spara webbsidan</translation>
     </message>
     <message>
         <source>Web page cannot be saved because destination file is not writtable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbsidan kan inte sparas eftersom målfilen inte är skrivbar.</translation>
     </message>
     <message>
         <source>Save target as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara målet som...</translation>
     </message>
     <message>
         <source>Download content from the hyperlink.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner innehåll från hyperlänk.</translation>
     </message>
     <message>
         <source>Save page as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara sida som...</translation>
     </message>
     <message>
         <source>Save image to disk.</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara bild på disk.</translation>
     </message>
     <message>
         <source>Save image as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara bild som...</translation>
     </message>
 </context>
 </TS>

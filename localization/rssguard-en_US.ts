@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>Application</name>
     <message>
@@ -67,60 +67,60 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="256"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="264"/>
         <source>Error opening output file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="265"/>
-        <source>Error saving: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="110"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="107"/>
         <source>Select destination for downloaded file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="117"/>
-        <source>Download for %1 cancelled</source>
+        <location filename="../src/network-web/downloadmanager.cpp" line="114"/>
+        <source>Cancelled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="137"/>
-        <source>Download directory %1 couldn&apos;t be created</source>
+        <location filename="../src/network-web/downloadmanager.cpp" line="134"/>
+        <source>Download directory couldn&apos;t be created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="217"/>
-        <location filename="../src/network-web/downloadmanager.cpp" line="221"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="216"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="220"/>
         <source>Cannot open folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="217"/>
-        <location filename="../src/network-web/downloadmanager.cpp" line="221"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="216"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="220"/>
         <source>Cannot open output folder. Open it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="277"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="275"/>
+        <source>Error when saving file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="290"/>
         <source>Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="369"/>
-        <source>%1 of %2 (%3/sec) - %4</source>
+        <location filename="../src/network-web/downloadmanager.cpp" line="386"/>
+        <source>%1 of %2 (%3 per second) - %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="371"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="396"/>
+        <source>%1 of %2 - download completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/downloadmanager.cpp" line="387"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="378"/>
-        <source>%1 of %2 - Download Complete</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -132,7 +132,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="655"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="668"/>
         <source>%n minutes remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -140,7 +140,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="659"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="672"/>
         <source>%n seconds remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -148,22 +148,22 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="672"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="684"/>
         <source>bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="675"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="688"/>
         <source>kB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="678"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="692"/>
         <source>MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="681"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="696"/>
         <source>GB</source>
         <translation type="unfinished"></translation>
     </message>
@@ -253,11 +253,13 @@
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="58"/>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="59"/>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1894,7 +1896,9 @@ and/or settings were backed or not. Also make sure that target foder is writable
         <location filename="../src/gui/formsettings.ui" line="68"/>
         <location filename="../src/gui/formsettings.cpp" line="74"/>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2345,12 +2349,14 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="75"/>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="76"/>
         <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2368,6 +2374,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2771,56 +2778,67 @@ currently installed one.</source>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="143"/>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="144"/>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="145"/>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="146"/>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="147"/>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="148"/>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="149"/>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3114,12 +3132,12 @@ currently installed one.</source>
 <context>
     <name>SystemFactory</name>
     <message>
-        <location filename="../src/miscellaneous/systemfactory.cpp" line="272"/>
+        <location filename="../src/miscellaneous/systemfactory.cpp" line="266"/>
         <source>New version available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/systemfactory.cpp" line="273"/>
+        <location filename="../src/miscellaneous/systemfactory.cpp" line="267"/>
         <source>Click the bubble for more information.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3344,142 +3362,142 @@ Unread news: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="147"/>
+        <location filename="../src/network-web/webview.cpp" line="192"/>
         <source>Reload web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="148"/>
+        <location filename="../src/network-web/webview.cpp" line="193"/>
         <source>Reload current web page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="150"/>
+        <location filename="../src/network-web/webview.cpp" line="148"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="151"/>
+        <location filename="../src/network-web/webview.cpp" line="149"/>
         <source>Print current web page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="155"/>
+        <location filename="../src/network-web/webview.cpp" line="194"/>
         <source>Copy selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="156"/>
+        <location filename="../src/network-web/webview.cpp" line="195"/>
         <source>Copies current selection into the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="165"/>
+        <location filename="../src/network-web/webview.cpp" line="196"/>
         <source>Save target as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="166"/>
+        <location filename="../src/network-web/webview.cpp" line="197"/>
         <source>Download content from the hyperlink.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="170"/>
+        <location filename="../src/network-web/webview.cpp" line="198"/>
         <source>Copy link url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="171"/>
+        <location filename="../src/network-web/webview.cpp" line="199"/>
         <source>Copy link url to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="175"/>
+        <location filename="../src/network-web/webview.cpp" line="200"/>
         <source>Copy image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="176"/>
+        <location filename="../src/network-web/webview.cpp" line="201"/>
         <source>Copy image to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="180"/>
+        <location filename="../src/network-web/webview.cpp" line="202"/>
         <source>Save image as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="181"/>
+        <location filename="../src/network-web/webview.cpp" line="203"/>
         <source>Save image to disk.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="183"/>
+        <location filename="../src/network-web/webview.cpp" line="171"/>
         <source>Save page as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="188"/>
+        <location filename="../src/network-web/webview.cpp" line="206"/>
         <source>Copy image url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="189"/>
+        <location filename="../src/network-web/webview.cpp" line="207"/>
         <source>Copy image url to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="194"/>
+        <location filename="../src/network-web/webview.cpp" line="210"/>
         <source>Open link in new tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="195"/>
+        <location filename="../src/network-web/webview.cpp" line="211"/>
         <source>Open this hyperlink in new tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="199"/>
+        <location filename="../src/network-web/webview.cpp" line="212"/>
         <source>Follow link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="200"/>
+        <location filename="../src/network-web/webview.cpp" line="213"/>
         <source>Open the hyperlink in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="202"/>
+        <location filename="../src/network-web/webview.cpp" line="184"/>
         <source>Open link in external browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="203"/>
+        <location filename="../src/network-web/webview.cpp" line="214"/>
         <source>Open the hyperlink in external browser.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="207"/>
+        <location filename="../src/network-web/webview.cpp" line="215"/>
         <source>Open image in new tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="208"/>
+        <location filename="../src/network-web/webview.cpp" line="216"/>
         <source>Open this image in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="230"/>
+        <location filename="../src/network-web/webview.cpp" line="238"/>
         <source>Web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="231"/>
+        <location filename="../src/network-web/webview.cpp" line="239"/>
         <source>Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="232"/>
+        <location filename="../src/network-web/webview.cpp" line="240"/>
         <source>Hyperlink</source>
         <translation type="unfinished"></translation>
     </message>
