@@ -659,8 +659,7 @@ QString DownloadManager::downloadDirectory() {
   return m_downloadDirectory;
 }
 
-QString DownloadManager::timeString(double time_remaining)
-{
+QString DownloadManager::timeString(double time_remaining) {
   QString remaining;
 
   if (time_remaining > 60) {
@@ -676,21 +675,23 @@ QString DownloadManager::timeString(double time_remaining)
   return remaining;
 }
 
-QString DownloadManager::dataString(qint64 size)
-{
+QString DownloadManager::dataString(qint64 size) {
   QString unit;
   double newSize;
 
   if (size < 1024) {
     newSize = size;
     unit = tr("bytes");
-  } else if (size < 1024 * 1024) {
+  }
+  else if (size < 1024 * 1024) {
     newSize = (double)size / (double)1024;
     unit = tr("kB");
-  } else if (size < 1024 * 1024 * 1024) {
+  }
+  else if (size < 1024 * 1024 * 1024) {
     newSize = (double)size / (double)(1024 * 1024);
     unit = tr("MB");
-  } else {
+  }
+  else {
     newSize = (double)size / (double)(1024 * 1024 * 1024);
     unit = tr("GB");
   }
