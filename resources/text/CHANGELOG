@@ -10,7 +10,7 @@ Fixed:
 
 Added:
 <ul>
-<li>Completely new downloader (see menu Tools -> Downloads) forked from original Qt examples.</li>
+<li style="font-weight: bold;">Completely new downloader (see menu Tools -> Downloads) forked from original Qt examples.</li>
 </ul>
 
 Changed:
