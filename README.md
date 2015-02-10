@@ -58,6 +58,7 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * support for all feed formats,
 * simplicity,
 * import/export of feeds to/from OPML 2.0,
+* downloader with own tab and support for up to 6 parallel downloads,
 * message filter with regular expressions,
 * feed metadata fetching including icons,
 * enhanced feed auto-updating with separate time intervals,
