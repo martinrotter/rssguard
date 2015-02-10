@@ -33,6 +33,9 @@ Downloads
 ---------
 ### Windows
 * [all downloads](https://bitbucket.org/skunkos/rssguard/downloads).
+* alternative downloads
+
+[![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 ### Linux
 * [stable releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard),
 * [development releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard-git) (compiled from the master branch of RSS Guard Git repository),
@@ -40,6 +43,7 @@ Downloads
 
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
 - - -
+
 Features
 --------
 RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most known feed formats, including RSS/RDF and ATOM. RSS Guard is developed on top of the [Qt library](http://qt-project.org/) and it supports these operating systems:
