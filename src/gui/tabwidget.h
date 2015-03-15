@@ -118,9 +118,7 @@ class TabWidget : public QTabWidget {
     int addLinkedBrowser(const QString &initial_url);
 
     // General method for adding WebBrowsers.
-    int addBrowser(bool move_after_current,
-                   bool make_active,
-                   const QUrl &initial_url = QUrl());
+    int addBrowser(bool move_after_current, bool make_active, const QUrl &initial_url = QUrl());
 
   private:
     PlainToolButton *m_btnAddTab;

@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>Error: %1</source>
-        <translation type="unfinished">Chyba: %1. {1?}</translation>
+        <translation>Chyba: %1</translation>
     </message>
     <message>
         <source>Cannot open folder</source>
@@ -137,6 +137,14 @@
     <message>
         <source>GB</source>
         <translation></translation>
+    </message>
+    <message numerus="yes">
+        <source>Downloading %n file(s)...</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

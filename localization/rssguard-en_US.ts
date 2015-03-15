@@ -4,7 +4,7 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="109"/>
+        <location filename="../src/miscellaneous/application.cpp" line="122"/>
         <source>Application is already running.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -132,7 +132,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="668"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="563"/>
+        <source>Downloading %n file(s)...</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/network-web/downloadmanager.cpp" line="701"/>
         <source>%n minutes remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -140,7 +148,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="672"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="705"/>
         <source>%n seconds remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -148,22 +156,22 @@
         </translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="684"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="717"/>
         <source>bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="688"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="721"/>
         <source>kB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="692"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="725"/>
         <source>MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="696"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="729"/>
         <source>GB</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3119,12 +3127,12 @@ currently installed one.</source>
 <context>
     <name>StatusBar</name>
     <message>
-        <location filename="../src/gui/statusbar.cpp" line="36"/>
+        <location filename="../src/gui/statusbar.cpp" line="37"/>
         <source>Fullscreen mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/statusbar.cpp" line="37"/>
+        <location filename="../src/gui/statusbar.cpp" line="38"/>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation type="unfinished"></translation>
     </message>

@@ -452,18 +452,39 @@ DownloadManager::~DownloadManager() {
   }
 
   delete m_ui;
+
+  qDebug("Destroying DownloadManager instance.");
 }
 
 int DownloadManager::activeDownloads() const {
   int count = 0;
 
-  for (int i = 0; i < m_downloads.count(); i++) {
-    if (m_downloads.at(i)->m_ui->m_btnStopDownload->isEnabled()) {
+  foreach (DownloadItem *download, m_downloads) {
+    if (download->downloading()) {
       count++;
     }
   }
 
   return count;
+}
+
+int DownloadManager::downloadProgress() const {
+  qint64 bytes_total = 0;
+  qint64 bytes_received = 0;
+
+  foreach (DownloadItem *download, m_downloads) {
+    if (download->downloading()) {
+      bytes_total += download->bytesTotal();
+      bytes_received += download->bytesReceived();
+    }
+  }
+
+  if (bytes_total <= 0) {
+    return -1;
+  }
+  else {
+    return (bytes_received * 100.0) / bytes_total;
+  }
 }
 
 void DownloadManager::download(const QNetworkRequest &request) {
@@ -501,7 +522,8 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
 
 void DownloadManager::addItem(DownloadItem *item) {
   connect(item, SIGNAL(statusChanged()), this, SLOT(updateRow()));
-  connect(item, SIGNAL(downloadFinished()), this, SLOT(finished()));
+  connect(item, SIGNAL(progress(qint64,qint64)), this, SLOT(itemProgress()));
+  connect(item, SIGNAL(downloadFinished()), this, SLOT(itemFinished()));
 
   int row = m_downloads.count();
   m_model->beginInsertRows(QModelIndex(), row, row);
@@ -521,13 +543,24 @@ QNetworkAccessManager *DownloadManager::networkManager() const {
   return m_networkManager;
 }
 
-void DownloadManager::finished() {
-  // NOTE: Download has finished.
+void DownloadManager::itemFinished() {
+  emit downloadFinished();
 }
 
 void DownloadManager::updateRow() {
   if (DownloadItem *item = qobject_cast<DownloadItem*>(sender())) {
     updateRow(item);
+  }
+}
+
+void DownloadManager::itemProgress() {
+  int progress = downloadProgress();
+
+  if (progress < 0) {
+    emit downloadFinished();
+  }
+  else {
+    emit downloadProgress(progress, tr("Downloading %n file(s)...", "", activeDownloads()));
   }
 }
 

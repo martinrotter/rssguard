@@ -23,6 +23,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
 #include "gui/formmain.h"
+#include "gui/statusbar.h"
 
 #include <QSessionManager>
 #include <QThread>
@@ -57,6 +58,18 @@ IconFactory *Application::icons() {
   }
 
   return m_icons;
+}
+
+DownloadManager *Application::downloadManager() {
+  if (m_downloadManager == NULL) {
+    m_downloadManager = new DownloadManager();
+
+    connect(m_downloadManager, SIGNAL(downloadFinished()), mainForm()->statusBar(), SLOT(clearProgressDownload()));
+    connect(m_downloadManager, SIGNAL(downloadProgress(int,QString)),
+            mainForm()->statusBar(), SLOT(showProgressDownload(int,QString)));
+  }
+
+  return m_downloadManager;
 }
 
 bool Application::backupDatabaseSettings(bool backup_database, bool backup_settings,

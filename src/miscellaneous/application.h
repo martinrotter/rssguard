@@ -88,14 +88,7 @@ class Application : public QtSingleApplication {
     }
 
     IconFactory *icons();
-
-    inline DownloadManager *downloadManager() {
-      if (m_downloadManager == NULL) {
-        m_downloadManager = new DownloadManager();
-      }
-
-      return m_downloadManager;
-    }
+    DownloadManager *downloadManager();
 
     inline Settings *settings() {
       if (m_settings == NULL) {

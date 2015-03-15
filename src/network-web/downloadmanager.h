@@ -109,15 +109,16 @@ class DownloadManager : public TabContent {
     QNetworkAccessManager *networkManager() const;
 
     int activeDownloads() const;
+    int downloadProgress() const;
 
     RemovePolicy removePolicy() const;
     void setRemovePolicy(RemovePolicy policy);
 
-    static QString timeString(double time_remaining);
-    static QString dataString(qint64 size);
-
     void setDownloadDirectory(const QString &directory);
     QString downloadDirectory();
+
+    static QString timeString(double time_remaining);
+    static QString dataString(qint64 size);
 
   public slots:
     void download(const QNetworkRequest &request);
@@ -131,7 +132,12 @@ class DownloadManager : public TabContent {
 
     void updateRow(DownloadItem *item);
     void updateRow();
-    void finished();
+    void itemProgress();
+    void itemFinished();
+
+  signals:
+    void downloadProgress(int progress, const QString &description);
+    void downloadFinished();
 
   private:
     void addItem(DownloadItem *item);

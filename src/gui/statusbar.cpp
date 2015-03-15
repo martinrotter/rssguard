@@ -17,11 +17,14 @@
 
 #include "gui/statusbar.h"
 
+#include "gui/formmain.h"
+#include "gui/tabwidget.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QToolButton>
 #include <QLabel>
 #include <QProgressBar>
+#include <QThread>
 
 
 StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
@@ -36,18 +39,33 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_fullscreenSwitcher->setText(tr("Fullscreen mode"));
   m_fullscreenSwitcher->setToolTip(tr("Switch application between fulscreen/normal states right from this status bar icon."));
 
-  m_progressBar = new QProgressBar(this);
-  m_progressBar->setTextVisible(false);
-  m_progressBar->setFixedWidth(100);
-  m_progressBar->setVisible(false);
+  m_barProgressFeeds = new QProgressBar(this);
+  m_barProgressFeeds->setTextVisible(false);
+  m_barProgressFeeds->setFixedWidth(100);
+  m_barProgressFeeds->setVisible(false);
 
-  m_progressLabel = new QLabel(this);
-  m_progressLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-  m_progressLabel->setVisible(false);
+  m_lblProgressFeeds = new QLabel(this);
+  m_lblProgressFeeds->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+  m_lblProgressFeeds->setVisible(false);
+
+  m_barProgressDownload = new QProgressBar(this);
+  m_barProgressDownload->setTextVisible(true);
+  m_barProgressDownload->setFixedWidth(100);
+  m_barProgressDownload->setVisible(false);
+
+  m_lblProgressDownload = new QLabel(this);
+  m_lblProgressDownload->setText("Downloading files in background");
+  m_lblProgressDownload->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+  m_lblProgressDownload->setVisible(false);
+
+  // TODO: nastavit event filter na label a progress aby se po kliku
+  // otevřel download manager
 
   // Add widgets.
-  addWidget(m_progressBar);
-  addWidget(m_progressLabel);
+  addPermanentWidget(m_lblProgressFeeds);
+  addPermanentWidget(m_barProgressFeeds);
+  addPermanentWidget(m_lblProgressDownload);
+  addPermanentWidget(m_barProgressDownload);
   addPermanentWidget(m_fullscreenSwitcher);
 }
 
@@ -55,15 +73,33 @@ StatusBar::~StatusBar() {
   qDebug("Destroying StatusBar instance.");
 }
 
-void StatusBar::showProgress(int progress, const QString &label) {
-  m_progressLabel->setVisible(true);
-  m_progressBar->setVisible(true);
-
-  m_progressLabel->setText(label);
-  m_progressBar->setValue(progress);
+void StatusBar::displayDownloadManager() {
+  qApp->mainForm()->tabWidget()->showDownloadManager();
 }
 
-void StatusBar::clearProgress() {
-  m_progressLabel->setVisible(false);
-  m_progressBar->setVisible(false);
+void StatusBar::showProgressFeeds(int progress, const QString &label) {
+  m_lblProgressFeeds->setVisible(true);
+  m_barProgressFeeds->setVisible(true);
+
+  m_lblProgressFeeds->setText(label);
+  m_barProgressFeeds->setValue(progress);
+}
+
+void StatusBar::clearProgressFeeds() {
+  m_lblProgressFeeds->setVisible(false);
+  m_barProgressFeeds->setVisible(false);
+}
+
+void StatusBar::showProgressDownload(int progress, const QString &tooltip) {
+  m_lblProgressDownload->setVisible(true);
+  m_barProgressDownload->setVisible(true);
+  m_barProgressDownload->setValue(progress);
+  m_barProgressDownload->setToolTip(tooltip);
+  m_lblProgressDownload->setToolTip(tooltip);
+}
+
+void StatusBar::clearProgressDownload() {
+  m_lblProgressDownload->setVisible(false);
+  m_barProgressDownload->setVisible(false);
+  m_barProgressDownload->setValue(0);
 }

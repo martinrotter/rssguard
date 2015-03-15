@@ -37,13 +37,19 @@ class StatusBar : public QStatusBar {
       return m_fullscreenSwitcher;
     }
 
+  public slots:
     // Progress bar operations
-    void showProgress(int progress, const QString &label);
-    void clearProgress();
+    void showProgressFeeds(int progress, const QString &label);
+    void clearProgressFeeds();
+
+    void showProgressDownload(int progress, const QString &tooltip);
+    void clearProgressDownload();
 
   private:
-    QProgressBar *m_progressBar;
-    QLabel *m_progressLabel;
+    QProgressBar *m_barProgressFeeds;
+    QLabel *m_lblProgressFeeds;
+    QProgressBar *m_barProgressDownload;
+    QLabel *m_lblProgressDownload;
     QToolButton *m_fullscreenSwitcher;
     
 };
