@@ -79,9 +79,6 @@ class IconFactory : public QObject {
     // Sets icon theme with given name as the active one and loads it.
     void setCurrentIconTheme(const QString &theme_name);
 
-    // Singleton getter.
-    static IconFactory *instance();
-
   private:
     QHash<QString, QIcon> m_cachedIcons;
     QString m_currentIconTheme;
