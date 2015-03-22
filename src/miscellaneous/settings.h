@@ -24,8 +24,6 @@
 
 #include "miscellaneous/settingsproperties.h"
 
-
-#include <QPointer>
 #include <QNetworkProxy>
 
 #define KEY extern const char*

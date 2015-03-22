@@ -20,7 +20,6 @@
 
 #include <QObject>
 
-#include <QPointer>
 #include <QMetaType>
 #include <QHash>
 #include <QPair>

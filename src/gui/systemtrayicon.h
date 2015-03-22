@@ -22,7 +22,6 @@
 
 #include "definitions/definitions.h"
 
-#include <QPointer>
 #include <QPixmap>
 #include <QMenu>
 
