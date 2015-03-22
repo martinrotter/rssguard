@@ -45,6 +45,8 @@ class StatusBar : public QStatusBar {
     void showProgressDownload(int progress, const QString &tooltip);
     void clearProgressDownload();
 
+    void displayDownloadManager();
+
   private:
     QProgressBar *m_barProgressFeeds;
     QLabel *m_lblProgressFeeds;
