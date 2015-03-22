@@ -108,6 +108,9 @@
 #define APP_CFG_PATH        "data/config"
 #define APP_CFG_FILE        "config.ini"
 
+#define APP_LOG_PATH        "data/log"
+#define APP_LOG_FILE        "log.txt"
+
 #if defined(Q_OS_OSX)
 #define APP_PREFIX          "@CMAKE_INSTALL_PREFIX@/@APP_LOW_NAME@.app/Contents/Resources"
 #else

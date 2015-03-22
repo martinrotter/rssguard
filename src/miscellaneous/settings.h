@@ -22,7 +22,8 @@
 
 #include "definitions/definitions.h"
 
-#include <QPointer>
+#include "miscellaneous/settingsproperties.h"
+
 #include <QNetworkProxy>
 
 #define KEY extern const char*
@@ -267,17 +268,11 @@ class Settings : public QSettings {
     Q_OBJECT
 
   public:
-    // Describes possible types of loaded settings.
-    enum Type {
-      Portable,
-      NonPortable
-    };
-
     // Destructor.
     virtual ~Settings();
 
     // Type of used settings.
-    inline Type type() const {
+    inline SettingsType type() const {
       return m_initializationStatus;
     }
 
@@ -302,6 +297,9 @@ class Settings : public QSettings {
       QSettings::remove(QString("%1/%2").arg(section, key));
     }
 
+    // Returns the path which contains the settings.
+    QString pathName() const;
+
     // Synchronizes settings.
     QSettings::Status checkSettings();
 
@@ -311,11 +309,13 @@ class Settings : public QSettings {
     // Creates settings file in correct location.
     static Settings *setupSettings(QObject *parent);
 
+    static SettingsProperties determineProperties();
+
   private:
     // Constructor.
-    explicit Settings(const QString &file_name, Format format, const Type &type, QObject *parent = 0);
+    explicit Settings(const QString &file_name, Format format, const SettingsType &type, QObject *parent = 0);
 
-    Type m_initializationStatus;
+    SettingsType m_initializationStatus;
 };
 
 #endif // SETTINGS_H

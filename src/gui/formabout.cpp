@@ -104,7 +104,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                                  APP_NAME));
 
   // Load additional paths information.
-  if (qApp->settings()->type() == Settings::Portable) {
+  if (qApp->settings()->type() == SettingsType::Portable) {
     m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
     m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
   }
