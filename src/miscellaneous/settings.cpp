@@ -238,14 +238,17 @@ DVALUE(bool) Browser::QueueTabsDef  = true;
 // Categories.
 DKEY Categories::ID                         = "categories_expand_states";
 
-Settings::Settings(const QString &file_name, Format format,
-                   const Type &status, QObject *parent)
+Settings::Settings(const QString &file_name, Format format, const SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
 }
 
 Settings::~Settings() {  
   checkSettings();
   qDebug("Deleting Settings instance.");
+}
+
+QString Settings::pathName() const {
+  return QFileInfo(fileName()).absolutePath();
 }
 
 QSettings::Status Settings::checkSettings() {
@@ -281,14 +284,40 @@ void Settings::finishRestoration(const QString &desired_settings_file_path) {
 Settings *Settings::setupSettings(QObject *parent) {
   Settings *new_settings;
 
-  // If settings file exists in executable file working directory
+  // If settings file exists (and is writable) in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).
   // Otherwise use settings file stored in home path.
-  QString relative_path = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
+  SettingsProperties properties = determineProperties();
+
+  finishRestoration(properties.m_absoluteSettingsFileName);
+
+  // Portable settings are available, use them.
+  new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
+
+  // Construct icon cache in the same path.
+  QString web_path = properties.m_baseDirectory + QDir::separator() + QString(APP_DB_WEB_PATH);
+  QDir(web_path).mkpath(web_path);
+  QWebSettings::setIconDatabasePath(web_path);
+
+  // Check if portable settings are available.
+  if (properties.m_type == SettingsType::Portable) {
+    qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
+  }
+  else {
+    qDebug("Initializing settings in '%s' (non-portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
+  }
+
+  return new_settings;
+}
+
+SettingsProperties Settings::determineProperties() {
+  SettingsProperties properties;
+
+  properties.m_settingsSuffix = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
+
   QString app_path = qApp->applicationDirPath();
-  QString app_path_file = app_path + relative_path;
   QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
-  QString home_path_file = home_path + relative_path;
+  QString home_path_file = home_path + properties.m_settingsSuffix;
 
   bool portable_settings_available = QFileInfo(app_path).isWritable();
   bool non_portable_settings_exist = QFile::exists(home_path_file);
@@ -297,34 +326,16 @@ Settings *Settings::setupSettings(QObject *parent) {
   // settings was not initialized before.
   bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
 
-  // Check if portable settings are available.
   if (will_we_use_portable_settings) {
-    finishRestoration(app_path_file);
-
-    // Portable settings are available, use them.
-    new_settings = new Settings(app_path_file, QSettings::IniFormat, Settings::Portable, parent);
-
-    // Construct icon cache in the same path.
-    QString web_path = app_path + QDir::separator() + QString(APP_DB_WEB_PATH);
-    QDir(web_path).mkpath(web_path);
-    QWebSettings::setIconDatabasePath(web_path);
-
-    qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(app_path_file)));
+    properties.m_type = SettingsType::Portable;
+    properties.m_baseDirectory = app_path;
   }
   else {
-    finishRestoration(home_path_file);
-
-    // Portable settings are NOT available, store them in
-    // user's home directory.
-    new_settings = new Settings(home_path_file, QSettings::IniFormat, Settings::NonPortable, parent);
-
-    // Construct icon cache in the same path.
-    QString web_path = home_path + QDir::separator() + QString(APP_DB_WEB_PATH);
-    QDir(web_path).mkpath(web_path);
-    QWebSettings::setIconDatabasePath(web_path);
-
-    qDebug("Initializing settings in '%s' (non-portable way).", qPrintable(QDir::toNativeSeparators(home_path_file)));
+    properties.m_type = SettingsType::NonPortable;
+    properties.m_baseDirectory = home_path;
   }
 
-  return new_settings;
+  properties.m_absoluteSettingsFileName = properties.m_baseDirectory + properties.m_settingsSuffix;
+
+  return properties;
 }
