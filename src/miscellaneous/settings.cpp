@@ -244,7 +244,6 @@ Settings::Settings(const QString &file_name, Format format, const SettingsType &
 
 Settings::~Settings() {  
   checkSettings();
-  qDebug("Deleting Settings instance.");
 }
 
 QString Settings::pathName() const {

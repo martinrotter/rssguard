@@ -30,7 +30,6 @@ SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
-  qDebug("Destroying SilentNetworkAccessManages instance.");
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {

@@ -47,7 +47,6 @@ SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
 }
 
 SystemFactory::~SystemFactory() {
-  qDebug("Destroying SystemFactory instance.");
 }
 
 SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {

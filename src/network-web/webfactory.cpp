@@ -18,7 +18,6 @@ WebFactory::WebFactory(QObject *parent)
 }
 
 WebFactory::~WebFactory() {
-  qDebug("Destroying WebFactory instance.");
 }
 
 void WebFactory::loadState() {

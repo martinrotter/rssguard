@@ -36,7 +36,6 @@ DatabaseFactory::DatabaseFactory(QObject *parent)
 }
 
 DatabaseFactory::~DatabaseFactory() {
-  qDebug("Destroying DatabaseFactory object.");
 }
 
 DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,

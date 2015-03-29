@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -33,39 +33,35 @@
     <name>DownloadItem</name>
     <message>
         <source>Ico</source>
-        <translation type="unfinished"></translation>
+        <translation>Ico</translation>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Název souboru</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation>Problém s otevřením souboru: %1</translation>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zkusit znovu</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Z&amp;astavit</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít soubor</translation>
     </message>
     <message>
         <source>Open &amp;folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít složku</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit cílové umístění pro stahovaný soubor</translation>
     </message>
     <message>
         <source>Error: %1</source>
@@ -73,31 +69,31 @@
     </message>
     <message>
         <source>Cannot open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze otevřít složku</translation>
     </message>
     <message>
         <source>Cannot open output folder. Open it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstupní složku nelze otevřít, otevřte ji ručně.</translation>
     </message>
     <message>
         <source>Cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Zrušeno</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Cílový adresář nemohl být vytvořen</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba při ukládání souboru: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 of %2 (%3 za vteřinu) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 z %2 - stahování dokončeno</translation>
     </message>
 </context>
 <context>
@@ -108,18 +104,18 @@
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n minuta do konce</numerusform>
+            <numerusform>%n minuty do konce</numerusform>
+            <numerusform>%n minut do konce</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n vteřina do konce</numerusform>
+            <numerusform>%n vteřiny do konce</numerusform>
+            <numerusform>%n vteřin do konce</numerusform>
         </translation>
     </message>
     <message>
@@ -140,10 +136,10 @@
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Stahuji %n soubor...</numerusform>
+            <numerusform>Stahuji %n soubory...</numerusform>
+            <numerusform>Stahuji %n souborů...</numerusform>
         </translation>
     </message>
 </context>
@@ -212,12 +208,10 @@
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -1542,9 +1536,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1602,12 +1594,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1685,7 +1675,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2270,52 +2259,42 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2360,7 +2339,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>

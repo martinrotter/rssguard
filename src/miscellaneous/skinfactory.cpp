@@ -29,7 +29,6 @@ SkinFactory::SkinFactory(QObject *parent) : QObject(parent) {
 }
 
 SkinFactory::~SkinFactory() {
-  qDebug("Destroying SkinFactory instance.");
 }
 
 void SkinFactory::loadCurrentSkin() {

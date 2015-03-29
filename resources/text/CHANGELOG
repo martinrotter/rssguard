@@ -1,4 +1,21 @@
 <body>
+<center><h2>2.3.0</h2></center>
+
+Fixed:
+<ul>
+<li></li>
+</ul>
+
+Added:
+<ul>
+<li>Better format for logged messages. Logging to file is possible via "rssguard 2> log.txt" command.</li>
+</ul>
+
+Changed:
+<ul>
+</ul>
+
+<hr/>
 <center><h2>2.2.0</h2></center>
 
 Fixed:

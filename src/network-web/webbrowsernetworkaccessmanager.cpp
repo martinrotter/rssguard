@@ -31,7 +31,6 @@ WebBrowserNetworkAccessManager::WebBrowserNetworkAccessManager(QObject *parent)
 }
 
 WebBrowserNetworkAccessManager::~WebBrowserNetworkAccessManager() {
-  qDebug("Destroying WebBrowserNetworkAccessManager instance.");
 }
 
 void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {

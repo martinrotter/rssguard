@@ -30,7 +30,6 @@ Localization::Localization(QObject *parent)
 }
 
 Localization::~Localization() {
-  qDebug("Destroying Localization instance.");
 }
 
 QString Localization::desiredLanguage() {

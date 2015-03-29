@@ -384,7 +384,7 @@ void DownloadItem::updateInfoLabel() {
     }
 
     info = QString(tr("%1 of %2 (%3 per second) - %4")).arg(DownloadManager::dataString(m_bytesReceived),
-                                                            bytesTotal == 0 ? tr("?") : DownloadManager::dataString(bytesTotal),
+                                                            bytesTotal == 0 ? "?" : DownloadManager::dataString(bytesTotal),
                                                             DownloadManager::dataString((int)speed),
                                                             remaining);
   }

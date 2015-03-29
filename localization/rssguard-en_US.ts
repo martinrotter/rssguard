@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>Application</name>
     <message>
@@ -116,11 +116,6 @@
     <message>
         <location filename="../src/network-web/downloadmanager.cpp" line="396"/>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="387"/>
-        <source>?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -261,13 +256,11 @@
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="58"/>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="59"/>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1904,9 +1897,7 @@ and/or settings were backed or not. Also make sure that target foder is writable
         <location filename="../src/gui/formsettings.ui" line="68"/>
         <location filename="../src/gui/formsettings.cpp" line="74"/>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2357,14 +2348,12 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="75"/>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="76"/>
         <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2382,7 +2371,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2786,67 +2774,56 @@ currently installed one.</source>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="143"/>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="144"/>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="145"/>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="146"/>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="147"/>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="148"/>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="149"/>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3127,12 +3104,12 @@ currently installed one.</source>
 <context>
     <name>StatusBar</name>
     <message>
-        <location filename="../src/gui/statusbar.cpp" line="37"/>
+        <location filename="../src/gui/statusbar.cpp" line="39"/>
         <source>Fullscreen mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/statusbar.cpp" line="38"/>
+        <location filename="../src/gui/statusbar.cpp" line="40"/>
         <source>Switch application between fulscreen/normal states right from this status bar icon.</source>
         <translation type="unfinished"></translation>
     </message>
