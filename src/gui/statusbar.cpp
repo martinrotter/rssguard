@@ -58,8 +58,8 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   m_lblProgressDownload->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
   m_lblProgressDownload->setVisible(false);
 
-  // TODO: nastavit event filter na label a progress aby se po kliku
-  // otevřel download manager
+  m_lblProgressDownload->installEventFilter(this);
+  m_barProgressDownload->installEventFilter(this);
 
   // Add widgets.
   addPermanentWidget(m_lblProgressFeeds);
@@ -75,6 +75,16 @@ StatusBar::~StatusBar() {
 
 void StatusBar::displayDownloadManager() {
   qApp->mainForm()->tabWidget()->showDownloadManager();
+}
+
+bool StatusBar::eventFilter(QObject *watched, QEvent *event) {
+  if (watched == m_lblProgressDownload || watched == m_barProgressDownload) {
+    if (event->type() == QEvent::MouseButtonPress) {
+      displayDownloadManager();
+    }
+  }
+
+  return false;
 }
 
 void StatusBar::showProgressFeeds(int progress, const QString &label) {

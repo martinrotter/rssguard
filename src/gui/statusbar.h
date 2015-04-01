@@ -47,13 +47,15 @@ class StatusBar : public QStatusBar {
 
     void displayDownloadManager();
 
+  protected:
+    bool eventFilter(QObject *watched, QEvent *event);
+
   private:
     QProgressBar *m_barProgressFeeds;
     QLabel *m_lblProgressFeeds;
     QProgressBar *m_barProgressDownload;
     QLabel *m_lblProgressDownload;
-    QToolButton *m_fullscreenSwitcher;
-    
+    QToolButton *m_fullscreenSwitcher;  
 };
 
 #endif // STATUSBAR_H
