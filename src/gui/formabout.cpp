@@ -19,6 +19,7 @@
 
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "miscellaneous/settingsproperties.h"
 
 #if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
