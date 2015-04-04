@@ -248,9 +248,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
     query_db.exec("PRAGMA temp_store = MEMORY");
 
     // Sample query which checks for existence of tables.
-    query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'");
-
-    if (query_db.lastError().isValid()) {
+    if (!query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
       qWarning("Error occurred. File-based SQLite database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
@@ -262,8 +260,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT,
-                                                                  QString::SkipEmptyParts);
+      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
       foreach(const QString &statement, statements) {
@@ -403,8 +400,7 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QSt
   return true;
 }
 
-QSqlDatabase DatabaseFactory::connection(const QString &connection_name,
-                                         DesiredType desired_type) {
+QSqlDatabase DatabaseFactory::connection(const QString &connection_name, DesiredType desired_type) {
   switch (m_activeDatabaseDriver) {
     case MYSQL:
       return mysqlConnection(connection_name);
@@ -534,12 +530,10 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
   }
   else {
     QSqlQuery query_db(database);
-
     query_db.setForwardOnly(true);
 
     if (!query_db.exec("USE rssguard") || !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
-      // If no "rssguard" database exists
-      // or schema version is wrong, then initialize it.
+      // If no "rssguard" database exists or schema version is wrong, then initialize it.
       qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_MYSQL_INIT);
@@ -567,10 +561,21 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       qDebug("MySQL database backend should be ready now.");
     }
     else {
+      // Database was previously initialized. Now just check the schema version.
       query_db.next();
 
-      qDebug("MySQL database connection '%s' seems to be established.", qPrintable(connection_name));
-      qDebug("MySQL database has version '%s'.", qPrintable(query_db.value(0).toString()));
+      QString installed_db_schema = query_db.value(0).toString();
+
+      if (!mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
+        qFatal("Database schema was not updated from '%s' to '%s' successully.",
+               qPrintable(installed_db_schema),
+               APP_DB_SCHEMA_VERSION);
+      }
+      else {
+        qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
+               qPrintable(installed_db_schema),
+               APP_DB_SCHEMA_VERSION);
+      }
     }
 
     query_db.finish();
