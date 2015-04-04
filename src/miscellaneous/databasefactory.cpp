@@ -114,7 +114,7 @@ void DatabaseFactory::finishRestoration() {
 }
 
 void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
-  if (qApp->settings()->type() == SettingsType::Portable) {
+  if (qApp->settings()->type() == SettingsProperties::Portable) {
     m_sqliteDatabaseFilePath = qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH);
   }
   else {

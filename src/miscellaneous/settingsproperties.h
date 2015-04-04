@@ -5,13 +5,14 @@
 
 
 // Describes possible types of loaded settings.
-enum SettingsType {
-  Portable,
-  NonPortable
-};
 
 // Describes characteristics of settings.
 struct SettingsProperties {
+    enum SettingsType {
+      Portable,
+      NonPortable
+    };
+
     SettingsType m_type;
     QString m_baseDirectory;
     QString m_settingsSuffix;

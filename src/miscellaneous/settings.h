@@ -272,7 +272,7 @@ class Settings : public QSettings {
     virtual ~Settings();
 
     // Type of used settings.
-    inline SettingsType type() const {
+    inline SettingsProperties::SettingsType type() const {
       return m_initializationStatus;
     }
 
@@ -313,9 +313,9 @@ class Settings : public QSettings {
 
   private:
     // Constructor.
-    explicit Settings(const QString &file_name, Format format, const SettingsType &type, QObject *parent = 0);
+    explicit Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &type, QObject *parent = 0);
 
-    SettingsType m_initializationStatus;
+    SettingsProperties::SettingsType m_initializationStatus;
 };
 
 #endif // SETTINGS_H
