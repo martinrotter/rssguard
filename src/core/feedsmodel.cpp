@@ -264,7 +264,6 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
       endRemoveRows();
 
       delete deleting_item;
-
       return true;
     }
   }

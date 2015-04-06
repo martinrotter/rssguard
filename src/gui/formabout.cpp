@@ -19,6 +19,7 @@
 
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "miscellaneous/settingsproperties.h"
 
 #if !defined(Q_OS_WIN)
 #include "gui/messagebox.h"
@@ -104,7 +105,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                                  APP_NAME));
 
   // Load additional paths information.
-  if (qApp->settings()->type() == SettingsType::Portable) {
+  if (qApp->settings()->type() == SettingsProperties::Portable) {
     m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
     m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
   }

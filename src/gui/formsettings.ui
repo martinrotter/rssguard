@@ -346,7 +346,9 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="5" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMysqlInfo">
              <property name="text">
-              <string>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</string>
+              <string>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
+
+MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>

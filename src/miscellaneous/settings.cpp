@@ -238,7 +238,7 @@ DVALUE(bool) Browser::QueueTabsDef  = true;
 // Categories.
 DKEY Categories::ID                         = "categories_expand_states";
 
-Settings::Settings(const QString &file_name, Format format, const SettingsType &status, QObject *parent)
+Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
 }
 
@@ -298,7 +298,7 @@ Settings *Settings::setupSettings(QObject *parent) {
   QWebSettings::setIconDatabasePath(web_path);
 
   // Check if portable settings are available.
-  if (properties.m_type == SettingsType::Portable) {
+  if (properties.m_type == SettingsProperties::Portable) {
     qDebug("Initializing settings in '%s' (portable way).", qPrintable(QDir::toNativeSeparators(properties.m_absoluteSettingsFileName)));
   }
   else {
@@ -325,11 +325,11 @@ SettingsProperties Settings::determineProperties() {
   bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
 
   if (will_we_use_portable_settings) {
-    properties.m_type = SettingsType::Portable;
+    properties.m_type = SettingsProperties::Portable;
     properties.m_baseDirectory = app_path;
   }
   else {
-    properties.m_type = SettingsType::NonPortable;
+    properties.m_type = SettingsProperties::NonPortable;
     properties.m_baseDirectory = home_path;
   }
 

@@ -171,7 +171,7 @@ void FeedsView::updateAllFeeds() {
   }
   else {
     qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update all items because another feed update is ongoing."),
+                         tr("You cannot update all items because another another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
   }
 }
@@ -189,7 +189,7 @@ void FeedsView::updateSelectedFeeds() {
   }
   else {
     qApp->showGuiMessage(tr("Cannot update selected items"),
-                         tr("You cannot update selected items because another feed update is ongoing."),
+                         tr("You cannot update selected items because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
   }
 }
@@ -258,7 +258,7 @@ void FeedsView::addNewCategory() {
     // it is used probably by feed updater or application
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add standard category"),
-                         tr("You cannot add new standard category now because feed update is ongoing."),
+                         tr("You cannot add new standard category now because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
     return;
   }
@@ -287,7 +287,7 @@ void FeedsView::addNewFeed() {
     // it is used probably by feed updater or application
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add standard feed"),
-                         tr("You cannot add new standard feed now because feed update is ongoing."),
+                         tr("You cannot add new standard feed now because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
     return;
   }
@@ -328,7 +328,6 @@ void FeedsView::receiveMessageCountsChange(MessagesModel::MessageMode mode,
   // total counts.
   // b) total count of message was not changed - some messages switched state --> we need to update
   // counts of just selected feeds.
-
   if (mode == MessagesModel::MessagesFromRecycleBin) {
     if (total_msg_count_changed) {
       if (any_msg_restored) {
@@ -353,7 +352,7 @@ void FeedsView::editSelectedItem() {
     // it is used probably by feed updater or application
     // is quitting.
     qApp->showGuiMessage(tr("Cannot edit item"),
-                         tr("Selected item cannot be edited because feed update is ongoing."),
+                         tr("Selected item cannot be edited because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
 
     // Thus, cannot delete and quit the method.
@@ -380,7 +379,7 @@ void FeedsView::deleteSelectedItem() {
     // it is used probably by feed updater or application
     // is quitting.
     qApp->showGuiMessage(tr("Cannot delete item"),
-                         tr("Selected item cannot be deleted because feed update is ongoing."),
+                         tr("Selected item cannot be deleted because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm());
 
     // Thus, cannot delete and quit the method.
@@ -462,15 +461,12 @@ void FeedsView::emptyRecycleBin() {
   if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Permanently delete messages"),
                        tr("You are about to permanenty delete all messages from your recycle bin."),
                        tr("Do you really want to empty your recycle bin?"),
-                       QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
-    // User changed his mind.
-    return;
+                       QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes) {
+    m_sourceModel->recycleBin()->empty();
+    updateCountsOfSelectedFeeds(true);
+
+    emit feedsNeedToBeReloaded(1);
   }
-
-  m_sourceModel->recycleBin()->empty();
-  updateCountsOfSelectedFeeds(true);
-
-  emit feedsNeedToBeReloaded(1);
 }
 
 void FeedsView::restoreRecycleBin() {
@@ -637,7 +633,6 @@ void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSele
     foreach (FeedsModelFeed *feed, selected_feeds) {
 #if defined(DEBUG)
       QModelIndex index_for_feed = m_sourceModel->indexForItem(feed);
-
       qDebug("Selecting feed '%s' (source index [%d, %d]).", qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
 #endif
 
