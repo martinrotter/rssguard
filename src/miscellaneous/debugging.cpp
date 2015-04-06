@@ -40,8 +40,6 @@ void Debugging::performLog(const char *message, QtMsgType type, const char *file
             APP_LOW_NAME, message, type_string, file, line, function);
   }
 
-  // TODO: Write to file here.
-
   if (type == QtFatalMsg) {
     qApp->exit(EXIT_FAILURE);
   }

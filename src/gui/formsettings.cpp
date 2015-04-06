@@ -131,6 +131,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_cmbSelectToolBar, SIGNAL(currentIndexChanged(int)), m_ui->m_stackedToolbars, SLOT(setCurrentIndex(int)));
   connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
   connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
+  connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
 
   // Load all settings.
   loadGeneral();
@@ -494,8 +495,10 @@ void FormSettings::loadDataStorage() {
 
     m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
     m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
+    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
     m_ui->m_spinMysqlPort->setValue(settings->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
+
+    m_ui->m_checkMysqlShowPassword->setChecked(false);
   }
 
   int index_current_backend = m_ui->m_cmbDatabaseDriver->findData(settings->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString());
@@ -600,6 +603,10 @@ void FormSettings::selectSqlBackend(int index) {
   else {
     qWarning("GUI for given database driver '%s' is not available.", qPrintable(selected_db_driver));
   }
+}
+
+void FormSettings::switchMysqlPasswordVisiblity(bool visible) {
+  m_ui->m_txtMysqlPassword->lineEdit()->setEchoMode(visible ? QLineEdit::Normal : QLineEdit::PasswordEchoOnEdit);
 }
 
 void FormSettings::loadGeneral() {

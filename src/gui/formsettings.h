@@ -77,6 +77,7 @@ class FormSettings : public QDialog {
     void onMysqlPasswordChanged(const QString &new_password);
     void onMysqlDataStorageEdited();
     void selectSqlBackend(int index);
+    void switchMysqlPasswordVisiblity(bool visible);
 
     void loadLanguage();
     void saveLanguage();

@@ -86,8 +86,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     new_message.m_createdFromFeed = !new_message.m_created.isNull();
 
     if (!new_message.m_createdFromFeed) {
-      // Date was NOT obtained from the feed,
-      // set current date as creation date for the message.
+      // Date was NOT obtained from the feed, set current date as creation date for the message.
       new_message.m_created = current_time;
     }
 
@@ -159,8 +158,7 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
     new_message.m_createdFromFeed = !new_message.m_created.isNull();
 
     if (!new_message.m_createdFromFeed) {
-      // Date was NOT obtained from the feed,
-      // set current date as creation date for the message.
+      // Date was NOT obtained from the feed, set current date as creation date for the message.
       new_message.m_created = current_time;
     }
 
