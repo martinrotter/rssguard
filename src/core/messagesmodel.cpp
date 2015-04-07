@@ -55,6 +55,10 @@ void MessagesModel::setupIcons() {
   m_unreadIcon = qApp->icons()->fromTheme("mail-mark-unread");
 }
 
+MessagesModel::MessageMode MessagesModel::messageMode() const {
+  return m_messageMode;
+}
+
 void MessagesModel::fetchAll() {
   while (canFetchMore()) {
     fetchMore();
@@ -154,7 +158,8 @@ void MessagesModel::setupHeaderData() {
                    tr("Id of feed which this message belongs to.") <<
                    tr("Title of the message.") << tr("Url of the message.") <<
                    tr("Author of the message.") << tr("Creation date of the message.") <<
-                   tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?");
+                   tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?") <<
+                   tr("List of attachments.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {

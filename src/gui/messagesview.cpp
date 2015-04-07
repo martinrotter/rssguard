@@ -148,6 +148,13 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
     initializeContextMenu();
   }
 
+  if (sourceModel()->messageMode() != MessagesModel::MessagesFromRecycleBin) {
+    m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
+  }
+  else {
+    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
+  }
+
   m_contextMenu->exec(event->globalPos());
 }
 
@@ -494,6 +501,7 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_URL_INDEX);
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);
+    hideColumn(MSG_DB_ENCLOSURES_INDEX);
 
     qDebug("Adjusting column resize modes for MessagesView.");
   }
