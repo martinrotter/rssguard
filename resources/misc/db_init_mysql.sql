@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '2');
+INSERT INTO Information VALUES (1, 'schema_version', '3');
 -- !
 DROP TABLE IF EXISTS Categories;
 -- !
