@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -77,23 +75,23 @@
     </message>
     <message>
         <source>Cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Geannuleerd</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Download map kan niet worden aangemaakt</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout bij het opslaan van bestand: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 of %2 (%3 per seconde) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 of %2 - download voltooid</translation>
     </message>
 </context>
 <context>
@@ -104,17 +102,11 @@
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n resterende minuut</numerusform>
-            <numerusform>%n resterende minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n resterende seconde</numerusform>
-            <numerusform>%n resterende seconden</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -134,10 +126,7 @@
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -234,10 +223,7 @@
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -267,18 +253,12 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -312,10 +292,7 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
 </context>
 <context>
