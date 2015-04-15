@@ -606,7 +606,7 @@ void FormSettings::selectSqlBackend(int index) {
 }
 
 void FormSettings::switchMysqlPasswordVisiblity(bool visible) {
-  m_ui->m_txtMysqlPassword->lineEdit()->setEchoMode(visible ? QLineEdit::Normal : QLineEdit::PasswordEchoOnEdit);
+  m_ui->m_txtMysqlPassword->lineEdit()->setEchoMode(visible ? QLineEdit::Normal : QLineEdit::Password);
 }
 
 void FormSettings::loadGeneral() {
