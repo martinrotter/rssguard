@@ -44,8 +44,7 @@ WidgetWithStatus::WidgetWithStatus(QWidget *parent)
 WidgetWithStatus::~WidgetWithStatus() {
 }
 
-void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status,
-                                 const QString &tooltip_text) {
+void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QString &tooltip_text) {
   m_status = status;
 
   switch (status) {

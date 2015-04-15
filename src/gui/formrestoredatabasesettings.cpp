@@ -50,20 +50,21 @@ FormRestoreDatabaseSettings::~FormRestoreDatabaseSettings() {
 void FormRestoreDatabaseSettings::performRestoration() {
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
-  if (qApp->restoreDatabaseSettings(m_ui->m_groupDatabase->isChecked(),
-                                    m_ui->m_groupSettings->isChecked(),
-                                    m_ui->m_listDatabase->currentRow() >= 0 ?
+  try {
+    qApp->restoreDatabaseSettings(m_ui->m_groupDatabase->isChecked(),
+                                  m_ui->m_groupSettings->isChecked(),
+                                  m_ui->m_listDatabase->currentRow() >= 0 ?
                                     m_ui->m_listDatabase->currentItem()->data(Qt::UserRole).toString() :
                                     QString(),
-                                    m_ui->m_listSettings->currentRow() >= 0 ?
+                                  m_ui->m_listSettings->currentRow() >= 0 ?
                                     m_ui->m_listSettings->currentItem()->data(Qt::UserRole).toString() :
-                                    QString())) {
+                                    QString());
     m_btnRestart->setEnabled(true);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Restoration was initiated. Restart to proceed."),
                                  tr("You need to restart application for restoration process to finish."));
   }
-  else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Restoration was not initiated successfully."),
+  catch (ApplicationException &ex) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(),
                                  tr("Database and/or settings were not copied to restoration folder successully."));
   }
 }

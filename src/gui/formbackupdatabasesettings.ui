@@ -17,7 +17,7 @@
    <item>
     <widget class="QGroupBox" name="m_groupFile">
      <property name="title">
-      <string/>
+      <string>Output folder</string>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
@@ -126,15 +126,15 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LabelWithStatus</class>
-   <extends>QWidget</extends>
-   <header>labelwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>labelwithstatus.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

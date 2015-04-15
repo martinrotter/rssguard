@@ -444,19 +444,6 @@ bool FeedsModelFeed::removeItself() {
   return query_remove.exec();
 }
 
-/*
- * postup zpracování zpráv:
- * 1. Kontrola, zda existují již v DB zprávy se stejným NAZVEM, AUTOREM, URL ze stejneho kanalu.
- *  a. KONEC: Pokud neexistují, pak se aktuální nová zpráva přidá do DB.
- *  b. Pokud existují, jde se na krok 2.
- * 2. Pokud má uživatel nastaveno mazání duplicitních zpráv, pak udělej a. Jinak jdi na krok 3.
- *  a. Vymaž všechny zprávy, které byly nalezeny ve kroku 1.
- *  b. Přidej tuto novou zprávu, nastav ji status přečtena na true.
- * 3. Uživatel nemá nastaveno mazani dupl zpráv. Novou zprávu přidáme do DB tehdy když zpráva
- * má datum získané z kanálu a zároveň identická zpráva s takovým datumem ještě v DB není.
- * */
-
-
 void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
@@ -476,12 +463,12 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, url, author, date_created, contents) "
-                       "VALUES (:feed, :title, :url, :author, :date_created, :contents);");
+                       "(feed, title, url, author, date_created, contents, enclosures) "
+                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures);");
 
   if (remove_duplicates) {
     query_update.setForwardOnly(true);
-    query_update.prepare("UPDATE Messages SET contents = :contents WHERE id = :id;");
+    query_update.prepare("UPDATE Messages SET contents = :contents enclosures = :enclosures WHERE id = :id;");
   }
 
   if (!database.transaction()) {
@@ -528,6 +515,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(":author", message.m_author);
       query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
       query_insert.bindValue(":contents", message.m_contents);
+      query_insert.bindValue(":enclosures", Enclosures::encodeEnclosuresToString(message.m_enclosures));
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         setStatus(NewMessages);
@@ -543,6 +531,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
         // messages and there is exactly ONE existing duplicate.
         query_update.bindValue(":id", ids.at(0));
         query_update.bindValue(":contents", message.m_contents);
+        query_update.bindValue(":enclosures", Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.exec();
         query_update.finish();
 
@@ -557,6 +546,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
         query_insert.bindValue(":author", message.m_author);
         query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
         query_insert.bindValue(":contents", message.m_contents);
+        query_insert.bindValue(":enclosures", Enclosures::encodeEnclosuresToString(message.m_enclosures));
 
         if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
           setStatus(NewMessages);

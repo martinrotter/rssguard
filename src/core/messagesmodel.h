@@ -27,27 +27,27 @@
 
 
 // Represents single enclosure.
-class Enclosure {
+class Enclosures {
   public:
-    explicit Enclosure() {
-      m_url = m_title = "";
-    }
-
-    static QList<Enclosure> decodeEnclosuresFromString(const QString &enclosures_data) {
-      QList<Enclosure> enclosures;
+    static QStringList decodeEnclosuresFromString(const QString &enclosures_data) {
+      QStringList enclosures;
 
       foreach (const QString &single_enclosure, enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR, QString::SkipEmptyParts)) {
-        Enclosure final_enclosure;
-        final_enclosure.m_url = QByteArray::fromBase64(single_enclosure.toUtf8());
-
-        enclosures.append(final_enclosure);
+        enclosures.append(QByteArray::fromBase64(single_enclosure.toLocal8Bit()));
       }
 
       return enclosures;
     }
 
-    QString m_url;
-    QString m_title;
+    static QString encodeEnclosuresToString(const QStringList &enclosures) {
+      QStringList enclosures_str;
+
+      foreach (const QString &enclosure, enclosures) {
+        enclosures_str.append(enclosure.toLocal8Bit().toBase64());
+      }
+
+      return enclosures_str.join(QString(ENCLOSURES_OUTER_SEPARATOR));
+    }
 };
 
 // Represents single message.
@@ -55,7 +55,7 @@ class Message {
   public:
     explicit Message() {
       m_title = m_url = m_author = m_contents = "";
-      m_enclosures = QList<Enclosure>();
+      m_enclosures = QStringList();
     }
 
     QString m_title;
@@ -64,7 +64,7 @@ class Message {
     QString m_contents;
     QDateTime m_created;
 
-    QList<Enclosure> m_enclosures;
+    QStringList m_enclosures;
 
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false

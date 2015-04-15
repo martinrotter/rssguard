@@ -218,6 +218,10 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
   QString single_message_layout = factory->currentMarkup();
 
   foreach (const Message &message, messages) {
+    QString enclosures = message.m_enclosures.join("</br>");
+
+    // TODO: upravit skiny aby brali další argument
+
     messages_layout.append(single_message_layout.arg(message.m_title,
                                                      tr("Written by ") + (message.m_author.isEmpty() ?
                                                                             tr("uknown author") :

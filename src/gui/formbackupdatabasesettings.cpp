@@ -41,7 +41,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
   connect(m_ui->m_txtBackupName->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
   connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
 
-  selectFolder(qApp->documentsFolderPath());  
+  selectFolder(qApp->documentsFolderPath());
   m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + "_" + QDateTime::currentDateTime().toString("yyyyMMddHHmm"));
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
@@ -56,19 +56,15 @@ FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
 }
 
 void FormBackupDatabaseSettings::performBackup() {
-  if (qApp->backupDatabaseSettings(m_ui->m_checkBackupDatabase->isChecked(),
-                                   m_ui->m_checkBackupSettings->isChecked(),
-                                   m_ui->m_lblSelectFolder->label()->text(),
-                                   m_ui->m_txtBackupName->lineEdit()->text())) {
+  try {
+    qApp->backupDatabaseSettings(m_ui->m_checkBackupDatabase->isChecked(), m_ui->m_checkBackupSettings->isChecked(),
+                                 m_ui->m_lblSelectFolder->label()->text(), m_ui->m_txtBackupName->lineEdit()->text());
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok,
                                  tr("Backup was created successfully and stored in target folder."),
                                  tr("Backup was created successfully."));
   }
-  else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error,
-                                 tr("Backup failed, database and/or settings is probably not backed."),
-                                 tr("Backup failed. Check the output folder if your database\nand/or "
-                                    "settings were backed or not. Also make sure that target foder is writable."));
+  catch (ApplicationException &ex) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(), tr("Backup failed."));
   }
 }
 

@@ -56,7 +56,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="QGroupBox" name="m_groupFile">
      <property name="title">
-      <string/>
+      <string>Source folder</string>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">

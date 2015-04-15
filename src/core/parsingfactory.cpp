@@ -70,12 +70,21 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     // Deal with link.
     QDomNodeList elem_links = message_item.toElement().elementsByTagName("link");
 
-    for (int i = 0; i < elem_links.size(); i++) {    
-      new_message.m_url = elem_links.at(i).attributes().namedItem("href").toAttr().value();
+    for (int i = 0; i < elem_links.size(); i++) {
+      QDomElement link = elem_links.at(i).toElement();
 
-      if (!new_message.m_url.isNull() && !new_message.m_url.isEmpty()) {
-        break;
+      if (link.attribute("rel") == "enclosure") {
+        new_message.m_enclosures.append(link.attribute("href"));
+
+        qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last()));
       }
+      else {
+        new_message.m_url = link.attribute("href");
+      }
+    }
+
+    if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
+      new_message.m_url = new_message.m_enclosures.first();
     }
 
     // Deal with authors.
@@ -193,6 +202,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
     // Deal with titles & descriptions.
     QString elem_title = message_item.namedItem("title").toElement().text().simplified();
     QString elem_description = message_item.namedItem("description").toElement().text();
+    QString elem_enclosure = message_item.namedItem("enclosure").toElement().attribute("url");
 
     if (elem_description.isEmpty()) {
       elem_description = message_item.namedItem("encoded").toElement().text();
@@ -214,6 +224,12 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
       // Title is really not empty, description does not matter.
       new_message.m_title = WebFactory::instance()->stripTags(elem_title);
       new_message.m_contents = elem_description;
+    }
+
+    if (!elem_enclosure.isEmpty()) {
+      new_message.m_enclosures.append(elem_enclosure);
+
+      qDebug("Adding enclosure '%s' for the message.", qPrintable(elem_enclosure));
     }
 
     // Deal with link and author.

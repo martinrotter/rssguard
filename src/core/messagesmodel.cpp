@@ -132,6 +132,7 @@ Message MessagesModel::messageAt(int row_index) const {
   // Fill Message object with details.
   message.m_author = rec.value(MSG_DB_AUTHOR_INDEX).toString();
   message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
+  message.m_enclosures = Enclosures::decodeEnclosuresFromString(rec.value(MSG_DB_ENCLOSURES_INDEX).toString());
   message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
   message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).value<qint64>()).toLocalTime();

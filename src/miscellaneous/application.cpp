@@ -72,18 +72,18 @@ DownloadManager *Application::downloadManager() {
   return m_downloadManager;
 }
 
-bool Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
+void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
                                          const QString &target_path, const QString &backup_name) {
   if (!QFileInfo(target_path).isWritable()) {
-    return false;
+    throw ApplicationException(tr("Output folder is not writable."));
   }
-
-  bool final_result = true;
 
   if (backup_settings) {
     settings()->sync();
-    final_result = final_result && IOFactory::copyFile(settings()->fileName(),
-                                                       target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_SETTINGS);
+
+    if (!IOFactory::copyFile(settings()->fileName(), target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_SETTINGS)) {
+      throw ApplicationException(tr("Settings file not copied to output folder successfully."));
+    }
   }
 
   if (backup_database &&
@@ -91,26 +91,26 @@ bool Application::backupDatabaseSettings(bool backup_database, bool backup_setti
        database()->activeDatabaseDriver() == DatabaseFactory::SQLITE_MEMORY)) {
     // We need to save the database first.
     database()->saveDatabase();
-    final_result = final_result && IOFactory::copyFile(database()->sqliteDatabaseFilePath(),
-                                                       target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE);
-  }
 
-  return final_result;
+    if (!IOFactory::copyFile(database()->sqliteDatabaseFilePath(), target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE)) {
+      throw ApplicationException(tr("Database file not copied to output folder successfully."));
+    }
+  }
 }
 
-bool Application::restoreDatabaseSettings(bool restore_database, bool restore_settings,
+void Application::restoreDatabaseSettings(bool restore_database, bool restore_settings,
                                           const QString &source_database_file_path, const QString &source_settings_file_path) {
-  bool result = true;
-
   if (restore_database) {
-    result &= qApp->database()->initiateRestoration(source_database_file_path);
+    if (!qApp->database()->initiateRestoration(source_database_file_path)) {
+      throw ApplicationException(tr("Database restoration was not initiated. Make sure that output folder is writable."));
+    }
   }
 
   if (restore_settings) {
-    result &= qApp->settings()->initiateRestoration(source_settings_file_path);
+    if (!qApp->settings()->initiateRestoration(source_settings_file_path)) {
+      throw ApplicationException(tr("Settings restoration was not initiated. Make sure that output folder is writable."));
+    }
   }
-
-  return result;
 }
 
 void Application::processExecutionMessage(const QString &message) {
@@ -242,4 +242,14 @@ void Application::setShouldRestart(bool shouldRestart) {
 void Application::restart() {
   m_shouldRestart = true;
   quit();
+}
+
+ApplicationException::ApplicationException(const QString &message) : m_message(message) {
+}
+
+ApplicationException::~ApplicationException() {
+}
+
+QString ApplicationException::message() const {
+  return m_message;
 }
