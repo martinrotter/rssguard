@@ -34,6 +34,7 @@ struct Skin {
     QString m_rawData;
     QString m_layoutMarkupWrapper;
     QString m_layoutMarkup;
+    QString m_enclosureMarkup;
 };
 
 Q_DECLARE_METATYPE(Skin)
@@ -51,13 +52,8 @@ class SkinFactory : public QObject {
     // Loads skin name from settings and sets it as active.
     void loadCurrentSkin();
 
-    // Returns contents of current layout markup.
-    inline QString currentMarkup() {
-      return m_currentSkin.m_layoutMarkup;
-    }
-
-    inline QString currentMarkupLayout() {
-      return m_currentSkin.m_layoutMarkupWrapper;
+    inline Skin currentSkin() const {
+      return m_currentSkin;
     }
 
     // Returns the name of the skin, that should be activated

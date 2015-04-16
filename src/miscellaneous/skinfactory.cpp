@@ -144,6 +144,10 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
   skin.m_layoutMarkup = skin_node.namedItem("markup").toElement().text();
   skin.m_layoutMarkup = QByteArray::fromBase64(skin.m_layoutMarkup.toLocal8Bit());
 
+  // Obtain enclosure hyperlink wrapper.
+  skin.m_enclosureMarkup = skin_node.namedItem("markup_enclosure").toElement().text();
+  skin.m_enclosureMarkup = QByteArray::fromBase64(skin.m_enclosureMarkup.toLocal8Bit());
+
   // Obtain other information.
   skin.m_baseName = QString(skin_name).replace(QDir::separator(), '/');
 

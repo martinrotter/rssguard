@@ -234,6 +234,11 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
 
     // Deal with link and author.
     new_message.m_url = message_item.namedItem("link").toElement().text();
+
+    if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
+      new_message.m_url = new_message.m_enclosures.first();
+    }
+
     new_message.m_author = message_item.namedItem("author").toElement().text();
 
     if (new_message.m_author.isEmpty()) {

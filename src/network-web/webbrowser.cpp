@@ -213,12 +213,21 @@ void WebBrowser::navigateToUrl(const QUrl &url) {
 }
 
 void WebBrowser::navigateToMessages(const QList<Message> &messages) {
-  SkinFactory *factory = qApp->skins();
+  Skin skin = qApp->skins()->currentSkin();
   QString messages_layout;
-  QString single_message_layout = factory->currentMarkup();
+  QString single_message_layout = skin.m_layoutMarkup;
 
   foreach (const Message &message, messages) {
-    QString enclosures = message.m_enclosures.join("</br>");
+    QString enclosures;
+
+    foreach (const QString &enclosure, message.m_enclosures) {
+      enclosures += skin.m_enclosureMarkup.arg(enclosure);
+      enclosures += "<br>";
+    }
+
+    if (!enclosures.isEmpty()) {
+      enclosures = enclosures.prepend("<br>");
+    }
 
     // TODO: upravit skiny aby brali další argument
 
@@ -228,13 +237,11 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
                                                                             message.m_author),
                                                      message.m_url,
                                                      message.m_contents,
-                                                     message.m_created.toString(Qt::DefaultLocaleShortDate)));
+                                                     message.m_created.toString(Qt::DefaultLocaleShortDate),
+                                                     enclosures));
   }
 
-  QString layout_wrapper = factory->currentMarkupLayout().arg(messages.size() == 1 ?
-                                                                messages.at(0).m_title :
-                                                                tr("Newspaper view"),
-                                                              messages_layout);
+  QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"), messages_layout);
 
   m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
   emit iconChanged(m_index, qApp->icons()->fromTheme("item-newspaper"));
