@@ -32,6 +32,14 @@
 NetworkFactory::NetworkFactory() {
 }
 
+QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QString &html) {
+  QStringList feeds;
+
+
+
+  return feeds;
+}
+
 QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {
   switch (error_code) {
     case QNetworkReply::ProtocolUnknownError:

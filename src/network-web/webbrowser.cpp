@@ -21,6 +21,7 @@
 #include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/webpage.h"
 #include "network-web/webview.h"
+#include "network-web/networkfactory.h"
 #include "miscellaneous/skinfactory.h"
 #include "gui/formmain.h"
 #include "gui/tabwidget.h"
@@ -157,6 +158,15 @@ void WebBrowser::onLoadingProgress(int progress) {
 
 void WebBrowser::onLoadingFinished(bool success) {
   Q_UNUSED(success)
+
+  if (success) {
+    // Let's check if there are any feeds defined on the web and eventually
+    // display "Add feeds" button.
+    QString loaded_html = m_webView->page()->toHtml();
+    QStringList feeds_on_page = NetworkFactory::extractFeedLinksFromHtmlPage(loaded_html);
+
+    // TODO: mame načteno html, nyni z něj funkcí vytáhneme seznam adres kanálů. dodelat tu fci.
+  }
 
   m_loadingProgress->hide();
 }
