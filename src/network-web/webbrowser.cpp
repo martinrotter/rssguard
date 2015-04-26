@@ -114,11 +114,18 @@ void WebBrowser::initializeLayout() {
   m_actionStop->setText(tr("Stop"));
   m_actionStop->setToolTip(tr("Stop web page loading."));
 
+  m_btnDiscoverFeeds = new DiscoverFeedsButton(this);
+
+  QWidgetAction *act_discover = new QWidgetAction(this);
+
+  act_discover->setDefaultWidget(m_btnDiscoverFeeds);
+
   // Add needed actions into toolbar.
   m_toolBar->addAction(m_actionBack);
   m_toolBar->addAction(m_actionForward);
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
+  m_toolBar->addAction(act_discover);
   m_toolBar->addWidget(m_txtLocation);
 
   // Initialize dynamic progress bar which will be displayed
@@ -157,15 +164,13 @@ void WebBrowser::onLoadingProgress(int progress) {
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
-  Q_UNUSED(success)
-
   if (success) {
     // Let's check if there are any feeds defined on the web and eventually
     // display "Add feeds" button.
-    QString loaded_html = m_webView->page()->toHtml();
-    QStringList feeds_on_page = NetworkFactory::extractFeedLinksFromHtmlPage(loaded_html);
-
-    // TODO: mame načteno html, nyni z něj funkcí vytáhneme seznam adres kanálů. dodelat tu fci.
+    m_btnDiscoverFeeds->setFeedAddresses(NetworkFactory::extractFeedLinksFromHtmlPage(m_webView->url(), m_webView->page()->toHtml()));
+  }
+  else {
+    m_btnDiscoverFeeds->clearFeedAddresses();
   }
 
   m_loadingProgress->hide();

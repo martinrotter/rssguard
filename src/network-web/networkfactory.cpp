@@ -32,10 +32,25 @@
 NetworkFactory::NetworkFactory() {
 }
 
-QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QString &html) {
+QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl &url, const QString &html) {
   QStringList feeds;
+  QRegExp rx(FEED_REGEX_MATCHER, Qt::CaseInsensitive);
+  QRegExp rx_href(FEED_HREF_REGEX_MATCHER, Qt::CaseInsensitive);
 
+  for (int pos = 0; (pos = rx.indexIn(html, pos)) != -1; pos += rx.matchedLength()) {
+    QString link_element = html.mid(pos, rx.matchedLength());
 
+    if (rx_href.indexIn(link_element) != -1) {
+      QString href_attribute = rx_href.capturedTexts().at(0);
+      QString feed_link = href_attribute.mid(6, href_attribute.size() - 7);
+
+      if (feed_link.startsWith('/')) {
+        feed_link = url.toString(QUrl::RemovePath | QUrl::RemoveQuery | QUrl::StripTrailingSlash) + feed_link;
+      }
+
+      feeds.append(feed_link);
+    }
+  }
 
   return feeds;
 }

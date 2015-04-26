@@ -35,6 +35,8 @@
 #include <QMenu>
 #include <QPair>
 #include <QNetworkReply>
+#include <QClipboard>
+#include <QMimeData>
 
 
 FormFeedDetails::FormFeedDetails(FeedsModel *model, QWidget *parent)
@@ -85,6 +87,10 @@ int FormFeedDetails::exec(FeedsModelFeed *input_feed, FeedsModelRootItem *parent
           m_ui->m_cmbParentCategory->setCurrentIndex(target_item);
         }
       }
+    }
+
+    if (qApp->clipboard()->mimeData()->hasText()) {
+      m_ui->m_txtUrl->lineEdit()->setText(qApp->clipboard()->text());
     }
   }
   else {

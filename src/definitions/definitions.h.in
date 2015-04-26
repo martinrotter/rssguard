@@ -82,6 +82,9 @@
 #define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"
 #define DOWNLOADER_ICON_SIZE                  48
 
+#define FEED_REGEX_MATCHER                    "<link[^>]+type=\\\"application/(atom|rss)\\+xml\\\"[^>]*>"
+#define FEED_HREF_REGEX_MATCHER               "href\\=\\\"[^\\\"]+\\\""
+
 #define PLACEHOLDER_UNREAD_COUNTS   "%unread"
 #define PLACEHOLDER_ALL_COUNTS      "%all"
 

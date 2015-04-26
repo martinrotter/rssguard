@@ -7,6 +7,26 @@
         <source>Application is already running.</source>
         <translation>Programmet är redan startat.</translation>
     </message>
+    <message>
+        <source>Output folder is not writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -27,6 +47,21 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Okänt fel.</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -335,48 +370,24 @@ Uppdateringsstatus: %5</translation>
         <translation>Kan inte lägga till kategori</translation>
     </message>
     <message>
-        <source>You cannot add new standard category now because feed update is ongoing.</source>
-        <translation>Du kan inte lägga till ny kategori nu, eftersom flödesuppdatering pågår.</translation>
-    </message>
-    <message>
         <source>Cannot add standard feed</source>
         <translation>Kan inte lägga till flöde</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because feed update is ongoing.</source>
-        <translation>Du kan inte lägga till nytt flöde nu, eftersom flödesuppdatering pågår.</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
         <translation>Kan inte redigera objektet</translation>
     </message>
     <message>
-        <source>Selected item cannot be edited because feed update is ongoing.</source>
-        <translation>Det markerade objektet kan inte redigeras eftersom flödesuppdatering pågår.</translation>
-    </message>
-    <message>
         <source>Cannot delete item</source>
         <translation>Kan inte bort objektet</translation>
-    </message>
-    <message>
-        <source>Selected item cannot be deleted because feed update is ongoing.</source>
-        <translation>Markerat objekt kan inte tas bort eftersom flödesuppdatering pågår.</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
         <translation>Kan inte uppdatera alla objekt</translation>
     </message>
     <message>
-        <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation>Du kan inte uppdatera alla objekt eftersom flödesuppdatering redan pågår.</translation>
-    </message>
-    <message>
         <source>Cannot update selected items</source>
         <translation>Kan inte uppdatera markerat objekt</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation>Du kan inte uppdatera markerat objekt eftersom flödesuppdatering redan pågår.</translation>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
@@ -417,6 +428,30 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Context menu for recycle bin</source>
         <translation>Kontextmeny för papperskorgen</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -550,16 +585,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Säkerhetskopiering slutförd.</translation>
     </message>
     <message>
-        <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation>Säkerhetshopiering misslyckades. Databas och/eller inställningar ej kopierade.</translation>
-    </message>
-    <message>
-        <source>Backup failed. Check the output folder if your database
-and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation>Säkerhetshopiering misslyckades. Kontrollera i målmappen om databas
-och/eller inställningar sparades. Tillse också att målmappen inte är skrivskyddad.</translation>
-    </message>
-    <message>
         <source>Select destionation folder</source>
         <translation>Välj målmapp</translation>
     </message>
@@ -574,6 +599,14 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     <message>
         <source>Backup name looks okay.</source>
         <translation>Säkerhetskopians namn är godkänt.</translation>
+    </message>
+    <message>
+        <source>Output folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1489,10 +1522,6 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
         <translation>Du måste starta om programmet för att slutföra återställningen.</translation>
     </message>
     <message>
-        <source>Restoration was not initiated successfully.</source>
-        <translation>Återställning kunde inte utföras.</translation>
-    </message>
-    <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
         <translation>Databas och/eller inställningar kopierades inte till återställningsmappen.</translation>
     </message>
@@ -1503,6 +1532,10 @@ och/eller inställningar sparades. Tillse också att målmappen inte är skrivsk
     <message>
         <source>Good source folder is specified.</source>
         <translation>Källmappen är godkänd.</translation>
+    </message>
+    <message>
+        <source>Source folder</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1833,10 +1866,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Testa</translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
-    </message>
-    <message>
         <source>Right mouse button double-click</source>
         <translation>Dubbelklick på höger musknapp</translation>
     </message>
@@ -2113,6 +2142,16 @@ Du måste starta om manuellt.</translation>
         <source>Select downloads target directory</source>
         <translation>Välj nedladdningsmapp</translation>
     </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
+
+MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2341,6 +2380,14 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
         <translation>Är meddelandet permanent borttaget från papperskorgen?</translation>
+    </message>
+    <message>
+        <source>Attachments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of attachments.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

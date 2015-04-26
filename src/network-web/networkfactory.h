@@ -34,7 +34,7 @@ class NetworkFactory {
     explicit NetworkFactory();
 
   public:
-    static QStringList extractFeedLinksFromHtmlPage(const QString &html);
+    static QStringList extractFeedLinksFromHtmlPage(const QUrl &url, const QString &html);
 
     // Returns human readable text for given network error.
     static QString networkErrorText(QNetworkReply::NetworkError error_code);

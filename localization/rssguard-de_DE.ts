@@ -7,6 +7,26 @@
         <source>Application is already running.</source>
         <translation>Die Applikation läuft bereits.</translation>
     </message>
+    <message>
+        <source>Output folder is not writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DatabaseFactory</name>
@@ -27,6 +47,21 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Unbekannter Fehler.</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -329,48 +364,24 @@ Auto-update status: %5</source>
         <translation>Kann die Standardkategorie nicht hinzufügen</translation>
     </message>
     <message>
-        <source>You cannot add new standard category now because feed update is ongoing.</source>
-        <translation>Sie können jetzt keine Standardkategorie hinzufügen weil der Feed-Update läuft.</translation>
-    </message>
-    <message>
         <source>Cannot add standard feed</source>
         <translation>Kann den Standard-Feed nicht hinzufügen</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because feed update is ongoing.</source>
-        <translation>Sie können jetzt keinen Standard-Feed hinzufügen weil der Feed-Update läuft.</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
         <translation>Kann das Item nicht editieren</translation>
     </message>
     <message>
-        <source>Selected item cannot be edited because feed update is ongoing.</source>
-        <translation>Selektiertes Item kann nicht editiert werden weil der Feed-Update läuft.</translation>
-    </message>
-    <message>
         <source>Cannot delete item</source>
         <translation>Item kann nicht gelöscht werden</translation>
-    </message>
-    <message>
-        <source>Selected item cannot be deleted because feed update is ongoing.</source>
-        <translation>Selektiertes Item kann nicht gelöscht werden weil der Feed-Update läuft.</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
         <translation>Kann nicht alle Items updaten</translation>
     </message>
     <message>
-        <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation>Sie können nicht alle Items updaten weil ein anderer Feed-Update läuft.</translation>
-    </message>
-    <message>
         <source>Cannot update selected items</source>
         <translation>Kann die selektierten Items nicht updaten</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation>Sie können die selektierten Items nicht updaten weil ein anderer Feed-Update läuft.</translation>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
@@ -410,6 +421,30 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Context menu for recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -544,15 +579,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Backup failed. Check the output folder if your database
-and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select destionation folder</source>
         <translation type="unfinished"></translation>
     </message>
@@ -566,6 +592,14 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Backup name looks okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Output folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1482,10 +1516,6 @@ and/or settings were backed or not. Also make sure that target foder is writable
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Restoration was not initiated successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1495,6 +1525,10 @@ and/or settings were backed or not. Also make sure that target foder is writable
     </message>
     <message>
         <source>Good source folder is specified.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1815,10 +1849,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Testkonfiguration</translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Beachten Sie, dass die Geschwindigkeit und Latenz des verwendeten MySQL-Servers SEHR vom verwendeten Verbindungsmedium abhängt und die Applikation somit beeinflusst. Langsame Verbindungen führen zu einer schlechten Performanz der Feeds oder Nachrichten.</translation>
-    </message>
-    <message>
         <source>Right mouse button double-click</source>
         <translation>Doppelklick der rechten Maustaste</translation>
     </message>
@@ -2087,6 +2117,16 @@ You have to restart manually.</source>
         <source>Select downloads target directory</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
+
+MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2314,6 +2354,14 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Attachments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of attachments.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

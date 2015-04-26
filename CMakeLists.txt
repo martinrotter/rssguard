@@ -406,6 +406,7 @@ set(APP_SOURCES
   src/network-web/webview.cpp
   src/network-web/downloader.cpp
   src/network-web/downloadmanager.cpp
+  src/network-web/discoverfeedsbutton.cpp
 
   # MAIN sources.
   src/main.cpp
@@ -487,6 +488,7 @@ set(APP_HEADERS
   src/network-web/webview.h
   src/network-web/downloader.h
   src/network-web/downloadmanager.h
+  src/network-web/discoverfeedsbutton.h
 )
 
 # APP form files.

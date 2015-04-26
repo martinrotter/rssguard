@@ -1,9 +1,31 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl_NL">
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
         <translation>RSSguard is al gestart.</translation>
+    </message>
+    <message>
+        <source>Output folder is not writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -25,6 +47,21 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Onbekende fout.</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -102,11 +139,17 @@
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -126,7 +169,10 @@
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Dowloading %1 bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -223,7 +269,10 @@
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -253,12 +302,18 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -292,7 +347,10 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -313,48 +371,24 @@ Auto-update status: %5</translation>
         <translation>Kan geen standaard categorie toevoegen</translation>
     </message>
     <message>
-        <source>You cannot add new standard category now because feed update is ongoing.</source>
-        <translation>Je kan niet een nieuwe standaard categorie toevoegen omdat feeds aan het updaten zijn.</translation>
-    </message>
-    <message>
         <source>Cannot add standard feed</source>
         <translation>Kan geen standaard feed toevoegen</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because feed update is ongoing.</source>
-        <translation>Je kan niet een nieuwe standaard feed toevoegen omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
         <translation>Kan item niet bewerken</translation>
     </message>
     <message>
-        <source>Selected item cannot be edited because feed update is ongoing.</source>
-        <translation>Gekozen item kan niet worden bewerkt omdat feeds aan het updaten zijn.</translation>
-    </message>
-    <message>
         <source>Cannot delete item</source>
         <translation>Kan item niet verwijderen</translation>
-    </message>
-    <message>
-        <source>Selected item cannot be deleted because feed update is ongoing.</source>
-        <translation>Geselecteerde item kan niet worden verwijderd omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
         <translation>Kan alle items niet bijwerken</translation>
     </message>
     <message>
-        <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation>Je kan niet alle items updaten omdat feeds aan het updaten zijn.</translation>
-    </message>
-    <message>
         <source>Cannot update selected items</source>
         <translation>Kan geselecteerde items niet bijwerken</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation>Je kan gekozen items niet bijwerken omdat feeds aan het updaten zijn.</translation>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
@@ -395,6 +429,30 @@ Auto-update status: %5</translation>
     <message>
         <source>Context menu for recycle bin</source>
         <translation>Contextmenu voor prullenbak</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -528,16 +586,6 @@ Auto-update status: %5</translation>
         <translation>Back-up is gemaakt.</translation>
     </message>
     <message>
-        <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation>Back-up mislukt, database en / of instellingen worden waarschijnlijk niet ondersteund.</translation>
-    </message>
-    <message>
-        <source>Backup failed. Check the output folder if your database
-and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation>Back-up mislukt. Controleer de uitvoer map als uw database
-en / of instellingen die niet werden gesteund. Zorg er ook voor dat de doelmap beschrijfbaar is.</translation>
-    </message>
-    <message>
         <source>Select destionation folder</source>
         <translation>Selecteer bestemmingsmap</translation>
     </message>
@@ -552,6 +600,14 @@ en / of instellingen die niet werden gesteund. Zorg er ook voor dat de doelmap b
     <message>
         <source>Backup name looks okay.</source>
         <translation>Backup naam is in orde.</translation>
+    </message>
+    <message>
+        <source>Output folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1468,10 +1524,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <translation>Je moet RssGuard herstarten om de herstel procedure te voltooien.</translation>
     </message>
     <message>
-        <source>Restoration was not initiated successfully.</source>
-        <translation>Het herstellen werd niet met succes gestart.</translation>
-    </message>
-    <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
         <translation>Database en / of instellingen werden niet gekopieerd naar de herstel map.</translation>
     </message>
@@ -1482,6 +1534,10 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     <message>
         <source>Good source folder is specified.</source>
         <translation>Juiste source map is opgegeven.</translation>
+    </message>
+    <message>
+        <source>Source folder</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1812,10 +1868,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Test instelling</translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
-    </message>
-    <message>
         <source>Right mouse button double-click</source>
         <translation>Rechter muisknop dubbele-klik</translation>
     </message>
@@ -2093,6 +2145,16 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <source>Select downloads target directory</source>
         <translation>Selecteer gedownloade doelmap </translation>
     </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
+
+MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2322,6 +2384,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
         <translation>Is het bericht definitief verwijderd uit de prullenbak?</translation>
+    </message>
+    <message>
+        <source>Attachments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of attachments.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

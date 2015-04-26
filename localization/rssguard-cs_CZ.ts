@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
         <translation>Aplikace již běží.</translation>
+    </message>
+    <message>
+        <source>Output folder is not writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file not copied to output folder successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -27,6 +47,25 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Neznámá chyba.</translation>
+    </message>
+</context>
+<context>
+    <name>DiscoverFeedsButton</name>
+    <message>
+        <source>This website does not contain any feeds.</source>
+        <translation>Tato stránka bohužel neobsahuje žádné kanály.</translation>
+    </message>
+    <message numerus="yes">
+        <source>Click me to add feeds from this website.
+This website contains %n feed(s).</source>
+        <translation>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanál.</numerusform>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanály.</numerusform>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanálů.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -342,48 +381,24 @@ Automatický update: %5</translation>
         <translation>Nelze přidat standardní kategorii</translation>
     </message>
     <message>
-        <source>You cannot add new standard category now because feed update is ongoing.</source>
-        <translation>Nyní nelze přidat standardní kategorii, protože právě probíhá aktualizace kanálů.</translation>
-    </message>
-    <message>
         <source>Cannot add standard feed</source>
         <translation>Nelze přidat standardní kanál</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because feed update is ongoing.</source>
-        <translation>Nyní nelze přidat standardní kanál, protože právě probíhá aktualizace kanálů.</translation>
     </message>
     <message>
         <source>Cannot edit item</source>
         <translation>Nelze upravit položku</translation>
     </message>
     <message>
-        <source>Selected item cannot be edited because feed update is ongoing.</source>
-        <translation>Vybraná položka nemůže být nyní upravena, protože právě probíhá aktualizace kanálů.</translation>
-    </message>
-    <message>
         <source>Cannot delete item</source>
         <translation>Nelze smazat položku</translation>
-    </message>
-    <message>
-        <source>Selected item cannot be deleted because feed update is ongoing.</source>
-        <translation>Vybraná položka nemůže být nyní smazána, protože právě probíhá aktualizace kanálů.</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
         <translation>Nelze aktualizovat všechny položky</translation>
     </message>
     <message>
-        <source>You cannot update all items because another feed update is ongoing.</source>
-        <translation>Právě nyní nemůžete aktualizovat všechny položky, protože nejspíše probíhá jiná aktualizace.</translation>
-    </message>
-    <message>
         <source>Cannot update selected items</source>
         <translation>Nelze aktualizovat vybrané položky</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another feed update is ongoing.</source>
-        <translation>Právě nyní nemůžete aktualizovat vybrané položky, protože nejspíše probíhá jiná aktualizace.</translation>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
@@ -424,6 +439,30 @@ Automatický update: %5</translation>
     <message>
         <source>Context menu for recycle bin</source>
         <translation>Kontextové menu pro koš</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot update selected items because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -557,15 +596,6 @@ Automatický update: %5</translation>
         <translation>Záloha byla vytvořena.</translation>
     </message>
     <message>
-        <source>Backup failed, database and/or settings is probably not backed.</source>
-        <translation>Zálohování selhalo, databáze a/nebo nastavení asi nebylo zálohováno.</translation>
-    </message>
-    <message>
-        <source>Backup failed. Check the output folder if your database
-and/or settings were backed or not. Also make sure that target foder is writable.</source>
-        <translation>Záloha selhala, zkontrolujte obsah výstupní složky.</translation>
-    </message>
-    <message>
         <source>Select destionation folder</source>
         <translation>Zvolte cílovoý adresář</translation>
     </message>
@@ -580,6 +610,14 @@ and/or settings were backed or not. Also make sure that target foder is writable
     <message>
         <source>Backup name looks okay.</source>
         <translation>Název zálohy je v pořádku.</translation>
+    </message>
+    <message>
+        <source>Output folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1495,10 +1533,6 @@ and/or settings were backed or not. Also make sure that target foder is writable
         <translation>Pro dokončení procesu obnovení je třeba restartovat aplikaci.</translation>
     </message>
     <message>
-        <source>Restoration was not initiated successfully.</source>
-        <translation>Obnovení nebylo spuštěno úspěšně.</translation>
-    </message>
-    <message>
         <source>Database and/or settings were not copied to restoration folder successully.</source>
         <translation>Databáze a/nebo nastavení byly zkopírovány do obnovovací složky.</translation>
     </message>
@@ -1509,6 +1543,10 @@ and/or settings were backed or not. Also make sure that target foder is writable
     <message>
         <source>Good source folder is specified.</source>
         <translation>Je specifikována dobrá zdrojová složka.</translation>
+    </message>
+    <message>
+        <source>Source folder</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1838,10 +1876,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Otestovat</translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation>Berte na vědomí, že latence a celková rychlost zvoleného MySQL serveru může mít rozhodující vliv na rychlost této aplikace. Použití pomalého serveru může vést k tomu, že práce se zprávami či kanály bude neúměrně pomalá.</translation>
-    </message>
-    <message>
         <source>Right mouse button double-click</source>
         <translation>Dvojklik pravého tlačítka myši</translation>
     </message>
@@ -2118,6 +2152,16 @@ Musíte restartovat manuálně.</translation>
         <source>Select downloads target directory</source>
         <translation>Zvolit cílový adresář pro uložení stahovaných souborů</translation>
     </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
+
+MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2344,6 +2388,14 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Is message permanently deleted from recycle bin?</source>
         <translation>Je zpráva permanentně vysypána z koše?</translation>
+    </message>
+    <message>
+        <source>Attachments</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List of attachments.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
