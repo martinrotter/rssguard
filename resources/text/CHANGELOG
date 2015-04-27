@@ -8,6 +8,7 @@ Fixed:
 
 Added:
 <ul>
+<li>Automatic detection of feeds on websites. User loads website and can add feeds via custom web browser toolbar button. (issue #47)</li>
 <li>Better format for logged messages. Logging to file is possible via "rssguard 2> log.txt" command.</li>
 <li>Full support for podcasts (issue #81). Supports RSS 2.0 podcasts and ATOM 1.0 podcasts. In ATOM, RSS Guard is able to fetch multiple podcasts per message. Podcasts are displayed as additional URL addresses in message preview panel.</li>
 </ul>

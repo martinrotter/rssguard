@@ -25,6 +25,8 @@
 #include "miscellaneous/skinfactory.h"
 #include "gui/formmain.h"
 #include "gui/tabwidget.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -36,6 +38,7 @@
 #include <QLabel>
 #include <QProgressBar>
 #include <QToolButton>
+#include <QClipboard>
 
 
 QList<WebBrowser*> WebBrowser::m_runningWebBrowsers;
@@ -90,7 +93,7 @@ void WebBrowser::initializeZoomWidget() {
   layout->setMargin(3);
   m_zoomButtons->setLayout(layout);
 
-  // Make connections..
+  // Make connections.
   connect(button_increase, SIGNAL(clicked()), this, SLOT(increaseZoom()));
   connect(button_decrease, SIGNAL(clicked()), this, SLOT(decreaseZoom()));
   connect(m_btnResetZoom, SIGNAL(clicked()), this, SLOT(resetZoom()));
@@ -198,10 +201,16 @@ void WebBrowser::createConnections() {
 
   // Misc connections.
   connect(m_webView, SIGNAL(zoomFactorChanged()), this, SLOT(updateZoomGui()));
+  connect(m_btnDiscoverFeeds, SIGNAL(addingOfFeedRequested(QString)), this, SLOT(addFeedFromWebsite(QString)));
 }
 
 void WebBrowser::onIconChanged() {
   emit iconChanged(m_index, m_webView->icon());
+}
+
+void WebBrowser::addFeedFromWebsite(const QString &feed_link) {
+  qApp->clipboard()->setText(feed_link);
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->addNewFeed();
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {

@@ -132,6 +132,8 @@ class WebBrowser : public TabContent {
     void onTitleChanged(const QString &new_title);
     void onIconChanged();
 
+    void addFeedFromWebsite(const QString &feed_link);
+
   signals:
     // User requests opening of new tab or clicks the link
     // with middle mouse button
