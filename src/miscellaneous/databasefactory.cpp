@@ -555,7 +555,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
 
       foreach(QString statement, statements) {
         // Assign real database name and run the query.
-        query_db.exec(statement.replace("##", database_name));
+        query_db.exec(statement.replace(APP_DB_NAME_PLACEHOLDER, database_name));
 
         if (query_db.lastError().isValid()) {
           qFatal("MySQL database initialization failed. Initialization script '%s' is not correct. Error : '%s'.",
