@@ -123,6 +123,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlUsernameChanged(QString)));
   connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlHostnameChanged(QString)));
   connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlPasswordChanged(QString)));
+  connect(m_ui->m_txtMysqlDatabase->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlDatabaseChanged(QString)));
   connect(m_ui->m_btnMysqlTestSetup, SIGNAL(clicked()), this, SLOT(mysqlTestConnection()));
   connect(m_ui->m_spinMysqlPort, SIGNAL(editingFinished()), this, SLOT(onMysqlDataStorageEdited()));
   connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onMysqlDataStorageEdited()));
@@ -484,6 +485,7 @@ void FormSettings::loadDataStorage() {
     onMysqlHostnameChanged(QString());
     onMysqlUsernameChanged(QString());
     onMysqlPasswordChanged(QString());
+    onMysqlDatabaseChanged(QString());
 
     // Load MySQL.
     m_ui->m_cmbDatabaseDriver->addItem(tr("MySQL/MariaDB (dedicated database)"), APP_DB_MYSQL_DRIVER);
@@ -492,10 +494,12 @@ void FormSettings::loadDataStorage() {
     m_ui->m_txtMysqlHostname->lineEdit()->setPlaceholderText(tr("Hostname of your MySQL server"));
     m_ui->m_txtMysqlUsername->lineEdit()->setPlaceholderText(tr("Username to login with"));
     m_ui->m_txtMysqlPassword->lineEdit()->setPlaceholderText(tr("Password for your username"));
+    m_ui->m_txtMysqlDatabase->lineEdit()->setPlaceholderText(tr("Working database which you have full access to."));
 
     m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
     m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
     m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
+    m_ui->m_txtMysqlDatabase->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
     m_ui->m_spinMysqlPort->setValue(settings->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
 
     m_ui->m_checkMysqlShowPassword->setChecked(false);
@@ -531,6 +535,7 @@ void FormSettings::saveDataStorage() {
     settings->setValue(GROUP(Database), Database::MySQLHostname, m_ui->m_txtMysqlHostname->lineEdit()->text());
     settings->setValue(GROUP(Database), Database::MySQLUsername, m_ui->m_txtMysqlUsername->lineEdit()->text());
     settings->setValue(GROUP(Database), Database::MySQLPassword, m_ui->m_txtMysqlPassword->lineEdit()->text());
+    settings->setValue(GROUP(Database), Database::MySQLDatabase, m_ui->m_txtMysqlDatabase->lineEdit()->text());
     settings->setValue(GROUP(Database), Database::MySQLPort, m_ui->m_spinMysqlPort->value());
   }
 
@@ -545,9 +550,11 @@ void FormSettings::saveDataStorage() {
 void FormSettings::mysqlTestConnection() {
   DatabaseFactory::MySQLError error_code = qApp->database()->mysqlTestConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
                                                                                  m_ui->m_spinMysqlPort->value(),
+                                                                                 m_ui->m_txtMysqlDatabase->lineEdit()->text(),
                                                                                  m_ui->m_txtMysqlUsername->lineEdit()->text(),
                                                                                  m_ui->m_txtMysqlPassword->lineEdit()->text());
   QString interpretation = qApp->database()->mysqlInterpretErrorCode(error_code);
+
 
   switch (error_code) {
     case DatabaseFactory::MySQLOk:
@@ -584,6 +591,15 @@ void FormSettings::onMysqlPasswordChanged(const QString &new_password) {
   }
   else {
     m_ui->m_txtMysqlPassword->setStatus(LineEditWithStatus::Ok, tr("Password looks ok."));
+  }
+}
+
+void FormSettings::onMysqlDatabaseChanged(const QString &new_database) {
+  if (new_database.isEmpty()) {
+    m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::Warning, tr("Working database is empty."));
+  }
+  else {
+    m_ui->m_txtMysqlDatabase->setStatus(LineEditWithStatus::Ok, tr("Working database is ok."));
   }
 }
 

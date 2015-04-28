@@ -221,6 +221,9 @@ namespace Database {
   KEY MySQLPort;
   VALUE(int) MySQLPortDef;
 
+  KEY MySQLDatabase;
+  VALUE(char*) MySQLDatabaseDef;
+
   KEY ActiveDriver;
   VALUE(char*) ActiveDriverDef;
 }

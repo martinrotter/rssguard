@@ -75,6 +75,7 @@ class FormSettings : public QDialog {
     void onMysqlHostnameChanged(const QString &new_hostname);
     void onMysqlUsernameChanged(const QString &new_username);
     void onMysqlPasswordChanged(const QString &new_password);
+    void onMysqlDatabaseChanged(const QString &new_database);
     void onMysqlDataStorageEdited();
     void selectSqlBackend(int index);
     void switchMysqlPasswordVisiblity(bool visible);

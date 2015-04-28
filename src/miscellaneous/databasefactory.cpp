@@ -38,7 +38,7 @@ DatabaseFactory::DatabaseFactory(QObject *parent)
 DatabaseFactory::~DatabaseFactory() {
 }
 
-DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port,
+DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port, const QString &w_database,
                                                                  const QString &username, const QString &password) {
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, APP_DB_MYSQL_TEST);
 
@@ -46,6 +46,7 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
   database.setPort(port);
   database.setUserName(username);
   database.setPassword(password);
+  database.setDatabaseName(w_database);
 
   if (database.open()) {
     // Connection succeeded, clean up the mess and return OK status.
@@ -64,6 +65,9 @@ QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
   switch (error_code) {
     case MySQLOk:
       return tr("MySQL server works as expected.");
+
+    case MySQLUnknownDatabase:
+      return tr("Selected database does not exist (yet).");
 
     case MySQLCantConnect:
     case MySQLConnectionError:
@@ -498,7 +502,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
       database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
       database.setUserName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
       database.setPassword(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
-      database.setDatabaseName(APP_LOW_NAME);
+      database.setDatabaseName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
     }
 
     if (!database.isOpen() && !database.open()) {
@@ -518,6 +522,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
 QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_name) {
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
+  QString database_name = qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString();
 
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
   database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
@@ -532,7 +537,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
     QSqlQuery query_db(database);
     query_db.setForwardOnly(true);
 
-    if (!query_db.exec("USE rssguard") || !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
+    if (!query_db.exec(QString("USE %1").arg(database_name)) || !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
       // If no "rssguard" database exists or schema version is wrong, then initialize it.
       qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
 
@@ -548,8 +553,9 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
-      foreach(const QString &statement, statements) {
-        query_db.exec(statement);
+      foreach(QString statement, statements) {
+        // Assign real database name and run the query.
+        query_db.exec(statement.replace("##", database_name));
 
         if (query_db.lastError().isValid()) {
           qFatal("MySQL database initialization failed. Initialization script '%s' is not correct. Error : '%s'.",

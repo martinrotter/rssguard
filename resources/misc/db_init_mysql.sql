@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS rssguard;
+DROP DATABASE IF EXISTS ##;
 -- !
-CREATE DATABASE IF NOT EXISTS rssguard CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS ## CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- !
-USE rssguard;
+USE ##;
 -- !
 DROP TABLE IF EXISTS Information;
 -- !

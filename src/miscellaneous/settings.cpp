@@ -199,6 +199,9 @@ DVALUE(char*) Database::MySQLUsernameDef  = "";
 DKEY Database::MySQLPassword              = "mysql_password";
 DVALUE(char*) Database::MySQLPasswordDef  = "";
 
+DKEY Database::MySQLDatabase              = "mysql_database";
+DVALUE(char*) Database::MySQLDatabaseDef  = APP_LOW_NAME;
+
 DKEY Database::MySQLPort                  = "mysql_port";
 DVALUE(int) Database::MySQLPortDef        = APP_DB_MYSQL_PORT;
 
