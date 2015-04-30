@@ -37,10 +37,11 @@ Downloads
 
 [![Alternative RSS Guard downloads.](http://www.instalki.pl/img/buttons/en/download_dark.png)](http://www.instalki.pl/programy/download/Windows/czytniki_RSS/RSS_Guard.html)
 ### Linux
-* [stable releases (based on Qt 4)](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard),
+* [stable releases (based on Qt 5)](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5),
 * [development releases (based on Qt 5)](https://software.opensuse.org/download.html?project=home%3Askunkos%3Arssguard&package=rssguard-qt5-git),
-+ DEPRECATED downloads:
-    * [Qt 4-based development releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard-git) (compiled from the master branch of RSS Guard Git repository),
++ DEPRECATED downloads (will be eventually deleted):
+    * [Qt 4-based old stable releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard),
+    * [Qt 4-based old development releases](http://software.opensuse.org/download.html?project=home%3Askunkos&package=rssguard-git) ,
     * Archlinux AUR packages - ([stable-qt5](https://aur.archlinux.org/packages/rssguard/), [stable-qt4](https://aur.archlinux.org/packages/rssguard-qt4/), [development-qt5](https://aur.archlinux.org/packages/rssguard-git/)].
 
 ![RSS Guard is 100% clean.](http://www.softpedia.com/_img/softpedia_100_free.png)
@@ -71,10 +72,13 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * multiple data backend support,
     * SQLite (in-memory DBs too),
     * MySQL.
+* is able to specify target database by its name (MySQL backend),
 * “portable” mode support with clever auto-detection,
 * feed categorization,
 * drap-n-drop for feed list,
 * automatic checking for updates,
+* ability to discover existing feeds on websites,
+* full support of podcasts (both RSS & ATOM),
 * ability to backup/restore database or settings,
 * fully-featured recycle bin,
 * printing of messages and any web pages,
