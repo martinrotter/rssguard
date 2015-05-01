@@ -42,7 +42,7 @@ class MessagesToolBar : public BaseToolBar {
     }
 
     // Implementation of BaseToolBar interface.
-    QHash<QString, QAction*> availableActions() const;
+    QList<QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
     void saveChangeableActions(const QStringList &actions);
     void loadChangeableActions();

@@ -35,3 +35,13 @@ BaseToolBar::BaseToolBar(const QString &title, QWidget *parent)
 BaseToolBar::~BaseToolBar() {
   qDebug("Destroying BaseToolBar instance.");
 }
+
+QAction *BaseToolBar::findMatchingAction(const QString &action, const QList<QAction*> actions) {
+  foreach (QAction *act, actions) {
+    if (act->objectName() == action) {
+      return act;
+    }
+  }
+
+  return NULL;
+}

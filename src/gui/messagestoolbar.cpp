@@ -38,16 +38,11 @@ MessagesToolBar::MessagesToolBar(const QString &title, QWidget *parent)
 MessagesToolBar::~MessagesToolBar() {
 }
 
-QHash<QString, QAction*> MessagesToolBar::availableActions() const {
-  QList<QAction*> application_actions = qApp->mainForm()->allActions();
-  QHash<QString, QAction*> available_actions;
+QList<QAction*> MessagesToolBar::availableActions() const {
+  QList<QAction*> available_actions = qApp->mainForm()->allActions();
 
-  foreach (QAction *application_action, application_actions) {
-    available_actions.insert(application_action->objectName(), application_action);
-  }
-
-  available_actions.insert(SEACRH_MESSAGES_ACTION_NAME, m_actionSearchMessages);
-  available_actions.insert(HIGHLIGHTER_ACTION_NAME, m_actionMessageHighlighter);
+  available_actions.append(m_actionSearchMessages);
+  available_actions.append(m_actionMessageHighlighter);
 
   return available_actions;
 }
@@ -67,20 +62,23 @@ void MessagesToolBar::saveChangeableActions(const QStringList& actions) {
 }
 
 void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
-  QHash<QString, QAction*> available_actions = availableActions();
+  QList<QAction*> available_actions = availableActions();
 
   clear();
 
   // Iterate action names and add respectable actions into the toolbar.
   foreach (const QString &action_name, actions) {
-    if (available_actions.contains(action_name)) {
+    QAction *matching_action = findMatchingAction(action_name, available_actions);
+
+    if (matching_action != NULL) {
       // Add existing standard action.
-      addAction(available_actions.value(action_name));
+      addAction(matching_action);
     }
     else if (action_name == SEPARATOR_ACTION_NAME) {
       // Add new separator.
       addSeparator();
     }
+    // TODO: tydle dve vetve asi vymazat.
     else if (action_name == SEACRH_MESSAGES_ACTION_NAME) {
       // Add search box.
       addAction(m_actionSearchMessages);

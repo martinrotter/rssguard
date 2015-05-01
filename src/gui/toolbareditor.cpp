@@ -38,7 +38,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
   m_toolBar = tool_bar;
 
   QList<QAction*> activated_actions = m_toolBar->changeableActions();
-  QList<QAction*> available_actions = m_toolBar->availableActions().values();
+  QList<QAction*> available_actions = m_toolBar->availableActions();
 
   foreach (QAction *action, activated_actions) {
     QListWidgetItem *action_item = new QListWidgetItem(action->icon(),

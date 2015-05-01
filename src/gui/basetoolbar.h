@@ -30,7 +30,7 @@ class BaseToolBar : public QToolBar {
     virtual ~BaseToolBar();
 
     // Returns all actions which can be added to the toolbar.
-    virtual QHash<QString, QAction*> availableActions() const = 0;
+    virtual QList<QAction*> availableActions() const = 0;
 
     // Returns all changeable actions which are currently included
     // in the toolbar.
@@ -42,6 +42,9 @@ class BaseToolBar : public QToolBar {
 
     // Loads the toolbar state from settings.
     virtual void loadChangeableActions() = 0;
+
+  protected:
+    QAction *findMatchingAction(const QString &action, const QList<QAction*> actions);
 };
 
 #endif // TOOLBAR_H

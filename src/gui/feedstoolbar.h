@@ -29,7 +29,7 @@ class FeedsToolBar : public BaseToolBar {
     explicit FeedsToolBar(const QString &title, QWidget *parent = 0);
     virtual ~FeedsToolBar();
 
-    QHash<QString, QAction*> availableActions() const;
+    QList<QAction*> availableActions() const;
     QList<QAction*> changeableActions() const;
     void saveChangeableActions(const QStringList &actions);
     void loadChangeableActions();

@@ -32,15 +32,8 @@ FeedsToolBar::FeedsToolBar(const QString &title, QWidget *parent) : BaseToolBar(
 FeedsToolBar::~FeedsToolBar() {
 }
 
-QHash<QString, QAction*> FeedsToolBar::availableActions() const {
-  QList<QAction*> application_actions = qApp->userActions();
-  QHash<QString, QAction*> available_actions;
-
-  foreach (QAction *application_action, application_actions) {
-    available_actions.insert(application_action->objectName(), application_action);
-  }
-
-  return available_actions;
+QList<QAction*> FeedsToolBar::availableActions() const {
+  return qApp->userActions();
 }
 
 QList<QAction*> FeedsToolBar::changeableActions() const {
@@ -60,15 +53,17 @@ void FeedsToolBar::loadChangeableActions() {
 }
 
 void FeedsToolBar::loadChangeableActions(const QStringList &actions) {
-  QHash<QString, QAction*> available_actions = availableActions();
+  QList<QAction*> available_actions = availableActions();
 
   clear();
 
   // Iterate action names and add respectable actions into the toolbar.
   foreach (const QString &action_name, actions) {
-    if (available_actions.contains(action_name)) {
+    QAction *matching_action = findMatchingAction(action_name, available_actions);
+
+    if (matching_action != NULL) {
       // Add existing standard action.
-      addAction(available_actions.value(action_name));
+      addAction(matching_action);
     }
     else if (action_name == SEPARATOR_ACTION_NAME) {
       // Add new separator.
