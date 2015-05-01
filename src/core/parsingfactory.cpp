@@ -100,6 +100,8 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     }
 
     // TODO: There is a difference between "" and QString() in terms of NULL SQL values!
+    // This is because of difference in QString::isNull() and QString::isEmpty(), the "" is not null
+    // while QString() is.
     if (new_message.m_author.isNull()) {
       new_message.m_author = "";
     }
