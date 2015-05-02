@@ -77,6 +77,39 @@ int FeedsModelRootItem::countOfAllMessages() const {
   return total_count;
 }
 
+QList<FeedsModelRootItem*> FeedsModelRootItem::getRecursiveChildren() {
+  QList<FeedsModelRootItem*> children;
+
+  if (kind() == FeedsModelRootItem::Feed) {
+    // Root itself is a FEED.
+    children.append(this);
+  }
+  else {
+    // Root itself is a CATEGORY or ROOT item.
+    QList<FeedsModelRootItem*> traversable_items;
+
+    traversable_items.append(this);
+
+    // Iterate all nested categories.
+    while (!traversable_items.isEmpty()) {
+      FeedsModelRootItem *active_category = traversable_items.takeFirst();
+
+      foreach (FeedsModelRootItem *child, active_category->childItems()) {
+        if (child->kind() == FeedsModelRootItem::Feed) {
+          // This child is feed.
+          children.append(child);
+        }
+        else if (child->kind() == FeedsModelRootItem::Category) {
+          // This child is category, add its child feeds too.
+          traversable_items.append(child);
+        }
+      }
+    }
+  }
+
+  return children;
+}
+
 bool FeedsModelRootItem::removeChild(FeedsModelRootItem *child) {
   return m_childItems.removeOne(child);
 }

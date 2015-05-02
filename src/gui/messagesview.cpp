@@ -148,7 +148,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
     initializeContextMenu();
   }
 
-  if (sourceModel()->messageMode() != MessagesModel::MessagesFromRecycleBin) {
+  if (sourceModel()->currentFeeds().mode() != FeedsSelection::MessagesFromRecycleBin) {
     m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
   }
   else {
@@ -235,8 +235,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
   QTreeView::selectionChanged(selected, deselected);
 }
 
-void MessagesView::loadFeeds(const QList<int> &feed_ids) {
-  m_sourceModel->loadMessages(feed_ids);
+void MessagesView::loadFeeds(const FeedsSelection &selection) {
+  m_sourceModel->loadMessages(selection);
 
   int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());

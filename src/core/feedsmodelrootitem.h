@@ -114,6 +114,8 @@ class FeedsModelRootItem {
       m_childItems.clear();
     }
 
+    QList<FeedsModelRootItem*> getRecursiveChildren();
+
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
     bool removeChild(int index);
@@ -132,7 +134,7 @@ class FeedsModelRootItem {
       m_icon = icon;
     }
 
-    // Each item has some kind of id.
+    // Each item has some kind of id. Usually taken from primary key attribute from DB.
     inline int id() const {
       return m_id;
     }

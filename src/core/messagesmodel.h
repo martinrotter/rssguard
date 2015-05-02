@@ -20,6 +20,8 @@
 
 #include "definitions/definitions.h"
 
+#include "core/feedsselection.h"
+
 #include <QSqlTableModel>
 #include <QFont>
 #include <QIcon>
@@ -83,11 +85,6 @@ class MessagesModel : public QSqlTableModel {
       HighlightImportant = 102
     };
 
-    enum MessageMode {
-      MessagesFromFeeds,
-      MessagesFromRecycleBin
-    };
-
     // Constructors and destructors.
     explicit MessagesModel(QObject *parent = 0);
     virtual ~MessagesModel();
@@ -102,13 +99,9 @@ class MessagesModel : public QSqlTableModel {
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
 
-    // Access to list of currently loaded feed IDs.
-    inline QList<int> currentFeeds() const {
-      return m_currentFeeds;
-    }
-
     void updateDateFormat();
-    MessageMode messageMode() const;
+
+    FeedsSelection currentFeeds() const;
 
   public slots:
     // To disable persistent changes submissions.
@@ -140,21 +133,15 @@ class MessagesModel : public QSqlTableModel {
     void fetchAll();
 
     // Loads messages of given feeds.
-    void loadMessages(const QList<int> feed_ids);
+    void loadMessages(const FeedsSelection &selection);
 
     void filterMessages(MessageFilter filter);
 
   signals:
     // Emitted if some persistent change is made which affects count of "unread/all" messages.
-    void messageCountsChanged(MessagesModel::MessageMode mode,
-                              bool total_msg_count_changed,
-                              bool any_msg_restored);
+    void messageCountsChanged(FeedsSelection::MessageMode mode, bool total_msg_count_changed, bool any_msg_restored);
 
   protected:
-    // Returns selected feed ids in concatenated textual form,
-    // which is used for SQL queries.
-    QStringList textualFeeds() const;
-
     // Sets up header data.
     void setupHeaderData();
 
@@ -165,11 +152,10 @@ class MessagesModel : public QSqlTableModel {
     void setupIcons();
 
   private:
-    MessageMode m_messageMode;
     MessageFilter m_messageFilter;
 
     QString m_customDateFormat;
-    QList<int> m_currentFeeds;
+    FeedsSelection m_currentFeeds;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
 
@@ -181,7 +167,6 @@ class MessagesModel : public QSqlTableModel {
     QIcon m_unreadIcon;
 };
 
-Q_DECLARE_METATYPE(MessagesModel::MessageMode)
 Q_DECLARE_METATYPE(MessagesModel::MessageFilter)
 
 #endif // MESSAGESMODEL_H

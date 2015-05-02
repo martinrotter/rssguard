@@ -197,11 +197,11 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
 
   // If user selects feeds, load their messages.
-  connect(m_feedsView, SIGNAL(feedsSelected(QList<int>)), m_messagesView, SLOT(loadFeeds(QList<int>)));
+  connect(m_feedsView, SIGNAL(feedsSelected(FeedsSelection)), m_messagesView, SLOT(loadFeeds(FeedsSelection)));
 
   // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged(MessagesModel::MessageMode,bool,bool)),
-          m_feedsView, SLOT(receiveMessageCountsChange(MessagesModel::MessageMode,bool,bool)));
+  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged(FeedsSelection::MessageMode,bool,bool)),
+          m_feedsView, SLOT(receiveMessageCountsChange(FeedsSelection::MessageMode,bool,bool)));
 
   // State of many messages is changed, then we need
   // to reload selections.

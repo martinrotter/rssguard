@@ -22,6 +22,7 @@
 
 #include "core/messagesmodel.h"
 #include "core/feedsmodel.h"
+#include "core/feedsselection.h"
 #include "miscellaneous/settings.h"
 
 
@@ -116,7 +117,7 @@ class FeedsView : public QTreeView {
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
-    void receiveMessageCountsChange(MessagesModel::MessageMode mode, bool total_msg_count_changed, bool any_msg_restored);
+    void receiveMessageCountsChange(FeedsSelection::MessageMode mode, bool total_msg_count_changed, bool any_msg_restored);
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too);
@@ -178,7 +179,7 @@ class FeedsView : public QTreeView {
     void feedsNeedToBeReloaded(int mark_current_index_read);
 
     // Emitted if user selects new feeds.
-    void feedsSelected(const QList<int> &feed_ids);
+    void feedsSelected(const FeedsSelection &selection);
 
     // Requests opening of given messages in newspaper mode.
     void openMessagesInNewspaperView(const QList<Message> &messages);

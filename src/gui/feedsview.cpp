@@ -310,7 +310,7 @@ void FeedsView::editFeed(FeedsModelFeed *feed) {
   delete form_pointer.data();
 }
 
-void FeedsView::receiveMessageCountsChange(MessagesModel::MessageMode mode,
+void FeedsView::receiveMessageCountsChange(FeedsSelection::MessageMode mode,
                                            bool total_msg_count_changed,
                                            bool any_msg_restored) {
   // If the change came from recycle bin mode, then:
@@ -328,7 +328,7 @@ void FeedsView::receiveMessageCountsChange(MessagesModel::MessageMode mode,
   // total counts.
   // b) total count of message was not changed - some messages switched state --> we need to update
   // counts of just selected feeds.
-  if (mode == MessagesModel::MessagesFromRecycleBin) {
+  if (mode == FeedsSelection::MessagesFromRecycleBin) {
     if (total_msg_count_changed) {
       if (any_msg_restored) {
         updateCountsOfAllFeeds(true);
@@ -624,7 +624,7 @@ void FeedsView::setupAppearance() {
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
-  QTreeView::selectionChanged(selected, deselected);
+  /*QTreeView::selectionChanged(selected, deselected);
 
   QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
   QList<int> selected_ids;
@@ -641,9 +641,9 @@ void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSele
   }
   else if (selectedRecycleBin() != NULL) {
     selected_ids << ID_RECYCLE_BIN;
-  }
+  }*/
 
-  emit feedsSelected(selected_ids);
+  emit feedsSelected(FeedsSelection(selectedItem()));
 }
 
 void FeedsView::keyPressEvent(QKeyEvent *event) {

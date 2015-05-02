@@ -620,42 +620,6 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
   }
 
   return target_index;
-
-  /*
-  QList<QModelIndex> parents;
-
-  // Start with root item (which obviously has invalid index).
-  parents << indexForItem(m_rootItem);
-
-  while (!parents.isEmpty()) {
-    QModelIndex active_index = parents.takeFirst();
-    int row_count = rowCount(active_index);
-
-    if (row_count > 0) {
-      // This index has children.
-      // Lets take a look if our target item is among them.
-      FeedsModelRootItem *active_item = itemForIndex(active_index);
-      int candidate_index = active_item->childItems().indexOf(item);
-
-      if (candidate_index >= 0) {
-        // We found our item.
-        return index(candidate_index, 0, active_index);
-      }
-      else {
-        // Item is not found, add all "categories" from active_item.
-        for (int i = 0; i < row_count; i++) {
-          FeedsModelRootItem *possible_category = active_item->child(i);
-
-          if (possible_category->kind() == FeedsModelRootItem::Category) {
-            parents << index(i, 0, active_index);
-          }
-        }
-      }
-    }
-  }
-
-  return QModelIndex();
-  */
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() {
@@ -989,32 +953,12 @@ QList<FeedsModelFeed*> FeedsModel::allFeeds() {
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForItem(FeedsModelRootItem *root) {
+  QList<FeedsModelRootItem*> children = root->getRecursiveChildren();
   QList<FeedsModelFeed*> feeds;
 
-  if (root->kind() == FeedsModelRootItem::Feed) {
-    // Root itself is a FEED.
-    feeds.append(root->toFeed());
-  }
-  else {
-    // Root itself is a CATEGORY or ROOT item.
-    QList<FeedsModelRootItem*> traversable_items;
-
-    traversable_items.append(root);
-
-    // Iterate all nested categories.
-    while (!traversable_items.isEmpty()) {
-      FeedsModelRootItem *active_category = traversable_items.takeFirst();
-
-      foreach (FeedsModelRootItem *child, active_category->childItems()) {
-        if (child->kind() == FeedsModelRootItem::Feed) {
-          // This child is feed.
-          feeds.append(child->toFeed());
-        }
-        else if (child->kind() == FeedsModelRootItem::Category) {
-          // This child is category, add its child feeds too.
-          traversable_items.append(child->toCategory());
-        }
-      }
+  foreach (FeedsModelRootItem *child, children) {
+    if (child->kind() == FeedsModelRootItem::Feed) {
+      feeds.append(child->toFeed());
     }
   }
 
