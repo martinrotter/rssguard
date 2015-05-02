@@ -138,7 +138,7 @@ class MessagesModel : public QSqlTableModel {
 
   signals:
     // Emitted if some persistent change is made which affects count of "unread/all" messages.
-    void messageCountsChanged(FeedsSelection::MessageMode mode, bool total_msg_count_changed, bool any_msg_restored);
+    void messageCountsChanged(FeedsSelection::SelectionMode mode, bool total_msg_count_changed, bool any_msg_restored);
 
   protected:
     // Sets up header data.

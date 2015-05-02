@@ -310,7 +310,7 @@ void FeedsView::editFeed(FeedsModelFeed *feed) {
   delete form_pointer.data();
 }
 
-void FeedsView::receiveMessageCountsChange(FeedsSelection::MessageMode mode,
+void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
                                            bool total_msg_count_changed,
                                            bool any_msg_restored) {
   // If the change came from recycle bin mode, then:

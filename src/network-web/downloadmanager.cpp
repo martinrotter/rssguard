@@ -202,7 +202,10 @@ void DownloadItem::stop() {
 }
 
 void DownloadItem::openFile() {
-  QDesktopServices::openUrl(QUrl::fromLocalFile(m_output.fileName()));
+  if (!QDesktopServices::openUrl(QUrl::fromLocalFile(m_output.fileName()))) {
+    MessageBox::show(this, QMessageBox::Warning, tr("Cannot open file"), tr("Cannot open output file. Open it manually."),
+                     QString(), QDir::toNativeSeparators(m_output.fileName()));
+  }
 }
 
 void DownloadItem::openFolder() {

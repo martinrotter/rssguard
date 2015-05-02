@@ -117,7 +117,7 @@ class FeedsView : public QTreeView {
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
-    void receiveMessageCountsChange(FeedsSelection::MessageMode mode, bool total_msg_count_changed, bool any_msg_restored);
+    void receiveMessageCountsChange(FeedsSelection::SelectionMode mode, bool total_msg_count_changed, bool any_msg_restored);
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too);

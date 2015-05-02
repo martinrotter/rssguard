@@ -170,7 +170,6 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
         if (m_customDateFormat.isEmpty()) {
           return TextFactory::parseDateTime(QSqlTableModel::data(idx,
                                                                  role).value<qint64>()).toLocalTime().toString(Qt::DefaultLocaleShortDate);
-
         }
         else {
           return TextFactory::parseDateTime(QSqlTableModel::data(idx, role).value<qint64>()).toLocalTime().toString(m_customDateFormat);
@@ -181,11 +180,6 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
 
         return author_name.isEmpty() ? "-" : author_name;
       }
-      /*
-      else if (index_column == MSG_DB_ID_INDEX) {
-        return QSqlTableModel::data(index(idx.row(), MSG_DB_TITLE_INDEX, idx.parent()));
-      }
-      */
       else if (index_column != MSG_DB_IMPORTANT_INDEX && index_column != MSG_DB_READ_INDEX) {
         return QSqlTableModel::data(idx, role);
       }
