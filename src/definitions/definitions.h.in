@@ -38,8 +38,7 @@
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@")
 #define APP_DONATE_URL      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
-#define ENCLOSURES_OUTER_SEPARATOR    '#'
-
+#define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define URI_SCHEME_FEED                       "feed://"
 #define URI_SCHEME_HTTP                       "http://"
 #define RELEASES_LIST                         "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/UPDATES?at=master"
@@ -79,7 +78,7 @@
 #define FILTER_RIGHT_MARGIN                   5
 #define FEEDS_VIEW_INDENTATION                10
 #define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
-#define MIME_TYPE_ITEM_POINTER                "rssguard/itempointer"
+#define MIME_TYPE_ITEM_POINTER                "@APP_LOW_NAME@/itempointer"
 #define DOWNLOADER_ICON_SIZE                  48
 
 #define FEED_REGEX_MATCHER                    "<link[^>]+type=\\\"application/(atom|rss)\\+xml\\\"[^>]*>"

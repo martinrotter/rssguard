@@ -71,8 +71,8 @@ project(rssguard)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.3.0")
-set(FILE_VERSION "2,3,0,0")
+set(APP_VERSION "2.3.1")
+set(FILE_VERSION "2,3,1,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -517,10 +517,12 @@ set(APP_TRANSLATIONS
   localization/rssguard-it_IT.ts
   localization/rssguard-nl_NL.ts
   localization/rssguard-sv_SE.ts
-  localization/qt-cs_CZ.ts
-  localization/qt-de_DE.ts
-  localization/qt-fr_FR.ts
-  localization/qt-nl_NL.ts
+  localization/qtbase-cs_CZ.ts
+  localization/qtbase-de_DE.ts
+  localization/qtbase-en_GB.ts
+  localization/qtbase-fr_FR.ts
+  localization/qtbase-it_IT.ts
+  localization/qtbase-sv_SE.ts
 )
 
 set(APP_TRANSLATIONS_WO_QT

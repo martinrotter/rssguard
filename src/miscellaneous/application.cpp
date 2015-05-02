@@ -219,7 +219,7 @@ void Application::onAboutToQuit() {
   // Now, we can check if application should just quit or restart itself.
   if (m_shouldRestart) {
     finish();
-    qDebug("Killing local peer connection to allow another instances to start.");
+    qDebug("Killing local peer connection to allow another instance to start.");
 
     if (QProcess::startDetached(applicationFilePath())) {
       qDebug("New application instance was started.");

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -9,23 +7,23 @@
     </message>
     <message>
         <source>Output folder is not writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Utdatamappen är skrivskyddad.</translation>
     </message>
     <message>
         <source>Settings file not copied to output folder successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inställningsfilen kopierades inte korrekt till utdatamappen.</translation>
     </message>
     <message>
         <source>Database file not copied to output folder successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasfilen kopierades inte korrekt till utdatamappen.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasåterställning startades inte. Tillse att utdatamappen inte är skrivskyddad.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inställningsåterställning startades inte. Tillse att utdatamappen inte är skrivskyddad.</translation>
     </message>
 </context>
 <context>
@@ -53,15 +51,14 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbsidan innehåller inga flöden.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -112,23 +109,23 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Avbruten</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedladdningsplatsen kunde inte skapas</translation>
     </message>
     <message>
         <source>Error when saving file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel när filen skulle sparas: %1</translation>
     </message>
     <message>
         <source>%1 of %2 (%3 per second) - %4</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 av %2 (%3 per sekund) - %4</translation>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 av %2 - Nedladdning slutförd</translation>
     </message>
 </context>
 <context>
@@ -139,17 +136,11 @@ This website contains %n feed(s).</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minut kvar</numerusform>
-            <numerusform>%n minuter kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n sekund kvar</numerusform>
-            <numerusform>%n sekunder kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -169,10 +160,7 @@ This website contains %n feed(s).</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>Laddar ner %1 fil</numerusform><numerusform>Laddar ner %1 filer</numerusform></translation>
     </message>
 </context>
 <context>
@@ -269,10 +257,7 @@ This website contains %n feed(s).</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -301,18 +286,12 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
-            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -346,10 +325,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n borttaget meddelande.</numerusform>
-            <numerusform>%n borttagna meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -431,27 +407,27 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan inte uppdatera markerade objekt, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan inte lägga till ny standardkategori nu, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan inte lägga till nytt standardflöde nu, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markerat objekt kan inte redigeras, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
@@ -602,11 +578,11 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Output folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Utdatamapp</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Säkerhetskopiering misslyckades.</translation>
     </message>
 </context>
 <context>
@@ -1535,7 +1511,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Source folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Källmapp</translation>
     </message>
 </context>
 <context>
@@ -2051,7 +2027,7 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     </message>
     <message>
         <source>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</source>
-        <translation>Ange vilket format meddelanderäknaren skall visa antal meddelanden förvarje flöde/kategori. Använd &quot;%all&quot; och &quot;%unread&quot; vilket är platshållare för alla, respektive olästa meddelanden.</translation>
+        <translation>Ange vilket format meddelanderäknaren skall visa antal meddelanden för varje flöde/kategori. Använd &quot;%all&quot; och &quot;%unread&quot; vilket är platshållare för alla (respektive olästa) meddelanden.</translation>
     </message>
     <message>
         <source>custom external browser is not set correctly</source>
@@ -2146,11 +2122,13 @@ Du måste starta om manuellt.</translation>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
 
 MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notera att hastigheten för aktuell MySQL-server och latensen för använt anslutningsmedium, KRAFTIGT påverkar prestanda för det här programmet.Användning av långsam databasanslutning leder till dålig prestanda vid bläddring bland flöden och meddelanden.
+
+MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&quot;. Skapa inte denna databas manuellt, utan låt programmet hantera det på egen hand. Därvid måste aktuell användare ha rättigheter att skapa och ta bort databaser.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Visa lösenord</translation>
     </message>
 </context>
 <context>
@@ -2383,11 +2361,11 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilagor</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista över bilagor.</translation>
     </message>
 </context>
 <context>
