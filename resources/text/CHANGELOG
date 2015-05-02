@@ -1,5 +1,10 @@
 <body>
 <center><h2>2.3.1</h2></center>
+Added:
+<ul>
+<li>Danish localization.</li>
+</ul>
+
 Fixed:
 <ul>
 <li>Many minor fixes, mainly code cleanup and refactoring.</li>

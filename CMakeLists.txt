@@ -510,6 +510,7 @@ set(APP_FORMS
 # APP translations.
 set(APP_TRANSLATIONS
   localization/rssguard-cs_CZ.ts
+  localization/rssguard-da_DK.ts
   localization/rssguard-de_DE.ts
   localization/rssguard-en_GB.ts
   localization/rssguard-en_US.ts
@@ -518,6 +519,7 @@ set(APP_TRANSLATIONS
   localization/rssguard-nl_NL.ts
   localization/rssguard-sv_SE.ts
   localization/qtbase-cs_CZ.ts
+  localization/qtbase-da_DK.ts
   localization/qtbase-de_DE.ts
   localization/qtbase-fr_FR.ts
   localization/qtbase-it_IT.ts
