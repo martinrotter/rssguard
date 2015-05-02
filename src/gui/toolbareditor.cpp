@@ -34,7 +34,7 @@ ToolBarEditor::~ToolBarEditor() {
   delete m_ui;
 }
 
-void ToolBarEditor::loadFromToolBar(BaseToolBar* tool_bar) {
+void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
   m_toolBar = tool_bar;
 
   QList<QAction*> activated_actions = m_toolBar->changeableActions();

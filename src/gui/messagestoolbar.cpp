@@ -115,7 +115,7 @@ void MessagesToolBar::initializeSearchBox() {
   // Setup wrapping action for search box.
   m_actionSearchMessages = new QWidgetAction(this);
   m_actionSearchMessages->setDefaultWidget(m_txtSearchMessages);
-  m_actionSearchMessages->setIcon(qApp->icons()->fromTheme("application-search"));
+  m_actionSearchMessages->setIcon(qApp->icons()->fromTheme("item-search"));
   m_actionSearchMessages->setProperty("type", SEACRH_MESSAGES_ACTION_NAME);
   m_actionSearchMessages->setProperty("name", tr("Message search box"));
 
