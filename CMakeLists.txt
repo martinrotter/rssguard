@@ -519,7 +519,6 @@ set(APP_TRANSLATIONS
   localization/rssguard-sv_SE.ts
   localization/qtbase-cs_CZ.ts
   localization/qtbase-de_DE.ts
-  localization/qtbase-en_GB.ts
   localization/qtbase-fr_FR.ts
   localization/qtbase-it_IT.ts
   localization/qtbase-sv_SE.ts
