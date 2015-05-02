@@ -37,32 +37,23 @@ FeedsModelRootItem *FeedsSelection::selectedItem() const {
   return m_selectedItem;
 }
 
-QString FeedsSelection::generateDatabaseFilter() {
-  if (m_selectedItem == NULL) {
-    return "feed IN () AND is_deleted = 0";
-  }
+QString FeedsSelection::generateListOfIds() {
+  if (m_selectedItem != NULL &&
+      (m_selectedItem->kind() == FeedsModelRootItem::Feed || m_selectedItem->kind() == FeedsModelRootItem::Category)) {
+    QList<FeedsModelRootItem*> children = m_selectedItem->getRecursiveChildren();
+    QStringList stringy_ids;
 
-  switch (m_selectedItem->kind()) {
-    case FeedsModelRootItem::RecycleBin:
-      return "is_deleted = 1 AND is_pdeleted = 0";
+    children.append(m_selectedItem);
 
-    case FeedsModelRootItem::Category:
-    case FeedsModelRootItem::Feed: {
-      QList<FeedsModelRootItem*> children = m_selectedItem->getRecursiveChildren();
-      QStringList stringy_ids;
-
-      children.append(m_selectedItem);
-
-      foreach (FeedsModelRootItem *child, children) {
-        if (child->kind() == FeedsModelRootItem::Feed) {
-          stringy_ids.append(QString::number(child->id()));
-        }
+    foreach (FeedsModelRootItem *child, children) {
+      if (child->kind() == FeedsModelRootItem::Feed) {
+        stringy_ids.append(QString::number(child->id()));
       }
-
-      return QString("feed IN (%1) AND is_deleted = 0").arg(stringy_ids.join(", "));
     }
 
-    default:
-      return "feed IN () AND is_deleted = 0";
+    return stringy_ids.join(", ");
+  }
+  else {
+    return QString();
   }
 }

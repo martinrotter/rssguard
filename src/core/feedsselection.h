@@ -21,7 +21,7 @@ class FeedsSelection {
 
   MessageMode mode();
     FeedsModelRootItem *selectedItem() const;
-    QString generateDatabaseFilter();
+    QString generateListOfIds();
 
   private:
     FeedsModelRootItem *m_selectedItem;

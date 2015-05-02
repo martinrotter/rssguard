@@ -624,24 +624,7 @@ void FeedsView::setupAppearance() {
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
-  /*QTreeView::selectionChanged(selected, deselected);
-
-  QList<FeedsModelFeed*> selected_feeds = selectedFeeds();
-  QList<int> selected_ids;
-
-  if (!selected_feeds.isEmpty()) {
-    foreach (FeedsModelFeed *feed, selected_feeds) {
-#if defined(DEBUG)
-      QModelIndex index_for_feed = m_sourceModel->indexForItem(feed);
-      qDebug("Selecting feed '%s' (source index [%d, %d]).", qPrintable(feed->title()), index_for_feed.row(), index_for_feed.column());
-#endif
-
-      selected_ids << feed->id();
-    }
-  }
-  else if (selectedRecycleBin() != NULL) {
-    selected_ids << ID_RECYCLE_BIN;
-  }*/
+  QTreeView::selectionChanged(selected, deselected);
 
   emit feedsSelected(FeedsSelection(selectedItem()));
 }

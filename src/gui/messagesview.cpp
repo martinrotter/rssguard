@@ -148,7 +148,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
     initializeContextMenu();
   }
 
-  if (sourceModel()->currentFeeds().mode() != FeedsSelection::MessagesFromRecycleBin) {
+  if (sourceModel()->loadedSelection().mode() != FeedsSelection::MessagesFromRecycleBin) {
     m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
   }
   else {

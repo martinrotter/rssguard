@@ -55,8 +55,8 @@ void MessagesModel::setupIcons() {
   m_unreadIcon = qApp->icons()->fromTheme("mail-mark-unread");
 }
 
-FeedsSelection MessagesModel::currentFeeds() const {
-  return m_currentFeeds;
+FeedsSelection MessagesModel::loadedSelection() const {
+  return m_currentSelection;
 }
 
 void MessagesModel::fetchAll() {
@@ -72,21 +72,18 @@ void MessagesModel::setupFonts() {
 }
 
 void MessagesModel::loadMessages(const FeedsSelection &selection) {
-  m_currentFeeds = selection;
+  m_currentSelection = selection;
 
-/*  if (selection.size() == 1 && selection[0] == ID_RECYCLE_BIN) {
-    m_messageMode = MessagesFromRecycleBin;
+  if (m_currentSelection.mode() == FeedsSelection::MessagesFromRecycleBin) {
     setFilter("is_deleted = 1 AND is_pdeleted = 0");
   }
   else {
-    m_messageMode = MessagesFromFeeds;
-    QString assembled_ids = textualFeeds().join(", ");
+    QString assembled_ids = m_currentSelection.generateListOfIds();
 
     setFilter(QString("feed IN (%1) AND is_deleted = 0").arg(assembled_ids));
     qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
-  }*/
+  }
 
-  setFilter(m_currentFeeds.generateDatabaseFilter());
   select();
   fetchAll();
 }
@@ -282,7 +279,7 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     // If commit succeeded, then emit changes, so that view
     // can reflect.
     emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    emit messageCountsChanged(m_currentFeeds.mode(), false, false);
+    emit messageCountsChanged(m_currentSelection.mode(), false, false);
     return true;
   }
   else {
@@ -381,7 +378,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   QString sql_delete_query;
 
-  if (m_currentFeeds.mode() == FeedsSelection::MessagesFromFeeds) {
+  if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
     sql_delete_query = QString("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);").arg(message_ids.join(", "),
                                                                                             QString::number(deleted));
   }
@@ -394,7 +391,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     select();
     fetchAll();
 
-    emit messageCountsChanged(m_currentFeeds.mode(), true, false);
+    emit messageCountsChanged(m_currentSelection.mode(), true, false);
     return true;
   }
   else {
@@ -419,7 +416,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
     select();
     fetchAll();
 
-    emit messageCountsChanged(m_currentFeeds.mode(), false, false);
+    emit messageCountsChanged(m_currentSelection.mode(), false, false);
     return true;
   }
   else {
@@ -428,7 +425,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
 }
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
-  if (m_currentFeeds.mode() == FeedsSelection::MessagesFromFeeds) {
+  if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
     qDebug("Cannot restore non-deleted messages.");
     return false;
   }
@@ -450,7 +447,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
     select();
     fetchAll();
 
-    emit messageCountsChanged(m_currentFeeds.mode(), true, true);
+    emit messageCountsChanged(m_currentSelection.mode(), true, true);
     return true;
   }
   else {

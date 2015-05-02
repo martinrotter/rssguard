@@ -99,9 +99,7 @@ class MessagesModel : public QSqlTableModel {
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
 
-    void updateDateFormat();
-
-    FeedsSelection currentFeeds() const;
+    FeedsSelection loadedSelection() const;
 
   public slots:
     // To disable persistent changes submissions.
@@ -110,6 +108,7 @@ class MessagesModel : public QSqlTableModel {
       return false;
     }
 
+    void updateDateFormat();
     void reloadWholeLayout();
 
     // CORE messages manipulators.
@@ -155,7 +154,7 @@ class MessagesModel : public QSqlTableModel {
     MessageFilter m_messageFilter;
 
     QString m_customDateFormat;
-    FeedsSelection m_currentFeeds;
+    FeedsSelection m_currentSelection;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
 
