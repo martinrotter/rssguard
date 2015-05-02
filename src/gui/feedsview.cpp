@@ -166,7 +166,7 @@ void FeedsView::loadExpandedStates() {
 }
 
 void FeedsView::updateAllFeeds() {
-  if (qApp->closeLock()->tryLock()) {
+  if (qApp->feedUpdateLock()->tryLock()) {
     emit feedsUpdateRequested(allFeeds());
   }
   else {
@@ -184,7 +184,7 @@ void FeedsView::updateAllFeedsOnStartup() {
 }
 
 void FeedsView::updateSelectedFeeds() {
-  if (qApp->closeLock()->tryLock()) {
+  if (qApp->feedUpdateLock()->tryLock()) {
     emit feedsUpdateRequested(selectedFeeds());
   }
   else {
@@ -195,7 +195,7 @@ void FeedsView::updateSelectedFeeds() {
 }
 
 void FeedsView::executeNextAutoUpdate() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
 
     // Cannot update, quit.
@@ -219,7 +219,7 @@ void FeedsView::executeNextAutoUpdate() {
 
   if (feeds_for_update.isEmpty()) {
     // No feeds are scheduled for update now, unlock the master lock.
-    qApp->closeLock()->unlock();
+    qApp->feedUpdateLock()->unlock();
   }
   else {
     // Request update for given feeds.
@@ -253,7 +253,7 @@ void FeedsView::clearAllFeeds() {
 }
 
 void FeedsView::addNewCategory() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -270,7 +270,7 @@ void FeedsView::addNewCategory() {
   delete form_pointer.data();
 
   // Changes are done, unlock the update master lock.
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedsView::editCategory(FeedsModelCategory *category) {
@@ -282,7 +282,7 @@ void FeedsView::editCategory(FeedsModelCategory *category) {
 }
 
 void FeedsView::addNewFeed() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -299,7 +299,7 @@ void FeedsView::addNewFeed() {
   delete form_pointer.data();
 
   // Changes are done, unlock the update master lock.
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedsView::editFeed(FeedsModelFeed *feed) {
@@ -347,7 +347,7 @@ void FeedsView::receiveMessageCountsChange(MessagesModel::MessageMode mode,
 }
 
 void FeedsView::editSelectedItem() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -370,11 +370,11 @@ void FeedsView::editSelectedItem() {
   }
 
   // Changes are done, unlock the update master lock.
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedsView::deleteSelectedItem() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -390,7 +390,7 @@ void FeedsView::deleteSelectedItem() {
 
   if (!current_index.isValid()) {
     // Changes are done, unlock the update master lock and exit.
-    qApp->closeLock()->unlock();
+    qApp->feedUpdateLock()->unlock();
     return;
   }
 
@@ -398,7 +398,7 @@ void FeedsView::deleteSelectedItem() {
                        tr("You are about to delete selected feed or category."), tr("Do you really want to delete selected item?"),
                        QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
     // User changed his mind.
-    qApp->closeLock()->unlock();
+    qApp->feedUpdateLock()->unlock();
     return;
   }
 
@@ -415,7 +415,7 @@ void FeedsView::deleteSelectedItem() {
   }
 
   // Changes are done, unlock the update master lock.
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedsView::markSelectedFeedsReadStatus(int read) {

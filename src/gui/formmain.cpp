@@ -448,7 +448,7 @@ void FormMain::showAbout() {
 }
 
 void FormMain::showUpdates() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
       qApp->trayIcon()->showMessage(tr("Cannot check for updates"),
                                     tr("You cannot check for updates because feed update is ongoing."),
@@ -468,7 +468,7 @@ void FormMain::showUpdates() {
   form_update.data()->exec();
   delete form_update.data();
 
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void FormMain::showWiki() {

@@ -110,12 +110,12 @@ class Application : public QtSingleApplication {
     }
 
     // Access to application-wide close lock.
-    inline QMutex *closeLock() {
-      if (m_closeLock == NULL) {
-        m_closeLock = new QMutex();
+    inline QMutex *feedUpdateLock() {
+      if (m_updateFeedsLock == NULL) {
+        m_updateFeedsLock = new QMutex();
       }
 
-      return m_closeLock;
+      return m_updateFeedsLock;
     }
 
     inline FormMain *mainForm() {
@@ -188,7 +188,7 @@ class Application : public QtSingleApplication {
     // But of user decides to close the application (in other words,
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
-    QMutex *m_closeLock;
+    QMutex *m_updateFeedsLock;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;

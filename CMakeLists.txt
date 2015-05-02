@@ -545,7 +545,7 @@ if(WIN32)
 #  set(APP_DLLS_QT4_MSVC2013
 #    resources/binaries/windows/deployment/qt4-msvc2013/libeay32.dll
 #    resources/binaries/windows/deployment/qt4-msvc2013/msvcp120.dll
-#    resources/binaries/windows/deployment/qt4-msvc2013/msvcr120.dll
+#    resourcegit coms/binaries/windows/deployment/qt4-msvc2013/msvcr120.dll
 #    resources/binaries/windows/deployment/qt4-msvc2013/QtCore4.dll
 #    resources/binaries/windows/deployment/qt4-msvc2013/QtGui4.dll
 #    resources/binaries/windows/deployment/qt4-msvc2013/QtNetwork4.dll

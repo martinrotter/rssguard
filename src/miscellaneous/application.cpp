@@ -32,7 +32,7 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_closeLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
+    m_updateFeedsLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
     m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
@@ -41,7 +41,7 @@ Application::Application(const QString &id, int &argc, char **argv)
 }
 
 Application::~Application() {
-  delete m_closeLock;
+  delete m_updateFeedsLock;
 }
 
 QList<QAction*> Application::userActions() {
@@ -188,9 +188,8 @@ void Application::onSaveState(QSessionManager &manager) {
 }
 
 void Application::onAboutToQuit() {
-  // Make sure that we obtain close lock
-  // BEFORE even trying to quit the application.
-  bool locked_safely = closeLock()->tryLock(CLOSE_LOCK_TIMEOUT);
+  // Make sure that we obtain close lock BEFORE even trying to quit the application.
+  bool locked_safely = feedUpdateLock()->tryLock(CLOSE_LOCK_TIMEOUT);
 
   processEvents();
 
@@ -209,7 +208,7 @@ void Application::onAboutToQuit() {
     qDebug("Close lock was obtained safely.");
 
     // We locked the lock to exit peacefully, unlock it to avoid warnings.
-    closeLock()->unlock();
+    feedUpdateLock()->unlock();
   }
   else {
     // Request for write lock timed-out. This means

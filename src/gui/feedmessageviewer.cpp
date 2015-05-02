@@ -176,7 +176,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed, int current,
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
   qApp->mainForm()->statusBar()->clearProgressFeeds();
   m_messagesView->reloadSelections(1);
 }
@@ -367,7 +367,7 @@ void FeedMessageViewer::initializeViews() {
 }
 
 void FeedMessageViewer::vacuumDatabase() {
-  if (!qApp->closeLock()->tryLock()) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
     // it is used probably by feed updater or application
     // is quitting.
@@ -391,7 +391,7 @@ void FeedMessageViewer::vacuumDatabase() {
                          this);
   }
 
-  qApp->closeLock()->unlock();
+  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedMessageViewer::refreshVisualProperties() {
