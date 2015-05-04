@@ -24,6 +24,7 @@
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodelfeed.h"
+#include "core/feedsselection.h"
 #include "network-web/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/messagesview.h"
