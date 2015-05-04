@@ -216,6 +216,16 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           QString category_title = child_element.attribute("text");
           QString category_description = child_element.attribute("description");
 
+          if (category_title.isEmpty()) {
+            qWarning("Given OMPL file provided category without valid text attribute. Using fallback name.");
+
+            category_title = child_element.attribute("title");
+
+            if (category_title.isEmpty()) {
+              category_title = tr("Category ") + QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch());
+            }
+          }
+
           FeedsModelCategory *new_category = new FeedsModelCategory(active_model_item);
           new_category->setTitle(category_title);
           new_category->setIcon(qApp->icons()->fromTheme("folder-category"));
