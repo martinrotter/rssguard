@@ -23,7 +23,7 @@
 #include <QDebug>
 
 
-FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent) {
+FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent), m_updateAbortionRequested(false) {
 }
 
 FeedDownloader::~FeedDownloader() {
@@ -33,10 +33,20 @@ FeedDownloader::~FeedDownloader() {
 void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
   qDebug().nospace() << "Performing feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
 
+  if (m_updateAbortionRequested) {
+    m_updateAbortionRequested = false;
+  }
+
   // Job starts now.
   emit started();
 
   for (int i = 0, total = feeds.size(); i < total; i++) {
+    if (m_updateAbortionRequested) {
+      m_updateAbortionRequested = false;
+      qWarning("Interruption of feeds update process was requested. Interrupting it now.");
+      break;
+    }
+
     feeds.at(i)->update();
     qDebug("Made progress in feed updates: %d/%d (id of feed is %d).", i + 1, total, feeds.at(i)->id());
     emit progress(feeds.at(i), i + 1, total);
@@ -49,4 +59,8 @@ void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
   // and feeds can be added/edited/deleted and application
   // can eventually quit.
   emit finished();
+}
+
+void FeedDownloader::abortOngoingUpdate() {
+  m_updateAbortionRequested = true;
 }

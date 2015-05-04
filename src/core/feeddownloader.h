@@ -41,6 +41,9 @@ class FeedDownloader : public QObject {
     // Appropriate signals are emitted.
     void updateFeeds(const QList<FeedsModelFeed*> &feeds);
 
+    // Aborts ongoing message if there is any.
+    void abortOngoingUpdate();
+
   signals:
     // Emitted if feed updates started.
     void started();
@@ -54,6 +57,9 @@ class FeedDownloader : public QObject {
     // and "total" number indicates total number of feeds
     // which were in the initial queue.
     void progress(FeedsModelFeed *feed, int current, int total);
+
+  private:
+    bool m_updateAbortionRequested;
 };
 
 #endif // FEEDDOWNLOADER_H

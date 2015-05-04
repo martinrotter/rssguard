@@ -34,19 +34,19 @@ FeedsSelection::~FeedsSelection() {
 
 FeedsSelection::SelectionMode FeedsSelection::mode() {
   if (m_selectedItem == NULL) {
-    return SelectionMode::NoMode;
+    return FeedsSelection::NoMode;
   }
 
   switch (m_selectedItem->kind()) {
     case FeedsModelRootItem::RecycleBin:
-      return SelectionMode::MessagesFromRecycleBin;
+      return FeedsSelection::MessagesFromRecycleBin;
 
     case FeedsModelRootItem::Category:
     case FeedsModelRootItem::Feed:
-      return SelectionMode::MessagesFromFeeds;
+      return FeedsSelection::MessagesFromFeeds;
 
     default:
-      return SelectionMode::NoMode;
+      return FeedsSelection::NoMode;
   }
 }
 

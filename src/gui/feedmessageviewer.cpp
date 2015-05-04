@@ -123,6 +123,7 @@ void FeedMessageViewer::quit() {
   m_feedsView->quit();
 
   qDebug("Quitting feed downloader thread.");
+  m_feedDownloader->abortOngoingUpdate();
   m_feedDownloaderThread->quit();
   m_feedDownloaderThread->wait();
 

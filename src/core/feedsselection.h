@@ -19,7 +19,7 @@
 #define FEEDSSELECTION_H
 
 #include <QString>
-#include <QObject>
+#include <QMetaType>
 
 
 class FeedsModelRootItem;
