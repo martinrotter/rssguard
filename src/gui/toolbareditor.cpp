@@ -199,14 +199,33 @@ void ToolBarEditor::deleteSelectedAction() {
 
   if (items.size() == 1) {
     QListWidgetItem *selected_item = items.at(0);
+    QString data_item = selected_item->data(Qt::UserRole).toString();
 
-    m_ui->m_listAvailableActions->insertItem(
-          m_ui->m_listAvailableActions->currentRow() + 1,
-          m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
-    m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
+    if (data_item == SEPARATOR_ACTION_NAME || data_item == SPACER_ACTION_NAME) {
+      m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item));
+
+      updateActionsAvailability();
+    }
+    else {
+      m_ui->m_listAvailableActions->insertItem(
+            m_ui->m_listAvailableActions->currentRow() + 1,
+            m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
+      m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
+    }
   }
 }
 
 void ToolBarEditor::deleteAllActions() {
+  QListWidgetItem *taken_item;
+  QString data_item;
 
+  while ((taken_item = m_ui->m_listActivatedActions->takeItem(0)) != 0) {
+    data_item = taken_item->data(Qt::UserRole).toString();
+
+    if (data_item != SEPARATOR_ACTION_NAME && data_item != SPACER_ACTION_NAME) {
+      m_ui->m_listAvailableActions->insertItem(m_ui->m_listAvailableActions->currentRow() + 1, taken_item);
+    }
+  }
+
+  updateActionsAvailability();
 }
