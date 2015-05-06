@@ -49,6 +49,9 @@ class ToolBarEditor : public QWidget {
       return m_ui->m_listAvailableActions;
     }
 
+  protected:
+    bool eventFilter(QObject *object, QEvent *event);
+
   private slots:
     void updateActionsAvailability();
 

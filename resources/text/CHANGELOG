@@ -7,6 +7,8 @@ Added:
 
 Fixed:
 <ul>
+<li>Keyboard shorcuts and toolbar editors now have alphabetically sorted actions. Toolbar editor switched from drag/drop to buttons. (issue 
+#110)</li>
 <li>New constructs on source code level.</li>
 <li>Many minor fixes, mainly code cleanup and refactoring.</li>
 </ul>

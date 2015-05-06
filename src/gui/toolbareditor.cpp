@@ -20,6 +20,8 @@
 #include "gui/basetoolbar.h"
 #include "gui/formmain.h"
 
+#include <QKeyEvent>
+
 
 ToolBarEditor::ToolBarEditor(QWidget *parent)
   : QWidget(parent), m_ui(new Ui::ToolBarEditor) {
@@ -37,6 +39,10 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
 
   connect(m_ui->m_listAvailableActions, SIGNAL(itemSelectionChanged()), this, SLOT(updateActionsAvailability()));
   connect(m_ui->m_listActivatedActions, SIGNAL(itemSelectionChanged()), this, SLOT(updateActionsAvailability()));
+  connect(m_ui->m_listActivatedActions, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(deleteSelectedAction()));
+  connect(m_ui->m_listAvailableActions, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(addSelectedAction()));
+
+  m_ui->m_listActivatedActions->installEventFilter(this);
 }
 
 ToolBarEditor::~ToolBarEditor() {
@@ -50,9 +56,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
   QList<QAction*> available_actions = m_toolBar->availableActions();
 
   foreach (QAction *action, activated_actions) {
-    QListWidgetItem *action_item = new QListWidgetItem(action->icon(),
-                                                       action->text().replace('&', ""),
-                                                       m_ui->m_listActivatedActions);
+    QListWidgetItem *action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listActivatedActions);
 
     if (action->isSeparator()) {
       action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
@@ -73,9 +77,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
 
   foreach (QAction *action, available_actions) {
     if (!activated_actions.contains(action)) {
-      QListWidgetItem *action_item = new QListWidgetItem(action->icon(),
-                                                         action->text().replace('&', ""),
-                                                         m_ui->m_listAvailableActions);
+      QListWidgetItem *action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listAvailableActions);
 
       if (action->isSeparator()) {
         action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
@@ -96,7 +98,8 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
   }
 
   m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
-  updateActionsAvailability();
+  m_ui->m_listAvailableActions->setCurrentRow(0);
+  m_ui->m_listActivatedActions->setCurrentRow(m_ui->m_listActivatedActions->count() >= 0 ? 0 : -1);
 }
 
 void ToolBarEditor::saveToolBar() {
@@ -107,6 +110,19 @@ void ToolBarEditor::saveToolBar() {
   }
 
   m_toolBar->saveChangeableActions(action_names);
+}
+
+bool ToolBarEditor::eventFilter(QObject *object, QEvent *event) {
+  if (event->type() == QEvent::KeyPress) {
+    QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
+
+    if (key_event->key() == Qt::Key_Delete) {
+      deleteSelectedAction();
+      return true;
+    }
+  }
+
+  return false;
 }
 
 void ToolBarEditor::updateActionsAvailability() {
