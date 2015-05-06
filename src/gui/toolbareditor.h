@@ -50,9 +50,18 @@ class ToolBarEditor : public QWidget {
     }
 
   private slots:
+    void updateActionsAvailability();
+
     // Insert common controls.
     void insertSpacer();
     void insertSeparator();
+
+    void moveActionDown();
+    void moveActionUp();
+
+    void addSelectedAction();
+    void deleteSelectedAction();
+    void deleteAllActions();
 
   private:
     Ui::ToolBarEditor *m_ui;

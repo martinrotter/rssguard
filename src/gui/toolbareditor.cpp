@@ -28,6 +28,17 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
   // Create connections.
   connect(m_ui->m_btnInsertSeparator, SIGNAL(clicked()), this, SLOT(insertSeparator()));
   connect(m_ui->m_btnInsertSpacer, SIGNAL(clicked()), this, SLOT(insertSpacer()));
+
+  connect(m_ui->m_btnAddSelectedAction, SIGNAL(clicked()), this, SLOT(addSelectedAction()));
+  connect(m_ui->m_btnDeleteAllActions, SIGNAL(clicked()), this, SLOT(deleteAllActions()));
+  connect(m_ui->m_btnDeleteSelectedAction, SIGNAL(clicked()), this, SLOT(deleteSelectedAction()));
+  connect(m_ui->m_btnMoveActionUp, SIGNAL(clicked()), this, SLOT(moveActionUp()));
+  connect(m_ui->m_btnMoveActionDown, SIGNAL(clicked()), this, SLOT(moveActionDown()));
+
+  connect(m_ui->m_listAvailableActions, SIGNAL(itemSelectionChanged()),
+          this, SLOT(updateActionsAvailability()));
+  connect(m_ui->m_listActivatedActions, SIGNAL(itemSelectionChanged()),
+          this, SLOT(updateActionsAvailability()));
 }
 
 ToolBarEditor::~ToolBarEditor() {
@@ -85,6 +96,8 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
       }
     }
   }
+
+  updateActionsAvailability();
 }
 
 void ToolBarEditor::saveToolBar() {
@@ -95,6 +108,16 @@ void ToolBarEditor::saveToolBar() {
   }
 
   m_toolBar->saveChangeableActions(action_names);
+}
+
+void ToolBarEditor::updateActionsAvailability() {
+  m_ui->m_btnDeleteAllActions->setEnabled(m_ui->m_listActivatedActions->count() > 0);
+  m_ui->m_btnDeleteSelectedAction->setEnabled(m_ui->m_listActivatedActions->selectedItems().size() == 1);
+  m_ui->m_btnMoveActionUp->setEnabled(m_ui->m_listActivatedActions->selectedItems().size() == 1 &&
+                                      m_ui->m_listActivatedActions->currentRow() > 0);
+  m_ui->m_btnMoveActionDown->setEnabled(m_ui->m_listActivatedActions->selectedItems().size() == 1 &&
+                                        m_ui->m_listActivatedActions->currentRow() < m_ui->m_listActivatedActions->count() - 1);
+  m_ui->m_btnAddSelectedAction->setEnabled(m_ui->m_listAvailableActions->selectedItems().size() > 0);
 }
 
 void ToolBarEditor::insertSpacer() {
@@ -110,6 +133,8 @@ void ToolBarEditor::insertSpacer() {
   else {
     m_ui->m_listActivatedActions->addItem(item);
   }
+
+  updateActionsAvailability();
 }
 
 void ToolBarEditor::insertSeparator() {
@@ -126,4 +151,62 @@ void ToolBarEditor::insertSeparator() {
   else {
     m_ui->m_listActivatedActions->addItem(item);
   }
+
+  updateActionsAvailability();
+}
+
+void ToolBarEditor::moveActionDown() {
+  QList<QListWidgetItem*> items = m_ui->m_listActivatedActions->selectedItems();
+
+  if (items.size() == 1 && m_ui->m_listActivatedActions->currentRow() < m_ui->m_listActivatedActions->count() - 1) {
+    QListWidgetItem *selected_item = items.at(0);
+    int row = m_ui->m_listActivatedActions->row(selected_item);
+
+    m_ui->m_listActivatedActions->takeItem(row++);
+    m_ui->m_listActivatedActions->insertItem(row, selected_item);
+    m_ui->m_listActivatedActions->setCurrentRow(row);
+  }
+}
+
+void ToolBarEditor::moveActionUp() {
+  QList<QListWidgetItem*> items = m_ui->m_listActivatedActions->selectedItems();
+
+  if (items.size() == 1 && m_ui->m_listActivatedActions->currentRow() > 0) {
+    QListWidgetItem *selected_item = items.at(0);
+    int row = m_ui->m_listActivatedActions->row(selected_item);
+
+    m_ui->m_listActivatedActions->takeItem(row--);
+    m_ui->m_listActivatedActions->insertItem(row, selected_item);
+    m_ui->m_listActivatedActions->setCurrentRow(row);
+  }
+}
+
+void ToolBarEditor::addSelectedAction() {
+  QList<QListWidgetItem*> items = m_ui->m_listAvailableActions->selectedItems();
+
+  if (items.size() == 1) {
+    QListWidgetItem *selected_item = items.at(0);
+
+    m_ui->m_listActivatedActions->insertItem(
+          m_ui->m_listActivatedActions->currentRow() + 1,
+          m_ui->m_listAvailableActions->takeItem(m_ui->m_listAvailableActions->row(selected_item)));
+    m_ui->m_listActivatedActions->setCurrentRow(m_ui->m_listActivatedActions->currentRow() + 1);
+  }
+}
+
+void ToolBarEditor::deleteSelectedAction() {
+  QList<QListWidgetItem*> items = m_ui->m_listActivatedActions->selectedItems();
+
+  if (items.size() == 1) {
+    QListWidgetItem *selected_item = items.at(0);
+
+    m_ui->m_listAvailableActions->insertItem(
+          m_ui->m_listAvailableActions->currentRow() + 1,
+          m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
+    m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
+  }
+}
+
+void ToolBarEditor::deleteAllActions() {
+
 }
