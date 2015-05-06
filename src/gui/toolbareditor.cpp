@@ -35,10 +35,8 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
   connect(m_ui->m_btnMoveActionUp, SIGNAL(clicked()), this, SLOT(moveActionUp()));
   connect(m_ui->m_btnMoveActionDown, SIGNAL(clicked()), this, SLOT(moveActionDown()));
 
-  connect(m_ui->m_listAvailableActions, SIGNAL(itemSelectionChanged()),
-          this, SLOT(updateActionsAvailability()));
-  connect(m_ui->m_listActivatedActions, SIGNAL(itemSelectionChanged()),
-          this, SLOT(updateActionsAvailability()));
+  connect(m_ui->m_listAvailableActions, SIGNAL(itemSelectionChanged()), this, SLOT(updateActionsAvailability()));
+  connect(m_ui->m_listActivatedActions, SIGNAL(itemSelectionChanged()), this, SLOT(updateActionsAvailability()));
 }
 
 ToolBarEditor::~ToolBarEditor() {
@@ -95,10 +93,9 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
         action_item->setToolTip(action->toolTip());
       }
     }
-
-    m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
   }
 
+  m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
   updateActionsAvailability();
 }
 
@@ -124,37 +121,25 @@ void ToolBarEditor::updateActionsAvailability() {
 
 void ToolBarEditor::insertSpacer() {
   int current_row = m_ui->m_listActivatedActions->currentRow();
-
   QListWidgetItem *item = new QListWidgetItem(tr("Toolbar spacer"));
+
   item->setIcon(qApp->icons()->fromTheme("view-spacer"));
   item->setData(Qt::UserRole, SPACER_ACTION_NAME);
 
-  if (current_row >= 0) {
-    m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
-  }
-  else {
-    m_ui->m_listActivatedActions->addItem(item);
-  }
-
-  updateActionsAvailability();
+  m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
+  m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);
 }
 
 void ToolBarEditor::insertSeparator() {
   int current_row = m_ui->m_listActivatedActions->currentRow();
-
   QListWidgetItem *item = new QListWidgetItem(tr("Separator"));
+
   item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
   item->setToolTip(tr("Separator"));
   item->setIcon(qApp->icons()->fromTheme("view-separator"));
 
-  if (current_row >= 0) {
-    m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
-  }
-  else {
-    m_ui->m_listActivatedActions->addItem(item);
-  }
-
-  updateActionsAvailability();
+  m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
+  m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);
 }
 
 void ToolBarEditor::moveActionDown() {
