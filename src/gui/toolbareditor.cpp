@@ -95,6 +95,8 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
         action_item->setToolTip(action->toolTip());
       }
     }
+
+    m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
   }
 
   updateActionsAvailability();
@@ -210,6 +212,7 @@ void ToolBarEditor::deleteSelectedAction() {
       m_ui->m_listAvailableActions->insertItem(
             m_ui->m_listAvailableActions->currentRow() + 1,
             m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item)));
+      m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
       m_ui->m_listAvailableActions->setCurrentRow(m_ui->m_listAvailableActions->currentRow() + 1);
     }
   }
@@ -227,5 +230,6 @@ void ToolBarEditor::deleteAllActions() {
     }
   }
 
+  m_ui->m_listAvailableActions->sortItems(Qt::AscendingOrder);
   updateActionsAvailability();
 }

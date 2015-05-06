@@ -48,7 +48,10 @@ class DynamicShortcutsWidget : public QWidget {
     // NOTE: This gets initial shortcut for each action from its properties, NOT from
     // the application settings, so shortcuts from settings need to be
     // assigned to actions before calling this method.
-    void populate(const QList<QAction*> actions);
+    void populate(QList<QAction*> actions);
+
+  private:
+    static bool lessThan(QAction *lhs, QAction *rhs);
 
   private:
     QGridLayout *m_layout;

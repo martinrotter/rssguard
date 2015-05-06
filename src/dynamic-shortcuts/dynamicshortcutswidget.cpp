@@ -65,8 +65,9 @@ void DynamicShortcutsWidget::updateShortcuts() {
   }
 }
 
-void DynamicShortcutsWidget::populate(const QList<QAction*> actions) {
+void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
   m_actionBindings.clear();
+  qSort(actions.begin(), actions.end(), DynamicShortcutsWidget::lessThan);
 
   int row_id = 0;
 
@@ -103,4 +104,8 @@ void DynamicShortcutsWidget::populate(const QList<QAction*> actions) {
   // Make sure that "spacer" is added.
   m_layout->setRowStretch(row_id, 1);
   m_layout->setColumnStretch(1, 1);
+}
+
+bool DynamicShortcutsWidget::lessThan(QAction *lhs, QAction *rhs) {
+  return QString::localeAwareCompare(lhs->text().replace("&", ""), rhs->text().replace("&", "")) < 0;
 }
