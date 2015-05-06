@@ -7,6 +7,7 @@ Added:
 
 Fixed:
 <ul>
+<li>Fixed solarized skin. (issue #111)</li>
 <li>Keyboard shorcuts and toolbar editors now have alphabetically sorted actions. Toolbar editor switched from drag/drop to buttons. (issue 
 #110)</li>
 <li>New constructs on source code level.</li>
