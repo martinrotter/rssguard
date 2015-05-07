@@ -48,6 +48,7 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QKeyEvent>
+#include <QDir>
 
 
 FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormSettings) {
@@ -168,16 +169,16 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
 }
 
 void FormSettings::loadDownloads() {
-  m_ui->m_txtDownloadsTargetDirectory->setText(qApp->settings()->value(GROUP(Downloads),
-                                                                       SETTING(Downloads::TargetDirectory)).toString());
+  m_ui->m_txtDownloadsTargetDirectory->setText(QDir::toNativeSeparators(qApp->settings()->value(GROUP(Downloads),
+                                                                                                SETTING(Downloads::TargetDirectory)).toString()));
   m_ui->m_rbDownloadsAskEachFile->setChecked(qApp->settings()->value(GROUP(Downloads),
                                                                      SETTING(Downloads::AlwaysPromptForFilename)).toBool());
 }
 
 void FormSettings::saveDownloads() {
   qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetDirectory, m_ui->m_txtDownloadsTargetDirectory->text());
-  qApp->settings()->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename,
-                             m_ui->m_rbDownloadsAskEachFile->isChecked());
+  qApp->settings()->setValue(GROUP(Downloads), Downloads::AlwaysPromptForFilename, m_ui->m_rbDownloadsAskEachFile->isChecked());
+  qApp->downloadManager()->setDownloadDirectory(m_ui->m_txtDownloadsTargetDirectory->text());
 }
 
 void FormSettings::selectDownloadsDirectory() {

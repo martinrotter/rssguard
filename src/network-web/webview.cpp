@@ -80,16 +80,35 @@ void WebView::openImageInNewTab() {
 }
 
 void WebView::saveCurrentPageToFile() {
-  QString filter_html = tr("HTML web pages (*.html)");
+  QString selected_file;
 
-  QString filter;
-  QString selected_filter;
+  if (qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool()) {
+    QString filter_html = tr("HTML web pages (*.html)");
 
-  // Add more filters here.
-  filter += filter_html;
+    QString filter;
+    QString selected_filter;
+    QString filename_for_prompt = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetExplicitDirectory)).toString() +
+                                  QDir::separator() + tr("source_page.html");
 
-  QString selected_file = QFileDialog::getSaveFileName(this, tr("Select destination file for web page"),
-                                                       qApp->homeFolderPath(), filter, &selected_filter);
+    // Add more filters here.
+    filter += filter_html;
+    selected_file = QFileDialog::getSaveFileName(this, tr("Select destination file for web page"),
+                                                 filename_for_prompt, filter, &selected_filter);
+
+    if (!selected_file.isEmpty()) {
+      qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
+                                 QDir::toNativeSeparators(QFileInfo(selected_file).absolutePath()));
+    }
+  }
+  else {
+    selected_file = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString();
+
+    if (!selected_file.endsWith(QDir::separator())) {
+      selected_file += QDir::separator();
+    }
+
+    selected_file += tr("source_page.html");
+  }
 
   if (!selected_file.isEmpty()) {
     QFile selected_file_handle(selected_file);

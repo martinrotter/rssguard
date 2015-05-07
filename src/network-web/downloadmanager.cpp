@@ -99,12 +99,15 @@ void DownloadItem::getFileName() {
   }
 
   QString download_directory = qApp->downloadManager()->downloadDirectory();
-  QString default_filename = saveFileName(download_directory);
-  QString chosen_filename = default_filename;
+  QString chosen_filename = saveFileName(download_directory);
+  QString filename_for_prompt = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetExplicitDirectory)).toString() +
+                                QDir::separator() +
+                                QFileInfo(chosen_filename).fileName();
 
   if (m_requestFileName) {
+    // User must provide the path where he wants to save downloaded file in.
     m_gettingFileName = true;
-    chosen_filename = QFileDialog::getSaveFileName(this, tr("Select destination for downloaded file"), default_filename);
+    chosen_filename = QFileDialog::getSaveFileName(this, tr("Select destination for downloaded file"), filename_for_prompt);
     m_gettingFileName = false;
 
     if (chosen_filename.isEmpty()) {
@@ -118,6 +121,8 @@ void DownloadItem::getFileName() {
 
     QFileInfo file_info = QFileInfo(chosen_filename);
 
+    qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
+                               QDir::toNativeSeparators(QFileInfo(chosen_filename).absolutePath()));
     qApp->downloadManager()->setDownloadDirectory(file_info.absoluteDir().absolutePath());
     m_ui->m_lblFilename->setText(file_info.fileName());
   }
@@ -686,8 +691,8 @@ void DownloadManager::cleanup() {
 void DownloadManager::setDownloadDirectory(const QString &directory) {
   m_downloadDirectory = directory;
 
-  if (!m_downloadDirectory.isEmpty() && !m_downloadDirectory.endsWith(QLatin1Char('/'))) {
-    m_downloadDirectory += QLatin1Char('/');
+  if (!m_downloadDirectory.isEmpty() && !m_downloadDirectory.endsWith(QDir::separator())) {
+    m_downloadDirectory += QDir::separator();
   }
 }
 

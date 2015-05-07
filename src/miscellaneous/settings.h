@@ -177,6 +177,9 @@ namespace Downloads {
   KEY RemovePolicy;
   VALUE(int) RemovePolicyDef;
 
+  KEY TargetExplicitDirectory;
+  VALUE(QString) TargetExplicitDirectoryDef;
+
   KEY ItemUrl;
   KEY ItemLocation;
   KEY ItemDone;
