@@ -162,8 +162,8 @@ DVALUE(QString) Downloads::TargetDirectoryDef         = IOFactory::getSystemFold
 DKEY Downloads::RemovePolicy             = "remove_policy";
 DVALUE(int) Downloads::RemovePolicyDef   = DownloadManager::Never;
 
-KEY Downloads::TargetExplicitDirectory                  = "target_explicit_directory";
-VALUE(QString) Downloads::TargetExplicitDirectoryDef    = IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DesktopLocation);
+DKEY Downloads::TargetExplicitDirectory                  = "target_explicit_directory";
+DVALUE(QString) Downloads::TargetExplicitDirectoryDef    = IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::DesktopLocation);
 
 DKEY Downloads::ItemUrl                 = "download_%1_url";
 DKEY Downloads::ItemLocation            = "download_%1_location";
