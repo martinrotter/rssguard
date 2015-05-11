@@ -9,7 +9,7 @@ Fixed:
 <ul>
 <li>Target directory settings is now used for all kinds of downloading + when prompt for each download destination is set, then previously used folder is saved. (issue #108)</li>
 <li>Fixed solarized skin. (issue #111)</li>
-<li>Keyboard shorcuts and toolbar editors now have alphabetically sorted actions. Toolbar editor switched from drag/drop to buttons. (issue 
+<li>Keyboard shorcuts and toolbar editors now have alphabetically sorted actions. Toolbar editor switched from drag/drop to buttons. You can use CTRL+UP/DOWN arrow to move buttons in toolbar editor or double-click them to add/remove them. (issue 
 #110)</li>
 <li>New constructs on source code level.</li>
 <li>Many minor fixes, mainly code cleanup and refactoring.</li>

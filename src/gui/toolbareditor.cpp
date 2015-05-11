@@ -113,12 +113,22 @@ void ToolBarEditor::saveToolBar() {
 }
 
 bool ToolBarEditor::eventFilter(QObject *object, QEvent *event) {
-  if (event->type() == QEvent::KeyPress) {
-    QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
+  if (object == m_ui->m_listActivatedActions) {
+    if (event->type() == QEvent::KeyPress) {
+      QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
 
-    if (key_event->key() == Qt::Key_Delete) {
-      deleteSelectedAction();
-      return true;
+      if (key_event->key() == Qt::Key_Delete) {
+        deleteSelectedAction();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key_Down && key_event->modifiers() & Qt::ControlModifier) {
+        moveActionDown();
+        return true;
+      }
+      else if (key_event->key() == Qt::Key_Up && key_event->modifiers() & Qt::ControlModifier) {
+        moveActionUp();
+        return true;
+      }
     }
   }
 
