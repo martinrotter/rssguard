@@ -330,7 +330,7 @@ void QtSingleApplication::activateWindow()
 }
 
 void QtSingleApplication::finish()
-{
+{ 
   delete peer; peer = 0;
 }
 

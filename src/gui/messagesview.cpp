@@ -148,11 +148,11 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
     initializeContextMenu();
   }
 
-  if (sourceModel()->loadedSelection().mode() != FeedsSelection::MessagesFromRecycleBin) {
-    m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
+  if (sourceModel()->loadedSelection().mode() == FeedsSelection::MessagesFromRecycleBin) {
+    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
   }
   else {
-    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
+    m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
   }
 
   m_contextMenu->exec(event->globalPos());
