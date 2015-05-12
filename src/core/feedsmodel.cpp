@@ -767,7 +767,8 @@ void FeedsModel::loadFromDatabase() {
   query_feeds.setForwardOnly(true);
 
   if (!query_feeds.exec("SELECT * FROM Feeds;") || query_feeds.lastError().isValid()) {
-    qFatal("Query for obtaining feeds failed.");
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
+           qPrintable(query_feeds.lastError().text()));
   }
 
   while (query_feeds.next()) {

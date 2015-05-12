@@ -238,6 +238,15 @@ DVALUE(char*) Browser::CustomExternalBrowserExecutableDef = "";
 DKEY Browser::CustomExternalBrowserArguments              = "external_browser_arguments";
 DVALUE(char*) Browser::CustomExternalBrowserArgumentsDef  = "%1";
 
+DKEY Browser::CustomExternalEmailEnabled                  = "custom_external_email";
+DVALUE(bool) Browser::CustomExternalEmailEnabledDef       = false;
+
+DKEY Browser::CustomExternalEmailExecutable               = "external_email_executable";
+DVALUE(char*) Browser::CustomExternalEmailExecutableDef   = "";
+
+DKEY Browser::CustomExternalEmailArguments                = "external_email_arguments";
+DVALUE(char*) Browser::CustomExternalEmailArgumentsDef    = "";
+
 DKEY Browser::QueueTabs             = "queue_tabs";
 DVALUE(bool) Browser::QueueTabsDef  = true;
 

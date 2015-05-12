@@ -70,7 +70,7 @@
      </item>
      <item>
       <property name="text">
-       <string>Web browser &amp; proxy</string>
+       <string>Web browser &amp; e-mail &amp; proxy</string>
       </property>
      </item>
      <item>
@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -414,8 +414,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>740</width>
+            <height>451</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -492,8 +492,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>208</width>
-                <height>238</height>
+                <width>734</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -898,15 +898,10 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
             <widget class="QLabel" name="m_lblMouseGestures">
              <property name="text">
               <string>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
-&lt;/ul&gt;</string>
-             </property>
-             <property name="textFormat">
-              <enum>Qt::RichText</enum>
+ • previous web page (drag mouse left),
+ • next web page (drag mouse right),
+ • reload current web page (drag mouse up),
+ • open new web browser tab (drag mouse down).</string>
              </property>
              <property name="indent">
               <number>20</number>
@@ -926,7 +921,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="title">
-              <string>Custom external web browser</string>
+              <string>Use custom external web browser</string>
              </property>
              <property name="flat">
               <bool>false</bool>
@@ -993,13 +988,111 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                 </item>
                </widget>
               </item>
-              <item row="3" column="0" colspan="2">
+              <item row="3" column="1">
                <widget class="QLabel" name="label">
                 <property name="text">
                  <string>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>External e-mail client</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout_22">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="m_grpCustomExternalEmail">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="title">
+              <string>Use custom external e-mail client</string>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <layout class="QFormLayout" name="formLayout_21">
+              <item row="0" column="0">
+               <widget class="QLabel" name="m_lblExternalEmailExecutable">
+                <property name="text">
+                 <string>E-mail client executable</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <widget class="QLineEdit" name="m_txtExternalEmailExecutable">
+                  <property name="placeholderText">
+                   <string>Executable file of e-mail client</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="m_btnExternalEmailExecutable">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="m_lblExternalEmailArguments">
+                <property name="text">
+                 <string>Executable parameters</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="m_txtExternalEmailArguments">
+                <property name="placeholderText">
+                 <string>Parameters to executable</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="m_lblExternalEmailPreset">
+                <property name="text">
+                 <string>Use sample arguments for</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QComboBox" name="m_cmbExternalEmailPreset">
+                <property name="currentText">
+                 <string>Select client</string>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Select client</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="m_lblExternalEmailInfo">
+                <property name="text">
+                 <string>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</string>
+                </property>
+                <property name="indent">
+                 <number>20</number>
                 </property>
                </widget>
               </item>

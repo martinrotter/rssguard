@@ -91,6 +91,9 @@ class FormSettings : public QDialog {
     void changeDefaultBrowserArguments(int index);
     void selectBrowserExecutable();
 
+    void changeDefaultEmailArguments(int index);
+    void selectEmailExecutable();
+
     void loadProxy();
     void saveProxy();
     void displayProxyPassword(int state);

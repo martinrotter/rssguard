@@ -121,6 +121,8 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_treeSkins, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)), this, SLOT(onSkinSelected(QTreeWidgetItem*,QTreeWidgetItem*)));
   connect(m_ui->m_cmbExternalBrowserPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(changeDefaultBrowserArguments(int)));
   connect(m_ui->m_btnExternalBrowserExecutable, SIGNAL(clicked()), this, SLOT(selectBrowserExecutable()));
+  connect(m_ui->m_cmbExternalEmailPreset, SIGNAL(currentIndexChanged(int)), this, SLOT(changeDefaultEmailArguments(int)));
+  connect(m_ui->m_btnExternalEmailExecutable, SIGNAL(clicked()), this, SLOT(selectEmailExecutable()));
   connect(m_ui->m_txtMysqlUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlUsernameChanged(QString)));
   connect(m_ui->m_txtMysqlHostname->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlHostnameChanged(QString)));
   connect(m_ui->m_txtMysqlPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onMysqlPasswordChanged(QString)));
@@ -205,7 +207,30 @@ void FormSettings::selectBrowserExecutable() {
                                                          );
 
   if (!executable_file.isEmpty()) {
-    m_ui->m_txtExternalBrowserExecutable->setText(executable_file);
+    m_ui->m_txtExternalBrowserExecutable->setText(QDir::toNativeSeparators(executable_file));
+  }
+}
+
+void FormSettings::changeDefaultEmailArguments(int index) {
+  if (index != 0) {
+    m_ui->m_txtExternalEmailArguments->setText(m_ui->m_cmbExternalEmailPreset->itemData(index).toString());
+  }
+}
+
+void FormSettings::selectEmailExecutable() {
+  QString executable_file = QFileDialog::getOpenFileName(this,
+                                                         tr("Select e-mail executable"),
+                                                         qApp->homeFolderPath(),
+                                                         //: File filter for external e-mail selection dialog.
+                                                       #if defined(Q_OS_LINUX)
+                                                         tr("Executables (*)")
+                                                       #else
+                                                         tr("Executables (*.*)")
+                                                       #endif
+                                                         );
+
+  if (!executable_file.isEmpty()) {
+    m_ui->m_txtExternalEmailExecutable->setText(QDir::toNativeSeparators(executable_file));
   }
 }
 
@@ -378,6 +403,12 @@ void FormSettings::loadBrowser() {
   m_ui->m_checkAutoLoadImages->setChecked(WebFactory::instance()->autoloadImages());
   m_ui->m_checkEnableJavascript->setChecked(WebFactory::instance()->javascriptEnabled());
   m_ui->m_checkEnablePlugins->setChecked(WebFactory::instance()->pluginsEnabled());
+
+  // Load settings of e-mail.
+  m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), "-compose \"subject='%1',body='%2'\"");
+  m_ui->m_txtExternalEmailExecutable->setText(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString());
+  m_ui->m_txtExternalEmailArguments->setText(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString());
+  m_ui->m_grpCustomExternalEmail->setChecked(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
 }
 
 void FormSettings::saveBrowser() {
@@ -389,6 +420,11 @@ void FormSettings::saveBrowser() {
   settings->setValue(GROUP(Browser), Browser::QueueTabs, m_ui->m_checkQueueTabs->isChecked());
   settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserExecutable, m_ui->m_txtExternalBrowserExecutable->text());
   settings->setValue(GROUP(Browser), Browser::CustomExternalBrowserArguments, m_ui->m_txtExternalBrowserArguments->text());
+
+  // Save settings of e-mail.
+  settings->setValue(GROUP(Browser), Browser::CustomExternalEmailExecutable, m_ui->m_txtExternalEmailExecutable->text());
+  settings->setValue(GROUP(Browser), Browser::CustomExternalEmailArguments, m_ui->m_txtExternalEmailArguments->text());
+  settings->setValue(GROUP(Browser), Browser::CustomExternalEmailEnabled, m_ui->m_grpCustomExternalEmail->isChecked());
 
   WebFactory::instance()->switchImages(m_ui->m_checkAutoLoadImages->isChecked());
   WebFactory::instance()->switchJavascript(m_ui->m_checkEnableJavascript->isChecked());

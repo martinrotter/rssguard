@@ -2,6 +2,9 @@
 #define WEBFACTORY_H
 
 #include <QObject>
+
+#include "core/messagesmodel.h"
+
 #include <QPointer>
 #include <QMap>
 
@@ -38,6 +41,7 @@ class WebFactory : public QObject {
   public slots:
     // Opens given string URL in external browser.
     bool openUrlInExternalBrowser(const QString &url);
+    bool sendMessageViaEmail(const Message &message);
 
     // Switchers.
     void switchJavascript(bool enable, bool save_settings = true);

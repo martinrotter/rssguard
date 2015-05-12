@@ -28,6 +28,24 @@ void WebFactory::loadState() {
   switchPlugins(settings->value(GROUP(Browser), SETTING(Browser::PluginsEnabled)).toBool(), false);
 }
 
+bool WebFactory::sendMessageViaEmail(const Message &message) {
+  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool()) {
+    QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
+    QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
+
+    return QProcess::startDetached(browser, QStringList() << arguments.arg(message.m_title,
+                                                                           stripTags(message.m_contents)));
+  }
+  else {
+    // TODO: Check encoding when using mailto and add icon for the action.
+
+    // Send it via mailto protocol.
+    // NOTE: http://en.wikipedia.org/wiki/Mailto
+    return QDesktopServices::openUrl(QString("mailto:?subject=%1&body=%2").arg(QString(QUrl::toPercentEncoding(message.m_title)),
+                                                                               QString(QUrl::toPercentEncoding(stripTags(message.m_contents)))));
+  }
+}
+
 bool WebFactory::openUrlInExternalBrowser(const QString &url) {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();

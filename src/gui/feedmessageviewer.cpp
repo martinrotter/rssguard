@@ -243,6 +243,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
   connect(form_main->m_ui->m_actionOpenSelectedMessagesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
+  connect(form_main->m_ui->m_actionSendMessageViaEmail,
+          SIGNAL(triggered()), m_messagesView, SLOT(sendSelectedMessageViaEmail()));
   connect(form_main->m_ui->m_actionMarkAllFeedsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
   connect(form_main->m_ui->m_actionMarkSelectedFeedsAsRead,

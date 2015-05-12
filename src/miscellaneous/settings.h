@@ -261,6 +261,15 @@ namespace Browser {
   KEY CustomExternalBrowserArguments;
   VALUE(char*) CustomExternalBrowserArgumentsDef;
 
+  KEY CustomExternalEmailEnabled;
+  VALUE(bool) CustomExternalEmailEnabledDef;
+
+  KEY CustomExternalEmailExecutable;
+  VALUE(char*) CustomExternalEmailExecutableDef;
+
+  KEY CustomExternalEmailArguments;
+  VALUE(char*) CustomExternalEmailArgumentsDef;
+
   KEY QueueTabs;
   VALUE(bool) QueueTabsDef;
 }

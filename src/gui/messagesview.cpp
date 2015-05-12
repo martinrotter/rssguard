@@ -161,6 +161,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
 void MessagesView::initializeContextMenu() {
   m_contextMenu = new QMenu(tr("Context menu for messages"), this);
   m_contextMenu->addActions(QList<QAction*>() <<
+                            qApp->mainForm()->m_ui->m_actionSendMessageViaEmail <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesInternally <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally <<
@@ -296,6 +297,19 @@ void MessagesView::openSelectedMessagesInternally() {
 
     // Finally, mark opened messages as read.
     markSelectedMessagesRead();
+  }
+}
+
+void MessagesView::sendSelectedMessageViaEmail() {
+  if (selectionModel()->selectedRows().size() == 1) {
+    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
+
+    if (!WebFactory::instance()->sendMessageViaEmail(message)) {
+      MessageBox::show(this,
+                       QMessageBox::Critical,
+                       tr("Problem with starting external e-mail client"),
+                       tr("External e-mail client could not be started."));
+    }
   }
 }
 

@@ -66,6 +66,7 @@ class MessagesView : public QTreeView {
     void openSelectedSourceArticlesExternally();
     void openSelectedSourceMessagesInternally();
     void openSelectedMessagesInternally();
+    void sendSelectedMessageViaEmail();
 
     // Works with SELECTED messages only.
     void setSelectedMessagesReadStatus(int read);
