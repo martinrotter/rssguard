@@ -73,7 +73,7 @@ void MessagesView::keyboardSearch(const QString &search) {
   setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
-void MessagesView::reloadSelections(int mark_current_index_read) {
+void MessagesView::reloadSelections(bool mark_current_index_read) {
   QModelIndex current_index = selectionModel()->currentIndex();
   QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
@@ -89,7 +89,7 @@ void MessagesView::reloadSelections(int mark_current_index_read) {
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
 
   if (current_index.isValid()) {
-    if (mark_current_index_read == 0) {
+    if (mark_current_index_read) {
       // User selected to mark some messages as unread, if one
       // of them will be marked as current, then it will be read again.
       m_batchUnreadSwitch = true;
@@ -436,8 +436,7 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
   QItemSelection selection;
 
   foreach (const QModelIndex &index, indexes) {
-    // TODO: THIS IS very slow. Try to select 4000 messages
-    // and hit "mark as read" button.
+    // TODO: THIS IS very slow. Try to select 4000 messages and hit "mark as read" button.
     selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
   }
 

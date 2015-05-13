@@ -78,7 +78,6 @@ void MessagesToolBar::loadChangeableActions(const QStringList& actions) {
       // Add new separator.
       addSeparator();
     }
-    // TODO: tydle dve vetve asi vymazat.
     else if (action_name == SEACRH_MESSAGES_ACTION_NAME) {
       // Add search box.
       addAction(m_actionSearchMessages);

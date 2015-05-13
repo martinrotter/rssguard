@@ -179,7 +179,7 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed, int current,
 void FeedMessageViewer::onFeedUpdatesFinished() {
   qApp->feedUpdateLock()->unlock();
   qApp->mainForm()->statusBar()->clearProgressFeeds();
-  m_messagesView->reloadSelections(1);
+  m_messagesView->reloadSelections(true);
 }
 
 void FeedMessageViewer::switchFeedComponentVisibility() {
