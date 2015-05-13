@@ -33,11 +33,11 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
     QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
-    return QProcess::startDetached(browser, QStringList() << arguments.arg(message.m_title,
+    return QProcess::startDetached(QString("\"") + browser + "\"", QStringList() << arguments.arg(message.m_title,
                                                                            stripTags(message.m_contents)));
   }
   else {
-    // TODO: Check encoding when using mailto and add icon for the action.
+    // TODO: Check encoding when using mailto.
 
     // Send it via mailto protocol.
     // NOTE: http://en.wikipedia.org/wiki/Mailto
@@ -51,7 +51,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
 
-    return QProcess::startDetached(browser, QStringList() << arguments.arg(url));
+    return QProcess::startDetached(QString("\"") + browser + "\"", QStringList() << arguments.arg(url));
   }
   else {
     return QDesktopServices::openUrl(url);
