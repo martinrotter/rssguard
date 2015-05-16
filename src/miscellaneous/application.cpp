@@ -75,14 +75,14 @@ DownloadManager *Application::downloadManager() {
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
                                          const QString &target_path, const QString &backup_name) {
   if (!QFileInfo(target_path).isWritable()) {
-    throw ApplicationException(tr("Output folder is not writable."));
+    throw ApplicationException(tr("Output directory is not writable."));
   }
 
   if (backup_settings) {
     settings()->sync();
 
     if (!IOFactory::copyFile(settings()->fileName(), target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_SETTINGS)) {
-      throw ApplicationException(tr("Settings file not copied to output folder successfully."));
+      throw ApplicationException(tr("Settings file not copied to output directory successfully."));
     }
   }
 
@@ -93,7 +93,7 @@ void Application::backupDatabaseSettings(bool backup_database, bool backup_setti
     database()->saveDatabase();
 
     if (!IOFactory::copyFile(database()->sqliteDatabaseFilePath(), target_path + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE)) {
-      throw ApplicationException(tr("Database file not copied to output folder successfully."));
+      throw ApplicationException(tr("Database file not copied to output directory successfully."));
     }
   }
 }
@@ -102,13 +102,13 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
                                           const QString &source_database_file_path, const QString &source_settings_file_path) {
   if (restore_database) {
     if (!qApp->database()->initiateRestoration(source_database_file_path)) {
-      throw ApplicationException(tr("Database restoration was not initiated. Make sure that output folder is writable."));
+      throw ApplicationException(tr("Database restoration was not initiated. Make sure that output directory is writable."));
     }
   }
 
   if (restore_settings) {
     if (!qApp->settings()->initiateRestoration(source_settings_file_path)) {
-      throw ApplicationException(tr("Settings restoration was not initiated. Make sure that output folder is writable."));
+      throw ApplicationException(tr("Settings restoration was not initiated. Make sure that output directory is writable."));
     }
   }
 }

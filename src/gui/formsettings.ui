@@ -414,8 +414,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>740</width>
+            <height>451</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -492,8 +492,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>734</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -941,15 +941,18 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <layout class="QHBoxLayout" name="horizontalLayout_10">
                 <item>
                  <widget class="QLineEdit" name="m_txtExternalBrowserExecutable">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
                   <property name="placeholderText">
                    <string>Executable file of web browser</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="m_btnExternalBrowserExecutable">
+                 <widget class="QPushButton" name="m_btnExternalBrowserExecutable">
                   <property name="text">
-                   <string>...</string>
+                   <string>&amp;Browse</string>
                   </property>
                  </widget>
                 </item>
@@ -1034,15 +1037,18 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <layout class="QHBoxLayout" name="horizontalLayout_15">
                 <item>
                  <widget class="QLineEdit" name="m_txtExternalEmailExecutable">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
                   <property name="placeholderText">
                    <string>Executable file of e-mail client</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="m_btnExternalEmailExecutable">
+                 <widget class="QPushButton" name="m_btnExternalEmailExecutable">
                   <property name="text">
-                   <string>...</string>
+                   <string>&amp;Browse</string>
                   </property>
                  </widget>
                 </item>
@@ -1698,22 +1704,6 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <hint type="destinationlabel">
      <x>522</x>
      <y>49</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_rbDownloadsAskEachFile</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_btnDownloadsTargetDirectory</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>821</x>
-     <y>50</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>673</x>
-     <y>50</y>
     </hint>
    </hints>
   </connection>

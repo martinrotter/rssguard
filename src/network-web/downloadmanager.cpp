@@ -221,11 +221,11 @@ void DownloadItem::openFolder() {
     QString file = QDir::toNativeSeparators(m_output.fileName());
 
     if (!QProcess::startDetached(QString("explorer.exe /select, \"") + file + "\"")) {
-      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open folder"), tr("Cannot open output folder. Open it manually."), QString(), folder);
+      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open directory"), tr("Cannot open output directory. Open it manually."), QString(), folder);
     }
 #else
     if (!QDesktopServices::openUrl(QUrl::fromLocalFile(folder))) {
-      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open folder"), tr("Cannot open output folder. Open it manually."), QString(), folder);
+      MessageBox::show(this, QMessageBox::Warning, tr("Cannot open directory"), tr("Cannot open output directory. Open it manually."), QString(), folder);
     }
 #endif
   }

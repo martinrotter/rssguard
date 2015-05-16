@@ -100,7 +100,7 @@
    <item>
     <widget class="QToolButton" name="m_btnOpenFolder">
      <property name="text">
-      <string>Open &amp;folder</string>
+      <string>Open &amp;directory</string>
      </property>
     </widget>
    </item>

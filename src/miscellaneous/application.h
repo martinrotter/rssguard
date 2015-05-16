@@ -138,7 +138,8 @@ class Application : public QtSingleApplication {
       return IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::HomeLocation);
     }
 
-    void backupDatabaseSettings(bool backup_database, bool backup_settings, const QString &target_path, const QString &backup_name);
+    void backupDatabaseSettings(bool backup_database, bool backup_settings,
+                                const QString &target_path, const QString &backup_name);
     void restoreDatabaseSettings(bool restore_database, bool restore_settings,
                                  const QString &source_database_file_path = QString(),
                                  const QString &source_settings_file_path = QString());

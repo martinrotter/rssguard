@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl_NL">
 <context>
     <name>Application</name>
     <message>
@@ -6,24 +8,24 @@
         <translation>RSSguard is al gestart.</translation>
     </message>
     <message>
-        <source>Output folder is not writable.</source>
-        <translation type="unfinished"/>
+        <source>Output directory is not writable.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings file not copied to output folder successfully.</source>
-        <translation type="unfinished"/>
+        <source>Settings file not copied to output directory successfully.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database file not copied to output folder successfully.</source>
-        <translation type="unfinished"/>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
-        <translation type="unfinished"/>
+        <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
-        <translation type="unfinished"/>
+        <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -46,17 +48,24 @@
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Onbekende fout.</translation>
     </message>
+    <message>
+        <source>Selected database does not exist (yet).</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -86,24 +95,12 @@ This website contains %n feed(s).</source>
         <translation>&amp;Open bestand</translation>
     </message>
     <message>
-        <source>Open &amp;folder</source>
-        <translation>Open &amp;map</translation>
-    </message>
-    <message>
         <source>Select destination for downloaded file</source>
         <translation>Kies bestemming voor het gedownloade bestand</translation>
     </message>
     <message>
         <source>Error: %1</source>
         <translation>Fout: %1</translation>
-    </message>
-    <message>
-        <source>Cannot open folder</source>
-        <translation>Kan map niet openen</translation>
-    </message>
-    <message>
-        <source>Cannot open output folder. Open it manually.</source>
-        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
     <message>
         <source>Cancelled</source>
@@ -125,6 +122,26 @@ This website contains %n feed(s).</source>
         <source>%1 of %2 - download completed</source>
         <translation>%1 of %2 - download voltooid</translation>
     </message>
+    <message>
+        <source>Open &amp;directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output file. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DownloadManager</name>
@@ -134,11 +151,17 @@ This website contains %n feed(s).</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -158,7 +181,10 @@ This website contains %n feed(s).</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Dowloading %1 bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -216,6 +242,10 @@ This website contains %n feed(s).</source>
         <source> (feed)</source>
         <translation>(feed)</translation>
     </message>
+    <message>
+        <source>Category </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -255,7 +285,10 @@ This website contains %n feed(s).</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -285,12 +318,18 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -324,7 +363,10 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -406,27 +448,27 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -516,10 +558,6 @@ Auto-update status: %5</translation>
         <translation>Backup database/instellingen</translation>
     </message>
     <message>
-        <source>&amp;Select folder</source>
-        <translation>&amp;Selecteer map</translation>
-    </message>
-    <message>
         <source>Backup properties</source>
         <translation>Backup eigenschappen</translation>
     </message>
@@ -552,20 +590,8 @@ Auto-update status: %5</translation>
         <translation>Nog geen handeling uitgevoerd.</translation>
     </message>
     <message>
-        <source>Backup was created successfully and stored in target folder.</source>
-        <translation>Backup is succesvol aangemaakt en opgeslagen in de doelmap.</translation>
-    </message>
-    <message>
         <source>Backup was created successfully.</source>
         <translation>Back-up is gemaakt.</translation>
-    </message>
-    <message>
-        <source>Select destionation folder</source>
-        <translation>Selecteer bestemmingsmap</translation>
-    </message>
-    <message>
-        <source>Good destination folder is specified.</source>
-        <translation>Juiste bestemmingsmap is opgegeven</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
@@ -576,12 +602,28 @@ Auto-update status: %5</translation>
         <translation>Backup naam is in orde.</translation>
     </message>
     <message>
-        <source>Output folder</source>
-        <translation type="unfinished"/>
+        <source>Backup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup failed.</source>
-        <translation type="unfinished"/>
+        <source>Output directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination directory is specified.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1458,6 +1500,10 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <source>&amp;Downloads</source>
         <translation>&amp;Downloads</translation>
     </message>
+    <message>
+        <source>Send selected message via e-mail</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1468,10 +1514,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     <message>
         <source>Operation results</source>
         <translation>Resultaten</translation>
-    </message>
-    <message>
-        <source>&amp;Select folder</source>
-        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -1498,20 +1540,24 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <translation>Je moet RssGuard herstarten om de herstel procedure te voltooien.</translation>
     </message>
     <message>
-        <source>Database and/or settings were not copied to restoration folder successully.</source>
-        <translation>Database en / of instellingen werden niet gekopieerd naar de herstel map.</translation>
+        <source>Source directory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select source folder</source>
-        <translation>Selecteer source map</translation>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Good source folder is specified.</source>
-        <translation>Juiste source map is opgegeven.</translation>
+        <source>Database and/or settings were not copied to restoration directory successully.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Source folder</source>
-        <translation type="unfinished"/>
+        <source>Select source directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good source directory is specified.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1656,10 +1702,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <translation>Muisbewegingen aanzetten</translation>
     </message>
     <message>
-        <source>Web browser &amp; proxy</source>
-        <translation>Webbrowser &amp; proxy</translation>
-    </message>
-    <message>
         <source>Disable (Tray icon is not available.)</source>
         <translation>Uitzetten (Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
@@ -1719,10 +1761,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     <message>
         <source>Web browser executable</source>
         <translation>Webbrowser exe</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation>...</translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -1982,22 +2020,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
         <translation>Laad %1 als systeem opstart</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation>Muisbeweging werkt met middelste muisknop. Mogelijke muisbewegingen zijn:
-&lt;ul&gt;
-&lt;li&gt;vorige webpagina (sleep muis links)&lt;/li&gt;
-&lt;li&gt;volgende webpagina(sleep muis rechts)&lt;/li&gt;
-&lt;li&gt;herlaad huidige webpagina(sleep muis omhoog)&lt;/li&gt;
-&lt;li&gt;Open nieuw webbrowser pagina(sleep muis omlaag)&lt;/li&gt;
-&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Enable JavaScript</source>
         <translation>Javascript aanzetten</translation>
     </message>
@@ -2012,10 +2034,6 @@ Auteurs van Rssguard zijn NIET verantwoordelijk voor verlies van gegevens.</tran
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Indien aangevinkt, wordt standaard de systeem  webbrowser gebruikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Custom external web browser</source>
-        <translation>Aangepaste externe webbrowser</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -2070,12 +2088,10 @@ Je moet handmatig herstarten.</translation>
         <translation>Gebruik aangepaste datum / tijd opmaak (overschrijft de opmaak van de actieve geladen locatie)</translation>
     </message>
     <message>
-        <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
-    </message>
-    <message>
         <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.</extracomment>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Uitvoerbare bestanden (*.*)</translation>
     </message>
     <message>
@@ -2104,10 +2120,6 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <translation>Vraag voor elk individuele gedownloade bestand</translation>
     </message>
     <message>
-        <source>Save all downloaded files into</source>
-        <translation>Sla alle gedownloade bestanden op in</translation>
-    </message>
-    <message>
         <source>Target directory where all downloaded files are saved</source>
         <translation>Doelmap waar alle downloads worden opgeslagen</translation>
     </message>
@@ -2123,11 +2135,85 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
 
 MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+ • previous web page (drag mouse left),
+ • next web page (drag mouse right),
+ • reload current web page (drag mouse up),
+ • open new web browser tab (drag mouse down).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2361,11 +2447,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2428,6 +2514,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>External web browser could not be started.</source>
         <translation>Externe webbrowser kon niet worden gestart.</translation>
+    </message>
+    <message>
+        <source>Problem with starting external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client could not be started.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2647,6 +2741,26 @@ Ongelezen nieuws: %2</translation>
         <source>Toolbar spacer</source>
         <translation>Werkbalk ruimte</translation>
     </message>
+    <message>
+        <source>Move action up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move action down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add selected action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all actions</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -2856,6 +2970,10 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Save image as...</source>
         <translation>Afbeelding opslaan als...</translation>
+    </message>
+    <message>
+        <source>source_page</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

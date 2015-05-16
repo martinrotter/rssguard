@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -8,23 +8,23 @@
         <translation>Aplikace již běží.</translation>
     </message>
     <message>
-        <source>Output folder is not writable.</source>
+        <source>Output directory is not writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings file not copied to output folder successfully.</source>
+        <source>Settings file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database file not copied to output folder successfully.</source>
+        <source>Database file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -47,6 +47,10 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Neznámá chyba.</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet).</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -95,24 +99,12 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <translation>&amp;Otevřít soubor</translation>
     </message>
     <message>
-        <source>Open &amp;folder</source>
-        <translation>&amp;Otevřít složku</translation>
-    </message>
-    <message>
         <source>Select destination for downloaded file</source>
         <translation>Zvolit cílové umístění pro stahovaný soubor</translation>
     </message>
     <message>
         <source>Error: %1</source>
         <translation>Chyba: %1</translation>
-    </message>
-    <message>
-        <source>Cannot open folder</source>
-        <translation>Nelze otevřít složku</translation>
-    </message>
-    <message>
-        <source>Cannot open output folder. Open it manually.</source>
-        <translation>Výstupní složku nelze otevřít, otevřte ji ručně.</translation>
     </message>
     <message>
         <source>Cancelled</source>
@@ -133,6 +125,26 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     <message>
         <source>%1 of %2 - download completed</source>
         <translation>%1 z %2 - stahování dokončeno</translation>
+    </message>
+    <message>
+        <source>Open &amp;directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output file. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -236,6 +248,10 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     <message>
         <source> (feed)</source>
         <translation> (kanál)</translation>
+    </message>
+    <message>
+        <source>Category </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -552,10 +568,6 @@ Automatický update: %5</translation>
         <translation>Zálohovat databázi/nastavení</translation>
     </message>
     <message>
-        <source>&amp;Select folder</source>
-        <translation>&amp;Vybrat složku</translation>
-    </message>
-    <message>
         <source>Backup properties</source>
         <translation>Vlastnosti zálohy</translation>
     </message>
@@ -588,20 +600,8 @@ Automatický update: %5</translation>
         <translation>Doposud neprovedena žádná operace.</translation>
     </message>
     <message>
-        <source>Backup was created successfully and stored in target folder.</source>
-        <translation>Záloha byla vytvořena a uložena v cílové složce.</translation>
-    </message>
-    <message>
         <source>Backup was created successfully.</source>
         <translation>Záloha byla vytvořena.</translation>
-    </message>
-    <message>
-        <source>Select destionation folder</source>
-        <translation>Zvolte cílovoý adresář</translation>
-    </message>
-    <message>
-        <source>Good destination folder is specified.</source>
-        <translation>Je specifikována dobrá výstupní složka.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
@@ -612,11 +612,27 @@ Automatický update: %5</translation>
         <translation>Název zálohy je v pořádku.</translation>
     </message>
     <message>
-        <source>Output folder</source>
+        <source>Backup failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup failed.</source>
+        <source>Output directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination directory is specified.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1493,6 +1509,10 @@ Automatický update: %5</translation>
         <source>&amp;Downloads</source>
         <translation>&amp;Stahování</translation>
     </message>
+    <message>
+        <source>Send selected message via e-mail</source>
+        <translation>Odeslat vybranou zprávu přes e-mail</translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1503,10 +1523,6 @@ Automatický update: %5</translation>
     <message>
         <source>Operation results</source>
         <translation>Výsledky operací</translation>
-    </message>
-    <message>
-        <source>&amp;Select folder</source>
-        <translation>&amp;Vybrat složku</translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -1533,20 +1549,24 @@ Automatický update: %5</translation>
         <translation>Pro dokončení procesu obnovení je třeba restartovat aplikaci.</translation>
     </message>
     <message>
-        <source>Database and/or settings were not copied to restoration folder successully.</source>
-        <translation>Databáze a/nebo nastavení byly zkopírovány do obnovovací složky.</translation>
+        <source>Source directory</source>
+        <translation>Zdrojový adresář</translation>
     </message>
     <message>
-        <source>Select source folder</source>
-        <translation>Výběr zdrojové složky</translation>
+        <source>&amp;Select directory</source>
+        <translation>&amp;Zvolit adresář</translation>
     </message>
     <message>
-        <source>Good source folder is specified.</source>
-        <translation>Je specifikována dobrá zdrojová složka.</translation>
+        <source>Database and/or settings were not copied to restoration directory successully.</source>
+        <translation>Nastavení a/nebo databáze nebyli kopírovány do obnovovacího adresáře úspěšně.</translation>
     </message>
     <message>
-        <source>Source folder</source>
-        <translation type="unfinished"></translation>
+        <source>Select source directory</source>
+        <translation>Zvolte zdrojový adresář</translation>
+    </message>
+    <message>
+        <source>Good source directory is specified.</source>
+        <translation>Je zvolen správný zdrojový adresář.</translation>
     </message>
 </context>
 <context>
@@ -1691,10 +1711,6 @@ Automatický update: %5</translation>
         <translation>Povolit gesta myši</translation>
     </message>
     <message>
-        <source>Web browser &amp; proxy</source>
-        <translation>Webový prohlížeč &amp; proxy</translation>
-    </message>
-    <message>
         <source>Disable (Tray icon is not available.)</source>
         <translation>Zakázat (Notifikační ikona není k dispozici.)</translation>
     </message>
@@ -1754,10 +1770,6 @@ Automatický update: %5</translation>
     <message>
         <source>Web browser executable</source>
         <translation>Spouštěcí soubor</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation></translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -2016,22 +2028,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
         <translation>Spustit %1 při spuštění operačního systému</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation>Gesta myši se používají středním tlačítkem myši. Dostupná gesta:
-&lt;ul&gt;
-&lt;li&gt;předchozí stránka (táhnutí myši vlevo),&lt;/li&gt;
-&lt;li&gt;následující stránka (táhnutí myši vpravo),&lt;/li&gt;
-&lt;li&gt;znovu načíst stránku (táhnutí myši nahoru),&lt;/li&gt;
-&lt;li&gt;otevřít nový tab webového prohlížeče (táhnutí myši dolů).&lt;/li&gt;
-&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Enable JavaScript</source>
         <translation>Povolit JavaScript</translation>
     </message>
@@ -2046,10 +2042,6 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Custom external web browser</source>
-        <translation>Vlastní externí webový prohlížeč</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -2104,12 +2096,10 @@ Musíte restartovat manuálně.</translation>
         <translation>Použít vlastní format datumu (přepíše formát načtený z lokalizace)</translation>
     </message>
     <message>
-        <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Vymazat odpadní registrový klíč Trolltech (HKCU\\Software\\Trolltech) při vypnutí aplikace</translation>
-    </message>
-    <message>
         <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.</extracomment>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Spustitelné soubory (*)</translation>
     </message>
     <message>
@@ -2137,10 +2127,6 @@ Musíte restartovat manuálně.</translation>
         <translation>Ptát se u každého stahovaného souboru</translation>
     </message>
     <message>
-        <source>Save all downloaded files into</source>
-        <translation>Všechny soubory automaticky stahovat do</translation>
-    </message>
-    <message>
         <source>Target directory where all downloaded files are saved</source>
         <translation>Cílový adresář, kam jsou ukládány všechny stahované soubory</translation>
     </message>
@@ -2160,6 +2146,80 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     </message>
     <message>
         <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+ • previous web page (drag mouse left),
+ • next web page (drag mouse right),
+ • reload current web page (drag mouse up),
+ • open new web browser tab (drag mouse down).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2391,11 +2451,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"></translation>
+        <translation>Přílohy</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Seznam příloh.</translation>
     </message>
 </context>
 <context>
@@ -2458,6 +2518,14 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>External web browser could not be started.</source>
         <translation>Externí webový prohlížeč nebyl úspěšně spuštěn.</translation>
+    </message>
+    <message>
+        <source>Problem with starting external e-mail client</source>
+        <translation>Problém se spuštěním externího e-mailového klienta</translation>
+    </message>
+    <message>
+        <source>External e-mail client could not be started.</source>
+        <translation>Externí e-mailový klient nemohl být úspěšně spuštěn.</translation>
     </message>
 </context>
 <context>
@@ -2676,6 +2744,26 @@ Nepřečtené zprávy: %2</translation>
         <source>Toolbar spacer</source>
         <translation>Mezera</translation>
     </message>
+    <message>
+        <source>Move action up</source>
+        <translation>Přesunout akci nahoru</translation>
+    </message>
+    <message>
+        <source>Move action down</source>
+        <translation>Přesunout akci dolů</translation>
+    </message>
+    <message>
+        <source>Add selected action</source>
+        <translation>Aktivovat zvolenou akci</translation>
+    </message>
+    <message>
+        <source>Delete selected action</source>
+        <translation>Deaktivovat zvolenou akci</translation>
+    </message>
+    <message>
+        <source>Delete all actions</source>
+        <translation>Deaktivovat všechny akce</translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -2885,6 +2973,10 @@ Nepřečtené zprávy: %2</translation>
     <message>
         <source>Save image as...</source>
         <translation>Uložit obrázek jako...</translation>
+    </message>
+    <message>
+        <source>source_page</source>
+        <translation>zdrojova_stranka</translation>
     </message>
 </context>
 </TS>

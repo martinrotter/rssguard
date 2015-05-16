@@ -60,7 +60,7 @@ void FormBackupDatabaseSettings::performBackup() {
     qApp->backupDatabaseSettings(m_ui->m_checkBackupDatabase->isChecked(), m_ui->m_checkBackupSettings->isChecked(),
                                  m_ui->m_lblSelectFolder->label()->text(), m_ui->m_txtBackupName->lineEdit()->text());
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok,
-                                 tr("Backup was created successfully and stored in target folder."),
+                                 tr("Backup was created successfully and stored in target directory."),
                                  tr("Backup was created successfully."));
   }
   catch (ApplicationException &ex) {
@@ -70,12 +70,12 @@ void FormBackupDatabaseSettings::performBackup() {
 
 void FormBackupDatabaseSettings::selectFolder(QString path) {
   if (path.isEmpty()) {
-    path = QFileDialog::getExistingDirectory(this, tr("Select destionation folder"), m_ui->m_lblSelectFolder->label()->text());
+    path = QFileDialog::getExistingDirectory(this, tr("Select destination directory"), m_ui->m_lblSelectFolder->label()->text());
   }
 
   if (!path.isEmpty()) {
     m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(path),
-                                       tr("Good destination folder is specified."));
+                                       tr("Good destination directory is specified."));
   }
 }
 

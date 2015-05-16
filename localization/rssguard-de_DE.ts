@@ -8,23 +8,23 @@
         <translation>Die Applikation läuft bereits.</translation>
     </message>
     <message>
-        <source>Output folder is not writable.</source>
+        <source>Output directory is not writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings file not copied to output folder successfully.</source>
+        <source>Settings file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database file not copied to output folder successfully.</source>
+        <source>Database file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -47,6 +47,10 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Unbekannter Fehler.</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet).</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -91,24 +95,12 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Open &amp;folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select destination for downloaded file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Error: %1</source>
         <translation type="unfinished">Fehler: %1. {1?}</translation>
-    </message>
-    <message>
-        <source>Cannot open folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cannot open output folder. Open it manually.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Cancelled</source>
@@ -128,6 +120,26 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open &amp;directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output file. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -228,6 +240,10 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source> (feed)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Category </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -535,10 +551,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Select folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Backup properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -571,19 +583,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup was created successfully and stored in target folder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select destionation folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Good destination folder is specified.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -595,11 +595,27 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Output folder</source>
+        <source>Backup failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Backup failed.</source>
+        <source>Output directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination directory is specified.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1476,6 +1492,10 @@ Auto-update status: %5</source>
         <source>&amp;Downloads</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Send selected message via e-mail</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1485,10 +1505,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Select folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1516,19 +1532,23 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database and/or settings were not copied to restoration folder successully.</source>
+        <source>Source directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select source folder</source>
+        <source>&amp;Select directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Good source folder is specified.</source>
+        <source>Database and/or settings were not copied to restoration directory successully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Source folder</source>
+        <source>Select source directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good source directory is specified.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1674,10 +1694,6 @@ Auto-update status: %5</source>
         <translation>Mausgesten einschalten</translation>
     </message>
     <message>
-        <source>Web browser &amp; proxy</source>
-        <translation>Web Browser &amp; Proxy</translation>
-    </message>
-    <message>
         <source>Disable (Tray icon is not available.)</source>
         <translation>Ausschalten (Tray-Icon ist nicht verfügbar)</translation>
     </message>
@@ -1737,10 +1753,6 @@ Auto-update status: %5</source>
     <message>
         <source>Web browser executable</source>
         <translation>Ausführbare Datei des Webbrowsers</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation>...</translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -1989,16 +2001,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable JavaScript</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2012,10 +2014,6 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Custom external web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2069,12 +2067,10 @@ You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.</extracomment>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2102,10 +2098,6 @@ You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save all downloaded files into</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Target directory where all downloaded files are saved</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2125,6 +2117,80 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     </message>
     <message>
         <source>&amp;Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+ • previous web page (drag mouse left),
+ • next web page (drag mouse right),
+ • reload current web page (drag mouse up),
+ • open new web browser tab (drag mouse down).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2426,6 +2492,14 @@ Go to application website to obtain it manually.</source>
         <source>External web browser could not be started.</source>
         <translation>Externer Webbrowser konnte nicht gestartet werden.</translation>
     </message>
+    <message>
+        <source>Problem with starting external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client could not be started.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2642,6 +2716,26 @@ Unread news: %2</source>
         <source>Toolbar spacer</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Move action up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move action down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add selected action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all actions</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -2850,6 +2944,10 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Save image as...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>source_page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv_SE">
 <context>
     <name>Application</name>
     <message>
@@ -6,24 +8,24 @@
         <translation>Programmet är redan startat.</translation>
     </message>
     <message>
-        <source>Output folder is not writable.</source>
-        <translation>Utdatamappen är skrivskyddad.</translation>
+        <source>Output directory is not writable.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings file not copied to output folder successfully.</source>
-        <translation>Inställningsfilen kopierades inte korrekt till utdatamappen.</translation>
+        <source>Settings file not copied to output directory successfully.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database file not copied to output folder successfully.</source>
-        <translation>Databasfilen kopierades inte korrekt till utdatamappen.</translation>
+        <source>Database file not copied to output directory successfully.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
-        <translation>Databasåterställning startades inte. Tillse att utdatamappen inte är skrivskyddad.</translation>
+        <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
-        <translation>Inställningsåterställning startades inte. Tillse att utdatamappen inte är skrivskyddad.</translation>
+        <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -46,6 +48,10 @@
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Okänt fel.</translation>
     </message>
+    <message>
+        <source>Selected database does not exist (yet).</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiscoverFeedsButton</name>
@@ -56,9 +62,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -88,24 +97,12 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
         <translation>&amp;Öppna fil</translation>
     </message>
     <message>
-        <source>Open &amp;folder</source>
-        <translation>Öppna &amp;mapp</translation>
-    </message>
-    <message>
         <source>Select destination for downloaded file</source>
         <translation>Välj destination för nedladdad fil</translation>
     </message>
     <message>
         <source>Error: %1</source>
         <translation>Fel: %1</translation>
-    </message>
-    <message>
-        <source>Cannot open folder</source>
-        <translation>Kan inte öppna mappen</translation>
-    </message>
-    <message>
-        <source>Cannot open output folder. Open it manually.</source>
-        <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
     </message>
     <message>
         <source>Cancelled</source>
@@ -127,6 +124,26 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
         <source>%1 of %2 - download completed</source>
         <translation>%1 av %2 - Nedladdning slutförd</translation>
     </message>
+    <message>
+        <source>Open &amp;directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output file. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DownloadManager</name>
@@ -136,11 +153,17 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -160,7 +183,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %1 fil</numerusform><numerusform>Laddar ner %1 filer</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %1 fil</numerusform>
+            <numerusform>Laddar ner %1 filer</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -218,6 +244,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
         <source> (feed)</source>
         <translation> (flöde)</translation>
     </message>
+    <message>
+        <source>Category </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsModel</name>
@@ -257,7 +287,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -286,12 +319,18 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
+            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -325,7 +364,10 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -517,10 +559,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Säkerhetskopiera databas/inställningar</translation>
     </message>
     <message>
-        <source>&amp;Select folder</source>
-        <translation>&amp;Välj mapp</translation>
-    </message>
-    <message>
         <source>Backup properties</source>
         <translation>Säkerhetskopiering</translation>
     </message>
@@ -553,20 +591,8 @@ Uppdateringsstatus: %5</translation>
         <translation>Ingen åtgärd slutförd än.</translation>
     </message>
     <message>
-        <source>Backup was created successfully and stored in target folder.</source>
-        <translation>Säkerhetskopia skapad, och lagrad i målmappen.</translation>
-    </message>
-    <message>
         <source>Backup was created successfully.</source>
         <translation>Säkerhetskopiering slutförd.</translation>
-    </message>
-    <message>
-        <source>Select destionation folder</source>
-        <translation>Välj målmapp</translation>
-    </message>
-    <message>
-        <source>Good destination folder is specified.</source>
-        <translation>Målmappen är godkänd.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
@@ -577,12 +603,28 @@ Uppdateringsstatus: %5</translation>
         <translation>Säkerhetskopians namn är godkänt.</translation>
     </message>
     <message>
-        <source>Output folder</source>
-        <translation>Utdatamapp</translation>
-    </message>
-    <message>
         <source>Backup failed.</source>
         <translation>Säkerhetskopiering misslyckades.</translation>
+    </message>
+    <message>
+        <source>Output directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select destination directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good destination directory is specified.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1458,6 +1500,10 @@ Uppdateringsstatus: %5</translation>
         <source>&amp;Downloads</source>
         <translation>&amp;Nedladdningar</translation>
     </message>
+    <message>
+        <source>Send selected message via e-mail</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1468,10 +1514,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Operation results</source>
         <translation>Åtgärdsresultat</translation>
-    </message>
-    <message>
-        <source>&amp;Select folder</source>
-        <translation>&amp;Välj mapp</translation>
     </message>
     <message>
         <source>Restore database</source>
@@ -1498,20 +1540,24 @@ Uppdateringsstatus: %5</translation>
         <translation>Du måste starta om programmet för att slutföra återställningen.</translation>
     </message>
     <message>
-        <source>Database and/or settings were not copied to restoration folder successully.</source>
-        <translation>Databas och/eller inställningar kopierades inte till återställningsmappen.</translation>
+        <source>Source directory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select source folder</source>
-        <translation>Välj källmapp</translation>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Good source folder is specified.</source>
-        <translation>Källmappen är godkänd.</translation>
+        <source>Database and/or settings were not copied to restoration directory successully.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Source folder</source>
-        <translation>Källmapp</translation>
+        <source>Select source directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Good source directory is specified.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1656,10 +1702,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Aktivera musgester</translation>
     </message>
     <message>
-        <source>Web browser &amp; proxy</source>
-        <translation>Webbläsare &amp; Proxy</translation>
-    </message>
-    <message>
         <source>Disable (Tray icon is not available.)</source>
         <translation>Inaktivera (ingen medelandefältsikon)</translation>
     </message>
@@ -1719,10 +1761,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Web browser executable</source>
         <translation>Startfil för webbläsare</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation>...</translation>
     </message>
     <message>
         <source>Executable parameters</source>
@@ -1982,22 +2020,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
         <translation>Starta %1 vid systemstart</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation>Musgester aktiveras med mushjulsknappen. Aktuella musgester är:
-&lt;ul&gt;
-&lt;li&gt;Föregående sida (dra musen åt vänster),&lt;/li&gt;
-&lt;li&gt;Nästa sida (dra musen åt höger),&lt;/li&gt;
-&lt;li&gt;Uppdatera aktuell webbsida (dra musen uppåt),&lt;/li&gt;
-&lt;li&gt;Öppna ny webbläsarflik (dra musen neråt).&lt;/li&gt;
-&lt;/ul&gt;</translation>
-    </message>
-    <message>
         <source>Enable JavaScript</source>
         <translation>Aktivera JavaScript</translation>
     </message>
@@ -2012,10 +2034,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Om kryssrutan lämnas omarkerad, används systemets standardwebbläsare.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Custom external web browser</source>
-        <translation>Anpassad extern webbläsare</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -2070,12 +2088,10 @@ Du måste starta om manuellt.</translation>
         <translation>Använd anpassada datum-/tidsformat (undantar format inlästa från aktivt språksystem)</translation>
     </message>
     <message>
-        <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation>Ta bort Trolltechs registernyckel (HKCU\\Software\\Trolltech) när programmet avslutas (Används på egen risk!).</translation>
-    </message>
-    <message>
         <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.</extracomment>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Körbara (*)</translation>
     </message>
     <message>
@@ -2103,10 +2119,6 @@ Du måste starta om manuellt.</translation>
         <translation>Fråga om varje enskild fil</translation>
     </message>
     <message>
-        <source>Save all downloaded files into</source>
-        <translation>Spara alla nedladdningar i</translation>
-    </message>
-    <message>
         <source>Target directory where all downloaded files are saved</source>
         <translation>Målmapp där alla nedladdade filer sparas</translation>
     </message>
@@ -2129,6 +2141,80 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
     <message>
         <source>&amp;Show password</source>
         <translation>&amp;Visa lösenord</translation>
+    </message>
+    <message>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+ • previous web page (drag mouse left),
+ • next web page (drag mouse right),
+ • reload current web page (drag mouse up),
+ • open new web browser tab (drag mouse down).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2429,6 +2515,14 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>External web browser could not be started.</source>
         <translation>Extern webbläsare kan inte startas.</translation>
     </message>
+    <message>
+        <source>Problem with starting external e-mail client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External e-mail client could not be started.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>NetworkFactory</name>
@@ -2646,6 +2740,26 @@ Olästa nyheter: %2</translation>
         <source>Toolbar spacer</source>
         <translation>Mellanrum</translation>
     </message>
+    <message>
+        <source>Move action up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move action down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add selected action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete selected action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all actions</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TrayIconMenu</name>
@@ -2855,6 +2969,10 @@ Olästa nyheter: %2</translation>
     <message>
         <source>Save image as...</source>
         <translation>Spara bild som...</translation>
+    </message>
+    <message>
+        <source>source_page</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

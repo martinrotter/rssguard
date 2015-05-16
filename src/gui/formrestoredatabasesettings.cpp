@@ -65,7 +65,7 @@ void FormRestoreDatabaseSettings::performRestoration() {
   }
   catch (ApplicationException &ex) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(),
-                                 tr("Database and/or settings were not copied to restoration folder successully."));
+                                 tr("Database and/or settings were not copied to restoration directory successully."));
   }
 }
 
@@ -80,12 +80,12 @@ void FormRestoreDatabaseSettings::checkOkButton() {
 
 void FormRestoreDatabaseSettings::selectFolder(QString folder) {
   if (folder.isEmpty()) {
-    folder = QFileDialog::getExistingDirectory(this, tr("Select source folder"), m_ui->m_lblSelectFolder->label()->text());
+    folder = QFileDialog::getExistingDirectory(this, tr("Select source directory"), m_ui->m_lblSelectFolder->label()->text());
   }
 
   if (!folder.isEmpty()) {
     m_ui->m_lblSelectFolder->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(folder),
-                                       tr("Good source folder is specified."));
+                                       tr("Good source directory is specified."));
   }
   else {
     return;

@@ -17,13 +17,13 @@
    <item>
     <widget class="QGroupBox" name="m_groupFile">
      <property name="title">
-      <string>Output folder</string>
+      <string>Output directory</string>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <item row="0" column="0">
        <widget class="QPushButton" name="m_btnSelectFolder">
         <property name="text">
-         <string>&amp;Select folder</string>
+         <string>&amp;Select directory</string>
         </property>
        </widget>
       </item>

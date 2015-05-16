@@ -154,7 +154,7 @@ void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
     }
   }
   else {
-    qDebug("Cannot save downloaded update file because no TEMP folder is available.");
+    qDebug("Cannot save downloaded update file because no TEMP directory is available.");
   }
 }
 
