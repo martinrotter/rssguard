@@ -176,7 +176,7 @@ class FeedsView : public QTreeView {
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);
 
     // Emitted if currently selected feeds needs to be reloaded.
-    void feedsNeedToBeReloaded(int mark_current_index_read);
+    void feedsNeedToBeReloaded(bool mark_current_index_read);
 
     // Emitted if user selects new feeds.
     void feedsSelected(const FeedsSelection &selection);

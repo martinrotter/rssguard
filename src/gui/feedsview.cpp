@@ -234,14 +234,14 @@ void FeedsView::setSelectedFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(selectedFeeds(), clear, 0);
   updateCountsOfSelectedFeeds(true);
 
-  emit feedsNeedToBeReloaded(1);
+  emit feedsNeedToBeReloaded(true);
 }
 
 void FeedsView::setAllFeedsClearStatus(int clear) {
   m_sourceModel->markFeedsDeleted(allFeeds(), clear, 0);
   updateCountsOfAllFeeds(true);
 
-  emit feedsNeedToBeReloaded(1);
+  emit feedsNeedToBeReloaded(true);
 }
 
 void FeedsView::clearSelectedFeeds() {
@@ -422,7 +422,7 @@ void FeedsView::markSelectedFeedsReadStatus(int read) {
   m_sourceModel->markFeedsRead(selectedFeeds(), read);
   updateCountsOfSelectedFeeds(false);
 
-  emit feedsNeedToBeReloaded(read);
+  emit feedsNeedToBeReloaded(read == 1);
 }
 
 void FeedsView::markSelectedFeedsRead() {
@@ -437,7 +437,7 @@ void FeedsView::markAllFeedsReadStatus(int read) {
   m_sourceModel->markFeedsRead(allFeeds(), read);
   updateCountsOfAllFeeds(false);
 
-  emit feedsNeedToBeReloaded(read);
+  emit feedsNeedToBeReloaded(read == 1);
 }
 
 void FeedsView::markAllFeedsRead() {
@@ -465,7 +465,7 @@ void FeedsView::emptyRecycleBin() {
     m_sourceModel->recycleBin()->empty();
     updateCountsOfSelectedFeeds(true);
 
-    emit feedsNeedToBeReloaded(1);
+    emit feedsNeedToBeReloaded(true);
   }
 }
 
@@ -473,7 +473,7 @@ void FeedsView::restoreRecycleBin() {
   m_sourceModel->recycleBin()->restore();
   updateCountsOfAllFeeds(true);
 
-  emit feedsNeedToBeReloaded(1);
+  emit feedsNeedToBeReloaded(true);
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) { 

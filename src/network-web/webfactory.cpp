@@ -33,8 +33,8 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
     QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
-    return QProcess::startDetached(QString("\"") + browser + "\"", QStringList() << arguments.arg(message.m_title,
-                                                                           stripTags(message.m_contents)));
+    return QProcess::startDetached(QString("\"") + browser + "\" " + arguments.arg(message.m_title,
+                                                                                   stripTags(message.m_contents)));
   }
   else {
     // TODO: Check encoding when using mailto.

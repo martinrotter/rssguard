@@ -206,7 +206,7 @@ void FeedMessageViewer::createConnections() {
 
   // State of many messages is changed, then we need
   // to reload selections.
-  connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(int)), m_messagesView, SLOT(reloadSelections(int)));
+  connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(bool)), m_messagesView, SLOT(reloadSelections(bool)));
 
   // If counts of unread/all messages change, update the tray icon.
   connect(m_feedsView, SIGNAL(messageCountsChanged(int,int,bool)), this, SLOT(updateTrayIconStatus(int,int,bool)));
