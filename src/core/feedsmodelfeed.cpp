@@ -146,16 +146,6 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
                                                                               const QString &password) {
   QPair<FeedsModelFeed*, QNetworkReply::NetworkError> result; result.first = NULL;
 
-  // Try to obtain icon.
-  QIcon icon_data;
-
-  if ((result.second = NetworkFactory::downloadIcon(url, 5000, icon_data)) ==
-      QNetworkReply::NoError) {
-    // Icon for feed was downloaded and is stored now in _icon_data.
-    result.first = new FeedsModelFeed();
-    result.first->setIcon(icon_data);
-  }
-
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,
                                                                   qApp->settings()->value(GROUP(Feeds),
@@ -223,6 +213,9 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
 
     QDomElement root_element = xml_document.documentElement();
     QString root_tag_name = root_element.tagName();
+    QList<QString> icon_possible_locations;
+
+    icon_possible_locations.append(url);
 
     if (root_tag_name == "rdf:RDF") {
       // We found RDF feed.
@@ -231,6 +224,12 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
       result.first->setType(Rdf);
       result.first->setTitle(channel_element.namedItem("title").toElement().text());
       result.first->setDescription(channel_element.namedItem("description").toElement().text());
+
+      QString source_link = channel_element.namedItem("link").toElement().text();
+
+      if (!source_link.isEmpty()) {
+        icon_possible_locations.prepend(source_link);
+      }
     }
     else if (root_tag_name == "rss") {
       // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
@@ -247,17 +246,40 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
 
       result.first->setTitle(channel_element.namedItem("title").toElement().text());
       result.first->setDescription(channel_element.namedItem("description").toElement().text());
+
+      QString source_link = channel_element.namedItem("link").toElement().text();
+
+      if (!source_link.isEmpty()) {
+        icon_possible_locations.prepend(source_link);
+      }
     }
     else if (root_tag_name == "feed") {
       // We found ATOM feed.
       result.first->setType(Atom10);
       result.first->setTitle(root_element.namedItem("title").toElement().text());
       result.first->setDescription(root_element.namedItem("subtitle").toElement().text());
+
+      QString source_link = root_element.namedItem("link").toElement().text();
+
+      if (!source_link.isEmpty()) {
+        icon_possible_locations.prepend(source_link);
+      }
     }
     else {
       // File was downloaded and it really was XML file
       // but feed format was NOT recognized.
       result.second = QNetworkReply::UnknownContentError;
+    }
+
+    // Try to obtain icon.
+    QIcon icon_data;
+
+    if ((result.second = NetworkFactory::downloadIcon(icon_possible_locations,
+                                                      DOWNLOAD_TIMEOUT,
+                                                      icon_data)) == QNetworkReply::NoError) {
+      // Icon for feed was downloaded and is stored now in _icon_data.
+      result.first = new FeedsModelFeed();
+      result.first->setIcon(icon_data);
     }
   }
 

@@ -119,19 +119,24 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
   }
 }
 
-QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QString &url, int timeout, QIcon &output) {
-#if QT_VERSION >= 0x050000
-  QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
-#else
-  QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
-#endif
-  QByteArray icon_data;
-  QNetworkReply::NetworkError network_result =  downloadFile(google_s2_with_url, timeout, icon_data).first;
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &urls, int timeout, QIcon &output) {
+  QNetworkReply::NetworkError network_result;
 
-  if (network_result == QNetworkReply::NoError) {
-    QPixmap icon_pixmap;
-    icon_pixmap.loadFromData(icon_data);
-    output = QIcon(icon_pixmap);
+  foreach (const QString &url, urls) {
+#if QT_VERSION >= 0x050000
+    QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
+#else
+    QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
+#endif
+    QByteArray icon_data;
+    network_result =  downloadFile(google_s2_with_url, timeout, icon_data).first;
+
+    if (network_result == QNetworkReply::NoError) {
+      QPixmap icon_pixmap;
+      icon_pixmap.loadFromData(icon_data);
+      output = QIcon(icon_pixmap);
+      break;
+    }
   }
 
   return network_result;

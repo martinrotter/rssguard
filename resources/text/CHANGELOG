@@ -7,6 +7,7 @@ Added:
 
 Fixed:
 <ul>
+<li>Enhanced downloading of feed icons. Now combines Google API along with the actual links obtained from feed XMLs.</li>
 <li>Fixed restarting issues. (issue #109)</li>
 <li>Target directory settings is now used for all kinds of downloading + when prompt for each download destination is set, then previously used folder is saved. (issue #108)</li>
 <li>Fixed solarized skin. (issue #111)</li>
