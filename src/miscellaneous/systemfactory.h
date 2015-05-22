@@ -86,14 +86,7 @@ class SystemFactory : public QObject {
     static bool isUpdateNewer(const QString &update_version);
 
   public slots:
-    // Performs asynchronous check for updates, result is emitted via updateCheckedAsynchronously(...) signal.
-    void checkForUpdatesAsynchronously();
-
-  private slots:
-    void handleBackgroundUpdatesCheck();
-
-  signals:
-    void updateCheckedAsynchronously(QPair<UpdateInfo, QNetworkReply::NetworkError> update_info);
+    void checkForUpdatesOnStartup();
 
   private:
     // Performs parsing of downloaded file with list of updates.

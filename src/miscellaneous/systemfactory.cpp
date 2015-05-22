@@ -237,8 +237,7 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
       url.m_os = url_elem.attributes().namedItem("os").toAttr().value();
       url.m_platform = url_elem.attributes().namedItem("platform").toAttr().value();
 
-      update.m_urls.insert(url.m_os,
-                           url);
+      update.m_urls.insert(url.m_os, url);
     }
   }
   else {
@@ -249,16 +248,8 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
   return update;
 }
 
-void SystemFactory::checkForUpdatesAsynchronously() {
-  QFutureWatcher<UpdateCheck> *watcher_for_future = new QFutureWatcher<UpdateCheck>(this);
-
-  connect(watcher_for_future, SIGNAL(finished()), this, SLOT(handleBackgroundUpdatesCheck()));
-  watcher_for_future->setFuture(QtConcurrent::run(this, &SystemFactory::checkForUpdates));
-}
-
-void SystemFactory::handleBackgroundUpdatesCheck() {
-  QFutureWatcher<UpdateCheck> *future_watcher = static_cast<QFutureWatcher<UpdateCheck>*>(sender());
-  UpdateCheck updates = future_watcher->result();
+void SystemFactory::checkForUpdatesOnStartup() {
+  UpdateCheck updates = checkForUpdates();
 
   if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion)) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
