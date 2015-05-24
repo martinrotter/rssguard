@@ -57,14 +57,16 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze website bevat geen feeds.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed.</numerusform>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed(s).</numerusform>
         </translation>
     </message>
 </context>
@@ -448,27 +450,27 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt niet alle items updaten omdat een ander een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kunt geselecteerde items niet updaten omdat een andere kritische operatie gaande is.</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt geen nieuwe standaard categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>U kunt geen nieuwe standaard feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde item kunt u niet bewerken omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde item kunt u niet verwijderen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
 </context>
 <context>
@@ -603,7 +605,7 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup mislukt.</translation>
     </message>
     <message>
         <source>Output directory</source>
@@ -2135,11 +2137,13 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
 
 MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat de snelheid van de gebruikte MySQL server en de wachttijd van de gebruikte verbinding  ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing.Het gebruik van trage database connecties leidt tot slechte prestaties tijdens het bladeren in feeds of berichten.
+
+MySQL backend maakt automatisch gebruik van databank met de naam &quot;rssguard&quot;. Deze databank niet handmatig aanmaken, laat deze toepassing het zelf doen. Daarom moet de gebruiker rechten geven  voor het maken en verwijderen van databases.</translation>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Toon paswoord</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -2447,11 +2451,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijlagen</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijlagen lijst.</translation>
     </message>
 </context>
 <context>

@@ -368,19 +368,19 @@ This category does not contain any nested items.</source>
 <context>
     <name>FeedsModelFeed</name>
     <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="308"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="330"/>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="313"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="335"/>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/core/feedsmodelfeed.cpp" line="319"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="341"/>
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished">
@@ -389,7 +389,7 @@ This category does not contain any nested items.</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="327"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="349"/>
         <source>%1 (%2)%3
 
 Network status: %6
@@ -399,7 +399,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/core/feedsmodelfeed.cpp" line="340"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="362"/>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
@@ -3275,12 +3275,12 @@ currently installed one.</source>
 <context>
     <name>SystemFactory</name>
     <message>
-        <location filename="../src/miscellaneous/systemfactory.cpp" line="265"/>
+        <location filename="../src/miscellaneous/systemfactory.cpp" line="256"/>
         <source>New version available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/systemfactory.cpp" line="266"/>
+        <location filename="../src/miscellaneous/systemfactory.cpp" line="257"/>
         <source>Click the bubble for more information.</source>
         <translation type="unfinished"></translation>
     </message>

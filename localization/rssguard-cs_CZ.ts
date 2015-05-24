@@ -621,7 +621,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Zvolit adresář</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>

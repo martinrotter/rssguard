@@ -57,7 +57,7 @@
     <name>DiscoverFeedsButton</name>
     <message>
         <source>This website does not contain any feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Website enthält keine Feeds.</translation>
     </message>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
@@ -76,7 +76,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <source>Error opening output file: %1</source>
@@ -104,7 +104,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>Abgebrochen</translation>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
@@ -169,15 +169,15 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"></translation>
+        <translation>kB</translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
@@ -229,7 +229,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Toolbar for feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolbar für Feeds</translation>
     </message>
 </context>
 <context>
@@ -343,11 +343,11 @@ Auto-update status: %5</source>
     <name>FeedsModelRecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Mülleimer</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Mülleimer enthält die gelöschten Nachrichten aus allen Feeds.</translation>
     </message>
     <message>
         <source>Recycle bin
@@ -366,7 +366,7 @@ Auto-update status: %5</source>
     <name>FeedsToolBar</name>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolbar Platzhalter</translation>
     </message>
 </context>
 <context>
@@ -417,11 +417,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Do you really want to delete selected item?</source>
-        <translation type="unfinished"></translation>
+        <translation>Möchtest du dieses Item wirklich löschen?</translation>
     </message>
     <message>
         <source>Permanently delete messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Lösche diese Nachrichten dauerhaft</translation>
     </message>
     <message>
         <source>You are about to permanenty delete all messages from your recycle bin.</source>
@@ -429,7 +429,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"></translation>
+        <translation>Möchtest du den Mülleimer wirklich leeren?</translation>
     </message>
     <message>
         <source>Context menu for empty space</source>
@@ -552,19 +552,19 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Backupeinstellungen</translation>
     </message>
     <message>
         <source>Items to backup</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien zur Sicherung</translation>
     </message>
     <message>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbank</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished">Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <source>Backup name</source>
@@ -647,11 +647,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"></translation>
+        <translation>Füge neue Kategorie hinzu</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeite bestehende Kategorie</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -744,7 +744,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Beschreibung ist OK.</translation>
     </message>
 </context>
 <context>
@@ -1008,7 +1008,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Beschreibung ist OK.</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
@@ -1027,7 +1027,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Datei ausgewählt</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -2056,7 +2056,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Do you want to restart now?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wollen Sie jetzt neu starten?</translation>
     </message>
     <message>
         <source>Check for updates on application startup</source>
@@ -2467,7 +2467,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolbar Platzhalter</translation>
     </message>
 </context>
 <context>
@@ -2714,7 +2714,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolbar Platzhalter</translation>
     </message>
     <message>
         <source>Move action up</source>
