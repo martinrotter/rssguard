@@ -77,49 +77,49 @@ set(APP_EMAIL "rotter.martinos@gmail.com")
 set(MINIMUM_QT_VERSION 4.7.3)
 set(EXE_NAME ${APP_LOW_NAME})
 
-if(${APPLE})
+if(APPLE)
   set(APP_URL_BACKWARDS "org.bitbucket.${APP_LOW_NAME}")
-endif(${APPLE})
+endif(APPLE)
 
 # Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
 
-if(${OS2})
+if(OS2)
   option(ENABLE_OS2_RC "Compile application icon on OS/2" OFF)
-endif(${OS2})
+endif(OS2)
 
-if(${WIN32})
+if(WIN32)
   option(USE_NSIS "Use NSIS generator to produce installer" OFF)
-endif(${WIN32})
+endif(WIN32)
 
 # Set appropriate CMake policies.
 if(POLICY CMP0012)
   cmake_policy(SET CMP0012 NEW)
 endif()
 
-if(${USE_QT_5})
+if(USE_QT_5)
   cmake_minimum_required(VERSION 2.8.10)
-else(${USE_QT_5})
+else(USE_QT_5)
   cmake_minimum_required(VERSION 2.8.0)
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 if(${APPLE})
-  if(NOT ${USE_QT_5})
+  if(NOT USE_QT_5)
     message(FATAL_ERROR "[${APP_LOW_NAME}] Only Qt 5.x.x is supported on Mac OS X.")
-  endif(NOT ${USE_QT_5})
+  endif(NOT USE_QT_5)
 endif(${APPLE})
 
 message(STATUS "")
 message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
 message(STATUS "[${APP_LOW_NAME}] Use Qt 5 for building -> ${USE_QT_5}")
 
-if(${OS2})
+if(OS2)
   message(STATUS "[${APP_LOW_NAME}] Compile application icon on OS/2 -> ${ENABLE_OS2_RC}")
-endif(${OS2})
+endif(OS2)
 
-if(${WIN32})
+if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] Use NSIS generator to produce installer -> ${USE_NSIS}")
-endif(${WIN32})
+endif(WIN32)
 
 message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
 message(STATUS "")
@@ -144,14 +144,14 @@ if(POLICY CMP0020)
 endif(POLICY CMP0020)
 
 # Select which Qt version to use.
-if(${USE_QT_5})
+if(USE_QT_5)
   message(STATUS "[${APP_LOW_NAME}] Using Qt 5 library for building.")
   
   # Instruct CMake to run moc automatically when needed.
   set(CMAKE_AUTOMOC ON)
-else(${USE_QT_5})
+else(USE_QT_5)
   message(STATUS "[${APP_LOW_NAME}] Using Qt 4 library for building.")
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 # Obtain revision number if available.
 message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
@@ -159,7 +159,7 @@ message(STATUS "[${APP_LOW_NAME}] Obtaining revision number.")
 if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   find_package(Git)
 
-  if(${GIT_FOUND})
+  if(GIT_FOUND)
     execute_process(
       COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
@@ -168,10 +168,10 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 
     string(REGEX REPLACE "\n" "" GIT_REVISION "${GIT_REVISION}")
     set(APP_REVISION ${GIT_REVISION})
-  else(${GIT_FOUND})
+  else(GIT_FOUND)
     # Git was not found, we cannot determine current revision.
     set(APP_REVISION "-")
-  endif(${GIT_FOUND})
+  endif(GIT_FOUND)
 else(EXISTS "${PROJECT_SOURCE_DIR}/.git")
   # Not information for Git are available, this is stripped
   # build environment
@@ -181,14 +181,14 @@ endif(EXISTS "${PROJECT_SOURCE_DIR}/.git")
 message(STATUS "[${APP_LOW_NAME}] Revision number obtained: ${APP_REVISION}.")
 
 # Configure desktop entry for Linux.
-if(${UNIX})
+if(UNIX)
   message(STATUS "[${APP_LOW_NAME}] Generating desktop entry for Linux.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/desktop/rssguard.desktop.in
     ${CMAKE_BINARY_DIR}/resources/desktop/rssguard.desktop
   )
   set(DESKTOP_ENTRY_PATH ${CMAKE_INSTALL_PREFIX}/share/applications)
-endif(${UNIX})
+endif(UNIX)
 
 # Configure internal C++ defines.
 configure_file (
@@ -225,7 +225,7 @@ add_definitions(-DUNICODE -D_UNICODE)
 
 # Check for C++ 11 features availability.
 # See http://stackoverflow.com/questions/10984442/how-to-detect-c11-support-of-a-compiler-with-cmake
-if(${USE_QT_5})
+if(USE_QT_5)
   if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
     execute_process(
       COMMAND ${CMAKE_CXX_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION
@@ -242,19 +242,19 @@ if(${USE_QT_5})
   elseif(${MSVC_VERSION} VERSION_LESS 1600)
     message(FATAL_ERROR "[${APP_LOW_NAME}] Your C++ compiler does not support C++ 11.")
   endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 # Setup libraries.
-if(${USE_QT_5})
+if(USE_QT_5)
   find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
-else(${USE_QT_5})
+else(USE_QT_5)
   set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
   find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
   include(${QT_USE_FILE})
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 # Configure QStringBuilder behavior.
-if(${USE_QT_5})
+if(USE_QT_5)
   message(STATUS "[${APP_LOW_NAME}] Enabling fast QString concatenation.")
 
   add_definitions(-DQT_USE_FAST_CONCATENATION)
@@ -266,30 +266,30 @@ elseif(NOT ${QTVERSION} VERSION_LESS 4.8.0)
   add_definitions(-DQT_USE_FAST_OPERATOR_PLUS)
 else(NOT ${QTVERSION} VERSION_LESS 4.8.0)
   message(STATUS "[${APP_LOW_NAME}] Disabling fast QString concatenation.")
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 # Configure executable "properties" for Windows or OS2.
-if(${WIN32})
+if(WIN32)
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for Windows.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_win.rc.in
     ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc
   )
-elseif(${OS2} AND ${ENABLE_OS2_RC})
+elseif(OS2 AND ENABLE_OS2_RC)
   message(STATUS "[${APP_LOW_NAME}] Generating executable file properties for OS2.")
   configure_file (
     ${PROJECT_SOURCE_DIR}/resources/executable_properties/rssguard_os2.rc.in
     ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc
   )
-endif(${WIN32})
+endif(WIN32)
 
 # Set special linker flag for Windows XP & MSVC++ 2013 support.
-if(${WIN32} AND ${MSVC})
+if(WIN32 AND MSVC)
   set(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS,5.01" )
-endif(${WIN32} AND ${MSVC})
+endif(WIN32 AND MSVC)
 
 # Compile application icon if compiling with MinGW on WIN32 or with OS2.
-if(${WIN32} AND MINGW)
+if(WIN32 AND MINGW)
   enable_language(RC)
   set(CMAKE_RC_COMPILER_INIT windres)
   message(STATUS "[${APP_LOW_NAME}] Icon file binary will be builded for Windows.")
@@ -300,7 +300,7 @@ if(${WIN32} AND MINGW)
   set(APP_SOURCES
       ${APP_SOURCES}
       ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
-elseif(${OS2})
+elseif(OS2)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Zstack 0x2000 -Zlinker \"DISABLE 1121\" -s -Zlinker /PM:PM -Zno-fork -Zhigh-mem -Zmap")
 
   if(${ENABLE_OS2_RC})
@@ -315,11 +315,11 @@ elseif(${OS2})
         ${APP_SOURCES}
         ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_os2.rc)
   endif(${ENABLE_OS2_RC})
-elseif(${WIN32} AND ${MSVC})
+elseif(WIN32 AND MSVC)
   # MSVC takes care of this automatically - no need to use windres.exe
   # for MSVC compilers.
   set(APP_SOURCES ${APP_SOURCES} ${CMAKE_BINARY_DIR}/resources/executable_properties/rssguard_win.rc)
-endif(${WIN32} AND MINGW)
+endif(WIN32 AND MINGW)
 
 # APP source files.
 set(APP_SOURCES
@@ -548,7 +548,7 @@ set(APP_TEXT
   resources/text/COPYING_BSD
 )
 
-if(${WIN32})
+if(WIN32)
   set(APP_DLLS_QT4_MSVC2013
     resources/binaries/windows/deployment/qt4-msvc2013/libeay32.dll
     resources/binaries/windows/deployment/qt4-msvc2013/msvcp120.dll
@@ -634,15 +634,15 @@ if(${WIN32})
   set(APP_DLLS_QT5_MSVC2013_PRINTSUPPORT
     resources/binaries/windows/deployment/qt5-msvc2013/printsupport/windowsprintersupport.dll
   )
-endif(${WIN32})
+endif(WIN32)
 
 # Add custom icon on Mac OS X.
-if(${APPLE})
+if(APPLE)
   SET (APP_SOURCES ${APP_SOURCES} resources/macosx/rssguard.icns)
-endif(${APPLE})
+endif(APPLE)
 
 # Wrap files, create moc files.
-if(${USE_QT_5})
+if(USE_QT_5)
   qt5_wrap_ui(APP_UI ${APP_FORMS})
   
   # Load translations.
@@ -652,13 +652,13 @@ if(${USE_QT_5})
   else(${Qt5LinguistTools_FOUND})
     message(STATUS "[${APP_LOW_NAME}] Qt Linguist Tools NOT found. No compilation for translations.")
   endif(${Qt5LinguistTools_FOUND})
-else(${USE_QT_5})
+else(USE_QT_5)
   qt4_wrap_cpp(APP_MOC ${APP_HEADERS})
   qt4_wrap_ui(APP_UI ${APP_FORMS})
   
   # Load translations.
   qt4_add_translation(APP_QM ${APP_TRANSLATIONS})
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 # Include additional directory paths.
 include_directories (
@@ -670,7 +670,7 @@ include_directories (
 )
 
 # Compile "rssguard"
-if(${USE_QT_5})
+if(USE_QT_5)
   add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
     ${APP_SOURCES}
     ${APP_FORMS}
@@ -678,9 +678,9 @@ if(${USE_QT_5})
     ${APP_QM}
   )
 
-  if(${WIN32})
+  if(WIN32)
     target_link_libraries(${EXE_NAME} Qt5::WinMain)
-  endif(${WIN32})
+  endif(WIN32)
   
   # Use modules from Qt.
   qt5_use_modules(${EXE_NAME}
@@ -694,7 +694,7 @@ if(${USE_QT_5})
     PrintSupport
   )
 # Setup compilation for Qt 4.
-else(${USE_QT_5})
+else(USE_QT_5)
   add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
     ${APP_SOURCES}
     ${APP_FORMS}
@@ -713,27 +713,27 @@ else(${USE_QT_5})
     ${QT_QTMAIN_LIBRARY}
     ${QT_QTWEBKIT_LIBRARY}
   )
-endif(${USE_QT_5})
+endif(USE_QT_5)
 
 # Installation stage.
-if(${WIN32} OR OS2)
+if(WIN32 OR OS2)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Windows or OS/2.")
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION ./)
 
   # Copy DLLs and other binary files for main installation.
-  if(${WIN32} AND ${USE_QT_5})
+  if(WIN32 AND USE_QT_5)
     install(FILES ${APP_DLLS_QT5_MSVC2013} DESTINATION ./)
     install(FILES ${APP_DLLS_QT5_MSVC2013_IMAGEFORMATS} DESTINATION ./imageformats)
     install(FILES ${APP_DLLS_QT5_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
     install(FILES ${APP_DLLS_QT5_MSVC2013_PLATFORMS} DESTINATION ./platforms)
     install(FILES ${APP_DLLS_QT5_MSVC2013_PRINTSUPPORT} DESTINATION ./printsupport)
-  endif(${WIN32} AND ${USE_QT_5})
+  endif(WIN32 AND USE_QT_5)
 
-  if(${WIN32} AND NOT ${USE_QT_5})
+  if(WIN32 AND NOT USE_QT_5)
     install(FILES ${APP_DLLS_QT4_MSVC2013} DESTINATION ./)
     install(FILES ${APP_DLLS_QT4_MSVC2013_IMAGEFORMATS} DESTINATION ./imageformats)
     install(FILES ${APP_DLLS_QT4_MSVC2013_SQLDRIVERS} DESTINATION ./sqldrivers)
-  endif(${WIN32} AND NOT ${USE_QT_5})
+  endif(WIN32 AND NOT USE_QT_5)
 
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ./icons)
   install(DIRECTORY resources/skins/base
@@ -784,7 +784,7 @@ elseif(APPLE)
   install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png DESTINATION ${APPLE_PREFIX} RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM} DESTINATION ${APPLE_PREFIX}/l10n)
   install(FILES ${APP_TEXT} DESTINATION ${APPLE_PREFIX}/information)
-elseif(${UNIX})
+elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
 
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
@@ -796,18 +796,18 @@ elseif(${UNIX})
   install(FILES resources/graphics/${APP_LOW_NAME}_plain_128.png DESTINATION share/rssguard/icons RENAME ${APP_LOW_NAME}_plain.png)
   install(FILES ${APP_QM} DESTINATION share/${APP_LOW_NAME}/l10n)
   install(FILES ${APP_TEXT} DESTINATION share/${APP_LOW_NAME}/information)
-endif(${WIN32} OR OS2)
+endif(WIN32 OR OS2)
 
 # Custom target for packaging.
-if(${WIN32})
-  if(${USE_NSIS})
+if(WIN32)
+  if(USE_NSIS)
     set(CPACK_GENERATOR "NSIS")
-  else(${USE_NSIS})
+  else(USE_NSIS)
     set(CPACK_GENERATOR "ZIP")
-  endif(${USE_NSIS})
-else(${WIN32})
+  endif(USE_NSIS)
+else(WIN32)
   set(CPACK_GENERATOR "ZIP")
-endif(${WIN32})
+endif(WIN32)
 
 set(CPACK_PACKAGE_NAME ${APP_LOW_NAME})
 set(CPACK_PACKAGE_VERSION ${APP_VERSION})
@@ -837,16 +837,16 @@ configure_file(
 add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
 
 # make lupdate implementation.
-if(${USE_QT_5})
+if(USE_QT_5)
   add_custom_target(lupdate
     ${Qt5Core_QMAKE_EXECUTABLE} -project -o ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
       COMMAND ${Qt5_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
-else(${USE_QT_5})
+else(USE_QT_5)
   add_custom_target(lupdate
     ${QT_QMAKE_EXECUTABLE} -project -o ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
       COMMAND ${QT_LUPDATE_EXECUTABLE} -no-obsolete -ts ${APP_TRANSLATIONS_WO_QT} -pro ${CMAKE_BINARY_DIR}/${APP_LOW_NAME}.pro
       WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
-endif(${USE_QT_5})
+endif(USE_QT_5)

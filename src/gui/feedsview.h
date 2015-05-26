@@ -34,60 +34,6 @@ class QTimer;
 
 #include <QPainter>
 
-class Delegate : public QStyledItemDelegate {
-  public:
-    explicit Delegate(QObject *parent = 0);
-
-    // QAbstractItemDelegate interface
-  public:
-    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
-    {
-      QSize size = sizeHint(option, index);
-
-      int left = option.rect.left() + ((option.rect.width() - size.width()) / 2.0) - 1;
-      int top = option.rect.top() + ((option.rect.height() - size.height()) / 2.0) + 2;
-      int width = size.width() + 2;
-      int height = size.height() - 2;
-
-      painter->save();
-
-      //if ((option.state & QStyle::State_MouseOver) == 0 && (option.state & QStyle::State_Selected) == 0) {
-        painter->setPen(QPen(QColor(Qt::black)));
-        painter->setRenderHint(QPainter::Antialiasing, false);
-        painter->setBrush(QBrush(Qt::lightGray));
-      /*painter->drawRoundRect(QRect(left,
-                                   top,
-                                   width,
-                                   height), 15, 15);*/
-      //}
-
-      painter->drawRect(QRect(left,
-                              top,
-                              width,
-                              height));
-
-      painter->restore();
-
-
-      QStyledItemDelegate::paint(painter, option, index);
-    }
-
-    // QStyledItemDelegate interface
-  public:
-    QString displayText(const QVariant &value, const QLocale &locale) const
-    {
-      return value.toString();
-    }
-
-    // QAbstractItemDelegate interface
-  public:
-    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
-    {
-      QSize base_size = QStyledItemDelegate::sizeHint(option, index);
-
-      return base_size;
-    }
-};
 
 class FeedsView : public QTreeView {
     Q_OBJECT
@@ -255,6 +201,34 @@ class FeedsView : public QTreeView {
     bool m_globalAutoUpdateEnabled;
     int m_globalAutoUpdateInitialInterval;
     int m_globalAutoUpdateRemainingInterval;
+};
+
+class Delegate : public QStyledItemDelegate {
+  public:
+    explicit Delegate(FeedsView *view, QObject *parent = 0);
+
+    // QAbstractItemDelegate interface
+  public:
+    void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+
+    // QStyledItemDelegate interface
+  public:
+    QString displayText(const QVariant &value, const QLocale &locale) const
+    {
+      return value.toString();
+    }
+
+    // QAbstractItemDelegate interface
+  public:
+    QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+    {
+      QSize base_size = QStyledItemDelegate::sizeHint(option, index);
+
+      return base_size;
+    }
+
+  private:
+    FeedsView *view;
 };
 
 #endif // FEEDSVIEW_H
