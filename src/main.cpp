@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
     qApp->showTrayIcon();
 
     if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesAsynchronously()));
+      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
     }
   }
 

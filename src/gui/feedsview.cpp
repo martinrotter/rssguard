@@ -63,6 +63,8 @@ FeedsView::FeedsView(QWidget *parent)
 
   // Setup the timer.
   updateAutoUpdateStatus();
+
+  setItemDelegateForColumn(1, new Delegate(this));
 }
 
 FeedsView::~FeedsView() {
@@ -685,4 +687,9 @@ void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
     setExpanded(mapped, true);
     setCurrentIndex(mapped);
   }
+}
+
+
+Delegate::Delegate(QObject *parent) : QStyledItemDelegate(parent) {
+
 }
