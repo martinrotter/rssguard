@@ -79,6 +79,10 @@ void WebView::openImageInNewTab() {
   emit linkMiddleClicked(m_contextImageUrl);
 }
 
+void WebView::searchTextViaGoogle() {
+  emit linkMiddleClicked(QString(GOOGLE_SEARCH_URL).arg((selectedText())));
+}
+
 void WebView::saveCurrentPageToFile() {
   QString selected_file;
   QString implicit_file_base_name = tr("source_page");
@@ -150,6 +154,7 @@ void WebView::createConnections() {
   connect(m_actionOpenLinkNewTab, SIGNAL(triggered()), this, SLOT(openLinkInNewTab()));
   connect(m_actionOpenImageNewTab, SIGNAL(triggered()), this, SLOT(openImageInNewTab()));
   connect(m_actionOpenLinkExternally, SIGNAL(triggered()), this, SLOT(openLinkExternally()));
+  connect(m_actionLookupText, SIGNAL(triggered()), this, SLOT(searchTextViaGoogle()));
 }
 
 void WebView::setupIcons() {
@@ -169,6 +174,9 @@ void WebView::setupIcons() {
   m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme("item-open-internal"));
   m_actionOpenLinkExternally->setIcon(qApp->icons()->fromTheme("item-open-external"));
   m_actionOpenImageNewTab->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
+
+  // TODO: Google ikonu přidat.
+  m_actionLookupText->setIcon(qApp->icons()->fromTheme("item-search-google"));
 }
 
 void WebView::initializeActions() {
@@ -217,6 +225,7 @@ void WebView::initializeActions() {
   m_actionOpenImageNewTab = pageAction(QWebPage::OpenImageInNewWindow);
   m_actionOpenImageNewTab->setParent(this);
 
+  m_actionLookupText = new QAction("", this);
 }
 
 void WebView::setActionTexts() {
@@ -317,6 +326,11 @@ void WebView::popupContextMenu(const QPoint &pos) {
     }
     image_submenu.addAction(m_actionCopyImage);
     image_submenu.addAction(m_actionSaveImageAs);
+  }
+
+  if (!selectedText().isEmpty()) {
+    m_actionLookupText->setText(tr("Search \"%1\" via Google...").arg(selectedText()));
+    context_menu.addAction(m_actionLookupText);
   }
 
   // Display the menu.

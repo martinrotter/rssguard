@@ -64,6 +64,7 @@ class WebView : public QWebView {
     void openLinkInNewTab();
     void openLinkExternally();
     void openImageInNewTab();
+    void searchTextViaGoogle();
     void saveCurrentPageToFile();
 
     // Provides custom context menu.
@@ -113,6 +114,7 @@ class WebView : public QWebView {
     QAction *m_actionOpenLinkNewTab;
     QAction *m_actionOpenLinkExternally;
     QAction *m_actionOpenImageNewTab;
+    QAction *m_actionLookupText;
 
     QPoint m_gestureOrigin;
     QUrl m_contextLinkUrl;

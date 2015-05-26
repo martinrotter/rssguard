@@ -1,4 +1,16 @@
 <body>
+<center><h2>2.4.0</h2></center>
+Added:
+<ul>
+<li>Option to search highlighted text in web browser via Google, available from context menu. (issue #72)</li>
+</ul>
+
+Fixed:
+<ul>
+<li></li>
+</ul>
+
+<hr/>
 <center><h2>2.3.1</h2></center>
 Added:
 <ul>
