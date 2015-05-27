@@ -2,13 +2,14 @@
 <center><h2>2.4.0</h2></center>
 Added:
 <ul>
+<li>Message previewer now displays MIME type of all podcasts too. This MIME type is also stored in DB.</li>
 <li>Ability to fetch only new icon for feed from its online source.</li>
 <li>Option to search highlighted text in web browser via Google, available from context menu. (issue #72)</li>
 </ul>
 
 Fixed:
 <ul>
-<li></li>
+<li>Titles and descriptions of feeds are now fetched correctly in feed add/edit dialog.</li>
 </ul>
 
 <hr/>

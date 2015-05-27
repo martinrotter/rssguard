@@ -278,7 +278,6 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
                                                       DOWNLOAD_TIMEOUT,
                                                       icon_data)) == QNetworkReply::NoError) {
       // Icon for feed was downloaded and is stored now in _icon_data.
-      result.first = new FeedsModelFeed();
       result.first->setIcon(icon_data);
     }
   }

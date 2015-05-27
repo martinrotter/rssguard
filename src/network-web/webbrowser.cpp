@@ -244,8 +244,12 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
   foreach (const Message &message, messages) {
     QString enclosures;
 
-    foreach (const QString &enclosure, message.m_enclosures) {
-      enclosures += skin.m_enclosureMarkup.arg(enclosure);
+    foreach (const Enclosure &enclosure, message.m_enclosures) {
+      if (!enclosure.m_mimeType.isEmpty()) {
+        enclosures += "[" + enclosure.m_mimeType + "] ";
+      }
+
+      enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
       enclosures += "<br>";
     }
 

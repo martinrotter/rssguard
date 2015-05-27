@@ -74,9 +74,9 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       QDomElement link = elem_links.at(i).toElement();
 
       if (link.attribute("rel") == "enclosure") {
-        new_message.m_enclosures.append(link.attribute("href"));
+        new_message.m_enclosures.append(Enclosure(link.attribute("href"), link.attribute("type")));
 
-        qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last()));
+        qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
       }
       else {
         new_message.m_url = link.attribute("href");
@@ -84,7 +84,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     }
 
     if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
-      new_message.m_url = new_message.m_enclosures.first();
+      new_message.m_url = new_message.m_enclosures.first().m_url;
     }
 
     // Deal with authors.
@@ -205,6 +205,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
     QString elem_title = message_item.namedItem("title").toElement().text().simplified();
     QString elem_description = message_item.namedItem("description").toElement().text();
     QString elem_enclosure = message_item.namedItem("enclosure").toElement().attribute("url");
+    QString elem_enclosure_type = message_item.namedItem("enclosure").toElement().attribute("type");
 
     if (elem_description.isEmpty()) {
       elem_description = message_item.namedItem("encoded").toElement().text();
@@ -229,7 +230,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
     }
 
     if (!elem_enclosure.isEmpty()) {
-      new_message.m_enclosures.append(elem_enclosure);
+      new_message.m_enclosures.append(Enclosure(elem_enclosure, elem_enclosure_type));
 
       qDebug("Adding enclosure '%s' for the message.", qPrintable(elem_enclosure));
     }
@@ -238,7 +239,7 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
     new_message.m_url = message_item.namedItem("link").toElement().text();
 
     if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
-      new_message.m_url = new_message.m_enclosures.first();
+      new_message.m_url = new_message.m_enclosures.first().m_url;
     }
 
     new_message.m_author = message_item.namedItem("author").toElement().text();
