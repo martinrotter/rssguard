@@ -48,6 +48,7 @@ class FormFeedDetails : public QDialog {
     // Applies changes.
     void apply();
     void guessFeed();
+    void guessIconOnly();
 
     // Trigerred when title/description/url/username/password changes.
     void onTitleChanged(const QString &new_title);
@@ -88,6 +89,7 @@ class FormFeedDetails : public QDialog {
     QMenu *m_iconMenu;
     QAction *m_actionLoadIconFromFile;
     QAction *m_actionUseDefaultIcon;
+    QAction *m_actionFetchIcon;
     QAction *m_actionNoIcon;
 };
 

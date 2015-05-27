@@ -2,6 +2,7 @@
 <center><h2>2.4.0</h2></center>
 Added:
 <ul>
+<li>Ability to fetch only new icon for feed from its online source.</li>
 <li>Option to search highlighted text in web browser via Google, available from context menu. (issue #72)</li>
 </ul>
 

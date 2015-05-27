@@ -306,28 +306,51 @@ void FormFeedDetails::guessFeed() {
   }
 }
 
+void FormFeedDetails::guessIconOnly() {
+  QPair<FeedsModelFeed*, QNetworkReply::NetworkError> result =  FeedsModelFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
+                                                                                          m_ui->m_txtUsername->lineEdit()->text(),
+                                                                                          m_ui->m_txtPassword->lineEdit()->text());
+
+  if (result.first != NULL) {
+    // Icon or whole feed was guessed.
+    m_ui->m_btnIcon->setIcon(result.first->icon());
+
+    if (result.second == QNetworkReply::NoError) {
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Ok,
+                                          tr("Icon fetched successfully."),
+                                          tr("Icon metadata fetched."));
+    }
+    else {
+      m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Warning,
+                                          tr("Result: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                          tr("Icon metatada not fetched."));
+    }
+
+    // Remove temporary feed object.
+    delete result.first;
+  }
+  else {
+    // No feed guessed, even no icon available.
+    m_ui->m_lblFetchMetadata->setStatus(WidgetWithStatus::Error,
+                                        tr("Error: %1.").arg(NetworkFactory::networkErrorText(result.second)),
+                                        tr("No icon fetched."));
+  }
+}
+
 void FormFeedDetails::createConnections() {
   // General connections.
-  connect(m_ui->m_buttonBox, SIGNAL(accepted()),
-          this, SLOT(apply()));
-  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onTitleChanged(QString)));
-  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onDescriptionChanged(QString)));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onUrlChanged(QString)));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onUsernameChanged(QString)));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)),
-          this, SLOT(onPasswordChanged(QString)));
-  connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)),
-          this, SLOT(onAuthenticationSwitched()));
-  connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)),
-          this, SLOT(onAutoUpdateTypeChanged(int)));
-  connect(m_ui->m_btnFetchMetadata, SIGNAL(clicked()),
-          this, SLOT(guessFeed()));
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(apply()));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(m_ui->m_txtDescription->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onDescriptionChanged(QString)));
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged(QString)));
+  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUsernameChanged(QString)));
+  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onPasswordChanged(QString)));
+  connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)), this, SLOT(onAuthenticationSwitched()));
+  connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)), this, SLOT(onAutoUpdateTypeChanged(int)));
+  connect(m_ui->m_btnFetchMetadata, SIGNAL(clicked()), this, SLOT(guessFeed()));
 
   // Icon connections.
+  connect(m_actionFetchIcon, SIGNAL(triggered()), this, SLOT(guessIconOnly()));
   connect(m_actionLoadIconFromFile, SIGNAL(triggered()), this, SLOT(onLoadIconFromFile()));
   connect(m_actionNoIcon, SIGNAL(triggered()), this, SLOT(onNoIconSelected()));
   connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
@@ -410,6 +433,10 @@ void FormFeedDetails::initialize() {
   m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme("folder-feed"),
                                        tr("Use default icon"),
                                        this);
+  m_actionFetchIcon = new QAction(qApp->icons()->fromTheme("document-download"),
+                                  tr("Fetch icon from feed"),
+                                  this);
+  m_iconMenu->addAction(m_actionFetchIcon);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_iconMenu->addAction(m_actionNoIcon);

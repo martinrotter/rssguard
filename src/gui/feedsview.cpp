@@ -63,8 +63,6 @@ FeedsView::FeedsView(QWidget *parent)
 
   // Setup the timer.
   updateAutoUpdateStatus();
-
-  setItemDelegateForColumn(1, new Delegate(this));
 }
 
 FeedsView::~FeedsView() {
@@ -690,39 +688,6 @@ void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
 }
 
 
-Delegate::Delegate(FeedsView *view, QObject *parent) : QStyledItemDelegate(parent) {
-  this->view = view;
-}
 
-void Delegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-  QStyledItemDelegate::paint(painter, option, index);
 
-  QSize size = sizeHint(option, index);
 
-  int width = qMin(size.width(), option.rect.width()) - 4;
-  int height = qMin(size.height(), option.rect.height()) - 4;
-  int left = option.rect.left() + ((option.rect.width() - width) / 2.0);
-  int top = option.rect.top() + ((option.rect.height() - height) / 2.0);
-
-  QRect target_rect = QRect(left, top, width, height);
-
-  painter->save();
-
-  //if ((option.state & QStyle::State_MouseOver) == 0 && (option.state & QStyle::State_Selected) == 0) {
-  painter->setPen(QPen(QColor(Qt::black)));
-  painter->setRenderHint(QPainter::Antialiasing, false);
-  painter->setBrush(QBrush(Qt::lightGray));
-  /*painter->drawRoundRect(QRect(left,
-                                   top,
-                                   width,
-                                   height), 15, 15);*/
-  //}
-
-  QString str = view->sourceModel()->data(view->model()->mapToSource(index), Qt::DisplayRole).toString();
-
-  painter->drawRect(target_rect);
-  painter->drawText(target_rect, str, QTextOption(Qt::AlignCenter));
-
-  painter->restore();
-}
