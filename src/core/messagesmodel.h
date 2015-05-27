@@ -28,6 +28,11 @@
 #include <QDateTime>
 
 
+struct Enclosure {
+    QString m_mimeType;
+    QString m_url;
+};
+
 // Represents single enclosure.
 class Enclosures {
   public:
