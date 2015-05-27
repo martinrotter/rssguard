@@ -740,6 +740,8 @@ if(WIN32 OR OS2)
           DESTINATION ./skins)
   install(DIRECTORY resources/misc
           DESTINATION ./)
+  install(DIRECTORY resources/initial_feeds
+          DESTINATION ./)
   install(FILES resources/graphics/${APP_LOW_NAME}_128.png
           DESTINATION ./
           RENAME ${APP_LOW_NAME}.png)
@@ -777,6 +779,7 @@ elseif(APPLE)
   # Setup custom "bundle" prefix.
   set(APPLE_PREFIX ${CMAKE_INSTALL_PREFIX}/${EXE_NAME}.app/Contents/Resources)
 
+  install(DIRECTORY resources/initial_feeds DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ${APPLE_PREFIX}/icons)
   install(DIRECTORY resources/skins DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/misc DESTINATION ${APPLE_PREFIX})
@@ -788,6 +791,7 @@ elseif(UNIX)
   message(STATUS "[${APP_LOW_NAME}] You will probably install on Linux.")
 
   install(TARGETS ${EXE_NAME} RUNTIME DESTINATION bin)
+  install(DIRECTORY resources/initial_feeds DESTINATION share/${APP_LOW_NAME})
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION share/${APP_LOW_NAME}/icons)
   install(DIRECTORY resources/skins/base DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc  DESTINATION share/${APP_LOW_NAME})

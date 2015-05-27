@@ -101,7 +101,6 @@
 
 #define APP_DB_SQLITE_DRIVER          "QSQLITE"
 #define APP_DB_SQLITE_INIT            "db_init_sqlite.sql"
-#define APP_DB_SQLITE_MEMORY_INIT     "db_init_sqlite_memory.sql"
 #define APP_DB_SQLITE_PATH            "data/database/local"
 #define APP_DB_SQLITE_FILE            "database.db"
 
@@ -196,6 +195,7 @@
 #define APP_MISC_PATH APP_PREFIX + QString("/share/rssguard/misc")
 #define APP_ICON_PATH APP_PREFIX + QString("/share/pixmaps/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/share/rssguard/icons/@APP_LOW_NAME@_plain.png")
+#define APP_INITIAL_FEEDS_PATH APP_PREFIX + QString("/share/rssguard/initial_feeds")
 #elif defined(Q_OS_OSX) || defined(Q_WS_MAC)
 #define APP_LANG_PATH APP_PREFIX + QString("/l10n")
 #define APP_SKIN_PATH APP_PREFIX + QString("/skins")
@@ -204,6 +204,7 @@
 #define APP_MISC_PATH APP_PREFIX + QString("/misc")
 #define APP_ICON_PATH APP_PREFIX + QString("/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH APP_PREFIX + QString("/@APP_LOW_NAME@_plain.png")
+#define APP_INITIAL_FEEDS_PATH APP_PREFIX + QString("/initial_feeds")
 #elif defined(Q_OS_WIN) || defined(Q_OS_OS2)
 #define APP_LANG_PATH QApplication::applicationDirPath() + QString("/l10n")
 #define APP_SKIN_PATH QApplication::applicationDirPath() + QString("/skins")
@@ -212,6 +213,7 @@
 #define APP_MISC_PATH QApplication::applicationDirPath() + QString("/misc")
 #define APP_ICON_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@.png")
 #define APP_ICON_PLAIN_PATH QApplication::applicationDirPath() + QString("/@APP_LOW_NAME@_plain.png")
+#define APP_INITIAL_FEEDS_PATH QApplication::applicationDirPath() + QString("/initial_feeds")
 #endif
 
 #endif // DEFS_H

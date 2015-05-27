@@ -175,7 +175,6 @@ void WebView::setupIcons() {
   m_actionOpenLinkExternally->setIcon(qApp->icons()->fromTheme("item-open-external"));
   m_actionOpenImageNewTab->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
 
-  // TODO: Google ikonu přidat.
   m_actionLookupText->setIcon(qApp->icons()->fromTheme("item-search-google"));
 }
 

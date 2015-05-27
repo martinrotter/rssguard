@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<opml version="2.0">
+  <head>
+    <title>RSS Guard</title>
+    <dateCreated>Wed, 27 May 2015 16:15:55 GMT</dateCreated>
+  </head>
+  <body>
+    <outline text="Linux" description="Collections of GNU/Linux-related feeds.">
+      <outline xmlUrl="http://feeds.feedburner.com/linuxtoday/linux?format=xml" text="Linux Today" version="RSS" description="Linux Today - Linux News on Internet Time." encoding="UTF-8" title="Linux Today"/>
+      <outline xmlUrl="http://www.linuxinsider.com/perl/syndication/rssfull.pl" text="LinuxInsider" version="RSS" description="LinuxInsider: Linux News &amp; Information from Around the World." encoding="UTF-8" title="LinuxInsider"/>
+      <outline xmlUrl="http://lxer.com/module/newswire/headlines.rss" text="LXer: Linux News" version="RSS1" description="The world is talking about GNU/Linux and Free/Open Source Software." encoding="UTF-8" title="LXer: Linux News"/>
+      <outline xmlUrl="http://feeds2.feedburner.com/littleatomspodcast" text="Little Atoms" version="RSS" description="A Show About Ideas" encoding="UTF-8" title="Little Atoms"/>
+    </outline>
+    <outline text="RSS Guard" description="News and updates on RSS Guard.">
+      <outline xmlUrl="http://bitbucket.org/skunkos/rssguard/rss" text="Recent Commits" version="RSS" description="Recent commits for RSS Guard project." encoding="UTF-8" title="Recent Commits"/>
+    </outline>
+  </body>
+</opml>

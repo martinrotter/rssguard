@@ -111,11 +111,9 @@ void FormImportExport::selectExportFile() {
     if (selected_filter == filter_opml20) {
       m_conversionType = OPML20;
 
-#if defined (Q_OS_OS2)
       if (!selected_file.endsWith(".opml")) {
         selected_file += ".opml";
       }
-#endif
     }
     // NOTE: Add other types here.
 

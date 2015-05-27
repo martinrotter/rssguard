@@ -154,7 +154,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. In-memory SQLite database is not initialized. Initializing now.");
 
-      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_MEMORY_INIT);
+      QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
 
       if (!file_init.open(QIODevice::ReadOnly | QIODevice::Text)) {
         // Database initialization file not opened. HUGE problem.
