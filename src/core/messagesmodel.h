@@ -28,9 +28,10 @@
 #include <QDateTime>
 
 
+// Represents single enclosure
 struct Enclosure {
-    QString m_mimeType;
     QString m_url;
+    QString m_mimeType;
 
     explicit Enclosure(const QString &url = QString(), const QString &mime = QString()) : m_url(url), m_mimeType(mime) {
     }
