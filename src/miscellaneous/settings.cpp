@@ -147,6 +147,9 @@ DVALUE(bool) General::UpdateOnStartupDef      = true;
 DKEY General::RemoveTrolltechJunk             = "remove_trolltech_junk";
 DVALUE(bool) General::RemoveTrolltechJunkDef  = false;
 
+DKEY General::FirstRun                        = "first_run";
+DVALUE(bool) General::FirstRunDef             = true;
+
 DKEY General::Language               = "language";
 DVALUE(QString) General::LanguageDef = QLocale::system().name();
 

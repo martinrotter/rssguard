@@ -160,6 +160,9 @@ namespace General {
   KEY RemoveTrolltechJunk;
   VALUE(bool) RemoveTrolltechJunkDef;
 
+  KEY FirstRun;
+  VALUE(bool) FirstRunDef;
+
   KEY Language;
   VALUE(QString) LanguageDef;
 }
