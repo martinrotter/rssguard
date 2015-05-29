@@ -75,8 +75,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                          << /*: Language column of language list. */ tr("Language")
                                          << /*: Lang. code column of language list. */ tr("Code")
                                          << tr("Version")
-                                         << tr("Author")
-                                         << tr("Email"));
+                                         << tr("Author"));
 
   m_ui->m_treeSkins->setColumnCount(4);
   m_ui->m_treeSkins->setHeaderHidden(false);
@@ -468,7 +467,6 @@ void FormSettings::loadLanguage() {
     item->setText(1, language.m_code);
     item->setText(2, language.m_version);
     item->setText(3, language.m_author);
-    item->setText(4, language.m_email);
     item->setIcon(0, qApp->icons()->fromTheme(QString(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
   }
 

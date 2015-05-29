@@ -17,9 +17,12 @@
 
 #include "miscellaneous/iofactory.h"
 
+#include <exceptions/ioexception.h>
+
 #include <QDir>
 #include <QFileInfo>
 #include <QFile>
+#include <QObject>
 
 
 IOFactory::IOFactory() {
@@ -31,6 +34,20 @@ QString IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location
 #else
   return SYSTEM_FOLDER_ENUM::storageLocation(location);
 #endif
+}
+
+QByteArray IOFactory::readTextFile(const QString &file_path) {
+  QFile input_file(file_path);
+  QByteArray input_data;
+
+  if (input_file.open(QIODevice::Text | QIODevice::Unbuffered | QIODevice::ReadOnly)) {
+    input_data = input_file.readAll();
+    input_file.close();
+    return input_data;
+  }
+  else {
+    throw IOException(tr("Cannot open file '%s' for reading.").arg(QDir::toNativeSeparators(file_path)));
+  }
 }
 
 bool IOFactory::copyFile(const QString &source, const QString &destination) {

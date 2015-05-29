@@ -103,6 +103,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           QDomElement outline_category = opml_document.createElement("outline");
           outline_category.setAttribute("text", child_item->title());
           outline_category.setAttribute("description", child_item->description());
+          outline_category.setAttribute("rssguard:icon", QString(qApp->icons()->toByteArray(child_item->icon())));
           active_element.appendChild(outline_category);
           items_to_process.push(child_item);
           elements_to_use.push(outline_category);
@@ -117,6 +118,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           outline_feed.setAttribute("description", child_feed->description());
           outline_feed.setAttribute("encoding", child_feed->encoding());
           outline_feed.setAttribute("title", child_feed->title());
+          outline_feed.setAttribute("rssguard:icon", QString(qApp->icons()->toByteArray(child_feed->icon())));
 
           switch (child_feed->type()) {
             case FeedsModelFeed::Rss0X:
@@ -188,6 +190,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           QString feed_encoding = child_element.attribute("encoding", DEFAULT_FEED_ENCODING);
           QString feed_type = child_element.attribute("version", DEFAULT_FEED_TYPE).toUpper();
           QString feed_description = child_element.attribute("description");
+          QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute("rssguard:icon").toLocal8Bit());
 
           FeedsModelFeed *new_feed = new FeedsModelFeed(active_model_item);
           new_feed->setTitle(feed_title);
@@ -195,7 +198,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           new_feed->setEncoding(feed_encoding);
           new_feed->setUrl(feed_url);
           new_feed->setCreationDate(QDateTime::currentDateTime());
-          new_feed->setIcon(qApp->icons()->fromTheme("folder-feed"));
+          new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme("folder-feed") : feed_icon);
           new_feed->setAutoUpdateType(FeedsModelFeed::DefaultAutoUpdate);
 
           if (feed_type == "RSS1") {
@@ -215,6 +218,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           // Add category and continue.
           QString category_title = child_element.attribute("text");
           QString category_description = child_element.attribute("description");
+          QIcon category_icon = qApp->icons()->fromByteArray(child_element.attribute("rssguard:icon").toLocal8Bit());
 
           if (category_title.isEmpty()) {
             qWarning("Given OMPL file provided category without valid text attribute. Using fallback name.");
@@ -228,7 +232,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
 
           FeedsModelCategory *new_category = new FeedsModelCategory(active_model_item);
           new_category->setTitle(category_title);
-          new_category->setIcon(qApp->icons()->fromTheme("folder-category"));
+          new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme("folder-category") : category_icon);
           new_category->setCreationDate(QDateTime::currentDateTime());
           new_category->setDescription(category_description);
 
@@ -260,13 +264,17 @@ void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
 
 void FeedsImportExportModel::checkAllItems() {
   foreach (FeedsModelRootItem *root_child, m_rootItem->childItems()) {
-    setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
+    if (root_child->kind() != FeedsModelRootItem::RecycleBin) {
+      setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
+    }
   }
 }
 
 void FeedsImportExportModel::uncheckAllItems() {
   foreach (FeedsModelRootItem *root_child, m_rootItem->childItems()) {
-    setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+    if (root_child->kind() != FeedsModelRootItem::RecycleBin) {
+      setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+    }
   }
 }
 
@@ -371,6 +379,17 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
     }
     else {
       return static_cast<int>(Qt::Unchecked);
+    }
+  }
+  else if (role == Qt::DecorationRole) {
+    switch (item->kind()) {
+      case FeedsModelRootItem::Category:
+      case FeedsModelRootItem::RecycleBin:
+      case FeedsModelRootItem::Feed:
+        return item->icon();
+
+      default:
+        return QVariant();
     }
   }
   else if (role == Qt::DisplayRole) {

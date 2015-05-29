@@ -25,6 +25,7 @@
 #include "core/feeddownloader.h"
 #include "core/feedsmodelfeed.h"
 #include "core/feedsselection.h"
+#include "core/feedsimportexportmodel.h"
 #include "network-web/webbrowser.h"
 #include "gui/formmain.h"
 #include "gui/messagesview.h"
@@ -34,6 +35,7 @@
 #include "gui/messagebox.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
+#include <exceptions/applicationexception.h>
 
 #include <QVBoxLayout>
 #include <QSplitter>
@@ -131,6 +133,34 @@ void FeedMessageViewer::quit() {
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
     m_feedsView->clearAllReadMessages();
+  }
+}
+
+void FeedMessageViewer::loadInitialFeeds() {
+  QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
+  QString current_locale = qApp->localization()->loadedLanguage();
+  QString file_to_load;
+
+  if (QFile::exists(target_opml_file.arg(current_locale))) {
+    file_to_load = target_opml_file.arg(current_locale);
+  }
+  else if (QFile::exists(target_opml_file.arg(DEFAULT_LOCALE))) {
+    file_to_load = target_opml_file.arg(DEFAULT_LOCALE);
+  }
+
+  FeedsImportExportModel model;
+  QString output_msg;
+
+  try {
+    model.importAsOPML20(IOFactory::readTextFile(file_to_load));
+    model.checkAllItems();
+
+    if (m_feedsView->sourceModel()->mergeModel(&model, output_msg)) {
+      m_feedsView->expandAll();
+    }
+  }
+  catch (ApplicationException &ex) {
+   MessageBox::show(this, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
   }
 }
 

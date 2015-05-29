@@ -19,6 +19,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "exceptions/applicationexception.h"
 
 #include <QDialogButtonBox>
 #include <QPushButton>

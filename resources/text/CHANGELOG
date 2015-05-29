@@ -2,6 +2,9 @@
 <center><h2>2.4.0</h2></center>
 Added:
 <ul>
+<li>RSS Guard is now able to export/import feed/category icons to/from OPML 2.0 files.</li>
+<li>Localizations now load their titles for localization list automatically.</li>
+<li>All feeds are by default checked when exporting/importing them.</li>
 <li>Message previewer now displays MIME type of all podcasts too. This MIME type is also stored in DB.</li>
 <li>Ability to fetch only new icon for feed from its online source.</li>
 <li>Option to search highlighted text in web browser via Google, available from context menu. (issue #72)</li>
@@ -9,6 +12,7 @@ Added:
 
 Fixed:
 <ul>
+<li>Reworked DB initialization scripts.</li>
 <li>Titles and descriptions of feeds are now fetched correctly in feed add/edit dialog.</li>
 </ul>
 

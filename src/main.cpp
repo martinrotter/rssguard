@@ -24,6 +24,7 @@
 #include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "gui/messagebox.h"
 #include "network-web/silentnetworkaccessmanager.h"
 
 // Needed for setting ini file format on Mac OS.
@@ -38,8 +39,6 @@
 
 
 int main(int argc, char *argv[]) {
-  //: Name of language, e.g. English.
-  QObject::tr("LANG_NAME");
   //: Abbreviation of language, e.g. en.
   //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
   //: Examples: "cs_CZ", "en_GB", "en_US".
@@ -48,8 +47,6 @@ int main(int argc, char *argv[]) {
   QObject::tr("LANG_VERSION");
   //: Name of translator - optional.
   QObject::tr("LANG_AUTHOR");
-  //: Email of translator - optional.
-  QObject::tr("LANG_EMAIL");
 
   // Ensure that ini format is used as application settings storage on Mac OS.
 #ifdef Q_OS_MAC
@@ -108,6 +105,18 @@ int main(int argc, char *argv[]) {
   else {
     qDebug("Showing the main window when the application is starting.");
     main_window.show();
+
+    if (qApp->settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool()) {
+      // This is the first time user runs this application.
+      qApp->settings()->setValue(GROUP(General), General::FirstRun, false);
+
+      if (MessageBox::show(&main_window, QMessageBox::Question, QObject::tr("Load initial feeds"),
+                           QObject::tr("Your started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
+                           QObject::tr("Do you want to load initial set of feeds?"),
+                           QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        qApp->mainForm()->tabWidget()->feedMessageViewer()->loadInitialFeeds();
+      }
+    }
   }
 
   // Display tray icon if it is enabled and available.

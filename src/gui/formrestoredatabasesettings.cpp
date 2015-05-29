@@ -20,6 +20,7 @@
 #include "gui/messagebox.h"
 #include "gui/formmain.h"
 #include "miscellaneous/iconfactory.h"
+#include "exceptions/applicationexception.h"
 
 #include "QFileDialog"
 

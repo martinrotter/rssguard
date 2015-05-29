@@ -24,6 +24,7 @@
 #include "gui/messagebox.h"
 #include "gui/formmain.h"
 #include "gui/statusbar.h"
+#include "exceptions/applicationexception.h"
 
 #include <QSessionManager>
 #include <QThread>
@@ -241,14 +242,4 @@ void Application::setShouldRestart(bool shouldRestart) {
 void Application::restart() {
   m_shouldRestart = true;
   quit();
-}
-
-ApplicationException::ApplicationException(const QString &message) : m_message(message) {
-}
-
-ApplicationException::~ApplicationException() {
-}
-
-QString ApplicationException::message() const {
-  return m_message;
 }

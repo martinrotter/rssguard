@@ -644,7 +644,7 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
   bool some_feed_category_error = false;
 
   // We are definitely about to add some new items into the model.
-  emit layoutAboutToBeChanged();
+  //emit layoutAboutToBeChanged();
 
   // Iterate all new items we would like to merge into current model.
   while (!new_parents.isEmpty()) {
@@ -698,7 +698,7 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
   }
 
   // Changes are done now. Finalize the new model.
-  emit layoutChanged();
+  //emit layoutChanged();
 
   if (some_feed_category_error) {
     output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");

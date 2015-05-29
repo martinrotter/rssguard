@@ -19,6 +19,7 @@
 #define IOFACTORY_H
 
 #include <QStringList>
+#include <QCoreApplication>
 
 #if QT_VERSION >= 0x050000
 #include <QStandardPaths>
@@ -30,12 +31,16 @@
 
 
 class IOFactory {
+    Q_DECLARE_TR_FUNCTIONS(IOFactory)
+
   private:
     IOFactory();
 
   public:   
     // Returns system-wide folder according to type.
     static QString getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location);
+
+    static QByteArray readTextFile(const QString &file_path);
 
     // Copies file, overwrites destination.
     static bool copyFile(const QString &source, const QString &destination);

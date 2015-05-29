@@ -54,12 +54,13 @@ void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
   switch (mode) {
     case FeedsImportExportModel::Export: {
       m_model->setRootItem(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->rootItem());
+      m_model->checkAllItems();
       m_ui->m_treeFeeds->setModel(m_model);
       m_ui->m_treeFeeds->expandAll();
-      setWindowTitle(tr("Export feeds"));
-      setWindowIcon(qApp->icons()->fromTheme("document-export"));
       m_ui->m_groupFile->setTitle(tr("Destination file"));
       m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
+      setWindowTitle(tr("Export feeds"));
+      setWindowIcon(qApp->icons()->fromTheme("document-export"));
       break;
     }
 
@@ -143,6 +144,7 @@ void FormImportExport::selectImportFile() {
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
     parseImportFile(selected_file);
+    m_model->checkAllItems();
   }
 }
 

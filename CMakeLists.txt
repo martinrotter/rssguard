@@ -384,6 +384,10 @@ set(APP_SOURCES
   src/miscellaneous/iofactory.cpp
   src/miscellaneous/autosaver.cpp
 
+  # EXCEPTIONS sources.
+  src/exceptions/applicationexception.cpp
+  src/exceptions/ioexception.cpp
+
   # CORE sources.
   src/core/messagesmodel.cpp
   src/core/messagesproxymodel.cpp

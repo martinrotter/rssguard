@@ -83,6 +83,9 @@ class FeedMessageViewer : public TabContent {
     }
 
   public slots:
+    void loadInitialFeeds();
+
+    // Switches orientation horizontal/vertical.
     void switchMessageSplitterOrientation();
 
     // Enables/disables main toolbars or list headers.

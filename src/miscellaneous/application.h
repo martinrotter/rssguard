@@ -45,17 +45,6 @@ class FormMain;
 class IconFactory;
 class QAction;
 
-class ApplicationException {
-  public:
-    explicit ApplicationException(const QString &message = QString());
-    virtual ~ApplicationException();
-
-    QString message() const;
-
-  private:
-    QString m_message;
-};
-
 class Application : public QtSingleApplication {
     Q_OBJECT
 
