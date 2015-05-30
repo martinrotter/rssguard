@@ -33,9 +33,6 @@ class MessageBox : public QMessageBox {
     // Custom icon setting.
     void setIcon(Icon icon);
 
-    // Performs icon replacements for given button box.
-    static void iconify(QDialogButtonBox *button_box);
-
     // Displays custom message box.
     static QMessageBox::StandardButton show(QWidget *parent,
                                             QMessageBox::Icon icon,
@@ -46,10 +43,15 @@ class MessageBox : public QMessageBox {
                                             QMessageBox::StandardButtons buttons = QMessageBox::Ok,
                                             QMessageBox::StandardButton default_button = QMessageBox::Ok);
 
-  private:
+    static QIcon iconForStatus(QMessageBox::Icon status);
+
+#if defined(Q_OS_OS2)
+    // Performs icon replacements for given button box.
+    static void iconify(QDialogButtonBox *button_box);
+
     // Returns icons for standard roles/statuses.
     static QIcon iconForRole(QDialogButtonBox::StandardButton button);
-    static QIcon iconForStatus(QMessageBox::Icon status);
+#endif
 };
 
 #endif // MESSAGEBOX_H

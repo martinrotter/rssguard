@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv_SE">
 <context>
     <name>Application</name>
     <message>
@@ -60,9 +62,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -148,11 +153,17 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -172,7 +183,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %1 fil</numerusform><numerusform>Laddar ner %1 filer</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %1 fil</numerusform>
+            <numerusform>Laddar ner %1 filer</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -218,6 +232,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     <message>
         <source>Toolbar for feeds</source>
         <translation>Verktygsfält för flöden</translation>
+    </message>
+    <message>
+        <source>Error when loading initial feeds</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -273,7 +291,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -302,12 +323,18 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
+            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -341,7 +368,10 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -995,6 +1025,26 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Feed was not edited due to error.</source>
         <translation>Flödet redigerades inte, på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon metatada not fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2329,6 +2379,13 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
 </context>
 <context>
+    <name>IOFactory</name>
+    <message>
+        <source>Cannot open file &apos;%s&apos; for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -2580,11 +2637,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
 <context>
     <name>QObject</name>
     <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Swedish</translation>
-    </message>
-    <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>sv_SE</translation>
@@ -2601,8 +2653,24 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <extracomment>Email of translator - optional.</extracomment>
         <translation>eson57@gmail.com</translation>
+    </message>
+    <message>
+        <source>Load initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LANG_NAME</source>
+        <extracomment>Name of language, e.g. English.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2953,6 +3021,10 @@ Olästa nyheter: %2</translation>
     <message>
         <source>source_page</source>
         <translation>source_page</translation>
+    </message>
+    <message>
+        <source>Search &quot;%1&quot; via Google...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

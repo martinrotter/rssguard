@@ -39,6 +39,8 @@
 
 
 int main(int argc, char *argv[]) {
+  //: Name of language, e.g. English.
+  QObject::tr("LANG_NAME");
   //: Abbreviation of language, e.g. en.
   //: Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code.
   //: Examples: "cs_CZ", "en_GB", "en_US".
@@ -67,7 +69,7 @@ int main(int argc, char *argv[]) {
   // Check if another instance is running.
   if (application.sendMessage(APP_IS_RUNNING)) {
     qDebug("Another instance of the application is already running. Notifying it.");
-    return EXIT_SUCCESS;
+    return EXIT_FAILURE;
   }
 
   // Add an extra path for non-system icon themes and set current icon theme

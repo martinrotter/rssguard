@@ -78,7 +78,12 @@ QList<Language> Localization::installedLanguages() {
       new_language.m_version = translator.translate("QObject", "LANG_VERSION");
       new_language.m_author = translator.translate("QObject", "LANG_AUTHOR");
       new_language.m_email = translator.translate("QObject", "LANG_EMAIL");
+
+#if QT_VERSION >= 0x040800
       new_language.m_name = QLocale(new_language.m_code).nativeLanguageName();
+#else
+      new_language.m_name = translator.translate("QObject", "LANG_NAME");
+#endif
 
       languages << new_language;
     }

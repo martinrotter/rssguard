@@ -231,6 +231,10 @@ This website contains %n feed(s).</source>
         <source>Toolbar for feeds</source>
         <translation>Toolbar für Feeds</translation>
     </message>
+    <message>
+        <source>Error when loading initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -1013,6 +1017,26 @@ Auto-update status: %5</source>
     <message>
         <source>Feed was not edited due to error.</source>
         <translation>Feed wurde nicht editiert aufgrund eines Fehler.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon metatada not fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2326,6 +2350,13 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
+    <name>IOFactory</name>
+    <message>
+        <source>Cannot open file &apos;%s&apos; for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -2577,11 +2608,6 @@ Go to application website to obtain it manually.</source>
 <context>
     <name>QObject</name>
     <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Deutsch</translation>
-    </message>
-    <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>de_DE</translation>
@@ -2598,8 +2624,24 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <extracomment>Email of translator - optional.</extracomment>
         <translation>patlecat@gmail.com</translation>
+    </message>
+    <message>
+        <source>Load initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LANG_NAME</source>
+        <extracomment>Name of language, e.g. English.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2948,6 +2990,10 @@ Unread news: %2</source>
     </message>
     <message>
         <source>source_page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search &quot;%1&quot; via Google...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

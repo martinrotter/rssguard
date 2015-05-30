@@ -60,8 +60,6 @@ QString FeedsSelection::generateListOfIds() {
     QList<FeedsModelRootItem*> children = m_selectedItem->getRecursiveChildren();
     QStringList stringy_ids;
 
-    children.append(m_selectedItem);
-
     foreach (FeedsModelRootItem *child, children) {
       if (child->kind() == FeedsModelRootItem::Feed) {
         stringy_ids.append(QString::number(child->id()));

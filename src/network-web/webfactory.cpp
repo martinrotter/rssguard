@@ -37,8 +37,6 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
                                                                                    stripTags(message.m_contents)));
   }
   else {
-    // TODO: Check encoding when using mailto.
-
     // Send it via mailto protocol.
     // NOTE: http://en.wikipedia.org/wiki/Mailto
     return QDesktopServices::openUrl(QString("mailto:?subject=%1&body=%2").arg(QString(QUrl::toPercentEncoding(message.m_title)),

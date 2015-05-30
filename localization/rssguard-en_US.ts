@@ -4,32 +4,32 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="78"/>
+        <location filename="../src/miscellaneous/application.cpp" line="79"/>
         <source>Output directory is not writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="85"/>
+        <location filename="../src/miscellaneous/application.cpp" line="86"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="96"/>
+        <location filename="../src/miscellaneous/application.cpp" line="97"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="105"/>
+        <location filename="../src/miscellaneous/application.cpp" line="106"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="111"/>
+        <location filename="../src/miscellaneous/application.cpp" line="112"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="122"/>
+        <location filename="../src/miscellaneous/application.cpp" line="123"/>
         <source>Application is already running.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,54 +231,59 @@ This website contains %n feed(s).</source>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="56"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="58"/>
         <source>Toolbar for feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="57"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="59"/>
         <source>Toolbar for messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="168"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="163"/>
+        <source>Error when loading initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="198"/>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="176"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="206"/>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="377"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="407"/>
         <source>Cannot defragment database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="378"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="408"/>
         <source>Database cannot be defragmented because feed update is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="385"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="415"/>
         <source>Database defragmented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="386"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="416"/>
         <source>Database was successfully defragmented.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="391"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="421"/>
         <source>Database was not defragmented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="392"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="422"/>
         <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -286,17 +291,17 @@ This website contains %n feed(s).</source>
 <context>
     <name>FeedsImportExportModel</name>
     <message>
-        <location filename="../src/core/feedsimportexportmodel.cpp" line="225"/>
+        <location filename="../src/core/feedsimportexportmodel.cpp" line="229"/>
         <source>Category </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsimportexportmodel.cpp" line="379"/>
+        <location filename="../src/core/feedsimportexportmodel.cpp" line="398"/>
         <source> (category)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsimportexportmodel.cpp" line="382"/>
+        <location filename="../src/core/feedsimportexportmodel.cpp" line="401"/>
         <source> (feed)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,19 +373,19 @@ This category does not contain any nested items.</source>
 <context>
     <name>FeedsModelFeed</name>
     <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="330"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="329"/>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="335"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="334"/>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/core/feedsmodelfeed.cpp" line="341"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="340"/>
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished">
@@ -389,7 +394,7 @@ This category does not contain any nested items.</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="349"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="348"/>
         <source>%1 (%2)%3
 
 Network status: %6
@@ -399,7 +404,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/core/feedsmodelfeed.cpp" line="362"/>
+        <location filename="../src/core/feedsmodelfeed.cpp" line="361"/>
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
@@ -709,47 +714,47 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="32"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="33"/>
         <source>Common name for backup files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="46"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="47"/>
         <source>No operation executed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="63"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="64"/>
         <source>Backup was created successfully and stored in target directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="73"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="74"/>
         <source>Select destination directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="78"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="79"/>
         <source>Good destination directory is specified.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="64"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="65"/>
         <source>Backup was created successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="67"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="68"/>
         <source>Backup failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="84"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="85"/>
         <source>Backup name cannot be empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="87"/>
+        <location filename="../src/gui/formbackupdatabasesettings.cpp" line="88"/>
         <source>Backup name looks okay.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1002,13 +1007,13 @@ Auto-update status: %5</source>
     </message>
     <message>
         <location filename="../src/gui/formfeeddetails.ui" line="256"/>
-        <location filename="../src/gui/formfeeddetails.cpp" line="374"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="397"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formfeeddetails.ui" line="269"/>
-        <location filename="../src/gui/formfeeddetails.cpp" line="377"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="400"/>
         <source>Password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1150,6 +1155,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <location filename="../src/gui/formfeeddetails.cpp" line="294"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="325"/>
         <source>Result: %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1160,6 +1166,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <location filename="../src/gui/formfeeddetails.cpp" line="304"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="335"/>
         <source>Error: %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1169,83 +1176,108 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="365"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="320"/>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formfeeddetails.cpp" line="321"/>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formfeeddetails.cpp" line="326"/>
+        <source>Icon metatada not fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formfeeddetails.cpp" line="336"/>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formfeeddetails.cpp" line="388"/>
         <source>Feed title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="366"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="389"/>
         <source>Set title for your feed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="368"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="391"/>
         <source>Feed description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="369"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="392"/>
         <source>Set description for your feed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="371"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="394"/>
         <source>Full feed url including scheme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="372"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="395"/>
         <source>Set url for your feed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="375"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="398"/>
         <source>Set username to access the feed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="378"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="401"/>
         <source>Set password to access the feed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="403"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="426"/>
         <source>Icon selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="405"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="428"/>
         <source>Load icon from file...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="408"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="431"/>
         <source>Do not use icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="411"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="434"/>
         <source>Use default icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="420"/>
-        <location filename="../src/gui/formfeeddetails.cpp" line="421"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="437"/>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formfeeddetails.cpp" line="447"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="448"/>
         <source>No metadata fetched so far.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="425"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="452"/>
         <source>Auto-update using global interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="426"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="453"/>
         <source>Auto-update every</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formfeeddetails.cpp" line="427"/>
+        <location filename="../src/gui/formfeeddetails.cpp" line="454"/>
         <source>Do not auto-update at all</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1283,54 +1315,54 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="59"/>
+        <location filename="../src/gui/formimportexport.cpp" line="62"/>
         <source>Export feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="61"/>
+        <location filename="../src/gui/formimportexport.cpp" line="60"/>
         <source>Destination file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="62"/>
+        <location filename="../src/gui/formimportexport.cpp" line="61"/>
         <source>Source feeds &amp;&amp; categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="67"/>
+        <location filename="../src/gui/formimportexport.cpp" line="68"/>
         <source>Source file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="68"/>
+        <location filename="../src/gui/formimportexport.cpp" line="69"/>
         <source>Target feeds &amp;&amp; categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="70"/>
+        <location filename="../src/gui/formimportexport.cpp" line="71"/>
         <source>Import feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="99"/>
-        <location filename="../src/gui/formimportexport.cpp" line="129"/>
+        <location filename="../src/gui/formimportexport.cpp" line="100"/>
+        <location filename="../src/gui/formimportexport.cpp" line="128"/>
         <source>OPML 2.0 files (*.opml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="107"/>
+        <location filename="../src/gui/formimportexport.cpp" line="108"/>
         <source>Select file for feeds export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="122"/>
-        <location filename="../src/gui/formimportexport.cpp" line="146"/>
+        <location filename="../src/gui/formimportexport.cpp" line="121"/>
+        <location filename="../src/gui/formimportexport.cpp" line="145"/>
         <source>File is selected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formimportexport.cpp" line="137"/>
+        <location filename="../src/gui/formimportexport.cpp" line="136"/>
         <source>Select file for feeds import</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1896,37 +1928,37 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="31"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="32"/>
         <source>Restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="32"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="33"/>
         <source>No operation executed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="63"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="64"/>
         <source>Restoration was initiated. Restart to proceed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="64"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="65"/>
         <source>You need to restart application for restoration process to finish.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="68"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="69"/>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="83"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="84"/>
         <source>Select source directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="88"/>
+        <location filename="../src/gui/formrestoredatabasesettings.cpp" line="89"/>
         <source>Good source directory is specified.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2461,40 +2493,39 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="77"/>
-        <location filename="../src/gui/formsettings.cpp" line="85"/>
+        <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="78"/>
-        <location filename="../src/gui/formsettings.cpp" line="86"/>
+        <location filename="../src/gui/formsettings.cpp" line="85"/>
         <source>Author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="79"/>
-        <location filename="../src/gui/formsettings.cpp" line="87"/>
+        <location filename="../src/gui/formsettings.cpp" line="86"/>
         <source>Email</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="84"/>
+        <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="188"/>
+        <location filename="../src/gui/formsettings.cpp" line="187"/>
         <source>Select downloads target directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="199"/>
+        <location filename="../src/gui/formsettings.cpp" line="198"/>
         <source>Select web browser executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="203"/>
-        <location filename="../src/gui/formsettings.cpp" line="226"/>
+        <location filename="../src/gui/formsettings.cpp" line="202"/>
+        <location filename="../src/gui/formsettings.cpp" line="225"/>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
@@ -2502,238 +2533,238 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="205"/>
-        <location filename="../src/gui/formsettings.cpp" line="228"/>
+        <location filename="../src/gui/formsettings.cpp" line="204"/>
+        <location filename="../src/gui/formsettings.cpp" line="227"/>
         <source>Executables (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="222"/>
+        <location filename="../src/gui/formsettings.cpp" line="221"/>
         <source>Select e-mail executable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="309"/>
+        <location filename="../src/gui/formsettings.cpp" line="308"/>
         <source>some keyboard shortcuts are not unique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="318"/>
+        <location filename="../src/gui/formsettings.cpp" line="317"/>
         <source>custom external browser is not set correctly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="326"/>
+        <location filename="../src/gui/formsettings.cpp" line="325"/>
         <source>Cannot save settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="327"/>
+        <location filename="../src/gui/formsettings.cpp" line="326"/>
         <source>Some critical settings are not set. You must fix these settings in order confirm new settings.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="329"/>
+        <location filename="../src/gui/formsettings.cpp" line="328"/>
         <source>List of errors:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="341"/>
+        <location filename="../src/gui/formsettings.cpp" line="340"/>
         <source>Critical settings were changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="342"/>
+        <location filename="../src/gui/formsettings.cpp" line="341"/>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="344"/>
+        <location filename="../src/gui/formsettings.cpp" line="343"/>
         <source>Do you want to restart now?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="345"/>
+        <location filename="../src/gui/formsettings.cpp" line="344"/>
         <source>List of changes:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="399"/>
+        <location filename="../src/gui/formsettings.cpp" line="398"/>
         <source>Opera 12 or older</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="408"/>
+        <location filename="../src/gui/formsettings.cpp" line="407"/>
         <source>Mozilla Thunderbird</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="435"/>
+        <location filename="../src/gui/formsettings.cpp" line="434"/>
         <source>No proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="436"/>
+        <location filename="../src/gui/formsettings.cpp" line="435"/>
         <source>System proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="437"/>
+        <location filename="../src/gui/formsettings.cpp" line="436"/>
         <source>Socks5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="438"/>
+        <location filename="../src/gui/formsettings.cpp" line="437"/>
         <source>Http</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="493"/>
+        <location filename="../src/gui/formsettings.cpp" line="491"/>
         <source>language changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="511"/>
+        <location filename="../src/gui/formsettings.cpp" line="509"/>
         <source>No connection test triggered so far.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="511"/>
+        <location filename="../src/gui/formsettings.cpp" line="509"/>
         <source>You did not executed any connection test yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="514"/>
+        <location filename="../src/gui/formsettings.cpp" line="512"/>
         <source>SQLite (embedded database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="528"/>
+        <location filename="../src/gui/formsettings.cpp" line="526"/>
         <source>MySQL/MariaDB (dedicated database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="531"/>
+        <location filename="../src/gui/formsettings.cpp" line="529"/>
         <source>Hostname of your MySQL server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="532"/>
+        <location filename="../src/gui/formsettings.cpp" line="530"/>
         <source>Username to login with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="533"/>
+        <location filename="../src/gui/formsettings.cpp" line="531"/>
         <source>Password for your username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="534"/>
+        <location filename="../src/gui/formsettings.cpp" line="532"/>
         <source>Working database which you have full access to.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="560"/>
+        <location filename="../src/gui/formsettings.cpp" line="558"/>
         <source>in-memory database switched</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="583"/>
+        <location filename="../src/gui/formsettings.cpp" line="581"/>
         <source>data storage backend changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="609"/>
+        <location filename="../src/gui/formsettings.cpp" line="607"/>
         <source>Hostname is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="612"/>
+        <location filename="../src/gui/formsettings.cpp" line="610"/>
         <source>Hostname looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="618"/>
+        <location filename="../src/gui/formsettings.cpp" line="616"/>
         <source>Username is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="621"/>
+        <location filename="../src/gui/formsettings.cpp" line="619"/>
         <source>Username looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="627"/>
+        <location filename="../src/gui/formsettings.cpp" line="625"/>
         <source>Password is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="630"/>
+        <location filename="../src/gui/formsettings.cpp" line="628"/>
         <source>Password looks ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="636"/>
+        <location filename="../src/gui/formsettings.cpp" line="634"/>
         <source>Working database is empty.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="639"/>
+        <location filename="../src/gui/formsettings.cpp" line="637"/>
         <source>Working database is ok.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="680"/>
+        <location filename="../src/gui/formsettings.cpp" line="678"/>
         <source> (not supported on this platform)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="714"/>
+        <location filename="../src/gui/formsettings.cpp" line="712"/>
         <source>Disable (Tray icon is not available.)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="729"/>
+        <location filename="../src/gui/formsettings.cpp" line="727"/>
         <source>no icon theme</source>
         <extracomment>Label for disabling icon theme.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="786"/>
+        <location filename="../src/gui/formsettings.cpp" line="784"/>
         <source>Icon only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="787"/>
+        <location filename="../src/gui/formsettings.cpp" line="785"/>
         <source>Text only</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="788"/>
+        <location filename="../src/gui/formsettings.cpp" line="786"/>
         <source>Text beside icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="789"/>
+        <location filename="../src/gui/formsettings.cpp" line="787"/>
         <source>Text under icon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="790"/>
+        <location filename="../src/gui/formsettings.cpp" line="788"/>
         <source>Follow OS style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="828"/>
+        <location filename="../src/gui/formsettings.cpp" line="826"/>
         <source>icon theme changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formsettings.cpp" line="837"/>
+        <location filename="../src/gui/formsettings.cpp" line="835"/>
         <source>skin changed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2896,6 +2927,14 @@ currently installed one.</source>
     <message>
         <location filename="../src/gui/formupdate.cpp" line="239"/>
         <source>Cannot navigate to installation file. Check new installation downloads manually on project website.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>IOFactory</name>
+    <message>
+        <location filename="../src/miscellaneous/iofactory.cpp" line="49"/>
+        <source>Cannot open file &apos;%s&apos; for reading.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3206,38 +3245,51 @@ currently installed one.</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/main.cpp" line="42"/>
-        <location filename="../src/miscellaneous/localization.cpp" line="77"/>
+        <location filename="../src/main.cpp" line="43"/>
+        <location filename="../src/miscellaneous/localization.cpp" line="85"/>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>English (USA)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="46"/>
-        <location filename="../src/miscellaneous/localization.cpp" line="78"/>
+        <location filename="../src/main.cpp" line="47"/>
+        <location filename="../src/miscellaneous/localization.cpp" line="77"/>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
         <translation>en_US</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="48"/>
-        <location filename="../src/miscellaneous/localization.cpp" line="79"/>
+        <location filename="../src/main.cpp" line="49"/>
+        <location filename="../src/miscellaneous/localization.cpp" line="78"/>
         <source>LANG_VERSION</source>
         <extracomment>Version of your translation, e.g. 1.0.</extracomment>
         <translation>1.33.7</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="50"/>
-        <location filename="../src/miscellaneous/localization.cpp" line="80"/>
+        <location filename="../src/main.cpp" line="51"/>
+        <location filename="../src/miscellaneous/localization.cpp" line="79"/>
         <source>LANG_AUTHOR</source>
         <extracomment>Name of translator - optional.</extracomment>
         <translation type="unfinished">Martin Rotter</translation>
     </message>
     <message>
-        <location filename="../src/main.cpp" line="52"/>
-        <location filename="../src/miscellaneous/localization.cpp" line="81"/>
+        <location filename="../src/main.cpp" line="115"/>
+        <source>Load initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="116"/>
+        <source>Your started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/main.cpp" line="117"/>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/miscellaneous/localization.cpp" line="80"/>
         <source>LANG_EMAIL</source>
-        <extracomment>Email of translator - optional.</extracomment>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
 </context>
@@ -3492,17 +3544,17 @@ Unread news: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="257"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="262"/>
         <source>Written by </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="258"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="263"/>
         <source>uknown author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="266"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="271"/>
         <source>Newspaper view</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3510,167 +3562,172 @@ Unread news: %2</source>
 <context>
     <name>WebView</name>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="87"/>
+        <location filename="../src/network-web/webview.cpp" line="91"/>
         <source>HTML web pages (*.html)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="96"/>
+        <location filename="../src/network-web/webview.cpp" line="100"/>
         <source>Select destination file for web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="137"/>
+        <location filename="../src/network-web/webview.cpp" line="141"/>
         <source>Cannot save web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="138"/>
+        <location filename="../src/network-web/webview.cpp" line="142"/>
         <source>Web page cannot be saved because destination file is not writtable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="223"/>
+        <location filename="../src/network-web/webview.cpp" line="231"/>
         <source>Reload web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="224"/>
+        <location filename="../src/network-web/webview.cpp" line="232"/>
         <source>Reload current web page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="179"/>
+        <location filename="../src/network-web/webview.cpp" line="186"/>
         <source>Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="84"/>
+        <location filename="../src/network-web/webview.cpp" line="88"/>
         <source>source_page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="180"/>
+        <location filename="../src/network-web/webview.cpp" line="187"/>
         <source>Print current web page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="225"/>
+        <location filename="../src/network-web/webview.cpp" line="233"/>
         <source>Copy selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="226"/>
+        <location filename="../src/network-web/webview.cpp" line="234"/>
         <source>Copies current selection into the clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="227"/>
+        <location filename="../src/network-web/webview.cpp" line="235"/>
         <source>Save target as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="228"/>
+        <location filename="../src/network-web/webview.cpp" line="236"/>
         <source>Download content from the hyperlink.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="229"/>
+        <location filename="../src/network-web/webview.cpp" line="237"/>
         <source>Copy link url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="230"/>
+        <location filename="../src/network-web/webview.cpp" line="238"/>
         <source>Copy link url to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="231"/>
+        <location filename="../src/network-web/webview.cpp" line="239"/>
         <source>Copy image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="232"/>
+        <location filename="../src/network-web/webview.cpp" line="240"/>
         <source>Copy image to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="233"/>
+        <location filename="../src/network-web/webview.cpp" line="241"/>
         <source>Save image as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="234"/>
+        <location filename="../src/network-web/webview.cpp" line="242"/>
         <source>Save image to disk.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="202"/>
+        <location filename="../src/network-web/webview.cpp" line="331"/>
+        <source>Search &quot;%1&quot; via Google...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/webview.cpp" line="209"/>
         <source>Save page as...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="237"/>
+        <location filename="../src/network-web/webview.cpp" line="245"/>
         <source>Copy image url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="238"/>
+        <location filename="../src/network-web/webview.cpp" line="246"/>
         <source>Copy image url to clipboard.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="241"/>
+        <location filename="../src/network-web/webview.cpp" line="249"/>
         <source>Open link in new tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="242"/>
+        <location filename="../src/network-web/webview.cpp" line="250"/>
         <source>Open this hyperlink in new tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="243"/>
+        <location filename="../src/network-web/webview.cpp" line="251"/>
         <source>Follow link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="244"/>
+        <location filename="../src/network-web/webview.cpp" line="252"/>
         <source>Open the hyperlink in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="215"/>
+        <location filename="../src/network-web/webview.cpp" line="222"/>
         <source>Open link in external browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="245"/>
+        <location filename="../src/network-web/webview.cpp" line="253"/>
         <source>Open the hyperlink in external browser.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="246"/>
+        <location filename="../src/network-web/webview.cpp" line="254"/>
         <source>Open image in new tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="247"/>
+        <location filename="../src/network-web/webview.cpp" line="255"/>
         <source>Open this image in this tab.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="269"/>
+        <location filename="../src/network-web/webview.cpp" line="277"/>
         <source>Web browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="270"/>
+        <location filename="../src/network-web/webview.cpp" line="278"/>
         <source>Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webview.cpp" line="271"/>
+        <location filename="../src/network-web/webview.cpp" line="279"/>
         <source>Hyperlink</source>
         <translation type="unfinished"></translation>
     </message>
