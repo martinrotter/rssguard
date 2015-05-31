@@ -47,6 +47,6 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, 
     reply->setProperty("authentication-given", false);
 
     // Authentication is required but this feed does not contain it.
-    qDebug("Feed '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
+    qWarning("Feed '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
   }
 }
