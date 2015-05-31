@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>Application</name>
     <message>
@@ -323,11 +323,13 @@ This website contains %n feed(s).</source>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="58"/>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="59"/>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1995,7 +1997,9 @@ Auto-update status: %5</source>
         <location filename="../src/gui/formsettings.ui" line="68"/>
         <location filename="../src/gui/formsettings.cpp" line="75"/>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2305,7 +2309,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../src/gui/formsettings.ui" line="1093"/>
         <source>Placeholders:
  • %1 - title of selected message,
@@ -2467,7 +2471,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>&amp;Show password</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../src/gui/formsettings.ui" line="900"/>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
@@ -2489,12 +2493,14 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <message>
         <location filename="../src/gui/formsettings.cpp" line="76"/>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="77"/>
         <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2511,6 +2517,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <message>
         <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2934,7 +2941,7 @@ currently installed one.</source>
     <name>IOFactory</name>
     <message>
         <location filename="../src/miscellaneous/iofactory.cpp" line="49"/>
-        <source>Cannot open file &apos;%s&apos; for reading.</source>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2951,61 +2958,73 @@ currently installed one.</source>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="131"/>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="132"/>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="133"/>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="134"/>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="135"/>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="136"/>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="137"/>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="138"/>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3279,7 +3298,7 @@ currently installed one.</source>
     </message>
     <message>
         <location filename="../src/main.cpp" line="116"/>
-        <source>Your started %1 for the first time, now you can load initial set of feeds.</source>
+        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

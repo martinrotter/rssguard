@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -9,23 +9,23 @@
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cílový adresář není zapisovatelný.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor databáze nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovení databáze nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
 </context>
 <context>
@@ -50,7 +50,7 @@
     </message>
     <message>
         <source>Selected database does not exist (yet).</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolená databáze (zatím) neexistuje.</translation>
     </message>
 </context>
 <context>
@@ -128,23 +128,23 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Otevřít adresář</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor nelze otevřít</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstupní soubor nelze otevří, otevřete jej ručně.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresář nelze otevřít</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
     </message>
 </context>
 <context>
@@ -240,7 +240,7 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba při načítání úvodních kanálů</translation>
     </message>
 </context>
 <context>
@@ -255,7 +255,7 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Category </source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie</translation>
     </message>
 </context>
 <context>
@@ -267,10 +267,12 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -462,27 +464,27 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze aktualizovat všechny položky, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze aktualizovat vybrané položky, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přidat novou kategorii, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přidat nový kanál, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze editovat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze smazat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
 </context>
 <context>
@@ -617,27 +619,27 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Backup failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zálohování selhalo.</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstupní adresář</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished">&amp;Zvolit adresář</translation>
+        <translation>&amp;Zvolit adresář</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Záloha byla vytvořena a uložena ve výstupním adresáři.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit výstupní adresář</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je zvolen vhodný výstupní adresář.</translation>
     </message>
 </context>
 <context>
@@ -1037,23 +1039,23 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikona úspěšně stažena.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata ikony načtena.</translation>
     </message>
     <message>
         <source>Icon metatada not fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata ikony nenačtena.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikona nestažena.</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Stáhnout ikonu online z kanálu</translation>
     </message>
 </context>
 <context>
@@ -1618,7 +1620,9 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1676,10 +1680,12 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1753,6 +1759,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2184,7 +2191,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Working database</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2216,7 +2223,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2379,8 +2386,8 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
 <context>
     <name>IOFactory</name>
     <message>
-        <source>Cannot open file &apos;%s&apos; for reading.</source>
-        <translation type="unfinished"></translation>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation>Soubor &apos;%1&apos; nelze otevřít pro čtení.</translation>
     </message>
 </context>
 <context>
@@ -2394,42 +2401,52 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2474,6 +2491,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>
@@ -2482,6 +2500,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Přílohy</translation>
     </message>
     <message>
@@ -2655,19 +2674,19 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Load initial feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Your started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Načíst úvodní kanály</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete načíst úvodní set kanálů?</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
+        <translation>Čeština</translation>
+    </message>
+    <message>
+        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3022,7 +3041,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>Search &quot;%1&quot; via Google...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hledat &quot;%1&quot; přes Google...</translation>
     </message>
 </context>
 </TS>

@@ -36,10 +36,12 @@ class QMimeData;
 class DownloadItem : public QWidget {
     Q_OBJECT
 
+    // Friends of this class.
     friend class DownloadManager;
     friend class DownloadModel;
 
   public:
+    // Constructors.
     explicit DownloadItem(QNetworkReply *reply = 0, QWidget *parent = 0);
     virtual ~DownloadItem();
 
@@ -65,7 +67,7 @@ class DownloadItem : public QWidget {
 
   signals:
     void statusChanged();
-    void progress(qint64 bytesReceived, qint64 bytesTotal);
+    void progress(qint64 bytes_received, qint64 bytes_total);
     void downloadFinished();
 
   private:

@@ -46,7 +46,7 @@ QByteArray IOFactory::readTextFile(const QString &file_path) {
     return input_data;
   }
   else {
-    throw IOException(tr("Cannot open file '%s' for reading.").arg(QDir::toNativeSeparators(file_path)));
+    throw IOException(tr("Cannot open file '%1' for reading.").arg(QDir::toNativeSeparators(file_path)));
   }
 }
 

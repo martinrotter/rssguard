@@ -41,6 +41,7 @@ void DiscoverFeedsButton::setFeedAddresses(const QStringList &addresses) {
                tr("Click me to add feeds from this website.\nThis website contains %n feed(s).", 0, addresses.size()));
 
   if (menu() == NULL) {
+    // Initialize the menu.
     setMenu(new QMenu(this));
     connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(linkTriggered(QAction*)));
   }

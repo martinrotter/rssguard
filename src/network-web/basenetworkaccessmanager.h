@@ -36,6 +36,7 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     virtual void loadSettings();
 
   protected slots:
+    // Called when some SSL-related errors are detected.
     void onSslErrors(QNetworkReply *reply, const QList<QSslError> &error);
 
   protected:

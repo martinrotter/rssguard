@@ -68,7 +68,7 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
 }
 
 void Downloader::finished() {
-  QNetworkReply *reply = static_cast<QNetworkReply*>(sender());
+  QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
 
   m_timer->stop();
 

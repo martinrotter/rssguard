@@ -73,6 +73,7 @@ class Downloader : public QObject {
     QTimer *m_timer;
     QHash<QByteArray, QByteArray> m_customHeaders;
 
+    // Response data.
     QByteArray m_lastOutputData;
     QNetworkReply::NetworkError m_lastOutputError;
     QVariant m_lastContentType;
