@@ -19,6 +19,7 @@
 
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/mutex.h"
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
@@ -66,11 +67,18 @@ DownloadManager *Application::downloadManager() {
     m_downloadManager = new DownloadManager();
 
     connect(m_downloadManager, SIGNAL(downloadFinished()), mainForm()->statusBar(), SLOT(clearProgressDownload()));
-    connect(m_downloadManager, SIGNAL(downloadProgress(int,QString)),
-            mainForm()->statusBar(), SLOT(showProgressDownload(int,QString)));
+    connect(m_downloadManager, SIGNAL(downloadProgress(int,QString)), mainForm()->statusBar(), SLOT(showProgressDownload(int,QString)));
   }
 
   return m_downloadManager;
+}
+
+Mutex *Application::feedUpdateLock() {
+  if (m_updateFeedsLock == NULL) {
+    m_updateFeedsLock = new Mutex();
+  }
+
+  return m_updateFeedsLock;
 }
 
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,

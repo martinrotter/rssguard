@@ -74,6 +74,7 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame,
   QString scheme = request.url().scheme();
 
   if (scheme == "mailto" || scheme == "ftp") {
+    qWarning("Received request with scheme '%s', blocking it.", qPrintable(scheme));
     return false;
   }
 
@@ -85,6 +86,5 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame,
   }
 
   qDebug("Accepting request '%s'.", qPrintable(request.url().toString()));
-
   return QWebPage::acceptNavigationRequest(frame, request, type);
 }

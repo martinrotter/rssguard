@@ -294,7 +294,7 @@ class Settings : public QSettings {
       return m_initializationStatus;
     }
 
-    // Getter/setter for settings values.
+    // Getters/setters for settings values.
     inline QVariant value(const QString &section, const QString &key, const QVariant &default_value = QVariant()) {
       return QSettings::value(QString("%1/%2").arg(section, key), default_value);
     }

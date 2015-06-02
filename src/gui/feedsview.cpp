@@ -26,6 +26,7 @@
 #include "core/feedsmodelrecyclebin.h"
 #include "core/feedsmodelfeed.h"
 #include "miscellaneous/systemfactory.h"
+#include "miscellaneous/mutex.h"
 #include "gui/formmain.h"
 #include "gui/formcategorydetails.h"
 #include "gui/formfeeddetails.h"
@@ -202,8 +203,7 @@ void FeedsView::executeNextAutoUpdate() {
     return;
   }
 
-  // If global auto-update is enabled
-  // and its interval counter reached zero,
+  // If global auto-update is enabled and its interval counter reached zero,
   // then we need to restore it.
   if (m_globalAutoUpdateEnabled && --m_globalAutoUpdateRemainingInterval < 0) {
     // We should start next auto-update interval.

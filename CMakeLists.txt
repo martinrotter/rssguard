@@ -383,6 +383,7 @@ set(APP_SOURCES
   src/miscellaneous/iconfactory.cpp
   src/miscellaneous/iofactory.cpp
   src/miscellaneous/autosaver.cpp
+  src/miscellaneous/mutex.cpp
 
   # EXCEPTIONS sources.
   src/exceptions/applicationexception.cpp
@@ -476,6 +477,7 @@ set(APP_HEADERS
   src/miscellaneous/iconfactory.h
   src/miscellaneous/skinfactory.h
   src/miscellaneous/autosaver.h
+  src/miscellaneous/mutex.h
 
   # CORE headers.
   src/core/messagesmodel.h

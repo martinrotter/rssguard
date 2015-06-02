@@ -36,6 +36,7 @@ class FormImportExport : public QDialog {
       OPML20 = 0
     };
 
+    // Constructors.
     explicit FormImportExport(QWidget *parent = 0);
     virtual ~FormImportExport();
 

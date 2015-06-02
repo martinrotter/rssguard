@@ -132,6 +132,8 @@ class WebBrowser : public TabContent {
     void onTitleChanged(const QString &new_title);
     void onIconChanged();
 
+    // User selected any feed from website to add to reader.
+    // This copies feed link to clipboard and triggers "add feed" dialog.
     void addFeedFromWebsite(const QString &feed_link);
 
   signals:

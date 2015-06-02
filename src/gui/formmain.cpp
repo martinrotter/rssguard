@@ -21,6 +21,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
+#include "miscellaneous/mutex.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"

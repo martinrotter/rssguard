@@ -21,6 +21,7 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/mutex.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodelfeed.h"

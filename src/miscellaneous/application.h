@@ -30,7 +30,6 @@
 #include "gui/systemtrayicon.h"
 #include "network-web/downloadmanager.h"
 
-#include <QMutex>
 #include <QList>
 
 #if defined(qApp)
@@ -44,6 +43,7 @@
 class FormMain;
 class IconFactory;
 class QAction;
+class Mutex;
 
 class Application : public QtSingleApplication {
     Q_OBJECT
@@ -99,13 +99,7 @@ class Application : public QtSingleApplication {
     }
 
     // Access to application-wide close lock.
-    inline QMutex *feedUpdateLock() {
-      if (m_updateFeedsLock == NULL) {
-        m_updateFeedsLock = new QMutex();
-      }
-
-      return m_updateFeedsLock;
-    }
+    Mutex *feedUpdateLock();
 
     inline FormMain *mainForm() {
       return m_mainForm;
@@ -178,7 +172,7 @@ class Application : public QtSingleApplication {
     // But of user decides to close the application (in other words,
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
-    QMutex *m_updateFeedsLock;
+    Mutex *m_updateFeedsLock;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;

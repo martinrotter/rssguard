@@ -66,11 +66,10 @@ class WebView : public QWebView {
     void openImageInNewTab();
     void searchTextViaGoogle();
     void saveCurrentPageToFile();
+    void printCurrentPage();
 
     // Provides custom context menu.
     void popupContextMenu(const QPoint &pos);
-
-    void printCurrentPage();
 
   private slots:
     void downloadLink(const QNetworkRequest &request);

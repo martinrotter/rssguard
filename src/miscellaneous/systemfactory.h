@@ -83,6 +83,7 @@ class SystemFactory : public QObject {
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 
+    // Checks if update is newer than current application version.
     static bool isUpdateNewer(const QString &update_version);
 
   public slots:

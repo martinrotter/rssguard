@@ -18,7 +18,6 @@
 #ifndef IOFACTORY_H
 #define IOFACTORY_H
 
-#include <QStringList>
 #include <QCoreApplication>
 
 #if QT_VERSION >= 0x050000
@@ -40,19 +39,12 @@ class IOFactory {
     // Returns system-wide folder according to type.
     static QString getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location);
 
+    // Returns contents of a file.
+    // Throws exception when no such file exists.
     static QByteArray readTextFile(const QString &file_path);
 
     // Copies file, overwrites destination.
     static bool copyFile(const QString &source, const QString &destination);
-
-    // Copy whole directory recursively.
-    // Destination path is created if it does not exist.
-    static bool copyFolder(const QString &source, const QString &destination);
-
-    // Removes directory recursively and skips given folders/files.
-    static bool removeFolder(const QString &directory_name,
-                             const QStringList &exception_file_list = QStringList(),
-                             const QStringList &exception_folder_list = QStringList());
 };
 
 #endif // IOFACTORY_H
