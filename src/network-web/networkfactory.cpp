@@ -62,16 +62,22 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
       //: Network status.
       return tr("protocol error");
 
+    case QNetworkReply::ContentAccessDenied:
+      return tr("access to content was denied");
+
     case QNetworkReply::HostNotFoundError:
       //: Network status.
       return tr("host not found");
+
+    case QNetworkReply::OperationCanceledError:
+    case QNetworkReply::TimeoutError:
+      return tr("connection timed out or was cancelled");
 
     case QNetworkReply::RemoteHostClosedError:
     case QNetworkReply::ConnectionRefusedError:
       //: Network status.
       return tr("connection refused");
 
-    case QNetworkReply::TimeoutError:
     case QNetworkReply::ProxyTimeoutError:
       //: Network status.
       return tr("connection timed out");
