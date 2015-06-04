@@ -74,6 +74,9 @@ class SystemTrayIcon : public QSystemTrayIcon {
     void showPrivate();
     void onActivated(const QSystemTrayIcon::ActivationReason &reason);
 
+  signals:
+    void shown();
+
   private:
     QIcon m_normalIcon;
     QPixmap m_plainPixmap;

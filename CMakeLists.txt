@@ -364,6 +364,7 @@ set(APP_SOURCES
   src/gui/formrestoredatabasesettings.cpp
   src/gui/edittableview.cpp
   src/gui/squeezelabel.cpp
+  src/gui/formdatabasecleanup.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -384,6 +385,7 @@ set(APP_SOURCES
   src/miscellaneous/iofactory.cpp
   src/miscellaneous/autosaver.cpp
   src/miscellaneous/mutex.cpp
+  src/miscellaneous/databasecleaner.cpp
 
   # EXCEPTIONS sources.
   src/exceptions/applicationexception.cpp
@@ -462,6 +464,7 @@ set(APP_HEADERS
   src/gui/formrestoredatabasesettings.h
   src/gui/edittableview.h
   src/gui/squeezelabel.h
+  src/gui/formdatabasecleanup.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -478,6 +481,7 @@ set(APP_HEADERS
   src/miscellaneous/skinfactory.h
   src/miscellaneous/autosaver.h
   src/miscellaneous/mutex.h
+  src/miscellaneous/databasecleaner.h
 
   # CORE headers.
   src/core/messagesmodel.h
@@ -513,6 +517,7 @@ set(APP_FORMS
   src/gui/formimportexport.ui
   src/gui/formbackupdatabasesettings.ui
   src/gui/formrestoredatabasesettings.ui
+  src/gui/formdatabasecleanup.ui
   src/network-web/downloadmanager.ui
   src/network-web/downloaditem.ui
 )

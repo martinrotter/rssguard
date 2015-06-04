@@ -99,7 +99,7 @@
     </property>
     <addaction name="m_actionSettings"/>
     <addaction name="separator"/>
-    <addaction name="m_actionDefragmentDatabase"/>
+    <addaction name="m_actionCleanupDatabase"/>
     <addaction name="m_actionDownloadManager"/>
    </widget>
    <widget class="QMenu" name="m_menuWebBrowser">
@@ -405,14 +405,6 @@
     <string>Hides main window if it is visible and shows it if it is hidden.</string>
    </property>
   </action>
-  <action name="m_actionDefragmentDatabase">
-   <property name="text">
-    <string>&amp;Defragment database</string>
-   </property>
-   <property name="toolTip">
-    <string>Defragment database file so that its size decreases.</string>
-   </property>
-  </action>
   <action name="m_actionSwitchFeedsList">
    <property name="checkable">
     <bool>true</bool>
@@ -647,6 +639,14 @@
   <action name="m_actionSendMessageViaEmail">
    <property name="text">
     <string>Send selected message via e-mail</string>
+   </property>
+  </action>
+  <action name="m_actionCleanupDatabase">
+   <property name="text">
+    <string>&amp;Cleanup database</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+Del</string>
    </property>
   </action>
  </widget>

@@ -61,14 +61,12 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this)),
-    m_feedDownloaderThread(new QThread()),
-    m_feedDownloader(new FeedDownloader()) {
+    m_dbCleanerThread(NULL),
+    m_feedDownloaderThread(NULL),
+    m_feedDownloader(NULL) {
   initialize();
   initializeViews();
   createConnections();
-
-  // Start the feed downloader thread.
-  m_feedDownloaderThread->start();
 
   // Now, update all feeds if user has set it.
   m_feedsView->updateAllFeedsOnStartup();
@@ -125,12 +123,22 @@ void FeedMessageViewer::quit() {
   // Quit the feeds view (stops auto-update timer etc.).
   m_feedsView->quit();
 
-  qDebug("Quitting feed downloader thread.");
-  m_feedDownloaderThread->quit();
-  m_feedDownloaderThread->wait();
+  if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
+    qDebug("Quitting feed downloader thread.");
+    m_feedDownloaderThread->quit();
+    m_feedDownloaderThread->wait();
+  }
 
-  qDebug("Feed downloader thread aborted. Deleting it from memory.");
-  m_feedDownloader->deleteLater();
+  if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
+    qDebug("Quitting database cleaner thread.");
+    m_dbCleanerThread->quit();
+    m_dbCleanerThread->wait();
+  }
+
+  if (m_feedDownloader != NULL) {
+    qDebug("Feed downloader thread aborted. Deleting it from memory.");
+    m_feedDownloader->deleteLater();
+  }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
     m_feedsView->clearAllReadMessages();
@@ -161,7 +169,7 @@ void FeedMessageViewer::loadInitialFeeds() {
     }
   }
   catch (ApplicationException &ex) {
-   MessageBox::show(this, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
+    MessageBox::show(this, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
   }
 }
 
@@ -203,8 +211,8 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed, int current,
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
   qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
-                                              //: Text display in status bar when particular feed is updated.
-                                              tr("Updated feed '%1'").arg(feed->title()));
+                                                   //: Text display in status bar when particular feed is updated.
+                                                   tr("Updated feed '%1'").arg(feed->title()));
 }
 
 void FeedMessageViewer::onFeedUpdatesFinished() {
@@ -251,11 +259,7 @@ void FeedMessageViewer::createConnections() {
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
 
   // Downloader connections.
-  connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
-  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)), m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
-  connect(m_feedDownloader, SIGNAL(finished()), this, SLOT(onFeedUpdatesFinished()));
-  connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
-  connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)), this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
+  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)), this, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
 
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,
@@ -318,8 +322,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(selectNextItem()));
   connect(form_main->m_ui->m_actionSelectPreviousMessage,
           SIGNAL(triggered()), m_messagesView, SLOT(selectPreviousItem()));
-  connect(form_main->m_ui->m_actionDefragmentDatabase,
-          SIGNAL(triggered()), this, SLOT(vacuumDatabase()));
   connect(form_main->m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),
           this, SLOT(switchMessageSplitterOrientation()));
 }
@@ -339,9 +341,7 @@ void FeedMessageViewer::initialize() {
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
 
-  // Downloader setup.
-  qRegisterMetaType<QList<FeedsModelFeed*> >("QList<FeedsModelFeed*>");
-  m_feedDownloader->moveToThread(m_feedDownloaderThread);
+  // Now refresh visual setup.
   refreshVisualProperties();
 }
 
@@ -434,4 +434,26 @@ void FeedMessageViewer::refreshVisualProperties() {
 
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
+}
+
+void FeedMessageViewer::updateFeeds(QList<FeedsModelFeed *> feeds) {
+  if (m_feedDownloader == NULL) {
+    m_feedDownloader = new FeedDownloader();
+    m_feedDownloaderThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<QList<FeedsModelFeed*> >("QList<FeedsModelFeed*>");
+    m_feedDownloader->moveToThread(m_feedDownloaderThread);
+
+    connect(this, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)), m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
+    connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
+    connect(m_feedDownloader, SIGNAL(finished()), this, SLOT(onFeedUpdatesFinished()));
+    connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
+    connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)), this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
+
+    // Connections are made, start the feed downloader thread.
+    m_feedDownloaderThread->start();
+  }
+
+  emit feedsUpdateRequested(feeds);
 }

@@ -132,7 +132,6 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSelectPreviousFeedCategory;
   actions << m_ui->m_actionSelectNextMessage;
   actions << m_ui->m_actionSelectPreviousMessage;
-  actions << m_ui->m_actionDefragmentDatabase;
 
   // Add recycle bin actions.
   actions << m_ui->m_actionRestoreRecycleBin;
@@ -214,7 +213,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme("go-refresh"));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme("check-for-updates"));
-  m_ui->m_actionDefragmentDatabase->setIcon(icon_theme_factory->fromTheme("defragment-database"));
+  m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme("cleanup-database"));
   m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
   m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
   m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
@@ -369,12 +368,13 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionCloseCurrentTab, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(closeCurrentTab()));
   connect(m_ui->m_actionAddBrowser, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(addEmptyBrowser()));
   connect(m_ui->m_actionCloseAllTabs, SIGNAL(triggered()), m_ui->m_tabWidget, SLOT(closeAllTabsExceptCurrent()));
-  connect(WebFactory::instance(), SIGNAL(imagesLoadingSwitched(bool)), m_ui->m_actionWebAutoloadImages, SLOT(setChecked(bool)));
-  connect(WebFactory::instance(), SIGNAL(javascriptSwitched(bool)), m_ui->m_actionWebEnableJavascript, SLOT(setChecked(bool)));
-  connect(WebFactory::instance(), SIGNAL(pluginsSwitched(bool)), m_ui->m_actionWebEnableExternalPlugins, SLOT(setChecked(bool)));
   connect(m_ui->m_actionWebAutoloadImages, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchImages(bool)));
   connect(m_ui->m_actionWebEnableExternalPlugins, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchPlugins(bool)));
   connect(m_ui->m_actionWebEnableJavascript, SIGNAL(toggled(bool)), WebFactory::instance(), SLOT(switchJavascript(bool)));
+
+  connect(WebFactory::instance(), SIGNAL(imagesLoadingSwitched(bool)), m_ui->m_actionWebAutoloadImages, SLOT(setChecked(bool)));
+  connect(WebFactory::instance(), SIGNAL(javascriptSwitched(bool)), m_ui->m_actionWebEnableJavascript, SLOT(setChecked(bool)));
+  connect(WebFactory::instance(), SIGNAL(pluginsSwitched(bool)), m_ui->m_actionWebEnableExternalPlugins, SLOT(setChecked(bool)));
 }
 
 void FormMain::loadWebBrowserMenu(int index) {

@@ -469,6 +469,10 @@ void MessagesView::searchMessages(const QString &pattern) {
   if (selectionModel()->selectedRows().size() == 0) {
     emit currentMessagesRemoved();
   }
+  else {
+    // Scroll to selected message, it could become scrolled out due to filter change.
+    scrollTo(selectionModel()->selectedRows().at(0));
+  }
 }
 
 void MessagesView::filterMessages(MessagesModel::MessageFilter filter) {

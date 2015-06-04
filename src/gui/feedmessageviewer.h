@@ -98,6 +98,8 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
+    void updateFeeds(QList<FeedsModelFeed*> feeds);
+
   protected slots:
     // Updates counts of messages for example in tray icon.
     void updateTrayIconStatus(int unread_messages, int total_messages, bool any_unread_messages);
@@ -121,6 +123,10 @@ class FeedMessageViewer : public TabContent {
     // Sets up connections.
     void createConnections();
 
+  signals:
+    // Emitted if user/application requested updating of some feeds.
+    void feedsUpdateRequested(const QList<FeedsModelFeed*> feeds);
+
   private:
     bool m_toolBarsEnabled;
     bool m_listHeadersEnabled;
@@ -137,6 +143,7 @@ class FeedMessageViewer : public TabContent {
     WebBrowser *m_messagesBrowser;
 
     QThread *m_feedDownloaderThread;
+    QThread *m_dbCleanerThread;
     FeedDownloader *m_feedDownloader;
 };
 
