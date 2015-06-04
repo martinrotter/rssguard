@@ -25,10 +25,8 @@ Feeds & Videos
 - - -
 Thanks to
 -----
-Person        | Contribution
-:-----------: | :-----------
-**Elbert Pol**  |  Huge contrubutions, including translating and testing in OS/2 environment.
-**Asen Anastassov**  |  Testing, providing great feedback.
+* **Elbert Pol** - huge contrubutions, including translating and testing in OS/2 environment.
+* **Asen Anastassov** - testing, providing great feedback.
 
 
 Downloads
