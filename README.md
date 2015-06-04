@@ -3,11 +3,13 @@ RSS Guard
 Welcome to RSS Guard website. You can find here basic information. Rest is located in [Wiki](https://bitbucket.org/skunkos/rssguard/wiki/Home).
 
 **[Contacts](#markdown-header-contacts) | [Feeds](#markdown-header-feeds-videos) | [Downloads](#markdown-header-downloads) | [Features](#markdown-header-features) | [Philosophy](#markdown-header-philosophy) | [Donate](#markdown-header-donate)**
+
 - - -
 Contacts
 --------
 * [author's e-mail](mailto:rotter.martinos@gmail.com),
 * [IRC channel at freenode](http://webchat.freenode.net/?channels=#rssguard) (My nick is #skunkos, I am not available on IRC all day long.).
+
 - - -
 Donate
 ------
@@ -22,11 +24,13 @@ Feeds & Videos
 * [RSS channel at Google Groups](https://groups.google.com/forum/feed/rssguard/msgs/rss_v2_0.xml?num=50),
 * [RSS channel at BitBucket](https://bitbucket.org/skunkos/rssguard/rss),
 * [screenshots](https://drive.google.com/folderview?id=0B8XNkQ-jUoBYdVRSNm1kQ3BUMzQ&usp=sharing).
+
 - - -
 Thanks to
 -----
 * **Elbert Pol** - huge contrubutions, including translating and testing in OS/2 environment.
 * **Asen Anastassov** - testing, providing great feedback.
+
 - - -
 Downloads
 ---------
@@ -102,6 +106,7 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * open-source development model and friendly author waiting for your feedback,
 * no ads, no hidden costs.
 - - -
+
 Philosophy
 ----------
 RSS Guard tends to be independent software. It's free, it's open-source. RSS Guard will never depend on other services - this includes online news aggregators like Feedly, The Old Reader and others.
