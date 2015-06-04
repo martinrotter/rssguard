@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="sv_SE">
+<TS version="2.1" language="sv_SE">
 <context>
     <name>Application</name>
     <message>
@@ -206,35 +206,19 @@ Denna webbsida innehåller %1 flöden.</numerusform>
         <translation>Uppdaterade flödet &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>Cannot defragment database</source>
-        <translation>Kan inte defragmentera databasen</translation>
-    </message>
-    <message>
-        <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation>Databasen kan inte defragmenteras eftersom flödesuppdatering pågår.</translation>
-    </message>
-    <message>
-        <source>Database defragmented</source>
-        <translation>Databasen defragmenterad</translation>
-    </message>
-    <message>
-        <source>Database was successfully defragmented.</source>
-        <translation>Databasen defragmenterades korrekt.</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented</source>
-        <translation>Databasen defragmenterades inte</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation>Databasen defragmenterades inte. Stöddatabasen stöder inte defragmentering, eller så kan den inte defragmenteras just nu.</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Verktygsfält för flöden</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -262,12 +246,10 @@ Denna webbsida innehåller %1 flöden.</numerusform>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Antal meddelanden.</translation>
     </message>
     <message>
@@ -762,6 +744,36 @@ Uppdateringsstatus: %5</translation>
     </message>
 </context>
 <context>
+    <name>FormDatabaseCleanup</name>
+    <message>
+        <source>Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shrink database file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages older than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source> day(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
@@ -1239,10 +1251,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Dölj programfönstret om det är synligt, och visa det om det är dolt.</translation>
     </message>
     <message>
-        <source>Defragment database file so that its size decreases.</source>
-        <translation>Defragmentera databasfilen för att minska storleken.</translation>
-    </message>
-    <message>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation>Dölj/Visa listan med flöden/kategorier.</translation>
     </message>
@@ -1357,10 +1365,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>View selected feeds in &amp;newspaper mode</source>
         <translation>Visa markerade flöden som &amp;tidningsvy</translation>
-    </message>
-    <message>
-        <source>&amp;Defragment database</source>
-        <translation>&amp;Defragmentera databasen</translation>
     </message>
     <message>
         <source>&amp;Clean all feeds</source>
@@ -1530,6 +1534,10 @@ Uppdateringsstatus: %5</translation>
         <source>Send selected message via e-mail</source>
         <translation>Skicka meddelandet via e-post</translation>
     </message>
+    <message>
+        <source>&amp;Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1611,9 +1619,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Språk</translation>
     </message>
     <message>
@@ -1671,12 +1677,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Språkkod</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1750,7 +1754,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Namn</translation>
     </message>
     <message>
@@ -2185,7 +2188,7 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
         <source>Working database</source>
         <translation>Arbetsdatabas</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2221,7 +2224,7 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
         <source>Select client</source>
         <translation>Välj klient</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2403,52 +2406,42 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Läst</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Borttaget</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Viktigt</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Flöde</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Författare</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Skapad</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Innehåll</translation>
     </message>
     <message>
@@ -2493,7 +2486,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanent borttagna</translation>
     </message>
     <message>
@@ -2502,7 +2494,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bilagor</translation>
     </message>
     <message>
@@ -2651,6 +2642,14 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
         <translation>Inga fel</translation>
+    </message>
+    <message>
+        <source>access to content was denied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

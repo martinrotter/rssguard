@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>Application</name>
     <message>
@@ -211,36 +211,20 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <translation>Aktualizován kanál &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>Cannot defragment database</source>
-        <translation>Databázi nelze nefragmentovat</translation>
-    </message>
-    <message>
-        <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation>Databázi nelze defragmentovat, protože právě běží aktualizace kanálů.</translation>
-    </message>
-    <message>
-        <source>Database defragmented</source>
-        <translation>Databáze defragmentována</translation>
-    </message>
-    <message>
-        <source>Database was successfully defragmented.</source>
-        <translation>Databáze byla úspěšně defragmentována.</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented</source>
-        <translation>Database nedefragmentována</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation>Databáze nebyla defragmentována. Tento typ databáze defragmentaci neumožňuje nebo databáze nemůže být defragmentována nyní.</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Panel kanálů</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
         <translation>Chyba při načítání úvodních kanálů</translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -267,12 +251,10 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -771,6 +753,37 @@ Automatický update: %5</translation>
     </message>
 </context>
 <context>
+    <name>FormDatabaseCleanup</name>
+    <message>
+        <source>Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shrink database file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages older than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source> day(s)</source>
+        <translation>
+            <numerusform> den</numerusform>
+            <numerusform> dny</numerusform>
+            <numerusform> dnů</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
@@ -1248,10 +1261,6 @@ Automatický update: %5</translation>
         <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
     </message>
     <message>
-        <source>Defragment database file so that its size decreases.</source>
-        <translation>Defragmentuje a optimalizuje databázi.</translation>
-    </message>
-    <message>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
     </message>
@@ -1366,10 +1375,6 @@ Automatický update: %5</translation>
     <message>
         <source>View selected feeds in &amp;newspaper mode</source>
         <translation>Zobrazit vybrané kanály v &amp;novinovém náhledu</translation>
-    </message>
-    <message>
-        <source>&amp;Defragment database</source>
-        <translation>&amp;Optimalizovat databázi</translation>
     </message>
     <message>
         <source>&amp;Clean all feeds</source>
@@ -1539,6 +1544,10 @@ Automatický update: %5</translation>
         <source>Send selected message via e-mail</source>
         <translation>Odeslat vybranou zprávu přes e-mail</translation>
     </message>
+    <message>
+        <source>&amp;Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1620,9 +1629,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1680,12 +1687,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1759,7 +1764,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2191,7 +2195,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Working database</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2223,7 +2227,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2401,52 +2405,42 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2491,7 +2485,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>
@@ -2500,7 +2493,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Přílohy</translation>
     </message>
     <message>
@@ -2649,6 +2641,14 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
         <translation>žádné chyby</translation>
+    </message>
+    <message>
+        <source>access to content was denied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

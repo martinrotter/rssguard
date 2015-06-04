@@ -34,6 +34,7 @@
 #include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
+#include "gui/formdatabasecleanup.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
 #include <exceptions/applicationexception.h>
@@ -50,6 +51,7 @@
 #include <QThread>
 #include <QProgressBar>
 #include <QStatusBar>
+#include <QPointer>
 
 
 FeedMessageViewer::FeedMessageViewer(QWidget *parent)
@@ -262,6 +264,8 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)), this, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
 
   // Toolbar forwardings.
+  connect(form_main->m_ui->m_actionCleanupDatabase,
+          SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
   connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
   connect(form_main->m_ui->m_actionDeleteSelectedMessages,
@@ -400,32 +404,19 @@ void FeedMessageViewer::initializeViews() {
   setTabOrder(m_toolBarMessages, m_messagesBrowser);
 }
 
-void FeedMessageViewer::vacuumDatabase() {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    // Lock was not obtained because
-    // it is used probably by feed updater or application
-    // is quitting.
-    qApp->showGuiMessage(tr("Cannot defragment database"),
-                         tr("Database cannot be defragmented because feed update is ongoing."),
-                         QSystemTrayIcon::Warning,
-                         this);
-    return;
-  }
+void FeedMessageViewer::showDbCleanupAssistant() {
+  if (qApp->feedUpdateLock()->tryLock()) {
+    QPointer<FormDatabaseCleanup> form_pointer = new FormDatabaseCleanup(this);
+    form_pointer.data()->exec();
+    delete form_pointer.data();
 
-  if (qApp->database()->vacuumDatabase()) {
-    qApp->showGuiMessage(tr("Database defragmented"),
-                         tr("Database was successfully defragmented."),
-                         QSystemTrayIcon::Information,
-                         this);
+    qApp->feedUpdateLock()->unlock();
   }
   else {
-    qApp->showGuiMessage(tr("Database was not defragmented"),
-                         tr("Database was not defragmented. This database backend does not support it or it cannot be defragmented now."),
-                         QSystemTrayIcon::Warning,
-                         this);
+    qApp->showGuiMessage(tr("Cannot cleanup database"),
+                         tr("Cannot cleanup database, because another critical action is running."),
+                         QSystemTrayIcon::Warning, this);
   }
-
-  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedMessageViewer::refreshVisualProperties() {

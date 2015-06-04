@@ -11,7 +11,9 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme("cleanup-database"));
 
+  connect(m_ui->m_spinDays, SIGNAL(valueChanged(int)), this, SLOT(updateDaysSuffix(int)));
 
+  m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
   // TODO: Vytvořil jsem základ okna pro mazání.
   // v tomto okně se nastaví parametry mazání - jak staré zprávy, zda přečtené, zda vakuovat db
   // do třídy DatabaseCleaner se dodělají metody, které budou samotné mazání provádět
@@ -24,4 +26,8 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
 
 FormDatabaseCleanup::~FormDatabaseCleanup() {
   delete m_ui;
+}
+
+void FormDatabaseCleanup::updateDaysSuffix(int number) {
+  m_ui->m_spinDays->setSuffix(tr(" day(s)", 0, number));
 }

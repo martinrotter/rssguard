@@ -17,6 +17,9 @@ class FormDatabaseCleanup : public QDialog {
     explicit FormDatabaseCleanup(QWidget *parent = 0);
     virtual ~FormDatabaseCleanup();
 
+  private slots:
+    void updateDaysSuffix(int number);
+
   private:
     Ui::FormDatabaseCleanup *m_ui;
 };

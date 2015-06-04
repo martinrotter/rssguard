@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<TS version="2.1" language="fr_FR">
 <context>
     <name>Application</name>
     <message>
@@ -204,35 +204,19 @@ This website contains %n feed(s).</source>
         <translation>Flux mis à jour &apos;%1&apos;</translation>
     </message>
     <message>
-        <source>Cannot defragment database</source>
-        <translation>Impossible de défragmenter la base de données</translation>
-    </message>
-    <message>
-        <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation>Impossible de défragmenter la base de donnée car une mise à jour est en cours.</translation>
-    </message>
-    <message>
-        <source>Database defragmented</source>
-        <translation>Base de données défragmentée</translation>
-    </message>
-    <message>
-        <source>Database was successfully defragmented.</source>
-        <translation>La base de données a été défragmentée avec succès.</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented</source>
-        <translation>La base de données n&apos;a pas été défragmentée</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation>La base de données n&apos;a pas été défragmentée. Le logiciel de base de données ne le supporte pas ou il est impossible de la défragmenter actuellement.</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Barre d&apos;outils pour les flux</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -260,12 +244,10 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Titres des flux/catégories.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Nombre des messages lus/non-lus.</translation>
     </message>
     <message>
@@ -755,6 +737,36 @@ Auto-update status: %5</source>
     </message>
 </context>
 <context>
+    <name>FormDatabaseCleanup</name>
+    <message>
+        <source>Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shrink database file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages older than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source> day(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FormFeedDetails</name>
     <message>
         <source>Parent category</source>
@@ -1232,10 +1244,6 @@ Auto-update status: %5</source>
         <translation>Cacher la fenêtre principale si il est visible et la montrer si il est cacher.</translation>
     </message>
     <message>
-        <source>Defragment database file so that its size decreases.</source>
-        <translation>Défragmenter la base de données afin que sa taille diminue.</translation>
-    </message>
-    <message>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation>Cacher ou montrer la liste des flux/catégories.</translation>
     </message>
@@ -1350,10 +1358,6 @@ Auto-update status: %5</source>
     <message>
         <source>View selected feeds in &amp;newspaper mode</source>
         <translation>Voir les flux sélectionnés dans le mode &amp;journal</translation>
-    </message>
-    <message>
-        <source>&amp;Defragment database</source>
-        <translation>&amp;Défragmenter la base de données</translation>
     </message>
     <message>
         <source>&amp;Clean all feeds</source>
@@ -1523,6 +1527,10 @@ Auto-update status: %5</source>
         <source>Send selected message via e-mail</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1604,9 +1612,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Langage</translation>
     </message>
     <message>
@@ -1664,12 +1670,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1743,7 +1747,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Nom</translation>
     </message>
     <message>
@@ -2173,7 +2176,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Working database</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2205,7 +2208,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2386,52 +2389,42 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>Id</translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lire</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Supprimé</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Important</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Flux</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titre</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Crée sur</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Contenus</translation>
     </message>
     <message>
@@ -2476,7 +2469,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2485,7 +2477,6 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2634,6 +2625,14 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
         <translation>Pas d&apos;erreurs</translation>
+    </message>
+    <message>
+        <source>access to content was denied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -93,7 +93,7 @@ class FeedMessageViewer : public TabContent {
     void setListHeadersEnabled(bool enable);
 
     // Runs "cleanup" of the database.
-    void vacuumDatabase();
+    void showDbCleanupAssistant();
 
     // Reloads some changeable visual settings.
     void refreshVisualProperties();

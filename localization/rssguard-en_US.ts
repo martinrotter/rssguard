@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en_US">
+<TS version="2.1" language="en_US">
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="79"/>
+        <location filename="../src/miscellaneous/application.cpp" line="87"/>
         <source>Output directory is not writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="86"/>
+        <location filename="../src/miscellaneous/application.cpp" line="94"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="97"/>
+        <location filename="../src/miscellaneous/application.cpp" line="105"/>
         <source>Database file not copied to output directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="106"/>
+        <location filename="../src/miscellaneous/application.cpp" line="114"/>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="112"/>
+        <location filename="../src/miscellaneous/application.cpp" line="120"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/application.cpp" line="123"/>
+        <location filename="../src/miscellaneous/application.cpp" line="131"/>
         <source>Application is already running.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -231,60 +231,40 @@ This website contains %n feed(s).</source>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="58"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="61"/>
         <source>Toolbar for feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="59"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="62"/>
         <source>Toolbar for messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="163"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="174"/>
         <source>Error when loading initial feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="198"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="209"/>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="206"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="217"/>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="407"/>
-        <source>Cannot defragment database</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="408"/>
-        <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="415"/>
-        <source>Database defragmented</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/gui/feedmessageviewer.cpp" line="416"/>
-        <source>Database was successfully defragmented.</source>
+        <source>Cannot cleanup database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="421"/>
-        <source>Database was not defragmented</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="422"/>
-        <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="417"/>
+        <source>Cannot cleanup database, because another critical action is running.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -323,13 +303,11 @@ This website contains %n feed(s).</source>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="58"/>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/feedsmodel.cpp" line="59"/>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -453,12 +431,12 @@ Auto-update status: %5</source>
 <context>
     <name>FeedsView</name>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="173"/>
+        <location filename="../src/gui/feedsview.cpp" line="174"/>
         <source>Cannot update all items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="191"/>
+        <location filename="../src/gui/feedsview.cpp" line="192"/>
         <source>Cannot update selected items</source>
         <translation type="unfinished"></translation>
     </message>
@@ -483,12 +461,12 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="174"/>
+        <location filename="../src/gui/feedsview.cpp" line="175"/>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="192"/>
+        <location filename="../src/gui/feedsview.cpp" line="193"/>
         <source>You cannot update selected items because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -918,6 +896,42 @@ Auto-update status: %5</source>
         <location filename="../src/gui/formcategorydetails.cpp" line="228"/>
         <source>Use default icon</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormDatabaseCleanup</name>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="14"/>
+        <source>Cleanup database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="20"/>
+        <source>Cleanup settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="26"/>
+        <source>Shrink database file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="46"/>
+        <source>Remove all messages older than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="53"/>
+        <source>Remove all read messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/gui/formdatabasecleanup.cpp" line="32"/>
+        <source> day(s)</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1684,208 +1698,195 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="410"/>
-        <source>&amp;Defragment database</source>
+        <location filename="../src/gui/formmain.ui" line="646"/>
+        <source>&amp;Cleanup database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formmain.ui" line="413"/>
-        <source>Defragment database file so that its size decreases.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/formmain.ui" line="421"/>
         <source>&amp;Feed list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="424"/>
+        <location filename="../src/gui/formmain.ui" line="416"/>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="432"/>
+        <location filename="../src/gui/formmain.ui" line="424"/>
         <source>&amp;Clean all feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="435"/>
+        <location filename="../src/gui/formmain.ui" line="427"/>
         <source>Deletes all messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="443"/>
+        <location filename="../src/gui/formmain.ui" line="435"/>
         <source>Select &amp;next feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="451"/>
+        <location filename="../src/gui/formmain.ui" line="443"/>
         <source>Select &amp;previous feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="459"/>
+        <location filename="../src/gui/formmain.ui" line="451"/>
         <source>Select &amp;next message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="467"/>
+        <location filename="../src/gui/formmain.ui" line="459"/>
         <source>Select &amp;previous message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="475"/>
+        <location filename="../src/gui/formmain.ui" line="467"/>
         <source>Check for &amp;updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="478"/>
+        <location filename="../src/gui/formmain.ui" line="470"/>
         <source>Check if new update for the application is available for download.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="489"/>
+        <location filename="../src/gui/formmain.ui" line="481"/>
         <source>&amp;Main menu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="492"/>
+        <location filename="../src/gui/formmain.ui" line="484"/>
         <source>Hides or displays the main menu.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="503"/>
+        <location filename="../src/gui/formmain.ui" line="495"/>
         <source>Enable &amp;JavaScript</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="514"/>
+        <location filename="../src/gui/formmain.ui" line="506"/>
         <source>Enable external &amp;plugins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="525"/>
+        <location filename="../src/gui/formmain.ui" line="517"/>
         <source>Auto-load &amp;images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="533"/>
+        <location filename="../src/gui/formmain.ui" line="525"/>
         <source>Report a &amp;bug (GitHub)...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="547"/>
+        <location filename="../src/gui/formmain.ui" line="539"/>
         <source>&amp;Toolbars</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="550"/>
+        <location filename="../src/gui/formmain.ui" line="542"/>
         <source>Switch visibility of main toolbars.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="564"/>
+        <location filename="../src/gui/formmain.ui" line="556"/>
         <source>&amp;Feed/message list headers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="572"/>
+        <location filename="../src/gui/formmain.ui" line="564"/>
         <source>&amp;Import feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="575"/>
+        <location filename="../src/gui/formmain.ui" line="567"/>
         <source>Imports feeds you want from selected file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="580"/>
+        <location filename="../src/gui/formmain.ui" line="572"/>
         <source>&amp;Export feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="583"/>
+        <location filename="../src/gui/formmain.ui" line="575"/>
         <source>Exports feeds you want to selected file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="588"/>
+        <location filename="../src/gui/formmain.ui" line="580"/>
         <source>Report a bug (BitBucket)...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="596"/>
+        <location filename="../src/gui/formmain.ui" line="588"/>
         <source>&amp;Donate via PayPal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="601"/>
+        <location filename="../src/gui/formmain.ui" line="593"/>
         <source>Display &amp;wiki</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="606"/>
+        <location filename="../src/gui/formmain.ui" line="598"/>
         <source>&amp;Empty recycle bin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="611"/>
+        <location filename="../src/gui/formmain.ui" line="603"/>
         <source>&amp;Restore all messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="616"/>
+        <location filename="../src/gui/formmain.ui" line="608"/>
         <source>Restore &amp;selected messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="621"/>
+        <location filename="../src/gui/formmain.ui" line="613"/>
         <source>&amp;Restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="626"/>
+        <location filename="../src/gui/formmain.ui" line="618"/>
         <source>&amp;Restore database/settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="631"/>
+        <location filename="../src/gui/formmain.ui" line="623"/>
         <source>&amp;Backup database/settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="636"/>
+        <location filename="../src/gui/formmain.ui" line="628"/>
         <source>Switch message list layout orientation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="644"/>
+        <location filename="../src/gui/formmain.ui" line="636"/>
         <source>&amp;Downloads</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.ui" line="649"/>
+        <location filename="../src/gui/formmain.ui" line="641"/>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/formmain.cpp" line="454"/>
-        <location filename="../src/gui/formmain.cpp" line="461"/>
-        <source>Cannot check for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formmain.cpp" line="455"/>
         <location filename="../src/gui/formmain.cpp" line="462"/>
-        <source>You cannot check for updates because feed update is ongoing.</source>
+        <source>Cannot check for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formmain.cpp" line="477"/>
-        <location filename="../src/gui/formmain.cpp" line="485"/>
-        <location filename="../src/gui/formmain.cpp" line="493"/>
-        <location filename="../src/gui/formmain.cpp" line="501"/>
-        <source>Cannot open external browser</source>
+        <location filename="../src/gui/formmain.cpp" line="456"/>
+        <location filename="../src/gui/formmain.cpp" line="463"/>
+        <source>You cannot check for updates because feed update is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1893,6 +1894,14 @@ Auto-update status: %5</source>
         <location filename="../src/gui/formmain.cpp" line="486"/>
         <location filename="../src/gui/formmain.cpp" line="494"/>
         <location filename="../src/gui/formmain.cpp" line="502"/>
+        <source>Cannot open external browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formmain.cpp" line="479"/>
+        <location filename="../src/gui/formmain.cpp" line="487"/>
+        <location filename="../src/gui/formmain.cpp" line="495"/>
+        <location filename="../src/gui/formmain.cpp" line="503"/>
         <source>Cannot open external browser. Navigate to application website manually.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1997,9 +2006,7 @@ Auto-update status: %5</source>
         <location filename="../src/gui/formsettings.ui" line="68"/>
         <location filename="../src/gui/formsettings.cpp" line="75"/>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2309,7 +2316,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../src/gui/formsettings.ui" line="1093"/>
         <source>Placeholders:
  • %1 - title of selected message,
@@ -2471,7 +2478,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>&amp;Show password</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <location filename="../src/gui/formsettings.ui" line="900"/>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
@@ -2493,14 +2500,12 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <message>
         <location filename="../src/gui/formsettings.cpp" line="76"/>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="77"/>
         <location filename="../src/gui/formsettings.cpp" line="84"/>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2517,7 +2522,6 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <message>
         <location filename="../src/gui/formsettings.cpp" line="83"/>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2958,73 +2962,61 @@ currently installed one.</source>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="131"/>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="132"/>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="133"/>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="134"/>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="135"/>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="136"/>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="137"/>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="138"/>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3183,79 +3175,89 @@ currently installed one.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="67"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="66"/>
+        <source>access to content was denied</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/networkfactory.cpp" line="70"/>
         <source>host not found</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="72"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="74"/>
+        <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/network-web/networkfactory.cpp" line="79"/>
         <source>connection refused</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="77"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="83"/>
         <source>connection timed out</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="81"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="87"/>
         <source>SSL handshake failed</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="86"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="92"/>
         <source>proxy server connection refused</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="90"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="96"/>
         <source>temporary failure</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="94"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="100"/>
         <source>authentication failed</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="98"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="104"/>
         <source>proxy authentication required</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="102"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="108"/>
         <source>proxy server not found</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="106"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="112"/>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="110"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="116"/>
         <source>uknown content</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="114"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="120"/>
         <source>content not found</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/networkfactory.cpp" line="118"/>
+        <location filename="../src/network-web/networkfactory.cpp" line="124"/>
         <source>unknown error</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"></translation>
@@ -3359,7 +3361,7 @@ currently installed one.</source>
 <context>
     <name>SystemTrayIcon</name>
     <message>
-        <location filename="../src/gui/systemtrayicon.cpp" line="124"/>
+        <location filename="../src/gui/systemtrayicon.cpp" line="125"/>
         <source>%1
 Unread news: %2</source>
         <translation type="unfinished"></translation>
