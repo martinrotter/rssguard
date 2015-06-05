@@ -195,7 +195,7 @@ void Application::onSaveState(QSessionManager &manager) {
 
 void Application::onAboutToQuit() {
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
-  bool locked_safely = feedUpdateLock()->tryLock(CLOSE_LOCK_TIMEOUT);
+  bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
   processEvents();
 

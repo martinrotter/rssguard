@@ -22,6 +22,7 @@
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/databasecleaner.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodelfeed.h"
@@ -65,7 +66,8 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesBrowser(new WebBrowser(this)),
     m_dbCleanerThread(NULL),
     m_feedDownloaderThread(NULL),
-    m_feedDownloader(NULL) {
+    m_feedDownloader(NULL),
+    m_dbCleaner(NULL) {
   initialize();
   initializeViews();
   createConnections();
@@ -76,6 +78,23 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
 
 FeedMessageViewer::~FeedMessageViewer() {
   qDebug("Destroying FeedMessageViewer instance.");
+}
+
+DatabaseCleaner *FeedMessageViewer::databaseCleaner() {
+  if (m_dbCleaner == NULL) {
+    m_dbCleaner = new DatabaseCleaner();
+    m_dbCleanerThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<CleanerOrders>("CleanerOrders");
+    m_dbCleaner->moveToThread(m_dbCleanerThread);
+    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
+
+    // Connections are made, start the feed downloader thread.
+    m_dbCleanerThread->start();
+  }
+
+  return m_dbCleaner;
 }
 
 void FeedMessageViewer::saveSize() {
@@ -125,21 +144,36 @@ void FeedMessageViewer::quit() {
   // Quit the feeds view (stops auto-update timer etc.).
   m_feedsView->quit();
 
+  // Close worker threads.
   if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
     qDebug("Quitting feed downloader thread.");
     m_feedDownloaderThread->quit();
-    m_feedDownloaderThread->wait();
+
+    if (!m_feedDownloaderThread->wait(CLOSE_LOCK_TIMEOUT)) {
+      qCritical("Feed downloader thread is running despite it was told to quit. Terminating it.");
+      m_feedDownloaderThread->terminate();
+    }
   }
 
   if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
     qDebug("Quitting database cleaner thread.");
     m_dbCleanerThread->quit();
-    m_dbCleanerThread->wait();
+
+    if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
+      qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
+      m_dbCleanerThread->terminate();
+    }
   }
 
+  // Close workers.
   if (m_feedDownloader != NULL) {
-    qDebug("Feed downloader thread aborted. Deleting it from memory.");
+    qDebug("Feed downloader exists. Deleting it from memory.");
     m_feedDownloader->deleteLater();
+  }
+
+  if (m_dbCleaner != NULL) {
+    qDebug("Database cleaner exists. Deleting it from memory.");
+    m_dbCleaner->deleteLater();
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
@@ -407,10 +441,12 @@ void FeedMessageViewer::initializeViews() {
 void FeedMessageViewer::showDbCleanupAssistant() {
   if (qApp->feedUpdateLock()->tryLock()) {
     QPointer<FormDatabaseCleanup> form_pointer = new FormDatabaseCleanup(this);
+    form_pointer.data()->setCleaner(databaseCleaner());
     form_pointer.data()->exec();
     delete form_pointer.data();
-
     qApp->feedUpdateLock()->unlock();
+
+    m_messagesView->reloadSelections(true);
   }
   else {
     qApp->showGuiMessage(tr("Cannot cleanup database"),

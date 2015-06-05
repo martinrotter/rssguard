@@ -21,6 +21,13 @@
 #include <QObject>
 
 
+struct CleanerOrders {
+  bool m_removeReadMessages;
+  bool m_shrinkDatabase;
+  bool m_removeOldMessages;
+  int m_barrierForRemovingOldMessagesInDays;
+};
+
 class DatabaseCleaner : public QObject {
     Q_OBJECT
 
@@ -29,8 +36,12 @@ class DatabaseCleaner : public QObject {
     virtual ~DatabaseCleaner();
 
   signals:
+    void purgeStarted();
+    void purgeProgress(int progress);
+    void purgeFinished(bool result);
 
   public slots:
+    void purgeDatabaseData(const CleanerOrders &which_data);
 };
 
 #endif // DATABASECLEANER_H

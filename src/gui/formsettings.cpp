@@ -509,7 +509,7 @@ void FormSettings::loadDataStorage() {
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::Information,  tr("No connection test triggered so far."), tr("You did not executed any connection test yet."));
 
   // Load SQLite.
-  m_ui->m_cmbDatabaseDriver->addItem(tr("SQLite (embedded database)"), APP_DB_SQLITE_DRIVER);
+  m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::SQLITE), APP_DB_SQLITE_DRIVER);
 
   // Load in-memory database status.
   Settings *settings = qApp->settings();
@@ -523,7 +523,7 @@ void FormSettings::loadDataStorage() {
     onMysqlDatabaseChanged(QString());
 
     // Load MySQL.
-    m_ui->m_cmbDatabaseDriver->addItem(tr("MySQL/MariaDB (dedicated database)"), APP_DB_MYSQL_DRIVER);
+    m_ui->m_cmbDatabaseDriver->addItem(qApp->database()->humanDriverName(DatabaseFactory::MYSQL), APP_DB_MYSQL_DRIVER);
 
     // Setup placeholders.
     m_ui->m_txtMysqlHostname->lineEdit()->setPlaceholderText(tr("Hostname of your MySQL server"));

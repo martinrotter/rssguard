@@ -38,6 +38,16 @@ DatabaseFactory::DatabaseFactory(QObject *parent)
 DatabaseFactory::~DatabaseFactory() {
 }
 
+qint64 DatabaseFactory::getDatabaseSize() {
+  if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
+    qint64 size = QFileInfo(sqliteDatabaseFilePath()).size();
+    return size;
+  }
+  else {
+    return 0;
+  }
+}
+
 DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &hostname, int port, const QString &w_database,
                                                                  const QString &username, const QString &password) {
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, APP_DB_MYSQL_TEST);
@@ -413,6 +423,30 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name, Desired
     case SQLITE_MEMORY:
     default:
       return sqliteConnection(connection_name, desired_type);
+  }
+}
+
+QString DatabaseFactory::humanDriverName(DatabaseFactory::UsedDriver driver) {
+  switch (driver) {
+    case MYSQL:
+      return tr("MySQL/MariaDB (dedicated database)");
+
+    case SQLITE:
+    case SQLITE_MEMORY:
+    default:
+      return tr("SQLite (embedded database)");
+  }
+}
+
+QString DatabaseFactory::humanDriverName(const QString &driver_code) {
+  if (driver_code == APP_DB_SQLITE_DRIVER) {
+    return humanDriverName(SQLITE);
+  }
+  else if (driver_code == APP_DB_MYSQL_DRIVER) {
+    return humanDriverName(MYSQL);
+  }
+  else {
+    return humanDriverName(SQLITE);
   }
 }
 

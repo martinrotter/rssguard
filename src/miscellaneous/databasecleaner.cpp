@@ -17,6 +17,12 @@
 
 #include "miscellaneous/databasecleaner.h"
 
+#include "miscellaneous/application.h"
+#include "miscellaneous/databasefactory.h"
+
+#include <QDebug>
+#include <QThread>
+
 
 DatabaseCleaner::DatabaseCleaner(QObject *parent) : QObject(parent) {
 }
@@ -24,3 +30,19 @@ DatabaseCleaner::DatabaseCleaner(QObject *parent) : QObject(parent) {
 DatabaseCleaner::~DatabaseCleaner() {
 }
 
+void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
+  qDebug().nospace() << "Performing database cleanup in thread: \'" << QThread::currentThreadId() << "\'.";
+
+  bool result = true;
+  int progress = 0;
+
+  emit purgeStarted();
+
+  if (which_data.m_shrinkDatabase) {
+    result &= qApp->database()->vacuumDatabase();
+    progress += 25;
+    emit purgeProgress(progress);
+  }
+
+  emit purgeFinished(result);
+}

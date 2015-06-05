@@ -60,10 +60,15 @@ class DatabaseFactory : public QObject {
     // Destructor.
     virtual ~DatabaseFactory();
 
+    qint64 getDatabaseSize();
+
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
     // NOTE: This always returns OPENED database.
     QSqlDatabase connection(const QString &connection_name, DesiredType desired_type);
+
+    QString humanDriverName(UsedDriver driver);
+    QString humanDriverName(const QString &driver_code);
 
     // Removes connection.
     void removeConnection(const QString &connection_name = QString());
