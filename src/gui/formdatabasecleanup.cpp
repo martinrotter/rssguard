@@ -35,7 +35,7 @@ void FormDatabaseCleanup::setCleaner(DatabaseCleaner *cleaner) {
   connect(m_ui->m_btnBox->button(QDialogButtonBox::Ok), SIGNAL(clicked()), this, SLOT(startPurging()));
   connect(this, SIGNAL(purgeRequested(CleanerOrders)), m_cleaner, SLOT(purgeDatabaseData(CleanerOrders)));
   connect(m_cleaner, SIGNAL(purgeStarted()), this, SLOT(onPurgeStarted()));
-  connect(m_cleaner, SIGNAL(purgeProgress(int)), this, SLOT(onPurgeProgress(int)));
+  connect(m_cleaner, SIGNAL(purgeProgress(int,QString)), this, SLOT(onPurgeProgress(int,QString)));
   connect(m_cleaner, SIGNAL(purgeFinished(bool)), this, SLOT(onPurgeFinished(bool)));
 }
 
@@ -79,8 +79,9 @@ void FormDatabaseCleanup::onPurgeStarted() {
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, tr("Database cleanup is running."), tr("Database cleanup is running."));
 }
 
-void FormDatabaseCleanup::onPurgeProgress(int progress) {
+void FormDatabaseCleanup::onPurgeProgress(int progress, const QString &description) {
   m_ui->m_progressBar->setValue(progress);
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::Information, description, description);
 }
 
 void FormDatabaseCleanup::onPurgeFinished(bool finished) {

@@ -39,9 +39,13 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
   emit purgeStarted();
 
   if (which_data.m_shrinkDatabase) {
-    result &= qApp->database()->vacuumDatabase();
     progress += 25;
-    emit purgeProgress(progress);
+    emit purgeProgress(progress, tr("Shrinking database file..."));
+
+    result &= qApp->database()->vacuumDatabase();
+
+    progress += 25;
+    emit purgeProgress(progress, tr("Database file shrinked..."));
   }
 
   emit purgeFinished(result);

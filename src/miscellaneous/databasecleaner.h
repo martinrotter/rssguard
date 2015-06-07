@@ -37,7 +37,7 @@ class DatabaseCleaner : public QObject {
 
   signals:
     void purgeStarted();
-    void purgeProgress(int progress);
+    void purgeProgress(int progress, const QString &description);
     void purgeFinished(bool result);
 
   public slots:
