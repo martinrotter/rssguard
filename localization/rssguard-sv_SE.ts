@@ -29,6 +29,17 @@
     </message>
 </context>
 <context>
+    <name>DatabaseCleaner</name>
+    <message>
+        <source>Shrinking database file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file shrinked...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -51,6 +62,14 @@
     <message>
         <source>Selected database does not exist (yet).</source>
         <translation>Den valda databasen finns inte (än).</translation>
+    </message>
+    <message>
+        <source>MySQL/MariaDB (dedicated database)</source>
+        <translation type="unfinished">MySQL/MariaDB (dedikerad databas)</translation>
+    </message>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation type="unfinished">SQLite (inbäddad databas)</translation>
     </message>
 </context>
 <context>
@@ -516,10 +535,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Om %1</translation>
     </message>
     <message>
-        <source>Paths</source>
-        <translation>Sökvägar</translation>
-    </message>
-    <message>
         <source>Settings type</source>
         <translation>Inställningstyp</translation>
     </message>
@@ -538,6 +553,10 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>PARTIALLY portable</source>
         <translation>PARTIELLT portabel</translation>
+    </message>
+    <message>
+        <source>Resources</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -754,15 +773,7 @@ Uppdateringsstatus: %5</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shrink database file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove all read messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -771,6 +782,46 @@ Uppdateringsstatus: %5</translation>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Shrink database file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I am ready.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cleanup is running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cleanup is completed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cleanup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1944,14 +1995,6 @@ Utvecklaren av detta program, är INTE ansvarig för förlorad data.</translatio
     <message>
         <source>Data storage</source>
         <translation>Datalagring</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (inbäddad databas)</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (dedikerad databas)</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>

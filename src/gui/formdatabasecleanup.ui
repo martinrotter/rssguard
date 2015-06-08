@@ -23,7 +23,7 @@
       <item row="1" column="0">
        <widget class="QCheckBox" name="m_checkShrink">
         <property name="text">
-         <string>Shrink database file.</string>
+         <string>Shrink database file</string>
         </property>
        </widget>
       </item>
@@ -53,7 +53,7 @@
       <item row="0" column="0">
        <widget class="QCheckBox" name="m_checkRemoveReadMessages">
         <property name="text">
-         <string>Remove all read messages.</string>
+         <string>Remove all read messages</string>
         </property>
         <property name="checked">
          <bool>true</bool>

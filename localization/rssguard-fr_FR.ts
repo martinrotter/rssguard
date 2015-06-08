@@ -29,6 +29,17 @@
     </message>
 </context>
 <context>
+    <name>DatabaseCleaner</name>
+    <message>
+        <source>Shrinking database file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file shrinked...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
@@ -51,6 +62,14 @@
     <message>
         <source>Selected database does not exist (yet).</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MySQL/MariaDB (dedicated database)</source>
+        <translation type="unfinished">MySQL/MariaDB (base de données dédiée)</translation>
+    </message>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation type="unfinished">SQLite (base de données embarquée)</translation>
     </message>
 </context>
 <context>
@@ -509,10 +528,6 @@ Auto-update status: %5</source>
         <translation>A propos de %1</translation>
     </message>
     <message>
-        <source>Paths</source>
-        <translation>Chemins</translation>
-    </message>
-    <message>
         <source>Settings type</source>
         <translation type="unfinished"></translation>
     </message>
@@ -530,6 +545,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>PARTIALLY portable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resources</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -747,15 +766,7 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shrink database file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove all read messages.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
@@ -764,6 +775,46 @@ Auto-update status: %5</source>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Shrink database file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database file size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I am ready.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cleanup is running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cleanup is completed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Database cleanup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1936,14 +1987,6 @@ Les auteurs de cette application NE sont PAS responsable de la perte de données
     <message>
         <source>Data storage</source>
         <translation>Stockage des données</translation>
-    </message>
-    <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (base de données embarquée)</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL/MariaDB (base de données dédiée)</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>

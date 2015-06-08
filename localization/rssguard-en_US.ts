@@ -35,32 +35,55 @@
     </message>
 </context>
 <context>
+    <name>DatabaseCleaner</name>
+    <message>
+        <location filename="../src/miscellaneous/databasecleaner.cpp" line="43"/>
+        <source>Shrinking database file...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/miscellaneous/databasecleaner.cpp" line="48"/>
+        <source>Database file shrinked...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DatabaseFactory</name>
     <message>
-        <location filename="../src/miscellaneous/databasefactory.cpp" line="67"/>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="77"/>
         <source>MySQL server works as expected.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/databasefactory.cpp" line="70"/>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="80"/>
         <source>Selected database does not exist (yet).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/databasefactory.cpp" line="75"/>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="85"/>
         <source>No MySQL server is running in the target destination.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/databasefactory.cpp" line="79"/>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="89"/>
         <source>Access denied. Invalid username or password used.</source>
         <extracomment>Access to MySQL server was denied.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/miscellaneous/databasefactory.cpp" line="83"/>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="93"/>
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="432"/>
+        <source>MySQL/MariaDB (dedicated database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/miscellaneous/databasefactory.cpp" line="437"/>
+        <source>SQLite (embedded database)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -231,39 +254,39 @@ This website contains %n feed(s).</source>
 <context>
     <name>FeedMessageViewer</name>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="61"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="62"/>
         <source>Toolbar for feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="62"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="63"/>
         <source>Toolbar for messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="174"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="208"/>
         <source>Error when loading initial feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="209"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="243"/>
         <source>Feed update started</source>
         <extracomment>Text display in status bar when feed update is started.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="217"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="251"/>
         <source>Updated feed &apos;%1&apos;</source>
         <extracomment>Text display in status bar when particular feed is updated.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="416"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="452"/>
         <source>Cannot cleanup database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedmessageviewer.cpp" line="417"/>
+        <location filename="../src/gui/feedmessageviewer.cpp" line="453"/>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -569,42 +592,42 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="241"/>
+        <location filename="../src/gui/formabout.ui" line="250"/>
         <source>BSD License (applies to QtSingleApplication source code)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="297"/>
+        <location filename="../src/gui/formabout.ui" line="315"/>
         <source>Licenses page is available only in English language.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="305"/>
+        <location filename="../src/gui/formabout.ui" line="323"/>
         <source>Changelog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="337"/>
+        <location filename="../src/gui/formabout.ui" line="355"/>
         <source>Changelog page is available only in English language.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="345"/>
-        <source>Paths</source>
+        <location filename="../src/gui/formabout.ui" line="363"/>
+        <source>Resources</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="351"/>
+        <location filename="../src/gui/formabout.ui" line="369"/>
         <source>Settings type</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="365"/>
+        <location filename="../src/gui/formabout.ui" line="383"/>
         <source>Settings file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formabout.ui" line="379"/>
+        <location filename="../src/gui/formabout.ui" line="397"/>
         <source>Database root path</source>
         <translation type="unfinished"></translation>
     </message>
@@ -912,7 +935,32 @@ Auto-update status: %5</source>
     </message>
     <message>
         <location filename="../src/gui/formdatabasecleanup.ui" line="26"/>
-        <source>Shrink database file.</source>
+        <source>Shrink database file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="56"/>
+        <source>Remove all read messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="82"/>
+        <source>Database information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="88"/>
+        <source>Database file size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="102"/>
+        <source>Database type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.ui" line="119"/>
+        <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -921,17 +969,32 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/formdatabasecleanup.ui" line="53"/>
-        <source>Remove all read messages.</source>
+        <location filename="../src/gui/formdatabasecleanup.cpp" line="36"/>
+        <source>I am ready.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/gui/formdatabasecleanup.cpp" line="32"/>
+        <location filename="../src/gui/formdatabasecleanup.cpp" line="78"/>
         <source> day(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.cpp" line="96"/>
+        <source>Database cleanup is running.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.cpp" line="110"/>
+        <source>Database cleanup is completed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/formdatabasecleanup.cpp" line="113"/>
+        <source>Database cleanup failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2646,16 +2709,6 @@ You have to restart manually.</source>
     <message>
         <location filename="../src/gui/formsettings.cpp" line="509"/>
         <source>You did not executed any connection test yet.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/formsettings.cpp" line="512"/>
-        <source>SQLite (embedded database)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/gui/formsettings.cpp" line="526"/>
-        <source>MySQL/MariaDB (dedicated database)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
