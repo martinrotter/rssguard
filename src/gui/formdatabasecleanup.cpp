@@ -81,6 +81,7 @@ void FormDatabaseCleanup::updateDaysSuffix(int number) {
 void FormDatabaseCleanup::startPurging() {
   CleanerOrders orders;
 
+  orders.m_removeRecycleBin = m_ui->m_checkRemoveRecycleBin->isChecked();
   orders.m_removeOldMessages = m_ui->m_checkRemoveOldMessages->isChecked();
   orders.m_barrierForRemovingOldMessagesInDays = m_ui->m_spinDays->value();
   orders.m_removeReadMessages = m_ui->m_checkRemoveReadMessages->isChecked();

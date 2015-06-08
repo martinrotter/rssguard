@@ -443,10 +443,12 @@ void FeedMessageViewer::showDbCleanupAssistant() {
     QPointer<FormDatabaseCleanup> form_pointer = new FormDatabaseCleanup(this);
     form_pointer.data()->setCleaner(databaseCleaner());
     form_pointer.data()->exec();
+
     delete form_pointer.data();
     qApp->feedUpdateLock()->unlock();
 
-    m_messagesView->reloadSelections(true);
+    m_messagesView->reloadSelections(false);
+    m_feedsView->updateCountsOfAllFeeds(true);
   }
   else {
     qApp->showGuiMessage(tr("Cannot cleanup database"),

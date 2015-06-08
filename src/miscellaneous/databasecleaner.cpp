@@ -21,10 +21,13 @@
 #include "miscellaneous/databasefactory.h"
 
 #include <QDebug>
+#include <QSqlError>
+#include <QSqlQuery>
 #include <QThread>
 
 
 DatabaseCleaner::DatabaseCleaner(QObject *parent) : QObject(parent) {
+  setObjectName("DatabaseCleaner");
 }
 
 DatabaseCleaner::~DatabaseCleaner() {
@@ -33,20 +36,91 @@ DatabaseCleaner::~DatabaseCleaner() {
 void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
   qDebug().nospace() << "Performing database cleanup in thread: \'" << QThread::currentThreadId() << "\'.";
 
-  bool result = true;
-  int progress = 0;
-
+  // Inform everyone about the start of the process.
   emit purgeStarted();
 
+  bool result = true;
+  int difference = 99 / 8;
+  int progress = 0;
+  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
+
+  if (which_data.m_removeReadMessages) {
+    progress += difference;
+    emit purgeProgress(progress, tr("Removing read messages..."));
+
+    // Remove read messages.
+    result &= purgeReadMessages(database);
+
+    progress += difference;
+    emit purgeProgress(progress, tr("Read messages purged..."));
+  }
+
+  if (which_data.m_removeRecycleBin) {
+    progress += difference;
+    emit purgeProgress(progress, tr("Purgin recycle bin..."));
+
+    // Remove read messages.
+    result &= purgeRecycleBin(database);
+
+    progress += difference;
+    emit purgeProgress(progress, tr("Recycle bin purged..."));
+  }
+
+  if (which_data.m_removeOldMessages) {
+    progress += difference;
+    emit purgeProgress(progress, tr("Removing old messages..."));
+
+    // Remove old messages.
+    result &= purgeOldMessages(database, which_data.m_barrierForRemovingOldMessagesInDays);
+
+    progress += difference;
+    emit purgeProgress(progress, tr("Read old purged..."));
+  }
+
   if (which_data.m_shrinkDatabase) {
-    progress += 25;
+    progress += difference;
     emit purgeProgress(progress, tr("Shrinking database file..."));
 
+    // Call driver-specific vacuuming function.
     result &= qApp->database()->vacuumDatabase();
 
-    progress += 25;
+    progress += difference;
     emit purgeProgress(progress, tr("Database file shrinked..."));
   }
 
   emit purgeFinished(result);
+}
+
+bool DatabaseCleaner::purgeReadMessages(const QSqlDatabase &database) {
+  QSqlQuery query = QSqlQuery(database);
+
+  query.setForwardOnly(true);
+  query.prepare("DELETE FROM Messages WHERE is_deleted = :is_deleted AND is_read = :is_read;");
+  query.bindValue(":is_read", 1);
+
+  // Remove only messages which are NOT in recycle bin.
+  query.bindValue(":is_deleted", 0);
+
+  return query.exec();
+}
+
+bool DatabaseCleaner::purgeOldMessages(const QSqlDatabase &database, int days) {
+  QSqlQuery query = QSqlQuery(database);
+  qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-days).toMSecsSinceEpoch();
+
+  query.setForwardOnly(true);
+  query.prepare("DELETE FROM Messages WHERE date_created < :date_created;");
+  query.bindValue(":date_created", since_epoch);
+
+  return query.exec();
+}
+
+bool DatabaseCleaner::purgeRecycleBin(const QSqlDatabase &database) {
+  QSqlQuery query = QSqlQuery(database);
+
+  query.setForwardOnly(true);
+  query.prepare("DELETE FROM Messages WHERE is_deleted = :is_deleted;");
+  query.bindValue(":is_deleted", 1);
+
+  return query.exec();
 }

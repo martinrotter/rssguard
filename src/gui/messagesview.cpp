@@ -89,7 +89,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
 
   if (current_index.isValid()) {
-    if (mark_current_index_read) {
+    if (!mark_current_index_read) {
       // User selected to mark some messages as unread, if one
       // of them will be marked as current, then it will be read again.
       m_batchUnreadSwitch = true;
