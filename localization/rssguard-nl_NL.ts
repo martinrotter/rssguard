@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -9,34 +7,34 @@
     </message>
     <message>
         <source>Output directory is not writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoermap is niet beschrijfbaar.</translation>
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen van bestand niet succesvol gekopieerd naar uitvoermap</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasebestand niet succesvol gekopieerd naar uitvoermap</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database herstel werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
     <message>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Herstel van de instellingen werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Krimpende databasebestand...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasebestand krimpt...</translation>
     </message>
 </context>
 <context>
@@ -47,7 +45,7 @@
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
-        <translation>Geen MySQL server draait in de doelbestemming.</translation>
+        <translation>Geen MySQL server draait er in de doelbestemming.</translation>
     </message>
     <message>
         <source>Access denied. Invalid username or password used.</source>
@@ -61,15 +59,15 @@
     </message>
     <message>
         <source>Selected database does not exist (yet).</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselekteerde database bestaat (nog) niet.</translation>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished">MySQL/MariaDB (specifieke database)</translation>
+        <translation>MySQL/MariaDB (specifieke database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished">SQLite (ingesloten database)</translation>
+        <translation>SQLite (ingesloten database)</translation>
     </message>
 </context>
 <context>
@@ -81,12 +79,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed.</numerusform>
-            <numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed(s).</numerusform>
-        </translation>
+        <translation><numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed.</numerusform><numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -145,23 +140,23 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Open &amp;map</translation>
     </message>
     <message>
         <source>Cannot open file</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan bestand niet openen</translation>
     </message>
     <message>
         <source>Cannot open output file. Open it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan map niet openen</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
 </context>
 <context>
@@ -172,17 +167,11 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n resterende minuut</numerusform>
-            <numerusform>%n resterende minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n resterende seconde</numerusform>
-            <numerusform>%n resterende seconden</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -202,10 +191,7 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Dowloading %1 bestand...</numerusform>
-            <numerusform>Downloading %n bestanden...</numerusform>
-        </translation>
+        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -230,15 +216,15 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Fout bij het laden van de eerste feeds</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan database niet opschonen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
     </message>
 </context>
 <context>
@@ -253,7 +239,7 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message>
         <source>Category </source>
-        <translation type="unfinished"></translation>
+        <translation>Categorie</translation>
     </message>
 </context>
 <context>
@@ -294,10 +280,7 @@ Deze website bevat % n feed(s).</numerusform>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -327,18 +310,12 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -372,10 +349,7 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -557,7 +531,7 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Hulpbronnen</translation>
     </message>
 </context>
 <context>
@@ -616,23 +590,23 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Output directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoermap</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Backup is succesvol aangemaakt en opgeslagen in de doelmap.</translation>
     </message>
     <message>
         <source>Select destination directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer de doelmap</translation>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Juiste bestemmingsmap is opgegeven</translation>
     </message>
 </context>
 <context>
@@ -767,62 +741,59 @@ Auto-update status: %5</translation>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>Database opschonen</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen opschonen</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten ouder dan</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagen</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasebestand krimpt</translation>
     </message>
     <message>
         <source>Remove all read messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle gelezen berichten</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation type="unfinished"></translation>
+        <translation>Database informatie</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasebestands grootte</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation type="unfinished"></translation>
+        <translation>Database type</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Vordering</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ik ben klaar</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database opschonen loopt.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database opschonen is klaar.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database opschonen is mislukt.</translation>
     </message>
 </context>
 <context>
@@ -1094,23 +1065,23 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram met succes opgehaald.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata pictogram opgehaald.</translation>
     </message>
     <message>
         <source>Icon metatada not fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata pictogram niet opgehaald.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen pictogram opgehaald.</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Pictogram opgehaald van feed</translation>
     </message>
 </context>
 <context>
@@ -1585,11 +1556,11 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Send selected message via e-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde berichten verzenden via e-mail</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;database opschonen</translation>
     </message>
 </context>
 <context>
@@ -1628,23 +1599,23 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Source directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Source map</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Selecteer map</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Database en / of instellingen werden niet succesvol gekopieerd naar de herstel map.</translation>
     </message>
     <message>
         <source>Select source directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer source map</translation>
     </message>
     <message>
         <source>Good source directory is specified.</source>
-        <translation type="unfinished"></translation>
+        <translation>Juiste source map is opgegeven.</translation>
     </message>
 </context>
 <context>
@@ -2224,15 +2195,15 @@ MySQL backend maakt automatisch gebruik van databank met de naam &quot;rssguard&
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Webbrowser &amp; e-mail &amp; proxy</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder ongewenste Trolltech registersleutel (HKCU\\Software\\Trolltech) wanneer RssGuard wordt afgesloten (Gebruik op eigen risico!)</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database</translation>
     </message>
     <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
@@ -2240,61 +2211,73 @@ MySQL backend maakt automatisch gebruik van databank met de naam &quot;rssguard&
  • next web page (drag mouse right),
  • reload current web page (drag mouse up),
  • open new web browser tab (drag mouse down).</source>
-        <translation type="unfinished"></translation>
+        <translation>Muisbeweging werkt met middelste muisknop. Mogelijke muisbewegingen zijn:
+
+. vorige webpagina (sleep muis links),
+
+.volgende webpagina(sleep muis rechts),
+
+.herlaad huidige webpagina(sleep muis omhoog),
+
+Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik aangepaste externe webbrowser</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe e-mail client</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik een aangepaste externe e-mailclient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Uitvoerbaar bestand van e-mail client</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer client</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Plaatshouders: 
+
+•% 1 - titel van het geselecteerde bericht, 
+
+•% 2 - body van geselecteerde bericht.</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"></translation>
+        <translation>Sla alle gedownloade bestanden op naar</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer exe bestand voor e-mail</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"></translation>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database waar je volledige toegang tot hebt.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database is leeg.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkende database is ok</translation>
     </message>
 </context>
 <context>
@@ -2433,7 +2416,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan bestand &apos;%1&apos; niet openen om te lezen.</translation>
     </message>
 </context>
 <context>
@@ -2605,11 +2588,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Problem with starting external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Probleem om externe e-mail client te starten</translation>
     </message>
     <message>
         <source>External e-mail client could not be started.</source>
-        <translation type="unfinished"></translation>
+        <translation>Externe e-mail client kon niet worden gestart.</translation>
     </message>
 </context>
 <context>
@@ -2686,11 +2669,11 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"></translation>
+        <translation>toegang tot inhoud is geweigerd</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>verbinding verlopen of werd geannuleerd</translation>
     </message>
 </context>
 <context>
@@ -2716,20 +2699,20 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Load initial feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad eerste feeds</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wil je de eerste set van feeds laden?</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nederlands</translation>
     </message>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je startte %1 voor de eerste keer, nu kun je de eerste set van de feeds laden</translation>
     </message>
 </context>
 <context>
@@ -2850,23 +2833,23 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Move action up</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaats maatregel omhoog</translation>
     </message>
     <message>
         <source>Move action down</source>
-        <translation type="unfinished"></translation>
+        <translation>Verplaats maatregel omlaag</translation>
     </message>
     <message>
         <source>Add selected action</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg geselecteerde maatregel toe</translation>
     </message>
     <message>
         <source>Delete selected action</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder geselecteerde maatregel</translation>
     </message>
     <message>
         <source>Delete all actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle maatregels</translation>
     </message>
 </context>
 <context>
@@ -3080,11 +3063,11 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>source_page</source>
-        <translation type="unfinished"></translation>
+        <translation>Bron_pagina</translation>
     </message>
     <message>
         <source>Search &quot;%1&quot; via Google...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoek &quot;%1&quot; met google...</translation>
     </message>
 </context>
 </TS>

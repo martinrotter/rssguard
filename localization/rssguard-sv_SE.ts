@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
 <context>
     <name>Application</name>
     <message>
@@ -32,11 +30,11 @@
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Krymper databasfilen...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasfilen krympt...</translation>
     </message>
 </context>
 <context>
@@ -65,11 +63,11 @@
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished">MySQL/MariaDB (dedikerad databas)</translation>
+        <translation>MySQL/MariaDB (dedikerad databas)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished">SQLite (inbäddad databas)</translation>
+        <translation>SQLite (inbäddad databas)</translation>
     </message>
 </context>
 <context>
@@ -81,12 +79,9 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform>
-            <numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform>
-        </translation>
+        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -172,17 +167,11 @@ Denna webbsida innehåller %1 flöden.</numerusform>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minut kvar</numerusform>
-            <numerusform>%n minuter kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n sekund kvar</numerusform>
-            <numerusform>%n sekunder kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -202,10 +191,7 @@ Denna webbsida innehåller %1 flöden.</numerusform>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Laddar ner %1 fil</numerusform>
-            <numerusform>Laddar ner %1 filer</numerusform>
-        </translation>
+        <translation><numerusform>Laddar ner %1 fil</numerusform><numerusform>Laddar ner %1 filer</numerusform></translation>
     </message>
 </context>
 <context>
@@ -230,15 +216,15 @@ Denna webbsida innehåller %1 flöden.</numerusform>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Fel vid inläsning av flöden</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte rensa databasen</translation>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>
@@ -294,10 +280,7 @@ Denna webbsida innehåller %1 flöden.</numerusform>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -326,18 +309,12 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
-            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -371,10 +348,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n borttaget meddelande.</numerusform>
-            <numerusform>%n borttagna meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -556,7 +530,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Resurser</translation>
     </message>
 </context>
 <context>
@@ -766,62 +740,59 @@ Uppdateringsstatus: %5</translation>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensa databasen</translation>
     </message>
     <message>
         <source>Cleanup settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensningsningsinställningar</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla meddelanden äldre än</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"></translation>
+        <translation>Krymp databasfilen</translation>
     </message>
     <message>
         <source>Remove all read messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla lästa meddelanden</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasinformation</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasens filstorlek</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation type="unfinished"></translation>
+        <translation>Databastyp</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Förlopp</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jag är klar.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasrensning körs.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasrensning slutförd.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databasrensning misslyckades.</translation>
     </message>
 </context>
 <context>
@@ -1093,23 +1064,23 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon hämtades.</translation>
     </message>
     <message>
         <source>Icon metadata fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikonmetadata hämtad.</translation>
     </message>
     <message>
         <source>Icon metatada not fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikonmetadata hämtades inte.</translation>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikon hämtades inte.</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämta ikon från flödet</translation>
     </message>
 </context>
 <context>
@@ -1587,7 +1558,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rensa databasen</translation>
     </message>
 </context>
 <context>
@@ -2435,7 +2406,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte öppna filen &apos;%1&apos; för inläsning.</translation>
     </message>
 </context>
 <context>
@@ -2688,11 +2659,11 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>access to content was denied</source>
-        <translation type="unfinished"></translation>
+        <translation>åtkomst till innehållet nekades</translation>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>anslutningstiden överskreds, eller avbröts</translation>
     </message>
 </context>
 <context>
@@ -2718,20 +2689,20 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Load initial feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs in flöden</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du läsa in flödesuppsättningen?</translation>
     </message>
     <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Swedish</translation>
     </message>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du har startat %1 för första gången. Nu kan du läsa in inledande flödesuppsättning.</translation>
     </message>
 </context>
 <context>
@@ -3085,7 +3056,7 @@ Olästa nyheter: %2</translation>
     </message>
     <message>
         <source>Search &quot;%1&quot; via Google...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök &quot;%1&quot; via Google...</translation>
     </message>
 </context>
 </TS>
