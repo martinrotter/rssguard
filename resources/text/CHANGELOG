@@ -1,5 +1,5 @@
 <body>
-<center><h2>2.4.0 (not yet released)</h2></center>
+<center><h2>2.4.0</h2></center>
 Added:
 <ul>
 <li><b>Initial support for databse cleaning. See menu 'Tools -> Cleanup database'. (issue #101)</b></li>
