@@ -28,6 +28,7 @@ struct CleanerOrders {
   bool m_shrinkDatabase;
   bool m_removeOldMessages;
   bool m_removeRecycleBin;
+  bool m_removeStarredMessages;
   int m_barrierForRemovingOldMessagesInDays;
 };
 
@@ -48,6 +49,7 @@ class DatabaseCleaner : public QObject {
     void purgeDatabaseData(const CleanerOrders &which_data);
 
   private:
+    bool purgeStarredMessages(const QSqlDatabase &database);
     bool purgeReadMessages(const QSqlDatabase &database);
     bool purgeOldMessages(const QSqlDatabase &database, int days);
     bool purgeRecycleBin(const QSqlDatabase &database);

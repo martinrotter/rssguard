@@ -82,7 +82,7 @@ Mutex *Application::feedUpdateLock() {
 }
 
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
-                                         const QString &target_path, const QString &backup_name) {
+                                         const QString &target_path, const QString &backup_name) { 
   if (!QFileInfo(target_path).isWritable()) {
     throw ApplicationException(tr("Output directory is not writable."));
   }

@@ -91,15 +91,28 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
   emit purgeFinished(result);
 }
 
+bool DatabaseCleaner::purgeStarredMessages(const QSqlDatabase &database) {
+  QSqlQuery query = QSqlQuery(database);
+
+  query.setForwardOnly(true);
+  query.prepare("DELETE FROM Messages WHERE is_important = :is_important;");
+  query.bindValue(":is_important", 1);
+
+  return query.exec();
+}
+
 bool DatabaseCleaner::purgeReadMessages(const QSqlDatabase &database) {
   QSqlQuery query = QSqlQuery(database);
 
   query.setForwardOnly(true);
-  query.prepare("DELETE FROM Messages WHERE is_deleted = :is_deleted AND is_read = :is_read;");
+  query.prepare("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted AND is_read = :is_read;");
   query.bindValue(":is_read", 1);
 
   // Remove only messages which are NOT in recycle bin.
   query.bindValue(":is_deleted", 0);
+
+  // Remove only messages which are NOT starred.
+  query.bindValue(":is_important", 0);
 
   return query.exec();
 }
@@ -109,8 +122,11 @@ bool DatabaseCleaner::purgeOldMessages(const QSqlDatabase &database, int days) {
   qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-days).toMSecsSinceEpoch();
 
   query.setForwardOnly(true);
-  query.prepare("DELETE FROM Messages WHERE date_created < :date_created;");
+  query.prepare("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;");
   query.bindValue(":date_created", since_epoch);
+
+  // Remove only messages which are NOT starred.
+  query.bindValue(":is_important", 0);
 
   return query.exec();
 }
@@ -119,8 +135,11 @@ bool DatabaseCleaner::purgeRecycleBin(const QSqlDatabase &database) {
   QSqlQuery query = QSqlQuery(database);
 
   query.setForwardOnly(true);
-  query.prepare("DELETE FROM Messages WHERE is_deleted = :is_deleted;");
+  query.prepare("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted;");
   query.bindValue(":is_deleted", 1);
+
+  // Remove only messages which are NOT starred.
+  query.bindValue(":is_important", 0);
 
   return query.exec();
 }

@@ -86,6 +86,7 @@ void FormDatabaseCleanup::startPurging() {
   orders.m_barrierForRemovingOldMessagesInDays = m_ui->m_spinDays->value();
   orders.m_removeReadMessages = m_ui->m_checkRemoveReadMessages->isChecked();
   orders.m_shrinkDatabase = m_ui->m_checkShrink->isEnabled() && m_ui->m_checkShrink->isChecked();
+  orders.m_removeStarredMessages = m_ui->m_checkRemoveStarredMessages->isChecked();
 
   emit purgeRequested(orders);
 }
