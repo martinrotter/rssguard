@@ -29,6 +29,9 @@ class BaseLineEdit : public QLineEdit {
     explicit BaseLineEdit(QWidget *parent = 0);
     virtual ~BaseLineEdit();
 
+  public slots:
+    void submit(const QString &text);
+
   protected:
     void keyPressEvent(QKeyEvent *event);
 

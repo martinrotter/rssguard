@@ -65,8 +65,8 @@ project(rssguard)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.4.0")
-set(FILE_VERSION "2,4,0,0")
+set(APP_VERSION "2.4.1")
+set(FILE_VERSION "2,4,1,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -417,6 +417,7 @@ set(APP_SOURCES
   src/network-web/downloader.cpp
   src/network-web/downloadmanager.cpp
   src/network-web/discoverfeedsbutton.cpp
+  src/network-web/googlesuggest.cpp
 
   # MAIN sources.
   src/main.cpp
@@ -503,6 +504,7 @@ set(APP_HEADERS
   src/network-web/downloader.h
   src/network-web/downloadmanager.h
   src/network-web/discoverfeedsbutton.h
+  src/network-web/googlesuggest.h
 )
 
 # APP form files.

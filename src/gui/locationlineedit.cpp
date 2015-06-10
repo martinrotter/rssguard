@@ -17,15 +17,18 @@
 
 #include "gui/locationlineedit.h"
 
+#include "network-web/googlesuggest.h"
+
 #include <QMouseEvent>
 
 
 LocationLineEdit::LocationLineEdit(QWidget *parent)
-  : BaseLineEdit(parent), m_mouseSelectsAllText(true) {
+  : BaseLineEdit(parent), m_mouseSelectsAllText(true), m_googleSuggest(new GoogleSuggest(this)) {
   setPlaceholderText(tr("Website address goes here"));
 }
 
 LocationLineEdit::~LocationLineEdit() {
+
 }
 
 void LocationLineEdit::focusOutEvent(QFocusEvent *event) {

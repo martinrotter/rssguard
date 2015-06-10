@@ -22,6 +22,7 @@
 
 
 class WebBrowser;
+class GoogleSuggest;
 
 class LocationLineEdit : public BaseLineEdit {
     Q_OBJECT
@@ -37,6 +38,7 @@ class LocationLineEdit : public BaseLineEdit {
 
   private:
     bool m_mouseSelectsAllText;
+    GoogleSuggest *m_googleSuggest;
 };
 
 #endif // LOCATIONLINEEDIT_H
