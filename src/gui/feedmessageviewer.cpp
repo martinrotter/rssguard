@@ -287,6 +287,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(messageCountsChanged(int,int,bool)), this, SLOT(updateTrayIconStatus(int,int,bool)));
 
   // Message openers.
+  connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
   connect(m_messagesView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(openLinkNewTab(QString)),
@@ -311,7 +312,7 @@ void FeedMessageViewer::createConnections() {
   connect(form_main->m_ui->m_actionMarkSelectedMessagesAsUnread,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesUnread()));
   connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally,
-          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceArticlesExternally()));
+          SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesExternally()));
   connect(form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally,
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedSourceMessagesInternally()));
   connect(form_main->m_ui->m_actionOpenSelectedMessagesInternally,

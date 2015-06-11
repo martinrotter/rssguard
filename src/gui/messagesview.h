@@ -63,8 +63,9 @@ class MessagesView : public QTreeView {
     void loadFeeds(const FeedsSelection &selection);
 
     // Message manipulators.
-    void openSelectedSourceArticlesExternally();
+    void openSelectedSourceMessagesExternally();
     void openSelectedSourceMessagesInternally();
+    void openSelectedSourceMessagesInternallyNoNewTab();
     void openSelectedMessagesInternally();
     void sendSelectedMessageViaEmail();
 
@@ -110,6 +111,7 @@ class MessagesView : public QTreeView {
   signals:
     // Link/message openers.
     void openLinkNewTab(const QString &link);
+    void openLinkMiniBrowser(const QString &link);
     void openMessagesInNewspaperView(const QList<Message> &messages);
 
     // Notify others about message selections.

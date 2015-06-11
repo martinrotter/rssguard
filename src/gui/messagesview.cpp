@@ -56,9 +56,7 @@ void MessagesView::setSortingEnabled(bool enable) {
 }
 
 void MessagesView::createConnections() {
-  // Make sure that source message is opened
-  // in new tab on double click.
-  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceArticlesExternally()));
+  connect(this, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openSelectedSourceMessagesInternallyNoNewTab()));
 
   // Adjust columns when layout gets changed.
   connect(header(), SIGNAL(geometriesChanged()), this, SLOT(adjustColumns()));
@@ -249,7 +247,7 @@ void MessagesView::loadFeeds(const FeedsSelection &selection) {
   emit currentMessagesRemoved();
 }
 
-void MessagesView::openSelectedSourceArticlesExternally() {
+void MessagesView::openSelectedSourceMessagesExternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
@@ -263,7 +261,9 @@ void MessagesView::openSelectedSourceArticlesExternally() {
   }
 
   // Finally, mark opened messages as read.
-  markSelectedMessagesRead();
+  if (selectionModel()->selectedRows().size() > 1) {
+    markSelectedMessagesRead();
+  }
 }
 
 void MessagesView::openSelectedSourceMessagesInternally() {
@@ -282,7 +282,16 @@ void MessagesView::openSelectedSourceMessagesInternally() {
   }
 
   // Finally, mark opened messages as read.
-  markSelectedMessagesRead();
+  if (selectionModel()->selectedRows().size() > 1) {
+    markSelectedMessagesRead();
+  }
+}
+
+void MessagesView::openSelectedSourceMessagesInternallyNoNewTab() {
+  if (selectionModel()->selectedRows().size() == 1) {
+    emit openLinkMiniBrowser(
+          m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row()).m_url);
+  }
 }
 
 void MessagesView::openSelectedMessagesInternally() {
