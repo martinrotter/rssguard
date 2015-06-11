@@ -1,0 +1,3 @@
+[submodule "resources/binaries"]
+	path = resources/binaries
+	url = git@bitbucket.org:skunkos/qt-binaries.git
