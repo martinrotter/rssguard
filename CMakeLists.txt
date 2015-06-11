@@ -563,89 +563,89 @@ set(APP_TEXT
 
 if(WIN32)
   set(APP_DLLS_QT4_MSVC2013
-    resources/binaries/windows/deployment/qt4-msvc2013/libeay32.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/msvcp120.dll
-    resourcegit coms/binaries/windows/deployment/qt4-msvc2013/msvcr120.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/QtCore4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/QtGui4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/QtNetwork4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/QtSql4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/QtWebKit4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/QtXml4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/ssleay32.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/libmysql.dll
+    resources/binaries/windows/qt4-msvc2013/libeay32.dll
+    resources/binaries/windows/qt4-msvc2013/msvcp120.dll
+    resources/binaries/windows/qt4-msvc2013/msvcr120.dll
+    resources/binaries/windows/qt4-msvc2013/QtCore4.dll
+    resources/binaries/windows/qt4-msvc2013/QtGui4.dll
+    resources/binaries/windows/qt4-msvc2013/QtNetwork4.dll
+    resources/binaries/windows/qt4-msvc2013/QtSql4.dll
+    resources/binaries/windows/qt4-msvc2013/QtWebKit4.dll
+    resources/binaries/windows/qt4-msvc2013/QtXml4.dll
+    resources/binaries/windows/qt4-msvc2013/ssleay32.dll
+    resources/binaries/windows/qt4-msvc2013/libmysql.dll
   )
 
   set(APP_DLLS_QT4_MSVC2013_IMAGEFORMATS
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qgif4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qico4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qjpeg4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qmng4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qsvg4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qtga4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/imageformats/qtiff4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qgif4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qico4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qjpeg4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qmng4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qsvg4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qtga4.dll
+    resources/binaries/windows/qt4-msvc2013/imageformats/qtiff4.dll
   )
 
   set(APP_DLLS_QT4_MSVC2013_SQLDRIVERS
-    resources/binaries/windows/deployment/qt4-msvc2013/sqldrivers/qsqlite4.dll
-    resources/binaries/windows/deployment/qt4-msvc2013/sqldrivers/qsqlmysql4.dll
+    resources/binaries/windows/qt4-msvc2013/sqldrivers/qsqlite4.dll
+    resources/binaries/windows/qt4-msvc2013/sqldrivers/qsqlmysql4.dll
   )
 
   set(APP_DLLS_QT5_MSVC2013
-    resources/binaries/windows/deployment/qt5-msvc2013/icudt53.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/icuin53.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/icuuc53.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/libeay32.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/libEGL.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/libGLESv2.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/libmysql.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/msvcp120.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/msvcr120.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Core.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Gui.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Multimedia.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5MultimediaWidgets.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Network.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5OpenGL.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Positioning.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5PrintSupport.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Qml.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Quick.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Sensors.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Sql.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5WebChannel.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5WebKit.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5WebKitWidgets.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Widgets.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/Qt5Xml.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/ssleay32.dll
+    resources/binaries/windows/qt5-msvc2013/icudt53.dll
+    resources/binaries/windows/qt5-msvc2013/icuin53.dll
+    resources/binaries/windows/qt5-msvc2013/icuuc53.dll
+    resources/binaries/windows/qt5-msvc2013/libeay32.dll
+    resources/binaries/windows/qt5-msvc2013/libEGL.dll
+    resources/binaries/windows/qt5-msvc2013/libGLESv2.dll
+    resources/binaries/windows/qt5-msvc2013/libmysql.dll
+    resources/binaries/windows/qt5-msvc2013/msvcp120.dll
+    resources/binaries/windows/qt5-msvc2013/msvcr120.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Core.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Gui.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Multimedia.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5MultimediaWidgets.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Network.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5OpenGL.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Positioning.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5PrintSupport.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Qml.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Quick.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Sensors.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Sql.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5WebChannel.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5WebKit.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5WebKitWidgets.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Widgets.dll
+    resources/binaries/windows/qt5-msvc2013/Qt5Xml.dll
+    resources/binaries/windows/qt5-msvc2013/ssleay32.dll
   )
 
   set(APP_DLLS_QT5_MSVC2013_IMAGEFORMATS
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qdds.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qgif.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qicns.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qico.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qjpeg.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qmng.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qsvg.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qtga.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qtiff.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/imageformats/qwbmp.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qdds.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qgif.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qicns.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qico.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qjpeg.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qmng.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qsvg.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qtga.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qtiff.dll
+    resources/binaries/windows/qt5-msvc2013/imageformats/qwbmp.dll
   )
 
   set(APP_DLLS_QT5_MSVC2013_SQLDRIVERS
-    resources/binaries/windows/deployment/qt5-msvc2013/sqldrivers/qsqlite.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/sqldrivers/qsqlmysql.dll
+    resources/binaries/windows/qt5-msvc2013/sqldrivers/qsqlite.dll
+    resources/binaries/windows/qt5-msvc2013/sqldrivers/qsqlmysql.dll
   )
 
   set(APP_DLLS_QT5_MSVC2013_PLATFORMS
-    resources/binaries/windows/deployment/qt5-msvc2013/platforms/qminimal.dll
-    resources/binaries/windows/deployment/qt5-msvc2013/platforms/qwindows.dll
+    resources/binaries/windows/qt5-msvc2013/platforms/qminimal.dll
+    resources/binaries/windows/qt5-msvc2013/platforms/qwindows.dll
   )
 
   set(APP_DLLS_QT5_MSVC2013_PRINTSUPPORT
-    resources/binaries/windows/deployment/qt5-msvc2013/printsupport/windowsprintersupport.dll
+    resources/binaries/windows/qt5-msvc2013/printsupport/windowsprintersupport.dll
   )
 endif(WIN32)
 
