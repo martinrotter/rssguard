@@ -64,8 +64,8 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this)),
-    m_dbCleanerThread(NULL),
     m_feedDownloaderThread(NULL),
+    m_dbCleanerThread(NULL),
     m_feedDownloader(NULL),
     m_dbCleaner(NULL) {
   initialize();
@@ -261,6 +261,26 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
 }
 
+void FeedMessageViewer::updateMessageButtonsAvailability() {
+  bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
+  bool atleast_one_message_selected = m_messagesView->selectionModel()->selectedRows().size() >= 1;
+  bool recycle_bin_selected = m_messagesView->sourceModel()->loadedSelection().mode() == FeedsSelection::MessagesFromRecycleBin;
+  FormMain *form_main = qApp->mainForm();
+
+  form_main->m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
+  form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
+
+  form_main->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setEnabled(recycle_bin_selected && atleast_one_message_selected);
+
+  // TODO: To samo udělat s feedy, řešit pouze buttony, které se týkají výběru, ale také vzít v potaz, zda zrovna běží update.
+}
+
 void FeedMessageViewer::createConnections() {
   FormMain *form_main = qApp->mainForm();
 
@@ -271,6 +291,8 @@ void FeedMessageViewer::createConnections() {
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
+  connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
+  connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(feedsSelected(FeedsSelection)), m_messagesView, SLOT(loadFeeds(FeedsSelection)));
@@ -437,6 +459,8 @@ void FeedMessageViewer::initializeViews() {
   setTabOrder(m_messagesView, m_toolBarFeeds);
   setTabOrder(m_toolBarFeeds, m_toolBarMessages);
   setTabOrder(m_toolBarMessages, m_messagesBrowser);
+
+  updateMessageButtonsAvailability();
 }
 
 void FeedMessageViewer::showDbCleanupAssistant() {

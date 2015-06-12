@@ -103,7 +103,7 @@ class FeedMessageViewer : public TabContent {
 
     void updateFeeds(QList<FeedsModelFeed*> feeds);
 
-  protected slots:
+  private slots:
     // Updates counts of messages for example in tray icon.
     void updateTrayIconStatus(int unread_messages, int total_messages, bool any_unread_messages);
 
@@ -115,6 +115,8 @@ class FeedMessageViewer : public TabContent {
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();
+
+    void updateMessageButtonsAvailability();
 
   protected:
     // Initializes some properties of the widget.

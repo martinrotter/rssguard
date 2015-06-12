@@ -34,7 +34,7 @@ void Mutex::lock() {
 bool Mutex::tryLock() {
   bool result;
 
-  if (result = m_mutex->tryLock()) {
+  if ((result = m_mutex->tryLock())) {
     setLocked();
   }
 
@@ -44,7 +44,7 @@ bool Mutex::tryLock() {
 bool Mutex::tryLock(int timeout) {
   bool result;
 
-  if (result = m_mutex->tryLock(timeout)) {
+  if ((result = m_mutex->tryLock(timeout))) {
     setLocked();
   }
 
