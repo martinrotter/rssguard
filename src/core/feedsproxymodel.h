@@ -41,9 +41,13 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
 
+  public slots:
+    void invalidateFilter();
+
   protected:
     // Compares two rows of data.
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
+    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
 
   private:
     // Source model pointer.

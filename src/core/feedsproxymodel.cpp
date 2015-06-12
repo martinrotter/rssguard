@@ -179,6 +179,10 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right
   }
 }
 
+bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
+  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+}
+
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {
   QModelIndexList source_indexes;
 
@@ -187,4 +191,8 @@ QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes)
   }
 
   return source_indexes;
+}
+
+void FeedsProxyModel::invalidateFilter() {
+  QSortFilterProxyModel::invalidateFilter();
 }
