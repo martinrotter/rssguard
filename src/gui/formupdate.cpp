@@ -193,8 +193,7 @@ void FormUpdate::startUpdate() {
     // via self-update feature.
     close();
 
-    qDebug("Preparing to launch external installer '%s'.",
-           qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
+    qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
 #if defined(Q_OS_WIN)
     long exec_result = (long) ShellExecute(NULL,

@@ -117,6 +117,7 @@ class FeedMessageViewer : public TabContent {
     void switchFeedComponentVisibility();
 
     void updateMessageButtonsAvailability();
+    void updateFeedButtonsAvailability();
 
   protected:
     // Initializes some properties of the widget.

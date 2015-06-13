@@ -122,7 +122,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
   actions << m_ui->m_actionDeleteSelectedMessages;
   actions << m_ui->m_actionUpdateAllFeeds;
-  actions << m_ui->m_actionUpdateSelectedFeedsCategories;
+  actions << m_ui->m_actionUpdateSelectedFeeds;
   actions << m_ui->m_actionEditSelectedFeedCategory;
   actions << m_ui->m_actionDeleteSelectedFeedCategory;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
@@ -251,7 +251,7 @@ void FormMain::setupIcons() {
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme("item-new"));
   m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme("item-update-all"));
-  m_ui->m_actionUpdateSelectedFeedsCategories->setIcon(icon_theme_factory->fromTheme("item-update-selected"));
+  m_ui->m_actionUpdateSelectedFeeds->setIcon(icon_theme_factory->fromTheme("item-update-selected"));
   m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
   m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-remove"));
@@ -450,27 +450,9 @@ void FormMain::showAbout() {
 }
 
 void FormMain::showUpdates() {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("Cannot check for updates"),
-                                    tr("You cannot check for updates because feed update is ongoing."),
-                                    QSystemTrayIcon::Warning);
-    }
-    else {
-      MessageBox::show(this,
-                       QMessageBox::Warning,
-                       tr("Cannot check for updates"),
-                       tr("You cannot check for updates because feed update is ongoing."));
-    }
-
-    return;
-  }
-
   QPointer<FormUpdate> form_update = new FormUpdate(this);
   form_update.data()->exec();
   delete form_update.data();
-
-  qApp->feedUpdateLock()->unlock();
 }
 
 void FormMain::showWiki() {

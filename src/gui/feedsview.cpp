@@ -167,31 +167,17 @@ void FeedsView::loadExpandedStates() {
 }
 
 void FeedsView::updateAllFeeds() {
-  if (qApp->feedUpdateLock()->tryLock()) {
-    emit feedsUpdateRequested(allFeeds());
-  }
-  else {
-    qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update all items because another another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
-  }
+  emit feedsUpdateRequested(allFeeds());
+}
+
+void FeedsView::updateSelectedFeeds() {
+  emit feedsUpdateRequested(selectedFeeds());
 }
 
 void FeedsView::updateAllFeedsOnStartup() {
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
-  }
-}
-
-void FeedsView::updateSelectedFeeds() {
-  if (qApp->feedUpdateLock()->tryLock()) {
-    emit feedsUpdateRequested(selectedFeeds());
-  }
-  else {
-    qApp->showGuiMessage(tr("Cannot update selected items"),
-                         tr("You cannot update selected items because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
   }
 }
 
@@ -561,7 +547,7 @@ void FeedsView::selectPreviousItem() {
 void FeedsView::initializeContextMenuCategoriesFeeds() {
   m_contextMenuCategoriesFeeds = new QMenu(tr("Context menu for feeds"), this);
   m_contextMenuCategoriesFeeds->addActions(QList<QAction*>() <<
-                                           qApp->mainForm()->m_ui->m_actionUpdateSelectedFeedsCategories <<
+                                           qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
                                            qApp->mainForm()->m_ui->m_actionEditSelectedFeedCategory <<
                                            qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                            qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<

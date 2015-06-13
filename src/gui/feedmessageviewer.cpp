@@ -263,7 +263,7 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 
 void FeedMessageViewer::updateMessageButtonsAvailability() {
   bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
-  bool atleast_one_message_selected = m_messagesView->selectionModel()->selectedRows().size() >= 1;
+  bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
   bool recycle_bin_selected = m_messagesView->sourceModel()->loadedSelection().mode() == FeedsSelection::MessagesFromRecycleBin;
   FormMain *form_main = qApp->mainForm();
 
@@ -281,6 +281,27 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
   // TODO: To samo udělat s feedy, řešit pouze buttony, které se týkají výběru, ale také vzít v potaz, zda zrovna běží update.
 }
 
+void FeedMessageViewer::updateFeedButtonsAvailability() {
+  bool critical_action_running = qApp->feedUpdateLock()->isLocked();
+  bool feed_selected = !m_feedsView->selectionModel()->selectedRows().isEmpty();
+  FormMain *form_main = qApp->mainForm();
+
+  form_main->m_ui->m_actionAddCategory->setEnabled(!critical_action_running);
+  form_main->m_ui->m_actionAddFeed->setEnabled(!critical_action_running);
+  form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
+  form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
+  form_main->m_ui->m_actionClearSelectedFeeds->setEnabled(feed_selected);
+  form_main->m_ui->m_actionDeleteSelectedFeedCategory->setEnabled(!critical_action_running && feed_selected);
+  form_main->m_ui->m_actionEditSelectedFeedCategory->setEnabled(!critical_action_running && feed_selected);
+  form_main->m_ui->m_actionImportFeeds->setEnabled(!critical_action_running);
+  form_main->m_ui->m_actionMarkSelectedFeedsAsRead->setEnabled(feed_selected);
+  form_main->m_ui->m_actionMarkSelectedFeedsAsUnread->setEnabled(feed_selected);
+  form_main->m_ui->m_actionUpdateAllFeeds->setEnabled(!critical_action_running);
+  form_main->m_ui->m_actionUpdateSelectedFeeds->setEnabled(!critical_action_running && feed_selected);
+  form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected);
+  form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
+}
+
 void FeedMessageViewer::createConnections() {
   FormMain *form_main = qApp->mainForm();
 
@@ -293,6 +314,10 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
+
+  connect(m_feedsView, SIGNAL(feedsSelected(FeedsSelection)), this, SLOT(updateFeedButtonsAvailability()));
+  connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
+  connect(qApp->feedUpdateLock(), SIGNAL(unlocked()), this, SLOT(updateFeedButtonsAvailability()));
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(feedsSelected(FeedsSelection)), m_messagesView, SLOT(loadFeeds(FeedsSelection)));
@@ -351,7 +376,7 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
   connect(form_main->m_ui->m_actionClearAllFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(clearAllFeeds()));
-  connect(form_main->m_ui->m_actionUpdateSelectedFeedsCategories,
+  connect(form_main->m_ui->m_actionUpdateSelectedFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
   connect(form_main->m_ui->m_actionUpdateAllFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(updateAllFeeds()));
@@ -461,6 +486,7 @@ void FeedMessageViewer::initializeViews() {
   setTabOrder(m_toolBarMessages, m_messagesBrowser);
 
   updateMessageButtonsAvailability();
+  updateFeedButtonsAvailability();
 }
 
 void FeedMessageViewer::showDbCleanupAssistant() {
@@ -491,6 +517,13 @@ void FeedMessageViewer::refreshVisualProperties() {
 }
 
 void FeedMessageViewer::updateFeeds(QList<FeedsModelFeed *> feeds) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    qApp->showGuiMessage(tr("Cannot update all items"),
+                         tr("You cannot update all items because another another critical operation is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm());
+    return;
+  }
+
   if (m_feedDownloader == NULL) {
     m_feedDownloader = new FeedDownloader();
     m_feedDownloaderThread = new QThread();

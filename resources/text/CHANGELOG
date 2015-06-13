@@ -2,6 +2,7 @@
 <center><h2>2.4.1</h2></center>
 Added:
 <ul>
+<li>Unavailable actions in menus are automatically disabled when such a situation arises. (issue #28)</li>
 <li><b>Added support for Google auto-suggest API.</b> Just type your phrase in internal web browser location text box and Google will help you out.</li>
 </ul>
 

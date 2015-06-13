@@ -138,7 +138,7 @@
      <addaction name="m_actionAddFeed"/>
     </widget>
     <addaction name="m_actionUpdateAllFeeds"/>
-    <addaction name="m_actionUpdateSelectedFeedsCategories"/>
+    <addaction name="m_actionUpdateSelectedFeeds"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedFeedCategory"/>
@@ -274,12 +274,12 @@
     <string notr="true">Ctrl+Shift+U</string>
    </property>
   </action>
-  <action name="m_actionUpdateSelectedFeedsCategories">
+  <action name="m_actionUpdateSelectedFeeds">
    <property name="text">
     <string>Update &amp;selected feeds</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+U</string>
+    <string>Ctrl+U</string>
    </property>
   </action>
   <action name="m_actionEditSelectedFeedCategory">
