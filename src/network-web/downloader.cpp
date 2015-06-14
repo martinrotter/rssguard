@@ -31,7 +31,6 @@ Downloader::Downloader(QObject *parent)
   m_timer->setSingleShot(true);
 
   connect(m_timer, SIGNAL(timeout()), this, SLOT(timeout()));
-  //connect(m_downloadManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(finished(QNetworkReply*)));
 }
 
 Downloader::~Downloader() {

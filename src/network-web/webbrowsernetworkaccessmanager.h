@@ -37,7 +37,7 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     static WebBrowserNetworkAccessManager *instance();
 
   protected slots:
-    void onAuthenticationRequired(QNetworkReply * reply, QAuthenticator *authenticator);
+    void onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator);
 
   private:
     static QPointer<WebBrowserNetworkAccessManager> s_instance;

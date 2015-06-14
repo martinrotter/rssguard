@@ -24,7 +24,6 @@
 #include "gui/tabwidget.h"
 #include "gui/messagebox.h"
 #include "network-web/silentnetworkaccessmanager.h"
-#include "network-web/webbrowsernetworkaccessmanager.h"
 
 #include <math.h>
 
@@ -437,7 +436,7 @@ void DownloadItem::finished() {
 
 DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
   m_autoSaver(new AutoSaver(this)), m_model(new DownloadModel(this)),
-  m_networkManager(WebBrowserNetworkAccessManager::instance()), m_iconProvider(0), m_removePolicy(Never) {
+  m_networkManager(SilentNetworkAccessManager::instance()), m_iconProvider(0), m_removePolicy(Never) {
   m_ui->setupUi(this);
   m_ui->m_viewDownloads->setShowGrid(false);
   m_ui->m_viewDownloads->verticalHeader()->hide();

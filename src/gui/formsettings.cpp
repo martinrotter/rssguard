@@ -457,6 +457,7 @@ void FormSettings::saveProxy() {
   settings->setValue(GROUP(Proxy), Proxy::Port, m_ui->m_spinProxyPort->value());
 
   // Reload settings for all network access managers.
+  SilentNetworkAccessManager::instance()->loadSettings();
   WebBrowserNetworkAccessManager::instance()->loadSettings();
 }
 

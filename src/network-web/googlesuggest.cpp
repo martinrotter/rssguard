@@ -46,7 +46,7 @@
 #include "network-web/googlesuggest.h"
 
 #include "definitions/definitions.h"
-#include "network-web/webbrowsernetworkaccessmanager.h"
+#include "network-web/silentnetworkaccessmanager.h"
 #include "gui/locationlineedit.h"
 
 #include <QListWidget>
@@ -171,7 +171,7 @@ void GoogleSuggest::autoSuggest() {
   QString str = QUrl::toPercentEncoding(editor->text());
   QString url = QString(GOOGLE_SUGGEST_URL).arg(str);
 
-  connect(WebBrowserNetworkAccessManager::instance()->get(QNetworkRequest(QString(url))), SIGNAL(finished()),
+  connect(SilentNetworkAccessManager::instance()->get(QNetworkRequest(QString(url))), SIGNAL(finished()),
           this, SLOT(handleNetworkData()));
 }
 
