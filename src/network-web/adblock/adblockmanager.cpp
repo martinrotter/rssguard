@@ -43,6 +43,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "network-web/silentnetworkaccessmanager.h"
+#include "gui/formmain.h"
 
 #include <QDateTime>
 #include <QTextStream>
@@ -445,8 +446,14 @@ AdBlockSubscription* AdBlockManager::subscriptionByName(const QString &name) con
   return 0;
 }
 
-AdBlockDialog* AdBlockManager::showDialog()
-{
+AdBlockDialog *AdBlockManager::showDialog() {
+  QPointer<AdBlockDialog> form_pointer = new AdBlockDialog();
+  form_pointer.data()->show();
+  form_pointer.data()->raise();
+  form_pointer.data()->activateWindow();
+  form_pointer.data()->setAttribute(Qt::WA_DeleteOnClose, true);
+  return form_pointer.data();
+  /*
   if (!m_adBlockDialog) {
     m_adBlockDialog = new AdBlockDialog;
   }
@@ -455,7 +462,7 @@ AdBlockDialog* AdBlockManager::showDialog()
   m_adBlockDialog.data()->raise();
   m_adBlockDialog.data()->activateWindow();
 
-  return m_adBlockDialog.data();
+  return m_adBlockDialog.data();*/
 }
 
 void AdBlockManager::showRule()

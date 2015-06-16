@@ -20,12 +20,11 @@
 
 #include <QStatusBar>
 
-#include <adblock/adblockicon.h>
-
 
 class QProgressBar;
-class QToolButton;
+class PlainToolButton;
 class QLabel;
+class AdBlockIcon;
 
 class StatusBar : public QStatusBar {
     Q_OBJECT
@@ -35,11 +34,13 @@ class StatusBar : public QStatusBar {
     explicit StatusBar(QWidget *parent = 0);
     virtual ~StatusBar();
 
-    inline QToolButton *fullscreenSwitcher() const {
+    inline PlainToolButton *fullscreenSwitcher() const {
       return m_fullscreenSwitcher;
     }
 
-      AdBlockIcon *adBlockIcon() { return adblockIcon_; }
+    inline AdBlockIcon *adBlockIcon() {
+      return m_adblockIcon;
+    }
 
   public slots:
     // Progress bar operations
@@ -49,8 +50,6 @@ class StatusBar : public QStatusBar {
     void showProgressDownload(int progress, const QString &tooltip);
     void clearProgressDownload();
 
-    void displayDownloadManager();
-
   protected:
     bool eventFilter(QObject *watched, QEvent *event);
 
@@ -59,8 +58,8 @@ class StatusBar : public QStatusBar {
     QLabel *m_lblProgressFeeds;
     QProgressBar *m_barProgressDownload;
     QLabel *m_lblProgressDownload;
-    QToolButton *m_fullscreenSwitcher;
-    AdBlockIcon* adblockIcon_;
+    PlainToolButton *m_fullscreenSwitcher;
+    AdBlockIcon* m_adblockIcon;
 };
 
 #endif // STATUSBAR_H

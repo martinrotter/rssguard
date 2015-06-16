@@ -19,6 +19,8 @@
 
 #include "gui/formmain.h"
 #include "gui/tabwidget.h"
+#include "gui/plaintoolbutton.h"
+#include "network-web/adblock/adblockicon.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QToolButton>
@@ -31,11 +33,10 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
   setContentsMargins(0, 0, 0, 0);
 
-    adblockIcon_ = new AdBlockIcon(this);
+  m_adblockIcon = new AdBlockIcon(this);
 
   // Initializations of widgets for status bar.
-  m_fullscreenSwitcher = new QToolButton(this);
-  m_fullscreenSwitcher->setAutoRaise(true);
+  m_fullscreenSwitcher = new PlainToolButton(this);
   m_fullscreenSwitcher->setCheckable(true);
   m_fullscreenSwitcher->setIcon(qApp->icons()->fromTheme("view-fullscreen"));
   m_fullscreenSwitcher->setText(tr("Fullscreen mode"));
@@ -68,22 +69,18 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   addPermanentWidget(m_barProgressFeeds);
   addPermanentWidget(m_lblProgressDownload);
   addPermanentWidget(m_barProgressDownload);
+  addPermanentWidget(m_adblockIcon);
   addPermanentWidget(m_fullscreenSwitcher);
-  addPermanentWidget(adblockIcon_);
 }
 
 StatusBar::~StatusBar() {
   qDebug("Destroying StatusBar instance.");
 }
 
-void StatusBar::displayDownloadManager() {
-  qApp->mainForm()->tabWidget()->showDownloadManager();
-}
-
 bool StatusBar::eventFilter(QObject *watched, QEvent *event) {
   if (watched == m_lblProgressDownload || watched == m_barProgressDownload) {
     if (event->type() == QEvent::MouseButtonPress) {
-      displayDownloadManager();
+      qApp->mainForm()->tabWidget()->showDownloadManager();
     }
   }
 

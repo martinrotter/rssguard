@@ -33,6 +33,9 @@ class PlainToolButton : public QToolButton {
     int padding() const;
     void setPadding(int padding);
 
+  public slots:
+    void setChecked(bool checked);
+
   protected:
     // Custom look.
     void paintEvent(QPaintEvent *e);

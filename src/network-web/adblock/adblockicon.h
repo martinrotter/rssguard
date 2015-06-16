@@ -35,50 +35,49 @@
 #ifndef ADBLOCKICON_H
 #define ADBLOCKICON_H
 
-#include <QToolButton>
+#include "gui/plaintoolbutton.h"
 
-#include "adblockrule.h"
 
 class QMenu;
 class QUrl;
-class MainWindow;
+class AdBlockRule;
 
-class AdBlockIcon : public QToolButton
-{
-  Q_OBJECT
-public:
-  explicit AdBlockIcon(QWidget *window, QWidget *parent = 0);
-  ~AdBlockIcon();
+class AdBlockIcon : public PlainToolButton {
+    Q_OBJECT
+  public:
+    // Constructors.
+    explicit AdBlockIcon(QWidget *window, QWidget *parent = 0);
+    virtual ~AdBlockIcon();
 
-  void retranslateStrings();
-  void popupBlocked(const QString &ruleString, const QUrl &url);
-  QAction* menuAction();
+    void popupBlocked(const QString &ruleString, const QUrl &url);
+    QAction *menuAction();
 
-signals:
-  void clicked(QPoint);
+  public slots:
+    void setEnabled(bool enabled);
+    void createMenu(QMenu *menu = NULL);
 
-public slots:
-  void setEnabled(bool enabled);
-  void createMenu(QMenu* menu = 0);
+  private slots:
+    void showMenu(const QPoint &pos);
+    void toggleCustomFilter();
 
-private slots:
-  void showMenu(const QPoint &pos);
-  void toggleCustomFilter();
+    void animateIcon();
+    void stopAnimation();
 
-  void animateIcon();
-  void stopAnimation();
+  protected:
+    void mouseReleaseEvent(QMouseEvent *event);
 
-private:
-  void mouseReleaseEvent(QMouseEvent* event);
+  signals:
+    void clicked(QPoint);
 
-  QWidget *m_window;
-  QAction* m_menuAction;
+  private:
+    QWidget *m_window;
+    QAction* m_menuAction;
 
-  QVector<QPair<AdBlockRule*, QUrl> > m_blockedPopups;
-  QTimer* m_flashTimer;
+    QVector<QPair<AdBlockRule*, QUrl> > m_blockedPopups;
+    QTimer* m_flashTimer;
 
-  int m_timerTicks;
-  bool m_enabled;
+    int m_timerTicks;
+    bool m_enabled;
 };
 
 #endif // ADBLOCKICON_H

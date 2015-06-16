@@ -77,82 +77,80 @@ class FollowRedirectReply;
 
 class AdBlockSubscription : public QObject
 {
-  Q_OBJECT
-public:
-  explicit AdBlockSubscription(const QString &title, QObject* parent = 0);
-  ~AdBlockSubscription();
+    Q_OBJECT
+  public:
+    explicit AdBlockSubscription(const QString &title, QObject* parent = 0);
+    ~AdBlockSubscription();
 
-  QString title() const;
-  void setTitle(const QString &title);
+    QString title() const;
+    void setTitle(const QString &title);
 
-  QString filePath() const;
-  void setFilePath(const QString &path);
+    QString filePath() const;
+    void setFilePath(const QString &path);
 
-  QUrl url() const;
-  void setUrl(const QUrl &url);
+    QUrl url() const;
+    void setUrl(const QUrl &url);
 
-  virtual void loadSubscription(const QStringList &disabledRules);
-  virtual void saveSubscription();
+    virtual void loadSubscription(const QStringList &disabledRules);
+    virtual void saveSubscription();
 
-  const AdBlockRule* rule(int offset) const;
-  QVector<AdBlockRule*> allRules() const;
+    const AdBlockRule* rule(int offset) const;
+    QVector<AdBlockRule*> allRules() const;
 
-  const AdBlockRule* enableRule(int offset);
-  const AdBlockRule* disableRule(int offset);
+    const AdBlockRule* enableRule(int offset);
+    const AdBlockRule* disableRule(int offset);
 
-  virtual bool canEditRules() const;
-  virtual bool canBeRemoved() const;
+    virtual bool canEditRules() const;
+    virtual bool canBeRemoved() const;
 
-  virtual int addRule(AdBlockRule* rule);
-  virtual bool removeRule(int offset);
-  virtual const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
+    virtual int addRule(AdBlockRule* rule);
+    virtual bool removeRule(int offset);
+    virtual const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
 
-public slots:
-  void updateSubscription();
+  public slots:
+    void updateSubscription();
 
-signals:
-  void subscriptionChanged();
-  void subscriptionUpdated();
-  void subscriptionError(const QString &message);
+  signals:
+    void subscriptionChanged();
+    void subscriptionUpdated();
+    void subscriptionError(const QString &message);
 
-protected slots:
-  void subscriptionDownloaded();
+  protected slots:
+    void subscriptionDownloaded();
 
-protected:
-  virtual bool saveDownloadedData(const QByteArray &data);
+  protected:
+    virtual bool saveDownloadedData(const QByteArray &data);
 
-  FollowRedirectReply* m_reply;
+    FollowRedirectReply* m_reply;
 
-  QVector<AdBlockRule*> m_rules;
+    QVector<AdBlockRule*> m_rules;
 
-private:
-  QString m_title;
-  QString m_filePath;
+  private:
+    QString m_title;
+    QString m_filePath;
 
-  QUrl m_url;
-  bool m_updated;
+    QUrl m_url;
+    bool m_updated;
 };
 
 class AdBlockCustomList : public AdBlockSubscription
 {
-  Q_OBJECT
-public:
-  explicit AdBlockCustomList(QObject* parent = 0);
+    Q_OBJECT
+  public:
+    explicit AdBlockCustomList(QObject* parent = 0);
 
-  void retranslateStrings();
+    void loadSubscription(const QStringList &disabledRules);
+    void saveSubscription();
 
-  void loadSubscription(const QStringList &disabledRules);
-  void saveSubscription();
+    bool canEditRules() const;
+    bool canBeRemoved() const;
 
-  bool canEditRules() const;
-  bool canBeRemoved() const;
+    bool containsFilter(const QString &filter) const;
+    bool removeFilter(const QString &filter);
 
-  bool containsFilter(const QString &filter) const;
-  bool removeFilter(const QString &filter);
-
-  int addRule(AdBlockRule* rule);
-  bool removeRule(int offset);
-  const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
+    int addRule(AdBlockRule* rule);
+    bool removeRule(int offset);
+    const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
 };
 
 #endif // ADBLOCKSUBSCRIPTION_H

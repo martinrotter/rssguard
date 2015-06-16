@@ -57,7 +57,16 @@
       <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item row="4" column="0" colspan="2">
@@ -66,10 +75,6 @@
          <widget class="QPushButton" name="buttonOptions">
           <property name="text">
            <string>Options</string>
-          </property>
-          <property name="icon">
-           <iconset resource="../../QuiteRSS.qrc">
-            <normaloff>:/images/images/adblock.png</normaloff>:/images/images/adblock.png</iconset>
           </property>
          </widget>
         </item>
@@ -129,7 +134,7 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="standardButtons">
-        <set>QDialogButtonBox::Ok</set>
+        <set>QDialogButtonBox::Close</set>
        </property>
       </widget>
      </item>
@@ -137,9 +142,7 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../../QuiteRSS.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>adblockCheckBox</sender>
@@ -154,6 +157,22 @@
     <hint type="destinationlabel">
      <x>349</x>
      <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>clicked(QAbstractButton*)</signal>
+   <receiver>AdBlockDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>434</x>
+     <y>440</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>272</x>
+     <y>230</y>
     </hint>
    </hints>
   </connection>

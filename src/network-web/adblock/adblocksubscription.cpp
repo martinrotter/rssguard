@@ -327,16 +327,10 @@ AdBlockSubscription::~AdBlockSubscription()
 
 // AdBlockCustomList
 
-AdBlockCustomList::AdBlockCustomList(QObject* parent)
-  : AdBlockSubscription(tr("Custom Rules"), parent)
-{
+AdBlockCustomList::AdBlockCustomList(QObject* parent) : AdBlockSubscription(tr("Custom rules"), parent) {
+  setTitle(tr("Custom rules"));
   // TODO
   setFilePath(qApp->homeFolderPath() + "/adblock/customlist.txt");
-}
-
-void AdBlockCustomList::retranslateStrings()
-{
-  setTitle(tr("Custom Rules"));
 }
 
 void AdBlockCustomList::loadSubscription(const QStringList &disabledRules)

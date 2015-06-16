@@ -39,8 +39,9 @@ void PlainToolButton::paintEvent(QPaintEvent *e) {
   // Set padding.
   rect.adjust(m_padding, m_padding, -m_padding, -m_padding);
 
+
   // Paint the icon.
-  if (underMouse()) {
+  if (underMouse() || isChecked()) {
     p.setOpacity(0.7);
   }
 
@@ -53,7 +54,11 @@ int PlainToolButton::padding() const {
 
 void PlainToolButton::setPadding(int padding) {
   m_padding = padding;
+  repaint();
+}
 
+void PlainToolButton::setChecked(bool checked) {
+  QToolButton::setChecked(checked);
   repaint();
 }
 

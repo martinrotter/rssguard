@@ -89,6 +89,10 @@ AdBlockDialog::AdBlockDialog(QWidget* parent)
   buttonBox->setFocus();
 }
 
+AdBlockDialog::~AdBlockDialog() {
+  qDebug("Destroying AdBlockDialog instance.");
+}
+
 void AdBlockDialog::showRule(const AdBlockRule* rule) const
 {
   AdBlockSubscription* subscription = rule->subscription();
@@ -210,7 +214,7 @@ void AdBlockDialog::load()
 
   m_loaded = true;
 
-  QTimer::singleShot(50, this, SLOT(loadSubscriptions()));
+  QTimer::singleShot(100, this, SLOT(loadSubscriptions()));
 }
 
 void AdBlockDialog::closeEvent(QCloseEvent* ev)

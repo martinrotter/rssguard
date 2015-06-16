@@ -32,16 +32,18 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 * ============================================================ */
-#include "adblockicon.h"
-#include "adblockrule.h"
-#include "adblockmanager.h"
-#include "adblocksubscription.h"
-#include "webpage.h"
+#include "network-web/adblock/adblockicon.h"
+
+#include "network-web/adblock/adblockrule.h"
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblocksubscription.h"
+#include "network-web/webpage.h"
+#include "network-web/webbrowser.h"
 
 #include "miscellaneous/application.h"
+#include "gui/plaintoolbutton.h"
 #include "gui/formmain.h"
 #include "gui/tabwidget.h"
-#include "network-web/webbrowser.h"
 
 #include <QMenu>
 #include <QMouseEvent>
@@ -50,25 +52,11 @@
 
 
 AdBlockIcon::AdBlockIcon(QWidget *window, QWidget *parent)
-  : QToolButton(parent)
-  , m_window(window)
-  , m_menuAction(0)
-  , m_flashTimer(0)
-  , m_timerTicks(0)
-  , m_enabled(false)
-{
-  setFocusPolicy(Qt::NoFocus);
-  setStyleSheet("QToolButton { border: none; padding: 0px; }");
+  : PlainToolButton(parent), m_window(window), m_menuAction(0), m_flashTimer(0), m_timerTicks(0), m_enabled(false) {
+  setToolTip(tr("Adblock lets you block unwanted content on web pages."));
 
   connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
   connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
-}
-
-void AdBlockIcon::retranslateStrings()
-{
-  setToolTip(tr("AdBlock lets you block unwanted content on web pages"));
-
-  AdBlockManager::instance()->customList()->retranslateStrings();
 }
 
 void AdBlockIcon::popupBlocked(const QString &ruleString, const QUrl &url)
@@ -117,24 +105,25 @@ QAction* AdBlockIcon::menuAction()
   return m_menuAction;
 }
 
-void AdBlockIcon::createMenu(QMenu* menu)
+void AdBlockIcon::createMenu(QMenu *menu)
 {
-  if (!menu) {
+  if (menu == NULL) {
     menu = qobject_cast<QMenu*>(sender());
-    if (!menu) {
+
+    if (menu == NULL) {
       return;
     }
   }
 
   menu->clear();
 
-  AdBlockManager* manager = AdBlockManager::instance();
-  AdBlockCustomList* customList = manager->customList();
+  AdBlockManager *manager = AdBlockManager::instance();
+  AdBlockCustomList *customList = manager->customList();
 
   WebPage* page = qApp->mainForm()->tabWidget()->widget(qApp->mainForm()->tabWidget()->currentIndex())->webBrowser()->view()->page();
   const QUrl pageUrl = page->mainFrame()->url();
 
-  menu->addAction(tr("Show AdBlock &Settings"), manager, SLOT(showDialog()));
+  menu->addAction(tr("Show Adblock &settings"), manager, SLOT(showDialog()));
   menu->addSeparator();
 
   if (!pageUrl.host().isEmpty() && m_enabled && manager->canRunOnScheme(pageUrl.scheme())) {
@@ -244,10 +233,10 @@ void AdBlockIcon::stopAnimation()
 void AdBlockIcon::setEnabled(bool enabled)
 {
   if (enabled) {
-    setIcon(QIcon(":images/images/adblock.png"));
+    setIcon(qApp->icons()->fromTheme("web-adblock"));
   }
   else {
-    setIcon(QIcon(":images/images/adblock-disabled.png"));
+    setIcon(qApp->icons()->fromTheme("web-adblock-disabled"));
   }
 
   m_enabled = enabled;

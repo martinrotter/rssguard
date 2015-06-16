@@ -35,6 +35,7 @@
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/formupdate.h"
+#include "gui/plaintoolbutton.h"
 #include "gui/formimportexport.h"
 #include "gui/formbackupdatabasesettings.h"
 #include "gui/formrestoredatabasesettings.h"

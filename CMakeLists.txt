@@ -431,8 +431,6 @@ set(APP_SOURCES
   src/network-web/adblock/adblocktreewidget.cpp
   src/network-web/adblock/followredirectreply.cpp
 
-
-
   # MAIN sources.
   src/main.cpp
 )
@@ -526,8 +524,6 @@ set(APP_HEADERS
   src/network-web/adblock/adblockicon.h
   src/network-web/adblock/adblockmanager.h
   src/network-web/adblock/adblockmatcher.h
-  src/network-web/adblock/adblockrule.h
-  src/network-web/adblock/adblocksearchtree.h
   src/network-web/adblock/adblocksubscription.h
   src/network-web/adblock/adblocktreewidget.h
   src/network-web/adblock/followredirectreply.h
