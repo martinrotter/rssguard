@@ -20,6 +20,8 @@
 
 #include <QStatusBar>
 
+#include <adblock/adblockicon.h>
+
 
 class QProgressBar;
 class QToolButton;
@@ -36,6 +38,8 @@ class StatusBar : public QStatusBar {
     inline QToolButton *fullscreenSwitcher() const {
       return m_fullscreenSwitcher;
     }
+
+      AdBlockIcon *adBlockIcon() { return adblockIcon_; }
 
   public slots:
     // Progress bar operations
@@ -55,7 +59,8 @@ class StatusBar : public QStatusBar {
     QLabel *m_lblProgressFeeds;
     QProgressBar *m_barProgressDownload;
     QLabel *m_lblProgressDownload;
-    QToolButton *m_fullscreenSwitcher;  
+    QToolButton *m_fullscreenSwitcher;
+    AdBlockIcon* adblockIcon_;
 };
 
 #endif // STATUSBAR_H

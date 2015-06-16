@@ -20,6 +20,8 @@
 
 #include "network-web/basenetworkaccessmanager.h"
 
+#include "webpage.h"
+
 #include <QPointer>
 
 
@@ -29,7 +31,7 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
 
   public:
     // Constructors and destructors.
-    explicit WebBrowserNetworkAccessManager(QObject *parent = 0);
+    explicit WebBrowserNetworkAccessManager(WebPage *page = 0, QObject *parent = 0);
     virtual ~WebBrowserNetworkAccessManager();
 
     // Returns pointer to global network access manager
@@ -40,7 +42,13 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     void onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator);
 
   private:
+      WebPage* page_;
+
     static QPointer<WebBrowserNetworkAccessManager> s_instance;
+
+    // QNetworkAccessManager interface
+  protected:
+    QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData);
 };
 
 #endif // WEBBROWSERNETWORKACCESSMANAGER_H

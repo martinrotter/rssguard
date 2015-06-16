@@ -19,13 +19,15 @@
 
 #include "miscellaneous/application.h"
 
+#include "network-web/adblock/adblockmanager.h"
+
 #include <QNetworkReply>
 
 
 QPointer<WebBrowserNetworkAccessManager> WebBrowserNetworkAccessManager::s_instance;
 
-WebBrowserNetworkAccessManager::WebBrowserNetworkAccessManager(QObject *parent)
-  : BaseNetworkAccessManager(parent) {
+WebBrowserNetworkAccessManager::WebBrowserNetworkAccessManager(WebPage *page, QObject *parent)
+  : BaseNetworkAccessManager(parent), page_(page) {
   connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
           this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)));
 }
@@ -41,9 +43,27 @@ void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *rep
   qDebug("URL '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
 }
 
+QNetworkReply *WebBrowserNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice *outgoingData) {
+  if (page_) {
+    QNetworkRequest pageRequest = request;
+    page_->populateNetworkRequest(pageRequest);
+    return WebBrowserNetworkAccessManager::instance()->createRequest(op, pageRequest, outgoingData);
+  }
+
+  if (op == QNetworkAccessManager::GetOperation) {
+    QNetworkReply *reply = AdBlockManager::instance()->block(request);
+
+    if (reply) {
+      return reply;
+    }
+  }
+
+  return BaseNetworkAccessManager::createRequest(op, request, outgoingData);
+}
+
 WebBrowserNetworkAccessManager *WebBrowserNetworkAccessManager::instance() {
   if (s_instance.isNull()) {
-    s_instance = new WebBrowserNetworkAccessManager(qApp);
+    s_instance = new WebBrowserNetworkAccessManager(0, qApp);
   }
 
   return s_instance;

@@ -419,6 +419,20 @@ set(APP_SOURCES
   src/network-web/discoverfeedsbutton.cpp
   src/network-web/googlesuggest.cpp
 
+  src/network-web/adblock/adblockaddsubscriptiondialog.cpp
+  src/network-web/adblock/adblockblockednetworkreply.cpp
+  src/network-web/adblock/adblockdialog.cpp
+  src/network-web/adblock/adblockicon.cpp
+  src/network-web/adblock/adblockmanager.cpp
+  src/network-web/adblock/adblockmatcher.cpp
+  src/network-web/adblock/adblockrule.cpp
+  src/network-web/adblock/adblocksearchtree.cpp
+  src/network-web/adblock/adblocksubscription.cpp
+  src/network-web/adblock/adblocktreewidget.cpp
+  src/network-web/adblock/followredirectreply.cpp
+
+
+
   # MAIN sources.
   src/main.cpp
 )
@@ -505,6 +519,18 @@ set(APP_HEADERS
   src/network-web/downloadmanager.h
   src/network-web/discoverfeedsbutton.h
   src/network-web/googlesuggest.h
+
+  src/network-web/adblock/adblockaddsubscriptiondialog.h
+  src/network-web/adblock/adblockblockednetworkreply.h
+  src/network-web/adblock/adblockdialog.h
+  src/network-web/adblock/adblockicon.h
+  src/network-web/adblock/adblockmanager.h
+  src/network-web/adblock/adblockmatcher.h
+  src/network-web/adblock/adblockrule.h
+  src/network-web/adblock/adblocksearchtree.h
+  src/network-web/adblock/adblocksubscription.h
+  src/network-web/adblock/adblocktreewidget.h
+  src/network-web/adblock/followredirectreply.h
 )
 
 # APP form files.
@@ -522,6 +548,9 @@ set(APP_FORMS
   src/gui/formdatabasecleanup.ui
   src/network-web/downloadmanager.ui
   src/network-web/downloaditem.ui
+
+  src/network-web/adblock/adblockaddsubscriptiondialog.ui
+  src/network-web/adblock/adblockdialog.ui
 )
 
 # APP translations.

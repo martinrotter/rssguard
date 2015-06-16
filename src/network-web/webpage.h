@@ -19,12 +19,25 @@
 #define WEBPAGE_H
 
 #include <QWebPage>
+#include <QNetworkAccessManager>
+#include <QSslCertificate>
 
+
+class AdBlockRule;
 
 class WebPage : public QWebPage {
     Q_OBJECT
 
   public:
+    struct AdBlockedEntry {
+      const AdBlockRule* rule;
+      QUrl url;
+
+      bool operator==(const AdBlockedEntry &other) const {
+        return (this->rule == other.rule && this->url == other.url);
+      }
+    };
+
     // Constructors and destructors.
     explicit WebPage(QObject *parent = 0);
     virtual ~WebPage();
@@ -32,11 +45,35 @@ class WebPage : public QWebPage {
     QString toHtml() const;
     QString toPlainText() const;
 
+      void populateNetworkRequest(QNetworkRequest &request);
+
+    bool isLoading() const;
+
+    static bool isPointerSafeToUse(WebPage* page);
+    void addAdBlockRule(const AdBlockRule* rule, const QUrl &url);
+    QVector<AdBlockedEntry> adBlockedEntries() const;
+
+
   private slots:
+    void progress(int prog);
+    void finished();
+    void cleanBlockedObjects();
+    void urlChanged(const QUrl &url);
+
     void handleUnsupportedContent(QNetworkReply *reply);
 
   protected:
     bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
+
+  private:
+    QWebPage::NavigationType lastRequestType_;
+    QUrl lastRequestUrl_;
+
+    bool adjustingScheduled_;
+    static QList<WebPage*> livingPages_;
+    QVector<AdBlockedEntry> adBlockedEntries_;
+
+    int loadProgress_;
 };
 
 #endif // BASEWEBPAGE_H

@@ -56,6 +56,10 @@ class WebBrowser : public TabContent {
       return m_webView->icon();
     }
 
+    inline WebView *view() {
+      return m_webView;
+    }
+
     // Sets this WebBrowser instance as focused.
     inline void setFocus(Qt::FocusReason reason) {
       m_txtLocation->setFocus(reason);

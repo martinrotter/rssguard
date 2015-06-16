@@ -31,6 +31,8 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   setSizeGripEnabled(false);
   setContentsMargins(0, 0, 0, 0);
 
+    adblockIcon_ = new AdBlockIcon(this);
+
   // Initializations of widgets for status bar.
   m_fullscreenSwitcher = new QToolButton(this);
   m_fullscreenSwitcher->setAutoRaise(true);
@@ -67,6 +69,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   addPermanentWidget(m_lblProgressDownload);
   addPermanentWidget(m_barProgressDownload);
   addPermanentWidget(m_fullscreenSwitcher);
+  addPermanentWidget(adblockIcon_);
 }
 
 StatusBar::~StatusBar() {

@@ -23,7 +23,7 @@
 
 
 Downloader::Downloader(QObject *parent)
-  : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
+  : QObject(parent), m_activeReply(NULL), m_downloadManager(SilentNetworkAccessManager::instance()),
     m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_lastOutputData(QByteArray()),
     m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
 
@@ -34,7 +34,7 @@ Downloader::Downloader(QObject *parent)
 }
 
 Downloader::~Downloader() {
-  m_downloadManager->deleteLater();
+  //m_downloadManager->deleteLater();
 }
 
 void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username, const QString &password) {
