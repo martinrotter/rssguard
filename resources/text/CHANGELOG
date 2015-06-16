@@ -8,6 +8,7 @@ Added:
 
 Fixed:
 <ul>
+<li>Google suggest API now prevents completion if ENTER in address textbox is hit.</li>
 <li>Double-clickin on message now results in opening source article in mini web browser.</li>
 </ul>
 
