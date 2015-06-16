@@ -31,6 +31,8 @@
 #include <QThread>
 #include <QProcess>
 
+#include <adblock/adblockmanager.h>
+
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
@@ -208,6 +210,7 @@ void Application::onAboutToQuit() {
   mainForm()->tabWidget()->feedMessageViewer()->quit();
   database()->saveDatabase();
   mainForm()->saveSize();
+  AdBlockManager::instance()->save();
 
   if (locked_safely) {
     // Application obtained permission to close in a safe way.

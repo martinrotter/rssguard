@@ -34,7 +34,7 @@ Downloader::Downloader(QObject *parent)
 }
 
 Downloader::~Downloader() {
-  m_downloadManager->deleteLater();
+  //m_downloadManager->deleteLater();
 }
 
 void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username, const QString &password) {
