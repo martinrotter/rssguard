@@ -35,8 +35,6 @@
 #ifndef ADBLOCKMANAGER_H
 #define ADBLOCKMANAGER_H
 
-#define ADBLOCK_EASYLIST_URL "https://easylist-downloads.adblockplus.org/easylist.txt"
-
 #ifndef QSL
 #if QT_VERSION >= 0x050000
 #define QSL(x) QStringLiteral(x)
@@ -103,7 +101,7 @@ class AdBlockManager : public QObject
     void addDisabledRule(const QString &filter);
     void removeDisabledRule(const QString &filter);
 
-    AdBlockSubscription* addSubscription(const QString &title, const QString &url);
+    AdBlockSubscription *addSubscription(const QString &title, const QString &url);
     bool removeSubscription(AdBlockSubscription* subscription);
 
     AdBlockCustomList* customList() const;
@@ -126,11 +124,10 @@ class AdBlockManager : public QObject
     bool m_useLimitedEasyList;
 
     QList<AdBlockSubscription*> m_subscriptions;
-    static AdBlockManager* s_adBlockManager;
     AdBlockMatcher* m_matcher;
     QStringList m_disabledRules;
 
-    QPointer<AdBlockDialog> m_adBlockDialog;
+    static AdBlockManager* s_adBlockManager;
 };
 
 #endif // ADBLOCKMANAGER_H

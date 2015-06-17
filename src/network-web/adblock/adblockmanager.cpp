@@ -58,26 +58,20 @@
 #include <QElapsedTimer>
 #endif
 
-AdBlockManager* AdBlockManager::s_adBlockManager = 0;
+AdBlockManager* AdBlockManager::s_adBlockManager = NULL;
 
 AdBlockManager::AdBlockManager(QObject* parent)
-  : QObject(parent)
-  , m_loaded(false)
-  , m_enabled(true)
-  , m_useLimitedEasyList(true)
-  , m_matcher(new AdBlockMatcher(this)), m_subscriptions(QList<AdBlockSubscription*>())
-{
+  : QObject(parent), m_loaded(false), m_enabled(false), m_useLimitedEasyList(true),
+    m_matcher(new AdBlockMatcher(this)), m_subscriptions(QList<AdBlockSubscription*>()) {
   load();
 }
 
-AdBlockManager::~AdBlockManager()
-{
+AdBlockManager::~AdBlockManager() {
   qDeleteAll(m_subscriptions);
 }
 
-AdBlockManager* AdBlockManager::instance()
-{
-  if (!s_adBlockManager) {
+AdBlockManager* AdBlockManager::instance() {
+  if (s_adBlockManager == NULL) {
     s_adBlockManager = new AdBlockManager(SilentNetworkAccessManager::instance());
   }
 
@@ -132,6 +126,7 @@ void AdBlockManager::setEnabled(bool enabled)
   }
 
   m_enabled = enabled;
+
   emit enabledChanged(enabled);
 
   Settings *settings = qApp->settings();
@@ -139,7 +134,10 @@ void AdBlockManager::setEnabled(bool enabled)
   settings->setValue("enabled", m_enabled);
   settings->endGroup();
 
+  // Load subscriptions and other data.
   load();
+
+  // Inform others (mainly ICON and MATCHER), that there are some changes.
   // TODO
   //mainApp->reloadUserStyleBrowser();
 }
@@ -207,10 +205,10 @@ void AdBlockManager::removeDisabledRule(const QString &filter)
   m_disabledRules.removeOne(filter);
 }
 
-AdBlockSubscription* AdBlockManager::addSubscription(const QString &title, const QString &url)
+AdBlockSubscription *AdBlockManager::addSubscription(const QString &title, const QString &url)
 {
   if (title.isEmpty() || url.isEmpty()) {
-    return 0;
+    return NULL;
   }
 
   QString fileName = filterCharsFromFilename(title.toLower()) + ".txt";
@@ -281,6 +279,7 @@ void AdBlockManager::load()
   QDateTime lastUpdate = settings->value("AdBlock","lastUpdate", QDateTime()).toDateTime();
 
   if (!m_enabled) {
+    // We loaded settings, but Adblock should be disabled. Do not continue to save memory.
     return;
   }
 
@@ -447,22 +446,12 @@ AdBlockSubscription* AdBlockManager::subscriptionByName(const QString &name) con
 }
 
 AdBlockDialog *AdBlockManager::showDialog() {
-  QPointer<AdBlockDialog> form_pointer = new AdBlockDialog();
+  QPointer<AdBlockDialog> form_pointer = new AdBlockDialog(qApp->mainForm());
   form_pointer.data()->show();
   form_pointer.data()->raise();
   form_pointer.data()->activateWindow();
   form_pointer.data()->setAttribute(Qt::WA_DeleteOnClose, true);
   return form_pointer.data();
-  /*
-  if (!m_adBlockDialog) {
-    m_adBlockDialog = new AdBlockDialog;
-  }
-
-  m_adBlockDialog.data()->show();
-  m_adBlockDialog.data()->raise();
-  m_adBlockDialog.data()->activateWindow();
-
-  return m_adBlockDialog.data();*/
 }
 
 void AdBlockManager::showRule()

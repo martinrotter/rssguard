@@ -59,6 +59,10 @@ class TabWidget : public QTabWidget {
       return static_cast<TabContent*>(QTabWidget::widget(index));
     }
 
+    inline TabContent *currentWidget() const {
+      return static_cast<TabContent*>(QTabWidget::currentWidget());
+    }
+
     // Initializes TabWidget with tabs, this includes initialization
     // of main "Feeds" widget.
     void initializeTabs();

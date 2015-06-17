@@ -37,10 +37,7 @@
 #include "adblockrule.h"
 #include "adblocksubscription.h"
 
-AdBlockMatcher::AdBlockMatcher(AdBlockManager* manager)
-  : QObject(manager)
-  , m_manager(manager)
-{
+AdBlockMatcher::AdBlockMatcher(AdBlockManager* manager) : QObject(manager), m_manager(manager) {
   connect(manager, SIGNAL(enabledChanged(bool)), this, SLOT(enabledChanged(bool)));
 }
 
@@ -117,7 +114,7 @@ QString AdBlockMatcher::elementHidingRulesForDomain(const QString &domain) const
     if (!rule->matchDomain(domain))
       continue;
 
-    if (Q_UNLIKELY(addedRulesCount == 1000)) {
+    if (addedRulesCount == 1000) {
       rules.append(rule->cssSelector());
       rules.append(QLatin1String("{display:none !important;}\n"));
       addedRulesCount = 0;
@@ -205,7 +202,7 @@ void AdBlockMatcher::update()
     if (rule->isDomainRestricted()) {
       m_domainRestrictedCssRules.append(rule);
     }
-    else if (Q_UNLIKELY(hidingRulesCount == 1000)) {
+    else if (hidingRulesCount == 1000) {
       m_elementHidingRules.append(rule->cssSelector());
       m_elementHidingRules.append(QLatin1String("{display:none !important;} "));
       hidingRulesCount = 0;
@@ -238,8 +235,10 @@ void AdBlockMatcher::clear()
 
 void AdBlockMatcher::enabledChanged(bool enabled)
 {
-  if (enabled)
+  if (enabled) {
     update();
-  else
+  }
+  else {
     clear();
+  }
 }

@@ -1,42 +1,31 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-#include "adblockdialog.h"
-#include "adblockmanager.h"
-#include "adblocksubscription.h"
-#include "adblocktreewidget.h"
-#include "adblockaddsubscriptiondialog.h"
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
+#include "network-web/adblock/adblockdialog.h"
+
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblocksubscription.h"
+#include "network-web/adblock/adblocktreewidget.h"
+#include "network-web/adblock/adblockaddsubscriptiondialog.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+#include "gui/tabwidget.h"
+#include "gui/formmain.h"
 
 #include <QDesktopWidget>
 #include <QMenu>
@@ -44,98 +33,99 @@
 #include <QMessageBox>
 #include <QInputDialog>
 
-AdBlockDialog::AdBlockDialog(QWidget* parent)
-  : QWidget(parent)
-  , m_manager(AdBlockManager::instance())
-  , m_currentTreeWidget(0)
-  , m_currentSubscription(0)
-  , m_loaded(false)
-  , m_useLimitedEasyList(false)
-{
+
+AdBlockDialog::AdBlockDialog(QWidget* parent) : QDialog(parent), m_ui(new Ui::AdBlockDialog),
+  m_manager(AdBlockManager::instance()), m_currentTreeWidget(NULL),
+  m_currentSubscription(NULL), m_loaded(false), m_useLimitedEasyList(false) {
+  m_ui->setupUi(this);
   setAttribute(Qt::WA_DeleteOnClose);
-  setupUi(this);
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  setWindowIcon(qApp->icons()->fromTheme("web-adblock"));
 
-  const QRect screen = QApplication::desktop()->screenGeometry();
-  const QRect size = geometry();
-  move((screen.width() - size.width()) / 2, (screen.height() - size.height()) / 2);
-  tabWidget->setDocumentMode(false);
-#ifdef Q_OS_MAC
-  tabWidget->setDocumentMode(false);
-#endif
-  adblockCheckBox->setChecked(m_manager->isEnabled());
+  m_ui->m_checkEnable->setChecked(m_manager->isEnabled());
+  m_ui->m_checkUseLimitedEasyList->setVisible(false);
+  m_ui->m_btnOptions->setIcon(qApp->icons()->fromTheme("web-adblock"));
+  m_ui->m_btnOptions->setText(m_ui->m_btnOptions->text() + "   ");
 
-  buttonOptions->setText(buttonOptions->text() % "   ");
+  // Setup the menu.
+  setupMenu();
 
-  QMenu* menu = new QMenu(buttonOptions);
-  m_actionAddRule = menu->addAction(tr("Add Rule"), this, SLOT(addRule()));
-  m_actionRemoveRule = menu->addAction(tr("Remove Rule"), this, SLOT(removeRule()));
-  menu->addSeparator();
-  m_actionAddSubscription = menu->addAction(tr("Add Subscription"), this, SLOT(addSubscription()));
-  m_actionRemoveSubscription = menu->addAction(tr("Remove Subscription"), this, SLOT(removeSubscription()));
-  menu->addAction(tr("Update Subscriptions"), m_manager, SLOT(updateAllSubscriptions()));
-  menu->addSeparator();
-  menu->addAction(tr("Learn about writing rules..."), this, SLOT(learnAboutRules()));
+  // Initialize connections.
+  createConnections();
 
-  buttonOptions->setMenu(menu);
-  connect(menu, SIGNAL(aboutToShow()), this, SLOT(aboutToShowMenu()));
-
-  connect(adblockCheckBox, SIGNAL(toggled(bool)), this, SLOT(enableAdBlock(bool)));
-  connect(search, SIGNAL(textChanged(QString)), this, SLOT(filterString(QString)));
-  connect(tabWidget, SIGNAL(currentChanged(int)), this, SLOT(currentChanged(int)));
-  connect(buttonBox, SIGNAL(accepted()), this, SLOT(close()));
-
+  // Load the contents.
   load();
 
-  buttonBox->setFocus();
+  m_ui->m_buttonBox->setFocus();
 }
 
 AdBlockDialog::~AdBlockDialog() {
   qDebug("Destroying AdBlockDialog instance.");
+  delete m_ui;
 }
 
-void AdBlockDialog::showRule(const AdBlockRule* rule) const
-{
+void AdBlockDialog::setupMenu() {
+  QMenu *menu = new QMenu(m_ui->m_btnOptions);
+
+  m_actionAddRule = menu->addAction(tr("Add rule"), this, SLOT(addRule()));
+  m_actionRemoveRule = menu->addAction(tr("Remove rule"), this, SLOT(removeRule()));
+  menu->addSeparator();
+  m_actionAddSubscription = menu->addAction(tr("Add subscription"), this, SLOT(addSubscription()));
+  m_actionRemoveSubscription = menu->addAction(tr("Remove subscription"), this, SLOT(removeSubscription()));
+  menu->addAction(tr("Update subscriptions"), m_manager, SLOT(updateAllSubscriptions()));
+  menu->addSeparator();
+  menu->addAction(tr("Rules writing guide"), this, SLOT(learnAboutRules()));
+
+  m_ui->m_btnOptions->setMenu(menu);
+}
+
+void AdBlockDialog::createConnections() {
+  connect(m_ui->m_btnOptions->menu(), SIGNAL(aboutToShow()), this, SLOT(aboutToShowMenu()));
+  connect(m_ui->m_checkEnable, SIGNAL(toggled(bool)), this, SLOT(enableAdBlock(bool)));
+  connect(m_ui->m_txtFilter, SIGNAL(textChanged(QString)), this, SLOT(filterString(QString)));
+  connect(m_ui->m_tabs, SIGNAL(currentChanged(int)), this, SLOT(currentChanged(int)));
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(close()));
+}
+
+void AdBlockDialog::showRule(const AdBlockRule* rule) const {
   AdBlockSubscription* subscription = rule->subscription();
-  if (!subscription) {
+
+  if (subscription == NULL) {
     return;
   }
 
-  for (int i = 0; i < tabWidget->count(); ++i) {
-    AdBlockTreeWidget* treeWidget = qobject_cast<AdBlockTreeWidget*>(tabWidget->widget(i));
+  for (int i = 0; i < m_ui->m_tabs->count(); i++) {
+    AdBlockTreeWidget* treeWidget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i));
 
     if (subscription == treeWidget->subscription()) {
       treeWidget->showRule(rule);
-      tabWidget->setCurrentIndex(i);
+      m_ui->m_tabs->setCurrentIndex(i);
       break;
     }
   }
 }
 
-void AdBlockDialog::addRule()
-{
+void AdBlockDialog::addRule() {
   m_currentTreeWidget->addRule();
 }
 
-void AdBlockDialog::removeRule()
-{
+void AdBlockDialog::removeRule() {
   m_currentTreeWidget->removeRule();
 }
 
-void AdBlockDialog::addSubscription()
-{
+void AdBlockDialog::addSubscription() {
   AdBlockAddSubscriptionDialog dialog(this);
-  if (dialog.exec() != QDialog::Accepted) {
-    return;
-  }
 
-  QString title = dialog.title();
-  QString url = dialog.url();
+  if (dialog.exec() == QDialog::Accepted) {
+    QString title = dialog.title();
+    QString url = dialog.url();
 
-  if (AdBlockSubscription* subscription = m_manager->addSubscription(title, url)) {
-    AdBlockTreeWidget* tree = new AdBlockTreeWidget(subscription, tabWidget);
-    int index = tabWidget->insertTab(tabWidget->count() - 1, tree, subscription->title());
+    if (AdBlockSubscription *subscription = m_manager->addSubscription(title, url)) {
+      AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
+      int index = m_ui->m_tabs->insertTab(m_ui->m_tabs->count() - 1, tree, subscription->title());
 
-    tabWidget->setCurrentIndex(index);
+      m_ui->m_tabs->setCurrentIndex(index);
+    }
   }
 }
 
@@ -146,26 +136,24 @@ void AdBlockDialog::removeSubscription()
   }
 }
 
-void AdBlockDialog::currentChanged(int index)
-{
+void AdBlockDialog::currentChanged(int index) {
   if (index != -1) {
-    m_currentTreeWidget = qobject_cast<AdBlockTreeWidget*>(tabWidget->widget(index));
+    m_currentTreeWidget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(index));
     m_currentSubscription = m_currentTreeWidget->subscription();
 
-    bool isEasyList = m_currentSubscription->url() == QUrl(ADBLOCK_EASYLIST_URL);
-    useLimitedEasyList->setVisible(isEasyList);
+    bool is_easylist = m_currentSubscription->url() == QUrl(ADBLOCK_EASYLIST_URL);
+    m_ui->m_checkUseLimitedEasyList->setEnabled(is_easylist && m_ui->m_checkEnable->isChecked());
+    m_ui->m_checkUseLimitedEasyList->setVisible(is_easylist);
   }
 }
 
-void AdBlockDialog::filterString(const QString &string)
-{
-  if (m_currentTreeWidget && adblockCheckBox->isChecked()) {
+void AdBlockDialog::filterString(const QString &string) {
+  if (m_currentTreeWidget && m_ui->m_checkEnable->isChecked()) {
     m_currentTreeWidget->filterString(string);
   }
 }
 
-void AdBlockDialog::enableAdBlock(bool state)
-{
+void AdBlockDialog::enableAdBlock(bool state) {
   m_manager->setEnabled(state);
 
   if (state) {
@@ -173,8 +161,7 @@ void AdBlockDialog::enableAdBlock(bool state)
   }
 }
 
-void AdBlockDialog::aboutToShowMenu()
-{
+void AdBlockDialog::aboutToShowMenu() {
   bool subscriptionEditable = m_currentSubscription && m_currentSubscription->canEditRules();
   bool subscriptionRemovable = m_currentSubscription && m_currentSubscription->canBeRemoved();
 
@@ -183,34 +170,30 @@ void AdBlockDialog::aboutToShowMenu()
   m_actionRemoveSubscription->setEnabled(subscriptionRemovable);
 }
 
-void AdBlockDialog::learnAboutRules()
-{
-  // TODO
-  //mainApp->mainWindow()->openNewsTab_ = NEW_TAB_FOREGROUND;
-  //mainApp->mainWindow()->createWebTab(QUrl("http://adblockplus.org/en/filters"));
+void AdBlockDialog::learnAboutRules() {
+  qApp->mainForm()->tabWidget()->addBrowser(true, true, QUrl(ADBLOCK_FILTERS_HELP));
+  QTimer::singleShot(100, this, SLOT(close()));
 }
 
-void AdBlockDialog::loadSubscriptions()
-{
-  for (int i = 0; i < tabWidget->count(); ++i) {
-    AdBlockTreeWidget* treeWidget = qobject_cast<AdBlockTreeWidget*>(tabWidget->widget(i));
-    treeWidget->refresh();
+void AdBlockDialog::loadSubscriptions() {
+  for (int i = 0; i < m_ui->m_tabs->count(); ++i) {
+    qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i))->refresh();
   }
 }
 
 void AdBlockDialog::load()
 {
-  if (m_loaded || !adblockCheckBox->isChecked()) {
+  if (m_loaded || !m_ui->m_checkEnable->isChecked()) {
     return;
   }
 
   foreach (AdBlockSubscription* subscription, m_manager->subscriptions()) {
-    AdBlockTreeWidget* tree = new AdBlockTreeWidget(subscription, tabWidget);
-    tabWidget->addTab(tree, subscription->title());
+    AdBlockTreeWidget* tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
+    m_ui->m_tabs->addTab(tree, subscription->title());
   }
 
   m_useLimitedEasyList = m_manager->useLimitedEasyList();
-  useLimitedEasyList->setChecked(m_useLimitedEasyList);
+  m_ui->m_checkUseLimitedEasyList->setChecked(m_useLimitedEasyList);
 
   m_loaded = true;
 
@@ -219,8 +202,8 @@ void AdBlockDialog::load()
 
 void AdBlockDialog::closeEvent(QCloseEvent* ev)
 {
-  if (useLimitedEasyList->isChecked() != m_useLimitedEasyList) {
-    m_manager->setUseLimitedEasyList(useLimitedEasyList->isChecked());
+  if (m_ui->m_checkUseLimitedEasyList->isChecked() != m_useLimitedEasyList) {
+    m_manager->setUseLimitedEasyList(m_ui->m_checkUseLimitedEasyList->isChecked());
   }
 
   QWidget::closeEvent(ev);

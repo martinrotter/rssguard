@@ -1,37 +1,21 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Copyright (c) 2009, Benjamin C. Meyer <ben@meyerhome.net>
  *
@@ -60,40 +44,38 @@
  * SUCH DAMAGE.
  */
 
-#include "adblockblockednetworkreply.h"
-#include "adblocksubscription.h"
-#include "adblockrule.h"
+#include "network-web/adblock/adblockblockednetworkreply.h"
+
+#include "network-web/adblock/adblocksubscription.h"
+#include "network-web/adblock/adblockrule.h"
 
 #include <QNetworkRequest>
 #include <QTimer>
 
-AdBlockBlockedNetworkReply::AdBlockBlockedNetworkReply(const AdBlockRule* rule, QObject* parent)
-  : QNetworkReply(parent)
-{
+
+AdBlockBlockedNetworkReply::AdBlockBlockedNetworkReply(const AdBlockRule *rule, QObject *parent)
+  : QNetworkReply(parent) {
   setOperation(QNetworkAccessManager::GetOperation);
-  setError(QNetworkReply::ContentAccessDenied, QString("AdBlock: %1 (%2)").arg(rule->subscription()->title(), rule->filter()));
-
+  setError(QNetworkReply::ContentAccessDenied, QString("Adblock: %1 (%2)").arg(rule->subscription()->title(), rule->filter()));
   open(QIODevice::ReadOnly);
-
   QTimer::singleShot(0, this, SLOT(delayedFinished()));
 }
 
-void AdBlockBlockedNetworkReply::setRequest(const QNetworkRequest &request)
-{
+void AdBlockBlockedNetworkReply::abort() {
+}
+
+void AdBlockBlockedNetworkReply::setRequest(const QNetworkRequest &request) {
   QNetworkReply::setRequest(request);
   setUrl(request.url());
 }
 
-qint64 AdBlockBlockedNetworkReply::readData(char* data, qint64 maxSize)
-{
+qint64 AdBlockBlockedNetworkReply::readData(char *data, qint64 maxSize) {
   Q_UNUSED(data);
   Q_UNUSED(maxSize);
   return -1;
 }
 
-void AdBlockBlockedNetworkReply::delayedFinished()
-{
+void AdBlockBlockedNetworkReply::delayedFinished() {
   emit error(QNetworkReply::ContentAccessDenied);
   emit finished();
 }
-

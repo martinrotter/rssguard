@@ -1,46 +1,38 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-#include "adblockaddsubscriptiondialog.h"
-#include "adblockmanager.h"
-#include "ui_adblockaddsubscriptiondialog.h"
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
-  : QDialog(parent)
-  , ui(new Ui::AdBlockAddSubscriptionDialog)
-{
-  ui->setupUi(this);
+#include "network-web/adblock/adblockaddsubscriptiondialog.h"
+
+#include "network-web/adblock/adblockmanager.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+#include "gui/lineeditwithstatus.h"
+
+#include <QPushButton>
+
+
+AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget *parent)
+  : QDialog(parent), m_ui(new Ui::AdBlockAddSubscriptionDialog) {
+  m_ui->setupUi(this);
+
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  setWindowIcon(qApp->icons()->fromTheme("web-adblock"));
 
   m_knownSubscriptions << Subscription("EasyList (English)", ADBLOCK_EASYLIST_URL)
                        << Subscription("Fanboy's List (English)", "http://www.fanboy.co.nz/adblock/fanboy-adblock.txt")
@@ -63,52 +55,72 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget* parent)
                        << Subscription("RU AdList (Russian, Ukrainian)", "https://easylist-downloads.adblockplus.org/advblock.txt")
                        << Subscription("ABPindo (Indonesian)", "https://indonesianadblockrules.googlecode.com/hg/subscriptions/abpindo.txt")
                        << Subscription("ChinaList (Chinese)", "http://adblock-chinalist.googlecode.com/svn/trunk/adblock.txt")
-                       << Subscription("Malware Domains list", "https://easylist-downloads.adblockplus.org/malwaredomains_full.txt");
+                       << Subscription("Malware Domains list", "https://easylist-downloads.adblockplus.org/malwaredomains_full.txt") <<
+                          Subscription(tr("Other list"), QString());
 
   foreach (const Subscription &subscription, m_knownSubscriptions) {
-    ui->comboBox->addItem(subscription.title);
+    m_ui->m_cmbPresets->addItem(subscription.m_title);
   }
 
-  connect(ui->comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(indexChanged(int)));
+  connect(m_ui->m_cmbPresets, SIGNAL(currentIndexChanged(int)), this, SLOT(indexChanged(int)));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
   indexChanged(0);
 }
 
-QString AdBlockAddSubscriptionDialog::title() const
-{
-  return ui->title->text();
+QString AdBlockAddSubscriptionDialog::title() const {
+  return m_ui->m_txtTitle->lineEdit()->text();
 }
 
-QString AdBlockAddSubscriptionDialog::url() const
-{
-  return ui->url->text();
+QString AdBlockAddSubscriptionDialog::url() const {
+  return m_ui->m_txtUrl->lineEdit()->text();
 }
 
-void AdBlockAddSubscriptionDialog::indexChanged(int index)
-{
+void AdBlockAddSubscriptionDialog::indexChanged(int index) {
   const Subscription subscription = m_knownSubscriptions.at(index);
 
-  // "Other..." entry
-  if (subscription.url.isEmpty()) {
-    ui->title->clear();
-    ui->url->clear();
+  // "Other" entry.
+  if (subscription.m_url.isEmpty()) {
+    m_ui->m_txtTitle->lineEdit()->clear();
+    m_ui->m_txtUrl->lineEdit()->clear();
   }
   else {
-    int pos = subscription.title.indexOf(QLatin1Char('('));
-    QString title = subscription.title;
+    int pos = subscription.m_title.indexOf(QLatin1Char('('));
+    QString title = subscription.m_title;
 
     if (pos > 0) {
       title = title.left(pos).trimmed();
     }
 
-    ui->title->setText(title);
-    ui->title->setCursorPosition(0);
-
-    ui->url->setText(subscription.url);
-    ui->url->setCursorPosition(0);
+    m_ui->m_txtTitle->lineEdit()->setText(title);
+    m_ui->m_txtTitle->lineEdit()->setCursorPosition(0);
+    m_ui->m_txtUrl->lineEdit()->setText(subscription.m_url);
+    m_ui->m_txtUrl->lineEdit()->setCursorPosition(0);
   }
 }
 
-AdBlockAddSubscriptionDialog::~AdBlockAddSubscriptionDialog()
-{
-  delete ui;
+void AdBlockAddSubscriptionDialog::checkInputs() {
+  bool is_ok = true;
+
+  if (!m_ui->m_txtTitle->lineEdit()->text().simplified().isEmpty()) {
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::Ok, tr("Entered title is okay."));
+  }
+  else {
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::Error, tr("Entered title is empty."));
+    is_ok = false;
+  }
+
+  if (!m_ui->m_txtUrl->lineEdit()->text().simplified().isEmpty()) {
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("Entered url is okay."));
+  }
+  else {
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("Entered url is empty."));
+    is_ok = false;
+  }
+
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(is_ok);
+}
+
+AdBlockAddSubscriptionDialog::~AdBlockAddSubscriptionDialog() {
+  delete m_ui;
 }

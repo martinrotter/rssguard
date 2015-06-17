@@ -21,4 +21,5 @@
 *.app
 
 # Other files.
+*.autosave
 *.user*

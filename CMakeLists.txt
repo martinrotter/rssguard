@@ -703,6 +703,7 @@ include_directories (
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/src/gui
   ${CMAKE_SOURCE_DIR}/src/network-web
+  ${CMAKE_SOURCE_DIR}/src/network-web/adblock
   ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts
   ${CMAKE_BINARY_DIR}/src
 )

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>AdBlockDialog</class>
- <widget class="QWidget" name="AdBlockDialog">
+ <widget class="QDialog" name="AdBlockDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>546</width>
-    <height>462</height>
+    <width>451</width>
+    <height>408</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AdBlock Configuration</string>
+   <string>Adblock settings</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QCheckBox" name="adblockCheckBox">
+    <widget class="QCheckBox" name="m_checkEnable">
      <property name="text">
-      <string>Enable AdBlock</string>
+      <string>Enable Adblock</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -25,34 +25,22 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QLineEdit" name="search">
-       <property name="placeholderText">
-        <string>Search...</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>50</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+    <widget class="QLabel" name="m_lblInfo">
+     <property name="font">
+      <font>
+       <italic>true</italic>
+      </font>
+     </property>
+     <property name="text">
+      <string>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
    <item>
-    <widget class="QWidget" name="adblockWidget" native="true">
+    <widget class="QWidget" name="m_adBlockWidget" native="true">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -72,9 +60,16 @@
       <item row="4" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QPushButton" name="buttonOptions">
+         <widget class="QPushButton" name="m_btnOptions">
           <property name="text">
            <string>Options</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_txtFilter">
+          <property name="placeholderText">
+           <string>Filter rules</string>
           </property>
          </widget>
         </item>
@@ -91,30 +86,10 @@
           </property>
          </spacer>
         </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>AdBlock</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item row="2" column="0">
-       <widget class="QTabWidget" name="tabWidget">
-        <property name="currentIndex">
-         <number>-1</number>
-        </property>
-        <property name="documentMode">
-         <bool>true</bool>
-        </property>
-       </widget>
+       <widget class="QTabWidget" name="m_tabs"/>
       </item>
      </layout>
     </widget>
@@ -122,14 +97,17 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QCheckBox" name="useLimitedEasyList">
+      <widget class="QCheckBox" name="m_checkUseLimitedEasyList">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="text">
         <string>Use only essential part of EasyList (for performance reasons)</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="buttonBox">
+      <widget class="QDialogButtonBox" name="m_buttonBox">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -145,9 +123,9 @@
  <resources/>
  <connections>
   <connection>
-   <sender>adblockCheckBox</sender>
+   <sender>m_checkEnable</sender>
    <signal>toggled(bool)</signal>
-   <receiver>adblockWidget</receiver>
+   <receiver>m_adBlockWidget</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -161,7 +139,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>clicked(QAbstractButton*)</signal>
    <receiver>AdBlockDialog</receiver>
    <slot>close()</slot>

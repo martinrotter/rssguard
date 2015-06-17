@@ -7,38 +7,32 @@
     <x>0</x>
     <y>0</y>
     <width>557</width>
-    <height>162</height>
+    <height>142</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Add Subscription</string>
+   <string>Add subscription</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <item row="1" column="0" colspan="2">
-    <widget class="QComboBox" name="comboBox"/>
+  <layout class="QFormLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QComboBox" name="m_cmbPresets"/>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label">
+   <item row="1" column="0">
+    <widget class="QLabel" name="m_lblTitle">
      <property name="text">
       <string>Title:</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="title"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="2" column="0">
+    <widget class="QLabel" name="m_lblUrl">
      <property name="text">
       <string>Address:</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="url"/>
-   </item>
    <item row="4" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
+    <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -47,19 +41,39 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Add new subscription to AdBlock:</string>
+   <item row="3" column="0" colspan="2">
+    <spacer name="m_vertSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1">
+    <widget class="LineEditWithStatus" name="m_txtTitle" native="true"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="LineEditWithStatus" name="m_txtUrl" native="true"/>
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>accepted()</signal>
    <receiver>AdBlockAddSubscriptionDialog</receiver>
    <slot>accept()</slot>
@@ -75,7 +89,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>m_buttonBox</sender>
    <signal>rejected()</signal>
    <receiver>AdBlockAddSubscriptionDialog</receiver>
    <slot>reject()</slot>

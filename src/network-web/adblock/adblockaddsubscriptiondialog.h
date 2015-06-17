@@ -1,78 +1,68 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #ifndef ADBLOCKADDSUBSCRIPTIONDIALOG_H
 #define ADBLOCKADDSUBSCRIPTIONDIALOG_H
 
 #include <QDialog>
+
+#include "ui_adblockaddsubscriptiondialog.h"
+
 #include <QVector>
 
-namespace Ui
-{
-class AdBlockAddSubscriptionDialog;
+
+namespace Ui {
+  class AdBlockAddSubscriptionDialog;
 }
 
-class AdBlockAddSubscriptionDialog : public QDialog
-{
-  Q_OBJECT
+class AdBlockAddSubscriptionDialog : public QDialog {
+    Q_OBJECT
 
-public:
-  explicit AdBlockAddSubscriptionDialog(QWidget* parent = 0);
-  ~AdBlockAddSubscriptionDialog();
+  public:
+    // Constructors.
+    explicit AdBlockAddSubscriptionDialog(QWidget *parent = 0);
+    virtual ~AdBlockAddSubscriptionDialog();
 
-  QString title() const;
-  QString url() const;
+    QString title() const;
+    QString url() const;
 
-private slots:
-  void indexChanged(int index);
+  private slots:
+    // Index of selected list changed.
+    void indexChanged(int index);
+    void checkInputs();
 
-private:
-  Ui::AdBlockAddSubscriptionDialog* ui;
+  private:
+    struct Subscription {
+      public:
+        QString m_title;
+        QString m_url;
 
-  struct Subscription {
-    QString title;
-    QString url;
+        explicit Subscription() {
+        }
 
-    Subscription() {}
+        explicit Subscription(const QString &title, const QString &url) {
+          m_title = title;
+          m_url = url;
+        }
+    };
 
-    Subscription(const QString &t, const QString &u) {
-      title = t;
-      url = u;
-    }
-  };
-
-  QVector<Subscription> m_knownSubscriptions;
+    Ui::AdBlockAddSubscriptionDialog *m_ui;
+    QVector<Subscription> m_knownSubscriptions;
 };
 
 #endif // ADBLOCKADDSUBSCRIPTIONDIALOG_H

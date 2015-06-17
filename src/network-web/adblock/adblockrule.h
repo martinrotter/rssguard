@@ -74,7 +74,7 @@ class AdBlockSubscription;
 class AdBlockRule
 {
 public:
-  AdBlockRule(const QString &filter = QString(), AdBlockSubscription* subscription = 0);
+  AdBlockRule(const QString &filter = QString(), AdBlockSubscription* subscription = NULL);
   ~AdBlockRule();
 
   AdBlockRule* copy() const;

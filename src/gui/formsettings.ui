@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>6</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -345,6 +345,11 @@ Authors of this application are NOT responsible for lost data.</string>
            </item>
            <item row="6" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMysqlInfo">
+             <property name="font">
+              <font>
+               <italic>true</italic>
+              </font>
+             </property>
              <property name="text">
               <string>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
 
@@ -414,8 +419,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>740</width>
+            <height>451</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -492,8 +497,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>167</width>
-                <height>219</height>
+                <width>734</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -896,6 +901,11 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            </item>
            <item row="5" column="0" colspan="2">
             <widget class="QLabel" name="m_lblMouseGestures">
+             <property name="font">
+              <font>
+               <italic>true</italic>
+              </font>
+             </property>
              <property name="text">
               <string>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
@@ -1361,6 +1371,11 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            </item>
            <item row="4" column="0" colspan="2">
             <widget class="QLabel" name="label_9">
+             <property name="font">
+              <font>
+               <italic>true</italic>
+              </font>
+             </property>
              <property name="text">
               <string>Enter format for count of messages displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) messages.</string>
              </property>

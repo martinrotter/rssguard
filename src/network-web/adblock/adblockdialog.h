@@ -1,58 +1,47 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #ifndef ADBLOCKDIALOG_H
 #define ADBLOCKDIALOG_H
 
-#include <QWidget>
+#include <QDialog>
 
 #include "ui_adblockdialog.h"
+
+
+namespace Ui {
+  class AdBlockDialog;
+}
 
 class AdBlockSubscription;
 class AdBlockTreeWidget;
 class AdBlockManager;
 class AdBlockRule;
 
-class AdBlockDialog : public QWidget, public Ui_AdBlockDialog
-{
+class AdBlockDialog : public QDialog {
     Q_OBJECT
 
   public:
-    explicit AdBlockDialog(QWidget* parent = 0);
+    // Constructors.
+    explicit AdBlockDialog(QWidget *parent = 0);
     virtual ~AdBlockDialog();
 
-    void showRule(const AdBlockRule* rule) const;
+    void showRule(const AdBlockRule *rule) const;
 
   private slots:
     void addRule();
@@ -71,9 +60,14 @@ class AdBlockDialog : public QWidget, public Ui_AdBlockDialog
     void loadSubscriptions();
     void load();
 
-  private:
+  protected:
     void closeEvent(QCloseEvent* ev);
 
+  private:
+    void setupMenu();
+    void createConnections();
+
+    Ui::AdBlockDialog *m_ui;
     AdBlockManager* m_manager;
     AdBlockTreeWidget* m_currentTreeWidget;
     AdBlockSubscription* m_currentSubscription;
@@ -88,4 +82,3 @@ class AdBlockDialog : public QWidget, public Ui_AdBlockDialog
 };
 
 #endif // ADBLOCKDIALOG_H
-
