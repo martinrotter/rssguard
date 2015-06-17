@@ -53,7 +53,7 @@ QNetworkReply *WebBrowserNetworkAccessManager::createRequest(QNetworkAccessManag
   if (op == QNetworkAccessManager::GetOperation) {
     QNetworkReply *reply = AdBlockManager::instance()->block(request);
 
-    if (reply) {
+    if (reply != NULL) {
       return reply;
     }
   }

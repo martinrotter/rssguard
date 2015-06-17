@@ -50,13 +50,13 @@ const AdBlockRule* AdBlockMatcher::match(const QNetworkRequest &request, const Q
 {
   // Exception rules
   if (m_networkExceptionTree.find(request, urlDomain, urlString))
-    return 0;
+    return NULL;
 
   int count = m_networkExceptionRules.count();
   for (int i = 0; i < count; ++i) {
     const AdBlockRule* rule = m_networkExceptionRules.at(i);
     if (rule->networkMatch(request, urlDomain, urlString))
-      return 0;
+      return NULL;
   }
 
   // Block rules
@@ -70,7 +70,7 @@ const AdBlockRule* AdBlockMatcher::match(const QNetworkRequest &request, const Q
       return rule;
   }
 
-  return 0;
+  return NULL;
 }
 
 bool AdBlockMatcher::adBlockDisabledForUrl(const QUrl &url) const

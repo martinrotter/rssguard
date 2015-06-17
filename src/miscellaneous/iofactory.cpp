@@ -17,7 +17,8 @@
 
 #include "miscellaneous/iofactory.h"
 
-#include <exceptions/ioexception.h>
+#include "definitions/definitions.h"
+#include "exceptions/ioexception.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -34,6 +35,46 @@ QString IOFactory::getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location
 #else
   return SYSTEM_FOLDER_ENUM::storageLocation(location);
 #endif
+}
+
+QString IOFactory::ensureUniqueFilename(const QString &name, const QString &append_format) {
+  if (!QFile::exists(name)) {
+    return name;
+  }
+
+  QString tmp_filename = name;
+  int i = 1;
+
+  while (QFile::exists(tmp_filename)) {
+    tmp_filename = name;
+    int index = tmp_filename.lastIndexOf(QL1C('.'));
+    QString append_string = append_format.arg(i++);
+
+    if (index < 0) {
+      tmp_filename.append(append_string);
+    }
+    else {
+      tmp_filename = tmp_filename.left(index) + append_string + tmp_filename.mid(index);
+    }
+  }
+
+  return tmp_filename;
+}
+
+QString IOFactory::filterBadCharsFromFilename(const QString &name) {
+  QString value = name;
+
+  value.replace(QL1C('/'), QL1C('-'));
+  value.remove(QL1C('\\'));
+  value.remove(QL1C(':'));
+  value.remove(QL1C('*'));
+  value.remove(QL1C('?'));
+  value.remove(QL1C('"'));
+  value.remove(QL1C('<'));
+  value.remove(QL1C('>'));
+  value.remove(QL1C('|'));
+
+  return value;
 }
 
 QByteArray IOFactory::readTextFile(const QString &file_path) {

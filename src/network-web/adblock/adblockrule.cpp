@@ -65,6 +65,8 @@
 #include "adblocksubscription.h"
 #include "adblockmanager.h"
 
+#include "definitions/definitions.h"
+
 #include <QDebug>
 #include <QUrl>
 #include <QString>

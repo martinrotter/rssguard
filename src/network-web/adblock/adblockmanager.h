@@ -1,56 +1,23 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 #ifndef ADBLOCKMANAGER_H
 #define ADBLOCKMANAGER_H
-
-#ifndef QSL
-#if QT_VERSION >= 0x050000
-#define QSL(x) QStringLiteral(x)
-#else
-#define QSL(x) QLatin1String(x)
-#endif
-#endif
-
-#ifndef QL1S
-#define QL1S(x) QLatin1String(x)
-#endif
-
-#ifndef QL1C
-#define QL1C(x) QLatin1Char(x)
-#endif
-
 
 #include <QObject>
 #include <QStringList>
@@ -76,10 +43,6 @@ class AdBlockManager : public QObject
 
     static AdBlockManager* instance();
 
-    static QString filterCharsFromFilename(const QString &name);
-
-    static QString ensureUniqueFilename(const QString &name, const QString &appendFormat = QString("(%1)"));
-
     void load();
     void save();
 
@@ -87,7 +50,7 @@ class AdBlockManager : public QObject
     bool canRunOnScheme(const QString &scheme) const;
 
     bool useLimitedEasyList() const;
-    void setUseLimitedEasyList(bool useLimited);
+    void setUseLimitedEasyList(bool use_limited);
 
     QString elementHidingRules() const;
     QString elementHidingRulesForDomain(const QUrl &url) const;

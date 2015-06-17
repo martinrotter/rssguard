@@ -25,6 +25,7 @@
 #include "miscellaneous/settingsproperties.h"
 
 #include <QNetworkProxy>
+#include <QStringList>
 
 #define KEY extern const char*
 #define DKEY const char*
@@ -237,6 +238,23 @@ namespace Database {
 // Keyboard.
 namespace Keyboard {
   KEY ID;
+}
+
+// Adblock.
+namespace AdBlock {
+  KEY ID;
+
+  KEY Enabled;
+  VALUE(bool) EnabledDef;
+
+  KEY UseLimitedEasyList;
+  VALUE(bool) UseLimitedEasyListDef;
+
+  KEY DisabledRules;
+  VALUE(QStringList) DisabledRulesDef;
+
+  KEY LastUpdated;
+  VALUE(QDateTime) LastUpdatedDef;
 }
 
 // Web browser.

@@ -20,6 +20,8 @@
 
 #include <QCoreApplication>
 
+#include "definitions/definitions.h"
+
 #if QT_VERSION >= 0x050000
 #include <QStandardPaths>
 #define SYSTEM_FOLDER_ENUM QStandardPaths
@@ -38,6 +40,13 @@ class IOFactory {
   public:   
     // Returns system-wide folder according to type.
     static QString getSystemFolder(SYSTEM_FOLDER_ENUM::StandardLocation location);
+
+    // Checks given file if it exists and if it does, then generates non-existing new file
+    // according to format.
+    static QString ensureUniqueFilename(const QString &name, const QString &append_format = QSL("(%1)"));
+
+    // Filters out shit characters from filename.
+    static QString filterBadCharsFromFilename(const QString &name);
 
     // Returns contents of a file.
     // Throws exception when no such file exists.
