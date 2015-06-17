@@ -20,8 +20,10 @@
 #define ADBLOCKMANAGER_H
 
 #include <QObject>
+
 #include <QStringList>
 #include <QPointer>
+
 
 class QUrl;
 class QNetworkReply;
@@ -33,15 +35,13 @@ class AdBlockMatcher;
 class AdBlockCustomList;
 class AdBlockSubscription;
 
-class AdBlockManager : public QObject
-{
+class AdBlockManager : public QObject {
     Q_OBJECT
 
   public:
-    AdBlockManager(QObject* parent = 0);
-    ~AdBlockManager();
-
-    static AdBlockManager* instance();
+    // Constructors.
+    explicit AdBlockManager(QObject* parent = 0);
+    virtual ~AdBlockManager();
 
     void load();
     void save();
@@ -55,10 +55,10 @@ class AdBlockManager : public QObject
     QString elementHidingRules() const;
     QString elementHidingRulesForDomain(const QUrl &url) const;
 
-    AdBlockSubscription* subscriptionByName(const QString &name) const;
+    AdBlockSubscription *subscriptionByName(const QString &name) const;
     QList<AdBlockSubscription*> subscriptions() const;
 
-    QNetworkReply* block(const QNetworkRequest &request);
+    QNetworkReply *block(const QNetworkRequest &request);
 
     QStringList disabledRules() const;
     void addDisabledRule(const QString &filter);
@@ -67,7 +67,9 @@ class AdBlockManager : public QObject
     AdBlockSubscription *addSubscription(const QString &title, const QString &url);
     bool removeSubscription(AdBlockSubscription* subscription);
 
-    AdBlockCustomList* customList() const;
+    AdBlockCustomList *customList() const;
+
+    static AdBlockManager *instance();
 
   signals:
     void enabledChanged(bool enabled);
@@ -80,7 +82,7 @@ class AdBlockManager : public QObject
     AdBlockDialog *showDialog();
 
   private:
-    inline bool canBeBlocked(const QUrl &url) const;
+    bool canBeBlocked(const QUrl &url) const;
 
     bool m_loaded;
     bool m_enabled;
