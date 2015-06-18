@@ -144,7 +144,10 @@ AdBlockSubscription *AdBlockManager::addSubscription(const QString &title, const
 
   // This expects that there is at least "Custom rules" subscription available in
   // active subscriptions.
-  m_subscriptions.insert(m_subscriptions.count() - 1, subscription);
+  m_subscriptions.insert(m_subscriptions.size() - 1, subscription);
+
+  // TODO: přidáno, asi pořeší pár bugů
+  m_matcher->update();
 
   return subscription;
 }
@@ -157,6 +160,10 @@ bool AdBlockManager::removeSubscription(AdBlockSubscription *subscription) {
     QFile::remove(subscription->filePath());
     m_subscriptions.removeOne(subscription);
     delete subscription;
+
+    // TODO: přidáno, asi pořeší pár bugů
+    m_matcher->update();
+
     return true;
   }
 }
@@ -188,7 +195,7 @@ void AdBlockManager::load() {
   m_enabled = settings->value(GROUP(AdBlock), SETTING(AdBlock::Enabled)).toBool();
   m_useLimitedEasyList = settings->value(GROUP(AdBlock), SETTING(AdBlock::UseLimitedEasyList)).toBool();
   m_disabledRules = settings->value(GROUP(AdBlock), SETTING(AdBlock::DisabledRules)).toStringList();
-  QDateTime last_update = settings->value(GROUP(AdBlock), SETTING(AdBlock::LastUpdated)).toDateTime();
+  //QDateTime last_update = settings->value(GROUP(AdBlock), SETTING(AdBlock::LastUpdated)).toDateTime();
 
   if (!m_enabled) {
     // We loaded settings, but Adblock should be disabled. Do not continue to save memory.
@@ -237,7 +244,7 @@ void AdBlockManager::load() {
   m_subscriptions.append(new AdBlockCustomList(this));
 
   // Load all subscriptions, including obligatory "Custom rules" list.
-  foreach (AdBlockSubscription* subscription, m_subscriptions) {
+  foreach (AdBlockSubscription *subscription, m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
 
     // TODO
