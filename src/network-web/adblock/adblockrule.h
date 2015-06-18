@@ -1,37 +1,21 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Copyright (c) 2009, Benjamin C. Meyer <ben@meyerhome.net>
  *
@@ -71,120 +55,125 @@ class QUrl;
 
 class AdBlockSubscription;
 
-class AdBlockRule
-{
-public:
-  AdBlockRule(const QString &filter = QString(), AdBlockSubscription* subscription = NULL);
-  ~AdBlockRule();
+class AdBlockRule {
+    friend class AdBlockMatcher;
+    friend class AdBlockSearchTree;
+    friend class AdBlockSubscription;
 
-  AdBlockRule* copy() const;
+  public:
+    explicit AdBlockRule(const QString &filter = QString(), AdBlockSubscription* subscription = NULL);
+    virtual ~AdBlockRule();
 
-  AdBlockSubscription* subscription() const;
-  void setSubscription(AdBlockSubscription* subscription);
+    AdBlockRule *copy() const;
 
-  QString filter() const;
-  void setFilter(const QString &filter);
+    AdBlockSubscription *subscription() const;
+    void setSubscription(AdBlockSubscription *subscription);
 
-  bool isCssRule() const;
-  QString cssSelector() const;
+    QString filter() const;
+    void setFilter(const QString &filter);
 
-  bool isDocument() const;
-  bool isElemhide() const;
+    bool isCssRule() const;
+    QString cssSelector() const;
 
-  bool isDomainRestricted() const;
-  bool isException() const;
+    bool isDocument() const;
+    bool isElemhide() const;
 
-  bool isComment() const;
-  bool isEnabled() const;
-  void setEnabled(bool enabled);
+    bool isDomainRestricted() const;
+    bool isException() const;
 
-  bool isSlow() const;
-  bool isInternalDisabled() const;
+    bool isComment() const;
+    bool isEnabled() const;
+    void setEnabled(bool enabled);
 
-  bool urlMatch(const QUrl &url) const;
-  bool networkMatch(const QNetworkRequest &request, const QString &domain, const QString &encodedUrl) const;
+    bool isSlow() const;
+    bool isInternalDisabled() const;
 
-  bool matchDomain(const QString &domain) const;
-  bool matchThirdParty(const QNetworkRequest &request) const;
-  bool matchObject(const QNetworkRequest &request) const;
-  bool matchSubdocument(const QNetworkRequest &request) const;
-  bool matchXmlHttpRequest(const QNetworkRequest &request) const;
-  bool matchImage(const QString &encodedUrl) const;
+    bool urlMatch(const QUrl &url) const;
+    bool networkMatch(const QNetworkRequest &request, const QString &domain, const QString &encoded_url) const;
 
-protected:
-  bool isMatchingDomain(const QString &domain, const QString &pattern) const;
-  bool isMatchingRegExpStrings(const QString &url) const;
-  QStringList parseRegExpFilter(const QString &filter) const;
+    bool matchDomain(const QString &domain) const;
+    bool matchThirdParty(const QNetworkRequest &request) const;
+    bool matchObject(const QNetworkRequest &request) const;
+    bool matchSubdocument(const QNetworkRequest &request) const;
+    bool matchXmlHttpRequest(const QNetworkRequest &request) const;
+    bool matchImage(const QString &encoded_url) const;
 
-private:
-  enum RuleType {
-    CssRule = 0,
-    DomainMatchRule = 1,
-    RegExpMatchRule = 2,
-    StringEndsMatchRule = 3,
-    StringContainsMatchRule = 4,
-    Invalid = 5
-  };
+  protected:
+    bool isMatchingDomain(const QString &domain, const QString &pattern) const;
+    bool isMatchingRegExpStrings(const QString &url) const;
+    QStringList parseRegExpFilter(const QString &filter) const;
 
-  enum RuleOption {
-    DomainRestrictedOption = 1,
-    ThirdPartyOption = 2,
-    ObjectOption = 4,
-    SubdocumentOption = 8,
-    XMLHttpRequestOption = 16,
-    ImageOption = 32,
+  private:
+    enum RuleType {
+      CssRule = 0,
+      DomainMatchRule = 1,
+      RegExpMatchRule = 2,
+      StringEndsMatchRule = 3,
+      StringContainsMatchRule = 4,
+      Invalid = 5
+    };
 
-    // Exception only options
-    DocumentOption = 64,
-    ElementHideOption = 128
-  };
+    enum RuleOption {
+      DomainRestrictedOption = 1,
+      ThirdPartyOption = 2,
+      ObjectOption = 4,
+      SubdocumentOption = 8,
+      XMLHttpRequestOption = 16,
+      ImageOption = 32,
 
-  Q_DECLARE_FLAGS(RuleOptions, RuleOption)
+      // Exception only options.
+      DocumentOption = 64,
+      ElementHideOption = 128
+    };
 
-  inline bool hasOption(const RuleOption &opt) const;
-  inline bool hasException(const RuleOption &opt) const;
+    Q_DECLARE_FLAGS(RuleOptions, RuleOption)
 
-  inline void setOption(const RuleOption &opt);
-  inline void setException(const RuleOption &opt, bool on);
+    inline bool hasOption(const RuleOption &opt) const;
+    inline bool hasException(const RuleOption &opt) const;
 
-  void parseFilter();
-  void parseDomains(const QString &domains, const QChar &separator);
-  bool filterIsOnlyDomain(const QString &filter) const;
-  bool filterIsOnlyEndsMatch(const QString &filter) const;
-  QString createRegExpFromFilter(const QString &filter) const;
-  QList<QStringMatcher> createStringMatchers(const QStringList &filters) const;
+    inline void setOption(const RuleOption &opt);
+    inline void setException(const RuleOption &opt, bool on);
 
-  AdBlockSubscription* m_subscription;
+    void parseFilter();
+    void parseDomains(const QString &domains, const QChar &separator);
+    bool filterIsOnlyDomain(const QString &filter) const;
+    bool filterIsOnlyEndsMatch(const QString &filter) const;
+    QString createRegExpFromFilter(const QString &filter) const;
+    QList<QStringMatcher> createStringMatchers(const QStringList &filters) const;
 
-  RuleType m_type;
-  RuleOptions m_options;
-  RuleOptions m_exceptions;
+    AdBlockSubscription *m_subscription;
 
-  // Original rule filter
-  QString m_filter;
-  // Parsed rule for string matching (CSS Selector for CSS rules)
-  QString m_matchString;
-  // Case sensitivity for string matching
-  Qt::CaseSensitivity m_caseSensitivity;
+    RuleType m_type;
+    RuleOptions m_options;
+    RuleOptions m_exceptions;
 
-  bool m_isEnabled;
-  bool m_isException;
-  bool m_isInternalDisabled;
+    // Original rule filter.
+    QString m_filter;
 
-  QStringList m_allowedDomains;
-  QStringList m_blockedDomains;
+    // Parsed rule for string matching (CSS Selector for CSS rules).
+    QString m_matchString;
 
-  struct RegExp {
-    QRegExp regExp;
-    QList<QStringMatcher> matchers;
-  };
+    // Case sensitivity for string matching.
+    Qt::CaseSensitivity m_caseSensitivity;
 
-  // Use dynamic allocation to save memory
-  RegExp* m_regExp;
+    bool m_isEnabled;
+    bool m_isException;
+    bool m_isInternalDisabled;
 
-  friend class AdBlockMatcher;
-  friend class AdBlockSearchTree;
-  friend class AdBlockSubscription;
+    QStringList m_allowedDomains;
+    QStringList m_blockedDomains;
+
+    struct RegExp {
+      public:
+        explicit RegExp() {
+        }
+
+        QRegExp regExp;
+        QList<QStringMatcher> matchers;
+    };
+
+    // Use dynamic allocation to save memory
+    RegExp *m_regExp;
 };
 
 #endif // ADBLOCKRULE_H

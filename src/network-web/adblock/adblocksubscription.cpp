@@ -1,37 +1,21 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Copyright (c) 2009, Benjamin C. Meyer <ben@meyerhome.net>
  *
@@ -59,85 +43,78 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-#include "adblocksubscription.h"
-#include "adblockmanager.h"
-#include "adblocksearchtree.h"
-#include "followredirectreply.h"
 
+#include "network-web/adblock/adblocksubscription.h"
+
+#include "network-web/adblock/adblockmanager.h"
+#include "network-web/adblock/adblocksearchtree.h"
+#include "network-web/adblock/followredirectreply.h"
 #include "network-web/silentnetworkaccessmanager.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/application.h"
+#include "exceptions/applicationexception.h"
 
 #include <QFile>
 #include <QTimer>
 #include <QNetworkReply>
-#include <QDebug>
+#include <QDir>
 #include <QWebPage>
 
-#include <exceptions/applicationexception.h>
 
-AdBlockSubscription::AdBlockSubscription(const QString &title, QObject* parent)
-  : QObject(parent)
-  , m_reply(0)
-  , m_title(title)
-  , m_updated(false)
-{
+AdBlockSubscription::AdBlockSubscription(const QString &title, QObject *parent)
+  : QObject(parent), m_reply(NULL), m_title(title), m_updated(false) {
 }
 
-QString AdBlockSubscription::title() const
-{
+QString AdBlockSubscription::title() const {
   return m_title;
 }
 
-void AdBlockSubscription::setTitle(const QString &title)
-{
+void AdBlockSubscription::setTitle(const QString &title) {
   m_title = title;
 }
 
-QString AdBlockSubscription::filePath() const
-{
+QString AdBlockSubscription::filePath() const {
   return m_filePath;
 }
 
-void AdBlockSubscription::setFilePath(const QString &path)
-{
+void AdBlockSubscription::setFilePath(const QString &path) {
   m_filePath = path;
 }
 
-QUrl AdBlockSubscription::url() const
-{
+QUrl AdBlockSubscription::url() const {
   return m_url;
 }
 
-void AdBlockSubscription::setUrl(const QUrl &url)
-{
+void AdBlockSubscription::setUrl(const QUrl &url) {
   m_url = url;
 }
 
-void AdBlockSubscription::loadSubscription(const QStringList &disabledRules)
-{
+void AdBlockSubscription::loadSubscription(const QStringList &disabled_rules) {
   QFile file(m_filePath);
 
   if (!file.exists()) {
+    qWarning("Cannot load subscription '%s'. Requesting its update.", qPrintable(title()));
     QTimer::singleShot(0, this, SLOT(updateSubscription()));
     return;
   }
 
   if (!file.open(QFile::ReadOnly)) {
-    qWarning() << "AdBlockSubscription::" << __FUNCTION__ << "Unable to open adblock file for reading" << m_filePath;
+    qWarning("Unable to open subscription file '%s' for reading.", qPrintable(QDir::toNativeSeparators(m_filePath)));
     QTimer::singleShot(0, this, SLOT(updateSubscription()));
     return;
   }
 
   QTextStream textStream(&file);
   textStream.setCodec("UTF-8");
-  // Header is on 3rd line
+
+  // Header is on 3rd line.
   textStream.readLine(1024);
   textStream.readLine(1024);
   QString header = textStream.readLine(1024);
 
   if (!header.startsWith(QLatin1String("[Adblock")) || m_title.isEmpty()) {
-    qWarning() << "AdBlockSubscription::" << __FUNCTION__ << "invalid format of adblock file" << m_filePath;
+    qWarning("Invalid format of subscription file '%s'.", qPrintable(QDir::toNativeSeparators(m_filePath)));
+    file.close();
     QTimer::singleShot(0, this, SLOT(updateSubscription()));
     return;
   }
@@ -145,38 +122,38 @@ void AdBlockSubscription::loadSubscription(const QStringList &disabledRules)
   m_rules.clear();
 
   while (!textStream.atEnd()) {
-    AdBlockRule* rule = new AdBlockRule(textStream.readLine(), this);
+    AdBlockRule *rule = new AdBlockRule(textStream.readLine(), this);
 
-    if (disabledRules.contains(rule->filter())) {
+    if (disabled_rules.contains(rule->filter())) {
       rule->setEnabled(false);
     }
 
     m_rules.append(rule);
   }
 
-  // Initial update
+  file.close();
+
+  // Initial update.
   if (m_rules.isEmpty() && !m_updated) {
     QTimer::singleShot(0, this, SLOT(updateSubscription()));
   }
 }
 
-void AdBlockSubscription::saveSubscription()
-{
+void AdBlockSubscription::saveSubscription() {
 }
 
-void AdBlockSubscription::updateSubscription()
-{
-  if (m_reply || !m_url.isValid()) {
+void AdBlockSubscription::updateSubscription() {
+  if (m_reply != NULL || !m_url.isValid()) {
     return;
   }
 
+  // TODO: Refaktorovat.
   m_reply = new FollowRedirectReply(m_url, SilentNetworkAccessManager::instance());
 
   connect(m_reply, SIGNAL(finished()), this, SLOT(subscriptionDownloaded()));
 }
 
-void AdBlockSubscription::subscriptionDownloaded()
-{
+void AdBlockSubscription::subscriptionDownloaded() {
   if (m_reply != qobject_cast<FollowRedirectReply*>(sender())) {
     return;
   }
@@ -186,8 +163,7 @@ void AdBlockSubscription::subscriptionDownloaded()
 
   if (m_reply->error() != QNetworkReply::NoError ||
       !response.startsWith(QByteArray("[Adblock")) ||
-      !saveDownloadedData(response)
-      ) {
+      !saveDownloadedData(response)) {
     error = true;
   }
 
@@ -196,21 +172,20 @@ void AdBlockSubscription::subscriptionDownloaded()
 
   if (error) {
     emit subscriptionError(tr("Cannot load subscription!"));
-    return;
   }
+  else {
+    loadSubscription(AdBlockManager::instance()->disabledRules());
 
-  loadSubscription(AdBlockManager::instance()->disabledRules());
-
-  emit subscriptionUpdated();
-  emit subscriptionChanged();
+    emit subscriptionUpdated();
+    emit subscriptionChanged();
+  }
 }
 
-bool AdBlockSubscription::saveDownloadedData(const QByteArray &data)
-{
+bool AdBlockSubscription::saveDownloadedData(const QByteArray &data) {
   QFile file(m_filePath);
 
   if (!file.open(QFile::ReadWrite | QFile::Truncate)) {
-    qWarning() << "AdBlockSubscription::" << __FUNCTION__ << "Unable to open adblock file for writing:" << m_filePath;
+    qWarning("Unable to open subscription file '%s' for writting.", qPrintable(QDir::toNativeSeparators(m_filePath)));
     return false;
   }
 
@@ -227,36 +202,36 @@ bool AdBlockSubscription::saveDownloadedData(const QByteArray &data)
 
     file.write(part1);
     file.write(part2);
+    file.flush();
     file.close();
     return true;
   }
 
   file.write(data);
+  file.flush();
   file.close();
   return true;
 }
 
-const AdBlockRule* AdBlockSubscription::rule(int offset) const
-{
-  if (!(offset >= 0 && m_rules.count() > offset)) {
-    return 0;
+const AdBlockRule *AdBlockSubscription::rule(int offset) const{
+  if (!(offset >= 0 && m_rules.size() > offset)) {
+    return NULL;
   }
-
-  return m_rules[offset];
+  else {
+    return m_rules[offset];
+  }
 }
 
-QVector<AdBlockRule*> AdBlockSubscription::allRules() const
-{
+QVector<AdBlockRule*> AdBlockSubscription::allRules() const {
   return m_rules;
 }
 
-const AdBlockRule* AdBlockSubscription::enableRule(int offset)
-{
-  if (!(offset >= 0 && m_rules.count() > offset)) {
-    return 0;
+const AdBlockRule *AdBlockSubscription::enableRule(int offset) {
+  if (!(offset >= 0 && m_rules.size() > offset)) {
+    return NULL;
   }
 
-  AdBlockRule* rule = m_rules[offset];
+  AdBlockRule *rule = m_rules[offset];
   rule->setEnabled(true);
   AdBlockManager::instance()->removeDisabledRule(rule->filter());
 
@@ -270,13 +245,12 @@ const AdBlockRule* AdBlockSubscription::enableRule(int offset)
   return rule;
 }
 
-const AdBlockRule* AdBlockSubscription::disableRule(int offset)
-{
-  if (!(offset >= 0 && m_rules.count() > offset)) {
-    return 0;
+const AdBlockRule *AdBlockSubscription::disableRule(int offset) {
+  if (!(offset >= 0 && m_rules.size() > offset)) {
+    return NULL;
   }
 
-  AdBlockRule* rule = m_rules[offset];
+  AdBlockRule *rule = m_rules[offset];
   rule->setEnabled(false);
   AdBlockManager::instance()->addDisabledRule(rule->filter());
 
@@ -291,87 +265,48 @@ const AdBlockRule* AdBlockSubscription::disableRule(int offset)
   return rule;
 }
 
-bool AdBlockSubscription::canEditRules() const
-{
+bool AdBlockSubscription::canEditRules() const {
   return false;
 }
 
-bool AdBlockSubscription::canBeRemoved() const
-{
+bool AdBlockSubscription::canBeRemoved() const {
   return true;
 }
 
-int AdBlockSubscription::addRule(AdBlockRule* rule)
-{
+int AdBlockSubscription::addRule(AdBlockRule *rule) {
   Q_UNUSED(rule)
   return -1;
 }
 
-bool AdBlockSubscription::removeRule(int offset)
-{
+bool AdBlockSubscription::removeRule(int offset) {
   Q_UNUSED(offset)
   return false;
 }
 
-const AdBlockRule* AdBlockSubscription::replaceRule(AdBlockRule* rule, int offset)
-{
+const AdBlockRule *AdBlockSubscription::replaceRule(AdBlockRule *rule, int offset) {
   Q_UNUSED(rule)
   Q_UNUSED(offset)
   return 0;
 }
 
-AdBlockSubscription::~AdBlockSubscription()
-{
+AdBlockSubscription::~AdBlockSubscription() {
   qDeleteAll(m_rules);
 }
 
-// AdBlockCustomList
-
-AdBlockCustomList::AdBlockCustomList(QObject* parent) : AdBlockSubscription(tr("Custom rules"), parent) {
+AdBlockCustomList::AdBlockCustomList(QObject *parent) : AdBlockSubscription(tr("Custom rules"), parent) {
   setTitle(tr("Custom rules"));
-  // TODO
+  // TODO cesta
   setFilePath(qApp->homeFolderPath() + "/adblock/customlist.txt");
 }
 
-void AdBlockCustomList::loadSubscription(const QStringList &disabledRules)
-{
-  // DuckDuckGo ad whitelist rules
-  // They cannot be removed, but can be disabled.
-  // Please consider not disabling them. Thanks!
-
-  const QString ddg1 = QSL("@@||duckduckgo.com^$document");
-  const QString ddg2 = QSL("duckduckgo.com#@#.has-ad");
-
-  QString rules = QString();
-
-  try {
-    rules = QString::fromUtf8(IOFactory::readTextFile((filePath())));
-  }
-  catch (ApplicationException &ex) {
-  }
-
-  QFile file(filePath());
-  if (file.open(QFile::WriteOnly | QFile::Append)) {
-    QTextStream stream(&file);
-    stream.setCodec("UTF-8");
-
-    if (!rules.contains(ddg1 + QLatin1String("\n")))
-      stream << ddg1 << endl;
-
-    if (!rules.contains(QLatin1String("\n") + ddg2))
-      stream << ddg2 << endl;
-  }
-  file.close();
-
-  AdBlockSubscription::loadSubscription(disabledRules);
+AdBlockCustomList::~AdBlockCustomList() {
 }
 
-void AdBlockCustomList::saveSubscription()
-{
-  QFile file(filePath());
+void AdBlockCustomList::saveSubscription() {
+  QFile file(m_filePath);
 
-  if (!file.open(QFile::ReadWrite | QFile::Truncate)) {
-    qWarning() << "AdBlockSubscription::" << __FUNCTION__ << "Unable to open adblock file for writing:" << filePath();
+  if (!file.open(QFile::WriteOnly | QFile::Truncate)) {
+    qWarning("Unable to open custom subscription file '%s' for writting.", qPrintable(QDir::toNativeSeparators(m_filePath)));
     return;
   }
 
@@ -385,22 +320,20 @@ void AdBlockCustomList::saveSubscription()
     textStream << rule->filter() << endl;
   }
 
+  file.flush();
   file.close();
 }
 
-bool AdBlockCustomList::canEditRules() const
-{
+bool AdBlockCustomList::canEditRules() const {
   return true;
 }
 
-bool AdBlockCustomList::canBeRemoved() const
-{
+bool AdBlockCustomList::canBeRemoved() const {
   return false;
 }
 
-bool AdBlockCustomList::containsFilter(const QString &filter) const
-{
-  foreach (const AdBlockRule* rule, m_rules) {
+bool AdBlockCustomList::containsFilter(const QString &filter) const {
+  foreach (const AdBlockRule *rule, m_rules) {
     if (rule->filter() == filter) {
       return true;
     }
@@ -409,10 +342,9 @@ bool AdBlockCustomList::containsFilter(const QString &filter) const
   return false;
 }
 
-bool AdBlockCustomList::removeFilter(const QString &filter)
-{
-  for (int i = 0; i < m_rules.count(); ++i) {
-    const AdBlockRule* rule = m_rules.at(i);
+bool AdBlockCustomList::removeFilter(const QString &filter) {
+  for (int i = 0; i < m_rules.size(); i++) {
+    const AdBlockRule *rule = m_rules.at(i);
 
     if (rule->filter() == filter) {
       return removeRule(i);
@@ -422,10 +354,8 @@ bool AdBlockCustomList::removeFilter(const QString &filter)
   return false;
 }
 
-int AdBlockCustomList::addRule(AdBlockRule* rule)
-{
+int AdBlockCustomList::addRule(AdBlockRule *rule) {
   m_rules.append(rule);
-
   emit subscriptionChanged();
 
   // TODO
@@ -433,20 +363,18 @@ int AdBlockCustomList::addRule(AdBlockRule* rule)
   if (rule->isCssRule())
     mainApp->reloadUserStyleBrowser();
 */
-  return m_rules.count() - 1;
+  return m_rules.size() - 1;
 }
 
-bool AdBlockCustomList::removeRule(int offset)
-{
-  if (!(offset >= 0 && m_rules.count() > offset)) {
+bool AdBlockCustomList::removeRule(int offset) {
+  if (!(offset >= 0 && m_rules.size() > offset)) {
     return false;
   }
 
-  AdBlockRule* rule = m_rules.at(offset);
+  AdBlockRule *rule = m_rules.at(offset);
   const QString filter = rule->filter();
 
   m_rules.remove(offset);
-
   emit subscriptionChanged();
   // TODO
   /*
@@ -455,20 +383,17 @@ bool AdBlockCustomList::removeRule(int offset)
 */
 
   AdBlockManager::instance()->removeDisabledRule(filter);
-
   delete rule;
   return true;
 }
 
-const AdBlockRule* AdBlockCustomList::replaceRule(AdBlockRule* rule, int offset)
-{
-  if (!(offset >= 0 && m_rules.count() > offset)) {
-    return 0;
+const AdBlockRule *AdBlockCustomList::replaceRule(AdBlockRule *rule, int offset) {
+  if (!(offset >= 0 && m_rules.size() > offset)) {
+    return NULL;
   }
 
-  AdBlockRule* oldRule = m_rules.at(offset);
+  AdBlockRule *oldRule = m_rules.at(offset);
   m_rules[offset] = rule;
-
   emit subscriptionChanged();
 
   // TODO

@@ -30,6 +30,10 @@ class WebFactory : public QObject {
     QString escapeHtml(const QString &html);
     QString deEscapeHtml(const QString &text);
 
+    // BUG: Version for Qt < 4.8 has one issue, it will wrongly
+    // count .co.uk (and others) as second-level domain
+    QString toSecondLevelDomain(const QUrl &url);
+
     // Switchers.
     bool javascriptEnabled() const;
     bool pluginsEnabled() const;

@@ -38,6 +38,7 @@ class AdBlockIcon : public PlainToolButton {
     QAction *menuAction();
 
   public slots:
+    void activate();
     void setEnabled(bool enabled);
     void createMenu(QMenu *menu = NULL);
 

@@ -50,7 +50,7 @@ void AdBlockIcon::popupBlocked(const QString &rule_string, const QUrl &url) {
     return;
   }
 
-  QPair<AdBlockRule*, QUrl> pair;
+  QPair<AdBlockRule*,QUrl> pair;
   pair.first = new AdBlockRule(filter, subscription);
   pair.second = url;
   m_blockedPopups.append(pair);
@@ -83,6 +83,10 @@ QAction *AdBlockIcon::menuAction() {
   m_menuAction->setIcon(m_enabled ? qApp->icons()->fromTheme("web-adblock") : qApp->icons()->fromTheme("web-adblock"));
 
   return m_menuAction;
+}
+
+void AdBlockIcon::activate() {
+  setEnabled(AdBlockManager::instance()->shouldBeEnabled());
 }
 
 void AdBlockIcon::createMenu(QMenu *menu) {

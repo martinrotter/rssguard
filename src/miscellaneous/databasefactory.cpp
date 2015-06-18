@@ -208,6 +208,8 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
+    qDebug("Copying data from file-based database into working in-memory database.");
+
     // Detach database and finish.
     copy_contents.exec("DETACH 'storage'");
     copy_contents.finish();

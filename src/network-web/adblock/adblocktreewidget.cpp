@@ -1,39 +1,24 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-#include "adblocktreewidget.h"
-#include "adblocksubscription.h"
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
+#include "network-web/adblock/adblocktreewidget.h"
+
+#include "network-web/adblock/adblocksubscription.h"
 
 #include <QMenu>
 #include <QKeyEvent>
@@ -41,13 +26,10 @@
 #include <QApplication>
 #include <QInputDialog>
 
-AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget* parent)
-  : QTreeWidget(parent)
-  , m_subscription(subscription)
-  , m_topItem(0)
-  , m_itemChangingBlock(false)
-  , m_refreshAllItemsNeeded(true)
-{
+
+AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription *subscription, QWidget *parent)
+  : QTreeWidget(parent), m_subscription(subscription), m_topItem(NULL),
+    m_itemChangingBlock(false), m_refreshAllItemsNeeded(true) {
   setContextMenuPolicy(Qt::CustomContextMenu);
   setHeaderHidden(true);
   setAlternatingRowColors(true);
@@ -59,20 +41,20 @@ AdBlockTreeWidget::AdBlockTreeWidget(AdBlockSubscription* subscription, QWidget*
   connect(m_subscription, SIGNAL(subscriptionError(QString)), this, SLOT(subscriptionError(QString)));
 }
 
-AdBlockSubscription* AdBlockTreeWidget::subscription() const
-{
+AdBlockSubscription *AdBlockTreeWidget::subscription() const {
   return m_subscription;
 }
 
-void AdBlockTreeWidget::showRule(const AdBlockRule* rule)
-{
-  if (!m_topItem && rule) {
+void AdBlockTreeWidget::showRule(const AdBlockRule *rule) {
+  if (m_topItem == NULL && rule) {
+    // Dialog is not loaded yet. Mark rule for late loading.
     m_ruleToBeSelected = rule->filter();
   }
   else if (!m_ruleToBeSelected.isEmpty()) {
     QList<QTreeWidgetItem*> items = findItems(m_ruleToBeSelected, Qt::MatchRecursive);
+
     if (!items.isEmpty()) {
-      QTreeWidgetItem* item = items.at(0);
+      QTreeWidgetItem *item = items.at(0);
 
       setCurrentItem(item);
       scrollToItem(item, QAbstractItemView::PositionAtCenter);
@@ -82,58 +64,56 @@ void AdBlockTreeWidget::showRule(const AdBlockRule* rule)
   }
 }
 
-void AdBlockTreeWidget::contextMenuRequested(const QPoint &pos)
-{
+void AdBlockTreeWidget::contextMenuRequested(const QPoint &pos) {
   if (!m_subscription->canEditRules()) {
     return;
   }
 
-  QTreeWidgetItem* item = itemAt(pos);
-  if (!item) {
-    return;
+  QTreeWidgetItem *item = itemAt(pos);
+
+  if (item != NULL) {
+    QMenu menu;
+    menu.addAction(tr("Add Rule"), this, SLOT(addRule()));
+    menu.addSeparator();
+
+    QAction *delete_action = menu.addAction(tr("Remove Rule"), this, SLOT(removeRule()));
+
+    if (item->parent() == NULL) {
+      delete_action->setDisabled(true);
+    }
+
+    menu.exec(viewport()->mapToGlobal(pos));
   }
-
-  QMenu menu;
-  menu.addAction(tr("Add Rule"), this, SLOT(addRule()));
-  menu.addSeparator();
-  QAction* deleteAction = menu.addAction(tr("Remove Rule"), this, SLOT(removeRule()));
-
-  if (!item->parent()) {
-    deleteAction->setDisabled(true);
-  }
-
-  menu.exec(viewport()->mapToGlobal(pos));
 }
 
-void AdBlockTreeWidget::itemChanged(QTreeWidgetItem* item)
-{
+void AdBlockTreeWidget::itemChanged(QTreeWidgetItem *item) {
   m_refreshAllItemsNeeded = true;
 
-  if (!item || m_itemChangingBlock) {
+  if (item == NULL || m_itemChangingBlock) {
     return;
   }
 
   m_itemChangingBlock = true;
 
   int offset = item->data(0, Qt::UserRole + 10).toInt();
-  const AdBlockRule* oldRule = m_subscription->rule(offset);
+  const AdBlockRule *old_rle = m_subscription->rule(offset);
 
-  if (item->checkState(0) == Qt::Unchecked && oldRule->isEnabled()) {
-    // Disable rule
-    const AdBlockRule* rule = m_subscription->disableRule(offset);
+  if (item->checkState(0) == Qt::Unchecked && old_rle->isEnabled()) {
+    // Disable rule.
+    const AdBlockRule *rule = m_subscription->disableRule(offset);
 
     adjustItemFeatures(item, rule);
   }
-  else if (item->checkState(0) == Qt::Checked && !oldRule->isEnabled()) {
+  else if (item->checkState(0) == Qt::Checked && !old_rle->isEnabled()) {
     // Enable rule
-    const AdBlockRule* rule = m_subscription->enableRule(offset);
+    const AdBlockRule *rule = m_subscription->enableRule(offset);
 
     adjustItemFeatures(item, rule);
   }
   else if (m_subscription->canEditRules()) {
     // Custom rule has been changed
-    AdBlockRule* newRule = new AdBlockRule(item->text(0), m_subscription);
-    const AdBlockRule* rule = m_subscription->replaceRule(newRule, offset);
+    AdBlockRule *new_rule = new AdBlockRule(item->text(0), m_subscription);
+    const AdBlockRule *rule = m_subscription->replaceRule(new_rule, offset);
 
     adjustItemFeatures(item, rule);
   }
@@ -141,32 +121,29 @@ void AdBlockTreeWidget::itemChanged(QTreeWidgetItem* item)
   m_itemChangingBlock = false;
 }
 
-void AdBlockTreeWidget::copyFilter()
-{
-  QTreeWidgetItem* item = currentItem();
-  if (!item) {
-    return;
-  }
+void AdBlockTreeWidget::copyFilter() {
+  QTreeWidgetItem *item = currentItem();
 
-  QApplication::clipboard()->setText(item->text(0));
+  if (item != NULL) {
+    QApplication::clipboard()->setText(item->text(0));
+  }
 }
 
-void AdBlockTreeWidget::addRule()
-{
+void AdBlockTreeWidget::addRule() {
   if (!m_subscription->canEditRules()) {
     return;
   }
 
-  QString newRule = QInputDialog::getText(this, tr("Add Custom Rule"), tr("Please write your rule here:"));
-  if (newRule.isEmpty()) {
+  QString new_rule = QInputDialog::getText(this, tr("Add Rule"), tr("Please write your rule here"));
+  if (new_rule.isEmpty()) {
     return;
   }
 
-  AdBlockRule* rule = new AdBlockRule(newRule, m_subscription);
+  AdBlockRule *rule = new AdBlockRule(new_rule, m_subscription);
   int offset = m_subscription->addRule(rule);
 
-  QTreeWidgetItem* item = new QTreeWidgetItem();
-  item->setText(0, newRule);
+  QTreeWidgetItem *item = new QTreeWidgetItem();
+  item->setText(0, new_rule);
   item->setData(0, Qt::UserRole + 10, offset);
   item->setFlags(item->flags() | Qt::ItemIsEditable);
 
@@ -177,21 +154,18 @@ void AdBlockTreeWidget::addRule()
   adjustItemFeatures(item, rule);
 }
 
-void AdBlockTreeWidget::removeRule()
-{
-  QTreeWidgetItem* item = currentItem();
-  if (!item || !m_subscription->canEditRules() || item == m_topItem) {
+void AdBlockTreeWidget::removeRule() {
+  QTreeWidgetItem *item = currentItem();
+  if (item == NULL || !m_subscription->canEditRules() || item == m_topItem) {
     return;
   }
 
   int offset = item->data(0, Qt::UserRole + 10).toInt();
-
   m_subscription->removeRule(offset);
   delete item;
 }
 
-void AdBlockTreeWidget::subscriptionUpdated()
-{
+void AdBlockTreeWidget::subscriptionUpdated() {
   refresh();
 
   m_itemChangingBlock = true;
@@ -199,17 +173,15 @@ void AdBlockTreeWidget::subscriptionUpdated()
   m_itemChangingBlock = false;
 }
 
-void AdBlockTreeWidget::subscriptionError(const QString &message)
-{
+void AdBlockTreeWidget::subscriptionError(const QString &message) {
   refresh();
 
   m_itemChangingBlock = true;
-  m_topItem->setText(0, tr("%1 (Error: %2)").arg(m_subscription->title(), message));
+  m_topItem->setText(0, tr("%1 (error: %2)").arg(m_subscription->title(), message));
   m_itemChangingBlock = false;
 }
 
-void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem* item, const AdBlockRule* rule)
-{
+void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem *item, const AdBlockRule *rule) {
   if (!rule->isEnabled()) {
     QFont font;
     font.setItalic(true);
@@ -241,8 +213,7 @@ void AdBlockTreeWidget::adjustItemFeatures(QTreeWidgetItem* item, const AdBlockR
   }
 }
 
-void AdBlockTreeWidget::keyPressEvent(QKeyEvent* event)
-{
+void AdBlockTreeWidget::keyPressEvent(QKeyEvent* event) {
   if (event->key() == Qt::Key_C && event->modifiers() & Qt::ControlModifier) {
     copyFilter();
   }
@@ -254,8 +225,7 @@ void AdBlockTreeWidget::keyPressEvent(QKeyEvent* event)
   QTreeWidget::keyPressEvent(event);
 }
 
-void AdBlockTreeWidget::refresh()
-{
+void AdBlockTreeWidget::refresh() {
   m_itemChangingBlock = true;
   clear();
 
@@ -269,10 +239,10 @@ void AdBlockTreeWidget::refresh()
   addTopLevelItem(m_topItem);
 
   const QVector<AdBlockRule*> &allRules = m_subscription->allRules();
-
   int index = 0;
-  foreach (const AdBlockRule* rule, allRules) {
-    QTreeWidgetItem* item = new QTreeWidgetItem(m_topItem);
+
+  foreach (const AdBlockRule *rule, allRules) {
+    QTreeWidgetItem *item = new QTreeWidgetItem(m_topItem);
     item->setText(0, rule->filter());
     item->setData(0, Qt::UserRole + 10, index);
 
@@ -281,31 +251,29 @@ void AdBlockTreeWidget::refresh()
     }
 
     adjustItemFeatures(item, rule);
-    ++index;
+    index++;
   }
 
   showRule(0);
   m_itemChangingBlock = false;
 }
 
-void AdBlockTreeWidget::clear()
-{
+void AdBlockTreeWidget::clear() {
   QTreeWidget::clear();
   m_allTreeItems.clear();
 }
 
-void AdBlockTreeWidget::addTopLevelItem(QTreeWidgetItem* item)
-{
+void AdBlockTreeWidget::addTopLevelItem(QTreeWidgetItem *item) {
   m_allTreeItems.append(item);
   QTreeWidget::addTopLevelItem(item);
 }
 
-void AdBlockTreeWidget::iterateAllItems(QTreeWidgetItem* parent)
+void AdBlockTreeWidget::iterateAllItems(QTreeWidgetItem *parent)
 {
   int count = parent ? parent->childCount() : topLevelItemCount();
 
   for (int i = 0; i < count; i++) {
-    QTreeWidgetItem* item = parent ? parent->child(i) : topLevelItem(i);
+    QTreeWidgetItem *item = parent ? parent->child(i) : topLevelItem(i);
 
     if (item->childCount() == 0) {
       m_allTreeItems.append(item);
@@ -315,8 +283,7 @@ void AdBlockTreeWidget::iterateAllItems(QTreeWidgetItem* parent)
   }
 }
 
-QList<QTreeWidgetItem*> AdBlockTreeWidget::allItems()
-{
+QList<QTreeWidgetItem*> AdBlockTreeWidget::allItems() {
   if (m_refreshAllItemsNeeded) {
     m_allTreeItems.clear();
     iterateAllItems(0);
@@ -326,16 +293,18 @@ QList<QTreeWidgetItem*> AdBlockTreeWidget::allItems()
   return m_allTreeItems;
 }
 
-void AdBlockTreeWidget::filterString(const QString &string)
-{
-  QList<QTreeWidgetItem*> _allItems = allItems();
+void AdBlockTreeWidget::filterString(const QString &string) {
+  QList<QTreeWidgetItem*> all_items = allItems();
   QList<QTreeWidgetItem*> parents;
-  bool stringIsEmpty = string.isEmpty();
-  foreach (QTreeWidgetItem* item, _allItems) {
-    bool containsString = stringIsEmpty || item->text(0).contains(string, Qt::CaseInsensitive);
-    if (containsString) {
+  bool string_empty = string.isEmpty();
+
+  foreach (QTreeWidgetItem *item, all_items) {
+    bool contains_string = string_empty || item->text(0).contains(string, Qt::CaseInsensitive);
+
+    if (contains_string) {
       item->setHidden(false);
-      if (item->parent()) {
+
+      if (item->parent() != NULL) {
         if (!parents.contains(item->parent())) {
           parents << item->parent();
         }
@@ -343,18 +312,19 @@ void AdBlockTreeWidget::filterString(const QString &string)
     }
     else {
       item->setHidden(true);
-      if (item->parent()) {
+
+      if (item->parent() != NULL) {
         item->parent()->setHidden(true);
       }
     }
   }
 
-  for (int i = 0; i < parents.size(); ++i) {
-    QTreeWidgetItem* parentItem = parents.at(i);
+  for (int i = 0; i < parents.size(); i++) {
+    QTreeWidgetItem *parentItem = parents.at(i);
     parentItem->setHidden(false);
     parentItem->setExpanded(true);
 
-    if (parentItem->parent() && !parents.contains(parentItem->parent())) {
+    if (parentItem->parent() != NULL && !parents.contains(parentItem->parent())) {
       parents << parentItem->parent();
     }
   }

@@ -173,6 +173,10 @@ AdBlockCustomList *AdBlockManager::customList() const {
   return NULL;
 }
 
+bool AdBlockManager::shouldBeEnabled() {
+  return qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::Enabled)).toBool();
+}
+
 void AdBlockManager::load() {
   if (m_loaded) {
     // It is already loaded: subscriptions are loaded from files into objects,
@@ -327,6 +331,7 @@ AdBlockSubscription *AdBlockManager::subscriptionByName(const QString &name) con
 
 AdBlockDialog *AdBlockManager::showDialog() {
   QPointer<AdBlockDialog> form_pointer = new AdBlockDialog(qApp->mainForm());
+  form_pointer.data()->setModal(true);
   form_pointer.data()->show();
   form_pointer.data()->raise();
   form_pointer.data()->activateWindow();

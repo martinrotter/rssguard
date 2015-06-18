@@ -39,7 +39,7 @@ class StatusBar : public QStatusBar {
     }
 
     inline AdBlockIcon *adBlockIcon() {
-      return m_adblockIcon;
+      return m_adBlockIcon;
     }
 
   public slots:
@@ -59,7 +59,7 @@ class StatusBar : public QStatusBar {
     QProgressBar *m_barProgressDownload;
     QLabel *m_lblProgressDownload;
     PlainToolButton *m_fullscreenSwitcher;
-    AdBlockIcon* m_adblockIcon;
+    AdBlockIcon* m_adBlockIcon;
 };
 
 #endif // STATUSBAR_H

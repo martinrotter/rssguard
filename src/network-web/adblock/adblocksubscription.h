@@ -1,37 +1,21 @@
-/* ============================================================
-* QuiteRSS is a open-source cross-platform RSS/Atom news feeds reader
-* Copyright (C) 2011-2015 QuiteRSS Team <quiterssteam@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
-/* ============================================================
-* QupZilla - WebKit based browser
-* Copyright (C) 2010-2014  David Rosca <nowrep@gmail.com>
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-* ============================================================ */
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2014-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2010-2014 by David Rosca <nowrep@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Copyright (c) 2009, Benjamin C. Meyer <ben@meyerhome.net>
  *
@@ -63,24 +47,26 @@
 #ifndef ADBLOCKSUBSCRIPTION_H
 #define ADBLOCKSUBSCRIPTION_H
 
+#include <QObject>
+
 #include <QVector>
 #include <QUrl>
 
-#include "adblockrule.h"
-#include "adblocksearchtree.h"
+#include "network-web/adblock/adblockrule.h"
+#include "network-web/adblock/adblocksearchtree.h"
+
 
 class QNetworkRequest;
 class QNetworkReply;
 class QUrl;
-
 class FollowRedirectReply;
 
-class AdBlockSubscription : public QObject
-{
+class AdBlockSubscription : public QObject {
     Q_OBJECT
+
   public:
-    explicit AdBlockSubscription(const QString &title, QObject* parent = 0);
-    ~AdBlockSubscription();
+    explicit AdBlockSubscription(const QString &title, QObject *parent = 0);
+    virtual ~AdBlockSubscription();
 
     QString title() const;
     void setTitle(const QString &title);
@@ -91,21 +77,21 @@ class AdBlockSubscription : public QObject
     QUrl url() const;
     void setUrl(const QUrl &url);
 
-    virtual void loadSubscription(const QStringList &disabledRules);
+    virtual void loadSubscription(const QStringList &disabled_rules);
     virtual void saveSubscription();
 
-    const AdBlockRule* rule(int offset) const;
+    const AdBlockRule *rule(int offset) const;
     QVector<AdBlockRule*> allRules() const;
 
-    const AdBlockRule* enableRule(int offset);
-    const AdBlockRule* disableRule(int offset);
+    const AdBlockRule *enableRule(int offset);
+    const AdBlockRule *disableRule(int offset);
 
     virtual bool canEditRules() const;
     virtual bool canBeRemoved() const;
 
-    virtual int addRule(AdBlockRule* rule);
+    virtual int addRule(AdBlockRule *rule);
     virtual bool removeRule(int offset);
-    virtual const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
+    virtual const AdBlockRule *replaceRule(AdBlockRule *rule, int offset);
 
   public slots:
     void updateSubscription();
@@ -121,25 +107,23 @@ class AdBlockSubscription : public QObject
   protected:
     virtual bool saveDownloadedData(const QByteArray &data);
 
-    FollowRedirectReply* m_reply;
-
     QVector<AdBlockRule*> m_rules;
-
-  private:
     QString m_title;
     QString m_filePath;
 
+  private:
+    FollowRedirectReply *m_reply;
     QUrl m_url;
     bool m_updated;
 };
 
-class AdBlockCustomList : public AdBlockSubscription
-{
+class AdBlockCustomList : public AdBlockSubscription {
     Q_OBJECT
+
   public:
     explicit AdBlockCustomList(QObject* parent = 0);
+    virtual ~AdBlockCustomList();
 
-    void loadSubscription(const QStringList &disabledRules);
     void saveSubscription();
 
     bool canEditRules() const;
@@ -148,9 +132,9 @@ class AdBlockCustomList : public AdBlockSubscription
     bool containsFilter(const QString &filter) const;
     bool removeFilter(const QString &filter);
 
-    int addRule(AdBlockRule* rule);
+    int addRule(AdBlockRule *rule);
     bool removeRule(int offset);
-    const AdBlockRule* replaceRule(AdBlockRule* rule, int offset);
+    const AdBlockRule *replaceRule(AdBlockRule *rule, int offset);
 };
 
 #endif // ADBLOCKSUBSCRIPTION_H

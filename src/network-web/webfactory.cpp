@@ -135,6 +135,41 @@ QString WebFactory::deEscapeHtml(const QString &text) {
   return output;
 }
 
+QString WebFactory::toSecondLevelDomain(const QUrl &url) {
+#if QT_VERSION >= 0x040800
+  const QString top_level_domain = url.topLevelDomain();
+  const QString url_host = url.host();
+
+  if (top_level_domain.isEmpty() || url_host.isEmpty()) {
+    return QString();
+  }
+
+  QString domain = url_host.left(url_host.size() - top_level_domain.size());
+
+  if (domain.count(QL1C('.')) == 0) {
+    return url_host;
+  }
+
+  while (domain.count(QL1C('.')) != 0) {
+    domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
+  }
+
+  return domain + top_level_domain;
+#else
+  QString domain = url.host();
+
+  if (domain.count(QL1C('.')) == 0) {
+    return QString();
+  }
+
+  while (domain.count(QL1C('.')) != 1) {
+    domain = domain.mid(domain.indexOf(QL1C('.')) + 1);
+  }
+
+  return domain;
+#endif
+}
+
 void WebFactory::generetaEscapes() {
   m_escapes["&lt;"]     = '<';
   m_escapes["&gt;"]     = '>';

@@ -69,6 +69,8 @@ class AdBlockManager : public QObject {
 
     AdBlockCustomList *customList() const;
 
+    bool shouldBeEnabled();
+
     static AdBlockManager *instance();
 
   signals:
