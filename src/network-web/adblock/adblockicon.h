@@ -57,7 +57,7 @@ class AdBlockIcon : public PlainToolButton {
     QWidget *m_window;
     QAction *m_menuAction;
 
-    QVector<QPair<AdBlockRule*,QUrl>> m_blockedPopups;
+    QVector<QPair<AdBlockRule*,QUrl> > m_blockedPopups;
     QTimer *m_flashTimer;
 
     int m_timerTicks;
