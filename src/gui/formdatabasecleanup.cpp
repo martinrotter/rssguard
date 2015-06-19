@@ -129,6 +129,7 @@ void FormDatabaseCleanup::loadDatabaseInfo() {
   }
 
   m_ui->m_txtDatabaseType->setText(qApp->database()->humanDriverName(qApp->database()->activeDatabaseDriver()));
-  m_ui->m_checkShrink->setEnabled(qApp->database()->activeDatabaseDriver() == DatabaseFactory::SQLITE);
+  m_ui->m_checkShrink->setEnabled(qApp->database()->activeDatabaseDriver() == DatabaseFactory::SQLITE ||
+                                  qApp->database()->activeDatabaseDriver() == DatabaseFactory::SQLITE_MEMORY);
   m_ui->m_checkShrink->setChecked(m_ui->m_checkShrink->isEnabled());
 }

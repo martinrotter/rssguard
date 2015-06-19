@@ -704,8 +704,20 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name, D
   }
 }
 
-bool DatabaseFactory::sqliteVacuumDatabase() {
-  QSqlDatabase database = sqliteConnection(objectName(), FromSettings);
+bool DatabaseFactory::sqliteVacuumDatabase() {  
+  QSqlDatabase database;
+
+  if (m_activeDatabaseDriver == SQLITE) {
+    database = sqliteConnection(objectName(), StrictlyFileBased);
+  }
+  else if (m_activeDatabaseDriver == SQLITE_MEMORY) {
+    sqliteSaveMemoryDatabase();
+    database = sqliteConnection(objectName(), StrictlyFileBased);
+  }
+  else {
+    return false;
+  }
+
   QSqlQuery query_vacuum(database);
 
   return query_vacuum.exec("VACUUM");
