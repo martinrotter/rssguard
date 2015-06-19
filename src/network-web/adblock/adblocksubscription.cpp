@@ -48,8 +48,7 @@
 
 #include "network-web/adblock/adblockmanager.h"
 #include "network-web/adblock/adblocksearchtree.h"
-#include "network-web/adblock/followredirectreply.h"
-#include "network-web/silentnetworkaccessmanager.h"
+#include "network-web/downloader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/application.h"
 #include "exceptions/applicationexception.h"
@@ -62,7 +61,7 @@
 
 
 AdBlockSubscription::AdBlockSubscription(const QString &title, QObject *parent)
-  : QObject(parent), m_reply(NULL), m_title(title), m_updated(false) {
+  : QObject(parent), m_title(title), m_downloadingSubscription(false), m_updated(false) {
 }
 
 QString AdBlockSubscription::title() const {
@@ -143,32 +142,35 @@ void AdBlockSubscription::saveSubscription() {
 }
 
 void AdBlockSubscription::updateSubscription() {
-  if (m_reply != NULL || !m_url.isValid()) {
+  if (m_downloadingSubscription || !m_url.isValid()) {
     return;
   }
 
-  // TODO: Refaktorovat.
-  m_reply = new FollowRedirectReply(m_url, SilentNetworkAccessManager::instance());
+  m_downloadingSubscription = true;
 
-  connect(m_reply, SIGNAL(finished()), this, SLOT(subscriptionDownloaded()));
+  Downloader *downloader = new Downloader();
+
+  connect(downloader, SIGNAL(completed(QNetworkReply::NetworkError,QByteArray)), this, SLOT(subscriptionDownloaded()));
+  downloader->downloadFile(m_url.toString());
 }
 
 void AdBlockSubscription::subscriptionDownloaded() {
-  if (m_reply != qobject_cast<FollowRedirectReply*>(sender())) {
+  Downloader *downloader = qobject_cast<Downloader*>(sender());
+
+  if (downloader == NULL) {
     return;
   }
 
   bool error = false;
-  const QByteArray response = QString::fromUtf8(m_reply->readAll()).toUtf8();
+  const QByteArray response = QString::fromUtf8(downloader->lastOutputData()).toUtf8();
 
-  if (m_reply->error() != QNetworkReply::NoError ||
+  if (downloader->lastOutputError() != QNetworkReply::NoError ||
       !response.startsWith(QByteArray("[Adblock")) ||
       !saveDownloadedData(response)) {
     error = true;
   }
 
-  m_reply->deleteLater();
-  m_reply = 0;
+  downloader->deleteLater();
 
   if (error) {
     emit subscriptionError(tr("Cannot load subscription!"));
@@ -179,6 +181,8 @@ void AdBlockSubscription::subscriptionDownloaded() {
     emit subscriptionUpdated();
     emit subscriptionChanged();
   }
+
+  m_downloadingSubscription = false;
 }
 
 bool AdBlockSubscription::saveDownloadedData(const QByteArray &data) {

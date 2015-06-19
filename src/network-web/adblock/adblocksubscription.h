@@ -112,7 +112,7 @@ class AdBlockSubscription : public QObject {
     QString m_filePath;
 
   private:
-    FollowRedirectReply *m_reply;
+    bool m_downloadingSubscription;
     QUrl m_url;
     bool m_updated;
 };
