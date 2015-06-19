@@ -88,18 +88,19 @@ void AdBlockDialog::createConnections() {
 }
 
 void AdBlockDialog::showRule(const AdBlockRule* rule) const {
-  AdBlockSubscription* subscription = rule->subscription();
+  AdBlockSubscription *subscription = rule->subscription();
 
   if (subscription == NULL) {
     return;
   }
 
   for (int i = 0; i < m_ui->m_tabs->count(); i++) {
-    AdBlockTreeWidget* treeWidget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i));
+    AdBlockTreeWidget *tree_widget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i));
 
-    if (subscription == treeWidget->subscription()) {
-      treeWidget->showRule(rule);
+    if (subscription == tree_widget->subscription()) {
+      tree_widget->showRule(rule);
       m_ui->m_tabs->setCurrentIndex(i);
+      tree_widget->setFocus();
       break;
     }
   }
@@ -129,8 +130,7 @@ void AdBlockDialog::addSubscription() {
   }
 }
 
-void AdBlockDialog::removeSubscription()
-{
+void AdBlockDialog::removeSubscription() {
   if (m_manager->removeSubscription(m_currentSubscription)) {
     delete m_currentTreeWidget;
   }
@@ -144,6 +144,10 @@ void AdBlockDialog::currentChanged(int index) {
     bool is_easylist = m_currentSubscription->url() == QUrl(ADBLOCK_EASYLIST_URL);
     m_ui->m_checkUseLimitedEasyList->setEnabled(is_easylist && m_ui->m_checkEnable->isChecked());
     m_ui->m_checkUseLimitedEasyList->setVisible(is_easylist);
+
+    m_ui->m_txtFilter->blockSignals(true);
+    m_ui->m_txtFilter->clear();
+    m_ui->m_txtFilter->blockSignals(false);
   }
 }
 
