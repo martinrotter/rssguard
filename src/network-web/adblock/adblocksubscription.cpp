@@ -299,8 +299,7 @@ AdBlockSubscription::~AdBlockSubscription() {
 
 AdBlockCustomList::AdBlockCustomList(QObject *parent) : AdBlockSubscription(tr("Custom rules"), parent) {
   setTitle(tr("Custom rules"));
-  // TODO cesta
-  setFilePath(qApp->homeFolderPath() + "/adblock/customlist.txt");
+  setFilePath(AdBlockManager::baseSubscriptionDirectory() + QDir::separator() + ADBLOCK_CUSTOM_LIST_FILENAME);
 }
 
 AdBlockCustomList::~AdBlockCustomList() {

@@ -35,7 +35,7 @@
 
 
 AdBlockIcon::AdBlockIcon(QWidget *window, QWidget *parent)
-  : PlainToolButton(parent), m_window(window), m_menuAction(NULL), m_flashTimer(NULL), m_timerTicks(NULL), m_enabled(false) {
+  : PlainToolButton(parent), m_window(window), m_menuAction(NULL), m_flashTimer(NULL), m_timerTicks(0), m_enabled(false) {
   connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
   connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
 }

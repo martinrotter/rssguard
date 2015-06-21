@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
+    <width>535</width>
     <height>408</height>
    </rect>
   </property>
@@ -73,19 +73,6 @@
           </property>
          </widget>
         </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </item>
       <item row="2" column="0">
@@ -120,6 +107,13 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_checkEnable</tabstop>
+  <tabstop>m_tabs</tabstop>
+  <tabstop>m_btnOptions</tabstop>
+  <tabstop>m_txtFilter</tabstop>
+  <tabstop>m_checkUseLimitedEasyList</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

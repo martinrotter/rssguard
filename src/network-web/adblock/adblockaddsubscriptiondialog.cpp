@@ -34,6 +34,10 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget *parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme("web-adblock"));
 
+  setTabOrder(m_ui->m_cmbPresets, m_ui->m_txtTitle->lineEdit());
+  setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtUrl->lineEdit());
+  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_buttonBox);
+
   m_knownSubscriptions << Subscription("EasyList (English)", ADBLOCK_EASYLIST_URL)
                        << Subscription("Fanboy's List (English)", "http://www.fanboy.co.nz/adblock/fanboy-adblock.txt")
                        << Subscription("Adversity (English)", "http://adversity.googlecode.com/hg/Adversity.txt")

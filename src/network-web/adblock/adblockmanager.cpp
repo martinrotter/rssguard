@@ -27,6 +27,7 @@
 #include "network-web/silentnetworkaccessmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "definitions/definitions.h"
 #include "gui/formmain.h"
 
 #include <QDateTime>
@@ -36,11 +37,11 @@
 #include <QWebFrame>
 
 
-AdBlockManager* AdBlockManager::s_adBlockManager = NULL;
+AdBlockManager *AdBlockManager::s_adBlockManager = NULL;
 
 AdBlockManager::AdBlockManager(QObject* parent)
   : QObject(parent), m_loaded(false), m_enabled(false), m_useLimitedEasyList(true),
-    m_matcher(new AdBlockMatcher(this)), m_subscriptions(QList<AdBlockSubscription*>()) {
+    m_subscriptions(QList<AdBlockSubscription*>()), m_matcher(new AdBlockMatcher(this)) {
   load();
 }
 
@@ -85,21 +86,21 @@ QNetworkReply *AdBlockManager::block(const QNetworkRequest &request) {
     return NULL;
   }
 
-  const AdBlockRule* blocked_rule = m_matcher->match(request, url_domain, url_string);
+  const AdBlockRule *blocked_rule = m_matcher->match(request, url_domain, url_string);
 
   if (blocked_rule != NULL) {
     QVariant v = request.attribute((QNetworkRequest::Attribute)(QNetworkRequest::User + 100));
-    WebPage* webPage = static_cast<WebPage*>(v.value<void*>());
+    WebPage *web_page = static_cast<WebPage*>(v.value<void*>());
 
-    if (WebPage::isPointerSafeToUse(webPage)) {
-      if (!canBeBlocked(webPage->mainFrame()->url())) {
+    if (WebPage::isPointerSafeToUse(web_page)) {
+      if (!canBeBlocked(web_page->mainFrame()->url())) {
         return NULL;
       }
 
-      webPage->addAdBlockRule(blocked_rule, request.url());
+      web_page->addAdBlockRule(blocked_rule, request.url());
     }
 
-    AdBlockBlockedNetworkReply* reply = new AdBlockBlockedNetworkReply(blocked_rule, this);
+    AdBlockBlockedNetworkReply *reply = new AdBlockBlockedNetworkReply(blocked_rule, this);
     reply->setRequest(request);
 
     return reply;
@@ -126,7 +127,7 @@ AdBlockSubscription *AdBlockManager::addSubscription(const QString &title, const
   }
 
   QString file_name = IOFactory::filterBadCharsFromFilename(title.toLower()) + QL1S(".txt");
-  QString file_path = IOFactory::ensureUniqueFilename(qApp->homeFolderPath() + QL1S("/adblock/") + file_name);
+  QString file_path = IOFactory::ensureUniqueFilename(baseSubscriptionDirectory() + QDir::separator() + file_name);
   QFile file(file_path);
 
   if (!file.open(QFile::WriteOnly | QFile::Truncate | QFile::Unbuffered)) {
@@ -180,6 +181,21 @@ AdBlockCustomList *AdBlockManager::customList() const {
   return NULL;
 }
 
+QString AdBlockManager::baseSubscriptionDirectory() {
+  QString directory;
+
+  if (qApp->settings()->type() == SettingsProperties::Portable) {
+    directory = qApp->applicationDirPath();
+  }
+  else {
+    directory = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
+  }
+
+  directory += QDir::separator() + ADBLOCK_BASE_DIRECTORY_NAME;
+
+  return QDir::toNativeSeparators(directory);
+}
+
 bool AdBlockManager::shouldBeEnabled() {
   return qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::Enabled)).toBool();
 }
@@ -202,14 +218,14 @@ void AdBlockManager::load() {
     return;
   }
 
-  QDir adblock_dir(qApp->homeFolderPath() + QL1S("/adblock"));
+  QDir adblock_dir(baseSubscriptionDirectory());
 
   if (!adblock_dir.exists()) {
-    QDir(qApp->homeFolderPath()).mkdir(QSL("adblock"));
+    adblock_dir.mkpath(adblock_dir.absolutePath());
   }
 
   foreach (const QString &file_name, adblock_dir.entryList(QStringList(QL1S("*.txt")), QDir::Files)) {
-    if (file_name == QSL("customlist.txt")) {
+    if (file_name == QSL(ADBLOCK_CUSTOM_LIST_FILENAME)) {
       continue;
     }
 

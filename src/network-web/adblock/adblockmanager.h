@@ -71,6 +71,7 @@ class AdBlockManager : public QObject {
 
     bool shouldBeEnabled();
 
+    static QString baseSubscriptionDirectory();
     static AdBlockManager *instance();
 
   signals:

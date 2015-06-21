@@ -27,6 +27,8 @@ LineEditWithStatus::LineEditWithStatus(QWidget *parent)
   : WidgetWithStatus(parent) {
   m_wdgInput = new BaseLineEdit(this);
 
+  setFocusProxy(m_wdgInput);
+
   // Set correct size for the tool button.
   int txt_input_height = m_wdgInput->sizeHint().height();
   m_btnStatus->setFixedSize(txt_input_height, txt_input_height);
