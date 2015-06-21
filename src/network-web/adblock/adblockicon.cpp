@@ -181,8 +181,8 @@ void AdBlockIcon::toggleCustomFilter() {
   }
 
   const QString filter = action->data().toString();
-  AdBlockManager* manager = AdBlockManager::instance();
-  AdBlockCustomList* custom_list = manager->customList();
+  AdBlockManager *manager = AdBlockManager::instance();
+  AdBlockCustomList *custom_list = manager->customList();
 
   if (custom_list->containsFilter(filter)) {
     custom_list->removeFilter(filter);
