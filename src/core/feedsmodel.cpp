@@ -39,7 +39,7 @@
 
 FeedsModel::FeedsModel(QObject *parent)
   : QAbstractItemModel(parent), m_recycleBin(new FeedsModelRecycleBin()) {
-  setObjectName("FeedsModel");
+  setObjectName(QSL("FeedsModel"));
 
   // Create root item.
   m_rootItem = new FeedsModelRootItem();
@@ -47,10 +47,10 @@ FeedsModel::FeedsModel(QObject *parent)
 
   //: Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));
-  m_rootItem->setIcon(qApp->icons()->fromTheme("folder-root"));
+  m_rootItem->setIcon(qApp->icons()->fromTheme(QSL("folder-root")));
 
   // Setup icons.
-  m_countsIcon = qApp->icons()->fromTheme("mail-mark-unread");
+  m_countsIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 
   //: Title text in the feed list header.
   m_headerData << tr("Title");
@@ -283,14 +283,14 @@ bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *p
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
-  query_add.prepare("INSERT INTO Categories "
+  query_add.prepare(QSL("INSERT INTO Categories "
                     "(parent_id, title, description, date_created, icon) "
-                    "VALUES (:parent_id, :title, :description, :date_created, :icon);");
-  query_add.bindValue(":parent_id", parent->id());
-  query_add.bindValue(":title", category->title());
-  query_add.bindValue(":description", category->description());
-  query_add.bindValue(":date_created", category->creationDate().toMSecsSinceEpoch());
-  query_add.bindValue(":icon", qApp->icons()->toByteArray(category->icon()));
+                    "VALUES (:parent_id, :title, :description, :date_created, :icon);"));
+  query_add.bindValue(QSL(":parent_id"), parent->id());
+  query_add.bindValue(QSL(":title"), category->title());
+  query_add.bindValue(QSL(":description"), category->description());
+  query_add.bindValue(QSL(":date_created"), category->creationDate().toMSecsSinceEpoch());
+  query_add.bindValue(QSL(":icon"), qApp->icons()->toByteArray(category->icon()));
 
   if (!query_add.exec()) {
     qDebug("Failed to add category to database: %s.", qPrintable(query_add.lastError().text()));
@@ -299,8 +299,8 @@ bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *p
     return false;
   }
 
-  query_add.prepare("SELECT id FROM Categories WHERE title = :title;");
-  query_add.bindValue(":title", category->title());
+  query_add.prepare(QSL("SELECT id FROM Categories WHERE title = :title;"));
+  query_add.bindValue(QSL(":title"), category->title());
   if (query_add.exec() && query_add.next()) {
     // New category was added, fetch is primary id
     // from the database.
@@ -327,14 +327,14 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelC
   FeedsModelRootItem *new_parent = new_category->parent();
 
   query_update_category.setForwardOnly(true);
-  query_update_category.prepare("UPDATE Categories "
+  query_update_category.prepare(QSL("UPDATE Categories "
                                 "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
-                                "WHERE id = :id;");
-  query_update_category.bindValue(":title", new_category->title());
-  query_update_category.bindValue(":description", new_category->description());
-  query_update_category.bindValue(":icon", qApp->icons()->toByteArray(new_category->icon()));
-  query_update_category.bindValue(":parent_id", new_parent->id());
-  query_update_category.bindValue(":id", original_category->id());
+                                "WHERE id = :id;"));
+  query_update_category.bindValue(QSL(":title"), new_category->title());
+  query_update_category.bindValue(QSL(":description"), new_category->description());
+  query_update_category.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_category->icon()));
+  query_update_category.bindValue(QSL(":parent_id"), new_parent->id());
+  query_update_category.bindValue(QSL(":id"), original_category->id());
 
   if (!query_update_category.exec()) {
     // Persistent storage update failed, no way to continue now.
@@ -379,22 +379,22 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
   QSqlQuery query_add_feed(database);
 
   query_add_feed.setForwardOnly(true);
-  query_add_feed.prepare("INSERT INTO Feeds "
+  query_add_feed.prepare(QSL("INSERT INTO Feeds "
                          "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type) "
-                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);");
-  query_add_feed.bindValue(":title", feed->title());
-  query_add_feed.bindValue(":description", feed->description());
-  query_add_feed.bindValue(":date_created", feed->creationDate().toMSecsSinceEpoch());
-  query_add_feed.bindValue(":icon", qApp->icons()->toByteArray(feed->icon()));
-  query_add_feed.bindValue(":category", parent->id());
-  query_add_feed.bindValue(":encoding", feed->encoding());
-  query_add_feed.bindValue(":url", feed->url());
-  query_add_feed.bindValue(":protected", (int) feed->passwordProtected());
-  query_add_feed.bindValue(":username", feed->username());
-  query_add_feed.bindValue(":password", feed->password());
-  query_add_feed.bindValue(":update_type", (int) feed->autoUpdateType());
-  query_add_feed.bindValue(":update_interval", feed->autoUpdateInitialInterval());
-  query_add_feed.bindValue(":type", (int) feed->type());
+                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);"));
+  query_add_feed.bindValue(QSL(":title"), feed->title());
+  query_add_feed.bindValue(QSL(":description"), feed->description());
+  query_add_feed.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
+  query_add_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+  query_add_feed.bindValue(QSL(":category"), parent->id());
+  query_add_feed.bindValue(QSL(":encoding"), feed->encoding());
+  query_add_feed.bindValue(QSL(":url"), feed->url());
+  query_add_feed.bindValue(QSL(":protected"), (int) feed->passwordProtected());
+  query_add_feed.bindValue(QSL(":username"), feed->username());
+  query_add_feed.bindValue(QSL(":password"), feed->password());
+  query_add_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
+  query_add_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+  query_add_feed.bindValue(QSL(":type"), (int) feed->type());
 
   if (!query_add_feed.exec()) {
     qDebug("Failed to add feed to database: %s.", qPrintable(query_add_feed.lastError().text()));
@@ -403,8 +403,8 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
     return false;
   }
 
-  query_add_feed.prepare("SELECT id FROM Feeds WHERE url = :url;");
-  query_add_feed.bindValue(":url", feed->url());
+  query_add_feed.prepare(QSL("SELECT id FROM Feeds WHERE url = :url;"));
+  query_add_feed.bindValue(QSL(":url"), feed->url());
   if (query_add_feed.exec() && query_add_feed.next()) {
     // New feed was added, fetch is primary id from the database.
     feed->setId(query_add_feed.value(0).toInt());
@@ -429,22 +429,22 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_fee
   FeedsModelRootItem *new_parent = new_feed->parent();
 
   query_update_feed.setForwardOnly(true);
-  query_update_feed.prepare("UPDATE Feeds "
+  query_update_feed.prepare(QSL("UPDATE Feeds "
                             "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
-                            "WHERE id = :id;");
-  query_update_feed.bindValue(":title", new_feed->title());
-  query_update_feed.bindValue(":description", new_feed->description());
-  query_update_feed.bindValue(":icon", qApp->icons()->toByteArray(new_feed->icon()));
-  query_update_feed.bindValue(":category", new_parent->id());
-  query_update_feed.bindValue(":encoding", new_feed->encoding());
-  query_update_feed.bindValue(":url", new_feed->url());
-  query_update_feed.bindValue(":protected", (int) new_feed->passwordProtected());
-  query_update_feed.bindValue(":username", new_feed->username());
-  query_update_feed.bindValue(":password", new_feed->password());
-  query_update_feed.bindValue(":update_type", (int) new_feed->autoUpdateType());
-  query_update_feed.bindValue(":update_interval", new_feed->autoUpdateInitialInterval());
-  query_update_feed.bindValue(":type", new_feed->type());
-  query_update_feed.bindValue(":id", original_feed->id());
+                            "WHERE id = :id;"));
+  query_update_feed.bindValue(QSL(":title"), new_feed->title());
+  query_update_feed.bindValue(QSL(":description"), new_feed->description());
+  query_update_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_feed->icon()));
+  query_update_feed.bindValue(QSL(":category"), new_parent->id());
+  query_update_feed.bindValue(QSL(":encoding"), new_feed->encoding());
+  query_update_feed.bindValue(QSL(":url"), new_feed->url());
+  query_update_feed.bindValue(QSL(":protected"), (int) new_feed->passwordProtected());
+  query_update_feed.bindValue(QSL(":username"), new_feed->username());
+  query_update_feed.bindValue(QSL(":password"), new_feed->password());
+  query_update_feed.bindValue(QSL(":update_type"), (int) new_feed->autoUpdateType());
+  query_update_feed.bindValue(QSL(":update_interval"), new_feed->autoUpdateInitialInterval());
+  query_update_feed.bindValue(QSL(":type"), new_feed->type());
+  query_update_feed.bindValue(QSL(":id"), original_feed->id());
 
   if (!query_update_feed.exec()) {
     // Persistent storage update failed, no way to continue now.
@@ -535,12 +535,12 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
                                                        DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents "
+  query_read_msg.prepare(QSL("SELECT title, url, author, date_created, contents "
                          "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed;");
+                         "WHERE is_deleted = 0 AND feed = :feed;"));
 
   foreach (FeedsModelFeed *feed, feeds) {
-    query_read_msg.bindValue(":feed", feed->id());
+    query_read_msg.bindValue(QSL(":feed"), feed->id());
 
     if (query_read_msg.exec()) {
       while (query_read_msg.next()) {
@@ -749,7 +749,7 @@ void FeedsModel::loadFromDatabase() {
   QSqlQuery query_categories(database);
   query_categories.setForwardOnly(true);
 
-  if (!query_categories.exec("SELECT * FROM Categories;") || query_categories.lastError().isValid()) {
+  if (!query_categories.exec(QSL("SELECT * FROM Categories;")) || query_categories.lastError().isValid()) {
     qFatal("Query for obtaining categories failed. Error message: '%s'.",
            qPrintable(query_categories.lastError().text()));
   }
@@ -766,7 +766,7 @@ void FeedsModel::loadFromDatabase() {
   QSqlQuery query_feeds(database);
   query_feeds.setForwardOnly(true);
 
-  if (!query_feeds.exec("SELECT * FROM Feeds;") || query_feeds.lastError().isValid()) {
+  if (!query_feeds.exec(QSL("SELECT * FROM Feeds;")) || query_feeds.lastError().isValid()) {
     qFatal("Query for obtaining feeds failed. Error message: '%s'.",
            qPrintable(query_feeds.lastError().text()));
   }
@@ -849,15 +849,15 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read) {
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
+  if (!query_read_msg.prepare(QString(QSL("UPDATE Messages SET is_read = :read "
+                                      "WHERE feed IN (%1) AND is_deleted = 0;")).arg(textualFeedIds(feeds).join(QSL(", "))))) {
     qWarning("Query preparation failed for feeds read change.");
 
     db_handle.rollback();
     return false;
   }
 
-  query_read_msg.bindValue(":read", read);
+  query_read_msg.bindValue(QSL(":read"), read);
 
   if (!query_read_msg.exec()) {
     qDebug("Query execution for feeds read change failed.");
@@ -885,8 +885,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int delet
   query_delete_msg.setForwardOnly(true);
 
   if (read_only) {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(feeds).join(", ")))) {
+    if (!query_delete_msg.prepare(QString(QSL("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;")).arg(textualFeedIds(feeds).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
 
       db_handle.rollback();
@@ -894,8 +894,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int delet
     }
   }
   else {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(", ")))) {
+    if (!query_delete_msg.prepare(QString(QSL("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0;")).arg(textualFeedIds(feeds).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
 
       db_handle.rollback();
@@ -903,7 +903,7 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int delet
     }
   }
 
-  query_delete_msg.bindValue(":deleted", deleted);
+  query_delete_msg.bindValue(QSL(":deleted"), deleted);
 
   if (!query_delete_msg.exec()) {
     qDebug("Query execution for feeds clearing failed.");

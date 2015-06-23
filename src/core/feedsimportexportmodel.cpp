@@ -62,29 +62,29 @@ void FeedsImportExportModel::setRootItem(FeedsModelRootItem *rootItem) {
 
 bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   QDomDocument opml_document;
-  QDomProcessingInstruction xml_declaration = opml_document.createProcessingInstruction("xml",
-                                                                                        "version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"");
+  QDomProcessingInstruction xml_declaration = opml_document.createProcessingInstruction(QSL("xml"),
+                                                                                        QSL("version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\""));
   opml_document.appendChild(xml_declaration);
 
   // Adde OPML 2.0 metadata.
-  opml_document.appendChild(opml_document.createElement("opml"));
-  opml_document.documentElement().setAttribute("version", "2.0");
+  opml_document.appendChild(opml_document.createElement(QSL("opml")));
+  opml_document.documentElement().setAttribute(QSL("version"), QSL("version"));
 
-  QDomElement elem_opml_head = opml_document.createElement("head");
+  QDomElement elem_opml_head = opml_document.createElement(QSL("head"));
 
-  QDomElement elem_opml_title = opml_document.createElement("title");
+  QDomElement elem_opml_title = opml_document.createElement(QSL("title"));
   QDomText text_opml_title = opml_document.createTextNode(QString(APP_NAME));
   elem_opml_title.appendChild(text_opml_title);
   elem_opml_head.appendChild(elem_opml_title);
 
-  QDomElement elem_opml_created = opml_document.createElement("dateCreated");
+  QDomElement elem_opml_created = opml_document.createElement(QSL("dateCreated"));
   QDomText text_opml_created = opml_document.createTextNode(QLocale::c().toString(QDateTime::currentDateTimeUtc(),
-                                                                                  "ddd, dd MMM yyyy hh:mm:ss") + " GMT");
+                                                                                  QSL("ddd, dd MMM yyyy hh:mm:ss")) + QL1S(" GMT"));
   elem_opml_created.appendChild(text_opml_created);
   elem_opml_head.appendChild(elem_opml_created);
   opml_document.documentElement().appendChild(elem_opml_head);
 
-  QDomElement elem_opml_body = opml_document.createElement("body");
+  QDomElement elem_opml_body = opml_document.createElement(QSL("body"));
   QStack<FeedsModelRootItem*> items_to_process; items_to_process.push(m_rootItem);
   QStack<QDomElement> elements_to_use; elements_to_use.push(elem_opml_body);
 
@@ -100,10 +100,10 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
 
       switch (child_item->kind()) {
         case FeedsModelRootItem::Category: {
-          QDomElement outline_category = opml_document.createElement("outline");
-          outline_category.setAttribute("text", child_item->title());
-          outline_category.setAttribute("description", child_item->description());
-          outline_category.setAttribute("rssguard:icon", QString(qApp->icons()->toByteArray(child_item->icon())));
+          QDomElement outline_category = opml_document.createElement(QSL("outline"));
+          outline_category.setAttribute(QSL("text"), child_item->title());
+          outline_category.setAttribute(QSL("description"), child_item->description());
+          outline_category.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_item->icon())));
           active_element.appendChild(outline_category);
           items_to_process.push(child_item);
           elements_to_use.push(outline_category);
@@ -113,25 +113,25 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
         case FeedsModelRootItem::Feed: {
           FeedsModelFeed *child_feed = child_item->toFeed();
           QDomElement outline_feed = opml_document.createElement("outline");
-          outline_feed.setAttribute("text", child_feed->title());
-          outline_feed.setAttribute("xmlUrl", child_feed->url());
-          outline_feed.setAttribute("description", child_feed->description());
-          outline_feed.setAttribute("encoding", child_feed->encoding());
-          outline_feed.setAttribute("title", child_feed->title());
-          outline_feed.setAttribute("rssguard:icon", QString(qApp->icons()->toByteArray(child_feed->icon())));
+          outline_feed.setAttribute(QSL("text"), child_feed->title());
+          outline_feed.setAttribute(QSL("xmlUrl"), child_feed->url());
+          outline_feed.setAttribute(QSL("description"), child_feed->description());
+          outline_feed.setAttribute(QSL("encoding"), child_feed->encoding());
+          outline_feed.setAttribute(QSL("title"), child_feed->title());
+          outline_feed.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
 
           switch (child_feed->type()) {
             case FeedsModelFeed::Rss0X:
             case FeedsModelFeed::Rss2X:
-              outline_feed.setAttribute("version", "RSS");
+              outline_feed.setAttribute(QSL("version"), QSL("RSS"));
               break;
 
             case FeedsModelFeed::Rdf:
-              outline_feed.setAttribute("version", "RSS1");
+              outline_feed.setAttribute(QSL("version"), QSL("RSS1"));
               break;
 
             case FeedsModelFeed::Atom10:
-              outline_feed.setAttribute("version", "ATOM");
+              outline_feed.setAttribute(QSL("version"), QSL("ATOM"));
               break;
 
             default:
@@ -160,15 +160,15 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
     return false;
   }
 
-  if (opml_document.documentElement().isNull() || opml_document.documentElement().tagName() != "opml" ||
-      opml_document.documentElement().elementsByTagName("body").size() != 1) {
+  if (opml_document.documentElement().isNull() || opml_document.documentElement().tagName() != QSL("opml") ||
+      opml_document.documentElement().elementsByTagName(QSL("body")).size() != 1) {
     // This really is not an OPML file.
     return false;
   }
 
   FeedsModelRootItem *root_item = new FeedsModelRootItem();
   QStack<FeedsModelRootItem*> model_items; model_items.push(root_item);
-  QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName("body").at(0).toElement());
+  QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
 
   while (!elements_to_process.isEmpty()) {
     FeedsModelRootItem *active_model_item = model_items.pop();
@@ -182,15 +182,15 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
 
         // Now analyze if this element is category or feed.
         // NOTE: All feeds must include xmlUrl attribute and text attribute.
-        if (child_element.attributes().contains("xmlUrl") && child.attributes().contains("text")) {
+        if (child_element.attributes().contains(QSL("xmlUrl")) && child.attributes().contains(QSL("text"))) {
           // This is FEED.
           // Add feed and end this iteration.
-          QString feed_title = child_element.attribute("text");
-          QString feed_url = child_element.attribute("xmlUrl");
-          QString feed_encoding = child_element.attribute("encoding", DEFAULT_FEED_ENCODING);
-          QString feed_type = child_element.attribute("version", DEFAULT_FEED_TYPE).toUpper();
-          QString feed_description = child_element.attribute("description");
-          QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute("rssguard:icon").toLocal8Bit());
+          QString feed_title = child_element.attribute(QSL("text"));
+          QString feed_url = child_element.attribute(QSL("xmlUrl"));
+          QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
+          QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
+          QString feed_description = child_element.attribute(QSL("description"));
+          QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
           FeedsModelFeed *new_feed = new FeedsModelFeed(active_model_item);
           new_feed->setTitle(feed_title);
@@ -198,13 +198,13 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           new_feed->setEncoding(feed_encoding);
           new_feed->setUrl(feed_url);
           new_feed->setCreationDate(QDateTime::currentDateTime());
-          new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme("folder-feed") : feed_icon);
+          new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
           new_feed->setAutoUpdateType(FeedsModelFeed::DefaultAutoUpdate);
 
-          if (feed_type == "RSS1") {
+          if (feed_type == QL1S("RSS1")) {
             new_feed->setType(FeedsModelFeed::Rdf);
           }
-          else if (feed_type == "ATOM") {
+          else if (feed_type == QL1S("ATOM")) {
             new_feed->setType(FeedsModelFeed::Atom10);
           }
           else {
@@ -216,14 +216,14 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
         else {
           // This must be CATEGORY.
           // Add category and continue.
-          QString category_title = child_element.attribute("text");
-          QString category_description = child_element.attribute("description");
-          QIcon category_icon = qApp->icons()->fromByteArray(child_element.attribute("rssguard:icon").toLocal8Bit());
+          QString category_title = child_element.attribute(QSL("text"));
+          QString category_description = child_element.attribute(QSL("description"));
+          QIcon category_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
           if (category_title.isEmpty()) {
             qWarning("Given OMPL file provided category without valid text attribute. Using fallback name.");
 
-            category_title = child_element.attribute("title");
+            category_title = child_element.attribute(QSL("title"));
 
             if (category_title.isEmpty()) {
               category_title = tr("Category ") + QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch());
@@ -232,7 +232,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
 
           FeedsModelCategory *new_category = new FeedsModelCategory(active_model_item);
           new_category->setTitle(category_title);
-          new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme("folder-category") : category_icon);
+          new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-category")) : category_icon);
           new_category->setCreationDate(QDateTime::currentDateTime());
           new_category->setDescription(category_description);
 

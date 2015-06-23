@@ -103,22 +103,22 @@ int FeedsModelFeed::countOfUnreadMessages() const {
 QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
   switch (type) {
     case Atom10:
-      return "ATOM 1.0";
+      return QSL("ATOM 1.0");
 
     case Rdf:
-      return "RDF (RSS 1.0)";
+      return QSL("RDF (RSS 1.0)");
 
     case Rss0X:
-      return "RSS 0.91/0.92/0.93";
+      return QSL("RSS 0.91/0.92/0.93");
 
     case Rss2X:
     default:
-      return "RSS 2.0/2.0.1";
+      return QSL("RSS 2.0/2.0.1");
   }
 }
 
 void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
-  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
 
   query_all.setForwardOnly(true);
@@ -161,13 +161,13 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
     // its encoding before we can read further data.
     QString xml_schema_encoding;
     QString xml_contents_encoded;
-    QRegExp encoding_rexp("encoding=\"[^\"]\\S+\"");
+    QRegExp encoding_rexp(QSL("encoding=\"[^\"]\\S+\""));
 
     if (encoding_rexp.indexIn(feed_contents) != -1 &&
         !(xml_schema_encoding = encoding_rexp.cap(0)).isEmpty()) {
       // Some "encoding" attribute was found get the encoding
       // out of it.
-      encoding_rexp.setPattern("[^\"]\\S+[^\"]");
+      encoding_rexp.setPattern(QSL("[^\"]\\S+[^\"]"));
       encoding_rexp.indexIn(xml_schema_encoding, 9);
       xml_schema_encoding = encoding_rexp.cap(0);
     }
@@ -217,49 +217,49 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
 
     icon_possible_locations.append(url);
 
-    if (root_tag_name == "rdf:RDF") {
+    if (root_tag_name == QL1S("rdf:RDF")) {
       // We found RDF feed.
-      QDomElement channel_element = root_element.namedItem("channel").toElement();
+      QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
 
       result.first->setType(Rdf);
-      result.first->setTitle(channel_element.namedItem("title").toElement().text());
-      result.first->setDescription(channel_element.namedItem("description").toElement().text());
+      result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
+      result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
 
-      QString source_link = channel_element.namedItem("link").toElement().text();
+      QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
 
       if (!source_link.isEmpty()) {
         icon_possible_locations.prepend(source_link);
       }
     }
-    else if (root_tag_name == "rss") {
+    else if (root_tag_name == QL1S("rss")) {
       // We found RSS 0.91/0.92/0.93/2.0/2.0.1 feed.
       QString rss_type = root_element.attribute("version", "2.0");
 
-      if (rss_type == "0.91" || rss_type == "0.92" || rss_type == "0.93") {
+      if (rss_type == QL1S("0.91") || rss_type == QL1S("0.92") || rss_type == QL1S("0.93")) {
         result.first->setType(Rss0X);
       }
       else {
         result.first->setType(Rss2X);
       }
 
-      QDomElement channel_element = root_element.namedItem("channel").toElement();
+      QDomElement channel_element = root_element.namedItem(QSL("channel")).toElement();
 
-      result.first->setTitle(channel_element.namedItem("title").toElement().text());
-      result.first->setDescription(channel_element.namedItem("description").toElement().text());
+      result.first->setTitle(channel_element.namedItem(QSL("title")).toElement().text());
+      result.first->setDescription(channel_element.namedItem(QSL("description")).toElement().text());
 
-      QString source_link = channel_element.namedItem("link").toElement().text();
+      QString source_link = channel_element.namedItem(QSL("link")).toElement().text();
 
       if (!source_link.isEmpty()) {
         icon_possible_locations.prepend(source_link);
       }
     }
-    else if (root_tag_name == "feed") {
+    else if (root_tag_name == QL1S("feed")) {
       // We found ATOM feed.
       result.first->setType(Atom10);
-      result.first->setTitle(root_element.namedItem("title").toElement().text());
-      result.first->setDescription(root_element.namedItem("subtitle").toElement().text());
+      result.first->setTitle(root_element.namedItem(QSL("title")).toElement().text());
+      result.first->setDescription(root_element.namedItem(QSL("subtitle")).toElement().text());
 
-      QString source_link = root_element.namedItem("link").toElement().text();
+      QString source_link = root_element.namedItem(QSL("link")).toElement().text();
 
       if (!source_link.isEmpty()) {
         icon_possible_locations.prepend(source_link);
@@ -445,29 +445,29 @@ void FeedsModelFeed::update() {
 }
 
 bool FeedsModelFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
 
   // Remove all messages from this standard feed.
-  query_remove.prepare("DELETE FROM Messages WHERE feed = :feed;");
-  query_remove.bindValue(":feed", id());
+  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
+  query_remove.bindValue(QSL(":feed"), id());
 
   if (!query_remove.exec()) {
     return false;
   }
 
   // Remove feed itself.
-  query_remove.prepare("DELETE FROM Feeds WHERE id = :feed;");
-  query_remove.bindValue(":feed", id());
+  query_remove.prepare(QSL("DELETE FROM Feeds WHERE id = :feed;"));
+  query_remove.bindValue(QSL(":feed"), id());
 
   return query_remove.exec();
 }
 
 void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
-  QSqlDatabase database = qApp->database()->connection("FeedsModelFeed", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
   bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
 
   // Prepare queries.
@@ -478,18 +478,18 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   // Used to check if given feed contains any message with given title, url and date_created.
   // WARNING: One feed CANNOT contain two (or more) messages with same AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
-  query_select.prepare("SELECT id, feed, date_created FROM Messages "
-                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;");
+  query_select.prepare(QSL("SELECT id, feed, date_created FROM Messages "
+                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;"));
 
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
-  query_insert.prepare("INSERT INTO Messages "
+  query_insert.prepare(QSL("INSERT INTO Messages "
                        "(feed, title, url, author, date_created, contents, enclosures) "
-                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures);");
+                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures);"));
 
   if (remove_duplicates) {
     query_update.setForwardOnly(true);
-    query_update.prepare("UPDATE Messages SET contents = :contents enclosures = :enclosures WHERE id = :id;");
+    query_update.prepare(QSL("UPDATE Messages SET contents = :contents enclosures = :enclosures WHERE id = :id;"));
   }
 
   if (!database.transaction()) {
@@ -500,9 +500,9 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
   foreach (Message message, messages) {
     // Check if messages contain relative URLs and if they do, then replace them.
-    if (message.m_url.startsWith('/')) {
+    if (message.m_url.startsWith(QL1S("/"))) {
       QString new_message_url = url();
-      int last_slash = new_message_url.lastIndexOf('/');
+      int last_slash = new_message_url.lastIndexOf(QL1S("/"));
 
       if (last_slash >= 0) {
         new_message_url = new_message_url.left(last_slash);
@@ -512,10 +512,10 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       message.m_url = new_message_url;
     }
 
-    query_select.bindValue(":feed", feed_id);
-    query_select.bindValue(":title", message.m_title);
-    query_select.bindValue(":url", message.m_url);
-    query_select.bindValue(":author", message.m_author);
+    query_select.bindValue(QSL(":feed"), feed_id);
+    query_select.bindValue(QSL(":title"), message.m_title);
+    query_select.bindValue(QSL(":url"), message.m_url);
+    query_select.bindValue(QSL(":author"), message.m_author);
     query_select.exec();
 
     QList<qint64> datetime_stamps;
@@ -530,13 +530,13 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
     if (datetime_stamps.isEmpty()) {
       // Message is not fetched in this feed yet.
-      query_insert.bindValue(":feed", feed_id);
-      query_insert.bindValue(":title", message.m_title);
-      query_insert.bindValue(":url", message.m_url);
-      query_insert.bindValue(":author", message.m_author);
-      query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(":contents", message.m_contents);
-      query_insert.bindValue(":enclosures", Enclosures::encodeEnclosuresToString(message.m_enclosures));
+      query_insert.bindValue(QSL(":feed"), feed_id);
+      query_insert.bindValue(QSL(":title"), message.m_title);
+      query_insert.bindValue(QSL(":url"), message.m_url);
+      query_insert.bindValue(QSL(":author"), message.m_author);
+      query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
+      query_insert.bindValue(QSL(":contents"), message.m_contents);
+      query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         setStatus(NewMessages);
@@ -550,9 +550,9 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       if (remove_duplicates && datetime_stamps.size() == 1) {
         // Message is already in feed and new message has new unique time but user wishes to update existing
         // messages and there is exactly ONE existing duplicate.
-        query_update.bindValue(":id", ids.at(0));
-        query_update.bindValue(":contents", message.m_contents);
-        query_update.bindValue(":enclosures", Enclosures::encodeEnclosuresToString(message.m_enclosures));
+        query_update.bindValue(QSL(":id"), ids.at(0));
+        query_update.bindValue(QSL(":contents"), message.m_contents);
+        query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.exec();
         query_update.finish();
 
@@ -561,13 +561,13 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
       else {
         // Message with same title, author and url exists, but new message has new unique time and
         // user does not wish to update duplicates.
-        query_insert.bindValue(":feed", feed_id);
-        query_insert.bindValue(":title", message.m_title);
-        query_insert.bindValue(":url", message.m_url);
-        query_insert.bindValue(":author", message.m_author);
-        query_insert.bindValue(":date_created", message.m_created.toMSecsSinceEpoch());
-        query_insert.bindValue(":contents", message.m_contents);
-        query_insert.bindValue(":enclosures", Enclosures::encodeEnclosuresToString(message.m_enclosures));
+        query_insert.bindValue(QSL(":feed"), feed_id);
+        query_insert.bindValue(QSL(":title"), message.m_title);
+        query_insert.bindValue(QSL(":url"), message.m_url);
+        query_insert.bindValue(QSL(":author"), message.m_author);
+        query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
+        query_insert.bindValue(QSL(":contents"), message.m_contents);
+        query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
 
         if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
           setStatus(NewMessages);

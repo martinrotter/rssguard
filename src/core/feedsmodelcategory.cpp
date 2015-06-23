@@ -133,14 +133,14 @@ bool FeedsModelCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->connection("FeedsModelCategory", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelCategory"), DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
 
   // Remove all messages from this standard feed.
-  query_remove.prepare("DELETE FROM Categories WHERE id = :category;");
-  query_remove.bindValue(":category", id());
+  query_remove.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
+  query_remove.bindValue(QSL(":category"), id());
 
   return query_remove.exec();
 }
