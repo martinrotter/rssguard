@@ -46,6 +46,37 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 
   // Load information from embedded text files.
+  loadLicenseAndInformation();
+
+  // Load additional paths information.
+  loadSettingsAndPaths();
+}
+
+FormAbout::~FormAbout() {
+  qDebug("Destroying FormAbout instance.");
+  delete m_ui;
+}
+
+void FormAbout::loadSettingsAndPaths() {
+  if (qApp->settings()->type() == SettingsProperties::Portable) {
+    m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
+    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->applicationDirPath() +
+                                                                   QDir::separator() +
+                                                                   QString(APP_DB_SQLITE_PATH)));
+  }
+  else {
+    m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
+    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->homeFolderPath() +
+                                                                   QDir::separator() +
+                                                                   QString(APP_LOW_H_NAME) +
+                                                                   QDir::separator() +
+                                                                   QString(APP_DB_SQLITE_PATH)));
+  }
+
+  m_ui->m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));
+}
+
+void FormAbout::loadLicenseAndInformation() {
   QTextStream text_stream;
   QFile file;
   text_stream.setDevice(&file);
@@ -103,21 +134,4 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
                                                                                  QString::number(QDateTime::currentDateTime().date().year()),
                                                                                  APP_AUTHOR,
                                                                                  APP_NAME));
-
-  // Load additional paths information.
-  if (qApp->settings()->type() == SettingsProperties::Portable) {
-    m_ui->m_txtPathsSettingsType->setText(tr("FULLY portable"));
-    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->applicationDirPath() + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
-  }
-  else {
-    m_ui->m_txtPathsSettingsType->setText(tr("PARTIALLY portable"));
-    m_ui->m_txtPathsDatabaseRoot->setText(QDir::toNativeSeparators(qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME) + QDir::separator() + QString(APP_DB_SQLITE_PATH)));
-  }
-
-  m_ui->m_txtPathsSettingsFile->setText(QDir::toNativeSeparators(qApp->settings()->fileName()));
-}
-
-FormAbout::~FormAbout() {
-  qDebug("Destroying FormAbout instance.");
-  delete m_ui;
 }

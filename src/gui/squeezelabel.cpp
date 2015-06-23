@@ -15,23 +15,21 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "squeezelabel.h"
+#include "gui/squeezelabel.h"
 
-SqueezeLabel::SqueezeLabel(QWidget *parent)
-    : QLabel(parent)
-{
+
+SqueezeLabel::SqueezeLabel(QWidget *parent) : QLabel(parent) {
 }
 
-void SqueezeLabel::paintEvent(QPaintEvent *event)
-{
-    if (m_SqueezedTextCache != text()) {
-        m_SqueezedTextCache = text();
-        QFontMetrics fm = fontMetrics();
-        if (fm.width(m_SqueezedTextCache) > contentsRect().width()) {
-            QString elided = fm.elidedText(text(), Qt::ElideMiddle, width());
-            setText(elided);
-        }
+void SqueezeLabel::paintEvent(QPaintEvent *event) {
+  if (m_squeezedTextCache != text()) {
+    m_squeezedTextCache = text();
+    QFontMetrics fm = fontMetrics();
+
+    if (fm.width(m_squeezedTextCache) > contentsRect().width()) {
+      setText(fm.elidedText(text(), Qt::ElideMiddle, width()));
     }
-    QLabel::paintEvent(event);
-}
+  }
 
+  QLabel::paintEvent(event);
+}

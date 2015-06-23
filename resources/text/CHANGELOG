@@ -9,6 +9,7 @@ Added:
 
 Fixed:
 <ul>
+<li>Internal message previewer is now cleared only once when switching feeds.</li>
 <li>Database cleanup tools now do support "shrinking" in in-memory databases, althouth it is bit hacky.</li>
 <li>Google suggest API now prevents completion if ENTER in address textbox is hit.</li>
 <li>Double-clickin on message now results in opening source article in mini web browser.</li>

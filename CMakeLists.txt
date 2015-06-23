@@ -502,7 +502,6 @@ set(APP_HEADERS
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
   src/core/feedsimportexportmodel.h
-  src/core/feedsselection.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h

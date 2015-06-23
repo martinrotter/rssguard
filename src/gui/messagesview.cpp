@@ -241,10 +241,6 @@ void MessagesView::loadFeeds(const FeedsSelection &selection) {
   Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
   sortByColumn(col, ord);
-
-  // Messages are loaded, make sure that previously
-  // active message is not shown in browser.
-  emit currentMessagesRemoved();
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {

@@ -18,25 +18,20 @@
 #ifndef SQUEEZELABEL_H
 #define SQUEEZELABEL_H
 
-#include <qlabel.h>
+#include <QLabel>
 
-/*
-    A label that will squeeze the set text to fit within the size of the
-    widget.  The text will be elided in the middle.
- */
-class SqueezeLabel : public QLabel
-{
+
+class SqueezeLabel : public QLabel {
     Q_OBJECT
 
-public:
-    SqueezeLabel(QWidget *parent = 0);
+  public:
+    explicit SqueezeLabel(QWidget *parent = 0);
 
-protected:
+  protected:
     void paintEvent(QPaintEvent *event);
 
-private:
-    QString m_SqueezedTextCache;
+  private:
+    QString m_squeezedTextCache;
 };
 
 #endif // SQUEEZELABEL_H
-

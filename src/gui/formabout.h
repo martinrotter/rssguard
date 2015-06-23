@@ -38,8 +38,10 @@ class FormAbout : public QDialog {
     virtual ~FormAbout();
 
   private:
+    void loadLicenseAndInformation();
+    void loadSettingsAndPaths();
+
     Ui::FormAbout *m_ui;
 };
-
 
 #endif // FORMABOUT_H
