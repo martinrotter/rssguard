@@ -60,16 +60,16 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget *parent)
                        << Subscription("ABPindo (Indonesian)", "https://indonesianadblockrules.googlecode.com/hg/subscriptions/abpindo.txt")
                        << Subscription("ChinaList (Chinese)", "http://adblock-chinalist.googlecode.com/svn/trunk/adblock.txt")
                        << Subscription("Malware Domains list", "https://easylist-downloads.adblockplus.org/malwaredomains_full.txt") <<
-                          Subscription(tr("Other list"), QString());
+                          Subscription(tr("Another subscription"), QString());
 
   foreach (const Subscription &subscription, m_knownSubscriptions) {
     m_ui->m_cmbPresets->addItem(subscription.m_title);
   }
 
-  connect(m_ui->m_cmbPresets, SIGNAL(currentIndexChanged(int)), this, SLOT(indexChanged(int)));
+  connect(m_ui->m_cmbPresets, SIGNAL(currentIndexChanged(int)), this, SLOT(onSubscriptionPresetChanged(int)));
   connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
   connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
-  indexChanged(0);
+  onSubscriptionPresetChanged(0);
 }
 
 QString AdBlockAddSubscriptionDialog::title() const {
@@ -80,7 +80,7 @@ QString AdBlockAddSubscriptionDialog::url() const {
   return m_ui->m_txtUrl->lineEdit()->text();
 }
 
-void AdBlockAddSubscriptionDialog::indexChanged(int index) {
+void AdBlockAddSubscriptionDialog::onSubscriptionPresetChanged(int index) {
   const Subscription subscription = m_knownSubscriptions.at(index);
 
   // "Other" entry.
@@ -89,14 +89,7 @@ void AdBlockAddSubscriptionDialog::indexChanged(int index) {
     m_ui->m_txtUrl->lineEdit()->clear();
   }
   else {
-    int pos = subscription.m_title.indexOf(QLatin1Char('('));
-    QString title = subscription.m_title;
-
-    if (pos > 0) {
-      title = title.left(pos).trimmed();
-    }
-
-    m_ui->m_txtTitle->lineEdit()->setText(title);
+    m_ui->m_txtTitle->lineEdit()->setText( subscription.m_title);
     m_ui->m_txtTitle->lineEdit()->setCursorPosition(0);
     m_ui->m_txtUrl->lineEdit()->setText(subscription.m_url);
     m_ui->m_txtUrl->lineEdit()->setCursorPosition(0);

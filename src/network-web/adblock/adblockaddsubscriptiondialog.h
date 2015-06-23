@@ -43,7 +43,7 @@ class AdBlockAddSubscriptionDialog : public QDialog {
 
   private slots:
     // Index of selected list changed.
-    void indexChanged(int index);
+    void onSubscriptionPresetChanged(int index);
     void checkInputs();
 
   private:

@@ -55,8 +55,6 @@ AdBlockDialog::AdBlockDialog(QWidget* parent) : QDialog(parent), m_ui(new Ui::Ad
 
   // Load the contents.
   load();
-
-  m_ui->m_buttonBox->setFocus();
 }
 
 AdBlockDialog::~AdBlockDialog() {
@@ -87,8 +85,8 @@ void AdBlockDialog::createConnections() {
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(close()));
 }
 
-void AdBlockDialog::showRule(const AdBlockRule* rule) const {
-  AdBlockSubscription *subscription = rule->subscription();
+void AdBlockDialog::showRule(const AdBlockRule *rule) const {
+  const AdBlockSubscription *subscription = rule->subscription();
 
   if (subscription == NULL) {
     return;
@@ -115,11 +113,11 @@ void AdBlockDialog::removeRule() {
 }
 
 void AdBlockDialog::addSubscription() {
-  AdBlockAddSubscriptionDialog dialog(this);
+  QPointer<AdBlockAddSubscriptionDialog> dialog = new AdBlockAddSubscriptionDialog(this);
 
-  if (dialog.exec() == QDialog::Accepted) {
-    QString title = dialog.title();
-    QString url = dialog.url();
+  if (dialog.data()->exec() == QDialog::Accepted) {
+    QString title = dialog.data()->title();
+    QString url = dialog.data()->url();
 
     if (AdBlockSubscription *subscription = m_manager->addSubscription(title, url)) {
       AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
@@ -128,6 +126,8 @@ void AdBlockDialog::addSubscription() {
       m_ui->m_tabs->setCurrentIndex(index);
     }
   }
+
+  delete dialog.data();
 }
 
 void AdBlockDialog::removeSubscription() {

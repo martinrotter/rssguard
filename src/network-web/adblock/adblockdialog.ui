@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>535</width>
-    <height>408</height>
+    <height>466</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,9 @@
       </font>
      </property>
      <property name="text">
-      <string>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.</string>
+      <string>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
+
+Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for newly opened web browser tabs.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
