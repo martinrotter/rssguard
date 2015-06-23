@@ -128,7 +128,6 @@ void SystemTrayIcon::setNumber(int number, bool any_unread_message) {
     QPainter tray_painter;
 
     // TODO: Here draw different background instead of different color of number.
-
     tray_painter.begin(&background);
     tray_painter.setPen(any_unread_message ? Qt::blue : Qt::black);
     tray_painter.setRenderHint(QPainter::SmoothPixmapTransform, true);

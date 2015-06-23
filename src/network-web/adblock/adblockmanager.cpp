@@ -68,9 +68,6 @@ void AdBlockManager::setEnabled(bool enabled) {
 
   // Load subscriptions and other data.
   load();
-
-  // TODO
-  //mainApp->reloadUserStyleBrowser();
 }
 
 QList<AdBlockSubscription*> AdBlockManager::subscriptions() const {
@@ -146,8 +143,6 @@ AdBlockSubscription *AdBlockManager::addSubscription(const QString &title, const
   // This expects that there is at least "Custom rules" subscription available in
   // active subscriptions.
   m_subscriptions.insert(m_subscriptions.size() - 1, subscription);
-
-  // TODO: přidáno, asi pořeší pár bugů
   m_matcher->update();
 
   return subscription;
@@ -161,10 +156,7 @@ bool AdBlockManager::removeSubscription(AdBlockSubscription *subscription) {
     QFile::remove(subscription->filePath());
     m_subscriptions.removeOne(subscription);
     delete subscription;
-
-    // TODO: přidáno, asi pořeší pár bugů
     m_matcher->update();
-
     return true;
   }
 }
@@ -192,7 +184,6 @@ QString AdBlockManager::baseSubscriptionDirectory() {
   }
 
   directory += QDir::separator() + ADBLOCK_BASE_DIRECTORY_NAME;
-
   return QDir::toNativeSeparators(directory);
 }
 
@@ -211,7 +202,6 @@ void AdBlockManager::load() {
   m_enabled = settings->value(GROUP(AdBlock), SETTING(AdBlock::Enabled)).toBool();
   m_useLimitedEasyList = settings->value(GROUP(AdBlock), SETTING(AdBlock::UseLimitedEasyList)).toBool();
   m_disabledRules = settings->value(GROUP(AdBlock), SETTING(AdBlock::DisabledRules)).toStringList();
-  //QDateTime last_update = settings->value(GROUP(AdBlock), SETTING(AdBlock::LastUpdated)).toDateTime();
 
   if (!m_enabled) {
     // We loaded settings, but Adblock should be disabled. Do not continue to save memory.
@@ -263,8 +253,6 @@ void AdBlockManager::load() {
   foreach (AdBlockSubscription *subscription, m_subscriptions) {
     subscription->loadSubscription(m_disabledRules);
 
-    // TODO
-    //connect(subscription, SIGNAL(subscriptionUpdated()), mainApp, SLOT(reloadUserStyleBrowser()));
     connect(subscription, SIGNAL(subscriptionChanged()), m_matcher, SLOT(update()));
   }
 
@@ -283,19 +271,16 @@ void AdBlockManager::updateAllSubscriptions() {
 }
 
 void AdBlockManager::save() {
-  if (!m_loaded) {
-    // There is nothing to save, because these is nothing loaded.
-    return;
-  }
+  if (m_loaded) {
+    foreach (AdBlockSubscription *subscription, m_subscriptions) {
+      subscription->saveSubscription();
+    }
 
-  foreach (AdBlockSubscription *subscription, m_subscriptions) {
-    subscription->saveSubscription();
+    Settings *settings = qApp->settings();
+    settings->setValue(GROUP(AdBlock), AdBlock::Enabled, m_enabled);
+    settings->setValue(GROUP(AdBlock), AdBlock::UseLimitedEasyList, m_useLimitedEasyList);
+    settings->setValue(GROUP(AdBlock), AdBlock::DisabledRules, m_disabledRules);
   }
-
-  Settings *settings = qApp->settings();
-  settings->setValue(GROUP(AdBlock), AdBlock::Enabled, m_enabled);
-  settings->setValue(GROUP(AdBlock), AdBlock::UseLimitedEasyList, m_useLimitedEasyList);
-  settings->setValue(GROUP(AdBlock), AdBlock::DisabledRules, m_disabledRules);
 }
 
 bool AdBlockManager::isEnabled() const {
