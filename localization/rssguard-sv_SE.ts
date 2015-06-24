@@ -1,4 +1,174 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="sv_SE">
+<context>
+    <name>AdBlockAddSubscriptionDialog</name>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Another subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered title is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered title is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered url is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered url is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockCustomList</name>
+    <message>
+        <source>Custom rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockDialog</name>
+    <message>
+        <source>Adblock settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Adblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
+
+Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use only essential part of EasyList (for performance reasons)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update subscriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules writing guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockIcon</name>
+    <message>
+        <source>Adblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Adblock &amp;settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable on %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable only on this page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked popup windows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 with (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No content blocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked some content - click to edit rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adblock - up and running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adblock - not running</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockSubscription</name>
+    <message>
+        <source>Cannot load subscription!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockTreeWidget</name>
+    <message>
+        <source>Please write your rule here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (recently updated)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 <context>
     <name>Application</name>
     <message>
@@ -35,6 +205,30 @@
     <message>
         <source>Database file shrinked...</source>
         <translation>Databasfilen krympt...</translation>
+    </message>
+    <message>
+        <source>Removing read messages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read messages purged...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recycle bin purged...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing old messages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Purging recycle bin...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Old messages purged...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -79,9 +273,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -167,11 +364,17 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -191,7 +394,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %1 fil</numerusform><numerusform>Laddar ner %1 filer</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %1 fil</numerusform>
+            <numerusform>Laddar ner %1 filer</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -226,6 +432,14 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished">Kan inte uppdatera alla objekt</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished">Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -251,10 +465,12 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Antal meddelanden.</translation>
     </message>
     <message>
@@ -280,7 +496,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -309,12 +528,18 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
+            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -348,7 +573,10 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -379,14 +607,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Cannot delete item</source>
         <translation>Kan inte bort objektet</translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan inte uppdatera alla objekt</translation>
-    </message>
-    <message>
-        <source>Cannot update selected items</source>
-        <translation>Kan inte uppdatera markerat objekt</translation>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
@@ -427,14 +647,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Context menu for recycle bin</source>
         <translation>Kontextmeny för papperskorgen</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera markerade objekt, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
@@ -743,24 +955,19 @@ Uppdateringsstatus: %5</translation>
         <translation>Rensa databasen</translation>
     </message>
     <message>
-        <source>Cleanup settings</source>
-        <translation>Rensningsningsinställningar</translation>
-    </message>
-    <message>
         <source>Remove all messages older than</source>
         <translation>Ta bort alla meddelanden äldre än</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
         <translation>Krymp databasfilen</translation>
-    </message>
-    <message>
-        <source>Remove all read messages</source>
-        <translation>Ta bort alla lästa meddelanden</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -793,6 +1000,22 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Database cleanup failed.</source>
         <translation>Databasrensning misslyckades.</translation>
+    </message>
+    <message>
+        <source>Cleanup settings (all checked items are completely erased from database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages (not those from recycle bin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all starred messages (including those from recycle bin)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1281,14 +1504,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Sök efter ny programuppdatering.</translation>
     </message>
     <message>
-        <source>Cannot check for updates</source>
-        <translation>Kan inte söka efter uppdateringar</translation>
-    </message>
-    <message>
-        <source>You cannot check for updates because feed update is ongoing.</source>
-        <translation>Du kan inte söka efter uppdateringar, på grund av pågående flödesuppdatering.</translation>
-    </message>
-    <message>
         <source>&amp;About application</source>
         <translation>&amp;Om programmet</translation>
     </message>
@@ -1641,7 +1856,9 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Språk</translation>
     </message>
     <message>
@@ -1699,10 +1916,12 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Språkkod</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1776,6 +1995,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Namn</translation>
     </message>
     <message>
@@ -2202,7 +2422,7 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
         <source>Working database</source>
         <translation>Arbetsdatabas</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2238,7 +2458,7 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
         <source>Select client</source>
         <translation>Välj klient</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2420,42 +2640,52 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Läst</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Borttaget</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Viktigt</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Flöde</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Författare</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Skapad</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Innehåll</translation>
     </message>
     <message>
@@ -2500,6 +2730,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanent borttagna</translation>
     </message>
     <message>
@@ -2508,6 +2739,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bilagor</translation>
     </message>
     <message>

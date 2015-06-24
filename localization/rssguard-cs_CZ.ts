@@ -2,6 +2,174 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="cs_CZ">
 <context>
+    <name>AdBlockAddSubscriptionDialog</name>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Another subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered title is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered title is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered url is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered url is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockCustomList</name>
+    <message>
+        <source>Custom rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockDialog</name>
+    <message>
+        <source>Adblock settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Adblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
+
+Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use only essential part of EasyList (for performance reasons)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update subscriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules writing guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockIcon</name>
+    <message>
+        <source>Adblock</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Show Adblock &amp;settings</source>
+        <translation>Zobrazit &amp;nastavení Adblocku</translation>
+    </message>
+    <message>
+        <source>Disable on %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable only on this page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked popup windows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 with (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No content blocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked some content - click to edit rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adblock - up and running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adblock - not running</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockSubscription</name>
+    <message>
+        <source>Cannot load subscription!</source>
+        <translation>Nelze načíst sadu pravidel!</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockTreeWidget</name>
+    <message>
+        <source>Please write your rule here</source>
+        <translation>Zadejte své pravidlo sem</translation>
+    </message>
+    <message>
+        <source>%1 (recently updated)</source>
+        <translation>%1 (aktualizováno)</translation>
+    </message>
+    <message>
+        <source>%1 (error: %2)</source>
+        <translation>%1 (chyba: %2)</translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation>Přidat pravidlo</translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation>Smazat  pravidlo</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
@@ -32,11 +200,35 @@
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimalizuji soubor databáze...</translation>
     </message>
     <message>
         <source>Database file shrinked...</source>
-        <translation type="unfinished"></translation>
+        <translation>Databázový soubor minimalizován...</translation>
+    </message>
+    <message>
+        <source>Removing read messages...</source>
+        <translation>Mažu přečtené zprávy...</translation>
+    </message>
+    <message>
+        <source>Read messages purged...</source>
+        <translation>Přečtené zprávy smazány...</translation>
+    </message>
+    <message>
+        <source>Recycle bin purged...</source>
+        <translation>Koš vyčištěn...</translation>
+    </message>
+    <message>
+        <source>Removing old messages...</source>
+        <translation>Mažu staré zprávy...</translation>
+    </message>
+    <message>
+        <source>Purging recycle bin...</source>
+        <translation>Čistím koš...</translation>
+    </message>
+    <message>
+        <source>Old messages purged...</source>
+        <translation>Staré zprávy smazány...</translation>
     </message>
 </context>
 <context>
@@ -65,11 +257,11 @@
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished">MySQL/MariaDB (dedikovaná database)</translation>
+        <translation>MySQL/MariaDB (dedikovaná database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
-        <translation type="unfinished">SQLite (embedded databáze)</translation>
+        <translation>SQLite (embedded databáze)</translation>
     </message>
 </context>
 <context>
@@ -245,6 +437,14 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
     </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation>Nelze aktualizovat všechny položky</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation>Nelze aktualizovat všechny položky, protože už běží jiná kritická operace.</translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -270,10 +470,12 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -416,14 +618,6 @@ Automatický update: %5</translation>
         <translation>Nelze smazat položku</translation>
     </message>
     <message>
-        <source>Cannot update all items</source>
-        <translation>Nelze aktualizovat všechny položky</translation>
-    </message>
-    <message>
-        <source>Cannot update selected items</source>
-        <translation>Nelze aktualizovat vybrané položky</translation>
-    </message>
-    <message>
         <source>You are about to delete selected feed or category.</source>
         <translation>Právě se chystáte smazat vybraný kanál či kategorii.</translation>
     </message>
@@ -462,14 +656,6 @@ Automatický update: %5</translation>
     <message>
         <source>Context menu for recycle bin</source>
         <translation>Kontextové menu pro koš</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Nelze aktualizovat všechny položky, protože už běží jiná kritická operace.</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation>Nelze aktualizovat vybrané položky, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
@@ -565,7 +751,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Resources</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdroje</translation>
     </message>
 </context>
 <context>
@@ -778,10 +964,6 @@ Automatický update: %5</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cleanup settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Remove all messages older than</source>
         <translation type="unfinished"></translation>
     </message>
@@ -795,10 +977,6 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove all read messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -831,6 +1009,22 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleanup settings (all checked items are completely erased from database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages (not those from recycle bin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all starred messages (including those from recycle bin)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1320,14 +1514,6 @@ Automatický update: %5</translation>
         <translation>Zkontrolovat, zda nejsou k dispozici aktualizace programu.</translation>
     </message>
     <message>
-        <source>Cannot check for updates</source>
-        <translation>Nelze zkontrolovat</translation>
-    </message>
-    <message>
-        <source>You cannot check for updates because feed update is ongoing.</source>
-        <translation>Nelze spustit kontrolu aktualizací, protože běží aktualizace kanálů.</translation>
-    </message>
-    <message>
         <source>&amp;About application</source>
         <translation>O &amp;aplikaci</translation>
     </message>
@@ -1680,7 +1866,9 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1738,10 +1926,12 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1815,6 +2005,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2448,42 +2639,52 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2528,6 +2729,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>
@@ -2536,6 +2738,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Přílohy</translation>
     </message>
     <message>

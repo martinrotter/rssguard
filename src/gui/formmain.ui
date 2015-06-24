@@ -279,7 +279,7 @@
     <string>Update &amp;selected feeds</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+U</string>
+    <string notr="true">Ctrl+U</string>
    </property>
   </action>
   <action name="m_actionEditSelectedFeedCategory">

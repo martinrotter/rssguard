@@ -1,4 +1,174 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="nl_NL">
+<context>
+    <name>AdBlockAddSubscriptionDialog</name>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Another subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered title is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered title is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered url is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered url is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockCustomList</name>
+    <message>
+        <source>Custom rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockDialog</name>
+    <message>
+        <source>Adblock settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Adblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
+
+Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filter rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use only essential part of EasyList (for performance reasons)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove subscription</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update subscriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rules writing guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockIcon</name>
+    <message>
+        <source>Adblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Adblock &amp;settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable on %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable only on this page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked popup windows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 with (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No content blocked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blocked some content - click to edit rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adblock - up and running</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adblock - not running</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockSubscription</name>
+    <message>
+        <source>Cannot load subscription!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockTreeWidget</name>
+    <message>
+        <source>Please write your rule here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (recently updated)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 <context>
     <name>Application</name>
     <message>
@@ -35,6 +205,30 @@
     <message>
         <source>Database file shrinked...</source>
         <translation>Databasebestand krimpt...</translation>
+    </message>
+    <message>
+        <source>Removing read messages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read messages purged...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recycle bin purged...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing old messages...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Purging recycle bin...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Old messages purged...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -79,9 +273,12 @@
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed.</numerusform><numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed(s).</numerusform></translation>
+        <translation>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed.</numerusform>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed(s).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -167,11 +364,17 @@ Deze website bevat % n feed(s).</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -191,7 +394,10 @@ Deze website bevat % n feed(s).</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
+        <translation>
+            <numerusform>Dowloading %1 bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -226,6 +432,14 @@ Deze website bevat % n feed(s).</numerusform></translation>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
     </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished">Kan alle items niet bijwerken</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished">U kunt niet alle items updaten omdat een ander een andere kritieke operatie aan de gang is.</translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -251,10 +465,12 @@ Deze website bevat % n feed(s).</numerusform></translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -280,7 +496,10 @@ Deze website bevat % n feed(s).</numerusform></translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (category)%2%3</source>
@@ -310,12 +529,18 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
+        <translation>
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -349,7 +574,10 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -380,14 +608,6 @@ Auto-update status: %5</translation>
     <message>
         <source>Cannot delete item</source>
         <translation>Kan item niet verwijderen</translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan alle items niet bijwerken</translation>
-    </message>
-    <message>
-        <source>Cannot update selected items</source>
-        <translation>Kan geselecteerde items niet bijwerken</translation>
     </message>
     <message>
         <source>You are about to delete selected feed or category.</source>
@@ -428,14 +648,6 @@ Auto-update status: %5</translation>
     <message>
         <source>Context menu for recycle bin</source>
         <translation>Contextmenu voor prullenbak</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat een ander een andere kritieke operatie aan de gang is.</translation>
-    </message>
-    <message>
-        <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation>Je kunt geselecteerde items niet updaten omdat een andere kritische operatie gaande is.</translation>
     </message>
     <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
@@ -744,24 +956,19 @@ Auto-update status: %5</translation>
         <translation>Database opschonen</translation>
     </message>
     <message>
-        <source>Cleanup settings</source>
-        <translation>Instellingen opschonen</translation>
-    </message>
-    <message>
         <source>Remove all messages older than</source>
         <translation>Verwijder alle berichten ouder dan</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagen</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagen</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
         <translation>Databasebestand krimpt</translation>
-    </message>
-    <message>
-        <source>Remove all read messages</source>
-        <translation>Verwijder alle gelezen berichten</translation>
     </message>
     <message>
         <source>Database information</source>
@@ -794,6 +1001,22 @@ Auto-update status: %5</translation>
     <message>
         <source>Database cleanup failed.</source>
         <translation>Database opschonen is mislukt.</translation>
+    </message>
+    <message>
+        <source>Cleanup settings (all checked items are completely erased from database)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all read messages (not those from recycle bin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all messages from recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove all starred messages (including those from recycle bin)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1282,14 +1505,6 @@ Auto-update status: %5</translation>
         <translation>Controleer als nieuwe update voor RSSguard beschikbaar is om te downloaden.</translation>
     </message>
     <message>
-        <source>Cannot check for updates</source>
-        <translation>Kan niet controleren op updates</translation>
-    </message>
-    <message>
-        <source>You cannot check for updates because feed update is ongoing.</source>
-        <translation>Je kan niet controleren op updates omdat feeds aan het updaten zijn.</translation>
-    </message>
-    <message>
         <source>&amp;About application</source>
         <translation>&amp;Over RSSguard</translation>
     </message>
@@ -1643,7 +1858,9 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -1701,10 +1918,12 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1778,6 +1997,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -2205,7 +2425,7 @@ MySQL backend maakt automatisch gebruik van databank met de naam &quot;rssguard&
         <source>Working database</source>
         <translation>Werkende database</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2245,7 +2465,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <source>Select client</source>
         <translation>Selecteer client</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2430,42 +2650,52 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -2510,6 +2740,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Definitief verwijderd</translation>
     </message>
     <message>
@@ -2518,6 +2749,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bijlagen</translation>
     </message>
     <message>

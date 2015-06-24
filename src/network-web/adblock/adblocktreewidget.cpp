@@ -73,10 +73,10 @@ void AdBlockTreeWidget::contextMenuRequested(const QPoint &pos) {
 
   if (item != NULL) {
     QMenu menu;
-    menu.addAction(tr("Add Rule"), this, SLOT(addRule()));
+    menu.addAction(tr("Add rule"), this, SLOT(addRule()));
     menu.addSeparator();
 
-    QAction *delete_action = menu.addAction(tr("Remove Rule"), this, SLOT(removeRule()));
+    QAction *delete_action = menu.addAction(tr("Remove rule"), this, SLOT(removeRule()));
 
     if (item->parent() == NULL) {
       delete_action->setDisabled(true);
@@ -134,7 +134,7 @@ void AdBlockTreeWidget::addRule() {
     return;
   }
 
-  QString new_rule = QInputDialog::getText(this, tr("Add Rule"), tr("Please write your rule here"));
+  QString new_rule = QInputDialog::getText(this, tr("Add rule"), tr("Please write your rule here"));
   if (new_rule.isEmpty()) {
     return;
   }

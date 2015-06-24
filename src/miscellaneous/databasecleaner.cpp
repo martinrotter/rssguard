@@ -57,7 +57,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
 
   if (which_data.m_removeRecycleBin) {
     progress += difference;
-    emit purgeProgress(progress, tr("Purgin recycle bin..."));
+    emit purgeProgress(progress, tr("Purging recycle bin..."));
 
     // Remove read messages.
     result &= purgeRecycleBin(database);
@@ -74,7 +74,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
     result &= purgeOldMessages(database, which_data.m_barrierForRemovingOldMessagesInDays);
 
     progress += difference;
-    emit purgeProgress(progress, tr("Read old purged..."));
+    emit purgeProgress(progress, tr("Old messages purged..."));
   }
 
   if (which_data.m_shrinkDatabase) {
