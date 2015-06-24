@@ -29,9 +29,9 @@
 
 
 MessagesModel::MessagesModel(QObject *parent)
-  : QSqlTableModel(parent, qApp->database()->connection("MessagesModel", DatabaseFactory::FromSettings)),
+  : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
     m_messageFilter(NoHighlighting), m_customDateFormat(QString()) {
-  setObjectName("MessagesModel");
+  setObjectName(QSL("MessagesModel"));
   setupFonts();
   setupIcons();
   setupHeaderData();
@@ -41,7 +41,7 @@ MessagesModel::MessagesModel(QObject *parent)
   // NOTE: Changes to the database are actually NOT submitted
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
-  setTable("Messages");
+  setTable(QSL("Messages"));
   loadMessages(FeedsSelection());
 }
 
@@ -50,9 +50,9 @@ MessagesModel::~MessagesModel() {
 }
 
 void MessagesModel::setupIcons() {
-  m_favoriteIcon = qApp->icons()->fromTheme("mail-mark-favorite");
-  m_readIcon = qApp->icons()->fromTheme("mail-mark-read");
-  m_unreadIcon = qApp->icons()->fromTheme("mail-mark-unread");
+  m_favoriteIcon = qApp->icons()->fromTheme(QSL("mail-mark-favorite"));
+  m_readIcon = qApp->icons()->fromTheme(QSL("mail-mark-read"));
+  m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 }
 
 FeedsSelection MessagesModel::loadedSelection() const {
@@ -75,12 +75,12 @@ void MessagesModel::loadMessages(const FeedsSelection &selection) {
   m_currentSelection = selection;
 
   if (m_currentSelection.mode() == FeedsSelection::MessagesFromRecycleBin) {
-    setFilter("is_deleted = 1 AND is_pdeleted = 0");
+    setFilter(QSL("is_deleted = 1 AND is_pdeleted = 0"));
   }
   else {
     QString assembled_ids = m_currentSelection.generateListOfIds();
 
-    setFilter(QString("feed IN (%1) AND is_deleted = 0").arg(assembled_ids));
+    setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0")).arg(assembled_ids));
     qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
   }
 
@@ -255,7 +255,7 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare("UPDATE Messages SET is_read = :read WHERE id = :id;")) {
+  if (!query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"))) {
     qWarning("Query preparation failed for message read change.");
 
     db_handle.rollback();
@@ -264,8 +264,8 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
 
   // Rewrite the actual data in the database itself.
   message_id = messageId(row_index);
-  query_read_msg.bindValue(":id", message_id);
-  query_read_msg.bindValue(":read", read);
+  query_read_msg.bindValue(QSL(":id"), message_id);
+  query_read_msg.bindValue(QSL(":read"), read);
   query_read_msg.exec();
 
   // Commit changes.
@@ -309,7 +309,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   QSqlQuery query_importance_msg(db_handle);
   query_importance_msg.setForwardOnly(true);
 
-  if (!query_importance_msg.prepare("UPDATE Messages SET is_important = :important WHERE id = :id;")) {
+  if (!query_importance_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
     qWarning("Query preparation failed for message importance switch.");
 
     db_handle.rollback();
@@ -317,8 +317,8 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   }
 
   message_id = messageId(row_index);
-  query_importance_msg.bindValue(":id", message_id);
-  query_importance_msg.bindValue(":important", current_importance == 1 ? 0 : 1);
+  query_importance_msg.bindValue(QSL(":id"), message_id);
+  query_importance_msg.bindValue(QSL(":important"), current_importance == 1 ? 0 : 1);
   query_importance_msg.exec();
 
   // Commit changes.
@@ -345,8 +345,8 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     message_ids.append(QString::number(messageId(message.row())));
   }
 
-  if (query_read_msg.exec(QString("UPDATE Messages SET is_important = NOT is_important "
-                                  "WHERE id IN (%1);").arg(message_ids.join(", ")))) {
+  if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);"))
+                          .arg(message_ids.join(QSL(", "))))) {
     select();
     fetchAll();
 
@@ -373,12 +373,12 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
   QString sql_delete_query;
 
   if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
-    sql_delete_query = QString("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);").arg(message_ids.join(", "),
-                                                                                            QString::number(deleted));
+    sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
+                                                                                                 QString::number(deleted));
   }
   else {
-    sql_delete_query = QString("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);").arg(message_ids.join(", "),
-                                                                                             QString::number(deleted));
+    sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
+                                                                                                  QString::number(deleted));
   }
 
   if (query_read_msg.exec(sql_delete_query)) {
@@ -405,8 +405,8 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
     message_ids.append(QString::number(messageId(message.row())));
   }
 
-  if (query_read_msg.exec(QString("UPDATE Messages SET is_read = %2 "
-                                  "WHERE id IN (%1);").arg(message_ids.join(", "), QString::number(read)))) {
+  if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
+                                                                                                 QString::number(read)))) {
     select();
     fetchAll();
 
@@ -435,7 +435,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
     message_ids.append(QString::number(messageId(message.row())));
   }
 
-  QString sql_delete_query = QString("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);").arg(message_ids.join(", "));
+  QString sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
 
   if (query_read_msg.exec(sql_delete_query)) {
     select();

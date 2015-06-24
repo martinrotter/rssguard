@@ -39,7 +39,7 @@ StatusBar::StatusBar(QWidget *parent) : QStatusBar(parent) {
   // Initializations of widgets for status bar.
   m_fullscreenSwitcher = new PlainToolButton(this);
   m_fullscreenSwitcher->setCheckable(true);
-  m_fullscreenSwitcher->setIcon(qApp->icons()->fromTheme("view-fullscreen"));
+  m_fullscreenSwitcher->setIcon(qApp->icons()->fromTheme(QSL("view-fullscreen")));
   m_fullscreenSwitcher->setText(tr("Fullscreen mode"));
   m_fullscreenSwitcher->setToolTip(tr("Switch application between fulscreen/normal states right from this status bar icon."));
 

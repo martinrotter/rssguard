@@ -111,7 +111,7 @@ void AdBlockSubscription::loadSubscription(const QStringList &disabled_rules) {
   textStream.readLine(1024);
   QString header = textStream.readLine(1024);
 
-  if (!header.startsWith(QLatin1String("[Adblock")) || m_title.isEmpty()) {
+  if (!header.startsWith(QL1S("[Adblock")) || m_title.isEmpty()) {
     qWarning("Invalid format of subscription file '%s'.", qPrintable(QDir::toNativeSeparators(m_filePath)));
     file.close();
     QTimer::singleShot(0, this, SLOT(updateSubscription()));
@@ -201,8 +201,8 @@ bool AdBlockSubscription::saveDownloadedData(const QByteArray &data) {
     // So we are ignoring it for keeping good performance
     // But we will use whitelist rules at the end of list
 
-    QByteArray part1 = data.left(data.indexOf(QLatin1String("!-----------------------------Third-party adverts-----------------------------!")));
-    QByteArray part2 = data.mid(data.indexOf(QLatin1String("!---------------------------------Whitelists----------------------------------!")));
+    QByteArray part1 = data.left(data.indexOf(QL1S("!-----------------------------Third-party adverts-----------------------------!")));
+    QByteArray part2 = data.mid(data.indexOf(QL1S("!---------------------------------Whitelists----------------------------------!")));
 
     file.write(part1);
     file.write(part2);

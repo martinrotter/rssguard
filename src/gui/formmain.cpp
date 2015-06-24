@@ -208,73 +208,73 @@ void FormMain::setupIcons() {
   IconFactory *icon_theme_factory = qApp->icons();
 
   // Setup icons of this main window.
-  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme("download-manager"));
-  m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
-  m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme("application-exit"));
-  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme("go-refresh"));
-  m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme("application-about"));
-  m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme("check-for-updates"));
-  m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme("cleanup-database"));
-  m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
-  m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme("application-report-bug"));
-  m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme("document-export"));
-  m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme("document-import"));
-  m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme("document-export"));
-  m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme("document-import"));
-  m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme("application-donate"));
-  m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme("application-wiki"));
+  m_ui->m_actionDownloadManager->setIcon(icon_theme_factory->fromTheme(QSL("download-manager")));
+  m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("application-settings")));
+  m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme(QSL("application-exit")));
+  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("go-refresh")));
+  m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme(QSL("application-about")));
+  m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("check-for-updates")));
+  m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("cleanup-database")));
+  m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
+  m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
+  m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
+  m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
+  m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
+  m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
+  m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("application-donate")));
+  m_ui->m_actionDisplayWiki->setIcon(icon_theme_factory->fromTheme(QSL("application-wiki")));
 
   // View.
-  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme("view-switch-window"));
-  m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme("view-fullscreen"));
-  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
-  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme("view-switch-menu"));
-  m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
-  m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme("view-switch-list"));
-  m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme("view-switch-layout-direction"));
-  m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme("view-switch"));
+  m_ui->m_actionSwitchMainWindow->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-window")));
+  m_ui->m_actionFullscreen->setIcon(icon_theme_factory->fromTheme(QSL("view-fullscreen")));
+  m_ui->m_actionSwitchFeedsList->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
+  m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-menu")));
+  m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
+  m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
+  m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-layout-direction")));
+  m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-switch")));
 
   // Recycle bin.
-  m_ui->m_actionEmptyRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-empty"));
-  m_ui->m_actionRestoreRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-restore-all"));
-  m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setIcon(icon_theme_factory->fromTheme("recycle-bin-restore-one"));
+  m_ui->m_actionEmptyRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
+  m_ui->m_actionRestoreRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
+  m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
 
   // Web browser.
-  m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme("list-add"));
-  m_ui->m_actionCloseCurrentTab->setIcon(icon_theme_factory->fromTheme("list-remove"));
-  m_ui->m_actionCloseAllTabs->setIcon(icon_theme_factory->fromTheme("list-remove"));
-  m_ui->m_menuCurrentTab->setIcon(icon_theme_factory->fromTheme("list-current"));
-  m_ui->m_menuWebSettings->setIcon(icon_theme_factory->fromTheme("application-settings"));
-  m_ui->m_actionWebAutoloadImages->setIcon(icon_theme_factory->fromTheme("image-generic"));
-  m_ui->m_actionWebEnableExternalPlugins->setIcon(icon_theme_factory->fromTheme("web-flash"));
-  m_ui->m_actionWebEnableJavascript->setIcon(icon_theme_factory->fromTheme("web-javascript"));
+  m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
+  m_ui->m_actionCloseCurrentTab->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
+  m_ui->m_actionCloseAllTabs->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
+  m_ui->m_menuCurrentTab->setIcon(icon_theme_factory->fromTheme(QSL("list-current")));
+  m_ui->m_menuWebSettings->setIcon(icon_theme_factory->fromTheme(QSL("application-settings")));
+  m_ui->m_actionWebAutoloadImages->setIcon(icon_theme_factory->fromTheme(QSL("image-generic")));
+  m_ui->m_actionWebEnableExternalPlugins->setIcon(icon_theme_factory->fromTheme(QSL("web-flash")));
+  m_ui->m_actionWebEnableJavascript->setIcon(icon_theme_factory->fromTheme(QSL("web-javascript")));
 
   // Feeds/messages.
-  m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme("item-new"));
-  m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme("item-update-all"));
-  m_ui->m_actionUpdateSelectedFeeds->setIcon(icon_theme_factory->fromTheme("item-update-selected"));
-  m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
-  m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme("mail-remove"));
-  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-remove"));
-  m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme("mail-remove"));
-  m_ui->m_actionAddCategory->setIcon(icon_theme_factory->fromTheme("folder-category"));
-  m_ui->m_actionAddFeed->setIcon(icon_theme_factory->fromTheme("folder-feed"));
-  m_ui->m_actionEditSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme("item-edit"));
-  m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
-  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
-  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(icon_theme_factory->fromTheme("mail-mark-unread"));
-  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme("mail-mark-read"));
-  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme("mail-mark-unread"));
-  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme("mail-mark-favorite"));
-  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(icon_theme_factory->fromTheme("item-open-internal"));
-  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme("item-open-external"));
-  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme("item-open-internal"));
-  m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme("item-send-email"));
-  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme("item-newspaper"));
-  m_ui->m_actionSelectNextFeedCategory->setIcon(icon_theme_factory->fromTheme("go-down"));
-  m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme("go-up"));
-  m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme("go-down"));
-  m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme("go-up"));
+  m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
+  m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
+  m_ui->m_actionUpdateSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
+  m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
+  m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionAddCategory->setIcon(icon_theme_factory->fromTheme(QSL("folder-category")));
+  m_ui->m_actionAddFeed->setIcon(icon_theme_factory->fromTheme(QSL("folder-feed")));
+  m_ui->m_actionEditSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
+  m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-favorite")));
+  m_ui->m_actionOpenSelectedSourceArticlesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
+  m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-external")));
+  m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
+  m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("item-send-email")));
+  m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme(QSL("item-newspaper")));
+  m_ui->m_actionSelectNextFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
+  m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
+  m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
+  m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

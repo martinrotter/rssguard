@@ -34,7 +34,7 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->fromTheme("application-about"));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("application-about")));
 
   //: About RSS Guard dialog title.
   setWindowTitle(tr("About %1").arg(APP_NAME));
@@ -81,7 +81,7 @@ void FormAbout::loadLicenseAndInformation() {
   QFile file;
   text_stream.setDevice(&file);
 
-  file.setFileName(APP_INFO_PATH + "/COPYING_GNU_GPL_HTML");
+  file.setFileName(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML"));
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtLicenseGnu->setText(text_stream.readAll());
   }
@@ -90,7 +90,7 @@ void FormAbout::loadLicenseAndInformation() {
   }
   file.close();
 
-  file.setFileName(APP_INFO_PATH + "/COPYING_BSD");
+  file.setFileName(APP_INFO_PATH + QL1S("/COPYING_BSD"));
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtLicenseBsd->setText(text_stream.readAll());
   }
@@ -99,7 +99,7 @@ void FormAbout::loadLicenseAndInformation() {
   }
   file.close();
 
-  file.setFileName(APP_INFO_PATH + "/CHANGELOG");
+  file.setFileName(APP_INFO_PATH + QL1S("/CHANGELOG"));
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
     m_ui->m_txtChangelog->setText(text_stream.readAll());
   }

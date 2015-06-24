@@ -41,7 +41,7 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
     case TabBar::Closable: {
       PlainToolButton *close_button = new PlainToolButton(this);
 
-      close_button->setIcon(qApp->icons()->fromTheme("application-exit"));
+      close_button->setIcon(qApp->icons()->fromTheme(QSL("application-exit")));
       close_button->setToolTip(tr("Close this tab."));
       close_button->setText(tr("Close tab"));
       close_button->setFixedSize(iconSize());

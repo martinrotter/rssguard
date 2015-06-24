@@ -197,13 +197,13 @@ namespace Proxy {
   VALUE(QNetworkProxy::ProxyType) TypeDef;
 
   KEY Host;
-  VALUE(char*) HostDef;
+  VALUE(QString) HostDef;
 
   KEY Username;
-  VALUE(char*) UsernameDef;
+  VALUE(QString) UsernameDef;
 
   KEY Password;
-  VALUE(char*) PasswordDef;
+  VALUE(QString) PasswordDef;
 
   KEY Port;
   VALUE(int) PortDef;
@@ -217,13 +217,13 @@ namespace Database {
   VALUE(bool) UseInMemoryDef;
 
   KEY MySQLHostname;
-  VALUE(char*) MySQLHostnameDef;
+  VALUE(QString) MySQLHostnameDef;
 
   KEY MySQLUsername;
-  VALUE(char*) MySQLUsernameDef;
+  VALUE(QString) MySQLUsernameDef;
 
   KEY MySQLPassword;
-  VALUE(char*) MySQLPasswordDef;
+  VALUE(QString) MySQLPasswordDef;
 
   KEY MySQLPort;
   VALUE(int) MySQLPortDef;
@@ -277,7 +277,7 @@ namespace Browser {
   VALUE(bool) CustomExternalBrowserEnabledDef;
 
   KEY CustomExternalBrowserExecutable;
-  VALUE(char*) CustomExternalBrowserExecutableDef;
+  VALUE(QString) CustomExternalBrowserExecutableDef;
 
   KEY CustomExternalBrowserArguments;
   VALUE(char*) CustomExternalBrowserArgumentsDef;
@@ -286,7 +286,7 @@ namespace Browser {
   VALUE(bool) CustomExternalEmailEnabledDef;
 
   KEY CustomExternalEmailExecutable;
-  VALUE(char*) CustomExternalEmailExecutableDef;
+  VALUE(QString) CustomExternalEmailExecutableDef;
 
   KEY CustomExternalEmailArguments;
   VALUE(char*) CustomExternalEmailArgumentsDef;

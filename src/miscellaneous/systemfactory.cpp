@@ -52,9 +52,12 @@ SystemFactory::~SystemFactory() {
 SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
-  QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+  QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
                          QSettings::NativeFormat);
-  bool autostart_enabled = registry_key.value(APP_LOW_NAME, "").toString().replace('\\', '/') == Application::applicationFilePath();
+  bool autostart_enabled = registry_key.value(QSL(APP_LOW_NAME),
+                                              QString()).toString().replace(QL1C('\\'),
+                                                                            QL1C('/')) ==
+                           Application::applicationFilePath();
 
   if (autostart_enabled) {
     return SystemFactory::Enabled;
@@ -96,7 +99,7 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
   if (!xdg_config_path.isEmpty()) {
     // XDG_CONFIG_HOME variable is specified. Look for .desktop file
     // in 'autostart' subdirectory.
-    desktop_file_location = xdg_config_path + "/autostart/" + APP_DESKTOP_ENTRY_FILE;
+    desktop_file_location = xdg_config_path + QSL("/autostart/") + APP_DESKTOP_ENTRY_FILE;
   }
   else {
     // Desired variable is not set, look for the default 'autostart' subdirectory.
@@ -104,7 +107,7 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
     if (!home_directory.isEmpty()) {
       // Home directory exists. Check if target .desktop file exists and
       // return according status.
-      desktop_file_location = home_directory + "/.config/autostart/" + APP_DESKTOP_ENTRY_FILE;
+      desktop_file_location = home_directory + QSL("/.config/autostart/") + APP_DESKTOP_ENTRY_FILE;
     }
   }
 
@@ -122,11 +125,11 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   }
 
 #if defined(Q_OS_WIN)
-  QSettings registry_key("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+  QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"), QSettings::NativeFormat);
   switch (new_status) {
     case SystemFactory::Enabled:
       registry_key.setValue(APP_LOW_NAME,
-                            Application::applicationFilePath().replace('/', '\\'));
+                            Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
       return true;
     case SystemFactory::Disabled:
       registry_key.remove(APP_LOW_NAME);
@@ -156,9 +159,9 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 #if defined(Q_OS_WIN)
 bool SystemFactory::removeTrolltechJunkRegistryKeys() {
   if (qApp->settings()->value(GROUP(General), SETTING(General::RemoveTrolltechJunk)).toBool()) {
-    QSettings registry_key("HKEY_CURRENT_USER\\Software\\TrollTech", QSettings::NativeFormat);
+    QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\TrollTech"), QSettings::NativeFormat);
 
-    registry_key.remove("");
+    registry_key.remove(QSL(""));
     registry_key.sync();
 
     return registry_key.status() == QSettings::NoError;
@@ -185,8 +188,8 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
 }
 
 bool SystemFactory::isUpdateNewer(const QString &update_version) {
-  QStringList current_version_tkn = QString(APP_VERSION).split('.');
-  QStringList new_version_tkn = update_version.split('.');
+  QStringList current_version_tkn = QString(APP_VERSION).split(QL1C('.'));
+  QStringList new_version_tkn = update_version.split(QL1C('.'));
 
   while (!current_version_tkn.isEmpty() && !new_version_tkn.isEmpty()) {
     int current_number = current_version_tkn.takeFirst().toInt();
@@ -211,7 +214,7 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
       return false;
     }
     else {
-      return new_version_tkn.join("").toInt() > 0;
+      return new_version_tkn.join(QString()).toInt() > 0;
     }
   }
 }
@@ -219,23 +222,23 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
 UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) {
   UpdateInfo update;
   QDomDocument document; document.setContent(updates_file, false);
-  QDomNodeList releases = document.elementsByTagName("release");
+  QDomNodeList releases = document.elementsByTagName(QSL("release"));
 
   if (releases.size() == 1) {
     QDomElement rel_elem = releases.at(0).toElement();
 
-    update.m_availableVersion = rel_elem.attributes().namedItem("version").toAttr().value();
+    update.m_availableVersion = rel_elem.attributes().namedItem(QSL("version")).toAttr().value();
     update.m_changes = changelog;
 
-    QDomNodeList urls = rel_elem.elementsByTagName("url");
+    QDomNodeList urls = rel_elem.elementsByTagName(QSL("url"));
 
     for (int j = 0; j < urls.size(); j++) {
       UpdateUrl url;
       QDomElement url_elem = urls.at(j).toElement();
 
       url.m_fileUrl = url_elem.text();
-      url.m_os = url_elem.attributes().namedItem("os").toAttr().value();
-      url.m_platform = url_elem.attributes().namedItem("platform").toAttr().value();
+      url.m_os = url_elem.attributes().namedItem(QSL("os")).toAttr().value();
+      url.m_platform = url_elem.attributes().namedItem(QSL("platform")).toAttr().value();
 
       update.m_urls.insert(url.m_os, url);
     }

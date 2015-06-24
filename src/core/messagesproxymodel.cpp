@@ -24,7 +24,7 @@ MessagesProxyModel::MessagesProxyModel(QObject *parent)
   : QSortFilterProxyModel(parent) {
   m_sourceModel = new MessagesModel(this);
 
-  setObjectName("MessagesProxyModel");
+  setObjectName(QSL("MessagesProxyModel"));
   setSortRole(Qt::EditRole);
   setSortCaseSensitivity(Qt::CaseInsensitive);
   setFilterCaseSensitivity(Qt::CaseInsensitive);

@@ -56,7 +56,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme("application-settings"));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("application-settings")));
 
   m_ui->m_editorMessagesToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
@@ -257,9 +257,9 @@ void FormSettings::loadFeedsMessages() {
 }
 
 void FormSettings::initializeMessageDateFormats() {
-  QStringList best_formats; best_formats << "d/M/yyyy hh:mm:ss" << "ddd, d. M. yy hh:mm:ss" <<
-                                            "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-ddThh:mm:ss" <<
-                                            "MMM d yyyy hh:mm:ss";;
+  QStringList best_formats; best_formats << QSL("d/M/yyyy hh:mm:ss") << QSL("ddd, d. M. yy hh:mm:ss") <<
+                                            QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-ddThh:mm:ss") <<
+                                            QSL("MMM d yyyy hh:mm:ss");;
   QLocale current_locale = qApp->localization()->loadedLocale();
   QDateTime current_dt = QDateTime::currentDateTime();
 
@@ -312,20 +312,20 @@ bool FormSettings::doSaveCheck() {
   // properties.
   if (m_ui->m_grpCustomExternalBrowser->isChecked() &&
       (m_ui->m_txtExternalBrowserExecutable->text().simplified().isEmpty() ||
-       !m_ui->m_txtExternalBrowserArguments->text().simplified().contains("%1"))) {
+       !m_ui->m_txtExternalBrowserArguments->text().simplified().contains(QL1S("%1")))) {
     everything_ok = false;
     resulting_information.append(tr("custom external browser is not set correctly"));
   }
 
   if (!everything_ok) {
-    resulting_information.replaceInStrings(QRegExp("^"), QString::fromUtf8(" • "));
+    resulting_information.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
 
     MessageBox::show(this,
                      QMessageBox::Critical,
                      tr("Cannot save settings"),
                      tr("Some critical settings are not set. You must fix these settings in order confirm new settings."),
                      QString(),
-                     tr("List of errors:\n%1.").arg(resulting_information.join(",\n")));
+                     tr("List of errors:\n%1.").arg(resulting_information.join(QSL(",\n"))));
   }
 
   return everything_ok;
@@ -333,7 +333,7 @@ bool FormSettings::doSaveCheck() {
 
 void FormSettings::promptForRestart() {
   if (!m_changedDataTexts.isEmpty()) {
-    QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp("^"), QString::fromUtf8(" • "));
+    QStringList changed_settings_description = m_changedDataTexts.replaceInStrings(QRegExp(QSL("^")), QString::fromUtf8(" • "));
 
     QMessageBox::StandardButton clicked_button =  MessageBox::show(this,
                                                                    QMessageBox::Question,
@@ -341,7 +341,7 @@ void FormSettings::promptForRestart() {
                                                                    tr("Some critical settings were changed and will be applied after the application gets restarted. "
                                                                       "\n\nYou have to restart manually."),
                                                                    tr("Do you want to restart now?"),
-                                                                   tr("List of changes:\n%1.").arg(changed_settings_description .join(",\n")),
+                                                                   tr("List of changes:\n%1.").arg(changed_settings_description .join(QSL(",\n"))),
                                                                    QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 
     if (clicked_button == QMessageBox::Yes) {
@@ -395,7 +395,7 @@ void FormSettings::loadBrowser() {
   // Load settings of web browser GUI.
   m_ui->m_checkMouseGestures->setChecked(settings->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool());
   m_ui->m_checkQueueTabs->setChecked(settings->value(GROUP(Browser), SETTING(Browser::QueueTabs)).toBool());
-  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), "-nosession %1");
+  m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable->setText(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString());
   m_ui->m_txtExternalBrowserArguments->setText(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString());
   m_ui->m_grpCustomExternalBrowser->setChecked(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool());
@@ -404,7 +404,7 @@ void FormSettings::loadBrowser() {
   m_ui->m_checkEnablePlugins->setChecked(WebFactory::instance()->pluginsEnabled());
 
   // Load settings of e-mail.
-  m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), "-compose \"subject='%1',body='%2'\"");
+  m_ui->m_cmbExternalEmailPreset->addItem(tr("Mozilla Thunderbird"), QSL("-compose \"subject='%1',body='%2'\""));
   m_ui->m_txtExternalEmailExecutable->setText(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString());
   m_ui->m_txtExternalEmailArguments->setText(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString());
   m_ui->m_grpCustomExternalEmail->setChecked(settings->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
@@ -733,7 +733,7 @@ void FormSettings::loadInterface() {
   }
 
   // Mark active theme.
-  if (current_theme == APP_NO_THEME) {
+  if (current_theme == QSL(APP_NO_THEME)) {
     // Because "no icon theme" lies at the index 0.
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }

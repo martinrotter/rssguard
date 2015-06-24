@@ -41,7 +41,7 @@ QList<QAction*> FeedsToolBar::changeableActions() const {
 }
 
 void FeedsToolBar::saveChangeableActions(const QStringList &actions) {
-  qApp->settings()->setValue(GROUP(GUI), GUI::FeedsToolbarActions, actions.join(","));
+  qApp->settings()->setValue(GROUP(GUI), GUI::FeedsToolbarActions, actions.join(QSL(",")));
   loadChangeableActions(actions);
 }
 
@@ -75,7 +75,7 @@ void FeedsToolBar::loadChangeableActions(const QStringList &actions) {
       spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
       QAction *action = addWidget(spacer);
-      action->setIcon(qApp->icons()->fromTheme("application-search"));
+      action->setIcon(qApp->icons()->fromTheme(QSL("application-search")));
       action->setProperty("type", SPACER_ACTION_NAME);
       action->setProperty("name", tr("Toolbar spacer"));
     }

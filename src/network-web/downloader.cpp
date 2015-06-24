@@ -80,7 +80,7 @@ void Downloader::finished() {
     QNetworkRequest request = reply->request();
 
     if (redirection_url.host().isEmpty()) {
-      request.setUrl(QUrl(reply->request().url().scheme() + "://" + reply->request().url().host() + redirection_url.toString()));
+      request.setUrl(QUrl(reply->request().url().scheme() + QSL("://") + reply->request().url().host() + redirection_url.toString()));
     }
     else {
       request.setUrl(redirection_url);

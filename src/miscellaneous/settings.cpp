@@ -179,13 +179,13 @@ DKEY Proxy::Type                                 = "proxy_type";
 DVALUE(QNetworkProxy::ProxyType) Proxy::TypeDef  = QNetworkProxy::NoProxy;
 
 DKEY Proxy::Host                    = "host";
-DVALUE(char*) Proxy::HostDef        = "";
+DVALUE(QString) Proxy::HostDef        = QString();
 
 DKEY Proxy::Username                = "username";
-DVALUE(char*) Proxy::UsernameDef    = "";
+DVALUE(QString) Proxy::UsernameDef    = QString();
 
 DKEY Proxy::Password                = "password";
-DVALUE(char*) Proxy::PasswordDef    = "";
+DVALUE(QString) Proxy::PasswordDef    = QString();
 
 DKEY Proxy::Port                    = "port";
 DVALUE(int) Proxy::PortDef          = 80;
@@ -197,13 +197,13 @@ DKEY Database::UseInMemory              = "use_in_memory_db";
 DVALUE(bool) Database::UseInMemoryDef   = false;
 
 DKEY Database::MySQLHostname              = "mysql_hostname";
-DVALUE(char*) Database::MySQLHostnameDef  = "";
+DVALUE(QString) Database::MySQLHostnameDef  = QString();
 
 DKEY Database::MySQLUsername              = "mysql_username";
-DVALUE(char*) Database::MySQLUsernameDef  = "";
+DVALUE(QString) Database::MySQLUsernameDef  = QString();
 
 DKEY Database::MySQLPassword              = "mysql_password";
-DVALUE(char*) Database::MySQLPasswordDef  = "";
+DVALUE(QString) Database::MySQLPasswordDef  = QString();
 
 DKEY Database::MySQLDatabase              = "mysql_database";
 DVALUE(char*) Database::MySQLDatabaseDef  = APP_LOW_NAME;
@@ -251,7 +251,7 @@ DKEY Browser::CustomExternalBrowserEnabled                = "custom_external_bro
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef     = false;
 
 DKEY Browser::CustomExternalBrowserExecutable             = "external_browser_executable";
-DVALUE(char*) Browser::CustomExternalBrowserExecutableDef = "";
+DVALUE(QString) Browser::CustomExternalBrowserExecutableDef = QString();
 
 DKEY Browser::CustomExternalBrowserArguments              = "external_browser_arguments";
 DVALUE(char*) Browser::CustomExternalBrowserArgumentsDef  = "%1";
@@ -260,7 +260,7 @@ DKEY Browser::CustomExternalEmailEnabled                  = "custom_external_ema
 DVALUE(bool) Browser::CustomExternalEmailEnabledDef       = false;
 
 DKEY Browser::CustomExternalEmailExecutable               = "external_email_executable";
-DVALUE(char*) Browser::CustomExternalEmailExecutableDef   = "";
+DVALUE(QString) Browser::CustomExternalEmailExecutableDef   = QString();
 
 DKEY Browser::CustomExternalEmailArguments                = "external_email_arguments";
 DVALUE(char*) Browser::CustomExternalEmailArgumentsDef    = "";

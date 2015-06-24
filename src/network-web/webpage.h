@@ -20,7 +20,6 @@
 
 #include <QWebPage>
 #include <QNetworkAccessManager>
-#include <QSslCertificate>
 
 
 class AdBlockRule;
@@ -30,12 +29,12 @@ class WebPage : public QWebPage {
 
   public:
     struct AdBlockedEntry {
-      const AdBlockRule* rule;
-      QUrl url;
+        const AdBlockRule *rule;
+        QUrl url;
 
-      bool operator==(const AdBlockedEntry &other) const {
-        return (this->rule == other.rule && this->url == other.url);
-      }
+        bool operator==(const AdBlockedEntry &other) const {
+          return (this->rule == other.rule && this->url == other.url);
+        }
     };
 
     // Constructors and destructors.
@@ -45,12 +44,12 @@ class WebPage : public QWebPage {
     QString toHtml() const;
     QString toPlainText() const;
 
-      void populateNetworkRequest(QNetworkRequest &request);
+    void populateNetworkRequest(QNetworkRequest &request);
 
     bool isLoading() const;
 
-    static bool isPointerSafeToUse(WebPage* page);
-    void addAdBlockRule(const AdBlockRule* rule, const QUrl &url);
+    static bool isPointerSafeToUse(WebPage *page);
+    void addAdBlockRule(const AdBlockRule *rule, const QUrl &url);
     QVector<AdBlockedEntry> adBlockedEntries() const;
 
 
@@ -66,14 +65,10 @@ class WebPage : public QWebPage {
     bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 
   private:
-    QWebPage::NavigationType lastRequestType_;
-    QUrl lastRequestUrl_;
+    QVector<AdBlockedEntry> m_adBlockedEntries;
+    int m_loadProgress;
 
-    bool adjustingScheduled_;
-    static QList<WebPage*> livingPages_;
-    QVector<AdBlockedEntry> adBlockedEntries_;
-
-    int loadProgress_;
+    static QList<WebPage*> s_livingPages;
 };
 
-#endif // BASEWEBPAGE_H
+#endif // WEBPAGE_H

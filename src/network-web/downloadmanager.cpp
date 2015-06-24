@@ -151,12 +151,12 @@ QString DownloadItem::saveFileName(const QString &directory) const {
 
   if (m_reply->hasRawHeader("Content-Disposition")) {
     QString value = QLatin1String(m_reply->rawHeader("Content-Disposition"));
-    int pos = value.indexOf(QLatin1String("filename="));
+    int pos = value.indexOf(QL1S("filename="));
 
     if (pos != -1) {
       QString name = value.mid(pos + 9);
 
-      if (name.startsWith(QLatin1Char('"')) && name.endsWith(QLatin1Char('"'))) {
+      if (name.startsWith(QL1C('"')) && name.endsWith(QL1C('"'))) {
         name = name.mid(1, name.size() - 2);
       }
 
@@ -173,11 +173,11 @@ QString DownloadItem::saveFileName(const QString &directory) const {
   QString end_name = info.suffix();
 
   if (base_name.isEmpty()) {
-    base_name = QLatin1String("unnamed_download");
+    base_name = QSL("unnamed_download");
   }
 
   if (!end_name.isEmpty()) {
-    end_name = QLatin1Char('.') + end_name;
+    end_name = QL1C('.') + end_name;
   }
 
   QString name = directory + base_name + end_name;
@@ -186,7 +186,7 @@ QString DownloadItem::saveFileName(const QString &directory) const {
     int i = 1;
 
     do {
-      name = directory + base_name + QLatin1Char('-') + QString::number(i++) + end_name;
+      name = directory + base_name + QL1C('-') + QString::number(i++) + end_name;
     } while (QFile::exists(name));
   }
 
@@ -391,7 +391,7 @@ void DownloadItem::updateInfoLabel() {
     }
 
     info = QString(tr("%1 of %2 (%3 per second) - %4")).arg(DownloadManager::dataString(m_bytesReceived),
-                                                            bytesTotal == 0 ? "?" : DownloadManager::dataString(bytesTotal),
+                                                            bytesTotal == 0 ? QSL("?") : DownloadManager::dataString(bytesTotal),
                                                             DownloadManager::dataString((int)speed),
                                                             remaining);
   }
@@ -736,7 +736,7 @@ QString DownloadManager::dataString(qint64 size) {
     unit = tr("GB");
   }
 
-  return QString(QLatin1String("%1 %2")).arg(newSize, 0, 'f', 1).arg(unit);
+  return QString(QL1S("%1 %2")).arg(newSize, 0, 'f', 1).arg(unit);
 }
 
 DownloadModel::DownloadModel(DownloadManager *download_manager, QObject *parent)

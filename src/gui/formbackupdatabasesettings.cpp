@@ -32,7 +32,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
   m_ui->setupUi(this);
   m_ui->m_txtBackupName->lineEdit()->setPlaceholderText(tr("Common name for backup files"));
 
-  setWindowIcon(qApp->icons()->fromTheme("document-export"));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
   connect(m_ui->m_checkBackupDatabase, SIGNAL(toggled(bool)), this, SLOT(checkOkButton()));
@@ -43,7 +43,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
   connect(m_ui->m_btnSelectFolder, SIGNAL(clicked()), this, SLOT(selectFolder()));
 
   selectFolder(qApp->documentsFolderPath());
-  m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + "_" + QDateTime::currentDateTime().toString("yyyyMMddHHmm"));
+  m_ui->m_txtBackupName->lineEdit()->setText(QString(APP_LOW_NAME) + QL1S("_") + QDateTime::currentDateTime().toString(QSL("yyyyMMddHHmm")));
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
   if (qApp->database()->activeDatabaseDriver() != DatabaseFactory::SQLITE &&

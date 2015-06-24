@@ -77,11 +77,11 @@ void WebBrowser::initializeZoomWidget() {
   QToolButton *button_increase = new QToolButton(m_zoomButtons);
 
   // Set texts.
-  button_decrease->setText("-");
+  button_decrease->setText(QSL("-"));
   button_decrease->setToolTip(tr("Decrease zoom."));
-  m_btnResetZoom->setText("100%");
+  m_btnResetZoom->setText(QSL("100%"));
   m_btnResetZoom->setToolTip(tr("Reset zoom to default."));
-  button_increase->setText("+");
+  button_increase->setText(QSL("+"));
   button_increase->setToolTip(tr("Increase zoom."));
 
   // Setup layout.
@@ -163,7 +163,7 @@ void WebBrowser::onLoadingStarted() {
 
 void WebBrowser::onLoadingProgress(int progress) {
   m_loadingProgress->setValue(progress);
-  m_lblProgress->setText(QString(" %1 kB / %2 kB").arg(m_webView->page()->bytesReceived() / 1000).arg(m_webView->page()->totalBytes() / 1000));
+  m_lblProgress->setText(QString(QSL(" %1 kB / %2 kB")).arg(m_webView->page()->bytesReceived() / 1000).arg(m_webView->page()->totalBytes() / 1000));
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
@@ -248,14 +248,14 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
       enclosures += skin.m_enclosureMarkup.arg(enclosure.m_url);
 
       if (!enclosure.m_mimeType.isEmpty()) {
-        enclosures += " [" + enclosure.m_mimeType + "]";
+        enclosures += QL1S(" [") + enclosure.m_mimeType + QL1S("]");
       }
 
-      enclosures += "<br>";
+      enclosures += QL1S("<br>");
     }
 
     if (!enclosures.isEmpty()) {
-      enclosures = enclosures.prepend("<br>");
+      enclosures = enclosures.prepend(QSL("<br>"));
     }
 
     messages_layout.append(single_message_layout.arg(message.m_title,
@@ -271,11 +271,11 @@ void WebBrowser::navigateToMessages(const QList<Message> &messages) {
   QString layout_wrapper = skin.m_layoutMarkupWrapper.arg(messages.size() == 1 ? messages.at(0).m_title : tr("Newspaper view"), messages_layout);
 
   m_webView->setHtml(layout_wrapper, QUrl(INTERNAL_URL_NEWSPAPER));
-  emit iconChanged(m_index, qApp->icons()->fromTheme("item-newspaper"));
+  emit iconChanged(m_index, qApp->icons()->fromTheme(QSL("item-newspaper")));
 }
 
 void WebBrowser::updateZoomGui() {
-  m_btnResetZoom->setText(QString("%1%").arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0)));
+  m_btnResetZoom->setText(QString(QSL("%1%")).arg(QString::number(m_webView->zoomFactor() * 100, 'f', 0)));
 }
 
 void WebBrowser::increaseZoom() {
@@ -296,7 +296,7 @@ void WebBrowser::resetZoom() {
 void WebBrowser::navigateToUrl(const QString &textual_url) {
   // Prepare input url.
   QString better_url = textual_url;
-  better_url = better_url.replace('\\', '/');
+  better_url = better_url.replace(QL1C('\\'), QL1C('/'));
 
   navigateToUrl(QUrl::fromUserInput(better_url));
 }
@@ -314,9 +314,9 @@ WebBrowser::~WebBrowser() {
 }
 
 void WebBrowser::setupIcons() {
-  m_actionBack->setIcon(qApp->icons()->fromTheme("go-previous"));
-  m_actionForward->setIcon(qApp->icons()->fromTheme("go-next"));
-  m_actionReload->setIcon(qApp->icons()->fromTheme("go-refresh"));
-  m_actionStop->setIcon(qApp->icons()->fromTheme("go-stop"));
+  m_actionBack->setIcon(qApp->icons()->fromTheme(QSL("go-previous")));
+  m_actionForward->setIcon(qApp->icons()->fromTheme(QSL("go-next")));
+  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("go-refresh")));
+  m_actionStop->setIcon(qApp->icons()->fromTheme(QSL("go-stop")));
   m_webView->setupIcons();
 }

@@ -60,7 +60,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
 
     if (action->isSeparator()) {
       action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
-      action_item->setIcon(qApp->icons()->fromTheme("view-separator"));
+      action_item->setIcon(qApp->icons()->fromTheme(QSL("view-separator")));
       action_item->setText(tr("Separator"));
       action_item->setToolTip(tr("Separator"));
     }
@@ -83,7 +83,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
         action_item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
         action_item->setText(tr("Separator"));
         action_item->setToolTip(tr("Separator"));
-        action_item->setIcon(qApp->icons()->fromTheme("view-separator"));
+        action_item->setIcon(qApp->icons()->fromTheme(QSL("view-separator")));
       }
       else if (action->property("type").isValid()) {
         action_item->setData(Qt::UserRole, action->property("type").toString());
@@ -149,7 +149,7 @@ void ToolBarEditor::insertSpacer() {
   int current_row = m_ui->m_listActivatedActions->currentRow();
   QListWidgetItem *item = new QListWidgetItem(tr("Toolbar spacer"));
 
-  item->setIcon(qApp->icons()->fromTheme("view-spacer"));
+  item->setIcon(qApp->icons()->fromTheme(QSL("view-spacer")));
   item->setData(Qt::UserRole, SPACER_ACTION_NAME);
 
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
@@ -162,7 +162,7 @@ void ToolBarEditor::insertSeparator() {
 
   item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
   item->setToolTip(tr("Separator"));
-  item->setIcon(qApp->icons()->fromTheme("view-separator"));
+  item->setIcon(qApp->icons()->fromTheme(QSL("view-separator")));
 
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
   m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);

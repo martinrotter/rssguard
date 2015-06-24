@@ -241,6 +241,14 @@ void MessagesView::loadFeeds(const FeedsSelection &selection) {
   Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
   sortByColumn(col, ord);
+
+#if QT_VERSION >= 0x050000
+  // Messages are loaded, make sure that previously
+  // active message is not shown in browser.
+  // BUG: Qt 5 is probably bugged here. Selections
+  // should be cleared automatically when SQL model is reset.
+  emit currentMessagesRemoved();
+#endif
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {

@@ -28,7 +28,7 @@ FeedsProxyModel::FeedsProxyModel(QObject *parent)
   : QSortFilterProxyModel(parent) {
   m_sourceModel = new FeedsModel(this);
 
-  setObjectName("FeedsProxyModel");
+  setObjectName(QSL("FeedsProxyModel"));
   setSortRole(Qt::EditRole);
   setSortCaseSensitivity(Qt::CaseInsensitive);
   setFilterCaseSensitivity(Qt::CaseInsensitive);

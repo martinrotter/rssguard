@@ -38,7 +38,7 @@ bool TrayIconMenu::event(QEvent *event) {
   if (Application::activeModalWidget() != NULL &&
       event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
-    qApp->trayIcon()->showMessage(APP_LONG_NAME,
+    qApp->trayIcon()->showMessage(QSL(APP_LONG_NAME),
                                   tr("Close opened modal dialogs first."),
                                   QSystemTrayIcon::Warning);
   }
@@ -118,11 +118,11 @@ void SystemTrayIcon::show() {
 
 void SystemTrayIcon::setNumber(int number, bool any_unread_message) {
   if (number <= 0) {
-    setToolTip(APP_LONG_NAME);
+    setToolTip(QSL(APP_LONG_NAME));
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
   }
   else {
-    setToolTip(tr("%1\nUnread news: %2").arg(APP_LONG_NAME, QString::number(number)));
+    setToolTip(tr("%1\nUnread news: %2").arg(QSL(APP_LONG_NAME), QString::number(number)));
 
     QPixmap background(m_plainPixmap);
     QPainter tray_painter;
@@ -179,6 +179,5 @@ void SystemTrayIcon::showMessage(const QString &title, const QString &message, Q
   }
 
   // NOTE: If connections do not work, then use QMetaObject::invokeMethod(...).
-
   QSystemTrayIcon::showMessage(title, message, icon, milliseconds_timeout_hint);
 }

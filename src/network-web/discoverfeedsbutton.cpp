@@ -23,7 +23,7 @@
 
 DiscoverFeedsButton::DiscoverFeedsButton(QWidget *parent) : QToolButton(parent) {
   setEnabled(false);
-  setIcon(qApp->icons()->fromTheme("folder-feed"));
+  setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
   setPopupMode(QToolButton::InstantPopup);
 }
 

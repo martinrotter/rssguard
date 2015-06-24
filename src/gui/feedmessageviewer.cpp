@@ -455,7 +455,7 @@ void FeedMessageViewer::initializeViews() {
   m_messagesView->setFrameStyle(QFrame::NoFrame);
 
   // Setup message splitter.
-  m_messageSplitter->setObjectName("MessageSplitter");
+  m_messageSplitter->setObjectName(QSL("MessageSplitter"));
   m_messageSplitter->setHandleWidth(1);
   m_messageSplitter->setOpaqueResize(false);
   m_messageSplitter->setChildrenCollapsible(false);

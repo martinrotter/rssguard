@@ -29,10 +29,10 @@ WidgetWithStatus::WidgetWithStatus(QWidget *parent)
   m_btnStatus = new PlainToolButton(this);
   m_btnStatus->setFocusPolicy(Qt::NoFocus);
 
-  m_iconInformation = qApp->icons()->fromTheme("dialog-information");
-  m_iconWarning = qApp->icons()->fromTheme("dialog-warning");
-  m_iconError = qApp->icons()->fromTheme("dialog-error");
-  m_iconOk = qApp->icons()->fromTheme("dialog-yes");
+  m_iconInformation = qApp->icons()->fromTheme(QSL("dialog-information"));
+  m_iconWarning = qApp->icons()->fromTheme(QSL("dialog-warning"));
+  m_iconError = qApp->icons()->fromTheme(QSL("dialog-error"));
+  m_iconOk = qApp->icons()->fromTheme(QSL("dialog-yes"));
 
   // Set layout properties.
   m_layout->setMargin(0);

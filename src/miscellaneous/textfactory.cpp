@@ -34,20 +34,21 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QLocale locale(QLocale::C);
   bool positive_time_zone_offset = false;
 
-  QStringList date_patterns; date_patterns << "yyyy-MM-ddTHH:mm:ss" << "MMM dd yyyy hh:mm:ss" <<
-                                              "MMM d yyyy hh:mm:ss" << "ddd, dd MMM yyyy HH:mm:ss" <<
-                                              "dd MMM yyyy" << "yyyy-MM-dd HH:mm:ss.z" << "yyyy-MM-dd" <<
-                                              "yyyy" << "yyyy-MM" << "yyyy-MM-dd" << "yyyy-MM-ddThh:mm" <<
-                                              "yyyy-MM-ddThh:mm:ss";
+  QStringList date_patterns; date_patterns << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") <<
+                                              QSL("MMM d yyyy hh:mm:ss") << QSL("ddd, dd MMM yyyy HH:mm:ss") <<
+                                              QSL("dd MMM yyyy") << QSL("yyyy-MM-dd HH:mm:ss.z") << QSL("yyyy-MM-dd") <<
+                                              QSL("yyyy") << QSL("yyyy-MM") << QSL("yyyy-MM-dd") << QSL("yyyy-MM-ddThh:mm") <<
+                                              QSL("yyyy-MM-ddThh:mm:ss");
 
-  QStringList timezone_offset_patterns; timezone_offset_patterns << "+hh:mm" << "-hh:mm" << "+hhmm" << "-hhmm" << "+hh" << "-hh";
+  QStringList timezone_offset_patterns; timezone_offset_patterns << QSL("+hh:mm") << QSL("-hh:mm") << QSL("+hhmm")
+                                                                 << QSL("-hhmm") << QSL("+hh") << QSL("-hh");
 
   if (input_date.size() >= TIMEZONE_OFFSET_LIMIT) {
     foreach (const QString &pattern, timezone_offset_patterns) {
       time_zone_offset = QTime::fromString(input_date.right(pattern.size()), pattern);
 
       if (time_zone_offset.isValid()) {
-        positive_time_zone_offset = pattern.at(0) == '+';
+        positive_time_zone_offset = pattern.at(0) == QL1C('+');
         break;
       }
     }
@@ -89,7 +90,7 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
 
 QString TextFactory::shorten(const QString &input, int text_length_limit) {
   if (input.size() > text_length_limit) {
-    return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, '.');
+    return input.left(text_length_limit - ELLIPSIS_LENGTH) + QString(ELLIPSIS_LENGTH, QL1C('.'));
   }
   else {
     return input;

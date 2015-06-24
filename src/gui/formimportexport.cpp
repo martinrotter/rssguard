@@ -60,7 +60,7 @@ void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
       m_ui->m_groupFile->setTitle(tr("Destination file"));
       m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
       setWindowTitle(tr("Export feeds"));
-      setWindowIcon(qApp->icons()->fromTheme("document-export"));
+      setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
       break;
     }
 
@@ -69,7 +69,7 @@ void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
       m_ui->m_groupFeeds->setDisabled(true);
       setWindowTitle(tr("Import feeds"));
-      setWindowIcon(qApp->icons()->fromTheme("document-import"));
+      setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
       break;
     }
 
@@ -112,8 +112,8 @@ void FormImportExport::selectExportFile() {
     if (selected_filter == filter_opml20) {
       m_conversionType = OPML20;
 
-      if (!selected_file.endsWith(".opml")) {
-        selected_file += ".opml";
+      if (!selected_file.endsWith(QL1S(".opml"))) {
+        selected_file += QL1S(".opml");
       }
     }
     // NOTE: Add other types here.

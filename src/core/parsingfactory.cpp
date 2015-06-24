@@ -35,18 +35,18 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
   xml_file.setContent(data, true);
 
   // Pull out all messages.
-  QDomNodeList messages_in_xml = xml_file.elementsByTagName("entry");
+  QDomNodeList messages_in_xml = xml_file.elementsByTagName(QSL("entry"));
 
   for (int i = 0; i < messages_in_xml.size(); i++) {
     QDomNode message_item = messages_in_xml.item(i);
     Message new_message;
 
     // Deal with titles & descriptions.
-    QString elem_title = message_item.namedItem("title").toElement().text().simplified();
-    QString elem_summary = message_item.namedItem("summary").toElement().text();
+    QString elem_title = message_item.namedItem(QSL("title")).toElement().text().simplified();
+    QString elem_summary = message_item.namedItem(QSL("summary")).toElement().text();
 
     if (elem_summary.isEmpty()) {
-      elem_summary = message_item.namedItem("content").toElement().text();
+      elem_summary = message_item.namedItem(QSL("content")).toElement().text();
     }
 
     // Now we obtained maximum of information for title & description.
@@ -68,18 +68,18 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     }
 
     // Deal with link.
-    QDomNodeList elem_links = message_item.toElement().elementsByTagName("link");
+    QDomNodeList elem_links = message_item.toElement().elementsByTagName(QSL("link"));
 
     for (int i = 0; i < elem_links.size(); i++) {
       QDomElement link = elem_links.at(i).toElement();
 
-      if (link.attribute("rel") == "enclosure") {
-        new_message.m_enclosures.append(Enclosure(link.attribute("href"), link.attribute("type")));
+      if (link.attribute(QSL("rel")) == QL1S("enclosure")) {
+        new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
 
         qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
       }
       else {
-        new_message.m_url = link.attribute("href");
+        new_message.m_url = link.attribute(QSL("href"));
       }
     }
 
@@ -88,10 +88,10 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     }
 
     // Deal with authors.
-    new_message.m_author = WebFactory::instance()->escapeHtml(message_item.namedItem("author").namedItem("name").toElement().text());
+    new_message.m_author = WebFactory::instance()->escapeHtml(message_item.namedItem(QSL("author")).namedItem(QSL("name")).toElement().text());
 
     // Deal with creation date.
-    new_message.m_created = TextFactory::parseDateTime(message_item.namedItem("updated").toElement().text());
+    new_message.m_created = TextFactory::parseDateTime(message_item.namedItem(QSL("updated")).toElement().text());
     new_message.m_createdFromFeed = !new_message.m_created.isNull();
 
     if (!new_message.m_createdFromFeed) {
@@ -124,15 +124,15 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
   xml_file.setContent(data, true);
 
   // Pull out all messages.
-  QDomNodeList messages_in_xml = xml_file.elementsByTagName("item");
+  QDomNodeList messages_in_xml = xml_file.elementsByTagName(QSL("item"));
 
   for (int i = 0; i < messages_in_xml.size(); i++) {
     QDomNode message_item = messages_in_xml.item(i);
     Message new_message;
 
     // Deal with title and description.
-    QString elem_title = message_item.namedItem("title").toElement().text().simplified();
-    QString elem_description = message_item.namedItem("description").toElement().text();
+    QString elem_title = message_item.namedItem(QSL("title")).toElement().text().simplified();
+    QString elem_description = message_item.namedItem(QSL("description")).toElement().text();
 
     // Now we obtained maximum of information for title & description.
     if (elem_title.isEmpty()) {
@@ -154,14 +154,14 @@ QList<Message> ParsingFactory::parseAsRDF(const QString &data) {
 
 
     // Deal with link and author.
-    new_message.m_url = message_item.namedItem("link").toElement().text();
-    new_message.m_author = message_item.namedItem("creator").toElement().text();
+    new_message.m_url = message_item.namedItem(QSL("link")).toElement().text();
+    new_message.m_author = message_item.namedItem(QSL("creator")).toElement().text();
 
     // Deal with creation date.
-    QString elem_updated = message_item.namedItem("date").toElement().text();
+    QString elem_updated = message_item.namedItem(QSL("date")).toElement().text();
 
     if (elem_updated.isEmpty()) {
-      elem_updated = message_item.namedItem("dc:date").toElement().text();
+      elem_updated = message_item.namedItem(QSL("dc:date")).toElement().text();
     }
 
     // Deal with creation date.
@@ -195,20 +195,20 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
   xml_file.setContent(data, true);
 
   // Pull out all messages.
-  QDomNodeList messages_in_xml = xml_file.elementsByTagName("item");
+  QDomNodeList messages_in_xml = xml_file.elementsByTagName(QSL("item"));
 
   for (int i = 0; i < messages_in_xml.size(); i++) {
     QDomNode message_item = messages_in_xml.item(i);
     Message new_message;
 
     // Deal with titles & descriptions.
-    QString elem_title = message_item.namedItem("title").toElement().text().simplified();
-    QString elem_description = message_item.namedItem("description").toElement().text();
-    QString elem_enclosure = message_item.namedItem("enclosure").toElement().attribute("url");
-    QString elem_enclosure_type = message_item.namedItem("enclosure").toElement().attribute("type");
+    QString elem_title = message_item.namedItem(QSL("title")).toElement().text().simplified();
+    QString elem_description = message_item.namedItem(QSL("description")).toElement().text();
+    QString elem_enclosure = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
+    QString elem_enclosure_type = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
     if (elem_description.isEmpty()) {
-      elem_description = message_item.namedItem("encoded").toElement().text();
+      elem_description = message_item.namedItem(QSL("encoded")).toElement().text();
     }
 
     // Now we obtained maximum of information for title & description.
@@ -236,23 +236,23 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
     }
 
     // Deal with link and author.
-    new_message.m_url = message_item.namedItem("link").toElement().text();
+    new_message.m_url = message_item.namedItem(QSL("link")).toElement().text();
 
     if (new_message.m_url.isEmpty() && !new_message.m_enclosures.isEmpty()) {
       new_message.m_url = new_message.m_enclosures.first().m_url;
     }
 
-    new_message.m_author = message_item.namedItem("author").toElement().text();
+    new_message.m_author = message_item.namedItem(QSL("author")).toElement().text();
 
     if (new_message.m_author.isEmpty()) {
-      new_message.m_author = message_item.namedItem("creator").toElement().text();
+      new_message.m_author = message_item.namedItem(QSL("creator")).toElement().text();
     }
 
     // Deal with creation date.
-    new_message.m_created = TextFactory::parseDateTime(message_item.namedItem("pubDate").toElement().text());
+    new_message.m_created = TextFactory::parseDateTime(message_item.namedItem(QSL("pubDate")).toElement().text());
 
     if (new_message.m_created.isNull()) {
-      new_message.m_created = TextFactory::parseDateTime(message_item.namedItem("date").toElement().text());
+      new_message.m_created = TextFactory::parseDateTime(message_item.namedItem(QSL("date")).toElement().text());
     }
 
     if (!(new_message.m_createdFromFeed = !new_message.m_created.isNull())) {

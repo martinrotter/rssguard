@@ -186,13 +186,13 @@ void GoogleSuggest::handleNetworkData() {
     QTextCodec *c = QTextCodec::codecForUtfText(response);
     xml.setContent(c->toUnicode(response));
 
-    QDomNodeList suggestions = xml.elementsByTagName("suggestion");
+    QDomNodeList suggestions = xml.elementsByTagName(QSL("suggestion"));
 
     for (int i = 0; i < suggestions.size(); i++) {
       QDomElement element = suggestions.at(i).toElement();
 
-      if (element.attributes().contains("data")) {
-        choices.append(element.attribute("data"));
+      if (element.attributes().contains(QSL("data"))) {
+        choices.append(element.attribute(QSL("data")));
       }
     }
 

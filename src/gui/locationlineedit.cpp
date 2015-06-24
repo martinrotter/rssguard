@@ -29,7 +29,6 @@ LocationLineEdit::LocationLineEdit(QWidget *parent)
 }
 
 LocationLineEdit::~LocationLineEdit() {
-
 }
 
 void LocationLineEdit::focusOutEvent(QFocusEvent *event) {

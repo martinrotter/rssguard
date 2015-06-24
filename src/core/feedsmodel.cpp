@@ -283,9 +283,9 @@ bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *p
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
-  query_add.prepare(QSL("INSERT INTO Categories "
+  query_add.prepare("INSERT INTO Categories "
                     "(parent_id, title, description, date_created, icon) "
-                    "VALUES (:parent_id, :title, :description, :date_created, :icon);"));
+                    "VALUES (:parent_id, :title, :description, :date_created, :icon);");
   query_add.bindValue(QSL(":parent_id"), parent->id());
   query_add.bindValue(QSL(":title"), category->title());
   query_add.bindValue(QSL(":description"), category->description());
@@ -327,9 +327,9 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelC
   FeedsModelRootItem *new_parent = new_category->parent();
 
   query_update_category.setForwardOnly(true);
-  query_update_category.prepare(QSL("UPDATE Categories "
+  query_update_category.prepare("UPDATE Categories "
                                 "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
-                                "WHERE id = :id;"));
+                                "WHERE id = :id;");
   query_update_category.bindValue(QSL(":title"), new_category->title());
   query_update_category.bindValue(QSL(":description"), new_category->description());
   query_update_category.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_category->icon()));
@@ -379,9 +379,9 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
   QSqlQuery query_add_feed(database);
 
   query_add_feed.setForwardOnly(true);
-  query_add_feed.prepare(QSL("INSERT INTO Feeds "
+  query_add_feed.prepare("INSERT INTO Feeds "
                          "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type) "
-                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);"));
+                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);");
   query_add_feed.bindValue(QSL(":title"), feed->title());
   query_add_feed.bindValue(QSL(":description"), feed->description());
   query_add_feed.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
@@ -429,9 +429,9 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_fee
   FeedsModelRootItem *new_parent = new_feed->parent();
 
   query_update_feed.setForwardOnly(true);
-  query_update_feed.prepare(QSL("UPDATE Feeds "
+  query_update_feed.prepare("UPDATE Feeds "
                             "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
-                            "WHERE id = :id;"));
+                            "WHERE id = :id;");
   query_update_feed.bindValue(QSL(":title"), new_feed->title());
   query_update_feed.bindValue(QSL(":description"), new_feed->description());
   query_update_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_feed->icon()));
@@ -535,9 +535,9 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
                                                        DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare(QSL("SELECT title, url, author, date_created, contents "
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents "
                          "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed;"));
+                         "WHERE is_deleted = 0 AND feed = :feed;");
 
   foreach (FeedsModelFeed *feed, feeds) {
     query_read_msg.bindValue(QSL(":feed"), feed->id());
@@ -849,8 +849,8 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read) {
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare(QString(QSL("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0;")).arg(textualFeedIds(feeds).join(QSL(", "))))) {
+  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
     qWarning("Query preparation failed for feeds read change.");
 
     db_handle.rollback();
@@ -885,8 +885,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int delet
   query_delete_msg.setForwardOnly(true);
 
   if (read_only) {
-    if (!query_delete_msg.prepare(QString(QSL("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;")).arg(textualFeedIds(feeds).join(QSL(", "))))) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
 
       db_handle.rollback();
@@ -894,8 +894,8 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int delet
     }
   }
   else {
-    if (!query_delete_msg.prepare(QString(QSL("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0;")).arg(textualFeedIds(feeds).join(QSL(", "))))) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
 
       db_handle.rollback();

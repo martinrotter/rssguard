@@ -28,10 +28,10 @@
 #include <QWebFrame>
 
 
-QList<WebPage*> WebPage::livingPages_;
+QList<WebPage*> WebPage::s_livingPages;
 
 WebPage::WebPage(QObject *parent)
-  : QWebPage(parent), loadProgress_(-1) {
+  : QWebPage(parent), m_loadProgress(-1) {
   // Setup global network access manager.
   // NOTE: This makes network settings easy for all web browsers.
   setNetworkAccessManager(new WebBrowserNetworkAccessManager(this, this));
@@ -41,80 +41,74 @@ WebPage::WebPage(QObject *parent)
   connect(this, SIGNAL(loadProgress(int)), this, SLOT(progress(int)));
   connect(this, SIGNAL(loadFinished(bool)), this, SLOT(finished()));
 
-  livingPages_.append(this);
+  s_livingPages.append(this);
 }
 
 WebPage::~WebPage() {
-    livingPages_.removeOne(this);
+  s_livingPages.removeOne(this);
 }
 
-bool WebPage::isLoading() const
-{
-  return loadProgress_ < 100;
+bool WebPage::isLoading() const {
+  return m_loadProgress < 100;
 }
 
-void WebPage::progress(int prog)
-{
-  loadProgress_ = prog;
+void WebPage::progress(int prog) {
+  m_loadProgress = prog;
 }
 
-void WebPage::finished()
-{
+void WebPage::finished() {
   progress(100);
-
-  // AdBlock
   cleanBlockedObjects();
 }
 
-void WebPage::cleanBlockedObjects()
-{
-  AdBlockManager* manager = AdBlockManager::instance();
+void WebPage::cleanBlockedObjects() {
+  AdBlockManager *manager = AdBlockManager::instance();
   if (!manager->isEnabled()) {
     return;
   }
 
-  const QWebElement docElement = mainFrame()->documentElement();
+  const QWebElement doc_element = mainFrame()->documentElement();
 
-  foreach (const AdBlockedEntry &entry, adBlockedEntries_) {
-    const QString urlString = entry.url.toString();
-    if (urlString.endsWith(QLatin1String(".js")) || urlString.endsWith(QLatin1String(".css"))) {
+  foreach (const AdBlockedEntry &entry, m_adBlockedEntries) {
+    const QString url_string = entry.url.toString();
+    if (url_string.endsWith(QL1S(".js")) || url_string.endsWith(QL1S(".css"))) {
       continue;
     }
 
-    QString urlEnd;
+    QString url_end;
 
-    int pos = urlString.lastIndexOf(QLatin1Char('/'));
+    int pos = url_string.lastIndexOf(QL1C('/'));
     if (pos > 8) {
-      urlEnd = urlString.mid(pos + 1);
+      url_end = url_string.mid(pos + 1);
     }
 
-    if (urlString.endsWith(QLatin1Char('/'))) {
-      urlEnd = urlString.left(urlString.size() - 1);
+    if (url_string.endsWith(QL1C('/'))) {
+      url_end = url_string.left(url_string.size() - 1);
     }
 
-    QString selector("img[src$=\"%1\"], iframe[src$=\"%1\"],embed[src$=\"%1\"]");
-    QWebElementCollection elements = docElement.findAll(selector.arg(urlEnd));
+    QString selector(QSL("img[src$=\"%1\"], iframe[src$=\"%1\"],embed[src$=\"%1\"]"));
+    QWebElementCollection elements = doc_element.findAll(selector.arg(url_end));
 
     foreach (QWebElement element, elements) {
-      QString src = element.attribute("src");
-      src.remove(QLatin1String("../"));
+      QString src = element.attribute(QSL("src"));
+      src.remove(QL1S("../"));
 
-      if (urlString.contains(src)) {
-        element.setStyleProperty("display", "none");
+      if (url_string.contains(src)) {
+        element.setStyleProperty(QSL("display"), QSL("none"));
       }
     }
   }
 
   // Apply domain-specific element hiding rules
-  QString elementHiding = manager->elementHidingRulesForDomain(mainFrame()->url());
-  if (elementHiding.isEmpty()) {
+  QString element_hiding = manager->elementHidingRulesForDomain(mainFrame()->url());
+  if (element_hiding.isEmpty()) {
     return;
   }
 
-  elementHiding.append(QLatin1String("\n</style>"));
+  element_hiding.append(QL1S("\n</style>"));
 
-  QWebElement bodyElement = docElement.findFirst("body");
-  bodyElement.appendInside("<style type=\"text/css\">\n/* AdBlock for QupZilla */\n" + elementHiding);
+  QWebElement body_element = doc_element.findFirst(QSL("body"));
+  body_element.appendInside(QSL("<style type=\"text/css\">\n/* AdBlock for RSS Guard */\n") + element_hiding);
 
   // When hiding some elements, scroll position of page will change
   // If user loaded anchor link in background tab (and didn't show it yet), fix the scroll position
@@ -123,79 +117,66 @@ void WebPage::cleanBlockedObjects()
   }
 }
 
-void WebPage::urlChanged(const QUrl &url)
-{
+void WebPage::urlChanged(const QUrl &url) {
   Q_UNUSED(url)
 
   if (isLoading()) {
-    adBlockedEntries_.clear();
+    m_adBlockedEntries.clear();
   }
 }
 
-void WebPage::addAdBlockRule(const AdBlockRule* rule, const QUrl &url)
-{
+void WebPage::addAdBlockRule(const AdBlockRule *rule, const QUrl &url) {
   AdBlockedEntry entry;
+
   entry.rule = rule;
   entry.url = url;
 
-  if (!adBlockedEntries_.contains(entry)) {
-    adBlockedEntries_.append(entry);
+  if (!m_adBlockedEntries.contains(entry)) {
+    m_adBlockedEntries.append(entry);
   }
 }
 
-QVector<WebPage::AdBlockedEntry> WebPage::adBlockedEntries() const
-{
-  return adBlockedEntries_;
+QVector<WebPage::AdBlockedEntry> WebPage::adBlockedEntries() const {
+  return m_adBlockedEntries;
 }
 
-bool WebPage::isPointerSafeToUse(WebPage* page)
-{
+bool WebPage::isPointerSafeToUse(WebPage *page) {
   // Pointer to WebPage is passed with every QNetworkRequest casted to void*
   // So there is no way to test whether pointer is still valid or not, except
   // this hack.
 
-  return page == 0 ? false : livingPages_.contains(page);
+  return page == 0 ? false : s_livingPages.contains(page);
 }
 
 QString WebPage::toPlainText() const {
   return mainFrame()->toPlainText();
 }
 
-void WebPage::populateNetworkRequest(QNetworkRequest &request)
-{
-  WebPage* pagePointer = this;
+void WebPage::populateNetworkRequest(QNetworkRequest &request) {
+  WebPage *page_pointer = this;
 
-  QVariant variant = QVariant::fromValue((void*) pagePointer);
+  QVariant variant = QVariant::fromValue((void*) page_pointer);
   request.setAttribute((QNetworkRequest::Attribute)(QNetworkRequest::User + 100), variant);
-/*
-  if (lastRequestUrl_ == request.url()) {
-    request.setAttribute((QNetworkRequest::Attribute)(QNetworkRequest::User + 101), lastRequestType_);
-    if (lastRequestType_ == NavigationTypeLinkClicked) {
-      request.setRawHeader("X-QuiteRSS-UserLoadAction", QByteArray("1"));
-    }
-  }*/
 }
 
 void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
-  if (!reply) {
-    return;
-  }
+  if (reply != NULL) {
+    QUrl reply_url = reply->url();
 
-  QUrl replyUrl = reply->url();
-
-  if (replyUrl.scheme() == QLatin1String("abp")) {
-    return;
-  }
-
-  switch (reply->error()) {
-    case QNetworkReply::NoError:
-      if (reply->header(QNetworkRequest::ContentTypeHeader).isValid()) {
-        qApp->downloadManager()->handleUnsupportedContent(reply);
-        return;
-      }
-
-    default:
+    if (reply_url.scheme() == QL1S("abp")) {
       return;
+    }
+
+    switch (reply->error()) {
+      case QNetworkReply::NoError:
+        if (reply->header(QNetworkRequest::ContentTypeHeader).isValid()) {
+          qApp->downloadManager()->handleUnsupportedContent(reply);
+          return;
+        }
+
+      default:
+        return;
+    }
   }
 }
 
@@ -208,13 +189,10 @@ bool WebPage::acceptNavigationRequest(QWebFrame *frame,
                                       QWebPage::NavigationType type) {
   QString scheme = request.url().scheme();
 
-  if (scheme == "mailto" || scheme == "ftp") {
+  if (scheme == QL1S("mailto") || scheme == QL1S("ftp")) {
     qWarning("Received request with scheme '%s', blocking it.", qPrintable(scheme));
     return false;
   }
-
-  lastRequestType_ = type;
-  lastRequestUrl_ = request.url();
 
   if (type == QWebPage::NavigationTypeLinkClicked &&
       frame == mainFrame()) {

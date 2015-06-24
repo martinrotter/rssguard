@@ -44,13 +44,13 @@ ShortcutCatcher::ShortcutCatcher(QWidget *parent)
 
   // Create reset button.
   m_btnReset = new PlainToolButton(this);
-  m_btnReset->setIcon(qApp->icons()->fromTheme("edit-revert"));
+  m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("edit-revert")));
   m_btnReset->setFocusPolicy(Qt::NoFocus);
   m_btnReset->setToolTip(tr("Reset to original shortcut."));
 
   // Create clear button.
   m_btnClear = new PlainToolButton(this);
-  m_btnClear->setIcon(qApp->icons()->fromTheme("item-remove"));
+  m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("item-remove")));
   m_btnClear->setFocusPolicy(Qt::NoFocus);
   m_btnClear->setToolTip(tr("Clear current shortcut."));
 
@@ -109,24 +109,24 @@ void ShortcutCatcher::controlModifierlessTimout() {
 
 void ShortcutCatcher::updateDisplayShortcut() {
   QString str = m_currentSequence.toString(QKeySequence::NativeText);
-  str.replace('&', QLatin1String("&&"));
+  str.replace(QL1S("&"), QL1S("&&"));
 
   if (m_isRecording) {
     if (m_modifierKeys) {
       if (!str.isEmpty()) {
-        str.append(",");
+        str.append(QSL(","));
       }
       if (m_modifierKeys & Qt::META) {
-        str += "Meta + ";
+        str += QL1S("Meta + ");
       }
       if (m_modifierKeys & Qt::CTRL) {
-        str += "Ctrl + ";
+        str += QL1S("Ctrl + ");
       }
       if (m_modifierKeys & Qt::ALT) {
-        str += "Alt + ";
+        str += QL1S("Alt + ");
       }
       if (m_modifierKeys & Qt::SHIFT) {
-        str += "Shift + ";
+        str += QL1S("Shift + ");
       }
     }
   }

@@ -31,7 +31,7 @@ DatabaseFactory::DatabaseFactory(QObject *parent)
     m_mysqlDatabaseInitialized(false),
     m_sqliteFileBasedDatabaseinitialized(false),
     m_sqliteInMemoryDatabaseInitialized(false) {
-  setObjectName("DatabaseFactory");
+  setObjectName(QSL("DatabaseFactory"));
   determineDriver();
 }
 
@@ -141,7 +141,7 @@ void DatabaseFactory::sqliteAssemblyDatabaseFilePath()  {
 QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER);
 
-  database.setDatabaseName(":memory:");
+  database.setDatabaseName(QSL(":memory:"));
 
   if (!database.open()) {
     qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
@@ -150,16 +150,16 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     QSqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
-    query_db.exec("PRAGMA encoding = \"UTF-8\"");
-    query_db.exec("PRAGMA synchronous = OFF");
-    query_db.exec("PRAGMA journal_mode = MEMORY");
-    query_db.exec("PRAGMA page_size = 4096");
-    query_db.exec("PRAGMA cache_size = 16384");
-    query_db.exec("PRAGMA count_changes = OFF");
-    query_db.exec("PRAGMA temp_store = MEMORY");
+    query_db.exec(QSL("PRAGMA encoding = \"UTF-8\""));
+    query_db.exec(QSL("PRAGMA synchronous = OFF"));
+    query_db.exec(QSL("PRAGMA journal_mode = MEMORY"));
+    query_db.exec(QSL("PRAGMA page_size = 4096"));
+    query_db.exec(QSL("PRAGMA cache_size = 16384"));
+    query_db.exec(QSL("PRAGMA count_changes = OFF"));
+    query_db.exec(QSL("PRAGMA temp_store = MEMORY"));
 
     // Sample query which checks for existence of tables.
-    query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'");
+    query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"));
 
     if (query_db.lastError().isValid()) {
       qWarning("Error occurred. In-memory SQLite database is not initialized. Initializing now.");
@@ -202,7 +202,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
     // Copy all stuff.
-    QStringList tables; tables << "Information" << "Categories" << "Feeds" << "FeedsData" << "Messages";
+    QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") << QSL("Messages");
 
     foreach (const QString &table, tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
@@ -211,7 +211,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     qDebug("Copying data from file-based database into working in-memory database.");
 
     // Detach database and finish.
-    copy_contents.exec("DETACH 'storage'");
+    copy_contents.exec(QSL("DETACH 'storage'"));
     copy_contents.finish();
 
     query_db.finish();
@@ -255,16 +255,16 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
     QSqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
-    query_db.exec("PRAGMA encoding = \"UTF-8\"");
-    query_db.exec("PRAGMA synchronous = OFF");
-    query_db.exec("PRAGMA journal_mode = MEMORY");
-    query_db.exec("PRAGMA page_size = 4096");
-    query_db.exec("PRAGMA cache_size = 16384");
-    query_db.exec("PRAGMA count_changes = OFF");
-    query_db.exec("PRAGMA temp_store = MEMORY");
+    query_db.exec(QSL("PRAGMA encoding = \"UTF-8\""));
+    query_db.exec(QSL("PRAGMA synchronous = OFF"));
+    query_db.exec(QSL("PRAGMA journal_mode = MEMORY"));
+    query_db.exec(QSL("PRAGMA page_size = 4096"));
+    query_db.exec(QSL("PRAGMA cache_size = 16384"));
+    query_db.exec(QSL("PRAGMA count_changes = OFF"));
+    query_db.exec(QSL("PRAGMA temp_store = MEMORY"));
 
     // Sample query which checks for existence of tables.
-    if (!query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
+    if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
       qWarning("Error occurred. File-based SQLite database is not initialized. Initializing now.");
 
       QFile file_init(APP_MISC_PATH + QDir::separator() + APP_DB_SQLITE_INIT);
@@ -346,7 +346,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
 
   while (working_version != current_version) {
     QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
-                               QString(APP_DB_UPDATE_FILE_PATTERN).arg("sqlite",
+                               QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
                                                                        QString::number(working_version),
                                                                        QString::number(working_version + 1));
 
@@ -384,7 +384,7 @@ bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QSt
 
   while (working_version != current_version) {
     QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
-                               QString(APP_DB_UPDATE_FILE_PATTERN).arg("mysql",
+                               QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("mysql"),
                                                                        QString::number(working_version),
                                                                        QString::number(working_version + 1));
 
@@ -465,19 +465,19 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
   QSqlQuery copy_contents(database);
 
   // Attach database.
-  copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
+  copy_contents.exec(QString(QSL("ATTACH DATABASE '%1' AS 'storage';")).arg(file_database.databaseName()));
 
   // Copy all stuff.
-  QStringList tables; tables << "Categories" << "Feeds" << "FeedsData" <<
-                                "Messages";
+  QStringList tables; tables << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") <<
+                                QSL("Messages");
 
   foreach (const QString &table, tables) {
-    copy_contents.exec(QString("DELETE FROM storage.%1;").arg(table));
-    copy_contents.exec(QString("INSERT INTO storage.%1 SELECT * FROM main.%1;").arg(table));
+    copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));
+    copy_contents.exec(QString(QSL("INSERT INTO storage.%1 SELECT * FROM main.%1;")).arg(table));
   }
 
   // Detach database and finish.
-  copy_contents.exec("DETACH 'storage'");
+  copy_contents.exec(QSL("DETACH 'storage'"));
   copy_contents.finish();
 }
 
@@ -573,7 +573,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
     QSqlQuery query_db(database);
     query_db.setForwardOnly(true);
 
-    if (!query_db.exec(QString("USE %1").arg(database_name)) || !query_db.exec("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'")) {
+    if (!query_db.exec(QString("USE %1").arg(database_name)) || !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
       // If no "rssguard" database exists or schema version is wrong, then initialize it.
       qWarning("Error occurred. MySQL database is not initialized. Initializing now.");
 
@@ -633,7 +633,7 @@ bool DatabaseFactory::mysqlVacuumDatabase() {
   QSqlDatabase database = mysqlConnection(objectName());
   QSqlQuery query_vacuum(database);
 
-  return query_vacuum.exec("OPTIMIZE TABLE rssguard.feeds;") && query_vacuum.exec("OPTIMIZE TABLE rssguard.messages;");
+  return query_vacuum.exec(QSL("OPTIMIZE TABLE rssguard.feeds;")) && query_vacuum.exec(QSL("OPTIMIZE TABLE rssguard.messages;"));
 }
 
 QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name, DatabaseFactory::DesiredType desired_type) {
@@ -648,7 +648,7 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name, D
     else {
       QSqlDatabase database = QSqlDatabase::database();
 
-      database.setDatabaseName(":memory:");
+      database.setDatabaseName(QSL(":memory:"));
 
       if (!database.isOpen() && !database.open()) {
         qFatal("In-memory SQLite database was NOT opened. Delivered error message: '%s'.",
@@ -720,7 +720,7 @@ bool DatabaseFactory::sqliteVacuumDatabase() {
 
   QSqlQuery query_vacuum(database);
 
-  return query_vacuum.exec("VACUUM");
+  return query_vacuum.exec(QSL("VACUUM"));
 }
 
 void DatabaseFactory::saveDatabase() {

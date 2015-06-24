@@ -33,7 +33,7 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
     QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
-    return QProcess::startDetached(QString("\"") + browser + "\" " + arguments.arg(message.m_title,
+    return QProcess::startDetached(QString("\"") + browser + QSL("\" ") + arguments.arg(message.m_title,
                                                                                    stripTags(message.m_contents)));
   }
   else {
@@ -49,7 +49,7 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
 
-    return QProcess::startDetached(QString("\"") + browser + "\"", QStringList() << arguments.arg(url));
+    return QProcess::startDetached(QString("\"") + browser + QSL("\""), QStringList() << arguments.arg(url));
   }
   else {
     return QDesktopServices::openUrl(url);
@@ -104,7 +104,7 @@ bool WebFactory::autoloadImages() const {
 }
 
 QString WebFactory::stripTags(QString text) {
-  return text.remove(QRegExp("<[^>]*>"));
+  return text.remove(QRegExp(QSL("<[^>]*>")));
 }
 
 QString WebFactory::escapeHtml(const QString &html) {
@@ -171,22 +171,22 @@ QString WebFactory::toSecondLevelDomain(const QUrl &url) {
 }
 
 void WebFactory::generetaEscapes() {
-  m_escapes["&lt;"]     = '<';
-  m_escapes["&gt;"]     = '>';
-  m_escapes["&amp;"]    = '&';
-  m_escapes["&quot;"]   = '\"';
-  m_escapes["&nbsp;"]   = ' ';
-  m_escapes["&plusmn;"]	= "±";
-  m_escapes["&times;"]  = "×";
-  m_escapes["&#039;"]   = '\'';
+  m_escapes[QSL("&lt;")]     = QL1C('<');
+  m_escapes[QSL("&gt;")]     = QL1C('>');
+  m_escapes[QSL("&amp;")]    = QL1C('&');
+  m_escapes[QSL("&quot;")]   = QL1C('\"');
+  m_escapes[QSL("&nbsp;")]   = QL1C(' ');
+  m_escapes[QSL("&plusmn;")]	= QSL("±");
+  m_escapes[QSL("&times;")]  = QSL("×");
+  m_escapes[QSL("&#039;")]   = QL1C('\'');
 }
 
 void WebFactory::generateDeescapes() {
-  m_deEscapes["<"]  = "&lt;";
-  m_deEscapes[">"]  = "&gt;";
-  m_deEscapes["&"]  = "&amp;";
-  m_deEscapes["\""]	= "&quot;";
-  m_deEscapes["±"]  = "&plusmn;";
-  m_deEscapes["×"]  = "&times;";
-  m_deEscapes["\'"] = "&#039;";
+  m_deEscapes[QSL("<")]  = QSL("&lt;");
+  m_deEscapes[QSL(">")]  = QSL("&gt;");
+  m_deEscapes[QSL("&")]  = QSL("&amp;");
+  m_deEscapes[QSL("\"")]	= QSL("&quot;");
+  m_deEscapes[QSL("±")]  = QSL("&plusmn;");
+  m_deEscapes[QSL("×")]  = QSL("&times;");
+  m_deEscapes[QSL("\'")] = QSL("&#039;");
 }

@@ -2,13 +2,14 @@
 <center><h2>2.4.1</h2></center>
 Added:
 <ul>
-<li>Experimental support for lighter version of <b>Adblock</b> component. It is configurable via status bar icon in bottom-right corner of main application window. It supports Adblock Plus filters. It is disabled by default. DO NOT user Adblock component if you wish to have LOW memory footprint or use very limited set of rules. Bug set of rules makes RSS Guard more RAM hungry. (issue #7)</li>
+<li>Experimental support for lighter version of <b>Adblock</b> component. It is configurable via status bar icon in bottom-right corner of main application window. It supports Adblock Plus filters. It is disabled by default. DO NOT user Adblock component if you wish to have LOW memory footprint or use very limited set of rules. Big set of rules makes RSS Guard more RAM hungry. (issue #7)</li>
 <li>Unavailable actions in menus are automatically disabled when such a situation arises. (issue #28)</li>
 <li><b>Added support for Google auto-suggest API.</b> Just type your phrase in internal web browser location text box and Google will help you out.</li>
 </ul>
 
 Fixed:
 <ul>
+<li>Source code now uses QStringLiteral/QLatin1String class for character literals.</li>
 <li>Internal message previewer is now cleared only once when switching feeds.</li>
 <li>Database cleanup tools now do support "shrinking" in in-memory databases, althouth it is bit hacky.</li>
 <li>Google suggest API now prevents completion if ENTER in address textbox is hit.</li>

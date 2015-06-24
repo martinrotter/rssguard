@@ -93,7 +93,7 @@ void WebView::saveCurrentPageToFile() {
     QString filter;
     QString selected_filter;
     QString filename_for_prompt = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetExplicitDirectory)).toString() +
-                                  QDir::separator() + implicit_file_base_name + ".html";
+                                  QDir::separator() + implicit_file_base_name + QL1S(".html");
 
     // Add more filters here.
     filter += filter_html;
@@ -112,14 +112,14 @@ void WebView::saveCurrentPageToFile() {
       base_folder += QDir::separator();
     }
 
-    selected_file = base_folder + implicit_file_base_name + ".html";
+    selected_file = base_folder + implicit_file_base_name + QL1S(".html");
 
     if (QFile::exists(selected_file)) {
       int file_suffix = 0;
       QString subsequent_file_name;
 
       do {
-        subsequent_file_name = base_folder + QString(implicit_file_base_name + "-%1.html").arg(file_suffix++);
+        subsequent_file_name = base_folder + QString(implicit_file_base_name + QL1S("-%1.html")).arg(file_suffix++);
       } while (QFile::exists(subsequent_file_name));
 
       selected_file = subsequent_file_name;
@@ -158,24 +158,24 @@ void WebView::createConnections() {
 }
 
 void WebView::setupIcons() {
-  m_actionPrint->setIcon(qApp->icons()->fromTheme("print-web-page"));
-  m_actionReload->setIcon(qApp->icons()->fromTheme("go-refresh"));
-  m_actionCopySelectedItem->setIcon(qApp->icons()->fromTheme("edit-copy"));
-  m_actionCopyLink->setIcon(qApp->icons()->fromTheme("edit-copy"));
-  m_actionCopyImage->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
-  m_actionSaveHyperlinkAs->setIcon(qApp->icons()->fromTheme("document-download"));
-  m_actionSaveImageAs->setIcon(qApp->icons()->fromTheme("document-download"));
+  m_actionPrint->setIcon(qApp->icons()->fromTheme(QSL("print-web-page")));
+  m_actionReload->setIcon(qApp->icons()->fromTheme(QSL("go-refresh")));
+  m_actionCopySelectedItem->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
+  m_actionCopyLink->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
+  m_actionCopyImage->setIcon(qApp->icons()->fromTheme(QSL("edit-copy-image")));
+  m_actionSaveHyperlinkAs->setIcon(qApp->icons()->fromTheme(QSL("document-download")));
+  m_actionSaveImageAs->setIcon(qApp->icons()->fromTheme(QSL("document-download")));
 
 #if QT_VERSION >= 0x040800
-  m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme("edit-copy"));
+  m_actionCopyImageUrl->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
 #endif
 
-  m_actionOpenLinkThisTab->setIcon(qApp->icons()->fromTheme("item-open-internal"));
-  m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme("item-open-internal"));
-  m_actionOpenLinkExternally->setIcon(qApp->icons()->fromTheme("item-open-external"));
-  m_actionOpenImageNewTab->setIcon(qApp->icons()->fromTheme("edit-copy-image"));
+  m_actionOpenLinkThisTab->setIcon(qApp->icons()->fromTheme(QSL("item-open-internal")));
+  m_actionOpenLinkNewTab->setIcon(qApp->icons()->fromTheme(QSL("item-open-internal")));
+  m_actionOpenLinkExternally->setIcon(qApp->icons()->fromTheme(QSL("item-open-external")));
+  m_actionOpenImageNewTab->setIcon(qApp->icons()->fromTheme(QSL("edit-copy-image")));
 
-  m_actionLookupText->setIcon(qApp->icons()->fromTheme("item-search-google"));
+  m_actionLookupText->setIcon(qApp->icons()->fromTheme(QSL("item-search-google")));
 }
 
 void WebView::initializeActions() {
@@ -206,7 +206,7 @@ void WebView::initializeActions() {
   m_actionSaveImageAs = pageAction(QWebPage::DownloadImageToDisk);
   m_actionSaveImageAs->setParent(this);
 
-  m_actionSavePageAs = new QAction(qApp->icons()->fromTheme("document-download"), tr("Save page as..."), this);
+  m_actionSavePageAs = new QAction(qApp->icons()->fromTheme(QSL("document-download")), tr("Save page as..."), this);
 
 #if QT_VERSION >= 0x040800
   m_actionCopyImageUrl = pageAction(QWebPage::CopyImageUrlToClipboard);
@@ -279,8 +279,8 @@ void WebView::popupContextMenu(const QPoint &pos) {
   QMenu link_submenu(tr("Hyperlink"), this);
   QWebHitTestResult hit_result = page()->mainFrame()->hitTestContent(pos);
 
-  image_submenu.setIcon(qApp->icons()->fromTheme("image-generic"));
-  link_submenu.setIcon(qApp->icons()->fromTheme("text-html"));
+  image_submenu.setIcon(qApp->icons()->fromTheme(QSL("image-generic")));
+  link_submenu.setIcon(qApp->icons()->fromTheme(QSL("text-html")));
 
   // Assemble the menu from actions.
 

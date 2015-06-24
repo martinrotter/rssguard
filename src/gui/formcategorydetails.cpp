@@ -175,7 +175,7 @@ void FormCategoryDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the category"),
                      qApp->homeFolderPath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
   dialog.setFileMode(QFileDialog::ExistingFile);
-  dialog.setWindowIcon(qApp->icons()->fromTheme("image-generic"));
+  dialog.setWindowIcon(qApp->icons()->fromTheme(QSL("image-generic")));
   dialog.setOptions(QFileDialog::DontUseNativeDialog | QFileDialog::ReadOnly);
   dialog.setViewMode(QFileDialog::Detail);
   dialog.setLabelText(QFileDialog::Accept, tr("Select icon"));
@@ -191,7 +191,7 @@ void FormCategoryDetails::onLoadIconFromFile() {
 }
 
 void FormCategoryDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme("folder-category"));
+  m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
 }
 
 void FormCategoryDetails::initialize() {
@@ -207,7 +207,7 @@ void FormCategoryDetails::initialize() {
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme("folder-category"));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("folder-category")));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
@@ -218,13 +218,13 @@ void FormCategoryDetails::initialize() {
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme("image-generic"),
+  m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-generic")),
                                          tr("Load icon from file..."),
                                          this);
-  m_actionNoIcon = new QAction(qApp->icons()->fromTheme("dialog-cancel"),
+  m_actionNoIcon = new QAction(qApp->icons()->fromTheme(QSL("dialog-cancel")),
                                tr("Do not use icon"),
                                this);
-  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme("folder-category"),
+  m_actionUseDefaultIcon = new QAction(qApp->icons()->fromTheme(QSL("folder-category")),
                                        tr("Use default icon"),
                                        this);
   m_iconMenu->addAction(m_actionLoadIconFromFile);

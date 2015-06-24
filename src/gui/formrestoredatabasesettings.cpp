@@ -32,7 +32,7 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
   m_btnRestart = m_ui->m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ActionRole);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Warning, tr("No operation executed yet."), tr("No operation executed yet."));
 
-  setWindowIcon(qApp->icons()->fromTheme("document-import"));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
   connect(m_btnRestart, SIGNAL(clicked()), qApp, SLOT(restart()));

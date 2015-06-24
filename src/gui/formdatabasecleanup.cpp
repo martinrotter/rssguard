@@ -29,7 +29,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
-  setWindowIcon(qApp->icons()->fromTheme("cleanup-database"));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("cleanup-database")));
 
   connect(m_ui->m_spinDays, SIGNAL(valueChanged(int)), this, SLOT(updateDaysSuffix(int)));
   m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
@@ -122,10 +122,10 @@ void FormDatabaseCleanup::loadDatabaseInfo() {
   qint64 db_size = qApp->database()->getDatabaseSize();
 
   if (db_size > 0) {
-    m_ui->m_txtFileSize->setText(QString::number(db_size / 1000000.0) + " MB");
+    m_ui->m_txtFileSize->setText(QString::number(db_size / 1000000.0) + QL1S(" MB"));
   }
   else {
-    m_ui->m_txtFileSize->setText("-");
+    m_ui->m_txtFileSize->setText(QSL("-"));
   }
 
   m_ui->m_txtDatabaseType->setText(qApp->database()->humanDriverName(qApp->database()->activeDatabaseDriver()));

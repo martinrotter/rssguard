@@ -24,8 +24,7 @@
 #include <QWidgetAction>
 
 
-BaseToolBar::BaseToolBar(const QString &title, QWidget *parent)
-  : QToolBar(title, parent) {
+BaseToolBar::BaseToolBar(const QString &title, QWidget *parent) : QToolBar(title, parent) {
   // Update right margin of filter textbox.
   QMargins margins = contentsMargins();
   margins.setRight(margins.right() + FILTER_RIGHT_MARGIN);

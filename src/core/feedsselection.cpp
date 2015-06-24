@@ -20,6 +20,7 @@
 #include "core/feedsmodelrootitem.h"
 #include "core/feedsmodelcategory.h"
 #include "core/feedsmodelfeed.h"
+#include "definitions/definitions.h"
 
 
 FeedsSelection::FeedsSelection(FeedsModelRootItem *root_of_selection) : m_selectedItem(root_of_selection) {
@@ -66,7 +67,7 @@ QString FeedsSelection::generateListOfIds() {
       }
     }
 
-    return stringy_ids.join(", ");
+    return stringy_ids.join(QSL(", "));
   }
   else {
     return QString();

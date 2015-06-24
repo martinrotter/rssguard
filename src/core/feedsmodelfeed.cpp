@@ -478,14 +478,14 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   // Used to check if given feed contains any message with given title, url and date_created.
   // WARNING: One feed CANNOT contain two (or more) messages with same AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
-  query_select.prepare(QSL("SELECT id, feed, date_created FROM Messages "
-                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;"));
+  query_select.prepare("SELECT id, feed, date_created FROM Messages "
+                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;");
 
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
-  query_insert.prepare(QSL("INSERT INTO Messages "
+  query_insert.prepare("INSERT INTO Messages "
                        "(feed, title, url, author, date_created, contents, enclosures) "
-                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures);"));
+                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures);");
 
   if (remove_duplicates) {
     query_update.setForwardOnly(true);

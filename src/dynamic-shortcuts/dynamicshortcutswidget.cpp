@@ -86,7 +86,7 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
 
     // Add new catcher to our control.
     QLabel *action_label = new QLabel(this);
-    action_label->setText(action->text().remove('&'));
+    action_label->setText(action->text().remove(QSL("&")));
     action_label->setToolTip(action->toolTip());
     action_label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
 
@@ -107,5 +107,5 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
 }
 
 bool DynamicShortcutsWidget::lessThan(QAction *lhs, QAction *rhs) {
-  return QString::localeAwareCompare(lhs->text().replace("&", ""), rhs->text().replace("&", "")) < 0;
+  return QString::localeAwareCompare(lhs->text().replace(QL1S("&"), QString()), rhs->text().replace(QL1S("&"), QString())) < 0;
 }
