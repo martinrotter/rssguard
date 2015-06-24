@@ -27,7 +27,7 @@
 QPointer<WebBrowserNetworkAccessManager> WebBrowserNetworkAccessManager::s_instance;
 
 WebBrowserNetworkAccessManager::WebBrowserNetworkAccessManager(WebPage *page, QObject *parent)
-  : BaseNetworkAccessManager(parent), page_(page) {
+  : BaseNetworkAccessManager(parent), m_page(page) {
   connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
           this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)));
 }
@@ -44,9 +44,9 @@ void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *rep
 }
 
 QNetworkReply *WebBrowserNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice *outgoingData) {
-  if (page_) {
+  if (m_page != NULL) {
     QNetworkRequest pageRequest = request;
-    page_->populateNetworkRequest(pageRequest);
+    m_page->populateNetworkRequest(pageRequest);
     return WebBrowserNetworkAccessManager::instance()->createRequest(op, pageRequest, outgoingData);
   }
 

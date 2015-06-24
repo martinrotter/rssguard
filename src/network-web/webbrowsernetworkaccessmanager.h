@@ -42,7 +42,7 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     void onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator);
 
   private:
-      WebPage* page_;
+      WebPage *m_page;
 
     static QPointer<WebBrowserNetworkAccessManager> s_instance;
 
