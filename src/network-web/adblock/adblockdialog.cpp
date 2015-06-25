@@ -180,19 +180,20 @@ void AdBlockDialog::learnAboutRules() {
 }
 
 void AdBlockDialog::loadSubscriptions() {
+  setEnabled(false);
   for (int i = 0; i < m_ui->m_tabs->count(); ++i) {
     qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i))->refresh();
   }
+  setEnabled(true);
 }
 
-void AdBlockDialog::load()
-{
+void AdBlockDialog::load() {
   if (m_loaded || !m_ui->m_checkEnable->isChecked()) {
     return;
   }
 
-  foreach (AdBlockSubscription* subscription, m_manager->subscriptions()) {
-    AdBlockTreeWidget* tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
+  foreach (AdBlockSubscription *subscription, m_manager->subscriptions()) {
+    AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
     m_ui->m_tabs->addTab(tree, subscription->title());
   }
 
@@ -204,11 +205,10 @@ void AdBlockDialog::load()
   QTimer::singleShot(100, this, SLOT(loadSubscriptions()));
 }
 
-void AdBlockDialog::closeEvent(QCloseEvent* ev)
-{
+void AdBlockDialog::closeEvent(QCloseEvent *event) {
   if (m_ui->m_checkUseLimitedEasyList->isChecked() != m_useLimitedEasyList) {
     m_manager->setUseLimitedEasyList(m_ui->m_checkUseLimitedEasyList->isChecked());
   }
 
-  QWidget::closeEvent(ev);
+  QWidget::closeEvent(event);
 }

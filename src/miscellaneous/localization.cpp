@@ -69,9 +69,7 @@ QList<Language> Localization::installedLanguages() {
   QTranslator translator;
 
   // Iterate all found language files.
-  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard-*.qm",
-                                                         QDir::Files,
-                                                         QDir::Name)) {
+  foreach (const QFileInfo &file, file_dir.entryInfoList(QStringList() << "rssguard-*.qm", QDir::Files, QDir::Name)) {
     if (translator.load(file.absoluteFilePath())) {
       Language new_language;
       new_language.m_code = translator.translate("QObject", "LANG_ABBREV");

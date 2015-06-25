@@ -96,7 +96,6 @@ void FeedsView::updateAutoUpdateStatus() {
   if (!m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
     m_autoUpdateTimer->start();
-
     qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
   }
   else {

@@ -87,7 +87,9 @@ void WebView::saveCurrentPageToFile() {
   QString selected_file;
   QString implicit_file_base_name = tr("source_page");
 
-  if (qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool()) {
+  // NOTE: It is good to always ask for destination here, since download manager
+  // is not displaying afterwards because this is *not* real download actually.
+  //if (qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool()) {
     QString filter_html = tr("HTML web pages (*.html)");
 
     QString filter;
@@ -104,7 +106,7 @@ void WebView::saveCurrentPageToFile() {
       qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
                                  QDir::toNativeSeparators(QFileInfo(selected_file).absolutePath()));
     }
-  }
+  /*}
   else {
     QString base_folder = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString();
 
@@ -124,7 +126,7 @@ void WebView::saveCurrentPageToFile() {
 
       selected_file = subsequent_file_name;
     }
-  }
+  }*/
 
   if (!selected_file.isEmpty()) {
     QFile selected_file_handle(selected_file);

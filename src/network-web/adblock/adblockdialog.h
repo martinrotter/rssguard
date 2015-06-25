@@ -61,7 +61,7 @@ class AdBlockDialog : public QDialog {
     void load();
 
   protected:
-    void closeEvent(QCloseEvent* ev);
+    void closeEvent(QCloseEvent *event);
 
   private:
     void setupMenu();

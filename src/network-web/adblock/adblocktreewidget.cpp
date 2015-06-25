@@ -229,19 +229,19 @@ void AdBlockTreeWidget::refresh() {
   m_itemChangingBlock = true;
   clear();
 
-  QFont boldFont;
-  boldFont.setBold(true);
+  QFont bold_font;
+  bold_font.setBold(true);
 
   m_topItem = new QTreeWidgetItem(this);
   m_topItem->setText(0, m_subscription->title());
-  m_topItem->setFont(0, boldFont);
+  m_topItem->setFont(0, bold_font);
   m_topItem->setExpanded(true);
   addTopLevelItem(m_topItem);
 
-  const QVector<AdBlockRule*> &allRules = m_subscription->allRules();
+  const QVector<AdBlockRule*> &all_rules = m_subscription->allRules();
   int index = 0;
 
-  foreach (const AdBlockRule *rule, allRules) {
+  foreach (const AdBlockRule *rule, all_rules) {
     QTreeWidgetItem *item = new QTreeWidgetItem(m_topItem);
     item->setText(0, rule->filter());
     item->setData(0, Qt::UserRole + 10, index);
@@ -252,6 +252,10 @@ void AdBlockTreeWidget::refresh() {
 
     adjustItemFeatures(item, rule);
     index++;
+
+    if (index % 100 == 0) {
+      qApp->processEvents();
+    }
   }
 
   showRule(0);
