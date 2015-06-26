@@ -23,7 +23,7 @@
 #include "network-web/webview.h"
 #include "network-web/networkfactory.h"
 #include "miscellaneous/skinfactory.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"

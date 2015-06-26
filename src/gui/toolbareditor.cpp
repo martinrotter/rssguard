@@ -18,7 +18,7 @@
 #include "gui/toolbareditor.h"
 
 #include "gui/basetoolbar.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QKeyEvent>
 

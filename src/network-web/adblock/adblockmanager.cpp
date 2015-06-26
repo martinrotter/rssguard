@@ -28,7 +28,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "definitions/definitions.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QDateTime>
 #include <QTextStream>

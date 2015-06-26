@@ -21,7 +21,7 @@
 #include "miscellaneous/debugging.h"
 #include "miscellaneous/iconfactory.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"

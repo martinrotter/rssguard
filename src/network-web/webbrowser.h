@@ -23,7 +23,7 @@
 #include "core/messagesmodel.h"
 #include "network-web/webview.h"
 #include "gui/locationlineedit.h"
-#include "network-web/discoverfeedsbutton.h"
+#include "gui/discoverfeedsbutton.h"
 
 #include <QWidget>
 #include <QWidgetAction>

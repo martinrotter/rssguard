@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/formcategorydetails.h"
+#include "gui/dialogs/formcategorydetails.h"
 
 #include "definitions/definitions.h"
 #include "core/feedsmodelrootitem.h"
@@ -26,7 +26,7 @@
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QLineEdit>
 #include <QTextEdit>

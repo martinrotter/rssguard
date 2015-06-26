@@ -17,7 +17,7 @@
 
 #include "gui/statusbar.h"
 
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "gui/plaintoolbutton.h"
 #include "network-web/adblock/adblockicon.h"

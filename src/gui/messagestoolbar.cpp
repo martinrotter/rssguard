@@ -19,8 +19,8 @@
 
 #include "definitions/definitions.h"
 #include "gui/baselineedit.h"
-#include "gui/formmain.h"
 #include "gui/messagessearchlineedit.h"
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 

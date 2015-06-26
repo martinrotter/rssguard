@@ -22,7 +22,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 

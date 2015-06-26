@@ -27,12 +27,12 @@
 #include "core/feedsmodelfeed.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/mutex.h"
-#include "gui/formmain.h"
-#include "gui/formcategorydetails.h"
-#include "gui/formfeeddetails.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/dialogs/formcategorydetails.h"
+#include "gui/dialogs/formfeeddetails.h"
 
 #include <QMenu>
 #include <QHeaderView>

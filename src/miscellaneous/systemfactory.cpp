@@ -18,7 +18,7 @@
 #include "miscellaneous/systemfactory.h"
 
 #include "network-web/networkfactory.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/systemfactory.h"
 

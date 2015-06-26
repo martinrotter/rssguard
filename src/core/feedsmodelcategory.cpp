@@ -22,7 +22,7 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
-#include "gui/formcategorydetails.h"
+#include "gui/dialogs/formcategorydetails.h"
 
 #include <QVariant>
 #include <QSqlQuery>

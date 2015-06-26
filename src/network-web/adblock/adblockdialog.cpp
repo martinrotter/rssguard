@@ -25,7 +25,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "gui/tabwidget.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QDesktopWidget>
 #include <QMenu>

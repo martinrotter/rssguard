@@ -20,7 +20,7 @@
 #include "miscellaneous/autosaver.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/tabwidget.h"
 #include "gui/messagebox.h"
 #include "network-web/silentnetworkaccessmanager.h"

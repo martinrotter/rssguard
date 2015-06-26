@@ -18,7 +18,7 @@
 #include "gui/basetoolbar.h"
 
 #include "definitions/definitions.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/settings.h"
 
 #include <QWidgetAction>

@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/formdatabasecleanup.h"
+#include "gui/dialogs/formdatabasecleanup.h"
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

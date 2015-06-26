@@ -24,9 +24,9 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webbrowser.h"
 #include "gui/tabbar.h"
-#include "gui/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/plaintoolbutton.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QMenu>
 #include <QToolButton>

@@ -15,14 +15,14 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/formimportexport.h"
+#include "gui/dialogs/formimportexport.h"
 
 #include "core/feedsimportexportmodel.h"
 #include "core/feedsmodel.h"
 #include "miscellaneous/application.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/formmain.h"
 #include "gui/feedsview.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QFileDialog>
 #include <QTextStream>

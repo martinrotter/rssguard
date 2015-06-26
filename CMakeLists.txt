@@ -331,10 +331,17 @@ set(APP_SOURCES
   src/qtsingleapplication/qtsingleapplication.cpp
 
   # GUI sources.
-  src/gui/formmain.cpp
+  src/gui/dialogs/formmain.cpp
+  src/gui/dialogs/formsettings.cpp
+  src/gui/dialogs/formabout.cpp
+  src/gui/dialogs/formcategorydetails.cpp
+  src/gui/dialogs/formfeeddetails.cpp
+  src/gui/dialogs/formupdate.cpp
+  src/gui/dialogs/formimportexport.cpp
+  src/gui/dialogs/formdatabasecleanup.cpp
+  src/gui/dialogs/formbackupdatabasesettings.cpp
+  src/gui/dialogs/formrestoredatabasesettings.cpp
   src/gui/systemtrayicon.cpp
-  src/gui/formsettings.cpp
-  src/gui/formabout.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
   src/gui/tabwidget.cpp
@@ -344,27 +351,21 @@ set(APP_SOURCES
   src/gui/feedsview.cpp
   src/gui/messagesview.cpp
   src/gui/statusbar.cpp
-  src/gui/formcategorydetails.cpp
-  src/gui/formfeeddetails.cpp
   src/gui/plaintoolbutton.cpp
   src/gui/lineeditwithstatus.cpp
   src/gui/widgetwithstatus.cpp
   src/gui/labelwithstatus.cpp
   src/gui/messagebox.cpp
-  src/gui/formupdate.cpp
   src/gui/comboboxwithstatus.cpp
   src/gui/basetoolbar.cpp
   src/gui/messagestoolbar.cpp
   src/gui/feedstoolbar.cpp
   src/gui/toolbareditor.cpp
   src/gui/messagessearchlineedit.cpp
-  src/gui/formimportexport.cpp
   src/gui/styleditemdelegatewithoutfocus.cpp
-  src/gui/formbackupdatabasesettings.cpp
-  src/gui/formrestoredatabasesettings.cpp
   src/gui/edittableview.cpp
   src/gui/squeezelabel.cpp
-  src/gui/formdatabasecleanup.cpp
+  src/gui/discoverfeedsbutton.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -416,7 +417,6 @@ set(APP_SOURCES
   src/network-web/webview.cpp
   src/network-web/downloader.cpp
   src/network-web/downloadmanager.cpp
-  src/network-web/discoverfeedsbutton.cpp
   src/network-web/googlesuggest.cpp
 
   src/network-web/adblock/adblockaddsubscriptiondialog.cpp
@@ -444,10 +444,17 @@ set(APP_HEADERS
   src/qtsingleapplication/qtsingleapplication.h
 
   # GUI headers.
-  src/gui/formmain.h
+  src/gui/dialogs/formmain.h
+  src/gui/dialogs/formsettings.h
+  src/gui/dialogs/formabout.h
+  src/gui/dialogs/formcategorydetails.h
+  src/gui/dialogs/formfeeddetails.h
+  src/gui/dialogs/formimportexport.h
+  src/gui/dialogs/formbackupdatabasesettings.h
+  src/gui/dialogs/formrestoredatabasesettings.h
+  src/gui/dialogs/formdatabasecleanup.h
+  src/gui/dialogs/formupdate.h
   src/gui/systemtrayicon.h
-  src/gui/formsettings.h
-  src/gui/formabout.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
   src/gui/tabwidget.h
@@ -457,26 +464,20 @@ set(APP_HEADERS
   src/gui/feedsview.h
   src/gui/messagesview.h
   src/gui/statusbar.h
-  src/gui/formcategorydetails.h
-  src/gui/formfeeddetails.h
   src/gui/plaintoolbutton.h
   src/gui/lineeditwithstatus.h
   src/gui/widgetwithstatus.h
   src/gui/labelwithstatus.h
   src/gui/messagebox.h
-  src/gui/formupdate.h
   src/gui/comboboxwithstatus.h
   src/gui/basetoolbar.h
   src/gui/messagestoolbar.h
   src/gui/feedstoolbar.h
   src/gui/toolbareditor.h
   src/gui/messagessearchlineedit.h
-  src/gui/formimportexport.h
-  src/gui/formbackupdatabasesettings.h
-  src/gui/formrestoredatabasesettings.h
   src/gui/edittableview.h
   src/gui/squeezelabel.h
-  src/gui/formdatabasecleanup.h
+  src/gui/discoverfeedsbutton.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
@@ -513,7 +514,6 @@ set(APP_HEADERS
   src/network-web/webview.h
   src/network-web/downloader.h
   src/network-web/downloadmanager.h
-  src/network-web/discoverfeedsbutton.h
   src/network-web/googlesuggest.h
 
   src/network-web/adblock/adblockaddsubscriptiondialog.h
@@ -528,17 +528,17 @@ set(APP_HEADERS
 
 # APP form files.
 set(APP_FORMS
-  src/gui/formupdate.ui
-  src/gui/formmain.ui
-  src/gui/formsettings.ui
-  src/gui/formabout.ui
-  src/gui/formcategorydetails.ui
-  src/gui/formfeeddetails.ui
+  src/gui/dialogs/formupdate.ui
+  src/gui/dialogs/formmain.ui
+  src/gui/dialogs/formsettings.ui
+  src/gui/dialogs/formabout.ui
+  src/gui/dialogs/formcategorydetails.ui
+  src/gui/dialogs/formfeeddetails.ui
   src/gui/toolbareditor.ui
-  src/gui/formimportexport.ui
-  src/gui/formbackupdatabasesettings.ui
-  src/gui/formrestoredatabasesettings.ui
-  src/gui/formdatabasecleanup.ui
+  src/gui/dialogs/formimportexport.ui
+  src/gui/dialogs/formbackupdatabasesettings.ui
+  src/gui/dialogs/formrestoredatabasesettings.ui
+  src/gui/dialogs/formdatabasecleanup.ui
   src/network-web/downloadmanager.ui
   src/network-web/downloaditem.ui
 
@@ -699,6 +699,7 @@ endif(USE_QT_5)
 include_directories (
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/src/gui
+  ${CMAKE_SOURCE_DIR}/src/gui/dialogs
   ${CMAKE_SOURCE_DIR}/src/network-web
   ${CMAKE_SOURCE_DIR}/src/network-web/adblock
   ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts

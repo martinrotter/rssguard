@@ -15,10 +15,10 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/formrestoredatabasesettings.h"
+#include "gui/dialogs/formrestoredatabasesettings.h"
 
 #include "gui/messagebox.h"
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/iconfactory.h"
 #include "exceptions/applicationexception.h"
 

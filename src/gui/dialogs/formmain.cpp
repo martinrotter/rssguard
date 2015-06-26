@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/formmain.h"
+#include "gui/dialogs/formmain.h"
 
 #include "definitions/definitions.h"
 #include "miscellaneous/settings.h"
@@ -26,19 +26,19 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/webbrowser.h"
-#include "gui/formabout.h"
-#include "gui/formsettings.h"
 #include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "gui/statusbar.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/formupdate.h"
 #include "gui/plaintoolbutton.h"
-#include "gui/formimportexport.h"
-#include "gui/formbackupdatabasesettings.h"
-#include "gui/formrestoredatabasesettings.h"
+#include "gui/dialogs/formabout.h"
+#include "gui/dialogs/formsettings.h"
+#include "gui/dialogs/formupdate.h"
+#include "gui/dialogs/formimportexport.h"
+#include "gui/dialogs/formbackupdatabasesettings.h"
+#include "gui/dialogs/formrestoredatabasesettings.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>

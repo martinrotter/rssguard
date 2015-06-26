@@ -25,8 +25,8 @@
 #include "network-web/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "gui/plaintoolbutton.h"
-#include "gui/formmain.h"
 #include "gui/tabwidget.h"
+#include "gui/dialogs/formmain.h"
 
 #include <QMenu>
 #include <QMouseEvent>

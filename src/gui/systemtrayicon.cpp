@@ -20,8 +20,8 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
-#include "gui/formmain.h"
-#include "gui/formsettings.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/dialogs/formsettings.h"
 
 #include <QPainter>
 #include <QTimer>

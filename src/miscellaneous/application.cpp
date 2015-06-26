@@ -23,8 +23,8 @@
 #include "gui/feedsview.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/messagebox.h"
-#include "gui/formmain.h"
 #include "gui/statusbar.h"
+#include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
 
 #include <QSessionManager>

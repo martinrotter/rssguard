@@ -29,16 +29,16 @@
 #include "core/feedsselection.h"
 #include "core/feedsimportexportmodel.h"
 #include "network-web/webbrowser.h"
-#include "gui/formmain.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
 #include "gui/statusbar.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
-#include "gui/formdatabasecleanup.h"
 #include "gui/messagestoolbar.h"
 #include "gui/feedstoolbar.h"
-#include <exceptions/applicationexception.h>
+#include "gui/dialogs/formdatabasecleanup.h"
+#include "gui/dialogs/formmain.h"
+#include "exceptions/applicationexception.h"
 
 #include <QVBoxLayout>
 #include <QSplitter>
