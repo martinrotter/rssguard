@@ -341,7 +341,6 @@ set(APP_SOURCES
   src/gui/dialogs/formdatabasecleanup.cpp
   src/gui/dialogs/formbackupdatabasesettings.cpp
   src/gui/dialogs/formrestoredatabasesettings.cpp
-  src/gui/notifications/notification.cpp
   src/gui/systemtrayicon.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
@@ -455,7 +454,6 @@ set(APP_HEADERS
   src/gui/dialogs/formrestoredatabasesettings.h
   src/gui/dialogs/formdatabasecleanup.h
   src/gui/dialogs/formupdate.h
-  src/gui/notifications/notification.h
   src/gui/systemtrayicon.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
