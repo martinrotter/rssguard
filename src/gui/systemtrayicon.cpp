@@ -35,8 +35,7 @@ TrayIconMenu::~TrayIconMenu() {
 }
 
 bool TrayIconMenu::event(QEvent *event) {
-  if (Application::activeModalWidget() != NULL &&
-      event->type() == QEvent::Show) {
+  if (Application::activeModalWidget() != NULL && event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
     qApp->trayIcon()->showMessage(QSL(APP_LONG_NAME),
                                   tr("Close opened modal dialogs first."),
@@ -46,9 +45,7 @@ bool TrayIconMenu::event(QEvent *event) {
 }
 #endif
 
-SystemTrayIcon::SystemTrayIcon(const QString &normal_icon,
-                               const QString &plain_icon,
-                               FormMain *parent)
+SystemTrayIcon::SystemTrayIcon(const QString &normal_icon, const QString &plain_icon, FormMain *parent)
   : QSystemTrayIcon(parent),
     m_normalIcon(normal_icon),
     m_plainPixmap(plain_icon),
@@ -116,7 +113,7 @@ void SystemTrayIcon::show() {
 #endif
 }
 
-void SystemTrayIcon::setNumber(int number, bool any_unread_message) {
+void SystemTrayIcon::setNumber(int number, bool any_new_message) {
   if (number <= 0) {
     setToolTip(QSL(APP_LONG_NAME));
     QSystemTrayIcon::setIcon(QIcon(m_normalIcon));
@@ -129,7 +126,7 @@ void SystemTrayIcon::setNumber(int number, bool any_unread_message) {
 
     // TODO: Here draw different background instead of different color of number.
     tray_painter.begin(&background);
-    tray_painter.setPen(any_unread_message ? Qt::blue : Qt::black);
+    tray_painter.setPen(any_new_message ? Qt::blue : Qt::black);
     tray_painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
     tray_painter.setRenderHint(QPainter::TextAntialiasing, true);
 
@@ -137,7 +134,6 @@ void SystemTrayIcon::setNumber(int number, bool any_unread_message) {
     // infinity symbol in that case.
     if (number > 999) {
       m_font.setPixelSize(100);
-
       tray_painter.setFont(m_font);
       tray_painter.drawText(QRect(0, 0, 128, 128), Qt::AlignVCenter | Qt::AlignCenter, QChar(8734));
     }
