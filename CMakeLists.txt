@@ -341,6 +341,7 @@ set(APP_SOURCES
   src/gui/dialogs/formdatabasecleanup.cpp
   src/gui/dialogs/formbackupdatabasesettings.cpp
   src/gui/dialogs/formrestoredatabasesettings.cpp
+  src/gui/notifications/notification.cpp
   src/gui/systemtrayicon.cpp
   src/gui/baselineedit.cpp
   src/gui/locationlineedit.cpp
@@ -454,6 +455,7 @@ set(APP_HEADERS
   src/gui/dialogs/formrestoredatabasesettings.h
   src/gui/dialogs/formdatabasecleanup.h
   src/gui/dialogs/formupdate.h
+  src/gui/notifications/notification.h
   src/gui/systemtrayicon.h
   src/gui/baselineedit.h
   src/gui/locationlineedit.h
@@ -700,6 +702,7 @@ include_directories (
   ${CMAKE_SOURCE_DIR}/src
   ${CMAKE_SOURCE_DIR}/src/gui
   ${CMAKE_SOURCE_DIR}/src/gui/dialogs
+  ${CMAKE_SOURCE_DIR}/src/gui/notifications
   ${CMAKE_SOURCE_DIR}/src/network-web
   ${CMAKE_SOURCE_DIR}/src/network-web/adblock
   ${CMAKE_SOURCE_DIR}/src/dynamic-shortcuts

@@ -39,6 +39,7 @@
 #include "gui/dialogs/formimportexport.h"
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
+#include "gui/notifications/notification.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -78,6 +79,8 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
   // Initialize the web factory.
   WebFactory::instance()->loadState();
+
+  (new Notification())->notify("abcd abcd abcd abcd abcd abcd \naaa\n\n\nabcd abcd abcd abcd abcd", "def def def def def");
 }
 
 FormMain::~FormMain() {
