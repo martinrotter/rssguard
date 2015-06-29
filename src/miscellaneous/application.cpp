@@ -26,19 +26,19 @@
 #include "gui/statusbar.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
+#include "adblock/adblockmanager.h"
 
 #include <QSessionManager>
 #include <QThread>
 #include <QProcess>
-
-#include <adblock/adblockmanager.h>
 
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
     m_updateFeedsLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
-    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false) {
+    m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false),
+    m_notification(NULL) {
   connect(this, SIGNAL(aboutToQuit()), this, SLOT(onAboutToQuit()));
   connect(this, SIGNAL(commitDataRequest(QSessionManager&)), this, SLOT(onCommitData(QSessionManager&)));
   connect(this, SIGNAL(saveStateRequest(QSessionManager&)), this, SLOT(onSaveState(QSessionManager&)));
@@ -84,7 +84,7 @@ Mutex *Application::feedUpdateLock() {
 }
 
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
-                                         const QString &target_path, const QString &backup_name) { 
+                                         const QString &target_path, const QString &backup_name) {
   if (!QFileInfo(target_path).isWritable()) {
     throw ApplicationException(tr("Output directory is not writable."));
   }
@@ -168,15 +168,18 @@ void Application::deleteTrayIcon() {
   }
 }
 
-void Application::showGuiMessage(const QString& title, const QString& message,
+void Application::showGuiMessage(const QString &title, const QString &message,
                                  QSystemTrayIcon::MessageIcon message_type,
                                  QWidget *parent, int duration) {
-  if (SystemTrayIcon::isSystemTrayActivated()) {
-    // TODO: Maybe show OSD instead if tray icon bubble, depending on settings.
+  /*if (true) {
+    // Show OSD instead if tray icon bubble, depending on settings.
+    notification()->notify(message, title, message_type);
+  }
+  else */if (SystemTrayIcon::isSystemTrayActivated()) {
     trayIcon()->showMessage(title, message, message_type, duration);
   }
   else {
-    // TODO: Tray icon or OSD is not available, display simple text box.
+    // Tray icon or OSD is not available, display simple text box.
     MessageBox::show(parent, (QMessageBox::Icon) message_type, title, message);
   }
 }
@@ -223,6 +226,11 @@ void Application::onAboutToQuit() {
     // Request for write lock timed-out. This means
     // that some critical action can be processed right now.
     qDebug("Close lock timed-out.");
+  }
+
+  if (m_notification != NULL) {
+    m_notification->deleteLater();
+    m_notification = NULL;
   }
 
   // Now, we can check if application should just quit or restart itself.

@@ -40,18 +40,22 @@ Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString())
 Notification::~Notification() {
 }
 
-void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon) {
+void Notification::notify(const QString &text, const QString &title, const QIcon &icon) {
   hide();
 
   // Set new values.
   m_text = text;
   m_title = title;
-  m_icon = MessageBox::iconForStatus((QMessageBox::Icon) icon).pixmap(64, 64);
+  m_icon = icon.pixmap(NOTIFICATION_ICON_SIZE, NOTIFICATION_ICON_SIZE);
 
   // Show it.
   updateGeometries();
   repaint();
   show();
+}
+
+void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon) {
+  notify(text, title, MessageBox::iconForStatus((QMessageBox::Icon) icon));
 }
 
 void Notification::updateGeometries() {
@@ -69,7 +73,6 @@ void Notification::updateGeometries() {
   int x, y;
   QRect screen_geometry = QApplication::desktop()->availableGeometry(m_screen);
 
-  // TODO: dodělat pozice x, y
   switch (m_position) {
     case Qt::BottomLeftCorner:
       x = m_widgetMargin;
@@ -96,24 +99,11 @@ void Notification::updateGeometries() {
   setGeometry(x, y, m_width, m_height);
 }
 
-
-void Notification::focusInEvent(QFocusEvent *event) {
-  QWidget::focusInEvent(event);
-  repaint();
-}
-
-void Notification::focusOutEvent(QFocusEvent *event) {
-  QWidget::focusOutEvent(event);
-  repaint();
-}
-
 void Notification::paintEvent(QPaintEvent *event) {
   Q_UNUSED(event)
 
   QPainter painter(this);
   painter.setFont(font());
-
-  QFontMetrics font_metrics = painter.fontMetrics();
 
   if (!underMouse()) {
     painter.setOpacity(0.7);
@@ -133,7 +123,7 @@ void Notification::paintEvent(QPaintEvent *event) {
   painter.drawPixmap(m_padding, m_padding, m_icon);
 
   // Draw text.
-  painter.setPen( Qt::black );
+  painter.setPen(Qt::black);
 
   // Needed heighs/widths.
   int title_height = stringHeight(m_title);

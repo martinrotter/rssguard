@@ -32,11 +32,10 @@ class Notification : public QWidget {
     virtual ~Notification();
 
   public slots:
+    void notify(const QString &text, const QString &title, const QIcon &icon);
     void notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information);
 
   protected:
-    void focusInEvent(QFocusEvent *event);
-    void focusOutEvent(QFocusEvent *event);
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void enterEvent(QEvent *event);
