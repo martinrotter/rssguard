@@ -504,7 +504,7 @@ void FeedMessageViewer::showDbCleanupAssistant() {
   else {
     qApp->showGuiMessage(tr("Cannot cleanup database"),
                          tr("Cannot cleanup database, because another critical action is running."),
-                         QSystemTrayIcon::Warning, this);
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
   }
 }
 
@@ -520,7 +520,7 @@ void FeedMessageViewer::updateFeeds(QList<FeedsModelFeed *> feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
                          tr("You cannot update all items because another another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
     return;
   }
 

@@ -246,7 +246,7 @@ void FormFeedDetails::apply() {
     else {
       qApp->showGuiMessage(tr("Cannot add feed"),
                            tr("Feed was not added due to error."),
-                           QSystemTrayIcon::Critical);
+                           QSystemTrayIcon::Critical, this, true);
     }
   }
   else {
@@ -257,7 +257,7 @@ void FormFeedDetails::apply() {
     else {
       qApp->showGuiMessage(tr("Cannot edit feed"),
                            tr("Feed was not edited due to error."),
-                           QSystemTrayIcon::Critical);
+                           QSystemTrayIcon::Critical, this, true);
     }
   }
 }

@@ -41,6 +41,7 @@ Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString())
 }
 
 Notification::~Notification() {
+  qDebug("Destroying Notification instance.");
 }
 
 bool Notification::areNotificationsActivated() {

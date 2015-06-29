@@ -244,7 +244,7 @@ void FeedsView::addNewCategory() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add standard category"),
                          tr("You cannot add new standard category now because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
     return;
   }
 
@@ -273,7 +273,7 @@ void FeedsView::addNewFeed() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot add standard feed"),
                          tr("You cannot add new standard feed now because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
     return;
   }
 
@@ -338,7 +338,7 @@ void FeedsView::editSelectedItem() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot edit item"),
                          tr("Selected item cannot be edited because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
 
     // Thus, cannot delete and quit the method.
     return;
@@ -365,7 +365,7 @@ void FeedsView::deleteSelectedItem() {
     // is quitting.
     qApp->showGuiMessage(tr("Cannot delete item"),
                          tr("Selected item cannot be deleted because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
 
     // Thus, cannot delete and quit the method.
     return;
@@ -396,7 +396,7 @@ void FeedsView::deleteSelectedItem() {
     // or update is undergoing.
     qApp->showGuiMessage(tr("Deletion of item failed."),
                          tr("Selected item was not deleted due to error."),
-                         QSystemTrayIcon::Warning, qApp->mainForm());
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
   }
 
   // Changes are done, unlock the update master lock.

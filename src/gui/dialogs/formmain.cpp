@@ -79,8 +79,6 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
   // Initialize the web factory.
   WebFactory::instance()->loadState();
-
-  (new Notification())->notify("abcd abcd abcd abcd abcd abcd \naaa\n\n\nabcd abcd abcd abcd abcd", "def def def def def", qApp->icons()->fromTheme("item-update-all"));
 }
 
 FormMain::~FormMain() {
@@ -466,7 +464,7 @@ void FormMain::showWiki() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_WIKI)) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning);
+                         QSystemTrayIcon::Warning, this, true);
   }
 }
 
@@ -474,7 +472,7 @@ void FormMain::reportABugOnGitHub() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_GITHUB)) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning);
+                         QSystemTrayIcon::Warning, this, true);
   }
 }
 
@@ -482,7 +480,7 @@ void FormMain::reportABugOnBitBucket() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_URL_ISSUES_NEW_BITBUCKET)) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning);
+                         QSystemTrayIcon::Warning, this, true);
   }
 }
 
@@ -490,7 +488,7 @@ void FormMain::donate() {
   if (!WebFactory::instance()->openUrlInExternalBrowser(APP_DONATE_URL)) {
     qApp->showGuiMessage(tr("Cannot open external browser"),
                          tr("Cannot open external browser. Navigate to application website manually."),
-                         QSystemTrayIcon::Warning);
+                         QSystemTrayIcon::Warning, this, true);
   }
 }
 

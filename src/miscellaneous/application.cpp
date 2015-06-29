@@ -169,18 +169,26 @@ void Application::deleteTrayIcon() {
 }
 
 void Application::showGuiMessage(const QString &title, const QString &message,
-                                 QSystemTrayIcon::MessageIcon message_type,
-                                 QWidget *parent, int duration) {
-  /*if (true) {
+                                 QSystemTrayIcon::MessageIcon message_type, QWidget *parent,
+                                 bool show_at_least_msgbox, const QIcon &custom_icon) {
+  if (Notification::areNotificationsActivated()) {
     // Show OSD instead if tray icon bubble, depending on settings.
-    notification()->notify(message, title, message_type);
+    if (custom_icon.isNull()) {
+      notification()->notify(message, title, message_type);
+    }
+    else {
+      notification()->notify(message, title, custom_icon);
+    }
   }
-  else */if (SystemTrayIcon::isSystemTrayActivated()) {
-    trayIcon()->showMessage(title, message, message_type, duration);
+  else if (SystemTrayIcon::isSystemTrayActivated()) {
+    trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT);
   }
-  else {
+  else if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
     MessageBox::show(parent, (QMessageBox::Icon) message_type, title, message);
+  }
+  else {
+    qDebug("Silencing GUI message: '%s'.", qPrintable(message));
   }
 }
 

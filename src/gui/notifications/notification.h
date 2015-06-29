@@ -31,7 +31,7 @@ class Notification : public QWidget {
     explicit Notification();
     virtual ~Notification();
 
-    inline static bool areNotificationsActivated();
+    static bool areNotificationsActivated();
 
   public slots:
     void notify(const QString &text, const QString &title, const QIcon &icon);

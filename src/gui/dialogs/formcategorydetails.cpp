@@ -131,7 +131,7 @@ void FormCategoryDetails::apply() {
       qApp->showGuiMessage(tr("Cannot add category"),
                            tr("Category was not added due to error."),
                            QSystemTrayIcon::Critical,
-                           qApp->mainForm());
+                           qApp->mainForm(), true);
     }
   }
   else {
@@ -142,7 +142,7 @@ void FormCategoryDetails::apply() {
       qApp->showGuiMessage(tr("Cannot edit category"),
                            tr("Category was not edited due to error."),
                            QSystemTrayIcon::Critical,
-                           qApp->mainForm());
+                           qApp->mainForm(), true);
     }
   }
 }
