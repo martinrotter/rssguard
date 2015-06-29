@@ -283,6 +283,9 @@ void FormMain::setupIcons() {
 
   // Setup icons on TabWidget too.
   m_ui->m_tabWidget->setupIcons();
+
+  // Most of icons are loaded, clear the cache.
+  qApp->icons()->clearCache();
 }
 
 void FormMain::loadSize() {

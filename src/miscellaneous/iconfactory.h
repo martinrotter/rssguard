@@ -44,6 +44,8 @@ class IconFactory : public QObject {
     QIcon fromByteArray(QByteArray array);
     QByteArray toByteArray(const QIcon &icon);
 
+    void clearCache();
+
     // Returns icon from active theme or invalid icon if
     // "no icon theme" is set.
     inline QIcon fromTheme(const QString &name) {

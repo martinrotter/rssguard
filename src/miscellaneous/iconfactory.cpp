@@ -57,6 +57,10 @@ QByteArray IconFactory::toByteArray(const QIcon &icon) {
   return array.toBase64();
 }
 
+void IconFactory::clearCache() {
+  m_cachedIcons.clear();
+}
+
 void IconFactory::setupSearchPaths() {
   QIcon::setThemeSearchPaths(QStringList() << APP_THEME_PATH);
   qDebug("Available icon theme paths: %s.",
