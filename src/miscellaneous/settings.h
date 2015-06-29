@@ -117,6 +117,12 @@ namespace GUI {
   KEY UseTrayIcon;
   VALUE(bool) UseTrayIconDef;
 
+  KEY UseFancyNotifications;
+  VALUE(bool) UseFancyNotificationsDef;
+
+  KEY FancyNotificationsPosition;
+  VALUE(Qt::Corner) FancyNotificationsPositionDef;
+
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;
 

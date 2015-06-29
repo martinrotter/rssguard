@@ -31,6 +31,8 @@ class Notification : public QWidget {
     explicit Notification();
     virtual ~Notification();
 
+    inline static bool areNotificationsActivated();
+
   public slots:
     void notify(const QString &text, const QString &title, const QIcon &icon);
     void notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information);
@@ -42,9 +44,6 @@ class Notification : public QWidget {
     void leaveEvent(QEvent *event);
 
   private:
-    int stringHeight(const QString &string);
-    int stringWidth(const QString &string);
-
     void loadSettings();
     void setupWidget();
     void updateGeometries();

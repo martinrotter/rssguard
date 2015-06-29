@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>990</width>
+    <width>1032</width>
     <height>498</height>
    </rect>
   </property>
@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -419,8 +419,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>740</width>
-            <height>451</height>
+            <width>100</width>
+            <height>30</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -465,7 +465,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -497,8 +497,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>734</width>
-                <height>425</height>
+                <width>208</width>
+                <height>238</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -608,45 +608,53 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            <string>Tray area &amp;&amp; notifications</string>
           </attribute>
           <layout class="QFormLayout" name="formLayout_3">
-           <item row="0" column="0" colspan="2">
+           <item row="1" column="0" colspan="2">
             <widget class="QGroupBox" name="m_grpTray">
              <property name="title">
               <string>Tray icon</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
              </property>
              <layout class="QFormLayout" name="formLayout_2">
               <property name="fieldGrowthPolicy">
                <enum>QFormLayout::ExpandingFieldsGrow</enum>
               </property>
-              <item row="0" column="0" colspan="2">
-               <widget class="QRadioButton" name="m_radioTrayOff">
-                <property name="text">
-                 <string>Disable</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
+              <item row="0" column="0">
                <widget class="QCheckBox" name="m_checkHideWhenMinimized">
                 <property name="text">
                  <string>Hide main window when it is minimized</string>
                 </property>
                </widget>
               </item>
-              <item row="3" column="0" colspan="2">
+              <item row="1" column="0" colspan="2">
                <widget class="QCheckBox" name="m_checkHidden">
                 <property name="text">
                  <string>Start application hidden</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0" colspan="2">
-               <widget class="QRadioButton" name="m_radioTrayOn">
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="m_grpNotifications">
+             <property name="title">
+              <string>Fancy &amp;&amp; modern popup notifications</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <layout class="QFormLayout" name="formLayout_23">
+              <item row="0" column="0">
+               <widget class="QLabel" name="m_lblNotificationPosition">
                 <property name="text">
-                 <string>Enable</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
+                 <string>Notification position</string>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="m_cmbNotificationPosition"/>
               </item>
              </layout>
             </widget>
@@ -1564,10 +1572,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
   <tabstop>m_scrollIconSkins</tabstop>
   <tabstop>m_cmbIconTheme</tabstop>
   <tabstop>m_treeSkins</tabstop>
-  <tabstop>m_radioTrayOff</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
   <tabstop>m_checkHidden</tabstop>
-  <tabstop>m_radioTrayOn</tabstop>
   <tabstop>m_checkNewTabDoubleClick</tabstop>
   <tabstop>m_hideTabBarIfOneTabVisible</tabstop>
   <tabstop>m_checkCloseTabsDoubleClick</tabstop>
@@ -1643,22 +1649,6 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
    </hints>
   </connection>
   <connection>
-   <sender>m_radioTrayOn</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_checkHidden</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>508</x>
-     <y>102</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>508</x>
-     <y>151</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>m_checkAutoUpdate</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_spinAutoUpdateInterval</receiver>
@@ -1671,22 +1661,6 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <hint type="destinationlabel">
      <x>597</x>
      <y>49</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_radioTrayOn</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_checkHideWhenMinimized</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>515</x>
-     <y>94</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>357</x>
-     <y>117</y>
     </hint>
    </hints>
   </connection>
@@ -1719,6 +1693,38 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <hint type="destinationlabel">
      <x>522</x>
      <y>49</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_grpNotifications</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_lblNotificationPosition</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>625</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_grpNotifications</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_cmbNotificationPosition</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>625</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>696</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>

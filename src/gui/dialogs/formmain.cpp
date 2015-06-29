@@ -80,7 +80,7 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   // Initialize the web factory.
   WebFactory::instance()->loadState();
 
-  (new Notification())->notify("abcd abcd abcd abcd abcd abcd \naaa\n\n\nabcd abcd abcd abcd abcd", "def def def def def");
+  (new Notification())->notify("abcd abcd abcd abcd abcd abcd \naaa\n\n\nabcd abcd abcd abcd abcd", "def def def def def", qApp->icons()->fromTheme("item-update-all"));
 }
 
 FormMain::~FormMain() {

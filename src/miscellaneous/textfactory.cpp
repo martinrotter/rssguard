@@ -27,6 +27,26 @@
 TextFactory::TextFactory() {
 }
 
+int TextFactory::stringHeight(const QString &string, const QFontMetrics &metrics) {
+  int count_lines = string.split(QL1C('\n')).size();
+  return metrics.height() * count_lines;
+}
+
+int TextFactory::stringWidth(const QString &string, const QFontMetrics &metrics) {
+  QStringList lines = string.split(QL1C('\n'));
+  int width = 0;
+
+  foreach (const QString &line, lines) {
+    int line_width = metrics.width(line);
+
+    if (line_width > width) {
+      width = line_width;
+    }
+  }
+
+  return width;
+}
+
 QDateTime TextFactory::parseDateTime(const QString &date_time) {
   QString input_date = date_time.simplified();
   QDateTime dt;

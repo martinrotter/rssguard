@@ -706,17 +706,24 @@ void FormSettings::loadInterface() {
 
   // Load settings of tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    m_ui->m_radioTrayOff->setChecked(!settings->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
+    m_ui->m_grpTray->setChecked(settings->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
   }
   // Tray icon is not supported on this machine.
   else {
-    m_ui->m_radioTrayOff->setText(tr("Disable (Tray icon is not available.)"));
-    m_ui->m_radioTrayOff->setChecked(true);
-    m_ui->m_grpTray->setDisabled(true);
+    m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') + tr("(Tray icon is not available.)"));
+    m_ui->m_grpTray->setChecked(false);
   }
 
   m_ui->m_checkHidden->setChecked(settings->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool());
   m_ui->m_checkHideWhenMinimized->setChecked(settings->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
+
+  // Load fancy notification settings.
+  m_ui->m_grpNotifications->setChecked(settings->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool());
+  m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-left corner"), Qt::BottomLeftCorner);
+  m_ui->m_cmbNotificationPosition->addItem(tr("Top-left corner"), Qt::TopLeftCorner);
+  m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-right corner"), Qt::BottomRightCorner);
+  m_ui->m_cmbNotificationPosition->addItem(tr("Top-right corner"), Qt::TopRightCorner);
+  m_ui->m_cmbNotificationPosition->setCurrentIndex(m_ui->m_cmbNotificationPosition->findData(static_cast<Qt::Corner>(settings->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt())));
 
   // Load settings of icon theme.
   QString current_theme = qApp->icons()->currentIconTheme();
@@ -804,9 +811,9 @@ void FormSettings::saveInterface() {
 
   // Save tray icon.
   if (SystemTrayIcon::isSystemTrayAvailable()) {
-    settings->setValue(GROUP(GUI), GUI::UseTrayIcon, m_ui->m_radioTrayOn->isChecked());
+    settings->setValue(GROUP(GUI), GUI::UseTrayIcon, m_ui->m_grpTray->isChecked());
 
-    if (m_ui->m_radioTrayOn->isChecked()) {
+    if (m_ui->m_grpTray->isChecked()) {
       qApp->showTrayIcon();
     }
     else {
@@ -816,6 +823,10 @@ void FormSettings::saveInterface() {
 
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
   settings->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());
+
+  // Save notifications.
+  settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_grpNotifications->isChecked());
+  settings->setValue(GROUP(GUI), GUI::FancyNotificationsPosition, static_cast<Qt::Corner>(m_ui->m_cmbNotificationPosition->itemData(m_ui->m_cmbNotificationPosition->currentIndex()).toInt()));
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();

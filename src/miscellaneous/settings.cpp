@@ -105,6 +105,12 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
 DKEY GUI::UseTrayIcon            = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
 
+DKEY GUI::UseFancyNotifications                         = "use_fancy_notifications";
+DVALUE(bool) GUI::UseFancyNotificationsDef              = true;
+
+DKEY GUI::FancyNotificationsPosition                    = "fancy_notifications_position";
+DVALUE(Qt::Corner) GUI::FancyNotificationsPositionDef   = Qt::BottomRightCorner;
+
 DKEY GUI::TabCloseMiddleClick                  = "tab_close_mid_button";
 DVALUE(bool) GUI::TabCloseMiddleClickDef       = true;
 

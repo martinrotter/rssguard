@@ -19,6 +19,9 @@
 
 #include "gui/messagebox.h"
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/textfactory.h"
 
 #include <QApplication>
 #include <QDesktopWidget>
@@ -38,6 +41,10 @@ Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString())
 }
 
 Notification::~Notification() {
+}
+
+bool Notification::areNotificationsActivated() {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool();
 }
 
 void Notification::notify(const QString &text, const QString &title, const QIcon &icon) {
@@ -61,12 +68,13 @@ void Notification::notify(const QString &text, const QString &title, QSystemTray
 void Notification::updateGeometries() {
   // Calculate width and height of notification with given icon and text.
   m_width = m_padding +
-            m_icon.width() + m_padding + /* contents */ qMax(stringWidth(m_title), stringWidth(m_text)) +
+            m_icon.width() + m_padding + /* contents */ qMax(TextFactory::stringWidth(m_title, fontMetrics()),
+                                                             TextFactory::stringWidth(m_text, fontMetrics())) +
             m_padding;
   m_height = m_padding +
              /* contents */
              qMax(m_icon.height(),
-                  stringHeight(m_title) + m_padding + stringHeight(m_text)) +
+                  TextFactory::stringHeight(m_title, fontMetrics()) + m_padding + TextFactory::stringHeight(m_text, fontMetrics())) +
              m_padding;
 
   // Calculate real position.
@@ -130,7 +138,7 @@ void Notification::paintEvent(QPaintEvent *event) {
   painter.setPen(Qt::black);
 
   // Needed heighs/widths.
-  int title_height = stringHeight(m_title);
+  int title_height = TextFactory::stringHeight(m_title, fontMetrics());
   int remaining_width = width() - m_padding - m_icon.width() - m_padding /* - here comes contents */ - m_padding;
   int remaining_height = height() - m_padding - title_height - m_padding /* - here comes contents */ - m_padding;
 
@@ -163,29 +171,8 @@ void Notification::leaveEvent(QEvent *event) {
   repaint();
 }
 
-int Notification::stringHeight(const QString &string) {
-  int count_lines = string.split(QL1C('\n')).size();
-  return fontMetrics().height() * count_lines;
-}
-
-int Notification::stringWidth(const QString &string) {
-  QStringList lines = string.split(QL1C('\n'));
-  int width = 0;
-
-  foreach (const QString &line, lines) {
-    int line_width = fontMetrics().width(line);
-
-    if (line_width > width) {
-      width = line_width;
-    }
-  }
-
-  return width;
-}
-
 void Notification::loadSettings() {
-  // TODO: načist z nastaveni.
-  m_position = Qt::BottomRightCorner;
+  m_position = static_cast<Qt::Corner>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt());
 }
 
 void Notification::setupWidget() {
@@ -220,11 +207,4 @@ void Notification::setupWidget() {
 
   // Window will be meant to be on top, but should not steal focus.
   setFocusPolicy(Qt::NoFocus);
-
-  // TODO: pokracovat
-  // https://github.com/binaryking/QNotify/blob/master/QNotify.cpp
-  // http://stackoverflow.com/questions/5823700/notification-window-in-mac-with-or-without-qt
-  // quiterss
-  // a odkazy z issue
-  // promyslet esli tam dat jen ciste label a ikonu, nebo i seznam nejnovesich zprav atp.
 }

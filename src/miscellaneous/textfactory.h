@@ -21,6 +21,7 @@
 #include "definitions/definitions.h"
 
 #include <QDateTime>
+#include <QFontMetrics>
 
 
 class TextFactory {
@@ -33,6 +34,9 @@ class TextFactory {
     static inline bool isCaseInsensitiveLessThan(const QString &lhs, const QString &rhs) {
       return lhs.toLower() < rhs.toLower();
     }
+
+    static int stringHeight(const QString &string, const QFontMetrics &metrics);
+    static int stringWidth(const QString &string, const QFontMetrics &metrics);
 
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
