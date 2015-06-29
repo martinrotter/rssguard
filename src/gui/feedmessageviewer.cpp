@@ -277,8 +277,6 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
   form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
 
   form_main->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setEnabled(recycle_bin_selected && atleast_one_message_selected);
-
-  // TODO: To samo udělat s feedy, řešit pouze buttony, které se týkají výběru, ale také vzít v potaz, zda zrovna běží update.
 }
 
 void FeedMessageViewer::updateFeedButtonsAvailability() {

@@ -35,7 +35,7 @@
 
 
 Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString()), m_icon(QPixmap()), m_screen(-1),
-  m_width(-1), m_height(-1), m_padding(5), m_widgetMargin(2 * m_padding) {
+  m_width(-1), m_height(-1), m_padding(5), m_widgetMargin(2 * m_padding), m_timerId(0) {
   setupWidget();
   loadSettings();
 }
@@ -49,7 +49,7 @@ bool Notification::areNotificationsActivated() {
 }
 
 void Notification::notify(const QString &text, const QString &title, const QIcon &icon) {
-  hide();
+  cancel();
 
   // Set new values.
   m_text = text;
@@ -60,10 +60,20 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
   updateGeometries();
   repaint();
   show();
+
+  m_timerId = startTimer(10000);
 }
 
 void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon) {
   notify(text, title, MessageBox::iconForStatus((QMessageBox::Icon) icon));
+}
+
+void Notification::cancel() {
+  hide();
+
+  if (m_timerId != 0) {
+    killTimer(m_timerId);
+  }
 }
 
 void Notification::updateGeometries() {
@@ -159,7 +169,7 @@ void Notification::paintEvent(QPaintEvent *event) {
 
 void Notification::mousePressEvent(QMouseEvent *event) {
   QWidget::mousePressEvent(event);
-  QTimer::singleShot(0, this, SLOT(hide()));
+  cancel();
 }
 
 void Notification::enterEvent(QEvent *event) {
@@ -170,6 +180,11 @@ void Notification::enterEvent(QEvent *event) {
 void Notification::leaveEvent(QEvent *event) {
   QWidget::leaveEvent(event);
   repaint();
+}
+
+void Notification::timerEvent(QTimerEvent *event) {
+  QWidget::timerEvent(event);
+  cancel();
 }
 
 void Notification::loadSettings() {

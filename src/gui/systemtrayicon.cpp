@@ -37,9 +37,9 @@ TrayIconMenu::~TrayIconMenu() {
 bool TrayIconMenu::event(QEvent *event) {
   if (Application::activeModalWidget() != NULL && event->type() == QEvent::Show) {
     QTimer::singleShot(0, this, SLOT(hide()));
-    qApp->trayIcon()->showMessage(QSL(APP_LONG_NAME),
-                                  tr("Close opened modal dialogs first."),
-                                  QSystemTrayIcon::Warning);
+    qApp->showGuiMessage(QSL(APP_LONG_NAME),
+                         tr("Close opened modal dialogs first."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
   }
   return QMenu::event(event);
 }

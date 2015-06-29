@@ -37,11 +37,14 @@ class Notification : public QWidget {
     void notify(const QString &text, const QString &title, const QIcon &icon);
     void notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information);
 
+    void cancel();
+
   protected:
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
+    void timerEvent(QTimerEvent *event);
 
   private:
     void loadSettings();
@@ -61,6 +64,7 @@ class Notification : public QWidget {
     int m_height;
     int m_padding;
     int m_widgetMargin;
+    int m_timerId;
 };
 
 #endif // NOTIFICATION_H
