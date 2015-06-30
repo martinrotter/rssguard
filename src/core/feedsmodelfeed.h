@@ -79,8 +79,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Obtains data related to this feed.
     QVariant data(int column, int role) const;
 
-    // Perform fetching of new messages.
-    void update();
+    // Perform fetching of new messages. Returns number of newly updated messages.
+    int update();
 
     // Removes this standard feed from persistent
     // storage.
@@ -192,7 +192,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Persistently stores given messages into the database
     // and updates existing messages if newer version is
     // available.
-    void updateMessages(const QList<Message> &messages);
+    int updateMessages(const QList<Message> &messages);
 
   private:
     void init();

@@ -195,7 +195,7 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
     int current_number = current_version_tkn.takeFirst().toInt();
     int new_number = new_version_tkn.takeFirst().toInt();
 
-    if (new_number != current_number) {
+    if (new_number > current_number) {
       // New version is indeed higher thatn current version.
       return true;
     }

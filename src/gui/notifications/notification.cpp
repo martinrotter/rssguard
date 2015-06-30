@@ -143,7 +143,7 @@ void Notification::paintEvent(QPaintEvent *event) {
   painter.setFont(font());
 
   if (!underMouse()) {
-    painter.setOpacity(0.7);
+    painter.setOpacity(0.8);
   }
   else {
     painter.setOpacity(0.95);

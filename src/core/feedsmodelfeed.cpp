@@ -392,7 +392,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
   }
 }
 
-void FeedsModelFeed::update() {
+int FeedsModelFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
@@ -401,7 +401,7 @@ void FeedsModelFeed::update() {
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
     m_status = NetworkError;
-    return;
+    return 0;
   }
   else {
     m_status = Normal;
@@ -441,7 +441,7 @@ void FeedsModelFeed::update() {
       break;
   }
 
-  updateMessages(messages);
+  return updateMessages(messages);
 }
 
 bool FeedsModelFeed::removeItself() {
@@ -465,8 +465,9 @@ bool FeedsModelFeed::removeItself() {
   return query_remove.exec();
 }
 
-void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
+int FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
+  int updated_messages = 0;
   QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
   bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
 
@@ -495,7 +496,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   if (!database.transaction()) {
     database.rollback();
     qDebug("Transaction start for message downloader failed.");
-    return;
+    return updated_messages;
   }
 
   foreach (Message message, messages) {
@@ -540,6 +541,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         setStatus(NewMessages);
+        updated_messages++;
       }
 
       query_insert.finish();
@@ -571,6 +573,7 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
         if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
           setStatus(NewMessages);
+          updated_messages++;
         }
 
         query_insert.finish();
@@ -585,12 +588,13 @@ void FeedsModelFeed::updateMessages(const QList<Message> &messages) {
 
     qDebug("Transaction commit for message downloader failed.");
   }
+
+  return updated_messages;
 }
 
 QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
   return m_networkError;
 }
-
 
 FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelRootItem(NULL) {
   m_kind = FeedsModelRootItem::Feed;
