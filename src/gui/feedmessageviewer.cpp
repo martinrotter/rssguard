@@ -251,10 +251,15 @@ void FeedMessageViewer::onFeedUpdatesProgress(FeedsModelFeed *feed, int current,
                                                    tr("Updated feed '%1'").arg(feed->title()));
 }
 
-void FeedMessageViewer::onFeedUpdatesFinished() {
+void FeedMessageViewer::onFeedUpdatesFinished(FeedDownloadResults results) {
   qApp->feedUpdateLock()->unlock();
   qApp->mainForm()->statusBar()->clearProgressFeeds();
   m_messagesView->reloadSelections(true);
+
+  if (!results.m_updatedFeeds.isEmpty()) {
+    // Now, inform about results via GUI message/notification.
+    qApp->showGuiMessage(tr("New messages downloaded"), results.getOverview(10), QSystemTrayIcon::Information);
+  }
 }
 
 void FeedMessageViewer::switchFeedComponentVisibility() {
@@ -532,7 +537,7 @@ void FeedMessageViewer::updateFeeds(QList<FeedsModelFeed *> feeds) {
 
     connect(this, SIGNAL(feedsUpdateRequested(QList<FeedsModelFeed*>)), m_feedDownloader, SLOT(updateFeeds(QList<FeedsModelFeed*>)));
     connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
-    connect(m_feedDownloader, SIGNAL(finished()), this, SLOT(onFeedUpdatesFinished()));
+    connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
     connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
     connect(m_feedDownloader, SIGNAL(progress(FeedsModelFeed*,int,int)), this, SLOT(onFeedUpdatesProgress(FeedsModelFeed*,int,int)));
 

@@ -20,8 +20,23 @@
 
 #include <QObject>
 
+#include <QPair>
+
 
 class FeedsModelFeed;
+
+struct FeedDownloadResults {
+    explicit FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {
+    }
+
+    QString getOverview(int how_many_feeds);
+
+    static bool lessThan(const QPair<QString,int> &lhs, const QPair<QString,int> &rhs) {
+      return lhs.second > rhs.second;
+    }
+
+    QList<QPair<QString,int> > m_updatedFeeds;
+};
 
 // This class offers means to "update" feeds
 // and "special" categories.
@@ -47,7 +62,7 @@ class FeedDownloader : public QObject {
 
     // Emitted if all items from update queue are
     // processed.
-    void finished();
+    void finished(FeedDownloadResults updated_feeds);
 
     // Emitted if any item is processed.
     // "Current" number indicates count of processed feeds

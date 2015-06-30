@@ -21,6 +21,7 @@
 #include "gui/tabcontent.h"
 
 #include "core/messagesmodel.h"
+#include "core/feeddownloader.h"
 
 
 class WebBrowser;
@@ -28,7 +29,6 @@ class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
 class FeedsView;
-class FeedDownloader;
 class DatabaseCleaner;
 class FeedsModelFeed;
 class QToolBar;
@@ -110,7 +110,7 @@ class FeedMessageViewer : public TabContent {
     // Reacts on feed updates.
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
-    void onFeedUpdatesFinished();
+    void onFeedUpdatesFinished(FeedDownloadResults results);
 
     // Switches visibility of feed list and related
     // toolbar.

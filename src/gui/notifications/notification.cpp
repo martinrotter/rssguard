@@ -96,14 +96,18 @@ void Notification::cancel() {
 
 void Notification::updateGeometries() {
   // Calculate width and height of notification with given icon and text.
+  QFont bold_font = font();
+  bold_font.setBold(true);
+  QFontMetrics bold_metrics(bold_font);
+
   m_width = m_padding +
-            m_icon.width() + m_padding + /* contents */ qMax(TextFactory::stringWidth(m_title, fontMetrics()),
+            m_icon.width() + m_padding + /* contents */ qMax(TextFactory::stringWidth(m_title, bold_metrics),
                                                              TextFactory::stringWidth(m_text, fontMetrics())) +
             m_padding;
   m_height = m_padding +
              /* contents */
              qMax(m_icon.height(),
-                  TextFactory::stringHeight(m_title, fontMetrics()) + m_padding + TextFactory::stringHeight(m_text, fontMetrics())) +
+                  TextFactory::stringHeight(m_title, bold_metrics) + m_padding + TextFactory::stringHeight(m_text, fontMetrics())) +
              m_padding;
 
   // Calculate real position.
@@ -242,4 +246,8 @@ void Notification::setupWidget() {
 
   // Window will be meant to be on top, but should not steal focus.
   setFocusPolicy(Qt::NoFocus);
+
+  QFont font(font());
+  font.setPointSize(font.pointSize() + 5);
+  setFont(font);
 }

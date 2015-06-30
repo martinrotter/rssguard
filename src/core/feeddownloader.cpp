@@ -18,12 +18,14 @@
 #include "core/feeddownloader.h"
 
 #include "core/feedsmodelfeed.h"
+#include "definitions/definitions.h"
 
 #include <QThread>
 #include <QDebug>
 
 
 FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent) {
+  qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 }
 
 FeedDownloader::~FeedDownloader() {
@@ -36,8 +38,15 @@ void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
   // Job starts now.
   emit started();
 
+  FeedDownloadResults results;
+
   for (int i = 0, total = feeds.size(); i < total; i++) {
-    feeds.at(i)->update();
+    int updated_messages = feeds.at(i)->update();
+
+    if (updated_messages > 0) {
+      results.m_updatedFeeds.append(QPair<QString,int>(feeds.at(i)->title(), updated_messages));
+    }
+
     qDebug("Made progress in feed updates: %d/%d (id of feed is %d).", i + 1, total, feeds.at(i)->id());
     emit progress(feeds.at(i), i + 1, total);
   }
@@ -48,5 +57,19 @@ void FeedDownloader::updateFeeds(const QList<FeedsModelFeed*> &feeds) {
   // NOTE: This means that now "update lock" can be unlocked
   // and feeds can be added/edited/deleted and application
   // can eventually quit.
-  emit finished();
+  emit finished(results);
+}
+
+
+QString FeedDownloadResults::getOverview(int how_many_feeds) {
+  qSort(m_updatedFeeds.begin(), m_updatedFeeds.end(), FeedDownloadResults::lessThan);
+
+  QStringList result;
+
+  // TODO: Maybe enhance the formatting of this output.
+  for (int i = 0, number_items_output = qMin(how_many_feeds, m_updatedFeeds.size()); i < number_items_output; i++) {
+    result.append(m_updatedFeeds.at(i).first + QSL(": ") + QString::number(m_updatedFeeds.at(i).second));
+  }
+
+  return result.join(QL1C('\n'));
 }
