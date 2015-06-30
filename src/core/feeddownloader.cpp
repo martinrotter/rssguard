@@ -71,5 +71,5 @@ QString FeedDownloadResults::getOverview(int how_many_feeds) {
     result.append(m_updatedFeeds.at(i).first + QSL(": ") + QString::number(m_updatedFeeds.at(i).second));
   }
 
-  return result.join(QL1C('\n'));
+  return result.join(QSL("\n"));
 }
