@@ -34,8 +34,11 @@ class Notification : public QWidget {
     static bool areNotificationsActivated();
 
   public slots:
-    void notify(const QString &text, const QString &title, const QIcon &icon);
-    void notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information);
+    // Main methods for using the netofication.
+    void notify(const QString &text, const QString &title, const QIcon &icon,
+                QObject *invokation_target = NULL, const char *invokation_slot = NULL);
+    void notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information,
+                QObject *invokation_target = NULL, const char *invokation_slot = NULL);
 
     void cancel();
 
@@ -45,6 +48,9 @@ class Notification : public QWidget {
     void enterEvent(QEvent *event);
     void leaveEvent(QEvent *event);
     void timerEvent(QTimerEvent *event);
+
+  signals:
+    void clicked();
 
   private:
     void loadSettings();
@@ -65,6 +71,9 @@ class Notification : public QWidget {
     int m_padding;
     int m_widgetMargin;
     int m_timerId;
+
+    QObject *m_clickTarget;
+    const char *m_clickSlot;
 };
 
 #endif // NOTIFICATION_H

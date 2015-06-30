@@ -195,7 +195,7 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
     int current_number = current_version_tkn.takeFirst().toInt();
     int new_number = new_version_tkn.takeFirst().toInt();
 
-    if (new_number > current_number) {
+    if (new_number != current_number) {
       // New version is indeed higher thatn current version.
       return true;
     }
@@ -255,12 +255,9 @@ void SystemFactory::checkForUpdatesOnStartup() {
   UpdateCheck updates = checkForUpdates();
 
   if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion)) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(tr("New version available"),
-                                    tr("Click the bubble for more information."),
-                                    QSystemTrayIcon::Information,
-                                    TRAY_ICON_BUBBLE_TIMEOUT,
-                                    qApp->mainForm(), SLOT(showUpdates()));
-    }
+    qApp->showGuiMessage(tr("New version available"),
+                         tr("Click the bubble for more information."),
+                         QSystemTrayIcon::Information,
+                         NULL, false, QIcon(), qApp->mainForm(), SLOT(showUpdates()));
   }
 }

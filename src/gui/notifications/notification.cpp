@@ -35,7 +35,8 @@
 
 
 Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString()), m_icon(QPixmap()), m_screen(-1),
-  m_width(-1), m_height(-1), m_padding(5), m_widgetMargin(2 * m_padding), m_timerId(0) {
+  m_width(-1), m_height(-1), m_padding(5), m_widgetMargin(2 * m_padding), m_timerId(0), m_clickTarget(NULL),
+  m_clickSlot(NULL) {
   setupWidget();
   loadSettings();
 }
@@ -48,13 +49,21 @@ bool Notification::areNotificationsActivated() {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool();
 }
 
-void Notification::notify(const QString &text, const QString &title, const QIcon &icon) {
+void Notification::notify(const QString &text, const QString &title, const QIcon &icon,
+                          QObject *invokation_target, const char *invokation_slot) {
   cancel();
 
   // Set new values.
+  m_clickTarget = invokation_target;
+  m_clickSlot = invokation_slot;
   m_text = text;
   m_title = title;
   m_icon = icon.pixmap(NOTIFICATION_ICON_SIZE, NOTIFICATION_ICON_SIZE);
+
+  if (m_clickTarget != NULL && m_clickSlot != NULL) {
+    // Connect invokation target.
+    connect(this, SIGNAL(clicked()), m_clickTarget, m_clickSlot, Qt::QueuedConnection);
+  }
 
   // Show it.
   updateGeometries();
@@ -64,12 +73,21 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
   m_timerId = startTimer(10000);
 }
 
-void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon) {
-  notify(text, title, MessageBox::iconForStatus((QMessageBox::Icon) icon));
+void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon,
+                          QObject *invokation_target, const char *invokation_slot) {
+  notify(text, title, MessageBox::iconForStatus((QMessageBox::Icon) icon), invokation_target, invokation_slot);
 }
 
 void Notification::cancel() {
   hide();
+
+  if (m_clickTarget != NULL && m_clickSlot != NULL) {
+    // Disconnect previous bubble click signalling.
+    disconnect(this, SIGNAL(clicked()), m_clickTarget, m_clickSlot);
+  }
+
+  m_clickSlot = NULL;
+  m_clickTarget = NULL;
 
   if (m_timerId != 0) {
     killTimer(m_timerId);
@@ -169,6 +187,7 @@ void Notification::paintEvent(QPaintEvent *event) {
 
 void Notification::mousePressEvent(QMouseEvent *event) {
   QWidget::mousePressEvent(event);
+  emit clicked();
   cancel();
 }
 
