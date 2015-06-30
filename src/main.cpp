@@ -132,8 +132,7 @@ int main(int argc, char *argv[]) {
 
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
-  qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1 %2.").arg(APP_NAME, APP_VERSION), QSystemTrayIcon::Information,
-                       NULL, false, qApp->icons()->fromTheme(APP_LOW_NAME));
+  qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1 %2.").arg(APP_NAME, APP_VERSION), QSystemTrayIcon::NoIcon);
 
   // Enter global event loop.
   return Application::exec();
