@@ -434,7 +434,8 @@ void DownloadItem::finished() {
   emit statusChanged();
   emit downloadFinished();
 
-  qApp->showGuiMessage(tr("Download finished"), tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
+  qApp->showGuiMessage(tr("Download finished"),
+                       tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
                        QSystemTrayIcon::Information, 0, false, QIcon(), this, SLOT(openFolder()));
 }
 
@@ -721,26 +722,26 @@ QString DownloadManager::timeString(double time_remaining) {
 
 QString DownloadManager::dataString(qint64 size) {
   QString unit;
-  double newSize;
+  double new_size;
 
   if (size < 1024) {
-    newSize = size;
+    new_size = size;
     unit = tr("bytes");
   }
   else if (size < 1024 * 1024) {
-    newSize = (double)size / (double)1024;
+    new_size = (double)size / (double)1024;
     unit = tr("kB");
   }
   else if (size < 1024 * 1024 * 1024) {
-    newSize = (double)size / (double)(1024 * 1024);
+    new_size = (double)size / (double)(1024 * 1024);
     unit = tr("MB");
   }
   else {
-    newSize = (double)size / (double)(1024 * 1024 * 1024);
+    new_size = (double)size / (double)(1024 * 1024 * 1024);
     unit = tr("GB");
   }
 
-  return QString(QL1S("%1 %2")).arg(newSize, 0, 'f', 1).arg(unit);
+  return QString(QL1S("%1 %2")).arg(new_size, 0, 'f', 1).arg(unit);
 }
 
 DownloadModel::DownloadModel(DownloadManager *download_manager, QObject *parent)
