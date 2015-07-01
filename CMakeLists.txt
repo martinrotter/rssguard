@@ -55,7 +55,7 @@
 #
 # Authors and contributors:
 #   - Martin Rotter (project leader),
-#   - Elbert Pol (huge OS/2-related contributions)
+#   - Elbert Pol (huge OS/2-related contributions).
 #
 #################################################################
 

@@ -430,8 +430,12 @@ void DownloadItem::finished() {
   m_ui->m_btnOpenFolder->setEnabled(true);
   m_output.close();
   updateInfoLabel();
+
   emit statusChanged();
   emit downloadFinished();
+
+  qApp->showGuiMessage(tr("Download finished"), tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
+                       QSystemTrayIcon::Information, 0, false, QIcon(), this, SLOT(openFolder()));
 }
 
 DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
