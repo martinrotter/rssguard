@@ -147,10 +147,10 @@ void Notification::paintEvent(QPaintEvent *event) {
   painter.setFont(font());
 
   if (!underMouse()) {
-    painter.setOpacity(0.8);
+    painter.setOpacity(0.88);
   }
   else {
-    painter.setOpacity(0.95);
+    painter.setOpacity(0.97);
   }
 
   // Draw background.

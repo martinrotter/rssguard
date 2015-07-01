@@ -40,7 +40,11 @@ class Notification : public QWidget {
     void notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::Information,
                 QObject *invokation_target = NULL, const char *invokation_slot = NULL);
 
+    // Cancels display of the notification.
     void cancel();
+
+    // Loads settings.
+    void loadSettings();
 
   protected:
     void paintEvent(QPaintEvent *event);
@@ -53,7 +57,6 @@ class Notification : public QWidget {
     void clicked();
 
   private:
-    void loadSettings();
     void setupWidget();
     void updateGeometries();
 

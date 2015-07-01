@@ -859,6 +859,7 @@ void FormSettings::saveInterface() {
 
   qApp->mainForm()->tabWidget()->checkTabBarVisibility();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->refreshVisualProperties();
+  qApp->notification()->loadSettings();
 }
 
 bool FormSettings::eventFilter(QObject *obj, QEvent *e) {
