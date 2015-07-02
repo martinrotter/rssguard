@@ -113,7 +113,7 @@ void DownloadItem::getFileName() {
       stop();
 
       m_ui->m_progressDownload->setVisible(false);
-      m_ui->m_lblFilename->setText(tr("Cancelled"));
+      m_ui->m_lblLocalFilename->setText(tr("Selection if local file cancelled."));
       m_canceledFileSelect = true;
       return;
     }
@@ -123,7 +123,9 @@ void DownloadItem::getFileName() {
     qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
                                QDir::toNativeSeparators(QFileInfo(chosen_filename).absolutePath()));
     qApp->downloadManager()->setDownloadDirectory(file_info.absoluteDir().absolutePath());
-    m_ui->m_lblFilename->setText(file_info.fileName());
+
+    // TODO: Probably not needed.
+    //m_ui->m_lblFilename->setText(file_info.fileName());
   }
 
   m_output.setFileName(chosen_filename);
@@ -139,7 +141,7 @@ void DownloadItem::getFileName() {
     return;
   }
 
-  m_ui->m_lblFilename->setText(QFileInfo(m_output.fileName()).fileName());
+  updateInfoAndUrlLabel();
 
   if (m_requestFileName) {
     downloadReadyRead();
@@ -336,7 +338,7 @@ void DownloadItem::downloadProgress(qint64 bytes_received, qint64 bytes_total) {
   m_ui->m_progressDownload->setMaximum(totalValue);
 
   emit progress(currentValue, totalValue);
-  updateInfoLabel();
+  updateDownloadInfoLabel();
 }
 
 qint64 DownloadItem::bytesTotal() const {
@@ -371,7 +373,7 @@ double DownloadItem::currentSpeed() const {
   }
 }
 
-void DownloadItem::updateInfoLabel() {
+void DownloadItem::updateDownloadInfoLabel() {
   if (m_reply->error() != QNetworkReply::NoError) {
     return;
   }
@@ -429,14 +431,21 @@ void DownloadItem::finished() {
   m_ui->m_btnOpenFile->setEnabled(true);
   m_ui->m_btnOpenFolder->setEnabled(true);
   m_output.close();
-  updateInfoLabel();
+  updateDownloadInfoLabel();
 
   emit statusChanged();
   emit downloadFinished();
 
-  qApp->showGuiMessage(tr("Download finished"),
-                       tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
-                       QSystemTrayIcon::Information, 0, false, QIcon(), this, SLOT(openFolder()));
+  if (downloadedSuccessfully()) {
+    qApp->showGuiMessage(tr("Download finished"),
+                         tr("File '%1' is downloaded.\nClick here to open parent directory.").arg(QDir::toNativeSeparators(m_output.fileName())),
+                         QSystemTrayIcon::Information, 0, false, QIcon(), this, SLOT(openFolder()));
+  }
+}
+
+void DownloadItem::updateInfoAndUrlLabel() {
+  m_ui->m_lblRemoteFilename->setText(tr("URL: %1").arg(m_url.toString()));
+  m_ui->m_lblLocalFilename->setText(tr("Local file: %1").arg(QDir::toNativeSeparators(m_output.fileName())));
 }
 
 DownloadManager::DownloadManager(QWidget *parent) : TabContent(parent), m_ui(new Ui::DownloadManager),
@@ -525,11 +534,9 @@ void DownloadManager::handleUnsupportedContent(QNetworkReply *reply) {
   DownloadItem *item = new DownloadItem(reply, this);
   addItem(item);
 
-  if (item->m_canceledFileSelect) {
-    return;
+  if (!item->m_canceledFileSelect) {
+    qApp->mainForm()->tabWidget()->showDownloadManager();
   }
-
-  qApp->mainForm()->tabWidget()->showDownloadManager();
 }
 
 void DownloadManager::addItem(DownloadItem *item) {
@@ -669,8 +676,10 @@ void DownloadManager::load() {
     if (!url.isEmpty() && !file_name.isEmpty()) {
       DownloadItem *item = new DownloadItem(0, this);
       item->m_output.setFileName(file_name);
-      item->m_ui->m_lblFilename->setText(QFileInfo(item->m_output.fileName()).fileName());
       item->m_url = url;
+
+      item->updateInfoAndUrlLabel();
+
       item->m_ui->m_btnStopDownload->setVisible(false);
       item->m_ui->m_btnStopDownload->setEnabled(false);
       item->m_ui->m_btnTryAgain->setVisible(!done);

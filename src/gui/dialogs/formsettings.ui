@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>3</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -465,7 +465,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -497,8 +497,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>208</width>
-                <height>238</height>
+                <width>776</width>
+                <height>425</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1725,6 +1725,22 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     <hint type="destinationlabel">
      <x>696</x>
      <y>84</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_rbDownloadsAskEachFile</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_btnDownloadsTargetDirectory</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>77</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>968</x>
+     <y>50</y>
     </hint>
    </hints>
   </connection>

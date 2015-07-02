@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>404</width>
-    <height>45</height>
+    <width>413</width>
+    <height>206</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -46,7 +46,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="SqueezeLabel" name="m_lblFilename" native="true">
+      <widget class="SqueezeLabel" name="m_lblRemoteFilename" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -55,6 +55,13 @@
        </property>
        <property name="text" stdset="0">
         <string>Filename</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="m_lblLocalFilename">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

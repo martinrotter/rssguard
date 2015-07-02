@@ -71,9 +71,10 @@ class DownloadItem : public QWidget {
     void downloadFinished();
 
   private:
+    void updateInfoAndUrlLabel();
     void getFileName();
     void init();
-    void updateInfoLabel();
+    void updateDownloadInfoLabel();
     QString saveFileName(const QString &directory) const;
 
     Ui::DownloadItem *m_ui;

@@ -2,14 +2,15 @@
 	<center><h2>2.5.0</h2></center>
 	Added:
 	<ul>
-		<li>Fancy & modern popup notifications (turned on by default).</li>
-
+		<li><b>Fancy & modern popup notifications</b> (turned on by default).</li>
+    <li>Enhanced information in download manager.</li>
 	</ul>
 
 	<hr/>
 	<center><h2>2.4.2</h2></center>
 	Fixed:
 	<ul>
+    <li>Browse button in 'Downloads' section of settings is now correctly disabled when needed.</li>
 		<li>Icon cache is now automatically cleared after most of application is loaded. This should save some memory.</li>
 	</ul>
 
