@@ -247,7 +247,7 @@ void Notification::setupWidget() {
   // Window will be meant to be on top, but should not steal focus.
   setFocusPolicy(Qt::NoFocus);
 
-  QFont font(font());
-  font.setPointSize(font.pointSize() + 5);
-  setFont(font);
+  QFont fon(font());
+  fon.setPointSize(fon.pointSize() + 5);
+  setFont(fon);
 }
