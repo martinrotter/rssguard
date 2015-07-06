@@ -183,7 +183,7 @@ QString AdBlockManager::baseSubscriptionDirectory() {
     directory = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
   }
 
-  directory += QDir::separator() + ADBLOCK_BASE_DIRECTORY_NAME;
+  directory += QString(QDir::separator()) + ADBLOCK_BASE_DIRECTORY_NAME;
   return QDir::toNativeSeparators(directory);
 }
 

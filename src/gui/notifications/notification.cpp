@@ -67,8 +67,9 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
 
   // Show it.
   updateGeometries();
-  repaint();
-  show();
+
+  QTimer::singleShot(0, this, SLOT(show()));
+  QTimer::singleShot(0, this, SLOT(repaint()));
 
   m_timerId = startTimer(10000);
 }
