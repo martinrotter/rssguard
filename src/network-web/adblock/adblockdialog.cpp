@@ -181,9 +181,15 @@ void AdBlockDialog::learnAboutRules() {
 
 void AdBlockDialog::loadSubscriptions() {
   setEnabled(false);
+
   for (int i = 0; i < m_ui->m_tabs->count(); ++i) {
-    qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i))->refresh();
+    AdBlockTreeWidget *tree = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i));
+
+    tree->setUpdatesEnabled(false);
+    tree->refresh();
+    tree->setUpdatesEnabled(true);
   }
+
   setEnabled(true);
 }
 
