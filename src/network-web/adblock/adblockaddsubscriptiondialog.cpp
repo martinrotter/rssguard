@@ -38,9 +38,19 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget *parent)
   setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtUrl->lineEdit());
   setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_buttonBox);
 
+  loadPresets();
+
+  connect(m_ui->m_cmbPresets, SIGNAL(currentIndexChanged(int)), this, SLOT(onSubscriptionPresetChanged(int)));
+  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
+
+  onSubscriptionPresetChanged(0);
+}
+
+void AdBlockAddSubscriptionDialog::loadPresets() {
   m_knownSubscriptions << Subscription("EasyList (English)", ADBLOCK_EASYLIST_URL)
                        << Subscription("Fanboy's List (English)", "http://www.fanboy.co.nz/adblock/fanboy-adblock.txt")
-                       << Subscription("Adversity (English)", "http://adversity.googlecode.com/hg/Adversity.txt")
+                       << Subscription("Adversity (English)", "https://raw.githubusercontent.com/Hubird-au/Adversity/master/Adversity.txt")
                        << Subscription("BSI Lista Polska (Polish)", "http://www.bsi.info.pl/filtrABP.txt")
                        << Subscription("Czech List (Czech)", "http://adblock.dajbych.net/adblock.txt")
                        << Subscription("dutchblock (Dutch)", "http://groenewoudt.net/dutchblock/list.txt")
@@ -53,11 +63,12 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget *parent)
                        << Subscription("PLgeneral (Polish)", "http://www.niecko.pl/adblock/adblock.txt")
                        << Subscription("Schacks Adblock Plus liste (Danish)", "http://adblock.schack.dk/block.txt")
                        << Subscription("Xfiles (Italian)", "http://mozilla.gfsolone.com/filtri.txt")
+                       << Subscription("Adblock Warning Removal List", "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt")
                        << Subscription("EasyPrivacy (English)", "http://easylist-downloads.adblockplus.org/easyprivacy.txt")
-                       << Subscription("Antisocial (English)", "http://adversity.googlecode.com/hg/Antisocial.txt")
+                       << Subscription("Antisocial (English)", "https://raw.githubusercontent.com/Hubird-au/Adversity/master/Antisocial.txt")
                        << Subscription("RuAdList+EasyList (Russian, Ukrainian)", "https://easylist-downloads.adblockplus.org/ruadlist+easylist.txt")
                        << Subscription("RU AdList (Russian, Ukrainian)", "https://easylist-downloads.adblockplus.org/advblock.txt")
-                       << Subscription("ABPindo (Indonesian)", "https://indonesianadblockrules.googlecode.com/hg/subscriptions/abpindo.txt")
+                       << Subscription("ABPindo (Indonesian)", "https://raw.githubusercontent.com/heradhis/indonesianadblockrules/master/subscriptions/abpindo.txt")
                        << Subscription("ChinaList (Chinese)", "http://adblock-chinalist.googlecode.com/svn/trunk/adblock.txt")
                        << Subscription("Malware Domains list", "https://easylist-downloads.adblockplus.org/malwaredomains_full.txt") <<
                           Subscription(tr("Another subscription"), QString());
@@ -65,11 +76,6 @@ AdBlockAddSubscriptionDialog::AdBlockAddSubscriptionDialog(QWidget *parent)
   foreach (const Subscription &subscription, m_knownSubscriptions) {
     m_ui->m_cmbPresets->addItem(subscription.m_title);
   }
-
-  connect(m_ui->m_cmbPresets, SIGNAL(currentIndexChanged(int)), this, SLOT(onSubscriptionPresetChanged(int)));
-  connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkInputs()));
-  onSubscriptionPresetChanged(0);
 }
 
 QString AdBlockAddSubscriptionDialog::title() const {

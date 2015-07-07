@@ -47,6 +47,8 @@ class AdBlockAddSubscriptionDialog : public QDialog {
     void checkInputs();
 
   private:
+    void loadPresets();
+
     struct Subscription {
       public:
         QString m_title;
