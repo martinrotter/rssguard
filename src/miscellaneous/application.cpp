@@ -128,13 +128,7 @@ void Application::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 
   if (message == APP_IS_RUNNING) {
-    if (SystemTrayIcon::isSystemTrayActivated()) {
-      qApp->trayIcon()->showMessage(APP_NAME,
-                                    tr("Application is already running."),
-                                    QSystemTrayIcon::Information,
-                                    TRAY_ICON_BUBBLE_TIMEOUT);
-    }
-
+    showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
     mainForm()->display();
   }
   else if (message == APP_QUIT_INSTANCE) {

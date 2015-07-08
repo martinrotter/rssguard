@@ -35,6 +35,8 @@ struct FeedDownloadResults {
       return lhs.second > rhs.second;
     }
 
+    // QString represents title if the feed, int represents
+    // count of newly downloaded messages.
     QList<QPair<QString,int> > m_updatedFeeds;
 };
 
