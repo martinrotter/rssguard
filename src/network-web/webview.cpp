@@ -139,7 +139,7 @@ void WebView::saveCurrentPageToFile() {
       str << html_text;
       selected_file_handle.close();
     }
-    else {
+    else {     
       MessageBox::show(this, QMessageBox::Critical, tr("Cannot save web page"),
                        tr("Web page cannot be saved because destination file is not writtable."));
     }
