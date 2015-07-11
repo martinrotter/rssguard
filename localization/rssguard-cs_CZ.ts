@@ -40,7 +40,7 @@
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní pravidla</translation>
     </message>
 </context>
 <context>
@@ -73,11 +73,11 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Přidat pravidlo</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Smazat  pravidlo</translation>
     </message>
     <message>
         <source>Add subscription</source>
@@ -318,10 +318,6 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <translation>Chyba: %1</translation>
     </message>
     <message>
-        <source>Cancelled</source>
-        <translation>Zrušeno</translation>
-    </message>
-    <message>
         <source>Download directory couldn&apos;t be created</source>
         <translation>Cílový adresář nemohl být vytvořen</translation>
     </message>
@@ -356,6 +352,27 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
         <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
+    </message>
+    <message>
+        <source>Selection if local file cancelled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download finished</source>
+        <translation>Stahování dokončeno</translation>
+    </message>
+    <message>
+        <source>File &apos;%1&apos; is downloaded.
+Click here to open parent directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL: %1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Local file: %1</source>
+        <translation>Lokální soubor: %1</translation>
     </message>
 </context>
 <context>
@@ -445,6 +462,10 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
         <translation>Nelze aktualizovat všechny položky, protože už běží jiná kritická operace.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation>Staženy nové zprávy</translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -470,12 +491,10 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -1866,9 +1885,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1926,12 +1943,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1959,14 +1974,6 @@ Language column of language list.</extracomment>
         <translation>Notifikační oblast</translation>
     </message>
     <message>
-        <source>Disable</source>
-        <translation>Zakázat</translation>
-    </message>
-    <message>
-        <source>Enable</source>
-        <translation>Povolit</translation>
-    </message>
-    <message>
         <source>Tabs</source>
         <translation>Panely</translation>
     </message>
@@ -1987,10 +1994,6 @@ Language column of language list.</extracomment>
         <translation>Povolit gesta myši</translation>
     </message>
     <message>
-        <source>Disable (Tray icon is not available.)</source>
-        <translation>Zakázat (Notifikační ikona není k dispozici.)</translation>
-    </message>
-    <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
         <translation>Zařadit nově otevíraný panel za ten aktuální</translation>
     </message>
@@ -2005,7 +2008,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2491,6 +2493,34 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Working database is ok.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notification position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Tray icon is not available.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom-left corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top-left corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2639,52 +2669,42 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2729,7 +2749,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>
@@ -2738,7 +2757,6 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Přílohy</translation>
     </message>
     <message>
@@ -2934,6 +2952,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
         <translation>Spustili jste %1 poprvé, nyní si můžete zvolit, zda chcete nahrát výchozí sadu kanálů.</translation>
+    </message>
+    <message>
+        <source>Welcome to %1 %2.</source>
+        <translation>Vítá vás %1 %2.</translation>
     </message>
 </context>
 <context>

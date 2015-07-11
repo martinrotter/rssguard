@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="de_DE">
+<TS version="2.1" language="de_DE">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -314,10 +314,6 @@ This website contains %n feed(s).</source>
         <translation type="unfinished">Fehler: %1. {1?}</translation>
     </message>
     <message>
-        <source>Cancelled</source>
-        <translation>Abgebrochen</translation>
-    </message>
-    <message>
         <source>Download directory couldn&apos;t be created</source>
         <translation type="unfinished"></translation>
     </message>
@@ -351,6 +347,27 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selection if local file cancelled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download finished</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File &apos;%1&apos; is downloaded.
+Click here to open parent directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local file: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -438,6 +455,10 @@ This website contains %n feed(s).</source>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -463,12 +484,10 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Titel der Feeds/Kategorien.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Anzahl ungelesener/aller Nachrichten.</translation>
     </message>
     <message>
@@ -1848,9 +1867,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Sprache</translation>
     </message>
     <message>
@@ -1908,12 +1925,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1941,14 +1956,6 @@ Language column of language list.</extracomment>
         <translation>Tray-Bereich &amp;&amp; Benachrichtigungen</translation>
     </message>
     <message>
-        <source>Disable</source>
-        <translation>Ausschalten</translation>
-    </message>
-    <message>
-        <source>Enable</source>
-        <translation>Einschalten</translation>
-    </message>
-    <message>
         <source>Tabs</source>
         <translation>Reiter</translation>
     </message>
@@ -1969,10 +1976,6 @@ Language column of language list.</extracomment>
         <translation>Mausgesten einschalten</translation>
     </message>
     <message>
-        <source>Disable (Tray icon is not available.)</source>
-        <translation>Ausschalten (Tray-Icon ist nicht verfügbar)</translation>
-    </message>
-    <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
         <translation>Reihe neue Reiter (mit Hyperlink) nach dem aktiven Reiter ein</translation>
     </message>
@@ -1987,7 +1990,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Name</translation>
     </message>
     <message>
@@ -2399,7 +2401,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Working database</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2431,7 +2433,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2459,6 +2461,34 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     </message>
     <message>
         <source>Working database is ok.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notification position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Tray icon is not available.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom-left corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top-left corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top-right corner</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2611,52 +2641,42 @@ Go to application website to obtain it manually.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lesen</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Gelöscht</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Wichtig</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Author</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Erstellt am</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhalt</translation>
     </message>
     <message>
@@ -2701,7 +2721,6 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2710,7 +2729,6 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2905,6 +2923,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to %1 %2.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

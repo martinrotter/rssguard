@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="nl_NL">
+<TS version="2.1" language="nl_NL">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -316,10 +316,6 @@ Deze website bevat % n feed(s).</numerusform>
         <translation>Fout: %1</translation>
     </message>
     <message>
-        <source>Cancelled</source>
-        <translation>Geannuleerd</translation>
-    </message>
-    <message>
         <source>Download directory couldn&apos;t be created</source>
         <translation>Download map kan niet worden aangemaakt</translation>
     </message>
@@ -354,6 +350,27 @@ Deze website bevat % n feed(s).</numerusform>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
         <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
+    </message>
+    <message>
+        <source>Selection if local file cancelled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download finished</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File &apos;%1&apos; is downloaded.
+Click here to open parent directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local file: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -440,6 +457,10 @@ Deze website bevat % n feed(s).</numerusform>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
         <translation type="unfinished">U kunt niet alle items updaten omdat een ander een andere kritieke operatie aan de gang is.</translation>
     </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsImportExportModel</name>
@@ -465,12 +486,10 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -1858,9 +1877,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -1918,12 +1935,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1951,14 +1966,6 @@ Language column of language list.</extracomment>
         <translation>Tray gebied &amp;&amp; meldingen</translation>
     </message>
     <message>
-        <source>Disable</source>
-        <translation>Uitzetten</translation>
-    </message>
-    <message>
-        <source>Enable</source>
-        <translation>Aanzetten</translation>
-    </message>
-    <message>
         <source>Tabs</source>
         <translation>Tabbladen</translation>
     </message>
@@ -1979,10 +1986,6 @@ Language column of language list.</extracomment>
         <translation>Muisbewegingen aanzetten</translation>
     </message>
     <message>
-        <source>Disable (Tray icon is not available.)</source>
-        <translation>Uitzetten (Pictogram in systeemvak is niet beschikbaar.)</translation>
-    </message>
-    <message>
         <source>Queue new tabs (with hyperlinks) after the active tab</source>
         <translation>Wachtrij nieuwe tabbladen (met koppelingen) na de actieve tabblad</translation>
     </message>
@@ -1997,7 +2000,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -2425,7 +2427,7 @@ MySQL backend maakt automatisch gebruik van databank met de naam &quot;rssguard&
         <source>Working database</source>
         <translation>Werkende database</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2465,7 +2467,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <source>Select client</source>
         <translation>Selecteer client</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2498,6 +2500,34 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Working database is ok.</source>
         <translation>Werkende database is ok</translation>
+    </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Notification position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Tray icon is not available.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom-left corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top-left corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bottom-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Top-right corner</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2650,52 +2680,42 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -2740,7 +2760,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Definitief verwijderd</translation>
     </message>
     <message>
@@ -2749,7 +2768,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bijlagen</translation>
     </message>
     <message>
@@ -2945,6 +2963,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
         <translation>Je startte %1 voor de eerste keer, nu kun je de eerste set van de feeds laden</translation>
+    </message>
+    <message>
+        <source>Welcome to %1 %2.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
