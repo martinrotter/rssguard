@@ -254,6 +254,9 @@ void FormSettings::loadFeedsMessages() {
   if (index_format >= 0) {
     m_ui->m_cmbMessagesDateTimeFormat->setCurrentIndex(index_format);
   }
+
+  m_ui->m_cmbMessageFontStandard->setCurrentIndex(m_ui->m_cmbMessageFontStandard->findText(settings->value(GROUP(Messages),
+                                                                                                           SETTING(Messages::PreviewerFontStandard)).toString()));
 }
 
 void FormSettings::initializeMessageDateFormats() {
@@ -283,6 +286,10 @@ void FormSettings::saveFeedsMessages() {
                      m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
   settings->setValue(GROUP(Messages), Messages::RemoveDuplicates, m_ui->m_checkRemoveDuplicateMessages->isChecked());
 
+  // Save fonts.
+  settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_cmbMessageFontStandard->currentFont().family());
+
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->updateDateFormat();

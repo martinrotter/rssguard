@@ -70,6 +70,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_dbCleaner(NULL) {
   initialize();
   initializeViews();
+  loadMessageViewerFonts();
   createConnections();
 
   // Now, update all feeds if user has set it.
@@ -144,7 +145,8 @@ void FeedMessageViewer::loadMessageViewerFonts() {
   Settings *settings = qApp->settings();
   QWebSettings *view_settings = m_messagesBrowser->view()->settings();
 
-  // TODO: Setup fonts.
+  view_settings->setFontFamily(QWebSettings::StandardFont, settings->value(GROUP(Messages),
+                                                                           SETTING(Messages::PreviewerFontStandard)).toString());
 }
 
 void FeedMessageViewer::quit() {
