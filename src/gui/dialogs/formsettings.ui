@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>7</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -419,8 +419,8 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>100</width>
-            <height>30</height>
+            <width>782</width>
+            <height>451</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -1291,7 +1291,7 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
@@ -1443,6 +1443,29 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
              <property name="text">
               <string>Remove duplicate messages</string>
              </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="title">
+              <string>Internal message browser fonts</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_24">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_12">
+                <property name="text">
+                 <string>Standard font</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QFontComboBox" name="fontComboBox">
+                <property name="editable">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>

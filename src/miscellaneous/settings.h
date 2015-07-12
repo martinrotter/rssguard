@@ -72,6 +72,9 @@ namespace Messages {
 
   KEY RemoveDuplicates;
   VALUE(bool) RemoveDuplicatesDef;
+
+  KEY PreviewerFontStandard;
+  VALUE(QString) PreviewerFontStandardDef;
 }
 
 // GUI.

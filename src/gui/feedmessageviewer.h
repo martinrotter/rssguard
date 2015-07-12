@@ -73,6 +73,8 @@ class FeedMessageViewer : public TabContent {
     void saveSize();
     void loadSize();
 
+    void loadMessageViewerFonts();
+
     // Destroys worker/feed downloader thread and
     // stops any child widgets/workers.
     void quit();

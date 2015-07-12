@@ -140,6 +140,13 @@ void FeedMessageViewer::loadSize() {
                                                                         default_msg_section_size).toInt());
 }
 
+void FeedMessageViewer::loadMessageViewerFonts() {
+  Settings *settings = qApp->settings();
+  QWebSettings *view_settings = m_messagesBrowser->view()->settings();
+
+  // TODO: Setup fonts.
+}
+
 void FeedMessageViewer::quit() {
   // Quit the feeds view (stops auto-update timer etc.).
   m_feedsView->quit();

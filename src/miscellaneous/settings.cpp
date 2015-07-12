@@ -63,6 +63,9 @@ DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
 DKEY Messages::RemoveDuplicates               = "remove_duplicates";
 DVALUE(bool) Messages::RemoveDuplicatesDef    = false;
 
+DKEY Messages::PreviewerFontStandard                  = "previewer_font_standard";
+DVALUE(QString) Messages::PreviewerFontStandardDef    = QWebSettings::globalSettings()->fontFamily(QWebSettings::StandardFont);
+
 // GUI.
 DKEY GUI::ID                                      = "gui";
 
