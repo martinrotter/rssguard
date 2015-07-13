@@ -30,7 +30,9 @@
 #define KEY extern const char*
 #define DKEY const char*
 #define VALUE(x) extern const x
+#define NON_CONST_VALUE(x) extern x
 #define DVALUE(x) const x
+#define NON_CONST_DVALUE(x) x
 #define SETTING(x) x, x##Def
 #define GROUP(x) x::ID
 
@@ -74,7 +76,7 @@ namespace Messages {
   VALUE(bool) RemoveDuplicatesDef;
 
   KEY PreviewerFontStandard;
-  VALUE(QString) PreviewerFontStandardDef;
+  NON_CONST_VALUE(QString) PreviewerFontStandardDef;
 }
 
 // GUI.

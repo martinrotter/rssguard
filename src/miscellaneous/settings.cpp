@@ -63,8 +63,8 @@ DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
 DKEY Messages::RemoveDuplicates               = "remove_duplicates";
 DVALUE(bool) Messages::RemoveDuplicatesDef    = false;
 
-DKEY Messages::PreviewerFontStandard                  = "previewer_font_standard";
-DVALUE(QString) Messages::PreviewerFontStandardDef    = QWebSettings::globalSettings()->fontFamily(QWebSettings::StandardFont);
+DKEY Messages::PreviewerFontStandard                                    = "previewer_font_standard";
+NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QString();
 
 // GUI.
 DKEY GUI::ID                                      = "gui";
@@ -282,6 +282,8 @@ DKEY Categories::ID                         = "categories_expand_states";
 
 Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {
+  // Perform last-minute initializations.
+  Messages::PreviewerFontStandardDef = QWebSettings::globalSettings()->fontFamily(QWebSettings::StandardFont);
 }
 
 Settings::~Settings() {  
