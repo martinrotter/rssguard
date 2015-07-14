@@ -2,7 +2,7 @@
 	<center><h2>2.5.0</h2></center>
 	Added:
 	<ul>
-    <li><b>Password in feeds & proxy & MySQL are now saved in encrypted form. This means that all passwords from RSS Guard older than 2.5.0 are lost!!! Set your passwords again.</b></li>
+    <li><b>Password in feeds & proxy & MySQL are now saved in encrypted form. This means that all passwords from RSS Guard older than 2.5.0 are lost!!! Set your passwords again.</b> Used encryption scheme is meant to only make sure that passwords are not stored in DB/settings in plain form. It is not meant to protect your passwords in any broader way. Attacker can exploit your passwords if he really wants.</li>
 		<li><b>Fancy & modern popup notifications</b> (turned on by default).</li>
     <li>Enhanced information in download manager.</li>
     <li>Added ability to change font for internal message viewer.</li>
