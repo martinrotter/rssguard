@@ -23,6 +23,7 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/simplecrypt/simplecrypt.h"
 #include "network-web/networkfactory.h"
 
 #include <QSqlDatabase>
@@ -608,7 +609,7 @@ FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelRootItem(NU
   setUrl(record.value(FDS_DB_URL_INDEX).toString());
   setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
   setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
-  setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
+  setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
   setAutoUpdateType(static_cast<FeedsModelFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
   updateCounts();

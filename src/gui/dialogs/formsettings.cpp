@@ -28,6 +28,7 @@
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/skinfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 #include "network-web/webbrowsernetworkaccessmanager.h"
 #include "network-web/silentnetworkaccessmanager.h"
@@ -450,7 +451,7 @@ void FormSettings::loadProxy() {
   m_ui->m_cmbProxyType->setCurrentIndex(m_ui->m_cmbProxyType->findData(selected_proxy_type));
   m_ui->m_txtProxyHost->setText(settings->value(GROUP(Proxy), SETTING(Proxy::Host)).toString());
   m_ui->m_txtProxyUsername->setText(settings->value(GROUP(Proxy), SETTING(Proxy::Username)).toString());
-  m_ui->m_txtProxyPassword->setText(settings->value(GROUP(Proxy), SETTING(Proxy::Password)).toString());
+  m_ui->m_txtProxyPassword->setText(TextFactory::decrypt(settings->value(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
   m_ui->m_spinProxyPort->setValue(settings->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt());
 }
 
@@ -460,7 +461,7 @@ void FormSettings::saveProxy() {
   settings->setValue(GROUP(Proxy), Proxy::Type, m_ui->m_cmbProxyType->itemData(m_ui->m_cmbProxyType->currentIndex()));
   settings->setValue(GROUP(Proxy), Proxy::Host, m_ui->m_txtProxyHost->text());
   settings->setValue(GROUP(Proxy), Proxy::Username,  m_ui->m_txtProxyUsername->text());
-  settings->setValue(GROUP(Proxy), Proxy::Password, m_ui->m_txtProxyPassword->text());
+  settings->setValue(GROUP(Proxy), Proxy::Password, TextFactory::encrypt(m_ui->m_txtProxyPassword->text()));
   settings->setValue(GROUP(Proxy), Proxy::Port, m_ui->m_spinProxyPort->value());
 
   // Reload settings for all network access managers.
@@ -541,7 +542,7 @@ void FormSettings::loadDataStorage() {
 
     m_ui->m_txtMysqlHostname->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
     m_ui->m_txtMysqlUsername->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-    m_ui->m_txtMysqlPassword->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
+    m_ui->m_txtMysqlPassword->lineEdit()->setText(TextFactory::decrypt(settings->value(GROUP(Database), SETTING(Database::MySQLPassword)).toString()));
     m_ui->m_txtMysqlDatabase->lineEdit()->setText(settings->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
     m_ui->m_spinMysqlPort->setValue(settings->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
 
@@ -577,7 +578,7 @@ void FormSettings::saveDataStorage() {
     // Save MySQL.
     settings->setValue(GROUP(Database), Database::MySQLHostname, m_ui->m_txtMysqlHostname->lineEdit()->text());
     settings->setValue(GROUP(Database), Database::MySQLUsername, m_ui->m_txtMysqlUsername->lineEdit()->text());
-    settings->setValue(GROUP(Database), Database::MySQLPassword, m_ui->m_txtMysqlPassword->lineEdit()->text());
+    settings->setValue(GROUP(Database), Database::MySQLPassword, TextFactory::encrypt(m_ui->m_txtMysqlPassword->lineEdit()->text()));
     settings->setValue(GROUP(Database), Database::MySQLDatabase, m_ui->m_txtMysqlDatabase->lineEdit()->text());
     settings->setValue(GROUP(Database), Database::MySQLPort, m_ui->m_spinMysqlPort->value());
   }

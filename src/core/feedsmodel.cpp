@@ -391,7 +391,7 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
   query_add_feed.bindValue(QSL(":url"), feed->url());
   query_add_feed.bindValue(QSL(":protected"), (int) feed->passwordProtected());
   query_add_feed.bindValue(QSL(":username"), feed->username());
-  query_add_feed.bindValue(QSL(":password"), feed->password());
+  query_add_feed.bindValue(QSL(":password"), TextFactory::encrypt(feed->password()));
   query_add_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
   query_add_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
   query_add_feed.bindValue(QSL(":type"), (int) feed->type());
@@ -440,7 +440,7 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_fee
   query_update_feed.bindValue(QSL(":url"), new_feed->url());
   query_update_feed.bindValue(QSL(":protected"), (int) new_feed->passwordProtected());
   query_update_feed.bindValue(QSL(":username"), new_feed->username());
-  query_update_feed.bindValue(QSL(":password"), new_feed->password());
+  query_update_feed.bindValue(QSL(":password"), TextFactory::encrypt(new_feed->password()));
   query_update_feed.bindValue(QSL(":update_type"), (int) new_feed->autoUpdateType());
   query_update_feed.bindValue(QSL(":update_interval"), new_feed->autoUpdateInitialInterval());
   query_update_feed.bindValue(QSL(":type"), new_feed->type());

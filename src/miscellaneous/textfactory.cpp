@@ -18,6 +18,7 @@
 #include "miscellaneous/textfactory.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/simplecrypt/simplecrypt.h"
 
 #include <QString>
 #include <QStringList>
@@ -106,6 +107,14 @@ QDateTime TextFactory::parseDateTime(const QString &date_time) {
 
 QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
   return QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
+}
+
+QString TextFactory::encrypt(const QString &text) {
+  return SimpleCrypt(DUMMY_DUMMY_DUMMY).encryptToString(text);
+}
+
+QString TextFactory::decrypt(const QString &text) {
+  return SimpleCrypt(DUMMY_DUMMY_DUMMY).decryptToString(text);
 }
 
 QString TextFactory::shorten(const QString &input, int text_length_limit) {

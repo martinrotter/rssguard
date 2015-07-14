@@ -36,7 +36,7 @@ class FeedsSelection {
     FeedsSelection(const FeedsSelection &other);
     virtual ~FeedsSelection();
 
-  SelectionMode mode();
+    SelectionMode mode();
     FeedsModelRootItem *selectedItem() const;
     QString generateListOfIds();
 

@@ -388,6 +388,7 @@ set(APP_SOURCES
   src/miscellaneous/autosaver.cpp
   src/miscellaneous/mutex.cpp
   src/miscellaneous/databasecleaner.cpp
+  src/miscellaneous/simplecrypt/simplecrypt.cpp
 
   # EXCEPTIONS sources.
   src/exceptions/applicationexception.cpp
