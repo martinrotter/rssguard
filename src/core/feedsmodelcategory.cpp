@@ -121,28 +121,28 @@ QVariant FeedsModelCategory::data(int column, int role) const {
 }
 
 bool FeedsModelCategory::removeItself() {
-  bool result = true;
+  bool children_removed = true;
 
   // Remove all child items (feeds, categories.)
   foreach (FeedsModelRootItem *child, m_childItems) {
-    result &= child->removeItself();
+    children_removed &= child->removeItself();
   }
 
-  if (!result) {
-    return result;
+  if (children_removed) {
+    // Children are removed, remove this standard category too.
+    QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelCategory"), DatabaseFactory::FromSettings);
+    QSqlQuery query_remove(database);
+
+    // Remove this category from database.
+    query_remove.setForwardOnly(true);
+    query_remove.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
+    query_remove.bindValue(QSL(":category"), id());
+
+    return query_remove.exec();
   }
-
-  // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelCategory"), DatabaseFactory::FromSettings);
-  QSqlQuery query_remove(database);
-
-  query_remove.setForwardOnly(true);
-
-  // Remove all messages from this standard feed.
-  query_remove.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
-  query_remove.bindValue(QSL(":category"), id());
-
-  return query_remove.exec();
+  else {
+    return false;
+  }
 }
 
 FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelRootItem(NULL) {

@@ -25,6 +25,7 @@
 
 class FeedsModelFeed;
 
+// Represents results of batch feed updates.
 struct FeedDownloadResults {
     explicit FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {
     }
@@ -35,13 +36,11 @@ struct FeedDownloadResults {
       return lhs.second > rhs.second;
     }
 
-    // QString represents title if the feed, int represents
-    // count of newly downloaded messages.
+    // QString represents title if the feed, int represents count of newly downloaded messages.
     QList<QPair<QString,int> > m_updatedFeeds;
 };
 
-// This class offers means to "update" feeds
-// and "special" categories.
+// This class offers means to "update" feeds and "special" categories.
 // NOTE: This class is used within separate thread.
 class FeedDownloader : public QObject {
     Q_OBJECT
