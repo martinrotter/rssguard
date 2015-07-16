@@ -18,6 +18,8 @@
 #ifndef FEEDSPROXYMODEL_H
 #define FEEDSPROXYMODEL_H
 
+#include "feedsmodelrootitem.h"
+
 #include <QSortFilterProxyModel>
 
 
@@ -41,6 +43,12 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
 
+    bool showUnreadOnly() const;
+    void setShowUnreadOnly(bool showUnreadOnly);
+
+    FeedsModelRootItem *selectedItem() const;
+    void setSelectedItem(FeedsModelRootItem *selectedItem);
+
   public slots:
     void invalidateFilter();
 
@@ -52,6 +60,9 @@ class FeedsProxyModel : public QSortFilterProxyModel {
   private:
     // Source model pointer.
     FeedsModel *m_sourceModel;
+
+    FeedsModelRootItem *m_selectedItem;
+    bool m_showUnreadOnly;
 };
 
 #endif // FEEDSPROXYMODEL_H

@@ -118,6 +118,8 @@ class FeedMessageViewer : public TabContent {
     // toolbar.
     void switchFeedComponentVisibility();
 
+    void toggleShowOnlyUnreadFeeds();
+
     void updateMessageButtonsAvailability();
     void updateFeedButtonsAvailability();
 

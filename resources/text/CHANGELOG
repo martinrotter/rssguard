@@ -1,7 +1,29 @@
 <body>
+  <style>
+    body {
+      font-size: 150%;
+    }
+  
+    ul {
+      list-style-type: square;
+    }
+  
+    ul > li {
+      margin-top: 3px;
+      margin-bottom: 3px;
+    }
+  </style>
 	<center><h2>2.5.0</h2></center>
 	Added:
 	<ul>
+    <li>Implemented ability to display <b>ONLY FEEDS WITH SOME UNREAD MESSAGES</b>. This behavior can be controlled by action in menu 'Feeds -> Show only unread feeds/categories' (issue #52). Behavior is this:
+      <ol>
+        <li>User selects some feeds with unread messages, reads them all.</li>
+        <li>User switches to another feed.</li>
+        <li>Previously selected feed (now has no unread messages) is now hidden.</li>
+      </ol>
+      Note that this feature also works when you e.g. mark message(s) as read/unread or when you restore some messages from recycle bin. Also when feeds are updated, then filter is invalidated.
+    </li>
     <li><b>Password in feeds & proxy & MySQL are now saved in encrypted form. This means that all passwords from RSS Guard older than 2.5.0 are lost!!! Set your passwords again.</b> Used encryption scheme is meant to only make sure that passwords are not stored in DB/settings in plain form. It is not meant to protect your passwords in any broader way. Attacker can exploit your passwords if he really wants.</li>
 		<li><b>Fancy & modern popup notifications</b> (turned on by default).</li>
     <li>Enhanced information in download manager.</li>

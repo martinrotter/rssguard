@@ -25,7 +25,7 @@
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
-  : QSortFilterProxyModel(parent) {
+  : QSortFilterProxyModel(parent), m_selectedItem(NULL), m_showUnreadOnly(false) {
   m_sourceModel = new FeedsModel(this);
 
   setObjectName(QSL("FeedsProxyModel"));
@@ -34,7 +34,7 @@ FeedsProxyModel::FeedsProxyModel(QObject *parent)
   setFilterCaseSensitivity(Qt::CaseInsensitive);
   setFilterKeyColumn(-1);
   setFilterRole(Qt::EditRole);
-  setDynamicSortFilter(true);
+  setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
 }
 
@@ -180,7 +180,53 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right
 }
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
-  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+  if (!m_showUnreadOnly) {
+    return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+  }
+
+  // TODO: učechrat
+  QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
+
+  if (!idx.isValid()) {
+    return false;
+  }
+
+  FeedsModelRootItem *item = m_sourceModel->itemForIndex(idx);
+
+  if (item->kind() == FeedsModelRootItem::RecycleBin) {
+    // Recycle bin is always displayed.
+    return true;
+  }
+
+  /*
+  if (m_selectedItem == NULL) {
+    return item->countOfUnreadMessages() > 0;
+  }
+  */
+
+  if (item->isParentOf(m_selectedItem)/* || item->isChildOf(m_selectedItem)*/ || m_selectedItem == item) {
+    // Currently selected item and all its parents and children must be displayed.
+    return true;
+  }
+  else {
+    return item->countOfUnreadMessages() > 0;
+  }
+}
+
+FeedsModelRootItem *FeedsProxyModel::selectedItem() const {
+  return m_selectedItem;
+}
+
+void FeedsProxyModel::setSelectedItem(FeedsModelRootItem *selectedItem) {
+  m_selectedItem = selectedItem;
+}
+
+bool FeedsProxyModel::showUnreadOnly() const {
+  return m_showUnreadOnly;
+}
+
+void FeedsProxyModel::setShowUnreadOnly(bool showUnreadOnly) {
+  m_showUnreadOnly = showUnreadOnly;
 }
 
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {

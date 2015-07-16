@@ -165,6 +165,14 @@ void FeedsView::loadExpandedStates() {
   }
 }
 
+void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
+  if (set_new_value) {
+    m_proxyModel->setShowUnreadOnly(show_unread_only);
+  }
+
+  QTimer::singleShot(0, m_proxyModel, SLOT(invalidateFilter()));
+}
+
 void FeedsView::updateAllFeeds() {
   emit feedsUpdateRequested(allFeeds());
 }
@@ -329,6 +337,9 @@ void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
   else {
     updateCountsOfSelectedFeeds(total_msg_count_changed);
   }
+
+  // TODO: učechrat
+  invalidateReadFeedsFilter();
 }
 
 void FeedsView::editSelectedItem() {
@@ -510,6 +521,9 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_t
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
 
+  // TODO: učechrat
+  invalidateReadFeedsFilter();
+
   notifyWithCounts();
 }
 
@@ -609,9 +623,14 @@ void FeedsView::setupAppearance() {
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
+  // TODO: učechrat
+  FeedsModelRootItem *selected_item = selectedItem();
+  m_proxyModel->setSelectedItem(selected_item);
+
   QTreeView::selectionChanged(selected, deselected);
 
-  emit feedsSelected(FeedsSelection(selectedItem()));
+  emit feedsSelected(FeedsSelection(selected_item));
+  invalidateReadFeedsFilter();
 }
 
 void FeedsView::keyPressEvent(QKeyEvent *event) {

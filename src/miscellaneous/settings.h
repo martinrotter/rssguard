@@ -34,6 +34,7 @@
 #define DVALUE(x) const x
 #define NON_CONST_DVALUE(x) x
 #define SETTING(x) x, x##Def
+#define DEFAULT_VALUE(x) x##Def
 #define GROUP(x) x::ID
 
 // Feeds.

@@ -94,6 +94,10 @@ class FeedsModelRootItem {
     // Checks whether THIS object is child (direct or indirect)
     // of the given root.
     bool isChildOf(FeedsModelRootItem *root) {
+      if (root == NULL) {
+        return false;
+      }
+
       FeedsModelRootItem *this_item = this;
 
       while (this_item->kind() != FeedsModelRootItem::RootItem) {
@@ -106,6 +110,15 @@ class FeedsModelRootItem {
       }
 
       return false;
+    }
+
+    bool isParentOf(FeedsModelRootItem *child) {
+      if (child == NULL) {
+        return false;
+      }
+      else {
+        return child->isChildOf(this);
+      }
     }
 
     // Removes all children from this item.

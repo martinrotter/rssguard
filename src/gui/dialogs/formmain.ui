@@ -144,6 +144,8 @@
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedCategory"/>
     <addaction name="separator"/>
+    <addaction name="m_actionShowOnlyUnreadFeeds"/>
+    <addaction name="separator"/>
     <addaction name="m_actionSelectNextFeedCategory"/>
     <addaction name="m_actionSelectPreviousFeedCategory"/>
     <addaction name="separator"/>
@@ -647,6 +649,17 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+Del</string>
+   </property>
+  </action>
+  <action name="m_actionShowOnlyUnreadFeeds">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show only unread feeds/categories</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+U</string>
    </property>
   </action>
  </widget>

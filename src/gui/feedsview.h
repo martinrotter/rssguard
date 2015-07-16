@@ -75,6 +75,8 @@ class FeedsView : public QTreeView {
     void loadExpandedStates();
 
   public slots:
+    void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
+
     // Feed updating.
     void updateAllFeeds();
     void updateAllFeedsOnStartup();

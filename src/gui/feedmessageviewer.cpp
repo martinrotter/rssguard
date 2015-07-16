@@ -276,6 +276,10 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
 }
 
+void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
+  m_feedsView->invalidateReadFeedsFilter(true, qobject_cast<QAction*>(sender())->isChecked());
+}
+
 void FeedMessageViewer::updateMessageButtonsAvailability() {
   bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
   bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
@@ -423,6 +427,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),
           this, SLOT(switchMessageSplitterOrientation()));
+  connect(form_main->m_ui->m_actionShowOnlyUnreadFeeds, SIGNAL(toggled(bool)),
+          this, SLOT(toggleShowOnlyUnreadFeeds()));
 }
 
 void FeedMessageViewer::initialize() {
