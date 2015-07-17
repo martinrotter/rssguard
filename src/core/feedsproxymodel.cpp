@@ -217,16 +217,16 @@ FeedsModelRootItem *FeedsProxyModel::selectedItem() const {
   return m_selectedItem;
 }
 
-void FeedsProxyModel::setSelectedItem(FeedsModelRootItem *selectedItem) {
-  m_selectedItem = selectedItem;
+void FeedsProxyModel::setSelectedItem(FeedsModelRootItem *selected_item) {
+  m_selectedItem = selected_item;
 }
 
 bool FeedsProxyModel::showUnreadOnly() const {
   return m_showUnreadOnly;
 }
 
-void FeedsProxyModel::setShowUnreadOnly(bool showUnreadOnly) {
-  m_showUnreadOnly = showUnreadOnly;
+void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
+  m_showUnreadOnly = show_unread_only;
 }
 
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {

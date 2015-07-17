@@ -44,10 +44,10 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
 
     bool showUnreadOnly() const;
-    void setShowUnreadOnly(bool showUnreadOnly);
+    void setShowUnreadOnly(bool show_unread_only);
 
     FeedsModelRootItem *selectedItem() const;
-    void setSelectedItem(FeedsModelRootItem *selectedItem);
+    void setSelectedItem(FeedsModelRootItem *selected_item);
 
   public slots:
     void invalidateFilter();
