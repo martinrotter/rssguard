@@ -31,6 +31,7 @@
     <li>Enhanced information in download manager.</li>
     <li>Added ability to change font for internal message viewer.</li>
     <li>Updated URLs of some Adblock subscriptions.</li>
+    <li>(Windows only) Updated bundled Qt runtime to versions 4.8.7/5.5.0. Pre-builded binaries use Qt 5. Although this results in larger installation files, this is good for future, because Qt 5 is newer and has better support.</li>
 	</ul>
   
   Fixed:
