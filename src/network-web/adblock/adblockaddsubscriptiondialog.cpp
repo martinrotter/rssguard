@@ -52,7 +52,7 @@ void AdBlockAddSubscriptionDialog::loadPresets() {
                        << Subscription("Fanboy's List (English)", "http://www.fanboy.co.nz/adblock/fanboy-adblock.txt")
                        << Subscription("Adversity (English)", "https://raw.githubusercontent.com/Hubird-au/Adversity/master/Adversity.txt")
                        << Subscription("BSI Lista Polska (Polish)", "http://www.bsi.info.pl/filtrABP.txt")
-                       << Subscription("Czech List (Czech)", "http://adblock.dajbych.net/adblock.txt")
+                       << Subscription("Easylist Czech and Slovak (Czech)", "https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt")
                        << Subscription("dutchblock (Dutch)", "http://groenewoudt.net/dutchblock/list.txt")
                        << Subscription("Filtros Nauscopicos (Spanish)", "http://abp.mozilla-hispano.org/nauscopio/filtros.txt")
                        << Subscription("hufilter (Hungarian)", "http://www.hufilter.hu/hufilter.txt")
