@@ -1,4 +1,4 @@
-<body>
+<head>
   <style>
     body {
       font-size: 150%;
@@ -13,6 +13,8 @@
       margin-bottom: 3px;
     }
   </style>
+</head>
+<body>
 	<center><h2>2.5.0</h2></center>
 	Added:
 	<ul>
@@ -28,8 +30,13 @@
 		<li><b>Fancy & modern popup notifications</b> (turned on by default).</li>
     <li>Enhanced information in download manager.</li>
     <li>Added ability to change font for internal message viewer.</li>
+    <li>Updated URLs of some Adblock subscriptions.</li>
 	</ul>
-
+  
+  Fixed:
+  <ul>
+    <li>Adblock subscriptions starting with faulty " [Adblock..."] are now correctly loaded.</li>
+  </ul>
 	<hr/>
 	<center><h2>2.4.2</h2></center>
 	Fixed:

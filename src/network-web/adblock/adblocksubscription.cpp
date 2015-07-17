@@ -162,7 +162,12 @@ void AdBlockSubscription::subscriptionDownloaded() {
   }
 
   bool error = false;
-  const QByteArray response = QString::fromUtf8(downloader->lastOutputData()).toUtf8();
+  QByteArray response = QString::fromUtf8(downloader->lastOutputData()).toUtf8();
+
+  if (response.startsWith(' ')) {
+    // Deal with " [Adblock".
+    response = response.remove(0, 1);
+  }
 
   if (downloader->lastOutputError() != QNetworkReply::NoError ||
       !response.startsWith(QByteArray("[Adblock")) ||
@@ -208,12 +213,13 @@ bool AdBlockSubscription::saveDownloadedData(const QByteArray &data) {
     file.write(part2);
     file.flush();
     file.close();
-    return true;
+  }
+  else {
+    file.write(data);
+    file.flush();
+    file.close();
   }
 
-  file.write(data);
-  file.flush();
-  file.close();
   return true;
 }
 
