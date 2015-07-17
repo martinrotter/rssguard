@@ -20,7 +20,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="m_lblTitle">
      <property name="text">
-      <string>Title:</string>
+      <string>Title</string>
      </property>
      <property name="buddy">
       <cstring>m_txtTitle</cstring>
@@ -30,7 +30,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="m_lblUrl">
      <property name="text">
-      <string>Address:</string>
+      <string>Address</string>
      </property>
      <property name="buddy">
       <cstring>m_txtUrl</cstring>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat skupinu filtrů</translation>
     </message>
     <message>
         <source>Title:</source>
@@ -17,23 +17,23 @@
     </message>
     <message>
         <source>Another subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní seznam filtrů</translation>
     </message>
     <message>
         <source>Entered title is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadaný název je v pořádku.</translation>
     </message>
     <message>
         <source>Entered title is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadaný název je prázdný.</translation>
     </message>
     <message>
         <source>Entered url is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadaná adresa je v pořádku.</translation>
     </message>
     <message>
         <source>Entered url is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zadaná adresa je prázdná.</translation>
     </message>
 </context>
 <context>
@@ -47,53 +47,55 @@
     <name>AdBlockDialog</name>
     <message>
         <source>Adblock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení Adblocku</translation>
     </message>
     <message>
         <source>Enable Adblock</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit Adblock</translation>
     </message>
     <message>
         <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
 
 Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation type="unfinished"></translation>
+        <translation>Berte v potaz, že Adblock může tuto aplikaci podstatně zpomalit, pokud si aktivujete veliké skupiny filtrů. Příliš mnoho pravidel škodí výkonu. Také se ujistěte, že po významných úpravach nastavení Adblocku restartujete aplikaci. Adblock je znám tím, že může žrát hodně paměti.
+
+Berte také na paměti, že některé prostředky webových stránek jsou interním webovým prohlížečem cachovány.</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosti</translation>
     </message>
     <message>
         <source>Filter rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrovat pravidla</translation>
     </message>
     <message>
         <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít pouze základní části EasyListu (z výkonnostních důvodů)</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished">Přidat pravidlo</translation>
+        <translation>Přidat pravidlo</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished">Smazat  pravidlo</translation>
+        <translation>Smazat pravidlo</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat skupinu filtrů</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat skupinu filtrů</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat skupinu filtrů</translation>
     </message>
     <message>
         <source>Rules writing guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Jak psát filtry</translation>
     </message>
 </context>
 <context>
@@ -108,35 +110,35 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat pro %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázat pouze pro tuto stránku</translation>
     </message>
     <message>
         <source>Blocked popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation>Zablokovaná vyskakovací okna</translation>
     </message>
     <message>
         <source>%1 with (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 skrze (%2)</translation>
     </message>
     <message>
         <source>No content blocked</source>
-        <translation type="unfinished"></translation>
+        <translation>Nic se aktuálně neblokuje</translation>
     </message>
     <message>
         <source>Blocked some content - click to edit rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Nějaký obsah zablokován - klikněte pro editaci pravidla</translation>
     </message>
     <message>
         <source>Adblock - up and running</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock - jsem vzhůru a makám</translation>
     </message>
     <message>
         <source>Adblock - not running</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock - nemakám</translation>
     </message>
 </context>
 <context>
@@ -364,7 +366,8 @@ Tato stránka obsahuje %n kanálů.</numerusform>
     <message>
         <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor &apos;%1&apos; je stažen.
+Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>URL: %1</source>
@@ -1804,6 +1807,14 @@ Automatický update: %5</translation>
         <source>&amp;Cleanup database</source>
         <translation>&amp;Vyčistit databázi</translation>
     </message>
+    <message>
+        <source>Show only unread feeds/categories</source>
+        <translation>Zobrazit pouze nepřečtené kanály/kategorie</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+U</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2519,6 +2530,14 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     </message>
     <message>
         <source>Top-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard font</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

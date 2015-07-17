@@ -1796,6 +1796,14 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <source>&amp;Cleanup database</source>
         <translation>&amp;database opschonen</translation>
     </message>
+    <message>
+        <source>Show only unread feeds/categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+U</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2527,6 +2535,14 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Top-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard font</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

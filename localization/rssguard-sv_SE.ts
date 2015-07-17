@@ -1794,6 +1794,14 @@ Uppdateringsstatus: %5</translation>
         <source>&amp;Cleanup database</source>
         <translation>&amp;Rensa databasen</translation>
     </message>
+    <message>
+        <source>Show only unread feeds/categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+U</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2518,6 +2526,14 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
     </message>
     <message>
         <source>Top-right corner</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal message browser fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard font</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
