@@ -338,7 +338,6 @@ void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
     updateCountsOfSelectedFeeds(total_msg_count_changed);
   }
 
-  // TODO: učechrat
   invalidateReadFeedsFilter();
 }
 
@@ -521,9 +520,7 @@ void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_t
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
 
-  // TODO: učechrat
   invalidateReadFeedsFilter();
-
   notifyWithCounts();
 }
 
@@ -623,12 +620,10 @@ void FeedsView::setupAppearance() {
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
-  // TODO: učechrat
   FeedsModelRootItem *selected_item = selectedItem();
+
   m_proxyModel->setSelectedItem(selected_item);
-
   QTreeView::selectionChanged(selected, deselected);
-
   emit feedsSelected(FeedsSelection(selected_item));
   invalidateReadFeedsFilter();
 }
