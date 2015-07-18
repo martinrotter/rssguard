@@ -184,7 +184,6 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
     return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
   }
 
-  // TODO: učechrat
   QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
 
   if (!idx.isValid()) {
@@ -197,14 +196,7 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
     // Recycle bin is always displayed.
     return true;
   }
-
-  /*
-  if (m_selectedItem == NULL) {
-    return item->countOfUnreadMessages() > 0;
-  }
-  */
-
-  if (item->isParentOf(m_selectedItem)/* || item->isChildOf(m_selectedItem)*/ || m_selectedItem == item) {
+  else if (item->isParentOf(m_selectedItem)/* || item->isChildOf(m_selectedItem)*/ || m_selectedItem == item) {
     // Currently selected item and all its parents and children must be displayed.
     return true;
   }
