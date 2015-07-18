@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
         <translation>Přidat skupinu filtrů</translation>
-    </message>
-    <message>
-        <source>Title:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Another subscription</source>
@@ -34,6 +26,14 @@
     <message>
         <source>Entered url is empty.</source>
         <translation>Zadaná adresa je prázdná.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished">Nadpis</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

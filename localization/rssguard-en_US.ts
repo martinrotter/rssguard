@@ -10,12 +10,12 @@
     </message>
     <message>
         <location filename="../src/network-web/adblock/adblockaddsubscriptiondialog.ui" line="23"/>
-        <source>Title:</source>
+        <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/network-web/adblock/adblockaddsubscriptiondialog.ui" line="33"/>
-        <source>Address:</source>
+        <source>Address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -738,12 +738,12 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="350"/>
+        <location filename="../src/gui/feedsview.cpp" line="349"/>
         <source>Cannot edit item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="377"/>
+        <location filename="../src/gui/feedsview.cpp" line="376"/>
         <source>Cannot delete item</source>
         <translation type="unfinished"></translation>
     </message>
@@ -758,67 +758,67 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="351"/>
+        <location filename="../src/gui/feedsview.cpp" line="350"/>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="378"/>
+        <location filename="../src/gui/feedsview.cpp" line="377"/>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="393"/>
+        <location filename="../src/gui/feedsview.cpp" line="392"/>
         <source>Deleting feed or category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="394"/>
+        <location filename="../src/gui/feedsview.cpp" line="393"/>
         <source>You are about to delete selected feed or category.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="394"/>
+        <location filename="../src/gui/feedsview.cpp" line="393"/>
         <source>Do you really want to delete selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="408"/>
+        <location filename="../src/gui/feedsview.cpp" line="407"/>
         <source>Deletion of item failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="409"/>
+        <location filename="../src/gui/feedsview.cpp" line="408"/>
         <source>Selected item was not deleted due to error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="457"/>
+        <location filename="../src/gui/feedsview.cpp" line="456"/>
         <source>Permanently delete messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="458"/>
+        <location filename="../src/gui/feedsview.cpp" line="457"/>
         <source>You are about to permanenty delete all messages from your recycle bin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="459"/>
+        <location filename="../src/gui/feedsview.cpp" line="458"/>
         <source>Do you really want to empty your recycle bin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="561"/>
+        <location filename="../src/gui/feedsview.cpp" line="558"/>
         <source>Context menu for feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="576"/>
+        <location filename="../src/gui/feedsview.cpp" line="573"/>
         <source>Context menu for empty space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="585"/>
+        <location filename="../src/gui/feedsview.cpp" line="582"/>
         <source>Context menu for recycle bin</source>
         <translation type="unfinished"></translation>
     </message>

@@ -87,7 +87,7 @@ class SimpleCrypt {
       ErrorNoError,         /*!< No error occurred. */
       ErrorNoKeySet,        /*!< No key was set. You can not encrypt or decrypt without a valid key. */
       ErrorUnknownVersion,  /*!< The version of this data is unknown, or the data is otherwise not valid. */
-      ErrorIntegrityFailed, /*!< The integrity check of the data failed. Perhaps the wrong key was used. */
+              ErrorIntegrityFailed  /*!< The integrity check of the data failed. Perhaps the wrong key was used. */
     };
 
     /**
