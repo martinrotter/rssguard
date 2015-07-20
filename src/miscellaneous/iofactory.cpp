@@ -24,6 +24,7 @@
 #include <QFileInfo>
 #include <QFile>
 #include <QObject>
+#include <QTextStream>
 
 
 IOFactory::IOFactory() {
@@ -88,6 +89,21 @@ QByteArray IOFactory::readTextFile(const QString &file_path) {
   }
   else {
     throw IOException(tr("Cannot open file '%1' for reading.").arg(QDir::toNativeSeparators(file_path)));
+  }
+}
+
+void IOFactory::writeTextFile(const QString &file_path, const QByteArray &data) {
+  QFile input_file(file_path);
+  QTextStream stream(&input_file);
+
+  if (input_file.open(QIODevice::Text | QIODevice::WriteOnly)) {
+    stream << data;
+    stream.flush();
+    input_file.flush();
+    input_file.close();
+  }
+  else {
+    throw IOException(tr("Cannot open file '%1' for writting.").arg(QDir::toNativeSeparators(file_path)));
   }
 }
 

@@ -52,6 +52,12 @@ class TextFactory {
 
     // Shortens input string according to given length limit.
     static QString shorten(const QString &input, int text_length_limit = TEXT_TITLE_LIMIT);
+
+  private:
+    static quint64 initializeSecretEncryptionKey();
+    static quint64 generateSecretEncryptionKey();
+
+    static quint64 s_encryptionKey;
 };
 
 #endif // TEXTFACTORY_H
