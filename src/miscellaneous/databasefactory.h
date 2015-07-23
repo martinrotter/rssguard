@@ -65,7 +65,7 @@ class DatabaseFactory : public QObject {
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
     // NOTE: This always returns OPENED database.
-    QSqlDatabase connection(const QString &connection_name, DesiredType desired_type);
+    QSqlDatabase connection(const QString &connection_name, DesiredType desired_type = FromSettings);
 
     QString humanDriverName(UsedDriver driver);
     QString humanDriverName(const QString &driver_code);

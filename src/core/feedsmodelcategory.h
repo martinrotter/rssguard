@@ -24,7 +24,7 @@
 #include <QCoreApplication>
 
 
-class FeedsModelFeed;
+class FeedsModel;
 
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR category types.
@@ -45,6 +45,9 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // Removes category and all its children from persistent
     // database.
     bool removeItself();
+
+    bool addItself(FeedsModelRootItem *parent);
+    bool editItself(FeedsModelCategory *new_category_data);
 
   private:
     void init();

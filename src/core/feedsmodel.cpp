@@ -275,78 +275,29 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
 bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
+  bool result = category->addItself(parent);
 
-  // Now, add category to persistent storage.
-  // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                       DatabaseFactory::FromSettings);
-  QSqlQuery query_add(database);
-
-  query_add.setForwardOnly(true);
-  query_add.prepare("INSERT INTO Categories "
-                    "(parent_id, title, description, date_created, icon) "
-                    "VALUES (:parent_id, :title, :description, :date_created, :icon);");
-  query_add.bindValue(QSL(":parent_id"), parent->id());
-  query_add.bindValue(QSL(":title"), category->title());
-  query_add.bindValue(QSL(":description"), category->description());
-  query_add.bindValue(QSL(":date_created"), category->creationDate().toMSecsSinceEpoch());
-  query_add.bindValue(QSL(":icon"), qApp->icons()->toByteArray(category->icon()));
-
-  if (!query_add.exec()) {
-    qDebug("Failed to add category to database: %s.", qPrintable(query_add.lastError().text()));
-
-    // Query failed.
-    return false;
-  }
-
-  query_add.prepare(QSL("SELECT id FROM Categories WHERE title = :title;"));
-  query_add.bindValue(QSL(":title"), category->title());
-  if (query_add.exec() && query_add.next()) {
-    // New category was added, fetch is primary id
-    // from the database.
-    category->setId(query_add.value(0).toInt());
+  if (result) {
+    // Category was added to the persistent storage,
+    // so add it to the model.
+    beginInsertRows(parent_index, parent->childCount(), parent->childCount());
+    parent->appendChild(category);
+    endInsertRows();
   }
   else {
-    // Something failed.
-    return false;
+    // We cannot delete (*this) in its method, thus delete it here.
+    delete category;
   }
 
-  // Category was added to the persistent storage,
-  // so add it to the model.
-  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-  parent->appendChild(category);
-  endInsertRows();
-
-  return true;
+  return result;
 }
 
-bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category) {
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-  QSqlQuery query_update_category(database);
+bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category_data) {
   FeedsModelRootItem *original_parent = original_category->parent();
-  FeedsModelRootItem *new_parent = new_category->parent();
+  FeedsModelRootItem *new_parent = new_category_data->parent();
+  bool result = original_category->editItself(new_category_data);
 
-  query_update_category.setForwardOnly(true);
-  query_update_category.prepare("UPDATE Categories "
-                                "SET title = :title, description = :description, icon = :icon, parent_id = :parent_id "
-                                "WHERE id = :id;");
-  query_update_category.bindValue(QSL(":title"), new_category->title());
-  query_update_category.bindValue(QSL(":description"), new_category->description());
-  query_update_category.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_category->icon()));
-  query_update_category.bindValue(QSL(":parent_id"), new_parent->id());
-  query_update_category.bindValue(QSL(":id"), original_category->id());
-
-  if (!query_update_category.exec()) {
-    // Persistent storage update failed, no way to continue now.
-    return false;
-  }
-
-  // Setup new model data for the original item.
-  original_category->setDescription(new_category->description());
-  original_category->setIcon(new_category->icon());
-  original_category->setTitle(new_category->title());
-
-  if (original_parent != new_parent) {
+  if (result && original_parent != new_parent) {
     // User edited category and set it new parent item,
     // se we need to move the item in the model too.
     int original_index_of_category = original_parent->childItems().indexOf(original_category);
@@ -357,115 +308,41 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelC
     original_parent->removeChild(original_category);
     endRemoveRows();
 
-    // ... and insert it under the new parent.
+    // ...and insert it under the new parent.
     beginInsertRows(indexForItem(new_parent), new_index_of_category, new_index_of_category);
     new_parent->appendChild(original_category);
     endInsertRows();
   }
 
-  // Free temporary category from memory.
-  delete new_category;
-
-  // Editing is done.
-  return true;
+  // Cleanup temporary new category data.
+  delete new_category_data;
+  return result;
 }
 
 bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
   // Get index of parent item (parent standard category or root item).
   QModelIndex parent_index = indexForItem(parent);
+  bool result = feed->addItself(parent);
 
-  // Now, add feed to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-  QSqlQuery query_add_feed(database);
-
-  query_add_feed.setForwardOnly(true);
-  query_add_feed.prepare("INSERT INTO Feeds "
-                         "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type) "
-                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);");
-  query_add_feed.bindValue(QSL(":title"), feed->title());
-  query_add_feed.bindValue(QSL(":description"), feed->description());
-  query_add_feed.bindValue(QSL(":date_created"), feed->creationDate().toMSecsSinceEpoch());
-  query_add_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
-  query_add_feed.bindValue(QSL(":category"), parent->id());
-  query_add_feed.bindValue(QSL(":encoding"), feed->encoding());
-  query_add_feed.bindValue(QSL(":url"), feed->url());
-  query_add_feed.bindValue(QSL(":protected"), (int) feed->passwordProtected());
-  query_add_feed.bindValue(QSL(":username"), feed->username());
-  query_add_feed.bindValue(QSL(":password"), TextFactory::encrypt(feed->password()));
-  query_add_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
-  query_add_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
-  query_add_feed.bindValue(QSL(":type"), (int) feed->type());
-
-  if (!query_add_feed.exec()) {
-    qDebug("Failed to add feed to database: %s.", qPrintable(query_add_feed.lastError().text()));
-
-    // Query failed.
-    return false;
-  }
-
-  query_add_feed.prepare(QSL("SELECT id FROM Feeds WHERE url = :url;"));
-  query_add_feed.bindValue(QSL(":url"), feed->url());
-  if (query_add_feed.exec() && query_add_feed.next()) {
-    // New feed was added, fetch is primary id from the database.
-    feed->setId(query_add_feed.value(0).toInt());
+  if (result) {
+    // Feed was added to the persistent storage so add it to the model.
+    beginInsertRows(parent_index, parent->childCount(), parent->childCount());
+    parent->appendChild(feed);
+    endInsertRows();
   }
   else {
-    // Something failed.
-    return false;
+    delete feed;
   }
 
-  // Feed was added to the persistent storage so add it to the model.
-  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-  parent->appendChild(feed);
-  endInsertRows();
-
-  return true;
+  return result;
 }
 
-bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed) {
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-  QSqlQuery query_update_feed(database);
+bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed_data) {
   FeedsModelRootItem *original_parent = original_feed->parent();
-  FeedsModelRootItem *new_parent = new_feed->parent();
+  FeedsModelRootItem *new_parent = new_feed_data->parent();
+  bool result = original_feed->editItself(new_feed_data);
 
-  query_update_feed.setForwardOnly(true);
-  query_update_feed.prepare("UPDATE Feeds "
-                            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
-                            "WHERE id = :id;");
-  query_update_feed.bindValue(QSL(":title"), new_feed->title());
-  query_update_feed.bindValue(QSL(":description"), new_feed->description());
-  query_update_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_feed->icon()));
-  query_update_feed.bindValue(QSL(":category"), new_parent->id());
-  query_update_feed.bindValue(QSL(":encoding"), new_feed->encoding());
-  query_update_feed.bindValue(QSL(":url"), new_feed->url());
-  query_update_feed.bindValue(QSL(":protected"), (int) new_feed->passwordProtected());
-  query_update_feed.bindValue(QSL(":username"), new_feed->username());
-  query_update_feed.bindValue(QSL(":password"), TextFactory::encrypt(new_feed->password()));
-  query_update_feed.bindValue(QSL(":update_type"), (int) new_feed->autoUpdateType());
-  query_update_feed.bindValue(QSL(":update_interval"), new_feed->autoUpdateInitialInterval());
-  query_update_feed.bindValue(QSL(":type"), new_feed->type());
-  query_update_feed.bindValue(QSL(":id"), original_feed->id());
-
-  if (!query_update_feed.exec()) {
-    // Persistent storage update failed, no way to continue now.
-    return false;
-  }
-
-  // Setup new model data for the original item.
-  original_feed->setTitle(new_feed->title());
-  original_feed->setDescription(new_feed->description());
-  original_feed->setIcon(new_feed->icon());
-  original_feed->setEncoding(new_feed->encoding());
-  original_feed->setDescription(new_feed->description());
-  original_feed->setUrl(new_feed->url());
-  original_feed->setPasswordProtected(new_feed->passwordProtected());
-  original_feed->setUsername(new_feed->username());
-  original_feed->setPassword(new_feed->password());
-  original_feed->setAutoUpdateType(new_feed->autoUpdateType());
-  original_feed->setAutoUpdateInitialInterval(new_feed->autoUpdateInitialInterval());
-  original_feed->setType(new_feed->type());
-
-  if (original_parent != new_parent) {
+  if (result && original_parent != new_parent) {
     // User edited category and set it new parent item,
     // se we need to move the item in the model too.
     int original_index_of_feed = original_parent->childItems().indexOf(original_feed);
@@ -482,11 +359,8 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_fee
     endInsertRows();
   }
 
-  // Free temporary category from memory.
-  delete new_feed;
-
-  // Editing is done.
-  return true;
+  delete new_feed_data;
+  return result;
 }
 
 QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {

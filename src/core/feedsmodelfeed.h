@@ -29,6 +29,7 @@
 
 
 class Message;
+class FeedsModel;
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
@@ -85,6 +86,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Removes this standard feed from persistent
     // storage.
     bool removeItself();
+    bool addItself(FeedsModelRootItem *parent);
+    bool editItself(FeedsModelFeed *new_feed_data);
 
     // Other getters/setters.
     inline Type type() const {

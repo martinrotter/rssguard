@@ -20,6 +20,10 @@
   <ul>
     <li><b>Key used for proxy/feed password coding is now stored in separate file. This file lies in the same directory as configuration file. If your use password-protected proxy/feeds, then make sure that NOBODY gets access to that file and your DB file in the same time.</b></li>
   </ul>
+  Fixed:
+  <ul>
+    <li>Fixed some memory leaks which might appear when adding/editing categories/feeds.</li>
+  <ul>
   <hr/>
 	<center><h2>2.5.0</h2></center>
 	Added:
