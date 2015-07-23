@@ -114,15 +114,15 @@ bool FeedsModelRootItem::removeChild(FeedsModelRootItem *child) {
   return m_childItems.removeOne(child);
 }
 
-FeedsModelRecycleBin* FeedsModelRootItem::toRecycleBin() {
+FeedsModelRecycleBin *FeedsModelRootItem::toRecycleBin() {
   return static_cast<FeedsModelRecycleBin*>(this);
 }
 
-FeedsModelCategory* FeedsModelRootItem::toCategory() {
+FeedsModelCategory *FeedsModelRootItem::toCategory() {
   return static_cast<FeedsModelCategory*>(this);
 }
 
-FeedsModelFeed* FeedsModelRootItem::toFeed() {
+FeedsModelFeed *FeedsModelRootItem::toFeed() {
   return static_cast<FeedsModelFeed*>(this);
 }
 
