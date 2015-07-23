@@ -420,6 +420,7 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
       while (query_read_msg.next()) {
         Message message;
 
+        message.m_feedId = feed->id();
         message.m_title = query_read_msg.value(0).toString();
         message.m_url = query_read_msg.value(1).toString();
         message.m_author = query_read_msg.value(2).toString();
