@@ -182,9 +182,9 @@ class FeedsModelRootItem {
     }
 
     // Converters
-    FeedsModelRecycleBin* toRecycleBin();
-    FeedsModelCategory* toCategory();
-    FeedsModelFeed* toFeed();
+    FeedsModelRecycleBin *toRecycleBin();
+    FeedsModelCategory *toCategory();
+    FeedsModelFeed *toFeed();
 
     // Compares two model items.
     static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);

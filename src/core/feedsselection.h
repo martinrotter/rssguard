@@ -23,6 +23,7 @@
 
 
 class FeedsModelRootItem;
+class FeedsModelFeed;
 
 class FeedsSelection {
   public:

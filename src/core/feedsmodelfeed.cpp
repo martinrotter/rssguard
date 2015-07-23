@@ -19,6 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "core/parsingfactory.h"
+#include "core/feedsmodel.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
@@ -464,6 +465,97 @@ bool FeedsModelFeed::removeItself() {
   query_remove.bindValue(QSL(":feed"), id());
 
   return query_remove.exec();
+}
+
+bool FeedsModelFeed::addItself(FeedsModelRootItem *parent) {
+  // Now, add feed to persistent storage.
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+  QSqlQuery query_add_feed(database);
+
+  query_add_feed.setForwardOnly(true);
+  query_add_feed.prepare("INSERT INTO Feeds "
+                         "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type) "
+                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);");
+  query_add_feed.bindValue(QSL(":title"), title());
+  query_add_feed.bindValue(QSL(":description"), description());
+  query_add_feed.bindValue(QSL(":date_created"), creationDate().toMSecsSinceEpoch());
+  query_add_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon()));
+  query_add_feed.bindValue(QSL(":category"), parent->id());
+  query_add_feed.bindValue(QSL(":encoding"), encoding());
+  query_add_feed.bindValue(QSL(":url"), url());
+  query_add_feed.bindValue(QSL(":protected"), (int) passwordProtected());
+  query_add_feed.bindValue(QSL(":username"), username());
+  query_add_feed.bindValue(QSL(":password"), TextFactory::encrypt(password()));
+  query_add_feed.bindValue(QSL(":update_type"), (int) autoUpdateType());
+  query_add_feed.bindValue(QSL(":update_interval"), autoUpdateInitialInterval());
+  query_add_feed.bindValue(QSL(":type"), (int) type());
+
+  if (!query_add_feed.exec()) {
+    qDebug("Failed to add feed to database: %s.", qPrintable(query_add_feed.lastError().text()));
+
+    // Query failed.
+    return false;
+  }
+
+  query_add_feed.prepare(QSL("SELECT id FROM Feeds WHERE url = :url;"));
+  query_add_feed.bindValue(QSL(":url"), url());
+  if (query_add_feed.exec() && query_add_feed.next()) {
+    // New feed was added, fetch is primary id from the database.
+    setId(query_add_feed.value(0).toInt());
+  }
+  else {
+    // Something failed.
+    return false;
+  }
+
+  return true;
+}
+
+bool FeedsModelFeed::editItself(FeedsModelFeed *new_feed_data) {
+  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+  QSqlQuery query_update_feed(database);
+  FeedsModelFeed *original_feed = this;
+  FeedsModelRootItem *new_parent = new_feed_data->parent();
+
+  query_update_feed.setForwardOnly(true);
+  query_update_feed.prepare("UPDATE Feeds "
+                            "SET title = :title, description = :description, icon = :icon, category = :category, encoding = :encoding, url = :url, protected = :protected, username = :username, password = :password, update_type = :update_type, update_interval = :update_interval, type = :type "
+                            "WHERE id = :id;");
+  query_update_feed.bindValue(QSL(":title"), new_feed_data->title());
+  query_update_feed.bindValue(QSL(":description"), new_feed_data->description());
+  query_update_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(new_feed_data->icon()));
+  query_update_feed.bindValue(QSL(":category"), new_parent->id());
+  query_update_feed.bindValue(QSL(":encoding"), new_feed_data->encoding());
+  query_update_feed.bindValue(QSL(":url"), new_feed_data->url());
+  query_update_feed.bindValue(QSL(":protected"), (int) new_feed_data->passwordProtected());
+  query_update_feed.bindValue(QSL(":username"), new_feed_data->username());
+  query_update_feed.bindValue(QSL(":password"), TextFactory::encrypt(new_feed_data->password()));
+  query_update_feed.bindValue(QSL(":update_type"), (int) new_feed_data->autoUpdateType());
+  query_update_feed.bindValue(QSL(":update_interval"), new_feed_data->autoUpdateInitialInterval());
+  query_update_feed.bindValue(QSL(":type"), new_feed_data->type());
+  query_update_feed.bindValue(QSL(":id"), original_feed->id());
+
+  if (!query_update_feed.exec()) {
+    // Persistent storage update failed, no way to continue now.
+    return false;
+  }
+
+  // Setup new model data for the original item.
+  original_feed->setTitle(new_feed_data->title());
+  original_feed->setDescription(new_feed_data->description());
+  original_feed->setIcon(new_feed_data->icon());
+  original_feed->setEncoding(new_feed_data->encoding());
+  original_feed->setDescription(new_feed_data->description());
+  original_feed->setUrl(new_feed_data->url());
+  original_feed->setPasswordProtected(new_feed_data->passwordProtected());
+  original_feed->setUsername(new_feed_data->username());
+  original_feed->setPassword(new_feed_data->password());
+  original_feed->setAutoUpdateType(new_feed_data->autoUpdateType());
+  original_feed->setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
+  original_feed->setType(new_feed_data->type());
+
+  // Editing is done.
+  return true;
 }
 
 int FeedsModelFeed::updateMessages(const QList<Message> &messages) {

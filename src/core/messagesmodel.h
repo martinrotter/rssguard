@@ -86,6 +86,7 @@ class Message {
   public:
     explicit Message() {
       m_title = m_url = m_author = m_contents = "";
+      m_feedId = 0;
       m_enclosures = QList<Enclosure>();
     }
 
@@ -94,6 +95,7 @@ class Message {
     QString m_author;
     QString m_contents;
     QDateTime m_created;
+    int m_feedId;
 
     QList<Enclosure> m_enclosures;
 

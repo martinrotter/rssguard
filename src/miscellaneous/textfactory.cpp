@@ -18,12 +18,18 @@
 #include "miscellaneous/textfactory.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/simplecrypt/simplecrypt.h"
+#include "miscellaneous/iofactory.h"
+#include "exceptions/applicationexception.h"
 
 #include <QString>
 #include <QStringList>
 #include <QLocale>
+#include <QDir>
 
+
+quint64 TextFactory::s_encryptionKey = 0x0;
 
 TextFactory::TextFactory() {
 }
@@ -109,12 +115,12 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
   return QDateTime::fromMSecsSinceEpoch(milis_from_epoch);
 }
 
-QString TextFactory::encrypt(const QString &text) {
-  return SimpleCrypt(DUMMY_DUMMY_DUMMY).encryptToString(text);
+QString TextFactory::encrypt(const QString &text) { 
+  return SimpleCrypt(initializeSecretEncryptionKey()).encryptToString(text);
 }
 
 QString TextFactory::decrypt(const QString &text) {
-  return SimpleCrypt(DUMMY_DUMMY_DUMMY).decryptToString(text);
+  return SimpleCrypt(initializeSecretEncryptionKey()).decryptToString(text);
 }
 
 QString TextFactory::shorten(const QString &input, int text_length_limit) {
@@ -124,4 +130,26 @@ QString TextFactory::shorten(const QString &input, int text_length_limit) {
   else {
     return input;
   }
+}
+
+quint64 TextFactory::initializeSecretEncryptionKey() {
+  if (s_encryptionKey == 0x0) {
+    // Check if file with encryption key exists.
+    QString encryption_file_path = qApp->settings()->pathName() + QDir::separator() + ENCRYPTION_FILE_NAME;
+
+    try {
+      s_encryptionKey = (quint64) QString(IOFactory::readTextFile(encryption_file_path)).toLongLong();
+    }
+    catch (ApplicationException) {
+      // Well, key does not exist or is invalid, generate and save one.
+      s_encryptionKey = generateSecretEncryptionKey();
+      IOFactory::writeTextFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
+    }
+  }
+
+  return s_encryptionKey;
+}
+
+quint64 TextFactory::generateSecretEncryptionKey() {
+  return RAND_MAX * qrand() + qrand();
 }
