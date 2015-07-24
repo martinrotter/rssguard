@@ -350,10 +350,6 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Selection if local file cancelled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Download finished</source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,6 +364,10 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Local file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selection of local file cancelled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1791,10 +1791,6 @@ Auto-update status: %5</source>
         <source>Show only unread feeds/categories</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Ctrl+Shift+U</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2399,12 +2395,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
-
-MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Show password</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2516,6 +2506,10 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
     </message>
     <message>
         <source>Standard font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2655,6 +2649,10 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     <name>IOFactory</name>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

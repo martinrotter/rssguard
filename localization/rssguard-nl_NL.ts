@@ -352,10 +352,6 @@ Deze website bevat % n feed(s).</numerusform>
         <translation>Kan uitvoer map niet openen. Open deze handmatig.</translation>
     </message>
     <message>
-        <source>Selection if local file cancelled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Download finished</source>
         <translation type="unfinished"></translation>
     </message>
@@ -370,6 +366,10 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Local file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selection of local file cancelled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1800,10 +1800,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <source>Show only unread feeds/categories</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Ctrl+Shift+U</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2412,14 +2408,6 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <translation>Selecteer gedownloade doelmap </translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
-
-MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation>Merk op dat de snelheid van de gebruikte MySQL server en de wachttijd van de gebruikte verbinding  ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing.Het gebruik van trage database connecties leidt tot slechte prestaties tijdens het bladeren in feeds of berichten.
-
-MySQL backend maakt automatisch gebruik van databank met de naam &quot;rssguard&quot;. Deze databank niet handmatig aanmaken, laat deze toepassing het zelf doen. Daarom moet de gebruiker rechten geven  voor het maken en verwijderen van databases.</translation>
-    </message>
-    <message>
         <source>&amp;Show password</source>
         <translation>&amp;Toon paswoord</translation>
     </message>
@@ -2543,6 +2531,10 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Standard font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2683,6 +2675,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
         <translation>Kan bestand &apos;%1&apos; niet openen om te lezen.</translation>
+    </message>
+    <message>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

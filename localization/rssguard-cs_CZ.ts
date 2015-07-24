@@ -29,11 +29,11 @@
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Nadpis</translation>
+        <translation>Nadpis</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa</translation>
     </message>
 </context>
 <context>
@@ -356,10 +356,6 @@ Tato stránka obsahuje %n kanálů.</numerusform>
         <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
     </message>
     <message>
-        <source>Selection if local file cancelled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Download finished</source>
         <translation>Stahování dokončeno</translation>
     </message>
@@ -376,6 +372,10 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <source>Local file: %1</source>
         <translation>Lokální soubor: %1</translation>
+    </message>
+    <message>
+        <source>Selection of local file cancelled.</source>
+        <translation>Výběr lokálního souboru zrušen.</translation>
     </message>
 </context>
 <context>
@@ -983,11 +983,11 @@ Automatický update: %5</translation>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
-        <translation type="unfinished"></translation>
+        <translation>Čištění databáze</translation>
     </message>
     <message>
         <source>Remove all messages older than</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat zprávy starší než</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
@@ -999,55 +999,55 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Shrink database file</source>
-        <translation type="unfinished"></translation>
+        <translation>Smrsknout databázový soubor</translation>
     </message>
     <message>
         <source>Database information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace o databázi</translation>
     </message>
     <message>
         <source>Database file size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost databázového souboru</translation>
     </message>
     <message>
         <source>Database type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ databáze</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Postup</translation>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jsem připraven.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="unfinished"></translation>
+        <translation>Čištění databáze běží.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Databáze byla vyčištěna.</translation>
     </message>
     <message>
         <source>Database cleanup failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Čištění databáze selhalo.</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení vyčištění (všechny vybrané položky jsou z databáze kompletně vymazány)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat všechny přečtené zprávy (ne ty z koše)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat všechny zprávy z koše</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat všechny důležité zprávy (včetně těch z koše)</translation>
     </message>
 </context>
 <context>
@@ -1811,10 +1811,6 @@ Automatický update: %5</translation>
         <source>Show only unread feeds/categories</source>
         <translation>Zobrazit pouze nepřečtené kanály/kategorie</translation>
     </message>
-    <message>
-        <source>Ctrl+Shift+U</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2421,26 +2417,20 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Zvolit cílový adresář pro uložení stahovaných souborů</translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
-
-MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zobrazit heslo</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Webový prohlížeč &amp; e-mail &amp; proxy</translation>
     </message>
     <message>
         <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat odpadní Trolltech klíč v registru (HKCU\Software\Trolltech při ukončení aplikace (Používejte na vlastní riziko!)</translation>
     </message>
     <message>
         <source>Working database</source>
-        <translation type="unfinished"></translation>
+        <translation>Pracovní databáze</translation>
     </message>
     <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
@@ -2448,97 +2438,107 @@ MySQL backend will automatically use database with name &quot;rssguard&quot;. Do
  • next web page (drag mouse right),
  • reload current web page (drag mouse up),
  • open new web browser tab (drag mouse down).</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesta myši se aktivují kliknutím prostředního tlačítka myši, mezi gesta patří:
+ • předchozí stránka (táhnutí myši vlevo),
+ • následující stránka (táhnutí myši vpravo),
+ • obnovení aktuální stránky (táhnutí myši nahoru),
+ • otevření nového tabu (táhnutí myši dolu).</translation>
     </message>
     <message>
         <source>Use custom external web browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít vlastní webový prohlížeč</translation>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Externí e-mailový klient</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít vlastní e-mailový klient</translation>
     </message>
     <message>
         <source>E-mail client executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustitelný soubor e-mailového klienta</translation>
     </message>
     <message>
         <source>Executable file of e-mail client</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustitelný soubor e-mailového klienta</translation>
     </message>
     <message>
         <source>Select client</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit klienta</translation>
     </message>
     <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Placeholdery:
+ • %1 - název vybrané zprávy,
+ • %2 - tělo vybrané zprávy.</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit všechny stahované soubory do</translation>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvolit spouštěcí soubor e-mailového klienta</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pracovní databáze, ke které máte plný přístup.</translation>
     </message>
     <message>
         <source>Working database is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pracovní databáze je prázdná.</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pracovní databáze je ok.</translation>
     </message>
     <message>
         <source>Fancy &amp;&amp; modern popup notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Moderní popup notifikace</translation>
     </message>
     <message>
         <source>Notification position</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozice notifikací</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Tray ikona není dostupná.)</translation>
     </message>
     <message>
         <source>Bottom-left corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Levý-dolní roh</translation>
     </message>
     <message>
         <source>Top-left corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Levý-horní roh</translation>
     </message>
     <message>
         <source>Bottom-right corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Pravý-dolní roh</translation>
     </message>
     <message>
         <source>Top-right corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Pravý-horní roh</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Písma interního prohlížeče zpráv</translation>
     </message>
     <message>
         <source>Standard font</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardní písmo</translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation>Mějte na paměti, že rychlost a latence použitého MySQL serveru těžce ovlivňuje svižnost aplikace. Použití pomalého databázového spojení může vést ke špatnému výkonu aplikace např. při prohlížení zpráv.</translation>
     </message>
 </context>
 <context>
@@ -2675,6 +2675,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
         <translation>Soubor &apos;%1&apos; nelze otevřít pro čtení.</translation>
+    </message>
+    <message>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation>Nelze otevřít soubor &apos;%1&apos; pro zápis.</translation>
     </message>
 </context>
 <context>

@@ -659,7 +659,7 @@
     <string>Show only unread feeds/categories</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+U</string>
+    <string notr="true">Ctrl+Shift+U</string>
    </property>
   </action>
  </widget>

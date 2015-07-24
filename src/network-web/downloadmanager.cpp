@@ -113,7 +113,7 @@ void DownloadItem::getFileName() {
       stop();
 
       m_ui->m_progressDownload->setVisible(false);
-      m_ui->m_lblLocalFilename->setText(tr("Selection if local file cancelled."));
+      m_ui->m_lblLocalFilename->setText(tr("Selection of local file cancelled."));
       m_canceledFileSelect = true;
       return;
     }

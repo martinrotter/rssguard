@@ -352,10 +352,6 @@ Denna webbsida innehåller %1 flöden.</numerusform>
         <translation>Kan inte öppna utdatamappen. Öppna den manuellt.</translation>
     </message>
     <message>
-        <source>Selection if local file cancelled.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Download finished</source>
         <translation type="unfinished"></translation>
     </message>
@@ -370,6 +366,10 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Local file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selection of local file cancelled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1798,10 +1798,6 @@ Uppdateringsstatus: %5</translation>
         <source>Show only unread feeds/categories</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Ctrl+Shift+U</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -2409,14 +2405,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Välj nedladdningsmapp</translation>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
-
-MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
-        <translation>Notera att hastigheten för aktuell MySQL-server och latensen för använt anslutningsmedium, KRAFTIGT påverkar prestanda för det här programmet.Användning av långsam databasanslutning leder till dålig prestanda vid bläddring bland flöden och meddelanden.
-
-MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&quot;. Skapa inte denna databas manuellt, utan låt programmet hantera det på egen hand. Därvid måste aktuell användare ha rättigheter att skapa och ta bort databaser.</translation>
-    </message>
-    <message>
         <source>&amp;Show password</source>
         <translation>&amp;Visa lösenord</translation>
     </message>
@@ -2534,6 +2522,10 @@ MySQL-gränssnittet använder automatiskt en datbas med namnet &quot;rssguard&qu
     </message>
     <message>
         <source>Standard font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2673,6 +2665,10 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>Cannot open file &apos;%1&apos; for reading.</source>
         <translation>Kunde inte öppna filen &apos;%1&apos; för inläsning.</translation>
+    </message>
+    <message>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
