@@ -19,9 +19,9 @@
 
 #include "definitions/definitions.h"
 #include "core/feedsmodel.h"
-#include "core/feedsmodelrootitem.h"
-#include "core/feedsmodelcategory.h"
-#include "core/feedsmodelfeed.h"
+#include "core/rootitem.h"
+#include "core/category.h"
+#include "core/feed.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
@@ -58,7 +58,7 @@ FormFeedDetails::~FormFeedDetails() {
   delete m_ui;
 }
 
-int FormFeedDetails::exec(FeedsModelFeed *input_feed, FeedsModelRootItem *parent_to_select) {
+int FormFeedDetails::exec(Feed *input_feed, RootItem *parent_to_select) {
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem());
 
@@ -77,10 +77,10 @@ int FormFeedDetails::exec(FeedsModelFeed *input_feed, FeedsModelRootItem *parent
     }
 
     if (parent_to_select != NULL) {
-      if (parent_to_select->kind() == FeedsModelRootItem::Category) {
+      if (parent_to_select->kind() == RootItem::Cattegory) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
-      else if (parent_to_select->kind() == FeedsModelRootItem::Feed) {
+      else if (parent_to_select->kind() == RootItem::Feeed) {
         int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
         if (target_item >= 0) {
@@ -168,15 +168,15 @@ void FormFeedDetails::onAuthenticationSwitched() {
 }
 
 void FormFeedDetails::onAutoUpdateTypeChanged(int new_index) {
-  FeedsModelFeed::AutoUpdateType auto_update_type = static_cast<FeedsModelFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
+  Feed::AutoUpdateType auto_update_type = static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
-    case FeedsModelFeed::DontAutoUpdate:
-    case FeedsModelFeed::DefaultAutoUpdate:
+    case Feed::DontAutoUpdate:
+    case Feed::DefaultAutoUpdate:
       m_ui->m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
-    case FeedsModelFeed::SpecificAutoUpdate:
+    case Feed::SpecificAutoUpdate:
     default:
       m_ui->m_spinAutoUpdateInterval->setEnabled(true);
   }
@@ -219,9 +219,9 @@ void FormFeedDetails::onUseDefaultIcon() {
 }
 
 void FormFeedDetails::apply() {
-  FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  FeedsModelFeed::Type type = static_cast<FeedsModelFeed::Type>(m_ui->m_cmbType->itemData(m_ui->m_cmbType->currentIndex()).value<int>());
-  FeedsModelFeed *new_feed = new FeedsModelFeed();
+  RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  Feed::Type type = static_cast<Feed::Type>(m_ui->m_cmbType->itemData(m_ui->m_cmbType->currentIndex()).value<int>());
+  Feed *new_feed = new Feed();
 
   // Setup data for new_feed.
   new_feed->setTitle(m_ui->m_txtTitle->lineEdit()->text());
@@ -234,7 +234,7 @@ void FormFeedDetails::apply() {
   new_feed->setPasswordProtected(m_ui->m_gbAuthentication->isChecked());
   new_feed->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
-  new_feed->setAutoUpdateType(static_cast<FeedsModelFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+  new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
   new_feed->setParent(parent);
 
@@ -263,7 +263,7 @@ void FormFeedDetails::apply() {
 }
 
 void FormFeedDetails::guessFeed() {
-  QPair<FeedsModelFeed*, QNetworkReply::NetworkError> result =  FeedsModelFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
+  QPair<Feed*, QNetworkReply::NetworkError> result =  Feed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
                                                                                           m_ui->m_txtUsername->lineEdit()->text(),
                                                                                           m_ui->m_txtPassword->lineEdit()->text());
 
@@ -307,7 +307,7 @@ void FormFeedDetails::guessFeed() {
 }
 
 void FormFeedDetails::guessIconOnly() {
-  QPair<FeedsModelFeed*, QNetworkReply::NetworkError> result =  FeedsModelFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
+  QPair<Feed*, QNetworkReply::NetworkError> result =  Feed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
                                                                                           m_ui->m_txtUsername->lineEdit()->text(),
                                                                                           m_ui->m_txtPassword->lineEdit()->text());
 
@@ -356,7 +356,7 @@ void FormFeedDetails::createConnections() {
   connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
 }
 
-void FormFeedDetails::setEditableFeed(FeedsModelFeed *editable_feed) {
+void FormFeedDetails::setEditableFeed(Feed *editable_feed) {
   m_editableFeed = editable_feed;
 
   m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) editable_feed->parent())));
@@ -405,10 +405,10 @@ void FormFeedDetails::initialize() {
 #endif
 
   // Add standard feed types.
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::Atom10), QVariant::fromValue((int) FeedsModelFeed::Atom10));
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::Rdf), QVariant::fromValue((int) FeedsModelFeed::Rdf));
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::Rss0X), QVariant::fromValue((int) FeedsModelFeed::Rss0X));
-  m_ui->m_cmbType->addItem(FeedsModelFeed::typeToString(FeedsModelFeed::Rss2X), QVariant::fromValue((int) FeedsModelFeed::Rss2X));
+  m_ui->m_cmbType->addItem(Feed::typeToString(Feed::Atom10), QVariant::fromValue((int) Feed::Atom10));
+  m_ui->m_cmbType->addItem(Feed::typeToString(Feed::Rdf), QVariant::fromValue((int) Feed::Rdf));
+  m_ui->m_cmbType->addItem(Feed::typeToString(Feed::Rss0X), QVariant::fromValue((int) Feed::Rss0X));
+  m_ui->m_cmbType->addItem(Feed::typeToString(Feed::Rss2X), QVariant::fromValue((int) Feed::Rss2X));
 
   // Load available encodings.
   QList<QByteArray> encodings = QTextCodec::availableCodecs();
@@ -449,9 +449,9 @@ void FormFeedDetails::initialize() {
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) FeedsModelFeed::DefaultAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) FeedsModelFeed::SpecificAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) FeedsModelFeed::DontAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) Feed::DefaultAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) Feed::SpecificAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) Feed::DontAutoUpdate));
 
   // Set tab order.
   setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_cmbType);
@@ -475,13 +475,13 @@ void FormFeedDetails::initialize() {
   m_ui->m_txtUrl->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormFeedDetails::loadCategories(const QList<FeedsModelCategory*> categories,
-                                     FeedsModelRootItem *root_item) {
+void FormFeedDetails::loadCategories(const QList<Category*> categories,
+                                     RootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (FeedsModelCategory *category, categories) {
+  foreach (Category *category, categories) {
     m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX,
                                                       Qt::DecorationRole).value<QIcon>(),
                                        category->title(),

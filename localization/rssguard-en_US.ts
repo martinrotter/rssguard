@@ -243,6 +243,30 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
 </context>
 <context>
+    <name>Category</name>
+    <message>
+        <location filename="../src/core/category.cpp" line="61"/>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/category.cpp" line="65"/>
+        <source>
+This category does not contain any nested items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/core/category.cpp" line="70"/>
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <location filename="../src/miscellaneous/databasecleaner.cpp" line="49"/>
@@ -511,6 +535,49 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <location filename="../src/core/feed.cpp" line="331"/>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/feed.cpp" line="336"/>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/core/feed.cpp" line="342"/>
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../src/core/feed.cpp" line="350"/>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/core/feed.cpp" line="363"/>
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <location filename="../src/gui/feedmessageviewer.cpp" line="62"/>
@@ -621,100 +688,6 @@ Click here to open parent directory.</source>
         <location filename="../src/core/feedsmodel.cpp" line="582"/>
         <source>Import was completely successfull.</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelCategory</name>
-    <message>
-        <location filename="../src/core/feedsmodelcategory.cpp" line="62"/>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/core/feedsmodelcategory.cpp" line="66"/>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../src/core/feedsmodelcategory.cpp" line="71"/>
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelFeed</name>
-    <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="331"/>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="336"/>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../src/core/feedsmodelfeed.cpp" line="342"/>
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../src/core/feedsmodelfeed.cpp" line="350"/>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../src/core/feedsmodelfeed.cpp" line="363"/>
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelRecycleBin</name>
-    <message>
-        <location filename="../src/core/feedsmodelrecyclebin.cpp" line="31"/>
-        <source>Recycle bin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/core/feedsmodelrecyclebin.cpp" line="32"/>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/core/feedsmodelrecyclebin.cpp" line="96"/>
-        <source>Recycle bin
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../src/core/feedsmodelrecyclebin.cpp" line="96"/>
-        <source>%n deleted message(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -3660,6 +3633,33 @@ currently installed one.</source>
         <location filename="../src/miscellaneous/localization.cpp" line="78"/>
         <source>LANG_EMAIL</source>
         <translation>rotter.martinos@gmail.com</translation>
+    </message>
+</context>
+<context>
+    <name>RecycleBin</name>
+    <message>
+        <location filename="../src/core/recyclebin.cpp" line="31"/>
+        <source>Recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/recyclebin.cpp" line="32"/>
+        <source>Recycle bin contains all deleted messages from all feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/core/recyclebin.cpp" line="96"/>
+        <source>Recycle bin
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/core/recyclebin.cpp" line="96"/>
+        <source>%n deleted message(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

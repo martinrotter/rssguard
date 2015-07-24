@@ -18,9 +18,9 @@
 #include "core/feedsmodel.h"
 
 #include "definitions/definitions.h"
-#include "core/feedsmodelcategory.h"
-#include "core/feedsmodelfeed.h"
-#include "core/feedsmodelrecyclebin.h"
+#include "core/category.h"
+#include "core/feed.h"
+#include "core/recyclebin.h"
 #include "core/feedsimportexportmodel.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
@@ -38,11 +38,11 @@
 
 
 FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_recycleBin(new FeedsModelRecycleBin()) {
+  : QAbstractItemModel(parent), m_recycleBin(new RecycleBin()) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
-  m_rootItem = new FeedsModelRootItem();
+  m_rootItem = new RootItem();
   m_rootItem->setId(NO_PARENT_CATEGORY);
 
   //: Name of root item of feed list which can be seen in feed add/edit dialog.
@@ -78,9 +78,9 @@ QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
       continue;
     }
 
-    FeedsModelRootItem *item_for_index = itemForIndex(index);
+    RootItem *item_for_index = itemForIndex(index);
 
-    if (item_for_index->kind() != FeedsModelRootItem::RootItem) {
+    if (item_for_index->kind() != RootItem::Root) {
       stream << (quintptr) item_for_index;
     }
   }
@@ -117,30 +117,30 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
       stream >> pointer_to_item;
 
       // We have item we want to drag, we also determine the target item.
-      FeedsModelRootItem *dragged_item = (FeedsModelRootItem*) pointer_to_item;
-      FeedsModelRootItem *target_item = itemForIndex(parent);
+      RootItem *dragged_item = (RootItem*) pointer_to_item;
+      RootItem *target_item = itemForIndex(parent);
 
       if (dragged_item == target_item || dragged_item->parent() == target_item) {
         qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
         return false;
       }
 
-      if (dragged_item->kind() == FeedsModelRootItem::Feed) {
+      if (dragged_item->kind() == RootItem::Feeed) {
         qDebug("Drag-drop action for feed '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
 
-        FeedsModelFeed *actual_feed = dragged_item->toFeed();
-        FeedsModelFeed *feed_new = new FeedsModelFeed(*actual_feed);
+        Feed *actual_feed = dragged_item->toFeed();
+        Feed *feed_new = new Feed(*actual_feed);
 
         feed_new->setParent(target_item);
         editFeed(actual_feed, feed_new);
 
         emit requireItemValidationAfterDragDrop(indexForItem(actual_feed));
       }
-      else if (dragged_item->kind() == FeedsModelRootItem::Category) {
+      else if (dragged_item->kind() == RootItem::Cattegory) {
         qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
 
-        FeedsModelCategory *actual_category = dragged_item->toCategory();
-        FeedsModelCategory *category_new = new FeedsModelCategory(*actual_category);
+        Category *actual_category = dragged_item->toCategory();
+        Category *category_new = new Category(*actual_category);
 
         category_new->clearChildren();
         category_new->setParent(target_item);
@@ -160,19 +160,19 @@ Qt::DropActions FeedsModel::supportedDropActions() const {
 
 Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const { 
   Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
-  FeedsModelRootItem *item_for_index = itemForIndex(index);
+  RootItem *item_for_index = itemForIndex(index);
 
   switch (item_for_index->kind()) {
-    case FeedsModelRootItem::RecycleBin:
+    case RootItem::Bin:
       return base_flags;
 
-    case FeedsModelRootItem::Category:
+    case RootItem::Cattegory:
       return base_flags | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
 
-    case FeedsModelRootItem::Feed:
+    case RootItem::Feeed:
       return base_flags | Qt::ItemIsDragEnabled;
 
-    case FeedsModelRootItem::RootItem:
+    case RootItem::Root:
     default:
       return base_flags | Qt::ItemIsDropEnabled;
   }
@@ -213,8 +213,8 @@ QModelIndex FeedsModel::index(int row, int column, const QModelIndex &parent) co
     return QModelIndex();
   }
 
-  FeedsModelRootItem *parent_item = itemForIndex(parent);
-  FeedsModelRootItem *child_item = parent_item->child(row);
+  RootItem *parent_item = itemForIndex(parent);
+  RootItem *child_item = parent_item->child(row);
 
   if (child_item) {
     return createIndex(row, column, child_item);
@@ -229,8 +229,8 @@ QModelIndex FeedsModel::parent(const QModelIndex &child) const {
     return QModelIndex();
   }
 
-  FeedsModelRootItem *child_item = itemForIndex(child);
-  FeedsModelRootItem *parent_item = child_item->parent();
+  RootItem *child_item = itemForIndex(child);
+  RootItem *parent_item = child_item->parent();
 
   if (parent_item == m_rootItem) {
     return QModelIndex();
@@ -252,8 +252,8 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
 bool FeedsModel::removeItem(const QModelIndex &index) { 
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
-    FeedsModelRootItem *deleting_item = itemForIndex(index);
-    FeedsModelRootItem *parent_item = deleting_item->parent();
+    RootItem *deleting_item = itemForIndex(index);
+    RootItem *parent_item = deleting_item->parent();
 
     // Try to persistently remove the item.
     if (deleting_item->removeItself()) {
@@ -272,7 +272,7 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   return false;
 }
 
-bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *parent) {
+bool FeedsModel::addCategory(Category *category, RootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
   bool result = category->addItself(parent);
@@ -292,9 +292,9 @@ bool FeedsModel::addCategory(FeedsModelCategory *category, FeedsModelRootItem *p
   return result;
 }
 
-bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category_data) {
-  FeedsModelRootItem *original_parent = original_category->parent();
-  FeedsModelRootItem *new_parent = new_category_data->parent();
+bool FeedsModel::editCategory(Category *original_category, Category *new_category_data) {
+  RootItem *original_parent = original_category->parent();
+  RootItem *new_parent = new_category_data->parent();
   bool result = original_category->editItself(new_category_data);
 
   if (result && original_parent != new_parent) {
@@ -319,7 +319,7 @@ bool FeedsModel::editCategory(FeedsModelCategory *original_category, FeedsModelC
   return result;
 }
 
-bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
+bool FeedsModel::addFeed(Feed *feed, RootItem *parent) {
   // Get index of parent item (parent standard category or root item).
   QModelIndex parent_index = indexForItem(parent);
   bool result = feed->addItself(parent);
@@ -337,9 +337,9 @@ bool FeedsModel::addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent) {
   return result;
 }
 
-bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed_data) {
-  FeedsModelRootItem *original_parent = original_feed->parent();
-  FeedsModelRootItem *new_parent = new_feed_data->parent();
+bool FeedsModel::editFeed(Feed *original_feed, Feed *new_feed_data) {
+  RootItem *original_parent = original_feed->parent();
+  RootItem *new_parent = new_feed_data->parent();
   bool result = original_feed->editItself(new_feed_data);
 
   if (result && original_parent != new_parent) {
@@ -363,23 +363,23 @@ bool FeedsModel::editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_fee
   return result;
 }
 
-QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
-  QList<FeedsModelFeed*> feeds_for_update;
+QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
+  QList<Feed*> feeds_for_update;
 
-  foreach (FeedsModelFeed *feed, allFeeds()) {
+  foreach (Feed *feed, allFeeds()) {
     switch (feed->autoUpdateType()) {
-      case FeedsModelFeed::DontAutoUpdate:
+      case Feed::DontAutoUpdate:
         // Do not auto-update this feed ever.
         continue;
 
-      case FeedsModelFeed::DefaultAutoUpdate:
+      case Feed::DefaultAutoUpdate:
         if (auto_update_now) {
           feeds_for_update.append(feed);
         }
 
         break;
 
-      case FeedsModelFeed::SpecificAutoUpdate:
+      case Feed::SpecificAutoUpdate:
       default:
         int remaining_interval = feed->autoUpdateRemainingInterval();
 
@@ -402,7 +402,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now)
   return feeds_for_update;
 }
 
-QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds) {
+QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   QList<Message> messages;
 
   QSqlDatabase database = qApp->database()->connection(objectName(),
@@ -413,7 +413,7 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<FeedsModelFeed*> &feeds)
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed;");
 
-  foreach (FeedsModelFeed *feed, feeds) {
+  foreach (Feed *feed, feeds) {
     query_read_msg.bindValue(QSL(":feed"), feed->id());
 
     if (query_read_msg.exec()) {
@@ -441,19 +441,19 @@ int FeedsModel::columnCount(const QModelIndex &parent) const {
   return FEEDS_VIEW_COLUMN_COUNT;
 }
 
-FeedsModelRootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
+RootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   if (index.isValid() && index.model() == this) {
-    return static_cast<FeedsModelRootItem*>(index.internalPointer());
+    return static_cast<RootItem*>(index.internalPointer());
   }
   else {
     return m_rootItem;
   }
 }
 
-FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const {
-  FeedsModelRootItem *item = itemForIndex(index);
+Category *FeedsModel::categoryForIndex(const QModelIndex &index) const {
+  RootItem *item = itemForIndex(index);
 
-  if (item->kind() == FeedsModelRootItem::Category) {
+  if (item->kind() == RootItem::Cattegory) {
     return item->toCategory();
   }
   else {
@@ -461,10 +461,10 @@ FeedsModelCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const
   }
 }
 
-FeedsModelRecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) const {
-  FeedsModelRootItem *item = itemForIndex(index);
+RecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) const {
+  RootItem *item = itemForIndex(index);
 
-  if (item->kind() == FeedsModelRootItem::RecycleBin) {
+  if (item->kind() == RootItem::Bin) {
     return item->toRecycleBin();
   }
   else {
@@ -472,15 +472,15 @@ FeedsModelRecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) c
   }
 }
 
-QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const { 
-  if (item == NULL || item->kind() == FeedsModelRootItem::RootItem) {
+QModelIndex FeedsModel::indexForItem(RootItem *item) const { 
+  if (item == NULL || item->kind() == RootItem::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
 
-  QStack<FeedsModelRootItem*> chain;
+  QStack<RootItem*> chain;
 
-  while (item->kind() != FeedsModelRootItem::RootItem) {
+  while (item->kind() != RootItem::Root) {
     chain.push(item);
     item = item->parent();
   }
@@ -490,7 +490,7 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
 
   // We go through the stack and create our target index.
   while (!chain.isEmpty()) {
-    FeedsModelRootItem *parent_item = chain.pop();
+    RootItem *parent_item = chain.pop();
     target_index = index(parent_item->parent()->childItems().indexOf(parent_item), 0, target_index);
   }
 
@@ -498,8 +498,8 @@ QModelIndex FeedsModel::indexForItem(FeedsModelRootItem *item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() {
-  foreach (const FeedsModelFeed *feed, allFeeds()) {
-    if (feed->status() == FeedsModelFeed::NewMessages) {
+  foreach (const Feed *feed, allFeeds()) {
+    if (feed->status() == Feed::NewMessages) {
       return true;
     }
   }
@@ -514,8 +514,8 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
     return false;
   }
 
-  QStack<FeedsModelRootItem*> original_parents; original_parents.push(m_rootItem);
-  QStack<FeedsModelRootItem*> new_parents; new_parents.push(model->rootItem());
+  QStack<RootItem*> original_parents; original_parents.push(m_rootItem);
+  QStack<RootItem*> new_parents; new_parents.push(model->rootItem());
   bool some_feed_category_error = false;
 
   // We are definitely about to add some new items into the model.
@@ -523,19 +523,19 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
 
   // Iterate all new items we would like to merge into current model.
   while (!new_parents.isEmpty()) {
-    FeedsModelRootItem *target_parent = original_parents.pop();
-    FeedsModelRootItem *source_parent = new_parents.pop();
+    RootItem *target_parent = original_parents.pop();
+    RootItem *source_parent = new_parents.pop();
 
-    foreach (FeedsModelRootItem *source_item, source_parent->childItems()) {
+    foreach (RootItem *source_item, source_parent->childItems()) {
       if (!model->isItemChecked(source_item)) {
         // We can skip this item, because it is not checked and should not be imported.
         // NOTE: All descendants are thus skipped too.
         continue;
       }
 
-      if (source_item->kind() == FeedsModelRootItem::Category) {
-        FeedsModelCategory *source_category = source_item->toCategory();
-        FeedsModelCategory *new_category = new FeedsModelCategory(*source_category);
+      if (source_item->kind() == RootItem::Cattegory) {
+        Category *source_category = source_item->toCategory();
+        Category *new_category = new Category(*source_category);
 
         // Add category to model.
         new_category->clearChildren();
@@ -549,7 +549,7 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
           // Add category failed, but this can mean that the same category (with same title)
           // already exists. If such a category exists in current parent, then find it and
           // add descendants to it.
-          FeedsModelRootItem *existing_category = target_parent->child(FeedsModelRootItem::Category, new_category->title());
+          RootItem *existing_category = target_parent->child(RootItem::Cattegory, new_category->title());
 
           if (existing_category != NULL) {
             original_parents.push(existing_category);
@@ -560,9 +560,9 @@ bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_messa
           }
         }
       }
-      else if (source_item->kind() == FeedsModelRootItem::Feed) {
-        FeedsModelFeed *source_feed = source_item->toFeed();
-        FeedsModelFeed *new_feed = new FeedsModelFeed(*source_feed);
+      else if (source_item->kind() == RootItem::Feeed) {
+        Feed *source_feed = source_item->toFeed();
+        Feed *new_feed = new Feed(*source_feed);
 
         // Append this feed and end this iteration.
         if (!addFeed(new_feed, target_parent)) {
@@ -595,11 +595,11 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   }
 }
 
-QStringList FeedsModel::textualFeedIds(const QList<FeedsModelFeed*> &feeds) {
+QStringList FeedsModel::textualFeedIds(const QList<Feed*> &feeds) {
   QStringList stringy_ids;
   stringy_ids.reserve(feeds.size());
 
-  foreach (FeedsModelFeed *feed, feeds) {
+  foreach (Feed *feed, feeds) {
     stringy_ids.append(QString::number(feed->id()));
   }
 
@@ -632,7 +632,7 @@ void FeedsModel::loadFromDatabase() {
   while (query_categories.next()) {
     CategoryAssignmentItem pair;
     pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new FeedsModelCategory(query_categories.record());
+    pair.second = new Category(query_categories.record());
 
     categories << pair;
   }
@@ -648,16 +648,16 @@ void FeedsModel::loadFromDatabase() {
 
   while (query_feeds.next()) {
     // Process this feed.
-    FeedsModelFeed::Type type = static_cast<FeedsModelFeed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
+    Feed::Type type = static_cast<Feed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
 
     switch (type) {
-      case FeedsModelFeed::Atom10:
-      case FeedsModelFeed::Rdf:
-      case FeedsModelFeed::Rss0X:
-      case FeedsModelFeed::Rss2X: {
+      case Feed::Atom10:
+      case Feed::Rdf:
+      case Feed::Rss0X:
+      case Feed::Rss2X: {
         FeedAssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = new FeedsModelFeed(query_feeds.record());
+        pair.second = new Feed(query_feeds.record());
         pair.second->setType(type);
 
         feeds << pair;
@@ -677,15 +677,15 @@ void FeedsModel::loadFromDatabase() {
   m_rootItem->appendChild(m_recycleBin);
 }
 
-QList<FeedsModelFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
-  FeedsModelRootItem *item = itemForIndex(index);
+QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
+  RootItem *item = itemForIndex(index);
   return feedsForItem(item);
 }
 
-FeedsModelFeed *FeedsModel::feedForIndex(const QModelIndex &index) {
-  FeedsModelRootItem *item = itemForIndex(index);
+Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
+  RootItem *item = itemForIndex(index);
 
-  if (item->kind() == FeedsModelRootItem::Feed) {
+  if (item->kind() == RootItem::Feeed) {
     return item->toFeed();
   }
   else {
@@ -693,8 +693,8 @@ FeedsModelFeed *FeedsModel::feedForIndex(const QModelIndex &index) {
   }
 }
 
-QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
-  QList<FeedsModelFeed*> feeds;
+QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
+  QList<Feed*> feeds;
 
   // Get selected feeds for each index.
   foreach (const QModelIndex &index, indexes) {
@@ -706,14 +706,14 @@ QList<FeedsModelFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexe
     // Selection contains duplicate feeds (for
     // example situation where feed and its parent category are both
     // selected). So, remove duplicates from the list.
-    qSort(feeds.begin(), feeds.end(), FeedsModelRootItem::lessThan);
-    feeds.erase(std::unique(feeds.begin(), feeds.end(), FeedsModelRootItem::isEqual), feeds.end());
+    qSort(feeds.begin(), feeds.end(), RootItem::lessThan);
+    feeds.erase(std::unique(feeds.begin(), feeds.end(), RootItem::isEqual), feeds.end());
   }
 
   return feeds;
 }
 
-bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read) {
+bool FeedsModel::markFeedsRead(const QList<Feed*> &feeds, int read) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -748,7 +748,7 @@ bool FeedsModel::markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read) {
   }
 }
 
-bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted, bool read_only) {
+bool FeedsModel::markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -794,24 +794,24 @@ bool FeedsModel::markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int delet
   }
 }
 
-QHash<int, FeedsModelCategory*> FeedsModel::allCategories() {
+QHash<int, Category*> FeedsModel::allCategories() {
   return categoriesForItem(m_rootItem);
 }
 
-QHash<int, FeedsModelCategory*> FeedsModel::categoriesForItem(FeedsModelRootItem *root) {
-  QHash<int, FeedsModelCategory*> categories;
-  QList<FeedsModelRootItem*> parents;
+QHash<int, Category*> FeedsModel::categoriesForItem(RootItem *root) {
+  QHash<int, Category*> categories;
+  QList<RootItem*> parents;
 
   parents.append(root->childItems());
 
   while (!parents.isEmpty()) {
-    FeedsModelRootItem *item = parents.takeFirst();
+    RootItem *item = parents.takeFirst();
 
-    if (item->kind() == FeedsModelRootItem::Category) {
+    if (item->kind() == RootItem::Cattegory) {
       // This item is category, add it to the output list and
       // scan its children.
       int category_id = item->id();
-      FeedsModelCategory *category = item->toCategory();
+      Category *category = item->toCategory();
 
       if (!categories.contains(category_id)) {
         categories.insert(category_id, category);
@@ -824,16 +824,16 @@ QHash<int, FeedsModelCategory*> FeedsModel::categoriesForItem(FeedsModelRootItem
   return categories;
 }
 
-QList<FeedsModelFeed*> FeedsModel::allFeeds() {
+QList<Feed*> FeedsModel::allFeeds() {
   return feedsForItem(m_rootItem);
 }
 
-QList<FeedsModelFeed*> FeedsModel::feedsForItem(FeedsModelRootItem *root) {
-  QList<FeedsModelRootItem*> children = root->getRecursiveChildren();
-  QList<FeedsModelFeed*> feeds;
+QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
+  QList<RootItem*> children = root->getRecursiveChildren();
+  QList<Feed*> feeds;
 
-  foreach (FeedsModelRootItem *child, children) {
-    if (child->kind() == FeedsModelRootItem::Feed) {
+  foreach (RootItem *child, children) {
+    if (child->kind() == RootItem::Feeed) {
       feeds.append(child->toFeed());
     }
   }
@@ -842,7 +842,7 @@ QList<FeedsModelFeed*> FeedsModel::feedsForItem(FeedsModelRootItem *root) {
 }
 
 void FeedsModel::assembleFeeds(FeedAssignment feeds) {
-  QHash<int, FeedsModelCategory*> categories = allCategories();
+  QHash<int, Category*> categories = allCategories();
 
   foreach (const FeedAssignmentItem &feed, feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
@@ -859,12 +859,12 @@ void FeedsModel::assembleFeeds(FeedAssignment feeds) {
   }
 }
 
-FeedsModelRecycleBin *FeedsModel::recycleBin() const {
+RecycleBin *FeedsModel::recycleBin() const {
   return m_recycleBin;
 }
 
 void FeedsModel::assembleCategories(CategoryAssignment categories) {
-  QHash<int, FeedsModelRootItem*> assignments;
+  QHash<int, RootItem*> assignments;
   assignments.insert(NO_PARENT_CATEGORY, m_rootItem);
 
   // Add top-level categories.

@@ -18,13 +18,13 @@
 #include "gui/feedsview.h"
 
 #include "definitions/definitions.h"
-#include "core/feedsmodelfeed.h"
+#include "core/feed.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
-#include "core/feedsmodelrootitem.h"
-#include "core/feedsmodelcategory.h"
-#include "core/feedsmodelrecyclebin.h"
-#include "core/feedsmodelfeed.h"
+#include "core/rootitem.h"
+#include "core/category.h"
+#include "core/recyclebin.h"
+#include "core/feed.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/systemtrayicon.h"
@@ -103,43 +103,43 @@ void FeedsView::updateAutoUpdateStatus() {
   }
 }
 
-QList<FeedsModelFeed*> FeedsView::selectedFeeds() const {
+QList<Feed*> FeedsView::selectedFeeds() const {
   QModelIndex current_index = currentIndex();
 
   if (current_index.isValid()) {
     return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
   }
   else {
-    return QList<FeedsModelFeed*>();
+    return QList<Feed*>();
   }
 }
 
-QList<FeedsModelFeed*> FeedsView::allFeeds() const {
+QList<Feed*> FeedsView::allFeeds() const {
   return m_sourceModel->allFeeds();
 }
 
-FeedsModelRootItem *FeedsView::selectedItem() const {
+RootItem *FeedsView::selectedItem() const {
   QModelIndexList selected_rows = selectionModel()->selectedRows();
 
   if (selected_rows.isEmpty()) {
     return NULL;
   }
 
-  FeedsModelRootItem *selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
+  RootItem *selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
   return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
 }
 
-FeedsModelCategory *FeedsView::selectedCategory() const {
+Category *FeedsView::selectedCategory() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->categoryForIndex(current_mapped);
 }
 
-FeedsModelFeed *FeedsView::selectedFeed() const {
+Feed *FeedsView::selectedFeed() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->feedForIndex(current_mapped);
 }
 
-FeedsModelRecycleBin *FeedsView::selectedRecycleBin() const{
+RecycleBin *FeedsView::selectedRecycleBin() const{
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->recycleBinForIndex(current_mapped);
 }
@@ -148,7 +148,7 @@ void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
 
   // Iterate all categories and save their expand statuses.
-  foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
+  foreach (Category *category, sourceModel()->allCategories().values()) {
     settings->setValue(GROUP(Categories),
                        QString::number(category->id()),
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
@@ -159,7 +159,7 @@ void FeedsView::loadExpandedStates() {
   Settings *settings = qApp->settings();
 
   // Iterate all categories and save their expand statuses.
-  foreach (FeedsModelCategory *category, sourceModel()->allCategories().values()) {
+  foreach (Category *category, sourceModel()->allCategories().values()) {
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
                 settings->value(GROUP(Categories), QString::number(category->id()), true).toBool());
   }
@@ -207,7 +207,7 @@ void FeedsView::executeNextAutoUpdate() {
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
-  QList<FeedsModelFeed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
+  QList<Feed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
                                                                                    m_globalAutoUpdateRemainingInterval == 0);
 
   if (feeds_for_update.isEmpty()) {
@@ -266,7 +266,7 @@ void FeedsView::addNewCategory() {
   qApp->feedUpdateLock()->unlock();
 }
 
-void FeedsView::editCategory(FeedsModelCategory *category) {
+void FeedsView::editCategory(Category *category) {
   QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(category, NULL);
@@ -295,7 +295,7 @@ void FeedsView::addNewFeed() {
   qApp->feedUpdateLock()->unlock();
 }
 
-void FeedsView::editFeed(FeedsModelFeed *feed) {
+void FeedsView::editFeed(Feed *feed) {
   QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(feed, NULL);
@@ -354,8 +354,8 @@ void FeedsView::editSelectedItem() {
     return;
   }
 
-  FeedsModelCategory *category;
-  FeedsModelFeed *feed;
+  Category *category;
+  Feed *feed;
 
   if ((category = selectedCategory()) != NULL) {
     editCategory(category);
@@ -472,7 +472,7 @@ void FeedsView::restoreRecycleBin() {
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) { 
-  foreach (FeedsModelFeed *feed, selectedFeeds()) {
+  foreach (Feed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -498,7 +498,7 @@ void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
-  foreach (FeedsModelFeed *feed, allFeeds()) {
+  foreach (Feed *feed, allFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -512,7 +512,7 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   notifyWithCounts();
 }
 
-void FeedsView::updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too) {
+void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) {
   QModelIndex index = m_sourceModel->indexForItem(feed);
 
   if (index.isValid()) {
@@ -620,7 +620,7 @@ void FeedsView::setupAppearance() {
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
-  FeedsModelRootItem *selected_item = selectedItem();
+  RootItem *selected_item = selectedItem();
 
   m_proxyModel->setSelectedItem(selected_item);
   QTreeView::selectionChanged(selected, deselected);
@@ -641,9 +641,9 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
 
   if (clicked_index.isValid()) {
     QModelIndex mapped_index = model()->mapToSource(clicked_index);
-    FeedsModelRootItem *clicked_item = sourceModel()->itemForIndex(mapped_index);
+    RootItem *clicked_item = sourceModel()->itemForIndex(mapped_index);
 
-    if (clicked_item->kind() == FeedsModelRootItem::Category || clicked_item->kind() == FeedsModelRootItem::Feed) {
+    if (clicked_item->kind() == RootItem::Cattegory || clicked_item->kind() == RootItem::Feeed) {
       // Display context menu for categories.
       if (m_contextMenuCategoriesFeeds == NULL) {
         // Context menu is not initialized, initialize.
@@ -652,7 +652,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
 
       m_contextMenuCategoriesFeeds->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == FeedsModelRootItem::RecycleBin) {
+    else if (clicked_item->kind() == RootItem::Bin) {
       // Display context menu for recycle bin.
       if (m_contextMenuRecycleBin == NULL) {
         initializeContextMenuRecycleBin();

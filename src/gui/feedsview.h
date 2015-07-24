@@ -28,8 +28,8 @@
 
 
 class FeedsProxyModel;
-class FeedsModelFeed;
-class FeedsModelCategory;
+class Feed;
+class Category;
 class QTimer;
 
 class FeedsView : public QTreeView {
@@ -60,15 +60,15 @@ class FeedsView : public QTreeView {
     
     // Returns list of selected/all feeds.
     // NOTE: This is recursive method which returns all descendants.
-    QList<FeedsModelFeed*> selectedFeeds() const;
-    QList<FeedsModelFeed*> allFeeds() const;
+    QList<Feed*> selectedFeeds() const;
+    QList<Feed*> allFeeds() const;
 
     // Returns pointers to selected feed/category if they are really
     // selected.
-    FeedsModelRootItem *selectedItem() const;
-    FeedsModelCategory *selectedCategory() const;
-    FeedsModelFeed *selectedFeed() const;
-    FeedsModelRecycleBin *selectedRecycleBin() const;
+    RootItem *selectedItem() const;
+    Category *selectedCategory() const;
+    Feed *selectedFeed() const;
+    RecycleBin *selectedRecycleBin() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void saveExpandedStates();
@@ -112,11 +112,11 @@ class FeedsView : public QTreeView {
 
     // Standard category manipulators.
     void addNewCategory();
-    void editCategory(FeedsModelCategory *category);
+    void editCategory(Category *category);
 
     // Standard feed manipulators.
     void addNewFeed();
-    void editFeed(FeedsModelFeed *feed);
+    void editFeed(Feed *feed);
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
@@ -132,7 +132,7 @@ class FeedsView : public QTreeView {
     void updateCountsOfAllFeeds(bool update_total_too);
 
     // Reloads counts for particular feed.
-    void updateCountsOfParticularFeed(FeedsModelFeed *feed, bool update_total_too);
+    void updateCountsOfParticularFeed(Feed *feed, bool update_total_too);
 
     // Notifies other components about messages
     // counts.
@@ -175,7 +175,7 @@ class FeedsView : public QTreeView {
 
   signals:
     // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<FeedsModelFeed*> feeds);
+    void feedsUpdateRequested(const QList<Feed*> feeds);
 
     // Emitted if counts of messages are changed.
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);

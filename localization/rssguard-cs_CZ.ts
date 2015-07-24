@@ -199,6 +199,29 @@ Berte také na paměti, že některé prostředky webových stránek jsou intern
     </message>
 </context>
 <context>
+    <name>Category</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation>%1 (kategorie)%2%3</translation>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation>
+Tato kategorie neobsahuje žádné položky.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -426,6 +449,50 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>nepoužívá auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>používá globální nastavení</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation>%1 (%2)%3
+
+Síťový status: %6
+Kódování: %4
+Automatický update: %5</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -516,98 +583,6 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message>
         <source>Import was completely successfull.</source>
         <translation>Import byl zcela úspěšný.</translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelCategory</name>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (kategorie)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation>
-Tato kategorie neobsahuje žádné položky.</translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>nepoužívá auto-aktualizace</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>používá globální nastavení</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
-            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
-            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
-
-Síťový status: %6
-Kódování: %4
-Automatický update: %5</translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelRecycleBin</name>
-    <message>
-        <source>Recycle bin</source>
-        <translation>Koš</translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>Koš obsahuje všechny smazané zprávy ze všech kanálů.</translation>
-    </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation>Koš
-%1</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n smazaná zpráva.</numerusform>
-            <numerusform>%n smazané zprávy.</numerusform>
-            <numerusform>%n smazaných zpráv.</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -2979,6 +2954,31 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>Welcome to %1 %2.</source>
         <translation>Vítá vás %1 %2.</translation>
+    </message>
+</context>
+<context>
+    <name>RecycleBin</name>
+    <message>
+        <source>Recycle bin</source>
+        <translation>Koš</translation>
+    </message>
+    <message>
+        <source>Recycle bin contains all deleted messages from all feeds.</source>
+        <translation>Koš obsahuje všechny smazané zprávy ze všech kanálů.</translation>
+    </message>
+    <message>
+        <source>Recycle bin
+%1</source>
+        <translation>Koš
+%1</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted message(s).</source>
+        <translation>
+            <numerusform>%n smazaná zpráva.</numerusform>
+            <numerusform>%n smazané zprávy.</numerusform>
+            <numerusform>%n smazaných zpráv.</numerusform>
+        </translation>
     </message>
 </context>
 <context>

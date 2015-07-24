@@ -18,7 +18,7 @@
 #ifndef FEEDSPROXYMODEL_H
 #define FEEDSPROXYMODEL_H
 
-#include "feedsmodelrootitem.h"
+#include "rootitem.h"
 
 #include <QSortFilterProxyModel>
 
@@ -46,8 +46,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     bool showUnreadOnly() const;
     void setShowUnreadOnly(bool show_unread_only);
 
-    FeedsModelRootItem *selectedItem() const;
-    void setSelectedItem(FeedsModelRootItem *selected_item);
+    RootItem *selectedItem() const;
+    void setSelectedItem(RootItem *selected_item);
 
   public slots:
     void invalidateFilter();
@@ -61,7 +61,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     // Source model pointer.
     FeedsModel *m_sourceModel;
 
-    FeedsModelRootItem *m_selectedItem;
+    RootItem *m_selectedItem;
     bool m_showUnreadOnly;
 };
 

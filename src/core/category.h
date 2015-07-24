@@ -18,7 +18,7 @@
 #ifndef FEEDSMODELCATEGORY_H
 #define FEEDSMODELCATEGORY_H
 
-#include "core/feedsmodelrootitem.h"
+#include "core/rootitem.h"
 
 #include <QSqlRecord>
 #include <QCoreApplication>
@@ -29,15 +29,15 @@ class FeedsModel;
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
-class FeedsModelCategory : public FeedsModelRootItem {
-    Q_DECLARE_TR_FUNCTIONS(FeedsModelCategory)
+class Category : public RootItem {
+    Q_DECLARE_TR_FUNCTIONS(Category)
 
   public:
     // Constructors and destructors
-    explicit FeedsModelCategory(FeedsModelRootItem *parent_item = NULL);
-    explicit FeedsModelCategory(const FeedsModelCategory &other);
-    explicit FeedsModelCategory(const QSqlRecord &record);
-    virtual ~FeedsModelCategory();
+    explicit Category(RootItem *parent_item = NULL);
+    explicit Category(const Category &other);
+    explicit Category(const QSqlRecord &record);
+    virtual ~Category();
 
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
@@ -46,8 +46,8 @@ class FeedsModelCategory : public FeedsModelRootItem {
     // database.
     bool removeItself();
 
-    bool addItself(FeedsModelRootItem *parent);
-    bool editItself(FeedsModelCategory *new_category_data);
+    bool addItself(RootItem *parent);
+    bool editItself(Category *new_category_data);
 
   private:
     void init();

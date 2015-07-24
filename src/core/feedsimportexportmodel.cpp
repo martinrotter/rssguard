@@ -17,8 +17,8 @@
 
 #include "core/feedsimportexportmodel.h"
 
-#include "core/feedsmodelfeed.h"
-#include "core/feedsmodelcategory.h"
+#include "core/feed.h"
+#include "core/category.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -31,7 +31,7 @@
 
 
 FeedsImportExportModel::FeedsImportExportModel(QObject *parent)
-  : QAbstractItemModel(parent), m_checkStates(QHash<FeedsModelRootItem*, Qt::CheckState>()),
+  : QAbstractItemModel(parent), m_checkStates(QHash<RootItem*, Qt::CheckState>()),
     m_rootItem(NULL), m_recursiveChange(false), m_mode(Import) {
 }
 
@@ -43,20 +43,20 @@ FeedsImportExportModel::~FeedsImportExportModel() {
   }
 }
 
-FeedsModelRootItem *FeedsImportExportModel::itemForIndex(const QModelIndex &index) const {
+RootItem *FeedsImportExportModel::itemForIndex(const QModelIndex &index) const {
   if (index.isValid() && index.model() == this) {
-    return static_cast<FeedsModelRootItem*>(index.internalPointer());
+    return static_cast<RootItem*>(index.internalPointer());
   }
   else {
     return m_rootItem;
   }
 }
 
-FeedsModelRootItem *FeedsImportExportModel::rootItem() const {
+RootItem *FeedsImportExportModel::rootItem() const {
   return m_rootItem;
 }
 
-void FeedsImportExportModel::setRootItem(FeedsModelRootItem *rootItem) {
+void FeedsImportExportModel::setRootItem(RootItem *rootItem) {
   m_rootItem = rootItem;
 }
 
@@ -85,21 +85,21 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   opml_document.documentElement().appendChild(elem_opml_head);
 
   QDomElement elem_opml_body = opml_document.createElement(QSL("body"));
-  QStack<FeedsModelRootItem*> items_to_process; items_to_process.push(m_rootItem);
+  QStack<RootItem*> items_to_process; items_to_process.push(m_rootItem);
   QStack<QDomElement> elements_to_use; elements_to_use.push(elem_opml_body);
 
   // Process all unprocessed nodes.
   while (!items_to_process.isEmpty()) {
     QDomElement active_element = elements_to_use.pop();
-    FeedsModelRootItem *active_item = items_to_process.pop();
+    RootItem *active_item = items_to_process.pop();
 
-    foreach (FeedsModelRootItem *child_item, active_item->childItems()) {
+    foreach (RootItem *child_item, active_item->childItems()) {
       if (!m_checkStates.contains(child_item) || m_checkStates[child_item] != Qt::Checked) {
         continue;
       }
 
       switch (child_item->kind()) {
-        case FeedsModelRootItem::Category: {
+        case RootItem::Cattegory: {
           QDomElement outline_category = opml_document.createElement(QSL("outline"));
           outline_category.setAttribute(QSL("text"), child_item->title());
           outline_category.setAttribute(QSL("description"), child_item->description());
@@ -110,8 +110,8 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           break;
         }
 
-        case FeedsModelRootItem::Feed: {
-          FeedsModelFeed *child_feed = child_item->toFeed();
+        case RootItem::Feeed: {
+          Feed *child_feed = child_item->toFeed();
           QDomElement outline_feed = opml_document.createElement("outline");
           outline_feed.setAttribute(QSL("text"), child_feed->title());
           outline_feed.setAttribute(QSL("xmlUrl"), child_feed->url());
@@ -121,16 +121,16 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           outline_feed.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
 
           switch (child_feed->type()) {
-            case FeedsModelFeed::Rss0X:
-            case FeedsModelFeed::Rss2X:
+            case Feed::Rss0X:
+            case Feed::Rss2X:
               outline_feed.setAttribute(QSL("version"), QSL("RSS"));
               break;
 
-            case FeedsModelFeed::Rdf:
+            case Feed::Rdf:
               outline_feed.setAttribute(QSL("version"), QSL("RSS1"));
               break;
 
-            case FeedsModelFeed::Atom10:
+            case Feed::Atom10:
               outline_feed.setAttribute(QSL("version"), QSL("ATOM"));
               break;
 
@@ -166,12 +166,12 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
     return false;
   }
 
-  FeedsModelRootItem *root_item = new FeedsModelRootItem();
-  QStack<FeedsModelRootItem*> model_items; model_items.push(root_item);
+  RootItem *root_item = new RootItem();
+  QStack<RootItem*> model_items; model_items.push(root_item);
   QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
 
   while (!elements_to_process.isEmpty()) {
-    FeedsModelRootItem *active_model_item = model_items.pop();
+    RootItem *active_model_item = model_items.pop();
     QDomElement active_element = elements_to_process.pop();
 
     for (int i = 0; i < active_element.childNodes().size(); i++) {
@@ -192,23 +192,23 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           QString feed_description = child_element.attribute(QSL("description"));
           QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
-          FeedsModelFeed *new_feed = new FeedsModelFeed(active_model_item);
+          Feed *new_feed = new Feed(active_model_item);
           new_feed->setTitle(feed_title);
           new_feed->setDescription(feed_description);
           new_feed->setEncoding(feed_encoding);
           new_feed->setUrl(feed_url);
           new_feed->setCreationDate(QDateTime::currentDateTime());
           new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
-          new_feed->setAutoUpdateType(FeedsModelFeed::DefaultAutoUpdate);
+          new_feed->setAutoUpdateType(Feed::DefaultAutoUpdate);
 
           if (feed_type == QL1S("RSS1")) {
-            new_feed->setType(FeedsModelFeed::Rdf);
+            new_feed->setType(Feed::Rdf);
           }
           else if (feed_type == QL1S("ATOM")) {
-            new_feed->setType(FeedsModelFeed::Atom10);
+            new_feed->setType(Feed::Atom10);
           }
           else {
-            new_feed->setType(FeedsModelFeed::Rss2X);
+            new_feed->setType(Feed::Rss2X);
           }
 
           active_model_item->appendChild(new_feed);
@@ -230,7 +230,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
             }
           }
 
-          FeedsModelCategory *new_category = new FeedsModelCategory(active_model_item);
+          Category *new_category = new Category(active_model_item);
           new_category->setTitle(category_title);
           new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-category")) : category_icon);
           new_category->setCreationDate(QDateTime::currentDateTime());
@@ -263,16 +263,16 @@ void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
 }
 
 void FeedsImportExportModel::checkAllItems() {
-  foreach (FeedsModelRootItem *root_child, m_rootItem->childItems()) {
-    if (root_child->kind() != FeedsModelRootItem::RecycleBin) {
+  foreach (RootItem *root_child, m_rootItem->childItems()) {
+    if (root_child->kind() != RootItem::Bin) {
       setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
     }
   }
 }
 
 void FeedsImportExportModel::uncheckAllItems() {
-  foreach (FeedsModelRootItem *root_child, m_rootItem->childItems()) {
-    if (root_child->kind() != FeedsModelRootItem::RecycleBin) {
+  foreach (RootItem *root_child, m_rootItem->childItems()) {
+    if (root_child->kind() != RootItem::Bin) {
       setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
     }
   }
@@ -283,8 +283,8 @@ QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex
     return QModelIndex();
   }
 
-  FeedsModelRootItem *parent_item = itemForIndex(parent);
-  FeedsModelRootItem *child_item = parent_item->child(row);
+  RootItem *parent_item = itemForIndex(parent);
+  RootItem *child_item = parent_item->child(row);
 
   if (child_item) {
     return createIndex(row, column, child_item);
@@ -294,8 +294,8 @@ QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex
   }
 }
 
-QModelIndex FeedsImportExportModel::indexForItem(FeedsModelRootItem *item) const {
-  if (item == NULL || item->kind() == FeedsModelRootItem::RootItem) {
+QModelIndex FeedsImportExportModel::indexForItem(RootItem *item) const {
+  if (item == NULL || item->kind() == RootItem::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -312,7 +312,7 @@ QModelIndex FeedsImportExportModel::indexForItem(FeedsModelRootItem *item) const
     if (row_count > 0) {
       // This index has children.
       // Lets take a look if our target item is among them.
-      FeedsModelRootItem *active_item = itemForIndex(active_index);
+      RootItem *active_item = itemForIndex(active_index);
       int candidate_index = active_item->childItems().indexOf(item);
 
       if (candidate_index >= 0) {
@@ -322,9 +322,9 @@ QModelIndex FeedsImportExportModel::indexForItem(FeedsModelRootItem *item) const
       else {
         // Item is not found, add all "categories" from active_item.
         for (int i = 0; i < row_count; i++) {
-          FeedsModelRootItem *possible_category = active_item->child(i);
+          RootItem *possible_category = active_item->child(i);
 
-          if (possible_category->kind() == FeedsModelRootItem::Category) {
+          if (possible_category->kind() == RootItem::Cattegory) {
             parents << index(i, 0, active_index);
           }
         }
@@ -340,8 +340,8 @@ QModelIndex FeedsImportExportModel::parent(const QModelIndex &child) const {
     return QModelIndex();
   }
 
-  FeedsModelRootItem *child_item = itemForIndex(child);
-  FeedsModelRootItem *parent_item = child_item->parent();
+  RootItem *child_item = itemForIndex(child);
+  RootItem *parent_item = child_item->parent();
 
   if (parent_item == m_rootItem) {
     return QModelIndex();
@@ -371,7 +371,7 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
     return QVariant();
   }
 
-  FeedsModelRootItem *item = itemForIndex(index);
+  RootItem *item = itemForIndex(index);
 
   if (role == Qt::CheckStateRole) {
     if (m_checkStates.contains(item)) {
@@ -383,9 +383,9 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
   }
   else if (role == Qt::DecorationRole) {
     switch (item->kind()) {
-      case FeedsModelRootItem::Category:
-      case FeedsModelRootItem::RecycleBin:
-      case FeedsModelRootItem::Feed:
+      case RootItem::Cattegory:
+      case RootItem::Bin:
+      case RootItem::Feeed:
         return item->icon();
 
       default:
@@ -394,10 +394,10 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
   }
   else if (role == Qt::DisplayRole) {
     switch (item->kind()) {
-      case FeedsModelRootItem::Category:
+      case RootItem::Cattegory:
         return QVariant(item->data(index.column(), role).toString() + tr(" (category)"));
 
-      case FeedsModelRootItem::Feed:
+      case RootItem::Feeed:
         return QVariant(item->data(index.column(), role).toString() + tr(" (feed)"));
 
       default:
@@ -411,7 +411,7 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
 
 bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &value, int role) {
   if (index.isValid() && index.column() == 0 && role == Qt::CheckStateRole) {
-    FeedsModelRootItem *item = itemForIndex(index);
+    RootItem *item = itemForIndex(index);
 
     if (item == m_rootItem) {
       // Cannot set data on root item.
@@ -427,7 +427,7 @@ bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &v
     }
 
     // Set new data for all descendants of this actual item.
-    foreach(FeedsModelRootItem *child, item->childItems()) {
+    foreach(RootItem *child, item->childItems()) {
       setData(indexForItem(child), value, Qt::CheckStateRole);
     }
 
@@ -442,7 +442,7 @@ bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &v
 
       // Check children of this new parent item.
       Qt::CheckState parent_state = Qt::Unchecked;
-      foreach (FeedsModelRootItem *child_of_parent, item->childItems()) {
+      foreach (RootItem *child_of_parent, item->childItems()) {
         if (m_checkStates.contains(child_of_parent) && m_checkStates[child_of_parent] == Qt::Checked) {
           // We found out, that some child of this item is checked,
           // therefore this item must be checked too.
@@ -462,7 +462,7 @@ bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &v
 }
 
 Qt::ItemFlags FeedsImportExportModel::flags(const QModelIndex &index) const {
-  if (!index.isValid() || itemForIndex(index)->kind() == FeedsModelRootItem::RecycleBin) {
+  if (!index.isValid() || itemForIndex(index)->kind() == RootItem::Bin) {
     return Qt::NoItemFlags;
   }
 
@@ -475,6 +475,6 @@ Qt::ItemFlags FeedsImportExportModel::flags(const QModelIndex &index) const {
   return flags;
 }
 
-bool FeedsImportExportModel::isItemChecked(FeedsModelRootItem *item) {
+bool FeedsImportExportModel::isItemChecked(RootItem *item) {
   return m_checkStates.contains(item) && m_checkStates.value(item, Qt::Unchecked);
 }

@@ -18,7 +18,7 @@
 #ifndef FEEDSMODELFEED_H
 #define FEEDSMODELFEED_H
 
-#include "core/feedsmodelrootitem.h"
+#include "core/rootitem.h"
 
 #include <QMetaType>
 #include <QDateTime>
@@ -33,8 +33,8 @@ class FeedsModel;
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
-class FeedsModelFeed : public FeedsModelRootItem {
-    Q_DECLARE_TR_FUNCTIONS(FeedsModelFeed)
+class Feed : public RootItem {
+    Q_DECLARE_TR_FUNCTIONS(Feed)
 
   public:
     // Describes possible types of feeds.
@@ -63,10 +63,10 @@ class FeedsModelFeed : public FeedsModelRootItem {
     };
 
     // Constructors and destructors.
-    explicit FeedsModelFeed(FeedsModelRootItem *parent_item = NULL);
-    explicit FeedsModelFeed(const FeedsModelFeed &other);
-    explicit FeedsModelFeed(const QSqlRecord &record);
-    virtual ~FeedsModelFeed();
+    explicit Feed(RootItem *parent_item = NULL);
+    explicit Feed(const Feed &other);
+    explicit Feed(const QSqlRecord &record);
+    virtual ~Feed();
 
     // Returns 0, feeds have no children.
     int childCount() const;
@@ -86,8 +86,8 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Removes this standard feed from persistent
     // storage.
     bool removeItself();
-    bool addItself(FeedsModelRootItem *parent);
-    bool editItself(FeedsModelFeed *new_feed_data);
+    bool addItself(RootItem *parent);
+    bool editItself(Feed *new_feed_data);
 
     // Other getters/setters.
     inline Type type() const {
@@ -180,7 +180,7 @@ class FeedsModelFeed : public FeedsModelRootItem {
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
     // or NULL feed.
-    static QPair<FeedsModelFeed*, QNetworkReply::NetworkError> guessFeed(const QString &url,
+    static QPair<Feed*, QNetworkReply::NetworkError> guessFeed(const QString &url,
                                                                          const QString &username,
                                                                          const QString &password);
 
@@ -219,6 +219,6 @@ class FeedsModelFeed : public FeedsModelRootItem {
     QString m_url;
 };
 
-Q_DECLARE_METATYPE(FeedsModelFeed::Type)
+Q_DECLARE_METATYPE(Feed::Type)
 
 #endif // FEEDSMODELFEED_H

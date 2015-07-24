@@ -19,9 +19,9 @@
 
 #include "definitions/definitions.h"
 #include "core/feedsmodel.h"
-#include "core/feedsmodelcategory.h"
-#include "core/feedsmodelfeed.h"
-#include "core/feedsmodelrootitem.h"
+#include "core/category.h"
+#include "core/feed.h"
+#include "core/rootitem.h"
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
@@ -134,8 +134,8 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
 bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   if (left.isValid() && right.isValid()) {
     // Make necessary castings.
-    FeedsModelRootItem *left_item = m_sourceModel->itemForIndex(left);
-    FeedsModelRootItem *right_item = m_sourceModel->itemForIndex(right);
+    RootItem *left_item = m_sourceModel->itemForIndex(left);
+    RootItem *right_item = m_sourceModel->itemForIndex(right);
 
     // NOTE: Here we want to accomplish that ALL
     // categories are queued one after another and all
@@ -154,15 +154,15 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right
         return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
       }
     }
-    else if (left_item->kind() == FeedsModelRootItem::RecycleBin) {
+    else if (left_item->kind() == RootItem::Bin) {
       // Left item is recycle bin. Make sure it is "biggest" item if we have selected ascending order.
       return sortOrder() == Qt::DescendingOrder;
     }
-    else if (right_item->kind() == FeedsModelRootItem::RecycleBin) {
+    else if (right_item->kind() == RootItem::Bin) {
       // Right item is recycle bin. Make sure it is "smallest" item if we have selected descending order.
       return sortOrder() == Qt::AscendingOrder;
     }
-    else if (left_item->kind() == FeedsModelRootItem::Feed) {
+    else if (left_item->kind() == RootItem::Feeed) {
       // Left item is feed, right item is category.
       return false;
     }
@@ -190,9 +190,9 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
     return false;
   }
 
-  FeedsModelRootItem *item = m_sourceModel->itemForIndex(idx);
+  RootItem *item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() == FeedsModelRootItem::RecycleBin) {
+  if (item->kind() == RootItem::Bin) {
     // Recycle bin is always displayed.
     return true;
   }
@@ -205,11 +205,11 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
   }
 }
 
-FeedsModelRootItem *FeedsProxyModel::selectedItem() const {
+RootItem *FeedsProxyModel::selectedItem() const {
   return m_selectedItem;
 }
 
-void FeedsProxyModel::setSelectedItem(FeedsModelRootItem *selected_item) {
+void FeedsProxyModel::setSelectedItem(RootItem *selected_item) {
   m_selectedItem = selected_item;
 }
 

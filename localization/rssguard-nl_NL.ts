@@ -197,6 +197,29 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
 </context>
 <context>
+    <name>Category</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished">%1 (categorie)%2%3</translation>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation type="unfinished">
+
+Deze categorie bevat geen nested items.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -418,6 +441,48 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">automatisch bijwerken niet gebruiken</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">gebruik algemene instellingen</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished">%1 (%2)%3
+
+Netwerk status: %6
+Coderen: %4
+Auto-update status: %5</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -508,95 +573,6 @@ Click here to open parent directory.</source>
     <message>
         <source>Import was completely successfull.</source>
         <translation>Importeren is helemaal geslaagd.</translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelCategory</name>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (categorie)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation>
-
-Deze categorie bevat geen nested items.</translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>automatisch bijwerken niet gebruiken</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>gebruik algemene instellingen</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
-
-Netwerk status: %6
-Coderen: %4
-Auto-update status: %5</translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelRecycleBin</name>
-    <message>
-        <source>Recycle bin</source>
-        <translation>Prullenbak</translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation>De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
-    </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation>Prullenbak
-%1</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
-        <translation>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -2979,6 +2955,30 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Welcome to %1 %2.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecycleBin</name>
+    <message>
+        <source>Recycle bin</source>
+        <translation type="unfinished">Prullenbak</translation>
+    </message>
+    <message>
+        <source>Recycle bin contains all deleted messages from all feeds.</source>
+        <translation type="unfinished">De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
+    </message>
+    <message>
+        <source>Recycle bin
+%1</source>
+        <translation type="unfinished">Prullenbak
+%1</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted message(s).</source>
+        <translation type="unfinished">
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
 </context>
 <context>

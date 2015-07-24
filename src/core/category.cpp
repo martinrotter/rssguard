@@ -15,14 +15,13 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/feedsmodelcategory.h"
+#include "core/category.h"
 
 #include "definitions/definitions.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
-#include "gui/dialogs/formcategorydetails.h"
 #include "core/feedsmodel.h"
 
 #include <QVariant>
@@ -30,12 +29,12 @@
 #include <QSqlError>
 
 
-FeedsModelCategory::FeedsModelCategory(FeedsModelRootItem *parent_item) : FeedsModelRootItem(parent_item) {
+Category::Category(RootItem *parent_item) : RootItem(parent_item) {
   init();
 }
 
-FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
-  : FeedsModelRootItem(NULL) {
+Category::Category(const Category &other)
+  : RootItem(NULL) {
   m_kind = other.kind();
   m_id = other.id();
   m_title = other.title();
@@ -46,15 +45,15 @@ FeedsModelCategory::FeedsModelCategory(const FeedsModelCategory &other)
   m_parentItem = other.parent();
 }
 
-FeedsModelCategory::~FeedsModelCategory() {
-  qDebug("Destroying FeedsModelCategory instance.");
+Category::~Category() {
+  qDebug("Destroying Category instance.");
 }
 
-void FeedsModelCategory::init() {
-  m_kind = FeedsModelRootItem::Category;
+void Category::init() {
+  m_kind = RootItem::Cattegory;
 }
 
-QVariant FeedsModelCategory::data(int column, int role) const {
+QVariant Category::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -122,17 +121,17 @@ QVariant FeedsModelCategory::data(int column, int role) const {
   }
 }
 
-bool FeedsModelCategory::removeItself() {
+bool Category::removeItself() {
   bool children_removed = true;
 
   // Remove all child items (feeds, categories.)
-  foreach (FeedsModelRootItem *child, m_childItems) {
+  foreach (RootItem *child, m_childItems) {
     children_removed &= child->removeItself();
   }
 
   if (children_removed) {
     // Children are removed, remove this standard category too.
-    QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelCategory"), DatabaseFactory::FromSettings);
+    QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
     QSqlQuery query_remove(database);
 
     // Remove this category from database.
@@ -147,10 +146,10 @@ bool FeedsModelCategory::removeItself() {
   }
 }
 
-bool FeedsModelCategory::addItself(FeedsModelRootItem *parent) {
+bool Category::addItself(RootItem *parent) {
   // Now, add category to persistent storage.
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelCategory"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
@@ -186,11 +185,11 @@ bool FeedsModelCategory::addItself(FeedsModelRootItem *parent) {
   return true;
 }
 
-bool FeedsModelCategory::editItself(FeedsModelCategory *new_category_data) {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelCategory"), DatabaseFactory::FromSettings);
+bool Category::editItself(Category *new_category_data) {
+  QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
-  FeedsModelCategory *original_category = this;
-  FeedsModelRootItem *new_parent = new_category_data->parent();
+  Category *original_category = this;
+  RootItem *new_parent = new_category_data->parent();
 
   query_update_category.setForwardOnly(true);
   query_update_category.prepare("UPDATE Categories "
@@ -216,7 +215,7 @@ bool FeedsModelCategory::editItself(FeedsModelCategory *new_category_data) {
   return true;
 }
 
-FeedsModelCategory::FeedsModelCategory(const QSqlRecord &record) : FeedsModelRootItem(NULL) {
+Category::Category(const QSqlRecord &record) : RootItem(NULL) {
   init();
 
   setId(record.value(CAT_DB_ID_INDEX).toInt());

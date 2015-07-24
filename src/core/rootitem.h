@@ -15,55 +15,55 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef FEEDSMODELROOTITEM_H
-#define FEEDSMODELROOTITEM_H
+#ifndef ROOTITEM_H
+#define ROOTITEM_H
 
 #include <QIcon>
 
 #include <QDateTime>
 #include <QFont>
 
-class FeedsModelRecycleBin;
-class FeedsModelCategory;
-class FeedsModelFeed;
+class RecycleBin;
+class Category;
+class Feed;
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
-class FeedsModelRootItem {
+class RootItem {
   public:
     // Describes the kind of the item.
     enum Kind {
-      RootItem    = 1001,
-      RecycleBin  = 1002,
-      Feed        = 1003,
-      Category    = 1004
+      Root      = 1001,
+      Bin       = 1002,
+      Feeed     = 1003,
+      Cattegory = 1004
     };
 
     // Constructors and destructors.
-    explicit FeedsModelRootItem(FeedsModelRootItem *parent_item = NULL);
-    virtual ~FeedsModelRootItem();
+    explicit RootItem(RootItem *parent_item = NULL);
+    virtual ~RootItem();
 
     // Basic operations.
-    inline virtual FeedsModelRootItem *parent() const {
+    inline virtual RootItem *parent() const {
       return m_parentItem;
     }
 
-    inline virtual void setParent(FeedsModelRootItem *parent_item) {
+    inline virtual void setParent(RootItem *parent_item) {
       m_parentItem = parent_item;
     }
 
-    inline virtual FeedsModelRootItem *child(int row) {
+    inline virtual RootItem *child(int row) {
       return m_childItems.value(row);
     }
 
-    virtual FeedsModelRootItem *child(FeedsModelRootItem::Kind kind_of_child, const QString &identifier);
+    virtual RootItem *child(RootItem::Kind kind_of_child, const QString &identifier);
 
     inline virtual int childCount() const {
       return m_childItems.size();
     }
 
-    inline virtual void appendChild(FeedsModelRootItem *child) {
+    inline virtual void appendChild(RootItem *child) {
       m_childItems.append(child);
       child->setParent(this);
     }
@@ -87,20 +87,20 @@ class FeedsModelRootItem {
     }
 
     // Access to children.
-    inline QList<FeedsModelRootItem*> childItems() const {
+    inline QList<RootItem*> childItems() const {
       return m_childItems;
     }
 
     // Checks whether THIS object is child (direct or indirect)
     // of the given root.
-    bool isChildOf(FeedsModelRootItem *root) {
+    bool isChildOf(RootItem *root) {
       if (root == NULL) {
         return false;
       }
 
-      FeedsModelRootItem *this_item = this;
+      RootItem *this_item = this;
 
-      while (this_item->kind() != FeedsModelRootItem::RootItem) {
+      while (this_item->kind() != RootItem::Root) {
         if (root->childItems().contains(this_item)) {
           return true;
         }
@@ -112,7 +112,7 @@ class FeedsModelRootItem {
       return false;
     }
 
-    bool isParentOf(FeedsModelRootItem *child) {
+    bool isParentOf(RootItem *child) {
       if (child == NULL) {
         return false;
       }
@@ -127,12 +127,12 @@ class FeedsModelRootItem {
       m_childItems.clear();
     }
 
-    QList<FeedsModelRootItem*> getRecursiveChildren();
+    QList<RootItem*> getRecursiveChildren();
 
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
     bool removeChild(int index);
-    bool removeChild(FeedsModelRootItem *child);
+    bool removeChild(RootItem *child);
 
     inline Kind kind() const {
       return m_kind;
@@ -182,13 +182,13 @@ class FeedsModelRootItem {
     }
 
     // Converters
-    FeedsModelRecycleBin *toRecycleBin();
-    FeedsModelCategory *toCategory();
-    FeedsModelFeed *toFeed();
+    RecycleBin *toRecycleBin();
+    Category *toCategory();
+    Feed *toFeed();
 
     // Compares two model items.
-    static bool isEqual(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);
-    static bool lessThan(FeedsModelRootItem *lhs, FeedsModelRootItem *rhs);
+    static bool isEqual(RootItem *lhs, RootItem *rhs);
+    static bool lessThan(RootItem *lhs, RootItem *rhs);
 
   protected:
     void setupFonts();
@@ -203,8 +203,8 @@ class FeedsModelRootItem {
     QFont m_normalFont;
     QFont m_boldFont;
 
-    QList<FeedsModelRootItem*> m_childItems;
-    FeedsModelRootItem *m_parentItem;
+    QList<RootItem*> m_childItems;
+    RootItem *m_parentItem;
 };
 
-#endif // FEEDMODELROOTITEM_H
+#endif // ROOTITEM_H

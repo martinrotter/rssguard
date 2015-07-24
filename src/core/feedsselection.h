@@ -22,8 +22,8 @@
 #include <QMetaType>
 
 
-class FeedsModelRootItem;
-class FeedsModelFeed;
+class RootItem;
+class Feed;
 
 class FeedsSelection {
   public:
@@ -33,16 +33,16 @@ class FeedsSelection {
       MessagesFromRecycleBin
     };
 
-    explicit FeedsSelection(FeedsModelRootItem *root_of_selection = NULL);
+    explicit FeedsSelection(RootItem *root_of_selection = NULL);
     FeedsSelection(const FeedsSelection &other);
     virtual ~FeedsSelection();
 
     SelectionMode mode();
-    FeedsModelRootItem *selectedItem() const;
+    RootItem *selectedItem() const;
     QString generateListOfIds();
 
   private:
-    FeedsModelRootItem *m_selectedItem;
+    RootItem *m_selectedItem;
 };
 
 Q_DECLARE_METATYPE(FeedsSelection::SelectionMode)

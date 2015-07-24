@@ -28,9 +28,9 @@ namespace Ui {
 }
 
 class FeedsModel;
-class FeedsModelFeed;
-class FeedsModelCategory;
-class FeedsModelRootItem;
+class Feed;
+class Category;
+class RootItem;
 
 class FormFeedDetails : public QDialog {
     Q_OBJECT
@@ -42,7 +42,7 @@ class FormFeedDetails : public QDialog {
 
   public slots:
     // Executes add/edit standard feed dialog.
-    int exec(FeedsModelFeed *input_feed, FeedsModelRootItem *parent_to_select);
+    int exec(Feed *input_feed, RootItem *parent_to_select);
 
   protected slots:
     // Applies changes.
@@ -72,18 +72,18 @@ class FormFeedDetails : public QDialog {
     void createConnections();
 
     // Sets the feed which will be edited.
-    void setEditableFeed(FeedsModelFeed *editable_feed);
+    void setEditableFeed(Feed *editable_feed);
 
     // Initializes the dialog.
     void initialize();
 
     // Loads categories into the dialog from the model.
-    void loadCategories(const QList<FeedsModelCategory*> categories,
-                        FeedsModelRootItem *root_item);
+    void loadCategories(const QList<Category*> categories,
+                        RootItem *root_item);
 
   private:
     Ui::FormFeedDetails *m_ui;
-    FeedsModelFeed *m_editableFeed;
+    Feed *m_editableFeed;
     FeedsModel *m_feedsModel;
 
     QMenu *m_iconMenu;

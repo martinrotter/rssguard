@@ -30,7 +30,7 @@ class MessagesToolBar;
 class FeedsToolBar;
 class FeedsView;
 class DatabaseCleaner;
-class FeedsModelFeed;
+class Feed;
 class QToolBar;
 class QSplitter;
 class QProgressBar;
@@ -103,7 +103,7 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
-    void updateFeeds(QList<FeedsModelFeed*> feeds);
+    void updateFeeds(QList<Feed*> feeds);
 
   private slots:
     // Updates counts of messages for example in tray icon.
@@ -111,7 +111,7 @@ class FeedMessageViewer : public TabContent {
 
     // Reacts on feed updates.
     void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(FeedsModelFeed *feed, int current, int total);
+    void onFeedUpdatesProgress(Feed *feed, int current, int total);
     void onFeedUpdatesFinished(FeedDownloadResults results);
 
     // Switches visibility of feed list and related
@@ -135,7 +135,7 @@ class FeedMessageViewer : public TabContent {
 
   signals:
     // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<FeedsModelFeed*> feeds);
+    void feedsUpdateRequested(const QList<Feed*> feeds);
 
   private:
     bool m_toolBarsEnabled;

@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/feedsmodelrecyclebin.h"
+#include "core/recyclebin.h"
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -23,9 +23,9 @@
 #include <QSqlQuery>
 
 
-FeedsModelRecycleBin::FeedsModelRecycleBin(FeedsModelRootItem *parent)
-  : FeedsModelRootItem(parent) {
-  m_kind = FeedsModelRootItem::RecycleBin;
+RecycleBin::RecycleBin(RootItem *parent)
+  : RootItem(parent) {
+  m_kind = RootItem::Bin;
   m_icon = qApp->icons()->fromTheme(QSL("folder-recycle-bin"));
   m_id = ID_RECYCLE_BIN;
   m_title = tr("Recycle bin");
@@ -35,27 +35,27 @@ FeedsModelRecycleBin::FeedsModelRecycleBin(FeedsModelRootItem *parent)
   updateCounts(true);
 }
 
-FeedsModelRecycleBin::~FeedsModelRecycleBin() {
-  qDebug("Destroying FeedsModelRecycleBin instance.");
+RecycleBin::~RecycleBin() {
+  qDebug("Destroying RecycleBin instance.");
 }
 
-int FeedsModelRecycleBin::childCount() const {
+int RecycleBin::childCount() const {
   return 0;
 }
 
-void FeedsModelRecycleBin::appendChild(FeedsModelRootItem *child) {
+void RecycleBin::appendChild(RootItem *child) {
   Q_UNUSED(child)
 }
 
-int FeedsModelRecycleBin::countOfUnreadMessages() const {
+int RecycleBin::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-int FeedsModelRecycleBin::countOfAllMessages() const {
+int RecycleBin::countOfAllMessages() const {
   return m_totalCount;
 }
 
-QVariant FeedsModelRecycleBin::data(int column, int role) const {
+QVariant RecycleBin::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -108,8 +108,8 @@ QVariant FeedsModelRecycleBin::data(int column, int role) const {
   }
 }
 
-bool FeedsModelRecycleBin::empty() {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("FeedsModelRecycleBin"), DatabaseFactory::FromSettings);
+bool RecycleBin::empty() {
+  QSqlDatabase db_handle = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for recycle bin emptying.");
@@ -135,8 +135,8 @@ bool FeedsModelRecycleBin::empty() {
   }
 }
 
-bool FeedsModelRecycleBin::restore() {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("FeedsModelRecycleBin"), DatabaseFactory::FromSettings);
+bool RecycleBin::restore() {
+  QSqlDatabase db_handle = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for recycle bin restoring.");
@@ -162,8 +162,8 @@ bool FeedsModelRecycleBin::restore() {
   }
 }
 
-void FeedsModelRecycleBin::updateCounts(bool update_total_count) {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelRecycleBin"), DatabaseFactory::FromSettings);
+void RecycleBin::updateCounts(bool update_total_count) {
+  QSqlDatabase database = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 

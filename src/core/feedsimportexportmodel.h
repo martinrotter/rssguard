@@ -20,7 +20,7 @@
 
 #include <QAbstractItemModel>
 
-#include "core/feedsmodelrootitem.h"
+#include "core/rootitem.h"
 
 
 class FeedsImportExportModel : public QAbstractItemModel {
@@ -44,18 +44,18 @@ class FeedsImportExportModel : public QAbstractItemModel {
     bool setData(const QModelIndex &index, const QVariant &value, int role);
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
-    bool isItemChecked(FeedsModelRootItem *item);
+    bool isItemChecked(RootItem *item);
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
-    FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;
+    RootItem *itemForIndex(const QModelIndex &index) const;
 
     // Returns source QModelIndex on which lies given item.
-    QModelIndex indexForItem(FeedsModelRootItem *item) const;
+    QModelIndex indexForItem(RootItem *item) const;
 
     // Root item manipulators.
-    FeedsModelRootItem *rootItem() const;
-    void setRootItem(FeedsModelRootItem *rootItem);
+    RootItem *rootItem() const;
+    void setRootItem(RootItem *rootItem);
 
     // Exports to OPML 2.0
     // NOTE: http://dev.opml.org/spec2.html
@@ -70,8 +70,8 @@ class FeedsImportExportModel : public QAbstractItemModel {
     void uncheckAllItems();
 
   private:
-    QHash<FeedsModelRootItem*, Qt::CheckState> m_checkStates;
-    FeedsModelRootItem *m_rootItem;
+    QHash<RootItem*, Qt::CheckState> m_checkStates;
+    RootItem *m_rootItem;
 
     // When it's true, then
     bool m_recursiveChange;

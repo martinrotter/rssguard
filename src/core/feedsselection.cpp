@@ -17,13 +17,13 @@
 
 #include "core/feedsselection.h"
 
-#include "core/feedsmodelrootitem.h"
-#include "core/feedsmodelcategory.h"
-#include "core/feedsmodelfeed.h"
+#include "core/rootitem.h"
+#include "core/category.h"
+#include "core/feed.h"
 #include "definitions/definitions.h"
 
 
-FeedsSelection::FeedsSelection(FeedsModelRootItem *root_of_selection) : m_selectedItem(root_of_selection) {
+FeedsSelection::FeedsSelection(RootItem *root_of_selection) : m_selectedItem(root_of_selection) {
 }
 
 FeedsSelection::FeedsSelection(const FeedsSelection &other) {
@@ -39,11 +39,11 @@ FeedsSelection::SelectionMode FeedsSelection::mode() {
   }
 
   switch (m_selectedItem->kind()) {
-    case FeedsModelRootItem::RecycleBin:
+    case RootItem::Bin:
       return FeedsSelection::MessagesFromRecycleBin;
 
-    case FeedsModelRootItem::Category:
-    case FeedsModelRootItem::Feed:
+    case RootItem::Cattegory:
+    case RootItem::Feeed:
       return FeedsSelection::MessagesFromFeeds;
 
     default:
@@ -51,18 +51,18 @@ FeedsSelection::SelectionMode FeedsSelection::mode() {
   }
 }
 
-FeedsModelRootItem *FeedsSelection::selectedItem() const {
+RootItem *FeedsSelection::selectedItem() const {
   return m_selectedItem;
 }
 
 QString FeedsSelection::generateListOfIds() {
   if (m_selectedItem != NULL &&
-      (m_selectedItem->kind() == FeedsModelRootItem::Feed || m_selectedItem->kind() == FeedsModelRootItem::Category)) {
-    QList<FeedsModelRootItem*> children = m_selectedItem->getRecursiveChildren();
+      (m_selectedItem->kind() == RootItem::Feeed || m_selectedItem->kind() == RootItem::Cattegory)) {
+    QList<RootItem*> children = m_selectedItem->getRecursiveChildren();
     QStringList stringy_ids;
 
-    foreach (FeedsModelRootItem *child, children) {
-      if (child->kind() == FeedsModelRootItem::Feed) {
+    foreach (RootItem *child, children) {
+      if (child->kind() == RootItem::Feeed) {
         stringy_ids.append(QString::number(child->id()));
       }
     }

@@ -21,27 +21,27 @@
 #include <QAbstractItemModel>
 
 #include "core/messagesmodel.h"
-#include "core/feedsmodelrootitem.h"
+#include "core/rootitem.h"
 
 #include <QIcon>
 
 
-class FeedsModelCategory;
-class FeedsModelFeed;
-class FeedsModelRecycleBin;
+class Category;
+class Feed;
+class RecycleBin;
 class FeedsImportExportModel;
 
-typedef QList<QPair<int, FeedsModelCategory*> > CategoryAssignment;
-typedef QPair<int, FeedsModelCategory*> CategoryAssignmentItem;
+typedef QList<QPair<int, Category*> > CategoryAssignment;
+typedef QPair<int, Category*> CategoryAssignmentItem;
 
-typedef QList<QPair<int, FeedsModelFeed*> > FeedAssignment;
-typedef QPair<int, FeedsModelFeed*> FeedAssignmentItem;
+typedef QList<QPair<int, Feed*> > FeedAssignment;
+typedef QPair<int, Feed*> FeedAssignmentItem;
 
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
 
-    friend class FeedsModelFeed;
-    friend class FeedsModelCategory;
+    friend class Feed;
+    friend class Category;
 
   public:
     // Constructors and destructors.
@@ -78,73 +78,73 @@ class FeedsModel : public QAbstractItemModel {
     bool removeItem(const QModelIndex &index);
 
     // Standard category manipulators.
-    bool addCategory(FeedsModelCategory *category, FeedsModelRootItem *parent);
-    bool editCategory(FeedsModelCategory *original_category, FeedsModelCategory *new_category_data);
+    bool addCategory(Category *category, RootItem *parent);
+    bool editCategory(Category *original_category, Category *new_category_data);
 
     // Standard feed manipulators.
-    bool addFeed(FeedsModelFeed *feed, FeedsModelRootItem *parent);
+    bool addFeed(Feed *feed, RootItem *parent);
 
     // New feed is just temporary feed, it is not added to the model.
     // It is used to fetch its data to the original feed
     // and the original feed is moved if needed.
-    bool editFeed(FeedsModelFeed *original_feed, FeedsModelFeed *new_feed_data);
+    bool editFeed(Feed *original_feed, Feed *new_feed_data);
 
     // Returns the list of updates which should be updated
     // according to auto-update schedule.
     // Variable "auto_update_now" is true, when global timeout
     // for scheduled auto-update was met so feeds with "default"
     // auto-update strategy should be updated.
-    QList<FeedsModelFeed*> feedsForScheduledUpdate(bool auto_update_now);
+    QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
     // This is usually used for displaying whole feeds
     // in "newspaper" mode.
-    QList<Message> messagesForFeeds(const QList<FeedsModelFeed*> &feeds);
+    QList<Message> messagesForFeeds(const QList<Feed*> &feeds);
 
     // Returns all categories, each pair
     // consists of ID of parent item and pointer to category.
-    QHash<int, FeedsModelCategory*> allCategories();
+    QHash<int, Category*> allCategories();
 
     // Returns categories from the subtree with given root node, each pair
     // consists of ID of parent item and pointer to category.
-    QHash<int, FeedsModelCategory*> categoriesForItem(FeedsModelRootItem *root);
+    QHash<int, Category*> categoriesForItem(RootItem *root);
 
     // Returns list of all feeds contained in the model.
-    QList<FeedsModelFeed*> allFeeds();
+    QList<Feed*> allFeeds();
 
     // Get list of feeds from tree with particular item
     // as root. If root itself is a feed, then it is returned.
-    QList<FeedsModelFeed*> feedsForItem(FeedsModelRootItem *root);
+    QList<Feed*> feedsForItem(RootItem *root);
 
     // Returns list of ALL CHILD feeds which belong to given parent indexes.
-    QList<FeedsModelFeed*> feedsForIndexes(const QModelIndexList &indexes);
+    QList<Feed*> feedsForIndexes(const QModelIndexList &indexes);
 
     // Returns ALL CHILD feeds contained within single index.
-    QList<FeedsModelFeed*> feedsForIndex(const QModelIndex &index);
+    QList<Feed*> feedsForIndex(const QModelIndex &index);
 
     // Returns pointer to feed if it lies on given index
     // or NULL if no feed lies on given index.
-    FeedsModelFeed *feedForIndex(const QModelIndex &index);
+    Feed *feedForIndex(const QModelIndex &index);
 
     // Returns pointer to category if it lies on given index
     // or NULL if no category lies on given index.
-    FeedsModelCategory *categoryForIndex(const QModelIndex &index) const;
+    Category *categoryForIndex(const QModelIndex &index) const;
 
     // Returns pointer to recycle bin if lies on given index
     // or NULL if no recycle bin lies on given index.
-    FeedsModelRecycleBin *recycleBinForIndex(const QModelIndex &index) const;
+    RecycleBin *recycleBinForIndex(const QModelIndex &index) const;
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
-    FeedsModelRootItem *itemForIndex(const QModelIndex &index) const;
+    RootItem *itemForIndex(const QModelIndex &index) const;
 
     // Returns source QModelIndex on which lies given item.
-    QModelIndex indexForItem(FeedsModelRootItem *item) const;
+    QModelIndex indexForItem(RootItem *item) const;
 
     bool hasAnyFeedNewMessages();
 
     // Access to root item.
-    inline FeedsModelRootItem *rootItem() const {
+    inline RootItem *rootItem() const {
       return m_rootItem;
     }
 
@@ -153,12 +153,12 @@ class FeedsModel : public QAbstractItemModel {
     bool mergeModel(FeedsImportExportModel *model, QString &output_message);
 
     // Access to recycle bin.
-    FeedsModelRecycleBin *recycleBin() const;
+    RecycleBin *recycleBin() const;
 
   public slots:
     // Feeds operations.
-    bool markFeedsRead(const QList<FeedsModelFeed*> &feeds, int read);
-    bool markFeedsDeleted(const QList<FeedsModelFeed*> &feeds, int deleted, bool read_only);
+    bool markFeedsRead(const QList<Feed*> &feeds, int read);
+    bool markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.
@@ -172,7 +172,7 @@ class FeedsModel : public QAbstractItemModel {
   protected:
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
-    QStringList textualFeedIds(const QList<FeedsModelFeed*> &feeds);
+    QStringList textualFeedIds(const QList<Feed*> &feeds);
 
     // Loads feed/categories from the database.
     void loadFromDatabase();
@@ -186,8 +186,8 @@ class FeedsModel : public QAbstractItemModel {
     void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
 
   private:
-    FeedsModelRootItem *m_rootItem;
-    FeedsModelRecycleBin *m_recycleBin;
+    RootItem *m_rootItem;
+    RecycleBin *m_recycleBin;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;

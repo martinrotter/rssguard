@@ -399,13 +399,13 @@ set(APP_SOURCES
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
   src/core/feedsproxymodel.cpp
-  src/core/feedsmodelcategory.cpp
-  src/core/feedsmodelrootitem.cpp
-  src/core/feedsmodelfeed.cpp
+  src/core/category.cpp
+  src/core/rootitem.cpp
+  src/core/feed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
   src/core/feedsimportexportmodel.cpp
-  src/core/feedsmodelrecyclebin.cpp
+  src/core/recyclebin.cpp
   src/core/feedsselection.cpp
 
   # NETWORK-WEB sources.

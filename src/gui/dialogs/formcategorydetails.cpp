@@ -18,8 +18,8 @@
 #include "gui/dialogs/formcategorydetails.h"
 
 #include "definitions/definitions.h"
-#include "core/feedsmodelrootitem.h"
-#include "core/feedsmodelcategory.h"
+#include "core/rootitem.h"
+#include "core/category.h"
 #include "core/feedsmodel.h"
 #include "miscellaneous/iconfactory.h"
 #include "gui/feedsview.h"
@@ -67,7 +67,7 @@ void FormCategoryDetails::createConnections() {
   connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
 }
 
-void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_category) {
+void FormCategoryDetails::setEditableCategory(Category *editable_category) {
   m_editableCategory = editable_category;
 
   m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) editable_category->parent())));
@@ -76,7 +76,7 @@ void FormCategoryDetails::setEditableCategory(FeedsModelCategory *editable_categ
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormCategoryDetails::exec(FeedsModelCategory *input_category, FeedsModelRootItem *parent_to_select) {
+int FormCategoryDetails::exec(Category *input_category, RootItem *parent_to_select) {
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem(), input_category);
 
@@ -90,10 +90,10 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category, FeedsModelRoot
 
     // Load parent from suggested item.
     if (parent_to_select != NULL) {
-      if (parent_to_select->kind() == FeedsModelRootItem::Category) {
+      if (parent_to_select->kind() == RootItem::Cattegory) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
-      else if (parent_to_select->kind() == FeedsModelRootItem::Feed) {
+      else if (parent_to_select->kind() == RootItem::Feeed) {
         int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
         if (target_item >= 0) {
@@ -113,8 +113,8 @@ int FormCategoryDetails::exec(FeedsModelCategory *input_category, FeedsModelRoot
 }
 
 void FormCategoryDetails::apply() {
-  FeedsModelRootItem *parent = static_cast<FeedsModelRootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  FeedsModelCategory *new_category = new FeedsModelCategory();
+  RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  Category *new_category = new Category();
 
   new_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   new_category->setCreationDate(QDateTime::currentDateTime());
@@ -241,14 +241,14 @@ void FormCategoryDetails::initialize() {
   m_ui->m_txtTitle->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormCategoryDetails::loadCategories(const QList<FeedsModelCategory*> categories,
-                                         FeedsModelRootItem *root_item,
-                                         FeedsModelCategory *input_category) {
+void FormCategoryDetails::loadCategories(const QList<Category*> categories,
+                                         RootItem *root_item,
+                                         Category *input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (FeedsModelCategory *category, categories) {
+  foreach (Category *category, categories) {
     if (input_category != NULL && (category == input_category || category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so

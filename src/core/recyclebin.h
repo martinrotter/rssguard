@@ -15,23 +15,23 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef FEEDSMODELRECYCLEBIN_H
-#define FEEDSMODELRECYCLEBIN_H
+#ifndef RECYCLEBIN_H
+#define RECYCLEBIN_H
 
-#include "core/feedsmodelrootitem.h"
+#include "core/rootitem.h"
 
 #include <QCoreApplication>
 
 
-class FeedsModelRecycleBin : public FeedsModelRootItem {
-    Q_DECLARE_TR_FUNCTIONS(FeedsModelRecycleBin)
+class RecycleBin : public RootItem {
+    Q_DECLARE_TR_FUNCTIONS(RecycleBin)
 
   public:
-    explicit FeedsModelRecycleBin(FeedsModelRootItem *parent = NULL);
-    virtual ~FeedsModelRecycleBin();
+    explicit RecycleBin(RootItem *parent = NULL);
+    virtual ~RecycleBin();
 
     int childCount() const;
-    void appendChild(FeedsModelRootItem *child);
+    void appendChild(RootItem *child);
     int countOfUnreadMessages() const;
     int countOfAllMessages() const;
     QVariant data(int column, int role) const;
@@ -47,4 +47,4 @@ class FeedsModelRecycleBin : public FeedsModelRootItem {
     int m_unreadCount;
 };
 
-#endif // FEEDSMODELRECYCLEBIN_H
+#endif // RECYCLEBIN_H

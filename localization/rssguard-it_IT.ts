@@ -197,6 +197,27 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
 </context>
 <context>
+    <name>Category</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -416,6 +437,44 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">non utilizza l&apos;auto-aggiornamento</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">utilizza impostazioni globali</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -506,88 +565,6 @@ Click here to open parent directory.</source>
     <message>
         <source>Import was completely successfull.</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelCategory</name>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n messaggio(i) non letto.</numerusform>
-            <numerusform>%n messaggio(i) non letti.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>non utilizza l&apos;auto-aggiornamento</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>utilizza impostazioni globali</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform>%n messaggio(i) non letti.</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>FeedsModelRecycleBin</name>
-    <message>
-        <source>Recycle bin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -2942,6 +2919,29 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>Welcome to %1 %2.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RecycleBin</name>
+    <message>
+        <source>Recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recycle bin contains all deleted messages from all feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recycle bin
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted message(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>

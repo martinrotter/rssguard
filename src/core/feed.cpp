@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/feedsmodelfeed.h"
+#include "core/feed.h"
 
 #include "definitions/definitions.h"
 #include "core/parsingfactory.h"
@@ -38,7 +38,7 @@
 #include <QXmlStreamReader>
 
 
-void FeedsModelFeed::init() {
+void Feed::init() {
   m_passwordProtected = false;
   m_username = QString();
   m_password = QString();
@@ -52,16 +52,16 @@ void FeedsModelFeed::init() {
   m_autoUpdateRemainingInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
   m_encoding = QString();
   m_url = QString();
-  m_kind = FeedsModelRootItem::Feed;
+  m_kind = RootItem::Feeed;
 }
 
-FeedsModelFeed::FeedsModelFeed(FeedsModelRootItem *parent_item)
-  : FeedsModelRootItem(parent_item) {
+Feed::Feed(RootItem *parent_item)
+  : RootItem(parent_item) {
   init();
 }
 
-FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
-  : FeedsModelRootItem(NULL) {
+Feed::Feed(const Feed &other)
+  : RootItem(NULL) {
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
@@ -75,7 +75,7 @@ FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
   m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();
   m_encoding = other.encoding();
   m_url = other.url();
-  m_kind = FeedsModelRootItem::Feed;
+  m_kind = RootItem::Feeed;
   m_title = other.title();
   m_id = other.id();
   m_icon = other.icon();
@@ -85,24 +85,24 @@ FeedsModelFeed::FeedsModelFeed(const FeedsModelFeed &other)
   m_description = other.description();
 }
 
-FeedsModelFeed::~FeedsModelFeed() {
-  qDebug("Destroying FeedsModelFeed instance.");
+Feed::~Feed() {
+  qDebug("Destroying Feed instance.");
 }
 
-int FeedsModelFeed::childCount() const {
+int Feed::childCount() const {
   // Because feed has no children.
   return 0;
 }
 
-int FeedsModelFeed::countOfAllMessages() const {
+int Feed::countOfAllMessages() const {
   return m_totalCount;
 }
 
-int FeedsModelFeed::countOfUnreadMessages() const {
+int Feed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
+QString Feed::typeToString(Feed::Type type) {
   switch (type) {
     case Atom10:
       return QSL("ATOM 1.0");
@@ -119,8 +119,8 @@ QString FeedsModelFeed::typeToString(FeedsModelFeed::Type type) {
   }
 }
 
-void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+void Feed::updateCounts(bool including_total_count, bool update_feed_statuses) {
+  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
 
   query_all.setForwardOnly(true);
@@ -143,10 +143,10 @@ void FeedsModelFeed::updateCounts(bool including_total_count, bool update_feed_s
   }
 }
 
-QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(const QString &url,
+QPair<Feed*, QNetworkReply::NetworkError> Feed::guessFeed(const QString &url,
                                                                               const QString &username,
                                                                               const QString &password) {
-  QPair<FeedsModelFeed*, QNetworkReply::NetworkError> result; result.first = NULL;
+  QPair<Feed*, QNetworkReply::NetworkError> result; result.first = NULL;
 
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,
@@ -175,7 +175,7 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
     }
 
     if (result.first == NULL) {
-      result.first = new FeedsModelFeed();
+      result.first = new Feed();
     }
 
     QTextCodec *custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
@@ -287,7 +287,7 @@ QPair<FeedsModelFeed*, QNetworkReply::NetworkError> FeedsModelFeed::guessFeed(co
   return result;
 }
 
-QVariant FeedsModelFeed::data(int column, int role) const {
+QVariant Feed::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -352,7 +352,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
                   "Network status: %6\n"
                   "Encoding: %4\n"
                   "Auto-update status: %5").arg(m_title,
-                                                FeedsModelFeed::typeToString(m_type),
+                                                Feed::typeToString(m_type),
                                                 m_description.isEmpty() ? QString() : QString('\n') + m_description,
                                                 m_encoding,
                                                 auto_update_string,
@@ -394,7 +394,7 @@ QVariant FeedsModelFeed::data(int column, int role) const {
   }
 }
 
-int FeedsModelFeed::update() {
+int Feed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
@@ -427,16 +427,16 @@ int FeedsModelFeed::update() {
   QList<Message> messages;
 
   switch (type()) {
-    case FeedsModelFeed::Rss0X:
-    case FeedsModelFeed::Rss2X:
+    case Feed::Rss0X:
+    case Feed::Rss2X:
       messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
       break;
 
-    case FeedsModelFeed::Rdf:
+    case Feed::Rdf:
       messages = ParsingFactory::parseAsRDF(formatted_feed_contents);
       break;
 
-    case FeedsModelFeed::Atom10:
+    case Feed::Atom10:
       messages = ParsingFactory::parseAsATOM10(formatted_feed_contents);
 
     default:
@@ -446,8 +446,8 @@ int FeedsModelFeed::update() {
   return updateMessages(messages);
 }
 
-bool FeedsModelFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+bool Feed::removeItself() {
+  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
@@ -467,9 +467,9 @@ bool FeedsModelFeed::removeItself() {
   return query_remove.exec();
 }
 
-bool FeedsModelFeed::addItself(FeedsModelRootItem *parent) {
+bool Feed::addItself(RootItem *parent) {
   // Now, add feed to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_add_feed(database);
 
   query_add_feed.setForwardOnly(true);
@@ -511,11 +511,11 @@ bool FeedsModelFeed::addItself(FeedsModelRootItem *parent) {
   return true;
 }
 
-bool FeedsModelFeed::editItself(FeedsModelFeed *new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+bool Feed::editItself(Feed *new_feed_data) {
+  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
-  FeedsModelFeed *original_feed = this;
-  FeedsModelRootItem *new_parent = new_feed_data->parent();
+  Feed *original_feed = this;
+  RootItem *new_parent = new_feed_data->parent();
 
   query_update_feed.setForwardOnly(true);
   query_update_feed.prepare("UPDATE Feeds "
@@ -558,10 +558,10 @@ bool FeedsModelFeed::editItself(FeedsModelFeed *new_feed_data) {
   return true;
 }
 
-int FeedsModelFeed::updateMessages(const QList<Message> &messages) {
+int Feed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   int updated_messages = 0;
-  QSqlDatabase database = qApp->database()->connection(QSL("FeedsModelFeed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
 
   // Prepare queries.
@@ -685,12 +685,12 @@ int FeedsModelFeed::updateMessages(const QList<Message> &messages) {
   return updated_messages;
 }
 
-QNetworkReply::NetworkError FeedsModelFeed::networkError() const {
+QNetworkReply::NetworkError Feed::networkError() const {
   return m_networkError;
 }
 
-FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelRootItem(NULL) {
-  m_kind = FeedsModelRootItem::Feed;
+Feed::Feed(const QSqlRecord &record) : RootItem(NULL) {
+  m_kind = RootItem::Feeed;
 
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
@@ -702,7 +702,7 @@ FeedsModelFeed::FeedsModelFeed(const QSqlRecord &record) : FeedsModelRootItem(NU
   setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
   setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
   setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
-  setAutoUpdateType(static_cast<FeedsModelFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
   updateCounts();
 }
