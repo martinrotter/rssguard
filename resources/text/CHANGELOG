@@ -22,6 +22,7 @@
   </ul>
   Fixed:
   <ul>
+  	<li>Auto-updating fixed, error was due to master mutex double locking. (issue #117)</li>
     <li>Fixed some memory leaks which might appear when adding/editing categories/feeds.</li>
   <ul>
   <hr/>

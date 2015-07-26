@@ -208,18 +208,20 @@ void FeedsView::executeNextAutoUpdate() {
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
   QList<Feed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
-                                                                                   m_globalAutoUpdateRemainingInterval == 0);
+                                                                         m_globalAutoUpdateRemainingInterval == 0);
 
-  if (feeds_for_update.isEmpty()) {
-    // No feeds are scheduled for update now, unlock the master lock.
-    qApp->feedUpdateLock()->unlock();
-  }
-  else {
+  // No feeds are scheduled for update now, unlock the master lock.
+  qApp->feedUpdateLock()->unlock();
+
+  if (!feeds_for_update.isEmpty()) {
     // Request update for given feeds.
     emit feedsUpdateRequested(feeds_for_update);
 
     // NOTE: OSD/bubble informing about performing
     // of scheduled update can be shown now.
+    qApp->showGuiMessage(tr("Startin auto-update of some feeds"),
+                         tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
+                         QSystemTrayIcon::Information);
   }
 }
 
