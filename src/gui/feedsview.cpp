@@ -210,7 +210,6 @@ void FeedsView::executeNextAutoUpdate() {
   QList<Feed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
                                                                          m_globalAutoUpdateRemainingInterval == 0);
 
-  // No feeds are scheduled for update now, unlock the master lock.
   qApp->feedUpdateLock()->unlock();
 
   if (!feeds_for_update.isEmpty()) {
@@ -219,7 +218,7 @@ void FeedsView::executeNextAutoUpdate() {
 
     // NOTE: OSD/bubble informing about performing
     // of scheduled update can be shown now.
-    qApp->showGuiMessage(tr("Startin auto-update of some feeds"),
+    qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
                          tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
                          QSystemTrayIcon::Information);
   }
