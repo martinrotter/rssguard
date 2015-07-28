@@ -24,17 +24,8 @@
 
 
 #if defined(Q_OS_LINUX)
-#include <QtDBus/QDBusArgument>
-#include <QImage>
-
 class QDBusInterface;
 #endif
-
-#if defined(Q_OS_LINUX)
-QDBusArgument &operator<<(QDBusArgument& arg, const QImage& image);
-const QDBusArgument &operator>>(const QDBusArgument& arg, QImage&);
-#endif
-
 
 class Notification : public QWidget {
     Q_OBJECT
@@ -58,6 +49,11 @@ class Notification : public QWidget {
 
     // Loads settings.
     void loadSettings();
+
+#if defined(Q_OS_LINUX)
+  private slots:
+    void notificationClosed(uint id, uint reason);
+#endif
 
   protected:
     void paintEvent(QPaintEvent *event);
@@ -93,6 +89,7 @@ class Notification : public QWidget {
 
 #if defined(Q_OS_LINUX)
     QDBusInterface *m_dBusInterface;
+    uint m_dBusActiveNotification;
 #endif
 };
 
