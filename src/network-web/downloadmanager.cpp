@@ -123,9 +123,6 @@ void DownloadItem::getFileName() {
     qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
                                QDir::toNativeSeparators(QFileInfo(chosen_filename).absolutePath()));
     qApp->downloadManager()->setDownloadDirectory(file_info.absoluteDir().absolutePath());
-
-    // TODO: Probably not needed.
-    //m_ui->m_lblFilename->setText(file_info.fileName());
   }
 
   m_output.setFileName(chosen_filename);
