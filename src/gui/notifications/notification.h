@@ -23,6 +23,19 @@
 #include <QSystemTrayIcon>
 
 
+#if defined(Q_OS_LINUX)
+#include <QtDBus/QDBusArgument>
+#include <QImage>
+
+class QDBusInterface;
+#endif
+
+#if defined(Q_OS_LINUX)
+QDBusArgument &operator<<(QDBusArgument& arg, const QImage& image);
+const QDBusArgument &operator>>(const QDBusArgument& arg, QImage&);
+#endif
+
+
 class Notification : public QWidget {
     Q_OBJECT
 
@@ -77,6 +90,10 @@ class Notification : public QWidget {
 
     QObject *m_clickTarget;
     const char *m_clickSlot;
+
+#if defined(Q_OS_LINUX)
+    QDBusInterface *m_dBusInterface;
+#endif
 };
 
 #endif // NOTIFICATION_H

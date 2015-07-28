@@ -33,10 +33,29 @@
 #include <Carbon/Carbon.h>
 #endif
 
+#if defined(Q_OS_LINUX)
+#include <QtDBus>
+#endif
+
 
 Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString()), m_icon(QPixmap()), m_screen(-1),
   m_width(-1), m_height(-1), m_padding(5), m_widgetMargin(2 * m_padding), m_timerId(0), m_clickTarget(NULL),
   m_clickSlot(NULL) {
+
+#if defined(Q_OS_LINUX)
+  m_dBusInterface = new QDBusInterface("org.freedesktop.Notifications",
+                                       "/org/freedesktop/Notifications",
+                                       "org.freedesktop.Notifications",
+                                       QDBusConnection::sessionBus(), this);
+
+  qDBusRegisterMetaType<QImage>();
+
+  if (m_dBusInterface->isValid()) {
+    // We have correct connection to interface.
+    //m_dBusInterface.connect()
+  }
+#endif
+
   setupWidget();
   loadSettings();
 }
@@ -44,6 +63,56 @@ Notification::Notification() : QWidget(0), m_title(QString()), m_text(QString())
 Notification::~Notification() {
   qDebug("Destroying Notification instance.");
 }
+
+#if defined(Q_OS_LINUX)
+QDBusArgument &operator<<(QDBusArgument& arg, const QImage& image) {
+  if(image.isNull()) {
+    arg.beginStructure();
+    arg << 0 << 0 << 0 << false << 0 << 0 << QByteArray();
+    arg.endStructure();
+    return arg;
+  }
+
+  QImage scaled = image.scaledToHeight(100, Qt::SmoothTransformation);
+  scaled = scaled.convertToFormat(QImage::Format_ARGB32);
+
+#if Q_BYTE_ORDER == Q_LITTLE_ENDIAN
+  // ABGR -> ARGB
+  QImage i = scaled.rgbSwapped();
+#else
+  // ABGR -> GBAR
+  QImage i(scaled.size(), scaled.format());
+  for (int y = 0; y < i.height(); ++y) {
+    QRgb* p = (QRgb*) scaled.scanLine(y);
+    QRgb* q = (QRgb*) i.scanLine(y);
+    QRgb* end = p + scaled.width();
+    while (p < end) {
+      *q = qRgba(qGreen(*p), qBlue(*p), qAlpha(*p), qRed(*p));
+      p++;
+      q++;
+    }
+  }
+#endif
+
+  arg.beginStructure();
+  arg << i.width();
+  arg << i.height();
+  arg << i.bytesPerLine();
+  arg << i.hasAlphaChannel();
+  int channels = i.isGrayscale() ? 1 : (i.hasAlphaChannel() ? 4 : 3);
+  arg << i.depth() / channels;
+  arg << channels;
+  arg << QByteArray(reinterpret_cast<const char*>(i.bits()), i.byteCount());
+  arg.endStructure();
+  return arg;
+}
+
+const QDBusArgument &operator>>(const QDBusArgument& arg, QImage&) {
+  // This is needed to link but shouldn't be called.
+  Q_ASSERT(0);
+  return arg;
+}
+#endif
 
 bool Notification::areNotificationsActivated() {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool();
@@ -59,6 +128,29 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
   m_text = text;
   m_title = title;
   m_icon = icon.pixmap(NOTIFICATION_ICON_SIZE, NOTIFICATION_ICON_SIZE);
+
+#if defined(Q_OS_LINUX)
+  /*
+  if (m_dBusInterface->isValid()) {
+    QVariantMap hints;
+    hints["image-data"] = QImage();// ;
+
+    QList<QVariant> argument_list;
+    argument_list << APP_NAME;  // app_name
+    argument_list << (uint)0;  // replace_id
+    argument_list << "";  // app_icon
+    argument_list << "aaa"; // summary
+    argument_list << "bbb"; // body
+    argument_list << QStringList();  // actions
+    argument_list << hints;  // hints
+    argument_list << (int)1000; // timeout in ms
+
+    //m_dBusInterface->callWithArgumentList(QDBus::AutoDetect, "Notify", argument_list);
+
+    return;
+  }
+  */
+#endif
 
   if (m_clickTarget != NULL && m_clickSlot != NULL) {
     // Connect invokation target.

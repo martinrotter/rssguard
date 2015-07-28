@@ -245,13 +245,24 @@ if(USE_QT_5)
 endif(USE_QT_5)
 
 # Setup libraries.
-if(USE_QT_5)
-  find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
-else(USE_QT_5)
-  set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
-  find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
-  include(${QT_USE_FILE})
-endif(USE_QT_5)
+if(UNIX)
+  # On Unices, enable D-Bus support.
+  if(USE_QT_5)
+    find_package(Qt5 REQUIRED DBus Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
+  else(USE_QT_5)
+    set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
+    find_package(Qt4 REQUIRED QtDBus QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
+    include(${QT_USE_FILE})
+  endif(USE_QT_5)
+else(UNIX)
+  if(USE_QT_5)
+    find_package(Qt5 REQUIRED Sql WebKit WebKitWidgets Widgets Xml XmlPatterns Network LinguistTools PrintSupport)
+  else(USE_QT_5)
+    set(QT_MIN_VERSION ${MINIMUM_QT_VERSION})
+    find_package(Qt4 REQUIRED QtCore QtGui QtSql QtNetwork QtWebkit QtXml QtXmlPatterns)
+    include(${QT_USE_FILE})
+  endif(USE_QT_5)
+endif(UNIX)
 
 # Configure QStringBuilder behavior.
 if(USE_QT_5)
@@ -722,18 +733,33 @@ if(USE_QT_5)
   if(WIN32)
     target_link_libraries(${EXE_NAME} Qt5::WinMain)
   endif(WIN32)
-  
+
+  if(UNIX)
+    # Use modules from Qt.
+    qt5_use_modules(${EXE_NAME}
+      DBus
+      Core
+      Widgets
+      Sql
+      Network
+      Xml
+      WebKit
+      WebKitWidgets
+      PrintSupport
+    )
+  else(UNIX)
   # Use modules from Qt.
-  qt5_use_modules(${EXE_NAME}
-    Core
-    Widgets
-    Sql
-    Network
-    Xml
-    WebKit
-    WebKitWidgets
-    PrintSupport
-  )
+    qt5_use_modules(${EXE_NAME}
+      Core
+      Widgets
+      Sql
+      Network
+      Xml
+      WebKit
+      WebKitWidgets
+      PrintSupport
+    )
+  endif(UNIX)
 # Setup compilation for Qt 4.
 else(USE_QT_5)
   add_executable(${EXE_NAME} WIN32 MACOSX_BUNDLE
@@ -744,16 +770,30 @@ else(USE_QT_5)
     ${APP_QM}
   )
 
-  # Link modules from Qt.
-  target_link_libraries(${EXE_NAME}
-    ${QT_QTCORE_LIBRARY}
-    ${QT_QTGUI_LIBRARY}
-    ${QT_QTNETWORK_LIBRARY}
-    ${QT_QTSQL_LIBRARY}
-    ${QT_QTXML_LIBRARY}
-    ${QT_QTMAIN_LIBRARY}
-    ${QT_QTWEBKIT_LIBRARY}
-  )
+  if(UNIX)
+    # Link modules from Qt.
+    target_link_libraries(${EXE_NAME}
+      ${QT_QTDBUS_LIBRARY}
+      ${QT_QTCORE_LIBRARY}
+      ${QT_QTGUI_LIBRARY}
+      ${QT_QTNETWORK_LIBRARY}
+      ${QT_QTSQL_LIBRARY}
+      ${QT_QTXML_LIBRARY}
+      ${QT_QTMAIN_LIBRARY}
+      ${QT_QTWEBKIT_LIBRARY}
+    )
+  else(UNIX)
+    # Link modules from Qt.
+    target_link_libraries(${EXE_NAME}
+      ${QT_QTCORE_LIBRARY}
+      ${QT_QTGUI_LIBRARY}
+      ${QT_QTNETWORK_LIBRARY}
+      ${QT_QTSQL_LIBRARY}
+      ${QT_QTXML_LIBRARY}
+      ${QT_QTMAIN_LIBRARY}
+      ${QT_QTWEBKIT_LIBRARY}
+    )
+  endif(UNIX)
 endif(USE_QT_5)
 
 # Installation stage.
