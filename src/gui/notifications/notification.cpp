@@ -82,6 +82,8 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
   m_icon = icon.pixmap(NOTIFICATION_ICON_SIZE, NOTIFICATION_ICON_SIZE);
 
 #if defined(Q_OS_LINUX)
+  // On Linux, we try to send notification to session notification D-Bus service
+  // if it exists.
   if (m_dBusInterface->isValid()) {
     QVariantMap hints;
     hints["image-path"] = ""; // "application-exit";
@@ -104,8 +106,10 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
       // Message was sent, notification should display.
       m_dBusActiveNotification = response.arguments().at(0).toUInt();
     }
+
+    return;
   }
-#else
+
   if (m_clickTarget != NULL && m_clickSlot != NULL) {
     // Connect invokation target.
     connect(this, SIGNAL(clicked()), m_clickTarget, m_clickSlot, Qt::QueuedConnection);
@@ -118,7 +122,6 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
   QTimer::singleShot(0, this, SLOT(repaint()));
 
   m_timerId = startTimer(10000);
-#endif
 }
 
 void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon,
@@ -142,11 +145,13 @@ void Notification::cancel() {
   }
 }
 
+#if defined(Q_OS_LINUX)
 void Notification::notificationClosed(uint id, uint reason) {
   if (m_clickTarget != NULL && m_clickSlot != NULL && m_dBusActiveNotification == id && reason == 2) {
     QMetaObject::invokeMethod(m_clickTarget, m_clickSlot);
   }
 }
+#endif
 
 void Notification::updateGeometries() {
   // Calculate width and height of notification with given icon and text.

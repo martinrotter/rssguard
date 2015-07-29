@@ -19,6 +19,7 @@
   Added:
   <ul>
     <li><b>Key used for proxy/feed password coding is now stored in separate file. This file lies in the same directory as configuration file. If your use password-protected proxy/feeds, then make sure that NOBODY gets access to that file and your DB file in the same time.</b></li>
+    <li>Notifications on Linux now supports D-Bus "org.freedesktop.Notifications" service. User must have enabled "modern & fancy notifications" for this to work. If D-Bus service is not available, then feature falls back to RSS Guard custom popup notifications.</li>
   </ul>
   Fixed:
   <ul>

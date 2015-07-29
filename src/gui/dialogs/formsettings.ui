@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -638,7 +638,7 @@ Authors of this application are NOT responsible for lost data.</string>
            <item row="0" column="0" colspan="2">
             <widget class="QGroupBox" name="m_grpNotifications">
              <property name="title">
-              <string>Fancy &amp;&amp; modern popup notifications</string>
+              <string>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</string>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -1289,7 +1289,7 @@ Authors of this application are NOT responsible for lost data.</string>
        <item>
         <widget class="QTabWidget" name="m_tabFeedsMessages">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="m_tabFeeds">
           <attribute name="title">
