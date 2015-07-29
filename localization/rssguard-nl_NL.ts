@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl_NL">
+<TS version="2.0" language="nl_NL">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -551,10 +551,12 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -573,6 +575,17 @@ Auto-update status: %5</translation>
     <message>
         <source>Import was completely successfull.</source>
         <translation>Importeren is helemaal geslaagd.</translation>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1857,7 +1870,9 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -1915,10 +1930,12 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1980,6 +1997,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -2399,7 +2417,7 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <source>Working database</source>
         <translation>Werkende database</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2439,7 +2457,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <source>Select client</source>
         <translation>Selecteer client</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2472,10 +2490,6 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Working database is ok.</source>
         <translation>Werkende database is ok</translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Notification position</source>
@@ -2511,6 +2525,10 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2668,42 +2686,52 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -2748,6 +2776,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Definitief verwijderd</translation>
     </message>
     <message>
@@ -2756,6 +2785,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bijlagen</translation>
     </message>
     <message>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.0" language="en_US">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -399,7 +399,7 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="273"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="270"/>
         <source>Error opening output file: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -414,70 +414,70 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="140"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="137"/>
         <source>Download directory couldn&apos;t be created</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="212"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="209"/>
         <source>Cannot open file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="212"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="209"/>
         <source>Cannot open output file. Open it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="225"/>
-        <location filename="../src/network-web/downloadmanager.cpp" line="229"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="222"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="226"/>
         <source>Cannot open directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="225"/>
-        <location filename="../src/network-web/downloadmanager.cpp" line="229"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="222"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="226"/>
         <source>Cannot open output directory. Open it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="284"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="281"/>
         <source>Error when saving file: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="299"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="296"/>
         <source>Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="395"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="392"/>
         <source>%1 of %2 (%3 per second) - %4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="405"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="402"/>
         <source>%1 of %2 - download completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="440"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="437"/>
         <source>Download finished</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="441"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="438"/>
         <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="447"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="444"/>
         <source>URL: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="448"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="445"/>
         <source>Local file: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -490,7 +490,7 @@ Click here to open parent directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="582"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="579"/>
         <source>Downloading %n file(s)...</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -498,7 +498,7 @@ Click here to open parent directory.</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="722"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="719"/>
         <source>%n minutes remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -506,7 +506,7 @@ Click here to open parent directory.</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/network-web/downloadmanager.cpp" line="726"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="723"/>
         <source>%n seconds remaining</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -514,22 +514,22 @@ Click here to open parent directory.</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="738"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="735"/>
         <source>bytes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="742"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="739"/>
         <source>kB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="746"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="743"/>
         <source>MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/downloadmanager.cpp" line="750"/>
+        <location filename="../src/network-web/downloadmanager.cpp" line="747"/>
         <source>GB</source>
         <translation type="unfinished"></translation>
     </message>
@@ -653,39 +653,54 @@ Auto-update status: %5</source>
 <context>
     <name>FeedsModel</name>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="49"/>
+        <location filename="../src/core/feedsmodel.cpp" line="51"/>
         <source>Root</source>
         <extracomment>Name of root item of feed list which can be seen in feed add/edit dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="56"/>
+        <location filename="../src/core/feedsmodel.cpp" line="58"/>
         <source>Title</source>
         <extracomment>Title text in the feed list header.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="58"/>
+        <location filename="../src/core/feedsmodel.cpp" line="60"/>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="59"/>
+        <location filename="../src/core/feedsmodel.cpp" line="61"/>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="512"/>
+        <location filename="../src/core/feedsmodel.cpp" line="113"/>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/core/feedsmodel.cpp" line="114"/>
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../src/core/feedsmodel.cpp" line="581"/>
         <source>Invalid tree data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="579"/>
+        <location filename="../src/core/feedsmodel.cpp" line="648"/>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/core/feedsmodel.cpp" line="582"/>
+        <location filename="../src/core/feedsmodel.cpp" line="651"/>
         <source>Import was completely successfull.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -701,97 +716,97 @@ Auto-update status: %5</source>
 <context>
     <name>FeedsView</name>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="253"/>
+        <location filename="../src/gui/feedsview.cpp" line="187"/>
         <source>Cannot add standard category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="282"/>
+        <location filename="../src/gui/feedsview.cpp" line="216"/>
         <source>Cannot add standard feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="349"/>
+        <location filename="../src/gui/feedsview.cpp" line="283"/>
         <source>Cannot edit item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="376"/>
+        <location filename="../src/gui/feedsview.cpp" line="310"/>
         <source>Cannot delete item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="254"/>
+        <location filename="../src/gui/feedsview.cpp" line="188"/>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="283"/>
+        <location filename="../src/gui/feedsview.cpp" line="217"/>
         <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="350"/>
+        <location filename="../src/gui/feedsview.cpp" line="284"/>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="377"/>
+        <location filename="../src/gui/feedsview.cpp" line="311"/>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="392"/>
+        <location filename="../src/gui/feedsview.cpp" line="326"/>
         <source>Deleting feed or category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="393"/>
+        <location filename="../src/gui/feedsview.cpp" line="327"/>
         <source>You are about to delete selected feed or category.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="393"/>
+        <location filename="../src/gui/feedsview.cpp" line="327"/>
         <source>Do you really want to delete selected item?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="407"/>
+        <location filename="../src/gui/feedsview.cpp" line="341"/>
         <source>Deletion of item failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="408"/>
+        <location filename="../src/gui/feedsview.cpp" line="342"/>
         <source>Selected item was not deleted due to error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="456"/>
+        <location filename="../src/gui/feedsview.cpp" line="390"/>
         <source>Permanently delete messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="457"/>
+        <location filename="../src/gui/feedsview.cpp" line="391"/>
         <source>You are about to permanenty delete all messages from your recycle bin.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="458"/>
+        <location filename="../src/gui/feedsview.cpp" line="392"/>
         <source>Do you really want to empty your recycle bin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="558"/>
+        <location filename="../src/gui/feedsview.cpp" line="492"/>
         <source>Context menu for feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="573"/>
+        <location filename="../src/gui/feedsview.cpp" line="507"/>
         <source>Context menu for empty space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/feedsview.cpp" line="582"/>
+        <location filename="../src/gui/feedsview.cpp" line="516"/>
         <source>Context menu for recycle bin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2299,7 +2314,9 @@ Auto-update status: %5</source>
         <location filename="../src/gui/dialogs/formsettings.ui" line="68"/>
         <location filename="../src/gui/dialogs/formsettings.cpp" line="76"/>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2441,6 +2458,11 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/gui/dialogs/formsettings.ui" line="641"/>
+        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/gui/dialogs/formsettings.ui" line="664"/>
         <source>Tabs</source>
         <translation type="unfinished"></translation>
@@ -2546,11 +2568,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/dialogs/formsettings.ui" line="641"/>
-        <source>Fancy &amp;&amp; modern popup notifications</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/gui/dialogs/formsettings.ui" line="650"/>
         <source>Notification position</source>
         <translation type="unfinished"></translation>
@@ -2624,7 +2641,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../src/gui/dialogs/formsettings.ui" line="1109"/>
         <source>Placeholders:
  • %1 - title of selected message,
@@ -2779,7 +2796,7 @@ Authors of this application are NOT responsible for lost data.</source>
         <source>&amp;Show password</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <location filename="../src/gui/dialogs/formsettings.ui" line="916"/>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
@@ -2801,12 +2818,14 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/dialogs/formsettings.cpp" line="77"/>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/formsettings.cpp" line="78"/>
         <location filename="../src/gui/dialogs/formsettings.cpp" line="85"/>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2823,6 +2842,7 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <location filename="../src/gui/dialogs/formsettings.cpp" line="84"/>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3278,61 +3298,73 @@ currently installed one.</source>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="132"/>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="133"/>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="134"/>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="135"/>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="136"/>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="137"/>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="138"/>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="139"/>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="140"/>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="141"/>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="142"/>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/core/messagesmodel.cpp" line="143"/>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

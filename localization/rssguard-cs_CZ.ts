@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<TS version="2.0" language="cs_CZ">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -561,10 +561,12 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Názvy kanálů/kategorií.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Počty nepřečtených/všech zpráviček.</translation>
     </message>
     <message>
@@ -583,6 +585,18 @@ Automatický update: %5</translation>
     <message>
         <source>Import was completely successfull.</source>
         <translation>Import byl zcela úspěšný.</translation>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation>Zahajuji auto-update některých kanálů</translation>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation>
+            <numerusform>Budu aktualizovat %n kanál.</numerusform>
+            <numerusform>Budu aktualizovat %n kanály.</numerusform>
+            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1867,7 +1881,9 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Lokalizace</translation>
     </message>
     <message>
@@ -1925,10 +1941,12 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Kód</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1990,6 +2008,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Název</translation>
     </message>
     <message>
@@ -2407,7 +2426,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Working database</source>
         <translation>Pracovní databáze</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2443,7 +2462,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Select client</source>
         <translation>Zvolit klienta</translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2474,10 +2493,6 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Working database is ok.</source>
         <translation>Pracovní databáze je ok.</translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications</source>
-        <translation>Moderní popup notifikace</translation>
     </message>
     <message>
         <source>Notification position</source>
@@ -2514,6 +2529,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
         <translation>Mějte na paměti, že rychlost a latence použitého MySQL serveru těžce ovlivňuje svižnost aplikace. Použití pomalého databázového spojení může vést ke špatnému výkonu aplikace např. při prohlížení zpráv.</translation>
+    </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
+        <translation>Moderní notifikace (Toto používá nativní notifikace přes D-Bus, jsou-li dostupné.)</translation>
     </message>
 </context>
 <context>
@@ -2667,42 +2686,52 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Přečteno</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Smazáno</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Důležité</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Kanál</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Nadpis</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation></translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Autor</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Vytvořeno</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Obsah</translation>
     </message>
     <message>
@@ -2747,6 +2776,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanentně smazáno</translation>
     </message>
     <message>
@@ -2755,6 +2785,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Přílohy</translation>
     </message>
     <message>

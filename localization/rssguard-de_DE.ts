@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="de_DE">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -543,10 +543,12 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
+        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Titel der Feeds/Kategorien.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
+        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Anzahl ungelesener/aller Nachrichten.</translation>
     </message>
     <message>
@@ -565,6 +567,17 @@ Auto-update status: %5</source>
     <message>
         <source>Import was completely successfull.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starting auto-update of some feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>I will auto-update %n feed(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -1848,7 +1861,9 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.</extracomment>
+        <extracomment>Language settings section.
+----------
+Language column of language list.</extracomment>
         <translation>Sprache</translation>
     </message>
     <message>
@@ -1906,10 +1921,12 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Code</source>
+        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
+        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1971,6 +1988,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Name</source>
+        <extracomment>Skin list name column.</extracomment>
         <translation>Name</translation>
     </message>
     <message>
@@ -2376,7 +2394,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Working database</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2408,7 +2426,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Select client</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
+    <message utf8="true">
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2436,10 +2454,6 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fancy &amp;&amp; modern popup notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2476,6 +2490,10 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2632,42 +2650,52 @@ Go to application website to obtain it manually.</source>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
+        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
+        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lesen</translation>
     </message>
     <message>
         <source>Deleted</source>
+        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Gelöscht</translation>
     </message>
     <message>
         <source>Important</source>
+        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Wichtig</translation>
     </message>
     <message>
         <source>Feed</source>
+        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
+        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
+        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
+        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Author</translation>
     </message>
     <message>
         <source>Created on</source>
+        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Erstellt am</translation>
     </message>
     <message>
         <source>Contents</source>
+        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhalt</translation>
     </message>
     <message>
@@ -2712,6 +2740,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Permanently deleted</source>
+        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2720,6 +2749,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Attachments</source>
+        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
