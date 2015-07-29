@@ -99,7 +99,6 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
     argument_list << (int)-1;       // timeout in ms
 
     // TODO: obrazky https://dev.visucore.com/bitcoin/doxygen/notificator_8cpp_source.html
-
     QDBusMessage response = m_dBusInterface->callWithArgumentList(QDBus::AutoDetect, "Notify", argument_list);
 
     if (response.arguments().size() == 1) {
@@ -109,6 +108,7 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
 
     return;
   }
+#endif
 
   if (m_clickTarget != NULL && m_clickSlot != NULL) {
     // Connect invokation target.
@@ -121,7 +121,7 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
   QTimer::singleShot(20, this, SLOT(show()));
   QTimer::singleShot(0, this, SLOT(repaint()));
 
-  m_timerId = startTimer(10000);
+  m_timerId = startTimer(TRAY_ICON_BUBBLE_TIMEOUT);
 }
 
 void Notification::notify(const QString &text, const QString &title, QSystemTrayIcon::MessageIcon icon,
