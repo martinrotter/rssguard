@@ -25,6 +25,7 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/mutex.h"
 #include "gui/messagebox.h"
 
 #include <QSqlError>
@@ -33,12 +34,13 @@
 #include <QPair>
 #include <QStack>
 #include <QMimeData>
+#include <QTimer>
 
 #include <algorithm>
 
 
 FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_recycleBin(new RecycleBin()) {
+  : QAbstractItemModel(parent), m_recycleBin(new RecycleBin()), m_autoUpdateTimer(new QTimer(this)) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -58,7 +60,12 @@ FeedsModel::FeedsModel(QObject *parent)
   m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.") <<
                    /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all meesages.");
 
+  connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
+
   loadFromDatabase();
+
+  // Setup the timer.
+  updateAutoUpdateStatus();
 }
 
 FeedsModel::~FeedsModel() {
@@ -66,6 +73,68 @@ FeedsModel::~FeedsModel() {
 
   // Delete all model items.
   delete m_rootItem;
+}
+
+void FeedsModel::quit() {
+  if (m_autoUpdateTimer->isActive()) {
+    m_autoUpdateTimer->stop();
+  }
+}
+
+void FeedsModel::executeNextAutoUpdate() {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
+
+    // Cannot update, quit.
+    return;
+  }
+
+  // If global auto-update is enabled and its interval counter reached zero,
+  // then we need to restore it.
+  if (m_globalAutoUpdateEnabled && --m_globalAutoUpdateRemainingInterval < 0) {
+    // We should start next auto-update interval.
+    m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
+  }
+
+  qDebug("Starting auto-update event, pass %d/%d.", m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
+
+  // Pass needed interval data and lets the model decide which feeds
+  // should be updated in this pass.
+  QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
+
+  qApp->feedUpdateLock()->unlock();
+
+  if (!feeds_for_update.isEmpty()) {
+    // Request update for given feeds.
+    emit feedsUpdateRequested(feeds_for_update);
+
+    // NOTE: OSD/bubble informing about performing
+    // of scheduled update can be shown now.
+    qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
+                         tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
+                         QSystemTrayIcon::Information);
+  }
+}
+
+void FeedsModel::updateAutoUpdateStatus() {
+  // Restore global intervals.
+  // NOTE: Specific per-feed interval are left intact.
+  m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
+  m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
+  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
+
+  // Start global auto-update timer if it is not running yet.
+  // NOTE: The timer must run even if global auto-update
+  // is not enabled because user can still enable auto-update
+  // for individual feeds.
+  if (!m_autoUpdateTimer->isActive()) {
+    m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
+    m_autoUpdateTimer->start();
+    qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
+  }
+  else {
+    qDebug("Auto-update timer is already running.");
+  }
 }
 
 QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
@@ -158,7 +227,7 @@ Qt::DropActions FeedsModel::supportedDropActions() const {
   return Qt::MoveAction;
 }
 
-Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const { 
+Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
   Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
   RootItem *item_for_index = itemForIndex(index);
 
@@ -249,7 +318,7 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 }
 
-bool FeedsModel::removeItem(const QModelIndex &index) { 
+bool FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
     RootItem *deleting_item = itemForIndex(index);
@@ -472,7 +541,7 @@ RecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) const {
   }
 }
 
-QModelIndex FeedsModel::indexForItem(RootItem *item) const { 
+QModelIndex FeedsModel::indexForItem(RootItem *item) const {
   if (item == NULL || item->kind() == RootItem::Root) {
     // Root item lies on invalid index.
     return QModelIndex();

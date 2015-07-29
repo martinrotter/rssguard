@@ -291,7 +291,7 @@ void FormSettings::saveFeedsMessages() {
   settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_cmbMessageFontStandard->currentFont().family());
 
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->updateAutoUpdateStatus();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->updateAutoUpdateStatus();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->reloadWholeLayout();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->updateDateFormat();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel()->reloadWholeLayout();

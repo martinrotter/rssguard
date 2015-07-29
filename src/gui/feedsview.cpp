@@ -46,8 +46,7 @@ FeedsView::FeedsView(QWidget *parent)
   : QTreeView(parent),
     m_contextMenuCategoriesFeeds(NULL),
     m_contextMenuEmptySpace(NULL),
-    m_contextMenuRecycleBin(NULL),
-    m_autoUpdateTimer(new QTimer(this)) {
+    m_contextMenuRecycleBin(NULL) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -56,51 +55,21 @@ FeedsView::FeedsView(QWidget *parent)
 
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
-  connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
+  connect(m_sourceModel, SIGNAL(feedsUpdateRequested(QList<Feed*>)), this, SIGNAL(feedsUpdateRequested(QList<Feed*>)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
   setupAppearance();
-
-  // Setup the timer.
-  updateAutoUpdateStatus();
 }
 
 FeedsView::~FeedsView() {
   qDebug("Destroying FeedsView instance.");
 }
 
-void FeedsView::quit() {
-  if (m_autoUpdateTimer->isActive()) {
-    m_autoUpdateTimer->stop();
-  }
-}
-
 void FeedsView::setSortingEnabled(bool enable) {
   disconnect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
   QTreeView::setSortingEnabled(enable);
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
-}
-
-void FeedsView::updateAutoUpdateStatus() {
-  // Restore global intervals.
-  // NOTE: Specific per-feed interval are left intact.
-  m_globalAutoUpdateInitialInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
-  m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
-
-  // Start global auto-update timer if it is not running yet.
-  // NOTE: The timer must run even if global auto-update
-  // is not enabled because user can still enable auto-update
-  // for individual feeds.
-  if (!m_autoUpdateTimer->isActive()) {
-    m_autoUpdateTimer->setInterval(AUTO_UPDATE_INTERVAL);
-    m_autoUpdateTimer->start();
-    qDebug("Auto-update timer started with interval %d.", m_autoUpdateTimer->interval());
-  }
-  else {
-    qDebug("Auto-update timer is already running.");
-  }
 }
 
 QList<Feed*> FeedsView::selectedFeeds() const {
@@ -185,42 +154,6 @@ void FeedsView::updateAllFeedsOnStartup() {
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
-  }
-}
-
-void FeedsView::executeNextAutoUpdate() {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");
-
-    // Cannot update, quit.
-    return;
-  }
-
-  // If global auto-update is enabled and its interval counter reached zero,
-  // then we need to restore it.
-  if (m_globalAutoUpdateEnabled && --m_globalAutoUpdateRemainingInterval < 0) {
-    // We should start next auto-update interval.
-    m_globalAutoUpdateRemainingInterval = m_globalAutoUpdateInitialInterval;
-  }
-
-  qDebug("Starting auto-update event, pass %d/%d.", m_globalAutoUpdateRemainingInterval, m_globalAutoUpdateInitialInterval);
-
-  // Pass needed interval data and lets the model decide which feeds
-  // should be updated in this pass.
-  QList<Feed*> feeds_for_update = m_sourceModel->feedsForScheduledUpdate(m_globalAutoUpdateEnabled &&
-                                                                         m_globalAutoUpdateRemainingInterval == 0);
-
-  qApp->feedUpdateLock()->unlock();
-
-  if (!feeds_for_update.isEmpty()) {
-    // Request update for given feeds.
-    emit feedsUpdateRequested(feeds_for_update);
-
-    // NOTE: OSD/bubble informing about performing
-    // of scheduled update can be shown now.
-    qApp->showGuiMessage(tr("Starting auto-update of some feeds"),
-                         tr("I will auto-update %n feed(s).", 0, feeds_for_update.size()),
-                         QSystemTrayIcon::Information);
   }
 }
 

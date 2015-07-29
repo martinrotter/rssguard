@@ -30,6 +30,7 @@ class Category;
 class Feed;
 class RecycleBin;
 class FeedsImportExportModel;
+class QTimer;
 
 typedef QList<QPair<int, Category*> > CategoryAssignment;
 typedef QPair<int, Category*> CategoryAssignmentItem;
@@ -155,6 +156,13 @@ class FeedsModel : public QAbstractItemModel {
     // Access to recycle bin.
     RecycleBin *recycleBin() const;
 
+    // Resets global auto-update intervals according to settings
+    // and starts/stop the timer as needed.
+    void updateAutoUpdateStatus();
+
+    // Does necessary job before quitting this component.
+    void quit();
+
   public slots:
     // Feeds operations.
     bool markFeedsRead(const QList<Feed*> &feeds, int read);
@@ -168,6 +176,10 @@ class FeedsModel : public QAbstractItemModel {
     // to be reloaded by ALL attached views.
     // NOTE: This reloads all parent valid indexes too.
     void reloadChangedLayout(QModelIndexList list);
+
+  private slots:
+    // Is executed when next auto-update round could be done.
+    void executeNextAutoUpdate();
 
   protected:
     // Returns converted ids of given feeds
@@ -185,12 +197,21 @@ class FeedsModel : public QAbstractItemModel {
   signals:
     void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
 
+    // Emitted when model requests update of some feeds.
+    void feedsUpdateRequested(const QList<Feed*> feeds);
+
   private:
     RootItem *m_rootItem;
     RecycleBin *m_recycleBin;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;
+
+    // Auto-update stuff.
+    QTimer *m_autoUpdateTimer;
+    bool m_globalAutoUpdateEnabled;
+    int m_globalAutoUpdateInitialInterval;
+    int m_globalAutoUpdateRemainingInterval;
 };
 
 #endif // FEEDSMODEL_H

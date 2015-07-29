@@ -49,14 +49,7 @@ class FeedsView : public QTreeView {
       return m_sourceModel;
     }
 
-    // Does necessary job before quitting this component.
-    void quit();
-
     void setSortingEnabled(bool enable);
-
-    // Resets global auto-update intervals according to settings
-    // and starts/stop the timer as needed.
-    void updateAutoUpdateStatus();
     
     // Returns list of selected/all feeds.
     // NOTE: This is recursive method which returns all descendants.
@@ -81,9 +74,6 @@ class FeedsView : public QTreeView {
     void updateAllFeeds();
     void updateAllFeedsOnStartup();
     void updateSelectedFeeds();
-
-    // Is executed when next auto-update round could be done.
-    void executeNextAutoUpdate();
 
     // Feed read/unread manipulators.
     void markSelectedFeedsReadStatus(int read);
@@ -196,12 +186,6 @@ class FeedsView : public QTreeView {
 
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
-
-    // Auto-update stuff.
-    QTimer *m_autoUpdateTimer;
-    bool m_globalAutoUpdateEnabled;
-    int m_globalAutoUpdateInitialInterval;
-    int m_globalAutoUpdateRemainingInterval;
 };
 
 #endif // FEEDSVIEW_H

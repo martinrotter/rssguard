@@ -150,8 +150,8 @@ void FeedMessageViewer::loadMessageViewerFonts() {
 }
 
 void FeedMessageViewer::quit() {
-  // Quit the feeds view (stops auto-update timer etc.).
-  m_feedsView->quit();
+  // Quit the feeds model (stops auto-update timer etc.).
+  m_feedsView->sourceModel()->quit();
 
   // Close worker threads.
   if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
