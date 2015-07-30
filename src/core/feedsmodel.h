@@ -90,11 +90,11 @@ class FeedsModel : public QAbstractItemModel {
     // and the original feed is moved if needed.
     bool editFeed(Feed *original_feed, Feed *new_feed_data);
 
-    // Returns the list of updates which should be updated
+    // Returns the list of feeds which should be updated
     // according to auto-update schedule.
     // Variable "auto_update_now" is true, when global timeout
-    // for scheduled auto-update was met so feeds with "default"
-    // auto-update strategy should be updated.
+    // for scheduled auto-update was met and global auto-update strategy is enabled
+    // so feeds with "default" auto-update strategy should be updated.
     QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
@@ -142,6 +142,7 @@ class FeedsModel : public QAbstractItemModel {
     // Returns source QModelIndex on which lies given item.
     QModelIndex indexForItem(RootItem *item) const;
 
+    // Determines if any feed has any new messages.
     bool hasAnyFeedNewMessages();
 
     // Access to root item.
