@@ -23,6 +23,7 @@
   </ul>
   Fixed:
   <ul>
+    <li>Size of downloaded website artifacts is now not hidden by progress bar.</li>
   	<li>Auto-updating of feeds fixed, error was due to master mutex double locking. (issue #117)</li>
     <li>Fixed some memory leaks which might appear when adding/editing categories/feeds.</li>
   <ul>

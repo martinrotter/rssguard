@@ -131,6 +131,9 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(act_discover);
   m_toolBar->addWidget(m_txtLocation);
 
+  m_loadingWidget = new QWidget(this);
+  m_loadingWidget->setFixedHeight(15);
+
   // Initialize dynamic progress bar which will be displayed
   // at the bottom of web browser.
   m_lblProgress = new QLabel(this);
@@ -143,22 +146,23 @@ void WebBrowser::initializeLayout() {
 
   m_loadingLayout = new QHBoxLayout();
   m_loadingLayout->setMargin(0);
-  m_loadingLayout->addWidget(m_lblProgress, 0, Qt::AlignLeft | Qt::AlignVCenter);
-  m_loadingProgress->setLayout(m_loadingLayout);
+  m_loadingLayout->addWidget(m_lblProgress, 0, Qt::AlignVCenter);
+  m_loadingLayout->addWidget(m_loadingProgress, 1, Qt::AlignVCenter);
+  m_loadingWidget->setLayout(m_loadingLayout);
 
   // Setup layout.
   m_layout->addWidget(m_toolBar);
   m_layout->addWidget(m_webView);
-  m_layout->addWidget(m_loadingProgress);
+  m_layout->addWidget(m_loadingWidget);
   m_layout->setMargin(0);
   m_layout->setSpacing(0);
 
-  m_loadingProgress->hide();
+  m_loadingWidget->hide();
 }
 
 void WebBrowser::onLoadingStarted() {
   m_loadingProgress->setValue(0);
-  m_loadingProgress->show();
+  m_loadingWidget->show();
 }
 
 void WebBrowser::onLoadingProgress(int progress) {
@@ -176,7 +180,7 @@ void WebBrowser::onLoadingFinished(bool success) {
     m_btnDiscoverFeeds->clearFeedAddresses();
   }
 
-  m_loadingProgress->hide();
+  m_loadingWidget->hide();
 }
 
 void WebBrowser::createConnections() {

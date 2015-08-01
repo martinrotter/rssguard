@@ -157,6 +157,7 @@ class WebBrowser : public TabContent {
     LocationLineEdit *m_txtLocation;
     QWidget *m_zoomButtons;
     QToolButton *m_btnResetZoom;
+    QWidget *m_loadingWidget;
     QHBoxLayout *m_loadingLayout;
     QProgressBar *m_loadingProgress;
     QLabel *m_lblProgress;
