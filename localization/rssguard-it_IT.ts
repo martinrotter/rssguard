@@ -622,10 +622,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Deleting feed or category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Do you really want to delete selected item?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -663,6 +659,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete feed/category</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

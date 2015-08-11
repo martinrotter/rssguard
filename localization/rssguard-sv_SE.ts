@@ -629,10 +629,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Objektet togs inte bort, på grund av ett fel.</translation>
     </message>
     <message>
-        <source>Deleting feed or category</source>
-        <translation>Tar bort flöde/kategori</translation>
-    </message>
-    <message>
         <source>Do you really want to delete selected item?</source>
         <translation>Vill du verkligen ta bort markerat objekt?</translation>
     </message>
@@ -671,6 +667,10 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
+    <message>
+        <source>Delete feed/category</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

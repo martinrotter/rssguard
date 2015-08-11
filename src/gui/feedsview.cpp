@@ -323,7 +323,7 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Deleting feed or category"),
+  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Delete feed/category"),
                        tr("You are about to delete selected feed or category."), tr("Do you really want to delete selected item?"),
                        QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
     // User changed his mind.

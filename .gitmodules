@@ -1,3 +1,6 @@
 [submodule "resources/binaries"]
 	path = resources/binaries
 	url = git@bitbucket.org:skunkos/qt-binaries.git
+[submodule "resources/scripts/transka"]
+	path = resources/scripts/transka
+	url = https://github.com/martinrotter/transka.git

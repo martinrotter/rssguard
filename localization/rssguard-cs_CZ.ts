@@ -641,10 +641,6 @@ Automatický update: %5</translation>
         <translation>Vybraná položka nebyla smazána kvůli chybě.</translation>
     </message>
     <message>
-        <source>Deleting feed or category</source>
-        <translation>Mazání zprávy či kategorie</translation>
-    </message>
-    <message>
         <source>Do you really want to delete selected item?</source>
         <translation>Opravdu chcete vybranou položku smazat?</translation>
     </message>
@@ -683,6 +679,10 @@ Automatický update: %5</translation>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation>Nelze smazat vybranou položku, protože už běží jiná kritická operace.</translation>
+    </message>
+    <message>
+        <source>Delete feed/category</source>
+        <translation>Smazat kanál/kategorii</translation>
     </message>
 </context>
 <context>

@@ -757,7 +757,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <location filename="../src/gui/feedsview.cpp" line="326"/>
-        <source>Deleting feed or category</source>
+        <source>Delete feed/category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3939,23 +3939,23 @@ Unread news: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="219"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="223"/>
         <source>No title</source>
         <extracomment>Webbrowser tab title when no title is available.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="262"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="266"/>
         <source>Written by </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="263"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="267"/>
         <source>uknown author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/network-web/webbrowser.cpp" line="271"/>
+        <location filename="../src/network-web/webbrowser.cpp" line="275"/>
         <source>Newspaper view</source>
         <translation type="unfinished"></translation>
     </message>

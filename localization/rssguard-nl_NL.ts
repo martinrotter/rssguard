@@ -630,10 +630,6 @@ Auto-update status: %5</translation>
         <translation>Geselecteerde item is niet verwijderd door een fout.</translation>
     </message>
     <message>
-        <source>Deleting feed or category</source>
-        <translation>Verwijder feed of categorie</translation>
-    </message>
-    <message>
         <source>Do you really want to delete selected item?</source>
         <translation>Wil je het geselecteerde item echt verwijderen?</translation>
     </message>
@@ -672,6 +668,10 @@ Auto-update status: %5</translation>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation>Geselecteerde item kunt u niet verwijderen omdat een andere kritieke operatie aan de gang is.</translation>
+    </message>
+    <message>
+        <source>Delete feed/category</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
