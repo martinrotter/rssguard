@@ -1,28 +1,249 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="da_DK" version="2.1">
 <context>
+    <name>AdBlockAddSubscriptionDialog</name>
+    <message>
+        <source>Add subscription</source>
+        <translation>Tilføj abonnement</translation>
+    </message>
+    <message>
+        <source>Another subscription</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Entered title is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Entered title is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Entered url is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Entered url is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>AdBlockCustomList</name>
+    <message>
+        <source>Custom rules</source>
+        <translation>Brugerdefinerede regler</translation>
+    </message>
+</context>
+<context>
+    <name>AdBlockDialog</name>
+    <message>
+        <source>Adblock settings</source>
+        <translation>Adblock-indstillinger</translation>
+    </message>
+    <message>
+        <source>Enable Adblock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
+
+Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Options</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Filter rules</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use only essential part of EasyList (for performance reasons)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation>Fjern regel</translation>
+    </message>
+    <message>
+        <source>Add subscription</source>
+        <translation>Tilføj abonnement</translation>
+    </message>
+    <message>
+        <source>Remove subscription</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Update subscriptions</source>
+        <translation>Ajourfør abonnementer</translation>
+    </message>
+    <message>
+        <source>Rules writing guide</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>AdBlockIcon</name>
+    <message>
+        <source>Adblock</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show Adblock &amp;settings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Disable on %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Disable only on this page</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked popup windows</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 with (%2)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No content blocked</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Blocked some content - click to edit rule</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Adblock - up and running</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Adblock - not running</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>AdBlockSubscription</name>
+    <message>
+        <source>Cannot load subscription!</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>AdBlockTreeWidget</name>
+    <message>
+        <source>Please write your rule here</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 (recently updated)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>%1 (error: %2)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove rule</source>
+        <translation>Fjern regel</translation>
+    </message>
+</context>
+<context>
     <name>Application</name>
     <message>
         <source>Application is already running.</source>
         <translation>Programmet kører allerede</translation>
     </message>
     <message>
-        <source>Output folder is not writable.</source>
+        <source>Output directory is not writable.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Settings file not copied to output folder successfully.</source>
+        <source>Settings file not copied to output directory successfully.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Database file not copied to output folder successfully.</source>
+        <source>Database file not copied to output directory successfully.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Database restoration was not initiated. Make sure that output folder is writable.</source>
+        <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Settings restoration was not initiated. Make sure that output folder is writable.</source>
+        <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
+    <name>DatabaseCleaner</name>
+    <message>
+        <source>Shrinking database file...</source>
+        <translation>Krymper databasefil...</translation>
+    </message>
+    <message>
+        <source>Database file shrinked...</source>
+        <translation>Databasefil krympet...</translation>
+    </message>
+    <message>
+        <source>Removing read messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Read messages purged...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recycle bin purged...</source>
+        <translation>Skraldespanden er tømt...</translation>
+    </message>
+    <message>
+        <source>Removing old messages...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Purging recycle bin...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Old messages purged...</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -30,7 +251,7 @@
     <name>DatabaseFactory</name>
     <message>
         <source>MySQL server works as expected.</source>
-        <translation type="unfinished"/>
+        <translation>MySQL-server fungerer som forventet.</translation>
     </message>
     <message>
         <source>No MySQL server is running in the target destination.</source>
@@ -45,6 +266,18 @@
         <source>Unknown error.</source>
         <extracomment>Unknown MySQL error arised.</extracomment>
         <translation>Ukendt fejl.</translation>
+    </message>
+    <message>
+        <source>Selected database does not exist (yet).</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>MySQL/MariaDB (dedicated database)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>SQLite (embedded database)</source>
+        <translation>SQLite (indlejret database)</translation>
     </message>
 </context>
 <context>
@@ -86,28 +319,12 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Open &amp;folder</source>
-        <translation>Åben &amp;folder</translation>
-    </message>
-    <message>
         <source>Select destination for downloaded file</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Error: %1</source>
         <translation>Fejl: %1</translation>
-    </message>
-    <message>
-        <source>Cannot open folder</source>
-        <translation>Kan ikke åbne folder</translation>
-    </message>
-    <message>
-        <source>Cannot open output folder. Open it manually.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cancelled</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Download directory couldn&apos;t be created</source>
@@ -123,6 +340,47 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>%1 of %2 - download completed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Open &amp;directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output file. Open it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open output directory. Open it manually.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Download finished</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File '%1' is downloaded.
+Click here to open parent directory.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Local file: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selection of local file cancelled.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -162,6 +420,38 @@ This website contains %n feed(s).</source>
     </message>
 </context>
 <context>
+    <name>Feed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+</context>
+<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
@@ -178,31 +468,31 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot defragment database</source>
-        <translation>Kan ikke defragmentere database</translation>
-    </message>
-    <message>
-        <source>Database cannot be defragmented because feed update is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Database defragmented</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Database was successfully defragmented.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Database was not defragmented</source>
-        <translation>Databasen blev ikke defragmenteret</translation>
-    </message>
-    <message>
-        <source>Database was not defragmented. This database backend does not support it or it cannot be defragmented now.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error when loading initial feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot cleanup database</source>
+        <translation>Kan ikke rense database</translation>
+    </message>
+    <message>
+        <source>Cannot cleanup database, because another critical action is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New messages downloaded</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -214,7 +504,11 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source> (feed)</source>
-        <translation type="unfinished"/>
+        <translation> (feed)</translation>
+    </message>
+    <message>
+        <source>Category </source>
+        <translation>Kategori</translation>
     </message>
 </context>
 <context>
@@ -249,74 +543,12 @@ This website contains %n feed(s).</source>
         <source>Import was completely successfull.</source>
         <translation type="unfinished"/>
     </message>
-</context>
-<context>
-    <name>FeedsModelCategory</name>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ulæst meddelelse</numerusform><numerusform>%n ulæste meddelelser</numerusform></translation>
-    </message>
     <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
+        <source>Starting auto-update of some feeds</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>FeedsModelFeed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger ikke automatisk ajourføring</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger globale indstillinger</translation>
-    </message>
     <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform>%n ulæste meddelelser</numerusform></translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>FeedsModelRecycleBin</name>
-    <message>
-        <source>Recycle bin</source>
-        <translation>Skraldespand</translation>
-    </message>
-    <message>
-        <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation>Skraldespand %1</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n deleted message(s).</source>
+        <source>I will auto-update %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
@@ -350,27 +582,15 @@ Auto-update status: %5</source>
         <translation>Kan ikke fjerne element</translation>
     </message>
     <message>
-        <source>Cannot update all items</source>
-        <translation>Kan ikke ajourføre alle elementer</translation>
-    </message>
-    <message>
-        <source>Cannot update selected items</source>
-        <translation>Kan ikke ajourføre valgte emner</translation>
-    </message>
-    <message>
         <source>You are about to delete selected feed or category.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Deletion of item failed.</source>
-        <translation type="unfinished"/>
+        <translation>Sletning af post fejlet.</translation>
     </message>
     <message>
         <source>Selected item was not deleted due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Deleting feed or category</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -379,7 +599,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Permanently delete messages</source>
-        <translation type="unfinished"/>
+        <translation>Slet meddelelser permanent</translation>
     </message>
     <message>
         <source>You are about to permanenty delete all messages from your recycle bin.</source>
@@ -398,14 +618,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot update selected items because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>You cannot add new standard category now because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
     </message>
@@ -419,6 +631,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Delete feed/category</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -450,7 +666,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Changelog</source>
-        <translation type="unfinished"/>
+        <translation>Ændringslog</translation>
     </message>
     <message>
         <source>Changelog page is available only in English language.</source>
@@ -458,7 +674,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>License not found.</source>
-        <translation type="unfinished"/>
+        <translation>Licens ikke fundet.</translation>
     </message>
     <message>
         <source>Changelog not found.</source>
@@ -476,10 +692,6 @@ Auto-update status: %5</source>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Om %1</translation>
-    </message>
-    <message>
-        <source>Paths</source>
-        <translation type="unfinished"/>
     </message>
     <message>
         <source>Settings type</source>
@@ -501,20 +713,20 @@ Auto-update status: %5</source>
         <source>PARTIALLY portable</source>
         <translation>DELVIS portabel</translation>
     </message>
+    <message>
+        <source>Resources</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormBackupDatabaseSettings</name>
     <message>
         <source>Backup database/settings</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Select folder</source>
-        <translation type="unfinished"/>
+        <translation>Sikkerhedskopi database/indstillinger</translation>
     </message>
     <message>
         <source>Backup properties</source>
-        <translation type="unfinished"/>
+        <translation>Indstillinger for sikkerhedskopiering</translation>
     </message>
     <message>
         <source>Items to backup</source>
@@ -538,42 +750,46 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Common name for backup files</source>
-        <translation type="unfinished"/>
+        <translation>Fællesnavn for sikkerhedskopifiler</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Backup was created successfully and stored in target folder.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Backup was created successfully.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select destionation folder</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Good destination folder is specified.</source>
-        <translation type="unfinished"/>
+        <translation>Sikkerhedskopi succesfuldt oprettet.</translation>
     </message>
     <message>
         <source>Backup name cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Navn på sikkerhedskopi kan ikke være tomt.</translation>
     </message>
     <message>
         <source>Backup name looks okay.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Output folder</source>
+        <source>Backup failed.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Backup failed.</source>
+        <source>Output directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Select directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Backup was created successfully and stored in target directory.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select destination directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Good destination directory is specified.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -625,7 +841,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorien blev ikke redigeret på grund af fejl.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
@@ -649,7 +865,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -666,7 +882,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Ikontype:</translation>
     </message>
     <message>
         <source>Category title</source>
@@ -702,6 +918,73 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
+        <translation>Beskrivelsen er OK.</translation>
+    </message>
+</context>
+<context>
+    <name>FormDatabaseCleanup</name>
+    <message>
+        <source>Cleanup database</source>
+        <translation>Rens database</translation>
+    </message>
+    <message>
+        <source>Remove all messages older than</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source> day(s)</source>
+        <translation><numerusform>dag</numerusform><numerusform>dage</numerusform></translation>
+    </message>
+    <message>
+        <source>Shrink database file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Database information</source>
+        <translation>Databaseinformation</translation>
+    </message>
+    <message>
+        <source>Database file size</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Database type</source>
+        <translation>Databasetype</translation>
+    </message>
+    <message>
+        <source>Progress</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>I am ready.</source>
+        <translation>Jeg er klar.</translation>
+    </message>
+    <message>
+        <source>Database cleanup is running.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Database cleanup is completed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Database cleanup failed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cleanup settings (all checked items are completely erased from database)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all read messages (not those from recycle bin)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all messages from recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove all starred messages (including those from recycle bin)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -809,7 +1092,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The url is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URLen er OK.</translation>
     </message>
     <message>
         <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -817,11 +1100,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The url is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Denne URL er tom.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
@@ -837,7 +1120,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikonfil for dette feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
@@ -845,7 +1128,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
@@ -862,7 +1145,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Ikontype:</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -958,7 +1241,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Ajourfør hver</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
@@ -966,10 +1249,30 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelsen er OK.</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metatada not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -985,7 +1288,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen fil er udvalgt.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -1057,7 +1360,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"/>
+        <translation>Kritisk fejl opstod.</translation>
     </message>
     <message>
         <source>&amp;Check all items</source>
@@ -1072,15 +1375,15 @@ Auto-update status: %5</source>
     <name>FormMain</name>
     <message>
         <source>&amp;File</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Filer</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hjælp</translation>
     </message>
     <message>
         <source>&amp;View</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vis</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
@@ -1092,11 +1395,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation type="unfinished"/>
+        <translation>Ind&amp;stillinger</translation>
     </message>
     <message>
         <source>&amp;Current tab</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Nuværende faneblad</translation>
     </message>
     <message>
         <source>&amp;Add tab</source>
@@ -1136,7 +1439,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>No actions available</source>
-        <translation type="unfinished"/>
+        <translation>Ingen tilgængelige handlinger</translation>
     </message>
     <message>
         <source>No actions are available right now.</source>
@@ -1163,23 +1466,11 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Defragment database file so that its size decreases.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Hides or shows the list of feeds/categories.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Check if new update for the application is available for download.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot check for updates</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot check for updates because feed update is ongoing.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1283,10 +1574,6 @@ Auto-update status: %5</source>
         <translation>Vis valgte feeds i &amp;avistilstand</translation>
     </message>
     <message>
-        <source>&amp;Defragment database</source>
-        <translation>&amp;Defragmenter database</translation>
-    </message>
-    <message>
         <source>&amp;Clean all feeds</source>
         <translation type="unfinished"/>
     </message>
@@ -1328,7 +1615,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Fuldskærm</translation>
     </message>
     <message>
         <source>&amp;Feed list</source>
@@ -1400,7 +1687,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Sk&amp;raldespand</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1450,6 +1737,18 @@ Auto-update status: %5</source>
         <source>&amp;Downloads</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Send selected message via e-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Cleanup database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only unread feeds/categories</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
@@ -1459,10 +1758,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Operation results</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Select folder</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1490,19 +1785,23 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Database and/or settings were not copied to restoration folder successully.</source>
+        <source>Source directory</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Select source folder</source>
+        <source>&amp;Select directory</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Good source folder is specified.</source>
+        <source>Database and/or settings were not copied to restoration directory successully.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Source folder</source>
+        <source>Select source directory</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Good source directory is specified.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1544,7 +1843,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Tray icon</source>
-        <translation type="unfinished"/>
+        <translation>Systemebakkeikon</translation>
     </message>
     <message>
         <source>Start application hidden</source>
@@ -1620,14 +1919,6 @@ Auto-update status: %5</source>
         <translation>Systembakke &amp;&amp; meddelelser</translation>
     </message>
     <message>
-        <source>Disable</source>
-        <translation>Deaktiver</translation>
-    </message>
-    <message>
-        <source>Enable</source>
-        <translation>Aktiver</translation>
-    </message>
-    <message>
         <source>Tabs</source>
         <translation>Faneblade</translation>
     </message>
@@ -1645,14 +1936,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Enable mouse gestures</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Web browser &amp; proxy</source>
-        <translation>Netlæser</translation>
-    </message>
-    <message>
-        <source>Disable (Tray icon is not available.)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1678,7 +1961,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Skins</source>
-        <translation type="unfinished"/>
+        <translation>Temaer</translation>
     </message>
     <message>
         <source>Active skin:</source>
@@ -1713,10 +1996,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Executable parameters</source>
         <translation type="unfinished"/>
     </message>
@@ -1738,7 +2017,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Executable file of web browser</source>
-        <translation type="unfinished"/>
+        <translation>Netlæserens eksekverbare fil</translation>
     </message>
     <message>
         <source>Parameters to executable</source>
@@ -1765,7 +2044,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>icon theme changed</source>
-        <translation type="unfinished"/>
+        <translation>Ikon-tema ændret</translation>
     </message>
     <message>
         <source>skin changed</source>
@@ -1819,7 +2098,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Test setup</source>
-        <translation type="unfinished"/>
+        <translation>Testsetup</translation>
     </message>
     <message>
         <source>Right mouse button double-click</source>
@@ -1854,14 +2133,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>SQLite (embedded database)</source>
-        <translation>SQLite (indlejret database)</translation>
-    </message>
-    <message>
-        <source>MySQL/MariaDB (dedicated database)</source>
-        <translation>MySQL / MariaDB (dedikeret database)</translation>
-    </message>
-    <message>
         <source>Hostname of your MySQL server</source>
         <translation type="unfinished"/>
     </message>
@@ -1891,7 +2162,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Username looks ok.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn ser OK ud.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -1903,7 +2174,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Toolbar button style</source>
-        <translation type="unfinished"/>
+        <translation>Knapstil for værktøjslinie</translation>
     </message>
     <message>
         <source>Hide main window when it is minimized</source>
@@ -1943,7 +2214,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Text under icon</source>
-        <translation type="unfinished"/>
+        <translation>Tekst under ikon</translation>
     </message>
     <message>
         <source>Follow OS style</source>
@@ -1962,16 +2233,6 @@ Authors of this application are NOT responsible for lost data.</source>
         <translation>Start %1 ved systemopstart</translation>
     </message>
     <message>
-        <source>Mouse gestures work with middle mouse button. Possible gestures are:
-&lt;ul&gt;
-&lt;li&gt;previous web page (drag mouse left),&lt;/li&gt;
-&lt;li&gt;next web page (drag mouse right),&lt;/li&gt;
-&lt;li&gt;reload current web page (drag mouse up),&lt;/li&gt;
-&lt;li&gt;open new web browser tab (drag mouse down).&lt;/li&gt;
-&lt;/ul&gt;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Enable JavaScript</source>
         <translation>Aktiver JavaScript</translation>
     </message>
@@ -1986,10 +2247,6 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Custom external web browser</source>
-        <translation>Brugerdefineret ekstern netlæser</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -2042,12 +2299,10 @@ You have to restart manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove junk Trolltech registry key (HKCU\\Software\\Trolltech) when application quits (Use at your own risk!)</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Executables (*)</source>
-        <extracomment>File filter for external browser selection dialog.</extracomment>
+        <extracomment>File filter for external browser selection dialog.
+----------
+File filter for external e-mail selection dialog.</extracomment>
         <translation>Eksekverbare (*)</translation>
     </message>
     <message>
@@ -2060,7 +2315,7 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Remove duplicate messages</source>
-        <translation type="unfinished"/>
+        <translation>Fjern dubletmeddelelser</translation>
     </message>
     <message>
         <source>Downloads</source>
@@ -2072,10 +2327,6 @@ You have to restart manually.</source>
     </message>
     <message>
         <source>Ask for each individual downloaded file</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Save all downloaded files into</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2091,13 +2342,121 @@ You have to restart manually.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.
-
-MySQL backend will automatically use database with name &quot;rssguard&quot;. Do not create this database manually, let this application to handle it by itself. Therefore, given user must have rights to created and deleted databases.</source>
+        <source>&amp;Show password</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Show password</source>
+        <source>Web browser &amp; e-mail &amp; proxy</source>
+        <translation>Netlæser &amp; e-post &amp; proxyserver</translation>
+    </message>
+    <message>
+        <source>Remove junk Trolltech registry key (HKCU\Software\Trolltech) when application quits (Use at your own risk!)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Working database</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mouse gestures work with middle mouse button. Possible gestures are:
+ • previous web page (drag mouse left),
+ • next web page (drag mouse right),
+ • reload current web page (drag mouse up),
+ • open new web browser tab (drag mouse down).</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use custom external web browser</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>External e-mail client</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use custom external e-mail client</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>E-mail client executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Executable file of e-mail client</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select client</source>
+        <translation>Vælg klient</translation>
+    </message>
+    <message>
+        <source>Placeholders:
+ • %1 - title of selected message,
+ • %2 - body of selected message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Save all downloaded files to</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select e-mail executable</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mozilla Thunderbird</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Working database which you have full access to.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Working database is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Working database is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Notification position</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>(Tray icon is not available.)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bottom-left corner</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Top-left corner</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Bottom-right corner</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Top-right corner</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Internal message browser fonts</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Standard font</source>
+        <translation>Standard skrifttype</translation>
+    </message>
+    <message>
+        <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2190,7 +2549,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Download update</source>
-        <translation type="unfinished"/>
+        <translation>Hent opdatering</translation>
     </message>
     <message>
         <source>Downloaded %1% (update size is %2 kB).</source>
@@ -2230,6 +2589,17 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
+    <name>IOFactory</name>
+    <message>
+        <source>Cannot open file &apos;%1&apos; for reading.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open file &apos;%1&apos; for writting.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>LocationLineEdit</name>
     <message>
         <source>Website address goes here</source>
@@ -2264,7 +2634,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
@@ -2292,7 +2662,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Is message important?</source>
-        <translation type="unfinished"/>
+        <translation>Er meddelelsen vigtig?</translation>
     </message>
     <message>
         <source>Id of feed which this message belongs to.</source>
@@ -2308,7 +2678,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Author of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Beskedforfatter.</translation>
     </message>
     <message>
         <source>Creation date of the message.</source>
@@ -2328,11 +2698,11 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Attachments</source>
-        <translation type="unfinished"/>
+        <translation>Vedhæftninger</translation>
     </message>
     <message>
         <source>List of attachments.</source>
-        <translation type="unfinished"/>
+        <translation>Liste af vedhæftninger.</translation>
     </message>
 </context>
 <context>
@@ -2394,6 +2764,14 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>External web browser could not be started.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Problem with starting external e-mail client</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>External e-mail client could not be started.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2469,14 +2847,17 @@ Go to application website to obtain it manually.</source>
         <extracomment>Network status.</extracomment>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>access to content was denied</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>QObject</name>
-    <message>
-        <source>LANG_NAME</source>
-        <extracomment>Name of language, e.g. English.</extracomment>
-        <translation>Danish</translation>
-    </message>
     <message>
         <source>LANG_ABBREV</source>
         <extracomment>Abbreviation of language, e.g. en. Use ISO 639-1 code here combined with ISO 3166-1 (alpha-2) code. Examples: &quot;cs_CZ&quot;, &quot;en_GB&quot;, &quot;en_US&quot;.</extracomment>
@@ -2494,8 +2875,48 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>LANG_EMAIL</source>
-        <extracomment>Email of translator - optional.</extracomment>
         <translation>rotter.martinos@gmail.com</translation>
+    </message>
+    <message>
+        <source>Load initial feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>LANG_NAME</source>
+        <extracomment>Name of language, e.g. English.</extracomment>
+        <translation>Danish</translation>
+    </message>
+    <message>
+        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Welcome to %1 %2.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RecycleBin</name>
+    <message>
+        <source>Recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recycle bin contains all deleted messages from all feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Recycle bin
+%1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>%n deleted message(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
 <context>
@@ -2551,7 +2972,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Close tab</source>
-        <translation type="unfinished"/>
+        <translation>Luk faneblad</translation>
     </message>
 </context>
 <context>
@@ -2610,6 +3031,26 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Toolbar spacer</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Move action up</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Move action down</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add selected action</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Delete selected action</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Delete all actions</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2720,7 +3161,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Open image in new tab</source>
-        <translation type="unfinished"/>
+        <translation>Åben billede i nyt faneblad</translation>
     </message>
     <message>
         <source>Web browser</source>
@@ -2772,7 +3213,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Open link in external browser</source>
-        <translation type="unfinished"/>
+        <translation>Åben link i ekstern netlæser</translation>
     </message>
     <message>
         <source>Open the hyperlink in external browser.</source>
@@ -2784,7 +3225,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Print current web page.</source>
-        <translation type="unfinished"/>
+        <translation>Udskriv aktuelle hjemmeside.</translation>
     </message>
     <message>
         <source>HTML web pages (*.html)</source>
@@ -2812,14 +3253,22 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Save page as...</source>
-        <translation type="unfinished"/>
+        <translation>Gem side som...</translation>
     </message>
     <message>
         <source>Save image to disk.</source>
-        <translation type="unfinished"/>
+        <translation>Gem billede på disk.</translation>
     </message>
     <message>
         <source>Save image as...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>source_page</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Search &quot;%1&quot; via Google...</source>
         <translation type="unfinished"/>
     </message>
 </context>

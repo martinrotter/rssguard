@@ -1,172 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg subscriptie toe</translation>
     </message>
     <message>
         <source>Another subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Een andere subscriptie</translation>
     </message>
     <message>
         <source>Entered title is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingevoerde titel is oke.</translation>
     </message>
     <message>
         <source>Entered title is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingevoerde titel is leeg.</translation>
     </message>
     <message>
         <source>Entered url is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingevoerde url is oke.</translation>
     </message>
     <message>
         <source>Entered url is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingevoerde url is leeg.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adres:</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangepaste regels</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>Adblock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock instellingen</translation>
     </message>
     <message>
         <source>Enable Adblock</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel Adblock in</translation>
     </message>
     <message>
         <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
 
 Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat Adblock deze applicatie aanzienlijk kan vertragen als je eenmaal enorme subscripties activeert. Te veel regels zijn niet goed voor de prestaties. Zorg er ook voor dat je de toepassing opnieuw opstart nadat u Adblock heeft uitgeschakeld als u laag geheugen footprint wilt te hebben. Van Adblock is bekend dat het veel systeemgeheugen gebruikt.
+
+Merk ook op dat sommige hulpbronnen worden gecached door de interne web browser. Zo, na het veranderen van een aantal regels of abonnementen zullen ze volledig gelden alleen voor nieuwe applicatie instances. Voor de beste Adblock ervaring moet je RSSguard herstarten.</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opties</translation>
     </message>
     <message>
         <source>Filter rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter regels</translation>
     </message>
     <message>
         <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruik alleen essentieel onderdelen van EasyList (voor prestaties redenen)</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Een regel toevoegen</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Een regel verwijderen</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg subscriptie toe</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder subscriptie</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Update subscriptie</translation>
     </message>
     <message>
         <source>Rules writing guide</source>
-        <translation type="unfinished"></translation>
+        <translation>De regels gids</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>Adblock</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock</translation>
     </message>
     <message>
         <source>Show Adblock &amp;settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon Adblock &amp;instellingen</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel %1 uit</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation>Schakel het alleen op deze pagina uit</translation>
     </message>
     <message>
         <source>Blocked popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation>Geblokkeerde pop-upvensters</translation>
     </message>
     <message>
         <source>%1 with (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 met (%2)</translation>
     </message>
     <message>
         <source>No content blocked</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen inhoud geblokkeerd</translation>
     </message>
     <message>
         <source>Blocked some content - click to edit rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Bepaalde inhoud geblokkeerd - klik om de regel te bewerken</translation>
     </message>
     <message>
         <source>Adblock - up and running</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock - Staat aan en werkt</translation>
     </message>
     <message>
         <source>Adblock - not running</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock - werkt niet</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan supscriptie niet laden!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Please write your rule here</source>
-        <translation type="unfinished"></translation>
+        <translation>Schrijf aub je regels hier</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (onlangs bijgewerkt)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (fout: %2)</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Een regel toevoegen</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Een regel verwijderen</translation>
     </message>
 </context>
 <context>
@@ -201,22 +201,18 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished">%1 (categorie)%2%3</translation>
+        <translation>%1 (categorie)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="unfinished">
-
+        <translation>
 Deze categorie bevat geen nested items.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -231,27 +227,28 @@ Deze categorie bevat geen nested items.</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder gelezen berichten...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation type="unfinished"></translation>
+        <translation>Prullenbak gewist..</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder oude berichten...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wis prullenbak...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation type="unfinished"></translation>
+        <translation>Oude berichten gewist...</translation>
     </message>
 </context>
 <context>
@@ -296,12 +293,9 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed.</numerusform>
-            <numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed(s).</numerusform>
-        </translation>
+        <translation><numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed.</numerusform><numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed(s).</numerusform></translation>
     </message>
 </context>
 <context>
@@ -376,24 +370,25 @@ Deze website bevat % n feed(s).</numerusform>
     </message>
     <message>
         <source>Download finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand &apos;%1&apos; is klaar
+Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Url: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokaal bestand: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectie van lokaal bestand is geannuleerd.</translation>
     </message>
 </context>
 <context>
@@ -404,17 +399,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n resterende minuut</numerusform>
-            <numerusform>%n resterende minuten</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n resterende seconde</numerusform>
-            <numerusform>%n resterende seconden</numerusform>
-        </translation>
+        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -434,10 +423,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Dowloading %1 bestand...</numerusform>
-            <numerusform>Downloading %n bestanden...</numerusform>
-        </translation>
+        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
     </message>
 </context>
 <context>
@@ -445,20 +431,17 @@ Click here to open parent directory.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">automatisch bijwerken niet gebruiken</translation>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">gebruik algemene instellingen</translation>
+        <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
-            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
-        </translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -467,19 +450,16 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished">%1 (%2)%3
+        <translation>%1 (%2)%3
 
 Netwerk status: %6
 Coderen: %4
-Auto-update status: %5</translation>
+Auto-update status: 55 </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -516,15 +496,15 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished">Kan alle items niet bijwerken</translation>
+        <translation>Kan alle items niet bijwerken</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished">U kunt niet alle items updaten omdat een ander een andere kritieke operatie aan de gang is.</translation>
+        <translation>U kunt niet alle items updaten omdat er een andere bewerking plaats vind.</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw bericht gedownload</translation>
     </message>
 </context>
 <context>
@@ -551,12 +531,10 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Naam van feeds/categorieën.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Aantal van alle ongelezen berichten.</translation>
     </message>
     <message>
@@ -578,14 +556,11 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Begint met auto-update van sommige feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>Auto-update van %n feed</numerusform><numerusform>Auto-update van %n feed(s)</numerusform></translation>
     </message>
 </context>
 <context>
@@ -671,7 +646,7 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Delete feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -718,11 +693,11 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (build on %2 with CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)&lt;br&gt;</source>
-        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (Bouwtijd %2 met Cmake %3)&lt;br&gt;&lt;b&gt; Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Bouwdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (Gecompileerd met %7)&lt;br&gt;</translation>
+        <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (Gecompileerd onder %2 en Cmake %3)&lt;br&gt;&lt;b&gt; Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Gecompileerd op:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;QT versie:&lt;/b&gt; %6 (Gecompileerd met %7)&lt;br&gt;</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;U kunt de broncode voor %5 op de website..&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
+        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;U kunt de broncode voor %5 downloaden van de website..&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
         <source>About %1</source>
@@ -969,10 +944,7 @@ Auto-update status: %5</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>dag</numerusform>
-            <numerusform>dagen</numerusform>
-        </translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagen</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1012,19 +984,19 @@ Auto-update status: %5</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"></translation>
+        <translation>Opschonen van instellingen (alle gecontroleerde items worden volledig gewist uit de database)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle gelezen berichten(niet die van de prullenbak)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van de prullenbak</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten met ster(niet die van de prullenbak)</translation>
     </message>
 </context>
 <context>
@@ -1787,7 +1759,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Show only unread feeds/categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alleen de ongelezen feeds/categorieën</translation>
     </message>
 </context>
 <context>
@@ -1870,9 +1842,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Taal</translation>
     </message>
     <message>
@@ -1930,12 +1900,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Code</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1997,7 +1965,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Naam</translation>
     </message>
     <message>
@@ -2417,7 +2384,7 @@ Wanneer een nieuw feed bericht binnenkomt en dubbel bestaat, dan wordt de inhoud
         <source>Working database</source>
         <translation>Werkende database</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2457,7 +2424,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <source>Select client</source>
         <translation>Selecteer client</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2493,43 +2460,43 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Notification position</source>
-        <translation type="unfinished"></translation>
+        <translation>Melding maken van</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Pictogram in systeemvak is niet beschikbaar.)</translation>
     </message>
     <message>
         <source>Bottom-left corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerbenedenhoek</translation>
     </message>
     <message>
         <source>Top-left corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Linkerbovenenhoek</translation>
     </message>
     <message>
         <source>Bottom-right corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechterbenedenhoek</translation>
     </message>
     <message>
         <source>Top-right corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechterbovenhoek</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern bericht browser lettertypen</translation>
     </message>
     <message>
         <source>Standard font</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard lettertype</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Merk op dat de snelheid van de gebruikte MySQL server en wachttijd van de gebruikte verbinding ZWAAR invloed heeft op de uiteindelijke prestaties van deze toepassing. Met langzame database connecties leidt dit tot slechte prestaties tijdens het browsen feeds of berichten.</translation>
     </message>
     <message>
         <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fancy &amp;&amp; moderne popup meldingen (Dit gebruikt OS natieve meldingen via D-Bus indien beschikbaar.)</translation>
     </message>
 </context>
 <context>
@@ -2672,7 +2639,7 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan bestand &apos;%1&apos; niet openen om te schrijven.</translation>
     </message>
 </context>
 <context>
@@ -2686,52 +2653,42 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ld</translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Lees</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>verwijder</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Belangrijk</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Feed</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation>Url</translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Auteur</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Gemaakt op</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Inhoud</translation>
     </message>
     <message>
@@ -2776,7 +2733,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Definitief verwijderd</translation>
     </message>
     <message>
@@ -2785,7 +2741,6 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bijlagen</translation>
     </message>
     <message>
@@ -2984,31 +2939,28 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Welcome to %1 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkom bij %1 %2.</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished">Prullenbak</translation>
+        <translation>Prullenbak</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished">De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
+        <translation>De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
     </message>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation type="unfinished">Prullenbak
+        <translation>Prullenbak
 %1</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished">
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-            <numerusform>%n verwijderde bericht(en).</numerusform>
-        </translation>
+        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
     </message>
 </context>
 <context>

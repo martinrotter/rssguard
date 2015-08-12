@@ -1,172 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="sv_SE">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till prenumeration</translation>
     </message>
     <message>
         <source>Another subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>En prenumeration till</translation>
     </message>
     <message>
         <source>Entered title is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Angivet namn är okay.</translation>
     </message>
     <message>
         <source>Entered title is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Namn saknas.</translation>
     </message>
     <message>
         <source>Entered url is okay.</source>
-        <translation type="unfinished"></translation>
+        <translation>Angiven URL är okay.</translation>
     </message>
     <message>
         <source>Entered url is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>URL saknas.</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Adress</translation>
     </message>
 </context>
 <context>
     <name>AdBlockCustomList</name>
     <message>
         <source>Custom rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassade regler</translation>
     </message>
 </context>
 <context>
     <name>AdBlockDialog</name>
     <message>
         <source>Adblock settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock-inställningar</translation>
     </message>
     <message>
         <source>Enable Adblock</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera Adblock</translation>
     </message>
     <message>
         <source>Note that Adblock may significantly slow this application down once you activate huge subscriptions. Too many rules is not good for performance. Also, make sure you restart application after you disable Adblock if you wish to have low memory footprint. Adblock is known to use much system memory.
 
 Also note that some resources are cached by internal web browser. Thus, after changing some rules or subscriptions they will fully apply only for new application instances. Make sure you restart RSS Guard for best Adblock experience.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notera att Adblock kan göra programmet märkbart långsammare vid aktivering av stora prenumerationer. För många regler är inte bra för prestanda. Tillse också att programmet startas om efter att Adblock inaktiveras, om du vill minska minnesanvändningen. Adblock är känt för att använda mycket systemminne.
+
+Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du ändrar några filterregler eller prenumerationer, verkställs ändringarna till fullo, först i nya programinstanser. Starta därför om RSS Guard, för bästa Adblock-upplevelse.</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ</translation>
     </message>
     <message>
         <source>Filter rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Filterregler</translation>
     </message>
     <message>
         <source>Use only essential part of EasyList (for performance reasons)</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd endast viktiga delar av EasyList (av prestandaskäl)</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till regel</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort regel</translation>
     </message>
     <message>
         <source>Add subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till prenumeration</translation>
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort prenumeration</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera prenumerationer</translation>
     </message>
     <message>
         <source>Rules writing guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Regelguide</translation>
     </message>
 </context>
 <context>
     <name>AdBlockIcon</name>
     <message>
         <source>Adblock</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock</translation>
     </message>
     <message>
         <source>Show Adblock &amp;settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa Adblock-&amp;inställningar</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivera för %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"></translation>
+        <translation>Inaktivera endast på denna sida</translation>
     </message>
     <message>
         <source>Blocked popup windows</source>
-        <translation type="unfinished"></translation>
+        <translation>Blockerade popup-fönster</translation>
     </message>
     <message>
         <source>%1 with (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 med (%2)</translation>
     </message>
     <message>
         <source>No content blocked</source>
-        <translation type="unfinished"></translation>
+        <translation>Inget innehåll blockerat</translation>
     </message>
     <message>
         <source>Blocked some content - click to edit rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Blockerade visst innehåll - Klicka för att redigera regel</translation>
     </message>
     <message>
         <source>Adblock - up and running</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock - Aktiverat</translation>
     </message>
     <message>
         <source>Adblock - not running</source>
-        <translation type="unfinished"></translation>
+        <translation>Adblock - Inaktiverat</translation>
     </message>
 </context>
 <context>
     <name>AdBlockSubscription</name>
     <message>
         <source>Cannot load subscription!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte läsa in prenumeration!</translation>
     </message>
 </context>
 <context>
     <name>AdBlockTreeWidget</name>
     <message>
         <source>Please write your rule here</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange din regel här</translation>
     </message>
     <message>
         <source>%1 (recently updated)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (nyligen uppdaterad)</translation>
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (Fel: %2)</translation>
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till regel</translation>
     </message>
     <message>
         <source>Remove rule</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort regel</translation>
     </message>
 </context>
 <context>
@@ -201,21 +201,18 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     <message>
         <source>%1 (category)%2%3</source>
         <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished">%1 (kategori)%2%3</translation>
+        <translation>%1 (kategori)%2%3</translation>
     </message>
     <message>
         <source>
 This category does not contain any nested items.</source>
-        <translation type="unfinished">
+        <translation>
 Denna kategori innehåller inga objekt.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -230,27 +227,27 @@ Denna kategori innehåller inga objekt.</translation>
     </message>
     <message>
         <source>Removing read messages...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort lästa meddelanden...</translation>
     </message>
     <message>
         <source>Read messages purged...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lästa meddelanden rensat...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation type="unfinished"></translation>
+        <translation>Papperskorgen rensad...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort gamla meddelanden...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensar papperskorgen...</translation>
     </message>
     <message>
         <source>Old messages purged...</source>
-        <translation type="unfinished"></translation>
+        <translation>Gamla meddelanden rensat...</translation>
     </message>
 </context>
 <context>
@@ -295,12 +292,9 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation>
-            <numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform>
-            <numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform>
-        </translation>
+        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -375,24 +369,25 @@ Denna webbsida innehåller %1 flöden.</numerusform>
     </message>
     <message>
         <source>Download finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File &apos;%1&apos; is downloaded.
+        <source>File '%1' is downloaded.
 Click here to open parent directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filen &apos;%1&apos; är nedlladdad.
+Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>URL: %1</translation>
     </message>
     <message>
         <source>Local file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokal fil: %1</translation>
     </message>
     <message>
         <source>Selection of local file cancelled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Val av lokal fil avbröts.</translation>
     </message>
 </context>
 <context>
@@ -403,17 +398,11 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation>
-            <numerusform>%n minut kvar</numerusform>
-            <numerusform>%n minuter kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation>
-            <numerusform>%n sekund kvar</numerusform>
-            <numerusform>%n sekunder kvar</numerusform>
-        </translation>
+        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
     </message>
     <message>
         <source>bytes</source>
@@ -433,10 +422,7 @@ Click here to open parent directory.</source>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation>
-            <numerusform>Laddar ner %1 fil</numerusform>
-            <numerusform>Laddar ner %1 filer</numerusform>
-        </translation>
+        <translation><numerusform>Laddar ner %1 fil</numerusform><numerusform>Laddar ner %1 filer</numerusform></translation>
     </message>
 </context>
 <context>
@@ -444,20 +430,17 @@ Click here to open parent directory.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">Uppdateras inte automatiskt</translation>
+        <translation>uppdateras inte automatiskt</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">Globala inställningar</translation>
+        <translation>Globala inställningar</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
-            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
-            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
-        </translation>
+        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -466,7 +449,7 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished">%1 (%2)%3
+        <translation>%1 (%2)%3
 
 Nätverksstatus: %6
 Kodning: %4
@@ -475,10 +458,7 @@ Uppdateringsstatus: %5</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform>%n oläst meddelande.</numerusform>
-            <numerusform>%n olästa meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -515,15 +495,15 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished">Kan inte uppdatera alla objekt</translation>
+        <translation>Kan inte uppdatera alla objekt</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished">Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
+        <translation>Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>New messages downloaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Nya meddelanden nedladdade</translation>
     </message>
 </context>
 <context>
@@ -550,12 +530,10 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Titles of feeds/categories.</source>
-        <extracomment>Feed list header &quot;titles&quot; column tooltip.</extracomment>
         <translation>Namn på kategorier/flöden.</translation>
     </message>
     <message>
         <source>Counts of unread/all meesages.</source>
-        <extracomment>Feed list header &quot;counts&quot; column tooltip.</extracomment>
         <translation>Antal meddelanden.</translation>
     </message>
     <message>
@@ -577,14 +555,11 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Starting auto-update of some feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdaterar flöden automatiskt</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
     </message>
 </context>
 <context>
@@ -670,7 +645,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Delete feed/category</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort flöde/kategori</translation>
     </message>
 </context>
 <context>
@@ -968,10 +943,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation>
-            <numerusform>dag</numerusform>
-            <numerusform>dagar</numerusform>
-        </translation>
+        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1011,19 +983,19 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Cleanup settings (all checked items are completely erased from database)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensningsinställningar (alla markerade objekt raderas helt från databasen)</translation>
     </message>
     <message>
         <source>Remove all read messages (not those from recycle bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla lästa meddelanden (inte dem i papperskorgen)</translation>
     </message>
     <message>
         <source>Remove all messages from recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla meddelanden från papperskorgen</translation>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort alla stjärnmärkta meddelanden (inklusive dem i papperskorgen)</translation>
     </message>
 </context>
 <context>
@@ -1785,7 +1757,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Show only unread feeds/categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa endast olästa flöden/kategorier </translation>
     </message>
 </context>
 <context>
@@ -1868,9 +1840,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Language</source>
-        <extracomment>Language settings section.
-----------
-Language column of language list.</extracomment>
+        <extracomment>Language settings section.</extracomment>
         <translation>Språk</translation>
     </message>
     <message>
@@ -1928,12 +1898,10 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Code</source>
-        <extracomment>Lang. code column of language list.</extracomment>
         <translation>Språkkod</translation>
     </message>
     <message>
         <source>Version</source>
-        <extracomment>Version column of skin list.</extracomment>
         <translation>Version</translation>
     </message>
     <message>
@@ -1995,7 +1963,6 @@ Language column of language list.</extracomment>
     </message>
     <message>
         <source>Name</source>
-        <extracomment>Skin list name column.</extracomment>
         <translation>Namn</translation>
     </message>
     <message>
@@ -2414,7 +2381,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Working database</source>
         <translation>Arbetsdatabas</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Mouse gestures work with middle mouse button. Possible gestures are:
  • previous web page (drag mouse left),
  • next web page (drag mouse right),
@@ -2450,7 +2417,7 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Select client</source>
         <translation>Välj klient</translation>
     </message>
-    <message utf8="true">
+    <message>
         <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -2484,43 +2451,43 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Notification position</source>
-        <translation type="unfinished"></translation>
+        <translation>Aviseringsposition</translation>
     </message>
     <message>
         <source>(Tray icon is not available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>(meddelandefältsikon ej tillgänglig)</translation>
     </message>
     <message>
         <source>Bottom-left corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Vänster nederkant</translation>
     </message>
     <message>
         <source>Top-left corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Vänster överkant</translation>
     </message>
     <message>
         <source>Bottom-right corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Höger nederkant</translation>
     </message>
     <message>
         <source>Top-right corner</source>
-        <translation type="unfinished"></translation>
+        <translation>Höger överkant</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Teckensnitt för intern meddelandeläsare</translation>
     </message>
     <message>
         <source>Standard font</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardteckensnitt</translation>
     </message>
     <message>
         <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-        <translation type="unfinished"></translation>
+        <translation>Notera att hastigheten på den använda MySQL-servern och latensen för aktuellt anslutningsmedium, KRAFTIGT påverkar detta programs prestanda. Användning av långsamma databasanslutningar leder till dålig prestanda vid navigering bland flöden och meddelanden.</translation>
     </message>
     <message>
         <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tjusiga &amp;&amp; moderna popup-aviseringar (Använder systemets integrerade aviseringar via D-Bus, om tillgängligt.)</translation>
     </message>
 </context>
 <context>
@@ -2662,7 +2629,7 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Cannot open file &apos;%1&apos; for writting.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte öppna filen &apos;%1&apos; för skrivning.</translation>
     </message>
 </context>
 <context>
@@ -2676,52 +2643,42 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <extracomment>Tooltip for ID of message.</extracomment>
         <translation>ID</translation>
     </message>
     <message>
         <source>Read</source>
-        <extracomment>Tooltip for &quot;read&quot; column in msg list.</extracomment>
         <translation>Läst</translation>
     </message>
     <message>
         <source>Deleted</source>
-        <extracomment>Tooltip for &quot;deleted&quot; column in msg list.</extracomment>
         <translation>Borttaget</translation>
     </message>
     <message>
         <source>Important</source>
-        <extracomment>Tooltip for &quot;important&quot; column in msg list.</extracomment>
         <translation>Viktigt</translation>
     </message>
     <message>
         <source>Feed</source>
-        <extracomment>Tooltip for name of feed for message.</extracomment>
         <translation>Flöde</translation>
     </message>
     <message>
         <source>Title</source>
-        <extracomment>Tooltip for title of message.</extracomment>
         <translation>Titel</translation>
     </message>
     <message>
         <source>Url</source>
-        <extracomment>Tooltip for url of message.</extracomment>
         <translation>URL</translation>
     </message>
     <message>
         <source>Author</source>
-        <extracomment>Tooltip for author of message.</extracomment>
         <translation>Författare</translation>
     </message>
     <message>
         <source>Created on</source>
-        <extracomment>Tooltip for creation date of message.</extracomment>
         <translation>Skapad</translation>
     </message>
     <message>
         <source>Contents</source>
-        <extracomment>Tooltip for contents of message.</extracomment>
         <translation>Innehåll</translation>
     </message>
     <message>
@@ -2766,7 +2723,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Permanently deleted</source>
-        <extracomment>Tooltip for &quot;pdeleted&quot; column in msg list.</extracomment>
         <translation>Permanent borttagna</translation>
     </message>
     <message>
@@ -2775,7 +2731,6 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Attachments</source>
-        <extracomment>Tooltip for attachments of message.</extracomment>
         <translation>Bilagor</translation>
     </message>
     <message>
@@ -2974,31 +2929,28 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Welcome to %1 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Välkommen till %1 %2.</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished">Papperskorgen</translation>
+        <translation>Papperskorgen</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
-        <translation type="unfinished">Papperskorgen innehåller borttagna meddelanden från samtliga flöden.</translation>
+        <translation>Papperskorgen innehåller borttagna meddelanden från samtliga flöden.</translation>
     </message>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation type="unfinished">Papperskorgen
+        <translation>Papperskorgen
 %1</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation type="unfinished">
-            <numerusform>%n borttaget meddelande.</numerusform>
-            <numerusform>%n borttagna meddelanden.</numerusform>
-        </translation>
+        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
