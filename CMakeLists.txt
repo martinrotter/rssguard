@@ -628,9 +628,9 @@ if(WIN32)
   )
 
   set(APP_DLLS_QT5_MSVC2013
-    resources/binaries/windows/qt5-msvc2013/icudt53.dll
-    resources/binaries/windows/qt5-msvc2013/icuin53.dll
-    resources/binaries/windows/qt5-msvc2013/icuuc53.dll
+    resources/binaries/windows/qt5-msvc2013/icudt55.dll
+    resources/binaries/windows/qt5-msvc2013/icuin55.dll
+    resources/binaries/windows/qt5-msvc2013/icuuc55.dll
     resources/binaries/windows/qt5-msvc2013/libeay32.dll
     resources/binaries/windows/qt5-msvc2013/libEGL.dll
     resources/binaries/windows/qt5-msvc2013/libGLESv2.dll
