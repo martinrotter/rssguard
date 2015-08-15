@@ -646,7 +646,7 @@ Auto-update status: 55 </translation>
     </message>
     <message>
         <source>Delete feed/category</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder feed/categorie</translation>
     </message>
 </context>
 <context>
