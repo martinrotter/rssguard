@@ -2,6 +2,8 @@ RSS Guard
 =========
 Welcome to RSS Guard website. You can find here basic information.
 
+RSS Guard is simple and easy-to-use RSS/ATOM feed aggregator developed using Qt framework.
+
 - - -
 Contacts
 --------
