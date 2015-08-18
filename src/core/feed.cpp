@@ -143,10 +143,31 @@ void Feed::updateCounts(bool including_total_count, bool update_feed_statuses) {
   }
 }
 
-QPair<Feed*, QNetworkReply::NetworkError> Feed::guessFeed(const QString &url,
-                                                                              const QString &username,
-                                                                              const QString &password) {
-  QPair<Feed*, QNetworkReply::NetworkError> result; result.first = NULL;
+void Feed::fetchMetadataForItself() {
+  QPair<Feed*,QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
+
+  if (metadata.first != NULL && metadata.second == QNetworkReply::NoError) {
+    // Some properties are not updated when new metadata are fetched.
+    metadata.first->setParent(parent());
+    metadata.first->setUrl(url());
+    metadata.first->setPasswordProtected(passwordProtected());
+    metadata.first->setUsername(username());
+    metadata.first->setPassword(password());
+    metadata.first->setAutoUpdateType(autoUpdateType());
+    metadata.first->setAutoUpdateInitialInterval(autoUpdateInitialInterval());
+
+    editItself(metadata.first);
+    delete metadata.first;
+  }
+  else {
+    qApp->showGuiMessage(tr("Metadata not fetched"),
+                         tr("Metadata was not fetched because: %1").arg(NetworkFactory::networkErrorText(metadata.second)),
+                         QSystemTrayIcon::Critical);
+  }
+}
+
+QPair<Feed*,QNetworkReply::NetworkError> Feed::guessFeed(const QString &url, const QString &username, const QString &password) {
+  QPair<Feed*,QNetworkReply::NetworkError> result; result.first = NULL;
 
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,

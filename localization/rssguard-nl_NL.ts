@@ -461,6 +461,14 @@ Auto-update status: 55 </translation>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -573,10 +581,6 @@ Auto-update status: 55 </translation>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Context menu for feeds</source>
-        <translation>Contextmenu voor feeds</translation>
-    </message>
-    <message>
         <source>Cannot add standard category</source>
         <translation>Kan geen standaard categorie toevoegen</translation>
     </message>
@@ -647,6 +651,10 @@ Auto-update status: 55 </translation>
     <message>
         <source>Delete feed/category</source>
         <translation>Verwijder feed/categorie</translation>
+    </message>
+    <message>
+        <source>Context menu for categories</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1760,6 +1768,10 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     <message>
         <source>Show only unread feeds/categories</source>
         <translation>Toon alleen de ongelezen feeds/categorieën</translation>
+    </message>
+    <message>
+        <source>&amp;Fetch feed metadata</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

@@ -461,6 +461,14 @@ Automatický update: %5</translation>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
     </message>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -573,10 +581,6 @@ Automatický update: %5</translation>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Context menu for feeds</source>
-        <translation>Kontextové menu pro přehled kanálů</translation>
-    </message>
-    <message>
         <source>Cannot add standard category</source>
         <translation>Nelze přidat standardní kategorii</translation>
     </message>
@@ -647,6 +651,10 @@ Automatický update: %5</translation>
     <message>
         <source>Delete feed/category</source>
         <translation>Smazat kanál/kategorii</translation>
+    </message>
+    <message>
+        <source>Context menu for categories</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1759,6 +1767,10 @@ Automatický update: %5</translation>
     <message>
         <source>Show only unread feeds/categories</source>
         <translation>Zobrazit pouze nepřečtené kanály/kategorie</translation>
+    </message>
+    <message>
+        <source>&amp;Fetch feed metadata</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

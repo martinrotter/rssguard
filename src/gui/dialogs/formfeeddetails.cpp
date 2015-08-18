@@ -264,8 +264,8 @@ void FormFeedDetails::apply() {
 
 void FormFeedDetails::guessFeed() {
   QPair<Feed*, QNetworkReply::NetworkError> result =  Feed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                                          m_ui->m_txtUsername->lineEdit()->text(),
-                                                                                          m_ui->m_txtPassword->lineEdit()->text());
+                                                                      m_ui->m_txtUsername->lineEdit()->text(),
+                                                                      m_ui->m_txtPassword->lineEdit()->text());
 
   if (result.first != NULL) {
     // Icon or whole feed was guessed.
@@ -307,9 +307,9 @@ void FormFeedDetails::guessFeed() {
 }
 
 void FormFeedDetails::guessIconOnly() {
-  QPair<Feed*, QNetworkReply::NetworkError> result =  Feed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                                          m_ui->m_txtUsername->lineEdit()->text(),
-                                                                                          m_ui->m_txtPassword->lineEdit()->text());
+  QPair<Feed*, QNetworkReply::NetworkError> result = Feed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
+                                                                     m_ui->m_txtUsername->lineEdit()->text(),
+                                                                     m_ui->m_txtPassword->lineEdit()->text());
 
   if (result.first != NULL) {
     // Icon or whole feed was guessed.

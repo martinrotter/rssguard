@@ -450,6 +450,14 @@ Auto-update status: %5</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -562,10 +570,6 @@ Auto-update status: %5</source>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Context menu for feeds</source>
-        <translation>Menu contextuel pour les flux</translation>
-    </message>
-    <message>
         <source>Cannot add standard category</source>
         <translation>Impossible d&apos;ajouter une catégorie standard</translation>
     </message>
@@ -635,6 +639,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Delete feed/category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for categories</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1747,6 +1755,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Show only unread feeds/categories</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Fetch feed metadata</source>
         <translation type="unfinished"/>
     </message>
 </context>

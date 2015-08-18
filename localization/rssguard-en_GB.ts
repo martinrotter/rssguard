@@ -473,6 +473,14 @@ Auto-update status: %5</source>
             <numerusform></numerusform>
         </translation>
     </message>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -588,10 +596,6 @@ Auto-update status: %5</source>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Context menu for feeds</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Cannot add standard category</source>
         <translation type="unfinished"></translation>
     </message>
@@ -661,6 +665,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Delete feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Context menu for categories</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1776,6 +1784,10 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Show only unread feeds/categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Fetch feed metadata</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

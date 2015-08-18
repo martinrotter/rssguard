@@ -82,6 +82,8 @@ class FeedsView : public QTreeView {
     void markAllFeedsReadStatus(int read);
     void markAllFeedsRead();
 
+    void fetchMetadataForSelectedFeed();
+
     // Newspaper accessors.
     void openSelectedFeedsInNewspaperMode();
 
@@ -143,7 +145,8 @@ class FeedsView : public QTreeView {
 
   protected:
     // Initializes context menus.
-    void initializeContextMenuCategoriesFeeds();
+    void initializeContextMenuCategories();
+    void initializeContextMenuFeeds();
     void initializeContextMenuEmptySpace();
     void initializeContextMenuRecycleBin();
 
@@ -180,7 +183,8 @@ class FeedsView : public QTreeView {
     void openMessagesInNewspaperView(const QList<Message> &messages);
 
   private:
-    QMenu *m_contextMenuCategoriesFeeds;
+    QMenu *m_contextMenuCategories;
+    QMenu *m_contextMenuFeeds;
     QMenu *m_contextMenuEmptySpace;
     QMenu *m_contextMenuRecycleBin;
 

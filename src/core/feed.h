@@ -180,9 +180,7 @@ class Feed : public RootItem {
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
     // or NULL feed.
-    static QPair<Feed*, QNetworkReply::NetworkError> guessFeed(const QString &url,
-                                                                         const QString &username,
-                                                                         const QString &password);
+    static QPair<Feed*,QNetworkReply::NetworkError> guessFeed(const QString &url, const QString &username, const QString &password);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);
@@ -190,6 +188,8 @@ class Feed : public RootItem {
   public slots:
     // Updates counts of all/unread messages for this feed.
     void updateCounts(bool including_total_count = true, bool update_feed_statuses = true);
+
+    void fetchMetadataForItself();
 
   protected:
     // Persistently stores given messages into the database

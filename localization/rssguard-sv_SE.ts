@@ -460,6 +460,14 @@ Uppdateringsstatus: %5</translation>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FeedMessageViewer</name>
@@ -572,10 +580,6 @@ Uppdateringsstatus: %5</translation>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Context menu for feeds</source>
-        <translation>Kontextmeny för flöden</translation>
-    </message>
-    <message>
         <source>Cannot add standard category</source>
         <translation>Kan inte lägga till kategori</translation>
     </message>
@@ -646,6 +650,10 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Delete feed/category</source>
         <translation>Ta bort flöde/kategori</translation>
+    </message>
+    <message>
+        <source>Context menu for categories</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1758,6 +1766,10 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Show only unread feeds/categories</source>
         <translation>Visa endast olästa flöden/kategorier </translation>
+    </message>
+    <message>
+        <source>&amp;Fetch feed metadata</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

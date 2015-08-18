@@ -143,6 +143,7 @@
     <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedFeedCategory"/>
     <addaction name="m_actionDeleteSelectedFeedCategory"/>
+    <addaction name="m_actionFetchFeedMetadata"/>
     <addaction name="separator"/>
     <addaction name="m_actionShowOnlyUnreadFeeds"/>
     <addaction name="separator"/>
@@ -660,6 +661,14 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+U</string>
+   </property>
+  </action>
+  <action name="m_actionFetchFeedMetadata">
+   <property name="text">
+    <string>&amp;Fetch feed metadata</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+F</string>
    </property>
   </action>
  </widget>
