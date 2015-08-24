@@ -23,6 +23,7 @@
   
   Fixed:
   <ul>
+    <li>Categories are now not expanded when selected using "Go to next/previous item" in feeds list. (bug #122)</li>
   <ul>
   
   <hr/>

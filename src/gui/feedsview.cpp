@@ -415,7 +415,7 @@ void FeedsView::restoreRecycleBin() {
   emit feedsNeedToBeReloaded(true);
 }
 
-void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) { 
+void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
   foreach (Feed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
   }
@@ -469,9 +469,12 @@ void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) 
 }
 
 void FeedsView::selectNextItem() {
+  // NOTE: Bug #122 requested to not expand in here.
+  /*
   if (!isExpanded(currentIndex())) {
     expand(currentIndex());
   }
+  */
 
   QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
@@ -485,11 +488,13 @@ void FeedsView::selectNextItem() {
 void FeedsView::selectPreviousItem() {
   QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
+  // NOTE: Bug #122 requested to not expand in here.
+  /*
   if (!isExpanded(index_previous)) {
     expand(index_previous);
+    index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
   }
-
-  index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  */
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
