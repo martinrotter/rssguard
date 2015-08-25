@@ -462,11 +462,11 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadata hämtades inte</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1</source>
-        <translation type="unfinished"/>
+        <translation>Metadata hämtades inte på grund av: %1</translation>
     </message>
 </context>
 <context>
@@ -653,7 +653,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny för kategorier</translation>
     </message>
 </context>
 <context>
@@ -1769,6 +1769,10 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>&amp;Fetch feed metadata</source>
+        <translation>&amp;Hämta flödesmetadata</translation>
+    </message>
+    <message>
+        <source>&amp;Expand/collapse selected feed/category</source>
         <translation type="unfinished"/>
     </message>
 </context>

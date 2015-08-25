@@ -143,6 +143,19 @@ void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_o
   QTimer::singleShot(0, m_proxyModel, SLOT(invalidateFilter()));
 }
 
+void FeedsView::expandCollapseCurrentItem() {
+  if (selectionModel()->selectedRows().size() == 1) {
+    QModelIndex index = selectionModel()->selectedRows().at(0);
+
+    if (!index.child(0, 0).isValid() && index.parent().isValid()) {
+      setCurrentIndex(index.parent());
+      index = index.parent();
+    }
+
+    isExpanded(index) ? collapse(index) : expand(index);
+  }
+}
+
 void FeedsView::updateAllFeeds() {
   emit feedsUpdateRequested(allFeeds());
 }
@@ -415,7 +428,7 @@ void FeedsView::restoreRecycleBin() {
   emit feedsNeedToBeReloaded(true);
 }
 
-void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) { 
+void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
   foreach (Feed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
   }
@@ -469,15 +482,17 @@ void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) 
 }
 
 void FeedsView::selectNextItem() {
+  // NOTE: Bug #122 requested to not expand in here.
+  /*
   if (!isExpanded(currentIndex())) {
     expand(currentIndex());
   }
+  */
 
   QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
-    selectionModel()->select(index_next, QItemSelectionModel::Select | QItemSelectionModel::Rows);
     setFocus();
   }
 }
@@ -485,15 +500,16 @@ void FeedsView::selectNextItem() {
 void FeedsView::selectPreviousItem() {
   QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
+  // NOTE: Bug #122 requested to not expand in here.
+  /*
   if (!isExpanded(index_previous)) {
     expand(index_previous);
+    index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
   }
-
-  index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  */
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
-    selectionModel()->select(index_previous, QItemSelectionModel::Select | QItemSelectionModel::Rows);
     setFocus();
   }
 }
@@ -646,7 +662,7 @@ void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
   QModelIndex mapped = m_proxyModel->mapFromSource(source_index);
 
   if (mapped.isValid()) {
-    setExpanded(mapped, true);
+    expand(mapped);
     setCurrentIndex(mapped);
   }
 }

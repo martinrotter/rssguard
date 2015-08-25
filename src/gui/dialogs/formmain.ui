@@ -146,6 +146,7 @@
     <addaction name="m_actionFetchFeedMetadata"/>
     <addaction name="separator"/>
     <addaction name="m_actionShowOnlyUnreadFeeds"/>
+    <addaction name="m_actionExpandCollapseFeedCategory"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextFeedCategory"/>
     <addaction name="m_actionSelectPreviousFeedCategory"/>
@@ -669,6 +670,14 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+F</string>
+   </property>
+  </action>
+  <action name="m_actionExpandCollapseFeedCategory">
+   <property name="text">
+    <string>&amp;Expand/collapse selected feed/category</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">E</string>
    </property>
   </action>
  </widget>

@@ -256,10 +256,9 @@ void MessagesView::openSelectedSourceMessagesExternally() {
     QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
     if (!WebFactory::instance()->openUrlInExternalBrowser(link)) {
-      MessageBox::show(this,
-                       QMessageBox::Critical,
-                       tr("Problem with starting external web browser"),
-                       tr("External web browser could not be started."));
+      qApp->showGuiMessage(tr("Problem with starting external web browser"),
+                           tr("External web browser could not be started."),
+                           QSystemTrayIcon::Critical);
       return;
     }
   }

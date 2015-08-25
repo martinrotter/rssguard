@@ -324,6 +324,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   form_main->m_ui->m_actionUpdateSelectedFeeds->setEnabled(!critical_action_running && feed_selected);
   form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected);
   form_main->m_ui->m_actionFetchFeedMetadata->setEnabled(feed_selected);
+  form_main->m_ui->m_actionExpandCollapseFeedCategory->setEnabled(feed_selected);
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
 }
 
@@ -395,6 +396,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
   connect(form_main->m_ui->m_actionMarkSelectedFeedsAsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
+  connect(form_main->m_ui->m_actionExpandCollapseFeedCategory,
+          SIGNAL(triggered()), m_feedsView, SLOT(expandCollapseCurrentItem()));
   connect(form_main->m_ui->m_actionFetchFeedMetadata, SIGNAL(triggered()),
           m_feedsView, SLOT(fetchMetadataForSelectedFeed()));
   connect(form_main->m_ui->m_actionMarkSelectedFeedsAsUnread,

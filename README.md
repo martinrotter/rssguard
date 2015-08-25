@@ -17,6 +17,10 @@ You can [support RSS Guard with tiny amounts of money via PayPal](https://www.pa
 
 [![Support RSS Guard now.](http://manlybeachrunningclub.com/wp-content/uploads/2015/01/paypal-donate-button115.png)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4)
 
+People who donated:
+
+* Zdenek S. (Sweden).
+
 - - -
 Feeds & Videos
 -----

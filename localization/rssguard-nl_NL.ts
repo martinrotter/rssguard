@@ -463,11 +463,11 @@ Auto-update status: 55 </translation>
     </message>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadata niet opgehaald</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1</source>
-        <translation type="unfinished"/>
+        <translation>Metadate niet opgehaald omdat: %1</translation>
     </message>
 </context>
 <context>
@@ -654,7 +654,7 @@ Auto-update status: 55 </translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Contextmenu voor categorieën</translation>
     </message>
 </context>
 <context>
@@ -1771,6 +1771,10 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Fetch feed metadata</source>
+        <translation>&amp;Ophalen van de feed metadata</translation>
+    </message>
+    <message>
+        <source>&amp;Expand/collapse selected feed/category</source>
         <translation type="unfinished"/>
     </message>
 </context>
