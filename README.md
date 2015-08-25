@@ -19,7 +19,7 @@ You can [support RSS Guard with tiny amounts of money via PayPal](https://www.pa
 
 People who donated:
 
-* Zdenek S. (Czech Republic).
+* Zdenek S. (Sweden).
 
 - - -
 Feeds & Videos
