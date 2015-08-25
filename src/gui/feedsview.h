@@ -69,6 +69,8 @@ class FeedsView : public QTreeView {
 
   public slots:
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
+    void expandCollapseCurrentItem();
+    void fetchMetadataForSelectedFeed();
 
     // Feed updating.
     void updateAllFeeds();
@@ -81,8 +83,6 @@ class FeedsView : public QTreeView {
     void markSelectedFeedsUnread();
     void markAllFeedsReadStatus(int read);
     void markAllFeedsRead();
-
-    void fetchMetadataForSelectedFeed();
 
     // Newspaper accessors.
     void openSelectedFeedsInNewspaperMode();

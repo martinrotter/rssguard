@@ -278,6 +278,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
   m_ui->m_actionShowOnlyUnreadFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionFetchFeedMetadata->setIcon(icon_theme_factory->fromTheme(QSL("download-manager")));
+  m_ui->m_actionExpandCollapseFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
