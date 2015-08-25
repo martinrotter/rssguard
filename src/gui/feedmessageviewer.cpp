@@ -277,7 +277,14 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 }
 
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
-  m_feedsView->invalidateReadFeedsFilter(true, qobject_cast<QAction*>(sender())->isChecked());
+  QAction *origin = qobject_cast<QAction*>(sender());
+
+  if (origin == NULL) {
+    m_feedsView->invalidateReadFeedsFilter(true, false);
+  }
+  else {
+    m_feedsView->invalidateReadFeedsFilter(true, origin->isChecked());
+  }
 }
 
 void FeedMessageViewer::updateMessageButtonsAvailability() {
