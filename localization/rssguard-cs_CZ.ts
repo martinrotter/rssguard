@@ -1772,6 +1772,10 @@ Automatický update: %5</translation>
         <source>&amp;Fetch feed metadata</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>&amp;Expand/collapse selected feed/category</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>

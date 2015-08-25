@@ -1790,6 +1790,10 @@ Auto-update status: %5</source>
         <source>&amp;Fetch feed metadata</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Expand/collapse selected feed/category</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormRestoreDatabaseSettings</name>
