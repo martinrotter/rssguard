@@ -51,9 +51,15 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
 
     QString call_line = "\"" + browser + "\" \"" + arguments.arg(url) + "\"";
 
-    qDebug("Running code '%s'.", qPrintable(call_line));
+    qDebug("Running command '%s'.", qPrintable(call_line));
 
-    return QProcess::startDetached(call_line);
+    bool result = QProcess::startDetached(call_line);
+
+    if (!result) {
+      qDebug("External web browser call failed.");
+    }
+
+    return result;
     //return QProcess::startDetached(QString("\"") + browser + QSL("\""), QStringList() << arguments.arg(url));
   }
   else {
