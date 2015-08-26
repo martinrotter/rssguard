@@ -49,7 +49,12 @@ bool WebFactory::openUrlInExternalBrowser(const QString &url) {
     QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
     QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
 
-    return QProcess::startDetached(QString("\"") + browser + QSL("\""), QStringList() << arguments.arg(url));
+    QString call_line = "\"" + browser + "\" \"" + arguments.arg(url) + "\"";
+
+    qDebug("Running code '%s'.", qPrintable(call_line));
+
+    return QProcess::startDetached(call_line);
+    //return QProcess::startDetached(QString("\"") + browser + QSL("\""), QStringList() << arguments.arg(url));
   }
   else {
     return QDesktopServices::openUrl(url);
