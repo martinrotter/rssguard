@@ -1,3 +1,20 @@
+// This file is part of RSS Guard.
+//
+// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+//
+// RSS Guard is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// RSS Guard is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
+
 /******************************************************************************
 Copyright (c) 2010, Artem Galichkin <doomer3d@gmail.com>
 All rights reserved.
@@ -35,6 +52,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ShortcutButton::ShortcutButton(ShortcutCatcher *catcher, QWidget *parent)
   : QPushButton(parent), m_catcher(catcher) {
+  setMinimumWidth(100);
 }
 
 ShortcutButton::~ShortcutButton() {
@@ -47,8 +65,7 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
     m_catcher->doneRecording();
   }
 
-  Qt::KeyboardModifiers new_modifiers = event->modifiers() &
-                                        (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
+  Qt::KeyboardModifiers new_modifiers = event->modifiers() & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
 
   if (!m_catcher->m_isRecording && (pressed_key == Qt::Key_Return || pressed_key == Qt::Key_Space)) {
     return;
@@ -64,6 +81,7 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
   switch(pressed_key) {
     case Qt::Key_AltGr:
       return;
+
     case Qt::Key_Shift:
     case Qt::Key_Control:
     case Qt::Key_Alt:
@@ -72,9 +90,8 @@ void ShortcutButton::keyPressEvent(QKeyEvent *event) {
       m_catcher->controlModifierlessTimout();
       m_catcher->updateDisplayShortcut();
       break;
-    default: {
-    }
 
+    default:
       // We now have a valid key press.
       if (pressed_key) {
         if ((pressed_key == Qt::Key_Backtab) && (m_catcher->m_modifierKeys & Qt::SHIFT)) {
