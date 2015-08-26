@@ -134,6 +134,8 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSelectPreviousFeedCategory;
   actions << m_ui->m_actionSelectNextMessage;
   actions << m_ui->m_actionSelectPreviousMessage;
+  actions << m_ui->m_actionFetchFeedMetadata;
+  actions << m_ui->m_actionExpandCollapseFeedCategory;
 
   // Add recycle bin actions.
   actions << m_ui->m_actionRestoreRecycleBin;
