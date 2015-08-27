@@ -53,6 +53,9 @@ class AdBlockTreeWidget : public QTreeWidget {
   protected:
     void keyPressEvent(QKeyEvent *event);
 
+  signals:
+    void refreshStatusChanged(bool started);
+
   private:
     void adjustItemFeatures(QTreeWidgetItem *item, const AdBlockRule *rule);
     void addTopLevelItem(QTreeWidgetItem *item);

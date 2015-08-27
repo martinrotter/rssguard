@@ -23,6 +23,7 @@
   
   Fixed:
   <ul>
+    <li>Fixed crash when adding Adblock subscription.</li>
     <li>Custom external web browser now correctly opens URLs on some operating systems. This seemed to primarily affect Linux distributions. (bug #123)</li>
     <li>Categories are now not expanded when selected using "Go to next/previous item" in feeds list. (bug #122)</li>
     <li>Added action to expand/collapse currently selected item in feeds list. (enhancement #121)</li>

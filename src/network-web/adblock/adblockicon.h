@@ -34,7 +34,6 @@ class AdBlockIcon : public PlainToolButton {
     explicit AdBlockIcon(QWidget *window, QWidget *parent = 0);
     virtual ~AdBlockIcon();
 
-    void popupBlocked(const QString &rule_string, const QUrl &url);
     QAction *menuAction();
 
   public slots:
@@ -45,8 +44,6 @@ class AdBlockIcon : public PlainToolButton {
   private slots:
     void showMenu(const QPoint &pos);
     void toggleCustomFilter();
-    void animateIcon();
-    void stopAnimation();
 
   protected:
     void mouseReleaseEvent(QMouseEvent *event);
@@ -57,11 +54,7 @@ class AdBlockIcon : public PlainToolButton {
   private:
     QWidget *m_window;
     QAction *m_menuAction;
-
     QVector<QPair<AdBlockRule*,QUrl> > m_blockedPopups;
-    QTimer *m_flashTimer;
-
-    int m_timerTicks;
     bool m_enabled;
 };
 

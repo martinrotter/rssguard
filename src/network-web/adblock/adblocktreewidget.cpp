@@ -226,6 +226,10 @@ void AdBlockTreeWidget::keyPressEvent(QKeyEvent* event) {
 }
 
 void AdBlockTreeWidget::refresh() {
+  // Disable GUI editing for parent.
+  emit refreshStatusChanged(true);
+  setUpdatesEnabled(false);
+
   m_itemChangingBlock = true;
   clear();
 
@@ -260,6 +264,8 @@ void AdBlockTreeWidget::refresh() {
 
   showRule(0);
   m_itemChangingBlock = false;
+  setUpdatesEnabled(true);
+  emit refreshStatusChanged(false);
 }
 
 void AdBlockTreeWidget::clear() {

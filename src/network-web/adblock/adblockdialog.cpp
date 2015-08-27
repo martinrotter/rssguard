@@ -120,7 +120,10 @@ void AdBlockDialog::addSubscription() {
     QString url = dialog.data()->url();
 
     if (AdBlockSubscription *subscription = m_manager->addSubscription(title, url)) {
-      AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
+      AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, this);
+
+      connect(tree, SIGNAL(refreshStatusChanged(bool)), this, SLOT(setDisabled(bool)));
+
       int index = m_ui->m_tabs->insertTab(m_ui->m_tabs->count() - 1, tree, subscription->title());
 
       m_ui->m_tabs->setCurrentIndex(index);
@@ -180,17 +183,9 @@ void AdBlockDialog::learnAboutRules() {
 }
 
 void AdBlockDialog::loadSubscriptions() {
-  setEnabled(false);
-
   for (int i = 0; i < m_ui->m_tabs->count(); ++i) {
-    AdBlockTreeWidget *tree = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i));
-
-    tree->setUpdatesEnabled(false);
-    tree->refresh();
-    tree->setUpdatesEnabled(true);
+    qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(i))->refresh();
   }
-
-  setEnabled(true);
 }
 
 void AdBlockDialog::load() {
@@ -199,7 +194,10 @@ void AdBlockDialog::load() {
   }
 
   foreach (AdBlockSubscription *subscription, m_manager->subscriptions()) {
-    AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, m_ui->m_tabs);
+    AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, this);
+
+    connect(tree, SIGNAL(refreshStatusChanged(bool)), this, SLOT(setDisabled(bool)));
+
     m_ui->m_tabs->addTab(tree, subscription->title());
   }
 

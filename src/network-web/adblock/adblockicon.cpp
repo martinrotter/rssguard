@@ -30,46 +30,13 @@
 
 #include <QMenu>
 #include <QMouseEvent>
-#include <QTimer>
 #include <QWebFrame>
 
 
 AdBlockIcon::AdBlockIcon(QWidget *window, QWidget *parent)
-  : PlainToolButton(parent), m_window(window), m_menuAction(NULL), m_flashTimer(NULL), m_timerTicks(0), m_enabled(false) {
+  : PlainToolButton(parent), m_window(window), m_menuAction(NULL), m_enabled(false) {
   connect(this, SIGNAL(clicked(QPoint)), this, SLOT(showMenu(QPoint)));
   connect(AdBlockManager::instance(), SIGNAL(enabledChanged(bool)), this, SLOT(setEnabled(bool)));
-}
-
-void AdBlockIcon::popupBlocked(const QString &rule_string, const QUrl &url) {
-  int index = rule_string.lastIndexOf(QLatin1String(" ("));
-  const QString subscription_ame = rule_string.left(index);
-  const QString filter = rule_string.mid(index + 2, rule_string.size() - index - 3);
-  AdBlockSubscription* subscription = AdBlockManager::instance()->subscriptionByName(subscription_ame);
-
-  if (filter.isEmpty() || !subscription) {
-    return;
-  }
-
-  QPair<AdBlockRule*,QUrl> pair;
-  pair.first = new AdBlockRule(filter, subscription);
-  pair.second = url;
-  m_blockedPopups.append(pair);
-
-  //!** FIXME
-  //    mApp->desktopNotifications()->showNotification(QPixmap(":images/images/adblock_big.png"), tr("Blocked popup window"), tr("AdBlock blocked unwanted popup window."));
-
-  if (m_flashTimer == NULL) {
-    m_flashTimer = new QTimer(this);
-  }
-
-  if (m_flashTimer->isActive()) {
-    stopAnimation();
-  }
-
-  m_flashTimer->setInterval(500);
-  m_flashTimer->start();
-
-  connect(m_flashTimer, SIGNAL(timeout()), this, SLOT(animateIcon()));
 }
 
 QAction *AdBlockIcon::menuAction() {
@@ -193,30 +160,6 @@ void AdBlockIcon::toggleCustomFilter() {
   }
 }
 
-void AdBlockIcon::animateIcon() {
-  m_timerTicks++;
-
-  if (m_timerTicks > 10) {
-    stopAnimation();
-    return;
-  }
-
-  if (icon().isNull()) {
-    setIcon(qApp->icons()->fromTheme("web-adblock"));
-  }
-  else {
-    setIcon(QIcon());
-  }
-}
-
-void AdBlockIcon::stopAnimation() {
-  m_timerTicks = 0;
-  m_flashTimer->stop();
-
-  disconnect(m_flashTimer, SIGNAL(timeout()), this, SLOT(animateIcon()));
-  setEnabled(m_enabled);
-}
-
 void AdBlockIcon::setEnabled(bool enabled) {
   if (enabled) {
     setToolTip(tr("Adblock - up and running"));
@@ -232,7 +175,7 @@ void AdBlockIcon::setEnabled(bool enabled) {
 
 void AdBlockIcon::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() == Qt::LeftButton) {
-      emit clicked(event->globalPos());
+    emit clicked(event->globalPos());
   }
   else {
     QToolButton::mouseReleaseEvent(event);
