@@ -45,6 +45,9 @@ DVALUE(bool) Feeds::AutoUpdateEnabledDef  = false;
 DKEY Feeds::FeedsUpdateOnStartup            = "feeds_update_on_startup";
 DVALUE(bool) Feeds::FeedsUpdateOnStartupDef = false;
 
+DKEY Feeds::ShowOnlyUnreadFeeds               = "show_only_unread_feeds";
+DVALUE(bool) Feeds::ShowOnlyUnreadFeedsDef    = false;
+
 // Messages.
 DKEY Messages::ID                            = "messages";
 

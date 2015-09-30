@@ -19,6 +19,7 @@
   Added:
   <ul>
   <li>Added experimental support for fetching metadata for individual feeds via feed context menu. (issue #118)</li>
+  <li>"Show unread feeds only" is now persistent between application sessions. GUI of this feature will be worked on in upcoming releases. (issue #119)</li>
   </ul>
   
   Fixed:

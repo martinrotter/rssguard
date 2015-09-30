@@ -319,6 +319,9 @@ void FormMain::loadSize() {
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
   m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ToolbarsVisible)).toBool());
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
+
+  // Make sure that only unread feeds are shown if user has that feature set on.
+  m_ui->m_actionShowOnlyUnreadFeeds->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
 }
 
 void FormMain::saveSize() {

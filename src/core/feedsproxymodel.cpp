@@ -18,6 +18,7 @@
 #include "core/feedsproxymodel.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
 #include "core/feedsmodel.h"
 #include "core/category.h"
 #include "core/feed.h"
@@ -219,6 +220,7 @@ bool FeedsProxyModel::showUnreadOnly() const {
 
 void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
   m_showUnreadOnly = show_unread_only;
+  qApp->settings()->setValue(GROUP(Feeds), Feeds::ShowOnlyUnreadFeeds, show_unread_only);
 }
 
 QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {
