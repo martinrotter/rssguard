@@ -55,6 +55,9 @@ namespace Feeds {
 
   KEY FeedsUpdateOnStartup;
   VALUE(bool) FeedsUpdateOnStartupDef;
+
+  KEY ShowOnlyUnreadFeeds;
+  VALUE(bool) ShowOnlyUnreadFeedsDef;
 }
 
 // Messages.
