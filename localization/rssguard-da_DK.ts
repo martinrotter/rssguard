@@ -31,7 +31,7 @@
     </message>
     <message>
         <source>Address</source>
-        <translation type="unfinished"/>
+        <translation>Addresse</translation>
     </message>
 </context>
 <context>
@@ -59,7 +59,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Indstillinger</translation>
     </message>
     <message>
         <source>Filter rules</source>
@@ -71,7 +71,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj regl</translation>
     </message>
     <message>
         <source>Remove rule</source>
@@ -114,7 +114,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Blocked popup windows</source>
-        <translation type="unfinished"/>
+        <translation>Blokér pop-up vinduer</translation>
     </message>
     <message>
         <source>%1 with (%2)</source>
@@ -160,7 +160,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Add rule</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj regl</translation>
     </message>
     <message>
         <source>Remove rule</source>
@@ -236,7 +236,7 @@ This category does not contain any nested items.</source>
     </message>
     <message>
         <source>Removing old messages...</source>
-        <translation type="unfinished"/>
+        <translation>Fjern gamle meddelelser...</translation>
     </message>
     <message>
         <source>Purging recycle bin...</source>
@@ -273,7 +273,7 @@ This category does not contain any nested items.</source>
     </message>
     <message>
         <source>MySQL/MariaDB (dedicated database)</source>
-        <translation type="unfinished"/>
+        <translation>MySQL/MariaDB (dedikeret database)</translation>
     </message>
     <message>
         <source>SQLite (embedded database)</source>
@@ -312,11 +312,11 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>&amp;Stop</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Stop</translation>
     </message>
     <message>
         <source>&amp;Open file</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Åben fil</translation>
     </message>
     <message>
         <source>Select destination for downloaded file</source>
@@ -344,7 +344,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Open &amp;directory</source>
-        <translation type="unfinished"/>
+        <translation>Åben &amp;bibliotek</translation>
     </message>
     <message>
         <source>Cannot open file</source>
@@ -356,7 +356,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Cannot open directory</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke åbne bibliotek</translation>
     </message>
     <message>
         <source>Cannot open output directory. Open it manually.</source>
@@ -429,7 +429,7 @@ Click here to open parent directory.</source>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>bruger globale indstillinger</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -452,7 +452,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadata ikke hentet</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1</source>
@@ -493,7 +493,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke ajourføre alle poster</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
@@ -639,7 +639,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Delete feed/category</source>
-        <translation type="unfinished"/>
+        <translation>Slet feed/kategori</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
@@ -666,7 +666,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>BSD License (applies to QtSingleApplication source code)</source>
-        <translation type="unfinished"/>
+        <translation>BSD Licens (for QtSingleApplication kildekode)</translation>
     </message>
     <message>
         <source>Licenses page is available only in English language.</source>
@@ -703,11 +703,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Settings type</source>
-        <translation type="unfinished"/>
+        <translation>Indstillingtype</translation>
     </message>
     <message>
         <source>Settings file</source>
-        <translation type="unfinished"/>
+        <translation>Indstillingsfil</translation>
     </message>
     <message>
         <source>Database root path</source>
@@ -786,7 +786,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vælg bibliotek</translation>
     </message>
     <message>
         <source>Backup was created successfully and stored in target directory.</source>
@@ -902,7 +902,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Kategoribeskrivelse</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
@@ -969,7 +969,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Database cleanup is running.</source>
-        <translation type="unfinished"/>
+        <translation>Renser database.</translation>
     </message>
     <message>
         <source>Database cleanup is completed.</source>
@@ -1044,7 +1044,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -1120,7 +1120,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
@@ -1173,7 +1173,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed og ikon metadata hentet.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
@@ -1277,7 +1277,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen ikoner hentet</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -1304,7 +1304,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>Eksportér feeds</translation>
     </message>
     <message>
         <source>Destination file</source>
@@ -1324,7 +1324,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>Importér feeds</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
@@ -1395,7 +1395,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation type="unfinished"/>
+        <translation>Værk&amp;tøj</translation>
     </message>
     <message>
         <source>&amp;Quit</source>
@@ -1411,15 +1411,15 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Add tab</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj f&amp;aneblad</translation>
     </message>
     <message>
         <source>&amp;Messages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Meddelelser</translation>
     </message>
     <message>
         <source>&amp;Web browser</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Netlæser</translation>
     </message>
     <message>
         <source>Switch &amp;importance of selected messages</source>
@@ -1631,7 +1631,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Main menu</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Hovedmenu</translation>
     </message>
     <message>
         <source>Switch visibility of main &amp;window</source>
@@ -1715,11 +1715,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Tøm skraldespand</translation>
     </message>
     <message>
         <source>&amp;Restore all messages</source>
-        <translation type="unfinished"/>
+        <translation>Genop&amp;ret alle meddelelser</translation>
     </message>
     <message>
         <source>Restore &amp;selected messages</source>
@@ -1751,7 +1751,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>&amp;Cleanup database</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Rens databasen</translation>
     </message>
     <message>
         <source>Show only unread feeds/categories</source>
@@ -1802,11 +1802,11 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Source directory</source>
-        <translation type="unfinished"/>
+        <translation>Kildebibliotek</translation>
     </message>
     <message>
         <source>&amp;Select directory</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Vælg bibliotek</translation>
     </message>
     <message>
         <source>Database and/or settings were not copied to restoration directory successully.</source>
@@ -2146,7 +2146,7 @@ Authors of this application are NOT responsible for lost data.</source>
     </message>
     <message>
         <source>Data storage</source>
-        <translation type="unfinished"/>
+        <translation>Datalager</translation>
     </message>
     <message>
         <source>Hostname of your MySQL server</source>
@@ -2359,7 +2359,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>&amp;Show password</source>
-        <translation type="unfinished"/>
+        <translation>Vi&amp;s adgangskode</translation>
     </message>
     <message>
         <source>Web browser &amp; e-mail &amp; proxy</source>
@@ -2387,7 +2387,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>External e-mail client</source>
-        <translation type="unfinished"/>
+        <translation>Eksterne e-post klient</translation>
     </message>
     <message>
         <source>Use custom external e-mail client</source>
@@ -2417,11 +2417,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Select e-mail executable</source>
-        <translation type="unfinished"/>
+        <translation>Vælg e-post klient programfil</translation>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
+        <translation>Mozilla Thunderbird</translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
@@ -2449,15 +2449,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Top-left corner</source>
-        <translation type="unfinished"/>
+        <translation>Øverste venstre hjørne</translation>
     </message>
     <message>
         <source>Bottom-right corner</source>
-        <translation type="unfinished"/>
+        <translation>Nederste højre hjørne</translation>
     </message>
     <message>
         <source>Top-right corner</source>
-        <translation type="unfinished"/>
+        <translation>Øverste højre hjørne</translation>
     </message>
     <message>
         <source>Internal message browser fonts</source>
@@ -2532,7 +2532,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Update</source>
-        <translation type="unfinished"/>
+        <translation>Ajourfør</translation>
     </message>
     <message>
         <source>Download new installation files.</source>
@@ -2544,7 +2544,7 @@ currently installed one.</source>
     </message>
     <message>
         <source>Download installation file for your OS.</source>
-        <translation type="unfinished"/>
+        <translation>Hent installationsfil til dit styresystem</translation>
     </message>
     <message>
         <source>Installation file is not available directly.
@@ -2601,7 +2601,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Go to application website</source>
-        <translation type="unfinished"/>
+        <translation>Gå til programmets hjemmeside</translation>
     </message>
 </context>
 <context>
@@ -2666,7 +2666,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Id of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelses-ID</translation>
     </message>
     <message>
         <source>Is message read?</source>
@@ -2690,7 +2690,7 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Url of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Meddelelses-URL</translation>
     </message>
     <message>
         <source>Author of the message.</source>
@@ -2861,7 +2861,7 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>no errors</source>
         <extracomment>Network status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>ingen fejl</translation>
     </message>
     <message>
         <source>access to content was denied</source>
@@ -2912,14 +2912,14 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Welcome to %1 %2.</source>
-        <translation type="unfinished"/>
+        <translation>Velkommen til %1 %2.</translation>
     </message>
 </context>
 <context>
     <name>RecycleBin</name>
     <message>
         <source>Recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Skraldespand</translation>
     </message>
     <message>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
@@ -2928,7 +2928,8 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>Recycle bin
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Skraldespand
+%1</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
@@ -2977,7 +2978,8 @@ Go to application website to obtain it manually.</source>
     <message>
         <source>%1
 Unread news: %2</source>
-        <translation type="unfinished"/>
+        <translation>%1
+Ulæste nyheder: %2</translation>
     </message>
 </context>
 <context>
@@ -3031,7 +3033,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Available actions</source>
-        <translation type="unfinished"/>
+        <translation>Tilgængelige handlinger</translation>
     </message>
     <message>
         <source>Insert separator</source>
@@ -3097,7 +3099,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"/>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Zoom  </source>
@@ -3110,7 +3112,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Decrease zoom.</source>
-        <translation type="unfinished"/>
+        <translation>Zoom ud.</translation>
     </message>
     <message>
         <source>Reset zoom to default.</source>
@@ -3197,7 +3199,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Copy selection</source>
-        <translation type="unfinished"/>
+        <translation>Kopiér udvalgte</translation>
     </message>
     <message>
         <source>Copies current selection into the clipboard.</source>
@@ -3245,7 +3247,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>HTML web pages (*.html)</source>
-        <translation type="unfinished"/>
+        <translation>HTML hjemmesider (*.html)</translation>
     </message>
     <message>
         <source>Select destination file for web page</source>
@@ -3277,7 +3279,7 @@ Unread news: %2</source>
     </message>
     <message>
         <source>Save image as...</source>
-        <translation type="unfinished"/>
+        <translation>Gem billede som...</translation>
     </message>
     <message>
         <source>source_page</source>

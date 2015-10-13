@@ -463,11 +463,11 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadata nezískána</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1</source>
-        <translation type="unfinished"/>
+        <translation>Metadata nezískána, protože: %1</translation>
     </message>
 </context>
 <context>
@@ -654,7 +654,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Context menu for categories</source>
-        <translation type="unfinished"/>
+        <translation>Kontextové menu pro kategorie</translation>
     </message>
 </context>
 <context>
@@ -1770,11 +1770,11 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>&amp;Fetch feed metadata</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Získat metadata kanálu</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected feed/category</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Expandovat/složit vybraný kanál/kategorii</translation>
     </message>
 </context>
 <context>
@@ -3134,7 +3134,7 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>Zoom  </source>
-        <translation type="unfinished"/>
+        <translation>Přiblížení</translation>
     </message>
     <message>
         <source>No title</source>

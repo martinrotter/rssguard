@@ -1773,7 +1773,7 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected feed/category</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Expandera/Komprimera markerat flöde/kategori</translation>
     </message>
 </context>
 <context>

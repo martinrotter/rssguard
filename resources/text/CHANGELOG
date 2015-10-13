@@ -15,7 +15,7 @@
   </style>
 </head>
 <body>
-	<center><h2>2.5.2 (not yet released)</h2></center>
+	<center><h2>2.5.2</h2></center>
   Added:
   <ul>
   <li>Added experimental support for fetching metadata for individual feeds via feed context menu. (issue #118)</li>
@@ -23,6 +23,7 @@
   
   Fixed:
   <ul>
+  	<li>Show unread feeds only is now persistent. (issue #119)</li>
     <li>Fixed crash when adding Adblock subscription.</li>
     <li>Custom external web browser now correctly opens URLs on some operating systems. This seemed to primarily affect Linux distributions. (bug #123)</li>
     <li>Categories are now not expanded when selected using "Go to next/previous item" in feeds list. (bug #122)</li>

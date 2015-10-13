@@ -1775,7 +1775,7 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected feed/category</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Uitklappen/Inklappen van geselcteerde feed/categorie</translation>
     </message>
 </context>
 <context>
