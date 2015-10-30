@@ -20,11 +20,19 @@
 
 #include "services/abstract/serviceroot.h"
 
+#include <QCoreApplication>
+
 
 class StandardServiceRoot : public ServiceRoot {
+    Q_DECLARE_TR_FUNCTIONS(StandardServiceRoot)
+
   public:
     explicit StandardServiceRoot(RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
+
+    bool canBeEdited();
+    bool canBeDeleted();
+    QVariant data(int column, int role) const;
 };
 
 #endif // STANDARDSERVICEROOT_H

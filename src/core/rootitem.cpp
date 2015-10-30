@@ -69,9 +69,7 @@ int RootItem::countOfAllMessages() const {
   int total_count = 0;
 
   foreach (RootItem *child_item, m_childItems) {
-    if (child_item->kind() != RootItem::Bin) {
-      total_count += child_item->countOfAllMessages();
-    }
+    total_count += child_item->countOfAllMessages();
   }
 
   return total_count;
@@ -143,9 +141,7 @@ int RootItem::countOfUnreadMessages() const {
   int total_count = 0;
 
   foreach (RootItem *child_item, m_childItems) {
-    if (child_item->kind() != RootItem::Bin) {
-      total_count += child_item->countOfUnreadMessages();
-    }
+    total_count += child_item->countOfUnreadMessages();
   }
 
   return total_count;

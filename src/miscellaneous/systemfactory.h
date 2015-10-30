@@ -80,6 +80,9 @@ class SystemFactory : public QObject {
     QString getAutostartDesktopFileLocation();
 #endif
 
+    // Retrieves username of currently logged-in user.
+    QString getUsername() const;
+
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
 

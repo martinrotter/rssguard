@@ -172,6 +172,20 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
 }
 #endif
 
+QString SystemFactory::getUsername() const {
+  QString name = qgetenv("USER");
+
+  if (name.isEmpty()) {
+    name = qgetenv("USERNAME");
+  }
+
+  if (name.isEmpty()) {
+    name = tr("anonymous");
+  }
+
+  return name;
+}
+
 QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
   QByteArray releases_xml;

@@ -20,11 +20,20 @@
 
 #include "services/abstract/serviceroot.h"
 
+#include <QCoreApplication>
+
 
 class TtRssServiceRoot : public ServiceRoot {
+    Q_DECLARE_TR_FUNCTIONS(StandardServiceRoot)
+
   public:
     explicit TtRssServiceRoot(RootItem *parent = NULL);
     virtual ~TtRssServiceRoot();
+
+    bool canBeEdited();
+    bool canBeDeleted();
+    void editViaDialog();
+    QVariant data(int column, int role) const;
 };
 
 #endif // TTRSSSERVICEROOT_H
