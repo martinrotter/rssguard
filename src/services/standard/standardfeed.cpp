@@ -98,7 +98,7 @@ int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-void StandardFeed::edit() {
+void StandardFeed::editViaDialog() {
   // TODO: fix passing of the model
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
                                                                                qApp->mainForm());

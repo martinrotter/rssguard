@@ -133,14 +133,19 @@ void FormStandardCategoryDetails::apply() {
     }
   }
   else {
-    if (m_feedsModel->editCategory(m_editableCategory, new_category)) {
+    bool edited = m_editableCategory->editItself(new_category);
+
+    if (edited) {
+      m_feedsModel->reassignNodeToNewParent(m_editableCategory, new_category->parent());
+
+      // Remove new temporary feed data holder object.
+      delete new_category;
       accept();
     }
     else {
       qApp->showGuiMessage(tr("Cannot edit category"),
                            tr("Category was not edited due to error."),
-                           QSystemTrayIcon::Critical,
-                           qApp->mainForm(), true);
+                           QSystemTrayIcon::Critical, this, true);
     }
   }
 }

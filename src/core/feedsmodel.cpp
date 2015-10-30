@@ -252,33 +252,6 @@ bool FeedsModel::addCategory(StandardCategory *category, RootItem *parent) {
   return result;
 }
 
-bool FeedsModel::editCategory(StandardCategory *original_category, StandardCategory *new_category_data) {
-  RootItem *original_parent = original_category->parent();
-  RootItem *new_parent = new_category_data->parent();
-  bool result = original_category->editItself(new_category_data);
-
-  if (result && original_parent != new_parent) {
-    // User edited category and set it new parent item,
-    // se we need to move the item in the model too.
-    int original_index_of_category = original_parent->childItems().indexOf(original_category);
-    int new_index_of_category = new_parent->childCount();
-
-    // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent), original_index_of_category, original_index_of_category);
-    original_parent->removeChild(original_category);
-    endRemoveRows();
-
-    // ...and insert it under the new parent.
-    beginInsertRows(indexForItem(new_parent), new_index_of_category, new_index_of_category);
-    new_parent->appendChild(original_category);
-    endInsertRows();
-  }
-
-  // Cleanup temporary new category data.
-  delete new_category_data;
-  return result;
-}
-
 bool FeedsModel::addFeed(StandardFeed *feed, RootItem *parent) {
   // Get index of parent item (parent standard category or root item).
   QModelIndex parent_index = indexForItem(parent);
@@ -297,30 +270,25 @@ bool FeedsModel::addFeed(StandardFeed *feed, RootItem *parent) {
   return result;
 }
 
-bool FeedsModel::editFeed(StandardFeed *original_feed, StandardFeed *new_feed_data) {
-  RootItem *original_parent = original_feed->parent();
-  RootItem *new_parent = new_feed_data->parent();
-  bool result = original_feed->editItself(new_feed_data);
+void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent) {
+  RootItem *original_parent = original_node->parent();
 
-  if (result && original_parent != new_parent) {
+  if (original_parent != new_parent) {
     // User edited category and set it new parent item,
     // se we need to move the item in the model too.
-    int original_index_of_feed = original_parent->childItems().indexOf(original_feed);
+    int original_index_of_feed = original_parent->childItems().indexOf(original_node);
     int new_index_of_feed = new_parent->childCount();
 
     // Remove the original item from the model...
     beginRemoveRows(indexForItem(original_parent), original_index_of_feed, original_index_of_feed);
-    original_parent->removeChild(original_feed);
+    original_parent->removeChild(original_node);
     endRemoveRows();
 
     // ... and insert it under the new parent.
     beginInsertRows(indexForItem(new_parent), new_index_of_feed, new_index_of_feed);
-    new_parent->appendChild(original_feed);
+    new_parent->appendChild(original_node);
     endInsertRows();
   }
-
-  delete new_feed_data;
-  return result;
 }
 
 QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {

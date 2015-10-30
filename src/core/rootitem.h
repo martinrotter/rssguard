@@ -75,7 +75,7 @@ class RootItem {
       return false;
     }
 
-    virtual void edit() {
+    virtual void editViaDialog() {
     }
 
     virtual int row() const;

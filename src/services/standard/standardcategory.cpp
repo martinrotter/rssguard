@@ -126,7 +126,7 @@ QVariant StandardCategory::data(int column, int role) const {
   }
 }
 
-void StandardCategory::edit() {
+void StandardCategory::editViaDialog() {
   // TODO: fix passing of the model
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
                                                                                        qApp->mainForm());

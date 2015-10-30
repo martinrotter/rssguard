@@ -285,7 +285,7 @@ void FeedsView::editSelectedItem() {
   }
 
   if (selectedItem()->canBeEdited()) {
-    selectedItem()->edit();
+    selectedItem()->editViaDialog();
   }
   else {
     qApp->showGuiMessage(tr("Cannot edit item"),

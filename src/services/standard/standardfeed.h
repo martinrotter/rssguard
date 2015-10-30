@@ -66,7 +66,7 @@ class StandardFeed : public Feed {
       return true;
     }
 
-    void edit();
+    void editViaDialog();
 
     // Obtains data related to this feed.
     QVariant data(int column, int role) const;

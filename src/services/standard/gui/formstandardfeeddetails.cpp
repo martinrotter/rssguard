@@ -251,7 +251,13 @@ void FormStandardFeedDetails::apply() {
   }
   else {
     // Edit the feed.
-    if (m_feedsModel->editFeed(m_editableFeed, new_feed)) {
+    bool edited = m_editableFeed->editItself(new_feed);
+
+    if (edited) {
+      m_feedsModel->reassignNodeToNewParent(m_editableFeed, new_feed->parent());
+
+      // Remove new temporary feed data holder object.
+      delete new_feed;
       accept();
     }
     else {
@@ -264,8 +270,8 @@ void FormStandardFeedDetails::apply() {
 
 void FormStandardFeedDetails::guessFeed() {
   QPair<StandardFeed*, QNetworkReply::NetworkError> result =  StandardFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                      m_ui->m_txtUsername->lineEdit()->text(),
-                                                                      m_ui->m_txtPassword->lineEdit()->text());
+                                                                                      m_ui->m_txtUsername->lineEdit()->text(),
+                                                                                      m_ui->m_txtPassword->lineEdit()->text());
 
   if (result.first != NULL) {
     // Icon or whole feed was guessed.
@@ -308,8 +314,8 @@ void FormStandardFeedDetails::guessFeed() {
 
 void FormStandardFeedDetails::guessIconOnly() {
   QPair<StandardFeed*, QNetworkReply::NetworkError> result = StandardFeed::guessFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                     m_ui->m_txtUsername->lineEdit()->text(),
-                                                                     m_ui->m_txtPassword->lineEdit()->text());
+                                                                                     m_ui->m_txtUsername->lineEdit()->text(),
+                                                                                     m_ui->m_txtPassword->lineEdit()->text());
 
   if (result.first != NULL) {
     // Icon or whole feed was guessed.
@@ -476,7 +482,7 @@ void FormStandardFeedDetails::initialize() {
 }
 
 void FormStandardFeedDetails::loadCategories(const QList<StandardCategory*> categories,
-                                     RootItem *root_item) {
+                                             RootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

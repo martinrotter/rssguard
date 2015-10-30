@@ -41,9 +41,6 @@ typedef QPair<int, StandardFeed*> FeedAssignmentItem;
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
 
-    friend class StandardFeed;
-    friend class StandardCategory;
-
   public:
     // Constructors and destructors.
     explicit FeedsModel(QObject *parent = 0);
@@ -75,15 +72,13 @@ class FeedsModel : public QAbstractItemModel {
 
     // Standard category manipulators.
     bool addCategory(StandardCategory *category, RootItem *parent);
-    bool editCategory(StandardCategory *original_category, StandardCategory *new_category_data);
 
     // Standard feed manipulators.
     bool addFeed(StandardFeed *feed, RootItem *parent);
 
-    // New feed is just temporary feed, it is not added to the model.
-    // It is used to fetch its data to the original feed
-    // and the original feed is moved if needed.
-    bool editFeed(StandardFeed *original_feed, StandardFeed *new_feed_data);
+    // Checks if new parent node is different from one used by original node.
+    // If it is, then it reassigns original_node to new parent.
+    void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
 
     // Returns the list of feeds which should be updated
     // according to auto-update schedule.
