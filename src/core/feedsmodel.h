@@ -55,10 +55,6 @@ class FeedsModel : public QAbstractItemModel {
       return itemForIndex(index)->data(index.column(), role);
     }
 
-    QMimeData *mimeData(const QModelIndexList &indexes) const;
-    QStringList mimeTypes() const;
-    bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
-    Qt::DropActions supportedDropActions() const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
@@ -196,8 +192,6 @@ class FeedsModel : public QAbstractItemModel {
     void assembleFeeds(FeedAssignment feeds);
 
   signals:
-    void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
-
     // Emitted when model requests update of some feeds.
     void feedsUpdateRequested(const QList<Feed*> feeds);
 
