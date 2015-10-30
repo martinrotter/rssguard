@@ -18,7 +18,7 @@
 #include "services/abstract/serviceroot.h"
 
 
-ServiceRoot::ServiceRoot() {
+ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent) {
 }
 
 ServiceRoot::~ServiceRoot() {

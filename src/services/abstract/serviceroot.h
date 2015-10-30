@@ -18,11 +18,15 @@
 #ifndef SERVICEROOT_H
 #define SERVICEROOT_H
 
+#include "core/rootitem.h"
+
+
 // THIS IS the root node of the service.
-// TODO: Inherit proper base root class for this.
-class ServiceRoot {
+// NOTE: The root usually contains some core functionality of the
+// service like service account username/password etc.
+class ServiceRoot : public RootItem {
   public:
-    explicit ServiceRoot();
+    explicit ServiceRoot(RootItem *parent = NULL);
     virtual ~ServiceRoot();
 };
 

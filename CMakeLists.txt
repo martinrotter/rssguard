@@ -428,9 +428,11 @@ set(APP_SOURCES
   src/services/standard/gui/formstandardfeeddetails.cpp
   src/services/standard/gui/formstandardimportexport.cpp
   src/services/standard/standardserviceentrypoint.cpp
+  src/services/standard/standardserviceroot.cpp
 
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp
+  src/services/tt-rss/ttrssserviceroot.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp
