@@ -55,7 +55,6 @@ class FeedsModel : public QAbstractItemModel {
       return itemForIndex(index)->data(index.column(), role);
     }
 
-    Qt::ItemFlags flags(const QModelIndex &index) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
     QModelIndex parent(const QModelIndex &child) const;

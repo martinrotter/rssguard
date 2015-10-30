@@ -138,26 +138,6 @@ void FeedsModel::updateAutoUpdateStatus() {
   }
 }
 
-Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
-  Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
-  RootItem *item_for_index = itemForIndex(index);
-
-  switch (item_for_index->kind()) {
-    case RootItem::Bin:
-      return base_flags;
-
-    case RootItem::Cattegory:
-      return base_flags | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
-
-    case RootItem::Feeed:
-      return base_flags | Qt::ItemIsDragEnabled;
-
-    case RootItem::Root:
-    default:
-      return base_flags | Qt::ItemIsDropEnabled;
-  }
-}
-
 QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {
   if (orientation != Qt::Horizontal) {
     return QVariant();
