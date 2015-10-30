@@ -23,7 +23,7 @@
 #include <QPair>
 
 
-class Feed;
+class StandardFeed;
 
 // Represents results of batch feed updates.
 struct FeedDownloadResults {
@@ -55,7 +55,7 @@ class FeedDownloader : public QObject {
     // New messages are downloaded for each feed and they
     // are stored persistently in the database.
     // Appropriate signals are emitted.
-    void updateFeeds(const QList<Feed*> &feeds);
+    void updateFeeds(const QList<StandardFeed*> &feeds);
 
   signals:
     // Emitted if feed updates started.
@@ -69,7 +69,7 @@ class FeedDownloader : public QObject {
     // "Current" number indicates count of processed feeds
     // and "total" number indicates total number of feeds
     // which were in the initial queue.
-    void progress(Feed *feed, int current, int total);
+    void progress(StandardFeed *feed, int current, int total);
 };
 
 #endif // FEEDDOWNLOADER_H

@@ -25,9 +25,9 @@
 #include "miscellaneous/databasecleaner.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
-#include "core/feed.h"
 #include "core/feedsselection.h"
-#include "core/feedsimportexportmodel.h"
+#include "services/standard/standardfeed.h"
+#include "services/standard/standardfeedsimportexportmodel.h"
 #include "network-web/webbrowser.h"
 #include "gui/messagesview.h"
 #include "gui/feedsview.h"
@@ -252,7 +252,7 @@ void FeedMessageViewer::onFeedUpdatesStarted() {
   qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
 }
 
-void FeedMessageViewer::onFeedUpdatesProgress(Feed *feed, int current, int total) {
+void FeedMessageViewer::onFeedUpdatesProgress(StandardFeed *feed, int current, int total) {
   // Some feed got updated.
   m_feedsView->updateCountsOfParticularFeed(feed, true);
   qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
@@ -369,7 +369,7 @@ void FeedMessageViewer::createConnections() {
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
 
   // Downloader connections.
-  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<Feed*>)), this, SLOT(updateFeeds(QList<Feed*>)));
+  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)), this, SLOT(updateFeeds(QList<StandardFeed*>)));
 
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionCleanupDatabase,
@@ -548,7 +548,7 @@ void FeedMessageViewer::refreshVisualProperties() {
   m_toolBarMessages->setToolButtonStyle(button_style);
 }
 
-void FeedMessageViewer::updateFeeds(QList<Feed *> feeds) {
+void FeedMessageViewer::updateFeeds(QList<StandardFeed *> feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
                          tr("You cannot update all items because another another critical operation is ongoing."),
@@ -561,14 +561,14 @@ void FeedMessageViewer::updateFeeds(QList<Feed *> feeds) {
     m_feedDownloaderThread = new QThread();
 
     // Downloader setup.
-    qRegisterMetaType<QList<Feed*> >("QList<Feed*>");
+    qRegisterMetaType<QList<StandardFeed*> >("QList<Feed*>");
     m_feedDownloader->moveToThread(m_feedDownloaderThread);
 
-    connect(this, SIGNAL(feedsUpdateRequested(QList<Feed*>)), m_feedDownloader, SLOT(updateFeeds(QList<Feed*>)));
+    connect(this, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)), m_feedDownloader, SLOT(updateFeeds(QList<StandardFeed*>)));
     connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
     connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
     connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
-    connect(m_feedDownloader, SIGNAL(progress(Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(Feed*,int,int)));
+    connect(m_feedDownloader, SIGNAL(progress(StandardFeed*,int,int)), this, SLOT(onFeedUpdatesProgress(StandardFeed*,int,int)));
 
     // Connections are made, start the feed downloader thread.
     m_feedDownloaderThread->start();

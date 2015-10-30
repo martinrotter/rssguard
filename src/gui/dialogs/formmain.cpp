@@ -36,10 +36,10 @@
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formsettings.h"
 #include "gui/dialogs/formupdate.h"
-#include "gui/dialogs/formimportexport.h"
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
 #include "gui/notifications/notification.h"
+#include "services/standard/gui/formstandardimportexport.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -411,14 +411,14 @@ void FormMain::loadWebBrowserMenu(int index) {
 }
 
 void FormMain::exportFeeds() {  
-  QPointer<FormImportExport> form = new FormImportExport(this);
+  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this);
   form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
   delete form.data();
 }
 
 void FormMain::importFeeds() {
-  QPointer<FormImportExport> form = new FormImportExport(this);
+  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this);
   form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
   delete form.data();

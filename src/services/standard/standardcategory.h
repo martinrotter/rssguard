@@ -29,15 +29,15 @@ class FeedsModel;
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
-class Category : public RootItem {
+class StandardCategory : public RootItem {
     Q_DECLARE_TR_FUNCTIONS(Category)
 
   public:
     // Constructors and destructors
-    explicit Category(RootItem *parent_item = NULL);
-    explicit Category(const Category &other);
-    explicit Category(const QSqlRecord &record);
-    virtual ~Category();
+    explicit StandardCategory(RootItem *parent_item = NULL);
+    explicit StandardCategory(const StandardCategory &other);
+    explicit StandardCategory(const QSqlRecord &record);
+    virtual ~StandardCategory();
 
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
@@ -47,7 +47,7 @@ class Category : public RootItem {
     bool removeItself();
 
     bool addItself(RootItem *parent);
-    bool editItself(Category *new_category_data);
+    bool editItself(StandardCategory *new_category_data);
 
   private:
     void init();

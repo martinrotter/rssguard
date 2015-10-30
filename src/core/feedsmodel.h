@@ -26,23 +26,23 @@
 #include <QIcon>
 
 
-class Category;
-class Feed;
+class StandardCategory;
+class StandardFeed;
 class RecycleBin;
 class FeedsImportExportModel;
 class QTimer;
 
-typedef QList<QPair<int, Category*> > CategoryAssignment;
-typedef QPair<int, Category*> CategoryAssignmentItem;
+typedef QList<QPair<int, StandardCategory*> > CategoryAssignment;
+typedef QPair<int, StandardCategory*> CategoryAssignmentItem;
 
-typedef QList<QPair<int, Feed*> > FeedAssignment;
-typedef QPair<int, Feed*> FeedAssignmentItem;
+typedef QList<QPair<int, StandardFeed*> > FeedAssignment;
+typedef QPair<int, StandardFeed*> FeedAssignmentItem;
 
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
 
-    friend class Feed;
-    friend class Category;
+    friend class StandardFeed;
+    friend class StandardCategory;
 
   public:
     // Constructors and destructors.
@@ -79,57 +79,57 @@ class FeedsModel : public QAbstractItemModel {
     bool removeItem(const QModelIndex &index);
 
     // Standard category manipulators.
-    bool addCategory(Category *category, RootItem *parent);
-    bool editCategory(Category *original_category, Category *new_category_data);
+    bool addCategory(StandardCategory *category, RootItem *parent);
+    bool editCategory(StandardCategory *original_category, StandardCategory *new_category_data);
 
     // Standard feed manipulators.
-    bool addFeed(Feed *feed, RootItem *parent);
+    bool addFeed(StandardFeed *feed, RootItem *parent);
 
     // New feed is just temporary feed, it is not added to the model.
     // It is used to fetch its data to the original feed
     // and the original feed is moved if needed.
-    bool editFeed(Feed *original_feed, Feed *new_feed_data);
+    bool editFeed(StandardFeed *original_feed, StandardFeed *new_feed_data);
 
     // Returns the list of feeds which should be updated
     // according to auto-update schedule.
     // Variable "auto_update_now" is true, when global timeout
     // for scheduled auto-update was met and global auto-update strategy is enabled
     // so feeds with "default" auto-update strategy should be updated.
-    QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
+    QList<StandardFeed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
     // This is usually used for displaying whole feeds
     // in "newspaper" mode.
-    QList<Message> messagesForFeeds(const QList<Feed*> &feeds);
+    QList<Message> messagesForFeeds(const QList<StandardFeed*> &feeds);
 
     // Returns all categories, each pair
     // consists of ID of parent item and pointer to category.
-    QHash<int, Category*> allCategories();
+    QHash<int, StandardCategory*> allCategories();
 
     // Returns categories from the subtree with given root node, each pair
     // consists of ID of parent item and pointer to category.
-    QHash<int, Category*> categoriesForItem(RootItem *root);
+    QHash<int, StandardCategory*> categoriesForItem(RootItem *root);
 
     // Returns list of all feeds contained in the model.
-    QList<Feed*> allFeeds();
+    QList<StandardFeed*> allFeeds();
 
     // Get list of feeds from tree with particular item
     // as root. If root itself is a feed, then it is returned.
-    QList<Feed*> feedsForItem(RootItem *root);
+    QList<StandardFeed*> feedsForItem(RootItem *root);
 
     // Returns list of ALL CHILD feeds which belong to given parent indexes.
-    QList<Feed*> feedsForIndexes(const QModelIndexList &indexes);
+    QList<StandardFeed*> feedsForIndexes(const QModelIndexList &indexes);
 
     // Returns ALL CHILD feeds contained within single index.
-    QList<Feed*> feedsForIndex(const QModelIndex &index);
+    QList<StandardFeed*> feedsForIndex(const QModelIndex &index);
 
     // Returns pointer to feed if it lies on given index
     // or NULL if no feed lies on given index.
-    Feed *feedForIndex(const QModelIndex &index);
+    StandardFeed *feedForIndex(const QModelIndex &index);
 
     // Returns pointer to category if it lies on given index
     // or NULL if no category lies on given index.
-    Category *categoryForIndex(const QModelIndex &index) const;
+    StandardCategory *categoryForIndex(const QModelIndex &index) const;
 
     // Returns pointer to recycle bin if lies on given index
     // or NULL if no recycle bin lies on given index.
@@ -166,8 +166,8 @@ class FeedsModel : public QAbstractItemModel {
 
   public slots:
     // Feeds operations.
-    bool markFeedsRead(const QList<Feed*> &feeds, int read);
-    bool markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only);
+    bool markFeedsRead(const QList<StandardFeed*> &feeds, int read);
+    bool markFeedsDeleted(const QList<StandardFeed*> &feeds, int deleted, bool read_only);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.
@@ -185,7 +185,7 @@ class FeedsModel : public QAbstractItemModel {
   protected:
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
-    QStringList textualFeedIds(const QList<Feed*> &feeds);
+    QStringList textualFeedIds(const QList<StandardFeed*> &feeds);
 
     // Loads feed/categories from the database.
     void loadFromDatabase();
@@ -199,7 +199,7 @@ class FeedsModel : public QAbstractItemModel {
     void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
 
     // Emitted when model requests update of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
+    void feedsUpdateRequested(const QList<StandardFeed*> feeds);
 
   private:
     RootItem *m_rootItem;

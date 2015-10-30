@@ -18,33 +18,33 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
-#include "ui_formcategorydetails.h"
+#include "ui_formstandardcategorydetails.h"
 
 #include <QDialog>
 
 
 namespace Ui {
-  class FormCategoryDetails;
+  class FormStandardCategoryDetails;
 }
 
-class Category;
-class Category;
+class StandardCategory;
+class StandardCategory;
 class FeedsModel;
 class RootItem;
 class QMenu;
 class QAction;
 
-class FormCategoryDetails : public QDialog {
+class FormStandardCategoryDetails : public QDialog {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    explicit FormCategoryDetails(FeedsModel *model, QWidget *parent = 0);
-    virtual ~FormCategoryDetails();
+    explicit FormStandardCategoryDetails(FeedsModel *model, QWidget *parent = 0);
+    virtual ~FormStandardCategoryDetails();
 
   public slots:
     // Executes add/edit standard category dialog.
-    int exec(Category *input_category, RootItem *parent_to_select);
+    int exec(StandardCategory *input_category, RootItem *parent_to_select);
 
   protected slots:
     // Applies changes.
@@ -64,7 +64,7 @@ class FormCategoryDetails : public QDialog {
     void createConnections();
 
     // Sets the category which will be edited.
-    void setEditableCategory(Category *editable_category);
+    void setEditableCategory(StandardCategory *editable_category);
 
     // Initializes the dialog.
     void initialize();
@@ -72,11 +72,11 @@ class FormCategoryDetails : public QDialog {
     // Loads categories into the dialog + give root "category"
     // and make sure that no childs of input category (including)
     // input category are loaded.
-    void loadCategories(const QList<Category*> categories, RootItem *root_item, Category *input_category);
+    void loadCategories(const QList<StandardCategory*> categories, RootItem *root_item, StandardCategory *input_category);
 
   private:
-    Ui::FormCategoryDetails *m_ui;
-    Category *m_editableCategory;
+    Ui::FormStandardCategoryDetails *m_ui;
+    StandardCategory *m_editableCategory;
     FeedsModel *m_feedsModel;
 
     QMenu *m_iconMenu;

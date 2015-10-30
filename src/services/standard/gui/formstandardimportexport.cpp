@@ -15,9 +15,9 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/dialogs/formimportexport.h"
+#include "services/standard/gui/formstandardimportexport.h"
 
-#include "core/feedsimportexportmodel.h"
+#include "services/standard/standardfeedsimportexportmodel.h"
 #include "core/feedsmodel.h"
 #include "miscellaneous/application.h"
 #include "gui/feedmessageviewer.h"
@@ -28,7 +28,8 @@
 #include <QTextStream>
 
 
-FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormImportExport) {
+FormStandardImportExport::FormStandardImportExport(QWidget *parent)
+  : QDialog(parent), m_ui(new Ui::FormStandardImportExport) {
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
 
@@ -44,11 +45,11 @@ FormImportExport::FormImportExport(QWidget *parent) : QDialog(parent), m_ui(new 
   connect(m_ui->m_btnUncheckAllItems, SIGNAL(clicked()), m_model, SLOT(uncheckAllItems()));
 }
 
-FormImportExport::~FormImportExport() {
+FormStandardImportExport::~FormStandardImportExport() {
   delete m_ui;
 }
 
-void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
+void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
   m_model->setMode(mode);
 
   switch (mode) {
@@ -80,7 +81,7 @@ void FormImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
 }
 
-void FormImportExport::selectFile() {
+void FormStandardImportExport::selectFile() {
   switch (m_model->mode()) {
     case FeedsImportExportModel::Import:
       selectImportFile();
@@ -96,7 +97,7 @@ void FormImportExport::selectFile() {
   }
 }
 
-void FormImportExport::selectExportFile() {
+void FormStandardImportExport::selectExportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
 
   QString filter;
@@ -124,7 +125,7 @@ void FormImportExport::selectExportFile() {
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(selected_file.isEmpty());
 }
 
-void FormImportExport::selectImportFile() {
+void FormStandardImportExport::selectImportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
 
   QString filter;
@@ -148,7 +149,7 @@ void FormImportExport::selectImportFile() {
   }
 }
 
-void FormImportExport::parseImportFile(const QString &file_name) {
+void FormStandardImportExport::parseImportFile(const QString &file_name) {
   QFile input_file(file_name);
   QByteArray input_data;
 
@@ -186,7 +187,7 @@ void FormImportExport::parseImportFile(const QString &file_name) {
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(parsing_result);
 }
 
-void FormImportExport::performAction() {
+void FormStandardImportExport::performAction() {
   switch (m_model->mode()) {
     case FeedsImportExportModel::Import:
       importFeeds();
@@ -201,7 +202,7 @@ void FormImportExport::performAction() {
   }
 }
 
-void FormImportExport::exportFeeds() {
+void FormStandardImportExport::exportFeeds() {
   switch (m_conversionType) {
     case OPML20: {
       QByteArray result_data;
@@ -237,7 +238,7 @@ void FormImportExport::exportFeeds() {
   }
 }
 
-void FormImportExport::importFeeds() {
+void FormStandardImportExport::importFeeds() {
   QString output_message;
 
   if (qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->mergeModel(m_model, output_message)) {

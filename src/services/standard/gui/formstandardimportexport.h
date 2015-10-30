@@ -20,15 +20,15 @@
 
 #include <QDialog>
 
-#include "ui_formimportexport.h"
-#include "core/feedsimportexportmodel.h"
+#include "ui_formstandardimportexport.h"
+#include "services/standard/standardfeedsimportexportmodel.h"
 
 
 namespace Ui {
-  class FormExport;
+  class FormStandardImportExport;
 }
 
-class FormImportExport : public QDialog {
+class FormStandardImportExport : public QDialog {
     Q_OBJECT
 
   public:
@@ -37,8 +37,8 @@ class FormImportExport : public QDialog {
     };
 
     // Constructors.
-    explicit FormImportExport(QWidget *parent = 0);
-    virtual ~FormImportExport();
+    explicit FormStandardImportExport(QWidget *parent = 0);
+    virtual ~FormStandardImportExport();
 
     void setMode(const FeedsImportExportModel::Mode &mode);
 
@@ -54,7 +54,7 @@ class FormImportExport : public QDialog {
     void exportFeeds();
     void importFeeds();
 
-    Ui::FormImportExport *m_ui;
+    Ui::FormStandardImportExport *m_ui;
     ConversionType m_conversionType;
     FeedsImportExportModel *m_model;
 };

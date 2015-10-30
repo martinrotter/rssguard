@@ -17,7 +17,7 @@
 
 #include "core/feeddownloader.h"
 
-#include "core/feed.h"
+#include "services/standard/standardfeed.h"
 #include "definitions/definitions.h"
 
 #include <QThread>
@@ -32,7 +32,7 @@ FeedDownloader::~FeedDownloader() {
   qDebug("Destroying FeedDownloader instance.");
 }
 
-void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) { 
+void FeedDownloader::updateFeeds(const QList<StandardFeed*> &feeds) { 
   qDebug().nospace() << "Performing feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
 
   // Job starts now.

@@ -18,31 +18,31 @@
 #ifndef FORMSTANDARDFEEDDETAILS_H
 #define FORMSTANDARDFEEDDETAILS_H
 
-#include "ui_formfeeddetails.h"
-
 #include <QDialog>
+
+#include "ui_formstandardfeeddetails.h"
 
 
 namespace Ui {
-  class FormFeedDetails;
+  class FormStandardFeedDetails;
 }
 
 class FeedsModel;
-class Feed;
-class Category;
+class StandardFeed;
+class StandardCategory;
 class RootItem;
 
-class FormFeedDetails : public QDialog {
+class FormStandardFeedDetails : public QDialog {
     Q_OBJECT
 
   public:
     // Constructors and destructors.
-    explicit FormFeedDetails(FeedsModel *model, QWidget *parent = 0);
-    virtual ~FormFeedDetails();
+    explicit FormStandardFeedDetails(FeedsModel *model, QWidget *parent = 0);
+    virtual ~FormStandardFeedDetails();
 
   public slots:
     // Executes add/edit standard feed dialog.
-    int exec(Feed *input_feed, RootItem *parent_to_select);
+    int exec(StandardFeed *input_feed, RootItem *parent_to_select);
 
   protected slots:
     // Applies changes.
@@ -72,18 +72,18 @@ class FormFeedDetails : public QDialog {
     void createConnections();
 
     // Sets the feed which will be edited.
-    void setEditableFeed(Feed *editable_feed);
+    void setEditableFeed(StandardFeed *editable_feed);
 
     // Initializes the dialog.
     void initialize();
 
     // Loads categories into the dialog from the model.
-    void loadCategories(const QList<Category*> categories,
+    void loadCategories(const QList<StandardCategory*> categories,
                         RootItem *root_item);
 
   private:
-    Ui::FormFeedDetails *m_ui;
-    Feed *m_editableFeed;
+    Ui::FormStandardFeedDetails *m_ui;
+    StandardFeed *m_editableFeed;
     FeedsModel *m_feedsModel;
 
     QMenu *m_iconMenu;

@@ -15,12 +15,12 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "gui/dialogs/formcategorydetails.h"
+#include "services/standard/gui/formstandardcategorydetails.h"
 
 #include "definitions/definitions.h"
 #include "core/rootitem.h"
-#include "core/category.h"
 #include "core/feedsmodel.h"
+#include "services/standard/standardcategory.h"
 #include "miscellaneous/iconfactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
@@ -38,9 +38,7 @@
 #include <QFileDialog>
 
 
-FormCategoryDetails::FormCategoryDetails(FeedsModel *model,
-                                         QWidget *parent)
-  : QDialog(parent),
+FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model, QWidget *parent) : QDialog(parent),
     m_editableCategory(NULL),
     m_feedsModel(model)  {
   initialize();
@@ -51,11 +49,11 @@ FormCategoryDetails::FormCategoryDetails(FeedsModel *model,
   onDescriptionChanged(QString());
 }
 
-FormCategoryDetails::~FormCategoryDetails() {
+FormStandardCategoryDetails::~FormStandardCategoryDetails() {
   qDebug("Destroying FormCategoryDetails instance.");
 }
 
-void FormCategoryDetails::createConnections() {
+void FormStandardCategoryDetails::createConnections() {
   // General connections.
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(apply()));
   connect(m_ui->m_txtTitle->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onTitleChanged(QString)));
@@ -67,7 +65,7 @@ void FormCategoryDetails::createConnections() {
   connect(m_actionUseDefaultIcon, SIGNAL(triggered()), this, SLOT(onUseDefaultIcon()));
 }
 
-void FormCategoryDetails::setEditableCategory(Category *editable_category) {
+void FormStandardCategoryDetails::setEditableCategory(StandardCategory *editable_category) {
   m_editableCategory = editable_category;
 
   m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) editable_category->parent())));
@@ -76,7 +74,7 @@ void FormCategoryDetails::setEditableCategory(Category *editable_category) {
   m_ui->m_btnIcon->setIcon(editable_category->icon());
 }
 
-int FormCategoryDetails::exec(Category *input_category, RootItem *parent_to_select) {
+int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem *parent_to_select) {
   // Load categories.
   loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem(), input_category);
 
@@ -112,9 +110,9 @@ int FormCategoryDetails::exec(Category *input_category, RootItem *parent_to_sele
   return QDialog::exec();
 }
 
-void FormCategoryDetails::apply() {
+void FormStandardCategoryDetails::apply() {
   RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  Category *new_category = new Category();
+  StandardCategory *new_category = new StandardCategory();
 
   new_category->setTitle(m_ui->m_txtTitle->lineEdit()->text());
   new_category->setCreationDate(QDateTime::currentDateTime());
@@ -147,7 +145,7 @@ void FormCategoryDetails::apply() {
   }
 }
 
-void FormCategoryDetails::onTitleChanged(const QString &new_title){
+void FormStandardCategoryDetails::onTitleChanged(const QString &new_title){
   if (new_title.simplified().size() >= MIN_CATEGORY_NAME_LENGTH) {
     m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
     m_ui->m_txtTitle->setStatus(WidgetWithStatus::Ok, tr("Category name is ok."));
@@ -158,7 +156,7 @@ void FormCategoryDetails::onTitleChanged(const QString &new_title){
   }
 }
 
-void FormCategoryDetails::onDescriptionChanged(const QString &new_description) {
+void FormStandardCategoryDetails::onDescriptionChanged(const QString &new_description) {
   if (new_description.simplified().isEmpty()) {
     m_ui->m_txtDescription->setStatus(LineEditWithStatus::Warning, tr("Description is empty."));
   }
@@ -167,11 +165,11 @@ void FormCategoryDetails::onDescriptionChanged(const QString &new_description) {
   }
 }
 
-void FormCategoryDetails::onNoIconSelected() {
+void FormStandardCategoryDetails::onNoIconSelected() {
   m_ui->m_btnIcon->setIcon(QIcon());
 }
 
-void FormCategoryDetails::onLoadIconFromFile() {
+void FormStandardCategoryDetails::onLoadIconFromFile() {
   QFileDialog dialog(this, tr("Select icon file for the category"),
                      qApp->homeFolderPath(), tr("Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)"));
   dialog.setFileMode(QFileDialog::ExistingFile);
@@ -190,12 +188,12 @@ void FormCategoryDetails::onLoadIconFromFile() {
   }
 }
 
-void FormCategoryDetails::onUseDefaultIcon() {
+void FormStandardCategoryDetails::onUseDefaultIcon() {
   m_ui->m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
 }
 
-void FormCategoryDetails::initialize() {
-  m_ui = new Ui::FormCategoryDetails();
+void FormStandardCategoryDetails::initialize() {
+  m_ui = new Ui::FormStandardCategoryDetails();
   m_ui->setupUi(this);
 
   // Set text boxes.
@@ -241,14 +239,14 @@ void FormCategoryDetails::initialize() {
   m_ui->m_txtTitle->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormCategoryDetails::loadCategories(const QList<Category*> categories,
+void FormStandardCategoryDetails::loadCategories(const QList<StandardCategory*> categories,
                                          RootItem *root_item,
-                                         Category *input_category) {
+                                         StandardCategory *input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (Category *category, categories) {
+  foreach (StandardCategory *category, categories) {
     if (input_category != NULL && (category == input_category || category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so

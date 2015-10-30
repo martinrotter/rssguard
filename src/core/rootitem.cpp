@@ -17,8 +17,8 @@
 
 #include "core/rootitem.h"
 
-#include "core/category.h"
-#include "core/feed.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardfeed.h"
 #include "core/recyclebin.h"
 #include "miscellaneous/application.h"
 
@@ -118,12 +118,12 @@ RecycleBin *RootItem::toRecycleBin() {
   return static_cast<RecycleBin*>(this);
 }
 
-Category *RootItem::toCategory() {
-  return static_cast<Category*>(this);
+StandardCategory *RootItem::toCategory() {
+  return static_cast<StandardCategory*>(this);
 }
 
-Feed *RootItem::toFeed() {
-  return static_cast<Feed*>(this);
+StandardFeed *RootItem::toFeed() {
+  return static_cast<StandardFeed*>(this);
 }
 
 RootItem *RootItem::child(RootItem::Kind kind_of_child, const QString &identifier) {

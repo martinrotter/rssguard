@@ -24,8 +24,8 @@
 #include <QFont>
 
 class RecycleBin;
-class Category;
-class Feed;
+class StandardCategory;
+class StandardFeed;
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
@@ -183,8 +183,8 @@ class RootItem {
 
     // Converters
     RecycleBin *toRecycleBin();
-    Category *toCategory();
-    Feed *toFeed();
+    StandardCategory *toCategory();
+    StandardFeed *toFeed();
 
     // Compares two model items.
     static bool isEqual(RootItem *lhs, RootItem *rhs);

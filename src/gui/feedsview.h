@@ -28,8 +28,8 @@
 
 
 class FeedsProxyModel;
-class Feed;
-class Category;
+class StandardFeed;
+class StandardCategory;
 class QTimer;
 
 class FeedsView : public QTreeView {
@@ -53,14 +53,14 @@ class FeedsView : public QTreeView {
     
     // Returns list of selected/all feeds.
     // NOTE: This is recursive method which returns all descendants.
-    QList<Feed*> selectedFeeds() const;
-    QList<Feed*> allFeeds() const;
+    QList<StandardFeed*> selectedFeeds() const;
+    QList<StandardFeed*> allFeeds() const;
 
     // Returns pointers to selected feed/category if they are really
     // selected.
     RootItem *selectedItem() const;
-    Category *selectedCategory() const;
-    Feed *selectedFeed() const;
+    StandardCategory *selectedCategory() const;
+    StandardFeed *selectedFeed() const;
     RecycleBin *selectedRecycleBin() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
@@ -104,11 +104,11 @@ class FeedsView : public QTreeView {
 
     // Standard category manipulators.
     void addNewCategory();
-    void editCategory(Category *category);
+    void editCategory(StandardCategory *category);
 
     // Standard feed manipulators.
     void addNewFeed();
-    void editFeed(Feed *feed);
+    void editFeed(StandardFeed *feed);
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
@@ -124,7 +124,7 @@ class FeedsView : public QTreeView {
     void updateCountsOfAllFeeds(bool update_total_too);
 
     // Reloads counts for particular feed.
-    void updateCountsOfParticularFeed(Feed *feed, bool update_total_too);
+    void updateCountsOfParticularFeed(StandardFeed *feed, bool update_total_too);
 
     // Notifies other components about messages
     // counts.
@@ -168,7 +168,7 @@ class FeedsView : public QTreeView {
 
   signals:
     // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
+    void feedsUpdateRequested(const QList<StandardFeed*> feeds);
 
     // Emitted if counts of messages are changed.
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);

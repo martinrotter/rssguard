@@ -15,10 +15,10 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/feedsimportexportmodel.h"
+#include "services/standard/standardfeedsimportexportmodel.h"
 
-#include "core/feed.h"
-#include "core/category.h"
+#include "services/standard/standardfeed.h"
+#include "services/standard/standardcategory.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -111,7 +111,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
         }
 
         case RootItem::Feeed: {
-          Feed *child_feed = child_item->toFeed();
+          StandardFeed *child_feed = child_item->toFeed();
           QDomElement outline_feed = opml_document.createElement("outline");
           outline_feed.setAttribute(QSL("text"), child_feed->title());
           outline_feed.setAttribute(QSL("xmlUrl"), child_feed->url());
@@ -121,16 +121,16 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           outline_feed.setAttribute(QSL("rssguard:icon"), QString(qApp->icons()->toByteArray(child_feed->icon())));
 
           switch (child_feed->type()) {
-            case Feed::Rss0X:
-            case Feed::Rss2X:
+            case StandardFeed::Rss0X:
+            case StandardFeed::Rss2X:
               outline_feed.setAttribute(QSL("version"), QSL("RSS"));
               break;
 
-            case Feed::Rdf:
+            case StandardFeed::Rdf:
               outline_feed.setAttribute(QSL("version"), QSL("RSS1"));
               break;
 
-            case Feed::Atom10:
+            case StandardFeed::Atom10:
               outline_feed.setAttribute(QSL("version"), QSL("ATOM"));
               break;
 
@@ -192,23 +192,23 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           QString feed_description = child_element.attribute(QSL("description"));
           QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
-          Feed *new_feed = new Feed(active_model_item);
+          StandardFeed *new_feed = new StandardFeed(active_model_item);
           new_feed->setTitle(feed_title);
           new_feed->setDescription(feed_description);
           new_feed->setEncoding(feed_encoding);
           new_feed->setUrl(feed_url);
           new_feed->setCreationDate(QDateTime::currentDateTime());
           new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
-          new_feed->setAutoUpdateType(Feed::DefaultAutoUpdate);
+          new_feed->setAutoUpdateType(StandardFeed::DefaultAutoUpdate);
 
           if (feed_type == QL1S("RSS1")) {
-            new_feed->setType(Feed::Rdf);
+            new_feed->setType(StandardFeed::Rdf);
           }
           else if (feed_type == QL1S("ATOM")) {
-            new_feed->setType(Feed::Atom10);
+            new_feed->setType(StandardFeed::Atom10);
           }
           else {
-            new_feed->setType(Feed::Rss2X);
+            new_feed->setType(StandardFeed::Rss2X);
           }
 
           active_model_item->appendChild(new_feed);
@@ -230,7 +230,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
             }
           }
 
-          Category *new_category = new Category(active_model_item);
+          StandardCategory *new_category = new StandardCategory(active_model_item);
           new_category->setTitle(category_title);
           new_category->setIcon(category_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-category")) : category_icon);
           new_category->setCreationDate(QDateTime::currentDateTime());

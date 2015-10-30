@@ -347,10 +347,7 @@ set(APP_SOURCES
   src/gui/dialogs/formmain.cpp
   src/gui/dialogs/formsettings.cpp
   src/gui/dialogs/formabout.cpp
-  src/gui/dialogs/formcategorydetails.cpp
-  src/gui/dialogs/formfeeddetails.cpp
   src/gui/dialogs/formupdate.cpp
-  src/gui/dialogs/formimportexport.cpp
   src/gui/dialogs/formdatabasecleanup.cpp
   src/gui/dialogs/formbackupdatabasesettings.cpp
   src/gui/dialogs/formrestoredatabasesettings.cpp
@@ -412,14 +409,19 @@ set(APP_SOURCES
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
   src/core/feedsproxymodel.cpp
-  src/core/category.cpp
   src/core/rootitem.cpp
-  src/core/feed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
-  src/core/feedsimportexportmodel.cpp
   src/core/recyclebin.cpp
   src/core/feedsselection.cpp
+
+  # STANDARD feed service sources.
+  src/services/standard/standardfeed.cpp
+  src/services/standard/standardfeedsimportexportmodel.cpp
+  src/services/standard/standardcategory.cpp
+  src/services/standard/gui/formstandardcategorydetails.cpp
+  src/services/standard/gui/formstandardfeeddetails.cpp
+  src/services/standard/gui/formstandardimportexport.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp
@@ -462,9 +464,6 @@ set(APP_HEADERS
   src/gui/dialogs/formmain.h
   src/gui/dialogs/formsettings.h
   src/gui/dialogs/formabout.h
-  src/gui/dialogs/formcategorydetails.h
-  src/gui/dialogs/formfeeddetails.h
-  src/gui/dialogs/formimportexport.h
   src/gui/dialogs/formbackupdatabasesettings.h
   src/gui/dialogs/formrestoredatabasesettings.h
   src/gui/dialogs/formdatabasecleanup.h
@@ -518,7 +517,12 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
-  src/core/feedsimportexportmodel.h
+
+  # STANDARD service headers.
+  src/services/standard/standardfeedsimportexportmodel.h
+  src/services/standard/gui/formstandardcategorydetails.h
+  src/services/standard/gui/formstandardfeeddetails.h
+  src/services/standard/gui/formstandardimportexport.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h
@@ -548,13 +552,18 @@ set(APP_FORMS
   src/gui/dialogs/formmain.ui
   src/gui/dialogs/formsettings.ui
   src/gui/dialogs/formabout.ui
-  src/gui/dialogs/formcategorydetails.ui
-  src/gui/dialogs/formfeeddetails.ui
-  src/gui/toolbareditor.ui
-  src/gui/dialogs/formimportexport.ui
   src/gui/dialogs/formbackupdatabasesettings.ui
   src/gui/dialogs/formrestoredatabasesettings.ui
   src/gui/dialogs/formdatabasecleanup.ui
+
+  src/gui/toolbareditor.ui
+
+  # STANDARD service forms.
+  src/services/standard/gui/formstandardcategorydetails.ui
+  src/services/standard/gui/formstandardfeeddetails.ui
+  src/services/standard/gui/formstandardimportexport.ui
+
+  # NETWORK forms.
   src/network-web/downloadmanager.ui
   src/network-web/downloaditem.ui
 

@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/feed.h"
+#include "services/standard/standardfeed.h"
 
 #include "definitions/definitions.h"
 #include "core/parsingfactory.h"
@@ -38,7 +38,7 @@
 #include <QXmlStreamReader>
 
 
-void Feed::init() {
+void StandardFeed::init() {
   m_passwordProtected = false;
   m_username = QString();
   m_password = QString();
@@ -55,12 +55,12 @@ void Feed::init() {
   m_kind = RootItem::Feeed;
 }
 
-Feed::Feed(RootItem *parent_item)
+StandardFeed::StandardFeed(RootItem *parent_item)
   : RootItem(parent_item) {
   init();
 }
 
-Feed::Feed(const Feed &other)
+StandardFeed::StandardFeed(const StandardFeed &other)
   : RootItem(NULL) {
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
@@ -85,24 +85,24 @@ Feed::Feed(const Feed &other)
   m_description = other.description();
 }
 
-Feed::~Feed() {
+StandardFeed::~StandardFeed() {
   qDebug("Destroying Feed instance.");
 }
 
-int Feed::childCount() const {
+int StandardFeed::childCount() const {
   // Because feed has no children.
   return 0;
 }
 
-int Feed::countOfAllMessages() const {
+int StandardFeed::countOfAllMessages() const {
   return m_totalCount;
 }
 
-int Feed::countOfUnreadMessages() const {
+int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-QString Feed::typeToString(Feed::Type type) {
+QString StandardFeed::typeToString(StandardFeed::Type type) {
   switch (type) {
     case Atom10:
       return QSL("ATOM 1.0");
@@ -119,7 +119,7 @@ QString Feed::typeToString(Feed::Type type) {
   }
 }
 
-void Feed::updateCounts(bool including_total_count, bool update_feed_statuses) {
+void StandardFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
   QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
 
@@ -143,8 +143,8 @@ void Feed::updateCounts(bool including_total_count, bool update_feed_statuses) {
   }
 }
 
-void Feed::fetchMetadataForItself() {
-  QPair<Feed*,QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
+void StandardFeed::fetchMetadataForItself() {
+  QPair<StandardFeed*,QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
 
   if (metadata.first != NULL && metadata.second == QNetworkReply::NoError) {
     // Some properties are not updated when new metadata are fetched.
@@ -166,8 +166,8 @@ void Feed::fetchMetadataForItself() {
   }
 }
 
-QPair<Feed*,QNetworkReply::NetworkError> Feed::guessFeed(const QString &url, const QString &username, const QString &password) {
-  QPair<Feed*,QNetworkReply::NetworkError> result; result.first = NULL;
+QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const QString &url, const QString &username, const QString &password) {
+  QPair<StandardFeed*,QNetworkReply::NetworkError> result; result.first = NULL;
 
   QByteArray feed_contents;
   NetworkResult network_result = NetworkFactory::downloadFeedFile(url,
@@ -196,7 +196,7 @@ QPair<Feed*,QNetworkReply::NetworkError> Feed::guessFeed(const QString &url, con
     }
 
     if (result.first == NULL) {
-      result.first = new Feed();
+      result.first = new StandardFeed();
     }
 
     QTextCodec *custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
@@ -308,7 +308,7 @@ QPair<Feed*,QNetworkReply::NetworkError> Feed::guessFeed(const QString &url, con
   return result;
 }
 
-QVariant Feed::data(int column, int role) const {
+QVariant StandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -373,7 +373,7 @@ QVariant Feed::data(int column, int role) const {
                   "Network status: %6\n"
                   "Encoding: %4\n"
                   "Auto-update status: %5").arg(m_title,
-                                                Feed::typeToString(m_type),
+                                                StandardFeed::typeToString(m_type),
                                                 m_description.isEmpty() ? QString() : QString('\n') + m_description,
                                                 m_encoding,
                                                 auto_update_string,
@@ -415,7 +415,7 @@ QVariant Feed::data(int column, int role) const {
   }
 }
 
-int Feed::update() {
+int StandardFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
@@ -448,16 +448,16 @@ int Feed::update() {
   QList<Message> messages;
 
   switch (type()) {
-    case Feed::Rss0X:
-    case Feed::Rss2X:
+    case StandardFeed::Rss0X:
+    case StandardFeed::Rss2X:
       messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
       break;
 
-    case Feed::Rdf:
+    case StandardFeed::Rdf:
       messages = ParsingFactory::parseAsRDF(formatted_feed_contents);
       break;
 
-    case Feed::Atom10:
+    case StandardFeed::Atom10:
       messages = ParsingFactory::parseAsATOM10(formatted_feed_contents);
 
     default:
@@ -467,7 +467,7 @@ int Feed::update() {
   return updateMessages(messages);
 }
 
-bool Feed::removeItself() {
+bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
@@ -488,7 +488,7 @@ bool Feed::removeItself() {
   return query_remove.exec();
 }
 
-bool Feed::addItself(RootItem *parent) {
+bool StandardFeed::addItself(RootItem *parent) {
   // Now, add feed to persistent storage.
   QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_add_feed(database);
@@ -532,10 +532,10 @@ bool Feed::addItself(RootItem *parent) {
   return true;
 }
 
-bool Feed::editItself(Feed *new_feed_data) {
+bool StandardFeed::editItself(StandardFeed *new_feed_data) {
   QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
-  Feed *original_feed = this;
+  StandardFeed *original_feed = this;
   RootItem *new_parent = new_feed_data->parent();
 
   query_update_feed.setForwardOnly(true);
@@ -579,7 +579,7 @@ bool Feed::editItself(Feed *new_feed_data) {
   return true;
 }
 
-int Feed::updateMessages(const QList<Message> &messages) {
+int StandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   int updated_messages = 0;
   QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
@@ -706,11 +706,11 @@ int Feed::updateMessages(const QList<Message> &messages) {
   return updated_messages;
 }
 
-QNetworkReply::NetworkError Feed::networkError() const {
+QNetworkReply::NetworkError StandardFeed::networkError() const {
   return m_networkError;
 }
 
-Feed::Feed(const QSqlRecord &record) : RootItem(NULL) {
+StandardFeed::StandardFeed(const QSqlRecord &record) : RootItem(NULL) {
   m_kind = RootItem::Feeed;
 
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
@@ -723,7 +723,7 @@ Feed::Feed(const QSqlRecord &record) : RootItem(NULL) {
   setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
   setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
   setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
-  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
   updateCounts();
 }

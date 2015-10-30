@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/category.h"
+#include "services/standard/standardcategory.h"
 
 #include "definitions/definitions.h"
 #include "miscellaneous/databasefactory.h"
@@ -29,11 +29,11 @@
 #include <QSqlError>
 
 
-Category::Category(RootItem *parent_item) : RootItem(parent_item) {
+StandardCategory::StandardCategory(RootItem *parent_item) : RootItem(parent_item) {
   init();
 }
 
-Category::Category(const Category &other)
+StandardCategory::StandardCategory(const StandardCategory &other)
   : RootItem(NULL) {
   m_kind = other.kind();
   m_id = other.id();
@@ -45,15 +45,15 @@ Category::Category(const Category &other)
   m_parentItem = other.parent();
 }
 
-Category::~Category() {
+StandardCategory::~StandardCategory() {
   qDebug("Destroying Category instance.");
 }
 
-void Category::init() {
+void StandardCategory::init() {
   m_kind = RootItem::Cattegory;
 }
 
-QVariant Category::data(int column, int role) const {
+QVariant StandardCategory::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -121,7 +121,7 @@ QVariant Category::data(int column, int role) const {
   }
 }
 
-bool Category::removeItself() {
+bool StandardCategory::removeItself() {
   bool children_removed = true;
 
   // Remove all child items (feeds, categories.)
@@ -146,7 +146,7 @@ bool Category::removeItself() {
   }
 }
 
-bool Category::addItself(RootItem *parent) {
+bool StandardCategory::addItself(RootItem *parent) {
   // Now, add category to persistent storage.
   // Children are removed, remove this standard category too.
   QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
@@ -185,10 +185,10 @@ bool Category::addItself(RootItem *parent) {
   return true;
 }
 
-bool Category::editItself(Category *new_category_data) {
+bool StandardCategory::editItself(StandardCategory *new_category_data) {
   QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
-  Category *original_category = this;
+  StandardCategory *original_category = this;
   RootItem *new_parent = new_category_data->parent();
 
   query_update_category.setForwardOnly(true);
@@ -215,7 +215,7 @@ bool Category::editItself(Category *new_category_data) {
   return true;
 }
 
-Category::Category(const QSqlRecord &record) : RootItem(NULL) {
+StandardCategory::StandardCategory(const QSqlRecord &record) : RootItem(NULL) {
   init();
 
   setId(record.value(CAT_DB_ID_INDEX).toInt());

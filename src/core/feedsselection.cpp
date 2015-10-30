@@ -18,8 +18,8 @@
 #include "core/feedsselection.h"
 
 #include "core/rootitem.h"
-#include "core/category.h"
-#include "core/feed.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardfeed.h"
 #include "definitions/definitions.h"
 
 

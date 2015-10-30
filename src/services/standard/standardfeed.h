@@ -33,7 +33,7 @@ class FeedsModel;
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
-class Feed : public RootItem {
+class StandardFeed : public RootItem {
     Q_DECLARE_TR_FUNCTIONS(Feed)
 
   public:
@@ -63,10 +63,10 @@ class Feed : public RootItem {
     };
 
     // Constructors and destructors.
-    explicit Feed(RootItem *parent_item = NULL);
-    explicit Feed(const Feed &other);
-    explicit Feed(const QSqlRecord &record);
-    virtual ~Feed();
+    explicit StandardFeed(RootItem *parent_item = NULL);
+    explicit StandardFeed(const StandardFeed &other);
+    explicit StandardFeed(const QSqlRecord &record);
+    virtual ~StandardFeed();
 
     // Returns 0, feeds have no children.
     int childCount() const;
@@ -87,7 +87,7 @@ class Feed : public RootItem {
     // storage.
     bool removeItself();
     bool addItself(RootItem *parent);
-    bool editItself(Feed *new_feed_data);
+    bool editItself(StandardFeed *new_feed_data);
 
     // Other getters/setters.
     inline Type type() const {
@@ -180,7 +180,7 @@ class Feed : public RootItem {
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
     // or NULL feed.
-    static QPair<Feed*,QNetworkReply::NetworkError> guessFeed(const QString &url, const QString &username, const QString &password);
+    static QPair<StandardFeed*,QNetworkReply::NetworkError> guessFeed(const QString &url, const QString &username, const QString &password);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);
@@ -219,6 +219,6 @@ class Feed : public RootItem {
     QString m_url;
 };
 
-Q_DECLARE_METATYPE(Feed::Type)
+Q_DECLARE_METATYPE(StandardFeed::Type)
 
 #endif // FEEDSMODELFEED_H

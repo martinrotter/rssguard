@@ -18,21 +18,21 @@
 #include "gui/feedsview.h"
 
 #include "definitions/definitions.h"
-#include "core/feed.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "core/rootitem.h"
-#include "core/category.h"
 #include "core/recyclebin.h"
-#include "core/feed.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardfeed.h"
+#include "services/standard/standardfeed.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/dialogs/formcategorydetails.h"
-#include "gui/dialogs/formfeeddetails.h"
+#include "services/standard/gui/formstandardcategorydetails.h"
+#include "services/standard/gui/formstandardfeeddetails.h"
 
 #include <QMenu>
 #include <QHeaderView>
@@ -56,7 +56,7 @@ FeedsView::FeedsView(QWidget *parent)
 
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
-  connect(m_sourceModel, SIGNAL(feedsUpdateRequested(QList<Feed*>)), this, SIGNAL(feedsUpdateRequested(QList<Feed*>)));
+  connect(m_sourceModel, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)), this, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
@@ -73,18 +73,18 @@ void FeedsView::setSortingEnabled(bool enable) {
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 }
 
-QList<Feed*> FeedsView::selectedFeeds() const {
+QList<StandardFeed*> FeedsView::selectedFeeds() const {
   QModelIndex current_index = currentIndex();
 
   if (current_index.isValid()) {
     return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
   }
   else {
-    return QList<Feed*>();
+    return QList<StandardFeed*>();
   }
 }
 
-QList<Feed*> FeedsView::allFeeds() const {
+QList<StandardFeed*> FeedsView::allFeeds() const {
   return m_sourceModel->allFeeds();
 }
 
@@ -99,12 +99,12 @@ RootItem *FeedsView::selectedItem() const {
   return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
 }
 
-Category *FeedsView::selectedCategory() const {
+StandardCategory *FeedsView::selectedCategory() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->categoryForIndex(current_mapped);
 }
 
-Feed *FeedsView::selectedFeed() const {
+StandardFeed *FeedsView::selectedFeed() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->feedForIndex(current_mapped);
 }
@@ -118,7 +118,7 @@ void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
 
   // Iterate all categories and save their expand statuses.
-  foreach (Category *category, sourceModel()->allCategories().values()) {
+  foreach (StandardCategory *category, sourceModel()->allCategories().values()) {
     settings->setValue(GROUP(Categories),
                        QString::number(category->id()),
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
@@ -129,7 +129,7 @@ void FeedsView::loadExpandedStates() {
   Settings *settings = qApp->settings();
 
   // Iterate all categories and save their expand statuses.
-  foreach (Category *category, sourceModel()->allCategories().values()) {
+  foreach (StandardCategory *category, sourceModel()->allCategories().values()) {
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
                 settings->value(GROUP(Categories), QString::number(category->id()), true).toBool());
   }
@@ -204,7 +204,7 @@ void FeedsView::addNewCategory() {
     return;
   }
 
-  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(NULL, selectedItem());
 
@@ -214,8 +214,8 @@ void FeedsView::addNewCategory() {
   qApp->feedUpdateLock()->unlock();
 }
 
-void FeedsView::editCategory(Category *category) {
-  QPointer<FormCategoryDetails> form_pointer = new FormCategoryDetails(m_sourceModel, this);
+void FeedsView::editCategory(StandardCategory *category) {
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(category, NULL);
 
@@ -233,7 +233,7 @@ void FeedsView::addNewFeed() {
     return;
   }
 
-  QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(NULL, selectedItem());
 
@@ -243,8 +243,8 @@ void FeedsView::addNewFeed() {
   qApp->feedUpdateLock()->unlock();
 }
 
-void FeedsView::editFeed(Feed *feed) {
-  QPointer<FormFeedDetails> form_pointer = new FormFeedDetails(m_sourceModel, this);
+void FeedsView::editFeed(StandardFeed *feed) {
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
 
   form_pointer.data()->exec(feed, NULL);
 
@@ -302,8 +302,8 @@ void FeedsView::editSelectedItem() {
     return;
   }
 
-  Category *category;
-  Feed *feed;
+  StandardCategory *category;
+  StandardFeed *feed;
 
   if ((category = selectedCategory()) != NULL) {
     editCategory(category);
@@ -388,7 +388,7 @@ void FeedsView::markAllFeedsRead() {
 }
 
 void FeedsView::fetchMetadataForSelectedFeed() {
-  Feed *selected_feed = selectedFeed();
+  StandardFeed *selected_feed = selectedFeed();
 
   if (selected_feed != NULL) {
     selected_feed->fetchMetadataForItself();
@@ -429,7 +429,7 @@ void FeedsView::restoreRecycleBin() {
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
-  foreach (Feed *feed, selectedFeeds()) {
+  foreach (StandardFeed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -455,7 +455,7 @@ void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
-  foreach (Feed *feed, allFeeds()) {
+  foreach (StandardFeed *feed, allFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -469,7 +469,7 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   notifyWithCounts();
 }
 
-void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) {
+void FeedsView::updateCountsOfParticularFeed(StandardFeed *feed, bool update_total_too) {
   QModelIndex index = m_sourceModel->indexForItem(feed);
 
   if (index.isValid()) {
