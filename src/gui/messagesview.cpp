@@ -146,13 +146,6 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
     initializeContextMenu();
   }
 
-  if (sourceModel()->loadedSelection().mode() == FeedsSelection::MessagesFromRecycleBin) {
-    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
-  }
-  else {
-    m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
-  }
-
   m_contextMenu->exec(event->globalPos());
 }
 
@@ -166,8 +159,7 @@ void MessagesView::initializeContextMenu() {
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
                             qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages <<
-                            qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
+                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
 }
 
 void MessagesView::mousePressEvent(QMouseEvent *event) {

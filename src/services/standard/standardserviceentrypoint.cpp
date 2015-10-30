@@ -20,6 +20,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "services/standard/standardserviceroot.h"
 
 
 StandardServiceEntryPoint::StandardServiceEntryPoint() {
@@ -66,4 +67,12 @@ QString StandardServiceEntryPoint::author() {
 
 QIcon StandardServiceEntryPoint::icon() {
   return QIcon(APP_ICON_PATH);
+}
+
+QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() {
+  StandardServiceRoot *root = new StandardServiceRoot();
+  QList<ServiceRoot*> roots;
+
+  roots.append(root);
+  return roots;
 }

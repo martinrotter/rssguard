@@ -137,11 +137,6 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionFetchFeedMetadata;
   actions << m_ui->m_actionExpandCollapseFeedCategory;
 
-  // Add recycle bin actions.
-  actions << m_ui->m_actionRestoreRecycleBin;
-  actions << m_ui->m_actionEmptyRecycleBin;
-  actions << m_ui->m_actionRestoreSelectedMessagesFromRecycleBin;
-
   return actions;
 }
 
@@ -236,11 +231,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
   m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-layout-direction")));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-switch")));
-
-  // Recycle bin.
-  m_ui->m_actionEmptyRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
-  m_ui->m_actionRestoreRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
-  m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));

@@ -61,7 +61,6 @@ class FeedsView : public QTreeView {
     RootItem *selectedItem() const;
     StandardCategory *selectedCategory() const;
     Feed *selectedFeed() const;
-    RecycleBin *selectedRecycleBin() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void saveExpandedStates();
@@ -146,7 +145,6 @@ class FeedsView : public QTreeView {
     void initializeContextMenuCategories();
     void initializeContextMenuFeeds();
     void initializeContextMenuEmptySpace();
-    void initializeContextMenuRecycleBin();
 
     // Sets up appearance of this widget.
     void setupAppearance();
@@ -184,7 +182,6 @@ class FeedsView : public QTreeView {
     QMenu *m_contextMenuCategories;
     QMenu *m_contextMenuFeeds;
     QMenu *m_contextMenuEmptySpace;
-    QMenu *m_contextMenuRecycleBin;
 
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;

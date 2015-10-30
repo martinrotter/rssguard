@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "core/recyclebin.h"
+#include "services/standard/standardrecyclebin.h"
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -23,7 +23,7 @@
 #include <QSqlQuery>
 
 
-RecycleBin::RecycleBin(RootItem *parent)
+StandardRecycleBin::StandardRecycleBin(RootItem *parent)
   : RootItem(parent) {
   m_kind = RootItem::Bin;
   m_icon = qApp->icons()->fromTheme(QSL("folder-recycle-bin"));
@@ -35,27 +35,27 @@ RecycleBin::RecycleBin(RootItem *parent)
   updateCounts(true);
 }
 
-RecycleBin::~RecycleBin() {
+StandardRecycleBin::~StandardRecycleBin() {
   qDebug("Destroying RecycleBin instance.");
 }
 
-int RecycleBin::childCount() const {
+int StandardRecycleBin::childCount() const {
   return 0;
 }
 
-void RecycleBin::appendChild(RootItem *child) {
+void StandardRecycleBin::appendChild(RootItem *child) {
   Q_UNUSED(child)
 }
 
-int RecycleBin::countOfUnreadMessages() const {
+int StandardRecycleBin::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-int RecycleBin::countOfAllMessages() const {
+int StandardRecycleBin::countOfAllMessages() const {
   return m_totalCount;
 }
 
-QVariant RecycleBin::data(int column, int role) const {
+QVariant StandardRecycleBin::data(int column, int role) const {
   switch (role) {
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -108,7 +108,7 @@ QVariant RecycleBin::data(int column, int role) const {
   }
 }
 
-bool RecycleBin::empty() {
+bool StandardRecycleBin::empty() {
   QSqlDatabase db_handle = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -135,7 +135,7 @@ bool RecycleBin::empty() {
   }
 }
 
-bool RecycleBin::restore() {
+bool StandardRecycleBin::restore() {
   QSqlDatabase db_handle = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -162,7 +162,7 @@ bool RecycleBin::restore() {
   }
 }
 
-void RecycleBin::updateCounts(bool update_total_count) {
+void StandardRecycleBin::updateCounts(bool update_total_count) {
   QSqlDatabase database = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);

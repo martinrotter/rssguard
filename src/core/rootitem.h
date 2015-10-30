@@ -22,7 +22,7 @@
 #include <QDateTime>
 #include <QFont>
 
-class RecycleBin;
+class StandardRecycleBin;
 class StandardCategory;
 class StandardFeed;
 
@@ -192,7 +192,6 @@ class RootItem {
     }
 
     // Converters
-    RecycleBin *toRecycleBin();
     StandardCategory *toCategory();
     StandardFeed *toFeed();
 

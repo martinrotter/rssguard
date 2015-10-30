@@ -19,10 +19,10 @@
 
 #include "definitions/definitions.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/serviceroot.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
-#include "core/recyclebin.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -41,7 +41,7 @@
 
 
 FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_recycleBin(new RecycleBin()), m_autoUpdateTimer(new QTimer(this)) {
+  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -63,7 +63,7 @@ FeedsModel::FeedsModel(QObject *parent)
 
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
 
-  loadFromDatabase();
+  loadActivatedServiceAccounts();
 
   // Setup the timer.
   updateAutoUpdateStatus();
@@ -389,17 +389,6 @@ StandardCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const {
   }
 }
 
-RecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) const {
-  RootItem *item = itemForIndex(index);
-
-  if (item->kind() == RootItem::Bin) {
-    return item->toRecycleBin();
-  }
-  else {
-    return NULL;
-  }
-}
-
 QModelIndex FeedsModel::indexForItem(RootItem *item) const {
   if (item == NULL || item->kind() == RootItem::Root) {
     // Root item lies on invalid index.
@@ -539,70 +528,19 @@ void FeedsModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
-void FeedsModel::loadFromDatabase() {
+void FeedsModel::loadActivatedServiceAccounts() {
   // Delete all childs of the root node and clear them from the memory.
   qDeleteAll(m_rootItem->childItems());
   m_rootItem->clearChildren();
 
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-  CategoryAssignment categories;
-  FeedAssignment feeds;
+  foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
+    // Load all stored root nodes from the entry point and add those to the model.
+    QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
-  // Obtain data for categories from the database.
-  QSqlQuery query_categories(database);
-  query_categories.setForwardOnly(true);
-
-  if (!query_categories.exec(QSL("SELECT * FROM Categories;")) || query_categories.lastError().isValid()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.",
-           qPrintable(query_categories.lastError().text()));
-  }
-
-  while (query_categories.next()) {
-    CategoryAssignmentItem pair;
-    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new StandardCategory(query_categories.record());
-
-    categories << pair;
-  }
-
-  // All categories are now loaded.
-  QSqlQuery query_feeds(database);
-  query_feeds.setForwardOnly(true);
-
-  if (!query_feeds.exec(QSL("SELECT * FROM Feeds;")) || query_feeds.lastError().isValid()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
-           qPrintable(query_feeds.lastError().text()));
-  }
-
-  while (query_feeds.next()) {
-    // Process this feed.
-    StandardFeed::Type type = static_cast<StandardFeed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
-
-    switch (type) {
-      case StandardFeed::Atom10:
-      case StandardFeed::Rdf:
-      case StandardFeed::Rss0X:
-      case StandardFeed::Rss2X: {
-        FeedAssignmentItem pair;
-        pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = new StandardFeed(query_feeds.record());
-        pair.second->setType(type);
-
-        feeds << pair;
-        break;
-      }
-
-      default:
-        break;
+    foreach (ServiceRoot *root, roots) {
+      m_rootItem->appendChild(root);
     }
   }
-
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
-
-  // As the last item, add recycle bin, which is needed.
-  m_rootItem->appendChild(m_recycleBin);
 }
 
 QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
@@ -767,50 +705,4 @@ QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
   }
 
   return feeds;
-}
-
-void FeedsModel::assembleFeeds(FeedAssignment feeds) {
-  QHash<int, StandardCategory*> categories = allCategories();
-
-  foreach (const FeedAssignmentItem &feed, feeds) {
-    if (feed.first == NO_PARENT_CATEGORY) {
-      // This is top-level feed, add it to the root item.
-      m_rootItem->appendChild(feed.second);
-    }
-    else if (categories.contains(feed.first)) {
-      // This feed belongs to this category.
-      categories.value(feed.first)->appendChild(feed.second);
-    }
-    else {
-      qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
-    }
-  }
-}
-
-RecycleBin *FeedsModel::recycleBin() const {
-  return m_recycleBin;
-}
-
-void FeedsModel::assembleCategories(CategoryAssignment categories) {
-  QHash<int, RootItem*> assignments;
-  assignments.insert(NO_PARENT_CATEGORY, m_rootItem);
-
-  // Add top-level categories.
-  while (!categories.isEmpty()) {
-    for (int i = 0; i < categories.size(); i++) {
-      if (assignments.contains(categories.at(i).first)) {
-        // Parent category of this category is already added.
-        assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
-
-        // Now, added category can be parent for another categories, add it.
-        assignments.insert(categories.at(i).second->id(),
-                           categories.at(i).second);
-
-        // Remove the category from the list, because it was
-        // added to the final collection.
-        categories.removeAt(i);
-        i--;
-      }
-    }
-  }
 }

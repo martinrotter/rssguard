@@ -28,15 +28,9 @@
 
 class StandardCategory;
 class Feed;
-class RecycleBin;
+class StandardRecycleBin;
 class FeedsImportExportModel;
 class QTimer;
-
-typedef QList<QPair<int, StandardCategory*> > CategoryAssignment;
-typedef QPair<int, StandardCategory*> CategoryAssignmentItem;
-
-typedef QList<QPair<int, StandardFeed*> > FeedAssignment;
-typedef QPair<int, StandardFeed*> FeedAssignmentItem;
 
 class FeedsModel : public QAbstractItemModel {
     Q_OBJECT
@@ -121,10 +115,6 @@ class FeedsModel : public QAbstractItemModel {
     // or NULL if no category lies on given index.
     StandardCategory *categoryForIndex(const QModelIndex &index) const;
 
-    // Returns pointer to recycle bin if lies on given index
-    // or NULL if no recycle bin lies on given index.
-    RecycleBin *recycleBinForIndex(const QModelIndex &index) const;
-
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
     RootItem *itemForIndex(const QModelIndex &index) const;
@@ -143,9 +133,6 @@ class FeedsModel : public QAbstractItemModel {
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     bool mergeModel(FeedsImportExportModel *model, QString &output_message);
-
-    // Access to recycle bin.
-    RecycleBin *recycleBin() const;
 
     // Resets global auto-update intervals according to settings
     // and starts/stop the timer as needed.
@@ -178,12 +165,7 @@ class FeedsModel : public QAbstractItemModel {
     QStringList textualFeedIds(const QList<Feed*> &feeds);
 
     // Loads feed/categories from the database.
-    void loadFromDatabase();
-
-    // Takes lists of feeds/categories and assembles
-    // them into the tree structure.
-    void assembleCategories(CategoryAssignment categories);
-    void assembleFeeds(FeedAssignment feeds);
+    void loadActivatedServiceAccounts();
 
   signals:
     // Emitted when model requests update of some feeds.
@@ -191,7 +173,6 @@ class FeedsModel : public QAbstractItemModel {
 
   private:
     RootItem *m_rootItem;
-    RecycleBin *m_recycleBin;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;

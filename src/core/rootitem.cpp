@@ -19,7 +19,6 @@
 
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
-#include "core/recyclebin.h"
 #include "miscellaneous/application.h"
 
 #include <QVariant>
@@ -110,10 +109,6 @@ QList<RootItem*> RootItem::getRecursiveChildren() {
 
 bool RootItem::removeChild(RootItem *child) {
   return m_childItems.removeOne(child);
-}
-
-RecycleBin *RootItem::toRecycleBin() {
-  return static_cast<RecycleBin*>(this);
 }
 
 StandardCategory *RootItem::toCategory() {

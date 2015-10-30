@@ -37,6 +37,8 @@ class TtRssServiceEntryPoint : public ServiceEntryPoint {
     QString version();
     QString author();
     QIcon icon();
+
+    QList<ServiceRoot*> initializeSubtree();
 };
 
 #endif // TTRSSSERVICEENTRYPOINT_H

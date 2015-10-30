@@ -23,12 +23,12 @@
 #include <QCoreApplication>
 
 
-class RecycleBin : public RootItem {
-    Q_DECLARE_TR_FUNCTIONS(RecycleBin)
+class StandardRecycleBin : public RootItem {
+    Q_DECLARE_TR_FUNCTIONS(StandardRecycleBin)
 
   public:
-    explicit RecycleBin(RootItem *parent = NULL);
-    virtual ~RecycleBin();
+    explicit StandardRecycleBin(RootItem *parent = NULL);
+    virtual ~StandardRecycleBin();
 
     int childCount() const;
     void appendChild(RootItem *child);

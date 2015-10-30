@@ -176,14 +176,6 @@
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
    </widget>
-   <widget class="QMenu" name="m_menuRecycleBin">
-    <property name="title">
-     <string>&amp;Recycle bin</string>
-    </property>
-    <addaction name="m_actionEmptyRecycleBin"/>
-    <addaction name="m_actionRestoreRecycleBin"/>
-    <addaction name="m_actionRestoreSelectedMessagesFromRecycleBin"/>
-   </widget>
    <widget class="QMenu" name="m_menuServices">
     <property name="title">
      <string>&amp;Services</string>
@@ -197,7 +189,6 @@
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuServices"/>
    <addaction name="m_menuMessages"/>
-   <addaction name="m_menuRecycleBin"/>
    <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
@@ -604,21 +595,6 @@
   <action name="m_actionDisplayWiki">
    <property name="text">
     <string>Display &amp;wiki</string>
-   </property>
-  </action>
-  <action name="m_actionEmptyRecycleBin">
-   <property name="text">
-    <string>&amp;Empty recycle bin</string>
-   </property>
-  </action>
-  <action name="m_actionRestoreRecycleBin">
-   <property name="text">
-    <string>&amp;Restore all messages</string>
-   </property>
-  </action>
-  <action name="m_actionRestoreSelectedMessagesFromRecycleBin">
-   <property name="text">
-    <string>Restore &amp;selected messages</string>
    </property>
   </action>
   <action name="m_actionRestart">

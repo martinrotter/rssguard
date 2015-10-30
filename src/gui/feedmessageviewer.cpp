@@ -290,7 +290,6 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 void FeedMessageViewer::updateMessageButtonsAvailability() {
   bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
   bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
-  bool recycle_bin_selected = m_messagesView->sourceModel()->loadedSelection().mode() == FeedsSelection::MessagesFromRecycleBin;
   FormMain *form_main = qApp->mainForm();
 
   form_main->m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
@@ -301,8 +300,6 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
   form_main->m_ui->m_actionOpenSelectedSourceArticlesInternally->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
   form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
-
-  form_main->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setEnabled(recycle_bin_selected && atleast_one_message_selected);
 }
 
 void FeedMessageViewer::updateFeedButtonsAvailability() {
@@ -378,8 +375,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(switchSelectedMessagesImportance()));
   connect(form_main->m_ui->m_actionDeleteSelectedMessages,
           SIGNAL(triggered()), m_messagesView, SLOT(deleteSelectedMessages()));
-  connect(form_main->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin,
-          SIGNAL(triggered()), m_messagesView, SLOT(restoreSelectedMessages()));
   connect(form_main->m_ui->m_actionMarkSelectedMessagesAsRead,
           SIGNAL(triggered()), m_messagesView, SLOT(markSelectedMessagesRead()));
   connect(form_main->m_ui->m_actionMarkSelectedMessagesAsUnread,
@@ -418,10 +413,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
-  connect(form_main->m_ui->m_actionEmptyRecycleBin,
-          SIGNAL(triggered()), m_feedsView, SLOT(emptyRecycleBin()));
-  connect(form_main->m_ui->m_actionRestoreRecycleBin,
-          SIGNAL(triggered()), m_feedsView, SLOT(restoreRecycleBin()));
   connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsList,

@@ -23,12 +23,20 @@
 #include <QString>
 
 
+class ServiceRoot;
+
 // TOP LEVEL class which provides basic information about the "service"
 class ServiceEntryPoint {
   public:
     // Constructors.
     explicit ServiceEntryPoint();
     virtual ~ServiceEntryPoint();
+
+    // Performs initialization of all service accounts created using this entry
+    // point from persistent DB.
+    // Returns list of root nodes which will be afterwards added
+    // to the global feed model.
+    virtual QList<ServiceRoot*> initializeSubtree() = 0;
 
     // Must this service account be activated by default?
     // NOTE: This is true particularly for "standard" service

@@ -68,3 +68,7 @@ QString TtRssServiceEntryPoint::author() {
 QIcon TtRssServiceEntryPoint::icon() {
   return QIcon(APP_ICON_PATH);
 }
+
+QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
+  return QList<ServiceRoot*>();
+}

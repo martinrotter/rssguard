@@ -71,7 +71,6 @@ void TabWidget::openMainMenu() {
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuView);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFeeds);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuMessages);
-    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuRecycleBin);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuWebBrowser);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuTools);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuHelp);

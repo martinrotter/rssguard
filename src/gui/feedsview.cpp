@@ -21,7 +21,6 @@
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "core/rootitem.h"
-#include "core/recyclebin.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/systemtrayicon.h"
@@ -46,8 +45,7 @@ FeedsView::FeedsView(QWidget *parent)
   : QTreeView(parent),
     m_contextMenuCategories(NULL),
     m_contextMenuFeeds(NULL),
-    m_contextMenuEmptySpace(NULL),
-    m_contextMenuRecycleBin(NULL) {
+    m_contextMenuEmptySpace(NULL) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -106,11 +104,6 @@ StandardCategory *FeedsView::selectedCategory() const {
 Feed *FeedsView::selectedFeed() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->feedForIndex(current_mapped);
-}
-
-RecycleBin *FeedsView::selectedRecycleBin() const{
-  QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
-  return m_sourceModel->recycleBinForIndex(current_mapped);
 }
 
 void FeedsView::saveExpandedStates() {
@@ -398,7 +391,8 @@ void FeedsView::emptyRecycleBin() {
                        tr("You are about to permanenty delete all messages from your recycle bin."),
                        tr("Do you really want to empty your recycle bin?"),
                        QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes) {
-    m_sourceModel->recycleBin()->empty();
+    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
+    //m_sourceModel->recycleBin()->empty();
     updateCountsOfSelectedFeeds(true);
 
     emit feedsNeedToBeReloaded(true);
@@ -406,7 +400,8 @@ void FeedsView::emptyRecycleBin() {
 }
 
 void FeedsView::restoreRecycleBin() {
-  m_sourceModel->recycleBin()->restore();
+  // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
+  //m_sourceModel->recycleBin()->restore();
   updateCountsOfAllFeeds(true);
 
   emit feedsNeedToBeReloaded(true);
@@ -421,10 +416,14 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
 
   if (update_total_too) {
     // Number of items in recycle bin has changed.
-    m_sourceModel->recycleBin()->updateCounts(true);
+
+    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
+    //m_sourceModel->recycleBin()->updateCounts(true);
 
     // We need to refresh data for recycle bin too.
-    selected_indexes.append(m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
+
+    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
+    //selected_indexes.append(m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
   }
 
   // Make sure that selected view reloads changed indexes.
@@ -433,8 +432,10 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
 }
 
 void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
-  m_sourceModel->recycleBin()->updateCounts(update_total_too);
-  m_sourceModel->reloadChangedLayout(QModelIndexList() << m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
+
+  // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
+  //m_sourceModel->recycleBin()->updateCounts(update_total_too);
+  //m_sourceModel->reloadChangedLayout(QModelIndexList() << m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
   notifyWithCounts();
 }
 
@@ -445,7 +446,9 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
 
   if (update_total_too) {
     // Number of items in recycle bin has changed.
-    m_sourceModel->recycleBin()->updateCounts(true);
+
+    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
+    //m_sourceModel->recycleBin()->updateCounts(true);
   }
 
   // Make sure that all views reloads its data.
@@ -534,14 +537,6 @@ void FeedsView::initializeContextMenuEmptySpace() {
                                       qApp->mainForm()->m_ui->m_actionAddFeed);
 }
 
-void FeedsView::initializeContextMenuRecycleBin() {
-  m_contextMenuRecycleBin = new QMenu(tr("Context menu for recycle bin"), this);
-  m_contextMenuRecycleBin->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionRestoreRecycleBin <<
-                                      qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin <<
-                                      qApp->mainForm()->m_ui->m_actionEmptyRecycleBin);
-}
-
 void FeedsView::setupAppearance() {
 #if QT_VERSION >= 0x050000
   // Setup column resize strategies.
@@ -616,14 +611,6 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
       }
 
       m_contextMenuFeeds->exec(event->globalPos());
-    }
-    else if (clicked_item->kind() == RootItem::Bin) {
-      // Display context menu for recycle bin.
-      if (m_contextMenuRecycleBin == NULL) {
-        initializeContextMenuRecycleBin();
-      }
-
-      m_contextMenuRecycleBin->exec(event->globalPos());
     }
   }
   else {

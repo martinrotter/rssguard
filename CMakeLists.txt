@@ -412,7 +412,6 @@ set(APP_SOURCES
   src/core/rootitem.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
-  src/core/recyclebin.cpp
   src/core/feedsselection.cpp
 
   # ABSTRACT service sources.
@@ -429,6 +428,7 @@ set(APP_SOURCES
   src/services/standard/gui/formstandardimportexport.cpp
   src/services/standard/standardserviceentrypoint.cpp
   src/services/standard/standardserviceroot.cpp
+  src/services/standard/standardrecyclebin.cpp
 
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp
