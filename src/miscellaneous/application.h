@@ -30,6 +30,7 @@
 #include "gui/systemtrayicon.h"
 #include "gui/notifications/notification.h"
 #include "network-web/downloadmanager.h"
+#include "services/abstract/serviceentrypoint.h"
 
 #include <QList>
 
@@ -53,6 +54,8 @@ class Application : public QtSingleApplication {
     // Constructors and destructors.
     explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
+
+    QList<ServiceEntryPoint*> feedServices();
 
     QList<QAction*> userActions();
 
@@ -183,6 +186,7 @@ class Application : public QtSingleApplication {
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
     Mutex *m_updateFeedsLock;
+    QList<ServiceEntryPoint*> m_feedServices;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;
     SystemTrayIcon *m_trayIcon;

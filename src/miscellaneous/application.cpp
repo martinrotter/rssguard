@@ -28,6 +28,9 @@
 #include "exceptions/applicationexception.h"
 #include "adblock/adblockmanager.h"
 
+#include "services/standard/standardserviceentrypoint.h"
+#include "services/tt-rss/ttrssserviceentrypoint.h"
+
 #include <QSessionManager>
 #include <QThread>
 #include <QProcess>
@@ -35,7 +38,7 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_updateFeedsLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
+    m_updateFeedsLock(NULL), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
     m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false),
     m_notification(NULL) {
@@ -46,6 +49,17 @@ Application::Application(const QString &id, int &argc, char **argv)
 
 Application::~Application() {
   delete m_updateFeedsLock;
+  qDeleteAll(m_feedServices);
+}
+
+QList<ServiceEntryPoint*> Application::feedServices() {
+  if (m_feedServices.isEmpty()) {
+    // NOTE: All installed services create their entry points here.
+    m_feedServices.append(new StandardServiceEntryPoint());
+    m_feedServices.append(new TtRssServiceEntryPoint());
+  }
+
+  return m_feedServices;
 }
 
 QList<QAction*> Application::userActions() {

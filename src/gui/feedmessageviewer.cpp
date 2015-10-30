@@ -561,7 +561,7 @@ void FeedMessageViewer::updateFeeds(QList<StandardFeed *> feeds) {
     m_feedDownloaderThread = new QThread();
 
     // Downloader setup.
-    qRegisterMetaType<QList<StandardFeed*> >("QList<Feed*>");
+    qRegisterMetaType<QList<StandardFeed*> >("QList<StandardFeed*>");
     m_feedDownloader->moveToThread(m_feedDownloaderThread);
 
     connect(this, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)), m_feedDownloader, SLOT(updateFeeds(QList<StandardFeed*>)));

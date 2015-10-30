@@ -34,7 +34,7 @@ class FeedsModel;
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
 class StandardFeed : public RootItem {
-    Q_DECLARE_TR_FUNCTIONS(Feed)
+    Q_DECLARE_TR_FUNCTIONS(StandardFeed)
 
   public:
     // Describes possible types of feeds.

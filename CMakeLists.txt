@@ -415,6 +415,10 @@ set(APP_SOURCES
   src/core/recyclebin.cpp
   src/core/feedsselection.cpp
 
+  # ABSTRACT service sources.
+  src/services/abstract/serviceentrypoint.cpp
+  src/services/abstract/serviceroot.cpp
+
   # STANDARD feed service sources.
   src/services/standard/standardfeed.cpp
   src/services/standard/standardfeedsimportexportmodel.cpp
@@ -422,6 +426,10 @@ set(APP_SOURCES
   src/services/standard/gui/formstandardcategorydetails.cpp
   src/services/standard/gui/formstandardfeeddetails.cpp
   src/services/standard/gui/formstandardimportexport.cpp
+  src/services/standard/standardserviceentrypoint.cpp
+
+  # TT-RSS feed service sources.
+  src/services/tt-rss/ttrssserviceentrypoint.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp

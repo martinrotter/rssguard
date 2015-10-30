@@ -19,7 +19,6 @@
 #define ROOTITEM_H
 
 #include <QIcon>
-
 #include <QDateTime>
 #include <QFont>
 
