@@ -26,12 +26,17 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/simplecrypt/simplecrypt.h"
 #include "network-web/networkfactory.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
+#include "services/standard/gui/formstandardfeeddetails.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QVariant>
 #include <QTextCodec>
+#include <QPointer>
 #include <QDomDocument>
 #include <QDomNode>
 #include <QDomElement>
@@ -42,26 +47,22 @@ void StandardFeed::init() {
   m_passwordProtected = false;
   m_username = QString();
   m_password = QString();
-  m_status = Normal;
   m_networkError = QNetworkReply::NoError;
   m_type = Rss0X;
   m_totalCount = 0;
   m_unreadCount = 0;
-  m_autoUpdateType = DontAutoUpdate;
-  m_autoUpdateInitialInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
-  m_autoUpdateRemainingInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
   m_encoding = QString();
   m_url = QString();
   m_kind = RootItem::Feeed;
 }
 
 StandardFeed::StandardFeed(RootItem *parent_item)
-  : RootItem(parent_item) {
+  : Feed(parent_item) {
   init();
 }
 
 StandardFeed::StandardFeed(const StandardFeed &other)
-  : RootItem(NULL) {
+  : Feed(NULL) {
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
@@ -89,17 +90,21 @@ StandardFeed::~StandardFeed() {
   qDebug("Destroying Feed instance.");
 }
 
-int StandardFeed::childCount() const {
-  // Because feed has no children.
-  return 0;
-}
-
 int StandardFeed::countOfAllMessages() const {
   return m_totalCount;
 }
 
 int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
+}
+
+void StandardFeed::edit() {
+  // TODO: fix passing of the model
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+                                                                               qApp->mainForm());
+  form_pointer.data()->exec(this, NULL);
+
+  delete form_pointer.data();
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -710,7 +715,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
   return m_networkError;
 }
 
-StandardFeed::StandardFeed(const QSqlRecord &record) : RootItem(NULL) {
+StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   m_kind = RootItem::Feeed;
 
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());

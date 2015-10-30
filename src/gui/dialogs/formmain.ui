@@ -691,17 +691,17 @@
   </action>
   <action name="m_actionServiceAdd">
    <property name="text">
-    <string>&amp;Add new service</string>
+    <string>&amp;Add new service account</string>
    </property>
   </action>
   <action name="m_actionServiceDelete">
    <property name="text">
-    <string>&amp;Delete selected service</string>
+    <string>&amp;Delete selected service account</string>
    </property>
   </action>
   <action name="m_actionServiceEdit">
    <property name="text">
-    <string>&amp;Edit selected service</string>
+    <string>&amp;Edit selected service account</string>
    </property>
   </action>
  </widget>

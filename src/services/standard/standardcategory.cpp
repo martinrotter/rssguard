@@ -23,10 +23,15 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
 #include "core/feedsmodel.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
+#include "services/standard/gui/formstandardcategorydetails.h"
 
 #include <QVariant>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QPointer>
 
 
 StandardCategory::StandardCategory(RootItem *parent_item) : RootItem(parent_item) {
@@ -119,6 +124,16 @@ QVariant StandardCategory::data(int column, int role) const {
     default:
       return QVariant();
   }
+}
+
+void StandardCategory::edit() {
+  // TODO: fix passing of the model
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+                                                                                       qApp->mainForm());
+
+  form_pointer.data()->exec(this, NULL);
+
+  delete form_pointer.data();
 }
 
 bool StandardCategory::removeItself() {

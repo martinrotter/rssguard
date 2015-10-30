@@ -18,8 +18,9 @@
 #include "core/feedsmodel.h"
 
 #include "definitions/definitions.h"
-#include "services/standard/standardcategory.h"
+#include "services/abstract/feed.h"
 #include "services/standard/standardfeed.h"
+#include "services/standard/standardcategory.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "core/recyclebin.h"
 #include "miscellaneous/textfactory.h"
@@ -100,7 +101,7 @@ void FeedsModel::executeNextAutoUpdate() {
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
-  QList<StandardFeed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
+  QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
 
   qApp->feedUpdateLock()->unlock();
 
@@ -432,10 +433,10 @@ bool FeedsModel::editFeed(StandardFeed *original_feed, StandardFeed *new_feed_da
   return result;
 }
 
-QList<StandardFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
-  QList<StandardFeed*> feeds_for_update;
+QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
+  QList<Feed*> feeds_for_update;
 
-  foreach (StandardFeed *feed, allFeeds()) {
+  foreach (Feed *feed, allFeeds()) {
     switch (feed->autoUpdateType()) {
       case StandardFeed::DontAutoUpdate:
         // Do not auto-update this feed ever.
@@ -471,7 +472,7 @@ QList<StandardFeed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   return feeds_for_update;
 }
 
-QList<Message> FeedsModel::messagesForFeeds(const QList<StandardFeed*> &feeds) {
+QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   QList<Message> messages;
 
   QSqlDatabase database = qApp->database()->connection(objectName(),
@@ -482,7 +483,7 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<StandardFeed*> &feeds) {
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed;");
 
-  foreach (StandardFeed *feed, feeds) {
+  foreach (Feed *feed, feeds) {
     query_read_msg.bindValue(QSL(":feed"), feed->id());
 
     if (query_read_msg.exec()) {
@@ -567,7 +568,7 @@ QModelIndex FeedsModel::indexForItem(RootItem *item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() {
-  foreach (const StandardFeed *feed, allFeeds()) {
+  foreach (const Feed *feed, allFeeds()) {
     if (feed->status() == StandardFeed::NewMessages) {
       return true;
     }
@@ -664,11 +665,11 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   }
 }
 
-QStringList FeedsModel::textualFeedIds(const QList<StandardFeed*> &feeds) {
+QStringList FeedsModel::textualFeedIds(const QList<Feed*> &feeds) {
   QStringList stringy_ids;
   stringy_ids.reserve(feeds.size());
 
-  foreach (StandardFeed *feed, feeds) {
+  foreach (Feed *feed, feeds) {
     stringy_ids.append(QString::number(feed->id()));
   }
 
@@ -746,24 +747,24 @@ void FeedsModel::loadFromDatabase() {
   m_rootItem->appendChild(m_recycleBin);
 }
 
-QList<StandardFeed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
+QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
   RootItem *item = itemForIndex(index);
   return feedsForItem(item);
 }
 
-StandardFeed *FeedsModel::feedForIndex(const QModelIndex &index) {
+Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
   RootItem *item = itemForIndex(index);
 
   if (item->kind() == RootItem::Feeed) {
-    return item->toFeed();
+    return static_cast<Feed*>(item);
   }
   else {
     return NULL;
   }
 }
 
-QList<StandardFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
-  QList<StandardFeed*> feeds;
+QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
+  QList<Feed*> feeds;
 
   // Get selected feeds for each index.
   foreach (const QModelIndex &index, indexes) {
@@ -782,7 +783,7 @@ QList<StandardFeed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes)
   return feeds;
 }
 
-bool FeedsModel::markFeedsRead(const QList<StandardFeed*> &feeds, int read) {
+bool FeedsModel::markFeedsRead(const QList<Feed *> &feeds, int read) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -817,7 +818,7 @@ bool FeedsModel::markFeedsRead(const QList<StandardFeed*> &feeds, int read) {
   }
 }
 
-bool FeedsModel::markFeedsDeleted(const QList<StandardFeed*> &feeds, int deleted, bool read_only) {
+bool FeedsModel::markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -893,13 +894,13 @@ QHash<int, StandardCategory*> FeedsModel::categoriesForItem(RootItem *root) {
   return categories;
 }
 
-QList<StandardFeed*> FeedsModel::allFeeds() {
+QList<Feed*> FeedsModel::allFeeds() {
   return feedsForItem(m_rootItem);
 }
 
-QList<StandardFeed*> FeedsModel::feedsForItem(RootItem *root) {
+QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
   QList<RootItem*> children = root->getRecursiveChildren();
-  QList<StandardFeed*> feeds;
+  QList<Feed*> feeds;
 
   foreach (RootItem *child, children) {
     if (child->kind() == RootItem::Feeed) {

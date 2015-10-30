@@ -67,6 +67,17 @@ class RootItem {
       child->setParent(this);
     }
 
+    virtual bool canBeEdited() {
+      return false;
+    }
+
+    virtual bool canBeDeleted() {
+      return false;
+    }
+
+    virtual void edit() {
+    }
+
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
 

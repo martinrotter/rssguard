@@ -42,6 +42,16 @@ class StandardCategory : public RootItem {
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
 
+    bool canBeEdited() {
+      return true;
+    }
+
+    bool canBeDeleted() {
+      return true;
+    }
+
+    void edit();
+
     // Removes category and all its children from persistent
     // database.
     bool removeItself();

@@ -17,9 +17,20 @@
 
 #include "services/abstract/feed.h"
 
+#include "definitions/definitions.h"
 
-Feed::Feed() {
+
+Feed::Feed(RootItem *parent) : RootItem(parent) {
+  m_status = Normal;
+  m_autoUpdateType = DontAutoUpdate;
+  m_autoUpdateInitialInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
+  m_autoUpdateRemainingInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
 }
 
 Feed::~Feed() {
+}
+
+int Feed::childCount() const {
+  // Because feed has no children.
+  return 0;
 }

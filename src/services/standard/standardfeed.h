@@ -18,7 +18,7 @@
 #ifndef FEEDSMODELFEED_H
 #define FEEDSMODELFEED_H
 
-#include "core/rootitem.h"
+#include "services/abstract/feed.h"
 
 #include <QMetaType>
 #include <QDateTime>
@@ -33,7 +33,7 @@ class FeedsModel;
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
-class StandardFeed : public RootItem {
+class StandardFeed : public Feed {
     Q_DECLARE_TR_FUNCTIONS(StandardFeed)
 
   public:
@@ -46,30 +46,11 @@ class StandardFeed : public RootItem {
       Atom10  = 3
     };
 
-    // Specifies the auto-update strategy for the feed.
-    enum AutoUpdateType {
-      DontAutoUpdate      = 0,
-      DefaultAutoUpdate   = 1,
-      SpecificAutoUpdate  = 2
-    };
-
-    // Specifies the actual "status" of the feed.
-    // For example if it has new messages, error
-    // occurred, and so on.
-    enum Status {
-      Normal        = 0,
-      NewMessages   = 1,
-      NetworkError  = 2
-    };
-
     // Constructors and destructors.
     explicit StandardFeed(RootItem *parent_item = NULL);
     explicit StandardFeed(const StandardFeed &other);
     explicit StandardFeed(const QSqlRecord &record);
     virtual ~StandardFeed();
-
-    // Returns 0, feeds have no children.
-    int childCount() const;
 
     // Getters/setters for count of messages.
     // NOTE: For feeds, counts are stored internally
@@ -77,11 +58,24 @@ class StandardFeed : public RootItem {
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 
+    bool canBeEdited() {
+      return true;
+    }
+
+    bool canBeDeleted() {
+      return true;
+    }
+
+    void edit();
+
     // Obtains data related to this feed.
     QVariant data(int column, int role) const;
 
     // Perform fetching of new messages. Returns number of newly updated messages.
     int update();
+
+    // Updates counts of all/unread messages for this feed.
+    void updateCounts(bool including_total_count = true, bool update_feed_statuses = true);
 
     // Removes this standard feed from persistent
     // storage.
@@ -138,41 +132,6 @@ class StandardFeed : public RootItem {
       m_url = url;
     }
 
-    inline int autoUpdateInitialInterval() const {
-      return m_autoUpdateInitialInterval;
-    }
-
-    inline void setAutoUpdateInitialInterval(int auto_update_interval) {
-      // If new initial auto-update interval is set, then
-      // we should reset time that remains to the next auto-update.
-      m_autoUpdateInitialInterval = auto_update_interval;
-      m_autoUpdateRemainingInterval = auto_update_interval;
-    }
-
-    inline AutoUpdateType autoUpdateType() const {
-      return m_autoUpdateType;
-    }
-
-    inline void setAutoUpdateType(const AutoUpdateType &autoUpdateType) {
-      m_autoUpdateType = autoUpdateType;
-    }
-
-    inline int autoUpdateRemainingInterval() const {
-      return m_autoUpdateRemainingInterval;
-    }
-
-    inline void setAutoUpdateRemainingInterval(int autoUpdateRemainingInterval) {
-      m_autoUpdateRemainingInterval = autoUpdateRemainingInterval;
-    }
-
-    inline Status status() const {
-      return m_status;
-    }
-
-    inline void setStatus(const Status &status) {
-      m_status = status;
-    }
-
     QNetworkReply::NetworkError networkError() const;
 
     // Tries to guess feed hidden under given URL
@@ -186,9 +145,7 @@ class StandardFeed : public RootItem {
     static QString typeToString(Type type);
 
   public slots:
-    // Updates counts of all/unread messages for this feed.
-    void updateCounts(bool including_total_count = true, bool update_feed_statuses = true);
-
+    // Fetches metadata for the feed.
     void fetchMetadataForItself();
 
   protected:
@@ -205,15 +162,10 @@ class StandardFeed : public RootItem {
     QString m_username;
     QString m_password;
 
-    Status m_status;
-    QNetworkReply::NetworkError m_networkError;
     Type m_type;
+    QNetworkReply::NetworkError m_networkError;
     int m_totalCount;
     int m_unreadCount;
-
-    AutoUpdateType m_autoUpdateType;
-    int m_autoUpdateInitialInterval;
-    int m_autoUpdateRemainingInterval;
 
     QString m_encoding;
     QString m_url;

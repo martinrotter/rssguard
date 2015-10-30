@@ -22,15 +22,15 @@
 #include "core/feedsproxymodel.h"
 #include "core/rootitem.h"
 #include "core/recyclebin.h"
-#include "services/standard/standardcategory.h"
-#include "services/standard/standardfeed.h"
-#include "services/standard/standardfeed.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/systemtrayicon.h"
 #include "gui/messagebox.h"
 #include "gui/styleditemdelegatewithoutfocus.h"
 #include "gui/dialogs/formmain.h"
+#include "services/abstract/feed.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardfeed.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 
@@ -56,7 +56,7 @@ FeedsView::FeedsView(QWidget *parent)
 
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
-  connect(m_sourceModel, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)), this, SIGNAL(feedsUpdateRequested(QList<StandardFeed*>)));
+  connect(m_sourceModel, SIGNAL(feedsUpdateRequested(QList<Feed*>)), this, SIGNAL(feedsUpdateRequested(QList<Feed*>)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
@@ -73,18 +73,18 @@ void FeedsView::setSortingEnabled(bool enable) {
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 }
 
-QList<StandardFeed*> FeedsView::selectedFeeds() const {
+QList<Feed*> FeedsView::selectedFeeds() const {
   QModelIndex current_index = currentIndex();
 
   if (current_index.isValid()) {
     return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
   }
   else {
-    return QList<StandardFeed*>();
+    return QList<Feed*>();
   }
 }
 
-QList<StandardFeed*> FeedsView::allFeeds() const {
+QList<Feed*> FeedsView::allFeeds() const {
   return m_sourceModel->allFeeds();
 }
 
@@ -104,7 +104,7 @@ StandardCategory *FeedsView::selectedCategory() const {
   return m_sourceModel->categoryForIndex(current_mapped);
 }
 
-StandardFeed *FeedsView::selectedFeed() const {
+Feed *FeedsView::selectedFeed() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->feedForIndex(current_mapped);
 }
@@ -214,14 +214,6 @@ void FeedsView::addNewCategory() {
   qApp->feedUpdateLock()->unlock();
 }
 
-void FeedsView::editCategory(StandardCategory *category) {
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
-
-  form_pointer.data()->exec(category, NULL);
-
-  delete form_pointer.data();
-}
-
 void FeedsView::addNewFeed() {
   if (!qApp->feedUpdateLock()->tryLock()) {
     // Lock was not obtained because
@@ -241,14 +233,6 @@ void FeedsView::addNewFeed() {
 
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
-}
-
-void FeedsView::editFeed(StandardFeed *feed) {
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
-
-  form_pointer.data()->exec(feed, NULL);
-
-  delete form_pointer.data();
 }
 
 void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
@@ -297,19 +281,19 @@ void FeedsView::editSelectedItem() {
     qApp->showGuiMessage(tr("Cannot edit item"),
                          tr("Selected item cannot be edited because another critical operation is ongoing."),
                          QSystemTrayIcon::Warning, qApp->mainForm(), true);
-
     // Thus, cannot delete and quit the method.
     return;
   }
 
-  StandardCategory *category;
-  StandardFeed *feed;
-
-  if ((category = selectedCategory()) != NULL) {
-    editCategory(category);
+  if (selectedItem()->canBeEdited()) {
+    selectedItem()->edit();
   }
-  else if ((feed = selectedFeed()) != NULL) {
-    editFeed(feed);
+  else {
+    qApp->showGuiMessage(tr("Cannot edit item"),
+                         tr("Selected item cannot be edited, this is not (yet?) supported."),
+                         QSystemTrayIcon::Warning,
+                         qApp->mainForm(),
+                         true);
   }
 
   // Changes are done, unlock the update master lock.
@@ -388,7 +372,8 @@ void FeedsView::markAllFeedsRead() {
 }
 
 void FeedsView::fetchMetadataForSelectedFeed() {
-  StandardFeed *selected_feed = selectedFeed();
+  // TODO: fix
+  StandardFeed *selected_feed = (StandardFeed*) selectedFeed();
 
   if (selected_feed != NULL) {
     selected_feed->fetchMetadataForItself();
@@ -429,7 +414,7 @@ void FeedsView::restoreRecycleBin() {
 }
 
 void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
-  foreach (StandardFeed *feed, selectedFeeds()) {
+  foreach (Feed *feed, selectedFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -455,7 +440,7 @@ void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
-  foreach (StandardFeed *feed, allFeeds()) {
+  foreach (Feed *feed, allFeeds()) {
     feed->updateCounts(update_total_too);
   }
 
@@ -469,7 +454,7 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
   notifyWithCounts();
 }
 
-void FeedsView::updateCountsOfParticularFeed(StandardFeed *feed, bool update_total_too) {
+void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) {
   QModelIndex index = m_sourceModel->indexForItem(feed);
 
   if (index.isValid()) {

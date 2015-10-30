@@ -28,7 +28,7 @@
 
 
 class FeedsProxyModel;
-class StandardFeed;
+class Feed;
 class StandardCategory;
 class QTimer;
 
@@ -53,14 +53,14 @@ class FeedsView : public QTreeView {
     
     // Returns list of selected/all feeds.
     // NOTE: This is recursive method which returns all descendants.
-    QList<StandardFeed*> selectedFeeds() const;
-    QList<StandardFeed*> allFeeds() const;
+    QList<Feed*> selectedFeeds() const;
+    QList<Feed*> allFeeds() const;
 
     // Returns pointers to selected feed/category if they are really
     // selected.
     RootItem *selectedItem() const;
     StandardCategory *selectedCategory() const;
-    StandardFeed *selectedFeed() const;
+    Feed *selectedFeed() const;
     RecycleBin *selectedRecycleBin() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
@@ -104,11 +104,9 @@ class FeedsView : public QTreeView {
 
     // Standard category manipulators.
     void addNewCategory();
-    void editCategory(StandardCategory *category);
 
     // Standard feed manipulators.
     void addNewFeed();
-    void editFeed(StandardFeed *feed);
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
@@ -124,7 +122,7 @@ class FeedsView : public QTreeView {
     void updateCountsOfAllFeeds(bool update_total_too);
 
     // Reloads counts for particular feed.
-    void updateCountsOfParticularFeed(StandardFeed *feed, bool update_total_too);
+    void updateCountsOfParticularFeed(Feed *feed, bool update_total_too);
 
     // Notifies other components about messages
     // counts.
@@ -168,7 +166,7 @@ class FeedsView : public QTreeView {
 
   signals:
     // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<StandardFeed*> feeds);
+    void feedsUpdateRequested(const QList<Feed*> feeds);
 
     // Emitted if counts of messages are changed.
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);

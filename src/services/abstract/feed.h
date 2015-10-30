@@ -21,10 +21,78 @@
 #include "core/rootitem.h"
 
 
+// Base class for "feed" nodes.
 class Feed : public RootItem {
   public:
-    explicit Feed();
+    // Specifies the auto-update strategy for the feed.
+    enum AutoUpdateType {
+      DontAutoUpdate      = 0,
+      DefaultAutoUpdate   = 1,
+      SpecificAutoUpdate  = 2
+    };
+
+    // Specifies the actual "status" of the feed.
+    // For example if it has new messages, error
+    // occurred, and so on.
+    enum Status {
+      Normal        = 0,
+      NewMessages   = 1,
+      NetworkError  = 2
+    };
+
+    // Constructors.
+    explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();
+
+    // Returns 0, feeds have no children.
+    int childCount() const;
+
+    // Performs synchronous update and returns number of newly updated messages.
+    virtual int update() = 0;
+
+    // Updates counts of all/unread messages for this feed.
+    virtual void updateCounts(bool including_total_count = true, bool update_feed_statuses = true) = 0;
+
+    inline int autoUpdateInitialInterval() const {
+      return m_autoUpdateInitialInterval;
+    }
+
+    inline void setAutoUpdateInitialInterval(int auto_update_interval) {
+      // If new initial auto-update interval is set, then
+      // we should reset time that remains to the next auto-update.
+      m_autoUpdateInitialInterval = auto_update_interval;
+      m_autoUpdateRemainingInterval = auto_update_interval;
+    }
+
+    inline AutoUpdateType autoUpdateType() const {
+      return m_autoUpdateType;
+    }
+
+    inline void setAutoUpdateType(const AutoUpdateType &autoUpdateType) {
+      m_autoUpdateType = autoUpdateType;
+    }
+
+    inline int autoUpdateRemainingInterval() const {
+      return m_autoUpdateRemainingInterval;
+    }
+
+    inline void setAutoUpdateRemainingInterval(int autoUpdateRemainingInterval) {
+      m_autoUpdateRemainingInterval = autoUpdateRemainingInterval;
+    }
+
+    inline Status status() const {
+      return m_status;
+    }
+
+    inline void setStatus(const Status &status) {
+      m_status = status;
+    }
+
+  protected:
+    Status m_status;
+    AutoUpdateType m_autoUpdateType;
+    int m_autoUpdateInitialInterval;
+    int m_autoUpdateRemainingInterval;
 };
 
 #endif // FEED_H

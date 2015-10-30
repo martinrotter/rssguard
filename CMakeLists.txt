@@ -417,6 +417,7 @@ set(APP_SOURCES
 
   # ABSTRACT service sources.
   src/services/abstract/serviceentrypoint.cpp
+  src/services/abstract/feed.cpp
   src/services/abstract/serviceroot.cpp
 
   # STANDARD feed service sources.
