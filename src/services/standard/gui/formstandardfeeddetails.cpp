@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/feedsmodel.h"
 #include "core/rootitem.h"
+#include "services/standard/standardserviceroot.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "miscellaneous/textfactory.h"
@@ -39,10 +40,10 @@
 #include <QMimeData>
 
 
-FormStandardFeedDetails::FormStandardFeedDetails(FeedsModel *model, QWidget *parent)
+FormStandardFeedDetails::FormStandardFeedDetails(StandardServiceRoot *service_root, QWidget *parent)
   : QDialog(parent),
     m_editableFeed(NULL),
-    m_feedsModel(model) {
+    m_serviceRoot(service_root) {
   initialize();
   createConnections();
 
@@ -60,7 +61,7 @@ FormStandardFeedDetails::~FormStandardFeedDetails() {
 
 int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_select) {
   // Load categories.
-  loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem());
+  loadCategories(m_serviceRoot->allCategories().values(), m_serviceRoot);
 
   if (input_feed == NULL) {
     // User is adding new category.
@@ -77,10 +78,10 @@ int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_
     }
 
     if (parent_to_select != NULL) {
-      if (parent_to_select->kind() == RootItem::Cattegory) {
+      if (parent_to_select->kind() == RootItemKind::Category) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
-      else if (parent_to_select->kind() == RootItem::Feeed) {
+      else if (parent_to_select->kind() == RootItemKind::Feed) {
         int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
         if (target_item >= 0) {
@@ -240,10 +241,12 @@ void FormStandardFeedDetails::apply() {
 
   if (m_editableFeed == NULL) {
     // Add the feed.
-    if (m_feedsModel->addFeed(new_feed, parent)) {
+    if (new_feed->addItself(parent)) {
+      m_serviceRoot->feedsModel()->assignNodeToNewParent(new_feed, parent);
       accept();
     }
     else {
+      delete new_feed;
       qApp->showGuiMessage(tr("Cannot add feed"),
                            tr("Feed was not added due to error."),
                            QSystemTrayIcon::Critical, this, true);
@@ -254,7 +257,7 @@ void FormStandardFeedDetails::apply() {
     bool edited = m_editableFeed->editItself(new_feed);
 
     if (edited) {
-      m_feedsModel->reassignNodeToNewParent(m_editableFeed, new_feed->parent());
+      m_serviceRoot->feedsModel()->reassignNodeToNewParent(m_editableFeed, new_feed->parent());
 
       // Remove new temporary feed data holder object.
       delete new_feed;

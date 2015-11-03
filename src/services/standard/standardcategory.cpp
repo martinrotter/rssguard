@@ -34,12 +34,12 @@
 #include <QPointer>
 
 
-StandardCategory::StandardCategory(RootItem *parent_item) : RootItem(parent_item) {
+StandardCategory::StandardCategory(RootItem *parent_item) : Category(parent_item) {
   init();
 }
 
 StandardCategory::StandardCategory(const StandardCategory &other)
-  : RootItem(NULL) {
+  : Category(NULL) {
   m_kind = other.kind();
   m_id = other.id();
   m_title = other.title();
@@ -55,7 +55,7 @@ StandardCategory::~StandardCategory() {
 }
 
 void StandardCategory::init() {
-  m_kind = RootItem::Cattegory;
+  m_kind = RootItemKind::Category;
 }
 
 QVariant StandardCategory::data(int column, int role) const {
@@ -127,13 +127,16 @@ QVariant StandardCategory::data(int column, int role) const {
 }
 
 void StandardCategory::editViaDialog() {
-  // TODO: fix passing of the model
+  // TODO: předávat service root.
+/*
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
                                                                                        qApp->mainForm());
+
 
   form_pointer.data()->exec(this, NULL);
 
   delete form_pointer.data();
+  */
 }
 
 bool StandardCategory::removeItself() {
@@ -230,7 +233,7 @@ bool StandardCategory::editItself(StandardCategory *new_category_data) {
   return true;
 }
 
-StandardCategory::StandardCategory(const QSqlRecord &record) : RootItem(NULL) {
+StandardCategory::StandardCategory(const QSqlRecord &record) : Category(NULL) {
   init();
 
   setId(record.value(CAT_DB_ID_INDEX).toInt());

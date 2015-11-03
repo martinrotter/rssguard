@@ -96,7 +96,7 @@ RootItem *FeedsView::selectedItem() const {
   return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
 }
 
-StandardCategory *FeedsView::selectedCategory() const {
+Category *FeedsView::selectedCategory() const {
   QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
   return m_sourceModel->categoryForIndex(current_mapped);
 }
@@ -109,22 +109,27 @@ Feed *FeedsView::selectedFeed() const {
 void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
 
+  // TODO: doědlat
+
   // Iterate all categories and save their expand statuses.
-  foreach (StandardCategory *category, sourceModel()->allCategories().values()) {
+
+  /*foreach (Category *category, sourceModel()->allCategories().values()) {
     settings->setValue(GROUP(Categories),
                        QString::number(category->id()),
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
-  }
+  }*/
 }
 
 void FeedsView::loadExpandedStates() {
   Settings *settings = qApp->settings();
 
+  // TODO: doědlat
+
   // Iterate all categories and save their expand statuses.
-  foreach (StandardCategory *category, sourceModel()->allCategories().values()) {
+  /*foreach (Category *category, sourceModel()->allCategories().values()) {
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
                 settings->value(GROUP(Categories), QString::number(category->id()), true).toBool());
-  }
+  }*/
 }
 
 void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
@@ -183,48 +188,6 @@ void FeedsView::clearSelectedFeeds() {
 
 void FeedsView::clearAllFeeds() {
   setAllFeedsClearStatus(1);
-}
-
-void FeedsView::addNewCategory() {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    // Lock was not obtained because
-    // it is used probably by feed updater or application
-    // is quitting.
-    qApp->showGuiMessage(tr("Cannot add standard category"),
-                         tr("You cannot add new standard category now because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
-    return;
-  }
-
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(m_sourceModel, this);
-
-  form_pointer.data()->exec(NULL, selectedItem());
-
-  delete form_pointer.data();
-
-  // Changes are done, unlock the update master lock.
-  qApp->feedUpdateLock()->unlock();
-}
-
-void FeedsView::addNewFeed() {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    // Lock was not obtained because
-    // it is used probably by feed updater or application
-    // is quitting.
-    qApp->showGuiMessage(tr("Cannot add standard feed"),
-                         tr("You cannot add new standard feed now because another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
-    return;
-  }
-
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(m_sourceModel, this);
-
-  form_pointer.data()->exec(NULL, selectedItem());
-
-  delete form_pointer.data();
-
-  // Changes are done, unlock the update master lock.
-  qApp->feedUpdateLock()->unlock();
 }
 
 void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
@@ -594,7 +557,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
     QModelIndex mapped_index = model()->mapToSource(clicked_index);
     RootItem *clicked_item = sourceModel()->itemForIndex(mapped_index);
 
-    if (clicked_item->kind() == RootItem::Cattegory) {
+    if (clicked_item->kind() == RootItemKind::Category) {
       // Display context menu for categories.
       if (m_contextMenuCategories == NULL) {
         // Context menu is not initialized, initialize.
@@ -603,7 +566,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
 
       m_contextMenuCategories->exec(event->globalPos());
     }
-    else if (clicked_item->kind() == RootItem::Feeed) {
+    else if (clicked_item->kind() == RootItemKind::Feed) {
       // Display context menu for feeds.
       if (m_contextMenuFeeds == NULL) {
         // Context menu is not initialized, initialize.

@@ -73,7 +73,6 @@ class FeedsImportExportModel : public QAbstractItemModel {
     QHash<RootItem*, Qt::CheckState> m_checkStates;
     RootItem *m_rootItem;
 
-    // When it's true, then
     bool m_recursiveChange;
     Mode m_mode;
 };

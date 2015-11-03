@@ -17,10 +17,11 @@
 
 #include "services/abstract/serviceroot.h"
 
+#include "core/feedsmodel.h"
 
-ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent) {
+
+ServiceRoot::ServiceRoot(FeedsModel *feeds_model, RootItem *parent) : RootItem(parent), m_feedsModel(feeds_model) {
 }
 
 ServiceRoot::~ServiceRoot() {
 }
-

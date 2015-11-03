@@ -25,7 +25,7 @@
 
 
 RootItem::RootItem(RootItem *parent_item)
-  : m_kind(RootItem::Root),
+  : m_kind(RootItemKind::Root),
     m_id(NO_PARENT_CATEGORY),
     m_title(QString()),
     m_description(QString()),
@@ -77,8 +77,9 @@ int RootItem::countOfAllMessages() const {
 QList<RootItem*> RootItem::getRecursiveChildren() {
   QList<RootItem*> children;
 
-  if (kind() == RootItem::Feeed) {
-    // Root itself is a FEED.
+  if (childCount() == 0) {
+    // Root itself has no children, it is either feed or
+    // empty category?
     children.append(this);
   }
   else {
@@ -89,14 +90,14 @@ QList<RootItem*> RootItem::getRecursiveChildren() {
 
     // Iterate all nested categories.
     while (!traversable_items.isEmpty()) {
-      RootItem *active_category = traversable_items.takeFirst();
+      RootItem *active_item = traversable_items.takeFirst();
 
-      foreach (RootItem *child, active_category->childItems()) {
-        if (child->kind() == RootItem::Feeed) {
-          // This child is feed.
+      foreach (RootItem *child, active_item->childItems()) {
+        if (child->childCount() == 0) {
+          // This child is feed or empty category.
           children.append(child);
         }
-        else if (child->kind() == RootItem::Cattegory) {
+        else {
           // This child is category, add its child feeds too.
           traversable_items.append(child);
         }
@@ -111,25 +112,12 @@ bool RootItem::removeChild(RootItem *child) {
   return m_childItems.removeOne(child);
 }
 
-StandardCategory *RootItem::toCategory() {
-  return static_cast<StandardCategory*>(this);
+Category *RootItem::toCategory() {
+  return static_cast<Category*>(this);
 }
 
-StandardFeed *RootItem::toFeed() {
-  return static_cast<StandardFeed*>(this);
-}
-
-RootItem *RootItem::child(RootItem::Kind kind_of_child, const QString &identifier) {
-  foreach (RootItem *child, childItems()) {
-    if (child->kind() == kind_of_child) {
-      if ((kind_of_child == Cattegory && child->title() == identifier) ||
-          (kind_of_child == Feeed && child->toFeed()->url() == identifier)) {
-        return child;
-      }
-    }
-  }
-
-  return NULL;
+Feed *RootItem::toFeed() {
+  return static_cast<Feed*>(this);
 }
 
 int RootItem::countOfUnreadMessages() const {

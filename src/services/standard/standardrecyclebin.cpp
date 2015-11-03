@@ -25,7 +25,7 @@
 
 StandardRecycleBin::StandardRecycleBin(RootItem *parent)
   : RootItem(parent) {
-  m_kind = RootItem::Bin;
+  m_kind = RootItemKind::Bin;
   m_icon = qApp->icons()->fromTheme(QSL("folder-recycle-bin"));
   m_id = ID_RECYCLE_BIN;
   m_title = tr("Recycle bin");

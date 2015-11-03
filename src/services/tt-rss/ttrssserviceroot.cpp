@@ -20,9 +20,10 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
+#include "core/feedsmodel.h"
 
 
-TtRssServiceRoot::TtRssServiceRoot(RootItem *parent) : ServiceRoot(parent) {
+TtRssServiceRoot::TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent) : ServiceRoot(feeds_model, parent) {
   // TODO: nadpis se bude měnit podle nastavení uživatelského
   // jména a serveru tohoto ttrss učtu
   m_title = qApp->system()->getUsername() + "@ttrss";

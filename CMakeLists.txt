@@ -417,6 +417,7 @@ set(APP_SOURCES
   # ABSTRACT service sources.
   src/services/abstract/serviceentrypoint.cpp
   src/services/abstract/feed.cpp
+  src/services/abstract/category.cpp
   src/services/abstract/serviceroot.cpp
 
   # STANDARD feed service sources.
@@ -429,6 +430,7 @@ set(APP_SOURCES
   src/services/standard/standardserviceentrypoint.cpp
   src/services/standard/standardserviceroot.cpp
   src/services/standard/standardrecyclebin.cpp
+  src/services/standard/standarditem.cpp
 
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp

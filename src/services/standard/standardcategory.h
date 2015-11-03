@@ -18,7 +18,7 @@
 #ifndef FEEDSMODELCATEGORY_H
 #define FEEDSMODELCATEGORY_H
 
-#include "core/rootitem.h"
+#include "services/abstract/category.h"
 
 #include <QSqlRecord>
 #include <QCoreApplication>
@@ -29,8 +29,8 @@ class FeedsModel;
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
-class StandardCategory : public RootItem {
-    Q_DECLARE_TR_FUNCTIONS(Category)
+class StandardCategory : public Category {
+    Q_DECLARE_TR_FUNCTIONS(StandardCategory)
 
   public:
     // Constructors and destructors

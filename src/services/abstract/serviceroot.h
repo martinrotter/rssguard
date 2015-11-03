@@ -21,13 +21,22 @@
 #include "core/rootitem.h"
 
 
+class FeedsModel;
+
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
 class ServiceRoot : public RootItem {
   public:
-    explicit ServiceRoot(RootItem *parent = NULL);
+    explicit ServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~ServiceRoot();
+
+    inline FeedsModel *feedsModel() const {
+      return m_feedsModel;
+    }
+
+  protected:
+    FeedsModel *m_feedsModel;
 };
 
 #endif // SERVICEROOT_H

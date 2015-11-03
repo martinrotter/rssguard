@@ -20,13 +20,14 @@
 #include "definitions/definitions.h"
 #include "core/rootitem.h"
 #include "core/feedsmodel.h"
-#include "services/standard/standardcategory.h"
 #include "miscellaneous/iconfactory.h"
 #include "gui/feedsview.h"
 #include "gui/baselineedit.h"
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
 #include "gui/dialogs/formmain.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardserviceroot.h"
 
 #include <QLineEdit>
 #include <QTextEdit>
@@ -38,9 +39,8 @@
 #include <QFileDialog>
 
 
-FormStandardCategoryDetails::FormStandardCategoryDetails(FeedsModel *model, QWidget *parent) : QDialog(parent),
-    m_editableCategory(NULL),
-    m_feedsModel(model)  {
+FormStandardCategoryDetails::FormStandardCategoryDetails(StandardServiceRoot *service_root, QWidget *parent)
+  : QDialog(parent), m_editableCategory(NULL), m_serviceRoot(service_root)  {
   initialize();
   createConnections();
 
@@ -76,7 +76,7 @@ void FormStandardCategoryDetails::setEditableCategory(StandardCategory *editable
 
 int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem *parent_to_select) {
   // Load categories.
-  loadCategories(m_feedsModel->allCategories().values(), m_feedsModel->rootItem(), input_category);
+  loadCategories(m_serviceRoot->allCategories().values(), m_serviceRoot, input_category);
 
   if (input_category == NULL) {
     // User is adding new category.
@@ -88,10 +88,10 @@ int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem
 
     // Load parent from suggested item.
     if (parent_to_select != NULL) {
-      if (parent_to_select->kind() == RootItem::Cattegory) {
+      if (parent_to_select->kind() == RootItemKind::Category) {
         m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select)));
       }
-      else if (parent_to_select->kind() == RootItem::Feeed) {
+      else if (parent_to_select->kind() == RootItemKind::Feed) {
         int target_item = m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) parent_to_select->parent()));
 
         if (target_item >= 0) {
@@ -122,10 +122,12 @@ void FormStandardCategoryDetails::apply() {
 
   if (m_editableCategory == NULL) {
     // Add the category.
-    if (m_feedsModel->addCategory(new_category, parent)) {
+    if (new_category->addItself(parent)) {
+      m_serviceRoot->feedsModel()->assignNodeToNewParent(new_category, parent);
       accept();
     }
     else {
+      delete new_category;
       qApp->showGuiMessage(tr("Cannot add category"),
                            tr("Category was not added due to error."),
                            QSystemTrayIcon::Critical,
@@ -136,7 +138,7 @@ void FormStandardCategoryDetails::apply() {
     bool edited = m_editableCategory->editItself(new_category);
 
     if (edited) {
-      m_feedsModel->reassignNodeToNewParent(m_editableCategory, new_category->parent());
+      m_serviceRoot->feedsModel()->reassignNodeToNewParent(m_editableCategory, new_category->parent());
 
       // Remove new temporary feed data holder object.
       delete new_category;
@@ -245,8 +247,8 @@ void FormStandardCategoryDetails::initialize() {
 }
 
 void FormStandardCategoryDetails::loadCategories(const QList<StandardCategory*> categories,
-                                         RootItem *root_item,
-                                         StandardCategory *input_category) {
+                                                 RootItem *root_item,
+                                                 StandardCategory *input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

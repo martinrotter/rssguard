@@ -214,7 +214,9 @@ void WebBrowser::onIconChanged() {
 
 void WebBrowser::addFeedFromWebsite(const QString &feed_link) {
   qApp->clipboard()->setText(feed_link);
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->addNewFeed();
+
+  // TODO: dodělat
+  //qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->addNewFeed();
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {

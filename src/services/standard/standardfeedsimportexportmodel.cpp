@@ -99,7 +99,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
       }
 
       switch (child_item->kind()) {
-        case RootItem::Cattegory: {
+        case RootItemKind::Category: {
           QDomElement outline_category = opml_document.createElement(QSL("outline"));
           outline_category.setAttribute(QSL("text"), child_item->title());
           outline_category.setAttribute(QSL("description"), child_item->description());
@@ -110,8 +110,8 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
           break;
         }
 
-        case RootItem::Feeed: {
-          StandardFeed *child_feed = child_item->toFeed();
+        case RootItemKind::Feed: {
+          StandardFeed *child_feed = static_cast<StandardFeed*>(child_item);
           QDomElement outline_feed = opml_document.createElement("outline");
           outline_feed.setAttribute(QSL("text"), child_feed->title());
           outline_feed.setAttribute(QSL("xmlUrl"), child_feed->url());
@@ -264,7 +264,7 @@ void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
 
 void FeedsImportExportModel::checkAllItems() {
   foreach (RootItem *root_child, m_rootItem->childItems()) {
-    if (root_child->kind() != RootItem::Bin) {
+    if (root_child->kind() != RootItemKind::Bin) {
       setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
     }
   }
@@ -272,7 +272,7 @@ void FeedsImportExportModel::checkAllItems() {
 
 void FeedsImportExportModel::uncheckAllItems() {
   foreach (RootItem *root_child, m_rootItem->childItems()) {
-    if (root_child->kind() != RootItem::Bin) {
+    if (root_child->kind() != RootItemKind::Bin) {
       setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
     }
   }
@@ -295,7 +295,7 @@ QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex
 }
 
 QModelIndex FeedsImportExportModel::indexForItem(RootItem *item) const {
-  if (item == NULL || item->kind() == RootItem::Root) {
+  if (item == NULL || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
@@ -324,7 +324,7 @@ QModelIndex FeedsImportExportModel::indexForItem(RootItem *item) const {
         for (int i = 0; i < row_count; i++) {
           RootItem *possible_category = active_item->child(i);
 
-          if (possible_category->kind() == RootItem::Cattegory) {
+          if (possible_category->kind() == RootItemKind::Category) {
             parents << index(i, 0, active_index);
           }
         }
@@ -362,7 +362,6 @@ int FeedsImportExportModel::rowCount(const QModelIndex &parent) const {
 
 int FeedsImportExportModel::columnCount(const QModelIndex &parent) const {
   Q_UNUSED(parent)
-
   return 1;
 }
 
@@ -383,9 +382,9 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
   }
   else if (role == Qt::DecorationRole) {
     switch (item->kind()) {
-      case RootItem::Cattegory:
-      case RootItem::Bin:
-      case RootItem::Feeed:
+      case RootItemKind::Category:
+      case RootItemKind::Bin:
+      case RootItemKind::Feed:
         return item->icon();
 
       default:
@@ -394,10 +393,10 @@ QVariant FeedsImportExportModel::data(const QModelIndex &index, int role) const 
   }
   else if (role == Qt::DisplayRole) {
     switch (item->kind()) {
-      case RootItem::Cattegory:
+      case RootItemKind::Category:
         return QVariant(item->data(index.column(), role).toString() + tr(" (category)"));
 
-      case RootItem::Feeed:
+      case RootItemKind::Feed:
         return QVariant(item->data(index.column(), role).toString() + tr(" (feed)"));
 
       default:
@@ -462,7 +461,7 @@ bool FeedsImportExportModel::setData(const QModelIndex &index, const QVariant &v
 }
 
 Qt::ItemFlags FeedsImportExportModel::flags(const QModelIndex &index) const {
-  if (!index.isValid() || itemForIndex(index)->kind() == RootItem::Bin) {
+  if (!index.isValid() || itemForIndex(index)->kind() == RootItemKind::Bin) {
     return Qt::NoItemFlags;
   }
 

@@ -29,6 +29,7 @@
 
 class FeedsProxyModel;
 class Feed;
+class Category;
 class StandardCategory;
 class QTimer;
 
@@ -59,7 +60,7 @@ class FeedsView : public QTreeView {
     // Returns pointers to selected feed/category if they are really
     // selected.
     RootItem *selectedItem() const;
-    StandardCategory *selectedCategory() const;
+    Category *selectedCategory() const;
     Feed *selectedFeed() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
@@ -100,12 +101,6 @@ class FeedsView : public QTreeView {
     // Base manipulators.
     void editSelectedItem();
     void deleteSelectedItem();
-
-    // Standard category manipulators.
-    void addNewCategory();
-
-    // Standard feed manipulators.
-    void addNewFeed();
 
     // Is called when counts of messages are changed externally,
     // typically from message view.

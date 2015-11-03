@@ -155,15 +155,15 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right
         return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
       }
     }
-    else if (left_item->kind() == RootItem::Bin) {
+    else if (left_item->kind() == RootItemKind::Bin) {
       // Left item is recycle bin. Make sure it is "biggest" item if we have selected ascending order.
       return sortOrder() == Qt::DescendingOrder;
     }
-    else if (right_item->kind() == RootItem::Bin) {
+    else if (right_item->kind() == RootItemKind::Bin) {
       // Right item is recycle bin. Make sure it is "smallest" item if we have selected descending order.
       return sortOrder() == Qt::AscendingOrder;
     }
-    else if (left_item->kind() == RootItem::Feeed) {
+    else if (left_item->kind() == RootItemKind::Feed) {
       // Left item is feed, right item is category.
       return false;
     }
@@ -193,7 +193,7 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
 
   RootItem *item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() == RootItem::Bin) {
+  if (item->kind() == RootItemKind::Bin) {
     // Recycle bin is always displayed.
     return true;
   }

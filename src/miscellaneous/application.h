@@ -55,6 +55,8 @@ class Application : public QtSingleApplication {
     explicit Application(const QString &id, int &argc, char **argv);
     virtual ~Application();
 
+    // List of all installed "feed service plugins", including obligatory
+    // "standard" service entry point.
     QList<ServiceEntryPoint*> feedServices();
 
     QList<QAction*> userActions();

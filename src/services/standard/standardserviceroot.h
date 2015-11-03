@@ -26,6 +26,7 @@
 class StandardRecycleBin;
 class StandardCategory;
 class StandardFeed;
+class FeedsImportExportModel;
 
 typedef QList<QPair<int, StandardCategory*> > CategoryAssignment;
 typedef QPair<int, StandardCategory*> CategoryAssignmentItem;
@@ -37,7 +38,7 @@ class StandardServiceRoot : public ServiceRoot {
     Q_DECLARE_TR_FUNCTIONS(StandardServiceRoot)
 
   public:
-    explicit StandardServiceRoot(RootItem *parent = NULL);
+    explicit StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
 
     bool canBeEdited();
@@ -46,10 +47,19 @@ class StandardServiceRoot : public ServiceRoot {
 
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
-    QHash<int, StandardCategory*> categoriesForItem(RootItem *root);
+    QHash<int,StandardCategory*> categoriesForItem(RootItem *root);
+
+    // Returns all categories from this root, each pair
+    // consists of ID of parent item and pointer to category.
+    QHash<int,StandardCategory*> allCategories();
 
     // Access to standard recycle bin.
     StandardRecycleBin *recycleBin() const;
+
+    // Takes structure residing under given root item and adds feeds/categories from
+    // it to active structure.
+    // NOTE: This is used for import/export of the model.
+    bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
   private:
     void loadFromDatabase();

@@ -232,42 +232,15 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   return false;
 }
 
-bool FeedsModel::addCategory(StandardCategory *category, RootItem *parent) {
+void FeedsModel::assignNodeToNewParent(RootItem *item, RootItem *parent) {
   // Get index of parent item (parent standard category).
   QModelIndex parent_index = indexForItem(parent);
-  bool result = category->addItself(parent);
 
-  if (result) {
-    // Category was added to the persistent storage,
-    // so add it to the model.
-    beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-    parent->appendChild(category);
-    endInsertRows();
-  }
-  else {
-    // We cannot delete (*this) in its method, thus delete it here.
-    delete category;
-  }
+  // TODO: todle jde sloučit s metodou reassignNodeToNewParent.
 
-  return result;
-}
-
-bool FeedsModel::addFeed(StandardFeed *feed, RootItem *parent) {
-  // Get index of parent item (parent standard category or root item).
-  QModelIndex parent_index = indexForItem(parent);
-  bool result = feed->addItself(parent);
-
-  if (result) {
-    // Feed was added to the persistent storage so add it to the model.
-    beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-    parent->appendChild(feed);
-    endInsertRows();
-  }
-  else {
-    delete feed;
-  }
-
-  return result;
+  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
+  parent->appendChild(item);
+  endInsertRows();
 }
 
 void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent) {
@@ -378,10 +351,10 @@ RootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   }
 }
 
-StandardCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const {
+Category *FeedsModel::categoryForIndex(const QModelIndex &index) const {
   RootItem *item = itemForIndex(index);
 
-  if (item->kind() == RootItem::Cattegory) {
+  if (item->kind() == RootItemKind::Category) {
     return item->toCategory();
   }
   else {
@@ -390,14 +363,14 @@ StandardCategory *FeedsModel::categoryForIndex(const QModelIndex &index) const {
 }
 
 QModelIndex FeedsModel::indexForItem(RootItem *item) const {
-  if (item == NULL || item->kind() == RootItem::Root) {
+  if (item == NULL || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
 
   QStack<RootItem*> chain;
 
-  while (item->kind() != RootItem::Root) {
+  while (item->kind() != RootItemKind::Root) {
     chain.push(item);
     item = item->parent();
   }
@@ -422,84 +395,6 @@ bool FeedsModel::hasAnyFeedNewMessages() {
   }
 
   return false;
-}
-
-bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_message) {
-  if (model == NULL || model->rootItem() == NULL) {
-    output_message = tr("Invalid tree data.");
-    qDebug("Root item for merging two models is null.");
-    return false;
-  }
-
-  QStack<RootItem*> original_parents; original_parents.push(m_rootItem);
-  QStack<RootItem*> new_parents; new_parents.push(model->rootItem());
-  bool some_feed_category_error = false;
-
-  // We are definitely about to add some new items into the model.
-  //emit layoutAboutToBeChanged();
-
-  // Iterate all new items we would like to merge into current model.
-  while (!new_parents.isEmpty()) {
-    RootItem *target_parent = original_parents.pop();
-    RootItem *source_parent = new_parents.pop();
-
-    foreach (RootItem *source_item, source_parent->childItems()) {
-      if (!model->isItemChecked(source_item)) {
-        // We can skip this item, because it is not checked and should not be imported.
-        // NOTE: All descendants are thus skipped too.
-        continue;
-      }
-
-      if (source_item->kind() == RootItem::Cattegory) {
-        StandardCategory *source_category = source_item->toCategory();
-        StandardCategory *new_category = new StandardCategory(*source_category);
-
-        // Add category to model.
-        new_category->clearChildren();
-
-        if (addCategory(new_category, target_parent)) {
-          // Process all children of this category.
-          original_parents.push(new_category);
-          new_parents.push(source_category);
-        }
-        else {
-          // Add category failed, but this can mean that the same category (with same title)
-          // already exists. If such a category exists in current parent, then find it and
-          // add descendants to it.
-          RootItem *existing_category = target_parent->child(RootItem::Cattegory, new_category->title());
-
-          if (existing_category != NULL) {
-            original_parents.push(existing_category);
-            new_parents.push(source_category);
-          }
-          else {
-            some_feed_category_error = true;
-          }
-        }
-      }
-      else if (source_item->kind() == RootItem::Feeed) {
-        StandardFeed *source_feed = source_item->toFeed();
-        StandardFeed *new_feed = new StandardFeed(*source_feed);
-
-        // Append this feed and end this iteration.
-        if (!addFeed(new_feed, target_parent)) {
-          some_feed_category_error = true;
-        }
-      }
-    }
-  }
-
-  // Changes are done now. Finalize the new model.
-  //emit layoutChanged();
-
-  if (some_feed_category_error) {
-    output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");
-  }
-  else {
-    output_message = tr("Import was completely successfull.");
-  }
-
-  return !some_feed_category_error;
 }
 
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
@@ -535,7 +430,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
 
   foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
-    QList<ServiceRoot*> roots = entry_point->initializeSubtree();
+    QList<ServiceRoot*> roots = entry_point->initializeSubtree(this);
 
     foreach (ServiceRoot *root, roots) {
       m_rootItem->appendChild(root);
@@ -551,8 +446,8 @@ QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
 Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
   RootItem *item = itemForIndex(index);
 
-  if (item->kind() == RootItem::Feeed) {
-    return static_cast<Feed*>(item);
+  if (item->kind() == RootItemKind::Feed) {
+    return item->toFeed();
   }
   else {
     return NULL;
@@ -579,7 +474,7 @@ QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
   return feeds;
 }
 
-bool FeedsModel::markFeedsRead(const QList<Feed *> &feeds, int read) {
+bool FeedsModel::markFeedsRead(const QList<Feed*> &feeds, int read) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -660,36 +555,6 @@ bool FeedsModel::markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool r
   }
 }
 
-QHash<int, StandardCategory*> FeedsModel::allCategories() {
-  return categoriesForItem(m_rootItem);
-}
-
-QHash<int, StandardCategory*> FeedsModel::categoriesForItem(RootItem *root) {
-  QHash<int, StandardCategory*> categories;
-  QList<RootItem*> parents;
-
-  parents.append(root->childItems());
-
-  while (!parents.isEmpty()) {
-    RootItem *item = parents.takeFirst();
-
-    if (item->kind() == RootItem::Cattegory) {
-      // This item is category, add it to the output list and
-      // scan its children.
-      int category_id = item->id();
-      StandardCategory *category = item->toCategory();
-
-      if (!categories.contains(category_id)) {
-        categories.insert(category_id, category);
-      }
-
-      parents.append(category->childItems());
-    }
-  }
-
-  return categories;
-}
-
 QList<Feed*> FeedsModel::allFeeds() {
   return feedsForItem(m_rootItem);
 }
@@ -699,8 +564,10 @@ QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
   QList<Feed*> feeds;
 
   foreach (RootItem *child, children) {
-    if (child->kind() == RootItem::Feeed) {
-      feeds.append(child->toFeed());
+    Feed *converted = dynamic_cast<Feed*>(child);
+
+    if (converted != NULL) {
+      feeds.append(converted);
     }
   }
 

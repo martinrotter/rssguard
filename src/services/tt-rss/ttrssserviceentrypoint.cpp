@@ -69,6 +69,6 @@ QIcon TtRssServiceEntryPoint::icon() {
   return QIcon(APP_ICON_PATH);
 }
 
-QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
+QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree(FeedsModel *main_model) {
   return QList<ServiceRoot*>();
 }

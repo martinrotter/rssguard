@@ -37,7 +37,9 @@ class Feed : public RootItem {
     enum Status {
       Normal        = 0,
       NewMessages   = 1,
-      NetworkError  = 2
+      NetworkError  = 2,
+      ParsingError  = 3,
+      OtherError    = 4
     };
 
     // Constructors.
@@ -46,6 +48,9 @@ class Feed : public RootItem {
 
     // Returns 0, feeds have no children.
     int childCount() const;
+
+    // Appending of childs to feed is not allowed.
+    void appendChild(RootItem *child);
 
     // Performs synchronous update and returns number of newly updated messages.
     virtual int update() = 0;

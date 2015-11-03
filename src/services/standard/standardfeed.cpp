@@ -53,7 +53,7 @@ void StandardFeed::init() {
   m_unreadCount = 0;
   m_encoding = QString();
   m_url = QString();
-  m_kind = RootItem::Feeed;
+  m_kind = RootItemKind::Feed;
 }
 
 StandardFeed::StandardFeed(RootItem *parent_item)
@@ -76,7 +76,7 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();
   m_encoding = other.encoding();
   m_url = other.url();
-  m_kind = RootItem::Feeed;
+  m_kind = RootItemKind::Feed;
   m_title = other.title();
   m_id = other.id();
   m_icon = other.icon();
@@ -100,11 +100,14 @@ int StandardFeed::countOfUnreadMessages() const {
 
 void StandardFeed::editViaDialog() {
   // TODO: fix passing of the model
+
+  /*
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
                                                                                qApp->mainForm());
   form_pointer.data()->exec(this, NULL);
 
   delete form_pointer.data();
+  */
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -716,7 +719,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 }
 
 StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
-  m_kind = RootItem::Feeed;
+  m_kind = RootItemKind::Feed;
 
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());

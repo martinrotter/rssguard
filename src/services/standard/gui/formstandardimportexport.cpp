@@ -18,6 +18,7 @@
 #include "services/standard/gui/formstandardimportexport.h"
 
 #include "services/standard/standardfeedsimportexportmodel.h"
+#include "services/standard/standardserviceroot.h"
 #include "core/feedsmodel.h"
 #include "miscellaneous/application.h"
 #include "gui/feedmessageviewer.h"
@@ -28,8 +29,8 @@
 #include <QTextStream>
 
 
-FormStandardImportExport::FormStandardImportExport(QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormStandardImportExport) {
+FormStandardImportExport::FormStandardImportExport(StandardServiceRoot *service_root, QWidget *parent)
+  : QDialog(parent), m_ui(new Ui::FormStandardImportExport), m_serviceRoot(service_root) {
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
 
@@ -54,7 +55,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode)
 
   switch (mode) {
     case FeedsImportExportModel::Export: {
-      m_model->setRootItem(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->rootItem());
+      m_model->setRootItem(m_serviceRoot);
       m_model->checkAllItems();
       m_ui->m_treeFeeds->setModel(m_model);
       m_ui->m_treeFeeds->expandAll();
@@ -117,7 +118,6 @@ void FormStandardImportExport::selectExportFile() {
         selected_file += QL1S(".opml");
       }
     }
-    // NOTE: Add other types here.
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
   }
@@ -141,7 +141,6 @@ void FormStandardImportExport::selectImportFile() {
     if (selected_filter == filter_opml20) {
       m_conversionType = OPML20;
     }
-    // NOTE: Add other types here.
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
     parseImportFile(selected_file);
@@ -241,7 +240,8 @@ void FormStandardImportExport::exportFeeds() {
 void FormStandardImportExport::importFeeds() {
   QString output_message;
 
-  if (qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->mergeModel(m_model, output_message)) {
+  if (m_serviceRoot->mergeImportExportModel(m_model, output_message)) {
+    // TODO: Hate this global access, what about signal?
     qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->expandAll();
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
   }

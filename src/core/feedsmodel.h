@@ -26,9 +26,9 @@
 #include <QIcon>
 
 
+class Category;
 class StandardCategory;
 class Feed;
-class StandardRecycleBin;
 class FeedsImportExportModel;
 class QTimer;
 
@@ -64,11 +64,8 @@ class FeedsModel : public QAbstractItemModel {
     // Removes item with given index.
     bool removeItem(const QModelIndex &index);
 
-    // Standard category manipulators.
-    bool addCategory(StandardCategory *category, RootItem *parent);
-
-    // Standard feed manipulators.
-    bool addFeed(StandardFeed *feed, RootItem *parent);
+    // Assigns item to the new parent.
+    void assignNodeToNewParent(RootItem *item, RootItem *parent);
 
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
@@ -85,14 +82,6 @@ class FeedsModel : public QAbstractItemModel {
     // This is usually used for displaying whole feeds
     // in "newspaper" mode.
     QList<Message> messagesForFeeds(const QList<Feed*> &feeds);
-
-    // Returns all categories, each pair
-    // consists of ID of parent item and pointer to category.
-    QHash<int, StandardCategory*> allCategories();
-
-    // Returns categories from the subtree with given root node, each pair
-    // consists of ID of parent item and pointer to category.
-    QHash<int, StandardCategory*> categoriesForItem(RootItem *root);
 
     // Returns list of all feeds contained in the model.
     QList<Feed*> allFeeds();
@@ -113,7 +102,7 @@ class FeedsModel : public QAbstractItemModel {
 
     // Returns pointer to category if it lies on given index
     // or NULL if no category lies on given index.
-    StandardCategory *categoryForIndex(const QModelIndex &index) const;
+    Category *categoryForIndex(const QModelIndex &index) const;
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
@@ -129,10 +118,6 @@ class FeedsModel : public QAbstractItemModel {
     inline RootItem *rootItem() const {
       return m_rootItem;
     }
-
-    // Takes structure residing under given root item and adds feeds/categories from
-    // it to active structure.
-    bool mergeModel(FeedsImportExportModel *model, QString &output_message);
 
     // Resets global auto-update intervals according to settings
     // and starts/stop the timer as needed.

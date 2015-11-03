@@ -23,11 +23,13 @@
 #include <QCoreApplication>
 
 
+class FeedsModel;
+
 class TtRssServiceRoot : public ServiceRoot {
     Q_DECLARE_TR_FUNCTIONS(StandardServiceRoot)
 
   public:
-    explicit TtRssServiceRoot(RootItem *parent = NULL);
+    explicit TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~TtRssServiceRoot();
 
     bool canBeEdited();

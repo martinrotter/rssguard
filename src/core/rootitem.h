@@ -22,23 +22,24 @@
 #include <QDateTime>
 #include <QFont>
 
-class StandardRecycleBin;
-class StandardCategory;
-class StandardFeed;
+class Category;
+class Feed;
+
+namespace RootItemKind {
+  // Describes the kind of the item.
+  enum Kind {
+    Root     = 1001,
+    Bin      = 1002,
+    Feed     = 1003,
+    Category = 1004
+  };
+}
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
 class RootItem {
   public:
-    // Describes the kind of the item.
-    enum Kind {
-      Root      = 1001,
-      Bin       = 1002,
-      Feeed     = 1003,
-      Cattegory = 1004
-    };
-
     // Constructors and destructors.
     explicit RootItem(RootItem *parent_item = NULL);
     virtual ~RootItem();
@@ -55,8 +56,6 @@ class RootItem {
     inline virtual RootItem *child(int row) {
       return m_childItems.value(row);
     }
-
-    virtual RootItem *child(RootItem::Kind kind_of_child, const QString &identifier);
 
     inline virtual int childCount() const {
       return m_childItems.size();
@@ -110,7 +109,7 @@ class RootItem {
 
       RootItem *this_item = this;
 
-      while (this_item->kind() != RootItem::Root) {
+      while (this_item->kind() != RootItemKind::Root) {
         if (root->childItems().contains(this_item)) {
           return true;
         }
@@ -122,6 +121,7 @@ class RootItem {
       return false;
     }
 
+    // Is "this" item parent if given child?
     bool isParentOf(RootItem *child) {
       if (child == NULL) {
         return false;
@@ -144,7 +144,7 @@ class RootItem {
     bool removeChild(int index);
     bool removeChild(RootItem *child);
 
-    inline Kind kind() const {
+    inline RootItemKind::Kind kind() const {
       return m_kind;
     }
 
@@ -192,8 +192,8 @@ class RootItem {
     }
 
     // Converters
-    StandardCategory *toCategory();
-    StandardFeed *toFeed();
+    Category *toCategory();
+    Feed *toFeed();
 
     // Compares two model items.
     static bool isEqual(RootItem *lhs, RootItem *rhs);
@@ -202,7 +202,7 @@ class RootItem {
   protected:
     void setupFonts();
 
-    Kind m_kind;
+    RootItemKind::Kind m_kind;
     int m_id;
     QString m_title;
     QString m_description;

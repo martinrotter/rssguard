@@ -28,7 +28,7 @@ namespace Ui {
 }
 
 class StandardCategory;
-class StandardCategory;
+class StandardServiceRoot;
 class FeedsModel;
 class RootItem;
 class QMenu;
@@ -39,7 +39,7 @@ class FormStandardCategoryDetails : public QDialog {
 
   public:
     // Constructors and destructors.
-    explicit FormStandardCategoryDetails(FeedsModel *model, QWidget *parent = 0);
+    explicit FormStandardCategoryDetails(StandardServiceRoot *service_root, QWidget *parent = 0);
     virtual ~FormStandardCategoryDetails();
 
   public slots:
@@ -77,7 +77,7 @@ class FormStandardCategoryDetails : public QDialog {
   private:
     Ui::FormStandardCategoryDetails *m_ui;
     StandardCategory *m_editableCategory;
-    FeedsModel *m_feedsModel;
+    StandardServiceRoot *m_serviceRoot;
 
     QMenu *m_iconMenu;
     QAction *m_actionLoadIconFromFile;

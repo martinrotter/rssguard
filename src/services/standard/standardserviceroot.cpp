@@ -20,17 +20,20 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "core/feedsmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/standard/standardrecyclebin.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardcategory.h"
+#include "services/standard/standardfeedsimportexportmodel.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QStack>
 
 
-StandardServiceRoot::StandardServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_recycleBin(new StandardRecycleBin(this)) {
+StandardServiceRoot::StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent)
+  : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)) {
   m_title = qApp->system()->getUsername() + "@" + APP_LOW_NAME;
   m_icon = StandardServiceEntryPoint().icon();
 
@@ -113,7 +116,6 @@ QVariant StandardServiceRoot::data(int column, int role) const {
 }
 
 void StandardServiceRoot::loadFromDatabase(){
-  // TODO: todo
   QSqlDatabase database = qApp->database()->connection("StandardServiceRoot", DatabaseFactory::FromSettings);
   CategoryAssignment categories;
   FeedAssignment feeds;
@@ -175,8 +177,8 @@ void StandardServiceRoot::loadFromDatabase(){
   appendChild(m_recycleBin);
 }
 
-QHash<int, StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *root) {
-  QHash<int, StandardCategory*> categories;
+QHash<int,StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *root) {
+  QHash<int,StandardCategory*> categories;
   QList<RootItem*> parents;
 
   parents.append(root->childItems());
@@ -184,11 +186,11 @@ QHash<int, StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *r
   while (!parents.isEmpty()) {
     RootItem *item = parents.takeFirst();
 
-    if (item->kind() == RootItem::Cattegory) {
+    if (item->kind() == RootItemKind::Category) {
       // This item is category, add it to the output list and
       // scan its children.
       int category_id = item->id();
-      StandardCategory *category = item->toCategory();
+      StandardCategory *category = static_cast<StandardCategory*>(item);
 
       if (!categories.contains(category_id)) {
         categories.insert(category_id, category);
@@ -201,8 +203,12 @@ QHash<int, StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *r
   return categories;
 }
 
+QHash<int,StandardCategory*> StandardServiceRoot::allCategories() {
+  return categoriesForItem(this);
+}
+
 void StandardServiceRoot::assembleFeeds(FeedAssignment feeds) {
-  QHash<int, StandardCategory*> categories = categoriesForItem(this);
+  QHash<int,StandardCategory*> categories = categoriesForItem(this);
 
   foreach (const FeedAssignmentItem &feed, feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
@@ -223,6 +229,86 @@ StandardRecycleBin *StandardServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
+bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, QString &output_message) {
+  QStack<RootItem*> original_parents; original_parents.push(this);
+  QStack<RootItem*> new_parents; new_parents.push(model->rootItem());
+  bool some_feed_category_error = false;
+
+  // Iterate all new items we would like to merge into current model.
+  while (!new_parents.isEmpty()) {
+    RootItem *target_parent = original_parents.pop();
+    RootItem *source_parent = new_parents.pop();
+
+    foreach (RootItem *source_item, source_parent->childItems()) {
+      if (!model->isItemChecked(source_item)) {
+        // We can skip this item, because it is not checked and should not be imported.
+        // NOTE: All descendants are thus skipped too.
+        continue;
+      }
+
+      if (source_item->kind() == RootItemKind::Category) {
+        StandardCategory *source_category = static_cast<StandardCategory*>(source_item);
+        StandardCategory *new_category = new StandardCategory(*source_category);
+        QString new_category_title = new_category->title();
+
+        // Add category to model.
+        new_category->clearChildren();
+
+        if (new_category->addItself(target_parent)) {
+          m_feedsModel->assignNodeToNewParent(new_category, target_parent);
+
+          // Process all children of this category.
+          original_parents.push(new_category);
+          new_parents.push(source_category);
+        }
+        else {
+          delete new_category;
+
+          // Add category failed, but this can mean that the same category (with same title)
+          // already exists. If such a category exists in current parent, then find it and
+          // add descendants to it.
+          RootItem *existing_category = NULL;
+          foreach (RootItem *child, target_parent->childItems()) {
+            if (child->kind() == RootItemKind::Category && child->title() == new_category_title) {
+              existing_category = child;
+            }
+          }
+
+          if (existing_category != NULL) {
+            original_parents.push(existing_category);
+            new_parents.push(source_category);
+          }
+          else {
+            some_feed_category_error = true;
+          }
+        }
+      }
+      else if (source_item->kind() == RootItemKind::Feed) {
+        StandardFeed *source_feed = static_cast<StandardFeed*>(source_item);
+        StandardFeed *new_feed = new StandardFeed(*source_feed);
+
+        // Append this feed and end this iteration.
+        if (!new_feed->addItself(target_parent)) {
+          delete new_feed;
+          some_feed_category_error = true;
+        }
+      }
+    }
+  }
+
+  // Changes are done now. Finalize the new model.
+  //emit layoutChanged();
+
+  if (some_feed_category_error) {
+    output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");
+  }
+  else {
+    output_message = tr("Import was completely successfull.");
+  }
+
+  return !some_feed_category_error;
+}
+
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
   QHash<int, RootItem*> assignments;
   assignments.insert(NO_PARENT_CATEGORY, this);
@@ -235,8 +321,7 @@ void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
         assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
 
         // Now, added category can be parent for another categories, add it.
-        assignments.insert(categories.at(i).second->id(),
-                           categories.at(i).second);
+        assignments.insert(categories.at(i).second->id(), categories.at(i).second);
 
         // Remove the category from the list, because it was
         // added to the final collection.

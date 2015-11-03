@@ -360,6 +360,7 @@ class Settings : public QSettings {
     // Creates settings file in correct location.
     static Settings *setupSettings(QObject *parent);
 
+    // Returns properties of the actual application-wide settings.
     static SettingsProperties determineProperties();
 
   private:

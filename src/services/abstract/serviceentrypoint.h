@@ -24,6 +24,7 @@
 
 
 class ServiceRoot;
+class FeedsModel;
 
 // TOP LEVEL class which provides basic information about the "service"
 class ServiceEntryPoint {
@@ -36,7 +37,7 @@ class ServiceEntryPoint {
     // point from persistent DB.
     // Returns list of root nodes which will be afterwards added
     // to the global feed model.
-    virtual QList<ServiceRoot*> initializeSubtree() = 0;
+    virtual QList<ServiceRoot*> initializeSubtree(FeedsModel *main_model) = 0;
 
     // Must this service account be activated by default?
     // NOTE: This is true particularly for "standard" service

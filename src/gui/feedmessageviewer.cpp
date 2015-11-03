@@ -209,9 +209,12 @@ void FeedMessageViewer::loadInitialFeeds() {
     model.importAsOPML20(IOFactory::readTextFile(file_to_load));
     model.checkAllItems();
 
+    // TODO: dodělat, předpokládá nějaký rozumný přístup k standardnímu root servicu.
+    /*
     if (m_feedsView->sourceModel()->mergeModel(&model, output_msg)) {
       m_feedsView->expandAll();
     }
+    */
   }
   catch (ApplicationException &ex) {
     MessageBox::show(this, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());

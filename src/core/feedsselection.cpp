@@ -39,11 +39,11 @@ FeedsSelection::SelectionMode FeedsSelection::mode() {
   }
 
   switch (m_selectedItem->kind()) {
-    case RootItem::Bin:
+    case RootItemKind::Bin:
       return FeedsSelection::MessagesFromRecycleBin;
 
-    case RootItem::Cattegory:
-    case RootItem::Feeed:
+    case RootItemKind::Category:
+    case RootItemKind::Feed:
       return FeedsSelection::MessagesFromFeeds;
 
     default:
@@ -57,12 +57,12 @@ RootItem *FeedsSelection::selectedItem() const {
 
 QString FeedsSelection::generateListOfIds() {
   if (m_selectedItem != NULL &&
-      (m_selectedItem->kind() == RootItem::Feeed || m_selectedItem->kind() == RootItem::Cattegory)) {
+      (m_selectedItem->kind() == RootItemKind::Feed || m_selectedItem->kind() == RootItemKind::Category)) {
     QList<RootItem*> children = m_selectedItem->getRecursiveChildren();
     QStringList stringy_ids;
 
     foreach (RootItem *child, children) {
-      if (child->kind() == RootItem::Feeed) {
+      if (child->kind() == RootItemKind::Feed) {
         stringy_ids.append(QString::number(child->id()));
       }
     }
