@@ -58,6 +58,8 @@ class Feed : public RootItem {
     // Updates counts of all/unread messages for this feed.
     virtual void updateCounts(bool including_total_count = true, bool update_feed_statuses = true) = 0;
 
+
+
     inline int autoUpdateInitialInterval() const {
       return m_autoUpdateInitialInterval;
     }

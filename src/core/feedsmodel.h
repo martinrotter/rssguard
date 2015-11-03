@@ -27,9 +27,7 @@
 
 
 class Category;
-class StandardCategory;
 class Feed;
-class FeedsImportExportModel;
 class QTimer;
 
 class FeedsModel : public QAbstractItemModel {
@@ -62,6 +60,7 @@ class FeedsModel : public QAbstractItemModel {
     }
 
     // Removes item with given index.
+    // NOTE: Also deletes item from memory.
     bool removeItem(const QModelIndex &index);
 
     // Assigns item to the new parent.
@@ -91,9 +90,9 @@ class FeedsModel : public QAbstractItemModel {
     QList<Feed*> feedsForItem(RootItem *root);
 
     // Returns list of ALL CHILD feeds which belong to given parent indexes.
-    QList<Feed*> feedsForIndexes(const QModelIndexList &indexes);
+    //QList<Feed*> feedsForIndexes(const QModelIndexList &indexes);
 
-    // Returns ALL CHILD feeds contained within single index.
+    // Returns ALL RECURSIVE CHILD feeds contained within single index.
     QList<Feed*> feedsForIndex(const QModelIndex &index);
 
     // Returns pointer to feed if it lies on given index
@@ -144,7 +143,11 @@ class FeedsModel : public QAbstractItemModel {
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
 
-  protected:
+  signals:
+    // Emitted when model requests update of some feeds.
+    void feedsUpdateRequested(const QList<Feed*> feeds);
+
+  private:
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed*> &feeds);
@@ -152,11 +155,6 @@ class FeedsModel : public QAbstractItemModel {
     // Loads feed/categories from the database.
     void loadActivatedServiceAccounts();
 
-  signals:
-    // Emitted when model requests update of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
-
-  private:
     RootItem *m_rootItem;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;

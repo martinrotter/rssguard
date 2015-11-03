@@ -66,14 +66,10 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   m_passwordProtected = other.passwordProtected();
   m_username = other.username();
   m_password = other.password();
-  m_status = other.status();
   m_networkError = other.networkError();
   m_type = other.type();
   m_totalCount = other.countOfAllMessages();
   m_unreadCount = other.countOfUnreadMessages();
-  m_autoUpdateType = other.autoUpdateType();
-  m_autoUpdateInitialInterval = other.autoUpdateInitialInterval();
-  m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();
   m_encoding = other.encoding();
   m_url = other.url();
   m_kind = RootItemKind::Feed;
@@ -84,6 +80,10 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   m_parentItem = other.parent();
   m_creationDate = other.creationDate();
   m_description = other.description();
+  m_status = other.status();
+  m_autoUpdateType = other.autoUpdateType();
+  m_autoUpdateInitialInterval = other.autoUpdateInitialInterval();
+  m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();
 }
 
 StandardFeed::~StandardFeed() {

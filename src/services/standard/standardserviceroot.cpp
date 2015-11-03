@@ -34,8 +34,10 @@
 
 StandardServiceRoot::StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent)
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)) {
-  m_title = qApp->system()->getUsername() + "@" + APP_LOW_NAME;
+  m_title = qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME);
   m_icon = StandardServiceEntryPoint().icon();
+  m_description = tr("This is obligatory service account for standard RSS/RDF/ATOM feeds.");
+  m_creationDate = QDateTime::currentDateTime();
 
   loadFromDatabase();
 }

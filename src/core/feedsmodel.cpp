@@ -19,10 +19,9 @@
 
 #include "definitions/definitions.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
-#include "services/standard/standardfeed.h"
-#include "services/standard/standardcategory.h"
-#include "services/standard/standardfeedsimportexportmodel.h"
+#include "services/standard/standardserviceroot.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -269,18 +268,18 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 
   foreach (Feed *feed, allFeeds()) {
     switch (feed->autoUpdateType()) {
-      case StandardFeed::DontAutoUpdate:
+      case Feed::DontAutoUpdate:
         // Do not auto-update this feed ever.
         continue;
 
-      case StandardFeed::DefaultAutoUpdate:
+      case Feed::DefaultAutoUpdate:
         if (auto_update_now) {
           feeds_for_update.append(feed);
         }
 
         break;
 
-      case StandardFeed::SpecificAutoUpdate:
+      case Feed::SpecificAutoUpdate:
       default:
         int remaining_interval = feed->autoUpdateRemainingInterval();
 
@@ -306,8 +305,7 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                       DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -389,7 +387,7 @@ QModelIndex FeedsModel::indexForItem(RootItem *item) const {
 
 bool FeedsModel::hasAnyFeedNewMessages() {
   foreach (const Feed *feed, allFeeds()) {
-    if (feed->status() == StandardFeed::NewMessages) {
+    if (feed->status() == Feed::NewMessages) {
       return true;
     }
   }
@@ -424,15 +422,16 @@ void FeedsModel::reloadWholeLayout() {
 }
 
 void FeedsModel::loadActivatedServiceAccounts() {
-  // Delete all childs of the root node and clear them from the memory.
-  qDeleteAll(m_rootItem->childItems());
-  m_rootItem->clearChildren();
-
+  // Iterate all globally available feed "service plugins".
   foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
     QList<ServiceRoot*> roots = entry_point->initializeSubtree(this);
 
     foreach (ServiceRoot *root, roots) {
+      if (SystemFactory::isInstanceOf<StandardServiceRoot>(root)) {
+
+      }
+
       m_rootItem->appendChild(root);
     }
   }
@@ -454,6 +453,7 @@ Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
   }
 }
 
+/*
 QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
   QList<Feed*> feeds;
 
@@ -473,6 +473,7 @@ QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
 
   return feeds;
 }
+*/
 
 bool FeedsModel::markFeedsRead(const QList<Feed*> &feeds, int read) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
@@ -564,10 +565,8 @@ QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
   QList<Feed*> feeds;
 
   foreach (RootItem *child, children) {
-    Feed *converted = dynamic_cast<Feed*>(child);
-
-    if (converted != NULL) {
-      feeds.append(converted);
+    if (child->kind() == RootItemKind::Feed) {
+      feeds.append(child->toFeed());
     }
   }
 
