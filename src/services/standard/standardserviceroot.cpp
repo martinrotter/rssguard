@@ -30,6 +30,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QStack>
+#include <QCoreApplication>
 
 
 StandardServiceRoot::StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent)
@@ -89,9 +90,7 @@ QVariant StandardServiceRoot::data(int column, int role) const {
 
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return
-            m_title + "\n" +
-            tr("This is service account for standard RSS/RDF/ATOM feeds.");
+        return tr("This is service account for standard RSS/RDF/ATOM feeds.");
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.

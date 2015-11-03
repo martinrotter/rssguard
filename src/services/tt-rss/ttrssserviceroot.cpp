@@ -82,9 +82,7 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
     case Qt::ToolTipRole:
       // TODO: zobrazovat pokročile informace a statistiky.
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return
-            m_title + "\n" +
-            tr("This is service account TT-RSS (TinyTiny RSS) server.");
+        return tr("This is service account TT-RSS (TinyTiny RSS) server.");
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.
