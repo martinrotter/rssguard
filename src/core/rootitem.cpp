@@ -91,6 +91,7 @@ QList<RootItem*> RootItem::getRecursiveChildren() {
     // Iterate all nested categories.
     while (!traversable_items.isEmpty()) {
       RootItem *active_item = traversable_items.takeFirst();
+      children.append(active_item);
 
       foreach (RootItem *child, active_item->childItems()) {
         if (child->childCount() == 0) {

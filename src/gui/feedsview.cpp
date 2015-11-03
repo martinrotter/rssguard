@@ -109,27 +109,29 @@ Feed *FeedsView::selectedFeed() const {
 void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
 
-  // TODO: doědlat
-
   // Iterate all categories and save their expand statuses.
-/*
-  foreach (Category *category, sourceModel()->allCategories().values()) {
+  foreach (Category *category, sourceModel()->allCategories()) {
+    QString setting_name = QString::number(qHash(category->title())) + QL1S("-") + QString::number(category->id());
+
     settings->setValue(GROUP(Categories),
-                       QString::number(category->id()),
+                       setting_name,
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
-  }*/
+  }
 }
 
 void FeedsView::loadExpandedStates() {
   Settings *settings = qApp->settings();
 
-  // TODO: doědlat
+  // TODO: nastavit všechny service rooty automaticky na expanded
+  // toto obnáší vytvoření metody sourceModel()->serviceRoots()
 
   // Iterate all categories and save their expand statuses.
-  /*foreach (Category *category, sourceModel()->allCategories().values()) {
+  foreach (Category *category, sourceModel()->allCategories()) {
+    QString setting_name = QString::number(qHash(category->title())) + QL1S("-") + QString::number(category->id());
+
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
-                settings->value(GROUP(Categories), QString::number(category->id()), true).toBool());
-  }*/
+                settings->value(GROUP(Categories), setting_name, true).toBool());
+  }
 }
 
 void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {

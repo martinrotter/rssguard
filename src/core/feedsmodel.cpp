@@ -578,13 +578,21 @@ QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
 }
 
 QList<Category*> FeedsModel::categoriesForItem(RootItem *root) {
-  QList<RootItem*> children = root->getRecursiveChildren();
   QList<Category*> categories;
+  QList<RootItem*> parents;
 
-  foreach (RootItem *child, children) {
-    if (child->kind() == RootItemKind::Category) {
-      categories.append(child->toCategory());
+  parents.append(root);
+
+  while (!parents.isEmpty()) {
+    RootItem *item = parents.takeFirst();
+
+    if (item->kind() == RootItemKind::Category) {
+      // This item is category, add it to the output list and
+      // scan its children.
+      categories.append( item->toCategory());
     }
+
+    parents.append(item->childItems());
   }
 
   return categories;

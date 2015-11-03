@@ -28,10 +28,11 @@ class Feed;
 namespace RootItemKind {
   // Describes the kind of the item.
   enum Kind {
-    Root     = 1001,
-    Bin      = 1002,
-    Feed     = 1003,
-    Category = 1004
+    Root        = 1001,
+    Bin         = 1002,
+    Feed        = 1003,
+    Category    = 1004,
+    ServiceRoot = 1005
   };
 }
 

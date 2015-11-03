@@ -21,6 +21,7 @@
 
 
 ServiceRoot::ServiceRoot(FeedsModel *feeds_model, RootItem *parent) : RootItem(parent), m_feedsModel(feeds_model) {
+  m_kind = RootItemKind::ServiceRoot;
 }
 
 ServiceRoot::~ServiceRoot() {
