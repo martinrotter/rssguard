@@ -23,8 +23,6 @@
 #include "core/messagesmodel.h"
 #include "core/rootitem.h"
 
-#include <QIcon>
-
 
 class Category;
 class Feed;
@@ -64,7 +62,7 @@ class FeedsModel : public QAbstractItemModel {
     bool removeItem(const QModelIndex &index);
 
     // Assigns item to the new parent.
-    void assignNodeToNewParent(RootItem *item, RootItem *parent);
+    void assignNodeToNewParent(RootItem *item, RootItem *new_parent);
 
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
@@ -82,11 +80,18 @@ class FeedsModel : public QAbstractItemModel {
     // in "newspaper" mode.
     QList<Message> messagesForFeeds(const QList<Feed*> &feeds);
 
+    // Returns list of all categories contained in the model.
+    QList<Category*> allCategories();
+
+    // Get list of categories from tree with particular item
+    // as root.
+    QList<Category*> categoriesForItem(RootItem *root);
+
     // Returns list of all feeds contained in the model.
     QList<Feed*> allFeeds();
 
     // Get list of feeds from tree with particular item
-    // as root. If root itself is a feed, then it is returned.
+    // as root.
     QList<Feed*> feedsForItem(RootItem *root);
 
     // Returns list of ALL CHILD feeds which belong to given parent indexes.

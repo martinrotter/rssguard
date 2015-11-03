@@ -231,14 +231,14 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   return false;
 }
 
-void FeedsModel::assignNodeToNewParent(RootItem *item, RootItem *parent) {
-  // Get index of parent item (parent standard category).
-  QModelIndex parent_index = indexForItem(parent);
+void FeedsModel::assignNodeToNewParent(RootItem *item, RootItem *new_parent) {
+  QModelIndex parent_index = indexForItem(new_parent);
+  int new_index_of_item = new_parent->childCount();
 
-  // TODO: todle jde sloučit s metodou reassignNodeToNewParent.
+  // TODO: sloučit do funkce reassignNodeToNewParent.
 
-  beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-  parent->appendChild(item);
+  beginInsertRows(parent_index, new_index_of_item, new_index_of_item);
+  new_parent->appendChild(item);
   endInsertRows();
 }
 
@@ -246,18 +246,18 @@ void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_
   RootItem *original_parent = original_node->parent();
 
   if (original_parent != new_parent) {
-    // User edited category and set it new parent item,
+    // User edited item and set it new parent item,
     // se we need to move the item in the model too.
-    int original_index_of_feed = original_parent->childItems().indexOf(original_node);
-    int new_index_of_feed = new_parent->childCount();
+    int original_index_of_item = original_parent->childItems().indexOf(original_node);
+    int new_index_of_item = new_parent->childCount();
 
     // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent), original_index_of_feed, original_index_of_feed);
+    beginRemoveRows(indexForItem(original_parent), original_index_of_item, original_index_of_item);
     original_parent->removeChild(original_node);
     endRemoveRows();
 
     // ... and insert it under the new parent.
-    beginInsertRows(indexForItem(new_parent), new_index_of_feed, new_index_of_feed);
+    beginInsertRows(indexForItem(new_parent), new_index_of_item, new_index_of_item);
     new_parent->appendChild(original_node);
     endInsertRows();
   }
@@ -332,6 +332,10 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   }
 
   return messages;
+}
+
+QList<Category*> FeedsModel::allCategories() {
+  return categoriesForItem(m_rootItem);
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
@@ -571,4 +575,17 @@ QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
   }
 
   return feeds;
+}
+
+QList<Category*> FeedsModel::categoriesForItem(RootItem *root) {
+  QList<RootItem*> children = root->getRecursiveChildren();
+  QList<Category*> categories;
+
+  foreach (RootItem *child, children) {
+    if (child->kind() == RootItemKind::Category) {
+      categories.append(child->toCategory());
+    }
+  }
+
+  return categories;
 }

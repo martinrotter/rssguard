@@ -112,8 +112,8 @@ void FeedsView::saveExpandedStates() {
   // TODO: doědlat
 
   // Iterate all categories and save their expand statuses.
-
-  /*foreach (Category *category, sourceModel()->allCategories().values()) {
+/*
+  foreach (Category *category, sourceModel()->allCategories().values()) {
     settings->setValue(GROUP(Categories),
                        QString::number(category->id()),
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
