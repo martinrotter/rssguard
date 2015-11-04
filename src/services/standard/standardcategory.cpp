@@ -126,7 +126,7 @@ QVariant StandardCategory::data(int column, int role) const {
   }
 }
 
-void StandardCategory::editViaDialog() {
+bool StandardCategory::editViaDialog() {
   // TODO: předávat service root.
 /*
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
@@ -137,6 +137,7 @@ void StandardCategory::editViaDialog() {
 
   delete form_pointer.data();
   */
+  return false;
 }
 
 bool StandardCategory::removeItself() {

@@ -416,8 +416,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
 }
 
 QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
-  RootItem *item = itemForIndex(index);
-  return feedsForItem(item);
+  return itemForIndex(index)->getSubTreeFeeds();
 }
 
 Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
@@ -535,35 +534,9 @@ bool FeedsModel::markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool r
 }
 
 QList<Feed*> FeedsModel::allFeeds() {
-  return feedsForItem(m_rootItem);
-}
-
-QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
-  QList<RootItem*> children = root->getSubTree();
-  QList<Feed*> feeds;
-
-  foreach (RootItem *child, children) {
-    if (child->kind() == RootItemKind::Feed) {
-      feeds.append(child->toFeed());
-    }
-  }
-
-  return feeds;
+  return m_rootItem->getSubTreeFeeds();
 }
 
 QList<Category*> FeedsModel::allCategories() {
-  return categoriesForItem(m_rootItem);
-}
-
-QList<Category*> FeedsModel::categoriesForItem(RootItem *root) {
-  QList<RootItem*> children = root->getSubTree();
-  QList<Category*> categories;
-
-  foreach (RootItem *child, children) {
-    if (child->kind() == RootItemKind::Category) {
-      categories.append(child->toCategory());
-    }
-  }
-
-  return categories;
+  return m_rootItem->getSubTreeCategories();
 }

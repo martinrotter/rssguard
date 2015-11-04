@@ -76,17 +76,55 @@ int RootItem::countOfAllMessages() const {
 
 QList<RootItem*> RootItem::getSubTree() {
   QList<RootItem*> children;
-
-  // Root itself is a CATEGORY or ROOT item.
   QList<RootItem*> traversable_items;
 
   traversable_items.append(this);
 
-  // Iterate all nested categories.
+  // Iterate all nested items.
   while (!traversable_items.isEmpty()) {
     RootItem *active_item = traversable_items.takeFirst();
 
     children.append(active_item);
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
+QList<Category*> RootItem::getSubTreeCategories() {
+  QList<Category*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(this);
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem *active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItemKind::Category) {
+      children.append(active_item->toCategory());
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
+QList<Feed*> RootItem::getSubTreeFeeds() {
+  QList<Feed*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(this);
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem *active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItemKind::Feed) {
+      children.append(active_item->toFeed());
+    }
+
     traversable_items.append(active_item->childItems());
   }
 

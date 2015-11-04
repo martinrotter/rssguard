@@ -58,13 +58,11 @@ RootItem *FeedsSelection::selectedItem() const {
 QString FeedsSelection::generateListOfIds() {
   if (m_selectedItem != NULL &&
       (m_selectedItem->kind() == RootItemKind::Feed || m_selectedItem->kind() == RootItemKind::Category)) {
-    QList<RootItem*> children = m_selectedItem->getSubTree();
+    QList<Feed*> children = m_selectedItem->getSubTreeFeeds();
     QStringList stringy_ids;
 
-    foreach (RootItem *child, children) {
-      if (child->kind() == RootItemKind::Feed) {
-        stringy_ids.append(QString::number(child->id()));
-      }
+    foreach (Feed *child, children) {
+      stringy_ids.append(QString::number(child->id()));
     }
 
     return stringy_ids.join(QSL(", "));

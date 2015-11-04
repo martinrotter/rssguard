@@ -67,7 +67,12 @@ class RootItem {
       child->setParent(this);
     }
 
+    // TODO: pracovat s těmito věcmi
     virtual bool canBeEdited() {
+      return false;
+    }
+
+    virtual bool editViaDialog() {
       return false;
     }
 
@@ -75,7 +80,8 @@ class RootItem {
       return false;
     }
 
-    virtual void editViaDialog() {
+    virtual bool deleteViaGui() {
+      return false;
     }
 
     virtual int row() const;
@@ -141,6 +147,8 @@ class RootItem {
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
     QList<RootItem*> getSubTree();
+    QList<Category*> getSubTreeCategories();
+    QList<Feed*> getSubTreeFeeds();
 
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
@@ -151,7 +159,7 @@ class RootItem {
       return m_kind;
     }
 
-    // Each item has icon.
+    // Each item can have icon.
     inline QIcon icon() const {
       return m_icon;
     }

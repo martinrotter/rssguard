@@ -66,7 +66,7 @@ class StandardFeed : public Feed {
       return true;
     }
 
-    void editViaDialog();
+    bool editViaDialog();
 
     QList<Message> undeletedMessages() const;
 

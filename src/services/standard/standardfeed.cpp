@@ -98,7 +98,7 @@ int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-void StandardFeed::editViaDialog() {
+bool StandardFeed::editViaDialog() {
   // TODO: fix passing of the model
 
   /*
@@ -108,6 +108,7 @@ void StandardFeed::editViaDialog() {
 
   delete form_pointer.data();
   */
+  return false;
 }
 
 QList<Message> StandardFeed::undeletedMessages() const {

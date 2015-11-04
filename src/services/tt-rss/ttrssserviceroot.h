@@ -26,7 +26,7 @@
 class FeedsModel;
 
 class TtRssServiceRoot : public ServiceRoot {
-    Q_DECLARE_TR_FUNCTIONS(StandardServiceRoot)
+    Q_DECLARE_TR_FUNCTIONS(TtRssServiceRoot)
 
   public:
     explicit TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
@@ -34,7 +34,7 @@ class TtRssServiceRoot : public ServiceRoot {
 
     bool canBeEdited();
     bool canBeDeleted();
-    void editViaDialog();
+    bool editViaDialog();
     QVariant data(int column, int role) const;
 };
 

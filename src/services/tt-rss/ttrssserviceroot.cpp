@@ -33,8 +33,9 @@ TtRssServiceRoot::TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent) : 
 TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
-void TtRssServiceRoot::editViaDialog() {
+bool TtRssServiceRoot::editViaDialog() {
   // TODO: zobrazit custom edit dialog pro ttrss
+  return false;
 }
 
 bool TtRssServiceRoot::canBeEdited() {

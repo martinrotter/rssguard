@@ -83,16 +83,8 @@ class FeedsModel : public QAbstractItemModel {
     // Returns list of all categories contained in the model.
     QList<Category*> allCategories();
 
-    // Get list of categories from tree with particular item
-    // as root.
-    QList<Category*> categoriesForItem(RootItem *root);
-
     // Returns list of all feeds contained in the model.
     QList<Feed*> allFeeds();
-
-    // Get list of feeds from tree with particular item
-    // as root.
-    QList<Feed*> feedsForItem(RootItem *root);
 
     // Returns list of ALL CHILD feeds which belong to given parent indexes.
     //QList<Feed*> feedsForIndexes(const QModelIndexList &indexes);

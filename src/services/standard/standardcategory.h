@@ -50,7 +50,7 @@ class StandardCategory : public Category {
       return true;
     }
 
-    void editViaDialog();
+    bool editViaDialog();
 
     // Removes category and all its children from persistent
     // database.

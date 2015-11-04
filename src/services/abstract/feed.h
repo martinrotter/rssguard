@@ -44,6 +44,11 @@ class Feed : public RootItem {
       OtherError    = 4
     };
 
+    enum ReadStatus {
+      Read    = 0,
+      Unread  = 1
+    };
+
     // Constructors.
     explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();
@@ -62,6 +67,8 @@ class Feed : public RootItem {
 
     // Get ALL undeleted messages from this feed in one single list.
     virtual QList<Message> undeletedMessages() const = 0;
+
+    //virtual bool markRead(ReadStatus read_status) = 0;
 
     inline int autoUpdateInitialInterval() const {
       return m_autoUpdateInitialInterval;
