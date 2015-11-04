@@ -26,6 +26,8 @@
 
 class Category;
 class Feed;
+class ServiceRoot;
+class StandardServiceRoot;
 class QTimer;
 
 class FeedsModel : public QAbstractItemModel {
@@ -68,6 +70,15 @@ class FeedsModel : public QAbstractItemModel {
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
 
+    // Returns all activated service roots.
+    // NOTE: Service root nodes are lying directly UNDER
+    // the model root item.
+    QList<ServiceRoot*> serviceRoots();
+
+    // Direct and the only global accessor to standard service root.
+    // NOTE: Standard service root is always activated.
+    StandardServiceRoot *standardServiceRoot();
+
     // Returns the list of feeds which should be updated
     // according to auto-update schedule.
     // Variable "auto_update_now" is true, when global timeout
@@ -86,9 +97,6 @@ class FeedsModel : public QAbstractItemModel {
     // Returns list of all feeds contained in the model.
     QList<Feed*> allFeeds();
 
-    // Returns list of ALL CHILD feeds which belong to given parent indexes.
-    //QList<Feed*> feedsForIndexes(const QModelIndexList &indexes);
-
     // Returns ALL RECURSIVE CHILD feeds contained within single index.
     QList<Feed*> feedsForIndex(const QModelIndex &index);
 
@@ -105,6 +113,9 @@ class FeedsModel : public QAbstractItemModel {
     RootItem *itemForIndex(const QModelIndex &index) const;
 
     // Returns source QModelIndex on which lies given item.
+    // NOTE: This goes through all available indexes and
+    // checks their bound items manually, there is no
+    // other way to to this.
     QModelIndex indexForItem(RootItem *item) const;
 
     // Determines if any feed has any new messages.

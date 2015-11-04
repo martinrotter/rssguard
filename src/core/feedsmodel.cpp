@@ -263,6 +263,30 @@ void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_
   }
 }
 
+QList<ServiceRoot*> FeedsModel::serviceRoots() {
+  QList<ServiceRoot*> roots;
+
+  foreach (RootItem *root, m_rootItem->childItems()) {
+    if (root->kind() == RootItemKind::ServiceRoot) {
+      roots.append(root->toServiceRoot());
+    }
+  }
+
+  return roots;
+}
+
+StandardServiceRoot *FeedsModel::standardServiceRoot() {
+  foreach (RootItem *root, m_rootItem->childItems()) {
+    StandardServiceRoot *std_service_root;
+
+    if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != NULL) {
+      return std_service_root;
+    }
+  }
+
+  return NULL;
+}
+
 QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<Feed*> feeds_for_update;
 
@@ -429,28 +453,6 @@ Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
     return NULL;
   }
 }
-
-/*
-QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
-  QList<Feed*> feeds;
-
-  // Get selected feeds for each index.
-  foreach (const QModelIndex &index, indexes) {
-    feeds.append(feedsForIndex(index));
-  }
-
-  // Now we obtained all feeds from corresponding indexes.
-  if (indexes.size() != feeds.size()) {
-    // Selection contains duplicate feeds (for
-    // example situation where feed and its parent category are both
-    // selected). So, remove duplicates from the list.
-    qSort(feeds.begin(), feeds.end(), RootItem::lessThan);
-    feeds.erase(std::unique(feeds.begin(), feeds.end(), RootItem::isEqual), feeds.end());
-  }
-
-  return feeds;
-}
-*/
 
 bool FeedsModel::markFeedsRead(const QList<Feed*> &feeds, int read) {
   QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);

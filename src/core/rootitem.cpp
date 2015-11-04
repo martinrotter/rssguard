@@ -17,8 +17,9 @@
 
 #include "core/rootitem.h"
 
-#include "services/standard/standardcategory.h"
-#include "services/standard/standardfeed.h"
+#include "services/abstract/serviceroot.h"
+#include "services/abstract/feed.h"
+#include "services/abstract/category.h"
 #include "miscellaneous/application.h"
 
 #include <QVariant>
@@ -91,6 +92,26 @@ QList<RootItem*> RootItem::getSubTree() {
   return children;
 }
 
+QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) {
+  QList<RootItem*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(this);
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem *active_item = traversable_items.takeFirst();
+
+    if ((active_item->kind() & kind_of_item) > 0) {
+      children.append(active_item);
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
 QList<Category*> RootItem::getSubTreeCategories() {
   QList<Category*> children;
   QList<RootItem*> traversable_items;
@@ -141,6 +162,10 @@ Category *RootItem::toCategory() {
 
 Feed *RootItem::toFeed() {
   return static_cast<Feed*>(this);
+}
+
+ServiceRoot *RootItem::toServiceRoot() {
+  return static_cast<ServiceRoot*>(this);
 }
 
 int RootItem::countOfUnreadMessages() const {

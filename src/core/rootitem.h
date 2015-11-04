@@ -22,18 +22,24 @@
 #include <QDateTime>
 #include <QFont>
 
+
 class Category;
 class Feed;
+class ServiceRoot;
 
 namespace RootItemKind {
   // Describes the kind of the item.
   enum Kind {
-    Root        = 1001,
-    Bin         = 1002,
-    Feed        = 1003,
-    Category    = 1004,
-    ServiceRoot = 1005
+    Root        = 1,
+    Bin         = 2,
+    Feed        = 4,
+    Category    = 8,
+    ServiceRoot = 16
   };
+
+  inline Kind operator|(Kind a, Kind b) {
+    return static_cast<Kind>(static_cast<int>(a) | static_cast<int>(b));
+  }
 }
 
 // Represents ROOT item of FeedsModel.
@@ -147,6 +153,7 @@ class RootItem {
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
     QList<RootItem*> getSubTree();
+    QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item);
     QList<Category*> getSubTreeCategories();
     QList<Feed*> getSubTreeFeeds();
 
@@ -205,6 +212,7 @@ class RootItem {
     // Converters
     Category *toCategory();
     Feed *toFeed();
+    ServiceRoot *toServiceRoot();
 
     // Compares two model items.
     static bool isEqual(RootItem *lhs, RootItem *rhs);

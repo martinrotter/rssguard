@@ -91,9 +91,10 @@ RootItem *FeedsView::selectedItem() const {
   if (selected_rows.isEmpty()) {
     return NULL;
   }
-
-  RootItem *selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
-  return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
+  else {
+    RootItem *selected_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(selected_rows.at(0)));
+    return selected_item == m_sourceModel->rootItem() ? NULL : selected_item;
+  }
 }
 
 Category *FeedsView::selectedCategory() const {
@@ -108,28 +109,31 @@ Feed *FeedsView::selectedFeed() const {
 
 void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
+  QList<RootItem*> expandable_items;
+
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category));
 
   // Iterate all categories and save their expand statuses.
-  foreach (Category *category, sourceModel()->allCategories()) {
-    QString setting_name = QString::number(qHash(category->title())) + QL1S("-") + QString::number(category->id());
+  foreach (RootItem *item, expandable_items) {
+    QString setting_name = QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
 
     settings->setValue(GROUP(Categories),
                        setting_name,
-                       isExpanded(model()->mapFromSource(sourceModel()->indexForItem(category))));
+                       isExpanded(model()->mapFromSource(sourceModel()->indexForItem(item))));
   }
 }
 
 void FeedsView::loadExpandedStates() {
   Settings *settings = qApp->settings();
+  QList<RootItem*> expandable_items;
 
-  // TODO: nastavit všechny service rooty automaticky na expanded
-  // toto obnáší vytvoření metody sourceModel()->serviceRoots()
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
 
   // Iterate all categories and save their expand statuses.
-  foreach (Category *category, sourceModel()->allCategories()) {
-    QString setting_name = QString::number(qHash(category->title())) + QL1S("-") + QString::number(category->id());
+  foreach (RootItem *item, expandable_items) {
+    QString setting_name = QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
 
-    setExpanded(model()->mapFromSource(sourceModel()->indexForItem(category)),
+    setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
                 settings->value(GROUP(Categories), setting_name, true).toBool());
   }
 }
