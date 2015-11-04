@@ -312,10 +312,6 @@ QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   return messages;
 }
 
-QList<Category*> FeedsModel::allCategories() {
-  return categoriesForItem(m_rootItem);
-}
-
 int FeedsModel::columnCount(const QModelIndex &parent) const {
   Q_UNUSED(parent)
 
@@ -543,7 +539,7 @@ QList<Feed*> FeedsModel::allFeeds() {
 }
 
 QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
-  QList<RootItem*> children = root->getRecursiveChildren();
+  QList<RootItem*> children = root->getSubTree();
   QList<Feed*> feeds;
 
   foreach (RootItem *child, children) {
@@ -555,22 +551,18 @@ QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
   return feeds;
 }
 
+QList<Category*> FeedsModel::allCategories() {
+  return categoriesForItem(m_rootItem);
+}
+
 QList<Category*> FeedsModel::categoriesForItem(RootItem *root) {
+  QList<RootItem*> children = root->getSubTree();
   QList<Category*> categories;
-  QList<RootItem*> parents;
 
-  parents.append(root);
-
-  while (!parents.isEmpty()) {
-    RootItem *item = parents.takeFirst();
-
-    if (item->kind() == RootItemKind::Category) {
-      // This item is category, add it to the output list and
-      // scan its children.
-      categories.append( item->toCategory());
+  foreach (RootItem *child, children) {
+    if (child->kind() == RootItemKind::Category) {
+      categories.append(child->toCategory());
     }
-
-    parents.append(item->childItems());
   }
 
   return categories;

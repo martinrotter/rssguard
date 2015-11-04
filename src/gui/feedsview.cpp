@@ -330,12 +330,14 @@ void FeedsView::markAllFeedsRead() {
 
 void FeedsView::fetchMetadataForSelectedFeed() {
   // TODO: fix
+  /*
   StandardFeed *selected_feed = (StandardFeed*) selectedFeed();
 
   if (selected_feed != NULL) {
     selected_feed->fetchMetadataForItself();
     m_sourceModel->reloadChangedLayout(QModelIndexList() << m_proxyModel->mapToSource(selectionModel()->selectedRows(0).at(0)));
   }
+  */
 }
 
 void FeedsView::clearAllReadMessages() {

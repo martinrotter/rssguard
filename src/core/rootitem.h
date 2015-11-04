@@ -138,7 +138,9 @@ class RootItem {
       m_childItems.clear();
     }
 
-    QList<RootItem*> getRecursiveChildren();
+    // Returns flat list of all items from subtree where this item is a root.
+    // Returned list includes this item too.
+    QList<RootItem*> getSubTree();
 
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.

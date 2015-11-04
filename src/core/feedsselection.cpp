@@ -58,7 +58,7 @@ RootItem *FeedsSelection::selectedItem() const {
 QString FeedsSelection::generateListOfIds() {
   if (m_selectedItem != NULL &&
       (m_selectedItem->kind() == RootItemKind::Feed || m_selectedItem->kind() == RootItemKind::Category)) {
-    QList<RootItem*> children = m_selectedItem->getRecursiveChildren();
+    QList<RootItem*> children = m_selectedItem->getSubTree();
     QStringList stringy_ids;
 
     foreach (RootItem *child, children) {

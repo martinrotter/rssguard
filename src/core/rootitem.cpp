@@ -74,36 +74,20 @@ int RootItem::countOfAllMessages() const {
   return total_count;
 }
 
-QList<RootItem*> RootItem::getRecursiveChildren() {
+QList<RootItem*> RootItem::getSubTree() {
   QList<RootItem*> children;
 
-  if (childCount() == 0) {
-    // Root itself has no children, it is either feed or
-    // empty category?
-    children.append(this);
-  }
-  else {
-    // Root itself is a CATEGORY or ROOT item.
-    QList<RootItem*> traversable_items;
+  // Root itself is a CATEGORY or ROOT item.
+  QList<RootItem*> traversable_items;
 
-    traversable_items.append(this);
+  traversable_items.append(this);
 
-    // Iterate all nested categories.
-    while (!traversable_items.isEmpty()) {
-      RootItem *active_item = traversable_items.takeFirst();
-      children.append(active_item);
+  // Iterate all nested categories.
+  while (!traversable_items.isEmpty()) {
+    RootItem *active_item = traversable_items.takeFirst();
 
-      foreach (RootItem *child, active_item->childItems()) {
-        if (child->childCount() == 0) {
-          // This child is feed or empty category.
-          children.append(child);
-        }
-        else {
-          // This child is category, add its child feeds too.
-          traversable_items.append(child);
-        }
-      }
-    }
+    children.append(active_item);
+    traversable_items.append(active_item->childItems());
   }
 
   return children;

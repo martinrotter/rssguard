@@ -20,7 +20,7 @@
 
 #include <QAbstractItemModel>
 
-#include "core/messagesmodel.h"
+#include "core/message.h"
 #include "core/rootitem.h"
 
 
