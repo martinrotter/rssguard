@@ -45,8 +45,8 @@ class Feed : public RootItem {
     };
 
     enum ReadStatus {
-      Read    = 0,
-      Unread  = 1
+      Unread  = 0,
+      Read    = 1
     };
 
     // Constructors.

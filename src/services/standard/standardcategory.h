@@ -25,6 +25,7 @@
 
 
 class FeedsModel;
+class StandardServiceRoot;
 
 // Base class for all categories contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR category types.
@@ -38,6 +39,8 @@ class StandardCategory : public Category {
     explicit StandardCategory(const StandardCategory &other);
     explicit StandardCategory(const QSqlRecord &record);
     virtual ~StandardCategory();
+
+    StandardServiceRoot *serviceRoot();
 
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;

@@ -152,6 +152,21 @@ QList<Feed*> RootItem::getSubTreeFeeds() {
   return children;
 }
 
+ServiceRoot *RootItem::getParentServiceRoot() {
+  RootItem *working_parent = this;
+
+  while (working_parent->kind() != RootItemKind::Root) {
+    if (working_parent->kind() == RootItemKind::ServiceRoot) {
+      return working_parent->toServiceRoot();
+    }
+    else {
+      working_parent = working_parent->parent();
+    }
+  }
+
+  return NULL;
+}
+
 bool RootItem::removeChild(RootItem *child) {
   return m_childItems.removeOne(child);
 }

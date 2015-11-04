@@ -258,9 +258,6 @@ void FormStandardFeedDetails::apply() {
 
     if (edited) {
       m_serviceRoot->feedsModel()->reassignNodeToNewParent(m_editableFeed, new_feed->parent());
-
-      // Remove new temporary feed data holder object.
-      delete new_feed;
       accept();
     }
     else {
@@ -268,6 +265,8 @@ void FormStandardFeedDetails::apply() {
                            tr("Feed was not edited due to error."),
                            QSystemTrayIcon::Critical, this, true);
     }
+
+    delete new_feed;
   }
 }
 

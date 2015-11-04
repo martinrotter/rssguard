@@ -29,6 +29,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "services/standard/standardserviceroot.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 
 #include <QSqlDatabase>
@@ -98,16 +99,15 @@ int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
+StandardServiceRoot *StandardFeed::serviceRoot() {
+  return static_cast<StandardServiceRoot*>(getParentServiceRoot());
+}
+
 bool StandardFeed::editViaDialog() {
-  // TODO: fix passing of the model
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(serviceRoot(), qApp->mainForm());
 
-  /*
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
-                                                                               qApp->mainForm());
   form_pointer.data()->exec(this, NULL);
-
   delete form_pointer.data();
-  */
   return false;
 }
 

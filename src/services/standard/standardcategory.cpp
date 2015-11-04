@@ -27,6 +27,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
+#include "services/standard/standardserviceroot.h"
 
 #include <QVariant>
 #include <QSqlQuery>
@@ -52,6 +53,10 @@ StandardCategory::StandardCategory(const StandardCategory &other)
 
 StandardCategory::~StandardCategory() {
   qDebug("Destroying Category instance.");
+}
+
+StandardServiceRoot *StandardCategory::serviceRoot() {
+  return static_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
 void StandardCategory::init() {
@@ -127,16 +132,10 @@ QVariant StandardCategory::data(int column, int role) const {
 }
 
 bool StandardCategory::editViaDialog() {
-  // TODO: předávat service root.
-/*
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
-                                                                                       qApp->mainForm());
-
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm());
 
   form_pointer.data()->exec(this, NULL);
-
   delete form_pointer.data();
-  */
   return false;
 }
 

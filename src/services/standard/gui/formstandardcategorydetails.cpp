@@ -139,9 +139,6 @@ void FormStandardCategoryDetails::apply() {
 
     if (edited) {
       m_serviceRoot->feedsModel()->reassignNodeToNewParent(m_editableCategory, new_category->parent());
-
-      // Remove new temporary feed data holder object.
-      delete new_category;
       accept();
     }
     else {
@@ -149,6 +146,8 @@ void FormStandardCategoryDetails::apply() {
                            tr("Category was not edited due to error."),
                            QSystemTrayIcon::Critical, this, true);
     }
+
+    delete new_category;
   }
 }
 

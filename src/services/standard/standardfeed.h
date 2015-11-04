@@ -30,6 +30,7 @@
 
 class Message;
 class FeedsModel;
+class StandardServiceRoot;
 
 // Represents BASE class for feeds contained in FeedsModel.
 // NOTE: This class should be derived to create PARTICULAR feed types.
@@ -51,6 +52,8 @@ class StandardFeed : public Feed {
     explicit StandardFeed(const StandardFeed &other);
     explicit StandardFeed(const QSqlRecord &record);
     virtual ~StandardFeed();
+
+    StandardServiceRoot *serviceRoot();
 
     // Getters/setters for count of messages.
     // NOTE: For feeds, counts are stored internally

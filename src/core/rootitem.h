@@ -157,6 +157,9 @@ class RootItem {
     QList<Category*> getSubTreeCategories();
     QList<Feed*> getSubTreeFeeds();
 
+    // Returns the service root node which is direct or indirect parent of current item.
+    ServiceRoot *getParentServiceRoot();
+
     // Removes particular child at given index.
     // NOTE: Child is NOT freed from the memory.
     bool removeChild(int index);

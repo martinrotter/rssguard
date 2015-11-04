@@ -26,6 +26,7 @@
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
 #include "core/feedsselection.h"
+#include "services/standard/standardserviceroot.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "network-web/webbrowser.h"
@@ -209,12 +210,10 @@ void FeedMessageViewer::loadInitialFeeds() {
     model.importAsOPML20(IOFactory::readTextFile(file_to_load));
     model.checkAllItems();
 
-    // TODO: dodělat, předpokládá nějaký rozumný přístup k standardnímu root servicu.
-    /*
-    if (m_feedsView->sourceModel()->mergeModel(&model, output_msg)) {
+    // TODO: double-check.
+    if (m_feedsView->sourceModel()->standardServiceRoot()->mergeImportExportModel(&model, output_msg)) {
       m_feedsView->expandAll();
     }
-    */
   }
   catch (ApplicationException &ex) {
     MessageBox::show(this, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());

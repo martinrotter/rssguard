@@ -289,7 +289,10 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
         StandardFeed *new_feed = new StandardFeed(*source_feed);
 
         // Append this feed and end this iteration.
-        if (!new_feed->addItself(target_parent)) {
+        if (new_feed->addItself(target_parent)) {
+          m_feedsModel->assignNodeToNewParent(new_feed, target_parent);
+        }
+        else {
           delete new_feed;
           some_feed_category_error = true;
         }
