@@ -305,30 +305,8 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   QList<Message> messages;
 
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(database);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents "
-                         "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed;");
-
-  foreach (Feed *feed, feeds) {
-    query_read_msg.bindValue(QSL(":feed"), feed->id());
-
-    if (query_read_msg.exec()) {
-      while (query_read_msg.next()) {
-        Message message;
-
-        message.m_feedId = feed->id();
-        message.m_title = query_read_msg.value(0).toString();
-        message.m_url = query_read_msg.value(1).toString();
-        message.m_author = query_read_msg.value(2).toString();
-        message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
-        message.m_contents = query_read_msg.value(4).toString();
-
-        messages.append(message);
-      }
-    }
+  foreach (const Feed *feed, feeds) {
+    messages.append(feed->undeletedMessages());
   }
 
   return messages;

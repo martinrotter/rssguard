@@ -413,6 +413,7 @@ set(APP_SOURCES
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
   src/core/feedsselection.cpp
+  src/core/message.cpp
 
   # ABSTRACT service sources.
   src/services/abstract/serviceentrypoint.cpp

@@ -68,6 +68,8 @@ class StandardFeed : public Feed {
 
     void editViaDialog();
 
+    QList<Message> undeletedMessages() const;
+
     // Obtains data related to this feed.
     QVariant data(int column, int role) const;
 
@@ -157,7 +159,7 @@ class StandardFeed : public Feed {
   private:
     void init();
 
-  private:    
+  private:
     bool m_passwordProtected;
     QString m_username;
     QString m_password;

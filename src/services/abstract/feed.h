@@ -20,6 +20,8 @@
 
 #include "core/rootitem.h"
 
+#include "core/message.h"
+
 
 // Base class for "feed" nodes.
 class Feed : public RootItem {
@@ -58,7 +60,8 @@ class Feed : public RootItem {
     // Updates counts of all/unread messages for this feed.
     virtual void updateCounts(bool including_total_count = true, bool update_feed_statuses = true) = 0;
 
-
+    // Get ALL undeleted messages from this feed in one single list.
+    virtual QList<Message> undeletedMessages() const = 0;
 
     inline int autoUpdateInitialInterval() const {
       return m_autoUpdateInitialInterval;
