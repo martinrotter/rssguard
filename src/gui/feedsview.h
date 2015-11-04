@@ -30,7 +30,6 @@
 class FeedsProxyModel;
 class Feed;
 class Category;
-class StandardCategory;
 class QTimer;
 
 class FeedsView : public QTreeView {
