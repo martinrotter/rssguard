@@ -242,7 +242,7 @@ void FormStandardFeedDetails::apply() {
   if (m_editableFeed == NULL) {
     // Add the feed.
     if (new_feed->addItself(parent)) {
-      m_serviceRoot->feedsModel()->assignNodeToNewParent(new_feed, parent);
+      m_serviceRoot->feedsModel()->reassignNodeToNewParent(new_feed, parent);
       accept();
     }
     else {

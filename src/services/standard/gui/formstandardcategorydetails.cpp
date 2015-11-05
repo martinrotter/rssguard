@@ -123,7 +123,7 @@ void FormStandardCategoryDetails::apply() {
   if (m_editableCategory == NULL) {
     // Add the category.
     if (new_category->addItself(parent)) {
-      m_serviceRoot->feedsModel()->assignNodeToNewParent(new_category, parent);
+      m_serviceRoot->feedsModel()->reassignNodeToNewParent(new_category, parent);
       accept();
     }
     else {

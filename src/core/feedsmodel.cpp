@@ -231,30 +231,22 @@ bool FeedsModel::removeItem(const QModelIndex &index) {
   return false;
 }
 
-void FeedsModel::assignNodeToNewParent(RootItem *item, RootItem *new_parent) {
-  QModelIndex parent_index = indexForItem(new_parent);
-  int new_index_of_item = new_parent->childCount();
-
-  // TODO: sloučit do funkce reassignNodeToNewParent.
-
-  beginInsertRows(parent_index, new_index_of_item, new_index_of_item);
-  new_parent->appendChild(item);
-  endInsertRows();
-}
-
 void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent) {
   RootItem *original_parent = original_node->parent();
 
   if (original_parent != new_parent) {
-    // User edited item and set it new parent item,
-    // se we need to move the item in the model too.
-    int original_index_of_item = original_parent->childItems().indexOf(original_node);
-    int new_index_of_item = new_parent->childCount();
+    if (original_parent != NULL) {
+      int original_index_of_item = original_parent->childItems().indexOf(original_node);
 
-    // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent), original_index_of_item, original_index_of_item);
-    original_parent->removeChild(original_node);
-    endRemoveRows();
+      if (original_index_of_item >= 0) {
+        // Remove the original item from the model...
+        beginRemoveRows(indexForItem(original_parent), original_index_of_item, original_index_of_item);
+        original_parent->removeChild(original_node);
+        endRemoveRows();
+      }
+    }
+
+    int new_index_of_item = new_parent->childCount();
 
     // ... and insert it under the new parent.
     beginInsertRows(indexForItem(new_parent), new_index_of_item, new_index_of_item);

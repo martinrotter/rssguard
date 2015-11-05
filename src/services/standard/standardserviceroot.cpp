@@ -256,7 +256,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
         new_category->clearChildren();
 
         if (new_category->addItself(target_parent)) {
-          m_feedsModel->assignNodeToNewParent(new_category, target_parent);
+          m_feedsModel->reassignNodeToNewParent(new_category, target_parent);
 
           // Process all children of this category.
           original_parents.push(new_category);
@@ -290,7 +290,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
 
         // Append this feed and end this iteration.
         if (new_feed->addItself(target_parent)) {
-          m_feedsModel->assignNodeToNewParent(new_feed, target_parent);
+          m_feedsModel->reassignNodeToNewParent(new_feed, target_parent);
         }
         else {
           delete new_feed;

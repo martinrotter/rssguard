@@ -16,12 +16,12 @@
 		
 	  Added:
 	  <ul>
-		  <li></li>
+		  <li style="color: red;">Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Some UI features (for example drag-drop) are temporarily unavailable. Expect bugs and misunderstandings now!</li>
 	  </ul>
 	  
 	  Fixed:
 	  <ul>
-	    <li></li>
+	    <li>When removing download item from download manager via DELETE key, then "Cleanup" button is correctly disabled.</li>
 	  </ul>
 	  
 	  <hr/>

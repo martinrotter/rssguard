@@ -559,6 +559,10 @@ QNetworkAccessManager *DownloadManager::networkManager() const {
   return m_networkManager;
 }
 
+int DownloadManager::totalDownloads() const {
+  return m_downloads.size();
+}
+
 void DownloadManager::itemFinished() {
   emit downloadFinished();
 }
@@ -789,6 +793,11 @@ bool DownloadModel::removeRows(int row, int count, const QModelIndex &parent) {
   }
 
   m_downloadManager->m_autoSaver->changeOccurred();
+
+  if (m_downloadManager->totalDownloads() == 0) {
+    m_downloadManager->m_ui->m_btnCleanup->setEnabled(false);
+  }
+
   return true;
 }
 

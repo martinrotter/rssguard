@@ -63,9 +63,6 @@ class FeedsModel : public QAbstractItemModel {
     // NOTE: Also deletes item from memory.
     bool removeItem(const QModelIndex &index);
 
-    // Assigns item to the new parent.
-    void assignNodeToNewParent(RootItem *item, RootItem *new_parent);
-
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
