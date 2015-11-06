@@ -80,7 +80,7 @@ class RootItem : public QObject {
     // NOTE: This method should always create new actions in memory
     // before returning them because caller takes ownership of any
     // actions returned from here.
-    virtual QList<QAction*> specificActions();
+    virtual QList<QAction*> specificContextMenuActions();
 
     // TODO: pracovat s těmito věcmi
     virtual bool canBeEdited() {

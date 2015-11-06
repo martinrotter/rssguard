@@ -491,7 +491,7 @@ void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
     m_contextMenuCategories->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->specificActions();
+  QList<QAction*> specific_actions = clicked_item->specificContextMenuActions();
 
   m_contextMenuCategories->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
@@ -512,10 +512,12 @@ void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
     m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
   }
   else {
+    // FIXME: Položky jsou mazány při opětovném otevření kontextového nabíky ale je lepší je mazat
+    // hned při zavření kontextove nabíky.
     m_contextMenuFeeds->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->specificActions();
+  QList<QAction*> specific_actions = clicked_item->specificContextMenuActions();
 
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
@@ -603,6 +605,9 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
       // Display context menu for feeds.
       initializeContextMenuFeeds(clicked_item);
       m_contextMenuFeeds->exec(event->globalPos());
+    }
+    else {
+
     }
   }
   else {

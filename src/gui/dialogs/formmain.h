@@ -64,19 +64,6 @@ class FormMain : public QMainWindow {
     void loadSize();
     void saveSize();
 
-  protected:
-    // Creates all needed menus and sets them up.
-    void prepareMenus();
-
-    // Creates needed connections for this window.
-    void createConnections();
-
-    // Event handler reimplementations.
-    void changeEvent(QEvent *event);
-
-    // Sets up proper icons for this widget.
-    void setupIcons();
-
   public slots:
     // Displays window on top or switches its visibility.
     void display();
@@ -90,7 +77,7 @@ class FormMain : public QMainWindow {
     // Switches visibility of main menu.
     void switchMainMenu();
 
-  protected slots:
+  private slots:
     // Loads web browser menu if user selects to change tabs.
     void loadWebBrowserMenu(int index);
 
@@ -108,6 +95,18 @@ class FormMain : public QMainWindow {
     void donate();
 
   private:
+    // Event handler reimplementations.
+    void changeEvent(QEvent *event);
+
+    // Creates all needed menus and sets them up.
+    void prepareMenus();
+
+    // Creates needed connections for this window.
+    void createConnections();
+
+    // Sets up proper icons for this widget.
+    void setupIcons();
+
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;

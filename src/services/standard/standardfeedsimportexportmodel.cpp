@@ -19,6 +19,7 @@
 
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardcategory.h"
+#include "services/standard/standardserviceroot.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -166,7 +167,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
     return false;
   }
 
-  RootItem *root_item = new RootItem();
+  StandardServiceRoot *root_item = new StandardServiceRoot(false, NULL, NULL);
   QStack<RootItem*> model_items; model_items.push(root_item);
   QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
 
@@ -295,7 +296,7 @@ QModelIndex FeedsImportExportModel::index(int row, int column, const QModelIndex
 }
 
 QModelIndex FeedsImportExportModel::indexForItem(RootItem *item) const {
-  if (item == NULL || item->kind() == RootItemKind::Root) {
+  if (item == NULL || item->kind() == RootItemKind::ServiceRoot || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }

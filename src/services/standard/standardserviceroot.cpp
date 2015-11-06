@@ -34,14 +34,16 @@
 #include <QCoreApplication>
 
 
-StandardServiceRoot::StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent)
+StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)) {
   m_title = qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME);
   m_icon = StandardServiceEntryPoint().icon();
   m_description = tr("This is obligatory service account for standard RSS/RDF/ATOM feeds.");
   m_creationDate = QDateTime::currentDateTime();
 
-  loadFromDatabase();
+  if (load_from_db) {
+    loadFromDatabase();
+  }
 }
 
 StandardServiceRoot::~StandardServiceRoot() {
@@ -312,9 +314,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
     }
   }
 
-  // Changes are done now. Finalize the new model.
-  //emit layoutChanged();
-
   if (some_feed_category_error) {
     output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");
   }
@@ -323,6 +322,14 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
   }
 
   return !some_feed_category_error;
+}
+
+QList<QAction*> StandardServiceRoot::specificAddItemActions() {
+  QList<QAction*> actions;
+
+  // TODO: vracet add feed, add category
+  actions.append(new QAction("abc", NULL));
+  return actions;
 }
 
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {

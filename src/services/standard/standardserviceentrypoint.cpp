@@ -70,7 +70,7 @@ QIcon StandardServiceEntryPoint::icon() {
 }
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree(FeedsModel *main_model) {
-  StandardServiceRoot *root = new StandardServiceRoot(main_model);
+  StandardServiceRoot *root = new StandardServiceRoot(true, main_model);
   QList<ServiceRoot*> roots;
 
   roots.append(root);

@@ -395,25 +395,21 @@ void FormMain::loadWebBrowserMenu(int index) {
 }
 
 void FormMain::exportFeeds() {  
-  // TODO: dodelat globalni pristup ke globalnimu standard service rootu,
-  // ten předat
-  /*
-  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this);
+  // TODO: crash
+  QPointer<FormStandardImportExport> form = new FormStandardImportExport(tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot(),
+                                                                         this);
   form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
   delete form.data();
-  */
 }
 
 void FormMain::importFeeds() {
-  // TODO: dodelat globalni pristup ke globalnimu standard service rootu,
-  // ten předat
-  /*
-  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this);
+  // TODO: crash
+  QPointer<FormStandardImportExport> form = new FormStandardImportExport(tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot(),
+                                                                         this);
   form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
   delete form.data();
-  */
 }
 
 void FormMain::backupDatabaseSettings() {

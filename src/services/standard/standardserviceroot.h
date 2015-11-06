@@ -38,7 +38,7 @@ class StandardServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    explicit StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
+    explicit StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
 
     bool canBeEdited();
@@ -62,6 +62,8 @@ class StandardServiceRoot : public ServiceRoot {
     // it to active structure.
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
+
+    QList<QAction*> specificAddItemActions();
 
   private:
     void loadFromDatabase();

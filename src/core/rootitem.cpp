@@ -41,7 +41,7 @@ RootItem::~RootItem() {
   qDeleteAll(m_childItems);
 }
 
-QList<QAction *> RootItem::specificActions() {
+QList<QAction *> RootItem::specificContextMenuActions() {
   return QList<QAction*>();
 }
 

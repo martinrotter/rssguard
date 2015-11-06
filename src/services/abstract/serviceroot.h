@@ -33,6 +33,16 @@ class ServiceRoot : public RootItem {
     explicit ServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~ServiceRoot();
 
+    // Returns list of specific actions for "Add new item" main window menu.
+    // So typical list of returned actions could look like:
+    //  a) Add new feed
+    //  b) Add new category
+    //  c) ...
+    // NOTE: This method should always create new actions in memory
+    // before returning them because caller takes ownership of any
+    // actions returned from here.
+    virtual QList<QAction*> specificAddItemActions() = 0;
+
     inline FeedsModel *feedsModel() const {
       return m_feedsModel;
     }
