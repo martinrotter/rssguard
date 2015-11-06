@@ -53,7 +53,8 @@ class StandardCategory : public Category {
       return true;
     }
 
-    bool editViaDialog();
+    bool editViaGui();
+    bool deleteViaGui();
 
     // Removes category and all its children from persistent
     // database.

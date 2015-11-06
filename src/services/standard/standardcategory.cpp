@@ -28,6 +28,7 @@
 #include "gui/feedsview.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/standardserviceroot.h"
+#include "services/standard/standardfeed.h"
 
 #include <QVariant>
 #include <QSqlQuery>
@@ -131,7 +132,7 @@ QVariant StandardCategory::data(int column, int role) const {
   }
 }
 
-bool StandardCategory::editViaDialog() {
+bool StandardCategory::editViaGui() {
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm());
 
   form_pointer.data()->exec(this, NULL);
@@ -139,12 +140,21 @@ bool StandardCategory::editViaDialog() {
   return false;
 }
 
+bool StandardCategory::deleteViaGui() {
+  return removeItself();
+}
+
 bool StandardCategory::removeItself() {
   bool children_removed = true;
 
   // Remove all child items (feeds, categories.)
   foreach (RootItem *child, m_childItems) {
-    children_removed &= child->removeItself();
+    if (child->kind() == RootItemKind::Category) {
+      children_removed &= static_cast<StandardCategory*>(child)->removeItself();
+    }
+    else if (child->kind() == RootItemKind::Feed) {
+      children_removed &= static_cast<StandardFeed*>(child)->removeItself();
+    }
   }
 
   if (children_removed) {

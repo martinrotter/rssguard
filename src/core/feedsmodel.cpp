@@ -208,27 +208,20 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 }
 
-bool FeedsModel::removeItem(const QModelIndex &index) {
+void FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
     RootItem *deleting_item = itemForIndex(index);
     RootItem *parent_item = deleting_item->parent();
 
-    // Try to persistently remove the item.
-    if (deleting_item->removeItself()) {
-      // Item was persistently removed.
-      // Remove it from the model.
-      beginRemoveRows(parent_index, index.row(), index.row());
-      parent_item->removeChild(deleting_item);
-      endRemoveRows();
+    // Item was persistently removed.
+    // Remove it from the model.
+    beginRemoveRows(parent_index, index.row(), index.row());
+    parent_item->removeChild(deleting_item);
+    endRemoveRows();
 
-      delete deleting_item;
-      return true;
-    }
+    delete deleting_item;
   }
-
-  // Item was not removed successfully.
-  return false;
 }
 
 void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent) {

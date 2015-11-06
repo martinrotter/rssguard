@@ -247,7 +247,7 @@ void FeedsView::editSelectedItem() {
   }
 
   if (selectedItem()->canBeEdited()) {
-    selectedItem()->editViaDialog();
+    selectedItem()->editViaGui();
   }
   else {
     qApp->showGuiMessage(tr("Cannot edit item"),
@@ -282,24 +282,47 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Delete feed/category"),
-                       tr("You are about to delete selected feed or category."), tr("Do you really want to delete selected item?"),
-                       QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
-    // User changed his mind.
-    qApp->feedUpdateLock()->unlock();
-    return;
-  }
+  RootItem *selected_item = selectedItem();
 
-  if (m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index))) {
-    // Item WAS removed, update counts.
-    notifyWithCounts();
-  }
-  else {
-    // Item WAS NOT removed, either database-related error occurred
-    // or update is undergoing.
-    qApp->showGuiMessage(tr("Deletion of item failed."),
-                         tr("Selected item was not deleted due to error."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+  if (selected_item != NULL) {
+    if (selected_item->canBeDeleted()) {
+      // Ask user first.
+      if (MessageBox::show(qApp->mainForm(),
+                           QMessageBox::Question,
+                           tr("Deleting \"%1\"").arg(selected_item->title()),
+                           tr("You are about to completely delete item \"%1\".").arg(selected_item->title()),
+                           tr("Are you sure?"),
+                           QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No) {
+        // User refused.
+        qApp->feedUpdateLock()->unlock();
+        return;
+      }
+
+      // We have deleteable item selected, remove it via GUI.
+      if (!selected_item->deleteViaGui()) {
+        qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
+                             tr("This item cannot be deleted because something critically failed. Submit bug report."),
+                             QSystemTrayIcon::Critical,
+                             qApp->mainForm(),
+                             true);
+      }
+      else {
+        // Item is gone, cleared from database. We can clear it from model now.
+        // NOTE: Cleared from memory here too.
+        // TODO: možná toto přesunout taky to metody deleteViaGui
+        // a delete selected_item jen volat tady, editViaGui taky obstará všechno,
+        // ale tam je to zas komplexnější.
+        m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index));
+        notifyWithCounts();
+      }
+    }
+    else {
+      qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),
+                           tr("This item cannot be deleted, because it does not support it\nor this functionality is not implemented yet."),
+                           QSystemTrayIcon::Critical,
+                           qApp->mainForm(),
+                           true);
+    }
   }
 
   // Changes are done, unlock the update master lock.

@@ -34,7 +34,7 @@ class TtRssServiceRoot : public ServiceRoot {
 
     bool canBeEdited();
     bool canBeDeleted();
-    bool editViaDialog();
+    bool editViaGui();
     QVariant data(int column, int role) const;
 };
 

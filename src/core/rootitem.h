@@ -78,7 +78,7 @@ class RootItem {
       return false;
     }
 
-    virtual bool editViaDialog() {
+    virtual bool editViaGui() {
       return false;
     }
 
@@ -90,6 +90,23 @@ class RootItem {
       return false;
     }
 
+    virtual bool canBeMarkedAsRead() {
+      return true;
+    }
+
+    virtual bool markAsRead() {
+      return true;
+    }
+
+    virtual bool canBeMarkedAsUnread() {
+      return true;
+    }
+
+    virtual bool markAsUnread() {
+      return true;
+    }
+
+
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
 
@@ -97,16 +114,6 @@ class RootItem {
     // Returns counts of messages of all child items summed up.
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
-
-    // This method is used to permanently
-    // "remove" (or "unregister") this item.
-    // This typically removes item and its
-    // "children" (for example messages or child feeds)
-    // from the database.
-    // Returns true if "I" was removed.
-    virtual bool removeItself() {
-      return false;
-    }
 
     // Access to children.
     inline QList<RootItem*> childItems() const {
