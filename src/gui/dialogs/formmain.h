@@ -78,6 +78,8 @@ class FormMain : public QMainWindow {
     void switchMainMenu();
 
   private slots:
+    void updateAddItemMenu();
+
     // Loads web browser menu if user selects to change tabs.
     void loadWebBrowserMenu(int index);
 

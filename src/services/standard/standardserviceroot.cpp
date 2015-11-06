@@ -211,7 +211,7 @@ QHash<int,StandardCategory*> StandardServiceRoot::allCategories() {
   return categoriesForItem(this);
 }
 
-QList<QAction*> StandardServiceRoot::getMenuForFeed(StandardFeed *feed) {
+QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   QList<QAction*> list;
 
   // Fetch feed metadata.

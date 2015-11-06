@@ -63,8 +63,6 @@ FeedsModel::FeedsModel(QObject *parent)
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
 
   loadActivatedServiceAccounts();
-
-  // Setup the timer.
   updateAutoUpdateStatus();
 }
 

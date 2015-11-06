@@ -53,7 +53,8 @@ class StandardServiceRoot : public ServiceRoot {
     // consists of ID of parent item and pointer to category.
     QHash<int,StandardCategory*> allCategories();
 
-    QList<QAction*> getMenuForFeed(StandardFeed *feed);
+    // Returns context specific menu actions for given feed.
+    QList<QAction*> getContextMenuForFeed(StandardFeed *feed);
 
     // Access to standard recycle bin.
     StandardRecycleBin *recycleBin() const;
@@ -63,6 +64,7 @@ class StandardServiceRoot : public ServiceRoot {
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
+    // Return "add feed" and "add category" items.
     QList<QAction*> specificAddItemActions();
 
   private:

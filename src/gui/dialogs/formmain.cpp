@@ -39,6 +39,7 @@
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
 #include "gui/notifications/notification.h"
+#include "services/abstract/serviceroot.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
 #include <QCloseEvent>
@@ -169,6 +170,37 @@ void FormMain::switchFullscreenMode() {
 
 void FormMain::switchMainMenu() {
   m_ui->m_menuBar->setVisible(m_ui->m_actionSwitchMainMenu->isChecked());
+}
+
+void FormMain::updateAddItemMenu() {
+  // TODO: clear nevymaže z paměti. - edit, stačí nastavit parent na to menu
+  // a při clear to i vymaže z paměti.
+  m_ui->m_menuAddItem->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
+    QList<QAction*> root_actions = activated_root->specificAddItemActions();
+
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    if (root_actions.isEmpty()) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                                                tr("No possible actions"),
+                                                                m_ui->m_menuAddItem);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      foreach (QAction *action, root_actions) {
+        action->setParent(root_menu);
+      }
+
+      root_menu->addActions(root_actions);
+    }
+
+    m_ui->m_menuAddItem->addMenu(root_menu);
+  }
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -335,6 +367,8 @@ void FormMain::createConnections() {
   connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)), m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
+  connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
+
   // Menu "File" connections.
   connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
   connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
@@ -395,7 +429,6 @@ void FormMain::loadWebBrowserMenu(int index) {
 }
 
 void FormMain::exportFeeds() {  
-  // TODO: crash
   QPointer<FormStandardImportExport> form = new FormStandardImportExport(tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot(),
                                                                          this);
   form.data()->setMode(FeedsImportExportModel::Export);
@@ -404,7 +437,6 @@ void FormMain::exportFeeds() {
 }
 
 void FormMain::importFeeds() {
-  // TODO: crash
   QPointer<FormStandardImportExport> form = new FormStandardImportExport(tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot(),
                                                                          this);
   form.data()->setMode(FeedsImportExportModel::Import);
