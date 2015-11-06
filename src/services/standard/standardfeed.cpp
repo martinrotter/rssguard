@@ -99,6 +99,10 @@ int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
+QList<QAction*> StandardFeed::specificActions() {
+  return serviceRoot()->getMenuForFeed(this);
+}
+
 StandardServiceRoot *StandardFeed::serviceRoot() {
   return static_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
@@ -201,10 +205,14 @@ void StandardFeed::fetchMetadataForItself() {
 
     editItself(metadata.first);
     delete metadata.first;
+
+    // Notify the model about fact, that it needs to reload new information about
+    // this item, particularly the icon.
+    serviceRoot()->feedsModel()->reloadChangedItem(this);
   }
   else {
     qApp->showGuiMessage(tr("Metadata not fetched"),
-                         tr("Metadata was not fetched because: %1").arg(NetworkFactory::networkErrorText(metadata.second)),
+                         tr("Metadata was not fetched because: %1.").arg(NetworkFactory::networkErrorText(metadata.second)),
                          QSystemTrayIcon::Critical);
   }
 }

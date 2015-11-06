@@ -392,6 +392,11 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   }
 }
 
+void FeedsModel::reloadChangedItem(RootItem *item) {
+  QModelIndex index_item = indexForItem(item);
+  reloadChangedLayout(QModelIndexList() << index_item);
+}
+
 QStringList FeedsModel::textualFeedIds(const QList<Feed*> &feeds) {
   QStringList stringy_ids;
   stringy_ids.reserve(feeds.size());

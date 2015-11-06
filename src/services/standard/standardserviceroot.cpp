@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/iconfactory.h"
 #include "core/feedsmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/standard/standardrecyclebin.h"
@@ -206,6 +207,17 @@ QHash<int,StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *ro
 
 QHash<int,StandardCategory*> StandardServiceRoot::allCategories() {
   return categoriesForItem(this);
+}
+
+QList<QAction*> StandardServiceRoot::getMenuForFeed(StandardFeed *feed) {
+  QList<QAction*> list;
+
+  // Fetch feed metadata.
+  QAction *action_fetch_metadata = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("Fetch metadata"), NULL);
+  connect(action_fetch_metadata, SIGNAL(triggered()), feed, SLOT(fetchMetadataForItself()));
+
+  list.append(action_fetch_metadata);
+  return list;
 }
 
 void StandardServiceRoot::assembleFeeds(FeedAssignment feeds) {

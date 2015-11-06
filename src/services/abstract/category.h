@@ -22,6 +22,8 @@
 
 
 class Category : public RootItem {
+    Q_OBJECT
+
   public:
     explicit Category(RootItem *parent = NULL);
     virtual ~Category();

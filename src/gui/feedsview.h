@@ -69,7 +69,6 @@ class FeedsView : public QTreeView {
   public slots:
     void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
     void expandCollapseCurrentItem();
-    void fetchMetadataForSelectedFeed();
 
     // Feed updating.
     void updateAllFeeds();
@@ -136,8 +135,8 @@ class FeedsView : public QTreeView {
 
   protected:
     // Initializes context menus.
-    void initializeContextMenuCategories();
-    void initializeContextMenuFeeds();
+    void initializeContextMenuCategories(RootItem *clicked_item);
+    void initializeContextMenuFeeds(RootItem *clicked_item);
     void initializeContextMenuEmptySpace();
 
     // Sets up appearance of this widget.

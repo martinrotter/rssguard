@@ -35,7 +35,7 @@ typedef QList<QPair<int, StandardFeed*> > FeedAssignment;
 typedef QPair<int, StandardFeed*> FeedAssignmentItem;
 
 class StandardServiceRoot : public ServiceRoot {
-    Q_DECLARE_TR_FUNCTIONS(StandardServiceRoot)
+    Q_OBJECT
 
   public:
     explicit StandardServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
@@ -52,6 +52,8 @@ class StandardServiceRoot : public ServiceRoot {
     // Returns all categories from this root, each pair
     // consists of ID of parent item and pointer to category.
     QHash<int,StandardCategory*> allCategories();
+
+    QList<QAction*> getMenuForFeed(StandardFeed *feed);
 
     // Access to standard recycle bin.
     StandardRecycleBin *recycleBin() const;

@@ -144,6 +144,9 @@ class FeedsModel : public QAbstractItemModel {
     // NOTE: This reloads all parent valid indexes too.
     void reloadChangedLayout(QModelIndexList list);
 
+    // Invalidates data under index for the item.
+    void reloadChangedItem(RootItem *item);
+
   private slots:
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();

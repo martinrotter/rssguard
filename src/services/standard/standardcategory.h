@@ -31,7 +31,7 @@ class StandardServiceRoot;
 // NOTE: This class should be derived to create PARTICULAR category types.
 // NOTE: This class should not be instantiated directly.
 class StandardCategory : public Category {
-    Q_DECLARE_TR_FUNCTIONS(StandardCategory)
+    Q_OBJECT
 
   public:
     // Constructors and destructors

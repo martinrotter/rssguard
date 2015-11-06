@@ -27,6 +27,8 @@ class FeedsModel;
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
 class ServiceRoot : public RootItem {
+    Q_OBJECT
+
   public:
     explicit ServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~ServiceRoot();

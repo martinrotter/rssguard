@@ -422,16 +422,15 @@ set(APP_SOURCES
   src/services/abstract/serviceroot.cpp
 
   # STANDARD feed service sources.
-  src/services/standard/standardfeed.cpp
-  src/services/standard/standardfeedsimportexportmodel.cpp
-  src/services/standard/standardcategory.cpp
   src/services/standard/gui/formstandardcategorydetails.cpp
   src/services/standard/gui/formstandardfeeddetails.cpp
   src/services/standard/gui/formstandardimportexport.cpp
+  src/services/standard/standardfeedsimportexportmodel.cpp
   src/services/standard/standardserviceentrypoint.cpp
+  src/services/standard/standardcategory.cpp
+  src/services/standard/standardfeed.cpp
   src/services/standard/standardserviceroot.cpp
   src/services/standard/standardrecyclebin.cpp
-  src/services/standard/standarditem.cpp
 
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp
@@ -531,12 +530,25 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
+  src/core/rootitem.h
+
+  # ABSTRACT service headers.
+  src/services/abstract/feed.h
+  src/services/abstract/category.h
+  src/services/abstract/serviceroot.h
 
   # STANDARD service headers.
   src/services/standard/standardfeedsimportexportmodel.h
   src/services/standard/gui/formstandardcategorydetails.h
   src/services/standard/gui/formstandardfeeddetails.h
   src/services/standard/gui/formstandardimportexport.h
+  src/services/standard/standardcategory.h
+  src/services/standard/standardfeed.h
+  src/services/standard/standardserviceroot.h
+  src/services/standard/standardrecyclebin.h
+
+  # TT-RSS service headers.
+  src/services/tt-rss/ttrssserviceroot.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h

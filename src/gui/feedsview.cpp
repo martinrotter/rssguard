@@ -355,18 +355,6 @@ void FeedsView::markAllFeedsRead() {
   markAllFeedsReadStatus(1);
 }
 
-void FeedsView::fetchMetadataForSelectedFeed() {
-  // TODO: fix
-  /*
-  StandardFeed *selected_feed = (StandardFeed*) selectedFeed();
-
-  if (selected_feed != NULL) {
-    selected_feed->fetchMetadataForItself();
-    m_sourceModel->reloadChangedLayout(QModelIndexList() << m_proxyModel->mapToSource(selectionModel()->selectedRows(0).at(0)));
-  }
-  */
-}
-
 void FeedsView::clearAllReadMessages() {
   m_sourceModel->markFeedsDeleted(allFeeds(), 1, 1);
 }
@@ -495,40 +483,58 @@ void FeedsView::selectPreviousItem() {
   }
 }
 
-void FeedsView::initializeContextMenuCategories() {
-  m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
+void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
+  if (m_contextMenuCategories == NULL) {
+    m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
+  }
+  else {
+    m_contextMenuCategories->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->specificActions();
+
   m_contextMenuCategories->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
-                                      qApp->mainForm()->m_ui->m_actionEditSelectedFeedCategory <<
+                                      qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
                                       qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                       qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
                                       qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread <<
-                                      qApp->mainForm()->m_ui->m_actionDeleteSelectedFeedCategory);
-  m_contextMenuCategories->addSeparator();
-  m_contextMenuCategories->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionAddCategory <<
-                                      qApp->mainForm()->m_ui->m_actionAddFeed);
+                                      qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuCategories->addSeparator();
+    m_contextMenuCategories->addActions(specific_actions);
+  }
 }
 
-void FeedsView::initializeContextMenuFeeds() {
-  m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
+void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
+  if (m_contextMenuFeeds == NULL) {
+    m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
+  }
+  else {
+    m_contextMenuFeeds->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->specificActions();
+
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
-                                 qApp->mainForm()->m_ui->m_actionEditSelectedFeedCategory <<
+                                 qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
                                  qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread <<
-                                 qApp->mainForm()->m_ui->m_actionDeleteSelectedFeedCategory <<
-                                 qApp->mainForm()->m_ui->m_actionFetchFeedMetadata);
+                                 qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuFeeds->addSeparator();
+    m_contextMenuFeeds->addActions(specific_actions);
+  }
 }
 
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
   m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllFeeds);
   m_contextMenuEmptySpace->addSeparator();
-  m_contextMenuEmptySpace->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionAddCategory <<
-                                      qApp->mainForm()->m_ui->m_actionAddFeed);
 }
 
 void FeedsView::setupAppearance() {
@@ -590,20 +596,12 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
 
     if (clicked_item->kind() == RootItemKind::Category) {
       // Display context menu for categories.
-      if (m_contextMenuCategories == NULL) {
-        // Context menu is not initialized, initialize.
-        initializeContextMenuCategories();
-      }
-
+      initializeContextMenuCategories(clicked_item);
       m_contextMenuCategories->exec(event->globalPos());
     }
     else if (clicked_item->kind() == RootItemKind::Feed) {
       // Display context menu for feeds.
-      if (m_contextMenuFeeds == NULL) {
-        // Context menu is not initialized, initialize.
-        initializeContextMenuFeeds();
-      }
-
+      initializeContextMenuFeeds(clicked_item);
       m_contextMenuFeeds->exec(event->globalPos());
     }
   }

@@ -25,6 +25,8 @@
 
 // Base class for "feed" nodes.
 class Feed : public RootItem {
+    Q_OBJECT
+
   public:
     // Specifies the auto-update strategy for the feed.
     enum AutoUpdateType {

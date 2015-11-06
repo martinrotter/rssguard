@@ -309,20 +309,17 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   bool feed_selected = !m_feedsView->selectionModel()->selectedRows().isEmpty();
   FormMain *form_main = qApp->mainForm();
 
-  form_main->m_ui->m_actionAddCategory->setEnabled(!critical_action_running);
-  form_main->m_ui->m_actionAddFeed->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionClearSelectedFeeds->setEnabled(feed_selected);
-  form_main->m_ui->m_actionDeleteSelectedFeedCategory->setEnabled(!critical_action_running && feed_selected);
-  form_main->m_ui->m_actionEditSelectedFeedCategory->setEnabled(!critical_action_running && feed_selected);
+  form_main->m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && feed_selected);
+  form_main->m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && feed_selected);
   form_main->m_ui->m_actionImportFeeds->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionMarkSelectedFeedsAsRead->setEnabled(feed_selected);
   form_main->m_ui->m_actionMarkSelectedFeedsAsUnread->setEnabled(feed_selected);
   form_main->m_ui->m_actionUpdateAllFeeds->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionUpdateSelectedFeeds->setEnabled(!critical_action_running && feed_selected);
   form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected);
-  form_main->m_ui->m_actionFetchFeedMetadata->setEnabled(feed_selected);
   form_main->m_ui->m_actionExpandCollapseFeedCategory->setEnabled(feed_selected);
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
 }
@@ -395,8 +392,6 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
   connect(form_main->m_ui->m_actionExpandCollapseFeedCategory,
           SIGNAL(triggered()), m_feedsView, SLOT(expandCollapseCurrentItem()));
-  connect(form_main->m_ui->m_actionFetchFeedMetadata, SIGNAL(triggered()),
-          m_feedsView, SLOT(fetchMetadataForSelectedFeed()));
   connect(form_main->m_ui->m_actionMarkSelectedFeedsAsUnread,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
   connect(form_main->m_ui->m_actionClearSelectedFeeds,
@@ -407,15 +402,11 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
   connect(form_main->m_ui->m_actionUpdateAllFeeds,
           SIGNAL(triggered()), m_feedsView, SLOT(updateAllFeeds()));
-  connect(form_main->m_ui->m_actionAddCategory,
-          SIGNAL(triggered()), m_feedsView, SLOT(addNewCategory()));
-  connect(form_main->m_ui->m_actionAddFeed,
-          SIGNAL(triggered()), m_feedsView, SLOT(addNewFeed()));
-  connect(form_main->m_ui->m_actionEditSelectedFeedCategory,
+  connect(form_main->m_ui->m_actionEditSelectedItem,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
           SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
-  connect(form_main->m_ui->m_actionDeleteSelectedFeedCategory,
+  connect(form_main->m_ui->m_actionDeleteSelectedItem,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsList,
           SIGNAL(triggered()), this, SLOT(switchFeedComponentVisibility()));

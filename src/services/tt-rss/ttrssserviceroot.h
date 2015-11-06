@@ -26,7 +26,7 @@
 class FeedsModel;
 
 class TtRssServiceRoot : public ServiceRoot {
-    Q_DECLARE_TR_FUNCTIONS(TtRssServiceRoot)
+    Q_OBJECT
 
   public:
     explicit TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);

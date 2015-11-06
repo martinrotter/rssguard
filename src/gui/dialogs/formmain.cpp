@@ -125,16 +125,13 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionDeleteSelectedMessages;
   actions << m_ui->m_actionUpdateAllFeeds;
   actions << m_ui->m_actionUpdateSelectedFeeds;
-  actions << m_ui->m_actionEditSelectedFeedCategory;
-  actions << m_ui->m_actionDeleteSelectedFeedCategory;
+  actions << m_ui->m_actionEditSelectedItem;
+  actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
-  actions << m_ui->m_actionAddCategory;
-  actions << m_ui->m_actionAddFeed;
   actions << m_ui->m_actionSelectNextFeedCategory;
   actions << m_ui->m_actionSelectPreviousFeedCategory;
   actions << m_ui->m_actionSelectNextMessage;
   actions << m_ui->m_actionSelectPreviousMessage;
-  actions << m_ui->m_actionFetchFeedMetadata;
   actions << m_ui->m_actionExpandCollapseFeedCategory;
 
   return actions;
@@ -248,11 +245,9 @@ void FormMain::setupIcons() {
   m_ui->m_actionUpdateSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
   m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
   m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
+  m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionAddCategory->setIcon(icon_theme_factory->fromTheme(QSL("folder-category")));
-  m_ui->m_actionAddFeed->setIcon(icon_theme_factory->fromTheme(QSL("folder-feed")));
-  m_ui->m_actionEditSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
+  m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
   m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
@@ -269,7 +264,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
   m_ui->m_actionShowOnlyUnreadFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
-  m_ui->m_actionFetchFeedMetadata->setIcon(icon_theme_factory->fromTheme(QSL("download-manager")));
   m_ui->m_actionExpandCollapseFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
 
   // Setup icons for underlying components: opened web browsers...

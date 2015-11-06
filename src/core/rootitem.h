@@ -26,6 +26,7 @@
 class Category;
 class Feed;
 class ServiceRoot;
+class QAction;
 
 namespace RootItemKind {
   // Describes the kind of the item.
@@ -45,7 +46,9 @@ namespace RootItemKind {
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
 // all other non-root items of FeedsModel.
-class RootItem {
+class RootItem : public QObject {
+    Q_OBJECT
+
   public:
     // Constructors and destructors.
     explicit RootItem(RootItem *parent_item = NULL);
@@ -72,6 +75,12 @@ class RootItem {
       m_childItems.append(child);
       child->setParent(this);
     }
+
+    // Returns list of specific actions which can be done with the item.
+    // NOTE: This method should always create new actions in memory
+    // before returning them because caller takes ownership of any
+    // actions returned from here.
+    virtual QList<QAction*> specificActions();
 
     // TODO: pracovat s těmito věcmi
     virtual bool canBeEdited() {

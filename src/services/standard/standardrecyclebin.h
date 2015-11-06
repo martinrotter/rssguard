@@ -24,7 +24,7 @@
 
 
 class StandardRecycleBin : public RootItem {
-    Q_DECLARE_TR_FUNCTIONS(StandardRecycleBin)
+    Q_OBJECT
 
   public:
     explicit StandardRecycleBin(RootItem *parent = NULL);

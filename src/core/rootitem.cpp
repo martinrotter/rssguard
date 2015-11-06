@@ -41,6 +41,10 @@ RootItem::~RootItem() {
   qDeleteAll(m_childItems);
 }
 
+QList<QAction *> RootItem::specificActions() {
+  return QList<QAction*>();
+}
+
 void RootItem::setupFonts() {
   m_normalFont = Application::font("FeedsView");
   m_boldFont = m_normalFont;

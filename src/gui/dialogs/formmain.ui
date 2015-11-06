@@ -132,18 +132,15 @@
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
-      <string>Add &amp;new feed/category</string>
+      <string>Add &amp;new item</string>
      </property>
-     <addaction name="m_actionAddCategory"/>
-     <addaction name="m_actionAddFeed"/>
     </widget>
     <addaction name="m_actionUpdateAllFeeds"/>
     <addaction name="m_actionUpdateSelectedFeeds"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
-    <addaction name="m_actionEditSelectedFeedCategory"/>
-    <addaction name="m_actionDeleteSelectedFeedCategory"/>
-    <addaction name="m_actionFetchFeedMetadata"/>
+    <addaction name="m_actionEditSelectedItem"/>
+    <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
     <addaction name="m_actionShowOnlyUnreadFeeds"/>
     <addaction name="m_actionExpandCollapseFeedCategory"/>
@@ -272,7 +269,7 @@
   </action>
   <action name="m_actionUpdateAllFeeds">
    <property name="text">
-    <string>Update &amp;all feeds</string>
+    <string>Update &amp;all items</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+U</string>
@@ -280,20 +277,20 @@
   </action>
   <action name="m_actionUpdateSelectedFeeds">
    <property name="text">
-    <string>Update &amp;selected feeds</string>
+    <string>Update &amp;selected items</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+U</string>
    </property>
   </action>
-  <action name="m_actionEditSelectedFeedCategory">
+  <action name="m_actionEditSelectedItem">
    <property name="text">
-    <string>&amp;Edit selected feed/category</string>
+    <string>&amp;Edit selected item</string>
    </property>
   </action>
-  <action name="m_actionDeleteSelectedFeedCategory">
+  <action name="m_actionDeleteSelectedItem">
    <property name="text">
-    <string>&amp;Delete selected feed/category</string>
+    <string>&amp;Delete selected item</string>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
@@ -340,14 +337,6 @@
     <string>Deletes all messages from selected feeds.</string>
    </property>
   </action>
-  <action name="m_actionAddFeed">
-   <property name="text">
-    <string>New &amp;feed</string>
-   </property>
-   <property name="toolTip">
-    <string>Add new feed.</string>
-   </property>
-  </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
    <property name="text">
     <string>Open selected source articles in &amp;external browser</string>
@@ -361,14 +350,6 @@
   <action name="m_actionOpenSelectedSourceArticlesInternally">
    <property name="text">
     <string>Open selected source articles in &amp;internal browser</string>
-   </property>
-  </action>
-  <action name="m_actionAddCategory">
-   <property name="text">
-    <string>New &amp;category</string>
-   </property>
-   <property name="toolTip">
-    <string>Add new category.</string>
    </property>
   </action>
   <action name="m_actionNoActions">
@@ -436,7 +417,7 @@
   </action>
   <action name="m_actionSelectNextFeedCategory">
    <property name="text">
-    <string>Select &amp;next feed/category</string>
+    <string>Select &amp;next item</string>
    </property>
    <property name="shortcut">
     <string notr="true">S</string>
@@ -444,7 +425,7 @@
   </action>
   <action name="m_actionSelectPreviousFeedCategory">
    <property name="text">
-    <string>Select &amp;previous feed/category</string>
+    <string>Select &amp;previous item</string>
    </property>
    <property name="shortcut">
     <string notr="true">A</string>
@@ -647,14 +628,6 @@
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+U</string>
-   </property>
-  </action>
-  <action name="m_actionFetchFeedMetadata">
-   <property name="text">
-    <string>&amp;Fetch feed metadata</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+F</string>
    </property>
   </action>
   <action name="m_actionExpandCollapseFeedCategory">
