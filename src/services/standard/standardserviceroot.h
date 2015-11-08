@@ -66,7 +66,7 @@ class StandardServiceRoot : public ServiceRoot {
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
     // Return "add feed" and "add category" items.
-    QMenu *addItemMenu();
+    QList<QAction*> addItemMenu();
 
   private:
     void loadFromDatabase();
@@ -79,7 +79,10 @@ class StandardServiceRoot : public ServiceRoot {
     StandardRecycleBin *m_recycleBin;
 
     // Menus.
-    QMenu *m_addItemMenu;
+    QList<QAction*> m_addItemMenu;
+    QList<QAction*> m_feedContextMenu;
+
+    QAction *m_actionFeedFetchMetadata;
 };
 
 #endif // STANDARDSERVICEROOT_H

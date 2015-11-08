@@ -488,9 +488,6 @@ void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
     m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
   }
   else {
-
-    // TODO: clear nevymaže z paměti.
-    // http://doc.qt.io/qt-4.8/qmenu.html#clear
     m_contextMenuCategories->clear();
   }
 
@@ -506,11 +503,6 @@ void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuCategories->addSeparator();
-
-    foreach (QAction *action, specific_actions) {
-      action->setParent(m_contextMenuCategories);
-    }
-
     m_contextMenuCategories->addActions(specific_actions);
   }
 }
@@ -539,11 +531,6 @@ void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuFeeds->addSeparator();
-
-    foreach (QAction *action, specific_actions) {
-      action->setParent(m_contextMenuFeeds);
-    }
-
     m_contextMenuFeeds->addActions(specific_actions);
   }
 }

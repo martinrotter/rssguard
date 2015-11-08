@@ -22,7 +22,7 @@
 
 
 class FeedsModel;
-class QMenu;
+class QAction;
 
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
@@ -40,9 +40,7 @@ class ServiceRoot : public RootItem {
     //  b) Add new category
     //  c) ...
     // NOTE: Caller does NOT take ownership of created menu!
-    virtual QMenu* addItemMenu() = 0;
-
-    // TODO: dodělat menu, které se zobrazi v menubaru "Services -> tato služba".
+    virtual QList<QAction*> addItemMenu() = 0;
 
     inline FeedsModel *feedsModel() const {
       return m_feedsModel;

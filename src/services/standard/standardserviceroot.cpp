@@ -32,11 +32,12 @@
 #include <QSqlError>
 #include <QStack>
 #include <QCoreApplication>
-#include <QMenu>
+#include <QAction>
 
 
 StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
-  : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)), m_addItemMenu(NULL) {
+  : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
+    m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
   m_title = qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME);
   m_icon = StandardServiceEntryPoint().icon();
   m_description = tr("This is obligatory service account for standard RSS/RDF/ATOM feeds.");
@@ -48,9 +49,8 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_mo
 }
 
 StandardServiceRoot::~StandardServiceRoot() {
-  if (m_addItemMenu != NULL) {
-    delete m_addItemMenu;
-  }
+  qDeleteAll(m_addItemMenu);
+  qDeleteAll(m_feedContextMenu);
 }
 
 bool StandardServiceRoot::canBeEdited() {
@@ -216,14 +216,17 @@ QHash<int,StandardCategory*> StandardServiceRoot::allCategories() {
 }
 
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
-  QList<QAction*> list;
+  if (m_feedContextMenu.isEmpty()) {
+    // Initialize.
+    m_actionFeedFetchMetadata = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("Fetch metadata"), NULL);
+    m_feedContextMenu.append(m_actionFeedFetchMetadata);
+  }
 
-  // Fetch feed metadata.
-  QAction *action_fetch_metadata = new QAction(qApp->icons()->fromTheme(QSL("download-manager")), tr("Fetch metadata"), NULL);
-  connect(action_fetch_metadata, SIGNAL(triggered()), feed, SLOT(fetchMetadataForItself()));
+  // Make connections.
+  disconnect(m_actionFeedFetchMetadata, SIGNAL(triggered()), 0, 0);
+  connect(m_actionFeedFetchMetadata, SIGNAL(triggered()), feed, SLOT(fetchMetadataForItself()));
 
-  list.append(action_fetch_metadata);
-  return list;
+  return m_feedContextMenu;
 }
 
 void StandardServiceRoot::assembleFeeds(FeedAssignment feeds) {
@@ -328,14 +331,10 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
   return !some_feed_category_error;
 }
 
-QMenu *StandardServiceRoot::addItemMenu() {
-  if (m_addItemMenu == NULL) {
-    m_addItemMenu = new QMenu(title(), NULL);
-    m_addItemMenu->setIcon(icon());
-    m_addItemMenu->setToolTip(description());
-
+QList<QAction*> StandardServiceRoot::addItemMenu() {
+  if (m_addItemMenu.isEmpty()) {
     // TODO: Add items.
-    m_addItemMenu->addAction(new QAction("abc", m_addItemMenu));
+    m_addItemMenu.append(new QAction("abc", this));
   }
 
   return m_addItemMenu;

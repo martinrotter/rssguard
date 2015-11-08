@@ -77,9 +77,7 @@ class RootItem : public QObject {
     }
 
     // Returns list of specific actions which can be done with the item.
-    // NOTE: This method should always create new actions in memory
-    // before returning them because caller takes ownership of any
-    // actions returned from here.
+    // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
     virtual QList<QAction*> specificContextMenuActions();
 
     // TODO: pracovat s těmito věcmi

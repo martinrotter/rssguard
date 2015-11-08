@@ -177,18 +177,21 @@ void FormMain::updateAddItemMenu() {
   m_ui->m_menuAddItem->clear();
 
   foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
-    QMenu *root_menu = activated_root->addItemMenu();
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
 
-    if (root_menu == NULL) {
-      root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
-      root_menu->setIcon(activated_root->icon());
-      root_menu->setToolTip(activated_root->description());
+    QList<QAction*> root_actions = activated_root->addItemMenu();
 
+    if (root_actions.isEmpty()) {
       QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
                                                                 tr("No possible actions"),
                                                                 m_ui->m_menuAddItem);
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
+    }
+    else {
+      root_menu->addActions(root_actions);
     }
 
     m_ui->m_menuAddItem->addMenu(root_menu);
