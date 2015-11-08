@@ -32,10 +32,11 @@
 #include <QSqlError>
 #include <QStack>
 #include <QCoreApplication>
+#include <QMenu>
 
 
 StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
-  : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)) {
+  : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)), m_addItemMenu(NULL) {
   m_title = qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME);
   m_icon = StandardServiceEntryPoint().icon();
   m_description = tr("This is obligatory service account for standard RSS/RDF/ATOM feeds.");
@@ -47,6 +48,9 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_mo
 }
 
 StandardServiceRoot::~StandardServiceRoot() {
+  if (m_addItemMenu != NULL) {
+    delete m_addItemMenu;
+  }
 }
 
 bool StandardServiceRoot::canBeEdited() {
@@ -324,12 +328,17 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
   return !some_feed_category_error;
 }
 
-QList<QAction*> StandardServiceRoot::specificAddItemActions() {
-  QList<QAction*> actions;
+QMenu *StandardServiceRoot::addItemMenu() {
+  if (m_addItemMenu == NULL) {
+    m_addItemMenu = new QMenu(title(), NULL);
+    m_addItemMenu->setIcon(icon());
+    m_addItemMenu->setToolTip(description());
 
-  // TODO: vracet add feed, add category
-  actions.append(new QAction("abc", NULL));
-  return actions;
+    // TODO: Add items.
+    m_addItemMenu->addAction(new QAction("abc", m_addItemMenu));
+  }
+
+  return m_addItemMenu;
 }
 
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {

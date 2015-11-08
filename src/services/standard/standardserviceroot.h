@@ -27,6 +27,7 @@ class StandardRecycleBin;
 class StandardCategory;
 class StandardFeed;
 class FeedsImportExportModel;
+class QMenu;
 
 typedef QList<QPair<int, StandardCategory*> > CategoryAssignment;
 typedef QPair<int, StandardCategory*> CategoryAssignmentItem;
@@ -65,7 +66,7 @@ class StandardServiceRoot : public ServiceRoot {
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
     // Return "add feed" and "add category" items.
-    QList<QAction*> specificAddItemActions();
+    QMenu *addItemMenu();
 
   private:
     void loadFromDatabase();
@@ -76,6 +77,9 @@ class StandardServiceRoot : public ServiceRoot {
     void assembleFeeds(FeedAssignment feeds);
 
     StandardRecycleBin *m_recycleBin;
+
+    // Menus.
+    QMenu *m_addItemMenu;
 };
 
 #endif // STANDARDSERVICEROOT_H

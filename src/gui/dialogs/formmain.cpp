@@ -173,30 +173,22 @@ void FormMain::switchMainMenu() {
 }
 
 void FormMain::updateAddItemMenu() {
-  // TODO: clear nevymaže z paměti. - edit, stačí nastavit parent na to menu
-  // a při clear to i vymaže z paměti.
+  // NOTE: Clear here deletes items from memory but only those OWNED by the menu.
   m_ui->m_menuAddItem->clear();
 
   foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
-    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
-    QList<QAction*> root_actions = activated_root->specificAddItemActions();
+    QMenu *root_menu = activated_root->addItemMenu();
 
-    root_menu->setIcon(activated_root->icon());
-    root_menu->setToolTip(activated_root->description());
+    if (root_menu == NULL) {
+      root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
+      root_menu->setIcon(activated_root->icon());
+      root_menu->setToolTip(activated_root->description());
 
-    if (root_actions.isEmpty()) {
       QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
                                                                 tr("No possible actions"),
                                                                 m_ui->m_menuAddItem);
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
-    }
-    else {
-      foreach (QAction *action, root_actions) {
-        action->setParent(root_menu);
-      }
-
-      root_menu->addActions(root_actions);
     }
 
     m_ui->m_menuAddItem->addMenu(root_menu);

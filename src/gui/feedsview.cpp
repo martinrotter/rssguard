@@ -622,7 +622,8 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
       m_contextMenuFeeds->exec(event->globalPos());
     }
     else {
-
+      // TODO: volaz specificke menu polozky? zobrazovat menu pro dalsi typy
+      // polozek jako odpadkovy kos atp.
     }
   }
   else {
