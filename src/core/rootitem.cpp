@@ -51,26 +51,22 @@ void RootItem::setupFonts() {
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
 }
-QFont RootItem::boldFont() const
-{
+
+QFont RootItem::boldFont() const {
   return m_boldFont;
 }
 
-void RootItem::setBoldFont(const QFont &boldFont)
-{
-  m_boldFont = boldFont;
+void RootItem::setBoldFont(const QFont &bold_font) {
+  m_boldFont = bold_font;
 }
 
-QFont RootItem::normalFont() const
-{
+QFont RootItem::normalFont() const {
   return m_normalFont;
 }
 
-void RootItem::setNormalFont(const QFont &normalFont)
-{
-  m_normalFont = normalFont;
+void RootItem::setNormalFont(const QFont &normal_font) {
+  m_normalFont = normal_font;
 }
-
 
 int RootItem::row() const {
   if (m_parentItem) {

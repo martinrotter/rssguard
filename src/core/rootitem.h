@@ -235,10 +235,10 @@ class RootItem : public QObject {
     }
 
     QFont normalFont() const;
-    void setNormalFont(const QFont &normalFont);
+    void setNormalFont(const QFont &normal_font);
 
     QFont boldFont() const;
-    void setBoldFont(const QFont &boldFont);
+    void setBoldFont(const QFont &bold_font);
 
     // Converters
     Category *toCategory();
