@@ -38,10 +38,10 @@
 StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
-  m_title = qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME);
-  m_icon = StandardServiceEntryPoint().icon();
-  m_description = tr("This is obligatory service account for standard RSS/RDF/ATOM feeds.");
-  m_creationDate = QDateTime::currentDateTime();
+  setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME));
+  setIcon(StandardServiceEntryPoint().icon());
+  setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
+  setCreationDate(QDateTime::currentDateTime());
 
   if (load_from_db) {
     loadFromDatabase();
@@ -63,38 +63,6 @@ bool StandardServiceRoot::canBeDeleted() {
 
 QVariant StandardServiceRoot::data(int column, int role) const {
   switch (role) {
-    case Qt::DisplayRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
-            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::EditRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return countOfUnreadMessages();
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::DecorationRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_icon;
-      }
-      else {
-        return QVariant();
-      }
-
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return tr("This is service account for standard RSS/RDF/ATOM feeds.");
@@ -107,19 +75,8 @@ QVariant StandardServiceRoot::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
-
     default:
-      return QVariant();
+      return ServiceRoot::data(column, role);
   }
 }
 

@@ -26,7 +26,8 @@
 
 
 RootItem::RootItem(RootItem *parent_item)
-  : m_kind(RootItemKind::Root),
+  : QObject(NULL),
+    m_kind(RootItemKind::Root),
     m_id(NO_PARENT_CATEGORY),
     m_title(QString()),
     m_description(QString()),
@@ -50,6 +51,26 @@ void RootItem::setupFonts() {
   m_boldFont = m_normalFont;
   m_boldFont.setBold(true);
 }
+QFont RootItem::boldFont() const
+{
+  return m_boldFont;
+}
+
+void RootItem::setBoldFont(const QFont &boldFont)
+{
+  m_boldFont = boldFont;
+}
+
+QFont RootItem::normalFont() const
+{
+  return m_normalFont;
+}
+
+void RootItem::setNormalFont(const QFont &normalFont)
+{
+  m_normalFont = normalFont;
+}
+
 
 int RootItem::row() const {
   if (m_parentItem) {
@@ -65,8 +86,56 @@ QVariant RootItem::data(int column, int role) const {
   Q_UNUSED(column)
   Q_UNUSED(role)
 
-  // Do not return anything for the root item.
-  return QVariant();
+  switch (role) {
+    case Qt::EditRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return title();
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        return countOfUnreadMessages();
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::FontRole:
+      return countOfUnreadMessages() > 0 ? boldFont() : normalFont();
+
+    case Qt::DisplayRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return title();
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        int count_all = countOfAllMessages();
+        int count_unread = countOfUnreadMessages();
+
+        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
+            .replace(PLACEHOLDER_UNREAD_COUNTS, count_unread < 0 ? QSL('-') : QString::number(count_unread))
+            .replace(PLACEHOLDER_ALL_COUNTS, count_all < 0 ? QSL('-') : QString::number(count_all));
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::DecorationRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return icon();
+      }
+      else {
+        return QVariant();
+      }
+
+    case Qt::TextAlignmentRole:
+      if (column == FDS_MODEL_COUNTS_INDEX) {
+        return Qt::AlignCenter;
+      }
+      else {
+        return QVariant();
+      }
+
+    default:
+      return QVariant();
+  }
 }
 
 int RootItem::countOfAllMessages() const {
@@ -201,19 +270,6 @@ bool RootItem::removeChild(int index) {
   if (index >= 0 && index < m_childItems.size()) {
     m_childItems.removeAt(index);
     return true;
-  }
-  else {
-    return false;
-  }
-}
-
-bool RootItem::isEqual(RootItem *lhs, RootItem *rhs) {
-  return (lhs->kind() == rhs->kind()) && (lhs->id() == rhs->id());
-}
-
-bool RootItem::lessThan(RootItem *lhs, RootItem *rhs) {
-  if (lhs->kind() == rhs->kind()) {
-    return lhs->id() < rhs->id();
   }
   else {
     return false;

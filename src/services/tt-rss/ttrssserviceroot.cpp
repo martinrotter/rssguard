@@ -26,8 +26,8 @@
 TtRssServiceRoot::TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent) : ServiceRoot(feeds_model, parent) {
   // TODO: nadpis se bude měnit podle nastavení uživatelského
   // jména a serveru tohoto ttrss učtu
-  m_title = qApp->system()->getUsername() + "@ttrss";
-  m_icon = TtRssServiceEntryPoint().icon();
+  setTitle(qApp->system()->getUsername() + "@ttrss");
+  setIcon(TtRssServiceEntryPoint().icon());
 }
 
 TtRssServiceRoot::~TtRssServiceRoot() {
@@ -48,38 +48,6 @@ bool TtRssServiceRoot::canBeDeleted() {
 
 QVariant TtRssServiceRoot::data(int column, int role) const {
   switch (role) {
-    case Qt::DisplayRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
-            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::EditRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return countOfUnreadMessages();
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::DecorationRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_icon;
-      }
-      else {
-        return QVariant();
-      }
-
     case Qt::ToolTipRole:
       // TODO: zobrazovat pokročile informace a statistiky.
       if (column == FDS_MODEL_TITLE_INDEX) {
@@ -93,19 +61,8 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
-
     default:
-      return QVariant();
+      return ServiceRoot::data(column, role);
   }
 }
 

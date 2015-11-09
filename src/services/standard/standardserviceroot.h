@@ -46,6 +46,9 @@ class StandardServiceRoot : public ServiceRoot {
     bool canBeDeleted();
     QVariant data(int column, int role) const;
 
+    // Return "add feed" and "add category" items.
+    QList<QAction*> addItemMenu();
+
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
     QHash<int,StandardCategory*> categoriesForItem(RootItem *root);
@@ -64,9 +67,6 @@ class StandardServiceRoot : public ServiceRoot {
     // it to active structure.
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
-
-    // Return "add feed" and "add category" items.
-    QList<QAction*> addItemMenu();
 
   private:
     void loadFromDatabase();

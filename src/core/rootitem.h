@@ -127,6 +127,10 @@ class RootItem : public QObject {
       return m_childItems;
     }
 
+    inline void setChildItems(QList<RootItem*> child_items) {
+      m_childItems = child_items;
+    }
+
     // Checks whether THIS object is child (direct or indirect)
     // of the given root.
     bool isChildOf(RootItem *root) {
@@ -183,6 +187,10 @@ class RootItem : public QObject {
       return m_kind;
     }
 
+    inline void setKind(RootItemKind::Kind kind) {
+      m_kind = kind;
+    }
+
     // Each item can have icon.
     inline QIcon icon() const {
       return m_icon;
@@ -226,16 +234,18 @@ class RootItem : public QObject {
       m_description = description;
     }
 
+    QFont normalFont() const;
+    void setNormalFont(const QFont &normalFont);
+
+    QFont boldFont() const;
+    void setBoldFont(const QFont &boldFont);
+
     // Converters
     Category *toCategory();
     Feed *toFeed();
     ServiceRoot *toServiceRoot();
 
-    // Compares two model items.
-    static bool isEqual(RootItem *lhs, RootItem *rhs);
-    static bool lessThan(RootItem *lhs, RootItem *rhs);
-
-  protected:
+  private:
     void setupFonts();
 
     RootItemKind::Kind m_kind;

@@ -44,7 +44,8 @@
 #include <QXmlStreamReader>
 
 
-void StandardFeed::init() {
+StandardFeed::StandardFeed(RootItem *parent_item)
+  : Feed(parent_item) {
   m_passwordProtected = false;
   m_username = QString();
   m_password = QString();
@@ -54,12 +55,8 @@ void StandardFeed::init() {
   m_unreadCount = 0;
   m_encoding = QString();
   m_url = QString();
-  m_kind = RootItemKind::Feed;
-}
 
-StandardFeed::StandardFeed(RootItem *parent_item)
-  : Feed(parent_item) {
-  init();
+  setKind(RootItemKind::Feed);
 }
 
 StandardFeed::StandardFeed(const StandardFeed &other)
@@ -73,18 +70,20 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   m_unreadCount = other.countOfUnreadMessages();
   m_encoding = other.encoding();
   m_url = other.url();
-  m_kind = RootItemKind::Feed;
-  m_title = other.title();
-  m_id = other.id();
-  m_icon = other.icon();
-  m_childItems = other.childItems();
-  m_parentItem = other.parent();
-  m_creationDate = other.creationDate();
-  m_description = other.description();
-  m_status = other.status();
-  m_autoUpdateType = other.autoUpdateType();
-  m_autoUpdateInitialInterval = other.autoUpdateInitialInterval();
-  m_autoUpdateRemainingInterval = other.autoUpdateRemainingInterval();
+
+  setStatus(other.status());
+  setAutoUpdateType(other.autoUpdateType());
+  setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
+  setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
+
+  setKind(RootItemKind::Feed);
+  setTitle(other.title());
+  setId(other.id());
+  setIcon(other.icon());
+  setChildItems(other.childItems());
+  setParent(other.parent());
+  setCreationDate(other.creationDate());
+  setDescription(other.description());
 }
 
 StandardFeed::~StandardFeed() {
@@ -182,8 +181,8 @@ void StandardFeed::updateCounts(bool including_total_count, bool update_feed_sta
   if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND is_read = 0;").arg(id())) && query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
-    if (update_feed_statuses && m_status == NewMessages && new_unread_count < m_unreadCount) {
-      m_status = Normal;
+    if (update_feed_statuses && status() == NewMessages && new_unread_count < m_unreadCount) {
+      setStatus(Normal);
     }
 
     m_unreadCount = new_unread_count;
@@ -361,43 +360,11 @@ QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const Q
 
 QVariant StandardFeed::data(int column, int role) const {
   switch (role) {
-    case Qt::DisplayRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
-            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::EditRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return countOfUnreadMessages();
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::DecorationRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_icon;
-      }
-      else {
-        return QVariant();
-      }
-
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         QString auto_update_string;
 
-        switch (m_autoUpdateType) {
+        switch (autoUpdateType()) {
           case DontAutoUpdate:
             //: Describes feed auto-update status.
             auto_update_string = tr("does not use auto-update");
@@ -414,7 +381,7 @@ QVariant StandardFeed::data(int column, int role) const {
             auto_update_string = tr("uses specific settings "
                                     "(%n minute(s) to next auto-update)",
                                     0,
-                                    m_autoUpdateRemainingInterval);
+                                    autoUpdateRemainingInterval());
             break;
         }
 
@@ -423,10 +390,10 @@ QVariant StandardFeed::data(int column, int role) const {
                   "%3\n\n"
                   "Network status: %6\n"
                   "Encoding: %4\n"
-                  "Auto-update status: %5").arg(m_title,
-                                                StandardFeed::typeToString(m_type),
-                                                m_description.isEmpty() ? QString() : QString('\n') + m_description,
-                                                m_encoding,
+                  "Auto-update status: %5").arg(title(),
+                                                StandardFeed::typeToString(type()),
+                                                description().isEmpty() ? QString() : QString('\n') + description(),
+                                                encoding(),
                                                 auto_update_string,
                                                 NetworkFactory::networkErrorText(m_networkError));
       }
@@ -438,19 +405,8 @@ QVariant StandardFeed::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
-
     case Qt::ForegroundRole:
-      switch (m_status) {
+      switch (status()) {
         case NewMessages:
           return QColor(Qt::blue);
 
@@ -462,7 +418,7 @@ QVariant StandardFeed::data(int column, int role) const {
       }
 
     default:
-      return QVariant();
+      return Feed::data(column, role);
   }
 }
 
@@ -474,11 +430,11 @@ int StandardFeed::update() {
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
-    m_status = NetworkError;
+    setStatus(NetworkError);
     return 0;
   }
   else {
-    m_status = Normal;
+    setStatus(Normal);
   }
 
   // Encode downloaded data for further parsing.
@@ -762,8 +718,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 }
 
 StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
-  m_kind = RootItemKind::Feed;
-
+  setKind(RootItemKind::Feed);
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());

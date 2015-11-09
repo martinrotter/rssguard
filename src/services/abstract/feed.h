@@ -70,8 +70,6 @@ class Feed : public RootItem {
     // Get ALL undeleted messages from this feed in one single list.
     virtual QList<Message> undeletedMessages() const = 0;
 
-    //virtual bool markRead(ReadStatus read_status) = 0;
-
     inline int autoUpdateInitialInterval() const {
       return m_autoUpdateInitialInterval;
     }
@@ -107,7 +105,7 @@ class Feed : public RootItem {
       m_status = status;
     }
 
-  protected:
+  private:
     Status m_status;
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval;

@@ -16,11 +16,12 @@
 		
 	  Added:
 	  <ul>
-		  <li style="color: red;">Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Some UI features (for example drag-drop) are temporarily unavailable. Expect bugs and misunderstandings now!</li>
+		  <li style="color: red;">Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Some UI features (for example drag-drop) are temporarily unavailable. Expect bugs and misunderstandings now! Major parts of RSS Guard were completely rewritten.</li>
 	  </ul>
 	  
 	  Fixed:
 	  <ul>
+      <li>Encoding selection widget in feed add/edit dialog now detects encodings via case insensitive string matching.</li>
 	    <li>When removing download item from download manager via DELETE key, then "Cleanup" button is correctly disabled.</li>
 	  </ul>
 	  

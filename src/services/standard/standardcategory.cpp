@@ -42,14 +42,15 @@ StandardCategory::StandardCategory(RootItem *parent_item) : Category(parent_item
 
 StandardCategory::StandardCategory(const StandardCategory &other)
   : Category(NULL) {
-  m_kind = other.kind();
-  m_id = other.id();
-  m_title = other.title();
-  m_description = other.description();
-  m_icon = other.icon();
-  m_creationDate = other.creationDate();
-  m_childItems = other.childItems();
-  m_parentItem = other.parent();
+  init();
+
+  setId(other.id());
+  setTitle(other.title());
+  setDescription(other.description());
+  setIcon(other.icon());
+  setCreationDate(other.creationDate());
+  setChildItems(other.childItems());
+  setParent(other.parent());
 }
 
 StandardCategory::~StandardCategory() {
@@ -61,7 +62,7 @@ StandardServiceRoot *StandardCategory::serviceRoot() {
 }
 
 void StandardCategory::init() {
-  m_kind = RootItemKind::Category;
+  setKind(RootItemKind::Category);
 }
 
 QVariant StandardCategory::data(int column, int role) const {
@@ -70,9 +71,9 @@ QVariant StandardCategory::data(int column, int role) const {
       if (column == FDS_MODEL_TITLE_INDEX) {
         //: Tooltip for standard feed.
         return tr("%1 (category)"
-                  "%2%3").arg(m_title,
-                              m_description.isEmpty() ? QString() : QString('\n') + m_description,
-                              m_childItems.size() == 0 ?
+                  "%2%3").arg(title(),
+                              description().isEmpty() ? QString() : QSL('\n') + description(),
+                              childCount() == 0 ?
                                 tr("\nThis category does not contain any nested items.") :
                                 QString());
       }
@@ -84,51 +85,8 @@ QVariant StandardCategory::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::EditRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return countOfUnreadMessages();
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
-
-    case Qt::DisplayRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_title;
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
-            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::DecorationRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return m_icon;
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
-
     default:
-      return QVariant();
+      return Category::data(column, role);
   }
 }
 
@@ -148,7 +106,7 @@ bool StandardCategory::removeItself() {
   bool children_removed = true;
 
   // Remove all child items (feeds, categories.)
-  foreach (RootItem *child, m_childItems) {
+  foreach (RootItem *child, childItems()) {
     if (child->kind() == RootItemKind::Category) {
       children_removed &= static_cast<StandardCategory*>(child)->removeItself();
     }
@@ -158,7 +116,7 @@ bool StandardCategory::removeItself() {
   }
 
   if (children_removed) {
-    // Children are removed, remove this standard category too.    
+    // Children are removed, remove this standard category too.
     QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
     QSqlQuery query_remove(database);
 

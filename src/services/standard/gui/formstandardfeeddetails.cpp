@@ -372,7 +372,7 @@ void FormStandardFeedDetails::setEditableFeed(StandardFeed *editable_feed) {
   m_ui->m_txtDescription->lineEdit()->setText(editable_feed->description());
   m_ui->m_btnIcon->setIcon(editable_feed->icon());
   m_ui->m_cmbType->setCurrentIndex(m_ui->m_cmbType->findData(QVariant::fromValue((int) editable_feed->type())));
-  m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(editable_feed->encoding(), Qt::DisplayRole));
+  m_ui->m_cmbEncoding->setCurrentIndex(m_ui->m_cmbEncoding->findData(editable_feed->encoding(), Qt::DisplayRole, Qt::MatchFixedString));
   m_ui->m_gbAuthentication->setChecked(editable_feed->passwordProtected());
   m_ui->m_txtUsername->lineEdit()->setText(editable_feed->username());
   m_ui->m_txtPassword->lineEdit()->setText(editable_feed->password());

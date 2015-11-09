@@ -163,9 +163,6 @@ class StandardFeed : public Feed {
     int updateMessages(const QList<Message> &messages);
 
   private:
-    void init();
-
-  private:
     bool m_passwordProtected;
     QString m_username;
     QString m_password;
