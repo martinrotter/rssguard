@@ -77,8 +77,10 @@ class RootItem : public QObject {
     }
 
     // Returns list of specific actions which can be done with the item.
+    // Do not include general actions here like actions:
+    //  Mark as read, Update, ...
     // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
-    virtual QList<QAction*> specificContextMenuActions();
+    virtual QList<QAction*> contextMenuActions();
 
     // TODO: pracovat s těmito věcmi
     virtual bool canBeEdited() {

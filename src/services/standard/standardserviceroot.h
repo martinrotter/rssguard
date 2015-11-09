@@ -49,6 +49,9 @@ class StandardServiceRoot : public ServiceRoot {
     // Return "add feed" and "add category" items.
     QList<QAction*> addItemMenu();
 
+    // Return menu to be shown in "Services -> service" menu.
+    QList<QAction*> serviceMenu();
+
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
     QHash<int,StandardCategory*> categoriesForItem(RootItem *root);

@@ -61,7 +61,7 @@ class StandardFeed : public Feed {
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 
-    QList<QAction*> specificContextMenuActions();
+    QList<QAction*> contextMenuActions();
 
     bool canBeEdited() {
       return true;

@@ -42,12 +42,17 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> addItemMenu() = 0;
 
+    // Returns list of specific actions to be shown in main window menu
+    // bar in sections "Services -> 'this service'".
+    // NOTE: Caller does NOT take ownership of created menu!
+    virtual QList<QAction*> serviceMenu() = 0;
+
     inline FeedsModel *feedsModel() const {
       return m_feedsModel;
     }
 
   protected:
-    FeedsModel *m_feedsModel;    
+    FeedsModel *m_feedsModel;
 };
 
 #endif // SERVICEROOT_H

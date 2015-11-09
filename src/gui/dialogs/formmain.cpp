@@ -198,6 +198,39 @@ void FormMain::updateAddItemMenu() {
   }
 }
 
+void FormMain::updateServicesMenu() {
+  m_ui->m_menuServices->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuServices);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    QList<QAction*> root_actions = activated_root->serviceMenu();
+
+    if (root_actions.isEmpty()) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                                                tr("No possible actions"),
+                                                                m_ui->m_menuServices);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      root_menu->addActions(root_actions);
+    }
+
+    m_ui->m_menuServices->addMenu(root_menu);
+  }
+
+  if (!m_ui->m_menuServices->isEmpty()) {
+    m_ui->m_menuServices->addSeparator();
+  }
+
+  m_ui->m_menuServices->addAction(m_ui->m_actionServiceAdd);
+  m_ui->m_menuServices->addAction(m_ui->m_actionServiceEdit);
+  m_ui->m_menuServices->addAction(m_ui->m_actionServiceDelete);
+}
+
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || isVisible()) {
     if (SystemTrayIcon::isSystemTrayActivated()) {
@@ -363,6 +396,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
   connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
+  connect(m_ui->m_menuServices, SIGNAL(aboutToShow()), this, SLOT(updateServicesMenu()));
 
   // Menu "File" connections.
   connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));

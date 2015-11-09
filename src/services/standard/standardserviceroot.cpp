@@ -297,6 +297,10 @@ QList<QAction*> StandardServiceRoot::addItemMenu() {
   return m_addItemMenu;
 }
 
+QList<QAction*> StandardServiceRoot::serviceMenu() {
+  return QList<QAction*>();
+}
+
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
   QHash<int, RootItem*> assignments;
   assignments.insert(NO_PARENT_CATEGORY, this);
