@@ -30,12 +30,15 @@
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
+#include "services/standard/gui/formstandardcategorydetails.h"
+#include "services/standard/gui/formstandardfeeddetails.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QStack>
 #include <QCoreApplication>
 #include <QAction>
+#include <QPointer>
 
 
 StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
@@ -329,17 +332,37 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
   return !some_feed_category_error;
 }
 
+void StandardServiceRoot::addNewCategory() {
+  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(this, qApp->mainForm());
+
+  form_pointer.data()->exec(NULL, NULL);
+  delete form_pointer.data();
+}
+
+void StandardServiceRoot::addNewFeed() {
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(this, qApp->mainForm());
+
+  form_pointer.data()->exec(NULL, NULL);
+  delete form_pointer.data();
+}
+
 QList<QAction*> StandardServiceRoot::addItemMenu() {
   if (m_addItemMenu.isEmpty()) {
-    // TODO: Add items.
-    m_addItemMenu.append(new QAction("abc", this));
+    QAction *action_new_category = new QAction(qApp->icons()->fromTheme("folder-category"), tr("Add new category"), this);
+    connect(action_new_category, SIGNAL(triggered()), this, SLOT(addNewCategory()));
+
+    QAction *action_new_feed = new QAction(qApp->icons()->fromTheme("folder-feed"), tr("Add new feed"), this);
+    connect(action_new_feed, SIGNAL(triggered()), this, SLOT(addNewFeed()));
+
+    m_addItemMenu.append(action_new_category);
+    m_addItemMenu.append(action_new_feed);
   }
 
   return m_addItemMenu;
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {
-  return QList<QAction*>();
+  return m_addItemMenu;
 }
 
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {

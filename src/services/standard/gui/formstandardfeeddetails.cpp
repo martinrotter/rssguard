@@ -237,7 +237,6 @@ void FormStandardFeedDetails::apply() {
   new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
   new_feed->setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
-  new_feed->setParent(parent);
 
   if (m_editableFeed == NULL) {
     // Add the feed.
@@ -253,6 +252,8 @@ void FormStandardFeedDetails::apply() {
     }
   }
   else {
+    new_feed->setParent(parent);
+
     // Edit the feed.
     bool edited = m_editableFeed->editItself(new_feed);
 

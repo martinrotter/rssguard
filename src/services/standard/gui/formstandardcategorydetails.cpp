@@ -118,7 +118,6 @@ void FormStandardCategoryDetails::apply() {
   new_category->setCreationDate(QDateTime::currentDateTime());
   new_category->setDescription(m_ui->m_txtDescription->lineEdit()->text());
   new_category->setIcon(m_ui->m_btnIcon->icon());
-  new_category->setParent(parent);
 
   if (m_editableCategory == NULL) {
     // Add the category.
@@ -135,6 +134,8 @@ void FormStandardCategoryDetails::apply() {
     }
   }
   else {
+    new_category->setParent(parent);
+
     bool edited = m_editableCategory->editItself(new_category);
 
     if (edited) {

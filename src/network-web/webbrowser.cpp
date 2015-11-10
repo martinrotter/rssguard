@@ -27,6 +27,7 @@
 #include "gui/tabwidget.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "services/standard/standardserviceroot.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -214,9 +215,7 @@ void WebBrowser::onIconChanged() {
 
 void WebBrowser::addFeedFromWebsite(const QString &feed_link) {
   qApp->clipboard()->setText(feed_link);
-
-  // TODO: dodělat
-  //qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->addNewFeed();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot()->addNewFeed();
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {

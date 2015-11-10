@@ -74,6 +74,10 @@ class StandardServiceRoot : public ServiceRoot {
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
+  public slots:
+    void addNewCategory();
+    void addNewFeed();
+
   private:
     void loadFromDatabase();
 
