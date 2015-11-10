@@ -26,3 +26,7 @@ ServiceRoot::ServiceRoot(FeedsModel *feeds_model, RootItem *parent) : RootItem(p
 
 ServiceRoot::~ServiceRoot() {
 }
+
+FeedsModel *ServiceRoot::feedsModel() const {
+  return m_feedsModel;
+}

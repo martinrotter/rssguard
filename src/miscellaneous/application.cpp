@@ -28,6 +28,7 @@
 #include "exceptions/applicationexception.h"
 #include "adblock/adblockmanager.h"
 
+#include "services/abstract/serviceroot.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
@@ -68,6 +69,22 @@ QList<QAction*> Application::userActions() {
   }
 
   return m_userActions;
+}
+
+bool Application::isFirstRun() {
+  return settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool();
+}
+
+bool Application::isFirstRun(const QString &version) {
+  return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
+}
+
+void Application::eliminateFirstRun() {
+  settings()->setValue(GROUP(General), General::FirstRun, false);
+}
+
+void Application::eliminateFirstRun(const QString &version) {
+  settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, false);
 }
 
 IconFactory *Application::icons() {
@@ -216,6 +233,9 @@ void Application::onSaveState(QSessionManager &manager) {
 }
 
 void Application::onAboutToQuit() {
+  eliminateFirstRun();
+  eliminateFirstRun(APP_VERSION);
+
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
@@ -262,14 +282,6 @@ void Application::onAboutToQuit() {
       qWarning("New application instance was not started successfully.");
     }
   }
-}
-
-bool Application::shouldRestart() const {
-  return m_shouldRestart;
-}
-
-void Application::setShouldRestart(bool shouldRestart) {
-  m_shouldRestart = shouldRestart;
 }
 
 void Application::restart() {

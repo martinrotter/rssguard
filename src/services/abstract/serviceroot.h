@@ -47,11 +47,18 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> serviceMenu() = 0;
 
-    inline FeedsModel *feedsModel() const {
-      return m_feedsModel;
-    }
+    // Start/stop services.
+    // Start method is called when feed model gets initialized OR after user adds new service.
+    //
+    // Stop method is called just before application exits OR when
+    // user explicitly deletes existing service instance.
+    virtual void start() = 0;
+    virtual void stop() = 0;
 
-  protected:
+    // Access to feed model.
+    FeedsModel *feedsModel() const;
+
+  private:
     FeedsModel *m_feedsModel;
 };
 

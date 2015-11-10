@@ -42,6 +42,9 @@ class StandardServiceRoot : public ServiceRoot {
     explicit StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
 
+    void start();
+    void stop();
+
     bool canBeEdited();
     bool canBeDeleted();
     QVariant data(int column, int role) const;

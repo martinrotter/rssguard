@@ -107,27 +107,15 @@ int main(int argc, char *argv[]) {
   else {
     qDebug("Showing the main window when the application is starting.");
     main_window.show();
-
-    if (qApp->settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool()) {
-      // This is the first time user runs this application.
-      qApp->settings()->setValue(GROUP(General), General::FirstRun, false);
-
-      if (MessageBox::show(&main_window, QMessageBox::Question, QObject::tr("Load initial feeds"),
-                           QObject::tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
-                           QObject::tr("Do you want to load initial set of feeds?"),
-                           QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
-        qApp->mainForm()->tabWidget()->feedMessageViewer()->loadInitialFeeds();
-      }
-    }
   }
 
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
     qApp->showTrayIcon();
+  }
 
-    if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
-    }
+  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
   }
 
   // Setup single-instance behavior.

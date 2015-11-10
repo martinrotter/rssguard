@@ -272,6 +272,6 @@ void SystemFactory::checkForUpdatesOnStartup() {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),
                          QSystemTrayIcon::Information,
-                         NULL, false, QIcon(), qApp->mainForm(), SLOT(showUpdates()));
+                         NULL, true, QIcon(), qApp->mainForm(), SLOT(showUpdates()));
   }
 }

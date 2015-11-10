@@ -418,11 +418,8 @@ void FeedsModel::loadActivatedServiceAccounts() {
     QList<ServiceRoot*> roots = entry_point->initializeSubtree(this);
 
     foreach (ServiceRoot *root, roots) {
-      if (SystemFactory::isInstanceOf<StandardServiceRoot>(root)) {
-
-      }
-
       m_rootItem->appendChild(root);
+      root->start();
     }
   }
 }

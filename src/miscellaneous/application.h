@@ -59,7 +59,14 @@ class Application : public QtSingleApplication {
     // "standard" service entry point.
     QList<ServiceEntryPoint*> feedServices();
 
+    // Globally accessible actions.
     QList<QAction*> userActions();
+
+    // Check whether this application starts for the first time (ever).
+    bool isFirstRun();
+
+    // Check whether GIVEN VERSION of the application starts for the first time.
+    bool isFirstRun(const QString &version);
 
     inline SystemFactory *system() {
       if (m_system == NULL) {
@@ -159,10 +166,8 @@ class Application : public QtSingleApplication {
       return static_cast<Application*>(QCoreApplication::instance());
     }
 
-    bool shouldRestart() const;
-    void setShouldRestart(bool shouldRestart);
-
   public slots:
+    // Restarts the application.
     void restart();
 
     // Processes incoming message from another RSS Guard instance.
@@ -175,6 +180,9 @@ class Application : public QtSingleApplication {
     void onAboutToQuit();
 
   private:
+    void eliminateFirstRun();
+    void eliminateFirstRun(const QString &version);
+
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.
     // This means that if application locks that lock, then
