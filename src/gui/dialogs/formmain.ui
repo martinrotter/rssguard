@@ -644,11 +644,17 @@
    </property>
   </action>
   <action name="m_actionServiceDelete">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Delete selected service account</string>
    </property>
   </action>
   <action name="m_actionServiceEdit">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>&amp;Edit selected service account</string>
    </property>

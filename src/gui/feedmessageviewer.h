@@ -79,17 +79,10 @@ class FeedMessageViewer : public TabContent {
     // stops any child widgets/workers.
     void quit();
 
-    inline bool areToolBarsEnabled() const {
-      return m_toolBarsEnabled;
-    }
-
-    inline bool areListHeadersEnabled() const {
-      return m_listHeadersEnabled;
-    }
+    bool areToolBarsEnabled() const;
+    bool areListHeadersEnabled() const;
 
   public slots:
-    void loadInitialFeeds();
-
     // Switches orientation horizontal/vertical.
     void switchMessageSplitterOrientation();
 

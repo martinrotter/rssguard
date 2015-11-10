@@ -46,11 +46,6 @@ class Feed : public RootItem {
       OtherError    = 4
     };
 
-    enum ReadStatus {
-      Unread  = 0,
-      Read    = 1
-    };
-
     // Constructors.
     explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();

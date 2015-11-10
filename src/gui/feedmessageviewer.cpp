@@ -191,33 +191,12 @@ void FeedMessageViewer::quit() {
   }
 }
 
-void FeedMessageViewer::loadInitialFeeds() {
-  QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
-  QString current_locale = qApp->localization()->loadedLanguage();
-  QString file_to_load;
+bool FeedMessageViewer::areToolBarsEnabled() const {
+  return m_toolBarsEnabled;
+}
 
-  if (QFile::exists(target_opml_file.arg(current_locale))) {
-    file_to_load = target_opml_file.arg(current_locale);
-  }
-  else if (QFile::exists(target_opml_file.arg(DEFAULT_LOCALE))) {
-    file_to_load = target_opml_file.arg(DEFAULT_LOCALE);
-  }
-
-  FeedsImportExportModel model;
-  QString output_msg;
-
-  try {
-    model.importAsOPML20(IOFactory::readTextFile(file_to_load));
-    model.checkAllItems();
-
-    // TODO: double-check.
-    if (m_feedsView->sourceModel()->standardServiceRoot()->mergeImportExportModel(&model, output_msg)) {
-      m_feedsView->expandAll();
-    }
-  }
-  catch (ApplicationException &ex) {
-    MessageBox::show(this, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
-  }
+bool FeedMessageViewer::areListHeadersEnabled() const {
+  return m_listHeadersEnabled;
 }
 
 void FeedMessageViewer::switchMessageSplitterOrientation() {
@@ -306,21 +285,25 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
 
 void FeedMessageViewer::updateFeedButtonsAvailability() {
   bool critical_action_running = qApp->feedUpdateLock()->isLocked();
-  bool feed_selected = !m_feedsView->selectionModel()->selectedRows().isEmpty();
+  RootItem *selected_item = feedsView()->selectedItem();
+  bool anything_selected = selected_item != NULL;
+  bool feed_selected = anything_selected && selected_item->kind() == RootItemKind::Feed;
+  bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
+  bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
   FormMain *form_main = qApp->mainForm();
 
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
-  form_main->m_ui->m_actionClearSelectedFeeds->setEnabled(feed_selected);
-  form_main->m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && feed_selected);
-  form_main->m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && feed_selected);
+  form_main->m_ui->m_actionClearSelectedFeeds->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
+  form_main->m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
   form_main->m_ui->m_actionImportFeeds->setEnabled(!critical_action_running);
-  form_main->m_ui->m_actionMarkSelectedFeedsAsRead->setEnabled(feed_selected);
-  form_main->m_ui->m_actionMarkSelectedFeedsAsUnread->setEnabled(feed_selected);
+  form_main->m_ui->m_actionMarkSelectedFeedsAsRead->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionMarkSelectedFeedsAsUnread->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_actionUpdateAllFeeds->setEnabled(!critical_action_running);
-  form_main->m_ui->m_actionUpdateSelectedFeeds->setEnabled(!critical_action_running && feed_selected);
-  form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected);
-  form_main->m_ui->m_actionExpandCollapseFeedCategory->setEnabled(feed_selected);
+  form_main->m_ui->m_actionUpdateSelectedFeeds->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
+  form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionExpandCollapseFeedCategory->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
 }
 
