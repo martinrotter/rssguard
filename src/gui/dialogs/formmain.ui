@@ -608,7 +608,7 @@
     <string>Show only unread items</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+U</string>
+    <string notr="true">U</string>
    </property>
   </action>
   <action name="m_actionExpandCollapseItem">
