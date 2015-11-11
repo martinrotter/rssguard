@@ -296,15 +296,15 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   form_main->m_ui->m_actionServiceDelete->setEnabled(!critical_action_running && service_selected);
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
-  form_main->m_ui->m_actionClearSelectedFeeds->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionClearSelectedItems->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   form_main->m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
-  form_main->m_ui->m_actionMarkSelectedFeedsAsRead->setEnabled(feed_selected || category_selected || service_selected);
-  form_main->m_ui->m_actionMarkSelectedFeedsAsUnread->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionMarkSelectedItemsAsRead->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionMarkSelectedItemsAsUnread->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_actionUpdateAllItems->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
   form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected || category_selected || service_selected);
-  form_main->m_ui->m_actionExpandCollapseFeedCategory->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionExpandCollapseItem->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
 }
 
@@ -370,17 +370,17 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(openSelectedMessagesInternally()));
   connect(form_main->m_ui->m_actionSendMessageViaEmail,
           SIGNAL(triggered()), m_messagesView, SLOT(sendSelectedMessageViaEmail()));
-  connect(form_main->m_ui->m_actionMarkAllFeedsRead,
+  connect(form_main->m_ui->m_actionMarkAllItemsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
-  connect(form_main->m_ui->m_actionMarkSelectedFeedsAsRead,
+  connect(form_main->m_ui->m_actionMarkSelectedItemsAsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
-  connect(form_main->m_ui->m_actionExpandCollapseFeedCategory,
+  connect(form_main->m_ui->m_actionExpandCollapseItem,
           SIGNAL(triggered()), m_feedsView, SLOT(expandCollapseCurrentItem()));
-  connect(form_main->m_ui->m_actionMarkSelectedFeedsAsUnread,
+  connect(form_main->m_ui->m_actionMarkSelectedItemsAsUnread,
           SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
-  connect(form_main->m_ui->m_actionClearSelectedFeeds,
+  connect(form_main->m_ui->m_actionClearSelectedItems,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
-  connect(form_main->m_ui->m_actionClearAllFeeds,
+  connect(form_main->m_ui->m_actionClearAllItems,
           SIGNAL(triggered()), m_feedsView, SLOT(clearAllFeeds()));
   connect(form_main->m_ui->m_actionUpdateSelectedItems,
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
@@ -394,13 +394,13 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsList,
           SIGNAL(triggered()), this, SLOT(switchFeedComponentVisibility()));
-  connect(form_main->m_ui->m_actionSelectNextFeedCategory,
+  connect(form_main->m_ui->m_actionSelectNextItem,
           SIGNAL(triggered()), m_feedsView, SLOT(selectNextItem()));
   connect(form_main->m_ui->m_actionSwitchToolBars,
           SIGNAL(toggled(bool)), this, SLOT(setToolBarsEnabled(bool)));
   connect(form_main->m_ui->m_actionSwitchListHeaders,
           SIGNAL(toggled(bool)), this, SLOT(setListHeadersEnabled(bool)));
-  connect(form_main->m_ui->m_actionSelectPreviousFeedCategory,
+  connect(form_main->m_ui->m_actionSelectPreviousItem,
           SIGNAL(triggered()), m_feedsView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSelectNextMessage,
           SIGNAL(triggered()), m_messagesView, SLOT(selectNextItem()));
@@ -408,7 +408,7 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_messagesView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),
           this, SLOT(switchMessageSplitterOrientation()));
-  connect(form_main->m_ui->m_actionShowOnlyUnreadFeeds, SIGNAL(toggled(bool)),
+  connect(form_main->m_ui->m_actionShowOnlyUnreadItems, SIGNAL(toggled(bool)),
           this, SLOT(toggleShowOnlyUnreadFeeds()));
 }
 

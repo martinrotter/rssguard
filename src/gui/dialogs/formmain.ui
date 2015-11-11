@@ -139,19 +139,19 @@
     <addaction name="m_actionEditSelectedItem"/>
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionShowOnlyUnreadFeeds"/>
-    <addaction name="m_actionExpandCollapseFeedCategory"/>
+    <addaction name="m_actionShowOnlyUnreadItems"/>
+    <addaction name="m_actionExpandCollapseItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionSelectNextFeedCategory"/>
-    <addaction name="m_actionSelectPreviousFeedCategory"/>
+    <addaction name="m_actionSelectNextItem"/>
+    <addaction name="m_actionSelectPreviousItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionMarkAllFeedsRead"/>
-    <addaction name="m_actionClearAllFeeds"/>
+    <addaction name="m_actionMarkAllItemsRead"/>
+    <addaction name="m_actionClearAllItems"/>
     <addaction name="separator"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
-    <addaction name="m_actionMarkSelectedFeedsAsRead"/>
-    <addaction name="m_actionMarkSelectedFeedsAsUnread"/>
-    <addaction name="m_actionClearSelectedFeeds"/>
+    <addaction name="m_actionMarkSelectedItemsAsRead"/>
+    <addaction name="m_actionMarkSelectedItemsAsUnread"/>
+    <addaction name="m_actionClearSelectedItems"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -180,8 +180,8 @@
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
-   <addaction name="m_menuFeeds"/>
    <addaction name="m_menuServices"/>
+   <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
@@ -305,20 +305,20 @@
     <string>Switch &amp;importance of selected messages</string>
    </property>
   </action>
-  <action name="m_actionMarkSelectedFeedsAsRead">
+  <action name="m_actionMarkSelectedItemsAsRead">
    <property name="text">
     <string>&amp;Mark selected items as read</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages (without message filters) from selected feeds as read.</string>
+    <string>Mark all messages (without message filters) from selected items as read.</string>
    </property>
   </action>
-  <action name="m_actionMarkSelectedFeedsAsUnread">
+  <action name="m_actionMarkSelectedItemsAsUnread">
    <property name="text">
     <string>&amp;Mark selected items as unread</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages (without message filters) from selected feeds as unread.</string>
+    <string>Mark all messages (without message filters) from selected items as unread.</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
@@ -326,12 +326,12 @@
     <string>&amp;Delete selected messages</string>
    </property>
   </action>
-  <action name="m_actionClearSelectedFeeds">
+  <action name="m_actionClearSelectedItems">
    <property name="text">
     <string>&amp;Clean selected items</string>
    </property>
    <property name="toolTip">
-    <string>Deletes all messages from selected feeds.</string>
+    <string>Deletes all messages from selected items.</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
@@ -360,12 +360,12 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionMarkAllFeedsRead">
+  <action name="m_actionMarkAllItemsRead">
    <property name="text">
     <string>&amp;Mark all items as &amp;read</string>
    </property>
    <property name="toolTip">
-    <string>Marks all messages in all feeds read. This does not take message filters into account.</string>
+    <string>Marks all messages in all items read. This does not take message filters into account.</string>
    </property>
   </action>
   <action name="m_actionViewSelectedItemsNewspaperMode">
@@ -373,7 +373,7 @@
     <string>View selected items in &amp;newspaper mode</string>
    </property>
    <property name="toolTip">
-    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
+    <string>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
    </property>
   </action>
   <action name="m_actionSwitchMainWindow">
@@ -401,31 +401,31 @@
     <string notr="true">L</string>
    </property>
   </action>
-  <action name="m_actionClearAllFeeds">
+  <action name="m_actionClearAllItems">
    <property name="text">
     <string>&amp;Clean all items</string>
    </property>
    <property name="toolTip">
-    <string>Deletes all messages from all feeds.</string>
+    <string>Deletes all messages from all items.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+C</string>
+    <string>Ctrl+Shift+C</string>
    </property>
   </action>
-  <action name="m_actionSelectNextFeedCategory">
+  <action name="m_actionSelectNextItem">
    <property name="text">
     <string>Select &amp;next item</string>
    </property>
    <property name="shortcut">
-    <string notr="true">S</string>
+    <string>S</string>
    </property>
   </action>
-  <action name="m_actionSelectPreviousFeedCategory">
+  <action name="m_actionSelectPreviousItem">
    <property name="text">
     <string>Select &amp;previous item</string>
    </property>
    <property name="shortcut">
-    <string notr="true">A</string>
+    <string>A</string>
    </property>
   </action>
   <action name="m_actionSelectNextMessage">
@@ -600,7 +600,7 @@
     <string notr="true">Ctrl+Shift+Del</string>
    </property>
   </action>
-  <action name="m_actionShowOnlyUnreadFeeds">
+  <action name="m_actionShowOnlyUnreadItems">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -608,15 +608,15 @@
     <string>Show only unread items</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+U</string>
+    <string>Ctrl+Shift+U</string>
    </property>
   </action>
-  <action name="m_actionExpandCollapseFeedCategory">
+  <action name="m_actionExpandCollapseItem">
    <property name="text">
     <string>&amp;Expand/collapse selected item</string>
    </property>
    <property name="shortcut">
-    <string notr="true">E</string>
+    <string>E</string>
    </property>
   </action>
   <action name="m_actionServiceAdd">

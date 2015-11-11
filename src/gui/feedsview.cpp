@@ -497,8 +497,8 @@ void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                       qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
                                       qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                      qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
-                                      qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread <<
+                                      qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
+                                      qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
                                       qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
   if (!specific_actions.isEmpty()) {
@@ -521,8 +521,8 @@ void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                  qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
                                  qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
-                                 qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
-                                 qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsUnread <<
+                                 qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead <<
+                                 qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread <<
                                  qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
   if (!specific_actions.isEmpty()) {

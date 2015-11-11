@@ -114,10 +114,12 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedSourceArticlesInternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
-  actions << m_ui->m_actionMarkAllFeedsRead;
-  actions << m_ui->m_actionMarkSelectedFeedsAsRead;
-  actions << m_ui->m_actionMarkSelectedFeedsAsUnread;
-  actions << m_ui->m_actionClearSelectedFeeds;
+  actions << m_ui->m_actionMarkAllItemsRead;
+  actions << m_ui->m_actionMarkSelectedItemsAsRead;
+  actions << m_ui->m_actionMarkSelectedItemsAsUnread;
+  actions << m_ui->m_actionClearSelectedItems;
+  actions << m_ui->m_actionClearAllItems;
+  actions << m_ui->m_actionShowOnlyUnreadItems;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
@@ -127,11 +129,11 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
-  actions << m_ui->m_actionSelectNextFeedCategory;
-  actions << m_ui->m_actionSelectPreviousFeedCategory;
+  actions << m_ui->m_actionSelectNextItem;
+  actions << m_ui->m_actionSelectPreviousItem;
   actions << m_ui->m_actionSelectNextMessage;
   actions << m_ui->m_actionSelectPreviousMessage;
-  actions << m_ui->m_actionExpandCollapseFeedCategory;
+  actions << m_ui->m_actionExpandCollapseItem;
 
   return actions;
 }
@@ -149,7 +151,7 @@ void FormMain::prepareMenus() {
     m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionUpdateAllItems);
-    m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
+    m_trayMenu->addAction(m_ui->m_actionMarkAllItemsRead);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
@@ -299,14 +301,14 @@ void FormMain::setupIcons() {
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
   m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
   m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
-  m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
   m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
-  m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
-  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
-  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-favorite")));
@@ -315,12 +317,12 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("item-send-email")));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme(QSL("item-newspaper")));
-  m_ui->m_actionSelectNextFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
-  m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
+  m_ui->m_actionSelectNextItem->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
+  m_ui->m_actionSelectPreviousItem->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
-  m_ui->m_actionShowOnlyUnreadFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
-  m_ui->m_actionExpandCollapseFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
+  m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
@@ -361,7 +363,7 @@ void FormMain::loadSize() {
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
 
   // Make sure that only unread feeds are shown if user has that feature set on.
-  m_ui->m_actionShowOnlyUnreadFeeds->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
+  m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
 }
 
 void FormMain::saveSize() {

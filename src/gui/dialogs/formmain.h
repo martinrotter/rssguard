@@ -21,7 +21,6 @@
 #include "ui_formmain.h"
 
 #include <QMainWindow>
-#include <QUrl>
 
 
 class StatusBar;
