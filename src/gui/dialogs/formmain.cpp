@@ -92,8 +92,6 @@ QList<QAction*> FormMain::allActions() {
   // Add basic actions.
   actions << m_ui->m_actionSettings;
   actions << m_ui->m_actionDownloadManager;
-  actions << m_ui->m_actionImportFeeds;
-  actions << m_ui->m_actionExportFeeds;
   actions << m_ui->m_actionRestoreDatabaseSettings;
   actions << m_ui->m_actionBackupDatabaseSettings;
   actions << m_ui->m_actionRestart;
@@ -124,8 +122,8 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
   actions << m_ui->m_actionDeleteSelectedMessages;
-  actions << m_ui->m_actionUpdateAllFeeds;
-  actions << m_ui->m_actionUpdateSelectedFeeds;
+  actions << m_ui->m_actionUpdateAllItems;
+  actions << m_ui->m_actionUpdateSelectedItems;
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
@@ -150,7 +148,7 @@ void FormMain::prepareMenus() {
     // Add needed items to the menu.
     m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
     m_trayMenu->addSeparator();
-    m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
+    m_trayMenu->addAction(m_ui->m_actionUpdateAllItems);
     m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionSettings);
@@ -272,8 +270,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("cleanup-database")));
   m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
   m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
-  m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
-  m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("application-donate")));
@@ -301,8 +297,8 @@ void FormMain::setupIcons() {
 
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
-  m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
-  m_ui->m_actionUpdateSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
+  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
+  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
   m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
   m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
   m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
@@ -399,8 +395,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_menuServices, SIGNAL(aboutToShow()), this, SLOT(updateServicesMenu()));
 
   // Menu "File" connections.
-  connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
-  connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
   connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));
   connect(m_ui->m_actionRestoreDatabaseSettings, SIGNAL(triggered()), this, SLOT(restoreDatabaseSettings()));
   connect(m_ui->m_actionRestart, SIGNAL(triggered()), qApp, SLOT(restart()));
@@ -455,22 +449,6 @@ void FormMain::loadWebBrowserMenu(int index) {
   }
 
   m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
-}
-
-void FormMain::exportFeeds() {  
-  QPointer<FormStandardImportExport> form = new FormStandardImportExport(tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot(),
-                                                                         this);
-  form.data()->setMode(FeedsImportExportModel::Export);
-  form.data()->exec();
-  delete form.data();
-}
-
-void FormMain::importFeeds() {
-  QPointer<FormStandardImportExport> form = new FormStandardImportExport(tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot(),
-                                                                         this);
-  form.data()->setMode(FeedsImportExportModel::Import);
-  form.data()->exec();
-  delete form.data();
 }
 
 void FormMain::backupDatabaseSettings() {

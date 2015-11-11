@@ -82,7 +82,7 @@ DKEY GUI::ToolbarStyle                            = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 
 DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
-DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead";
+DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_actionMarkAllFeedsRead";
 
 DKEY GUI::MainWindowInitialSize        = "window_size";
 DKEY GUI::MainWindowInitialPosition    = "window_position";

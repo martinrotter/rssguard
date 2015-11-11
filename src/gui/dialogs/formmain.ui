@@ -55,9 +55,6 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="m_actionImportFeeds"/>
-    <addaction name="m_actionExportFeeds"/>
-    <addaction name="separator"/>
     <addaction name="m_actionRestoreDatabaseSettings"/>
     <addaction name="m_actionBackupDatabaseSettings"/>
     <addaction name="separator"/>
@@ -135,8 +132,8 @@
       <string>Add &amp;new item</string>
      </property>
     </widget>
-    <addaction name="m_actionUpdateAllFeeds"/>
-    <addaction name="m_actionUpdateSelectedFeeds"/>
+    <addaction name="m_actionUpdateAllItems"/>
+    <addaction name="m_actionUpdateSelectedItems"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedItem"/>
@@ -267,20 +264,20 @@
     <string>Close current web browser tab.</string>
    </property>
   </action>
-  <action name="m_actionUpdateAllFeeds">
+  <action name="m_actionUpdateAllItems">
    <property name="text">
     <string>Update &amp;all items</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+U</string>
+    <string>Ctrl+Shift+U</string>
    </property>
   </action>
-  <action name="m_actionUpdateSelectedFeeds">
+  <action name="m_actionUpdateSelectedItems">
    <property name="text">
     <string>Update &amp;selected items</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+U</string>
+    <string>Ctrl+U</string>
    </property>
   </action>
   <action name="m_actionEditSelectedItem">
@@ -310,7 +307,7 @@
   </action>
   <action name="m_actionMarkSelectedFeedsAsRead">
    <property name="text">
-    <string>&amp;Mark selected feeds as read</string>
+    <string>&amp;Mark selected items as read</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected feeds as read.</string>
@@ -318,7 +315,7 @@
   </action>
   <action name="m_actionMarkSelectedFeedsAsUnread">
    <property name="text">
-    <string>&amp;Mark selected feeds as unread</string>
+    <string>&amp;Mark selected items as unread</string>
    </property>
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected feeds as unread.</string>
@@ -331,7 +328,7 @@
   </action>
   <action name="m_actionClearSelectedFeeds">
    <property name="text">
-    <string>&amp;Clean selected feeds</string>
+    <string>&amp;Clean selected items</string>
    </property>
    <property name="toolTip">
     <string>Deletes all messages from selected feeds.</string>
@@ -365,7 +362,7 @@
   </action>
   <action name="m_actionMarkAllFeedsRead">
    <property name="text">
-    <string>&amp;Mark all feeds as &amp;read</string>
+    <string>&amp;Mark all items as &amp;read</string>
    </property>
    <property name="toolTip">
     <string>Marks all messages in all feeds read. This does not take message filters into account.</string>
@@ -373,7 +370,7 @@
   </action>
   <action name="m_actionViewSelectedItemsNewspaperMode">
    <property name="text">
-    <string>View selected feeds in &amp;newspaper mode</string>
+    <string>View selected items in &amp;newspaper mode</string>
    </property>
    <property name="toolTip">
     <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
@@ -406,7 +403,7 @@
   </action>
   <action name="m_actionClearAllFeeds">
    <property name="text">
-    <string>&amp;Clean all feeds</string>
+    <string>&amp;Clean all items</string>
    </property>
    <property name="toolTip">
     <string>Deletes all messages from all feeds.</string>
@@ -544,22 +541,6 @@
     <string notr="true">H</string>
    </property>
   </action>
-  <action name="m_actionImportFeeds">
-   <property name="text">
-    <string>&amp;Import feeds</string>
-   </property>
-   <property name="toolTip">
-    <string>Imports feeds you want from selected file.</string>
-   </property>
-  </action>
-  <action name="m_actionExportFeeds">
-   <property name="text">
-    <string>&amp;Export feeds</string>
-   </property>
-   <property name="toolTip">
-    <string>Exports feeds you want to selected file.</string>
-   </property>
-  </action>
   <action name="m_actionReportBugBitBucket">
    <property name="text">
     <string>Report a bug (BitBucket)...</string>
@@ -624,7 +605,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show only unread feeds/categories</string>
+    <string>Show only unread items</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+U</string>
@@ -632,7 +613,7 @@
   </action>
   <action name="m_actionExpandCollapseFeedCategory">
    <property name="text">
-    <string>&amp;Expand/collapse selected feed/category</string>
+    <string>&amp;Expand/collapse selected item</string>
    </property>
    <property name="shortcut">
     <string notr="true">E</string>

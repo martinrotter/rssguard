@@ -85,8 +85,6 @@ class FormMain : public QMainWindow {
     void loadWebBrowserMenu(int index);
 
     // Displays various dialogs.
-    void exportFeeds();
-    void importFeeds();
     void backupDatabaseSettings();
     void restoreDatabaseSettings();
     void showSettings();

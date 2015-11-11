@@ -77,6 +77,8 @@ class StandardServiceRoot : public ServiceRoot {
   public slots:
     void addNewCategory();
     void addNewFeed();
+    void importFeeds();
+    void exportFeeds();
 
   private:
     void loadFromDatabase();
@@ -89,6 +91,10 @@ class StandardServiceRoot : public ServiceRoot {
     StandardRecycleBin *m_recycleBin;
 
     // Menus.
+    QAction *m_actionExportFeeds;
+    QAction *m_actionImportFeeds;
+
+    QList<QAction*> m_serviceMenu;
     QList<QAction*> m_addItemMenu;
     QList<QAction*> m_feedContextMenu;
 

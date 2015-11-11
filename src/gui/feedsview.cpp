@@ -494,7 +494,7 @@ void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
   QList<QAction*> specific_actions = clicked_item->contextMenuActions();
 
   m_contextMenuCategories->addActions(QList<QAction*>() <<
-                                      qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
+                                      qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                       qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
                                       qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                       qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
@@ -518,7 +518,7 @@ void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
   QList<QAction*> specific_actions = clicked_item->contextMenuActions();
 
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
-                                 qApp->mainForm()->m_ui->m_actionUpdateSelectedFeeds <<
+                                 qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
                                  qApp->mainForm()->m_ui->m_actionEditSelectedItem <<
                                  qApp->mainForm()->m_ui->m_actionViewSelectedItemsNewspaperMode <<
                                  qApp->mainForm()->m_ui->m_actionMarkSelectedFeedsAsRead <<
@@ -533,7 +533,7 @@ void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
 
 void FeedsView::initializeContextMenuEmptySpace() {
   m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
-  m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllFeeds);
+  m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllItems);
   m_contextMenuEmptySpace->addSeparator();
 }
 

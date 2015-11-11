@@ -21,6 +21,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/mutex.h"
 #include "core/feedsmodel.h"
 #include "gui/messagebox.h"
 #include "gui/dialogs/formmain.h"
@@ -32,6 +33,7 @@
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
+#include "services/standard/gui/formstandardimportexport.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -43,6 +45,7 @@
 
 StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
+    m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
   setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME));
   setIcon(StandardServiceEntryPoint().icon());
@@ -55,6 +58,7 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_mo
 }
 
 StandardServiceRoot::~StandardServiceRoot() {
+  qDeleteAll(m_serviceMenu);
   qDeleteAll(m_addItemMenu);
   qDeleteAll(m_feedContextMenu);
 }
@@ -334,16 +338,28 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
 
 void StandardServiceRoot::addNewCategory() {
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(this, qApp->mainForm());
-
   form_pointer.data()->exec(NULL, NULL);
   delete form_pointer.data();
 }
 
 void StandardServiceRoot::addNewFeed() {
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(this, qApp->mainForm());
-
   form_pointer.data()->exec(NULL, NULL);
   delete form_pointer.data();
+}
+
+void StandardServiceRoot::importFeeds() {
+  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this, qApp->mainForm());
+  form.data()->setMode(FeedsImportExportModel::Import);
+  form.data()->exec();
+  delete form.data();
+}
+
+void StandardServiceRoot::exportFeeds() {
+  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this, qApp->mainForm());
+  form.data()->setMode(FeedsImportExportModel::Export);
+  form.data()->exec();
+  delete form.data();
 }
 
 QList<QAction*> StandardServiceRoot::addItemMenu() {
@@ -362,7 +378,18 @@ QList<QAction*> StandardServiceRoot::addItemMenu() {
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {
-  return m_addItemMenu;
+  if (m_serviceMenu.isEmpty()) {
+    m_actionExportFeeds = new QAction(qApp->icons()->fromTheme("document-export"), tr("Export feeds"), this);
+    m_actionImportFeeds = new QAction(qApp->icons()->fromTheme("document-import"), tr("Import feeds"), this);
+
+    connect(m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
+    connect(m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
+
+    m_serviceMenu.append(m_actionExportFeeds);
+    m_serviceMenu.append(m_actionImportFeeds);
+  }
+
+  return m_serviceMenu;
 }
 
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
