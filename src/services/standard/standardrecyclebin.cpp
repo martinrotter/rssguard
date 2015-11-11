@@ -56,55 +56,11 @@ int StandardRecycleBin::countOfAllMessages() const {
 
 QVariant StandardRecycleBin::data(int column, int role) const {
   switch (role) {
-    case Qt::DisplayRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return title();
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString()
-            .replace(PLACEHOLDER_UNREAD_COUNTS, QString::number(countOfUnreadMessages()))
-            .replace(PLACEHOLDER_ALL_COUNTS, QString::number(countOfAllMessages()));
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::EditRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return title();
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        return countOfUnreadMessages();
-      }
-      else {
-        return QVariant();
-      }
-
-    case Qt::FontRole:
-      // TODO: přesunout společny části do předka a volat ho odtud.
-      return countOfUnreadMessages() > 0 ? boldFont() : normalFont();
-
-    case Qt::DecorationRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        return icon();
-      }
-      else {
-        return QVariant();
-      }
-
     case Qt::ToolTipRole:
       return tr("Recycle bin\n%1").arg(tr("%n deleted message(s).", 0, countOfAllMessages()));
 
-    case Qt::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
-
     default:
-      return QVariant();
+      return RootItem::data(column, role);
   }
 }
 
