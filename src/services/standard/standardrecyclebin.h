@@ -23,6 +23,8 @@
 #include <QCoreApplication>
 
 
+class StandardServiceRoot;
+
 class StandardRecycleBin : public RootItem {
     Q_OBJECT
 
@@ -30,11 +32,15 @@ class StandardRecycleBin : public RootItem {
     explicit StandardRecycleBin(RootItem *parent = NULL);
     virtual ~StandardRecycleBin();
 
+    StandardServiceRoot *serviceRoot();
+
     int childCount() const;
     void appendChild(RootItem *child);
     int countOfUnreadMessages() const;
     int countOfAllMessages() const;
     QVariant data(int column, int role) const;
+
+    bool markAsReadUnread(ReadStatus status);
 
     bool empty();
     bool restore();

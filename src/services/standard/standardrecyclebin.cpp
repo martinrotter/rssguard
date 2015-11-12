@@ -19,6 +19,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/standard/standardserviceroot.h"
 
 #include <QSqlQuery>
 
@@ -36,6 +37,10 @@ StandardRecycleBin::StandardRecycleBin(RootItem *parent)
 
 StandardRecycleBin::~StandardRecycleBin() {
   qDebug("Destroying RecycleBin instance.");
+}
+
+StandardServiceRoot *StandardRecycleBin::serviceRoot() {
+  return static_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
 int StandardRecycleBin::childCount() const {
@@ -62,6 +67,10 @@ QVariant StandardRecycleBin::data(int column, int role) const {
     default:
       return RootItem::data(column, role);
   }
+}
+
+bool StandardRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
+  return serviceRoot()->markRecycleBinReadUnread(status);
 }
 
 bool StandardRecycleBin::empty() {

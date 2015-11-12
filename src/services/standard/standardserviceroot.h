@@ -75,6 +75,7 @@ class StandardServiceRoot : public ServiceRoot {
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
+    bool markRecycleBinReadUnread(ReadStatus read);
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
 
   public slots:
