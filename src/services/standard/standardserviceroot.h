@@ -74,6 +74,9 @@ class StandardServiceRoot : public ServiceRoot {
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
 
+    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
+    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+
   public slots:
     void addNewCategory();
     void addNewFeed();
@@ -81,6 +84,10 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    // Returns converted ids of given feeds
+    // which are suitable as IN clause for SQL queries.
+    QStringList textualFeedIds(const QList<Feed *> &feeds);
+
     void loadFromDatabase();
 
     // Takes lists of feeds/categories and assembles

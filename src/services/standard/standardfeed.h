@@ -74,6 +74,9 @@ class StandardFeed : public Feed {
     bool editViaGui();
     bool deleteViaGui();
 
+    bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clean_read_only);
+
     QList<Message> undeletedMessages() const;
 
     // Obtains data related to this feed.
@@ -83,7 +86,7 @@ class StandardFeed : public Feed {
     int update();
 
     // Updates counts of all/unread messages for this feed.
-    void updateCounts(bool including_total_count = true, bool update_feed_statuses = true);
+    void updateCounts(bool including_total_count);
 
     // Removes this standard feed from persistent
     // storage.
@@ -156,7 +159,7 @@ class StandardFeed : public Feed {
     // Fetches metadata for the feed.
     void fetchMetadataForItself();
 
-  protected:
+  private:
     // Persistently stores given messages into the database
     // and updates existing messages if newer version is
     // available.

@@ -159,41 +159,33 @@ void FeedsView::expandCollapseCurrentItem() {
   }
 }
 
-void FeedsView::updateAllFeeds() {
+void FeedsView::updateAllItems() {
   emit feedsUpdateRequested(allFeeds());
 }
 
-void FeedsView::updateSelectedFeeds() {
+void FeedsView::updateSelectedItems() {
   emit feedsUpdateRequested(selectedFeeds());
 }
 
-void FeedsView::updateAllFeedsOnStartup() {
+void FeedsView::updateAllItemsOnStartup() {
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllItems()));
   }
 }
 
-void FeedsView::setSelectedFeedsClearStatus(int clear) {
-  m_sourceModel->markFeedsDeleted(selectedFeeds(), clear, 0);
+void FeedsView::clearSelectedFeeds() {
+  m_sourceModel->markItemCleared(selectedItem(), false);
   updateCountsOfSelectedFeeds(true);
 
   emit feedsNeedToBeReloaded(true);
 }
 
-void FeedsView::setAllFeedsClearStatus(int clear) {
-  m_sourceModel->markFeedsDeleted(allFeeds(), clear, 0);
+void FeedsView::clearAllFeeds() {
+  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
   updateCountsOfAllFeeds(true);
 
   emit feedsNeedToBeReloaded(true);
-}
-
-void FeedsView::clearSelectedFeeds() {
-  setSelectedFeedsClearStatus(1);
-}
-
-void FeedsView::clearAllFeeds() {
-  setAllFeedsClearStatus(1);
 }
 
 void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
@@ -313,7 +305,7 @@ void FeedsView::deleteSelectedItem() {
         // a delete selected_item jen volat tady, editViaGui taky obstará všechno,
         // ale tam je to zas komplexnější.
         m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index));
-        notifyWithCounts();
+        m_sourceModel->notifyWithCounts();
       }
     }
     else {
@@ -329,42 +321,42 @@ void FeedsView::deleteSelectedItem() {
   qApp->feedUpdateLock()->unlock();
 }
 
-void FeedsView::markSelectedFeedsReadStatus(int read) {
-  m_sourceModel->markFeedsRead(selectedFeeds(), read);
+void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
+  m_sourceModel->markItemRead(selectedItem(), read);
   updateCountsOfSelectedFeeds(false);
 
   emit feedsNeedToBeReloaded(read == 1);
 }
 
-void FeedsView::markSelectedFeedsRead() {
-  markSelectedFeedsReadStatus(1);
+void FeedsView::markSelectedItemsRead() {
+  markSelectedItemReadStatus(RootItem::Read);
 }
 
-void FeedsView::markSelectedFeedsUnread() {
-  markSelectedFeedsReadStatus(0);
+void FeedsView::markSelectedItemsUnread() {
+  markSelectedItemReadStatus(RootItem::Unread);
 }
 
-void FeedsView::markAllFeedsReadStatus(int read) {
-  m_sourceModel->markFeedsRead(allFeeds(), read);
+void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
+  m_sourceModel->markItemRead(m_sourceModel->rootItem(), read);
   updateCountsOfAllFeeds(false);
 
   emit feedsNeedToBeReloaded(read == 1);
 }
 
-void FeedsView::markAllFeedsRead() {
-  markAllFeedsReadStatus(1);
+void FeedsView::markAllItemsRead() {
+  markAllItemsReadStatus(RootItem::Read);
 }
 
 void FeedsView::clearAllReadMessages() {
-  m_sourceModel->markFeedsDeleted(allFeeds(), 1, 1);
+  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), true);
 }
 
-void FeedsView::openSelectedFeedsInNewspaperMode() {
+void FeedsView::openSelectedItemsInNewspaperMode() {
   QList<Message> messages = m_sourceModel->messagesForFeeds(selectedFeeds());
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(messages);
-    QTimer::singleShot(0, this, SLOT(markSelectedFeedsRead()));
+    QTimer::singleShot(0, this, SLOT(markSelectedItemsRead()));
   }
 }
 
@@ -410,7 +402,7 @@ void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
 
   // Make sure that selected view reloads changed indexes.
   m_sourceModel->reloadChangedLayout(selected_indexes);
-  notifyWithCounts();
+  m_sourceModel->notifyWithCounts();
 }
 
 void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
@@ -418,7 +410,7 @@ void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
   // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
   //m_sourceModel->recycleBin()->updateCounts(update_total_too);
   //m_sourceModel->reloadChangedLayout(QModelIndexList() << m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
-  notifyWithCounts();
+  m_sourceModel->notifyWithCounts();
 }
 
 void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
@@ -435,29 +427,22 @@ void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
 
   // Make sure that all views reloads its data.
   m_sourceModel->reloadWholeLayout();
-  notifyWithCounts();
+  m_sourceModel->notifyWithCounts();
 }
 
 void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) {
   QModelIndex index = m_sourceModel->indexForItem(feed);
 
   if (index.isValid()) {
-    feed->updateCounts(update_total_too, false);
+    feed->updateCounts(update_total_too);
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
 
   invalidateReadFeedsFilter();
-  notifyWithCounts();
+  m_sourceModel->notifyWithCounts();
 }
 
 void FeedsView::selectNextItem() {
-  // NOTE: Bug #122 requested to not expand in here.
-  /*
-  if (!isExpanded(currentIndex())) {
-    expand(currentIndex());
-  }
-  */
-
   QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (index_next.isValid()) {
@@ -468,14 +453,6 @@ void FeedsView::selectNextItem() {
 
 void FeedsView::selectPreviousItem() {
   QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
-
-  // NOTE: Bug #122 requested to not expand in here.
-  /*
-  if (!isExpanded(index_previous)) {
-    expand(index_previous);
-    index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
-  }
-  */
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);

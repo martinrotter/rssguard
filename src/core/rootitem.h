@@ -50,6 +50,16 @@ class RootItem : public QObject {
     Q_OBJECT
 
   public:
+    enum ReadStatus {
+      Read,
+      Unread
+    };
+
+    enum CleanStatus {
+      Clean,
+      Unclean
+    };
+
     // Constructors and destructors.
     explicit RootItem(RootItem *parent_item = NULL);
     virtual ~RootItem();
@@ -82,39 +92,20 @@ class RootItem : public QObject {
     // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
     virtual QList<QAction*> contextMenuActions();
 
-    // TODO: pracovat s těmito věcmi
-    virtual bool canBeEdited() {
-      return false;
-    }
+    virtual bool canBeEdited();
+    virtual bool editViaGui();
+    virtual bool canBeDeleted();
+    virtual bool deleteViaGui();
 
-    virtual bool editViaGui() {
-      return false;
-    }
+    virtual bool canBeMarkedAsReadUnread(ReadStatus status);
+    virtual bool markAsReadUnread(ReadStatus status);
 
-    virtual bool canBeDeleted() {
-      return false;
-    }
-
-    virtual bool deleteViaGui() {
-      return false;
-    }
-
-    virtual bool canBeMarkedAsRead() {
-      return true;
-    }
-
-    virtual bool markAsRead() {
-      return true;
-    }
-
-    virtual bool canBeMarkedAsUnread() {
-      return true;
-    }
-
-    virtual bool markAsUnread() {
-      return true;
-    }
-
+    // This method should "clean" all messages it contains.
+    // What "clean" means? It means delete message -> move them to recycle bin
+    // or eventually remove them completely if there is no recycle bin functionality.
+    // If this method is called on "recycle bin" instance of your
+    // service account, it should not do anything.
+    virtual bool cleanMessages(bool clear_only_read);
 
     virtual int row() const;
     virtual QVariant data(int column, int role) const;

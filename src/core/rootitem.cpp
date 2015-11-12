@@ -46,6 +46,48 @@ QList<QAction*> RootItem::contextMenuActions() {
   return QList<QAction*>();
 }
 
+bool RootItem::canBeEdited() {
+  return false;
+}
+
+bool RootItem::editViaGui() {
+  return false;
+}
+
+bool RootItem::canBeDeleted() {
+  return false;
+}
+
+bool RootItem::deleteViaGui() {
+  return false;
+}
+
+bool RootItem::canBeMarkedAsReadUnread(ReadStatus status) {
+  return true;
+}
+
+bool RootItem::markAsReadUnread(ReadStatus status) {
+  bool result = true;
+
+  foreach (RootItem *child, m_childItems) {
+    if (child->canBeMarkedAsReadUnread(status)) {
+      result &= child->markAsReadUnread(status);
+    }
+  }
+
+  return result;
+}
+
+bool RootItem::cleanMessages(bool clear_only_read) {
+  bool result = true;
+
+  foreach (RootItem *child, m_childItems) {
+    result &= child->cleanMessages(clear_only_read);
+  }
+
+  return result;
+}
+
 void RootItem::setupFonts() {
   m_normalFont = Application::font("FeedsView");
   m_boldFont = m_normalFont;

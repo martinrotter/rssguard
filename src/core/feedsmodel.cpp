@@ -439,85 +439,16 @@ Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
   }
 }
 
-bool FeedsModel::markFeedsRead(const QList<Feed*> &feeds, int read) {
-  QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds read change.");
-    return false;
+bool FeedsModel::markItemRead(RootItem *item, RootItem::ReadStatus read) {
+  if (item->canBeMarkedAsReadUnread(read)) {
+    return item->markAsReadUnread(read);
   }
 
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-
-  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
-    qWarning("Query preparation failed for feeds read change.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  query_read_msg.bindValue(QSL(":read"), read);
-
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for feeds read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
+  return false;
 }
 
-bool FeedsModel::markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only) {
-  QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds clearing.");
-    return false;
-  }
-
-  QSqlQuery query_delete_msg(db_handle);
-  query_delete_msg.setForwardOnly(true);
-
-  if (read_only) {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-
-      db_handle.rollback();
-      return false;
-    }
-  }
-  else {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-
-      db_handle.rollback();
-      return false;
-    }
-  }
-
-  query_delete_msg.bindValue(QSL(":deleted"), deleted);
-
-  if (!query_delete_msg.exec()) {
-    qDebug("Query execution for feeds clearing failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
+bool FeedsModel::markItemCleared(RootItem *item, bool clean_read_only) {
+  return item->cleanMessages(clean_read_only);
 }
 
 QList<Feed*> FeedsModel::allFeeds() {

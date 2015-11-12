@@ -132,8 +132,8 @@ class FeedsModel : public QAbstractItemModel {
 
   public slots:
     // Feeds operations.
-    bool markFeedsRead(const QList<Feed*> &feeds, int read);
-    bool markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only);
+    bool markItemRead(RootItem *item, RootItem::ReadStatus read);
+    bool markItemCleared(RootItem *item, bool clean_read_only);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.
@@ -147,6 +147,12 @@ class FeedsModel : public QAbstractItemModel {
     // Invalidates data under index for the item.
     void reloadChangedItem(RootItem *item);
 
+    // Notifies other components about messages
+    // counts.
+    inline void notifyWithCounts() {
+      emit messageCountsChanged(countOfUnreadMessages(), countOfAllMessages(), hasAnyFeedNewMessages());
+    }
+
   private slots:
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
@@ -154,6 +160,9 @@ class FeedsModel : public QAbstractItemModel {
   signals:
     // Emitted when model requests update of some feeds.
     void feedsUpdateRequested(const QList<Feed*> feeds);
+
+    // Emitted if counts of messages are changed.
+    void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);
 
   private:
     // Returns converted ids of given feeds

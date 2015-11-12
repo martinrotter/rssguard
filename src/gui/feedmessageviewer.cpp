@@ -75,7 +75,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
   createConnections();
 
   // Now, update all feeds if user has set it.
-  m_feedsView->updateAllFeedsOnStartup();
+  m_feedsView->updateAllItemsOnStartup();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
@@ -337,7 +337,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(bool)), m_messagesView, SLOT(reloadSelections(bool)));
 
   // If counts of unread/all messages change, update the tray icon.
-  connect(m_feedsView, SIGNAL(messageCountsChanged(int,int,bool)), this, SLOT(updateTrayIconStatus(int,int,bool)));
+  connect(m_feedsView->sourceModel(), SIGNAL(messageCountsChanged(int,int,bool)), this, SLOT(updateTrayIconStatus(int,int,bool)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
@@ -371,25 +371,25 @@ void FeedMessageViewer::createConnections() {
   connect(form_main->m_ui->m_actionSendMessageViaEmail,
           SIGNAL(triggered()), m_messagesView, SLOT(sendSelectedMessageViaEmail()));
   connect(form_main->m_ui->m_actionMarkAllItemsRead,
-          SIGNAL(triggered()), m_feedsView, SLOT(markAllFeedsRead()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markAllItemsRead()));
   connect(form_main->m_ui->m_actionMarkSelectedItemsAsRead,
-          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsRead()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedItemsRead()));
   connect(form_main->m_ui->m_actionExpandCollapseItem,
           SIGNAL(triggered()), m_feedsView, SLOT(expandCollapseCurrentItem()));
   connect(form_main->m_ui->m_actionMarkSelectedItemsAsUnread,
-          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedFeedsUnread()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedItemsUnread()));
   connect(form_main->m_ui->m_actionClearSelectedItems,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
   connect(form_main->m_ui->m_actionClearAllItems,
           SIGNAL(triggered()), m_feedsView, SLOT(clearAllFeeds()));
   connect(form_main->m_ui->m_actionUpdateSelectedItems,
-          SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedFeeds()));
+          SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedItems()));
   connect(form_main->m_ui->m_actionUpdateAllItems,
-          SIGNAL(triggered()), m_feedsView, SLOT(updateAllFeeds()));
+          SIGNAL(triggered()), m_feedsView, SLOT(updateAllItems()));
   connect(form_main->m_ui->m_actionEditSelectedItem,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
-          SIGNAL(triggered()), m_feedsView, SLOT(openSelectedFeedsInNewspaperMode()));
+          SIGNAL(triggered()), m_feedsView, SLOT(openSelectedItemsInNewspaperMode()));
   connect(form_main->m_ui->m_actionDeleteSelectedItem,
           SIGNAL(triggered()), m_feedsView, SLOT(deleteSelectedItem()));
   connect(form_main->m_ui->m_actionSwitchFeedsList,

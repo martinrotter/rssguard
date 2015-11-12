@@ -118,6 +118,14 @@ bool StandardFeed::deleteViaGui() {
   return removeItself();
 }
 
+bool StandardFeed::markAsReadUnread(ReadStatus status) {
+  return serviceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
+}
+
+bool StandardFeed::cleanMessages(bool clean_read_only) {
+  return serviceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
+}
+
 QList<Message> StandardFeed::undeletedMessages() const {
   QList<Message> messages;
 
@@ -165,7 +173,7 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
   }
 }
 
-void StandardFeed::updateCounts(bool including_total_count, bool update_feed_statuses) {
+void StandardFeed::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
 
@@ -181,7 +189,7 @@ void StandardFeed::updateCounts(bool including_total_count, bool update_feed_sta
   if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND is_read = 0;").arg(id())) && query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
-    if (update_feed_statuses && status() == NewMessages && new_unread_count < m_unreadCount) {
+    if (status() == NewMessages && new_unread_count < m_unreadCount) {
       setStatus(Normal);
     }
 
@@ -433,7 +441,7 @@ int StandardFeed::update() {
     setStatus(NetworkError);
     return 0;
   }
-  else {
+  else if (status() != NewMessages) {
     setStatus(Normal);
   }
 
@@ -731,5 +739,5 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
   setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-  updateCounts();
+  updateCounts(true);
 }

@@ -60,7 +60,7 @@ class Feed : public RootItem {
     virtual int update() = 0;
 
     // Updates counts of all/unread messages for this feed.
-    virtual void updateCounts(bool including_total_count = true, bool update_feed_statuses = true) = 0;
+    virtual void updateCounts(bool including_total_count) = 0;
 
     // Get ALL undeleted messages from this feed in one single list.
     virtual QList<Message> undeletedMessages() const = 0;

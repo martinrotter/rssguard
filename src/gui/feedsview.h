@@ -71,27 +71,23 @@ class FeedsView : public QTreeView {
     void expandCollapseCurrentItem();
 
     // Feed updating.
-    void updateAllFeeds();
-    void updateAllFeedsOnStartup();
-    void updateSelectedFeeds();
+    void updateAllItems();
+    void updateAllItemsOnStartup();
+    void updateSelectedItems();
 
     // Feed read/unread manipulators.
-    void markSelectedFeedsReadStatus(int read);
-    void markSelectedFeedsRead();
-    void markSelectedFeedsUnread();
-    void markAllFeedsReadStatus(int read);
-    void markAllFeedsRead();
+    void markSelectedItemsRead();
+    void markSelectedItemsUnread();
+    void markAllItemsRead();
 
     // Newspaper accessors.
-    void openSelectedFeedsInNewspaperMode();
+    void openSelectedItemsInNewspaperMode();
 
     // Recycle bin operators.
     void emptyRecycleBin();
     void restoreRecycleBin();
 
     // Feed clearers.
-    void setSelectedFeedsClearStatus(int clear);
-    void setAllFeedsClearStatus(int clear);
     void clearSelectedFeeds();
     void clearAllFeeds();
     void clearAllReadMessages();
@@ -116,14 +112,6 @@ class FeedsView : public QTreeView {
     // Reloads counts for particular feed.
     void updateCountsOfParticularFeed(Feed *feed, bool update_total_too);
 
-    // Notifies other components about messages
-    // counts.
-    inline void notifyWithCounts() {
-      emit messageCountsChanged(m_sourceModel->countOfUnreadMessages(),
-                                m_sourceModel->countOfAllMessages(),
-                                m_sourceModel->hasAnyFeedNewMessages());
-    }
-
     // Selects next/previous item (feed/category) in the list.
     void selectNextItem();
     void selectPreviousItem();
@@ -133,7 +121,14 @@ class FeedsView : public QTreeView {
       setVisible(!isVisible());
     }
 
-  protected:
+  private slots:
+    void markSelectedItemReadStatus(RootItem::ReadStatus read);
+    void markAllItemsReadStatus(RootItem::ReadStatus read);
+
+    void saveSortState(int column, Qt::SortOrder order);
+    void validateItemAfterDragDrop(const QModelIndex &source_index);
+
+  private:
     // Initializes context menus.
     void initializeContextMenuCategories(RootItem *clicked_item);
     void initializeContextMenuFeeds(RootItem *clicked_item);
@@ -151,16 +146,9 @@ class FeedsView : public QTreeView {
     // Show custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
 
-  private slots:
-    void saveSortState(int column, Qt::SortOrder order);
-    void validateItemAfterDragDrop(const QModelIndex &source_index);
-
   signals:
     // Emitted if user/application requested updating of some feeds.
     void feedsUpdateRequested(const QList<Feed*> feeds);
-
-    // Emitted if counts of messages are changed.
-    void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);
 
     // Emitted if currently selected feeds needs to be reloaded.
     void feedsNeedToBeReloaded(bool mark_current_index_read);

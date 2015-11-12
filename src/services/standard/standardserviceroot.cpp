@@ -128,6 +128,87 @@ QVariant StandardServiceRoot::data(int column, int role) const {
   }
 }
 
+bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus read) {
+  QSqlDatabase db_handle = qApp->database()->connection(QSL("StandardServiceRoot"), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for feeds read change.");
+    return false;
+  }
+
+  QSqlQuery query_read_msg(db_handle);
+  query_read_msg.setForwardOnly(true);
+
+  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
+    qWarning("Query preparation failed for feeds read change.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+
+  if (!query_read_msg.exec()) {
+    qDebug("Query execution for feeds read change failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
+bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
+  QSqlDatabase db_handle = qApp->database()->connection(QSL("StandardServiceRoot"), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for feeds clearing.");
+    return false;
+  }
+
+  QSqlQuery query_delete_msg(db_handle);
+  query_delete_msg.setForwardOnly(true);
+
+  if (clean_read_only) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
+      qWarning("Query preparation failed for feeds clearing.");
+
+      db_handle.rollback();
+      return false;
+    }
+  }
+  else {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
+      qWarning("Query preparation failed for feeds clearing.");
+
+      db_handle.rollback();
+      return false;
+    }
+  }
+
+  query_delete_msg.bindValue(QSL(":deleted"), 1);
+
+  if (!query_delete_msg.exec()) {
+    qDebug("Query execution for feeds clearing failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
 void StandardServiceRoot::loadFromDatabase(){
   QSqlDatabase database = qApp->database()->connection("StandardServiceRoot", DatabaseFactory::FromSettings);
   CategoryAssignment categories;
@@ -360,6 +441,17 @@ void StandardServiceRoot::exportFeeds() {
   form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
   delete form.data();
+}
+
+QStringList StandardServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
+  QStringList stringy_ids;
+  stringy_ids.reserve(feeds.size());
+
+  foreach (Feed *feed, feeds) {
+    stringy_ids.append(QString::number(feed->id()));
+  }
+
+  return stringy_ids;
 }
 
 QList<QAction*> StandardServiceRoot::addItemMenu() {
