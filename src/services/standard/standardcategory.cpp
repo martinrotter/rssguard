@@ -72,7 +72,7 @@ QVariant StandardCategory::data(int column, int role) const {
         //: Tooltip for standard feed.
         return tr("%1 (category)"
                   "%2%3").arg(title(),
-                              description().isEmpty() ? QString() : QSL('\n') + description(),
+                              description().isEmpty() ? QString() : QSL("\n") + description(),
                               childCount() == 0 ?
                                 tr("\nThis category does not contain any nested items.") :
                                 QString());

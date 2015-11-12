@@ -21,6 +21,7 @@
 #include "services/abstract/serviceroot.h"
 
 #include <QCoreApplication>
+#include <QPair>
 
 
 class StandardRecycleBin;
