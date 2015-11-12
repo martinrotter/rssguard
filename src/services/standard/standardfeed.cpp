@@ -521,7 +521,14 @@ bool StandardFeed::addItself(RootItem *parent) {
   query_add_feed.bindValue(QSL(":url"), url());
   query_add_feed.bindValue(QSL(":protected"), (int) passwordProtected());
   query_add_feed.bindValue(QSL(":username"), username());
-  query_add_feed.bindValue(QSL(":password"), TextFactory::encrypt(password()));
+
+  if (password().isEmpty()) {
+    query_add_feed.bindValue(QSL(":password"), password());
+  }
+  else {
+    query_add_feed.bindValue(QSL(":password"), TextFactory::encrypt(password()));
+  }
+
   query_add_feed.bindValue(QSL(":update_type"), (int) autoUpdateType());
   query_add_feed.bindValue(QSL(":update_interval"), autoUpdateInitialInterval());
   query_add_feed.bindValue(QSL(":type"), (int) type());
@@ -565,7 +572,14 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
   query_update_feed.bindValue(QSL(":url"), new_feed_data->url());
   query_update_feed.bindValue(QSL(":protected"), (int) new_feed_data->passwordProtected());
   query_update_feed.bindValue(QSL(":username"), new_feed_data->username());
-  query_update_feed.bindValue(QSL(":password"), TextFactory::encrypt(new_feed_data->password()));
+
+  if (password().isEmpty()) {
+    query_update_feed.bindValue(QSL(":password"), new_feed_data->password());
+  }
+  else {
+    query_update_feed.bindValue(QSL(":password"), TextFactory::encrypt(new_feed_data->password()));
+  }
+
   query_update_feed.bindValue(QSL(":update_type"), (int) new_feed_data->autoUpdateType());
   query_update_feed.bindValue(QSL(":update_interval"), new_feed_data->autoUpdateInitialInterval());
   query_update_feed.bindValue(QSL(":type"), new_feed_data->type());
@@ -736,7 +750,15 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   setUrl(record.value(FDS_DB_URL_INDEX).toString());
   setPasswordProtected(record.value(FDS_DB_PROTECTED_INDEX).toBool());
   setUsername(record.value(FDS_DB_USERNAME_INDEX).toString());
-  setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
+
+  if (record.value(FDS_DB_PASSWORD_INDEX).toString().isEmpty()) {
+    setPassword(record.value(FDS_DB_PASSWORD_INDEX).toString());
+  }
+  else {
+    setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
+  }
+
+
   setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
   updateCounts(true);
