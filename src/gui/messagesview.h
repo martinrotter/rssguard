@@ -73,7 +73,6 @@ class MessagesView : public QTreeView {
     void markSelectedMessagesUnread();
     void switchSelectedMessagesImportance();
     void deleteSelectedMessages();
-    void restoreSelectedMessages();
 
     void selectNextItem();
     void selectPreviousItem();

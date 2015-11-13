@@ -354,6 +354,9 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   m_batchUnreadSwitch = false;
 }
 
+
+// TODO: restore messages je uplně stejně jako tahle fce
+// akorat se vola jina metoda na source modelu.
 void MessagesView::deleteSelectedMessages() {
   QModelIndex current_index = selectionModel()->currentIndex();
 
@@ -379,37 +382,6 @@ void MessagesView::deleteSelectedMessages() {
   }
   else {
     emit currentMessagesRemoved();
-  }
-}
-
-void MessagesView::restoreSelectedMessages() {
-  QModelIndex current_index = selectionModel()->currentIndex();
-
-  if (!current_index.isValid()) {
-    return;
-  }
-
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-
-  if (m_sourceModel->setBatchMessagesRestored(mapped_indexes)) {
-    sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
-
-    int row_count = m_sourceModel->rowCount();
-    if (row_count > 0) {
-      QModelIndex last_item = current_index.row() < row_count ?
-                                m_proxyModel->index(current_index.row(),
-                                                    MSG_DB_TITLE_INDEX) :
-                                m_proxyModel->index(row_count - 1,
-                                                    MSG_DB_TITLE_INDEX);
-
-      setCurrentIndex(last_item);
-      scrollTo(last_item);
-      reselectIndexes(QModelIndexList() << last_item);
-    }
-    else {
-      emit currentMessagesRemoved();
-    }
   }
 }
 
