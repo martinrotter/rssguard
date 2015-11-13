@@ -35,7 +35,7 @@ class MessagesModel : public QSqlTableModel {
   public:
     // Enum which describes basic filtering schemes
     // for messages.
-    enum MessageFilter {
+    enum MessageHighlighter {
       NoHighlighting = 100,
       HighlightUnread = 101,
       HighlightImportant = 102
@@ -54,15 +54,6 @@ class MessagesModel : public QSqlTableModel {
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
-
-    FeedsSelection loadedSelection() const;
-
-  public slots:
-    // To disable persistent changes submissions.
-    inline bool submitAll() {
-      qFatal("Submitting changes via model is not allowed.");
-      return false;
-    }
 
     void updateDateFormat();
     void reloadWholeLayout();
@@ -85,18 +76,24 @@ class MessagesModel : public QSqlTableModel {
     bool setBatchMessagesRestored(const QModelIndexList &messages);
 
     // Fetches ALL available data to the model.
-    void fetchAll();
+    void fetchAllData();
 
+    // Filters messages
+    void highlightMessages(MessageHighlighter highlight);
+
+  public slots:
     // Loads messages of given feeds.
     void loadMessages(const FeedsSelection &selection);
-
-    void filterMessages(MessageFilter filter);
 
   signals:
     // Emitted if some persistent change is made which affects count of "unread/all" messages.
     void messageCountsChanged(FeedsSelection::SelectionMode mode, bool total_msg_count_changed, bool any_msg_restored);
 
-  protected:
+  private slots:
+    // To disable persistent changes submissions.
+    bool submitAll();
+
+  private:
     // Sets up header data.
     void setupHeaderData();
 
@@ -106,8 +103,7 @@ class MessagesModel : public QSqlTableModel {
     // Sets up all icons which are used directly by this model.
     void setupIcons();
 
-  private:
-    MessageFilter m_messageFilter;
+    MessageHighlighter m_messageHighlighter;
 
     QString m_customDateFormat;
     FeedsSelection m_currentSelection;
@@ -122,6 +118,6 @@ class MessagesModel : public QSqlTableModel {
     QIcon m_unreadIcon;
 };
 
-Q_DECLARE_METATYPE(MessagesModel::MessageFilter)
+Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)
 
 #endif // MESSAGESMODEL_H

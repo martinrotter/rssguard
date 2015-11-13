@@ -78,8 +78,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   // Reload the model now.
-  m_sourceModel->select();
-  m_sourceModel->fetchAll();
+  m_sourceModel->fetchAllData();
 
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
@@ -451,8 +450,8 @@ void MessagesView::searchMessages(const QString &pattern) {
   }
 }
 
-void MessagesView::filterMessages(MessagesModel::MessageFilter filter) {
-  m_sourceModel->filterMessages(filter);
+void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
+  m_sourceModel->highlightMessages(filter);
 }
 
 void MessagesView::adjustColumns() {

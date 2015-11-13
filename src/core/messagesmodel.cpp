@@ -30,7 +30,7 @@
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
-    m_messageFilter(NoHighlighting), m_customDateFormat(QString()) {
+    m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
   setObjectName(QSL("MessagesModel"));
   setupFonts();
   setupIcons();
@@ -55,11 +55,9 @@ void MessagesModel::setupIcons() {
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 }
 
-FeedsSelection MessagesModel::loadedSelection() const {
-  return m_currentSelection;
-}
+void MessagesModel::fetchAllData() {
+  select();
 
-void MessagesModel::fetchAll() {
   while (canFetchMore()) {
     fetchMore();
   }
@@ -84,12 +82,16 @@ void MessagesModel::loadMessages(const FeedsSelection &selection) {
     qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
   }
 
-  select();
-  fetchAll();
+  fetchAllData();
 }
 
-void MessagesModel::filterMessages(MessagesModel::MessageFilter filter) {
-  m_messageFilter = filter;
+bool MessagesModel::submitAll() {
+  qFatal("Submitting changes via model is not allowed.");
+  return false;
+}
+
+void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highlight) {
+  m_messageHighlighter = highlight;
   emit layoutAboutToBeChanged();
   emit layoutChanged();
 }
@@ -196,7 +198,7 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       return QSqlTableModel::data(index(idx.row(), MSG_DB_READ_INDEX)).toInt() == 1 ? m_normalFont : m_boldFont;
 
     case Qt::ForegroundRole:
-      switch (m_messageFilter) {
+      switch (m_messageHighlighter) {
         case HighlightImportant:
           return QSqlTableModel::data(index(idx.row(), MSG_DB_IMPORTANT_INDEX)).toInt() == 1 ? QColor(Qt::blue) : QVariant();
 
@@ -348,8 +350,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);"))
                           .arg(message_ids.join(QSL(", "))))) {
-    select();
-    fetchAll();
+    fetchAllData();
 
     //emit messageCountsChanged(false);
     return true;
@@ -383,8 +384,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
   }
 
   if (query_read_msg.exec(sql_delete_query)) {
-    select();
-    fetchAll();
+    fetchAllData();
 
     emit messageCountsChanged(m_currentSelection.mode(), true, false);
     return true;
@@ -409,8 +409,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
                           .arg(message_ids.join(QSL(", ")),
                                read == RootItem::Read ? QSL("1") : QSL("0")))) {
-    select();
-    fetchAll();
+    fetchAllData();
 
     emit messageCountsChanged(m_currentSelection.mode(), false, false);
     return true;
@@ -440,8 +439,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
   QString sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
 
   if (query_read_msg.exec(sql_delete_query)) {
-    select();
-    fetchAll();
+    fetchAllData();
 
     emit messageCountsChanged(m_currentSelection.mode(), true, true);
     return true;

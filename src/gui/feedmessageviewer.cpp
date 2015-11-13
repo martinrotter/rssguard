@@ -313,7 +313,7 @@ void FeedMessageViewer::createConnections() {
 
   // Filtering & searching.
   connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)), m_messagesView, SLOT(searchMessages(QString)));
-  connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageFilter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageFilter)));
+  connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageHighlighter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageHighlighter)));
 
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));

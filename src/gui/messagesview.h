@@ -79,7 +79,7 @@ class MessagesView : public QTreeView {
 
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString &pattern);
-    void filterMessages(MessagesModel::MessageFilter filter);
+    void filterMessages(MessagesModel::MessageHighlighter filter);
 
   private slots:
     // Marks given indexes as selected.
