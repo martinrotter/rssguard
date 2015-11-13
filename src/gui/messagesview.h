@@ -21,6 +21,7 @@
 #include "core/messagesmodel.h"
 
 #include "core/feedsselection.h"
+#include "core/rootitem.h"
 
 #include <QTreeView>
 #include <QHeaderView>
@@ -47,9 +48,6 @@ class MessagesView : public QTreeView {
       return m_sourceModel;
     }
 
-    // Creates needed connections.
-    void createConnections();
-
   public slots:
     void keyboardSearch(const QString &search);
 
@@ -70,7 +68,7 @@ class MessagesView : public QTreeView {
     void sendSelectedMessageViaEmail();
 
     // Works with SELECTED messages only.
-    void setSelectedMessagesReadStatus(int read);
+    void setSelectedMessagesReadStatus(RootItem::ReadStatus read);
     void markSelectedMessagesRead();
     void markSelectedMessagesUnread();
     void switchSelectedMessagesImportance();
@@ -94,7 +92,20 @@ class MessagesView : public QTreeView {
     // Saves current sort state.
     void saveSortState(int column, Qt::SortOrder order);
 
-  protected:
+  signals:
+    // Link/message openers.
+    void openLinkNewTab(const QString &link);
+    void openLinkMiniBrowser(const QString &link);
+    void openMessagesInNewspaperView(const QList<Message> &messages);
+
+    // Notify others about message selections.
+    void currentMessagesChanged(const QList<Message> &messages);
+    void currentMessagesRemoved();
+
+  private:
+    // Creates needed connections.
+    void createConnections();
+
     // Initializes context menu.
     void initializeContextMenu();
 
@@ -108,17 +119,6 @@ class MessagesView : public QTreeView {
     void currentChanged(const QModelIndex &current, const QModelIndex &previous);
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
-  signals:
-    // Link/message openers.
-    void openLinkNewTab(const QString &link);
-    void openLinkMiniBrowser(const QString &link);
-    void openMessagesInNewspaperView(const QList<Message> &messages);
-
-    // Notify others about message selections.
-    void currentMessagesChanged(const QList<Message> &messages);
-    void currentMessagesRemoved();
-
-  private:
     QMenu *m_contextMenu;
 
     MessagesProxyModel *m_proxyModel;

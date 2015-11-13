@@ -318,14 +318,14 @@ void MessagesView::sendSelectedMessageViaEmail() {
 }
 
 void MessagesView::markSelectedMessagesRead() {
-  setSelectedMessagesReadStatus(1);
+  setSelectedMessagesReadStatus(RootItem::Read);
 }
 
 void MessagesView::markSelectedMessagesUnread() {
-  setSelectedMessagesReadStatus(0);
+  setSelectedMessagesReadStatus(RootItem::Unread);
 }
 
-void MessagesView::setSelectedMessagesReadStatus(int read) {
+void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (!current_index.isValid()) {
@@ -342,7 +342,7 @@ void MessagesView::setSelectedMessagesReadStatus(int read) {
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
 
-  if (read == 0) {
+  if (read == RootItem::Unread) {
     // User selected to mark some messages as unread, if one
     // of them will be marked as current, then it will be read again.
     m_batchUnreadSwitch = true;

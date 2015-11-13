@@ -107,6 +107,9 @@ class RootItem : public QObject {
     // service account, it should not do anything.
     virtual bool cleanMessages(bool clear_only_read);
 
+    // Updates counts of all/unread messages for this feed.
+    virtual void updateCounts(bool including_total_count);
+
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
 

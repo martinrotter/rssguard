@@ -88,6 +88,12 @@ bool RootItem::cleanMessages(bool clear_only_read) {
   return result;
 }
 
+void RootItem::updateCounts(bool including_total_count) {
+  foreach (RootItem *child, m_childItems) {
+    child->updateCounts(including_total_count);
+  }
+}
+
 void RootItem::setupFonts() {
   m_normalFont = Application::font("FeedsView");
   m_boldFont = m_normalFont;

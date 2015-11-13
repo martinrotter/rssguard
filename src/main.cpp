@@ -120,7 +120,15 @@ int main(int argc, char *argv[]) {
 
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
-  qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1 %2.").arg(APP_NAME, APP_VERSION), QSystemTrayIcon::NoIcon);
+
+  if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
+                         QSystemTrayIcon::NoIcon, 0, false, QIcon(), &main_window, SLOT(showAbout()));
+  }
+  else {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_LONG_NAME), QSystemTrayIcon::NoIcon);
+  }
 
   // Enter global event loop.
   return Application::exec();

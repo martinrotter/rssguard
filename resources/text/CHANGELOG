@@ -21,6 +21,8 @@
 	  
 	  Fixed:
 	  <ul>
+      <li>Improved popup informing about changes in newly installed version.</li>
+      <li>Icons in notification popups are now smaller (22 x 22 pixels).</li>
       <li>Encoding selection widget in feed add/edit dialog now detects encodings via case insensitive string matching.</li>
 	    <li>When removing download item from download manager via DELETE key, then "Cleanup" button is correctly disabled.</li>
 	  </ul>

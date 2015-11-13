@@ -59,9 +59,6 @@ class Feed : public RootItem {
     // Performs synchronous update and returns number of newly updated messages.
     virtual int update() = 0;
 
-    // Updates counts of all/unread messages for this feed.
-    virtual void updateCounts(bool including_total_count) = 0;
-
     // Get ALL undeleted messages from this feed in one single list.
     virtual QList<Message> undeletedMessages() const = 0;
 
