@@ -73,7 +73,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     for (int i = 0; i < elem_links.size(); i++) {
       QDomElement link = elem_links.at(i).toElement();
 
-      if (link.attribute(QSL("rel")) == QL1S("enclosure")) {
+      if (link.attribute(QSL("rel")) == QSL("enclosure")) {
         new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
 
         qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));

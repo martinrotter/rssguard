@@ -45,7 +45,8 @@ FeedsView::FeedsView(QWidget *parent)
   : QTreeView(parent),
     m_contextMenuCategories(NULL),
     m_contextMenuFeeds(NULL),
-    m_contextMenuEmptySpace(NULL) {
+    m_contextMenuEmptySpace(NULL),
+    m_contextMenuOtherItems(NULL) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -460,7 +461,7 @@ void FeedsView::selectPreviousItem() {
   }
 }
 
-void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
+QMenu *FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
   if (m_contextMenuCategories == NULL) {
     m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
   }
@@ -482,9 +483,11 @@ void FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
     m_contextMenuCategories->addSeparator();
     m_contextMenuCategories->addActions(specific_actions);
   }
+
+  return m_contextMenuCategories;
 }
 
-void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
+QMenu *FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
   if (m_contextMenuFeeds == NULL) {
     m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
   }
@@ -506,12 +509,39 @@ void FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
     m_contextMenuFeeds->addSeparator();
     m_contextMenuFeeds->addActions(specific_actions);
   }
+
+  return m_contextMenuFeeds;
 }
 
-void FeedsView::initializeContextMenuEmptySpace() {
-  m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
-  m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllItems);
-  m_contextMenuEmptySpace->addSeparator();
+QMenu *FeedsView::initializeContextMenuEmptySpace() {
+  if (m_contextMenuEmptySpace == NULL) {
+    m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
+    m_contextMenuEmptySpace->addAction(qApp->mainForm()->m_ui->m_actionUpdateAllItems);
+    m_contextMenuEmptySpace->addSeparator();
+  }
+
+  return m_contextMenuEmptySpace;
+}
+
+QMenu *FeedsView::initializeContextMenuOtherItem(RootItem *clicked_item) {
+  if (m_contextMenuOtherItems == NULL) {
+    m_contextMenuOtherItems = new QMenu(tr("Context menu for other items"), this);
+  }
+  else {
+    m_contextMenuOtherItems->clear();
+  }
+
+  QList<QAction*> specific_actions = clicked_item->contextMenuActions();
+
+  if (!specific_actions.isEmpty()) {
+    m_contextMenuOtherItems->addSeparator();
+    m_contextMenuOtherItems->addActions(specific_actions);
+  }
+  else {
+    m_contextMenuOtherItems->addAction(qApp->mainForm()->m_ui->m_actionNoActions);
+  }
+
+  return m_contextMenuOtherItems;
 }
 
 void FeedsView::setupAppearance() {
@@ -573,27 +603,21 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
 
     if (clicked_item->kind() == RootItemKind::Category) {
       // Display context menu for categories.
-      initializeContextMenuCategories(clicked_item);
-      m_contextMenuCategories->exec(event->globalPos());
+      initializeContextMenuCategories(clicked_item)->exec(event->globalPos());
     }
     else if (clicked_item->kind() == RootItemKind::Feed) {
       // Display context menu for feeds.
-      initializeContextMenuFeeds(clicked_item);
-      m_contextMenuFeeds->exec(event->globalPos());
+      initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
     }
     else {
       // TODO: volaz specificke menu polozky? zobrazovat menu pro dalsi typy
       // polozek jako odpadkovy kos atp.
+      initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());
     }
   }
   else {
     // Display menu for empty space.
-    if (m_contextMenuEmptySpace == NULL) {
-      // Context menu is not initialized, initialize.
-      initializeContextMenuEmptySpace();
-    }
-
-    m_contextMenuEmptySpace->exec(event->globalPos());
+    initializeContextMenuEmptySpace()->exec(event->globalPos());
   }
 }
 

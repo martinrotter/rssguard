@@ -34,7 +34,6 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 bool TtRssServiceRoot::editViaGui() {
-  // TODO: zobrazit custom edit dialog pro ttrss
   return false;
 }
 

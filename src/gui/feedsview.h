@@ -130,9 +130,10 @@ class FeedsView : public QTreeView {
 
   private:
     // Initializes context menus.
-    void initializeContextMenuCategories(RootItem *clicked_item);
-    void initializeContextMenuFeeds(RootItem *clicked_item);
-    void initializeContextMenuEmptySpace();
+    QMenu *initializeContextMenuCategories(RootItem *clicked_item);
+    QMenu *initializeContextMenuFeeds(RootItem *clicked_item);
+    QMenu *initializeContextMenuEmptySpace();
+    QMenu *initializeContextMenuOtherItem(RootItem *clicked_item);
 
     // Sets up appearance of this widget.
     void setupAppearance();
@@ -163,6 +164,7 @@ class FeedsView : public QTreeView {
     QMenu *m_contextMenuCategories;
     QMenu *m_contextMenuFeeds;
     QMenu *m_contextMenuEmptySpace;
+    QMenu *m_contextMenuOtherItems;
 
     FeedsModel *m_sourceModel;
     FeedsProxyModel *m_proxyModel;
