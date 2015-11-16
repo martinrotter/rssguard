@@ -203,12 +203,12 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
 
     // Deal with titles & descriptions.
     QString elem_title = message_item.namedItem(QSL("title")).toElement().text().simplified();
-    QString elem_description = message_item.namedItem(QSL("description")).toElement().text();
+    QString elem_description = message_item.namedItem(QSL("encoded")).toElement().text();
     QString elem_enclosure = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
     QString elem_enclosure_type = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
     if (elem_description.isEmpty()) {
-      elem_description = message_item.namedItem(QSL("encoded")).toElement().text();
+      elem_description = message_item.namedItem(QSL("description")).toElement().text();
     }
 
     // Now we obtained maximum of information for title & description.
