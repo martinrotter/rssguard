@@ -350,6 +350,9 @@
    </property>
   </action>
   <action name="m_actionNoActions">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>No actions available</string>
    </property>
