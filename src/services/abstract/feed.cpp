@@ -29,12 +29,3 @@ Feed::Feed(RootItem *parent) : RootItem(parent) {
 
 Feed::~Feed() {
 }
-
-int Feed::childCount() const {
-  // Because feed has no children.
-  return 0;
-}
-
-void Feed::appendChild(RootItem *child) {
-  Q_UNUSED(child)
-}

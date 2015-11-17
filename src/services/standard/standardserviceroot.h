@@ -43,6 +43,7 @@ class StandardServiceRoot : public ServiceRoot {
     explicit StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
 
+    // Start/stop root.
     void start();
     void stop();
 

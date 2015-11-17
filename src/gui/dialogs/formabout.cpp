@@ -126,7 +126,7 @@ void FormAbout::loadLicenseAndInformation() {
   m_ui->m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                               "<br><br>This software is distributed under the terms of GNU General Public License, version 3."
                               "<br><br>Contacts:"
-                              "<ul><li><a href=\"mailto://%1\">%1</a> ~email</li>"
+                              "<ul><li><a href=\"mailto://%1\">%1</a> ~e-mail</li>"
                               "<li><a href=\"%2\">%2</a> ~website</li></ul>"
                               "You can obtain source code for %5 from its website."
                               "<br><br><br>Copyright (C) 2011-%3 %4</body>").arg(APP_EMAIL,

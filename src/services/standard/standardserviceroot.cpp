@@ -38,7 +38,6 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QStack>
-#include <QCoreApplication>
 #include <QAction>
 #include <QPointer>
 
@@ -47,6 +46,7 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_mo
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
+
   setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
@@ -65,9 +65,9 @@ StandardServiceRoot::~StandardServiceRoot() {
 
 void StandardServiceRoot::start() {
   if (qApp->isFirstRun()) {
-    if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, QObject::tr("Load initial feeds"),
-                         QObject::tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
-                         QObject::tr("Do you want to load initial set of feeds?"),
+    if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
+                         tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
+                         tr("Do you want to load initial set of feeds?"),
                          QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
       QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
       QString current_locale = qApp->localization()->loadedLanguage();
@@ -98,7 +98,7 @@ void StandardServiceRoot::start() {
 }
 
 void StandardServiceRoot::stop() {
-
+  qDebug("Stopping StandardServiceRoot instance.");
 }
 
 bool StandardServiceRoot::canBeEdited() {

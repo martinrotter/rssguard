@@ -50,12 +50,6 @@ class Feed : public RootItem {
     explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();
 
-    // Returns 0, feeds have no children.
-    int childCount() const;
-
-    // Appending of childs to feed is not allowed.
-    void appendChild(RootItem *child);
-
     // Performs synchronous update and returns number of newly updated messages.
     virtual int update() = 0;
 

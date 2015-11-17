@@ -64,27 +64,9 @@ class RootItem : public QObject {
     explicit RootItem(RootItem *parent_item = NULL);
     virtual ~RootItem();
 
-    // Basic operations.
-    inline virtual RootItem *parent() const {
-      return m_parentItem;
-    }
-
-    inline virtual void setParent(RootItem *parent_item) {
-      m_parentItem = parent_item;
-    }
-
-    inline virtual RootItem *child(int row) {
-      return m_childItems.value(row);
-    }
-
-    inline virtual int childCount() const {
-      return m_childItems.size();
-    }
-
-    inline virtual void appendChild(RootItem *child) {
-      m_childItems.append(child);
-      child->setParent(this);
-    }
+    /////////////////////////////////////////
+    // /* Members to override.
+    /////////////////////////////////////////
 
     // Returns list of specific actions which can be done with the item.
     // Do not include general actions here like actions:
@@ -117,6 +99,32 @@ class RootItem : public QObject {
     // Returns counts of messages of all child items summed up.
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
+
+    /////////////////////////////////////////
+    // Members to override. */
+    /////////////////////////////////////////
+
+        // Basic operations.
+    inline RootItem *parent() const {
+      return m_parentItem;
+    }
+
+    inline void setParent(RootItem *parent_item) {
+      m_parentItem = parent_item;
+    }
+
+    inline RootItem *child(int row) {
+      return m_childItems.value(row);
+    }
+
+    inline int childCount() const {
+      return m_childItems.size();
+    }
+
+    inline void appendChild(RootItem *child) {
+      m_childItems.append(child);
+      child->setParent(this);
+    }
 
     // Access to children.
     inline QList<RootItem*> childItems() const {

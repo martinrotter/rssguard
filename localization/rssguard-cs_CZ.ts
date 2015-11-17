@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs_CZ" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -100,7 +102,7 @@ Berte také na paměti, že některé prostředky webových stránek jsou intern
     <name>AdBlockIcon</name>
     <message>
         <source>Adblock</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Show Adblock &amp;settings</source>
@@ -212,7 +214,11 @@ Tato kategorie neobsahuje žádné položky.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -292,10 +298,14 @@ Tato kategorie neobsahuje žádné položky.</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanál.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanály.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
-Tato stránka obsahuje %n kanálů.</numerusform></translation>
+        <translation>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanál.</numerusform>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanály.</numerusform>
+            <numerusform>Pro přidání kanálů z této stránky na mě klikni.
+Tato stránka obsahuje %n kanálů.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -373,14 +383,14 @@ Tato stránka obsahuje %n kanálů.</numerusform></translation>
         <translation>Stahování dokončeno</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Soubor &apos;%1&apos; je stažen.
 Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>URL: %1</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Local file: %1</source>
@@ -399,11 +409,19 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minuta do konce</numerusform><numerusform>%n minuty do konce</numerusform><numerusform>%n minut do konce</numerusform></translation>
+        <translation>
+            <numerusform>%n minuta do konce</numerusform>
+            <numerusform>%n minuty do konce</numerusform>
+            <numerusform>%n minut do konce</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n vteřina do konce</numerusform><numerusform>%n vteřiny do konce</numerusform><numerusform>%n vteřin do konce</numerusform></translation>
+        <translation>
+            <numerusform>%n vteřina do konce</numerusform>
+            <numerusform>%n vteřiny do konce</numerusform>
+            <numerusform>%n vteřin do konce</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -411,19 +429,23 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>kB</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>MB</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>GB</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Stahuji %n soubor...</numerusform><numerusform>Stahuji %n soubory...</numerusform><numerusform>Stahuji %n souborů...</numerusform></translation>
+        <translation>
+            <numerusform>Stahuji %n soubor...</numerusform>
+            <numerusform>Stahuji %n soubory...</numerusform>
+            <numerusform>Stahuji %n souborů...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -441,7 +463,11 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+        <translation>
+            <numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform>
+            <numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -459,7 +485,11 @@ Automatický update: %5</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Metadata not fetched</source>
@@ -568,7 +598,11 @@ Automatický update: %5</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Budu aktualizovat %n kanál.</numerusform><numerusform>Budu aktualizovat %n kanály.</numerusform><numerusform>Budu aktualizovat %n kanálů.</numerusform></translation>
+        <translation>
+            <numerusform>Budu aktualizovat %n kanál.</numerusform>
+            <numerusform>Budu aktualizovat %n kanály.</numerusform>
+            <numerusform>Budu aktualizovat %n kanálů.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -952,7 +986,11 @@ Automatický update: %5</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform> den</numerusform><numerusform> dny</numerusform><numerusform> dnů</numerusform></translation>
+        <translation>
+            <numerusform> den</numerusform>
+            <numerusform> dny</numerusform>
+            <numerusform> dnů</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1055,7 +1093,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -1862,7 +1900,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Proxy</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Icons &amp;&amp; skins</source>
@@ -1891,7 +1929,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Port</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Username</source>
@@ -1927,15 +1965,15 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>Email</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Socks5</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Http</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source> (not supported on this platform)</source>
@@ -2160,7 +2198,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
         <source> ms</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Update all feed on application startup</source>
@@ -2451,7 +2489,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Mozilla Thunderbird</source>
-        <translation type="unfinished"/>
+        <translation></translation>
     </message>
     <message>
         <source>Working database which you have full access to.</source>
@@ -2657,7 +2695,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <name>MessagesModel</name>
     <message>
         <source>Id</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Read</source>
@@ -2681,7 +2719,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Url</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Author</source>
@@ -2964,7 +3002,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n smazaná zpráva.</numerusform><numerusform>%n smazané zprávy.</numerusform><numerusform>%n smazaných zpráv.</numerusform></translation>
+        <translation>
+            <numerusform>%n smazaná zpráva.</numerusform>
+            <numerusform>%n smazané zprávy.</numerusform>
+            <numerusform>%n smazaných zpráv.</numerusform>
+        </translation>
     </message>
 </context>
 <context>

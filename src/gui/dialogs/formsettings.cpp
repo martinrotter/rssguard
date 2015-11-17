@@ -84,7 +84,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                      << /*: Skin list name column. */ tr("Name")
                                      << /*: Version column of skin list. */ tr("Version")
                                      << tr("Author")
-                                     << tr("Email"));
+                                     << tr("E-mail"));
 
 #if QT_VERSION >= 0x050000
   // Setup languages.
