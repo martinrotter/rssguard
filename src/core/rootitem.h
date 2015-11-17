@@ -74,19 +74,33 @@ class RootItem : public QObject {
     // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
     virtual QList<QAction*> contextMenuActions();
 
+    // Can properties of this item be edited?
     virtual bool canBeEdited();
+
+    // Performs editing of properties of this item (probably via dialog)
+    // and returns result status.
     virtual bool editViaGui();
+
+    // Can the item be deleted?
     virtual bool canBeDeleted();
+
+    // Performs deletion of the item, this
+    // method should NOT display any additional dialogs.
+    // Returns result status.
     virtual bool deleteViaGui();
 
+    // Can this item be marked read/unread?
     virtual bool canBeMarkedAsReadUnread(ReadStatus status);
+
+    // Performs all needed steps (DB update, remote server update)
+    // to mark this item as read/unread.
     virtual bool markAsReadUnread(ReadStatus status);
 
     // This method should "clean" all messages it contains.
-    // What "clean" means? It means delete message -> move them to recycle bin
+    // What "clean" means? It means delete messages -> move them to recycle bin
     // or eventually remove them completely if there is no recycle bin functionality.
     // If this method is called on "recycle bin" instance of your
-    // service account, it should not do anything.
+    // service account, it should NOT do anything.
     virtual bool cleanMessages(bool clear_only_read);
 
     // Updates counts of all/unread messages for this feed.
@@ -104,7 +118,6 @@ class RootItem : public QObject {
     // Members to override. */
     /////////////////////////////////////////
 
-        // Basic operations.
     inline RootItem *parent() const {
       return m_parentItem;
     }
@@ -131,46 +144,27 @@ class RootItem : public QObject {
       return m_childItems;
     }
 
-    inline void setChildItems(QList<RootItem*> child_items) {
-      m_childItems = child_items;
-    }
-
-    // Checks whether THIS object is child (direct or indirect)
-    // of the given root.
-    bool isChildOf(RootItem *root) {
-      if (root == NULL) {
-        return false;
-      }
-
-      RootItem *this_item = this;
-
-      while (this_item->kind() != RootItemKind::Root) {
-        if (root->childItems().contains(this_item)) {
-          return true;
-        }
-        else {
-          this_item = this_item->parent();
-        }
-      }
-
-      return false;
-    }
-
-    // Is "this" item parent if given child?
-    bool isParentOf(RootItem *child) {
-      if (child == NULL) {
-        return false;
-      }
-      else {
-        return child->isChildOf(this);
-      }
-    }
-
     // Removes all children from this item.
     // NOTE: Children are NOT freed from the memory.
     inline void clearChildren() {
       m_childItems.clear();
     }
+
+    inline void setChildItems(QList<RootItem*> child_items) {
+      m_childItems = child_items;
+    }
+
+    // Removes particular child at given index.
+    // NOTE: Child is NOT freed from the memory.
+    bool removeChild(int index);
+    bool removeChild(RootItem *child);
+
+    // Checks whether "this" object is child (direct or indirect)
+    // of the given root.
+    bool isChildOf(RootItem *root);
+
+    // Is "this" item parent (direct or indirect) if given child?
+    bool isParentOf(RootItem *child);
 
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
@@ -181,11 +175,6 @@ class RootItem : public QObject {
 
     // Returns the service root node which is direct or indirect parent of current item.
     ServiceRoot *getParentServiceRoot();
-
-    // Removes particular child at given index.
-    // NOTE: Child is NOT freed from the memory.
-    bool removeChild(int index);
-    bool removeChild(RootItem *child);
 
     inline RootItemKind::Kind kind() const {
       return m_kind;
@@ -238,11 +227,21 @@ class RootItem : public QObject {
       m_description = description;
     }
 
-    QFont normalFont() const;
-    void setNormalFont(const QFont &normal_font);
+    inline QFont normalFont() const {
+      return m_normalFont;
+    }
 
-    QFont boldFont() const;
-    void setBoldFont(const QFont &bold_font);
+    inline void setNormalFont(const QFont &normal_font) {
+      m_normalFont = normal_font;
+    }
+
+    inline QFont boldFont() const {
+      return m_boldFont;
+    }
+
+    inline void setBoldFont(const QFont &bold_font) {
+      m_boldFont = bold_font;
+    }
 
     // Converters
     Category *toCategory();

@@ -440,11 +440,7 @@ Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
 }
 
 bool FeedsModel::markItemRead(RootItem *item, RootItem::ReadStatus read) {
-  if (item->canBeMarkedAsReadUnread(read)) {
-    return item->markAsReadUnread(read);
-  }
-
-  return false;
+  return item->markAsReadUnread(read);
 }
 
 bool FeedsModel::markItemCleared(RootItem *item, bool clean_read_only) {

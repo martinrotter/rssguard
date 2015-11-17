@@ -100,22 +100,6 @@ void RootItem::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-QFont RootItem::boldFont() const {
-  return m_boldFont;
-}
-
-void RootItem::setBoldFont(const QFont &bold_font) {
-  m_boldFont = bold_font;
-}
-
-QFont RootItem::normalFont() const {
-  return m_normalFont;
-}
-
-void RootItem::setNormalFont(const QFont &normal_font) {
-  m_normalFont = normal_font;
-}
-
 int RootItem::row() const {
   if (m_parentItem) {
     return m_parentItem->m_childItems.indexOf(const_cast<RootItem*>(this));
@@ -133,7 +117,7 @@ QVariant RootItem::data(int column, int role) const {
   switch (role) {
     case Qt::EditRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return title();
+        return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return countOfUnreadMessages();
@@ -143,11 +127,11 @@ QVariant RootItem::data(int column, int role) const {
       }
 
     case Qt::FontRole:
-      return countOfUnreadMessages() > 0 ? boldFont() : normalFont();
+      return countOfUnreadMessages() > 0 ? m_boldFont : m_normalFont;
 
     case Qt::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return title();
+        return m_title;
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         int count_all = countOfAllMessages();
@@ -190,6 +174,34 @@ int RootItem::countOfAllMessages() const {
   }
 
   return total_count;
+}
+
+bool RootItem::isChildOf(RootItem *root) {
+  if (root == NULL) {
+    return false;
+  }
+
+  RootItem *this_item = this;
+
+  while (this_item->kind() != RootItemKind::Root) {
+    if (root->childItems().contains(this_item)) {
+      return true;
+    }
+    else {
+      this_item = this_item->parent();
+    }
+  }
+
+  return false;
+}
+
+bool RootItem::isParentOf(RootItem *child) {
+  if (child == NULL) {
+    return false;
+  }
+  else {
+    return child->isChildOf(this);
+  }
 }
 
 QList<RootItem*> RootItem::getSubTree() {
