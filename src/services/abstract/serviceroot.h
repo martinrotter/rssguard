@@ -23,6 +23,7 @@
 
 class FeedsModel;
 class QAction;
+class QSqlTableModel;
 
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
@@ -54,6 +55,15 @@ class ServiceRoot : public RootItem {
     // user explicitly deletes existing service instance.
     virtual void start() = 0;
     virtual void stop() = 0;
+
+    // This method should prepare messages for given "item" (download them maybe?)
+    // into predefined "Messages" table
+    // and then use method QSqlTableModel::setFilter(....).
+    // NOTE: It would be more preferable if all messages are downloaded
+    // right when feeds are updated.
+    // TODO: toto možná udělat asynchronně, zobrazit
+    // "loading" dialog přes view a toto zavolat, nasledně signalovat
+    virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model) = 0;
 
     // Access to feed model.
     FeedsModel *feedsModel() const;

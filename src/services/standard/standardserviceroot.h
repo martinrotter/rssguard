@@ -57,6 +57,9 @@ class StandardServiceRoot : public ServiceRoot {
     // Return menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
 
+    // Message stuff.
+    bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
+
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
     QHash<int,StandardCategory*> categoriesForItem(RootItem *root);

@@ -25,7 +25,6 @@
 #include "miscellaneous/databasecleaner.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
-#include "core/feedsselection.h"
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
@@ -321,16 +320,16 @@ void FeedMessageViewer::createConnections() {
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
 
-  connect(m_feedsView, SIGNAL(feedsSelected(FeedsSelection)), this, SLOT(updateFeedButtonsAvailability()));
+  connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(unlocked()), this, SLOT(updateFeedButtonsAvailability()));
 
   // If user selects feeds, load their messages.
-  connect(m_feedsView, SIGNAL(feedsSelected(FeedsSelection)), m_messagesView, SLOT(loadFeeds(FeedsSelection)));
+  connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadFeeds(RootItem*)));
 
   // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged(FeedsSelection::SelectionMode,bool,bool)),
-          m_feedsView, SLOT(receiveMessageCountsChange(FeedsSelection::SelectionMode,bool,bool)));
+  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged()),
+          m_feedsView, SLOT(receiveMessageCountsChange()));
 
   // State of many messages is changed, then we need
   // to reload selections.

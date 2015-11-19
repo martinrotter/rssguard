@@ -18,13 +18,11 @@
 #ifndef FEEDSVIEW_H
 #define FEEDSVIEW_H
 
-#include <QStyledItemDelegate>
 #include <QTreeView>
 
-#include "core/messagesmodel.h"
 #include "core/feedsmodel.h"
-#include "core/feedsselection.h"
-#include "miscellaneous/settings.h"
+
+#include <QStyledItemDelegate>
 
 
 class FeedsProxyModel;
@@ -98,7 +96,7 @@ class FeedsView : public QTreeView {
 
     // Is called when counts of messages are changed externally,
     // typically from message view.
-    void receiveMessageCountsChange(FeedsSelection::SelectionMode mode, bool total_msg_count_changed, bool any_msg_restored);
+    void receiveMessageCountsChange();
 
     // Reloads counts for selected feeds.
     void updateCountsOfSelectedFeeds(bool update_total_too);
@@ -155,7 +153,7 @@ class FeedsView : public QTreeView {
     void feedsNeedToBeReloaded(bool mark_current_index_read);
 
     // Emitted if user selects new feeds.
-    void feedsSelected(const FeedsSelection &selection);
+    void itemSelected(RootItem *item);
 
     // Requests opening of given messages in newspaper mode.
     void openMessagesInNewspaperView(const QList<Message> &messages);

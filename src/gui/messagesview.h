@@ -20,7 +20,6 @@
 
 #include "core/messagesmodel.h"
 
-#include "core/feedsselection.h"
 #include "core/rootitem.h"
 
 #include <QTreeView>
@@ -58,7 +57,7 @@ class MessagesView : public QTreeView {
     void reloadSelections(bool mark_current_index_read);
 
     // Loads un-deleted messages from selected feeds.
-    void loadFeeds(const FeedsSelection &selection);
+    void loadFeeds(RootItem *item);
 
     // Message manipulators.
     void openSelectedSourceMessagesExternally();

@@ -225,8 +225,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
   QTreeView::selectionChanged(selected, deselected);
 }
 
-void MessagesView::loadFeeds(const FeedsSelection &selection) {
-  m_sourceModel->loadMessages(selection);
+void MessagesView::loadFeeds(RootItem *item) {
+  m_sourceModel->loadMessages(item);
 
   int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());

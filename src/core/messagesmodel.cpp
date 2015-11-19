@@ -22,6 +22,8 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "gui/dialogs/formmain.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QSqlRecord>
 #include <QSqlError>
@@ -42,7 +44,7 @@ MessagesModel::MessagesModel(QObject *parent)
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
-  loadMessages(FeedsSelection());
+  loadMessages(NULL);
 }
 
 MessagesModel::~MessagesModel() {
@@ -69,17 +71,21 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-void MessagesModel::loadMessages(const FeedsSelection &selection) {
-  m_currentSelection = selection;
+void MessagesModel::loadMessages(RootItem *item) {
+  m_selectedItem = item;
 
-  if (m_currentSelection.mode() == FeedsSelection::MessagesFromRecycleBin) {
-    setFilter(QSL("is_deleted = 1 AND is_pdeleted = 0"));
+  if (item == NULL) {
+    setFilter("true != true");
   }
   else {
-    QString assembled_ids = m_currentSelection.generateListOfIds();
-
-    setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0")).arg(assembled_ids));
-    qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
+    if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
+      qWarning("Loading of messages from item '%s' failed.", qPrintable(item->title()));
+      qApp->showGuiMessage(tr("Loading of messages from item '%s' failed.").arg(item->title()),
+                           tr("Loading of messages failed, maybe messages could not be downloaded."),
+                           QSystemTrayIcon::Critical,
+                           qApp->mainForm(),
+                           true);
+    }
   }
 
   fetchAllData();
@@ -276,7 +282,10 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     // If commit succeeded, then emit changes, so that view
     // can reflect.
     emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    emit messageCountsChanged(m_currentSelection.mode(), false, false);
+    emit messageCountsChanged();
+
+    // TODO: counts changed
+    //emit messageCountsChanged(m_selectedItem.mode(), false, false);
     return true;
   }
   else {
@@ -374,7 +383,9 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   QString sql_delete_query;
 
-  if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
+  // TODO: todo
+  /*
+  if (m_selectedItem.mode() == FeedsSelection::MessagesFromFeeds) {
     sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
                                                                                                  QString::number(deleted));
   }
@@ -382,11 +393,14 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
                                                                                                   QString::number(deleted));
   }
+  */
 
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
+    emit messageCountsChanged();
 
-    emit messageCountsChanged(m_currentSelection.mode(), true, false);
+    // TODO: counts changed
+    //emit messageCountsChanged(m_selectedItem.mode(), true, false);
     return true;
   }
   else {
@@ -411,7 +425,10 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
                                read == RootItem::Read ? QSL("1") : QSL("0")))) {
     fetchAllData();
 
-    emit messageCountsChanged(m_currentSelection.mode(), false, false);
+    emit messageCountsChanged();
+
+    // TODO: counts changed
+    //emit messageCountsChanged(m_selectedItem.mode(), false, false);
     return true;
   }
   else {
@@ -420,11 +437,6 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
 }
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
-  if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
-    qDebug("Cannot restore non-deleted messages.");
-    return false;
-  }
-
   QSqlDatabase db_handle = database();
   QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
@@ -441,7 +453,10 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
 
-    emit messageCountsChanged(m_currentSelection.mode(), true, true);
+    emit messageCountsChanged();
+
+    // TODO: counts changed
+    //emit messageCountsChanged(m_selectedItem.mode(), true, true);
     return true;
   }
   else {

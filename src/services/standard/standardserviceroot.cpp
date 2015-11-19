@@ -40,6 +40,7 @@
 #include <QStack>
 #include <QAction>
 #include <QPointer>
+#include <QSqlTableModel>
 
 
 StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
@@ -516,6 +517,27 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
+}
+
+bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
+  if (item->kind() == RootItemKind::Bin) {
+    model->setFilter(QSL("is_deleted = 1 AND is_pdeleted = 0"));
+  }
+  else {
+    QList<Feed*> children = item->getSubTreeFeeds();
+    QStringList stringy_ids;
+
+    foreach (Feed *child, children) {
+      stringy_ids.append(QString::number(child->id()));
+    }
+
+    QString filter_clause = stringy_ids.join(QSL(", "));
+
+    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0")).arg(filter_clause));
+    qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
+  }
+
+  return true;
 }
 
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {

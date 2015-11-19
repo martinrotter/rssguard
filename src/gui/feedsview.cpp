@@ -189,9 +189,12 @@ void FeedsView::clearAllFeeds() {
   emit feedsNeedToBeReloaded(true);
 }
 
-void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
-                                           bool total_msg_count_changed,
-                                           bool any_msg_restored) {
+void FeedsView::receiveMessageCountsChange() {
+
+  // TODO: toto vymazat, prepocitani cisel unread/all
+  // a upozorneni na zmenu itemu provede ten item
+  // zde jen nechat tu invalidaci read filteru
+
   // If the change came from recycle bin mode, then:
   // a) total count of message was changed AND no message was restored - some messages
   // were permanently deleted from recycle bin --> we need to update counts of
@@ -207,7 +210,7 @@ void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
   // total counts.
   // b) total count of message was not changed - some messages switched state --> we need to update
   // counts of just selected feeds.
-  if (mode == FeedsSelection::MessagesFromRecycleBin) {
+  /*if (mode == FeedsSelection::MessagesFromRecycleBin) {
     if (total_msg_count_changed) {
       if (any_msg_restored) {
         updateCountsOfAllFeeds(true);
@@ -222,7 +225,7 @@ void FeedsView::receiveMessageCountsChange(FeedsSelection::SelectionMode mode,
   }
   else {
     updateCountsOfSelectedFeeds(total_msg_count_changed);
-  }
+  }*/
 
   invalidateReadFeedsFilter();
 }
@@ -582,7 +585,7 @@ void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSele
 
   m_proxyModel->setSelectedItem(selected_item);
   QTreeView::selectionChanged(selected, deselected);
-  emit feedsSelected(FeedsSelection(selected_item));
+  emit itemSelected(selected_item);
   invalidateReadFeedsFilter();
 }
 
@@ -610,8 +613,6 @@ void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
       initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
     }
     else {
-      // TODO: volaz specificke menu polozky? zobrazovat menu pro dalsi typy
-      // polozek jako odpadkovy kos atp.
       initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());
     }
   }

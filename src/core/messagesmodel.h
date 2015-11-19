@@ -20,7 +20,6 @@
 
 #include "definitions/definitions.h"
 
-#include "core/feedsselection.h"
 #include "core/message.h"
 #include "core/rootitem.h"
 
@@ -81,13 +80,12 @@ class MessagesModel : public QSqlTableModel {
     // Filters messages
     void highlightMessages(MessageHighlighter highlight);
 
-  public slots:
     // Loads messages of given feeds.
-    void loadMessages(const FeedsSelection &selection);
+    void loadMessages(RootItem *item);
 
   signals:
     // Emitted if some persistent change is made which affects count of "unread/all" messages.
-    void messageCountsChanged(FeedsSelection::SelectionMode mode, bool total_msg_count_changed, bool any_msg_restored);
+    void messageCountsChanged();
 
   private slots:
     // To disable persistent changes submissions.
@@ -106,7 +104,7 @@ class MessagesModel : public QSqlTableModel {
     MessageHighlighter m_messageHighlighter;
 
     QString m_customDateFormat;
-    FeedsSelection m_currentSelection;
+    RootItem *m_selectedItem;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
 
