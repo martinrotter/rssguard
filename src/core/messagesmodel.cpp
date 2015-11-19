@@ -162,7 +162,12 @@ void MessagesModel::setupHeaderData() {
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
   Q_UNUSED(index)
 
+#if QT_VERSION >= 0x050000
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+#else
+
+  return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
+#endif
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {
@@ -305,9 +310,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   int current_importance = data(target_index, Qt::EditRole).toInt();
 
   // Rewrite "visible" data in the model.
-  bool working_change = current_importance == 1 ?
-                          setData(target_index, 0) :
-                          setData(target_index, 1);
+  bool working_change = current_importance == 1 ? setData(target_index, 0) : setData(target_index, 1);
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
