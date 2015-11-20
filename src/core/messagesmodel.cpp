@@ -331,8 +331,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 }
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
+  QSqlQuery query_read_msg(database());
   QStringList message_ids;
   QList<QPair<int,RootItem::Importance> > message_states;
 
@@ -362,8 +361,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 }
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
+  QSqlQuery query_read_msg(database());
   QStringList message_ids;
   QList<int> message_ids_num;
 
@@ -379,9 +377,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   QString sql_delete_query;
 
-  // TODO: todo
-  /*
-  if (m_selectedItem.mode() == FeedsSelection::MessagesFromFeeds) {
+  if (m_selectedItem->kind() != RootItemKind::Bin) {
     sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
                                                                                                  QString::number(deleted));
   }
@@ -389,7 +385,6 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
                                                                                                   QString::number(deleted));
   }
-  */
 
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
@@ -397,7 +392,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
     //emit messageCountsChanged();
 
-    // TODO: counts changed
+    // TODO: counts changed - zde pokracovat podle metod setbarchmessageread
     //emit messageCountsChanged(m_selectedItem.mode(), true, false);
     return true;
   }
@@ -422,9 +417,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
     return false;
   }
 
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
-
+  QSqlQuery query_read_msg(database());
   query_read_msg.setForwardOnly(true);
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
