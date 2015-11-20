@@ -170,7 +170,8 @@ void Application::processExecutionMessage(const QString &message) {
 SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == NULL) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
-    connect(m_trayIcon, SIGNAL(shown()), m_mainForm->tabWidget()->feedMessageViewer()->feedsView(), SLOT(notifyWithCounts()));
+    connect(m_trayIcon, SIGNAL(shown()),
+            m_mainForm->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(notifyWithCounts()));
   }
 
   return m_trayIcon;

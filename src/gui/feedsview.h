@@ -28,7 +28,6 @@
 class FeedsProxyModel;
 class Feed;
 class Category;
-class QTimer;
 
 class FeedsView : public QTreeView {
     Q_OBJECT
@@ -65,7 +64,6 @@ class FeedsView : public QTreeView {
     void loadExpandedStates();
 
   public slots:
-    void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
     void expandCollapseCurrentItem();
 
     // Feed updating.

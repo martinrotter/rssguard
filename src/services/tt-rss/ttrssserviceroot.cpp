@@ -64,4 +64,3 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
       return ServiceRoot::data(column, role);
   }
 }
-

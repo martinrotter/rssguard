@@ -130,6 +130,8 @@ class FeedsModel : public QAbstractItemModel {
     // Does necessary job before quitting this component.
     void quit();
 
+    bool addServiceAccount(ServiceRoot *root);
+
   public slots:
     // Feeds operations.
     bool markItemRead(RootItem *item, RootItem::ReadStatus read);
@@ -154,10 +156,14 @@ class FeedsModel : public QAbstractItemModel {
     }
 
   private slots:
+    void onItemDataChanged(RootItem *item);
+
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
 
   signals:
+    void readFeedsFilterInvalidationRequested();
+
     // Emitted when model requests update of some feeds.
     void feedsUpdateRequested(const QList<Feed*> feeds);
 

@@ -215,7 +215,7 @@ void StandardFeed::fetchMetadataForItself() {
 
     // Notify the model about fact, that it needs to reload new information about
     // this item, particularly the icon.
-    serviceRoot()->feedsModel()->reloadChangedItem(this);
+    serviceRoot()->itemChanged(this);
   }
   else {
     qApp->showGuiMessage(tr("Metadata not fetched"),

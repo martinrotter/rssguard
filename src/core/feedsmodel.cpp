@@ -395,6 +395,11 @@ void FeedsModel::reloadChangedItem(RootItem *item) {
   reloadChangedLayout(QModelIndexList() << index_item);
 }
 
+void FeedsModel::onItemDataChanged(RootItem *item) {
+  reloadChangedItem(item);
+  notifyWithCounts();
+}
+
 QStringList FeedsModel::textualFeedIds(const QList<Feed*> &feeds) {
   QStringList stringy_ids;
   stringy_ids.reserve(feeds.size());
@@ -411,6 +416,17 @@ void FeedsModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
+bool FeedsModel::addServiceAccount(ServiceRoot *root) {
+  m_rootItem->appendChild(root);
+
+  // Connect.
+  connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
+  connect(root, SIGNAL(dataChanged(RootItem*)), this, SLOT(onItemDataChanged(RootItem*)));
+
+  root->start();
+  return true;
+}
+
 void FeedsModel::loadActivatedServiceAccounts() {
   // Iterate all globally available feed "service plugins".
   foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
@@ -418,8 +434,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
     QList<ServiceRoot*> roots = entry_point->initializeSubtree(this);
 
     foreach (ServiceRoot *root, roots) {
-      m_rootItem->appendChild(root);
-      root->start();
+      addServiceAccount(root);
     }
   }
 }

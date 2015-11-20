@@ -36,6 +36,22 @@ class TtRssServiceRoot : public ServiceRoot {
     bool canBeDeleted();
     bool editViaGui();
     QVariant data(int column, int role) const;
+
+    bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) {
+      return false;
+    }
+
+    bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) {
+      return false;
+    }
+
+    bool onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) {
+      return false;
+    }
+
+    bool onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) {
+      return false;
+    }
 };
 
 #endif // TTRSSSERVICEROOT_H

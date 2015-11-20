@@ -30,3 +30,7 @@ ServiceRoot::~ServiceRoot() {
 FeedsModel *ServiceRoot::feedsModel() const {
   return m_feedsModel;
 }
+
+void ServiceRoot::itemChanged(RootItem *item) {
+  emit dataChanged(item);
+}

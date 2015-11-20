@@ -24,6 +24,8 @@
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 
+#include <QTimer>
+
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
   : QSortFilterProxyModel(parent), m_selectedItem(NULL), m_showUnreadOnly(false) {
@@ -37,6 +39,8 @@ FeedsProxyModel::FeedsProxyModel(QObject *parent)
   setFilterRole(Qt::EditRole);
   setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
+
+  connect(m_sourceModel, SIGNAL(readFeedsFilterInvalidationRequested()), this, SLOT(invalidateReadFeedsFilter()));
 }
 
 FeedsProxyModel::~FeedsProxyModel() {
@@ -45,18 +49,18 @@ FeedsProxyModel::~FeedsProxyModel() {
 
 QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  uint matchType = flags & 0x0F;
+  uint match_type = flags & 0x0F;
   Qt::CaseSensitivity cs = Qt::CaseInsensitive;
   bool recurse = flags & Qt::MatchRecursive;
   bool wrap = flags & Qt::MatchWrap;
-  bool allHits = (hits == -1);
+  bool all_hits = (hits == -1);
   QString entered_text;
   QModelIndex p = parent(start);
   int from = start.row();
   int to = rowCount(p);
 
   for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
-    for (int r = from; (r < to) && (allHits || result.count() < hits); ++r) {
+    for (int r = from; (r < to) && (all_hits || result.count() < hits); ++r) {
       QModelIndex idx = index(r, start.column(), p);
 
       if (!idx.isValid()) {
@@ -64,10 +68,10 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
       }
 
       QModelIndex mapped_idx = mapToSource(idx);
-      QVariant item_value = m_sourceModel->data(m_sourceModel->index(mapped_idx.row(), FDS_MODEL_TITLE_INDEX, mapped_idx.parent()), role);
+      QVariant item_value = m_sourceModel->itemForIndex(mapped_idx)->title();
 
       // QVariant based matching.
-      if (matchType == Qt::MatchExactly) {
+      if (match_type == Qt::MatchExactly) {
         if (value == item_value) {
           result.append(idx);
         }
@@ -80,7 +84,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
 
         QString item_text = item_value.toString();
 
-        switch (matchType) {
+        switch (match_type) {
           case Qt::MatchRegExp:
             if (QRegExp(entered_text, cs).exactMatch(item_text)) {
               result.append(idx);
@@ -121,7 +125,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
       }
 
       if (recurse && hasChildren(idx)) {
-        result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (allHits ? -1 : hits - result.count()), flags);
+        result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (all_hits ? -1 : hits - result.count()), flags);
       }
     }
 
@@ -216,6 +220,14 @@ void FeedsProxyModel::setSelectedItem(RootItem *selected_item) {
 
 bool FeedsProxyModel::showUnreadOnly() const {
   return m_showUnreadOnly;
+}
+
+void FeedsProxyModel::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
+  if (set_new_value) {
+    setShowUnreadOnly(show_unread_only);
+  }
+
+  QTimer::singleShot(0, this, SLOT(invalidateFilter()));
 }
 
 void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {

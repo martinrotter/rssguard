@@ -43,11 +43,10 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Fix for matching indexes with respect to specifics of the message model.
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &entered_value, int hits, Qt::MatchFlags flags) const;
 
-  protected:
+  private:
     // Compares two rows of data.
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 
-  private:
     // Source model pointer.
     MessagesModel *m_sourceModel;
 };

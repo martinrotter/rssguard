@@ -192,10 +192,6 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
   }
 }
 
-void MessagesView::currentChanged(const QModelIndex &current, const QModelIndex &previous) {
-  QTreeView::currentChanged(current, previous);
-}
-
 void MessagesView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
   QModelIndexList selected_rows = selectionModel()->selectedRows();
   QModelIndex current_index = currentIndex();
@@ -209,7 +205,7 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
     if (!m_batchUnreadSwitch) {
       // Set this message as read only if current item
       // wasn't changed by "mark selected messages unread" action.
-      m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
+      m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
     }
 
     emit currentMessagesChanged(QList<Message>() << m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.at(0)).row()));

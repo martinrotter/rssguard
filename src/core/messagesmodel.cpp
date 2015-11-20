@@ -240,11 +240,18 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   }
 }
 
-bool MessagesModel::setMessageRead(int row_index, int read) {  
+bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   if (data(row_index, MSG_DB_READ_INDEX, Qt::EditRole).toInt() == read) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
     return true;
+  }
+
+  int message_id = messageId(row_index);
+
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, QList<int>() << message_id, read)) {
+    // Cannot change read status of the item. Abort.
+    return false;
   }
 
   QSqlDatabase db_handle = database();
@@ -265,7 +272,6 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     return false;
   }
 
-  int message_id;
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
@@ -276,22 +282,15 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
     return false;
   }
 
-  // Rewrite the actual data in the database itself.
-  message_id = messageId(row_index);
   query_read_msg.bindValue(QSL(":id"), message_id);
   query_read_msg.bindValue(QSL(":read"), read);
   query_read_msg.exec();
 
   // Commit changes.
   if (db_handle.commit()) {
-    // If commit succeeded, then emit changes, so that view
-    // can reflect.
+    // If commit succeeded, then emit changes, so that view can reflect.
     emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    emit messageCountsChanged();
-
-    // TODO: counts changed
-    //emit messageCountsChanged(m_selectedItem.mode(), false, false);
-    return true;
+    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<int>() << message_id, read);
   }
   else {
     return db_handle.rollback();;
@@ -299,6 +298,16 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
 }
 
 bool MessagesModel::switchMessageImportance(int row_index) {
+  QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
+  RootItem::Importance current_importance = (RootItem::Importance) data(target_index, Qt::EditRole).toInt();
+  int message_id = messageId(row_index);
+
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem,
+                                                                               message_id,
+                                                                               current_importance)) {
+    return false;
+  }
+
   QSqlDatabase db_handle = database();
 
   if (!db_handle.transaction()) {
@@ -306,11 +315,10 @@ bool MessagesModel::switchMessageImportance(int row_index) {
     return false;
   }
 
-  QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
-  int current_importance = data(target_index, Qt::EditRole).toInt();
-
   // Rewrite "visible" data in the model.
-  bool working_change = current_importance == 1 ? setData(target_index, 0) : setData(target_index, 1);
+  bool working_change = current_importance == RootItem::Important ?
+                          setData(target_index, RootItem::NotImportant) :
+                          setData(target_index, RootItem::Important);
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
@@ -320,7 +328,6 @@ bool MessagesModel::switchMessageImportance(int row_index) {
     return false;
   }
 
-  int message_id;
   QSqlQuery query_importance_msg(db_handle);
   query_importance_msg.setForwardOnly(true);
 
@@ -331,7 +338,6 @@ bool MessagesModel::switchMessageImportance(int row_index) {
     return false;
   }
 
-  message_id = messageId(row_index);
   query_importance_msg.bindValue(QSL(":id"), message_id);
   query_importance_msg.bindValue(QSL(":important"), current_importance == 1 ? 0 : 1);
   query_importance_msg.exec();
@@ -341,7 +347,8 @@ bool MessagesModel::switchMessageImportance(int row_index) {
     // If commit succeeded, then emit changes, so that view
     // can reflect.
     emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    return true;
+    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_id,
+                                                                                  current_importance);
   }
   else {
     return db_handle.rollback();
@@ -352,12 +359,16 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   QSqlDatabase db_handle = database();
   QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
+  QList<int> message_ids_num;
 
   query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    int message_id = messageId(message.row());
+
+    message_ids_num.append(message_id);
+    message_ids.append(QString::number(message_id));
   }
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);"))
@@ -376,12 +387,16 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
   QSqlDatabase db_handle = database();
   QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
+  QList<int> message_ids_num;
 
   query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    int message_id = messageId(message.row());
+
+    message_ids_num.append(message_id);
+    message_ids.append(QString::number(message_id));
   }
 
   QString sql_delete_query;
@@ -400,7 +415,9 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
-    emit messageCountsChanged();
+
+
+    //emit messageCountsChanged();
 
     // TODO: counts changed
     //emit messageCountsChanged(m_selectedItem.mode(), true, false);
@@ -412,27 +429,32 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 }
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
-
-  query_read_msg.setForwardOnly(true);
+  QList<int> message_ids_num;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    int message_id = messageId(message.row());
+
+    message_ids_num.append(message_id);
+    message_ids.append(QString::number(message_id));
   }
+
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, message_ids_num, read)) {
+    return false;
+  }
+
+  QSqlDatabase db_handle = database();
+  QSqlQuery query_read_msg(db_handle);
+
+  query_read_msg.setForwardOnly(true);
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
                           .arg(message_ids.join(QSL(", ")),
                                read == RootItem::Read ? QSL("1") : QSL("0")))) {
     fetchAllData();
 
-    emit messageCountsChanged();
-
-    // TODO: counts changed
-    //emit messageCountsChanged(m_selectedItem.mode(), false, false);
-    return true;
+    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, message_ids_num, read);
   }
   else {
     return false;
@@ -456,7 +478,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
 
-    emit messageCountsChanged();
+    //emit messageCountsChanged();
 
     // TODO: counts changed
     //emit messageCountsChanged(m_selectedItem.mode(), true, true);

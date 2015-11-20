@@ -114,7 +114,6 @@ class MessagesView : public QTreeView {
     void contextMenuEvent(QContextMenuEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void keyPressEvent(QKeyEvent *event);
-    void currentChanged(const QModelIndex &current, const QModelIndex &previous);
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
     QMenu *m_contextMenu;

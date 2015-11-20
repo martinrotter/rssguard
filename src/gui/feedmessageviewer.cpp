@@ -25,6 +25,7 @@
 #include "miscellaneous/databasecleaner.h"
 #include "core/messagesproxymodel.h"
 #include "core/feeddownloader.h"
+#include "core/feedsproxymodel.h"
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
@@ -260,10 +261,10 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   QAction *origin = qobject_cast<QAction*>(sender());
 
   if (origin == NULL) {
-    m_feedsView->invalidateReadFeedsFilter(true, false);
+    m_feedsView->model()->invalidateReadFeedsFilter(true, false);
   }
   else {
-    m_feedsView->invalidateReadFeedsFilter(true, origin->isChecked());
+    m_feedsView->model()->invalidateReadFeedsFilter(true, origin->isChecked());
   }
 }
 
@@ -328,8 +329,7 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadFeeds(RootItem*)));
 
   // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged()),
-          m_feedsView, SLOT(receiveMessageCountsChange()));
+  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged()), m_feedsView, SLOT(receiveMessageCountsChange()));
 
   // State of many messages is changed, then we need
   // to reload selections.

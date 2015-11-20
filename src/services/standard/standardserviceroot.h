@@ -60,6 +60,12 @@ class StandardServiceRoot : public ServiceRoot {
     // Message stuff.
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 
+    bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
+    bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
+
+    bool onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important);
+    bool onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important);
+
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
     QHash<int,StandardCategory*> categoriesForItem(RootItem *root);

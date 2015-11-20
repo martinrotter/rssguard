@@ -20,6 +20,8 @@
 
 #include "core/rootitem.h"
 
+#include "core/message.h"
+
 
 class FeedsModel;
 class QAction;
@@ -65,8 +67,50 @@ class ServiceRoot : public RootItem {
     // "loading" dialog přes view a toto zavolat, nasledně signalovat
     virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model) = 0;
 
+    // Called BEFORE this read status update is stored in DB,
+    // when false is returned, change is aborted.
+    // This is the place to make some other changes like updating
+    // some ONLINE service or something.
+    //
+    // "read" is status which is ABOUT TO BE SET.
+    virtual bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) = 0;
+
+    // Called AFTER this read status update is stored in DB,
+    // when false is returned, change is aborted.
+    // Here service root should inform (via signals)
+    // which items are actually changed.
+    //
+    // "read" is status which is ABOUT TO BE SET.
+    virtual bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) = 0;
+
+    // Called BEFORE this importance switch update is stored in DB,
+    // when false is returned, change is aborted.
+    // This is the place to make some other changes like updating
+    // some ONLINE service or something.
+    //
+    // "important" is status which is ABOUT TO BE SET.
+    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) = 0;
+
+    // Called AFTER this importance switch update is stored in DB,
+    // when false is returned, change is aborted.
+    // Here service root should inform (via signals)
+    // which items are actually changed.
+    //
+    // "important" is status which is ABOUT TO BE SET.
+    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) = 0;
+
     // Access to feed model.
     FeedsModel *feedsModel() const;
+
+    // Obvious method to wrap dataChanged(...) signal
+    // which can be used by items themselves or any
+    // other component.
+    void itemChanged(RootItem *item);
+
+  signals:
+    // Emitted if data in any item belonging to this root are changed.
+    void dataChanged(RootItem *item);
+    void readFeedsFilterInvalidationRequested();
 
   private:
     FeedsModel *m_feedsModel;

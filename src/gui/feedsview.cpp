@@ -139,14 +139,6 @@ void FeedsView::loadExpandedStates() {
   }
 }
 
-void FeedsView::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
-  if (set_new_value) {
-    m_proxyModel->setShowUnreadOnly(show_unread_only);
-  }
-
-  QTimer::singleShot(0, m_proxyModel, SLOT(invalidateFilter()));
-}
-
 void FeedsView::expandCollapseCurrentItem() {
   if (selectionModel()->selectedRows().size() == 1) {
     QModelIndex index = selectionModel()->selectedRows().at(0);
@@ -210,7 +202,8 @@ void FeedsView::receiveMessageCountsChange() {
   // total counts.
   // b) total count of message was not changed - some messages switched state --> we need to update
   // counts of just selected feeds.
-  /*if (mode == FeedsSelection::MessagesFromRecycleBin) {
+  /*
+  if (mode == FeedsSelection::MessagesFromRecycleBin) {
     if (total_msg_count_changed) {
       if (any_msg_restored) {
         updateCountsOfAllFeeds(true);
@@ -227,7 +220,7 @@ void FeedsView::receiveMessageCountsChange() {
     updateCountsOfSelectedFeeds(total_msg_count_changed);
   }*/
 
-  invalidateReadFeedsFilter();
+  m_proxyModel->invalidateReadFeedsFilter();
 }
 
 void FeedsView::editSelectedItem() {
@@ -442,7 +435,7 @@ void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) 
     m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
   }
 
-  invalidateReadFeedsFilter();
+  m_proxyModel->invalidateReadFeedsFilter();
   m_sourceModel->notifyWithCounts();
 }
 
@@ -586,7 +579,7 @@ void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSele
   m_proxyModel->setSelectedItem(selected_item);
   QTreeView::selectionChanged(selected, deselected);
   emit itemSelected(selected_item);
-  invalidateReadFeedsFilter();
+  m_proxyModel->invalidateReadFeedsFilter();
 }
 
 void FeedsView::keyPressEvent(QKeyEvent *event) {

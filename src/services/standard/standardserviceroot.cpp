@@ -540,6 +540,43 @@ bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
   return true;
 }
 
+bool StandardServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
+  Q_UNUSED(message_db_ids)
+  Q_UNUSED(read)
+  Q_UNUSED(selected_item)
+
+  return true;
+}
+
+bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
+  Q_UNUSED(message_db_ids)
+  Q_UNUSED(read)
+
+  selected_item->updateCounts(false);
+
+  emit dataChanged(selected_item);
+  emit readFeedsFilterInvalidationRequested();
+  return true;
+}
+
+bool StandardServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id,
+                                                          RootItem::Importance important) {
+  Q_UNUSED(message_db_id)
+  Q_UNUSED(important)
+  Q_UNUSED(selected_item)
+
+  return true;
+}
+
+bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id,
+                                                         RootItem::Importance important) {
+  Q_UNUSED(message_db_id)
+  Q_UNUSED(important)
+  Q_UNUSED(selected_item)
+
+  return true;
+}
+
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
   QHash<int, RootItem*> assignments;
   assignments.insert(NO_PARENT_CATEGORY, this);

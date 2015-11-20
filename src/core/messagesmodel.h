@@ -62,7 +62,7 @@ class MessagesModel : public QSqlTableModel {
     // NOTE: Model is NOT reset after one of these methods are applied
     // but changes ARE written to the database.
     bool switchMessageImportance(int row_index);
-    bool setMessageRead(int row_index, int read);
+    bool setMessageRead(int row_index, RootItem::ReadStatus read);
 
     // BATCH messages manipulators.
     // NOTE: These methods are used for changing of attributes of
@@ -83,22 +83,13 @@ class MessagesModel : public QSqlTableModel {
     // Loads messages of given feeds.
     void loadMessages(RootItem *item);
 
-  signals:
-    // Emitted if some persistent change is made which affects count of "unread/all" messages.
-    void messageCountsChanged();
-
   private slots:
     // To disable persistent changes submissions.
     bool submitAll();
 
   private:
-    // Sets up header data.
     void setupHeaderData();
-
-    // Creates "normal" and "bold" fonts.
     void setupFonts();
-
-    // Sets up all icons which are used directly by this model.
     void setupIcons();
 
     MessageHighlighter m_messageHighlighter;

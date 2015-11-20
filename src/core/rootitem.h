@@ -51,8 +51,13 @@ class RootItem : public QObject {
 
   public:
     enum ReadStatus {
-      Read,
-      Unread
+      Unread = 0,
+      Read = 1
+    };
+
+    enum Importance {
+      NotImportant = 0,
+      Important = 1
     };
 
     enum CleanStatus {
