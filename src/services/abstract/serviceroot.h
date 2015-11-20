@@ -88,16 +88,16 @@ class ServiceRoot : public RootItem {
     // This is the place to make some other changes like updating
     // some ONLINE service or something.
     //
-    // "important" is status which is ABOUT TO BE SET.
-    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) = 0;
+    // "changes" - list of pairs - <message (integer id), new status>
+    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) = 0;
 
     // Called AFTER this importance switch update is stored in DB,
     // when false is returned, change is aborted.
     // Here service root should inform (via signals)
     // which items are actually changed.
     //
-    // "important" is status which is ABOUT TO BE SET.
-    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) = 0;
+    // "changes" - list of pairs - <message (integer id), new status>
+    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) = 0;
 
     // Access to feed model.
     FeedsModel *feedsModel() const;

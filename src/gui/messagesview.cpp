@@ -398,9 +398,11 @@ void MessagesView::switchSelectedMessagesImportance() {
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
                                                                    mapped_current_index.column()));
 
+  m_batchUnreadSwitch = true;
   setCurrentIndex(current_index);
   scrollTo(current_index);
   reselectIndexes(selected_indexes);
+  m_batchUnreadSwitch = false;
 }
 
 void MessagesView::reselectIndexes(const QModelIndexList &indexes) {

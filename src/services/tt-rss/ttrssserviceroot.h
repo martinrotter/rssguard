@@ -45,11 +45,11 @@ class TtRssServiceRoot : public ServiceRoot {
       return false;
     }
 
-    bool onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) {
+    bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) {
       return false;
     }
 
-    bool onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important) {
+    bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) {
       return false;
     }
 };

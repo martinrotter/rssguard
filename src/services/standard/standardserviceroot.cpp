@@ -559,20 +559,18 @@ bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<
   return true;
 }
 
-bool StandardServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id,
-                                                          RootItem::Importance important) {
-  Q_UNUSED(message_db_id)
-  Q_UNUSED(important)
+bool StandardServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item,
+                                                          QList<QPair<int,RootItem::Importance> > changes) {
   Q_UNUSED(selected_item)
+  Q_UNUSED(changes)
 
   return true;
 }
 
-bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id,
-                                                         RootItem::Importance important) {
-  Q_UNUSED(message_db_id)
-  Q_UNUSED(important)
+bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item,
+                                                         QList<QPair<int,RootItem::Importance> > changes) {
   Q_UNUSED(selected_item)
+  Q_UNUSED(changes)
 
   return true;
 }

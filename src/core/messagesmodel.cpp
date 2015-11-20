@@ -106,6 +106,10 @@ int MessagesModel::messageId(int row_index) const {
   return data(row_index, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
 }
 
+RootItem::Importance MessagesModel::messageImportance(int row_index) const {
+  return (RootItem::Importance) data(row_index, MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
+}
+
 void MessagesModel::updateDateFormat() {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()) {
     m_customDateFormat = qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString();
@@ -254,104 +258,75 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  QSqlDatabase db_handle = database();
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for message read change.");
-    return false;
-  }
-
   // Rewrite "visible" data in the model.
   bool working_change = setData(index(row_index, MSG_DB_READ_INDEX), read);
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
     qDebug("Setting of new data to the model failed for message read change.");
-
-    db_handle.rollback();
     return false;
   }
 
-  QSqlQuery query_read_msg(db_handle);
+  QSqlQuery query_read_msg(database());
   query_read_msg.setForwardOnly(true);
 
   if (!query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"))) {
     qWarning("Query preparation failed for message read change.");
-
-    db_handle.rollback();
     return false;
   }
 
   query_read_msg.bindValue(QSL(":id"), message_id);
-  query_read_msg.bindValue(QSL(":read"), read);
-  query_read_msg.exec();
+  query_read_msg.bindValue(QSL(":read"), (int) read);
 
-  // Commit changes.
-  if (db_handle.commit()) {
-    // If commit succeeded, then emit changes, so that view can reflect.
-    emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
+  if (query_read_msg.exec()) {
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<int>() << message_id, read);
   }
   else {
-    return db_handle.rollback();;
+    return false;
   }
 }
 
 bool MessagesModel::switchMessageImportance(int row_index) {
   QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
   RootItem::Importance current_importance = (RootItem::Importance) data(target_index, Qt::EditRole).toInt();
+  RootItem::Importance next_importance = current_importance == RootItem::Important ?
+                                           RootItem::NotImportant : RootItem::Important;
   int message_id = messageId(row_index);
+  QPair<int,RootItem::Importance> pair(message_id, next_importance);
 
   if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem,
-                                                                               message_id,
-                                                                               current_importance)) {
-    return false;
-  }
-
-  QSqlDatabase db_handle = database();
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for message importance switch failed.");
+                                                                               QList<QPair<int,RootItem::Importance> >() << pair)) {
     return false;
   }
 
   // Rewrite "visible" data in the model.
-  bool working_change = current_importance == RootItem::Important ?
-                          setData(target_index, RootItem::NotImportant) :
-                          setData(target_index, RootItem::Important);
+  bool working_change = setData(target_index, next_importance);
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
     qDebug("Setting of new data to the model failed for message importance change.");
-
-    db_handle.rollback();
     return false;
   }
 
-  QSqlQuery query_importance_msg(db_handle);
+  QSqlQuery query_importance_msg(database());
   query_importance_msg.setForwardOnly(true);
 
   if (!query_importance_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
     qWarning("Query preparation failed for message importance switch.");
-
-    db_handle.rollback();
     return false;
   }
 
   query_importance_msg.bindValue(QSL(":id"), message_id);
-  query_importance_msg.bindValue(QSL(":important"), current_importance == 1 ? 0 : 1);
-  query_importance_msg.exec();
+  query_importance_msg.bindValue(QSL(":important"), (int) next_importance);
+
 
   // Commit changes.
-  if (db_handle.commit()) {
-    // If commit succeeded, then emit changes, so that view
-    // can reflect.
-    emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_id,
-                                                                                  current_importance);
+  if (query_importance_msg.exec()) {
+    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem,
+                                                                                  QList<QPair<int,RootItem::Importance> >() << pair);
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
@@ -359,24 +334,27 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   QSqlDatabase db_handle = database();
   QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
-  QList<int> message_ids_num;
+  QList<QPair<int,RootItem::Importance> > message_states;
 
   query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
     int message_id = messageId(message.row());
+    RootItem::Importance message_importance = messageImportance((message.row()));
 
-    message_ids_num.append(message_id);
+    message_states.append(QPair<int,RootItem::Importance>(message_id, message_importance));
     message_ids.append(QString::number(message_id));
+  }
+
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
+    return false;
   }
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);"))
                           .arg(message_ids.join(QSL(", "))))) {
     fetchAllData();
-
-    //emit messageCountsChanged(false);
-    return true;
+    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
   }
   else {
     return false;

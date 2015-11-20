@@ -53,6 +53,7 @@ class MessagesModel : public QSqlTableModel {
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
+    RootItem::Importance messageImportance(int row_index) const;
 
     void updateDateFormat();
     void reloadWholeLayout();

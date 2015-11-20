@@ -63,8 +63,8 @@ class StandardServiceRoot : public ServiceRoot {
     bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
     bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
 
-    bool onBeforeSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important);
-    bool onAfterSwitchMessageImportance(RootItem *selected_item, int message_db_id, Importance important);
+    bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
+    bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
 
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
