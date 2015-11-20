@@ -235,7 +235,6 @@ void FeedMessageViewer::onFeedUpdatesStarted() {
 
 void FeedMessageViewer::onFeedUpdatesProgress(Feed *feed, int current, int total) {
   // Some feed got updated.
-  m_feedsView->updateCountsOfParticularFeed(feed, true);
   qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
                                                    //: Text display in status bar when particular feed is updated.
                                                    tr("Updated feed '%1'").arg(feed->title()));
@@ -327,9 +326,6 @@ void FeedMessageViewer::createConnections() {
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadFeeds(RootItem*)));
-
-  // If user changes status of some messages, recalculate message counts.
-  connect(m_messagesView->sourceModel(), SIGNAL(messageCountsChanged()), m_feedsView, SLOT(receiveMessageCountsChange()));
 
   // State of many messages is changed, then we need
   // to reload selections.
@@ -498,7 +494,7 @@ void FeedMessageViewer::showDbCleanupAssistant() {
     qApp->feedUpdateLock()->unlock();
 
     m_messagesView->reloadSelections(false);
-    m_feedsView->updateCountsOfAllFeeds(true);
+    m_feedsView->sourceModel()->reloadCountsOfWholeModel();
   }
   else {
     qApp->showGuiMessage(tr("Cannot cleanup database"),

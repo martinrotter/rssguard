@@ -361,11 +361,8 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 }
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
-  QSqlQuery query_read_msg(database());
   QStringList message_ids;
   QList<int> message_ids_num;
-
-  query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
@@ -375,7 +372,14 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
     message_ids.append(QString::number(message_id));
   }
 
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesDelete(m_selectedItem, message_ids_num)) {
+    return false;
+  }
+
+  QSqlQuery query_read_msg(database());
   QString sql_delete_query;
+
+  query_read_msg.setForwardOnly(true);
 
   if (m_selectedItem->kind() != RootItemKind::Bin) {
     sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
@@ -388,13 +392,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
 
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
-
-
-    //emit messageCountsChanged();
-
-    // TODO: counts changed - zde pokracovat podle metod setbarchmessageread
-    //emit messageCountsChanged(m_selectedItem.mode(), true, false);
-    return true;
+    return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, message_ids_num);
   }
   else {
     return false;

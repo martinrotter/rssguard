@@ -215,7 +215,7 @@ void StandardFeed::fetchMetadataForItself() {
 
     // Notify the model about fact, that it needs to reload new information about
     // this item, particularly the icon.
-    serviceRoot()->itemChanged(this);
+    serviceRoot()->itemChanged(QList<RootItem*>() << this);
   }
   else {
     qApp->showGuiMessage(tr("Metadata not fetched"),
@@ -730,6 +730,10 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
     database.rollback();
 
     qDebug("Transaction commit for message downloader failed.");
+  }
+  else {
+    updateCounts(true);
+    serviceRoot()->itemChanged(QList<RootItem*>() << this);
   }
 
   return updated_messages;

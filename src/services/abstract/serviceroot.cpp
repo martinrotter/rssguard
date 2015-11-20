@@ -31,6 +31,6 @@ FeedsModel *ServiceRoot::feedsModel() const {
   return m_feedsModel;
 }
 
-void ServiceRoot::itemChanged(RootItem *item) {
-  emit dataChanged(item);
+void ServiceRoot::itemChanged(QList<RootItem*> items) {
+  emit dataChanged(items);
 }

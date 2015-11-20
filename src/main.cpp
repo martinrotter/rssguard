@@ -72,6 +72,9 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  // Register needed metatypes.
+  qRegisterMetaType<QList<RootItem*> >("QList<RootItem*>");
+
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
   qApp->icons()->setupSearchPaths();

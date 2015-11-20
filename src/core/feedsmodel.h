@@ -59,6 +59,8 @@ class FeedsModel : public QAbstractItemModel {
       return m_rootItem->countOfUnreadMessages();
     }
 
+    void reloadCountsOfWholeModel();
+
     // Removes item with given index.
     // NOTE: Also deletes item from memory.
     void removeItem(const QModelIndex &index);
@@ -156,7 +158,7 @@ class FeedsModel : public QAbstractItemModel {
     }
 
   private slots:
-    void onItemDataChanged(RootItem *item);
+    void onItemDataChanged(QList<RootItem*> items);
 
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();

@@ -206,6 +206,12 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 }
 
+void FeedsModel::reloadCountsOfWholeModel() {
+  m_rootItem->updateCounts(true);
+  reloadWholeLayout();
+  notifyWithCounts();
+}
+
 void FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
     QModelIndex parent_index = index.parent();
@@ -395,8 +401,11 @@ void FeedsModel::reloadChangedItem(RootItem *item) {
   reloadChangedLayout(QModelIndexList() << index_item);
 }
 
-void FeedsModel::onItemDataChanged(RootItem *item) {
-  reloadChangedItem(item);
+void FeedsModel::onItemDataChanged(QList<RootItem*> items) {
+  foreach (RootItem *item, items) {
+    reloadChangedItem(item);
+  }
+
   notifyWithCounts();
 }
 
@@ -421,7 +430,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root) {
 
   // Connect.
   connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
-  connect(root, SIGNAL(dataChanged(RootItem*)), this, SLOT(onItemDataChanged(RootItem*)));
+  connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
 
   root->start();
   return true;

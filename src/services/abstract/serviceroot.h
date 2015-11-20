@@ -67,7 +67,7 @@ class ServiceRoot : public RootItem {
     // "loading" dialog přes view a toto zavolat, nasledně signalovat
     virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model) = 0;
 
-    // Called BEFORE this read status update is stored in DB,
+    // Called BEFORE this read status update (triggered by user in message list) is stored in DB,
     // when false is returned, change is aborted.
     // This is the place to make some other changes like updating
     // some ONLINE service or something.
@@ -75,7 +75,7 @@ class ServiceRoot : public RootItem {
     // "read" is status which is ABOUT TO BE SET.
     virtual bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) = 0;
 
-    // Called AFTER this read status update is stored in DB,
+    // Called AFTER this read status update (triggered by user in message list) is stored in DB,
     // when false is returned, change is aborted.
     // Here service root should inform (via signals)
     // which items are actually changed.
@@ -99,17 +99,25 @@ class ServiceRoot : public RootItem {
     // "changes" - list of pairs - <message (integer id), new status>
     virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) = 0;
 
+    // Called BEFORE the list of messages is about to be deleted
+    // by the user from message list.
+    virtual bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) = 0;
+
+    // Called AFTER the list of messages is about to be deleted
+    // by the user from message list.
+    virtual bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) = 0;
+
     // Access to feed model.
     FeedsModel *feedsModel() const;
 
     // Obvious method to wrap dataChanged(...) signal
     // which can be used by items themselves or any
     // other component.
-    void itemChanged(RootItem *item);
+    void itemChanged(QList<RootItem*> items);
 
   signals:
     // Emitted if data in any item belonging to this root are changed.
-    void dataChanged(RootItem *item);
+    void dataChanged(QList<RootItem*> items);
     void readFeedsFilterInvalidationRequested();
 
   private:

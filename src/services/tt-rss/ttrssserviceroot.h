@@ -52,6 +52,14 @@ class TtRssServiceRoot : public ServiceRoot {
     bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) {
       return false;
     }
+
+    bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+      return false;
+    }
+
+    bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+      return false;
+    }
 };
 
 #endif // TTRSSSERVICEROOT_H

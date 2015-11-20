@@ -66,6 +66,9 @@ class StandardServiceRoot : public ServiceRoot {
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
     bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
 
+    bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
+    bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
+
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
     QHash<int,StandardCategory*> categoriesForItem(RootItem *root);

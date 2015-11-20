@@ -157,6 +157,15 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
 
   // Commit changes.
   if (db_handle.commit()) {
+    // Messages are cleared, now inform model about need to reload data.
+    QList<RootItem*> itemss;
+
+    foreach (Feed *feed, items) {
+      feed->updateCounts(true);
+      itemss.append(feed);
+    }
+
+    emit dataChanged(itemss);
     return true;
   }
   else {
@@ -191,6 +200,9 @@ bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
 
   // Commit changes.
   if (db_handle.commit()) {
+    m_recycleBin->updateCounts(true);
+
+    emit dataChanged(QList<RootItem*>() << m_recycleBin);
     return true;
   }
   else {
@@ -200,12 +212,6 @@ bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
 
 bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   QSqlDatabase db_handle = qApp->database()->connection(QSL("StandardServiceRoot"), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds clearing.");
-    return false;
-  }
-
   QSqlQuery query_delete_msg(db_handle);
   query_delete_msg.setForwardOnly(true);
 
@@ -213,8 +219,6 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
                                           "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
-
-      db_handle.rollback();
       return false;
     }
   }
@@ -222,8 +226,6 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
                                           "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
-
-      db_handle.rollback();
       return false;
     }
   }
@@ -232,15 +234,22 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 
   if (!query_delete_msg.exec()) {
     qDebug("Query execution for feeds clearing failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
+    return false;
   }
   else {
-    return db_handle.rollback();
+    // Messages are cleared, now inform model about need to reload data.
+    QList<RootItem*> itemss;
+
+    foreach (Feed *feed, items) {
+      feed->updateCounts(true);
+      itemss.append(feed);
+    }
+
+    m_recycleBin->updateCounts(true);
+    itemss.append(m_recycleBin);
+
+    emit dataChanged(itemss);
+    return true;
   }
 }
 
@@ -533,7 +542,7 @@ bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
 
     QString filter_clause = stringy_ids.join(QSL(", "));
 
-    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0")).arg(filter_clause));
+    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0")).arg(filter_clause));
     qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
   }
 
@@ -554,7 +563,7 @@ bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<
 
   selected_item->updateCounts(false);
 
-  emit dataChanged(selected_item);
+  emit dataChanged(QList<RootItem*>() << selected_item);
   emit readFeedsFilterInvalidationRequested();
   return true;
 }
@@ -575,8 +584,34 @@ bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item
   return true;
 }
 
+bool StandardServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(message_db_ids)
+
+  return true;
+}
+
+bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+  Q_UNUSED(message_db_ids)
+
+  // User deleted some messages he selected in message list.
+  selected_item->updateCounts(true);
+
+  if (selected_item->kind() == RootItemKind::Bin) {
+    emit dataChanged(QList<RootItem*>() << m_recycleBin);
+  }
+  else {
+    m_recycleBin->updateCounts(true);
+    emit dataChanged(QList<RootItem*>() << selected_item << m_recycleBin);
+  }
+
+
+  emit readFeedsFilterInvalidationRequested();
+  return true;
+}
+
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
-  QHash<int, RootItem*> assignments;
+  QHash<int,RootItem*> assignments;
   assignments.insert(NO_PARENT_CATEGORY, this);
 
   // Add top-level categories.

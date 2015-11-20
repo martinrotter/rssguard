@@ -79,10 +79,6 @@ class FeedsView : public QTreeView {
     // Newspaper accessors.
     void openSelectedItemsInNewspaperMode();
 
-    // Recycle bin operators.
-    void emptyRecycleBin();
-    void restoreRecycleBin();
-
     // Feed clearers.
     void clearSelectedFeeds();
     void clearAllFeeds();
@@ -92,30 +88,25 @@ class FeedsView : public QTreeView {
     void editSelectedItem();
     void deleteSelectedItem();
 
-    // Is called when counts of messages are changed externally,
-    // typically from message view.
-    void receiveMessageCountsChange();
-
-    // Reloads counts for selected feeds.
-    void updateCountsOfSelectedFeeds(bool update_total_too);
-
-    // Reloads counts of recycle bin.
-    void updateCountsOfRecycleBin(bool update_total_too);
-
-    // Reloads counts for all feeds.
-    void updateCountsOfAllFeeds(bool update_total_too);
-
-    // Reloads counts for particular feed.
-    void updateCountsOfParticularFeed(Feed *feed, bool update_total_too);
-
     // Selects next/previous item (feed/category) in the list.
     void selectNextItem();
     void selectPreviousItem();
 
     // Switches visibility of the widget.
-    void switchVisibility() {
-      setVisible(!isVisible());
-    }
+    void switchVisibility();
+
+  signals:
+    // Emitted if user/application requested updating of some feeds.
+    void feedsUpdateRequested(const QList<Feed*> feeds);
+
+    // Emitted if currently selected feeds needs to be reloaded.
+    void feedsNeedToBeReloaded(bool mark_current_index_read);
+
+    // Emitted if user selects new feeds.
+    void itemSelected(RootItem *item);
+
+    // Requests opening of given messages in newspaper mode.
+    void openMessagesInNewspaperView(const QList<Message> &messages);
 
   private slots:
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
@@ -143,20 +134,6 @@ class FeedsView : public QTreeView {
     // Show custom context menu.
     void contextMenuEvent(QContextMenuEvent *event);
 
-  signals:
-    // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
-
-    // Emitted if currently selected feeds needs to be reloaded.
-    void feedsNeedToBeReloaded(bool mark_current_index_read);
-
-    // Emitted if user selects new feeds.
-    void itemSelected(RootItem *item);
-
-    // Requests opening of given messages in newspaper mode.
-    void openMessagesInNewspaperView(const QList<Message> &messages);
-
-  private:
     QMenu *m_contextMenuCategories;
     QMenu *m_contextMenuFeeds;
     QMenu *m_contextMenuEmptySpace;

@@ -169,58 +169,12 @@ void FeedsView::updateAllItemsOnStartup() {
 
 void FeedsView::clearSelectedFeeds() {
   m_sourceModel->markItemCleared(selectedItem(), false);
-  updateCountsOfSelectedFeeds(true);
-
   emit feedsNeedToBeReloaded(true);
 }
 
 void FeedsView::clearAllFeeds() {
   m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
-  updateCountsOfAllFeeds(true);
-
   emit feedsNeedToBeReloaded(true);
-}
-
-void FeedsView::receiveMessageCountsChange() {
-
-  // TODO: toto vymazat, prepocitani cisel unread/all
-  // a upozorneni na zmenu itemu provede ten item
-  // zde jen nechat tu invalidaci read filteru
-
-  // If the change came from recycle bin mode, then:
-  // a) total count of message was changed AND no message was restored - some messages
-  // were permanently deleted from recycle bin --> we need to update counts of
-  // just recycle bin, including total counts.
-  // b) total count of message was changed AND some message was restored - some messages
-  // were restored --> we need to update counts from all items and bin, including total counts.
-  // c) total count of message was not changed - state of some messages was switched, no
-  // deletings or restorings were made --> update counts of just recycle bin, excluding total counts.
-  //
-  // If the change came from feed mode, then:
-  // a) total count of message was changed - some messages were deleted --> we need to update
-  // counts of recycle bin, including total counts and update counts of selected feeds, including
-  // total counts.
-  // b) total count of message was not changed - some messages switched state --> we need to update
-  // counts of just selected feeds.
-  /*
-  if (mode == FeedsSelection::MessagesFromRecycleBin) {
-    if (total_msg_count_changed) {
-      if (any_msg_restored) {
-        updateCountsOfAllFeeds(true);
-      }
-      else {
-        updateCountsOfRecycleBin(true);
-      }
-    }
-    else {
-      updateCountsOfRecycleBin(false);
-    }
-  }
-  else {
-    updateCountsOfSelectedFeeds(total_msg_count_changed);
-  }*/
-
-  m_proxyModel->invalidateReadFeedsFilter();
 }
 
 void FeedsView::editSelectedItem() {
@@ -320,8 +274,6 @@ void FeedsView::deleteSelectedItem() {
 
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(selectedItem(), read);
-  updateCountsOfSelectedFeeds(false);
-
   emit feedsNeedToBeReloaded(read == 1);
 }
 
@@ -335,8 +287,6 @@ void FeedsView::markSelectedItemsUnread() {
 
 void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(m_sourceModel->rootItem(), read);
-  updateCountsOfAllFeeds(false);
-
   emit feedsNeedToBeReloaded(read == 1);
 }
 
@@ -357,88 +307,6 @@ void FeedsView::openSelectedItemsInNewspaperMode() {
   }
 }
 
-void FeedsView::emptyRecycleBin() {
-  if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, tr("Permanently delete messages"),
-                       tr("You are about to permanenty delete all messages from your recycle bin."),
-                       tr("Do you really want to empty your recycle bin?"),
-                       QString(), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::Yes) {
-    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
-    //m_sourceModel->recycleBin()->empty();
-    updateCountsOfSelectedFeeds(true);
-
-    emit feedsNeedToBeReloaded(true);
-  }
-}
-
-void FeedsView::restoreRecycleBin() {
-  // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
-  //m_sourceModel->recycleBin()->restore();
-  updateCountsOfAllFeeds(true);
-
-  emit feedsNeedToBeReloaded(true);
-}
-
-void FeedsView::updateCountsOfSelectedFeeds(bool update_total_too) {
-  foreach (Feed *feed, selectedFeeds()) {
-    feed->updateCounts(update_total_too);
-  }
-
-  QModelIndexList selected_indexes = m_proxyModel->mapListToSource(selectionModel()->selectedRows());
-
-  if (update_total_too) {
-    // Number of items in recycle bin has changed.
-
-    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
-    //m_sourceModel->recycleBin()->updateCounts(true);
-
-    // We need to refresh data for recycle bin too.
-
-    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
-    //selected_indexes.append(m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
-  }
-
-  // Make sure that selected view reloads changed indexes.
-  m_sourceModel->reloadChangedLayout(selected_indexes);
-  m_sourceModel->notifyWithCounts();
-}
-
-void FeedsView::updateCountsOfRecycleBin(bool update_total_too) {
-
-  // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
-  //m_sourceModel->recycleBin()->updateCounts(update_total_too);
-  //m_sourceModel->reloadChangedLayout(QModelIndexList() << m_sourceModel->indexForItem(m_sourceModel->recycleBin()));
-  m_sourceModel->notifyWithCounts();
-}
-
-void FeedsView::updateCountsOfAllFeeds(bool update_total_too) {
-  foreach (Feed *feed, allFeeds()) {
-    feed->updateCounts(update_total_too);
-  }
-
-  if (update_total_too) {
-    // Number of items in recycle bin has changed.
-
-    // TODO: pridat metodu cisteni standardniho kose nebo vsech kosu.
-    //m_sourceModel->recycleBin()->updateCounts(true);
-  }
-
-  // Make sure that all views reloads its data.
-  m_sourceModel->reloadWholeLayout();
-  m_sourceModel->notifyWithCounts();
-}
-
-void FeedsView::updateCountsOfParticularFeed(Feed *feed, bool update_total_too) {
-  QModelIndex index = m_sourceModel->indexForItem(feed);
-
-  if (index.isValid()) {
-    feed->updateCounts(update_total_too);
-    m_sourceModel->reloadChangedLayout(QModelIndexList() << index);
-  }
-
-  m_proxyModel->invalidateReadFeedsFilter();
-  m_sourceModel->notifyWithCounts();
-}
-
 void FeedsView::selectNextItem() {
   QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
@@ -455,6 +323,10 @@ void FeedsView::selectPreviousItem() {
     setCurrentIndex(index_previous);
     setFocus();
   }
+}
+
+void FeedsView::switchVisibility() {
+  setVisible(!isVisible());
 }
 
 QMenu *FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
