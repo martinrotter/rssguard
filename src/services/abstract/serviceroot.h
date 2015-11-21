@@ -22,6 +22,8 @@
 
 #include "core/message.h"
 
+#include <QPair>
+
 
 class FeedsModel;
 class QAction;
