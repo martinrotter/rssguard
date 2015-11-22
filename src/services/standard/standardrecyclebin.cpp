@@ -25,13 +25,8 @@
 
 
 StandardRecycleBin::StandardRecycleBin(RootItem *parent)
-  : RootItem(parent) {
-  setKind(RootItemKind::Bin);
-  setIcon(qApp->icons()->fromTheme(QSL("folder-recycle-bin")));
+  : RecycleBin(parent) {
   setId(ID_RECYCLE_BIN);
-  setTitle(tr("Recycle bin"));
-  setDescription(tr("Recycle bin contains all deleted messages from all feeds."));
-  setCreationDate(QDateTime::currentDateTime());
   updateCounts(true);
 }
 
@@ -43,30 +38,12 @@ StandardServiceRoot *StandardRecycleBin::serviceRoot() {
   return static_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
-int StandardRecycleBin::childCount() const {
-  return 0;
-}
-
-void StandardRecycleBin::appendChild(RootItem *child) {
-  Q_UNUSED(child)
-}
-
 int StandardRecycleBin::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
 int StandardRecycleBin::countOfAllMessages() const {
   return m_totalCount;
-}
-
-QVariant StandardRecycleBin::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      return tr("Recycle bin\n%1").arg(tr("%n deleted message(s).", 0, countOfAllMessages()));
-
-    default:
-      return RootItem::data(column, role);
-  }
 }
 
 bool StandardRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {

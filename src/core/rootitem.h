@@ -32,7 +32,7 @@ namespace RootItemKind {
   // Describes the kind of the item.
   enum Kind {
     Root        = 1,
-    Bin         = 2,
+    Bin  = 2,
     Feed        = 4,
     Category    = 8,
     ServiceRoot = 16

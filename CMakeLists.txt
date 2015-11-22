@@ -419,6 +419,7 @@ set(APP_SOURCES
   src/services/abstract/feed.cpp
   src/services/abstract/category.cpp
   src/services/abstract/serviceroot.cpp
+  src/services/abstract/recyclebin.cpp
 
   # STANDARD feed service sources.
   src/services/standard/gui/formstandardcategorydetails.cpp
@@ -535,6 +536,7 @@ set(APP_HEADERS
   src/services/abstract/feed.h
   src/services/abstract/category.h
   src/services/abstract/serviceroot.h
+  src/services/abstract/recyclebin.h
 
   # STANDARD service headers.
   src/services/standard/standardfeedsimportexportmodel.h

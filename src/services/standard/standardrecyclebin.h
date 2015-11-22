@@ -15,17 +15,17 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef RECYCLEBIN_H
-#define RECYCLEBIN_H
+#ifndef STANDARDRECYCLEBIN_H
+#define STANDARDRECYCLEBIN_H
 
-#include "core/rootitem.h"
+#include "services/abstract/recyclebin.h"
 
 #include <QCoreApplication>
 
 
 class StandardServiceRoot;
 
-class StandardRecycleBin : public RootItem {
+class StandardRecycleBin : public RecycleBin {
     Q_OBJECT
 
   public:
@@ -34,12 +34,9 @@ class StandardRecycleBin : public RootItem {
 
     StandardServiceRoot *serviceRoot();
 
-    int childCount() const;
-    void appendChild(RootItem *child);
     int countOfUnreadMessages() const;
     int countOfAllMessages() const;
-    QVariant data(int column, int role) const;
-    bool markAsReadUnread(ReadStatus status);
+    bool markAsReadUnread(RootItem::ReadStatus status);
 
     bool empty();
     bool restore();
@@ -52,4 +49,4 @@ class StandardRecycleBin : public RootItem {
     int m_unreadCount;
 };
 
-#endif // RECYCLEBIN_H
+#endif // STANDARDRECYCLEBIN_H
