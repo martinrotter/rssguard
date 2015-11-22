@@ -24,6 +24,8 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "gui/dialogs/formmain.h"
+#include "exceptions/ioexception.h"
+
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -208,23 +210,13 @@ void FormStandardImportExport::exportFeeds() {
       bool result_export = m_model->exportToOMPL20(result_data);
 
       if (result_export) {
-        // Save exported data.
-        QFile output_file(m_ui->m_lblSelectFile->label()->text());
+        try {
+          IOFactory::writeTextFile(m_ui->m_lblSelectFile->label()->text(), result_data);
 
-        if (output_file.open(QIODevice::Unbuffered | QIODevice::Truncate | QIODevice::WriteOnly)) {
-          QTextStream stream(&output_file);
-
-          stream.setCodec("UTF-8");
-          stream << QString::fromUtf8(result_data);
-          output_file.flush();
-          output_file.close();
-
-          m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."),
-                                       tr("Feeds were exported successfully."));
+          m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."), tr("Feeds were exported successfully."));
         }
-        else {
-          m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot write into destination file."),
-                                       tr("Cannot write into destination file."));
+        catch (IOException &ex) {
+          m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot write into destination file."), ex.message());
         }
       }
       else {
@@ -241,8 +233,6 @@ void FormStandardImportExport::importFeeds() {
   QString output_message;
 
   if (m_serviceRoot->mergeImportExportModel(m_model, output_message)) {
-    // TODO: Hate this global access, what about signal?
-    qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->expandAll();
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
   }
   else {
