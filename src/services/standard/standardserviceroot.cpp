@@ -610,6 +610,21 @@ bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, QList<i
   return true;
 }
 
+bool StandardServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+  return true;
+}
+
+bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+  // TODO: ok, nejake zpravy obnoveny z koše, ale nevíme přesně
+  // do jakých původně kanálů, obnovíme všecko.
+  Q_UNUSED(selected_item)
+  Q_UNUSED(message_db_ids)
+
+  emit dataChanged(getSubTree());
+  emit readFeedsFilterInvalidationRequested();
+  return true;
+}
+
 void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
   QHash<int,RootItem*> assignments;
   assignments.insert(NO_PARENT_CATEGORY, this);

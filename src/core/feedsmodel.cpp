@@ -318,7 +318,7 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
 QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
   QList<Message> messages;
 
-  foreach (const Feed *feed, feeds) {
+  foreach (Feed *feed, feeds) {
     messages.append(feed->undeletedMessages());
   }
 

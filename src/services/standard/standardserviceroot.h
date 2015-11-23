@@ -22,6 +22,7 @@
 
 #include <QCoreApplication>
 #include <QPair>
+#include <QSqlDatabase>
 
 
 class StandardRecycleBin;
@@ -69,6 +70,9 @@ class StandardServiceRoot : public ServiceRoot {
     bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
     bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
 
+    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
+    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
+
     // Returns all standard categories which are lying under given root node.
     // This does NOT include the root node even if the node is category.
     QHash<int,StandardCategory*> categoriesForItem(RootItem *root);
@@ -91,6 +95,9 @@ class StandardServiceRoot : public ServiceRoot {
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
     bool markRecycleBinReadUnread(ReadStatus read);
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+
+    // DB connection to be used by child items - feeds/categories.
+    QSqlDatabase dbConnection() const;
 
   public slots:
     void addNewCategory();
@@ -121,6 +128,8 @@ class StandardServiceRoot : public ServiceRoot {
     QList<QAction*> m_feedContextMenu;
 
     QAction *m_actionFeedFetchMetadata;
+
+    QSqlDatabase m_database;
 };
 
 #endif // STANDARDSERVICEROOT_H

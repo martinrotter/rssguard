@@ -431,27 +431,30 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
 }
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
-
-  query_read_msg.setForwardOnly(true);
+  QList<int> message_ids_num;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    int msg_id = messageId(message.row());
+
+    message_ids_num.append(msg_id);
+    message_ids.append(QString::number(msg_id));
   }
 
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesRestoredFromBin(m_selectedItem, message_ids_num)) {
+    return false;
+  }
+
+  QSqlQuery query_read_msg(database());
   QString sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
+
+  query_read_msg.setForwardOnly(true);
 
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
 
-    //emit messageCountsChanged();
-
-    // TODO: counts changed
-    //emit messageCountsChanged(m_selectedItem.mode(), true, true);
-    return true;
+    return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, message_ids_num);
   }
   else {
     return false;

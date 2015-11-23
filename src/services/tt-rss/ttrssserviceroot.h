@@ -60,6 +60,14 @@ class TtRssServiceRoot : public ServiceRoot {
     bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
       return false;
     }
+
+    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+      return false;
+    }
+
+    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+      return false;
+    }
 };
 
 #endif // TTRSSSERVICEROOT_H
