@@ -24,7 +24,7 @@
 #include "core/rootitem.h"
 #include "core/feeddownloader.h"
 
-
+class DatabaseCleaner;
 class Category;
 class Feed;
 class ServiceRoot;
@@ -139,6 +139,8 @@ class FeedsModel : public QAbstractItemModel {
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
 
+    DatabaseCleaner *databaseCleaner();
+
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root);
 
@@ -209,6 +211,9 @@ class FeedsModel : public QAbstractItemModel {
 
     QThread *m_feedDownloaderThread;
     FeedDownloader *m_feedDownloader;
+
+    QThread *m_dbCleanerThread;
+    DatabaseCleaner *m_dbCleaner;
 };
 
 #endif // FEEDSMODEL_H

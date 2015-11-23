@@ -24,6 +24,7 @@
 #include "services/standard/standardserviceroot.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/messagebox.h"
@@ -44,7 +45,9 @@
 
 
 FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloaderThread(NULL), m_feedDownloader(NULL) {
+  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)),
+    m_feedDownloaderThread(NULL), m_feedDownloader(NULL),
+    m_dbCleanerThread(NULL), m_dbCleaner(NULL) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -98,10 +101,25 @@ void FeedsModel::quit() {
     }
   }
 
+  if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
+    qDebug("Quitting database cleaner thread.");
+    m_dbCleanerThread->quit();
+
+    if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
+      qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
+      m_dbCleanerThread->terminate();
+    }
+  }
+
   // Close workers.
   if (m_feedDownloader != NULL) {
     qDebug("Feed downloader exists. Deleting it from memory.");
     m_feedDownloader->deleteLater();
+  }
+
+  if (m_dbCleaner != NULL) {
+    qDebug("Database cleaner exists. Deleting it from memory.");
+    m_dbCleaner->deleteLater();
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
@@ -165,6 +183,24 @@ void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
 
 void FeedsModel::updateAllFeeds() {
   updateFeeds(m_rootItem->getSubTreeFeeds());
+}
+
+
+DatabaseCleaner *FeedsModel::databaseCleaner() {
+  if (m_dbCleaner == NULL) {
+    m_dbCleaner = new DatabaseCleaner();
+    m_dbCleanerThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<CleanerOrders>("CleanerOrders");
+    m_dbCleaner->moveToThread(m_dbCleanerThread);
+    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
+
+    // Connections are made, start the feed downloader thread.
+    m_dbCleanerThread->start();
+  }
+
+  return m_dbCleaner;
 }
 
 void FeedsModel::executeNextAutoUpdate() {

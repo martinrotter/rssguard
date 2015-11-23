@@ -349,9 +349,6 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   m_batchUnreadSwitch = false;
 }
 
-
-// TODO: restore messages je uplně stejně jako tahle fce
-// akorat se vola jina metoda na source modelu.
 void MessagesView::deleteSelectedMessages() {
   QModelIndex current_index = selectionModel()->currentIndex();
 
@@ -409,7 +406,7 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
   QItemSelection selection;
 
   foreach (const QModelIndex &index, indexes) {
-    // TODO: THIS IS very slow. Try to select 4000 messages and hit "mark as read" button.
+    // FIXME: THIS IS very slow. Try to select 4000 messages and hit "mark as read" button.
     selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
   }
 

@@ -64,9 +64,7 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for messages"), this)),
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
-    m_messagesBrowser(new WebBrowser(this)),
-    m_dbCleanerThread(NULL),
-    m_dbCleaner(NULL) {
+    m_messagesBrowser(new WebBrowser(this)) {
   initialize();
   initializeViews();
   loadMessageViewerFonts();
@@ -75,23 +73,6 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
 
 FeedMessageViewer::~FeedMessageViewer() {
   qDebug("Destroying FeedMessageViewer instance.");
-}
-
-DatabaseCleaner *FeedMessageViewer::databaseCleaner() {
-  if (m_dbCleaner == NULL) {
-    m_dbCleaner = new DatabaseCleaner();
-    m_dbCleanerThread = new QThread();
-    
-    // Downloader setup.
-    qRegisterMetaType<CleanerOrders>("CleanerOrders");
-    m_dbCleaner->moveToThread(m_dbCleanerThread);
-    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
-    
-    // Connections are made, start the feed downloader thread.
-    m_dbCleanerThread->start();
-  }
-  
-  return m_dbCleaner;
 }
 
 void FeedMessageViewer::saveSize() {
@@ -148,21 +129,7 @@ void FeedMessageViewer::loadMessageViewerFonts() {
 void FeedMessageViewer::quit() {
   // Quit the feeds model (stops auto-update timer etc.).
   m_feedsView->sourceModel()->quit();
-  
-  if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
-    qDebug("Quitting database cleaner thread.");
-    m_dbCleanerThread->quit();
-    
-    if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
-      qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
-      m_dbCleanerThread->terminate();
-    }
-  }
-  
-  if (m_dbCleaner != NULL) {
-    qDebug("Database cleaner exists. Deleting it from memory.");
-    m_dbCleaner->deleteLater();
-  }
+
 }
 
 bool FeedMessageViewer::areToolBarsEnabled() const {
@@ -428,7 +395,7 @@ void FeedMessageViewer::initializeViews() {
 void FeedMessageViewer::showDbCleanupAssistant() {
   if (qApp->feedUpdateLock()->tryLock()) {
     QPointer<FormDatabaseCleanup> form_pointer = new FormDatabaseCleanup(this);
-    form_pointer.data()->setCleaner(databaseCleaner());
+    form_pointer.data()->setCleaner(m_feedsView->sourceModel()->databaseCleaner());
     form_pointer.data()->exec();
     
     delete form_pointer.data();

@@ -29,7 +29,6 @@ class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
 class FeedsView;
-class DatabaseCleaner;
 class StandardFeed;
 class QToolBar;
 class QSplitter;
@@ -64,8 +63,6 @@ class FeedMessageViewer : public TabContent {
     inline FeedsToolBar *feedsToolBar() {
       return m_toolBarFeeds;
     }
-
-    DatabaseCleaner *databaseCleaner();
 
     // Loads/saves sizes and states of ALL
     // underlying widgets, this contains primarily
@@ -134,9 +131,6 @@ class FeedMessageViewer : public TabContent {
     QWidget *m_feedsWidget;
     QWidget *m_messagesWidget;
     WebBrowser *m_messagesBrowser;
-
-    QThread *m_dbCleanerThread;
-    DatabaseCleaner *m_dbCleaner;
 };
 
 #endif // FEEDMESSAGEVIEWER_H
