@@ -323,6 +323,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
   m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
+  m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

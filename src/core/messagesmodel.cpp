@@ -71,6 +71,8 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
+
+
 void MessagesModel::loadMessages(RootItem *item) {
   m_selectedItem = item;
 
@@ -108,6 +110,10 @@ int MessagesModel::messageId(int row_index) const {
 
 RootItem::Importance MessagesModel::messageImportance(int row_index) const {
   return (RootItem::Importance) data(row_index, MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
+}
+
+RootItem *MessagesModel::loadedItem() const {
+  return m_selectedItem;
 }
 
 void MessagesModel::updateDateFormat() {
@@ -360,7 +366,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
   }
 }
 
-bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
+bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
   QStringList message_ids;
   QList<int> message_ids_num;
 
@@ -382,12 +388,10 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int
   query_read_msg.setForwardOnly(true);
 
   if (m_selectedItem->kind() != RootItemKind::Bin) {
-    sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
-                                                                                                 QString::number(deleted));
+    sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 1 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
   }
   else {
-    sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
-                                                                                                  QString::number(deleted));
+    sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
   }
 
   if (query_read_msg.exec(sql_delete_query)) {

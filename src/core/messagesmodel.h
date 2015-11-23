@@ -55,6 +55,8 @@ class MessagesModel : public QSqlTableModel {
     int messageId(int row_index) const;
     RootItem::Importance messageImportance(int row_index) const;
 
+    RootItem *loadedItem() const;
+
     void updateDateFormat();
     void reloadWholeLayout();
 
@@ -71,7 +73,7 @@ class MessagesModel : public QSqlTableModel {
     // NOTE: Model is reset after one of these methods is applied and
     // changes ARE written to the database.
     bool switchBatchMessageImportance(const QModelIndexList &messages);
-    bool setBatchMessagesDeleted(const QModelIndexList &messages, int deleted);
+    bool setBatchMessagesDeleted(const QModelIndexList &messages);
     bool setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read);
     bool setBatchMessagesRestored(const QModelIndexList &messages);
 

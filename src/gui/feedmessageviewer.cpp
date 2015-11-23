@@ -313,6 +313,8 @@ void FeedMessageViewer::createConnections() {
           this, SLOT(switchMessageSplitterOrientation()));
   connect(form_main->m_ui->m_actionShowOnlyUnreadItems, SIGNAL(toggled(bool)),
           this, SLOT(toggleShowOnlyUnreadFeeds()));
+  connect(form_main->m_ui->m_actionRestoreSelectedMessages, SIGNAL(triggered()),
+          m_messagesView, SLOT(restoreSelectedMessages()));
 }
 
 void FeedMessageViewer::initialize() {

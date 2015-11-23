@@ -623,6 +623,8 @@ bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item
   Q_UNUSED(selected_item)
   Q_UNUSED(message_db_ids)
 
+  updateCounts(true);
+
   emit dataChanged(getSubTree());
   emit readFeedsFilterInvalidationRequested();
   return true;

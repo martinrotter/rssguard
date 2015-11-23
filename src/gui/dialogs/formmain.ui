@@ -643,6 +643,11 @@
     <string>&amp;Edit selected service account</string>
    </property>
   </action>
+  <action name="m_actionRestoreSelectedMessages">
+   <property name="text">
+    <string>&amp;Restore selected messages</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
