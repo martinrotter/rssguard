@@ -153,9 +153,7 @@ class FeedsModel : public QAbstractItemModel {
 
     // Notifies other components about messages
     // counts.
-    inline void notifyWithCounts() {
-      emit messageCountsChanged(countOfUnreadMessages(), countOfAllMessages(), hasAnyFeedNewMessages());
-    }
+    void notifyWithCounts();
 
   private slots:
     void onItemDataChanged(QList<RootItem*> items);
@@ -171,6 +169,9 @@ class FeedsModel : public QAbstractItemModel {
 
     // Emitted if counts of messages are changed.
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);
+
+    // Emitted when there is a need of reloading of displayed messages.
+    void reloadMessageListRequested(bool mark_selected_messages_read);
 
   private:
     // Returns converted ids of given feeds

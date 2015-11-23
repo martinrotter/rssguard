@@ -34,3 +34,7 @@ FeedsModel *ServiceRoot::feedsModel() const {
 void ServiceRoot::itemChanged(QList<RootItem*> items) {
   emit dataChanged(items);
 }
+
+void ServiceRoot::requestReloadMessageList(bool mark_selected_messages_read) {
+  emit reloadMessageListRequested(mark_selected_messages_read);
+}

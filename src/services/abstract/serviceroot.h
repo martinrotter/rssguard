@@ -122,15 +122,15 @@ class ServiceRoot : public RootItem {
     // Access to feed model.
     FeedsModel *feedsModel() const;
 
-    // Obvious method to wrap dataChanged(...) signal
-    // which can be used by items themselves or any
-    // other component.
+    // Obvious methods to wrap signals.
     void itemChanged(QList<RootItem*> items);
+    void requestReloadMessageList(bool mark_selected_messages_read);
 
   signals:
     // Emitted if data in any item belonging to this root are changed.
     void dataChanged(QList<RootItem*> items);
     void readFeedsFilterInvalidationRequested();
+    void reloadMessageListRequested(bool mark_selected_messages_read);
 
   private:
     FeedsModel *m_feedsModel;

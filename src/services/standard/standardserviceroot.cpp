@@ -165,7 +165,8 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
       itemss.append(feed);
     }
 
-    emit dataChanged(itemss);
+    itemChanged(itemss);
+    requestReloadMessageList(read == RootItem::Read);
     return true;
   }
   else {
@@ -202,7 +203,8 @@ bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
   if (db_handle.commit()) {
     m_recycleBin->updateCounts(true);
 
-    emit dataChanged(QList<RootItem*>() << m_recycleBin);
+    itemChanged(QList<RootItem*>() << m_recycleBin);
+    requestReloadMessageList(read == RootItem::Read);
     return true;
   }
   else {
@@ -248,7 +250,8 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     m_recycleBin->updateCounts(true);
     itemss.append(m_recycleBin);
 
-    emit dataChanged(itemss);
+    itemChanged(itemss);
+    requestReloadMessageList(true);
     return true;
   }
 }

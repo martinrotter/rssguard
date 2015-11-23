@@ -99,9 +99,6 @@ class FeedsView : public QTreeView {
     // Emitted if user/application requested updating of some feeds.
     void feedsUpdateRequested(const QList<Feed*> feeds);
 
-    // Emitted if currently selected feeds needs to be reloaded.
-    void feedsNeedToBeReloaded(bool mark_current_index_read);
-
     // Emitted if user selects new feeds.
     void itemSelected(RootItem *item);
 

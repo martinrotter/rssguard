@@ -169,12 +169,10 @@ void FeedsView::updateAllItemsOnStartup() {
 
 void FeedsView::clearSelectedFeeds() {
   m_sourceModel->markItemCleared(selectedItem(), false);
-  emit feedsNeedToBeReloaded(true);
 }
 
 void FeedsView::clearAllFeeds() {
   m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
-  emit feedsNeedToBeReloaded(true);
 }
 
 void FeedsView::editSelectedItem() {
@@ -274,7 +272,6 @@ void FeedsView::deleteSelectedItem() {
 
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(selectedItem(), read);
-  emit feedsNeedToBeReloaded(read == 1);
 }
 
 void FeedsView::markSelectedItemsRead() {
@@ -287,7 +284,6 @@ void FeedsView::markSelectedItemsUnread() {
 
 void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(m_sourceModel->rootItem(), read);
-  emit feedsNeedToBeReloaded(read == 1);
 }
 
 void FeedsView::markAllItemsRead() {

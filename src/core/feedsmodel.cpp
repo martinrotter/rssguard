@@ -401,9 +401,22 @@ void FeedsModel::reloadChangedItem(RootItem *item) {
   reloadChangedLayout(QModelIndexList() << index_item);
 }
 
+void FeedsModel::notifyWithCounts() {
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    qApp->trayIcon()->setNumber(countOfUnreadMessages(), hasAnyFeedNewMessages());
+  }
+}
+
 void FeedsModel::onItemDataChanged(QList<RootItem*> items) {
-  foreach (RootItem *item, items) {
-    reloadChangedItem(item);
+  if (items.size() > RELOAD_MODEL_BORDER_NUM) {
+    qDebug("There is request to reload feed model for more than %d items, reloading model fully.", RELOAD_MODEL_BORDER_NUM);
+  }
+  else {
+    qDebug("There is request to reload feed model, reloading the %d items individually.", items.size());
+
+    foreach (RootItem *item, items) {
+      reloadChangedItem(item);
+    }
   }
 
   notifyWithCounts();
@@ -431,6 +444,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root) {
   // Connect.
   connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
   connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
+  connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
 
   root->start();
   return true;

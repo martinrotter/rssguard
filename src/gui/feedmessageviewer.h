@@ -99,9 +99,6 @@ class FeedMessageViewer : public TabContent {
     void updateFeeds(QList<Feed*> feeds);
 
   private slots:
-    // Updates counts of messages for example in tray icon.
-    void updateTrayIconStatus(int unread_messages, int total_messages, bool any_unread_messages);
-
     // Reacts on feed updates.
     void onFeedUpdatesStarted();
     void onFeedUpdatesProgress(Feed *feed, int current, int total);

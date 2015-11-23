@@ -220,14 +220,6 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
   m_messagesView->header()->setVisible(enable);
 }
 
-void FeedMessageViewer::updateTrayIconStatus(int unread_messages, int total_messages, bool any_unread_messages) {
-  Q_UNUSED(total_messages)
-
-  if (SystemTrayIcon::isSystemTrayActivated()) {
-    qApp->trayIcon()->setNumber(unread_messages, any_unread_messages);
-  }
-}
-
 void FeedMessageViewer::onFeedUpdatesStarted() {
   //: Text display in status bar when feed update is started.
   qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
@@ -329,10 +321,7 @@ void FeedMessageViewer::createConnections() {
 
   // State of many messages is changed, then we need
   // to reload selections.
-  connect(m_feedsView, SIGNAL(feedsNeedToBeReloaded(bool)), m_messagesView, SLOT(reloadSelections(bool)));
-
-  // If counts of unread/all messages change, update the tray icon.
-  connect(m_feedsView->sourceModel(), SIGNAL(messageCountsChanged(int,int,bool)), this, SLOT(updateTrayIconStatus(int,int,bool)));
+  connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)), m_messagesView, SLOT(reloadSelections(bool)));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
