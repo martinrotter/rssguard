@@ -96,18 +96,15 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
-    void updateFeeds(QList<Feed*> feeds);
-
   private slots:
-    // Reacts on feed updates.
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(FeedDownloadResults results);
+    // Called when feed update finishes.
+    void onFeedsUpdateFinished();
 
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();
 
+    // Toggles displayed feeds.
     void toggleShowOnlyUnreadFeeds();
 
     void updateMessageButtonsAvailability();
@@ -122,10 +119,6 @@ class FeedMessageViewer : public TabContent {
 
     // Sets up connections.
     void createConnections();
-
-  signals:
-    // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
 
   private:
     bool m_toolBarsEnabled;
@@ -142,9 +135,7 @@ class FeedMessageViewer : public TabContent {
     QWidget *m_messagesWidget;
     WebBrowser *m_messagesBrowser;
 
-    QThread *m_feedDownloaderThread;
     QThread *m_dbCleanerThread;
-    FeedDownloader *m_feedDownloader;
     DatabaseCleaner *m_dbCleaner;
 };
 

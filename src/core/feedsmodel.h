@@ -22,6 +22,7 @@
 
 #include "core/message.h"
 #include "core/rootitem.h"
+#include "core/feeddownloader.h"
 
 
 class Category;
@@ -132,6 +133,13 @@ class FeedsModel : public QAbstractItemModel {
     // Does necessary job before quitting this component.
     void quit();
 
+    // Schedules given feeds for update.
+    void updateFeeds(const QList<Feed*> &feeds);
+
+    // Schedules all feeds from all accounts for update.
+    void updateAllFeeds();
+
+    // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root);
 
   public slots:
@@ -161,7 +169,14 @@ class FeedsModel : public QAbstractItemModel {
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
 
+    // Reacts on feed updates.
+    void onFeedUpdatesStarted();
+    void onFeedUpdatesProgress(Feed *feed, int current, int total);
+    void onFeedUpdatesFinished(FeedDownloadResults results);
+
   signals:
+    void feedsUpdateFinished();
+
     void readFeedsFilterInvalidationRequested();
 
     // Emitted when model requests update of some feeds.
@@ -191,6 +206,9 @@ class FeedsModel : public QAbstractItemModel {
     bool m_globalAutoUpdateEnabled;
     int m_globalAutoUpdateInitialInterval;
     int m_globalAutoUpdateRemainingInterval;
+
+    QThread *m_feedDownloaderThread;
+    FeedDownloader *m_feedDownloader;
 };
 
 #endif // FEEDSMODEL_H

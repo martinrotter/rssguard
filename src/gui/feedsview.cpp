@@ -54,7 +54,6 @@ FeedsView::FeedsView(QWidget *parent)
   m_sourceModel = m_proxyModel->sourceModel();
 
   // Connections.
-  connect(m_sourceModel, SIGNAL(feedsUpdateRequested(QList<Feed*>)), this, SIGNAL(feedsUpdateRequested(QList<Feed*>)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
@@ -153,18 +152,11 @@ void FeedsView::expandCollapseCurrentItem() {
 }
 
 void FeedsView::updateAllItems() {
-  emit feedsUpdateRequested(allFeeds());
+  m_sourceModel->updateAllFeeds();
 }
 
 void FeedsView::updateSelectedItems() {
-  emit feedsUpdateRequested(selectedFeeds());
-}
-
-void FeedsView::updateAllItemsOnStartup() {
-  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
-    qDebug("Requesting update for all feeds on application startup.");
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllItems()));
-  }
+  m_sourceModel->updateFeeds(selectedFeeds());
 }
 
 void FeedsView::clearSelectedFeeds() {
@@ -288,10 +280,6 @@ void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
 
 void FeedsView::markAllItemsRead() {
   markAllItemsReadStatus(RootItem::Read);
-}
-
-void FeedsView::clearAllReadMessages() {
-  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), true);
 }
 
 void FeedsView::openSelectedItemsInNewspaperMode() {

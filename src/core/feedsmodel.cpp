@@ -27,7 +27,11 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/messagebox.h"
+#include "gui/statusbar.h"
+#include "gui/dialogs/formmain.h"
+#include "core/feeddownloader.h"
 
+#include <QThread>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
@@ -40,7 +44,7 @@
 
 
 FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)) {
+  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloaderThread(NULL), m_feedDownloader(NULL) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -64,6 +68,11 @@ FeedsModel::FeedsModel(QObject *parent)
 
   loadActivatedServiceAccounts();
   updateAutoUpdateStatus();
+
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
+    qDebug("Requesting update for all feeds on application startup.");
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllItems()));
+  }
 }
 
 FeedsModel::~FeedsModel() {
@@ -77,6 +86,85 @@ void FeedsModel::quit() {
   if (m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->stop();
   }
+
+  // Close worker threads.
+  if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
+    qDebug("Quitting feed downloader thread.");
+    m_feedDownloaderThread->quit();
+
+    if (!m_feedDownloaderThread->wait(CLOSE_LOCK_TIMEOUT)) {
+      qCritical("Feed downloader thread is running despite it was told to quit. Terminating it.");
+      m_feedDownloaderThread->terminate();
+    }
+  }
+
+  // Close workers.
+  if (m_feedDownloader != NULL) {
+    qDebug("Feed downloader exists. Deleting it from memory.");
+    m_feedDownloader->deleteLater();
+  }
+
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
+    markItemCleared(m_rootItem, true);
+  }
+}
+
+void FeedsModel::updateFeeds(const QList<Feed *> &feeds) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    qApp->showGuiMessage(tr("Cannot update all items"),
+                         tr("You cannot update all items because another another critical operation is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+    return;
+  }
+
+  if (m_feedDownloader == NULL) {
+    m_feedDownloader = new FeedDownloader();
+    m_feedDownloaderThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<QList<Feed*> >("QList<Feed*>");
+    m_feedDownloader->moveToThread(m_feedDownloaderThread);
+
+    connect(this, SIGNAL(feedsUpdateRequested(QList<Feed*>)), m_feedDownloader, SLOT(updateFeeds(QList<Feed*>)));
+    connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
+    connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
+    connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
+    connect(m_feedDownloader, SIGNAL(progress(Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(Feed*,int,int)));
+
+    // Connections are made, start the feed downloader thread.
+    m_feedDownloaderThread->start();
+  }
+
+  emit feedsUpdateRequested(feeds);
+}
+
+void FeedsModel::onFeedUpdatesStarted() {
+  //: Text display in status bar when feed update is started.
+  qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
+}
+
+void FeedsModel::onFeedUpdatesProgress(Feed *feed, int current, int total) {
+  // Some feed got updated.
+  qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
+                                                   //: Text display in status bar when particular feed is updated.
+                                                   tr("Updated feed '%1'").arg(feed->title()));
+}
+
+void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
+  qApp->feedUpdateLock()->unlock();
+  qApp->mainForm()->statusBar()->clearProgressFeeds();
+
+  if (!results.m_updatedFeeds.isEmpty()) {
+    // Now, inform about results via GUI message/notification.
+    qApp->showGuiMessage(tr("New messages downloaded"), results.getOverview(10), QSystemTrayIcon::NoIcon,
+                         0, false, qApp->icons()->fromTheme(QSL("item-update-all")));
+  }
+
+  emit feedsUpdateFinished();
+}
+
+void FeedsModel::updateAllFeeds() {
+  updateFeeds(m_rootItem->getSubTreeFeeds());
 }
 
 void FeedsModel::executeNextAutoUpdate() {

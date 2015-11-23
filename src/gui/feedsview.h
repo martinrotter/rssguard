@@ -68,7 +68,6 @@ class FeedsView : public QTreeView {
 
     // Feed updating.
     void updateAllItems();
-    void updateAllItemsOnStartup();
     void updateSelectedItems();
 
     // Feed read/unread manipulators.
@@ -82,7 +81,6 @@ class FeedsView : public QTreeView {
     // Feed clearers.
     void clearSelectedFeeds();
     void clearAllFeeds();
-    void clearAllReadMessages();
 
     // Base manipulators.
     void editSelectedItem();
@@ -96,9 +94,6 @@ class FeedsView : public QTreeView {
     void switchVisibility();
 
   signals:
-    // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
-
     // Emitted if user selects new feeds.
     void itemSelected(RootItem *item);
 

@@ -65,17 +65,12 @@ FeedMessageViewer::FeedMessageViewer(QWidget *parent)
     m_messagesView(new MessagesView(this)),
     m_feedsView(new FeedsView(this)),
     m_messagesBrowser(new WebBrowser(this)),
-    m_feedDownloaderThread(NULL),
     m_dbCleanerThread(NULL),
-    m_feedDownloader(NULL),
     m_dbCleaner(NULL) {
   initialize();
   initializeViews();
   loadMessageViewerFonts();
   createConnections();
-
-  // Now, update all feeds if user has set it.
-  m_feedsView->updateAllItemsOnStartup();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
@@ -86,38 +81,38 @@ DatabaseCleaner *FeedMessageViewer::databaseCleaner() {
   if (m_dbCleaner == NULL) {
     m_dbCleaner = new DatabaseCleaner();
     m_dbCleanerThread = new QThread();
-
+    
     // Downloader setup.
     qRegisterMetaType<CleanerOrders>("CleanerOrders");
     m_dbCleaner->moveToThread(m_dbCleanerThread);
     connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
-
+    
     // Connections are made, start the feed downloader thread.
     m_dbCleanerThread->start();
   }
-
+  
   return m_dbCleaner;
 }
 
 void FeedMessageViewer::saveSize() {
   Settings *settings = qApp->settings();
-
+  
   m_feedsView->saveExpandedStates();
-
+  
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));
   settings->setValue(GROUP(GUI), GUI::SplitterMessages, QString(m_messageSplitter->saveState().toBase64()));
-
+  
   // States of splitters are stored, let's store
   // widths of columns.
   int width_column_author = m_messagesView->columnWidth(MSG_DB_AUTHOR_INDEX);
   int width_column_date = m_messagesView->columnWidth(MSG_DB_DCREATED_INDEX);
-
+  
   if (width_column_author != 0 && width_column_date != 0) {
     settings->setValue(GROUP(GUI), KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX), width_column_author);
     settings->setValue(GROUP(GUI), KEY_MESSAGES_VIEW + QString::number(MSG_DB_DCREATED_INDEX), width_column_date);
   }
-
+  
   // Store "visibility" of toolbars and list headers.
   settings->setValue(GROUP(GUI), GUI::ToolbarsVisible, m_toolBarsEnabled);
   settings->setValue(GROUP(GUI), GUI::ListHeadersVisible, m_listHeadersEnabled);
@@ -126,13 +121,13 @@ void FeedMessageViewer::saveSize() {
 void FeedMessageViewer::loadSize() {
   Settings *settings = qApp->settings();
   int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
-
+  
   m_feedsView->loadExpandedStates();
-
+  
   // Restore offsets of splitters.
   m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
   m_messageSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessages)).toString().toLocal8Bit()));
-
+  
   // Splitters are restored, now, restore widths of columns.
   m_messagesView->setColumnWidth(MSG_DB_AUTHOR_INDEX, settings->value(GROUP(GUI),
                                                                       KEY_MESSAGES_VIEW + QString::number(MSG_DB_AUTHOR_INDEX),
@@ -145,7 +140,7 @@ void FeedMessageViewer::loadSize() {
 void FeedMessageViewer::loadMessageViewerFonts() {
   Settings *settings = qApp->settings();
   QWebSettings *view_settings = m_messagesBrowser->view()->settings();
-
+  
   view_settings->setFontFamily(QWebSettings::StandardFont, settings->value(GROUP(Messages),
                                                                            SETTING(Messages::PreviewerFontStandard)).toString());
 }
@@ -153,41 +148,20 @@ void FeedMessageViewer::loadMessageViewerFonts() {
 void FeedMessageViewer::quit() {
   // Quit the feeds model (stops auto-update timer etc.).
   m_feedsView->sourceModel()->quit();
-
-  // Close worker threads.
-  if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
-    qDebug("Quitting feed downloader thread.");
-    m_feedDownloaderThread->quit();
-
-    if (!m_feedDownloaderThread->wait(CLOSE_LOCK_TIMEOUT)) {
-      qCritical("Feed downloader thread is running despite it was told to quit. Terminating it.");
-      m_feedDownloaderThread->terminate();
-    }
-  }
-
+  
   if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
     qDebug("Quitting database cleaner thread.");
     m_dbCleanerThread->quit();
-
+    
     if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
       qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
       m_dbCleanerThread->terminate();
     }
   }
-
-  // Close workers.
-  if (m_feedDownloader != NULL) {
-    qDebug("Feed downloader exists. Deleting it from memory.");
-    m_feedDownloader->deleteLater();
-  }
-
+  
   if (m_dbCleaner != NULL) {
     qDebug("Database cleaner exists. Deleting it from memory.");
     m_dbCleaner->deleteLater();
-  }
-
-  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
-    m_feedsView->clearAllReadMessages();
   }
 }
 
@@ -220,37 +194,13 @@ void FeedMessageViewer::setListHeadersEnabled(bool enable) {
   m_messagesView->header()->setVisible(enable);
 }
 
-void FeedMessageViewer::onFeedUpdatesStarted() {
-  //: Text display in status bar when feed update is started.
-  qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
-}
-
-void FeedMessageViewer::onFeedUpdatesProgress(Feed *feed, int current, int total) {
-  // Some feed got updated.
-  qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
-                                                   //: Text display in status bar when particular feed is updated.
-                                                   tr("Updated feed '%1'").arg(feed->title()));
-}
-
-void FeedMessageViewer::onFeedUpdatesFinished(FeedDownloadResults results) {
-  qApp->feedUpdateLock()->unlock();
-  qApp->mainForm()->statusBar()->clearProgressFeeds();
-  m_messagesView->reloadSelections(true);
-
-  if (!results.m_updatedFeeds.isEmpty()) {
-    // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.getOverview(10), QSystemTrayIcon::NoIcon,
-                         0, false, qApp->icons()->fromTheme(QSL("item-update-all")));
-  }
-}
-
 void FeedMessageViewer::switchFeedComponentVisibility() {
   m_feedsWidget->setVisible(!m_feedsWidget->isVisible());
 }
 
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
   QAction *origin = qobject_cast<QAction*>(sender());
-
+  
   if (origin == NULL) {
     m_feedsView->model()->invalidateReadFeedsFilter(true, false);
   }
@@ -263,7 +213,7 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
   bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
   bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
   FormMain *form_main = qApp->mainForm();
-
+  
   form_main->m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
@@ -282,7 +232,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
   bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
   FormMain *form_main = qApp->mainForm();
-
+  
   form_main->m_ui->m_actionServiceEdit->setEnabled(!critical_action_running && service_selected);
   form_main->m_ui->m_actionServiceDelete->setEnabled(!critical_action_running && service_selected);
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
@@ -301,27 +251,28 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
 
 void FeedMessageViewer::createConnections() {
   FormMain *form_main = qApp->mainForm();
-
+  
   // Filtering & searching.
   connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)), m_messagesView, SLOT(searchMessages(QString)));
   connect(m_toolBarMessages, SIGNAL(messageFilterChanged(MessagesModel::MessageHighlighter)), m_messagesView, SLOT(filterMessages(MessagesModel::MessageHighlighter)));
-
+  
   // Message changers.
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), m_messagesBrowser, SLOT(clear()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), m_messagesBrowser, SLOT(navigateToMessages(QList<Message>)));
   connect(m_messagesView, SIGNAL(currentMessagesRemoved()), this, SLOT(updateMessageButtonsAvailability()));
   connect(m_messagesView, SIGNAL(currentMessagesChanged(QList<Message>)), this, SLOT(updateMessageButtonsAvailability()));
-
+  
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(locked()), this, SLOT(updateFeedButtonsAvailability()));
   connect(qApp->feedUpdateLock(), SIGNAL(unlocked()), this, SLOT(updateFeedButtonsAvailability()));
-
+  
   // If user selects feeds, load their messages.
   connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadFeeds(RootItem*)));
-
+  
   // State of many messages is changed, then we need
   // to reload selections.
   connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)), m_messagesView, SLOT(reloadSelections(bool)));
+  connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateFinished()), this, SLOT(onFeedsUpdateFinished()));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
@@ -331,10 +282,11 @@ void FeedMessageViewer::createConnections() {
           form_main->m_ui->m_tabWidget, SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
-
+  
   // Downloader connections.
-  connect(m_feedsView, SIGNAL(feedsUpdateRequested(QList<Feed*>)), this, SLOT(updateFeeds(QList<Feed*>)));
-
+  // TODO: přesunout všechny negui věci asi k modelům, tohle je
+  // hlavně GUI třída, takže přesunout aktualizace feedů do modelu
+  
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionCleanupDatabase,
           SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
@@ -402,15 +354,15 @@ void FeedMessageViewer::initialize() {
   m_toolBarFeeds->setMovable(false);
   m_toolBarFeeds->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarFeeds->loadChangeableActions();
-
+  
   m_toolBarMessages->setFloatable(false);
   m_toolBarMessages->setMovable(false);
   m_toolBarMessages->setAllowedAreas(Qt::TopToolBarArea);
   m_toolBarMessages->loadChangeableActions();
-
+  
   // Finish web/message browser setup.
   m_messagesBrowser->setNavigationBarVisible(false);
-
+  
   // Now refresh visual setup.
   refreshVisualProperties();
 }
@@ -420,12 +372,12 @@ void FeedMessageViewer::initializeViews() {
   m_messagesWidget = new QWidget(this);
   m_feedSplitter = new QSplitter(Qt::Horizontal, this);
   m_messageSplitter = new QSplitter(Qt::Vertical, this);
-
+  
   // Instantiate needed components.
   QVBoxLayout *central_layout = new QVBoxLayout(this);
   QVBoxLayout *feed_layout = new QVBoxLayout(m_feedsWidget);
   QVBoxLayout *message_layout = new QVBoxLayout(m_messagesWidget);
-
+  
   // Set layout properties.
   central_layout->setMargin(0);
   central_layout->setSpacing(0);
@@ -433,11 +385,11 @@ void FeedMessageViewer::initializeViews() {
   feed_layout->setSpacing(0);
   message_layout->setMargin(0);
   message_layout->setSpacing(0);
-
+  
   // Set views.
   m_feedsView->setFrameStyle(QFrame::NoFrame);
   m_messagesView->setFrameStyle(QFrame::NoFrame);
-
+  
   // Setup message splitter.
   m_messageSplitter->setObjectName(QSL("MessageSplitter"));
   m_messageSplitter->setHandleWidth(1);
@@ -445,30 +397,30 @@ void FeedMessageViewer::initializeViews() {
   m_messageSplitter->setChildrenCollapsible(false);
   m_messageSplitter->addWidget(m_messagesView);
   m_messageSplitter->addWidget(m_messagesBrowser);
-
+  
   // Assemble message-related components to single widget.
   message_layout->addWidget(m_toolBarMessages);
   message_layout->addWidget(m_messageSplitter);
-
+  
   // Assemble feed-related components to another widget.
   feed_layout->addWidget(m_toolBarFeeds);
   feed_layout->addWidget(m_feedsView);
-
+  
   // Assembler everything together.
   m_feedSplitter->setHandleWidth(1);
   m_feedSplitter->setOpaqueResize(false);
   m_feedSplitter->setChildrenCollapsible(false);
   m_feedSplitter->addWidget(m_feedsWidget);
   m_feedSplitter->addWidget(m_messagesWidget);
-
+  
   // Add toolbar and main feeds/messages widget to main layout.
   central_layout->addWidget(m_feedSplitter);
-
+  
   setTabOrder(m_feedsView, m_messagesView);
   setTabOrder(m_messagesView, m_toolBarFeeds);
   setTabOrder(m_toolBarFeeds, m_toolBarMessages);
   setTabOrder(m_toolBarMessages, m_messagesBrowser);
-
+  
   updateMessageButtonsAvailability();
   updateFeedButtonsAvailability();
 }
@@ -478,10 +430,10 @@ void FeedMessageViewer::showDbCleanupAssistant() {
     QPointer<FormDatabaseCleanup> form_pointer = new FormDatabaseCleanup(this);
     form_pointer.data()->setCleaner(databaseCleaner());
     form_pointer.data()->exec();
-
+    
     delete form_pointer.data();
     qApp->feedUpdateLock()->unlock();
-
+    
     m_messagesView->reloadSelections(false);
     m_feedsView->sourceModel()->reloadCountsOfWholeModel();
   }
@@ -495,36 +447,11 @@ void FeedMessageViewer::showDbCleanupAssistant() {
 void FeedMessageViewer::refreshVisualProperties() {
   Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI),
                                                                                               SETTING(GUI::ToolbarStyle)).toInt());
-
+  
   m_toolBarFeeds->setToolButtonStyle(button_style);
   m_toolBarMessages->setToolButtonStyle(button_style);
 }
 
-void FeedMessageViewer::updateFeeds(QList<Feed*> feeds) {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    qApp->showGuiMessage(tr("Cannot update all items"),
-                         tr("You cannot update all items because another another critical operation is ongoing."),
-                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
-    return;
-  }
-
-  if (m_feedDownloader == NULL) {
-    m_feedDownloader = new FeedDownloader();
-    m_feedDownloaderThread = new QThread();
-
-    // Downloader setup.
-    qRegisterMetaType<QList<Feed*> >("QList<Feed*>");
-    m_feedDownloader->moveToThread(m_feedDownloaderThread);
-
-    connect(this, SIGNAL(feedsUpdateRequested(QList<Feed*>)), m_feedDownloader, SLOT(updateFeeds(QList<Feed*>)));
-    connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
-    connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
-    connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
-    connect(m_feedDownloader, SIGNAL(progress(Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(Feed*,int,int)));
-
-    // Connections are made, start the feed downloader thread.
-    m_feedDownloaderThread->start();
-  }
-
-  emit feedsUpdateRequested(feeds);
+void FeedMessageViewer::onFeedsUpdateFinished() {
+  m_messagesView->reloadSelections(true);
 }
