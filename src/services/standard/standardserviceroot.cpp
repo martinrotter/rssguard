@@ -43,7 +43,7 @@
 #include <QSqlTableModel>
 
 
-StandardServiceRoot::'StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
+StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
