@@ -22,7 +22,6 @@
 
 #include <QCoreApplication>
 #include <QPair>
-#include <QSqlDatabase>
 
 
 class StandardRecycleBin;
@@ -98,9 +97,6 @@ class StandardServiceRoot : public ServiceRoot {
     bool restoreBin();
     bool emptyBin();
 
-    // DB connection to be used by child items - feeds/categories.
-    QSqlDatabase dbConnection() const;
-
   public slots:
     void addNewCategory();
     void addNewFeed();
@@ -130,8 +126,6 @@ class StandardServiceRoot : public ServiceRoot {
     QList<QAction*> m_feedContextMenu;
 
     QAction *m_actionFeedFetchMetadata;
-
-    QSqlDatabase m_database;
 };
 
 #endif // STANDARDSERVICEROOT_H

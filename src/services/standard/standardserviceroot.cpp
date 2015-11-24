@@ -43,7 +43,7 @@
 #include <QSqlTableModel>
 
 
-StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
+StandardServiceRoot::'StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
   : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
@@ -679,8 +679,6 @@ bool StandardServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_ite
 }
 
 bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
-  // TODO: ok, nejake zpravy obnoveny z koše, ale nevíme přesně
-  // do jakých původně kanálů, obnovíme všecko.
   Q_UNUSED(selected_item)
   Q_UNUSED(message_db_ids)
 
