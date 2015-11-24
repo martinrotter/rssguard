@@ -169,6 +169,7 @@
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
+    <addaction name="m_actionRestoreSelectedMessages"/>
    </widget>
    <widget class="QMenu" name="m_menuServices">
     <property name="title">
@@ -178,11 +179,19 @@
     <addaction name="m_actionServiceEdit"/>
     <addaction name="m_actionServiceDelete"/>
    </widget>
+   <widget class="QMenu" name="m_menuRecycleBin">
+    <property name="title">
+     <string>&amp;Recycle bin</string>
+    </property>
+    <addaction name="m_actionRestoreAllRecycleBins"/>
+    <addaction name="m_actionEmptyAllRecycleBins"/>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
    <addaction name="m_menuServices"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
+   <addaction name="m_menuRecycleBin"/>
    <addaction name="m_menuWebBrowser"/>
    <addaction name="m_menuTools"/>
    <addaction name="m_menuHelp"/>
@@ -218,6 +227,9 @@
    </property>
    <property name="toolTip">
     <string>Displays extra info about this application.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
@@ -255,6 +267,9 @@
    <property name="toolTip">
     <string>Close all tabs except current one.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionCloseCurrentTab">
    <property name="text">
@@ -263,13 +278,16 @@
    <property name="toolTip">
     <string>Close current web browser tab.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionUpdateAllItems">
    <property name="text">
     <string>Update &amp;all items</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+U</string>
+    <string notr="true">Ctrl+Shift+U</string>
    </property>
   </action>
   <action name="m_actionUpdateSelectedItems">
@@ -277,32 +295,47 @@
     <string>Update &amp;selected items</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+U</string>
+    <string notr="true">Ctrl+U</string>
    </property>
   </action>
   <action name="m_actionEditSelectedItem">
    <property name="text">
     <string>&amp;Edit selected item</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionDeleteSelectedItem">
    <property name="text">
     <string>&amp;Delete selected item</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
    <property name="text">
     <string>Mark &amp;selected messages as &amp;read</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
     <string>Mark &amp;selected messages as &amp;unread</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionSwitchImportanceOfSelectedMessages">
    <property name="text">
     <string>Switch &amp;importance of selected messages</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkSelectedItemsAsRead">
@@ -312,6 +345,9 @@
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected items as read.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionMarkSelectedItemsAsUnread">
    <property name="text">
@@ -320,10 +356,16 @@
    <property name="toolTip">
     <string>Mark all messages (without message filters) from selected items as unread.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
     <string>&amp;Delete selected messages</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionClearSelectedItems">
@@ -333,20 +375,32 @@
    <property name="toolTip">
     <string>Deletes all messages from selected items.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
    <property name="text">
     <string>Open selected source articles in &amp;external browser</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionOpenSelectedMessagesInternally">
    <property name="text">
     <string>Open selected messages in &amp;internal browser</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesInternally">
    <property name="text">
     <string>Open selected source articles in &amp;internal browser</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionNoActions">
@@ -370,6 +424,9 @@
    <property name="toolTip">
     <string>Marks all messages in all items read. This does not take message filters into account.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionViewSelectedItemsNewspaperMode">
    <property name="text">
@@ -377,6 +434,9 @@
    </property>
    <property name="toolTip">
     <string>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchMainWindow">
@@ -388,6 +448,9 @@
    </property>
    <property name="toolTip">
     <string>Hides main window if it is visible and shows it if it is hidden.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchFeedsList">
@@ -412,7 +475,7 @@
     <string>Deletes all messages from all items.</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+C</string>
+    <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="m_actionSelectNextItem">
@@ -420,7 +483,7 @@
     <string>Select &amp;next item</string>
    </property>
    <property name="shortcut">
-    <string>S</string>
+    <string notr="true">S</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousItem">
@@ -428,7 +491,7 @@
     <string>Select &amp;previous item</string>
    </property>
    <property name="shortcut">
-    <string>A</string>
+    <string notr="true">A</string>
    </property>
   </action>
   <action name="m_actionSelectNextMessage">
@@ -453,6 +516,9 @@
    </property>
    <property name="toolTip">
     <string>Check if new update for the application is available for download.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchMainMenu">
@@ -556,25 +622,40 @@
    <property name="text">
     <string>&amp;Donate via PayPal</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionDisplayWiki">
    <property name="text">
     <string>Display &amp;wiki</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionRestart">
    <property name="text">
     <string>&amp;Restart</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionRestoreDatabaseSettings">
    <property name="text">
     <string>&amp;Restore database/settings</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionBackupDatabaseSettings">
    <property name="text">
     <string>&amp;Backup database/settings</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchMessageListOrientation">
@@ -589,10 +670,16 @@
    <property name="text">
     <string>&amp;Downloads</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionSendMessageViaEmail">
    <property name="text">
     <string>Send selected message via e-mail</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionCleanupDatabase">
@@ -619,12 +706,15 @@
     <string>&amp;Expand/collapse selected item</string>
    </property>
    <property name="shortcut">
-    <string>E</string>
+    <string notr="true">E</string>
    </property>
   </action>
   <action name="m_actionServiceAdd">
    <property name="text">
     <string>&amp;Add new service account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionServiceDelete">
@@ -634,6 +724,9 @@
    <property name="text">
     <string>&amp;Delete selected service account</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionServiceEdit">
    <property name="enabled">
@@ -642,10 +735,29 @@
    <property name="text">
     <string>&amp;Edit selected service account</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionRestoreSelectedMessages">
    <property name="text">
     <string>&amp;Restore selected messages</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionRestoreAllRecycleBins">
+   <property name="text">
+    <string>&amp;Restore all recycle bins</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionEmptyAllRecycleBins">
+   <property name="text">
+    <string>&amp;Empty all recycle bins</string>
    </property>
   </action>
  </widget>

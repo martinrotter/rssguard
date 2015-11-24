@@ -21,6 +21,7 @@
 #include "services/abstract/feed.h"
 #include "services/abstract/category.h"
 #include "services/abstract/serviceroot.h"
+#include "services/abstract/recyclebin.h"
 #include "services/standard/standardserviceroot.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
@@ -534,6 +535,7 @@ void FeedsModel::notifyWithCounts() {
 void FeedsModel::onItemDataChanged(QList<RootItem*> items) {
   if (items.size() > RELOAD_MODEL_BORDER_NUM) {
     qDebug("There is request to reload feed model for more than %d items, reloading model fully.", RELOAD_MODEL_BORDER_NUM);
+    reloadWholeLayout();
   }
   else {
     qDebug("There is request to reload feed model, reloading the %d items individually.", items.size());
@@ -572,6 +574,34 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root) {
 
   root->start();
   return true;
+}
+
+bool FeedsModel::restoreAllBins() {
+  bool result = true;
+
+  foreach (ServiceRoot *root, serviceRoots()) {
+    RecycleBin *bin_of_root = root->recycleBin();
+
+    if (bin_of_root != NULL) {
+      result &= bin_of_root->restore();
+    }
+  }
+
+  return result;
+}
+
+bool FeedsModel::emptyAllBins() {
+  bool result = true;
+
+  foreach (ServiceRoot *root, serviceRoots()) {
+    RecycleBin *bin_of_root = root->recycleBin();
+
+    if (bin_of_root != NULL) {
+      result &= bin_of_root->empty();
+    }
+  }
+
+  return result;
 }
 
 void FeedsModel::loadActivatedServiceAccounts() {

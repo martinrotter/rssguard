@@ -179,9 +179,11 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 void FeedMessageViewer::updateMessageButtonsAvailability() {
   bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
   bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
+  bool bin_loaded = m_messagesView->sourceModel()->loadedItem() != NULL && m_messagesView->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
   FormMain *form_main = qApp->mainForm();
   
   form_main->m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
+  form_main->m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected && bin_loaded);
   form_main->m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(atleast_one_message_selected);
@@ -214,6 +216,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_actionExpandCollapseItem->setEnabled(feed_selected || category_selected || service_selected);
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
+  form_main->m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
 }
 
 void FeedMessageViewer::createConnections() {
@@ -249,10 +252,6 @@ void FeedMessageViewer::createConnections() {
           form_main->m_ui->m_tabWidget, SLOT(addLinkedBrowser(QString)));
   connect(m_feedsView, SIGNAL(openMessagesInNewspaperView(QList<Message>)),
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
-  
-  // Downloader connections.
-  // TODO: přesunout všechny negui věci asi k modelům, tohle je
-  // hlavně GUI třída, takže přesunout aktualizace feedů do modelu
   
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionCleanupDatabase,
@@ -315,6 +314,10 @@ void FeedMessageViewer::createConnections() {
           this, SLOT(toggleShowOnlyUnreadFeeds()));
   connect(form_main->m_ui->m_actionRestoreSelectedMessages, SIGNAL(triggered()),
           m_messagesView, SLOT(restoreSelectedMessages()));
+  connect(form_main->m_ui->m_actionRestoreAllRecycleBins, SIGNAL(triggered()),
+          m_feedsView->sourceModel(), SLOT(restoreAllBins()));
+  connect(form_main->m_ui->m_actionEmptyAllRecycleBins, SIGNAL(triggered()),
+          m_feedsView->sourceModel(), SLOT(emptyAllBins()));
 }
 
 void FeedMessageViewer::initialize() {

@@ -125,7 +125,7 @@ bool StandardCategory::removeItself() {
 
   if (children_removed) {
     // Children are removed, remove this standard category too.
-    QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
     QSqlQuery query_remove(database);
 
     // Remove this category from database.
@@ -142,7 +142,7 @@ bool StandardCategory::removeItself() {
 
 bool StandardCategory::addItself(RootItem *parent) {
   // Now, add category to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_add(database);
 
   query_add.setForwardOnly(true);
@@ -179,7 +179,7 @@ bool StandardCategory::addItself(RootItem *parent) {
 }
 
 bool StandardCategory::editItself(StandardCategory *new_category_data) {
-  QSqlDatabase database = qApp->database()->connection(QSL("Category"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_update_category(database);
   StandardCategory *original_category = this;
   RootItem *new_parent = new_category_data->parent();

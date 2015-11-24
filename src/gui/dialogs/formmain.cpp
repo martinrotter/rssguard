@@ -40,6 +40,7 @@
 #include "gui/dialogs/formrestoredatabasesettings.h"
 #include "gui/notifications/notification.h"
 #include "services/abstract/serviceroot.h"
+#include "services/abstract/recyclebin.h"
 #include "services/standard/gui/formstandardimportexport.h"
 
 #include <QCloseEvent>
@@ -185,8 +186,8 @@ void FormMain::updateAddItemMenu() {
 
     if (root_actions.isEmpty()) {
       QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                                                tr("No possible actions"),
-                                                                m_ui->m_menuAddItem);
+                                       tr("No possible actions"),
+                                       m_ui->m_menuAddItem);
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
@@ -210,8 +211,8 @@ void FormMain::updateServicesMenu() {
 
     if (root_actions.isEmpty()) {
       QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                                                tr("No possible actions"),
-                                                                m_ui->m_menuServices);
+                                       tr("No possible actions"),
+                                       m_ui->m_menuServices);
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
@@ -229,6 +230,49 @@ void FormMain::updateServicesMenu() {
   m_ui->m_menuServices->addAction(m_ui->m_actionServiceAdd);
   m_ui->m_menuServices->addAction(m_ui->m_actionServiceEdit);
   m_ui->m_menuServices->addAction(m_ui->m_actionServiceDelete);
+}
+
+void FormMain::updateRecycleBinMenu() {
+  m_ui->m_menuRecycleBin->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuServices);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    RecycleBin *bin = activated_root->recycleBin();
+
+    if (bin == NULL) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                       tr("No recycle bin"),
+                                       m_ui->m_menuRecycleBin);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      QAction *restore_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-restore-all")),
+                                            tr("Restore recycle bin"),
+                                            m_ui->m_menuRecycleBin);
+      QAction *empty_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-empty")),
+                                          tr("Empty recycle bin"),
+                                          m_ui->m_menuRecycleBin);
+
+      connect(restore_action, SIGNAL(triggered()), bin, SLOT(restore()));
+      connect(empty_action, SIGNAL(triggered()), bin, SLOT(empty()));
+
+      root_menu->addAction(restore_action);
+      root_menu->addAction(empty_action);
+    }
+
+    m_ui->m_menuRecycleBin->addMenu(root_menu);
+  }
+
+  if (!m_ui->m_menuRecycleBin->isEmpty()) {
+    m_ui->m_menuRecycleBin->addSeparator();
+  }
+
+  m_ui->m_menuRecycleBin->addAction(m_ui->m_actionRestoreAllRecycleBins);
+  m_ui->m_menuRecycleBin->addAction(m_ui->m_actionEmptyAllRecycleBins);
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -324,6 +368,9 @@ void FormMain::setupIcons() {
   m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
+  m_ui->m_actionRestoreAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
+  m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
+
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
@@ -396,6 +443,7 @@ void FormMain::createConnections() {
 
   connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
   connect(m_ui->m_menuServices, SIGNAL(aboutToShow()), this, SLOT(updateServicesMenu()));
+  connect(m_ui->m_menuRecycleBin, SIGNAL(aboutToShow()), this, SLOT(updateRecycleBinMenu()));
 
   // Menu "File" connections.
   connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));

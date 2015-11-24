@@ -145,6 +145,9 @@ class FeedsModel : public QAbstractItemModel {
     bool addServiceAccount(ServiceRoot *root);
 
   public slots:
+    bool restoreAllBins();
+    bool emptyAllBins();
+
     // Feeds operations.
     bool markItemRead(RootItem *item, RootItem::ReadStatus read);
     bool markItemCleared(RootItem *item, bool clean_read_only);

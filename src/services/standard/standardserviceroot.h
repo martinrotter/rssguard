@@ -52,6 +52,8 @@ class StandardServiceRoot : public ServiceRoot {
     bool canBeDeleted();
     QVariant data(int column, int role) const;
 
+    RecycleBin *recycleBin();
+
     // Return "add feed" and "add category" items.
     QList<QAction*> addItemMenu();
 
@@ -84,9 +86,6 @@ class StandardServiceRoot : public ServiceRoot {
     // Returns context specific menu actions for given feed.
     QList<QAction*> getContextMenuForFeed(StandardFeed *feed);
 
-    // Access to standard recycle bin.
-    StandardRecycleBin *recycleBin() const;
-
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     // NOTE: This is used for import/export of the model.
@@ -95,6 +94,9 @@ class StandardServiceRoot : public ServiceRoot {
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
     bool markRecycleBinReadUnread(ReadStatus read);
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+
+    bool restoreBin();
+    bool emptyBin();
 
     // DB connection to be used by child items - feeds/categories.
     QSqlDatabase dbConnection() const;

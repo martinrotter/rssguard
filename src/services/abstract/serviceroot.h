@@ -26,6 +26,7 @@
 
 
 class FeedsModel;
+class RecycleBin;
 class QAction;
 class QSqlTableModel;
 
@@ -51,6 +52,8 @@ class ServiceRoot : public RootItem {
     // bar in sections "Services -> 'this service'".
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> serviceMenu() = 0;
+
+    virtual RecycleBin *recycleBin() = 0;
 
     // Start/stop services.
     // Start method is called when feed model gets initialized OR after user adds new service.
@@ -125,6 +128,7 @@ class ServiceRoot : public RootItem {
     // Obvious methods to wrap signals.
     void itemChanged(QList<RootItem*> items);
     void requestReloadMessageList(bool mark_selected_messages_read);
+    void requestFeedReadFilterReload();
 
   signals:
     // Emitted if data in any item belonging to this root are changed.

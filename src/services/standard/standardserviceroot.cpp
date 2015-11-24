@@ -129,8 +129,12 @@ QVariant StandardServiceRoot::data(int column, int role) const {
   }
 }
 
+RecycleBin *StandardServiceRoot::recycleBin() {
+  return m_recycleBin;
+}
+
 bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("StandardServiceRoot"), DatabaseFactory::FromSettings);
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for feeds read change.");
@@ -175,7 +179,7 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
 }
 
 bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("StandardServiceRoot"), DatabaseFactory::FromSettings);
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
     qWarning("Starting transaction for recycle bin read change.");
@@ -213,7 +217,7 @@ bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
 }
 
 bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("StandardServiceRoot"), DatabaseFactory::FromSettings);
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_delete_msg(db_handle);
   query_delete_msg.setForwardOnly(true);
 
@@ -256,8 +260,69 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   }
 }
 
+bool StandardServiceRoot::restoreBin() {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for recycle bin restoring.");
+    return false;
+  }
+
+  QSqlQuery query_empty_bin(db_handle);
+  query_empty_bin.setForwardOnly(true);
+
+  if (!query_empty_bin.exec(QSL("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1 AND is_pdeleted = 0;"))) {
+    qWarning("Query execution failed for recycle bin restoring.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    updateCounts(true);
+    itemChanged(getSubTree());
+    requestReloadMessageList(true);
+    requestFeedReadFilterReload();
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
+bool StandardServiceRoot::emptyBin() {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for recycle bin emptying.");
+    return false;
+  }
+
+  QSqlQuery query_empty_bin(db_handle);
+  query_empty_bin.setForwardOnly(true);
+
+  if (!query_empty_bin.exec(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1;"))) {
+    qWarning("Query execution failed for recycle bin emptying.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    m_recycleBin->updateCounts(true);
+    itemChanged(QList<RootItem*>() << m_recycleBin);
+    requestReloadMessageList(true);
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
 void StandardServiceRoot::loadFromDatabase(){
-  QSqlDatabase database = qApp->database()->connection("StandardServiceRoot", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   CategoryAssignment categories;
   FeedAssignment feeds;
 
@@ -378,10 +443,6 @@ void StandardServiceRoot::assembleFeeds(FeedAssignment feeds) {
       qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
     }
   }
-}
-
-StandardRecycleBin *StandardServiceRoot::recycleBin() const {
-  return m_recycleBin;
 }
 
 bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, QString &output_message) {
@@ -566,8 +627,8 @@ bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<
 
   selected_item->updateCounts(false);
 
-  emit dataChanged(QList<RootItem*>() << selected_item);
-  emit readFeedsFilterInvalidationRequested();
+  itemChanged(QList<RootItem*>() << selected_item);
+  requestFeedReadFilterReload();
   return true;
 }
 
@@ -601,15 +662,15 @@ bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, QList<i
   selected_item->updateCounts(true);
 
   if (selected_item->kind() == RootItemKind::Bin) {
-    emit dataChanged(QList<RootItem*>() << m_recycleBin);
+    itemChanged(QList<RootItem*>() << m_recycleBin);
   }
   else {
     m_recycleBin->updateCounts(true);
-    emit dataChanged(QList<RootItem*>() << selected_item << m_recycleBin);
+    itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
   }
 
 
-  emit readFeedsFilterInvalidationRequested();
+  requestFeedReadFilterReload();
   return true;
 }
 
@@ -624,9 +685,8 @@ bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item
   Q_UNUSED(message_db_ids)
 
   updateCounts(true);
-
-  emit dataChanged(getSubTree());
-  emit readFeedsFilterInvalidationRequested();
+  itemChanged(getSubTree());
+  requestFeedReadFilterReload();
   return true;
 }
 

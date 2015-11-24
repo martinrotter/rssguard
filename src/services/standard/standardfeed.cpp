@@ -129,7 +129,7 @@ bool StandardFeed::cleanMessages(bool clean_read_only) {
 QList<Message> StandardFeed::undeletedMessages() const {
   QList<Message> messages;
 
-  QSqlDatabase database = qApp->database()->connection("StandardFeed", DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
@@ -174,7 +174,7 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 }
 
 void StandardFeed::updateCounts(bool including_total_count) {
-  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
 
   query_all.setForwardOnly(true);
@@ -483,7 +483,7 @@ int StandardFeed::update() {
 }
 
 bool StandardFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
 
   query_remove.setForwardOnly(true);
@@ -505,7 +505,7 @@ bool StandardFeed::removeItself() {
 
 bool StandardFeed::addItself(RootItem *parent) {
   // Now, add feed to persistent storage.
-  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_add_feed(database);
 
   query_add_feed.setForwardOnly(true);
@@ -555,7 +555,7 @@ bool StandardFeed::addItself(RootItem *parent) {
 }
 
 bool StandardFeed::editItself(StandardFeed *new_feed_data) {
-  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_update_feed(database);
   StandardFeed *original_feed = this;
   RootItem *new_parent = new_feed_data->parent();
@@ -611,7 +611,7 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
 int StandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   int updated_messages = 0;
-  QSqlDatabase database = qApp->database()->connection(QSL("Feed"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
 
   // Prepare queries.

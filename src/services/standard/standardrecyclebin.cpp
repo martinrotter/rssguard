@@ -51,61 +51,15 @@ bool StandardRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 }
 
 bool StandardRecycleBin::empty() {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin emptying.");
-    return false;
-  }
-
-  QSqlQuery query_empty_bin(db_handle);
-  query_empty_bin.setForwardOnly(true);
-
-  if (!query_empty_bin.exec(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1;"))) {
-    qWarning("Query execution failed for recycle bin emptying.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
+  return serviceRoot()->emptyBin();
 }
 
 bool StandardRecycleBin::restore() {
-  QSqlDatabase db_handle = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin restoring.");
-    return false;
-  }
-
-  QSqlQuery query_empty_bin(db_handle);
-  query_empty_bin.setForwardOnly(true);
-
-  if (!query_empty_bin.exec(QSL("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1 AND is_pdeleted = 0;"))) {
-    qWarning("Query execution failed for recycle bin restoring.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
+  return serviceRoot()->restoreBin();
 }
 
 void StandardRecycleBin::updateCounts(bool update_total_count) {
-  QSqlDatabase database = qApp->database()->connection(QSL("RecycleBin"), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
   query_all.setForwardOnly(true);
 

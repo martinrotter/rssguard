@@ -30,6 +30,7 @@ class RecycleBin : public RootItem {
 
     QVariant data(int column, int role) const;
 
+  public slots:
     // Empties the bin - removes all messages from it (does not remove
     // them from DB, just permanently hide them, so that they are not
     // re-downloaded).
