@@ -44,7 +44,7 @@ class StandardServiceRoot : public ServiceRoot {
     virtual ~StandardServiceRoot();
 
     // Start/stop root.
-    void aaaaaaaastart();
+    void start();
     void stop();
 
     bool canBeEdited();

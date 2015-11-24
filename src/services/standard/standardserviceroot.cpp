@@ -54,6 +54,7 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_mo
   setCreationDate(QDateTime::currentDateTime());
 
   if (load_from_db) {
+
     loadFromDatabase();
   }
 }
