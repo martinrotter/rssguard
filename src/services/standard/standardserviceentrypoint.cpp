@@ -29,20 +29,8 @@ StandardServiceEntryPoint::StandardServiceEntryPoint() {
 StandardServiceEntryPoint::~StandardServiceEntryPoint() {
 }
 
-bool StandardServiceEntryPoint::isDefaultService() {
-  return true;
-}
-
 bool StandardServiceEntryPoint::isSingleInstanceService() {
   return true;
-}
-
-bool StandardServiceEntryPoint::canBeAdded() {
-  return false;
-}
-
-bool StandardServiceEntryPoint::canBeDeleted() {
-  return false;
 }
 
 bool StandardServiceEntryPoint::canBeEdited() {

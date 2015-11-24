@@ -29,20 +29,8 @@ TtRssServiceEntryPoint::~TtRssServiceEntryPoint() {
 
 }
 
-bool TtRssServiceEntryPoint::isDefaultService() {
-  return false;
-}
-
 bool TtRssServiceEntryPoint::isSingleInstanceService() {
   return false;
-}
-
-bool TtRssServiceEntryPoint::canBeAdded() {
-  return true;
-}
-
-bool TtRssServiceEntryPoint::canBeDeleted() {
-  return true;
 }
 
 bool TtRssServiceEntryPoint::canBeEdited() {

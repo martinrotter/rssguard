@@ -215,7 +215,19 @@ void WebBrowser::onIconChanged() {
 
 void WebBrowser::addFeedFromWebsite(const QString &feed_link) {
   qApp->clipboard()->setText(feed_link);
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot()->addNewFeed();
+
+  StandardServiceRoot *service = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
+
+  if (service != NULL) {
+    service->addNewFeed();
+  }
+  else {
+    qApp->showGuiMessage(tr("Cannot add feed"),
+                         tr("You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.").arg(APP_NAME),
+                         QSystemTrayIcon::Warning,
+                         qApp->mainForm(),
+                         true);
+  }
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {

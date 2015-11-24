@@ -39,6 +39,8 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
+    DatabaseCleaner *databaseCleaner();
+
     // Model implementation.
     inline QVariant data(const QModelIndex &index, int role) const {
       // Return data according to item.
@@ -138,8 +140,6 @@ class FeedsModel : public QAbstractItemModel {
 
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
-
-    DatabaseCleaner *databaseCleaner();
 
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root);

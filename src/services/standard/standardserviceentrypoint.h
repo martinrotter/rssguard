@@ -26,10 +26,7 @@ class StandardServiceEntryPoint : public ServiceEntryPoint {
     explicit StandardServiceEntryPoint();
     virtual ~StandardServiceEntryPoint();
 
-    bool isDefaultService();
     bool isSingleInstanceService();
-    bool canBeAdded();
-    bool canBeDeleted();
     bool canBeEdited();
     QString name();
     QString description();

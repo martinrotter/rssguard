@@ -27,10 +27,7 @@ class TtRssServiceEntryPoint : public ServiceEntryPoint {
     explicit TtRssServiceEntryPoint();
     virtual ~TtRssServiceEntryPoint();
 
-    bool isDefaultService();
     bool isSingleInstanceService();
-    bool canBeAdded();
-    bool canBeDeleted();
     bool canBeEdited();
     QString name();
     QString description();

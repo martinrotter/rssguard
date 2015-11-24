@@ -39,25 +39,10 @@ class ServiceEntryPoint {
     // to the global feed model.
     virtual QList<ServiceRoot*> initializeSubtree(FeedsModel *main_model) = 0;
 
-    // Must this service account be activated by default?
-    // NOTE: This is true particularly for "standard" service
-    // which operates with normal RSS/ATOM feeds.
-    virtual bool isDefaultService() = 0;
-
     // Can this service account be added just once?
     // NOTE: This is true particularly for "standard" service
     // which operates with normal RSS/ATOM feeds.
     virtual bool isSingleInstanceService() = 0;
-
-    // Can this service account be added by user via GUI?
-    // NOTE: This is true particularly for "standard" service
-    // which operates with normal RSS/ATOM feeds.
-    virtual bool canBeAdded() = 0;
-
-    // Can this service account by deleted by user via GUI?
-    // NOTE: This is false particularly for "standard" service
-    // which operates with normal RSS/ATOM feeds.
-    virtual bool canBeDeleted() = 0;
 
     // Can properties of this service account be edited by user via GUI?
     virtual bool canBeEdited() = 0;

@@ -390,7 +390,7 @@ QList<ServiceRoot*> FeedsModel::serviceRoots() {
 }
 
 StandardServiceRoot *FeedsModel::standardServiceRoot() {
-  foreach (RootItem *root, m_rootItem->childItems()) {
+  foreach (RootItem *root, serviceRoots()) {
     StandardServiceRoot *std_service_root;
 
     if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != NULL) {
