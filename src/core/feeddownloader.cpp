@@ -72,5 +72,11 @@ QString FeedDownloadResults::getOverview(int how_many_feeds) {
     result.append(m_updatedFeeds.at(i).first + QSL(": ") + QString::number(m_updatedFeeds.at(i).second));
   }
 
-  return result.join(QSL("\n"));
+  QString res_str = result.join(QSL("\n"));
+
+  if (m_updatedFeeds.size() > how_many_feeds) {
+    res_str += QObject::tr("\n\n+ %n other feeds.", 0, m_updatedFeeds.size() - how_many_feeds);
+  }
+
+  return res_str;
 }

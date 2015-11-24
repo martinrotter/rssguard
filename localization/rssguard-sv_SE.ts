@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv_SE">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -197,25 +199,6 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
     </message>
 </context>
 <context>
-    <name>Category</name>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (kategori)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation>
-Denna kategori innehåller inga objekt.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
-    </message>
-</context>
-<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -292,9 +275,12 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %1 flöden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -372,7 +358,7 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -398,11 +384,17 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -422,51 +414,10 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
-    </message>
-</context>
-<context>
-    <name>Feed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>uppdateras inte automatiskt</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Globala inställningar</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform><numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform></translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
-
-Nätverksstatus: %6
-Kodning: %4
-Uppdateringsstatus: %5</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
-    </message>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metadata hämtades inte</translation>
-    </message>
-    <message>
-        <source>Metadata was not fetched because: %1</source>
-        <translation>Metadata hämtades inte på grund av: %1</translation>
+        <translation>
+            <numerusform>Laddar ner %n fil...</numerusform>
+            <numerusform>Laddar ner %n filer...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -476,22 +427,8 @@ Uppdateringsstatus: %5</translation>
         <translation>Verktygsfält för meddelanden</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Flödesuppdatering startad</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Uppdaterade flödet &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Verktygsfält för flöden</translation>
-    </message>
-    <message>
-        <source>Error when loading initial feeds</source>
-        <translation>Fel vid inläsning av flöden</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -500,18 +437,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation>Kan inte rensa databasen, eftersom en annan kritisk åtgärd pågår.</translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan inte uppdatera alla objekt</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Nya meddelanden nedladdade</translation>
     </message>
 </context>
 <context>
@@ -550,24 +475,37 @@ Uppdateringsstatus: %5</translation>
         <translation>Root</translation>
     </message>
     <message>
-        <source>Invalid tree data.</source>
-        <translation>Ogiltig träddata.</translation>
-    </message>
-    <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Importen slutfördes korrekt.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Uppdaterar flöden automatiskt</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation>
+            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
+            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation>Kan inte uppdatera alla objekt</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation>Du kan inte uppdatera alla objekt, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <extracomment>Text display in status bar when feed update is started.</extracomment>
+        <translation>Flödesuppdatering startad</translation>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation>Uppdaterade flödet &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation>Nya meddelanden nedladdade</translation>
     </message>
 </context>
 <context>
@@ -580,14 +518,6 @@ Uppdateringsstatus: %5</translation>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Cannot add standard category</source>
-        <translation>Kan inte lägga till kategori</translation>
-    </message>
-    <message>
-        <source>Cannot add standard feed</source>
-        <translation>Kan inte lägga till flöde</translation>
-    </message>
-    <message>
         <source>Cannot edit item</source>
         <translation>Kan inte redigera objektet</translation>
     </message>
@@ -596,48 +526,8 @@ Uppdateringsstatus: %5</translation>
         <translation>Kan inte bort objektet</translation>
     </message>
     <message>
-        <source>You are about to delete selected feed or category.</source>
-        <translation>Du är på väg att ta bort markerat flöde eller kategori.</translation>
-    </message>
-    <message>
-        <source>Deletion of item failed.</source>
-        <translation>Borttagningen misslyckades.</translation>
-    </message>
-    <message>
-        <source>Selected item was not deleted due to error.</source>
-        <translation>Objektet togs inte bort, på grund av ett fel.</translation>
-    </message>
-    <message>
-        <source>Do you really want to delete selected item?</source>
-        <translation>Vill du verkligen ta bort markerat objekt?</translation>
-    </message>
-    <message>
-        <source>Permanently delete messages</source>
-        <translation>Ta bort meddelanden permanent</translation>
-    </message>
-    <message>
-        <source>You are about to permanenty delete all messages from your recycle bin.</source>
-        <translation>Du är på väg att permanent ta bort alla meddelanden från papperskorgen.</translation>
-    </message>
-    <message>
-        <source>Do you really want to empty your recycle bin?</source>
-        <translation>Vill du verkligen tömma papperskorgen?</translation>
-    </message>
-    <message>
         <source>Context menu for empty space</source>
         <translation>Kontextmeny för tomt utrymme</translation>
-    </message>
-    <message>
-        <source>Context menu for recycle bin</source>
-        <translation>Kontextmeny för papperskorgen</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation>Du kan inte lägga till ny standardkategori nu, eftersom en annan kritisk åtgärd pågår.</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
-        <translation>Du kan inte lägga till nytt standardflöde nu, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -648,12 +538,41 @@ Uppdateringsstatus: %5</translation>
         <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
-        <source>Delete feed/category</source>
-        <translation>Ta bort flöde/kategori</translation>
-    </message>
-    <message>
         <source>Context menu for categories</source>
         <translation>Kontextmeny för kategorier</translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited, this is not (yet?) supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are about to completely delete item &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot delete &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This item cannot be deleted, because it does not support it
+or this functionality is not implemented yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Context menu for other items</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -703,10 +622,6 @@ Uppdateringsstatus: %5</translation>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (byggd på %2 med CMake %3)&lt;br&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Byggdatum:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (kompilerad mot %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 är en (mycket) lätt flödesläsare.&lt;br&gt;&lt;br&gt;Mjukvaran distribueras under villkoren för GNU General Public Licens, version 3.&lt;br&gt;&lt;br&gt;Kontakt:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webbsida&lt;/li&gt;&lt;/ul&gt;Du kan hämmta källkoden för %5 från webbsidan.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
-    </message>
-    <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Om %1</translation>
@@ -734,6 +649,10 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Resources</source>
         <translation>Resurser</translation>
+    </message>
+    <message>
+        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -812,134 +731,6 @@ Uppdateringsstatus: %5</translation>
     </message>
 </context>
 <context>
-    <name>FormCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Överordnad kategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Välj överordnad mapp för kategorin.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Namn</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivning</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Välj ikon för kategorin.</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Lägg till ny kategori</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Redigera befintlig kategori</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Kan inte lägga till kategori</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Kategorin lades inte till, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Kan inte redigera kategorin</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Kategorin kan inte redigeras, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Kategorinamnet är ok.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Kategorinamnet är för kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Beskrivning saknas.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Välj ikonfil för kategorin</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Välj ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Sök i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Kategorinamn</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Ange namnet på din kategori.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Kategoribeskrivning</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Beskriv din kategori.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Ikonval</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Använd ingen ikon</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Använd standardikon</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivningen är ok.</translation>
-    </message>
-</context>
-<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -951,7 +742,10 @@ Uppdateringsstatus: %5</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1004,389 +798,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Ta bort alla stjärnmärkta meddelanden (inklusive dem i papperskorgen)</translation>
-    </message>
-</context>
-<context>
-    <name>FormFeedDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Överordnad kategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Välj överordnad mapp för flödet.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Typ</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Välj flödestyp.</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Kodning</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Auto-uppdatering</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Välj uppdateringsstrategi för flödet. Global auto-uppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation>minuter</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Namn</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivning</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Hämta nu</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Välj ikon för flödet.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Vissa flöden kräver autentisering, inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentisering stöds.</translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation>Kräver autentisering</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Användarnamn</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Lösenord</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Hämta metadata</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Redigera befintligt flöde</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Flödesnamnet är ok.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Flödesnamnet är för kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Beskrivning saknas.</translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation>Webbadressen är ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>Webbadressen liknar inte standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>URL saknas.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Användarnamnet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Användarnamn saknas.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Lösenordet är ok, eller behövs inte.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Lösenord saknas.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Välj ikonfil för flödet</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>bilder (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Välj ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Avbryt</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Sök i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnamn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontyp:</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flöde</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan inte redigera flödet</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>All metadata hämtades korrekt.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Flödes- och ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Resultat: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation>Flödes- eller ikonmetadata hämtades inte.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fel: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Ingen metadata hämtades.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Flödesnamn</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Ange flödets namn.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Flödesbeskrivning</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Beskriv flödet.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Flödets fullständiga webbadress (URL)</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Ange flödets URL.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Ikonval</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Hämta ikon från fil...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Använd ingen ikon</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Använd standardikon</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Ingen metadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Global auto-uppdatering</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Auto-uppdatera varje</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Ingen auto-uppdatering</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivningen är ok.</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Flödet redigerades inte, på grund av något fel.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Ikon hämtades.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Ikonmetadata hämtad.</translation>
-    </message>
-    <message>
-        <source>Icon metatada not fetched.</source>
-        <translation>Ikonmetadata hämtades inte.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Ikon hämtades inte.</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Hämta ikon från flödet</translation>
-    </message>
-</context>
-<context>
-    <name>FormImportExport</name>
-    <message>
-        <source>&amp;Select file</source>
-        <translation>&amp;Välj fil</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation>Åtgärdsresultat</translation>
-    </message>
-    <message>
-        <source>No file is selected.</source>
-        <translation>Ingen fil har valts.</translation>
-    </message>
-    <message>
-        <source>No operation executed yet.</source>
-        <translation>Ingen åtgärd slutförd än.</translation>
-    </message>
-    <message>
-        <source>Export feeds</source>
-        <translation>Exportera flöden</translation>
-    </message>
-    <message>
-        <source>Destination file</source>
-        <translation>Målfil</translation>
-    </message>
-    <message>
-        <source>Source feeds &amp;&amp; categories</source>
-        <translation>Källflöden &amp;&amp; -kategorier</translation>
-    </message>
-    <message>
-        <source>Source file</source>
-        <translation>Källfil</translation>
-    </message>
-    <message>
-        <source>Target feeds &amp;&amp; categories</source>
-        <translation>Målflöden &amp;&amp; -kategorier</translation>
-    </message>
-    <message>
-        <source>Import feeds</source>
-        <translation>Importera flöden</translation>
-    </message>
-    <message>
-        <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0-filer (*.opml)</translation>
-    </message>
-    <message>
-        <source>Select file for feeds export</source>
-        <translation>Välj fil för flödesexport</translation>
-    </message>
-    <message>
-        <source>File is selected.</source>
-        <translation>Fil är vald.</translation>
-    </message>
-    <message>
-        <source>Select file for feeds import</source>
-        <translation>Välj fil för flödesimport</translation>
-    </message>
-    <message>
-        <source>Cannot open source file.</source>
-        <translation>Kan inte öppna källfil.</translation>
-    </message>
-    <message>
-        <source>Feeds were loaded.</source>
-        <translation>Flöden lästes in.</translation>
-    </message>
-    <message>
-        <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Fel! Filen är inte rätt formaterad. Välj en annan fil.</translation>
-    </message>
-    <message>
-        <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Ett fel uppstod. Filen är felformaterad. Välj en annan fil.</translation>
-    </message>
-    <message>
-        <source>Feeds were exported successfully.</source>
-        <translation>Flöden exporterades korrekt.</translation>
-    </message>
-    <message>
-        <source>Cannot write into destination file.</source>
-        <translation>Kan inte skriva till målfilen.</translation>
-    </message>
-    <message>
-        <source>Critical error occurred.</source>
-        <translation>Ett allvarligt fel uppstod.</translation>
-    </message>
-    <message>
-        <source>&amp;Check all items</source>
-        <translation>&amp;Markera alla</translation>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
-        <translation>&amp;Avmarkera alla</translation>
     </message>
 </context>
 <context>
@@ -1468,18 +879,6 @@ Uppdateringsstatus: %5</translation>
         <translation>&amp;Flöden &amp;&amp; kategorier</translation>
     </message>
     <message>
-        <source>Mark all messages (without message filters) from selected feeds as read.</source>
-        <translation>Markera alla meddelanden från valda flöden, som lästa.</translation>
-    </message>
-    <message>
-        <source>Mark all messages (without message filters) from selected feeds as unread.</source>
-        <translation>Markera alla meddelanden från valda flöden, som olästa.</translation>
-    </message>
-    <message>
-        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Visa alla meddelanden från markerade flöden/kategorier i en ny flik, som &quot;tidningsvy&quot;. Notera att meddelandena inte automatiskt markeras som lästa.</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Dölj programfönstret om det är synligt, och visa det om det är dolt.</translation>
     </message>
@@ -1504,44 +903,12 @@ Uppdateringsstatus: %5</translation>
         <translation>&amp;Ta bort markerade meddelanden</translation>
     </message>
     <message>
-        <source>Deletes all messages from selected feeds.</source>
-        <translation>Ta bort alla meddelanden från markerade flöden.</translation>
-    </message>
-    <message>
-        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation>Markera alla meddelanden i samtliga flöden som lästa. Detta åsidosätter eventuella meddelandefilter.</translation>
-    </message>
-    <message>
-        <source>Deletes all messages from all feeds.</source>
-        <translation>Ta bort alla meddelanden från samtliga flöden.</translation>
-    </message>
-    <message>
-        <source>Update &amp;all feeds</source>
-        <translation>Uppdatera &amp;alla flöden</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation>Uppdatera &amp;markerade flöden</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation>&amp;Redigera markerat flöde/kategori</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation>&amp;Ta bort markerat flöde/kategori</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
         <translation>Dölj/Visa huvudmenyn.</translation>
-    </message>
-    <message>
-        <source>Add &amp;new feed/category</source>
-        <translation>Lägg till &amp;nytt flöde/kategori</translation>
     </message>
     <message>
         <source>&amp;Close all tabs except current one</source>
@@ -1560,18 +927,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Märk markerade &amp;meddelanden som &amp;olästa</translation>
     </message>
     <message>
-        <source>&amp;Mark selected feeds as read</source>
-        <translation>&amp;Märk markerade meddelanden som lästa</translation>
-    </message>
-    <message>
-        <source>&amp;Mark selected feeds as unread</source>
-        <translation>&amp;Märk markerade meddelanden som olästa</translation>
-    </message>
-    <message>
-        <source>&amp;Clean selected feeds</source>
-        <translation>&amp;Rensa markerade flöden</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Öppna markerade källartiklar i &amp;extern webbläsare</translation>
     </message>
@@ -1582,26 +937,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Open selected source articles in &amp;internal browser</source>
         <translation>Öppna markerade källartiklar i &amp;intern webbläsare</translation>
-    </message>
-    <message>
-        <source>&amp;Mark all feeds as &amp;read</source>
-        <translation>&amp;Markera samtliga flöden som &amp;lästa</translation>
-    </message>
-    <message>
-        <source>View selected feeds in &amp;newspaper mode</source>
-        <translation>Visa markerade flöden som &amp;tidningsvy</translation>
-    </message>
-    <message>
-        <source>&amp;Clean all feeds</source>
-        <translation>&amp;Rensa alla flöden</translation>
-    </message>
-    <message>
-        <source>Select &amp;next feed/category</source>
-        <translation>Gå till &amp;nästa flöde/kategori</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous feed/category</source>
-        <translation>Gå till &amp;föregående flöde/kategori</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
@@ -1656,22 +991,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Kan inte öppna extern webbläsare. Navigera manuellt till programmets webbsida.</translation>
     </message>
     <message>
-        <source>New &amp;feed</source>
-        <translation>Nytt &amp;flöde</translation>
-    </message>
-    <message>
-        <source>Add new feed.</source>
-        <translation>Lägg till nytt flöde.</translation>
-    </message>
-    <message>
-        <source>New &amp;category</source>
-        <translation>Ny &amp;kategori</translation>
-    </message>
-    <message>
-        <source>Add new category.</source>
-        <translation>Lägg till ny kategori.</translation>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation>&amp;Verktygsfält</translation>
     </message>
@@ -1684,28 +1003,8 @@ Uppdateringsstatus: %5</translation>
         <translation>&amp;Kolumnrubriker</translation>
     </message>
     <message>
-        <source>&amp;Import feeds</source>
-        <translation>&amp;Importera flöden</translation>
-    </message>
-    <message>
-        <source>Imports feeds you want from selected file.</source>
-        <translation>Importera flöden från fil.</translation>
-    </message>
-    <message>
-        <source>&amp;Export feeds</source>
-        <translation>&amp;Exportera flöden</translation>
-    </message>
-    <message>
-        <source>Exports feeds you want to selected file.</source>
-        <translation>Exportera flöden till fil.</translation>
-    </message>
-    <message>
         <source>Close all tabs except current one.</source>
         <translation>Stäng alla flikar utom aktuell.</translation>
-    </message>
-    <message>
-        <source>&amp;Recycle bin</source>
-        <translation>&amp;Papperskorgen</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1722,18 +1021,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Display &amp;wiki</source>
         <translation>Visa &amp;wiki</translation>
-    </message>
-    <message>
-        <source>&amp;Empty recycle bin</source>
-        <translation>&amp;Töm papperskorgen</translation>
-    </message>
-    <message>
-        <source>&amp;Restore all messages</source>
-        <translation>&amp;Återställ alla meddelanden</translation>
-    </message>
-    <message>
-        <source>Restore &amp;selected messages</source>
-        <translation>Återställ &amp;markerade meddelanden</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -1764,16 +1051,136 @@ Uppdateringsstatus: %5</translation>
         <translation>&amp;Rensa databasen</translation>
     </message>
     <message>
-        <source>Show only unread feeds/categories</source>
-        <translation>Visa endast olästa flöden/kategorier </translation>
+        <source>Add &amp;new item</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Fetch feed metadata</source>
-        <translation>&amp;Hämta flödesmetadata</translation>
+        <source>&amp;Services</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Expand/collapse selected feed/category</source>
-        <translation>&amp;Expandera/Komprimera markerat flöde/kategori</translation>
+        <source>Update &amp;all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected items as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected items as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected items as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected items as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from selected items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages in all items read. This does not take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View selected items in &amp;newspaper mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from all items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;next item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;previous item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show only unread items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Expand/collapse selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add new service account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected service account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected service account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restore selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No possible actions</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1923,10 +1330,6 @@ Uppdateringsstatus: %5</translation>
     <message>
         <source>Author</source>
         <translation>Översättare</translation>
-    </message>
-    <message>
-        <source>Email</source>
-        <translation>E-post</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -2505,6 +1908,521 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation>Tjusiga &amp;&amp; moderna popup-aviseringar (Använder systemets integrerade aviseringar via D-Bus, om tillgängligt.)</translation>
     </message>
+    <message>
+        <source>E-mail</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Välj överordnad mapp för kategorin.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Beskrivning</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Ikon</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Välj ikon för kategorin.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Lägg till ny kategori</translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation>Redigera befintlig kategori</translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Kan inte lägga till kategori</translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation>Kategorin lades inte till, på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation>Kan inte redigera kategorin</translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation>Kategorin kan inte redigeras, på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Kategorinamnet är ok.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Kategorinamnet är för kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Beskrivning saknas.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Beskrivningen är ok.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Välj ikonfil för kategorin</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Välj ikon</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Avbryt</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Sök i:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Ikonnamn:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Ikontyp:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Kategorinamn</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Ange namnet på din kategori.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Kategoribeskrivning</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Beskriv din kategori.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Ikonval</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Hämta ikon från fil...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Använd ingen ikon</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Använd standardikon</translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Välj överordnad mapp för flödet.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>Välj flödestyp.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>Kodning</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>Välj flödeskodning. Välj &quot;UTF-8&quot; om du är osäker på kodningen.</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Auto-uppdatering</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Välj uppdateringsstrategi för flödet. Global auto-uppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation>minuter</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Beskrivning</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>Hämta nu</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Ikon</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>Välj ikon för flödet.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Vissa flöden kräver autentisering, inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentisering stöds.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Kräver autentisering</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lösenord</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Hämta metadata</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Redigera befintligt flöde</translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>Flödesnamnet är ok.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>Flödesnamnet är för kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Beskrivning saknas.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Beskrivningen är ok.</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>Webbadressen är ok.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>Webbadressen liknar inte standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>URL saknas.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Användarnamnet är ok, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Lösenordet är ok, eller behövs inte.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Lösenord saknas.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Välj ikonfil för flödet</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Välj ikon</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Avbryt</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Sök i:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Ikonnamn:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Ikontyp:</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan inte lägga till flöde</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Flödet lades inte till, på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>Kan inte redigera flödet</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>Flödet redigerades inte, på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>All metadata hämtades korrekt.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Flödes- och ikonmetadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Resultat: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation>Flödes- eller ikonmetadata hämtades inte.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Fel: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Ingen metadata hämtades.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Ikon hämtades.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Ikonmetadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Icon metatada not fetched.</source>
+        <translation>Ikonmetadata hämtades inte.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Ikon hämtades inte.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Flödesnamn</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Ange flödets namn.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Flödesbeskrivning</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Beskriv flödet.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Flödets fullständiga webbadress (URL)</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Ange flödets URL.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Ange användarnamn för att få åtkomst till flödet.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Ange lösenord för att få åtkomst till flödet.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Ikonval</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Hämta ikon från fil...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Använd ingen ikon</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Använd standardikon</translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Hämta ikon från flödet</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Ingen metadata hämtad.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Global auto-uppdatering</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Auto-uppdatera varje</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Ingen auto-uppdatering</translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardImportExport</name>
+    <message>
+        <source>&amp;Select file</source>
+        <translation>&amp;Välj fil</translation>
+    </message>
+    <message>
+        <source>&amp;Check all items</source>
+        <translation>&amp;Markera alla</translation>
+    </message>
+    <message>
+        <source>&amp;Uncheck all items</source>
+        <translation>&amp;Avmarkera alla</translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation>Åtgärdsresultat</translation>
+    </message>
+    <message>
+        <source>No file is selected.</source>
+        <translation>Ingen fil har valts.</translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation>Ingen åtgärd slutförd än.</translation>
+    </message>
+    <message>
+        <source>Destination file</source>
+        <translation>Målfil</translation>
+    </message>
+    <message>
+        <source>Source feeds &amp;&amp; categories</source>
+        <translation>Källflöden &amp;&amp; -kategorier</translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation>Exportera flöden</translation>
+    </message>
+    <message>
+        <source>Source file</source>
+        <translation>Källfil</translation>
+    </message>
+    <message>
+        <source>Target feeds &amp;&amp; categories</source>
+        <translation>Målflöden &amp;&amp; -kategorier</translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation>Importera flöden</translation>
+    </message>
+    <message>
+        <source>OPML 2.0 files (*.opml)</source>
+        <translation>OPML 2.0-filer (*.opml)</translation>
+    </message>
+    <message>
+        <source>Select file for feeds export</source>
+        <translation>Välj fil för flödesexport</translation>
+    </message>
+    <message>
+        <source>File is selected.</source>
+        <translation>Fil är vald.</translation>
+    </message>
+    <message>
+        <source>Select file for feeds import</source>
+        <translation>Välj fil för flödesimport</translation>
+    </message>
+    <message>
+        <source>Cannot open source file.</source>
+        <translation>Kan inte öppna källfil.</translation>
+    </message>
+    <message>
+        <source>Feeds were loaded.</source>
+        <translation>Flöden lästes in.</translation>
+    </message>
+    <message>
+        <source>Error, file is not well-formed. Select another file.</source>
+        <translation>Fel! Filen är inte rätt formaterad. Välj en annan fil.</translation>
+    </message>
+    <message>
+        <source>Error occurred. File is not well-formed. Select another file.</source>
+        <translation>Ett fel uppstod. Filen är felformaterad. Välj en annan fil.</translation>
+    </message>
+    <message>
+        <source>Feeds were exported successfully.</source>
+        <translation>Flöden exporterades korrekt.</translation>
+    </message>
+    <message>
+        <source>Cannot write into destination file.</source>
+        <translation>Kan inte skriva till målfilen.</translation>
+    </message>
+    <message>
+        <source>Critical error occurred.</source>
+        <translation>Ett allvarligt fel uppstod.</translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2753,6 +2671,14 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>List of attachments.</source>
         <translation>Lista över bilagor.</translation>
     </message>
+    <message>
+        <source>Loading of messages from item &apos;%s&apos; failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -2927,25 +2853,33 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <translation>eson57@gmail.com</translation>
     </message>
     <message>
-        <source>Load initial feeds</source>
-        <translation>Läs in flöden</translation>
-    </message>
-    <message>
-        <source>Do you want to load initial set of feeds?</source>
-        <translation>Vill du läsa in flödesuppsättningen?</translation>
-    </message>
-    <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
         <translation>Swedish</translation>
     </message>
-    <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation>Du har startat %1 för första gången. Nu kan du läsa in inledande flödesuppsättning.</translation>
+    <message numerus="yes">
+        <source>
+
++ %n other feeds.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
-        <source>Welcome to %1 %2.</source>
-        <translation>Välkommen till %1 %2.</translation>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to %1.</source>
+        <translation type="unfinished">Välkommen till %1 %2. {1.?}</translation>
+    </message>
+    <message>
+        <source>Load initial set of feeds</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2966,7 +2900,10 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -2982,6 +2919,137 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>Click and hit new shortcut.</source>
         <translation>Klicka och välj ny snabbtangent.</translation>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation>%1 (kategori)%2%3</translation>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation>
+Denna kategori innehåller inga objekt.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>StandardFeed</name>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation>Metadata hämtades inte</translation>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1.</source>
+        <translation>Metadata hämtades inte på grund av: %1.</translation>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>uppdateras inte automatiskt</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>Globala inställningar</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>
+            <numerusform>Anpassade inställningar. (%n minut till nästa auto-uppdatering)</numerusform>
+            <numerusform>Anpassade inställningar. (%n minuter till nästa auto-uppdatering)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation>%1 (%2)%3
+
+Nätverksstatus: %6
+Kodning: %4
+Uppdateringsstatus: %5</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>StandardServiceRoot</name>
+    <message>
+        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation>Du har startat %1 för första gången. Nu kan du läsa in inledande flödesuppsättning.</translation>
+    </message>
+    <message>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation>Vill du läsa in flödesuppsättningen?</translation>
+    </message>
+    <message>
+        <source>Error when loading initial feeds</source>
+        <translation>Fel vid inläsning av flöden</translation>
+    </message>
+    <message>
+        <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Hämta metadata</translation>
+    </message>
+    <message>
+        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
+        <translation>Importen slutfördes, men vissa flöden/kategorier importerades inte på grund av något fel.</translation>
+    </message>
+    <message>
+        <source>Import was completely successfull.</source>
+        <translation>Importen slutfördes korrekt.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Lägg till ny kategori</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation>Exportera flöden</translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation>Importera flöden</translation>
     </message>
 </context>
 <context>
@@ -3004,6 +3072,10 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     <message>
         <source>Click the bubble for more information.</source>
         <translation>Klicka på detta meddelande för mer information.</translation>
+    </message>
+    <message>
+        <source>anonymous</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3110,6 +3182,21 @@ Olästa nyheter: %2</translation>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>Stäng öppna dialogrutor först.</translation>
+    </message>
+</context>
+<context>
+    <name>TtRssServiceRoot</name>
+    <message>
+        <source>This is service account TT-RSS (TinyTiny RSS) server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>

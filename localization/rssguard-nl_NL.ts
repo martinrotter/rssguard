@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl_NL" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="nl_NL">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -197,25 +199,6 @@ Merk ook op dat sommige hulpbronnen worden gecached door de interne web browser.
     </message>
 </context>
 <context>
-    <name>Category</name>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation>%1 (categorie)%2%3</translation>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation>
-Deze categorie bevat geen nested items.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
-    </message>
-</context>
-<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -293,9 +276,12 @@ Gelezen berichten gewist...</translation>
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed.</numerusform><numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed(s).</numerusform></translation>
+        <translation>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed.</numerusform>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen
+Deze website bevat % n feed(s).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -373,7 +359,7 @@ Deze website bevat % n feed(s).</numerusform></translation>
         <translation>Download klaar</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Bestand &apos;%1&apos; is klaar
 Klik hier om map te openen.</translation>
@@ -399,11 +385,17 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n resterende minuut</numerusform><numerusform>%n resterende minuten</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende minuut</numerusform>
+            <numerusform>%n resterende minuten</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n resterende seconde</numerusform><numerusform>%n resterende seconden</numerusform></translation>
+        <translation>
+            <numerusform>%n resterende seconde</numerusform>
+            <numerusform>%n resterende seconden</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -423,51 +415,10 @@ Klik hier om map te openen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Dowloading %1 bestand...</numerusform><numerusform>Downloading %n bestanden...</numerusform></translation>
-    </message>
-</context>
-<context>
-    <name>Feed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>automatisch bijwerken niet gebruiken</translation>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>gebruik algemene instellingen</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform></translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation>%1 (%2)%3
-
-Netwerk status: %6
-Coderen: %4
-Auto-update status: 55 </translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
-    </message>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metadata niet opgehaald</translation>
-    </message>
-    <message>
-        <source>Metadata was not fetched because: %1</source>
-        <translation>Metadate niet opgehaald omdat: %1</translation>
+        <translation>
+            <numerusform>Dowloading %1 bestand...</numerusform>
+            <numerusform>Downloading %n bestanden...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -477,22 +428,8 @@ Auto-update status: 55 </translation>
         <translation>Werkbalk voor berichten</translation>
     </message>
     <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation>Bijwerken feed is gestart</translation>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation>Feed bijwerken &apos;%1&apos;</translation>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
         <translation>Werkbalk voor feeds</translation>
-    </message>
-    <message>
-        <source>Error when loading initial feeds</source>
-        <translation>Fout bij het laden van de eerste feeds</translation>
     </message>
     <message>
         <source>Cannot cleanup database</source>
@@ -501,18 +438,6 @@ Auto-update status: 55 </translation>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
         <translation>Je kunt database niet opschonenen omdat een andere kritische operatie gaande is.</translation>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan alle items niet bijwerken</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation>U kunt niet alle items updaten omdat er een andere bewerking plaats vind.</translation>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
-        <translation>Nieuw bericht gedownload</translation>
     </message>
 </context>
 <context>
@@ -551,24 +476,37 @@ Auto-update status: 55 </translation>
         <translation>Root</translation>
     </message>
     <message>
-        <source>Invalid tree data.</source>
-        <translation>Ongeldige structuur gegevens</translation>
-    </message>
-    <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation>Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation>Importeren is helemaal geslaagd.</translation>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation>Begint met auto-update van sommige feeds</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Auto-update van %n feed</numerusform><numerusform>Auto-update van %n feed(s)</numerusform></translation>
+        <translation>
+            <numerusform>Auto-update van %n feed</numerusform>
+            <numerusform>Auto-update van %n feed(s)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation>Kan alle items niet bijwerken</translation>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation>U kunt niet alle items updaten omdat er een andere bewerking plaats vind.</translation>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <extracomment>Text display in status bar when feed update is started.</extracomment>
+        <translation>Bijwerken feed is gestart</translation>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation>Feed bijwerken &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation>Nieuw bericht gedownload</translation>
     </message>
 </context>
 <context>
@@ -581,14 +519,6 @@ Auto-update status: 55 </translation>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Cannot add standard category</source>
-        <translation>Kan geen standaard categorie toevoegen</translation>
-    </message>
-    <message>
-        <source>Cannot add standard feed</source>
-        <translation>Kan geen standaard feed toevoegen</translation>
-    </message>
-    <message>
         <source>Cannot edit item</source>
         <translation>Kan item niet bewerken</translation>
     </message>
@@ -597,48 +527,8 @@ Auto-update status: 55 </translation>
         <translation>Kan item niet verwijderen</translation>
     </message>
     <message>
-        <source>You are about to delete selected feed or category.</source>
-        <translation>Je gaat geselecteerde feed of categorie verwijderen.</translation>
-    </message>
-    <message>
-        <source>Deletion of item failed.</source>
-        <translation>Verwijdering van Item is mislukt.</translation>
-    </message>
-    <message>
-        <source>Selected item was not deleted due to error.</source>
-        <translation>Geselecteerde item is niet verwijderd door een fout.</translation>
-    </message>
-    <message>
-        <source>Do you really want to delete selected item?</source>
-        <translation>Wil je het geselecteerde item echt verwijderen?</translation>
-    </message>
-    <message>
-        <source>Permanently delete messages</source>
-        <translation>Definitief berichten verwijderen</translation>
-    </message>
-    <message>
-        <source>You are about to permanenty delete all messages from your recycle bin.</source>
-        <translation>Je gaat definitief alle berichten uit de prullenbak verwijderen.</translation>
-    </message>
-    <message>
-        <source>Do you really want to empty your recycle bin?</source>
-        <translation>Wil je de prullenbak echt legen?</translation>
-    </message>
-    <message>
         <source>Context menu for empty space</source>
         <translation>Contextmenu voor lege regels</translation>
-    </message>
-    <message>
-        <source>Context menu for recycle bin</source>
-        <translation>Contextmenu voor prullenbak</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation>U kunt geen nieuwe standaard categorie toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
-        <translation>U kunt geen nieuwe standaard feed toevoegen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited because another critical operation is ongoing.</source>
@@ -649,12 +539,41 @@ Auto-update status: 55 </translation>
         <translation>Geselecteerde item kunt u niet verwijderen omdat een andere kritieke operatie aan de gang is.</translation>
     </message>
     <message>
-        <source>Delete feed/category</source>
-        <translation>Verwijder feed/categorie</translation>
-    </message>
-    <message>
         <source>Context menu for categories</source>
         <translation>Contextmenu voor categorieën</translation>
+    </message>
+    <message>
+        <source>Selected item cannot be edited, this is not (yet?) supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are about to completely delete item &quot;%1&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot delete &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This item cannot be deleted, because it does not support it
+or this functionality is not implemented yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Context menu for other items</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -704,10 +623,6 @@ Auto-update status: 55 </translation>
         <translation>&lt;b&gt;%8&lt;/b&gt;&lt;br&gt;&lt;b&gt;Versie:&lt;/b&gt; %1 (Gecompileerd onder %2 en Cmake %3)&lt;br&gt;&lt;b&gt; Revisie:&lt;/b&gt; %4&lt;br&gt;&lt;b&gt;Gecompileerd op:&lt;/b&gt; %5&lt;br&gt;&lt;b&gt;QT versie:&lt;/b&gt; %6 (Gecompileerd met %7)&lt;br&gt;</translation>
     </message>
     <message>
-        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License versie 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;U kunt de broncode voor %5 downloaden van de website..&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
-    </message>
-    <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Over %1</translation>
@@ -735,6 +650,10 @@ Auto-update status: 55 </translation>
     <message>
         <source>Resources</source>
         <translation>Hulpbronnen</translation>
+    </message>
+    <message>
+        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -813,134 +732,6 @@ Auto-update status: 55 </translation>
     </message>
 </context>
 <context>
-    <name>FormCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation>Kies hoofd item voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Omschrijving</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Pictogram</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation>Selecteer pictogram voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Voeg nieuwe categorie toe</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Bewerk bestaande categorie</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation>Kan geen categorie toevoegen</translation>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation>Door een fout is de categorie niet toegevoegd.</translation>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Kan categorie niet bewerken</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Door een fout is de categorie niet bewerkt.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Categorie naam is ok.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation>Categorie naam is te kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation>Kies pictogram bestand voor de categorie</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuleer</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation>Titel categorie</translation>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation>Stel titel in voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Categorie omschrijving</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation>Stel omschrijving in voor je categorie.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Omschrijving is ok.</translation>
-    </message>
-</context>
-<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -952,7 +743,10 @@ Auto-update status: 55 </translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagen</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagen</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -1005,389 +799,6 @@ Auto-update status: 55 </translation>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Verwijder alle berichten met ster(niet die van de prullenbak)</translation>
-    </message>
-</context>
-<context>
-    <name>FormFeedDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Oudere categorie</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation>Kies hoofd item voor je feed.</translation>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation>Selecteer type van de standaard feed.</translation>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation>Coderen</translation>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation>Automatische-update</translation>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation> minuten</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Omschrijving</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation>Nu ophalen</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Pictogram</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
-        <translation>Selecteer pictogram voor je feed.</translation>
-    </message>
-    <message>
-        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
-    </message>
-    <message>
-        <source>Requires authentication</source>
-        <translation>Vereist verificatie</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
-    </message>
-    <message>
-        <source>Password</source>
-        <translation>Paswoord</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Ophalen van metadata</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Bewerk bestaande feed</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Feed naam is ok.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
-        <translation>Feed naam is te kort.</translation>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Omschrijving is leeg.</translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation>De url is ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>De url is leeg.</translation>
-    </message>
-    <message>
-        <source>Username is ok or it is not needed.</source>
-        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Username is empty.</source>
-        <translation>Gebruikersnaam is leeg.</translation>
-    </message>
-    <message>
-        <source>Password is ok or it is not needed.</source>
-        <translation>Paswoord is ok of het is niet nodig.</translation>
-    </message>
-    <message>
-        <source>Password is empty.</source>
-        <translation>Paswoord is leeg.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Selecteer pictogram bestand voor je feed</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Selecteer pictogram</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuleer</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Kijk in:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Pictogram naam:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Type pictogram:</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
-    </message>
-    <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Door een fout is de feed niet toegevoegd.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan feed niet bewerken</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
-        <translation>Alle metadata is succesvol opgehaald.</translation>
-    </message>
-    <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Metadata opgehaald voor feed en pictogram.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
-        <translation>Resultaat: %1.</translation>
-    </message>
-    <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation>Metadata voor feed en pictogram niet opgehaald.</translation>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fout: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Geen metadata opgehaald.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Feed naam</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation>Stel titel in voor je feed.</translation>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Feed omschrijving</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Stel omschrijving voor feed in.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation>Volledige feed url inclusief schema</translation>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation>Stel url in voor je feed.</translation>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation>Stel paswoord in voor toegang tot feed.</translation>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation>Pictogram selectie</translation>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation>Laad pictogram uit een bestand...</translation>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation>Gebruik geen pictogram</translation>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Gebruik standaard pictogram</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Nog geen metadata opgehaald.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation>Automatisch bijwerken met behulp van globale interval</translation>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Automatisch bijwerken elke</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation>Niet automatisch bijwerken </translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Omschrijving is ok.</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation>Door een fout is de feed niet bewerkt.</translation>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation>Pictogram met succes opgehaald.</translation>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation>Metadata pictogram opgehaald.</translation>
-    </message>
-    <message>
-        <source>Icon metatada not fetched.</source>
-        <translation>Metadata pictogram niet opgehaald.</translation>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Geen pictogram opgehaald.</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation>Pictogram opgehaald van feed</translation>
-    </message>
-</context>
-<context>
-    <name>FormImportExport</name>
-    <message>
-        <source>&amp;Select file</source>
-        <translation>&amp;Selecteer bestand</translation>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation>Resultaten</translation>
-    </message>
-    <message>
-        <source>No file is selected.</source>
-        <translation>Geen bestand geselecteerd.</translation>
-    </message>
-    <message>
-        <source>No operation executed yet.</source>
-        <translation>Nog geen handeling uitgevoerd.</translation>
-    </message>
-    <message>
-        <source>Export feeds</source>
-        <translation>Exporteer feeds</translation>
-    </message>
-    <message>
-        <source>Destination file</source>
-        <translation>Doelbestand</translation>
-    </message>
-    <message>
-        <source>Source feeds &amp;&amp; categories</source>
-        <translation>Source Feeds &amp;&amp; categorieën</translation>
-    </message>
-    <message>
-        <source>Source file</source>
-        <translation>Source bestand</translation>
-    </message>
-    <message>
-        <source>Target feeds &amp;&amp; categories</source>
-        <translation>Doelgroep feeds &amp;&amp; categorieën</translation>
-    </message>
-    <message>
-        <source>Import feeds</source>
-        <translation>Importeer feeds.</translation>
-    </message>
-    <message>
-        <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0 bestanden (*.opml)</translation>
-    </message>
-    <message>
-        <source>Select file for feeds export</source>
-        <translation>Selecteer bestand voor feed export</translation>
-    </message>
-    <message>
-        <source>File is selected.</source>
-        <translation>Bestand is geselecteerd.</translation>
-    </message>
-    <message>
-        <source>Select file for feeds import</source>
-        <translation>Selecteer bestand voor feed import</translation>
-    </message>
-    <message>
-        <source>Cannot open source file.</source>
-        <translation>Kan source bestand niet openen.</translation>
-    </message>
-    <message>
-        <source>Feeds were loaded.</source>
-        <translation>Feeds zijn geladen.</translation>
-    </message>
-    <message>
-        <source>Error, file is not well-formed. Select another file.</source>
-        <translation>Fout, het bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
-    </message>
-    <message>
-        <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation>Fout opgetreden. Bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
-    </message>
-    <message>
-        <source>Feeds were exported successfully.</source>
-        <translation>Feeds zijn met succes geëxporteerd.</translation>
-    </message>
-    <message>
-        <source>Cannot write into destination file.</source>
-        <translation>Kan niet schrijven naar doelbestand.</translation>
-    </message>
-    <message>
-        <source>Critical error occurred.</source>
-        <translation>Kritieke fout opgetreden.</translation>
-    </message>
-    <message>
-        <source>&amp;Check all items</source>
-        <translation>&amp;Controleer alle items</translation>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
-        <translation>&amp;Vinkje bij alle items</translation>
     </message>
 </context>
 <context>
@@ -1469,18 +880,6 @@ Auto-update status: 55 </translation>
         <translation>Fee&amp;ds &amp;&amp; categorieën</translation>
     </message>
     <message>
-        <source>Mark all messages (without message filters) from selected feeds as read.</source>
-        <translation>Markeer alle berichten (zonder berichten filters) van geselecteerde feeds als gelezen.</translation>
-    </message>
-    <message>
-        <source>Mark all messages (without message filters) from selected feeds as unread.</source>
-        <translation>Markeer alle berichten (zonder berichten filters) van geselecteerde feeds als ongelezen.</translation>
-    </message>
-    <message>
-        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation>Toon alle berichten van geselecteerde feeds/categorieën in een nieuwe &quot;Krantweergave modus&quot; tabblad. Onthoud dat de berichten niet zijn ingesteld als automatisch gelezen.</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Verberg hoofdvenster als het zichtbaar is en toon het als het verborgen is.</translation>
     </message>
@@ -1505,44 +904,12 @@ Auto-update status: 55 </translation>
         <translation>Verwij&amp;der geselecteerde berichten</translation>
     </message>
     <message>
-        <source>Deletes all messages from selected feeds.</source>
-        <translation>Verwijder alle berichten van geselecteerde feeds.</translation>
-    </message>
-    <message>
-        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation>Markeer alle berichten van alle feeds als gelezen. Dit is niet van toepassing op berichten filters in account.</translation>
-    </message>
-    <message>
-        <source>Deletes all messages from all feeds.</source>
-        <translation>Verwijder alle berichten van alle feeds.</translation>
-    </message>
-    <message>
-        <source>Update &amp;all feeds</source>
-        <translation>&amp;Alle feeds bijwerken</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation>Update ge&amp;selecteerde feeds</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation>B&amp;ewerk geselecteerde feed/categorie</translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation>Verwij&amp;der geselecteerde feed/categorie</translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Instellingen</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
         <translation>Verberg of toon het hoofdmenu.</translation>
-    </message>
-    <message>
-        <source>Add &amp;new feed/category</source>
-        <translation>Voeg &amp;nieuwe feeds/categorieën toe</translation>
     </message>
     <message>
         <source>&amp;Close all tabs except current one</source>
@@ -1561,18 +928,6 @@ Auto-update status: 55 </translation>
         <translation>Markeer ge&amp;selecteerde berichten als &amp;ongelezen</translation>
     </message>
     <message>
-        <source>&amp;Mark selected feeds as read</source>
-        <translation>&amp;Markeer geselecteerde feeds als gelezen</translation>
-    </message>
-    <message>
-        <source>&amp;Mark selected feeds as unread</source>
-        <translation>&amp;Markeer geselecteerde bericht als ongelezen</translation>
-    </message>
-    <message>
-        <source>&amp;Clean selected feeds</source>
-        <translation>&amp;Wis geselecteerde feeds</translation>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation>Open geselecteerde bron artikelen met &amp;externe webbrowser</translation>
     </message>
@@ -1583,26 +938,6 @@ Auto-update status: 55 </translation>
     <message>
         <source>Open selected source articles in &amp;internal browser</source>
         <translation>Open geselecteerde bron artikelen met &amp;ingebouwde webbrowser</translation>
-    </message>
-    <message>
-        <source>&amp;Mark all feeds as &amp;read</source>
-        <translation>&amp;Markeer alle feeds als &amp;gelezen</translation>
-    </message>
-    <message>
-        <source>View selected feeds in &amp;newspaper mode</source>
-        <translation>Bekijk de geselecteerde items in de kra&amp;ntweergave modus</translation>
-    </message>
-    <message>
-        <source>&amp;Clean all feeds</source>
-        <translation>Alle feeds ops&amp;chonen</translation>
-    </message>
-    <message>
-        <source>Select &amp;next feed/category</source>
-        <translation>Selecteer volge&amp;nde feeds/categorieën</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous feed/category</source>
-        <translation>Selecteer &amp;vorige feeds/categorieën</translation>
     </message>
     <message>
         <source>Select &amp;next message</source>
@@ -1657,22 +992,6 @@ Auto-update status: 55 </translation>
         <translation>Kan externe webbrowser niet starten, Navigeer handmatig naar RSSguard website.</translation>
     </message>
     <message>
-        <source>New &amp;feed</source>
-        <translation>Nieuw &amp;feed</translation>
-    </message>
-    <message>
-        <source>Add new feed.</source>
-        <translation>Voeg nieuw feed toe.</translation>
-    </message>
-    <message>
-        <source>New &amp;category</source>
-        <translation>Nieuw &amp;categorie</translation>
-    </message>
-    <message>
-        <source>Add new category.</source>
-        <translation>Voeg nieuwe categorie toe.</translation>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation>&amp;Werkbalk</translation>
     </message>
@@ -1685,29 +1004,8 @@ Auto-update status: 55 </translation>
         <translation>&amp;Feed/bericht  kopteksten</translation>
     </message>
     <message>
-        <source>&amp;Import feeds</source>
-        <translation>&amp;Importeer feeds</translation>
-    </message>
-    <message>
-        <source>Imports feeds you want from selected file.</source>
-        <translation>Importeer feeds die je wilt van het geselecteerde bestand.</translation>
-    </message>
-    <message>
-        <source>&amp;Export feeds</source>
-        <translation>&amp;Exporteer feeds</translation>
-    </message>
-    <message>
-        <source>Exports feeds you want to selected file.</source>
-        <translation>
-Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
-    </message>
-    <message>
         <source>Close all tabs except current one.</source>
         <translation>Sluit alle tabbladen behalve deze.</translation>
-    </message>
-    <message>
-        <source>&amp;Recycle bin</source>
-        <translation>&amp;Prullenbak</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1724,18 +1022,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     <message>
         <source>Display &amp;wiki</source>
         <translation>Toon &amp;wiki</translation>
-    </message>
-    <message>
-        <source>&amp;Empty recycle bin</source>
-        <translation>&amp;Prullenbak legen</translation>
-    </message>
-    <message>
-        <source>&amp;Restore all messages</source>
-        <translation>&amp;Herstel alle berichten</translation>
-    </message>
-    <message>
-        <source>Restore &amp;selected messages</source>
-        <translation>Herstel &amp;geselecteerde berichten</translation>
     </message>
     <message>
         <source>&amp;Restart</source>
@@ -1766,16 +1052,136 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
         <translation>&amp;database opschonen</translation>
     </message>
     <message>
-        <source>Show only unread feeds/categories</source>
-        <translation>Toon alleen de ongelezen feeds/categorieën</translation>
+        <source>Add &amp;new item</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Fetch feed metadata</source>
-        <translation>&amp;Ophalen van de feed metadata</translation>
+        <source>&amp;Services</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Expand/collapse selected feed/category</source>
-        <translation>&amp;Uitklappen/Inklappen van geselcteerde feed/categorie</translation>
+        <source>Update &amp;all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update &amp;selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected items as read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected items as read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark selected items as unread</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected items as unread.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean selected items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from selected items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Mark all items as &amp;read</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marks all messages in all items read. This does not take message filters into account.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>View selected items in &amp;newspaper mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Clean all items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deletes all messages from all items.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;next item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select &amp;previous item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show only unread items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Expand/collapse selected item</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add new service account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected service account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected service account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restore selected messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No possible actions</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1925,10 +1331,6 @@ Exporteer feeds die je wilt van het geselecteerde bestand.</translation>
     <message>
         <source>Author</source>
         <translation>Auteur</translation>
-    </message>
-    <message>
-        <source>Email</source>
-        <translation>Email</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -2514,6 +1916,521 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation>Fancy &amp;&amp; moderne popup meldingen (Dit gebruikt OS natieve meldingen via D-Bus indien beschikbaar.)</translation>
     </message>
+    <message>
+        <source>E-mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation>Kies hoofd item voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Omschrijving</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Pictogram</translation>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation>Selecteer pictogram voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation>Voeg nieuwe categorie toe</translation>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation>Bewerk bestaande categorie</translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Kan geen categorie toevoegen</translation>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation>Door een fout is de categorie niet toegevoegd.</translation>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation>Kan categorie niet bewerken</translation>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation>Door een fout is de categorie niet bewerkt.</translation>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation>Categorie naam is ok.</translation>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation>Categorie naam is te kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Omschrijving is leeg.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Omschrijving is ok.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation>Kies pictogram bestand voor de categorie</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Selecteer pictogram</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuleer</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation>Kijk in:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Pictogram naam:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Type pictogram:</translation>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation>Titel categorie</translation>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation>Stel titel in voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation>Categorie omschrijving</translation>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation>Stel omschrijving in voor je categorie.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Pictogram selectie</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Laad pictogram uit een bestand...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Gebruik geen pictogram</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Gebruik standaard pictogram</translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation>Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Kies hoofd item voor je feed.</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Type</translation>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation>Selecteer type van de standaard feed.</translation>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation>Coderen</translation>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation>Kies codering van de standaard feed. Als je niet zeker bent van de codering, selecteer dan &quot;UTF-8&quot; codering.</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Automatische-update</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation> minuten</translation>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation>Titel</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>Omschrijving</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation>Nu ophalen</translation>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation>Pictogram</translation>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation>Selecteer pictogram voor je feed.</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vereist verificatie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Paswoord</translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation>Ophalen van metadata</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Voeg nieuw feed toe</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Bewerk bestaande feed</translation>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation>Feed naam is ok.</translation>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation>Feed naam is te kort.</translation>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation>Omschrijving is leeg.</translation>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation>Omschrijving is ok.</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>De url is ok.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>De url is leeg.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation>Selecteer pictogram bestand voor je feed</translation>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation>Afbeeldingen (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</translation>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation>Selecteer pictogram</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Annuleer</translation>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation>Kijk in:</translation>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation>Pictogram naam:</translation>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation>Type pictogram:</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan geen feed toevoegen</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation>Kan feed niet bewerken</translation>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation>Door een fout is de feed niet bewerkt.</translation>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation>Alle metadata is succesvol opgehaald.</translation>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation>Metadata opgehaald voor feed en pictogram.</translation>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation>Resultaat: %1.</translation>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation>Metadata voor feed en pictogram niet opgehaald.</translation>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation>Fout: %1.</translation>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation>Geen metadata opgehaald.</translation>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation>Pictogram met succes opgehaald.</translation>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation>Metadata pictogram opgehaald.</translation>
+    </message>
+    <message>
+        <source>Icon metatada not fetched.</source>
+        <translation>Metadata pictogram niet opgehaald.</translation>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation>Geen pictogram opgehaald.</translation>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation>Feed naam</translation>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation>Stel titel in voor je feed.</translation>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation>Feed omschrijving</translation>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation>Stel omschrijving voor feed in.</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Volledige feed url inclusief schema</translation>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation>Stel url in voor je feed.</translation>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation>Stel gebruikersnaam in voor toegang tot feed.</translation>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation>Stel paswoord in voor toegang tot feed.</translation>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation>Pictogram selectie</translation>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation>Laad pictogram uit een bestand...</translation>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation>Gebruik geen pictogram</translation>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation>Gebruik standaard pictogram</translation>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation>Pictogram opgehaald van feed</translation>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation>Nog geen metadata opgehaald.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Automatisch bijwerken elke</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Niet automatisch bijwerken </translation>
+    </message>
+</context>
+<context>
+    <name>FormStandardImportExport</name>
+    <message>
+        <source>&amp;Select file</source>
+        <translation>&amp;Selecteer bestand</translation>
+    </message>
+    <message>
+        <source>&amp;Check all items</source>
+        <translation>&amp;Controleer alle items</translation>
+    </message>
+    <message>
+        <source>&amp;Uncheck all items</source>
+        <translation>&amp;Vinkje bij alle items</translation>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation>Resultaten</translation>
+    </message>
+    <message>
+        <source>No file is selected.</source>
+        <translation>Geen bestand geselecteerd.</translation>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation>Nog geen handeling uitgevoerd.</translation>
+    </message>
+    <message>
+        <source>Destination file</source>
+        <translation>Doelbestand</translation>
+    </message>
+    <message>
+        <source>Source feeds &amp;&amp; categories</source>
+        <translation>Source Feeds &amp;&amp; categorieën</translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation>Exporteer feeds</translation>
+    </message>
+    <message>
+        <source>Source file</source>
+        <translation>Source bestand</translation>
+    </message>
+    <message>
+        <source>Target feeds &amp;&amp; categories</source>
+        <translation>Doelgroep feeds &amp;&amp; categorieën</translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished">Importeer feeds.</translation>
+    </message>
+    <message>
+        <source>OPML 2.0 files (*.opml)</source>
+        <translation>OPML 2.0 bestanden (*.opml)</translation>
+    </message>
+    <message>
+        <source>Select file for feeds export</source>
+        <translation>Selecteer bestand voor feed export</translation>
+    </message>
+    <message>
+        <source>File is selected.</source>
+        <translation>Bestand is geselecteerd.</translation>
+    </message>
+    <message>
+        <source>Select file for feeds import</source>
+        <translation>Selecteer bestand voor feed import</translation>
+    </message>
+    <message>
+        <source>Cannot open source file.</source>
+        <translation>Kan source bestand niet openen.</translation>
+    </message>
+    <message>
+        <source>Feeds were loaded.</source>
+        <translation>Feeds zijn geladen.</translation>
+    </message>
+    <message>
+        <source>Error, file is not well-formed. Select another file.</source>
+        <translation>Fout, het bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
+    </message>
+    <message>
+        <source>Error occurred. File is not well-formed. Select another file.</source>
+        <translation>Fout opgetreden. Bestand is niet goed gevormd. Selecteer een ander bestand.</translation>
+    </message>
+    <message>
+        <source>Feeds were exported successfully.</source>
+        <translation>Feeds zijn met succes geëxporteerd.</translation>
+    </message>
+    <message>
+        <source>Cannot write into destination file.</source>
+        <translation>Kan niet schrijven naar doelbestand.</translation>
+    </message>
+    <message>
+        <source>Critical error occurred.</source>
+        <translation>Kritieke fout opgetreden.</translation>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2763,6 +2680,14 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>List of attachments.</source>
         <translation>Bijlagen lijst.</translation>
     </message>
+    <message>
+        <source>Loading of messages from item &apos;%s&apos; failed.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -2937,25 +2862,33 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>elbert.pol@gmail.com</translation>
     </message>
     <message>
-        <source>Load initial feeds</source>
-        <translation>Laad eerste feeds</translation>
-    </message>
-    <message>
-        <source>Do you want to load initial set of feeds?</source>
-        <translation>Wil je de eerste set van feeds laden?</translation>
-    </message>
-    <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
         <translation>Nederlands</translation>
     </message>
-    <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation>Je startte %1 voor de eerste keer, nu kun je de eerste set van de feeds laden</translation>
+    <message numerus="yes">
+        <source>
+
++ %n other feeds.</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
     <message>
-        <source>Welcome to %1 %2.</source>
-        <translation>Welkom bij %1 %2.</translation>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to %1.</source>
+        <translation type="unfinished">Welkom bij %1 %2. {1.?}</translation>
+    </message>
+    <message>
+        <source>Load initial set of feeds</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2976,7 +2909,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n verwijderde bericht(en).</numerusform><numerusform>%n verwijderde bericht(en).</numerusform></translation>
+        <translation>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+            <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -2992,6 +2928,137 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Click and hit new shortcut.</source>
         <translation>Klik en raak nieuwe sneltoets.</translation>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation>%1 (categorie)%2%3</translation>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation>
+Deze categorie bevat geen nested items.</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>StandardFeed</name>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished">Metadata niet opgehaald</translation>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1.</source>
+        <translation type="unfinished">Metadate niet opgehaald omdat: %1.</translation>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">automatisch bijwerken niet gebruiken</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">gebruik algemene instellingen</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished">
+            <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
+            <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished">%1 (%2)%3
+
+Netwerk status: %6
+Coderen: %4
+Auto-update status: 55 </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+</context>
+<context>
+    <name>StandardServiceRoot</name>
+    <message>
+        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished">Je startte %1 voor de eerste keer, nu kun je de eerste set van de feeds laden</translation>
+    </message>
+    <message>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation type="unfinished">Wil je de eerste set van feeds laden?</translation>
+    </message>
+    <message>
+        <source>Error when loading initial feeds</source>
+        <translation type="unfinished">Fout bij het laden van de eerste feeds</translation>
+    </message>
+    <message>
+        <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished">Ophalen van metadata</translation>
+    </message>
+    <message>
+        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished">Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
+    </message>
+    <message>
+        <source>Import was completely successfull.</source>
+        <translation type="unfinished">Importeren is helemaal geslaagd.</translation>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished">Voeg nieuwe categorie toe</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished">Voeg nieuw feed toe</translation>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation type="unfinished">Exporteer feeds</translation>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished">Importeer feeds.</translation>
     </message>
 </context>
 <context>
@@ -3014,6 +3081,10 @@ Ga naar RRSguard website en download het handmatig.</translation>
     <message>
         <source>Click the bubble for more information.</source>
         <translation>Klik op luchtbel voor meer informatie.</translation>
+    </message>
+    <message>
+        <source>anonymous</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3121,6 +3192,21 @@ Ongelezen nieuws: %2</translation>
     <message>
         <source>Close opened modal dialogs first.</source>
         <translation>Sluit geopende modaal vensters eerst.</translation>
+    </message>
+</context>
+<context>
+    <name>TtRssServiceRoot</name>
+    <message>
+        <source>This is service account TT-RSS (TinyTiny RSS) server.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
