@@ -66,8 +66,12 @@ Notification::~Notification() {
   qDebug("Destroying Notification instance.");
 }
 
-bool Notification::areNotificationsActivated() {
+bool Notification::areFancyNotificationsEnabled() {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool();
+}
+
+bool Notification::areNotificationsEnabled() {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
 }
 
 void Notification::notify(const QString &text, const QString &title, const QIcon &icon,

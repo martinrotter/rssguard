@@ -21,6 +21,7 @@
 	  
 	  Fixed:
 	  <ul>
+      <li>Added ability to completely disable notifications (bug #128).</li>
       <li>Better info in popup notification when many feeds are updated.</li>
       <li>Fixed obtaining of contents in RSS 2.0 feed entries. (bug #130)</li>
       <li>Improved popup informing about changes in newly installed version.</li>

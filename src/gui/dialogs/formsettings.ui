@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -463,7 +463,7 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -636,23 +636,38 @@ Authors of this application are NOT responsible for lost data.</string>
             </widget>
            </item>
            <item row="0" column="0" colspan="2">
-            <widget class="QGroupBox" name="m_grpNotifications">
+            <widget class="QGroupBox" name="m_grpBaseNotifications">
              <property name="title">
-              <string>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</string>
+              <string>Enable notifications</string>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
              </property>
              <property name="checkable">
               <bool>true</bool>
              </property>
-             <layout class="QFormLayout" name="formLayout_23">
-              <item row="0" column="0">
-               <widget class="QLabel" name="m_lblNotificationPosition">
-                <property name="text">
-                 <string>Notification position</string>
+             <layout class="QHBoxLayout" name="horizontalLayout_16">
+              <item>
+               <widget class="QGroupBox" name="m_grpNotifications">
+                <property name="title">
+                 <string>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</string>
                 </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QFormLayout" name="formLayout_23">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="m_lblNotificationPosition">
+                   <property name="text">
+                    <string>Notification position</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QComboBox" name="m_cmbNotificationPosition"/>
+                 </item>
+                </layout>
                </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="m_cmbNotificationPosition"/>
               </item>
              </layout>
             </widget>
@@ -1762,6 +1777,22 @@ Authors of this application are NOT responsible for lost data.</string>
     <hint type="destinationlabel">
      <x>968</x>
      <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_grpBaseNotifications</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_grpNotifications</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>624</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>624</x>
+     <y>89</y>
     </hint>
    </hints>
   </connection>

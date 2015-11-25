@@ -48,10 +48,9 @@ class FormSettings : public QDialog {
   protected:
     // Does check of controls before dialog can be submitted.
     bool doSaveCheck();
-
     bool eventFilter(QObject *obj, QEvent *e);
 
-  protected slots:
+  private slots:
     // Displays "restart" dialog if some critical settings changed.
     void promptForRestart();
 

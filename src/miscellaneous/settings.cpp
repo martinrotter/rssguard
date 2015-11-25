@@ -111,6 +111,9 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
 DKEY GUI::UseTrayIcon            = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
 
+DKEY GUI::EnableNotifications                   = "enable_notifications";
+DVALUE(bool) GUI::EnableNotificationsDef        = true;
+
 DKEY GUI::UseFancyNotifications                         = "use_fancy_notifications";
 DVALUE(bool) GUI::UseFancyNotificationsDef              = true;
 

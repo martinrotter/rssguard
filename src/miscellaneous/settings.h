@@ -126,6 +126,9 @@ namespace GUI {
   KEY UseTrayIcon;
   VALUE(bool) UseTrayIconDef;
 
+  KEY EnableNotifications;
+  VALUE(bool) EnableNotificationsDef;
+
   KEY UseFancyNotifications;
   VALUE(bool) UseFancyNotificationsDef;
 
