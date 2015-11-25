@@ -76,6 +76,7 @@ class MessagesView : public QTreeView {
 
     void selectNextItem();
     void selectPreviousItem();
+    void selectNextUnreadItem();
 
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString &pattern);

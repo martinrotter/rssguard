@@ -467,6 +467,37 @@ void MessagesView::selectPreviousItem() {
   }
 }
 
+void MessagesView::selectNextUnreadItem() {
+  // FIXME: Use this to solve #112.
+
+  QModelIndexList selected_rows = selectionModel()->selectedRows();
+  int active_row;
+
+  if (!selected_rows.isEmpty()) {
+    // Okay, something is selected, start from it.
+    active_row = selected_rows.at(0).row();
+  }
+  else {
+    active_row = 0;
+  }
+
+  while (++active_row < m_proxyModel->rowCount()) {
+    // Get info if the message is read or not.
+    QModelIndex proxy_index = m_proxyModel->index(active_row, 0);
+
+    bool is_read = m_sourceModel->data(m_proxyModel->mapToSource(proxy_index).row(),
+                                       MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
+
+    if (!is_read) {
+      // We found unread message, mark it.
+      setCurrentIndex(proxy_index);
+      selectionModel()->select(proxy_index, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+      setFocus();
+      break;
+    }
+  }
+}
+
 void MessagesView::searchMessages(const QString &pattern) {
   m_proxyModel->setFilterRegExp(pattern);
 
