@@ -88,8 +88,6 @@ void StandardServiceRoot::start() {
       try {
         model.importAsOPML20(IOFactory::readTextFile(file_to_load));
         model.checkAllItems();
-
-        // TODO: Expand all items here?
         mergeImportExportModel(&model, output_msg);
       }
       catch (ApplicationException &ex) {
@@ -591,6 +589,10 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
+}
+
+QList<QAction*> StandardServiceRoot::contextMenuActions() {
+  return serviceMenu();
 }
 
 bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {

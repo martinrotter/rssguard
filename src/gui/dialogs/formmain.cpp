@@ -129,6 +129,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionUpdateSelectedItems;
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionDeleteSelectedItem;
+  actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
   actions << m_ui->m_actionSelectNextItem;
   actions << m_ui->m_actionSelectPreviousItem;
@@ -197,12 +198,15 @@ void FormMain::updateAddItemMenu() {
 
     m_ui->m_menuAddItem->addMenu(root_menu);
   }
-}
 
-void FormMain::updateServicesMenu() {
-  m_ui->m_menuServices->clear();
+  if (m_ui->m_menuAddItem->actions().size() > 0) {
+    m_ui->m_menuAddItem->addSeparator();
+  }
 
-  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  m_ui->m_menuAddItem->addAction(m_ui->m_actionServiceAdd);
+
+  /*
+   *   foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
     QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuServices);
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
@@ -221,22 +225,14 @@ void FormMain::updateServicesMenu() {
     }
 
     m_ui->m_menuServices->addMenu(root_menu);
-  }
-
-  if (!m_ui->m_menuServices->isEmpty()) {
-    m_ui->m_menuServices->addSeparator();
-  }
-
-  m_ui->m_menuServices->addAction(m_ui->m_actionServiceAdd);
-  m_ui->m_menuServices->addAction(m_ui->m_actionServiceEdit);
-  m_ui->m_menuServices->addAction(m_ui->m_actionServiceDelete);
+  }*/
 }
 
 void FormMain::updateRecycleBinMenu() {
   m_ui->m_menuRecycleBin->clear();
 
   foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
-    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuServices);
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
 
@@ -442,7 +438,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
   connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
-  connect(m_ui->m_menuServices, SIGNAL(aboutToShow()), this, SLOT(updateServicesMenu()));
   connect(m_ui->m_menuRecycleBin, SIGNAL(aboutToShow()), this, SLOT(updateRecycleBinMenu()));
 
   // Menu "File" connections.

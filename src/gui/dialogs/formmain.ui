@@ -131,6 +131,7 @@
      <property name="title">
       <string>Add &amp;new item</string>
      </property>
+     <addaction name="m_actionServiceAdd"/>
     </widget>
     <addaction name="m_actionUpdateAllItems"/>
     <addaction name="m_actionUpdateSelectedItems"/>
@@ -171,14 +172,6 @@
     <addaction name="m_actionDeleteSelectedMessages"/>
     <addaction name="m_actionRestoreSelectedMessages"/>
    </widget>
-   <widget class="QMenu" name="m_menuServices">
-    <property name="title">
-     <string>&amp;Services</string>
-    </property>
-    <addaction name="m_actionServiceAdd"/>
-    <addaction name="m_actionServiceEdit"/>
-    <addaction name="m_actionServiceDelete"/>
-   </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
      <string>&amp;Recycle bin</string>
@@ -188,7 +181,6 @@
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
-   <addaction name="m_menuServices"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuRecycleBin"/>
@@ -712,28 +704,6 @@
   <action name="m_actionServiceAdd">
    <property name="text">
     <string>&amp;Add new service account</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
-  <action name="m_actionServiceDelete">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Delete selected service account</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
-  <action name="m_actionServiceEdit">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="text">
-    <string>&amp;Edit selected service account</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

@@ -115,7 +115,13 @@ bool StandardFeed::editViaGui() {
 }
 
 bool StandardFeed::deleteViaGui() {
-  return removeItself();
+  if (removeItself()) {
+    serviceRoot()->feedsModel()->removeItem(this);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool StandardFeed::markAsReadUnread(ReadStatus status) {

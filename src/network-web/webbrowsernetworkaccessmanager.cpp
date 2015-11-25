@@ -39,7 +39,7 @@ WebBrowserNetworkAccessManager::~WebBrowserNetworkAccessManager() {
 void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {
   Q_UNUSED(authenticator);
 
-  // TODO: Support authentication for web pages.
+  // FIXME: Support authentication for web pages.
   qDebug("URL '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
 }
 

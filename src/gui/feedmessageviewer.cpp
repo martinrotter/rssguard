@@ -202,8 +202,6 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
   FormMain *form_main = qApp->mainForm();
   
-  form_main->m_ui->m_actionServiceEdit->setEnabled(!critical_action_running && service_selected);
-  form_main->m_ui->m_actionServiceDelete->setEnabled(!critical_action_running && service_selected);
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionClearSelectedItems->setEnabled(feed_selected || category_selected || service_selected);

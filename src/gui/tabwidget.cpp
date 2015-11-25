@@ -69,7 +69,6 @@ void TabWidget::openMainMenu() {
     m_menuMain = new QMenu(tr("Main menu"), this);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFile);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuView);
-    m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuServices);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuFeeds);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuMessages);
     m_menuMain->addMenu(qApp->mainForm()->m_ui->m_menuWebBrowser);

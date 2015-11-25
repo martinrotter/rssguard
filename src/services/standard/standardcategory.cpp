@@ -99,7 +99,13 @@ bool StandardCategory::editViaGui() {
 }
 
 bool StandardCategory::deleteViaGui() {
-  return removeItself();
+  if (removeItself()) {
+    serviceRoot()->feedsModel()->removeItem(this);
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 bool StandardCategory::markAsReadUnread(ReadStatus status) {
@@ -113,7 +119,8 @@ bool StandardCategory::cleanMessages(bool clean_read_only) {
 bool StandardCategory::removeItself() {
   bool children_removed = true;
 
-  // Remove all child items (feeds, categories.)
+  // Remove all child items (feeds and categories)
+  // from the database.
   foreach (RootItem *child, childItems()) {
     if (child->kind() == RootItemKind::Category) {
       children_removed &= static_cast<StandardCategory*>(child)->removeItself();

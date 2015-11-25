@@ -239,15 +239,6 @@ void FeedsView::deleteSelectedItem() {
                              qApp->mainForm(),
                              true);
       }
-      else {
-        // Item is gone, cleared from database. We can clear it from model now.
-        // NOTE: Cleared from memory here too.
-        // TODO: možná toto přesunout taky to metody deleteViaGui
-        // a delete selected_item jen volat tady, editViaGui taky obstará všechno,
-        // ale tam je to zas komplexnější.
-        m_sourceModel->removeItem(m_proxyModel->mapToSource(current_index));
-        m_sourceModel->notifyWithCounts();
-      }
     }
     else {
       qApp->showGuiMessage(tr("Cannot delete \"%1\"").arg(selected_item->title()),

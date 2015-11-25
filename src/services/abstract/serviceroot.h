@@ -53,6 +53,7 @@ class ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu!
     virtual QList<QAction*> serviceMenu() = 0;
 
+    // Access to recycle bin of this account if there is any.
     virtual RecycleBin *recycleBin() = 0;
 
     // Start/stop services.
