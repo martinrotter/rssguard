@@ -113,6 +113,7 @@ class RootItem : public QObject {
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
     virtual Qt::ItemFlags additionalFlags() const;
+    virtual bool performDragDropChange(RootItem *target_item);
 
     // Each item offers "counts" of messages.
     // Returns counts of messages of all child items summed up.

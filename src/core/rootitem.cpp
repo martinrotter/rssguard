@@ -170,6 +170,10 @@ Qt::ItemFlags RootItem::additionalFlags() const {
   return Qt::NoItemFlags;
 }
 
+bool RootItem::performDragDropChange(RootItem *target_item) {
+  return false;
+}
+
 int RootItem::countOfAllMessages() const {
   int total_count = 0;
 

@@ -94,6 +94,22 @@ Qt::ItemFlags StandardCategory::additionalFlags() const {
   return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
 }
 
+bool StandardCategory::performDragDropChange(RootItem *target_item) {
+  StandardCategory *category_new = new StandardCategory(*this);
+  category_new->clearChildren();
+  category_new->setParent(target_item);
+
+  if (editItself(category_new)) {
+    serviceRoot()->feedsModel()->reassignNodeToNewParent(this, target_item);
+    delete category_new;
+    return true;
+  }
+  else {
+    delete category_new;
+    return false;
+  }
+}
+
 bool StandardCategory::editViaGui() {
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm());
 

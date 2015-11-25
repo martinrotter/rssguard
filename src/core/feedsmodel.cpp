@@ -265,7 +265,7 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
 
       if (dragged_item_root != target_item_root) {
         // Transferring of items between different accounts is not possible.
-        qApp->showGuiMessage(tr("Cannot perform drag \& drop operation."),
+        qApp->showGuiMessage(tr("Cannot perform drag & drop operation."),
                              tr("You can't transfer dragged item into different account, this is not supported."),
                              QSystemTrayIcon::Warning,
                              qApp->mainForm(),
@@ -275,31 +275,11 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
         return false;
       }
 
-      /*
-      if (dragged_item->kind() == RootItem::Feeed) {
-        qDebug("Drag-drop action for feed '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
-
-        Feed *actual_feed = dragged_item->toFeed();
-        Feed *feed_new = new Feed(*actual_feed);
-
-        feed_new->setParent(target_item);
-        editFeed(actual_feed, feed_new);
-
-        emit requireItemValidationAfterDragDrop(indexForItem(actual_feed));
+      if (dragged_item->performDragDropChange(target_item)) {
+        // Drag & drop is supported by the dragged item and was
+        // completed on data level and in item hierarchy.
+        emit requireItemValidationAfterDragDrop(indexForItem(dragged_item));
       }
-      else if (dragged_item->kind() == RootItem::Cattegory) {
-        qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
-
-        Category *actual_category = dragged_item->toCategory();
-        Category *category_new = new Category(*actual_category);
-
-        category_new->clearChildren();
-        category_new->setParent(target_item);
-        editCategory(actual_category, category_new);
-
-        emit requireItemValidationAfterDragDrop(indexForItem(actual_category));
-      }
-      */
     }
 
     return true;

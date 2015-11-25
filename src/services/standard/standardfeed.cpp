@@ -440,6 +440,21 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
   return Qt::ItemIsDragEnabled;
 }
 
+bool StandardFeed::performDragDropChange(RootItem *target_item) {
+  StandardFeed *feed_new = new StandardFeed(*this);
+  feed_new->setParent(target_item);
+
+  if (editItself(feed_new)) {
+    serviceRoot()->feedsModel()->reassignNodeToNewParent(this, target_item);
+    delete feed_new;
+    return true;
+  }
+  else {
+    delete feed_new;
+    return false;
+  }
+}
+
 int StandardFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();

@@ -45,6 +45,7 @@ class StandardCategory : public Category {
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
+    bool performDragDropChange(RootItem *target_item);
 
     bool canBeEdited() {
       return true;
