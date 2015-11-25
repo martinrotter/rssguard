@@ -204,6 +204,122 @@ DatabaseCleaner *FeedsModel::databaseCleaner() {
   return m_dbCleaner;
 }
 
+QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
+  QMimeData *mime_data = new QMimeData();
+  QByteArray encoded_data;
+  QDataStream stream(&encoded_data, QIODevice::WriteOnly);
+
+  foreach (const QModelIndex &index, indexes) {
+    if (index.column() != 0) {
+      continue;
+    }
+
+    RootItem *item_for_index = itemForIndex(index);
+
+    if (item_for_index->kind() != RootItemKind::Root) {
+      stream << (quintptr) item_for_index;
+    }
+  }
+
+  mime_data->setData(MIME_TYPE_ITEM_POINTER, encoded_data);
+  return mime_data;
+}
+
+QStringList FeedsModel::mimeTypes() const {
+  return QStringList() << MIME_TYPE_ITEM_POINTER;
+}
+
+bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) {
+  Q_UNUSED(row)
+  Q_UNUSED(column)
+
+  if (action == Qt::IgnoreAction) {
+    return true;
+  }
+  else if (action != Qt::MoveAction) {
+    return false;
+  }
+
+  QByteArray dragged_items_data = data->data(MIME_TYPE_ITEM_POINTER);
+
+  if (dragged_items_data.isEmpty()) {
+    return false;
+  }
+  else {
+    QDataStream stream(&dragged_items_data, QIODevice::ReadOnly);
+
+    while (!stream.atEnd()) {
+      quintptr pointer_to_item;
+      stream >> pointer_to_item;
+
+      // We have item we want to drag, we also determine the target item.
+      RootItem *dragged_item = (RootItem*) pointer_to_item;
+      RootItem *target_item = itemForIndex(parent);
+      ServiceRoot *dragged_item_root = dragged_item->getParentServiceRoot();
+      ServiceRoot *target_item_root = target_item->getParentServiceRoot();
+
+      if (dragged_item == target_item || dragged_item->parent() == target_item) {
+        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
+        return false;
+      }
+
+      if (dragged_item_root != target_item_root) {
+        // Transferring of items between different accounts is not possible.
+        qApp->showGuiMessage(tr("Cannot perform drag \& drop operation."),
+                             tr("You can't transfer dragged item into different account, this is not supported."),
+                             QSystemTrayIcon::Warning,
+                             qApp->mainForm(),
+                             true);
+
+        qDebug("Dragged item cannot be dragged into different account. Cancelling drag-drop action.");
+        return false;
+      }
+
+      /*
+      if (dragged_item->kind() == RootItem::Feeed) {
+        qDebug("Drag-drop action for feed '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
+
+        Feed *actual_feed = dragged_item->toFeed();
+        Feed *feed_new = new Feed(*actual_feed);
+
+        feed_new->setParent(target_item);
+        editFeed(actual_feed, feed_new);
+
+        emit requireItemValidationAfterDragDrop(indexForItem(actual_feed));
+      }
+      else if (dragged_item->kind() == RootItem::Cattegory) {
+        qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
+
+        Category *actual_category = dragged_item->toCategory();
+        Category *category_new = new Category(*actual_category);
+
+        category_new->clearChildren();
+        category_new->setParent(target_item);
+        editCategory(actual_category, category_new);
+
+        emit requireItemValidationAfterDragDrop(indexForItem(actual_category));
+      }
+      */
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+Qt::DropActions FeedsModel::supportedDropActions() const {
+  return Qt::MoveAction;
+}
+
+Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
+  Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
+  RootItem *item_for_index = itemForIndex(index);
+  Qt::ItemFlags additional_flags = item_for_index->additionalFlags();
+
+  return base_flags | additional_flags;
+}
+
 void FeedsModel::executeNextAutoUpdate() {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qDebug("Delaying scheduled feed auto-updates for one minute due to another running update.");

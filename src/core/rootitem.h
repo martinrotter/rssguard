@@ -74,8 +74,7 @@ class RootItem : public QObject {
     /////////////////////////////////////////
 
     // Returns list of specific actions which can be done with the item.
-    // Do not include general actions here like actions:
-    //  Mark as read, Update, ...
+    // Do not include general actions here like actions: Mark as read, Update, ...
     // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
     virtual QList<QAction*> contextMenuActions();
 
@@ -113,6 +112,7 @@ class RootItem : public QObject {
 
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
+    virtual Qt::ItemFlags additionalFlags() const;
 
     // Each item offers "counts" of messages.
     // Returns counts of messages of all child items summed up.

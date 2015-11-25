@@ -166,6 +166,10 @@ QVariant RootItem::data(int column, int role) const {
   }
 }
 
+Qt::ItemFlags RootItem::additionalFlags() const {
+  return Qt::NoItemFlags;
+}
+
 int RootItem::countOfAllMessages() const {
   int total_count = 0;
 

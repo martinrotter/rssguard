@@ -47,6 +47,13 @@ class FeedsModel : public QAbstractItemModel {
       return itemForIndex(index)->data(index.column(), role);
     }
 
+    // Drag & drop.
+    QMimeData *mimeData(const QModelIndexList &indexes) const;
+    QStringList mimeTypes() const;
+    bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
+    Qt::DropActions supportedDropActions() const;
+    Qt::ItemFlags flags(const QModelIndex &index) const;
+
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
     QModelIndex parent(const QModelIndex &child) const;
@@ -181,8 +188,11 @@ class FeedsModel : public QAbstractItemModel {
     void onFeedUpdatesFinished(FeedDownloadResults results);
 
   signals:
+    // Update of feeds is finished.
     void feedsUpdateFinished();
 
+    // Counts of unread messages are changed in some feeds,
+    // notify view about this shit.
     void readFeedsFilterInvalidationRequested();
 
     // Emitted when model requests update of some feeds.
@@ -193,6 +203,10 @@ class FeedsModel : public QAbstractItemModel {
 
     // Emitted when there is a need of reloading of displayed messages.
     void reloadMessageListRequested(bool mark_selected_messages_read);
+
+    // There was some drag/drop operation, notify view about this.
+    // NOTE: View will probably expand dropped index.
+    void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
 
   private:
     // Returns converted ids of given feeds

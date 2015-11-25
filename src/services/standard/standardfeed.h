@@ -81,6 +81,7 @@ class StandardFeed : public Feed {
 
     // Obtains data related to this feed.
     QVariant data(int column, int role) const;
+    Qt::ItemFlags additionalFlags() const;
 
     // Perform fetching of new messages. Returns number of newly updated messages.
     int update();

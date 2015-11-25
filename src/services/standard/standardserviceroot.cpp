@@ -128,6 +128,10 @@ QVariant StandardServiceRoot::data(int column, int role) const {
   }
 }
 
+Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
+  return Qt::ItemIsDropEnabled;
+}
+
 RecycleBin *StandardServiceRoot::recycleBin() {
   return m_recycleBin;
 }

@@ -54,6 +54,7 @@ FeedsView::FeedsView(QWidget *parent)
   m_sourceModel = m_proxyModel->sourceModel();
 
   // Connections.
+  connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);

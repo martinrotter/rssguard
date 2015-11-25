@@ -90,6 +90,10 @@ QVariant StandardCategory::data(int column, int role) const {
   }
 }
 
+Qt::ItemFlags StandardCategory::additionalFlags() const {
+  return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
+}
+
 bool StandardCategory::editViaGui() {
   QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm());
 

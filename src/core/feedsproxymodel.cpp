@@ -206,7 +206,9 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
     return true;
   }
   else {
-    return item->countOfUnreadMessages() > 0;
+    // NOTE: If item has < 0 of unread message it may mean, that the count
+    // of unread messages is not (yet) known, display that item too.
+    return item->countOfUnreadMessages() != 0;
   }
 }
 

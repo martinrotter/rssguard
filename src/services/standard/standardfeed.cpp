@@ -436,6 +436,10 @@ QVariant StandardFeed::data(int column, int role) const {
   }
 }
 
+Qt::ItemFlags StandardFeed::additionalFlags() const {
+  return Qt::ItemIsDragEnabled;
+}
+
 int StandardFeed::update() {
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
