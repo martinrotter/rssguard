@@ -49,6 +49,8 @@ class StandardServiceRoot : public ServiceRoot {
 
     bool canBeEdited();
     bool canBeDeleted();
+    bool deleteViaGui();
+
     QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
 

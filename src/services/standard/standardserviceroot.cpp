@@ -106,7 +106,37 @@ bool StandardServiceRoot::canBeEdited() {
 }
 
 bool StandardServiceRoot::canBeDeleted() {
-  return false;
+  return true;
+}
+
+bool StandardServiceRoot::deleteViaGui() {
+  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  // Remove all messages.
+  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Messages;"))) {
+    return false;
+  }
+
+  // Remove all feeds.
+  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Feeds;"))) {
+    return false;
+  }
+
+  // Remove all categories.
+  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Categories;"))) {
+    return false;
+  }
+
+  // Switch "existence" flag.
+  bool data_removed = QSqlQuery(connection).exec(QSL("UPDATE Information SET inf_value = 0 WHERE inf_key = 'standard_account_enabled';"));
+
+  // TODO: pokračovat
+
+  if (data_removed) {
+    feedsModel()->removeItem(this);
+  }
+
+  return data_removed;
 }
 
 QVariant StandardServiceRoot::data(int column, int role) const {
