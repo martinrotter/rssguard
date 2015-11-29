@@ -1,0 +1,1 @@
+INSERT INTO Information VALUES (1, 'standard_account_enabled', 1);
