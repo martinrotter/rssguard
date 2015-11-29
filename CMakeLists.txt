@@ -351,6 +351,7 @@ set(APP_SOURCES
   src/gui/dialogs/formdatabasecleanup.cpp
   src/gui/dialogs/formbackupdatabasesettings.cpp
   src/gui/dialogs/formrestoredatabasesettings.cpp
+  src/gui/dialogs/formaddaccount.cpp
   src/gui/notifications/notification.cpp
   src/gui/systemtrayicon.cpp
   src/gui/baselineedit.cpp
@@ -481,6 +482,7 @@ set(APP_HEADERS
   src/gui/dialogs/formrestoredatabasesettings.h
   src/gui/dialogs/formdatabasecleanup.h
   src/gui/dialogs/formupdate.h
+  src/gui/dialogs/formaddaccount.h
   src/gui/notifications/notification.h
   src/gui/systemtrayicon.h
   src/gui/baselineedit.h
@@ -582,7 +584,6 @@ set(APP_FORMS
   src/gui/dialogs/formbackupdatabasesettings.ui
   src/gui/dialogs/formrestoredatabasesettings.ui
   src/gui/dialogs/formdatabasecleanup.ui
-
   src/gui/toolbareditor.ui
 
   # STANDARD service forms.
