@@ -584,6 +584,7 @@ set(APP_FORMS
   src/gui/dialogs/formbackupdatabasesettings.ui
   src/gui/dialogs/formrestoredatabasesettings.ui
   src/gui/dialogs/formdatabasecleanup.ui
+  src/gui/dialogs/formaddaccount.ui
   src/gui/toolbareditor.ui
 
   # STANDARD service forms.
