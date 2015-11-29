@@ -17,11 +17,12 @@
 	  Added:
 	  <ul>
 		  <li style="color: red;">Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Expect bugs and misunderstandings now! Major parts of RSS Guard were completely rewritten.</li>
+      <li>Added ability to completely disable notifications (bug #128).</li>
+      <li>Added ability to go to next <font style="font-weight: bold;">unread</font> message. (partially bug #112)</li>
 	  </ul>
 	  
 	  Fixed:
 	  <ul>
-      <li>Added ability to completely disable notifications (bug #128).</li>
       <li>Better info in popup notification when many feeds are updated.</li>
       <li>Fixed obtaining of contents in RSS 2.0 feed entries. (bug #130)</li>
       <li>Improved popup informing about changes in newly installed version.</li>

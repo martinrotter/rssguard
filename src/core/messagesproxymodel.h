@@ -36,6 +36,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
       return m_sourceModel;
     }
 
+    QModelIndex getNextPreviousUnreadItemIndex(int default_row);
+
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList &indexes);
     QModelIndexList mapListFromSource(const QModelIndexList &indexes, bool deep = false);
@@ -44,6 +46,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &entered_value, int hits, Qt::MatchFlags flags) const;
 
   private:
+    QModelIndex getNextUnreadItemIndex(int default_row, int max_row);
+
     // Compares two rows of data.
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
 

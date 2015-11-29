@@ -481,20 +481,13 @@ void MessagesView::selectNextUnreadItem() {
     active_row = 0;
   }
 
-  while (++active_row < m_proxyModel->rowCount()) {
-    // Get info if the message is read or not.
-    QModelIndex proxy_index = m_proxyModel->index(active_row, 0);
+  QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
 
-    bool is_read = m_sourceModel->data(m_proxyModel->mapToSource(proxy_index).row(),
-                                       MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
-
-    if (!is_read) {
-      // We found unread message, mark it.
-      setCurrentIndex(proxy_index);
-      selectionModel()->select(proxy_index, QItemSelectionModel::Select | QItemSelectionModel::Rows);
-      setFocus();
-      break;
-    }
+  if (next_unread.isValid()) {
+    // We found unread message, mark it.
+    setCurrentIndex(next_unread);
+    selectionModel()->select(next_unread, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    setFocus();
   }
 }
 

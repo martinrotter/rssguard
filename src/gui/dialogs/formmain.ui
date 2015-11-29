@@ -125,7 +125,7 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>Fee&amp;ds &amp;&amp; categories</string>
+     <string>Feeds &amp;&amp; categories &amp;&amp; accounts</string>
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
@@ -165,6 +165,7 @@
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextMessage"/>
     <addaction name="m_actionSelectPreviousMessage"/>
+    <addaction name="m_actionSelectNextUnreadMessage"/>
     <addaction name="separator"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
@@ -174,7 +175,7 @@
    </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
-     <string>&amp;Recycle bin</string>
+     <string>&amp;Recycle bin(s)</string>
     </property>
     <addaction name="m_actionRestoreAllRecycleBins"/>
     <addaction name="m_actionEmptyAllRecycleBins"/>
@@ -728,6 +729,17 @@
   <action name="m_actionEmptyAllRecycleBins">
    <property name="text">
     <string>&amp;Empty all recycle bins</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionSelectNextUnreadMessage">
+   <property name="text">
+    <string>Select next &amp;unread message</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>

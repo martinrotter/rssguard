@@ -304,6 +304,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSelectNextMessage,
           SIGNAL(triggered()), m_messagesView, SLOT(selectNextItem()));
+  connect(form_main->m_ui->m_actionSelectNextUnreadMessage,
+          SIGNAL(triggered()), m_messagesView, SLOT(selectNextUnreadItem()));
   connect(form_main->m_ui->m_actionSelectPreviousMessage,
           SIGNAL(triggered()), m_messagesView, SLOT(selectPreviousItem()));
   connect(form_main->m_ui->m_actionSwitchMessageListOrientation, SIGNAL(triggered()),

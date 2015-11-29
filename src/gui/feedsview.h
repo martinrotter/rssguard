@@ -56,8 +56,6 @@ class FeedsView : public QTreeView {
     // Returns pointers to selected feed/category if they are really
     // selected.
     RootItem *selectedItem() const;
-    Category *selectedCategory() const;
-    Feed *selectedFeed() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void saveExpandedStates();

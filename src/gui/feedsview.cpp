@@ -98,16 +98,6 @@ RootItem *FeedsView::selectedItem() const {
   }
 }
 
-Category *FeedsView::selectedCategory() const {
-  QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
-  return m_sourceModel->categoryForIndex(current_mapped);
-}
-
-Feed *FeedsView::selectedFeed() const {
-  QModelIndex current_mapped = m_proxyModel->mapToSource(currentIndex());
-  return m_sourceModel->feedForIndex(current_mapped);
-}
-
 void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
   QList<RootItem*> expandable_items;
