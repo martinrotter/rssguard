@@ -18,6 +18,7 @@
 #include "gui/dialogs/formaddaccount.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 #if defined(Q_OS_OS2)
 #include "gui/messagebox.h"
@@ -29,7 +30,7 @@ FormAddAccount::FormAddAccount(QWidget *parent) : QDialog(parent), m_ui(new Ui::
 
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("application-about")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("item-new")));
 
 #if defined(Q_OS_OS2)
   MessageBox::iconify(m_ui->m_buttonBox);

@@ -368,7 +368,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
   m_ui->m_actionRestoreAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
   m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
-
+  m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("item-add")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
