@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Information (
 -- !
 INSERT INTO Information VALUES (1, 'schema_version', '3');
 -- !
-INSERT INTO Information VALUES (1, 'standard_account_enabled', 1);
+INSERT INTO Information (inf_key, inf_value) VALUES ('standard_account_enabled', 1);
 -- !
 DROP TABLE IF EXISTS Categories;
 -- !

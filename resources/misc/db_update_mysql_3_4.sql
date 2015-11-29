@@ -1,1 +1,1 @@
-INSERT INTO Information VALUES (1, 'standard_account_enabled', 1);
+INSERT INTO Information (inf_key, inf_value) VALUES ('standard_account_enabled', 1);
