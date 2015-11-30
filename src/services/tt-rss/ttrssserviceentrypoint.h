@@ -35,6 +35,7 @@ class TtRssServiceEntryPoint : public ServiceEntryPoint {
     QIcon icon();
     QString code();
 
+    ServiceRoot *createNewRoot(FeedsModel *main_model);
     QList<ServiceRoot*> initializeSubtree(FeedsModel *main_model);
 };
 

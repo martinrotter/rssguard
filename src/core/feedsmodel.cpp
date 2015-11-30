@@ -687,6 +687,9 @@ void FeedsModel::reloadWholeLayout() {
 bool FeedsModel::addServiceAccount(ServiceRoot *root) {
   m_rootItem->appendChild(root);
 
+  // Item add, reload da shit.
+  reloadWholeLayout();
+
   // Connect.
   connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
   connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));

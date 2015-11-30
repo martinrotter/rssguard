@@ -38,9 +38,11 @@ class FormAddAccount : public QDialog {
     virtual ~FormAddAccount();
 
   private slots:
+    void addSelectedAccount();
     void displayActiveEntryPointDetails();
 
   private:
+    ServiceEntryPoint *selectedEntryPoint();
     void loadEntryPoints();
 
     Ui::FormAddAccount *m_ui;

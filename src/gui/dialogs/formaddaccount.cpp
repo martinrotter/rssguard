@@ -39,6 +39,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 
+  connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(addSelectedAccount()));
   connect(m_ui->m_listEntryPoints, SIGNAL(itemSelectionChanged()), this, SLOT(displayActiveEntryPointDetails()));
   loadEntryPoints();
 }
@@ -47,27 +48,43 @@ FormAddAccount::~FormAddAccount() {
   delete m_ui;
 }
 
-void FormAddAccount::displayActiveEntryPointDetails() {
-  QList<QListWidgetItem*> selected_items = m_ui->m_listEntryPoints->selectedItems();
+void FormAddAccount::addSelectedAccount() {
+  accept();
 
-  if (!selected_items.isEmpty()) {
-    ServiceEntryPoint *point = static_cast<ServiceEntryPoint*>(selected_items.at(0)->data(Qt::UserRole).value<void*>());
+  ServiceEntryPoint *point = selectedEntryPoint();
+  ServiceRoot *new_root = point->createNewRoot(m_model);
 
-    m_ui->m_txtAuthor->setText(point->author());
-    m_ui->m_txtDescription->setText(point->description());
-    m_ui->m_txtName->setText(point->name());
-    m_ui->m_txtVersion->setText(point->version());
+  if (new_root != NULL) {
+    m_model->addServiceAccount(new_root);
   }
+  else {
+    qApp->showGuiMessage(tr("Cannot add account"),
+                         tr("Some critical error occurred, report this to developers."),
+                         QSystemTrayIcon::Critical, parentWidget(), true);
+  }
+}
+
+void FormAddAccount::displayActiveEntryPointDetails() {
+  ServiceEntryPoint *point = selectedEntryPoint();
+
+  m_ui->m_txtAuthor->setText(point->author());
+  m_ui->m_txtDescription->setText(point->description());
+  m_ui->m_txtName->setText(point->name());
+  m_ui->m_txtVersion->setText(point->version());
+}
+
+ServiceEntryPoint *FormAddAccount::selectedEntryPoint() {
+  return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
 }
 
 void FormAddAccount::loadEntryPoints() {
   foreach (ServiceEntryPoint *entry_point, m_entryPoints) {
     QListWidgetItem *item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
-    item->setData(Qt::UserRole, QVariant::fromValue((void*) entry_point));
 
     if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {
       // Oops, this item cannot be added, it is single instance and is already added.
       item->setFlags(Qt::NoItemFlags);
+      item->setToolTip(tr("This account can be added only once."));
     }
   }
 

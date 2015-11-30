@@ -33,6 +33,13 @@ class ServiceEntryPoint {
     explicit ServiceEntryPoint();
     virtual ~ServiceEntryPoint();
 
+    // Creates new service root item, which is ready to be added
+    // into the model. This method can for example display
+    // some kind of first-time configuration dialog inside itself
+    // before returning the root item.
+    // Returns NULL if initialization of new root cannot be done.
+    virtual ServiceRoot *createNewRoot(FeedsModel *main_model) = 0;
+
     // Performs initialization of all service accounts created using this entry
     // point from persistent DB.
     // Returns list of root nodes which will be afterwards added
