@@ -90,6 +90,7 @@ class FormMain : public QMainWindow {
     void showAbout();
     void showUpdates();
     void showWiki();
+    void showAddAccountDialog();
     void reportABugOnGitHub();
     void reportABugOnBitBucket();
     void donate();

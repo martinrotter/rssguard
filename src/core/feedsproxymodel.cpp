@@ -197,7 +197,7 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
 
   RootItem *item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() == RootItemKind::Bin) {
+  if (item->kind() == RootItemKind::Bin || item->kind() == RootItemKind::ServiceRoot) {
     // Recycle bin is always displayed.
     return true;
   }

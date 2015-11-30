@@ -481,12 +481,12 @@ void MessagesView::selectNextUnreadItem() {
     active_row = 0;
   }
 
-  QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
+  QModelIndex next_unread = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
   if (next_unread.isValid()) {
     // We found unread message, mark it.
     setCurrentIndex(next_unread);
-    selectionModel()->select(next_unread, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    selectionModel()->select(next_unread, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
     setFocus();
   }
 }

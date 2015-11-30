@@ -38,6 +38,7 @@
 #include "gui/dialogs/formupdate.h"
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
+#include "gui/dialogs/formaddaccount.h"
 #include "gui/notifications/notification.h"
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/recyclebin.h"
@@ -447,6 +448,7 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionRestoreDatabaseSettings, SIGNAL(triggered()), this, SLOT(restoreDatabaseSettings()));
   connect(m_ui->m_actionRestart, SIGNAL(triggered()), qApp, SLOT(restart()));
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+  connect(m_ui->m_actionServiceAdd, SIGNAL(triggered()), this, SLOT(showAddAccountDialog()));
 
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
@@ -549,6 +551,14 @@ void FormMain::showWiki() {
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
   }
+}
+
+void FormMain::showAddAccountDialog() {
+  QPointer<FormAddAccount> form_update = new FormAddAccount(qApp->feedServices(),
+                                                            tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+                                                            this);
+  form_update.data()->exec();
+  delete form_update.data();
 }
 
 void FormMain::reportABugOnGitHub() {
