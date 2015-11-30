@@ -265,7 +265,7 @@ bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int 
 
       if (dragged_item_root != target_item_root) {
         // Transferring of items between different accounts is not possible.
-        qApp->showGuiMessage(tr("Cannot perform drag & drop operation."),
+        qApp->showGuiMessage(tr("Cannot perform drag & drop operation"),
                              tr("You can't transfer dragged item into different account, this is not supported."),
                              QSystemTrayIcon::Warning,
                              qApp->mainForm(),

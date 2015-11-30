@@ -514,12 +514,12 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
         <translation>Staženy nové zprávy</translation>
     </message>
     <message>
-        <source>Cannot perform drag &amp; drop operation.</source>
-        <translation type="unfinished"></translation>
+        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
+        <translation>Tažené položky nelze přesouvat mezi účty, toto není podporováno.</translation>
     </message>
     <message>
-        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"></translation>
+        <source>Cannot perform drag &amp; drop operation</source>
+        <translation>Operaci drag &amp; drop nelze vykonat</translation>
     </message>
 </context>
 <context>
@@ -557,36 +557,37 @@ Klikněte sem pro otevření nadřazeného adresáře.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybraná položka nemůže být upravena, toto není podporováno.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Maži &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Chystáte se zcela vymazat položku &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>Jste si jistý?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze smazat &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuto položku nelze smazat, protože se něco kriticky porouchalo, nahlašte tuto chybu.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuto položku nelze smazat, protože to nepodporuje
+nebo tato funkcionality dosud není implementována.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontextové menu pro ostatní položky</translation>
     </message>
 </context>
 <context>
@@ -673,39 +674,39 @@ or this functionality is not implemented yet.</source>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat nový účet</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Detaily</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Název</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished">Verze</translation>
+        <translation>Verze</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Autor</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished">Popis</translation>
+        <translation>Popis</translation>
     </message>
     <message>
         <source>Cannot add account</source>
-        <translation type="unfinished"></translation>
+        <translation>Účet nelze přidat</translation>
     </message>
     <message>
         <source>Some critical error occurred, report this to developers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyskytla se kritická chyba, nahlaště problém vývojářům.</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento účet může být přidán pouze jednou.</translation>
     </message>
 </context>
 <context>
@@ -1959,7 +1960,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolit notifikace</translation>
     </message>
 </context>
 <context>
@@ -2720,7 +2721,7 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%s&apos; failed.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Načítání zpráv z položky &apos;%s&apos; selhalo.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
@@ -2908,10 +2909,16 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>
+
++ %n další kanál.</numerusform>
+            <numerusform>
+
++ %n dalších kanálů.</numerusform>
+            <numerusform>
+
++ %n kanály.</numerusform>
         </translation>
     </message>
     <message>
@@ -2919,7 +2926,10 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vítá Vás %1.
+
+Prosím, zkontrolujte novinky
+klknutím na tuto notifikaci.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
@@ -2927,7 +2937,7 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Načíst úvodní sadu kanálů</translation>
     </message>
 </context>
 <context>
@@ -3049,7 +3059,7 @@ Automatický update: %5</translation>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto je účet pro standardní RSS/RDS/ATOM kanály.</translation>
     </message>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
@@ -3065,7 +3075,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto je účet pro standardní RSS/RDS/ATOM kanály.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
@@ -3128,7 +3138,7 @@ Automatický update: %5</translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation type="unfinished"></translation>
+        <translation>anonym</translation>
     </message>
 </context>
 <context>
@@ -3326,11 +3336,11 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished">Nelze přidat kanál</translation>
+        <translation>Nelze přidat kanál</translation>
     </message>
     <message>
         <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento kanál neumí %1 přidat, protože standardní RSS/ATOM účet není aktivován. Je třeba jej aktivovat.</translation>
     </message>
 </context>
 <context>

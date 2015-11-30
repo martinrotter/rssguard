@@ -503,11 +503,11 @@ Click here to open parent directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot perform drag &amp; drop operation.</source>
+        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
+        <source>Cannot perform drag &amp; drop operation</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
