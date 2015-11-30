@@ -34,8 +34,8 @@ class StandardServiceEntryPoint : public ServiceEntryPoint {
     QIcon icon();
     QString code();
 
-    ServiceRoot *createNewRoot(FeedsModel *main_model);
-    QList<ServiceRoot*> initializeSubtree(FeedsModel *main_model);
+    ServiceRoot *createNewRoot();
+    QList<ServiceRoot*> initializeSubtree();
 };
 
 #endif // STANDARDSERVICEENTRYPOINT_H

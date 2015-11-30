@@ -167,7 +167,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
     return false;
   }
 
-  StandardServiceRoot *root_item = new StandardServiceRoot(false, NULL, NULL);
+  StandardServiceRoot *root_item = new StandardServiceRoot(false);
   QStack<RootItem*> model_items; model_items.push(root_item);
   QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
 

@@ -40,7 +40,7 @@ class StandardServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    explicit StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent = NULL);
+    explicit StandardServiceRoot(bool load_from_db, RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
 
     // Start/stop root.

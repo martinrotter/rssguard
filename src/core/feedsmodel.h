@@ -75,11 +75,6 @@ class FeedsModel : public QAbstractItemModel {
     // Removes item with given index.
     // NOTE: Also deletes item from memory.
     void removeItem(const QModelIndex &index);
-    void removeItem(RootItem *deleting_item);
-
-    // Checks if new parent node is different from one used by original node.
-    // If it is, then it reassigns original_node to new parent.
-    void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
 
     // Returns all activated service roots.
     // NOTE: Service root nodes are lying directly UNDER
@@ -157,6 +152,12 @@ class FeedsModel : public QAbstractItemModel {
     bool addServiceAccount(ServiceRoot *root);
 
   public slots:
+    // Checks if new parent node is different from one used by original node.
+    // If it is, then it reassigns original_node to new parent.
+    void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
+
+    void removeItem(RootItem *deleting_item);
+
     bool restoreAllBins();
     bool emptyAllBins();
 

@@ -38,13 +38,13 @@ class ServiceEntryPoint {
     // some kind of first-time configuration dialog inside itself
     // before returning the root item.
     // Returns NULL if initialization of new root cannot be done.
-    virtual ServiceRoot *createNewRoot(FeedsModel *main_model) = 0;
+    virtual ServiceRoot *createNewRoot() = 0;
 
     // Performs initialization of all service accounts created using this entry
     // point from persistent DB.
     // Returns list of root nodes which will be afterwards added
     // to the global feed model.
-    virtual QList<ServiceRoot*> initializeSubtree(FeedsModel *main_model) = 0;
+    virtual QList<ServiceRoot*> initializeSubtree() = 0;
 
     // Can this service account be added just once?
     // NOTE: This is true particularly for "standard" service

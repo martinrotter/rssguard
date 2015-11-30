@@ -100,7 +100,7 @@ bool StandardCategory::performDragDropChange(RootItem *target_item) {
   category_new->setParent(target_item);
 
   if (editItself(category_new)) {
-    serviceRoot()->feedsModel()->reassignNodeToNewParent(this, target_item);
+    serviceRoot()->requestItemReassignment(this, target_item);
     delete category_new;
     return true;
   }
@@ -120,7 +120,7 @@ bool StandardCategory::editViaGui() {
 
 bool StandardCategory::deleteViaGui() {
   if (removeItself()) {
-    serviceRoot()->feedsModel()->removeItem(this);
+    serviceRoot()->requestItemRemoval(this);
     return true;
   }
   else {

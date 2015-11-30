@@ -20,15 +20,11 @@
 #include "core/feedsmodel.h"
 
 
-ServiceRoot::ServiceRoot(FeedsModel *feeds_model, RootItem *parent) : RootItem(parent), m_feedsModel(feeds_model) {
+ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent) {
   setKind(RootItemKind::ServiceRoot);
 }
 
 ServiceRoot::~ServiceRoot() {
-}
-
-FeedsModel *ServiceRoot::feedsModel() const {
-  return m_feedsModel;
 }
 
 void ServiceRoot::itemChanged(QList<RootItem*> items) {
@@ -41,4 +37,12 @@ void ServiceRoot::requestReloadMessageList(bool mark_selected_messages_read) {
 
 void ServiceRoot::requestFeedReadFilterReload() {
   emit readFeedsFilterInvalidationRequested();
+}
+
+void ServiceRoot::requestItemReassignment(RootItem *item, RootItem *new_parent) {
+  emit itemReassignmentRequested(item, new_parent);
+}
+
+void ServiceRoot::requestItemRemoval(RootItem *item) {
+  emit itemRemovalRequested(item);
 }

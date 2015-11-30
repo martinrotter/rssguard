@@ -116,7 +116,7 @@ bool StandardFeed::editViaGui() {
 
 bool StandardFeed::deleteViaGui() {
   if (removeItself()) {
-    serviceRoot()->feedsModel()->removeItem(this);
+    serviceRoot()->requestItemRemoval(this);
     return true;
   }
   else {
@@ -445,7 +445,7 @@ bool StandardFeed::performDragDropChange(RootItem *target_item) {
   feed_new->setParent(target_item);
 
   if (editItself(feed_new)) {
-    serviceRoot()->feedsModel()->reassignNodeToNewParent(this, target_item);
+    serviceRoot()->requestItemReassignment(this, target_item);
     delete feed_new;
     return true;
   }

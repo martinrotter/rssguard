@@ -43,8 +43,8 @@
 #include <QSqlTableModel>
 
 
-StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_model, RootItem *parent)
-  : ServiceRoot(feeds_model, parent), m_recycleBin(new StandardRecycleBin(this)),
+StandardServiceRoot::StandardServiceRoot(bool load_from_db, RootItem *parent)
+  : ServiceRoot(parent), m_recycleBin(new StandardRecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
 
@@ -54,7 +54,6 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, FeedsModel *feeds_mo
   setCreationDate(QDateTime::currentDateTime());
 
   if (load_from_db) {
-
     loadFromDatabase();
   }
 }
@@ -134,10 +133,8 @@ bool StandardServiceRoot::deleteViaGui() {
   // Switch "existence" flag.
   bool data_removed = QSqlQuery(connection).exec(QSL("UPDATE Information SET inf_value = 0 WHERE inf_key = 'standard_account_enabled';"));
 
-  // TODO: pokračovat
-
   if (data_removed) {
-    feedsModel()->removeItem(this);
+    requestItemRemoval(this);
   }
 
   return data_removed;
@@ -508,7 +505,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
         new_category->clearChildren();
 
         if (new_category->addItself(target_parent)) {
-          feedsModel()->reassignNodeToNewParent(new_category, target_parent);
+          requestItemReassignment(new_category, target_parent);
 
           // Process all children of this category.
           original_parents.push(new_category);
@@ -542,7 +539,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
 
         // Append this feed and end this iteration.
         if (new_feed->addItself(target_parent)) {
-          feedsModel()->reassignNodeToNewParent(new_feed, target_parent);
+          requestItemReassignment(new_feed, target_parent);
         }
         else {
           delete new_feed;

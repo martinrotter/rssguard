@@ -241,7 +241,7 @@ void FormStandardFeedDetails::apply() {
   if (m_editableFeed == NULL) {
     // Add the feed.
     if (new_feed->addItself(parent)) {
-      m_serviceRoot->feedsModel()->reassignNodeToNewParent(new_feed, parent);
+      m_serviceRoot->requestItemReassignment(new_feed, parent);
       accept();
     }
     else {
@@ -258,7 +258,7 @@ void FormStandardFeedDetails::apply() {
     bool edited = m_editableFeed->editItself(new_feed);
 
     if (edited) {
-      m_serviceRoot->feedsModel()->reassignNodeToNewParent(m_editableFeed, new_feed->parent());
+      m_serviceRoot->requestItemReassignment(m_editableFeed, new_feed->parent());
       accept();
     }
     else {

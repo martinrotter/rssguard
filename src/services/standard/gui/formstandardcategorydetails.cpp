@@ -122,7 +122,7 @@ void FormStandardCategoryDetails::apply() {
   if (m_editableCategory == NULL) {
     // Add the category.
     if (new_category->addItself(parent)) {
-      m_serviceRoot->feedsModel()->reassignNodeToNewParent(new_category, parent);
+      m_serviceRoot->requestItemReassignment(new_category, parent);
       accept();
     }
     else {
@@ -139,7 +139,7 @@ void FormStandardCategoryDetails::apply() {
     bool edited = m_editableCategory->editItself(new_category);
 
     if (edited) {
-      m_serviceRoot->feedsModel()->reassignNodeToNewParent(m_editableCategory, new_category->parent());
+      m_serviceRoot->requestItemReassignment(m_editableCategory, new_category->parent());
       accept();
     }
     else {

@@ -37,7 +37,7 @@ class ServiceRoot : public RootItem {
     Q_OBJECT
 
   public:
-    explicit ServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
+    explicit ServiceRoot(RootItem *parent = NULL);
     virtual ~ServiceRoot();
 
     // Returns list of specific actions for "Add new item" main window menu.
@@ -125,13 +125,13 @@ class ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) = 0;
 
-    // Access to feed model.
-    FeedsModel *feedsModel() const;
-
     // Obvious methods to wrap signals.
     void itemChanged(QList<RootItem*> items);
     void requestReloadMessageList(bool mark_selected_messages_read);
     void requestFeedReadFilterReload();
+
+    void requestItemReassignment(RootItem *item, RootItem *new_parent);
+    void requestItemRemoval(RootItem *item);
 
   signals:
     // Emitted if data in any item belonging to this root are changed.
@@ -139,8 +139,8 @@ class ServiceRoot : public RootItem {
     void readFeedsFilterInvalidationRequested();
     void reloadMessageListRequested(bool mark_selected_messages_read);
 
-  private:
-    FeedsModel *m_feedsModel;
+    void itemReassignmentRequested(RootItem *item, RootItem *new_parent);
+    void itemRemovalRequested(RootItem *item);
 };
 
 #endif // SERVICEROOT_H

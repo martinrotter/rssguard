@@ -52,7 +52,7 @@ void FormAddAccount::addSelectedAccount() {
   accept();
 
   ServiceEntryPoint *point = selectedEntryPoint();
-  ServiceRoot *new_root = point->createNewRoot(m_model);
+  ServiceRoot *new_root = point->createNewRoot();
 
   if (new_root != NULL) {
     m_model->addServiceAccount(new_root);

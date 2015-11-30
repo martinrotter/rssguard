@@ -507,6 +507,14 @@ Klicka här för att öppna målmappen.</translation>
         <source>New messages downloaded</source>
         <translation>Nya meddelanden nedladdade</translation>
     </message>
+    <message>
+        <source>Cannot perform drag &amp; drop operation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FeedsToolBar</name>
@@ -652,6 +660,45 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormAddAccount</name>
+    <message>
+        <source>Add new account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished">Namn</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished">Version</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished">Beskrivning</translation>
+    </message>
+    <message>
+        <source>Cannot add account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some critical error occurred, report this to developers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This account can be added only once.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -875,10 +922,6 @@ or this functionality is not implemented yet.</source>
         <translation>Inga åtgärder tillgängliga just nu.</translation>
     </message>
     <message>
-        <source>Fee&amp;ds &amp;&amp; categories</source>
-        <translation>&amp;Flöden &amp;&amp; kategorier</translation>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation>Dölj programfönstret om det är synligt, och visa det om det är dolt.</translation>
     </message>
@@ -1055,23 +1098,11 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Services</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Update &amp;all items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1131,23 +1162,11 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select &amp;next item</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1159,19 +1178,7 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Add new service account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Delete selected service account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected service account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1180,6 +1187,38 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No possible actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories &amp;&amp; accounts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Recycle bin(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restore all recycle bins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Empty all recycle bins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select next &amp;unread message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1911,6 +1950,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>E-mail</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Enable notifications</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3269,6 +3312,14 @@ Olästa nyheter: %2</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stoppa inläsning av webbsidan.</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished">Kan inte lägga till flöde</translation>
+    </message>
+    <message>
+        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

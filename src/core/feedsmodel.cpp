@@ -685,12 +685,15 @@ void FeedsModel::reloadWholeLayout() {
 }
 
 bool FeedsModel::addServiceAccount(ServiceRoot *root) {
-  m_rootItem->appendChild(root);
+  int new_row_index = m_rootItem->childCount();
 
-  // Item add, reload da shit.
-  reloadWholeLayout();
+  beginInsertRows(indexForItem(m_rootItem), new_row_index, new_row_index);
+  m_rootItem->appendChild(root);
+  endInsertRows();
 
   // Connect.
+  connect(root, SIGNAL(itemRemovalRequested(RootItem*)), this, SLOT(removeItem(RootItem*)));
+  connect(root, SIGNAL(itemReassignmentRequested(RootItem*,RootItem*)), this, SLOT(reassignNodeToNewParent(RootItem*,RootItem*)));
   connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
   connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
   connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
@@ -731,7 +734,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
   // Iterate all globally available feed "service plugins".
   foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
-    QList<ServiceRoot*> roots = entry_point->initializeSubtree(this);
+    QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
     foreach (ServiceRoot *root, roots) {
       addServiceAccount(root);

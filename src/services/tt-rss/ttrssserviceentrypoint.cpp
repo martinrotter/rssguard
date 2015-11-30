@@ -58,10 +58,10 @@ QString TtRssServiceEntryPoint::code() {
   return SERVICE_CODE_TT_RSS;
 }
 
-ServiceRoot *TtRssServiceEntryPoint::createNewRoot(FeedsModel *main_model) {
+ServiceRoot *TtRssServiceEntryPoint::createNewRoot() {
   return NULL;
 }
 
-QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree(FeedsModel *main_model) {
+QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
   return QList<ServiceRoot*>();
 }
