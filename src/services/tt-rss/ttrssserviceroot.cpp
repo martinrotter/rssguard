@@ -33,6 +33,10 @@ TtRssServiceRoot::TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent) : 
 TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
+QString TtRssServiceRoot::code() {
+  return SERVICE_CODE_TT_RSS;
+}
+
 bool TtRssServiceRoot::editViaGui() {
   return false;
 }

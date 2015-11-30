@@ -64,6 +64,8 @@ class ServiceRoot : public RootItem {
     virtual void start() = 0;
     virtual void stop() = 0;
 
+    virtual QString code() = 0;
+
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table
     // and then use method QSqlTableModel::setFilter(....).

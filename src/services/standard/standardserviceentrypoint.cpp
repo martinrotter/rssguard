@@ -33,12 +33,8 @@ bool StandardServiceEntryPoint::isSingleInstanceService() {
   return true;
 }
 
-bool StandardServiceEntryPoint::canBeEdited() {
-  return false;
-}
-
 QString StandardServiceEntryPoint::name() {
-  return QSL("Standard (RSS/RDF/ATOM)");
+  return QSL("Standard online feeds (RSS/RDF/ATOM)");
 }
 
 QString StandardServiceEntryPoint::description() {
@@ -55,6 +51,10 @@ QString StandardServiceEntryPoint::author() {
 
 QIcon StandardServiceEntryPoint::icon() {
   return QIcon(APP_ICON_PATH);
+}
+
+QString StandardServiceEntryPoint::code() {
+  return SERVICE_CODE_STD_RSS;
 }
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree(FeedsModel *main_model) {

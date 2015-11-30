@@ -47,6 +47,8 @@ class StandardServiceRoot : public ServiceRoot {
     void start();
     void stop();
 
+    QString code();
+
     bool canBeEdited();
     bool canBeDeleted();
     bool deleteViaGui();

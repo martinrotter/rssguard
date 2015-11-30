@@ -499,6 +499,16 @@ QList<ServiceRoot*> FeedsModel::serviceRoots() {
   return roots;
 }
 
+bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) {
+  foreach (RootItem *root, serviceRoots()) {
+    if (root->toServiceRoot()->code() == point->code()) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 StandardServiceRoot *FeedsModel::standardServiceRoot() {
   foreach (RootItem *root, serviceRoots()) {
     StandardServiceRoot *std_service_root;

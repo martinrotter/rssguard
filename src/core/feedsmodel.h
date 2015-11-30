@@ -28,6 +28,7 @@ class DatabaseCleaner;
 class Category;
 class Feed;
 class ServiceRoot;
+class ServiceEntryPoint;
 class StandardServiceRoot;
 class QTimer;
 
@@ -84,6 +85,9 @@ class FeedsModel : public QAbstractItemModel {
     // NOTE: Service root nodes are lying directly UNDER
     // the model root item.
     QList<ServiceRoot*> serviceRoots();
+
+    // Determines if there is any account activated from given entry point.
+    bool containsServiceRootFromEntryPoint(ServiceEntryPoint *point);
 
     // Direct and the only global accessor to standard service root.
     // NOTE: Standard service root is always activated.

@@ -101,6 +101,10 @@ void StandardServiceRoot::stop() {
   qDebug("Stopping StandardServiceRoot instance.");
 }
 
+QString StandardServiceRoot::code() {
+  return SERVICE_CODE_STD_RSS;
+}
+
 bool StandardServiceRoot::canBeEdited() {
   return false;
 }

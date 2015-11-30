@@ -32,6 +32,8 @@ class TtRssServiceRoot : public ServiceRoot {
     explicit TtRssServiceRoot(FeedsModel *feeds_model, RootItem *parent = NULL);
     virtual ~TtRssServiceRoot();
 
+    QString code();
+
     bool canBeEdited();
     bool canBeDeleted();
     bool editViaGui();

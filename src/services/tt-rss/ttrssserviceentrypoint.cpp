@@ -19,6 +19,7 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 
 
 TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
@@ -33,20 +34,16 @@ bool TtRssServiceEntryPoint::isSingleInstanceService() {
   return false;
 }
 
-bool TtRssServiceEntryPoint::canBeEdited() {
-  return true;
-}
-
 QString TtRssServiceEntryPoint::name() {
-  return QSL("TT-RSS (TinyTiny RSS)");
+  return QSL("Tiny Tiny RSS");
 }
 
 QString TtRssServiceEntryPoint::description() {
-  return QSL("This service offers integration with TinyTiny RSS.");
+  return QSL("This service offers integration with Tiny Tiny RSS.\n\nTiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.");
 }
 
 QString TtRssServiceEntryPoint::version() {
-  return QSL("0.0.1");
+  return QSL("0.0.2");
 }
 
 QString TtRssServiceEntryPoint::author() {
@@ -54,7 +51,11 @@ QString TtRssServiceEntryPoint::author() {
 }
 
 QIcon TtRssServiceEntryPoint::icon() {
-  return QIcon(APP_ICON_PATH);
+  return qApp->icons()->fromTheme(QSL("application-ttrss"));
+}
+
+QString TtRssServiceEntryPoint::code() {
+  return SERVICE_CODE_TT_RSS;
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree(FeedsModel *main_model) {

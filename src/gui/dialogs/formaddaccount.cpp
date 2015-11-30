@@ -20,7 +20,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "core/feedsmodel.h"
-
+#include "services/standard/standardserviceentrypoint.h"
 
 #if defined(Q_OS_OS2)
 #include "gui/messagebox.h"
@@ -52,14 +52,24 @@ void FormAddAccount::displayActiveEntryPointDetails() {
 
   if (!selected_items.isEmpty()) {
     ServiceEntryPoint *point = static_cast<ServiceEntryPoint*>(selected_items.at(0)->data(Qt::UserRole).value<void*>());
+
+    m_ui->m_txtAuthor->setText(point->author());
+    m_ui->m_txtDescription->setText(point->description());
+    m_ui->m_txtName->setText(point->name());
+    m_ui->m_txtVersion->setText(point->version());
   }
 }
 
 void FormAddAccount::loadEntryPoints() {
   foreach (ServiceEntryPoint *entry_point, m_entryPoints) {
     QListWidgetItem *item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
-
     item->setData(Qt::UserRole, QVariant::fromValue((void*) entry_point));
 
+    if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {
+      // Oops, this item cannot be added, it is single instance and is already added.
+      item->setFlags(Qt::NoItemFlags);
+    }
   }
+
+  m_ui->m_listEntryPoints->setCurrentRow(m_entryPoints.size() - 1);
 }

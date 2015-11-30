@@ -28,12 +28,12 @@ class TtRssServiceEntryPoint : public ServiceEntryPoint {
     virtual ~TtRssServiceEntryPoint();
 
     bool isSingleInstanceService();
-    bool canBeEdited();
     QString name();
     QString description();
     QString version();
     QString author();
     QIcon icon();
+    QString code();
 
     QList<ServiceRoot*> initializeSubtree(FeedsModel *main_model);
 };

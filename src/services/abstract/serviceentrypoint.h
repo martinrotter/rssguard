@@ -44,11 +44,12 @@ class ServiceEntryPoint {
     // which operates with normal RSS/ATOM feeds.
     virtual bool isSingleInstanceService() = 0;
 
-    // Can properties of this service account be edited by user via GUI?
-    virtual bool canBeEdited() = 0;
-
     // Human readable service name, for example "TT-RSS".
     virtual QString name() = 0;
+
+    // Some arbitrary string.
+    // NOTE: Keep in sync with ServiceRoot::code().
+    virtual QString code() = 0;
 
     // Human readable service description, for example "Services which offers TT-RSS integration.".
     virtual QString description() = 0;
