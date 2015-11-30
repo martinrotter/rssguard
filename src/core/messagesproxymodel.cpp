@@ -53,8 +53,7 @@ QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) 
 QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) {
   while (default_row <= max_row) {
     // Get info if the message is read or not.
-    QModelIndex proxy_index = index(default_row, 0);
-
+    QModelIndex proxy_index = index(default_row, MSG_DB_READ_INDEX);
     bool is_read = m_sourceModel->data(mapToSource(proxy_index).row(),
                                        MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
 

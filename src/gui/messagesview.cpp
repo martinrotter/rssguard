@@ -481,7 +481,7 @@ void MessagesView::selectNextUnreadItem() {
     active_row = 0;
   }
 
-  QModelIndex next_unread = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
 
   if (next_unread.isValid()) {
     // We found unread message, mark it.
