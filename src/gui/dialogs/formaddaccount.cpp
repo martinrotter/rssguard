@@ -38,8 +38,28 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
 #if defined(Q_OS_OS2)
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
+
+  connect(m_ui->m_listEntryPoints, SIGNAL(itemSelectionChanged()), this, SLOT(displayActiveEntryPointDetails()));
+  loadEntryPoints();
 }
 
 FormAddAccount::~FormAddAccount() {
   delete m_ui;
+}
+
+void FormAddAccount::displayActiveEntryPointDetails() {
+  QList<QListWidgetItem*> selected_items = m_ui->m_listEntryPoints->selectedItems();
+
+  if (!selected_items.isEmpty()) {
+    ServiceEntryPoint *point = static_cast<ServiceEntryPoint*>(selected_items.at(0)->data(Qt::UserRole).value<void*>());
+  }
+}
+
+void FormAddAccount::loadEntryPoints() {
+  foreach (ServiceEntryPoint *entry_point, m_entryPoints) {
+    QListWidgetItem *item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
+
+    item->setData(Qt::UserRole, QVariant::fromValue((void*) entry_point));
+
+  }
 }
