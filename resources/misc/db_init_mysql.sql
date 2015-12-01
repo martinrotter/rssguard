@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Information (
   inf_value       TEXT        NOT NULL
 );
 -- !
-INSERT INTO Information VALUES (1, 'schema_version', '3');
+INSERT INTO Information VALUES (1, 'schema_version', '4');
 -- !
 INSERT INTO Information (inf_key, inf_value) VALUES ('standard_account_enabled', 1);
 -- !
