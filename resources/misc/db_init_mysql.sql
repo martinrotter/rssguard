@@ -46,17 +46,6 @@ CREATE TABLE IF NOT EXISTS Feeds (
   type            INTEGER       NOT NULL CHECK (type >= 0)
 );
 -- !
-DROP TABLE IF EXISTS FeedsData;
--- !
-CREATE TABLE IF NOT EXISTS FeedsData (
-  feed_id         INTEGER       NOT NULL,
-  feed_key        VARCHAR(100)  NOT NULL,
-  feed_value      TEXT,
-  
-  PRIMARY KEY (feed_id, feed_key),
-  FOREIGN KEY (feed_id) REFERENCES Feeds (id)
-);
--- !
 DROP TABLE IF EXISTS Messages;
 -- !
 CREATE TABLE IF NOT EXISTS Messages (

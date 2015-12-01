@@ -290,12 +290,13 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
       }
 
       database.commit();
+      query_db.finish();
       qDebug("File-based SQLite database backend should be ready now.");
     }
     else {
       query_db.next();
-
       QString installed_db_schema = query_db.value(0).toString();
+      query_db.finish();
 
       if (!updateDatabaseSchema(database, installed_db_schema)) {
         qFatal("Database schema was not updated from '%s' to '%s' successully.",
@@ -313,8 +314,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
       qDebug("File-based SQLite database has version '%s'.", qPrintable(installed_db_schema));
     }
-
-    query_db.finish();
   }
 
   // Everything is initialized now.
