@@ -43,6 +43,9 @@ class NetworkFactory {
     // given URL belongs to.
     static QNetworkReply::NetworkError downloadIcon(const QList<QString> &urls, int timeout, QIcon &output);
 
+    static NetworkResult uploadData(const QString &url, int timeout, const QByteArray &input_data,
+                                    const QString &input_content_type, QByteArray &output);
+
     static NetworkResult downloadFeedFile(const QString &url, int timeout, QByteArray &output,
                                           bool protected_contents = false, const QString &username = QString(),
                                           const QString &password = QString());

@@ -49,6 +49,11 @@ class Downloader : public QObject {
     void downloadFile(const QString &url, int timeout = DOWNLOAD_TIMEOUT, bool protected_contents = false,
                       const QString &username = QString(), const QString &password = QString());
 
+    // Performs asynchronous upload of given data as HTTP POST.
+    // User needs to setup "Content-Encoding" header which
+    // matches encoding of the data.
+    void uploadData(const QString &url, const QByteArray &data, int timeout = DOWNLOAD_TIMEOUT);
+
   signals:
     // Emitted when new progress is known.
     void progress(qint64 bytes_received, qint64 bytes_total);
@@ -65,6 +70,7 @@ class Downloader : public QObject {
     void timeout();
 
   private:
+    void runPostRequest(const QNetworkRequest &request, const QByteArray &data);
     void runGetRequest(const QNetworkRequest &request);
 
   private:
@@ -72,6 +78,7 @@ class Downloader : public QObject {
     SilentNetworkAccessManager *m_downloadManager;
     QTimer *m_timer;
     QHash<QByteArray, QByteArray> m_customHeaders;
+    QByteArray m_inputData;
 
     // Response data.
     QByteArray m_lastOutputData;

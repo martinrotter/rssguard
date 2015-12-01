@@ -24,8 +24,8 @@
 
 Downloader::Downloader(QObject *parent)
   : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
-    m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_lastOutputData(QByteArray()),
-    m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
+    m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
+    m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
 
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
@@ -66,8 +66,33 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
   runGetRequest(request);
 }
 
+void Downloader::uploadData(const QString &url, const QByteArray &data, int timeout) {
+  QNetworkRequest request;
+  QString non_const_url = url;
+
+  foreach (const QByteArray &header_name, m_customHeaders.keys()) {
+    request.setRawHeader(header_name, m_customHeaders.value(header_name));
+  }
+
+  m_inputData = data;
+
+  // Set url for this request and fire it up.
+  m_timer->setInterval(timeout);
+
+  if (non_const_url.startsWith(URI_SCHEME_FEED)) {
+    qDebug("Replacing URI schemes for '%s'.", qPrintable(non_const_url));
+    request.setUrl(non_const_url.replace(QRegExp(QString('^') + URI_SCHEME_FEED), QString(URI_SCHEME_HTTP)));
+  }
+  else {
+    request.setUrl(non_const_url);
+  }
+
+  runPostRequest(request, m_inputData);
+}
+
 void Downloader::finished() {
   QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
+  QNetworkAccessManager::Operation reply_operation = reply->operation();
 
   m_timer->stop();
 
@@ -89,7 +114,12 @@ void Downloader::finished() {
     m_activeReply->deleteLater();
     m_activeReply = NULL;
 
-    runGetRequest(request);
+    if (reply_operation == QNetworkAccessManager::GetOperation) {
+      runGetRequest(request);
+    }
+    else if (reply_operation == QNetworkAccessManager::PostOperation) {
+      runPostRequest(request, m_inputData);
+    }
   }
   else {
     // No redirection is indicated. Final file is obtained in our "reply" object.
@@ -118,6 +148,14 @@ void Downloader::timeout() {
     // Download action timed-out, too slow connection or target is no reachable.
     m_activeReply->abort();
   }
+}
+
+void Downloader::runPostRequest(const QNetworkRequest &request, const QByteArray &data) {
+  m_timer->start();
+  m_activeReply = m_downloadManager->post(request, data);
+
+  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
+  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
 }
 
 void Downloader::runGetRequest(const QNetworkRequest &request) {
