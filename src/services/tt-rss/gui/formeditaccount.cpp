@@ -18,6 +18,7 @@
 
 #include "services/tt-rss/gui/formeditaccount.h"
 
+#include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -92,7 +93,37 @@ void FormEditAccount::performTest() {
   LoginResult result = factory.login();
 
   if (result.first == QNetworkReply::NoError) {
+    if (result.second.hasError()) {
+      QString error = result.second.error();
 
+      if (error == API_DISABLED) {
+        m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+                                         tr("API access on selected server is not enabled."),
+                                         tr("API access on selected server is not enabled."));
+      }
+      else if (error == LOGIN_ERROR) {
+        m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+                                         tr("Entered credentials are incorrect."),
+                                         tr("Entered credentials are incorrect."));
+      }
+      else {
+        m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+                                         tr("Other error occurred, contact developers."),
+                                         tr("Other error occurred, contact developers."));
+      }
+    }
+    else if (result.second.apiLevel() < MINIMAL_API_LEVEL) {
+      m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(result.second.apiLevel()),
+                                                                                                                                                              QString::number(MINIMAL_API_LEVEL)),
+                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
+    }
+    else {
+      m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
+                                       tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(result.second.apiLevel()),
+                                                                                                                                                   QString::number(MINIMAL_API_LEVEL)),
+                                       tr("Tiny Tiny RSS server is okay."));
+    }
   }
   else {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
