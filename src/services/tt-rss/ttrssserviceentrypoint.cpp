@@ -20,6 +20,11 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "gui/dialogs/formmain.h"
+#include "services/tt-rss/gui/formeditaccount.h"
+#include "services/tt-rss/ttrssserviceroot.h"
+
+#include <QPointer>
 
 
 TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
@@ -59,7 +64,11 @@ QString TtRssServiceEntryPoint::code() {
 }
 
 ServiceRoot *TtRssServiceEntryPoint::createNewRoot() {
-  return NULL;
+  QPointer<FormEditAccount> form_acc = new FormEditAccount(qApp->mainForm());
+  TtRssServiceRoot *new_root = form_acc.data()->execForCreate();
+  delete form_acc.data();
+
+  return new_root;
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {

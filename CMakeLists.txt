@@ -439,6 +439,7 @@ set(APP_SOURCES
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp
   src/services/tt-rss/ttrssserviceroot.cpp
+  src/services/tt-rss/gui/formeditaccount.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp
@@ -555,6 +556,7 @@ set(APP_HEADERS
 
   # TT-RSS service headers.
   src/services/tt-rss/ttrssserviceroot.h
+  src/services/tt-rss/gui/formeditaccount.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h
@@ -594,6 +596,9 @@ set(APP_FORMS
   src/services/standard/gui/formstandardcategorydetails.ui
   src/services/standard/gui/formstandardfeeddetails.ui
   src/services/standard/gui/formstandardimportexport.ui
+
+  # TT-RSS service forms.
+  src/services/tt-rss/gui/formeditaccount.ui
 
   # NETWORK forms.
   src/network-web/downloadmanager.ui
