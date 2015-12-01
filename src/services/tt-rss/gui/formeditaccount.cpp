@@ -19,6 +19,8 @@
 #include "services/tt-rss/gui/formeditaccount.h"
 
 #include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "miscellaneous/iconfactory.h"
 
 
 FormEditAccount::FormEditAccount(QWidget *parent)
@@ -26,13 +28,23 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   m_ui->setupUi(this);
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
+  setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
+  setWindowIcon(qApp->icons()->fromTheme(QSL("application-ttrss")));
+
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account."));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account."));
-  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your TT-RSS instance WITHOUT trailing \"/api/\" string."));
+  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("FULL URL of your TT-RSS instance WITH trailing \"/api/\" string."));
   m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
 
+  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_txtUsername->lineEdit());
+  setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
+  setTabOrder(m_ui->m_txtPassword->lineEdit(), m_ui->m_checkShowPassword);
+  setTabOrder(m_ui->m_checkShowPassword, m_ui->m_btnTestSetup);
+  setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
+
+  connect(m_ui->m_checkShowPassword, SIGNAL(toggled(bool)), this, SLOT(displayPassword(bool)));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(onClickedOk()));
   connect(m_ui->m_buttonBox, SIGNAL(rejected()), this, SLOT(onClickedCancel()));
   connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onPasswordChanged()));
@@ -47,6 +59,7 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   onUsernameChanged();
   onUrlChanged();
   checkOkButton();
+  displayPassword(false);
 }
 
 FormEditAccount::~FormEditAccount() {
@@ -65,8 +78,27 @@ void FormEditAccount::execForEdit(TtRssServiceRoot *existing_root) {
   exec();
 }
 
-void FormEditAccount::performTest() {
+void FormEditAccount::displayPassword(bool display) {
+  m_ui->m_txtPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
+}
 
+void FormEditAccount::performTest() {
+  TtRssNetworkFactory factory;
+
+  factory.setUsername(m_ui->m_txtUsername->lineEdit()->text());
+  factory.setPassword(m_ui->m_txtPassword->lineEdit()->text());
+  factory.setUrl(m_ui->m_txtUrl->lineEdit()->text());
+
+  LoginResult result = factory.login();
+
+  if (result.first == QNetworkReply::NoError) {
+
+  }
+  else {
+    m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+                                     tr("Network error, have you entered correct Tiny Tiny RSS API endpoint?"),
+                                     tr("Network error, have you entered correct Tiny Tiny RSS API endpoint?"));
+  }
 }
 
 void FormEditAccount::onClickedOk() {

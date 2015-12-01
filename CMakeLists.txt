@@ -440,6 +440,7 @@ set(APP_SOURCES
   src/services/tt-rss/ttrssserviceentrypoint.cpp
   src/services/tt-rss/ttrssserviceroot.cpp
   src/services/tt-rss/gui/formeditaccount.cpp
+  src/services/tt-rss/network/ttrssnetworkfactory.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp

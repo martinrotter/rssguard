@@ -41,6 +41,7 @@ class FormEditAccount : public QDialog {
     void execForEdit(TtRssServiceRoot *existing_root);
 
   private slots:
+    void displayPassword(bool display);
     void performTest();
     void onClickedOk();
     void onClickedCancel();

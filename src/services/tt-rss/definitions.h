@@ -1,6 +1,9 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
+#define MINIMAL_API_LEVEL 10
+#define CONTENT_TYPE      "application/json; charset=utf-8"
+
 // Error when user needs to login before making an operation.
 #define NOT_LOGGED_IN     "NOT_LOGGED_IN"
 
