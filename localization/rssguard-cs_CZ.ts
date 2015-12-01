@@ -1103,131 +1103,131 @@ nebo tato funkcionality dosud není implementována.</translation>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat &amp;novou položku</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat &amp;všechny položky</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat &amp;vybrané položky</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Upravit vybranou položku</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat &amp;vybranou položku</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané položky jako &amp;přečtené</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označí všechny zprávy (vyjma zprávových filtrů) z vybraných položek jako přečtené.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit vybrané položky jako &amp;nepřečtené</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označí všechny zprávy (vyjma zprávových filtrů) z vybraných položek jako nepřečtené.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vyčistit vybrané položky</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smaže všechny zprávy z vybraných položek (umístí je do koše).</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>Označit všechno jako &amp;přečtené</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Označí zcela všechny zprávy (vyjma odpadkových košů) jako přečtené.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit vybrané položky v &amp;novinovém náhledu</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazí všechny zprávy ze vybraných položek v &quot;novinovém náhledu&quot;. Zprávy jsou automaticky označeny jako přečtené.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vyčistit všechny položky</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation type="unfinished"></translation>
+        <translation>Smaže zprávy ze všech položek (vyjma odpadkových košů).</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat &amp;další položku</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat &amp;předchozí položku</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit pouze položky s nepřečtenými zprávami</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rozbalit/sbalit položku</translation>
     </message>
     <message>
         <source>&amp;Add new service account</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Přidat nový účet</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obnovit vybrané zprávy</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádná možná akce</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories &amp;&amp; accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály &amp;&amp; zprávy &amp;&amp; účty</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Odpadkové koše</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Obnovit všechn ze všech odp. košů</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vyprázdnit všechny odp. koše</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat další &amp;nepřečtenou zprávu</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádný odpadkový koš</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Obnovit odp. koš</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyprázdnit odp. koš</translation>
     </message>
 </context>
 <context>
@@ -2721,11 +2721,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%s&apos; failed.</source>
-        <translation type="unfinished">Načítání zpráv z položky &apos;%s&apos; selhalo.</translation>
+        <translation>Načítání zpráv z položky &apos;%s&apos; selhalo.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Načítání zpráv selhalo, možná zprávy nemohly být staženy.</translation>
     </message>
 </context>
 <context>

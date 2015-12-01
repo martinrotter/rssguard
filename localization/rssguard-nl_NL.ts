@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Address</source>
-        <translation>Adres:</translation>
+        <translation>Adres</translation>
     </message>
 </context>
 <context>
@@ -183,11 +183,11 @@ Merk ook op dat sommige hulpbronnen worden gecached door de interne web browser.
     </message>
     <message>
         <source>Settings file not copied to output directory successfully.</source>
-        <translation>Instellingen van bestand niet succesvol gekopieerd naar uitvoermap</translation>
+        <translation>Instellingen van bestand niet succesvol gekopieerd naar uitvoermap.</translation>
     </message>
     <message>
         <source>Database file not copied to output directory successfully.</source>
-        <translation>Databasebestand niet succesvol gekopieerd naar uitvoermap</translation>
+        <translation>Databasebestand niet succesvol gekopieerd naar uitvoermap.</translation>
     </message>
     <message>
         <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
@@ -219,7 +219,7 @@ Gelezen berichten gewist...</translation>
     </message>
     <message>
         <source>Recycle bin purged...</source>
-        <translation>Prullenbak gewist..</translation>
+        <translation>Prullenbak gewist...</translation>
     </message>
     <message>
         <source>Removing old messages...</source>
@@ -277,10 +277,10 @@ Gelezen berichten gewist...</translation>
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
         <translation>
-            <numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed.</numerusform>
-            <numerusform>Klik hier om feeds van deze website toe tevoegen
-Deze website bevat % n feed(s).</numerusform>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen.
+Deze website bevat %n feed.</numerusform>
+            <numerusform>Klik hier om feeds van deze website toe tevoegen.
+Deze website bevat %n feeds.</numerusform>
         </translation>
     </message>
 </context>
@@ -416,7 +416,7 @@ Klik hier om map te openen.</translation>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
         <translation>
-            <numerusform>Dowloading %1 bestand...</numerusform>
+            <numerusform>Dowloading %n bestand...</numerusform>
             <numerusform>Downloading %n bestanden...</numerusform>
         </translation>
     </message>
@@ -482,8 +482,8 @@ Klik hier om map te openen.</translation>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation>
-            <numerusform>Auto-update van %n feed</numerusform>
-            <numerusform>Auto-update van %n feed(s)</numerusform>
+            <numerusform>Auto-update van %n feed.</numerusform>
+            <numerusform>Auto-update van %n feeds.</numerusform>
         </translation>
     </message>
     <message>
@@ -510,11 +510,11 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kan geen gesleepte item overdragen naar een ander account, dir wordt niet ondersteunt.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan de drag &amp; drop bewerking niet uitvoeren</translation>
     </message>
 </context>
 <context>
@@ -552,36 +552,37 @@ Klik hier om map te openen.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde item kun je niet bewerken,dit wordt nog (niet) ondersteunt.</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je staat op het punt om gehele item &quot;%1&quot; te verwijderen.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>Weet je het zeker?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan &quot;%1&quot; niet verwijderen</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze item kan niet worden verwijderd omdat het ergens fout ging. Meld deze bug.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze item kan niet worden verwijderd omdat het niet wordt ondersteunt
+of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"></translation>
+        <translation>Invoegen van andere items</translation>
     </message>
 </context>
 <context>
@@ -661,46 +662,46 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;body&gt;%5 is een (zeer) makelijk te gebruiken feed lezer.&lt;br&gt;&lt;br&gt;Dit programma is beschikbaar onder te termen van de GNU General Public License, versie 3.&lt;br&gt;&lt;br&gt;Contact:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~Website&lt;/li&gt;&lt;li&gt;U kunt de broncode voor %5 downloaden van de website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Auteursrecht (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg nieuw account toe</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Gegevens</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished">Naam</translation>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation type="unfinished">Versie</translation>
+        <translation>Versie</translation>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished">Auteur</translation>
+        <translation>Auteur</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished">Omschrijving</translation>
+        <translation>Omschrijving</translation>
     </message>
     <message>
         <source>Cannot add account</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan account niet toevoegen</translation>
     </message>
     <message>
         <source>Some critical error occurred, report this to developers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkele kritieke fouten opgetreden, vermeld dit bij de ontwikkelaars.</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit account kan maar 1 maal worden toegevoegd.</translation>
     </message>
 </context>
 <context>
@@ -775,7 +776,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Good destination directory is specified.</source>
-        <translation>Juiste bestemmingsmap is opgegeven</translation>
+        <translation>Juiste bestemmingsmap is opgegeven.</translation>
     </message>
 </context>
 <context>
@@ -791,8 +792,8 @@ or this functionality is not implemented yet.</source>
     <message numerus="yes">
         <source> day(s)</source>
         <translation>
-            <numerusform>dag</numerusform>
-            <numerusform>dagen</numerusform>
+            <numerusform> dag</numerusform>
+            <numerusform> dagen</numerusform>
         </translation>
     </message>
     <message>
@@ -817,7 +818,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>I am ready.</source>
-        <translation>Ik ben klaar</translation>
+        <translation>Het is klaar.</translation>
     </message>
     <message>
         <source>Database cleanup is running.</source>
@@ -1056,7 +1057,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Report a bug (BitBucket)...</source>
-        <translation>Rapporteer een &amp;bug (Bitbucket)...</translation>
+        <translation>Rapporteer een bug (Bitbucket)...</translation>
     </message>
     <message>
         <source>&amp;Donate via PayPal</source>
@@ -1076,7 +1077,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Backup database/settings</source>
-        <translation>Backup database/instellingen</translation>
+        <translation>&amp;Backup database/instellingen</translation>
     </message>
     <message>
         <source>Switch message list layout orientation</source>
@@ -1096,131 +1097,131 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg &amp;nieuw item toe</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Alle items bijwerken</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Geselecteerde items bijwerken</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bewerk geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verwijder geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Markeer geselecteerde berichten als gelezen</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als gelezen.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Markeer geselecteerde item als ongelezen</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als ongelezen.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"></translation>
+        <translation>Geselecteerde items &amp;opschonen</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van geselecteerde items.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Markeer alle items als &amp;gelezen</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters mee in account.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekijk geselecteerde items in kra&amp;ntweergave</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alle berichten van geselecteerde item in een nieuwe &quot;krantweergave&quot; tabblad.Let op dat berichten niet automatisch als gelezen zijn ingesteld.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle items &amp;opschonen</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijder alle berichten van alle items.</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer &amp;volgende item</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer &amp;vorige item</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="unfinished"></translation>
+        <translation>Toon alleen ongelezen items</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uitklappen/inklappen geselecteerde item</translation>
     </message>
     <message>
         <source>&amp;Add new service account</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Voeg nieuwe service account toe</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Herstel geselecteerde berichten</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen mogelijke acties</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories &amp;&amp; accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Feeds &amp;&amp; categorieën &amp;&amp; accounts</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Prullenbak</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hestel alle prullenbakken</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Leeg alle prullenbakken</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecteer volgende &amp;ongelezen bericht</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Geeen vuilnisbak</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Hestel vuilnisbak</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"></translation>
+        <translation>Leeg vuilnisbak</translation>
     </message>
 </context>
 <context>
@@ -1886,10 +1887,8 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
         <translation>Plaatshouders: 
-
-•% 1 - titel van het geselecteerde bericht, 
-
-•% 2 - body van geselecteerde bericht.</translation>
+ •.%1 - titel van het geselecteerde bericht,
+ • %2 - body van geselecteerde bericht.</translation>
     </message>
     <message>
         <source>Save all downloaded files to</source>
@@ -1913,7 +1912,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Working database is ok.</source>
-        <translation>Werkende database is ok</translation>
+        <translation>Werkende database is ok.</translation>
     </message>
     <message>
         <source>Notification position</source>
@@ -1957,11 +1956,11 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-mail</translation>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Meldingen aanzetten</translation>
     </message>
 </context>
 <context>
@@ -2428,7 +2427,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished">Importeer feeds.</translation>
+        <translation>Importeer feeds</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
@@ -2913,9 +2912,13 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>
+
++ %n andere feed.</numerusform>
+            <numerusform>
+
++ %n andere feeds.</numerusform>
         </translation>
     </message>
     <message>
@@ -2923,15 +2926,18 @@ Ga naar RRSguard website en download het handmatig.</translation>
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkom bij %1.
+
+Check voor NIEUW materiaal in deze versie
+door te clicken op deze popup melding.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation type="unfinished">Welkom bij %1 %2. {1.?}</translation>
+        <translation>Welkom bij %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
-        <translation type="unfinished"></translation>
+        <translation>Laad eerste set van de feeds</translation>
     </message>
 </context>
 <context>
@@ -2989,9 +2995,9 @@ Deze categorie bevat geen nested items.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
     </message>
 </context>
@@ -2999,26 +3005,26 @@ Deze categorie bevat geen nested items.</translation>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished">Metadata niet opgehaald</translation>
+        <translation>Metadata niet opgehaald</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished">Metadate niet opgehaald omdat: %1.</translation>
+        <translation>Metadate niet opgehaald omdat: %1.</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">automatisch bijwerken niet gebruiken</translation>
+        <translation>automatisch bijwerken niet gebruiken</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">gebruik algemene instellingen</translation>
+        <translation>gebruik algemene instellingen</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>gebruik specifieke instellingen (%n minuut voor volgende automatische update)</numerusform>
             <numerusform>gebruik specifieke instellingen (%n minuten voor volgende automatische update)</numerusform>
         </translation>
@@ -3030,18 +3036,18 @@ Network status: %6
 Encoding: %4
 Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished">%1 (%2)%3
+        <translation>%1 (%2)%3
 
 Netwerk status: %6
 Coderen: %4
-Auto-update status: 55 </translation>
+Auto-update status: %5 </translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
     </message>
 </context>
@@ -3049,59 +3055,59 @@ Auto-update status: 55 </translation>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation type="unfinished">Je startte %1 voor de eerste keer, nu kun je de eerste set van de feeds laden</translation>
+        <translation>Je start %1 voor de eerste keer, nu kun je de eerste set van de feeds laden.</translation>
     </message>
     <message>
         <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished">Wil je de eerste set van feeds laden?</translation>
+        <translation>Wil je de eerste set van feeds laden?</translation>
     </message>
     <message>
         <source>Error when loading initial feeds</source>
-        <translation type="unfinished">Fout bij het laden van de eerste feeds</translation>
+        <translation>Fout bij het laden van de eerste feeds</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished">Ophalen van metadata</translation>
+        <translation>Ophalen van metadata</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished">Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
+        <translation>Importeren succesvol, maar sommige feeds / categorieën waren niet goed  geïmporteerd door fouten.</translation>
     </message>
     <message>
         <source>Import was completely successfull.</source>
-        <translation type="unfinished">Importeren is helemaal geslaagd.</translation>
+        <translation>Importeren is helemaal geslaagd.</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished">Voeg nieuwe categorie toe</translation>
+        <translation>Voeg nieuwe categorie toe</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished">Voeg nieuw feed toe</translation>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished">Exporteer feeds</translation>
+        <translation>Exporteer feeds</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished">Importeer feeds.</translation>
+        <translation>Importeer feeds</translation>
     </message>
 </context>
 <context>
@@ -3127,7 +3133,7 @@ Auto-update status: 55 </translation>
     </message>
     <message>
         <source>anonymous</source>
-        <translation type="unfinished"></translation>
+        <translation>Anoniem</translation>
     </message>
 </context>
 <context>
@@ -3241,14 +3247,14 @@ Ongelezen nieuws: %2</translation>
     <name>TtRssServiceRoot</name>
     <message>
         <source>This is service account TT-RSS (TinyTiny RSS) server.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit is een service account van TT-RSS (TinyTiny RSS) server.</translation>
     </message>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
     </message>
 </context>
@@ -3325,11 +3331,11 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation type="unfinished">Kan geen feed toevoegen</translation>
+        <translation>Kan geen feed toevoegen</translation>
     </message>
     <message>
         <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan geen feed toevoegen aan %1 omdat de standaard RSS/ATOM account niet aanstaat. Zit die eerst aan.</translation>
     </message>
 </context>
 <context>
@@ -3416,7 +3422,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Open the hyperlink in external browser.</source>
-        <translation>Open de hyperlink in externe browser</translation>
+        <translation>Open de hyperlink in externe browser.</translation>
     </message>
     <message>
         <source>Print</source>
@@ -3444,7 +3450,7 @@ Ongelezen nieuws: %2</translation>
     </message>
     <message>
         <source>Save target as...</source>
-        <translation>Doel opslaan als..</translation>
+        <translation>Doel opslaan als...</translation>
     </message>
     <message>
         <source>Download content from the hyperlink.</source>
