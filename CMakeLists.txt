@@ -343,6 +343,9 @@ set(APP_SOURCES
   src/qtsingleapplication/qtsinglecoreapplication.cpp
   src/qtsingleapplication/qtsingleapplication.cpp
 
+  # QT-JSON sources.
+  src/qt-json/json.cpp
+
   # GUI sources.
   src/gui/dialogs/formmain.cpp
   src/gui/dialogs/formsettings.cpp
