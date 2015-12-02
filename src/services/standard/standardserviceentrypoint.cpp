@@ -64,8 +64,18 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
   QSqlQuery query(database);
 
-  if (query.exec(QSL("UPDATE Information SET inf_value = 1 WHERE inf_key = 'standard_account_enabled';"))) {
-    return new StandardServiceRoot(true);
+  // First obtain the ID, which can be assigned to this new account.
+  if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
+    return NULL;
+  }
+
+  int id_to_assing = query.value(0).toInt() + 1;
+
+  if (query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assing),
+                                                                                   SERVICE_CODE_STD_RSS))) {
+    StandardServiceRoot *root = new StandardServiceRoot(true);
+    root->setId(id_to_assing);
+    return root;
   }
   else {
     return NULL;
@@ -78,9 +88,10 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() {
   QSqlQuery query(database);
   QList<ServiceRoot*> roots;
 
-  if (query.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'standard_account_enabled';"))) {
-    if (query.next() && query.value(0).toInt() == 1) {
+  if (query.exec(QString("SELECT id FROM Accounts WHERE type = '%1';").arg(SERVICE_CODE_STD_RSS))) {
+    while (query.next()) {
       StandardServiceRoot *root = new StandardServiceRoot(true);
+      root->setId(query.value(0).toInt());
       roots.append(root);
     }
   }

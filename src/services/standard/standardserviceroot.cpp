@@ -131,7 +131,7 @@ bool StandardServiceRoot::deleteViaGui() {
   }
 
   // Switch "existence" flag.
-  bool data_removed = QSqlQuery(connection).exec(QSL("UPDATE Information SET inf_value = 0 WHERE inf_key = 'standard_account_enabled';"));
+  bool data_removed = QSqlQuery(connection).exec(QString("DELETE FROM Accounts WHERE id = %1;").arg(QString::number(id())));
 
   if (data_removed) {
     requestItemRemoval(this);

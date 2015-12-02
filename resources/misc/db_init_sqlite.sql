@@ -8,7 +8,12 @@ CREATE TABLE IF NOT EXISTS Information (
 -- !
 INSERT INTO Information VALUES (1, 'schema_version', '4');
 -- !
-INSERT INTO Information (inf_key, inf_value) VALUES ('standard_account_enabled', 1);
+CREATE TABLE IF NOT EXISTS Accounts (
+  id              INTEGER     PRIMARY KEY,
+  type            TEXT        NOT NULL
+);
+-- !
+INSERT INTO Accounts (type) VALUES ('std-rss');
 -- !
 DROP TABLE IF EXISTS Categories;
 -- !
