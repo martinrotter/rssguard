@@ -21,6 +21,7 @@
  */
 
 #include <QDateTime>
+#include <QStringList>>
 #include "json.h"
 
 namespace QtJson {
