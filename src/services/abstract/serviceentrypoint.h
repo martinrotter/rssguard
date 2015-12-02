@@ -30,7 +30,6 @@ class FeedsModel;
 class ServiceEntryPoint {
   public:
     // Constructors.
-    explicit ServiceEntryPoint();
     virtual ~ServiceEntryPoint();
 
     // Creates new service root item, which is ready to be added

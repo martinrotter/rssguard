@@ -18,8 +18,5 @@
 #include "services/abstract/serviceentrypoint.h"
 
 
-ServiceEntryPoint::ServiceEntryPoint() {
-}
-
 ServiceEntryPoint::~ServiceEntryPoint() {
 }
