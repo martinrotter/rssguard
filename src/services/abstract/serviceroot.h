@@ -64,6 +64,8 @@ class ServiceRoot : public RootItem {
     virtual void start() = 0;
     virtual void stop() = 0;
 
+    // Returns the UNIQUE code of the given service.
+    // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() = 0;
 
     // This method should prepare messages for given "item" (download them maybe?)
