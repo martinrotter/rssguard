@@ -23,8 +23,10 @@
 #include "gui/dialogs/formmain.h"
 #include "services/tt-rss/gui/formeditaccount.h"
 #include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include <QPointer>
+#include <QSqlQuery>
 
 
 TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
@@ -72,5 +74,23 @@ ServiceRoot *TtRssServiceEntryPoint::createNewRoot() {
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
-  return QList<ServiceRoot*>();
+  // Check DB if standard account is enabled.
+  QSqlDatabase database = qApp->database()->connection(QSL("TtRssServiceEntryPoint"), DatabaseFactory::FromSettings);
+  QSqlQuery query(database);
+  QList<ServiceRoot*> roots;
+
+  if (query.exec("SELECT id, username, password, url FROM TtRssAccounts;")) {
+    while (query.next()) {
+      TtRssServiceRoot *root = new TtRssServiceRoot();
+      root->setAccountId(query.value(0).toInt());
+      root->network()->setUsername(query.value(1).toString());
+      root->network()->setPassword(query.value(2).toString());
+      root->network()->setUrl(query.value(3).toString());
+      root->updateTitle();
+      root->loadFromDatabase();
+      roots.append(root);
+    }
+  }
+
+  return roots;
 }

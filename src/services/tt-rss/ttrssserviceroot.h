@@ -67,10 +67,9 @@ class TtRssServiceRoot : public ServiceRoot {
 
     void saveToDatabase();
     void loadFromDatabase();
-
-  private:
     void updateTitle();
 
+  private:
     TtRssNetworkFactory *m_network;
 };
 

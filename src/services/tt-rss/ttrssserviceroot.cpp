@@ -184,7 +184,7 @@ void TtRssServiceRoot::saveToDatabase() {
 }
 
 void TtRssServiceRoot::loadFromDatabase() {
-  // Account ID is set, load connection data from DB.
+  // TODO: Load feeds/categories from DB.
 }
 
 void TtRssServiceRoot::updateTitle() {
