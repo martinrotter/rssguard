@@ -43,7 +43,7 @@
 #include <QSqlTableModel>
 
 
-StandardServiceRoot::StandardServiceRoot(bool load_from_db, RootItem *parent)
+StandardServiceRoot::StandardServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new StandardRecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
@@ -52,10 +52,6 @@ StandardServiceRoot::StandardServiceRoot(bool load_from_db, RootItem *parent)
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
   setCreationDate(QDateTime::currentDateTime());
-
-  if (load_from_db) {
-    loadFromDatabase();
-  }
 }
 
 StandardServiceRoot::~StandardServiceRoot() {
@@ -116,9 +112,11 @@ bool StandardServiceRoot::deleteViaGui() {
   QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   // Remove all messages.
-  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Messages;"))) {
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM Messages WHERE account_id = %1;").arg(accountId()))) {
     return false;
   }
+
+  // TODO: todo
 
   // Remove all feeds.
   if (!QSqlQuery(connection).exec(QSL("DELETE FROM Feeds;"))) {
@@ -131,7 +129,7 @@ bool StandardServiceRoot::deleteViaGui() {
   }
 
   // Switch "existence" flag.
-  bool data_removed = QSqlQuery(connection).exec(QString("DELETE FROM Accounts WHERE id = %1;").arg(QString::number(id())));
+  bool data_removed = QSqlQuery(connection).exec(QString("DELETE FROM Accounts WHERE id = %1;").arg(accountId()));
 
   if (data_removed) {
     requestItemRemoval(this);
@@ -223,7 +221,7 @@ bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare("UPDATE Messages SET is_read = :read WHERE is_deleted = 1;")) {
+  if (!query_read_msg.prepare("UPDATE Messages SET is_read = :read WHERE is_deleted = 1 AND account_id = :account_id;")) {
     qWarning("Query preparation failed for recycle bin read change.");
 
     db_handle.rollback();
@@ -231,6 +229,7 @@ bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
   }
 
   query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+  query_read_msg.bindValue(QSL(":account_id"), accountId());
 
   if (!query_read_msg.exec()) {
     qDebug("Query execution for recycle bin read change failed.");
@@ -305,7 +304,7 @@ bool StandardServiceRoot::restoreBin() {
   QSqlQuery query_empty_bin(db_handle);
   query_empty_bin.setForwardOnly(true);
 
-  if (!query_empty_bin.exec(QSL("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1 AND is_pdeleted = 0;"))) {
+  if (!query_empty_bin.exec(QString("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1;").arg(accountId()))) {
     qWarning("Query execution failed for recycle bin restoring.");
 
     db_handle.rollback();
@@ -336,7 +335,7 @@ bool StandardServiceRoot::emptyBin() {
   QSqlQuery query_empty_bin(db_handle);
   query_empty_bin.setForwardOnly(true);
 
-  if (!query_empty_bin.exec(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1;"))) {
+  if (!query_empty_bin.exec(QString("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = %1;").arg(accountId()))) {
     qWarning("Query execution failed for recycle bin emptying.");
 
     db_handle.rollback();
@@ -415,6 +414,7 @@ void StandardServiceRoot::loadFromDatabase(){
 
   // As the last item, add recycle bin, which is needed.
   appendChild(m_recycleBin);
+  m_recycleBin->updateCounts(true);
 }
 
 QHash<int,StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *root) {
@@ -468,10 +468,12 @@ void StandardServiceRoot::assembleFeeds(FeedAssignment feeds) {
     if (feed.first == NO_PARENT_CATEGORY) {
       // This is top-level feed, add it to the root item.
       appendChild(feed.second);
+      feed.second->updateCounts(true);
     }
     else if (categories.contains(feed.first)) {
       // This feed belongs to this category.
       categories.value(feed.first)->appendChild(feed.second);
+      feed.second->updateCounts(true);
     }
     else {
       qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));

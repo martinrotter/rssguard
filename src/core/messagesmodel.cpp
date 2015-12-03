@@ -71,8 +71,6 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-
-
 void MessagesModel::loadMessages(RootItem *item) {
   m_selectedItem = item;
 
@@ -159,7 +157,8 @@ void MessagesModel::setupHeaderData() {
                   /*: Tooltip for creation date of message.*/ tr("Created on") <<
                   /*: Tooltip for contents of message.*/ tr("Contents") <<
                   /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted") <<
-                  /*: Tooltip for attachments of message.*/ tr("Attachments");
+                  /*: Tooltip for attachments of message.*/ tr("Attachments") <<
+                  /*: Tooltip for account ID of message.*/ tr("Account ID");
 
   m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
                    tr("Is message deleted?") << tr("Is message important?") <<
@@ -167,7 +166,7 @@ void MessagesModel::setupHeaderData() {
                    tr("Title of the message.") << tr("Url of the message.") <<
                    tr("Author of the message.") << tr("Creation date of the message.") <<
                    tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?") <<
-                   tr("List of attachments.");
+                   tr("List of attachments.") << tr("Account ID of message.");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {

@@ -205,7 +205,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     // Copy all stuff.
     // WARNING: All tables belong here.
     QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
-                                  QSL("FeedsData") << QSL("Messages") << QSL("Accounts") << QSL("TtRssAccounts");
+                                  QSL("Accounts") << QSL("TtRssAccounts") << QSL("Messages");
 
     foreach (const QString &table, tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
@@ -471,8 +471,8 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 
   // Copy all stuff.
   // WARNING: All tables belong here.
-  QStringList tables; tables << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") <<
-                                QSL("Messages") << QSL("Accounts") << QSL("TtRssAccounts");
+  QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
+                                QSL("Accounts") << QSL("TtRssAccounts") << QSL("Messages");
 
   foreach (const QString &table, tables) {
     copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));

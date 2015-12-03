@@ -140,9 +140,12 @@ QList<Message> StandardFeed::undeletedMessages() const {
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents "
                          "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed;");
+                         "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
   query_read_msg.bindValue(QSL(":feed"), id());
+  query_read_msg.bindValue(QSL(":account_id"), const_cast<StandardFeed*>(this)->serviceRoot()->accountId());
+
+  // FIXME: Fix those const functions, this is fucking ugly.
 
   if (query_read_msg.exec()) {
     while (query_read_msg.next()) {
@@ -186,13 +189,15 @@ void StandardFeed::updateCounts(bool including_total_count) {
   query_all.setForwardOnly(true);
 
   if (including_total_count) {
-    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0;").arg(id())) && query_all.next()) {
+    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND account_id = %2;").arg(QString::number(id()),
+                                                                                                                            QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
       m_totalCount = query_all.value(0).toInt();
     }
   }
 
   // Obtain count of unread messages.
-  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND is_read = 0;").arg(id())) && query_all.next()) {
+  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND is_read = 0 AND account_id = %2;").arg(QString::number(id()),
+                                                                                                                                          QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
     if (status() == NewMessages && new_unread_count < m_unreadCount) {
@@ -514,8 +519,9 @@ bool StandardFeed::removeItself() {
   query_remove.setForwardOnly(true);
 
   // Remove all messages from this standard feed.
-  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
+  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
   query_remove.bindValue(QSL(":feed"), id());
+  query_remove.bindValue(QSL(":account_id"), const_cast<StandardFeed*>(this)->serviceRoot()->accountId());
 
   if (!query_remove.exec()) {
     return false;
@@ -638,6 +644,7 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
   int updated_messages = 0;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
+  int account_id = serviceRoot()->accountId();
 
   // Prepare queries.
   QSqlQuery query_select(database);
@@ -648,13 +655,13 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
   // WARNING: One feed CANNOT contain two (or more) messages with same AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "
-                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;");
+                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
 
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, url, author, date_created, contents, enclosures) "
-                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures);");
+                       "(feed, title, url, author, date_created, contents, enclosures, account_id) "
+                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures, :account_id);");
 
   if (remove_duplicates) {
     query_update.setForwardOnly(true);
@@ -685,6 +692,7 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
     query_select.bindValue(QSL(":title"), message.m_title);
     query_select.bindValue(QSL(":url"), message.m_url);
     query_select.bindValue(QSL(":author"), message.m_author);
+    query_select.bindValue(QSL(":account_id"), account_id);
     query_select.exec();
 
     QList<qint64> datetime_stamps;
@@ -706,6 +714,7 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
       query_insert.bindValue(QSL(":contents"), message.m_contents);
       query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
+      query_insert.bindValue(QSL(":account_id"), account_id);
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         setStatus(NewMessages);
@@ -790,5 +799,4 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
 
   setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-  updateCounts(true);
 }

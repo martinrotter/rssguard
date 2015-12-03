@@ -547,6 +547,7 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);
     hideColumn(MSG_DB_ENCLOSURES_INDEX);
+    hideColumn(MSG_DB_ACCOUNT_ID_INDEX);
 
     qDebug("Adjusting column resize modes for MessagesView.");
   }

@@ -40,7 +40,7 @@ class StandardServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    explicit StandardServiceRoot(bool load_from_db, RootItem *parent = NULL);
+    explicit StandardServiceRoot(RootItem *parent = NULL);
     virtual ~StandardServiceRoot();
 
     // Start/stop root.
@@ -104,6 +104,8 @@ class StandardServiceRoot : public ServiceRoot {
     bool restoreBin();
     bool emptyBin();
 
+    void loadFromDatabase();
+
   public slots:
     void addNewCategory();
     void addNewFeed();
@@ -114,8 +116,6 @@ class StandardServiceRoot : public ServiceRoot {
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed *> &feeds);
-
-    void loadFromDatabase();
 
     // Takes lists of feeds/categories and assembles
     // them into the tree structure.
