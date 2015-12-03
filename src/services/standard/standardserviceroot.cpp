@@ -116,8 +116,6 @@ bool StandardServiceRoot::deleteViaGui() {
     return false;
   }
 
-  // TODO: todo
-
   // Remove all feeds.
   if (!QSqlQuery(connection).exec(QString("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
     return false;

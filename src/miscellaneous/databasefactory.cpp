@@ -305,7 +305,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
                qPrintable(installed_db_schema),
                APP_DB_SCHEMA_VERSION);
       }
-      else {
+      else if (installed_db_schema != APP_DB_SCHEMA_VERSION) {
         qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
                qPrintable(installed_db_schema),
                APP_DB_SCHEMA_VERSION);
@@ -616,7 +616,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
                qPrintable(installed_db_schema),
                APP_DB_SCHEMA_VERSION);
       }
-      else {
+      else if (installed_db_schema != APP_DB_SCHEMA_VERSION) {
         qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
                qPrintable(installed_db_schema),
                APP_DB_SCHEMA_VERSION);
