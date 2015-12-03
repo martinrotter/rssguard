@@ -29,10 +29,13 @@ DROP TABLE IF EXISTS Categories;
 CREATE TABLE IF NOT EXISTS Categories (
   id              INTEGER     PRIMARY KEY,
   parent_id       INTEGER     NOT NULL,
-  title           TEXT        NOT NULL UNIQUE CHECK (title != ''),
+  title           TEXT        NOT NULL CHECK (title != ''),
   description     TEXT,
   date_created    INTEGER     NOT NULL CHECK (date_created != 0),
-  icon            BLOB
+  icon            BLOB,
+  account_id      INTEGER     NOT NULL,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
 DROP TABLE IF EXISTS Feeds;
@@ -45,13 +48,16 @@ CREATE TABLE IF NOT EXISTS Feeds (
   icon            BLOB,
   category        INTEGER     NOT NULL CHECK (category >= -1),
   encoding        TEXT        NOT NULL CHECK (encoding != ''),
-  url             TEXT        NOT NULL UNIQUE CHECK (url != ''),
+  url             TEXT        NOT NULL CHECK (url != ''),
   protected       INTEGER(1)  NOT NULL CHECK (protected >= 0 AND protected <= 1),
   username        TEXT,
   password        TEXT,
   update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
   update_interval INTEGER     NOT NULL CHECK (update_interval >= 5) DEFAULT 15,
-  type            INTEGER     NOT NULL CHECK (type >= 0)
+  type            INTEGER     NOT NULL CHECK (type >= 0),
+  account_id      INTEGER     NOT NULL,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
 DROP TABLE IF EXISTS Messages;

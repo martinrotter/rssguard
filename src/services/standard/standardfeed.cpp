@@ -519,9 +519,8 @@ bool StandardFeed::removeItself() {
   query_remove.setForwardOnly(true);
 
   // Remove all messages from this standard feed.
-  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
+  query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
   query_remove.bindValue(QSL(":feed"), id());
-  query_remove.bindValue(QSL(":account_id"), const_cast<StandardFeed*>(this)->serviceRoot()->accountId());
 
   if (!query_remove.exec()) {
     return false;
@@ -541,8 +540,8 @@ bool StandardFeed::addItself(RootItem *parent) {
 
   query_add_feed.setForwardOnly(true);
   query_add_feed.prepare("INSERT INTO Feeds "
-                         "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type) "
-                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type);");
+                         "(title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_interval, type, account_id) "
+                         "VALUES (:title, :description, :date_created, :icon, :category, :encoding, :url, :protected, :username, :password, :update_type, :update_interval, :type, :account_id);");
   query_add_feed.bindValue(QSL(":title"), title());
   query_add_feed.bindValue(QSL(":description"), description());
   query_add_feed.bindValue(QSL(":date_created"), creationDate().toMSecsSinceEpoch());
@@ -552,6 +551,7 @@ bool StandardFeed::addItself(RootItem *parent) {
   query_add_feed.bindValue(QSL(":url"), url());
   query_add_feed.bindValue(QSL(":protected"), (int) passwordProtected());
   query_add_feed.bindValue(QSL(":username"), username());
+  query_add_feed.bindValue(QSL(":account_id"), parent->getParentServiceRoot()->accountId());
 
   if (password().isEmpty()) {
     query_add_feed.bindValue(QSL(":password"), password());
@@ -571,16 +571,8 @@ bool StandardFeed::addItself(RootItem *parent) {
     return false;
   }
 
-  query_add_feed.prepare(QSL("SELECT id FROM Feeds WHERE url = :url;"));
-  query_add_feed.bindValue(QSL(":url"), url());
-  if (query_add_feed.exec() && query_add_feed.next()) {
-    // New feed was added, fetch is primary id from the database.
-    setId(query_add_feed.value(0).toInt());
-  }
-  else {
-    // Something failed.
-    return false;
-  }
+  // New feed was added, fetch is primary id from the database.
+  setId(query_add_feed.lastInsertId().toInt());
 
   return true;
 }

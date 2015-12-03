@@ -174,13 +174,14 @@ bool StandardCategory::addItself(RootItem *parent) {
 
   query_add.setForwardOnly(true);
   query_add.prepare("INSERT INTO Categories "
-                    "(parent_id, title, description, date_created, icon) "
-                    "VALUES (:parent_id, :title, :description, :date_created, :icon);");
+                    "(parent_id, title, description, date_created, icon, account_id) "
+                    "VALUES (:parent_id, :title, :description, :date_created, :icon, :account_id);");
   query_add.bindValue(QSL(":parent_id"), parent->id());
   query_add.bindValue(QSL(":title"), title());
   query_add.bindValue(QSL(":description"), description());
   query_add.bindValue(QSL(":date_created"), creationDate().toMSecsSinceEpoch());
   query_add.bindValue(QSL(":icon"), qApp->icons()->toByteArray(icon()));
+  query_add.bindValue(QSL(":account_id"), parent->getParentServiceRoot()->accountId());
 
   if (!query_add.exec()) {
     qDebug("Failed to add category to database: %s.", qPrintable(query_add.lastError().text()));
@@ -189,18 +190,7 @@ bool StandardCategory::addItself(RootItem *parent) {
     return false;
   }
 
-  query_add.prepare(QSL("SELECT id FROM Categories WHERE title = :title;"));
-  query_add.bindValue(QSL(":title"), title());
-
-  if (query_add.exec() && query_add.next()) {
-    // New category was added, fetch is primary id
-    // from the database.
-    setId(query_add.value(0).toInt());
-  }
-  else {
-    // Something failed.
-    return false;
-  }
+  setId(query_add.lastInsertId().toInt());
 
   return true;
 }

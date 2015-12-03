@@ -119,12 +119,12 @@ bool StandardServiceRoot::deleteViaGui() {
   // TODO: todo
 
   // Remove all feeds.
-  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Feeds;"))) {
+  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
     return false;
   }
 
   // Remove all categories.
-  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Categories;"))) {
+  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Categories WHERE account_id = %1;").arg(accountId()))) {
     return false;
   }
 

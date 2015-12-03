@@ -19,5 +19,10 @@ CREATE TABLE IF NOT EXISTS TtRssAccounts (
 ALTER TABLE Messages
 ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
 -- !
-
+ALTER TABLE Feeds
+ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
+-- !
+ALTER TABLE Categories
+ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
+-- !
 UPDATE Information SET inf_value = '4' WHERE inf_key = 'schema_version';

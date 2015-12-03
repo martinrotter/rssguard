@@ -208,6 +208,7 @@
 #define FDS_DB_UPDATE_TYPE_INDEX      11
 #define FDS_DB_UPDATE_INTERVAL_INDEX  12
 #define FDS_DB_TYPE_INDEX             13
+#define FDS_DB_ACCOUNT_ID_INDEX       14
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0
