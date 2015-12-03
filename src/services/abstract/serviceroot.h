@@ -40,6 +40,10 @@ class ServiceRoot : public RootItem {
     explicit ServiceRoot(RootItem *parent = NULL);
     virtual ~ServiceRoot();
 
+    /////////////////////////////////////////
+    // /* Members to override.
+    /////////////////////////////////////////
+
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
     //  a) Add new feed
@@ -127,6 +131,10 @@ class ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) = 0;
 
+    /////////////////////////////////////////
+    // Members to override. */
+    /////////////////////////////////////////
+
     // Obvious methods to wrap signals.
     void itemChanged(QList<RootItem*> items);
     void requestReloadMessageList(bool mark_selected_messages_read);
@@ -135,6 +143,7 @@ class ServiceRoot : public RootItem {
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
     void requestItemRemoval(RootItem *item);
 
+    // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;
     void setAccountId(int account_id);
 

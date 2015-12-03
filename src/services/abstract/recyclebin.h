@@ -31,6 +31,10 @@ class RecycleBin : public RootItem {
     QVariant data(int column, int role) const;
 
   public slots:
+    /////////////////////////////////////////
+    // /* Members to override.
+    /////////////////////////////////////////
+
     // Empties the bin - removes all messages from it (does not remove
     // them from DB, just permanently hide them, so that they are not
     // re-downloaded).
@@ -38,6 +42,10 @@ class RecycleBin : public RootItem {
 
     // Performs complete restoration of all messages contained in the bin
     virtual bool restore() = 0;
+
+    /////////////////////////////////////////
+    // Members to override. */
+    /////////////////////////////////////////
 };
 
 #endif // RECYCLEBIN_H

@@ -23,53 +23,55 @@
 #include <QCoreApplication>
 
 
-class FeedsModel;
+class TtRssNetworkFactory;
 
 class TtRssServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    explicit TtRssServiceRoot(RootItem *parent = NULL);
+    explicit TtRssServiceRoot(bool load_from_db, RootItem *parent = NULL);
     virtual ~TtRssServiceRoot();
+
+    void start();
+    void stop();
 
     QString code();
 
     bool canBeEdited();
     bool canBeDeleted();
     bool editViaGui();
+    bool deleteViaGui();
+
     QVariant data(int column, int role) const;
 
-    bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) {
-      return false;
-    }
+    QList<QAction *> addItemMenu();
+    QList<QAction *> serviceMenu();
 
-    bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) {
-      return false;
-    }
+    RecycleBin *recycleBin();
 
-    bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) {
-      return false;
-    }
+    bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 
-    bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) {
-      return false;
-    }
+    bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
+    bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
 
-    bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
-      return false;
-    }
+    bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
+    bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
 
-    bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
-      return false;
-    }
+    bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
+    bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
 
-    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
-      return false;
-    }
+    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
+    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
 
-    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
-      return false;
-    }
+    TtRssNetworkFactory *network() const;
+
+    void saveToDatabase();
+    void loadFromDatabase();
+
+  private:
+    void updateTitle();
+
+    TtRssNetworkFactory *m_network;
 };
 
 #endif // TTRSSSERVICEROOT_H

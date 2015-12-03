@@ -15,6 +15,15 @@ CREATE TABLE IF NOT EXISTS Accounts (
 -- !
 INSERT INTO Accounts (type) VALUES ('std-rss');
 -- !
+CREATE TABLE IF NOT EXISTS TtRssAccounts (
+  id              INTEGER     PRIMARY KEY,
+  username        TEXT        NOT NULL,
+  password        TEXT,
+  url             TEXT        NOT NULL,
+  
+  FOREIGN KEY (id) REFERENCES Accounts (id)
+);
+-- !
 DROP TABLE IF EXISTS Categories;
 -- !
 CREATE TABLE IF NOT EXISTS Categories (

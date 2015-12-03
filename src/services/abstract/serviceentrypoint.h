@@ -32,6 +32,10 @@ class ServiceEntryPoint {
     // Constructors.
     virtual ~ServiceEntryPoint();
 
+    /////////////////////////////////////////
+    // /* Members to override.
+    /////////////////////////////////////////
+
     // Creates new service root item, which is ready to be added
     // into the model. This method can for example display
     // some kind of first-time configuration dialog inside itself
@@ -68,6 +72,10 @@ class ServiceEntryPoint {
 
     // Icon of the service.
     virtual QIcon icon() = 0;
+
+    /////////////////////////////////////////
+    // Members to override. */
+    /////////////////////////////////////////
 };
 
 #endif // SERVICE_H

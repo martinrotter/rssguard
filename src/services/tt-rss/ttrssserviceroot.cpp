@@ -20,17 +20,34 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
-#include "core/feedsmodel.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
+
+#include <QSqlQuery>
+#include <QSqlError>
 
 
-TtRssServiceRoot::TtRssServiceRoot(RootItem *parent) : ServiceRoot(parent) {
-  // TODO: nadpis se bude měnit podle nastavení uživatelského
-  // jména a serveru tohoto ttrss učtu
-  setTitle(qApp->system()->getUsername() + "@ttrss");
+TtRssServiceRoot::TtRssServiceRoot(bool load_from_db, RootItem *parent)
+  : ServiceRoot(parent), m_network(new TtRssNetworkFactory) {
   setIcon(TtRssServiceEntryPoint().icon());
+  setCreationDate(QDateTime::currentDateTime());
+
+  if (load_from_db) {
+    loadFromDatabase();
+  }
 }
 
 TtRssServiceRoot::~TtRssServiceRoot() {
+  if (m_network != NULL) {
+    delete m_network;
+  }
+}
+
+void TtRssServiceRoot::start() {
+
+}
+
+void TtRssServiceRoot::stop() {
+
 }
 
 QString TtRssServiceRoot::code() {
@@ -38,6 +55,10 @@ QString TtRssServiceRoot::code() {
 }
 
 bool TtRssServiceRoot::editViaGui() {
+  return false;
+}
+
+bool TtRssServiceRoot::deleteViaGui() {
   return false;
 }
 
@@ -67,4 +88,104 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
     default:
       return ServiceRoot::data(column, role);
   }
+}
+
+QList<QAction*> TtRssServiceRoot::addItemMenu() {
+  return QList<QAction*>();
+}
+
+RecycleBin *TtRssServiceRoot::recycleBin() {
+  return NULL;
+}
+
+bool TtRssServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
+  return false;
+}
+
+QList<QAction*> TtRssServiceRoot::serviceMenu() {
+  return QList<QAction*>();
+}
+
+bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
+  return false;
+}
+
+bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
+  return false;
+}
+
+bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int, RootItem::Importance> > changes) {
+  return false;
+}
+
+bool TtRssServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int, RootItem::Importance> > changes) {
+  return false;
+}
+
+bool TtRssServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+  return false;
+}
+
+bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+  return false;
+}
+
+bool TtRssServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+  return false;
+}
+
+bool TtRssServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+  return false;
+}
+
+TtRssNetworkFactory *TtRssServiceRoot::network() const {
+  return m_network;
+}
+
+void TtRssServiceRoot::saveToDatabase() {
+  if (accountId() != NO_PARENT_CATEGORY) {
+    // We are overwritting previously saved data.
+    // TODO: todo
+
+    updateTitle();
+    itemChanged(QList<RootItem*>() << this);
+  }
+  else {
+    // We are probably saving newly added account.
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    QSqlQuery query(database);
+
+    // First obtain the ID, which can be assigned to this new account.
+    if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
+      return;
+    }
+
+    int id_to_assing = query.value(0).toInt() + 1;
+
+    bool saved = query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assing),
+                                                                                              SERVICE_CODE_TT_RSS)) &&
+                 query.exec(QString("INSERT INTO TtRssAccounts (id, username, password, url) VALUES (%1, '%2', '%3', '%4');").arg(QString::number(id_to_assing),
+                                                                                                                                  network()->username(),
+                                                                                                                                  network()->password(),
+                                                                                                                                  network()->url()));
+
+    if (saved) {
+      setAccountId(id_to_assing);
+      updateTitle();
+    }
+  }
+}
+
+void TtRssServiceRoot::loadFromDatabase() {
+  // Account ID is set, load connection data from DB.
+}
+
+void TtRssServiceRoot::updateTitle() {
+  QString host = QUrl(m_network->url()).host();
+
+  if (host.isEmpty()) {
+    host = m_network->url();
+  }
+
+  setTitle(m_network->username() + QL1S("@") + host);
 }

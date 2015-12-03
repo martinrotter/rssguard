@@ -81,6 +81,7 @@ void MessagesModel::loadMessages(RootItem *item) {
   }
   else {
     if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
+      setFilter("true != true");
       qWarning("Loading of messages from item '%s' failed.", qPrintable(item->title()));
       qApp->showGuiMessage(tr("Loading of messages from item '%s' failed.").arg(item->title()),
                            tr("Loading of messages failed, maybe messages could not be downloaded."),

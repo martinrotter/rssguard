@@ -203,7 +203,9 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
     // Copy all stuff.
-    QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") << QSL("Messages");
+    // WARNING: All tables belong here.
+    QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
+                                  QSL("FeedsData") << QSL("Messages") << QSL("Accounts") << QSL("TtRssAccounts");
 
     foreach (const QString &table, tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
@@ -468,8 +470,9 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
   copy_contents.exec(QString(QSL("ATTACH DATABASE '%1' AS 'storage';")).arg(file_database.databaseName()));
 
   // Copy all stuff.
+  // WARNING: All tables belong here.
   QStringList tables; tables << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") <<
-                                QSL("Messages");
+                                QSL("Messages") << QSL("Accounts") << QSL("TtRssAccounts");
 
   foreach (const QString &table, tables) {
     copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));

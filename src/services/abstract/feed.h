@@ -50,11 +50,22 @@ class Feed : public RootItem {
     explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();
 
+    /////////////////////////////////////////
+    // /* Members to override.
+    /////////////////////////////////////////
+
     // Performs synchronous update and returns number of newly updated messages.
+    // NOTE: This should COMPLETELY download ALL messages from online source
+    // into locale "Messages" table, INCLUDING contents (or excerpts) of those
+    // messages.
     virtual int update() = 0;
 
     // Get ALL undeleted messages from this feed in one single list.
     virtual QList<Message> undeletedMessages() const = 0;
+
+    /////////////////////////////////////////
+    // Members to override. */
+    /////////////////////////////////////////
 
     inline int autoUpdateInitialInterval() const {
       return m_autoUpdateInitialInterval;

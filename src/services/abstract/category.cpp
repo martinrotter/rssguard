@@ -23,4 +23,3 @@ Category::Category(RootItem *parent) : RootItem(parent) {
 
 Category::~Category() {
 }
-
