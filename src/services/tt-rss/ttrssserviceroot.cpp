@@ -42,7 +42,9 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 void TtRssServiceRoot::start() {
-
+  if (m_childItems.isEmpty()) {
+    syncIn();
+  }
 }
 
 void TtRssServiceRoot::stop() {
@@ -199,4 +201,10 @@ void TtRssServiceRoot::updateTitle() {
   }
 
   setTitle(m_network->username() + QL1S("@") + host);
+}
+
+void TtRssServiceRoot::syncIn() {
+  // TODO: provede stažení kanálů/kategorií
+  // ze serveru, a sloučení s aktuálními
+  // neprovádí aktualizace kanálů ani stažení počtu nepřečtených zpráv
 }
