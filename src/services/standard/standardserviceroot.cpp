@@ -363,7 +363,7 @@ void StandardServiceRoot::loadFromDatabase(){
   QSqlQuery query_categories(database);
   query_categories.setForwardOnly(true);
 
-  if (!query_categories.exec(QSL("SELECT * FROM Categories;")) || query_categories.lastError().isValid()) {
+  if (!query_categories.exec(QString("SELECT * FROM Categories WHERE account_id = %1;").arg(accountId())) || query_categories.lastError().isValid()) {
     qFatal("Query for obtaining categories failed. Error message: '%s'.",
            qPrintable(query_categories.lastError().text()));
   }
@@ -380,7 +380,7 @@ void StandardServiceRoot::loadFromDatabase(){
   QSqlQuery query_feeds(database);
   query_feeds.setForwardOnly(true);
 
-  if (!query_feeds.exec(QSL("SELECT * FROM Feeds;")) || query_feeds.lastError().isValid()) {
+  if (!query_feeds.exec(QSL("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
     qFatal("Query for obtaining feeds failed. Error message: '%s'.",
            qPrintable(query_feeds.lastError().text()));
   }
