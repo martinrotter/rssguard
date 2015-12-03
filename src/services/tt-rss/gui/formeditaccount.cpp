@@ -32,9 +32,9 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("application-ttrss")));
 
-  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account."));
-  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account."));
-  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("FULL URL of your TT-RSS instance WITH trailing \"/api/\" string."));
+  m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
+  m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
+  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("FULL URL of your TT-RSS instance WITH trailing \"/api/\" string"));
   m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
@@ -48,12 +48,12 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   connect(m_ui->m_checkShowPassword, SIGNAL(toggled(bool)), this, SLOT(displayPassword(bool)));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(onClickedOk()));
   connect(m_ui->m_buttonBox, SIGNAL(rejected()), this, SLOT(onClickedCancel()));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onPasswordChanged()));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onUsernameChanged()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(onUrlChanged()));
-  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(checkOkButton()));
-  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(checkOkButton()));
+  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onPasswordChanged()));
+  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUsernameChanged()));
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged()));
+  connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
+  connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
   connect(m_ui->m_btnTestSetup, SIGNAL(clicked()), this, SLOT(performTest()));
 
   onPasswordChanged();
@@ -76,6 +76,11 @@ TtRssServiceRoot *FormEditAccount::execForCreate() {
 void FormEditAccount::execForEdit(TtRssServiceRoot *existing_root) {
   setWindowTitle(tr("Edit existing Tiny Tiny RSS account"));
   m_editableRoot = existing_root;
+
+  m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->username());
+  m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->password());
+  m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
+
   exec();
 }
 

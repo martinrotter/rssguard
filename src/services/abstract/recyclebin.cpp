@@ -35,7 +35,7 @@ RecycleBin::~RecycleBin() {
 QVariant RecycleBin::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
-      return tr("Recycle bin\n%1").arg(tr("%n deleted message(s).", 0, countOfAllMessages()));
+      return tr("Recycle bin\n\n%1").arg(tr("%n deleted message(s).", 0, countOfAllMessages()));
 
     default:
       return RootItem::data(column, role);

@@ -115,6 +115,18 @@ QVariant RootItem::data(int column, int role) const {
   Q_UNUSED(role)
 
   switch (role) {
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        return m_title;
+      }
+      else if (column == FDS_MODEL_COUNTS_INDEX) {
+        //: Tooltip for "unread" column of feed list.
+        return tr("%n unread message(s).", 0, countOfUnreadMessages());
+      }
+      else {
+        return QVariant();
+      }
+
     case Qt::EditRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;

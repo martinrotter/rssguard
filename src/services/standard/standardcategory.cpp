@@ -77,12 +77,8 @@ QVariant StandardCategory::data(int column, int role) const {
                                 tr("\nThis category does not contain any nested items.") :
                                 QString());
       }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", "", countOfUnreadMessages());
-      }
       else {
-        return QVariant();
+        return Category::data(column, role);
       }
 
     default:

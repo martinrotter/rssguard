@@ -19,11 +19,14 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "gui/dialogs/formmain.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "services/tt-rss/gui/formeditaccount.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QPointer>
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
@@ -51,6 +54,9 @@ QString TtRssServiceRoot::code() {
 }
 
 bool TtRssServiceRoot::editViaGui() {
+  QPointer<FormEditAccount> form_pointer = new FormEditAccount(qApp->mainForm());
+  form_pointer.data()->execForEdit(this);
+  delete form_pointer.data();
   return false;
 }
 
@@ -71,14 +77,12 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
     case Qt::ToolTipRole:
       // TODO: zobrazovat pokročile informace a statistiky.
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return tr("This is service account TT-RSS (TinyTiny RSS) server.");
-      }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", 0, countOfUnreadMessages());
+        return tr("Tiny Tiny RSS\n\nAccount ID: %3\nUsername: %1\nServer: %2").arg(m_network->username(),
+                                                                                   m_network->url(),
+                                                                                   QString::number(accountId()));
       }
       else {
-        return QVariant();
+        return ServiceRoot::data(column, role);
       }
 
     default:

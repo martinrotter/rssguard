@@ -144,12 +144,8 @@ QVariant StandardServiceRoot::data(int column, int role) const {
       if (column == FDS_MODEL_TITLE_INDEX) {
         return tr("This is service account for standard RSS/RDF/ATOM feeds.\n\nAccount ID: %1").arg(accountId());
       }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", 0, countOfUnreadMessages());
-      }
       else {
-        return QVariant();
+        return ServiceRoot::data(column, role);
       }
 
     default:

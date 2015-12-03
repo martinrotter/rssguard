@@ -416,12 +416,8 @@ QVariant StandardFeed::data(int column, int role) const {
                                                 auto_update_string,
                                                 NetworkFactory::networkErrorText(m_networkError));
       }
-      else if (column == FDS_MODEL_COUNTS_INDEX) {
-        //: Tooltip for "unread" column of feed list.
-        return tr("%n unread message(s).", 0, countOfUnreadMessages());
-      }
       else {
-        return QVariant();
+        return Feed::data(column, role);
       }
 
     case Qt::ForegroundRole:
