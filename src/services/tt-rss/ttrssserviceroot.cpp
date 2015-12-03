@@ -42,7 +42,7 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 void TtRssServiceRoot::start() {
-  if (m_childItems.isEmpty()) {
+  if (childItems().isEmpty()) {
     syncIn();
   }
 }
