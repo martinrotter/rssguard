@@ -184,6 +184,7 @@
 #define MSG_DB_PDELETED_INDEX     10
 #define MSG_DB_ENCLOSURES_INDEX   11
 #define MSG_DB_ACCOUNT_ID_INDEX   12
+#define MSG_DB_CUSTOM_ID_INDEX    13
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0
@@ -192,6 +193,8 @@
 #define CAT_DB_DESCRIPTION_INDEX  3
 #define CAT_DB_DCREATED_INDEX     4
 #define CAT_DB_ICON_INDEX         5
+#define CAT_DB_ACCOUNT_ID_INDEX   6
+#define CAT_DB_CUSTOM_ID_INDEX    7
 
 // Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
 #define FDS_DB_ID_INDEX               0
@@ -209,6 +212,7 @@
 #define FDS_DB_UPDATE_INTERVAL_INDEX  12
 #define FDS_DB_TYPE_INDEX             13
 #define FDS_DB_ACCOUNT_ID_INDEX       14
+#define FDS_DB_CUSTOM_ID_INDEX        15
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

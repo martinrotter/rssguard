@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS Categories (
   date_created    BIGINT        NOT NULL CHECK (date_created != 0),
   icon            BLOB,
   account_id      INTEGER       NOT NULL,
+  custom_id       INTEGER,
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
@@ -61,6 +62,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   update_interval INTEGER       NOT NULL DEFAULT 15 CHECK (update_interval >= 5),
   type            INTEGER       NOT NULL CHECK (type >= 0),
   account_id      INTEGER       NOT NULL,
+  custom_id       INTEGER,
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
@@ -81,6 +83,7 @@ CREATE TABLE IF NOT EXISTS Messages (
   is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
   enclosures      TEXT,
   account_id      INTEGER     NOT NULL,
+  custom_id       INTEGER,
   
   FOREIGN KEY (feed) REFERENCES Feeds (id),
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
