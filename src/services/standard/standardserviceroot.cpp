@@ -144,7 +144,7 @@ QVariant StandardServiceRoot::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return tr("This is service account for standard RSS/RDF/ATOM feeds.");
+        return tr("This is service account for standard RSS/RDF/ATOM feeds.\n\nAccount ID: %1").arg(accountId());
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.

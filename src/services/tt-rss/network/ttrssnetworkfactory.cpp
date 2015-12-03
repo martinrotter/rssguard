@@ -22,7 +22,8 @@
 #include "network-web/networkfactory.h"
 
 
-TtRssNetworkFactory::TtRssNetworkFactory() : m_url(QString()) {
+TtRssNetworkFactory::TtRssNetworkFactory()
+  : m_url(QString()), m_username(QString()), m_password(QString()), m_session_Id(QString()) {
 }
 
 TtRssNetworkFactory::~TtRssNetworkFactory() {
@@ -65,7 +66,9 @@ LoginResult TtRssNetworkFactory::login() {
     return LoginResult(res.first, TtRssLoginResponse());
   }
   else {
-    return LoginResult(res.first, TtRssLoginResponse(QString::fromUtf8(result)));
+    LoginResult result(res.first, TtRssLoginResponse(QString::fromUtf8(result)));
+    m_session_Id = result.second.sessionId();
+    return result;
   }
 }
 

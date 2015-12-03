@@ -135,6 +135,9 @@ class ServiceRoot : public RootItem {
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
     void requestItemRemoval(RootItem *item);
 
+    int accountId() const;
+    void setAccountId(int account_id);
+
   signals:
     // Emitted if data in any item belonging to this root are changed.
     void dataChanged(QList<RootItem*> items);
@@ -143,6 +146,9 @@ class ServiceRoot : public RootItem {
 
     void itemReassignmentRequested(RootItem *item, RootItem *new_parent);
     void itemRemovalRequested(RootItem *item);
+
+  private:
+    int m_accountId;
 };
 
 #endif // SERVICEROOT_H

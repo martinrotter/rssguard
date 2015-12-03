@@ -74,7 +74,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
   if (query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assing),
                                                                                    SERVICE_CODE_STD_RSS))) {
     StandardServiceRoot *root = new StandardServiceRoot(true);
-    root->setId(id_to_assing);
+    root->setAccountId(id_to_assing);
     return root;
   }
   else {
@@ -91,7 +91,7 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() {
   if (query.exec(QString("SELECT id FROM Accounts WHERE type = '%1';").arg(SERVICE_CODE_STD_RSS))) {
     while (query.next()) {
       StandardServiceRoot *root = new StandardServiceRoot(true);
-      root->setId(query.value(0).toInt());
+      root->setAccountId(query.value(0).toInt());
       roots.append(root);
     }
   }

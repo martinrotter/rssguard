@@ -20,7 +20,7 @@
 #include "core/feedsmodel.h"
 
 
-ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent) {
+ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
   setKind(RootItemKind::ServiceRoot);
 }
 
@@ -45,4 +45,12 @@ void ServiceRoot::requestItemReassignment(RootItem *item, RootItem *new_parent) 
 
 void ServiceRoot::requestItemRemoval(RootItem *item) {
   emit itemRemovalRequested(item);
+}
+
+int ServiceRoot::accountId() const {
+  return m_accountId;
+}
+
+void ServiceRoot::setAccountId(int account_id) {
+  m_accountId = account_id;
 }

@@ -73,6 +73,7 @@ class TtRssNetworkFactory {
     QString m_url;
     QString m_username;
     QString m_password;
+    QString m_session_Id;
 };
 
 #endif // TTRSSNETWORKFACTORY_H
