@@ -53,6 +53,15 @@ void TtRssNetworkFactory::setPassword(const QString &password) {
   m_password = password;
 }
 
+// TODO: ukazky
+
+/* ukazky
+ * prihlaseni - curl -L -d '{"op":"login","user":"admin","password":"XXX"}' http://rss.rotterovi.eu/api/
+ * ziska seznam VSECH zprav - curl -L -d '{"sid":"xxx","op":"getHeadlines","feed_id":-4,"include_nested":true,"include_attachments":true,"show_content":true}' http://rss.rotterovi.eu/api/
+ * seznam kategorii vcetne unread countu - curl -L -d '{"sid":"e9528741496d0d6aa5021e67ca519823","op":"getCategories","include_nested":true,"include_empty":false}' http://rss.rotterovi.eu/api/
+ * */
+
+
 LoginResult TtRssNetworkFactory::login() {
   QtJson::JsonObject json;
   json["op"] = "login";
