@@ -68,14 +68,14 @@ LoginResult TtRssNetworkFactory::login() {
   json["user"] = m_username;
   json["password"] = m_password;
 
-  QByteArray result;
-  NetworkResult res = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result);
+  QByteArray result_raw;
+  NetworkResult res = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
 
   if (res.first != QNetworkReply::NoError) {
     return LoginResult(res.first, TtRssLoginResponse());
   }
   else {
-    LoginResult result(res.first, TtRssLoginResponse(QString::fromUtf8(result)));
+    LoginResult result(res.first, TtRssLoginResponse(QString::fromUtf8(result_raw)));
     m_session_Id = result.second.sessionId();
     return result;
   }

@@ -119,12 +119,12 @@ bool StandardServiceRoot::deleteViaGui() {
   // TODO: todo
 
   // Remove all feeds.
-  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
     return false;
   }
 
   // Remove all categories.
-  if (!QSqlQuery(connection).exec(QSL("DELETE FROM Categories WHERE account_id = %1;").arg(accountId()))) {
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM Categories WHERE account_id = %1;").arg(accountId()))) {
     return false;
   }
 
@@ -376,7 +376,7 @@ void StandardServiceRoot::loadFromDatabase(){
   QSqlQuery query_feeds(database);
   query_feeds.setForwardOnly(true);
 
-  if (!query_feeds.exec(QSL("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
+  if (!query_feeds.exec(QString("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
     qFatal("Query for obtaining feeds failed. Error message: '%s'.",
            qPrintable(query_feeds.lastError().text()));
   }
