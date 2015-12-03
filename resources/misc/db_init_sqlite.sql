@@ -80,6 +80,5 @@ CREATE TABLE IF NOT EXISTS Messages (
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
   
-  FOREIGN KEY (feed) REFERENCES Feeds (id),
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );

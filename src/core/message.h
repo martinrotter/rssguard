@@ -50,7 +50,7 @@ class Message {
     QString m_contents;
     QDateTime m_created;
     int m_feedId;
-
+    QString m_customId;
 
     QList<Enclosure> m_enclosures;
 
