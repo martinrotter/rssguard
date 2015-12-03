@@ -70,6 +70,8 @@ class TtRssServiceRoot : public ServiceRoot {
     void updateTitle();
 
   private:
+    void syncIn();
+
     TtRssNetworkFactory *m_network;
 };
 
