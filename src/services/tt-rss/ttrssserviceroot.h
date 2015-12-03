@@ -29,7 +29,7 @@ class TtRssServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    explicit TtRssServiceRoot(bool load_from_db, RootItem *parent = NULL);
+    explicit TtRssServiceRoot(RootItem *parent = NULL);
     virtual ~TtRssServiceRoot();
 
     void start();

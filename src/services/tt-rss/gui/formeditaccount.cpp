@@ -136,7 +136,7 @@ void FormEditAccount::onClickedOk() {
   if (m_editableRoot == NULL) {
     // We want to confirm newly created account.
     // So save new account into DB, setup its properties.
-    m_editableRoot = new TtRssServiceRoot(false);
+    m_editableRoot = new TtRssServiceRoot();
   }
 
   m_editableRoot->network()->setUrl(m_ui->m_txtUrl->lineEdit()->text());

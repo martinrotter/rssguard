@@ -26,14 +26,10 @@
 #include <QSqlError>
 
 
-TtRssServiceRoot::TtRssServiceRoot(bool load_from_db, RootItem *parent)
+TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_network(new TtRssNetworkFactory) {
   setIcon(TtRssServiceEntryPoint().icon());
   setCreationDate(QDateTime::currentDateTime());
-
-  if (load_from_db) {
-    loadFromDatabase();
-  }
 }
 
 TtRssServiceRoot::~TtRssServiceRoot() {
@@ -145,10 +141,21 @@ TtRssNetworkFactory *TtRssServiceRoot::network() const {
 void TtRssServiceRoot::saveToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.
-    // TODO: todo
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    QSqlQuery query(database);
 
-    updateTitle();
-    itemChanged(QList<RootItem*>() << this);
+    query.prepare("UPDATE TtRssAccounts "
+                  "SET username = :username, password = :password, url = :url "
+                  "WHERE id = :id;");
+    query.bindValue(":username", m_network->username());
+    query.bindValue(":password", m_network->password());
+    query.bindValue(":url", m_network->url());
+    query.bindValue(":id", accountId());
+
+    if (query.exec()) {
+      updateTitle();
+      itemChanged(QList<RootItem*>() << this);
+    }
   }
   else {
     // We are probably saving newly added account.
