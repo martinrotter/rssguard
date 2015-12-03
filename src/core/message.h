@@ -51,6 +51,7 @@ class Message {
     QDateTime m_created;
     int m_feedId;
 
+
     QList<Enclosure> m_enclosures;
 
     // Is true if "created" date was obtained directly
