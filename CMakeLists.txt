@@ -439,6 +439,8 @@ set(APP_SOURCES
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp
   src/services/tt-rss/ttrssserviceroot.cpp
+  src/services/tt-rss/ttrssfeed.cpp
+  src/services/tt-rss/ttrsscategory.cpp
   src/services/tt-rss/gui/formeditaccount.cpp
   src/services/tt-rss/network/ttrssnetworkfactory.cpp
 
