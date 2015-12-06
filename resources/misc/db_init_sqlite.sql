@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Messages (
   is_read         INTEGER(1)  NOT NULL CHECK (is_read >= 0 AND is_read <= 1) DEFAULT (0),
   is_deleted      INTEGER(1)  NOT NULL CHECK (is_deleted >= 0 AND is_deleted <= 1) DEFAULT (0),
   is_important    INTEGER(1)  NOT NULL CHECK (is_important >= 0 AND is_important <= 1) DEFAULT (0),
-  feed            INTEGER     NOT NULL,
+  feed            TEXT,
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT        NOT NULL,
   author          TEXT        NOT NULL,

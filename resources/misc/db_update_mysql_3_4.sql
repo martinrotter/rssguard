@@ -37,4 +37,7 @@ ADD COLUMN custom_id  TEXT;
 ALTER TABLE Messages
 DROP FOREIGN KEY feed;
 -- !
+ALTER TABLE Messages
+MODIFY Feeds TEXT;
+-- !
 UPDATE Information SET inf_value = '4' WHERE inf_key = 'schema_version';

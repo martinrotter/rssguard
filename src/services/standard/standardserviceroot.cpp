@@ -586,7 +586,7 @@ QStringList StandardServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
   stringy_ids.reserve(feeds.size());
 
   foreach (Feed *feed, feeds) {
-    stringy_ids.append(QString::number(feed->id()));
+    stringy_ids.append(QString("'%1'").arg(QString::number(feed->id())));
   }
 
   return stringy_ids;
@@ -632,13 +632,7 @@ bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
   }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
-    QStringList stringy_ids;
-
-    foreach (Feed *child, children) {
-      stringy_ids.append(QString::number(child->id()));
-    }
-
-    QString filter_clause = stringy_ids.join(QSL(", "));
+    QString filter_clause = textualFeedIds(children).join(QSL(", "));
 
     model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0")).arg(filter_clause));
     qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));

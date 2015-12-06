@@ -189,15 +189,15 @@ void StandardFeed::updateCounts(bool including_total_count) {
   query_all.setForwardOnly(true);
 
   if (including_total_count) {
-    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND account_id = %2;").arg(QString::number(id()),
-                                                                                                                            QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
+    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = '%1' AND is_deleted = 0 AND account_id = %2;").arg(QString::number(id()),
+                                                                                                                              QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
       m_totalCount = query_all.value(0).toInt();
     }
   }
 
   // Obtain count of unread messages.
-  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = %1 AND is_deleted = 0 AND is_read = 0 AND account_id = %2;").arg(QString::number(id()),
-                                                                                                                                          QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
+  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = '%1' AND is_deleted = 0 AND is_read = 0 AND account_id = %2;").arg(QString::number(id()),
+                                                                                                                                            QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
     if (status() == NewMessages && new_unread_count < m_unreadCount) {
