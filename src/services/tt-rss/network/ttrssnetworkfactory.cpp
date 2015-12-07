@@ -207,13 +207,16 @@ TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString &
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {
 }
 
-QList<RootItem *> TtRssGetFeedsCategoriesResponse::feedsCategories() {
+QList<RootItem*> TtRssGetFeedsCategoriesResponse::feedsCategories() {
   QList<RootItem*> items;
 
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
     QList<QVariant> items_to_process = m_rawContent["content"].toMap()["categories"].toMap()["items"].toList();
 
+    while (!items_to_process.isEmpty()) {
+
+    }
   }
 
   return items;
