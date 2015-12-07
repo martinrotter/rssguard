@@ -25,6 +25,8 @@
 #include <QNetworkReply>
 
 
+class RootItem;
+
 class TtRssResponse {
   public:
     explicit TtRssResponse(const QString &raw_content = QString());
@@ -34,6 +36,9 @@ class TtRssResponse {
 
     int seq() const;
     int status() const;
+    QString error() const;
+    bool hasError() const;
+    bool isNotLoggedIn() const;
 
   protected:
     QtJson::JsonObject m_rawContent;
@@ -46,11 +51,24 @@ class TtRssLoginResponse : public TtRssResponse {
 
     int apiLevel() const;
     QString sessionId() const;
-    QString error() const;
-    bool hasError() const;
 };
 
 typedef QPair<QNetworkReply::NetworkError,TtRssLoginResponse> LoginResult;
+typedef QPair<QNetworkReply::NetworkError,TtRssResponse> LogoutResult;
+
+class TtRssGetFeedTreeResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetFeedTreeResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetFeedTreeResponse();
+
+    QList<RootItem*> getTree();
+
+  private:
+    void processSubtree(bool is_top_level, QList<RootItem*> &top_level_items,
+                        RootItem *parent, const QList<QVariant> &items);
+};
+
+typedef QPair<QNetworkReply::NetworkError,TtRssGetFeedTreeResponse> GetFeedTreeResult;
 
 class TtRssNetworkFactory {
   public:
@@ -67,13 +85,21 @@ class TtRssNetworkFactory {
     void setPassword(const QString &password);
 
     // Operations.
+
+    // Logs user in.
     LoginResult login();
 
-  private:
+    // Logs user out.
+    LogoutResult logout();
+
+    // Gets tree from feeds/categories obtained from the server.
+    GetFeedTreeResult getFeedTree();
+
+  private:   
     QString m_url;
     QString m_username;
     QString m_password;
-    QString m_session_Id;
+    QString m_sessionId;
 };
 
 #endif // TTRSSNETWORKFACTORY_H

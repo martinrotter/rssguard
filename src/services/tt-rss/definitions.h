@@ -23,4 +23,7 @@
 // Logout.
 #define LOGOUT_OK         "OK"
 
+// Get feed tree.
+#define GFT_TYPE_CATEGORY "category"
+
 #endif // DEFINITIONS_H

@@ -44,8 +44,9 @@ class TtRssServiceRoot : public ServiceRoot {
 
     QVariant data(int column, int role) const;
 
-    QList<QAction *> addItemMenu();
-    QList<QAction *> serviceMenu();
+    QList<QAction*> addItemMenu();
+    QList<QAction*> serviceMenu();
+    QList<QAction*> contextMenu();
 
     RecycleBin *recycleBin();
 
@@ -69,8 +70,12 @@ class TtRssServiceRoot : public ServiceRoot {
     void loadFromDatabase();
     void updateTitle();
 
-  private:
+  private slots:
     void syncIn();
+
+  private:
+    QAction *m_actionSyncIn;
+    QList<QAction*> m_serviceMenu;
 
     TtRssNetworkFactory *m_network;
 };

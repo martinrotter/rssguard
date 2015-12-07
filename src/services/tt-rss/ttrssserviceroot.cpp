@@ -30,7 +30,7 @@
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_network(new TtRssNetworkFactory) {
+  : ServiceRoot(parent), m_network(new TtRssNetworkFactory), m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()) {
   setIcon(TtRssServiceEntryPoint().icon());
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -63,7 +63,16 @@ bool TtRssServiceRoot::editViaGui() {
 }
 
 bool TtRssServiceRoot::deleteViaGui() {
-  return false;
+  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
+  // all the categories/feeds and messages.
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM TtRssAccounts WHERE id = %1;").arg(accountId()))) {
+    return false;
+  }
+  else {
+    return ServiceRoot::deleteViaGui();
+  }
 }
 
 bool TtRssServiceRoot::canBeEdited() {
@@ -105,7 +114,19 @@ bool TtRssServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model
 }
 
 QList<QAction*> TtRssServiceRoot::serviceMenu() {
-  return QList<QAction*>();
+  if (m_serviceMenu.isEmpty()) {
+    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("item-sync")), tr("Sync in"), this);
+
+    connect(m_actionSyncIn, SIGNAL(triggered()), this, SLOT(syncIn()));
+
+    m_serviceMenu.append(m_actionSyncIn);
+  }
+
+  return m_serviceMenu;
+}
+
+QList<QAction*> TtRssServiceRoot::contextMenu() {
+  return serviceMenu();
 }
 
 bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
@@ -207,4 +228,5 @@ void TtRssServiceRoot::syncIn() {
   // TODO: provede stažení kanálů/kategorií
   // ze serveru, a sloučení s aktuálními
   // neprovádí aktualizace kanálů ani stažení počtu nepřečtených zpráv
+  QList<RootItem*> aa = m_network->getFeedTree().second.getTree();
 }

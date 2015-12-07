@@ -64,7 +64,7 @@ class StandardServiceRoot : public ServiceRoot {
     // Return menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
 
-    QList<QAction*> contextMenuActions();
+    QList<QAction*> contextMenu();
 
     // Message stuff.
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);

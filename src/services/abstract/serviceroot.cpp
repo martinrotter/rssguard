@@ -18,6 +18,9 @@
 #include "services/abstract/serviceroot.h"
 
 #include "core/feedsmodel.h"
+#include "miscellaneous/application.h"
+
+#include <QSqlQuery>
 
 
 ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
@@ -25,6 +28,34 @@ ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PA
 }
 
 ServiceRoot::~ServiceRoot() {
+}
+
+bool ServiceRoot::deleteViaGui() {
+  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  // Remove all messages.
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM Messages WHERE account_id = %1;").arg(accountId()))) {
+    return false;
+  }
+
+  // Remove all feeds.
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
+    return false;
+  }
+
+  // Remove all categories.
+  if (!QSqlQuery(connection).exec(QString("DELETE FROM Categories WHERE account_id = %1;").arg(accountId()))) {
+    return false;
+  }
+
+  // Switch "existence" flag.
+  bool data_removed = QSqlQuery(connection).exec(QString("DELETE FROM Accounts WHERE id = %1;").arg(accountId()));
+
+  if (data_removed) {
+    requestItemRemoval(this);
+  }
+
+  return data_removed;
 }
 
 void ServiceRoot::itemChanged(QList<RootItem*> items) {
