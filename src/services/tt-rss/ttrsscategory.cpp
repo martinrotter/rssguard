@@ -15,11 +15,21 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "ttrsscategory.h"
+#include "services/tt-rss/ttrsscategory.h"
+
+#include "definitions/definitions.h"
 
 
-TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent) {
+TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent), m_customId(NO_PARENT_CATEGORY) {
 }
 
 TtRssCategory::~TtRssCategory() {
+}
+
+int TtRssCategory::customId() const {
+  return m_customId;
+}
+
+void TtRssCategory::setCustomId(int custom_id) {
+  m_customId = custom_id;
 }

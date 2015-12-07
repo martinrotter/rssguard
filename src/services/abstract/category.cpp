@@ -19,6 +19,7 @@
 
 
 Category::Category(RootItem *parent) : RootItem(parent) {
+  setKind(RootItemKind::Category);
 }
 
 Category::~Category() {

@@ -58,7 +58,7 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     explicit TtRssGetFeedsCategoriesResponse(const QString &raw_content = QString());
     virtual ~TtRssGetFeedsCategoriesResponse();
 
-    QList<RootItem*> feedsCategories();
+    RootItem *feedsCategories();
 };
 
 class TtRssNetworkFactory {

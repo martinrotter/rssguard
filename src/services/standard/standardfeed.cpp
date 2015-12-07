@@ -55,8 +55,6 @@ StandardFeed::StandardFeed(RootItem *parent_item)
   m_unreadCount = 0;
   m_encoding = QString();
   m_url = QString();
-
-  setKind(RootItemKind::Feed);
 }
 
 StandardFeed::StandardFeed(const StandardFeed &other)
@@ -76,7 +74,6 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());
   setAutoUpdateRemainingInterval(other.autoUpdateRemainingInterval());
 
-  setKind(RootItemKind::Feed);
   setTitle(other.title());
   setId(other.id());
   setIcon(other.icon());

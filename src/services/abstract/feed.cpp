@@ -22,9 +22,11 @@
 
 Feed::Feed(RootItem *parent) : RootItem(parent) {
   m_status = Normal;
-  m_autoUpdateType = DontAutoUpdate;
+  m_autoUpdateType = DefaultAutoUpdate;
   m_autoUpdateInitialInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
   m_autoUpdateRemainingInterval = DEFAULT_AUTO_UPDATE_INTERVAL;
+
+  setKind(RootItemKind::Feed);
 }
 
 Feed::~Feed() {

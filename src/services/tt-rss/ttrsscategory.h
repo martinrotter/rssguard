@@ -25,6 +25,12 @@ class TtRssCategory : public Category {
   public:
     explicit TtRssCategory(RootItem *parent = NULL);
     virtual ~TtRssCategory();
+
+    int customId() const;
+    void setCustomId(int custom_id);
+
+  private:
+    int m_customId;
 };
 
 #endif // TTRSSCATEGORY_H

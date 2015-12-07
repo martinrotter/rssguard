@@ -21,6 +21,9 @@
 #include "core/rootitem.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrsscategory.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/networkfactory.h"
 
 #include <QPair>
@@ -207,17 +210,68 @@ TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString &
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {
 }
 
-QList<RootItem*> TtRssGetFeedsCategoriesResponse::feedsCategories() {
-  QList<RootItem*> items;
+RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories() {
+  RootItem *parent = new RootItem();
 
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
     QList<QVariant> items_to_process = m_rawContent["content"].toMap()["categories"].toMap()["items"].toList();
+    QList<QPair<RootItem*,QVariant> > pairs;
 
-    while (!items_to_process.isEmpty()) {
+    foreach (QVariant item, items_to_process) {
+      pairs.append(QPair<RootItem*,QVariant>(parent, item));
+    }
+
+    while (!pairs.isEmpty()) {
+      QPair<RootItem*,QVariant> pair = pairs.takeFirst();
+      RootItem *act_parent = pair.first;
+      QMap<QString,QVariant> item = pair.second.toMap();
+
+      if (item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY) {
+        // Add category to the parent, go through children.
+        int item_bare_id = item["bare_id"].toInt();
+
+        if (item_bare_id < 0) {
+          // Ignore virtual categories or feeds.
+          continue;
+        }
+
+        if (item_bare_id == 0) {
+          // This is "Uncategorized" category, all its feeds belong to total parent.
+          if (item.contains("items")) {
+            foreach (QVariant child_feed, item["items"].toList()) {
+              pairs.append(QPair<RootItem*,QVariant>(parent, child_feed));
+            }
+          }
+        }
+        else if (item_bare_id > 0) {
+          TtRssCategory *category = new TtRssCategory();
+
+          category->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
+          category->setTitle(item["name"].toString());
+          category->setCustomId(item_bare_id);
+          act_parent->appendChild(category);
+
+          if (item.contains("items")) {
+            foreach (QVariant child, item["items"].toList()) {
+              pairs.append(QPair<RootItem*,QVariant>(category, child));
+            }
+          }
+        }
+      }
+      else {
+        // We have feed.
+        int item_bare_id = item["bare_id"].toInt();
+        TtRssFeed *feed = new TtRssFeed();
+
+        // TODO: stahnout a nastavit ikonu
+        feed->setTitle(item["name"].toString());
+        feed->setCustomId(item_bare_id);
+        act_parent->appendChild(feed);
+      }
 
     }
   }
 
-  return items;
+  return parent;
 }

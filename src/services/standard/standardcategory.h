@@ -67,9 +67,6 @@ class StandardCategory : public Category {
 
     bool addItself(RootItem *parent);
     bool editItself(StandardCategory *new_category_data);
-
-  private:
-    void init();
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

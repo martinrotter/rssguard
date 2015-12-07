@@ -15,12 +15,29 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-#include "ttrssfeed.h"
+#include "services/tt-rss/ttrssfeed.h"
+
+#include "definitions/definitions.h"
 
 
-TtRssFeed::TtRssFeed(RootItem *parent) : Feed(parent) {
+TtRssFeed::TtRssFeed(RootItem *parent) : Feed(parent), m_customId(NO_PARENT_CATEGORY) {
 }
 
 TtRssFeed::~TtRssFeed() {
 }
 
+int TtRssFeed::update() {
+  return 0;
+}
+
+QList<Message> TtRssFeed::undeletedMessages() const {
+  return QList<Message>();
+}
+
+int TtRssFeed::customId() const {
+  return m_customId;
+}
+
+void TtRssFeed::setCustomId(int custom_id) {
+  m_customId = custom_id;
+}

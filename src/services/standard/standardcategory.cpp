@@ -37,13 +37,10 @@
 
 
 StandardCategory::StandardCategory(RootItem *parent_item) : Category(parent_item) {
-  init();
 }
 
 StandardCategory::StandardCategory(const StandardCategory &other)
   : Category(NULL) {
-  init();
-
   setId(other.id());
   setTitle(other.title());
   setDescription(other.description());
@@ -59,10 +56,6 @@ StandardCategory::~StandardCategory() {
 
 StandardServiceRoot *StandardCategory::serviceRoot() {
   return static_cast<StandardServiceRoot*>(getParentServiceRoot());
-}
-
-void StandardCategory::init() {
-  setKind(RootItemKind::Category);
 }
 
 QVariant StandardCategory::data(int column, int role) const {
@@ -222,8 +215,6 @@ bool StandardCategory::editItself(StandardCategory *new_category_data) {
 }
 
 StandardCategory::StandardCategory(const QSqlRecord &record) : Category(NULL) {
-  init();
-
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());

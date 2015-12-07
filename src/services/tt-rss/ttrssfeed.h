@@ -18,13 +18,22 @@
 #ifndef TTRSSFEED_H
 #define TTRSSFEED_H
 
-#include <services/abstract/feed.h>
+#include "services/abstract/feed.h"
 
 
 class TtRssFeed : public Feed {
   public:
     explicit TtRssFeed(RootItem *parent = NULL);
     virtual ~TtRssFeed();
+
+    int update();
+    QList<Message> undeletedMessages() const;
+
+    int customId() const;
+    void setCustomId(int custom_id);
+
+  private:
+    int m_customId;
 };
 
 #endif // TTRSSFEED_H

@@ -230,5 +230,5 @@ void TtRssServiceRoot::syncIn() {
   QNetworkReply::NetworkError err;
 
 
-  QList<RootItem*> aa = m_network->getFeedsCategories(err).feedsCategories();
+  RootItem *aa = m_network->getFeedsCategories(err).feedsCategories();
 }
