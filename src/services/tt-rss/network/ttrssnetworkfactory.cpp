@@ -108,6 +108,7 @@ GetFeedTreeResult TtRssNetworkFactory::getFeedTree() {
   if (result.second.isNotLoggedIn()) {
     // We are not logged in.
     login();
+    json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
     result = GetFeedTreeResult(network_reply.first, TtRssGetFeedTreeResponse(QString::fromUtf8(result_raw)));

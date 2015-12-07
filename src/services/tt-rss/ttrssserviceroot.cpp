@@ -228,5 +228,5 @@ void TtRssServiceRoot::syncIn() {
   // TODO: provede stažení kanálů/kategorií
   // ze serveru, a sloučení s aktuálními
   // neprovádí aktualizace kanálů ani stažení počtu nepřečtených zpráv
-  m_network->getFeedTree();
+  QList<RootItem*> aa = m_network->getFeedTree().second.getTree();
 }
