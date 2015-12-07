@@ -18,12 +18,13 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include "definitions/definitions.h"
+#include "core/rootitem.h"
 #include "services/tt-rss/definitions.h"
 #include "network-web/networkfactory.h"
 
 
 TtRssNetworkFactory::TtRssNetworkFactory()
-  : m_url(QString()), m_username(QString()), m_password(QString()), m_session_Id(QString()) {
+  : m_url(QString()), m_username(QString()), m_password(QString()), m_sessionId(QString()) {
 }
 
 TtRssNetworkFactory::~TtRssNetworkFactory() {
@@ -63,22 +64,56 @@ void TtRssNetworkFactory::setPassword(const QString &password) {
 
 
 LoginResult TtRssNetworkFactory::login() {
+  if (!m_sessionId.isEmpty()) {
+    logout();
+  }
+
   QtJson::JsonObject json;
   json["op"] = "login";
   json["user"] = m_username;
   json["password"] = m_password;
 
   QByteArray result_raw;
-  NetworkResult res = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+  LoginResult result(network_reply.first, TtRssLoginResponse(QString::fromUtf8(result_raw)));
 
-  if (res.first != QNetworkReply::NoError) {
-    return LoginResult(res.first, TtRssLoginResponse());
+  if (network_reply.first == QNetworkReply::NoError) {
+    m_sessionId = result.second.sessionId();
   }
-  else {
-    LoginResult result(res.first, TtRssLoginResponse(QString::fromUtf8(result_raw)));
-    m_session_Id = result.second.sessionId();
-    return result;
+
+  return result;
+}
+
+LogoutResult TtRssNetworkFactory::logout() {
+  QtJson::JsonObject json;
+  json["op"] = "logout";
+  json["sid"] = m_sessionId;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+
+  return LogoutResult(network_reply.first, TtRssResponse(QString::fromUtf8(result_raw)));
+}
+
+GetFeedTreeResult TtRssNetworkFactory::getFeedTree() {
+  QtJson::JsonObject json;
+  json["op"] = "getFeedTree";
+  json["sid"] = m_sessionId;
+  json["include_empty"] = true;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+  GetFeedTreeResult result(network_reply.first, TtRssGetFeedTreeResponse(QString::fromUtf8(result_raw)));
+
+  if (result.second.isNotLoggedIn()) {
+    // We are not logged in.
+    login();
+
+    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+    result = GetFeedTreeResult(network_reply.first, TtRssGetFeedTreeResponse(QString::fromUtf8(result_raw)));
   }
+
+  return result;
 }
 
 TtRssResponse::TtRssResponse(const QString &raw_content) {
@@ -110,6 +145,10 @@ int TtRssResponse::status() const {
   }
 }
 
+bool TtRssResponse::isNotLoggedIn() const {
+  return status() == API_STATUS_ERR && hasError() && error() == NOT_LOGGED_IN;
+}
+
 
 TtRssLoginResponse::TtRssLoginResponse(const QString &raw_content) : TtRssResponse(raw_content) {
 }
@@ -135,7 +174,7 @@ QString TtRssLoginResponse::sessionId() const {
   }
 }
 
-QString TtRssLoginResponse::error() const {
+QString TtRssResponse::error() const {
   if (!isLoaded()) {
     return QString();
   }
@@ -144,11 +183,66 @@ QString TtRssLoginResponse::error() const {
   }
 }
 
-bool TtRssLoginResponse::hasError() const {
+bool TtRssResponse::hasError() const {
   if (!isLoaded()) {
     return false;
   }
   else {
     return m_rawContent["content"].toMap().contains("error");
+  }
+}
+
+
+TtRssGetFeedTreeResponse::TtRssGetFeedTreeResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+
+}
+
+TtRssGetFeedTreeResponse::~TtRssGetFeedTreeResponse() {
+}
+
+QList<RootItem*> TtRssGetFeedTreeResponse::getTree() {
+  QList<RootItem*> items;
+
+  if (status() == API_STATUS_OK) {
+    // We have data, construct object tree according to data.
+    QList<QVariant> items_to_process = m_rawContent["content"].toMap()["categories"].toMap()["items"].toList();
+
+    processSubtree(true, items, NULL, items_to_process);
+  }
+
+  return items;
+}
+
+void TtRssGetFeedTreeResponse::processSubtree(bool is_top_level, QList<RootItem *> &top_level_items,
+                                              RootItem *parent, const QList<QVariant> &items) {
+  foreach (QVariant item, items) {
+    QMap<QString,QVariant> map_item = item.toMap();
+
+    if (map_item.contains("type") && map_item["type"].toString() == GFT_TYPE_CATEGORY) {
+      // TODO: pokračovat tady
+
+      // We have category, create it, add it to "parent".
+      // Then process all its children.
+      //
+      // TtRssCategory *new_category = new TtRssCategory();
+      // naplnit informace.....
+      // parent->appendChild(new_category);
+      // if (is_top_level) {
+      //   top_level_items.append(new_category);
+      // }
+      // else {
+      //   parent->appendChild(new_category);
+      // }
+      // processSubtree(false, top_level_items, new_category, map_item["items"].toList());
+    }
+    else {
+      // We have feed, add it.
+      // TtRssFeed *new_feed = new TtRssFeed();
+      // naplnit informace.....
+      // parent->appendChild(new_feed);
+      // if (is_top_level) {
+      //   top_level_items.append(new_feed);
+      // }
+    }
   }
 }

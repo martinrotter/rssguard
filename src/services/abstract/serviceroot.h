@@ -44,6 +44,8 @@ class ServiceRoot : public RootItem {
     // /* Members to override.
     /////////////////////////////////////////
 
+    bool deleteViaGui();
+
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
     //  a) Add new feed

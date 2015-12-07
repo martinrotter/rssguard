@@ -8,7 +8,7 @@ INSERT INTO Accounts (type) VALUES ('std-rss');
 DROP TABLE IF EXISTS FeedsData;
 -- !
 CREATE TABLE IF NOT EXISTS TtRssAccounts (
-  id              INTEGER     PRIMARY KEY,
+  id              INTEGER,
   username        TEXT        NOT NULL,
   password        TEXT,
   url             TEXT        NOT NULL,

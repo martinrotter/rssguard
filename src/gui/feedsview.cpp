@@ -303,7 +303,7 @@ QMenu *FeedsView::initializeContextMenuCategories(RootItem *clicked_item) {
     m_contextMenuCategories->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenuActions();
+  QList<QAction*> specific_actions = clicked_item->contextMenu();
 
   m_contextMenuCategories->addActions(QList<QAction*>() <<
                                       qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
@@ -329,7 +329,7 @@ QMenu *FeedsView::initializeContextMenuFeeds(RootItem *clicked_item) {
     m_contextMenuFeeds->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenuActions();
+  QList<QAction*> specific_actions = clicked_item->contextMenu();
 
   m_contextMenuFeeds->addActions(QList<QAction*>() <<
                                  qApp->mainForm()->m_ui->m_actionUpdateSelectedItems <<
@@ -365,7 +365,7 @@ QMenu *FeedsView::initializeContextMenuOtherItem(RootItem *clicked_item) {
     m_contextMenuOtherItems->clear();
   }
 
-  QList<QAction*> specific_actions = clicked_item->contextMenuActions();
+  QList<QAction*> specific_actions = clicked_item->contextMenu();
 
   if (!specific_actions.isEmpty()) {
     m_contextMenuOtherItems->addSeparator();

@@ -109,31 +109,7 @@ bool StandardServiceRoot::canBeDeleted() {
 }
 
 bool StandardServiceRoot::deleteViaGui() {
-  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  // Remove all messages.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM Messages WHERE account_id = %1;").arg(accountId()))) {
-    return false;
-  }
-
-  // Remove all feeds.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
-    return false;
-  }
-
-  // Remove all categories.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM Categories WHERE account_id = %1;").arg(accountId()))) {
-    return false;
-  }
-
-  // Switch "existence" flag.
-  bool data_removed = QSqlQuery(connection).exec(QString("DELETE FROM Accounts WHERE id = %1;").arg(accountId()));
-
-  if (data_removed) {
-    requestItemRemoval(this);
-  }
-
-  return data_removed;
+  return ServiceRoot::deleteViaGui();
 }
 
 QVariant StandardServiceRoot::data(int column, int role) const {
@@ -622,7 +598,7 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
   return m_serviceMenu;
 }
 
-QList<QAction*> StandardServiceRoot::contextMenuActions() {
+QList<QAction*> StandardServiceRoot::contextMenu() {
   return serviceMenu();
 }
 

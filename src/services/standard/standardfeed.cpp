@@ -98,7 +98,7 @@ int StandardFeed::countOfUnreadMessages() const {
   return m_unreadCount;
 }
 
-QList<QAction*> StandardFeed::contextMenuActions() {
+QList<QAction*> StandardFeed::contextMenu() {
   return serviceRoot()->getContextMenuForFeed(this);
 }
 
