@@ -103,7 +103,7 @@ TtRssResponse TtRssNetworkFactory::logout(QNetworkReply::NetworkError &error) {
   return TtRssResponse(QString::fromUtf8(result_raw));
 }
 
-TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetworkReply::NetworkError &error) {
+TtRssGetFeedsTreeResponse TtRssNetworkFactory::getFeedsTree(QNetworkReply::NetworkError &error) {
   QtJson::JsonObject json;
   json["op"] = "getFeedTree";
   json["sid"] = m_sessionId;
@@ -111,7 +111,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetwork
 
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
-  TtRssGetFeedsCategoriesResponse result(QString::fromUtf8(result_raw));
+  TtRssGetFeedsTreeResponse result(QString::fromUtf8(result_raw));
 
   if (result.isNotLoggedIn()) {
     // We are not logged in.
@@ -119,7 +119,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetwork
     json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
-    result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
+    result = TtRssGetFeedsTreeResponse(QString::fromUtf8(result_raw));
   }
 
   error = network_reply.first;
@@ -203,14 +203,13 @@ bool TtRssResponse::hasError() const {
 }
 
 
-TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString &raw_content) : TtRssResponse(raw_content) {
-
+TtRssGetFeedsTreeResponse::TtRssGetFeedsTreeResponse(const QString &raw_content) : TtRssResponse(raw_content) {
 }
 
-TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {
+TtRssGetFeedsTreeResponse::~TtRssGetFeedsTreeResponse() {
 }
 
-RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories() {
+RootItem *TtRssGetFeedsTreeResponse::feedsTree() {
   RootItem *parent = new RootItem();
 
   if (status() == API_STATUS_OK) {

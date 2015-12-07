@@ -66,14 +66,17 @@ class TtRssServiceRoot : public ServiceRoot {
 
     TtRssNetworkFactory *network() const;
 
-    void saveToDatabase();
-    void loadFromDatabase();
+    void saveAccountDataToDatabase();
     void updateTitle();
 
   private slots:
     void syncIn();
 
   private:
+    void removeOldFeedTree();
+    void storeNewFeedTree(RootItem *tree_root);
+    void loadFeedTreeFromDatabase();
+
     QAction *m_actionSyncIn;
     QList<QAction*> m_serviceMenu;
 

@@ -42,6 +42,8 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 void TtRssServiceRoot::start() {
+  loadFeedTreeFromDatabase();
+
   if (childItems().isEmpty()) {
     syncIn();
   }
@@ -164,7 +166,7 @@ TtRssNetworkFactory *TtRssServiceRoot::network() const {
   return m_network;
 }
 
-void TtRssServiceRoot::saveToDatabase() {
+void TtRssServiceRoot::saveAccountDataToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
@@ -209,10 +211,6 @@ void TtRssServiceRoot::saveToDatabase() {
   }
 }
 
-void TtRssServiceRoot::loadFromDatabase() {
-  // TODO: Load feeds/categories from DB.
-}
-
 void TtRssServiceRoot::updateTitle() {
   QString host = QUrl(m_network->url()).host();
 
@@ -227,8 +225,34 @@ void TtRssServiceRoot::syncIn() {
   // TODO: provede stažení kanálů/kategorií
   // ze serveru, a sloučení s aktuálními
   // neprovádí aktualizace kanálů ani stažení počtu nepřečtených zpráv
-  QNetworkReply::NetworkError err;
+  QNetworkReply::NetworkError error;
+  RootItem *new_feeds = m_network->getFeedsTree(error).feedsTree();
 
+  if (error == QNetworkReply::NoError) {
+    // We have new feeds, purge old and set new to DB.
+    removeOldFeedTree();
 
-  RootItem *aa = m_network->getFeedsCategories(err).feedsCategories();
+    foreach (RootItem *child, childItems()) {
+      requestItemRemoval(child);
+    }
+
+    clearChildren();
+
+    // Old stuff is gone.
+    storeNewFeedTree(new_feeds);
+    loadFeedTreeFromDatabase();
+    //itemChanged(QList<RootItem*>() << this);
+  }
+}
+
+void TtRssServiceRoot::removeOldFeedTree() {
+  // TODO: vymazat kanaly a kategorie.
+}
+
+void TtRssServiceRoot::storeNewFeedTree(RootItem *tree_root) {
+  // TODO: ulozit do db.
+}
+
+void TtRssServiceRoot::loadFeedTreeFromDatabase() {
+  // TODO: nacist kanaly a kategorie z db
 }

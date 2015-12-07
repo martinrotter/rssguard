@@ -148,7 +148,7 @@ void FormEditAccount::onClickedOk() {
   m_editableRoot->network()->setUrl(m_ui->m_txtUrl->lineEdit()->text());
   m_editableRoot->network()->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setPassword(m_ui->m_txtPassword->lineEdit()->text());
-  m_editableRoot->saveToDatabase();
+  m_editableRoot->saveAccountDataToDatabase();
 
   accept();
 }

@@ -53,12 +53,12 @@ class TtRssLoginResponse : public TtRssResponse {
     QString sessionId() const;
 };
 
-class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
+class TtRssGetFeedsTreeResponse : public TtRssResponse {
   public:
-    explicit TtRssGetFeedsCategoriesResponse(const QString &raw_content = QString());
-    virtual ~TtRssGetFeedsCategoriesResponse();
+    explicit TtRssGetFeedsTreeResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetFeedsTreeResponse();
 
-    RootItem *feedsCategories();
+    RootItem *feedsTree();
 };
 
 class TtRssNetworkFactory {
@@ -84,7 +84,7 @@ class TtRssNetworkFactory {
     TtRssResponse logout(QNetworkReply::NetworkError &error);
 
     // Gets feeds from the server.
-    TtRssGetFeedsCategoriesResponse getFeedsCategories(QNetworkReply::NetworkError &error);
+    TtRssGetFeedsTreeResponse getFeedsTree(QNetworkReply::NetworkError &error);
 
   private:   
     QString m_url;

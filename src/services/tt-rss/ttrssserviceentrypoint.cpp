@@ -87,7 +87,6 @@ QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
       root->network()->setPassword(query.value(2).toString());
       root->network()->setUrl(query.value(3).toString());
       root->updateTitle();
-      root->loadFromDatabase();
       roots.append(root);
     }
   }
