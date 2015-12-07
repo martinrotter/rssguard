@@ -86,7 +86,6 @@ bool TtRssServiceRoot::canBeDeleted() {
 QVariant TtRssServiceRoot::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
-      // TODO: zobrazovat pokročile informace a statistiky.
       if (column == FDS_MODEL_TITLE_INDEX) {
         return tr("Tiny Tiny RSS\n\nAccount ID: %3\nUsername: %1\nServer: %2").arg(m_network->username(),
                                                                                    m_network->url(),
