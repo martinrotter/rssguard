@@ -30,7 +30,7 @@
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_network(new TtRssNetworkFactory), m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()) {
+  : ServiceRoot(parent), m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory) {
   setIcon(TtRssServiceEntryPoint().icon());
   setCreationDate(QDateTime::currentDateTime());
 }
