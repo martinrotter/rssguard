@@ -90,16 +90,17 @@ void FormEditAccount::displayPassword(bool display) {
 
 void FormEditAccount::performTest() {
   TtRssNetworkFactory factory;
+  QNetworkReply::NetworkError err;
 
   factory.setUsername(m_ui->m_txtUsername->lineEdit()->text());
   factory.setPassword(m_ui->m_txtPassword->lineEdit()->text());
   factory.setUrl(m_ui->m_txtUrl->lineEdit()->text());
 
-  LoginResult result = factory.login();
+  TtRssLoginResponse result = factory.login(err);
 
-  if (result.first == QNetworkReply::NoError) {
-    if (result.second.hasError()) {
-      QString error = result.second.error();
+  if (err == QNetworkReply::NoError) {
+    if (result.hasError()) {
+      QString error = result.error();
 
       if (error == API_DISABLED) {
         m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
@@ -117,15 +118,15 @@ void FormEditAccount::performTest() {
                                          tr("Other error occurred, contact developers."));
       }
     }
-    else if (result.second.apiLevel() < MINIMAL_API_LEVEL) {
+    else if (result.apiLevel() < MINIMAL_API_LEVEL) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(result.second.apiLevel()),
+                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(result.apiLevel()),
                                                                                                                                                               QString::number(MINIMAL_API_LEVEL)),
                                        tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
     }
     else {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
-                                       tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(result.second.apiLevel()),
+                                       tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(result.apiLevel()),
                                                                                                                                                    QString::number(MINIMAL_API_LEVEL)),
                                        tr("Tiny Tiny RSS server is okay."));
     }

@@ -53,22 +53,13 @@ class TtRssLoginResponse : public TtRssResponse {
     QString sessionId() const;
 };
 
-typedef QPair<QNetworkReply::NetworkError,TtRssLoginResponse> LoginResult;
-typedef QPair<QNetworkReply::NetworkError,TtRssResponse> LogoutResult;
-
-class TtRssGetFeedTreeResponse : public TtRssResponse {
+class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
   public:
-    explicit TtRssGetFeedTreeResponse(const QString &raw_content = QString());
-    virtual ~TtRssGetFeedTreeResponse();
+    explicit TtRssGetFeedsCategoriesResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetFeedsCategoriesResponse();
 
-    QList<RootItem*> getTree();
-
-  private:
-    void processSubtree(bool is_top_level, QList<RootItem*> &top_level_items,
-                        RootItem *parent, const QList<QVariant> &items);
+    QList<RootItem*> feedsCategories();
 };
-
-typedef QPair<QNetworkReply::NetworkError,TtRssGetFeedTreeResponse> GetFeedTreeResult;
 
 class TtRssNetworkFactory {
   public:
@@ -87,13 +78,13 @@ class TtRssNetworkFactory {
     // Operations.
 
     // Logs user in.
-    LoginResult login();
+    TtRssLoginResponse login(QNetworkReply::NetworkError &error);
 
     // Logs user out.
-    LogoutResult logout();
+    TtRssResponse logout(QNetworkReply::NetworkError &error);
 
-    // Gets tree from feeds/categories obtained from the server.
-    GetFeedTreeResult getFeedTree();
+    // Gets feeds from the server.
+    TtRssGetFeedsCategoriesResponse getFeedsCategories(QNetworkReply::NetworkError &error);
 
   private:   
     QString m_url;
