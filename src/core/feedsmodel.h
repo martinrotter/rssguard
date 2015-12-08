@@ -151,6 +151,9 @@ class FeedsModel : public QAbstractItemModel {
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root);
 
+    // Loads feed/categories from the database.
+    void loadActivatedServiceAccounts();
+
   public slots:
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
@@ -220,9 +223,6 @@ class FeedsModel : public QAbstractItemModel {
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed*> &feeds);
-
-    // Loads feed/categories from the database.
-    void loadActivatedServiceAccounts();
 
     RootItem *m_rootItem;
     QList<QString> m_headerData;

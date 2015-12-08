@@ -20,6 +20,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "gui/dialogs/formmain.h"
+#include "network-web/networkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrsscategory.h"
@@ -44,16 +45,19 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 void TtRssServiceRoot::start() {
-  // TODO: posunout starty rootů až je okno uděláno
   loadFromDatabase();
 
-  // TODO: pokud tady není nic načteno, tak
-  // syncIn
+  if (childCount() == 0) {
+    // TODO: pokud tady není nic načteno, tak
+    // syncIn
+  }
 }
 
 void TtRssServiceRoot::stop() {
   QNetworkReply::NetworkError error;
   m_network->logout(error);
+
+  qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) error);
 }
 
 QString TtRssServiceRoot::code() {

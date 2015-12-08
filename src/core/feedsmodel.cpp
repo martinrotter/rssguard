@@ -70,7 +70,7 @@ FeedsModel::FeedsModel(QObject *parent)
 
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
 
-  loadActivatedServiceAccounts();
+  //loadActivatedServiceAccounts();
   updateAutoUpdateStatus();
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
@@ -81,6 +81,10 @@ FeedsModel::FeedsModel(QObject *parent)
 
 FeedsModel::~FeedsModel() {
   qDebug("Destroying FeedsModel instance.");
+
+  foreach (ServiceRoot *account, serviceRoots()) {
+    account->stop();
+  }
 
   // Delete all model items.
   delete m_rootItem;

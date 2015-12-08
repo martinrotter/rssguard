@@ -64,6 +64,8 @@ class ServiceRoot : public RootItem {
 
     // Start/stop services.
     // Start method is called when feed model gets initialized OR after user adds new service.
+    // Account should synchronously initialize its children (load them from DB is recommended
+    // here).
     //
     // Stop method is called just before application exits OR when
     // user explicitly deletes existing service instance.
@@ -79,8 +81,6 @@ class ServiceRoot : public RootItem {
     // and then use method QSqlTableModel::setFilter(....).
     // NOTE: It would be more preferable if all messages are downloaded
     // right when feeds are updated.
-    // TODO: toto možná udělat asynchronně, zobrazit
-    // "loading" dialog přes view a toto zavolat, nasledně signalovat
     virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model) = 0;
 
     // Called BEFORE this read status update (triggered by user in message list) is stored in DB,

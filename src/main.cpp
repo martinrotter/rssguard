@@ -121,6 +121,10 @@ int main(int argc, char *argv[]) {
     QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
   }
 
+  // Load activated accounts.
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->loadActivatedServiceAccounts();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadExpandedStates();
+
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
 
