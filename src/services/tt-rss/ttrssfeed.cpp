@@ -22,7 +22,9 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include <QSqlQuery>
 
@@ -83,7 +85,30 @@ int TtRssFeed::countOfUnreadMessages() {
 
 int TtRssFeed::update() {
   // TODO: přes getHeadlines provede stažení kompletnich zprav.
-  return 0;
+  QNetworkReply::NetworkError error;
+  QList<Message> messages;
+  int newly_added_messages = 0;
+  int limit = MAX_MESSAGES;
+  int skip = 0;
+
+  do {
+    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), true, limit, skip,
+                                                                                 true, true, false, error);
+
+    if (error != QNetworkReply::NoError) {
+      setStatus(Feed::NetworkError);
+      return 0;
+    }
+    else {
+      QList<Message> new_messages = headlines.messages();
+
+      messages.append(new_messages);
+      skip += new_messages.size();
+    }
+  }
+  while (newly_added_messages > 0);
+
+  return updateMessages(messages);
 }
 
 QList<Message> TtRssFeed::undeletedMessages() const {
@@ -92,7 +117,7 @@ QList<Message> TtRssFeed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures "
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, custom_id "
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
@@ -105,13 +130,14 @@ QList<Message> TtRssFeed::undeletedMessages() const {
     while (query_read_msg.next()) {
       Message message;
 
-      message.m_feedId = account_id;
+      message.m_feedId = QString::number(account_id);
       message.m_title = query_read_msg.value(0).toString();
       message.m_url = query_read_msg.value(1).toString();
       message.m_author = query_read_msg.value(2).toString();
       message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
       message.m_contents = query_read_msg.value(4).toString();
       message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
+      message.m_customId = query_read_msg.value(6).toString();
 
       messages.append(message);
     }
@@ -126,4 +152,8 @@ int TtRssFeed::customId() const {
 
 void TtRssFeed::setCustomId(int custom_id) {
   m_customId = custom_id;
+}
+
+int TtRssFeed::updateMessages(const QList<Message> &messages) {
+  return 0;
 }

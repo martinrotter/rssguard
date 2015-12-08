@@ -24,6 +24,7 @@
 #include "services/tt-rss/ttrsscategory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 
 #include <QPair>
@@ -127,6 +128,37 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetwork
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
+  }
+
+  error = network_reply.first;
+  return result;
+}
+
+TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool force_update, int limit, int skip,
+                                                            bool show_content, bool include_attachments,
+                                                            bool sanitize, QNetworkReply::NetworkError &error) {
+  QtJson::JsonObject json;
+  json["op"] = "getHeadlines";
+  json["sid"] = m_sessionId;
+  json["feed_id"] = feed_id;
+  json["force_update"] = force_update;
+  json["limit"] = limit;
+  json["skip"] = skip;
+  json["show_content"] = show_content;
+  json["include_attachments"] = include_attachments;
+  json["sanitize"] = sanitize;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+  TtRssGetHeadlinesResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login(error);
+    json["sid"] = m_sessionId;
+
+    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+    result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
   error = network_reply.first;
@@ -295,4 +327,47 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
   }
 
   return parent;
+}
+
+
+TtRssGetHeadlinesResponse::TtRssGetHeadlinesResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+}
+
+TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() {
+}
+
+QList<Message> TtRssGetHeadlinesResponse::messages() {
+  QList<Message> messages;
+
+  foreach (QVariant item, m_rawContent["content"].toList()) {
+    QMap<QString,QVariant> mapped = item.toMap();
+    Message message;
+
+    message.m_author = mapped["author"].toString();
+    message.m_isRead = !mapped["unread"].toBool();
+    message.m_isImportant = mapped["marked"].toBool();
+    message.m_contents = mapped["content"].toString();
+    message.m_created = TextFactory::parseDateTime(mapped["updated"].value<qint64>());
+    message.m_createdFromFeed = true;
+    message.m_customId = mapped["id"].toString();
+    message.m_feedId = mapped["feed_id"].toString();
+    message.m_title = mapped["title"].toString();
+    message.m_url = mapped["link"].toString();
+
+    if (mapped.contains(QSL("attachments"))) {
+      // Process enclosures.
+      foreach (QVariant attachment, mapped["attachments"].toList()) {
+        QMap<QString,QVariant> mapped_attachemnt = attachment.toMap();
+        Enclosure enclosure;
+
+        enclosure.m_mimeType = mapped_attachemnt["content_type"].toString();
+        enclosure.m_url = mapped_attachemnt["content_url"].toString();
+        message.m_enclosures.append(enclosure);
+      }
+    }
+
+    messages.append(message);
+  }
+
+  return messages;
 }

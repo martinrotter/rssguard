@@ -45,6 +45,8 @@ class TtRssFeed : public Feed {
     void setCustomId(int custom_id);
 
   private:
+    int updateMessages(const QList<Message> &messages);
+
     int m_customId;
     int m_totalCount;
     int m_unreadCount;

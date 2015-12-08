@@ -55,6 +55,7 @@ class Feed : public RootItem {
     /////////////////////////////////////////
 
     // Performs synchronous update and returns number of newly updated messages.
+    // NOTE: This is called from worker thread, not from main UI thread.
     // NOTE: This should COMPLETELY download ALL messages from online source
     // into locale "Messages" table, INCLUDING contents (or excerpts) of those
     // messages.

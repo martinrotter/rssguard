@@ -20,6 +20,8 @@
 
 #include "qt-json/json.h"
 
+#include "core/message.h"
+
 #include <QString>
 #include <QPair>
 #include <QNetworkReply>
@@ -64,6 +66,14 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     RootItem *feedsCategories(bool obtain_icons, QString base_address = QString());
 };
 
+class TtRssGetHeadlinesResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetHeadlinesResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetHeadlinesResponse();
+
+    QList<Message> messages();
+};
+
 class TtRssNetworkFactory {
   public:
     explicit TtRssNetworkFactory();
@@ -88,6 +98,11 @@ class TtRssNetworkFactory {
 
     // Gets feeds from the server.
     TtRssGetFeedsCategoriesResponse getFeedsCategories(QNetworkReply::NetworkError &error);
+
+    // Gets headlines (messages) from the server.
+    TtRssGetHeadlinesResponse getHeadlines(int feed_id, bool force_update, int limit, int skip,
+                                           bool show_content, bool include_attachments,
+                                           bool sanitize, QNetworkReply::NetworkError &error);
 
   private:   
     QString m_url;
