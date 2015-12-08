@@ -233,6 +233,7 @@ void FormStandardImportExport::importFeeds() {
   QString output_message;
 
   if (m_serviceRoot->mergeImportExportModel(m_model, output_message)) {
+    m_serviceRoot->requestItemExpand(m_serviceRoot->getSubTree(), true);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
   }
   else {

@@ -254,8 +254,11 @@ void TtRssServiceRoot::syncIn() {
       appendChild(top_level_item);
     }
 
+    updateCounts(true);
+
     new_tree->clearChildren();
     new_tree->deleteLater();
+
     itemChanged(QList<RootItem*>() << this);
     requestFeedReadFilterReload();
     requestReloadMessageList(true);
@@ -322,8 +325,6 @@ void TtRssServiceRoot::storeNewFeedTree(RootItem *root) {
 
       if (query_feed.exec()) {
         feed->setId(query_feed.lastInsertId().toInt());
-
-        // TODO: updatecounts;
       }
       else {
         // TODO: logovat.

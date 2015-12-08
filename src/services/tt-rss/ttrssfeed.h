@@ -21,10 +21,19 @@
 #include "services/abstract/feed.h"
 
 
+class TtRssServiceRoot;
+
 class TtRssFeed : public Feed {
   public:
     explicit TtRssFeed(RootItem *parent = NULL);
     virtual ~TtRssFeed();
+
+    TtRssServiceRoot *serviceRoot();
+
+    void updateCounts(bool including_total_count);
+
+    int countOfAllMessages();
+    int countOfUnreadMessages();
 
     int update();
     QList<Message> undeletedMessages() const;
@@ -34,6 +43,8 @@ class TtRssFeed : public Feed {
 
   private:
     int m_customId;
+    int m_totalCount;
+    int m_unreadCount;
 };
 
 #endif // TTRSSFEED_H

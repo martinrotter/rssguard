@@ -66,6 +66,8 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 RSS Guard is written in C++. It is pretty fast even with tons of messages loaded. The core features are:
 
+* support for online feed synchronization via plugins,
+    * Tiny Tiny RSS (from RSS Guard 3.0.0).
 * multiplatformity,
 * support for all feed formats,
 * simplicity,

@@ -80,6 +80,8 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   setupIcons();
   loadSize();
 
+  statusBar()->setVisible(false);
+
   // Initialize the web factory.
   WebFactory::instance()->loadState();
 }

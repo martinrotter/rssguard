@@ -85,7 +85,10 @@ void StandardServiceRoot::start() {
       try {
         model.importAsOPML20(IOFactory::readTextFile(file_to_load));
         model.checkAllItems();
-        mergeImportExportModel(&model, output_msg);
+
+        if (mergeImportExportModel(&model, output_msg)) {
+          requestItemExpand(getSubTree(), true);
+        }
       }
       catch (ApplicationException &ex) {
         MessageBox::show(qApp->mainForm(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
