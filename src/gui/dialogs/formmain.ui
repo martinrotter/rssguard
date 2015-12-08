@@ -85,6 +85,7 @@
      <addaction name="m_actionSwitchMainMenu"/>
      <addaction name="m_actionSwitchToolBars"/>
      <addaction name="m_actionSwitchListHeaders"/>
+     <addaction name="m_actionSwitchStatusBar"/>
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
@@ -740,6 +741,17 @@
    </property>
    <property name="shortcut">
     <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionSwitchStatusBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Status bar</string>
    </property>
   </action>
  </widget>

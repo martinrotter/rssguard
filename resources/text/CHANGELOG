@@ -18,6 +18,7 @@
 	  <ul>
 		  <li style="color: red;">Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Expect bugs and misunderstandings now! Major parts of RSS Guard were completely rewritten. Note that some functionality might be TEMPORARILY removed.</li>
       <li>Added ability to completely disable notifications (bug #128).</li>
+      <li>Added ability to hide status bar.</li>
       <li>Added ability to go to next <font style="font-weight: bold;">unread</font> message. (partially bug #112)</li>
 	  </ul>
 	  

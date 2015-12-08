@@ -73,9 +73,6 @@ class FormMain : public QMainWindow {
     // Turns on/off fullscreen mode
     void switchFullscreenMode();
 
-    // Switches visibility of main menu.
-    void switchMainMenu();
-
   private slots:
     void updateAddItemMenu();
     void updateRecycleBinMenu();

@@ -120,6 +120,9 @@ namespace GUI {
   KEY ListHeadersVisible;
   VALUE(bool) ListHeadersVisibleDef;
 
+  KEY StatusBarVisible;
+  VALUE(bool) StatusBarVisibleDef;
+
   KEY HideMainWindowWhenMinimized;
   VALUE(bool) HideMainWindowWhenMinimizedDef;
 
