@@ -84,7 +84,6 @@ int TtRssFeed::countOfUnreadMessages() {
 }
 
 int TtRssFeed::update() {
-  // TODO: přes getHeadlines provede stažení kompletnich zprav.
   QNetworkReply::NetworkError error;
   QList<Message> messages;
   int newly_added_messages = 0;
