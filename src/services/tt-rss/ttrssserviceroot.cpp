@@ -20,13 +20,18 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "gui/dialogs/formmain.h"
+#include "network-web/networkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
+#include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/gui/formeditaccount.h"
 
+#include <QSqlTableModel>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QPointer>
+#include <QPair>
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
@@ -42,15 +47,18 @@ TtRssServiceRoot::~TtRssServiceRoot() {
 }
 
 void TtRssServiceRoot::start() {
-  loadFeedTreeFromDatabase();
+  loadFromDatabase();
 
-  if (childItems().isEmpty()) {
+  if (childCount() == 0) {
     syncIn();
   }
 }
 
 void TtRssServiceRoot::stop() {
+  QNetworkReply::NetworkError error;
+  m_network->logout(error);
 
+  qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) error);
 }
 
 QString TtRssServiceRoot::code() {
@@ -111,7 +119,13 @@ RecycleBin *TtRssServiceRoot::recycleBin() {
 }
 
 bool TtRssServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
-  return false;
+  QList<Feed*> children = item->getSubTreeFeeds();
+  QString filter_clause = textualFeedIds(children).join(QSL(", "));
+
+  model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0")).arg(filter_clause));
+  qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
+
+  return true;
 }
 
 QList<QAction*> TtRssServiceRoot::serviceMenu() {
@@ -211,6 +225,52 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
   }
 }
 
+void TtRssServiceRoot::loadFromDatabase() {
+  // TODO: Load feeds/categories from DB.
+
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  Assignment categories;
+  Assignment feeds;
+
+  // Obtain data for categories from the database.
+  QSqlQuery query_categories(database);
+  query_categories.setForwardOnly(true);
+
+  if (!query_categories.exec(QString("SELECT * FROM Categories WHERE account_id = %1;").arg(accountId())) || query_categories.lastError().isValid()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.",
+           qPrintable(query_categories.lastError().text()));
+  }
+
+  while (query_categories.next()) {
+    AssignmentItem pair;
+    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new TtRssCategory(query_categories.record());
+
+    categories << pair;
+  }
+
+  // All categories are now loaded.
+  QSqlQuery query_feeds(database);
+  query_feeds.setForwardOnly(true);
+
+  if (!query_feeds.exec(QString("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
+           qPrintable(query_feeds.lastError().text()));
+  }
+
+  while (query_feeds.next()) {
+    AssignmentItem pair;
+    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new TtRssFeed(query_feeds.record());
+
+    feeds << pair;
+  }
+
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
+}
+
 void TtRssServiceRoot::updateTitle() {
   QString host = QUrl(m_network->url()).host();
 
@@ -222,37 +282,110 @@ void TtRssServiceRoot::updateTitle() {
 }
 
 void TtRssServiceRoot::syncIn() {
-  // TODO: provede stažení kanálů/kategorií
-  // ze serveru, a sloučení s aktuálními
-  // neprovádí aktualizace kanálů ani stažení počtu nepřečtených zpráv
-  QNetworkReply::NetworkError error;
-  RootItem *new_feeds = m_network->getFeedsTree(error).feedsTree();
+  QNetworkReply::NetworkError err;
+  TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories(err);
 
-  if (error == QNetworkReply::NoError) {
-    // We have new feeds, purge old and set new to DB.
+  if (err == QNetworkReply::NoError) {
+    RootItem *new_tree = feed_cats_response.feedsCategories(true, m_network->url());
+
+    // Purge old data from SQL and clean all model items.
     removeOldFeedTree();
+    cleanAllItems();
 
-    foreach (RootItem *child, childItems()) {
-      requestItemRemoval(child);
+    // Model is clean, now store new tree into DB and
+    // set primary IDs of the items.
+    storeNewFeedTree(new_tree);
+
+    foreach (RootItem *top_level_item, new_tree->childItems()) {
+      appendChild(top_level_item);
     }
 
-    clearChildren();
+    updateCounts(true);
 
-    // Old stuff is gone.
-    storeNewFeedTree(new_feeds);
-    loadFeedTreeFromDatabase();
-    //itemChanged(QList<RootItem*>() << this);
+    new_tree->clearChildren();
+    new_tree->deleteLater();
+
+    itemChanged(QList<RootItem*>() << this);
+    requestFeedReadFilterReload();
+    requestReloadMessageList(true);
+    requestItemExpand(getSubTree(), true);
   }
 }
 
+QStringList TtRssServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
+  QStringList stringy_ids;
+  stringy_ids.reserve(feeds.size());
+
+  foreach (Feed *feed, feeds) {
+    stringy_ids.append(QString("'%1'").arg(QString::number(static_cast<TtRssFeed*>(feed)->customId())));
+  }
+
+  return stringy_ids;
+}
+
 void TtRssServiceRoot::removeOldFeedTree() {
-  // TODO: vymazat kanaly a kategorie.
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(database);
+  query.setForwardOnly(true);
+
+  query.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), accountId());
+  query.exec();
+
+  query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), accountId());
+  query.exec();
 }
 
-void TtRssServiceRoot::storeNewFeedTree(RootItem *tree_root) {
-  // TODO: ulozit do db.
+void TtRssServiceRoot::cleanAllItems() {
+  foreach (RootItem *top_level_item, childItems()) {
+    requestItemRemoval(top_level_item);
+  }
 }
 
-void TtRssServiceRoot::loadFeedTreeFromDatabase() {
-  // TODO: nacist kanaly a kategorie z db
+void TtRssServiceRoot::storeNewFeedTree(RootItem *root) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_category(database);
+  QSqlQuery query_feed(database);
+
+  query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
+                         "VALUES (:parent_id, :title, :account_id, :custom_id);");
+  query_feed.prepare("INSERT INTO Feeds (title, icon, category, protected, update_type, update_interval, account_id, custom_id) "
+                     "VALUES (:title, :icon, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
+
+  // Iterate all children.
+  foreach (RootItem *child, root->getSubTree()) {
+    if (child->kind() == RootItemKind::Category) {
+      query_category.bindValue(QSL(":parent_id"), child->parent()->id());
+      query_category.bindValue(QSL(":title"), child->title());
+      query_category.bindValue(QSL(":account_id"), accountId());
+      query_category.bindValue(QSL(":custom_id"), QString::number(static_cast<TtRssCategory*>(child)->customId()));
+
+      if (query_category.exec()) {
+        child->setId(query_category.lastInsertId().toInt());
+      }
+      else {
+        // TODO: logovat
+      }
+    }
+    else if (child->kind() == RootItemKind::Feed) {
+      TtRssFeed *feed = static_cast<TtRssFeed*>(child);
+
+      query_feed.bindValue(QSL(":title"), feed->title());
+      query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+      query_feed.bindValue(QSL(":category"), feed->parent()->id());
+      query_feed.bindValue(QSL(":protected"), 0);
+      query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
+      query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+      query_feed.bindValue(QSL(":account_id"), accountId());
+      query_feed.bindValue(QSL(":custom_id"), feed->customId());
+
+      if (query_feed.exec()) {
+        feed->setId(query_feed.lastInsertId().toInt());
+      }
+      else {
+        // TODO: logovat.
+      }
+    }
+  }
 }

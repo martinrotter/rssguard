@@ -105,6 +105,9 @@ DVALUE(bool) GUI::ToolbarsVisibleDef      = true;
 DKEY GUI::ListHeadersVisible              = "enable_list_headers";
 DVALUE(bool) GUI::ListHeadersVisibleDef   = true;
 
+DKEY GUI::StatusBarVisible                = "enable_status_bar";
+DVALUE(bool) GUI::StatusBarVisibleDef     = true;
+
 DKEY GUI::HideMainWindowWhenMinimized             = "hide_when_minimized";
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
 

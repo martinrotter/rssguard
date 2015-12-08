@@ -49,8 +49,11 @@ class Message {
     QString m_author;
     QString m_contents;
     QDateTime m_created;
-    int m_feedId;
+    QString m_feedId;
     QString m_customId;
+
+    bool m_isRead;
+    bool m_isImportant;
 
     QList<Enclosure> m_enclosures;
 

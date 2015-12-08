@@ -105,6 +105,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSwitchMainMenu;
   actions << m_ui->m_actionSwitchToolBars;
   actions << m_ui->m_actionSwitchListHeaders;
+  actions << m_ui->m_actionSwitchStatusBar;
   actions << m_ui->m_actionSwitchMessageListOrientation;
 
   // Add web browser actions
@@ -170,10 +171,6 @@ void FormMain::switchFullscreenMode() {
   } else {
     showNormal();
   }
-}
-
-void FormMain::switchMainMenu() {
-  m_ui->m_menuBar->setVisible(m_ui->m_actionSwitchMainMenu->isChecked());
 }
 
 void FormMain::updateAddItemMenu() {
@@ -326,6 +323,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-menu")));
   m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
   m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
+  m_ui->m_actionSwitchStatusBar->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
   m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-layout-direction")));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-switch")));
 
@@ -408,6 +406,7 @@ void FormMain::loadSize() {
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
   m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ToolbarsVisible)).toBool());
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
+  m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
   // Make sure that only unread feeds are shown if user has that feature set on.
   m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
@@ -431,6 +430,7 @@ void FormMain::saveSize() {
   settings->setValue(GROUP(GUI), GUI::MainWindowInitialSize, size());
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsMaximized, is_maximized);
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsFullscreen, is_fullscreen);
+  settings->setValue(GROUP(GUI), GUI::StatusBarVisible, m_ui->m_actionSwitchStatusBar->isChecked());
 
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
@@ -452,8 +452,9 @@ void FormMain::createConnections() {
 
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
-  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), this, SLOT(switchMainMenu()));
+  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), m_ui->m_menuBar, SLOT(setVisible(bool)));
   connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
+  connect(m_ui->m_actionSwitchStatusBar, SIGNAL(toggled(bool)), statusBar(), SLOT(setVisible(bool)));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));

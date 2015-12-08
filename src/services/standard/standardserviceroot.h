@@ -30,12 +30,6 @@ class StandardFeed;
 class FeedsImportExportModel;
 class QMenu;
 
-typedef QList<QPair<int, StandardCategory*> > CategoryAssignment;
-typedef QPair<int, StandardCategory*> CategoryAssignmentItem;
-
-typedef QList<QPair<int, StandardFeed*> > FeedAssignment;
-typedef QPair<int, StandardFeed*> FeedAssignmentItem;
-
 class StandardServiceRoot : public ServiceRoot {
     Q_OBJECT
 
@@ -116,11 +110,6 @@ class StandardServiceRoot : public ServiceRoot {
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed *> &feeds);
-
-    // Takes lists of feeds/categories and assembles
-    // them into the tree structure.
-    void assembleCategories(CategoryAssignment categories);
-    void assembleFeeds(FeedAssignment feeds);
 
     StandardRecycleBin *m_recycleBin;
 

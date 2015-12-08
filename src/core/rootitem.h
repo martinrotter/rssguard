@@ -177,6 +177,7 @@ class RootItem : public QObject {
     QList<RootItem*> getSubTree();
     QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item);
     QList<Category*> getSubTreeCategories();
+    QHash<int,Category*> getHashedSubTreeCategories();
     QList<Feed*> getSubTreeFeeds();
 
     // Returns the service root node which is direct or indirect parent of current item.

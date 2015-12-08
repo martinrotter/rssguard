@@ -30,6 +30,10 @@ class RecycleBin;
 class QAction;
 class QSqlTableModel;
 
+// Car here represents ID of the item.
+typedef QList<QPair<int,RootItem*> > Assignment;
+typedef QPair<int,RootItem*> AssignmentItem;
+
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
@@ -64,6 +68,8 @@ class ServiceRoot : public RootItem {
 
     // Start/stop services.
     // Start method is called when feed model gets initialized OR after user adds new service.
+    // Account should synchronously initialize its children (load them from DB is recommended
+    // here).
     //
     // Stop method is called just before application exits OR when
     // user explicitly deletes existing service instance.
@@ -79,8 +85,6 @@ class ServiceRoot : public RootItem {
     // and then use method QSqlTableModel::setFilter(....).
     // NOTE: It would be more preferable if all messages are downloaded
     // right when feeds are updated.
-    // TODO: toto možná udělat asynchronně, zobrazit
-    // "loading" dialog přes view a toto zavolat, nasledně signalovat
     virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model) = 0;
 
     // Called BEFORE this read status update (triggered by user in message list) is stored in DB,
@@ -138,10 +142,10 @@ class ServiceRoot : public RootItem {
     /////////////////////////////////////////
 
     // Obvious methods to wrap signals.
-    void itemChanged(QList<RootItem*> items);
+    void itemChanged(const QList<RootItem*> &items);
     void requestReloadMessageList(bool mark_selected_messages_read);
     void requestFeedReadFilterReload();
-
+    void requestItemExpand(const QList<RootItem*> &items, bool expand);
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
     void requestItemRemoval(RootItem *item);
 
@@ -149,11 +153,17 @@ class ServiceRoot : public RootItem {
     int accountId() const;
     void setAccountId(int account_id);
 
+  protected:
+    // Takes lists of feeds/categories and assembles them into the tree structure.
+    void assembleCategories(Assignment categories);
+    void assembleFeeds(Assignment feeds);
+
   signals:
     // Emitted if data in any item belonging to this root are changed.
     void dataChanged(QList<RootItem*> items);
     void readFeedsFilterInvalidationRequested();
     void reloadMessageListRequested(bool mark_selected_messages_read);
+    void itemExpandRequested(QList<RootItem*> items, bool expand);
 
     void itemReassignmentRequested(RootItem *item, RootItem *new_parent);
     void itemRemovalRequested(RootItem *item);

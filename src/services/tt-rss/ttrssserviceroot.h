@@ -23,6 +23,8 @@
 #include <QCoreApplication>
 
 
+class TtRssCategory;
+class TtRssFeed;
 class TtRssNetworkFactory;
 
 class TtRssServiceRoot : public ServiceRoot {
@@ -73,9 +75,14 @@ class TtRssServiceRoot : public ServiceRoot {
     void syncIn();
 
   private:
+    // Returns converted ids of given feeds
+    // which are suitable as IN clause for SQL queries.
+    QStringList textualFeedIds(const QList<Feed*> &feeds);
+
     void removeOldFeedTree();
-    void storeNewFeedTree(RootItem *tree_root);
-    void loadFeedTreeFromDatabase();
+    void cleanAllItems();
+    void storeNewFeedTree(RootItem *root);
+    void loadFromDatabase();
 
     QAction *m_actionSyncIn;
     QList<QAction*> m_serviceMenu;

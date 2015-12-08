@@ -135,7 +135,7 @@ QList<Message> StandardFeed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents "
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures "
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
@@ -154,6 +154,7 @@ QList<Message> StandardFeed::undeletedMessages() const {
       message.m_author = query_read_msg.value(2).toString();
       message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
       message.m_contents = query_read_msg.value(4).toString();
+      message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
 
       messages.append(message);
     }
@@ -763,7 +764,6 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 }
 
 StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
-  setKind(RootItemKind::Feed);
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
@@ -782,6 +782,6 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   }
 
 
-  setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
 }

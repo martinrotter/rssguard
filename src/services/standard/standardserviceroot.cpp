@@ -61,6 +61,8 @@ StandardServiceRoot::~StandardServiceRoot() {
 }
 
 void StandardServiceRoot::start() {
+  loadFromDatabase();
+
   if (qApp->isFirstRun()) {
     if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
                          tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
@@ -83,7 +85,10 @@ void StandardServiceRoot::start() {
       try {
         model.importAsOPML20(IOFactory::readTextFile(file_to_load));
         model.checkAllItems();
-        mergeImportExportModel(&model, output_msg);
+
+        if (mergeImportExportModel(&model, output_msg)) {
+          requestItemExpand(getSubTree(), true);
+        }
       }
       catch (ApplicationException &ex) {
         MessageBox::show(qApp->mainForm(), QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
@@ -326,8 +331,8 @@ bool StandardServiceRoot::emptyBin() {
 
 void StandardServiceRoot::loadFromDatabase(){
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  CategoryAssignment categories;
-  FeedAssignment feeds;
+  Assignment categories;
+  Assignment feeds;
 
   // Obtain data for categories from the database.
   QSqlQuery query_categories(database);
@@ -339,7 +344,7 @@ void StandardServiceRoot::loadFromDatabase(){
   }
 
   while (query_categories.next()) {
-    CategoryAssignmentItem pair;
+    AssignmentItem pair;
     pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
     pair.second = new StandardCategory(query_categories.record());
 
@@ -364,10 +369,10 @@ void StandardServiceRoot::loadFromDatabase(){
       case StandardFeed::Rdf:
       case StandardFeed::Rss0X:
       case StandardFeed::Rss2X: {
-        FeedAssignmentItem pair;
+        AssignmentItem pair;
         pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
         pair.second = new StandardFeed(query_feeds.record());
-        pair.second->setType(type);
+        qobject_cast<StandardFeed*>(pair.second)->setType(type);
 
         feeds << pair;
         break;
@@ -414,6 +419,7 @@ QHash<int,StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *ro
 }
 
 QHash<int,StandardCategory*> StandardServiceRoot::allCategories() {
+  // TODO: změnit na qlist, použít getsubtree možná
   return categoriesForItem(this);
 }
 
@@ -429,26 +435,6 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   connect(m_actionFeedFetchMetadata, SIGNAL(triggered()), feed, SLOT(fetchMetadataForItself()));
 
   return m_feedContextMenu;
-}
-
-void StandardServiceRoot::assembleFeeds(FeedAssignment feeds) {
-  QHash<int,StandardCategory*> categories = categoriesForItem(this);
-
-  foreach (const FeedAssignmentItem &feed, feeds) {
-    if (feed.first == NO_PARENT_CATEGORY) {
-      // This is top-level feed, add it to the root item.
-      appendChild(feed.second);
-      feed.second->updateCounts(true);
-    }
-    else if (categories.contains(feed.first)) {
-      // This feed belongs to this category.
-      categories.value(feed.first)->appendChild(feed.second);
-      feed.second->updateCounts(true);
-    }
-    else {
-      qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
-    }
-  }
 }
 
 bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, QString &output_message) {
@@ -690,27 +676,4 @@ bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item
   itemChanged(getSubTree());
   requestFeedReadFilterReload();
   return true;
-}
-
-void StandardServiceRoot::assembleCategories(CategoryAssignment categories) {
-  QHash<int,RootItem*> assignments;
-  assignments.insert(NO_PARENT_CATEGORY, this);
-
-  // Add top-level categories.
-  while (!categories.isEmpty()) {
-    for (int i = 0; i < categories.size(); i++) {
-      if (assignments.contains(categories.at(i).first)) {
-        // Parent category of this category is already added.
-        assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
-
-        // Now, added category can be parent for another categories, add it.
-        assignments.insert(categories.at(i).second->id(), categories.at(i).second);
-
-        // Remove the category from the list, because it was
-        // added to the final collection.
-        categories.removeAt(i);
-        i--;
-      }
-    }
-  }
 }

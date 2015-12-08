@@ -24,6 +24,7 @@
 #include "services/tt-rss/ttrsscategory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 
 #include <QPair>
@@ -92,18 +93,25 @@ TtRssLoginResponse TtRssNetworkFactory::login(QNetworkReply::NetworkError &error
 }
 
 TtRssResponse TtRssNetworkFactory::logout(QNetworkReply::NetworkError &error) {
-  QtJson::JsonObject json;
-  json["op"] = "logout";
-  json["sid"] = m_sessionId;
+  if (!m_sessionId.isEmpty()) {
 
-  QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+    QtJson::JsonObject json;
+    json["op"] = "logout";
+    json["sid"] = m_sessionId;
 
-  error = network_reply.first;
-  return TtRssResponse(QString::fromUtf8(result_raw));
+    QByteArray result_raw;
+    NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+
+    error = network_reply.first;
+    return TtRssResponse(QString::fromUtf8(result_raw));
+  }
+  else {
+    error = QNetworkReply::NoError;
+    return TtRssResponse();
+  }
 }
 
-TtRssGetFeedsTreeResponse TtRssNetworkFactory::getFeedsTree(QNetworkReply::NetworkError &error) {
+TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetworkReply::NetworkError &error) {
   QtJson::JsonObject json;
   json["op"] = "getFeedTree";
   json["sid"] = m_sessionId;
@@ -111,7 +119,7 @@ TtRssGetFeedsTreeResponse TtRssNetworkFactory::getFeedsTree(QNetworkReply::Netwo
 
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
-  TtRssGetFeedsTreeResponse result(QString::fromUtf8(result_raw));
+  TtRssGetFeedsCategoriesResponse result(QString::fromUtf8(result_raw));
 
   if (result.isNotLoggedIn()) {
     // We are not logged in.
@@ -119,7 +127,38 @@ TtRssGetFeedsTreeResponse TtRssNetworkFactory::getFeedsTree(QNetworkReply::Netwo
     json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
-    result = TtRssGetFeedsTreeResponse(QString::fromUtf8(result_raw));
+    result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
+  }
+
+  error = network_reply.first;
+  return result;
+}
+
+TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool force_update, int limit, int skip,
+                                                            bool show_content, bool include_attachments,
+                                                            bool sanitize, QNetworkReply::NetworkError &error) {
+  QtJson::JsonObject json;
+  json["op"] = "getHeadlines";
+  json["sid"] = m_sessionId;
+  json["feed_id"] = feed_id;
+  json["force_update"] = force_update;
+  json["limit"] = limit;
+  json["skip"] = skip;
+  json["show_content"] = show_content;
+  json["include_attachments"] = include_attachments;
+  json["sanitize"] = sanitize;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+  TtRssGetHeadlinesResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login(error);
+    json["sid"] = m_sessionId;
+
+    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+    result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
   error = network_reply.first;
@@ -203,14 +242,18 @@ bool TtRssResponse::hasError() const {
 }
 
 
-TtRssGetFeedsTreeResponse::TtRssGetFeedsTreeResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+
 }
 
-TtRssGetFeedsTreeResponse::~TtRssGetFeedsTreeResponse() {
+TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {
 }
 
-RootItem *TtRssGetFeedsTreeResponse::feedsTree() {
+RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) {
   RootItem *parent = new RootItem();
+
+  // Chop the "api/" from the end of the address.
+  base_address.chop(4);
 
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
@@ -226,51 +269,105 @@ RootItem *TtRssGetFeedsTreeResponse::feedsTree() {
       RootItem *act_parent = pair.first;
       QMap<QString,QVariant> item = pair.second.toMap();
 
-      if (item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY) {
-        // Add category to the parent, go through children.
-        int item_bare_id = item["bare_id"].toInt();
+      int item_id = item["bare_id"].toInt();
+      bool is_category = item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY;
 
-        if (item_bare_id < 0) {
-          // Ignore virtual categories or feeds.
-          continue;
-        }
+      if (item_id >= 0) {
+        if (is_category) {
+          if (item_id == 0) {
+            // This is "Uncategorized" category, all its feeds belong to top-level root.
+            if (item.contains("items")) {
+              foreach (QVariant child_feed, item["items"].toList()) {
+                pairs.append(QPair<RootItem*,QVariant>(parent, child_feed));
+              }
+            }
+          }
+          else {
+            TtRssCategory *category = new TtRssCategory();
 
-        if (item_bare_id == 0) {
-          // This is "Uncategorized" category, all its feeds belong to total parent.
-          if (item.contains("items")) {
-            foreach (QVariant child_feed, item["items"].toList()) {
-              pairs.append(QPair<RootItem*,QVariant>(parent, child_feed));
+            category->setTitle(item["name"].toString());
+            category->setCustomId(item_id);
+            act_parent->appendChild(category);
+
+            if (item.contains("items")) {
+              foreach (QVariant child, item["items"].toList()) {
+                pairs.append(QPair<RootItem*,QVariant>(category, child));
+              }
             }
           }
         }
-        else if (item_bare_id > 0) {
-          TtRssCategory *category = new TtRssCategory();
+        else {
+          // We have feed.
+          TtRssFeed *feed = new TtRssFeed();
 
-          category->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
-          category->setTitle(item["name"].toString());
-          category->setCustomId(item_bare_id);
-          act_parent->appendChild(category);
+          if (obtain_icons) {
+            QString icon_path = item["icon"].type() == QVariant::String ? item["icon"].toString() : QString();
 
-          if (item.contains("items")) {
-            foreach (QVariant child, item["items"].toList()) {
-              pairs.append(QPair<RootItem*,QVariant>(category, child));
+            if (!icon_path.isEmpty()) {
+              // Chop the "api/" suffix out and append
+              QString full_icon_address = base_address + QL1C('/') + icon_path;
+              QByteArray icon_data;
+
+              if (NetworkFactory::downloadFile(full_icon_address, DOWNLOAD_TIMEOUT, icon_data).first == QNetworkReply::NoError) {
+                // Icon downloaded, set it up.
+                QPixmap icon_pixmap;
+                icon_pixmap.loadFromData(icon_data);
+                feed->setIcon(QIcon(icon_pixmap));
+              }
             }
           }
+
+          // TODO: stahnout a nastavit ikonu
+          feed->setTitle(item["name"].toString());
+          feed->setCustomId(item_id);
+          act_parent->appendChild(feed);
         }
       }
-      else {
-        // We have feed.
-        int item_bare_id = item["bare_id"].toInt();
-        TtRssFeed *feed = new TtRssFeed();
-
-        // TODO: stahnout a nastavit ikonu
-        feed->setTitle(item["name"].toString());
-        feed->setCustomId(item_bare_id);
-        act_parent->appendChild(feed);
-      }
-
     }
   }
 
   return parent;
+}
+
+
+TtRssGetHeadlinesResponse::TtRssGetHeadlinesResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+}
+
+TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() {
+}
+
+QList<Message> TtRssGetHeadlinesResponse::messages() {
+  QList<Message> messages;
+
+  foreach (QVariant item, m_rawContent["content"].toList()) {
+    QMap<QString,QVariant> mapped = item.toMap();
+    Message message;
+
+    message.m_author = mapped["author"].toString();
+    message.m_isRead = !mapped["unread"].toBool();
+    message.m_isImportant = mapped["marked"].toBool();
+    message.m_contents = mapped["content"].toString();
+    message.m_created = TextFactory::parseDateTime(mapped["updated"].value<qint64>());
+    message.m_createdFromFeed = true;
+    message.m_customId = mapped["id"].toString();
+    message.m_feedId = mapped["feed_id"].toString();
+    message.m_title = mapped["title"].toString();
+    message.m_url = mapped["link"].toString();
+
+    if (mapped.contains(QSL("attachments"))) {
+      // Process enclosures.
+      foreach (QVariant attachment, mapped["attachments"].toList()) {
+        QMap<QString,QVariant> mapped_attachemnt = attachment.toMap();
+        Enclosure enclosure;
+
+        enclosure.m_mimeType = mapped_attachemnt["content_type"].toString();
+        enclosure.m_url = mapped_attachemnt["content_url"].toString();
+        message.m_enclosures.append(enclosure);
+      }
+    }
+
+    messages.append(message);
+  }
+
+  return messages;
 }

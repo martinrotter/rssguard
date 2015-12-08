@@ -11,6 +11,9 @@
 #define UNKNOWN_METHOD    "UNKNOWN_METHOD"  // Given "op" is not recognized.
 #define INCORRECT_USAGE   "INCORRECT_USAGE" // Given "op" was used with bad parameters.
 
+// Limitations
+#define MAX_MESSAGES      200
+
 // General return status codes.
 #define API_STATUS_OK     0
 #define API_STATUS_ERR    1

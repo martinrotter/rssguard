@@ -20,6 +20,8 @@
 
 #include "qt-json/json.h"
 
+#include "core/message.h"
+
 #include <QString>
 #include <QPair>
 #include <QNetworkReply>
@@ -53,12 +55,23 @@ class TtRssLoginResponse : public TtRssResponse {
     QString sessionId() const;
 };
 
-class TtRssGetFeedsTreeResponse : public TtRssResponse {
+class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
   public:
-    explicit TtRssGetFeedsTreeResponse(const QString &raw_content = QString());
-    virtual ~TtRssGetFeedsTreeResponse();
+    explicit TtRssGetFeedsCategoriesResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetFeedsCategoriesResponse();
 
-    RootItem *feedsTree();
+    // Returns tree of feeds/categories.
+    // Top-level root of the tree is not needed here.
+    // Returned items do not have primary IDs assigned.
+    RootItem *feedsCategories(bool obtain_icons, QString base_address = QString());
+};
+
+class TtRssGetHeadlinesResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetHeadlinesResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetHeadlinesResponse();
+
+    QList<Message> messages();
 };
 
 class TtRssNetworkFactory {
@@ -84,7 +97,12 @@ class TtRssNetworkFactory {
     TtRssResponse logout(QNetworkReply::NetworkError &error);
 
     // Gets feeds from the server.
-    TtRssGetFeedsTreeResponse getFeedsTree(QNetworkReply::NetworkError &error);
+    TtRssGetFeedsCategoriesResponse getFeedsCategories(QNetworkReply::NetworkError &error);
+
+    // Gets headlines (messages) from the server.
+    TtRssGetHeadlinesResponse getHeadlines(int feed_id, bool force_update, int limit, int skip,
+                                           bool show_content, bool include_attachments,
+                                           bool sanitize, QNetworkReply::NetworkError &error);
 
   private:   
     QString m_url;
