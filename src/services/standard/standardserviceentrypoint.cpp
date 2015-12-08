@@ -75,7 +75,6 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
                                                                                    SERVICE_CODE_STD_RSS))) {
     StandardServiceRoot *root = new StandardServiceRoot();
     root->setAccountId(id_to_assing);
-    root->loadFromDatabase();
     return root;
   }
   else {
@@ -93,7 +92,6 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() {
     while (query.next()) {
       StandardServiceRoot *root = new StandardServiceRoot();
       root->setAccountId(query.value(0).toInt());
-      root->loadFromDatabase();
       roots.append(root);
     }
   }

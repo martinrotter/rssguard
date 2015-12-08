@@ -55,6 +55,7 @@ FeedsView::FeedsView(QWidget *parent)
 
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
+  connect(m_sourceModel, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SLOT(onItemExpandRequested(QList<RootItem*>,bool)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
@@ -102,11 +103,11 @@ void FeedsView::saveExpandedStates() {
   Settings *settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
-  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category));
+  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
 
   // Iterate all categories and save their expand statuses.
   foreach (RootItem *item, expandable_items) {
-    QString setting_name = QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
+    QString setting_name = QString::number(item->kind()) + QL1S("-") +  QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
 
     settings->setValue(GROUP(Categories),
                        setting_name,
@@ -122,10 +123,10 @@ void FeedsView::loadExpandedStates() {
 
   // Iterate all categories and save their expand statuses.
   foreach (RootItem *item, expandable_items) {
-    QString setting_name = QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
+    QString setting_name = QString::number(item->kind()) + QL1S("-") +  QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
 
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
-                settings->value(GROUP(Categories), setting_name, true).toBool());
+                settings->value(GROUP(Categories), setting_name, item->childCount() > 0).toBool());
   }
 }
 
@@ -464,5 +465,15 @@ void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
   if (mapped.isValid()) {
     expand(mapped);
     setCurrentIndex(mapped);
+  }
+}
+
+void FeedsView::onItemExpandRequested(const QList<RootItem*> &items, bool exp) {
+  foreach (RootItem *item, items) {
+    QModelIndex source_index = m_sourceModel->indexForItem(item);
+    QModelIndex proxy_index = m_proxyModel->mapFromSource(source_index);
+
+    setExpanded(proxy_index, !exp);
+    setExpanded(proxy_index, exp);
   }
 }

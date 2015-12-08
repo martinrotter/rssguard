@@ -61,4 +61,54 @@ INSERT INTO Messages SELECT * FROM backup_Messages;
 -- !
 DROP TABLE backup_Messages;
 -- !
+CREATE TABLE backup_Feeds AS SELECT * FROM Feeds;
+-- !
+DROP TABLE Feeds;
+-- !
+CREATE TABLE Feeds (
+  id              INTEGER     PRIMARY KEY,
+  title           TEXT        NOT NULL CHECK (title != ''),
+  description     TEXT,
+  date_created    INTEGER,
+  icon            BLOB,
+  category        INTEGER     NOT NULL CHECK (category >= -1),
+  encoding        TEXT,
+  url             TEXT,
+  protected       INTEGER(1)  NOT NULL CHECK (protected >= 0 AND protected <= 1),
+  username        TEXT,
+  password        TEXT,
+  update_type     INTEGER(1)  NOT NULL CHECK (update_type >= 0),
+  update_interval INTEGER     NOT NULL CHECK (update_interval >= 5) DEFAULT 15,
+  type            INTEGER,
+  account_id      INTEGER     NOT NULL,
+  custom_id       TEXT,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+);
+-- !
+INSERT INTO Feeds SELECT * FROM backup_Feeds;
+-- !
+DROP TABLE backup_Feeds;
+-- !
+CREATE TABLE backup_Categories AS SELECT * FROM Categories;
+-- !
+DROP TABLE Categories;
+-- !
+CREATE TABLE Categories (
+  id              INTEGER     PRIMARY KEY,
+  parent_id       INTEGER     NOT NULL,
+  title           TEXT        NOT NULL CHECK (title != ''),
+  description     TEXT,
+  date_created    INTEGER,
+  icon            BLOB,
+  account_id      INTEGER     NOT NULL,
+  custom_id       TEXT,
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id)
+);
+-- !
+INSERT INTO Categories SELECT * FROM backup_Categories;
+-- !
+DROP TABLE backup_Categories;
+-- !
 UPDATE Information SET inf_value = '4' WHERE inf_key = 'schema_version';

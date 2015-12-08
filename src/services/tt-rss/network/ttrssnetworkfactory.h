@@ -58,7 +58,10 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     explicit TtRssGetFeedsCategoriesResponse(const QString &raw_content = QString());
     virtual ~TtRssGetFeedsCategoriesResponse();
 
-    RootItem *feedsCategories();
+    // Returns tree of feeds/categories.
+    // Top-level root of the tree is not needed here.
+    // Returned items do not have primary IDs assigned.
+    RootItem *feedsCategories(bool obtain_icons, QString base_address = QString());
 };
 
 class TtRssNetworkFactory {

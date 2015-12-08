@@ -148,7 +148,7 @@ void FormEditAccount::onClickedOk() {
   m_editableRoot->network()->setUrl(m_ui->m_txtUrl->lineEdit()->text());
   m_editableRoot->network()->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setPassword(m_ui->m_txtPassword->lineEdit()->text());
-  m_editableRoot->saveToDatabase();
+  m_editableRoot->saveAccountDataToDatabase();
 
   accept();
 }
@@ -184,6 +184,9 @@ void FormEditAccount::onUrlChanged() {
 
   if (url.isEmpty()) {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
+  }
+  else if (!url.endsWith(QL1S("api/"))) {
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL must end with \"api/\"."));
   }
   else {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));

@@ -104,6 +104,7 @@ class FeedsView : public QTreeView {
 
     void saveSortState(int column, Qt::SortOrder order);
     void validateItemAfterDragDrop(const QModelIndex &source_index);
+    void onItemExpandRequested(const QList<RootItem*> &items, bool exp);
 
   private:
     // Initializes context menus.

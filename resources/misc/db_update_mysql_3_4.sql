@@ -40,4 +40,19 @@ DROP FOREIGN KEY feed;
 ALTER TABLE Messages
 MODIFY Feeds TEXT;
 -- !
+ALTER TABLE Feeds
+MODIFY date_created BIGINT;
+-- !
+ALTER TABLE Feeds
+MODIFY encoding TEXT;
+-- !
+ALTER TABLE Feeds
+MODIFY url  VARCHAR(100);
+-- !
+ALTER TABLE Feeds
+MODIFY type INTEGER;
+-- !
+ALTER TABLE Categories
+MODIFY date_created BIGINT;
+-- !
 UPDATE Information SET inf_value = '4' WHERE inf_key = 'schema_version';

@@ -58,7 +58,7 @@ bool ServiceRoot::deleteViaGui() {
   return data_removed;
 }
 
-void ServiceRoot::itemChanged(QList<RootItem*> items) {
+void ServiceRoot::itemChanged(const QList<RootItem *> &items) {
   emit dataChanged(items);
 }
 
@@ -68,6 +68,10 @@ void ServiceRoot::requestReloadMessageList(bool mark_selected_messages_read) {
 
 void ServiceRoot::requestFeedReadFilterReload() {
   emit readFeedsFilterInvalidationRequested();
+}
+
+void ServiceRoot::requestItemExpand(const QList<RootItem *> &items, bool expand) {
+  emit itemExpandRequested(items, expand);
 }
 
 void ServiceRoot::requestItemReassignment(RootItem *item, RootItem *new_parent) {

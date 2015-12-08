@@ -61,6 +61,8 @@ StandardServiceRoot::~StandardServiceRoot() {
 }
 
 void StandardServiceRoot::start() {
+  loadFromDatabase();
+
   if (qApp->isFirstRun()) {
     if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
                          tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),

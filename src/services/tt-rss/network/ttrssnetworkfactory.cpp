@@ -92,15 +92,22 @@ TtRssLoginResponse TtRssNetworkFactory::login(QNetworkReply::NetworkError &error
 }
 
 TtRssResponse TtRssNetworkFactory::logout(QNetworkReply::NetworkError &error) {
-  QtJson::JsonObject json;
-  json["op"] = "logout";
-  json["sid"] = m_sessionId;
+  if (!m_sessionId.isEmpty()) {
 
-  QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+    QtJson::JsonObject json;
+    json["op"] = "logout";
+    json["sid"] = m_sessionId;
 
-  error = network_reply.first;
-  return TtRssResponse(QString::fromUtf8(result_raw));
+    QByteArray result_raw;
+    NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+
+    error = network_reply.first;
+    return TtRssResponse(QString::fromUtf8(result_raw));
+  }
+  else {
+    error = QNetworkReply::NoError;
+    return TtRssResponse();
+  }
 }
 
 TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetworkReply::NetworkError &error) {
@@ -210,8 +217,11 @@ TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString &
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {
 }
 
-RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories() {
+RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) {
   RootItem *parent = new RootItem();
+
+  // Chop the "api/" from the end of the address.
+  base_address.chop(4);
 
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
@@ -227,49 +237,61 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories() {
       RootItem *act_parent = pair.first;
       QMap<QString,QVariant> item = pair.second.toMap();
 
-      if (item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY) {
-        // Add category to the parent, go through children.
-        int item_bare_id = item["bare_id"].toInt();
+      int item_id = item["bare_id"].toInt();
+      bool is_category = item.contains("type") && item["type"].toString() == GFT_TYPE_CATEGORY;
 
-        if (item_bare_id < 0) {
-          // Ignore virtual categories or feeds.
-          continue;
-        }
+      if (item_id >= 0) {
+        if (is_category) {
+          if (item_id == 0) {
+            // This is "Uncategorized" category, all its feeds belong to top-level root.
+            if (item.contains("items")) {
+              foreach (QVariant child_feed, item["items"].toList()) {
+                pairs.append(QPair<RootItem*,QVariant>(parent, child_feed));
+              }
+            }
+          }
+          else {
+            TtRssCategory *category = new TtRssCategory();
 
-        if (item_bare_id == 0) {
-          // This is "Uncategorized" category, all its feeds belong to total parent.
-          if (item.contains("items")) {
-            foreach (QVariant child_feed, item["items"].toList()) {
-              pairs.append(QPair<RootItem*,QVariant>(parent, child_feed));
+            category->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
+            category->setTitle(item["name"].toString());
+            category->setCustomId(item_id);
+            act_parent->appendChild(category);
+
+            if (item.contains("items")) {
+              foreach (QVariant child, item["items"].toList()) {
+                pairs.append(QPair<RootItem*,QVariant>(category, child));
+              }
             }
           }
         }
-        else if (item_bare_id > 0) {
-          TtRssCategory *category = new TtRssCategory();
+        else {
+          // We have feed.
+          TtRssFeed *feed = new TtRssFeed();
 
-          category->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
-          category->setTitle(item["name"].toString());
-          category->setCustomId(item_bare_id);
-          act_parent->appendChild(category);
+          if (obtain_icons) {
+            QString icon_path = item["icon"].type() == QVariant::String ? item["icon"].toString() : QString();
 
-          if (item.contains("items")) {
-            foreach (QVariant child, item["items"].toList()) {
-              pairs.append(QPair<RootItem*,QVariant>(category, child));
+            if (!icon_path.isEmpty()) {
+              // Chop the "api/" suffix out and append
+              QString full_icon_address = base_address + QL1C('/') + icon_path;
+              QByteArray icon_data;
+
+              if (NetworkFactory::downloadFile(full_icon_address, DOWNLOAD_TIMEOUT, icon_data).first == QNetworkReply::NoError) {
+                // Icon downloaded, set it up.
+                QPixmap icon_pixmap;
+                icon_pixmap.loadFromData(icon_data);
+                feed->setIcon(QIcon(icon_pixmap));
+              }
             }
           }
+
+          // TODO: stahnout a nastavit ikonu
+          feed->setTitle(item["name"].toString());
+          feed->setCustomId(item_id);
+          act_parent->appendChild(feed);
         }
       }
-      else {
-        // We have feed.
-        int item_bare_id = item["bare_id"].toInt();
-        TtRssFeed *feed = new TtRssFeed();
-
-        // TODO: stahnout a nastavit ikonu
-        feed->setTitle(item["name"].toString());
-        feed->setCustomId(item_bare_id);
-        act_parent->appendChild(feed);
-      }
-
     }
   }
 
