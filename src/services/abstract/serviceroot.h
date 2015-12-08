@@ -30,6 +30,10 @@ class RecycleBin;
 class QAction;
 class QSqlTableModel;
 
+// Car here represents ID of the item.
+typedef QList<QPair<int,RootItem*> > Assignment;
+typedef QPair<int,RootItem*> AssignmentItem;
+
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
@@ -148,6 +152,11 @@ class ServiceRoot : public RootItem {
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;
     void setAccountId(int account_id);
+
+  protected:
+    // Takes lists of feeds/categories and assembles them into the tree structure.
+    void assembleCategories(Assignment categories);
+    void assembleFeeds(Assignment feeds);
 
   signals:
     // Emitted if data in any item belonging to this root are changed.

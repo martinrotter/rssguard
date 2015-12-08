@@ -20,12 +20,15 @@
 
 #include "services/abstract/feed.h"
 
+#include <QSqlRecord>
+
 
 class TtRssServiceRoot;
 
 class TtRssFeed : public Feed {
   public:
     explicit TtRssFeed(RootItem *parent = NULL);
+    explicit TtRssFeed(const QSqlRecord &record);
     virtual ~TtRssFeed();
 
     TtRssServiceRoot *serviceRoot();

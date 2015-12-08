@@ -281,6 +281,26 @@ QList<Category*> RootItem::getSubTreeCategories() {
   return children;
 }
 
+QHash<int,Category*> RootItem::getHashedSubTreeCategories() {
+  QHash<int,Category*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(this);
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem *active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItemKind::Category && !children.contains(active_item->id())) {
+      children.insert(active_item->id(), active_item->toCategory());
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
 QList<Feed*> RootItem::getSubTreeFeeds() {
   QList<Feed*> children;
   QList<RootItem*> traversable_items;

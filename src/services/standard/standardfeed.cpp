@@ -763,7 +763,6 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 }
 
 StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
-  setKind(RootItemKind::Feed);
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
@@ -782,6 +781,6 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   }
 
 
-  setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
 }

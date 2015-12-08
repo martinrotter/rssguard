@@ -18,9 +18,20 @@
 #include "services/tt-rss/ttrsscategory.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+
+#include <QVariant>
 
 
 TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent), m_customId(NO_PARENT_CATEGORY) {
+}
+
+TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(NULL) {
+  setId(record.value(CAT_DB_ID_INDEX).toInt());
+  setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
+  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
+  setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
 }
 
 TtRssCategory::~TtRssCategory() {

@@ -19,6 +19,7 @@
 
 #include "core/feedsmodel.h"
 #include "miscellaneous/application.h"
+#include "services/abstract/category.h"
 
 #include <QSqlQuery>
 
@@ -89,3 +90,47 @@ int ServiceRoot::accountId() const {
 void ServiceRoot::setAccountId(int account_id) {
   m_accountId = account_id;
 }
+
+void ServiceRoot::assembleFeeds(Assignment feeds) {
+  QHash<int,Category*> categories = getHashedSubTreeCategories();
+
+  foreach (const AssignmentItem &feed, feeds) {
+    if (feed.first == NO_PARENT_CATEGORY) {
+      // This is top-level feed, add it to the root item.
+      appendChild(feed.second);
+      feed.second->updateCounts(true);
+    }
+    else if (categories.contains(feed.first)) {
+      // This feed belongs to this category.
+      categories.value(feed.first)->appendChild(feed.second);
+      feed.second->updateCounts(true);
+    }
+    else {
+      qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
+    }
+  }
+}
+
+void ServiceRoot::assembleCategories(Assignment categories) {
+  QHash<int,RootItem*> assignments;
+  assignments.insert(NO_PARENT_CATEGORY, this);
+
+  // Add top-level categories.
+  while (!categories.isEmpty()) {
+    for (int i = 0; i < categories.size(); i++) {
+      if (assignments.contains(categories.at(i).first)) {
+        // Parent category of this category is already added.
+        assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
+
+        // Now, added category can be parent for another categories, add it.
+        assignments.insert(categories.at(i).second->id(), categories.at(i).second);
+
+        // Remove the category from the list, because it was
+        // added to the final collection.
+        categories.removeAt(i);
+        i--;
+      }
+    }
+  }
+}
+

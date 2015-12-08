@@ -23,6 +23,8 @@
 #include <QCoreApplication>
 
 
+class TtRssCategory;
+class TtRssFeed;
 class TtRssNetworkFactory;
 
 class TtRssServiceRoot : public ServiceRoot {

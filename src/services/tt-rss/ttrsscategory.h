@@ -20,10 +20,13 @@
 
 #include "services/abstract/category.h"
 
+#include <QSqlRecord>
+
 
 class TtRssCategory : public Category {
   public:
     explicit TtRssCategory(RootItem *parent = NULL);
+    explicit TtRssCategory(const QSqlRecord &record);
     virtual ~TtRssCategory();
 
     int customId() const;

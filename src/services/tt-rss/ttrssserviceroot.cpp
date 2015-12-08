@@ -30,6 +30,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QPointer>
+#include <QPair>
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
@@ -220,6 +221,48 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 
 void TtRssServiceRoot::loadFromDatabase() {
   // TODO: Load feeds/categories from DB.
+
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  Assignment categories;
+  Assignment feeds;
+
+  // Obtain data for categories from the database.
+  QSqlQuery query_categories(database);
+  query_categories.setForwardOnly(true);
+
+  if (!query_categories.exec(QString("SELECT * FROM Categories WHERE account_id = %1;").arg(accountId())) || query_categories.lastError().isValid()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.",
+           qPrintable(query_categories.lastError().text()));
+  }
+
+  while (query_categories.next()) {
+    AssignmentItem pair;
+    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new TtRssCategory(query_categories.record());
+
+    categories << pair;
+  }
+
+  // All categories are now loaded.
+  QSqlQuery query_feeds(database);
+  query_feeds.setForwardOnly(true);
+
+  if (!query_feeds.exec(QString("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
+           qPrintable(query_feeds.lastError().text()));
+  }
+
+  while (query_feeds.next()) {
+    AssignmentItem pair;
+    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new TtRssFeed(query_feeds.record());
+
+    feeds << pair;
+  }
+
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
 }
 
 void TtRssServiceRoot::updateTitle() {
