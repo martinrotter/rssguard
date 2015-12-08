@@ -103,7 +103,8 @@ int TtRssFeed::update() {
       QList<Message> new_messages = headlines.messages();
 
       messages.append(new_messages);
-      skip += new_messages.size();
+      newly_added_messages = new_messages.size();
+      skip += newly_added_messages;
     }
   }
   while (newly_added_messages > 0);
@@ -155,5 +156,7 @@ void TtRssFeed::setCustomId(int custom_id) {
 }
 
 int TtRssFeed::updateMessages(const QList<Message> &messages) {
+  // TODO: pokračovat tady
+
   return 0;
 }
