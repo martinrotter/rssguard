@@ -49,8 +49,7 @@ void TtRssServiceRoot::start() {
   loadFromDatabase();
 
   if (childCount() == 0) {
-    // TODO: pokud tady není nic načteno, tak
-    // syncIn
+    syncIn();
   }
 }
 
@@ -276,9 +275,6 @@ void TtRssServiceRoot::updateTitle() {
 }
 
 void TtRssServiceRoot::syncIn() {
-  // TODO: provede stažení kanálů/kategorií
-  // ze serveru, a sloučení s aktuálními
-  // neprovádí aktualizace kanálů ani stažení počtu nepřečtených zpráv
   QNetworkReply::NetworkError err;
   TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories(err);
 

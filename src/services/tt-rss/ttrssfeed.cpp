@@ -81,6 +81,7 @@ int TtRssFeed::countOfUnreadMessages() {
 }
 
 int TtRssFeed::update() {
+  // TODO: přes getHeadlines provede stažení kompletnich zprav.
   return 0;
 }
 

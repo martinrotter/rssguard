@@ -25,12 +25,13 @@
 
 
 TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent), m_customId(NO_PARENT_CATEGORY) {
+  setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
 }
 
 TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(NULL) {
+  setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
   setId(record.value(CAT_DB_ID_INDEX).toInt());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
-  setIcon(qApp->icons()->fromByteArray(record.value(CAT_DB_ICON_INDEX).toByteArray()));
   setCustomId(record.value(CAT_DB_CUSTOM_ID_INDEX).toInt());
 }
 

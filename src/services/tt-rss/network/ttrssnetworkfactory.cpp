@@ -253,7 +253,6 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
           else {
             TtRssCategory *category = new TtRssCategory();
 
-            category->setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
             category->setTitle(item["name"].toString());
             category->setCustomId(item_id);
             act_parent->appendChild(category);
