@@ -25,7 +25,7 @@ class TtRssRecycleBin : public RecycleBin {
     Q_OBJECT
 
   public:
-    explicit TtRssRecycleBin(QObject *parent = 0);
+    explicit TtRssRecycleBin(RootItem *parent = 0);
     virtual ~TtRssRecycleBin();
 
     bool empty();

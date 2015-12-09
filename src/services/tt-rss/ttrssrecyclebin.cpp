@@ -18,7 +18,7 @@
 #include "services/tt-rss/ttrssrecyclebin.h"
 
 
-TtRssRecycleBin::TtRssRecycleBin(QObject *parent) : RecycleBin(parent) {
+TtRssRecycleBin::TtRssRecycleBin(RootItem *parent) : RecycleBin(parent) {
 
 }
 
