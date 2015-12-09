@@ -39,6 +39,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
   MessageBox::iconify(m_ui->m_buttonBox);
 #endif
 
+  connect(m_ui->m_listEntryPoints, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(addSelectedAccount()));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(addSelectedAccount()));
   connect(m_ui->m_listEntryPoints, SIGNAL(itemSelectionChanged()), this, SLOT(displayActiveEntryPointDetails()));
   loadEntryPoints();
