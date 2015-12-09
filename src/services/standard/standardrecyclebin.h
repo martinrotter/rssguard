@@ -41,7 +41,6 @@ class StandardRecycleBin : public RecycleBin {
     bool empty();
     bool restore();
 
-  public slots:
     void updateCounts(bool update_total_count);
 
   private:
