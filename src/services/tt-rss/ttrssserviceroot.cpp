@@ -298,7 +298,8 @@ void TtRssServiceRoot::syncIn() {
     storeNewFeedTree(new_tree);
 
     foreach (RootItem *top_level_item, new_tree->childItems()) {
-      appendChild(top_level_item);
+      top_level_item->setParent(NULL);
+      requestItemReassignment(top_level_item, this);
     }
 
     updateCounts(true);
@@ -306,10 +307,11 @@ void TtRssServiceRoot::syncIn() {
     new_tree->clearChildren();
     new_tree->deleteLater();
 
-    itemChanged(QList<RootItem*>() << this);
-    requestFeedReadFilterReload();
+    QList<RootItem*> all_items = getSubTree();
+
+    itemChanged(all_items);
     requestReloadMessageList(true);
-    requestItemExpand(getSubTree(), true);
+    requestItemExpand(all_items, true);
   }
 }
 

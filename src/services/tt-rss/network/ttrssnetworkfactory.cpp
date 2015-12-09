@@ -347,7 +347,10 @@ QList<Message> TtRssGetHeadlinesResponse::messages() {
     message.m_isRead = !mapped["unread"].toBool();
     message.m_isImportant = mapped["marked"].toBool();
     message.m_contents = mapped["content"].toString();
-    message.m_created = TextFactory::parseDateTime(mapped["updated"].value<qint64>());
+
+    // Multiply by 1000 because Tiny Tiny RSS API does not include miliseconds in Unix
+    // date/time number.
+    message.m_created = TextFactory::parseDateTime(mapped["updated"].value<qint64>() * 1000);
     message.m_createdFromFeed = true;
     message.m_customId = mapped["id"].toString();
     message.m_feedId = mapped["feed_id"].toString();

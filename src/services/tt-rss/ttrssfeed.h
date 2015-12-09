@@ -35,8 +35,8 @@ class TtRssFeed : public Feed {
 
     void updateCounts(bool including_total_count);
 
-    int countOfAllMessages();
-    int countOfUnreadMessages();
+    int countOfAllMessages() const;
+    int countOfUnreadMessages() const;
 
     int update();
     QList<Message> undeletedMessages() const;

@@ -651,7 +651,7 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
 
   if (remove_duplicates) {
     query_update.setForwardOnly(true);
-    query_update.prepare(QSL("UPDATE Messages SET contents = :contents enclosures = :enclosures WHERE id = :id;"));
+    query_update.prepare(QSL("UPDATE Messages SET contents = :contents, enclosures = :enclosures WHERE id = :id;"));
   }
 
   if (!database.transaction()) {
@@ -703,7 +703,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(QSL(":account_id"), account_id);
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-        setStatus(NewMessages);
         updated_messages++;
       }
 
@@ -735,7 +734,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
         query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
 
         if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-          setStatus(NewMessages);
           updated_messages++;
         }
 
@@ -744,6 +742,10 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
         qDebug("Adding new duplicate (with potentially updated contents) message '%s' to DB.", qPrintable(message.m_title));
       }
     }
+  }
+
+  if (updated_messages > 0) {
+    setStatus(NewMessages);
   }
 
   if (!database.commit()) {
