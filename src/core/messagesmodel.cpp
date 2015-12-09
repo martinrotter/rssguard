@@ -426,8 +426,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
   query_read_msg.setForwardOnly(true);
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
-                          .arg(message_ids.join(QSL(", ")),
-                               read == RootItem::Read ? QSL("1") : QSL("0")))) {
+                          .arg(message_ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")))) {
     fetchAllData();
 
     return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, message_ids_num, read);

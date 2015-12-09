@@ -440,11 +440,11 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
   QItemSelection selection;
 
   foreach (const QModelIndex &index, indexes) {
-    // FIXME: THIS IS very slow. Try to select 4000 messages and hit "mark as read" button.
     selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
   }
 
-  selectionModel()->select(selection, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+  // FIXME: THIS IS very slow. Try to select 4000 messages and hit "mark as read" button.
+  //selectionModel()->select(selection, QItemSelectionModel::Select | QItemSelectionModel::Rows);
 }
 
 void MessagesView::selectNextItem() {
