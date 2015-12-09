@@ -88,6 +88,9 @@ class TtRssNetworkFactory {
     QString password() const;
     void setPassword(const QString &password);
 
+    // Metadata.
+    QDateTime lastLoginTime() const;
+
     // Operations.
 
     // Logs user in.
@@ -109,6 +112,7 @@ class TtRssNetworkFactory {
     QString m_username;
     QString m_password;
     QString m_sessionId;
+    QDateTime m_lastLoginTime;
 };
 
 #endif // TTRSSNETWORKFACTORY_H

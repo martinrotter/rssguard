@@ -71,7 +71,9 @@ class TtRssServiceRoot : public ServiceRoot {
     void saveAccountDataToDatabase();
     void updateTitle();
 
-  private slots:
+    void completelyRemoveAllData();
+
+  public slots:
     void syncIn();
 
   private:
@@ -79,7 +81,7 @@ class TtRssServiceRoot : public ServiceRoot {
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed*> &feeds);
 
-    void removeOldFeedTree();
+    void removeOldFeedTree(bool including_messages);
     void cleanAllItems();
     void storeNewFeedTree(RootItem *root);
     void loadFromDatabase();

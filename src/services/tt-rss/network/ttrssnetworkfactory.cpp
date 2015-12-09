@@ -31,7 +31,8 @@
 
 
 TtRssNetworkFactory::TtRssNetworkFactory()
-  : m_url(QString()), m_username(QString()), m_password(QString()), m_sessionId(QString()) {
+  : m_url(QString()), m_username(QString()), m_password(QString()), m_sessionId(QString()),
+    m_lastLoginTime(QDateTime()) {
 }
 
 TtRssNetworkFactory::~TtRssNetworkFactory() {
@@ -61,6 +62,10 @@ void TtRssNetworkFactory::setPassword(const QString &password) {
   m_password = password;
 }
 
+QDateTime TtRssNetworkFactory::lastLoginTime() const {
+  return m_lastLoginTime;
+}
+
 // TODO: ukazky
 
 /* ukazky
@@ -86,6 +91,7 @@ TtRssLoginResponse TtRssNetworkFactory::login(QNetworkReply::NetworkError &error
 
   if (network_reply.first == QNetworkReply::NoError) {
     m_sessionId = login_response.sessionId();
+    m_lastLoginTime = QDateTime::currentDateTime();
   }
 
   error = network_reply.first;

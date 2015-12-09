@@ -282,6 +282,15 @@ void TtRssServiceRoot::updateTitle() {
   setTitle(m_network->username() + QL1S("@") + host);
 }
 
+void TtRssServiceRoot::completelyRemoveAllData() {
+  // Purge old data from SQL and clean all model items.
+  removeOldFeedTree(true);
+  cleanAllItems();
+  updateCounts(true);
+  itemChanged(QList<RootItem*>() << this);
+  requestReloadMessageList(true);
+}
+
 void TtRssServiceRoot::syncIn() {
   QNetworkReply::NetworkError err;
   TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories(err);
@@ -290,7 +299,7 @@ void TtRssServiceRoot::syncIn() {
     RootItem *new_tree = feed_cats_response.feedsCategories(true, m_network->url());
 
     // Purge old data from SQL and clean all model items.
-    removeOldFeedTree();
+    removeOldFeedTree(true);
     cleanAllItems();
 
     // Model is clean, now store new tree into DB and
@@ -326,7 +335,7 @@ QStringList TtRssServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
   return stringy_ids;
 }
 
-void TtRssServiceRoot::removeOldFeedTree() {
+void TtRssServiceRoot::removeOldFeedTree(bool including_messages) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query(database);
   query.setForwardOnly(true);
@@ -338,6 +347,12 @@ void TtRssServiceRoot::removeOldFeedTree() {
   query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
   query.bindValue(QSL(":account_id"), accountId());
   query.exec();
+
+  if (including_messages) {
+    query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
+    query.bindValue(QSL(":account_id"), accountId());
+    query.exec();
+  }
 }
 
 void TtRssServiceRoot::cleanAllItems() {

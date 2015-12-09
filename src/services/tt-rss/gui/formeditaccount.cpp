@@ -139,16 +139,24 @@ void FormEditAccount::performTest() {
 }
 
 void FormEditAccount::onClickedOk() {
+  bool editing_account = true;
+
   if (m_editableRoot == NULL) {
     // We want to confirm newly created account.
     // So save new account into DB, setup its properties.
     m_editableRoot = new TtRssServiceRoot();
+    editing_account = false;
   }
 
   m_editableRoot->network()->setUrl(m_ui->m_txtUrl->lineEdit()->text());
   m_editableRoot->network()->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setPassword(m_ui->m_txtPassword->lineEdit()->text());
   m_editableRoot->saveAccountDataToDatabase();
+
+  if (editing_account) {
+    m_editableRoot->completelyRemoveAllData();
+    m_editableRoot->syncIn();
+  }
 
   accept();
 }
