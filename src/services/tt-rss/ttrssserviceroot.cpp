@@ -299,7 +299,7 @@ void TtRssServiceRoot::syncIn() {
     RootItem *new_tree = feed_cats_response.feedsCategories(true, m_network->url());
 
     // Purge old data from SQL and clean all model items.
-    removeOldFeedTree(true);
+    removeOldFeedTree(false);
     cleanAllItems();
 
     // Model is clean, now store new tree into DB and
