@@ -596,8 +596,8 @@ bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
     QList<Feed*> children = item->getSubTreeFeeds();
     QString filter_clause = textualFeedIds(children).join(QSL(", "));
 
-    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = %1")).arg(filter_clause,
-                                                                                             accountId()));
+    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = %2")).arg(filter_clause,
+                                                                                                                 accountId()));
     qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
   }
 
