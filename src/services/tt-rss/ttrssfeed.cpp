@@ -175,7 +175,7 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
                        "WHERE id = :id;");
 
   query_select.setForwardOnly(true);
-  query_select.prepare("SELECT id, date_created FROM Messages "
+  query_select.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
                        "WHERE account_id = :account_id AND custom_id = :custom_id;");
 
   // Used to insert new messages.
@@ -198,17 +198,25 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
 
     int id_existing_message = -1;
     qint64 date_existing_message;
+    bool is_read_existing_message;
+    bool is_important_existing_message;
 
     if (query_select.next()) {
       id_existing_message = query_select.value(0).toInt();
       date_existing_message = query_select.value(1).value<qint64>();
+      is_read_existing_message = query_select.value(2).toBool();
+      is_important_existing_message = query_select.value(3).toBool();
     }
 
     query_select.finish();
 
     // Now, check if this message is already in the DB.
     if (id_existing_message >= 0) {
-      if (message.m_created.toMSecsSinceEpoch() != date_existing_message) {
+      // Message is already in the DB.
+
+      if (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
+          message.m_isRead != is_read_existing_message ||
+          message.m_isImportant != is_important_existing_message) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), message.m_title);
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
