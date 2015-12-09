@@ -441,6 +441,7 @@ set(APP_SOURCES
   src/services/tt-rss/ttrssserviceroot.cpp
   src/services/tt-rss/ttrssfeed.cpp
   src/services/tt-rss/ttrsscategory.cpp
+  src/services/tt-rss/ttrssrecyclebin.cpp
   src/services/tt-rss/gui/formeditaccount.cpp
   src/services/tt-rss/network/ttrssnetworkfactory.cpp
 
@@ -559,6 +560,9 @@ set(APP_HEADERS
 
   # TT-RSS service headers.
   src/services/tt-rss/ttrssserviceroot.h
+  src/services/tt-rss/ttrssrecyclebin.h
+  src/services/tt-rss/ttrssfeed.h
+  src/services/tt-rss/ttrsscategory.h
   src/services/tt-rss/gui/formeditaccount.h
 
   # NETWORK-WEB headers.
