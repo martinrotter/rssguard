@@ -146,11 +146,25 @@ QList<QAction*> TtRssServiceRoot::contextMenu() {
 }
 
 bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
+  // TODO: misto čísel primarnich zprav, vracet cele objekty zprav
+  // tedy včetně custom ID, nemusi se tak znova tahat z DB asi?s
+
+  // OK, update the messages status online.
+
+  // First obtain, custom IDs of messages.
+
   return false;
 }
 
 bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
-  return false;
+  Q_UNUSED(message_db_ids)
+  Q_UNUSED(read)
+
+  selected_item->updateCounts(false);
+
+  itemChanged(QList<RootItem*>() << selected_item);
+  requestFeedReadFilterReload();
+  return true;
 }
 
 bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int, RootItem::Importance> > changes) {

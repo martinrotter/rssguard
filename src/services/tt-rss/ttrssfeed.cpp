@@ -116,12 +116,13 @@ QList<Message> TtRssFeed::undeletedMessages() const {
   int account_id = const_cast<TtRssFeed*>(this)->serviceRoot()->accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
+
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, custom_id "
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
-  query_read_msg.bindValue(QSL(":feed"), id());
+  query_read_msg.bindValue(QSL(":feed"), customId());
   query_read_msg.bindValue(QSL(":account_id"), account_id);
 
   // FIXME: Fix those const functions, this is fucking ugly.
@@ -130,13 +131,14 @@ QList<Message> TtRssFeed::undeletedMessages() const {
     while (query_read_msg.next()) {
       Message message;
 
-      message.m_feedId = QString::number(account_id);
+      message.m_feedId = QString::number(customId());
       message.m_title = query_read_msg.value(0).toString();
       message.m_url = query_read_msg.value(1).toString();
       message.m_author = query_read_msg.value(2).toString();
       message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
       message.m_contents = query_read_msg.value(4).toString();
       message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
+      message.m_accountId = account_id;
       message.m_customId = query_read_msg.value(6).toString();
 
       messages.append(message);

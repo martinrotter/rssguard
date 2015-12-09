@@ -154,6 +154,7 @@ QList<Message> StandardFeed::undeletedMessages() const {
       message.m_author = query_read_msg.value(2).toString();
       message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
       message.m_contents = query_read_msg.value(4).toString();
+      message.m_accountId = const_cast<StandardFeed*>(this)->serviceRoot()->accountId();
       message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
 
       messages.append(message);

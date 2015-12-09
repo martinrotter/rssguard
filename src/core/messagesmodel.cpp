@@ -140,6 +140,7 @@ Message MessagesModel::messageAt(int row_index) const {
   message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
   message.m_feedId = rec.value(MSG_DB_FEED_INDEX).toString();
+  message.m_accountId = rec.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = rec.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).value<qint64>()).toLocalTime();
 

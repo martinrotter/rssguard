@@ -76,7 +76,7 @@ class TtRssServiceRoot : public ServiceRoot {
   public slots:
     void syncIn();
 
-  private:
+  private:   
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed*> &feeds);
