@@ -539,15 +539,15 @@ bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item
   return true;
 }
 
-bool StandardServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+bool StandardServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
   Q_UNUSED(selected_item)
-  Q_UNUSED(message_db_ids)
+  Q_UNUSED(messages)
 
   return true;
 }
 
-bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
-  Q_UNUSED(message_db_ids)
+bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
+  Q_UNUSED(messages)
 
   // User deleted some messages he selected in message list.
   selected_item->updateCounts(true);

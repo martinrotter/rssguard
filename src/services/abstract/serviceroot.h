@@ -121,11 +121,11 @@ class ServiceRoot : public RootItem {
 
     // Called BEFORE the list of messages is about to be deleted
     // by the user from message list.
-    virtual bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) = 0;
+    virtual bool onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) = 0;
 
     // Called AFTER the list of messages was deleted
     // by the user from message list.
-    virtual bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) = 0;
+    virtual bool onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) = 0;
 
     // Called BEFORE the list of messages is about to be restored from recycle bin
     // by the user from message list.

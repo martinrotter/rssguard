@@ -202,11 +202,11 @@ bool TtRssServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, c
   return true;
 }
 
-bool TtRssServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+bool TtRssServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
   return false;
 }
 
-bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
+bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
   return false;
 }
 

@@ -372,17 +372,17 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
 
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
   QStringList message_ids;
-  QList<int> message_ids_num;
+  QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    int message_id = messageId(message.row());
+    Message msg = messageAt(message.row());
 
-    message_ids_num.append(message_id);
-    message_ids.append(QString::number(message_id));
+    msgs.append(msg);
+    message_ids.append(QString::number(msg.m_id));
   }
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesDelete(m_selectedItem, message_ids_num)) {
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
     return false;
   }
 
@@ -400,7 +400,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
 
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
-    return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, message_ids_num);
+    return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, msgs);
   }
   else {
     return false;

@@ -69,8 +69,8 @@ class StandardServiceRoot : public ServiceRoot {
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
     bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
 
-    bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
-    bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
+    bool onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
+    bool onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
 
     bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
     bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
