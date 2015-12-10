@@ -268,67 +268,6 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   }
 }
 
-bool StandardServiceRoot::restoreBin() {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin restoring.");
-    return false;
-  }
-
-  QSqlQuery query_empty_bin(db_handle);
-  query_empty_bin.setForwardOnly(true);
-
-  if (!query_empty_bin.exec(QString("UPDATE Messages SET is_deleted = 0 WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1;").arg(accountId()))) {
-    qWarning("Query execution failed for recycle bin restoring.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    updateCounts(true);
-    itemChanged(getSubTree());
-    requestReloadMessageList(true);
-    requestFeedReadFilterReload();
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
-}
-
-bool StandardServiceRoot::emptyBin() {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin emptying.");
-    return false;
-  }
-
-  QSqlQuery query_empty_bin(db_handle);
-  query_empty_bin.setForwardOnly(true);
-
-  if (!query_empty_bin.exec(QString("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = %1;").arg(accountId()))) {
-    qWarning("Query execution failed for recycle bin emptying.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    m_recycleBin->updateCounts(true);
-    itemChanged(QList<RootItem*>() << m_recycleBin);
-    requestReloadMessageList(true);
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
-}
-
 void StandardServiceRoot::loadFromDatabase(){
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   Assignment categories;

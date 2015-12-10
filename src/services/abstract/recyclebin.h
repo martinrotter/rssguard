@@ -38,10 +38,10 @@ class RecycleBin : public RootItem {
     // Empties the bin - removes all messages from it (does not remove
     // them from DB, just permanently hide them, so that they are not
     // re-downloaded).
-    virtual bool empty() = 0;
+    virtual bool empty();
 
     // Performs complete restoration of all messages contained in the bin
-    virtual bool restore() = 0;
+    virtual bool restore();
 
     /////////////////////////////////////////
     // Members to override. */

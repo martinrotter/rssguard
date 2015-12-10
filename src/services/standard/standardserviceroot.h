@@ -95,9 +95,6 @@ class StandardServiceRoot : public ServiceRoot {
     bool markRecycleBinReadUnread(ReadStatus read);
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
 
-    bool restoreBin();
-    bool emptyBin();
-
     void loadFromDatabase();
 
   public slots:

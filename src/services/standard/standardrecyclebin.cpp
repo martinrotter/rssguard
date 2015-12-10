@@ -50,11 +50,11 @@ bool StandardRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 }
 
 bool StandardRecycleBin::empty() {
-  return serviceRoot()->emptyBin();
+  return RecycleBin::empty();
 }
 
 bool StandardRecycleBin::restore() {
-  return serviceRoot()->restoreBin();
+  return RecycleBin::restore();
 }
 
 void StandardRecycleBin::updateCounts(bool update_total_count) {
