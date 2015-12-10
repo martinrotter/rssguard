@@ -20,10 +20,6 @@
 
 #include "services/abstract/recyclebin.h"
 
-#include <QCoreApplication>
-
-
-class StandardServiceRoot;
 
 class StandardRecycleBin : public RecycleBin {
     Q_OBJECT
@@ -31,13 +27,6 @@ class StandardRecycleBin : public RecycleBin {
   public:
     explicit StandardRecycleBin(RootItem *parent = NULL);
     virtual ~StandardRecycleBin();
-
-    StandardServiceRoot *serviceRoot();
-
-    bool markAsReadUnread(RootItem::ReadStatus status);
-
-    bool empty();
-    bool restore();
 };
 
 #endif // STANDARDRECYCLEBIN_H
