@@ -75,13 +75,9 @@ class StandardServiceRoot : public ServiceRoot {
     bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
     bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
-    // Returns all standard categories which are lying under given root node.
-    // This does NOT include the root node even if the node is category.
-    QHash<int,StandardCategory*> categoriesForItem(RootItem *root);
-
     // Returns all categories from this root, each pair
     // consists of ID of parent item and pointer to category.
-    QHash<int,StandardCategory*> allCategories();
+    QList<StandardCategory*> allCategories();
 
     // Returns context specific menu actions for given feed.
     QList<QAction*> getContextMenuForFeed(StandardFeed *feed);

@@ -61,7 +61,7 @@ FormStandardFeedDetails::~FormStandardFeedDetails() {
 
 int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_select) {
   // Load categories.
-  loadCategories(m_serviceRoot->allCategories().values(), m_serviceRoot);
+  loadCategories(m_serviceRoot->allCategories(), m_serviceRoot);
 
   if (input_feed == NULL) {
     // User is adding new category.
@@ -491,8 +491,7 @@ void FormStandardFeedDetails::loadCategories(const QList<StandardCategory*> cate
                                      QVariant::fromValue((void*) root_item));
 
   foreach (StandardCategory *category, categories) {
-    m_ui->m_cmbParentCategory->addItem(category->data(FDS_MODEL_TITLE_INDEX,
-                                                      Qt::DecorationRole).value<QIcon>(),
+    m_ui->m_cmbParentCategory->addItem(category->icon(),
                                        category->title(),
                                        QVariant::fromValue((void*) category));
   }

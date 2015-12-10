@@ -292,35 +292,15 @@ void StandardServiceRoot::loadFromDatabase(){
   m_recycleBin->updateCounts(true);
 }
 
-QHash<int,StandardCategory*> StandardServiceRoot::categoriesForItem(RootItem *root) {
-  QHash<int,StandardCategory*> categories;
-  QList<RootItem*> parents;
+QList<StandardCategory*> StandardServiceRoot::allCategories() {
+  QList<Category*> cats = getSubTreeCategories();
+  QList<StandardCategory*> std_cats;
 
-  parents.append(root->childItems());
-
-  while (!parents.isEmpty()) {
-    RootItem *item = parents.takeFirst();
-
-    if (item->kind() == RootItemKind::Category) {
-      // This item is category, add it to the output list and
-      // scan its children.
-      int category_id = item->id();
-      StandardCategory *category = static_cast<StandardCategory*>(item);
-
-      if (!categories.contains(category_id)) {
-        categories.insert(category_id, category);
-      }
-
-      parents.append(category->childItems());
-    }
+  foreach (Category *category, cats) {
+    std_cats.append(qobject_cast<StandardCategory*>(category));
   }
 
-  return categories;
-}
-
-QHash<int,StandardCategory*> StandardServiceRoot::allCategories() {
-  // TODO: změnit na qlist, použít getsubtree možná
-  return categoriesForItem(this);
+  return std_cats;
 }
 
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {

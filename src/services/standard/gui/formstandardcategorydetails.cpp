@@ -76,7 +76,7 @@ void FormStandardCategoryDetails::setEditableCategory(StandardCategory *editable
 
 int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem *parent_to_select) {
   // Load categories.
-  loadCategories(m_serviceRoot->allCategories().values(), m_serviceRoot, input_category);
+  loadCategories(m_serviceRoot->allCategories(), m_serviceRoot, input_category);
 
   if (input_category == NULL) {
     // User is adding new category.
