@@ -27,9 +27,6 @@ class TtRssRecycleBin : public RecycleBin {
   public:
     explicit TtRssRecycleBin(RootItem *parent = 0);
     virtual ~TtRssRecycleBin();
-
-    bool empty();
-    bool restore();
 };
 
 #endif // TTRSSRECYCLEBIN_H

@@ -24,12 +24,3 @@ TtRssRecycleBin::TtRssRecycleBin(RootItem *parent) : RecycleBin(parent) {
 
 TtRssRecycleBin::~TtRssRecycleBin() {
 }
-
-bool TtRssRecycleBin::empty() {
-  return false;
-}
-
-bool TtRssRecycleBin::restore() {
-  return false;
-}
-

@@ -53,6 +53,7 @@
 #define URL_REGEXP                            "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
 #define USER_AGENT_HTTP_HEADER                "User-Agent"
 #define TEXT_TITLE_LIMIT                      30
+#define RESELECT_MESSAGE_THRESSHOLD           500
 #define MAX_ZOOM_FACTOR                       10.0
 #define ICON_SIZE_SETTINGS                    16
 #define NO_PARENT_CATEGORY                    -1
