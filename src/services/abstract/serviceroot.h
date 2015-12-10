@@ -130,12 +130,12 @@ class ServiceRoot : public RootItem {
     // Called BEFORE the list of messages is about to be restored from recycle bin
     // by the user from message list.
     // Selected item is naturally recycle bin.
-    virtual bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) = 0;
+    virtual bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) = 0;
 
     // Called AFTER the list of messages was restored from recycle bin
     // by the user from message list.
     // Selected item is naturally recycle bin.
-    virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) = 0;
+    virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) = 0;
 
     /////////////////////////////////////////
     // Members to override. */

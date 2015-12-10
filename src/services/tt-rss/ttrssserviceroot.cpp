@@ -210,11 +210,11 @@ bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QLis
   return false;
 }
 
-bool TtRssServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+bool TtRssServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
   return false;
 }
 
-bool TtRssServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+bool TtRssServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
   return false;
 }
 

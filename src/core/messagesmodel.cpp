@@ -439,17 +439,17 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
   QStringList message_ids;
-  QList<int> message_ids_num;
+  QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    int msg_id = messageId(message.row());
+    Message msg = messageAt(message.row());
 
-    message_ids_num.append(msg_id);
-    message_ids.append(QString::number(msg_id));
+    msgs.append(msg);
+    message_ids.append(QString::number(msg.m_id));
   }
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesRestoredFromBin(m_selectedItem, message_ids_num)) {
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
     return false;
   }
 
@@ -461,7 +461,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
   if (query_read_msg.exec(sql_delete_query)) {
     fetchAllData();
 
-    return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, message_ids_num);
+    return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
   }
   else {
     return false;

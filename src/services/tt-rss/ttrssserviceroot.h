@@ -63,8 +63,8 @@ class TtRssServiceRoot : public ServiceRoot {
     bool onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
     bool onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
 
-    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
-    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids);
+    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
+    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
     TtRssNetworkFactory *network() const;
 

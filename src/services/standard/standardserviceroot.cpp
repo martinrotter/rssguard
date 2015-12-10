@@ -565,13 +565,13 @@ bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const Q
   return true;
 }
 
-bool StandardServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+bool StandardServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
   return true;
 }
 
-bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, QList<int> message_db_ids) {
+bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
   Q_UNUSED(selected_item)
-  Q_UNUSED(message_db_ids)
+  Q_UNUSED(messages)
 
   updateCounts(true);
   itemChanged(getSubTree());
