@@ -35,6 +35,46 @@ RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item) {
 RecycleBin::~RecycleBin() {
 }
 
+int RecycleBin::countOfUnreadMessages() const {
+  return m_unreadCount;
+}
+
+int RecycleBin::countOfAllMessages() const {
+  return m_totalCount;
+}
+
+void RecycleBin::updateCounts(bool update_total_count) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_all(database);
+  ServiceRoot *parent_root = getParentServiceRoot();
+
+  query_all.setForwardOnly(true);
+  query_all.prepare("SELECT count(*) FROM Messages "
+                    "WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+  query_all.bindValue(QSL(":account_id"), parent_root->accountId());
+
+
+  if (query_all.exec() && query_all.next()) {
+    m_unreadCount = query_all.value(0).toInt();
+  }
+  else {
+    m_unreadCount = 0;
+  }
+
+  if (update_total_count) {
+    query_all.prepare("SELECT count(*) FROM Messages "
+                      "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+    query_all.bindValue(QSL(":account_id"), parent_root->accountId());
+
+    if (query_all.exec() && query_all.next()) {
+      m_totalCount = query_all.value(0).toInt();
+    }
+    else {
+      m_totalCount = 0;
+    }
+  }
+}
+
 QVariant RecycleBin::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
@@ -42,6 +82,48 @@ QVariant RecycleBin::data(int column, int role) const {
 
     default:
       return RootItem::data(column, role);
+  }
+}
+
+bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for recycle bin read change.");
+    return false;
+  }
+
+  QSqlQuery query_read_msg(db_handle);
+  ServiceRoot *parent_root = getParentServiceRoot();
+
+  query_read_msg.setForwardOnly(true);
+
+  if (!query_read_msg.prepare("UPDATE Messages SET is_read = :read "
+                              "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;")) {
+    qWarning("Query preparation failed for recycle bin read change.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_read_msg.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
+  query_read_msg.bindValue(QSL(":account_id"), parent_root->accountId());
+
+  if (!query_read_msg.exec()) {
+    qDebug("Query execution for recycle bin read change failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    updateCounts(true);
+
+    parent_root->itemChanged(QList<RootItem*>() << this);
+    parent_root->requestReloadMessageList(status == RootItem::Read);
+    return true;
+  }
+  else {
+    return db_handle.rollback();
   }
 }
 

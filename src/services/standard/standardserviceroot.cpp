@@ -185,45 +185,6 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
   }
 }
 
-bool StandardServiceRoot::markRecycleBinReadUnread(RootItem::ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin read change.");
-    return false;
-  }
-
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-
-  if (!query_read_msg.prepare("UPDATE Messages SET is_read = :read WHERE is_deleted = 1 AND account_id = :account_id;")) {
-    qWarning("Query preparation failed for recycle bin read change.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
-  query_read_msg.bindValue(QSL(":account_id"), accountId());
-
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for recycle bin read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    m_recycleBin->updateCounts(true);
-
-    itemChanged(QList<RootItem*>() << m_recycleBin);
-    requestReloadMessageList(read == RootItem::Read);
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
-}
-
 bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_delete_msg(db_handle);

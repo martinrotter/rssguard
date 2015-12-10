@@ -30,6 +30,13 @@ class RecycleBin : public RootItem {
 
     QVariant data(int column, int role) const;
 
+    bool markAsReadUnread(ReadStatus status);
+
+    int countOfUnreadMessages() const;
+    int countOfAllMessages() const;
+
+    void updateCounts(bool update_total_count);
+
   public slots:
     /////////////////////////////////////////
     // /* Members to override.
@@ -46,6 +53,10 @@ class RecycleBin : public RootItem {
     /////////////////////////////////////////
     // Members to override. */
     /////////////////////////////////////////
+
+  private:
+    int m_totalCount;
+    int m_unreadCount;
 };
 
 #endif // RECYCLEBIN_H

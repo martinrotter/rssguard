@@ -34,18 +34,10 @@ class StandardRecycleBin : public RecycleBin {
 
     StandardServiceRoot *serviceRoot();
 
-    int countOfUnreadMessages() const;
-    int countOfAllMessages() const;
     bool markAsReadUnread(RootItem::ReadStatus status);
 
     bool empty();
     bool restore();
-
-    void updateCounts(bool update_total_count);
-
-  private:
-    int m_totalCount;
-    int m_unreadCount;
 };
 
 #endif // STANDARDRECYCLEBIN_H

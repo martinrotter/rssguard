@@ -37,16 +37,8 @@ StandardServiceRoot *StandardRecycleBin::serviceRoot() {
   return static_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
-int StandardRecycleBin::countOfUnreadMessages() const {
-  return m_unreadCount;
-}
-
-int StandardRecycleBin::countOfAllMessages() const {
-  return m_totalCount;
-}
-
 bool StandardRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  return serviceRoot()->markRecycleBinReadUnread(status);
+  return RecycleBin::markAsReadUnread(status);
 }
 
 bool StandardRecycleBin::empty() {
@@ -55,26 +47,4 @@ bool StandardRecycleBin::empty() {
 
 bool StandardRecycleBin::restore() {
   return RecycleBin::restore();
-}
-
-void StandardRecycleBin::updateCounts(bool update_total_count) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_all(database);
-  query_all.setForwardOnly(true);
-
-  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE is_read = 0 AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1;").arg(serviceRoot()->accountId())) && query_all.next()) {
-    m_unreadCount = query_all.value(0).toInt();
-  }
-  else {
-    m_unreadCount = 0;
-  }
-
-  if (update_total_count) {
-    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1;").arg(serviceRoot()->accountId())) && query_all.next()) {
-      m_totalCount = query_all.value(0).toInt();
-    }
-    else {
-      m_totalCount = 0;
-    }
-  }
 }
