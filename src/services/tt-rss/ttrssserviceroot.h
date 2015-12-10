@@ -57,8 +57,8 @@ class TtRssServiceRoot : public ServiceRoot {
     bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
     bool onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
 
-    bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
-    bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
+    bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
+    bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
 
     bool onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
     bool onAfterMessagesDelete(RootItem *selected_item, QList<int> message_db_ids);
@@ -76,8 +76,9 @@ class TtRssServiceRoot : public ServiceRoot {
   public slots:
     void syncIn();
 
-  private:   
-    QList<int> customIDsOfMessages(const QList<Message> &messages);
+  private:
+    QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
+    QStringList customIDsOfMessages(const QList<Message> &messages);
 
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.

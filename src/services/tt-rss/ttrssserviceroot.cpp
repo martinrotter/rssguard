@@ -174,12 +174,32 @@ bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QLi
   return true;
 }
 
-bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int, RootItem::Importance> > changes) {
-  return false;
+bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,Importance> > &changes) {
+  Q_UNUSED(selected_item)
+
+  QNetworkReply::NetworkError error;
+
+  // NOTE: We just toggle it here, because we know, that there is only
+  // toggling of starred status supported by RSS Guard right now and
+  // Tiny Tiny RSS API allows it, which is greate.
+  TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(changes),
+                                                                  UpdateArticle::Starred,
+                                                                  UpdateArticle::Togggle,
+                                                                  error);
+
+  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK && response.articlesUpdated() == changes.size()) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
-bool TtRssServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int, RootItem::Importance> > changes) {
-  return false;
+bool TtRssServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,Importance> > &changes) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(changes)
+
+  return true;
 }
 
 bool TtRssServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, QList<int> message_db_ids) {
@@ -345,11 +365,21 @@ void TtRssServiceRoot::syncIn() {
   }
 }
 
-QList<int> TtRssServiceRoot::customIDsOfMessages(const QList<Message> &messages) {
-  QList<int> list;
+QStringList TtRssServiceRoot::customIDsOfMessages(const QList<QPair<Message,RootItem::Importance> > &changes) {
+  QStringList list;
+
+  for (int i = 0; i < changes.size(); i++) {
+    list.append(changes.at(i).first.m_customId);
+  }
+
+  return list;
+}
+
+QStringList TtRssServiceRoot::customIDsOfMessages(const QList<Message> &messages) {
+  QStringList list;
 
   foreach (const Message &message, messages) {
-    list.append(message.m_customId.toInt());
+    list.append(message.m_customId);
   }
 
   return list;

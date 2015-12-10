@@ -130,12 +130,10 @@ class TtRssNetworkFactory {
                                            bool show_content, bool include_attachments,
                                            bool sanitize, QNetworkReply::NetworkError &error);
 
-    TtRssUpdateArticleResponse updateArticles(const QList<int> &ids, UpdateArticle::OperatingField field,
+    TtRssUpdateArticleResponse updateArticles(const QStringList &ids, UpdateArticle::OperatingField field,
                                               UpdateArticle::Mode mode, QNetworkReply::NetworkError &error);
 
   private:
-    QString encodeArticleIds(const QList<int> &ids);
-
     QString m_url;
     QString m_username;
     QString m_password;

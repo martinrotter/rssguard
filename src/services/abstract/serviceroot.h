@@ -109,7 +109,7 @@ class ServiceRoot : public RootItem {
     // some ONLINE service or something.
     //
     // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) = 0;
+    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes) = 0;
 
     // Called AFTER this importance switch update is stored in DB,
     // when false is returned, change is aborted.
@@ -117,7 +117,7 @@ class ServiceRoot : public RootItem {
     // which items are actually changed.
     //
     // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes) = 0;
+    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes) = 0;
 
     // Called BEFORE the list of messages is about to be deleted
     // by the user from message list.

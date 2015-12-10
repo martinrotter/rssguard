@@ -524,7 +524,7 @@ bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const 
 }
 
 bool StandardServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item,
-                                                          QList<QPair<int,RootItem::Importance> > changes) {
+                                                          const QList<QPair<Message,Importance> > &changes) {
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
@@ -532,7 +532,7 @@ bool StandardServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_ite
 }
 
 bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item,
-                                                         QList<QPair<int,RootItem::Importance> > changes) {
+                                                         const QList<QPair<Message,Importance> > &changes) {
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 

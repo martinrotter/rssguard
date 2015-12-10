@@ -171,14 +171,14 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool fo
   return result;
 }
 
-TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QList<int> &ids,
+TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList &ids,
                                                                UpdateArticle::OperatingField field,
                                                                UpdateArticle::Mode mode,
                                                                QNetworkReply::NetworkError &error) {
   QtJson::JsonObject json;
   json["op"] = "updateArticle";
   json["sid"] = m_sessionId;
-  json["article_ids"] = encodeArticleIds(ids);
+  json["article_ids"] = ids.join(QL1C(','));
   json["mode"] = (int) mode;
   json["field"] = (int) field;
 
@@ -197,16 +197,6 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QList<int> 
 
   error = network_reply.first;
   return result;
-}
-
-QString TtRssNetworkFactory::encodeArticleIds(const QList<int> &ids) {
-  QStringList strings;
-
-  foreach (int id, ids) {
-    strings.append(QString::number(id));
-  }
-
-  return strings.join(QL1C(','));
 }
 
 TtRssResponse::TtRssResponse(const QString &raw_content) {

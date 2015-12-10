@@ -301,11 +301,11 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   RootItem::Importance current_importance = (RootItem::Importance) data(target_index, Qt::EditRole).toInt();
   RootItem::Importance next_importance = current_importance == RootItem::Important ?
                                            RootItem::NotImportant : RootItem::Important;
-  int message_id = messageId(row_index);
-  QPair<int,RootItem::Importance> pair(message_id, next_importance);
+  Message message = messageAt(row_index);
+  QPair<Message,RootItem::Importance> pair(message, next_importance);
 
   if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem,
-                                                                               QList<QPair<int,RootItem::Importance> >() << pair)) {
+                                                                               QList<QPair<Message,RootItem::Importance> >() << pair)) {
     return false;
   }
 
@@ -326,14 +326,14 @@ bool MessagesModel::switchMessageImportance(int row_index) {
     return false;
   }
 
-  query_importance_msg.bindValue(QSL(":id"), message_id);
+  query_importance_msg.bindValue(QSL(":id"), message.m_id);
   query_importance_msg.bindValue(QSL(":important"), (int) next_importance);
 
 
   // Commit changes.
   if (query_importance_msg.exec()) {
     return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem,
-                                                                                  QList<QPair<int,RootItem::Importance> >() << pair);
+                                                                                  QList<QPair<Message,RootItem::Importance> >() << pair);
   }
   else {
     return false;
@@ -343,17 +343,17 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
   QSqlQuery query_read_msg(database());
   QStringList message_ids;
-  QList<QPair<int,RootItem::Importance> > message_states;
+  QList<QPair<Message,RootItem::Importance> > message_states;
 
   query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    int message_id = messageId(message.row());
+    Message msg = messageAt(message.row());
     RootItem::Importance message_importance = messageImportance((message.row()));
 
-    message_states.append(QPair<int,RootItem::Importance>(message_id, message_importance));
-    message_ids.append(QString::number(message_id));
+    message_states.append(QPair<Message,RootItem::Importance>(msg, message_importance));
+    message_ids.append(QString::number(msg.m_id));
   }
 
   if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
