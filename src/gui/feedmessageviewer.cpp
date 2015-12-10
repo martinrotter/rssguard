@@ -233,7 +233,7 @@ void FeedMessageViewer::createConnections() {
   connect(qApp->feedUpdateLock(), SIGNAL(unlocked()), this, SLOT(updateFeedButtonsAvailability()));
   
   // If user selects feeds, load their messages.
-  connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadFeeds(RootItem*)));
+  connect(m_feedsView, SIGNAL(itemSelected(RootItem*)), m_messagesView, SLOT(loadItem(RootItem*)));
   
   // State of many messages is changed, then we need
   // to reload selections.

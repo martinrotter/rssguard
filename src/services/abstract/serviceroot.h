@@ -93,7 +93,7 @@ class ServiceRoot : public RootItem {
     // some ONLINE service or something.
     //
     // "read" is status which is ABOUT TO BE SET.
-    virtual bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) = 0;
+    virtual bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read) = 0;
 
     // Called AFTER this read status update (triggered by user in message list) is stored in DB,
     // when false is returned, change is aborted.
@@ -101,7 +101,7 @@ class ServiceRoot : public RootItem {
     // which items are actually changed.
     //
     // "read" is status which is ABOUT TO BE SET.
-    virtual bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read) = 0;
+    virtual bool onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read) = 0;
 
     // Called BEFORE this importance switch update is stored in DB,
     // when false is returned, change is aborted.

@@ -51,6 +51,7 @@ class Message {
     QDateTime m_created;
     QString m_feedId;
     int m_accountId;
+    int m_id;
     QString m_customId;
 
     bool m_isRead;

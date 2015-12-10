@@ -24,6 +24,7 @@
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrsscategory.h"
+#include "services/tt-rss/definitions.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/gui/formeditaccount.h"
 
@@ -145,19 +146,25 @@ QList<QAction*> TtRssServiceRoot::contextMenu() {
   return serviceMenu();
 }
 
-bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
-  // TODO: misto čísel primarnich zprav, vracet cele objekty zprav
-  // tedy včetně custom ID, nemusi se tak znova tahat z DB asi?s
+bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+  Q_UNUSED(selected_item)
 
-  // OK, update the messages status online.
+  QNetworkReply::NetworkError error;
+  TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(messages),
+                                                                  UpdateArticle::Unread,
+                                                                  read == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
+                                                                  error);
 
-  // First obtain, custom IDs of messages.
-
-  return false;
+  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK && response.articlesUpdated() == messages.size()) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
-bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
-  Q_UNUSED(message_db_ids)
+bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+  Q_UNUSED(messages)
   Q_UNUSED(read)
 
   selected_item->updateCounts(false);
@@ -336,6 +343,16 @@ void TtRssServiceRoot::syncIn() {
     requestReloadMessageList(true);
     requestItemExpand(all_items, true);
   }
+}
+
+QList<int> TtRssServiceRoot::customIDsOfMessages(const QList<Message> &messages) {
+  QList<int> list;
+
+  foreach (const Message &message, messages) {
+    list.append(message.m_customId.toInt());
+  }
+
+  return list;
 }
 
 QStringList TtRssServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {

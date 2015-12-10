@@ -171,6 +171,44 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool fo
   return result;
 }
 
+TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QList<int> &ids,
+                                                               UpdateArticle::OperatingField field,
+                                                               UpdateArticle::Mode mode,
+                                                               QNetworkReply::NetworkError &error) {
+  QtJson::JsonObject json;
+  json["op"] = "updateArticle";
+  json["sid"] = m_sessionId;
+  json["article_ids"] = encodeArticleIds(ids);
+  json["mode"] = (int) mode;
+  json["field"] = (int) field;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+  TtRssUpdateArticleResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login(error);
+    json["sid"] = m_sessionId;
+
+    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
+    result = TtRssUpdateArticleResponse(QString::fromUtf8(result_raw));
+  }
+
+  error = network_reply.first;
+  return result;
+}
+
+QString TtRssNetworkFactory::encodeArticleIds(const QList<int> &ids) {
+  QStringList strings;
+
+  foreach (int id, ids) {
+    strings.append(QString::number(id));
+  }
+
+  return strings.join(QL1C(','));
+}
+
 TtRssResponse::TtRssResponse(const QString &raw_content) {
   m_rawContent = QtJson::parse(raw_content).toMap();
 }
@@ -255,7 +293,7 @@ TtRssGetFeedsCategoriesResponse::TtRssGetFeedsCategoriesResponse(const QString &
 TtRssGetFeedsCategoriesResponse::~TtRssGetFeedsCategoriesResponse() {
 }
 
-RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) {
+RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QString base_address) const {
   RootItem *parent = new RootItem();
 
   // Chop the "api/" from the end of the address.
@@ -342,7 +380,7 @@ TtRssGetHeadlinesResponse::TtRssGetHeadlinesResponse(const QString &raw_content)
 TtRssGetHeadlinesResponse::~TtRssGetHeadlinesResponse() {
 }
 
-QList<Message> TtRssGetHeadlinesResponse::messages() {
+QList<Message> TtRssGetHeadlinesResponse::messages() const {
   QList<Message> messages;
 
   foreach (QVariant item, m_rawContent["content"].toList()) {
@@ -379,4 +417,29 @@ QList<Message> TtRssGetHeadlinesResponse::messages() {
   }
 
   return messages;
+}
+
+
+TtRssUpdateArticleResponse::TtRssUpdateArticleResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+}
+
+TtRssUpdateArticleResponse::~TtRssUpdateArticleResponse() {
+}
+
+QString TtRssUpdateArticleResponse::updateStatus() const {
+  if (m_rawContent.contains(QSL("content"))) {
+    return m_rawContent["content"].toMap()["status"].toString();
+  }
+  else {
+    return QString();
+  }
+}
+
+int TtRssUpdateArticleResponse::articlesUpdated() const {
+  if (m_rawContent.contains(QSL("content"))) {
+    return m_rawContent["content"].toMap()["updated"].toInt();
+  }
+  else {
+    return 0;
+  }
 }

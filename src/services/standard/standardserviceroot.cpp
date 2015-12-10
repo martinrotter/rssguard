@@ -504,16 +504,16 @@ bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
   return true;
 }
 
-bool StandardServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
-  Q_UNUSED(message_db_ids)
+bool StandardServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+  Q_UNUSED(messages)
   Q_UNUSED(read)
   Q_UNUSED(selected_item)
 
   return true;
 }
 
-bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, RootItem::ReadStatus read) {
-  Q_UNUSED(message_db_ids)
+bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+  Q_UNUSED(messages)
   Q_UNUSED(read)
 
   selected_item->updateCounts(false);

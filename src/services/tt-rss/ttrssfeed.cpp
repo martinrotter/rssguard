@@ -118,7 +118,7 @@ QList<Message> TtRssFeed::undeletedMessages() const {
   QSqlQuery query_read_msg(database);
 
   query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, custom_id "
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, custom_id, id "
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
@@ -140,6 +140,7 @@ QList<Message> TtRssFeed::undeletedMessages() const {
       message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
       message.m_accountId = account_id;
       message.m_customId = query_read_msg.value(6).toString();
+      message.m_id = query_read_msg.value(7).toInt();
 
       messages.append(message);
     }

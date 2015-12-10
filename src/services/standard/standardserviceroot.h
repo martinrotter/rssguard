@@ -63,8 +63,8 @@ class StandardServiceRoot : public ServiceRoot {
     // Message stuff.
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 
-    bool onBeforeSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
-    bool onAfterSetMessagesRead(RootItem *selected_item, QList<int> message_db_ids, ReadStatus read);
+    bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
+    bool onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
 
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);
     bool onAfterSwitchMessageImportance(RootItem *selected_item, QList<QPair<int,RootItem::Importance> > changes);

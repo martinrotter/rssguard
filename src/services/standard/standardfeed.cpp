@@ -135,7 +135,7 @@ QList<Message> StandardFeed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
   query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures "
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, id "
                          "FROM Messages "
                          "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
@@ -156,6 +156,7 @@ QList<Message> StandardFeed::undeletedMessages() const {
       message.m_contents = query_read_msg.value(4).toString();
       message.m_accountId = const_cast<StandardFeed*>(this)->serviceRoot()->accountId();
       message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
+      message.m_id = query_read_msg.value(6).toInt();
 
       messages.append(message);
     }

@@ -63,7 +63,7 @@ class TtRssGetFeedsCategoriesResponse : public TtRssResponse {
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
-    RootItem *feedsCategories(bool obtain_icons, QString base_address = QString());
+    RootItem *feedsCategories(bool obtain_icons, QString base_address = QString()) const;
 };
 
 class TtRssGetHeadlinesResponse : public TtRssResponse {
@@ -71,8 +71,31 @@ class TtRssGetHeadlinesResponse : public TtRssResponse {
     explicit TtRssGetHeadlinesResponse(const QString &raw_content = QString());
     virtual ~TtRssGetHeadlinesResponse();
 
-    QList<Message> messages();
+    QList<Message> messages() const;
 };
+
+class TtRssUpdateArticleResponse : public TtRssResponse {
+  public:
+    explicit TtRssUpdateArticleResponse(const QString &raw_content = QString());
+    virtual ~TtRssUpdateArticleResponse();
+
+    QString updateStatus() const;
+    int articlesUpdated() const;
+};
+
+namespace UpdateArticle {
+  enum Mode {
+    SetToFalse  = 0,
+    SetToTrue   = 1,
+    Togggle     = 2
+  };
+
+  enum OperatingField {
+    Starred     = 0,
+    Published   = 1,
+    Unread      = 2
+  };
+}
 
 class TtRssNetworkFactory {
   public:
@@ -107,7 +130,12 @@ class TtRssNetworkFactory {
                                            bool show_content, bool include_attachments,
                                            bool sanitize, QNetworkReply::NetworkError &error);
 
-  private:   
+    TtRssUpdateArticleResponse updateArticles(const QList<int> &ids, UpdateArticle::OperatingField field,
+                                              UpdateArticle::Mode mode, QNetworkReply::NetworkError &error);
+
+  private:
+    QString encodeArticleIds(const QList<int> &ids);
+
     QString m_url;
     QString m_username;
     QString m_password;

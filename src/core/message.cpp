@@ -63,6 +63,6 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure> &enclosures)
 Message::Message() {
   m_title = m_url = m_author = m_contents = m_feedId = m_customId = "";
   m_enclosures = QList<Enclosure>();
-  m_accountId = 0;
+  m_accountId = m_id = 0;
   m_isRead = m_isImportant = false;
 }

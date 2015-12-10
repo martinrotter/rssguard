@@ -141,6 +141,7 @@ Message MessagesModel::messageAt(int row_index) const {
   message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
   message.m_feedId = rec.value(MSG_DB_FEED_INDEX).toString();
   message.m_accountId = rec.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
+  message.m_id = rec.value(MSG_DB_ID_INDEX).toInt();
   message.m_customId = rec.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).value<qint64>()).toLocalTime();
 
@@ -260,9 +261,9 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return true;
   }
 
-  int message_id = messageId(row_index);
+  Message message = messageAt(row_index);
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, QList<int>() << message_id, read)) {
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, QList<Message>() << message, read)) {
     // Cannot change read status of the item. Abort.
     return false;
   }
@@ -284,11 +285,11 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  query_read_msg.bindValue(QSL(":id"), message_id);
+  query_read_msg.bindValue(QSL(":id"), message.m_id);
   query_read_msg.bindValue(QSL(":read"), (int) read);
 
   if (query_read_msg.exec()) {
-    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<int>() << message_id, read);
+    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {
     return false;
@@ -408,17 +409,17 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
 
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read) {
   QStringList message_ids;
-  QList<int> message_ids_num;
+  QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    int message_id = messageId(message.row());
+    Message msg = messageAt(message.row());
 
-    message_ids_num.append(message_id);
-    message_ids.append(QString::number(message_id));
+    msgs.append(msg);
+    message_ids.append(QString::number(msg.m_id));
   }
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, message_ids_num, read)) {
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
     return false;
   }
 
@@ -429,7 +430,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootIt
                           .arg(message_ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")))) {
     fetchAllData();
 
-    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, message_ids_num, read);
+    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
   }
   else {
     return false;

@@ -57,7 +57,7 @@ class MessagesView : public QTreeView {
     void reloadSelections(bool mark_current_index_read);
 
     // Loads un-deleted messages from selected feeds.
-    void loadFeeds(RootItem *item);
+    void loadItem(RootItem *item);
 
     // Message manipulators.
     void openSelectedSourceMessagesExternally();
