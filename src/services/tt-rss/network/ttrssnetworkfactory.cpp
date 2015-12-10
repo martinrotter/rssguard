@@ -178,7 +178,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   QtJson::JsonObject json;
   json["op"] = "updateArticle";
   json["sid"] = m_sessionId;
-  json["article_ids"] = ids.join(QL1C(','));
+  json["article_ids"] = ids.join(QSL(","));
   json["mode"] = (int) mode;
   json["field"] = (int) field;
 
