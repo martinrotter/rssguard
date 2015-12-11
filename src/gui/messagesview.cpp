@@ -28,6 +28,7 @@
 
 #include <QKeyEvent>
 #include <QScrollBar>
+#include <QTimer>
 #include <QMenu>
 
 
@@ -257,8 +258,8 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   }
 
   // Finally, mark opened messages as read.
-  if (selectionModel()->selectedRows().size() > 1) {
-    markSelectedMessagesRead();
+  if (!selectionModel()->selectedRows().isEmpty()) {
+    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
 }
 
@@ -278,8 +279,8 @@ void MessagesView::openSelectedSourceMessagesInternally() {
   }
 
   // Finally, mark opened messages as read.
-  if (selectionModel()->selectedRows().size() > 1) {
-    markSelectedMessagesRead();
+  if (!selectionModel()->selectedRows().isEmpty()) {
+    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
 }
 
@@ -301,7 +302,7 @@ void MessagesView::openSelectedMessagesInternally() {
     emit openMessagesInNewspaperView(messages);
 
     // Finally, mark opened messages as read.
-    markSelectedMessagesRead();
+    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
 }
 
