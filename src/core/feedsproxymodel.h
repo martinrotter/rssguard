@@ -18,12 +18,11 @@
 #ifndef FEEDSPROXYMODEL_H
 #define FEEDSPROXYMODEL_H
 
-#include "rootitem.h"
-
 #include <QSortFilterProxyModel>
 
 
 class FeedsModel;
+class RootItem;
 
 class FeedsProxyModel : public QSortFilterProxyModel {
     Q_OBJECT

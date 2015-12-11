@@ -18,7 +18,7 @@
 #ifndef RECYCLEBIN_H
 #define RECYCLEBIN_H
 
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 
 class RecycleBin : public RootItem {

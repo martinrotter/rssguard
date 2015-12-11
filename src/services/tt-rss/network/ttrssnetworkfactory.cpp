@@ -18,7 +18,7 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include "definitions/definitions.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssfeed.h"
 #include "services/tt-rss/ttrsscategory.h"

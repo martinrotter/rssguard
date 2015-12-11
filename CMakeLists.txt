@@ -413,12 +413,12 @@ set(APP_SOURCES
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
   src/core/feedsproxymodel.cpp
-  src/core/rootitem.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
   src/core/message.cpp
 
   # ABSTRACT service sources.
+  src/services/abstract/rootitem.cpp
   src/services/abstract/serviceentrypoint.cpp
   src/services/abstract/feed.cpp
   src/services/abstract/category.cpp
@@ -540,9 +540,9 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
-  src/core/rootitem.h
 
   # ABSTRACT service headers.
+  src/services/abstract/rootitem.h
   src/services/abstract/feed.h
   src/services/abstract/category.h
   src/services/abstract/serviceroot.h

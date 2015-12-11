@@ -18,7 +18,7 @@
 #include "services/standard/gui/formstandardcategorydetails.h"
 
 #include "definitions/definitions.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 #include "core/feedsmodel.h"
 #include "miscellaneous/iconfactory.h"
 #include "gui/feedsview.h"

@@ -18,7 +18,7 @@
 #ifndef FEED_H
 #define FEED_H
 
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 #include "core/message.h"
 

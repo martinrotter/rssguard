@@ -20,7 +20,7 @@
 
 #include "core/messagesmodel.h"
 
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 #include <QTreeView>
 #include <QHeaderView>

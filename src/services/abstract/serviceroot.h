@@ -18,7 +18,7 @@
 #ifndef SERVICEROOT_H
 #define SERVICEROOT_H
 
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 #include "core/message.h"
 

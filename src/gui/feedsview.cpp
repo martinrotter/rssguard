@@ -20,7 +20,7 @@
 #include "definitions/definitions.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 #include "miscellaneous/systemfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/systemtrayicon.h"

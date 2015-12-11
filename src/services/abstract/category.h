@@ -18,7 +18,7 @@
 #ifndef CATEGORY_H
 #define CATEGORY_H
 
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 
 class Category : public RootItem {

@@ -20,7 +20,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "core/feedsmodel.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 

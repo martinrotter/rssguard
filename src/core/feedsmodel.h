@@ -21,7 +21,7 @@
 #include <QAbstractItemModel>
 
 #include "core/message.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 #include "core/feeddownloader.h"
 
 class DatabaseCleaner;

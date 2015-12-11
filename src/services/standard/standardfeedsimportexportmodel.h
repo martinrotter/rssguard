@@ -20,7 +20,7 @@
 
 #include <QAbstractItemModel>
 
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 
 class FeedsImportExportModel : public QAbstractItemModel {

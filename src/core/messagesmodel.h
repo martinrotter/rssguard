@@ -21,7 +21,7 @@
 #include "definitions/definitions.h"
 
 #include "core/message.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
 
 #include <QSqlTableModel>
 #include <QFont>
