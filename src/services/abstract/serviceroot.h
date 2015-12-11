@@ -66,6 +66,8 @@ class ServiceRoot : public RootItem {
     // Access to recycle bin of this account if there is any.
     virtual RecycleBin *recycleBin() = 0;
 
+    QList<Message> undeletedMessages() const;
+
     // Start/stop services.
     // Start method is called when feed model gets initialized OR after user adds new service.
     // Account should synchronously initialize its children (load them from DB is recommended

@@ -30,6 +30,8 @@ class RecycleBin : public RootItem {
 
     QVariant data(int column, int role) const;
 
+    QList<Message> undeletedMessages() const;
+
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
 

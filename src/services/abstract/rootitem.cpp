@@ -73,7 +73,13 @@ bool RootItem::markAsReadUnread(ReadStatus status) {
 }
 
 QList<Message> RootItem::undeletedMessages() const {
-  return QList<Message>();
+  QList<Message> messages;
+
+  foreach (RootItem *child, m_childItems) {
+    messages.append(child->undeletedMessages());
+  }
+
+  return messages;
 }
 
 bool RootItem::cleanMessages(bool clear_only_read) {

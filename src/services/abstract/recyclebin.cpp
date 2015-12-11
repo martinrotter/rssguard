@@ -19,6 +19,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QSqlQuery>
@@ -83,6 +84,42 @@ QVariant RecycleBin::data(int column, int role) const {
     default:
       return RootItem::data(column, role);
   }
+}
+
+QList<Message> RecycleBin::undeletedMessages() const {
+  QList<Message> messages;
+  int account_id = const_cast<RecycleBin*>(this)->getParentServiceRoot()->accountId();
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_read_msg(database);
+
+  query_read_msg.setForwardOnly(true);
+  query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, custom_id, id, feed "
+                         "FROM Messages "
+                         "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
+  query_read_msg.bindValue(QSL(":account_id"), account_id);
+
+  // FIXME: Fix those const functions, this is fucking ugly.
+
+  if (query_read_msg.exec()) {
+    while (query_read_msg.next()) {
+      Message message;
+
+      message.m_feedId = query_read_msg.value(7).toString();
+      message.m_title = query_read_msg.value(0).toString();
+      message.m_url = query_read_msg.value(1).toString();
+      message.m_author = query_read_msg.value(2).toString();
+      message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
+      message.m_contents = query_read_msg.value(4).toString();
+      message.m_enclosures = Enclosures::decodeEnclosuresFromString(query_read_msg.value(5).toString());
+      message.m_accountId = account_id;
+      message.m_customId = query_read_msg.value(6).toString();
+      message.m_id = query_read_msg.value(7).toInt();
+
+      messages.append(message);
+    }
+  }
+
+  return messages;
 }
 
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {

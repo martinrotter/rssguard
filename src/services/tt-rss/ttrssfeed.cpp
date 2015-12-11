@@ -120,7 +120,7 @@ QList<Message> TtRssFeed::undeletedMessages() const {
   query_read_msg.setForwardOnly(true);
   query_read_msg.prepare("SELECT title, url, author, date_created, contents, enclosures, custom_id, id "
                          "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
+                         "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
 
   query_read_msg.bindValue(QSL(":feed"), customId());
   query_read_msg.bindValue(QSL(":account_id"), account_id);
