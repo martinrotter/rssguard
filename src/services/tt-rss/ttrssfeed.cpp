@@ -27,6 +27,7 @@
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include <QSqlQuery>
+#include <QSqlError>
 
 
 TtRssFeed::TtRssFeed(RootItem *parent)
@@ -250,6 +251,9 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
+      }
+      else {
+        QString str = query_insert.lastError().text();
       }
 
       query_insert.finish();

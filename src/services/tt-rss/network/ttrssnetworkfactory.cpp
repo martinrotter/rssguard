@@ -376,7 +376,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
     QMap<QString,QVariant> mapped = item.toMap();
     Message message;
 
-    message.m_author = mapped["author"].toString();
+    message.m_author = mapped["author"].toString();   
     message.m_isRead = !mapped["unread"].toBool();
     message.m_isImportant = mapped["marked"].toBool();
     message.m_contents = mapped["content"].toString();

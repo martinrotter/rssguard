@@ -82,6 +82,7 @@ QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
   if (query.exec("SELECT id, username, password, url FROM TtRssAccounts;")) {
     while (query.next()) {
       TtRssServiceRoot *root = new TtRssServiceRoot();
+      root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
       root->network()->setUsername(query.value(1).toString());
       root->network()->setPassword(query.value(2).toString());

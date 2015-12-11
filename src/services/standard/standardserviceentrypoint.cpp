@@ -69,12 +69,12 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
     return NULL;
   }
 
-  int id_to_assing = query.value(0).toInt() + 1;
+  int id_to_assign = query.value(0).toInt() + 1;
 
-  if (query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assing),
+  if (query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assign),
                                                                                    SERVICE_CODE_STD_RSS))) {
     StandardServiceRoot *root = new StandardServiceRoot();
-    root->setAccountId(id_to_assing);
+    root->setAccountId(id_to_assign);
     return root;
   }
   else {

@@ -38,7 +38,7 @@ ALTER TABLE Messages
 DROP FOREIGN KEY feed;
 -- !
 ALTER TABLE Messages
-MODIFY Feeds TEXT;
+MODIFY feed TEXT NOT NULL;
 -- !
 ALTER TABLE Feeds
 MODIFY date_created BIGINT;
@@ -54,5 +54,8 @@ MODIFY type INTEGER;
 -- !
 ALTER TABLE Categories
 MODIFY date_created BIGINT;
+-- !
+ALTER TABLE Messages
+MODIFY author TEXT;
 -- !
 UPDATE Information SET inf_value = '4' WHERE inf_key = 'schema_version';

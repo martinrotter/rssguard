@@ -251,17 +251,18 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
       return;
     }
 
-    int id_to_assing = query.value(0).toInt() + 1;
+    int id_to_assign = query.value(0).toInt() + 1;
 
-    bool saved = query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assing),
+    bool saved = query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assign),
                                                                                               SERVICE_CODE_TT_RSS)) &&
-                 query.exec(QString("INSERT INTO TtRssAccounts (id, username, password, url) VALUES (%1, '%2', '%3', '%4');").arg(QString::number(id_to_assing),
+                 query.exec(QString("INSERT INTO TtRssAccounts (id, username, password, url) VALUES (%1, '%2', '%3', '%4');").arg(QString::number(id_to_assign),
                                                                                                                                   network()->username(),
                                                                                                                                   network()->password(),
                                                                                                                                   network()->url()));
 
     if (saved) {
-      setAccountId(id_to_assing);
+      setId(id_to_assign);
+      setAccountId(id_to_assign);
       updateTitle();
     }
   }
