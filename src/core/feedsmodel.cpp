@@ -564,14 +564,8 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   return feeds_for_update;
 }
 
-QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
-  QList<Message> messages;
-
-  foreach (Feed *feed, feeds) {
-    messages.append(feed->undeletedMessages());
-  }
-
-  return messages;
+QList<Message> FeedsModel::messagesForItem(RootItem *item) {
+  return item->undeletedMessages();
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {

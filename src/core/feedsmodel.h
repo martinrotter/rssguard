@@ -98,7 +98,7 @@ class FeedsModel : public QAbstractItemModel {
     // Returns (undeleted) messages for given feeds.
     // This is usually used for displaying whole feeds
     // in "newspaper" mode.
-    QList<Message> messagesForFeeds(const QList<Feed*> &feeds);
+    QList<Message> messagesForItem(RootItem *item);
 
     // Returns list of all categories contained in the model.
     QList<Category*> allCategories();

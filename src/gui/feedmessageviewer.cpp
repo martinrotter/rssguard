@@ -271,11 +271,11 @@ void FeedMessageViewer::createConnections() {
   connect(form_main->m_ui->m_actionMarkAllItemsRead,
           SIGNAL(triggered()), m_feedsView, SLOT(markAllItemsRead()));
   connect(form_main->m_ui->m_actionMarkSelectedItemsAsRead,
-          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedItemsRead()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedItemRead()));
   connect(form_main->m_ui->m_actionExpandCollapseItem,
           SIGNAL(triggered()), m_feedsView, SLOT(expandCollapseCurrentItem()));
   connect(form_main->m_ui->m_actionMarkSelectedItemsAsUnread,
-          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedItemsUnread()));
+          SIGNAL(triggered()), m_feedsView, SLOT(markSelectedItemUnread()));
   connect(form_main->m_ui->m_actionClearSelectedItems,
           SIGNAL(triggered()), m_feedsView, SLOT(clearSelectedFeeds()));
   connect(form_main->m_ui->m_actionClearAllItems,

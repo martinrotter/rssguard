@@ -69,8 +69,8 @@ class FeedsView : public QTreeView {
     void updateSelectedItems();
 
     // Feed read/unread manipulators.
-    void markSelectedItemsRead();
-    void markSelectedItemsUnread();
+    void markSelectedItemRead();
+    void markSelectedItemUnread();
     void markAllItemsRead();
 
     // Newspaper accessors.

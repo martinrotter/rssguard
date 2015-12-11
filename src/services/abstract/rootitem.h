@@ -18,6 +18,8 @@
 #ifndef ROOTITEM_H
 #define ROOTITEM_H
 
+#include "core/message.h"
+
 #include <QIcon>
 #include <QDateTime>
 #include <QFont>
@@ -92,12 +94,13 @@ class RootItem : public QObject {
     // Returns result status.
     virtual bool deleteViaGui();
 
-    // Can this item be marked read/unread?
-    virtual bool canBeMarkedAsReadUnread(ReadStatus status);
-
     // Performs all needed steps (DB update, remote server update)
     // to mark this item as read/unread.
     virtual bool markAsReadUnread(ReadStatus status);
+
+    // Get ALL undeleted messages from this item in one single list.
+    // This is currently used for displaying items in "newspaper mode".
+    virtual QList<Message> undeletedMessages() const;
 
     // This method should "clean" all messages it contains.
     // What "clean" means? It means delete messages -> move them to recycle bin

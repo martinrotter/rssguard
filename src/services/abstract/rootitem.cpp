@@ -62,20 +62,18 @@ bool RootItem::deleteViaGui() {
   return false;
 }
 
-bool RootItem::canBeMarkedAsReadUnread(ReadStatus status) {
-  return true;
-}
-
 bool RootItem::markAsReadUnread(ReadStatus status) {
   bool result = true;
 
   foreach (RootItem *child, m_childItems) {
-    if (child->canBeMarkedAsReadUnread(status)) {
-      result &= child->markAsReadUnread(status);
-    }
+    result &= child->markAsReadUnread(status);
   }
 
   return result;
+}
+
+QList<Message> RootItem::undeletedMessages() const {
+  return QList<Message>();
 }
 
 bool RootItem::cleanMessages(bool clear_only_read) {

@@ -61,9 +61,6 @@ class Feed : public RootItem {
     // messages.
     virtual int update() = 0;
 
-    // Get ALL undeleted messages from this feed in one single list.
-    virtual QList<Message> undeletedMessages() const = 0;
-
     /////////////////////////////////////////
     // Members to override. */
     /////////////////////////////////////////

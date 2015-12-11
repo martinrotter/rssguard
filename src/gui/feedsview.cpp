@@ -249,11 +249,11 @@ void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
   m_sourceModel->markItemRead(selectedItem(), read);
 }
 
-void FeedsView::markSelectedItemsRead() {
+void FeedsView::markSelectedItemRead() {
   markSelectedItemReadStatus(RootItem::Read);
 }
 
-void FeedsView::markSelectedItemsUnread() {
+void FeedsView::markSelectedItemUnread() {
   markSelectedItemReadStatus(RootItem::Unread);
 }
 
@@ -266,11 +266,11 @@ void FeedsView::markAllItemsRead() {
 }
 
 void FeedsView::openSelectedItemsInNewspaperMode() {
-  QList<Message> messages = m_sourceModel->messagesForFeeds(selectedFeeds());
+  QList<Message> messages = m_sourceModel->messagesForItem(selectedItem());
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(messages);
-    QTimer::singleShot(0, this, SLOT(markSelectedItemsRead()));
+    QTimer::singleShot(0, this, SLOT(markSelectedItemRead()));
   }
 }
 
