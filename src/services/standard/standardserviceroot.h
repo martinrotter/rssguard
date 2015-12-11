@@ -47,17 +47,21 @@ class StandardServiceRoot : public ServiceRoot {
     bool canBeDeleted();
     bool deleteViaGui();
 
+    bool markAsReadUnread(ReadStatus status);
+
     QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
 
+    // Access to recycle bin.
     RecycleBin *recycleBin();
 
     // Return "add feed" and "add category" items.
     QList<QAction*> addItemMenu();
 
-    // Return menu to be shown in "Services -> service" menu.
+    // Returns menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
 
+    // Returns context menu.
     QList<QAction*> contextMenu();
 
     // Message stuff.

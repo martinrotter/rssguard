@@ -117,6 +117,38 @@ bool StandardServiceRoot::deleteViaGui() {
   return ServiceRoot::deleteViaGui();
 }
 
+bool StandardServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for feeds read change.");
+    return false;
+  }
+
+  QSqlQuery query_read_msg(db_handle);
+  query_read_msg.setForwardOnly(true);
+  query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
+
+  query_read_msg.bindValue(QSL(":account_id"), accountId());
+  query_read_msg.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
+
+  if (!query_read_msg.exec()) {
+    qDebug("Query execution for feeds read change failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    updateCounts(false);
+    itemChanged(getSubTree());
+    requestReloadMessageList(status == RootItem::Read);
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
 QVariant StandardServiceRoot::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
@@ -172,7 +204,7 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
     QList<RootItem*> itemss;
 
     foreach (Feed *feed, items) {
-      feed->updateCounts(true);
+      feed->updateCounts(false);
       itemss.append(feed);
     }
 
