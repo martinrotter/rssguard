@@ -33,7 +33,6 @@ class RecycleBin : public RootItem {
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
 
-
     int countOfUnreadMessages() const;
     int countOfAllMessages() const;
 

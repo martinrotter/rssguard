@@ -546,6 +546,9 @@ bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const Q
 }
 
 bool StandardServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
   return true;
 }
 
