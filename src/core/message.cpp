@@ -17,6 +17,10 @@
 
 #include "core/message.h"
 
+#include "miscellaneous/textfactory.h"
+
+#include <QVariant>
+
 
 Enclosure::Enclosure(const QString &url, const QString &mime) : m_url(url), m_mimeType(mime) {
 }
@@ -65,4 +69,36 @@ Message::Message() {
   m_enclosures = QList<Enclosure>();
   m_accountId = m_id = 0;
   m_isRead = m_isImportant = false;
+}
+
+Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
+  if (record.count() != MSG_DB_CUSTOM_ID_INDEX + 1) {
+    if (result != NULL) {
+      *result = false;
+      return Message();
+    }
+  }
+
+  Message message;
+
+  message.m_id = record.value(MSG_DB_ID_INDEX).toInt();
+  message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();
+  //message = record.value(MSG_DB_DELETED_INDEX).toInt();
+  message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();
+  message.m_feedId = record.value(MSG_DB_FEED_INDEX).toString();
+  message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();
+  message.m_url = record.value(MSG_DB_URL_INDEX).toString();
+  message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();
+  message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());
+  message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();
+  //message = record.value(MSG_DB_PDELETED_INDEX).toInt();
+  message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
+  message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
+  message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
+
+  if (result != NULL) {
+    *result = true;
+  }
+
+  return message;
 }

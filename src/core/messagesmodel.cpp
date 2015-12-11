@@ -129,23 +129,8 @@ void MessagesModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
-Message MessagesModel::messageAt(int row_index) const {
-  QSqlRecord rec = record(row_index);
-  Message message;
-
-  // Fill Message object with details.
-  message.m_author = rec.value(MSG_DB_AUTHOR_INDEX).toString();
-  message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
-  message.m_enclosures = Enclosures::decodeEnclosuresFromString(rec.value(MSG_DB_ENCLOSURES_INDEX).toString());
-  message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
-  message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
-  message.m_feedId = rec.value(MSG_DB_FEED_INDEX).toString();
-  message.m_accountId = rec.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
-  message.m_id = rec.value(MSG_DB_ID_INDEX).toInt();
-  message.m_customId = rec.value(MSG_DB_CUSTOM_ID_INDEX).toString();
-  message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).value<qint64>()).toLocalTime();
-
-  return message;
+Message MessagesModel::messageAt(int row_index) const { 
+  return Message::fromSqlRecord(record(row_index));
 }
 
 void MessagesModel::setupHeaderData() {

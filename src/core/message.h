@@ -22,6 +22,7 @@
 
 #include <QDateTime>
 #include <QStringList>
+#include <QSqlRecord>
 
 
 // Represents single enclosure.
@@ -43,6 +44,10 @@ class Enclosures {
 class Message {
   public:
     explicit Message();
+
+    // Creates Message from given record, which contains
+    // row from query SELECT * FROM Messages WHERE ....;
+    static Message fromSqlRecord(const QSqlRecord &record, bool *result = NULL);
 
     QString m_title;
     QString m_url;
