@@ -268,8 +268,6 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 }
 
 void TtRssServiceRoot::loadFromDatabase() {
-  // TODO: Load feeds/categories from DB.
-
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   Assignment categories;
   Assignment feeds;
@@ -444,7 +442,6 @@ void TtRssServiceRoot::storeNewFeedTree(RootItem *root) {
         child->setId(query_category.lastInsertId().toInt());
       }
       else {
-        // TODO: logovat
       }
     }
     else if (child->kind() == RootItemKind::Feed) {
@@ -463,7 +460,6 @@ void TtRssServiceRoot::storeNewFeedTree(RootItem *root) {
         feed->setId(query_feed.lastInsertId().toInt());
       }
       else {
-        // TODO: logovat.
       }
     }
   }

@@ -351,7 +351,6 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
             }
           }
 
-          // TODO: stahnout a nastavit ikonu
           feed->setTitle(item["name"].toString());
           feed->setCustomId(item_id);
           act_parent->appendChild(feed);

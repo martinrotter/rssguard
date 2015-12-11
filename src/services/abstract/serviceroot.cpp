@@ -133,4 +133,3 @@ void ServiceRoot::assembleCategories(Assignment categories) {
     }
   }
 }
-

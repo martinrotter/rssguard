@@ -127,7 +127,7 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   }
 }
 
-bool RecycleBin::empty() {
+bool RecycleBin::cleanMessages(bool clear_only_read) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (!db_handle.transaction()) {
@@ -139,7 +139,15 @@ bool RecycleBin::empty() {
   QSqlQuery query_empty_bin(db_handle);
 
   query_empty_bin.setForwardOnly(true);
-  query_empty_bin.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
+
+  if (clear_only_read) {
+    query_empty_bin.prepare("UPDATE Messages SET is_pdeleted = 1 "
+                            "WHERE is_read = 1 AND is_deleted = 1 AND account_id = :account_id;");
+  }
+  else {
+    query_empty_bin.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
+  }
+
   query_empty_bin.bindValue(QSL(":account_id"), parent_root->accountId());
 
   if (!query_empty_bin.exec()) {
@@ -159,6 +167,10 @@ bool RecycleBin::empty() {
   else {
     return db_handle.rollback();
   }
+}
+
+bool RecycleBin::empty() {
+  return cleanMessages(false);
 }
 
 bool RecycleBin::restore() {

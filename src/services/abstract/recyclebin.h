@@ -31,6 +31,8 @@ class RecycleBin : public RootItem {
     QVariant data(int column, int role) const;
 
     bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clear_only_read);
+
 
     int countOfUnreadMessages() const;
     int countOfAllMessages() const;

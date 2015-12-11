@@ -202,7 +202,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
-  form_main->m_ui->m_actionClearSelectedItems->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
   form_main->m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   form_main->m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
   form_main->m_ui->m_actionMarkSelectedItemsAsRead->setEnabled(anything_selected);
@@ -210,7 +210,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   form_main->m_ui->m_actionUpdateAllItems->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
   form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(feed_selected || category_selected || service_selected);
-  form_main->m_ui->m_actionExpandCollapseItem->setEnabled(feed_selected || category_selected || service_selected);
+  form_main->m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
   form_main->m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
 }

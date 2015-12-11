@@ -32,7 +32,7 @@ namespace RootItemKind {
   // Describes the kind of the item.
   enum Kind {
     Root        = 1,
-    Bin  = 2,
+    Bin         = 2,
     Feed        = 4,
     Category    = 8,
     ServiceRoot = 16
@@ -50,19 +50,18 @@ class RootItem : public QObject {
     Q_OBJECT
 
   public:
+    // Holds statuses for feeds/messages
+    // to be marked read/unread.
     enum ReadStatus {
       Unread = 0,
       Read = 1
     };
 
+    // Holds statuses for messages
+    // to be switched importance (starred).
     enum Importance {
       NotImportant = 0,
       Important = 1
-    };
-
-    enum CleanStatus {
-      Clean,
-      Unclean
     };
 
     // Constructors and destructors.
@@ -104,7 +103,7 @@ class RootItem : public QObject {
     // What "clean" means? It means delete messages -> move them to recycle bin
     // or eventually remove them completely if there is no recycle bin functionality.
     // If this method is called on "recycle bin" instance of your
-    // service account, it should NOT do anything.
+    // service account, it should "empty" the recycle bin.
     virtual bool cleanMessages(bool clear_only_read);
 
     // Updates counts of all/unread messages for this feed.
