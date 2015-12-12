@@ -222,6 +222,77 @@ TtRssNetworkFactory *TtRssServiceRoot::network() const {
   return m_network;
 }
 
+QStringList TtRssServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
+  if (item->getParentServiceRoot() != this) {
+    // Not item from this account.
+    return QStringList();
+  }
+  else {
+    QStringList list;
+
+    switch (item->kind()) {
+      case RootItemKind::Category: {
+        foreach (RootItem *child, item->childItems()) {
+          list.append(customIDSOfMessagesForItem(child));
+        }
+
+        return list;
+      }
+
+      case RootItemKind::ServiceRoot: {
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+        QSqlQuery query(database);
+
+        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+        query.bindValue(QSL(":account_id"), accountId());
+        query.exec();
+
+        while (query.next()) {
+          list.append(query.value(0).toString());
+        }
+
+        break;
+      }
+
+      case RootItemKind::Bin: {
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+        QSqlQuery query(database);
+
+        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
+        query.bindValue(QSL(":account_id"), accountId());
+        query.exec();
+
+        while (query.next()) {
+          list.append(query.value(0).toString());
+        }
+
+        break;
+      }
+
+      case RootItemKind::Feed: {
+        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+        QSqlQuery query(database);
+
+        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
+        query.bindValue(QSL(":account_id"), accountId());
+        query.bindValue(QSL(":feed"), qobject_cast<TtRssFeed*>(item)->customId());
+        query.exec();
+
+        while (query.next()) {
+          list.append(query.value(0).toString());
+        }
+
+        break;
+      }
+
+      default:
+        break;
+    }
+
+    return list;
+  }
+}
+
 void TtRssServiceRoot::saveAccountDataToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.

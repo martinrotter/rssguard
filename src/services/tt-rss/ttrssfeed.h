@@ -26,6 +26,8 @@
 class TtRssServiceRoot;
 
 class TtRssFeed : public Feed {
+    Q_OBJECT
+
   public:
     explicit TtRssFeed(RootItem *parent = NULL);
     explicit TtRssFeed(const QSqlRecord &record);

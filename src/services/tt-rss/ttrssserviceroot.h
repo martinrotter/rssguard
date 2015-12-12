@@ -68,9 +68,11 @@ class TtRssServiceRoot : public ServiceRoot {
 
     TtRssNetworkFactory *network() const;
 
+    // Returns list of custom IDS of all DB messages in given item.
+    QStringList customIDSOfMessagesForItem(RootItem *item);
+
     void saveAccountDataToDatabase();
     void updateTitle();
-
     void completelyRemoveAllData();
 
   public slots:

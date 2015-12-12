@@ -24,10 +24,14 @@
 
 
 class TtRssCategory : public Category {
+    Q_OBJECT
+
   public:
     explicit TtRssCategory(RootItem *parent = NULL);
     explicit TtRssCategory(const QSqlRecord &record);
     virtual ~TtRssCategory();
+
+
 
     int customId() const;
     void setCustomId(int custom_id);
