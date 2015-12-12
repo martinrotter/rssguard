@@ -23,6 +23,8 @@
 #include <QSqlRecord>
 
 
+class TtRssServiceRoot;
+
 class TtRssCategory : public Category {
     Q_OBJECT
 
@@ -30,6 +32,10 @@ class TtRssCategory : public Category {
     explicit TtRssCategory(RootItem *parent = NULL);
     explicit TtRssCategory(const QSqlRecord &record);
     virtual ~TtRssCategory();
+
+    TtRssServiceRoot *serviceRoot();
+
+    bool markAsReadUnread(ReadStatus status);
 
     int customId() const;
     void setCustomId(int custom_id);

@@ -20,6 +20,9 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "services/tt-rss/definitions.h"
+#include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include <QVariant>
 
@@ -36,6 +39,27 @@ TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(NULL) {
 }
 
 TtRssCategory::~TtRssCategory() {
+}
+
+TtRssServiceRoot *TtRssCategory::serviceRoot() {
+  return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
+}
+
+bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
+  QNetworkReply::NetworkError error;
+  QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
+  TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
+                                                                                 status == RootItem::Unread ?
+                                                                                   UpdateArticle::SetToTrue :
+                                                                                   UpdateArticle::SetToFalse,
+                                                                                 error);
+
+  if (error != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+    return false;
+  }
+  else {
+    return serviceRoot()->markFeedsReadUnread(getSubTreeFeeds(), status);
+  }
 }
 
 int TtRssCategory::customId() const {
