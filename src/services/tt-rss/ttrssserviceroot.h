@@ -26,6 +26,7 @@
 class TtRssCategory;
 class TtRssFeed;
 class TtRssNetworkFactory;
+class TtRssRecycleBin;
 
 class TtRssServiceRoot : public ServiceRoot {
     Q_OBJECT
@@ -94,6 +95,8 @@ class TtRssServiceRoot : public ServiceRoot {
     void cleanAllItems();
     void storeNewFeedTree(RootItem *root);
     void loadFromDatabase();
+
+    TtRssRecycleBin *m_recycleBin;
 
     QAction *m_actionSyncIn;
     QList<QAction*> m_serviceMenu;

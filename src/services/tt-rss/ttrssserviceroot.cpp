@@ -23,6 +23,7 @@
 #include "network-web/networkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 #include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrssrecyclebin.h"
 #include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
@@ -36,7 +37,7 @@
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory) {
+  : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)), m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory) {
   setIcon(TtRssServiceEntryPoint().icon());
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -133,7 +134,7 @@ QList<QAction*> TtRssServiceRoot::addItemMenu() {
 }
 
 RecycleBin *TtRssServiceRoot::recycleBin() {
-  return NULL;
+  return m_recycleBin;
 }
 
 bool TtRssServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
@@ -442,6 +443,10 @@ void TtRssServiceRoot::loadFromDatabase() {
   // All data are now obtained, lets create the hierarchy.
   assembleCategories(categories);
   assembleFeeds(feeds);
+
+  // As the last item, add recycle bin, which is needed.
+  appendChild(m_recycleBin);
+  m_recycleBin->updateCounts(true);
 }
 
 void TtRssServiceRoot::updateTitle() {
@@ -549,7 +554,9 @@ void TtRssServiceRoot::removeOldFeedTree(bool including_messages) {
 
 void TtRssServiceRoot::cleanAllItems() {
   foreach (RootItem *top_level_item, childItems()) {
-    requestItemRemoval(top_level_item);
+    if (top_level_item->kind() != RootItemKind::Bin) {
+      requestItemRemoval(top_level_item);
+    }
   }
 }
 
@@ -595,5 +602,11 @@ void TtRssServiceRoot::storeNewFeedTree(RootItem *root) {
       else {
       }
     }
+  }
+
+  if (!childItems().contains(m_recycleBin)) {
+    // As the last item, add recycle bin, which is needed.
+    appendChild(m_recycleBin);
+    m_recycleBin->updateCounts(true);
   }
 }
