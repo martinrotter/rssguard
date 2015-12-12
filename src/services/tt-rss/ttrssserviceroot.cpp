@@ -138,12 +138,17 @@ RecycleBin *TtRssServiceRoot::recycleBin() {
 }
 
 bool TtRssServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
-  QList<Feed*> children = item->getSubTreeFeeds();
-  QString filter_clause = textualFeedIds(children).join(QSL(", "));
+  if (item->kind() == RootItemKind::Bin) {
+    model->setFilter(QString("is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1").arg(QString::number(accountId())));
+  }
+  else {
+    QList<Feed*> children = item->getSubTreeFeeds();
+    QString filter_clause = textualFeedIds(children).join(QSL(", "));
 
-  model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = '%2'")).arg(filter_clause,
-                                                                                                                 QString::number(accountId())));
-  qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
+    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = '%2'")).arg(filter_clause,
+                                                                                                                   QString::number(accountId())));
+    qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
+  }
 
   return true;
 }
@@ -221,11 +226,29 @@ bool TtRssServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, c
 }
 
 bool TtRssServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
-  return false;
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
+  return true;
 }
 
 bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
-  return false;
+  Q_UNUSED(messages)
+
+  // User deleted some messages he selected in message list.
+  selected_item->updateCounts(true);
+
+  if (selected_item->kind() == RootItemKind::Bin) {
+    itemChanged(QList<RootItem*>() << m_recycleBin);
+  }
+  else {
+    m_recycleBin->updateCounts(true);
+    itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
+  }
+
+
+  requestFeedReadFilterReload();
+  return true;
 }
 
 bool TtRssServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
