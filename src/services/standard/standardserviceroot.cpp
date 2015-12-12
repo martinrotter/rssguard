@@ -156,7 +156,7 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
   query_read_msg.setForwardOnly(true);
 
   if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
+                                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
     qWarning("Query preparation failed for feeds read change.");
 
     db_handle.rollback();
@@ -172,7 +172,7 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
 
   // Commit changes.
   if (db_handle.commit()) {
-    // Messages are cleared, now inform model about need to reload data.
+    // Messages are switched, now inform model about need to reload data.
     QList<RootItem*> itemss;
 
     foreach (Feed *feed, items) {

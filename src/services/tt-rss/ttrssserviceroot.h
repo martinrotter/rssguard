@@ -73,6 +73,8 @@ class TtRssServiceRoot : public ServiceRoot {
     // Returns list of custom IDS of all DB messages in given item.
     QStringList customIDSOfMessagesForItem(RootItem *item);
 
+    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
+
     void saveAccountDataToDatabase();
     void updateTitle();
     void completelyRemoveAllData();

@@ -157,8 +157,7 @@ bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
     return false;
   }
   else {
-    // TODO: todo
-    //return Feed::markAsReadUnread(status);
+    return serviceRoot()->markFeedsReadUnread(QList<Feed*>() << this, status);
   }
 }
 

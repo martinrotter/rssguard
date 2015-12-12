@@ -310,6 +310,50 @@ QStringList TtRssServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
   }
 }
 
+bool TtRssServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  if (!db_handle.transaction()) {
+    qWarning("Starting transaction for feeds read change.");
+    return false;
+  }
+
+  QSqlQuery query_read_msg(db_handle);
+  query_read_msg.setForwardOnly(true);
+
+  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
+    qWarning("Query preparation failed for feeds read change.");
+
+    db_handle.rollback();
+    return false;
+  }
+
+  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
+
+  if (!query_read_msg.exec()) {
+    qDebug("Query execution for feeds read change failed.");
+    db_handle.rollback();
+  }
+
+  // Commit changes.
+  if (db_handle.commit()) {
+    QList<RootItem*> itemss;
+
+    foreach (Feed *feed, items) {
+      feed->updateCounts(false);
+      itemss.append(feed);
+    }
+
+    itemChanged(itemss);
+    requestReloadMessageList(read == RootItem::Read);
+    return true;
+  }
+  else {
+    return db_handle.rollback();
+  }
+}
+
 void TtRssServiceRoot::saveAccountDataToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.
@@ -477,7 +521,7 @@ QStringList TtRssServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
   stringy_ids.reserve(feeds.size());
 
   foreach (Feed *feed, feeds) {
-    stringy_ids.append(QString("'%1'").arg(QString::number(static_cast<TtRssFeed*>(feed)->customId())));
+    stringy_ids.append(QString("'%1'").arg(QString::number(qobject_cast<TtRssFeed*>(feed)->customId())));
   }
 
   return stringy_ids;
@@ -525,7 +569,7 @@ void TtRssServiceRoot::storeNewFeedTree(RootItem *root) {
       query_category.bindValue(QSL(":parent_id"), child->parent()->id());
       query_category.bindValue(QSL(":title"), child->title());
       query_category.bindValue(QSL(":account_id"), accountId());
-      query_category.bindValue(QSL(":custom_id"), QString::number(static_cast<TtRssCategory*>(child)->customId()));
+      query_category.bindValue(QSL(":custom_id"), QString::number(qobject_cast<TtRssCategory*>(child)->customId()));
 
       if (query_category.exec()) {
         child->setId(query_category.lastInsertId().toInt());
