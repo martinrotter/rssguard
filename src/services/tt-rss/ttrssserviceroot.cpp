@@ -86,6 +86,23 @@ bool TtRssServiceRoot::deleteViaGui() {
   }
 }
 
+bool TtRssServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
+  QNetworkReply::NetworkError error;
+  QStringList ids = customIDSOfMessagesForItem(this);
+  TtRssUpdateArticleResponse response = m_network->updateArticles(ids, UpdateArticle::Unread,
+                                                                  status == RootItem::Unread ?
+                                                                    UpdateArticle::SetToTrue :
+                                                                    UpdateArticle::SetToFalse,
+                                                                  error);
+
+  if (error != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+    return false;
+  }
+  else {
+    return ServiceRoot::markAsReadUnread(status);
+  }
+}
+
 bool TtRssServiceRoot::canBeEdited() {
   return true;
 }

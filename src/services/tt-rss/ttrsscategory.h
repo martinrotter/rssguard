@@ -31,8 +31,6 @@ class TtRssCategory : public Category {
     explicit TtRssCategory(const QSqlRecord &record);
     virtual ~TtRssCategory();
 
-
-
     int customId() const;
     void setCustomId(int custom_id);
 

@@ -44,6 +44,8 @@ class TtRssServiceRoot : public ServiceRoot {
     bool editViaGui();
     bool deleteViaGui();
 
+    bool markAsReadUnread(ReadStatus status);
+
     QVariant data(int column, int role) const;
 
     QList<QAction*> addItemMenu();

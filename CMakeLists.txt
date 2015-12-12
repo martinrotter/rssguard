@@ -560,7 +560,7 @@ set(APP_HEADERS
 
   # TT-RSS service headers.
   src/services/tt-rss/ttrssserviceroot.h
-  src/services/tt-rss/ttrssrecyclebin.h
+  src/services/tt-rss/ttrssrecyclebin.h;
   src/services/tt-rss/ttrssfeed.h
   src/services/tt-rss/ttrsscategory.h
   src/services/tt-rss/gui/formeditaccount.h

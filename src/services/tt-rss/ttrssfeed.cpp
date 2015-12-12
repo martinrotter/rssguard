@@ -144,6 +144,24 @@ QList<Message> TtRssFeed::undeletedMessages() const {
   return messages;
 }
 
+bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
+  QNetworkReply::NetworkError error;
+  QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
+  TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
+                                                                                 status == RootItem::Unread ?
+                                                                                   UpdateArticle::SetToTrue :
+                                                                                   UpdateArticle::SetToFalse,
+                                                                                 error);
+
+  if (error != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+    return false;
+  }
+  else {
+    // TODO: todo
+    //return Feed::markAsReadUnread(status);
+  }
+}
+
 int TtRssFeed::customId() const {
   return m_customId;
 }

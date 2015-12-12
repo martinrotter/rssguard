@@ -50,6 +50,8 @@ class ServiceRoot : public RootItem {
 
     bool deleteViaGui();
 
+    bool markAsReadUnread(ReadStatus status);
+
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
     //  a) Add new feed
