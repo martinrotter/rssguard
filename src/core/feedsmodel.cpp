@@ -72,11 +72,6 @@ FeedsModel::FeedsModel(QObject *parent)
 
   //loadActivatedServiceAccounts();
   updateAutoUpdateStatus();
-
-  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
-    qDebug("Requesting update for all feeds on application startup.");
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllItems()));
-  }
 }
 
 FeedsModel::~FeedsModel() {
@@ -738,6 +733,11 @@ void FeedsModel::loadActivatedServiceAccounts() {
     foreach (ServiceRoot *root, roots) {
       addServiceAccount(root);
     }
+  }
+
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
+    qDebug("Requesting update for all feeds on application startup.");
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
   }
 }
 

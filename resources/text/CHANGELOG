@@ -24,6 +24,7 @@
 	  
 	  Fixed:
 	  <ul>
+	  	<li>Fixed bug with updating feed. (bug #131)</li>
       <li>Solved problem when user selects HUGE number of individual messages and marks them read/unread. Reselecting them after change may cause RSS Guard to hang.</li>
       <li>Better info in popup notification when many feeds are updated.</li>
       <li>Fixed obtaining of contents in RSS 2.0 feed entries. (bug #130)</li>

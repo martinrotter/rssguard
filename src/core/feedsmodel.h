@@ -145,9 +145,6 @@ class FeedsModel : public QAbstractItemModel {
     // Schedules given feeds for update.
     void updateFeeds(const QList<Feed*> &feeds);
 
-    // Schedules all feeds from all accounts for update.
-    void updateAllFeeds();
-
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot *root);
 
@@ -155,6 +152,9 @@ class FeedsModel : public QAbstractItemModel {
     void loadActivatedServiceAccounts();
 
   public slots:
+    // Schedules all feeds from all accounts for update.
+    void updateAllFeeds();
+
     // Checks if new parent node is different from one used by original node.
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);

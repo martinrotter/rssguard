@@ -117,10 +117,6 @@ int main(int argc, char *argv[]) {
     qApp->showTrayIcon();
   }
 
-  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-    QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
-  }
-
   // Load activated accounts.
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->loadActivatedServiceAccounts();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadExpandedStates();
@@ -136,6 +132,11 @@ int main(int argc, char *argv[]) {
   else {
     qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_LONG_NAME), QSystemTrayIcon::NoIcon);
   }
+
+  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
+  }
+
 
   // Enter global event loop.
   return Application::exec();
