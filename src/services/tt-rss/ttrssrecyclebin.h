@@ -21,12 +21,18 @@
 #include "services/abstract/recyclebin.h"
 
 
+class TtRssServiceRoot;
+
 class TtRssRecycleBin : public RecycleBin {
     Q_OBJECT
 
   public:
     explicit TtRssRecycleBin(RootItem *parent = 0);
     virtual ~TtRssRecycleBin();
+
+    TtRssServiceRoot *serviceRoot();
+
+    bool markAsReadUnread(ReadStatus status);
 };
 
 #endif // TTRSSRECYCLEBIN_H

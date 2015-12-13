@@ -43,15 +43,13 @@ TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
 }
 
 TtRssServiceRoot::~TtRssServiceRoot() {
-  if (m_network != NULL) {
-    delete m_network;
-  }
+  delete m_network;
 }
 
 void TtRssServiceRoot::start() {
   loadFromDatabase();
 
-  if (childCount() == 0) {
+  if (childCount() == 1 && child(0)->kind() == RootItemKind::Bin) {
     syncIn();
   }
 }
@@ -158,7 +156,6 @@ QList<QAction*> TtRssServiceRoot::serviceMenu() {
     m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("item-sync")), tr("Sync in"), this);
 
     connect(m_actionSyncIn, SIGNAL(triggered()), this, SLOT(syncIn()));
-
     m_serviceMenu.append(m_actionSyncIn);
   }
 
@@ -178,7 +175,7 @@ bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QL
                                                                   read == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
                                                                   error);
 
-  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK && response.articlesUpdated() == messages.size()) {
+  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
     return true;
   }
   else {
@@ -191,7 +188,6 @@ bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QLi
   Q_UNUSED(read)
 
   selected_item->updateCounts(false);
-
   itemChanged(QList<RootItem*>() << selected_item);
   requestFeedReadFilterReload();
   return true;
@@ -210,7 +206,7 @@ bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, 
                                                                   UpdateArticle::Togggle,
                                                                   error);
 
-  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK && response.articlesUpdated() == changes.size()) {
+  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
     return true;
   }
   else {
@@ -245,7 +241,6 @@ bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QLis
     m_recycleBin->updateCounts(true);
     itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
   }
-
 
   requestFeedReadFilterReload();
   return true;
@@ -375,6 +370,50 @@ bool TtRssServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadSta
   }
   else {
     return db_handle.rollback();
+  }
+}
+
+bool TtRssServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_delete_msg(db_handle);
+  query_delete_msg.setForwardOnly(true);
+
+  if (clean_read_only) {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
+      qWarning("Query preparation failed for feeds clearing.");
+      return false;
+    }
+  }
+  else {
+    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
+      qWarning("Query preparation failed for feeds clearing.");
+      return false;
+    }
+  }
+
+  query_delete_msg.bindValue(QSL(":deleted"), 1);
+
+  if (!query_delete_msg.exec()) {
+    qDebug("Query execution for feeds clearing failed.");
+    return false;
+  }
+  else {
+    // Messages are cleared, now inform model about need to reload data.
+    QList<RootItem*> itemss;
+
+    foreach (Feed *feed, items) {
+      feed->updateCounts(true);
+      itemss.append(feed);
+    }
+
+    m_recycleBin->updateCounts(true);
+    itemss.append(m_recycleBin);
+
+    itemChanged(itemss);
+    requestReloadMessageList(true);
+    return true;
   }
 }
 

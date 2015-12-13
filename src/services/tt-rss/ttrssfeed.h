@@ -44,6 +44,7 @@ class TtRssFeed : public Feed {
     QList<Message> undeletedMessages() const;
 
     bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clear_only_read);
 
     int customId() const;
     void setCustomId(int custom_id);

@@ -147,7 +147,7 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 
   // Commit changes.
   if (db_handle.commit()) {
-    updateCounts(true);
+    updateCounts(false);
 
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(status == RootItem::Read);

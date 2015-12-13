@@ -161,6 +161,10 @@ bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
   }
 }
 
+bool TtRssFeed::cleanMessages(bool clear_only_read) {
+  return serviceRoot()->cleanFeeds(QList<Feed*>() << this, clear_only_read);
+}
+
 int TtRssFeed::customId() const {
   return m_customId;
 }

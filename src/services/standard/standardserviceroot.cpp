@@ -196,14 +196,14 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
 
   if (clean_read_only) {
     if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
       return false;
     }
   }
   else {
     if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
+                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
       qWarning("Query preparation failed for feeds clearing.");
       return false;
     }

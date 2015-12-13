@@ -62,6 +62,10 @@ bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
   }
 }
 
+bool TtRssCategory::cleanMessages(bool clear_only_read) {
+  return serviceRoot()->cleanFeeds(getSubTreeFeeds(), clear_only_read);
+}
+
 int TtRssCategory::customId() const {
   return m_customId;
 }

@@ -20,6 +20,7 @@
 #include "services/abstract/serviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/category.h"
+#include "services/abstract/recyclebin.h"
 #include "miscellaneous/application.h"
 
 #include <QVariant>
@@ -84,9 +85,19 @@ QList<Message> RootItem::undeletedMessages() const {
 
 bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
+  RecycleBin *bin = NULL;
 
   foreach (RootItem *child, m_childItems) {
-    result &= child->cleanMessages(clear_only_read);
+    if (child->kind() == RootItemKind::Bin) {
+      bin = qobject_cast<RecycleBin*>(child);
+    }
+    else {
+      result &= child->cleanMessages(clear_only_read);
+    }
+  }
+
+  if (bin != NULL) {
+    result &= bin->cleanMessages(clear_only_read);
   }
 
   return result;
