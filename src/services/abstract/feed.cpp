@@ -31,3 +31,22 @@ Feed::Feed(RootItem *parent) : RootItem(parent) {
 
 Feed::~Feed() {
 }
+
+QVariant Feed::data(int column, int role) const {
+  switch (role) {
+    case Qt::ForegroundRole:
+      switch (status()) {
+        case NewMessages:
+          return QColor(Qt::blue);
+
+        case NetworkError:
+          return QColor(Qt::red);
+
+        default:
+          return QVariant();
+      }
+
+    default:
+      return RootItem::data(column, role);
+  }
+}

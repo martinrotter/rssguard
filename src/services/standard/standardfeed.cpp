@@ -160,6 +160,54 @@ QList<Message> StandardFeed::undeletedMessages() const {
   return messages;
 }
 
+QVariant StandardFeed::data(int column, int role) const {
+  switch (role) {
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        QString auto_update_string;
+
+        switch (autoUpdateType()) {
+          case DontAutoUpdate:
+            //: Describes feed auto-update status.
+            auto_update_string = tr("does not use auto-update");
+            break;
+
+          case DefaultAutoUpdate:
+            //: Describes feed auto-update status.
+            auto_update_string = tr("uses global settings");
+            break;
+
+          case SpecificAutoUpdate:
+          default:
+            //: Describes feed auto-update status.
+            auto_update_string = tr("uses specific settings "
+                                    "(%n minute(s) to next auto-update)",
+                                    0,
+                                    autoUpdateRemainingInterval());
+            break;
+        }
+
+        //: Tooltip for feed.
+        return tr("%1 (%2)"
+                  "%3\n\n"
+                  "Network status: %6\n"
+                  "Encoding: %4\n"
+                  "Auto-update status: %5").arg(title(),
+                                                StandardFeed::typeToString(type()),
+                                                description().isEmpty() ? QString() : QString('\n') + description(),
+                                                encoding(),
+                                                auto_update_string,
+                                                NetworkFactory::networkErrorText(m_networkError));
+      }
+      else {
+        return Feed::data(column, role);
+      }
+
+    default:
+      return Feed::data(column, role);
+  }
+}
+
 QString StandardFeed::typeToString(StandardFeed::Type type) {
   switch (type) {
     case Atom10:
@@ -370,66 +418,6 @@ QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const Q
   }
 
   return result;
-}
-
-QVariant StandardFeed::data(int column, int role) const {
-  switch (role) {
-    case Qt::ToolTipRole:
-      if (column == FDS_MODEL_TITLE_INDEX) {
-        QString auto_update_string;
-
-        switch (autoUpdateType()) {
-          case DontAutoUpdate:
-            //: Describes feed auto-update status.
-            auto_update_string = tr("does not use auto-update");
-            break;
-
-          case DefaultAutoUpdate:
-            //: Describes feed auto-update status.
-            auto_update_string = tr("uses global settings");
-            break;
-
-          case SpecificAutoUpdate:
-          default:
-            //: Describes feed auto-update status.
-            auto_update_string = tr("uses specific settings "
-                                    "(%n minute(s) to next auto-update)",
-                                    0,
-                                    autoUpdateRemainingInterval());
-            break;
-        }
-
-        //: Tooltip for feed.
-        return tr("%1 (%2)"
-                  "%3\n\n"
-                  "Network status: %6\n"
-                  "Encoding: %4\n"
-                  "Auto-update status: %5").arg(title(),
-                                                StandardFeed::typeToString(type()),
-                                                description().isEmpty() ? QString() : QString('\n') + description(),
-                                                encoding(),
-                                                auto_update_string,
-                                                NetworkFactory::networkErrorText(m_networkError));
-      }
-      else {
-        return Feed::data(column, role);
-      }
-
-    case Qt::ForegroundRole:
-      switch (status()) {
-        case NewMessages:
-          return QColor(Qt::blue);
-
-        case NetworkError:
-          return QColor(Qt::red);
-
-        default:
-          return QVariant();
-      }
-
-    default:
-      return Feed::data(column, role);
-  }
 }
 
 Qt::ItemFlags StandardFeed::additionalFlags() const {

@@ -79,8 +79,9 @@ class StandardFeed : public Feed {
 
     QList<Message> undeletedMessages() const;
 
-    // Obtains data related to this feed.
     QVariant data(int column, int role) const;
+
+    // Obtains data related to this feed.
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem *target_item);
 

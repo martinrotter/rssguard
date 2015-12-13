@@ -22,6 +22,8 @@
 
 #include "core/message.h"
 
+#include <QVariant>
+
 
 // Base class for "feed" nodes.
 class Feed : public RootItem {
@@ -60,6 +62,8 @@ class Feed : public RootItem {
     // into locale "Messages" table, INCLUDING contents (or excerpts) of those
     // messages.
     virtual int update() = 0;
+
+    QVariant data(int column, int role) const;
 
     /////////////////////////////////////////
     // Members to override. */

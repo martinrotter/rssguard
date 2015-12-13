@@ -289,7 +289,13 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
     qDebug("Transaction commit for message downloader failed.");
   }
   else {
-    setStatus(NewMessages);
+    if (updated_messages > 0) {
+      setStatus(NewMessages);
+    }
+    else {
+      setStatus(Normal);
+    }
+
     updateCounts(true);
     serviceRoot()->itemChanged(QList<RootItem*>() << this);
   }
