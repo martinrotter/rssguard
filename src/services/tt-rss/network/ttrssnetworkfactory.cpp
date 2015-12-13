@@ -66,15 +66,6 @@ QDateTime TtRssNetworkFactory::lastLoginTime() const {
   return m_lastLoginTime;
 }
 
-// TODO: ukazky
-
-/* ukazky
- * prihlaseni - curl -L -d '{"op":"login","user":"admin","password":"XXX"}' http://rss.rotterovi.eu/api/
- * ziska seznam VSECH zprav - curl -L -d '{"sid":"xxx","op":"getHeadlines","feed_id":-4,"include_nested":true,"include_attachments":true,"show_content":true}' http://rss.rotterovi.eu/api/
- * seznam kategorii vcetne unread countu - curl -L -d '{"sid":"e9528741496d0d6aa5021e67ca519823","op":"getCategories","include_nested":true,"include_empty":false}' http://rss.rotterovi.eu/api/
- * */
-
-
 TtRssLoginResponse TtRssNetworkFactory::login(QNetworkReply::NetworkError &error) {
   if (!m_sessionId.isEmpty()) {
     logout(error);
@@ -109,6 +100,11 @@ TtRssResponse TtRssNetworkFactory::logout(QNetworkReply::NetworkError &error) {
     NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
 
     error = network_reply.first;
+
+    if (error == QNetworkReply::NoError) {
+      m_sessionId.clear();
+    }
+
     return TtRssResponse(QString::fromUtf8(result_raw));
   }
   else {

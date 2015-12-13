@@ -154,6 +154,9 @@ void FormEditAccount::onClickedOk() {
   m_editableRoot->saveAccountDataToDatabase();
 
   if (editing_account) {
+    QNetworkReply::NetworkError error;
+
+    m_editableRoot->network()->logout(error);
     m_editableRoot->completelyRemoveAllData();
     m_editableRoot->syncIn();
   }
