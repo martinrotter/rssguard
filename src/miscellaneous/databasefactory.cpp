@@ -300,15 +300,17 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
       QString installed_db_schema = query_db.value(0).toString();
       query_db.finish();
 
-      if (!updateDatabaseSchema(database, installed_db_schema)) {
-        qFatal("Database schema was not updated from '%s' to '%s' successully.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
-      }
-      else if (installed_db_schema != APP_DB_SCHEMA_VERSION) {
-        qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
+      if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
+        if (sqliteUpdateDatabaseSchema(database, installed_db_schema)) {
+          qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+        }
+        else {
+          qFatal("Database schema was not updated from '%s' to '%s' successully.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+        }
       }
 
       qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
@@ -328,23 +330,17 @@ QString DatabaseFactory::sqliteDatabaseFilePath() const {
   return m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
 }
 
-bool DatabaseFactory::updateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
-  switch (m_activeDatabaseDriver) {
-    case SQLITE:
-    case SQLITE_MEMORY:
-      return sqliteUpdateDatabaseSchema(database, source_db_schema_version);
-
-    case MYSQL:
-      return mysqlUpdateDatabaseSchema(database, source_db_schema_version);
-
-    default:
-      return false;
-  }
-}
-
 bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+
+  // Now, it would be good to create backup of SQLite DB file.
+  if (IOFactory::copyFile(sqliteDatabaseFilePath(), sqliteDatabaseFilePath() + ".bak")) {
+    qDebug("Creating backup of SQLite DB file.");
+  }
+  else {
+    qFatal("Creation of backup SQLite DB file failed.");
+  }
 
   while (working_version != current_version) {
     QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
@@ -611,15 +607,18 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
 
       QString installed_db_schema = query_db.value(0).toString();
 
-      if (!mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
-        qFatal("Database schema was not updated from '%s' to '%s' successully.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
-      }
-      else if (installed_db_schema != APP_DB_SCHEMA_VERSION) {
-        qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
+      if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
+        if (mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
+          qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+
+        }
+        else {
+          qFatal("Database schema was not updated from '%s' to '%s' successully.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+        }
       }
     }
 

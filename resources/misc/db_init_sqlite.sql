@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS Messages (
   is_important    INTEGER(1)  NOT NULL CHECK (is_important >= 0 AND is_important <= 1) DEFAULT (0),
   feed            TEXT        NOT NULL,
   title           TEXT        NOT NULL CHECK (title != ''),
-  url             TEXT        NOT NULL,
+  url             TEXT,
   author          TEXT,
   date_created    INTEGER     NOT NULL CHECK (date_created != 0),
   contents        TEXT,

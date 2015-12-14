@@ -50,7 +50,7 @@ QString TtRssServiceEntryPoint::description() {
 }
 
 QString TtRssServiceEntryPoint::version() {
-  return QSL("0.0.2");
+  return APP_VERSION;
 }
 
 QString TtRssServiceEntryPoint::author() {

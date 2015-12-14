@@ -116,9 +116,6 @@ class DatabaseFactory : public QObject {
     // application session.
     void determineDriver();
 
-    // Updates DB schema if necessary.
-    bool updateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version);
-
     // Holds the type of currently activated database backend.
     UsedDriver m_activeDatabaseDriver;
 

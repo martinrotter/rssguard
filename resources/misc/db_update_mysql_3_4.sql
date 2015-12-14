@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Accounts (
+CREATE TABLE Accounts (
   id              INTEGER     PRIMARY KEY,
   type            TEXT        NOT NULL
 );
@@ -7,7 +7,7 @@ INSERT INTO Accounts (type) VALUES ('std-rss');
 -- !
 DROP TABLE IF EXISTS FeedsData;
 -- !
-CREATE TABLE IF NOT EXISTS TtRssAccounts (
+CREATE TABLE TtRssAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,
   password        TEXT,
@@ -57,5 +57,8 @@ MODIFY date_created BIGINT;
 -- !
 ALTER TABLE Messages
 MODIFY author TEXT;
+-- !
+ALTER TABLE Messages
+MODIFY url  TEXT;
 -- !
 UPDATE Information SET inf_value = '4' WHERE inf_key = 'schema_version';

@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Accounts (
+CREATE TABLE Accounts (
   id              INTEGER     PRIMARY KEY,
   type            TEXT        NOT NULL
 );
@@ -7,7 +7,7 @@ INSERT INTO Accounts (type) VALUES ('std-rss');
 -- !
 DROP TABLE IF EXISTS FeedsData;
 -- !
-CREATE TABLE IF NOT EXISTS TtRssAccounts (
+CREATE TABLE TtRssAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,
   password        TEXT,
@@ -15,24 +15,6 @@ CREATE TABLE IF NOT EXISTS TtRssAccounts (
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
--- !
-ALTER TABLE Messages
-ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
--- !
-ALTER TABLE Feeds
-ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
--- !
-ALTER TABLE Categories
-ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
--- !
-ALTER TABLE Messages
-ADD COLUMN custom_id  TEXT;
--- !
-ALTER TABLE Feeds
-ADD COLUMN custom_id  TEXT;
--- !
-ALTER TABLE Categories
-ADD COLUMN custom_id  TEXT;
 -- !
 CREATE TABLE backup_Messages AS SELECT * FROM Messages;
 -- !
@@ -45,7 +27,7 @@ CREATE TABLE Messages (
   is_important    INTEGER(1)  NOT NULL CHECK (is_important >= 0 AND is_important <= 1) DEFAULT (0),
   feed            TEXT        NOT NULL,
   title           TEXT        NOT NULL CHECK (title != ''),
-  url             TEXT        NOT NULL,
+  url             TEXT,
   author          TEXT,
   date_created    INTEGER     NOT NULL CHECK (date_created != 0),
   contents        TEXT,
@@ -57,7 +39,8 @@ CREATE TABLE Messages (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-INSERT INTO Messages SELECT * FROM backup_Messages;
+INSERT INTO Messages (id, is_read, is_deleted, is_important, feed, title, url, author, date_created, contents, is_pdeleted, enclosures, account_id)
+SELECT id, is_read, is_deleted, is_important, feed, title, url, author, date_created, contents, is_pdeleted, enclosures, 1  FROM backup_Messages;
 -- !
 DROP TABLE backup_Messages;
 -- !
@@ -86,7 +69,8 @@ CREATE TABLE Feeds (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-INSERT INTO Feeds SELECT * FROM backup_Feeds;
+INSERT INTO Feeds (id, title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_type, type, account_id)
+SELECT id, title, description, date_created, icon, category, encoding, url, protected, username, password, update_type, update_type, type, 1 FROM backup_Feeds;
 -- !
 DROP TABLE backup_Feeds;
 -- !
@@ -107,7 +91,8 @@ CREATE TABLE Categories (
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );
 -- !
-INSERT INTO Categories SELECT * FROM backup_Categories;
+INSERT INTO Categories (id, parent_id, title, description, date_created, icon, account_id)
+SELECT id, parent_id, title, description, date_created, icon, 1 FROM backup_Categories;
 -- !
 DROP TABLE backup_Categories;
 -- !
