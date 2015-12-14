@@ -32,7 +32,7 @@
 
 TtRssNetworkFactory::TtRssNetworkFactory()
   : m_url(QString()), m_username(QString()), m_password(QString()), m_sessionId(QString()),
-    m_lastLoginTime(QDateTime()) {
+    m_lastLoginTime(QDateTime()), m_lastError(QNetworkReply::NoError) {
 }
 
 TtRssNetworkFactory::~TtRssNetworkFactory() {
@@ -66,9 +66,13 @@ QDateTime TtRssNetworkFactory::lastLoginTime() const {
   return m_lastLoginTime;
 }
 
-TtRssLoginResponse TtRssNetworkFactory::login(QNetworkReply::NetworkError &error) {
+QNetworkReply::NetworkError TtRssNetworkFactory::lastError() const {
+  return m_lastError;
+}
+
+TtRssLoginResponse TtRssNetworkFactory::login() {
   if (!m_sessionId.isEmpty()) {
-    logout(error);
+    logout();
   }
 
   QtJson::JsonObject json;
@@ -85,11 +89,11 @@ TtRssLoginResponse TtRssNetworkFactory::login(QNetworkReply::NetworkError &error
     m_lastLoginTime = QDateTime::currentDateTime();
   }
 
-  error = network_reply.first;
+  m_lastError = network_reply.first;
   return login_response;
 }
 
-TtRssResponse TtRssNetworkFactory::logout(QNetworkReply::NetworkError &error) {
+TtRssResponse TtRssNetworkFactory::logout() {
   if (!m_sessionId.isEmpty()) {
 
     QtJson::JsonObject json;
@@ -99,21 +103,21 @@ TtRssResponse TtRssNetworkFactory::logout(QNetworkReply::NetworkError &error) {
     QByteArray result_raw;
     NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
 
-    error = network_reply.first;
+    m_lastError = network_reply.first;
 
-    if (error == QNetworkReply::NoError) {
+    if (m_lastError == QNetworkReply::NoError) {
       m_sessionId.clear();
     }
 
     return TtRssResponse(QString::fromUtf8(result_raw));
   }
   else {
-    error = QNetworkReply::NoError;
+    m_lastError = QNetworkReply::NoError;
     return TtRssResponse();
   }
 }
 
-TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetworkReply::NetworkError &error) {
+TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   QtJson::JsonObject json;
   json["op"] = "getFeedTree";
   json["sid"] = m_sessionId;
@@ -125,20 +129,20 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories(QNetwork
 
   if (result.isNotLoggedIn()) {
     // We are not logged in.
-    login(error);
+    login();
     json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
   }
 
-  error = network_reply.first;
+  m_lastError = network_reply.first;
   return result;
 }
 
 TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool force_update, int limit, int skip,
                                                             bool show_content, bool include_attachments,
-                                                            bool sanitize, QNetworkReply::NetworkError &error) {
+                                                            bool sanitize) {
   QtJson::JsonObject json;
   json["op"] = "getHeadlines";
   json["sid"] = m_sessionId;
@@ -156,21 +160,20 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool fo
 
   if (result.isNotLoggedIn()) {
     // We are not logged in.
-    login(error);
+    login();
     json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
-  error = network_reply.first;
+  m_lastError = network_reply.first;
   return result;
 }
 
 TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList &ids,
                                                                UpdateArticle::OperatingField field,
-                                                               UpdateArticle::Mode mode,
-                                                               QNetworkReply::NetworkError &error) {
+                                                               UpdateArticle::Mode mode) {
   QtJson::JsonObject json;
   json["op"] = "updateArticle";
   json["sid"] = m_sessionId;
@@ -184,14 +187,14 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
 
   if (result.isNotLoggedIn()) {
     // We are not logged in.
-    login(error);
+    login();
     json["sid"] = m_sessionId;
 
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw);
     result = TtRssUpdateArticleResponse(QString::fromUtf8(result_raw));
   }
 
-  error = network_reply.first;
+  m_lastError = network_reply.first;
   return result;
 }
 
@@ -208,7 +211,7 @@ bool TtRssResponse::isLoaded() const {
 
 int TtRssResponse::seq() const {
   if (!isLoaded()) {
-    return -1;
+    return CONTENT_NOT_LOADED;
   }
   else {
     return m_rawContent["seq"].toInt();
@@ -217,7 +220,7 @@ int TtRssResponse::seq() const {
 
 int TtRssResponse::status() const {
   if (!isLoaded()) {
-    return -1;
+    return CONTENT_NOT_LOADED;
   }
   else {
     return m_rawContent["status"].toInt();
@@ -237,7 +240,7 @@ TtRssLoginResponse::~TtRssLoginResponse() {
 
 int TtRssLoginResponse::apiLevel() const {
   if (!isLoaded()) {
-    return -1;
+    return CONTENT_NOT_LOADED;
   }
   else {
     return m_rawContent["content"].toMap()["api_level"].toInt();

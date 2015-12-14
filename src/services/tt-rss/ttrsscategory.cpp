@@ -46,15 +46,13 @@ TtRssServiceRoot *TtRssCategory::serviceRoot() {
 }
 
 bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
-  QNetworkReply::NetworkError error;
   QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
   TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
                                                                                  status == RootItem::Unread ?
                                                                                    UpdateArticle::SetToTrue :
-                                                                                   UpdateArticle::SetToFalse,
-                                                                                 error);
+                                                                                   UpdateArticle::SetToFalse);
 
-  if (error != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
     return false;
   }
   else {

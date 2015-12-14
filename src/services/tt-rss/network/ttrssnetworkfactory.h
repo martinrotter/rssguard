@@ -114,24 +114,26 @@ class TtRssNetworkFactory {
     // Metadata.
     QDateTime lastLoginTime() const;
 
+    QNetworkReply::NetworkError lastError() const;
+
     // Operations.
 
     // Logs user in.
-    TtRssLoginResponse login(QNetworkReply::NetworkError &error);
+    TtRssLoginResponse login();
 
     // Logs user out.
-    TtRssResponse logout(QNetworkReply::NetworkError &error);
+    TtRssResponse logout();
 
     // Gets feeds from the server.
-    TtRssGetFeedsCategoriesResponse getFeedsCategories(QNetworkReply::NetworkError &error);
+    TtRssGetFeedsCategoriesResponse getFeedsCategories();
 
     // Gets headlines (messages) from the server.
     TtRssGetHeadlinesResponse getHeadlines(int feed_id, bool force_update, int limit, int skip,
                                            bool show_content, bool include_attachments,
-                                           bool sanitize, QNetworkReply::NetworkError &error);
+                                           bool sanitize);
 
     TtRssUpdateArticleResponse updateArticles(const QStringList &ids, UpdateArticle::OperatingField field,
-                                              UpdateArticle::Mode mode, QNetworkReply::NetworkError &error);
+                                              UpdateArticle::Mode mode);
 
   private:
     QString m_url;
@@ -139,6 +141,7 @@ class TtRssNetworkFactory {
     QString m_password;
     QString m_sessionId;
     QDateTime m_lastLoginTime;
+    QNetworkReply::NetworkError m_lastError;
 };
 
 #endif // TTRSSNETWORKFACTORY_H

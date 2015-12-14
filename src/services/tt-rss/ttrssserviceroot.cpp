@@ -55,10 +55,9 @@ void TtRssServiceRoot::start() {
 }
 
 void TtRssServiceRoot::stop() {
-  QNetworkReply::NetworkError error;
-  m_network->logout(error);
+  m_network->logout();
 
-  qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) error);
+  qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) m_network->lastError());
 }
 
 QString TtRssServiceRoot::code() {
@@ -86,15 +85,13 @@ bool TtRssServiceRoot::deleteViaGui() {
 }
 
 bool TtRssServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  QNetworkReply::NetworkError error;
   QStringList ids = customIDSOfMessagesForItem(this);
   TtRssUpdateArticleResponse response = m_network->updateArticles(ids, UpdateArticle::Unread,
                                                                   status == RootItem::Unread ?
                                                                     UpdateArticle::SetToTrue :
-                                                                    UpdateArticle::SetToFalse,
-                                                                  error);
+                                                                    UpdateArticle::SetToFalse);
 
-  if (error != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+  if (m_network->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
     return false;
   }
   else {
@@ -166,16 +163,17 @@ QList<QAction*> TtRssServiceRoot::contextMenu() {
   return serviceMenu();
 }
 
-bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages,
+                                               RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
-  QNetworkReply::NetworkError error;
   TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(messages),
                                                                   UpdateArticle::Unread,
-                                                                  read == RootItem::Unread ? UpdateArticle::SetToTrue : UpdateArticle::SetToFalse,
-                                                                  error);
+                                                                  read == RootItem::Unread ?
+                                                                    UpdateArticle::SetToTrue :
+                                                                    UpdateArticle::SetToFalse);
 
-  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
+  if (m_network->lastError() == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
     return true;
   }
   else {
@@ -196,17 +194,14 @@ bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QLi
 bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,Importance> > &changes) {
   Q_UNUSED(selected_item)
 
-  QNetworkReply::NetworkError error;
-
   // NOTE: We just toggle it here, because we know, that there is only
   // toggling of starred status supported by RSS Guard right now and
   // Tiny Tiny RSS API allows it, which is greate.
   TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(changes),
                                                                   UpdateArticle::Starred,
-                                                                  UpdateArticle::Togggle,
-                                                                  error);
+                                                                  UpdateArticle::Togggle);
 
-  if (error == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
+  if (m_network->lastError() == QNetworkReply::NoError && response.updateStatus() == STATUS_OK) {
     return true;
   }
   else {
@@ -536,10 +531,9 @@ void TtRssServiceRoot::syncIn() {
   setIcon(qApp->icons()->fromTheme(QSL("item-sync")));
   itemChanged(QList<RootItem*>() << this);
 
-  QNetworkReply::NetworkError err;
-  TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories(err);
+  TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories();
 
-  if (err == QNetworkReply::NoError) {
+  if (m_network->lastError() == QNetworkReply::NoError) {
     RootItem *new_tree = feed_cats_response.feedsCategories(true, m_network->url());
 
     // Purge old data from SQL and clean all model items.

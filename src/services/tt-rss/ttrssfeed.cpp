@@ -85,7 +85,6 @@ int TtRssFeed::countOfUnreadMessages() const {
 }
 
 int TtRssFeed::update() {
-  QNetworkReply::NetworkError error;
   QList<Message> messages;
   int newly_added_messages = 0;
   int limit = MAX_MESSAGES;
@@ -93,9 +92,9 @@ int TtRssFeed::update() {
 
   do {
     TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), true, limit, skip,
-                                                                                 true, true, false, error);
+                                                                                 true, true, false);
 
-    if (error != QNetworkReply::NoError) {
+    if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
       setStatus(Feed::Error);
       return 0;
     }
@@ -145,15 +144,13 @@ QList<Message> TtRssFeed::undeletedMessages() const {
 }
 
 bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
-  QNetworkReply::NetworkError error;
   QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
   TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
                                                                                  status == RootItem::Unread ?
                                                                                    UpdateArticle::SetToTrue :
-                                                                                   UpdateArticle::SetToFalse,
-                                                                                 error);
+                                                                                   UpdateArticle::SetToFalse);
 
-  if (error != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
+  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError || response.updateStatus()  != STATUS_OK) {
     return false;
   }
   else {

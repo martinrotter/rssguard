@@ -90,15 +90,14 @@ void FormEditAccount::displayPassword(bool display) {
 
 void FormEditAccount::performTest() {
   TtRssNetworkFactory factory;
-  QNetworkReply::NetworkError err;
 
   factory.setUsername(m_ui->m_txtUsername->lineEdit()->text());
   factory.setPassword(m_ui->m_txtPassword->lineEdit()->text());
   factory.setUrl(m_ui->m_txtUrl->lineEdit()->text());
 
-  TtRssLoginResponse result = factory.login(err);
+  TtRssLoginResponse result = factory.login();
 
-  if (err == QNetworkReply::NoError) {
+  if (factory.lastError()  == QNetworkReply::NoError) {
     if (result.hasError()) {
       QString error = result.error();
 
@@ -154,9 +153,7 @@ void FormEditAccount::onClickedOk() {
   m_editableRoot->saveAccountDataToDatabase();
 
   if (editing_account) {
-    QNetworkReply::NetworkError error;
-
-    m_editableRoot->network()->logout(error);
+    m_editableRoot->network()->logout();
     m_editableRoot->completelyRemoveAllData();
     m_editableRoot->syncIn();
   }

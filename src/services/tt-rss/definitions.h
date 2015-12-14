@@ -19,6 +19,8 @@
 #define API_STATUS_ERR    1
 #define STATUS_OK         "OK"
 
+#define CONTENT_NOT_LOADED  -1
+
 // Login.
 #define API_DISABLED      "API_DISABLED"    // API is not enabled.
 #define LOGIN_ERROR       "LOGIN_ERROR"     // Incorrect password/username.
