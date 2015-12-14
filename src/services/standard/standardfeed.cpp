@@ -49,7 +49,7 @@ StandardFeed::StandardFeed(RootItem *parent_item)
   m_passwordProtected = false;
   m_username = QString();
   m_password = QString();
-  m_networkError = QNetworkReply::NoError; // TODO: mozna i networkError refaktorovat do Feed předka
+  m_networkError = QNetworkReply::NoError;
   m_type = Rss0X;
   m_totalCount = 0;
   m_unreadCount = 0;
