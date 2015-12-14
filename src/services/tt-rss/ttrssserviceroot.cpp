@@ -111,9 +111,14 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        return tr("Tiny Tiny RSS\n\nAccount ID: %3\nUsername: %1\nServer: %2").arg(m_network->username(),
-                                                                                   m_network->url(),
-                                                                                   QString::number(accountId()));
+        return tr("Tiny Tiny RSS\n\nAccount ID: %3\nUsername: %1\nServer: %2\n"
+                  "Last error: %4\nLast login on: %5").arg(m_network->username(),
+                                                           m_network->url(),
+                                                           QString::number(accountId()),
+                                                           NetworkFactory::networkErrorText(m_network->lastError()),
+                                                           m_network->lastLoginTime().isValid() ?
+                                                             m_network->lastLoginTime().toString(Qt::DefaultLocaleShortDate) :
+                                                             QSL("-"));
       }
       else {
         return ServiceRoot::data(column, role);
