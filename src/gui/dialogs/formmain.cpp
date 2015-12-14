@@ -197,34 +197,6 @@ void FormMain::updateAddItemMenu() {
 
     m_ui->m_menuAddItem->addMenu(root_menu);
   }
-
-  if (m_ui->m_menuAddItem->actions().size() > 0) {
-    m_ui->m_menuAddItem->addSeparator();
-  }
-
-  m_ui->m_menuAddItem->addAction(m_ui->m_actionServiceAdd);
-
-  /*
-   *   foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
-    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuServices);
-    root_menu->setIcon(activated_root->icon());
-    root_menu->setToolTip(activated_root->description());
-
-    QList<QAction*> root_actions = activated_root->serviceMenu();
-
-    if (root_actions.isEmpty()) {
-      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                       tr("No possible actions"),
-                                       m_ui->m_menuServices);
-      no_action->setEnabled(false);
-      root_menu->addAction(no_action);
-    }
-    else {
-      root_menu->addActions(root_actions);
-    }
-
-    m_ui->m_menuServices->addMenu(root_menu);
-  }*/
 }
 
 void FormMain::updateRecycleBinMenu() {
@@ -268,6 +240,39 @@ void FormMain::updateRecycleBinMenu() {
 
   m_ui->m_menuRecycleBin->addAction(m_ui->m_actionRestoreAllRecycleBins);
   m_ui->m_menuRecycleBin->addAction(m_ui->m_actionEmptyAllRecycleBins);
+}
+
+void FormMain::updateAccountsMenu() {
+  m_ui->m_menuAccounts->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAccounts);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    QList<QAction*> root_actions = activated_root->serviceMenu();
+
+    if (root_actions.isEmpty()) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                       tr("No possible actions"),
+                                       m_ui->m_menuAccounts);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      root_menu->addActions(root_actions);
+    }
+
+    m_ui->m_menuAccounts->addMenu(root_menu);
+  }
+
+  if (m_ui->m_menuAccounts->actions().size() > 0) {
+    m_ui->m_menuAccounts->addSeparator();
+  }
+
+  m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceAdd);
+  m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceEdit);
+  m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceDelete);
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -368,6 +373,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionRestoreAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
   m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
   m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
+  m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
+  m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
@@ -442,6 +449,10 @@ void FormMain::createConnections() {
 
   connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
   connect(m_ui->m_menuRecycleBin, SIGNAL(aboutToShow()), this, SLOT(updateRecycleBinMenu()));
+  connect(m_ui->m_menuAccounts, SIGNAL(aboutToShow()), this, SLOT(updateAccountsMenu()));
+
+  connect(m_ui->m_actionServiceDelete, SIGNAL(triggered()), m_ui->m_actionDeleteSelectedItem, SIGNAL(triggered()));
+  connect(m_ui->m_actionServiceEdit, SIGNAL(triggered()), m_ui->m_actionEditSelectedItem, SIGNAL(triggered()));
 
   // Menu "File" connections.
   connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));

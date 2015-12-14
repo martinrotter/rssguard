@@ -43,7 +43,7 @@ class Feed : public RootItem {
     enum Status {
       Normal        = 0,
       NewMessages   = 1,
-      NetworkError  = 2,
+      Error  = 2,
       ParsingError  = 3,
       OtherError    = 4
     };

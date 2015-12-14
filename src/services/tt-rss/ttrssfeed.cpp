@@ -96,7 +96,7 @@ int TtRssFeed::update() {
                                                                                  true, true, false, error);
 
     if (error != QNetworkReply::NoError) {
-      setStatus(Feed::NetworkError);
+      setStatus(Feed::Error);
       return 0;
     }
     else {
@@ -272,9 +272,6 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
         updated_messages++;
-      }
-      else {
-        QString str = query_insert.lastError().text();
       }
 
       query_insert.finish();

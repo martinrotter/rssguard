@@ -126,13 +126,12 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>Feeds &amp;&amp; categories &amp;&amp; accounts</string>
+     <string>Feeds &amp;&amp; categories</string>
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
       <string>Add &amp;new item</string>
      </property>
-     <addaction name="m_actionServiceAdd"/>
     </widget>
     <addaction name="m_actionUpdateAllItems"/>
     <addaction name="m_actionUpdateSelectedItems"/>
@@ -181,8 +180,17 @@
     <addaction name="m_actionRestoreAllRecycleBins"/>
     <addaction name="m_actionEmptyAllRecycleBins"/>
    </widget>
+   <widget class="QMenu" name="m_menuAccounts">
+    <property name="title">
+     <string>&amp;Accounts</string>
+    </property>
+    <addaction name="m_actionServiceAdd"/>
+    <addaction name="m_actionServiceEdit"/>
+    <addaction name="m_actionServiceDelete"/>
+   </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
+   <addaction name="m_menuAccounts"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuRecycleBin"/>
@@ -705,7 +713,7 @@
   </action>
   <action name="m_actionServiceAdd">
    <property name="text">
-    <string>&amp;Add new service account</string>
+    <string>&amp;Add new account</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -752,6 +760,22 @@
    </property>
    <property name="text">
     <string>Status bar</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionServiceEdit">
+   <property name="text">
+    <string>&amp;Edit selected account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionServiceDelete">
+   <property name="text">
+    <string>&amp;Delete selected account</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

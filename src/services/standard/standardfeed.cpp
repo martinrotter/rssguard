@@ -447,7 +447,7 @@ int StandardFeed::update() {
 
   if (m_networkError != QNetworkReply::NoError) {
     qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
-    setStatus(NetworkError);
+    setStatus(Error);
     return 0;
   }
   else if (status() != NewMessages) {

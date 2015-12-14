@@ -531,6 +531,11 @@ void TtRssServiceRoot::completelyRemoveAllData() {
 }
 
 void TtRssServiceRoot::syncIn() {
+  QIcon original_icon = icon();
+
+  setIcon(qApp->icons()->fromTheme(QSL("item-sync")));
+  itemChanged(QList<RootItem*>() << this);
+
   QNetworkReply::NetworkError err;
   TtRssGetFeedsCategoriesResponse feed_cats_response = m_network->getFeedsCategories(err);
 
@@ -561,6 +566,9 @@ void TtRssServiceRoot::syncIn() {
     requestReloadMessageList(true);
     requestItemExpand(all_items, true);
   }
+
+  setIcon(original_icon);
+  itemChanged(QList<RootItem*>() << this);
 }
 
 QStringList TtRssServiceRoot::customIDsOfMessages(const QList<QPair<Message,RootItem::Importance> > &changes) {

@@ -211,7 +211,12 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   form_main->m_ui->m_actionUpdateSelectedItems->setEnabled(!critical_action_running && (feed_selected || category_selected || service_selected));
   form_main->m_ui->m_actionViewSelectedItemsNewspaperMode->setEnabled(anything_selected);
   form_main->m_ui->m_actionExpandCollapseItem->setEnabled(anything_selected);
+
+  form_main->m_ui->m_actionServiceDelete->setEnabled(service_selected);
+  form_main->m_ui->m_actionServiceEdit->setEnabled(service_selected);
+
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
+  form_main->m_ui->m_menuAccounts->setEnabled(!critical_action_running);
   form_main->m_ui->m_menuRecycleBin->setEnabled(!critical_action_running);
 }
 

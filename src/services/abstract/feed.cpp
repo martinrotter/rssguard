@@ -39,7 +39,7 @@ QVariant Feed::data(int column, int role) const {
         case NewMessages:
           return QColor(Qt::blue);
 
-        case NetworkError:
+        case Error:
           return QColor(Qt::red);
 
         default:
