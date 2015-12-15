@@ -15,12 +15,13 @@ CREATE TABLE TtRssAccounts (
   auth_username   TEXT,
   auth_password   TEXT,
   url             TEXT        NOT NULL,
+  force_update    INTEGER(1)  NOT NULL CHECK (force_update >= 0 AND force_update <= 1) DEFAULT 0,
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
 -- !
 ALTER TABLE Messages
-ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
+ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT 1;
 -- !
 ALTER TABLE Messages
 ADD COLUMN custom_id  TEXT;
@@ -38,7 +39,7 @@ ALTER TABLE Messages
 MODIFY url  TEXT;
 -- !
 ALTER TABLE Feeds
-ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
+ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT 1;
 -- !
 ALTER TABLE Feeds
 ADD COLUMN custom_id  TEXT;
@@ -56,7 +57,7 @@ ALTER TABLE Feeds
 MODIFY type INTEGER;
 -- !
 ALTER TABLE Categories
-ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT (1);
+ADD COLUMN account_id  INTEGER  NOT NULL DEFAULT 1;
 -- !
 ALTER TABLE Categories
 ADD COLUMN custom_id  TEXT;

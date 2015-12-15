@@ -87,12 +87,12 @@ QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
       root->setAccountId(query.value(0).toInt());
       root->network()->setUsername(query.value(1).toString());
       root->network()->setPassword(TextFactory::decrypt(query.value(2).toString()));
-
       root->network()->setAuthIsUsed(query.value(3).toBool());
       root->network()->setAuthUsername(query.value(4).toString());
       root->network()->setAuthPassword(TextFactory::decrypt(query.value(5).toString()));
-
       root->network()->setUrl(query.value(6).toString());
+      root->network()->setForceServerSideUpdate(query.value(7).toBool());
+
       root->updateTitle();
       roots.append(root);
     }

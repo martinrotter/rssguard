@@ -59,9 +59,7 @@ void FormAddAccount::addSelectedAccount() {
     m_model->addServiceAccount(new_root);
   }
   else {
-    qApp->showGuiMessage(tr("Cannot add account"),
-                         tr("Some critical error occurred, report this to developers."),
-                         QSystemTrayIcon::Critical, parentWidget(), true);
+    qCritical("Cannot create new account.");
   }
 }
 

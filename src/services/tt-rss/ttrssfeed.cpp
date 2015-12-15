@@ -91,7 +91,7 @@ int TtRssFeed::update() {
   int skip = 0;
 
   do {
-    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), true, limit, skip,
+    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), limit, skip,
                                                                                  true, true, false);
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {

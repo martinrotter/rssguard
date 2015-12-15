@@ -42,12 +42,12 @@ FormEditAccount::FormEditAccount(QWidget *parent)
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
 
-  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_txtUsername->lineEdit());
+  setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_checkServerSideUpdate);
+  setTabOrder(m_ui->m_checkServerSideUpdate, m_ui->m_txtUsername->lineEdit());
   setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
   setTabOrder(m_ui->m_txtPassword->lineEdit(), m_ui->m_checkShowPassword);
   setTabOrder(m_ui->m_checkShowPassword, m_ui->m_gbHttpAuthentication);
   setTabOrder(m_ui->m_gbHttpAuthentication, m_ui->m_txtHttpUsername->lineEdit());
-
   setTabOrder(m_ui->m_txtHttpUsername->lineEdit(), m_ui->m_txtHttpPassword->lineEdit());
   setTabOrder(m_ui->m_txtHttpPassword->lineEdit(), m_ui->m_checkShowHttpPassword);
   setTabOrder(m_ui->m_checkShowHttpPassword, m_ui->m_btnTestSetup);
@@ -99,6 +99,7 @@ void FormEditAccount::execForEdit(TtRssServiceRoot *existing_root) {
   m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->username());
   m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->password());
   m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
+  m_ui->m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
 
   exec();
 }
@@ -120,6 +121,7 @@ void FormEditAccount::performTest() {
   factory.setAuthIsUsed(m_ui->m_gbHttpAuthentication->isChecked());
   factory.setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
   factory.setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
+  factory.setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
 
   TtRssLoginResponse result = factory.login();
 
@@ -179,6 +181,7 @@ void FormEditAccount::onClickedOk() {
   m_editableRoot->network()->setAuthIsUsed(m_ui->m_gbHttpAuthentication->isChecked());
   m_editableRoot->network()->setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
   m_editableRoot->network()->setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
+  m_editableRoot->network()->setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
   m_editableRoot->saveAccountDataToDatabase();
 
   accept();

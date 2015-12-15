@@ -31,7 +31,7 @@
 
 
 TtRssNetworkFactory::TtRssNetworkFactory()
-  : m_url(QString()), m_username(QString()), m_password(QString()), m_authIsUsed(false),
+  : m_url(QString()), m_username(QString()), m_password(QString()), m_forceServerSideUpdate(false), m_authIsUsed(false),
     m_authUsername(QString()), m_authPassword(QString()), m_sessionId(QString()),
     m_lastLoginTime(QDateTime()), m_lastError(QNetworkReply::NoError) {
 }
@@ -145,14 +145,14 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   return result;
 }
 
-TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, bool force_update, int limit, int skip,
+TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int limit, int skip,
                                                             bool show_content, bool include_attachments,
                                                             bool sanitize) {
   QtJson::JsonObject json;
   json["op"] = "getHeadlines";
   json["sid"] = m_sessionId;
   json["feed_id"] = feed_id;
-  json["force_update"] = force_update;
+  json["force_update"] = m_forceServerSideUpdate;
   json["limit"] = limit;
   json["skip"] = skip;
   json["show_content"] = show_content;
@@ -206,8 +206,16 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   m_lastError = network_reply.first;
   return result;
 }
-bool TtRssNetworkFactory::authIsUsed() const
-{
+
+bool TtRssNetworkFactory::forceServerSideUpdate() const {
+  return m_forceServerSideUpdate;
+}
+
+void TtRssNetworkFactory::setForceServerSideUpdate(bool force_server_side_update) {
+  m_forceServerSideUpdate = force_server_side_update;
+}
+
+bool TtRssNetworkFactory::authIsUsed() const {
   return m_authIsUsed;
 }
 
@@ -408,7 +416,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages() const {
     QMap<QString,QVariant> mapped = item.toMap();
     Message message;
 
-    message.m_author = mapped["author"].toString();   
+    message.m_author = mapped["author"].toString();
     message.m_isRead = !mapped["unread"].toBool();
     message.m_isImportant = mapped["marked"].toBool();
     message.m_contents = mapped["content"].toString();

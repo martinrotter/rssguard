@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS TtRssAccounts (
   auth_username   TEXT,
   auth_password   TEXT,
   url             TEXT        NOT NULL,
+  force_update    INTEGER(1)  NOT NULL CHECK (force_update >= 0 AND force_update <= 1) DEFAULT 0,
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
@@ -62,7 +63,7 @@ CREATE TABLE IF NOT EXISTS Feeds (
   username        TEXT,
   password        TEXT,
   update_type     INTEGER(1)    NOT NULL CHECK (update_type >= 0),
-  update_interval INTEGER       NOT NULL DEFAULT 15 CHECK (update_interval >= 5),
+  update_interval INTEGER       NOT NULL CHECK (update_interval >= 5) DEFAULT 15,
   type            INTEGER,
   account_id      INTEGER       NOT NULL,
   custom_id       TEXT,
@@ -74,16 +75,16 @@ DROP TABLE IF EXISTS Messages;
 -- !
 CREATE TABLE IF NOT EXISTS Messages (
   id              INTEGER     AUTO_INCREMENT PRIMARY KEY,
-  is_read         INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
-  is_deleted      INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
-  is_important    INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
+  is_read         INTEGER(1)  NOT NULL CHECK (is_read >= 0 AND is_read <= 1) DEFAULT 0,
+  is_deleted      INTEGER(1)  NOT NULL CHECK (is_deleted >= 0 AND is_deleted <= 1) DEFAULT 0,
+  is_important    INTEGER(1)  NOT NULL CHECK (is_important >= 0 AND is_important <= 1) DEFAULT 0 ,
   feed            TEXT        NOT NULL,
   title           TEXT        NOT NULL CHECK (title != ''),
   url             TEXT,
   author          TEXT,
   date_created    BIGINT      NOT NULL CHECK (date_created != 0),
   contents        TEXT,
-  is_pdeleted     INTEGER(1)  NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
+  is_pdeleted     INTEGER(1)  NOT NULL CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1) DEFAULT 0 ,
   enclosures      TEXT,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,

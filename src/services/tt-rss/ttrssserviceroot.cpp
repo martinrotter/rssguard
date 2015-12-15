@@ -426,7 +426,7 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 
     query.prepare("UPDATE TtRssAccounts "
                   "SET username = :username, password = :password, url = :url, auth_protected = :auth_protected, "
-                  "auth_username = :auth_username, auth_password = :auth_password "
+                  "auth_username = :auth_username, auth_password = :auth_password, force_update = :force_update "
                   "WHERE id = :id;");
     query.bindValue(QSL(":username"), m_network->username());
     query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->password()));
@@ -434,6 +434,7 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     query.bindValue(QSL(":auth_protected"), m_network->authIsUsed());
     query.bindValue(QSL(":auth_username"), m_network->authUsername());
     query.bindValue(QSL(":auth_password"), TextFactory::encrypt(m_network->authPassword()));
+    query.bindValue(QSL(":force_update"), m_network->forceServerSideUpdate());
     query.bindValue(QSL(":id"), accountId());
 
     if (query.exec()) {
@@ -452,13 +453,26 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     }
 
     int id_to_assign = query.value(0).toInt() + 1;
+    bool saved = true;
 
-    bool saved = query.exec(QString("INSERT INTO Accounts (id, type) VALUES (%1, '%2');").arg(QString::number(id_to_assign),
-                                                                                              SERVICE_CODE_TT_RSS)) &&
-                 query.exec(QString("INSERT INTO TtRssAccounts (id, username, password, url) VALUES (%1, '%2', '%3', '%4');").arg(QString::number(id_to_assign),
-                                                                                                                                  network()->username(),
-                                                                                                                                  network()->password(),
-                                                                                                                                  network()->url()));
+    query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
+    query.bindValue(QSL(":id"), id_to_assign);
+    query.bindValue(QSL(":type"), SERVICE_CODE_TT_RSS);
+
+    saved &= query.exec();
+
+    query.prepare("INSERT INTO TtRssAccounts (id, username, password, auth_protected, auth_username, auth_password, url, force_update) "
+                  "VALUES (:id, :username, :password, :auth_protected, :auth_username, :auth_password, :url, :force_update);");
+    query.bindValue(QSL(":id"), id_to_assign);
+    query.bindValue(QSL(":username"), m_network->username());
+    query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->password()));
+    query.bindValue(QSL(":auth_protected"), m_network->authIsUsed());
+    query.bindValue(QSL(":auth_username"), m_network->authUsername());
+    query.bindValue(QSL(":auth_password"), TextFactory::encrypt(m_network->authPassword()));
+    query.bindValue(QSL(":url"), m_network->url());
+    query.bindValue(QSL(":force_update"), m_network->forceServerSideUpdate());
+
+    saved &= query.exec();
 
     if (saved) {
       setId(id_to_assign);

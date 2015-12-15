@@ -120,6 +120,10 @@ class TtRssNetworkFactory {
     QString authPassword() const;
     void setAuthPassword(const QString &auth_password);
 
+    bool forceServerSideUpdate() const;
+    void setForceServerSideUpdate(bool force_server_side_update);
+
+
     // Metadata.
     QDateTime lastLoginTime() const;
 
@@ -137,7 +141,7 @@ class TtRssNetworkFactory {
     TtRssGetFeedsCategoriesResponse getFeedsCategories();
 
     // Gets headlines (messages) from the server.
-    TtRssGetHeadlinesResponse getHeadlines(int feed_id, bool force_update, int limit, int skip,
+    TtRssGetHeadlinesResponse getHeadlines(int feed_id, int limit, int skip,
                                            bool show_content, bool include_attachments,
                                            bool sanitize);
 
@@ -148,6 +152,7 @@ class TtRssNetworkFactory {
     QString m_url;
     QString m_username;
     QString m_password;
+    bool m_forceServerSideUpdate;
     bool m_authIsUsed;
     QString m_authUsername;
     QString m_authPassword;
