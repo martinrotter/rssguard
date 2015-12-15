@@ -96,6 +96,7 @@ int TtRssFeed::update() {
 
     if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
       setStatus(Feed::Error);
+      serviceRoot()->itemChanged(QList<RootItem*>() << this);
       return 0;
     }
     else {

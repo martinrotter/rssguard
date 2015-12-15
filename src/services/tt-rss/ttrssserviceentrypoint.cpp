@@ -20,6 +20,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "services/tt-rss/gui/formeditaccount.h"
 #include "services/tt-rss/ttrssserviceroot.h"
@@ -79,14 +80,19 @@ QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
   QSqlQuery query(database);
   QList<ServiceRoot*> roots;
 
-  if (query.exec("SELECT id, username, password, url FROM TtRssAccounts;")) {
+  if (query.exec("SELECT * FROM TtRssAccounts;")) {
     while (query.next()) {
       TtRssServiceRoot *root = new TtRssServiceRoot();
       root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
       root->network()->setUsername(query.value(1).toString());
-      root->network()->setPassword(query.value(2).toString());
-      root->network()->setUrl(query.value(3).toString());
+      root->network()->setPassword(TextFactory::decrypt(query.value(2).toString()));
+
+      root->network()->setAuthIsUsed(query.value(3).toBool());
+      root->network()->setAuthUsername(query.value(4).toString());
+      root->network()->setAuthPassword(TextFactory::decrypt(query.value(5).toString()));
+
+      root->network()->setUrl(query.value(6).toString());
       root->updateTitle();
       roots.append(root);
     }

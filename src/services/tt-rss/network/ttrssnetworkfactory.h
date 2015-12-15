@@ -111,6 +111,15 @@ class TtRssNetworkFactory {
     QString password() const;
     void setPassword(const QString &password);
 
+    bool authIsUsed() const;
+    void setAuthIsUsed(bool auth_is_used);
+
+    QString authUsername() const;
+    void setAuthUsername(const QString &auth_username);
+
+    QString authPassword() const;
+    void setAuthPassword(const QString &auth_password);
+
     // Metadata.
     QDateTime lastLoginTime() const;
 
@@ -139,6 +148,9 @@ class TtRssNetworkFactory {
     QString m_url;
     QString m_username;
     QString m_password;
+    bool m_authIsUsed;
+    QString m_authUsername;
+    QString m_authPassword;
     QString m_sessionId;
     QDateTime m_lastLoginTime;
     QNetworkReply::NetworkError m_lastError;

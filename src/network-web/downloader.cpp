@@ -25,6 +25,7 @@
 Downloader::Downloader(QObject *parent)
   : QObject(parent), m_activeReply(NULL), m_downloadManager(new SilentNetworkAccessManager(this)),
     m_timer(new QTimer(this)), m_customHeaders(QHash<QByteArray, QByteArray>()), m_inputData(QByteArray()),
+    m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
     m_lastOutputData(QByteArray()), m_lastOutputError(QNetworkReply::NoError), m_lastContentType(QVariant()) {
 
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
@@ -37,16 +38,10 @@ Downloader::~Downloader() {
   m_downloadManager->deleteLater();
 }
 
-void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username, const QString &password) {
+void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username,
+                              const QString &password) {
   QNetworkRequest request;
-  QObject originatingObject;
   QString non_const_url = url;
-
-  // Set credential information as originating object.
-  originatingObject.setProperty("protected", protected_contents);
-  originatingObject.setProperty("username", username);
-  originatingObject.setProperty("password", password);
-  request.setOriginatingObject(&originatingObject);
 
   foreach (const QByteArray &header_name, m_customHeaders.keys()) {
     request.setRawHeader(header_name, m_customHeaders.value(header_name));
@@ -63,10 +58,15 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
     request.setUrl(non_const_url);
   }
 
+  m_targetProtected = protected_contents;
+  m_targetUsername = username;
+  m_targetPassword = password;
+
   runGetRequest(request);
 }
 
-void Downloader::uploadData(const QString &url, const QByteArray &data, int timeout) {
+void Downloader::uploadData(const QString &url, const QByteArray &data, int timeout,
+                            bool protected_contents, const QString &username, const QString &password) {
   QNetworkRequest request;
   QString non_const_url = url;
 
@@ -86,6 +86,10 @@ void Downloader::uploadData(const QString &url, const QByteArray &data, int time
   else {
     request.setUrl(non_const_url);
   }
+
+  m_targetProtected = protected_contents;
+  m_targetUsername = username;
+  m_targetPassword = password;
 
   runPostRequest(request, m_inputData);
 }
@@ -154,6 +158,10 @@ void Downloader::runPostRequest(const QNetworkRequest &request, const QByteArray
   m_timer->start();
   m_activeReply = m_downloadManager->post(request, data);
 
+  m_activeReply->setProperty("protected", m_targetProtected);
+  m_activeReply->setProperty("username", m_targetUsername);
+  m_activeReply->setProperty("password", m_targetPassword);
+
   connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
   connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
 }
@@ -161,6 +169,10 @@ void Downloader::runPostRequest(const QNetworkRequest &request, const QByteArray
 void Downloader::runGetRequest(const QNetworkRequest &request) {
   m_timer->start();
   m_activeReply = m_downloadManager->get(request);
+
+  m_activeReply->setProperty("protected", m_targetProtected);
+  m_activeReply->setProperty("username", m_targetUsername);
+  m_activeReply->setProperty("password", m_targetPassword);
 
   connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
   connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));

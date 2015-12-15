@@ -42,12 +42,15 @@ class FormEditAccount : public QDialog {
 
   private slots:
     void displayPassword(bool display);
+    void displayHttpPassword(bool display);
     void performTest();
     void onClickedOk();
     void onClickedCancel();
 
     void onUsernameChanged();
     void onPasswordChanged();
+    void onHttpUsernameChanged();
+    void onHttpPasswordChanged();
     void onUrlChanged();
     void checkOkButton();
 

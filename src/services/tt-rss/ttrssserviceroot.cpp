@@ -19,6 +19,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/textfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "network-web/networkfactory.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
@@ -424,12 +425,16 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     QSqlQuery query(database);
 
     query.prepare("UPDATE TtRssAccounts "
-                  "SET username = :username, password = :password, url = :url "
+                  "SET username = :username, password = :password, url = :url, auth_protected = :auth_protected, "
+                  "auth_username = :auth_username, auth_password = :auth_password "
                   "WHERE id = :id;");
-    query.bindValue(":username", m_network->username());
-    query.bindValue(":password", m_network->password());
-    query.bindValue(":url", m_network->url());
-    query.bindValue(":id", accountId());
+    query.bindValue(QSL(":username"), m_network->username());
+    query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->password()));
+    query.bindValue(QSL(":url"), m_network->url());
+    query.bindValue(QSL(":auth_protected"), m_network->authIsUsed());
+    query.bindValue(QSL(":auth_username"), m_network->authUsername());
+    query.bindValue(QSL(":auth_password"), TextFactory::encrypt(m_network->authPassword()));
+    query.bindValue(QSL(":id"), accountId());
 
     if (query.exec()) {
       updateTitle();

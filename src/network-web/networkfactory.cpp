@@ -149,7 +149,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
 }
 
 NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const QByteArray &input_data,
-                                         const QString &input_content_type, QByteArray &output) {
+                                         const QString &input_content_type, QByteArray &output,
+                                         bool protected_contents, const QString &username, const QString &password) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
@@ -159,7 +160,7 @@ NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const 
   // We need to quit event loop when the download finishes.
   QObject::connect(&downloader, SIGNAL(completed(QNetworkReply::NetworkError)), &loop, SLOT(quit()));
 
-  downloader.uploadData(url, input_data, timeout);
+  downloader.uploadData(url, input_data, timeout, protected_contents, username, password);
   loop.exec();
   output = downloader.lastOutputData();
   result.first = downloader.lastOutputError();

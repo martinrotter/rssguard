@@ -22,6 +22,7 @@
 #include "services/tt-rss/ttrssserviceroot.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "network-web/networkfactory.h"
 
 
 FormEditAccount::FormEditAccount(QWidget *parent)
@@ -32,6 +33,8 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("application-ttrss")));
 
+  m_ui->m_txtHttpUsername->lineEdit()->setPlaceholderText(tr("HTTP authentication username"));
+  m_ui->m_txtHttpPassword->lineEdit()->setPlaceholderText(tr("HTTP authentication password"));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("FULL URL of your TT-RSS instance WITH trailing \"/api/\" string"));
@@ -50,17 +53,25 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   connect(m_ui->m_buttonBox, SIGNAL(rejected()), this, SLOT(onClickedCancel()));
   connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onPasswordChanged()));
   connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUsernameChanged()));
+  connect(m_ui->m_txtHttpPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onHttpPasswordChanged()));
+  connect(m_ui->m_txtHttpUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onHttpUsernameChanged()));
   connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged()));
   connect(m_ui->m_txtPassword->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
   connect(m_ui->m_txtUsername->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
   connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(checkOkButton()));
   connect(m_ui->m_btnTestSetup, SIGNAL(clicked()), this, SLOT(performTest()));
+  connect(m_ui->m_gbHttpAuthentication, SIGNAL(toggled(bool)), this, SLOT(onHttpPasswordChanged()));
+  connect(m_ui->m_gbHttpAuthentication, SIGNAL(toggled(bool)), this, SLOT(onHttpUsernameChanged()));
+  connect(m_ui->m_checkShowHttpPassword, SIGNAL(toggled(bool)), this, SLOT(displayHttpPassword(bool)));
 
   onPasswordChanged();
   onUsernameChanged();
   onUrlChanged();
+  onHttpPasswordChanged();
+  onHttpUsernameChanged();
   checkOkButton();
   displayPassword(false);
+  displayHttpPassword(false);
 }
 
 FormEditAccount::~FormEditAccount() {
@@ -77,6 +88,9 @@ void FormEditAccount::execForEdit(TtRssServiceRoot *existing_root) {
   setWindowTitle(tr("Edit existing Tiny Tiny RSS account"));
   m_editableRoot = existing_root;
 
+  m_ui->m_gbHttpAuthentication->setChecked(existing_root->network()->authIsUsed());
+  m_ui->m_txtHttpPassword->lineEdit()->setText(existing_root->network()->authPassword());
+  m_ui->m_txtHttpUsername->lineEdit()->setText(existing_root->network()->authUsername());
   m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->username());
   m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->password());
   m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
@@ -88,12 +102,19 @@ void FormEditAccount::displayPassword(bool display) {
   m_ui->m_txtPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
 }
 
+void FormEditAccount::displayHttpPassword(bool display) {
+  m_ui->m_txtHttpPassword->lineEdit()->setEchoMode(display ? QLineEdit::Normal : QLineEdit::Password);
+}
+
 void FormEditAccount::performTest() {
   TtRssNetworkFactory factory;
 
   factory.setUsername(m_ui->m_txtUsername->lineEdit()->text());
   factory.setPassword(m_ui->m_txtPassword->lineEdit()->text());
   factory.setUrl(m_ui->m_txtUrl->lineEdit()->text());
+  factory.setAuthIsUsed(m_ui->m_gbHttpAuthentication->isChecked());
+  factory.setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
+  factory.setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
 
   TtRssLoginResponse result = factory.login();
 
@@ -132,8 +153,8 @@ void FormEditAccount::performTest() {
   }
   else {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-                                     tr("Network error, have you entered correct Tiny Tiny RSS API endpoint?"),
-                                     tr("Network error, have you entered correct Tiny Tiny RSS API endpoint?"));
+                                     tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
+                                     tr("Network error, have you entered correct Tiny Tiny RSS API endpoint and password?"));
   }
 }
 
@@ -150,15 +171,18 @@ void FormEditAccount::onClickedOk() {
   m_editableRoot->network()->setUrl(m_ui->m_txtUrl->lineEdit()->text());
   m_editableRoot->network()->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setPassword(m_ui->m_txtPassword->lineEdit()->text());
+  m_editableRoot->network()->setAuthIsUsed(m_ui->m_gbHttpAuthentication->isChecked());
+  m_editableRoot->network()->setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
+  m_editableRoot->network()->setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
   m_editableRoot->saveAccountDataToDatabase();
+
+  accept();
 
   if (editing_account) {
     m_editableRoot->network()->logout();
     m_editableRoot->completelyRemoveAllData();
     m_editableRoot->syncIn();
   }
-
-  accept();
 }
 
 void FormEditAccount::onClickedCancel() {
@@ -185,6 +209,28 @@ void FormEditAccount::onPasswordChanged() {
   else {
     m_ui->m_txtPassword->setStatus(WidgetWithStatus::Ok, tr("Password is okay."));
   }
+}
+
+void FormEditAccount::onHttpUsernameChanged() {
+  bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpUsername->lineEdit()->text().isEmpty();
+
+  m_ui->m_txtHttpUsername->setStatus(is_username_ok ?
+                                       LineEditWithStatus::Ok :
+                                       LineEditWithStatus::Warning,
+                                     is_username_ok ?
+                                       tr("Username is ok or it is not needed.") :
+                                       tr("Username is empty."));
+}
+
+void FormEditAccount::onHttpPasswordChanged() {
+  bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpPassword->lineEdit()->text().isEmpty();
+
+  m_ui->m_txtHttpPassword->setStatus(is_username_ok ?
+                                       LineEditWithStatus::Ok :
+                                       LineEditWithStatus::Warning,
+                                     is_username_ok ?
+                                       tr("Password is ok or it is not needed.") :
+                                       tr("Password is empty."));
 }
 
 void FormEditAccount::onUrlChanged() {

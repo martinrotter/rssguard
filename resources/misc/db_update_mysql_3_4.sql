@@ -11,6 +11,9 @@ CREATE TABLE TtRssAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,
   password        TEXT,
+  auth_protected  INTEGER(1)  NOT NULL CHECK (auth_protected >= 0 AND auth_protected <= 1) DEFAULT 0,
+  auth_username   TEXT,
+  auth_password   TEXT,
   url             TEXT        NOT NULL,
   
   FOREIGN KEY (id) REFERENCES Accounts (id)

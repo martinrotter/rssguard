@@ -238,7 +238,7 @@
         <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
        </property>
        <property name="title">
-        <string>Requires authentication</string>
+        <string>Requires HTTP authentication</string>
        </property>
        <property name="flat">
         <bool>false</bool>

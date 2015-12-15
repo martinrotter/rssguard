@@ -128,6 +128,9 @@ void FeedsView::loadExpandedStates() {
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
                 settings->value(GROUP(Categories), setting_name, item->childCount() > 0).toBool());
   }
+
+  sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
+               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
 }
 
 void FeedsView::expandCollapseCurrentItem() {
@@ -407,9 +410,6 @@ void FeedsView::setupAppearance() {
   setItemDelegate(new StyledItemDelegateWithoutFocus(this));
   header()->setStretchLastSection(false);
   header()->setSortIndicatorShown(false);
-
-  sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
-               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
 }
 
 void FeedsView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
