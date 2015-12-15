@@ -45,7 +45,12 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setTabOrder(m_ui->m_txtUrl->lineEdit(), m_ui->m_txtUsername->lineEdit());
   setTabOrder(m_ui->m_txtUsername->lineEdit(), m_ui->m_txtPassword->lineEdit());
   setTabOrder(m_ui->m_txtPassword->lineEdit(), m_ui->m_checkShowPassword);
-  setTabOrder(m_ui->m_checkShowPassword, m_ui->m_btnTestSetup);
+  setTabOrder(m_ui->m_checkShowPassword, m_ui->m_gbHttpAuthentication);
+  setTabOrder(m_ui->m_gbHttpAuthentication, m_ui->m_txtHttpUsername->lineEdit());
+
+  setTabOrder(m_ui->m_txtHttpUsername->lineEdit(), m_ui->m_txtHttpPassword->lineEdit());
+  setTabOrder(m_ui->m_txtHttpPassword->lineEdit(), m_ui->m_checkShowHttpPassword);
+  setTabOrder(m_ui->m_checkShowHttpPassword, m_ui->m_btnTestSetup);
   setTabOrder(m_ui->m_btnTestSetup, m_ui->m_buttonBox);
 
   connect(m_ui->m_checkShowPassword, SIGNAL(toggled(bool)), this, SLOT(displayPassword(bool)));
