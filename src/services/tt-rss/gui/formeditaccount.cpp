@@ -33,6 +33,7 @@ FormEditAccount::FormEditAccount(QWidget *parent)
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("application-ttrss")));
 
+  m_ui->m_lblDescription->setText(tr("Note that at least API level %1 is required.").arg(MINIMAL_API_LEVEL));
   m_ui->m_txtHttpUsername->lineEdit()->setPlaceholderText(tr("HTTP authentication username"));
   m_ui->m_txtHttpPassword->lineEdit()->setPlaceholderText(tr("HTTP authentication password"));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
