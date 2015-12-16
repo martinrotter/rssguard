@@ -73,6 +73,8 @@ QNetworkReply::NetworkError TtRssNetworkFactory::lastError() const {
 
 TtRssLoginResponse TtRssNetworkFactory::login() {
   if (!m_sessionId.isEmpty()) {
+    qDebug("TT-RSS: Session ID is not empty before login, logging out first.");
+
     logout();
   }
 
@@ -89,6 +91,9 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   if (network_reply.first == QNetworkReply::NoError) {
     m_sessionId = login_response.sessionId();
     m_lastLoginTime = QDateTime::currentDateTime();
+  }
+  else {
+    qWarning("TT-RSS: Login failed with error %d.", network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -111,10 +116,15 @@ TtRssResponse TtRssNetworkFactory::logout() {
     if (m_lastError == QNetworkReply::NoError) {
       m_sessionId.clear();
     }
+    else {
+      qWarning("TT-RSS: Logout failed with error %d.", network_reply.first);
+    }
 
     return TtRssResponse(QString::fromUtf8(result_raw));
   }
   else {
+    qWarning("TT-RSS: Cannot logout because session ID is empty.");
+
     m_lastError = QNetworkReply::NoError;
     return TtRssResponse();
   }
@@ -139,6 +149,10 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("TT-RSS: getFeedTree failed with error %d.", network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -174,6 +188,10 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
 
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("TT-RSS: getHeadlines failed with error %d.", network_reply.first);
+  }
+
   m_lastError = network_reply.first;
   return result;
 }
@@ -201,6 +219,10 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
     network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUpdateArticleResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("TT-RSS: updateArticle failed with error %d.", network_reply.first);
   }
 
   m_lastError = network_reply.first;
@@ -272,7 +294,6 @@ bool TtRssResponse::isNotLoggedIn() const {
   return status() == API_STATUS_ERR && hasError() && error() == NOT_LOGGED_IN;
 }
 
-
 TtRssLoginResponse::TtRssLoginResponse(const QString &raw_content) : TtRssResponse(raw_content) {
 }
 
@@ -328,6 +349,8 @@ RootItem *TtRssGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons, QS
 
   // Chop the "api/" from the end of the address.
   base_address.chop(4);
+
+  qDebug("TT-RSS: Chopped base address to '%s' to get feed icons.", qPrintable(base_address));
 
   if (status() == API_STATUS_OK) {
     // We have data, construct object tree according to data.
