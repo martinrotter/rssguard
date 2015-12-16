@@ -248,8 +248,8 @@ void FormEditAccount::onUrlChanged() {
   if (url.isEmpty()) {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
   }
-  else if (!url.endsWith(QL1S("api/"))) {
-    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL must end with \"api/\"."));
+  else if (!url.endsWith(QL1S("/api/"))) {
+    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Warning, tr("URL should end with \"/api/\"."));
   }
   else {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));

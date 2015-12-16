@@ -985,11 +985,15 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>URL must end with &quot;api/&quot;.</source>
+        <source>URL is okay.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>URL is okay.</source>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL should end with &quot;/api/&quot;.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3076,6 +3080,14 @@ version by clicking this popup notification.</source>
     </message>
     <message>
         <source>Load initial set of feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This service offers integration with Tiny Tiny RSS.
+
+Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
+
+At least API level %1 is required.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

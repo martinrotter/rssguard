@@ -492,11 +492,11 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-        <translation type="unfinished"/>
+        <translation>Du kan inte överföra objekt till annat konto med dra &amp; släpp. Stöd saknas för detta.</translation>
     </message>
     <message>
         <source>Cannot perform drag &amp; drop operation</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte utföra dra &amp; släpp-åtgärd</translation>
     </message>
 </context>
 <context>
@@ -534,36 +534,37 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message>
         <source>Selected item cannot be edited, this is not (yet?) supported.</source>
-        <translation type="unfinished"/>
+        <translation>Det valda objektet kan inte redigeras. Stöd saknas (för närvarande?).</translation>
     </message>
     <message>
         <source>Deleting &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort &quot;%1&quot;</translation>
     </message>
     <message>
         <source>You are about to completely delete item &quot;%1&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Du är på väg att helt ta bort &quot;%1&quot;.</translation>
     </message>
     <message>
         <source>Are you sure?</source>
-        <translation type="unfinished"/>
+        <translation>Är du säker?</translation>
     </message>
     <message>
         <source>Cannot delete &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte ta bort &quot;%1&quot;</translation>
     </message>
     <message>
         <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
-        <translation type="unfinished"/>
+        <translation>Objektet kan inte tas bort på grund av ett kritiskt fel. Skicka gärna en felrapport.</translation>
     </message>
     <message>
         <source>This item cannot be deleted, because it does not support it
 or this functionality is not implemented yet.</source>
-        <translation type="unfinished"/>
+        <translation>Objektet kan inte tas bort eftersom stöd saknas, eller för
+att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Context menu for other items</source>
-        <translation type="unfinished"/>
+        <translation>Kontextmeny för andra objekt</translation>
     </message>
 </context>
 <context>
@@ -643,18 +644,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"/>
+        <translation>&lt;body&gt;%5 är en (mycket) liten flödesläsare.&lt;br&gt;&lt;br&gt;Mjukvaran distribueras under GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Kontakt:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-post&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~webbsida&lt;/li&gt;&lt;/ul&gt;Du kan hämta källkod för %5 från webbsidan.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
 </context>
 <context>
     <name>FormAddAccount</name>
     <message>
         <source>Add new account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt konto</translation>
     </message>
     <message>
         <source>Details</source>
-        <translation type="unfinished"/>
+        <translation>Detaljerat</translation>
     </message>
     <message>
         <source>Name</source>
@@ -674,7 +675,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>This account can be added only once.</source>
-        <translation type="unfinished"/>
+        <translation>Kontot kan endast läggas till en gång.</translation>
     </message>
 </context>
 <context>
@@ -823,7 +824,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditAccount</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"/>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -831,7 +832,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autentisering</translation>
     </message>
     <message>
         <source>Username</source>
@@ -843,11 +844,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Visa lösenord</translation>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Kräver HTTP-autentisering</translation>
     </message>
     <message>
         <source>URL</source>
@@ -855,99 +856,99 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Testa inställning</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
-        <translation type="unfinished"/>
+        <translation>Utför tvingad körning av serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn för HTTP-autentisering</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord för HTTP-autentisering</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord för ditt TT RSS-konto</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn för ditt TT RSS-konto</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>FULLSTÄNDIG URL till din TT RSS-instans MED efterföljande API-sträng</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Inget test utfört ännu.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Här visas resultat av anslutningstest.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt Tiny Tiny RSS-konto</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Redigera befintligt </translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>API-åtkomst är inte aktiverad på den valda servern.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Inloggningsuppgifter är felaktiga.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Annat fel uppstod! Kontakta utvecklaren.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version (%1) som inte stöds. Minst API-nivå %2 krävs.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda Tiny Tiny RSS-servern kör en API-version som inte stöds.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS-servern är okay. Den kör API-nivå %1 och minimikravet är nivå %2.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS-servern är okay.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel! Har du angett korrekt Tiny Tiny RSS API-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn saknas.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Användarnamn okay.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord saknas.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Lösenord okay.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -967,14 +968,18 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL must end with &quot;api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL saknas.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
+        <translation>URL okay.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL should end with &quot;/api/&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1226,123 +1231,123 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add &amp;new item</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till &amp;nytt objekt</translation>
     </message>
     <message>
         <source>Update &amp;all items</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera &amp;alla objekt</translation>
     </message>
     <message>
         <source>Update &amp;selected items</source>
-        <translation type="unfinished"/>
+        <translation>Uppdatera &amp;markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Edit selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Redigera markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Delete selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ta bort markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk markerade objekt som lästa</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as read.</source>
-        <translation type="unfinished"/>
+        <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som lästa.</translation>
     </message>
     <message>
         <source>&amp;Mark selected items as unread</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk markerade objekt som olästa</translation>
     </message>
     <message>
         <source>Mark all messages (without message filters) from selected items as unread.</source>
-        <translation type="unfinished"/>
+        <translation>Märk alla meddelanden (utan meddelandefilter) från markerade objekt som olästa.</translation>
     </message>
     <message>
         <source>&amp;Clean selected items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Rensa markerade objekt</translation>
     </message>
     <message>
         <source>Deletes all messages from selected items.</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort alla meddelanden från markerade objekt.</translation>
     </message>
     <message>
         <source>&amp;Mark all items as &amp;read</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Märk alla objekt som &amp;lästa</translation>
     </message>
     <message>
         <source>Marks all messages in all items read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
+        <translation>Märker all meddelanden i alla objekt som lästa. Tar inte hänsyn till meddelandefilter.</translation>
     </message>
     <message>
         <source>View selected items in &amp;newspaper mode</source>
-        <translation type="unfinished"/>
+        <translation>Visa markerade objekt i &amp;tidningsläge</translation>
     </message>
     <message>
         <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
+        <translation>Visar alla meddelanden från markerade objekt i en ny &quot;tidningsvy&quot;. Notera att meddelanden inte automatiskt märks som lästa.</translation>
     </message>
     <message>
         <source>&amp;Clean all items</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Rensa alla objekt</translation>
     </message>
     <message>
         <source>Deletes all messages from all items.</source>
-        <translation type="unfinished"/>
+        <translation>Tar bort alla meddelanden från alla objekt</translation>
     </message>
     <message>
         <source>Select &amp;next item</source>
-        <translation type="unfinished"/>
+        <translation>Gå till &amp;nästa objekt</translation>
     </message>
     <message>
         <source>Select &amp;previous item</source>
-        <translation type="unfinished"/>
+        <translation>Gå till &amp;föregående objekt</translation>
     </message>
     <message>
         <source>Show only unread items</source>
-        <translation type="unfinished"/>
+        <translation>Visa endast olästa objekt</translation>
     </message>
     <message>
         <source>&amp;Expand/collapse selected item</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Expandera/Komprimera markerade objekt</translation>
     </message>
     <message>
         <source>&amp;Restore selected messages</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Återställ markerade meddelanden</translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"/>
+        <translation>Inga möjliga åtgärder</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Papperskorg(ar)</translation>
     </message>
     <message>
         <source>&amp;Restore all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Återställ alla pappereskorgar</translation>
     </message>
     <message>
         <source>&amp;Empty all recycle bins</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Töm alla papperskorgar</translation>
     </message>
     <message>
         <source>Select next &amp;unread message</source>
-        <translation type="unfinished"/>
+        <translation>Gå till nästa &amp;olästa meddelande</translation>
     </message>
     <message>
         <source>No recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Ingen papperskorg</translation>
     </message>
     <message>
         <source>Restore recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Återställ papperskorgen</translation>
     </message>
     <message>
         <source>Empty recycle bin</source>
-        <translation type="unfinished"/>
+        <translation>Töm papperskorgen</translation>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
@@ -1350,23 +1355,23 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Konton</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Lägg till nytt konto</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation type="unfinished"/>
+        <translation>Statusfält</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Redigera markerat konto</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Ta bort markerat konto</translation>
     </message>
 </context>
 <context>
@@ -2096,11 +2101,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>E-mail</source>
-        <translation type="unfinished"/>
+        <translation>E-post</translation>
     </message>
     <message>
         <source>Enable notifications</source>
-        <translation type="unfinished"/>
+        <translation>Aktivera aviseringar</translation>
     </message>
 </context>
 <context>
@@ -2516,7 +2521,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Requires HTTP authentication</source>
-        <translation type="unfinished"/>
+        <translation>Kräver HTTP-autentisering</translation>
     </message>
 </context>
 <context>
@@ -2863,27 +2868,27 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Inläsning av meddelanden misslyckades. Meddelandena kanske inte kan laddas ner.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Inläsning av meddelanden från &apos;%1&apos; misslyckades.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation type="unfinished"/>
+        <translation>Konto-ID</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="unfinished"/>
+        <translation>Anpassat ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Konto-ID för meddelandet</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation type="unfinished"/>
+        <translation>Anpassat ID för meddelandet</translation>
     </message>
 </context>
 <context>
@@ -3067,21 +3072,34 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
+
++ %n andra flöden.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-        <translation type="unfinished"/>
+        <translation>Välkommen till %1.
+
+Kolla in NYA grejer i den här versionen 
+genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation type="unfinished"/>
+        <translation>Välkommen till %1.</translation>
     </message>
     <message>
         <source>Load initial set of feeds</source>
+        <translation>Läs in inledande flödesuppsättning</translation>
+    </message>
+    <message>
+        <source>This service offers integration with Tiny Tiny RSS.
+
+Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
+
+At least API level %1 is required.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3103,7 +3121,9 @@ version by clicking this popup notification.</source>
         <source>Recycle bin
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Papperskorg
+
+%1</translation>
     </message>
 </context>
 <context>
@@ -3111,7 +3131,7 @@ version by clicking this popup notification.</source>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3151,7 +3171,7 @@ Denna kategori innehåller inga objekt.</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata hämtades inte på grund av: %1</translation>
     </message>
     <message>
         <source>does not use auto-update</source>
@@ -3166,7 +3186,7 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3186,7 +3206,7 @@ Uppdateringsstatus: %5</translation>
     <name>StandardServiceRoot</name>
     <message>
         <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Detta är ett obligatoriskt tjänstkonto för standard RSS/RDF/ATOM-flöden.</translation>
     </message>
     <message>
         <source>You started %1 for the first time, now you can load initial set of feeds.</source>
@@ -3232,7 +3252,9 @@ Uppdateringsstatus: %5</translation>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation type="unfinished"/>
+        <translation>Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
+
+Konto-ID: %1</translation>
     </message>
 </context>
 <context>
@@ -3258,7 +3280,7 @@ Account ID: %1</source>
     </message>
     <message>
         <source>anonymous</source>
-        <translation type="unfinished"/>
+        <translation>anonym</translation>
     </message>
 </context>
 <context>
@@ -3377,11 +3399,17 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS
+
+Konto-ID: %3
+Användarnamn: %1
+Server: %2
+Senaste fel: %4
+Senast inloggad: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Synka i</translation>
     </message>
 </context>
 <context>
@@ -3461,7 +3489,7 @@ Last login on: %5</source>
     </message>
     <message>
         <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation type="unfinished"/>
+        <translation>Detta flöde kan inte läggas till i %1 eftersom standard RSS/ATOM-kontot inte är aktiverat. Aktivera det först.</translation>
     </message>
 </context>
 <context>

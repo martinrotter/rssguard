@@ -861,83 +861,83 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
-        <translation type="unfinished"/>
+        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
-        <translation type="unfinished"/>
+        <translation>HTTP verificatie gebruikersnaam</translation>
     </message>
     <message>
         <source>HTTP authentication password</source>
-        <translation type="unfinished"/>
+        <translation>HTTP verificatie paswoord</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord voor je TT-RSS account</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersnaam voor je TT-RSS account</translation>
     </message>
     <message>
         <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
-        <translation type="unfinished"/>
+        <translation>VOLLEDIG URL van uw TT-RSS bijvoorbeeld met het slepen van de &quot;/ api /&quot; aanvraag</translation>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Nog geen test uitgevoerd.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Hier, worden resultaten van verbinding getoond.</translation>
     </message>
     <message>
         <source>Add new Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Voeg nieuwe Tiny Tiny RSS account toe</translation>
     </message>
     <message>
         <source>Edit existing Tiny Tiny RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Bewerk bestaande Tiny Tiny RSS account</translation>
     </message>
     <message>
         <source>API access on selected server is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>API toegang op geselecteerde server staat uit.</translation>
     </message>
     <message>
         <source>Entered credentials are incorrect.</source>
-        <translation type="unfinished"/>
+        <translation>Ingevoerde verificatiegegevens zijn onjuist.</translation>
     </message>
     <message>
         <source>Other error occurred, contact developers.</source>
-        <translation type="unfinished"/>
+        <translation>Andere fout opgetreden, contact ontwikkelaars.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde Tiny Tiny RSS server draait een niet- ondersteunde versie van API (%1). Tenminste API level %2 is vereist.</translation>
     </message>
     <message>
         <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde Tiny Tiny RSS-server draait een niet-ondersteunde versie van API.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS server is ok, draait met API level %2, terwijl op z&apos;n minst API level %2 vereist is.</translation>
     </message>
     <message>
         <source>Tiny Tiny RSS server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS server is ok.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Netwerk fout: &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netwerk fout, heb je de juiste Tiny Tiny RSS API eindpunt en paswoord?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation>Gebruikersnaam mag niet leeg.</translation>
+        <translation>Gebruikersnaam kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
@@ -945,11 +945,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation>Paswoord mag niet leeg zijn.</translation>
+        <translation>Paswoord kan niet leeg zijn.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Paswoord is ok.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
@@ -969,14 +969,18 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>URL must end with &quot;api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Url mag niet leeg zijn.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
+        <translation>Url is goed.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL should end with &quot;/api/&quot;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1352,23 +1356,23 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Accounts</translation>
     </message>
     <message>
         <source>&amp;Add new account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Voeg nieuw account toe</translation>
     </message>
     <message>
         <source>Status bar</source>
-        <translation type="unfinished"/>
+        <translation>Statusbalk</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Bewerk geselecteerde account</translation>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Verwijder geselecteerde account</translation>
     </message>
 </context>
 <context>
@@ -2871,27 +2875,27 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
     <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation type="unfinished"/>
+        <translation>Laden van berichten mislukt, misschien konden berichten niet worden gedownload.</translation>
     </message>
     <message>
         <source>Loading of messages from item &apos;%1&apos; failed.</source>
-        <translation type="unfinished"/>
+        <translation>Laden van berichten voor item &apos;%1&apos; mislukt.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation type="unfinished"/>
+        <translation>Account ID</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="unfinished"/>
+        <translation>Handmatig ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
-        <translation type="unfinished"/>
+        <translation>Account ID van het bericht.</translation>
     </message>
     <message>
         <source>Custom ID of the message</source>
-        <translation type="unfinished"/>
+        <translation>Handmatig ID van het bericht</translation>
     </message>
 </context>
 <context>
@@ -3099,6 +3103,14 @@ door te clicken op deze popup melding.</translation>
         <source>Load initial set of feeds</source>
         <translation>Laad eerste set van de feeds</translation>
     </message>
+    <message>
+        <source>This service offers integration with Tiny Tiny RSS.
+
+Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
+
+At least API level %1 is required.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3118,7 +3130,9 @@ door te clicken op deze popup melding.</translation>
         <source>Recycle bin
 
 %1</source>
-        <translation type="unfinished"/>
+        <translation>Prullenbak
+
+%1</translation>
     </message>
 </context>
 <context>
@@ -3126,7 +3140,7 @@ door te clicken op deze popup melding.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>%n ongelezen bericht.</numerusform><numerusform>%n ongelezen berichten.</numerusform></translation>
     </message>
 </context>
 <context>
@@ -3247,7 +3261,9 @@ Auto-update status: %5 </translation>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
-        <translation type="unfinished"/>
+        <translation>Dit is een service account voor standaard RSS/RDF/ATOM feeds.
+
+Account ID: %1</translation>
     </message>
 </context>
 <context>
@@ -3393,11 +3409,17 @@ Username: %1
 Server: %2
 Last error: %4
 Last login on: %5</source>
-        <translation type="unfinished"/>
+        <translation>Tiny Tiny RSS
+
+Account ID: %3
+Gebruikersnaam: %1
+Server: %2
+Laatste fout: %4
+Laatste login: %5</translation>
     </message>
     <message>
         <source>Sync in</source>
-        <translation type="unfinished"/>
+        <translation>Sync in</translation>
     </message>
 </context>
 <context>

@@ -971,12 +971,16 @@ or this functionality is not implemented yet.</source>
         <translation>URL nemůže být prázdné.</translation>
     </message>
     <message>
-        <source>URL must end with &quot;api/&quot;.</source>
-        <translation>URL musí končit na &quot;api/&quot;.</translation>
-    </message>
-    <message>
         <source>URL is okay.</source>
         <translation>URL je v pořádku.</translation>
+    </message>
+    <message>
+        <source>Note that at least API level %1 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL should end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3090,6 +3094,14 @@ na tuto bublinu.</translation>
     <message>
         <source>Load initial set of feeds</source>
         <translation>Načíst úvodní sadu kanálů</translation>
+    </message>
+    <message>
+        <source>This service offers integration with Tiny Tiny RSS.
+
+Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
+
+At least API level %1 is required.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
