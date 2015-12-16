@@ -465,7 +465,7 @@ Click here to open parent directory.</source>
     </message>
     <message>
         <source>Cannot update all items</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke ajourføre alle poster</translation>
     </message>
     <message>
         <source>You cannot update all items because another another critical operation is ongoing.</source>
@@ -653,7 +653,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Name</source>
-        <translation type="unfinished"/>
+        <translation>Navn</translation>
     </message>
     <message>
         <source>Version</source>
@@ -661,11 +661,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Author</source>
-        <translation type="unfinished"/>
+        <translation>Udvikler</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <source>This account can be added only once.</source>
@@ -822,7 +822,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -830,11 +830,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord</translation>
     </message>
     <message>
         <source>Show password</source>
@@ -846,7 +846,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -946,19 +946,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn ikke angivet.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeordet er tomt.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
@@ -1341,7 +1341,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
+        <translation>Feeds</translation>
     </message>
     <message>
         <source>&amp;Accounts</source>
@@ -2082,7 +2082,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>FormStandardCategoryDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your category.</source>
@@ -2090,15 +2090,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your category.</source>
@@ -2106,11 +2106,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj ny kategori</translation>
     </message>
     <message>
         <source>Edit existing category</source>
-        <translation type="unfinished"/>
+        <translation>Redigér ny kategori</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -2122,15 +2122,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Cannot edit category</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke redigere kategori</translation>
     </message>
     <message>
         <source>Category was not edited due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorien blev ikke redigeret på grund af fejl.</translation>
     </message>
     <message>
         <source>Category name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Kategorinavn er ok.</translation>
     </message>
     <message>
         <source>Category name is too short.</source>
@@ -2138,11 +2138,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen beskrivelse.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelsen er OK.</translation>
     </message>
     <message>
         <source>Select icon file for the category</source>
@@ -2150,28 +2150,28 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuller</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Kig i:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Ikonnavn:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Ikontype:</translation>
     </message>
     <message>
         <source>Category title</source>
@@ -2183,7 +2183,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Category description</source>
-        <translation type="unfinished"/>
+        <translation>Kategoribeskrivelse</translation>
     </message>
     <message>
         <source>Set description for your category.</source>
@@ -2203,14 +2203,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Brug standardikoner</translation>
     </message>
 </context>
 <context>
     <name>FormStandardFeedDetails</name>
     <message>
         <source>Parent category</source>
-        <translation type="unfinished"/>
+        <translation>Forældrekategori</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
@@ -2218,7 +2218,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Type</source>
-        <translation type="unfinished"/>
+        <translation>Type</translation>
     </message>
     <message>
         <source>Select type of the standard feed.</source>
@@ -2242,19 +2242,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source> minutes</source>
-        <translation type="unfinished"/>
+        <translation>minutter</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="unfinished"/>
+        <translation>Titel</translation>
     </message>
     <message>
         <source>Description</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelse</translation>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Fetch it now</source>
@@ -2262,7 +2262,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="unfinished"/>
+        <translation>Ikon</translation>
     </message>
     <message>
         <source>Select icon for your feed.</source>
@@ -2270,31 +2270,31 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord</translation>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hent metadata</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj nyt feed</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation type="unfinished"/>
+        <translation>Redigér eksisterende feed</translation>
     </message>
     <message>
         <source>Feed name is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Feed navn er i orden.</translation>
     </message>
     <message>
         <source>Feed name is too short.</source>
@@ -2302,15 +2302,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Description is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen beskrivelse.</translation>
     </message>
     <message>
         <source>The description is ok.</source>
-        <translation type="unfinished"/>
+        <translation>Beskrivelsen er OK.</translation>
     </message>
     <message>
         <source>The url is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URLen er OK.</translation>
     </message>
     <message>
         <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
@@ -2318,52 +2318,52 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>The url is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Denne URL er tom.</translation>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn ikke angivet.</translation>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation type="unfinished"/>
+        <translation>Kodeordet er tomt.</translation>
     </message>
     <message>
         <source>Select icon file for the feed</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikonfil for dette feed</translation>
     </message>
     <message>
         <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation type="unfinished"/>
+        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
     </message>
     <message>
         <source>Select icon</source>
-        <translation type="unfinished"/>
+        <translation>Vælg ikon</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="unfinished"/>
+        <translation>Annuller</translation>
     </message>
     <message>
         <source>Look in:</source>
         <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation type="unfinished"/>
+        <translation>Kig i:</translation>
     </message>
     <message>
         <source>Icon name:</source>
-        <translation type="unfinished"/>
+        <translation>Ikonnavn:</translation>
     </message>
     <message>
         <source>Icon type:</source>
-        <translation type="unfinished"/>
+        <translation>Ikontype:</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2371,11 +2371,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation type="unfinished"/>
+        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
     </message>
     <message>
         <source>Cannot edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Kan ikke redigere feed</translation>
     </message>
     <message>
         <source>Feed was not edited due to error.</source>
@@ -2387,7 +2387,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed and icon metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Feed og ikon metadata hentet.</translation>
     </message>
     <message>
         <source>Result: %1.</source>
@@ -2399,11 +2399,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Error: %1.</source>
-        <translation type="unfinished"/>
+        <translation>Fejl: %1.</translation>
     </message>
     <message>
         <source>No metadata fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen metadata hentet.</translation>
     </message>
     <message>
         <source>Icon fetched successfully.</source>
@@ -2419,11 +2419,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>No icon fetched.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen ikoner hentet</translation>
     </message>
     <message>
         <source>Feed title</source>
-        <translation type="unfinished"/>
+        <translation>Feedtitel</translation>
     </message>
     <message>
         <source>Set title for your feed.</source>
@@ -2431,11 +2431,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Feed description</source>
-        <translation type="unfinished"/>
+        <translation>Feedbeskrivelse</translation>
     </message>
     <message>
         <source>Set description for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Angiv  beskrivelse for dit feed.</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
@@ -2467,7 +2467,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Use default icon</source>
-        <translation type="unfinished"/>
+        <translation>Brug standardikoner</translation>
     </message>
     <message>
         <source>Fetch icon from feed</source>
@@ -2475,7 +2475,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>No metadata fetched so far.</source>
-        <translation type="unfinished"/>
+        <translation>Indtil videre er der ikke hentet noget metadata.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
@@ -2483,7 +2483,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation type="unfinished"/>
+        <translation>Ajourfør hver</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
@@ -2514,7 +2514,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>No file is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Ingen fil er udvalgt.</translation>
     </message>
     <message>
         <source>No operation executed yet.</source>
@@ -2530,11 +2530,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>Eksportér feeds</translation>
     </message>
     <message>
         <source>Source file</source>
-        <translation type="unfinished"/>
+        <translation>Kildefil</translation>
     </message>
     <message>
         <source>Target feeds &amp;&amp; categories</source>
@@ -2542,11 +2542,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>Importér feeds</translation>
     </message>
     <message>
         <source>OPML 2.0 files (*.opml)</source>
-        <translation type="unfinished"/>
+        <translation>OPML 2.0 filer (*.opml)</translation>
     </message>
     <message>
         <source>Select file for feeds export</source>
@@ -2554,7 +2554,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>File is selected.</source>
-        <translation type="unfinished"/>
+        <translation>Fil et valgt.</translation>
     </message>
     <message>
         <source>Select file for feeds import</source>
@@ -2586,7 +2586,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Critical error occurred.</source>
-        <translation type="unfinished"/>
+        <translation>Kritisk fejl opstod.</translation>
     </message>
 </context>
 <context>
@@ -3118,7 +3118,7 @@ This category does not contain any nested items.</source>
     <name>StandardFeed</name>
     <message>
         <source>Metadata not fetched</source>
-        <translation type="unfinished"/>
+        <translation>Metadata ikke hentet</translation>
     </message>
     <message>
         <source>Metadata was not fetched because: %1.</source>
@@ -3127,12 +3127,12 @@ This category does not contain any nested items.</source>
     <message>
         <source>does not use auto-update</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>bruger ikke automatisk ajourføring</translation>
     </message>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
+        <translation>bruger globale indstillinger</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
@@ -3169,7 +3169,7 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Fetch metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hent metadata</translation>
     </message>
     <message>
         <source>Import successfull, but some feeds/categories were not imported due to error.</source>
@@ -3181,19 +3181,19 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj ny kategori</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj nyt feed</translation>
     </message>
     <message>
         <source>Export feeds</source>
-        <translation type="unfinished"/>
+        <translation>Eksportér feeds</translation>
     </message>
     <message>
         <source>Import feeds</source>
-        <translation type="unfinished"/>
+        <translation>Importér feeds</translation>
     </message>
     <message>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
