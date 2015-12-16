@@ -692,14 +692,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Omschrijving</translation>
     </message>
     <message>
-        <source>Cannot add account</source>
-        <translation>Kan account niet toevoegen</translation>
-    </message>
-    <message>
-        <source>Some critical error occurred, report this to developers.</source>
-        <translation>Enkele kritieke fouten opgetreden, vermeld dit bij de ontwikkelaars.</translation>
-    </message>
-    <message>
         <source>This account can be added only once.</source>
         <translation>Dit account kan maar 1 maal worden toegevoegd.</translation>
     </message>
@@ -847,6 +839,165 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Verwijder alle berichten met ster(niet die van de prullenbak)</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditAccount</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished">Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Paswoord</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL must end with &quot;api/&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1180,20 +1331,12 @@ of deze functie bestaat nog niet.</translation>
         <translation>&amp;Uitklappen/inklappen geselecteerde item</translation>
     </message>
     <message>
-        <source>&amp;Add new service account</source>
-        <translation>&amp;Voeg nieuwe service account toe</translation>
-    </message>
-    <message>
         <source>&amp;Restore selected messages</source>
         <translation>&amp;Herstel geselecteerde berichten</translation>
     </message>
     <message>
         <source>No possible actions</source>
         <translation>Geen mogelijke acties</translation>
-    </message>
-    <message>
-        <source>Feeds &amp;&amp; categories &amp;&amp; accounts</source>
-        <translation>Feeds &amp;&amp; categorieën &amp;&amp; accounts</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
@@ -1222,6 +1365,30 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Empty recycle bin</source>
         <translation>Leeg vuilnisbak</translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished">Feeds &amp;&amp; categorieën</translation>
+    </message>
+    <message>
+        <source>&amp;Accounts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add new account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected account</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2158,10 +2325,6 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
     <message>
-        <source>Requires authentication</source>
-        <translation>Vereist verificatie</translation>
-    </message>
-    <message>
         <source>Username</source>
         <translation>Gebruikersnaam</translation>
     </message>
@@ -2377,6 +2540,10 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Niet automatisch bijwerken </translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2723,12 +2890,28 @@ Ga naar RRSguard website en download het handmatig.</translation>
         <translation>Bijlagen lijst.</translation>
     </message>
     <message>
-        <source>Loading of messages from item &apos;%s&apos; failed.</source>
+        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
         <translation></translation>
     </message>
     <message>
-        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
-        <translation></translation>
+        <source>Loading of messages from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account ID of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID of the message</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2950,17 +3133,28 @@ door te clicken op deze popup melding.</translation>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
         <translation>De prullenbak bevat alle verwijderde berichten van alle feeds.</translation>
     </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation>Prullenbak
-%1</translation>
-    </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
         <translation>
             <numerusform>%n verwijderde bericht(en).</numerusform>
             <numerusform>%n verwijderde bericht(en).</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Recycle bin
+
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RootItem</name>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform>%n ongelezen bericht.</numerusform>
+            <numerusform>%n ongelezen berichten.</numerusform>
         </translation>
     </message>
 </context>
@@ -2991,14 +3185,6 @@ door te clicken op deze popup melding.</translation>
 This category does not contain any nested items.</source>
         <translation>
 Deze categorie bevat geen nested items.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -3042,14 +3228,6 @@ Netwerk status: %6
 Coderen: %4
 Auto-update status: %5 </translation>
     </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
-    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -3068,18 +3246,6 @@ Auto-update status: %5 </translation>
     <message>
         <source>Error when loading initial feeds</source>
         <translation>Fout bij het laden van de eerste feeds</translation>
-    </message>
-    <message>
-        <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -3108,6 +3274,12 @@ Auto-update status: %5 </translation>
     <message>
         <source>Import feeds</source>
         <translation>Importeer feeds</translation>
+    </message>
+    <message>
+        <source>This is service account for standard RSS/RDF/ATOM feeds.
+
+Account ID: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3246,16 +3418,18 @@ Ongelezen nieuws: %2</translation>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
-        <source>This is service account TT-RSS (TinyTiny RSS) server.</source>
-        <translation>Dit is een service account van TT-RSS (TinyTiny RSS) server.</translation>
+        <source>Tiny Tiny RSS
+
+Account ID: %3
+Username: %1
+Server: %2
+Last error: %4
+Last login on: %5</source>
+        <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n ongelezen bericht.</numerusform>
-            <numerusform>%n ongelezen berichten.</numerusform>
-        </translation>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

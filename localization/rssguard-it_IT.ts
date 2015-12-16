@@ -685,14 +685,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished">Descrizione</translation>
     </message>
     <message>
-        <source>Cannot add account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Some critical error occurred, report this to developers.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This account can be added only once.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -839,6 +831,165 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormEditAccount</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Nome utente</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Password</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished">URL</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Nome utente vuoto.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">La password è vuota.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL must end with &quot;api/&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1173,19 +1324,11 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Add new service account</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Restore selected messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No possible actions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Feeds &amp;&amp; categories &amp;&amp; accounts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1214,6 +1357,30 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Empty recycle bin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished">Feed &amp;&amp; categorie</translation>
+    </message>
+    <message>
+        <source>&amp;Accounts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add new account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected account</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2127,10 +2294,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Requires authentication</source>
-        <translation type="unfinished">Richiede autenticazione</translation>
-    </message>
-    <message>
         <source>Username</source>
         <translation type="unfinished">Nome utente</translation>
     </message>
@@ -2345,6 +2508,10 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Do not auto-update at all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2691,11 +2858,27 @@ Go to application website to obtain it manually.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Loading of messages from item &apos;%s&apos; failed.</source>
+        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
+        <source>Loading of messages from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account ID of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID of the message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2911,13 +3094,25 @@ version by clicking this popup notification.</source>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message numerus="yes">
+        <source>%n deleted message(s).</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
         <source>Recycle bin
+
 %1</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>RootItem</name>
     <message numerus="yes">
-        <source>%n deleted message(s).</source>
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -2950,14 +3145,6 @@ version by clicking this popup notification.</source>
         <source>
 This category does not contain any nested items.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -2997,14 +3184,6 @@ Auto-update status: %5</source>
         <extracomment>Tooltip for feed.</extracomment>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
-    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -3023,18 +3202,6 @@ Auto-update status: %5</source>
     <message>
         <source>Error when loading initial feeds</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -3062,6 +3229,12 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Import feeds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This is service account for standard RSS/RDF/ATOM feeds.
+
+Account ID: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3199,16 +3372,18 @@ Unread news: %2</source>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
-        <source>This is service account TT-RSS (TinyTiny RSS) server.</source>
+        <source>Tiny Tiny RSS
+
+Account ID: %3
+Username: %1
+Server: %2
+Last error: %4
+Last login on: %5</source>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-        </translation>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

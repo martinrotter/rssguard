@@ -697,14 +697,6 @@ nebo tato funkcionality dosud není implementována.</translation>
         <translation>Popis</translation>
     </message>
     <message>
-        <source>Cannot add account</source>
-        <translation>Účet nelze přidat</translation>
-    </message>
-    <message>
-        <source>Some critical error occurred, report this to developers.</source>
-        <translation>Vyskytla se kritická chyba, nahlaště problém vývojářům.</translation>
-    </message>
-    <message>
         <source>This account can be added only once.</source>
         <translation>Tento účet může být přidán pouze jednou.</translation>
     </message>
@@ -853,6 +845,165 @@ nebo tato funkcionality dosud není implementována.</translation>
     <message>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Vymazat všechny důležité zprávy (včetně těch z koše)</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditAccount</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished">Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished">Heslo</translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished">Uživatelské jméno je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished">Uživatelské jméno je prázdné.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished">Heslo je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished">Heslo je prázdné.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL must end with &quot;api/&quot;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1186,20 +1337,12 @@ nebo tato funkcionality dosud není implementována.</translation>
         <translation>&amp;Rozbalit/sbalit položku</translation>
     </message>
     <message>
-        <source>&amp;Add new service account</source>
-        <translation>&amp;Přidat nový účet</translation>
-    </message>
-    <message>
         <source>&amp;Restore selected messages</source>
         <translation>&amp;Obnovit vybrané zprávy</translation>
     </message>
     <message>
         <source>No possible actions</source>
         <translation>Žádná možná akce</translation>
-    </message>
-    <message>
-        <source>Feeds &amp;&amp; categories &amp;&amp; accounts</source>
-        <translation>Kanály &amp;&amp; zprávy &amp;&amp; účty</translation>
     </message>
     <message>
         <source>&amp;Recycle bin(s)</source>
@@ -1228,6 +1371,30 @@ nebo tato funkcionality dosud není implementována.</translation>
     <message>
         <source>Empty recycle bin</source>
         <translation>Vyprázdnit odp. koš</translation>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished">Kanály &amp;&amp; kategorie</translation>
+    </message>
+    <message>
+        <source>&amp;Accounts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Add new account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Status bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Edit selected account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Delete selected account</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2158,10 +2325,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
     </message>
     <message>
-        <source>Requires authentication</source>
-        <translation>Vyžaduje autentizaci</translation>
-    </message>
-    <message>
         <source>Username</source>
         <translation>Uživatelské jméno</translation>
     </message>
@@ -2377,6 +2540,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Do not auto-update at all</source>
         <translation>Zakázat auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2720,12 +2887,28 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
         <translation>Seznam příloh.</translation>
     </message>
     <message>
-        <source>Loading of messages from item &apos;%s&apos; failed.</source>
-        <translation>Načítání zpráv z položky &apos;%s&apos; selhalo.</translation>
-    </message>
-    <message>
         <source>Loading of messages failed, maybe messages could not be downloaded.</source>
         <translation>Načítání zpráv selhalo, možná zprávy nemohly být staženy.</translation>
+    </message>
+    <message>
+        <source>Loading of messages from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account ID of the message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom ID of the message</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2950,18 +3133,30 @@ klknutím na tuto notifikaci.</translation>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
         <translation>Koš obsahuje všechny smazané zprávy ze všech kanálů.</translation>
     </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation>Koš
-%1</translation>
-    </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
         <translation>
             <numerusform>%n smazaná zpráva.</numerusform>
             <numerusform>%n smazané zprávy.</numerusform>
             <numerusform>%n smazaných zpráv.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Recycle bin
+
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RootItem</name>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
+        <translation type="unfinished">
+            <numerusform>%n nepřečtená zpráva.</numerusform>
+            <numerusform>%n nepřečtené zprávy.</numerusform>
+            <numerusform>%n nepřečtených zpráv.</numerusform>
         </translation>
     </message>
 </context>
@@ -2992,15 +3187,6 @@ klknutím na tuto notifikaci.</translation>
 This category does not contain any nested items.</source>
         <translation>
 Tato kategorie neobsahuje žádné položky.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
     </message>
 </context>
 <context>
@@ -3045,15 +3231,6 @@ Síťový status: %6
 Kódování: %4
 Automatický update: %5</translation>
     </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
-    </message>
 </context>
 <context>
     <name>StandardServiceRoot</name>
@@ -3072,19 +3249,6 @@ Automatický update: %5</translation>
     <message>
         <source>Error when loading initial feeds</source>
         <translation>Chyba při načítání úvodních kanálů</translation>
-    </message>
-    <message>
-        <source>This is service account for standard RSS/RDF/ATOM feeds.</source>
-        <translation>Toto je účet pro standardní RSS/RDS/ATOM kanály.</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
     </message>
     <message>
         <source>Fetch metadata</source>
@@ -3113,6 +3277,12 @@ Automatický update: %5</translation>
     <message>
         <source>Import feeds</source>
         <translation>Importovat kanály</translation>
+    </message>
+    <message>
+        <source>This is service account for standard RSS/RDF/ATOM feeds.
+
+Account ID: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3250,17 +3420,18 @@ Nepřečtené zprávy: %2</translation>
 <context>
     <name>TtRssServiceRoot</name>
     <message>
-        <source>This is service account TT-RSS (TinyTiny RSS) server.</source>
+        <source>Tiny Tiny RSS
+
+Account ID: %3
+Username: %1
+Server: %2
+Last error: %4
+Last login on: %5</source>
         <translation type="unfinished"></translation>
     </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation>
-            <numerusform>%n nepřečtená zpráva.</numerusform>
-            <numerusform>%n nepřečtené zprávy.</numerusform>
-            <numerusform>%n nepřečtených zpráv.</numerusform>
-        </translation>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
