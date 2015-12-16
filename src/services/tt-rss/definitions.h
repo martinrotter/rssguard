@@ -1,7 +1,7 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
-#define MINIMAL_API_LEVEL 10
+#define MINIMAL_API_LEVEL 9
 #define CONTENT_TYPE      "application/json; charset=utf-8"
 
 ///
