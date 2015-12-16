@@ -195,24 +195,6 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
 </context>
 <context>
-    <name>Category</name>
-    <message>
-        <source>%1 (category)%2%3</source>
-        <extracomment>Tooltip for standard feed.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>
-This category does not contain any nested items.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-</context>
-<context>
     <name>DatabaseCleaner</name>
     <message>
         <source>Shrinking database file...</source>
@@ -420,67 +402,13 @@ Click here to open parent directory.</source>
     </message>
 </context>
 <context>
-    <name>Feed</name>
-    <message>
-        <source>does not use auto-update</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>uses global settings</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>bruger globale indstillinger</translation>
-    </message>
-    <message numerus="yes">
-        <source>uses specific settings (%n minute(s) to next auto-update)</source>
-        <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <source>%1 (%2)%3
-
-Network status: %6
-Encoding: %4
-Auto-update status: %5</source>
-        <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message numerus="yes">
-        <source>%n unread message(s).</source>
-        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
-    </message>
-    <message>
-        <source>Metadata not fetched</source>
-        <translation>Metadata ikke hentet</translation>
-    </message>
-    <message>
-        <source>Metadata was not fetched because: %1</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
     <name>FeedMessageViewer</name>
     <message>
         <source>Toolbar for messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed update started</source>
-        <extracomment>Text display in status bar when feed update is started.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Updated feed &apos;%1&apos;</source>
-        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Toolbar for feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error when loading initial feeds</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -489,18 +417,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Cannot cleanup database, because another critical action is running.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot update all items</source>
-        <translation>Kan ikke ajourføre alle poster</translation>
-    </message>
-    <message>
-        <source>You cannot update all items because another another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>New messages downloaded</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -540,24 +456,42 @@ Auto-update status: %5</source>
         <translation>Administrator</translation>
     </message>
     <message>
-        <source>Invalid tree data.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Import was completely successfull.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Starting auto-update of some feeds</source>
         <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Cannot update all items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot update all items because another another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed update started</source>
+        <extracomment>Text display in status bar when feed update is started.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Updated feed &apos;%1&apos;</source>
+        <extracomment>Text display in status bar when particular feed is updated.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>New messages downloaded</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot perform drag &amp; drop operation</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -570,14 +504,6 @@ Auto-update status: %5</source>
 <context>
     <name>FeedsView</name>
     <message>
-        <source>Cannot add standard category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot add standard feed</source>
-        <translation>Kan ikke tilføje standard feed</translation>
-    </message>
-    <message>
         <source>Cannot edit item</source>
         <translation>Kan ikke redigere element</translation>
     </message>
@@ -586,47 +512,7 @@ Auto-update status: %5</source>
         <translation>Kan ikke fjerne element</translation>
     </message>
     <message>
-        <source>You are about to delete selected feed or category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Deletion of item failed.</source>
-        <translation>Sletning af post fejlet.</translation>
-    </message>
-    <message>
-        <source>Selected item was not deleted due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do you really want to delete selected item?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Permanently delete messages</source>
-        <translation>Slet meddelelser permanent</translation>
-    </message>
-    <message>
-        <source>You are about to permanenty delete all messages from your recycle bin.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do you really want to empty your recycle bin?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Context menu for empty space</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Context menu for recycle bin</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot add new standard category now because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot add new standard feed now because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -638,11 +524,40 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Delete feed/category</source>
-        <translation>Slet feed/kategori</translation>
+        <source>Context menu for categories</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Context menu for categories</source>
+        <source>Selected item cannot be edited, this is not (yet?) supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Deleting &quot;%1&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You are about to completely delete item &quot;%1&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Are you sure?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot delete &quot;%1&quot;</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This item cannot be deleted because something critically failed. Submit bug report.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This item cannot be deleted, because it does not support it
+or this functionality is not implemented yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Context menu for other items</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -693,10 +608,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~email&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>About %1</source>
         <extracomment>About RSS Guard dialog title.</extracomment>
         <translation>Om %1</translation>
@@ -723,6 +634,41 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Resources</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormAddAccount</name>
+    <message>
+        <source>Add new account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Details</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This account can be added only once.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -802,134 +748,6 @@ Auto-update status: %5</source>
     </message>
 </context>
 <context>
-    <name>FormCategoryDetails</name>
-    <message>
-        <source>Parent category</source>
-        <translation>Forældrekategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivelse</translation>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new category</source>
-        <translation>Tilføj ny kategori</translation>
-    </message>
-    <message>
-        <source>Edit existing category</source>
-        <translation>Redigér ny kategori</translation>
-    </message>
-    <message>
-        <source>Cannot add category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Category was not added due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot edit category</source>
-        <translation>Kan ikke redigere kategori</translation>
-    </message>
-    <message>
-        <source>Category was not edited due to error.</source>
-        <translation>Kategorien blev ikke redigeret på grund af fejl.</translation>
-    </message>
-    <message>
-        <source>Category name is ok.</source>
-        <translation>Kategorinavn er ok.</translation>
-    </message>
-    <message>
-        <source>Category name is too short.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Description is empty.</source>
-        <translation>Ingen beskrivelse.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Vælg ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuller</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-        <translation>Kig i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnavn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontype:</translation>
-    </message>
-    <message>
-        <source>Category title</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set title for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Category description</source>
-        <translation>Kategoribeskrivelse</translation>
-    </message>
-    <message>
-        <source>Set description for your category.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Brug standardikoner</translation>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivelsen er OK.</translation>
-    </message>
-</context>
-<context>
     <name>FormDatabaseCleanup</name>
     <message>
         <source>Cleanup database</source>
@@ -997,385 +815,161 @@ Auto-update status: %5</source>
     </message>
 </context>
 <context>
-    <name>FormFeedDetails</name>
+    <name>FormEditAccount</name>
     <message>
-        <source>Parent category</source>
-        <translation>Forældrekategori</translation>
-    </message>
-    <message>
-        <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Type</source>
-        <translation>Type</translation>
-    </message>
-    <message>
-        <source>Select type of the standard feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Encoding</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Auto-update</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source> minutes</source>
-        <translation>minutter</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation>Titel</translation>
-    </message>
-    <message>
-        <source>Description</source>
-        <translation>Beskrivelse</translation>
-    </message>
-    <message>
-        <source>URL</source>
-        <translation>URL</translation>
-    </message>
-    <message>
-        <source>Fetch it now</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon</source>
-        <translation>Ikon</translation>
-    </message>
-    <message>
-        <source>Select icon for your feed.</source>
+        <source>Dialog</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Requires authentication</source>
+        <source>Authentication</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <source>Username</source>
-        <translation>Brugernavn</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password</source>
-        <translation>Kodeord</translation>
-    </message>
-    <message>
-        <source>Fetch metadata</source>
-        <translation>Hent metadata</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Tilføj nyt feed</translation>
-    </message>
-    <message>
-        <source>Edit existing feed</source>
-        <translation>Redigér eksisterende feed</translation>
-    </message>
-    <message>
-        <source>Feed name is ok.</source>
-        <translation>Feed navn er i orden.</translation>
-    </message>
-    <message>
-        <source>Feed name is too short.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Description is empty.</source>
-        <translation>Ingen beskrivelse.</translation>
-    </message>
-    <message>
-        <source>The url is ok.</source>
-        <translation>URLen er OK.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <source>Show password</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>The url is empty.</source>
-        <translation>Denne URL er tom.</translation>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>HTTP authentication username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>HTTP authentication password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>FULL URL of your TT-RSS instance WITH trailing &quot;/api/&quot; string</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new Tiny Tiny RSS account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing Tiny Tiny RSS account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>API access on selected server is not enabled.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Entered credentials are incorrect.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Other error occurred, contact developers.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Tiny Tiny RSS server is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is ok or it is not needed.</source>
-        <translation>Brugernavn er OK eller ikke nødvendigt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Username is empty.</source>
-        <translation>Brugernavn ikke angivet.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is ok or it is not needed.</source>
-        <translation>Kodeord er OK eller ikke nødvendigt.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Password is empty.</source>
-        <translation>Kodeordet er tomt.</translation>
-    </message>
-    <message>
-        <source>Select icon file for the feed</source>
-        <translation>Vælg ikonfil for dette feed</translation>
-    </message>
-    <message>
-        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
-        <translation>Billeder (*. Bmp *. Jpg *. Jpeg *. Png *. SVG *. TGA)</translation>
-    </message>
-    <message>
-        <source>Select icon</source>
-        <translation>Vælg ikon</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Annuller</translation>
-    </message>
-    <message>
-        <source>Look in:</source>
-        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-        <translation>Kig i:</translation>
-    </message>
-    <message>
-        <source>Icon name:</source>
-        <translation>Ikonnavn:</translation>
-    </message>
-    <message>
-        <source>Icon type:</source>
-        <translation>Ikontype:</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed was not added due to error.</source>
-        <translation>Feed blev ikke tilføjet på grund af fejl.</translation>
-    </message>
-    <message>
-        <source>Cannot edit feed</source>
-        <translation>Kan ikke redigere feed</translation>
-    </message>
-    <message>
-        <source>All metadata fetched successfully.</source>
+        <source>URL cannot be empty.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed and icon metadata fetched.</source>
-        <translation>Feed og ikon metadata hentet.</translation>
-    </message>
-    <message>
-        <source>Result: %1.</source>
+        <source>URL must end with &quot;api/&quot;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Feed or icon metatada not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error: %1.</source>
-        <translation>Fejl: %1.</translation>
-    </message>
-    <message>
-        <source>No metadata fetched.</source>
-        <translation>Ingen metadata hentet.</translation>
-    </message>
-    <message>
-        <source>Feed title</source>
-        <translation>Feedtitel</translation>
-    </message>
-    <message>
-        <source>Set title for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feed description</source>
-        <translation>Feedbeskrivelse</translation>
-    </message>
-    <message>
-        <source>Set description for your feed.</source>
-        <translation>Angiv  beskrivelse for dit feed.</translation>
-    </message>
-    <message>
-        <source>Full feed url including scheme</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set url for your feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set username to access the feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Set password to access the feed.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon selection</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Load icon from file...</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do not use icon</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Use default icon</source>
-        <translation>Brug standardikoner</translation>
-    </message>
-    <message>
-        <source>No metadata fetched so far.</source>
-        <translation>Indtil videre er der ikke hentet noget metadata.</translation>
-    </message>
-    <message>
-        <source>Auto-update using global interval</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Auto-update every</source>
-        <translation>Ajourfør hver</translation>
-    </message>
-    <message>
-        <source>Do not auto-update at all</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The description is ok.</source>
-        <translation>Beskrivelsen er OK.</translation>
-    </message>
-    <message>
-        <source>Feed was not edited due to error.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon fetched successfully.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metadata fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Icon metatada not fetched.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No icon fetched.</source>
-        <translation>Ingen ikoner hentet</translation>
-    </message>
-    <message>
-        <source>Fetch icon from feed</source>
-        <translation type="unfinished"/>
-    </message>
-</context>
-<context>
-    <name>FormImportExport</name>
-    <message>
-        <source>&amp;Select file</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Operation results</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>No file is selected.</source>
-        <translation>Ingen fil er udvalgt.</translation>
-    </message>
-    <message>
-        <source>No operation executed yet.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Export feeds</source>
-        <translation>Eksportér feeds</translation>
-    </message>
-    <message>
-        <source>Destination file</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Source feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Source file</source>
-        <translation>Kildefil</translation>
-    </message>
-    <message>
-        <source>Target feeds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Import feeds</source>
-        <translation>Importér feeds</translation>
-    </message>
-    <message>
-        <source>OPML 2.0 files (*.opml)</source>
-        <translation>OPML 2.0 filer (*.opml)</translation>
-    </message>
-    <message>
-        <source>Select file for feeds export</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>File is selected.</source>
-        <translation>Fil et valgt.</translation>
-    </message>
-    <message>
-        <source>Select file for feeds import</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot open source file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feeds were loaded.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error, file is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Error occurred. File is not well-formed. Select another file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Feeds were exported successfully.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot write into destination file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Critical error occurred.</source>
-        <translation>Kritisk fejl opstod.</translation>
-    </message>
-    <message>
-        <source>&amp;Check all items</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Uncheck all items</source>
+        <source>URL is okay.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1454,22 +1048,6 @@ Auto-update status: %5</source>
         <translation>succesfuldt</translation>
     </message>
     <message>
-        <source>Fee&amp;ds &amp;&amp; categories</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark all messages (without message filters) from selected feeds as read.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Mark all messages (without message filters) from selected feeds as unread.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Hides main window if it is visible and shows it if it is hidden.</source>
         <translation type="unfinished"/>
     </message>
@@ -1494,44 +1072,12 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Deletes all messages from selected feeds.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Marks all messages in all feeds read. This does not take message filters into account.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Deletes all messages from all feeds.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Update &amp;all feeds</source>
-        <translation>Ajourfør &amp;alle feeds</translation>
-    </message>
-    <message>
-        <source>Update &amp;selected feeds</source>
-        <translation>Ajourfør &amp;udvalgte feeds</translation>
-    </message>
-    <message>
-        <source>&amp;Edit selected feed/category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Delete selected feed/category</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Settings</source>
         <translation>Indstillinger</translation>
     </message>
     <message>
         <source>Hides or displays the main menu.</source>
         <translation>Skjuler eller viser hovedmenuen.</translation>
-    </message>
-    <message>
-        <source>Add &amp;new feed/category</source>
-        <translation>Tilføj &amp;nyt feed/kategori</translation>
     </message>
     <message>
         <source>&amp;Close all tabs except current one</source>
@@ -1550,18 +1096,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Mark selected feeds as read</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Mark selected feeds as unread</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Clean selected feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Open selected source articles in &amp;external browser</source>
         <translation type="unfinished"/>
     </message>
@@ -1571,26 +1105,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Open selected source articles in &amp;internal browser</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Mark all feeds as &amp;read</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>View selected feeds in &amp;newspaper mode</source>
-        <translation>Vis valgte feeds i &amp;avistilstand</translation>
-    </message>
-    <message>
-        <source>&amp;Clean all feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Select &amp;next feed/category</source>
-        <translation>Vælg</translation>
-    </message>
-    <message>
-        <source>Select &amp;previous feed/category</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1646,22 +1160,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>New &amp;feed</source>
-        <translation>Nyt &amp;feed</translation>
-    </message>
-    <message>
-        <source>Add new feed.</source>
-        <translation>Tilføj nyt feed.</translation>
-    </message>
-    <message>
-        <source>New &amp;category</source>
-        <translation>Ny &amp;kategori</translation>
-    </message>
-    <message>
-        <source>Add new category.</source>
-        <translation>Tilføj ny kategori.</translation>
-    </message>
-    <message>
         <source>&amp;Toolbars</source>
         <translation type="unfinished"/>
     </message>
@@ -1674,28 +1172,8 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Import feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Imports feeds you want from selected file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Export feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Exports feeds you want to selected file.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Close all tabs except current one.</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Recycle bin</source>
-        <translation>Sk&amp;raldespand</translation>
     </message>
     <message>
         <source>Report a &amp;bug (GitHub)...</source>
@@ -1711,18 +1189,6 @@ Auto-update status: %5</source>
     </message>
     <message>
         <source>Display &amp;wiki</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>&amp;Empty recycle bin</source>
-        <translation>&amp;Tøm skraldespand</translation>
-    </message>
-    <message>
-        <source>&amp;Restore all messages</source>
-        <translation>Genop&amp;ret alle meddelelser</translation>
-    </message>
-    <message>
-        <source>Restore &amp;selected messages</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1754,15 +1220,147 @@ Auto-update status: %5</source>
         <translation>&amp;Rens databasen</translation>
     </message>
     <message>
-        <source>Show only unread feeds/categories</source>
+        <source>Add &amp;new item</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Fetch feed metadata</source>
+        <source>Update &amp;all items</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>&amp;Expand/collapse selected feed/category</source>
+        <source>Update &amp;selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected items as read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected items as read.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark selected items as unread</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Mark all messages (without message filters) from selected items as unread.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean selected items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Deletes all messages from selected items.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Mark all items as &amp;read</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Marks all messages in all items read. This does not take message filters into account.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>View selected items in &amp;newspaper mode</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Clean all items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Deletes all messages from all items.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select &amp;next item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select &amp;previous item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Show only unread items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Expand/collapse selected item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore selected messages</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No possible actions</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Recycle bin(s)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Restore all recycle bins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Empty all recycle bins</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select next &amp;unread message</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Restore recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Empty recycle bin</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds &amp;&amp; categories</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Accounts</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Add new account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Status bar</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Edit selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Delete selected account</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1913,10 +1511,6 @@ Auto-update status: %5</source>
     <message>
         <source>Author</source>
         <translation>Udvikler</translation>
-    </message>
-    <message>
-        <source>Email</source>
-        <translation>E-post</translation>
     </message>
     <message>
         <source>Socks5</source>
@@ -2475,6 +2069,525 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Fancy &amp;&amp; modern popup notifications (This uses OS native notifications via D-Bus if available.)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>E-mail</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormStandardCategoryDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category was not added due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot edit category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category was not edited due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Category description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your category.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormStandardFeedDetails</name>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select type of the standard feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Encoding</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch it now</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed name is too short.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Description is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The description is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon file for the feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Images (*.bmp *.jpg *.jpeg *.png *.svg *.tga)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Look in:</source>
+        <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon name:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon type:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot edit feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not edited due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>All metadata fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed and icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Result: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed or icon metatada not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon fetched successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metadata fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon metatada not fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No icon fetched.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed title</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set title for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed description</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set description for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set url for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set username to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Set password to access the feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Icon selection</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load icon from file...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not use icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Use default icon</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch icon from feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No metadata fetched so far.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Requires HTTP authentication</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormStandardImportExport</name>
+    <message>
+        <source>&amp;Select file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Check all items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>&amp;Uncheck all items</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Operation results</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No file is selected.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>No operation executed yet.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Destination file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Source feeds &amp;&amp; categories</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Source file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Target feeds &amp;&amp; categories</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>OPML 2.0 files (*.opml)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select file for feeds export</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>File is selected.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select file for feeds import</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot open source file.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds were loaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error, file is not well-formed. Select another file.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error occurred. File is not well-formed. Select another file.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feeds were exported successfully.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot write into destination file.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Critical error occurred.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormUpdate</name>
@@ -2720,6 +2833,30 @@ Go to application website to obtain it manually.</source>
         <source>List of attachments.</source>
         <translation>Liste af vedhæftninger.</translation>
     </message>
+    <message>
+        <source>Loading of messages failed, maybe messages could not be downloaded.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Loading of messages from item &apos;%1&apos; failed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Account ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Account ID of the message.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Custom ID of the message</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>MessagesToolBar</name>
@@ -2894,25 +3031,30 @@ Go to application website to obtain it manually.</source>
         <translation>rotter.martinos@gmail.com</translation>
     </message>
     <message>
-        <source>Load initial feeds</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Do you want to load initial set of feeds?</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>LANG_NAME</source>
         <extracomment>Name of language, e.g. English.</extracomment>
         <translation>Danish</translation>
     </message>
+    <message numerus="yes">
+        <source>
+
++ %n other feeds.</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
     <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
+        <source>Welcome to %1.
+
+Please, check NEW stuff included in this
+version by clicking this popup notification.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Welcome to %1 %2.</source>
-        <translation>Velkommen til %1 %2.</translation>
+        <source>Welcome to %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Load initial set of feeds</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2925,14 +3067,22 @@ Go to application website to obtain it manually.</source>
         <source>Recycle bin contains all deleted messages from all feeds.</source>
         <translation type="unfinished"/>
     </message>
-    <message>
-        <source>Recycle bin
-%1</source>
-        <translation>Skraldespand
-%1</translation>
-    </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>Recycle bin
+
+%1</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>RootItem</name>
+    <message numerus="yes">
+        <source>%n unread message(s).</source>
+        <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
 </context>
@@ -2948,6 +3098,107 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Click and hit new shortcut.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>StandardCategory</name>
+    <message>
+        <source>%1 (category)%2%3</source>
+        <extracomment>Tooltip for standard feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>
+This category does not contain any nested items.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>StandardFeed</name>
+    <message>
+        <source>Metadata not fetched</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata was not fetched because: %1.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>%1 (%2)%3
+
+Network status: %6
+Encoding: %4
+Auto-update status: %5</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>StandardServiceRoot</name>
+    <message>
+        <source>This is obligatory service account for standard RSS/RDF/ATOM feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do you want to load initial set of feeds?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Error when loading initial feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fetch metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import successfull, but some feeds/categories were not imported due to error.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import was completely successfull.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Export feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Import feeds</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This is service account for standard RSS/RDF/ATOM feeds.
+
+Account ID: %1</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2970,6 +3221,10 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>Click the bubble for more information.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>anonymous</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3080,6 +3335,23 @@ Ulæste nyheder: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssServiceRoot</name>
+    <message>
+        <source>Tiny Tiny RSS
+
+Account ID: %3
+Username: %1
+Server: %2
+Last error: %4
+Last login on: %5</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>WebBrowser</name>
     <message>
         <source>Navigation panel</source>
@@ -3148,6 +3420,14 @@ Ulæste nyheder: %2</translation>
     </message>
     <message>
         <source>Stop web page loading.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
         <translation type="unfinished"/>
     </message>
 </context>
