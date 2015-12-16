@@ -83,6 +83,14 @@ class TtRssUpdateArticleResponse : public TtRssResponse {
     int articlesUpdated() const;
 };
 
+/*
+class TtRssGetConfigResponse : public TtRssResponse {
+  public:
+    explicit TtRssGetConfigResponse(const QString &raw_content = QString());
+    virtual ~TtRssGetConfigResponse();
+};
+*/
+
 namespace UpdateArticle {
   enum Mode {
     SetToFalse  = 0,
@@ -147,6 +155,8 @@ class TtRssNetworkFactory {
 
     TtRssUpdateArticleResponse updateArticles(const QStringList &ids, UpdateArticle::OperatingField field,
                                               UpdateArticle::Mode mode);
+
+    //TtRssGetConfigResponse getConfig();
 
   private:
     QString m_url;
