@@ -72,6 +72,9 @@ int main(int argc, char *argv[]) {
     return EXIT_FAILURE;
   }
 
+  // Register needed metatypes.
+  qRegisterMetaType<QList<RootItem*> >("QList<RootItem*>");
+
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
   qApp->icons()->setupSearchPaths();
@@ -97,7 +100,7 @@ int main(int argc, char *argv[]) {
   main_window.setWindowTitle(APP_LONG_NAME);
 
   // Now is a good time to initialize dynamic keyboard shortcuts.
-  DynamicShortcuts::load(qApp->userActions());
+  DynamicShortcuts::load(qApp->userActions());  
 
   // Display main window.
   if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool() && SystemTrayIcon::isSystemTrayActivated()) {
@@ -107,32 +110,33 @@ int main(int argc, char *argv[]) {
   else {
     qDebug("Showing the main window when the application is starting.");
     main_window.show();
-
-    if (qApp->settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool()) {
-      // This is the first time user runs this application.
-      qApp->settings()->setValue(GROUP(General), General::FirstRun, false);
-
-      if (MessageBox::show(&main_window, QMessageBox::Question, QObject::tr("Load initial feeds"),
-                           QObject::tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
-                           QObject::tr("Do you want to load initial set of feeds?"),
-                           QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
-        qApp->mainForm()->tabWidget()->feedMessageViewer()->loadInitialFeeds();
-      }
-    }
   }
 
   // Display tray icon if it is enabled and available.
   if (SystemTrayIcon::isSystemTrayActivated()) {
     qApp->showTrayIcon();
-
-    if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-      QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
-    }
   }
+
+  // Load activated accounts.
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->loadActivatedServiceAccounts();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadExpandedStates();
 
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));
-  qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1 %2.").arg(APP_NAME, APP_VERSION), QSystemTrayIcon::NoIcon);
+
+  if (qApp->isFirstRun() || qApp->isFirstRun(APP_VERSION)) {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                                    "version by clicking this popup notification.").arg(APP_LONG_NAME),
+                         QSystemTrayIcon::NoIcon, 0, false, QIcon(), &main_window, SLOT(showAbout()));
+  }
+  else {
+    qApp->showGuiMessage(QSL(APP_NAME), QObject::tr("Welcome to %1.").arg(APP_LONG_NAME), QSystemTrayIcon::NoIcon);
+  }
+
+  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, application.system(), SLOT(checkForUpdatesOnStartup()));
+  }
+
 
   // Enter global event loop.
   return Application::exec();

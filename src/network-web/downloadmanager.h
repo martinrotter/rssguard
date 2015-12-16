@@ -111,6 +111,7 @@ class DownloadManager : public TabContent {
     WebBrowser *webBrowser();
     QNetworkAccessManager *networkManager() const;
 
+    int totalDownloads() const;
     int activeDownloads() const;
     int downloadProgress() const;
 

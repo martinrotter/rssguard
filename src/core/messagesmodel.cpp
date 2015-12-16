@@ -22,6 +22,8 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "gui/dialogs/formmain.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QSqlRecord>
 #include <QSqlError>
@@ -30,7 +32,7 @@
 
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
-    m_messageFilter(NoHighlighting), m_customDateFormat(QString()) {
+    m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
   setObjectName(QSL("MessagesModel"));
   setupFonts();
   setupIcons();
@@ -42,7 +44,7 @@ MessagesModel::MessagesModel(QObject *parent)
   // via model, but via DIRECT SQL calls are used to do persistent messages.
   setEditStrategy(QSqlTableModel::OnManualSubmit);
   setTable(QSL("Messages"));
-  loadMessages(FeedsSelection());
+  loadMessages(NULL);
 }
 
 MessagesModel::~MessagesModel() {
@@ -55,11 +57,9 @@ void MessagesModel::setupIcons() {
   m_unreadIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 }
 
-FeedsSelection MessagesModel::loadedSelection() const {
-  return m_currentSelection;
-}
+void MessagesModel::fetchAllData() {
+  select();
 
-void MessagesModel::fetchAll() {
   while (canFetchMore()) {
     fetchMore();
   }
@@ -71,31 +71,48 @@ void MessagesModel::setupFonts() {
   m_boldFont.setBold(true);
 }
 
-void MessagesModel::loadMessages(const FeedsSelection &selection) {
-  m_currentSelection = selection;
+void MessagesModel::loadMessages(RootItem *item) {
+  m_selectedItem = item;
 
-  if (m_currentSelection.mode() == FeedsSelection::MessagesFromRecycleBin) {
-    setFilter(QSL("is_deleted = 1 AND is_pdeleted = 0"));
+  if (item == NULL) {
+    setFilter("true != true");
   }
   else {
-    QString assembled_ids = m_currentSelection.generateListOfIds();
-
-    setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0")).arg(assembled_ids));
-    qDebug("Loading messages from feeds: %s.", qPrintable(assembled_ids));
+    if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
+      setFilter("true != true");
+      qWarning("Loading of messages from item '%s' failed.", qPrintable(item->title()));
+      qApp->showGuiMessage(tr("Loading of messages from item '%1' failed.").arg(item->title()),
+                           tr("Loading of messages failed, maybe messages could not be downloaded."),
+                           QSystemTrayIcon::Critical,
+                           qApp->mainForm(),
+                           true);
+    }
   }
 
-  select();
-  fetchAll();
+  fetchAllData();
 }
 
-void MessagesModel::filterMessages(MessagesModel::MessageFilter filter) {
-  m_messageFilter = filter;
+bool MessagesModel::submitAll() {
+  qFatal("Submitting changes via model is not allowed.");
+  return false;
+}
+
+void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highlight) {
+  m_messageHighlighter = highlight;
   emit layoutAboutToBeChanged();
   emit layoutChanged();
 }
 
 int MessagesModel::messageId(int row_index) const {
   return data(row_index, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
+}
+
+RootItem::Importance MessagesModel::messageImportance(int row_index) const {
+  return (RootItem::Importance) data(row_index, MSG_DB_IMPORTANT_INDEX, Qt::EditRole).toInt();
+}
+
+RootItem *MessagesModel::loadedItem() const {
+  return m_selectedItem;
 }
 
 void MessagesModel::updateDateFormat() {
@@ -112,20 +129,8 @@ void MessagesModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
-Message MessagesModel::messageAt(int row_index) const {
-  QSqlRecord rec = record(row_index);
-  Message message;
-
-  // Fill Message object with details.
-  message.m_author = rec.value(MSG_DB_AUTHOR_INDEX).toString();
-  message.m_contents = rec.value(MSG_DB_CONTENTS_INDEX).toString();
-  message.m_enclosures = Enclosures::decodeEnclosuresFromString(rec.value(MSG_DB_ENCLOSURES_INDEX).toString());
-  message.m_title = rec.value(MSG_DB_TITLE_INDEX).toString();
-  message.m_url = rec.value(MSG_DB_URL_INDEX).toString();
-  message.m_feedId = rec.value(MSG_DB_FEED_INDEX).toInt();
-  message.m_created = TextFactory::parseDateTime(rec.value(MSG_DB_DCREATED_INDEX).value<qint64>()).toLocalTime();
-
-  return message;
+Message MessagesModel::messageAt(int row_index) const { 
+  return Message::fromSqlRecord(record(row_index));
 }
 
 void MessagesModel::setupHeaderData() {
@@ -140,7 +145,9 @@ void MessagesModel::setupHeaderData() {
                   /*: Tooltip for creation date of message.*/ tr("Created on") <<
                   /*: Tooltip for contents of message.*/ tr("Contents") <<
                   /*: Tooltip for "pdeleted" column in msg list.*/ tr("Permanently deleted") <<
-                  /*: Tooltip for attachments of message.*/ tr("Attachments");
+                  /*: Tooltip for attachments of message.*/ tr("Attachments") <<
+                  /*: Tooltip for account ID of message.*/ tr("Account ID") <<
+                  /*: Tooltip for custom ID of message.*/ tr("Custom ID");
 
   m_tooltipData << tr("Id of the message.") << tr("Is message read?") <<
                    tr("Is message deleted?") << tr("Is message important?") <<
@@ -148,13 +155,18 @@ void MessagesModel::setupHeaderData() {
                    tr("Title of the message.") << tr("Url of the message.") <<
                    tr("Author of the message.") << tr("Creation date of the message.") <<
                    tr("Contents of the message.") << tr("Is message permanently deleted from recycle bin?") <<
-                   tr("List of attachments.");
+                   tr("List of attachments.") << tr("Account ID of the message.") << tr("Custom ID of the message");
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex &index) const {
   Q_UNUSED(index)
 
+#if QT_VERSION >= 0x050000
+  return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+#else
+
   return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable;
+#endif
 }
 
 QVariant MessagesModel::data(int row, int column, int role) const {
@@ -196,7 +208,7 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
       return QSqlTableModel::data(index(idx.row(), MSG_DB_READ_INDEX)).toInt() == 1 ? m_normalFont : m_boldFont;
 
     case Qt::ForegroundRole:
-      switch (m_messageFilter) {
+      switch (m_messageHighlighter) {
         case HighlightImportant:
           return QSqlTableModel::data(index(idx.row(), MSG_DB_IMPORTANT_INDEX)).toInt() == 1 ? QColor(Qt::blue) : QVariant();
 
@@ -227,17 +239,17 @@ QVariant MessagesModel::data(const QModelIndex &idx, int role) const {
   }
 }
 
-bool MessagesModel::setMessageRead(int row_index, int read) {  
+bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   if (data(row_index, MSG_DB_READ_INDEX, Qt::EditRole).toInt() == read) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
     return true;
   }
 
-  QSqlDatabase db_handle = database();
+  Message message = messageAt(row_index);
 
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for message read change.");
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, QList<Message>() << message, read)) {
+    // Cannot change read status of the item. Abort.
     return false;
   }
 
@@ -247,172 +259,163 @@ bool MessagesModel::setMessageRead(int row_index, int read) {
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
     qDebug("Setting of new data to the model failed for message read change.");
-
-    db_handle.rollback();
     return false;
   }
 
-  int message_id;
-  QSqlQuery query_read_msg(db_handle);
+  QSqlQuery query_read_msg(database());
   query_read_msg.setForwardOnly(true);
 
   if (!query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE id = :id;"))) {
     qWarning("Query preparation failed for message read change.");
-
-    db_handle.rollback();
     return false;
   }
 
-  // Rewrite the actual data in the database itself.
-  message_id = messageId(row_index);
-  query_read_msg.bindValue(QSL(":id"), message_id);
-  query_read_msg.bindValue(QSL(":read"), read);
-  query_read_msg.exec();
+  query_read_msg.bindValue(QSL(":id"), message.m_id);
+  query_read_msg.bindValue(QSL(":read"), (int) read);
 
-  // Commit changes.
-  if (db_handle.commit()) {
-    // If commit succeeded, then emit changes, so that view
-    // can reflect.
-    emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    emit messageCountsChanged(m_currentSelection.mode(), false, false);
-    return true;
+  if (query_read_msg.exec()) {
+    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {
-    return db_handle.rollback();;
+    return false;
   }
 }
 
 bool MessagesModel::switchMessageImportance(int row_index) {
-  QSqlDatabase db_handle = database();
+  QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
+  RootItem::Importance current_importance = (RootItem::Importance) data(target_index, Qt::EditRole).toInt();
+  RootItem::Importance next_importance = current_importance == RootItem::Important ?
+                                           RootItem::NotImportant : RootItem::Important;
+  Message message = messageAt(row_index);
+  QPair<Message,RootItem::Importance> pair(message, next_importance);
 
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for message importance switch failed.");
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem,
+                                                                               QList<QPair<Message,RootItem::Importance> >() << pair)) {
     return false;
   }
 
-  QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
-  int current_importance = data(target_index, Qt::EditRole).toInt();
-
   // Rewrite "visible" data in the model.
-  bool working_change = current_importance == 1 ?
-                          setData(target_index, 0) :
-                          setData(target_index, 1);
+  bool working_change = setData(target_index, next_importance);
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
     qDebug("Setting of new data to the model failed for message importance change.");
-
-    db_handle.rollback();
     return false;
   }
 
-  int message_id;
-  QSqlQuery query_importance_msg(db_handle);
+  QSqlQuery query_importance_msg(database());
   query_importance_msg.setForwardOnly(true);
 
   if (!query_importance_msg.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
     qWarning("Query preparation failed for message importance switch.");
-
-    db_handle.rollback();
     return false;
   }
 
-  message_id = messageId(row_index);
-  query_importance_msg.bindValue(QSL(":id"), message_id);
-  query_importance_msg.bindValue(QSL(":important"), current_importance == 1 ? 0 : 1);
-  query_importance_msg.exec();
+  query_importance_msg.bindValue(QSL(":id"), message.m_id);
+  query_importance_msg.bindValue(QSL(":important"), (int) next_importance);
+
 
   // Commit changes.
-  if (db_handle.commit()) {
-    // If commit succeeded, then emit changes, so that view
-    // can reflect.
-    emit dataChanged(index(row_index, 0), index(row_index, columnCount() - 1));
-    return true;
+  if (query_importance_msg.exec()) {
+    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem,
+                                                                                  QList<QPair<Message,RootItem::Importance> >() << pair);
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
+  QSqlQuery query_read_msg(database());
   QStringList message_ids;
+  QList<QPair<Message,RootItem::Importance> > message_states;
 
   query_read_msg.setForwardOnly(true);
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    Message msg = messageAt(message.row());
+    RootItem::Importance message_importance = messageImportance((message.row()));
+
+    message_states.append(QPair<Message,RootItem::Importance>(msg, message_importance));
+    message_ids.append(QString::number(msg.m_id));
+  }
+
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
+    return false;
   }
 
   if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);"))
                           .arg(message_ids.join(QSL(", "))))) {
-    select();
-    fetchAll();
-
-    //emit messageCountsChanged(false);
-    return true;
+    fetchAllData();
+    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
   }
   else {
     return false;
   }
 }
 
-bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages, int deleted) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
+bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList &messages) {
   QStringList message_ids;
-
-  query_read_msg.setForwardOnly(true);
+  QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    Message msg = messageAt(message.row());
+
+    msgs.append(msg);
+    message_ids.append(QString::number(msg.m_id));
   }
 
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
+    return false;
+  }
+
+  QSqlQuery query_read_msg(database());
   QString sql_delete_query;
 
-  if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
-    sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
-                                                                                                 QString::number(deleted));
+  query_read_msg.setForwardOnly(true);
+
+  if (m_selectedItem->kind() != RootItemKind::Bin) {
+    sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 1 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
   }
   else {
-    sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
-                                                                                                  QString::number(deleted));
+    sql_delete_query = QString(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
   }
 
   if (query_read_msg.exec(sql_delete_query)) {
-    select();
-    fetchAll();
-
-    emit messageCountsChanged(m_currentSelection.mode(), true, false);
-    return true;
+    fetchAllData();
+    return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, msgs);
   }
   else {
     return false;
   }
 }
 
-bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int read) {
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
+bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read) {
   QStringList message_ids;
-
-  query_read_msg.setForwardOnly(true);
+  QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    Message msg = messageAt(message.row());
+
+    msgs.append(msg);
+    message_ids.append(QString::number(msg.m_id));
   }
 
-  if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")),
-                                                                                                 QString::number(read)))) {
-    select();
-    fetchAll();
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
+    return false;
+  }
 
-    emit messageCountsChanged(m_currentSelection.mode(), false, false);
-    return true;
+  QSqlQuery query_read_msg(database());
+  query_read_msg.setForwardOnly(true);
+
+  if (query_read_msg.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
+                          .arg(message_ids.join(QSL(", ")), read == RootItem::Read ? QSL("1") : QSL("0")))) {
+    fetchAllData();
+
+    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
   }
   else {
     return false;
@@ -420,30 +423,30 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList &messages, int re
 }
 
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList &messages) {
-  if (m_currentSelection.mode() == FeedsSelection::MessagesFromFeeds) {
-    qDebug("Cannot restore non-deleted messages.");
-    return false;
-  }
-
-  QSqlDatabase db_handle = database();
-  QSqlQuery query_read_msg(db_handle);
   QStringList message_ids;
-
-  query_read_msg.setForwardOnly(true);
+  QList<Message> msgs;
 
   // Obtain IDs of all desired messages.
   foreach (const QModelIndex &message, messages) {
-    message_ids.append(QString::number(messageId(message.row())));
+    Message msg = messageAt(message.row());
+
+    msgs.append(msg);
+    message_ids.append(QString::number(msg.m_id));
   }
 
+  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
+    return false;
+  }
+
+  QSqlQuery query_read_msg(database());
   QString sql_delete_query = QString(QSL("UPDATE Messages SET is_deleted = 0 WHERE id IN (%1);")).arg(message_ids.join(QSL(", ")));
 
-  if (query_read_msg.exec(sql_delete_query)) {
-    select();
-    fetchAll();
+  query_read_msg.setForwardOnly(true);
 
-    emit messageCountsChanged(m_currentSelection.mode(), true, true);
-    return true;
+  if (query_read_msg.exec(sql_delete_query)) {
+    fetchAllData();
+
+    return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
   }
   else {
     return false;

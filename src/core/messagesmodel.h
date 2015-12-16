@@ -20,89 +20,13 @@
 
 #include "definitions/definitions.h"
 
-#include "core/feedsselection.h"
+#include "core/message.h"
+#include "services/abstract/rootitem.h"
 
 #include <QSqlTableModel>
 #include <QFont>
 #include <QIcon>
-#include <QDateTime>
 
-
-// Represents single enclosuresh
-
-struct Enclosure {
-    QString m_url;
-    QString m_mimeType;
-
-    explicit Enclosure(const QString &url = QString(), const QString &mime = QString()) : m_url(url), m_mimeType(mime) {
-    }
-};
-
-// Represents single enclosure.
-class Enclosures {
-  public:
-    static QList<Enclosure> decodeEnclosuresFromString(const QString &enclosures_data) {
-      QList<Enclosure> enclosures;
-
-      foreach (const QString &single_enclosure, enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR, QString::SkipEmptyParts)) {
-        Enclosure enclosure;
-
-        if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
-          QStringList mime_url = single_enclosure.split(ECNLOSURES_INNER_SEPARATOR);
-
-          enclosure.m_mimeType = QByteArray::fromBase64(mime_url.at(0).toLocal8Bit());
-          enclosure.m_url = QByteArray::fromBase64(mime_url.at(1).toLocal8Bit());
-        }
-        else {
-          enclosure.m_url = QByteArray::fromBase64(single_enclosure.toLocal8Bit());
-        }
-
-        enclosures.append(enclosure);
-      }
-
-      return enclosures;
-    }
-
-    static QString encodeEnclosuresToString(const QList<Enclosure> &enclosures) {
-      QStringList enclosures_str;
-
-      foreach (const Enclosure &enclosure, enclosures) {
-        if (enclosure.m_mimeType.isEmpty()) {
-          enclosures_str.append(enclosure.m_url.toLocal8Bit().toBase64());
-        }
-        else {
-          enclosures_str.append(QString(enclosure.m_mimeType.toLocal8Bit().toBase64()) +
-                                ECNLOSURES_INNER_SEPARATOR +
-                                enclosure.m_url.toLocal8Bit().toBase64());
-        }
-      }
-
-      return enclosures_str.join(QString(ENCLOSURES_OUTER_SEPARATOR));
-    }
-};
-
-// Represents single message.
-class Message {
-  public:
-    explicit Message() {
-      m_title = m_url = m_author = m_contents = "";
-      m_feedId = 0;
-      m_enclosures = QList<Enclosure>();
-    }
-
-    QString m_title;
-    QString m_url;
-    QString m_author;
-    QString m_contents;
-    QDateTime m_created;
-    int m_feedId;
-
-    QList<Enclosure> m_enclosures;
-
-    // Is true if "created" date was obtained directly
-    // from the feed, otherwise is false
-    bool m_createdFromFeed;
-};
 
 class MessagesModel : public QSqlTableModel {
     Q_OBJECT
@@ -110,7 +34,7 @@ class MessagesModel : public QSqlTableModel {
   public:
     // Enum which describes basic filtering schemes
     // for messages.
-    enum MessageFilter {
+    enum MessageHighlighter {
       NoHighlighting = 100,
       HighlightUnread = 101,
       HighlightImportant = 102
@@ -129,15 +53,9 @@ class MessagesModel : public QSqlTableModel {
     // Returns message at given index.
     Message messageAt(int row_index) const;
     int messageId(int row_index) const;
+    RootItem::Importance messageImportance(int row_index) const;
 
-    FeedsSelection loadedSelection() const;
-
-  public slots:
-    // To disable persistent changes submissions.
-    inline bool submitAll() {
-      qFatal("Submitting changes via model is not allowed.");
-      return false;
-    }
+    RootItem *loadedItem() const;
 
     void updateDateFormat();
     void reloadWholeLayout();
@@ -147,7 +65,7 @@ class MessagesModel : public QSqlTableModel {
     // NOTE: Model is NOT reset after one of these methods are applied
     // but changes ARE written to the database.
     bool switchMessageImportance(int row_index);
-    bool setMessageRead(int row_index, int read);
+    bool setMessageRead(int row_index, RootItem::ReadStatus read);
 
     // BATCH messages manipulators.
     // NOTE: These methods are used for changing of attributes of
@@ -155,37 +73,32 @@ class MessagesModel : public QSqlTableModel {
     // NOTE: Model is reset after one of these methods is applied and
     // changes ARE written to the database.
     bool switchBatchMessageImportance(const QModelIndexList &messages);
-    bool setBatchMessagesDeleted(const QModelIndexList &messages, int deleted);
-    bool setBatchMessagesRead(const QModelIndexList &messages, int read);
+    bool setBatchMessagesDeleted(const QModelIndexList &messages);
+    bool setBatchMessagesRead(const QModelIndexList &messages, RootItem::ReadStatus read);
     bool setBatchMessagesRestored(const QModelIndexList &messages);
 
     // Fetches ALL available data to the model.
-    void fetchAll();
+    void fetchAllData();
+
+    // Filters messages
+    void highlightMessages(MessageHighlighter highlight);
 
     // Loads messages of given feeds.
-    void loadMessages(const FeedsSelection &selection);
+    void loadMessages(RootItem *item);
 
-    void filterMessages(MessageFilter filter);
-
-  signals:
-    // Emitted if some persistent change is made which affects count of "unread/all" messages.
-    void messageCountsChanged(FeedsSelection::SelectionMode mode, bool total_msg_count_changed, bool any_msg_restored);
-
-  protected:
-    // Sets up header data.
-    void setupHeaderData();
-
-    // Creates "normal" and "bold" fonts.
-    void setupFonts();
-
-    // Sets up all icons which are used directly by this model.
-    void setupIcons();
+  private slots:
+    // To disable persistent changes submissions.
+    bool submitAll();
 
   private:
-    MessageFilter m_messageFilter;
+    void setupHeaderData();
+    void setupFonts();
+    void setupIcons();
+
+    MessageHighlighter m_messageHighlighter;
 
     QString m_customDateFormat;
-    FeedsSelection m_currentSelection;
+    RootItem *m_selectedItem;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
 
@@ -197,6 +110,6 @@ class MessagesModel : public QSqlTableModel {
     QIcon m_unreadIcon;
 };
 
-Q_DECLARE_METATYPE(MessagesModel::MessageFilter)
+Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)
 
 #endif // MESSAGESMODEL_H

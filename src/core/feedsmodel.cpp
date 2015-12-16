@@ -18,16 +18,22 @@
 #include "core/feedsmodel.h"
 
 #include "definitions/definitions.h"
-#include "core/category.h"
-#include "core/feed.h"
-#include "core/recyclebin.h"
-#include "core/feedsimportexportmodel.h"
+#include "services/abstract/feed.h"
+#include "services/abstract/category.h"
+#include "services/abstract/serviceroot.h"
+#include "services/abstract/recyclebin.h"
+#include "services/standard/standardserviceroot.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/databasefactory.h"
+#include "miscellaneous/databasecleaner.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "gui/messagebox.h"
+#include "gui/statusbar.h"
+#include "gui/dialogs/formmain.h"
+#include "core/feeddownloader.h"
 
+#include <QThread>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
@@ -40,7 +46,9 @@
 
 
 FeedsModel::FeedsModel(QObject *parent)
-  : QAbstractItemModel(parent), m_recycleBin(new RecycleBin()), m_autoUpdateTimer(new QTimer(this)) {
+  : QAbstractItemModel(parent), m_autoUpdateTimer(new QTimer(this)),
+    m_feedDownloaderThread(NULL), m_feedDownloader(NULL),
+    m_dbCleanerThread(NULL), m_dbCleaner(NULL) {
   setObjectName(QSL("FeedsModel"));
 
   // Create root item.
@@ -62,14 +70,16 @@ FeedsModel::FeedsModel(QObject *parent)
 
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
 
-  loadFromDatabase();
-
-  // Setup the timer.
+  //loadActivatedServiceAccounts();
   updateAutoUpdateStatus();
 }
 
 FeedsModel::~FeedsModel() {
   qDebug("Destroying FeedsModel instance.");
+
+  foreach (ServiceRoot *account, serviceRoots()) {
+    account->stop();
+  }
 
   // Delete all model items.
   delete m_rootItem;
@@ -79,6 +89,214 @@ void FeedsModel::quit() {
   if (m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->stop();
   }
+
+  // Close worker threads.
+  if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
+    qDebug("Quitting feed downloader thread.");
+    m_feedDownloaderThread->quit();
+
+    if (!m_feedDownloaderThread->wait(CLOSE_LOCK_TIMEOUT)) {
+      qCritical("Feed downloader thread is running despite it was told to quit. Terminating it.");
+      m_feedDownloaderThread->terminate();
+    }
+  }
+
+  if (m_dbCleanerThread != NULL && m_dbCleanerThread->isRunning()) {
+    qDebug("Quitting database cleaner thread.");
+    m_dbCleanerThread->quit();
+
+    if (!m_dbCleanerThread->wait(CLOSE_LOCK_TIMEOUT)) {
+      qCritical("Database cleaner thread is running despite it was told to quit. Terminating it.");
+      m_dbCleanerThread->terminate();
+    }
+  }
+
+  // Close workers.
+  if (m_feedDownloader != NULL) {
+    qDebug("Feed downloader exists. Deleting it from memory.");
+    m_feedDownloader->deleteLater();
+  }
+
+  if (m_dbCleaner != NULL) {
+    qDebug("Database cleaner exists. Deleting it from memory.");
+    m_dbCleaner->deleteLater();
+  }
+
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
+    markItemCleared(m_rootItem, true);
+  }
+}
+
+void FeedsModel::updateFeeds(const QList<Feed *> &feeds) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    qApp->showGuiMessage(tr("Cannot update all items"),
+                         tr("You cannot update all items because another another critical operation is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+    return;
+  }
+
+  if (m_feedDownloader == NULL) {
+    m_feedDownloader = new FeedDownloader();
+    m_feedDownloaderThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<QList<Feed*> >("QList<Feed*>");
+    m_feedDownloader->moveToThread(m_feedDownloaderThread);
+
+    connect(this, SIGNAL(feedsUpdateRequested(QList<Feed*>)), m_feedDownloader, SLOT(updateFeeds(QList<Feed*>)));
+    connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
+    connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
+    connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
+    connect(m_feedDownloader, SIGNAL(progress(Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(Feed*,int,int)));
+
+    // Connections are made, start the feed downloader thread.
+    m_feedDownloaderThread->start();
+  }
+
+  emit feedsUpdateRequested(feeds);
+}
+
+void FeedsModel::onFeedUpdatesStarted() {
+  //: Text display in status bar when feed update is started.
+  qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
+}
+
+void FeedsModel::onFeedUpdatesProgress(Feed *feed, int current, int total) {
+  // Some feed got updated.
+  qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
+                                                   //: Text display in status bar when particular feed is updated.
+                                                   tr("Updated feed '%1'").arg(feed->title()));
+}
+
+void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
+  qApp->feedUpdateLock()->unlock();
+  qApp->mainForm()->statusBar()->clearProgressFeeds();
+
+  if (!results.m_updatedFeeds.isEmpty()) {
+    // Now, inform about results via GUI message/notification.
+    qApp->showGuiMessage(tr("New messages downloaded"), results.getOverview(10), QSystemTrayIcon::NoIcon,
+                         0, false, qApp->icons()->fromTheme(QSL("item-update-all")));
+  }
+
+  emit feedsUpdateFinished();
+}
+
+void FeedsModel::updateAllFeeds() {
+  updateFeeds(m_rootItem->getSubTreeFeeds());
+}
+
+
+DatabaseCleaner *FeedsModel::databaseCleaner() {
+  if (m_dbCleaner == NULL) {
+    m_dbCleaner = new DatabaseCleaner();
+    m_dbCleanerThread = new QThread();
+
+    // Downloader setup.
+    qRegisterMetaType<CleanerOrders>("CleanerOrders");
+    m_dbCleaner->moveToThread(m_dbCleanerThread);
+    connect(m_dbCleanerThread, SIGNAL(finished()), m_dbCleanerThread, SLOT(deleteLater()));
+
+    // Connections are made, start the feed downloader thread.
+    m_dbCleanerThread->start();
+  }
+
+  return m_dbCleaner;
+}
+
+QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
+  QMimeData *mime_data = new QMimeData();
+  QByteArray encoded_data;
+  QDataStream stream(&encoded_data, QIODevice::WriteOnly);
+
+  foreach (const QModelIndex &index, indexes) {
+    if (index.column() != 0) {
+      continue;
+    }
+
+    RootItem *item_for_index = itemForIndex(index);
+
+    if (item_for_index->kind() != RootItemKind::Root) {
+      stream << (quintptr) item_for_index;
+    }
+  }
+
+  mime_data->setData(MIME_TYPE_ITEM_POINTER, encoded_data);
+  return mime_data;
+}
+
+QStringList FeedsModel::mimeTypes() const {
+  return QStringList() << MIME_TYPE_ITEM_POINTER;
+}
+
+bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) {
+  Q_UNUSED(row)
+  Q_UNUSED(column)
+
+  if (action == Qt::IgnoreAction) {
+    return true;
+  }
+  else if (action != Qt::MoveAction) {
+    return false;
+  }
+
+  QByteArray dragged_items_data = data->data(MIME_TYPE_ITEM_POINTER);
+
+  if (dragged_items_data.isEmpty()) {
+    return false;
+  }
+  else {
+    QDataStream stream(&dragged_items_data, QIODevice::ReadOnly);
+
+    while (!stream.atEnd()) {
+      quintptr pointer_to_item;
+      stream >> pointer_to_item;
+
+      // We have item we want to drag, we also determine the target item.
+      RootItem *dragged_item = (RootItem*) pointer_to_item;
+      RootItem *target_item = itemForIndex(parent);
+      ServiceRoot *dragged_item_root = dragged_item->getParentServiceRoot();
+      ServiceRoot *target_item_root = target_item->getParentServiceRoot();
+
+      if (dragged_item == target_item || dragged_item->parent() == target_item) {
+        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
+        return false;
+      }
+
+      if (dragged_item_root != target_item_root) {
+        // Transferring of items between different accounts is not possible.
+        qApp->showGuiMessage(tr("Cannot perform drag & drop operation"),
+                             tr("You can't transfer dragged item into different account, this is not supported."),
+                             QSystemTrayIcon::Warning,
+                             qApp->mainForm(),
+                             true);
+
+        qDebug("Dragged item cannot be dragged into different account. Cancelling drag-drop action.");
+        return false;
+      }
+
+      if (dragged_item->performDragDropChange(target_item)) {
+        // Drag & drop is supported by the dragged item and was
+        // completed on data level and in item hierarchy.
+        emit requireItemValidationAfterDragDrop(indexForItem(dragged_item));
+      }
+    }
+
+    return true;
+  }
+
+  return false;
+}
+
+Qt::DropActions FeedsModel::supportedDropActions() const {
+  return Qt::MoveAction;
+}
+
+Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
+  Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
+  RootItem *item_for_index = itemForIndex(index);
+  Qt::ItemFlags additional_flags = item_for_index->additionalFlags();
+
+  return base_flags | additional_flags;
 }
 
 void FeedsModel::executeNextAutoUpdate() {
@@ -134,116 +352,6 @@ void FeedsModel::updateAutoUpdateStatus() {
   }
   else {
     qDebug("Auto-update timer is already running.");
-  }
-}
-
-QMimeData *FeedsModel::mimeData(const QModelIndexList &indexes) const {
-  QMimeData *mime_data = new QMimeData();
-  QByteArray encoded_data;
-  QDataStream stream(&encoded_data, QIODevice::WriteOnly);
-
-  foreach (const QModelIndex &index, indexes) {
-    if (index.column() != 0) {
-      continue;
-    }
-
-    RootItem *item_for_index = itemForIndex(index);
-
-    if (item_for_index->kind() != RootItem::Root) {
-      stream << (quintptr) item_for_index;
-    }
-  }
-
-  mime_data->setData(MIME_TYPE_ITEM_POINTER, encoded_data);
-  return mime_data;
-}
-
-QStringList FeedsModel::mimeTypes() const {
-  return QStringList() << MIME_TYPE_ITEM_POINTER;
-}
-
-bool FeedsModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) {
-  Q_UNUSED(row)
-  Q_UNUSED(column)
-
-  if (action == Qt::IgnoreAction) {
-    return true;
-  }
-  else if (action != Qt::MoveAction) {
-    return false;
-  }
-
-  QByteArray dragged_items_data = data->data(MIME_TYPE_ITEM_POINTER);
-
-  if (dragged_items_data.isEmpty()) {
-    return false;
-  }
-  else {
-    QDataStream stream(&dragged_items_data, QIODevice::ReadOnly);
-
-    while (!stream.atEnd()) {
-      quintptr pointer_to_item;
-      stream >> pointer_to_item;
-
-      // We have item we want to drag, we also determine the target item.
-      RootItem *dragged_item = (RootItem*) pointer_to_item;
-      RootItem *target_item = itemForIndex(parent);
-
-      if (dragged_item == target_item || dragged_item->parent() == target_item) {
-        qDebug("Dragged item is equal to target item or its parent is equal to target item. Cancelling drag-drop action.");
-        return false;
-      }
-
-      if (dragged_item->kind() == RootItem::Feeed) {
-        qDebug("Drag-drop action for feed '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
-
-        Feed *actual_feed = dragged_item->toFeed();
-        Feed *feed_new = new Feed(*actual_feed);
-
-        feed_new->setParent(target_item);
-        editFeed(actual_feed, feed_new);
-
-        emit requireItemValidationAfterDragDrop(indexForItem(actual_feed));
-      }
-      else if (dragged_item->kind() == RootItem::Cattegory) {
-        qDebug("Drag-drop action for category '%s' detected, editing the feed.", qPrintable(dragged_item->title()));
-
-        Category *actual_category = dragged_item->toCategory();
-        Category *category_new = new Category(*actual_category);
-
-        category_new->clearChildren();
-        category_new->setParent(target_item);
-        editCategory(actual_category, category_new);
-
-        emit requireItemValidationAfterDragDrop(indexForItem(actual_category));
-      }
-    }
-
-    return true;
-  }
-}
-
-Qt::DropActions FeedsModel::supportedDropActions() const {
-  return Qt::MoveAction;
-}
-
-Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
-  Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
-  RootItem *item_for_index = itemForIndex(index);
-
-  switch (item_for_index->kind()) {
-    case RootItem::Bin:
-      return base_flags;
-
-    case RootItem::Cattegory:
-      return base_flags | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled;
-
-    case RootItem::Feeed:
-      return base_flags | Qt::ItemIsDragEnabled;
-
-    case RootItem::Root:
-    default:
-      return base_flags | Qt::ItemIsDropEnabled;
   }
 }
 
@@ -318,118 +426,98 @@ int FeedsModel::rowCount(const QModelIndex &parent) const {
   }
 }
 
-bool FeedsModel::removeItem(const QModelIndex &index) {
+void FeedsModel::reloadCountsOfWholeModel() {
+  m_rootItem->updateCounts(true);
+  reloadWholeLayout();
+  notifyWithCounts();
+}
+
+void FeedsModel::removeItem(const QModelIndex &index) {
   if (index.isValid()) {
-    QModelIndex parent_index = index.parent();
     RootItem *deleting_item = itemForIndex(index);
+    QModelIndex parent_index = index.parent();
     RootItem *parent_item = deleting_item->parent();
 
-    // Try to persistently remove the item.
-    if (deleting_item->removeItself()) {
-      // Item was persistently removed.
-      // Remove it from the model.
-      beginRemoveRows(parent_index, index.row(), index.row());
-      parent_item->removeChild(deleting_item);
-      endRemoveRows();
+    beginRemoveRows(parent_index, index.row(), index.row());
+    parent_item->removeChild(deleting_item);
+    endRemoveRows();
 
-      delete deleting_item;
+    deleting_item->deleteLater();
+    notifyWithCounts();
+  }
+}
+
+void FeedsModel::removeItem(RootItem *deleting_item) {
+  if (deleting_item != NULL) {
+    QModelIndex index = indexForItem(deleting_item);
+    QModelIndex parent_index = index.parent();
+    RootItem *parent_item = deleting_item->parent();
+
+    beginRemoveRows(parent_index, index.row(), index.row());
+    parent_item->removeChild(deleting_item);
+    endRemoveRows();
+
+    deleting_item->deleteLater();
+    notifyWithCounts();
+  }
+}
+
+void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent) {
+  RootItem *original_parent = original_node->parent();
+
+  if (original_parent != new_parent) {
+    if (original_parent != NULL) {
+      int original_index_of_item = original_parent->childItems().indexOf(original_node);
+
+      if (original_index_of_item >= 0) {
+        // Remove the original item from the model...
+        beginRemoveRows(indexForItem(original_parent), original_index_of_item, original_index_of_item);
+        original_parent->removeChild(original_node);
+        endRemoveRows();
+      }
+    }
+
+    int new_index_of_item = new_parent->childCount();
+
+    // ... and insert it under the new parent.
+    beginInsertRows(indexForItem(new_parent), new_index_of_item, new_index_of_item);
+    new_parent->appendChild(original_node);
+    endInsertRows();
+  }
+}
+
+QList<ServiceRoot*> FeedsModel::serviceRoots() {
+  QList<ServiceRoot*> roots;
+
+  foreach (RootItem *root, m_rootItem->childItems()) {
+    if (root->kind() == RootItemKind::ServiceRoot) {
+      roots.append(root->toServiceRoot());
+    }
+  }
+
+  return roots;
+}
+
+bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) {
+  foreach (RootItem *root, serviceRoots()) {
+    if (root->toServiceRoot()->code() == point->code()) {
       return true;
     }
   }
 
-  // Item was not removed successfully.
   return false;
 }
 
-bool FeedsModel::addCategory(Category *category, RootItem *parent) {
-  // Get index of parent item (parent standard category).
-  QModelIndex parent_index = indexForItem(parent);
-  bool result = category->addItself(parent);
+StandardServiceRoot *FeedsModel::standardServiceRoot() {
+  foreach (RootItem *root, serviceRoots()) {
+    StandardServiceRoot *std_service_root;
 
-  if (result) {
-    // Category was added to the persistent storage,
-    // so add it to the model.
-    beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-    parent->appendChild(category);
-    endInsertRows();
-  }
-  else {
-    // We cannot delete (*this) in its method, thus delete it here.
-    delete category;
+    if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != NULL) {
+      return std_service_root;
+    }
   }
 
-  return result;
-}
-
-bool FeedsModel::editCategory(Category *original_category, Category *new_category_data) {
-  RootItem *original_parent = original_category->parent();
-  RootItem *new_parent = new_category_data->parent();
-  bool result = original_category->editItself(new_category_data);
-
-  if (result && original_parent != new_parent) {
-    // User edited category and set it new parent item,
-    // se we need to move the item in the model too.
-    int original_index_of_category = original_parent->childItems().indexOf(original_category);
-    int new_index_of_category = new_parent->childCount();
-
-    // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent), original_index_of_category, original_index_of_category);
-    original_parent->removeChild(original_category);
-    endRemoveRows();
-
-    // ...and insert it under the new parent.
-    beginInsertRows(indexForItem(new_parent), new_index_of_category, new_index_of_category);
-    new_parent->appendChild(original_category);
-    endInsertRows();
-  }
-
-  // Cleanup temporary new category data.
-  delete new_category_data;
-  return result;
-}
-
-bool FeedsModel::addFeed(Feed *feed, RootItem *parent) {
-  // Get index of parent item (parent standard category or root item).
-  QModelIndex parent_index = indexForItem(parent);
-  bool result = feed->addItself(parent);
-
-  if (result) {
-    // Feed was added to the persistent storage so add it to the model.
-    beginInsertRows(parent_index, parent->childCount(), parent->childCount());
-    parent->appendChild(feed);
-    endInsertRows();
-  }
-  else {
-    delete feed;
-  }
-
-  return result;
-}
-
-bool FeedsModel::editFeed(Feed *original_feed, Feed *new_feed_data) {
-  RootItem *original_parent = original_feed->parent();
-  RootItem *new_parent = new_feed_data->parent();
-  bool result = original_feed->editItself(new_feed_data);
-
-  if (result && original_parent != new_parent) {
-    // User edited category and set it new parent item,
-    // se we need to move the item in the model too.
-    int original_index_of_feed = original_parent->childItems().indexOf(original_feed);
-    int new_index_of_feed = new_parent->childCount();
-
-    // Remove the original item from the model...
-    beginRemoveRows(indexForItem(original_parent), original_index_of_feed, original_index_of_feed);
-    original_parent->removeChild(original_feed);
-    endRemoveRows();
-
-    // ... and insert it under the new parent.
-    beginInsertRows(indexForItem(new_parent), new_index_of_feed, new_index_of_feed);
-    new_parent->appendChild(original_feed);
-    endInsertRows();
-  }
-
-  delete new_feed_data;
-  return result;
+  return NULL;
 }
 
 QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
@@ -471,37 +559,8 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   return feeds_for_update;
 }
 
-QList<Message> FeedsModel::messagesForFeeds(const QList<Feed*> &feeds) {
-  QList<Message> messages;
-
-  QSqlDatabase database = qApp->database()->connection(objectName(),
-                                                       DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(database);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT title, url, author, date_created, contents "
-                         "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed;");
-
-  foreach (Feed *feed, feeds) {
-    query_read_msg.bindValue(QSL(":feed"), feed->id());
-
-    if (query_read_msg.exec()) {
-      while (query_read_msg.next()) {
-        Message message;
-
-        message.m_feedId = feed->id();
-        message.m_title = query_read_msg.value(0).toString();
-        message.m_url = query_read_msg.value(1).toString();
-        message.m_author = query_read_msg.value(2).toString();
-        message.m_created = TextFactory::parseDateTime(query_read_msg.value(3).value<qint64>());
-        message.m_contents = query_read_msg.value(4).toString();
-
-        messages.append(message);
-      }
-    }
-  }
-
-  return messages;
+QList<Message> FeedsModel::messagesForItem(RootItem *item) {
+  return item->undeletedMessages();
 }
 
 int FeedsModel::columnCount(const QModelIndex &parent) const {
@@ -522,7 +581,7 @@ RootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
 Category *FeedsModel::categoryForIndex(const QModelIndex &index) const {
   RootItem *item = itemForIndex(index);
 
-  if (item->kind() == RootItem::Cattegory) {
+  if (item->kind() == RootItemKind::Category) {
     return item->toCategory();
   }
   else {
@@ -530,26 +589,15 @@ Category *FeedsModel::categoryForIndex(const QModelIndex &index) const {
   }
 }
 
-RecycleBin *FeedsModel::recycleBinForIndex(const QModelIndex &index) const {
-  RootItem *item = itemForIndex(index);
-
-  if (item->kind() == RootItem::Bin) {
-    return item->toRecycleBin();
-  }
-  else {
-    return NULL;
-  }
-}
-
 QModelIndex FeedsModel::indexForItem(RootItem *item) const {
-  if (item == NULL || item->kind() == RootItem::Root) {
+  if (item == NULL || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
 
   QStack<RootItem*> chain;
 
-  while (item->kind() != RootItem::Root) {
+  while (item->kind() != RootItemKind::Root) {
     chain.push(item);
     item = item->parent();
   }
@@ -576,84 +624,6 @@ bool FeedsModel::hasAnyFeedNewMessages() {
   return false;
 }
 
-bool FeedsModel::mergeModel(FeedsImportExportModel *model, QString &output_message) {
-  if (model == NULL || model->rootItem() == NULL) {
-    output_message = tr("Invalid tree data.");
-    qDebug("Root item for merging two models is null.");
-    return false;
-  }
-
-  QStack<RootItem*> original_parents; original_parents.push(m_rootItem);
-  QStack<RootItem*> new_parents; new_parents.push(model->rootItem());
-  bool some_feed_category_error = false;
-
-  // We are definitely about to add some new items into the model.
-  //emit layoutAboutToBeChanged();
-
-  // Iterate all new items we would like to merge into current model.
-  while (!new_parents.isEmpty()) {
-    RootItem *target_parent = original_parents.pop();
-    RootItem *source_parent = new_parents.pop();
-
-    foreach (RootItem *source_item, source_parent->childItems()) {
-      if (!model->isItemChecked(source_item)) {
-        // We can skip this item, because it is not checked and should not be imported.
-        // NOTE: All descendants are thus skipped too.
-        continue;
-      }
-
-      if (source_item->kind() == RootItem::Cattegory) {
-        Category *source_category = source_item->toCategory();
-        Category *new_category = new Category(*source_category);
-
-        // Add category to model.
-        new_category->clearChildren();
-
-        if (addCategory(new_category, target_parent)) {
-          // Process all children of this category.
-          original_parents.push(new_category);
-          new_parents.push(source_category);
-        }
-        else {
-          // Add category failed, but this can mean that the same category (with same title)
-          // already exists. If such a category exists in current parent, then find it and
-          // add descendants to it.
-          RootItem *existing_category = target_parent->child(RootItem::Cattegory, new_category->title());
-
-          if (existing_category != NULL) {
-            original_parents.push(existing_category);
-            new_parents.push(source_category);
-          }
-          else {
-            some_feed_category_error = true;
-          }
-        }
-      }
-      else if (source_item->kind() == RootItem::Feeed) {
-        Feed *source_feed = source_item->toFeed();
-        Feed *new_feed = new Feed(*source_feed);
-
-        // Append this feed and end this iteration.
-        if (!addFeed(new_feed, target_parent)) {
-          some_feed_category_error = true;
-        }
-      }
-    }
-  }
-
-  // Changes are done now. Finalize the new model.
-  //emit layoutChanged();
-
-  if (some_feed_category_error) {
-    output_message = tr("Import successfull, but some feeds/categories were not imported due to error.");
-  }
-  else {
-    output_message = tr("Import was completely successfull.");
-  }
-
-  return !some_feed_category_error;
-}
-
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
@@ -662,6 +632,33 @@ void FeedsModel::reloadChangedLayout(QModelIndexList list) {
     // Underlying data are changed.
     emit dataChanged(index(indx.row(), 0, indx_parent), index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
   }
+}
+
+void FeedsModel::reloadChangedItem(RootItem *item) {
+  QModelIndex index_item = indexForItem(item);
+  reloadChangedLayout(QModelIndexList() << index_item);
+}
+
+void FeedsModel::notifyWithCounts() {
+  if (SystemTrayIcon::isSystemTrayActivated()) {
+    qApp->trayIcon()->setNumber(countOfUnreadMessages(), hasAnyFeedNewMessages());
+  }
+}
+
+void FeedsModel::onItemDataChanged(QList<RootItem*> items) {
+  if (items.size() > RELOAD_MODEL_BORDER_NUM) {
+    qDebug("There is request to reload feed model for more than %d items, reloading model fully.", RELOAD_MODEL_BORDER_NUM);
+    reloadWholeLayout();
+  }
+  else {
+    qDebug("There is request to reload feed model, reloading the %d items individually.", items.size());
+
+    foreach (RootItem *item, items) {
+      reloadChangedItem(item);
+    }
+  }
+
+  notifyWithCounts();
 }
 
 QStringList FeedsModel::textualFeedIds(const QList<Feed*> &feeds) {
@@ -680,81 +677,78 @@ void FeedsModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
-void FeedsModel::loadFromDatabase() {
-  // Delete all childs of the root node and clear them from the memory.
-  qDeleteAll(m_rootItem->childItems());
-  m_rootItem->clearChildren();
+bool FeedsModel::addServiceAccount(ServiceRoot *root) {
+  int new_row_index = m_rootItem->childCount();
 
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-  CategoryAssignment categories;
-  FeedAssignment feeds;
+  beginInsertRows(indexForItem(m_rootItem), new_row_index, new_row_index);
+  m_rootItem->appendChild(root);
+  endInsertRows();
 
-  // Obtain data for categories from the database.
-  QSqlQuery query_categories(database);
-  query_categories.setForwardOnly(true);
+  // Connect.
+  connect(root, SIGNAL(itemRemovalRequested(RootItem*)), this, SLOT(removeItem(RootItem*)));
+  connect(root, SIGNAL(itemReassignmentRequested(RootItem*,RootItem*)), this, SLOT(reassignNodeToNewParent(RootItem*,RootItem*)));
+  connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
+  connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
+  connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
+  connect(root, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)));
 
-  if (!query_categories.exec(QSL("SELECT * FROM Categories;")) || query_categories.lastError().isValid()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.",
-           qPrintable(query_categories.lastError().text()));
-  }
+  root->start();
+  return true;
+}
 
-  while (query_categories.next()) {
-    CategoryAssignmentItem pair;
-    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
-    pair.second = new Category(query_categories.record());
+bool FeedsModel::restoreAllBins() {
+  bool result = true;
 
-    categories << pair;
-  }
+  foreach (ServiceRoot *root, serviceRoots()) {
+    RecycleBin *bin_of_root = root->recycleBin();
 
-  // All categories are now loaded.
-  QSqlQuery query_feeds(database);
-  query_feeds.setForwardOnly(true);
-
-  if (!query_feeds.exec(QSL("SELECT * FROM Feeds;")) || query_feeds.lastError().isValid()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
-           qPrintable(query_feeds.lastError().text()));
-  }
-
-  while (query_feeds.next()) {
-    // Process this feed.
-    Feed::Type type = static_cast<Feed::Type>(query_feeds.value(FDS_DB_TYPE_INDEX).toInt());
-
-    switch (type) {
-      case Feed::Atom10:
-      case Feed::Rdf:
-      case Feed::Rss0X:
-      case Feed::Rss2X: {
-        FeedAssignmentItem pair;
-        pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
-        pair.second = new Feed(query_feeds.record());
-        pair.second->setType(type);
-
-        feeds << pair;
-        break;
-      }
-
-      default:
-        break;
+    if (bin_of_root != NULL) {
+      result &= bin_of_root->restore();
     }
   }
 
-  // All data are now obtained, lets create the hierarchy.
-  assembleCategories(categories);
-  assembleFeeds(feeds);
+  return result;
+}
 
-  // As the last item, add recycle bin, which is needed.
-  m_rootItem->appendChild(m_recycleBin);
+bool FeedsModel::emptyAllBins() {
+  bool result = true;
+
+  foreach (ServiceRoot *root, serviceRoots()) {
+    RecycleBin *bin_of_root = root->recycleBin();
+
+    if (bin_of_root != NULL) {
+      result &= bin_of_root->empty();
+    }
+  }
+
+  return result;
+}
+
+void FeedsModel::loadActivatedServiceAccounts() {
+  // Iterate all globally available feed "service plugins".
+  foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
+    // Load all stored root nodes from the entry point and add those to the model.
+    QList<ServiceRoot*> roots = entry_point->initializeSubtree();
+
+    foreach (ServiceRoot *root, roots) {
+      addServiceAccount(root);
+    }
+  }
+
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
+    qDebug("Requesting update for all feeds on application startup.");
+    QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
+  }
 }
 
 QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
-  RootItem *item = itemForIndex(index);
-  return feedsForItem(item);
+  return itemForIndex(index)->getSubTreeFeeds();
 }
 
 Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
   RootItem *item = itemForIndex(index);
 
-  if (item->kind() == RootItem::Feeed) {
+  if (item->kind() == RootItemKind::Feed) {
     return item->toFeed();
   }
   else {
@@ -762,196 +756,18 @@ Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
   }
 }
 
-QList<Feed*> FeedsModel::feedsForIndexes(const QModelIndexList &indexes) {
-  QList<Feed*> feeds;
-
-  // Get selected feeds for each index.
-  foreach (const QModelIndex &index, indexes) {
-    feeds.append(feedsForIndex(index));
-  }
-
-  // Now we obtained all feeds from corresponding indexes.
-  if (indexes.size() != feeds.size()) {
-    // Selection contains duplicate feeds (for
-    // example situation where feed and its parent category are both
-    // selected). So, remove duplicates from the list.
-    qSort(feeds.begin(), feeds.end(), RootItem::lessThan);
-    feeds.erase(std::unique(feeds.begin(), feeds.end(), RootItem::isEqual), feeds.end());
-  }
-
-  return feeds;
+bool FeedsModel::markItemRead(RootItem *item, RootItem::ReadStatus read) {
+  return item->markAsReadUnread(read);
 }
 
-bool FeedsModel::markFeedsRead(const QList<Feed*> &feeds, int read) {
-  QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds read change.");
-    return false;
-  }
-
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-
-  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
-    qWarning("Query preparation failed for feeds read change.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  query_read_msg.bindValue(QSL(":read"), read);
-
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for feeds read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
-}
-
-bool FeedsModel::markFeedsDeleted(const QList<Feed*> &feeds, int deleted, bool read_only) {
-  QSqlDatabase db_handle = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds clearing.");
-    return false;
-  }
-
-  QSqlQuery query_delete_msg(db_handle);
-  query_delete_msg.setForwardOnly(true);
-
-  if (read_only) {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_read = 1;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-
-      db_handle.rollback();
-      return false;
-    }
-  }
-  else {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0;").arg(textualFeedIds(feeds).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-
-      db_handle.rollback();
-      return false;
-    }
-  }
-
-  query_delete_msg.bindValue(QSL(":deleted"), deleted);
-
-  if (!query_delete_msg.exec()) {
-    qDebug("Query execution for feeds clearing failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
-    return true;
-  }
-  else {
-    return db_handle.rollback();
-  }
-}
-
-QHash<int, Category*> FeedsModel::allCategories() {
-  return categoriesForItem(m_rootItem);
-}
-
-QHash<int, Category*> FeedsModel::categoriesForItem(RootItem *root) {
-  QHash<int, Category*> categories;
-  QList<RootItem*> parents;
-
-  parents.append(root->childItems());
-
-  while (!parents.isEmpty()) {
-    RootItem *item = parents.takeFirst();
-
-    if (item->kind() == RootItem::Cattegory) {
-      // This item is category, add it to the output list and
-      // scan its children.
-      int category_id = item->id();
-      Category *category = item->toCategory();
-
-      if (!categories.contains(category_id)) {
-        categories.insert(category_id, category);
-      }
-
-      parents.append(category->childItems());
-    }
-  }
-
-  return categories;
+bool FeedsModel::markItemCleared(RootItem *item, bool clean_read_only) {
+  return item->cleanMessages(clean_read_only);
 }
 
 QList<Feed*> FeedsModel::allFeeds() {
-  return feedsForItem(m_rootItem);
+  return m_rootItem->getSubTreeFeeds();
 }
 
-QList<Feed*> FeedsModel::feedsForItem(RootItem *root) {
-  QList<RootItem*> children = root->getRecursiveChildren();
-  QList<Feed*> feeds;
-
-  foreach (RootItem *child, children) {
-    if (child->kind() == RootItem::Feeed) {
-      feeds.append(child->toFeed());
-    }
-  }
-
-  return feeds;
-}
-
-void FeedsModel::assembleFeeds(FeedAssignment feeds) {
-  QHash<int, Category*> categories = allCategories();
-
-  foreach (const FeedAssignmentItem &feed, feeds) {
-    if (feed.first == NO_PARENT_CATEGORY) {
-      // This is top-level feed, add it to the root item.
-      m_rootItem->appendChild(feed.second);
-    }
-    else if (categories.contains(feed.first)) {
-      // This feed belongs to this category.
-      categories.value(feed.first)->appendChild(feed.second);
-    }
-    else {
-      qWarning("Feed '%s' is loose, skipping it.", qPrintable(feed.second->title()));
-    }
-  }
-}
-
-RecycleBin *FeedsModel::recycleBin() const {
-  return m_recycleBin;
-}
-
-void FeedsModel::assembleCategories(CategoryAssignment categories) {
-  QHash<int, RootItem*> assignments;
-  assignments.insert(NO_PARENT_CATEGORY, m_rootItem);
-
-  // Add top-level categories.
-  while (!categories.isEmpty()) {
-    for (int i = 0; i < categories.size(); i++) {
-      if (assignments.contains(categories.at(i).first)) {
-        // Parent category of this category is already added.
-        assignments.value(categories.at(i).first)->appendChild(categories.at(i).second);
-
-        // Now, added category can be parent for another categories, add it.
-        assignments.insert(categories.at(i).second->id(),
-                           categories.at(i).second);
-
-        // Remove the category from the list, because it was
-        // added to the final collection.
-        categories.removeAt(i);
-        i--;
-      }
-    }
-  }
+QList<Category*> FeedsModel::allCategories() {
+  return m_rootItem->getSubTreeCategories();
 }

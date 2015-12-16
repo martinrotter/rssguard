@@ -20,9 +20,11 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "core/feedsmodel.h"
-#include "core/category.h"
-#include "core/feed.h"
-#include "core/rootitem.h"
+#include "services/abstract/rootitem.h"
+#include "services/standard/standardcategory.h"
+#include "services/standard/standardfeed.h"
+
+#include <QTimer>
 
 
 FeedsProxyModel::FeedsProxyModel(QObject *parent)
@@ -37,6 +39,8 @@ FeedsProxyModel::FeedsProxyModel(QObject *parent)
   setFilterRole(Qt::EditRole);
   setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
+
+  connect(m_sourceModel, SIGNAL(readFeedsFilterInvalidationRequested()), this, SLOT(invalidateReadFeedsFilter()));
 }
 
 FeedsProxyModel::~FeedsProxyModel() {
@@ -45,18 +49,18 @@ FeedsProxyModel::~FeedsProxyModel() {
 
 QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  uint matchType = flags & 0x0F;
+  uint match_type = flags & 0x0F;
   Qt::CaseSensitivity cs = Qt::CaseInsensitive;
   bool recurse = flags & Qt::MatchRecursive;
   bool wrap = flags & Qt::MatchWrap;
-  bool allHits = (hits == -1);
+  bool all_hits = (hits == -1);
   QString entered_text;
   QModelIndex p = parent(start);
   int from = start.row();
   int to = rowCount(p);
 
   for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
-    for (int r = from; (r < to) && (allHits || result.count() < hits); ++r) {
+    for (int r = from; (r < to) && (all_hits || result.count() < hits); ++r) {
       QModelIndex idx = index(r, start.column(), p);
 
       if (!idx.isValid()) {
@@ -64,10 +68,10 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
       }
 
       QModelIndex mapped_idx = mapToSource(idx);
-      QVariant item_value = m_sourceModel->data(m_sourceModel->index(mapped_idx.row(), FDS_MODEL_TITLE_INDEX, mapped_idx.parent()), role);
+      QVariant item_value = m_sourceModel->itemForIndex(mapped_idx)->title();
 
       // QVariant based matching.
-      if (matchType == Qt::MatchExactly) {
+      if (match_type == Qt::MatchExactly) {
         if (value == item_value) {
           result.append(idx);
         }
@@ -80,7 +84,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
 
         QString item_text = item_value.toString();
 
-        switch (matchType) {
+        switch (match_type) {
           case Qt::MatchRegExp:
             if (QRegExp(entered_text, cs).exactMatch(item_text)) {
               result.append(idx);
@@ -121,7 +125,7 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
       }
 
       if (recurse && hasChildren(idx)) {
-        result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (allHits ? -1 : hits - result.count()), flags);
+        result += match(index(0, idx.column(), idx), role, (entered_text.isEmpty() ? value : entered_text), (all_hits ? -1 : hits - result.count()), flags);
       }
     }
 
@@ -155,15 +159,15 @@ bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right
         return QString::localeAwareCompare(left_item->title(), right_item->title()) < 0;
       }
     }
-    else if (left_item->kind() == RootItem::Bin) {
+    else if (left_item->kind() == RootItemKind::Bin) {
       // Left item is recycle bin. Make sure it is "biggest" item if we have selected ascending order.
       return sortOrder() == Qt::DescendingOrder;
     }
-    else if (right_item->kind() == RootItem::Bin) {
+    else if (right_item->kind() == RootItemKind::Bin) {
       // Right item is recycle bin. Make sure it is "smallest" item if we have selected descending order.
       return sortOrder() == Qt::AscendingOrder;
     }
-    else if (left_item->kind() == RootItem::Feeed) {
+    else if (left_item->kind() == RootItemKind::Feed) {
       // Left item is feed, right item is category.
       return false;
     }
@@ -193,7 +197,7 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
 
   RootItem *item = m_sourceModel->itemForIndex(idx);
 
-  if (item->kind() == RootItem::Bin) {
+  if (item->kind() == RootItemKind::Bin || item->kind() == RootItemKind::ServiceRoot) {
     // Recycle bin is always displayed.
     return true;
   }
@@ -202,7 +206,9 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
     return true;
   }
   else {
-    return item->countOfUnreadMessages() > 0;
+    // NOTE: If item has < 0 of unread message it may mean, that the count
+    // of unread messages is not (yet) known, display that item too.
+    return item->countOfUnreadMessages() != 0;
   }
 }
 
@@ -216,6 +222,14 @@ void FeedsProxyModel::setSelectedItem(RootItem *selected_item) {
 
 bool FeedsProxyModel::showUnreadOnly() const {
   return m_showUnreadOnly;
+}
+
+void FeedsProxyModel::invalidateReadFeedsFilter(bool set_new_value, bool show_unread_only) {
+  if (set_new_value) {
+    setShowUnreadOnly(show_unread_only);
+  }
+
+  QTimer::singleShot(0, this, SLOT(invalidateFilter()));
 }
 
 void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {

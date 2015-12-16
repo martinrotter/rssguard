@@ -92,7 +92,7 @@ QByteArray IOFactory::readTextFile(const QString &file_path) {
   }
 }
 
-void IOFactory::writeTextFile(const QString &file_path, const QByteArray &data) {
+void IOFactory::writeTextFile(const QString &file_path, const QByteArray &data, const QString &encoding) {
   QFile input_file(file_path);
   QTextStream stream(&input_file);
 

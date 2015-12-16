@@ -203,7 +203,9 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
     copy_contents.exec(QString("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
 
     // Copy all stuff.
-    QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") << QSL("Messages");
+    // WARNING: All tables belong here.
+    QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
+                                  QSL("Accounts") << QSL("TtRssAccounts") << QSL("Messages");
 
     foreach (const QString &table, tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
@@ -290,22 +292,25 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
       }
 
       database.commit();
+      query_db.finish();
       qDebug("File-based SQLite database backend should be ready now.");
     }
     else {
       query_db.next();
-
       QString installed_db_schema = query_db.value(0).toString();
+      query_db.finish();
 
-      if (!updateDatabaseSchema(database, installed_db_schema)) {
-        qFatal("Database schema was not updated from '%s' to '%s' successully.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
-      }
-      else {
-        qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
+      if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
+        if (sqliteUpdateDatabaseSchema(database, installed_db_schema)) {
+          qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+        }
+        else {
+          qFatal("Database schema was not updated from '%s' to '%s' successully.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+        }
       }
 
       qDebug("File-based SQLite database connection '%s' to file '%s' seems to be established.",
@@ -313,8 +318,6 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
              qPrintable(QDir::toNativeSeparators(database.databaseName())));
       qDebug("File-based SQLite database has version '%s'.", qPrintable(installed_db_schema));
     }
-
-    query_db.finish();
   }
 
   // Everything is initialized now.
@@ -327,23 +330,17 @@ QString DatabaseFactory::sqliteDatabaseFilePath() const {
   return m_sqliteDatabaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
 }
 
-bool DatabaseFactory::updateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
-  switch (m_activeDatabaseDriver) {
-    case SQLITE:
-    case SQLITE_MEMORY:
-      return sqliteUpdateDatabaseSchema(database, source_db_schema_version);
-
-    case MYSQL:
-      return mysqlUpdateDatabaseSchema(database, source_db_schema_version);
-
-    default:
-      return false;
-  }
-}
-
 bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
   int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+
+  // Now, it would be good to create backup of SQLite DB file.
+  if (IOFactory::copyFile(sqliteDatabaseFilePath(), sqliteDatabaseFilePath() + ".bak")) {
+    qDebug("Creating backup of SQLite DB file.");
+  }
+  else {
+    qFatal("Creation of backup SQLite DB file failed.");
+  }
 
   while (working_version != current_version) {
     QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
@@ -469,8 +466,9 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
   copy_contents.exec(QString(QSL("ATTACH DATABASE '%1' AS 'storage';")).arg(file_database.databaseName()));
 
   // Copy all stuff.
-  QStringList tables; tables << QSL("Categories") << QSL("Feeds") << QSL("FeedsData") <<
-                                QSL("Messages");
+  // WARNING: All tables belong here.
+  QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
+                                QSL("Accounts") << QSL("TtRssAccounts") << QSL("Messages");
 
   foreach (const QString &table, tables) {
     copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));
@@ -609,15 +607,18 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
 
       QString installed_db_schema = query_db.value(0).toString();
 
-      if (!mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
-        qFatal("Database schema was not updated from '%s' to '%s' successully.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
-      }
-      else {
-        qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
-               qPrintable(installed_db_schema),
-               APP_DB_SCHEMA_VERSION);
+      if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
+        if (mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
+          qDebug("Database schema was updated from '%s' to '%s' successully or it is already up to date.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+
+        }
+        else {
+          qFatal("Database schema was not updated from '%s' to '%s' successully.",
+                 qPrintable(installed_db_schema),
+                 APP_DB_SCHEMA_VERSION);
+        }
       }
     }
 

@@ -82,7 +82,7 @@ DKEY GUI::ToolbarStyle                            = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 
 DKEY GUI::FeedsToolbarActions                     = "feeds_toolbar";
-DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllFeeds,m_actionMarkAllFeedsRead";
+DVALUE(char*) GUI::FeedsToolbarActionsDef         = "m_actionUpdateAllItems,m_actionMarkAllItemsRead";
 
 DKEY GUI::MainWindowInitialSize        = "window_size";
 DKEY GUI::MainWindowInitialPosition    = "window_position";
@@ -105,11 +105,17 @@ DVALUE(bool) GUI::ToolbarsVisibleDef      = true;
 DKEY GUI::ListHeadersVisible              = "enable_list_headers";
 DVALUE(bool) GUI::ListHeadersVisibleDef   = true;
 
+DKEY GUI::StatusBarVisible                = "enable_status_bar";
+DVALUE(bool) GUI::StatusBarVisibleDef     = true;
+
 DKEY GUI::HideMainWindowWhenMinimized             = "hide_when_minimized";
 DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef  = false;
 
 DKEY GUI::UseTrayIcon            = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
+
+DKEY GUI::EnableNotifications                   = "enable_notifications";
+DVALUE(bool) GUI::EnableNotificationsDef        = true;
 
 DKEY GUI::UseFancyNotifications                         = "use_fancy_notifications";
 DVALUE(bool) GUI::UseFancyNotificationsDef              = true;

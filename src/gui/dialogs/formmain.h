@@ -21,7 +21,6 @@
 #include "ui_formmain.h"
 
 #include <QMainWindow>
-#include <QUrl>
 
 
 class StatusBar;
@@ -64,19 +63,6 @@ class FormMain : public QMainWindow {
     void loadSize();
     void saveSize();
 
-  protected:
-    // Creates all needed menus and sets them up.
-    void prepareMenus();
-
-    // Creates needed connections for this window.
-    void createConnections();
-
-    // Event handler reimplementations.
-    void changeEvent(QEvent *event);
-
-    // Sets up proper icons for this widget.
-    void setupIcons();
-
   public slots:
     // Displays window on top or switches its visibility.
     void display();
@@ -87,27 +73,39 @@ class FormMain : public QMainWindow {
     // Turns on/off fullscreen mode
     void switchFullscreenMode();
 
-    // Switches visibility of main menu.
-    void switchMainMenu();
+  private slots:
+    void updateAddItemMenu();
+    void updateRecycleBinMenu();
+    void updateAccountsMenu();
 
-  protected slots:
     // Loads web browser menu if user selects to change tabs.
     void loadWebBrowserMenu(int index);
 
     // Displays various dialogs.
-    void exportFeeds();
-    void importFeeds();
     void backupDatabaseSettings();
     void restoreDatabaseSettings();
     void showSettings();
     void showAbout();
     void showUpdates();
     void showWiki();
+    void showAddAccountDialog();
     void reportABugOnGitHub();
     void reportABugOnBitBucket();
     void donate();
 
   private:
+    // Event handler reimplementations.
+    void changeEvent(QEvent *event);
+
+    // Creates all needed menus and sets them up.
+    void prepareMenus();
+
+    // Creates needed connections for this window.
+    void createConnections();
+
+    // Sets up proper icons for this widget.
+    void setupIcons();
+
     Ui::FormMain *m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;

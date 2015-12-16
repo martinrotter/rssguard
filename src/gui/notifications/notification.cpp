@@ -66,8 +66,12 @@ Notification::~Notification() {
   qDebug("Destroying Notification instance.");
 }
 
-bool Notification::areNotificationsActivated() {
+bool Notification::areFancyNotificationsEnabled() {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseFancyNotifications)).toBool();
+}
+
+bool Notification::areNotificationsEnabled() {
+  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
 }
 
 void Notification::notify(const QString &text, const QString &title, const QIcon &icon,
@@ -98,7 +102,6 @@ void Notification::notify(const QString &text, const QString &title, const QIcon
     argument_list << hints;         // hints
     argument_list << (int)-1;       // timeout in ms
 
-    // TODO: obrazky https://dev.visucore.com/bitcoin/doxygen/notificator_8cpp_source.html
     QDBusMessage response = m_dBusInterface->callWithArgumentList(QDBus::AutoDetect, "Notify", argument_list);
 
     if (response.arguments().size() == 1) {

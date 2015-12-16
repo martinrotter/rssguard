@@ -71,7 +71,7 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
 
   int row_id = 0;
 
-  // TODO: Maybe separate actions into "categories". Each category will start with label.
+  // FIXME: Maybe separate actions into "categories". Each category will start with label.
   // I will assign each QAaction a property called "category" with some enum value.
   // Like:
   //  File, FeedsCategories, Messages, Tools, WebBrowser, Help

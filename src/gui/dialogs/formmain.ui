@@ -55,9 +55,6 @@
     <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="m_actionImportFeeds"/>
-    <addaction name="m_actionExportFeeds"/>
-    <addaction name="separator"/>
     <addaction name="m_actionRestoreDatabaseSettings"/>
     <addaction name="m_actionBackupDatabaseSettings"/>
     <addaction name="separator"/>
@@ -88,6 +85,7 @@
      <addaction name="m_actionSwitchMainMenu"/>
      <addaction name="m_actionSwitchToolBars"/>
      <addaction name="m_actionSwitchListHeaders"/>
+     <addaction name="m_actionSwitchStatusBar"/>
     </widget>
     <addaction name="m_menuShowHide"/>
     <addaction name="m_actionSwitchMainWindow"/>
@@ -128,36 +126,33 @@
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
-     <string>Fee&amp;ds &amp;&amp; categories</string>
+     <string>Feeds &amp;&amp; categories</string>
     </property>
     <widget class="QMenu" name="m_menuAddItem">
      <property name="title">
-      <string>Add &amp;new feed/category</string>
+      <string>Add &amp;new item</string>
      </property>
-     <addaction name="m_actionAddCategory"/>
-     <addaction name="m_actionAddFeed"/>
     </widget>
-    <addaction name="m_actionUpdateAllFeeds"/>
-    <addaction name="m_actionUpdateSelectedFeeds"/>
+    <addaction name="m_actionUpdateAllItems"/>
+    <addaction name="m_actionUpdateSelectedItems"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
-    <addaction name="m_actionEditSelectedFeedCategory"/>
-    <addaction name="m_actionDeleteSelectedFeedCategory"/>
-    <addaction name="m_actionFetchFeedMetadata"/>
+    <addaction name="m_actionEditSelectedItem"/>
+    <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionShowOnlyUnreadFeeds"/>
-    <addaction name="m_actionExpandCollapseFeedCategory"/>
+    <addaction name="m_actionShowOnlyUnreadItems"/>
+    <addaction name="m_actionExpandCollapseItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionSelectNextFeedCategory"/>
-    <addaction name="m_actionSelectPreviousFeedCategory"/>
+    <addaction name="m_actionSelectNextItem"/>
+    <addaction name="m_actionSelectPreviousItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionMarkAllFeedsRead"/>
-    <addaction name="m_actionClearAllFeeds"/>
+    <addaction name="m_actionMarkAllItemsRead"/>
+    <addaction name="m_actionClearAllItems"/>
     <addaction name="separator"/>
     <addaction name="m_actionViewSelectedItemsNewspaperMode"/>
-    <addaction name="m_actionMarkSelectedFeedsAsRead"/>
-    <addaction name="m_actionMarkSelectedFeedsAsUnread"/>
-    <addaction name="m_actionClearSelectedFeeds"/>
+    <addaction name="m_actionMarkSelectedItemsAsRead"/>
+    <addaction name="m_actionMarkSelectedItemsAsUnread"/>
+    <addaction name="m_actionClearSelectedItems"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -170,22 +165,32 @@
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextMessage"/>
     <addaction name="m_actionSelectPreviousMessage"/>
+    <addaction name="m_actionSelectNextUnreadMessage"/>
     <addaction name="separator"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
+    <addaction name="m_actionRestoreSelectedMessages"/>
    </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
-     <string>&amp;Recycle bin</string>
+     <string>&amp;Recycle bin(s)</string>
     </property>
-    <addaction name="m_actionEmptyRecycleBin"/>
-    <addaction name="m_actionRestoreRecycleBin"/>
-    <addaction name="m_actionRestoreSelectedMessagesFromRecycleBin"/>
+    <addaction name="m_actionRestoreAllRecycleBins"/>
+    <addaction name="m_actionEmptyAllRecycleBins"/>
+   </widget>
+   <widget class="QMenu" name="m_menuAccounts">
+    <property name="title">
+     <string>&amp;Accounts</string>
+    </property>
+    <addaction name="m_actionServiceAdd"/>
+    <addaction name="m_actionServiceEdit"/>
+    <addaction name="m_actionServiceDelete"/>
    </widget>
    <addaction name="m_menuFile"/>
    <addaction name="m_menuView"/>
+   <addaction name="m_menuAccounts"/>
    <addaction name="m_menuFeeds"/>
    <addaction name="m_menuMessages"/>
    <addaction name="m_menuRecycleBin"/>
@@ -225,6 +230,9 @@
    <property name="toolTip">
     <string>Displays extra info about this application.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
    </property>
@@ -261,6 +269,9 @@
    <property name="toolTip">
     <string>Close all tabs except current one.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionCloseCurrentTab">
    <property name="text">
@@ -269,109 +280,135 @@
    <property name="toolTip">
     <string>Close current web browser tab.</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
-  <action name="m_actionUpdateAllFeeds">
+  <action name="m_actionUpdateAllItems">
    <property name="text">
-    <string>Update &amp;all feeds</string>
+    <string>Update &amp;all items</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+U</string>
    </property>
   </action>
-  <action name="m_actionUpdateSelectedFeeds">
+  <action name="m_actionUpdateSelectedItems">
    <property name="text">
-    <string>Update &amp;selected feeds</string>
+    <string>Update &amp;selected items</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+U</string>
    </property>
   </action>
-  <action name="m_actionEditSelectedFeedCategory">
+  <action name="m_actionEditSelectedItem">
    <property name="text">
-    <string>&amp;Edit selected feed/category</string>
+    <string>&amp;Edit selected item</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionDeleteSelectedFeedCategory">
+  <action name="m_actionDeleteSelectedItem">
    <property name="text">
-    <string>&amp;Delete selected feed/category</string>
+    <string>&amp;Delete selected item</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsRead">
    <property name="text">
     <string>Mark &amp;selected messages as &amp;read</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
    <property name="text">
     <string>Mark &amp;selected messages as &amp;unread</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchImportanceOfSelectedMessages">
    <property name="text">
     <string>Switch &amp;importance of selected messages</string>
    </property>
-  </action>
-  <action name="m_actionMarkSelectedFeedsAsRead">
-   <property name="text">
-    <string>&amp;Mark selected feeds as read</string>
-   </property>
-   <property name="toolTip">
-    <string>Mark all messages (without message filters) from selected feeds as read.</string>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionMarkSelectedFeedsAsUnread">
+  <action name="m_actionMarkSelectedItemsAsRead">
    <property name="text">
-    <string>&amp;Mark selected feeds as unread</string>
+    <string>&amp;Mark selected items as read</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages (without message filters) from selected feeds as unread.</string>
+    <string>Mark all messages (without message filters) from selected items as read.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionMarkSelectedItemsAsUnread">
+   <property name="text">
+    <string>&amp;Mark selected items as unread</string>
+   </property>
+   <property name="toolTip">
+    <string>Mark all messages (without message filters) from selected items as unread.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
    <property name="text">
     <string>&amp;Delete selected messages</string>
    </property>
-  </action>
-  <action name="m_actionClearSelectedFeeds">
-   <property name="text">
-    <string>&amp;Clean selected feeds</string>
-   </property>
-   <property name="toolTip">
-    <string>Deletes all messages from selected feeds.</string>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionAddFeed">
+  <action name="m_actionClearSelectedItems">
    <property name="text">
-    <string>New &amp;feed</string>
+    <string>&amp;Clean selected items</string>
    </property>
    <property name="toolTip">
-    <string>Add new feed.</string>
+    <string>Deletes all messages from selected items.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesExternally">
    <property name="text">
     <string>Open selected source articles in &amp;external browser</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionOpenSelectedMessagesInternally">
    <property name="text">
     <string>Open selected messages in &amp;internal browser</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionOpenSelectedSourceArticlesInternally">
    <property name="text">
     <string>Open selected source articles in &amp;internal browser</string>
    </property>
-  </action>
-  <action name="m_actionAddCategory">
-   <property name="text">
-    <string>New &amp;category</string>
-   </property>
-   <property name="toolTip">
-    <string>Add new category.</string>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionNoActions">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>No actions available</string>
    </property>
@@ -382,20 +419,26 @@
     <string notr="true"/>
    </property>
   </action>
-  <action name="m_actionMarkAllFeedsRead">
+  <action name="m_actionMarkAllItemsRead">
    <property name="text">
-    <string>&amp;Mark all feeds as &amp;read</string>
+    <string>&amp;Mark all items as &amp;read</string>
    </property>
    <property name="toolTip">
-    <string>Marks all messages in all feeds read. This does not take message filters into account.</string>
+    <string>Marks all messages in all items read. This does not take message filters into account.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionViewSelectedItemsNewspaperMode">
    <property name="text">
-    <string>View selected feeds in &amp;newspaper mode</string>
+    <string>View selected items in &amp;newspaper mode</string>
    </property>
    <property name="toolTip">
-    <string>Displays all messages from selected feeds/categories in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
+    <string>Displays all messages from selected item in a new &quot;newspaper mode&quot; tab. Note that messages are not set as read automatically.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchMainWindow">
@@ -407,6 +450,9 @@
    </property>
    <property name="toolTip">
     <string>Hides main window if it is visible and shows it if it is hidden.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchFeedsList">
@@ -423,28 +469,28 @@
     <string notr="true">L</string>
    </property>
   </action>
-  <action name="m_actionClearAllFeeds">
+  <action name="m_actionClearAllItems">
    <property name="text">
-    <string>&amp;Clean all feeds</string>
+    <string>&amp;Clean all items</string>
    </property>
    <property name="toolTip">
-    <string>Deletes all messages from all feeds.</string>
+    <string>Deletes all messages from all items.</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
-  <action name="m_actionSelectNextFeedCategory">
+  <action name="m_actionSelectNextItem">
    <property name="text">
-    <string>Select &amp;next feed/category</string>
+    <string>Select &amp;next item</string>
    </property>
    <property name="shortcut">
     <string notr="true">S</string>
    </property>
   </action>
-  <action name="m_actionSelectPreviousFeedCategory">
+  <action name="m_actionSelectPreviousItem">
    <property name="text">
-    <string>Select &amp;previous feed/category</string>
+    <string>Select &amp;previous item</string>
    </property>
    <property name="shortcut">
     <string notr="true">A</string>
@@ -472,6 +518,9 @@
    </property>
    <property name="toolTip">
     <string>Check if new update for the application is available for download.</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchMainMenu">
@@ -563,22 +612,6 @@
     <string notr="true">H</string>
    </property>
   </action>
-  <action name="m_actionImportFeeds">
-   <property name="text">
-    <string>&amp;Import feeds</string>
-   </property>
-   <property name="toolTip">
-    <string>Imports feeds you want from selected file.</string>
-   </property>
-  </action>
-  <action name="m_actionExportFeeds">
-   <property name="text">
-    <string>&amp;Export feeds</string>
-   </property>
-   <property name="toolTip">
-    <string>Exports feeds you want to selected file.</string>
-   </property>
-  </action>
   <action name="m_actionReportBugBitBucket">
    <property name="text">
     <string>Report a bug (BitBucket)...</string>
@@ -591,40 +624,40 @@
    <property name="text">
     <string>&amp;Donate via PayPal</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionDisplayWiki">
    <property name="text">
     <string>Display &amp;wiki</string>
    </property>
-  </action>
-  <action name="m_actionEmptyRecycleBin">
-   <property name="text">
-    <string>&amp;Empty recycle bin</string>
-   </property>
-  </action>
-  <action name="m_actionRestoreRecycleBin">
-   <property name="text">
-    <string>&amp;Restore all messages</string>
-   </property>
-  </action>
-  <action name="m_actionRestoreSelectedMessagesFromRecycleBin">
-   <property name="text">
-    <string>Restore &amp;selected messages</string>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionRestart">
    <property name="text">
     <string>&amp;Restart</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionRestoreDatabaseSettings">
    <property name="text">
     <string>&amp;Restore database/settings</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionBackupDatabaseSettings">
    <property name="text">
     <string>&amp;Backup database/settings</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchMessageListOrientation">
@@ -639,10 +672,16 @@
    <property name="text">
     <string>&amp;Downloads</string>
    </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
   </action>
   <action name="m_actionSendMessageViaEmail">
    <property name="text">
     <string>Send selected message via e-mail</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionCleanupDatabase">
@@ -653,31 +692,93 @@
     <string notr="true">Ctrl+Shift+Del</string>
    </property>
   </action>
-  <action name="m_actionShowOnlyUnreadFeeds">
+  <action name="m_actionShowOnlyUnreadItems">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show only unread feeds/categories</string>
+    <string>Show only unread items</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+U</string>
+    <string notr="true">U</string>
    </property>
   </action>
-  <action name="m_actionFetchFeedMetadata">
+  <action name="m_actionExpandCollapseItem">
    <property name="text">
-    <string>&amp;Fetch feed metadata</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true">Ctrl+Shift+F</string>
-   </property>
-  </action>
-  <action name="m_actionExpandCollapseFeedCategory">
-   <property name="text">
-    <string>&amp;Expand/collapse selected feed/category</string>
+    <string>&amp;Expand/collapse selected item</string>
    </property>
    <property name="shortcut">
     <string notr="true">E</string>
+   </property>
+  </action>
+  <action name="m_actionServiceAdd">
+   <property name="text">
+    <string>&amp;Add new account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionRestoreSelectedMessages">
+   <property name="text">
+    <string>&amp;Restore selected messages</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionRestoreAllRecycleBins">
+   <property name="text">
+    <string>&amp;Restore all recycle bins</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionEmptyAllRecycleBins">
+   <property name="text">
+    <string>&amp;Empty all recycle bins</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionSelectNextUnreadMessage">
+   <property name="text">
+    <string>Select next &amp;unread message</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionSwitchStatusBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Status bar</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionServiceEdit">
+   <property name="text">
+    <string>&amp;Edit selected account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionServiceDelete">
+   <property name="text">
+    <string>&amp;Delete selected account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
  </widget>

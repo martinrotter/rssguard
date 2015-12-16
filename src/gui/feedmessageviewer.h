@@ -29,8 +29,7 @@ class MessagesView;
 class MessagesToolBar;
 class FeedsToolBar;
 class FeedsView;
-class DatabaseCleaner;
-class Feed;
+class StandardFeed;
 class QToolBar;
 class QSplitter;
 class QProgressBar;
@@ -65,8 +64,6 @@ class FeedMessageViewer : public TabContent {
       return m_toolBarFeeds;
     }
 
-    DatabaseCleaner *databaseCleaner();
-
     // Loads/saves sizes and states of ALL
     // underlying widgets, this contains primarily
     // splitters, toolbar and views.
@@ -79,17 +76,10 @@ class FeedMessageViewer : public TabContent {
     // stops any child widgets/workers.
     void quit();
 
-    inline bool areToolBarsEnabled() const {
-      return m_toolBarsEnabled;
-    }
-
-    inline bool areListHeadersEnabled() const {
-      return m_listHeadersEnabled;
-    }
+    bool areToolBarsEnabled() const;
+    bool areListHeadersEnabled() const;
 
   public slots:
-    void loadInitialFeeds();
-
     // Switches orientation horizontal/vertical.
     void switchMessageSplitterOrientation();
 
@@ -103,21 +93,15 @@ class FeedMessageViewer : public TabContent {
     // Reloads some changeable visual settings.
     void refreshVisualProperties();
 
-    void updateFeeds(QList<Feed*> feeds);
-
   private slots:
-    // Updates counts of messages for example in tray icon.
-    void updateTrayIconStatus(int unread_messages, int total_messages, bool any_unread_messages);
-
-    // Reacts on feed updates.
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(FeedDownloadResults results);
+    // Called when feed update finishes.
+    void onFeedsUpdateFinished();
 
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();
 
+    // Toggles displayed feeds.
     void toggleShowOnlyUnreadFeeds();
 
     void updateMessageButtonsAvailability();
@@ -133,10 +117,6 @@ class FeedMessageViewer : public TabContent {
     // Sets up connections.
     void createConnections();
 
-  signals:
-    // Emitted if user/application requested updating of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
-
   private:
     bool m_toolBarsEnabled;
     bool m_listHeadersEnabled;
@@ -151,11 +131,6 @@ class FeedMessageViewer : public TabContent {
     QWidget *m_feedsWidget;
     QWidget *m_messagesWidget;
     WebBrowser *m_messagesBrowser;
-
-    QThread *m_feedDownloaderThread;
-    QThread *m_dbCleanerThread;
-    FeedDownloader *m_feedDownloader;
-    DatabaseCleaner *m_dbCleaner;
 };
 
 #endif // FEEDMESSAGEVIEWER_H

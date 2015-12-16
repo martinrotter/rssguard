@@ -84,7 +84,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
                                      << /*: Skin list name column. */ tr("Name")
                                      << /*: Version column of skin list. */ tr("Version")
                                      << tr("Author")
-                                     << tr("Email"));
+                                     << tr("E-mail"));
 
 #if QT_VERSION >= 0x050000
   // Setup languages.
@@ -732,6 +732,7 @@ void FormSettings::loadInterface() {
   m_ui->m_cmbNotificationPosition->addItem(tr("Bottom-right corner"), Qt::BottomRightCorner);
   m_ui->m_cmbNotificationPosition->addItem(tr("Top-right corner"), Qt::TopRightCorner);
   m_ui->m_cmbNotificationPosition->setCurrentIndex(m_ui->m_cmbNotificationPosition->findData(static_cast<Qt::Corner>(settings->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt())));
+  m_ui->m_grpBaseNotifications->setChecked(settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
 
   // Load settings of icon theme.
   QString current_theme = qApp->icons()->currentIconTheme();
@@ -834,6 +835,7 @@ void FormSettings::saveInterface() {
 
   // Save notifications.
   settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_grpNotifications->isChecked());
+  settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_grpBaseNotifications->isChecked());
   settings->setValue(GROUP(GUI), GUI::FancyNotificationsPosition, static_cast<Qt::Corner>(m_ui->m_cmbNotificationPosition->itemData(m_ui->m_cmbNotificationPosition->currentIndex()).toInt()));
 
   // Save selected icon theme.

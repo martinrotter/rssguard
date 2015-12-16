@@ -65,8 +65,8 @@ project(rssguard)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "2.5.3")
-set(FILE_VERSION "2,5,3,0")
+set(APP_VERSION "3.0.0")
+set(FILE_VERSION "3,0,0,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -343,17 +343,18 @@ set(APP_SOURCES
   src/qtsingleapplication/qtsinglecoreapplication.cpp
   src/qtsingleapplication/qtsingleapplication.cpp
 
+  # QT-JSON sources.
+  src/qt-json/json.cpp
+
   # GUI sources.
   src/gui/dialogs/formmain.cpp
   src/gui/dialogs/formsettings.cpp
   src/gui/dialogs/formabout.cpp
-  src/gui/dialogs/formcategorydetails.cpp
-  src/gui/dialogs/formfeeddetails.cpp
   src/gui/dialogs/formupdate.cpp
-  src/gui/dialogs/formimportexport.cpp
   src/gui/dialogs/formdatabasecleanup.cpp
   src/gui/dialogs/formbackupdatabasesettings.cpp
   src/gui/dialogs/formrestoredatabasesettings.cpp
+  src/gui/dialogs/formaddaccount.cpp
   src/gui/notifications/notification.cpp
   src/gui/systemtrayicon.cpp
   src/gui/baselineedit.cpp
@@ -412,14 +413,37 @@ set(APP_SOURCES
   src/core/messagesproxymodel.cpp
   src/core/feedsmodel.cpp
   src/core/feedsproxymodel.cpp
-  src/core/category.cpp
-  src/core/rootitem.cpp
-  src/core/feed.cpp
   src/core/parsingfactory.cpp
   src/core/feeddownloader.cpp
-  src/core/feedsimportexportmodel.cpp
-  src/core/recyclebin.cpp
-  src/core/feedsselection.cpp
+  src/core/message.cpp
+
+  # ABSTRACT service sources.
+  src/services/abstract/rootitem.cpp
+  src/services/abstract/serviceentrypoint.cpp
+  src/services/abstract/feed.cpp
+  src/services/abstract/category.cpp
+  src/services/abstract/serviceroot.cpp
+  src/services/abstract/recyclebin.cpp
+
+  # STANDARD feed service sources.
+  src/services/standard/gui/formstandardcategorydetails.cpp
+  src/services/standard/gui/formstandardfeeddetails.cpp
+  src/services/standard/gui/formstandardimportexport.cpp
+  src/services/standard/standardfeedsimportexportmodel.cpp
+  src/services/standard/standardserviceentrypoint.cpp
+  src/services/standard/standardcategory.cpp
+  src/services/standard/standardfeed.cpp
+  src/services/standard/standardserviceroot.cpp
+  src/services/standard/standardrecyclebin.cpp
+
+  # TT-RSS feed service sources.
+  src/services/tt-rss/ttrssserviceentrypoint.cpp
+  src/services/tt-rss/ttrssserviceroot.cpp
+  src/services/tt-rss/ttrssfeed.cpp
+  src/services/tt-rss/ttrsscategory.cpp
+  src/services/tt-rss/ttrssrecyclebin.cpp
+  src/services/tt-rss/gui/formeditaccount.cpp
+  src/services/tt-rss/network/ttrssnetworkfactory.cpp
 
   # NETWORK-WEB sources.
   src/network-web/basenetworkaccessmanager.cpp
@@ -462,13 +486,11 @@ set(APP_HEADERS
   src/gui/dialogs/formmain.h
   src/gui/dialogs/formsettings.h
   src/gui/dialogs/formabout.h
-  src/gui/dialogs/formcategorydetails.h
-  src/gui/dialogs/formfeeddetails.h
-  src/gui/dialogs/formimportexport.h
   src/gui/dialogs/formbackupdatabasesettings.h
   src/gui/dialogs/formrestoredatabasesettings.h
   src/gui/dialogs/formdatabasecleanup.h
   src/gui/dialogs/formupdate.h
+  src/gui/dialogs/formaddaccount.h
   src/gui/notifications/notification.h
   src/gui/systemtrayicon.h
   src/gui/baselineedit.h
@@ -518,7 +540,30 @@ set(APP_HEADERS
   src/core/feedsmodel.h
   src/core/feedsproxymodel.h
   src/core/feeddownloader.h
-  src/core/feedsimportexportmodel.h
+
+  # ABSTRACT service headers.
+  src/services/abstract/rootitem.h
+  src/services/abstract/feed.h
+  src/services/abstract/category.h
+  src/services/abstract/serviceroot.h
+  src/services/abstract/recyclebin.h
+
+  # STANDARD service headers.
+  src/services/standard/standardfeedsimportexportmodel.h
+  src/services/standard/gui/formstandardcategorydetails.h
+  src/services/standard/gui/formstandardfeeddetails.h
+  src/services/standard/gui/formstandardimportexport.h
+  src/services/standard/standardcategory.h
+  src/services/standard/standardfeed.h
+  src/services/standard/standardserviceroot.h
+  src/services/standard/standardrecyclebin.h
+
+  # TT-RSS service headers.
+  src/services/tt-rss/ttrssserviceroot.h
+  src/services/tt-rss/ttrssrecyclebin.h;
+  src/services/tt-rss/ttrssfeed.h
+  src/services/tt-rss/ttrsscategory.h
+  src/services/tt-rss/gui/formeditaccount.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h
@@ -548,13 +593,21 @@ set(APP_FORMS
   src/gui/dialogs/formmain.ui
   src/gui/dialogs/formsettings.ui
   src/gui/dialogs/formabout.ui
-  src/gui/dialogs/formcategorydetails.ui
-  src/gui/dialogs/formfeeddetails.ui
-  src/gui/toolbareditor.ui
-  src/gui/dialogs/formimportexport.ui
   src/gui/dialogs/formbackupdatabasesettings.ui
   src/gui/dialogs/formrestoredatabasesettings.ui
   src/gui/dialogs/formdatabasecleanup.ui
+  src/gui/dialogs/formaddaccount.ui
+  src/gui/toolbareditor.ui
+
+  # STANDARD service forms.
+  src/services/standard/gui/formstandardcategorydetails.ui
+  src/services/standard/gui/formstandardfeeddetails.ui
+  src/services/standard/gui/formstandardimportexport.ui
+
+  # TT-RSS service forms.
+  src/services/tt-rss/gui/formeditaccount.ui
+
+  # NETWORK forms.
   src/network-web/downloadmanager.ui
   src/network-web/downloaditem.ui
 

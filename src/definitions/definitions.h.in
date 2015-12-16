@@ -38,6 +38,9 @@
 #define APP_USERAGENT       QString("@APP_NAME@/@APP_VERSION@ (@APP_URL@) on @CMAKE_SYSTEM@")
 #define APP_DONATE_URL      "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XMWPLPK893VH4"
 
+#define SERVICE_CODE_STD_RSS  "std-rss"
+#define SERVICE_CODE_TT_RSS   "tt-rss"
+
 #define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define ECNLOSURES_INNER_SEPARATOR            '&'
 #define URI_SCHEME_FEED                       "feed://"
@@ -50,6 +53,7 @@
 #define URL_REGEXP                            "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/~\\+#])?$"
 #define USER_AGENT_HTTP_HEADER                "User-Agent"
 #define TEXT_TITLE_LIMIT                      30
+#define RESELECT_MESSAGE_THRESSHOLD           500
 #define MAX_ZOOM_FACTOR                       10.0
 #define ICON_SIZE_SETTINGS                    16
 #define NO_PARENT_CATEGORY                    -1
@@ -68,7 +72,7 @@
 #define INTERNAL_URL_BLANK                    "about:blank"
 #define DEFAULT_AUTO_UPDATE_INTERVAL          15
 #define AUTO_UPDATE_INTERVAL                  60000
-#define STARTUP_UPDATE_DELAY                  15000
+#define STARTUP_UPDATE_DELAY                  30000
 #define TIMEZONE_OFFSET_LIMIT                 6
 #define CHANGE_EVENT_DELAY                    250
 #define FLAG_ICON_SUBFOLDER                   "flags"
@@ -82,10 +86,11 @@
 #define ACCEPT_HEADER_FOR_FEED_DOWNLOADER     "application/atom+xml,application/xml;q=0.9,text/xml;q=0.8,*/*;q=0.7"
 #define MIME_TYPE_ITEM_POINTER                "@APP_LOW_NAME@/itempointer"
 #define DOWNLOADER_ICON_SIZE                  48
-#define NOTIFICATION_ICON_SIZE                64
+#define NOTIFICATION_ICON_SIZE                32
 #define GOOGLE_SEARCH_URL                     "https://www.google.com/search?q=%1&ie=utf-8&oe=utf-8"
 #define GOOGLE_SUGGEST_URL                    "http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=%1"
 #define ENCRYPTION_FILE_NAME                  "key.private"
+#define RELOAD_MODEL_BORDER_NUM               10
 
 #define FEED_INITIAL_OPML_PATTERN             "feeds-%1.opml"
 
@@ -116,7 +121,7 @@
 #define APP_DB_SQLITE_FILE            "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION         "3"
+#define APP_DB_SCHEMA_VERSION         "4"
 #define APP_DB_UPDATE_FILE_PATTERN    "db_update_%1_%2_%3.sql"
 #define APP_DB_COMMENT_SPLIT          "-- !\n"
 #define APP_DB_WEB_PATH               "data/database/web"
@@ -179,6 +184,8 @@
 #define MSG_DB_CONTENTS_INDEX     9
 #define MSG_DB_PDELETED_INDEX     10
 #define MSG_DB_ENCLOSURES_INDEX   11
+#define MSG_DB_ACCOUNT_ID_INDEX   12
+#define MSG_DB_CUSTOM_ID_INDEX    13
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX           0
@@ -187,6 +194,8 @@
 #define CAT_DB_DESCRIPTION_INDEX  3
 #define CAT_DB_DCREATED_INDEX     4
 #define CAT_DB_ICON_INDEX         5
+#define CAT_DB_ACCOUNT_ID_INDEX   6
+#define CAT_DB_CUSTOM_ID_INDEX    7
 
 // Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
 #define FDS_DB_ID_INDEX               0
@@ -203,6 +212,8 @@
 #define FDS_DB_UPDATE_TYPE_INDEX      11
 #define FDS_DB_UPDATE_INTERVAL_INDEX  12
 #define FDS_DB_TYPE_INDEX             13
+#define FDS_DB_ACCOUNT_ID_INDEX       14
+#define FDS_DB_CUSTOM_ID_INDEX        15
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX           0

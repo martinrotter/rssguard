@@ -35,7 +35,8 @@ class Notification : public QWidget {
     explicit Notification();
     virtual ~Notification();
 
-    static bool areNotificationsActivated();
+    static bool areFancyNotificationsEnabled();
+    static bool areNotificationsEnabled();
 
   public slots:
     // Main methods for using the netofication.

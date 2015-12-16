@@ -44,20 +44,20 @@ SilentNetworkAccessManager *SilentNetworkAccessManager::instance() {
 }
 
 void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {
-  QObject *originating_object = reply->request().originatingObject();
+  QList<QString> keys = authenticator->options().keys();
 
-  if (originating_object->property("protected").toBool()) {
+  if (reply->property("protected").toBool()) {
     // This feed contains authentication information, it is good.
-    authenticator->setUser(originating_object->property("username").toString());
-    authenticator->setPassword(originating_object->property("password").toString());
+    authenticator->setUser(reply->property("username").toString());
+    authenticator->setPassword(reply->property("password").toString());
     reply->setProperty("authentication-given", true);
 
-    qDebug("Feed '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
+    qDebug("Item '%s' requested authentication and got it.", qPrintable(reply->url().toString()));
   }
   else {
     reply->setProperty("authentication-given", false);
 
     // Authentication is required but this feed does not contain it.
-    qWarning("Feed '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
+    qWarning("Item '%s' requested authentication but username/password is not available.", qPrintable(reply->url().toString()));
   }
 }

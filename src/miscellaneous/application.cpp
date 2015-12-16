@@ -28,6 +28,10 @@
 #include "exceptions/applicationexception.h"
 #include "adblock/adblockmanager.h"
 
+#include "services/abstract/serviceroot.h"
+#include "services/standard/standardserviceentrypoint.h"
+#include "services/tt-rss/ttrssserviceentrypoint.h"
+
 #include <QSessionManager>
 #include <QThread>
 #include <QProcess>
@@ -35,7 +39,7 @@
 
 Application::Application(const QString &id, int &argc, char **argv)
   : QtSingleApplication(id, argc, argv),
-    m_updateFeedsLock(NULL), m_userActions(QList<QAction*>()), m_mainForm(NULL),
+    m_updateFeedsLock(NULL), m_feedServices(QList<ServiceEntryPoint*>()), m_userActions(QList<QAction*>()), m_mainForm(NULL),
     m_trayIcon(NULL), m_settings(NULL), m_system(NULL), m_skins(NULL),
     m_localization(NULL), m_icons(NULL), m_database(NULL), m_downloadManager(NULL), m_shouldRestart(false),
     m_notification(NULL) {
@@ -46,6 +50,17 @@ Application::Application(const QString &id, int &argc, char **argv)
 
 Application::~Application() {
   delete m_updateFeedsLock;
+  qDeleteAll(m_feedServices);
+}
+
+QList<ServiceEntryPoint*> Application::feedServices() {
+  if (m_feedServices.isEmpty()) {
+    // NOTE: All installed services create their entry points here.
+    m_feedServices.append(new StandardServiceEntryPoint());
+    m_feedServices.append(new TtRssServiceEntryPoint());
+  }
+
+  return m_feedServices;
 }
 
 QList<QAction*> Application::userActions() {
@@ -54,6 +69,22 @@ QList<QAction*> Application::userActions() {
   }
 
   return m_userActions;
+}
+
+bool Application::isFirstRun() {
+  return settings()->value(GROUP(General), SETTING(General::FirstRun)).toBool();
+}
+
+bool Application::isFirstRun(const QString &version) {
+  return settings()->value(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, true).toBool();
+}
+
+void Application::eliminateFirstRun() {
+  settings()->setValue(GROUP(General), General::FirstRun, false);
+}
+
+void Application::eliminateFirstRun(const QString &version) {
+  settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + version, false);
 }
 
 IconFactory *Application::icons() {
@@ -139,7 +170,8 @@ void Application::processExecutionMessage(const QString &message) {
 SystemTrayIcon *Application::trayIcon() {
   if (m_trayIcon == NULL) {
     m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
-    connect(m_trayIcon, SIGNAL(shown()), m_mainForm->tabWidget()->feedMessageViewer()->feedsView(), SLOT(notifyWithCounts()));
+    connect(m_trayIcon, SIGNAL(shown()),
+            m_mainForm->tabWidget()->feedMessageViewer()->feedsView()->sourceModel(), SLOT(notifyWithCounts()));
   }
 
   return m_trayIcon;
@@ -166,19 +198,25 @@ void Application::showGuiMessage(const QString &title, const QString &message,
                                  QSystemTrayIcon::MessageIcon message_type, QWidget *parent,
                                  bool show_at_least_msgbox, const QIcon &custom_icon,
                                  QObject *invokation_target, const char *invokation_slot) {
-  if (Notification::areNotificationsActivated()) {
-    // Show OSD instead if tray icon bubble, depending on settings.
-    if (custom_icon.isNull()) {
-      notification()->notify(message, title, message_type, invokation_target, invokation_slot);
+  if (Notification::areNotificationsEnabled()) {
+    if (Notification::areFancyNotificationsEnabled()) {
+      // Show OSD instead if tray icon bubble, depending on settings.
+      if (custom_icon.isNull()) {
+        notification()->notify(message, title, message_type, invokation_target, invokation_slot);
+      }
+      else {
+        notification()->notify(message, title, custom_icon, invokation_target, invokation_slot);
+      }
+
+      return;
     }
-    else {
-      notification()->notify(message, title, custom_icon, invokation_target, invokation_slot);
+    else if (SystemTrayIcon::isSystemTrayActivated()) {
+      trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
+      return;
     }
   }
-  else if (SystemTrayIcon::isSystemTrayActivated()) {
-    trayIcon()->showMessage(title, message, message_type, TRAY_ICON_BUBBLE_TIMEOUT, invokation_target, invokation_slot);
-  }
-  else if (show_at_least_msgbox) {
+
+  if (show_at_least_msgbox) {
     // Tray icon or OSD is not available, display simple text box.
     MessageBox::show(parent, (QMessageBox::Icon) message_type, title, message);
   }
@@ -202,6 +240,9 @@ void Application::onSaveState(QSessionManager &manager) {
 }
 
 void Application::onAboutToQuit() {
+  eliminateFirstRun();
+  eliminateFirstRun(APP_VERSION);
+
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
   bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
@@ -248,14 +289,6 @@ void Application::onAboutToQuit() {
       qWarning("New application instance was not started successfully.");
     }
   }
-}
-
-bool Application::shouldRestart() const {
-  return m_shouldRestart;
-}
-
-void Application::setShouldRestart(bool shouldRestart) {
-  m_shouldRestart = shouldRestart;
 }
 
 void Application::restart() {

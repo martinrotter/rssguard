@@ -120,11 +120,17 @@ namespace GUI {
   KEY ListHeadersVisible;
   VALUE(bool) ListHeadersVisibleDef;
 
+  KEY StatusBarVisible;
+  VALUE(bool) StatusBarVisibleDef;
+
   KEY HideMainWindowWhenMinimized;
   VALUE(bool) HideMainWindowWhenMinimizedDef;
 
   KEY UseTrayIcon;
   VALUE(bool) UseTrayIconDef;
+
+  KEY EnableNotifications;
+  VALUE(bool) EnableNotificationsDef;
 
   KEY UseFancyNotifications;
   VALUE(bool) UseFancyNotificationsDef;
@@ -360,6 +366,7 @@ class Settings : public QSettings {
     // Creates settings file in correct location.
     static Settings *setupSettings(QObject *parent);
 
+    // Returns properties of the actual application-wide settings.
     static SettingsProperties determineProperties();
 
   private:

@@ -12,6 +12,30 @@
 	  </style>
 	</head>
 	<body>
+  	<center><h2>3.0.0</h2></center>
+		
+	  Added:
+	  <ul>
+		  <li style="color: red;">Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Expect bugs and misunderstandings now! Major parts of RSS Guard were completely rewritten. Note that some functionality might be TEMPORARILY removed.</li>
+      <li>Added ability to completely disable notifications (bug #128).</li>
+      <li>Added ability to hide status bar.</li>
+      <li>Added ability to go to next <font style="font-weight: bold;">unread</font> message. (partially bug #112)</li>
+	  </ul>
+	  
+	  Fixed:
+	  <ul>
+      <li>Tiny Tiny RSS plugin now supports HTTP authentication (Basic, NTLM, Digest). (bug #132)
+	  	<li>Fixed bug with updating feed. (bug #131)</li>
+      <li>Solved problem when user selects HUGE number of individual messages and marks them read/unread. Reselecting them after change may cause RSS Guard to hang.</li>
+      <li>Better info in popup notification when many feeds are updated.</li>
+      <li>Fixed obtaining of contents in RSS 2.0 feed entries. (bug #130)</li>
+      <li>Improved popup informing about changes in newly installed version.</li>
+      <li>Icons in notification popups are now smaller (22 x 22 pixels).</li>
+      <li>Encoding selection widget in feed add/edit dialog now detects encodings via case insensitive string matching.</li>
+	    <li>When removing download item from download manager via DELETE key, then "Cleanup" button is correctly disabled.</li>
+	  </ul>
+	  
+	  <hr/>
 		<center><h2>2.5.2</h2></center>
 		
 	  Added:

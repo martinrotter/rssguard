@@ -52,7 +52,7 @@ class IOFactory {
     // Throws exception when no such file exists.
     static QByteArray readTextFile(const QString &file_path);
 
-    static void writeTextFile(const QString &file_path, const QByteArray &data);
+    static void writeTextFile(const QString &file_path, const QByteArray &data, const QString &encoding = "UTF-8");
 
     // Copies file, overwrites destination.
     static bool copyFile(const QString &source, const QString &destination);

@@ -80,8 +80,17 @@ class SystemFactory : public QObject {
     QString getAutostartDesktopFileLocation();
 #endif
 
+    // Retrieves username of currently logged-in user.
+    QString getUsername() const;
+
     // Tries to download list with new updates.
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
+
+    // Check whether given pointer belongs to instance of given class or not.
+    template<typename Base, typename T>
+    static bool isInstanceOf(T *ptr) {
+      return dynamic_cast<Base*>(ptr) != NULL;
+    }
 
     // Checks if update is newer than current application version.
     static bool isUpdateNewer(const QString &update_version);

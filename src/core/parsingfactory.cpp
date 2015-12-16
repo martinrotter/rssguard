@@ -73,7 +73,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
     for (int i = 0; i < elem_links.size(); i++) {
       QDomElement link = elem_links.at(i).toElement();
 
-      if (link.attribute(QSL("rel")) == QL1S("enclosure")) {
+      if (link.attribute(QSL("rel")) == QSL("enclosure")) {
         new_message.m_enclosures.append(Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
 
         qDebug("Adding enclosure '%s' for the message.", qPrintable(new_message.m_enclosures.last().m_url));
@@ -99,7 +99,7 @@ QList<Message> ParsingFactory::parseAsATOM10(const QString &data) {
       new_message.m_created = current_time;
     }
 
-    // TODO: There is a difference between "" and QString() in terms of NULL SQL values!
+    // WARNING: There is a difference between "" and QString() in terms of NULL SQL values!
     // This is because of difference in QString::isNull() and QString::isEmpty(), the "" is not null
     // while QString() is.
     if (new_message.m_author.isNull()) {
@@ -203,12 +203,12 @@ QList<Message> ParsingFactory::parseAsRSS20(const QString &data) {
 
     // Deal with titles & descriptions.
     QString elem_title = message_item.namedItem(QSL("title")).toElement().text().simplified();
-    QString elem_description = message_item.namedItem(QSL("description")).toElement().text();
+    QString elem_description = message_item.namedItem(QSL("encoded")).toElement().text();
     QString elem_enclosure = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
     QString elem_enclosure_type = message_item.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
     if (elem_description.isEmpty()) {
-      elem_description = message_item.namedItem(QSL("encoded")).toElement().text();
+      elem_description = message_item.namedItem(QSL("description")).toElement().text();
     }
 
     // Now we obtained maximum of information for title & description.

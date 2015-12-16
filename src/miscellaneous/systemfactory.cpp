@@ -172,6 +172,20 @@ bool SystemFactory::removeTrolltechJunkRegistryKeys() {
 }
 #endif
 
+QString SystemFactory::getUsername() const {
+  QString name = qgetenv("USER");
+
+  if (name.isEmpty()) {
+    name = qgetenv("USERNAME");
+  }
+
+  if (name.isEmpty()) {
+    name = tr("anonymous");
+  }
+
+  return name;
+}
+
 QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() {
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
   QByteArray releases_xml;
@@ -258,6 +272,6 @@ void SystemFactory::checkForUpdatesOnStartup() {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),
                          QSystemTrayIcon::Information,
-                         NULL, false, QIcon(), qApp->mainForm(), SLOT(showUpdates()));
+                         NULL, true, QIcon(), qApp->mainForm(), SLOT(showUpdates()));
   }
 }

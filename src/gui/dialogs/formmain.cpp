@@ -36,10 +36,13 @@
 #include "gui/dialogs/formabout.h"
 #include "gui/dialogs/formsettings.h"
 #include "gui/dialogs/formupdate.h"
-#include "gui/dialogs/formimportexport.h"
 #include "gui/dialogs/formbackupdatabasesettings.h"
 #include "gui/dialogs/formrestoredatabasesettings.h"
+#include "gui/dialogs/formaddaccount.h"
 #include "gui/notifications/notification.h"
+#include "services/abstract/serviceroot.h"
+#include "services/abstract/recyclebin.h"
+#include "services/standard/gui/formstandardimportexport.h"
 
 #include <QCloseEvent>
 #include <QSessionManager>
@@ -91,8 +94,6 @@ QList<QAction*> FormMain::allActions() {
   // Add basic actions.
   actions << m_ui->m_actionSettings;
   actions << m_ui->m_actionDownloadManager;
-  actions << m_ui->m_actionImportFeeds;
-  actions << m_ui->m_actionExportFeeds;
   actions << m_ui->m_actionRestoreDatabaseSettings;
   actions << m_ui->m_actionBackupDatabaseSettings;
   actions << m_ui->m_actionRestart;
@@ -104,6 +105,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSwitchMainMenu;
   actions << m_ui->m_actionSwitchToolBars;
   actions << m_ui->m_actionSwitchListHeaders;
+  actions << m_ui->m_actionSwitchStatusBar;
   actions << m_ui->m_actionSwitchMessageListOrientation;
 
   // Add web browser actions
@@ -115,32 +117,28 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedSourceArticlesInternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
-  actions << m_ui->m_actionMarkAllFeedsRead;
-  actions << m_ui->m_actionMarkSelectedFeedsAsRead;
-  actions << m_ui->m_actionMarkSelectedFeedsAsUnread;
-  actions << m_ui->m_actionClearSelectedFeeds;
+  actions << m_ui->m_actionMarkAllItemsRead;
+  actions << m_ui->m_actionMarkSelectedItemsAsRead;
+  actions << m_ui->m_actionMarkSelectedItemsAsUnread;
+  actions << m_ui->m_actionClearSelectedItems;
+  actions << m_ui->m_actionClearAllItems;
+  actions << m_ui->m_actionShowOnlyUnreadItems;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
   actions << m_ui->m_actionDeleteSelectedMessages;
-  actions << m_ui->m_actionUpdateAllFeeds;
-  actions << m_ui->m_actionUpdateSelectedFeeds;
-  actions << m_ui->m_actionEditSelectedFeedCategory;
-  actions << m_ui->m_actionDeleteSelectedFeedCategory;
+  actions << m_ui->m_actionUpdateAllItems;
+  actions << m_ui->m_actionUpdateSelectedItems;
+  actions << m_ui->m_actionEditSelectedItem;
+  actions << m_ui->m_actionDeleteSelectedItem;
+  actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
-  actions << m_ui->m_actionAddCategory;
-  actions << m_ui->m_actionAddFeed;
-  actions << m_ui->m_actionSelectNextFeedCategory;
-  actions << m_ui->m_actionSelectPreviousFeedCategory;
+  actions << m_ui->m_actionSelectNextItem;
+  actions << m_ui->m_actionSelectPreviousItem;
   actions << m_ui->m_actionSelectNextMessage;
   actions << m_ui->m_actionSelectPreviousMessage;
-  actions << m_ui->m_actionFetchFeedMetadata;
-  actions << m_ui->m_actionExpandCollapseFeedCategory;
-
-  // Add recycle bin actions.
-  actions << m_ui->m_actionRestoreRecycleBin;
-  actions << m_ui->m_actionEmptyRecycleBin;
-  actions << m_ui->m_actionRestoreSelectedMessagesFromRecycleBin;
+  actions << m_ui->m_actionSelectNextUnreadMessage;
+  actions << m_ui->m_actionExpandCollapseItem;
 
   return actions;
 }
@@ -157,8 +155,8 @@ void FormMain::prepareMenus() {
     // Add needed items to the menu.
     m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
     m_trayMenu->addSeparator();
-    m_trayMenu->addAction(m_ui->m_actionUpdateAllFeeds);
-    m_trayMenu->addAction(m_ui->m_actionMarkAllFeedsRead);
+    m_trayMenu->addAction(m_ui->m_actionUpdateAllItems);
+    m_trayMenu->addAction(m_ui->m_actionMarkAllItemsRead);
     m_trayMenu->addSeparator();
     m_trayMenu->addAction(m_ui->m_actionSettings);
     m_trayMenu->addAction(m_ui->m_actionQuit);
@@ -175,8 +173,106 @@ void FormMain::switchFullscreenMode() {
   }
 }
 
-void FormMain::switchMainMenu() {
-  m_ui->m_menuBar->setVisible(m_ui->m_actionSwitchMainMenu->isChecked());
+void FormMain::updateAddItemMenu() {
+  // NOTE: Clear here deletes items from memory but only those OWNED by the menu.
+  m_ui->m_menuAddItem->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAddItem);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    QList<QAction*> root_actions = activated_root->addItemMenu();
+
+    if (root_actions.isEmpty()) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                       tr("No possible actions"),
+                                       m_ui->m_menuAddItem);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      root_menu->addActions(root_actions);
+    }
+
+    m_ui->m_menuAddItem->addMenu(root_menu);
+  }
+}
+
+void FormMain::updateRecycleBinMenu() {
+  m_ui->m_menuRecycleBin->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    RecycleBin *bin = activated_root->recycleBin();
+
+    if (bin == NULL) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                       tr("No recycle bin"),
+                                       m_ui->m_menuRecycleBin);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      QAction *restore_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-restore-all")),
+                                            tr("Restore recycle bin"),
+                                            m_ui->m_menuRecycleBin);
+      QAction *empty_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-empty")),
+                                          tr("Empty recycle bin"),
+                                          m_ui->m_menuRecycleBin);
+
+      connect(restore_action, SIGNAL(triggered()), bin, SLOT(restore()));
+      connect(empty_action, SIGNAL(triggered()), bin, SLOT(empty()));
+
+      root_menu->addAction(restore_action);
+      root_menu->addAction(empty_action);
+    }
+
+    m_ui->m_menuRecycleBin->addMenu(root_menu);
+  }
+
+  if (!m_ui->m_menuRecycleBin->isEmpty()) {
+    m_ui->m_menuRecycleBin->addSeparator();
+  }
+
+  m_ui->m_menuRecycleBin->addAction(m_ui->m_actionRestoreAllRecycleBins);
+  m_ui->m_menuRecycleBin->addAction(m_ui->m_actionEmptyAllRecycleBins);
+}
+
+void FormMain::updateAccountsMenu() {
+  m_ui->m_menuAccounts->clear();
+
+  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuAccounts);
+    root_menu->setIcon(activated_root->icon());
+    root_menu->setToolTip(activated_root->description());
+
+    QList<QAction*> root_actions = activated_root->serviceMenu();
+
+    if (root_actions.isEmpty()) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                       tr("No possible actions"),
+                                       m_ui->m_menuAccounts);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
+    else {
+      root_menu->addActions(root_actions);
+    }
+
+    m_ui->m_menuAccounts->addMenu(root_menu);
+  }
+
+  if (m_ui->m_menuAccounts->actions().size() > 0) {
+    m_ui->m_menuAccounts->addSeparator();
+  }
+
+  m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceAdd);
+  m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceEdit);
+  m_ui->m_menuAccounts->addAction(m_ui->m_actionServiceDelete);
 }
 
 void FormMain::switchVisibility(bool force_hide) {
@@ -220,8 +316,6 @@ void FormMain::setupIcons() {
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("cleanup-database")));
   m_ui->m_actionReportBugGitHub->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
   m_ui->m_actionReportBugBitBucket->setIcon(icon_theme_factory->fromTheme(QSL("application-report-bug")));
-  m_ui->m_actionExportFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
-  m_ui->m_actionImportFeeds->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
   m_ui->m_actionDonate->setIcon(icon_theme_factory->fromTheme(QSL("application-donate")));
@@ -234,13 +328,9 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMainMenu->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-menu")));
   m_ui->m_actionSwitchToolBars->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
   m_ui->m_actionSwitchListHeaders->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-list")));
+  m_ui->m_actionSwitchStatusBar->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
   m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-switch-layout-direction")));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-switch")));
-
-  // Recycle bin.
-  m_ui->m_actionEmptyRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
-  m_ui->m_actionRestoreRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
-  m_ui->m_actionRestoreSelectedMessagesFromRecycleBin->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
 
   // Web browser.
   m_ui->m_actionAddBrowser->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
@@ -254,18 +344,16 @@ void FormMain::setupIcons() {
 
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
-  m_ui->m_actionUpdateAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
-  m_ui->m_actionUpdateSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
-  m_ui->m_actionClearSelectedFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionClearAllFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionDeleteSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
+  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
+  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
+  m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
+  m_ui->m_actionDeleteSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
   m_ui->m_actionDeleteSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));
-  m_ui->m_actionAddCategory->setIcon(icon_theme_factory->fromTheme(QSL("folder-category")));
-  m_ui->m_actionAddFeed->setIcon(icon_theme_factory->fromTheme(QSL("folder-feed")));
-  m_ui->m_actionEditSelectedFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
-  m_ui->m_actionMarkAllFeedsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
-  m_ui->m_actionMarkSelectedFeedsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
-  m_ui->m_actionMarkSelectedFeedsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionEditSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
+  m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+  m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-favorite")));
@@ -274,13 +362,19 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("item-open-internal")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("item-send-email")));
   m_ui->m_actionViewSelectedItemsNewspaperMode->setIcon(icon_theme_factory->fromTheme(QSL("item-newspaper")));
-  m_ui->m_actionSelectNextFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
-  m_ui->m_actionSelectPreviousFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
+  m_ui->m_actionSelectNextItem->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
+  m_ui->m_actionSelectPreviousItem->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-down")));
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("go-up")));
-  m_ui->m_actionShowOnlyUnreadFeeds->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
-  m_ui->m_actionFetchFeedMetadata->setIcon(icon_theme_factory->fromTheme(QSL("download-manager")));
-  m_ui->m_actionExpandCollapseFeedCategory->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
+  m_ui->m_actionSelectNextUnreadMessage->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionShowOnlyUnreadItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
+  m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("expand-collapse")));
+  m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-one")));
+  m_ui->m_actionRestoreAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-restore-all")));
+  m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("recycle-bin-empty")));
+  m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
+  m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
+  m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
@@ -319,9 +413,10 @@ void FormMain::loadSize() {
   m_ui->m_tabWidget->feedMessageViewer()->loadSize();
   m_ui->m_actionSwitchToolBars->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ToolbarsVisible)).toBool());
   m_ui->m_actionSwitchListHeaders->setChecked(settings->value(GROUP(GUI), SETTING(GUI::ListHeadersVisible)).toBool());
+  m_ui->m_actionSwitchStatusBar->setChecked(settings->value(GROUP(GUI), SETTING(GUI::StatusBarVisible)).toBool());
 
   // Make sure that only unread feeds are shown if user has that feature set on.
-  m_ui->m_actionShowOnlyUnreadFeeds->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
+  m_ui->m_actionShowOnlyUnreadItems->setChecked(settings->value(GROUP(Feeds), SETTING(Feeds::ShowOnlyUnreadFeeds)).toBool());
 }
 
 void FormMain::saveSize() {
@@ -342,6 +437,7 @@ void FormMain::saveSize() {
   settings->setValue(GROUP(GUI), GUI::MainWindowInitialSize, size());
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsMaximized, is_maximized);
   settings->setValue(GROUP(GUI), GUI::MainWindowStartsFullscreen, is_fullscreen);
+  settings->setValue(GROUP(GUI), GUI::StatusBarVisible, m_ui->m_actionSwitchStatusBar->isChecked());
 
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
@@ -351,18 +447,25 @@ void FormMain::createConnections() {
   connect(m_statusBar->fullscreenSwitcher(), SIGNAL(toggled(bool)), m_ui->m_actionFullscreen, SLOT(setChecked(bool)));
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), m_statusBar->fullscreenSwitcher(), SLOT(setChecked(bool)));
 
+  connect(m_ui->m_menuAddItem, SIGNAL(aboutToShow()), this, SLOT(updateAddItemMenu()));
+  connect(m_ui->m_menuRecycleBin, SIGNAL(aboutToShow()), this, SLOT(updateRecycleBinMenu()));
+  connect(m_ui->m_menuAccounts, SIGNAL(aboutToShow()), this, SLOT(updateAccountsMenu()));
+
+  connect(m_ui->m_actionServiceDelete, SIGNAL(triggered()), m_ui->m_actionDeleteSelectedItem, SIGNAL(triggered()));
+  connect(m_ui->m_actionServiceEdit, SIGNAL(triggered()), m_ui->m_actionEditSelectedItem, SIGNAL(triggered()));
+
   // Menu "File" connections.
-  connect(m_ui->m_actionExportFeeds, SIGNAL(triggered()), this, SLOT(exportFeeds()));
-  connect(m_ui->m_actionImportFeeds, SIGNAL(triggered()), this, SLOT(importFeeds()));
   connect(m_ui->m_actionBackupDatabaseSettings, SIGNAL(triggered()), this, SLOT(backupDatabaseSettings()));
   connect(m_ui->m_actionRestoreDatabaseSettings, SIGNAL(triggered()), this, SLOT(restoreDatabaseSettings()));
   connect(m_ui->m_actionRestart, SIGNAL(triggered()), qApp, SLOT(restart()));
   connect(m_ui->m_actionQuit, SIGNAL(triggered()), qApp, SLOT(quit()));
+  connect(m_ui->m_actionServiceAdd, SIGNAL(triggered()), this, SLOT(showAddAccountDialog()));
 
   // Menu "View" connections.
   connect(m_ui->m_actionFullscreen, SIGNAL(toggled(bool)), this, SLOT(switchFullscreenMode()));
-  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), this, SLOT(switchMainMenu()));
+  connect(m_ui->m_actionSwitchMainMenu, SIGNAL(toggled(bool)), m_ui->m_menuBar, SLOT(setVisible(bool)));
   connect(m_ui->m_actionSwitchMainWindow, SIGNAL(triggered()), this, SLOT(switchVisibility()));
+  connect(m_ui->m_actionSwitchStatusBar, SIGNAL(toggled(bool)), statusBar(), SLOT(setVisible(bool)));
 
   // Menu "Tools" connections.
   connect(m_ui->m_actionSettings, SIGNAL(triggered()), this, SLOT(showSettings()));
@@ -408,20 +511,6 @@ void FormMain::loadWebBrowserMenu(int index) {
   }
 
   m_ui->m_actionCloseCurrentTab->setEnabled(m_ui->m_tabWidget->tabBar()->tabType(index) == TabBar::Closable);
-}
-
-void FormMain::exportFeeds() {  
-  QPointer<FormImportExport> form = new FormImportExport(this);
-  form.data()->setMode(FeedsImportExportModel::Export);
-  form.data()->exec();
-  delete form.data();
-}
-
-void FormMain::importFeeds() {
-  QPointer<FormImportExport> form = new FormImportExport(this);
-  form.data()->setMode(FeedsImportExportModel::Import);
-  form.data()->exec();
-  delete form.data();
 }
 
 void FormMain::backupDatabaseSettings() {
@@ -474,6 +563,14 @@ void FormMain::showWiki() {
                          tr("Cannot open external browser. Navigate to application website manually."),
                          QSystemTrayIcon::Warning, this, true);
   }
+}
+
+void FormMain::showAddAccountDialog() {
+  QPointer<FormAddAccount> form_update = new FormAddAccount(qApp->feedServices(),
+                                                            tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+                                                            this);
+  form_update.data()->exec();
+  delete form_update.data();
 }
 
 void FormMain::reportABugOnGitHub() {

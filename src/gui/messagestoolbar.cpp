@@ -103,7 +103,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction *action) {
   m_btnMessageHighlighter->setIcon(action->icon());
   m_btnMessageHighlighter->setToolTip(action->text());
 
-  emit messageFilterChanged(action->data().value<MessagesModel::MessageFilter>());
+  emit messageFilterChanged(action->data().value<MessagesModel::MessageHighlighter>());
 }
 
 void MessagesToolBar::initializeSearchBox() {

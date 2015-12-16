@@ -2,7 +2,7 @@ RSS Guard
 =========
 Welcome to RSS Guard website. You can find here basic information.
 
-RSS Guard is simple and easy-to-use RSS/ATOM feed aggregator developed using Qt framework.
+RSS Guard is simple and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
 
 - - -
 Contacts
@@ -66,6 +66,8 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 
 RSS Guard is written in C++. It is pretty fast even with tons of messages loaded. The core features are:
 
+* **support for online feed synchronization via plugins**,
+    * Tiny Tiny RSS (from RSS Guard 3.0.0).
 * multiplatformity,
 * support for all feed formats,
 * simplicity,
@@ -113,10 +115,9 @@ RSS Guard is written in C++. It is pretty fast even with tons of messages loaded
 * Qt library is the only dependency,
 * open-source development model and friendly author waiting for your feedback,
 * no ads, no hidden costs.
+
 - - -
 
 Philosophy
 ----------
-RSS Guard tends to be independent software. It's free, it's open-source. RSS Guard will never depend on other services - this includes online news aggregators like Feedly, The Old Reader and others.
-
-That's why RSS Guard will never integrate those services unless someone else codes support for them on his own. Remember, RSS Guard supports online synchronization via MySQL/MariaDB or you can use Dropbox to synchronize SQLite data storage.
+RSS Guard tends to be independent software. It's free, it's open-source. RSS Guard accepts donations but only to SUPPORT its development.

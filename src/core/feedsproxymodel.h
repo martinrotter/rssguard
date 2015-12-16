@@ -18,12 +18,11 @@
 #ifndef FEEDSPROXYMODEL_H
 #define FEEDSPROXYMODEL_H
 
-#include "rootitem.h"
-
 #include <QSortFilterProxyModel>
 
 
 class FeedsModel;
+class RootItem;
 
 class FeedsProxyModel : public QSortFilterProxyModel {
     Q_OBJECT
@@ -38,6 +37,8 @@ class FeedsProxyModel : public QSortFilterProxyModel {
       return m_sourceModel;
     }
 
+    // Returns index list of items which "match" given value.
+    // Used for finding items according to entered title text.
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const;
 
     // Maps list of indexes.
@@ -50,14 +51,16 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     void setSelectedItem(RootItem *selected_item);
 
   public slots:
+    void invalidateReadFeedsFilter(bool set_new_value = false, bool show_unread_only = false);
+
+  private slots:
     void invalidateFilter();
 
-  protected:
+  private:
     // Compares two rows of data.
     bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const;
 
-  private:
     // Source model pointer.
     FeedsModel *m_sourceModel;
 

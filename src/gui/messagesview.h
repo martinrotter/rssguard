@@ -20,7 +20,7 @@
 
 #include "core/messagesmodel.h"
 
-#include "core/feedsselection.h"
+#include "services/abstract/rootitem.h"
 
 #include <QTreeView>
 #include <QHeaderView>
@@ -47,9 +47,6 @@ class MessagesView : public QTreeView {
       return m_sourceModel;
     }
 
-    // Creates needed connections.
-    void createConnections();
-
   public slots:
     void keyboardSearch(const QString &search);
 
@@ -60,7 +57,7 @@ class MessagesView : public QTreeView {
     void reloadSelections(bool mark_current_index_read);
 
     // Loads un-deleted messages from selected feeds.
-    void loadFeeds(const FeedsSelection &selection);
+    void loadItem(RootItem *item);
 
     // Message manipulators.
     void openSelectedSourceMessagesExternally();
@@ -70,7 +67,7 @@ class MessagesView : public QTreeView {
     void sendSelectedMessageViaEmail();
 
     // Works with SELECTED messages only.
-    void setSelectedMessagesReadStatus(int read);
+    void setSelectedMessagesReadStatus(RootItem::ReadStatus read);
     void markSelectedMessagesRead();
     void markSelectedMessagesUnread();
     void switchSelectedMessagesImportance();
@@ -79,10 +76,11 @@ class MessagesView : public QTreeView {
 
     void selectNextItem();
     void selectPreviousItem();
+    void selectNextUnreadItem();
 
     // Searchs the visible message according to given pattern.
     void searchMessages(const QString &pattern);
-    void filterMessages(MessagesModel::MessageFilter filter);
+    void filterMessages(MessagesModel::MessageHighlighter filter);
 
   private slots:
     // Marks given indexes as selected.
@@ -93,20 +91,6 @@ class MessagesView : public QTreeView {
 
     // Saves current sort state.
     void saveSortState(int column, Qt::SortOrder order);
-
-  protected:
-    // Initializes context menu.
-    void initializeContextMenu();
-
-    // Sets up appearance.
-    void setupAppearance();
-
-    // Event reimplementations.
-    void contextMenuEvent(QContextMenuEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void keyPressEvent(QKeyEvent *event);
-    void currentChanged(const QModelIndex &current, const QModelIndex &previous);
-    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
 
   signals:
     // Link/message openers.
@@ -119,6 +103,21 @@ class MessagesView : public QTreeView {
     void currentMessagesRemoved();
 
   private:
+    // Creates needed connections.
+    void createConnections();
+
+    // Initializes context menu.
+    void initializeContextMenu();
+
+    // Sets up appearance.
+    void setupAppearance();
+
+    // Event reimplementations.
+    void contextMenuEvent(QContextMenuEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent *event);
+    void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);
+
     QMenu *m_contextMenu;
 
     MessagesProxyModel *m_proxyModel;

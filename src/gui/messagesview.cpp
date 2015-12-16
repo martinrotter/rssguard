@@ -28,6 +28,7 @@
 
 #include <QKeyEvent>
 #include <QScrollBar>
+#include <QTimer>
 #include <QMenu>
 
 
@@ -78,8 +79,7 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   // Reload the model now.
-  m_sourceModel->select();
-  m_sourceModel->fetchAll();
+  m_sourceModel->fetchAllData();
 
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
@@ -141,23 +141,18 @@ void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
     return;
   }
 
-  if (m_contextMenu == NULL) {
-    // Context menu is not initialized, initialize.
-    initializeContextMenu();
-  }
-
-  if (sourceModel()->loadedSelection().mode() == FeedsSelection::MessagesFromRecycleBin) {
-    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
-  }
-  else {
-    m_contextMenu->removeAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
-  }
+  // Context menu is not initialized, initialize.
+  initializeContextMenu();
 
   m_contextMenu->exec(event->globalPos());
 }
 
 void MessagesView::initializeContextMenu() {
-  m_contextMenu = new QMenu(tr("Context menu for messages"), this);
+  if (m_contextMenu == NULL) {
+    m_contextMenu = new QMenu(tr("Context menu for messages"), this);
+  }
+
+  m_contextMenu->clear();
   m_contextMenu->addActions(QList<QAction*>() <<
                             qApp->mainForm()->m_ui->m_actionSendMessageViaEmail <<
                             qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally <<
@@ -166,8 +161,11 @@ void MessagesView::initializeContextMenu() {
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead <<
                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread <<
                             qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages <<
-                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages <<
-                            qApp->mainForm()->m_ui->m_actionRestoreSelectedMessagesFromRecycleBin);
+                            qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
+
+  if (m_sourceModel->loadedItem() != NULL && m_sourceModel->loadedItem()->kind() == RootItemKind::Bin) {
+    m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
+  }
 }
 
 void MessagesView::mousePressEvent(QMouseEvent *event) {
@@ -201,10 +199,6 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
   }
 }
 
-void MessagesView::currentChanged(const QModelIndex &current, const QModelIndex &previous) {
-  QTreeView::currentChanged(current, previous);
-}
-
 void MessagesView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
   QModelIndexList selected_rows = selectionModel()->selectedRows();
   QModelIndex current_index = currentIndex();
@@ -218,7 +212,7 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
     if (!m_batchUnreadSwitch) {
       // Set this message as read only if current item
       // wasn't changed by "mark selected messages unread" action.
-      m_sourceModel->setMessageRead(mapped_current_index.row(), 1);
+      m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
     }
 
     emit currentMessagesChanged(QList<Message>() << m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.at(0)).row()));
@@ -234,8 +228,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
   QTreeView::selectionChanged(selected, deselected);
 }
 
-void MessagesView::loadFeeds(const FeedsSelection &selection) {
-  m_sourceModel->loadMessages(selection);
+void MessagesView::loadItem(RootItem *item) {
+  m_sourceModel->loadMessages(item);
 
   int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
   Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
@@ -264,8 +258,8 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   }
 
   // Finally, mark opened messages as read.
-  if (selectionModel()->selectedRows().size() > 1) {
-    markSelectedMessagesRead();
+  if (!selectionModel()->selectedRows().isEmpty()) {
+    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
 }
 
@@ -285,8 +279,8 @@ void MessagesView::openSelectedSourceMessagesInternally() {
   }
 
   // Finally, mark opened messages as read.
-  if (selectionModel()->selectedRows().size() > 1) {
-    markSelectedMessagesRead();
+  if (!selectionModel()->selectedRows().isEmpty()) {
+    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
 }
 
@@ -308,7 +302,7 @@ void MessagesView::openSelectedMessagesInternally() {
     emit openMessagesInNewspaperView(messages);
 
     // Finally, mark opened messages as read.
-    markSelectedMessagesRead();
+    QTimer::singleShot(0, this, SLOT(markSelectedMessagesRead()));
   }
 }
 
@@ -326,14 +320,14 @@ void MessagesView::sendSelectedMessageViaEmail() {
 }
 
 void MessagesView::markSelectedMessagesRead() {
-  setSelectedMessagesReadStatus(1);
+  setSelectedMessagesReadStatus(RootItem::Read);
 }
 
 void MessagesView::markSelectedMessagesUnread() {
-  setSelectedMessagesReadStatus(0);
+  setSelectedMessagesReadStatus(RootItem::Unread);
 }
 
-void MessagesView::setSelectedMessagesReadStatus(int read) {
+void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (!current_index.isValid()) {
@@ -350,7 +344,7 @@ void MessagesView::setSelectedMessagesReadStatus(int read) {
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
 
-  if (read == 0) {
+  if (read == RootItem::Unread) {
     // User selected to mark some messages as unread, if one
     // of them will be marked as current, then it will be read again.
     m_batchUnreadSwitch = true;
@@ -372,7 +366,7 @@ void MessagesView::deleteSelectedMessages() {
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
-  m_sourceModel->setBatchMessagesDeleted(mapped_indexes, 1);
+  m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   int row_count = m_sourceModel->rowCount();
@@ -400,24 +394,21 @@ void MessagesView::restoreSelectedMessages() {
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
   QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
-  if (m_sourceModel->setBatchMessagesRestored(mapped_indexes)) {
-    sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  m_sourceModel->setBatchMessagesRestored(mapped_indexes);
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-    int row_count = m_sourceModel->rowCount();
-    if (row_count > 0) {
-      QModelIndex last_item = current_index.row() < row_count ?
-                                m_proxyModel->index(current_index.row(),
-                                                    MSG_DB_TITLE_INDEX) :
-                                m_proxyModel->index(row_count - 1,
-                                                    MSG_DB_TITLE_INDEX);
+  int row_count = m_sourceModel->rowCount();
+  if (row_count > 0) {
+    QModelIndex last_item = current_index.row() < row_count ?
+                              m_proxyModel->index(current_index.row(), MSG_DB_TITLE_INDEX) :
+                              m_proxyModel->index(row_count - 1, MSG_DB_TITLE_INDEX);
 
-      setCurrentIndex(last_item);
-      scrollTo(last_item);
-      reselectIndexes(QModelIndexList() << last_item);
-    }
-    else {
-      emit currentMessagesRemoved();
-    }
+    setCurrentIndex(last_item);
+    scrollTo(last_item);
+    reselectIndexes(QModelIndexList() << last_item);
+  }
+  else {
+    emit currentMessagesRemoved();
   }
 }
 
@@ -439,20 +430,23 @@ void MessagesView::switchSelectedMessagesImportance() {
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
                                                                    mapped_current_index.column()));
 
+  m_batchUnreadSwitch = true;
   setCurrentIndex(current_index);
   scrollTo(current_index);
   reselectIndexes(selected_indexes);
+  m_batchUnreadSwitch = false;
 }
 
 void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
-  QItemSelection selection;
+  if (indexes.size() < RESELECT_MESSAGE_THRESSHOLD) {
+    QItemSelection selection;
 
-  foreach (const QModelIndex &index, indexes) {
-    // TODO: THIS IS very slow. Try to select 4000 messages and hit "mark as read" button.
-    selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
+    foreach (const QModelIndex &index, indexes) {
+      selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
+    }
+
+    selectionModel()->select(selection, QItemSelectionModel::Select | QItemSelectionModel::Rows);
   }
-
-  selectionModel()->select(selection, QItemSelectionModel::Select | QItemSelectionModel::Rows);
 }
 
 void MessagesView::selectNextItem() {
@@ -475,6 +469,30 @@ void MessagesView::selectPreviousItem() {
   }
 }
 
+void MessagesView::selectNextUnreadItem() {
+  // FIXME: Use this to solve #112.
+
+  QModelIndexList selected_rows = selectionModel()->selectedRows();
+  int active_row;
+
+  if (!selected_rows.isEmpty()) {
+    // Okay, something is selected, start from it.
+    active_row = selected_rows.at(0).row();
+  }
+  else {
+    active_row = 0;
+  }
+
+  QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
+
+  if (next_unread.isValid()) {
+    // We found unread message, mark it.
+    setCurrentIndex(next_unread);
+    selectionModel()->select(next_unread, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+    setFocus();
+  }
+}
+
 void MessagesView::searchMessages(const QString &pattern) {
   m_proxyModel->setFilterRegExp(pattern);
 
@@ -487,8 +505,8 @@ void MessagesView::searchMessages(const QString &pattern) {
   }
 }
 
-void MessagesView::filterMessages(MessagesModel::MessageFilter filter) {
-  m_sourceModel->filterMessages(filter);
+void MessagesView::filterMessages(MessagesModel::MessageHighlighter filter) {
+  m_sourceModel->highlightMessages(filter);
 }
 
 void MessagesView::adjustColumns() {
@@ -531,6 +549,8 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_DB_CONTENTS_INDEX);
     hideColumn(MSG_DB_PDELETED_INDEX);
     hideColumn(MSG_DB_ENCLOSURES_INDEX);
+    hideColumn(MSG_DB_ACCOUNT_ID_INDEX);
+    hideColumn(MSG_DB_CUSTOM_ID_INDEX);
 
     qDebug("Adjusting column resize modes for MessagesView.");
   }

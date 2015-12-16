@@ -38,6 +38,37 @@ MessagesProxyModel::~MessagesProxyModel() {
   qDebug("Destroying MessagesProxyModel instance.");
 }
 
+QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) {
+  bool started_from_zero = default_row == 0;
+  QModelIndex next_index = getNextUnreadItemIndex(default_row, rowCount() - 1);
+
+  // There is no next message, check previous.
+  if (!next_index.isValid() && !started_from_zero) {
+    next_index = getNextUnreadItemIndex(0, default_row - 1);
+  }
+
+  return next_index;
+}
+
+QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) {
+  while (default_row <= max_row) {
+    // Get info if the message is read or not.
+    QModelIndex proxy_index = index(default_row, MSG_DB_READ_INDEX);
+    bool is_read = m_sourceModel->data(mapToSource(proxy_index).row(),
+                                       MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
+
+    if (!is_read) {
+      // We found unread message, mark it.
+      return proxy_index;
+    }
+    else {
+      default_row++;
+    }
+  }
+
+  return QModelIndex();
+}
+
 bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   if (left.column() == MSG_DB_TITLE_INDEX && right.column() == MSG_DB_TITLE_INDEX) {
     return QString::localeAwareCompare(m_sourceModel->data(left).toString(),
