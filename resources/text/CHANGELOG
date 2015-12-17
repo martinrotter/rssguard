@@ -3,6 +3,7 @@
 
 Added:
 
+▪ Brand new Tiny Tiny RSS plugin.
 ▪ Brand new "service plugin system" - HIGHLY EXPERIMENTAL and REWRITTEN from scratch. Expect bugs and misunderstandings now! Major parts of RSS Guard were completely rewritten. Note that some functionality might be TEMPORARILY removed.
 ▪ Added ability to completely disable notifications (bug #128).
 ▪ Added ability to hide status bar.
