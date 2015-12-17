@@ -126,7 +126,7 @@ void FormEditAccount::performTest() {
 
   TtRssLoginResponse result = factory.login();
 
-  if (factory.lastError()  == QNetworkReply::NoError) {
+  if (result.isLoaded()) {
     if (result.hasError()) {
       QString error = result.error();
 
@@ -159,10 +159,15 @@ void FormEditAccount::performTest() {
                                        tr("Tiny Tiny RSS server is okay."));
     }
   }
-  else {
+  else if (factory.lastError()  != QNetworkReply::NoError ) {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                      tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
                                      tr("Network error, have you entered correct Tiny Tiny RSS API endpoint and password?"));
+  }
+  else {
+    m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
+                                     tr("Unspecified error, did you enter correct URL?"),
+                                     tr("Unspecified error, did you enter correct URL?"));
   }
 }
 
