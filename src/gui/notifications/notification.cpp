@@ -221,7 +221,7 @@ void Notification::paintEvent(QPaintEvent *event) {
 #else
   painter.setRenderHints(QPainter::HighQualityAntialiasing);
 #endif
-  painter.setBrush(QColor(220, 220, 220));
+  painter.setBrush(m_backgroundColor);
 
   painter.setPen(Qt::NoPen);
   painter.drawRoundedRect(0, 0, width(), height(), 5.0, 5.0);
@@ -274,6 +274,7 @@ void Notification::timerEvent(QTimerEvent *event) {
 
 void Notification::loadSettings() {
   m_position = static_cast<Qt::Corner>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt());
+  m_backgroundColor = qApp->settings()->value(GROUP(GUI), SETTING(GUI::NotificationBackgroundColor)).value<QColor>();
 }
 
 void Notification::setupWidget() {

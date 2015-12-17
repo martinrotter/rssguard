@@ -26,6 +26,7 @@
 
 #include <QNetworkProxy>
 #include <QStringList>
+#include <QColor>
 
 #define KEY extern const char*
 #define DKEY const char*
@@ -36,6 +37,7 @@
 #define SETTING(x) x, x##Def
 #define DEFAULT_VALUE(x) x##Def
 #define GROUP(x) x::ID
+
 
 // Feeds.
 namespace Feeds {
@@ -92,6 +94,9 @@ namespace GUI {
 
   KEY SplitterMessages;
   VALUE(char*) SplitterMessagesDef;
+
+  KEY NotificationBackgroundColor;
+  VALUE(QColor) NotificationBackgroundColorDef;
 
   KEY ToolbarStyle;
   VALUE(Qt::ToolButtonStyle) ToolbarStyleDef;

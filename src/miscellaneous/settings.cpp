@@ -78,6 +78,9 @@ DVALUE(char*) GUI::SplitterFeedsDef               = "";
 DKEY GUI::SplitterMessages                        = "splitter_messages";
 DVALUE(char*) GUI::SplitterMessagesDef            = "";
 
+DKEY GUI::NotificationBackgroundColor               = "notification_background_color";
+DVALUE(QColor) GUI::NotificationBackgroundColorDef  = QColor(220, 220, 220);
+
 DKEY GUI::ToolbarStyle                            = "toolbar_style";
 DVALUE(Qt::ToolButtonStyle) GUI::ToolbarStyleDef  = Qt::ToolButtonIconOnly;
 

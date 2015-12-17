@@ -88,7 +88,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="m_stackedSettings">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="m_pageGeneral">
       <layout class="QFormLayout" name="formLayout_5">
@@ -463,7 +463,7 @@ Authors of this application are NOT responsible for lost data.</string>
           <enum>QTabWidget::North</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="m_tabIconSkin">
           <attribute name="title">
@@ -665,6 +665,44 @@ Authors of this application are NOT responsible for lost data.</string>
                  </item>
                  <item row="0" column="1">
                   <widget class="QComboBox" name="m_cmbNotificationPosition"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="label_13">
+                   <property name="text">
+                    <string>Background color</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <layout class="QHBoxLayout" name="horizontalLayout_17">
+                   <item>
+                    <widget class="ColorLabel" name="m_lblNotificationColor">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="m_btnChangeNotificationColor">
+                     <property name="text">
+                      <string>Change</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -1569,15 +1607,15 @@ Authors of this application are NOT responsible for lost data.</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LineEditWithStatus</class>
-   <extends>QWidget</extends>
-   <header>lineeditwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LabelWithStatus</class>
    <extends>QWidget</extends>
    <header>labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -1591,6 +1629,11 @@ Authors of this application are NOT responsible for lost data.</string>
    <extends>QWidget</extends>
    <header>toolbareditor.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ColorLabel</class>
+   <extends>QLabel</extends>
+   <header>colorlabel.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

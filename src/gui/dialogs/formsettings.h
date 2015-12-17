@@ -39,7 +39,7 @@ struct TemporarySettings {
 
 class FormSettings : public QDialog {
     Q_OBJECT
-    
+
   public:
     // Constructors and destructors.
     explicit FormSettings(QWidget *parent = 0);
@@ -60,6 +60,7 @@ class FormSettings : public QDialog {
     void loadInterface();
     void saveInterface();
     void onSkinSelected(QTreeWidgetItem *current, QTreeWidgetItem *previous);
+    void selectNewNotificationColor();
 
     void loadDownloads();
     void saveDownloads();

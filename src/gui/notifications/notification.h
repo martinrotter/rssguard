@@ -70,6 +70,7 @@ class Notification : public QWidget {
     void setupWidget();
     void updateGeometries();
 
+    QColor m_backgroundColor;
     QString m_title;
     QString m_text;
     QPixmap m_icon;

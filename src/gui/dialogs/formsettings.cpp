@@ -136,6 +136,7 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   connect(m_ui->m_cmbDatabaseDriver, SIGNAL(currentIndexChanged(int)), this, SLOT(selectSqlBackend(int)));
   connect(m_ui->m_btnDownloadsTargetDirectory, SIGNAL(clicked()), this, SLOT(selectDownloadsDirectory()));
   connect(m_ui->m_checkMysqlShowPassword, SIGNAL(toggled(bool)), this, SLOT(switchMysqlPasswordVisiblity(bool)));
+  connect(m_ui->m_btnChangeNotificationColor, SIGNAL(clicked()), this, SLOT(selectNewNotificationColor()));
 
   // Load all settings.
   loadGeneral();
@@ -167,6 +168,14 @@ void FormSettings::onSkinSelected(QTreeWidgetItem *current,
   if (current != NULL) {
     Skin skin = current->data(0, Qt::UserRole).value<Skin>();
     m_ui->m_lblSelectedContents->setText(skin.m_visibleName);
+  }
+}
+
+void FormSettings::selectNewNotificationColor() {
+  QColorDialog dialog(m_ui->m_lblNotificationColor->color(), this);
+
+  if (dialog.exec() == QDialog::Accepted) {
+    m_ui->m_lblNotificationColor->setColor(dialog.selectedColor());
   }
 }
 
@@ -733,6 +742,7 @@ void FormSettings::loadInterface() {
   m_ui->m_cmbNotificationPosition->addItem(tr("Top-right corner"), Qt::TopRightCorner);
   m_ui->m_cmbNotificationPosition->setCurrentIndex(m_ui->m_cmbNotificationPosition->findData(static_cast<Qt::Corner>(settings->value(GROUP(GUI), SETTING(GUI::FancyNotificationsPosition)).toInt())));
   m_ui->m_grpBaseNotifications->setChecked(settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool());
+  m_ui->m_lblNotificationColor->setColor(settings->value(GROUP(GUI), SETTING(GUI::NotificationBackgroundColor)).value<QColor>());
 
   // Load settings of icon theme.
   QString current_theme = qApp->icons()->currentIconTheme();
@@ -837,6 +847,7 @@ void FormSettings::saveInterface() {
   settings->setValue(GROUP(GUI), GUI::UseFancyNotifications, m_ui->m_grpNotifications->isChecked());
   settings->setValue(GROUP(GUI), GUI::EnableNotifications, m_ui->m_grpBaseNotifications->isChecked());
   settings->setValue(GROUP(GUI), GUI::FancyNotificationsPosition, static_cast<Qt::Corner>(m_ui->m_cmbNotificationPosition->itemData(m_ui->m_cmbNotificationPosition->currentIndex()).toInt()));
+  settings->setValue(GROUP(GUI), GUI::NotificationBackgroundColor, m_ui->m_lblNotificationColor->color());
 
   // Save selected icon theme.
   QString selected_icon_theme = m_ui->m_cmbIconTheme->itemData(m_ui->m_cmbIconTheme->currentIndex()).toString();

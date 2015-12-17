@@ -65,8 +65,8 @@ project(rssguard)
 
 set(APP_NAME "RSS Guard")
 set(APP_LOW_NAME "rssguard")
-set(APP_VERSION "3.0.0")
-set(FILE_VERSION "3,0,0,0")
+set(APP_VERSION "3.0.1")
+set(FILE_VERSION "3,0,1,0")
 set(APP_AUTHOR "Martin Rotter")
 set(APP_URL "http://bitbucket.org/skunkos/rssguard")
 set(APP_URL_ISSUES "http://bitbucket.org/skunkos/rssguard/issues")
@@ -381,6 +381,7 @@ set(APP_SOURCES
   src/gui/edittableview.cpp
   src/gui/squeezelabel.cpp
   src/gui/discoverfeedsbutton.cpp
+  src/gui/colorlabel.cpp
 
   # DYNAMIC-SHORTCUTS sources.
   src/dynamic-shortcuts/shortcutcatcher.cpp
@@ -516,6 +517,7 @@ set(APP_HEADERS
   src/gui/edittableview.h
   src/gui/squeezelabel.h
   src/gui/discoverfeedsbutton.h
+  src/gui/colorlabel.h
 
   # DYNAMIC-SHORTCUTS headers.
   src/dynamic-shortcuts/dynamicshortcutswidget.h
