@@ -242,7 +242,7 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
     QDomElement rel_elem = releases.at(0).toElement();
 
     update.m_availableVersion = rel_elem.attributes().namedItem(QSL("version")).toAttr().value();
-    update.m_changes = changelog;
+    update.m_changes = QString::fromUtf8(changelog);
 
     QDomNodeList urls = rel_elem.elementsByTagName(QSL("url"));
 

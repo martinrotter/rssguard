@@ -77,13 +77,11 @@ void FormAbout::loadSettingsAndPaths() {
 }
 
 void FormAbout::loadLicenseAndInformation() {
-  QTextStream text_stream;
   QFile file;
-  text_stream.setDevice(&file);
 
   file.setFileName(APP_INFO_PATH + QL1S("/COPYING_GNU_GPL_HTML"));
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtLicenseGnu->setText(text_stream.readAll());
+    m_ui->m_txtLicenseGnu->setText(QString::fromUtf8(file.readAll()));
   }
   else {
     m_ui->m_txtLicenseGnu->setText(tr("License not found."));
@@ -92,7 +90,7 @@ void FormAbout::loadLicenseAndInformation() {
 
   file.setFileName(APP_INFO_PATH + QL1S("/COPYING_BSD"));
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtLicenseBsd->setText(text_stream.readAll());
+    m_ui->m_txtLicenseBsd->setText(QString::fromUtf8(file.readAll()));
   }
   else {
     m_ui->m_txtLicenseBsd->setText(tr("License not found."));
@@ -101,7 +99,7 @@ void FormAbout::loadLicenseAndInformation() {
 
   file.setFileName(APP_INFO_PATH + QL1S("/CHANGELOG"));
   if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-    m_ui->m_txtChangelog->setText(text_stream.readAll());
+    m_ui->m_txtChangelog->setText(QString::fromUtf8(file.readAll()));
   }
   else {
     m_ui->m_txtChangelog->setText(tr("Changelog not found."));
