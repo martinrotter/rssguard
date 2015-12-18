@@ -312,7 +312,6 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
     // Now, check if this message is already in the DB.
     if (id_existing_message >= 0) {
       // Message is already in the DB.
-
       if (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
           message.m_isRead != is_read_existing_message ||
           message.m_isImportant != is_important_existing_message) {
