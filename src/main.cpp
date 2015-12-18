@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
   // TODO: dat '\n' do konstant
 
   // Check if another instance is running.
-  if (application.sendMessage((QStringList() << APP_IS_RUNNING << application.arguments().mid(1)).join("\n"))) {
+  if (application.sendMessage((QStringList() << APP_IS_RUNNING << application.arguments().mid(1)).join(QSL("\n")))) {
     qWarning("Another instance of the application is already running. Notifying it.");
     return EXIT_FAILURE;
   }
