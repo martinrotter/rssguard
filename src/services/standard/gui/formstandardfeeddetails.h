@@ -29,7 +29,7 @@ namespace Ui {
 
 class StandardServiceRoot;
 class StandardFeed;
-class StandardCategory;
+class Category;
 class RootItem;
 
 class FormStandardFeedDetails : public QDialog {
@@ -78,8 +78,7 @@ class FormStandardFeedDetails : public QDialog {
     void initialize();
 
     // Loads categories into the dialog from the model.
-    void loadCategories(const QList<StandardCategory*> categories,
-                        RootItem *root_item);
+    void loadCategories(const QList<Category*> categories, RootItem *root_item);
 
   private:
     Ui::FormStandardFeedDetails *m_ui;

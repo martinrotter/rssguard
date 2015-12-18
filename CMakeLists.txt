@@ -444,6 +444,7 @@ set(APP_SOURCES
   src/services/tt-rss/ttrsscategory.cpp
   src/services/tt-rss/ttrssrecyclebin.cpp
   src/services/tt-rss/gui/formeditaccount.cpp
+  src/services/tt-rss/gui/formeditfeed.cpp
   src/services/tt-rss/network/ttrssnetworkfactory.cpp
 
   # NETWORK-WEB sources.
@@ -566,6 +567,7 @@ set(APP_HEADERS
   src/services/tt-rss/ttrssfeed.h
   src/services/tt-rss/ttrsscategory.h
   src/services/tt-rss/gui/formeditaccount.h
+  src/services/tt-rss/gui/formeditfeed.h
 
   # NETWORK-WEB headers.
   src/network-web/webpage.h
@@ -608,6 +610,7 @@ set(APP_FORMS
 
   # TT-RSS service forms.
   src/services/tt-rss/gui/formeditaccount.ui
+  src/services/tt-rss/gui/formeditfeed.ui
 
   # NETWORK forms.
   src/network-web/downloadmanager.ui

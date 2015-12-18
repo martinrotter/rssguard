@@ -26,6 +26,7 @@
 #include "gui/messagebox.h"
 #include "gui/systemtrayicon.h"
 #include "gui/dialogs/formmain.h"
+#include "services/abstract/category.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardserviceroot.h"
 
@@ -76,7 +77,7 @@ void FormStandardCategoryDetails::setEditableCategory(StandardCategory *editable
 
 int FormStandardCategoryDetails::exec(StandardCategory *input_category, RootItem *parent_to_select) {
   // Load categories.
-  loadCategories(m_serviceRoot->allCategories(), m_serviceRoot, input_category);
+  loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, input_category);
 
   if (input_category == NULL) {
     // User is adding new category.
@@ -246,14 +247,14 @@ void FormStandardCategoryDetails::initialize() {
   m_ui->m_txtTitle->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormStandardCategoryDetails::loadCategories(const QList<StandardCategory*> categories,
+void FormStandardCategoryDetails::loadCategories(const QList<Category*> categories,
                                                  RootItem *root_item,
                                                  StandardCategory *input_category) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (StandardCategory *category, categories) {
+  foreach (Category *category, categories) {
     if (input_category != NULL && (category == input_category || category->isChildOf(input_category))) {
       // This category cannot be selected as the new
       // parent for currently edited category, so

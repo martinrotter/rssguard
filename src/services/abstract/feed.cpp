@@ -50,3 +50,30 @@ QVariant Feed::data(int column, int role) const {
       return RootItem::data(column, role);
   }
 }
+
+int Feed::autoUpdateInitialInterval() const {
+  return m_autoUpdateInitialInterval;
+}
+
+void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {
+  // If new initial auto-update interval is set, then
+  // we should reset time that remains to the next auto-update.
+  m_autoUpdateInitialInterval = auto_update_interval;
+  m_autoUpdateRemainingInterval = auto_update_interval;
+}
+
+Feed::AutoUpdateType Feed::autoUpdateType() const {
+  return m_autoUpdateType;
+}
+
+void Feed::setAutoUpdateType(Feed::AutoUpdateType auto_update_type) {
+  m_autoUpdateType = auto_update_type;
+}
+
+int Feed::autoUpdateRemainingInterval() const {
+  return m_autoUpdateRemainingInterval;
+}
+
+void Feed::setAutoUpdateRemainingInterval(int auto_update_remaining_interval) {
+  m_autoUpdateRemainingInterval = auto_update_remaining_interval;
+}

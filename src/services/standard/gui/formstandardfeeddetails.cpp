@@ -20,8 +20,8 @@
 #include "definitions/definitions.h"
 #include "core/feedsmodel.h"
 #include "services/abstract/rootitem.h"
+#include "services/abstract/category.h"
 #include "services/standard/standardserviceroot.h"
-#include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
@@ -61,7 +61,7 @@ FormStandardFeedDetails::~FormStandardFeedDetails() {
 
 int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_select) {
   // Load categories.
-  loadCategories(m_serviceRoot->allCategories(), m_serviceRoot);
+  loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
   if (input_feed == NULL) {
     // User is adding new category.
@@ -169,15 +169,15 @@ void FormStandardFeedDetails::onAuthenticationSwitched() {
 }
 
 void FormStandardFeedDetails::onAutoUpdateTypeChanged(int new_index) {
-  StandardFeed::AutoUpdateType auto_update_type = static_cast<StandardFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
+  Feed::AutoUpdateType auto_update_type = static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
-    case StandardFeed::DontAutoUpdate:
-    case StandardFeed::DefaultAutoUpdate:
+    case Feed::DontAutoUpdate:
+    case Feed::DefaultAutoUpdate:
       m_ui->m_spinAutoUpdateInterval->setEnabled(false);
       break;
 
-    case StandardFeed::SpecificAutoUpdate:
+    case Feed::SpecificAutoUpdate:
     default:
       m_ui->m_spinAutoUpdateInterval->setEnabled(true);
   }
@@ -235,7 +235,7 @@ void FormStandardFeedDetails::apply() {
   new_feed->setPasswordProtected(m_ui->m_gbAuthentication->isChecked());
   new_feed->setUsername(m_ui->m_txtUsername->lineEdit()->text());
   new_feed->setPassword(m_ui->m_txtPassword->lineEdit()->text());
-  new_feed->setAutoUpdateType(static_cast<StandardFeed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+  new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
   new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
 
   if (m_editableFeed == NULL) {
@@ -458,9 +458,9 @@ void FormStandardFeedDetails::initialize() {
 
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) StandardFeed::DefaultAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) StandardFeed::SpecificAutoUpdate));
-  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) StandardFeed::DontAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update using global interval"), QVariant::fromValue((int) Feed::DefaultAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Auto-update every"), QVariant::fromValue((int) Feed::SpecificAutoUpdate));
+  m_ui->m_cmbAutoUpdateType->addItem(tr("Do not auto-update at all"), QVariant::fromValue((int) Feed::DontAutoUpdate));
 
   // Set tab order.
   setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_cmbType);
@@ -484,13 +484,13 @@ void FormStandardFeedDetails::initialize() {
   m_ui->m_txtUrl->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormStandardFeedDetails::loadCategories(const QList<StandardCategory*> categories,
+void FormStandardFeedDetails::loadCategories(const QList<Category*> categories,
                                              RootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));
 
-  foreach (StandardCategory *category, categories) {
+  foreach (Category *category, categories) {
     m_ui->m_cmbParentCategory->addItem(category->icon(),
                                        category->title(),
                                        QVariant::fromValue((void*) category));

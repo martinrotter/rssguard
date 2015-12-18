@@ -35,7 +35,12 @@ class TtRssFeed : public Feed {
 
     TtRssServiceRoot *serviceRoot();
 
+    QVariant data(int column, int role) const;
+
     void updateCounts(bool including_total_count);
+
+    bool canBeEdited();
+    bool editViaGui();
 
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
@@ -48,6 +53,8 @@ class TtRssFeed : public Feed {
 
     int customId() const;
     void setCustomId(int custom_id);
+
+    bool editItself(TtRssFeed *new_feed_data);
 
   private:
     int updateMessages(const QList<Message> &messages);

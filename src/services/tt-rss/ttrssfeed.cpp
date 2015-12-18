@@ -22,12 +22,15 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "gui/dialogs/formmain.h"
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/gui/formeditfeed.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QPointer>
 
 
 TtRssFeed::TtRssFeed(RootItem *parent)
@@ -48,6 +51,49 @@ TtRssFeed::~TtRssFeed() {
 
 TtRssServiceRoot *TtRssFeed::serviceRoot() {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
+}
+
+QVariant TtRssFeed::data(int column, int role) const {
+  switch (role) {
+    case Qt::ToolTipRole:
+      if (column == FDS_MODEL_TITLE_INDEX) {
+        QString auto_update_string;
+
+        switch (autoUpdateType()) {
+          case DontAutoUpdate:
+            //: Describes feed auto-update status.
+            auto_update_string = tr("does not use auto-update");
+            break;
+
+          case DefaultAutoUpdate:
+            //: Describes feed auto-update status.
+            auto_update_string = tr("uses global settings");
+            break;
+
+          case SpecificAutoUpdate:
+          default:
+            //: Describes feed auto-update status.
+            auto_update_string = tr("uses specific settings "
+                                    "(%n minute(s) to next auto-update)",
+                                    0,
+                                    autoUpdateRemainingInterval());
+            break;
+        }
+
+        //: Tooltip for feed.
+        return tr("%1"
+                  "%2\n\n"
+                  "Auto-update status: %3").arg(title(),
+                                                description().isEmpty() ? QString() : QString('\n') + description(),
+                                                auto_update_string);
+      }
+      else {
+        return Feed::data(column, role);
+      }
+
+    default:
+      return Feed::data(column, role);
+  }
 }
 
 void TtRssFeed::updateCounts(bool including_total_count) {
@@ -74,6 +120,18 @@ void TtRssFeed::updateCounts(bool including_total_count) {
 
     m_unreadCount = new_unread_count;
   }
+}
+
+bool TtRssFeed::canBeEdited() {
+  return true;
+}
+
+bool TtRssFeed::editViaGui() {
+  QPointer<FormEditFeed> form_pointer = new FormEditFeed(serviceRoot(), qApp->mainForm());
+
+  form_pointer.data()->execForEdit(this);
+  delete form_pointer.data();
+  return false;
 }
 
 int TtRssFeed::countOfAllMessages() const {
@@ -169,6 +227,30 @@ int TtRssFeed::customId() const {
 
 void TtRssFeed::setCustomId(int custom_id) {
   m_customId = custom_id;
+}
+
+bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {
+  QSqlDatabase database = qApp->database()->connection("aa", DatabaseFactory::FromSettings);
+  QSqlQuery query_update(database);
+
+  query_update.setForwardOnly(true);
+  query_update.prepare("UPDATE Feeds "
+                       "SET update_type = :update_type, update_interval = :update_interval "
+                       "WHERE id = :id;");
+
+  query_update.bindValue(QSL(":update_type"), (int) new_feed_data->autoUpdateType());
+  query_update.bindValue(QSL(":update_interval"), new_feed_data->autoUpdateInitialInterval());
+  query_update.bindValue(QSL(":id"), id());
+
+  if (query_update.exec()) {
+    setAutoUpdateType(new_feed_data->autoUpdateType());
+    setAutoUpdateInitialInterval(new_feed_data->autoUpdateInitialInterval());
+
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 int TtRssFeed::updateMessages(const QList<Message> &messages) {

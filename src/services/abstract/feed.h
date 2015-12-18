@@ -69,32 +69,14 @@ class Feed : public RootItem {
     // Members to override. */
     /////////////////////////////////////////
 
-    inline int autoUpdateInitialInterval() const {
-      return m_autoUpdateInitialInterval;
-    }
+    int autoUpdateInitialInterval() const;
+    void setAutoUpdateInitialInterval(int auto_update_interval);
 
-    inline void setAutoUpdateInitialInterval(int auto_update_interval) {
-      // If new initial auto-update interval is set, then
-      // we should reset time that remains to the next auto-update.
-      m_autoUpdateInitialInterval = auto_update_interval;
-      m_autoUpdateRemainingInterval = auto_update_interval;
-    }
+    AutoUpdateType autoUpdateType() const;
+    void setAutoUpdateType(AutoUpdateType auto_update_type);
 
-    inline AutoUpdateType autoUpdateType() const {
-      return m_autoUpdateType;
-    }
-
-    inline void setAutoUpdateType(const AutoUpdateType &autoUpdateType) {
-      m_autoUpdateType = autoUpdateType;
-    }
-
-    inline int autoUpdateRemainingInterval() const {
-      return m_autoUpdateRemainingInterval;
-    }
-
-    inline void setAutoUpdateRemainingInterval(int autoUpdateRemainingInterval) {
-      m_autoUpdateRemainingInterval = autoUpdateRemainingInterval;
-    }
+    int autoUpdateRemainingInterval() const;
+    void setAutoUpdateRemainingInterval(int auto_update_remaining_interval);
 
     inline Status status() const {
       return m_status;
