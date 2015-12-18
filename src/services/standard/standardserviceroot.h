@@ -95,6 +95,7 @@ class StandardServiceRoot : public ServiceRoot {
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
 
     void loadFromDatabase();
+    void checkArgumentForFeedAdding(const QString &argument);
 
   public slots:
     void addNewCategory();
@@ -103,6 +104,8 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    void checkArgumentsForFeedAdding();
+
     // Returns converted ids of given feeds
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed *> &feeds);

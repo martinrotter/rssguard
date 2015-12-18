@@ -41,6 +41,7 @@
 #include <QAction>
 #include <QPointer>
 #include <QSqlTableModel>
+#include <QClipboard>
 
 
 StandardServiceRoot::StandardServiceRoot(RootItem *parent)
@@ -95,6 +96,8 @@ void StandardServiceRoot::start() {
       }
     }
   }
+
+  checkArgumentsForFeedAdding();
 }
 
 void StandardServiceRoot::stop() {
@@ -294,6 +297,19 @@ void StandardServiceRoot::loadFromDatabase(){
   // As the last item, add recycle bin, which is needed.
   appendChild(m_recycleBin);
   m_recycleBin->updateCounts(true);
+}
+
+void StandardServiceRoot::checkArgumentsForFeedAdding() {
+  foreach (QString arg, qApp->arguments().mid(1)) {
+    checkArgumentForFeedAdding(arg);
+  }
+}
+
+void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
+  if (argument.startsWith(QL1S("feed:"))) {
+    qApp->clipboard()->setText(argument);
+    addNewFeed();
+  }
 }
 
 QList<StandardCategory*> StandardServiceRoot::allCategories() {

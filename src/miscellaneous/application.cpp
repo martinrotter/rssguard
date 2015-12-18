@@ -29,6 +29,7 @@
 #include "adblock/adblockmanager.h"
 
 #include "services/abstract/serviceroot.h"
+#include "services/standard/standardserviceroot.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
 
@@ -158,12 +159,30 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 void Application::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 
-  if (message == APP_IS_RUNNING) {
-    showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
-    mainForm()->display();
-  }
-  else if (message == APP_QUIT_INSTANCE) {
-    quit();
+  // TODO: dat '\n' do konstant a taky "feed:"
+
+  foreach (QString msg,  message.split('\n')) {
+    if (msg == APP_IS_RUNNING) {
+      showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
+      mainForm()->display();
+    }
+    else if (msg == APP_QUIT_INSTANCE) {
+      quit();
+    }
+    else if (msg.startsWith(QL1S("feed:"))) {
+      // Application was running, and someone wants to add new feed.
+      StandardServiceRoot *root = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
+
+      if (root != NULL) {
+        root->checkArgumentForFeedAdding(msg);
+      }
+      else {
+        showGuiMessage(tr("Cannot add feed"),
+                       tr("Feed cannot be added because standard RSS/ATOM account is not enabled."),
+                       QSystemTrayIcon::Warning, qApp->mainForm(),
+                       true);
+      }
+    }
   }
 }
 

@@ -5,6 +5,7 @@ Added:
 
 ▪ Background color of notifications is now changeable. (issue #134)
 ▪ Auto-update setting of individual Tiny Tiny RSS feeds can now be changed.
+▪ RSS Guard is now useable as external RSS reader by common web browsers like Firefox etc. (issue #135)
 
 3.0.0
 —————

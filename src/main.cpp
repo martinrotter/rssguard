@@ -66,8 +66,10 @@ int main(int argc, char *argv[]) {
   Application application(APP_LOW_NAME, argc, argv);
   qDebug("Instantiated Application class.");
 
+  // TODO: dat '\n' do konstant
+
   // Check if another instance is running.
-  if (application.sendMessage(APP_IS_RUNNING)) {
+  if (application.sendMessage((QStringList() << APP_IS_RUNNING << application.arguments().mid(1)).join('\n'))) {
     qWarning("Another instance of the application is already running. Notifying it.");
     return EXIT_FAILURE;
   }
