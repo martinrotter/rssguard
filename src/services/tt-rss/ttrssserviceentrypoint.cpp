@@ -29,6 +29,7 @@
 
 #include <QPointer>
 #include <QSqlQuery>
+#include <QSqlError>
 
 
 TtRssServiceEntryPoint::TtRssServiceEntryPoint(){
@@ -100,6 +101,9 @@ QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
       root->updateTitle();
       roots.append(root);
     }
+  }
+  else {
+    qWarning("TT-RSS: Getting list of activated accounts failed: '%s'.", qPrintable(query.lastError().text()));
   }
 
   return roots;

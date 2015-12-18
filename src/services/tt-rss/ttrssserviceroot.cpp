@@ -441,6 +441,9 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
       updateTitle();
       itemChanged(QList<RootItem*>() << this);
     }
+    else {
+      qWarning("TT-RSS: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    }
   }
   else {
     // We are probably saving newly added account.
@@ -449,6 +452,7 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 
     // First obtain the ID, which can be assigned to this new account.
     if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
+      qWarning("TT-RSS: Getting max ID from Accounts table failed: '%s'.", qPrintable(query.lastError().text()));
       return;
     }
 
@@ -478,6 +482,9 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
       setId(id_to_assign);
       setAccountId(id_to_assign);
       updateTitle();
+    }
+    else {
+      qWarning("TT-RSS: Saving of new account failed: '%s'.", qPrintable(query.lastError().text()));
     }
   }
 }
