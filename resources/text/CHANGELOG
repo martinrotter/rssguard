@@ -7,6 +7,10 @@ Added:
 ▪ Auto-update setting of individual Tiny Tiny RSS feeds can now be changed.
 ▪ RSS Guard is now useable as external RSS reader by common web browsers like Firefox etc. (issue #135)
 
+Fixed:
+
+▪ Problem with adding/editing TT-RSS accounts. (bug #137)
+
 3.0.0
 —————
 

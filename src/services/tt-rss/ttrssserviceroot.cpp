@@ -431,10 +431,10 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     query.bindValue(QSL(":username"), m_network->username());
     query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->password()));
     query.bindValue(QSL(":url"), m_network->url());
-    query.bindValue(QSL(":auth_protected"), m_network->authIsUsed());
+    query.bindValue(QSL(":auth_protected"), (int) m_network->authIsUsed());
     query.bindValue(QSL(":auth_username"), m_network->authUsername());
     query.bindValue(QSL(":auth_password"), TextFactory::encrypt(m_network->authPassword()));
-    query.bindValue(QSL(":force_update"), m_network->forceServerSideUpdate());
+    query.bindValue(QSL(":force_update"), (int) m_network->forceServerSideUpdate());
     query.bindValue(QSL(":id"), accountId());
 
     if (query.exec()) {
@@ -470,11 +470,11 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
     query.bindValue(QSL(":id"), id_to_assign);
     query.bindValue(QSL(":username"), m_network->username());
     query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->password()));
-    query.bindValue(QSL(":auth_protected"), m_network->authIsUsed());
+    query.bindValue(QSL(":auth_protected"), (int) m_network->authIsUsed());
     query.bindValue(QSL(":auth_username"), m_network->authUsername());
     query.bindValue(QSL(":auth_password"), TextFactory::encrypt(m_network->authPassword()));
     query.bindValue(QSL(":url"), m_network->url());
-    query.bindValue(QSL(":force_update"), m_network->forceServerSideUpdate());
+    query.bindValue(QSL(":force_update"), (int) m_network->forceServerSideUpdate());
 
     saved &= query.exec();
 
