@@ -69,6 +69,7 @@ class TtRssServiceRoot : public ServiceRoot {
     bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
     bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
+    // Access to network.
     TtRssNetworkFactory *network() const;
 
     // Returns list of custom IDS of all DB messages in given item.

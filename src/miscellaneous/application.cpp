@@ -159,9 +159,7 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 void Application::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 
-  // TODO: dat '\n' do konstant a taky "feed:"
-
-  foreach (QString msg,  message.split('\n')) {
+  foreach (QString msg,  message.split(ARGUMENTS_LIST_SEPARATOR)) {
     if (msg == APP_IS_RUNNING) {
       showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
       mainForm()->display();
@@ -169,7 +167,7 @@ void Application::processExecutionMessage(const QString &message) {
     else if (msg == APP_QUIT_INSTANCE) {
       quit();
     }
-    else if (msg.startsWith(QL1S("feed:"))) {
+    else if (msg.startsWith(QL1S(URI_SCHEME_FEED))) {
       // Application was running, and someone wants to add new feed.
       StandardServiceRoot *root = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
 

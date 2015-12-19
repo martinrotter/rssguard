@@ -41,6 +41,8 @@
 #define SERVICE_CODE_STD_RSS  "std-rss"
 #define SERVICE_CODE_TT_RSS   "tt-rss"
 
+#define ARGUMENTS_LIST_SEPARATOR  "\n"
+
 #define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define ECNLOSURES_INNER_SEPARATOR            '&'
 #define URI_SCHEME_FEED                       "feed://"
