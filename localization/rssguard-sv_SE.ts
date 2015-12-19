@@ -976,11 +976,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Notera att API-nivå %1 är miniminivå.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL skall avslutas med &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3100,7 +3100,11 @@ genom att klicka på denna popup-avisering.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Denna tjänst erbjuder integration med Tiny Tiny RSS.
+
+Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och aggregator, designad för att låta dig läsa nyheter från valfri webbplats, med känslan så nära en riktig skrivbordsklient som möjligt.
+
+Minst API-nivå %1 krävs.</translation>
     </message>
 </context>
 <context>

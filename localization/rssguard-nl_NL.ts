@@ -977,11 +977,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Merk op dat tenminste een API-niveau is vereist van %1.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>URL zou moeten eindigen met &quot;/api/&quot;.</translation>
     </message>
 </context>
 <context>
@@ -3109,7 +3109,11 @@ door te clicken op deze popup melding.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Deze service biedt integratie met TinyTiny RSS.
+
+Tiny Tiny RSS is een open source web-based nieuws-feed (RSS / Atom) lezer en aggregator, ontworpen om u nieuws te laten lezen vanaf elke locatie, terwijl u het gevoel hebt zo dicht mogelijk bij een echte desktop te zijn.
+
+Een API niveau van tenminste %1 is vereist.</translation>
     </message>
 </context>
 <context>
