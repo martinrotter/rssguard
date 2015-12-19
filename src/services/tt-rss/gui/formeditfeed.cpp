@@ -28,7 +28,7 @@
 
 
 FormEditFeed::FormEditFeed(TtRssServiceRoot *root, QWidget *parent)
-  : QDialog(parent), m_ui(new Ui::FormEditFeed), m_root(root) {
+  : QDialog(parent), m_ui(new Ui::FormEditFeed), m_root(root), m_loadedFeed(NULL) {
   m_ui->setupUi(this);
   initialize();
 
