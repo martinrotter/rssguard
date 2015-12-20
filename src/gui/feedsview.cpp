@@ -273,7 +273,7 @@ void FeedsView::openSelectedItemsInNewspaperMode() {
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(messages);
-    QTimer::singleShot(0, this, SLOT(markSelectedItemRead()));
+    QTimer::singleShot(150, this, SLOT(markSelectedItemRead()));
   }
 }
 

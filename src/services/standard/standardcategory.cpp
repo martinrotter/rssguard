@@ -173,14 +173,13 @@ bool StandardCategory::addItself(RootItem *parent) {
   query_add.bindValue(QSL(":account_id"), parent->getParentServiceRoot()->accountId());
 
   if (!query_add.exec()) {
-    qDebug("Failed to add category to database: %s.", qPrintable(query_add.lastError().text()));
+    qDebug("Failed to add category to database: '%s'.", qPrintable(query_add.lastError().text()));
 
     // Query failed.
     return false;
   }
 
   setId(query_add.lastInsertId().toInt());
-
   return true;
 }
 

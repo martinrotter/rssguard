@@ -227,21 +227,26 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 
 void StandardFeed::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_all(database);
-
-  query_all.setForwardOnly(true);
+  QSqlQuery query(database);
+  query.setForwardOnly(true);
 
   if (including_total_count) {
-    if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = '%1' AND is_deleted = 0 AND account_id = %2;").arg(QString::number(id()),
-                                                                                                                              QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
-      m_totalCount = query_all.value(0).toInt();
+    query.prepare(QSL("SELECT count(*) FROM Messages WHERE feed = :feed AND is_pdeleted = 0 AND is_deleted = 0 AND account_id = :account_id;"));
+    query.bindValue(QSL(":feed"), id());
+    query.bindValue(QSL(":account_id"), serviceRoot()->accountId());
+
+    if (query.exec() && query.next()) {
+      m_totalCount = query.value(0).toInt();
     }
   }
 
   // Obtain count of unread messages.
-  if (query_all.exec(QString("SELECT count(*) FROM Messages WHERE feed = '%1' AND is_deleted = 0 AND is_read = 0 AND account_id = %2;").arg(QString::number(id()),
-                                                                                                                                            QString::number(const_cast<StandardFeed*>(this)->serviceRoot()->accountId()))) && query_all.next()) {
-    int new_unread_count = query_all.value(0).toInt();
+  query.prepare(QSL("SELECT count(*) FROM Messages WHERE feed = :feed AND is_pdeleted = 0 AND is_deleted = 0 AND is_read = 0 AND account_id = :account_id;"));
+  query.bindValue(QSL(":feed"), id());
+  query.bindValue(QSL(":account_id"), serviceRoot()->accountId());
+
+  if (query.exec() && query.next()) {
+    int new_unread_count = query.value(0).toInt();
 
     if (status() == NewMessages && new_unread_count < m_unreadCount) {
       setStatus(Normal);
@@ -544,7 +549,7 @@ bool StandardFeed::addItself(RootItem *parent) {
   query_add_feed.bindValue(QSL(":type"), (int) type());
 
   if (!query_add_feed.exec()) {
-    qDebug("Failed to add feed to database: %s.", qPrintable(query_add_feed.lastError().text()));
+    qDebug("Failed to add feed to database: '%s'.", qPrintable(query_add_feed.lastError().text()));
 
     // Query failed.
     return false;
@@ -641,7 +646,7 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
 
   if (!database.transaction()) {
     database.rollback();
-    qDebug("Transaction start for message downloader failed.");
+    qDebug("Transaction start for message downloader failed: '%s'.", qPrintable(database.lastError().text()));
     return updated_messages;
   }
 
@@ -692,7 +697,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
       }
 
       query_insert.finish();
-
       qDebug("Adding new message '%s' to DB.", qPrintable(message.m_title));
     }
     else if (message.m_createdFromFeed && !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch())) {
@@ -704,7 +708,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.exec();
         query_update.finish();
-
         qDebug("Updating contents of duplicate message '%s'.", qPrintable(message.m_title));
       }
       else {
@@ -723,7 +726,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
         }
 
         query_insert.finish();
-
         qDebug("Adding new duplicate (with potentially updated contents) message '%s' to DB.", qPrintable(message.m_title));
       }
     }
@@ -735,7 +737,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
 
   if (!database.commit()) {
     database.rollback();
-
     qDebug("Transaction commit for message downloader failed.");
   }
   else {
@@ -767,7 +768,6 @@ StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   else {
     setPassword(TextFactory::decrypt(record.value(FDS_DB_PASSWORD_INDEX).toString()));
   }
-
 
   setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
   setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());

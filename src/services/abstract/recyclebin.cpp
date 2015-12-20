@@ -118,35 +118,17 @@ QList<Message> RecycleBin::undeletedMessages() const {
 
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin read change.");
-    return false;
-  }
-
   QSqlQuery query_read_msg(db_handle);
   ServiceRoot *parent_root = getParentServiceRoot();
 
   query_read_msg.setForwardOnly(true);
-
-  if (!query_read_msg.prepare("UPDATE Messages SET is_read = :read "
-                              "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;")) {
-    qWarning("Query preparation failed for recycle bin read change.");
-
-    db_handle.rollback();
-    return false;
-  }
+  query_read_msg.prepare("UPDATE Messages SET is_read = :read "
+                         "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
 
   query_read_msg.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
   query_read_msg.bindValue(QSL(":account_id"), parent_root->accountId());
 
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for recycle bin read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
+  if (query_read_msg.exec()) {
     updateCounts(false);
 
     parent_root->itemChanged(QList<RootItem*>() << this);
@@ -154,18 +136,12 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
     return true;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
 bool RecycleBin::cleanMessages(bool clear_only_read) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin emptying.");
-    return false;
-  }
-
   ServiceRoot *parent_root = getParentServiceRoot();
   QSqlQuery query_empty_bin(db_handle);
 
@@ -181,22 +157,14 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
 
   query_empty_bin.bindValue(QSL(":account_id"), parent_root->accountId());
 
-  if (!query_empty_bin.exec()) {
-    qWarning("Query execution failed for recycle bin emptying.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
+  if (query_empty_bin.exec()) {
     updateCounts(true);
     parent_root->itemChanged(QList<RootItem*>() << this);
     parent_root->requestReloadMessageList(true);
-    return true;
+    return true;;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
@@ -206,12 +174,6 @@ bool RecycleBin::empty() {
 
 bool RecycleBin::restore() {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for recycle bin restoring.");
-    return false;
-  }
-
   ServiceRoot *parent_root = getParentServiceRoot();
   QSqlQuery query_empty_bin(db_handle);
 
@@ -220,15 +182,7 @@ bool RecycleBin::restore() {
                           "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
   query_empty_bin.bindValue(QSL(":account_id"), parent_root->accountId());
 
-  if (!query_empty_bin.exec()) {
-    qWarning("Query execution failed for recycle bin restoring.");
-
-    db_handle.rollback();
-    return false;
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
+  if (query_empty_bin.exec()) {
     parent_root->updateCounts(true);
     parent_root->itemChanged(parent_root->getSubTree());
     parent_root->requestReloadMessageList(true);
@@ -236,6 +190,6 @@ bool RecycleBin::restore() {
     return true;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }

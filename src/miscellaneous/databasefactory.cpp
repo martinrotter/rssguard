@@ -41,8 +41,7 @@ DatabaseFactory::~DatabaseFactory() {
 
 qint64 DatabaseFactory::getDatabaseSize() {
   if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
-    qint64 size = QFileInfo(sqliteDatabaseFilePath()).size();
-    return size;
+    return QFileInfo(sqliteDatabaseFilePath()).size();
   }
   else {
     return 0;

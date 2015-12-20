@@ -23,6 +23,7 @@
 #include "services/abstract/category.h"
 
 #include <QSqlQuery>
+#include <QSqlError>
 
 
 ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
@@ -34,61 +35,50 @@ ServiceRoot::~ServiceRoot() {
 
 bool ServiceRoot::deleteViaGui() {
   QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(connection);
+  int account_id = accountId();
+  query.setForwardOnly(true);
 
-  // Remove all messages.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM Messages WHERE account_id = %1;").arg(accountId()))) {
-    return false;
+  QStringList queries;
+  queries << QSL("DELETE FROM Messages WHERE account_id = :account_id;") <<
+             QSL("DELETE FROM Feeds WHERE account_id = :account_id;") <<
+             QSL("DELETE FROM Categories WHERE account_id = :account_id;") <<
+             QSL("DELETE FROM Accounts WHERE id = :account_id;");
+
+  foreach (const QString &q, queries) {
+    query.prepare(q);
+    query.bindValue(QSL(":account_id"), account_id);
+
+    if (!query.exec()) {
+      qCritical("Removing of account from DB failed, this is critical: '%s'.", qPrintable(query.lastError().text()));
+      return false;
+    }
+    else {
+      query.finish();
+    }
   }
 
-  // Remove all feeds.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM Feeds WHERE account_id = %1;").arg(accountId()))) {
-    return false;
-  }
-
-  // Remove all categories.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM Categories WHERE account_id = %1;").arg(accountId()))) {
-    return false;
-  }
-
-  // Switch "existence" flag.
-  bool data_removed = QSqlQuery(connection).exec(QString("DELETE FROM Accounts WHERE id = %1;").arg(accountId()));
-
-  if (data_removed) {
-    requestItemRemoval(this);
-  }
-
-  return data_removed;
+  requestItemRemoval(this);
+  return true;
 }
 
 bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(db_handle);
+  query.setForwardOnly(true);
+  query.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
 
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds read change.");
-    return false;
-  }
+  query.bindValue(QSL(":account_id"), accountId());
+  query.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
 
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
-
-  query_read_msg.bindValue(QSL(":account_id"), accountId());
-  query_read_msg.bindValue(QSL(":read"), status == RootItem::Read ? 1 : 0);
-
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for feeds read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
+  if (query.exec()) {
     updateCounts(false);
     itemChanged(getSubTree());
     requestReloadMessageList(status == RootItem::Read);
     return true;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
@@ -96,20 +86,18 @@ QList<Message> ServiceRoot::undeletedMessages() const {
   QList<Message> messages;
   int account_id = accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(database);
+  QSqlQuery query(database);
 
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT * "
-                         "FROM Messages "
-                         "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
-  query_read_msg.bindValue(QSL(":account_id"), account_id);
+  query.setForwardOnly(true);
+  query.prepare("SELECT * "
+                "FROM Messages "
+                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
+  query.bindValue(QSL(":account_id"), account_id);
 
-  // FIXME: Fix those const functions, this is fucking ugly.
-
-  if (query_read_msg.exec()) {
-    while (query_read_msg.next()) {
+  if (query.exec()) {
+    while (query.next()) {
       bool decoded;
-      Message message = Message::fromSqlRecord(query_read_msg.record(), &decoded);
+      Message message = Message::fromSqlRecord(query.record(), &decoded);
 
       if (decoded) {
         messages.append(message);

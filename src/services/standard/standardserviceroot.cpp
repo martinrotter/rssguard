@@ -149,22 +149,11 @@ RecycleBin *StandardServiceRoot::recycleBin() {
 
 bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus read) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds read change.");
-    return false;
-  }
-
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
 
-  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
-    qWarning("Query preparation failed for feeds read change.");
-
-    db_handle.rollback();
-    return false;
-  }
+  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))));
 
   query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
 

@@ -60,6 +60,7 @@ class DatabaseFactory : public QObject {
     // Destructor.
     virtual ~DatabaseFactory();
 
+    // Returns size of DB file.
     qint64 getDatabaseSize();
 
     // If in-memory is true, then :memory: database is returned

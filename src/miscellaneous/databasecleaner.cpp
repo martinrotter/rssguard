@@ -27,7 +27,6 @@
 
 
 DatabaseCleaner::DatabaseCleaner(QObject *parent) : QObject(parent) {
-  setObjectName("DatabaseCleaner");
 }
 
 DatabaseCleaner::~DatabaseCleaner() {
@@ -42,7 +41,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
   bool result = true;
   int difference = 99 / 8;
   int progress = 0;
-  QSqlDatabase database = qApp->database()->connection(objectName(), DatabaseFactory::FromSettings);
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   if (which_data.m_removeReadMessages) {
     progress += difference;

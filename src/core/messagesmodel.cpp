@@ -33,7 +33,6 @@
 MessagesModel::MessagesModel(QObject *parent)
   : QSqlTableModel(parent, qApp->database()->connection(QSL("MessagesModel"), DatabaseFactory::FromSettings)),
     m_messageHighlighter(NoHighlighting), m_customDateFormat(QString()) {
-  setObjectName(QSL("MessagesModel"));
   setupFonts();
   setupIcons();
   setupHeaderData();
