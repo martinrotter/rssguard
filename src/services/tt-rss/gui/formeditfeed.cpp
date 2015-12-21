@@ -198,9 +198,23 @@ void FormEditFeed::saveFeed() {
 }
 
 void FormEditFeed::addNewFeed() {
-  // Store feed online and if successfull, then store into DB/model.
+  TtRssFeed *new_feed= new TtRssFeed();
+  RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
 
-  // TODO: todo
+  new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
+  new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
+
+  if (new_feed->addItself(parent, m_ui->m_txtUrl->lineEdit()->text(), m_ui->m_gbAuthentication->isChecked(),
+                          m_ui->m_txtUsername->lineEdit()->text(), m_ui->m_txtPassword->lineEdit()->text())) {
+    m_root->requestItemReassignment(new_feed, parent);
+    accept();
+  }
+  else {
+    delete new_feed;
+    qApp->showGuiMessage(tr("Cannot add feed"),
+                         tr("Feed was not added due to error."),
+                         QSystemTrayIcon::Critical, this, true);
+  }
 }
 
 void FormEditFeed::loadCategories(const QList<Category*> categories, RootItem *root_item) {

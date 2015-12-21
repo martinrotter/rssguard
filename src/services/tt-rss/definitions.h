@@ -31,4 +31,13 @@
 // Get feed tree.
 #define GFT_TYPE_CATEGORY "category"
 
+// Subscribe to feed.
+#define STF_UNKNOWN          -1
+#define STF_UPDATED           0
+#define STF_INVALID_URL       2
+#define STF_UNREACHABLE_URL   5
+#define STF_URL_NO_FEED       3
+#define STF_URL_MANY_FEEDS    4
+#define STF_INSERTED          1
+
 #endif // DEFINITIONS_H

@@ -28,6 +28,7 @@
 
 
 class RootItem;
+class TtRssFeed;
 
 class TtRssResponse {
   public:
@@ -81,6 +82,14 @@ class TtRssUpdateArticleResponse : public TtRssResponse {
 
     QString updateStatus() const;
     int articlesUpdated() const;
+};
+
+class TtRssSubscribeToFeedResponse : public TtRssResponse {
+  public:
+    explicit TtRssSubscribeToFeedResponse(const QString &raw_content = QString());
+    virtual ~TtRssSubscribeToFeedResponse();
+
+    int code() const;
 };
 
 /*
@@ -155,6 +164,9 @@ class TtRssNetworkFactory {
 
     TtRssUpdateArticleResponse updateArticles(const QStringList &ids, UpdateArticle::OperatingField field,
                                               UpdateArticle::Mode mode);
+
+    TtRssSubscribeToFeedResponse subscribeToFeed(const QString &url, int category_id, bool protectd = false,
+                                                 const QString &username = QString(), const QString &password = QString());
 
     //TtRssGetConfigResponse getConfig();
 
