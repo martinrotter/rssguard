@@ -29,6 +29,7 @@
 #include "services/tt-rss/definitions.h"
 #include "services/tt-rss/network/ttrssnetworkfactory.h"
 #include "services/tt-rss/gui/formeditaccount.h"
+#include "services/tt-rss/gui/formeditfeed.h"
 
 #include <QSqlTableModel>
 #include <QSqlQuery>
@@ -38,7 +39,9 @@
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)), m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory) {
+  : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)),
+    m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_addItemMenu(QList<QAction*>()),
+    m_network(new TtRssNetworkFactory) {
   setIcon(TtRssServiceEntryPoint().icon());
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -136,7 +139,14 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
 }
 
 QList<QAction*> TtRssServiceRoot::addItemMenu() {
-  return QList<QAction*>();
+  if (m_addItemMenu.isEmpty()) {
+    QAction *action_new_feed = new QAction(qApp->icons()->fromTheme("folder-feed"), tr("Add new feed"), this);
+    connect(action_new_feed, SIGNAL(triggered()), this, SLOT(addNewFeed()));
+
+    m_addItemMenu.append(action_new_feed);
+  }
+
+  return m_addItemMenu;
 }
 
 RecycleBin *TtRssServiceRoot::recycleBin() {
@@ -583,6 +593,13 @@ void TtRssServiceRoot::syncIn() {
 
   setIcon(original_icon);
   itemChanged(QList<RootItem*>() << this);
+}
+
+void TtRssServiceRoot::addNewFeed() {
+  QPointer<FormEditFeed> form_pointer = new FormEditFeed(this, qApp->mainForm());
+
+  form_pointer.data()->execForAdd();
+  delete form_pointer.data();
 }
 
 QStringList TtRssServiceRoot::customIDsOfMessages(const QList<QPair<Message,RootItem::Importance> > &changes) {

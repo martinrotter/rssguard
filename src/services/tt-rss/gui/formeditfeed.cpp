@@ -32,6 +32,7 @@ FormEditFeed::FormEditFeed(TtRssServiceRoot *root, QWidget *parent)
   m_ui->setupUi(this);
   initialize();
 
+  connect(m_ui->m_txtUrl->lineEdit(), SIGNAL(textChanged(QString)), this, SLOT(onUrlChanged(QString)));
   connect(m_ui->m_gbAuthentication, SIGNAL(toggled(bool)), this, SLOT(onAuthenticationSwitched()));
   connect(m_ui->m_cmbAutoUpdateType, SIGNAL(currentIndexChanged(int)), this, SLOT(onAutoUpdateTypeChanged(int)));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(performAction()));
@@ -44,6 +45,8 @@ FormEditFeed::~FormEditFeed() {
 int FormEditFeed::execForEdit(TtRssFeed *input_feed) {
   loadCategories(m_root->getSubTreeCategories(), m_root);
   loadFeed(input_feed);
+  m_ui->m_txtUrl->lineEdit()->setFocus();
+
   return QDialog::exec();
 }
 
@@ -52,7 +55,10 @@ int FormEditFeed::execForAdd() {
     m_ui->m_txtUrl->lineEdit()->setText(qApp->clipboard()->text());
   }
 
-  // TODO: todo
+  loadCategories(m_root->getSubTreeCategories(), m_root);
+  loadFeed(NULL);
+  m_ui->m_txtUrl->lineEdit()->setFocus();
+
   return QDialog::exec();
 }
 
@@ -82,7 +88,7 @@ void FormEditFeed::performAction() {
     saveFeed();
   }
   else {
-    // TODO: Add new feed.
+    addNewFeed();
   }
 
   accept();
@@ -145,24 +151,39 @@ void FormEditFeed::initialize() {
   m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("Full feed url including scheme"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username"));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password"));
+
+  onAuthenticationSwitched();
 }
 
 void FormEditFeed::loadFeed(TtRssFeed *input_feed) {
   m_loadedFeed = input_feed;
 
-  setWindowTitle(tr("Edit existing feed"));
+  if (input_feed != NULL) {
+    setWindowTitle(tr("Edit existing feed"));
 
-  // Tiny Tiny RSS does not support editing of these features.
-  // User can edit only individual auto-update statuses.
-  m_ui->m_gbAuthentication->setEnabled(false);
-  m_ui->m_txtUrl->setEnabled(false);
-  m_ui->m_lblUrl->setEnabled(false);
-  m_ui->m_lblParentCategory->setEnabled(false);
-  m_ui->m_cmbParentCategory->setEnabled(false);
+    // Tiny Tiny RSS does not support editing of these features.
+    // User can edit only individual auto-update statuses.
+    m_ui->m_gbAuthentication->setEnabled(false);
+    m_ui->m_txtUrl->setEnabled(false);
+    m_ui->m_lblUrl->setEnabled(false);
+    m_ui->m_lblParentCategory->setEnabled(false);
+    m_ui->m_cmbParentCategory->setEnabled(false);
 
-  m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) input_feed->parent())));
-  m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue((int) input_feed->autoUpdateType())));
-  m_ui->m_spinAutoUpdateInterval->setValue(input_feed->autoUpdateInitialInterval());
+    m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue((void*) input_feed->parent())));
+    m_ui->m_cmbAutoUpdateType->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue((int) input_feed->autoUpdateType())));
+    m_ui->m_spinAutoUpdateInterval->setValue(input_feed->autoUpdateInitialInterval());
+  }
+  else {
+    setWindowTitle(tr("Add new feed"));
+
+    // Tiny Tiny RSS does not support editing of these features.
+    // User can edit only individual auto-update statuses.
+    m_ui->m_gbAuthentication->setEnabled(true);
+    m_ui->m_txtUrl->setEnabled(true);
+    m_ui->m_lblUrl->setEnabled(true);
+    m_ui->m_lblParentCategory->setEnabled(true);
+    m_ui->m_cmbParentCategory->setEnabled(true);
+  }
 }
 
 void FormEditFeed::saveFeed() {
@@ -174,6 +195,12 @@ void FormEditFeed::saveFeed() {
 
   m_loadedFeed->editItself(new_feed_data);
   delete new_feed_data;
+}
+
+void FormEditFeed::addNewFeed() {
+  // Store feed online and if successfull, then store into DB/model.
+
+  // TODO: todo
 }
 
 void FormEditFeed::loadCategories(const QList<Category*> categories, RootItem *root_item) {

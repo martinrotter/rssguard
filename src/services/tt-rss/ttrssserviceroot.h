@@ -85,6 +85,9 @@ class TtRssServiceRoot : public ServiceRoot {
   public slots:
     void syncIn();
 
+  private slots:
+    void addNewFeed();
+
   private:
     QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
     QStringList customIDsOfMessages(const QList<Message> &messages);
@@ -102,6 +105,7 @@ class TtRssServiceRoot : public ServiceRoot {
 
     QAction *m_actionSyncIn;
     QList<QAction*> m_serviceMenu;
+    QList<QAction*> m_addItemMenu;
 
     TtRssNetworkFactory *m_network;
 };
