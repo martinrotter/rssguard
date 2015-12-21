@@ -157,13 +157,7 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
 
   query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
 
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for feeds read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
+  if (query_read_msg.exec()) {
     // Messages are switched, now inform model about need to reload data.
     QList<RootItem*> itemss;
 
@@ -177,7 +171,7 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
     return true;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
@@ -187,27 +181,17 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   query_delete_msg.setForwardOnly(true);
 
   if (clean_read_only) {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-      return false;
-    }
+    query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))));
   }
   else {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-      return false;
-    }
+    query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))));
   }
 
   query_delete_msg.bindValue(QSL(":deleted"), 1);
 
-  if (!query_delete_msg.exec()) {
-    qDebug("Query execution for feeds clearing failed.");
-    return false;
-  }
-  else {
+  if (query_delete_msg.exec()) {
     // Messages are cleared, now inform model about need to reload data.
     QList<RootItem*> itemss;
 
@@ -223,6 +207,11 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     requestReloadMessageList(true);
     return true;
   }
+  else {
+    QString aa = query_delete_msg.lastError().text();
+
+    return false;
+  }
 }
 
 void StandardServiceRoot::loadFromDatabase(){
@@ -233,8 +222,10 @@ void StandardServiceRoot::loadFromDatabase(){
   // Obtain data for categories from the database.
   QSqlQuery query_categories(database);
   query_categories.setForwardOnly(true);
+  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  query_categories.bindValue(QSL(":account_id"), accountId());
 
-  if (!query_categories.exec(QString("SELECT * FROM Categories WHERE account_id = %1;").arg(accountId())) || query_categories.lastError().isValid()) {
+  if (!query_categories.exec()) {
     qFatal("Query for obtaining categories failed. Error message: '%s'.",
            qPrintable(query_categories.lastError().text()));
   }
@@ -250,8 +241,10 @@ void StandardServiceRoot::loadFromDatabase(){
   // All categories are now loaded.
   QSqlQuery query_feeds(database);
   query_feeds.setForwardOnly(true);
+  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  query_feeds.bindValue(QSL(":account_id"), accountId());
 
-  if (!query_feeds.exec(QString("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
+  if (!query_feeds.exec()) {
     qFatal("Query for obtaining feeds failed. Error message: '%s'.",
            qPrintable(query_feeds.lastError().text()));
   }

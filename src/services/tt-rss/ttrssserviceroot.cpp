@@ -74,14 +74,19 @@ bool TtRssServiceRoot::editViaGui() {
 
 bool TtRssServiceRoot::deleteViaGui() {
   QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(connection);
+
+  query.setForwardOnly(true);
+  query.prepare(QSL("DELETE FROM TtRssAccounts WHERE id = :id;"));
+  query.bindValue(QSL(":id"), accountId());
 
   // Remove extra entry in "Tiny Tiny RSS accounts list" and then delete
   // all the categories/feeds and messages.
-  if (!QSqlQuery(connection).exec(QString("DELETE FROM TtRssAccounts WHERE id = %1;").arg(accountId()))) {
-    return false;
+  if (query.exec()) {
+    return ServiceRoot::deleteViaGui();
   }
   else {
-    return ServiceRoot::deleteViaGui();
+    return false;
   }
 }
 
@@ -332,32 +337,14 @@ QStringList TtRssServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
 
 bool TtRssServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-
-  if (!db_handle.transaction()) {
-    qWarning("Starting transaction for feeds read change.");
-    return false;
-  }
-
   QSqlQuery query_read_msg(db_handle);
   query_read_msg.setForwardOnly(true);
-
-  if (!query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
-    qWarning("Query preparation failed for feeds read change.");
-
-    db_handle.rollback();
-    return false;
-  }
+  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
+                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))));
 
   query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
 
-  if (!query_read_msg.exec()) {
-    qDebug("Query execution for feeds read change failed.");
-    db_handle.rollback();
-  }
-
-  // Commit changes.
-  if (db_handle.commit()) {
+  if (query_read_msg.exec()) {
     QList<RootItem*> itemss;
 
     foreach (Feed *feed, items) {
@@ -370,7 +357,7 @@ bool TtRssServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadSta
     return true;
   }
   else {
-    return db_handle.rollback();
+    return false;
   }
 }
 
@@ -497,10 +484,11 @@ void TtRssServiceRoot::loadFromDatabase() {
   // Obtain data for categories from the database.
   QSqlQuery query_categories(database);
   query_categories.setForwardOnly(true);
+  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  query_categories.bindValue(QSL(":account_id"), accountId());
 
-  if (!query_categories.exec(QString("SELECT * FROM Categories WHERE account_id = %1;").arg(accountId())) || query_categories.lastError().isValid()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.",
-           qPrintable(query_categories.lastError().text()));
+  if (!query_categories.exec()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
   }
 
   while (query_categories.next()) {
@@ -514,10 +502,11 @@ void TtRssServiceRoot::loadFromDatabase() {
   // All categories are now loaded.
   QSqlQuery query_feeds(database);
   query_feeds.setForwardOnly(true);
+  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  query_feeds.bindValue(QSL(":account_id"), accountId());
 
-  if (!query_feeds.exec(QString("SELECT * FROM Feeds WHERE account_id = %1;").arg(accountId())) || query_feeds.lastError().isValid()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.",
-           qPrintable(query_feeds.lastError().text()));
+  if (!query_feeds.exec()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
   }
 
   while (query_feeds.next()) {
