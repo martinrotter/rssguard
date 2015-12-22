@@ -238,32 +238,6 @@ void TtRssFeed::setCustomId(int custom_id) {
   m_customId = custom_id;
 }
 
-bool TtRssFeed::addItself(RootItem *parent, const QString &url, bool protectd,
-                          const QString &username, const QString &password) {
-  TtRssServiceRoot *root = parent->kind() == RootItemKind::Category ?
-                             qobject_cast<TtRssCategory*>(parent)->serviceRoot() :
-                             qobject_cast<TtRssServiceRoot*>(parent);
-  int category_id = parent->kind() == RootItemKind::ServiceRoot ?
-                      0 :
-                      qobject_cast<TtRssCategory*>(parent)->customId();
-  TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(url, category_id, protectd, username, password);
-
-  if (response.code() == STF_INSERTED || response.code() == STF_UPDATED) {
-    // Feed added on TT-RSS server, get its ID.
-
-    // TODO: ted potrebujeme vyplnit customID toho přidaného kanálu
-    // asi přes getFeeds
-
-
-    // TODO: todo
-
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
 bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {
   QSqlDatabase database = qApp->database()->connection("aa", DatabaseFactory::FromSettings);
   QSqlQuery query_update(database);

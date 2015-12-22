@@ -54,8 +54,6 @@ class TtRssFeed : public Feed {
     int customId() const;
     void setCustomId(int custom_id);
 
-    bool addItself(RootItem *parent, const QString &url, bool protectd = false,
-                   const QString &username = QString(), const QString &password = QString());
     bool editItself(TtRssFeed *new_feed_data);
 
   private:

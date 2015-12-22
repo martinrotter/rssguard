@@ -100,15 +100,6 @@ class TtRssUnsubscribeFeedResponse : public TtRssResponse {
     QString code() const;
 };
 
-class TtRssGetFeedsResponse : public TtRssResponse {
-  public:
-    explicit TtRssGetFeedsResponse(const QString &raw_content = QString());
-    virtual ~TtRssGetFeedsResponse();
-
-    QList<TtRssFeed*> feeds() const;
-};
-
-
 /*
 class TtRssGetConfigResponse : public TtRssResponse {
   public:
@@ -184,8 +175,6 @@ class TtRssNetworkFactory {
 
     TtRssSubscribeToFeedResponse subscribeToFeed(const QString &url, int category_id, bool protectd = false,
                                                  const QString &username = QString(), const QString &password = QString());
-
-    TtRssGetFeedsResponse getFeeds(int category_id);
 
     TtRssUnsubscribeFeedResponse unsubscribeFeed(int feed_id);
 

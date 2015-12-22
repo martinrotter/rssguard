@@ -18,13 +18,18 @@
 #include "services/tt-rss/gui/formeditfeed.h"
 
 #include "services/abstract/category.h"
+#include "services/tt-rss/definitions.h"
 #include "services/tt-rss/ttrssfeed.h"
+#include "services/tt-rss/ttrsscategory.h"
 #include "services/tt-rss/ttrssserviceroot.h"
+#include "services/tt-rss/network/ttrssnetworkfactory.h"
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/application.h"
 
 #include <QClipboard>
 #include <QMimeData>
+#include <QTimer>
 
 
 FormEditFeed::FormEditFeed(TtRssServiceRoot *root, QWidget *parent)
@@ -198,22 +203,30 @@ void FormEditFeed::saveFeed() {
 }
 
 void FormEditFeed::addNewFeed() {
-  TtRssFeed *new_feed= new TtRssFeed();
   RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
+  TtRssServiceRoot *root = parent->kind() == RootItemKind::Category ?
+                             qobject_cast<TtRssCategory*>(parent)->serviceRoot() :
+                             qobject_cast<TtRssServiceRoot*>(parent);
+  int category_id = parent->kind() == RootItemKind::ServiceRoot ?
+                      0 :
+                      qobject_cast<TtRssCategory*>(parent)->customId();
+  TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
+                                                                           category_id,
+                                                                           m_ui->m_gbAuthentication->isChecked(),
+                                                                           m_ui->m_txtUsername->lineEdit()->text(),
+                                                                           m_ui->m_txtPassword->lineEdit()->text());
 
-  new_feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(m_ui->m_cmbAutoUpdateType->currentIndex()).toInt()));
-  new_feed->setAutoUpdateInitialInterval(m_ui->m_spinAutoUpdateInterval->value());
-
-  if (new_feed->addItself(parent, m_ui->m_txtUrl->lineEdit()->text(), m_ui->m_gbAuthentication->isChecked(),
-                          m_ui->m_txtUsername->lineEdit()->text(), m_ui->m_txtPassword->lineEdit()->text())) {
-    m_root->requestItemReassignment(new_feed, parent);
+  if (response.code() == STF_INSERTED || response.code() == STF_UPDATED) {
+    // Feed was added online.
     accept();
+    qApp->showGuiMessage(tr("Feed added"), tr("Feed was added, triggering sync in now."), QSystemTrayIcon::Information);
+    QTimer::singleShot(100, root, SLOT(syncIn()));
   }
   else {
-    delete new_feed;
+    reject();
     qApp->showGuiMessage(tr("Cannot add feed"),
                          tr("Feed was not added due to error."),
-                         QSystemTrayIcon::Critical, this, true);
+                         QSystemTrayIcon::Critical, qApp->mainForm(), true);
   }
 }
 
