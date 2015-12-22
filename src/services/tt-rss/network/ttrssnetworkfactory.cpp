@@ -135,7 +135,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   QtJson::JsonObject json;
   json["op"] = "getFeedTree";
   json["sid"] = m_sessionId;
-  json["include_empty"] = false;
+  json["include_empty"] = true;
 
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
