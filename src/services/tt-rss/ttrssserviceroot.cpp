@@ -36,6 +36,7 @@
 #include <QSqlError>
 #include <QPointer>
 #include <QPair>
+#include <QClipboard>
 
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
@@ -106,6 +107,15 @@ bool TtRssServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   else {
     return ServiceRoot::markAsReadUnread(status);
   }
+}
+
+bool TtRssServiceRoot::supportsFeedAddingByUrl() const {
+  return true;
+}
+
+void TtRssServiceRoot::addFeedByUrl(const QString &url) {
+  qApp->clipboard()->setText(url);
+  addNewFeed();
 }
 
 bool TtRssServiceRoot::canBeEdited() {

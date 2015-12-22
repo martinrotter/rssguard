@@ -19,9 +19,17 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "gui/dialogs/formmain.h"
+#include "gui/tabwidget.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
+#include "core/feedsmodel.h"
+#include "services/abstract/serviceroot.h"
+
+#include <QVariant>
 
 
-DiscoverFeedsButton::DiscoverFeedsButton(QWidget *parent) : QToolButton(parent) {
+DiscoverFeedsButton::DiscoverFeedsButton(QWidget *parent) : QToolButton(parent), m_addresses(QStringList()) {
   setEnabled(false);
   setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
   setPopupMode(QToolButton::InstantPopup);
@@ -44,19 +52,34 @@ void DiscoverFeedsButton::setFeedAddresses(const QStringList &addresses) {
     // Initialize the menu.
     setMenu(new QMenu(this));
     connect(menu(), SIGNAL(triggered(QAction*)), this, SLOT(linkTriggered(QAction*)));
+    connect(menu(), SIGNAL(aboutToShow()), this, SLOT(fillMenu()));
   }
 
   menu()->hide();
-
-  if (!addresses.isEmpty()) {
-    menu()->clear();
-
-    foreach (const QString &feed, addresses) {
-      menu()->addAction(feed);
-    }
-  }
+  m_addresses = addresses;
 }
 
 void DiscoverFeedsButton::linkTriggered(QAction *action) {
-  emit addingOfFeedRequested(action->text());
+  // TODO: Obtain link and root.
+  QString url = action->property("url").toString();
+  ServiceRoot *root = static_cast<ServiceRoot*>(action->property("root").value<void*>());
+
+  root->addFeedByUrl(url);
+}
+
+void DiscoverFeedsButton::fillMenu() {
+  menu()->clear();
+
+  foreach (ServiceRoot *root, qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+    QMenu *root_menu = menu()->addMenu(root->icon(), root->title());
+
+    foreach (const QString &url, m_addresses) {
+      if (root->supportsFeedAddingByUrl()) {
+        QAction *url_action = root_menu->addAction(root->icon(), url);
+
+        url_action->setProperty("url", url);
+        url_action->setProperty("root", QVariant::fromValue((void*) root));
+      }
+    }
+  }
 }

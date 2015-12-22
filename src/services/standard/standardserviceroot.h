@@ -49,6 +49,9 @@ class StandardServiceRoot : public ServiceRoot {
 
     bool markAsReadUnread(ReadStatus status);
 
+    bool supportsFeedAddingByUrl() const;
+    void addFeedByUrl(const QString &url);
+
     QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
 

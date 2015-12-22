@@ -42,7 +42,7 @@ class TabWidget;
 
 class WebBrowser : public TabContent {
     Q_OBJECT
-    
+
   public:
     // Constructors and destructors.
     explicit WebBrowser(QWidget *parent = 0);
@@ -135,10 +135,6 @@ class WebBrowser : public TabContent {
     // Title/icon is changed.
     void onTitleChanged(const QString &new_title);
     void onIconChanged();
-
-    // User selected any feed from website to add to reader.
-    // This copies feed link to clipboard and triggers "add feed" dialog.
-    void addFeedFromWebsite(const QString &feed_link);
 
   signals:
     // User requests opening of new tab or clicks the link

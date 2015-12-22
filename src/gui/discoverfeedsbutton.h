@@ -36,10 +36,10 @@ class DiscoverFeedsButton : public QToolButton {
   private slots:
     // User chose any of addresses.
     void linkTriggered(QAction *action);
+    void fillMenu();
 
-  signals:
-    // User requests addition of selected address.
-    void addingOfFeedRequested(const QString &feed_link);
+  private:
+    QStringList m_addresses;
 };
 
 #endif // DISCOVERFEEDSBUTTON_H

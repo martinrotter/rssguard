@@ -206,28 +206,10 @@ void WebBrowser::createConnections() {
 
   // Misc connections.
   connect(m_webView, SIGNAL(zoomFactorChanged()), this, SLOT(updateZoomGui()));
-  connect(m_btnDiscoverFeeds, SIGNAL(addingOfFeedRequested(QString)), this, SLOT(addFeedFromWebsite(QString)));
 }
 
 void WebBrowser::onIconChanged() {
   emit iconChanged(m_index, m_webView->icon());
-}
-
-void WebBrowser::addFeedFromWebsite(const QString &feed_link) {
-  qApp->clipboard()->setText(feed_link);
-
-  StandardServiceRoot *service = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
-
-  if (service != NULL) {
-    service->addNewFeed();
-  }
-  else {
-    qApp->showGuiMessage(tr("Cannot add feed"),
-                         tr("You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.").arg(APP_NAME),
-                         QSystemTrayIcon::Warning,
-                         qApp->mainForm(),
-                         true);
-  }
 }
 
 void WebBrowser::onTitleChanged(const QString &new_title) {

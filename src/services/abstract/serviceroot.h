@@ -52,6 +52,9 @@ class ServiceRoot : public RootItem {
 
     bool markAsReadUnread(ReadStatus status);
 
+    virtual bool supportsFeedAddingByUrl() const = 0;
+    virtual void addFeedByUrl(const QString &url) = 0;
+
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
     //  a) Add new feed

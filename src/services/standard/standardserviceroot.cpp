@@ -124,6 +124,15 @@ bool StandardServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   return ServiceRoot::markAsReadUnread(status);
 }
 
+bool StandardServiceRoot::supportsFeedAddingByUrl() const {
+  return true;
+}
+
+void StandardServiceRoot::addFeedByUrl(const QString &url) {
+  qApp->clipboard()->setText(url);
+  addNewFeed();
+}
+
 QVariant StandardServiceRoot::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:
