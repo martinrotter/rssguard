@@ -246,7 +246,6 @@ bool TtRssFeed::addItself(RootItem *parent, const QString &url, bool protectd,
   int category_id = parent->kind() == RootItemKind::ServiceRoot ?
                       0 :
                       qobject_cast<TtRssCategory*>(parent)->customId();
-
   TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(url, category_id, protectd, username, password);
 
   if (response.code() == STF_INSERTED || response.code() == STF_UPDATED) {

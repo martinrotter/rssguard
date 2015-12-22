@@ -40,4 +40,8 @@
 #define STF_URL_MANY_FEEDS    4
 #define STF_INSERTED          1
 
+// Unsubscribe from feed.
+#define UFF_FEED_NOT_FOUND    "FEED_NOT_FOUND"
+#define UFF_OK                "OK"
+
 #endif // DEFINITIONS_H

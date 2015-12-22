@@ -267,6 +267,64 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
   return result;
 }
 
+TtRssGetFeedsResponse TtRssNetworkFactory::getFeeds(int category_id) {
+  QtJson::JsonObject json;
+  json["op"] = "getFeeds";
+  json["sid"] = m_sessionId;
+  json["cat_id"] = category_id;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+                                                           m_authIsUsed, m_authUsername, m_authPassword);
+  TtRssGetFeedsResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login();
+    json["sid"] = m_sessionId;
+
+    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+                                               m_authIsUsed, m_authUsername, m_authPassword);
+    result = TtRssGetFeedsResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("TT-RSS: getFeeds failed with error %d.", network_reply.first);
+  }
+
+  m_lastError = network_reply.first;
+  return result;
+}
+
+TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
+  QtJson::JsonObject json;
+  json["op"] = "unsubscribeFeed";
+  json["sid"] = m_sessionId;
+  json["cat_id"] = feed_id;
+
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+                                                           m_authIsUsed, m_authUsername, m_authPassword);
+  TtRssUnsubscribeFeedResponse result(QString::fromUtf8(result_raw));
+
+  if (result.isNotLoggedIn()) {
+    // We are not logged in.
+    login();
+    json["sid"] = m_sessionId;
+
+    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+                                               m_authIsUsed, m_authUsername, m_authPassword);
+    result = TtRssUnsubscribeFeedResponse(QString::fromUtf8(result_raw));
+  }
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("TT-RSS: getFeeds failed with error %d.", network_reply.first);
+  }
+
+  m_lastError = network_reply.first;
+  return result;
+}
+
 /*
 TtRssGetConfigResponse TtRssNetworkFactory::getConfig() {
   QtJson::JsonObject json;
@@ -587,4 +645,50 @@ int TtRssSubscribeToFeedResponse::code() const {
   else {
     return STF_UNKNOWN;
   }
+}
+
+
+TtRssUnsubscribeFeedResponse::TtRssUnsubscribeFeedResponse(const QString &raw_content) : TtRssResponse(raw_content) {
+}
+
+TtRssUnsubscribeFeedResponse::~TtRssUnsubscribeFeedResponse() {
+}
+
+QString TtRssUnsubscribeFeedResponse::code() const {
+  if (m_rawContent.contains(QSL("content"))) {
+    QVariantMap map = m_rawContent["content"].toMap();
+
+    if (map.contains(QSL("error"))) {
+      return map["error"].toString();
+    }
+    else if (map.contains(QSL("status"))) {
+      return map["status"].toString();
+    }
+  }
+
+  return QString();
+}
+
+
+TtRssGetFeedsResponse::TtRssGetFeedsResponse(const QString &raw_content) {
+}
+
+TtRssGetFeedsResponse::~TtRssGetFeedsResponse() {
+}
+
+QList<TtRssFeed*> TtRssGetFeedsResponse::feeds() const {
+  QList<TtRssFeed*> feeds;
+
+  foreach (QVariant feed_var, m_rawContent["content"].toList()) {
+    QVariantMap feed_map = feed_var.toMap();
+    TtRssFeed *feed = new TtRssFeed();
+
+    feed->setTitle(feed_map["title"].toString());
+    feed->setUrl(feed_map["feed_url"].toString());
+    feed->setCustomId(feed_map["id"].toInt());
+
+    feeds.append(feed);
+  }
+
+  return feeds;
 }

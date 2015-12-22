@@ -86,7 +86,16 @@ class Feed : public RootItem {
       m_status = status;
     }
 
+    inline QString url() const {
+      return m_url;
+    }
+
+    inline void setUrl(const QString &url) {
+      m_url = url;
+    }
+
   private:
+    QString m_url;
     Status m_status;
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval;

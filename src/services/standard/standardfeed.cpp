@@ -54,7 +54,6 @@ StandardFeed::StandardFeed(RootItem *parent_item)
   m_totalCount = 0;
   m_unreadCount = 0;
   m_encoding = QString();
-  m_url = QString();
 }
 
 StandardFeed::StandardFeed(const StandardFeed &other)
@@ -67,8 +66,8 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   m_totalCount = other.countOfAllMessages();
   m_unreadCount = other.countOfUnreadMessages();
   m_encoding = other.encoding();
-  m_url = other.url();
 
+  setUrl(other.url());
   setStatus(other.status());
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInitialInterval(other.autoUpdateInitialInterval());

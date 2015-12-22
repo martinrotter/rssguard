@@ -138,14 +138,6 @@ class StandardFeed : public Feed {
       m_encoding = encoding;
     }
 
-    inline QString url() const {
-      return m_url;
-    }
-
-    inline void setUrl(const QString &url) {
-      m_url = url;
-    }
-
     QNetworkReply::NetworkError networkError() const;
 
     // Tries to guess feed hidden under given URL
@@ -179,7 +171,6 @@ class StandardFeed : public Feed {
     int m_unreadCount;
 
     QString m_encoding;
-    QString m_url;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::Type)
