@@ -57,8 +57,8 @@ RootItem *FeedsImportExportModel::rootItem() const {
   return m_rootItem;
 }
 
-void FeedsImportExportModel::setRootItem(RootItem *rootItem) {
-  m_rootItem = rootItem;
+void FeedsImportExportModel::setRootItem(RootItem *root_item) {
+  m_rootItem = root_item;
 }
 
 bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
@@ -264,17 +264,21 @@ void FeedsImportExportModel::setMode(const FeedsImportExportModel::Mode &mode) {
 }
 
 void FeedsImportExportModel::checkAllItems() {
-  foreach (RootItem *root_child, m_rootItem->childItems()) {
-    if (root_child->kind() != RootItemKind::Bin) {
-      setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
+  if (m_rootItem != NULL) {
+    foreach (RootItem *root_child, m_rootItem->childItems()) {
+      if (root_child->kind() != RootItemKind::Bin) {
+        setData(indexForItem(root_child), Qt::Checked, Qt::CheckStateRole);
+      }
     }
   }
 }
 
 void FeedsImportExportModel::uncheckAllItems() {
-  foreach (RootItem *root_child, m_rootItem->childItems()) {
-    if (root_child->kind() != RootItemKind::Bin) {
-      setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+  if (m_rootItem != NULL) {
+    foreach (RootItem *root_child, m_rootItem->childItems()) {
+      if (root_child->kind() != RootItemKind::Bin) {
+        setData(indexForItem(root_child), Qt::Unchecked, Qt::CheckStateRole);
+      }
     }
   }
 }

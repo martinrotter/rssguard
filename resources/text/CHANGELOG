@@ -1,6 +1,13 @@
 3.0.1
 —————
 
+Fixed:
+
+▪ Fixed problem with importing invalid OPML 2.0 files. (bug #145)
+
+3.0.1
+—————
+
 Added:
 
 ▪ Background color of notifications is now changeable. (issue #134)

@@ -55,7 +55,7 @@ class FeedsImportExportModel : public QAbstractItemModel {
 
     // Root item manipulators.
     RootItem *rootItem() const;
-    void setRootItem(RootItem *rootItem);
+    void setRootItem(RootItem *root_item);
 
     // Exports to OPML 2.0
     // NOTE: http://dev.opml.org/spec2.html
