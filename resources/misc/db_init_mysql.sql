@@ -19,8 +19,6 @@ CREATE TABLE IF NOT EXISTS Accounts (
   type            TEXT        NOT NULL
 );
 -- !
-INSERT INTO Accounts (type) VALUES ('std-rss');
--- !
 CREATE TABLE IF NOT EXISTS TtRssAccounts (
   id              INTEGER,
   username        TEXT        NOT NULL,

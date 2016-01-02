@@ -4,6 +4,7 @@
 Fixed:
 
 ▪ Fixed problem with importing invalid OPML 2.0 files. (bug #145)
+▪ Fixed error in SQL initialization script which led to problems with in-memory SQLite DBs. (bug #140)
 
 3.0.1
 —————
