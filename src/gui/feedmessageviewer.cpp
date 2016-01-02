@@ -127,7 +127,6 @@ void FeedMessageViewer::loadMessageViewerFonts() {
 void FeedMessageViewer::quit() {
   // Quit the feeds model (stops auto-update timer etc.).
   m_feedsView->sourceModel()->quit();
-
 }
 
 bool FeedMessageViewer::areToolBarsEnabled() const {
