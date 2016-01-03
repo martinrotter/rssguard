@@ -59,7 +59,7 @@ FormStandardFeedDetails::~FormStandardFeedDetails() {
   delete m_ui;
 }
 
-int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_select) {
+int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_select, const QString &url) {
   // Load categories.
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
@@ -90,8 +90,11 @@ int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_
       }
     }
 
-    if (qApp->clipboard()->mimeData()->hasText()) {
-      m_ui->m_txtUrl->lineEdit()->setText(qApp->clipboard()->text());
+    if (!url.isEmpty()) {
+      m_ui->m_txtUrl->lineEdit()->setText(url);
+    }
+    else if (Application::clipboard()->mimeData()->hasText()) {
+      m_ui->m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
     }
   }
   else {

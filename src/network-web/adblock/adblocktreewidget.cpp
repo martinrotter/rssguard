@@ -19,11 +19,11 @@
 #include "network-web/adblock/adblocktreewidget.h"
 
 #include "network-web/adblock/adblocksubscription.h"
+#include "miscellaneous/application.h"
 
 #include <QMenu>
 #include <QKeyEvent>
 #include <QClipboard>
-#include <QApplication>
 #include <QInputDialog>
 
 
@@ -125,7 +125,7 @@ void AdBlockTreeWidget::copyFilter() {
   QTreeWidgetItem *item = currentItem();
 
   if (item != NULL) {
-    QApplication::clipboard()->setText(item->text(0));
+    Application::clipboard()->setText(item->text(0));
   }
 }
 

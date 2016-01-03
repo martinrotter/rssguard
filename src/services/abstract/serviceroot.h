@@ -49,11 +49,9 @@ class ServiceRoot : public RootItem {
     /////////////////////////////////////////
 
     bool deleteViaGui();
-
     bool markAsReadUnread(ReadStatus status);
 
     virtual bool supportsFeedAddingByUrl() const = 0;
-    virtual void addFeedByUrl(const QString &url) = 0;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -159,6 +157,9 @@ class ServiceRoot : public RootItem {
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;
     void setAccountId(int account_id);
+
+  public slots:
+    virtual void addFeedByUrl(const QString &url = QString()) = 0;
 
   protected:
     // Takes lists of feeds/categories and assembles them into the tree structure.

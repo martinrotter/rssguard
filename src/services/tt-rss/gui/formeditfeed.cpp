@@ -55,9 +55,12 @@ int FormEditFeed::execForEdit(TtRssFeed *input_feed) {
   return QDialog::exec();
 }
 
-int FormEditFeed::execForAdd() {
-  if (qApp->clipboard()->mimeData()->hasText()) {
-    m_ui->m_txtUrl->lineEdit()->setText(qApp->clipboard()->text());
+int FormEditFeed::execForAdd(const QString &url) {
+  if (!url.isEmpty()) {
+    m_ui->m_txtUrl->lineEdit()->setText(url);
+  }
+  else if (Application::clipboard()->mimeData()->hasText()) {
+    m_ui->m_txtUrl->lineEdit()->setText(Application::clipboard()->text());
   }
 
   loadCategories(m_root->getSubTreeCategories(), m_root);

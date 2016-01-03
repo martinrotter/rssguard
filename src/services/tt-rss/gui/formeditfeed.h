@@ -40,7 +40,7 @@ class FormEditFeed : public QDialog {
     virtual ~FormEditFeed();
 
     int execForEdit(TtRssFeed *input_feed);
-    int execForAdd();
+    int execForAdd(const QString &url);
 
   private slots:
     void performAction();

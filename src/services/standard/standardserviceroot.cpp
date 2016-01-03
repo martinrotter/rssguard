@@ -130,8 +130,9 @@ bool StandardServiceRoot::supportsFeedAddingByUrl() const {
 }
 
 void StandardServiceRoot::addFeedByUrl(const QString &url) {
-  qApp->clipboard()->setText(url);
-  addNewFeed();
+  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(this, qApp->mainForm());
+  form_pointer.data()->exec(NULL, NULL, url);
+  delete form_pointer.data();
 }
 
 QVariant StandardServiceRoot::data(int column, int role) const {
@@ -299,8 +300,7 @@ void StandardServiceRoot::checkArgumentsForFeedAdding() {
 
 void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
   if (argument.startsWith(QL1S("feed:"))) {
-    qApp->clipboard()->setText(argument);
-    addNewFeed();
+    addFeedByUrl(argument);
   }
 }
 
@@ -415,12 +415,6 @@ void StandardServiceRoot::addNewCategory() {
   delete form_pointer.data();
 }
 
-void StandardServiceRoot::addNewFeed() {
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(this, qApp->mainForm());
-  form_pointer.data()->exec(NULL, NULL);
-  delete form_pointer.data();
-}
-
 void StandardServiceRoot::importFeeds() {
   QPointer<FormStandardImportExport> form = new FormStandardImportExport(this, qApp->mainForm());
   form.data()->setMode(FeedsImportExportModel::Import);
@@ -452,7 +446,7 @@ QList<QAction*> StandardServiceRoot::addItemMenu() {
     connect(action_new_category, SIGNAL(triggered()), this, SLOT(addNewCategory()));
 
     QAction *action_new_feed = new QAction(qApp->icons()->fromTheme("folder-feed"), tr("Add new feed"), this);
-    connect(action_new_feed, SIGNAL(triggered()), this, SLOT(addNewFeed()));
+    connect(action_new_feed, SIGNAL(triggered()), this, SLOT(addFeedByUrl()));
 
     m_addItemMenu.append(action_new_category);
     m_addItemMenu.append(action_new_feed);

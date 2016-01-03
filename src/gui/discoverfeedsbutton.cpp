@@ -60,11 +60,18 @@ void DiscoverFeedsButton::setFeedAddresses(const QStringList &addresses) {
 }
 
 void DiscoverFeedsButton::linkTriggered(QAction *action) {
-  // TODO: Obtain link and root.
   QString url = action->property("url").toString();
   ServiceRoot *root = static_cast<ServiceRoot*>(action->property("root").value<void*>());
 
-  root->addFeedByUrl(url);
+  if (root->supportsFeedAddingByUrl()) {
+    root->addFeedByUrl(url);
+  }
+  else {
+    qApp->showGuiMessage(tr("Not supported"),
+                         tr("Give account does not support adding feeds."),
+                         QSystemTrayIcon::Warning,
+                         qApp->mainForm(), true);
+  }
 }
 
 void DiscoverFeedsButton::fillMenu() {

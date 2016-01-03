@@ -48,7 +48,6 @@ class TtRssServiceRoot : public ServiceRoot {
     bool markAsReadUnread(ReadStatus status);
 
     bool supportsFeedAddingByUrl() const;
-    void addFeedByUrl(const QString &url);
 
     QVariant data(int column, int role) const;
 
@@ -86,10 +85,8 @@ class TtRssServiceRoot : public ServiceRoot {
     void completelyRemoveAllData();
 
   public slots:
+    void addFeedByUrl(const QString &url = QString());
     void syncIn();
-
-  private slots:
-    void addNewFeed();
 
   private:
     QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
