@@ -741,6 +741,10 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
   else {
     updateCounts(true);
     serviceRoot()->itemChanged(QList<RootItem*>() << this);
+
+    if (updated_messages > 0) {
+      serviceRoot()->requestFeedReadFilterReload();
+    }
   }
 
   return updated_messages;

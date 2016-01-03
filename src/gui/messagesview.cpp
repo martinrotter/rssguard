@@ -559,4 +559,5 @@ void MessagesView::adjustColumns() {
 void MessagesView::saveSortState(int column, Qt::SortOrder order) {
   qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortColumnMessages, column);
   qApp->settings()->setValue(GROUP(GUI), GUI::DefaultSortOrderMessages, order);
+  qApp->settings()->sync();
 }

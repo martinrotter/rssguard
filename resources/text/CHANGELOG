@@ -5,6 +5,8 @@ Fixed:
 
 ▪ Fixed problem with importing invalid OPML 2.0 files. (bug #145)
 ▪ Fixed error in SQL initialization script which led to problems with in-memory SQLite DBs. (bug #140)
+▪ Fixed problem with saving sort column/order for message list. (bug #141)
+▪ Fixed problem with reloading feeds with newly downloaded messages when read-only-visible feeds filter is activated. (bug #139)
 
 3.0.1
 —————
