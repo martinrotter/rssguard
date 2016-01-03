@@ -195,6 +195,14 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Inställningsåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan inte lägga till flödet</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
+        <translation>Flödet kan inte läggas till eftersom standard RSS-/ATOM-konto inte aktiverats.</translation>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -823,10 +831,6 @@ att funktionen inte är implementerad än.</translation>
 <context>
     <name>FormEditAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialog</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Vissa flöden kräver autentisering, inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentisering stöds.</translation>
     </message>
@@ -981,6 +985,125 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
         <translation>URL skall avslutas med &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation>Redigera flöde</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Överordnad kategori</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Välj överordnad mapp för flödet. </translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL </translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Autouppdatering </translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Välj uppdateringsstrategi för flödet. Standard autouppdatering, innebär att flödet kommer att uppdateras med tidsintervall angivna i programinställningarna.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation>minuter </translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Vissa flöden kräver autentisering. Inklusive Gmail-flöden. BASIC, NTLM-2 och DIGEST-MD5 autentiseringsscheman stöds.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Kräver autentisering </translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Användarnamn </translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lösenord </translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>Webbadressen är ok. </translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>Webbadressen liknar inte standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>URL saknas. </translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Användarnamnet är ok, eller behövs inte. </translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Användarnamn saknas. </translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Lösenordet är ok, eller behövs inte. </translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Lösenord saknas. </translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Global auto-uppdatering</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Auto-uppdatera varje</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Ingen auto-uppdatering</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Flödets fullständiga webbadress (URL)</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Redigera befintligt flöde</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
+    </message>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan inte lägga till flödet</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Flödet lades inte till, på grund av något fel.</translation>
     </message>
 </context>
 <context>
@@ -2106,6 +2229,14 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Enable notifications</source>
         <translation>Aktivera aviseringar</translation>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Change</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3394,6 +3525,31 @@ Olästa nyheter: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssFeed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>uppdateras inte automatiskt</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>Globala inställningar</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Tiny Tiny RSS
@@ -3414,6 +3570,10 @@ Senast inloggad: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Synka i</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Lägg till nytt flöde</translation>
     </message>
 </context>
 <context>
@@ -3486,14 +3646,6 @@ Senast inloggad: %5</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stoppa inläsning av webbsidan.</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flöde</translation>
-    </message>
-    <message>
-        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation>Detta flöde kan inte läggas till i %1 eftersom standard RSS/ATOM-kontot inte är aktiverat. Aktivera det först.</translation>
     </message>
 </context>
 <context>

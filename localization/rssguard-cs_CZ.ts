@@ -195,6 +195,14 @@ Berte také na paměti, že některé prostředky webových stránek jsou intern
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Nelze přidat kanál</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
+        <translation>Kanál nelze přidat, protože standardní RSS/ATOM účet není povolen.</translation>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -823,10 +831,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
     </message>
@@ -976,11 +980,130 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Note that at least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Je vyžadována verze API %1 nebo vyšší.</translation>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
+        <translation>URL by mělo končit na &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation>Podivná chyba, zadali jste URL?</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation>Upravit kanál</translation>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Nadřazená kategorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
+    </message>
+    <message>
+        <source>URL</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Zvolte strategii auto-aktualizací tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation> minut</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vyžaduje autentizaci</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Heslo</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>Url je v pořádku.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>Url neobsahuje standardní schéma. Začíná Vaše url schématem &quot;http://&quot; nebo &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>Url je prázdné.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Uživatelské jméno je prázdné.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Heslo je v pořádku nebo není třeba.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Heslo je prázdné.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Auto-aktualizovat dle hlavního nastavení</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Auto-aktualizovat každých</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Zakázat auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Plné url kanálu včetně schématu</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Upravit existující kanál</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Přidat nový kanál</translation>
+    </message>
+    <message>
+        <source>Feed added</source>
+        <translation>Kanál přidán</translation>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation>Kanál přidán, spouštím synchronizaci celého účtu.</translation>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Nelze přidat kanál</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Kanál nepřidán kvůli chybě.</translation>
     </message>
 </context>
 <context>
@@ -1363,7 +1486,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Status bar</source>
-        <translation type="unfinished"/>
+        <translation>Stavový řádek</translation>
     </message>
     <message>
         <source>&amp;Edit selected account</source>
@@ -2105,6 +2228,14 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Enable notifications</source>
         <translation>Povolit notifikace</translation>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation>Barva pozadí</translation>
+    </message>
+    <message>
+        <source>Change</source>
+        <translation>Změnit</translation>
     </message>
 </context>
 <context>
@@ -2873,11 +3004,11 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     </message>
     <message>
         <source>Account ID</source>
-        <translation type="unfinished"/>
+        <translation>ID účtu</translation>
     </message>
     <message>
         <source>Custom ID</source>
-        <translation type="unfinished"/>
+        <translation>Zvláštní ID</translation>
     </message>
     <message>
         <source>Account ID of the message.</source>
@@ -3101,7 +3232,11 @@ na tuto bublinu.</translation>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Tento účet nabízí integraci s Tiny Tiny RSS.
+
+Tiny Tiny RSS je open source čtečka kanálů založená na webových technologiích. Umožňuje vám číst kanály odkudkoliv, ale zároveň vám dopřeje komfort desktopové aplikace.
+
+Je vyžadování verze API minimálně %1.</translation>
     </message>
 </context>
 <context>
@@ -3391,6 +3526,33 @@ Nepřečtené zprávy: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssFeed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>nepoužívá auto-aktualizace</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>používá globální nastavení</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation><numerusform>používá specifické nastavení (%n minuta do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minuty do další aktualizace)</numerusform><numerusform>používá specifické nastavení (%n minut do další aktualizace)</numerusform></translation>
+    </message>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation>%1%2
+
+Status auto-aktualizace: %3</translation>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Tiny Tiny RSS
@@ -3411,6 +3573,10 @@ Poslední přihlášení: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Synchronizovat</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Přidat nový kanál</translation>
     </message>
 </context>
 <context>
@@ -3483,14 +3649,6 @@ Poslední přihlášení: %5</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Zastavit načítání aktuální webové stránky.</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Nelze přidat kanál</translation>
-    </message>
-    <message>
-        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation>Tento kanál neumí %1 přidat, protože standardní RSS/ATOM účet není aktivován. Nejdříve jej aktivujte.</translation>
     </message>
 </context>
 <context>

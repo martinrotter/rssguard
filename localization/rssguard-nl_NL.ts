@@ -195,6 +195,14 @@ Merk ook op dat sommige hulpbronnen worden gecached door de interne web browser.
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Herstel van de instellingen werd niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan geen feed toevoegen</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -824,10 +832,6 @@ of deze functie bestaat nog niet.</translation>
 <context>
     <name>FormEditAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation>Dialoog</translation>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
     </message>
@@ -982,6 +986,125 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
         <translation>URL zou moeten eindigen met &quot;/api/&quot;.</translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormEditFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Oudere categorie</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Kies hoofd item voor je feed.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Automatische-update</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Selekteer de automatische bijwerk strategie voor deze feed.Standaard automatische bijwerken strategie betekent dat de feed zal worden bijgewerkt in tijd tussenpauzes ingesteld in RSSguard instelling.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation> minuten</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Sommige feeds vereisen verificatie,inclusief GMail feeds, BASIC, NTLM-2 en DIGEST-MD5 verificaties schema&apos;s worden ondersteund.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Vereist verificatie</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Paswoord</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>De url is ok.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>De url is leeg.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Gebruikersnaam is leeg.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Paswoord is ok of het is niet nodig.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Paswoord is leeg.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Automatisch bijwerken met behulp van globale interval</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Automatisch bijwerken elke</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Niet automatisch bijwerken </translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>Volledige feed url inclusief schema</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation>Bewerk bestaande feed</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Voeg nieuw feed toe</translation>
+    </message>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Kan geen feed toevoegen</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Door een fout is de feed niet toegevoegd.</translation>
     </message>
 </context>
 <context>
@@ -2112,6 +2235,14 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     <message>
         <source>Enable notifications</source>
         <translation>Meldingen aanzetten</translation>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Change</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3404,6 +3535,31 @@ Ongelezen nieuws: %2</translation>
     </message>
 </context>
 <context>
+    <name>TtRssFeed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>automatisch bijwerken niet gebruiken</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>gebruik algemene instellingen</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Tiny Tiny RSS
@@ -3424,6 +3580,10 @@ Laatste login: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Sync in</translation>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
 </context>
 <context>
@@ -3496,14 +3656,6 @@ Laatste login: %5</translation>
     <message>
         <source>Stop web page loading.</source>
         <translation>Stop het laden van pagina.</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Kan geen feed toevoegen</translation>
-    </message>
-    <message>
-        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation>Kan geen feed toevoegen aan %1 omdat de standaard RSS/ATOM account niet aanstaat. Zit die eerst aan.</translation>
     </message>
 </context>
 <context>

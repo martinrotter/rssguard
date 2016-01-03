@@ -193,6 +193,14 @@ Also note that some resources are cached by internal web browser. Thus, after ch
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -817,10 +825,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation type="unfinished"/>
     </message>
@@ -974,6 +978,125 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormEditFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2078,6 +2201,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Change</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3345,6 +3476,31 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssFeed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Tiny Tiny RSS
@@ -3358,6 +3514,10 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3430,14 +3590,6 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Stop web page loading.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
         <translation type="unfinished"/>
     </message>
 </context>

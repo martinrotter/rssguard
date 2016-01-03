@@ -193,6 +193,14 @@ Also note that some resources are cached by internal web browser. Thus, after ch
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Impossible d&apos;ajouter le flux</translation>
+    </message>
+    <message>
+        <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DatabaseCleaner</name>
@@ -817,10 +825,6 @@ or this functionality is not implemented yet.</source>
 <context>
     <name>FormEditAccount</name>
     <message>
-        <source>Dialog</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
         <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
     </message>
@@ -975,6 +979,125 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>URL should end with &quot;/api/&quot;.</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>FormEditFeed</name>
+    <message>
+        <source>Edit feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Parent category</source>
+        <translation>Catégorie parente</translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation>Sélectionner l&apos;article parent pour votre flux.</translation>
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>Auto-update</source>
+        <translation>Mise à jour automatique</translation>
+    </message>
+    <message>
+        <source>Select the auto-update strategy for this feed. Default auto-update strategy means that the feed will be update in time intervals set in application settings.</source>
+        <translation>Sélectionner la stratégie des mises à jour automatique pour ce flux. Par défaut, cette stratégie signifie que le flux sera mis à jour par intervalle de temps défini dans les paramètres de l&apos;application.</translation>
+    </message>
+    <message>
+        <source> minutes</source>
+        <translation>minutes</translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
+    </message>
+    <message>
+        <source>Requires authentication</source>
+        <translation>Authentification requise</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Nom d&apos;utilisateur</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Mot de passe</translation>
+    </message>
+    <message>
+        <source>The url is ok.</source>
+        <translation>L&apos;URL est correct.</translation>
+    </message>
+    <message>
+        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation>L&apos;URL ne respecte pas le pattern standard. Votre URL doit commencer avec les préfixe &quot;http://&quot; ou &quot;https://&quot;.</translation>
+    </message>
+    <message>
+        <source>The url is empty.</source>
+        <translation>L&apos;URL est vide.</translation>
+    </message>
+    <message>
+        <source>Username is ok or it is not needed.</source>
+        <translation>Le nom d&apos;utilisateur est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Username is empty.</source>
+        <translation>Le nom d&apos;utilisateur est vide.</translation>
+    </message>
+    <message>
+        <source>Password is ok or it is not needed.</source>
+        <translation>Le mot de passe  est correct ou non nécessaire.</translation>
+    </message>
+    <message>
+        <source>Password is empty.</source>
+        <translation>Le mot de passe est vide.</translation>
+    </message>
+    <message>
+        <source>Auto-update using global interval</source>
+        <translation>Mise à jour automatique utilisant l&apos;intervalle global</translation>
+    </message>
+    <message>
+        <source>Auto-update every</source>
+        <translation>Tout mettre à jour</translation>
+    </message>
+    <message>
+        <source>Do not auto-update at all</source>
+        <translation>Ne pas mettre tout à jour automatiquement</translation>
+    </message>
+    <message>
+        <source>Full feed url including scheme</source>
+        <translation>URL du flux complet incluant le préfixe</translation>
+    </message>
+    <message>
+        <source>Edit existing feed</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Ajouter un nouveau flux</translation>
+    </message>
+    <message>
+        <source>Feed added</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Feed was added, triggering sync in now.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed</source>
+        <translation>Impossible d&apos;ajouter le flux</translation>
+    </message>
+    <message>
+        <source>Feed was not added due to error.</source>
+        <translation>Le flux n&apos;a pas été ajouté dû à une erreur.</translation>
     </message>
 </context>
 <context>
@@ -2090,6 +2213,14 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Enable notifications</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Background color</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Change</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3361,6 +3492,31 @@ Unread news: %2</source>
     </message>
 </context>
 <context>
+    <name>TtRssFeed</name>
+    <message>
+        <source>does not use auto-update</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>Ne pas utiliser la mise à jour automatique</translation>
+    </message>
+    <message>
+        <source>uses global settings</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation>Utiliser les paramètres globaux</translation>
+    </message>
+    <message numerus="yes">
+        <source>uses specific settings (%n minute(s) to next auto-update)</source>
+        <extracomment>Describes feed auto-update status.</extracomment>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+    </message>
+    <message>
+        <source>%1%2
+
+Auto-update status: %3</source>
+        <extracomment>Tooltip for feed.</extracomment>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>TtRssServiceRoot</name>
     <message>
         <source>Tiny Tiny RSS
@@ -3375,6 +3531,10 @@ Last login on: %5</source>
     <message>
         <source>Sync in</source>
         <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation>Ajouter un nouveau flux</translation>
     </message>
 </context>
 <context>
@@ -3447,14 +3607,6 @@ Last login on: %5</source>
     <message>
         <source>Stop web page loading.</source>
         <translation>Arrêter le chargement de la page</translation>
-    </message>
-    <message>
-        <source>Cannot add feed</source>
-        <translation>Impossible d&apos;ajouter le flux</translation>
-    </message>
-    <message>
-        <source>You cannot add this feed to %1 because standard RSS/ATOM account is not enabled. Enable it first.</source>
-        <translation type="unfinished"/>
     </message>
 </context>
 <context>
