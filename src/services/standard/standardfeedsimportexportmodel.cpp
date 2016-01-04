@@ -67,7 +67,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
                                                                                         QSL("version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\""));
   opml_document.appendChild(xml_declaration);
 
-  // Adde OPML 2.0 metadata.
+  // Added OPML 2.0 metadata.
   opml_document.appendChild(opml_document.createElement(QSL("opml")));
   opml_document.documentElement().setAttribute(QSL("version"), QSL("version"));
 
@@ -252,6 +252,18 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
   setRootItem(root_item);
   emit layoutChanged();
 
+  return true;
+}
+
+bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
+  foreach (const Feed * const feed, m_rootItem->getSubTreeFeeds()) {
+    result += feed->url() + QL1S("\n");
+  }
+
+  return true;
+}
+
+bool FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
   return true;
 }
 

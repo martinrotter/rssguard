@@ -62,6 +62,11 @@ class FeedsImportExportModel : public QAbstractItemModel {
     bool exportToOMPL20(QByteArray &result);
     bool importAsOPML20(const QByteArray &data);
 
+    // Exports to plain text format
+    // where there is one feed URL per line.
+    bool exportToTxtURLPerLine(QByteArray &result);
+    bool importAsTxtURLPerLine(const QByteArray &data);
+
     Mode mode() const;
     void setMode(const Mode &mode);
 

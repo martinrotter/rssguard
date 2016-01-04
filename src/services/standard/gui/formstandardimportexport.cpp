@@ -102,12 +102,15 @@ void FormStandardImportExport::selectFile() {
 
 void FormStandardImportExport::selectExportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (.txt)");
 
   QString filter;
   QString selected_filter;
 
   // Add more filters here.
   filter += filter_opml20;
+  filter += ";;";
+  filter += filter_txt_url_per_line;
 
   QString selected_file = QFileDialog::getSaveFileName(this, tr("Select file for feeds export"),
                                                        qApp->homeFolderPath(), filter, &selected_filter);
@@ -120,6 +123,13 @@ void FormStandardImportExport::selectExportFile() {
         selected_file += QL1S(".opml");
       }
     }
+    else if (selected_filter == filter_txt_url_per_line) {
+      m_conversionType = TXTUrlPerLine;
+
+      if (!selected_file.endsWith(QL1S(".txt"))) {
+        selected_file += QL1S(".txt");
+      }
+    }
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
   }
@@ -129,12 +139,15 @@ void FormStandardImportExport::selectExportFile() {
 
 void FormStandardImportExport::selectImportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (.txt)");
 
   QString filter;
   QString selected_filter;
 
   // Add more filters here.
   filter += filter_opml20;
+  filter += ";;";
+  filter += filter_txt_url_per_line;
 
   QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolderPath(),
                                                        filter, &selected_filter);
@@ -142,6 +155,9 @@ void FormStandardImportExport::selectImportFile() {
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {
       m_conversionType = OPML20;
+    }
+    else if (selected_filter == filter_txt_url_per_line) {
+      m_conversionType = TXTUrlPerLine;
     }
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
@@ -169,6 +185,10 @@ void FormStandardImportExport::parseImportFile(const QString &file_name) {
     case OPML20:
       parsing_result = m_model->importAsOPML20(input_data);
       break;
+
+    case TXTUrlPerLine:
+      // TODO: TODO
+      //parsing_result = m_model->importAsTxtURLPerLine(input_data);
 
     default:
       return;
@@ -204,28 +224,33 @@ void FormStandardImportExport::performAction() {
 }
 
 void FormStandardImportExport::exportFeeds() {
+  QByteArray result_data;
+  bool result_export;
+
   switch (m_conversionType) {
-    case OPML20: {
-      QByteArray result_data;
-      bool result_export = m_model->exportToOMPL20(result_data);
+    case OPML20:
+      result_export = m_model->exportToOMPL20(result_data);
+      break;
 
-      if (result_export) {
-        try {
-          IOFactory::writeTextFile(m_ui->m_lblSelectFile->label()->text(), result_data);
-
-          m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."), tr("Feeds were exported successfully."));
-        }
-        catch (IOException &ex) {
-          m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot write into destination file."), ex.message());
-        }
-      }
-      else {
-        m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Critical error occurred."), tr("Critical error occurred."));
-      }
-    }
+    case TXTUrlPerLine:
+      result_export = m_model->exportToTxtURLPerLine(result_data);
+      break;
 
     default:
       break;
+  }
+
+  if (result_export) {
+    try {
+      IOFactory::writeTextFile(m_ui->m_lblSelectFile->label()->text(), result_data);
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were exported successfully."), tr("Feeds were exported successfully."));
+    }
+    catch (IOException &ex) {
+      m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Cannot write into destination file: '%1'."), ex.message());
+    }
+  }
+  else {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Critical error occurred."), tr("Critical error occurred."));
   }
 }
 

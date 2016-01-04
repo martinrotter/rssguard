@@ -34,7 +34,8 @@ class FormStandardImportExport : public QDialog {
 
   public:
     enum ConversionType {
-      OPML20 = 0
+      OPML20 = 0,
+      TXTUrlPerLine = 1
     };
 
     // Constructors.
