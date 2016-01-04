@@ -105,15 +105,15 @@ void FormEditFeed::performAction() {
 void FormEditFeed::onUrlChanged(const QString &new_url) {
   if (QRegExp(URL_REGEXP).exactMatch(new_url)) {
     // New url is well-formed.
-    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Ok, tr("The url is ok."));
+    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Ok, tr("The URL is ok."));
   }
   else if (!new_url.isEmpty()) {
     // New url is not well-formed but is not empty on the other hand.
-    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning, tr("The url does not meet standard pattern. Does your url start with \"http://\" or \"https://\" prefix."));
+    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Warning, tr("The URL does not meet standard pattern. Does your URL start with \"http://\" or \"https://\" prefix."));
   }
   else {
     // New url is empty.
-    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Error, tr("The url is empty."));
+    m_ui->m_txtUrl->setStatus(LineEditWithStatus::Error, tr("The URL is empty."));
   }
 }
 
