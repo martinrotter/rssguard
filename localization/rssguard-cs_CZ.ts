@@ -3204,9 +3204,9 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
 
 + %n další kanál.</numerusform><numerusform>
 
-+ %n dalších kanálů.</numerusform><numerusform>
++ %n další kanály.</numerusform><numerusform>
 
-+ %n další kanály.</numerusform></translation>
++ %n dalších kanálů.</numerusform></translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3267,7 +3267,7 @@ Je vyžadování verze API minimálně %1.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform></translation>
+        <translation><numerusform>%n nepřečtená zpráva.</numerusform><numerusform>%n nepřečtené zprávy.</numerusform><numerusform>%n nepřečtených zpráv.</numerusform></translation>
     </message>
 </context>
 <context>

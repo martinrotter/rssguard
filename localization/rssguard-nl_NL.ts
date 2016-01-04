@@ -201,7 +201,7 @@ Merk ook op dat sommige hulpbronnen worden gecached door de interne web browser.
     </message>
     <message>
         <source>Feed cannot be added because standard RSS/ATOM account is not enabled.</source>
-        <translation type="unfinished"/>
+        <translation>Feed kan niet worden toegevoegd omdat standaard RSS / Atom account niet is ingeschakeld.</translation>
     </message>
 </context>
 <context>
@@ -989,14 +989,14 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Onbekende fout, heb je de URL correct ingevoerd?</translation>
     </message>
 </context>
 <context>
     <name>FormEditFeed</name>
     <message>
         <source>Edit feed</source>
-        <translation type="unfinished"/>
+        <translation>Bewerk feed</translation>
     </message>
     <message>
         <source>Parent category</source>
@@ -1092,11 +1092,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Feed toegevoegd</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Feed is toegvoegd, activeer sync nu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
@@ -2238,11 +2238,11 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Background color</source>
-        <translation type="unfinished"/>
+        <translation>Achtergrondkleur</translation>
     </message>
     <message>
         <source>Change</source>
-        <translation type="unfinished"/>
+        <translation>Verander</translation>
     </message>
 </context>
 <context>
@@ -3549,14 +3549,16 @@ Ongelezen nieuws: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>gebruik specifieke instellingen (%n minuut voor de volgende auto-update)</numerusform><numerusform>gebruik specifieke instellingen (%n minuten voor de volgende auto-update)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Auto update status: %3</translation>
     </message>
 </context>
 <context>

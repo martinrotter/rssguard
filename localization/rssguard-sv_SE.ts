@@ -1067,43 +1067,43 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Auto-update using global interval</source>
-        <translation>Global auto-uppdatering</translation>
+        <translation>Autouppdatering med globala intervall</translation>
     </message>
     <message>
         <source>Auto-update every</source>
-        <translation>Auto-uppdatera varje</translation>
+        <translation>Uppdatera automatiskt varje</translation>
     </message>
     <message>
         <source>Do not auto-update at all</source>
-        <translation>Ingen auto-uppdatering</translation>
+        <translation>Uppdatera inte automatiskt</translation>
     </message>
     <message>
         <source>Full feed url including scheme</source>
-        <translation>Flödets fullständiga webbadress (URL)</translation>
+        <translation>Flödets fullständiga URL inklusive schema</translation>
     </message>
     <message>
         <source>Edit existing feed</source>
-        <translation>Redigera befintligt flöde</translation>
+        <translation>Redigera befintligt flöde </translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
+        <translation>Lägg till nytt flöde </translation>
     </message>
     <message>
         <source>Feed added</source>
-        <translation type="unfinished"/>
+        <translation>Flöde tillagt</translation>
     </message>
     <message>
         <source>Feed was added, triggering sync in now.</source>
-        <translation type="unfinished"/>
+        <translation>Flöde tillagt. Synkroniseras nu.</translation>
     </message>
     <message>
         <source>Cannot add feed</source>
-        <translation>Kan inte lägga till flödet</translation>
+        <translation>Kan inte lägga till flödet </translation>
     </message>
     <message>
         <source>Feed was not added due to error.</source>
-        <translation>Flödet lades inte till, på grund av något fel.</translation>
+        <translation>Flödet lades inte till, på grund av ett fel.</translation>
     </message>
 </context>
 <context>
@@ -2232,11 +2232,11 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Background color</source>
-        <translation type="unfinished"/>
+        <translation>Bakgrundsfärg</translation>
     </message>
     <message>
         <source>Change</source>
-        <translation type="unfinished"/>
+        <translation>Ändra</translation>
     </message>
 </context>
 <context>
@@ -3534,19 +3534,21 @@ Olästa nyheter: %2</translation>
     <message>
         <source>uses global settings</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation>Globala inställningar</translation>
+        <translation>använder globala inställningar</translation>
     </message>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
     </message>
     <message>
         <source>%1%2
 
 Auto-update status: %3</source>
         <extracomment>Tooltip for feed.</extracomment>
-        <translation type="unfinished"/>
+        <translation>%1%2
+
+Autouppdateringsstatus: %3</translation>
     </message>
 </context>
 <context>
