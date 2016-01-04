@@ -34,6 +34,7 @@ Thanks to
 -----
 * **Elbert Pol** - huge contrubutions, including translating and testing in OS/2 environment.
 * **Asen Anastassov** - testing, providing great feedback.
+* **eson** - rock-solid translation into Sweden language.
 
 - - -
 Downloads
