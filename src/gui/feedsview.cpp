@@ -28,6 +28,7 @@
 #include "gui/styleditemdelegatewithoutfocus.h"
 #include "gui/dialogs/formmain.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/serviceroot.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/gui/formstandardcategorydetails.h"
@@ -131,6 +132,24 @@ void FeedsView::loadExpandedStates() {
 
   sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
                static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
+}
+
+void FeedsView::addFeedIntoSelectedAccount() {
+  RootItem *selected = selectedItem();
+
+  if (selected->kind() == RootItemKind::ServiceRoot) {
+    ServiceRoot *root = selected->toServiceRoot();
+
+    if (root->supportsFeedAddingByUrl()) {
+      root->addFeedByUrl();
+    }
+    else {
+      qApp->showGuiMessage(tr("Not supported"),
+                           tr("Selected account does not support adding of new feeds."),
+                           QSystemTrayIcon::Warning,
+                           qApp->mainForm(), true);
+    }
+  }
 }
 
 void FeedsView::expandCollapseCurrentItem() {

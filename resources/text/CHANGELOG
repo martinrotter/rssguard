@@ -1,6 +1,9 @@
 3.0.2
 —————
 
+Added:
+▪ Added generic "Add new feed" action, which can be accessed via "Feeds & messages" menu. (issue #146)
+
 Changed:
 ▪ Some GUI refinements and fixes.
 ▪ Added more logging entries.

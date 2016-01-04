@@ -213,6 +213,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
 
   form_main->m_ui->m_actionServiceDelete->setEnabled(service_selected);
   form_main->m_ui->m_actionServiceEdit->setEnabled(service_selected);
+  form_main->m_ui->m_actionAddFeedIntoSelectedAccount->setEnabled(service_selected);
 
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
   form_main->m_ui->m_menuAccounts->setEnabled(!critical_action_running);
@@ -254,6 +255,8 @@ void FeedMessageViewer::createConnections() {
           form_main->m_ui->m_tabWidget, SLOT(addBrowserWithMessages(QList<Message>)));
   
   // Toolbar forwardings.
+  connect(form_main->m_ui->m_actionAddFeedIntoSelectedAccount, SIGNAL(triggered()),
+          m_feedsView, SLOT(addFeedIntoSelectedAccount()));
   connect(form_main->m_ui->m_actionCleanupDatabase,
           SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
   connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,

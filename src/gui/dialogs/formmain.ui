@@ -137,6 +137,7 @@
     <addaction name="m_actionUpdateSelectedItems"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
+    <addaction name="m_actionAddFeedIntoSelectedAccount"/>
     <addaction name="m_actionEditSelectedItem"/>
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
@@ -776,6 +777,14 @@
   <action name="m_actionServiceDelete">
    <property name="text">
     <string>&amp;Delete selected account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionAddFeedIntoSelectedAccount">
+   <property name="text">
+    <string>Add new feed into selected account</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

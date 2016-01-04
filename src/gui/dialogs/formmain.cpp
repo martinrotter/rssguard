@@ -108,7 +108,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionSwitchStatusBar;
   actions << m_ui->m_actionSwitchMessageListOrientation;
 
-  // Add web browser actions
+  // Add web browser actions.
   actions << m_ui->m_actionAddBrowser;
   actions << m_ui->m_actionCloseCurrentTab;
   actions << m_ui->m_actionCloseAllTabs;
@@ -132,6 +132,9 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionServiceAdd;
+  actions << m_ui->m_actionServiceEdit;
+  actions << m_ui->m_actionServiceDelete;
+  actions << m_ui->m_actionAddFeedIntoSelectedAccount;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
   actions << m_ui->m_actionSelectNextItem;
   actions << m_ui->m_actionSelectPreviousItem;
@@ -383,6 +386,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
   m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
+  m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {
