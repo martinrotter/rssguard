@@ -200,7 +200,6 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           new_feed->setUrl(feed_url);
           new_feed->setCreationDate(QDateTime::currentDateTime());
           new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
-          new_feed->setAutoUpdateType(StandardFeed::DefaultAutoUpdate);
 
           if (feed_type == QL1S("RSS1")) {
             new_feed->setType(StandardFeed::Rdf);
@@ -264,6 +263,30 @@ bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
 }
 
 bool FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
+  StandardServiceRoot *root_item = new StandardServiceRoot();
+
+  foreach (const QByteArray &url, data.split('\n')) {
+    if (!url.isEmpty()) {
+
+      StandardFeed *feed = new StandardFeed();
+
+      // TODO: co guessovat ten feed?
+
+      feed->setUrl(url);
+      feed->setTitle(url);
+      feed->setCreationDate(QDateTime::currentDateTime());
+      feed->setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
+      feed->setEncoding(DEFAULT_FEED_ENCODING);
+
+      root_item->appendChild(feed);
+    }
+  }
+
+  // Now, XML is processed and we have result in form of pointer item structure.
+  emit layoutAboutToBeChanged();
+  setRootItem(root_item);
+  emit layoutChanged();
+
   return true;
 }
 

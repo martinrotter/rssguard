@@ -102,7 +102,7 @@ void FormStandardImportExport::selectFile() {
 
 void FormStandardImportExport::selectExportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (.txt)");
+  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
 
   QString filter;
   QString selected_filter;
@@ -139,7 +139,7 @@ void FormStandardImportExport::selectExportFile() {
 
 void FormStandardImportExport::selectImportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (.txt)");
+  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
 
   QString filter;
   QString selected_filter;
@@ -187,8 +187,13 @@ void FormStandardImportExport::parseImportFile(const QString &file_name) {
       break;
 
     case TXTUrlPerLine:
-      // TODO: TODO
-      //parsing_result = m_model->importAsTxtURLPerLine(input_data);
+      parsing_result = m_model->importAsTxtURLPerLine(input_data);
+      break;
+
+      // TODO: V celém kódu nově zavést pořádně všude const, i v lokálních metodových proměnných
+
+      // TODO: Kompletně nahradit všechny ukazatele za QScopedPointer tak,
+      // aby se nikde v kodu nevolalo delete či deleteLater().
 
     default:
       return;
