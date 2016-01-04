@@ -197,6 +197,14 @@ void FormMain::updateAddItemMenu() {
 
     m_ui->m_menuAddItem->addMenu(root_menu);
   }
+
+  if (m_ui->m_menuAddItem->isEmpty()) {
+    QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                     tr("No accounts activated"),
+                                     m_ui->m_menuAddItem);
+    no_action->setEnabled(false);
+    m_ui->m_menuAddItem->addAction(no_action);
+  }
 }
 
 void FormMain::updateRecycleBinMenu() {

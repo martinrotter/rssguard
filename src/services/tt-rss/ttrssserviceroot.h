@@ -35,7 +35,7 @@ class TtRssServiceRoot : public ServiceRoot {
     explicit TtRssServiceRoot(RootItem *parent = NULL);
     virtual ~TtRssServiceRoot();
 
-    void start();
+    void start(bool freshly_activated);
     void stop();
 
     QString code();

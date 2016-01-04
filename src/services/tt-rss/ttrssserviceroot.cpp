@@ -51,7 +51,9 @@ TtRssServiceRoot::~TtRssServiceRoot() {
   delete m_network;
 }
 
-void TtRssServiceRoot::start() {
+void TtRssServiceRoot::start(bool freshly_activated) {
+  Q_UNUSED(freshly_activated)
+
   loadFromDatabase();
 
   if (childCount() == 1 && child(0)->kind() == RootItemKind::Bin) {

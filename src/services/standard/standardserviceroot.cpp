@@ -61,13 +61,13 @@ StandardServiceRoot::~StandardServiceRoot() {
   qDeleteAll(m_feedContextMenu);
 }
 
-void StandardServiceRoot::start() {
+void StandardServiceRoot::start(bool freshly_activated) {
   loadFromDatabase();
 
-  if (getSubTree(RootItemKind::Category | RootItemKind::Feed).isEmpty()) {
+  if (freshly_activated) {
     // In other words, if there are no feeds or categories added.
     if (MessageBox::show(qApp->mainForm(), QMessageBox::Question, QObject::tr("Load initial set of feeds"),
-                         tr("You started %1 for the first time, now you can load initial set of feeds.").arg(APP_NAME),
+                         tr("This account does not include any feeds. You can now add default set of feeds."),
                          tr("Do you want to load initial set of feeds?"),
                          QString(), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
       QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;

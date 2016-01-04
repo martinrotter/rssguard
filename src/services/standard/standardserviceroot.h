@@ -38,7 +38,7 @@ class StandardServiceRoot : public ServiceRoot {
     virtual ~StandardServiceRoot();
 
     // Start/stop root.
-    void start();
+    void start(bool freshly_activated);
     void stop();
 
     QString code();

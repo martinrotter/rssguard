@@ -146,7 +146,7 @@ class FeedsModel : public QAbstractItemModel {
     void updateFeeds(const QList<Feed*> &feeds);
 
     // Adds given service root account.
-    bool addServiceAccount(ServiceRoot *root);
+    bool addServiceAccount(ServiceRoot *root, bool freshly_activated);
 
     // Loads feed/categories from the database.
     void loadActivatedServiceAccounts();

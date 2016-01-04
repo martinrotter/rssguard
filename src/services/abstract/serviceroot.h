@@ -78,7 +78,7 @@ class ServiceRoot : public RootItem {
     //
     // Stop method is called just before application exits OR when
     // user explicitly deletes existing service instance.
-    virtual void start() = 0;
+    virtual void start(bool freshly_activated) = 0;
     virtual void stop() = 0;
 
     // Returns the UNIQUE code of the given service.

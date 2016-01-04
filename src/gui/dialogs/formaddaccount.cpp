@@ -56,7 +56,7 @@ void FormAddAccount::addSelectedAccount() {
   ServiceRoot *new_root = point->createNewRoot();
 
   if (new_root != NULL) {
-    m_model->addServiceAccount(new_root);
+    m_model->addServiceAccount(new_root, true);
   }
   else {
     qCritical("Cannot create new account.");

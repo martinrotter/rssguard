@@ -677,7 +677,7 @@ void FeedsModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
-bool FeedsModel::addServiceAccount(ServiceRoot *root) {
+bool FeedsModel::addServiceAccount(ServiceRoot *root, bool freshly_activated) {
   int new_row_index = m_rootItem->childCount();
 
   beginInsertRows(indexForItem(m_rootItem), new_row_index, new_row_index);
@@ -692,7 +692,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root) {
   connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
   connect(root, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)));
 
-  root->start();
+  root->start(freshly_activated);
   return true;
 }
 
@@ -731,7 +731,7 @@ void FeedsModel::loadActivatedServiceAccounts() {
     QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 
     foreach (ServiceRoot *root, roots) {
-      addServiceAccount(root);
+      addServiceAccount(root, false);
     }
   }
 
