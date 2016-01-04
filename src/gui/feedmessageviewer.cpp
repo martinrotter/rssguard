@@ -213,7 +213,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
 
   form_main->m_ui->m_actionServiceDelete->setEnabled(service_selected);
   form_main->m_ui->m_actionServiceEdit->setEnabled(service_selected);
-  form_main->m_ui->m_actionAddFeedIntoSelectedAccount->setEnabled(service_selected);
+  form_main->m_ui->m_actionAddFeedIntoSelectedAccount->setEnabled(anything_selected);
 
   form_main->m_ui->m_menuAddItem->setEnabled(!critical_action_running);
   form_main->m_ui->m_menuAccounts->setEnabled(!critical_action_running);

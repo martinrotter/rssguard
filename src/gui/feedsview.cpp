@@ -137,8 +137,8 @@ void FeedsView::loadExpandedStates() {
 void FeedsView::addFeedIntoSelectedAccount() {
   RootItem *selected = selectedItem();
 
-  if (selected->kind() == RootItemKind::ServiceRoot) {
-    ServiceRoot *root = selected->toServiceRoot();
+  if (selected != NULL) {
+    ServiceRoot *root = selected->getParentServiceRoot();
 
     if (root->supportsFeedAddingByUrl()) {
       root->addFeedByUrl();
