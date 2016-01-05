@@ -58,6 +58,7 @@ FormStandardImportExport::~FormStandardImportExport() {
 
 void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
   m_model->setMode(mode);
+  m_ui->m_progressBar->setVisible(false);
 
   switch (mode) {
     case FeedsImportExportModel::Export: {
@@ -107,16 +108,16 @@ void FormStandardImportExport::selectFile() {
 void FormStandardImportExport::onParsingStarted() {
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Progress, tr("Parsing data..."), tr("Parsing data..."));
   m_ui->m_btnSelectFile->setEnabled(false);
-  m_ui->m_progressBar->setEnabled(true);
   m_ui->m_progressBar->setValue(0);
+  m_ui->m_progressBar->setVisible(true);
 }
 
 void FormStandardImportExport::onParsingFinished(int count_failed, int count_succeeded, bool parsing_error) {
   Q_UNUSED(count_failed)
   Q_UNUSED(count_succeeded)
 
+  m_ui->m_progressBar->setVisible(false);
   m_ui->m_progressBar->setValue(0);
-  m_ui->m_progressBar->setEnabled(false);
   m_model->checkAllItems();
 
   if (!parsing_error) {

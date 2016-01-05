@@ -3,6 +3,7 @@
 
 Added:
 ▪ Added generic "Add new feed" action, which can be accessed via "Feeds & messages" menu. (issue #146)
+▪ Added support for import/export to/from plain TXT file (one feed URL per line). (issue #142)
 
 Changed:
 ▪ Some GUI refinements and fixes.
