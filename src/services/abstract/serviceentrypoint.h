@@ -47,7 +47,7 @@ class ServiceEntryPoint {
     // point from persistent DB.
     // Returns list of root nodes which will be afterwards added
     // to the global feed model.
-    virtual QList<ServiceRoot*> initializeSubtree() = 0;
+    virtual QList<ServiceRoot*> initializeSubtree() const = 0;
 
     // Can this service account be added just once?
     // NOTE: This is true particularly for "standard" service

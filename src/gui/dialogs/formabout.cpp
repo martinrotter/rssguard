@@ -29,7 +29,7 @@
 #include <QTextStream>
 
 
-FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout) {
+FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout()) {
   m_ui->setupUi(this);
 
   // Set flags and attributes.
@@ -54,7 +54,6 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout)
 
 FormAbout::~FormAbout() {
   qDebug("Destroying FormAbout instance.");
-  delete m_ui;
 }
 
 void FormAbout::loadSettingsAndPaths() {
