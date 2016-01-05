@@ -36,6 +36,10 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot *service_
   m_ui->setupUi(this);
   m_model = new FeedsImportExportModel(m_ui->m_treeFeeds);
 
+  connect(m_model, SIGNAL(parsingStarted()), this, SLOT(onParsingStarted()));
+  connect(m_model, SIGNAL(parsingFinished(int,int,bool)), this, SLOT(onParsingFinished(int,int,bool)));
+  connect(m_model, SIGNAL(parsingProgress(int,int)), this, SLOT(onParsingProgress(int,int)));
+
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
 
   m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Error, tr("No file is selected."), tr("No file is selected."));
@@ -100,6 +104,41 @@ void FormStandardImportExport::selectFile() {
   }
 }
 
+void FormStandardImportExport::onParsingStarted() {
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::Progress, tr("Parsing data..."), tr("Parsing data..."));
+  m_ui->m_btnSelectFile->setEnabled(false);
+  m_ui->m_progressBar->setEnabled(true);
+  m_ui->m_progressBar->setValue(0);
+}
+
+void FormStandardImportExport::onParsingFinished(int count_failed, int count_succeeded, bool parsing_error) {
+  Q_UNUSED(count_failed)
+  Q_UNUSED(count_succeeded)
+
+  m_ui->m_progressBar->setValue(0);
+  m_ui->m_progressBar->setEnabled(false);
+  m_model->checkAllItems();
+
+  if (!parsing_error) {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
+    m_ui->m_groupFeeds->setEnabled(true);
+    m_ui->m_btnSelectFile->setEnabled(true);
+    m_ui->m_treeFeeds->setModel(m_model);
+    m_ui->m_treeFeeds->expandAll();
+  }
+  else {
+    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error, file is not well-formed. Select another file."),
+                                 tr("Error occurred. File is not well-formed. Select another file."));
+  }
+
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!parsing_error);
+}
+
+void FormStandardImportExport::onParsingProgress(int completed, int total) {
+  m_ui->m_progressBar->setMaximum(total);
+  m_ui->m_progressBar->setValue(completed);
+}
+
 void FormStandardImportExport::selectExportFile() {
   QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
   QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
@@ -162,7 +201,6 @@ void FormStandardImportExport::selectImportFile() {
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
     parseImportFile(selected_file);
-    m_model->checkAllItems();
   }
 }
 
@@ -179,15 +217,13 @@ void FormStandardImportExport::parseImportFile(const QString &file_name) {
     return;
   }
 
-  bool parsing_result;
-
   switch (m_conversionType) {
     case OPML20:
-      parsing_result = m_model->importAsOPML20(input_data);
+      m_model->importAsOPML20(input_data);
       break;
 
     case TXTUrlPerLine:
-      parsing_result = m_model->importAsTxtURLPerLine(input_data);
+      m_model->importAsTxtURLPerLine(input_data);
       break;
 
       // TODO: V celém kódu nově zavést pořádně všude const, i v lokálních metodových proměnných
@@ -198,19 +234,6 @@ void FormStandardImportExport::parseImportFile(const QString &file_name) {
     default:
       return;
   }
-
-  if (parsing_result) {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Feeds were loaded."), tr("Feeds were loaded."));
-    m_ui->m_groupFeeds->setEnabled(true);
-    m_ui->m_treeFeeds->setModel(m_model);
-    m_ui->m_treeFeeds->expandAll();
-  }
-  else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error, file is not well-formed. Select another file."),
-                                 tr("Error occurred. File is not well-formed. Select another file."));
-  }
-
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(parsing_result);
 }
 
 void FormStandardImportExport::performAction() {

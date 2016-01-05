@@ -60,12 +60,12 @@ class FeedsImportExportModel : public QAbstractItemModel {
     // Exports to OPML 2.0
     // NOTE: http://dev.opml.org/spec2.html
     bool exportToOMPL20(QByteArray &result);
-    bool importAsOPML20(const QByteArray &data);
+    void importAsOPML20(const QByteArray &data);
 
     // Exports to plain text format
     // where there is one feed URL per line.
     bool exportToTxtURLPerLine(QByteArray &result);
-    bool importAsTxtURLPerLine(const QByteArray &data);
+    void importAsTxtURLPerLine(const QByteArray &data);
 
     Mode mode() const;
     void setMode(const Mode &mode);
@@ -74,8 +74,15 @@ class FeedsImportExportModel : public QAbstractItemModel {
     void checkAllItems();
     void uncheckAllItems();
 
+  signals:
+    // These signals are emitted when user selects some data
+    // to be imported/parsed into the model.
+    void parsingStarted();
+    void parsingProgress(int completed, int total);
+    void parsingFinished(int count_failed, int count_succeeded, bool parsing_error);
+
   private:
-    QHash<RootItem*, Qt::CheckState> m_checkStates;
+    QHash<RootItem*,Qt::CheckState> m_checkStates;
     RootItem *m_rootItem;
 
     bool m_recursiveChange;

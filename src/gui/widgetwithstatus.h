@@ -33,7 +33,8 @@ class WidgetWithStatus : public QWidget {
       Information,
       Warning,
       Error,
-      Ok
+      Ok,
+      Progress
     };
 
     // Constructors and destructors.
@@ -53,6 +54,7 @@ class WidgetWithStatus : public QWidget {
     PlainToolButton *m_btnStatus;
     QHBoxLayout *m_layout;
 
+    QIcon m_iconProgress;
     QIcon m_iconInformation;
     QIcon m_iconWarning;
     QIcon m_iconError;

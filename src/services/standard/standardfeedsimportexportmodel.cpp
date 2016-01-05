@@ -154,19 +154,22 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   return true;
 }
 
-bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
+void FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
+  emit parsingStarted();
+
   QDomDocument opml_document;
 
   if (!opml_document.setContent(data)) {
-    return false;
+    emit parsingFinished(0, 0, true);
   }
 
   if (opml_document.documentElement().isNull() || opml_document.documentElement().tagName() != QSL("opml") ||
       opml_document.documentElement().elementsByTagName(QSL("body")).size() != 1) {
     // This really is not an OPML file.
-    return false;
+    emit parsingFinished(0, 0, true);
   }
 
+  int completed = 0, total = 0;
   StandardServiceRoot *root_item = new StandardServiceRoot();
   QStack<RootItem*> model_items; model_items.push(root_item);
   QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
@@ -175,7 +178,10 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
     RootItem *active_model_item = model_items.pop();
     QDomElement active_element = elements_to_process.pop();
 
-    for (int i = 0; i < active_element.childNodes().size(); i++) {
+    int current_count = active_element.childNodes().size();
+    total += current_count;
+
+    for (int i = 0; i < current_count; i++) {
       QDomNode child = active_element.childNodes().at(i);
 
       if (child.isElement()) {
@@ -242,6 +248,8 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
           elements_to_process.push(child_element);
           model_items.push(new_category);
         }
+
+        emit parsingProgress(++completed, total);
       }
     }
   }
@@ -250,8 +258,7 @@ bool FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
   emit layoutAboutToBeChanged();
   setRootItem(root_item);
   emit layoutChanged();
-
-  return true;
+  emit parsingFinished(0, completed, false);
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
@@ -262,32 +269,49 @@ bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
   return true;
 }
 
-bool FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
+void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
+  emit parsingStarted();
+
+  int completed = 0, succeded = 0, failed = 0;
   StandardServiceRoot *root_item = new StandardServiceRoot();
+  QList<QByteArray> urls = data.split('\n');
 
-  foreach (const QByteArray &url, data.split('\n')) {
+  foreach (const QByteArray &url, urls) {
     if (!url.isEmpty()) {
+      QPair<StandardFeed*,QNetworkReply::NetworkError> guessed = StandardFeed::guessFeed(url);
 
-      StandardFeed *feed = new StandardFeed();
+      if (guessed.second == QNetworkReply::NoError) {
+        guessed.first->setUrl(url);
+        root_item->appendChild(guessed.first);
+        succeded++;
+      }
+      else {
+        StandardFeed *feed = new StandardFeed();
 
-      // TODO: co guessovat ten feed?
+        feed->setUrl(url);
+        feed->setTitle(url);
+        feed->setCreationDate(QDateTime::currentDateTime());
+        feed->setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
+        feed->setEncoding(DEFAULT_FEED_ENCODING);
+        root_item->appendChild(feed);
+        failed++;
+      }
 
-      feed->setUrl(url);
-      feed->setTitle(url);
-      feed->setCreationDate(QDateTime::currentDateTime());
-      feed->setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
-      feed->setEncoding(DEFAULT_FEED_ENCODING);
-
-      root_item->appendChild(feed);
+      qApp->processEvents();
     }
+    else {
+      qWarning("Detected empty URL when parsing input TXT (one URL per line) data.");
+      failed++;
+    }
+
+    emit parsingProgress(++completed, urls.size());
   }
 
   // Now, XML is processed and we have result in form of pointer item structure.
   emit layoutAboutToBeChanged();
   setRootItem(root_item);
   emit layoutChanged();
-
-  return true;
+  emit parsingFinished(failed, succeded, false);
 }
 
 FeedsImportExportModel::Mode FeedsImportExportModel::mode() const {
