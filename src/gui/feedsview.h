@@ -63,6 +63,7 @@ class FeedsView : public QTreeView {
 
   public slots:
     void addFeedIntoSelectedAccount();
+    void addCategoryIntoSelectedAccount();
     void expandCollapseCurrentItem();
 
     // Feed updating.

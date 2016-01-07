@@ -51,7 +51,8 @@ class ServiceRoot : public RootItem {
     bool deleteViaGui();
     bool markAsReadUnread(ReadStatus status);
 
-    virtual bool supportsFeedAddingByUrl() const = 0;
+    virtual bool supportsFeedAdding() const = 0;
+    virtual bool supportsCategoryAdding() const = 0;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -159,7 +160,8 @@ class ServiceRoot : public RootItem {
     void setAccountId(int account_id);
 
   public slots:
-    virtual void addFeedByUrl(const QString &url = QString()) = 0;
+    virtual void addNewFeed(const QString &url = QString()) = 0;
+    virtual void addNewCategory() = 0;
 
   protected:
     // Takes lists of feeds/categories and assembles them into the tree structure.

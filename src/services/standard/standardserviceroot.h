@@ -49,7 +49,8 @@ class StandardServiceRoot : public ServiceRoot {
 
     bool markAsReadUnread(ReadStatus status);
 
-    bool supportsFeedAddingByUrl() const;
+    bool supportsFeedAdding() const;
+    bool supportsCategoryAdding() const;
 
     QVariant data(int column, int role) const;
     Qt::ItemFlags additionalFlags() const;
@@ -100,7 +101,7 @@ class StandardServiceRoot : public ServiceRoot {
     void checkArgumentForFeedAdding(const QString &argument);
 
   public slots:
-    void addFeedByUrl(const QString &url = QString());
+    void addNewFeed(const QString &url = QString());
     void addNewCategory();
     void importFeeds();
     void exportFeeds();
@@ -119,7 +120,6 @@ class StandardServiceRoot : public ServiceRoot {
     QAction *m_actionImportFeeds;
 
     QList<QAction*> m_serviceMenu;
-    QList<QAction*> m_addItemMenu;
     QList<QAction*> m_feedContextMenu;
 
     QAction *m_actionFeedFetchMetadata;

@@ -140,12 +140,30 @@ void FeedsView::addFeedIntoSelectedAccount() {
   if (selected != NULL) {
     ServiceRoot *root = selected->getParentServiceRoot();
 
-    if (root->supportsFeedAddingByUrl()) {
-      root->addFeedByUrl();
+    if (root->supportsFeedAdding()) {
+      root->addNewFeed();
     }
     else {
       qApp->showGuiMessage(tr("Not supported"),
                            tr("Selected account does not support adding of new feeds."),
+                           QSystemTrayIcon::Warning,
+                           qApp->mainForm(), true);
+    }
+  }
+}
+
+void FeedsView::addCategoryIntoSelectedAccount() {
+  RootItem *selected = selectedItem();
+
+  if (selected != NULL) {
+    ServiceRoot *root = selected->getParentServiceRoot();
+
+    if (root->supportsCategoryAdding()) {
+      root->addNewCategory();
+    }
+    else {
+      qApp->showGuiMessage(tr("Not supported"),
+                           tr("Selected account does not support adding of new categories."),
                            QSystemTrayIcon::Warning,
                            qApp->mainForm(), true);
     }

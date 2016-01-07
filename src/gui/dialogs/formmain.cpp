@@ -135,6 +135,7 @@ QList<QAction*> FormMain::allActions() {
   actions << m_ui->m_actionServiceEdit;
   actions << m_ui->m_actionServiceDelete;
   actions << m_ui->m_actionAddFeedIntoSelectedAccount;
+  actions << m_ui->m_actionAddCategoryIntoSelectedAccount;
   actions << m_ui->m_actionViewSelectedItemsNewspaperMode;
   actions << m_ui->m_actionSelectNextItem;
   actions << m_ui->m_actionSelectPreviousItem;
@@ -185,28 +186,39 @@ void FormMain::updateAddItemMenu() {
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
 
-    QList<QAction*> root_actions = activated_root->addItemMenu();
+    QList<QAction*> specific_root_actions = activated_root->addItemMenu();
 
-    if (root_actions.isEmpty()) {
-      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                       tr("No possible actions"),
-                                       m_ui->m_menuAddItem);
-      no_action->setEnabled(false);
-      root_menu->addAction(no_action);
+    if (activated_root->supportsCategoryAdding()) {
+      QAction *action_new_category = new QAction(qApp->icons()->fromTheme(QSL("folder-category")),
+                                                 tr("Add new category"),
+                                                 m_ui->m_menuAddItem);
+      root_menu->addAction(action_new_category);
+      connect(action_new_category, SIGNAL(triggered()), activated_root, SLOT(addNewCategory()));
     }
-    else {
-      root_menu->addActions(root_actions);
+
+    if (activated_root->supportsFeedAdding()) {
+      QAction *action_new_feed = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")),
+                                                 tr("Add new feed"),
+                                                 m_ui->m_menuAddItem);
+      root_menu->addAction(action_new_feed);
+      connect(action_new_feed, SIGNAL(triggered()), activated_root, SLOT(addNewFeed()));
+    }
+
+    if (!specific_root_actions.isEmpty()) {
+      if (!root_menu->isEmpty()) {
+        root_menu->addSeparator();
+      }
+
+      root_menu->addActions(specific_root_actions);
     }
 
     m_ui->m_menuAddItem->addMenu(root_menu);
   }
 
-  if (m_ui->m_menuAddItem->isEmpty()) {
-    QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
-                                     tr("No accounts activated"),
-                                     m_ui->m_menuAddItem);
-    no_action->setEnabled(false);
-    m_ui->m_menuAddItem->addAction(no_action);
+  if (!m_ui->m_menuAddItem->isEmpty()) {
+    m_ui->m_menuAddItem->addSeparator();
+    m_ui->m_menuAddItem->addAction(m_ui->m_actionAddCategoryIntoSelectedAccount);
+    m_ui->m_menuAddItem->addAction(m_ui->m_actionAddFeedIntoSelectedAccount);
   }
 }
 
@@ -386,7 +398,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
   m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("item-edit")));
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("item-remove")));
-  m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
+  m_ui->m_actionAddFeedIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder-feed")));
+  m_ui->m_actionAddCategoryIntoSelectedAccount->setIcon(icon_theme_factory->fromTheme(QSL("folder-category")));
 
   // Setup icons for underlying components: opened web browsers...
   foreach (WebBrowser *browser, WebBrowser::runningWebBrowsers()) {

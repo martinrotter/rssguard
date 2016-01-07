@@ -41,8 +41,7 @@
 
 TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)),
-    m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_addItemMenu(QList<QAction*>()),
-    m_network(new TtRssNetworkFactory) {
+    m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory) {
   setIcon(TtRssServiceEntryPoint().icon());
   setCreationDate(QDateTime::currentDateTime());
 }
@@ -111,15 +110,23 @@ bool TtRssServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   }
 }
 
-bool TtRssServiceRoot::supportsFeedAddingByUrl() const {
+bool TtRssServiceRoot::supportsFeedAdding() const {
   return true;
 }
 
-void TtRssServiceRoot::addFeedByUrl(const QString &url) {
+bool TtRssServiceRoot::supportsCategoryAdding() const {
+  return false;
+}
+
+void TtRssServiceRoot::addNewFeed(const QString &url) {
   QPointer<FormEditFeed> form_pointer = new FormEditFeed(this, qApp->mainForm());
 
   form_pointer.data()->execForAdd(url);
   delete form_pointer.data();
+}
+
+void TtRssServiceRoot::addNewCategory() {
+  // Do nothing.
 }
 
 bool TtRssServiceRoot::canBeEdited() {
@@ -153,14 +160,7 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
 }
 
 QList<QAction*> TtRssServiceRoot::addItemMenu() {
-  if (m_addItemMenu.isEmpty()) {
-    QAction *action_new_feed = new QAction(qApp->icons()->fromTheme("folder-feed"), tr("Add new feed"), this);
-    connect(action_new_feed, SIGNAL(triggered()), this, SLOT(addFeedByUrl()));
-
-    m_addItemMenu.append(action_new_feed);
-  }
-
-  return m_addItemMenu;
+  return QList<QAction*>();
 }
 
 RecycleBin *TtRssServiceRoot::recycleBin() {
