@@ -77,6 +77,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
 
   if (query.exec()) {
     StandardServiceRoot *root = new StandardServiceRoot();
+    root->setId(id_to_assign);
     root->setAccountId(id_to_assign);
     return root;
   }
@@ -98,6 +99,7 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   if (query.exec()) {
     while (query.next()) {
       StandardServiceRoot *root = new StandardServiceRoot();
+      root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
       roots.append(root);
     }

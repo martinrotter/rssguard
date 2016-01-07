@@ -57,6 +57,7 @@ FeedsView::FeedsView(QWidget *parent)
   // Connections.
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
   connect(m_sourceModel, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SLOT(onItemExpandRequested(QList<RootItem*>,bool)));
+  connect(m_sourceModel, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SLOT(onItemExpandStateSaveRequested(RootItem*)));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
@@ -100,23 +101,29 @@ RootItem *FeedsView::selectedItem() const {
   }
 }
 
-void FeedsView::saveExpandedStates() {
-  Settings *settings = qApp->settings();
-  QList<RootItem*> expandable_items;
+void FeedsView::onItemExpandStateSaveRequested(RootItem *item) {
+  saveExpandStates(item);
+}
 
-  expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
+void FeedsView::saveAllExpandStates() {
+  saveExpandStates(sourceModel()->rootItem());
+}
+
+void FeedsView::saveExpandStates(RootItem *item) {
+  Settings *settings = qApp->settings();
+  QList<RootItem*> items = item->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot);
 
   // Iterate all categories and save their expand statuses.
-  foreach (RootItem *item, expandable_items) {
-    QString setting_name = item->hashCode();
+  foreach (RootItem *item, items) {
+    const QString setting_name = item->hashCode();
 
-    settings->setValue(GROUP(Categories),
+    settings->setValue(GROUP(CategoriesExpandStates),
                        setting_name,
                        isExpanded(model()->mapFromSource(sourceModel()->indexForItem(item))));
   }
 }
 
-void FeedsView::loadExpandedStates() {
+void FeedsView::loadAllExpandStates() {
   Settings *settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
@@ -124,10 +131,10 @@ void FeedsView::loadExpandedStates() {
 
   // Iterate all categories and save their expand statuses.
   foreach (RootItem *item, expandable_items) {
-    QString setting_name = item->hashCode();
+    const QString setting_name = item->hashCode();
 
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
-                settings->value(GROUP(Categories), setting_name, item->childCount() > 0).toBool());
+                settings->value(GROUP(CategoriesExpandStates), setting_name, item->childCount() > 0).toBool());
   }
 
   sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),

@@ -44,10 +44,7 @@ RootItem::~RootItem() {
 }
 
 QString RootItem::hashCode() const {
-  return
-      QString::number(kind()) + QL1S("-") +
-      QString::number(qHash(title())) + QL1S("-") +
-      QString::number(id());
+  return QString::number(kind()) + QL1S("-") + QString::number(id());
 }
 
 QList<QAction*> RootItem::contextMenu() {

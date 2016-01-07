@@ -581,6 +581,7 @@ void TtRssServiceRoot::syncIn() {
     RootItem *new_tree = feed_cats_response.feedsCategories(true, m_network->url());
 
     // Purge old data from SQL and clean all model items.
+    requestItemExpandStateSave(this);
     removeOldFeedTree(false);
     cleanAllItems();
 
@@ -602,7 +603,17 @@ void TtRssServiceRoot::syncIn() {
 
     itemChanged(all_items);
     requestReloadMessageList(true);
-    requestItemExpand(all_items, true);
+
+    // Now we must refresh expand states.
+    QList<RootItem*> items_to_expand;
+
+    foreach (RootItem *item, all_items) {
+      if (qApp->settings()->value(GROUP(CategoriesExpandStates), item->hashCode(), item->childCount() > 0).toBool()) {
+        items_to_expand.append(item);
+      }
+    }
+
+    requestItemExpand(items_to_expand, true);
   }
 
   setIcon(original_icon);

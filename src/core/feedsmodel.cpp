@@ -691,6 +691,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root, bool freshly_activated) {
   connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
   connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
   connect(root, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)));
+  connect(root, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SIGNAL(itemExpandStateSaveRequested(RootItem*)));
 
   root->start(freshly_activated);
   return true;

@@ -12,6 +12,7 @@ Changed:
 
 Fixed:
 
+▪ Expand status if items in feed list are now persistent when performing sync-in of TT-RSS accounts. (bug #149)
 ▪ Fixed problem with importing invalid OPML 2.0 files. (bug #145)
 ▪ Fixed error in SQL initialization script which led to problems with in-memory SQLite DBs. (bug #140)
 ▪ Fixed problem with saving sort column/order for message list. (bug #141)

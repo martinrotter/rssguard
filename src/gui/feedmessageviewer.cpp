@@ -78,7 +78,7 @@ FeedMessageViewer::~FeedMessageViewer() {
 void FeedMessageViewer::saveSize() {
   Settings *settings = qApp->settings();
   
-  m_feedsView->saveExpandedStates();
+  m_feedsView->saveAllExpandStates();
   
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));

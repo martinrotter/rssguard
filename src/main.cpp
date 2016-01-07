@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
 
   // Load activated accounts.
   qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->loadActivatedServiceAccounts();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadExpandedStates();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->loadAllExpandStates();
 
   // Setup single-instance behavior.
   QObject::connect(&application, SIGNAL(messageReceived(QString)), &application, SLOT(processExecutionMessage(QString)));

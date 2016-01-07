@@ -290,7 +290,7 @@ DKEY Browser::QueueTabs             = "queue_tabs";
 DVALUE(bool) Browser::QueueTabsDef  = true;
 
 // Categories.
-DKEY Categories::ID                         = "categories_expand_states";
+DKEY CategoriesExpandStates::ID                         = "categories_expand_states";
 
 Settings::Settings(const QString &file_name, Format format, const SettingsProperties::SettingsType &status, QObject *parent)
   : QSettings(file_name, format, parent), m_initializationStatus(status) {

@@ -152,6 +152,7 @@ class ServiceRoot : public RootItem {
     void requestReloadMessageList(bool mark_selected_messages_read);
     void requestFeedReadFilterReload();
     void requestItemExpand(const QList<RootItem*> &items, bool expand);
+    void requestItemExpandStateSave(RootItem *subtree_root);
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
     void requestItemRemoval(RootItem *item);
 
@@ -174,6 +175,7 @@ class ServiceRoot : public RootItem {
     void readFeedsFilterInvalidationRequested();
     void reloadMessageListRequested(bool mark_selected_messages_read);
     void itemExpandRequested(QList<RootItem*> items, bool expand);
+    void itemExpandStateSaveRequested(RootItem *subtree_root);
 
     void itemReassignmentRequested(RootItem *item, RootItem *new_parent);
     void itemRemovalRequested(RootItem *item);
