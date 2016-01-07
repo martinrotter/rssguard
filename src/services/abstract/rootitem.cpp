@@ -43,6 +43,13 @@ RootItem::~RootItem() {
   qDeleteAll(m_childItems);
 }
 
+QString RootItem::hashCode() const {
+  return
+      QString::number(kind()) + QL1S("-") +
+      QString::number(qHash(title())) + QL1S("-") +
+      QString::number(id());
+}
+
 QList<QAction*> RootItem::contextMenu() {
   return QList<QAction*>();
 }

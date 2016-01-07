@@ -74,6 +74,8 @@ class RootItem : public QObject {
     // /* Members to override.
     /////////////////////////////////////////
 
+    virtual QString hashCode() const;
+
     // Returns list of specific actions which can be done with the item.
     // Do not include general actions here like actions: Mark as read, Update, ...
     // NOTE: Ownership of returned actions is not switched to caller, free them when needed.

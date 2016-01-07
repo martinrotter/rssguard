@@ -108,7 +108,7 @@ void FeedsView::saveExpandedStates() {
 
   // Iterate all categories and save their expand statuses.
   foreach (RootItem *item, expandable_items) {
-    QString setting_name = QString::number(item->kind()) + QL1S("-") +  QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
+    QString setting_name = item->hashCode();
 
     settings->setValue(GROUP(Categories),
                        setting_name,
@@ -124,7 +124,7 @@ void FeedsView::loadExpandedStates() {
 
   // Iterate all categories and save their expand statuses.
   foreach (RootItem *item, expandable_items) {
-    QString setting_name = QString::number(item->kind()) + QL1S("-") +  QString::number(qHash(item->title())) + QL1S("-") + QString::number(item->id());
+    QString setting_name = item->hashCode();
 
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
                 settings->value(GROUP(Categories), setting_name, item->childCount() > 0).toBool());
