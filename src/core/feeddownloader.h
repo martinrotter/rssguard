@@ -26,16 +26,16 @@
 class Feed;
 
 // Represents results of batch feed updates.
-struct FeedDownloadResults {
-    explicit FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {
-    }
+class FeedDownloadResults {
+  public:
+    explicit FeedDownloadResults();
 
-    QString getOverview(int how_many_feeds);
+    QList<QPair<QString,int> > &updatedFeeds();
+    QString overview(int how_many_feeds);
 
-    static bool lessThan(const QPair<QString,int> &lhs, const QPair<QString,int> &rhs) {
-      return lhs.second > rhs.second;
-    }
+    static bool lessThan(const QPair<QString,int> &lhs, const QPair<QString,int> &rhs);
 
+  private:
     // QString represents title if the feed, int represents count of newly downloaded messages.
     QList<QPair<QString,int> > m_updatedFeeds;
 };
@@ -69,7 +69,7 @@ class FeedDownloader : public QObject {
     // "Current" number indicates count of processed feeds
     // and "total" number indicates total number of feeds
     // which were in the initial queue.
-    void progress(Feed *feed, int current, int total);
+    void progress(const Feed *feed, int current, int total);
 };
 
 #endif // FEEDDOWNLOADER_H

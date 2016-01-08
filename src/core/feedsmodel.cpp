@@ -172,9 +172,9 @@ void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
   qApp->feedUpdateLock()->unlock();
   qApp->mainForm()->statusBar()->clearProgressFeeds();
 
-  if (!results.m_updatedFeeds.isEmpty()) {
+  if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.getOverview(10), QSystemTrayIcon::NoIcon,
+    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon,
                          0, false, qApp->icons()->fromTheme(QSL("item-update-all")));
   }
 

@@ -45,7 +45,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
     int updated_messages = feeds.at(i)->update();
 
     if (updated_messages > 0) {
-      results.m_updatedFeeds.append(QPair<QString,int>(feeds.at(i)->title(), updated_messages));
+      results.updatedFeeds().append(QPair<QString,int>(feeds.at(i)->title(), updated_messages));
     }
 
     qDebug("Made progress in feed updates: %d/%d (id of feed is %d).", i + 1, total, feeds.at(i)->id());
@@ -62,7 +62,12 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 }
 
 
-QString FeedDownloadResults::getOverview(int how_many_feeds) {
+FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {
+}
+
+
+
+QString FeedDownloadResults::overview(int how_many_feeds) {
   qSort(m_updatedFeeds.begin(), m_updatedFeeds.end(), FeedDownloadResults::lessThan);
 
   QStringList result;
@@ -78,4 +83,12 @@ QString FeedDownloadResults::getOverview(int how_many_feeds) {
   }
 
   return res_str;
+}
+
+bool FeedDownloadResults::lessThan(const QPair<QString, int> &lhs, const QPair<QString, int> &rhs) {
+  return lhs.second > rhs.second;
+}
+
+QList<QPair<QString,int> > &FeedDownloadResults::updatedFeeds() {
+  return m_updatedFeeds;
 }
