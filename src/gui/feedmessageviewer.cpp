@@ -78,7 +78,7 @@ FeedMessageViewer::~FeedMessageViewer() {
 void FeedMessageViewer::saveSize() {
   Settings *settings = qApp->settings();
   
-  m_feedsView->saveExpandedStates();
+  m_feedsView->saveAllExpandStates();
   
   // Store offsets of splitters.
   settings->setValue(GROUP(GUI), GUI::SplitterFeeds, QString(m_feedSplitter->saveState().toBase64()));
@@ -257,6 +257,8 @@ void FeedMessageViewer::createConnections() {
   // Toolbar forwardings.
   connect(form_main->m_ui->m_actionAddFeedIntoSelectedAccount, SIGNAL(triggered()),
           m_feedsView, SLOT(addFeedIntoSelectedAccount()));
+  connect(form_main->m_ui->m_actionAddCategoryIntoSelectedAccount, SIGNAL(triggered()),
+          m_feedsView, SLOT(addCategoryIntoSelectedAccount()));
   connect(form_main->m_ui->m_actionCleanupDatabase,
           SIGNAL(triggered()), this, SLOT(showDbCleanupAssistant()));
   connect(form_main->m_ui->m_actionSwitchImportanceOfSelectedMessages,

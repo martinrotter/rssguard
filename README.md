@@ -19,7 +19,10 @@ You can [support RSS Guard with tiny amounts of money via PayPal](https://www.pa
 
 People who donated:
 
-* Zdenek S. (Sweden).
+* Zdenek S. (Sweden)
+* Eloi Garibaldi B.
+
+I say "thank you" for all your support, donators.
 
 - - -
 Feeds & Videos

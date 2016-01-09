@@ -47,7 +47,7 @@
 StandardServiceRoot::StandardServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new StandardRecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
-    m_addItemMenu(QList<QAction*>()), m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
+    m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
 
   setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME));
   setIcon(StandardServiceEntryPoint().icon());
@@ -57,7 +57,6 @@ StandardServiceRoot::StandardServiceRoot(RootItem *parent)
 
 StandardServiceRoot::~StandardServiceRoot() {
   qDeleteAll(m_serviceMenu);
-  qDeleteAll(m_addItemMenu);
   qDeleteAll(m_feedContextMenu);
 }
 
@@ -125,11 +124,15 @@ bool StandardServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   return ServiceRoot::markAsReadUnread(status);
 }
 
-bool StandardServiceRoot::supportsFeedAddingByUrl() const {
+bool StandardServiceRoot::supportsFeedAdding() const {
   return true;
 }
 
-void StandardServiceRoot::addFeedByUrl(const QString &url) {
+bool StandardServiceRoot::supportsCategoryAdding() const {
+  return true;
+}
+
+void StandardServiceRoot::addNewFeed(const QString &url) {
   QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(this, qApp->mainForm());
   form_pointer.data()->exec(NULL, NULL, url);
   delete form_pointer.data();
@@ -300,7 +303,7 @@ void StandardServiceRoot::checkArgumentsForFeedAdding() {
 
 void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
   if (argument.startsWith(QL1S("feed:"))) {
-    addFeedByUrl(argument);
+    addNewFeed(argument);
   }
 }
 
@@ -441,18 +444,7 @@ QStringList StandardServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
 }
 
 QList<QAction*> StandardServiceRoot::addItemMenu() {
-  if (m_addItemMenu.isEmpty()) {
-    QAction *action_new_category = new QAction(qApp->icons()->fromTheme("folder-category"), tr("Add new category"), this);
-    connect(action_new_category, SIGNAL(triggered()), this, SLOT(addNewCategory()));
-
-    QAction *action_new_feed = new QAction(qApp->icons()->fromTheme("folder-feed"), tr("Add new feed"), this);
-    connect(action_new_feed, SIGNAL(triggered()), this, SLOT(addFeedByUrl()));
-
-    m_addItemMenu.append(action_new_category);
-    m_addItemMenu.append(action_new_feed);
-  }
-
-  return m_addItemMenu;
+  return QList<QAction*>();
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {

@@ -79,7 +79,7 @@ ServiceRoot *TtRssServiceEntryPoint::createNewRoot() {
   return new_root;
 }
 
-QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() {
+QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("TtRssServiceEntryPoint"), DatabaseFactory::FromSettings);
   QSqlQuery query(database);

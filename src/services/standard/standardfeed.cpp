@@ -282,7 +282,9 @@ void StandardFeed::fetchMetadataForItself() {
   }
 }
 
-QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const QString &url, const QString &username, const QString &password) {
+QPair<StandardFeed*,QNetworkReply::NetworkError> StandardFeed::guessFeed(const QString &url,
+                                                                         const QString &username,
+                                                                         const QString &password) {
   QPair<StandardFeed*,QNetworkReply::NetworkError> result; result.first = NULL;
 
   QByteArray feed_contents;

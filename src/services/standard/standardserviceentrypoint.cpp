@@ -77,6 +77,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
 
   if (query.exec()) {
     StandardServiceRoot *root = new StandardServiceRoot();
+    root->setId(id_to_assign);
     root->setAccountId(id_to_assign);
     return root;
   }
@@ -85,7 +86,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
   }
 }
 
-QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() {
+QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   // Check DB if standard account is enabled.
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
   QSqlQuery query(database);
@@ -98,6 +99,7 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() {
   if (query.exec()) {
     while (query.next()) {
       StandardServiceRoot *root = new StandardServiceRoot();
+      root->setId(query.value(0).toInt());
       root->setAccountId(query.value(0).toInt());
       roots.append(root);
     }

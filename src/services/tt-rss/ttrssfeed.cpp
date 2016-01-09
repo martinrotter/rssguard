@@ -50,6 +50,13 @@ TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(NULL), m_totalCount(0), m_
 TtRssFeed::~TtRssFeed() {
 }
 
+QString TtRssFeed::hashCode() const {
+  return
+      QString::number(kind()) + QL1S("-") +
+      QString::number(const_cast<TtRssFeed*>(this)->getParentServiceRoot()->accountId()) + QL1S("-") +
+      QString::number(customId());
+}
+
 TtRssServiceRoot *TtRssFeed::serviceRoot() {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }

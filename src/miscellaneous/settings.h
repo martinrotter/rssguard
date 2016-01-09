@@ -322,7 +322,7 @@ namespace Browser {
 }
 
 // Categories.
-namespace Categories {
+namespace CategoriesExpandStates {
   KEY ID;
 }
 

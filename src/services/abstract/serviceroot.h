@@ -51,7 +51,8 @@ class ServiceRoot : public RootItem {
     bool deleteViaGui();
     bool markAsReadUnread(ReadStatus status);
 
-    virtual bool supportsFeedAddingByUrl() const = 0;
+    virtual bool supportsFeedAdding() const = 0;
+    virtual bool supportsCategoryAdding() const = 0;
 
     // Returns list of specific actions for "Add new item" main window menu.
     // So typical list of returned actions could look like:
@@ -151,6 +152,7 @@ class ServiceRoot : public RootItem {
     void requestReloadMessageList(bool mark_selected_messages_read);
     void requestFeedReadFilterReload();
     void requestItemExpand(const QList<RootItem*> &items, bool expand);
+    void requestItemExpandStateSave(RootItem *subtree_root);
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
     void requestItemRemoval(RootItem *item);
 
@@ -159,7 +161,8 @@ class ServiceRoot : public RootItem {
     void setAccountId(int account_id);
 
   public slots:
-    virtual void addFeedByUrl(const QString &url = QString()) = 0;
+    virtual void addNewFeed(const QString &url = QString()) = 0;
+    virtual void addNewCategory() = 0;
 
   protected:
     // Takes lists of feeds/categories and assembles them into the tree structure.
@@ -172,6 +175,7 @@ class ServiceRoot : public RootItem {
     void readFeedsFilterInvalidationRequested();
     void reloadMessageListRequested(bool mark_selected_messages_read);
     void itemExpandRequested(QList<RootItem*> items, bool expand);
+    void itemExpandStateSaveRequested(RootItem *subtree_root);
 
     void itemReassignmentRequested(RootItem *item, RootItem *new_parent);
     void itemRemovalRequested(RootItem *item);

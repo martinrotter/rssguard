@@ -48,6 +48,10 @@ class FormStandardImportExport : public QDialog {
     void performAction();
     void selectFile();
 
+    void onParsingStarted();
+    void onParsingFinished(int count_failed, int count_succeeded, bool parsing_error);
+    void onParsingProgress(int completed, int total);
+
   private:
     void selectExportFile();
     void selectImportFile();

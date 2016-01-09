@@ -36,7 +36,7 @@ class TtRssServiceEntryPoint : public ServiceEntryPoint {
     QString code();
 
     ServiceRoot *createNewRoot();
-    QList<ServiceRoot*> initializeSubtree();
+    QList<ServiceRoot*> initializeSubtree() const;
 };
 
 #endif // TTRSSSERVICEENTRYPOINT_H

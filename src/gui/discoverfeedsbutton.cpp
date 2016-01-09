@@ -63,8 +63,8 @@ void DiscoverFeedsButton::linkTriggered(QAction *action) {
   QString url = action->property("url").toString();
   ServiceRoot *root = static_cast<ServiceRoot*>(action->property("root").value<void*>());
 
-  if (root->supportsFeedAddingByUrl()) {
-    root->addFeedByUrl(url);
+  if (root->supportsFeedAdding()) {
+    root->addNewFeed(url);
   }
   else {
     qApp->showGuiMessage(tr("Not supported"),
@@ -81,7 +81,7 @@ void DiscoverFeedsButton::fillMenu() {
     QMenu *root_menu = menu()->addMenu(root->icon(), root->title());
 
     foreach (const QString &url, m_addresses) {
-      if (root->supportsFeedAddingByUrl()) {
+      if (root->supportsFeedAdding()) {
         QAction *url_action = root_menu->addAction(root->icon(), url);
 
         url_action->setProperty("url", url);

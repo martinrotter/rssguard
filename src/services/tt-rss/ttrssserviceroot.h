@@ -47,7 +47,8 @@ class TtRssServiceRoot : public ServiceRoot {
 
     bool markAsReadUnread(ReadStatus status);
 
-    bool supportsFeedAddingByUrl() const;
+    bool supportsFeedAdding() const;
+    bool supportsCategoryAdding() const;
 
     QVariant data(int column, int role) const;
 
@@ -85,7 +86,8 @@ class TtRssServiceRoot : public ServiceRoot {
     void completelyRemoveAllData();
 
   public slots:
-    void addFeedByUrl(const QString &url = QString());
+    void addNewFeed(const QString &url = QString());
+    void addNewCategory();
     void syncIn();
 
   private:
@@ -105,7 +107,6 @@ class TtRssServiceRoot : public ServiceRoot {
 
     QAction *m_actionSyncIn;
     QList<QAction*> m_serviceMenu;
-    QList<QAction*> m_addItemMenu;
 
     TtRssNetworkFactory *m_network;
 };

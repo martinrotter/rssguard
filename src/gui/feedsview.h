@@ -58,11 +58,12 @@ class FeedsView : public QTreeView {
     RootItem *selectedItem() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
-    void saveExpandedStates();
-    void loadExpandedStates();
+    void saveAllExpandStates();
+    void loadAllExpandStates();
 
   public slots:
     void addFeedIntoSelectedAccount();
+    void addCategoryIntoSelectedAccount();
     void expandCollapseCurrentItem();
 
     // Feed updating.
@@ -106,6 +107,7 @@ class FeedsView : public QTreeView {
     void saveSortState(int column, Qt::SortOrder order);
     void validateItemAfterDragDrop(const QModelIndex &source_index);
     void onItemExpandRequested(const QList<RootItem*> &items, bool exp);
+    void onItemExpandStateSaveRequested(RootItem *item);
 
   private:
     // Initializes context menus.
@@ -116,6 +118,8 @@ class FeedsView : public QTreeView {
 
     // Sets up appearance of this widget.
     void setupAppearance();
+
+    void saveExpandStates(RootItem *item);
 
     // Handle selections.
     void selectionChanged(const QItemSelection &selected, const QItemSelection &deselected);

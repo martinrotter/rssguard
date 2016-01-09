@@ -114,6 +114,13 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QProgressBar" name="m_progressBar">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

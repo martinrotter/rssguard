@@ -172,9 +172,9 @@ void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
   qApp->feedUpdateLock()->unlock();
   qApp->mainForm()->statusBar()->clearProgressFeeds();
 
-  if (!results.m_updatedFeeds.isEmpty()) {
+  if (!results.updatedFeeds().isEmpty()) {
     // Now, inform about results via GUI message/notification.
-    qApp->showGuiMessage(tr("New messages downloaded"), results.getOverview(10), QSystemTrayIcon::NoIcon,
+    qApp->showGuiMessage(tr("New messages downloaded"), results.overview(10), QSystemTrayIcon::NoIcon,
                          0, false, qApp->icons()->fromTheme(QSL("item-update-all")));
   }
 
@@ -691,6 +691,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root, bool freshly_activated) {
   connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
   connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
   connect(root, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)));
+  connect(root, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SIGNAL(itemExpandStateSaveRequested(RootItem*)));
 
   root->start(freshly_activated);
   return true;
@@ -726,7 +727,7 @@ bool FeedsModel::emptyAllBins() {
 
 void FeedsModel::loadActivatedServiceAccounts() {
   // Iterate all globally available feed "service plugins".
-  foreach (ServiceEntryPoint *entry_point, qApp->feedServices()) {
+  foreach (const ServiceEntryPoint *entry_point, qApp->feedServices()) {
     // Load all stored root nodes from the entry point and add those to the model.
     QList<ServiceRoot*> roots = entry_point->initializeSubtree();
 

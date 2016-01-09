@@ -4,6 +4,8 @@
 Added:
 
 ▪ Added generic "Add new feed" action, which can be accessed via "Feeds & messages" menu. (issue #146)
+▪ Added support for import/export to/from plain TXT file (one feed URL per line). (issue #142)
+▪ Optimized menu items in "Add new item" submenu. Added two new bindable actions for adding feeds & categories. (issues #146 and #148)
 
 Changed:
 
@@ -12,6 +14,7 @@ Changed:
 
 Fixed:
 
+▪ Expand status if items in feed list are now persistent when performing sync-in of TT-RSS accounts. (bug #149)
 ▪ Fixed problem with importing invalid OPML 2.0 files. (bug #145)
 ▪ Fixed error in SQL initialization script which led to problems with in-memory SQLite DBs. (bug #140)
 ▪ Fixed problem with saving sort column/order for message list. (bug #141)

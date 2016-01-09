@@ -145,7 +145,9 @@ class StandardFeed : public Feed {
     // Returns pointer to guessed feed (if at least partially
     // guessed) and retrieved error/status code from network layer
     // or NULL feed.
-    static QPair<StandardFeed*,QNetworkReply::NetworkError> guessFeed(const QString &url, const QString &username, const QString &password);
+    static QPair<StandardFeed*,QNetworkReply::NetworkError> guessFeed(const QString &url,
+                                                                      const QString &username = QString(),
+                                                                      const QString &password = QString());
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);

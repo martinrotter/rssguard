@@ -29,6 +29,7 @@ WidgetWithStatus::WidgetWithStatus(QWidget *parent)
   m_btnStatus = new PlainToolButton(this);
   m_btnStatus->setFocusPolicy(Qt::NoFocus);
 
+  m_iconProgress = qApp->icons()->fromTheme(QSL("item-sync"));
   m_iconInformation = qApp->icons()->fromTheme(QSL("dialog-information"));
   m_iconWarning = qApp->icons()->fromTheme(QSL("dialog-warning"));
   m_iconError = qApp->icons()->fromTheme(QSL("dialog-error"));
@@ -50,6 +51,10 @@ void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QStr
   switch (status) {
     case Information:
       m_btnStatus->setIcon(m_iconInformation);
+      break;
+
+    case Progress:
+      m_btnStatus->setIcon(m_iconProgress);
       break;
 
     case Warning:
