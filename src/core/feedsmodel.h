@@ -21,8 +21,8 @@
 #include <QAbstractItemModel>
 
 #include "core/message.h"
-#include "services/abstract/rootitem.h"
 #include "core/feeddownloader.h"
+#include "services/abstract/rootitem.h"
 
 class DatabaseCleaner;
 class Category;
@@ -40,6 +40,7 @@ class FeedsModel : public QAbstractItemModel {
     explicit FeedsModel(QObject *parent = 0);
     virtual ~FeedsModel();
 
+    // Access to DB cleaner.
     DatabaseCleaner *databaseCleaner();
 
     // Model implementation.
@@ -55,6 +56,7 @@ class FeedsModel : public QAbstractItemModel {
     Qt::DropActions supportedDropActions() const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
+    // Other subclassed methods.
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     QModelIndex index(int row, int column, const QModelIndex &parent) const;
     QModelIndex parent(const QModelIndex &child) const;

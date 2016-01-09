@@ -61,11 +61,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
   emit finished(results);
 }
 
-
 FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {
 }
-
-
 
 QString FeedDownloadResults::overview(int how_many_feeds) {
   qSort(m_updatedFeeds.begin(), m_updatedFeeds.end(), FeedDownloadResults::lessThan);

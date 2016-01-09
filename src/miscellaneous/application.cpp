@@ -159,7 +159,7 @@ void Application::restoreDatabaseSettings(bool restore_database, bool restore_se
 void Application::processExecutionMessage(const QString &message) {
   qDebug("Received '%s' execution message from another application instance.", qPrintable(message));
 
-  foreach (QString msg,  message.split(ARGUMENTS_LIST_SEPARATOR)) {
+  foreach (const QString &msg, message.split(ARGUMENTS_LIST_SEPARATOR)) {
     if (msg == APP_IS_RUNNING) {
       showGuiMessage(APP_NAME, tr("Application is already running."), QSystemTrayIcon::Information);
       mainForm()->display();
