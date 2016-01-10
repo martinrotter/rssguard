@@ -49,13 +49,13 @@ FeedsProxyModel::~FeedsProxyModel() {
 
 QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  uint match_type = flags & 0x0F;
-  Qt::CaseSensitivity cs = Qt::CaseInsensitive;
-  bool recurse = flags & Qt::MatchRecursive;
-  bool wrap = flags & Qt::MatchWrap;
-  bool all_hits = (hits == -1);
+  const uint match_type = flags & 0x0F;
+  const Qt::CaseSensitivity cs = Qt::CaseInsensitive;
+  const bool recurse = flags & Qt::MatchRecursive;
+  const bool wrap = flags & Qt::MatchWrap;
+  const bool all_hits = (hits == -1);
   QString entered_text;
-  QModelIndex p = parent(start);
+  const QModelIndex p = parent(start);
   int from = start.row();
   int to = rowCount(p);
 
@@ -139,8 +139,8 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex &start, int role, const
 bool FeedsProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
   if (left.isValid() && right.isValid()) {
     // Make necessary castings.
-    RootItem *left_item = m_sourceModel->itemForIndex(left);
-    RootItem *right_item = m_sourceModel->itemForIndex(right);
+    const RootItem *left_item = m_sourceModel->itemForIndex(left);
+    const RootItem *right_item = m_sourceModel->itemForIndex(right);
 
     // NOTE: Here we want to accomplish that ALL
     // categories are queued one after another and all
@@ -189,13 +189,13 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
     return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
   }
 
-  QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
+  const QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
 
   if (!idx.isValid()) {
     return false;
   }
 
-  RootItem *item = m_sourceModel->itemForIndex(idx);
+  const RootItem *item = m_sourceModel->itemForIndex(idx);
 
   if (item->kind() == RootItemKind::Bin || item->kind() == RootItemKind::ServiceRoot) {
     // Recycle bin is always displayed.
@@ -237,7 +237,7 @@ void FeedsProxyModel::setShowUnreadOnly(bool show_unread_only) {
   qApp->settings()->setValue(GROUP(Feeds), Feeds::ShowOnlyUnreadFeeds, show_unread_only);
 }
 
-QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) {
+QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList &indexes) const {
   QModelIndexList source_indexes;
 
   foreach (const QModelIndex &index, indexes) {

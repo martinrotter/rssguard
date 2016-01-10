@@ -40,12 +40,12 @@ DynamicShortcutsWidget::~DynamicShortcutsWidget() {
   delete m_layout;
 }
 
-bool DynamicShortcutsWidget::areShortcutsUnique() {
+bool DynamicShortcutsWidget::areShortcutsUnique() const {
   QList<QKeySequence> all_shortcuts;
 
   // Obtain all shortcuts.
   foreach (const ActionBinding &binding, m_actionBindings) {
-    QKeySequence new_shortcut = binding.second->shortcut();
+    const QKeySequence new_shortcut = binding.second->shortcut();
 
     if (!new_shortcut.isEmpty() && all_shortcuts.contains(new_shortcut)) {
       // Problem, two identical non-empty shortcuts found.

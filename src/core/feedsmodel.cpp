@@ -736,5 +736,3 @@ QList<Feed*> FeedsModel::allFeeds() const {
 QList<Category*> FeedsModel::allCategories() const {
   return m_rootItem->getSubTreeCategories();
 }
-
-// TODO: pokračovat s const upravami v dalsi tride

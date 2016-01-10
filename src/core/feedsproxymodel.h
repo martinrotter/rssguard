@@ -33,7 +33,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     virtual ~FeedsProxyModel();
 
     // Access to the source model.
-    inline FeedsModel *sourceModel() {
+    inline FeedsModel *sourceModel() const {
       return m_sourceModel;
     }
 
@@ -42,7 +42,7 @@ class FeedsProxyModel : public QSortFilterProxyModel {
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &value, int hits, Qt::MatchFlags flags) const;
 
     // Maps list of indexes.
-    QModelIndexList mapListToSource(const QModelIndexList &indexes);
+    QModelIndexList mapListToSource(const QModelIndexList &indexes) const;
 
     bool showUnreadOnly() const;
     void setShowUnreadOnly(bool show_unread_only);
@@ -63,7 +63,6 @@ class FeedsProxyModel : public QSortFilterProxyModel {
 
     // Source model pointer.
     FeedsModel *m_sourceModel;
-
     RootItem *m_selectedItem;
     bool m_showUnreadOnly;
 };

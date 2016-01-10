@@ -30,7 +30,7 @@ DynamicShortcuts::DynamicShortcuts() {
 void DynamicShortcuts::save(const QList<QAction*> actions) {
   Settings *settings = qApp->settings();
 
-  foreach (QAction *action, actions) {
+  foreach (const QAction *action, actions) {
     settings->setValue(GROUP(Keyboard), action->objectName(), action->shortcut().toString(QKeySequence::PortableText));
   }
 }

@@ -42,7 +42,7 @@ class DynamicShortcutsWidget : public QWidget {
 
     // Returns true if all shortcuts are unique,
     // otherwise false.
-    bool areShortcutsUnique();
+    bool areShortcutsUnique() const;
 
     // Populates this widget with shortcut widgets for given actions.
     // NOTE: This gets initial shortcut for each action from its properties, NOT from

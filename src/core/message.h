@@ -27,10 +27,11 @@
 
 // Represents single enclosure.
 struct Enclosure {
+  public:
+    explicit Enclosure(const QString &url = QString(), const QString &mime = QString());
+
     QString m_url;
     QString m_mimeType;
-
-    explicit Enclosure(const QString &url = QString(), const QString &mime = QString());
 };
 
 // Represents single enclosure.

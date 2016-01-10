@@ -39,7 +39,7 @@ MessagesProxyModel::~MessagesProxyModel() {
 }
 
 QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) {
-  bool started_from_zero = default_row == 0;
+  const bool started_from_zero = default_row == 0;
   QModelIndex next_index = getNextUnreadItemIndex(default_row, rowCount() - 1);
 
   // There is no next message, check previous.
@@ -50,12 +50,12 @@ QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) 
   return next_index;
 }
 
-QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) {
+QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) const {
   while (default_row <= max_row) {
     // Get info if the message is read or not.
-    QModelIndex proxy_index = index(default_row, MSG_DB_READ_INDEX);
-    bool is_read = m_sourceModel->data(mapToSource(proxy_index).row(),
-                                       MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
+    const QModelIndex proxy_index = index(default_row, MSG_DB_READ_INDEX);
+    const bool is_read = m_sourceModel->data(mapToSource(proxy_index).row(),
+                                             MSG_DB_READ_INDEX, Qt::EditRole).toInt() == 1;
 
     if (!is_read) {
       // We found unread message, mark it.
@@ -79,7 +79,7 @@ bool MessagesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &ri
   }
 }
 
-QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &indexes, bool deep) {
+QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &indexes, bool deep) const {
   QModelIndexList mapped_indexes;
 
   foreach (const QModelIndex &index, indexes) {
@@ -98,10 +98,10 @@ QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList &ind
 QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
                                           const QVariant &entered_value, int hits, Qt::MatchFlags flags) const {
   QModelIndexList result;
-  uint match_type = flags & 0x0F;
-  Qt::CaseSensitivity case_sensitivity = Qt::CaseInsensitive;
-  bool wrap = flags & Qt::MatchWrap;
-  bool all_hits = (hits == -1);
+  const uint match_type = flags & 0x0F;
+  const Qt::CaseSensitivity case_sensitivity = Qt::CaseInsensitive;
+  const bool wrap = flags & Qt::MatchWrap;
+  const bool all_hits = (hits == -1);
   QString entered_text;
   int from = start.row();
   int to = rowCount();
@@ -179,7 +179,7 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
   return result;
 }
 
-QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) {
+QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) const {
   QModelIndexList source_indexes;
 
   foreach (const QModelIndex &index, indexes) {
