@@ -215,15 +215,15 @@ int RootItem::countOfAllMessages() const {
   return total_count;
 }
 
-bool RootItem::isChildOf(RootItem *root) {
+bool RootItem::isChildOf(const RootItem *root) const {
   if (root == NULL) {
     return false;
   }
 
-  RootItem *this_item = this;
+  const RootItem *this_item = this;
 
   while (this_item->kind() != RootItemKind::Root) {
-    if (root->childItems().contains(this_item)) {
+    if (root->childItems().contains(const_cast<RootItem* const>(this_item))) {
       return true;
     }
     else {
@@ -234,7 +234,7 @@ bool RootItem::isChildOf(RootItem *root) {
   return false;
 }
 
-bool RootItem::isParentOf(RootItem *child) {
+bool RootItem::isParentOf(const RootItem *child) const {
   if (child == NULL) {
     return false;
   }
@@ -243,11 +243,11 @@ bool RootItem::isParentOf(RootItem *child) {
   }
 }
 
-QList<RootItem*> RootItem::getSubTree() {
+QList<RootItem*> RootItem::getSubTree() const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;
 
-  traversable_items.append(this);
+  traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
   while (!traversable_items.isEmpty()) {
@@ -260,11 +260,11 @@ QList<RootItem*> RootItem::getSubTree() {
   return children;
 }
 
-QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) {
+QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;
 
-  traversable_items.append(this);
+  traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
   while (!traversable_items.isEmpty()) {
@@ -280,11 +280,11 @@ QList<RootItem*> RootItem::getSubTree(RootItemKind::Kind kind_of_item) {
   return children;
 }
 
-QList<Category*> RootItem::getSubTreeCategories() {
+QList<Category*> RootItem::getSubTreeCategories() const {
   QList<Category*> children;
   QList<RootItem*> traversable_items;
 
-  traversable_items.append(this);
+  traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
   while (!traversable_items.isEmpty()) {
@@ -300,11 +300,11 @@ QList<Category*> RootItem::getSubTreeCategories() {
   return children;
 }
 
-QHash<int,Category*> RootItem::getHashedSubTreeCategories() {
+QHash<int,Category*> RootItem::getHashedSubTreeCategories() const {
   QHash<int,Category*> children;
   QList<RootItem*> traversable_items;
 
-  traversable_items.append(this);
+  traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
   while (!traversable_items.isEmpty()) {
@@ -320,11 +320,11 @@ QHash<int,Category*> RootItem::getHashedSubTreeCategories() {
   return children;
 }
 
-QList<Feed*> RootItem::getSubTreeFeeds() {
+QList<Feed*> RootItem::getSubTreeFeeds() const {
   QList<Feed*> children;
   QList<RootItem*> traversable_items;
 
-  traversable_items.append(this);
+  traversable_items.append(const_cast<RootItem* const>(this));
 
   // Iterate all nested items.
   while (!traversable_items.isEmpty()) {

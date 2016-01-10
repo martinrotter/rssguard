@@ -95,29 +95,23 @@ class FeedsModel : public QAbstractItemModel {
     // Variable "auto_update_now" is true, when global timeout
     // for scheduled auto-update was met and global auto-update strategy is enabled
     // so feeds with "default" auto-update strategy should be updated.
+    //
+    // This method might change some properties of some feeds.
     QList<Feed*> feedsForScheduledUpdate(bool auto_update_now);
 
     // Returns (undeleted) messages for given feeds.
     // This is usually used for displaying whole feeds
     // in "newspaper" mode.
-    QList<Message> messagesForItem(RootItem *item);
+    QList<Message> messagesForItem(RootItem *item) const;
 
     // Returns list of all categories contained in the model.
-    QList<Category*> allCategories();
+    QList<Category*> allCategories() const;
 
     // Returns list of all feeds contained in the model.
-    QList<Feed*> allFeeds();
+    QList<Feed*> allFeeds() const;
 
     // Returns ALL RECURSIVE CHILD feeds contained within single index.
-    QList<Feed*> feedsForIndex(const QModelIndex &index);
-
-    // Returns pointer to feed if it lies on given index
-    // or NULL if no feed lies on given index.
-    Feed *feedForIndex(const QModelIndex &index);
-
-    // Returns pointer to category if it lies on given index
-    // or NULL if no category lies on given index.
-    Category *categoryForIndex(const QModelIndex &index) const;
+    QList<Feed*> feedsForIndex(const QModelIndex &index) const;
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
@@ -130,7 +124,7 @@ class FeedsModel : public QAbstractItemModel {
     QModelIndex indexForItem(RootItem *item) const;
 
     // Determines if any feed has any new messages.
-    bool hasAnyFeedNewMessages();
+    bool hasAnyFeedNewMessages() const;
 
     // Access to root item.
     inline RootItem *rootItem() const {
@@ -161,8 +155,10 @@ class FeedsModel : public QAbstractItemModel {
     // If it is, then it reassigns original_node to new parent.
     void reassignNodeToNewParent(RootItem *original_node, RootItem *new_parent);
 
+    // Removes given item from the model/memory.
     void removeItem(RootItem *deleting_item);
 
+    // Recycle bins operations.
     bool restoreAllBins();
     bool emptyAllBins();
 
@@ -187,15 +183,15 @@ class FeedsModel : public QAbstractItemModel {
     void notifyWithCounts();
 
   private slots:
-    void onItemDataChanged(QList<RootItem*> items);
+    void onItemDataChanged(const QList<RootItem*> &items);
 
     // Is executed when next auto-update round could be done.
     void executeNextAutoUpdate();
 
     // Reacts on feed updates.
     void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(Feed *feed, int current, int total);
-    void onFeedUpdatesFinished(FeedDownloadResults results);
+    void onFeedUpdatesProgress(const Feed *feed, int current, int total);
+    void onFeedUpdatesFinished(const FeedDownloadResults &results);
 
   signals:
     // Update of feeds is finished.
@@ -226,10 +222,6 @@ class FeedsModel : public QAbstractItemModel {
     void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
 
   private:
-    // Returns converted ids of given feeds
-    // which are suitable as IN clause for SQL queries.
-    QStringList textualFeedIds(const QList<Feed*> &feeds);
-
     RootItem *m_rootItem;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;

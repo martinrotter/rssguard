@@ -69,8 +69,6 @@ FeedsModel::FeedsModel(QObject *parent)
                    /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all meesages.");
 
   connect(m_autoUpdateTimer, SIGNAL(timeout()), this, SLOT(executeNextAutoUpdate()));
-
-  //loadActivatedServiceAccounts();
   updateAutoUpdateStatus();
 }
 
@@ -161,14 +159,14 @@ void FeedsModel::onFeedUpdatesStarted() {
   qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
 }
 
-void FeedsModel::onFeedUpdatesProgress(Feed *feed, int current, int total) {
+void FeedsModel::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
   // Some feed got updated.
   qApp->mainForm()->statusBar()->showProgressFeeds((current * 100.0) / total,
                                                    //: Text display in status bar when particular feed is updated.
                                                    tr("Updated feed '%1'").arg(feed->title()));
 }
 
-void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
+void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   qApp->feedUpdateLock()->unlock();
   qApp->mainForm()->statusBar()->clearProgressFeeds();
 
@@ -184,7 +182,6 @@ void FeedsModel::onFeedUpdatesFinished(FeedDownloadResults results) {
 void FeedsModel::updateAllFeeds() {
   updateFeeds(m_rootItem->getSubTreeFeeds());
 }
-
 
 DatabaseCleaner *FeedsModel::databaseCleaner() {
   if (m_dbCleaner == NULL) {
@@ -293,7 +290,7 @@ Qt::DropActions FeedsModel::supportedDropActions() const {
 
 Qt::ItemFlags FeedsModel::flags(const QModelIndex &index) const {
   Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
-  RootItem *item_for_index = itemForIndex(index);
+  const RootItem *item_for_index = itemForIndex(index);
   Qt::ItemFlags additional_flags = item_for_index->additionalFlags();
 
   return base_flags | additional_flags;
@@ -318,7 +315,7 @@ void FeedsModel::executeNextAutoUpdate() {
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
-  QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
+  const QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
 
   qApp->feedUpdateLock()->unlock();
 
@@ -559,7 +556,7 @@ QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   return feeds_for_update;
 }
 
-QList<Message> FeedsModel::messagesForItem(RootItem *item) {
+QList<Message> FeedsModel::messagesForItem(RootItem *item) const {
   return item->undeletedMessages();
 }
 
@@ -575,17 +572,6 @@ RootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   }
   else {
     return m_rootItem;
-  }
-}
-
-Category *FeedsModel::categoryForIndex(const QModelIndex &index) const {
-  RootItem *item = itemForIndex(index);
-
-  if (item->kind() == RootItemKind::Category) {
-    return item->toCategory();
-  }
-  else {
-    return NULL;
   }
 }
 
@@ -614,7 +600,7 @@ QModelIndex FeedsModel::indexForItem(RootItem *item) const {
   return target_index;
 }
 
-bool FeedsModel::hasAnyFeedNewMessages() {
+bool FeedsModel::hasAnyFeedNewMessages() const {
   foreach (const Feed *feed, allFeeds()) {
     if (feed->status() == Feed::NewMessages) {
       return true;
@@ -645,7 +631,7 @@ void FeedsModel::notifyWithCounts() {
   }
 }
 
-void FeedsModel::onItemDataChanged(QList<RootItem*> items) {
+void FeedsModel::onItemDataChanged(const QList<RootItem *> &items) {
   if (items.size() > RELOAD_MODEL_BORDER_NUM) {
     qDebug("There is request to reload feed model for more than %d items, reloading model fully.", RELOAD_MODEL_BORDER_NUM);
     reloadWholeLayout();
@@ -659,17 +645,6 @@ void FeedsModel::onItemDataChanged(QList<RootItem*> items) {
   }
 
   notifyWithCounts();
-}
-
-QStringList FeedsModel::textualFeedIds(const QList<Feed*> &feeds) {
-  QStringList stringy_ids;
-  stringy_ids.reserve(feeds.size());
-
-  foreach (Feed *feed, feeds) {
-    stringy_ids.append(QString::number(feed->id()));
-  }
-
-  return stringy_ids;
 }
 
 void FeedsModel::reloadWholeLayout() {
@@ -742,19 +717,8 @@ void FeedsModel::loadActivatedServiceAccounts() {
   }
 }
 
-QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) {
+QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex &index) const {
   return itemForIndex(index)->getSubTreeFeeds();
-}
-
-Feed *FeedsModel::feedForIndex(const QModelIndex &index) {
-  RootItem *item = itemForIndex(index);
-
-  if (item->kind() == RootItemKind::Feed) {
-    return item->toFeed();
-  }
-  else {
-    return NULL;
-  }
 }
 
 bool FeedsModel::markItemRead(RootItem *item, RootItem::ReadStatus read) {
@@ -765,10 +729,12 @@ bool FeedsModel::markItemCleared(RootItem *item, bool clean_read_only) {
   return item->cleanMessages(clean_read_only);
 }
 
-QList<Feed*> FeedsModel::allFeeds() {
+QList<Feed*> FeedsModel::allFeeds() const {
   return m_rootItem->getSubTreeFeeds();
 }
 
-QList<Category*> FeedsModel::allCategories() {
+QList<Category*> FeedsModel::allCategories() const {
   return m_rootItem->getSubTreeCategories();
 }
+
+// TODO: pokračovat s const upravami v dalsi tride

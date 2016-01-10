@@ -171,18 +171,18 @@ class RootItem : public QObject {
 
     // Checks whether "this" object is child (direct or indirect)
     // of the given root.
-    bool isChildOf(RootItem *root);
+    bool isChildOf(const RootItem *root) const;
 
     // Is "this" item parent (direct or indirect) if given child?
-    bool isParentOf(RootItem *child);
+    bool isParentOf(const RootItem *child) const;
 
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
-    QList<RootItem*> getSubTree();
-    QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item);
-    QList<Category*> getSubTreeCategories();
-    QHash<int,Category*> getHashedSubTreeCategories();
-    QList<Feed*> getSubTreeFeeds();
+    QList<RootItem*> getSubTree() const;
+    QList<RootItem*> getSubTree(RootItemKind::Kind kind_of_item) const;
+    QList<Category*> getSubTreeCategories() const;
+    QHash<int,Category*> getHashedSubTreeCategories() const;
+    QList<Feed*> getSubTreeFeeds() const;
 
     // Returns the service root node which is direct or indirect parent of current item.
     ServiceRoot *getParentServiceRoot();

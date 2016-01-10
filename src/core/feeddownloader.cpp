@@ -45,7 +45,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
     int updated_messages = feeds.at(i)->update();
 
     if (updated_messages > 0) {
-      results.updatedFeeds().append(QPair<QString,int>(feeds.at(i)->title(), updated_messages));
+      results.appendUpdatedFeed(QPair<QString,int>(feeds.at(i)->title(), updated_messages));
     }
 
     qDebug("Made progress in feed updates: %d/%d (id of feed is %d).", i + 1, total, feeds.at(i)->id());
@@ -53,6 +53,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
   }
 
   qDebug().nospace() << "Finished feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
+
+  results.sort();
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked
@@ -64,9 +66,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {
 }
 
-QString FeedDownloadResults::overview(int how_many_feeds) {
-  qSort(m_updatedFeeds.begin(), m_updatedFeeds.end(), FeedDownloadResults::lessThan);
-
+QString FeedDownloadResults::overview(int how_many_feeds) const {
   QStringList result;
 
   for (int i = 0, number_items_output = qMin(how_many_feeds, m_updatedFeeds.size()); i < number_items_output; i++) {
@@ -82,10 +82,18 @@ QString FeedDownloadResults::overview(int how_many_feeds) {
   return res_str;
 }
 
+void FeedDownloadResults::appendUpdatedFeed(const QPair<QString,int> &feed) {
+  m_updatedFeeds.append(feed);
+}
+
+void FeedDownloadResults::sort() {
+  qSort(m_updatedFeeds.begin(), m_updatedFeeds.end(), FeedDownloadResults::lessThan);
+}
+
 bool FeedDownloadResults::lessThan(const QPair<QString, int> &lhs, const QPair<QString, int> &rhs) {
   return lhs.second > rhs.second;
 }
 
-QList<QPair<QString,int> > &FeedDownloadResults::updatedFeeds() {
+QList<QPair<QString,int> > FeedDownloadResults::updatedFeeds() const {
   return m_updatedFeeds;
 }

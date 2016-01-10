@@ -30,8 +30,11 @@ class FeedDownloadResults {
   public:
     explicit FeedDownloadResults();
 
-    QList<QPair<QString,int> > &updatedFeeds();
-    QString overview(int how_many_feeds);
+    QList<QPair<QString,int> > updatedFeeds() const;
+    QString overview(int how_many_feeds) const;
+
+    void appendUpdatedFeed(const QPair<QString,int> &feed);
+    void sort();
 
     static bool lessThan(const QPair<QString,int> &lhs, const QPair<QString,int> &rhs);
 
