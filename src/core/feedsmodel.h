@@ -81,14 +81,14 @@ class FeedsModel : public QAbstractItemModel {
     // Returns all activated service roots.
     // NOTE: Service root nodes are lying directly UNDER
     // the model root item.
-    QList<ServiceRoot*> serviceRoots();
+    QList<ServiceRoot*> serviceRoots() const;
 
     // Determines if there is any account activated from given entry point.
-    bool containsServiceRootFromEntryPoint(ServiceEntryPoint *point);
+    bool containsServiceRootFromEntryPoint(ServiceEntryPoint *point) const;
 
     // Direct and the only global accessor to standard service root.
     // NOTE: Standard service root is always activated.
-    StandardServiceRoot *standardServiceRoot();
+    StandardServiceRoot *standardServiceRoot() const;
 
     // Returns the list of feeds which should be updated
     // according to auto-update schedule.

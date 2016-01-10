@@ -486,7 +486,7 @@ void FeedsModel::reassignNodeToNewParent(RootItem *original_node, RootItem *new_
   }
 }
 
-QList<ServiceRoot*> FeedsModel::serviceRoots() {
+QList<ServiceRoot*> FeedsModel::serviceRoots() const {
   QList<ServiceRoot*> roots;
 
   foreach (RootItem *root, m_rootItem->childItems()) {
@@ -498,7 +498,7 @@ QList<ServiceRoot*> FeedsModel::serviceRoots() {
   return roots;
 }
 
-bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) {
+bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) const {
   foreach (RootItem *root, serviceRoots()) {
     if (root->toServiceRoot()->code() == point->code()) {
       return true;
@@ -508,7 +508,7 @@ bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) {
   return false;
 }
 
-StandardServiceRoot *FeedsModel::standardServiceRoot() {
+StandardServiceRoot *FeedsModel::standardServiceRoot() const {
   foreach (RootItem *root, serviceRoots()) {
     StandardServiceRoot *std_service_root;
 
