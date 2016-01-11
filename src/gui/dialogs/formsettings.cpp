@@ -64,10 +64,6 @@ FormSettings::FormSettings(QWidget *parent) : QDialog(parent), m_ui(new Ui::Form
   m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->availableItemsWidget()->viewport()->installEventFilter(this);
 
-#if defined(Q_OS_OS2)
-  MessageBox::iconify(m_ui->m_buttonBox);
-#endif
-
   // Setup behavior.
   m_ui->m_listSettings->setCurrentRow(0);
   m_ui->m_treeLanguages->setColumnCount(5);

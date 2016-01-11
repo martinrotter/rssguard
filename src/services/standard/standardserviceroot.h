@@ -41,7 +41,7 @@ class StandardServiceRoot : public ServiceRoot {
     void start(bool freshly_activated);
     void stop();
 
-    QString code();
+    QString code() const;
 
     bool canBeEdited();
     bool canBeDeleted();
@@ -56,7 +56,7 @@ class StandardServiceRoot : public ServiceRoot {
     Qt::ItemFlags additionalFlags() const;
 
     // Access to recycle bin.
-    RecycleBin *recycleBin();
+    RecycleBin *recycleBin() const;
 
     // Return "add feed" and "add category" items.
     QList<QAction*> addItemMenu();

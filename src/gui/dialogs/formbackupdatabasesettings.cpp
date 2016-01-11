@@ -53,7 +53,7 @@ FormBackupDatabaseSettings::FormBackupDatabaseSettings(QWidget *parent) : QDialo
 }
 
 FormBackupDatabaseSettings::~FormBackupDatabaseSettings() {
-  delete m_ui;
+  qDebug("Destroying FormBackupDatabaseSettings instance.");
 }
 
 void FormBackupDatabaseSettings::performBackup() {
@@ -64,7 +64,7 @@ void FormBackupDatabaseSettings::performBackup() {
                                  tr("Backup was created successfully and stored in target directory."),
                                  tr("Backup was created successfully."));
   }
-  catch (ApplicationException &ex) {
+  catch (const ApplicationException &ex) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(), tr("Backup failed."));
   }
 }

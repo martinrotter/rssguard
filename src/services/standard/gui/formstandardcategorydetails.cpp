@@ -218,10 +218,6 @@ void FormStandardCategoryDetails::initialize() {
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
-#if defined(Q_OS_OS2)
-  MessageBox::iconify(m_ui->m_buttonBox);
-#endif
-
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);
   m_actionLoadIconFromFile = new QAction(qApp->icons()->fromTheme(QSL("image-generic")),

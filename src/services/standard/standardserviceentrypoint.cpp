@@ -31,31 +31,31 @@ StandardServiceEntryPoint::StandardServiceEntryPoint() {
 StandardServiceEntryPoint::~StandardServiceEntryPoint() {
 }
 
-bool StandardServiceEntryPoint::isSingleInstanceService() {
+bool StandardServiceEntryPoint::isSingleInstanceService() const {
   return true;
 }
 
-QString StandardServiceEntryPoint::name() {
+QString StandardServiceEntryPoint::name() const {
   return QSL("Standard online feeds (RSS/RDF/ATOM)");
 }
 
-QString StandardServiceEntryPoint::description() {
+QString StandardServiceEntryPoint::description() const {
   return QSL("This service offers integration with standard online RSS/RDF/ATOM feeds and podcasts.");
 }
 
-QString StandardServiceEntryPoint::version() {
+QString StandardServiceEntryPoint::version() const {
   return APP_VERSION;
 }
 
-QString StandardServiceEntryPoint::author() {
+QString StandardServiceEntryPoint::author() const {
   return APP_AUTHOR;
 }
 
-QIcon StandardServiceEntryPoint::icon() {
+QIcon StandardServiceEntryPoint::icon() const {
   return QIcon(APP_ICON_PATH);
 }
 
-QString StandardServiceEntryPoint::code() {
+QString StandardServiceEntryPoint::code() const {
   return SERVICE_CODE_STD_RSS;
 }
 

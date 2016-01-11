@@ -47,6 +47,7 @@
 #include <QCloseEvent>
 #include <QSessionManager>
 #include <QRect>
+#include <QScopedPointer>
 #include <QDesktopWidget>
 #include <QReadWriteLock>
 #include <QTimer>
@@ -85,10 +86,10 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 }
 
 FormMain::~FormMain() {
-  delete m_ui;
+  qDebug("Destroying FormDatabaseCleanup instance.");
 }
 
-QList<QAction*> FormMain::allActions() {
+QList<QAction*> FormMain::allActions() const {
   QList<QAction*> actions;
 
   // Add basic actions.
@@ -172,7 +173,8 @@ void FormMain::prepareMenus() {
 void FormMain::switchFullscreenMode() {
   if (!isFullScreen()) {
     showFullScreen();
-  } else {
+  }
+  else {
     showNormal();
   }
 }
@@ -198,8 +200,8 @@ void FormMain::updateAddItemMenu() {
 
     if (activated_root->supportsFeedAdding()) {
       QAction *action_new_feed = new QAction(qApp->icons()->fromTheme(QSL("folder-feed")),
-                                                 tr("Add new feed"),
-                                                 m_ui->m_menuAddItem);
+                                             tr("Add new feed"),
+                                             m_ui->m_menuAddItem);
       root_menu->addAction(action_new_feed);
       connect(action_new_feed, SIGNAL(triggered()), activated_root, SLOT(addNewFeed()));
     }
@@ -225,7 +227,7 @@ void FormMain::updateAddItemMenu() {
 void FormMain::updateRecycleBinMenu() {
   m_ui->m_menuRecycleBin->clear();
 
-  foreach (ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  foreach (const ServiceRoot *activated_root, tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
     QMenu *root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
     root_menu->setIcon(activated_root->icon());
     root_menu->setToolTip(activated_root->description());
@@ -414,8 +416,8 @@ void FormMain::setupIcons() {
 }
 
 void FormMain::loadSize() {
-  QRect screen = qApp->desktop()->screenGeometry();
-  Settings *settings = qApp->settings();
+  const QRect screen = qApp->desktop()->screenGeometry();
+  const Settings *settings = qApp->settings();
 
   // Reload main window size & position.
   resize(settings->value(GROUP(GUI), GUI::MainWindowInitialSize, size()).toSize());
@@ -446,8 +448,8 @@ void FormMain::loadSize() {
 
 void FormMain::saveSize() {
   Settings *settings = qApp->settings();
-  bool is_fullscreen = isFullScreen();
-  bool is_maximized = isMaximized();
+  const bool is_fullscreen = isFullScreen();
+  const bool is_maximized = isMaximized();
 
   if (is_fullscreen) {
     m_ui->m_actionFullscreen->setChecked(false);
@@ -519,7 +521,7 @@ void FormMain::createConnections() {
 }
 
 void FormMain::loadWebBrowserMenu(int index) {
-  WebBrowser *active_browser = m_ui->m_tabWidget->widget(index)->webBrowser();
+  const WebBrowser *active_browser = m_ui->m_tabWidget->widget(index)->webBrowser();
 
   m_ui->m_menuCurrentTab->clear();
 
@@ -539,21 +541,19 @@ void FormMain::loadWebBrowserMenu(int index) {
 }
 
 void FormMain::backupDatabaseSettings() {
-  QPointer<FormBackupDatabaseSettings> form = new FormBackupDatabaseSettings(this);
-  form.data()->exec();
-  delete form.data();
+  QScopedPointer<FormBackupDatabaseSettings> form(new FormBackupDatabaseSettings(this));
+  form->exec();
 }
 
 void FormMain::restoreDatabaseSettings() {
-  QPointer<FormRestoreDatabaseSettings> form = new FormRestoreDatabaseSettings(this);
-  form.data()->exec();
-  delete form.data();
+  QScopedPointer<FormRestoreDatabaseSettings> form(new FormRestoreDatabaseSettings(this));
+  form->exec();
 }
 
 void FormMain::changeEvent(QEvent *event) {
   switch (event->type()) {
     case QEvent::WindowStateChange: {
-      if (this->windowState() & Qt::WindowMinimized &&
+      if (windowState() & Qt::WindowMinimized &&
           SystemTrayIcon::isSystemTrayActivated() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
@@ -571,15 +571,13 @@ void FormMain::changeEvent(QEvent *event) {
 }
 
 void FormMain::showAbout() {
-  QPointer<FormAbout> form_pointer = new FormAbout(this);
-  form_pointer.data()->exec();
-  delete form_pointer.data();
+  QScopedPointer<FormAbout> form_pointer(new FormAbout(this));
+  form_pointer->exec();
 }
 
 void FormMain::showUpdates() {
-  QPointer<FormUpdate> form_update = new FormUpdate(this);
-  form_update.data()->exec();
-  delete form_update.data();
+  QScopedPointer<FormUpdate> form_update(new FormUpdate(this));
+  form_update->exec();
 }
 
 void FormMain::showWiki() {
@@ -591,11 +589,10 @@ void FormMain::showWiki() {
 }
 
 void FormMain::showAddAccountDialog() {
-  QPointer<FormAddAccount> form_update = new FormAddAccount(qApp->feedServices(),
-                                                            tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
-                                                            this);
-  form_update.data()->exec();
-  delete form_update.data();
+  QScopedPointer<FormAddAccount> form_update(new FormAddAccount(qApp->feedServices(),
+                                                                tabWidget()->feedMessageViewer()->feedsView()->sourceModel(),
+                                                                this));
+  form_update->exec();
 }
 
 void FormMain::reportABugOnGitHub() {
@@ -623,7 +620,6 @@ void FormMain::donate() {
 }
 
 void FormMain::showSettings() {
-  QPointer<FormSettings> form_pointer = new FormSettings(this);
-  form_pointer.data()->exec();
-  delete form_pointer.data();
+  QScopedPointer<FormSettings> form_pointer(new FormSettings(this));
+  form_pointer->exec();
 }

@@ -42,10 +42,6 @@ FormUpdate::FormUpdate(QWidget *parent)
   m_btnUpdate->setToolTip(tr("Download new installation files."));
   m_ui->m_lblCurrentRelease->setText(APP_VERSION);
 
-#if defined(Q_OS_OS2)
-  MessageBox::iconify(m_ui->m_buttonBox);
-#endif
-
   // Set flags and attributes.
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint | Qt::WindowTitleHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("application-about")));

@@ -38,7 +38,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
 }
 
 FormDatabaseCleanup::~FormDatabaseCleanup() {
-  delete m_ui;
+    qDebug("Destroying FormDatabaseCleanup instance.");
 }
 
 void FormDatabaseCleanup::setCleaner(DatabaseCleaner *cleaner) {

@@ -412,10 +412,6 @@ void FormStandardFeedDetails::initialize() {
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password"));
   m_ui->m_txtPassword->lineEdit()->setToolTip(tr("Set password to access the feed."));
 
-#if defined(Q_OS_OS2)
-  MessageBox::iconify(m_ui->m_buttonBox);
-#endif
-
   // Add standard feed types.
   m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Atom10), QVariant::fromValue((int) StandardFeed::Atom10));
   m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Rdf), QVariant::fromValue((int) StandardFeed::Rdf));

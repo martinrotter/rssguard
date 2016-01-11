@@ -38,7 +38,7 @@ class TtRssServiceRoot : public ServiceRoot {
     void start(bool freshly_activated);
     void stop();
 
-    QString code();
+    QString code() const;
 
     bool canBeEdited();
     bool canBeDeleted();
@@ -56,7 +56,7 @@ class TtRssServiceRoot : public ServiceRoot {
     QList<QAction*> serviceMenu();
     QList<QAction*> contextMenu();
 
-    RecycleBin *recycleBin();
+    RecycleBin *recycleBin() const;
 
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 

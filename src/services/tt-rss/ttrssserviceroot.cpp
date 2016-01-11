@@ -66,7 +66,7 @@ void TtRssServiceRoot::stop() {
   qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) m_network->lastError());
 }
 
-QString TtRssServiceRoot::code() {
+QString TtRssServiceRoot::code() const {
   return SERVICE_CODE_TT_RSS;
 }
 
@@ -163,7 +163,7 @@ QList<QAction*> TtRssServiceRoot::addItemMenu() {
   return QList<QAction*>();
 }
 
-RecycleBin *TtRssServiceRoot::recycleBin() {
+RecycleBin *TtRssServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 

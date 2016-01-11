@@ -43,7 +43,7 @@ class FormBackupDatabaseSettings : public QDialog {
     void checkOkButton();
 
   private:
-    Ui::FormBackupDatabaseSettings *m_ui;
+    QScopedPointer<Ui::FormBackupDatabaseSettings> m_ui;
 };
 
 #endif // FORMBACKUPDATABASECONFIG_H

@@ -42,10 +42,10 @@ class FormAddAccount : public QDialog {
     void displayActiveEntryPointDetails();
 
   private:
-    ServiceEntryPoint *selectedEntryPoint();
+    ServiceEntryPoint *selectedEntryPoint() const;
     void loadEntryPoints();
 
-    Ui::FormAddAccount *m_ui;
+    QScopedPointer<Ui::FormAddAccount> m_ui;
     FeedsModel *m_model;
     QList<ServiceEntryPoint*> m_entryPoints;
 };

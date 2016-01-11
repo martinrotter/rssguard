@@ -495,9 +495,9 @@ QList<ServiceRoot*> FeedsModel::serviceRoots() const {
   return roots;
 }
 
-bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) const {
-  foreach (RootItem *root, serviceRoots()) {
-    if (root->toServiceRoot()->code() == point->code()) {
+bool FeedsModel::containsServiceRootFromEntryPoint(const ServiceEntryPoint *point) const {
+  foreach (const ServiceRoot *root, serviceRoots()) {
+    if (root->code() == point->code()) {
       return true;
     }
   }
@@ -506,7 +506,7 @@ bool FeedsModel::containsServiceRootFromEntryPoint(ServiceEntryPoint *point) con
 }
 
 StandardServiceRoot *FeedsModel::standardServiceRoot() const {
-  foreach (RootItem *root, serviceRoots()) {
+  foreach (ServiceRoot *root, serviceRoots()) {
     StandardServiceRoot *std_service_root;
 
     if ((std_service_root = dynamic_cast<StandardServiceRoot*>(root)) != NULL) {

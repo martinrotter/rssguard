@@ -44,14 +44,6 @@ class MessageBox : public QMessageBox {
                                             QMessageBox::StandardButton default_button = QMessageBox::Ok);
 
     static QIcon iconForStatus(QMessageBox::Icon status);
-
-#if defined(Q_OS_OS2)
-    // Performs icon replacements for given button box.
-    static void iconify(QDialogButtonBox *button_box);
-
-    // Returns icons for standard roles/statuses.
-    static QIcon iconForRole(QDialogButtonBox::StandardButton button);
-#endif
 };
 
 #endif // MESSAGEBOX_H

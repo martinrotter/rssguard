@@ -21,10 +21,6 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/settingsproperties.h"
 
-#if !defined(Q_OS_WIN)
-#include "gui/messagebox.h"
-#endif
-
 #include <QFile>
 #include <QTextStream>
 
@@ -38,10 +34,6 @@ FormAbout::FormAbout(QWidget *parent) : QDialog(parent), m_ui(new Ui::FormAbout(
 
   //: About RSS Guard dialog title.
   setWindowTitle(tr("About %1").arg(APP_NAME));
-
-#if defined(Q_OS_OS2)
-  MessageBox::iconify(m_ui->m_buttonBox);
-#endif
 
   m_ui->m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
 

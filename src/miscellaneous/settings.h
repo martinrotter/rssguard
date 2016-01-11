@@ -339,7 +339,7 @@ class Settings : public QSettings {
     }
 
     // Getters/setters for settings values.
-    inline QVariant value(const QString &section, const QString &key, const QVariant &default_value = QVariant()) {
+    inline QVariant value(const QString &section, const QString &key, const QVariant &default_value = QVariant()) const {
       return QSettings::value(QString("%1/%2").arg(section, key), default_value);
     }
 
@@ -351,7 +351,7 @@ class Settings : public QSettings {
       QSettings::setValue(key, value);
     }
 
-    inline bool contains(const QString &section, const QString &key) {
+    inline bool contains(const QString &section, const QString &key) const {
       return QSettings::contains(QString("%1/%2").arg(section, key));
     }
 

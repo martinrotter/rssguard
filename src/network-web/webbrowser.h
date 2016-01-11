@@ -72,7 +72,7 @@ class WebBrowser : public TabContent {
     }
 
     // Returns global menu for this web browser.
-    inline virtual QList<QAction*> globalMenu() {
+    inline virtual QList<QAction*> globalMenu() const {
       QList<QAction*> browser_menu;
 
       // Add needed actions into the menu.

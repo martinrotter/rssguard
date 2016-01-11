@@ -40,34 +40,34 @@ TtRssServiceEntryPoint::~TtRssServiceEntryPoint() {
 
 }
 
-bool TtRssServiceEntryPoint::isSingleInstanceService() {
+bool TtRssServiceEntryPoint::isSingleInstanceService() const {
   return false;
 }
 
-QString TtRssServiceEntryPoint::name() {
+QString TtRssServiceEntryPoint::name() const {
   return QSL("Tiny Tiny RSS");
 }
 
-QString TtRssServiceEntryPoint::description() {
+QString TtRssServiceEntryPoint::description() const {
   return QObject::tr("This service offers integration with Tiny Tiny RSS.\n\n"
                      "Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, "
                      "designed to allow you to read news from any location, while feeling as close to a real "
                      "desktop application as possible.\n\nAt least API level %1 is required.").arg(MINIMAL_API_LEVEL);
 }
 
-QString TtRssServiceEntryPoint::version() {
+QString TtRssServiceEntryPoint::version() const {
   return APP_VERSION;
 }
 
-QString TtRssServiceEntryPoint::author() {
+QString TtRssServiceEntryPoint::author() const {
   return APP_AUTHOR;
 }
 
-QIcon TtRssServiceEntryPoint::icon() {
+QIcon TtRssServiceEntryPoint::icon() const {
   return qApp->icons()->fromTheme(QSL("application-ttrss"));
 }
 
-QString TtRssServiceEntryPoint::code() {
+QString TtRssServiceEntryPoint::code() const {
   return SERVICE_CODE_TT_RSS;
 }
 

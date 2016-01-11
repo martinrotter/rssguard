@@ -40,24 +40,24 @@ class FormMain : public QMainWindow {
     virtual ~FormMain();
 
     // Returns menu for the tray icon.
-    inline QMenu *trayMenu() {
+    inline QMenu *trayMenu() const {
       return m_trayMenu;
     }
 
     // Returns global tab widget.
-    inline TabWidget *tabWidget() {
+    inline TabWidget *tabWidget() const {
       return m_ui->m_tabWidget;
     }
 
     // Access to statusbar.
-    inline StatusBar *statusBar() {
+    inline StatusBar *statusBar() const {
       return m_statusBar;
     }
 
     // Returns list of all globally available actions.
     // NOTE: This is used for setting dynamic shortcuts
     // for given actions.
-    QList<QAction*> allActions();
+    QList<QAction*> allActions() const;
 
     // Loads/saves visual state of the application.
     void loadSize();
@@ -106,7 +106,7 @@ class FormMain : public QMainWindow {
     // Sets up proper icons for this widget.
     void setupIcons();
 
-    Ui::FormMain *m_ui;
+    QScopedPointer<Ui::FormMain> m_ui;
     QMenu *m_trayMenu;
     StatusBar *m_statusBar;
 };

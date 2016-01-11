@@ -22,10 +22,6 @@
 #include "core/feedsmodel.h"
 #include "services/standard/standardserviceentrypoint.h"
 
-#if defined(Q_OS_OS2)
-#include "gui/messagebox.h"
-#endif
-
 
 FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, FeedsModel *model, QWidget *parent)
   : QDialog(parent), m_ui(new Ui::FormAddAccount), m_model(model), m_entryPoints(entry_points) {
@@ -35,10 +31,6 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
   setWindowIcon(qApp->icons()->fromTheme(QSL("item-new")));
 
-#if defined(Q_OS_OS2)
-  MessageBox::iconify(m_ui->m_buttonBox);
-#endif
-
   connect(m_ui->m_listEntryPoints, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(addSelectedAccount()));
   connect(m_ui->m_buttonBox, SIGNAL(accepted()), this, SLOT(addSelectedAccount()));
   connect(m_ui->m_listEntryPoints, SIGNAL(itemSelectionChanged()), this, SLOT(displayActiveEntryPointDetails()));
@@ -46,7 +38,7 @@ FormAddAccount::FormAddAccount(const QList<ServiceEntryPoint*> &entry_points, Fe
 }
 
 FormAddAccount::~FormAddAccount() {
-  delete m_ui;
+  qDebug("Destroying FormAddAccount instance.");
 }
 
 void FormAddAccount::addSelectedAccount() {
@@ -64,7 +56,7 @@ void FormAddAccount::addSelectedAccount() {
 }
 
 void FormAddAccount::displayActiveEntryPointDetails() {
-  ServiceEntryPoint *point = selectedEntryPoint();
+  const ServiceEntryPoint *point = selectedEntryPoint();
 
   m_ui->m_txtAuthor->setText(point->author());
   m_ui->m_txtDescription->setText(point->description());
@@ -72,12 +64,12 @@ void FormAddAccount::displayActiveEntryPointDetails() {
   m_ui->m_txtVersion->setText(point->version());
 }
 
-ServiceEntryPoint *FormAddAccount::selectedEntryPoint() {
+ServiceEntryPoint *FormAddAccount::selectedEntryPoint() const {
   return m_entryPoints.at(m_ui->m_listEntryPoints->currentRow());
 }
 
 void FormAddAccount::loadEntryPoints() {
-  foreach (ServiceEntryPoint *entry_point, m_entryPoints) {
+  foreach (const ServiceEntryPoint *entry_point, m_entryPoints) {
     QListWidgetItem *item = new QListWidgetItem(entry_point->icon(), entry_point->name(), m_ui->m_listEntryPoints);
 
     if (entry_point->isSingleInstanceService() && m_model->containsServiceRootFromEntryPoint(entry_point)) {

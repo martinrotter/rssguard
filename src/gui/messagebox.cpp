@@ -42,39 +42,6 @@ void MessageBox::setIcon(QMessageBox::Icon icon) {
   setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));
 }
 
-#if defined(Q_OS_OS2)
-void MessageBox::iconify(QDialogButtonBox *button_box) {
-  foreach (QAbstractButton *button, button_box->buttons()) {
-    button->setIcon(iconForRole(button_box->standardButton(button)));
-  }
-}
-
-QIcon MessageBox::iconForRole(QDialogButtonBox::StandardButton button) {
-  switch (button) {
-    case QMessageBox::Ok:
-      return qApp->icons()->fromTheme(QSL("dialog-ok"));
-
-    case QMessageBox::Cancel:
-    case QMessageBox::Close:
-      return qApp->icons()->fromTheme(QSL("dialog-cancel"));
-
-    case QMessageBox::Yes:
-    case QMessageBox::YesToAll:
-      return qApp->icons()->fromTheme(QSL("dialog-yes"));
-
-    case QMessageBox::No:
-    case QMessageBox::NoToAll:
-      return qApp->icons()->fromTheme(QSL("dialog-no"));
-
-    case QMessageBox::Help:
-      return qApp->icons()->fromTheme(QSL("dialog-question"));
-
-    default:
-      return QIcon();
-  }
-}
-#endif
-
 QIcon MessageBox::iconForStatus(QMessageBox::Icon status) {
   switch (status) {
     case QMessageBox::Information:
@@ -114,12 +81,6 @@ QMessageBox::StandardButton MessageBox::show(QWidget *parent,
   msg_box.setIcon(icon);
   msg_box.setStandardButtons(buttons);
   msg_box.setDefaultButton(default_button);
-
-  // Setup button box icons.
-#if defined(Q_OS_OS2)
-  QDialogButtonBox *button_box = msg_box.findChild<QDialogButtonBox*>();
-  iconify(button_box);
-#endif
 
   // Display it.
   if (msg_box.exec() == -1) {

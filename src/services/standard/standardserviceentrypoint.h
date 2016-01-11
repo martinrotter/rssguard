@@ -26,13 +26,13 @@ class StandardServiceEntryPoint : public ServiceEntryPoint {
     explicit StandardServiceEntryPoint();
     virtual ~StandardServiceEntryPoint();
 
-    bool isSingleInstanceService();
-    QString name();
-    QString description();
-    QString version();
-    QString author();
-    QIcon icon();
-    QString code();
+    bool isSingleInstanceService() const;
+    QString name() const;
+    QString description() const;
+    QString version() const;
+    QString author() const;
+    QIcon icon() const;
+    QString code() const;
 
     ServiceRoot *createNewRoot();
     QList<ServiceRoot*> initializeSubtree() const;

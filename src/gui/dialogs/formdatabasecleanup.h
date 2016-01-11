@@ -45,7 +45,6 @@ class FormDatabaseCleanup : public QDialog {
 
   private slots:
     void updateDaysSuffix(int number);
-
     void startPurging();
     void onPurgeStarted();
     void onPurgeProgress(int progress, const QString &description);
@@ -58,7 +57,7 @@ class FormDatabaseCleanup : public QDialog {
     void loadDatabaseInfo();
 
   private:
-    Ui::FormDatabaseCleanup *m_ui;
+    QScopedPointer<Ui::FormDatabaseCleanup> m_ui;
     DatabaseCleaner *m_cleaner;
 };
 

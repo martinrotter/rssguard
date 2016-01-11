@@ -84,7 +84,7 @@ class FeedsModel : public QAbstractItemModel {
     QList<ServiceRoot*> serviceRoots() const;
 
     // Determines if there is any account activated from given entry point.
-    bool containsServiceRootFromEntryPoint(ServiceEntryPoint *point) const;
+    bool containsServiceRootFromEntryPoint(const ServiceEntryPoint *point) const;
 
     // Direct and the only global accessor to standard service root.
     // NOTE: Standard service root is always activated.

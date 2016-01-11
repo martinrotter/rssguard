@@ -104,7 +104,7 @@ void StandardServiceRoot::stop() {
   qDebug("Stopping StandardServiceRoot instance.");
 }
 
-QString StandardServiceRoot::code() {
+QString StandardServiceRoot::code() const {
   return SERVICE_CODE_STD_RSS;
 }
 
@@ -157,7 +157,7 @@ Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
   return Qt::ItemIsDropEnabled;
 }
 
-RecycleBin *StandardServiceRoot::recycleBin() {
+RecycleBin *StandardServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
