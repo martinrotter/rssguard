@@ -41,7 +41,7 @@ class FormRestoreDatabaseSettings : public QDialog {
     void selectFolder(QString folder = QString());
 
   private:
-    Ui::FormRestoreDatabaseSettings *m_ui;
+    QScopedPointer<Ui::FormRestoreDatabaseSettings> m_ui;
     QPushButton *m_btnRestart;
 };
 

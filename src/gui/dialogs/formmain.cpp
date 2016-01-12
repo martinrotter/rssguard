@@ -86,7 +86,7 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 }
 
 FormMain::~FormMain() {
-  qDebug("Destroying FormDatabaseCleanup instance.");
+  qDebug("Destroying FormMain instance.");
 }
 
 QList<QAction*> FormMain::allActions() const {

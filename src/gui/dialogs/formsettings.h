@@ -27,6 +27,8 @@ namespace Ui {
   class FormSettings;
 }
 
+class Settings;
+
 // Structure holding some initial values.
 struct TemporarySettings {
 
@@ -104,11 +106,10 @@ class FormSettings : public QDialog {
     void saveFeedsMessages();
     
   private:
-    Ui::FormSettings *m_ui;
+    QScopedPointer<Ui::FormSettings> m_ui;
+    Settings *m_settings;
     TemporarySettings m_initialSettings;
     QStringList m_changedDataTexts;
 };
-
-
 
 #endif // FORMSETTINGS_H

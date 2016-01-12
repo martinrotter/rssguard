@@ -45,7 +45,7 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget *parent)
 }
 
 FormRestoreDatabaseSettings::~FormRestoreDatabaseSettings() {
-  delete m_ui;
+  qDebug("Destroying FormRestoreDatabaseSettings instance.");
 }
 
 void FormRestoreDatabaseSettings::performRestoration() {
@@ -64,7 +64,7 @@ void FormRestoreDatabaseSettings::performRestoration() {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, tr("Restoration was initiated. Restart to proceed."),
                                  tr("You need to restart application for restoration process to finish."));
   }
-  catch (ApplicationException &ex) {
+  catch (const ApplicationException &ex) {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, ex.message(),
                                  tr("Database and/or settings were not copied to restoration directory successully."));
   }
@@ -92,15 +92,15 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
     return;
   }
 
-  QDir selected_folder(folder);
-  QFileInfoList available_databases = selected_folder.entryInfoList(QStringList() << QString("*") + BACKUP_SUFFIX_DATABASE ,
-                                                                    QDir::Files | QDir::NoDotAndDotDot | QDir::Readable |
-                                                                    QDir::CaseSensitive | QDir::NoSymLinks,
-                                                                    QDir::Name);
-  QFileInfoList available_settings = selected_folder.entryInfoList(QStringList() << QString("*") + BACKUP_SUFFIX_SETTINGS ,
-                                                                   QDir::Files | QDir::NoDotAndDotDot | QDir::Readable |
-                                                                   QDir::CaseSensitive | QDir::NoSymLinks,
-                                                                   QDir::Name);
+  const QDir selected_folder(folder);
+  const QFileInfoList available_databases = selected_folder.entryInfoList(QStringList() << QString("*") + BACKUP_SUFFIX_DATABASE ,
+                                                                          QDir::Files | QDir::NoDotAndDotDot | QDir::Readable |
+                                                                          QDir::CaseSensitive | QDir::NoSymLinks,
+                                                                          QDir::Name);
+  const QFileInfoList available_settings = selected_folder.entryInfoList(QStringList() << QString("*") + BACKUP_SUFFIX_SETTINGS ,
+                                                                         QDir::Files | QDir::NoDotAndDotDot | QDir::Readable |
+                                                                         QDir::CaseSensitive | QDir::NoSymLinks,
+                                                                         QDir::Name);
 
   m_ui->m_listDatabase->clear();
   m_ui->m_listSettings->clear();

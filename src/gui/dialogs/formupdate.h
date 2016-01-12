@@ -62,7 +62,7 @@ class FormUpdate : public QDialog {
     Downloader *m_downloader;
     bool m_readyToInstall;
     QString m_updateFilePath;
-    Ui::FormUpdate *m_ui;
+    QScopedPointer<Ui::FormUpdate> m_ui;
     UpdateInfo m_updateInfo;
     QPushButton *m_btnUpdate;
 };

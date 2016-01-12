@@ -51,7 +51,6 @@ FormUpdate::FormUpdate(QWidget *parent)
 }
 
 FormUpdate::~FormUpdate() {
-  delete m_ui;
 }
 
 bool FormUpdate::isUpdateForThisSystem() const {
@@ -67,7 +66,7 @@ bool FormUpdate::isSelfUpdateSupported() const {
 }
 
 void FormUpdate::checkForUpdates() {
-  QPair<UpdateInfo, QNetworkReply::NetworkError> update = qApp->system()->checkForUpdates();
+  const QPair<UpdateInfo, QNetworkReply::NetworkError> update = qApp->system()->checkForUpdates();
 
   m_updateInfo = update.first;
 
@@ -85,7 +84,7 @@ void FormUpdate::checkForUpdates() {
     m_ui->m_lblAvailableRelease->setText(update.first.m_availableVersion);
     m_ui->m_txtChanges->setText(update.first.m_changes);
 
-    bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
+    const bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
     if (SystemFactory::isUpdateNewer(update.first.m_availableVersion)) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
@@ -122,11 +121,11 @@ void FormUpdate::updateProgress(qint64 bytes_received, qint64 bytes_total) {
 }
 
 void FormUpdate::saveUpdateFile(const QByteArray &file_contents) {
-  QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
-  QString temp_directory = qApp->tempFolderPath();
+  const QString url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;;
+  const QString temp_directory = qApp->tempFolderPath();
 
   if (!temp_directory.isEmpty()) {
-    QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
+    const QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
     QFile output_file(temp_directory + QDir::separator() + output_file_name);
 
     if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
@@ -158,7 +157,6 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
   switch (status) {
     case QNetworkReply::NoError:
       saveUpdateFile(contents);
-
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok, tr("Downloaded successfully"), tr("Package was downloaded successfully."));
       m_btnUpdate->setText(tr("Install update"));
       m_btnUpdate->setEnabled(true);
@@ -173,7 +171,7 @@ void FormUpdate::updateCompleted(QNetworkReply::NetworkError status, QByteArray 
 
 void FormUpdate::startUpdate() {
   QString url_file;
-  bool update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
+  const bool update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
   if (update_for_this_system) {
     url_file = m_updateInfo.m_urls.value(OS_ID).m_fileUrl;
@@ -190,12 +188,12 @@ void FormUpdate::startUpdate() {
     qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
 #if defined(Q_OS_WIN)
-    long exec_result = (long) ShellExecute(NULL,
-                                           NULL,
-                                           reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
-                                           NULL,
-                                           NULL,
-                                           SW_NORMAL);
+    const long exec_result = (long) ShellExecute(NULL,
+                                                 NULL,
+                                                 reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
+                                                 NULL,
+                                                 NULL,
+                                                 SW_NORMAL);
 
     if (exec_result <= 32) {
       qDebug("External updater was not launched due to error.");
