@@ -145,7 +145,7 @@ void FeedsModel::updateFeeds(const QList<Feed *> &feeds) {
     connect(m_feedDownloaderThread, SIGNAL(finished()), m_feedDownloaderThread, SLOT(deleteLater()));
     connect(m_feedDownloader, SIGNAL(finished(FeedDownloadResults)), this, SLOT(onFeedUpdatesFinished(FeedDownloadResults)));
     connect(m_feedDownloader, SIGNAL(started()), this, SLOT(onFeedUpdatesStarted()));
-    connect(m_feedDownloader, SIGNAL(progress(Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(Feed*,int,int)));
+    connect(m_feedDownloader, SIGNAL(progress(const Feed*,int,int)), this, SLOT(onFeedUpdatesProgress(const Feed*,int,int)));
 
     // Connections are made, start the feed downloader thread.
     m_feedDownloaderThread->start();
@@ -177,6 +177,7 @@ void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   }
 
   emit feedsUpdateFinished();
+  emit sortingRequired();
 }
 
 void FeedsModel::updateAllFeeds() {

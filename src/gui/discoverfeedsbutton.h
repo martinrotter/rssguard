@@ -35,7 +35,7 @@ class DiscoverFeedsButton : public QToolButton {
 
   private slots:
     // User chose any of addresses.
-    void linkTriggered(const QAction *action);
+    void linkTriggered(QAction *action);
     void fillMenu();
 
   private:

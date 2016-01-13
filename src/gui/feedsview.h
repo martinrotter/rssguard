@@ -61,6 +61,10 @@ class FeedsView : public QTreeView {
     void loadAllExpandStates();
 
   public slots:
+    // Sorts according to column/order taken from settings.
+    void sort(bool from_settings);
+    void reSort();
+
     void addFeedIntoSelectedAccount();
     void addCategoryIntoSelectedAccount();
     void expandCollapseCurrentItem();

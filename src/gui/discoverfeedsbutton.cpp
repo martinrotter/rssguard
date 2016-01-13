@@ -59,7 +59,7 @@ void DiscoverFeedsButton::setFeedAddresses(const QStringList &addresses) {
   m_addresses = addresses;
 }
 
-void DiscoverFeedsButton::linkTriggered(const QAction *action) {
+void DiscoverFeedsButton::linkTriggered(QAction *action) {
   const QString url = action->property("url").toString();
   ServiceRoot *root = static_cast<ServiceRoot*>(action->property("root").value<void*>());
 

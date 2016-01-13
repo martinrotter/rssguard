@@ -58,6 +58,7 @@ FeedsView::FeedsView(QWidget *parent)
   connect(m_sourceModel, SIGNAL(requireItemValidationAfterDragDrop(QModelIndex)), this, SLOT(validateItemAfterDragDrop(QModelIndex)));
   connect(m_sourceModel, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SLOT(onItemExpandRequested(QList<RootItem*>,bool)));
   connect(m_sourceModel, SIGNAL(itemExpandStateSaveRequested(RootItem*)), this, SLOT(onItemExpandStateSaveRequested(RootItem*)));
+  connect(m_sourceModel, SIGNAL(sortingRequired()), this, SLOT(reSort()));
   connect(header(), SIGNAL(sortIndicatorChanged(int,Qt::SortOrder)), this, SLOT(saveSortState(int,Qt::SortOrder)));
 
   setModel(m_proxyModel);
@@ -133,8 +134,27 @@ void FeedsView::loadAllExpandStates() {
                 settings->value(GROUP(CategoriesExpandStates), setting_name, item->childCount() > 0).toBool());
   }
 
-  sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
-               static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt()));
+  sort(true);
+}
+
+void FeedsView::sort(bool from_settings) {
+  int column;
+  Qt::SortOrder order;
+
+  if (from_settings) {
+    column = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt();
+    order = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt());
+  }
+  else {
+    column = header()->sortIndicatorSection();
+    order = header()->sortIndicatorOrder();
+  }
+
+  sortByColumn(column, order);
+}
+
+void FeedsView::reSort() {
+  m_proxyModel->sort(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 }
 
 void FeedsView::addFeedIntoSelectedAccount() {
