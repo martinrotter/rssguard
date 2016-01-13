@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -59,8 +59,8 @@ void DiscoverFeedsButton::setFeedAddresses(const QStringList &addresses) {
   m_addresses = addresses;
 }
 
-void DiscoverFeedsButton::linkTriggered(QAction *action) {
-  QString url = action->property("url").toString();
+void DiscoverFeedsButton::linkTriggered(const QAction *action) {
+  const QString url = action->property("url").toString();
   ServiceRoot *root = static_cast<ServiceRoot*>(action->property("root").value<void*>());
 
   if (root->supportsFeedAdding()) {
@@ -77,7 +77,7 @@ void DiscoverFeedsButton::linkTriggered(QAction *action) {
 void DiscoverFeedsButton::fillMenu() {
   menu()->clear();
 
-  foreach (ServiceRoot *root, qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
+  foreach (const ServiceRoot *root, qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->serviceRoots()) {
     QMenu *root_menu = menu()->addMenu(root->icon(), root->title());
 
     foreach (const QString &url, m_addresses) {

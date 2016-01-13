@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -39,11 +39,11 @@ class MessagesView : public QTreeView {
     void setSortingEnabled(bool enable);
 
     // Model accessors.
-    inline MessagesProxyModel *model() {
+    inline MessagesProxyModel *model() const {
       return m_proxyModel;
     }
 
-    inline MessagesModel *sourceModel() {
+    inline MessagesModel *sourceModel() const {
       return m_sourceModel;
     }
 

@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -74,9 +74,9 @@ void MessagesView::keyboardSearch(const QString &search) {
 
 void MessagesView::reloadSelections(bool mark_current_index_read) {
   QModelIndex current_index = selectionModel()->currentIndex();
-  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   // Reload the model now.
   m_sourceModel->fetchAllData();
@@ -134,7 +134,7 @@ void MessagesView::keyPressEvent(QKeyEvent *event) {
 }
 
 void MessagesView::contextMenuEvent(QContextMenuEvent *event) {
-  QModelIndex clicked_index = indexAt(event->pos());
+  const QModelIndex clicked_index = indexAt(event->pos());
 
   if (!clicked_index.isValid()) {
     qDebug("Context menu for MessagesView will not be shown because user clicked on invalid item.");
@@ -175,10 +175,10 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
     case Qt::LeftButton: {
       // Make sure that message importance is switched when user
       // clicks the "important" column.
-      QModelIndex clicked_index = indexAt(event->pos());
+      const QModelIndex clicked_index = indexAt(event->pos());
 
       if (clicked_index.isValid()) {
-        QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
+        const QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
 
         if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
           m_sourceModel->switchMessageImportance(mapped_index.row());
@@ -200,9 +200,9 @@ void MessagesView::mousePressEvent(QMouseEvent *event) {
 }
 
 void MessagesView::selectionChanged(const QItemSelection &selected, const QItemSelection &deselected) {
-  QModelIndexList selected_rows = selectionModel()->selectedRows();
-  QModelIndex current_index = currentIndex();
-  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  const QModelIndexList selected_rows = selectionModel()->selectedRows();
+  const QModelIndex current_index = currentIndex();
+  const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
 
   qDebug("Current row changed - row [%d,%d] source [%d, %d].",
          current_index.row(), current_index.column(),
@@ -231,8 +231,8 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
 void MessagesView::loadItem(RootItem *item) {
   m_sourceModel->loadMessages(item);
 
-  int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
-  Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
+  const int col = qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnMessages)).toInt();
+  const Qt::SortOrder ord = static_cast<Qt::SortOrder>(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderMessages)).toInt());
 
   sortByColumn(col, ord);
 
@@ -247,7 +247,7 @@ void MessagesView::loadItem(RootItem *item) {
 
 void MessagesView::openSelectedSourceMessagesExternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
-    QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
+    const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;
 
     if (!WebFactory::instance()->openUrlInExternalBrowser(link)) {
       qApp->showGuiMessage(tr("Problem with starting external web browser"),
@@ -265,7 +265,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
 
 void MessagesView::openSelectedSourceMessagesInternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
+    const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row());
 
     if (message.m_url.isEmpty()) {
       MessageBox::show(this,
@@ -308,7 +308,7 @@ void MessagesView::openSelectedMessagesInternally() {
 
 void MessagesView::sendSelectedMessageViaEmail() {
   if (selectionModel()->selectedRows().size() == 1) {
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
+    const Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
     if (!WebFactory::instance()->sendMessageViaEmail(message)) {
       MessageBox::show(this,
@@ -334,9 +334,9 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
     return;
   }
 
-  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
@@ -357,23 +357,24 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
 }
 
 void MessagesView::deleteSelectedMessages() {
-  QModelIndex current_index = selectionModel()->currentIndex();
+  const QModelIndex current_index = selectionModel()->currentIndex();
 
   if (!current_index.isValid()) {
     return;
   }
 
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
-  int row_count = m_sourceModel->rowCount();
+  const int row_count = m_sourceModel->rowCount();
+
   if (row_count > 0) {
-    QModelIndex last_item = current_index.row() < row_count ?
-                              m_proxyModel->index(current_index.row(), MSG_DB_TITLE_INDEX) :
-                              m_proxyModel->index(row_count - 1, MSG_DB_TITLE_INDEX);
+    const QModelIndex last_item = current_index.row() < row_count ?
+                                    m_proxyModel->index(current_index.row(), MSG_DB_TITLE_INDEX) :
+                                    m_proxyModel->index(row_count - 1, MSG_DB_TITLE_INDEX);
 
     setCurrentIndex(last_item);
     scrollTo(last_item);
@@ -385,23 +386,24 @@ void MessagesView::deleteSelectedMessages() {
 }
 
 void MessagesView::restoreSelectedMessages() {
-  QModelIndex current_index = selectionModel()->currentIndex();
+  const QModelIndex current_index = selectionModel()->currentIndex();
 
   if (!current_index.isValid()) {
     return;
   }
 
-  QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRestored(mapped_indexes);
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   int row_count = m_sourceModel->rowCount();
+
   if (row_count > 0) {
-    QModelIndex last_item = current_index.row() < row_count ?
-                              m_proxyModel->index(current_index.row(), MSG_DB_TITLE_INDEX) :
-                              m_proxyModel->index(row_count - 1, MSG_DB_TITLE_INDEX);
+    const QModelIndex last_item = current_index.row() < row_count ?
+                                    m_proxyModel->index(current_index.row(), MSG_DB_TITLE_INDEX) :
+                                    m_proxyModel->index(row_count - 1, MSG_DB_TITLE_INDEX);
 
     setCurrentIndex(last_item);
     scrollTo(last_item);
@@ -419,9 +421,9 @@ void MessagesView::switchSelectedMessagesImportance() {
     return;
   }
 
-  QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
+  const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
   QModelIndexList selected_indexes = selectionModel()->selectedRows();
-  QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
@@ -450,7 +452,7 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
 }
 
 void MessagesView::selectNextItem() {
-  QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+  const QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
@@ -460,7 +462,7 @@ void MessagesView::selectNextItem() {
 }
 
 void MessagesView::selectPreviousItem() {
-  QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  const QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
@@ -472,7 +474,7 @@ void MessagesView::selectPreviousItem() {
 void MessagesView::selectNextUnreadItem() {
   // FIXME: Use this to solve #112.
 
-  QModelIndexList selected_rows = selectionModel()->selectedRows();
+  const QModelIndexList selected_rows = selectionModel()->selectedRows();
   int active_row;
 
   if (!selected_rows.isEmpty()) {
@@ -483,7 +485,7 @@ void MessagesView::selectNextUnreadItem() {
     active_row = 0;
   }
 
-  QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
+  const QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
 
   if (next_unread.isValid()) {
     // We found unread message, mark it.

@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -212,11 +212,11 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source
   }
 }
 
-RootItem *FeedsProxyModel::selectedItem() const {
+const RootItem *FeedsProxyModel::selectedItem() const {
   return m_selectedItem;
 }
 
-void FeedsProxyModel::setSelectedItem(RootItem *selected_item) {
+void FeedsProxyModel::setSelectedItem(const RootItem *selected_item) {
   m_selectedItem = selected_item;
 }
 

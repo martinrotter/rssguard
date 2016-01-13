@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -340,8 +340,8 @@ QList<Feed*> RootItem::getSubTreeFeeds() const {
   return children;
 }
 
-ServiceRoot *RootItem::getParentServiceRoot() {
-  RootItem *working_parent = this;
+ServiceRoot *RootItem::getParentServiceRoot() const {
+  const RootItem *working_parent = this;
 
   while (working_parent->kind() != RootItemKind::Root) {
     if (working_parent->kind() == RootItemKind::ServiceRoot) {
@@ -367,8 +367,8 @@ Feed *RootItem::toFeed() {
   return static_cast<Feed*>(this);
 }
 
-ServiceRoot *RootItem::toServiceRoot() {
-  return static_cast<ServiceRoot*>(this);
+ServiceRoot *RootItem::toServiceRoot() const {
+  return static_cast<ServiceRoot*>(const_cast<RootItem*>(this));
 }
 
 int RootItem::countOfUnreadMessages() const {

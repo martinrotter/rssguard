@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -42,15 +42,15 @@ class TabBar : public QTabBar {
     // Getter/setter for tab type.
     void setTabType(int index, const TabBar::TabType &type);
 
-    inline TabBar::TabType tabType(int index) {
+    inline TabBar::TabType tabType(int index) const {
       return static_cast<TabBar::TabType>(tabData(index).value<int>());
     }
 
-  protected slots:
+  private slots:
     // Called when user selects to close tab via close button.
     void closeTabViaButton();
 
-  protected:
+  private:
     // Reimplementations.
     void mouseDoubleClickEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);

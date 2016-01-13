@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -100,8 +100,8 @@ void FeedMessageViewer::saveSize() {
 }
 
 void FeedMessageViewer::loadSize() {
-  Settings *settings = qApp->settings();
-  int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
+  const Settings *settings = qApp->settings();
+  const int default_msg_section_size = m_messagesView->header()->defaultSectionSize();
   
   // Restore offsets of splitters.
   m_feedSplitter->restoreState(QByteArray::fromBase64(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds)).toString().toLocal8Bit()));
@@ -117,7 +117,7 @@ void FeedMessageViewer::loadSize() {
 }
 
 void FeedMessageViewer::loadMessageViewerFonts() {
-  Settings *settings = qApp->settings();
+  const Settings *settings = qApp->settings();
   QWebSettings *view_settings = m_messagesBrowser->view()->settings();
   
   view_settings->setFontFamily(QWebSettings::StandardFont, settings->value(GROUP(Messages),
@@ -163,7 +163,7 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
 }
 
 void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
-  QAction *origin = qobject_cast<QAction*>(sender());
+  const QAction *origin = qobject_cast<QAction*>(sender());
   
   if (origin == NULL) {
     m_feedsView->model()->invalidateReadFeedsFilter(true, false);
@@ -174,10 +174,10 @@ void FeedMessageViewer::toggleShowOnlyUnreadFeeds() {
 }
 
 void FeedMessageViewer::updateMessageButtonsAvailability() {
-  bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
-  bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
-  bool bin_loaded = m_messagesView->sourceModel()->loadedItem() != NULL && m_messagesView->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
-  FormMain *form_main = qApp->mainForm();
+  const bool one_message_selected = m_messagesView->selectionModel()->selectedRows().size() == 1;
+  const bool atleast_one_message_selected = !m_messagesView->selectionModel()->selectedRows().isEmpty();
+  const bool bin_loaded = m_messagesView->sourceModel()->loadedItem() != NULL && m_messagesView->sourceModel()->loadedItem()->kind() == RootItemKind::Bin;
+  const FormMain *form_main = qApp->mainForm();
   
   form_main->m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
   form_main->m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected && bin_loaded);
@@ -191,13 +191,13 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
 }
 
 void FeedMessageViewer::updateFeedButtonsAvailability() {
-  bool critical_action_running = qApp->feedUpdateLock()->isLocked();
-  RootItem *selected_item = feedsView()->selectedItem();
-  bool anything_selected = selected_item != NULL;
-  bool feed_selected = anything_selected && selected_item->kind() == RootItemKind::Feed;
-  bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
-  bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
-  FormMain *form_main = qApp->mainForm();
+  const bool critical_action_running = qApp->feedUpdateLock()->isLocked();
+  const RootItem *selected_item = feedsView()->selectedItem();
+  const bool anything_selected = selected_item != NULL;
+  const bool feed_selected = anything_selected && selected_item->kind() == RootItemKind::Feed;
+  const bool category_selected = anything_selected && selected_item->kind() == RootItemKind::Category;
+  const bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
+  const FormMain *form_main = qApp->mainForm();
   
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
@@ -221,7 +221,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
 }
 
 void FeedMessageViewer::createConnections() {
-  FormMain *form_main = qApp->mainForm();
+  const FormMain *form_main = qApp->mainForm();
   
   // Filtering & searching.
   connect(m_toolBarMessages, SIGNAL(messageSearchPatternChanged(QString)), m_messagesView, SLOT(searchMessages(QString)));
@@ -406,11 +406,10 @@ void FeedMessageViewer::initializeViews() {
 
 void FeedMessageViewer::showDbCleanupAssistant() {
   if (qApp->feedUpdateLock()->tryLock()) {
-    QPointer<FormDatabaseCleanup> form_pointer = new FormDatabaseCleanup(this);
+    QScopedPointer<FormDatabaseCleanup> form_pointer(new FormDatabaseCleanup(this));
     form_pointer.data()->setCleaner(m_feedsView->sourceModel()->databaseCleaner());
     form_pointer.data()->exec();
     
-    delete form_pointer.data();
     qApp->feedUpdateLock()->unlock();
     
     m_messagesView->reloadSelections(false);
@@ -424,7 +423,7 @@ void FeedMessageViewer::showDbCleanupAssistant() {
 }
 
 void FeedMessageViewer::refreshVisualProperties() {
-  Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI),
+  const Qt::ToolButtonStyle button_style = static_cast<Qt::ToolButtonStyle>(qApp->settings()->value(GROUP(GUI),
                                                                                               SETTING(GUI::ToolbarStyle)).toInt());
   
   m_toolBarFeeds->setToolButtonStyle(button_style);

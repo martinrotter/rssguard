@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ LineEditWithStatus::LineEditWithStatus(QWidget *parent)
   setFocusProxy(m_wdgInput);
 
   // Set correct size for the tool button.
-  int txt_input_height = m_wdgInput->sizeHint().height();
+  const int txt_input_height = m_wdgInput->sizeHint().height();
   m_btnStatus->setFixedSize(txt_input_height, txt_input_height);
 
   // Compose the layout.

@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -43,24 +43,24 @@ class FeedMessageViewer : public TabContent {
     virtual ~FeedMessageViewer();
 
     // WebBrowser getter from TabContent interface.
-    inline WebBrowser *webBrowser() {
+    inline WebBrowser *webBrowser() const {
       return m_messagesBrowser;
     }
 
     // FeedsView getter.
-    inline FeedsView *feedsView() {
+    inline FeedsView *feedsView() const {
       return m_feedsView;
     }
 
-    inline MessagesView *messagesView() {
+    inline MessagesView *messagesView() const {
       return m_messagesView;
     }
 
-    inline MessagesToolBar *messagesToolBar() {
+    inline MessagesToolBar *messagesToolBar() const {
       return m_toolBarMessages;
     }
 
-    inline FeedsToolBar *feedsToolBar() {
+    inline FeedsToolBar *feedsToolBar() const {
       return m_toolBarFeeds;
     }
 

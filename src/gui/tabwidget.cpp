@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ void TabWidget::openMainMenu() {
   }
 
   QPoint button_position = m_btnMainMenu->pos();
-  QSize target_size = m_btnMainMenu->size() / 2.0;
+  const QSize target_size = m_btnMainMenu->size() / 2.0;
 
   button_position.setX(button_position.x() + target_size.width());
   button_position.setY(button_position.y() + target_size.height());
@@ -87,7 +87,7 @@ void TabWidget::openMainMenu() {
 
 void TabWidget::showDownloadManager() {
   for (int i = 0; i < count(); i++) {
-    if (QString(widget(i)->metaObject()->className()) == "DownloadManager") {
+    if (widget(i)->metaObject()->className() == QSL("DownloadManager")) {
       setCurrentIndex(i);
       return;
     }
@@ -100,7 +100,7 @@ void TabWidget::showDownloadManager() {
 }
 
 void TabWidget::checkTabBarVisibility() {
-  bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
+  const bool should_be_visible = count() > 1 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool();
 
   if (should_be_visible) {
     setCornerWidget(m_btnMainMenu, Qt::TopLeftCorner);
@@ -124,7 +124,7 @@ void TabWidget::tabInserted(int index) {
   QTabWidget::tabInserted(index);
   checkTabBarVisibility();
 
-  int count_of_tabs = count();
+  const int count_of_tabs = count();
 
   if (index < count_of_tabs - 1 && count_of_tabs > 1) {
     // New tab was inserted and the tab is not the last one.
@@ -136,7 +136,7 @@ void TabWidget::tabRemoved(int index) {
   QTabWidget::tabRemoved(index);
   checkTabBarVisibility();
 
-  int count_of_tabs = count();
+  const int count_of_tabs = count();
 
   if (index < count_of_tabs && count_of_tabs > 1) {
     // Some tab was removed and the tab was not the last one.
@@ -153,10 +153,10 @@ void TabWidget::createConnections() {
 void TabWidget::initializeTabs() {
   // Create widget for "Feeds" page and add it.
   m_feedMessageViewer = new FeedMessageViewer(this);
-  int index_of_browser = addTab(static_cast<TabContent*>(m_feedMessageViewer),
-                                QIcon(),
-                                tr("Feeds"),
-                                TabBar::FeedReader);
+  const int index_of_browser = addTab(static_cast<TabContent*>(m_feedMessageViewer),
+                                      QIcon(),
+                                      tr("Feeds"),
+                                      TabBar::FeedReader);
   setTabToolTip(index_of_browser, tr("Browse your feeds and messages"));
 }
 
@@ -170,7 +170,8 @@ void TabWidget::setupIcons() {
     }
     // Other indexes probably contain WebBrowsers.
     else {
-      WebBrowser *active_browser = widget(index)->webBrowser();
+      const WebBrowser *active_browser = widget(index)->webBrowser();
+
       if (active_browser != NULL && active_browser->icon().isNull()) {
         // We found WebBrowser instance of this tab page, which
         // has no suitable icon, load a new one from the icon theme.
@@ -242,35 +243,35 @@ void TabWidget::removeTab(int index, bool clear_from_memory) {
 }
 
 int TabWidget::addTab(TabContent *widget, const QIcon &icon, const QString &label, const TabBar::TabType &type) {
-  int index = QTabWidget::addTab(widget, icon, label);
+  const int index = QTabWidget::addTab(widget, icon, label);
   tabBar()->setTabType(index, type);
 
   return index;
 }
 
 int TabWidget::addTab(TabContent *widget, const QString &label, const TabBar::TabType &type) {
-  int index = QTabWidget::addTab(widget, label);
+  const int index = QTabWidget::addTab(widget, label);
   tabBar()->setTabType(index, type);
 
   return index;
 }
 
 int TabWidget::insertTab(int index, QWidget *widget, const QIcon &icon, const QString &label, const TabBar::TabType &type) {
-  int tab_index = QTabWidget::insertTab(index, widget, icon, label);
+  const int tab_index = QTabWidget::insertTab(index, widget, icon, label);
   tabBar()->setTabType(tab_index, type);
 
   return tab_index;
 }
 
 int TabWidget::insertTab(int index, QWidget *widget, const QString &label, const TabBar::TabType &type) {
-  int tab_index = QTabWidget::insertTab(index, widget, label);
+  const int tab_index = QTabWidget::insertTab(index, widget, label);
   tabBar()->setTabType(tab_index, type);
 
   return tab_index;
 }
 
 int TabWidget::addBrowserWithMessages(const QList<Message> &messages) {
-  int new_index = addBrowser(false, true);
+  const int new_index = addBrowser(false, true);
   WebBrowser *browser = static_cast<WebBrowser*>(widget(new_index));
 
   browser->setNavigationBarVisible(false);

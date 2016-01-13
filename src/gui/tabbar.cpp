@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
       close_button->setFixedSize(iconSize());
 
       // Close underlying tab when button is clicked.
-      connect(close_button, SIGNAL(clicked()),this, SLOT(closeTabViaButton()));
+      connect(close_button, SIGNAL(clicked()), this, SLOT(closeTabViaButton()));
       setTabButton(index, QTabBar::RightSide, close_button);
       break;
     }
@@ -63,10 +63,10 @@ void TabBar::setTabType(int index, const TabBar::TabType &type) {
 }
 
 void TabBar::closeTabViaButton() {
-  QAbstractButton *close_button = qobject_cast<QAbstractButton*>(sender());
-  QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
-                                                                                           0,
-                                                                                           this));
+  const QAbstractButton *close_button = qobject_cast<QAbstractButton*>(sender());
+  const QTabBar::ButtonPosition button_position = static_cast<ButtonPosition>(style()->styleHint(QStyle::SH_TabBar_CloseButtonPosition,
+                                                                                                 0,
+                                                                                                 this));
 
   if (close_button != NULL) {
     // Find index of tab for this close button.
@@ -81,8 +81,8 @@ void TabBar::closeTabViaButton() {
 }
 
 void TabBar::wheelEvent(QWheelEvent *event) {
-  int current_index = currentIndex();
-  int number_of_tabs = count();
+  const int current_index = currentIndex();
+  const int number_of_tabs = count();
 
   // Make sure rotating works.
   if (number_of_tabs > 1) {
@@ -104,7 +104,7 @@ void TabBar::wheelEvent(QWheelEvent *event) {
 void TabBar::mousePressEvent(QMouseEvent *event) {
   QTabBar::mousePressEvent(event);
 
-  int tab_index = tabAt(event->pos());
+  const int tab_index = tabAt(event->pos());
 
   // Check if user clicked on some tab or on empty space.
   if (tab_index >= 0) {
@@ -123,7 +123,7 @@ void TabBar::mousePressEvent(QMouseEvent *event) {
 void TabBar::mouseDoubleClickEvent(QMouseEvent *event) {
   QTabBar::mouseDoubleClickEvent(event);
 
-  int tab_index = tabAt(event->pos());
+  const int tab_index = tabAt(event->pos());
 
   // Check if user clicked on some tab or on empty space.
   if (tab_index >= 0) {

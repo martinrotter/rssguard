@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -52,11 +52,11 @@ class WebBrowser : public TabContent {
     void setupIcons();
 
     // Returns icon associated with currently loaded website.
-    inline QIcon icon() {
+    inline QIcon icon() const {
       return m_webView->icon();
     }
 
-    inline WebView *view() {
+    inline WebView *view() const {
       return m_webView;
     }
 
@@ -67,8 +67,8 @@ class WebBrowser : public TabContent {
 
     // Returns this instance.
     // NOTE: This is needed due to TabContent interface.
-    inline WebBrowser *webBrowser() {
-      return this;
+    inline WebBrowser *webBrowser() const {
+      return const_cast<WebBrowser*>(this);
     }
 
     // Returns global menu for this web browser.

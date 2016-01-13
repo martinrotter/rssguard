@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -121,7 +121,7 @@ class FeedsModel : public QAbstractItemModel {
     // NOTE: This goes through all available indexes and
     // checks their bound items manually, there is no
     // other way to to this.
-    QModelIndex indexForItem(RootItem *item) const;
+    QModelIndex indexForItem(const RootItem *item) const;
 
     // Determines if any feed has any new messages.
     bool hasAnyFeedNewMessages() const;

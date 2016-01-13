@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -575,13 +575,13 @@ RootItem *FeedsModel::itemForIndex(const QModelIndex &index) const {
   }
 }
 
-QModelIndex FeedsModel::indexForItem(RootItem *item) const {
+QModelIndex FeedsModel::indexForItem(const RootItem *item) const {
   if (item == NULL || item->kind() == RootItemKind::Root) {
     // Root item lies on invalid index.
     return QModelIndex();
   }
 
-  QStack<RootItem*> chain;
+  QStack<const RootItem*> chain;
 
   while (item->kind() != RootItemKind::Root) {
     chain.push(item);
@@ -593,8 +593,8 @@ QModelIndex FeedsModel::indexForItem(RootItem *item) const {
 
   // We go through the stack and create our target index.
   while (!chain.isEmpty()) {
-    RootItem *parent_item = chain.pop();
-    target_index = index(parent_item->parent()->childItems().indexOf(parent_item), 0, target_index);
+    const RootItem *parent_item = chain.pop();
+    target_index = index(parent_item->parent()->childItems().indexOf(const_cast<RootItem* const>(parent_item)), 0, target_index);
   }
 
   return target_index;

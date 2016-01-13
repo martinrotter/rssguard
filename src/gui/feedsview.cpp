@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -75,7 +75,7 @@ void FeedsView::setSortingEnabled(bool enable) {
 }
 
 QList<Feed*> FeedsView::selectedFeeds() const {
-  QModelIndex current_index = currentIndex();
+  const QModelIndex current_index = currentIndex();
 
   if (current_index.isValid()) {
     return m_sourceModel->feedsForIndex(m_proxyModel->mapToSource(current_index));
@@ -85,12 +85,8 @@ QList<Feed*> FeedsView::selectedFeeds() const {
   }
 }
 
-QList<Feed*> FeedsView::allFeeds() const {
-  return m_sourceModel->allFeeds();
-}
-
 RootItem *FeedsView::selectedItem() const {
-  QModelIndexList selected_rows = selectionModel()->selectedRows();
+  const QModelIndexList selected_rows = selectionModel()->selectedRows();
 
   if (selected_rows.isEmpty()) {
     return NULL;
@@ -114,7 +110,7 @@ void FeedsView::saveExpandStates(RootItem *item) {
   QList<RootItem*> items = item->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot);
 
   // Iterate all categories and save their expand statuses.
-  foreach (RootItem *item, items) {
+  foreach (const RootItem *item, items) {
     const QString setting_name = item->hashCode();
 
     settings->setValue(GROUP(CategoriesExpandStates),
@@ -124,13 +120,13 @@ void FeedsView::saveExpandStates(RootItem *item) {
 }
 
 void FeedsView::loadAllExpandStates() {
-  Settings *settings = qApp->settings();
+  const Settings *settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
   expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItemKind::Category | RootItemKind::ServiceRoot));
 
   // Iterate all categories and save their expand statuses.
-  foreach (RootItem *item, expandable_items) {
+  foreach (const RootItem *item, expandable_items) {
     const QString setting_name = item->hashCode();
 
     setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
@@ -142,7 +138,7 @@ void FeedsView::loadAllExpandStates() {
 }
 
 void FeedsView::addFeedIntoSelectedAccount() {
-  RootItem *selected = selectedItem();
+  const RootItem *selected = selectedItem();
 
   if (selected != NULL) {
     ServiceRoot *root = selected->getParentServiceRoot();
@@ -160,7 +156,7 @@ void FeedsView::addFeedIntoSelectedAccount() {
 }
 
 void FeedsView::addCategoryIntoSelectedAccount() {
-  RootItem *selected = selectedItem();
+  const RootItem *selected = selectedItem();
 
   if (selected != NULL) {
     ServiceRoot *root = selected->getParentServiceRoot();
@@ -246,9 +242,7 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  QModelIndex current_index = currentIndex();
-
-  if (!current_index.isValid()) {
+  if (!currentIndex().isValid()) {
     // Changes are done, unlock the update master lock and exit.
     qApp->feedUpdateLock()->unlock();
     return;
@@ -313,7 +307,7 @@ void FeedsView::markAllItemsRead() {
 }
 
 void FeedsView::openSelectedItemsInNewspaperMode() {
-  QList<Message> messages = m_sourceModel->messagesForItem(selectedItem());
+  const QList<Message> messages = m_sourceModel->messagesForItem(selectedItem());
 
   if (!messages.isEmpty()) {
     emit openMessagesInNewspaperView(messages);
@@ -322,7 +316,7 @@ void FeedsView::openSelectedItemsInNewspaperMode() {
 }
 
 void FeedsView::selectNextItem() {
-  QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
+  const QModelIndex index_next = moveCursor(QAbstractItemView::MoveDown, Qt::NoModifier);
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
@@ -331,7 +325,7 @@ void FeedsView::selectNextItem() {
 }
 
 void FeedsView::selectPreviousItem() {
-  QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
+  const QModelIndex index_previous = moveCursor(QAbstractItemView::MoveUp, Qt::NoModifier);
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
@@ -474,10 +468,10 @@ void FeedsView::keyPressEvent(QKeyEvent *event) {
 }
 
 void FeedsView::contextMenuEvent(QContextMenuEvent *event) {
-  QModelIndex clicked_index = indexAt(event->pos());
+  const QModelIndex clicked_index = indexAt(event->pos());
 
   if (clicked_index.isValid()) {
-    QModelIndex mapped_index = model()->mapToSource(clicked_index);
+    const QModelIndex mapped_index = model()->mapToSource(clicked_index);
     RootItem *clicked_item = sourceModel()->itemForIndex(mapped_index);
 
     if (clicked_item->kind() == RootItemKind::Category) {
@@ -504,7 +498,7 @@ void FeedsView::saveSortState(int column, Qt::SortOrder order) {
 }
 
 void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
-  QModelIndex mapped = m_proxyModel->mapFromSource(source_index);
+  const QModelIndex mapped = m_proxyModel->mapFromSource(source_index);
 
   if (mapped.isValid()) {
     expand(mapped);
@@ -513,7 +507,7 @@ void FeedsView::validateItemAfterDragDrop(const QModelIndex &source_index) {
 }
 
 void FeedsView::onItemExpandRequested(const QList<RootItem*> &items, bool exp) {
-  foreach (RootItem *item, items) {
+  foreach (const RootItem *item, items) {
     QModelIndex source_index = m_sourceModel->indexForItem(item);
     QModelIndex proxy_index = m_proxyModel->mapFromSource(source_index);
 

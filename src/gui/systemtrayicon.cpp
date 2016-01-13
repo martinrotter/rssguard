@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -41,6 +41,7 @@ bool TrayIconMenu::event(QEvent *event) {
                          tr("Close opened modal dialogs first."),
                          QSystemTrayIcon::Warning, qApp->mainForm(), true);
   }
+
   return QMenu::event(event);
 }
 #endif
@@ -75,6 +76,7 @@ void SystemTrayIcon::onActivated(const QSystemTrayIcon::ActivationReason &reason
     case SystemTrayIcon::DoubleClick:
     case SystemTrayIcon::MiddleClick:
       static_cast<FormMain*>(parent())->switchVisibility();
+      break;
 
     default:
       break;
@@ -153,8 +155,8 @@ void SystemTrayIcon::setNumber(int number, bool any_new_message) {
       tray_painter.setFont(m_font);
       tray_painter.drawText(QRect(0, 0, 128, 128), Qt::AlignVCenter | Qt::AlignCenter, QString::number(number));
     }
-    tray_painter.end();
 
+    tray_painter.end();
     QSystemTrayIcon::setIcon(QIcon(background));
   }
 }

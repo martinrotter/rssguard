@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
 
   if (query.exec()) {
     StandardServiceRoot *root = new StandardServiceRoot();
-    root->setId(id_to_assign);
+    root->setId(NO_PARENT_CATEGORY);
     root->setAccountId(id_to_assign);
     return root;
   }
@@ -99,7 +99,7 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
   if (query.exec()) {
     while (query.next()) {
       StandardServiceRoot *root = new StandardServiceRoot();
-      root->setId(query.value(0).toInt());
+      root->setId(NO_PARENT_CATEGORY);
       root->setAccountId(query.value(0).toInt());
       roots.append(root);
     }

@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,7 +24,8 @@ StyledItemDelegateWithoutFocus::StyledItemDelegateWithoutFocus(QObject *parent) 
 StyledItemDelegateWithoutFocus::~StyledItemDelegateWithoutFocus() {
 }
 
-void StyledItemDelegateWithoutFocus::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+void StyledItemDelegateWithoutFocus::paint(QPainter *painter, const QStyleOptionViewItem &option,
+                                           const QModelIndex &index) const {
   QStyleOptionViewItemV4 itemOption(option);
 
   if (itemOption.state & QStyle::State_HasFocus) {

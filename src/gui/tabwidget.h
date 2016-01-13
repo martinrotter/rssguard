@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ class TabWidget : public QTabWidget {
     void removeTab(int index, bool clear_from_memory);
 
     // Returns tab bar.
-    inline TabBar *tabBar() {
+    inline TabBar *tabBar() const {
       return static_cast<TabBar*>(QTabWidget::tabBar());
     }
 
@@ -105,6 +105,7 @@ class TabWidget : public QTabWidget {
     // Opens main menu.
     void openMainMenu();
 
+    // Displays download manager.
     void showDownloadManager();
 
     // Closes all "closable" tabs except the active tab.

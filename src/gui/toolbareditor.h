@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -41,11 +41,11 @@ class ToolBarEditor : public QWidget {
     void loadFromToolBar(BaseToolBar *tool_bar);
     void saveToolBar();
 
-    inline QListWidget *activeItemsWidget() {
+    inline QListWidget *activeItemsWidget() const {
       return m_ui->m_listActivatedActions;
     }
 
-    inline QListWidget *availableItemsWidget() {
+    inline QListWidget *availableItemsWidget() const {
       return m_ui->m_listAvailableActions;
     }
 
@@ -67,7 +67,7 @@ class ToolBarEditor : public QWidget {
     void deleteAllActions();
 
   private:
-    Ui::ToolBarEditor *m_ui;
+    QScopedPointer<Ui::ToolBarEditor> m_ui;
     BaseToolBar *m_toolBar;
 };
 

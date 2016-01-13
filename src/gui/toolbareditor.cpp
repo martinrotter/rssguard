@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -46,7 +46,6 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
 }
 
 ToolBarEditor::~ToolBarEditor() {
-  delete m_ui;
 }
 
 void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
@@ -55,7 +54,7 @@ void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {
   QList<QAction*> activated_actions = m_toolBar->changeableActions();
   QList<QAction*> available_actions = m_toolBar->availableActions();
 
-  foreach (QAction *action, activated_actions) {
+  foreach (const QAction *action, activated_actions) {
     QListWidgetItem *action_item = new QListWidgetItem(action->icon(), action->text().replace('&', ""), m_ui->m_listActivatedActions);
 
     if (action->isSeparator()) {
@@ -115,7 +114,7 @@ void ToolBarEditor::saveToolBar() {
 bool ToolBarEditor::eventFilter(QObject *object, QEvent *event) {
   if (object == m_ui->m_listActivatedActions) {
     if (event->type() == QEvent::KeyPress) {
-      QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
+      const QKeyEvent *key_event = static_cast<QKeyEvent*>(event);
 
       if (key_event->key() == Qt::Key_Delete) {
         deleteSelectedAction();
@@ -146,7 +145,7 @@ void ToolBarEditor::updateActionsAvailability() {
 }
 
 void ToolBarEditor::insertSpacer() {
-  int current_row = m_ui->m_listActivatedActions->currentRow();
+  const int current_row = m_ui->m_listActivatedActions->currentRow();
   QListWidgetItem *item = new QListWidgetItem(tr("Toolbar spacer"));
 
   item->setIcon(qApp->icons()->fromTheme(QSL("view-spacer")));
@@ -157,7 +156,7 @@ void ToolBarEditor::insertSpacer() {
 }
 
 void ToolBarEditor::insertSeparator() {
-  int current_row = m_ui->m_listActivatedActions->currentRow();
+  const int current_row = m_ui->m_listActivatedActions->currentRow();
   QListWidgetItem *item = new QListWidgetItem(tr("Separator"));
 
   item->setData(Qt::UserRole, SEPARATOR_ACTION_NAME);
@@ -212,7 +211,7 @@ void ToolBarEditor::deleteSelectedAction() {
 
   if (items.size() == 1) {
     QListWidgetItem *selected_item = items.at(0);
-    QString data_item = selected_item->data(Qt::UserRole).toString();
+    const QString data_item = selected_item->data(Qt::UserRole).toString();
 
     if (data_item == SEPARATOR_ACTION_NAME || data_item == SPACER_ACTION_NAME) {
       m_ui->m_listActivatedActions->takeItem(m_ui->m_listActivatedActions->row(selected_item));

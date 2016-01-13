@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -86,7 +86,7 @@ class Notification : public QWidget {
     int m_widgetMargin;
     int m_timerId;
 
-    QObject *m_clickTarget;
+    const QObject *m_clickTarget;
     const char *m_clickSlot;
 
 #if defined(Q_OS_LINUX)

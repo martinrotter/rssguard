@@ -1,6 +1,6 @@
 // This file is part of RSS Guard.
 //
-// Copyright (C) 2011-2015 by Martin Rotter <rotter.martinos@gmail.com>
+// Copyright (C) 2011-2016 by Martin Rotter <rotter.martinos@gmail.com>
 //
 // RSS Guard is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -38,27 +38,27 @@ void EditTableView::removeSelected() {
     return;
   }
 
-  QModelIndexList selectedRows = selectionModel()->selectedRows();
+  const QModelIndexList selected_rows = selectionModel()->selectedRows();
 
-  if (selectedRows.isEmpty()) {
+  if (selected_rows.isEmpty()) {
     return;
   }
 
-  int newSelectedRow = selectedRows.at(0).row();
+  const int new_selected_row = selected_rows.at(0).row();
 
-  for (int i = selectedRows.count() - 1; i >= 0; i--) {
-    QModelIndex idx = selectedRows.at(i);
+  for (int i = selected_rows.count() - 1; i >= 0; i--) {
+    QModelIndex idx = selected_rows.at(i);
     model()->removeRow(idx.row(), rootIndex());
   }
 
-  QModelIndex newSelectedIndex = model()->index(newSelectedRow, 0, rootIndex());
+  QModelIndex new_selected_index = model()->index(new_selected_row, 0, rootIndex());
 
-  if (!newSelectedIndex.isValid()) {
-    newSelectedIndex = model()->index(newSelectedRow - 1, 0, rootIndex());
+  if (!new_selected_index.isValid()) {
+    new_selected_index = model()->index(new_selected_row - 1, 0, rootIndex());
   }
 
-  selectionModel()->select(newSelectedIndex, QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
-  setCurrentIndex(newSelectedIndex);
+  selectionModel()->select(new_selected_index, QItemSelectionModel::SelectCurrent | QItemSelectionModel::Rows);
+  setCurrentIndex(new_selected_index);
 }
 
 void EditTableView::removeAll() {
