@@ -3,6 +3,7 @@ Type=Application
 Version=1.0
 Encoding=UTF-8
 Exec=rssguard
+X-GNOME-Autostart-Delay=15
 Name=RSS Guard
 GenericName=A (very) tiny feed reader
 GenericName[cs]=Velmi jednoduchá čtečka kanálů
