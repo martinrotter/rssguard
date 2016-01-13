@@ -86,7 +86,7 @@ class Notification : public QWidget {
     int m_widgetMargin;
     int m_timerId;
 
-    const QObject *m_clickTarget;
+    QObject *m_clickTarget;
     const char *m_clickSlot;
 
 #if defined(Q_OS_LINUX)
