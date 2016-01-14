@@ -281,6 +281,14 @@ Also note that some resources are cached by internal web browser. Thus, after ch
 This website contains %n feed(s).</source>
         <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Give account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DownloadItem</name>
@@ -568,6 +576,18 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for other items</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new categories.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -821,6 +841,14 @@ or this functionality is not implemented yet.</source>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>file: %1, data: %2</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditAccount</name>
@@ -1032,18 +1060,6 @@ or this functionality is not implemented yet.</source>
         <translation>Password</translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>L&apos;url è ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>L&apos;url è vuoto.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation type="unfinished"/>
     </message>
@@ -1098,6 +1114,18 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Feed non aggiunto a causa di un errore.</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1488,6 +1516,22 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Delete selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2445,18 +2489,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>L&apos;url è ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>L&apos;url è vuoto.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation type="unfinished"/>
     </message>
@@ -2629,6 +2661,18 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Requires HTTP authentication</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2717,11 +2761,19 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot write into destination file.</source>
+        <source>Critical error occurred.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Critical error occurred.</source>
+        <source>Parsing data...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files (one URL per line) (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3303,10 +3355,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <source>Do you want to load initial set of feeds?</source>
         <translation type="unfinished"/>
     </message>
@@ -3327,14 +3375,6 @@ Auto-update status: %5</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Add new category</source>
-        <translation>Aggiungi nuova categoria</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Aggiungi nuovo feed</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation type="unfinished"/>
     </message>
@@ -3346,6 +3386,10 @@ Auto-update status: %5</source>
         <source>This is service account for standard RSS/RDF/ATOM feeds.
 
 Account ID: %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -3520,10 +3564,6 @@ Last login on: %5</source>
     <message>
         <source>Sync in</source>
         <translation type="unfinished"/>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Aggiungi nuovo feed</translation>
     </message>
 </context>
 <context>

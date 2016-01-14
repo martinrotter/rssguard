@@ -286,6 +286,14 @@ Tato stránka obsahuje %n kanál.</numerusform><numerusform>Pro přidání kaná
 Tato stránka obsahuje %n kanály.</numerusform><numerusform>Pro přidání kanálů z této stránky na mě klikni.
 Tato stránka obsahuje %n kanálů.</numerusform></translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Give account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DownloadItem</name>
@@ -574,6 +582,18 @@ or this functionality is not implemented yet.</source>
         <source>Context menu for other items</source>
         <translation>Kontextové menu pro ostatní položky</translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new categories.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -827,6 +847,14 @@ or this functionality is not implemented yet.</source>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Vymazat všechny důležité zprávy (včetně těch z koše)</translation>
     </message>
+    <message>
+        <source>unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>file: %1, data: %2</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditAccount</name>
@@ -1038,18 +1066,6 @@ or this functionality is not implemented yet.</source>
         <translation>Heslo</translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>Url je v pořádku.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>Url neobsahuje standardní schéma. Začíná Vaše url schématem &quot;http://&quot; nebo &quot;https://&quot;.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>Url je prázdné.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
     </message>
@@ -1104,6 +1120,18 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Kanál nepřidán kvůli chybě.</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1495,6 +1523,22 @@ or this functionality is not implemented yet.</source>
     <message>
         <source>&amp;Delete selected account</source>
         <translation>&amp;Smazat vybraný účet</translation>
+    </message>
+    <message>
+        <source>Add new feed into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2469,18 +2513,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Popis je v pořádku.</translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>Url je v pořádku.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>Url neobsahuje standardní schéma. Začíná Vaše url schématem &quot;http://&quot; nebo &quot;https://&quot;.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>Url je prázdné.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation>Uživatelské jméno je v pořádku nebo není třeba.</translation>
     </message>
@@ -2653,6 +2685,18 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Requires HTTP authentication</source>
         <translation>Vyžaduje HTTP autentizaci</translation>
     </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2741,12 +2785,20 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Kanály byly úspěšně exportovány.</translation>
     </message>
     <message>
-        <source>Cannot write into destination file.</source>
-        <translation>Do cílového souboru nelze zapisovat.</translation>
-    </message>
-    <message>
         <source>Critical error occurred.</source>
         <translation>Vyskytla se kritická chyba.</translation>
+    </message>
+    <message>
+        <source>Parsing data...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files (one URL per line) (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot write into destination file: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3345,10 +3397,6 @@ Automatický update: %5</translation>
         <translation>Toto je účet pro standardní RSS/RDF/ATOM kanály.</translation>
     </message>
     <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation>Spustili jste %1 poprvé, nyní si můžete zvolit, zda chcete nahrát výchozí sadu kanálů.</translation>
-    </message>
-    <message>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Chcete načíst úvodní set kanálů?</translation>
     </message>
@@ -3369,14 +3417,6 @@ Automatický update: %5</translation>
         <translation>Import byl zcela úspěšný.</translation>
     </message>
     <message>
-        <source>Add new category</source>
-        <translation>Přidat novou kategorii</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Přidat nový kanál</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Exportovat kanály</translation>
     </message>
@@ -3391,6 +3431,10 @@ Account ID: %1</source>
         <translation>Toto je účet pro standardní RSS/RDF/ATOM kanály.
 
 ID účtu: %1</translation>
+    </message>
+    <message>
+        <source>This new account does not include any feeds. You can now add default set of feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3573,10 +3617,6 @@ Poslední přihlášení: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Synchronizovat</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Přidat nový kanál</translation>
     </message>
 </context>
 <context>

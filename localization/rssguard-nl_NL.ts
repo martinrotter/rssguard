@@ -286,6 +286,14 @@ This website contains %n feed(s).</source>
 Deze website bevat %n feed.</numerusform><numerusform>Klik hier om feeds van deze website toe tevoegen.
 Deze website bevat %n feeds.</numerusform></translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Give account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DownloadItem</name>
@@ -575,6 +583,18 @@ of deze functie bestaat nog niet.</translation>
         <source>Context menu for other items</source>
         <translation>Invoegen van andere items</translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new categories.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -828,6 +848,14 @@ of deze functie bestaat nog niet.</translation>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Verwijder alle berichten met ster(niet die van de prullenbak)</translation>
     </message>
+    <message>
+        <source>unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>file: %1, data: %2</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditAccount</name>
@@ -1039,18 +1067,6 @@ of deze functie bestaat nog niet.</translation>
         <translation>Paswoord</translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>De url is ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>De url is leeg.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
@@ -1105,6 +1121,18 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Door een fout is de feed niet toegevoegd.</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1496,6 +1524,22 @@ of deze functie bestaat nog niet.</translation>
     <message>
         <source>&amp;Delete selected account</source>
         <translation>&amp;Verwijder geselecteerde account</translation>
+    </message>
+    <message>
+        <source>Add new feed into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2476,18 +2520,6 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <translation>Omschrijving is ok.</translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>De url is ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>De url is leeg.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation>Gebruikersnaam is ok of het is niet nodig.</translation>
     </message>
@@ -2660,6 +2692,18 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <source>Requires HTTP authentication</source>
         <translation>Vereist HTTP verificatie</translation>
     </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2748,12 +2792,20 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
         <translation>Feeds zijn met succes geëxporteerd.</translation>
     </message>
     <message>
-        <source>Cannot write into destination file.</source>
-        <translation>Kan niet schrijven naar doelbestand.</translation>
-    </message>
-    <message>
         <source>Critical error occurred.</source>
         <translation>Kritieke fout opgetreden.</translation>
+    </message>
+    <message>
+        <source>Parsing data...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files (one URL per line) (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot write into destination file: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3353,10 +3405,6 @@ Auto-update status: %5 </translation>
         <translation>Dit is verplichte service account voor standaard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation>Je start %1 voor de eerste keer, nu kun je de eerste set van de feeds laden.</translation>
-    </message>
-    <message>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Wil je de eerste set van feeds laden?</translation>
     </message>
@@ -3377,14 +3425,6 @@ Auto-update status: %5 </translation>
         <translation>Importeren is helemaal geslaagd.</translation>
     </message>
     <message>
-        <source>Add new category</source>
-        <translation>Voeg nieuwe categorie toe</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Exporteer feeds</translation>
     </message>
@@ -3399,6 +3439,10 @@ Account ID: %1</source>
         <translation>Dit is een service account voor standaard RSS/RDF/ATOM feeds.
 
 Account ID: %1</translation>
+    </message>
+    <message>
+        <source>This new account does not include any feeds. You can now add default set of feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3582,10 +3626,6 @@ Laatste login: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Sync in</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Voeg nieuw feed toe</translation>
     </message>
 </context>
 <context>

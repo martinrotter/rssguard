@@ -285,6 +285,14 @@ This website contains %n feed(s).</source>
 Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
 Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Give account does not support adding feeds.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>DownloadItem</name>
@@ -574,6 +582,18 @@ att funktionen inte är implementerad än.</translation>
         <source>Context menu for other items</source>
         <translation>Kontextmeny för andra objekt</translation>
     </message>
+    <message>
+        <source>Not supported</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Selected account does not support adding of new categories.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormAbout</name>
@@ -827,6 +847,14 @@ att funktionen inte är implementerad än.</translation>
         <source>Remove all starred messages (including those from recycle bin)</source>
         <translation>Ta bort alla stjärnmärkta meddelanden (inklusive dem i papperskorgen)</translation>
     </message>
+    <message>
+        <source>unknown</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>file: %1, data: %2</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormEditAccount</name>
@@ -1038,18 +1066,6 @@ att funktionen inte är implementerad än.</translation>
         <translation>Lösenord </translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>Webbadressen är ok. </translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>Webbadressen liknar inte standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>URL saknas. </translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation>Användarnamnet är ok, eller behövs inte. </translation>
     </message>
@@ -1104,6 +1120,18 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Feed was not added due to error.</source>
         <translation>Flödet lades inte till, på grund av ett fel.</translation>
+    </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1495,6 +1523,22 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>&amp;Delete selected account</source>
         <translation>&amp;Ta bort markerat konto</translation>
+    </message>
+    <message>
+        <source>Add new feed into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category into selected account</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new category</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Add new feed</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2470,18 +2514,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Beskrivningen är ok.</translation>
     </message>
     <message>
-        <source>The url is ok.</source>
-        <translation>Webbadressen är ok.</translation>
-    </message>
-    <message>
-        <source>The url does not meet standard pattern. Does your url start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation>Webbadressen liknar inte standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?.</translation>
-    </message>
-    <message>
-        <source>The url is empty.</source>
-        <translation>URL saknas.</translation>
-    </message>
-    <message>
         <source>Username is ok or it is not needed.</source>
         <translation>Användarnamnet är ok, eller behövs inte.</translation>
     </message>
@@ -2654,6 +2686,18 @@ File filter for external e-mail selection dialog.</extracomment>
         <source>Requires HTTP authentication</source>
         <translation>Kräver HTTP-autentisering</translation>
     </message>
+    <message>
+        <source>The URL is ok.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>The URL is empty.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>FormStandardImportExport</name>
@@ -2742,12 +2786,20 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Flöden exporterades korrekt.</translation>
     </message>
     <message>
-        <source>Cannot write into destination file.</source>
-        <translation>Kan inte skriva till målfilen.</translation>
-    </message>
-    <message>
         <source>Critical error occurred.</source>
         <translation>Ett allvarligt fel uppstod.</translation>
+    </message>
+    <message>
+        <source>Parsing data...</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files (one URL per line) (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot write into destination file: &apos;%1&apos;.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3344,10 +3396,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Detta är ett obligatoriskt tjänstkonto för standard RSS/RDF/ATOM-flöden.</translation>
     </message>
     <message>
-        <source>You started %1 for the first time, now you can load initial set of feeds.</source>
-        <translation>Du har startat %1 för första gången. Nu kan du läsa in inledande flödesuppsättning.</translation>
-    </message>
-    <message>
         <source>Do you want to load initial set of feeds?</source>
         <translation>Vill du läsa in flödesuppsättningen?</translation>
     </message>
@@ -3368,14 +3416,6 @@ Uppdateringsstatus: %5</translation>
         <translation>Importen slutfördes korrekt.</translation>
     </message>
     <message>
-        <source>Add new category</source>
-        <translation>Lägg till ny kategori</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
-    </message>
-    <message>
         <source>Export feeds</source>
         <translation>Exportera flöden</translation>
     </message>
@@ -3390,6 +3430,10 @@ Account ID: %1</source>
         <translation>Detta är ett tjänstkonto för standard RSS/RDF/ATOM-flöden.
 
 Konto-ID: %1</translation>
+    </message>
+    <message>
+        <source>This new account does not include any feeds. You can now add default set of feeds.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -3572,10 +3616,6 @@ Senast inloggad: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Synka i</translation>
-    </message>
-    <message>
-        <source>Add new feed</source>
-        <translation>Lägg till nytt flöde</translation>
     </message>
 </context>
 <context>
