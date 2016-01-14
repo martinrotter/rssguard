@@ -77,7 +77,7 @@ class SystemFactory : public QObject {
 #if defined(Q_OS_LINUX)
     // Returns standard location where auto-start .desktop files
     // should be placed.
-    QString getAutostartDesktopFileLocation();
+    QString getAutostartDesktopFileLocation() const;
 #endif
 
     // Retrieves username of currently logged-in user.

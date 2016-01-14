@@ -69,7 +69,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
   // Use proper freedesktop.org way to auto-start the application on Linux.
   // INFO: http://standards.freedesktop.org/autostart-spec/latest/
 #elif defined(Q_OS_LINUX)
-  const QString desktop_file_location = SystemFactory::getAutostartDesktopFileLocation();
+  const QString desktop_file_location = getAutostartDesktopFileLocation();
 
   // No correct path was found.
   if (desktop_file_location.isEmpty()) {
@@ -92,7 +92,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
 }
 
 #if defined(Q_OS_LINUX)
-QString SystemFactory::getAutostartDesktopFileLocation() {
+QString SystemFactory::getAutostartDesktopFileLocation() const {
   const QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
   QString desktop_file_location;
 
