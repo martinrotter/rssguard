@@ -24,7 +24,6 @@
 
 
 class AutoSaver : public QObject{
-
     Q_OBJECT
 
   public:

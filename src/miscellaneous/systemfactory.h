@@ -63,7 +63,7 @@ class SystemFactory : public QObject {
     virtual ~SystemFactory();
 
     // Returns current status of auto-start function.
-    SystemFactory::AutoStartStatus getAutoStartStatus();
+    SystemFactory::AutoStartStatus getAutoStartStatus() const;
 
     // Sets new status for auto-start function.
     // Function returns false if setting of
@@ -84,13 +84,7 @@ class SystemFactory : public QObject {
     QString getUsername() const;
 
     // Tries to download list with new updates.
-    QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates();
-
-    // Check whether given pointer belongs to instance of given class or not.
-    template<typename Base, typename T>
-    static bool isInstanceOf(T *ptr) {
-      return dynamic_cast<Base*>(ptr) != NULL;
-    }
+    QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates() const;
 
     // Checks if update is newer than current application version.
     static bool isUpdateNewer(const QString &update_version);
@@ -100,7 +94,7 @@ class SystemFactory : public QObject {
 
   private:
     // Performs parsing of downloaded file with list of updates.
-    UpdateInfo parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog);
+    UpdateInfo parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) const;
 };
 
 #endif // SYSTEMFACTORY_H

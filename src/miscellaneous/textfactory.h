@@ -27,7 +27,7 @@
 class TextFactory {
   private:
     // Constructors and destructors.
-    explicit TextFactory();
+    TextFactory();
 
   public:
     // Returns true if lhs is smaller than rhs if case-insensitive string comparison is used.

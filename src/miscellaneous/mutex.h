@@ -49,7 +49,7 @@ class Mutex : public QObject {
     void unlocked();
 
   private:
-    QMutex *m_mutex;
+    QScopedPointer<QMutex> m_mutex;
     bool m_isLocked;
 };
 

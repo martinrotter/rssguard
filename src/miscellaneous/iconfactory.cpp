@@ -74,8 +74,8 @@ void IconFactory::setCurrentIconTheme(const QString &theme_name) {
 }
 
 void IconFactory::loadCurrentIconTheme() {
-  QStringList installed_themes = installedIconThemes();
-  QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
+  const QStringList installed_themes = installedIconThemes();
+  const QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
 
   if (m_currentIconTheme == theme_name_from_settings) {
     qDebug("Icon theme '%s' already loaded.", qPrintable(theme_name_from_settings));
@@ -108,7 +108,7 @@ QStringList IconFactory::installedIconThemes() const {
   icon_themes_paths.removeDuplicates();
 
   foreach (const QString &icon_path, icon_themes_paths) {
-    QDir icon_dir(icon_path);
+    const QDir icon_dir(icon_path);
 
     // Iterate all icon themes in this directory.
     foreach (const QString &icon_theme_path, icon_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot |

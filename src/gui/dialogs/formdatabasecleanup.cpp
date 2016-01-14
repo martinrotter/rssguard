@@ -38,7 +38,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget *parent) : QDialog(parent), m_u
 }
 
 FormDatabaseCleanup::~FormDatabaseCleanup() {
-    qDebug("Destroying FormDatabaseCleanup instance.");
+  qDebug("Destroying FormDatabaseCleanup instance.");
 }
 
 void FormDatabaseCleanup::setCleaner(DatabaseCleaner *cleaner) {
@@ -119,15 +119,13 @@ void FormDatabaseCleanup::onPurgeFinished(bool finished) {
 }
 
 void FormDatabaseCleanup::loadDatabaseInfo() {
-  qint64 db_size = qApp->database()->getDatabaseSize();
+  qint64 file_size = qApp->database()->getDatabaseFileSize();
+  qint64 data_size = qApp->database()->getDatabaseDataSize();
 
-  if (db_size > 0) {
-    m_ui->m_txtFileSize->setText(QString::number(db_size / 1000000.0) + QL1S(" MB"));
-  }
-  else {
-    m_ui->m_txtFileSize->setText(QSL("-"));
-  }
+  QString file_size_str = file_size > 0 ? QString::number(file_size / 1000000.0) + QL1S(" MB") : tr("unknown");
+  QString data_size_str = data_size > 0 ? QString::number(data_size / 1000000.0) + QL1S(" MB") : tr("unknown");
 
+  m_ui->m_txtFileSize->setText(tr("file: %1, data: %2").arg(file_size_str, data_size_str));
   m_ui->m_txtDatabaseType->setText(qApp->database()->humanDriverName(qApp->database()->activeDatabaseDriver()));
   m_ui->m_checkShrink->setEnabled(qApp->database()->activeDatabaseDriver() == DatabaseFactory::SQLITE ||
                                   qApp->database()->activeDatabaseDriver() == DatabaseFactory::SQLITE_MEMORY);

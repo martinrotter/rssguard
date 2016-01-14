@@ -48,8 +48,8 @@ QString IOFactory::ensureUniqueFilename(const QString &name, const QString &appe
 
   while (QFile::exists(tmp_filename)) {
     tmp_filename = name;
-    int index = tmp_filename.lastIndexOf(QL1C('.'));
-    QString append_string = append_format.arg(i++);
+    const int index = tmp_filename.lastIndexOf(QL1C('.'));
+    const QString append_string = append_format.arg(i++);
 
     if (index < 0) {
       tmp_filename.append(append_string);

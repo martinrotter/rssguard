@@ -319,8 +319,8 @@ bool Settings::initiateRestoration(const QString &settings_backup_file_path) {
 }
 
 void Settings::finishRestoration(const QString &desired_settings_file_path) {
-  QString backup_settings_file = QFileInfo(desired_settings_file_path).absolutePath() + QDir::separator() +
-                                 BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
+  const QString backup_settings_file = QFileInfo(desired_settings_file_path).absolutePath() + QDir::separator() +
+                                       BACKUP_NAME_SETTINGS + BACKUP_SUFFIX_SETTINGS;
 
   if (QFile::exists(backup_settings_file)) {
     qWarning("Backup settings file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_settings_file)));
@@ -341,7 +341,7 @@ Settings *Settings::setupSettings(QObject *parent) {
   // If settings file exists (and is writable) in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).
   // Otherwise use settings file stored in home path.
-  SettingsProperties properties = determineProperties();
+  const SettingsProperties properties = determineProperties();
 
   finishRestoration(properties.m_absoluteSettingsFileName);
 
@@ -349,7 +349,7 @@ Settings *Settings::setupSettings(QObject *parent) {
   new_settings = new Settings(properties.m_absoluteSettingsFileName, QSettings::IniFormat, properties.m_type, parent);
 
   // Construct icon cache in the same path.
-  QString web_path = properties.m_baseDirectory + QDir::separator() + QString(APP_DB_WEB_PATH);
+  const QString web_path = properties.m_baseDirectory + QDir::separator() + QString(APP_DB_WEB_PATH);
   QDir(web_path).mkpath(web_path);
   QWebSettings::setIconDatabasePath(web_path);
 
@@ -369,16 +369,16 @@ SettingsProperties Settings::determineProperties() {
 
   properties.m_settingsSuffix = QDir::separator() + QString(APP_CFG_PATH) + QDir::separator() + QString(APP_CFG_FILE);
 
-  QString app_path = qApp->applicationDirPath();
-  QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
-  QString home_path_file = home_path + properties.m_settingsSuffix;
+  const QString app_path = qApp->applicationDirPath();
+  const QString home_path = qApp->homeFolderPath() + QDir::separator() + QString(APP_LOW_H_NAME);
+  const QString home_path_file = home_path + properties.m_settingsSuffix;
 
-  bool portable_settings_available = QFileInfo(app_path).isWritable();
-  bool non_portable_settings_exist = QFile::exists(home_path_file);
+  const bool portable_settings_available = QFileInfo(app_path).isWritable();
+  const bool non_portable_settings_exist = QFile::exists(home_path_file);
 
   // We will use PORTABLE settings only and only if it is available and NON-PORTABLE
   // settings was not initialized before.
-  bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
+  const bool will_we_use_portable_settings = portable_settings_available && !non_portable_settings_exist;
 
   if (will_we_use_portable_settings) {
     properties.m_type = SettingsProperties::Portable;

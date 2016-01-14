@@ -32,7 +32,7 @@ Localization::Localization(QObject *parent)
 Localization::~Localization() {
 }
 
-QString Localization::desiredLanguage() {
+QString Localization::desiredLanguage() const {
   return qApp->settings()->value(GROUP(General), SETTING(General::Language)).toString();
 }
 
@@ -63,9 +63,9 @@ void Localization::loadActiveLanguage() {
   QLocale::setDefault(m_loadedLocale);
 }
 
-QList<Language> Localization::installedLanguages() {
+QList<Language> Localization::installedLanguages() const {
   QList<Language> languages;
-  QDir file_dir(APP_LANG_PATH);
+  const QDir file_dir(APP_LANG_PATH);
   QTranslator translator;
 
   // Iterate all found language files.

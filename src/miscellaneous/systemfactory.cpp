@@ -49,15 +49,15 @@ SystemFactory::SystemFactory(QObject *parent) : QObject(parent) {
 SystemFactory::~SystemFactory() {
 }
 
-SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
+SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() const {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
                          QSettings::NativeFormat);
-  bool autostart_enabled = registry_key.value(QSL(APP_LOW_NAME),
-                                              QString()).toString().replace(QL1C('\\'),
-                                                                            QL1C('/')) ==
-                           Application::applicationFilePath();
+  const bool autostart_enabled = registry_key.value(QSL(APP_LOW_NAME),
+                                                    QString()).toString().replace(QL1C('\\'),
+                                                                                  QL1C('/')) ==
+                                 Application::applicationFilePath();
 
   if (autostart_enabled) {
     return SystemFactory::Enabled;
@@ -69,7 +69,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
   // Use proper freedesktop.org way to auto-start the application on Linux.
   // INFO: http://standards.freedesktop.org/autostart-spec/latest/
 #elif defined(Q_OS_LINUX)
-  QString desktop_file_location = SystemFactory::getAutostartDesktopFileLocation();
+  const QString desktop_file_location = SystemFactory::getAutostartDesktopFileLocation();
 
   // No correct path was found.
   if (desktop_file_location.isEmpty()) {
@@ -93,7 +93,7 @@ SystemFactory::AutoStartStatus SystemFactory::getAutoStartStatus() {
 
 #if defined(Q_OS_LINUX)
 QString SystemFactory::getAutostartDesktopFileLocation() {
-  QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
+  const QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
   QString desktop_file_location;
 
   if (!xdg_config_path.isEmpty()) {
@@ -103,7 +103,8 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
   }
   else {
     // Desired variable is not set, look for the default 'autostart' subdirectory.
-    QString home_directory(qgetenv("HOME"));
+    const QString home_directory(qgetenv("HOME"));
+
     if (!home_directory.isEmpty()) {
       // Home directory exists. Check if target .desktop file exists and
       // return according status.
@@ -117,7 +118,7 @@ QString SystemFactory::getAutostartDesktopFileLocation() {
 #endif
 
 bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
-  SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();
+  const SystemFactory::AutoStartStatus current_status = SystemFactory::getAutoStartStatus();
 
   // Auto-start feature is not even available, exit.
   if (current_status == SystemFactory::Unavailable) {
@@ -126,14 +127,17 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
 
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"), QSettings::NativeFormat);
+
   switch (new_status) {
     case SystemFactory::Enabled:
       registry_key.setValue(APP_LOW_NAME,
                             Application::applicationFilePath().replace(QL1C('/'), QL1C('\\')));
       return true;
+
     case SystemFactory::Disabled:
       registry_key.remove(APP_LOW_NAME);
       return true;
+
     default:
       return false;
   }
@@ -142,12 +146,13 @@ bool SystemFactory::setAutoStartStatus(const AutoStartStatus &new_status) {
   // "rssguard.desktop" desktop file.
   switch (new_status) {
     case SystemFactory::Enabled:
-      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + '/' + APP_DESKTOP_ENTRY_FILE,
-                  getAutostartDesktopFileLocation());
+      QFile::link(QString(APP_DESKTOP_ENTRY_PATH) + '/' + APP_DESKTOP_ENTRY_FILE, getAutostartDesktopFileLocation());
       return true;
+
     case SystemFactory::Disabled:
       QFile::remove(getAutostartDesktopFileLocation());
       return true;
+
     default:
       return false;
   }
@@ -186,7 +191,7 @@ QString SystemFactory::getUsername() const {
   return name;
 }
 
-QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() {
+QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() const {
   QPair<UpdateInfo, QNetworkReply::NetworkError> result;
   QByteArray releases_xml;
   QByteArray changelog;
@@ -206,8 +211,8 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
   QStringList new_version_tkn = update_version.split(QL1C('.'));
 
   while (!current_version_tkn.isEmpty() && !new_version_tkn.isEmpty()) {
-    int current_number = current_version_tkn.takeFirst().toInt();
-    int new_number = new_version_tkn.takeFirst().toInt();
+    const int current_number = current_version_tkn.takeFirst().toInt();
+    const int new_number = new_version_tkn.takeFirst().toInt();
 
     if (new_number > current_number) {
       // New version is indeed higher thatn current version.
@@ -233,10 +238,10 @@ bool SystemFactory::isUpdateNewer(const QString &update_version) {
   }
 }
 
-UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) {
+UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) const {
   UpdateInfo update;
   QDomDocument document; document.setContent(updates_file, false);
-  QDomNodeList releases = document.elementsByTagName(QSL("release"));
+  const QDomNodeList releases = document.elementsByTagName(QSL("release"));
 
   if (releases.size() == 1) {
     QDomElement rel_elem = releases.at(0).toElement();
@@ -266,7 +271,7 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
 }
 
 void SystemFactory::checkForUpdatesOnStartup() {
-  UpdateCheck updates = checkForUpdates();
+  const UpdateCheck updates = checkForUpdates();
 
   if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion)) {
     qApp->showGuiMessage(tr("New version available"),

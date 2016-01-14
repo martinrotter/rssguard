@@ -23,7 +23,6 @@ Mutex::Mutex(QMutex::RecursionMode mode, QObject *parent) : QObject(parent), m_m
 
 Mutex::~Mutex() {
   qDebug("Destroying Mutex instance.");
-  delete m_mutex;
 }
 
 void Mutex::lock() {

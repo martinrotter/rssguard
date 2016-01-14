@@ -39,7 +39,7 @@ void DatabaseCleaner::purgeDatabaseData(const CleanerOrders &which_data) {
   emit purgeStarted();
 
   bool result = true;
-  int difference = 99 / 8;
+  const int difference = 99 / 8;
   int progress = 0;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
@@ -118,7 +118,7 @@ bool DatabaseCleaner::purgeReadMessages(const QSqlDatabase &database) {
 
 bool DatabaseCleaner::purgeOldMessages(const QSqlDatabase &database, int days) {
   QSqlQuery query = QSqlQuery(database);
-  qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-days).toMSecsSinceEpoch();
+  const qint64 since_epoch = QDateTime::currentDateTimeUtc().addDays(-days).toMSecsSinceEpoch();
 
   query.setForwardOnly(true);
   query.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;"));

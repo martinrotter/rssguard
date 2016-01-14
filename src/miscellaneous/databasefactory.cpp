@@ -39,9 +39,56 @@ DatabaseFactory::DatabaseFactory(QObject *parent)
 DatabaseFactory::~DatabaseFactory() {
 }
 
-qint64 DatabaseFactory::getDatabaseSize() {
+qint64 DatabaseFactory::getDatabaseFileSize() const {
   if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
     return QFileInfo(sqliteDatabaseFilePath()).size();
+  }
+  else {
+    return 0;
+  }
+}
+
+qint64 DatabaseFactory::getDatabaseDataSize() const {
+  if (m_activeDatabaseDriver == SQLITE || m_activeDatabaseDriver == SQLITE_MEMORY) {
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    qint64 result = 1;
+    QSqlQuery query(database);
+
+    if (query.exec(QSL("PRAGMA page_count;"))) {
+      query.next();
+      result *= query.value(0).value<qint64>();
+    }
+    else {
+      return 0;
+    }
+
+    if (query.exec(QSL("PRAGMA page_size;"))) {
+      query.next();
+      result *= query.value(0).value<qint64>();
+    }
+    else {
+      return 0;
+    }
+
+    return result;
+  }
+  else if (m_activeDatabaseDriver == MYSQL) {
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    qint64 result = 1;
+    QSqlQuery query(database);
+
+    if (query.exec("SELECT Round(Sum(data_length + index_length), 1) "
+                   "FROM information_schema.tables "
+                   "GROUP BY table_schema;")) {
+      while (query.next()) {
+        result *= query.value(0).value<qint64>();
+      }
+
+      return result;
+    }
+    else {
+      return 0;
+    }
   }
   else {
     return 0;
@@ -64,14 +111,12 @@ DatabaseFactory::MySQLError DatabaseFactory::mysqlTestConnection(const QString &
     return MySQLOk;
   }
   else {
-    // Connection failed, do cleanup and return specific
-    // error code.
-    MySQLError error_code = static_cast<MySQLError>(database.lastError().number());
-    return error_code;
+    // Connection failed, do cleanup and return specific error code.
+    return static_cast<MySQLError>(database.lastError().number());
   }
 }
 
-QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) {
+QString DatabaseFactory::mysqlInterpretErrorCode(MySQLError error_code) const {
   switch (error_code) {
     case MySQLOk:
       return tr("MySQL server works as expected.");
@@ -112,7 +157,7 @@ void DatabaseFactory::finishRestoration() {
     return;
   }
 
-  QString backup_database_file = m_sqliteDatabaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
+  const QString backup_database_file = m_sqliteDatabaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
 
   if (QFile::exists(backup_database_file)) {
     qWarning("Backup database file '%s' was detected. Restoring it.", qPrintable(QDir::toNativeSeparators(backup_database_file)));
@@ -173,7 +218,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
       foreach(const QString &statement, statements) {
@@ -203,8 +248,16 @@ QSqlDatabase DatabaseFactory::sqliteInitializeInMemoryDatabase() {
 
     // Copy all stuff.
     // WARNING: All tables belong here.
-    QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
-                                  QSL("Accounts") << QSL("TtRssAccounts") << QSL("Messages");
+    QStringList tables;
+
+    if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type='table';"))) {
+      while (copy_contents.next()) {
+        tables.append(copy_contents.value(0).toString());
+      }
+    }
+    else {
+      qFatal("Cannot obtain list of table names from file-base SQLite database.");
+    }
 
     foreach (const QString &table, tables) {
       copy_contents.exec(QString("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
@@ -229,7 +282,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
   finishRestoration();
 
   // Prepare file paths.
-  QDir db_path(m_sqliteDatabaseFilePath);
+  const QDir db_path(m_sqliteDatabaseFilePath);
   QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
 
   // Check if database directory exists.
@@ -278,7 +331,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
       foreach(const QString &statement, statements) {
@@ -296,7 +349,7 @@ QSqlDatabase DatabaseFactory::sqliteInitializeFileBasedDatabase(const QString &c
     }
     else {
       query_db.next();
-      QString installed_db_schema = query_db.value(0).toString();
+      const QString installed_db_schema = query_db.value(0).toString();
       query_db.finish();
 
       if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
@@ -331,7 +384,7 @@ QString DatabaseFactory::sqliteDatabaseFilePath() const {
 
 bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
-  int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+  const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
   // Now, it would be good to create backup of SQLite DB file.
   if (IOFactory::copyFile(sqliteDatabaseFilePath(), sqliteDatabaseFilePath() + ".bak")) {
@@ -342,10 +395,10 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
   }
 
   while (working_version != current_version) {
-    QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
-                               QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
-                                                                       QString::number(working_version),
-                                                                       QString::number(working_version + 1));
+    const QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
+                                     QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("sqlite"),
+                                                                             QString::number(working_version),
+                                                                             QString::number(working_version + 1));
 
     if (!QFile::exists(update_file_name)) {
       qFatal("Updating of database schema failed. File '%s' does not exist.", qPrintable(QDir::toNativeSeparators(update_file_name)));
@@ -357,7 +410,7 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
       qFatal("Updating of database schema failed. File '%s' cannot be opened.", qPrintable(QDir::toNativeSeparators(update_file_name)));
     }
 
-    QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+    const QStringList statements = QString(update_file_handle.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
 
     foreach (const QString &statement, statements) {
       QSqlQuery query = database.exec(statement);
@@ -377,13 +430,13 @@ bool DatabaseFactory::sqliteUpdateDatabaseSchema(QSqlDatabase database, const QS
 
 bool DatabaseFactory::mysqlUpdateDatabaseSchema(QSqlDatabase database, const QString &source_db_schema_version) {
   int working_version = QString(source_db_schema_version).remove('.').toInt();
-  int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
+  const int current_version = QString(APP_DB_SCHEMA_VERSION).remove('.').toInt();
 
   while (working_version != current_version) {
-    QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
-                               QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("mysql"),
-                                                                       QString::number(working_version),
-                                                                       QString::number(working_version + 1));
+    const QString update_file_name = QString(APP_MISC_PATH) + QDir::separator() +
+                                     QString(APP_DB_UPDATE_FILE_PATTERN).arg(QSL("mysql"),
+                                                                             QString::number(working_version),
+                                                                             QString::number(working_version + 1));
 
     if (!QFile::exists(update_file_name)) {
       qFatal("Updating of database schema failed. File '%s' does not exist.", qPrintable(QDir::toNativeSeparators(update_file_name)));
@@ -425,7 +478,7 @@ QSqlDatabase DatabaseFactory::connection(const QString &connection_name, Desired
   }
 }
 
-QString DatabaseFactory::humanDriverName(DatabaseFactory::UsedDriver driver) {
+QString DatabaseFactory::humanDriverName(DatabaseFactory::UsedDriver driver) const {
   switch (driver) {
     case MYSQL:
       return tr("MySQL/MariaDB (dedicated database)");
@@ -437,7 +490,7 @@ QString DatabaseFactory::humanDriverName(DatabaseFactory::UsedDriver driver) {
   }
 }
 
-QString DatabaseFactory::humanDriverName(const QString &driver_code) {
+QString DatabaseFactory::humanDriverName(const QString &driver_code) const {
   if (driver_code == APP_DB_SQLITE_DRIVER) {
     return humanDriverName(SQLITE);
   }
@@ -466,8 +519,16 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 
   // Copy all stuff.
   // WARNING: All tables belong here.
-  QStringList tables; tables << QSL("Information") << QSL("Categories") << QSL("Feeds") <<
-                                QSL("Accounts") << QSL("TtRssAccounts") << QSL("Messages");
+  QStringList tables;
+
+  if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type='table';"))) {
+    while (copy_contents.next()) {
+      tables.append(copy_contents.value(0).toString());
+    }
+  }
+  else {
+    qFatal("Cannot obtain list of table names from file-base SQLite database.");
+  }
 
   foreach (const QString &table, tables) {
     copy_contents.exec(QString(QSL("DELETE FROM storage.%1;")).arg(table));
@@ -480,7 +541,7 @@ void DatabaseFactory::sqliteSaveMemoryDatabase() {
 }
 
 void DatabaseFactory::determineDriver() {
-  QString db_driver = qApp->settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
+  const QString db_driver = qApp->settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
 
   if (db_driver == APP_DB_MYSQL_DRIVER && QSqlDatabase::isDriverAvailable(APP_DB_SQLITE_DRIVER)) {
     // User wants to use MySQL and MySQL is actually available. Use it.
@@ -556,7 +617,7 @@ QSqlDatabase DatabaseFactory::mysqlConnection(const QString &connection_name) {
 QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_name) {
   // Folders are created. Create new QSQLDatabase object.
   QSqlDatabase database = QSqlDatabase::addDatabase(APP_DB_MYSQL_DRIVER, connection_name);
-  QString database_name = qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString();
+  const QString database_name = qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString();
 
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
   database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
@@ -584,7 +645,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
                qPrintable(APP_MISC_PATH));
       }
 
-      QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
+      const QStringList statements = QString(file_init.readAll()).split(APP_DB_COMMENT_SPLIT, QString::SkipEmptyParts);
       database.transaction();
 
       foreach(QString statement, statements) {
@@ -604,7 +665,7 @@ QSqlDatabase DatabaseFactory::mysqlInitializeDatabase(const QString &connection_
       // Database was previously initialized. Now just check the schema version.
       query_db.next();
 
-      QString installed_db_schema = query_db.value(0).toString();
+      const QString installed_db_schema = query_db.value(0).toString();
 
       if (installed_db_schema < APP_DB_SCHEMA_VERSION) {
         if (mysqlUpdateDatabaseSchema(database, installed_db_schema)) {
@@ -683,7 +744,7 @@ QSqlDatabase DatabaseFactory::sqliteConnection(const QString &connection_name, D
         // yet, add it and set it up.
         database = QSqlDatabase::addDatabase(APP_DB_SQLITE_DRIVER, connection_name);
 
-        QDir db_path(m_sqliteDatabaseFilePath);
+        const QDir db_path(m_sqliteDatabaseFilePath);
         QFile db_file(db_path.absoluteFilePath(APP_DB_SQLITE_FILE));
 
         // Setup database file path.

@@ -32,9 +32,9 @@ SkinFactory::~SkinFactory() {
 }
 
 void SkinFactory::loadCurrentSkin() {
-  QString skin_name_from_settings = selectedSkinName();
+  const QString skin_name_from_settings = selectedSkinName();
   bool skin_parsed;
-  Skin skin_data = skinInfo(skin_name_from_settings, &skin_parsed);
+  const Skin skin_data = skinInfo(skin_name_from_settings, &skin_parsed);
 
   if (skin_parsed) {
     loadSkinFromData(skin_data);
@@ -50,7 +50,7 @@ void SkinFactory::loadCurrentSkin() {
 }
 
 bool SkinFactory::loadSkinFromData(const Skin &skin) {
-  QStringList skin_parts = skin.m_baseName.split(QL1C('/'), QString::SkipEmptyParts);
+  const QStringList skin_parts = skin.m_baseName.split(QL1C('/'), QString::SkipEmptyParts);
 
   // Skin does not contain leading folder name or the actual skin file name.
   if (skin_parts.size() != 2) {
@@ -64,7 +64,7 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
   }
 
   // Create needed variables and create QFile object representing skin contents.
-  QString skin_folder = skin_parts.at(0);
+  const QString skin_folder = skin_parts.at(0);
 
   // Here we use "/" instead of QDir::separator() because CSS2.1 url field
   // accepts '/' as path elements separator.
@@ -85,7 +85,7 @@ bool SkinFactory::loadSkinFromData(const Skin &skin) {
   }
 
   if (!raw_data.isEmpty()) {
-    QString parsed_data = raw_data.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_folder);
+    const QString parsed_data = raw_data.replace(QSL("##"), APP_SKIN_PATH + QL1S("/") + skin_folder);
     qApp->setStyleSheet(parsed_data);
   }
 
@@ -96,11 +96,11 @@ void SkinFactory::setCurrentSkinName(const QString &skin_name) {
   qApp->settings()->setValue(GROUP(GUI), GUI::Skin, skin_name);
 }
 
-QString SkinFactory::selectedSkinName() {
+QString SkinFactory::selectedSkinName() const {
   return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
 }
 
-Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
+Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) const {
   Skin skin;
   QString styles;
   QFile skin_file(APP_SKIN_PATH + QDir::separator() + skin_name);
@@ -114,7 +114,7 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
     return skin;
   }
 
-  QDomNode skin_node = dokument.namedItem(QSL("skin"));
+  const QDomNode skin_node = dokument.namedItem(QSL("skin"));
 
   // Obtain visible skin name.
   skin.m_visibleName = skin_node.namedItem(QSL("name")).toElement().text();
@@ -155,7 +155,7 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
   skin_file.close();
   skin_file.deleteLater();
 
-  if (ok) {
+  if (ok != NULL) {
     *ok = !skin.m_author.isEmpty() && !skin.m_version.isEmpty() &&
           !skin.m_baseName.isEmpty() && !skin.m_email.isEmpty() &&
           !skin.m_layoutMarkup.isEmpty();
@@ -164,23 +164,22 @@ Skin SkinFactory::skinInfo(const QString &skin_name, bool *ok) {
   return skin;
 }
 
-QList<Skin> SkinFactory::installedSkins() {
+QList<Skin> SkinFactory::installedSkins() const {
   QList<Skin> skins;
   bool skin_load_ok;
-  QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
-                                                               QDir::NoDotAndDotDot |
-                                                               QDir::NoSymLinks |
-                                                               QDir::Readable);
+  const QStringList skin_directories = QDir(APP_SKIN_PATH).entryList(QDir::Dirs |
+                                                                     QDir::NoDotAndDotDot |
+                                                                     QDir::NoSymLinks |
+                                                                     QDir::Readable);
 
   foreach (const QString &base_directory, skin_directories) {
     // Check skins installed in this base directory.
-    QStringList skin_files = QDir(APP_SKIN_PATH + QDir::separator() + base_directory).entryList(QStringList() << QSL("*.xml"),
-                                                                                                QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
+    const QStringList skin_files = QDir(APP_SKIN_PATH + QDir::separator() + base_directory).entryList(QStringList() << QSL("*.xml"),
+                                                                                                      QDir::Files | QDir::Readable | QDir::NoDotAndDotDot | QDir::NoSymLinks);
 
     foreach (const QString &skin_file, skin_files) {
       // Check if skin file is valid and add it if it is valid.
-      Skin skin_info = skinInfo(base_directory + QDir::separator() + skin_file,
-                                &skin_load_ok);
+      const Skin skin_info = skinInfo(base_directory + QDir::separator() + skin_file, &skin_load_ok);
 
       if (skin_load_ok) {
         skins.append(skin_info);

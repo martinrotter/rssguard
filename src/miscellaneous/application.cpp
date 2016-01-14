@@ -50,7 +50,7 @@ Application::Application(const QString &id, int &argc, char **argv)
 }
 
 Application::~Application() {
-  delete m_updateFeedsLock;
+  qDebug("Destroying Application instance.");
   qDeleteAll(m_feedServices);
 }
 
@@ -108,11 +108,13 @@ DownloadManager *Application::downloadManager() {
 }
 
 Mutex *Application::feedUpdateLock() {
-  if (m_updateFeedsLock == NULL) {
-    m_updateFeedsLock = new Mutex();
+  if (m_updateFeedsLock.isNull()) {
+    // NOTE: Cannot use parent hierarchy because this method can be usually called
+    // from any thread.
+    m_updateFeedsLock.reset(new Mutex());
   }
 
-  return m_updateFeedsLock;
+  return m_updateFeedsLock.data();
 }
 
 void Application::backupDatabaseSettings(bool backup_database, bool backup_settings,
@@ -261,7 +263,7 @@ void Application::onAboutToQuit() {
   eliminateFirstRun(APP_VERSION);
 
   // Make sure that we obtain close lock BEFORE even trying to quit the application.
-  bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
+  const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
 
   processEvents();
 

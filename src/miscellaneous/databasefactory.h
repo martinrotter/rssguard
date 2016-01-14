@@ -61,15 +61,18 @@ class DatabaseFactory : public QObject {
     virtual ~DatabaseFactory();
 
     // Returns size of DB file.
-    qint64 getDatabaseSize();
+    qint64 getDatabaseFileSize() const;
+
+    // Returns size of data contained in the DB file.
+    qint64 getDatabaseDataSize() const;
 
     // If in-memory is true, then :memory: database is returned
     // In-memory database is DEFAULT database.
     // NOTE: This always returns OPENED database.
     QSqlDatabase connection(const QString &connection_name, DesiredType desired_type = FromSettings);
 
-    QString humanDriverName(UsedDriver driver);
-    QString humanDriverName(const QString &driver_code);
+    QString humanDriverName(UsedDriver driver) const;
+    QString humanDriverName(const QString &driver_code) const;
 
     // Removes connection.
     void removeConnection(const QString &connection_name = QString());
@@ -106,7 +109,7 @@ class DatabaseFactory : public QObject {
                                    const QString &username, const QString &password);
 
     // Interprets MySQL error code.
-    QString mysqlInterpretErrorCode(MySQLError error_code);
+    QString mysqlInterpretErrorCode(MySQLError error_code) const;
 
   private:
     //

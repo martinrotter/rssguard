@@ -195,7 +195,7 @@ class Application : public QtSingleApplication {
     // But of user decides to close the application (in other words,
     // tries to lock the lock for writing), then no other
     // action will be allowed to lock for reading.
-    Mutex *m_updateFeedsLock;
+    QScopedPointer<Mutex> m_updateFeedsLock;
     QList<ServiceEntryPoint*> m_feedServices;
     QList<QAction*> m_userActions;
     FormMain *m_mainForm;

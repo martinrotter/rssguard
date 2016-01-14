@@ -44,14 +44,14 @@ class Localization : public QObject {
 
     // Returns code of language that should
     // be loaded according to settings.
-    QString desiredLanguage();
+    QString desiredLanguage() const;
 
     // Loads currently active language.
     void loadActiveLanguage();
 
     // Returns list of installed application localizations.
     // This list is used ie. in settings dialog.
-    QList<Language> installedLanguages();
+    QList<Language> installedLanguages() const;
 
     // Returns empty string or loaded language
     // name if it is really loaded.

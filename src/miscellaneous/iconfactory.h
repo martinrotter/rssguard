@@ -39,10 +39,10 @@ class IconFactory : public QObject {
     // Destructor.
     virtual ~IconFactory();
 
-    // Used to store/retrieve QIcons from/to database via Base64-encoded
+    // Used to store/retrieve QIcons from/to Base64-encoded
     // byte array.
-    QIcon fromByteArray(QByteArray array);
-    QByteArray toByteArray(const QIcon &icon);
+    static QIcon fromByteArray(QByteArray array);
+    static QByteArray toByteArray(const QIcon &icon);
 
     void clearCache();
 

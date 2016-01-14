@@ -35,12 +35,12 @@ TextFactory::TextFactory() {
 }
 
 int TextFactory::stringHeight(const QString &string, const QFontMetrics &metrics) {
-  int count_lines = string.split(QL1C('\n')).size();
+  const int count_lines = string.split(QL1C('\n')).size();
   return metrics.height() * count_lines;
 }
 
 int TextFactory::stringWidth(const QString &string, const QFontMetrics &metrics) {
-  QStringList lines = string.split(QL1C('\n'));
+  const QStringList lines = string.split(QL1C('\n'));
   int width = 0;
 
   foreach (const QString &line, lines) {
@@ -55,10 +55,10 @@ int TextFactory::stringWidth(const QString &string, const QFontMetrics &metrics)
 }
 
 QDateTime TextFactory::parseDateTime(const QString &date_time) {
-  QString input_date = date_time.simplified();
+  const QString input_date = date_time.simplified();
   QDateTime dt;
   QTime time_zone_offset;
-  QLocale locale(QLocale::C);
+  const QLocale locale(QLocale::C);
   bool positive_time_zone_offset = false;
 
   QStringList date_patterns; date_patterns << QSL("yyyy-MM-ddTHH:mm:ss") << QSL("MMM dd yyyy hh:mm:ss") <<

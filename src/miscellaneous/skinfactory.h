@@ -58,13 +58,13 @@ class SkinFactory : public QObject {
 
     // Returns the name of the skin, that should be activated
     // after application restart.
-    QString selectedSkinName();
+    QString selectedSkinName() const;
 
     // Gets skin about a particular skin.
-    Skin skinInfo(const QString &skin_name, bool *ok = NULL);
+    Skin skinInfo(const QString &skin_name, bool *ok = NULL) const;
 
     // Returns list of installed skins.
-    QList<Skin> installedSkins();
+    QList<Skin> installedSkins() const;
 
     // Sets the desired skin as the active one if it exists.
     void setCurrentSkinName(const QString &skin_name);
