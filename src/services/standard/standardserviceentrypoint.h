@@ -34,7 +34,7 @@ class StandardServiceEntryPoint : public ServiceEntryPoint {
     QIcon icon() const;
     QString code() const;
 
-    ServiceRoot *createNewRoot();
+    ServiceRoot *createNewRoot() const;
     QList<ServiceRoot*> initializeSubtree() const;
 };
 

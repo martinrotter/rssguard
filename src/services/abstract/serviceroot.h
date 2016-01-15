@@ -82,6 +82,10 @@ class ServiceRoot : public RootItem {
     virtual void start(bool freshly_activated) = 0;
     virtual void stop() = 0;
 
+    // Account ID corresponds with DB attribute Accounts (id).
+    int accountId() const;
+    void setAccountId(int account_id);
+
     // Returns the UNIQUE code of the given service.
     // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() const = 0;
@@ -155,10 +159,6 @@ class ServiceRoot : public RootItem {
     void requestItemExpandStateSave(RootItem *subtree_root);
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
     void requestItemRemoval(RootItem *item);
-
-    // Account ID corresponds with DB attribute Accounts (id).
-    int accountId() const;
-    void setAccountId(int account_id);
 
   public slots:
     virtual void addNewFeed(const QString &url = QString()) = 0;

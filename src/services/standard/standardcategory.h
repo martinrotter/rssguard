@@ -47,11 +47,11 @@ class StandardCategory : public Category {
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem *target_item);
 
-    bool canBeEdited() {
+    bool canBeEdited() const {
       return true;
     }
 
-    bool canBeDeleted() {
+    bool canBeDeleted() const {
       return true;
     }
 

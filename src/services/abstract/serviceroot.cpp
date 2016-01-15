@@ -36,7 +36,7 @@ ServiceRoot::~ServiceRoot() {
 bool ServiceRoot::deleteViaGui() {
   QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query(connection);
-  int account_id = accountId();
+  const int account_id = accountId();
   query.setForwardOnly(true);
 
   QStringList queries;
@@ -84,7 +84,7 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
 
 QList<Message> ServiceRoot::undeletedMessages() const {
   QList<Message> messages;
-  int account_id = accountId();
+  const int account_id = accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query(database);
 

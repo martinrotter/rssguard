@@ -63,11 +63,11 @@ class StandardFeed : public Feed {
 
     QList<QAction*> contextMenu();
 
-    bool canBeEdited() {
+    bool canBeEdited() const {
       return true;
     }
 
-    bool canBeDeleted() {
+    bool canBeDeleted() const {
       return true;
     }
 
