@@ -72,6 +72,7 @@ AdBlockRule::~AdBlockRule() {
 
 AdBlockRule *AdBlockRule::copy() const {
   AdBlockRule* rule = new AdBlockRule();
+
   rule->m_subscription = m_subscription;
   rule->m_type = m_type;
   rule->m_options = m_options;

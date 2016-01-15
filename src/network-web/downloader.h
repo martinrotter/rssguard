@@ -76,7 +76,7 @@ class Downloader : public QObject {
 
   private:
     QNetworkReply *m_activeReply;
-    SilentNetworkAccessManager *m_downloadManager;
+    QScopedPointer<SilentNetworkAccessManager> m_downloadManager;
     QTimer *m_timer;
     QHash<QByteArray, QByteArray> m_customHeaders;
     QByteArray m_inputData;

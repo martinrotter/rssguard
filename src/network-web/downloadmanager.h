@@ -146,11 +146,11 @@ class DownloadManager : public TabContent {
   private:
     void addItem(DownloadItem *item);
 
-    Ui::DownloadManager *m_ui;
+    QScopedPointer<Ui::DownloadManager> m_ui;
     AutoSaver *m_autoSaver;
     DownloadModel *m_model;
     QNetworkAccessManager *m_networkManager;
-    QFileIconProvider *m_iconProvider;
+    QScopedPointer<QFileIconProvider> m_iconProvider;
     QList<DownloadItem*> m_downloads;
     RemovePolicy m_removePolicy;
     QString m_downloadDirectory;

@@ -35,7 +35,6 @@ Downloader::Downloader(QObject *parent)
 }
 
 Downloader::~Downloader() {
-  m_downloadManager->deleteLater();
 }
 
 void Downloader::downloadFile(const QString &url, int timeout, bool protected_contents, const QString &username,
@@ -101,7 +100,7 @@ void Downloader::finished() {
   m_timer->stop();
 
   // In this phase, some part of downloading process is completed.
-  QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
+  const QUrl redirection_url = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 
   if (redirection_url.isValid()) {
     // Communication indicates that HTTP redirection is needed.

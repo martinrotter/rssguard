@@ -53,7 +53,7 @@ class AdBlockMatcher : public QObject {
     void enabledChanged(bool enabled);
 
   private:
-    AdBlockManager* m_manager;
+    AdBlockManager *m_manager;
 
     QVector<AdBlockRule*> m_createdRules;
     QVector<const AdBlockRule*> m_networkExceptionRules;

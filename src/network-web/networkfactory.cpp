@@ -34,8 +34,8 @@ NetworkFactory::NetworkFactory() {
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl &url, const QString &html) {
   QStringList feeds;
-  QRegExp rx(FEED_REGEX_MATCHER, Qt::CaseInsensitive);
-  QRegExp rx_href(FEED_HREF_REGEX_MATCHER, Qt::CaseInsensitive);
+  const QRegExp rx(FEED_REGEX_MATCHER, Qt::CaseInsensitive);
+  const QRegExp rx_href(FEED_HREF_REGEX_MATCHER, Qt::CaseInsensitive);
 
   for (int pos = 0; (pos = rx.indexIn(html, pos)) != -1; pos += rx.matchedLength()) {
     QString link_element = html.mid(pos, rx.matchedLength());
@@ -130,9 +130,9 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
 
   foreach (const QString &url, urls) {
 #if QT_VERSION >= 0x050000
-    QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
+    const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(url.toHtmlEscaped());
 #else
-    QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
+    const QString google_s2_with_url = QString("http://www.google.com/s2/favicons?domain=%1").arg(Qt::escape(url));
 #endif
     QByteArray icon_data;
     network_result =  downloadFile(google_s2_with_url, timeout, icon_data).first;

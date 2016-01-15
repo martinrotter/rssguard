@@ -21,7 +21,7 @@ WebFactory::~WebFactory() {
 }
 
 void WebFactory::loadState() {
-  Settings *settings = qApp->settings();
+  const Settings *settings = qApp->settings();
 
   switchJavascript(settings->value(GROUP(Browser), SETTING(Browser::JavascriptEnabled)).toBool(), false);
   switchImages(settings->value(GROUP(Browser), SETTING(Browser::ImagesEnabled)).toBool(), false);
@@ -30,8 +30,8 @@ void WebFactory::loadState() {
 
 bool WebFactory::sendMessageViaEmail(const Message &message) {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool()) {
-    QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
-    QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
+    const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailExecutable)).toString();
+    const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailArguments)).toString();
 
     return QProcess::startDetached(QString("\"") + browser + QSL("\" ") + arguments.arg(message.m_title,
                                                                                    stripTags(message.m_contents)));
@@ -46,21 +46,20 @@ bool WebFactory::sendMessageViaEmail(const Message &message) {
 
 bool WebFactory::openUrlInExternalBrowser(const QString &url) {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
-    QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
-    QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
+    const QString browser = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
+    const QString arguments = qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
 
-    QString call_line = "\"" + browser + "\" \"" + arguments.arg(url) + "\"";
+    const QString call_line = "\"" + browser + "\" \"" + arguments.arg(url) + "\"";
 
     qDebug("Running command '%s'.", qPrintable(call_line));
 
-    bool result = QProcess::startDetached(call_line);
+    const bool result = QProcess::startDetached(call_line);
 
     if (!result) {
       qDebug("External web browser call failed.");
     }
 
     return result;
-    //return QProcess::startDetached(QString("\"") + browser + QSL("\""), QStringList() << arguments.arg(url));
   }
   else {
     return QDesktopServices::openUrl(url);

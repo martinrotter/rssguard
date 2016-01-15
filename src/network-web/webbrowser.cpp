@@ -306,7 +306,7 @@ WebBrowser::~WebBrowser() {
   // Remove this instance from the global list of web browsers.
   m_runningWebBrowsers.removeAll(this);
 
-  // Delete members.
+  // Delete members. Do not use scoped pointers here.
   delete m_layout;
   delete m_zoomButtons;
   delete m_actionZoom;

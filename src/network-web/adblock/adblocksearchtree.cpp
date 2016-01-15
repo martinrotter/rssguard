@@ -38,7 +38,7 @@ bool AdBlockSearchTree::add(const AdBlockRule *rule) {
   }
 
   const QString filter = rule->m_matchString;
-  int len = filter.size();
+  const int len = filter.size();
 
   if (len <= 0) {
     qWarning("Inserting rule with filter len <= 0!");
@@ -67,7 +67,7 @@ bool AdBlockSearchTree::add(const AdBlockRule *rule) {
 
 const AdBlockRule *AdBlockSearchTree::find(const QNetworkRequest &request, const QString &domain,
                                            const QString &url_string) const {
-  int len = url_string.size();
+  const int len = url_string.size();
 
   if (len <= 0) {
     return NULL;
