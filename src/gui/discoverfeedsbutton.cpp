@@ -68,7 +68,7 @@ void DiscoverFeedsButton::linkTriggered(QAction *action) {
   }
   else {
     qApp->showGuiMessage(tr("Not supported"),
-                         tr("Give account does not support adding feeds."),
+                         tr("Given account does not support adding feeds."),
                          QSystemTrayIcon::Warning,
                          qApp->mainForm(), true);
   }

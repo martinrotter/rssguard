@@ -288,10 +288,10 @@ Deze website bevat %n feeds.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Niet ondersteund</translation>
     </message>
     <message>
-        <source>Give account does not support adding feeds.</source>
+        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -585,15 +585,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Niet ondersteund</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe feeds.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde account ondersteunt geen toevoeging van nieuwe categorieën.</translation>
     </message>
 </context>
 <context>
@@ -850,11 +850,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>onbekend</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation type="unfinished"/>
+        <translation>bestand: %1, gegevens: %2</translation>
     </message>
 </context>
 <context>
@@ -1124,15 +1124,15 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>De url is ok.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>De url is leeg.</translation>
     </message>
 </context>
 <context>
@@ -1527,19 +1527,19 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Voeg nieuwe feed toe aan geselecteerde account</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Voeg nieuwe categorie toe aan geselecteerde account</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Voeg nieuwe categorie toe</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Voeg nieuw feed toe</translation>
     </message>
 </context>
 <context>
@@ -2694,15 +2694,15 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>De URL is ok.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>De URL voldoet niet aan het standaard patroon. Start je url met &quot;http://&quot; of &quot;https://&quot; prefix.</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>De URL is leeg.</translation>
     </message>
 </context>
 <context>
@@ -2797,15 +2797,15 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Gegevens ontleden...</translation>
     </message>
     <message>
         <source>TXT files (one URL per line) (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT bestanden (een url per lijn) (*.txt)</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Kan niet schrijven naar doelbestand: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -3442,7 +3442,7 @@ Account ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Dit nieuwe account bevat geen feeds. U kunt de standaard set van feeds toevoegen.</translation>
     </message>
 </context>
 <context>
