@@ -38,17 +38,16 @@ class WebBrowserNetworkAccessManager : public BaseNetworkAccessManager {
     // used by ALL web browsers and download manager.
     static WebBrowserNetworkAccessManager *instance();
 
+  protected:
+    QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData);
+
   protected slots:
     void onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator);
 
   private:
-      WebPage *m_page;
+    WebPage *m_page;
 
     static QPointer<WebBrowserNetworkAccessManager> s_instance;
-
-    // QNetworkAccessManager interface
-  protected:
-    QNetworkReply *createRequest(Operation op, const QNetworkRequest &request, QIODevice *outgoingData);
 };
 
 #endif // WEBBROWSERNETWORKACCESSMANAGER_H

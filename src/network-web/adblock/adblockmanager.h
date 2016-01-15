@@ -69,7 +69,7 @@ class AdBlockManager : public QObject {
 
     AdBlockCustomList *customList() const;
 
-    bool shouldBeEnabled();
+    bool shouldBeEnabled() const;
 
     static QString baseSubscriptionDirectory();
     static AdBlockManager *instance();

@@ -71,7 +71,7 @@ QString TtRssServiceEntryPoint::code() const {
   return SERVICE_CODE_TT_RSS;
 }
 
-ServiceRoot *TtRssServiceEntryPoint::createNewRoot() {
+ServiceRoot *TtRssServiceEntryPoint::createNewRoot() const {
   QPointer<FormEditAccount> form_acc = new FormEditAccount(qApp->mainForm());
   TtRssServiceRoot *new_root = form_acc.data()->execForCreate();
   delete form_acc.data();

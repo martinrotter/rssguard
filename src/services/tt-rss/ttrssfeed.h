@@ -41,7 +41,7 @@ class TtRssFeed : public Feed {
 
     void updateCounts(bool including_total_count);
 
-    bool canBeEdited();
+    bool canBeEdited() const;
     bool editViaGui();
 
     int countOfAllMessages() const;

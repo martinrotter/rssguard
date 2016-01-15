@@ -60,7 +60,7 @@ class FormStandardImportExport : public QDialog {
     void exportFeeds();
     void importFeeds();
 
-    Ui::FormStandardImportExport *m_ui;
+    QScopedPointer<Ui::FormStandardImportExport> m_ui;
     ConversionType m_conversionType;
     FeedsImportExportModel *m_model;
     StandardServiceRoot *m_serviceRoot;

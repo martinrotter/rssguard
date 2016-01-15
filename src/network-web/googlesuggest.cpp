@@ -59,8 +59,8 @@
 #include <QTextCodec>
 
 
-GoogleSuggest::GoogleSuggest(LocationLineEdit *editor, QObject *parent) : QObject(parent), editor(editor) {
-  popup = new QListWidget();
+GoogleSuggest::GoogleSuggest(LocationLineEdit *editor, QObject *parent)
+  : QObject(parent), editor(editor), popup(new QListWidget()) {
   popup->setWindowFlags(Qt::Popup);
   popup->setFocusPolicy(Qt::NoFocus);
   popup->setFocusProxy(editor);
@@ -74,17 +74,16 @@ GoogleSuggest::GoogleSuggest(LocationLineEdit *editor, QObject *parent) : QObjec
   timer->setSingleShot(true);
   timer->setInterval(500);
 
-  connect(popup, SIGNAL(itemClicked(QListWidgetItem*)), SLOT(doneCompletion()));
+  connect(popup.data(), SIGNAL(itemClicked(QListWidgetItem*)), SLOT(doneCompletion()));
   connect(timer, SIGNAL(timeout()), SLOT(autoSuggest()));
   connect(editor, SIGNAL(textEdited(QString)), timer, SLOT(start()));
 }
 
 GoogleSuggest::~GoogleSuggest() {
-  delete popup;
 }
 
 bool GoogleSuggest::eventFilter(QObject *object, QEvent *event) {
-  if (object != popup) {
+  if (object != popup.data()) {
     return false;
   }
 
@@ -96,7 +95,7 @@ bool GoogleSuggest::eventFilter(QObject *object, QEvent *event) {
 
   if (event->type() == QEvent::KeyPress) {
     bool consumed = false;
-    int key = static_cast<QKeyEvent*>(event)->key();
+    const int key = static_cast<QKeyEvent*>(event)->key();
 
     switch (key) {
       case Qt::Key_Enter:
@@ -139,7 +138,7 @@ void GoogleSuggest::showCompletion(const QStringList &choices) {
   popup->clear();
 
   foreach (const QString &choice, choices) {
-    new QListWidgetItem(choice, popup);
+    new QListWidgetItem(choice, popup.data());
   }
 
   popup->setCurrentItem(popup->item(0));
@@ -176,20 +175,20 @@ void GoogleSuggest::autoSuggest() {
 }
 
 void GoogleSuggest::handleNetworkData() {
-  QNetworkReply *reply = static_cast<QNetworkReply*>(sender());
+  QScopedPointer<QNetworkReply> reply(static_cast<QNetworkReply*>(sender()));
 
   if (!reply->error()) {
     QStringList choices;
     QDomDocument xml;
     QByteArray response = reply->readAll();
 
-    QTextCodec *c = QTextCodec::codecForUtfText(response);
+    const QTextCodec *c = QTextCodec::codecForUtfText(response);
     xml.setContent(c->toUnicode(response));
 
     QDomNodeList suggestions = xml.elementsByTagName(QSL("suggestion"));
 
     for (int i = 0; i < suggestions.size(); i++) {
-      QDomElement element = suggestions.at(i).toElement();
+      const QDomElement element = suggestions.at(i).toElement();
 
       if (element.attributes().contains(QSL("data"))) {
         choices.append(element.attribute(QSL("data")));
@@ -198,6 +197,4 @@ void GoogleSuggest::handleNetworkData() {
 
     showCompletion(choices);
   }
-
-  reply->deleteLater();
 }

@@ -129,11 +129,11 @@ void TtRssServiceRoot::addNewCategory() {
   // Do nothing.
 }
 
-bool TtRssServiceRoot::canBeEdited() {
+bool TtRssServiceRoot::canBeEdited() const {
   return true;
 }
 
-bool TtRssServiceRoot::canBeDeleted() {
+bool TtRssServiceRoot::canBeDeleted() const {
   return true;
 }
 

@@ -125,5 +125,5 @@ void AdBlockAddSubscriptionDialog::checkInputs() {
 }
 
 AdBlockAddSubscriptionDialog::~AdBlockAddSubscriptionDialog() {
-  delete m_ui;
+  qDebug("Destroying AdBlockAddSubscriptionDialog instance.");
 }

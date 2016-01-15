@@ -288,10 +288,10 @@ Tato stránka obsahuje %n kanálů.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepodporováno</translation>
     </message>
     <message>
-        <source>Give account does not support adding feeds.</source>
+        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -584,15 +584,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Nepodporováno</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraný účet nepodporuje přidávání nových kanálů.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Vybraný účet nepodporuje přidávání nových kategorií.</translation>
     </message>
 </context>
 <context>
@@ -849,11 +849,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>neznámá</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation type="unfinished"/>
+        <translation>soubor: %1, data: %2</translation>
     </message>
 </context>
 <context>
@@ -1123,15 +1123,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL je v pořádku.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL nemá standardní tvar. Začíná vaše URL na &quot;http://&quot; či &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL je prázdná.</translation>
     </message>
 </context>
 <context>
@@ -1526,19 +1526,19 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový kanál do vybraného účtu</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Přidat novou kategorii do vybraného účtu</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Přidat novou kategorii</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Přidat nový kanál</translation>
     </message>
 </context>
 <context>
@@ -2687,15 +2687,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL je v pořádku.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL nemá standardní tvar. Začíná vaše URL na &quot;http://&quot; či &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL je prázdná.</translation>
     </message>
 </context>
 <context>
@@ -2790,15 +2790,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Zpracovávám data...</translation>
     </message>
     <message>
         <source>TXT files (one URL per line) (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT soubory (jedna URL na řádek) (*.txt)</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Do cílového souboru nelze zapisovat: &apos;%1&apos;.</translation>
     </message>
 </context>
 <context>
@@ -3434,7 +3434,7 @@ ID účtu: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Tento nový účet doposud neobsahuje žádné kanály, chcete nyní přidat výchozí sadu kanálů?</translation>
     </message>
 </context>
 <context>

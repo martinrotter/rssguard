@@ -43,15 +43,13 @@ class WebPage : public QWebPage {
 
     QString toHtml() const;
     QString toPlainText() const;
-
-    void populateNetworkRequest(QNetworkRequest &request);
-
     bool isLoading() const;
-
-    static bool isPointerSafeToUse(WebPage *page);
-    void addAdBlockRule(const AdBlockRule *rule, const QUrl &url);
     QVector<AdBlockedEntry> adBlockedEntries() const;
 
+    void populateNetworkRequest(QNetworkRequest &request);
+    void addAdBlockRule(const AdBlockRule *rule, const QUrl &url);
+
+    static bool isPointerSafeToUse(WebPage *page);
 
   private slots:
     void progress(int prog);

@@ -59,7 +59,7 @@ QString StandardServiceEntryPoint::code() const {
   return SERVICE_CODE_STD_RSS;
 }
 
-ServiceRoot *StandardServiceEntryPoint::createNewRoot() {
+ServiceRoot *StandardServiceEntryPoint::createNewRoot() const {
   // Switch DB.
   QSqlDatabase database = qApp->database()->connection(QSL("StandardServiceEntryPoint"), DatabaseFactory::FromSettings);
   QSqlQuery query(database);

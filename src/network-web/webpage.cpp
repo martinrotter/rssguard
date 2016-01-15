@@ -63,6 +63,7 @@ void WebPage::finished() {
 
 void WebPage::cleanBlockedObjects() {
   AdBlockManager *manager = AdBlockManager::instance();
+
   if (!manager->isEnabled()) {
     return;
   }
@@ -101,6 +102,7 @@ void WebPage::cleanBlockedObjects() {
 
   // Apply domain-specific element hiding rules
   QString element_hiding = manager->elementHidingRulesForDomain(mainFrame()->url());
+
   if (element_hiding.isEmpty()) {
     return;
   }
@@ -161,7 +163,7 @@ void WebPage::populateNetworkRequest(QNetworkRequest &request) {
 
 void WebPage::handleUnsupportedContent(QNetworkReply *reply) {
   if (reply != NULL) {
-    QUrl reply_url = reply->url();
+    const QUrl reply_url = reply->url();
 
     if (reply_url.scheme() == QL1S("abp")) {
       return;
@@ -187,7 +189,7 @@ QString WebPage::toHtml() const {
 bool WebPage::acceptNavigationRequest(QWebFrame *frame,
                                       const QNetworkRequest &request,
                                       QWebPage::NavigationType type) {
-  QString scheme = request.url().scheme();
+  const QString scheme = request.url().scheme();
 
   if (scheme == QL1S("mailto") || scheme == QL1S("ftp")) {
     qWarning("Received request with scheme '%s', blocking it.", qPrintable(scheme));

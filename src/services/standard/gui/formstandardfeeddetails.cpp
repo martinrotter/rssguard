@@ -56,7 +56,6 @@ FormStandardFeedDetails::FormStandardFeedDetails(StandardServiceRoot *service_ro
 }
 
 FormStandardFeedDetails::~FormStandardFeedDetails() {
-  delete m_ui;
 }
 
 int FormStandardFeedDetails::exec(StandardFeed *input_feed, RootItem *parent_to_select, const QString &url) {
@@ -386,7 +385,7 @@ void FormStandardFeedDetails::setEditableFeed(StandardFeed *editable_feed) {
 }
 
 void FormStandardFeedDetails::initialize() {
-  m_ui = new Ui::FormStandardFeedDetails();
+  m_ui.reset(new Ui::FormStandardFeedDetails());
   m_ui->setupUi(this);
 
   // Set flags and attributes.
@@ -419,7 +418,7 @@ void FormStandardFeedDetails::initialize() {
   m_ui->m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Rss2X), QVariant::fromValue((int) StandardFeed::Rss2X));
 
   // Load available encodings.
-  QList<QByteArray> encodings = QTextCodec::availableCodecs();
+  const QList<QByteArray> encodings = QTextCodec::availableCodecs();
   QStringList encoded_encodings;
 
   foreach (const QByteArray &encoding, encodings) {

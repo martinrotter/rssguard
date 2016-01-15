@@ -53,7 +53,6 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot *service_
 }
 
 FormStandardImportExport::~FormStandardImportExport() {
-  delete m_ui;
 }
 
 void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode) {
@@ -141,8 +140,8 @@ void FormStandardImportExport::onParsingProgress(int completed, int total) {
 }
 
 void FormStandardImportExport::selectExportFile() {
-  QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+  const QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
 
   QString filter;
   QString selected_filter;
@@ -178,8 +177,8 @@ void FormStandardImportExport::selectExportFile() {
 }
 
 void FormStandardImportExport::selectImportFile() {
-  QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-  QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
+  const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
+  const QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
 
   QString filter;
   QString selected_filter;
@@ -189,8 +188,8 @@ void FormStandardImportExport::selectImportFile() {
   filter += ";;";
   filter += filter_txt_url_per_line;
 
-  QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolderPath(),
-                                                       filter, &selected_filter);
+  const QString selected_file = QFileDialog::getOpenFileName(this, tr("Select file for feeds import"), qApp->homeFolderPath(),
+                                                             filter, &selected_filter);
 
   if (!selected_file.isEmpty()) {
     if (selected_filter == filter_opml20) {

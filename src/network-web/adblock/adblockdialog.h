@@ -67,15 +67,15 @@ class AdBlockDialog : public QDialog {
     void setupMenu();
     void createConnections();
 
-    Ui::AdBlockDialog *m_ui;
-    AdBlockManager* m_manager;
-    AdBlockTreeWidget* m_currentTreeWidget;
-    AdBlockSubscription* m_currentSubscription;
+    QScopedPointer<Ui::AdBlockDialog> m_ui;
+    AdBlockManager *m_manager;
+    AdBlockTreeWidget *m_currentTreeWidget;
+    AdBlockSubscription *m_currentSubscription;
 
-    QAction* m_actionAddRule;
-    QAction* m_actionRemoveRule;
-    QAction* m_actionAddSubscription;
-    QAction* m_actionRemoveSubscription;
+    QAction *m_actionAddRule;
+    QAction *m_actionRemoveRule;
+    QAction *m_actionAddSubscription;
+    QAction *m_actionRemoveSubscription;
 
     bool m_loaded;
     bool m_useLimitedEasyList;

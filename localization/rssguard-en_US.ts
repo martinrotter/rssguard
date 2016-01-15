@@ -286,7 +286,7 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Give account does not support adding feeds.</source>
+        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>

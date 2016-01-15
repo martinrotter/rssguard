@@ -287,10 +287,10 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Stöds ej</translation>
     </message>
     <message>
-        <source>Give account does not support adding feeds.</source>
+        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -584,15 +584,15 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Stöds ej</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Det valda kontot stöder inte tillägg av nya flöden.</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new categories.</source>
-        <translation type="unfinished"/>
+        <translation>Det valda kontot stöder inte tillägg av nya kategorier.</translation>
     </message>
 </context>
 <context>
@@ -849,11 +849,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>Okänd</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
-        <translation type="unfinished"/>
+        <translation>fil: %1, data: %2</translation>
     </message>
 </context>
 <context>
@@ -1123,15 +1123,15 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en är OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL saknas.</translation>
     </message>
 </context>
 <context>
@@ -1526,19 +1526,19 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Add new feed into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt flöde i markerat konto</translation>
     </message>
     <message>
         <source>Add new category into selected account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till ny kategori i markerat konto</translation>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till ny kategori</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt flöde</translation>
     </message>
 </context>
 <context>
@@ -2688,15 +2688,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>The URL is ok.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en är OK.</translation>
     </message>
     <message>
         <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-        <translation type="unfinished"/>
+        <translation>URL:en stämmer inte med standardmönstret. Börjar din URL med prefixet &quot;http://&quot; eller &quot;https://&quot;?</translation>
     </message>
     <message>
         <source>The URL is empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL saknas.</translation>
     </message>
 </context>
 <context>
@@ -2791,15 +2791,15 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Parsing data...</source>
-        <translation type="unfinished"/>
+        <translation>Analyserar data...</translation>
     </message>
     <message>
         <source>TXT files (one URL per line) (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT-filer (en URL per rad) (*.txt)</translation>
     </message>
     <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Kan inte skriva till målfilen: %1</translation>
     </message>
 </context>
 <context>
@@ -3433,7 +3433,7 @@ Konto-ID: %1</translation>
     </message>
     <message>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Detta nya konto inkluderar inte några flöden. Du kan nu läsa in standarduppsättningen av flöden.</translation>
     </message>
 </context>
 <context>

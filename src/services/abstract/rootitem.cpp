@@ -51,7 +51,7 @@ QList<QAction*> RootItem::contextMenu() {
   return QList<QAction*>();
 }
 
-bool RootItem::canBeEdited() {
+bool RootItem::canBeEdited() const {
   return false;
 }
 
@@ -59,7 +59,7 @@ bool RootItem::editViaGui() {
   return false;
 }
 
-bool RootItem::canBeDeleted() {
+bool RootItem::canBeDeleted() const {
   return false;
 }
 
@@ -359,12 +359,12 @@ bool RootItem::removeChild(RootItem *child) {
   return m_childItems.removeOne(child);
 }
 
-Category *RootItem::toCategory() {
-  return static_cast<Category*>(this);
+Category *RootItem::toCategory() const {
+  return static_cast<Category*>(const_cast<RootItem*>(this));
 }
 
-Feed *RootItem::toFeed() {
-  return static_cast<Feed*>(this);
+Feed *RootItem::toFeed() const {
+  return static_cast<Feed*>(const_cast<RootItem*>(this));
 }
 
 ServiceRoot *RootItem::toServiceRoot() const {

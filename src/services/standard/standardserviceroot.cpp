@@ -108,11 +108,11 @@ QString StandardServiceRoot::code() const {
   return SERVICE_CODE_STD_RSS;
 }
 
-bool StandardServiceRoot::canBeEdited() {
+bool StandardServiceRoot::canBeEdited() const {
   return false;
 }
 
-bool StandardServiceRoot::canBeDeleted() {
+bool StandardServiceRoot::canBeDeleted() const {
   return true;
 }
 

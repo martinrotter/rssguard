@@ -40,8 +40,8 @@ class TtRssServiceRoot : public ServiceRoot {
 
     QString code() const;
 
-    bool canBeEdited();
-    bool canBeDeleted();
+    bool canBeEdited() const;
+    bool canBeDeleted() const;
     bool editViaGui();
     bool deleteViaGui();
 

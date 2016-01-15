@@ -138,7 +138,7 @@ void TtRssFeed::updateCounts(bool including_total_count) {
   }
 }
 
-bool TtRssFeed::canBeEdited() {
+bool TtRssFeed::canBeEdited() const {
   return true;
 }
 

@@ -43,8 +43,8 @@ class StandardServiceRoot : public ServiceRoot {
 
     QString code() const;
 
-    bool canBeEdited();
-    bool canBeDeleted();
+    bool canBeEdited() const;
+    bool canBeDeleted() const;
     bool deleteViaGui();
 
     bool markAsReadUnread(ReadStatus status);

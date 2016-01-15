@@ -45,9 +45,9 @@ void WebBrowserNetworkAccessManager::onAuthenticationRequired(QNetworkReply *rep
 
 QNetworkReply *WebBrowserNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op, const QNetworkRequest &request, QIODevice *outgoingData) {
   if (m_page != NULL) {
-    QNetworkRequest pageRequest = request;
-    m_page->populateNetworkRequest(pageRequest);
-    return WebBrowserNetworkAccessManager::instance()->createRequest(op, pageRequest, outgoingData);
+    QNetworkRequest page_request = request;
+    m_page->populateNetworkRequest(page_request);
+    return WebBrowserNetworkAccessManager::instance()->createRequest(op, page_request, outgoingData);
   }
 
   if (op == QNetworkAccessManager::GetOperation) {

@@ -286,7 +286,7 @@ This website contains %n feed(s).</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Give account does not support adding feeds.</source>
+        <source>Given account does not support adding feeds.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -843,7 +843,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>unknown</source>
-        <translation type="unfinished"/>
+        <translation>ukendt</translation>
     </message>
     <message>
         <source>file: %1, data: %2</source>
@@ -1528,11 +1528,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new category</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj ny kategori</translation>
     </message>
     <message>
         <source>Add new feed</source>
-        <translation type="unfinished"/>
+        <translation>Tilføj nyt feed</translation>
     </message>
 </context>
 <context>

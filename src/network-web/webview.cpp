@@ -85,27 +85,27 @@ void WebView::searchTextViaGoogle() {
 
 void WebView::saveCurrentPageToFile() {
   QString selected_file;
-  QString implicit_file_base_name = tr("source_page");
+  const QString implicit_file_base_name = tr("source_page");
 
   // NOTE: It is good to always ask for destination here, since download manager
   // is not displaying afterwards because this is *not* real download actually.
   //if (qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::AlwaysPromptForFilename)).toBool()) {
-    QString filter_html = tr("HTML web pages (*.html)");
+  const QString filter_html = tr("HTML web pages (*.html)");
 
-    QString filter;
-    QString selected_filter;
-    QString filename_for_prompt = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetExplicitDirectory)).toString() +
-                                  QDir::separator() + implicit_file_base_name + QL1S(".html");
+  QString filter;
+  QString selected_filter;
+  const QString filename_for_prompt = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetExplicitDirectory)).toString() +
+                                      QDir::separator() + implicit_file_base_name + QL1S(".html");
 
-    // Add more filters here.
-    filter += filter_html;
-    selected_file = QFileDialog::getSaveFileName(this, tr("Select destination file for web page"),
-                                                 filename_for_prompt, filter, &selected_filter);
+  // Add more filters here.
+  filter += filter_html;
+  selected_file = QFileDialog::getSaveFileName(this, tr("Select destination file for web page"),
+                                               filename_for_prompt, filter, &selected_filter);
 
-    if (!selected_file.isEmpty()) {
-      qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
-                                 QDir::toNativeSeparators(QFileInfo(selected_file).absolutePath()));
-    }
+  if (!selected_file.isEmpty()) {
+    qApp->settings()->setValue(GROUP(Downloads), Downloads::TargetExplicitDirectory,
+                               QDir::toNativeSeparators(QFileInfo(selected_file).absolutePath()));
+  }
   /*}
   else {
     QString base_folder = qApp->settings()->value(GROUP(Downloads), SETTING(Downloads::TargetDirectory)).toString();
@@ -132,14 +132,14 @@ void WebView::saveCurrentPageToFile() {
     QFile selected_file_handle(selected_file);
 
     if (selected_file_handle.open(QIODevice::WriteOnly | QIODevice::Unbuffered)) {
-      QString html_text = page()->mainFrame()->toHtml();
+      const QString html_text = page()->mainFrame()->toHtml();
       QTextStream str(&selected_file_handle);
 
       str.setCodec("UTF-16");
       str << html_text;
       selected_file_handle.close();
     }
-    else {     
+    else {
       MessageBox::show(this, QMessageBox::Critical, tr("Cannot save web page"),
                        tr("Web page cannot be saved because destination file is not writtable."));
     }
@@ -299,8 +299,8 @@ void WebView::popupContextMenu(const QPoint &pos) {
   context_menu.addAction(m_actionCopySelectedItem);
   context_menu.addAction(m_actionSavePageAs);
 
-  QUrl hit_url = hit_result.linkUrl();
-  QUrl hit_image_url = hit_result.imageUrl();
+  const QUrl hit_url = hit_result.linkUrl();
+  const QUrl hit_image_url = hit_result.imageUrl();
 
   if (hit_url.isValid()) {
     m_contextLinkUrl = hit_url;
@@ -340,7 +340,7 @@ void WebView::popupContextMenu(const QPoint &pos) {
 }
 
 void WebView::printCurrentPage() {
-  QPointer<QPrintPreviewDialog> print_preview = new QPrintPreviewDialog(this);
+  QScopedPointer<QPrintPreviewDialog> print_preview(new QPrintPreviewDialog(this));
   connect(print_preview.data(), SIGNAL(paintRequested(QPrinter*)), this, SLOT(print(QPrinter*)));
   print_preview.data()->exec();
 }
@@ -355,8 +355,8 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
     // Check if user clicked with middle mouse button on some
     // hyperlink.
-    QUrl link_url = hit_result.linkUrl();
-    QUrl image_url = hit_result.imageUrl();
+    const QUrl link_url = hit_result.linkUrl();
+    const QUrl image_url = hit_result.imageUrl();
 
     if (link_url.isValid()) {
       emit linkMiddleClicked(link_url);
@@ -377,10 +377,10 @@ void WebView::mousePressEvent(QMouseEvent *event) {
 
 void WebView::mouseReleaseEvent(QMouseEvent *event) {
   if (event->button() & Qt::MiddleButton) {
-    bool are_gestures_enabled = qApp->settings()->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool();
+    const bool are_gestures_enabled = qApp->settings()->value(GROUP(Browser), SETTING(Browser::GesturesEnabled)).toBool();
 
     if (are_gestures_enabled) {
-      QPoint release_point = event->pos();
+      const QPoint release_point = event->pos();
       int left_move = m_gestureOrigin.x() - release_point.x();
       int right_move = -left_move;
       int top_move = m_gestureOrigin.y() - release_point.y();
@@ -423,7 +423,7 @@ void WebView::wheelEvent(QWheelEvent *event) {
 }
 
 bool WebView::increaseWebPageZoom() {
-  qreal new_factor = zoomFactor() + 0.1;
+  const qreal new_factor = zoomFactor() + 0.1;
 
   if (new_factor >= 0.0 && new_factor <= MAX_ZOOM_FACTOR) {
     setZoomFactor(new_factor);
@@ -435,7 +435,7 @@ bool WebView::increaseWebPageZoom() {
 }
 
 bool WebView::decreaseWebPageZoom() {
-  qreal new_factor = zoomFactor() - 0.1;
+  const qreal new_factor = zoomFactor() - 0.1;
 
   if (new_factor >= 0.0 && new_factor <= MAX_ZOOM_FACTOR) {
     setZoomFactor(new_factor);
@@ -447,7 +447,7 @@ bool WebView::decreaseWebPageZoom() {
 }
 
 bool WebView::resetWebPageZoom() {
-  qreal new_factor = 1.0;
+  const qreal new_factor = 1.0;
 
   if (new_factor != zoomFactor()) {
     setZoomFactor(new_factor);

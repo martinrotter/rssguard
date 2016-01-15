@@ -82,14 +82,14 @@ class RootItem : public QObject {
     virtual QList<QAction*> contextMenu();
 
     // Can properties of this item be edited?
-    virtual bool canBeEdited();
+    virtual bool canBeEdited() const;
 
     // Performs editing of properties of this item (probably via dialog)
     // and returns result status.
     virtual bool editViaGui();
 
     // Can the item be deleted?
-    virtual bool canBeDeleted();
+    virtual bool canBeDeleted() const;
 
     // Performs deletion of the item, this
     // method should NOT display any additional dialogs.
@@ -255,8 +255,8 @@ class RootItem : public QObject {
     }
 
     // Converters
-    Category *toCategory();
-    Feed *toFeed();
+    Category *toCategory() const;
+    Feed *toFeed() const;
     ServiceRoot *toServiceRoot() const;
 
   private:
