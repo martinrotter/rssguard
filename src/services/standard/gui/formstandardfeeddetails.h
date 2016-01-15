@@ -81,7 +81,7 @@ class FormStandardFeedDetails : public QDialog {
     void loadCategories(const QList<Category*> categories, RootItem *root_item);
 
   private:
-    Ui::FormStandardFeedDetails *m_ui;
+    QScopedPointer<Ui::FormStandardFeedDetails> m_ui;
     StandardFeed *m_editableFeed;
     StandardServiceRoot *m_serviceRoot;
 

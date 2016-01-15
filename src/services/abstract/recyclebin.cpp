@@ -47,7 +47,7 @@ int RecycleBin::countOfAllMessages() const {
 void RecycleBin::updateCounts(bool update_total_count) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_all(database);
-  ServiceRoot *parent_root = getParentServiceRoot();
+  const ServiceRoot *parent_root = getParentServiceRoot();
 
   query_all.setForwardOnly(true);
   query_all.prepare("SELECT count(*) FROM Messages "
@@ -88,7 +88,7 @@ QVariant RecycleBin::data(int column, int role) const {
 
 QList<Message> RecycleBin::undeletedMessages() const {
   QList<Message> messages;
-  int account_id = const_cast<RecycleBin*>(this)->getParentServiceRoot()->accountId();
+  const int account_id = getParentServiceRoot()->accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
 

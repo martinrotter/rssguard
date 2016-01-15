@@ -201,7 +201,7 @@ void FormStandardCategoryDetails::onUseDefaultIcon() {
 }
 
 void FormStandardCategoryDetails::initialize() {
-  m_ui = new Ui::FormStandardCategoryDetails();
+  m_ui.reset(new Ui::FormStandardCategoryDetails());
   m_ui->setupUi(this);
 
   // Set text boxes.

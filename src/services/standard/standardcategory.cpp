@@ -100,10 +100,9 @@ bool StandardCategory::performDragDropChange(RootItem *target_item) {
 }
 
 bool StandardCategory::editViaGui() {
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm());
+  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(serviceRoot(), qApp->mainForm()));
 
   form_pointer.data()->exec(this, NULL);
-  delete form_pointer.data();
   return false;
 }
 

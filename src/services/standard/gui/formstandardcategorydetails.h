@@ -76,7 +76,7 @@ class FormStandardCategoryDetails : public QDialog {
     void loadCategories(const QList<Category *> categories, RootItem *root_item, StandardCategory *input_category);
 
   private:
-    Ui::FormStandardCategoryDetails *m_ui;
+    QScopedPointer<Ui::FormStandardCategoryDetails> m_ui;
     StandardCategory *m_editableCategory;
     StandardServiceRoot *m_serviceRoot;
 

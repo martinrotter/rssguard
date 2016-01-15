@@ -103,10 +103,9 @@ StandardServiceRoot *StandardFeed::serviceRoot() {
 }
 
 bool StandardFeed::editViaGui() {
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(serviceRoot(), qApp->mainForm());
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(serviceRoot(), qApp->mainForm()));
 
   form_pointer.data()->exec(this, NULL);
-  delete form_pointer.data();
   return false;
 }
 
