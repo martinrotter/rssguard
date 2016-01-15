@@ -55,7 +55,7 @@ class FormEditAccount : public QDialog {
     void checkOkButton();
 
   private:
-    Ui::FormEditAccount *m_ui;
+    QScopedPointer<Ui::FormEditAccount> m_ui;
     TtRssServiceRoot *m_editableRoot;
     QPushButton *m_btnOk;
 };

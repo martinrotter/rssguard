@@ -53,7 +53,7 @@ TtRssServiceRoot *TtRssCategory::serviceRoot() {
 }
 
 bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
-  QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
+  const QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
   TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
                                                                                  status == RootItem::Unread ?
                                                                                    UpdateArticle::SetToTrue :

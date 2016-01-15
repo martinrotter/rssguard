@@ -57,7 +57,7 @@ class FormEditFeed : public QDialog {
     void addNewFeed();
     void loadCategories(const QList<Category*> categories, RootItem *root_item);
 
-    Ui::FormEditFeed *m_ui;
+    QScopedPointer<Ui::FormEditFeed> m_ui;
     TtRssServiceRoot *m_root;
     TtRssFeed *m_loadedFeed;
 };

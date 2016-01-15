@@ -44,7 +44,6 @@ FormEditFeed::FormEditFeed(TtRssServiceRoot *root, QWidget *parent)
 }
 
 FormEditFeed::~FormEditFeed() {
-  delete m_ui;
 }
 
 int FormEditFeed::execForEdit(TtRssFeed *input_feed) {
@@ -76,7 +75,7 @@ void FormEditFeed::onAuthenticationSwitched() {
 }
 
 void FormEditFeed::onAutoUpdateTypeChanged(int new_index) {
-  Feed::AutoUpdateType auto_update_type = static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
+  const Feed::AutoUpdateType auto_update_type = static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType->itemData(new_index).toInt());
 
   switch (auto_update_type) {
     case Feed::DontAutoUpdate:
@@ -118,7 +117,7 @@ void FormEditFeed::onUrlChanged(const QString &new_url) {
 }
 
 void FormEditFeed::onUsernameChanged(const QString &new_username) {
-  bool is_username_ok = !m_ui->m_gbAuthentication->isChecked() || !new_username.isEmpty();
+  const bool is_username_ok = !m_ui->m_gbAuthentication->isChecked() || !new_username.isEmpty();
 
   m_ui->m_txtUsername->setStatus(is_username_ok ?
                                    LineEditWithStatus::Ok :
@@ -129,7 +128,7 @@ void FormEditFeed::onUsernameChanged(const QString &new_username) {
 }
 
 void FormEditFeed::onPasswordChanged(const QString &new_password) {
-  bool is_password_ok = !m_ui->m_gbAuthentication->isChecked() || !new_password.isEmpty();
+  const bool is_password_ok = !m_ui->m_gbAuthentication->isChecked() || !new_password.isEmpty();
 
   m_ui->m_txtPassword->setStatus(is_password_ok ?
                                    LineEditWithStatus::Ok :
@@ -207,17 +206,17 @@ void FormEditFeed::saveFeed() {
 
 void FormEditFeed::addNewFeed() {
   RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  TtRssServiceRoot *root = parent->kind() == RootItemKind::Category ?
+  const TtRssServiceRoot *root = parent->kind() == RootItemKind::Category ?
                              qobject_cast<TtRssCategory*>(parent)->serviceRoot() :
                              qobject_cast<TtRssServiceRoot*>(parent);
-  int category_id = parent->kind() == RootItemKind::ServiceRoot ?
-                      0 :
-                      qobject_cast<TtRssCategory*>(parent)->customId();
-  TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
-                                                                           category_id,
-                                                                           m_ui->m_gbAuthentication->isChecked(),
-                                                                           m_ui->m_txtUsername->lineEdit()->text(),
-                                                                           m_ui->m_txtPassword->lineEdit()->text());
+  const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
+                            0 :
+                            qobject_cast<TtRssCategory*>(parent)->customId();
+  const TtRssSubscribeToFeedResponse response = root->network()->subscribeToFeed(m_ui->m_txtUrl->lineEdit()->text(),
+                                                                                 category_id,
+                                                                                 m_ui->m_gbAuthentication->isChecked(),
+                                                                                 m_ui->m_txtUsername->lineEdit()->text(),
+                                                                                 m_ui->m_txtPassword->lineEdit()->text());
 
   if (response.code() == STF_INSERTED || response.code() == STF_UPDATED) {
     // Feed was added online.

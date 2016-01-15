@@ -151,7 +151,6 @@ class TtRssNetworkFactory {
 
     // Metadata.
     QDateTime lastLoginTime() const;
-
     QNetworkReply::NetworkError lastError() const;
 
     // Operations.

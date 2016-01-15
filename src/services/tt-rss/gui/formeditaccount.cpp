@@ -81,7 +81,6 @@ FormEditAccount::FormEditAccount(QWidget *parent)
 }
 
 FormEditAccount::~FormEditAccount() {
-  delete m_ui;
 }
 
 TtRssServiceRoot *FormEditAccount::execForCreate() {
@@ -204,7 +203,7 @@ void FormEditAccount::onClickedCancel() {
 }
 
 void FormEditAccount::onUsernameChanged() {
-  QString username = m_ui->m_txtUsername->lineEdit()->text();
+  const QString username = m_ui->m_txtUsername->lineEdit()->text();
 
   if (username.isEmpty()) {
     m_ui->m_txtUsername->setStatus(WidgetWithStatus::Error, tr("Username cannot be empty."));
@@ -215,7 +214,7 @@ void FormEditAccount::onUsernameChanged() {
 }
 
 void FormEditAccount::onPasswordChanged() {
-  QString password = m_ui->m_txtPassword->lineEdit()->text();
+  const QString password = m_ui->m_txtPassword->lineEdit()->text();
 
   if (password.isEmpty()) {
     m_ui->m_txtPassword->setStatus(WidgetWithStatus::Error, tr("Password cannot be empty."));
@@ -226,7 +225,7 @@ void FormEditAccount::onPasswordChanged() {
 }
 
 void FormEditAccount::onHttpUsernameChanged() {
-  bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpUsername->lineEdit()->text().isEmpty();
+  const  bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpUsername->lineEdit()->text().isEmpty();
 
   m_ui->m_txtHttpUsername->setStatus(is_username_ok ?
                                        LineEditWithStatus::Ok :
@@ -237,7 +236,7 @@ void FormEditAccount::onHttpUsernameChanged() {
 }
 
 void FormEditAccount::onHttpPasswordChanged() {
-  bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpPassword->lineEdit()->text().isEmpty();
+  const bool is_username_ok = !m_ui->m_gbHttpAuthentication->isChecked() || !m_ui->m_txtHttpPassword->lineEdit()->text().isEmpty();
 
   m_ui->m_txtHttpPassword->setStatus(is_username_ok ?
                                        LineEditWithStatus::Ok :
@@ -248,7 +247,7 @@ void FormEditAccount::onHttpPasswordChanged() {
 }
 
 void FormEditAccount::onUrlChanged() {
-  QString url = m_ui->m_txtUrl->lineEdit()->text();
+  const QString url = m_ui->m_txtUrl->lineEdit()->text();
 
   if (url.isEmpty()) {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
