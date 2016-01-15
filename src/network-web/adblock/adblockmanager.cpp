@@ -123,8 +123,8 @@ AdBlockSubscription *AdBlockManager::addSubscription(const QString &title, const
     return NULL;
   }
 
-  QString file_name = IOFactory::filterBadCharsFromFilename(title.toLower()) + QL1S(".txt");
-  QString file_path = IOFactory::ensureUniqueFilename(baseSubscriptionDirectory() + QDir::separator() + file_name);
+  const QString file_name = IOFactory::filterBadCharsFromFilename(title.toLower()) + QL1S(".txt");
+  const QString file_path = IOFactory::ensureUniqueFilename(baseSubscriptionDirectory() + QDir::separator() + file_name);
   QFile file(file_path);
 
   if (!file.open(QFile::WriteOnly | QFile::Truncate | QFile::Unbuffered)) {
@@ -187,7 +187,7 @@ QString AdBlockManager::baseSubscriptionDirectory() {
   return QDir::toNativeSeparators(directory);
 }
 
-bool AdBlockManager::shouldBeEnabled() {
+bool AdBlockManager::shouldBeEnabled() const {
   return qApp->settings()->value(GROUP(AdBlock), SETTING(AdBlock::Enabled)).toBool();
 }
 
@@ -198,7 +198,7 @@ void AdBlockManager::load() {
     return;
   }
 
-  Settings *settings = qApp->settings();
+  const Settings *settings = qApp->settings();
   m_enabled = settings->value(GROUP(AdBlock), SETTING(AdBlock::Enabled)).toBool();
   m_useLimitedEasyList = settings->value(GROUP(AdBlock), SETTING(AdBlock::UseLimitedEasyList)).toBool();
   m_disabledRules = settings->value(GROUP(AdBlock), SETTING(AdBlock::DisabledRules)).toStringList();
@@ -228,8 +228,8 @@ void AdBlockManager::load() {
 
     QTextStream stream(&file);
     stream.setCodec("UTF-8");
-    QString title = stream.readLine(1024).remove(QSL("Title: "));
-    QUrl url = QUrl(stream.readLine(1024).remove(QSL("Url: ")));
+    const QString title = stream.readLine(1024).remove(QSL("Title: "));
+    const QUrl url = QUrl(stream.readLine(1024).remove(QSL("Url: ")));
 
     // Close the file.
     file.close();

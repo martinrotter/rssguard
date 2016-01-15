@@ -46,6 +46,7 @@ ToolBarEditor::ToolBarEditor(QWidget *parent)
 }
 
 ToolBarEditor::~ToolBarEditor() {
+  qDebug("Destroying ToolBarEditor instance.");
 }
 
 void ToolBarEditor::loadFromToolBar(BaseToolBar *tool_bar) {

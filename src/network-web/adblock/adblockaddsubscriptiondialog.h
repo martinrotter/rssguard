@@ -63,7 +63,7 @@ class AdBlockAddSubscriptionDialog : public QDialog {
         }
     };
 
-    Ui::AdBlockAddSubscriptionDialog *m_ui;
+    QScopedPointer<Ui::AdBlockAddSubscriptionDialog> m_ui;
     QVector<Subscription> m_knownSubscriptions;
 };
 

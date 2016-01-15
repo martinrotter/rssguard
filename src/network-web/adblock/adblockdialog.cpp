@@ -59,7 +59,6 @@ AdBlockDialog::AdBlockDialog(QWidget* parent) : QDialog(parent), m_ui(new Ui::Ad
 
 AdBlockDialog::~AdBlockDialog() {
   qDebug("Destroying AdBlockDialog instance.");
-  delete m_ui;
 }
 
 void AdBlockDialog::setupMenu() {
@@ -113,24 +112,22 @@ void AdBlockDialog::removeRule() {
 }
 
 void AdBlockDialog::addSubscription() {
-  QPointer<AdBlockAddSubscriptionDialog> dialog = new AdBlockAddSubscriptionDialog(this);
+  QScopedPointer<AdBlockAddSubscriptionDialog> dialog(new AdBlockAddSubscriptionDialog(this));
 
   if (dialog.data()->exec() == QDialog::Accepted) {
-    QString title = dialog.data()->title();
-    QString url = dialog.data()->url();
+    const QString title = dialog.data()->title();
+    const QString url = dialog.data()->url();
 
     if (AdBlockSubscription *subscription = m_manager->addSubscription(title, url)) {
       AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, this);
-
       connect(tree, SIGNAL(refreshStatusChanged(bool)), this, SLOT(setDisabled(bool)));
 
-      int index = m_ui->m_tabs->insertTab(m_ui->m_tabs->count() - 1, tree, subscription->title());
-
+      const int index = m_ui->m_tabs->insertTab(m_ui->m_tabs->count() - 1, tree, subscription->title());
       m_ui->m_tabs->setCurrentIndex(index);
     }
   }
 
-  delete dialog.data();
+  //delete dialog.data();
 }
 
 void AdBlockDialog::removeSubscription() {
@@ -144,7 +141,7 @@ void AdBlockDialog::currentChanged(int index) {
     m_currentTreeWidget = qobject_cast<AdBlockTreeWidget*>(m_ui->m_tabs->widget(index));
     m_currentSubscription = m_currentTreeWidget->subscription();
 
-    bool is_easylist = m_currentSubscription->url() == QUrl(ADBLOCK_EASYLIST_URL);
+    const bool is_easylist = m_currentSubscription->url() == QUrl(ADBLOCK_EASYLIST_URL);
     m_ui->m_checkUseLimitedEasyList->setEnabled(is_easylist && m_ui->m_checkEnable->isChecked());
     m_ui->m_checkUseLimitedEasyList->setVisible(is_easylist);
 
@@ -169,12 +166,12 @@ void AdBlockDialog::enableAdBlock(bool state) {
 }
 
 void AdBlockDialog::aboutToShowMenu() {
-  bool subscriptionEditable = m_currentSubscription && m_currentSubscription->canEditRules();
-  bool subscriptionRemovable = m_currentSubscription && m_currentSubscription->canBeRemoved();
+  const bool subscription_editable = m_currentSubscription && m_currentSubscription->canEditRules();
+  const bool subscription_removable = m_currentSubscription && m_currentSubscription->canBeRemoved();
 
-  m_actionAddRule->setEnabled(subscriptionEditable);
-  m_actionRemoveRule->setEnabled(subscriptionEditable);
-  m_actionRemoveSubscription->setEnabled(subscriptionRemovable);
+  m_actionAddRule->setEnabled(subscription_editable);
+  m_actionRemoveRule->setEnabled(subscription_editable);
+  m_actionRemoveSubscription->setEnabled(subscription_removable);
 }
 
 void AdBlockDialog::learnAboutRules() {
@@ -197,13 +194,11 @@ void AdBlockDialog::load() {
     AdBlockTreeWidget *tree = new AdBlockTreeWidget(subscription, this);
 
     connect(tree, SIGNAL(refreshStatusChanged(bool)), this, SLOT(setDisabled(bool)));
-
     m_ui->m_tabs->addTab(tree, subscription->title());
   }
 
   m_useLimitedEasyList = m_manager->useLimitedEasyList();
   m_ui->m_checkUseLimitedEasyList->setChecked(m_useLimitedEasyList);
-
   m_loaded = true;
 
   QTimer::singleShot(100, this, SLOT(loadSubscriptions()));

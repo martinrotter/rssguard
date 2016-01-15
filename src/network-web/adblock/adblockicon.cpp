@@ -70,7 +70,7 @@ void AdBlockIcon::createMenu(QMenu *menu) {
   AdBlockManager *manager = AdBlockManager::instance();
   AdBlockCustomList *custom_list = manager->customList();
 
-  WebPage* page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->view()->page();
+  WebPage *page = qApp->mainForm()->tabWidget()->currentWidget()->webBrowser()->view()->page();
   const QUrl page_url = page->mainFrame()->url();
 
   menu->addAction(tr("Show Adblock &settings"), manager, SLOT(showDialog()));
@@ -104,18 +104,18 @@ void AdBlockIcon::createMenu(QMenu *menu) {
     for (int i = 0; i < m_blockedPopups.count(); i++) {
       const QPair<AdBlockRule*,QUrl> &pair = m_blockedPopups.at(i);
 
-      QString address = pair.second.toString().right(55);
-      QString actionText = tr("%1 with (%2)").arg(address,
-                                                  pair.first->filter()).replace(QLatin1Char('&'), QLatin1String("&&"));
+      const QString address = pair.second.toString().right(55);
+      QString action_text = tr("%1 with (%2)").arg(address,
+                                                   pair.first->filter()).replace(QLatin1Char('&'), QLatin1String("&&"));
 
-      QAction *action = menu->addAction(actionText, manager, SLOT(showRule()));
+      QAction *action = menu->addAction(action_text, manager, SLOT(showRule()));
       action->setData(QVariant::fromValue((void*)pair.first));
     }
   }
 
   menu->addSeparator();
 
-  QVector<WebPage::AdBlockedEntry> entries = page->adBlockedEntries();
+  const QVector<WebPage::AdBlockedEntry> entries = page->adBlockedEntries();
 
   if (entries.isEmpty()) {
     menu->addAction(tr("No content blocked"))->setEnabled(false);
@@ -141,7 +141,7 @@ void AdBlockIcon::showMenu(const QPoint &pos) {
 }
 
 void AdBlockIcon::toggleCustomFilter() {
-  QAction *action = qobject_cast<QAction*>(sender());
+  const QAction *action = qobject_cast<QAction*>(sender());
 
   if (action == NULL) {
     return;
