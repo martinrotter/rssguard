@@ -17,6 +17,7 @@
 
 #include "services/standard/gui/formstandardimportexport.h"
 
+#include "services/abstract/category.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
 #include "services/standard/standardserviceroot.h"
 #include "core/feedsmodel.h"
@@ -65,6 +66,8 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode)
       m_model->checkAllItems();
       m_ui->m_treeFeeds->setModel(m_model);
       m_ui->m_treeFeeds->expandAll();
+      m_ui->m_cmbRootNode->setVisible(false);
+      m_ui->m_lblRootNode->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Destination file"));
       m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
       setWindowTitle(tr("Export feeds"));
@@ -76,6 +79,9 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode)
       m_ui->m_groupFile->setTitle(tr("Source file"));
       m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
       m_ui->m_groupFeeds->setDisabled(true);
+
+      // Load categories.
+      loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
       setWindowTitle(tr("Import feeds"));
       setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
       break;
@@ -127,6 +133,7 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
     m_ui->m_treeFeeds->expandAll();
   }
   else {
+    m_ui->m_groupFeeds->setEnabled(false);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, tr("Error, file is not well-formed. Select another file."),
                                  tr("Error occurred. File is not well-formed. Select another file."));
   }
@@ -141,7 +148,7 @@ void FormStandardImportExport::onParsingProgress(int completed, int total) {
 
 void FormStandardImportExport::selectExportFile() {
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-  const QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
+  const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
 
   QString filter;
   QString selected_filter;
@@ -178,7 +185,7 @@ void FormStandardImportExport::selectExportFile() {
 
 void FormStandardImportExport::selectImportFile() {
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml)");
-  const QString filter_txt_url_per_line = tr("TXT files (one URL per line) (*.txt)");
+  const QString filter_txt_url_per_line = tr("TXT files [one URL per line] (*.txt)");
 
   QString filter;
   QString selected_filter;
@@ -284,12 +291,21 @@ void FormStandardImportExport::exportFeeds() {
 
 void FormStandardImportExport::importFeeds() {
   QString output_message;
+  RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbRootNode->itemData(m_ui->m_cmbRootNode->currentIndex()).value<void*>());
 
-  if (m_serviceRoot->mergeImportExportModel(m_model, output_message)) {
-    m_serviceRoot->requestItemExpand(m_serviceRoot->getSubTree(), true);
+  if (m_serviceRoot->mergeImportExportModel(m_model, parent, output_message)) {
+    m_serviceRoot->requestItemExpand(parent->getSubTree(), true);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Ok, output_message, output_message);
   }
   else {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::Error, output_message, output_message);
+  }
+}
+
+void FormStandardImportExport::loadCategories(const QList<Category *> categories, RootItem *root_item) {
+  m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue((void*) root_item));
+
+  foreach (Category *category, categories) {
+    m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue((void*) category));
   }
 }

@@ -4,6 +4,7 @@
 Added:
 
 ▪ Added generic "Add new feed" action, which can be accessed via "Feeds & messages" menu. (issue #146)
+▪ User can now specify destination root node when importing feeds. (issue #147)
 ▪ Added support for import/export to/from plain TXT file (one feed URL per line). (issue #142)
 ▪ Optimized menu items in "Add new item" submenu. Added two new bindable actions for adding feeds & categories. (issues #146 and #148)
 

@@ -27,6 +27,7 @@ namespace Ui {
   class FormStandardImportExport;
 }
 
+class Category;
 class StandardServiceRoot;
 
 class FormStandardImportExport : public QDialog {
@@ -59,6 +60,8 @@ class FormStandardImportExport : public QDialog {
 
     void exportFeeds();
     void importFeeds();
+
+    void loadCategories(const QList<Category*> categories, RootItem *root_item);
 
     QScopedPointer<Ui::FormStandardImportExport> m_ui;
     ConversionType m_conversionType;

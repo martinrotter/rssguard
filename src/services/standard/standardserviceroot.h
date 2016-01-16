@@ -92,7 +92,7 @@ class StandardServiceRoot : public ServiceRoot {
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     // NOTE: This is used for import/export of the model.
-    bool mergeImportExportModel(FeedsImportExportModel *model, QString &output_message);
+    bool mergeImportExportModel(FeedsImportExportModel *model, RootItem *target_root_node, QString &output_message);
 
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
     bool cleanFeeds(QList<Feed*> items, bool clean_read_only);

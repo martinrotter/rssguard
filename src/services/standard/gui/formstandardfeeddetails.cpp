@@ -482,8 +482,7 @@ void FormStandardFeedDetails::initialize() {
   m_ui->m_txtUrl->lineEdit()->setFocus(Qt::TabFocusReason);
 }
 
-void FormStandardFeedDetails::loadCategories(const QList<Category*> categories,
-                                             RootItem *root_item) {
+void FormStandardFeedDetails::loadCategories(const QList<Category*> categories, RootItem *root_item) {
   m_ui->m_cmbParentCategory->addItem(root_item->icon(),
                                      root_item->title(),
                                      QVariant::fromValue((void*) root_item));

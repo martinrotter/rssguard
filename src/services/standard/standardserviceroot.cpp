@@ -87,7 +87,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
         model.importAsOPML20(IOFactory::readTextFile(file_to_load));
         model.checkAllItems();
 
-        if (mergeImportExportModel(&model, output_msg)) {
+        if (mergeImportExportModel(&model, this, output_msg)) {
           requestItemExpand(getSubTree(), true);
         }
       }
@@ -332,8 +332,8 @@ QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   return m_feedContextMenu;
 }
 
-bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, QString &output_message) {
-  QStack<RootItem*> original_parents; original_parents.push(this);
+bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, RootItem *target_root_node, QString &output_message) {
+  QStack<RootItem*> original_parents; original_parents.push(target_root_node);
   QStack<RootItem*> new_parents; new_parents.push(model->rootItem());
   bool some_feed_category_error = false;
 
