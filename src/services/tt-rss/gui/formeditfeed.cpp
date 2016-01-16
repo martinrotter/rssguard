@@ -206,7 +206,7 @@ void FormEditFeed::saveFeed() {
 
 void FormEditFeed::addNewFeed() {
   RootItem *parent = static_cast<RootItem*>(m_ui->m_cmbParentCategory->itemData(m_ui->m_cmbParentCategory->currentIndex()).value<void*>());
-  const TtRssServiceRoot *root = parent->kind() == RootItemKind::Category ?
+  TtRssServiceRoot *root = parent->kind() == RootItemKind::Category ?
                              qobject_cast<TtRssCategory*>(parent)->serviceRoot() :
                              qobject_cast<TtRssServiceRoot*>(parent);
   const int category_id = parent->kind() == RootItemKind::ServiceRoot ?
