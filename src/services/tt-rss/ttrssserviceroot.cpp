@@ -644,8 +644,8 @@ QStringList TtRssServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
   QStringList stringy_ids;
   stringy_ids.reserve(feeds.size());
 
-  foreach (Feed *feed, feeds) {
-    stringy_ids.append(QString("'%1'").arg(QString::number(qobject_cast<TtRssFeed*>(feed)->customId())));
+  foreach (const Feed *feed, feeds) {
+    stringy_ids.append(QString("'%1'").arg(QString::number(qobject_cast<const TtRssFeed*>(feed)->customId())));
   }
 
   return stringy_ids;
