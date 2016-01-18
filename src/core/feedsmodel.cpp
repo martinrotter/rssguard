@@ -177,7 +177,7 @@ void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   }
 
   emit feedsUpdateFinished();
-  emit sortingRequired();
+  //emit sortingRequired();
 }
 
 void FeedsModel::updateAllFeeds() {
@@ -614,10 +614,15 @@ bool FeedsModel::hasAnyFeedNewMessages() const {
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
-    QModelIndex indx_parent = indx.parent();
 
-    // Underlying data are changed.
-    emit dataChanged(index(indx.row(), 0, indx_parent), index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
+    if (indx.isValid()) {
+      QModelIndex indx_parent = indx.parent();
+
+      // Underlying data are changed.
+      emit dataChanged(index(indx.row(), 0, indx_parent), index(indx.row(), FDS_MODEL_COUNTS_INDEX, indx_parent));
+
+      list.append(indx_parent);
+    }
   }
 }
 
@@ -663,7 +668,6 @@ bool FeedsModel::addServiceAccount(ServiceRoot *root, bool freshly_activated) {
   // Connect.
   connect(root, SIGNAL(itemRemovalRequested(RootItem*)), this, SLOT(removeItem(RootItem*)));
   connect(root, SIGNAL(itemReassignmentRequested(RootItem*,RootItem*)), this, SLOT(reassignNodeToNewParent(RootItem*,RootItem*)));
-  connect(root, SIGNAL(readFeedsFilterInvalidationRequested()), this, SIGNAL(readFeedsFilterInvalidationRequested()));
   connect(root, SIGNAL(dataChanged(QList<RootItem*>)), this, SLOT(onItemDataChanged(QList<RootItem*>)));
   connect(root, SIGNAL(reloadMessageListRequested(bool)), this, SIGNAL(reloadMessageListRequested(bool)));
   connect(root, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)), this, SIGNAL(itemExpandRequested(QList<RootItem*>,bool)));

@@ -222,7 +222,6 @@ bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QLi
 
   selected_item->updateCounts(false);
   itemChanged(QList<RootItem*>() << selected_item);
-  requestFeedReadFilterReload();
   return true;
 }
 
@@ -272,7 +271,6 @@ bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QLis
     itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
   }
 
-  requestFeedReadFilterReload();
   return true;
 }
 

@@ -89,19 +89,11 @@ QList<Message> RootItem::undeletedMessages() const {
 
 bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
-  RecycleBin *bin = NULL;
 
   foreach (RootItem *child, m_childItems) {
-    if (child->kind() == RootItemKind::Bin) {
-      bin = qobject_cast<RecycleBin*>(child);
-    }
-    else {
+    if (child->kind() != RootItemKind::Bin) {
       result &= child->cleanMessages(clear_only_read);
     }
-  }
-
-  if (bin != NULL) {
-    result &= bin->cleanMessages(clear_only_read);
   }
 
   return result;

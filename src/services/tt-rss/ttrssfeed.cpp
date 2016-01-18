@@ -387,10 +387,6 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
 
     updateCounts(true);
     serviceRoot()->itemChanged(QList<RootItem*>() << this);
-
-    if (updated_messages > 0) {
-      serviceRoot()->requestFeedReadFilterReload();
-    }
   }
 
   return updated_messages;

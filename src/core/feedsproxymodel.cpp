@@ -37,10 +37,8 @@ FeedsProxyModel::FeedsProxyModel(QObject *parent)
   setFilterCaseSensitivity(Qt::CaseInsensitive);
   setFilterKeyColumn(-1);
   setFilterRole(Qt::EditRole);
-  setDynamicSortFilter(false);
+  setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
-
-  connect(m_sourceModel, SIGNAL(readFeedsFilterInvalidationRequested()), this, SLOT(invalidateReadFeedsFilter()));
 }
 
 FeedsProxyModel::~FeedsProxyModel() {

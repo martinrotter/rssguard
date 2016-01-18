@@ -186,7 +186,6 @@ bool RecycleBin::restore() {
     parent_root->updateCounts(true);
     parent_root->itemChanged(parent_root->getSubTree());
     parent_root->requestReloadMessageList(true);
-    parent_root->requestFeedReadFilterReload();
     return true;
   }
   else {

@@ -154,7 +154,6 @@ class ServiceRoot : public RootItem {
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*> &items);
     void requestReloadMessageList(bool mark_selected_messages_read);
-    void requestFeedReadFilterReload();
     void requestItemExpand(const QList<RootItem*> &items, bool expand);
     void requestItemExpandStateSave(RootItem *subtree_root);
     void requestItemReassignment(RootItem *item, RootItem *new_parent);
@@ -172,7 +171,6 @@ class ServiceRoot : public RootItem {
   signals:
     // Emitted if data in any item belonging to this root are changed.
     void dataChanged(QList<RootItem*> items);
-    void readFeedsFilterInvalidationRequested();
     void reloadMessageListRequested(bool mark_selected_messages_read);
     void itemExpandRequested(QList<RootItem*> items, bool expand);
     void itemExpandStateSaveRequested(RootItem *subtree_root);

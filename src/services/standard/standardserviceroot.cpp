@@ -192,18 +192,22 @@ bool StandardServiceRoot::markFeedsReadUnread(QList<Feed*> items, ReadStatus rea
 bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
   QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_delete_msg(db_handle);
+  int account_id = accountId();
   query_delete_msg.setForwardOnly(true);
 
   if (clean_read_only) {
     query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))));
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
+                             .arg(textualFeedIds(items).join(QSL(", "))));
   }
   else {
     query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))));
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
+                             .arg(textualFeedIds(items).join(QSL(", "))));
   }
 
   query_delete_msg.bindValue(QSL(":deleted"), 1);
+  query_delete_msg.bindValue(QSL(":account_id"), account_id);
 
   if (query_delete_msg.exec()) {
     // Messages are cleared, now inform model about need to reload data.
@@ -222,8 +226,7 @@ bool StandardServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
     return true;
   }
   else {
-    QString aa = query_delete_msg.lastError().text();
-
+    qDebug("Cleaning of feeds failed: '%s'.", qPrintable(query_delete_msg.lastError().text()));
     return false;
   }
 }
@@ -497,7 +500,6 @@ bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const 
   selected_item->updateCounts(false);
 
   itemChanged(QList<RootItem*>() << selected_item);
-  requestFeedReadFilterReload();
   return true;
 }
 
@@ -538,8 +540,6 @@ bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const Q
     itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
   }
 
-
-  requestFeedReadFilterReload();
   return true;
 }
 
@@ -556,6 +556,5 @@ bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item
 
   updateCounts(true);
   itemChanged(getSubTree());
-  requestFeedReadFilterReload();
   return true;
 }

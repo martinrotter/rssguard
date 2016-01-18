@@ -197,10 +197,6 @@ class FeedsModel : public QAbstractItemModel {
     // Update of feeds is finished.
     void feedsUpdateFinished();
 
-    // Counts of unread messages are changed in some feeds,
-    // notify view about this shit.
-    void readFeedsFilterInvalidationRequested();
-
     // Emitted when model requests update of some feeds.
     void feedsUpdateRequested(const QList<Feed*> feeds);
 

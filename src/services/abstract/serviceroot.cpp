@@ -118,10 +118,6 @@ void ServiceRoot::requestReloadMessageList(bool mark_selected_messages_read) {
   emit reloadMessageListRequested(mark_selected_messages_read);
 }
 
-void ServiceRoot::requestFeedReadFilterReload() {
-  emit readFeedsFilterInvalidationRequested();
-}
-
 void ServiceRoot::requestItemExpand(const QList<RootItem*> &items, bool expand) {
   emit itemExpandRequested(items, expand);
 }
