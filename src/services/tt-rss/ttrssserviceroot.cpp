@@ -587,6 +587,10 @@ void TtRssServiceRoot::syncIn() {
     // set primary IDs of the items.
     storeNewFeedTree(new_tree);
 
+    // We have new feed, some feeds were maybe removed,
+    // so remove left over messages.
+    removeLeftOverMessages();
+
     foreach (RootItem *top_level_item, new_tree->childItems()) {
       top_level_item->setParent(NULL);
       requestItemReassignment(top_level_item, this);
@@ -666,6 +670,20 @@ void TtRssServiceRoot::removeOldFeedTree(bool including_messages) {
     query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
     query.bindValue(QSL(":account_id"), accountId());
     query.exec();
+  }
+}
+
+void TtRssServiceRoot::removeLeftOverMessages() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(database);
+  int account_id = accountId();
+
+  query.setForwardOnly(true);
+  query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  if (!query.exec()) {
+    qWarning("Removing of left over messages failed: '%s'.", qPrintable(query.lastError().text()));
   }
 }
 

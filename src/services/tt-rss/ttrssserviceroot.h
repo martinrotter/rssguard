@@ -99,6 +99,7 @@ class TtRssServiceRoot : public ServiceRoot {
     QStringList textualFeedIds(const QList<Feed*> &feeds);
 
     void removeOldFeedTree(bool including_messages);
+    void removeLeftOverMessages();
     void cleanAllItems();
     void storeNewFeedTree(RootItem *root);
     void loadFromDatabase();

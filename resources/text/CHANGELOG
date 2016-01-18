@@ -17,6 +17,7 @@ Changed:
 
 Fixed:
 
+▪ Left over messages are now correctly deleted after sync-in is performed in TT-RSS account.
 ▪ Made some rather big changes to sorting/filtering of feeds, which is now dynamic.
 ▪ Feeds are now (re)sorted when batch update finishes. (bug #150)
 ▪ Expand status if items in feed list are now persistent when performing sync-in of TT-RSS accounts. (bug #149)
