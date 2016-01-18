@@ -24,6 +24,7 @@
 #include "miscellaneous/application.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "gui/messagebox.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/ioexception.h"
 
@@ -91,7 +92,7 @@ void FormStandardImportExport::setMode(const FeedsImportExportModel::Mode &mode)
       break;
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(true);
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 void FormStandardImportExport::selectFile() {
@@ -113,8 +114,11 @@ void FormStandardImportExport::selectFile() {
 void FormStandardImportExport::onParsingStarted() {
   m_ui->m_lblResult->setStatus(WidgetWithStatus::Progress, tr("Parsing data..."), tr("Parsing data..."));
   m_ui->m_btnSelectFile->setEnabled(false);
+  m_ui->m_groupFeeds->setEnabled(false);
   m_ui->m_progressBar->setValue(0);
   m_ui->m_progressBar->setVisible(true);
+
+    m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 void FormStandardImportExport::onParsingFinished(int count_failed, int count_succeeded, bool parsing_error) {
@@ -138,7 +142,7 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
                                  tr("Error occurred. File is not well-formed. Select another file."));
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!parsing_error);
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
 }
 
 void FormStandardImportExport::onParsingProgress(int completed, int total) {
@@ -180,7 +184,7 @@ void FormStandardImportExport::selectExportFile() {
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
   }
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setDisabled(selected_file.isEmpty());
+  m_ui->m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(m_ui->m_lblSelectFile->status() == WidgetWithStatus::Ok);
 }
 
 void FormStandardImportExport::selectImportFile() {
@@ -208,11 +212,17 @@ void FormStandardImportExport::selectImportFile() {
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
 
-    parseImportFile(selected_file);
+    QMessageBox::StandardButton answer = MessageBox::show(this, QMessageBox::Warning, tr("Get online metadata"),
+                                                          tr("Metadata for your feeds can be fetched online. Note that the action "
+                                                             "could take several minutes, depending on number of feeds."),
+                                                          tr("Do you want to fetch feed metadata online?"), QString(), QMessageBox::Yes | QMessageBox::No,
+                                                          QMessageBox::Yes);
+
+    parseImportFile(selected_file, answer == QMessageBox::Yes);
   }
 }
 
-void FormStandardImportExport::parseImportFile(const QString &file_name) {
+void FormStandardImportExport::parseImportFile(const QString &file_name, bool fetch_metadata_online) {
   QFile input_file(file_name);
   QByteArray input_data;
 
@@ -227,17 +237,12 @@ void FormStandardImportExport::parseImportFile(const QString &file_name) {
 
   switch (m_conversionType) {
     case OPML20:
-      m_model->importAsOPML20(input_data);
+      m_model->importAsOPML20(input_data, fetch_metadata_online);
       break;
 
     case TXTUrlPerLine:
-      m_model->importAsTxtURLPerLine(input_data);
+      m_model->importAsTxtURLPerLine(input_data, fetch_metadata_online);
       break;
-
-      // TODO: V celém kódu nově zavést pořádně všude const, i v lokálních metodových proměnných
-
-      // TODO: Kompletně nahradit všechny ukazatele za QScopedPointer tak,
-      // aby se nikde v kodu nevolalo delete či deleteLater().
 
     default:
       return;

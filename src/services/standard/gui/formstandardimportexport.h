@@ -56,7 +56,7 @@ class FormStandardImportExport : public QDialog {
   private:
     void selectExportFile();
     void selectImportFile();
-    void parseImportFile(const QString &file_name);
+    void parseImportFile(const QString &file_name, bool fetch_metadata_online);
 
     void exportFeeds();
     void importFeeds();

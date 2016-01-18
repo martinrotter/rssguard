@@ -58,6 +58,10 @@ RootItem *FeedsImportExportModel::rootItem() const {
 }
 
 void FeedsImportExportModel::setRootItem(RootItem *root_item) {
+  if (m_rootItem != NULL) {
+    delete m_rootItem;
+  }
+
   m_rootItem = root_item;
 }
 
@@ -154,8 +158,11 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray &result) {
   return true;
 }
 
-void FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
+void FeedsImportExportModel::importAsOPML20(const QByteArray &data, bool fetch_metadata_online) {
   emit parsingStarted();
+  emit layoutAboutToBeChanged();
+  setRootItem(NULL);
+  emit layoutChanged();
 
   QDomDocument opml_document;
 
@@ -169,7 +176,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
     emit parsingFinished(0, 0, true);
   }
 
-  int completed = 0, total = 0;
+  int completed = 0, total = 0, succeded = 0, failed = 0;
   StandardServiceRoot *root_item = new StandardServiceRoot();
   QStack<RootItem*> model_items; model_items.push(root_item);
   QStack<QDomElement> elements_to_process; elements_to_process.push(opml_document.documentElement().elementsByTagName(QSL("body")).at(0).toElement());
@@ -192,32 +199,54 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
         if (child_element.attributes().contains(QSL("xmlUrl")) && child.attributes().contains(QSL("text"))) {
           // This is FEED.
           // Add feed and end this iteration.
-          QString feed_title = child_element.attribute(QSL("text"));
           QString feed_url = child_element.attribute(QSL("xmlUrl"));
-          QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
-          QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
-          QString feed_description = child_element.attribute(QSL("description"));
-          QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
 
-          StandardFeed *new_feed = new StandardFeed(active_model_item);
-          new_feed->setTitle(feed_title);
-          new_feed->setDescription(feed_description);
-          new_feed->setEncoding(feed_encoding);
-          new_feed->setUrl(feed_url);
-          new_feed->setCreationDate(QDateTime::currentDateTime());
-          new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
+          if (!feed_url.isEmpty()) {
+            QPair<StandardFeed*,QNetworkReply::NetworkError> guessed;
 
-          if (feed_type == QL1S("RSS1")) {
-            new_feed->setType(StandardFeed::Rdf);
-          }
-          else if (feed_type == QL1S("ATOM")) {
-            new_feed->setType(StandardFeed::Atom10);
-          }
-          else {
-            new_feed->setType(StandardFeed::Rss2X);
-          }
+            if (fetch_metadata_online &&
+                (guessed = StandardFeed::guessFeed(feed_url)).second == QNetworkReply::NoError) {
+              // We should obtain fresh metadata from online feed source.
+              guessed.first->setUrl(feed_url);
+              active_model_item->appendChild(guessed.first);
 
-          active_model_item->appendChild(new_feed);
+              succeded++;
+            }
+            else {
+              QString feed_title = child_element.attribute(QSL("text"));
+              QString feed_encoding = child_element.attribute(QSL("encoding"), DEFAULT_FEED_ENCODING);
+              QString feed_type = child_element.attribute(QSL("version"), DEFAULT_FEED_TYPE).toUpper();
+              QString feed_description = child_element.attribute(QSL("description"));
+              QIcon feed_icon = qApp->icons()->fromByteArray(child_element.attribute(QSL("rssguard:icon")).toLocal8Bit());
+
+              StandardFeed *new_feed = new StandardFeed(active_model_item);
+              new_feed->setTitle(feed_title);
+              new_feed->setDescription(feed_description);
+              new_feed->setEncoding(feed_encoding);
+              new_feed->setUrl(feed_url);
+              new_feed->setCreationDate(QDateTime::currentDateTime());
+              new_feed->setIcon(feed_icon.isNull() ? qApp->icons()->fromTheme(QSL("folder-feed")) : feed_icon);
+
+              if (feed_type == QL1S("RSS1")) {
+                new_feed->setType(StandardFeed::Rdf);
+              }
+              else if (feed_type == QL1S("ATOM")) {
+                new_feed->setType(StandardFeed::Atom10);
+              }
+              else {
+                new_feed->setType(StandardFeed::Rss2X);
+              }
+
+              active_model_item->appendChild(new_feed);
+
+              if (fetch_metadata_online && guessed.second != QNetworkReply::NoError) {
+                failed++;
+              }
+              else {
+                succeded++;
+              }
+            }
+          }
         }
         else {
           // This must be CATEGORY.
@@ -258,7 +287,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray &data) {
   emit layoutAboutToBeChanged();
   setRootItem(root_item);
   emit layoutChanged();
-  emit parsingFinished(0, completed, false);
+  emit parsingFinished(failed, succeded, false);
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
@@ -269,8 +298,11 @@ bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray &result) {
   return true;
 }
 
-void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
+void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data, bool fetch_metadata_online) {
   emit parsingStarted();
+  emit layoutAboutToBeChanged();
+  setRootItem(NULL);
+  emit layoutChanged();
 
   int completed = 0, succeded = 0, failed = 0;
   StandardServiceRoot *root_item = new StandardServiceRoot();
@@ -278,9 +310,11 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
 
   foreach (const QByteArray &url, urls) {
     if (!url.isEmpty()) {
-      QPair<StandardFeed*,QNetworkReply::NetworkError> guessed = StandardFeed::guessFeed(url);
+      QPair<StandardFeed*,QNetworkReply::NetworkError> guessed;
 
-      if (guessed.second == QNetworkReply::NoError) {
+
+      if (fetch_metadata_online &&
+          (guessed = StandardFeed::guessFeed(url)).second == QNetworkReply::NoError) {
         guessed.first->setUrl(url);
         root_item->appendChild(guessed.first);
         succeded++;
@@ -294,7 +328,13 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
         feed->setIcon(qApp->icons()->fromTheme(QSL("folder-feed")));
         feed->setEncoding(DEFAULT_FEED_ENCODING);
         root_item->appendChild(feed);
-        failed++;
+
+        if (fetch_metadata_online && guessed.second != QNetworkReply::NoError) {
+          failed++;
+        }
+        else {
+          succeded++;
+        }
       }
 
       qApp->processEvents();
@@ -420,7 +460,14 @@ int FeedsImportExportModel::rowCount(const QModelIndex &parent) const {
     return 0;
   }
   else {
-    return itemForIndex(parent)->childCount();
+    RootItem *item = itemForIndex(parent);
+
+    if (item != NULL) {
+      return item->childCount();
+    }
+    else {
+      return 0;
+    }
   }
 }
 
