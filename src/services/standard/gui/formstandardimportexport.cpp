@@ -207,6 +207,7 @@ void FormStandardImportExport::selectImportFile() {
     }
 
     m_ui->m_lblSelectFile->setStatus(WidgetWithStatus::Ok, QDir::toNativeSeparators(selected_file), tr("File is selected."));
+
     parseImportFile(selected_file);
   }
 }

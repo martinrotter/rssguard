@@ -300,7 +300,7 @@ void FeedsImportExportModel::importAsTxtURLPerLine(const QByteArray &data) {
       qApp->processEvents();
     }
     else {
-      qWarning("Detected empty URL when parsing input TXT (one URL per line) data.");
+      qWarning("Detected empty URL when parsing input TXT [one URL per line] data.");
       failed++;
     }
 
