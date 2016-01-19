@@ -498,7 +498,6 @@ bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const 
   Q_UNUSED(read)
 
   selected_item->updateCounts(false);
-
   itemChanged(QList<RootItem*>() << selected_item);
   return true;
 }

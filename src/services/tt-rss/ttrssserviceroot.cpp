@@ -275,11 +275,19 @@ bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QLis
 }
 
 bool TtRssServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
-  return false;
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
+  return true;
 }
 
 bool TtRssServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
-  return false;
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
+  updateCounts(true);
+  itemChanged(getSubTree());
+  return true;
 }
 
 TtRssNetworkFactory *TtRssServiceRoot::network() const {

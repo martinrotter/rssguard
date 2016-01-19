@@ -110,7 +110,7 @@ QList<Message> ServiceRoot::undeletedMessages() const {
   return messages;
 }
 
-void ServiceRoot::itemChanged(const QList<RootItem *> &items) {
+void ServiceRoot::itemChanged(const QList<RootItem*> &items) {
   emit dataChanged(items);
 }
 
