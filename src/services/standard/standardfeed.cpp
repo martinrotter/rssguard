@@ -98,8 +98,8 @@ QList<QAction*> StandardFeed::contextMenu() {
   return serviceRoot()->getContextMenuForFeed(this);
 }
 
-StandardServiceRoot *StandardFeed::serviceRoot() {
-  return static_cast<StandardServiceRoot*>(getParentServiceRoot());
+StandardServiceRoot *StandardFeed::serviceRoot() const {
+  return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
 bool StandardFeed::editViaGui() {
@@ -138,9 +138,7 @@ QList<Message> StandardFeed::undeletedMessages() const {
                          "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
 
   query_read_msg.bindValue(QSL(":feed"), id());
-  query_read_msg.bindValue(QSL(":account_id"), const_cast<StandardFeed*>(this)->serviceRoot()->accountId());
-
-  // FIXME: Fix those const functions, this is fucking ugly.
+  query_read_msg.bindValue(QSL(":account_id"), serviceRoot()->accountId());
 
   if (query_read_msg.exec()) {
     while (query_read_msg.next()) {

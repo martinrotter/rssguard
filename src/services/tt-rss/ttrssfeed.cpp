@@ -53,11 +53,11 @@ TtRssFeed::~TtRssFeed() {
 QString TtRssFeed::hashCode() const {
   return
       QString::number(kind()) + QL1S("-") +
-      QString::number(const_cast<TtRssFeed*>(this)->getParentServiceRoot()->accountId()) + QL1S("-") +
+      QString::number(getParentServiceRoot()->accountId()) + QL1S("-") +
       QString::number(customId());
 }
 
-TtRssServiceRoot *TtRssFeed::serviceRoot() {
+TtRssServiceRoot *TtRssFeed::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }
 
@@ -188,7 +188,7 @@ int TtRssFeed::update() {
 
 QList<Message> TtRssFeed::undeletedMessages() const {
   QList<Message> messages;
-  int account_id = const_cast<TtRssFeed*>(this)->serviceRoot()->accountId();
+  int account_id = serviceRoot()->accountId();
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_read_msg(database);
 
@@ -199,8 +199,6 @@ QList<Message> TtRssFeed::undeletedMessages() const {
 
   query_read_msg.bindValue(QSL(":feed"), customId());
   query_read_msg.bindValue(QSL(":account_id"), account_id);
-
-  // FIXME: Fix those const functions, this is fucking ugly.
 
   if (query_read_msg.exec()) {
     while (query_read_msg.next()) {

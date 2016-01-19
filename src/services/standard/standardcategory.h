@@ -40,7 +40,7 @@ class StandardCategory : public Category {
     explicit StandardCategory(const QSqlRecord &record);
     virtual ~StandardCategory();
 
-    StandardServiceRoot *serviceRoot();
+    StandardServiceRoot *serviceRoot() const;
 
     // Returns the actual data representation of standard category.
     QVariant data(int column, int role) const;

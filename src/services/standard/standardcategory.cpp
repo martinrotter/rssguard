@@ -54,8 +54,8 @@ StandardCategory::~StandardCategory() {
   qDebug("Destroying Category instance.");
 }
 
-StandardServiceRoot *StandardCategory::serviceRoot() {
-  return static_cast<StandardServiceRoot*>(getParentServiceRoot());
+StandardServiceRoot *StandardCategory::serviceRoot() const {
+  return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
 }
 
 QVariant StandardCategory::data(int column, int role) const {

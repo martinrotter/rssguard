@@ -35,7 +35,7 @@ class TtRssFeed : public Feed {
 
     QString hashCode() const;
 
-    TtRssServiceRoot *serviceRoot();
+    TtRssServiceRoot *serviceRoot() const;
 
     QVariant data(int column, int role) const;
 

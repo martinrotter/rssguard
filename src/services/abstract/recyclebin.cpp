@@ -98,8 +98,6 @@ QList<Message> RecycleBin::undeletedMessages() const {
                          "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;");
   query_read_msg.bindValue(QSL(":account_id"), account_id);
 
-  // FIXME: Fix those const functions, this is fucking ugly.
-
   if (query_read_msg.exec()) {
     while (query_read_msg.next()) {
       bool decoded;

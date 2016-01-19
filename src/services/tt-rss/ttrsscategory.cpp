@@ -44,11 +44,11 @@ TtRssCategory::~TtRssCategory() {
 QString TtRssCategory::hashCode() const {
   return
       QString::number(kind()) + QL1S("-") +
-      QString::number(const_cast<TtRssCategory*>(this)->getParentServiceRoot()->accountId()) + QL1S("-") +
+      QString::number(getParentServiceRoot()->accountId()) + QL1S("-") +
       QString::number(customId());
 }
 
-TtRssServiceRoot *TtRssCategory::serviceRoot() {
+TtRssServiceRoot *TtRssCategory::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }
 

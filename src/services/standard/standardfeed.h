@@ -53,7 +53,7 @@ class StandardFeed : public Feed {
     explicit StandardFeed(const QSqlRecord &record);
     virtual ~StandardFeed();
 
-    StandardServiceRoot *serviceRoot();
+    StandardServiceRoot *serviceRoot() const;
 
     // Getters/setters for count of messages.
     // NOTE: For feeds, counts are stored internally

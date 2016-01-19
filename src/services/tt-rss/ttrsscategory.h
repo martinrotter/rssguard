@@ -35,7 +35,7 @@ class TtRssCategory : public Category {
 
     QString hashCode() const;
 
-    TtRssServiceRoot *serviceRoot();
+    TtRssServiceRoot *serviceRoot() const;
 
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
