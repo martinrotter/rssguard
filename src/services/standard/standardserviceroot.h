@@ -98,14 +98,10 @@ class StandardServiceRoot : public ServiceRoot {
     QStringList textualFeedIds(const QList<Feed *> &feeds);
 
     StandardRecycleBin *m_recycleBin;
-
-    // Menus.
     QAction *m_actionExportFeeds;
     QAction *m_actionImportFeeds;
-
     QList<QAction*> m_serviceMenu;
     QList<QAction*> m_feedContextMenu;
-
     QAction *m_actionFeedFetchMetadata;
 };
 

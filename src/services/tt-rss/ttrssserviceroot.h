@@ -95,10 +95,8 @@ class TtRssServiceRoot : public ServiceRoot {
     void loadFromDatabase();
 
     TtRssRecycleBin *m_recycleBin;
-
     QAction *m_actionSyncIn;
     QList<QAction*> m_serviceMenu;
-
     TtRssNetworkFactory *m_network;
 };
 
