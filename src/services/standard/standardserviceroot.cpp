@@ -310,17 +310,6 @@ void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
   }
 }
 
-QList<StandardCategory*> StandardServiceRoot::allCategories() {
-  QList<Category*> cats = getSubTreeCategories();
-  QList<StandardCategory*> std_cats;
-
-  foreach (Category *category, cats) {
-    std_cats.append(qobject_cast<StandardCategory*>(category));
-  }
-
-  return std_cats;
-}
-
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed *feed) {
   if (m_feedContextMenu.isEmpty()) {
     // Initialize.
@@ -482,78 +471,5 @@ bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
     qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
   }
 
-  return true;
-}
-
-bool StandardServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
-  Q_UNUSED(messages)
-  Q_UNUSED(read)
-  Q_UNUSED(selected_item)
-
-  return true;
-}
-
-bool StandardServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
-  Q_UNUSED(messages)
-  Q_UNUSED(read)
-
-  selected_item->updateCounts(false);
-  itemChanged(QList<RootItem*>() << selected_item);
-  return true;
-}
-
-bool StandardServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item,
-                                                          const QList<QPair<Message,Importance> > &changes) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(changes)
-
-  return true;
-}
-
-bool StandardServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item,
-                                                         const QList<QPair<Message,Importance> > &changes) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(changes)
-
-  return true;
-}
-
-bool StandardServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  return true;
-}
-
-bool StandardServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(messages)
-
-  // User deleted some messages he selected in message list.
-  selected_item->updateCounts(true);
-
-  if (selected_item->kind() == RootItemKind::Bin) {
-    itemChanged(QList<RootItem*>() << m_recycleBin);
-  }
-  else {
-    m_recycleBin->updateCounts(true);
-    itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
-  }
-
-  return true;
-}
-
-bool StandardServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  return true;
-}
-
-bool StandardServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  updateCounts(true);
-  itemChanged(getSubTree());
   return true;
 }

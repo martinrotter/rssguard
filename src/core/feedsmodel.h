@@ -104,12 +104,6 @@ class FeedsModel : public QAbstractItemModel {
     // in "newspaper" mode.
     QList<Message> messagesForItem(RootItem *item) const;
 
-    // Returns list of all categories contained in the model.
-    QList<Category*> allCategories() const;
-
-    // Returns list of all feeds contained in the model.
-    QList<Feed*> allFeeds() const;
-
     // Returns ALL RECURSIVE CHILD feeds contained within single index.
     QList<Feed*> feedsForIndex(const QModelIndex &index) const;
 

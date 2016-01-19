@@ -21,6 +21,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
+#include "services/abstract/recyclebin.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -140,6 +141,84 @@ int ServiceRoot::accountId() const {
 
 void ServiceRoot::setAccountId(int account_id) {
   m_accountId = account_id;
+}
+
+bool ServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+  Q_UNUSED(messages)
+  Q_UNUSED(read)
+  Q_UNUSED(selected_item)
+
+  return true;
+}
+
+bool ServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
+  Q_UNUSED(messages)
+  Q_UNUSED(read)
+
+  selected_item->updateCounts(false);
+  itemChanged(QList<RootItem*>() << selected_item);
+  return true;
+}
+
+bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message, RootItem::Importance> > &changes) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(changes)
+
+  return true;
+}
+
+bool ServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message, RootItem::Importance> > &changes) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(changes)
+
+  return true;
+}
+
+bool ServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
+  return true;
+}
+
+bool ServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
+  Q_UNUSED(messages)
+
+  // User deleted some messages he selected in message list.
+  selected_item->updateCounts(true);
+
+  RecycleBin *bin = recycleBin();
+
+  if (selected_item->kind() == RootItemKind::Bin) {
+    itemChanged(QList<RootItem*>() << bin);
+  }
+  else {
+    if (bin != NULL) {
+      bin->updateCounts(true);
+      itemChanged(QList<RootItem*>() << selected_item << bin);
+    }
+    else {
+      itemChanged(QList<RootItem*>() << selected_item);
+    }
+  }
+
+  return true;
+}
+
+bool ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
+  return true;
+}
+
+bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
+  Q_UNUSED(selected_item)
+  Q_UNUSED(messages)
+
+  updateCounts(true);
+  itemChanged(getSubTree());
+  return true;
 }
 
 void ServiceRoot::assembleFeeds(Assignment feeds) {

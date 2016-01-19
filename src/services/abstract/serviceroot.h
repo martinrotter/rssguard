@@ -103,7 +103,7 @@ class ServiceRoot : public RootItem {
     // some ONLINE service or something.
     //
     // "read" is status which is ABOUT TO BE SET.
-    virtual bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read) = 0;
+    virtual bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
 
     // Called AFTER this read status update (triggered by user in message list) is stored in DB,
     // when false is returned, change is aborted.
@@ -111,7 +111,7 @@ class ServiceRoot : public RootItem {
     // which items are actually changed.
     //
     // "read" is status which is ABOUT TO BE SET.
-    virtual bool onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read) = 0;
+    virtual bool onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
 
     // Called BEFORE this importance switch update is stored in DB,
     // when false is returned, change is aborted.
@@ -119,7 +119,7 @@ class ServiceRoot : public RootItem {
     // some ONLINE service or something.
     //
     // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes) = 0;
+    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
 
     // Called AFTER this importance switch update is stored in DB,
     // when false is returned, change is aborted.
@@ -127,25 +127,25 @@ class ServiceRoot : public RootItem {
     // which items are actually changed.
     //
     // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes) = 0;
+    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
 
     // Called BEFORE the list of messages is about to be deleted
     // by the user from message list.
-    virtual bool onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) = 0;
+    virtual bool onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
 
     // Called AFTER the list of messages was deleted
     // by the user from message list.
-    virtual bool onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) = 0;
+    virtual bool onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
 
     // Called BEFORE the list of messages is about to be restored from recycle bin
     // by the user from message list.
     // Selected item is naturally recycle bin.
-    virtual bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) = 0;
+    virtual bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
     // Called AFTER the list of messages was restored from recycle bin
     // by the user from message list.
     // Selected item is naturally recycle bin.
-    virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) = 0;
+    virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
     /////////////////////////////////////////
     // Members to override. */

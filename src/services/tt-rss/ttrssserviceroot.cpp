@@ -198,8 +198,7 @@ QList<QAction*> TtRssServiceRoot::contextMenu() {
   return serviceMenu();
 }
 
-bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages,
-                                               RootItem::ReadStatus read) {
+bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
 
   TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(messages),
@@ -214,15 +213,6 @@ bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QL
   else {
     return false;
   }
-}
-
-bool TtRssServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {
-  Q_UNUSED(messages)
-  Q_UNUSED(read)
-
-  selected_item->updateCounts(false);
-  itemChanged(QList<RootItem*>() << selected_item);
-  return true;
 }
 
 bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,Importance> > &changes) {
@@ -241,53 +231,6 @@ bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, 
   else {
     return false;
   }
-}
-
-bool TtRssServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,Importance> > &changes) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(changes)
-
-  return true;
-}
-
-bool TtRssServiceRoot::onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  return true;
-}
-
-bool TtRssServiceRoot::onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(messages)
-
-  // User deleted some messages he selected in message list.
-  selected_item->updateCounts(true);
-
-  if (selected_item->kind() == RootItemKind::Bin) {
-    itemChanged(QList<RootItem*>() << m_recycleBin);
-  }
-  else {
-    m_recycleBin->updateCounts(true);
-    itemChanged(QList<RootItem*>() << selected_item << m_recycleBin);
-  }
-
-  return true;
-}
-
-bool TtRssServiceRoot::onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  return true;
-}
-
-bool TtRssServiceRoot::onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  updateCounts(true);
-  itemChanged(getSubTree());
-  return true;
 }
 
 TtRssNetworkFactory *TtRssServiceRoot::network() const {

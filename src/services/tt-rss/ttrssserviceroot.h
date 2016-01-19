@@ -59,18 +59,8 @@ class TtRssServiceRoot : public ServiceRoot {
     RecycleBin *recycleBin() const;
 
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
-
     bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
-    bool onAfterSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
-
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
-    bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
-
-    bool onBeforeMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
-    bool onAfterMessagesDelete(RootItem *selected_item, const QList<Message> &messages);
-
-    bool onBeforeMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
-    bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
     // Access to network.
     TtRssNetworkFactory *network() const;

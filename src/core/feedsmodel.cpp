@@ -521,7 +521,7 @@ StandardServiceRoot *FeedsModel::standardServiceRoot() const {
 QList<Feed*> FeedsModel::feedsForScheduledUpdate(bool auto_update_now) {
   QList<Feed*> feeds_for_update;
 
-  foreach (Feed *feed, allFeeds()) {
+  foreach (Feed *feed, m_rootItem->getSubTreeFeeds()) {
     switch (feed->autoUpdateType()) {
       case Feed::DontAutoUpdate:
         // Do not auto-update this feed ever.
@@ -602,7 +602,7 @@ QModelIndex FeedsModel::indexForItem(const RootItem *item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() const {
-  foreach (const Feed *feed, allFeeds()) {
+  foreach (const Feed *feed, m_rootItem->getSubTreeFeeds()) {
     if (feed->status() == Feed::NewMessages) {
       return true;
     }
@@ -732,12 +732,4 @@ bool FeedsModel::markItemRead(RootItem *item, RootItem::ReadStatus read) {
 
 bool FeedsModel::markItemCleared(RootItem *item, bool clean_read_only) {
   return item->cleanMessages(clean_read_only);
-}
-
-QList<Feed*> FeedsModel::allFeeds() const {
-  return m_rootItem->getSubTreeFeeds();
-}
-
-QList<Category*> FeedsModel::allCategories() const {
-  return m_rootItem->getSubTreeCategories();
 }
