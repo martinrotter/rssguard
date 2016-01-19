@@ -192,7 +192,7 @@ class FeedsModel : public QAbstractItemModel {
     void feedsUpdateFinished();
 
     // Emitted when model requests update of some feeds.
-    void feedsUpdateRequested(const QList<Feed*> feeds);
+    void feedsUpdateRequested(QList<Feed*> feeds);
 
     // Emitted if counts of messages are changed.
     void messageCountsChanged(int unread_messages, int total_messages, bool any_feed_has_unread_messages);

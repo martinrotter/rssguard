@@ -316,7 +316,7 @@ void FeedsModel::executeNextAutoUpdate() {
 
   // Pass needed interval data and lets the model decide which feeds
   // should be updated in this pass.
-  const QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
+  QList<Feed*> feeds_for_update = feedsForScheduledUpdate(m_globalAutoUpdateEnabled && m_globalAutoUpdateRemainingInterval == 0);
 
   qApp->feedUpdateLock()->unlock();
 
