@@ -26,8 +26,8 @@
 #include "gui/messagebox.h"
 #include "gui/dialogs/formmain.h"
 #include "exceptions/applicationexception.h"
+#include "services/abstract/recyclebin.h"
 #include "services/standard/standardserviceentrypoint.h"
-#include "services/standard/standardrecyclebin.h"
 #include "services/standard/standardfeed.h"
 #include "services/standard/standardcategory.h"
 #include "services/standard/standardfeedsimportexportmodel.h"
@@ -45,7 +45,7 @@
 
 
 StandardServiceRoot::StandardServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_recycleBin(new StandardRecycleBin(this)),
+  : ServiceRoot(parent), m_recycleBin(new RecycleBin(this)),
     m_actionExportFeeds(NULL), m_actionImportFeeds(NULL), m_serviceMenu(QList<QAction*>()),
     m_feedContextMenu(QList<QAction*>()), m_actionFeedFetchMetadata(NULL) {
 

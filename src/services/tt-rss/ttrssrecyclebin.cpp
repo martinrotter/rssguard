@@ -23,7 +23,6 @@
 
 
 TtRssRecycleBin::TtRssRecycleBin(RootItem *parent) : RecycleBin(parent) {
-
 }
 
 TtRssRecycleBin::~TtRssRecycleBin() {

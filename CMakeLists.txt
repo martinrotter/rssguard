@@ -435,7 +435,6 @@ set(APP_SOURCES
   src/services/standard/standardcategory.cpp
   src/services/standard/standardfeed.cpp
   src/services/standard/standardserviceroot.cpp
-  src/services/standard/standardrecyclebin.cpp
 
   # TT-RSS feed service sources.
   src/services/tt-rss/ttrssserviceentrypoint.cpp
@@ -559,7 +558,6 @@ set(APP_HEADERS
   src/services/standard/standardcategory.h
   src/services/standard/standardfeed.h
   src/services/standard/standardserviceroot.h
-  src/services/standard/standardrecyclebin.h
 
   # TT-RSS service headers.
   src/services/tt-rss/ttrssserviceroot.h

@@ -24,7 +24,7 @@
 #include <QPair>
 
 
-class StandardRecycleBin;
+class RecycleBin;
 class StandardCategory;
 class StandardFeed;
 class FeedsImportExportModel;
@@ -97,7 +97,7 @@ class StandardServiceRoot : public ServiceRoot {
     // which are suitable as IN clause for SQL queries.
     QStringList textualFeedIds(const QList<Feed *> &feeds);
 
-    StandardRecycleBin *m_recycleBin;
+    RecycleBin *m_recycleBin;
     QAction *m_actionExportFeeds;
     QAction *m_actionImportFeeds;
     QList<QAction*> m_serviceMenu;

@@ -27,6 +27,7 @@
 
 RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item) {
   setKind(RootItemKind::Bin);
+  setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("folder-recycle-bin")));
   setTitle(tr("Recycle bin"));
   setDescription(tr("Recycle bin contains all deleted messages from all feeds."));
