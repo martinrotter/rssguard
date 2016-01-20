@@ -1,6 +1,10 @@
 3.1.0
 —————
 
+Fixed:
+
+▪ ♥ Auto-updating of feeds fixed (again?!). ♥
+
 Changed:
 
 ▪ TT-RSS plugin can now restore messages from local recycle bin.

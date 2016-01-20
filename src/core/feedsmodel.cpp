@@ -125,7 +125,7 @@ void FeedsModel::quit() {
   }
 }
 
-void FeedsModel::updateFeeds(const QList<Feed *> &feeds) {
+void FeedsModel::updateFeeds(const QList<Feed*> &feeds) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(tr("Cannot update all items"),
                          tr("You cannot update all items because another another critical operation is ongoing."),
@@ -322,7 +322,7 @@ void FeedsModel::executeNextAutoUpdate() {
 
   if (!feeds_for_update.isEmpty()) {
     // Request update for given feeds.
-    emit feedsUpdateRequested(feeds_for_update);
+    updateFeeds(feeds_for_update);
 
     // NOTE: OSD/bubble informing about performing
     // of scheduled update can be shown now.
