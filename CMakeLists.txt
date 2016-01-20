@@ -20,6 +20,9 @@
 #
 #  This is RSS Guard compilation script for CMake.
 #
+#  WARNING: This script uses file(GLOB ...) function. YOU MUST
+#  recompile this CMake script once any new file is added.
+#
 # Usage:
 #   a) DEBUG build for testing.
 #     cmake -DCMAKE_BUILD_TYPE=debug -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT_5=ON
