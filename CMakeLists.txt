@@ -335,417 +335,106 @@ elseif(WIN32 AND MSVC)
 endif(WIN32 AND MINGW)
 
 # APP source files.
+file( GLOB APP_SOURCES_GL
+  "src/qtsingleapplication/qtsingleapplication.cpp"
+  "src/qtsingleapplication/qtsinglecoreapplication.cpp"
+  "src/qtsingleapplication/qtlocalpeer.cpp"
+
+  "src/qt-json/*.cpp"
+  "src/gui/dialogs/*.cpp"
+  "src/gui/notifications/*.cpp"
+  "src/gui/*.cpp"
+  "src/dynamic-shortcuts/*.cpp"
+  "src/miscellaneous/*.cpp"
+  "src/miscellaneous/simplecrypt/*.cpp"
+  "src/exceptions/*.cpp"
+  "src/core/*.cpp"
+  "src/services/abstract/*.cpp"
+  "src/services/standard/*.cpp"
+  "src/services/standard/gui/*.cpp"
+  "src/services/tt-rss/*.cpp"
+  "src/services/tt-rss/gui/*.cpp"
+  "src/services/tt-rss/network/*.cpp"
+  "src/network-web/*.cpp"
+  "src/network-web/adblock/*.cpp"
+  "src/*.cpp")
+
 set(APP_SOURCES
   ${APP_SOURCES}
-
-  # QTSINGLEAPPLICATION sources.
-  src/qtsingleapplication/qtlocalpeer.cpp
-  src/qtsingleapplication/qtsinglecoreapplication.cpp
-  src/qtsingleapplication/qtsingleapplication.cpp
-
-  # QT-JSON sources.
-  src/qt-json/json.cpp
-
-  # GUI sources.
-  src/gui/dialogs/formmain.cpp
-  src/gui/dialogs/formsettings.cpp
-  src/gui/dialogs/formabout.cpp
-  src/gui/dialogs/formupdate.cpp
-  src/gui/dialogs/formdatabasecleanup.cpp
-  src/gui/dialogs/formbackupdatabasesettings.cpp
-  src/gui/dialogs/formrestoredatabasesettings.cpp
-  src/gui/dialogs/formaddaccount.cpp
-  src/gui/notifications/notification.cpp
-  src/gui/systemtrayicon.cpp
-  src/gui/baselineedit.cpp
-  src/gui/locationlineedit.cpp
-  src/gui/tabwidget.cpp
-  src/gui/tabbar.cpp
-  src/gui/tabcontent.cpp
-  src/gui/feedmessageviewer.cpp
-  src/gui/feedsview.cpp
-  src/gui/messagesview.cpp
-  src/gui/statusbar.cpp
-  src/gui/plaintoolbutton.cpp
-  src/gui/lineeditwithstatus.cpp
-  src/gui/widgetwithstatus.cpp
-  src/gui/labelwithstatus.cpp
-  src/gui/messagebox.cpp
-  src/gui/comboboxwithstatus.cpp
-  src/gui/basetoolbar.cpp
-  src/gui/messagestoolbar.cpp
-  src/gui/feedstoolbar.cpp
-  src/gui/toolbareditor.cpp
-  src/gui/messagessearchlineedit.cpp
-  src/gui/styleditemdelegatewithoutfocus.cpp
-  src/gui/edittableview.cpp
-  src/gui/squeezelabel.cpp
-  src/gui/discoverfeedsbutton.cpp
-  src/gui/colorlabel.cpp
-
-  # DYNAMIC-SHORTCUTS sources.
-  src/dynamic-shortcuts/shortcutcatcher.cpp
-  src/dynamic-shortcuts/shortcutbutton.cpp
-  src/dynamic-shortcuts/dynamicshortcutswidget.cpp
-  src/dynamic-shortcuts/dynamicshortcuts.cpp
-
-  # MISCELLANEOUS sources.
-  src/miscellaneous/application.cpp
-  src/miscellaneous/debugging.cpp
-  src/miscellaneous/settings.cpp
-  src/miscellaneous/systemfactory.cpp
-  src/miscellaneous/localization.cpp
-  src/miscellaneous/textfactory.cpp
-  src/miscellaneous/databasefactory.cpp
-  src/miscellaneous/skinfactory.cpp
-  src/miscellaneous/iconfactory.cpp
-  src/miscellaneous/iofactory.cpp
-  src/miscellaneous/autosaver.cpp
-  src/miscellaneous/mutex.cpp
-  src/miscellaneous/databasecleaner.cpp
-  src/miscellaneous/simplecrypt/simplecrypt.cpp
-
-  # EXCEPTIONS sources.
-  src/exceptions/applicationexception.cpp
-  src/exceptions/ioexception.cpp
-
-  # CORE sources.
-  src/core/messagesmodel.cpp
-  src/core/messagesproxymodel.cpp
-  src/core/feedsmodel.cpp
-  src/core/feedsproxymodel.cpp
-  src/core/parsingfactory.cpp
-  src/core/feeddownloader.cpp
-  src/core/message.cpp
-
-  # ABSTRACT service sources.
-  src/services/abstract/rootitem.cpp
-  src/services/abstract/serviceentrypoint.cpp
-  src/services/abstract/feed.cpp
-  src/services/abstract/category.cpp
-  src/services/abstract/serviceroot.cpp
-  src/services/abstract/recyclebin.cpp
-
-  # STANDARD feed service sources.
-  src/services/standard/gui/formstandardcategorydetails.cpp
-  src/services/standard/gui/formstandardfeeddetails.cpp
-  src/services/standard/gui/formstandardimportexport.cpp
-  src/services/standard/standardfeedsimportexportmodel.cpp
-  src/services/standard/standardserviceentrypoint.cpp
-  src/services/standard/standardcategory.cpp
-  src/services/standard/standardfeed.cpp
-  src/services/standard/standardserviceroot.cpp
-
-  # TT-RSS feed service sources.
-  src/services/tt-rss/ttrssserviceentrypoint.cpp
-  src/services/tt-rss/ttrssserviceroot.cpp
-  src/services/tt-rss/ttrssfeed.cpp
-  src/services/tt-rss/ttrsscategory.cpp
-  src/services/tt-rss/ttrssrecyclebin.cpp
-  src/services/tt-rss/gui/formeditaccount.cpp
-  src/services/tt-rss/gui/formeditfeed.cpp
-  src/services/tt-rss/network/ttrssnetworkfactory.cpp
-
-  # NETWORK-WEB sources.
-  src/network-web/basenetworkaccessmanager.cpp
-  src/network-web/webpage.cpp
-  src/network-web/webbrowsernetworkaccessmanager.cpp
-  src/network-web/silentnetworkaccessmanager.cpp
-  src/network-web/networkfactory.cpp
-  src/network-web/webfactory.cpp
-  src/network-web/webbrowser.cpp
-  src/network-web/webview.cpp
-  src/network-web/downloader.cpp
-  src/network-web/downloadmanager.cpp
-  src/network-web/googlesuggest.cpp
-
-  src/network-web/adblock/adblockaddsubscriptiondialog.cpp
-  src/network-web/adblock/adblockblockednetworkreply.cpp
-  src/network-web/adblock/adblockdialog.cpp
-  src/network-web/adblock/adblockicon.cpp
-  src/network-web/adblock/adblockmanager.cpp
-  src/network-web/adblock/adblockmatcher.cpp
-  src/network-web/adblock/adblockrule.cpp
-  src/network-web/adblock/adblocksearchtree.cpp
-  src/network-web/adblock/adblocksubscription.cpp
-  src/network-web/adblock/adblocktreewidget.cpp
-
-  # MAIN sources.
-  src/main.cpp
+  ${APP_SOURCES_GL}
 )
 
 # APP headers.
-set(APP_HEADERS
-  ${APP_HEADERS}
+file( GLOB APP_HEADERS
+  "src/qtsingleapplication/qtsingleapplication.h"
+  "src/qtsingleapplication/qtsinglecoreapplication.h"
+  "src/qtsingleapplication/qtlocalpeer.h"
 
-  # QTSINGLEAPPLICATION headers.
-  src/qtsingleapplication/qtlocalpeer.h
-  src/qtsingleapplication/qtsinglecoreapplication.h
-  src/qtsingleapplication/qtsingleapplication.h
+  "src/gui/dialogs/*.h"
+  "src/gui/notifications/*.h"
+  "src/gui/*.h"
+  "src/dynamic-shortcuts/*.h"
+  "src/miscellaneous/*.h"
+  "src/miscellaneous/simplecrypt/*.h"
+  "src/exceptions/*.h"
+  "src/core/*.h"
+  "src/services/abstract/*.h"
+  "src/services/standard/*.h"
+  "src/services/standard/gui/*.h"
+  "src/services/tt-rss/*.h"
+  "src/services/tt-rss/gui/*.h"
+  "src/services/tt-rss/network/*.h"
+  "src/network-web/*.h"
+  "src/network-web/adblock/*.h")
 
-  # GUI headers.
-  src/gui/dialogs/formmain.h
-  src/gui/dialogs/formsettings.h
-  src/gui/dialogs/formabout.h
-  src/gui/dialogs/formbackupdatabasesettings.h
-  src/gui/dialogs/formrestoredatabasesettings.h
-  src/gui/dialogs/formdatabasecleanup.h
-  src/gui/dialogs/formupdate.h
-  src/gui/dialogs/formaddaccount.h
-  src/gui/notifications/notification.h
-  src/gui/systemtrayicon.h
-  src/gui/baselineedit.h
-  src/gui/locationlineedit.h
-  src/gui/tabwidget.h
-  src/gui/tabbar.h
-  src/gui/tabcontent.h
-  src/gui/feedmessageviewer.h
-  src/gui/feedsview.h
-  src/gui/messagesview.h
-  src/gui/statusbar.h
-  src/gui/plaintoolbutton.h
-  src/gui/lineeditwithstatus.h
-  src/gui/widgetwithstatus.h
-  src/gui/labelwithstatus.h
-  src/gui/messagebox.h
-  src/gui/comboboxwithstatus.h
-  src/gui/basetoolbar.h
-  src/gui/messagestoolbar.h
-  src/gui/feedstoolbar.h
-  src/gui/toolbareditor.h
-  src/gui/messagessearchlineedit.h
-  src/gui/edittableview.h
-  src/gui/squeezelabel.h
-  src/gui/discoverfeedsbutton.h
-  src/gui/colorlabel.h
-
-  # DYNAMIC-SHORTCUTS headers.
-  src/dynamic-shortcuts/dynamicshortcutswidget.h
-  src/dynamic-shortcuts/shortcutcatcher.h
-  src/dynamic-shortcuts/shortcutbutton.h
-
-  # MISCELLANEOUS headers.
-  src/miscellaneous/application.h
-  src/miscellaneous/settings.h
-  src/miscellaneous/localization.h
-  src/miscellaneous/systemfactory.h
-  src/miscellaneous/databasefactory.h
-  src/miscellaneous/iconfactory.h
-  src/miscellaneous/skinfactory.h
-  src/miscellaneous/autosaver.h
-  src/miscellaneous/mutex.h
-  src/miscellaneous/databasecleaner.h
-
-  # CORE headers.
-  src/core/messagesmodel.h
-  src/core/messagesproxymodel.h
-  src/core/feedsmodel.h
-  src/core/feedsproxymodel.h
-  src/core/feeddownloader.h
-
-  # ABSTRACT service headers.
-  src/services/abstract/rootitem.h
-  src/services/abstract/feed.h
-  src/services/abstract/category.h
-  src/services/abstract/serviceroot.h
-  src/services/abstract/recyclebin.h
-
-  # STANDARD service headers.
-  src/services/standard/standardfeedsimportexportmodel.h
-  src/services/standard/gui/formstandardcategorydetails.h
-  src/services/standard/gui/formstandardfeeddetails.h
-  src/services/standard/gui/formstandardimportexport.h
-  src/services/standard/standardcategory.h
-  src/services/standard/standardfeed.h
-  src/services/standard/standardserviceroot.h
-
-  # TT-RSS service headers.
-  src/services/tt-rss/ttrssserviceroot.h
-  src/services/tt-rss/ttrssrecyclebin.h;
-  src/services/tt-rss/ttrssfeed.h
-  src/services/tt-rss/ttrsscategory.h
-  src/services/tt-rss/gui/formeditaccount.h
-  src/services/tt-rss/gui/formeditfeed.h
-
-  # NETWORK-WEB headers.
-  src/network-web/webpage.h
-  src/network-web/basenetworkaccessmanager.h
-  src/network-web/webbrowsernetworkaccessmanager.h
-  src/network-web/silentnetworkaccessmanager.h
-  src/network-web/webfactory.h
-  src/network-web/webbrowser.h
-  src/network-web/webview.h
-  src/network-web/downloader.h
-  src/network-web/downloadmanager.h
-  src/network-web/googlesuggest.h
-
-  src/network-web/adblock/adblockaddsubscriptiondialog.h
-  src/network-web/adblock/adblockblockednetworkreply.h
-  src/network-web/adblock/adblockdialog.h
-  src/network-web/adblock/adblockicon.h
-  src/network-web/adblock/adblockmanager.h
-  src/network-web/adblock/adblockmatcher.h
-  src/network-web/adblock/adblocksubscription.h
-  src/network-web/adblock/adblocktreewidget.h
-)
-
-# APP form files.
-set(APP_FORMS
-  src/gui/dialogs/formupdate.ui
-  src/gui/dialogs/formmain.ui
-  src/gui/dialogs/formsettings.ui
-  src/gui/dialogs/formabout.ui
-  src/gui/dialogs/formbackupdatabasesettings.ui
-  src/gui/dialogs/formrestoredatabasesettings.ui
-  src/gui/dialogs/formdatabasecleanup.ui
-  src/gui/dialogs/formaddaccount.ui
-  src/gui/toolbareditor.ui
-
-  # STANDARD service forms.
-  src/services/standard/gui/formstandardcategorydetails.ui
-  src/services/standard/gui/formstandardfeeddetails.ui
-  src/services/standard/gui/formstandardimportexport.ui
-
-  # TT-RSS service forms.
-  src/services/tt-rss/gui/formeditaccount.ui
-  src/services/tt-rss/gui/formeditfeed.ui
-
-  # NETWORK forms.
-  src/network-web/downloadmanager.ui
-  src/network-web/downloaditem.ui
-
-  src/network-web/adblock/adblockaddsubscriptiondialog.ui
-  src/network-web/adblock/adblockdialog.ui
-)
+# APP forms.
+file( GLOB APP_FORMS
+  "src/gui/dialogs/*.ui"
+  "src/gui/*.ui"
+  "src/services/standard/gui/*.ui"
+  "src/services/tt-rss/gui/*.ui"
+  "src/network-web/*.ui"
+  "src/network-web/adblock/*.ui")
 
 # APP translations.
-set(APP_TRANSLATIONS
-  localization/rssguard-cs_CZ.ts
-  localization/rssguard-da_DK.ts
-  localization/rssguard-de_DE.ts
-  localization/rssguard-en_GB.ts
-  localization/rssguard-en_US.ts
-  localization/rssguard-fr_FR.ts
-  localization/rssguard-it_IT.ts
-  localization/rssguard-nl_NL.ts
-  localization/rssguard-sv_SE.ts
-  localization/qtbase-cs_CZ.ts
-  localization/qtbase-da_DK.ts
-  localization/qtbase-de_DE.ts
-  localization/qtbase-fr_FR.ts
-  localization/qtbase-it_IT.ts
-  localization/qtbase-sv_SE.ts
-)
+file( GLOB APP_TRANSLATIONS
+  "localization/*.ts")
 
-set(APP_TRANSLATIONS_WO_QT
-  localization/rssguard-cs_CZ.ts
-  localization/rssguard-de_DE.ts
-  localization/rssguard-en_GB.ts
-  localization/rssguard-en_US.ts
-  localization/rssguard-fr_FR.ts
-  localization/rssguard-it_IT.ts
-  localization/rssguard-nl_NL.ts
-  localization/rssguard-sv_SE.ts
-)
+file( GLOB APP_TRANSLATIONS_WO_QT
+  "localization/rssguard*.ts")
 
-set(APP_TEXT
-  resources/text/CHANGELOG
-  resources/text/COPYING_GNU_GPL
-  resources/text/COPYING_GNU_GPL_HTML
-  resources/text/COPYING_BSD
-)
+file( GLOB APP_TEXT
+  "resources/text/*")
 
 if(WIN32)
-  set(APP_DLLS_QT4_MSVC2013
-    resources/binaries/windows/qt4-msvc2013/libeay32.dll
-    resources/binaries/windows/qt4-msvc2013/msvcp120.dll
-    resources/binaries/windows/qt4-msvc2013/msvcr120.dll
-    resources/binaries/windows/qt4-msvc2013/QtCore4.dll
-    resources/binaries/windows/qt4-msvc2013/QtGui4.dll
-    resources/binaries/windows/qt4-msvc2013/QtNetwork4.dll
-    resources/binaries/windows/qt4-msvc2013/QtSql4.dll
-    resources/binaries/windows/qt4-msvc2013/QtWebKit4.dll
-    resources/binaries/windows/qt4-msvc2013/QtXml4.dll
-    resources/binaries/windows/qt4-msvc2013/ssleay32.dll
-    resources/binaries/windows/qt4-msvc2013/libmysql.dll
-  )
+  file( GLOB APP_DLLS_QT4_MSVC2013
+    "resources/binaries/windows/qt4-msvc2013/*.dll")
 
-  set(APP_DLLS_QT4_MSVC2013_IMAGEFORMATS
-    resources/binaries/windows/qt4-msvc2013/imageformats/qgif4.dll
-    resources/binaries/windows/qt4-msvc2013/imageformats/qico4.dll
-    resources/binaries/windows/qt4-msvc2013/imageformats/qjpeg4.dll
-    resources/binaries/windows/qt4-msvc2013/imageformats/qmng4.dll
-    resources/binaries/windows/qt4-msvc2013/imageformats/qsvg4.dll
-    resources/binaries/windows/qt4-msvc2013/imageformats/qtga4.dll
-    resources/binaries/windows/qt4-msvc2013/imageformats/qtiff4.dll
-  )
+  file( GLOB APP_DLLS_QT4_MSVC2013_IMAGEFORMATS
+    "resources/binaries/windows/qt4-msvc2013/imageformats/*.dll")
 
-  set(APP_DLLS_QT4_MSVC2013_SQLDRIVERS
-    resources/binaries/windows/qt4-msvc2013/sqldrivers/qsqlite4.dll
-    resources/binaries/windows/qt4-msvc2013/sqldrivers/qsqlmysql4.dll
-  )
+  file( GLOB APP_DLLS_QT4_MSVC2013_SQLDRIVERS
+    "resources/binaries/windows/qt4-msvc2013/sqldrivers/*.dll")
 
-  set(APP_DLLS_QT5_MSVC2013
-    resources/binaries/windows/qt5-msvc2013/icudt55.dll
-    resources/binaries/windows/qt5-msvc2013/icuin55.dll
-    resources/binaries/windows/qt5-msvc2013/icuuc55.dll
-    resources/binaries/windows/qt5-msvc2013/libeay32.dll
-    resources/binaries/windows/qt5-msvc2013/libEGL.dll
-    resources/binaries/windows/qt5-msvc2013/libGLESv2.dll
-    resources/binaries/windows/qt5-msvc2013/libmysql.dll
-    resources/binaries/windows/qt5-msvc2013/msvcp120.dll
-    resources/binaries/windows/qt5-msvc2013/msvcr120.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Core.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Gui.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Multimedia.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5MultimediaWidgets.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Network.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5OpenGL.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Positioning.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5PrintSupport.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Qml.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Quick.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Sensors.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Sql.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5WebChannel.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5WebKit.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5WebKitWidgets.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Widgets.dll
-    resources/binaries/windows/qt5-msvc2013/Qt5Xml.dll
-    resources/binaries/windows/qt5-msvc2013/ssleay32.dll
-  )
+  file( GLOB APP_DLLS_QT5_MSVC2013
+    "resources/binaries/windows/qt5-msvc2013/*.dll")
 
-  set(APP_DLLS_QT5_MSVC2013_IMAGEFORMATS
-    resources/binaries/windows/qt5-msvc2013/imageformats/qdds.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qgif.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qicns.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qico.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qjpeg.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qmng.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qsvg.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qtga.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qtiff.dll
-    resources/binaries/windows/qt5-msvc2013/imageformats/qwbmp.dll
-  )
+  file( GLOB APP_DLLS_QT5_MSVC2013_IMAGEFORMATS
+    "resources/binaries/windows/qt5-msvc2013/imageformats/*.dll")
 
-  set(APP_DLLS_QT5_MSVC2013_SQLDRIVERS
-    resources/binaries/windows/qt5-msvc2013/sqldrivers/qsqlite.dll
-    resources/binaries/windows/qt5-msvc2013/sqldrivers/qsqlmysql.dll
-  )
+  file( GLOB APP_DLLS_QT5_MSVC2013_SQLDRIVERS
+    "resources/binaries/windows/qt5-msvc2013/sqldrivers/*.dll")
 
-  set(APP_DLLS_QT5_MSVC2013_PLATFORMS
-    resources/binaries/windows/qt5-msvc2013/platforms/qminimal.dll
-    resources/binaries/windows/qt5-msvc2013/platforms/qwindows.dll
-  )
+  file( GLOB APP_DLLS_QT5_MSVC2013_PLATFORMS
+    "resources/binaries/windows/qt5-msvc2013/platforms/*.dll")
 
-  set(APP_DLLS_QT5_MSVC2013_PRINTSUPPORT
-    resources/binaries/windows/qt5-msvc2013/printsupport/windowsprintersupport.dll
-  )
+  file( GLOB APP_DLLS_QT5_MSVC2013_PRINTSUPPORT
+    "resources/binaries/windows/qt5-msvc2013/printsupport/*.dll")
 endif(WIN32)
 
 # Add custom icon on Mac OS X.
 if(APPLE)
-  SET (APP_SOURCES ${APP_SOURCES} resources/macosx/rssguard.icns)
+  set(APP_SOURCES ${APP_SOURCES} resources/macosx/rssguard.icns)
 endif(APPLE)
 
 # Wrap files, create moc files.
