@@ -4,8 +4,9 @@ Welcome to RSS Guard website. You can find here basic information.
 
 RSS Guard is simple and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.
 
-**PLEASE, ALL USERS -> fill [this survey](http://goo.gl/forms/GcvPYgS2a8).**
-
+#####################
+# **PLEASE, ALL USERS -> fill [this survey](http://goo.gl/forms/GcvPYgS2a8).**
+#####################
 
 Core features are:
 
