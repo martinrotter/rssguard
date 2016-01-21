@@ -29,6 +29,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "services/abstract/recyclebin.h"
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/gui/formstandardfeeddetails.h"
 
@@ -616,6 +617,7 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
 int StandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   int updated_messages = 0;
+  bool anything_duplicated = false;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
   int account_id = serviceRoot()->accountId();
@@ -629,7 +631,7 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
   // WARNING: One feed CANNOT contain two (or more) messages with same AUTHOR AND TITLE AND URL AND DATE_CREATED.
   query_select.setForwardOnly(true);
   query_select.prepare("SELECT id, feed, date_created FROM Messages "
-                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND account_id = :account_id;");
+                       "WHERE feed = :feed AND url = :url AND author = :author AND account_id = :account_id;");
 
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
@@ -639,7 +641,9 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
 
   if (remove_duplicates) {
     query_update.setForwardOnly(true);
-    query_update.prepare(QSL("UPDATE Messages SET contents = :contents, enclosures = :enclosures WHERE id = :id;"));
+    query_update.prepare("UPDATE Messages SET is_read = 0, is_deleted = 0, is_pdeleted = 0, "
+                         "contents = :contents, enclosures = :enclosures, date_created = :date_created "
+                         "WHERE id = :id;");
   }
 
   if (!database.transaction()) {
@@ -663,7 +667,6 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
     }
 
     query_select.bindValue(QSL(":feed"), feed_id);
-    query_select.bindValue(QSL(":title"), message.m_title);
     query_select.bindValue(QSL(":url"), message.m_url);
     query_select.bindValue(QSL(":author"), message.m_author);
     query_select.bindValue(QSL(":account_id"), account_id);
@@ -703,9 +706,15 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
         // messages and there is exactly ONE existing duplicate.
         query_update.bindValue(QSL(":id"), ids.at(0));
         query_update.bindValue(QSL(":contents"), message.m_contents);
+        query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.exec();
         query_update.finish();
+
+        QString sss = query_update.lastError().text();
+
+        anything_duplicated = true;
+
         qDebug("Updating contents of duplicate message '%s'.", qPrintable(message.m_title));
       }
       else {
@@ -738,8 +747,17 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
     qDebug("Transaction commit for message downloader failed.");
   }
   else {
+    QList<RootItem*> items_to_update;
+
     updateCounts(true);
-    serviceRoot()->itemChanged(QList<RootItem*>() << this);
+    items_to_update.append(this);
+
+    if (anything_duplicated) {
+      serviceRoot()->recycleBin()->updateCounts(true);
+      items_to_update.append(serviceRoot()->recycleBin());
+    }
+
+    serviceRoot()->itemChanged(items_to_update);
   }
 
   return updated_messages;

@@ -2,11 +2,12 @@
 —————
 
 Fixed:
-
+▪ Fixed some problems, that "Add category to selected account" was enabled when it shouldn't be.
 ▪ ♥ Auto-updating of feeds fixed (again?!). ♥
 
 Changed:
 
+▪ Tweaked "remove duplicates" policy.
 ▪ TT-RSS plugin can now restore messages from local recycle bin.
 
 3.0.2
