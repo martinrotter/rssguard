@@ -80,7 +80,6 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
 
   // Reload the model now.
   m_sourceModel->fetchAllData();
-
   sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
@@ -209,13 +208,15 @@ void MessagesView::selectionChanged(const QItemSelection &selected, const QItemS
          mapped_current_index.row(), mapped_current_index.column());
 
   if (mapped_current_index.isValid() && selected_rows.count() == 1) {
+    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.at(0)).row());
+
     if (!m_batchUnreadSwitch) {
       // Set this message as read only if current item
       // wasn't changed by "mark selected messages unread" action.
       m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::Read);
     }
 
-    emit currentMessagesChanged(QList<Message>() << m_sourceModel->messageAt(m_proxyModel->mapToSource(selected_rows.at(0)).row()));
+    emit currentMessagesChanged(QList<Message>() << message);
   }
   else {
     emit currentMessagesRemoved();
@@ -351,7 +352,7 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
@@ -379,7 +380,7 @@ void MessagesView::deleteSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   const int row_count = m_sourceModel->rowCount();
 
@@ -408,7 +409,7 @@ void MessagesView::restoreSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRestored(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   int row_count = m_sourceModel->rowCount();
 
@@ -438,7 +439,7 @@ void MessagesView::switchSelectedMessagesImportance() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
-  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
@@ -459,7 +460,7 @@ void MessagesView::reselectIndexes(const QModelIndexList &indexes) {
       selection.merge(QItemSelection(index, index), QItemSelectionModel::Select);
     }
 
-    selectionModel()->select(selection, QItemSelectionModel::Select | QItemSelectionModel::Rows);
+    selectionModel()->select(selection, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
   }
 }
 

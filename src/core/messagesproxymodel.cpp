@@ -30,7 +30,7 @@ MessagesProxyModel::MessagesProxyModel(QObject *parent)
   setFilterCaseSensitivity(Qt::CaseInsensitive);
   setFilterKeyColumn(-1);
   setFilterRole(Qt::EditRole);
-  setDynamicSortFilter(true);
+  setDynamicSortFilter(false);
   setSourceModel(m_sourceModel);
 }
 
@@ -177,10 +177,6 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
   }
 
   return result;
-}
-
-void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
-  QSortFilterProxyModel::sort(column, order);
 }
 
 QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) const {
