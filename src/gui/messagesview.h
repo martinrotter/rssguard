@@ -59,6 +59,8 @@ class MessagesView : public QTreeView {
     // Loads un-deleted messages from selected feeds.
     void loadItem(RootItem *item);
 
+    void sortByColumn(int column, Qt::SortOrder order);
+
     // Message manipulators.
     void openSelectedSourceMessagesExternally();
     void openSelectedSourceMessagesInternally();

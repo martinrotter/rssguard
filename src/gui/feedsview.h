@@ -60,10 +60,8 @@ class FeedsView : public QTreeView {
     void saveAllExpandStates();
     void loadAllExpandStates();
 
-  public slots:
-    // Sorts according to column/order taken from settings.
-    void sort(bool from_settings);
-    void reSort();
+  public slots:   
+    void sortByColumn(int column, Qt::SortOrder order);
 
     void addFeedIntoSelectedAccount();
     void addCategoryIntoSelectedAccount();

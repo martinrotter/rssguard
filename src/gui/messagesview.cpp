@@ -245,6 +245,18 @@ void MessagesView::loadItem(RootItem *item) {
 #endif
 }
 
+void MessagesView::sortByColumn(int column, Qt::SortOrder order) {
+  const int old_column = header()->sortIndicatorSection();
+  const Qt::SortOrder old_order = header()->sortIndicatorOrder();
+
+  if (column == old_column && order == old_order) {
+    m_proxyModel->sort(column, order);
+  }
+  else {
+    QTreeView::sortByColumn(column, order);
+  }
+}
+
 void MessagesView::openSelectedSourceMessagesExternally() {
   foreach (const QModelIndex &index, selectionModel()->selectedRows()) {
     const QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row()).m_url;

@@ -45,6 +45,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
     // Fix for matching indexes with respect to specifics of the message model.
     QModelIndexList match(const QModelIndex &start, int role, const QVariant &entered_value, int hits, Qt::MatchFlags flags) const;
 
+    void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
+
   private:
     QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
 

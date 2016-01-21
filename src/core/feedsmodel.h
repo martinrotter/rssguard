@@ -211,9 +211,6 @@ class FeedsModel : public QAbstractItemModel {
     // NOTE: View will probably expand dropped index.
     void requireItemValidationAfterDragDrop(const QModelIndex &source_index);
 
-    // When emitted, view (re)sorts items.
-    void sortingRequired();
-
   private:
     RootItem *m_rootItem;
     QList<QString> m_headerData;

@@ -13,6 +13,7 @@ Fixed:
 
 Changed:
 
+▪ Sorting of both views (feeds/messages) is now fully dynamic.
 ▪ Tweaked "remove duplicates" policy.
 ▪ TT-RSS plugin can now restore messages from local recycle bin.
 

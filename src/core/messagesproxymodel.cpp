@@ -179,6 +179,10 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex &start, int role,
   return result;
 }
 
+void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
+  QSortFilterProxyModel::sort(column, order);
+}
+
 QModelIndexList MessagesProxyModel::mapListToSource(const QModelIndexList &indexes) const {
   QModelIndexList source_indexes;
 

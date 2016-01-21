@@ -177,7 +177,6 @@ void FeedsModel::onFeedUpdatesFinished(const FeedDownloadResults &results) {
   }
 
   emit feedsUpdateFinished();
-  //emit sortingRequired();
 }
 
 void FeedsModel::updateAllFeeds() {
