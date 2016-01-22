@@ -44,6 +44,9 @@ class TtRssFeed : public Feed {
     bool canBeEdited() const;
     bool editViaGui();
 
+    bool canBeDeleted() const;
+    bool deleteViaGui();
+
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 
@@ -59,6 +62,8 @@ class TtRssFeed : public Feed {
     bool editItself(TtRssFeed *new_feed_data);
 
   private:
+    bool removeItself();
+
     int updateMessages(const QList<Message> &messages);
 
     int m_customId;

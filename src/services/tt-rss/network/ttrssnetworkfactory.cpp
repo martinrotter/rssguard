@@ -271,7 +271,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   QtJson::JsonObject json;
   json["op"] = "unsubscribeFeed";
   json["sid"] = m_sessionId;
-  json["cat_id"] = feed_id;
+  json["feed_id"] = feed_id;
 
   QByteArray result_raw;
   NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
@@ -295,36 +295,6 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   m_lastError = network_reply.first;
   return result;
 }
-
-/*
-TtRssGetConfigResponse TtRssNetworkFactory::getConfig() {
-  QtJson::JsonObject json;
-  json["op"] = "getConfig";
-  json["sid"] = m_sessionId;
-
-  QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
-                                                           m_authIsUsed, m_authUsername, m_authPassword);
-  TtRssGetConfigResponse result(QString::fromUtf8(result_raw));
-
-  if (result.isNotLoggedIn()) {
-    // We are not logged in.
-    login();
-    json["sid"] = m_sessionId;
-
-    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
-                                               m_authIsUsed, m_authUsername, m_authPassword);
-    result = TtRssGetConfigResponse(QString::fromUtf8(result_raw));
-  }
-
-  if (network_reply.first != QNetworkReply::NoError) {
-    qWarning("TT-RSS: getConfig failed with error %d.", network_reply.first);
-  }
-
-  m_lastError = network_reply.first;
-  return result;
-}
-*/
 
 bool TtRssNetworkFactory::forceServerSideUpdate() const {
   return m_forceServerSideUpdate;
@@ -389,6 +359,10 @@ int TtRssResponse::status() const {
 
 bool TtRssResponse::isNotLoggedIn() const {
   return status() == API_STATUS_ERR && hasError() && error() == NOT_LOGGED_IN;
+}
+
+QString TtRssResponse::toString() const {
+  return QtJson::serializeStr(m_rawContent);
 }
 
 TtRssLoginResponse::TtRssLoginResponse(const QString &raw_content) : TtRssResponse(raw_content) {
@@ -593,17 +567,7 @@ int TtRssUpdateArticleResponse::articlesUpdated() const {
   }
 }
 
-/*
-TtRssGetConfigResponse::TtRssGetConfigResponse(const QString &raw_content) : TtRssResponse(raw_content) {
-}
-
-TtRssGetConfigResponse::~TtRssGetConfigResponse() {
-}
-*/
-
-
 TtRssSubscribeToFeedResponse::TtRssSubscribeToFeedResponse(const QString &raw_content) : TtRssResponse(raw_content) {
-
 }
 
 TtRssSubscribeToFeedResponse::~TtRssSubscribeToFeedResponse() {

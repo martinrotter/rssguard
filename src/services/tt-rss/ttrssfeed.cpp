@@ -150,6 +150,20 @@ bool TtRssFeed::editViaGui() {
   return false;
 }
 
+bool TtRssFeed::canBeDeleted() const {
+  return true;
+}
+
+bool TtRssFeed::deleteViaGui() {
+  if (removeItself()) {
+    serviceRoot()->requestItemRemoval(this);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 int TtRssFeed::countOfAllMessages() const {
   return m_totalCount;
 }
@@ -263,6 +277,37 @@ bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {
     return true;
   }
   else {
+    return false;
+  }
+}
+
+bool TtRssFeed::removeItself() {
+  TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId());
+
+  if (response.code() == UFF_OK) {
+    // Feed was removed online from server, remove local data.
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    QSqlQuery query_remove(database);
+
+    query_remove.setForwardOnly(true);
+
+    // Remove all messages from this standard feed.
+    query_remove.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
+    query_remove.bindValue(QSL(":feed"), customId());
+
+    if (!query_remove.exec()) {
+      return false;
+    }
+
+    // Remove feed itself.
+    query_remove.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed;"));
+    query_remove.bindValue(QSL(":feed"), customId());
+
+    return query_remove.exec();
+  }
+  else {
+    qWarning("TT-RSS: Unsubscribing from feed failed, received JSON: '%s'", qPrintable(response.toString()));
+
     return false;
   }
 }

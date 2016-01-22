@@ -42,6 +42,7 @@ class TtRssResponse {
     QString error() const;
     bool hasError() const;
     bool isNotLoggedIn() const;
+    QString toString() const;
 
   protected:
     QtJson::JsonObject m_rawContent;
@@ -99,14 +100,6 @@ class TtRssUnsubscribeFeedResponse : public TtRssResponse {
 
     QString code() const;
 };
-
-/*
-class TtRssGetConfigResponse : public TtRssResponse {
-  public:
-    explicit TtRssGetConfigResponse(const QString &raw_content = QString());
-    virtual ~TtRssGetConfigResponse();
-};
-*/
 
 namespace UpdateArticle {
   enum Mode {
