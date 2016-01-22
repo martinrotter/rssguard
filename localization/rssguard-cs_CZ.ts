@@ -2114,10 +2114,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Když se v kanálu objeví nová zpráva a existuje v databázi duplikát, pak jeho obsah je aktualizován a nová zpráva je zahozena.</translation>
     </message>
     <message>
-        <source>Remove duplicate messages</source>
-        <translation>Mazat duplicitní zprávy</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Stahování</translation>
     </message>
@@ -2280,6 +2276,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Změnit</translation>
+    </message>
+    <message>
+        <source>Remove duplicate messages (standard account only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2793,12 +2793,32 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Zpracovávám data...</translation>
     </message>
     <message>
-        <source>TXT files (one URL per line) (*.txt)</source>
-        <translation>TXT soubory (jedna URL na řádek) (*.txt)</translation>
-    </message>
-    <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation>Do cílového souboru nelze zapisovat: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Root node</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files [one URL per line] (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get online metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do you want to fetch feed metadata online?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

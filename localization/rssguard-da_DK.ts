@@ -71,7 +71,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Add rule</source>
-        <translation>Tilføj regl</translation>
+        <translation>Tilføj regel</translation>
     </message>
     <message>
         <source>Remove rule</source>
@@ -83,7 +83,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Remove subscription</source>
-        <translation type="unfinished"/>
+        <translation>Fjern abonnement</translation>
     </message>
     <message>
         <source>Update subscriptions</source>
@@ -102,15 +102,15 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>Show Adblock &amp;settings</source>
-        <translation type="unfinished"/>
+        <translation>Vis Adblock ind&amp;stillinger</translation>
     </message>
     <message>
         <source>Disable on %1</source>
-        <translation type="unfinished"/>
+        <translation>Deaktivér på %1</translation>
     </message>
     <message>
         <source>Disable only on this page</source>
-        <translation type="unfinished"/>
+        <translation>Deaktivér kun på denne side</translation>
     </message>
     <message>
         <source>Blocked popup windows</source>
@@ -118,7 +118,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>%1 with (%2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 med (%2)</translation>
     </message>
     <message>
         <source>No content blocked</source>
@@ -156,7 +156,7 @@ Also note that some resources are cached by internal web browser. Thus, after ch
     </message>
     <message>
         <source>%1 (error: %2)</source>
-        <translation type="unfinished"/>
+        <translation>%1 (fejl: %2)</translation>
     </message>
     <message>
         <source>Add rule</source>
@@ -283,7 +283,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Uunderstøttet</translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
@@ -306,7 +306,7 @@ This website contains %n feed(s).</source>
     </message>
     <message>
         <source>&amp;Try again</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Forsøg igen</translation>
     </message>
     <message>
         <source>&amp;Stop</source>
@@ -578,7 +578,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Not supported</source>
-        <translation type="unfinished"/>
+        <translation>Usupporteret</translation>
     </message>
     <message>
         <source>Selected account does not support adding of new feeds.</source>
@@ -662,7 +662,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Resources</source>
-        <translation type="unfinished"/>
+        <translation>Resurser</translation>
     </message>
     <message>
         <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
@@ -1148,7 +1148,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Quit</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Afslut</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
@@ -1348,7 +1348,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>&amp;Restart</source>
-        <translation type="unfinished"/>
+        <translation>Gensta&amp;rt</translation>
     </message>
     <message>
         <source>&amp;Restore database/settings</source>
@@ -2095,10 +2095,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Remove duplicate messages</source>
-        <translation>Fjern dubletmeddelelser</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation type="unfinished"/>
     </message>
@@ -2254,6 +2250,10 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Change</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Remove duplicate messages (standard account only)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -2768,11 +2768,31 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>TXT files (one URL per line) (*.txt)</source>
+        <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Cannot write into destination file: &apos;%1&apos;.</source>
+        <source>Root node</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files [one URL per line] (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get online metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do you want to fetch feed metadata online?</source>
         <translation type="unfinished"/>
     </message>
 </context>

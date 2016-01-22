@@ -2114,10 +2114,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove duplicate messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2273,6 +2269,10 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove duplicate messages (standard account only)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2787,11 +2787,31 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TXT files (one URL per line) (*.txt)</source>
+        <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cannot write into destination file: &apos;%1&apos;.</source>
+        <source>Root node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TXT files [one URL per line] (*.txt)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Get online metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do you want to fetch feed metadata online?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

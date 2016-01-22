@@ -291,7 +291,7 @@ Denna webbsida innehåller %1 flöden.</numerusform></translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Angivet kontot stöder inte tillägg av nya flöden.</translation>
     </message>
 </context>
 <context>
@@ -2115,10 +2115,6 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>När nytt meddelande tas emot och dubblett finns, skall innehållet uppdateras och det nya meddelandet tas bort.</translation>
     </message>
     <message>
-        <source>Remove duplicate messages</source>
-        <translation>Ta bort dubblettmeddelanden</translation>
-    </message>
-    <message>
         <source>Downloads</source>
         <translation>Nedladdningar</translation>
     </message>
@@ -2281,6 +2277,10 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <source>Change</source>
         <translation>Ändra</translation>
+    </message>
+    <message>
+        <source>Remove duplicate messages (standard account only)</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2794,12 +2794,32 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation>Analyserar data...</translation>
     </message>
     <message>
-        <source>TXT files (one URL per line) (*.txt)</source>
-        <translation>TXT-filer (en URL per rad) (*.txt)</translation>
-    </message>
-    <message>
         <source>Cannot write into destination file: &apos;%1&apos;.</source>
         <translation>Kan inte skriva till målfilen: %1</translation>
+    </message>
+    <message>
+        <source>Root node</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Select parent item for your feed.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>TXT files [one URL per line] (*.txt)</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Get online metadata</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Do you want to fetch feed metadata online?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
