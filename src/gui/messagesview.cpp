@@ -352,7 +352,7 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRead(mapped_indexes, read);
-  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(), mapped_current_index.column()));
@@ -380,7 +380,7 @@ void MessagesView::deleteSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesDeleted(mapped_indexes);
-  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   const int row_count = m_sourceModel->rowCount();
 
@@ -409,7 +409,7 @@ void MessagesView::restoreSelectedMessages() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->setBatchMessagesRestored(mapped_indexes);
-  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   int row_count = m_sourceModel->rowCount();
 
@@ -439,7 +439,7 @@ void MessagesView::switchSelectedMessagesImportance() {
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
 
   m_sourceModel->switchBatchMessageImportance(mapped_indexes);
-  //sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
+  sortByColumn(header()->sortIndicatorSection(), header()->sortIndicatorOrder());
 
   selected_indexes = m_proxyModel->mapListFromSource(mapped_indexes, true);
   current_index = m_proxyModel->mapFromSource(m_sourceModel->index(mapped_current_index.row(),
