@@ -218,7 +218,7 @@ void FormEditFeed::addNewFeed() {
                                                                                  m_ui->m_txtUsername->lineEdit()->text(),
                                                                                  m_ui->m_txtPassword->lineEdit()->text());
 
-  if (response.code() == STF_INSERTED || response.code() == STF_UPDATED) {
+  if (response.code() == STF_INSERTED) {
     // Feed was added online.
     accept();
     qApp->showGuiMessage(tr("Feed added"), tr("Feed was added, triggering sync in now."), QSystemTrayIcon::Information);

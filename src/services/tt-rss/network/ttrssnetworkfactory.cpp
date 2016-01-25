@@ -575,7 +575,7 @@ TtRssSubscribeToFeedResponse::~TtRssSubscribeToFeedResponse() {
 
 int TtRssSubscribeToFeedResponse::code() const {
   if (m_rawContent.contains(QSL("content"))) {
-    return m_rawContent["content"].toMap()["code"].toInt();
+    return m_rawContent["content"].toMap()["status"].toMap()["code"].toInt();
   }
   else {
     return STF_UNKNOWN;
