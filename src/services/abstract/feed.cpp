@@ -22,7 +22,8 @@
 
 Feed::Feed(RootItem *parent)
   : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
-    m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL) {
+    m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
+    m_totalCount(0), m_unreadCount(0) {
   setKind(RootItemKind::Feed);
 }
 
@@ -50,6 +51,22 @@ QVariant Feed::data(int column, int role) const {
 
 int Feed::autoUpdateInitialInterval() const {
   return m_autoUpdateInitialInterval;
+}
+
+int Feed::countOfAllMessages() const {
+  return m_totalCount;
+}
+
+int Feed::countOfUnreadMessages() const {
+  return m_unreadCount;
+}
+
+void Feed::setCountOfAllMessages(int count_all_messages) {
+  m_totalCount = count_all_messages;
+}
+
+void Feed::setCountOfUnreadMessages(int count_unread_messages) {
+  m_unreadCount = count_unread_messages;
 }
 
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {

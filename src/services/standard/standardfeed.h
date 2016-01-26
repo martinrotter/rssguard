@@ -54,13 +54,6 @@ class StandardFeed : public Feed {
     virtual ~StandardFeed();
 
     StandardServiceRoot *serviceRoot() const;
-
-    // Getters/setters for count of messages.
-    // NOTE: For feeds, counts are stored internally
-    // and can be updated from the database.
-    int countOfAllMessages() const;
-    int countOfUnreadMessages() const;
-
     QList<QAction*> contextMenu();
 
     bool canBeEdited() const {
@@ -169,9 +162,6 @@ class StandardFeed : public Feed {
 
     Type m_type;
     QNetworkReply::NetworkError m_networkError;
-    int m_totalCount;
-    int m_unreadCount;
-
     QString m_encoding;
 };
 

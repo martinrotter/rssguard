@@ -52,8 +52,6 @@ StandardFeed::StandardFeed(RootItem *parent_item)
   m_password = QString();
   m_networkError = QNetworkReply::NoError;
   m_type = Rss0X;
-  m_totalCount = 0;
-  m_unreadCount = 0;
   m_encoding = QString();
 }
 
@@ -64,9 +62,10 @@ StandardFeed::StandardFeed(const StandardFeed &other)
   m_password = other.password();
   m_networkError = other.networkError();
   m_type = other.type();
-  m_totalCount = other.countOfAllMessages();
-  m_unreadCount = other.countOfUnreadMessages();
   m_encoding = other.encoding();
+
+  setCountOfAllMessages(other.countOfAllMessages());
+  setCountOfUnreadMessages(other.countOfUnreadMessages());
 
   setUrl(other.url());
   setStatus(other.status());
@@ -85,14 +84,6 @@ StandardFeed::StandardFeed(const StandardFeed &other)
 
 StandardFeed::~StandardFeed() {
   qDebug("Destroying Feed instance.");
-}
-
-int StandardFeed::countOfAllMessages() const {
-  return m_totalCount;
-}
-
-int StandardFeed::countOfUnreadMessages() const {
-  return m_unreadCount;
 }
 
 QList<QAction*> StandardFeed::contextMenu() {
@@ -233,7 +224,7 @@ void StandardFeed::updateCounts(bool including_total_count) {
     query.bindValue(QSL(":account_id"), serviceRoot()->accountId());
 
     if (query.exec() && query.next()) {
-      m_totalCount = query.value(0).toInt();
+      setCountOfAllMessages(query.value(0).toInt());
     }
   }
 
@@ -245,11 +236,11 @@ void StandardFeed::updateCounts(bool including_total_count) {
   if (query.exec() && query.next()) {
     int new_unread_count = query.value(0).toInt();
 
-    if (status() == NewMessages && new_unread_count < m_unreadCount) {
+    if (status() == NewMessages && new_unread_count < countOfUnreadMessages()) {
       setStatus(Normal);
     }
 
-    m_unreadCount = new_unread_count;
+    setCountOfUnreadMessages(new_unread_count);
   }
 }
 

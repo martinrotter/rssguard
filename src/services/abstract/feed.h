@@ -52,6 +52,12 @@ class Feed : public RootItem {
     explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();
 
+    int countOfAllMessages() const;
+    int countOfUnreadMessages() const;
+
+    void setCountOfAllMessages(int count_all_messages);
+    void setCountOfUnreadMessages(int count_unread_messages);
+
     /////////////////////////////////////////
     // /* Members to override.
     /////////////////////////////////////////
@@ -100,6 +106,8 @@ class Feed : public RootItem {
     AutoUpdateType m_autoUpdateType;
     int m_autoUpdateInitialInterval;
     int m_autoUpdateRemainingInterval;
+    int m_totalCount;
+    int m_unreadCount;
 };
 
 #endif // FEED_H

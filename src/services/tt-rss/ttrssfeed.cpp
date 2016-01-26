@@ -35,10 +35,10 @@
 
 
 TtRssFeed::TtRssFeed(RootItem *parent)
-  : Feed(parent), m_customId(NO_PARENT_CATEGORY), m_totalCount(0), m_unreadCount(0) {
+  : Feed(parent), m_customId(NO_PARENT_CATEGORY) {
 }
 
-TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(NULL), m_totalCount(0), m_unreadCount(0) {
+TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(NULL) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
@@ -117,7 +117,7 @@ void TtRssFeed::updateCounts(bool including_total_count) {
     query_all.bindValue(QSL(":account_id"), serviceRoot()->accountId());
 
     if (query_all.exec() && query_all.next()) {
-      m_totalCount = query_all.value(0).toInt();
+      setCountOfAllMessages(query_all.value(0).toInt());
     }
   }
 
@@ -130,11 +130,11 @@ void TtRssFeed::updateCounts(bool including_total_count) {
   if (query_all.exec() && query_all.next()) {
     int new_unread_count = query_all.value(0).toInt();
 
-    if (status() == NewMessages && new_unread_count < m_unreadCount) {
+    if (status() == NewMessages && new_unread_count < countOfUnreadMessages()) {
       setStatus(Normal);
     }
 
-    m_unreadCount = new_unread_count;
+    setCountOfUnreadMessages(new_unread_count);
   }
 }
 
@@ -162,14 +162,6 @@ bool TtRssFeed::deleteViaGui() {
   else {
     return false;
   }
-}
-
-int TtRssFeed::countOfAllMessages() const {
-  return m_totalCount;
-}
-
-int TtRssFeed::countOfUnreadMessages() const {
-  return m_unreadCount;
 }
 
 int TtRssFeed::update() {

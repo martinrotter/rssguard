@@ -47,9 +47,6 @@ class TtRssFeed : public Feed {
     bool canBeDeleted() const;
     bool deleteViaGui();
 
-    int countOfAllMessages() const;
-    int countOfUnreadMessages() const;
-
     int update();
     QList<Message> undeletedMessages() const;
 
@@ -67,8 +64,6 @@ class TtRssFeed : public Feed {
     int updateMessages(const QList<Message> &messages);
 
     int m_customId;
-    int m_totalCount;
-    int m_unreadCount;
 };
 
 #endif // TTRSSFEED_H
