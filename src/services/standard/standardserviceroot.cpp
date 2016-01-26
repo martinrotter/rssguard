@@ -39,7 +39,6 @@
 #include <QSqlError>
 #include <QStack>
 #include <QAction>
-#include <QPointer>
 #include <QSqlTableModel>
 #include <QClipboard>
 
@@ -133,9 +132,21 @@ bool StandardServiceRoot::supportsCategoryAdding() const {
 }
 
 void StandardServiceRoot::addNewFeed(const QString &url) {
-  QPointer<FormStandardFeedDetails> form_pointer = new FormStandardFeedDetails(this, qApp->mainForm());
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    qApp->showGuiMessage(tr("Cannot add item"),
+                         tr("Cannot add feed because another critical operation is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+    // Thus, cannot delete and quit the method.
+    return;
+  }
+
+  QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this, qApp->mainForm()));
   form_pointer.data()->exec(NULL, NULL, url);
-  delete form_pointer.data();
+
+  qApp->feedUpdateLock()->unlock();
 }
 
 QVariant StandardServiceRoot::data(int column, int role) const {
@@ -405,23 +416,33 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel *model, 
 }
 
 void StandardServiceRoot::addNewCategory() {
-  QPointer<FormStandardCategoryDetails> form_pointer = new FormStandardCategoryDetails(this, qApp->mainForm());
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    qApp->showGuiMessage(tr("Cannot add category"),
+                         tr("Cannot add category because another critical operation is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+    // Thus, cannot delete and quit the method.
+    return;
+  }
+
+  QScopedPointer<FormStandardCategoryDetails> form_pointer(new FormStandardCategoryDetails(this, qApp->mainForm()));
   form_pointer.data()->exec(NULL, NULL);
-  delete form_pointer.data();
+
+  qApp->feedUpdateLock()->unlock();
 }
 
 void StandardServiceRoot::importFeeds() {
-  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this, qApp->mainForm());
+  QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainForm()));
   form.data()->setMode(FeedsImportExportModel::Import);
   form.data()->exec();
-  delete form.data();
 }
 
 void StandardServiceRoot::exportFeeds() {
-  QPointer<FormStandardImportExport> form = new FormStandardImportExport(this, qApp->mainForm());
+  QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainForm()));
   form.data()->setMode(FeedsImportExportModel::Export);
   form.data()->exec();
-  delete form.data();
 }
 
 QStringList StandardServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {

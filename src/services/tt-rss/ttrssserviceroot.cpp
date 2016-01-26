@@ -19,6 +19,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/mutex.h"
 #include "miscellaneous/textfactory.h"
 #include "gui/dialogs/formmain.h"
 #include "network-web/networkfactory.h"
@@ -34,7 +35,6 @@
 #include <QSqlTableModel>
 #include <QSqlQuery>
 #include <QSqlError>
-#include <QPointer>
 #include <QPair>
 #include <QClipboard>
 
@@ -62,7 +62,6 @@ void TtRssServiceRoot::start(bool freshly_activated) {
 
 void TtRssServiceRoot::stop() {
   m_network->logout();
-
   qDebug("Stopping Tiny Tiny RSS account, logging out with result '%d'.", (int) m_network->lastError());
 }
 
@@ -71,9 +70,9 @@ QString TtRssServiceRoot::code() const {
 }
 
 bool TtRssServiceRoot::editViaGui() {
-  QPointer<FormEditAccount> form_pointer = new FormEditAccount(qApp->mainForm());
+  QScopedPointer<FormEditAccount> form_pointer(new FormEditAccount(qApp->mainForm()));
   form_pointer.data()->execForEdit(this);
-  delete form_pointer.data();
+
   return false;
 }
 
@@ -119,10 +118,21 @@ bool TtRssServiceRoot::supportsCategoryAdding() const {
 }
 
 void TtRssServiceRoot::addNewFeed(const QString &url) {
-  QPointer<FormEditFeed> form_pointer = new FormEditFeed(this, qApp->mainForm());
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    qApp->showGuiMessage(tr("Cannot add item"),
+                         tr("Cannot add feed because another critical operation is ongoing."),
+                         QSystemTrayIcon::Warning, qApp->mainForm(), true);
+    // Thus, cannot delete and quit the method.
+    return;
+  }
 
+  QScopedPointer<FormEditFeed> form_pointer(new FormEditFeed(this, qApp->mainForm()));
   form_pointer.data()->execForAdd(url);
-  delete form_pointer.data();
+
+  qApp->feedUpdateLock()->unlock();
 }
 
 void TtRssServiceRoot::addNewCategory() {

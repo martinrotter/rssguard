@@ -100,8 +100,6 @@ void MessagesView::reloadSelections(bool mark_current_index_read) {
   else {
     // Messages were probably removed from the model, nothing can
     // be selected and no message can be displayed.
-    // TOTO: Check if this is OKAY. If not, then emit this signal
-    // from FeedsView itself.
     emit currentMessagesRemoved();
   }
 }

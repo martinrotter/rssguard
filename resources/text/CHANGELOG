@@ -11,6 +11,7 @@ Added:
 ▪ User is now able to delete TT-RSS feeds. (issue #151)
 
 Fixed:
+▪ Fixed problems with master update mutex locking. (bug #153)
 ▪ Fixed some problems, that "Add category to selected account" was enabled when it shouldn't be.
 ▪ ♥ Auto-updating of feeds fixed (again?!). ♥
 ▪ Fixed problem with adding feeds in TT-RSS accounts. (bug #154)
