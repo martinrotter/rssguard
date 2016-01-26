@@ -282,8 +282,8 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
         <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %1 flöden.</numerusform></translation>
+Denna webbsida innehåller %n flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform></translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -2280,7 +2280,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove duplicate messages (standard account only)</source>
-        <translation type="unfinished"/>
+        <translation>Ta bort dubblettmeddelanden (endast standardkonto)</translation>
     </message>
 </context>
 <context>
@@ -2799,27 +2799,27 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Rotnod</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Välj övergripande objekt för ditt flöde.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT-filer [en URL per rad] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Hämta metadata online</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata för flödet kan hämtas online. Notera att åtgärden kan ta flera minuter, beroende på antal flöden.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation>Vill du hämta flödesmetadata online?</translation>
     </message>
 </context>
 <context>
@@ -3455,6 +3455,22 @@ Konto-ID: %1</translation>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Detta nya konto inkluderar inte några flöden. Du kan nu läsa in standarduppsättningen av flöden.</translation>
     </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation>Kan inte lägga till objekt</translation>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Kan inte lägga till kategori</translation>
+    </message>
+    <message>
+        <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
+    </message>
 </context>
 <context>
     <name>StatusBar</name>
@@ -3636,6 +3652,14 @@ Senast inloggad: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Synka i</translation>
+    </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation>Kan inte lägga till objekt</translation>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
 </context>
 <context>

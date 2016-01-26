@@ -3412,6 +3412,22 @@ Account ID: %1</source>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation type="unfinished"/>
     </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Impossibile aggiungere categria </translation>
+    </message>
+    <message>
+        <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StatusBar</name>
@@ -3583,6 +3599,14 @@ Last login on: %5</source>
     </message>
     <message>
         <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
         <translation type="unfinished"/>
     </message>
 </context>

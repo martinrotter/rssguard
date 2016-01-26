@@ -292,7 +292,7 @@ Tato stránka obsahuje %n kanálů.</numerusform></translation>
     </message>
     <message>
         <source>Given account does not support adding feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Tento účet nepodporuje přidávání kanálů.</translation>
     </message>
 </context>
 <context>
@@ -2279,7 +2279,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove duplicate messages (standard account only)</source>
-        <translation type="unfinished"/>
+        <translation>Smazat duplicitní zprávy (pouze standardní účet)</translation>
     </message>
 </context>
 <context>
@@ -2798,27 +2798,27 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Kořenový uzel</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT soubory [jedna URL na řádku] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Získat online metadata</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata pro vaše kanály lze získat online. Mějte na paměti, že toto může trvat i několik minut.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation>Chcete načíst metadata online?</translation>
     </message>
 </context>
 <context>
@@ -3456,6 +3456,22 @@ ID účtu: %1</translation>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Tento nový účet doposud neobsahuje žádné kanály, chcete nyní přidat výchozí sadu kanálů?</translation>
     </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation>Nelze přidat položku</translation>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Nelze přidat kategorii</translation>
+    </message>
+    <message>
+        <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation>Nelze přidat kategorii, protože probíhá jiná kritická operace.</translation>
+    </message>
 </context>
 <context>
     <name>StatusBar</name>
@@ -3637,6 +3653,14 @@ Poslední přihlášení: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Synchronizovat</translation>
+    </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation>Nelze přidat položku</translation>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
     </message>
 </context>
 <context>

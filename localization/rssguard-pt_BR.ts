@@ -3,19 +3,19 @@
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
         <source>Add subscription</source>
-        <translation>Adicionar inscrição</translation>
+        <translation>Adicionar assinatura</translation>
     </message>
     <message>
         <source>Another subscription</source>
-        <translation>Outra inscrição</translation>
+        <translation>Outra assinatura</translation>
     </message>
     <message>
         <source>Entered title is okay.</source>
-        <translation>O título fornecido está correto.</translation>
+        <translation>O título escolhido está correto.</translation>
     </message>
     <message>
         <source>Entered title is empty.</source>
-        <translation>O título fornecido está vazio.</translation>
+        <translation>O título escolhido está vazio.</translation>
     </message>
     <message>
         <source>Entered url is okay.</source>
@@ -2279,7 +2279,7 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Remove duplicate messages (standard account only)</source>
-        <translation type="unfinished"/>
+        <translation>Remover mensagens duplicadas (só a conta padrão)</translation>
     </message>
 </context>
 <context>
@@ -2798,27 +2798,27 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Nó raiz</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Escolha o item principal para o seu feed.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>Arquivos TXT [uma URL por linha] (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Obter metadados on-line</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Os metadados para seus feeds podem ser buscados online.  Observe que a ação pode demorar alguns minutos, dependendo do número de feeds.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation>Você deseja buscar metadados dos feeds on-line?</translation>
     </message>
 </context>
 <context>
@@ -3457,6 +3457,22 @@ ID da Conta: %1</translation>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Esta nova conta não inclui nenhum feed. Você pode adicionar agora um conjunto padrão de feeds.</translation>
     </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Não foi possível adicionar a categoria</translation>
+    </message>
+    <message>
+        <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StatusBar</name>
@@ -3638,6 +3654,14 @@ Servidor: %2
     <message>
         <source>Sync in</source>
         <translation>Sincronizar em</translation>
+    </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

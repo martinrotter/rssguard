@@ -2286,7 +2286,7 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Remove duplicate messages (standard account only)</source>
-        <translation type="unfinished"/>
+        <translation>Verwijder dubbele berichten (Alleen in standaard account)</translation>
     </message>
 </context>
 <context>
@@ -2805,27 +2805,27 @@ Open nieuw webbrowser pagina(sleep muis omlaag).</translation>
     </message>
     <message>
         <source>Root node</source>
-        <translation type="unfinished"/>
+        <translation>Root rechten</translation>
     </message>
     <message>
         <source>Select parent item for your feed.</source>
-        <translation type="unfinished"/>
+        <translation>Kies hoofd item voor je feed.</translation>
     </message>
     <message>
         <source>TXT files [one URL per line] (*.txt)</source>
-        <translation type="unfinished"/>
+        <translation>TXT bestanden (een url per lijn) (*.txt)</translation>
     </message>
     <message>
         <source>Get online metadata</source>
-        <translation type="unfinished"/>
+        <translation>Krijg metadata online</translation>
     </message>
     <message>
         <source>Metadata for your feeds can be fetched online. Note that the action could take several minutes, depending on number of feeds.</source>
-        <translation type="unfinished"/>
+        <translation>Metadata voor uw feeds kunnen online worden opgehaald. Merk op dat de actie een aantal minuten kan duren, afhankelijk van het aantal feeds.</translation>
     </message>
     <message>
         <source>Do you want to fetch feed metadata online?</source>
-        <translation type="unfinished"/>
+        <translation>Wilt u de feed metadata online ophalen?</translation>
     </message>
 </context>
 <context>
@@ -3464,6 +3464,22 @@ Account ID: %1</translation>
         <source>This new account does not include any feeds. You can now add default set of feeds.</source>
         <translation>Dit nieuwe account bevat geen feeds. U kunt de standaard set van feeds toevoegen.</translation>
     </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add category</source>
+        <translation>Kan geen categorie toevoegen</translation>
+    </message>
+    <message>
+        <source>Cannot add category because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>StatusBar</name>
@@ -3646,6 +3662,14 @@ Laatste login: %5</translation>
     <message>
         <source>Sync in</source>
         <translation>Sync in</translation>
+    </message>
+    <message>
+        <source>Cannot add item</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Cannot add feed because another critical operation is ongoing.</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
