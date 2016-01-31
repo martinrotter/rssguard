@@ -104,7 +104,7 @@ endif()
 if(USE_QT_5)
   cmake_minimum_required(VERSION 2.8.10)
 else(USE_QT_5)
-  cmake_minimum_required(VERSION 2.8.0)
+  cmake_minimum_required(VERSION 2.6.0)
 endif(USE_QT_5)
 
 if(${APPLE})
