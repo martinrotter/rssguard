@@ -3459,11 +3459,11 @@ ID da Conta: %1</translation>
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
     </message>
     <message>
         <source>Cannot add category</source>
@@ -3471,7 +3471,7 @@ ID da Conta: %1</translation>
     </message>
     <message>
         <source>Cannot add category because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar a categoria porque outra operação crítica está em curso.</translation>
     </message>
 </context>
 <context>
@@ -3657,11 +3657,11 @@ Servidor: %2
     </message>
     <message>
         <source>Cannot add item</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar o item</translation>
     </message>
     <message>
         <source>Cannot add feed because another critical operation is ongoing.</source>
-        <translation type="unfinished"/>
+        <translation>Não é possível adicionar feeds porque outra operação crítica está em curso.</translation>
     </message>
 </context>
 <context>
