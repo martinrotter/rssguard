@@ -32,6 +32,7 @@
 #include "services/standard/standardserviceroot.h"
 #include "services/standard/standardserviceentrypoint.h"
 #include "services/tt-rss/ttrssserviceentrypoint.h"
+#include "services/owncloud/owncloudserviceentrypoint.h"
 
 #include <QSessionManager>
 #include <QThread>
@@ -59,6 +60,7 @@ QList<ServiceEntryPoint*> Application::feedServices() {
     // NOTE: All installed services create their entry points here.
     m_feedServices.append(new StandardServiceEntryPoint());
     m_feedServices.append(new TtRssServiceEntryPoint());
+    m_feedServices.append(new OwnCloudServiceEntryPoint());
   }
 
   return m_feedServices;

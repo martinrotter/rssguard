@@ -1,5 +1,5 @@
-#ifndef DEFINITIONS_H
-#define DEFINITIONS_H
+#ifndef TTRSS_DEFINITIONS_H
+#define TTRSS_DEFINITIONS_H
 
 #define MINIMAL_API_LEVEL 9
 #define CONTENT_TYPE      "application/json; charset=utf-8"
@@ -44,4 +44,4 @@
 #define UFF_FEED_NOT_FOUND    "FEED_NOT_FOUND"
 #define UFF_OK                "OK"
 
-#endif // DEFINITIONS_H
+#endif // TTRSS_DEFINITIONS_H

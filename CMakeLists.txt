@@ -360,6 +360,7 @@ file( GLOB APP_SOURCES_GL
   "src/services/tt-rss/*.cpp"
   "src/services/tt-rss/gui/*.cpp"
   "src/services/tt-rss/network/*.cpp"
+  "src/services/owncloud/*.cpp"
   "src/network-web/*.cpp"
   "src/network-web/adblock/*.cpp"
   "src/*.cpp")
@@ -389,6 +390,7 @@ file( GLOB APP_HEADERS
   "src/services/tt-rss/*.h"
   "src/services/tt-rss/gui/*.h"
   "src/services/tt-rss/network/*.h"
+  "src/services/owncloud/*.h"
   "src/network-web/*.h"
   "src/network-web/adblock/*.h")
 
