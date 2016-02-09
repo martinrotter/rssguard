@@ -21,7 +21,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/definitions.h"
-
+#include "services/owncloud/owncloudserviceroot.h"
 
 OwnCloudServiceEntryPoint::OwnCloudServiceEntryPoint() {
 }
@@ -31,6 +31,12 @@ OwnCloudServiceEntryPoint::~OwnCloudServiceEntryPoint() {
 
 ServiceRoot *OwnCloudServiceEntryPoint::createNewRoot() const {
   // TODO: TODO
+  //QPointer<FormEditAccount> form_acc = new FormEditAccount(qApp->mainForm());
+  //OwnCloudServiceRoot *new_root = form_acc.data()->execForCreate();
+  //delete form_acc.data();
+
+  //return new_root;
+
   return NULL;
 }
 

@@ -26,6 +26,22 @@ OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent) : ServiceRoot(parent)
 OwnCloudServiceRoot::~OwnCloudServiceRoot() {
 }
 
+bool OwnCloudServiceRoot::canBeEdited() const {
+  return true;
+}
+
+bool OwnCloudServiceRoot::canBeDeleted() const {
+  return true;
+}
+
+bool OwnCloudServiceRoot::editViaGui() {
+  return false;
+}
+
+bool OwnCloudServiceRoot::deleteViaGui() {
+  return false;
+}
+
 bool OwnCloudServiceRoot::supportsFeedAdding() const {
   // TODO: TODO
   return false;

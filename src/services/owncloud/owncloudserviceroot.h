@@ -26,6 +26,11 @@ class OwnCloudServiceRoot : public ServiceRoot {
     explicit OwnCloudServiceRoot(RootItem *parent = NULL);
     virtual ~OwnCloudServiceRoot();
 
+    bool canBeEdited() const;
+    bool canBeDeleted() const;
+    bool editViaGui();
+    bool deleteViaGui();
+
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
 

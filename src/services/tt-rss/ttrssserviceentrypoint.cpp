@@ -72,11 +72,8 @@ QString TtRssServiceEntryPoint::code() const {
 }
 
 ServiceRoot *TtRssServiceEntryPoint::createNewRoot() const {
-  QPointer<FormEditAccount> form_acc = new FormEditAccount(qApp->mainForm());
-  TtRssServiceRoot *new_root = form_acc.data()->execForCreate();
-  delete form_acc.data();
-
-  return new_root;
+  QScopedPointer<FormEditAccount> form_acc(new FormEditAccount(qApp->mainForm()));
+  return form_acc->execForCreate();
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {
