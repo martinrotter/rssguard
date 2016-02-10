@@ -135,6 +135,7 @@
     </widget>
     <addaction name="m_actionUpdateAllItems"/>
     <addaction name="m_actionUpdateSelectedItems"/>
+    <addaction name="m_actionStopRunningItemsUpdate"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
     <addaction name="m_actionEditSelectedItem"/>
@@ -792,6 +793,14 @@
   <action name="m_actionAddCategoryIntoSelectedAccount">
    <property name="text">
     <string>Add new category into selected account</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+  </action>
+  <action name="m_actionStopRunningItemsUpdate">
+   <property name="text">
+    <string>Stop running update</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

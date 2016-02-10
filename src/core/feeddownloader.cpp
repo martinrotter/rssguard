@@ -25,7 +25,7 @@
 #include <QMetaType>
 
 
-FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent) {
+FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent), m_stopUpdate(false), m_isUpdateRunning(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 }
 
@@ -33,8 +33,17 @@ FeedDownloader::~FeedDownloader() {
   qDebug("Destroying FeedDownloader instance.");
 }
 
+bool FeedDownloader::isUpdateRunning() const {
+  return m_isUpdateRunning;
+}
+
 void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
   qDebug().nospace() << "Performing feed updates in thread: \'" << QThread::currentThreadId() << "\'.";
+
+  // It may be good to disable "stop" action when batch feed update
+  // starts.
+  m_isUpdateRunning = true;
+  m_stopUpdate = false;
 
   // Job starts now.
   emit started();
@@ -42,6 +51,11 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
   FeedDownloadResults results;
 
   for (int i = 0, total = feeds.size(); i < total; i++) {
+    if (m_stopUpdate) {
+      qDebug("Stopping batch feed update now.");
+      break;
+    }
+
     int updated_messages = feeds.at(i)->update();
 
     if (updated_messages > 0) {
@@ -56,11 +70,19 @@ void FeedDownloader::updateFeeds(const QList<Feed*> &feeds) {
 
   results.sort();
 
+  // Make sure that there is not "stop" action pending.
+  m_isUpdateRunning = false;
+  m_stopUpdate = false;
+
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked
   // and feeds can be added/edited/deleted and application
   // can eventually quit.
   emit finished(results);
+}
+
+void FeedDownloader::stopRunningUpdate() {
+  m_stopUpdate = true;
 }
 
 FeedDownloadResults::FeedDownloadResults() : m_updatedFeeds(QList<QPair<QString,int> >()) {

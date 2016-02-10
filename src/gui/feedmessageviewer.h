@@ -97,6 +97,8 @@ class FeedMessageViewer : public TabContent {
     // Called when feed update finishes.
     void onFeedsUpdateFinished();
 
+    void onFeedsUpdateStarted();
+
     // Switches visibility of feed list and related
     // toolbar.
     void switchFeedComponentVisibility();

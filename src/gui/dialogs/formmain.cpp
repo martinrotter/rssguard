@@ -130,6 +130,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionDeleteSelectedMessages;
   actions << m_ui->m_actionUpdateAllItems;
   actions << m_ui->m_actionUpdateSelectedItems;
+  actions << m_ui->m_actionStopRunningItemsUpdate;
   actions << m_ui->m_actionEditSelectedItem;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionServiceAdd;
@@ -372,6 +373,7 @@ void FormMain::setupIcons() {
 
   // Feeds/messages.
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("item-new")));
+  m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("go-stop")));
   m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-all")));
   m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("item-update-selected")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-remove")));

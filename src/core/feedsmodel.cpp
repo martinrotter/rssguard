@@ -157,6 +157,8 @@ void FeedsModel::updateFeeds(const QList<Feed*> &feeds) {
 void FeedsModel::onFeedUpdatesStarted() {
   //: Text display in status bar when feed update is started.
   qApp->mainForm()->statusBar()->showProgressFeeds(0, tr("Feed update started"));
+
+  emit feedsUpdateStarted();
 }
 
 void FeedsModel::onFeedUpdatesProgress(const Feed *feed, int current, int total) {
@@ -610,6 +612,10 @@ bool FeedsModel::hasAnyFeedNewMessages() const {
   return false;
 }
 
+bool FeedsModel::isFeedUpdateRunning() const {
+  return m_feedDownloader != NULL && m_feedDownloader->isUpdateRunning();
+}
+
 void FeedsModel::reloadChangedLayout(QModelIndexList list) {
   while (!list.isEmpty()) {
     QModelIndex indx = list.takeFirst();
@@ -718,6 +724,12 @@ void FeedsModel::loadActivatedServiceAccounts() {
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebug("Requesting update for all feeds on application startup.");
     QTimer::singleShot(STARTUP_UPDATE_DELAY, this, SLOT(updateAllFeeds()));
+  }
+}
+
+void FeedsModel::stopRunningFeedUpdate() {
+  if (m_feedDownloader != NULL) {
+    m_feedDownloader->stopRunningUpdate();
   }
 }
 

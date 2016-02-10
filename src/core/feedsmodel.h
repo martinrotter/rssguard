@@ -125,6 +125,8 @@ class FeedsModel : public QAbstractItemModel {
       return m_rootItem;
     }
 
+    bool isFeedUpdateRunning() const;
+
     // Resets global auto-update intervals according to settings
     // and starts/stop the timer as needed.
     void updateAutoUpdateStatus();
@@ -142,6 +144,8 @@ class FeedsModel : public QAbstractItemModel {
     void loadActivatedServiceAccounts();
 
   public slots:
+    void stopRunningFeedUpdate();
+
     // Schedules all feeds from all accounts for update.
     void updateAllFeeds();
 
@@ -190,6 +194,8 @@ class FeedsModel : public QAbstractItemModel {
   signals:
     // Update of feeds is finished.
     void feedsUpdateFinished();
+
+    void feedsUpdateStarted();
 
     // Emitted when model requests update of some feeds.
     void feedsUpdateRequested(QList<Feed*> feeds);

@@ -191,6 +191,7 @@ void FeedMessageViewer::updateMessageButtonsAvailability() {
 }
 
 void FeedMessageViewer::updateFeedButtonsAvailability() {
+  const bool is_update_running = feedsView()->sourceModel()->isFeedUpdateRunning();
   const bool critical_action_running = qApp->feedUpdateLock()->isLocked();
   const RootItem *selected_item = feedsView()->selectedItem();
   const bool anything_selected = selected_item != NULL;
@@ -199,6 +200,7 @@ void FeedMessageViewer::updateFeedButtonsAvailability() {
   const bool service_selected = anything_selected && selected_item->kind() == RootItemKind::ServiceRoot;
   const FormMain *form_main = qApp->mainForm();
   
+  form_main->m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
   form_main->m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
   form_main->m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
@@ -245,6 +247,7 @@ void FeedMessageViewer::createConnections() {
   // to reload selections.
   connect(m_feedsView->sourceModel(), SIGNAL(reloadMessageListRequested(bool)), m_messagesView, SLOT(reloadSelections(bool)));
   connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateFinished()), this, SLOT(onFeedsUpdateFinished()));
+  connect(m_feedsView->sourceModel(), SIGNAL(feedsUpdateStarted()), this, SLOT(onFeedsUpdateStarted()));
 
   // Message openers.
   connect(m_messagesView, SIGNAL(openLinkMiniBrowser(QString)), m_messagesBrowser, SLOT(navigateToUrl(QString)));
@@ -294,6 +297,8 @@ void FeedMessageViewer::createConnections() {
           SIGNAL(triggered()), m_feedsView, SLOT(updateSelectedItems()));
   connect(form_main->m_ui->m_actionUpdateAllItems,
           SIGNAL(triggered()), m_feedsView, SLOT(updateAllItems()));
+  connect(form_main->m_ui->m_actionStopRunningItemsUpdate,
+          SIGNAL(triggered()), m_feedsView->sourceModel(), SLOT(stopRunningFeedUpdate()));
   connect(form_main->m_ui->m_actionEditSelectedItem,
           SIGNAL(triggered()), m_feedsView, SLOT(editSelectedItem()));
   connect(form_main->m_ui->m_actionViewSelectedItemsNewspaperMode,
@@ -433,4 +438,11 @@ void FeedMessageViewer::refreshVisualProperties() {
 
 void FeedMessageViewer::onFeedsUpdateFinished() {
   m_messagesView->reloadSelections(true);
+}
+
+void FeedMessageViewer::onFeedsUpdateStarted() {
+  // Check only "Stop running update" button.
+  const bool is_update_running = feedsView()->sourceModel()->isFeedUpdateRunning();
+
+  qApp->mainForm()->m_ui->m_actionStopRunningItemsUpdate->setEnabled(is_update_running);
 }
