@@ -22,6 +22,8 @@
 
 
 class OwnCloudServiceRoot : public ServiceRoot {
+    Q_OBJECT
+
   public:
     explicit OwnCloudServiceRoot(RootItem *parent = NULL);
     virtual ~OwnCloudServiceRoot();
