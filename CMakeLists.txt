@@ -86,7 +86,7 @@ endif(APPLE)
 
 # Options declaration.
 option(USE_QT_5 "Use Qt 5 for building" OFF)
-option(ENABLE_NUMIX "Install Numix icon theme" ON)
+option(ENABLE_ADDITIONAL_ICONS "Install additional icons" ON)
 
 if(OS2)
   option(ENABLE_OS2_RC "Compile application icon on OS/2" OFF)
@@ -116,7 +116,7 @@ endif(${APPLE})
 message(STATUS "")
 message(STATUS "[${APP_LOW_NAME}] ==== Options summary ====")
 message(STATUS "[${APP_LOW_NAME}] Use Qt 5 for building -> ${USE_QT_5}")
-message(STATUS "[${APP_LOW_NAME}] Install Numix icon theme -> ${ENABLE_NUMIX}")
+message(STATUS "[${APP_LOW_NAME}] Install additional icons -> ${ENABLE_ADDITIONAL_ICONS}")
 
 if(OS2)
   message(STATUS "[${APP_LOW_NAME}] Compile application icon on OS/2 -> ${ENABLE_OS2_RC}")
@@ -572,9 +572,11 @@ if(WIN32 OR OS2)
 
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ./icons)
 
-  if(ENABLE_NUMIX)
+  if(ENABLE_ADDITIONAL_ICONS)
     install(DIRECTORY resources/graphics/icons/numix DESTINATION ./icons)
-  endif(ENABLE_NUMIX)
+    install(DIRECTORY resources/graphics/icons/papirus DESTINATION ./icons)
+    install(DIRECTORY resources/graphics/icons/papirus_dark DESTINATION ./icons)
+  endif(ENABLE_ADDITIONAL_ICONS)
 
   install(DIRECTORY resources/skins/base
           DESTINATION ./skins)
@@ -622,9 +624,11 @@ elseif(APPLE)
   install(DIRECTORY resources/initial_feeds DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION ${APPLE_PREFIX}/icons)
 
-  if(ENABLE_NUMIX)
+  if(ENABLE_ADDITIONAL_ICONS)
     install(DIRECTORY resources/graphics/icons/numix DESTINATION ${APPLE_PREFIX}/icons)
-  endif(ENABLE_NUMIX)
+    install(DIRECTORY resources/graphics/icons/papirus DESTINATION ${APPLE_PREFIX}/icons)
+    install(DIRECTORY resources/graphics/icons/papirus_dark DESTINATION ${APPLE_PREFIX}/icons)
+  endif(ENABLE_ADDITIONAL_ICONS)
 
   install(DIRECTORY resources/skins DESTINATION ${APPLE_PREFIX})
   install(DIRECTORY resources/misc DESTINATION ${APPLE_PREFIX})
@@ -639,9 +643,11 @@ elseif(UNIX)
   install(DIRECTORY resources/initial_feeds DESTINATION share/${APP_LOW_NAME})
   install(DIRECTORY resources/graphics/icons/mini-kfaenza DESTINATION share/${APP_LOW_NAME}/icons)
 
-  if(ENABLE_NUMIX)
+  if(ENABLE_ADDITIONAL_ICONS)
     install(DIRECTORY resources/graphics/icons/numix DESTINATION share/${APP_LOW_NAME}/icons)
-  endif(ENABLE_NUMIX)
+    install(DIRECTORY resources/graphics/icons/papirus DESTINATION share/${APP_LOW_NAME}/icons)
+    install(DIRECTORY resources/graphics/icons/papirus_dark DESTINATION share/${APP_LOW_NAME}/icons)
+  endif(ENABLE_ADDITIONAL_ICONS)
 
   install(DIRECTORY resources/skins/base DESTINATION share/${APP_LOW_NAME}/skins)
   install(DIRECTORY resources/misc  DESTINATION share/${APP_LOW_NAME})
