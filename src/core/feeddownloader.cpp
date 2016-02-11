@@ -25,7 +25,7 @@
 #include <QMetaType>
 
 
-FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent), m_stopUpdate(false), m_isUpdateRunning(false) {
+FeedDownloader::FeedDownloader(QObject *parent) : QObject(parent), m_isUpdateRunning(false), m_stopUpdate(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 }
 
