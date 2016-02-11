@@ -90,6 +90,8 @@ class StandardFeed : public Feed {
     bool addItself(RootItem *parent);
     bool editItself(StandardFeed *new_feed_data);
 
+    int messageForeignKeyId() const;
+
     // Other getters/setters.
     inline Type type() const {
       return m_type;

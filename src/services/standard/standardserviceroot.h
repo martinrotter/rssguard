@@ -67,9 +67,6 @@ class StandardServiceRoot : public ServiceRoot {
     // Returns context menu.
     QList<QAction*> contextMenu();
 
-    // Message stuff.
-    bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
-
     // Returns context specific menu actions for given feed.
     QList<QAction*> getContextMenuForFeed(StandardFeed *feed);
 
@@ -92,10 +89,6 @@ class StandardServiceRoot : public ServiceRoot {
 
   private:
     void checkArgumentsForFeedAdding();
-
-    // Returns converted ids of given feeds
-    // which are suitable as IN clause for SQL queries.
-    QStringList textualFeedIds(const QList<Feed *> &feeds);
 
     RecycleBin *m_recycleBin;
     QAction *m_actionExportFeeds;

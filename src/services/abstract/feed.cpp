@@ -23,11 +23,19 @@
 Feed::Feed(RootItem *parent)
   : RootItem(parent), m_url(QString()), m_status(Normal), m_autoUpdateType(DefaultAutoUpdate),
     m_autoUpdateInitialInterval(DEFAULT_AUTO_UPDATE_INTERVAL), m_autoUpdateRemainingInterval(DEFAULT_AUTO_UPDATE_INTERVAL),
-    m_totalCount(0), m_unreadCount(0) {
+    m_totalCount(0), m_unreadCount(0), m_customId(NO_PARENT_CATEGORY) {
   setKind(RootItemKind::Feed);
 }
 
 Feed::~Feed() {
+}
+
+int Feed::customId() const {
+  return m_customId;
+}
+
+void Feed::setCustomId(int custom_id) {
+  m_customId = custom_id;
 }
 
 QVariant Feed::data(int column, int role) const {

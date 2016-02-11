@@ -35,7 +35,7 @@
 
 
 TtRssFeed::TtRssFeed(RootItem *parent)
-  : Feed(parent), m_customId(NO_PARENT_CATEGORY) {
+  : Feed(parent) {
 }
 
 TtRssFeed::TtRssFeed(const QSqlRecord &record) : Feed(NULL) {
@@ -55,6 +55,10 @@ QString TtRssFeed::hashCode() const {
       QString::number(kind()) + QL1S("-") +
       QString::number(getParentServiceRoot()->accountId()) + QL1S("-") +
       QString::number(customId());
+}
+
+int TtRssFeed::messageForeignKeyId() const {
+  return customId();
 }
 
 TtRssServiceRoot *TtRssFeed::serviceRoot() const {
@@ -239,14 +243,6 @@ bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
 
 bool TtRssFeed::cleanMessages(bool clear_only_read) {
   return serviceRoot()->cleanFeeds(QList<Feed*>() << this, clear_only_read);
-}
-
-int TtRssFeed::customId() const {
-  return m_customId;
-}
-
-void TtRssFeed::setCustomId(int custom_id) {
-  m_customId = custom_id;
 }
 
 bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {

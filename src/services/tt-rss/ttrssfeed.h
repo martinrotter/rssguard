@@ -35,6 +35,8 @@ class TtRssFeed : public Feed {
 
     QString hashCode() const;
 
+    int messageForeignKeyId() const;
+
     TtRssServiceRoot *serviceRoot() const;
 
     QVariant data(int column, int role) const;
@@ -52,18 +54,11 @@ class TtRssFeed : public Feed {
 
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
-
-    int customId() const;
-    void setCustomId(int custom_id);
-
     bool editItself(TtRssFeed *new_feed_data);
 
   private:
     bool removeItself();
-
     int updateMessages(const QList<Message> &messages);
-
-    int m_customId;
 };
 
 #endif // TTRSSFEED_H

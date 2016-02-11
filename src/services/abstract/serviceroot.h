@@ -95,7 +95,7 @@ class ServiceRoot : public RootItem {
     // and then use method QSqlTableModel::setFilter(....).
     // NOTE: It would be more preferable if all messages are downloaded
     // right when feeds are updated.
-    virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model) = 0;
+    virtual bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 
     // Called BEFORE this read status update (triggered by user in message list) is stored in DB,
     // when false is returned, change is aborted.
@@ -164,6 +164,8 @@ class ServiceRoot : public RootItem {
     virtual void addNewCategory() = 0;
 
   protected:
+    QStringList textualFeedIds(const QList<Feed*> &feeds) const;
+
     // Takes lists of feeds/categories and assembles them into the tree structure.
     void assembleCategories(Assignment categories);
     void assembleFeeds(Assignment feeds);

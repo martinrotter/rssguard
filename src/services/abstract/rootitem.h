@@ -204,7 +204,8 @@ class RootItem : public QObject {
       m_icon = icon;
     }
 
-    // Each item has some kind of id. Usually taken from primary key attribute from DB.
+    // This ALWAYS represents primary column number/ID under which
+    // the item is stored in DB.
     inline int id() const {
       return m_id;
     }

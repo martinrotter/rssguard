@@ -21,8 +21,10 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
+#include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 
+#include <QSqlTableModel>
 #include <QSqlQuery>
 #include <QSqlError>
 
@@ -135,12 +137,39 @@ void ServiceRoot::requestItemRemoval(RootItem *item) {
   emit itemRemovalRequested(item);
 }
 
+QStringList ServiceRoot::textualFeedIds(const QList<Feed*> &feeds) const {
+  QStringList stringy_ids;
+  stringy_ids.reserve(feeds.size());
+
+  foreach (const Feed *feed, feeds) {
+    stringy_ids.append(QString("'%1'").arg(QString::number(feed->messageForeignKeyId())));
+  }
+
+  return stringy_ids;
+}
+
 int ServiceRoot::accountId() const {
   return m_accountId;
 }
 
 void ServiceRoot::setAccountId(int account_id) {
   m_accountId = account_id;
+}
+
+bool ServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
+  if (item->kind() == RootItemKind::Bin) {
+    model->setFilter(QString("is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1").arg(QString::number(accountId())));
+  }
+  else {
+    QList<Feed*> children = item->getSubTreeFeeds();
+    QString filter_clause = textualFeedIds(children).join(QSL(", "));
+
+    model->setFilter(QString("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = %2").arg(filter_clause,
+                                                                                                            QString::number(accountId())));
+    qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
+  }
+
+  return true;
 }
 
 bool ServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {

@@ -445,17 +445,6 @@ void StandardServiceRoot::exportFeeds() {
   form.data()->exec();
 }
 
-QStringList StandardServiceRoot::textualFeedIds(const QList<Feed*> &feeds) {
-  QStringList stringy_ids;
-  stringy_ids.reserve(feeds.size());
-
-  foreach (Feed *feed, feeds) {
-    stringy_ids.append(QString("'%1'").arg(QString::number(feed->id())));
-  }
-
-  return stringy_ids;
-}
-
 QList<QAction*> StandardServiceRoot::addItemMenu() {
   return QList<QAction*>();
 }
@@ -477,20 +466,4 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
 
 QList<QAction*> StandardServiceRoot::contextMenu() {
   return serviceMenu();
-}
-
-bool StandardServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
-  if (item->kind() == RootItemKind::Bin) {
-    model->setFilter(QString("is_deleted = 1 AND is_pdeleted = 0 AND account_id = %1").arg(QString::number(accountId())));
-  }
-  else {
-    QList<Feed*> children = item->getSubTreeFeeds();
-    QString filter_clause = textualFeedIds(children).join(QSL(", "));
-
-    model->setFilter(QString(QSL("feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = %2")).arg(filter_clause,
-                                                                                                                 QString::number(accountId())));
-    qDebug("Loading messages from feeds: %s.", qPrintable(filter_clause));
-  }
-
-  return true;
 }

@@ -605,6 +605,10 @@ bool StandardFeed::editItself(StandardFeed *new_feed_data) {
   return true;
 }
 
+int StandardFeed::messageForeignKeyId() const {
+  return id();
+}
+
 int StandardFeed::updateMessages(const QList<Message> &messages) {
   int feed_id = id();
   int updated_messages = 0;

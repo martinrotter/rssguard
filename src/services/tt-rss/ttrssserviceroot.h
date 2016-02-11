@@ -58,7 +58,6 @@ class TtRssServiceRoot : public ServiceRoot {
 
     RecycleBin *recycleBin() const;
 
-    bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
     bool onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, ReadStatus read);
     bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
 
@@ -83,10 +82,6 @@ class TtRssServiceRoot : public ServiceRoot {
   private:
     QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
     QStringList customIDsOfMessages(const QList<Message> &messages);
-
-    // Returns converted ids of given feeds
-    // which are suitable as IN clause for SQL queries.
-    QStringList textualFeedIds(const QList<Feed*> &feeds);
 
     void removeOldFeedTree(bool including_messages);
     void removeLeftOverMessages();
