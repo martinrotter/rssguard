@@ -141,7 +141,6 @@ class TtRssNetworkFactory {
     bool forceServerSideUpdate() const;
     void setForceServerSideUpdate(bool force_server_side_update);
 
-
     // Metadata.
     QDateTime lastLoginTime() const;
     QNetworkReply::NetworkError lastError() const;

@@ -14,6 +14,7 @@ Added:
 
 Fixed:
 
+▪ Fixed problem where custom HTTP timeout setting was ignored for TT-RSS account. (GitHub bug #9)
 ▪ Fixed problems with master update mutex locking. (bug #153)
 ▪ Fixed some problems: "Add category to selected account" was enabled when it shouldn't be.
 ▪ ♥ Auto-updating of feeds fixed (again?!). ♥
@@ -21,7 +22,7 @@ Fixed:
 
 Changed:
 
-▪ Adjusted sorting, particularly in message list.
+▪ Adjusted soěrting, particularly in message list.
 ▪ Tweaked "remove duplicates" policy.
 ▪ TT-RSS plugin can now restore messages from local recycle bin.
 

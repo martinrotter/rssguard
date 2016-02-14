@@ -85,7 +85,8 @@ TtRssLoginResponse TtRssNetworkFactory::login() {
   json["password"] = m_password;
 
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, qApp->settings()->value(GROUP(Feeds),
+                                                                                          SETTING(Feeds::UpdateTimeout)).toInt(), QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssLoginResponse login_response(QString::fromUtf8(result_raw));
 
@@ -109,7 +110,9 @@ TtRssResponse TtRssNetworkFactory::logout() {
     json["sid"] = m_sessionId;
 
     QByteArray result_raw;
-    NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+    NetworkResult network_reply = NetworkFactory::uploadData(m_url, qApp->settings()->value(GROUP(Feeds),
+                                                                                            SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                             QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                              m_authIsUsed, m_authUsername, m_authPassword);
 
     m_lastError = network_reply.first;
@@ -137,8 +140,9 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
   json["sid"] = m_sessionId;
   json["include_empty"] = true;
 
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssGetFeedsCategoriesResponse result(QString::fromUtf8(result_raw));
 
@@ -147,7 +151,7 @@ TtRssGetFeedsCategoriesResponse TtRssNetworkFactory::getFeedsCategories() {
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetFeedsCategoriesResponse(QString::fromUtf8(result_raw));
   }
@@ -174,8 +178,9 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
   json["include_attachments"] = include_attachments;
   json["sanitize"] = sanitize;
 
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssGetHeadlinesResponse result(QString::fromUtf8(result_raw));
 
@@ -184,7 +189,7 @@ TtRssGetHeadlinesResponse TtRssNetworkFactory::getHeadlines(int feed_id, int lim
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssGetHeadlinesResponse(QString::fromUtf8(result_raw));
   }
@@ -207,8 +212,9 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
   json["mode"] = (int) mode;
   json["field"] = (int) field;
 
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssUpdateArticleResponse result(QString::fromUtf8(result_raw));
 
@@ -217,7 +223,7 @@ TtRssUpdateArticleResponse TtRssNetworkFactory::updateArticles(const QStringList
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUpdateArticleResponse(QString::fromUtf8(result_raw));
   }
@@ -244,8 +250,9 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
     json["password"] = password;
   }
 
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssSubscribeToFeedResponse result(QString::fromUtf8(result_raw));
 
@@ -254,7 +261,7 @@ TtRssSubscribeToFeedResponse TtRssNetworkFactory::subscribeToFeed(const QString 
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssSubscribeToFeedResponse(QString::fromUtf8(result_raw));
   }
@@ -273,8 +280,9 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
   json["sid"] = m_sessionId;
   json["feed_id"] = feed_id;
 
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray result_raw;
-  NetworkResult network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+  NetworkResult network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                            m_authIsUsed, m_authUsername, m_authPassword);
   TtRssUnsubscribeFeedResponse result(QString::fromUtf8(result_raw));
 
@@ -283,7 +291,7 @@ TtRssUnsubscribeFeedResponse TtRssNetworkFactory::unsubscribeFeed(int feed_id) {
     login();
     json["sid"] = m_sessionId;
 
-    network_reply = NetworkFactory::uploadData(m_url, DOWNLOAD_TIMEOUT, QtJson::serialize(json), CONTENT_TYPE, result_raw,
+    network_reply = NetworkFactory::uploadData(m_url, timeout, QtJson::serialize(json), CONTENT_TYPE, result_raw,
                                                m_authIsUsed, m_authUsername, m_authPassword);
     result = TtRssUnsubscribeFeedResponse(QString::fromUtf8(result_raw));
   }
