@@ -60,7 +60,7 @@
 
 
 GoogleSuggest::GoogleSuggest(LocationLineEdit *editor, QObject *parent)
-  : QObject(parent), editor(editor), popup(new QListWidget()) {
+  : QObject(parent), editor(editor), popup(new QListWidget()), m_enteredText(QString()) {
   popup->setWindowFlags(Qt::Popup);
   popup->setFocusPolicy(Qt::NoFocus);
   popup->setFocusProxy(editor);
@@ -167,8 +167,8 @@ void GoogleSuggest::preventSuggest() {
 }
 
 void GoogleSuggest::autoSuggest() {
-  QString str = QUrl::toPercentEncoding(editor->text());
-  QString url = QString(GOOGLE_SUGGEST_URL).arg(str);
+  m_enteredText = QUrl::toPercentEncoding(editor->text());
+  QString url = QString(GOOGLE_SUGGEST_URL).arg(m_enteredText);
 
   connect(SilentNetworkAccessManager::instance()->get(QNetworkRequest(QString(url))), SIGNAL(finished()),
           this, SLOT(handleNetworkData()));
@@ -193,6 +193,10 @@ void GoogleSuggest::handleNetworkData() {
       if (element.attributes().contains(QSL("data"))) {
         choices.append(element.attribute(QSL("data")));
       }
+    }
+
+    if (choices.isEmpty()) {
+      choices.append(m_enteredText);
     }
 
     showCompletion(choices);

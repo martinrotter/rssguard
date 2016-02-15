@@ -76,6 +76,7 @@ class GoogleSuggest : public QObject {
     LocationLineEdit *editor;
     QScopedPointer<QListWidget> popup;
     QTimer *timer;
+    QString m_enteredText;
 };
 
 #endif // GOOGLESUGGEST_H
