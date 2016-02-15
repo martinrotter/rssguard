@@ -14,6 +14,7 @@ Added:
 
 Fixed:
 
+▪ Fixed some problems when adding feeds from external web browser like Firefox. (bug #135)
 ▪ Fixed problem where custom HTTP timeout setting was ignored for TT-RSS account. (GitHub bug #9)
 ▪ Fixed problems with master update mutex locking. (bug #153)
 ▪ Fixed some problems: "Add category to selected account" was enabled when it shouldn't be.

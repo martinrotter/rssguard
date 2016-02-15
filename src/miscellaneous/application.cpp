@@ -171,7 +171,7 @@ void Application::processExecutionMessage(const QString &message) {
     else if (msg == APP_QUIT_INSTANCE) {
       quit();
     }
-    else if (msg.startsWith(QL1S(URI_SCHEME_FEED))) {
+    else if (msg.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
       // Application was running, and someone wants to add new feed.
       StandardServiceRoot *root = qApp->mainForm()->tabWidget()->feedMessageViewer()->feedsView()->sourceModel()->standardServiceRoot();
 

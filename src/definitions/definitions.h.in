@@ -46,6 +46,7 @@
 
 #define ENCLOSURES_OUTER_SEPARATOR            '#'
 #define ECNLOSURES_INNER_SEPARATOR            '&'
+#define URI_SCHEME_FEED_SHORT                 "feed:"
 #define URI_SCHEME_FEED                       "feed://"
 #define URI_SCHEME_HTTP                       "http://"
 #define RELEASES_LIST                         "https://bitbucket.org/skunkos/rssguard/raw/master/resources/text/UPDATES?at=master"

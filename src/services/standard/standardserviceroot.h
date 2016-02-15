@@ -88,6 +88,7 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    QString processFeedUrl(const QString &feed_url);
     void checkArgumentsForFeedAdding();
 
     RecycleBin *m_recycleBin;

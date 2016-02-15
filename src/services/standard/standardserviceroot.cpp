@@ -315,9 +315,25 @@ void StandardServiceRoot::checkArgumentsForFeedAdding() {
   }
 }
 
+QString StandardServiceRoot::processFeedUrl(const QString &feed_url) {
+  if (feed_url.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
+    QString without_feed_prefix = feed_url.mid(5);
+
+    if (without_feed_prefix.startsWith(QL1S("https:")) || without_feed_prefix.startsWith(QL1S("http:"))) {
+      return without_feed_prefix;
+    }
+    else {
+      return feed_url;
+    }
+  }
+  else {
+    return feed_url;
+  }
+}
+
 void StandardServiceRoot::checkArgumentForFeedAdding(const QString &argument) {
-  if (argument.startsWith(QL1S("feed:"))) {
-    addNewFeed(argument);
+  if (argument.startsWith(QL1S(URI_SCHEME_FEED_SHORT))) {
+    addNewFeed(processFeedUrl(argument));
   }
 }
 
