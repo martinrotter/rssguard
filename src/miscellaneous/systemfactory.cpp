@@ -206,7 +206,7 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
   return result;
 }
 
-bool SystemFactory::isUpdateNewer(const QString &new_version, const QString &base_version) {
+bool SystemFactory::isVersionNewer(const QString &new_version, const QString &base_version) {
   QStringList base_version_tkn = base_version.split(QL1C('.'));
   QStringList new_version_tkn = new_version.split(QL1C('.'));
 
@@ -236,6 +236,10 @@ bool SystemFactory::isUpdateNewer(const QString &new_version, const QString &bas
       return new_version_tkn.join(QString()).toInt() > 0;
     }
   }
+}
+
+bool SystemFactory::isVersionEqualOrNewer(const QString &new_version, const QString &base_version) {
+  return new_version == base_version || isVersionNewer(new_version, base_version);
 }
 
 UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const QByteArray &changelog) const {
@@ -273,7 +277,7 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
 void SystemFactory::checkForUpdatesOnStartup() {
   const UpdateCheck updates = checkForUpdates();
 
-  if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion,
+  if (updates.second == QNetworkReply::NoError && isVersionNewer(updates.first.m_availableVersion,
                                                                 APP_VERSION)) {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),

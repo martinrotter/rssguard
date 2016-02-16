@@ -81,12 +81,11 @@ void FormEditOwnCloudAccount::execForEdit(OwnCloudServiceRoot *existing_root) {
   setWindowTitle(tr("Edit existing Tiny Tiny RSS account"));
   m_editableRoot = existing_root;
 
-  // TODO: todo
-/*  m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->username());
-  m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->password());
+  m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->authUsername());
+  m_ui->m_txtPassword->lineEdit()->setText(existing_root->network()->authPassword());
   m_ui->m_txtUrl->lineEdit()->setText(existing_root->network()->url());
   m_ui->m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
-*/
+
   exec();
 }
 
@@ -95,62 +94,39 @@ void FormEditOwnCloudAccount::displayPassword(bool display) {
 }
 
 void FormEditOwnCloudAccount::performTest() {
-  // TODO: todo
-  /*TtRssNetworkFactory factory;
+  OwnCloudNetworkFactory factory;
 
-  factory.setUsername(m_ui->m_txtUsername->lineEdit()->text());
-  factory.setPassword(m_ui->m_txtPassword->lineEdit()->text());
+  factory.setAuthUsername(m_ui->m_txtUsername->lineEdit()->text());
+  factory.setAuthPassword(m_ui->m_txtPassword->lineEdit()->text());
   factory.setUrl(m_ui->m_txtUrl->lineEdit()->text());
-  factory.setAuthIsUsed(m_ui->m_gbHttpAuthentication->isChecked());
-  factory.setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
-  factory.setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
 
-  TtRssLoginResponse result = factory.login();
+  OwnCloudStatusResponse result = factory.status();
 
   if (result.isLoaded()) {
-    if (result.hasError()) {
-      QString error = result.error();
-
-      if (error == API_DISABLED) {
-        m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-                                         tr("API access on selected server is not enabled."),
-                                         tr("API access on selected server is not enabled."));
-      }
-      else if (error == LOGIN_ERROR) {
-        m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-                                         tr("Entered credentials are incorrect."),
-                                         tr("Entered credentials are incorrect."));
-      }
-      else {
-        m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-                                         tr("Other error occurred, contact developers."),
-                                         tr("Other error occurred, contact developers."));
-      }
-    }
-    else if (result.apiLevel() < MINIMAL_API_LEVEL) {
+    if (SystemFactory::isVersionEqualOrNewer(result.version(), MINIMAL_OC_VERSION)) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
-                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API (%1). At least API level %2 is required.").arg(QString::number(result.apiLevel()),
-                                                                                                                                                              QString::number(MINIMAL_API_LEVEL)),
-                                       tr("Selected Tiny Tiny RSS server is running unsupported version of API."));
+                                       tr("Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.").arg(result.version(),
+                                                                                                                                                     MINIMAL_OC_VERSION),
+                                       tr("Selected ownCloud News server is running unsupported version."));
     }
     else {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Ok,
-                                       tr("Tiny Tiny RSS server is okay, running with API level %1, while at least API level %2 is required.").arg(QString::number(result.apiLevel()),
-                                                                                                                                                   QString::number(MINIMAL_API_LEVEL)),
-                                       tr("Tiny Tiny RSS server is okay."));
+                                       tr("OwnCloud News server is okay, running with version %1, while at least version %2 is required.").arg(result.version(),
+                                                                                                                                               MINIMAL_OC_VERSION),
+                                       tr("OwnCloud News server is okay."));
     }
   }
   else if (factory.lastError()  != QNetworkReply::NoError ) {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                      tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
-                                     tr("Network error, have you entered correct Tiny Tiny RSS API endpoint and password?"));
+                                     tr("Network error, have you entered correct ownCloud endpoint and password?"));
   }
   else {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                      tr("Unspecified error, did you enter correct URL?"),
                                      tr("Unspecified error, did you enter correct URL?"));
-  }*/
+  }
 }
 
 void FormEditOwnCloudAccount::onClickedOk() {

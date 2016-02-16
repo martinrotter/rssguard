@@ -26,7 +26,7 @@
 
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
-  : m_url(QString()), m_forceServerSideUpdate(false), m_authIsUsed(false),
+  : m_url(QString()), m_forceServerSideUpdate(false),
     m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()) {
 }
 
@@ -58,14 +58,6 @@ void OwnCloudNetworkFactory::setForceServerSideUpdate(bool force_update) {
   m_forceServerSideUpdate = force_update;
 }
 
-bool OwnCloudNetworkFactory::authIsUsed() const {
-  return m_authIsUsed;
-}
-
-void OwnCloudNetworkFactory::setAuthIsUsed(bool authIsUsed) {
-  m_authIsUsed = authIsUsed;
-}
-
 QString OwnCloudNetworkFactory::authUsername() const {
   return m_authUsername;
 }
@@ -92,7 +84,7 @@ OwnCloudUserResponse OwnCloudNetworkFactory::userInfo() {
                                                              qApp->settings()->value(GROUP(Feeds),
                                                                                      SETTING(Feeds::UpdateTimeout)).toInt(),
                                                              result_raw,
-                                                             m_authIsUsed, m_authUsername, m_authPassword,
+                                                             true, m_authUsername, m_authPassword,
                                                              true);
   OwnCloudUserResponse user_response(QString::fromUtf8(result_raw));
 
@@ -110,7 +102,7 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
                                                              qApp->settings()->value(GROUP(Feeds),
                                                                                      SETTING(Feeds::UpdateTimeout)).toInt(),
                                                              result_raw,
-                                                             m_authIsUsed, m_authUsername, m_authPassword,
+                                                             true, m_authUsername, m_authPassword,
                                                              true);
   OwnCloudStatusResponse status_response(QString::fromUtf8(result_raw));
 

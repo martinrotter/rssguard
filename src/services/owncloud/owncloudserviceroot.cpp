@@ -18,12 +18,14 @@
 #include "services/owncloud/owncloudserviceroot.h"
 
 #include "definitions/definitions.h"
+#include "services/owncloud/network/owncloudnetworkfactory.h"
 
 
-OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent) : ServiceRoot(parent) {
+OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent) : ServiceRoot(parent), m_network(new OwnCloudNetworkFactory()) {
 }
 
 OwnCloudServiceRoot::~OwnCloudServiceRoot() {
+  delete m_network;
 }
 
 bool OwnCloudServiceRoot::canBeEdited() const {
@@ -82,6 +84,10 @@ QString OwnCloudServiceRoot::code() const {
 bool OwnCloudServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
   // TODO: TODO
   return false;
+}
+
+OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
+  return m_network;
 }
 
 void OwnCloudServiceRoot::addNewFeed(const QString &url) {

@@ -90,7 +90,6 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
   OwnCloudNetworkFactory fac;
 
-  fac.setAuthIsUsed(true);
   fac.setUrl("https://cloud.yarpen.cz");
   fac.setAuthPassword("rssguard135");
   fac.setAuthUsername("rssguard");

@@ -21,6 +21,8 @@
 #include "services/abstract/serviceroot.h"
 
 
+class OwnCloudNetworkFactory;
+
 class OwnCloudServiceRoot : public ServiceRoot {
     Q_OBJECT
 
@@ -48,9 +50,14 @@ class OwnCloudServiceRoot : public ServiceRoot {
 
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 
+    OwnCloudNetworkFactory *network() const;
+
   public slots:
     void addNewFeed(const QString &url);
     void addNewCategory();
+
+  private:
+    OwnCloudNetworkFactory *m_network;
 };
 
 #endif // OWNCLOUDSERVICEROOT_H

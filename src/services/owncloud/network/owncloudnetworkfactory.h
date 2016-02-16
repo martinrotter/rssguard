@@ -69,9 +69,6 @@ class OwnCloudNetworkFactory {
     bool forceServerSideUpdate() const;
     void setForceServerSideUpdate(bool force_update);
 
-    bool authIsUsed() const;
-    void setAuthIsUsed(bool authIsUsed);
-
     QString authUsername() const;
     void setAuthUsername(const QString &auth_username);
 
@@ -91,7 +88,6 @@ class OwnCloudNetworkFactory {
   private:
     QString m_url;
     bool m_forceServerSideUpdate;
-    bool m_authIsUsed;
     QString m_authUsername;
     QString m_authPassword;
     QNetworkReply::NetworkError m_lastError;
