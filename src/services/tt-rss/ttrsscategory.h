@@ -33,10 +33,7 @@ class TtRssCategory : public Category {
     explicit TtRssCategory(const QSqlRecord &record);
     virtual ~TtRssCategory();
 
-    QString hashCode() const;
-
     TtRssServiceRoot *serviceRoot() const;
-
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
 

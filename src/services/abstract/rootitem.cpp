@@ -44,7 +44,13 @@ RootItem::~RootItem() {
 }
 
 QString RootItem::hashCode() const {
-  return QString::number(kind()) + QL1S("-") + QString::number(id());
+  ServiceRoot *root = getParentServiceRoot();
+  int acc_id = root == NULL ? 0 : root->accountId();
+
+  return
+      QString::number(acc_id) + QL1S("-") +
+      QString::number(kind()) + QL1S("-") +
+      QString::number(id());
 }
 
 QList<QAction*> RootItem::contextMenu() {

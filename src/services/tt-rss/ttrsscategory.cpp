@@ -41,13 +41,6 @@ TtRssCategory::TtRssCategory(const QSqlRecord &record) : Category(NULL) {
 TtRssCategory::~TtRssCategory() {
 }
 
-QString TtRssCategory::hashCode() const {
-  return
-      QString::number(kind()) + QL1S("-") +
-      QString::number(getParentServiceRoot()->accountId()) + QL1S("-") +
-      QString::number(customId());
-}
-
 TtRssServiceRoot *TtRssCategory::serviceRoot() const {
   return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
 }

@@ -33,25 +33,17 @@ class TtRssFeed : public Feed {
     explicit TtRssFeed(const QSqlRecord &record);
     virtual ~TtRssFeed();
 
-    QString hashCode() const;
-
     int messageForeignKeyId() const;
-
     TtRssServiceRoot *serviceRoot() const;
-
     QVariant data(int column, int role) const;
-
     void updateCounts(bool including_total_count);
-
     bool canBeEdited() const;
     bool editViaGui();
-
     bool canBeDeleted() const;
     bool deleteViaGui();
 
     int update();
     QList<Message> undeletedMessages() const;
-
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
     bool editItself(TtRssFeed *new_feed_data);
