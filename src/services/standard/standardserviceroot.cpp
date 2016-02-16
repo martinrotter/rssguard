@@ -461,10 +461,6 @@ void StandardServiceRoot::exportFeeds() {
   form.data()->exec();
 }
 
-QList<QAction*> StandardServiceRoot::addItemMenu() {
-  return QList<QAction*>();
-}
-
 QList<QAction*> StandardServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     m_actionExportFeeds = new QAction(qApp->icons()->fromTheme("document-export"), tr("Export feeds"), this);
@@ -478,8 +474,4 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
-}
-
-QList<QAction*> StandardServiceRoot::contextMenu() {
-  return serviceMenu();
 }

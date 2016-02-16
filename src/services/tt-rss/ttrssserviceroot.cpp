@@ -130,8 +130,8 @@ void TtRssServiceRoot::addNewFeed(const QString &url) {
   }
 
   QScopedPointer<FormEditFeed> form_pointer(new FormEditFeed(this, qApp->mainForm()));
-  form_pointer.data()->execForAdd(url);
 
+  form_pointer.data()->execForAdd(url);
   qApp->feedUpdateLock()->unlock();
 }
 
@@ -169,10 +169,6 @@ QVariant TtRssServiceRoot::data(int column, int role) const {
   }
 }
 
-QList<QAction*> TtRssServiceRoot::addItemMenu() {
-  return QList<QAction*>();
-}
-
 RecycleBin *TtRssServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
@@ -186,10 +182,6 @@ QList<QAction*> TtRssServiceRoot::serviceMenu() {
   }
 
   return m_serviceMenu;
-}
-
-QList<QAction*> TtRssServiceRoot::contextMenu() {
-  return serviceMenu();
 }
 
 bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages, RootItem::ReadStatus read) {

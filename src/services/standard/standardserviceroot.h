@@ -58,14 +58,8 @@ class StandardServiceRoot : public ServiceRoot {
     // Access to recycle bin.
     RecycleBin *recycleBin() const;
 
-    // Return "add feed" and "add category" items.
-    QList<QAction*> addItemMenu();
-
     // Returns menu to be shown in "Services -> service" menu.
     QList<QAction*> serviceMenu();
-
-    // Returns context menu.
-    QList<QAction*> contextMenu();
 
     // Returns context specific menu actions for given feed.
     QList<QAction*> getContextMenuForFeed(StandardFeed *feed);

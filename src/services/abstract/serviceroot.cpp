@@ -85,6 +85,18 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   }
 }
 
+QList<QAction*> ServiceRoot::addItemMenu() {
+  return QList<QAction*>();
+}
+
+QList<QAction*> ServiceRoot::contextMenu() {
+  return serviceMenu();
+}
+
+QList<QAction*> ServiceRoot::serviceMenu() {
+  return QList<QAction*>();
+}
+
 QList<Message> ServiceRoot::undeletedMessages() const {
   QList<Message> messages;
   const int account_id = accountId();

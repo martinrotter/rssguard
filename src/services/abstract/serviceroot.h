@@ -60,12 +60,14 @@ class ServiceRoot : public RootItem {
     //  b) Add new category
     //  c) ...
     // NOTE: Caller does NOT take ownership of created menu!
-    virtual QList<QAction*> addItemMenu() = 0;
+    virtual QList<QAction*> addItemMenu();
+
+    QList<QAction*> contextMenu();
 
     // Returns list of specific actions to be shown in main window menu
     // bar in sections "Services -> 'this service'".
     // NOTE: Caller does NOT take ownership of created menu!
-    virtual QList<QAction*> serviceMenu() = 0;
+    virtual QList<QAction*> serviceMenu();
 
     // Access to recycle bin of this account if there is any.
     virtual RecycleBin *recycleBin() const = 0;
