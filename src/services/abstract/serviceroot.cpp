@@ -97,6 +97,40 @@ QList<QAction*> ServiceRoot::serviceMenu() {
   return QList<QAction*>();
 }
 
+void ServiceRoot::removeOldFeedTree(bool including_messages) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(database);
+  query.setForwardOnly(true);
+
+  query.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), accountId());
+  query.exec();
+
+  query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
+  query.bindValue(QSL(":account_id"), accountId());
+  query.exec();
+
+  if (including_messages) {
+    query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
+    query.bindValue(QSL(":account_id"), accountId());
+    query.exec();
+  }
+}
+
+void ServiceRoot::removeLeftOverMessages() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(database);
+  int account_id = accountId();
+
+  query.setForwardOnly(true);
+  query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+  query.bindValue(QSL(":account_id"), account_id);
+
+  if (!query.exec()) {
+    qWarning("Removing of left over messages failed: '%s'.", qPrintable(query.lastError().text()));
+  }
+}
+
 QList<Message> ServiceRoot::undeletedMessages() const {
   QList<Message> messages;
   const int account_id = accountId();

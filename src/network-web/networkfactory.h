@@ -56,7 +56,7 @@ class NetworkFactory {
     // and given timeout.
     static NetworkResult downloadFile(const QString &url, int timeout, QByteArray &output,
                                       bool protected_contents = false, const QString &username = QString(),
-                                      const QString &password = QString());
+                                      const QString &password = QString(), bool set_basic_header = false);
 };
 
 #endif // NETWORKFACTORY_H

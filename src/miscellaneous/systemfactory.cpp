@@ -206,25 +206,25 @@ QPair<UpdateInfo, QNetworkReply::NetworkError> SystemFactory::checkForUpdates() 
   return result;
 }
 
-bool SystemFactory::isUpdateNewer(const QString &update_version) {
-  QStringList current_version_tkn = QString(APP_VERSION).split(QL1C('.'));
-  QStringList new_version_tkn = update_version.split(QL1C('.'));
+bool SystemFactory::isUpdateNewer(const QString &new_version, const QString &base_version) {
+  QStringList base_version_tkn = base_version.split(QL1C('.'));
+  QStringList new_version_tkn = new_version.split(QL1C('.'));
 
-  while (!current_version_tkn.isEmpty() && !new_version_tkn.isEmpty()) {
-    const int current_number = current_version_tkn.takeFirst().toInt();
+  while (!base_version_tkn.isEmpty() && !new_version_tkn.isEmpty()) {
+    const int base_number = base_version_tkn.takeFirst().toInt();
     const int new_number = new_version_tkn.takeFirst().toInt();
 
-    if (new_number > current_number) {
+    if (new_number > base_number) {
       // New version is indeed higher thatn current version.
       return true;
     }
-    else if (new_number < current_number) {
+    else if (new_number < base_number) {
       return false;
     }
   }
 
   // Versions are either the same or they have unequal sizes.
-  if (current_version_tkn.isEmpty() && new_version_tkn.isEmpty()) {
+  if (base_version_tkn.isEmpty() && new_version_tkn.isEmpty()) {
     // Versions are the same.
     return false;
   }
@@ -273,7 +273,8 @@ UpdateInfo SystemFactory::parseUpdatesFile(const QByteArray &updates_file, const
 void SystemFactory::checkForUpdatesOnStartup() {
   const UpdateCheck updates = checkForUpdates();
 
-  if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion)) {
+  if (updates.second == QNetworkReply::NoError && isUpdateNewer(updates.first.m_availableVersion,
+                                                                APP_VERSION)) {
     qApp->showGuiMessage(tr("New version available"),
                          tr("Click the bubble for more information."),
                          QSystemTrayIcon::Information,

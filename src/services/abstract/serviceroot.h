@@ -44,10 +44,6 @@ class ServiceRoot : public RootItem {
     explicit ServiceRoot(RootItem *parent = NULL);
     virtual ~ServiceRoot();
 
-    /////////////////////////////////////////
-    // /* Members to override.
-    /////////////////////////////////////////
-
     bool deleteViaGui();
     bool markAsReadUnread(ReadStatus status);
 
@@ -149,10 +145,6 @@ class ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
-    /////////////////////////////////////////
-    // Members to override. */
-    /////////////////////////////////////////
-
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*> &items);
     void requestReloadMessageList(bool mark_selected_messages_read);
@@ -166,6 +158,17 @@ class ServiceRoot : public RootItem {
     virtual void addNewCategory() = 0;
 
   protected:
+    // Removes all messages/categories/feeds which are
+    // associated with this account.
+    void removeOldFeedTree(bool including_messages);
+
+    // Removes messages which do not belong to any
+    // existing feed.
+    //
+    // NOTE: This situation may happen if user deletes some feed
+    // from another machine and then performs sync-in on this machine.
+    void removeLeftOverMessages();
+
     QStringList textualFeedIds(const QList<Feed*> &feeds) const;
 
     // Takes lists of feeds/categories and assembles them into the tree structure.

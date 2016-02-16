@@ -361,6 +361,8 @@ file( GLOB APP_SOURCES_GL
   "src/services/tt-rss/gui/*.cpp"
   "src/services/tt-rss/network/*.cpp"
   "src/services/owncloud/*.cpp"
+  "src/services/owncloud/network/*.cpp"
+  "src/services/owncloud/gui/*.cpp"
   "src/network-web/*.cpp"
   "src/network-web/adblock/*.cpp"
   "src/*.cpp")
@@ -391,6 +393,8 @@ file( GLOB APP_HEADERS
   "src/services/tt-rss/gui/*.h"
   "src/services/tt-rss/network/*.h"
   "src/services/owncloud/*.h"
+  "src/services/owncloud/network/*.h"
+  "src/services/owncloud/gui/*.h"
   "src/network-web/*.h"
   "src/network-web/adblock/*.h")
 
@@ -400,6 +404,7 @@ file( GLOB APP_FORMS
   "src/gui/*.ui"
   "src/services/standard/gui/*.ui"
   "src/services/tt-rss/gui/*.ui"
+  "src/services/owncloud/gui/*.ui"
   "src/network-web/*.ui"
   "src/network-web/adblock/*.ui")
 

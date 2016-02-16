@@ -74,16 +74,6 @@ class TtRssServiceRoot : public ServiceRoot {
     QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
     QStringList customIDsOfMessages(const QList<Message> &messages);
 
-    // Removes all messages/categories/feeds which are
-    // associated with this account.
-    void removeOldFeedTree(bool including_messages);
-
-    // Removes messages which do not belong to any
-    // existing feed.
-    //
-    // NOTE: This situation may happen if user deletes some feed
-    // from another machine and then performs sync-in on this machine.
-    void removeLeftOverMessages();
     void cleanAllItems();
 
     // Takes new tree and adds its feeds/categories/whatever.

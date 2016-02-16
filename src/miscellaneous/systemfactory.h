@@ -87,7 +87,7 @@ class SystemFactory : public QObject {
     QPair<UpdateInfo, QNetworkReply::NetworkError> checkForUpdates() const;
 
     // Checks if update is newer than current application version.
-    static bool isUpdateNewer(const QString &update_version);
+    static bool isUpdateNewer(const QString &new_version, const QString &base_version);
 
   public slots:
     void checkForUpdatesOnStartup();

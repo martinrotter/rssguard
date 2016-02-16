@@ -579,40 +579,6 @@ QStringList TtRssServiceRoot::customIDsOfMessages(const QList<Message> &messages
   return list;
 }
 
-void TtRssServiceRoot::removeOldFeedTree(bool including_messages) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  query.setForwardOnly(true);
-
-  query.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), accountId());
-  query.exec();
-
-  query.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), accountId());
-  query.exec();
-
-  if (including_messages) {
-    query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
-    query.bindValue(QSL(":account_id"), accountId());
-    query.exec();
-  }
-}
-
-void TtRssServiceRoot::removeLeftOverMessages() {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  int account_id = accountId();
-
-  query.setForwardOnly(true);
-  query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
-  query.bindValue(QSL(":account_id"), account_id);
-
-  if (!query.exec()) {
-    qWarning("Removing of left over messages failed: '%s'.", qPrintable(query.lastError().text()));
-  }
-}
-
 void TtRssServiceRoot::cleanAllItems() {
   foreach (RootItem *top_level_item, childItems()) {
     if (top_level_item->kind() != RootItemKind::Bin) {

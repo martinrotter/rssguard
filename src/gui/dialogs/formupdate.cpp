@@ -86,7 +86,7 @@ void FormUpdate::checkForUpdates() {
 
     const bool is_self_update_for_this_system = isUpdateForThisSystem() && isSelfUpdateSupported();
 
-    if (SystemFactory::isUpdateNewer(update.first.m_availableVersion)) {
+    if (SystemFactory::isUpdateNewer(update.first.m_availableVersion, APP_VERSION)) {
       m_ui->m_lblStatus->setStatus(WidgetWithStatus::Ok,
                                    tr("New release available."),
                                    tr("This is new version which can be\ndownloaded and installed."));

@@ -54,6 +54,8 @@
 #include <QFileDialog>
 #include <QTextStream>
 
+#include "services/owncloud/network/owncloudnetworkfactory.h"
+
 
 FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain) {
@@ -83,6 +85,21 @@ FormMain::FormMain(QWidget *parent, Qt::WindowFlags f)
 
   // Initialize the web factory.
   WebFactory::instance()->loadState();
+
+
+
+  OwnCloudNetworkFactory fac;
+
+  fac.setAuthIsUsed(true);
+  fac.setUrl("https://cloud.yarpen.cz");
+  fac.setAuthPassword("rssguard135");
+  fac.setAuthUsername("rssguard");
+
+  OwnCloudStatusResponse user = fac.status();
+
+  QString ver =  user.version();
+
+  int aaaa = 0;
 }
 
 FormMain::~FormMain() {
