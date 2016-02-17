@@ -90,6 +90,8 @@ void FeedsModel::quit() {
 
   // Close worker threads.
   if (m_feedDownloaderThread != NULL && m_feedDownloaderThread->isRunning()) {
+    m_feedDownloader->stopRunningUpdate();
+
     qDebug("Quitting feed downloader thread.");
     m_feedDownloaderThread->quit();
 
