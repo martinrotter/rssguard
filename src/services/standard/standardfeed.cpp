@@ -653,7 +653,9 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
       QString new_message_url = QUrl(url()).toString(QUrl::RemoveUserInfo |
                                                      QUrl::RemovePath |
                                                      QUrl::RemoveQuery |
+                                               #if QT_VERSION >= 0x050000
                                                      QUrl::RemoveFilename |
+                                               #endif
                                                      QUrl::StripTrailingSlash);
 
       new_message_url += message.m_url;
