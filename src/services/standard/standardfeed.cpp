@@ -650,12 +650,11 @@ int StandardFeed::updateMessages(const QList<Message> &messages) {
   foreach (Message message, messages) {
     // Check if messages contain relative URLs and if they do, then replace them.
     if (message.m_url.startsWith(QL1S("/"))) {
-      QString new_message_url = url();
-      int last_slash = new_message_url.lastIndexOf(QL1S("/"));
-
-      if (last_slash >= 0) {
-        new_message_url = new_message_url.left(last_slash);
-      }
+      QString new_message_url = QUrl(url()).toString(QUrl::RemoveUserInfo |
+                                                     QUrl::RemovePath |
+                                                     QUrl::RemoveQuery |
+                                                     QUrl::RemoveFilename |
+                                                     QUrl::StripTrailingSlash);
 
       new_message_url += message.m_url;
       message.m_url = new_message_url;

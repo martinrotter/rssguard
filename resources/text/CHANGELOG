@@ -14,6 +14,7 @@ Added:
 
 Fixed:
 
+▪ Standard RSS/RDF/ATOM relative URLs in entries should now be correctly loaded. (bug #160)
 ▪ Fixed some problems when adding feeds from external web browser like Firefox. (bug #135)
 ▪ Fixed problem where custom HTTP timeout setting was ignored for TT-RSS account. (GitHub bug #9)
 ▪ Fixed problems with master update mutex locking. (bug #153)
