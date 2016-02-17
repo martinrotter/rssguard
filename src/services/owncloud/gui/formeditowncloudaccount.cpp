@@ -15,7 +15,6 @@
 // You should have received a copy of the GNU General Public License
 // along with RSS Guard. If not, see <http://www.gnu.org/licenses/>.
 
-
 #include "services/owncloud/gui/formeditowncloudaccount.h"
 
 #include "services/owncloud/definitions.h"
@@ -31,14 +30,14 @@ FormEditOwnCloudAccount::FormEditOwnCloudAccount(QWidget *parent)
   m_btnOk = m_ui->m_buttonBox->button(QDialogButtonBox::Ok);
 
   setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog | Qt::WindowSystemMenuHint);
-  setWindowIcon(qApp->icons()->fromTheme(QSL("application-ttrss")));
+  setWindowIcon(qApp->icons()->fromTheme(QSL("application-owncloud")));
 
   m_ui->m_lblServerSideUpdateInformation->setText(tr("Leaving this option on causes that updates "
                                                      "of feeds will be probably much slower and may time-out often."));
-  m_ui->m_lblDescription->setText(tr("Note that at least API level %1 is required.").arg(MINIMAL_OC_VERSION));
+  m_ui->m_lblDescription->setText(tr("Note that at least version %1 is required.").arg(MINIMAL_OC_VERSION));
   m_ui->m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
   m_ui->m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
-  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("FULL URL of your TT-RSS instance WITH trailing \"/api/\" string"));
+  m_ui->m_txtUrl->lineEdit()->setPlaceholderText(tr("URL of your ownCloud server, without any API path"));
   m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Information,
                                    tr("No test done yet."),
                                    tr("Here, results of connection test are shown."));
@@ -72,13 +71,13 @@ FormEditOwnCloudAccount::~FormEditOwnCloudAccount() {
 }
 
 OwnCloudServiceRoot *FormEditOwnCloudAccount::execForCreate() {
-  setWindowTitle(tr("Add new Tiny Tiny RSS account"));
+  setWindowTitle(tr("Add new ownCloud News account"));
   exec();
   return m_editableRoot;
 }
 
 void FormEditOwnCloudAccount::execForEdit(OwnCloudServiceRoot *existing_root) {
-  setWindowTitle(tr("Edit existing Tiny Tiny RSS account"));
+  setWindowTitle(tr("Edit existing ownCloud News account"));
   m_editableRoot = existing_root;
 
   m_ui->m_txtUsername->lineEdit()->setText(existing_root->network()->authUsername());
@@ -139,24 +138,19 @@ void FormEditOwnCloudAccount::onClickedOk() {
     editing_account = false;
   }
 
-  // TODO: TODO
-  /*
   m_editableRoot->network()->setUrl(m_ui->m_txtUrl->lineEdit()->text());
-  m_editableRoot->network()->setUsername(m_ui->m_txtUsername->lineEdit()->text());
-  m_editableRoot->network()->setPassword(m_ui->m_txtPassword->lineEdit()->text());
-  m_editableRoot->network()->setAuthIsUsed(m_ui->m_gbHttpAuthentication->isChecked());
-  m_editableRoot->network()->setAuthUsername(m_ui->m_txtHttpUsername->lineEdit()->text());
-  m_editableRoot->network()->setAuthPassword(m_ui->m_txtHttpPassword->lineEdit()->text());
+  m_editableRoot->network()->setAuthUsername(m_ui->m_txtUsername->lineEdit()->text());
+  m_editableRoot->network()->setAuthPassword(m_ui->m_txtPassword->lineEdit()->text());
   m_editableRoot->network()->setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
-  m_editableRoot->saveAccountDataToDatabase();
+  //m_editableRoot->saveAccountDataToDatabase();
 
   accept();
 
   if (editing_account) {
-    m_editableRoot->network()->logout();
-    m_editableRoot->completelyRemoveAllData();
-    m_editableRoot->syncIn();
-  }*/
+    // TODO: TODO
+    //m_editableRoot->completelyRemoveAllData();
+    //m_editableRoot->syncIn();
+  }
 }
 
 void FormEditOwnCloudAccount::onClickedCancel() {
@@ -190,9 +184,6 @@ void FormEditOwnCloudAccount::onUrlChanged() {
 
   if (url.isEmpty()) {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Error, tr("URL cannot be empty."));
-  }
-  else if (!url.endsWith(QL1S("/api/"))) {
-    m_ui->m_txtUrl->setStatus(WidgetWithStatus::Warning, tr("URL should end with \"/api/\"."));
   }
   else {
     m_ui->m_txtUrl->setStatus(WidgetWithStatus::Ok, tr("URL is okay."));

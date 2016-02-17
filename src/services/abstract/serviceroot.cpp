@@ -31,6 +31,7 @@
 
 ServiceRoot::ServiceRoot(RootItem *parent) : RootItem(parent), m_accountId(NO_PARENT_CATEGORY) {
   setKind(RootItemKind::ServiceRoot);
+  setCreationDate(QDateTime::currentDateTime());
 }
 
 ServiceRoot::~ServiceRoot() {

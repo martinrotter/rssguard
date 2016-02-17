@@ -45,7 +45,6 @@ class OwnCloudServiceRoot : public ServiceRoot {
 
     void start(bool freshly_activated);
     void stop();
-
     QString code() const;
 
     bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);

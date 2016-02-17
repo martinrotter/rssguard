@@ -51,7 +51,6 @@ StandardServiceRoot::StandardServiceRoot(RootItem *parent)
   setTitle(qApp->system()->getUsername() + QL1S("@") + QL1S(APP_LOW_NAME));
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is obligatory service account for standard RSS/RDF/ATOM feeds."));
-  setCreationDate(QDateTime::currentDateTime());
 }
 
 StandardServiceRoot::~StandardServiceRoot() {

@@ -22,6 +22,9 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/definitions.h"
 #include "services/owncloud/owncloudserviceroot.h"
+#include "services/owncloud/gui/formeditowncloudaccount.h"
+#include "gui/dialogs/formmain.h"
+
 
 OwnCloudServiceEntryPoint::OwnCloudServiceEntryPoint() {
 }
@@ -30,14 +33,8 @@ OwnCloudServiceEntryPoint::~OwnCloudServiceEntryPoint() {
 }
 
 ServiceRoot *OwnCloudServiceEntryPoint::createNewRoot() const {
-  // TODO: TODO
-  //QPointer<FormEditAccount> form_acc = new FormEditAccount(qApp->mainForm());
-  //OwnCloudServiceRoot *new_root = form_acc.data()->execForCreate();
-  //delete form_acc.data();
-
-  //return new_root;
-
-  return NULL;
+  QScopedPointer<FormEditOwnCloudAccount> form_acc(new FormEditOwnCloudAccount(qApp->mainForm()));
+  return form_acc->execForCreate();
 }
 
 QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {

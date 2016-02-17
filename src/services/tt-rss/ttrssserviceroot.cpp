@@ -43,7 +43,6 @@ TtRssServiceRoot::TtRssServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_recycleBin(new TtRssRecycleBin(this)),
     m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new TtRssNetworkFactory()) {
   setIcon(TtRssServiceEntryPoint().icon());
-  setCreationDate(QDateTime::currentDateTime());
 }
 
 TtRssServiceRoot::~TtRssServiceRoot() {

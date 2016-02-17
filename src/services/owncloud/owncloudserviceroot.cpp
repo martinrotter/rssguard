@@ -18,10 +18,12 @@
 #include "services/owncloud/owncloudserviceroot.h"
 
 #include "definitions/definitions.h"
+#include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 
 
-OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent) : ServiceRoot(parent), m_network(new OwnCloudNetworkFactory()) {
+OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
+  : ServiceRoot(parent), m_network(new OwnCloudNetworkFactory()) {
 }
 
 OwnCloudServiceRoot::~OwnCloudServiceRoot() {
