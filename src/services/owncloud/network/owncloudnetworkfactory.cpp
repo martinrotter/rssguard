@@ -28,7 +28,7 @@
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_forceServerSideUpdate(false),
     m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()),
-    m_userId(QString()) {
+    m_urlFolders(QString()), m_urlFeeds(QString()), m_userId(QString()) {
 }
 
 OwnCloudNetworkFactory::~OwnCloudNetworkFactory() {
@@ -39,16 +39,21 @@ QString OwnCloudNetworkFactory::url() const {
 }
 
 void OwnCloudNetworkFactory::setUrl(const QString &url) {
+  m_url = url;
+  QString working_url;
+
   if (url.endsWith('/')) {
-    m_url = url;
+    working_url = url;
   }
   else {
-    m_url = url + '/';
+    working_url = url + '/';
   }
 
   // Store endpoints.
-  m_urlUser = m_url + "index.php/apps/news/api/v1-2/user";
-  m_urlStatus = m_url + "index.php/apps/news/api/v1-2/status";
+  m_urlUser = working_url + API_PATH + "user";
+  m_urlStatus = working_url + API_PATH + "status";
+  m_urlFolders = working_url + API_PATH + "folders";
+  m_urlFeeds = working_url + API_PATH + "feeds";
 }
 
 bool OwnCloudNetworkFactory::forceServerSideUpdate() const {
@@ -113,6 +118,42 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
 
   m_lastError = network_reply.first;
   return status_response;
+}
+
+OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
+  QByteArray result_raw;
+  NetworkResult network_reply = NetworkFactory::downloadFile(m_urlFolders,
+                                                             qApp->settings()->value(GROUP(Feeds),
+                                                                                     SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                             result_raw,
+                                                             true, m_authUsername, m_authPassword,
+                                                             true);
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("ownCloud: Obtaining of categories failed with error %d.", network_reply.first);
+    m_lastError = network_reply.first;
+
+    return OwnCloudGetFeedsCategoriesResponse();
+  }
+
+  QString content_categories = QString::fromUtf8(result_raw);
+
+  // Now, obtain feeds.
+  network_reply = NetworkFactory::downloadFile(m_urlFeeds,
+                                               qApp->settings()->value(GROUP(Feeds),
+                                                                       SETTING(Feeds::UpdateTimeout)).toInt(),
+                                               result_raw,
+                                               true, m_authUsername, m_authPassword,
+                                               true);
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("ownCloud: Obtaining of feeds failed with error %d.", network_reply.first);
+    m_lastError = network_reply.first;
+    return OwnCloudGetFeedsCategoriesResponse();
+  }
+
+  QString content_feeds = QString::fromUtf8(result_raw);
+  m_lastError = network_reply.first;
+
+  return OwnCloudGetFeedsCategoriesResponse(content_categories, content_feeds);
 }
 
 QString OwnCloudNetworkFactory::userId() const {
@@ -209,4 +250,18 @@ bool OwnCloudStatusResponse::misconfiguredCron() const {
   else {
     return false;
   }
+}
+
+
+OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(const QString &raw_categories,
+                                                                       const QString &raw_feeds)
+  : m_contentCategories(QString()), m_contentFeeds(QString()) {
+}
+
+OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() {
+}
+
+RootItem *OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
+  // TODO: TODO
+  return NULL;
 }

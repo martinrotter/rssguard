@@ -74,11 +74,6 @@ class TtRssServiceRoot : public ServiceRoot {
     QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
     QStringList customIDsOfMessages(const QList<Message> &messages);
 
-    void cleanAllItems();
-
-    // Takes new tree and adds its feeds/categories/whatever.
-    // Used in syncing.
-    void storeNewFeedTree(RootItem *root);
     void loadFromDatabase();
 
     TtRssRecycleBin *m_recycleBin;

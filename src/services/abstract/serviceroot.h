@@ -161,6 +161,8 @@ class ServiceRoot : public RootItem {
     // Removes all messages/categories/feeds which are
     // associated with this account.
     void removeOldFeedTree(bool including_messages);
+    void storeNewFeedTree(RootItem *root);
+    void cleanAllItems();
 
     // Removes messages which do not belong to any
     // existing feed.

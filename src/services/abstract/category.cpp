@@ -18,9 +18,17 @@
 #include "services/abstract/category.h"
 
 
-Category::Category(RootItem *parent) : RootItem(parent) {
+Category::Category(RootItem *parent) : RootItem(parent), m_customId(NO_PARENT_CATEGORY) {
   setKind(RootItemKind::Category);
 }
 
 Category::~Category() {
+}
+
+int Category::customId() const {
+  return m_customId;
+}
+
+void Category::setCustomId(int custom_id) {
+  m_customId = custom_id;
 }

@@ -36,12 +36,6 @@ class TtRssCategory : public Category {
     TtRssServiceRoot *serviceRoot() const;
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
-
-    int customId() const;
-    void setCustomId(int custom_id);
-
-  private:
-    int m_customId;
 };
 
 #endif // TTRSSCATEGORY_H

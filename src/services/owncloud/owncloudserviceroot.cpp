@@ -21,6 +21,7 @@
 #include "miscellaneous/databasefactory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
+#include "miscellaneous/iconfactory.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 
@@ -80,6 +81,11 @@ RecycleBin *OwnCloudServiceRoot::recycleBin() const {
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
   // TODO: TODO
+  //loadFromDatabase();
+
+  if (childCount() == 1 && child(0)->kind() == RootItemKind::Bin) {
+    syncIn();
+  }
 }
 
 void OwnCloudServiceRoot::stop() {
@@ -181,4 +187,59 @@ void OwnCloudServiceRoot::addNewFeed(const QString &url) {
 
 void OwnCloudServiceRoot::addNewCategory() {
   // TODO: TODO
+}
+
+void OwnCloudServiceRoot::syncIn() {
+  QIcon original_icon = icon();
+
+  setIcon(qApp->icons()->fromTheme(QSL("item-sync")));
+  itemChanged(QList<RootItem*>() << this);
+
+  OwnCloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories();
+
+  if (m_network->lastError() == QNetworkReply::NoError) {
+    RootItem *new_tree = feed_cats_response.feedsCategories(true);
+
+    // Purge old data from SQL and clean all model items.
+    requestItemExpandStateSave(this);
+    removeOldFeedTree(false);
+    cleanAllItems();
+
+    // Model is clean, now store new tree into DB and
+    // set primary IDs of the items.
+    storeNewFeedTree(new_tree);
+
+    // We have new feed, some feeds were maybe removed,
+    // so remove left over messages.
+    removeLeftOverMessages();
+
+    foreach (RootItem *top_level_item, new_tree->childItems()) {
+      top_level_item->setParent(NULL);
+      requestItemReassignment(top_level_item, this);
+    }
+
+    updateCounts(true);
+
+    new_tree->clearChildren();
+    new_tree->deleteLater();
+
+    QList<RootItem*> all_items = getSubTree();
+
+    itemChanged(all_items);
+    requestReloadMessageList(true);
+
+    // Now we must refresh expand states.
+    QList<RootItem*> items_to_expand;
+
+    foreach (RootItem *item, all_items) {
+      if (qApp->settings()->value(GROUP(CategoriesExpandStates), item->hashCode(), item->childCount() > 0).toBool()) {
+        items_to_expand.append(item);
+      }
+    }
+
+    requestItemExpand(items_to_expand, true);
+  }
+
+  setIcon(original_icon);
+  itemChanged(QList<RootItem*>() << this);
 }

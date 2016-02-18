@@ -58,8 +58,7 @@ QList<ServiceRoot*> OwnCloudServiceEntryPoint::initializeSubtree() const {
       root->network()->setUrl(query.value(3).toString());
       root->network()->setForceServerSideUpdate(query.value(4).toBool());
 
-      // TODO: todo
-      //root->updateTitle();
+      root->updateTitle();
       roots.append(root);
     }
   }

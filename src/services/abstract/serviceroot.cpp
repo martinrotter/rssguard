@@ -19,6 +19,7 @@
 
 #include "core/feedsmodel.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
@@ -115,6 +116,63 @@ void ServiceRoot::removeOldFeedTree(bool including_messages) {
     query.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
     query.bindValue(QSL(":account_id"), accountId());
     query.exec();
+  }
+}
+
+void ServiceRoot::cleanAllItems() {
+  foreach (RootItem *top_level_item, childItems()) {
+    if (top_level_item->kind() != RootItemKind::Bin) {
+      requestItemRemoval(top_level_item);
+    }
+  }
+}
+
+void ServiceRoot::storeNewFeedTree(RootItem *root) {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_category(database);
+  QSqlQuery query_feed(database);
+
+  query_category.prepare("INSERT INTO Categories (parent_id, title, account_id, custom_id) "
+                         "VALUES (:parent_id, :title, :account_id, :custom_id);");
+  query_feed.prepare("INSERT INTO Feeds (title, icon, category, protected, update_type, update_interval, account_id, custom_id) "
+                     "VALUES (:title, :icon, :category, :protected, :update_type, :update_interval, :account_id, :custom_id);");
+
+  // Iterate all children.
+  foreach (RootItem *child, root->getSubTree()) {
+    if (child->kind() == RootItemKind::Category) {
+      query_category.bindValue(QSL(":parent_id"), child->parent()->id());
+      query_category.bindValue(QSL(":title"), child->title());
+      query_category.bindValue(QSL(":account_id"), accountId());
+      query_category.bindValue(QSL(":custom_id"), QString::number(child->toCategory()->customId()));
+
+      if (query_category.exec()) {
+        child->setId(query_category.lastInsertId().toInt());
+      }
+    }
+    else if (child->kind() == RootItemKind::Feed) {
+      Feed *feed = child->toFeed();
+
+      query_feed.bindValue(QSL(":title"), feed->title());
+      query_feed.bindValue(QSL(":icon"), qApp->icons()->toByteArray(feed->icon()));
+      query_feed.bindValue(QSL(":category"), feed->parent()->id());
+      query_feed.bindValue(QSL(":protected"), 0);
+      query_feed.bindValue(QSL(":update_type"), (int) feed->autoUpdateType());
+      query_feed.bindValue(QSL(":update_interval"), feed->autoUpdateInitialInterval());
+      query_feed.bindValue(QSL(":account_id"), accountId());
+      query_feed.bindValue(QSL(":custom_id"), feed->customId());
+
+      if (query_feed.exec()) {
+        feed->setId(query_feed.lastInsertId().toInt());
+      }
+    }
+  }
+
+  RecycleBin *bin = recycleBin();
+
+  if (bin != NULL && !childItems().contains(bin)) {
+    // As the last item, add recycle bin, which is needed.
+    appendChild(bin);
+    bin->updateCounts(true);
   }
 }
 

@@ -20,6 +20,7 @@
 
 #define CONTENT_TYPE          "application/json; charset=utf-8"
 #define API_VERSION           "1.2"
+#define API_PATH              "index.php/apps/news/api/v1-2/"
 #define MINIMAL_OC_VERSION    "6.0.5"
 
 #endif // OWNCLOUD_DEFINITIONS_H

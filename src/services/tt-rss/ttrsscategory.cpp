@@ -27,7 +27,7 @@
 #include <QVariant>
 
 
-TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent), m_customId(NO_PARENT_CATEGORY) {
+TtRssCategory::TtRssCategory(RootItem *parent) : Category(parent) {
   setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
 }
 
@@ -62,12 +62,4 @@ bool TtRssCategory::markAsReadUnread(RootItem::ReadStatus status) {
 
 bool TtRssCategory::cleanMessages(bool clear_only_read) {
   return serviceRoot()->cleanFeeds(getSubTreeFeeds(), clear_only_read);
-}
-
-int TtRssCategory::customId() const {
-  return m_customId;
-}
-
-void TtRssCategory::setCustomId(int custom_id) {
-  m_customId = custom_id;
 }

@@ -58,6 +58,24 @@ class OwnCloudStatusResponse : public OwnCloudResponse {
     bool misconfiguredCron() const;
 };
 
+class RootItem;
+
+class OwnCloudGetFeedsCategoriesResponse {
+  public:
+    explicit OwnCloudGetFeedsCategoriesResponse(const QString &raw_categories = QString(),
+                                                const QString &raw_feeds = QString());
+    virtual ~OwnCloudGetFeedsCategoriesResponse();
+
+    // Returns tree of feeds/categories.
+    // Top-level root of the tree is not needed here.
+    // Returned items do not have primary IDs assigned.
+    RootItem *feedsCategories(bool obtain_icons) const;
+
+  private:
+    QString m_contentCategories;
+    QString m_contentFeeds;
+};
+
 class OwnCloudNetworkFactory {
   public:
     explicit OwnCloudNetworkFactory();
@@ -88,6 +106,9 @@ class OwnCloudNetworkFactory {
     // Get version info.
     OwnCloudStatusResponse status();
 
+    // Get feeds & categories (used for sync-in).
+    OwnCloudGetFeedsCategoriesResponse feedsCategories();
+
   private:
     QString m_url;
     bool m_forceServerSideUpdate;
@@ -98,6 +119,8 @@ class OwnCloudNetworkFactory {
     // Endpoints.
     QString m_urlUser;
     QString m_urlStatus;
+    QString m_urlFolders;
+    QString m_urlFeeds;
 
     QString m_userId;
 };

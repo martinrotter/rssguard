@@ -58,6 +58,8 @@ class OwnCloudServiceRoot : public ServiceRoot {
     void addNewFeed(const QString &url);
     void addNewCategory();
 
+    void syncIn();
+
   private:
     OwnCloudNetworkFactory *m_network;
 };
