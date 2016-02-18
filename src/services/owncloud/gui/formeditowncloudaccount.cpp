@@ -103,7 +103,7 @@ void FormEditOwnCloudAccount::performTest() {
   OwnCloudStatusResponse result = factory.status();
 
   if (result.isLoaded()) {
-    if (SystemFactory::isVersionEqualOrNewer(result.version(), MINIMAL_OC_VERSION)) {
+    if (!SystemFactory::isVersionEqualOrNewer(result.version(), MINIMAL_OC_VERSION)) {
       m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                        tr("Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.").arg(result.version(),
                                                                                                                                                      MINIMAL_OC_VERSION),
@@ -116,7 +116,7 @@ void FormEditOwnCloudAccount::performTest() {
                                        tr("OwnCloud News server is okay."));
     }
   }
-  else if (factory.lastError()  != QNetworkReply::NoError ) {
+  else if (factory.lastError()  != QNetworkReply::NoError) {
     m_ui->m_lblTestResult->setStatus(WidgetWithStatus::Error,
                                      tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(factory.lastError())),
                                      tr("Network error, have you entered correct ownCloud endpoint and password?"));
@@ -142,7 +142,7 @@ void FormEditOwnCloudAccount::onClickedOk() {
   m_editableRoot->network()->setAuthUsername(m_ui->m_txtUsername->lineEdit()->text());
   m_editableRoot->network()->setAuthPassword(m_ui->m_txtPassword->lineEdit()->text());
   m_editableRoot->network()->setForceServerSideUpdate(m_ui->m_checkServerSideUpdate->isChecked());
-  //m_editableRoot->saveAccountDataToDatabase();
+  m_editableRoot->saveAccountDataToDatabase();
 
   accept();
 

@@ -18,12 +18,19 @@
 #include "services/owncloud/owncloudserviceroot.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/databasefactory.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/textfactory.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
+
+#include <QSqlQuery>
+#include <QSqlError>
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
   : ServiceRoot(parent), m_network(new OwnCloudNetworkFactory()) {
+  setIcon(OwnCloudServiceEntryPoint().icon());
 }
 
 OwnCloudServiceRoot::~OwnCloudServiceRoot() {
@@ -90,6 +97,82 @@ bool OwnCloudServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *mo
 
 OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
   return m_network;
+}
+
+void OwnCloudServiceRoot::updateTitle() {
+  QString host = QUrl(m_network->url()).host();
+
+  if (host.isEmpty()) {
+    host = m_network->url();
+  }
+
+  setTitle(m_network->authUsername() + QL1S("@") + host);
+}
+
+void OwnCloudServiceRoot::saveAccountDataToDatabase() {
+  // TODO: TODO
+
+  if (accountId() != NO_PARENT_CATEGORY) {
+    // We are overwritting previously saved data.
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    QSqlQuery query(database);
+
+    query.prepare("UPDATE OwnCloudAccounts "
+                  "SET username = :username, password = :password, url = :url, force_update = :force_update "
+                  "WHERE id = :id;");
+    query.bindValue(QSL(":username"), m_network->authUsername());
+    query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->authPassword()));
+    query.bindValue(QSL(":url"), m_network->url());
+    query.bindValue(QSL(":force_update"), (int) m_network->forceServerSideUpdate());
+    query.bindValue(QSL(":id"), accountId());
+
+    if (query.exec()) {
+      updateTitle();
+      itemChanged(QList<RootItem*>() << this);
+    }
+    else {
+      qWarning("OwnCloud: Updating account failed: '%s'.", qPrintable(query.lastError().text()));
+    }
+  }
+  else {
+    // We are probably saving newly added account.
+    QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+    QSqlQuery query(database);
+
+    // First obtain the ID, which can be assigned to this new account.
+    if (!query.exec("SELECT max(id) FROM Accounts;") || !query.next()) {
+      qWarning("OwnCloud: Getting max ID from Accounts table failed: '%s'.", qPrintable(query.lastError().text()));
+      return;
+    }
+
+    int id_to_assign = query.value(0).toInt() + 1;
+    bool saved = true;
+
+    query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
+    query.bindValue(QSL(":id"), id_to_assign);
+    query.bindValue(QSL(":type"), SERVICE_CODE_OWNCLOUD);
+
+    saved &= query.exec();
+
+    query.prepare("INSERT INTO OwnCloudAccounts (id, username, password, url, force_update) "
+                  "VALUES (:id, :username, :password, :url, :force_update);");
+    query.bindValue(QSL(":id"), id_to_assign);
+    query.bindValue(QSL(":username"), m_network->authUsername());
+    query.bindValue(QSL(":password"), TextFactory::encrypt(m_network->authPassword()));
+    query.bindValue(QSL(":url"), m_network->url());
+    query.bindValue(QSL(":force_update"), (int) m_network->forceServerSideUpdate());
+
+    saved &= query.exec();
+
+    if (saved) {
+      setId(id_to_assign);
+      setAccountId(id_to_assign);
+      updateTitle();
+    }
+    else {
+      qWarning("OwnCloud: Saving of new account failed: '%s'.", qPrintable(query.lastError().text()));
+    }
+  }
 }
 
 void OwnCloudServiceRoot::addNewFeed(const QString &url) {

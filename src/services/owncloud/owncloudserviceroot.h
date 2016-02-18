@@ -51,6 +51,9 @@ class OwnCloudServiceRoot : public ServiceRoot {
 
     OwnCloudNetworkFactory *network() const;
 
+    void updateTitle();
+    void saveAccountDataToDatabase();
+
   public slots:
     void addNewFeed(const QString &url);
     void addNewCategory();

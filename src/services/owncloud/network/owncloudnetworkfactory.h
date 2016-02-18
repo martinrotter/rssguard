@@ -75,6 +75,9 @@ class OwnCloudNetworkFactory {
     QString authPassword() const;
     void setAuthPassword(const QString &auth_password);
 
+    QString userId() const;
+    void setUserId(const QString &userId);
+
     QNetworkReply::NetworkError lastError() const;
 
     // Operations.
@@ -95,6 +98,8 @@ class OwnCloudNetworkFactory {
     // Endpoints.
     QString m_urlUser;
     QString m_urlStatus;
+
+    QString m_userId;
 };
 
 #endif // OWNCLOUDNETWORKFACTORY_H

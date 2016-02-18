@@ -188,14 +188,14 @@ void FormUpdate::startUpdate() {
     qDebug("Preparing to launch external installer '%s'.", qPrintable(QDir::toNativeSeparators(m_updateFilePath)));
 
 #if defined(Q_OS_WIN)
-    const long exec_result = (long) ShellExecute(NULL,
-                                                 NULL,
-                                                 reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
-                                                 NULL,
-                                                 NULL,
-                                                 SW_NORMAL);
+    HINSTANCE exec_result = ShellExecute(NULL,
+                                         NULL,
+                                         reinterpret_cast<const WCHAR*>(QDir::toNativeSeparators(m_updateFilePath).utf16()),
+                                         NULL,
+                                         NULL,
+                                         SW_NORMAL);
 
-    if (exec_result <= 32) {
+    if (((int)exec_result) <= 32) {
       qDebug("External updater was not launched due to error.");
 
       qApp->showGuiMessage(tr("Cannot update application"),

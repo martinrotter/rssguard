@@ -27,7 +27,8 @@
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_forceServerSideUpdate(false),
-    m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()) {
+    m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()),
+    m_userId(QString()) {
 }
 
 OwnCloudNetworkFactory::~OwnCloudNetworkFactory() {
@@ -112,6 +113,14 @@ OwnCloudStatusResponse OwnCloudNetworkFactory::status() {
 
   m_lastError = network_reply.first;
   return status_response;
+}
+
+QString OwnCloudNetworkFactory::userId() const {
+  return m_userId;
+}
+
+void OwnCloudNetworkFactory::setUserId(const QString &userId) {
+  m_userId = userId;
 }
 
 OwnCloudResponse::OwnCloudResponse(const QString &raw_content) {

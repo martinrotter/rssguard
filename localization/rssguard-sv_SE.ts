@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv_SE" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sv_SE">
 <context>
     <name>AdBlockAddSubscriptionDialog</name>
     <message>
@@ -281,9 +283,12 @@ Notera också att vissa resurser cachelagras av den interna webbläsaren. Om du 
     <message numerus="yes">
         <source>Click me to add feeds from this website.
 This website contains %n feed(s).</source>
-        <translation><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöde.</numerusform><numerusform>Klicka för att lägga till flöden från webbsidan.
-Denna webbsida innehåller %n flöden.</numerusform></translation>
+        <translation>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöde.</numerusform>
+            <numerusform>Klicka för att lägga till flöden från webbsidan.
+Denna webbsida innehåller %n flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Not supported</source>
@@ -369,7 +374,7 @@ Denna webbsida innehåller %n flöden.</numerusform></translation>
         <translation>Nedladdning slutförd</translation>
     </message>
     <message>
-        <source>File '%1' is downloaded.
+        <source>File &apos;%1&apos; is downloaded.
 Click here to open parent directory.</source>
         <translation>Filen &apos;%1&apos; är nedlladdad.
 Klicka här för att öppna målmappen.</translation>
@@ -395,11 +400,17 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>%n minutes remaining</source>
-        <translation><numerusform>%n minut kvar</numerusform><numerusform>%n minuter kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n minut kvar</numerusform>
+            <numerusform>%n minuter kvar</numerusform>
+        </translation>
     </message>
     <message numerus="yes">
         <source>%n seconds remaining</source>
-        <translation><numerusform>%n sekund kvar</numerusform><numerusform>%n sekunder kvar</numerusform></translation>
+        <translation>
+            <numerusform>%n sekund kvar</numerusform>
+            <numerusform>%n sekunder kvar</numerusform>
+        </translation>
     </message>
     <message>
         <source>bytes</source>
@@ -419,7 +430,10 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>Downloading %n file(s)...</source>
-        <translation><numerusform>Laddar ner %n fil...</numerusform><numerusform>Laddar ner %n filer...</numerusform></translation>
+        <translation>
+            <numerusform>Laddar ner %n fil...</numerusform>
+            <numerusform>Laddar ner %n filer...</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -482,7 +496,10 @@ Klicka här för att öppna målmappen.</translation>
     </message>
     <message numerus="yes">
         <source>I will auto-update %n feed(s).</source>
-        <translation><numerusform>Jag uppdaterar %n flöde automatiskt</numerusform><numerusform>Jag uppdaterar %n flöden automatiskt</numerusform></translation>
+        <translation>
+            <numerusform>Jag uppdaterar %n flöde automatiskt</numerusform>
+            <numerusform>Jag uppdaterar %n flöden automatiskt</numerusform>
+        </translation>
     </message>
     <message>
         <source>Cannot update all items</source>
@@ -793,7 +810,10 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message numerus="yes">
         <source> day(s)</source>
-        <translation><numerusform>dag</numerusform><numerusform>dagar</numerusform></translation>
+        <translation>
+            <numerusform>dag</numerusform>
+            <numerusform>dagar</numerusform>
+        </translation>
     </message>
     <message>
         <source>Shrink database file</source>
@@ -889,10 +909,6 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>&amp;Test setup</source>
         <translation>&amp;Testa inställning</translation>
-    </message>
-    <message>
-        <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
-        <translation>Utför tvingad körning av serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>HTTP authentication username</source>
@@ -1018,6 +1034,14 @@ att funktionen inte är implementerad än.</translation>
         <source>Unspecified error, did you enter correct URL?</source>
         <translation>Ospecificerat fel! Angav du korrekt URL?</translation>
     </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormEditFeed</name>
@@ -1132,6 +1156,129 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>The URL is empty.</source>
         <translation>URL saknas.</translation>
+    </message>
+</context>
+<context>
+    <name>FormEditOwnCloudAccount</name>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished">Autentisering</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished">Visa lösenord</translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished">&amp;Testa inställning</translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that at least version %1 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished">Lösenord för ditt TT RSS-konto</translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished">Användarnamn för ditt TT RSS-konto</translation>
+    </message>
+    <message>
+        <source>URL of your ownCloud server, without any API path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished">Inget test utfört ännu.</translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished">Här visas resultat av anslutningstest.</translation>
+    </message>
+    <message>
+        <source>Add new ownCloud News account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing ownCloud News account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected ownCloud News server is running unsupported version.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OwnCloud News server is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished">Nätverksfel: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished">Ospecificerat fel! Angav du korrekt URL?</translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished">Användarnamn saknas.</translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished">Användarnamn okay.</translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished">Lösenord saknas.</translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished">Lösenord okay.</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished">URL saknas.</translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
+        <translation type="unfinished">URL okay.</translation>
     </message>
 </context>
 <context>
@@ -1539,6 +1686,10 @@ att funktionen inte är implementerad än.</translation>
     <message>
         <source>Add new feed</source>
         <translation>Lägg till nytt flöde</translation>
+    </message>
+    <message>
+        <source>Stop running update</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3275,9 +3426,12 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
         <source>
 
 + %n other feeds.</source>
-        <translation><numerusform>+ %n annat flöde.</numerusform><numerusform>
+        <translation>
+            <numerusform>+ %n annat flöde.</numerusform>
+            <numerusform>
 
-+ %n andra flöden.</numerusform></translation>
++ %n andra flöden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Welcome to %1.
@@ -3309,6 +3463,10 @@ Tiny Tiny RSS är en öppen källkods, webbaserad flödesläsare (RSS/Atom) och 
 
 Minst API-nivå %1 krävs.</translation>
     </message>
+    <message>
+        <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecycleBin</name>
@@ -3322,7 +3480,10 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message numerus="yes">
         <source>%n deleted message(s).</source>
-        <translation><numerusform>%n borttaget meddelande.</numerusform><numerusform>%n borttagna meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n borttaget meddelande.</numerusform>
+            <numerusform>%n borttagna meddelanden.</numerusform>
+        </translation>
     </message>
     <message>
         <source>Recycle bin
@@ -3338,7 +3499,10 @@ Minst API-nivå %1 krävs.</translation>
     <message numerus="yes">
         <source>%n unread message(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
-        <translation><numerusform>%n oläst meddelande.</numerusform><numerusform>%n olästa meddelanden.</numerusform></translation>
+        <translation>
+            <numerusform>%n oläst meddelande.</numerusform>
+            <numerusform>%n olästa meddelanden.</numerusform>
+        </translation>
     </message>
 </context>
 <context>
@@ -3393,7 +3557,10 @@ Denna kategori innehåller inga objekt.</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifika inställningar (%n minut till nästa autouppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa autouppdatering)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1 (%2)%3
@@ -3619,7 +3786,10 @@ Olästa nyheter: %2</translation>
     <message numerus="yes">
         <source>uses specific settings (%n minute(s) to next auto-update)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
-        <translation><numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform><numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform></translation>
+        <translation>
+            <numerusform>använder specifika inställningar (%n minut till nästa automatiska uppdatering)</numerusform>
+            <numerusform>använder specifika inställningar (%n minuter till nästa automatiska uppdatering)</numerusform>
+        </translation>
     </message>
     <message>
         <source>%1%2

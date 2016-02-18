@@ -905,10 +905,6 @@ or this functionality is not implemented yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Force execution of server-side update when updating feeds from RSS  Guard</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>HTTP authentication username</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1032,6 +1028,14 @@ or this functionality is not implemented yet.</source>
         <source>Unspecified error, did you enter correct URL?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FormEditFeed</name>
@@ -1145,6 +1149,129 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>The URL is empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FormEditOwnCloudAccount</name>
+    <message>
+        <source>URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force execution of server-side update when updating feeds from RSS Guard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authentication</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show password</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Test setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Note that at least version %1 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username for your TT-RSS account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL of your ownCloud server, without any API path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No test done yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Here, results of connection test are shown.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add new ownCloud News account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit existing ownCloud News account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Selected ownCloud News server is running unsupported version.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OwnCloud News server is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error: &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Network error, have you entered correct ownCloud endpoint and password?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unspecified error, did you enter correct URL?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Username is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password is okay.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL cannot be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL is okay.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1552,6 +1679,10 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Add new feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop running update</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3291,6 +3422,10 @@ version by clicking this popup notification.</source>
 Tiny Tiny RSS is an open source web-based news feed (RSS/Atom) reader and aggregator, designed to allow you to read news from any location, while feeling as close to a real desktop application as possible.
 
 At least API level %1 is required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
