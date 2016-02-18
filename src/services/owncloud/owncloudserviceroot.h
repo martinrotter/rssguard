@@ -22,6 +22,7 @@
 
 
 class OwnCloudNetworkFactory;
+class OwnCloudRecycleBin;
 
 class OwnCloudServiceRoot : public ServiceRoot {
     Q_OBJECT
@@ -61,6 +62,7 @@ class OwnCloudServiceRoot : public ServiceRoot {
     void syncIn();
 
   private:
+    OwnCloudRecycleBin *m_recycleBin;
     OwnCloudNetworkFactory *m_network;
 };
 

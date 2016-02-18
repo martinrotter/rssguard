@@ -23,6 +23,7 @@
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
+#include "services/owncloud/owncloudrecyclebin.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 
 #include <QSqlQuery>
@@ -30,7 +31,7 @@
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_network(new OwnCloudNetworkFactory()) {
+  : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
 
