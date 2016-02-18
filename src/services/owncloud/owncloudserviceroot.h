@@ -38,8 +38,6 @@ class OwnCloudServiceRoot : public ServiceRoot {
 
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
-
-    QList<QAction*> addItemMenu();
     QList<QAction*> serviceMenu();
 
     RecycleBin *recycleBin() const;
@@ -62,7 +60,11 @@ class OwnCloudServiceRoot : public ServiceRoot {
     void syncIn();
 
   private:
+    void loadFromDatabase();
+
     OwnCloudRecycleBin *m_recycleBin;
+    QAction *m_actionSyncIn;
+    QList<QAction*> m_serviceMenu;
     OwnCloudNetworkFactory *m_network;
 };
 

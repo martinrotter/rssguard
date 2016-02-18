@@ -31,7 +31,8 @@
 
 
 OwnCloudServiceRoot::OwnCloudServiceRoot(RootItem *parent)
-  : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)), m_network(new OwnCloudNetworkFactory()) {
+  : ServiceRoot(parent), m_recycleBin(new OwnCloudRecycleBin(this)),
+    m_actionSyncIn(NULL), m_serviceMenu(QList<QAction*>()), m_network(new OwnCloudNetworkFactory()) {
   setIcon(OwnCloudServiceEntryPoint().icon());
 }
 
@@ -65,24 +66,23 @@ bool OwnCloudServiceRoot::supportsCategoryAdding() const {
   return false;
 }
 
-QList<QAction*> OwnCloudServiceRoot::addItemMenu() {
-  // TODO: TODO
-  return QList<QAction*>();
-}
-
 QList<QAction*> OwnCloudServiceRoot::serviceMenu() {
-  // TODO: TODO
-  return QList<QAction*>();
+  if (m_serviceMenu.isEmpty()) {
+    m_actionSyncIn = new QAction(qApp->icons()->fromTheme(QSL("item-sync")), tr("Sync in"), this);
+
+    connect(m_actionSyncIn, SIGNAL(triggered()), this, SLOT(syncIn()));
+    m_serviceMenu.append(m_actionSyncIn);
+  }
+
+  return m_serviceMenu;
 }
 
 RecycleBin *OwnCloudServiceRoot::recycleBin() const {
-  // TODO: TODO
-  return NULL;
+  return m_recycleBin;
 }
 
 void OwnCloudServiceRoot::start(bool freshly_activated) {
-  // TODO: TODO
-  //loadFromDatabase();
+  loadFromDatabase();
 
   if (childCount() == 1 && child(0)->kind() == RootItemKind::Bin) {
     syncIn();
@@ -243,4 +243,10 @@ void OwnCloudServiceRoot::syncIn() {
 
   setIcon(original_icon);
   itemChanged(QList<RootItem*>() << this);
+}
+
+void OwnCloudServiceRoot::loadFromDatabase() {
+  // As the last item, add recycle bin, which is needed.
+  appendChild(m_recycleBin);
+  m_recycleBin->updateCounts(true);
 }

@@ -23,3 +23,12 @@ OwnCloudFeed::OwnCloudFeed(RootItem *parent) : Feed(parent) {
 
 OwnCloudFeed::~OwnCloudFeed() {
 }
+
+int OwnCloudFeed::update() {
+  // TODO: TODO
+  return 0;
+}
+
+int OwnCloudFeed::messageForeignKeyId() const {
+  return customId();
+}

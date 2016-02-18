@@ -21,10 +21,10 @@
 #include "miscellaneous/iconfactory.h"
 
 
-OwnCloudServiceCategory::OwnCloudServiceCategory(RootItem *parent) : Category(parent) {
+OwnCloudCategory::OwnCloudCategory(RootItem *parent) : Category(parent) {
   // Categories in ownCloud have now icons etc. They just have titles.
   setIcon(qApp->icons()->fromTheme(QSL("folder-category")));
 }
 
-OwnCloudServiceCategory::~OwnCloudServiceCategory() {
+OwnCloudCategory::~OwnCloudCategory() {
 }

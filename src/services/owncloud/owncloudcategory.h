@@ -21,10 +21,10 @@
 #include "services/abstract/category.h"
 
 
-class OwnCloudServiceCategory : public Category {
+class OwnCloudCategory : public Category {
   public:
-    explicit OwnCloudServiceCategory(RootItem *parent = NULL);
-    virtual ~OwnCloudServiceCategory();
+    explicit OwnCloudCategory(RootItem *parent = NULL);
+    virtual ~OwnCloudCategory();
 };
 
 #endif // OWNCLOUDSERVICECATEGORY_H

@@ -25,6 +25,9 @@ class OwnCloudFeed : public Feed {
   public:
     explicit OwnCloudFeed(RootItem *parent = NULL);
     virtual ~OwnCloudFeed();
+
+    int update();
+    int messageForeignKeyId() const;
 };
 
 #endif // OWNCLOUDFEED_H

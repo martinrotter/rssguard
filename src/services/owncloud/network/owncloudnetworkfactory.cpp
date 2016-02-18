@@ -21,6 +21,9 @@
 #include "network-web/networkfactory.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "services/abstract/rootitem.h"
+#include "services/owncloud/owncloudcategory.h"
+#include "services/owncloud/owncloudfeed.h"
 
 #include <QPixmap>
 
@@ -179,7 +182,6 @@ QString OwnCloudResponse::toString() const {
   return QtJson::serializeStr(m_rawContent);
 }
 
-
 OwnCloudUserResponse::OwnCloudUserResponse(const QString &raw_content) : OwnCloudResponse(raw_content) {
 }
 
@@ -255,13 +257,58 @@ bool OwnCloudStatusResponse::misconfiguredCron() const {
 
 OwnCloudGetFeedsCategoriesResponse::OwnCloudGetFeedsCategoriesResponse(const QString &raw_categories,
                                                                        const QString &raw_feeds)
-  : m_contentCategories(QString()), m_contentFeeds(QString()) {
+  : m_contentCategories(raw_categories), m_contentFeeds(raw_feeds) {
 }
 
 OwnCloudGetFeedsCategoriesResponse::~OwnCloudGetFeedsCategoriesResponse() {
 }
 
 RootItem *OwnCloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
-  // TODO: TODO
-  return NULL;
+  RootItem *parent = new RootItem();
+  QMap<int,RootItem*> cats;
+
+  cats.insert(0, parent);
+
+  // Process categories first, then process feeds.
+  foreach (QVariant cat, QtJson::parse(m_contentCategories).toMap()["folders"].toList()) {
+    QMap<QString,QVariant> item = cat.toMap();
+    OwnCloudCategory *category = new OwnCloudCategory();
+
+    category->setTitle(item["name"].toString());
+    category->setCustomId(item["id"].toInt());
+
+    cats.insert(category->customId(), category);
+
+    // All categories in ownCloud are top-level.
+    parent->appendChild(category);
+  }
+
+  // We have categories added, now add all feeds.
+  foreach (QVariant fed, QtJson::parse(m_contentFeeds).toMap()["feeds"].toList()) {
+    QMap<QString,QVariant> item = fed.toMap();
+    OwnCloudFeed *feed = new OwnCloudFeed();
+
+    if (obtain_icons) {
+      QString icon_path = item["faviconLink"].toString();
+
+      if (!icon_path.isEmpty()) {
+        QByteArray icon_data;
+
+        if (NetworkFactory::downloadFile(icon_path, DOWNLOAD_TIMEOUT, icon_data).first == QNetworkReply::NoError) {
+          // Icon downloaded, set it up.
+          QPixmap icon_pixmap;
+          icon_pixmap.loadFromData(icon_data);
+          feed->setIcon(QIcon(icon_pixmap));
+        }
+      }
+    }
+
+    feed->setUrl(item["link"].toString());
+    feed->setTitle(item["title"].toString());
+    feed->setCustomId(item["id"].toInt());
+
+    cats.value(item["folderId"].toInt())->appendChild(feed);
+  }
+
+  return parent;
 }
