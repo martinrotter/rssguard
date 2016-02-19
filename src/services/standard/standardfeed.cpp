@@ -610,7 +610,11 @@ int StandardFeed::messageForeignKeyId() const {
 }
 
 int StandardFeed::updateMessages(const QList<Message> &messages) {
-  int feed_id = id();
+  if (messages.isEmpty()) {
+    return 0;
+  }
+
+  int feed_id = messageForeignKeyId();
   int updated_messages = 0;
   bool anything_duplicated = false;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);

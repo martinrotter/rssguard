@@ -24,6 +24,7 @@
 #include <QNetworkReply>
 
 #include "qt-json/json.h"
+#include "core/message.h"
 
 
 class OwnCloudResponse {
@@ -47,6 +48,14 @@ class OwnCloudUserResponse : public OwnCloudResponse {
     QString displayName() const;
     QDateTime lastLoginTime() const;
     QIcon avatar() const;
+};
+
+class OwnCloudGetMessagesResponse : public OwnCloudResponse {
+  public:
+    explicit OwnCloudGetMessagesResponse(const QString &raw_content = QString());
+    virtual ~OwnCloudGetMessagesResponse();
+
+    QList<Message> messages() const;
 };
 
 class OwnCloudStatusResponse : public OwnCloudResponse {
@@ -109,6 +118,9 @@ class OwnCloudNetworkFactory {
     // Get feeds & categories (used for sync-in).
     OwnCloudGetFeedsCategoriesResponse feedsCategories();
 
+    // Get messages for given feed.
+    OwnCloudGetMessagesResponse getMessages(int feed_id);
+
   private:
     QString m_url;
     bool m_forceServerSideUpdate;
@@ -121,6 +133,7 @@ class OwnCloudNetworkFactory {
     QString m_urlStatus;
     QString m_urlFolders;
     QString m_urlFeeds;
+    QString m_urlMessages;
 
     QString m_userId;
 };

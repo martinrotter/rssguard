@@ -495,8 +495,8 @@ Authors of this application are NOT responsible for lost data.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>776</width>
-                <height>425</height>
+                <width>167</width>
+                <height>219</height>
                </rect>
               </property>
               <layout class="QFormLayout" name="formLayout">
@@ -1404,7 +1404,7 @@ Authors of this application are NOT responsible for lost data.</string>
               <number>100</number>
              </property>
              <property name="maximum">
-              <number>15000</number>
+              <number>45000</number>
              </property>
              <property name="singleStep">
               <number>100</number>

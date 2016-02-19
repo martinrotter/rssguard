@@ -298,7 +298,7 @@ int TtRssFeed::updateMessages(const QList<Message> &messages) {
     return 0;
   }
 
-  int feed_id = customId();
+  int feed_id = messageForeignKeyId();
   int updated_messages = 0;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   int account_id = serviceRoot()->accountId();

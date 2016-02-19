@@ -24,6 +24,7 @@ Fixed:
 
 Changed:
 
+▪ Increased max feed network download timeout to 45 s.
 ▪ Adjusted behavior of Google suggestions when no suggestions are available for give text.
 ▪ Adjusted soěrting, particularly in message list.
 ▪ Tweaked "remove duplicates" policy.

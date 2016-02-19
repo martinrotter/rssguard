@@ -21,12 +21,15 @@
 #include "services/abstract/feed.h"
 
 
+class OwnCloudServiceRoot;
+
 class OwnCloudFeed : public Feed {
   public:
     explicit OwnCloudFeed(RootItem *parent = NULL);
     explicit OwnCloudFeed(const QSqlRecord &record);
     virtual ~OwnCloudFeed();
 
+    OwnCloudServiceRoot *serviceRoot() const;
     int update();
     int messageForeignKeyId() const;
 };

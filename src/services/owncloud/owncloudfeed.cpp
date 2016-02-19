@@ -18,6 +18,8 @@
 #include "owncloudfeed.h"
 
 #include "miscellaneous/iconfactory.h"
+#include "services/owncloud/owncloudserviceroot.h"
+#include "services/owncloud/network/owncloudnetworkfactory.h"
 
 
 OwnCloudFeed::OwnCloudFeed(RootItem *parent) : Feed(parent) {
@@ -35,9 +37,37 @@ OwnCloudFeed::OwnCloudFeed(const QSqlRecord &record) : Feed(NULL) {
 OwnCloudFeed::~OwnCloudFeed() {
 }
 
+OwnCloudServiceRoot *OwnCloudFeed::serviceRoot() const {
+  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
+}
+
 int OwnCloudFeed::update() {
-  // TODO: TODO
-  return 0;
+  OwnCloudGetMessagesResponse headlines = serviceRoot()->network()->getMessages(customId());
+
+  if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
+    setStatus(Feed::Error);
+    serviceRoot()->itemChanged(QList<RootItem*>() << this);
+    return 0;
+  }
+  else {
+    return 0;
+    // TODO: TODO
+    // Udělat změnu tuto v tabulkách které mají sloupec custom_id
+    // Udělat to tak, že custom_id se bude vyplňovat pro všechny
+    // položky v Feeds, Categories a Messages
+    // taky tu property budou mít všechny příslušné objekty
+    // u standardních Feeds, Categories a Message se custom_id == id
+    //
+    // toto pak umožní přesunout všechny metody, které budou s custom ID a ID
+    // pracovat, do třídy předka a ušetřit kód.
+    //
+    /*
+     *UPDATE Categories
+SET custom_id = (SELECT id FROM Categories t WHERE t.id = Categories.id)
+WHERE Categories.custom_id IS NULL;
+     *
+     *     //return updateMessages(headlines.messages());
+  }
 }
 
 int OwnCloudFeed::messageForeignKeyId() const {
