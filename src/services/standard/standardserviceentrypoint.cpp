@@ -73,7 +73,7 @@ ServiceRoot *StandardServiceEntryPoint::createNewRoot() const {
 
   query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
   query.bindValue(QSL(":id"), id_to_assign);
-  query.bindValue(QSL(":type"), SERVICE_CODE_STD_RSS);
+  query.bindValue(QSL(":type"), code());
 
   if (query.exec()) {
     StandardServiceRoot *root = new StandardServiceRoot();
@@ -94,7 +94,7 @@ QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
 
   query.setForwardOnly(true);
   query.prepare(QSL("SELECT id FROM Accounts WHERE type = :type;"));
-  query.bindValue(QSL(":type"), SERVICE_CODE_STD_RSS);
+  query.bindValue(QSL(":type"), code());
 
   if (query.exec()) {
     while (query.next()) {

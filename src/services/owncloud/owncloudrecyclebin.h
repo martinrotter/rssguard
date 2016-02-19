@@ -21,11 +21,14 @@
 #include "services/abstract/recyclebin.h"
 
 
+class OwnCloudServiceRoot;
+
 class OwnCloudRecycleBin : public RecycleBin {
   public:
     explicit OwnCloudRecycleBin(RootItem *parent = NULL);
     virtual ~OwnCloudRecycleBin();
 
+    OwnCloudServiceRoot *serviceRoot();
     bool markAsReadUnread(ReadStatus status);
 };
 

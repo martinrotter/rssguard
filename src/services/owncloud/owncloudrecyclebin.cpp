@@ -17,11 +17,17 @@
 
 #include "services/owncloud/owncloudrecyclebin.h"
 
+#include "services/owncloud/owncloudserviceroot.h"
+
 
 OwnCloudRecycleBin::OwnCloudRecycleBin(RootItem *parent) : RecycleBin(parent) {
 }
 
 OwnCloudRecycleBin::~OwnCloudRecycleBin() {
+}
+
+OwnCloudServiceRoot *OwnCloudRecycleBin::serviceRoot() {
+  return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
 
 bool OwnCloudRecycleBin::markAsReadUnread(RootItem::ReadStatus status) {

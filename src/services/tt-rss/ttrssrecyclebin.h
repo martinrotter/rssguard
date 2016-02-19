@@ -31,7 +31,6 @@ class TtRssRecycleBin : public RecycleBin {
     virtual ~TtRssRecycleBin();
 
     TtRssServiceRoot *serviceRoot();
-
     bool markAsReadUnread(ReadStatus status);
 };
 

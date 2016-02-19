@@ -35,18 +35,13 @@ class OwnCloudServiceRoot : public ServiceRoot {
     bool canBeDeleted() const;
     bool editViaGui();
     bool deleteViaGui();
-
     bool supportsFeedAdding() const;
     bool supportsCategoryAdding() const;
     QList<QAction*> serviceMenu();
-
     RecycleBin *recycleBin() const;
-
     void start(bool freshly_activated);
     void stop();
     QString code() const;
-
-    bool loadMessagesForItem(RootItem *item, QSqlTableModel *model);
 
     OwnCloudNetworkFactory *network() const;
 

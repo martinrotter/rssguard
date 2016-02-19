@@ -103,7 +103,7 @@ void StandardServiceRoot::stop() {
 }
 
 QString StandardServiceRoot::code() const {
-  return SERVICE_CODE_STD_RSS;
+  return StandardServiceEntryPoint().code();
 }
 
 bool StandardServiceRoot::canBeEdited() const {

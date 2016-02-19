@@ -17,8 +17,19 @@
 
 #include "owncloudfeed.h"
 
+#include "miscellaneous/iconfactory.h"
+
 
 OwnCloudFeed::OwnCloudFeed(RootItem *parent) : Feed(parent) {
+}
+
+OwnCloudFeed::OwnCloudFeed(const QSqlRecord &record) : Feed(NULL) {
+  setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
+  setId(record.value(FDS_DB_ID_INDEX).toInt());
+  setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));
+  setAutoUpdateType(static_cast<Feed::AutoUpdateType>(record.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+  setAutoUpdateInitialInterval(record.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+  setCustomId(record.value(FDS_DB_CUSTOM_ID_INDEX).toInt());
 }
 
 OwnCloudFeed::~OwnCloudFeed() {

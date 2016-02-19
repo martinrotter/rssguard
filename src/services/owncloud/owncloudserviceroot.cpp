@@ -24,6 +24,8 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/owncloud/owncloudrecyclebin.h"
+#include "services/owncloud/owncloudfeed.h"
+#include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
 
 #include <QSqlQuery>
@@ -90,16 +92,10 @@ void OwnCloudServiceRoot::start(bool freshly_activated) {
 }
 
 void OwnCloudServiceRoot::stop() {
-  // TODO: TODO
 }
 
 QString OwnCloudServiceRoot::code() const {
-  return SERVICE_CODE_OWNCLOUD;
-}
-
-bool OwnCloudServiceRoot::loadMessagesForItem(RootItem *item, QSqlTableModel *model) {
-  // TODO: TODO
-  return false;
+  return OwnCloudServiceEntryPoint().code();
 }
 
 OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
@@ -157,7 +153,7 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 
     query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
     query.bindValue(QSL(":id"), id_to_assign);
-    query.bindValue(QSL(":type"), SERVICE_CODE_OWNCLOUD);
+    query.bindValue(QSL(":type"), code());
 
     saved &= query.exec();
 
@@ -246,6 +242,50 @@ void OwnCloudServiceRoot::syncIn() {
 }
 
 void OwnCloudServiceRoot::loadFromDatabase() {
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  Assignment categories;
+  Assignment feeds;
+
+  // Obtain data for categories from the database.
+  QSqlQuery query_categories(database);
+  query_categories.setForwardOnly(true);
+  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  query_categories.bindValue(QSL(":account_id"), accountId());
+
+  if (!query_categories.exec()) {
+    qFatal("Query for obtaining categories failed. Error message: '%s'.", qPrintable(query_categories.lastError().text()));
+  }
+
+  while (query_categories.next()) {
+    AssignmentItem pair;
+    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.second = new OwnCloudCategory(query_categories.record());
+
+    categories << pair;
+  }
+
+  // All categories are now loaded.
+  QSqlQuery query_feeds(database);
+  query_feeds.setForwardOnly(true);
+  query_feeds.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  query_feeds.bindValue(QSL(":account_id"), accountId());
+
+  if (!query_feeds.exec()) {
+    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query_feeds.lastError().text()));
+  }
+
+  while (query_feeds.next()) {
+    AssignmentItem pair;
+    pair.first = query_feeds.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.second = new OwnCloudFeed(query_feeds.record());
+
+    feeds << pair;
+  }
+
+  // All data are now obtained, lets create the hierarchy.
+  assembleCategories(categories);
+  assembleFeeds(feeds);
+
   // As the last item, add recycle bin, which is needed.
   appendChild(m_recycleBin);
   m_recycleBin->updateCounts(true);

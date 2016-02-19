@@ -65,7 +65,7 @@ void TtRssServiceRoot::stop() {
 }
 
 QString TtRssServiceRoot::code() const {
-  return SERVICE_CODE_TT_RSS;
+  return TtRssServiceEntryPoint().code();
 }
 
 bool TtRssServiceRoot::editViaGui() {
@@ -406,7 +406,7 @@ void TtRssServiceRoot::saveAccountDataToDatabase() {
 
     query.prepare(QSL("INSERT INTO Accounts (id, type) VALUES (:id, :type);"));
     query.bindValue(QSL(":id"), id_to_assign);
-    query.bindValue(QSL(":type"), SERVICE_CODE_TT_RSS);
+    query.bindValue(QSL(":type"), code());
 
     saved &= query.exec();
 

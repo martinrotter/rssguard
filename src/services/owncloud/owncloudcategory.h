@@ -24,6 +24,7 @@
 class OwnCloudCategory : public Category {
   public:
     explicit OwnCloudCategory(RootItem *parent = NULL);
+    explicit OwnCloudCategory(const QSqlRecord &record);
     virtual ~OwnCloudCategory();
 };
 
