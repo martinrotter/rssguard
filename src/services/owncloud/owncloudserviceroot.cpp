@@ -59,12 +59,10 @@ bool OwnCloudServiceRoot::deleteViaGui() {
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {
-  // TODO: TODO
   return false;
 }
 
 bool OwnCloudServiceRoot::supportsCategoryAdding() const {
-  // TODO: TODO
   return false;
 }
 
@@ -113,8 +111,6 @@ void OwnCloudServiceRoot::updateTitle() {
 }
 
 void OwnCloudServiceRoot::saveAccountDataToDatabase() {
-  // TODO: TODO
-
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.
     QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
@@ -179,11 +175,9 @@ void OwnCloudServiceRoot::saveAccountDataToDatabase() {
 }
 
 void OwnCloudServiceRoot::addNewFeed(const QString &url) {
-  // TODO: TODO
 }
 
 void OwnCloudServiceRoot::addNewCategory() {
-  // TODO: TODO
 }
 
 void OwnCloudServiceRoot::syncIn() {
