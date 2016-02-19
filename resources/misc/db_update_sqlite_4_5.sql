@@ -7,3 +7,5 @@ CREATE TABLE IF NOT EXISTS OwnCloudAccounts (
   
   FOREIGN KEY (id) REFERENCES Accounts (id)
 );
+-- !
+UPDATE Information SET inf_value = '5' WHERE inf_key = 'schema_version';

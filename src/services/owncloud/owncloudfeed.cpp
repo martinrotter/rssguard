@@ -51,7 +51,7 @@ int OwnCloudFeed::update() {
   }
   else {
     return 0;
-    // TODO: TODO
+    // TODO: TADY POKRACOVAT
     // Udělat změnu tuto v tabulkách které mají sloupec custom_id
     // Udělat to tak, že custom_id se bude vyplňovat pro všechny
     // položky v Feeds, Categories a Messages
@@ -60,7 +60,9 @@ int OwnCloudFeed::update() {
     //
     // toto pak umožní přesunout všechny metody, které budou s custom ID a ID
     // pracovat, do třídy předka a ušetřit kód.
-    //
+    // - toto sql provede překopirovani hodnot z atributu id do custom_id, pokud
+    // je custom_id prazdne, což plati pro standardní učet
+    // bude potřeba překopirovat u zprav, kategorii a feedů
     /*
      *UPDATE Categories
 SET custom_id = (SELECT id FROM Categories t WHERE t.id = Categories.id)
