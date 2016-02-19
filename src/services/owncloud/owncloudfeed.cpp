@@ -68,7 +68,7 @@ int OwnCloudFeed::update() {
 SET custom_id = (SELECT id FROM Categories t WHERE t.id = Categories.id)
 WHERE Categories.custom_id IS NULL;
      *
-     *     //return updateMessages(headlines.messages());
+     *     //return updateMessages(headlines.messages());*/
   }
 }
 
