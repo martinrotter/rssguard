@@ -1017,11 +1017,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
     </message>
 </context>
 <context>
@@ -1147,7 +1147,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Dwing het uitvoeren van server-side-update bij het bijwerken van RSS Guard feeds</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1175,11 +1175,11 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Als u deze optie aanzet zullen de updates van de feeds langzamer gaan en mogelijk vaak time-outs hebben.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Merk op dat tenminste versie %1 is vereist</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
@@ -1191,7 +1191,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL van je eigen ownCloud server, zonder een API pad</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1203,27 +1203,27 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Voeg een nieuw ownCloud Nieuws account toe</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Bewerk bestaande ownCloud Nieuws account</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie (%1). Tenminste versie %2 is vereist.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Geselecteerde ownCloud Nieuws server draait een niet-ondersteunde versie. </translation>
     </message>
     <message>
         <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>OwnCloud Nieuws server is ok, draait met versie %1, terwijl tenminste versie %2 is vereist.</translation>
     </message>
     <message>
         <source>OwnCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>OwnCloud Nieuws server is ok.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1231,7 +1231,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Netwerk fout, heb je de juiste ownCloud eindpunt en paswoord ingevuld?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1670,7 +1670,7 @@ of deze functie bestaat nog niet.</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="unfinished"/>
+        <translation>Stop met updaten</translation>
     </message>
 </context>
 <context>
@@ -3384,6 +3384,13 @@ Ga naar RRSguard website en download het handmatig.</translation>
     </message>
 </context>
 <context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Sync in</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>LANG_ABBREV</source>
@@ -3451,7 +3458,7 @@ Een API niveau van tenminste %1 is vereist.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>De Nieuws app is een RSS/Atom feed aggegrator. Het is deel van de ownCloud suite. Deze plugin implementeert %1 API.</translation>
     </message>
 </context>
 <context>

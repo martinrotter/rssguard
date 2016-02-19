@@ -1016,11 +1016,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Deixar esta opção marcada faz com que as atualizações provavelmente fiquem mais lentas e o tempo limite esgote com frequência.</translation>
     </message>
 </context>
 <context>
@@ -1146,7 +1146,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Forçar execução de atualização do lado do servidor ao atualizar feeds do RSS Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1174,11 +1174,11 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Deixar esta opção marcada faz com que as atualizações provavelmente fiquem mais lentas e o tempo limite esgote com frequência.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Note que pelo menos a versão %1 é necessária.</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
@@ -1190,7 +1190,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL do seu servidor ownCloud, sem nenhum caminho API</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1202,27 +1202,27 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Adicionar nova conta ownCloud News</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Editar conta ownCloud News existente</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor ownCloud News selecionado está executando uma versão não suportada (%1). Pelo menos a versão %2 é necessária.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor ownCloud News selecionado está executando uma versão não suportada.</translation>
     </message>
     <message>
         <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor ownCloud News está correto, sendo executado na versão %1, onde pelo menos a versão %2 é necessária.</translation>
     </message>
     <message>
         <source>OwnCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>O servidor ownCloudNews está correto.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1230,7 +1230,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Erro de rede, você entrou o endpoint e senha correta do ownCloud?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1669,7 +1669,7 @@ ou esta função ainda não foi implementada.</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="unfinished"/>
+        <translation>Parar atualização</translation>
     </message>
 </context>
 <context>
@@ -3377,6 +3377,13 @@ Vá até o site do aplicativo para obter manualmente.</translation>
     </message>
 </context>
 <context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Sincronizar em</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>LANG_ABBREV</source>
@@ -3444,7 +3451,7 @@ Pelo menos o API nível %1 é necessário.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>O app News é um agregador de feeds RSS/Atom. Ele é parte da suíte ownCloud. Este plugin implementa o API %1.</translation>
     </message>
 </context>
 <context>

@@ -1136,7 +1136,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1144,7 +1144,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Nogle feeds kræver godkendelse, inklusiv GMail feeds. BASIC, NTLM-2 og DIGEST-MD5 godkendelse er understøttet.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1152,15 +1152,15 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Kodeord</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Vis kodeord</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
@@ -1236,7 +1236,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Brugernavn er okay.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
@@ -3344,6 +3344,13 @@ Go to application website to obtain it manually.</source>
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
         <translation type="unfinished"/>
     </message>
 </context>

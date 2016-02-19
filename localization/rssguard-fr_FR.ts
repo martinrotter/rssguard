@@ -1136,7 +1136,7 @@ or this functionality is not implemented yet.</source>
     <name>FormEditOwnCloudAccount</name>
     <message>
         <source>URL</source>
-        <translation type="unfinished"/>
+        <translation>URL</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
@@ -1144,7 +1144,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Certain flux requière une authentification, incluant les flux GMail. Les schémas d&apos;authentification BASIC, NTLM-2 et DIGEST-MD5 sont supportés.</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -1152,11 +1152,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Nom d&apos;utilisateur</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Mot de passe</translation>
     </message>
     <message>
         <source>Show password</source>
@@ -3359,6 +3359,13 @@ Aller sur le site de l&apos;application pour les obtenir manuellement.</translat
     </message>
     <message>
         <source>connection timed out or was cancelled</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
         <translation type="unfinished"/>
     </message>
 </context>

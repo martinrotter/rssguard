@@ -1150,27 +1150,27 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-        <translation type="unfinished"/>
+        <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
     </message>
     <message>
         <source>Authentication</source>
-        <translation type="unfinished"/>
+        <translation>Autentizace</translation>
     </message>
     <message>
         <source>Username</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation type="unfinished"/>
+        <translation>Heslo</translation>
     </message>
     <message>
         <source>Show password</source>
-        <translation type="unfinished"/>
+        <translation>Zobrazit heslo</translation>
     </message>
     <message>
         <source>&amp;Test setup</source>
-        <translation type="unfinished"/>
+        <translation>&amp;Otestovat nastavení</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
@@ -1182,11 +1182,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Heslo pro TT-RSS účet</translation>
     </message>
     <message>
         <source>Username for your TT-RSS account</source>
-        <translation type="unfinished"/>
+        <translation>Uživatelské jméno pro TT-RSS účet</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
@@ -1194,11 +1194,11 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>No test done yet.</source>
-        <translation type="unfinished"/>
+        <translation>Žádný test zatím neproveden.</translation>
     </message>
     <message>
         <source>Here, results of connection test are shown.</source>
-        <translation type="unfinished"/>
+        <translation>Zde jsou zobrazeny výsledky testu spojení.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
@@ -1226,7 +1226,7 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
-        <translation type="unfinished"/>
+        <translation>Síťová chyba: &apos;%1&apos;.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
@@ -1234,31 +1234,31 @@ or this functionality is not implemented yet.</source>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
-        <translation type="unfinished"/>
+        <translation>Podivná chyba, zadali jste URL?</translation>
     </message>
     <message>
         <source>Username cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Login nemůže být prázdný.</translation>
     </message>
     <message>
         <source>Username is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Login je v pořádku.</translation>
     </message>
     <message>
         <source>Password cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>Heslo nemůže být prázdné.</translation>
     </message>
     <message>
         <source>Password is okay.</source>
-        <translation type="unfinished"/>
+        <translation>Heslo je v pořádku.</translation>
     </message>
     <message>
         <source>URL cannot be empty.</source>
-        <translation type="unfinished"/>
+        <translation>URL nemůže být prázdné.</translation>
     </message>
     <message>
         <source>URL is okay.</source>
-        <translation type="unfinished"/>
+        <translation>URL je v pořádku.</translation>
     </message>
 </context>
 <context>
@@ -3371,6 +3371,13 @@ Přejít na web aplikace a stáhnout jej ručně.</translation>
     <message>
         <source>connection timed out or was cancelled</source>
         <translation>spojení vypršelo či bylo zrušeno</translation>
+    </message>
+</context>
+<context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Synchronizovat</translation>
     </message>
 </context>
 <context>

@@ -1016,11 +1016,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
 </context>
 <context>
@@ -1146,7 +1146,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Force execution of server-side update when updating feeds from RSS Guard</source>
-        <translation type="unfinished"/>
+        <translation>Forcera serveruppdatering när flöden uppdateras från RSS-Guard</translation>
     </message>
     <message>
         <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
@@ -1174,11 +1174,11 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Leaving this option on causes that updates of feeds will be probably much slower and may time-out often.</source>
-        <translation type="unfinished"/>
+        <translation>Aktivering av det här alternativet orsakar troligen att flödesuppdateringar tar längre tid och att tidsgränsen oftare överskrids.</translation>
     </message>
     <message>
         <source>Note that at least version %1 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Notera att lägst version %1 är ett krav.</translation>
     </message>
     <message>
         <source>Password for your TT-RSS account</source>
@@ -1190,7 +1190,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>URL of your ownCloud server, without any API path</source>
-        <translation type="unfinished"/>
+        <translation>URL för din ownCloud-server, utan API-sökväg</translation>
     </message>
     <message>
         <source>No test done yet.</source>
@@ -1202,27 +1202,27 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Add new ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Lägg till nytt ownCloud News-konto</translation>
     </message>
     <message>
         <source>Edit existing ownCloud News account</source>
-        <translation type="unfinished"/>
+        <translation>Redigera befintligt </translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version (%1). At least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda ownCloud News-servern kör en version (%1) som inte stöds. Lägst version %2 är ett krav.</translation>
     </message>
     <message>
         <source>Selected ownCloud News server is running unsupported version.</source>
-        <translation type="unfinished"/>
+        <translation>Den valda ownCloud News-servern kör en version som inte stöds. </translation>
     </message>
     <message>
         <source>OwnCloud News server is okay, running with version %1, while at least version %2 is required.</source>
-        <translation type="unfinished"/>
+        <translation>OwnCloud News-servern är OK, kör version %1, medan lägst version %2 krävs.</translation>
     </message>
     <message>
         <source>OwnCloud News server is okay.</source>
-        <translation type="unfinished"/>
+        <translation>OwnCloud News-servern är OK.</translation>
     </message>
     <message>
         <source>Network error: &apos;%1&apos;.</source>
@@ -1230,7 +1230,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Network error, have you entered correct ownCloud endpoint and password?</source>
-        <translation type="unfinished"/>
+        <translation>Nätverksfel! Har du angett korrekt ownCloud-slutpunkt och lösenord?</translation>
     </message>
     <message>
         <source>Unspecified error, did you enter correct URL?</source>
@@ -1669,7 +1669,7 @@ att funktionen inte är implementerad än.</translation>
     </message>
     <message>
         <source>Stop running update</source>
-        <translation type="unfinished"/>
+        <translation>Avbryt uppdatering</translation>
     </message>
 </context>
 <context>
@@ -3377,6 +3377,13 @@ Gå till programmets hemsida för att hämta den manuellt.</translation>
     </message>
 </context>
 <context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation>Synka i</translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>LANG_ABBREV</source>
@@ -3442,7 +3449,7 @@ Minst API-nivå %1 krävs.</translation>
     </message>
     <message>
         <source>The News app is an RSS/Atom feed aggregator. It is part of ownCloud suite. This plugin implements %1 API.</source>
-        <translation type="unfinished"/>
+        <translation>Nyhetsappen är en RSS-/Atom-flödesaggregator. Den är en del av ownCloud-sviten. Denna insticksmodul implementerar API:n %1.</translation>
     </message>
 </context>
 <context>

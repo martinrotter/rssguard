@@ -3347,6 +3347,13 @@ Go to application website to obtain it manually.</source>
     </message>
 </context>
 <context>
+    <name>OwnCloudServiceRoot</name>
+    <message>
+        <source>Sync in</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>LANG_ABBREV</source>
