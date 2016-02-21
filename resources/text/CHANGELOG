@@ -9,6 +9,7 @@ http://goo.gl/forms/GcvPYgS2a8
 
 Added:
 
+▪ Recycle bins now have context menu. (issue #162)
 ▪ User is now able to delete TT-RSS feeds. (issue #151)
 ▪ Added ability to stop running batch feed update. (issue #157)
 

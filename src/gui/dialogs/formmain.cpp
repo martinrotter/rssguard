@@ -239,6 +239,7 @@ void FormMain::updateRecycleBinMenu() {
     root_menu->setToolTip(activated_root->description());
 
     RecycleBin *bin = activated_root->recycleBin();
+    QList<QAction*> context_menu;
 
     if (bin == NULL) {
       QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
@@ -247,19 +248,15 @@ void FormMain::updateRecycleBinMenu() {
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
+    else if ((context_menu = bin->contextMenu()).isEmpty()) {
+      QAction *no_action = new QAction(qApp->icons()->fromTheme(QSL("dialog-error")),
+                                       tr("No actions possible"),
+                                       m_ui->m_menuRecycleBin);
+      no_action->setEnabled(false);
+      root_menu->addAction(no_action);
+    }
     else {
-      QAction *restore_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-restore-all")),
-                                            tr("Restore recycle bin"),
-                                            m_ui->m_menuRecycleBin);
-      QAction *empty_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-empty")),
-                                          tr("Empty recycle bin"),
-                                          m_ui->m_menuRecycleBin);
-
-      connect(restore_action, SIGNAL(triggered()), bin, SLOT(restore()));
-      connect(empty_action, SIGNAL(triggered()), bin, SLOT(empty()));
-
-      root_menu->addAction(restore_action);
-      root_menu->addAction(empty_action);
+      root_menu->addActions(context_menu);
     }
 
     m_ui->m_menuRecycleBin->addMenu(root_menu);

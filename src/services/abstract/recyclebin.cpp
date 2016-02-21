@@ -25,7 +25,7 @@
 #include <QSqlQuery>
 
 
-RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item) {
+RecycleBin::RecycleBin(RootItem *parent_item) : RootItem(parent_item), m_contextMenu(QList<QAction*>()) {
   setKind(RootItemKind::Bin);
   setId(ID_RECYCLE_BIN);
   setIcon(qApp->icons()->fromTheme(QSL("folder-recycle-bin")));
@@ -85,6 +85,25 @@ QVariant RecycleBin::data(int column, int role) const {
     default:
       return RootItem::data(column, role);
   }
+}
+
+QList<QAction*> RecycleBin::contextMenu() {
+  if (m_contextMenu.isEmpty()) {
+    QAction *restore_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-restore-all")),
+                                          tr("Restore recycle bin"),
+                                          this);
+    QAction *empty_action = new QAction(qApp->icons()->fromTheme(QSL("recycle-bin-empty")),
+                                        tr("Empty recycle bin"),
+                                        this);
+
+    connect(restore_action, SIGNAL(triggered()), this, SLOT(restore()));
+    connect(empty_action, SIGNAL(triggered()), this, SLOT(empty()));
+
+    m_contextMenu.append(restore_action);
+    m_contextMenu.append(empty_action);
+  }
+
+  return m_contextMenu;
 }
 
 QList<Message> RecycleBin::undeletedMessages() const {

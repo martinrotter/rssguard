@@ -30,6 +30,7 @@ class RecycleBin : public RootItem {
 
     QVariant data(int column, int role) const;
 
+    QList<QAction*> contextMenu();
     QList<Message> undeletedMessages() const;
 
     bool markAsReadUnread(ReadStatus status);
@@ -60,6 +61,8 @@ class RecycleBin : public RootItem {
   private:
     int m_totalCount;
     int m_unreadCount;
+
+    QList<QAction*> m_contextMenu;
 };
 
 #endif // RECYCLEBIN_H
