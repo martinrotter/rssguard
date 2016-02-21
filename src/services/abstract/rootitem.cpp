@@ -30,6 +30,7 @@ RootItem::RootItem(RootItem *parent_item)
   : QObject(NULL),
     m_kind(RootItemKind::Root),
     m_id(NO_PARENT_CATEGORY),
+    m_customId(NO_PARENT_CATEGORY),
     m_title(QString()),
     m_description(QString()),
     m_icon(QIcon()),
@@ -355,6 +356,14 @@ ServiceRoot *RootItem::getParentServiceRoot() const {
 
 bool RootItem::removeChild(RootItem *child) {
   return m_childItems.removeOne(child);
+}
+
+int RootItem::customId() const {
+  return m_customId;
+}
+
+void RootItem::setCustomId(int custom_id) {
+  m_customId = custom_id;
 }
 
 Category *RootItem::toCategory() const {

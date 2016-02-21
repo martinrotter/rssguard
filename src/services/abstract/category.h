@@ -27,12 +27,6 @@ class Category : public RootItem {
   public:
     explicit Category(RootItem *parent = NULL);
     virtual ~Category();
-
-    int customId() const;
-    void setCustomId(int custom_id);
-
-  private:
-    int m_customId;
 };
 
 #endif // CATEGORY_H

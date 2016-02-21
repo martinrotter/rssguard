@@ -255,6 +255,9 @@ class RootItem : public QObject {
       m_boldFont = bold_font;
     }
 
+    int customId() const;
+    void setCustomId(int custom_id);
+
     // Converters
     Category *toCategory() const;
     Feed *toFeed() const;
@@ -265,6 +268,7 @@ class RootItem : public QObject {
 
     RootItemKind::Kind m_kind;
     int m_id;
+        int m_customId;
     QString m_title;
     QString m_description;
     QIcon m_icon;

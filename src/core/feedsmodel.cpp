@@ -53,7 +53,6 @@ FeedsModel::FeedsModel(QObject *parent)
 
   // Create root item.
   m_rootItem = new RootItem();
-  m_rootItem->setId(NO_PARENT_CATEGORY);
 
   //: Name of root item of feed list which can be seen in feed add/edit dialog.
   m_rootItem->setTitle(tr("Root"));

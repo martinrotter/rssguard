@@ -75,6 +75,7 @@ StandardFeed::StandardFeed(const StandardFeed &other)
 
   setTitle(other.title());
   setId(other.id());
+  setCustomId(other.customId());
   setIcon(other.icon());
   setChildItems(other.childItems());
   setParent(other.parent());
@@ -547,6 +548,7 @@ bool StandardFeed::addItself(RootItem *parent) {
 
   // New feed was added, fetch is primary id from the database.
   setId(query_add_feed.lastInsertId().toInt());
+  setCustomId(id());
 
   return true;
 }
@@ -770,6 +772,7 @@ QNetworkReply::NetworkError StandardFeed::networkError() const {
 StandardFeed::StandardFeed(const QSqlRecord &record) : Feed(NULL) {
   setTitle(record.value(FDS_DB_TITLE_INDEX).toString());
   setId(record.value(FDS_DB_ID_INDEX).toInt());
+  setCustomId(id());
   setDescription(record.value(FDS_DB_DESCRIPTION_INDEX).toString());
   setCreationDate(TextFactory::parseDateTime(record.value(FDS_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
   setIcon(qApp->icons()->fromByteArray(record.value(FDS_DB_ICON_INDEX).toByteArray()));

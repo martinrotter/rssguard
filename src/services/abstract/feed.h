@@ -100,9 +100,6 @@ class Feed : public RootItem {
       m_url = url;
     }
 
-    int customId() const;
-    void setCustomId(int custom_id);
-
     virtual int messageForeignKeyId() const = 0;
 
   private:
@@ -113,7 +110,6 @@ class Feed : public RootItem {
     int m_autoUpdateRemainingInterval;
     int m_totalCount;
     int m_unreadCount;
-    int m_customId;
 };
 
 #endif // FEED_H

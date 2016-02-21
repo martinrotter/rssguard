@@ -42,6 +42,7 @@ StandardCategory::StandardCategory(RootItem *parent_item) : Category(parent_item
 StandardCategory::StandardCategory(const StandardCategory &other)
   : Category(NULL) {
   setId(other.id());
+  setCustomId(other.customId());
   setTitle(other.title());
   setDescription(other.description());
   setIcon(other.icon());
@@ -179,6 +180,7 @@ bool StandardCategory::addItself(RootItem *parent) {
   }
 
   setId(query_add.lastInsertId().toInt());
+  setCustomId(id());
   return true;
 }
 
@@ -214,6 +216,7 @@ bool StandardCategory::editItself(StandardCategory *new_category_data) {
 
 StandardCategory::StandardCategory(const QSqlRecord &record) : Category(NULL) {
   setId(record.value(CAT_DB_ID_INDEX).toInt());
+  setCustomId(id());
   setTitle(record.value(CAT_DB_TITLE_INDEX).toString());
   setDescription(record.value(CAT_DB_DESCRIPTION_INDEX).toString());
   setCreationDate(TextFactory::parseDateTime(record.value(CAT_DB_DCREATED_INDEX).value<qint64>()).toLocalTime());
