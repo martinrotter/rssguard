@@ -43,7 +43,6 @@ class TtRssFeed : public Feed {
     bool deleteViaGui();
 
     int update();
-    QList<Message> undeletedMessages() const;
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
     bool editItself(TtRssFeed *new_feed_data);

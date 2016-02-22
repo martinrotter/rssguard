@@ -52,6 +52,8 @@ class Feed : public RootItem {
     explicit Feed(RootItem *parent = NULL);
     virtual ~Feed();
 
+    QList<Message> undeletedMessages() const;
+
     int countOfAllMessages() const;
     int countOfUnreadMessages() const;
 

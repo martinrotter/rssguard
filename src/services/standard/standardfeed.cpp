@@ -120,35 +120,6 @@ bool StandardFeed::cleanMessages(bool clean_read_only) {
   return serviceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
 }
 
-QList<Message> StandardFeed::undeletedMessages() const {
-  QList<Message> messages;
-
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(database);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare("SELECT * "
-                         "FROM Messages "
-                         "WHERE is_deleted = 0 AND feed = :feed AND account_id = :account_id;");
-
-  query_read_msg.bindValue(QSL(":feed"), id());
-  query_read_msg.bindValue(QSL(":account_id"), serviceRoot()->accountId());
-
-  if (query_read_msg.exec()) {
-    while (query_read_msg.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(query_read_msg.record(), &decoded);
-
-      if (decoded) {
-        messages.append(message);
-      }
-
-      messages.append(message);
-    }
-  }
-
-  return messages;
-}
-
 QVariant StandardFeed::data(int column, int role) const {
   switch (role) {
     case Qt::ToolTipRole:

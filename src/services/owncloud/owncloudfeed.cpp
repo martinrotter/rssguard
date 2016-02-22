@@ -42,7 +42,7 @@ OwnCloudServiceRoot *OwnCloudFeed::serviceRoot() const {
 }
 
 int OwnCloudFeed::update() {
-  OwnCloudGetMessagesResponse headlines = serviceRoot()->network()->getMessages(customId());
+  OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customId());
 
   if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
     setStatus(Feed::Error);

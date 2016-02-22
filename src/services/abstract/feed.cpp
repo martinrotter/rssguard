@@ -18,6 +18,11 @@
 #include "services/abstract/feed.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/databasefactory.h"
+#include "services/abstract/serviceroot.h"
+
+#include <QSqlQuery>
 
 
 Feed::Feed(RootItem *parent)
@@ -28,6 +33,36 @@ Feed::Feed(RootItem *parent)
 }
 
 Feed::~Feed() {
+}
+
+QList<Message> Feed::undeletedMessages() const {
+  QList<Message> messages;
+  int account_id = getParentServiceRoot()->accountId();
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_read_msg(database);
+
+  query_read_msg.setForwardOnly(true);
+  query_read_msg.prepare("SELECT * "
+                         "FROM Messages "
+                         "WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;");
+
+  query_read_msg.bindValue(QSL(":feed"), messageForeignKeyId());
+  query_read_msg.bindValue(QSL(":account_id"), account_id);
+
+  if (query_read_msg.exec()) {
+    while (query_read_msg.next()) {
+      bool decoded;
+      Message message = Message::fromSqlRecord(query_read_msg.record(), &decoded);
+
+      if (decoded) {
+        messages.append(message);
+      }
+
+      messages.append(message);
+    }
+  }
+
+  return messages;
 }
 
 QVariant Feed::data(int column, int role) const {

@@ -55,7 +55,19 @@ bool OwnCloudServiceRoot::editViaGui() {
 }
 
 bool OwnCloudServiceRoot::deleteViaGui() {
-  return false;
+  QSqlDatabase connection = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query(connection);
+
+  query.setForwardOnly(true);
+  query.prepare(QSL("DELETE FROM OwnCloudAccounts WHERE id = :id;"));
+  query.bindValue(QSL(":id"), accountId());
+
+  if (query.exec()) {
+    return ServiceRoot::deleteViaGui();
+  }
+  else {
+    return false;
+  }
 }
 
 bool OwnCloudServiceRoot::supportsFeedAdding() const {

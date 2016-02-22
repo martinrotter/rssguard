@@ -70,8 +70,6 @@ class StandardFeed : public Feed {
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clean_read_only);
 
-    QList<Message> undeletedMessages() const;
-
     QVariant data(int column, int role) const;
 
     // Obtains data related to this feed.
