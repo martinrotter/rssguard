@@ -57,8 +57,6 @@ QList<Message> Feed::undeletedMessages() const {
       if (decoded) {
         messages.append(message);
       }
-
-      messages.append(message);
     }
   }
 
