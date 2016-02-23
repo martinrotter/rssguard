@@ -16,4 +16,8 @@ UPDATE Feeds
 SET custom_id = (SELECT id FROM Feeds t WHERE t.id = Feeds.id)
 WHERE Feeds.custom_id IS NULL;
 -- !
+UPDATE Messages
+SET custom_id = (SELECT id FROM Messages t WHERE t.id = Messages.id)
+WHERE Messages.custom_id IS NULL;
+-- !
 UPDATE Information SET inf_value = '5' WHERE inf_key = 'schema_version';

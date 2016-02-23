@@ -15,6 +15,7 @@ Added:
 
 Fixed:
 
+▪ Some other minor fixes.
 ▪ Feed list hidden when respective menu item is unchecked. (bug #163)
 ▪ Standard RSS/RDF/ATOM relative URLs in entries should now be correctly loaded. (bug #160)
 ▪ Fixed some problems when adding feeds from external web browser like Firefox. (bug #135)
