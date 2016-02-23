@@ -135,7 +135,7 @@ void TtRssServiceRoot::addNewFeed(const QString &url) {
 }
 
 void TtRssServiceRoot::addNewCategory() {
-  // Do nothing.
+  // NOTE: Do nothing.
 }
 
 bool TtRssServiceRoot::canBeEdited() const {

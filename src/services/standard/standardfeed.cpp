@@ -521,6 +521,12 @@ bool StandardFeed::addItself(RootItem *parent) {
   setId(query_add_feed.lastInsertId().toInt());
   setCustomId(id());
 
+  // Now set custom ID in the DB.
+  query_add_feed.prepare(QSL("UPDATE Feeds SET custom_id = :custom_id WHERE id = :id;"));
+  query_add_feed.bindValue(QSL(":custom_id"), QString::number(customId()));
+  query_add_feed.bindValue(QSL(":id"), id());
+  query_add_feed.exec();
+
   return true;
 }
 

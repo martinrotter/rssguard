@@ -181,6 +181,13 @@ bool StandardCategory::addItself(RootItem *parent) {
 
   setId(query_add.lastInsertId().toInt());
   setCustomId(id());
+
+  // Now set custom ID in the DB.
+  query_add.prepare(QSL("UPDATE Categories SET custom_id = :custom_id WHERE id = :id;"));
+  query_add.bindValue(QSL(":custom_id"), QString::number(customId()));
+  query_add.bindValue(QSL(":id"), id());
+  query_add.exec();
+
   return true;
 }
 
