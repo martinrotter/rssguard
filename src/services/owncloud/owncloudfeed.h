@@ -24,14 +24,18 @@
 class OwnCloudServiceRoot;
 
 class OwnCloudFeed : public Feed {
+    Q_OBJECT
+
   public:
     explicit OwnCloudFeed(RootItem *parent = NULL);
     explicit OwnCloudFeed(const QSqlRecord &record);
     virtual ~OwnCloudFeed();
 
     OwnCloudServiceRoot *serviceRoot() const;
-    int update();
     int messageForeignKeyId() const;
+
+  private:
+    QList<Message> obtainNewMessages();
 };
 
 #endif // OWNCLOUDFEED_H

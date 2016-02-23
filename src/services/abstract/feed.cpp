@@ -20,9 +20,11 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/databasefactory.h"
+#include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QSqlQuery>
+#include <QSqlError>
 
 
 Feed::Feed(RootItem *parent)
@@ -102,6 +104,10 @@ void Feed::setCountOfUnreadMessages(int count_unread_messages) {
   m_unreadCount = count_unread_messages;
 }
 
+int Feed::update() {
+  return updateMessages(obtainNewMessages());
+}
+
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {
   // If new initial auto-update interval is set, then
   // we should reset time that remains to the next auto-update.
@@ -123,4 +129,188 @@ int Feed::autoUpdateRemainingInterval() const {
 
 void Feed::setAutoUpdateRemainingInterval(int auto_update_remaining_interval) {
   m_autoUpdateRemainingInterval = auto_update_remaining_interval;
+}
+
+int Feed::updateMessages(const QList<Message> &messages) {
+  if (messages.isEmpty()) {
+    return 0;
+  }
+
+  // Does not make any difference, since each feed now has
+  // its own "custom ID" (standard feeds have their custom ID equal to primary key ID).
+  int custom_id = customId();
+  int account_id = getParentServiceRoot()->accountId();
+  int updated_messages = 0;
+  bool anything_duplicated = false;
+  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+
+  // Prepare queries.
+  QSqlQuery query_select(database);
+  QSqlQuery query_select_with_id(database);
+  QSqlQuery query_update(database);
+  QSqlQuery query_insert(database);
+
+  // Here we have query which will check for existence of the "same" message in given feed.
+  // The two message are the "same" if:
+  //   1) they belong to the same feed AND,
+  //   2) they have same URL AND,
+  //   3) they have same AUTHOR.
+  query_select.setForwardOnly(true);
+  query_select.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
+                       "WHERE feed = :feed AND url = :url AND author = :author AND account_id = :account_id;");
+
+  query_select_with_id.setForwardOnly(true);
+  query_select_with_id.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
+                               "WHERE custom_id = :custom_id AND account_id = :account_id;");
+
+  // Used to insert new messages.
+  query_insert.setForwardOnly(true);
+  query_insert.prepare("INSERT INTO Messages "
+                       "(feed, title, is_read, is_important, url, author, date_created, contents, enclosures, custom_id, account_id) "
+                       "VALUES (:feed, :title, :is_read, :is_important, :url, :author, :date_created, :contents, :enclosures, :custom_id, :account_id);");
+
+  // Used to update existing messages.
+  query_update.setForwardOnly(true);
+  query_update.prepare("UPDATE Messages "
+                       "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures "
+                       "WHERE id = :id;");
+
+  if (!database.transaction()) {
+    database.rollback();
+    qDebug("Transaction start for message downloader failed: '%s'.", qPrintable(database.lastError().text()));
+    return updated_messages;
+  }
+
+  foreach (Message message, messages) {
+    // Check if messages contain relative URLs and if they do, then replace them.
+    if (message.m_url.startsWith(QL1S("/"))) {
+      QString new_message_url = QUrl(url()).toString(QUrl::RemoveUserInfo |
+                                                     QUrl::RemovePath |
+                                                     QUrl::RemoveQuery |
+                                               #if QT_VERSION >= 0x050000
+                                                     QUrl::RemoveFilename |
+                                               #endif
+                                                     QUrl::StripTrailingSlash);
+
+      new_message_url += message.m_url;
+      message.m_url = new_message_url;
+    }
+
+    int id_existing_message = -1;
+    qint64 date_existing_message;
+    bool is_read_existing_message;
+    bool is_important_existing_message;
+
+    if (message.m_customId.isEmpty()) {
+      // We need to recognize existing messages according URL & AUTHOR.
+      query_select.bindValue(QSL(":feed"), custom_id);
+      query_select.bindValue(QSL(":url"), message.m_url);
+      query_select.bindValue(QSL(":author"), message.m_author);
+      query_select.bindValue(QSL(":account_id"), account_id);
+      query_select.exec();
+
+      if (query_select.next()) {
+        id_existing_message = query_select.value(0).toInt();
+        date_existing_message = query_select.value(1).value<qint64>();
+        is_read_existing_message = query_select.value(2).toBool();
+        is_important_existing_message = query_select.value(3).toBool();
+      }
+
+      query_select.finish();
+    }
+    else {
+      // We can recognize existing messages via their custom ID.
+      query_select_with_id.bindValue(QSL(":account_id"), account_id);
+      query_select_with_id.bindValue(QSL(":custom_id"), message.m_customId);
+      query_select_with_id.exec();
+
+      if (query_select_with_id.next()) {
+        id_existing_message = query_select_with_id.value(0).toInt();
+        date_existing_message = query_select_with_id.value(1).value<qint64>();
+        is_read_existing_message = query_select_with_id.value(2).toBool();
+        is_important_existing_message = query_select_with_id.value(3).toBool();
+      }
+
+      query_select_with_id.finish();
+    }
+
+    // Now, check if this message is already in the DB.
+    if (id_existing_message >= 0) {
+      // Message is already in the DB.
+      // Now, we update at least one of next conditions is true:
+      //   1) Message has custom ID AND (its date OR read status OR starred status are changed).
+      //   2) Message has its date fetched from feed AND its date is different from date in DB.
+
+      if (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
+          message.m_isRead != is_read_existing_message ||
+          message.m_isImportant != is_important_existing_message) {
+        // Message exists, it is changed, update it.
+        query_update.bindValue(QSL(":title"), message.m_title);
+        query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
+        query_update.bindValue(QSL(":is_important"), (int) message.m_isImportant);
+        query_update.bindValue(QSL(":url"), message.m_url);
+        query_update.bindValue(QSL(":author"), message.m_author);
+        query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
+        query_update.bindValue(QSL(":contents"), message.m_contents);
+        query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
+        query_update.bindValue(QSL(":id"), id_existing_message);
+
+        if (query_update.exec()) {
+          updated_messages++;
+        }
+
+        query_update.finish();
+        qDebug("Updating message '%s' in DB.", qPrintable(message.m_title));
+      }
+    }
+    else {
+      // Message with this URL is not fetched in this feed yet.
+      query_insert.bindValue(QSL(":feed"), custom_id);
+      query_insert.bindValue(QSL(":title"), message.m_title);
+      query_insert.bindValue(QSL(":is_read"), (int) message.m_isRead);
+      query_insert.bindValue(QSL(":is_important"), (int) message.m_isImportant);
+      query_insert.bindValue(QSL(":url"), message.m_url);
+      query_insert.bindValue(QSL(":author"), message.m_author);
+      query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
+      query_insert.bindValue(QSL(":contents"), message.m_contents);
+      query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
+      query_insert.bindValue(QSL(":custom_id"), message.m_customId);
+      query_insert.bindValue(QSL(":account_id"), account_id);
+
+      if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
+        updated_messages++;
+      }
+
+      query_insert.finish();
+      qDebug("Adding new message '%s' to DB.", qPrintable(message.m_title));
+    }
+  }
+
+
+  if (!database.commit()) {
+    database.rollback();
+    qDebug("Transaction commit for message downloader failed.");
+  }
+  else {
+    if (updated_messages > 0) {
+      setStatus(NewMessages);
+    }
+    else {
+      setStatus(Normal);
+    }
+
+    QList<RootItem*> items_to_update;
+
+    updateCounts(true);
+    items_to_update.append(this);
+
+    if (getParentServiceRoot()->recycleBin() != NULL && anything_duplicated) {
+      getParentServiceRoot()->recycleBin()->updateCounts(true);
+      items_to_update.append(getParentServiceRoot()->recycleBin());
+    }
+
+    getParentServiceRoot()->itemChanged(items_to_update);
+  }
+
+  return updated_messages;
 }

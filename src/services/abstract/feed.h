@@ -60,22 +60,14 @@ class Feed : public RootItem {
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);
 
-    /////////////////////////////////////////
-    // /* Members to override.
-    /////////////////////////////////////////
-
     // Performs synchronous update and returns number of newly updated messages.
     // NOTE: This is called from worker thread, not from main UI thread.
     // NOTE: This should COMPLETELY download ALL messages from online source
     // into locale "Messages" table, INCLUDING contents (or excerpts) of those
     // messages.
-    virtual int update() = 0;
+    int update();
 
     QVariant data(int column, int role) const;
-
-    /////////////////////////////////////////
-    // Members to override. */
-    /////////////////////////////////////////
 
     int autoUpdateInitialInterval() const;
     void setAutoUpdateInitialInterval(int auto_update_interval);
@@ -103,6 +95,10 @@ class Feed : public RootItem {
     }
 
     virtual int messageForeignKeyId() const = 0;
+
+  private:
+    int updateMessages(const QList<Message> &messages);
+    virtual QList<Message> obtainNewMessages() = 0;
 
   private:
     QString m_url;

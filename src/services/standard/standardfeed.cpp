@@ -406,58 +406,6 @@ bool StandardFeed::performDragDropChange(RootItem *target_item) {
   }
 }
 
-int StandardFeed::update() {
-  QByteArray feed_contents;
-  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
-                                                    passwordProtected(), username(), password()).first;
-
-  if (m_networkError != QNetworkReply::NoError) {
-    qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
-    setStatus(Error);
-    return 0;
-  }
-  else if (status() != NewMessages) {
-    setStatus(Normal);
-  }
-
-  // Encode downloaded data for further parsing.
-  QTextCodec *codec = QTextCodec::codecForName(encoding().toLocal8Bit());
-  QString formatted_feed_contents;
-
-  if (codec == NULL) {
-    // No suitable codec for this encoding was found.
-    // Use non-converted data.
-    formatted_feed_contents = feed_contents;
-  }
-  else {
-    formatted_feed_contents = codec->toUnicode(feed_contents);
-  }
-
-  // Feed data are downloaded and encoded.
-  // Parse data and obtain messages.
-  QList<Message> messages;
-
-  switch (type()) {
-    case StandardFeed::Rss0X:
-    case StandardFeed::Rss2X:
-      messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
-      break;
-
-    case StandardFeed::Rdf:
-      messages = ParsingFactory::parseAsRDF(formatted_feed_contents);
-      break;
-
-    case StandardFeed::Atom10:
-      messages = ParsingFactory::parseAsATOM10(formatted_feed_contents);
-
-    default:
-      break;
-  }
-
-  return updateMessages(messages);
-}
-
 bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_remove(database);
@@ -588,158 +536,56 @@ int StandardFeed::messageForeignKeyId() const {
   return id();
 }
 
-int StandardFeed::updateMessages(const QList<Message> &messages) {
-  if (messages.isEmpty()) {
-    return 0;
+QList<Message> StandardFeed::obtainNewMessages() {
+  QByteArray feed_contents;
+  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  m_networkError = NetworkFactory::downloadFeedFile(url(), download_timeout, feed_contents,
+                                                    passwordProtected(), username(), password()).first;
+
+  if (m_networkError != QNetworkReply::NoError) {
+    qWarning("Error during fetching of new messages for feed '%s' (id %d).", qPrintable(url()), id());
+    setStatus(Error);
+    return QList<Message>();
+  }
+  else if (status() != NewMessages) {
+    setStatus(Normal);
   }
 
-  int feed_id = messageForeignKeyId();
-  int updated_messages = 0;
-  bool anything_duplicated = false;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  bool remove_duplicates = qApp->settings()->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool();
-  int account_id = serviceRoot()->accountId();
+  // Encode downloaded data for further parsing.
+  QTextCodec *codec = QTextCodec::codecForName(encoding().toLocal8Bit());
+  QString formatted_feed_contents;
 
-  // Prepare queries.
-  QSqlQuery query_select(database);
-  QSqlQuery query_update(database);
-  QSqlQuery query_insert(database);
-
-  // Used to check if given feed contains any message with given title, url and date_created.
-  // WARNING: One feed CANNOT contain two (or more) messages with same AUTHOR AND TITLE AND URL AND DATE_CREATED.
-  query_select.setForwardOnly(true);
-  query_select.prepare("SELECT id, feed, date_created FROM Messages "
-                       "WHERE feed = :feed AND url = :url AND author = :author AND account_id = :account_id;");
-
-  // Used to insert new messages.
-  query_insert.setForwardOnly(true);
-  query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, url, author, date_created, contents, enclosures, account_id) "
-                       "VALUES (:feed, :title, :url, :author, :date_created, :contents, :enclosures, :account_id);");
-
-  if (remove_duplicates) {
-    query_update.setForwardOnly(true);
-    query_update.prepare("UPDATE Messages SET is_read = 0, is_deleted = 0, is_pdeleted = 0, "
-                         "contents = :contents, enclosures = :enclosures, date_created = :date_created "
-                         "WHERE id = :id;");
-  }
-
-  if (!database.transaction()) {
-    database.rollback();
-    qDebug("Transaction start for message downloader failed: '%s'.", qPrintable(database.lastError().text()));
-    return updated_messages;
-  }
-
-  foreach (Message message, messages) {
-    // Check if messages contain relative URLs and if they do, then replace them.
-    if (message.m_url.startsWith(QL1S("/"))) {
-      QString new_message_url = QUrl(url()).toString(QUrl::RemoveUserInfo |
-                                                     QUrl::RemovePath |
-                                                     QUrl::RemoveQuery |
-                                               #if QT_VERSION >= 0x050000
-                                                     QUrl::RemoveFilename |
-                                               #endif
-                                                     QUrl::StripTrailingSlash);
-
-      new_message_url += message.m_url;
-      message.m_url = new_message_url;
-    }
-
-    query_select.bindValue(QSL(":feed"), feed_id);
-    query_select.bindValue(QSL(":url"), message.m_url);
-    query_select.bindValue(QSL(":author"), message.m_author);
-    query_select.bindValue(QSL(":account_id"), account_id);
-    query_select.exec();
-
-    QList<qint64> datetime_stamps;
-    QList<int> ids;
-
-    while (query_select.next()) {
-      ids << query_select.value(0).toInt();
-      datetime_stamps << query_select.value(2).value<qint64>();
-    }
-
-    query_select.finish();
-
-    if (datetime_stamps.isEmpty()) {
-      // Message is not fetched in this feed yet.
-      query_insert.bindValue(QSL(":feed"), feed_id);
-      query_insert.bindValue(QSL(":title"), message.m_title);
-      query_insert.bindValue(QSL(":url"), message.m_url);
-      query_insert.bindValue(QSL(":author"), message.m_author);
-      query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(QSL(":contents"), message.m_contents);
-      query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-      query_insert.bindValue(QSL(":account_id"), account_id);
-
-      if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-        updated_messages++;
-      }
-
-      query_insert.finish();
-      qDebug("Adding new message '%s' to DB.", qPrintable(message.m_title));
-    }
-    else if (message.m_createdFromFeed && !datetime_stamps.contains(message.m_created.toMSecsSinceEpoch())) {
-      if (remove_duplicates && datetime_stamps.size() == 1) {
-        // Message is already in feed and new message has new unique time but user wishes to update existing
-        // messages and there is exactly ONE existing duplicate.
-        query_update.bindValue(QSL(":id"), ids.at(0));
-        query_update.bindValue(QSL(":contents"), message.m_contents);
-        query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-        query_update.exec();
-        query_update.finish();
-
-        QString sss = query_update.lastError().text();
-
-        anything_duplicated = true;
-
-        qDebug("Updating contents of duplicate message '%s'.", qPrintable(message.m_title));
-      }
-      else {
-        // Message with same title, author and url exists, but new message has new unique time and
-        // user does not wish to update duplicates.
-        query_insert.bindValue(QSL(":feed"), feed_id);
-        query_insert.bindValue(QSL(":title"), message.m_title);
-        query_insert.bindValue(QSL(":url"), message.m_url);
-        query_insert.bindValue(QSL(":author"), message.m_author);
-        query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-        query_insert.bindValue(QSL(":contents"), message.m_contents);
-        query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-
-        if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-          updated_messages++;
-        }
-
-        query_insert.finish();
-        qDebug("Adding new duplicate (with potentially updated contents) message '%s' to DB.", qPrintable(message.m_title));
-      }
-    }
-  }
-
-  if (updated_messages > 0) {
-    setStatus(NewMessages);
-  }
-
-  if (!database.commit()) {
-    database.rollback();
-    qDebug("Transaction commit for message downloader failed.");
+  if (codec == NULL) {
+    // No suitable codec for this encoding was found.
+    // Use non-converted data.
+    formatted_feed_contents = feed_contents;
   }
   else {
-    QList<RootItem*> items_to_update;
-
-    updateCounts(true);
-    items_to_update.append(this);
-
-    if (anything_duplicated) {
-      serviceRoot()->recycleBin()->updateCounts(true);
-      items_to_update.append(serviceRoot()->recycleBin());
-    }
-
-    serviceRoot()->itemChanged(items_to_update);
+    formatted_feed_contents = codec->toUnicode(feed_contents);
   }
 
-  return updated_messages;
+  // Feed data are downloaded and encoded.
+  // Parse data and obtain messages.
+  QList<Message> messages;
+
+  switch (type()) {
+    case StandardFeed::Rss0X:
+    case StandardFeed::Rss2X:
+      messages = ParsingFactory::parseAsRSS20(formatted_feed_contents);
+      break;
+
+    case StandardFeed::Rdf:
+      messages = ParsingFactory::parseAsRDF(formatted_feed_contents);
+      break;
+
+    case StandardFeed::Atom10:
+      messages = ParsingFactory::parseAsATOM10(formatted_feed_contents);
+
+    default:
+      break;
+  }
+
+  return messages;
 }
 
 QNetworkReply::NetworkError StandardFeed::networkError() const {

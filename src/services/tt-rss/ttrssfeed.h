@@ -42,14 +42,13 @@ class TtRssFeed : public Feed {
     bool canBeDeleted() const;
     bool deleteViaGui();
 
-    int update();
     bool markAsReadUnread(ReadStatus status);
     bool cleanMessages(bool clear_only_read);
     bool editItself(TtRssFeed *new_feed_data);
 
   private:
+    QList<Message> obtainNewMessages();
     bool removeItself();
-    int updateMessages(const QList<Message> &messages);
 };
 
 #endif // TTRSSFEED_H

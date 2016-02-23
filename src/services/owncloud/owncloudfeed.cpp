@@ -41,37 +41,21 @@ OwnCloudServiceRoot *OwnCloudFeed::serviceRoot() const {
   return qobject_cast<OwnCloudServiceRoot*>(getParentServiceRoot());
 }
 
-int OwnCloudFeed::update() {
+int OwnCloudFeed::messageForeignKeyId() const {
+  return customId();
+}
+
+QList<Message> OwnCloudFeed::obtainNewMessages() {
   OwnCloudGetMessagesResponse messages = serviceRoot()->network()->getMessages(customId());
 
   if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
     setStatus(Feed::Error);
     serviceRoot()->itemChanged(QList<RootItem*>() << this);
-    return 0;
+    return QList<Message>();
   }
   else {
-    return 0;
-    // TODO: TADY POKRACOVAT
-    // Udělat změnu tuto v tabulkách které mají sloupec custom_id
-    // Udělat to tak, že custom_id se bude vyplňovat pro všechny
-    // položky v Feeds, Categories a Messages
-    // taky tu property budou mít všechny příslušné objekty
-    // u standardních Feeds, Categories a Message se custom_id == id
-    //
-    // toto pak umožní přesunout všechny metody, které budou s custom ID a ID
-    // pracovat, do třídy předka a ušetřit kód.
-    // - toto sql provede překopirovani hodnot z atributu id do custom_id, pokud
-    // je custom_id prazdne, což plati pro standardní učet
-    // bude potřeba překopirovat u zprav, kategorii a feedů
-    /*
-     *UPDATE Categories
-SET custom_id = (SELECT id FROM Categories t WHERE t.id = Categories.id)
-WHERE Categories.custom_id IS NULL;
-     *
-     *     //return updateMessages(headlines.messages());*/
+    return messages.messages();
   }
-}
 
-int OwnCloudFeed::messageForeignKeyId() const {
-  return customId();
+  return QList<Message>();
 }

@@ -76,9 +76,6 @@ class StandardFeed : public Feed {
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem *target_item);
 
-    // Perform fetching of new messages. Returns number of newly updated messages.
-    int update();
-
     // Updates counts of all/unread messages for this feed.
     void updateCounts(bool including_total_count);
 
@@ -150,10 +147,7 @@ class StandardFeed : public Feed {
     void fetchMetadataForItself();
 
   private:
-    // Persistently stores given messages into the database
-    // and updates existing messages if newer version is
-    // available.
-    int updateMessages(const QList<Message> &messages);
+    QList<Message> obtainNewMessages();
 
   private:
     bool m_passwordProtected;

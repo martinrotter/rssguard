@@ -161,34 +161,6 @@ bool TtRssFeed::deleteViaGui() {
   }
 }
 
-int TtRssFeed::update() {
-  QList<Message> messages;
-  int newly_added_messages = 0;
-  int limit = MAX_MESSAGES;
-  int skip = 0;
-
-  do {
-    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), limit, skip,
-                                                                                 true, true, false);
-
-    if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
-      setStatus(Feed::Error);
-      serviceRoot()->itemChanged(QList<RootItem*>() << this);
-      return 0;
-    }
-    else {
-      QList<Message> new_messages = headlines.messages();
-
-      messages.append(new_messages);
-      newly_added_messages = new_messages.size();
-      skip += newly_added_messages;
-    }
-  }
-  while (newly_added_messages > 0);
-
-  return updateMessages(messages);
-}
-
 bool TtRssFeed::markAsReadUnread(RootItem::ReadStatus status) {
   QStringList ids = serviceRoot()->customIDSOfMessagesForItem(this);
   TtRssUpdateArticleResponse response = serviceRoot()->network()->updateArticles(ids, UpdateArticle::Unread,
@@ -232,6 +204,32 @@ bool TtRssFeed::editItself(TtRssFeed *new_feed_data) {
   }
 }
 
+QList<Message> TtRssFeed::obtainNewMessages() {
+  QList<Message> messages;
+  int newly_added_messages = 0;
+  int limit = MAX_MESSAGES;
+  int skip = 0;
+
+  do {
+    TtRssGetHeadlinesResponse headlines = serviceRoot()->network()->getHeadlines(customId(), limit, skip,
+                                                                                 true, true, false);
+
+    if (serviceRoot()->network()->lastError() != QNetworkReply::NoError) {
+      setStatus(Feed::Error);
+      serviceRoot()->itemChanged(QList<RootItem*>() << this);
+      return QList<Message>();
+    }
+    else {
+      QList<Message> new_messages = headlines.messages();
+
+      messages.append(new_messages);
+      newly_added_messages = new_messages.size();
+      skip += newly_added_messages;
+    }
+  }
+  while (newly_added_messages > 0);
+}
+
 bool TtRssFeed::removeItself() {
   TtRssUnsubscribeFeedResponse response = serviceRoot()->network()->unsubscribeFeed(customId());
 
@@ -261,127 +259,4 @@ bool TtRssFeed::removeItself() {
 
     return false;
   }
-}
-
-int TtRssFeed::updateMessages(const QList<Message> &messages) {
-  if (messages.isEmpty()) {
-    return 0;
-  }
-
-  int feed_id = messageForeignKeyId();
-  int updated_messages = 0;
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  int account_id = serviceRoot()->accountId();
-
-  // Prepare queries.
-  QSqlQuery query_insert(database);
-  QSqlQuery query_select(database);
-  QSqlQuery query_update(database);
-
-  query_update.setForwardOnly(true);
-  query_update.prepare("UPDATE Messages "
-                       "SET title = :title, is_read = :is_read, is_important = :is_important, url = :url, author = :author, date_created = :date_created, contents = :contents, enclosures = :enclosures "
-                       "WHERE id = :id;");
-
-  query_select.setForwardOnly(true);
-  query_select.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
-                       "WHERE account_id = :account_id AND custom_id = :custom_id;");
-
-  // Used to insert new messages.
-  query_insert.setForwardOnly(true);
-  query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, is_read, is_important, url, author, date_created, contents, enclosures, custom_id, account_id) "
-                       "VALUES (:feed, :title, :is_read, :is_important, :url, :author, :date_created, :contents, :enclosures, :custom_id, :account_id);");
-
-  if (!database.transaction()) {
-    database.rollback();
-    qDebug("Transaction start for message downloader failed.");
-    return updated_messages;
-  }
-
-  foreach (Message message, messages) {
-    query_select.bindValue(QSL(":account_id"), account_id);
-    query_select.bindValue(QSL(":custom_id"), message.m_customId);
-
-    query_select.exec();
-
-    int id_existing_message = -1;
-    qint64 date_existing_message;
-    bool is_read_existing_message;
-    bool is_important_existing_message;
-
-    if (query_select.next()) {
-      id_existing_message = query_select.value(0).toInt();
-      date_existing_message = query_select.value(1).value<qint64>();
-      is_read_existing_message = query_select.value(2).toBool();
-      is_important_existing_message = query_select.value(3).toBool();
-    }
-
-    query_select.finish();
-
-    // Now, check if this message is already in the DB.
-    if (id_existing_message >= 0) {
-      // Message is already in the DB.
-      if (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
-          message.m_isRead != is_read_existing_message ||
-          message.m_isImportant != is_important_existing_message) {
-        // Message exists, it is changed, update it.
-        query_update.bindValue(QSL(":title"), message.m_title);
-        query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
-        query_update.bindValue(QSL(":is_important"), (int) message.m_isImportant);
-        query_update.bindValue(QSL(":url"), message.m_url);
-        query_update.bindValue(QSL(":author"), message.m_author);
-        query_update.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":contents"), message.m_contents);
-        query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-        query_update.bindValue(QSL(":id"), id_existing_message);
-
-        if (query_update.exec()) {
-          updated_messages++;
-        }
-
-        query_update.finish();
-        qDebug("Updating message '%s' in DB.", qPrintable(message.m_title));
-      }
-    }
-    else {
-      // Message with this URL is not fetched in this feed yet.
-      query_insert.bindValue(QSL(":feed"), feed_id);
-      query_insert.bindValue(QSL(":title"), message.m_title);
-      query_insert.bindValue(QSL(":is_read"), (int) message.m_isRead);
-      query_insert.bindValue(QSL(":is_important"), (int) message.m_isImportant);
-      query_insert.bindValue(QSL(":url"), message.m_url);
-      query_insert.bindValue(QSL(":author"), message.m_author);
-      query_insert.bindValue(QSL(":date_created"), message.m_created.toMSecsSinceEpoch());
-      query_insert.bindValue(QSL(":contents"), message.m_contents);
-      query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
-      query_insert.bindValue(QSL(":custom_id"), message.m_customId);
-      query_insert.bindValue(QSL(":account_id"), account_id);
-
-      if (query_insert.exec() && query_insert.numRowsAffected() == 1) {
-        updated_messages++;
-      }
-
-      query_insert.finish();
-      qDebug("Adding new message '%s' to DB.", qPrintable(message.m_title));
-    }
-  }
-
-  if (!database.commit()) {
-    database.rollback();
-    qDebug("Transaction commit for message downloader failed.");
-  }
-  else {
-    if (updated_messages > 0) {
-      setStatus(NewMessages);
-    }
-    else {
-      setStatus(Normal);
-    }
-
-    updateCounts(true);
-    serviceRoot()->itemChanged(QList<RootItem*>() << this);
-  }
-
-  return updated_messages;
 }
