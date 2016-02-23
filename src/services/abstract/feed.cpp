@@ -105,7 +105,8 @@ void Feed::setCountOfUnreadMessages(int count_unread_messages) {
 }
 
 int Feed::update() {
-  return updateMessages(obtainNewMessages());
+  QList<Message> msgs = obtainNewMessages();
+  return updateMessages(msgs);
 }
 
 void Feed::setAutoUpdateInitialInterval(int auto_update_interval) {
@@ -141,11 +142,11 @@ int Feed::updateMessages(const QList<Message> &messages) {
   int custom_id = customId();
   int account_id = getParentServiceRoot()->accountId();
   int updated_messages = 0;
-  bool anything_duplicated = false;
+  bool anything_updated = false;
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
 
   // Prepare queries.
-  QSqlQuery query_select(database);
+  QSqlQuery query_select_with_url(database);
   QSqlQuery query_select_with_id(database);
   QSqlQuery query_update(database);
   QSqlQuery query_insert(database);
@@ -155,10 +156,12 @@ int Feed::updateMessages(const QList<Message> &messages) {
   //   1) they belong to the same feed AND,
   //   2) they have same URL AND,
   //   3) they have same AUTHOR.
-  query_select.setForwardOnly(true);
-  query_select.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
-                       "WHERE feed = :feed AND url = :url AND author = :author AND account_id = :account_id;");
+  query_select_with_url.setForwardOnly(true);
+  query_select_with_url.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
+                                "WHERE feed = :feed AND url = :url AND author = :author AND account_id = :account_id;");
 
+  // When we have custom ID of the message, we can check directly for existence
+  // of that particular message.
   query_select_with_id.setForwardOnly(true);
   query_select_with_id.prepare("SELECT id, date_created, is_read, is_important FROM Messages "
                                "WHERE custom_id = :custom_id AND account_id = :account_id;");
@@ -203,28 +206,26 @@ int Feed::updateMessages(const QList<Message> &messages) {
 
     if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR.
-      query_select.bindValue(QSL(":feed"), custom_id);
-      query_select.bindValue(QSL(":url"), message.m_url);
-      query_select.bindValue(QSL(":author"), message.m_author);
-      query_select.bindValue(QSL(":account_id"), account_id);
-      query_select.exec();
+      query_select_with_url.bindValue(QSL(":feed"), custom_id);
+      query_select_with_url.bindValue(QSL(":url"), message.m_url);
+      query_select_with_url.bindValue(QSL(":author"), message.m_author);
+      query_select_with_url.bindValue(QSL(":account_id"), account_id);
 
-      if (query_select.next()) {
-        id_existing_message = query_select.value(0).toInt();
-        date_existing_message = query_select.value(1).value<qint64>();
-        is_read_existing_message = query_select.value(2).toBool();
-        is_important_existing_message = query_select.value(3).toBool();
+      if (query_select_with_url.exec() && query_select_with_url.next()) {
+        id_existing_message = query_select_with_url.value(0).toInt();
+        date_existing_message = query_select_with_url.value(1).value<qint64>();
+        is_read_existing_message = query_select_with_url.value(2).toBool();
+        is_important_existing_message = query_select_with_url.value(3).toBool();
       }
 
-      query_select.finish();
+      query_select_with_url.finish();
     }
     else {
       // We can recognize existing messages via their custom ID.
       query_select_with_id.bindValue(QSL(":account_id"), account_id);
       query_select_with_id.bindValue(QSL(":custom_id"), message.m_customId);
-      query_select_with_id.exec();
 
-      if (query_select_with_id.next()) {
+      if (query_select_with_id.exec() && query_select_with_id.next()) {
         id_existing_message = query_select_with_id.value(0).toInt();
         date_existing_message = query_select_with_id.value(1).value<qint64>();
         is_read_existing_message = query_select_with_id.value(2).toBool();
@@ -237,13 +238,12 @@ int Feed::updateMessages(const QList<Message> &messages) {
     // Now, check if this message is already in the DB.
     if (id_existing_message >= 0) {
       // Message is already in the DB.
-      // Now, we update at least one of next conditions is true:
+      //
+      // Now, we update it if at least one of next conditions is true:
       //   1) Message has custom ID AND (its date OR read status OR starred status are changed).
       //   2) Message has its date fetched from feed AND its date is different from date in DB.
-
-      if (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
-          message.m_isRead != is_read_existing_message ||
-          message.m_isImportant != is_important_existing_message) {
+      if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message || message.m_isRead != is_read_existing_message || message.m_isImportant != is_important_existing_message)) ||
+          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() > date_existing_message)) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), message.m_title);
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
@@ -254,6 +254,8 @@ int Feed::updateMessages(const QList<Message> &messages) {
         query_update.bindValue(QSL(":contents"), message.m_contents);
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
         query_update.bindValue(QSL(":id"), id_existing_message);
+
+        anything_updated = true;
 
         if (query_update.exec()) {
           updated_messages++;
@@ -286,7 +288,6 @@ int Feed::updateMessages(const QList<Message> &messages) {
     }
   }
 
-
   if (!database.commit()) {
     database.rollback();
     qDebug("Transaction commit for message downloader failed.");
@@ -304,7 +305,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
     updateCounts(true);
     items_to_update.append(this);
 
-    if (getParentServiceRoot()->recycleBin() != NULL && anything_duplicated) {
+    if (getParentServiceRoot()->recycleBin() != NULL && anything_updated ) {
       getParentServiceRoot()->recycleBin()->updateCounts(true);
       items_to_update.append(getParentServiceRoot()->recycleBin());
     }

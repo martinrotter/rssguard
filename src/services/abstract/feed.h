@@ -96,9 +96,11 @@ class Feed : public RootItem {
 
     virtual int messageForeignKeyId() const = 0;
 
+  protected:
+    virtual QList<Message> obtainNewMessages() = 0;
+
   private:
     int updateMessages(const QList<Message> &messages);
-    virtual QList<Message> obtainNewMessages() = 0;
 
   private:
     QString m_url;

@@ -228,6 +228,8 @@ QList<Message> TtRssFeed::obtainNewMessages() {
     }
   }
   while (newly_added_messages > 0);
+
+  return messages;
 }
 
 bool TtRssFeed::removeItself() {
