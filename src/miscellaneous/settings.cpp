@@ -63,9 +63,6 @@ DVALUE(bool) Messages::ClearReadOnExitDef    = false;
 DKEY Messages::KeepCursorInCenter               = "keep_cursor_center";
 DVALUE(bool) Messages::KeepCursorInCenterDef    = false;
 
-DKEY Messages::RemoveDuplicates               = "remove_duplicates";
-DVALUE(bool) Messages::RemoveDuplicatesDef    = false;
-
 DKEY Messages::PreviewerFontStandard                                    = "previewer_font_standard";
 NON_CONST_DVALUE(QString) Messages::PreviewerFontStandardDef            = QString();
 

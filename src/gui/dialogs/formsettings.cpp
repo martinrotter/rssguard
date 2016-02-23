@@ -248,7 +248,6 @@ void FormSettings::loadFeedsMessages() {
   m_ui->m_checkUpdateAllFeedsOnStartup->setChecked(m_settings->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool());
   m_ui->m_cmbCountsFeedList->addItems(QStringList() << "(%unread)" << "[%unread]" << "%unread/%all" << "%unread-%all" << "[%unread|%all]");
   m_ui->m_cmbCountsFeedList->setEditText(m_settings->value(GROUP(Feeds), SETTING(Feeds::CountFormat)).toString());
-  m_ui->m_checkRemoveDuplicateMessages->setChecked(m_settings->value(GROUP(Messages), SETTING(Messages::RemoveDuplicates)).toBool());
 
   initializeMessageDateFormats();
 
@@ -286,7 +285,6 @@ void FormSettings::saveFeedsMessages() {
   m_settings->setValue(GROUP(Messages), Messages::UseCustomDate, m_ui->m_checkMessagesDateTimeFormat->isChecked());
   m_settings->setValue(GROUP(Messages), Messages::CustomDateFormat,
                        m_ui->m_cmbMessagesDateTimeFormat->itemData(m_ui->m_cmbMessagesDateTimeFormat->currentIndex()).toString());
-  m_settings->setValue(GROUP(Messages), Messages::RemoveDuplicates, m_ui->m_checkRemoveDuplicateMessages->isChecked());
 
   // Save fonts.
   m_settings->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_cmbMessageFontStandard->currentFont().family());

@@ -78,9 +78,6 @@ namespace Messages {
   KEY KeepCursorInCenter;
   VALUE(bool) KeepCursorInCenterDef;
 
-  KEY RemoveDuplicates;
-  VALUE(bool) RemoveDuplicatesDef;
-
   KEY PreviewerFontStandard;
   NON_CONST_VALUE(QString) PreviewerFontStandardDef;
 }
