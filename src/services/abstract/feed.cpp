@@ -206,6 +206,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
 
     if (message.m_customId.isEmpty()) {
       // We need to recognize existing messages according URL & AUTHOR.
+      // NOTE: This concerns messages from standard account.
       query_select_with_url.bindValue(QSL(":feed"), custom_id);
       query_select_with_url.bindValue(QSL(":url"), message.m_url);
       query_select_with_url.bindValue(QSL(":author"), message.m_author);
@@ -222,6 +223,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
     }
     else {
       // We can recognize existing messages via their custom ID.
+      // NOTE: This concerns messages from custom accounts, like TT-RSS or ownCloud News.
       query_select_with_id.bindValue(QSL(":account_id"), account_id);
       query_select_with_id.bindValue(QSL(":custom_id"), message.m_customId);
 
@@ -243,7 +245,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
       //   1) Message has custom ID AND (its date OR read status OR starred status are changed).
       //   2) Message has its date fetched from feed AND its date is different from date in DB.
       if (/* 1 */ (!message.m_customId.isEmpty() && (message.m_created.toMSecsSinceEpoch() != date_existing_message || message.m_isRead != is_read_existing_message || message.m_isImportant != is_important_existing_message)) ||
-          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() > date_existing_message)) {
+          /* 2 */ (message.m_createdFromFeed && message.m_created.toMSecsSinceEpoch() != date_existing_message)) {
         // Message exists, it is changed, update it.
         query_update.bindValue(QSL(":title"), message.m_title);
         query_update.bindValue(QSL(":is_read"), (int) message.m_isRead);
@@ -288,6 +290,14 @@ int Feed::updateMessages(const QList<Message> &messages) {
     }
   }
 
+  // Now, fixup custom IDS for messages which initially did not have them,
+  // just to keep the data consistent.
+  if (database.exec("UPDATE Messages "
+                    "SET custom_id = (SELECT id FROM Messages t WHERE t.id = Messages.id) "
+                    "WHERE Messages.custom_id IS NULL OR Messages.custom_id = '';").lastError().isValid()) {
+    qWarning("Failed to set custom ID for all messages.");
+  }
+
   if (!database.commit()) {
     database.rollback();
     qDebug("Transaction commit for message downloader failed.");
@@ -305,7 +315,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
     updateCounts(true);
     items_to_update.append(this);
 
-    if (getParentServiceRoot()->recycleBin() != NULL && anything_updated ) {
+    if (getParentServiceRoot()->recycleBin() != NULL && anything_updated) {
       getParentServiceRoot()->recycleBin()->updateCounts(true);
       items_to_update.append(getParentServiceRoot()->recycleBin());
     }
