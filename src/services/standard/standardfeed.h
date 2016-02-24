@@ -76,9 +76,6 @@ class StandardFeed : public Feed {
     Qt::ItemFlags additionalFlags() const;
     bool performDragDropChange(RootItem *target_item);
 
-    // Updates counts of all/unread messages for this feed.
-    void updateCounts(bool including_total_count);
-
     // Removes this standard feed from persistent
     // storage.
     bool removeItself();

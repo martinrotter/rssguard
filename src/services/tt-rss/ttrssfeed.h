@@ -36,7 +36,6 @@ class TtRssFeed : public Feed {
     int messageForeignKeyId() const;
     TtRssServiceRoot *serviceRoot() const;
     QVariant data(int column, int role) const;
-    void updateCounts(bool including_total_count);
     bool canBeEdited() const;
     bool editViaGui();
     bool canBeDeleted() const;

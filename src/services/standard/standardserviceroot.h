@@ -70,7 +70,6 @@ class StandardServiceRoot : public ServiceRoot {
     bool mergeImportExportModel(FeedsImportExportModel *model, RootItem *target_root_node, QString &output_message);
 
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
-    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
 
     void loadFromDatabase();
     void checkArgumentForFeedAdding(const QString &argument);

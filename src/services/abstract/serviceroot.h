@@ -88,6 +88,9 @@ class ServiceRoot : public RootItem {
     // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() const = 0;
 
+    // Removes all/read only messages from given underlying feeds.
+    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
+
     // This method should prepare messages for given "item" (download them maybe?)
     // into predefined "Messages" table
     // and then use method QSqlTableModel::setFilter(....).

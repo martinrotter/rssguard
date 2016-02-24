@@ -185,37 +185,6 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
   }
 }
 
-void StandardFeed::updateCounts(bool including_total_count) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query(database);
-  query.setForwardOnly(true);
-
-  if (including_total_count) {
-    query.prepare(QSL("SELECT count(*) FROM Messages WHERE feed = :feed AND is_pdeleted = 0 AND is_deleted = 0 AND account_id = :account_id;"));
-    query.bindValue(QSL(":feed"), id());
-    query.bindValue(QSL(":account_id"), serviceRoot()->accountId());
-
-    if (query.exec() && query.next()) {
-      setCountOfAllMessages(query.value(0).toInt());
-    }
-  }
-
-  // Obtain count of unread messages.
-  query.prepare(QSL("SELECT count(*) FROM Messages WHERE feed = :feed AND is_pdeleted = 0 AND is_deleted = 0 AND is_read = 0 AND account_id = :account_id;"));
-  query.bindValue(QSL(":feed"), id());
-  query.bindValue(QSL(":account_id"), serviceRoot()->accountId());
-
-  if (query.exec() && query.next()) {
-    int new_unread_count = query.value(0).toInt();
-
-    if (status() == NewMessages && new_unread_count < countOfUnreadMessages()) {
-      setStatus(Normal);
-    }
-
-    setCountOfUnreadMessages(new_unread_count);
-  }
-}
-
 void StandardFeed::fetchMetadataForItself() {
   QPair<StandardFeed*,QNetworkReply::NetworkError> metadata = guessFeed(url(), username(), password());
 

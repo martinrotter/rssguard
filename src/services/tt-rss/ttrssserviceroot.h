@@ -59,7 +59,6 @@ class TtRssServiceRoot : public ServiceRoot {
     QStringList customIDSOfMessagesForItem(RootItem *item);
 
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
-    bool cleanFeeds(QList<Feed*> items, bool clean_read_only);
 
     void saveAccountDataToDatabase();
     void updateTitle();

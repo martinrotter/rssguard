@@ -94,6 +94,8 @@ class Feed : public RootItem {
       m_url = url;
     }
 
+    void updateCounts(bool including_total_count);
+
     virtual int messageForeignKeyId() const = 0;
 
   protected:

@@ -101,40 +101,6 @@ QVariant TtRssFeed::data(int column, int role) const {
   }
 }
 
-void TtRssFeed::updateCounts(bool including_total_count) {
-  QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_all(database);
-
-  query_all.setForwardOnly(true);
-
-  if (including_total_count) {
-    query_all.prepare("SELECT count(*) FROM Messages "
-                      "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;");
-    query_all.bindValue(QSL(":feed"), customId());
-    query_all.bindValue(QSL(":account_id"), serviceRoot()->accountId());
-
-    if (query_all.exec() && query_all.next()) {
-      setCountOfAllMessages(query_all.value(0).toInt());
-    }
-  }
-
-  query_all.prepare("SELECT count(*) FROM Messages "
-                    "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id;");
-  query_all.bindValue(QSL(":feed"), customId());
-  query_all.bindValue(QSL(":account_id"), serviceRoot()->accountId());
-
-  // Obtain count of unread messages.
-  if (query_all.exec() && query_all.next()) {
-    int new_unread_count = query_all.value(0).toInt();
-
-    if (status() == NewMessages && new_unread_count < countOfUnreadMessages()) {
-      setStatus(Normal);
-    }
-
-    setCountOfUnreadMessages(new_unread_count);
-  }
-}
-
 bool TtRssFeed::canBeEdited() const {
   return true;
 }

@@ -319,50 +319,6 @@ bool TtRssServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadSta
   }
 }
 
-bool TtRssServiceRoot::cleanFeeds(QList<Feed*> items, bool clean_read_only) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_delete_msg(db_handle);
-  query_delete_msg.setForwardOnly(true);
-
-  if (clean_read_only) {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1;").arg(textualFeedIds(items).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-      return false;
-    }
-  }
-  else {
-    if (!query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                                          "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))))) {
-      qWarning("Query preparation failed for feeds clearing.");
-      return false;
-    }
-  }
-
-  query_delete_msg.bindValue(QSL(":deleted"), 1);
-
-  if (!query_delete_msg.exec()) {
-    qDebug("Query execution for feeds clearing failed.");
-    return false;
-  }
-  else {
-    // Messages are cleared, now inform model about need to reload data.
-    QList<RootItem*> itemss;
-
-    foreach (Feed *feed, items) {
-      feed->updateCounts(true);
-      itemss.append(feed);
-    }
-
-    m_recycleBin->updateCounts(true);
-    itemss.append(m_recycleBin);
-
-    itemChanged(itemss);
-    requestReloadMessageList(true);
-    return true;
-  }
-}
-
 void TtRssServiceRoot::saveAccountDataToDatabase() {
   if (accountId() != NO_PARENT_CATEGORY) {
     // We are overwritting previously saved data.

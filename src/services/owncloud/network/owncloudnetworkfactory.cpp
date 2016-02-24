@@ -352,7 +352,7 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
 
     msg.m_author = message_map["author"].toString();
     msg.m_contents = message_map["body"].toString();
-    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].value<qint64>());
+    msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].value<qint64>() * 1000);
     msg.m_createdFromFeed = true;
     msg.m_customId = message_map["id"].toString();
 

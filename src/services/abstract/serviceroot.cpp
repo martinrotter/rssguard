@@ -127,6 +127,52 @@ void ServiceRoot::cleanAllItems() {
   }
 }
 
+bool ServiceRoot::cleanFeeds(QList<Feed *> items, bool clean_read_only) {
+  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
+  QSqlQuery query_delete_msg(db_handle);
+  int account_id = accountId();
+  query_delete_msg.setForwardOnly(true);
+
+  if (clean_read_only) {
+    query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = :account_id;")
+                             .arg(textualFeedIds(items).join(QSL(", "))));
+  }
+  else {
+    query_delete_msg.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
+                                     "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
+                             .arg(textualFeedIds(items).join(QSL(", "))));
+  }
+
+  query_delete_msg.bindValue(QSL(":deleted"), 1);
+  query_delete_msg.bindValue(QSL(":account_id"), account_id);
+
+  if (query_delete_msg.exec()) {
+    // Messages are cleared, now inform model about need to reload data.
+    QList<RootItem*> itemss;
+
+    foreach (Feed *feed, items) {
+      feed->updateCounts(true);
+      itemss.append(feed);
+    }
+
+    RecycleBin *bin = recycleBin();
+
+    if (bin != NULL) {
+      bin->updateCounts(true);
+      itemss.append(bin);
+    }
+
+    itemChanged(itemss);
+    requestReloadMessageList(true);
+    return true;
+  }
+  else {
+    qDebug("Cleaning of feeds failed: '%s'.", qPrintable(query_delete_msg.lastError().text()));
+    return false;
+  }
+}
+
 void ServiceRoot::storeNewFeedTree(RootItem *root) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query_category(database);
