@@ -151,19 +151,18 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<QString> &u
 NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const QByteArray &input_data,
                                          const QString &input_content_type, QByteArray &output,
                                          QNetworkAccessManager::Operation operation, bool protected_contents,
-                                         const QString &username, const QString &password, bool forcefully_embed_basic_header) {
+                                         const QString &username, const QString &password, bool set_basic_header) {
   Downloader downloader;
   QEventLoop loop;
   NetworkResult result;
 
   downloader.appendRawHeader("Content-Type", input_content_type.toLocal8Bit());
 
-  if (forcefully_embed_basic_header) {
-    QString concatenated = username + ":" + password;
-    QByteArray data = concatenated.toLocal8Bit().toBase64();
-    QString headerData = QString("Basic ") + data;
+  if (set_basic_header) {
+    QString basic_value = username + ":" + password;
+    QString header_value = QString("Basic ") + QString(basic_value.toUtf8().toBase64());
 
-    downloader.appendRawHeader("Authorization", headerData.toLocal8Bit());
+    downloader.appendRawHeader("Authorization", header_value.toLocal8Bit());
   }
 
   // We need to quit event loop when the download finishes.
