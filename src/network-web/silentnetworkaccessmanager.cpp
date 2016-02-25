@@ -28,7 +28,7 @@ QPointer<SilentNetworkAccessManager> SilentNetworkAccessManager::s_instance;
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject *parent)
   : BaseNetworkAccessManager(parent) {
   connect(this, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)),
-          this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)));
+          this, SLOT(onAuthenticationRequired(QNetworkReply*,QAuthenticator*)), Qt::DirectConnection);
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
@@ -43,9 +43,7 @@ SilentNetworkAccessManager *SilentNetworkAccessManager::instance() {
   return s_instance;
 }
 
-void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) {
-  QList<QString> keys = authenticator->options().keys();
-
+void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply *reply, QAuthenticator *authenticator) { 
   if (reply->property("protected").toBool()) {
     // This feed contains authentication information, it is good.
     authenticator->setUser(reply->property("username").toString());

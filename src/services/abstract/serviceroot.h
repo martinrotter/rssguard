@@ -176,6 +176,9 @@ class ServiceRoot : public RootItem {
 
     QStringList textualFeedIds(const QList<Feed*> &feeds) const;
 
+    QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
+    QStringList customIDsOfMessages(const QList<Message> &messages);
+
     // Takes lists of feeds/categories and assembles them into the tree structure.
     void assembleCategories(Assignment categories);
     void assembleFeeds(Assignment feeds);

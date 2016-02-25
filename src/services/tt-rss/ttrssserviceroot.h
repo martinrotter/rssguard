@@ -59,7 +59,6 @@ class TtRssServiceRoot : public ServiceRoot {
     QStringList customIDSOfMessagesForItem(RootItem *item);
 
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
-
     void saveAccountDataToDatabase();
     void updateTitle();
     void completelyRemoveAllData();
@@ -70,9 +69,6 @@ class TtRssServiceRoot : public ServiceRoot {
     void syncIn();
 
   private:
-    QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
-    QStringList customIDsOfMessages(const QList<Message> &messages);
-
     void loadFromDatabase();
 
     TtRssRecycleBin *m_recycleBin;

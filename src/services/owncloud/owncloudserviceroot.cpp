@@ -112,6 +112,35 @@ OwnCloudNetworkFactory *OwnCloudServiceRoot::network() const {
   return m_network;
 }
 
+bool OwnCloudServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QList<Message> &messages,
+                                                  RootItem::ReadStatus read) {
+  Q_UNUSED(selected_item)
+
+  QNetworkReply::NetworkError reply = network()->markMessagesRead(read, customIDsOfMessages(messages));
+  return reply == QNetworkReply::NoError;
+}
+
+bool OwnCloudServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item,
+                                                          const QList<QPair<Message,RootItem::Importance> > &changes) {
+  Q_UNUSED(selected_item)
+
+  QNetworkReply::NetworkError reply;
+
+  /*if (read == RootItem::Read) {
+    //reply = network()->markMessagesRead();
+  }
+  else {
+    reply = network()->markMessagesUnread();
+  }*/
+
+  if (reply == QNetworkReply::NoError) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
 void OwnCloudServiceRoot::updateTitle() {
   QString host = QUrl(m_network->url()).host();
 

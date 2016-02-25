@@ -30,7 +30,7 @@
 
 
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
-  : m_url(QString()), m_forceServerSideUpdate(false),
+  : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
     m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()),
     m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_userId(QString()) {
 }
@@ -44,21 +44,20 @@ QString OwnCloudNetworkFactory::url() const {
 
 void OwnCloudNetworkFactory::setUrl(const QString &url) {
   m_url = url;
-  QString working_url;
 
   if (url.endsWith('/')) {
-    working_url = url;
+    m_fixedUrl = url;
   }
   else {
-    working_url = url + '/';
+    m_fixedUrl = url + '/';
   }
 
   // Store endpoints.
-  m_urlUser = working_url + API_PATH + "user";
-  m_urlStatus = working_url + API_PATH + "status";
-  m_urlFolders = working_url + API_PATH + "folders";
-  m_urlFeeds = working_url + API_PATH + "feeds";
-  m_urlMessages = working_url + API_PATH + "items?id=%1&batchSize=%2&type=%3";
+  m_urlUser = m_fixedUrl + API_PATH + "user";
+  m_urlStatus = m_fixedUrl + API_PATH + "status";
+  m_urlFolders = m_fixedUrl + API_PATH + "folders";
+  m_urlFeeds = m_fixedUrl + API_PATH + "feeds";
+  m_urlMessages = m_fixedUrl + API_PATH + "items?id=%1&batchSize=%2&type=%3";
 }
 
 bool OwnCloudNetworkFactory::forceServerSideUpdate() const {
@@ -180,6 +179,54 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 
   m_lastError = network_reply.first;
   return msgs_response;
+}
+
+QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
+                                                                     const QStringList &custom_ids) {
+  QList<QVariant> var_ids;
+  QtJson::JsonObject json;
+  QtJson::JsonArray ids;
+  QByteArray raw_output;
+
+  QString final_url;
+
+  if (status == RootItem::Read) {
+    final_url = m_fixedUrl + API_PATH + "items/read/multiple";
+  }
+  else {
+    final_url = m_fixedUrl + API_PATH + "items/unread/multiple";
+  }
+
+  foreach (const QString &id, custom_ids) {
+    var_ids.append(id.toInt());
+  }
+
+  ids.append(var_ids);
+  json["items"] = ids;
+
+  NetworkResult network_reply = NetworkFactory::uploadData(final_url,
+                                                           qApp->settings()->value(GROUP(Feeds),
+                                                                                   SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                           QtJson::serialize(json),
+                                                           "application/json",
+                                                           raw_output,
+                                                           QNetworkAccessManager::PutOperation,
+                                                           true, m_authUsername, m_authPassword,
+                                                           true);
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("ownCloud: Marking messages as (un)read failed with error %d.", network_reply.first);
+  }
+
+  return (m_lastError = network_reply.first);
+}
+
+QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(const QList<int> &custom_ids) {
+  return QNetworkReply::NoError;
+}
+
+QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesUnstarred(const QList<int> &custom_ids) {
+  return QNetworkReply::NoError;
 }
 
 QString OwnCloudNetworkFactory::userId() const {

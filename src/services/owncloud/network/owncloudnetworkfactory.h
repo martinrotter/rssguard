@@ -25,6 +25,7 @@
 
 #include "qt-json/json.h"
 #include "core/message.h"
+#include "services/abstract/rootitem.h"
 
 
 class OwnCloudResponse {
@@ -121,8 +122,13 @@ class OwnCloudNetworkFactory {
     // Get messages for given feed.
     OwnCloudGetMessagesResponse getMessages(int feed_id);
 
+    QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList &custom_ids);
+    QNetworkReply::NetworkError markMessagesStarred(const QList<int> &custom_ids);
+    QNetworkReply::NetworkError markMessagesUnstarred(const QList<int> &custom_ids);
+
   private:
     QString m_url;
+    QString m_fixedUrl;
     bool m_forceServerSideUpdate;
     QString m_authUsername;
     QString m_authPassword;
@@ -134,7 +140,6 @@ class OwnCloudNetworkFactory {
     QString m_urlFolders;
     QString m_urlFeeds;
     QString m_urlMessages;
-
     QString m_userId;
 };
 
