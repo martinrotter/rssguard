@@ -161,7 +161,7 @@ NetworkResult NetworkFactory::uploadData(const QString &url, int timeout, const 
   if (forcefully_embed_basic_header) {
     QString concatenated = username + ":" + password;
     QByteArray data = concatenated.toLocal8Bit().toBase64();
-    QString headerData = "Basic " + data;
+    QString headerData = QString("Basic ") + data;
 
     downloader.appendRawHeader("Authorization", headerData.toLocal8Bit());
   }
