@@ -221,11 +221,7 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::R
   return (m_lastError = network_reply.first);
 }
 
-QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(const QList<int> &custom_ids) {
-  return QNetworkReply::NoError;
-}
-
-QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesUnstarred(const QList<int> &custom_ids) {
+QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList &custom_ids) {
   return QNetworkReply::NoError;
 }
 

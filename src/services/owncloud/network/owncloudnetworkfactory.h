@@ -123,8 +123,7 @@ class OwnCloudNetworkFactory {
     OwnCloudGetMessagesResponse getMessages(int feed_id);
 
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList &custom_ids);
-    QNetworkReply::NetworkError markMessagesStarred(const QList<int> &custom_ids);
-    QNetworkReply::NetworkError markMessagesUnstarred(const QList<int> &custom_ids);
+    QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList &custom_ids);
 
   private:
     QString m_url;
