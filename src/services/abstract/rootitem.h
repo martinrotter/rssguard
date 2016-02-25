@@ -70,10 +70,6 @@ class RootItem : public QObject {
     explicit RootItem(RootItem *parent_item = NULL);
     virtual ~RootItem();
 
-    /////////////////////////////////////////
-    // /* Members to override.
-    /////////////////////////////////////////
-
     virtual QString hashCode() const;
 
     // Returns list of specific actions which can be done with the item.
@@ -123,10 +119,6 @@ class RootItem : public QObject {
     // Returns counts of messages of all child items summed up.
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
-
-    /////////////////////////////////////////
-    // Members to override. */
-    /////////////////////////////////////////
 
     inline RootItem *parent() const {
       return m_parentItem;
