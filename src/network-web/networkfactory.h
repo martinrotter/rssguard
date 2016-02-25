@@ -45,8 +45,9 @@ class NetworkFactory {
 
     static NetworkResult uploadData(const QString &url, int timeout, const QByteArray &input_data,
                                     const QString &input_content_type, QByteArray &output,
+                                    QNetworkAccessManager::Operation operation,
                                     bool protected_contents = false, const QString &username = QString(),
-                                    const QString &password = QString());
+                                    const QString &password = QString(), bool forcefully_embed_basic_header = false);
 
     static NetworkResult downloadFeedFile(const QString &url, int timeout, QByteArray &output,
                                           bool protected_contents = false, const QString &username = QString(),

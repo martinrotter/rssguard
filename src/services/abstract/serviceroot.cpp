@@ -299,6 +299,26 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*> &feeds) const {
   return stringy_ids;
 }
 
+QStringList ServiceRoot::customIDsOfMessages(const QList<QPair<Message,RootItem::Importance> > &changes) {
+  QStringList list;
+
+  for (int i = 0; i < changes.size(); i++) {
+    list.append(changes.at(i).first.m_customId);
+  }
+
+  return list;
+}
+
+QStringList ServiceRoot::customIDsOfMessages(const QList<Message> &messages) {
+  QStringList list;
+
+  foreach (const Message &message, messages) {
+    list.append(message.m_customId);
+  }
+
+  return list;
+}
+
 int ServiceRoot::accountId() const {
   return m_accountId;
 }

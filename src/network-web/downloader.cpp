@@ -64,8 +64,8 @@ void Downloader::downloadFile(const QString &url, int timeout, bool protected_co
   runGetRequest(request);
 }
 
-void Downloader::uploadData(const QString &url, const QByteArray &data, int timeout,
-                            bool protected_contents, const QString &username, const QString &password) {
+void Downloader::uploadData(const QString &url, const QByteArray &data, QNetworkAccessManager::Operation operation,
+                            int timeout, bool protected_contents, const QString &username, const QString &password) {
   QNetworkRequest request;
   QString non_const_url = url;
 
@@ -90,7 +90,12 @@ void Downloader::uploadData(const QString &url, const QByteArray &data, int time
   m_targetUsername = username;
   m_targetPassword = password;
 
-  runPostRequest(request, m_inputData);
+  if (operation == QNetworkAccessManager::PostOperation) {
+    runPostRequest(request, m_inputData);
+  }
+  else {
+    runPutRequest(request, m_inputData);
+  }
 }
 
 void Downloader::finished() {
@@ -123,6 +128,9 @@ void Downloader::finished() {
     else if (reply_operation == QNetworkAccessManager::PostOperation) {
       runPostRequest(request, m_inputData);
     }
+    else if (reply_operation == QNetworkAccessManager::PutOperation) {
+      runPutRequest(request, m_inputData);
+    }
   }
   else {
     // No redirection is indicated. Final file is obtained in our "reply" object.
@@ -148,9 +156,21 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
 
 void Downloader::timeout() {
   if (m_activeReply != NULL) {
-    // Download action timed-out, too slow connection or target is no reachable.
+    // Download action timed-out, too slow connection or target is not reachable.
     m_activeReply->abort();
   }
+}
+
+void Downloader::runPutRequest(const QNetworkRequest &request, const QByteArray &data) {
+  m_timer->start();
+  m_activeReply = m_downloadManager->put(request, data);
+
+  m_activeReply->setProperty("protected", m_targetProtected);
+  m_activeReply->setProperty("username", m_targetUsername);
+  m_activeReply->setProperty("password", m_targetPassword);
+
+  connect(m_activeReply, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(progressInternal(qint64,qint64)));
+  connect(m_activeReply, SIGNAL(finished()), this, SLOT(finished()));
 }
 
 void Downloader::runPostRequest(const QNetworkRequest &request, const QByteArray &data) {

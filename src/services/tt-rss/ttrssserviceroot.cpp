@@ -513,23 +513,3 @@ void TtRssServiceRoot::syncIn() {
   setIcon(original_icon);
   itemChanged(QList<RootItem*>() << this);
 }
-
-QStringList TtRssServiceRoot::customIDsOfMessages(const QList<QPair<Message,RootItem::Importance> > &changes) {
-  QStringList list;
-
-  for (int i = 0; i < changes.size(); i++) {
-    list.append(changes.at(i).first.m_customId);
-  }
-
-  return list;
-}
-
-QStringList TtRssServiceRoot::customIDsOfMessages(const QList<Message> &messages) {
-  QStringList list;
-
-  foreach (const Message &message, messages) {
-    list.append(message.m_customId);
-  }
-
-  return list;
-}
