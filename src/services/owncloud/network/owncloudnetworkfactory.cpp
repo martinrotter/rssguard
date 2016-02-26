@@ -221,8 +221,47 @@ QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::R
   return (m_lastError = network_reply.first);
 }
 
-QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance, const QStringList &custom_ids) {
-  return QNetworkReply::NoError;
+QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
+                                                                        const QStringList &feed_ids,
+                                                                        const QStringList &guid_hashes) {
+  QtJson::JsonObject json;
+  QtJson::JsonArray ids;
+  QByteArray raw_output;
+
+  QString final_url;
+
+  if (importance == RootItem::Important) {
+    final_url = m_fixedUrl + API_PATH + "items/star/multiple";
+  }
+  else {
+    final_url = m_fixedUrl + API_PATH + "items/unstar/multiple";
+  }
+
+  for (int i = 0; i < feed_ids.size(); i++) {
+    QVariantMap item;
+    item.insert(QSL("feedId"), feed_ids.at(i));
+    item.insert(QSL("guidHash"), guid_hashes.at(i));
+
+    ids.append(item);
+  }
+
+  json["items"] = ids;
+
+  NetworkResult network_reply = NetworkFactory::uploadData(final_url,
+                                                           qApp->settings()->value(GROUP(Feeds),
+                                                                                   SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                           QtJson::serialize(json),
+                                                           "application/json",
+                                                           raw_output,
+                                                           QNetworkAccessManager::PutOperation,
+                                                           true, m_authUsername, m_authPassword,
+                                                           true);
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("ownCloud: Marking messages as (un)starred failed with error %d.", network_reply.first);
+  }
+
+  return (m_lastError = network_reply.first);
 }
 
 QString OwnCloudNetworkFactory::userId() const {
@@ -398,6 +437,7 @@ QList<Message> OwnCloudGetMessagesResponse::messages() const {
     msg.m_created = TextFactory::parseDateTime(message_map["pubDate"].value<qint64>() * 1000);
     msg.m_createdFromFeed = true;
     msg.m_customId = message_map["id"].toString();
+    msg.m_customHash = message_map["guidHash"].toString();
 
     QString enclosure_link = message_map["enclosureLink"].toString();
 

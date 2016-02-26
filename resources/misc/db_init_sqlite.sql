@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS Messages (
   enclosures      TEXT,
   account_id      INTEGER     NOT NULL,
   custom_id       TEXT,
+  custom_hash     TEXT,
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id)
 );

@@ -65,14 +65,14 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure> &enclosures)
 }
 
 Message::Message() {
-  m_title = m_url = m_author = m_contents = m_feedId = m_customId = "";
+  m_title = m_url = m_author = m_contents = m_feedId = m_customId = m_customHash = "";
   m_enclosures = QList<Enclosure>();
   m_accountId = m_id = 0;
   m_isRead = m_isImportant = false;
 }
 
 Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
-  if (record.count() != MSG_DB_CUSTOM_ID_INDEX + 1) {
+  if (record.count() != MSG_DB_CUSTOM_HASH_INDEX + 1) {
     if (result != NULL) {
       *result = false;
       return Message();
@@ -93,6 +93,7 @@ Message Message::fromSqlRecord(const QSqlRecord &record, bool *result) {
   message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
+  message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
 
   if (result != NULL) {
     *result = true;

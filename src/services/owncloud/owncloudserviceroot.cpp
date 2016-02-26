@@ -121,24 +121,41 @@ bool OwnCloudServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const
 }
 
 bool OwnCloudServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item,
-                                                          const QList<QPair<Message,RootItem::Importance> > &changes) {
+                                                          const QList<ImportanceChange> &changes) {
   Q_UNUSED(selected_item)
 
-  QNetworkReply::NetworkError reply;
+  // Now, we need to separate the changes because of ownCloud API limitations.
+  QStringList mark_starred_feed_ids, mark_starred_guid_hashes;
+  QStringList mark_unstarred_feed_ids, mark_unstarred_guid_hashes;
 
-  /*if (read == RootItem::Read) {
-    //reply = network()->markMessagesRead();
+  foreach (const ImportanceChange &pair, changes) {
+    if (pair.second == RootItem::Important) {
+      mark_starred_feed_ids.append(pair.first.m_feedId);
+      mark_starred_guid_hashes.append(pair.first.m_customHash);
+    }
+    else {
+      mark_unstarred_feed_ids.append(pair.first.m_feedId);
+      mark_unstarred_guid_hashes.append(pair.first.m_customHash);
+    }
   }
-  else {
-    reply = network()->markMessagesUnread();
-  }*/
 
-  if (reply == QNetworkReply::NoError) {
-    return true;
+  // OK, now perform the online update itself.
+
+  if (!mark_starred_feed_ids.isEmpty()) {
+    if (network()->markMessagesStarred(RootItem::Important, mark_starred_feed_ids, mark_starred_guid_hashes) !=
+        QNetworkReply::NoError) {
+      return false;
+    }
   }
-  else {
-    return false;
+
+  if (!mark_unstarred_feed_ids.isEmpty()) {
+    if (network()->markMessagesStarred(RootItem::NotImportant, mark_unstarred_feed_ids, mark_unstarred_guid_hashes) !=
+        QNetworkReply::NoError) {
+      return false;
+    }
   }
+
+  return true;
 }
 
 void OwnCloudServiceRoot::updateTitle() {

@@ -299,7 +299,7 @@ QStringList ServiceRoot::textualFeedIds(const QList<Feed*> &feeds) const {
   return stringy_ids;
 }
 
-QStringList ServiceRoot::customIDsOfMessages(const QList<QPair<Message,RootItem::Importance> > &changes) {
+QStringList ServiceRoot::customIDsOfMessages(const QList<ImportanceChange> &changes) {
   QStringList list;
 
   for (int i = 0; i < changes.size(); i++) {
@@ -360,14 +360,14 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem *selected_item, const QList<Me
   return true;
 }
 
-bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message, RootItem::Importance> > &changes) {
+bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes) {
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
   return true;
 }
 
-bool ServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message, RootItem::Importance> > &changes) {
+bool ServiceRoot::onAfterSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes) {
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 

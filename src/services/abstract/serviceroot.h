@@ -33,6 +33,7 @@ class QSqlTableModel;
 // Car here represents ID of the item.
 typedef QList<QPair<int,RootItem*> > Assignment;
 typedef QPair<int,RootItem*> AssignmentItem;
+typedef QPair<Message,RootItem::Importance> ImportanceChange;
 
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
@@ -120,7 +121,7 @@ class ServiceRoot : public RootItem {
     // some ONLINE service or something.
     //
     // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
+    virtual bool onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes);
 
     // Called AFTER this importance switch update is stored in DB,
     // when false is returned, change is aborted.
@@ -128,7 +129,7 @@ class ServiceRoot : public RootItem {
     // which items are actually changed.
     //
     // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,RootItem::Importance> > &changes);
+    virtual bool onAfterSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes);
 
     // Called BEFORE the list of messages is about to be deleted
     // by the user from message list.
@@ -176,7 +177,7 @@ class ServiceRoot : public RootItem {
 
     QStringList textualFeedIds(const QList<Feed*> &feeds) const;
 
-    QStringList customIDsOfMessages(const QList<QPair<Message,Importance> > &changes);
+    QStringList customIDsOfMessages(const QList<ImportanceChange> &changes);
     QStringList customIDsOfMessages(const QList<Message> &messages);
 
     // Takes lists of feeds/categories and assembles them into the tree structure.

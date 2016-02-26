@@ -200,7 +200,7 @@ bool TtRssServiceRoot::onBeforeSetMessagesRead(RootItem *selected_item, const QL
   }
 }
 
-bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<QPair<Message,Importance> > &changes) {
+bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, const QList<ImportanceChange> &changes) {
   Q_UNUSED(selected_item)
 
   // NOTE: We just toggle it here, because we know, that there is only

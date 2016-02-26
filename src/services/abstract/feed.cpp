@@ -203,8 +203,8 @@ int Feed::updateMessages(const QList<Message> &messages) {
   // Used to insert new messages.
   query_insert.setForwardOnly(true);
   query_insert.prepare("INSERT INTO Messages "
-                       "(feed, title, is_read, is_important, url, author, date_created, contents, enclosures, custom_id, account_id) "
-                       "VALUES (:feed, :title, :is_read, :is_important, :url, :author, :date_created, :contents, :enclosures, :custom_id, :account_id);");
+                       "(feed, title, is_read, is_important, url, author, date_created, contents, enclosures, custom_id, custom_hash, account_id) "
+                       "VALUES (:feed, :title, :is_read, :is_important, :url, :author, :date_created, :contents, :enclosures, :custom_id, :custom_hash, :account_id);");
 
   // Used to update existing messages.
   query_update.setForwardOnly(true);
@@ -313,6 +313,7 @@ int Feed::updateMessages(const QList<Message> &messages) {
       query_insert.bindValue(QSL(":contents"), message.m_contents);
       query_insert.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message.m_enclosures));
       query_insert.bindValue(QSL(":custom_id"), message.m_customId);
+      query_insert.bindValue(QSL(":custom_hash"), message.m_customHash);
       query_insert.bindValue(QSL(":account_id"), account_id);
 
       if (query_insert.exec() && query_insert.numRowsAffected() == 1) {

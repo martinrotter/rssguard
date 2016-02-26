@@ -59,6 +59,7 @@ class Message {
     int m_accountId;
     int m_id;
     QString m_customId;
+    QString m_customHash;
 
     bool m_isRead;
     bool m_isImportant;
