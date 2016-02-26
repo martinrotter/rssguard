@@ -122,6 +122,8 @@ class OwnCloudNetworkFactory {
     // Get messages for given feed.
     OwnCloudGetMessagesResponse getMessages(int feed_id);
 
+    // Misc methods.
+    QNetworkReply::NetworkError triggerFeedUpdate(int feed_id);
     QNetworkReply::NetworkError markMessagesRead(RootItem::ReadStatus status, const QStringList &custom_ids);
     QNetworkReply::NetworkError markMessagesStarred(RootItem::Importance importance, const QStringList &feed_ids,
                                                     const QStringList &guid_hashes);
@@ -140,6 +142,7 @@ class OwnCloudNetworkFactory {
     QString m_urlFolders;
     QString m_urlFeeds;
     QString m_urlMessages;
+    QString m_urlFeedsUpdate;
     QString m_userId;
 };
 

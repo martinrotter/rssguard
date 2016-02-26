@@ -32,7 +32,8 @@
 OwnCloudNetworkFactory::OwnCloudNetworkFactory()
   : m_url(QString()), m_fixedUrl(QString()), m_forceServerSideUpdate(false),
     m_authUsername(QString()), m_authPassword(QString()), m_urlUser(QString()), m_urlStatus(QString()),
-    m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_userId(QString()) {
+    m_urlFolders(QString()), m_urlFeeds(QString()), m_urlMessages(QString()), m_urlFeedsUpdate(QString()),
+    m_userId(QString()) {
 }
 
 OwnCloudNetworkFactory::~OwnCloudNetworkFactory() {
@@ -58,6 +59,9 @@ void OwnCloudNetworkFactory::setUrl(const QString &url) {
   m_urlFolders = m_fixedUrl + API_PATH + "folders";
   m_urlFeeds = m_fixedUrl + API_PATH + "feeds";
   m_urlMessages = m_fixedUrl + API_PATH + "items?id=%1&batchSize=%2&type=%3";
+  m_urlFeedsUpdate = m_fixedUrl + API_PATH + "feeds/update?userId=%1&feedId=%2";
+
+  setUserId(QString());
 }
 
 bool OwnCloudNetworkFactory::forceServerSideUpdate() const {
@@ -74,6 +78,8 @@ QString OwnCloudNetworkFactory::authUsername() const {
 
 void OwnCloudNetworkFactory::setAuthUsername(const QString &auth_username) {
   m_authUsername = auth_username;
+
+  setUserId(QString());
 }
 
 QString OwnCloudNetworkFactory::authPassword() const {
@@ -82,6 +88,8 @@ QString OwnCloudNetworkFactory::authPassword() const {
 
 void OwnCloudNetworkFactory::setAuthPassword(const QString &auth_password) {
   m_authPassword = auth_password;
+
+  setUserId(QString());
 }
 
 QNetworkReply::NetworkError OwnCloudNetworkFactory::lastError() const {
@@ -161,6 +169,10 @@ OwnCloudGetFeedsCategoriesResponse OwnCloudNetworkFactory::feedsCategories() {
 }
 
 OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
+  if (forceServerSideUpdate()) {
+    triggerFeedUpdate(feed_id);
+  }
+
   QString final_url = m_urlMessages.arg(QString::number(feed_id),
                                         QString::number(-1),
                                         QString::number(0));
@@ -179,6 +191,37 @@ OwnCloudGetMessagesResponse OwnCloudNetworkFactory::getMessages(int feed_id) {
 
   m_lastError = network_reply.first;
   return msgs_response;
+}
+
+QNetworkReply::NetworkError OwnCloudNetworkFactory::triggerFeedUpdate(int feed_id) {
+  if (userId().isEmpty()) {
+    // We need to get user ID first.
+    OwnCloudUserResponse info = userInfo();
+
+    if (lastError() != QNetworkReply::NoError) {
+      return lastError();
+    }
+    else {
+      // We have new user ID, set it up.
+      setUserId(info.userId());
+    }
+  }
+
+  // Now, we can trigger the update.
+  QByteArray raw_output;
+  NetworkResult network_reply = NetworkFactory::downloadFile(m_urlFeedsUpdate.arg(userId(),
+                                                                                  QString::number(feed_id)),
+                                                             qApp->settings()->value(GROUP(Feeds),
+                                                                                     SETTING(Feeds::UpdateTimeout)).toInt(),
+                                                             raw_output,
+                                                             true, m_authUsername, m_authPassword,
+                                                             true);
+
+  if (network_reply.first != QNetworkReply::NoError) {
+    qWarning("ownCloud: Feeds update failed with error %d.", network_reply.first);
+  }
+
+  return (m_lastError = network_reply.first);
 }
 
 QNetworkReply::NetworkError OwnCloudNetworkFactory::markMessagesRead(RootItem::ReadStatus status,
