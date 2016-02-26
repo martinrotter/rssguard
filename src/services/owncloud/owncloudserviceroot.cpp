@@ -22,11 +22,13 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "miscellaneous/iconfactory.h"
+#include "gui/dialogs/formmain.h"
 #include "services/owncloud/owncloudserviceentrypoint.h"
 #include "services/owncloud/owncloudrecyclebin.h"
 #include "services/owncloud/owncloudfeed.h"
 #include "services/owncloud/owncloudcategory.h"
 #include "services/owncloud/network/owncloudnetworkfactory.h"
+#include "services/owncloud/gui/formeditowncloudaccount.h"
 
 #include <QSqlQuery>
 #include <QSqlError>
@@ -51,7 +53,10 @@ bool OwnCloudServiceRoot::canBeDeleted() const {
 }
 
 bool OwnCloudServiceRoot::editViaGui() {
-  return false;
+  QScopedPointer<FormEditOwnCloudAccount> form_pointer(new FormEditOwnCloudAccount(qApp->mainForm()));
+  form_pointer.data()->execForEdit(this);
+
+  return true;
 }
 
 bool OwnCloudServiceRoot::deleteViaGui() {

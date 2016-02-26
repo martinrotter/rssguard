@@ -99,6 +99,15 @@ QList<QAction*> ServiceRoot::serviceMenu() {
   return QList<QAction*>();
 }
 
+void ServiceRoot::completelyRemoveAllData() {
+  // Purge old data from SQL and clean all model items.
+  removeOldFeedTree(true);
+  cleanAllItems();
+  updateCounts(true);
+  itemChanged(QList<RootItem*>() << this);
+  requestReloadMessageList(true);
+}
+
 void ServiceRoot::removeOldFeedTree(bool including_messages) {
   QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
   QSqlQuery query(database);

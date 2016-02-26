@@ -61,7 +61,6 @@ class TtRssServiceRoot : public ServiceRoot {
     bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
     void saveAccountDataToDatabase();
     void updateTitle();
-    void completelyRemoveAllData();
 
   public slots:
     void addNewFeed(const QString &url = QString());

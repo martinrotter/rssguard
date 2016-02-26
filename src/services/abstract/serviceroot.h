@@ -149,6 +149,8 @@ class ServiceRoot : public RootItem {
     // Selected item is naturally recycle bin.
     virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
+    void completelyRemoveAllData();
+
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*> &items);
     void requestReloadMessageList(bool mark_selected_messages_read);

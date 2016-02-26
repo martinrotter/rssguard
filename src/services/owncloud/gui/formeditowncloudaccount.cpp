@@ -147,9 +147,8 @@ void FormEditOwnCloudAccount::onClickedOk() {
   accept();
 
   if (editing_account) {
-    // TODO: aktualizovat
-    //m_editableRoot->completelyRemoveAllData();
-    //m_editableRoot->syncIn();
+    m_editableRoot->completelyRemoveAllData();
+    m_editableRoot->syncIn();
   }
 }
 

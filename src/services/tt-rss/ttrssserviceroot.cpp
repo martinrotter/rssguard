@@ -72,7 +72,7 @@ bool TtRssServiceRoot::editViaGui() {
   QScopedPointer<FormEditAccount> form_pointer(new FormEditAccount(qApp->mainForm()));
   form_pointer.data()->execForEdit(this);
 
-  return false;
+  return true;
 }
 
 bool TtRssServiceRoot::deleteViaGui() {
@@ -448,15 +448,6 @@ void TtRssServiceRoot::updateTitle() {
   }
 
   setTitle(m_network->username() + QL1S("@") + host);
-}
-
-void TtRssServiceRoot::completelyRemoveAllData() {
-  // Purge old data from SQL and clean all model items.
-  removeOldFeedTree(true);
-  cleanAllItems();
-  updateCounts(true);
-  itemChanged(QList<RootItem*>() << this);
-  requestReloadMessageList(true);
 }
 
 void TtRssServiceRoot::syncIn() {
