@@ -337,7 +337,9 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList &messages
     const Message msg = messageAt(message.row());
     RootItem::Importance message_importance = messageImportance((message.row()));
 
-    message_states.append(QPair<Message,RootItem::Importance>(msg, message_importance));
+    message_states.append(QPair<Message,RootItem::Importance>(msg, message_importance == RootItem::Important ?
+                                                                RootItem::NotImportant :
+                                                                RootItem::Important));
     message_ids.append(QString::number(msg.m_id));
   }
 

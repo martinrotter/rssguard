@@ -31,6 +31,9 @@ class OwnCloudFeed : public Feed {
     explicit OwnCloudFeed(const QSqlRecord &record);
     virtual ~OwnCloudFeed();
 
+    bool markAsReadUnread(ReadStatus status);
+    bool cleanMessages(bool clear_only_read);
+
     OwnCloudServiceRoot *serviceRoot() const;
     int messageForeignKeyId() const;
 

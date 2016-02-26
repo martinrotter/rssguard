@@ -150,6 +150,8 @@ class ServiceRoot : public RootItem {
     virtual bool onAfterMessagesRestoredFromBin(RootItem *selected_item, const QList<Message> &messages);
 
     void completelyRemoveAllData();
+    QStringList customIDSOfMessagesForItem(RootItem *item);
+    bool markFeedsReadUnread(QList<Feed*> items, ReadStatus read);
 
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*> &items);
@@ -178,7 +180,6 @@ class ServiceRoot : public RootItem {
     void removeLeftOverMessages();
 
     QStringList textualFeedIds(const QList<Feed*> &feeds) const;
-
     QStringList customIDsOfMessages(const QList<ImportanceChange> &changes);
     QStringList customIDsOfMessages(const QList<Message> &messages);
 

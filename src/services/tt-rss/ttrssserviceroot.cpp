@@ -205,7 +205,7 @@ bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, 
 
   // NOTE: We just toggle it here, because we know, that there is only
   // toggling of starred status supported by RSS Guard right now and
-  // Tiny Tiny RSS API allows it, which is greate.
+  // Tiny Tiny RSS API allows it, which is great.
   TtRssUpdateArticleResponse response = m_network->updateArticles(customIDsOfMessages(changes),
                                                                   UpdateArticle::Starred,
                                                                   UpdateArticle::Togggle);
@@ -220,103 +220,6 @@ bool TtRssServiceRoot::onBeforeSwitchMessageImportance(RootItem *selected_item, 
 
 TtRssNetworkFactory *TtRssServiceRoot::network() const {
   return m_network;
-}
-
-QStringList TtRssServiceRoot::customIDSOfMessagesForItem(RootItem *item) {
-  if (item->getParentServiceRoot() != this) {
-    // Not item from this account.
-    return QStringList();
-  }
-  else {
-    QStringList list;
-
-    switch (item->kind()) {
-      case RootItemKind::Category: {
-        foreach (RootItem *child, item->childItems()) {
-          list.append(customIDSOfMessagesForItem(child));
-        }
-
-        return list;
-      }
-
-      case RootItemKind::ServiceRoot: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-        QSqlQuery query(database);
-
-        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-        query.bindValue(QSL(":account_id"), accountId());
-        query.exec();
-
-        while (query.next()) {
-          list.append(query.value(0).toString());
-        }
-
-        break;
-      }
-
-      case RootItemKind::Bin: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-        QSqlQuery query(database);
-
-        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-        query.bindValue(QSL(":account_id"), accountId());
-        query.exec();
-
-        while (query.next()) {
-          list.append(query.value(0).toString());
-        }
-
-        break;
-      }
-
-      case RootItemKind::Feed: {
-        QSqlDatabase database = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-        QSqlQuery query(database);
-
-        query.prepare(QSL("SELECT custom_id FROM Messages WHERE is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
-        query.bindValue(QSL(":account_id"), accountId());
-        query.bindValue(QSL(":feed"), qobject_cast<TtRssFeed*>(item)->customId());
-        query.exec();
-
-        while (query.next()) {
-          list.append(query.value(0).toString());
-        }
-
-        break;
-      }
-
-      default:
-        break;
-    }
-
-    return list;
-  }
-}
-
-bool TtRssServiceRoot::markFeedsReadUnread(QList<Feed*> items, RootItem::ReadStatus read) {
-  QSqlDatabase db_handle = qApp->database()->connection(metaObject()->className(), DatabaseFactory::FromSettings);
-  QSqlQuery query_read_msg(db_handle);
-  query_read_msg.setForwardOnly(true);
-  query_read_msg.prepare(QString("UPDATE Messages SET is_read = :read "
-                                 "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0;").arg(textualFeedIds(items).join(QSL(", "))));
-
-  query_read_msg.bindValue(QSL(":read"), read == RootItem::Read ? 1 : 0);
-
-  if (query_read_msg.exec()) {
-    QList<RootItem*> itemss;
-
-    foreach (Feed *feed, items) {
-      feed->updateCounts(false);
-      itemss.append(feed);
-    }
-
-    itemChanged(itemss);
-    requestReloadMessageList(read == RootItem::Read);
-    return true;
-  }
-  else {
-    return false;
-  }
 }
 
 void TtRssServiceRoot::saveAccountDataToDatabase() {
