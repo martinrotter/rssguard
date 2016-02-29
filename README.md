@@ -11,7 +11,8 @@ RSS Guard is simple and easy-to-use RSS/ATOM feed aggregator developed using Qt 
 Core features are:
 
 * **support for online feed synchronization via plugins**,
-    * Tiny Tiny RSS (from RSS Guard 3.0.0).
+    * Tiny Tiny RSS (from RSS Guard 3.0.0),
+    * ownCloud News (from RSS Guard 3.1.0).
 * multiplatformity,
 * multiple data backend support,
     * SQLite (in-memory DBs too),
@@ -87,7 +88,8 @@ RSS Guard is simple (yet powerful) feed reader. It is able to fetch the most kno
 RSS Guard is written in C++. It is pretty fast even with tons of messages loaded. The core features are:
 
 * **support for online feed synchronization via plugins**,
-    * Tiny Tiny RSS (from RSS Guard 3.0.0).
+    * Tiny Tiny RSS (from RSS Guard 3.0.0),
+    * ownCloud News (from RSS Guard 3.1.0).
 * multiplatformity,
 * support for all feed formats,
 * simplicity,
